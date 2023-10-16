@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XmCloudSXAStarter</RootNamespace>
-    <AssemblyName>XmCloudSXAStarter</AssemblyName>
+    <RootNamespace>HCACloud.Platform</RootNamespace>
+    <AssemblyName>HCACloud.Platform</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -56,7 +56,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
-  <ItemGroup>
+ <ItemGroup>
+    <PackageReference Include="Sitecore.JavaScriptServices.ViewEngine" />
+    <PackageReference Include="Sitecore.XA.Feature.LayoutServices.Integration" />
     <PackageReference Include="Sitecore.XmCloud.Kernel" />
     <PackageReference Include="Sitecore.XmCloud.ContentSearch" />
     <PackageReference Include="Sitecore.XmCloud.ContentSearch.Linq" />
@@ -65,6 +67,7 @@
     <PackageReference Include="Sitecore.Assemblies.SitecoreHeadlessServicesServer" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Foundation\Microsites\Theme\Foundation.Microsites.Theme.config" />
     <Content Include="App_Config\Include\poweshell.config" />
     <Content Include="App_Config\Include\Sitecore.Media.config" />
     <Content Include="App_Data\Xdts\Web.config.xdt" />
@@ -77,6 +80,7 @@
     <Folder Include="App_Config\Include\Feature\" />
     <Folder Include="App_Config\Include\Project\" />
   </ItemGroup>
+    <Compile Include="Pipelines\GetLayoutServiceContext\MicrositeTheme.cs" />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
