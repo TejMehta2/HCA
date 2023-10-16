@@ -1,0 +1,13 @@
+{
+    "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "HCA Foundation Modules",
+    "items": {
+        "includes": [                                               
+            {
+                "name": "HCA Foundation templates",
+                "path": "/sitecore/templates/Foundation/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "HCA Project Modules",
+    "items": {
+        "includes": [
+            {
+                "name": "HCA Project modules",
+                "path": "/sitecore/system/Settings/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+            },
+            {
+                "name": "HCA Project placeholder settings",
+                "path": "/sitecore/layout/Placeholder Settings/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+            },    
+            {
+                "name": "HCA Project layouts",
+                "path": "/sitecore/layout/Layouts/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+
+            },             
+            {
+                "name": "HCA Project renderings",
+                "path": "/sitecore/layout/Renderings/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+            },
+            {
+                "name": "HCA Project templates",
+                "path": "/sitecore/templates/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+            },           
+            {
+                "name": "HCA Project media",
+                "path": "/sitecore/media library/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "singleItem"
+            }
+        ]
+    }
+}
