@@ -67,6 +67,7 @@
     <PackageReference Include="Sitecore.Assemblies.SitecoreHeadlessServicesServer" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Foundation\HCA\LayoutServices\Foundation.HCA.LayoutServices.config" />
     <Content Include="App_Config\Include\Foundation\Microsites\Theme\Foundation.Microsites.Theme.config" />
     <Content Include="App_Config\Include\poweshell.config" />
     <Content Include="App_Config\Include\Sitecore.Media.config" />
@@ -80,7 +81,10 @@
     <Folder Include="App_Config\Include\Feature\" />
     <Folder Include="App_Config\Include\Project\" />
   </ItemGroup>
+  <ItemGroup>
     <Compile Include="Pipelines\GetLayoutServiceContext\MicrositeTheme.cs" />
+    <Compile Include="Pipelines\TransformParameters\TransformReferrencedSettings.cs" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
