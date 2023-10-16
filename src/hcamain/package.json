@@ -1,10 +1,10 @@
 {
-  "name": "sxastarter",
+  "name": "HCA Main",
   "description": "Application utilizing Sitecore JavaScript Services and Next.js",
   "version": "21.3.1",
   "private": true,
   "config": {
-    "appName": "sxastarter",
+    "appName": "HCA Main",
     "rootPlaceholders": [
       "jss-main"
     ],
