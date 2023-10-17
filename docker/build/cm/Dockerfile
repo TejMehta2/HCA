@@ -13,3 +13,7 @@ WORKDIR C:\inetpub\wwwroot
 
 # Copy developer tools and entrypoint
 COPY --from=tools C:\tools C:\tools
+
+# Apply CM web.config transform, more here https://doc.sitecore.com/xp/en/developers/latest/developer-tools/applying-configuration-transforms.html
+COPY ./Transforms/ C:\transforms\xdt
+RUN C:\tools\scripts\Invoke-XdtTransform.ps1 -Path C:\inetpub\wwwroot -XdtPath C:\transforms\xdt;
