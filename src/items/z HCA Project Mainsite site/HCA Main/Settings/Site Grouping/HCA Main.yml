@@ -16,7 +16,7 @@ SharedFields:
   Value: *
 - ID: "cb4e9e2e-2b66-43dc-ad3f-9caf363d28d3"
   Hint: SiteName
-  Value: HCA Main
+  Value: "HCA-Main"
 - ID: "da06d09e-02b6-464a-80fc-9d8d7fc875e3"
   Hint: Environment
   Value: *
@@ -44,11 +44,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "64655a2a-42f4-4511-9247-933b0b492210"
+      Value: "526c9347-afe3-423a-82bb-2540c51b5325"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231017T115509Z
+      Value: 20231017T135244Z
