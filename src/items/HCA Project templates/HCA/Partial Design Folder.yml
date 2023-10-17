@@ -1,8 +1,18 @@
 ﻿---
-ID: "ee4080b0-8b7a-4eab-97a3-58a57894be15"
-Parent: "825b30b4-b40b-422e-9920-23a1b6bda89c"
-Template: "77157d54-90c8-4014-9b9e-540d24e71d03"
-Path: /sitecore/templates/Project/HCA
+ID: "8f2e6685-cc8d-4a79-8610-b4c52128dd69"
+Parent: "ee4080b0-8b7a-4eab-97a3-58a57894be15"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Partial Design Folder
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/document_selection.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{25F01F50-5534-44F9-B1BA-BCBB60B2D13D}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{93BFF471-071F-4FC7-8965-BF79FDB08D8F}"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161518Z
+      Value: 20231016T161519Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8d20e633-612b-46bb-8164-2102c7c95754"
+      Value: "16fe6ded-fb3b-44ba-8e49-6632c6b6a128"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161518Z
+      Value: 20231016T161519Z
