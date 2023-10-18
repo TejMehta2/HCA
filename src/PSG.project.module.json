@@ -1,0 +1,45 @@
+{
+    "$schema": "../../.sitecPSGore/schemas/ModuleFile.schema.json",
+    "namespace": "PSG Project Modules",
+    "items": {
+        "includes": [
+            {
+                "name": "PSG Project modules",
+                "path": "/sitecore/system/Settings/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+                
+            },
+            {
+                "name": "PSG Project placeholder settings",
+                "path": "/sitecore/layout/Placeholder Settings/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+                
+            },    
+            {
+                "name": "PSG Project layouts",
+                "path": "/sitecore/layout/Layouts/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+                
+
+            },             
+            {
+                "name": "PSG Project renderings",
+                "path": "/sitecore/layout/Renderings/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+                
+            },
+            {
+                "name": "PSG Project templates",
+                "path": "/sitecore/templates/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            
+            },           
+            {
+                "name": "PSG Project media",
+                "path": "/sitecore/media library/Project/PSG",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+                
+            }
+        ]
+    }
+}

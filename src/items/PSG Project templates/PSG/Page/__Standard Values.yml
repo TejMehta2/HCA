@@ -1,0 +1,40 @@
+﻿---
+ID: "7f977a2d-c7b9-4e60-8127-0ec301043b08"
+Parent: "ddf57628-7330-4f0f-9224-1a7bd1f47b1f"
+Template: "ddf57628-7330-4f0f-9224-1a7bd1f47b1f"
+Path: /sitecore/templates/Project/PSG/Page/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {DDF57628-7330-4F0F-9224-1A7BD1F47B1F}
+    {C14B6289-8AC2-439C-9E5B-40DE9F820C3F}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231009T103649Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bba1b126-6dec-463c-9f6f-eb8411bb05eb"
+    - ID: "97f17700-443c-4628-bb3a-aa2f86e406eb"
+      Hint: Title
+      Value: $name
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231009T103656Z

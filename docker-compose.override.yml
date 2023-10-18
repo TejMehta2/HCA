@@ -19,7 +19,7 @@ services:
       args:
         PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
     volumes:
-      - .\src\sxastarter:C:\app
+      - .\src\hcamain:C:\app
     environment:
       SITECORE_API_HOST: "http://cm"
       NEXTJS_DIST_DIR: ".next-container"
@@ -84,4 +84,9 @@ services:
       ## Development Environment Optimizations
       SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
       Sitecore_AppSettings_exmEnabled:define: "no" # remove to turn on EXM
+      SITECORE_SPE_ELEVATION: "Allow"
+      Sitecore_ConnectionStrings_DAM_dot_ContentHub: ${Sitecore_DAM_ContentHub}
+      Sitecore_ConnectionStrings_DAM_dot_SearchPage: ${Sitecore_DAM_SearchPage}
+      Sitecore_ConnectionStrings_DAM_dot_ExternalRedirectKey: ${Sitecore_DAM_ExternalRedirectKey}
+      SITECORE_AppSettings_damEnabled__define: ${SITECORE_AppSettings_damEnabled__define}
     entrypoint: powershell -Command "& C:/tools/entrypoints/iis/Development.ps1"
