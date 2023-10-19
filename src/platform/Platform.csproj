@@ -70,7 +70,7 @@
     <Content Include="App_Config\Include\Foundation\HCA\LayoutServices\Foundation.HCA.LayoutServices.config" />
     <Content Include="App_Config\Include\Foundation\Microsites\Theme\Foundation.Microsites.Theme.config" />
     <Content Include="App_Config\Include\poweshell.config" />
-    <None Include="App_Config\Include\Sitecore.Media.config.disabled" />
+    <None Include="App_Config\Include\Sitecore.Media.config" />
     <Content Include="App_Data\Xdts\Web.config.xdt" />
     <None Include="Platform.wpp.targets" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
