@@ -36,12 +36,38 @@ services:
       - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
       - "traefik.http.routers.rendering-secure.tls=true"
 
+  microsite:
+    image: ${REGISTRY}${MICROSITE_COMPOSE_PROJECT_NAME}-microsite:${VERSION:-latest}
+    build:
+      context: ./docker/build/microsite
+      target: ${BUILD_CONFIGURATION}
+      args:
+        PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    volumes:
+      - .\src\microsite:C:\micrositeapp
+    environment:
+      SITECORE_API_HOST: "http://cm"
+      NEXTJS_DIST_DIR: ".next-container"
+      PUBLIC_URL: "https://${MICROSITE_RENDERING_HOST}"
+      JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+      SITECORE_API_KEY: "${SITECORE_API_KEY_xmcloudpreview}"
+      DISABLE_SSG_FETCH: ${DISABLE_SSG_FETCH}
+    depends_on:
+      - cm
+      - nodejs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microsite-secure.entrypoints=websecure"
+      - "traefik.http.routers.microsite-secure.rule=Host(`${MICROSITE_RENDERING_HOST}`)"
+      - "traefik.http.routers.microsite-secure.tls=true"
+
   # Mount the Traefik configuration and certs.
   traefik:
     volumes:
       - ./docker/traefik:C:/etc/traefik
     depends_on:
       - rendering
+      - microsite
 
   # Mount our SQL data folder and use our custom image with the Headless Services (JSS)
   # module data added. See Dockerfile for details.

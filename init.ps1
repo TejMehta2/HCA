@@ -82,6 +82,7 @@ try {
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
     & $mkcert "*.hcaxmlcloud.localhost"
+    & $mkcert "*.microsite.localhost"
     & $mkcert "hcacloud.xmcloudcm.localhost"
 
     # stash CAROOT path for messaging at the end of the script
@@ -103,6 +104,7 @@ Write-Host "Adding Windows hosts file entries..." -ForegroundColor Green
 
 Add-HostsEntry "hcacloud.xmcloudcm.localhost"
 Add-HostsEntry "www.hcacloud.localhost"
+Add-HostsEntry "www.microsite.localhost"
 
 ###############################
 # Generate scjssconfig
@@ -139,6 +141,7 @@ if ($InitEnv) {
 
     # RENDERING_HOST
     Set-EnvFileVariable "RENDERING_HOST" -Value "www.hcacloud.localhost"
+    Set-EnvFileVariable "MICROSITE_RENDERING_HOST" -Value "www.microsite.localhost"
 
     # REPORTING_API_KEY = random 64-128 chars
     Set-EnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 128 -DisallowSpecial)
