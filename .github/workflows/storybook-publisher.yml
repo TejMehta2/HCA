@@ -21,4 +21,4 @@ jobs:
         run: npm ci
 
       - name: Run storybook:publish
-        run: npm run storybook:publish
+        run: npm run component-library:storybook:publish
