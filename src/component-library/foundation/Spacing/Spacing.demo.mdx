@@ -1,0 +1,33 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as SpacingStories from './Spacing.demo.stories';
+
+<Meta of={SpacingStories} />
+
+# Spacing
+
+The spacing variables are intended to be imported directly into component scss module files, and assigned to various CSS properties e.g. `gap`, `margin` and `padding`.
+
+The variables update responsively according to the definitions Figma design library, so there is no reason to use them within a media query.
+
+For example here we apply it to the `border-radius` and `margin`, just for demonstration purposes: 
+
+```scss dark
+// MyComponent.module.scss
+@use '../../foundation/index.module.scss' as *;
+
+.demo-spacing-1 {
+  border: solid rgb(61 148 255) $spacing-1;
+  margin: $spacing-1 0;
+}
+
+.demo-spacing-2 {
+  border: solid rgb(61 148 255) $spacing-2;
+  margin: $spacing-1 0;
+}
+
+.demo-spacing-3 {
+  border: solid rgb(61 148 255) $spacing-3;
+  margin: $spacing-1 0;
+}
+```
+<Canvas of={SpacingStories.Demo}  />

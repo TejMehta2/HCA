@@ -1,0 +1,96 @@
+@use './text-mixin.module' as *;
+
+/* 
+Text classes to mirror design library Typography scale 
+Intended for use solely in the Text module
+*/
+
+/* || CLASSES */
+
+.display-1 {
+  @include text(display-1);
+}
+
+.display-2 {
+  @include text(display-2);
+}
+
+.display-3 {
+  @include text(display-3);
+}
+
+.display-4 {
+  @include text(display-4);
+}
+
+.display-5 {
+  @include text(display-5);
+}
+
+.display-6 {
+  @include text(display-6);
+}
+
+.heading-1 {
+  @include text(heading-1);
+}
+
+.heading-2 {
+  @include text(heading-2);
+}
+
+.subheading-1 {
+  @include text(subheading-1);
+}
+
+.subheading-2 {
+  @include text(subheading-2);
+}
+
+.body-extra-large {
+  @include text(body-extra-large);
+}
+
+.body-medium-extra-large {
+  @include text(body-medium-extra-large);
+}
+
+.body-semi-bold-extra-large {
+  @include text(body-semi-bold-extra-large);
+}
+
+.body-large {
+  @include text(body-large);
+}
+
+.body-medium-large {
+  @include text(body-medium-large);
+}
+
+.body-semi-bold-large {
+  @include text(body-semi-bold-large);
+}
+
+.body-medium {
+  @include text(body-medium);
+}
+
+.body-medium-medium {
+  @include text(body-medium-medium);
+}
+
+.body-semi-bold-medium {
+  @include text(body-semi-bold-large);
+}
+
+.body-small {
+  @include text(body-small);
+}
+
+.body-medium-small {
+  @include text(body-medium-small);
+}
+
+.body-semi-bold-small {
+  @include text(body-semi-bold-small);
+}

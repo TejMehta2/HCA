@@ -1,0 +1,65 @@
+@use './colours.module' as *;
+
+// Export color variables for use in Webpack.
+:export {
+  turquoise: {
+    main-turquoise: $main-turquoise;
+    main-turquoise-80: $main-turquoise-80;
+    main-turquoise-60: $main-turquoise-60;
+    main-turquoise-40: $main-turquoise-40;
+    main-turquoise-20: $main-turquoise-20;
+    main-turquoise-10: $main-turquoise-10;
+    main-turquoise-5: $main-turquoise-5;
+  }
+  blue: {
+    dark-blue: $dark-blue;
+    dark-blue-80: $dark-blue-80;
+    dark-blue-60: $dark-blue-60;
+    dark-blue-40: $dark-blue-40;
+    dark-blue-20: $dark-blue-20;
+    dark-blue-10: $dark-blue-10;
+    dark-blue-9: $dark-blue-9;
+    dark-blue-5: $dark-blue-5;
+  }
+  white: {
+    white: $white;
+  }
+  green: {
+    green: $green;
+    green-80: $green-80;
+    green-60: $green-60;
+    green-40: $green-40;
+    green-20: $green-20;
+    green-10: $green-10;
+    green-5: $green-5;
+  }
+  beige: {
+    beige: $beige;
+    beige-60: $beige-60;
+    beige-20: $beige-20;
+  }
+  orange: {
+    light-orange: $light-orange;
+    light-orange-80: $light-orange-80;
+    light-orange-60: $light-orange-60;
+    light-orange-40: $light-orange-40;
+  }
+  coral: {
+    coral: $coral;
+    coral-80: $coral-80;
+    coral-60: $coral-60;
+    coral-40: $coral-40;
+    coral-20: $coral-20;
+    coral-10: $coral-10;
+    coral-5: $coral-5;
+  }
+  red: {
+    red: $red;
+    red-80: $red-80;
+    red-60: $red-60;
+    red-40: $red-40;
+    red-20: $red-20;
+    red-10: $red-10;
+    red-5: $red-5;
+  }
+}

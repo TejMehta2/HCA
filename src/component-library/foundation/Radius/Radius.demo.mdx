@@ -1,0 +1,28 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as RadiusStories from './Radius.demo.stories';
+
+<Meta of={RadiusStories} />
+
+# Radius
+
+The radius variables are intended to be imported directly into component scss module files, and assigned to the `border-radius` CSS property.
+
+For example: 
+
+```scss dark
+// MyComponent.module.scss
+@use '../../foundation/index.module.scss' as *;
+
+.myLargerElement {
+  border-radius: $large-radius;
+}
+
+.myMediumElement {
+  border-radius: $medium-radius;
+}
+
+.mySmallElement {
+  border-radius: $small-radius;
+}
+```
+<Canvas of={RadiusStories.Demo}  />

@@ -1,0 +1,28 @@
+@use '../../foundation/index.module' as *;
+
+.wrapper {
+  display: grid;
+  border-radius: $small-radius;
+  gap: $spacing-4;
+  padding: $spacing-2;
+  max-width: px-to-rem(900);
+  margin: 0 auto;
+  background-color: $main-turquoise;
+  border: 1px solid black;
+}
+
+.image > img {
+  width: 100%;
+  height: auto;
+}
+
+.children {
+  display: flex;
+  gap: $spacing-3;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
