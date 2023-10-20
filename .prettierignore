@@ -1,3 +1,7 @@
 **/.storybook/*
 *.targets
 **/temp/*
+**/lib/*
+**/microsite/*
+**/hcamain/src/assets/**/*.scss
+**/poc/**/*.scss

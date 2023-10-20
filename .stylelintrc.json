@@ -15,20 +15,6 @@
           "export"
         ]
       }
-    ],
-    "unit-disallowed-list": [
-      [
-        "px",
-        "em"
-      ],
-      {
-        "ignoreProperties": {
-          "px": [
-            "border",
-            "border-width"
-          ]
-        }
-      }
     ]
   }
 }
