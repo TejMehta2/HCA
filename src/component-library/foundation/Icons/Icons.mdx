@@ -1,0 +1,26 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as IconsStories from './Icons.stories';
+
+<Meta of={IconsStories} />
+
+# Icons
+
+## Description
+
+The Icon component is designed for the simple task of taking an icon name as a prop, and returning an SVG icon.
+
+It uses the NextJS Image component, so it automatically has optimisation features like lazy loading.
+
+<Canvas of={IconsStories.Default}  />
+
+## Adding new Icons
+
+Place your icon into the `src/component-library/foundation/Icons/base/` directory in svg format.
+
+Run the following command at the root directory of the component library `src/component-library/`
+
+`npm run register-icons`
+
+This script will create an updated icon-map file `src/component-library/foundation/icons/icon-map.generated.ts` which is consumed by the Icons component, types and stories.
+
+If there is an error in the generated file, try linting it. If that failes to resolve the error, there is probably an issue with the name of your new file.

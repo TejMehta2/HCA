@@ -1,0 +1,28 @@
+$breakpoints: (
+  /* 600px*/ screen-m: 37.5em,
+  /* 1135px*/ screen-l: 71em,
+  /* 1440px*/ screen-xl: 90em
+);
+
+@function get-breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+  }
+
+  @warn "The key #{$breakpoint} is not in the map '$breakpoints'";
+  @return null;
+}
+
+@mixin media($breakpoint, $direction: min) {
+  $breakpoint-value: get-breakpoint($breakpoint);
+
+  @if $direction == max {
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: ($breakpoint-value)) {
+      @content;
+    }
+  }
+}

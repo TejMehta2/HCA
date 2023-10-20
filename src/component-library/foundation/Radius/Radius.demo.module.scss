@@ -1,0 +1,37 @@
+@use '../index.module.scss' as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-3;
+}
+
+.small,
+.medium,
+.large {
+  background-color: $main-turquoise;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $dark-blue;
+}
+
+.small {
+  width: 63px;
+  height: 63px;
+  border-radius: $small-radius;
+}
+
+.medium {
+  width: 87px;
+  height: 87px;
+  border-radius: $medium-radius;
+}
+
+.large {
+  width: 160px;
+  height: 160px;
+  border-radius: $large-radius;
+}
