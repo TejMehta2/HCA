@@ -12,9 +12,11 @@ class MultisitePlugin implements ConfigPlugin {
 
   async exec(config: JssConfig) {
     let sites: SiteInfo[] = [];
+    let allSites: SiteInfo[] = [];
 
     const endpoint = config.graphQLEndpoint;
     const apiKey = config.sitecoreApiKey;
+    const excludeFromMultisite = config.excludeFromMultisite;
 
     if (!endpoint || !apiKey) {
       console.warn(
@@ -27,7 +29,8 @@ class MultisitePlugin implements ConfigPlugin {
           endpoint,
           apiKey,
         });
-        sites = await siteInfoService.fetchSiteInfo();
+        allSites = await siteInfoService.fetchSiteInfo();
+        sites = allSites.filter((_) => _.name !== excludeFromMultisite);
       } catch (error) {
         console.error(chalk.red('Error fetching site information'));
         console.error(error);
