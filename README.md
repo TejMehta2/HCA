@@ -16,11 +16,11 @@ All npm commands below should be run at the root of the solution i.e the directo
 
 ### NextJS Front end
 
-The NextJS solution(s) exist at e.g. `src/[solution]/`. For this example, we use the first NextJS solution: sitecorespike.
+The NextJS solution(s) exist at e.g. `src/[solution]/`. For this example, we use the first NextJS solution: hcamain.
 
-1. Make a local copy of the `.env` file located in the solution folder e.g. copy `src/sitecorespike/.env` to `src/sitecorespike/.env.local`.
+1. Make a local copy of the `.env` file located in the solution folder e.g. copy `src/hcamain/.env` to `src/hcamain/.env.local`.
 2. Replace the values for `SITECORE_API_KEY`, `GRAPH_QL_ENDPOINT` and `JSS_APP_NAME` in the newly created `.env.local` with the values provided in the Sitecore cloud instance.
-3. Run the start command corresponding to the solution e.g. `npm run start:src/sitecorespike` (see scripts in root `package.json`)
+3. Run the start command corresponding to the solution e.g. `npm run hcamain:start` (see scripts in root `package.json`)
 4. Navigate your browser to the location reported to the console e.g. http://localhost:3000
 
 ### Back end

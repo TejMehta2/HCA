@@ -134,7 +134,7 @@ $text: (
       font-size: 1rem,
       line-height: 160%,
       font-weight: 400,
-      letter-spacing: 0.11em,
+      letter-spacing: px-to-rem(1.98),
       text-transform: uppercase,
     ),
     screen-xl: (
@@ -147,7 +147,7 @@ $text: (
       font-size: 0.875rem,
       line-height: 150%,
       font-weight: 400,
-      letter-spacing: 0.11em,
+      letter-spacing: px-to-rem(1.76),
       text-transform: uppercase,
     ),
     screen-xl: (
