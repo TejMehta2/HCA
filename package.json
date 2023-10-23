@@ -14,9 +14,9 @@
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "eslint src/**/*.*{tsx,ts}",
     "lint:scss": "npx stylelint \"**/*.scss\" --ignore-path .prettierignore",
-    "format": "npm run format:ts && npm run format:scss",
-    "format:ts": "prettier --config .prettierrc --write **/*.*{tsx,ts,scss}",
-    "format:scss": "npx stylelint \"**/*.scss\" --fix",
+    "format": "npm run format:ts && npm run format:scss --ignore-path .prettierignore",
+    "format:ts": "prettier --config .prettierrc --write **/*.*{tsx,ts,scss} --fix --ignore-path .prettierignore",
+    "format:scss": "npx stylelint \"**/*.scss\" --fix --ignore-path .prettierignore",
     "stylelint-scss-check": "stylelint-config-prettier-scss-check"
   },
   "devDependencies": {

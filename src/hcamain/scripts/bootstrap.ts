@@ -8,14 +8,14 @@
 /*
    PLUGINS GENERATION
 */
-import './generate-plugins';
+import './generate-plugins'
 
 /*
   CONFIG GENERATION
 */
-import './generate-config';
+import './generate-config'
 
 /*
   COMPONENT BUILDER GENERATION
 */
-import './generate-component-builder';
+import './generate-component-builder'

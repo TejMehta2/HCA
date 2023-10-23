@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Image as JssImage,
   Link as JssLink,
@@ -6,19 +6,19 @@ import {
   ImageField,
   Field,
   LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+} from '@sitecore-jss/sitecore-jss-nextjs'
 
 interface Fields {
-  PromoIcon: ImageField;
-  PromoText: Field<string>;
-  PromoLink: LinkField;
-  PromoText2: Field<string>;
+  PromoIcon: ImageField
+  PromoText: Field<string>
+  PromoLink: LinkField
+  PromoText2: Field<string>
 }
 
 type PromoProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-};
+  params: { [key: string]: string }
+  fields: Fields
+}
 
 const PromoDefaultComponent = (props: PromoProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
@@ -26,13 +26,16 @@ const PromoDefaultComponent = (props: PromoProps): JSX.Element => (
       <span className="is-empty-hint">Promo</span>
     </div>
   </div>
-);
+)
 
 export const Default = (props: PromoProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
+  const id = props.params.RenderingIdentifier
   if (props.fields) {
     return (
-      <div className={`component promo ${props.params.styles}`} id={id ? id : undefined}>
+      <div
+        className={`component promo ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.PromoIcon} />
@@ -49,17 +52,20 @@ export const Default = (props: PromoProps): JSX.Element => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-  return <PromoDefaultComponent {...props} />;
-};
+  return <PromoDefaultComponent {...props} />
+}
 
 export const WithText = (props: PromoProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
+  const id = props.params.RenderingIdentifier
   if (props.fields) {
     return (
-      <div className={`component promo ${props.params.styles}`} id={id ? id : undefined}>
+      <div
+        className={`component promo ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.PromoIcon} />
@@ -67,17 +73,23 @@ export const WithText = (props: PromoProps): JSX.Element => {
           <div className="promo-text">
             <div>
               <div className="field-promotext">
-                <JssRichText className="promo-text" field={props.fields.PromoText} />
+                <JssRichText
+                  className="promo-text"
+                  field={props.fields.PromoText}
+                />
               </div>
             </div>
             <div className="field-promotext">
-              <JssRichText className="promo-text" field={props.fields.PromoText2} />
+              <JssRichText
+                className="promo-text"
+                field={props.fields.PromoText2}
+              />
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-  return <PromoDefaultComponent {...props} />;
-};
+  return <PromoDefaultComponent {...props} />
+}
