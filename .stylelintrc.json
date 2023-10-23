@@ -13,7 +13,7 @@
       }
     ],
     "unit-disallowed-list": [
-      ["px", "em"],
+      ["px", "em", "rem"],
       {
         "ignoreProperties": {
           "px": [
@@ -22,7 +22,8 @@
             "letter-spacing",
             "outline",
             "box-shadow"
-          ]
+          ],
+          "em": "letter-spacing"
         }
       }
     ]

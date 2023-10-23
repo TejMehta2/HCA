@@ -6,292 +6,250 @@ $font-family-sans-serif: 'Arial';
 
 /* || TEXT */
 
-$text: (
-  'display-1': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 3rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 3.375rem,
-    ),
-    screen-l: (
-      font-size: 4rem,
-    ),
-    screen-xl: (
-      font-size: 5rem,
-    ),
-  ),
-  'display-2': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 2.625rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 3rem,
-    ),
-    screen-l: (
-      font-size: 3.5rem,
-    ),
-    screen-xl: (
-      font-size: 4.5rem,
-    ),
-  ),
-  'display-3': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 2.25rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 2.5rem,
-    ),
-    screen-l: (
-      font-size: 3rem,
-    ),
-    screen-xl: (
-      font-size: 4rem,
-    ),
-  ),
-  'display-4': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 2rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 2.25rem,
-    ),
-    screen-l: (
-      font-size: 2.625rem,
-    ),
-    screen-xl: (
-      font-size: 3.5rem,
-    ),
-  ),
-  'display-5': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 1.875rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 2rem,
-    ),
-    screen-l: (
-      font-size: 2.25rem,
-    ),
-    screen-xl: (
-      font-size: 3rem,
-    ),
-  ),
-  'display-6': (
-    null: (
-      font-family: $font-family-serif,
-      font-size: 1.75rem,
-      line-height: 120%,
-      font-weight: 400,
-    ),
-    screen-m: (
-      font-size: 1.875rem,
-    ),
-    screen-l: (
-      font-size: 1.875rem,
-    ),
-    screen-xl: (
-      font-size: 2.5rem,
-    ),
-  ),
-  'heading-1': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1.75rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-  ),
-  'heading-2': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1.375rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-    screen-xl: (
-      font-size: 1.5rem,
-    ),
-  ),
-  'subheading-1': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 160%,
-      font-weight: 400,
-      letter-spacing: px-to-rem(1.98),
-      text-transform: uppercase,
-    ),
-    screen-xl: (
-      font-size: 1.125rem,
-    ),
-  ),
-  'subheading-2': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 0.875rem,
-      line-height: 150%,
-      font-weight: 400,
-      letter-spacing: px-to-rem(1.76),
-      text-transform: uppercase,
-    ),
-    screen-xl: (
-      font-size: 1rem,
-    ),
-  ),
-  'body-extra-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1.125rem,
-      line-height: 160%,
-      font-weight: 400,
-    ),
-    screen-xl: (
-      font-size: 1.25rem,
-    ),
-  ),
-  'body-medium-extra-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1.125rem,
-      line-height: 160%,
-      font-weight: 400,
-    ),
-    screen-xl: (
-      font-size: 1.25rem,
-    ),
-  ),
-  'body-semi-bold-extra-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1.125rem,
-      line-height: 160%,
-      font-weight: 600,
-    ),
-    screen-xl: (
-      font-size: 1.25rem,
-    ),
-  ),
-  'body-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-    screen-xl: (
-      font-size: 1.125rem,
-    ),
-  ),
-  'body-medium-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-    screen-xl: (
-      font-size: 1.125rem,
-    ),
-  ),
-  'body-semi-bold-large': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 600,
-    ),
-    screen-xl: (
-      font-size: 1.125rem,
-    ),
-  ),
-  'body-medium': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-  ),
-  'body-medium-medium': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-  ),
-  'body-semi-bold-medium': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 1rem,
-      line-height: 150%,
-      font-weight: 600,
-    ),
-  ),
-  'body-small': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 0.875rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-  ),
-  'body-medium-small': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 0.875rem,
-      line-height: 150%,
-      font-weight: 400,
-    ),
-  ),
-  'body-semi-bold-small': (
-    null: (
-      font-family: $font-family-sans-serif,
-      font-size: 0.875rem,
-      line-height: 150%,
-      font-weight: 600,
-    ),
-  ),
-);
+@mixin apply-display-1 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(48);
+  line-height: 120%;
+  font-weight: 400;
 
-/* || MIXINS */
-
-// Returns font styles corresponded to the selected font from the Typography scale in the design library
-
-@mixin text($fs-type: display-1) {
-  @each $s-breakpoint, $breakpoint-map in map.get($text, $fs-type) {
-    @if not $s-breakpoint {
-      font-family: map.get($breakpoint-map, font-family);
-      font-size: map.get($breakpoint-map, font-size);
-      line-height: map.get($breakpoint-map, line-height);
-      font-weight: map.get($breakpoint-map, font-weight);
-      letter-spacing: map.get($breakpoint-map, letter-spacing);
-      text-transform: map.get($breakpoint-map, text-transform);
-    } @else {
-      @include media($s-breakpoint) {
-        font-family: map.get($breakpoint-map, font-family);
-        font-size: map.get($breakpoint-map, font-size);
-        line-height: map.get($breakpoint-map, line-height);
-        font-weight: map.get($breakpoint-map, font-weight);
-        letter-spacing: map.get($breakpoint-map, letter-spacing);
-        text-transform: map.get($breakpoint-map, text-transform);
-      }
-    }
+  @include media(screen-m) {
+    font-size: px-to-rem(52);
   }
+
+  @include media(screen-l) {
+    font-size: px-to-rem(64);
+  }
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(80);
+  }
+}
+
+@mixin apply-display-2 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(42);
+  line-height: 120%;
+  font-weight: 400;
+
+  @include media(screen-m) {
+    font-size: px-to-rem(48);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(56);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(72);
+  }
+}
+
+@mixin apply-display-3 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(36);
+  line-height: 120%;
+  font-weight: 400;
+
+  @include media(screen-m) {
+    font-size: px-to-rem(40);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(48);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(64);
+  }
+}
+
+@mixin apply-display-4 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(32);
+  line-height: 120%;
+  font-weight: 400;
+
+  @include media(screen-m) {
+    font-size: px-to-rem(36);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(42);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(56);
+  }
+}
+
+@mixin apply-display-5 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(30);
+  line-height: 120%;
+  font-weight: 400;
+
+  @include media(screen-m) {
+    font-size: px-to-rem(32);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(36);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(48);
+  }
+}
+
+@mixin apply-display-6 {
+  font-family: $font-family-serif;
+  font-size: px-to-rem(28);
+  line-height: 120%;
+  font-weight: 400;
+
+  @include media(screen-m) {
+    font-size: px-to-rem(30);
+  }
+  @include media(screen-l) {
+    font-size: px-to-rem(30);
+  }
+  @include media(screen-xl) {
+    font-size: px-to-rem(40);
+  }
+}
+
+@mixin apply-heading-1 {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(28);
+  line-height: 150%;
+  font-weight: 400;
+}
+
+@mixin apply-heading-2 {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(22);
+  line-height: 150%;
+  font-weight: 400;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(24);
+  }
+}
+
+@mixin apply-subheading-1 {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 160%;
+  font-weight: 400;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+
+@mixin apply-subheading-2 {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(14);
+  line-height: 150%;
+  font-weight: 400;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(16);
+  }
+}
+
+@mixin apply-body-extra-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(18);
+  line-height: 160%;
+  font-weight: 400;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(20);
+  }
+}
+
+@mixin apply-body-medium-extra-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(18);
+  line-height: 160%;
+  font-weight: 400;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(20);
+  }
+}
+
+@mixin apply-body-semi-bold-extra-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(18);
+  line-height: 160%;
+  font-weight: 600;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(20);
+  }
+}
+@mixin apply-body-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 400;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+@mixin apply-body-medium-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 400;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+@mixin apply-body-semi-bold-large {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 600;
+
+  @include media(screen-xl) {
+    font-size: px-to-rem(18);
+  }
+}
+@mixin apply-body-medium {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 400;
+}
+@mixin apply-body-medium-medium {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 400;
+}
+@mixin apply-body-semi-bold-medium {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 150%;
+  font-weight: 600;
+}
+@mixin apply-body-small {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(14);
+  line-height: 150%;
+  font-weight: 400;
+}
+
+@mixin apply-body-medium-small {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(14);
+  line-height: 150%;
+  font-weight: 400;
+}
+@mixin apply-body-semi-bold-small {
+  font-family: $font-family-sans-serif;
+  font-size: px-to-rem(14);
+  line-height: 150%;
+  font-weight: 600;
 }
