@@ -29,8 +29,8 @@ class MultisitePlugin implements ConfigPlugin {
           endpoint,
           apiKey,
         });
-        allSites = await siteInfoService.fetchSiteInfo();        
-        sites = allSites.filter(_ => _.name !== excludeFromMultisite);
+        allSites = await siteInfoService.fetchSiteInfo();
+        sites = allSites.filter((_) => _.name !== excludeFromMultisite);
       } catch (error) {
         console.error(chalk.red('Error fetching site information'));
         console.error(error);
