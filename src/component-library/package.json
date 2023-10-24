@@ -9,7 +9,7 @@
     "register-icons": "npx ts-node foundation/Icons/register-icons.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --ci --project-token=chpt_893d0fc72947166"
+    "chromatic": "npx chromatic --ci --exit-once-uploaded --project-token=chpt_893d0fc72947166"
   },
   "author": "",
   "license": "ISC",
