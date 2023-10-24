@@ -1,6 +1,9 @@
-import chalk from 'chalk';
-import { ConfigPlugin, JssConfig } from '..';
-import { GraphQLSiteInfoService, SiteInfo } from '@sitecore-jss/sitecore-jss-nextjs';
+import chalk from 'chalk'
+import { ConfigPlugin, JssConfig } from '..'
+import {
+  GraphQLSiteInfoService,
+  SiteInfo,
+} from '@sitecore-jss/sitecore-jss-nextjs'
 
 /**
  * This plugin will set the "sites" config prop.
@@ -8,39 +11,41 @@ import { GraphQLSiteInfoService, SiteInfo } from '@sitecore-jss/sitecore-jss-nex
  * You could easily modify this to fetch from another source such as a static JSON file instead.
  */
 class MultisitePlugin implements ConfigPlugin {
-  order = 11;
+  order = 11
 
   async exec(config: JssConfig) {
-    let sites: SiteInfo[] = [];
-    let allSites: SiteInfo[] = [];
+    let sites: SiteInfo[] = []
+    let allSites: SiteInfo[] = []
 
-    const endpoint = config.graphQLEndpoint;
-    const apiKey = config.sitecoreApiKey;
-    const excludeFromMultisite = config.excludeFromMultisite;
+    const endpoint = config.graphQLEndpoint
+    const apiKey = config.sitecoreApiKey
+    const excludeFromMultisite = config.excludeFromMultisite
 
     if (!endpoint || !apiKey) {
       console.warn(
-        chalk.yellow('Skipping site information fetch (missing GraphQL endpoint or API key).')
-      );
+        chalk.yellow(
+          'Skipping site information fetch (missing GraphQL endpoint or API key).'
+        )
+      )
     } else {
-      console.log(`Fetching site information from ${endpoint}`);
+      console.log(`Fetching site information from ${endpoint}`)
       try {
         const siteInfoService = new GraphQLSiteInfoService({
           endpoint,
           apiKey,
-        });
-        allSites = await siteInfoService.fetchSiteInfo();
-        sites = allSites.filter((_) => _.name == excludeFromMultisite);
+        })
+        allSites = await siteInfoService.fetchSiteInfo()
+        sites = allSites.filter((_) => _.name == excludeFromMultisite)
       } catch (error) {
-        console.error(chalk.red('Error fetching site information'));
-        console.error(error);
+        console.error(chalk.red('Error fetching site information'))
+        console.error(error)
       }
     }
 
     return Object.assign({}, config, {
       sites: JSON.stringify(sites),
-    });
+    })
   }
 }
 
-export const multisitePlugin = new MultisitePlugin();
+export const multisitePlugin = new MultisitePlugin()

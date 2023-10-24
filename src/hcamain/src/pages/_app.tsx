@@ -1,11 +1,14 @@
-import type { AppProps } from 'next/app';
-import { I18nProvider } from 'next-localization';
-import { SitecorePageProps } from 'lib/page-props';
+import type { AppProps } from 'next/app'
+import { I18nProvider } from 'next-localization'
+import { SitecorePageProps } from 'lib/page-props'
 
-import 'assets/main.scss';
+import 'assets/main.scss'
 
-function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element {
-  const { dictionary, ...rest } = pageProps;
+function App({
+  Component,
+  pageProps,
+}: AppProps<SitecorePageProps>): JSX.Element {
+  const { dictionary, ...rest } = pageProps
 
   return (
     // Use the next-localization (w/ rosetta) library to provide our translation dictionary to the app.
@@ -14,7 +17,7 @@ function App({ Component, pageProps }: AppProps<SitecorePageProps>): JSX.Element
     <I18nProvider lngDict={dictionary} locale={pageProps.locale}>
       <Component {...rest} />
     </I18nProvider>
-  );
+  )
 }
 
-export default App;
+export default App
