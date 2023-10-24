@@ -1,7 +1,6 @@
+@use '../utilities/index.module' as *;
+
 // CSS custom properties are defined globally, so that they are assigned once per page with responsive values
-@use 'sass:map';
-@use '../foundation/Breakpoints/Breakpoints.module' as *;
-@use '../utilities/px-to-rem.module' as *;
 
 // The breakpoint keys here match those expected by the media mixin from the breakpoints module
 // These items must remain in ascending order of breakpoint size, to support the cascade of responsive spacing sizes being updated with screen size

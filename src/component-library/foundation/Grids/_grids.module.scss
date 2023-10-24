@@ -1,5 +1,4 @@
-@use '../Breakpoints/Breakpoints.module' as *;
-@use '../../utilities/px-to-rem.module' as *;
+@use '../../utilities/index.module' as *;
 
 // To be applied to either site components, or the main site wrapper
 $grid-margin-s: px-to-rem(16);
