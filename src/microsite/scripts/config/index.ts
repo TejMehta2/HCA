@@ -7,6 +7,7 @@ const plugins = require('scripts/temp/config-plugins');
 export interface JssConfig extends Record<string, string | undefined> {
   sitecoreApiKey?: string;
   sitecoreApiHost?: string;
+  excludeFromMultisite?: string;
   jssAppName?: string;
   graphQLEndpointPath?: string;
   defaultLanguage?: string;

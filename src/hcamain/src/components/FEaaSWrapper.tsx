@@ -6,20 +6,20 @@ import {
   FEaaSComponentParams,
   fetchFEaaSComponentServerProps,
   constants,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import React from 'react';
+} from '@sitecore-jss/sitecore-jss-nextjs'
+import React from 'react'
 
 export const Default = (props: FEaaSComponentProps): JSX.Element => {
-  const styles = `component feaas ${props.params?.styles}`.trimEnd();
-  const id = props.params?.RenderingIdentifier;
+  const styles = `component feaas ${props.params?.styles}`.trimEnd()
+  const id = props.params?.RenderingIdentifier
   return (
     <div className={styles} id={id ? id : undefined}>
       <div className="component-content">
         <FEaaSComponent {...props} />
       </div>
     </div>
-  );
-};
+  )
+}
 
 /**
  * Will be called during SSG
@@ -27,17 +27,20 @@ export const Default = (props: FEaaSComponentProps): JSX.Element => {
  * @param {LayoutServiceData} layoutData
  * @param {GetStaticPropsContext} context
  */
-export const getStaticProps: GetStaticComponentProps = async (rendering, layoutData) => {
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering,
+  layoutData
+) => {
   if (process.env.JSS_MODE === constants.JSS_MODE.DISCONNECTED) {
-    return null;
+    return null
   }
-  const params: FEaaSComponentParams = rendering.params || {};
+  const params: FEaaSComponentParams = rendering.params || {}
   const result = await fetchFEaaSComponentServerProps(
     params,
     layoutData.sitecore.context.pageState
-  );
-  return result;
-};
+  )
+  return result
+}
 
 /**
  * Will be called during SSR
@@ -45,14 +48,17 @@ export const getStaticProps: GetStaticComponentProps = async (rendering, layoutD
  * @param {LayoutServiceData} layoutData
  * @param {GetStaticPropsContext} context
  */
-export const getServerSideProps: GetServerSideComponentProps = async (rendering, layoutData) => {
+export const getServerSideProps: GetServerSideComponentProps = async (
+  rendering,
+  layoutData
+) => {
   if (process.env.JSS_MODE === constants.JSS_MODE.DISCONNECTED) {
-    return null;
+    return null
   }
-  const params: FEaaSComponentParams = rendering.params || {};
+  const params: FEaaSComponentParams = rendering.params || {}
   const result = await fetchFEaaSComponentServerProps(
     params,
     layoutData.sitecore.context.pageState
-  );
-  return result;
-};
+  )
+  return result
+}

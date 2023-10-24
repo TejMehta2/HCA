@@ -1,3 +1,3 @@
-$small-radius: 0.5rem; // 8px
-$medium-radius: 0.75rem; // 12px
-$large-radius: 3rem; // 48px
+$small-radius: px-to-rem(8);
+$medium-radius: px-to-rem(12);
+$large-radius: px-to-rem(48);
