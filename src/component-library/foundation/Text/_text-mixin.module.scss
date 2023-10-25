@@ -1,7 +1,8 @@
 @use '../../utilities/index.module' as *;
+@use './assets/GeneralSans/font-face' as *;
 
-$font-family-serif: 'Times New Roman';
-$font-family-sans-serif: 'Arial';
+$font-family-serif: recklessneue, 'Times New Roman', times, serif;
+$font-family-sans-serif: 'General Sans', arial, helvetica, sans-serif;
 
 /* || TEXT */
 
@@ -168,7 +169,7 @@ $font-family-sans-serif: 'Arial';
   font-family: $font-family-sans-serif;
   font-size: px-to-rem(18);
   line-height: 160%;
-  font-weight: 400;
+  font-weight: 500;
 
   @include media(screen-xl) {
     font-size: px-to-rem(20);
@@ -199,7 +200,7 @@ $font-family-sans-serif: 'Arial';
   font-family: $font-family-sans-serif;
   font-size: px-to-rem(16);
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 500;
 
   @include media(screen-xl) {
     font-size: px-to-rem(18);
@@ -219,13 +220,13 @@ $font-family-sans-serif: 'Arial';
   font-family: $font-family-sans-serif;
   font-size: px-to-rem(16);
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 500;
 }
 @mixin apply-body-medium-medium {
   font-family: $font-family-sans-serif;
   font-size: px-to-rem(16);
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 500;
 }
 @mixin apply-body-semi-bold-medium {
   font-family: $font-family-sans-serif;
@@ -244,7 +245,7 @@ $font-family-sans-serif: 'Arial';
   font-family: $font-family-sans-serif;
   font-size: px-to-rem(14);
   line-height: 150%;
-  font-weight: 400;
+  font-weight: 500;
 }
 @mixin apply-body-semi-bold-small {
   font-family: $font-family-sans-serif;
