@@ -3,7 +3,9 @@ name: Linting
 on:
   pull_request:
     branches:
-      - main
+      - dev
+      - uat
+      - prod
 
 jobs:
   lint:

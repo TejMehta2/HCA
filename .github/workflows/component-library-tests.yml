@@ -3,7 +3,9 @@ name: Component Library Unit Tests
 on:
   pull_request:
     branches:
-      - main
+      - dev
+      - uat
+      - prod
 
 jobs:
   lint:
