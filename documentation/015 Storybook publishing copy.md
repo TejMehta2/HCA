@@ -8,7 +8,7 @@ Agreed
 
 ## Context
 
-In order to get the most out of storybook, we need to publish it somewhere for all stakeholders to review and provide feedback.
+In order to get the most out of using storybook to showcase the design library, we need to publish it somewhere for all stakeholders to review and provide feedback.
 
 ## Decision
 
@@ -18,5 +18,4 @@ This is the simplest and quickest way to publish storybook for now and is good e
 
 ## Consequences
 
-There is a chromatic account that has access to the Github repo, a Github Action workflow that publishes storybook to Chromatic upon a git tag prefixed with `storybook-v`, and
-we need to ensure all stakeholders have accounts set up to access the published Storybook instance.
+There is a chromatic account that has access to the Github repo, a Github Action workflow that publishes storybook to Chromatic upon a git tag prefixed with `storybook-v`, and we need to ensure all design library stakeholders have accounts set up to access the published Storybook instance.
