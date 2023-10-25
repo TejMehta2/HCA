@@ -1,4 +1,4 @@
-# 1. NextJS Pages router
+# Workspaces
 
 Date: 2023/10/04
 
@@ -11,7 +11,6 @@ Accepted
 We need to share React components from our component library to multiple NextJS solutions.
 
 Multiple Sitecore websites can exist using the same repo, which can contain multiple NextJS solutions.
-
 
 ## Decision
 

@@ -1,4 +1,4 @@
-# 1. Jest
+# Jest
 
 Date: 2023/10/04
 
@@ -16,6 +16,6 @@ We will use (Testing library)[https://testing-library.com/] with (Jest)[https://
 
 ## Consequences
 
-We will be able to create `*.spec.tsx` files to accompany each React component in the component library. 
+We will be able to create `*.spec.tsx` files to accompany each React component in the component library.
 
 These test files will be picked up by the test runner which will report any failures in the tests.

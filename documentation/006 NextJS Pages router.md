@@ -1,4 +1,4 @@
-# 1. NextJS Pages router
+# NextJS Pages router
 
 Date: 2023/10/04
 

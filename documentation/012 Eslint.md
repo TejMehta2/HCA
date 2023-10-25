@@ -1,4 +1,4 @@
-# 1. ESLint
+# ESLint
 
 Date: 2023/10/12
 
@@ -8,7 +8,7 @@ Approved
 
 ## Context
 
-By using ESLint, you can ensure that your code follows the same format, structure, and logic across your files, modules, and components. 
+By using ESLint, you can ensure that your code follows the same format, structure, and logic across your files, modules, and components.
 
 This can make your code easier to share, reuse, and extend. It can also prevent some of the conflicts and issues that can arise from different coding styles and approaches.
 
