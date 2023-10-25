@@ -1,4 +1,4 @@
-# 1. Storybook hosting - Chromatic
+# Storybook publishing
 
 Date: 2023/10/13
 

@@ -1,4 +1,4 @@
-# 1. Prettier code formatter
+# Prettier code formatter
 
 Date: 2023/10/12
 
@@ -10,7 +10,7 @@ Approved
 
 Automatic code formatting is great for developer experience and improves developer efficiency.
 
-We need to keep a consistent code format to allow developers to use automatic code formatter tools, while avoiding  unneeded file changes from clouding the purpose of commits when a file is formatted differently.
+We need to keep a consistent code format to allow developers to use automatic code formatter tools, while avoiding unneeded file changes from clouding the purpose of commits when a file is formatted differently.
 
 ## Decision
 

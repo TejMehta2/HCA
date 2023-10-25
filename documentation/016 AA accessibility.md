@@ -1,4 +1,4 @@
-# 1. Storybook hosting - Chromatic
+# WCAG 2.2 AA Accessibility
 
 Date: 2023/10/25
 

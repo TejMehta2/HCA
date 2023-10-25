@@ -1,4 +1,4 @@
-# 1. Stylelint
+# Stylelint
 
 Date: 2023/10/13
 

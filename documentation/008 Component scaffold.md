@@ -1,4 +1,4 @@
-# 1. Component scaffold
+# Component scaffold
 
 Date: 2023/10/05
 

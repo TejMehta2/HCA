@@ -68,3 +68,13 @@ Fix any formatting errors using Prettier and the stylelint --fix flag:
 `npm run format`
 
 Note: Some linting errors in SCSS must be manually resolved
+
+# Design library
+
+There is a HCA design library that can be found in `src/component-library`.
+
+The justification and context around using Storybook for demonstrating the design library and Chromatic for hosting it can be found in [ADR 09 - Storybook framework](https://github.com/HCA-Eqtr/HCA-XMCloud/blob/main/documentation/009%20Storybook%20Framework.md) and [ADR 15 - Storybook publishing](https://github.com/HCA-Eqtr/HCA-XMCloud/blob/main/documentation/015%20Storybook%20publishing.md)
+
+### Demo
+
+The latest production version of the design library can be [here](https://prod--65329240ee109f18f59053f2.chromatic.com/).

@@ -1,4 +1,4 @@
-# 1. Storybook Accessibility
+# Storybook Accessibility
 
 Date: 2023/10/12
 

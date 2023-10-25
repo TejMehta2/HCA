@@ -1,4 +1,4 @@
-# 1. ADRs
+# SCSS Imports
 
 Date: 2023/10/10
 
@@ -16,7 +16,7 @@ We need a consistent file convention for scss files.
 
 @forward will be used within index SCSS files so that they can be grouped together and distrubuted to other files
 
-@use will be used within component SCSS files and will be bringing in the index file from the FOUNDATION directory. These will be assigned 'as *' in order to avoid using namespaces.
+@use will be used within component SCSS files and will be bringing in the index file from the FOUNDATION directory. These will be assigned 'as \*' in order to avoid using namespaces.
 
 scss files in the FOUNDATION directory will be prefixed with an underscore, to signify that they are imported via the Index.module.scss file, and not directly into site components.
 

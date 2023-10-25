@@ -1,4 +1,4 @@
-# 1. JSS component dependency
+# JSS component dependency
 
 Date: 2023/10/04
 
@@ -8,7 +8,7 @@ Proposed
 
 ## Context
 
-We need make the components in our component library suitably portable and re-usable. 
+We need make the components in our component library suitably portable and re-usable.
 
 The JSS components included with Sitecore JSS library are not designed to work in isolation i.e. they cannot be used in components which exist outside of the root directory of each NextJS solution.
 
