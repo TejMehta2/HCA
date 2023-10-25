@@ -1,0 +1,105 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+a {
+  // Imported styles
+  @include apply-body-medium-medium;
+
+  // Shared styles
+  display: block;
+  border-radius: $small-radius;
+  padding: px-to-rem(4) px-to-rem(16);
+  text-decoration: none;
+  outline: solid #{px-to-rem(4)} transparent;
+  cursor: pointer;
+
+  // Themed tag styles
+  .green & {
+    color: $dark-blue;
+    background-color: $green-20;
+  }
+
+  .dark-blue & {
+    background-color: $dark-blue-80;
+    color: $white;
+  }
+
+  .orange & {
+    color: $dark-blue;
+    background-color: $light-orange-40;
+  }
+
+  .white & {
+    color: $dark-blue;
+    background-color: $white;
+  }
+
+  .main-turquoise & {
+    color: $dark-blue;
+    background-color: $main-turquoise-20;
+  }
+
+  // Pseudo-class styles
+  // Hover
+  .green &:hover {
+    background-color: $green-40;
+  }
+
+  .dark-blue &:hover {
+    background-color: $green-40;
+  }
+
+  .orange &:hover {
+    background-color: $light-orange-60;
+  }
+
+  .white &:hover {
+    background-color: $beige;
+  }
+
+  .main-turquoise &:hover {
+    background-color: $main-turquoise-40;
+  }
+
+  // Active
+  .green &:active {
+    background-color: $green-20;
+  }
+
+  .dark-blue &:active {
+    background-color: $dark-blue-80;
+  }
+
+  .orange &:active {
+    background-color: $light-orange-40;
+  }
+
+  .white &:active {
+    background-color: $white;
+  }
+
+  .main-turquoise &:active {
+    background-color: $main-turquoise-20;
+  }
+
+  // Focus
+  .green &:focus {
+    outline-color: $dark-blue;
+  }
+
+  .dark-blue &:focus {
+    outline-color: $green-40;
+  }
+
+  .orange &:focus {
+    outline-color: $dark-blue;
+  }
+
+  .white &:focus {
+    outline-color: $dark-blue;
+  }
+
+  .main-turquoise &:focus {
+    outline-color: $dark-blue;
+  }
+}
