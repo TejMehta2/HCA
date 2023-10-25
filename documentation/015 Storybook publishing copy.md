@@ -19,3 +19,5 @@ This is the simplest and quickest way to publish storybook for now and is good e
 ## Consequences
 
 There is a chromatic account that has access to the Github repo, a Github Action workflow that publishes storybook to Chromatic upon a git tag prefixed with `storybook-v`, and we need to ensure all design library stakeholders have accounts set up to access the published Storybook instance.
+
+More details and process documented here: https://equator.atlassian.net/wiki/spaces/HCA/pages/2875686913/Storybook+publishing
