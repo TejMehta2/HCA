@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { MultisiteMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middleware';
-import { siteResolver } from 'lib/site-resolver';
-import { MiddlewarePlugin } from '..';
+import { NextRequest, NextResponse } from 'next/server'
+import { MultisiteMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middleware'
+import { siteResolver } from 'lib/site-resolver'
+import { MiddlewarePlugin } from '..'
 
 /**
  * This is the multisite middleware plugin for Next.js.
@@ -13,10 +13,10 @@ import { MiddlewarePlugin } from '..';
  *  3. Set `sc_site` cookie with site name and `x-sc-rewrite` header with rewritten path to be reused in following middlewares.
  */
 class MultisitePlugin implements MiddlewarePlugin {
-  private multisiteMiddleware: MultisiteMiddleware;
+  private multisiteMiddleware: MultisiteMiddleware
 
   // Multisite middleware has to be executed first
-  order = -1;
+  order = -1
 
   constructor() {
     this.multisiteMiddleware = new MultisiteMiddleware({
@@ -28,12 +28,12 @@ class MultisitePlugin implements MiddlewarePlugin {
       siteResolver,
       // This function allows resolving site from sc_site cookie, which could be useful in case of Vercel preview URLs. Accepts NextRequest.
       useCookieResolution: () => process.env.VERCEL_ENV === 'preview',
-    });
+    })
   }
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
-    return this.multisiteMiddleware.getHandler()(req, res);
+    return this.multisiteMiddleware.getHandler()(req, res)
   }
 }
 
-export const multisitePlugin = new MultisitePlugin();
+export const multisitePlugin = new MultisitePlugin()

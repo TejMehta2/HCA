@@ -3,8 +3,8 @@ import {
   RestLayoutService,
   GraphQLLayoutService,
   constants,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import config from 'temp/config';
+} from '@sitecore-jss/sitecore-jss-nextjs'
+import config from 'temp/config'
 
 /**
  * Factory responsible for creating a LayoutService instance
@@ -26,9 +26,9 @@ export class LayoutServiceFactory {
           apiKey: config.sitecoreApiKey,
           siteName,
           configurationName: 'default',
-        });
+        })
   }
 }
 
 /** LayoutServiceFactory singleton */
-export const layoutServiceFactory = new LayoutServiceFactory();
+export const layoutServiceFactory = new LayoutServiceFactory()

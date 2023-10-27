@@ -27,7 +27,7 @@ const nextConfig = {
     // prefixed path e.g. `/styleguide`.
     defaultLocale: jssConfig.defaultLanguage,
   },
-  
+
   // Enable React Strict Mode
   reactStrictMode: true,
 
@@ -53,10 +53,11 @@ const nextConfig = {
       {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
-      }, 
-    ];
+      },
+    ]
   },
-};
+  transpilePackages: ['@hca/component-library/*'],
+}
 
 module.exports = () => {
   // Run the base config through any configured plugins
