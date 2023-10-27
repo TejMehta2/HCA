@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
+import { RuleSetRule} from 'webpack'
 
 import { join, dirname } from "path";
 
@@ -34,6 +35,39 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  async webpackFinal(config, { configType }) {
+    if (!config?.module?.rules) return config
+    const rules = config.module.rules as RuleSetRule[]
+
+    // Grab the existing rule that handles SVG imports
+    const fileLoaderRule = rules.find((rule) => {
+      const test = rule?.test as RegExp
+      return test?.test?.('.svg')
+    })
+
+    config.module.rules.push(
+      // Reapply the existing rule, but only for svg imports ending in ?url
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/, // *.svg?url
+      },
+      // Convert all other *.svg imports to React components
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: /url/ }, // exclude if *.svg?url
+        use: ['@svgr/webpack'],
+      }
+    )
+
+    // Modify the file loader rule to ignore *.svg, since we have it handled now.
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i
+    }
+
+    return config
   },
 };
 export default config;

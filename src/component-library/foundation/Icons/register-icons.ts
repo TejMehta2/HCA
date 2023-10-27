@@ -1,10 +1,15 @@
 import fs from 'fs'
 import path from 'path'
 
-const assetsFolderName = 'assets'
-const assetsDirectory = path.join(__dirname, assetsFolderName)
+// Creates types and import map for SVG files
+// Allows the props on the Icons component to be typed
+// Also replaces hard coded SVG stroke/fill with currentColor
 
+const assetsFolderName = 'assets-src'
+const assetsDistFolderName = 'assets-dist'
+const assetsDirectory = path.join(__dirname, assetsFolderName)
 const splitter = /\W/
+const defaultStrokeFill = '#112F34'
 
 // Helpers
 const toPascalCase = (text: string) =>
@@ -18,7 +23,9 @@ const toVariableName = (svgFileName: string) =>
 
 // TS string creators
 const createImportFromFileName = (fileName: string) =>
-  `import ${toVariableName(fileName)} from './${assetsFolderName}/${fileName}'`
+  `import ${toVariableName(
+    fileName
+  )} from './${assetsDistFolderName}/${fileName}'`
 
 const createImportsFromFileNames = (fileNames: string[]) =>
   fileNames.map(createImportFromFileName).join('\n')
@@ -42,7 +49,7 @@ const generateFileContent = (err, fileNames: string[]) => {
 export type IconName =
   | ${createTypesFromFileName(fileNames)}
 
-const iconMap = new Map<IconName, unknown>([
+const iconMap = new Map<IconName, () => JSX.Element>([
   ${createMapEntriesFromFileNames(fileNames)}
 ])
 
@@ -51,6 +58,21 @@ export default iconMap
   const destination = path.join(__dirname, 'icon-map.generated.ts')
 
   fs.writeFileSync(destination, fileContent)
+
+  // Replace hard coded SVG stroke/fill with currentColor
+  fileNames.forEach((fileName: string) => {
+    const templateFileLocation = path.join(assetsDirectory, fileName)
+    fs.readFile(templateFileLocation, 'utf8', (err, fileContent) => {
+      const hydratedTemplate = fileContent.replaceAll(
+        defaultStrokeFill,
+        'currentColor'
+      )
+      fs.writeFileSync(
+        path.join(__dirname, 'assets-dist', fileName),
+        hydratedTemplate
+      )
+    })
+  })
 }
 
 fs.readdir(assetsDirectory, generateFileContent)
