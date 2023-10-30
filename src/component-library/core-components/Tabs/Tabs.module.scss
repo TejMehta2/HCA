@@ -1,0 +1,93 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+fieldset {
+  // Reset default styles
+  border: none;
+  padding: 0;
+  display: flex;
+  gap: px-to-rem(8);
+
+  // Relative to set stacking context for animated background
+  position: relative;
+
+  // Style the animated background element
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    border-radius: $large-radius;
+
+    // CSS custom properties are updated in the React component logic, based on the currently selected tab
+    width: var(--current-tab-offset-width, 0);
+    transform: translateX(var(--current-tab-offset-left, 0));
+  }
+
+  // Animate unless user is interacting and not on component load
+  &:focus-within::before {
+    transition: all 0.4s ease;
+  }
+
+  // Apply theme to animated background element
+  &.main-turquoise::before {
+    background-color: $main-turquoise;
+  }
+
+  &.main-turquoise-20::before {
+    background-color: $main-turquoise-20;
+  }
+
+  &.light-orange::before {
+    background-color: $light-orange;
+  }
+
+  &.white::before {
+    background-color: $white;
+  }
+}
+
+input {
+  @include sr-only;
+}
+
+label {
+  // Imported styles
+  @include apply-body-semi-bold-extra-large;
+
+  // Shared styles
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  border-radius: $large-radius;
+  padding: $spacing-4 $spacing-5;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: solid #{px-to-rem(2)} transparent;
+
+  // Hover
+  &:hover {
+    text-decoration: underline;
+  }
+
+  // Focus
+  :focus + & {
+    outline-color: $dark-blue;
+  }
+}
+
+.wrapper {
+  overflow-x: auto;
+
+  // Padding to allow focus ring on children to show despite overflow rules
+  padding: px-to-rem(2);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
