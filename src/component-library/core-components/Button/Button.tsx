@@ -3,11 +3,16 @@ import { ButtonProps } from './Button.types'
 import styles from './Button.module.scss'
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { size, theme, children, onClick } = props
+  const { size, theme, children, loading, onClick } = props
 
   return (
     <div
-      className={[styles.button, styles[size], styles[theme]].join(' ')}
+      className={[
+        styles.button,
+        styles[size],
+        styles[theme],
+        styles[loading ? 'loading' : ''],
+      ].join(' ')}
       onClick={onClick}
     >
       {children}

@@ -2,12 +2,16 @@
 @use '../../utilities/index.module' as *;
 
 .loader {
-  width: px-to-rem(32.8);
-  height: px-to-rem(32.8);
+  width: px-to-rem(24);
+  height: px-to-rem(24);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1.3s linear infinite;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
 
   &-light {
     border: 5px solid $dark-blue-9;

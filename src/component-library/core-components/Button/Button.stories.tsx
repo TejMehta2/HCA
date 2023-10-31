@@ -22,9 +22,8 @@ export const LargeFullDark: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          {/* <Icons iconName="iconPhone" />
-          Large <strong>Button</strong> */}
-          <Loader theme="dark" />
+          <Icons iconName="iconPhone" />
+          Large <strong>Button</strong>
         </button>
       </>
     ),
@@ -211,5 +210,22 @@ export const SocialDark: StoryObj<typeof Button> = {
       default: 'dark-blue',
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
+  },
+}
+const loading = true
+export const LoadingLargeFullDark: StoryObj<typeof Button> = {
+  args: {
+    loading: loading,
+    size: 'large',
+    children: (
+      <>
+        <button type="button">
+          {loading ? <Loader theme="dark"></Loader> : ''}
+
+          <span className={loading ? 'visibility-hidden' : ''}>test text</span>
+        </button>
+      </>
+    ),
+    theme: 'full-dark',
   },
 }

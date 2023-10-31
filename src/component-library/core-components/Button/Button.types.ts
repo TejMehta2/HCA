@@ -15,4 +15,5 @@ export interface ButtonProps {
   theme?: ButtonThemeUnionTypes
   children?: ReactNode | JSX.Element
   onClick?: React.MouseEventHandler<HTMLDivElement>
+  loading?: boolean
 }

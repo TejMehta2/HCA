@@ -65,6 +65,15 @@
       pointer-events: none;
     }
   }
+
+  &.loading {
+    pointer-events: none;
+
+    button,
+    a {
+      width: initial;
+    }
+  }
 }
 
 /* stylelint-disable no-descending-specificity */
