@@ -4,12 +4,12 @@ import Loader from './Loader'
 import { LoaderProps } from './Loader.types'
 
 const mockProps: LoaderProps = {
-  children: <p>Hello world</p>,
+  theme: 'light',
 }
 
 describe('Loader', () => {
-  it('Renders children from props', async () => {
-    const { getByText } = render(<Loader {...mockProps} />)
-    expect(getByText('Hello world')).toBeVisible()
+  it('Renders', async () => {
+    const { container } = render(<Loader {...mockProps} />)
+    expect(container.getElementsByClassName('loader').length).toBe(1)
   })
 })

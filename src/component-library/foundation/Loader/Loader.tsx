@@ -7,6 +7,7 @@ const Loader = (props: LoaderProps): JSX.Element => {
   return (
     <span
       className={[
+        'loader',
         styles.loader,
         styles[`loader-${theme ? theme : 'light'}`],
       ].join(' ')}
