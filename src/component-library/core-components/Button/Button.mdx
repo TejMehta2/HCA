@@ -35,7 +35,7 @@ or
 </Button>
 ```
 
-For loading buttons include the `Loader` component as one of the `Button` components children and set the loading prop on the `Button` component
+For loading buttons include the `Loader` component as one of the `Button` components children and set the loading prop on the `Button` component. The contents of the button should be wrapped in a span which conditionally adds the `visibility-hidden` class if the button is loading.
 
 ```
   <Button theme="full-dark" size="large" loading={loading}>
