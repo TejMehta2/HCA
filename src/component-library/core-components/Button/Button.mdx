@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+The Button component is intended apply styles by wrapping a plain button tag or a plain HTML link (in the `children` prop) which can be returned by wrapping a JSSLink component or NextJS Link component.
+
+The theme is built up of the button color - dark or light, variation - outline or full. There are variations of dark and light for the social buttons which have their own theme. This is controlled by the `theme` prop.
+
+The size prop controls the button padding to show the appropriate button size - small or large
+
+To use an icon include it before or after your link or button tag
+
+e.g.
+
+```
+<Button>
+  <button>
+    button text
+    <Icons />
+  </button>
+</Button>
+```
+
+or
+
+```
+<Button>
+  <button>
+    <Icons />
+    button text
+  </button>
+</Button>
+```
+
+<Canvas of={ButtonStories.LargeFullDark} />
+<Controls of={ButtonStories.LargeFullDark} />

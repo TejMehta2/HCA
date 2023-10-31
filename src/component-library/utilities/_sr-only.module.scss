@@ -20,3 +20,7 @@
   clip: auto;
   white-space: normal;
 }
+
+.sr-only {
+  @include sr-only;
+}

@@ -16,13 +16,7 @@
       ["px", "em", "rem"],
       {
         "ignoreProperties": {
-          "px": [
-            "border",
-            "border-width",
-            "letter-spacing",
-            "outline",
-            "box-shadow"
-          ],
+          "px": ["/^border/", "letter-spacing", "/^outline/", "box-shadow"],
           "em": "letter-spacing"
         }
       }

@@ -1,0 +1,311 @@
+@use '../../../component-library/foundation/index.module' as *;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+@mixin apply-hover-transition($hoverColor) {
+  position: relative;
+  background-clip: padding-box;
+  z-index: 1;
+  overflow: clip;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: px-to-rem(-1);
+    right: calc(100% + px-to-rem(2));
+    width: calc(100% + px-to-rem(2));
+    height: calc(100% + px-to-rem(2));
+    background-color: $hoverColor;
+    border-radius: $large-radius;
+    z-index: -1;
+    box-sizing: border-box;
+  }
+
+  &:hover {
+    &::before {
+      right: 0;
+      transition: all 0.3s;
+    }
+  }
+}
+
+@mixin apply-focus-outline($outlineColor) {
+  outline: 2px solid $outlineColor;
+  outline-offset: px-to-rem(-4);
+}
+
+.button {
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    background: unset;
+    border: 0;
+    cursor: inherit;
+  }
+
+  a,
+  button {
+    border-radius: $large-radius;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: px-to-rem(8);
+    padding: 0;
+    color: inherit;
+
+    @include apply-body-large;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+.large {
+  a,
+  button {
+    padding: px-to-rem(16) $spacing-8;
+  }
+}
+
+.small {
+  a,
+  button {
+    padding: px-to-rem(16) $spacing-7;
+  }
+}
+
+.full {
+  a,
+  button {
+    border: 0;
+  }
+
+  &-dark {
+    a,
+    button {
+      background-color: $dark-blue;
+      color: $white;
+      border: 1px solid $dark-blue;
+
+      @include apply-hover-transition($white);
+
+      &:hover {
+        color: $dark-blue;
+        border-color: $dark-blue;
+      }
+
+      &:active {
+        background-color: $white;
+        color: $dark-blue;
+        border-color: $dark-blue;
+      }
+
+      &:disabled {
+        background-color: $dark-blue-40;
+        color: $dark-blue-10;
+        border-color: $dark-blue-40;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline($main-turquoise);
+      }
+    }
+  }
+
+  &-light {
+    a,
+    button {
+      background-color: $main-turquoise;
+      color: $dark-blue;
+      border: 1px solid $main-turquoise;
+
+      @include apply-hover-transition($dark-blue);
+
+      &:hover {
+        color: $white;
+        border-color: $white;
+      }
+
+      &:active {
+        background-color: $dark-blue;
+        color: $dark-blue-10;
+        border-color: $dark-blue-10;
+      }
+
+      &:disabled {
+        background-color: $dark-blue-60;
+        color: $dark-blue-20;
+        border-color: $dark-blue-60;
+      }
+
+      &:focus-visible {
+        border-color: $main-turquoise;
+
+        @include apply-focus-outline($dark-blue);
+      }
+    }
+  }
+
+  &-light-blue {
+    a,
+    button {
+      background-color: $main-turquoise-5;
+      color: $dark-blue;
+      border: $main-turquoise-5;
+
+      @include apply-hover-transition($main-turquoise-10);
+
+      &:active {
+        background-color: $main-turquoise-5;
+      }
+
+      &:disabled {
+        color: $dark-blue-40;
+      }
+
+      &:focus-visible {
+        border-color: $dark-blue;
+      }
+    }
+  }
+}
+
+.outline {
+  &-dark {
+    a,
+    button {
+      background-color: $white;
+      color: $dark-blue;
+      border: 1px solid $dark-blue;
+
+      @include apply-hover-transition($dark-blue);
+
+      &:hover {
+        color: $white;
+        border-color: $dark-blue;
+      }
+
+      &:active {
+        background-color: $dark-blue-60;
+        color: $white;
+        border-color: $dark-blue-60;
+      }
+
+      &:disabled {
+        background-color: $white;
+        color: $dark-blue-40;
+        border-color: $dark-blue-40;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline($dark-blue);
+      }
+    }
+  }
+
+  &-light {
+    a,
+    button {
+      background-color: $dark-blue;
+      color: $white;
+      border: 1px solid $white;
+
+      @include apply-hover-transition($main-turquoise);
+
+      &:hover {
+        color: $dark-blue;
+        border-color: $main-turquoise;
+      }
+
+      &:active {
+        background-color: $main-turquoise-60;
+        color: $dark-blue;
+        border-color: $main-turquoise-60;
+      }
+
+      &:disabled {
+        background-color: $dark-blue;
+        color: $dark-blue-20;
+        border-color: $dark-blue-20;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline($white);
+      }
+    }
+  }
+}
+
+.social-light {
+  a,
+  button {
+    background-color: $white;
+    color: $dark-blue;
+    border: 1px solid $dark-blue-9;
+    display: flex;
+
+    &:hover {
+      border-color: $dark-blue;
+    }
+
+    &:active {
+      border-color: $dark-blue-40;
+    }
+
+    &:focus-visible {
+      border-color: $dark-blue-9;
+      outline: 2px solid $dark-blue;
+      outline-offset: px-to-rem(-5);
+    }
+  }
+}
+
+.social-dark {
+  a,
+  button {
+    background-color: $dark-blue;
+    color: $white;
+    border: 1px solid $dark-blue-60;
+    display: flex;
+
+    &:hover {
+      border-color: $white;
+    }
+
+    &:active {
+      border-color: $dark-blue-40;
+    }
+
+    &:focus-visible {
+      border-color: $dark-blue-9;
+      outline: 2px solid $white;
+      outline-offset: -5px;
+    }
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+.social-dark,
+.social-light {
+  transition: all 0.2s ease;
+
+  &.small {
+    a,
+    button {
+      padding: px-to-rem(12) px-to-rem(24);
+    }
+  }
+
+  .sr-only {
+    @include sr-only;
+  }
+}
