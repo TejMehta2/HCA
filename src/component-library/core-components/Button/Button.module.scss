@@ -74,6 +74,7 @@
     button,
     a {
       width: initial;
+
       & > * {
         visibility: hidden;
       }
