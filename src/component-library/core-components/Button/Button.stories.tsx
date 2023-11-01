@@ -211,3 +211,16 @@ export const SocialDark: StoryObj<typeof Button> = {
     },
   },
 }
+const loading = true
+export const LoadingLargeFullDark: StoryObj<typeof Button> = {
+  args: {
+    loading: loading,
+    size: 'large',
+    children: (
+      <button type="button">
+        <span>test text</span>
+      </button>
+    ),
+    theme: 'full-dark',
+  },
+}

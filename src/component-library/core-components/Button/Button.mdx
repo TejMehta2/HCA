@@ -35,5 +35,17 @@ or
 </Button>
 ```
 
+For loading buttons set the loading prop on the `Button` component.
+
+```
+  <Button theme="full-dark" size="large" loading={loading}>
+    <JssLink field={props.fields.Link}>
+      <span>
+        'test text'
+      </span>
+    </JssLink>
+  </Button>
+```
+
 <Canvas of={ButtonStories.LargeFullDark} />
 <Controls of={ButtonStories.LargeFullDark} />
