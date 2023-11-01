@@ -10,18 +10,7 @@
         "startCommand": "hcamain:start:production",
         "buildCommand": "hcamain:build",
         "runCommand": "hcamain:next:start"
-      },
-      "micrositepreview": {
-        "path": ".",
-        "nodeVersion": "16.15.1",
-        "jssDeploymentSecret":"110F1C44A496B45478640DD36F80C18C9",
-        "enabled": true,
-        "type": "sxa",
-        "lintCommand": "lint",
-        "startCommand": "microsite:start:production",
-        "buildCommand": "microsite:build",
-        "runCommand": "microsite:next:start"
-    }
+      }
     },
     "postActions": {
         "actions":{
