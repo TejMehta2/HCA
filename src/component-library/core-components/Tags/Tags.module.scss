@@ -10,7 +10,8 @@ a {
   border-radius: $small-radius;
   padding: px-to-rem(4) px-to-rem(16);
   text-decoration: none;
-  outline: solid #{px-to-rem(4)} transparent;
+  outline: solid #{px-to-rem(2)} transparent;
+  outline-offset: px-to-rem(-3);
   cursor: pointer;
 
   // Themed tag styles
@@ -46,7 +47,7 @@ a {
   }
 
   .dark-blue &:hover {
-    background-color: $green-40;
+    background-color: $dark-blue;
   }
 
   .orange &:hover {
@@ -84,22 +85,27 @@ a {
 
   // Focus
   .green &:focus {
+    background-color: $green-40;
     outline-color: $dark-blue;
   }
 
   .dark-blue &:focus {
+    background-color: $dark-blue;
     outline-color: $green-40;
   }
 
   .orange &:focus {
+    background-color: $light-orange-60;
     outline-color: $dark-blue;
   }
 
   .white &:focus {
+    background-color: $beige;
     outline-color: $dark-blue;
   }
 
   .main-turquoise &:focus {
+    background-color: $main-turquoise-40;
     outline-color: $dark-blue;
   }
 }
