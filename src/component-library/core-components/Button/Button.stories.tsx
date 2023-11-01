@@ -224,3 +224,16 @@ export const LoadingLargeFullDark: StoryObj<typeof Button> = {
     theme: 'full-dark',
   },
 }
+
+export const CarouselButton: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    theme: 'carousel',
+    children: (
+      <button>
+        <Icons iconName="iconArrowRight" />
+        <span className="sr-only">Next Slide</span>
+      </button>
+    ),
+  },
+}

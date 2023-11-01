@@ -9,6 +9,7 @@ type ButtonThemeUnionTypes =
   | 'full-light-blue'
   | 'social-light'
   | 'social-dark'
+  | 'carousel'
 
 export interface ButtonProps {
   size?: ButtonSizeUnionTypes
