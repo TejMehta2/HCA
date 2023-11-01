@@ -211,3 +211,29 @@ export const SocialDark: StoryObj<typeof Button> = {
     },
   },
 }
+const loading = true
+export const LoadingLargeFullDark: StoryObj<typeof Button> = {
+  args: {
+    loading: loading,
+    size: 'large',
+    children: (
+      <button type="button">
+        <span>test text</span>
+      </button>
+    ),
+    theme: 'full-dark',
+  },
+}
+
+export const CarouselButton: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    theme: 'carousel',
+    children: (
+      <button>
+        <Icons iconName="iconArrowRight" />
+        <span className="sr-only">Next Slide</span>
+      </button>
+    ),
+  },
+}

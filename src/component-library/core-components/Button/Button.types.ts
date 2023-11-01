@@ -9,10 +9,12 @@ type ButtonThemeUnionTypes =
   | 'full-light-blue'
   | 'social-light'
   | 'social-dark'
+  | 'carousel'
 
 export interface ButtonProps {
   size?: ButtonSizeUnionTypes
   theme?: ButtonThemeUnionTypes
   children?: ReactNode | JSX.Element
   onClick?: React.MouseEventHandler<HTMLDivElement>
+  loading?: boolean
 }

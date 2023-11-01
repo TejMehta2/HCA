@@ -1,0 +1,35 @@
+@use '../Colours/colours.module' as *;
+@use '../../utilities/index.module' as *;
+
+.loader {
+  width: px-to-rem(24);
+  height: px-to-rem(24);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1.3s linear infinite;
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.light {
+  border: 4px solid $dark-blue-9;
+  border-bottom-color: $dark-blue;
+}
+
+.dark {
+  border: 4px solid $dark-blue-60;
+  border-bottom-color: $white;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
