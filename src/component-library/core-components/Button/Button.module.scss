@@ -68,10 +68,15 @@
 
   &.loading {
     pointer-events: none;
+    width: max-content;
+    position: relative;
 
     button,
     a {
       width: initial;
+      & > * {
+        visibility: hidden;
+      }
     }
   }
 }

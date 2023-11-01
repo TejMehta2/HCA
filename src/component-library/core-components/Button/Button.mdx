@@ -35,15 +35,12 @@ or
 </Button>
 ```
 
-For loading buttons include the `Loader` component as one of the `Button` components children and set the loading prop on the `Button` component. The contents of the button should be wrapped in a span which conditionally adds the `visibility-hidden` class if the button is loading.
+For loading buttons set the loading prop on the `Button` component.
 
 ```
   <Button theme="full-dark" size="large" loading={loading}>
     <JssLink field={props.fields.Link}>
-      {loading ? <Loader theme="dark"></Loader> : ''}
-      <span
-        className={loading ? 'visibility-hidden' : ''}
-      >
+      <span>
         'test text'
       </span>
     </JssLink>

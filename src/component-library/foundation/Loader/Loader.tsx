@@ -3,15 +3,9 @@ import { LoaderProps } from './Loader.types'
 import styles from './_Loader.module.scss'
 
 const Loader = (props: LoaderProps): JSX.Element => {
-  const { theme } = props
+  const { theme = 'light' } = props
   return (
-    <span
-      className={[
-        'loader',
-        styles.loader,
-        styles[`loader-${theme ? theme : 'light'}`],
-      ].join(' ')}
-    ></span>
+    <span className={['loader', styles.loader, styles[theme]].join(' ')}></span>
   )
 }
 
