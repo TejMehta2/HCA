@@ -1,0 +1,8 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.text-button {
+  button {
+    color: $dark-blue;
+  }
+}
