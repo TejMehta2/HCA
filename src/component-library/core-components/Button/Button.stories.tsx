@@ -218,13 +218,9 @@ export const LoadingLargeFullDark: StoryObj<typeof Button> = {
     loading: loading,
     size: 'large',
     children: (
-      <>
-        <button type="button">
-          {loading ? <Loader theme="dark"></Loader> : ''}
-
-          <span className={loading ? 'visibility-hidden' : ''}>test text</span>
-        </button>
-      </>
+      <button type="button">
+        <span>test text</span>
+      </button>
     ),
     theme: 'full-dark',
   },
