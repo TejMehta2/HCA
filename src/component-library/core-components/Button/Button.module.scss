@@ -80,18 +80,6 @@
       }
     }
   }
-
-  &.carousel {
-    button {
-      background-color: $light-orange;
-      padding: px-to-rem(16);
-      border-radius: 50%;
-
-      &:active {
-        background-color: $light-orange-80;
-      }
-    }
-  }
 }
 
 /* stylelint-disable no-descending-specificity */
@@ -315,6 +303,18 @@
       border-color: $dark-blue-9;
       outline: 2px solid $white;
       outline-offset: -5px;
+    }
+  }
+}
+
+.carousel {
+  button {
+    background-color: $light-orange;
+    padding: px-to-rem(16);
+    border-radius: 50%;
+
+    &:active {
+      background-color: $light-orange-80;
     }
   }
 }
