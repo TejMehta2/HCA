@@ -18,7 +18,9 @@
         "enabled": true,
         "type": "sxa",
         "lintCommand": "lint",
-        "startCommand": "start:production"
+        "startCommand": "microsite:start:production",
+        "buildCommand": "microsite:build",
+        "runCommand": "microsite:next:start"
     }
     },
     "postActions": {
