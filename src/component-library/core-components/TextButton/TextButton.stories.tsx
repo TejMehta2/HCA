@@ -19,12 +19,10 @@ export const Dark: StoryObj<typeof TextButton> = {
   args: {
     theme: 'dark',
     children: (
-      <>
-        <button>
-          Text button
-          <Icons iconName="iconArrowSmallRight" />
-        </button>
-      </>
+      <a href="#">
+        Text button
+        <Icons iconName="iconArrowSmallRight" />
+      </a>
     ),
   },
 }

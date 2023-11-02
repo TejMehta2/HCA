@@ -20,6 +20,24 @@ It can be composed like this:
 </TextButton>
 ```
 
+```tsx
+<TextButton>
+  <JssLink field={props.fields.PromoLink}>
+    Text button text
+    <Icons iconName="iconArrowSmallRight" />
+  </JssLink>
+</TextButton>
+```
+
+```tsx
+<TextButton>
+  <Link href="/test">
+    Text button text
+    <Icons iconName="iconArrowSmallRight" />
+  </Link>
+</TextButton>
+```
+
 ## Example
 
 <Canvas of={TextButtonStories.Dark} />
