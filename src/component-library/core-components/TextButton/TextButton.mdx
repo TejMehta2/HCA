@@ -9,7 +9,7 @@ import * as TextButtonStories from './TextButton.stories'
 
 The TextButton component displays a button with no background, text and an optional icon.
 
-It can be composed like this:
+It can be composed by wrapping a button, JSS Link or Link tag in the TextButton component. The styles will then be applied to the anchor or button tag nested within the TextButton component.
 
 ```tsx
 <TextButton theme="dark">
@@ -21,7 +21,8 @@ It can be composed like this:
 ```
 
 ```tsx
-<TextButton>
+import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs'
+;<TextButton>
   <JssLink field={props.fields.PromoLink}>
     Text button text
     <Icons iconName="iconArrowSmallRight" />
@@ -30,7 +31,9 @@ It can be composed like this:
 ```
 
 ```tsx
-<TextButton>
+import Link from 'next/link'
+
+;<TextButton>
   <Link href="/test">
     Text button text
     <Icons iconName="iconArrowSmallRight" />
