@@ -1,5 +1,6 @@
 import React from 'react'
 import TextButton from './TextButton'
+import Icons from '../../foundation/Icons/Icons'
 import type { Meta, StoryObj } from '@storybook/react'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -14,8 +15,29 @@ const meta: Meta<typeof TextButton> = {
 
 export default meta
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof TextButton> = {
+export const Dark: StoryObj<typeof TextButton> = {
   args: {
-    children: <button>Text link</button>,
+    theme: 'dark',
+    children: (
+      <>
+        <button>
+          Text button
+          <Icons iconName="iconArrowSmallRight" />
+        </button>
+      </>
+    ),
+  },
+}
+
+export const Light: StoryObj<typeof TextButton> = {
+  args: {
+    theme: 'light',
+    children: <button>Text button</button>,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
   },
 }

@@ -7,17 +7,20 @@ import * as TextButtonStories from './TextButton.stories'
 
 ## Description
 
-The TextButton component is...
-
-It is intended to be used in...
+The TextButton component displays a button with no background, text and an optional icon.
 
 It can be composed like this:
 
-``` tsx
-<TextButton></TextButton>
+```tsx
+<TextButton>
+  <button>
+    Text button text
+    <Icons iconName="iconArrowSmallRight" />
+  </button>
+</TextButton>
 ```
 
-## Example 
+## Example
 
-<Canvas of={TextButtonStories.Default} />
-<Controls of={TextButtonStories.Default} />
+<Canvas of={TextButtonStories.Dark} />
+<Controls of={TextButtonStories.Dark} />
