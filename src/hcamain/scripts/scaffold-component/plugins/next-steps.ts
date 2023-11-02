@@ -1,14 +1,14 @@
-import chalk from 'chalk'
-import { ScaffoldComponentPlugin, ScaffoldComponentPluginConfig } from '..'
+import chalk from 'chalk';
+import { ScaffoldComponentPlugin, ScaffoldComponentPluginConfig } from '..';
 
 /**
  * Set next steps.
  */
 class NextStepsPlugin implements ScaffoldComponentPlugin {
-  order = 100
+  order = 100;
 
   exec(config: ScaffoldComponentPluginConfig) {
-    const { componentOutputPath, componentName } = config
+    const { componentOutputPath, componentName } = config;
 
     if (componentOutputPath) {
       config.nextSteps.push(
@@ -16,11 +16,11 @@ class NextStepsPlugin implements ScaffoldComponentPlugin {
 Scaffolding of ${componentName} complete.
 Next steps:`),
         `* Implement the React component in ${chalk.green(componentOutputPath)}`
-      )
+      );
     }
 
-    return config
+    return config;
   }
 }
 
-export const nextStepsPlugin = new NextStepsPlugin()
+export const nextStepsPlugin = new NextStepsPlugin();

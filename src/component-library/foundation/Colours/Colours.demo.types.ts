@@ -1,6 +1,6 @@
 export interface ColourProps {
-  colour: string
+  colour: string;
 }
 export interface ColourGroupProps {
-  group: string[]
+  group: string[];
 }

@@ -1,14 +1,14 @@
-import React from 'react'
-import styles from './_ScrollIntoView.module.scss'
-import Text from '../../foundation/Text/Text'
-import { useInView } from 'react-intersection-observer'
+import React from 'react';
+import styles from './_ScrollIntoView.module.scss';
+import Text from '../../foundation/Text/Text';
+import { useInView } from 'react-intersection-observer';
 
 const ScrollIntoView = (): JSX.Element => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
     triggerOnce: true,
-  })
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +24,7 @@ const ScrollIntoView = (): JSX.Element => {
         <div>IMAGE</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ScrollIntoView
+export default ScrollIntoView;

@@ -1,7 +1,7 @@
-import React from 'react'
-import Button from './Button'
-import Icons from '../../foundation/Icons/Icons'
-import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react';
+import Button from './Button';
+import Icons from '../../foundation/Icons/Icons';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
@@ -11,9 +11,9 @@ const meta: Meta<typeof Button> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const LargeFullDark: StoryObj<typeof Button> = {
   args: {
@@ -28,7 +28,7 @@ export const LargeFullDark: StoryObj<typeof Button> = {
     ),
     theme: 'full-dark',
   },
-}
+};
 
 export const LargeFullLight: StoryObj<typeof Button> = {
   args: {
@@ -48,7 +48,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};
 
 export const LargeOutlineDark: StoryObj<typeof Button> = {
   args: {
@@ -63,7 +63,7 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
     ),
     theme: 'outline-dark',
   },
-}
+};
 
 export const LargeOutlineLight: StoryObj<typeof Button> = {
   args: {
@@ -85,7 +85,7 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};
 
 export const SmallFullDark: StoryObj<typeof Button> = {
   args: {
@@ -100,7 +100,7 @@ export const SmallFullDark: StoryObj<typeof Button> = {
     ),
     theme: 'full-dark',
   },
-}
+};
 
 export const SmallFullLight: StoryObj<typeof Button> = {
   args: {
@@ -122,7 +122,7 @@ export const SmallFullLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};
 
 export const SmallOutlineLight: StoryObj<typeof Button> = {
   args: {
@@ -144,7 +144,7 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};
 
 export const SmallOutlineDark: StoryObj<typeof Button> = {
   args: {
@@ -159,7 +159,7 @@ export const SmallOutlineDark: StoryObj<typeof Button> = {
     ),
     theme: 'outline-dark',
   },
-}
+};
 
 export const SmallFullLightBlue: StoryObj<typeof Button> = {
   args: {
@@ -174,7 +174,7 @@ export const SmallFullLightBlue: StoryObj<typeof Button> = {
     ),
     theme: 'full-light-blue',
   },
-}
+};
 
 export const SocialLight: StoryObj<typeof Button> = {
   args: {
@@ -189,7 +189,7 @@ export const SocialLight: StoryObj<typeof Button> = {
       </>
     ),
   },
-}
+};
 
 export const SocialDark: StoryObj<typeof Button> = {
   args: {
@@ -210,8 +210,8 @@ export const SocialDark: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
-const loading = true
+};
+const loading = true;
 export const LoadingLargeFullDark: StoryObj<typeof Button> = {
   args: {
     loading: loading,
@@ -223,7 +223,7 @@ export const LoadingLargeFullDark: StoryObj<typeof Button> = {
     ),
     theme: 'full-dark',
   },
-}
+};
 
 export const CarouselButton: StoryObj<typeof Button> = {
   args: {
@@ -236,4 +236,4 @@ export const CarouselButton: StoryObj<typeof Button> = {
       </button>
     ),
   },
-}
+};

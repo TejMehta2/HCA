@@ -1,39 +1,39 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
 // Creates types and import map for SVG files
 // Allows the props on the Icons component to be typed
 // Also replaces hard coded SVG stroke/fill with currentColor
 
-const assetsFolderName = 'assets-src'
-const assetsDistFolderName = 'assets-dist'
-const assetsDirectory = path.join(__dirname, assetsFolderName)
-const splitter = /\W/
-const defaultStrokeFill = '#112F34'
+const assetsFolderName = 'assets-src';
+const assetsDistFolderName = 'assets-dist';
+const assetsDirectory = path.join(__dirname, assetsFolderName);
+const splitter = /\W/;
+const defaultStrokeFill = '#112F34';
 
 // Helpers
 const toPascalCase = (text: string) =>
   text
     .split(splitter)
     .map((t) => t[0].toUpperCase() + t.slice(1).toLowerCase())
-    .join('')
+    .join('');
 
 const toVariableName = (svgFileName: string) =>
-  `icon${toPascalCase(svgFileName.replace('.svg', ''))}`
+  `icon${toPascalCase(svgFileName.replace('.svg', ''))}`;
 
 // TS string creators
 const createImportFromFileName = (fileName: string) =>
   `import ${toVariableName(
     fileName
-  )} from './${assetsDistFolderName}/${fileName}'`
+  )} from './${assetsDistFolderName}/${fileName}'`;
 
 const createImportsFromFileNames = (fileNames: string[]) =>
-  fileNames.map(createImportFromFileName).join('\n')
+  fileNames.map(createImportFromFileName).join('\n');
 
 const createTypesFromFileName = (fileNames: string[]) =>
   fileNames
     .map((fileName: string) => `'${toVariableName(fileName)}'`)
-    .join('\n  | ')
+    .join('\n  | ');
 
 const createMapEntriesFromFileNames = (fileNames: string[]) =>
   fileNames
@@ -41,7 +41,7 @@ const createMapEntriesFromFileNames = (fileNames: string[]) =>
       (fileName: string) =>
         `['${toVariableName(fileName)}', ${toVariableName(fileName)}],`
     )
-    .join('\n  ')
+    .join('\n  ');
 
 const generateFileContent = (err, fileNames: string[]) => {
   const fileContent = `${createImportsFromFileNames(fileNames)}
@@ -54,25 +54,25 @@ const iconMap = new Map<IconName, () => JSX.Element>([
 ])
 
 export default iconMap
-`
-  const destination = path.join(__dirname, 'icon-map.generated.ts')
+`;
+  const destination = path.join(__dirname, 'icon-map.generated.ts');
 
-  fs.writeFileSync(destination, fileContent)
+  fs.writeFileSync(destination, fileContent);
 
   // Replace hard coded SVG stroke/fill with currentColor
   fileNames.forEach((fileName: string) => {
-    const templateFileLocation = path.join(assetsDirectory, fileName)
+    const templateFileLocation = path.join(assetsDirectory, fileName);
     fs.readFile(templateFileLocation, 'utf8', (err, fileContent) => {
       const hydratedTemplate = fileContent.replaceAll(
         defaultStrokeFill,
         'currentColor'
-      )
+      );
       fs.writeFileSync(
         path.join(__dirname, 'assets-dist', fileName),
         hydratedTemplate
-      )
-    })
-  })
-}
+      );
+    });
+  });
+};
 
-fs.readdir(assetsDirectory, generateFileContent)
+fs.readdir(assetsDirectory, generateFileContent);

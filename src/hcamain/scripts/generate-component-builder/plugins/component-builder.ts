@@ -1,20 +1,23 @@
-import { generateComponentBuilder } from '@sitecore-jss/sitecore-jss-dev-tools/nextjs'
+import { generateComponentBuilder } from '@sitecore-jss/sitecore-jss-dev-tools/nextjs';
 import {
   ComponentBuilderPluginConfig,
   ComponentBuilderPlugin as ComponentBuilderPluginType,
-} from '..'
+} from '..';
 
 /**
  * Generates the component builder file.
  */
 class ComponentBuilderPlugin implements ComponentBuilderPluginType {
-  order = 9999
+  order = 9999;
 
   exec(config: ComponentBuilderPluginConfig) {
-    generateComponentBuilder({ packages: config.packages, watch: config.watch })
+    generateComponentBuilder({
+      packages: config.packages,
+      watch: config.watch,
+    });
 
-    return config
+    return config;
   }
 }
 
-export const componentBuilderPlugin = new ComponentBuilderPlugin()
+export const componentBuilderPlugin = new ComponentBuilderPlugin();

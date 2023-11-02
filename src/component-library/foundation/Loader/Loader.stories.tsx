@@ -1,6 +1,6 @@
-import React from 'react'
-import Loader from './Loader'
-import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react';
+import Loader from './Loader';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Loader> = {
@@ -12,12 +12,12 @@ const meta: Meta<typeof Loader> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Loader> = {
   args: {
     children: <p>Loader</p>,
   },
-}
+};

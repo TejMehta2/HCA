@@ -1,14 +1,14 @@
 import {
   ModuleType,
   generatePlugins,
-} from '@sitecore-jss/sitecore-jss-dev-tools'
+} from '@sitecore-jss/sitecore-jss-dev-tools';
 
 generatePlugins({
   distPath: 'scripts/temp/scaffold-component-plugins.ts',
   rootPath: 'scripts/scaffold-component/plugins',
   moduleType: ModuleType.ESM,
   silent: true,
-})
+});
 
 /*
   Component Scaffolding Script
@@ -25,51 +25,51 @@ generatePlugins({
 */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const plugins = require('scripts/temp/scaffold-component-plugins')
+const plugins = require('scripts/temp/scaffold-component-plugins');
 
 export interface ScaffoldComponentPluginConfig {
-  [key: string]: unknown
-  componentName: string
-  componentPath: string
-  nextSteps: string[]
+  [key: string]: unknown;
+  componentName: string;
+  componentPath: string;
+  nextSteps: string[];
 }
 
 export interface ScaffoldComponentPlugin {
   /**
    * Detect order when the plugin should be called, e.g. 0 - will be called first (can be a plugin which data is required for other plugins)
    */
-  order: number
+  order: number;
   /**
    * A function which will be called during component scaffolding
    * @param {JssConfig} config Current (accumulated) config
    */
-  exec(config: ScaffoldComponentPluginConfig): ScaffoldComponentPluginConfig
+  exec(config: ScaffoldComponentPluginConfig): ScaffoldComponentPluginConfig;
 }
 
 // Matches component names that start with a capital letter, and contain only letters, number,
 // underscores, or dashes. Optionally, the component name can be preceded by a relative path
-const nameParamFormat = new RegExp(/^((?:[\w-]+\/)*)([A-Z][\w-]+)$/)
-const componentArg = process.argv[2]
+const nameParamFormat = new RegExp(/^((?:[\w-]+\/)*)([A-Z][\w-]+)$/);
+const componentArg = process.argv[2];
 
 if (!componentArg) {
-  throw 'Component name was not passed. Usage: jss scaffold <ComponentName>'
+  throw 'Component name was not passed. Usage: jss scaffold <ComponentName>';
 }
 
-const regExResult = nameParamFormat.exec(componentArg)
+const regExResult = nameParamFormat.exec(componentArg);
 
 if (regExResult === null) {
   throw `Component name should start with an uppercase letter and contain only letters, numbers,
-dashes, or underscores. If specifying a path, it must be relative to src/components`
+dashes, or underscores. If specifying a path, it must be relative to src/components`;
 }
 
 const defaultConfig: ScaffoldComponentPluginConfig = {
   componentPath: regExResult[1],
   componentName: regExResult[2],
   nextSteps: [],
-}
+};
 
 const config = (Object.values(plugins) as ScaffoldComponentPlugin[])
   .sort((p1, p2) => p1.order - p2.order)
-  .reduce((config, plugin) => plugin.exec(config), defaultConfig)
+  .reduce((config, plugin) => plugin.exec(config), defaultConfig);
 
-console.log(config.nextSteps.join('\n'))
+console.log(config.nextSteps.join('\n'));

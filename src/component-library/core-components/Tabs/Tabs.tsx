@@ -4,40 +4,40 @@ import React, {
   useLayoutEffect,
   useRef,
   useState,
-} from 'react'
-import { Dimensions, TabsProps } from './Tabs.types'
-import styles from './Tabs.module.scss'
-import Icons from '../../foundation/Icons/Icons'
-import Text from '../../foundation/Text/Text'
+} from 'react';
+import { Dimensions, TabsProps } from './Tabs.types';
+import styles from './Tabs.module.scss';
+import Icons from '../../foundation/Icons/Icons';
+import Text from '../../foundation/Text/Text';
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
-  const { callback, theme = 'main-turquoise', tabs } = props
+  const { callback, theme = 'main-turquoise', tabs } = props;
 
   // Hooks
-  const id = useId() // Generate a unique ID for the form elements
+  const id = useId(); // Generate a unique ID for the form elements
   const [tabDimensions, setTabDimensions] = useState<Dimensions[]>([
     {
       offsetWidth: 0,
       offsetLeft: 0,
     },
-  ]) // Store dimensions for each tab
-  const [currentTabIndex, setCurrentTabIndex] = useState(0) // Track the currently selected tab, for styling purposes only
+  ]); // Store dimensions for each tab
+  const [currentTabIndex, setCurrentTabIndex] = useState(0); // Track the currently selected tab, for styling purposes only
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>, label, index) => {
-    setCurrentTabIndex(index)
-    callback(label) // Call the callback prop
-  }
+    setCurrentTabIndex(index);
+    callback(label); // Call the callback prop
+  };
 
-  const refs = useRef<HTMLLabelElement[]>([]) // Keep track of tab labels, in order to store their dimensions
+  const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
   useLayoutEffect(() => {
     // Store the dimensions from label elements on load
     const dimensions = refs?.current?.map((labelElement) => {
-      const { offsetWidth, offsetLeft } = labelElement
-      return { offsetWidth, offsetLeft }
-    })
-    setTabDimensions(dimensions)
-  }, [refs])
+      const { offsetWidth, offsetLeft } = labelElement;
+      return { offsetWidth, offsetLeft };
+    });
+    setTabDimensions(dimensions);
+  }, [refs]);
 
   return (
     <div className={styles.wrapper}>
@@ -50,7 +50,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
         className={styles[theme]}
       >
         {tabs.map((tab, index) => {
-          const composedChildId = `${id}-${index}`
+          const composedChildId = `${id}-${index}`;
           return (
             <div key={composedChildId}>
               <input
@@ -76,11 +76,11 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 </Text>
               </label>
             </div>
-          )
+          );
         })}
       </fieldset>
     </div>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;

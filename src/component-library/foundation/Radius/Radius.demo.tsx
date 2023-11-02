@@ -1,9 +1,9 @@
-import React from 'react'
-import { RadiusProps } from './Radius.demo.types'
-import styles from './Radius.demo.module.scss'
+import React from 'react';
+import { RadiusProps } from './Radius.demo.types';
+import styles from './Radius.demo.module.scss';
 
 const Radius = (props: RadiusProps): JSX.Element => {
-  const {} = props
+  const {} = props;
   return (
     <div className={styles.wrapper}>
       <div className={styles.large} data-testid="large">
@@ -16,7 +16,7 @@ const Radius = (props: RadiusProps): JSX.Element => {
         <span>Small Radius</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Radius
+export default Radius;

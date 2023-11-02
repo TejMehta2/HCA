@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
-type ButtonSizeUnionTypes = 'small' | 'large'
+type ButtonSizeUnionTypes = 'small' | 'large';
 type ButtonThemeUnionTypes =
   | 'full-dark'
   | 'full-light'
@@ -9,12 +9,12 @@ type ButtonThemeUnionTypes =
   | 'full-light-blue'
   | 'social-light'
   | 'social-dark'
-  | 'carousel'
+  | 'carousel';
 
 export interface ButtonProps {
-  size?: ButtonSizeUnionTypes
-  theme?: ButtonThemeUnionTypes
-  children?: ReactNode | JSX.Element
-  onClick?: React.MouseEventHandler<HTMLDivElement>
-  loading?: boolean
+  size?: ButtonSizeUnionTypes;
+  theme?: ButtonThemeUnionTypes;
+  children?: ReactNode | JSX.Element;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  loading?: boolean;
 }

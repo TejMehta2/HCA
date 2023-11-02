@@ -1,5 +1,5 @@
-import Spacing from './Spacing.demo'
-import type { Meta, StoryObj } from '@storybook/react'
+import Spacing from './Spacing.demo';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Spacing> = {
@@ -11,8 +11,8 @@ const meta: Meta<typeof Spacing> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: [],
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Demo: StoryObj<typeof Spacing> = {}
+export const Demo: StoryObj<typeof Spacing> = {};

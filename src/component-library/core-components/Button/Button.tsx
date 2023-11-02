@@ -1,18 +1,18 @@
-import React from 'react'
-import Loader from '../../foundation/Loader/Loader'
-import { ButtonProps } from './Button.types'
-import styles from './Button.module.scss'
+import React from 'react';
+import Loader from '../../foundation/Loader/Loader';
+import { ButtonProps } from './Button.types';
+import styles from './Button.module.scss';
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { size, theme, children, loading, onClick } = props
+  const { size, theme, children, loading, onClick } = props;
 
-  const lightLoaderThemes = ['outline-dark', 'full-light-blue']
+  const lightLoaderThemes = ['outline-dark', 'full-light-blue'];
 
-  let loaderTheme
+  let loaderTheme;
   if (lightLoaderThemes.includes(theme)) {
-    loaderTheme = 'light'
+    loaderTheme = 'light';
   } else {
-    loaderTheme = 'dark'
+    loaderTheme = 'dark';
   }
 
   return (
@@ -29,7 +29,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       {loading ? <Loader theme={loaderTheme}></Loader> : ''}
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

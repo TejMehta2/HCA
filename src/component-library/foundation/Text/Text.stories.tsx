@@ -1,5 +1,5 @@
-import Text from './Text'
-import type { Meta, StoryObj } from '@storybook/react'
+import Text from './Text';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Text> = {
@@ -9,9 +9,9 @@ const meta: Meta<typeof Text> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Display1: StoryObj<typeof Text> = {
   args: {
@@ -19,7 +19,7 @@ export const Display1: StoryObj<typeof Text> = {
     variation: 'display-1',
     children: 'Display 1',
   },
-}
+};
 
 export const Display2: StoryObj<typeof Text> = {
   args: {
@@ -27,7 +27,7 @@ export const Display2: StoryObj<typeof Text> = {
     variation: 'display-2',
     children: 'Display 2',
   },
-}
+};
 
 export const Display3: StoryObj<typeof Text> = {
   args: {
@@ -35,7 +35,7 @@ export const Display3: StoryObj<typeof Text> = {
     variation: 'display-3',
     children: 'Display 3',
   },
-}
+};
 
 export const Display4: StoryObj<typeof Text> = {
   args: {
@@ -43,7 +43,7 @@ export const Display4: StoryObj<typeof Text> = {
     variation: 'display-4',
     children: 'Display 4',
   },
-}
+};
 
 export const Display5: StoryObj<typeof Text> = {
   args: {
@@ -51,7 +51,7 @@ export const Display5: StoryObj<typeof Text> = {
     variation: 'display-5',
     children: 'Display 5',
   },
-}
+};
 
 export const Display6: StoryObj<typeof Text> = {
   args: {
@@ -59,7 +59,7 @@ export const Display6: StoryObj<typeof Text> = {
     variation: 'display-6',
     children: 'Display 6',
   },
-}
+};
 
 export const Heading1: StoryObj<typeof Text> = {
   args: {
@@ -67,7 +67,7 @@ export const Heading1: StoryObj<typeof Text> = {
     variation: 'heading-1',
     children: 'Heading 1',
   },
-}
+};
 
 export const Heading2: StoryObj<typeof Text> = {
   args: {
@@ -75,7 +75,7 @@ export const Heading2: StoryObj<typeof Text> = {
     variation: 'heading-2',
     children: 'Heading 2',
   },
-}
+};
 
 export const Subheading1: StoryObj<typeof Text> = {
   args: {
@@ -83,7 +83,7 @@ export const Subheading1: StoryObj<typeof Text> = {
     variation: 'subheading-1',
     children: 'Subheading 1',
   },
-}
+};
 
 export const Subheading2: StoryObj<typeof Text> = {
   args: {
@@ -91,7 +91,7 @@ export const Subheading2: StoryObj<typeof Text> = {
     variation: 'subheading-2',
     children: 'Subheading 2',
   },
-}
+};
 
 export const BodyExtraLarge: StoryObj<typeof Text> = {
   args: {
@@ -99,7 +99,7 @@ export const BodyExtraLarge: StoryObj<typeof Text> = {
     variation: 'body-extra-large',
     children: 'Body Extra Large',
   },
-}
+};
 
 export const BodyMediumExtraLarge: StoryObj<typeof Text> = {
   args: {
@@ -107,7 +107,7 @@ export const BodyMediumExtraLarge: StoryObj<typeof Text> = {
     variation: 'body-medium-extra-large',
     children: 'Body Extra Large',
   },
-}
+};
 
 export const BodySemiBoldExtraLarge: StoryObj<typeof Text> = {
   args: {
@@ -115,7 +115,7 @@ export const BodySemiBoldExtraLarge: StoryObj<typeof Text> = {
     variation: 'body-semi-bold-extra-large',
     children: 'Body Extra Large',
   },
-}
+};
 
 export const BodyLarge: StoryObj<typeof Text> = {
   args: {
@@ -123,7 +123,7 @@ export const BodyLarge: StoryObj<typeof Text> = {
     variation: 'body-large',
     children: 'Body Large',
   },
-}
+};
 
 export const BodyMediumLarge: StoryObj<typeof Text> = {
   args: {
@@ -131,7 +131,7 @@ export const BodyMediumLarge: StoryObj<typeof Text> = {
     variation: 'body-medium-large',
     children: 'Body Medium Large',
   },
-}
+};
 
 export const BodySemiBoldLarge: StoryObj<typeof Text> = {
   args: {
@@ -139,7 +139,7 @@ export const BodySemiBoldLarge: StoryObj<typeof Text> = {
     variation: 'body-semi-bold-large',
     children: 'Body Semi Bold Large',
   },
-}
+};
 
 export const BodyMedium: StoryObj<typeof Text> = {
   args: {
@@ -147,7 +147,7 @@ export const BodyMedium: StoryObj<typeof Text> = {
     variation: 'body-medium',
     children: 'Body Medium',
   },
-}
+};
 
 export const BodyMediumMedium: StoryObj<typeof Text> = {
   args: {
@@ -155,7 +155,7 @@ export const BodyMediumMedium: StoryObj<typeof Text> = {
     variation: 'body-medium-medium',
     children: 'Body Medium Medium',
   },
-}
+};
 
 export const BodySemiBoldMedium: StoryObj<typeof Text> = {
   args: {
@@ -163,7 +163,7 @@ export const BodySemiBoldMedium: StoryObj<typeof Text> = {
     variation: 'body-semi-bold-medium',
     children: 'Body Semi Bold Medium',
   },
-}
+};
 
 export const BodySmall: StoryObj<typeof Text> = {
   args: {
@@ -171,7 +171,7 @@ export const BodySmall: StoryObj<typeof Text> = {
     variation: 'body-small',
     children: 'Body Small',
   },
-}
+};
 
 export const BodyMediumSmall: StoryObj<typeof Text> = {
   args: {
@@ -179,7 +179,7 @@ export const BodyMediumSmall: StoryObj<typeof Text> = {
     variation: 'body-medium-small',
     children: 'Body Medium Small',
   },
-}
+};
 
 export const BodySemiBoldSmall: StoryObj<typeof Text> = {
   args: {
@@ -187,4 +187,4 @@ export const BodySemiBoldSmall: StoryObj<typeof Text> = {
     variation: 'body-semi-bold-small',
     children: 'Body Semi Bold Small',
   },
-}
+};

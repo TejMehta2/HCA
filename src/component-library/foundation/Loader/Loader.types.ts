@@ -1,5 +1,5 @@
-type LoaderThemeUnionTypes = 'light' | 'dark'
+type LoaderThemeUnionTypes = 'light' | 'dark';
 
 export interface LoaderProps {
-  theme: LoaderThemeUnionTypes
+  theme: LoaderThemeUnionTypes;
 }

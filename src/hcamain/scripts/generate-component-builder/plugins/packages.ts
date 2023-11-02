@@ -1,10 +1,10 @@
-import { ComponentBuilderPlugin, ComponentBuilderPluginConfig } from '..'
+import { ComponentBuilderPlugin, ComponentBuilderPluginConfig } from '..';
 
 /**
  * Provides custom packages configuration
  */
 class PackagesPlugin implements ComponentBuilderPlugin {
-  order = 0
+  order = 0;
 
   exec(config: ComponentBuilderPluginConfig) {
     /**
@@ -20,10 +20,10 @@ class PackagesPlugin implements ComponentBuilderPlugin {
      *    ]
      *  }
      */
-    config.packages = []
+    config.packages = [];
 
-    return config
+    return config;
   }
 }
 
-export const packagesPlugin = new PackagesPlugin()
+export const packagesPlugin = new PackagesPlugin();

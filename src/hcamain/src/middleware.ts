@@ -1,9 +1,9 @@
-import type { NextRequest, NextFetchEvent } from 'next/server'
-import middleware from 'lib/middleware'
+import type { NextRequest, NextFetchEvent } from 'next/server';
+import middleware from 'lib/middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  return middleware(req, ev)
+  return middleware(req, ev);
 }
 
 export const config = {
@@ -20,4 +20,4 @@ export const config = {
     '/',
     '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg).*)',
   ],
-}
+};
