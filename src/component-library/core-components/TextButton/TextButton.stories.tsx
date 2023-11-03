@@ -1,7 +1,7 @@
-import React from 'react'
-import TextButton from './TextButton'
-import Icons from '../../foundation/Icons/Icons'
-import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react';
+import TextButton from './TextButton';
+import Icons from '../../foundation/Icons/Icons';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof TextButton> = {
@@ -11,9 +11,9 @@ const meta: Meta<typeof TextButton> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Dark: StoryObj<typeof TextButton> = {
   args: {
@@ -25,7 +25,7 @@ export const Dark: StoryObj<typeof TextButton> = {
       </a>
     ),
   },
-}
+};
 
 export const Light: StoryObj<typeof TextButton> = {
   args: {
@@ -38,4 +38,4 @@ export const Light: StoryObj<typeof TextButton> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};

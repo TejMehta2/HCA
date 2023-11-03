@@ -4,11 +4,11 @@ import {
   SiteInfo,
   useSitecoreContext,
   PosResolver,
-} from '@sitecore-jss/sitecore-jss-nextjs'
-import { useEffect } from 'react'
-import config from 'temp/config'
-import { init } from '@sitecore/engage'
-import { siteResolver } from 'lib/site-resolver'
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import { useEffect } from 'react';
+import config from 'temp/config';
+import { init } from '@sitecore/engage';
+import { siteResolver } from 'lib/site-resolver';
 
 /**
  * This is the CDP page view component.
@@ -19,7 +19,7 @@ import { siteResolver } from 'lib/site-resolver'
 const CdpPageView = (): JSX.Element => {
   const {
     sitecoreContext: { pageState, route, variantId, site },
-  } = useSitecoreContext()
+  } = useSitecoreContext();
 
   /**
    * Creates a page view event using the Sitecore Engage SDK.
@@ -30,7 +30,7 @@ const CdpPageView = (): JSX.Element => {
     site: SiteInfo,
     pageVariantId: string
   ) => {
-    const pointOfSale = PosResolver.resolve(site, language)
+    const pointOfSale = PosResolver.resolve(site, language);
     const engage = await init({
       clientKey: process.env.NEXT_PUBLIC_CDP_CLIENT_KEY || '',
       targetURL: process.env.NEXT_PUBLIC_CDP_TARGET_URL || '',
@@ -38,7 +38,7 @@ const CdpPageView = (): JSX.Element => {
       cookieDomain: window.location.host.replace(/^www\./, ''),
       // Cookie may be created in personalize middleware (server), but if not we should create it here
       forceServerCookieMode: false,
-    })
+    });
     engage.pageView({
       channel: 'WEB',
       currency: 'USD',
@@ -46,8 +46,8 @@ const CdpPageView = (): JSX.Element => {
       page,
       pageVariantId,
       language,
-    })
-  }
+    });
+  };
 
   /**
    * Determines if the page view events should be turned off.
@@ -55,33 +55,33 @@ const CdpPageView = (): JSX.Element => {
    * By default it is disabled in development mode
    */
   const disabled = () => {
-    return process.env.NODE_ENV === 'development'
-  }
+    return process.env.NODE_ENV === 'development';
+  };
 
   useEffect(() => {
     // Do not create events in editing or preview mode or if missing route data
     if (pageState !== LayoutServicePageState.Normal || !route?.itemId) {
-      return
+      return;
     }
     // Do not create events if disabled (e.g. we don't have consent)
     if (disabled()) {
-      return
+      return;
     }
 
-    const siteInfo = siteResolver.getByName(site?.name || config.jssAppName)
-    const language = route.itemLanguage || config.defaultLanguage
-    const scope = process.env.NEXT_PUBLIC_PERSONALIZE_SCOPE
+    const siteInfo = siteResolver.getByName(site?.name || config.jssAppName);
+    const language = route.itemLanguage || config.defaultLanguage;
+    const scope = process.env.NEXT_PUBLIC_PERSONALIZE_SCOPE;
 
     const pageVariantId = CdpHelper.getPageVariantId(
       route.itemId,
       language,
       variantId as string,
       scope
-    )
-    createPageView(route.name, language, siteInfo, pageVariantId)
-  }, [pageState, route, variantId, site])
+    );
+    createPageView(route.name, language, siteInfo, pageVariantId);
+  }, [pageState, route, variantId, site]);
 
-  return <></>
-}
+  return <></>;
+};
 
-export default CdpPageView
+export default CdpPageView;

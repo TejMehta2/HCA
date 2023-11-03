@@ -20,10 +20,10 @@ type TextVariationUnionTypes =
   | 'body-semi-bold-medium'
   | 'body-small'
   | 'body-medium-small'
-  | 'body-semi-bold-small'
+  | 'body-semi-bold-small';
 
 export interface TextProps {
-  tag?: keyof JSX.IntrinsicElements
-  variation?: TextVariationUnionTypes
-  children: string | JSX.Element
+  tag?: keyof JSX.IntrinsicElements;
+  variation?: TextVariationUnionTypes;
+  children: string | JSX.Element;
 }

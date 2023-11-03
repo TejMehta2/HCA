@@ -1,6 +1,6 @@
-import React from 'react'
-import Tabs from './Tabs'
-import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react';
+import Tabs from './Tabs';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Tabs> = {
@@ -16,9 +16,9 @@ const meta: Meta<typeof Tabs> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: [],
-}
+};
 
-export default meta
+export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Tabs> = {
   args: {
@@ -30,7 +30,7 @@ export const Default: StoryObj<typeof Tabs> = {
       { icon: 'iconCalendar', label: 'Annual' },
     ],
   },
-}
+};
 
 export const NoIcon: StoryObj<typeof Tabs> = {
   args: {
@@ -44,7 +44,7 @@ export const NoIcon: StoryObj<typeof Tabs> = {
       </div>
     ),
   ],
-}
+};
 
 export const Overflow: StoryObj<typeof Tabs> = {
   args: {
@@ -62,4 +62,4 @@ export const Overflow: StoryObj<typeof Tabs> = {
       </div>
     ),
   ],
-}
+};

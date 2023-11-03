@@ -1,9 +1,9 @@
-import React from 'react'
-import { GridsProps } from './Grids.demo.types'
-import styles from './Grids.demo.module.scss'
-import Text from '../Text/Text'
+import React from 'react';
+import { GridsProps } from './Grids.demo.types';
+import styles from './Grids.demo.module.scss';
+import Text from '../Text/Text';
 const Grids = (props: GridsProps) => {
-  const {} = props
+  const {} = props;
   return (
     <div className={styles.grid}>
       <Text>no class</Text>
@@ -34,7 +34,7 @@ const Grids = (props: GridsProps) => {
         <Text>.default</Text>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Grids
+export default Grids;

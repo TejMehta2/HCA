@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 const ReactComponent = () => (
   <svg
     data-testid="svg"
@@ -19,6 +19,6 @@ const ReactComponent = () => (
       />
     </g>
   </svg>
-)
+);
 
-export default ReactComponent
+export default ReactComponent;

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { PersonalizeMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middleware'
-import { MiddlewarePlugin } from '..'
-import config from 'temp/config'
-import { siteResolver } from 'lib/site-resolver'
+import { NextRequest, NextResponse } from 'next/server';
+import { PersonalizeMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middleware';
+import { MiddlewarePlugin } from '..';
+import config from 'temp/config';
+import { siteResolver } from 'lib/site-resolver';
 
 /**
  * This is the personalize middleware plugin for Next.js.
@@ -14,10 +14,10 @@ import { siteResolver } from 'lib/site-resolver'
  *  3. Rewrite the response to the specific page variant.
  */
 class PersonalizePlugin implements MiddlewarePlugin {
-  private personalizeMiddleware: PersonalizeMiddleware
+  private personalizeMiddleware: PersonalizeMiddleware;
 
   // Using 1 to leave room for things like redirects to occur first
-  order = 1
+  order = 1;
 
   constructor() {
     this.personalizeMiddleware = new PersonalizeMiddleware({
@@ -53,12 +53,12 @@ class PersonalizePlugin implements MiddlewarePlugin {
       // Personalize middleware will use PosResolver.resolve(site, language) (same as CdpPageView) by default to get point of sale.
       // You can also pass a custom point of sale resolver into middleware to override it like so:
       // getPointOfSale: (site, language) => { ... }
-    })
+    });
   }
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
-    return this.personalizeMiddleware.getHandler()(req, res)
+    return this.personalizeMiddleware.getHandler()(req, res);
   }
 }
 
-export const personalizePlugin = new PersonalizePlugin()
+export const personalizePlugin = new PersonalizePlugin();
