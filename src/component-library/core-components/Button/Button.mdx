@@ -1,50 +1,55 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as ButtonStories from './Button.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
 
 # Button
 
-The Button component is intended apply styles by wrapping a plain button tag or a plain HTML link (in the `children` prop) which can be returned by wrapping a JSSLink component or NextJS Link component.
+The Button component is intended apply styles by wrapping a button, JSS Link or Link tag (in the `children` prop). The styles will then target the button or anchor tag that is rendered.
 
-The theme is built up of the button color - dark or light, variation - outline or full. There are variations of dark and light for the social buttons which have their own theme. This is controlled by the `theme` prop.
+The theme is built up of the button color - dark or light and variation - outline or full. There are variations of dark and light for the social buttons which have their own theme. This is controlled by the `theme` prop.
 
-The size prop controls the button padding to show the appropriate button size - small or large
+The size prop controls the button padding to show the appropriate button size - small or large.
 
-To use an icon include it before or after your link or button tag
+To use an icon include it before or after the text content in your button.
 
-e.g.
-
-```
-<Button>
+```tsx
+<Button theme="full-dark" size="large">
   <button>
-    button text
-    <Icons />
+    <span>Button Text</span>
+    <Icons iconName="iconPhone" />
   </button>
 </Button>
 ```
 
-or
-
+```tsx
+import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs';
+<Button theme="full-dark" size="large">
+  <JssLink field={props.fields.PromoLink}>
+    <Icons iconName="iconPhone" />
+    <span>Button Text</span>
+  </JssLink>
+</Button>;
 ```
-<Button>
-  <button>
-    <Icons />
-    button text
-  </button>
-</Button>
+
+```tsx
+import Link from 'next/link';
+<Button theme="full-dark" size="large">
+  <Link href="/test">
+    <Icons iconName="iconPhone" />
+    <span>Button Text</span>
+  </Link>
+</Button>;
 ```
 
 For loading buttons set the loading prop on the `Button` component.
 
-```
-  <Button theme="full-dark" size="large" loading={loading}>
-    <JssLink field={props.fields.Link}>
-      <span>
-        'test text'
-      </span>
-    </JssLink>
-  </Button>
+```tsx
+<Button theme="full-dark" size="large" loading={loading}>
+  <JssLink field={props.fields.Link}>
+    <span>'test text'</span>
+  </JssLink>
+</Button>
 ```
 
 <Canvas of={ButtonStories.LargeFullDark} />
