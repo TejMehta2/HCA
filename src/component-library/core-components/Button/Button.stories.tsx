@@ -236,7 +236,7 @@ export const StandardCarouselButtonDark: StoryObj<typeof Button> = {
       </button>
     ),
   },
-}
+};
 
 export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
   args: {
@@ -256,7 +256,7 @@ export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
-}
+};
 
 export const HoverCarouselButton: StoryObj<typeof Button> = {
   args: {

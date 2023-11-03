@@ -1,14 +1,14 @@
-import React from 'react'
-import { TextButtonProps } from './TextButton.types'
-import styles from './TextButton.module.scss'
+import React from 'react';
+import { TextButtonProps } from './TextButton.types';
+import styles from './TextButton.module.scss';
 
 const TextButton = (props: TextButtonProps): JSX.Element => {
-  const { theme = 'dark', children } = props
+  const { theme = 'dark', children } = props;
   return (
     <div className={[styles['text-button'], styles[theme]].join(' ')}>
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default TextButton
+export default TextButton;
