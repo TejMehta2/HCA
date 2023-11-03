@@ -12,12 +12,16 @@ The TextLink component displays a link or button with no background, text and an
 It can be composed by wrapping a button, JSS Link or Link tag in the TextLink component. The styles will then be applied to the anchor or button tag nested within the TextLink component. The text inside the button or link should be wrapped in a span.
 
 ```tsx
-<TextLink>
+const exampleClick = () => {
+  alert('Button was clicked');
+};
+
+<TextLink onClick="exampleClick">
   <button>
     <span>Text link text</span>
     <Icons iconName="iconCross" />
   </button>
-</TextLink>
+</TextLink>;
 ```
 
 ```tsx

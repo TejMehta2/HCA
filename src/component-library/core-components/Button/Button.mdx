@@ -14,12 +14,16 @@ The size prop controls the button padding to show the appropriate button size - 
 To use an icon include it before or after the text content in your button.
 
 ```tsx
-<Button theme="full-dark" size="large">
+const exampleClick = () => {
+  alert('Button was clicked');
+};
+
+<Button theme="full-dark" size="large" onClick="exampleClick">
   <button>
     <span>Button Text</span>
     <Icons iconName="iconPhone" />
   </button>
-</Button>
+</Button>;
 ```
 
 ```tsx

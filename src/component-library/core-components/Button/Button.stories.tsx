@@ -15,16 +15,20 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+
+const exampleClick = () => {
+  alert('Button was clicked');
+};
+
 export const LargeFullDark: StoryObj<typeof Button> = {
   args: {
+    onClick: exampleClick,
     size: 'large',
     children: (
-      <>
-        <button type="button">
-          <Icons iconName="iconPhone" />
-          Large <strong>Button</strong>
-        </button>
-      </>
+      <button type="button">
+        <Icons iconName="iconPhone" />
+        Large <strong>Button</strong>
+      </button>
     ),
     theme: 'full-dark',
   },

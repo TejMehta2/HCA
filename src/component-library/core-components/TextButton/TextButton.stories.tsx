@@ -15,8 +15,14 @@ const meta: Meta<typeof TextButton> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+
+const exampleClick = () => {
+  alert('TextLink was clicked');
+};
+
 export const Dark: StoryObj<typeof TextButton> = {
   args: {
+    onClick: exampleClick,
     theme: 'dark',
     children: (
       <a href="#">

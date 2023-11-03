@@ -15,8 +15,12 @@ const meta: Meta<typeof TextLink> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+const exampleClick = () => {
+  alert('TextLink was clicked');
+};
 export const Default: StoryObj<typeof TextLink> = {
   args: {
+    onClick: exampleClick,
     children: (
       <button>
         <span>TextLink</span> <Icons iconName="iconCross" />
