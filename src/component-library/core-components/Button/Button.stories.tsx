@@ -22,10 +22,9 @@ const exampleClick = () => {
 
 export const LargeFullDark: StoryObj<typeof Button> = {
   args: {
-    onClick: exampleClick,
     size: 'large',
     children: (
-      <button type="button">
+      <button type="button" onClick={exampleClick}>
         <Icons iconName="iconPhone" />
         Large <strong>Button</strong>
       </button>

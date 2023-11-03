@@ -20,9 +20,8 @@ const exampleClick = () => {
 };
 export const Default: StoryObj<typeof TextLink> = {
   args: {
-    onClick: exampleClick,
     children: (
-      <button>
+      <button onClick={exampleClick}>
         <span>TextLink</span> <Icons iconName="iconCross" />
       </button>
     ),

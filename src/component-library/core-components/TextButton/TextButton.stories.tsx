@@ -22,13 +22,11 @@ const exampleClick = () => {
 
 export const Dark: StoryObj<typeof TextButton> = {
   args: {
-    onClick: exampleClick,
     theme: 'dark',
     children: (
-      <a href="#">
-        Text button
-        <Icons iconName="iconArrowSmallRight" />
-      </a>
+      <button onClick={exampleClick}>
+        Text button <Icons iconName="iconArrowSmallRight" />
+      </button>
     ),
   },
 };
@@ -36,7 +34,7 @@ export const Dark: StoryObj<typeof TextButton> = {
 export const Light: StoryObj<typeof TextButton> = {
   args: {
     theme: 'light',
-    children: <button>Text button</button>,
+    children: <button onClick={exampleClick}>Text button</button>,
   },
   parameters: {
     backgrounds: {
