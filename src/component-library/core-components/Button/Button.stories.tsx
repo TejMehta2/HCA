@@ -225,10 +225,43 @@ export const LoadingLargeFullDark: StoryObj<typeof Button> = {
   },
 };
 
-export const CarouselButton: StoryObj<typeof Button> = {
+export const StandardCarouselButtonDark: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'carousel',
+    theme: 'standard-carousel-dark',
+    children: (
+      <button>
+        <Icons iconName="iconArrowRight" />
+        <span className="sr-only">Next Slide</span>
+      </button>
+    ),
+  },
+}
+
+export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    theme: 'standard-carousel-light',
+    children: (
+      <button>
+        <Icons iconName="iconArrowRight" />
+        <span className="sr-only">Next Slide</span>
+      </button>
+    ),
+  },
+
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
+  },
+}
+
+export const HoverCarouselButton: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    theme: 'hover-carousel',
     children: (
       <button>
         <Icons iconName="iconArrowRight" />

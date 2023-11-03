@@ -1,4 +1,3 @@
-@use '../../../component-library/foundation/index.module' as *;
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
@@ -307,7 +306,7 @@
   }
 }
 
-.carousel {
+.hover-carousel {
   button {
     background-color: $light-orange;
     padding: px-to-rem(16);
@@ -315,6 +314,81 @@
 
     &:active {
       background-color: $light-orange-80;
+    }
+  }
+}
+
+.standard-carousel {
+  &-light,
+  &-dark {
+    button {
+      padding: px-to-rem(16);
+      border-radius: 50%;
+    }
+  }
+
+  &-dark {
+    button {
+      background-color: $dark-blue;
+      color: $white;
+      border: 1px solid $dark-blue;
+
+      &:hover {
+        background-color: $white;
+        color: $dark-blue;
+      }
+
+      &:active {
+        background-color: $white;
+        color: $dark-blue;
+        border-color: $dark-blue-40;
+      }
+
+      &:disabled {
+        background-color: $dark-blue-40;
+        color: $dark-blue-10;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline($main-turquoise);
+      }
+    }
+  }
+
+  &-light {
+    button {
+      background-color: $main-turquoise;
+      color: $dark-blue;
+      border: 1px solid $main-turquoise;
+
+      &:hover {
+        background-color: $dark-blue;
+        color: $white;
+        border-color: $white;
+      }
+
+      &:active {
+        background-color: $dark-blue;
+        color: $dark-blue-9;
+        border-color: $dark-blue-10;
+      }
+
+      &:disabled {
+        background-color: $dark-blue-40;
+        color: $dark-blue-10;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline($dark-blue);
+      }
     }
   }
 }
