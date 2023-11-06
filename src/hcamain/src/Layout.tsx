@@ -1,7 +1,7 @@
 /**
  * This Layout is needed for Starter Kit.
  */
-import React from 'react';
+import React, { useRef } from 'react';
 import Head from 'next/head';
 import {
   Placeholder,
@@ -12,6 +12,7 @@ import {
 import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import Scripts from 'src/Scripts';
 import '@hca/component-library/globals/index.scss';
+import Modals from '@hca/component-library/components/Modals/Modals';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -33,6 +34,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const isPageEditing = layoutData.sitecore.context.pageEditing;
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
+  const dialogRef = useRef<HTMLDialogElement>();
   return (
     <>
       <Scripts />
@@ -53,6 +55,17 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         </header>
         <main>
           <div id="content">
+            <div>
+              <button
+                onClick={() => {
+                  console.log(dialogRef.current);
+                  dialogRef.current?.showModal();
+                }}
+              >
+                Open modal
+              </button>
+              <Modals dialogRef={dialogRef}>Content</Modals>
+            </div>
             {route && <Placeholder name="headless-main" rendering={route} />}
           </div>
         </main>
