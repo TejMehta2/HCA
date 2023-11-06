@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as TextButtonStories from './TextButton.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TextButtonStories from './TextButton.stories';
 
 <Meta of={TextButtonStories} />
 
@@ -12,33 +12,36 @@ The TextButton component displays a button with no background, text and an optio
 It can be composed by wrapping a button, JSS Link or Link tag in the TextButton component. The styles will then be applied to the anchor or button tag nested within the TextButton component.
 
 ```tsx
+const exampleClick = () => {
+  alert('Button was clicked');
+};
+
 <TextButton theme="dark">
-  <button>
+  <button onClick="exampleClick">
     Text button text
     <Icons iconName="iconArrowSmallRight" />
   </button>
-</TextButton>
+</TextButton>;
 ```
 
 ```tsx
-import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs'
-;<TextButton>
+import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs';
+<TextButton>
   <JssLink field={props.fields.PromoLink}>
     Text button text
     <Icons iconName="iconArrowSmallRight" />
   </JssLink>
-</TextButton>
+</TextButton>;
 ```
 
 ```tsx
-import Link from 'next/link'
-
-;<TextButton>
+import Link from 'next/link';
+<TextButton>
   <Link href="/test">
     Text button text
     <Icons iconName="iconArrowSmallRight" />
   </Link>
-</TextButton>
+</TextButton>;
 ```
 
 ## Example

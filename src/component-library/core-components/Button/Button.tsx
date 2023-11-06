@@ -4,7 +4,7 @@ import { ButtonProps } from './Button.types';
 import styles from './Button.module.scss';
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { size, theme, children, loading, onClick } = props;
+  const { size, theme, children, loading } = props;
 
   const lightLoaderThemes = ['outline-dark', 'full-light-blue'];
 
@@ -23,7 +23,6 @@ const Button = (props: ButtonProps): JSX.Element => {
         styles[theme],
         styles[loading ? 'loading' : ''],
       ].join(' ')}
-      onClick={onClick}
       aria-live="polite"
     >
       {loading ? <Loader theme={loaderTheme}></Loader> : ''}
