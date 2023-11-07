@@ -1,0 +1,27 @@
+﻿---
+ID: "cfdcf9d6-5f2d-42a7-ba60-0b30a790732f"
+Parent: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Path: /sitecore/templates/Project/HCA/Pages/BlogPage/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{A8381A60-0F5C-4A6C-B267-AC53C2E85070}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231106T120046Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7796382c-79b2-4deb-a79e-312479982cec"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231106T120118Z
