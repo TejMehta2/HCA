@@ -1,5 +1,5 @@
 {
-  "name": "@hca/component-library",
+  "name": "component-library",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,6 +21,7 @@
     "sass-alias": "^1.0.5"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@babel/preset-env": "^7.22.20",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.0",
