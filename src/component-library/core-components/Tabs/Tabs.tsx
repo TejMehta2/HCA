@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  useId,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useId, useLayoutEffect, useRef, useState } from 'react';
 import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -24,7 +18,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
   ]); // Store dimensions for each tab
   const [currentTabIndex, setCurrentTabIndex] = useState(0); // Track the currently selected tab, for styling purposes only
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>, label, index) => {
+  const handleChange = (label: string, index: number) => {
     setCurrentTabIndex(index);
     callback(label); // Call the callback prop
   };
@@ -59,14 +53,14 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 defaultChecked={index === 0}
                 id={composedChildId}
                 name={id}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  handleChange(event, tab.label, index)
-                }
+                onChange={() => handleChange(tab.label, index)}
                 type="radio"
                 value={id}
               />
               <label
-                ref={(element) => refs?.current?.push(element)}
+                ref={(element: HTMLLabelElement) =>
+                  refs?.current?.push(element)
+                }
                 className={styles[theme]}
                 htmlFor={composedChildId}
               >

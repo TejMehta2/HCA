@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import Tabs from './Tabs';
 import { TabsProps } from './Tabs.types';
 
@@ -25,10 +25,17 @@ describe('Tabs', () => {
       tab = label;
     };
     const { getByText } = render(<Tabs {...mockProps} callback={callback} />);
-    await getByText(mockProps.tabs[1].label).click(); // Click the second item
+
+    await act(async () => {
+      await getByText(mockProps.tabs[1].label).click(); // Click the second item
+    });
+
     await expect(tab).toBe(mockProps.tabs[1].label);
 
-    await getByText(mockProps.tabs[2].label).click(); // Click the third item
+    await act(async () => {
+      await getByText(mockProps.tabs[2].label).click(); // Click the third item
+    });
+
     await expect(tab).toBe(mockProps.tabs[2].label);
   });
   it('Does not call the callback function when the current tab is clicked', async () => {
@@ -37,7 +44,10 @@ describe('Tabs', () => {
       tab = label;
     };
     const { getByText } = render(<Tabs {...mockProps} callback={callback} />);
-    await getByText(mockProps.tabs[0].label).click();
+    await act(async () => {
+      await getByText(mockProps.tabs[0].label).click();
+    });
+
     await expect(tab).not.toBe(mockProps.tabs[0].label);
   });
 });

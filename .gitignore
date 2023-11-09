@@ -81,3 +81,4 @@ packages/
 
 /node_modules
 src/component-library/node_modules
+*.tsbuildinfo

@@ -9,7 +9,8 @@
     "register-icons": "npx ts-node foundation/Icons/register-icons.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --ci --exit-once-uploaded --project-token=chpt_893d0fc72947166"
+    "chromatic": "npx chromatic --ci --exit-once-uploaded --project-token=chpt_893d0fc72947166",
+    "type-check": "tsc --noemit"
   },
   "author": "",
   "license": "ISC",
@@ -41,6 +42,7 @@
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.5",
     "@types/node": "^18.11.18",
+    "@types/prompts": "^2.4.7",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "chromatic": "^7.4.0",
