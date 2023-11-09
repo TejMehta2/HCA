@@ -2,7 +2,7 @@
 ID: "cfdcf9d6-5f2d-42a7-ba60-0b30a790732f"
 Parent: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
 Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
-Path: /sitecore/templates/Project/HCA/Pages/BlogPage/__Standard Values
+Path: /sitecore/templates/Project/HCA/Pages/Blog Page/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters

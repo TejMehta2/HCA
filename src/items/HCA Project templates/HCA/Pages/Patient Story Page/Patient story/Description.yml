@@ -1,18 +1,15 @@
 ﻿---
-ID: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
-Parent: "24a178f9-4398-49b9-8d19-b57adca98f2a"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Pages/PatientStoryPage
+ID: "13adad51-85f7-45f2-ad13-5cc293c6dc54"
+Parent: "6e19e490-758f-4f02-8e25-e966b12dfa70"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Pages/Patient Story Page/Patient story/Description
 SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: People/32x32/user1_message.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: "{5F5254C2-11C3-49E1-A197-3034D6784FE6}"
-- ID: "f7d48a55-2158-4f02-9356-756654404f73"
-  Hint: __Standard values
-  Value: "{04CF0C3C-CFF2-4687-89AB-7A85D419CF19}"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Rich Text
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -20,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231103T174348Z
+      Value: 20231103T174531Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4e77e238-013c-4584-aee8-87bdc4b5843f"
+      Value: "6a503614-891a-4fc5-8519-a4fa01ab9188"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231107T102037Z
+      Value: 20231107T090425Z

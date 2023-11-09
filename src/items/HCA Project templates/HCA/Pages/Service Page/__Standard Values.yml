@@ -1,8 +1,8 @@
 ﻿---
-ID: "48282470-689f-4916-9baa-4c3d406751cd"
-Parent: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/templates/Project/HCA/Pages/LocationPage/__Standard Values
+ID: "bb014305-9a0b-4d3b-8960-9fd9c696c1ce"
+Parent: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
+Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
+Path: /sitecore/templates/Project/HCA/Pages/Service Page/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -10,14 +10,14 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231109T113145Z
+      Value: 20231109T113404Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "12e73c80-3b53-472f-9bcd-db015415991e"
+      Value: "86aa4670-4d2a-4a7a-a95c-eeca44c580f4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231109T113145Z
+      Value: 20231109T113404Z

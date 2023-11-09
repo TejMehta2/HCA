@@ -2,7 +2,7 @@
 ID: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
 Parent: "24a178f9-4398-49b9-8d19-b57adca98f2a"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Pages/ServicePage
+Path: /sitecore/templates/Project/HCA/Pages/Service Page
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
