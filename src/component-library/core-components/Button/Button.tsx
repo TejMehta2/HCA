@@ -2,13 +2,14 @@ import React from 'react';
 import Loader from '../../foundation/Loader/Loader';
 import { ButtonProps } from './Button.types';
 import styles from './Button.module.scss';
+import { LoaderThemeUnionTypes } from '../../foundation/Loader/Loader.types';
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { size, theme, children, loading } = props;
+  const { size = 'large', theme = 'full-dark', children, loading } = props;
 
   const lightLoaderThemes = ['outline-dark', 'full-light-blue'];
 
-  let loaderTheme;
+  let loaderTheme: LoaderThemeUnionTypes;
   if (lightLoaderThemes.includes(theme)) {
     loaderTheme = 'light';
   } else {

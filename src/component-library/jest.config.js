@@ -21,4 +21,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   modulePaths: ['<rootDir>'],
   testEnvironment: 'jsdom',
-}
+  testMatch: [
+    '**/(core-components|components|foundation|scaffold)/**/*.spec.(tsx|ts)',
+  ],
+};

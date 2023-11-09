@@ -43,7 +43,10 @@ const createMapEntriesFromFileNames = (fileNames: string[]) =>
     )
     .join('\n  ');
 
-const generateFileContent = (err, fileNames: string[]) => {
+const generateFileContent = (err: unknown, fileNames: string[]) => {
+  if (err) {
+    console.error(err);
+  }
   const fileContent = `${createImportsFromFileNames(fileNames)}
 
 export type IconName =
@@ -63,6 +66,9 @@ export default iconMap
   fileNames.forEach((fileName: string) => {
     const templateFileLocation = path.join(assetsDirectory, fileName);
     fs.readFile(templateFileLocation, 'utf8', (err, fileContent) => {
+      if (err) {
+        console.error(err);
+      }
       const hydratedTemplate = fileContent.replaceAll(
         defaultStrokeFill,
         'currentColor'

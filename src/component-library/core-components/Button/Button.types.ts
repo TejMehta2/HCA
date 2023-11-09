@@ -14,8 +14,8 @@ type ButtonThemeUnionTypes =
   | 'hover-carousel';
 
 export interface ButtonProps {
-  size?: ButtonSizeUnionTypes;
-  theme?: ButtonThemeUnionTypes;
+  size: ButtonSizeUnionTypes;
+  theme: ButtonThemeUnionTypes;
   children?: ReactNode | JSX.Element;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   loading?: boolean;

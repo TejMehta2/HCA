@@ -1,4 +1,3 @@
-import React from 'react';
 import Loader from './Loader';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -16,8 +15,4 @@ const meta: Meta<typeof Loader> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof Loader> = {
-  args: {
-    children: <p>Loader</p>,
-  },
-};
+export const Default: StoryObj<typeof Loader> = {};
