@@ -1,8 +1,8 @@
 ﻿---
-ID: "8788a45c-672c-40fc-8b02-cfcf2b351eba"
-Parent: "33191ec6-1392-403c-a2ae-9e3abdda79fd"
+ID: "82829608-cec6-46dc-9045-244613459a5d"
+Parent: "74c813ec-af5a-4a1b-b0b6-5ea004f908e7"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Foundation/Doctify/DoctifyFilters/Doctify Filters
+Path: /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Filter/Doctify Filter
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231109T160713Z
+      Value: 20231109T084722Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "25c7962e-4198-461a-b8ae-3c05ef8feac2"
+      Value: "6f122617-458b-47fc-831a-359f37e3f6de"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231109T160948Z
+      Value: 20231109T084722Z
