@@ -1,18 +1,18 @@
 ﻿---
-ID: "f6f00a46-5ffa-4141-952a-d4eaccb6b45a"
-Parent: "f2f7067c-bcad-4d44-8388-166b573d1273"
+ID: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Parent: "a3532dc4-ab01-4987-8b42-5b4deb5bc81f"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Presentation/Icons Folder
+Path: /sitecore/templates/Project/HCA/Foundation/HCAIcon
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: applications/32x32/folder_cubes.png
+  Value: Apps/32x32/Steps.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: 
-- ID: "f7d48a55-2158-4f02-9356-756654404f73"
-  Hint: __Standard values
-  Value: "{BBB54E85-DBD3-40F2-96C5-15397737BC59}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 0
 Languages:
 - Language: en
   Versions:
@@ -20,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231109T140945Z
+      Value: 20231109T132046Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +31,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "43483868-28c1-4b53-9ff6-a9beace2a095"
+      Value: "88b7d990-ae24-47c4-8526-0170f044767e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231109T141021Z
+      Value: 20231110T085602Z
