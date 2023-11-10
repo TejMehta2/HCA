@@ -1,3 +1,4 @@
+export {};
 module.exports = {
   src: '/img.jpg',
   height: 24,
