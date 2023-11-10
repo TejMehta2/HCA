@@ -1,20 +1,25 @@
 {
-  "name": "hca-root",
+  "name": "hca-workspace",
+  "workspaces": [
+    "src/component-library",
+    "src/hcamain",
+    "src/microsite"
+  ],
   "scripts": {
-    "component-library:storybook": "npm run storybook --prefix src/component-library",
-    "component-library:storybook:publish": "npm run chromatic --prefix src/component-library",
-    "component-library:scaffold": "npm run scaffold --prefix src/component-library",
-    "component-library:type-check": "npm run type-check --prefix src/component-library",
-    "component-library:test": "npm run test --prefix src/component-library",
-    "hcamain:start": "npm run start:connected --prefix src/hcamain",
-    "hcamain:start:production": "npm run start:production --prefix src/hcamain",
-    "hcamain:build": "npm run build --prefix src/hcamain",
-    "hcamain:next:start": "npm run next:start --prefix src/hcamain",
-    "hcamain:type-check": "npm run type-check --prefix src/hcamain",
-    "microsite:start": "npm run start:connected --prefix src/microsite",
-    "microsite:start:production": "npm run start:production --prefix src/microsite",
-    "microsite:build": "npm run build --prefix src/microsite",
-    "microsite:next:start": "npm run next:start --prefix src/microsite",
+    "component-library:storybook": "npm run storybook -w src/component-library",
+    "component-library:storybook:publish": "npm run chromatic -w src/component-library",
+    "component-library:scaffold": "npm run scaffold -w src/component-library",
+    "component-library:type-check": "npm run type-check -w src/component-library",
+    "component-library:test": "npm run test -w src/component-library",
+    "hcamain:start": "npm run start:connected -w src/hcamain",
+    "hcamain:start:production": "npm run start:production -w src/hcamain",
+    "hcamain:build": "npm run build -w src/hcamain",
+    "hcamain:next:start": "npm run next:start -w src/hcamain",
+    "hcamain:type-check": "npm run type-check -w src/hcamain",
+    "microsite:start": "npm run start:connected -w src/microsite",
+    "microsite:start:production": "npm run start:production -w src/microsite",
+    "microsite:build": "npm run build -w src/microsite",
+    "microsite:next:start": "npm run next:start -w src/microsite",
     "lint": "npm run lint:ts && npm run lint:scss && npm run hcamain:type-check && npm run component-library:type-check",
     "lint:ts": "eslint src/**/*.*{tsx,ts}",
     "lint:scss": "npx stylelint \"**/*.scss\" --ignore-path .prettierignore",
@@ -38,6 +43,7 @@
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-prettier": "^4.0.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "vercel": "^32.5.3"
   }
 }

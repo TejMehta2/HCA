@@ -83,7 +83,8 @@ const nextConfig = {
 
     return config;
   },
-  transpilePackages: ['../component-library/*'],
+  transpilePackages: ['@hca/component-library/*'],
+  swcMinify: false,
 };
 
 module.exports = () => {

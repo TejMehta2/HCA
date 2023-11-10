@@ -7,6 +7,7 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Text from '@hca/component-library/foundation/Text/Text';
 
 interface Fields {
   PromoIcon: ImageField;
@@ -43,7 +44,9 @@ export const Default = (props: PromoProps): JSX.Element => {
           <div className="promo-text">
             <div>
               <div className="field-promotext">
-                <JssRichText field={props.fields.PromoText} />
+                <Text>
+                  <JssRichText field={props.fields.PromoText} />
+                </Text>
               </div>
             </div>
             <div className="field-promolink">
