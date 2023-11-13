@@ -1,18 +1,12 @@
 ﻿---
-ID: "4d5a4bf6-6019-4639-945b-d96f40169939"
-Parent: "8132c506-1fb5-42fe-b889-f12707384c84"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_CQCBasePage/CQC/Status
+ID: "1d0ce027-8ef9-44d4-be19-0968ffb9f9c4"
+Parent: "b41821dc-4f48-44eb-879c-38a041ae127c"
+Template: "b41821dc-4f48-44eb-879c-38a041ae127c"
+Path: /sitecore/templates/Project/HCA/Foundation/Settings/Custom Settings Folder/__Standard Values
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{7DBC8A3B-D53E-4C02-8A2C-DEBABEF8D2F3}"
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Droplink
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{A04C63D5-F960-4965-9DDD-0FD523502DB5}"
 Languages:
 - Language: en
   Versions:
@@ -20,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231107T123647Z
+      Value: 20231113T091347Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +25,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cd48e09d-cdd8-44e6-a49d-712ad867c6db"
+      Value: "a0d5fe68-dc81-4c24-8ee6-59f2297c9f29"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231113T092406Z
+      Value: 20231113T092054Z
