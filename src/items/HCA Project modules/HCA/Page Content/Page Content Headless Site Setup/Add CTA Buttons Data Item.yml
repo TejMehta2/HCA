@@ -1,12 +1,18 @@
 ﻿---
-ID: "a7bcdc79-952b-42c2-844a-dd2fa0fd1a01"
-Parent: "459f4c0c-ae9b-4329-8620-eb12b10fe979"
-Template: "bed31d6f-d968-45a9-b54e-12d7f977d861"
-Path: /sitecore/system/Settings/Project/HCA/Page Content/Page Content Headless Site Setup
+ID: "55890006-65dc-4507-843c-272000871991"
+Parent: "a7bcdc79-952b-42c2-844a-dd2fa0fd1a01"
+Template: "3aea335c-d06d-45b1-841a-cbc8d2d1ce40"
+Path: /sitecore/system/Settings/Project/HCA/Page Content/Page Content Headless Site Setup/Add CTA Buttons Data Item
 SharedFields:
-- ID: "40deee2f-7595-40bd-b2c9-51f9e2346100"
-  Hint: Dependencies
-  Value: "{24EC97FA-F22A-404E-BC39-9B0673D46271}"
+- ID: "52c91c75-6698-4701-a8a2-242ace59a8d6"
+  Hint: Location
+  Value: "{BA2F959D-A614-4C92-8B57-F1FC1A323ABE}"
+- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
+  Hint: Name
+  Value: CTA Button
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Value: "{6299A2EA-C1B8-4F0D-86C5-9189BF77F702}"
 Languages:
 - Language: en
   Versions:
@@ -14,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T105356Z
+      Value: 20231114T110550Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -25,14 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f8fbbca1-7b5b-4c00-bd7b-92c3c9e221c3"
+      Value: "4caa0b88-b299-47fb-a6b1-ad1a9d8e737c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "c202067e-7fab-4606-afb4-e76df2185ddc"
-      Hint: Name
-      Value: Page Content
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
       Value: 20231114T110550Z
