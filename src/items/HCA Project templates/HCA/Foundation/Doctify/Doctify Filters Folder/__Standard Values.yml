@@ -6,7 +6,9 @@ Path: /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Filters Folder/
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{74C813EC-AF5A-4A1B-B0B6-5EA004F908E7}"
+  Value: |
+    {A8948F09-A4D7-4C88-A393-53749BB69A73}
+    {74C813EC-AF5A-4A1B-B0B6-5EA004F908E7}
 Languages:
 - Language: en
   Versions:
@@ -25,11 +27,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "83acad32-a2c3-42e0-9432-e6544d207faa"
+      Value: "d5c45d65-3adb-4270-8f03-515c3eb2b3ba"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231109T090334Z
+      Value: 20231113T210433Z
