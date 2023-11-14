@@ -7,6 +7,7 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import TextLink from '@hca/component-library/core-components/TextLink/TextLink';
 import Text from '@hca/component-library/foundation/Text/Text';
 
 interface Fields {
@@ -44,13 +45,15 @@ export const Default = (props: PromoProps): JSX.Element => {
           <div className="promo-text">
             <div>
               <div className="field-promotext">
-                <Text>
+                <Text tag="div">
                   <JssRichText field={props.fields.PromoText} />
                 </Text>
               </div>
             </div>
             <div className="field-promolink">
-              <JssLink field={props.fields.PromoLink} />
+              <TextLink>
+                <JssLink field={props.fields.PromoLink} />
+              </TextLink>
             </div>
           </div>
         </div>
