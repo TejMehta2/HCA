@@ -18,8 +18,9 @@ services:
       target: ${BUILD_CONFIGURATION}
       args:
         PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+        PROJECT_PATH: ${PROJECT_PATH}
     volumes:
-      - .\src\hcamain:C:\app
+      - .:${PROJECT_PATH}      
     environment:
       SITECORE_API_HOST: "http://cm"
       NEXTJS_DIST_DIR: ".next-container"

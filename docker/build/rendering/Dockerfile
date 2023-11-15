@@ -8,7 +8,8 @@
 ARG PARENT_IMAGE
 FROM ${PARENT_IMAGE} as debug
 
-WORKDIR /app
+ARG PROJECT_PATH
+WORKDIR ${PROJECT_PATH}
 
 EXPOSE 3000
 #ENTRYPOINT "npm install && npm install next@canary && npm run start:connected"
