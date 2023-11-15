@@ -115,4 +115,5 @@ services:
       Sitecore_ConnectionStrings_DAM_dot_SearchPage: ${Sitecore_DAM_SearchPage}
       Sitecore_ConnectionStrings_DAM_dot_ExternalRedirectKey: ${Sitecore_DAM_ExternalRedirectKey}
       SITECORE_AppSettings_damEnabled__define: ${SITECORE_AppSettings_damEnabled__define}
+      Sitecore_GraphQL_ExposePlayground: "true"
     entrypoint: powershell -Command "& C:/tools/entrypoints/iis/Development.ps1"
