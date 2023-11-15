@@ -39,6 +39,10 @@ if (-not $envCheck) {
 Write-Host "Keeping XM Cloud base image up to date" -ForegroundColor Green
 docker pull "$($sitecoreDockerRegistry)sitecore-xmcloud-cm:$($sitecoreVersion)"
 
+# Run npm install
+Write-Host "Running npm i" -ForegroundColor Green
+npm i
+
 # Build all containers in the Sitecore instance, forcing a pull of latest base containers
 Write-Host "Building containers..." -ForegroundColor Green
 docker compose build
