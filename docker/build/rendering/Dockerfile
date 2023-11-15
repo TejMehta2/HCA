@@ -13,4 +13,4 @@ WORKDIR ${PROJECT_PATH}
 
 EXPOSE 3000
 #ENTRYPOINT "npm install && npm install next@canary && npm run start:connected"
-ENTRYPOINT "npm install && npm run start:connected"
+ENTRYPOINT "npm run hcamain:start"
