@@ -34,17 +34,17 @@ $grid-columns-xl: 12;
   gap: $grid-gap;
 
   // Add extra breakpoints only if needed, i.e. columns value is different from previous breakpoint
-  @if not $grid-columns-m == $grid-columns-s {
+  @if $grid-columns-m != $grid-columns-s {
     @include media(screen-m) {
       grid-template-columns: repeat(#{$grid-columns-m}, 1fr);
     }
   }
-  @if not $grid-columns-l == $grid-columns-m {
+  @if $grid-columns-l != $grid-columns-m {
     @include media(screen-l) {
       grid-template-columns: repeat(#{$grid-columns-l}, 1fr);
     }
   }
-  @if not $grid-columns-xl == $grid-columns-l {
+  @if $grid-columns-xl != $grid-columns-l {
     @include media(screen-xl) {
       grid-template-columns: repeat(#{$grid-columns-xl}, 1fr);
     }
