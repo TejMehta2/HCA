@@ -1,0 +1,25 @@
+@use '../../foundation/index.module' as *;
+
+.block-wrapper {
+  @include responsive-container;
+}
+
+.block-container {
+  @include responsive-grid;
+  width: 100%;
+}
+
+.block-image {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: unset;
+  }
+}
+
+.block-content {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+}
