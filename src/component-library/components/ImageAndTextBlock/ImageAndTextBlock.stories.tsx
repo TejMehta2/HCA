@@ -62,24 +62,26 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
           </button>
         </Button>
       ),
-      button2: (
-        <Button size="large" theme="outline-dark">
-          <button>
-            <span>
-              Access care with <strong>insurance</strong>
-            </span>
-          </button>
-        </Button>
-      ),
-      button2Text: (
-        <TextButton>
-          <button>
-            <span>
-              Access care with <strong>insurance</strong>
-            </span>
-          </button>
-        </TextButton>
-      ),
+      button2: {
+        button: (
+          <Button size="large" theme="outline-dark">
+            <button>
+              <span>
+                Access care with <strong>insurance</strong>
+              </span>
+            </button>
+          </Button>
+        ),
+        text: (
+          <TextButton>
+            <button>
+              <span>
+                Access care with <strong>insurance</strong>
+              </span>
+            </button>
+          </TextButton>
+        ),
+      },
     },
   },
 };
@@ -138,24 +140,26 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
           </button>
         </Button>
       ),
-      button2: (
-        <Button size="large" theme="outline-dark">
-          <button>
-            <span>
-              Access care with <strong>insurance</strong>
-            </span>
-          </button>
-        </Button>
-      ),
-      button2Text: (
-        <TextButton>
-          <button>
-            <span>
-              Access care with <strong>insurance</strong>
-            </span>
-          </button>
-        </TextButton>
-      ),
+      button2: {
+        button: (
+          <Button size="large" theme="outline-dark">
+            <button>
+              <span>
+                Access care with <strong>insurance</strong>
+              </span>
+            </button>
+          </Button>
+        ),
+        text: (
+          <TextButton>
+            <button>
+              <span>
+                Access care with <strong>insurance</strong>
+              </span>
+            </button>
+          </TextButton>
+        ),
+      },
     },
   },
 };

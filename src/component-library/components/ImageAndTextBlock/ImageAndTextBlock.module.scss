@@ -105,20 +105,12 @@
 }
 
 .header {
-  & > * {
-    margin: 0;
-  }
-
   padding-bottom: $spacing-6;
 }
 
 .subheader {
   display: flex;
   padding-bottom: $spacing-2;
-
-  & > * {
-    margin: 0;
-  }
 }
 
 .ctas {

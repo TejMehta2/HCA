@@ -54,9 +54,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
           {ctas && (
             <div className={styles['ctas']}>
               {ctas?.button1}
-              {ctas.button2 &&
-                ctas.button2Text &&
-                (isXl ? ctas.button2Text : ctas.button2)}
+              {ctas.button2 && (isXl ? ctas.button2.text : ctas.button2.button)}
             </div>
           )}
         </div>

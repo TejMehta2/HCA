@@ -9,7 +9,7 @@ import * as ImageAndTextBlockStories from './ImageAndTextBlock.stories';
 
 The ImageAndTextBlock component consists of an image, header and body text. It can optionally have a subheader, one or two buttons. The image can be set to show to the left or right of the text using the `ImageAligment` prop. If the text is less than 620 characters (including spaces) the short version of the component should be shown (this is the default). If it is longer then the `length` prop should be passed to the component with a value of `long`.
 
-When showing the second button, to meet the requirements of the design there are two button props that should be passed - `button2Text` a `TextButton` which is shown on XL sizes and `button2` - a standard `Button` which is displayed on all other sizes. Both props must be passed for the second button to be displayed.
+When showing the second button, to meet the requirements of the design there are two props that should be passed via button2 - `text` a `TextButton` which is shown on XL sizes and `button` - a standard `Button` which is displayed on all other sizes. Both props must be passed for the second button to be displayed.
 
 It is intended to be used on the homepage for example.
 
@@ -35,24 +35,26 @@ import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
         </button>
       </Button>
     ),
-    button2: (
-      <Button size="large" theme="outline-dark">
-        <button>
-          <span>
-            Access care with <strong>insurance</strong>
-          </span>
-        </button>
-      </Button>
-    ),
-    button2Text: (
-      <TextButton>
-        <button>
-          <span>
-            Access care with <strong>insurance</strong>
-          </span>
-        </button>
-      </TextButton>
-    ),
+    button2: {
+      button: (
+        <Button size="large" theme="outline-dark">
+          <button>
+            <span>
+              Access care with <strong>insurance</strong>
+            </span>
+          </button>
+        </Button>
+      ),
+      text: (
+        <TextButton>
+          <button>
+            <span>
+              Access care with <strong>insurance</strong>
+            </span>
+          </button>
+        </TextButton>
+      ),
+    },
   }}
 >
   <Text tag="p" variation="body-large">
