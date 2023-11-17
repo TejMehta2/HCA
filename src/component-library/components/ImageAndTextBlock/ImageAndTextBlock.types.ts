@@ -13,6 +13,6 @@ export interface ImageAndTextBlockProps {
     button2?: JSX.Element;
     button2Text?: JSX.Element;
   };
-  imageAlignment: imageAlignmentTypes;
-  length: lengthTypes;
+  imageAlignment?: imageAlignmentTypes;
+  length?: lengthTypes;
 }

@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as ImageAndTextBlockStories from './ImageAndTextBlock.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ImageAndTextBlockStories from './ImageAndTextBlock.stories';
 
 <Meta of={ImageAndTextBlockStories} />
 
@@ -7,17 +7,62 @@ import * as ImageAndTextBlockStories from './ImageAndTextBlock.stories'
 
 ## Description
 
-The ImageAndTextBlock component is...
+The ImageAndTextBlock component consists of an image, header and body text. It can optionally have a subheader, one or two buttons. The image can be set to show to the left or right of the text using the `ImageAligment` prop. If the text is less than 620 characters (including spaces) the short version of the component should be shown (this is the default). If it is longer then the `length` prop should be passed to the component with a value of `long`.
 
-It is intended to be used in...
+It is intended to be used on the homepage for example.
 
 It can be composed like this:
 
-``` tsx
-<ImageAndTextBlock></ImageAndTextBlock>
+```tsx
+import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
+
+<ImageAndTextBlock
+  header={
+    <Text tag="h2" variation="display-2">
+      New to private healthcare?
+    </Text>
+  }
+  image={<JssImage field={props.fields.PromoIcon} />}
+  ctas={{
+    button1: (
+      <Button size="large" theme="full-dark">
+        <button>
+          <span>
+            Learn more about <strong>self-pay</strong>
+          </span>
+        </button>
+      </Button>
+    ),
+    button2: (
+      <Button size="large" theme="outline-dark">
+        <button>
+          <span>
+            Access care with <strong>insurance</strong>
+          </span>
+        </button>
+      </Button>
+    ),
+    button2Text: (
+      <TextButton>
+        <button>
+          <span>
+            Access care with <strong>insurance</strong>
+          </span>
+        </button>
+      </TextButton>
+    ),
+  }}
+>
+  <Text tag="p" variation="body-large">
+    Quis laboris proident sint amet id cillum do dolor in tempor est.
+    Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et
+    culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit
+    occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.
+  </Text>
+</ImageAndTextBlock>;
 ```
 
-## Example 
+## Example
 
 <Canvas of={ImageAndTextBlockStories.Short} />
 <Controls of={ImageAndTextBlockStories.Short} />
