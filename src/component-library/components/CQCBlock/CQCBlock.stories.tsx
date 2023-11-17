@@ -3,6 +3,7 @@ import CQCBlock from './CQCBlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
+import Image from 'next/image';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CQCBlock> = {
@@ -18,9 +19,27 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CQCBlock> = {
   args: {
+    logo: {
+      dark: (
+        <Image
+          src="/assets/images/cqc-color.png"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+      ),
+      light: (
+        <Image
+          src="/assets/images/cqc-white.png"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+      ),
+    },
     children: (
       <>
-        <Text tag="span" variation="BodySemiBoldSmall">
+        <Text tag="span" variation="body-semi-bold-small">
           Care Quality Commission verified
         </Text>
         <Text tag="span" variation="body-small">
