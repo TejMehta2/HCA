@@ -1,0 +1,146 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as ThemesStories from './Themes.stories'
+
+<Meta of={ThemesStories} />
+
+# Themes
+
+## Description
+
+Themes expose a list of CSS custom variables in the cascade. The full list is at the bottom of this documentation.
+
+## Assigning a theme
+
+The current theme can be assigned as follows.
+
+### Via SCSS mixin
+
+``` scss
+.my-component {
+  @include apply-theme-a;
+}
+.my-component .my-nested-component {
+  @include apply-theme-b
+}
+```
+
+### Via React component
+
+``` tsx
+<Themes theme='a'>
+  <MyComponent />
+</Themes>
+```
+
+Many of the site components inherit the theme from the cascade, as demonstrated in the stories.
+
+The CSS custom properties of the theme can be consumed manually:
+
+``` scss
+.my-themed-component {
+  background: var(--background);
+  color: var(--text);
+
+  .card {
+    background: var(--card-background);
+    color: var(--card-text);
+  }
+}
+```
+
+## CSS custom property list
+
+The vast majority of the theme properties are consumed automatically by core-components, these are grouped in the mixins in the "./theme-parts" directory.
+
+### Base (consumed manually in components)
+- `--text`
+- `--background`
+- `--card-background`
+- `--card-secondary-background`
+- `--card-secondary-text`
+### CTAs (consumed automatically by Buttons component)
+- `--cta-full-background`
+- `--cta-full-text`
+- `--cta-full-border`
+- `--cta-full-hover-background`
+- `--cta-full-hover-text`
+- `--cta-full-hover-border`
+- `--cta-full-disabled-background`
+- `--cta-full-disabled-text`
+- `--cta-full-disabled-border`
+- `--cta-full-active-background`
+- `--cta-full-active-text`
+- `--cta-full-active-border`
+- `--cta-full-focus-background`
+- `--cta-full-focus-text`
+- `--cta-full-focus-border`
+
+- `--cta-outline-background`
+- `--cta-outline-text`
+- `--cta-outline-border`
+- `--cta-outline-hover-background`
+- `--cta-outline-hover-text`
+- `--cta-outline-hover-border`
+- `--cta-outline-disabled-background`
+- `--cta-outline-disabled-text`
+- `--cta-outline-disabled-border`
+- `--cta-outline-active-background`
+- `--cta-outline-active-text`
+- `--cta-outline-active-border`
+- `--cta-outline-focus-outline`
+### Tags (consumed automatically by Tags component)
+- `--tag-background`
+- `--tag-text`
+- `--tag-hover-background`
+- `--tag-active-background`
+- `--tag-focus-background`
+- `--tag-focus-outline`
+- `--tag-secondary-background`
+- `--tag-secondary-text`
+- `--tag-secondary-hover-background`
+- `--tag-secondary-active-background`
+- `--tag-secondary-focus-background`
+- `--tag-secondary-focus-outline`
+
+### Tabs (consumed automatically by Tabs component)
+- `--tab-text`
+- `--tab-active-text`
+- `--tab-background`
+
+## Demo
+
+<Canvas of={ThemesStories.ThemeA}  />
+<Controls of={ThemesStories.ThemeA} />
+
+### Nested Themes
+
+Themes can be nested, as shown below.
+
+#### In React
+``` tsx
+<Themes theme='a'>
+  <ParentComponent>
+    <h2>Here theme a</h2>
+    <Themes theme='b'>
+      <h3>Here theme b</h3>
+      <ChildComponent />
+    </Themes>
+  </ParentComponent>
+</Themes>
+```
+#### In SCSS
+
+``` scss
+.wrapper {
+  @include apply-theme-a;
+
+  .children {
+    @include apply-theme-b;
+  }
+}
+```
+
+### Overrides
+
+Various components can override their theme styles via props e.g. Buttons and Tags.
+

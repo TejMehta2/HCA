@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs from './Tabs';
 import type { Meta, StoryObj } from '@storybook/react';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Tabs> = {
@@ -16,6 +17,13 @@ const meta: Meta<typeof Tabs> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: [],
+  decorators: [
+    (Story) => (
+      <Themes theme={'f'}>
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export default meta;
@@ -23,7 +31,6 @@ export default meta;
 export const Default: StoryObj<typeof Tabs> = {
   args: {
     callback: (name: string) => console.log(name),
-    theme: 'main-turquoise',
     tabs: [
       { icon: 'iconOneOff', label: 'One-off' },
       { icon: 'iconFlexible', label: 'Flexi' },

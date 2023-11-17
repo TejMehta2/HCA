@@ -103,207 +103,155 @@
     border: 0;
   }
 
-  &-dark {
-    a,
-    button {
-      background-color: $dark-blue;
-      color: $white;
-      border: 1px solid $dark-blue;
-
-      @include apply-hover-transition($white);
-
-      &:hover {
-        color: $dark-blue;
-        border-color: $dark-blue;
-      }
-
-      &:active {
-        background-color: $white;
-        color: $dark-blue;
-        border-color: $dark-blue;
-      }
-
-      &:disabled {
-        background-color: $dark-blue-40;
-        color: $dark-blue-10;
-        border-color: $dark-blue-40;
-      }
-
-      &:focus-visible {
-        @include apply-focus-outline($main-turquoise);
-      }
-    }
-  }
-
+  &,
+  &-dark,
   &-light {
     a,
     button {
-      background-color: $main-turquoise;
-      color: $dark-blue;
-      border: 1px solid $main-turquoise;
+      background-color: var(--cta-full-background);
+      color: var(--cta-full-text);
+      border: 1px solid var(--cta-full-border);
 
-      @include apply-hover-transition($dark-blue);
+      @include apply-hover-transition(var(--cta-full-hover-background));
 
       &:hover {
-        color: $white;
-        border-color: $white;
+        color: var(--cta-full-hover-text);
+        border-color: var(--cta-full-hover-border);
       }
 
       &:active {
-        background-color: $dark-blue;
-        color: $dark-blue-10;
-        border-color: $dark-blue-10;
+        background-color: var(--cta-full-active-background);
+        color: var(--cta-full-active-text);
+        border-color: var(--cta-full-active-border);
       }
 
       &:disabled {
-        background-color: $dark-blue-60;
-        color: $dark-blue-20;
-        border-color: $dark-blue-60;
+        background-color: var(--cta-full-disabled-background);
+        color: var(--cta-full-disabled-text);
+        border-color: var(--cta-full-disabled-border);
       }
 
       &:focus-visible {
-        border-color: $main-turquoise;
-
-        @include apply-focus-outline($dark-blue);
+        border-color: var(--cta-full-focus-border);
+        @include apply-focus-outline(var(--cta-full-focus-outline));
       }
     }
   }
 
+  // Overrides
   &-light-blue {
+    @include apply-cta-full-light-blue;
+
     a,
     button {
-      background-color: $main-turquoise-5;
-      color: $dark-blue;
-      border: $main-turquoise-5;
+      background-color: var(--cta-full-background);
+      color: var(--cta-full-text);
+      border: var(--cta-full-border);
 
-      @include apply-hover-transition($main-turquoise-10);
+      @include apply-hover-transition(var(--cta-full-hover-background));
 
       &:active {
-        background-color: $main-turquoise-5;
+        background-color: var(--cta-full-disabled-text);
       }
 
       &:disabled {
-        color: $dark-blue-40;
+        color: var(--cta-full-disabled-background);
       }
 
       &:focus-visible {
-        border-color: $dark-blue;
+        border-color: var(--cta-full-focus-border);
       }
     }
+  }
+
+  // Overrides
+  &-dark {
+    @include apply-cta-full-dark;
+  }
+
+  &-light {
+    @include apply-cta-full-light;
   }
 }
 
 .outline {
-  &-dark {
-    a,
-    button {
-      background-color: $white;
-      color: $dark-blue;
-      border: 1px solid $dark-blue;
-
-      @include apply-hover-transition($dark-blue);
-
-      &:hover {
-        color: $white;
-        border-color: $dark-blue;
-      }
-
-      &:active {
-        background-color: $dark-blue-60;
-        color: $white;
-        border-color: $dark-blue-60;
-      }
-
-      &:disabled {
-        background-color: $white;
-        color: $dark-blue-40;
-        border-color: $dark-blue-40;
-      }
-
-      &:focus-visible {
-        @include apply-focus-outline($dark-blue);
-      }
-    }
-  }
-
+  &,
+  &-dark,
   &-light {
     a,
     button {
-      background-color: $dark-blue;
-      color: $white;
-      border: 1px solid $white;
+      background-color: var(--cta-outline-background);
+      color: var(--cta-outline-text);
+      border: 1px solid var(--cta-outline-border);
 
-      @include apply-hover-transition($main-turquoise);
+      @include apply-hover-transition(var(--cta-outline-hover-background));
 
       &:hover {
-        color: $dark-blue;
-        border-color: $main-turquoise;
+        color: var(--cta-outline-hover-text);
+        border-color: var(--cta-outline-hover-border);
       }
 
       &:active {
-        background-color: $main-turquoise-60;
-        color: $dark-blue;
-        border-color: $main-turquoise-60;
+        background-color: var(--cta-outline-active-background);
+        color: var(--cta-outline-active-text);
+        border-color: var(--cta-outline-active-border);
       }
 
       &:disabled {
-        background-color: $dark-blue;
-        color: $dark-blue-20;
-        border-color: $dark-blue-20;
+        background-color: var(--cta-outline-disabled-background);
+        color: var(--cta-outline-disabled-text);
+        border-color: var(--cta-outline-disabled-border);
       }
 
       &:focus-visible {
-        @include apply-focus-outline($white);
+        @include apply-focus-outline(var(--cta-outline-focus-outline));
       }
     }
   }
-}
 
-.social-light {
-  a,
-  button {
-    background-color: $white;
-    color: $dark-blue;
-    border: 1px solid $dark-blue-9;
-    display: flex;
+  // Overrides
+  &-dark {
+    @include apply-cta-outline-dark;
+  }
 
-    &:hover {
-      border-color: $dark-blue;
-    }
-
-    &:active {
-      border-color: $dark-blue-40;
-    }
-
-    &:focus-visible {
-      border-color: $dark-blue-9;
-      outline: 2px solid $dark-blue;
-      outline-offset: px-to-rem(-5);
-    }
+  &-light {
+    @include apply-cta-outline-light;
   }
 }
 
-.social-dark {
-  a,
-  button {
-    background-color: $dark-blue;
-    color: $white;
-    border: 1px solid $dark-blue-60;
-    display: flex;
+.social {
+  &,
+  &-light,
+  &-dark {
+    a,
+    button {
+      background-color: var(--cta-outline-background);
+      color: var(--cta-outline-text);
+      border: 1px solid var(--cta-outline-border);
+      display: flex;
 
-    &:hover {
-      border-color: $white;
-    }
+      &:hover {
+        border-color: var(--cta-outline-hover-border);
+      }
 
-    &:active {
-      border-color: $dark-blue-40;
-    }
+      &:active {
+        border-color: var(--cta-outline-active-border);
+      }
 
-    &:focus-visible {
-      border-color: $dark-blue-9;
-      outline: 2px solid $white;
-      outline-offset: -5px;
+      &:focus-visible {
+        border-color: var(--cta-outline-active-border);
+        outline: 2px solid var(--cta-outline-active-outline);
+        outline-offset: -5px;
+      }
     }
+  }
+
+  &-dark {
+    @include apply-cta-social-dark;
+  }
+
+  &-light {
+    @include apply-cta-social-light;
   }
 }
 
@@ -320,77 +268,48 @@
 }
 
 .standard-carousel {
+  &,
   &-light,
   &-dark {
     button {
       padding: px-to-rem(16);
       border-radius: 50%;
+      background-color: var(--cta-carousel-background);
+      color: var(--cta-carousel-text);
+      border: 1px solid var(--cta-carousel-border);
+
+      &:hover {
+        background-color: var(--cta-carousel-hover-background);
+        color: var(--cta-carousel-hover-text);
+      }
+
+      &:active {
+        background-color: var(--cta-carousel-disabled-background);
+        color: var(--cta-carousel-disabled-text);
+        border-color: var(--cta-carousel-active-background);
+      }
+
+      &:disabled {
+        background-color: var(--cta-carousel-active-text);
+        color: var(--cta-carousel-active-border);
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        @include apply-focus-outline(var(--cta-carousel-focus-outline));
+      }
     }
   }
 
   &-dark {
-    button {
-      background-color: $dark-blue;
-      color: $white;
-      border: 1px solid $dark-blue;
-
-      &:hover {
-        background-color: $white;
-        color: $dark-blue;
-      }
-
-      &:active {
-        background-color: $white;
-        color: $dark-blue;
-        border-color: $dark-blue-40;
-      }
-
-      &:disabled {
-        background-color: $dark-blue-40;
-        color: $dark-blue-10;
-      }
-
-      &:focus {
-        outline: 0;
-      }
-
-      &:focus-visible {
-        @include apply-focus-outline($main-turquoise);
-      }
-    }
+    @include apply-cta-carousel-dark;
   }
 
   &-light {
-    button {
-      background-color: $main-turquoise;
-      color: $dark-blue;
-      border: 1px solid $main-turquoise;
-
-      &:hover {
-        background-color: $dark-blue;
-        color: $white;
-        border-color: $white;
-      }
-
-      &:active {
-        background-color: $dark-blue;
-        color: $dark-blue-9;
-        border-color: $dark-blue-10;
-      }
-
-      &:disabled {
-        background-color: $dark-blue-40;
-        color: $dark-blue-10;
-      }
-
-      &:focus {
-        outline: 0;
-      }
-
-      &:focus-visible {
-        @include apply-focus-outline($dark-blue);
-      }
-    }
+    @include apply-cta-carousel-light;
   }
 }
 

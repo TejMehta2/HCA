@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta, Controls } from '@storybook/blocks';
 import * as TagsStories from './Tags.stories';
 
 <Meta of={TagsStories} />
@@ -9,12 +9,9 @@ The Tags component is intended apply styles by wrapping a plain HTML link tag (i
 
 The theme (comprising of a background and text colour) are controlled by the `theme` prop.
 
+The theme can be inherited from the cascade by leaving the `theme` prop unset.
+
 The background of the Tags' parent component is intended to be determined by the parent, e.g. in the case of the `theme="white"`  version, which is displayed on an orange background in the designs.
 
 <Canvas of={TagsStories.Green}  />
-<Canvas of={TagsStories.DarkBlue}  />
-<Canvas of={TagsStories.Orange}  />
-<Canvas of={TagsStories.White} style={{ background: '#F9C099' }} />
-<Canvas of={TagsStories.MainTurquoise}  />
-
-
+<Controls of={TagsStories.Green}  />
