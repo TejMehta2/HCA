@@ -7,8 +7,9 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import TextLink from '@hca/component-library/core-components/TextLink/TextLink';
+import Button from '@hca/component-library/core-components/Button/Button';
 import Text from '@hca/component-library/foundation/Text/Text';
+import Themes from '@hca/component-library/foundation/Themes/Themes';
 
 interface Fields {
   PromoIcon: ImageField;
@@ -51,9 +52,18 @@ export const Default = (props: PromoProps): JSX.Element => {
               </div>
             </div>
             <div className="field-promolink">
-              <TextLink>
-                <JssLink field={props.fields.PromoLink} />
-              </TextLink>
+              <Themes theme="a">
+                <Button size={'small'} theme={'outline'}>
+                  <JssLink field={props.fields.PromoLink}>
+                    Themed outline button
+                  </JssLink>
+                </Button>
+                <Button size={'small'} theme={'full'}>
+                  <JssLink field={props.fields.PromoLink}>
+                    Themed full button
+                  </JssLink>
+                </Button>
+              </Themes>
             </div>
           </div>
         </div>

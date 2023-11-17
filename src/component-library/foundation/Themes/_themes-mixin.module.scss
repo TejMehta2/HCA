@@ -1,0 +1,129 @@
+@use '../Colours/colours.module' as *;
+@use './theme-parts/index.module' as *;
+@forward './theme-parts/index.module';
+
+@mixin apply-shared-theme-dark {
+  --text: #{$white};
+  --card-secondary-background: #{$white};
+  --card-secondary-text: #{$dark-blue};
+  @include apply-cta-full-light;
+  @include apply-cta-outline-light;
+  @include apply-tag-secondary-green;
+}
+
+@mixin apply-shared-theme-light {
+  --text: #{$dark-blue};
+  --card-secondary-background: #{$dark-blue};
+  --card-secondary-text: #{$white};
+  @include apply-cta-full-dark;
+  @include apply-cta-outline-dark;
+  @include apply-tag-secondary-dark-blue;
+}
+
+@mixin apply-theme-a {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise};
+  --card-background: #{$main-turquoise-10};
+  @include apply-tag-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-b {
+  @include apply-shared-theme-light;
+
+  --background: #{$green};
+  --card-background: #{$green-20};
+  @include apply-tag-green;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-c {
+  @include apply-shared-theme-light;
+
+  --background: #{$beige};
+  --card-background: #{$white};
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+}
+
+@mixin apply-theme-d {
+  @include apply-shared-theme-light;
+
+  --background: #{$light-orange};
+  --card-background: #{$beige};
+  @include apply-tag-orange;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-e {
+  @include apply-shared-theme-dark;
+
+  --background: #{$dark-blue};
+  --card-background: #{$dark-blue-80};
+  @include apply-tag-dark-blue;
+  @include apply-tabs-blue;
+}
+
+@mixin apply-theme-f {
+  @include apply-shared-theme-light;
+
+  --background: #{$white};
+  --card-background: #{$beige};
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+}
+
+@mixin apply-theme-g {
+  @include apply-shared-theme-light;
+
+  --background: #{$green-40};
+  --card-background: #{$white};
+  @include apply-tag-green;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-h {
+  @include apply-shared-theme-light;
+
+  --background: #{$green-20};
+  --card-background: #{$white};
+  @include apply-tag-white;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-i {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-20};
+  --card-background: #{$white};
+  @include apply-tag-white;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-j {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-10};
+  --card-background: #{$white};
+  @include apply-tag-white;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-k {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-5};
+  --card-background: #{$white};
+  @include apply-tag-white;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-l {
+  @include apply-shared-theme-light;
+
+  --background: #{$coral-60};
+  --card-background: #{$white};
+  @include apply-tag-coral;
+  @include apply-tabs-white;
+}
