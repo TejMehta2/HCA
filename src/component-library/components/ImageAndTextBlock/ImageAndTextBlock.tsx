@@ -49,7 +49,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
         <div className={styles['content']}>
           {subheader && <div className={styles['subheader']}>{subheader}</div>}
           <div className={styles['header']}>{header}</div>
-          <div className={styles['text']}>{children}</div>
+          <div>{children}</div>
 
           {ctas && (
             <div className={styles['ctas']}>
