@@ -11,7 +11,7 @@ The ImageAndTextBlock component consists of an image, header and body text. It c
 
 When showing the second button, to meet the requirements of the design there are two props that should be passed via button2 - `text` a `TextButton` which is shown on XL sizes and `button` - a standard `Button` which is displayed on all other sizes. Both props must be passed for the second button to be displayed.
 
-It is intended to be used on the homepage for example.
+It is intended to be used on the homepage for example. This component requires to have a theme set and makes use of the `Themes` component to doing so.
 
 It can be composed like this:
 
@@ -19,6 +19,7 @@ It can be composed like this:
 import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
 
 <ImageAndTextBlock
+  theme: 'a',
   ImageAligment="left"
   length="short"
   header={
