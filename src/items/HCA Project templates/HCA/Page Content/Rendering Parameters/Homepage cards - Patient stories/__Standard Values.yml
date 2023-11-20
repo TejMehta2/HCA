@@ -1,0 +1,27 @@
+﻿---
+ID: "e37f912c-8a78-473d-941c-e3f3daf66e3b"
+Parent: "18cb9634-682a-4545-9fdc-6efbc53cfc16"
+Template: "18cb9634-682a-4545-9fdc-6efbc53cfc16"
+Path: "/sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Homepage cards - Patient stories/__Standard Values"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1157f370-dda6-4cad-9264-7b74ed485861"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231117T085922Z
