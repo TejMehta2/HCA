@@ -1,2 +1,87 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
 .wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: $small-radius;
+  padding: px-to-rem(16);
+  display: grid;
+  grid-template-areas:
+    'logo logo'
+    'title icon'
+    'text icon';
+  grid-template-rows: auto auto auto;
+  grid-template-columns: minmax(auto, px-to-rem(235)) max-content;
+  column-gap: px-to-rem(23);
+  row-gap: px-to-rem(8);
+}
+
+.dark {
+  .icon {
+    color: $green-40;
+  }
+}
+
+.rating {
+  display: flex;
+}
+
+.requires-improvement {
+  .icon {
+    color: $light-orange;
+  }
+}
+
+.inadequate {
+  .icon {
+    color: $red;
+  }
+
+  &.dark {
+    .icon {
+      color: $coral;
+    }
+  }
+}
+
+.long {
+  grid-template-areas:
+    'logo title'
+    'logo text';
+  grid-template-rows: auto auto;
+  grid-template-columns: min-content max-content;
+  gap: 0;
+  align-items: center;
+
+  .title {
+    justify-content: unset;
+    gap: px-to-rem(8);
+  }
+
+  .logo {
+    padding: 0 px-to-rem(23) 0 0;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  grid-area: text;
+}
+
+.icon {
+  grid-area: icon;
+  color: $main-turquoise;
+  display: flex;
 }

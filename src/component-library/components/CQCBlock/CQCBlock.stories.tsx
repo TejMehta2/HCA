@@ -1,7 +1,6 @@
 import React from 'react';
 import CQCBlock from './CQCBlock';
 import type { Meta, StoryObj } from '@storybook/react';
-import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 
@@ -17,36 +16,66 @@ const meta: Meta<typeof CQCBlock> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof CQCBlock> = {
+export const Short: StoryObj<typeof CQCBlock> = {
   args: {
+    theme: 'dark',
     logo: {
       dark: (
-        <Image
-          src="/assets/images/cqc-color.png"
-          alt="two children playing"
-          width="643"
-          height="605"
-        />
+        <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
       ),
       light: (
-        <Image
-          src="/assets/images/cqc-white.png"
-          alt="two children playing"
-          width="643"
-          height="605"
-        />
+        <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
       ),
     },
-    children: (
-      <>
-        <Text tag="span" variation="body-semi-bold-small">
-          Care Quality Commission verified
-        </Text>
-        <Text tag="span" variation="body-small">
-          All our hospitals are rated Good or Oustanding.
-        </Text>
-        <Icons iconName="iconCheckCircle"></Icons>
-      </>
-    ),
+    title: 'Care Quality Commission verified',
+    text: 'All our hospitals are rated Good or Oustanding.',
+
+    icon: <Icons iconName="iconCheckCircle"></Icons>,
+  },
+};
+
+export const Long: StoryObj<typeof CQCBlock> = {
+  args: {
+    length: 'long',
+    theme: 'light',
+    logo: {
+      dark: (
+        <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
+      ),
+      light: (
+        <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
+      ),
+    },
+    title: 'Care Quality Commission verified',
+    text: 'All our hospitals are rated Good or Oustanding.',
+    icon: <Icons iconName="iconCheckCircle"></Icons>,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
+  },
+};
+
+export const Rating: StoryObj<typeof CQCBlock> = {
+  args: {
+    theme: 'light',
+    logo: {
+      dark: (
+        <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
+      ),
+      light: (
+        <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
+      ),
+    },
+    icon: <Icons iconName="iconCheckCircle"></Icons>,
+    rating: 'Outstanding',
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
   },
 };
