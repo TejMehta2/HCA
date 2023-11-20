@@ -17,10 +17,12 @@
     border: 0;
     padding: 0 0 px-to-rem(8);
     position: relative;
+    color: var(--cta-text-color);
 
     @include apply-body-medium-large;
 
     &::after {
+      background-color: var(--cta-text-color);
       content: '';
       display: block;
       width: 100%;
@@ -29,38 +31,6 @@
       bottom: px-to-rem(0);
       left: 0;
       position: absolute;
-    }
-
-    &:hover {
-      &::after {
-        width: 0;
-      }
-    }
-
-    &:focus {
-      outline: 0;
-    }
-
-    &:focus-visible {
-      padding: px-to-rem(4) px-to-rem(8);
-      border-radius: $small-radius;
-
-      &::after {
-        display: none;
-      }
-    }
-
-    &:disabled {
-      pointer-events: none;
-    }
-  }
-
-  button,
-  a {
-    color: var(--cta-text-color);
-
-    &::after {
-      background-color: var(--cta-text-color);
     }
 
     &:active {
@@ -79,8 +49,24 @@
       }
     }
 
+    &:hover {
+      &::after {
+        width: 0;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
     &:focus-visible {
       border: px-to-rem(2) solid var(--cta-text-color);
+      padding: px-to-rem(4) px-to-rem(8);
+      border-radius: $small-radius;
+
+      &::after {
+        display: none;
+      }
     }
   }
 }
