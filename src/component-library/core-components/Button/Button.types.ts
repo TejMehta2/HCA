@@ -2,6 +2,10 @@ import { ReactNode } from 'react';
 
 type ButtonSizeUnionTypes = 'small' | 'large';
 type ButtonThemeUnionTypes =
+  | 'full'
+  | 'outline'
+  | 'social'
+  | 'standard-carousel'
   | 'full-dark'
   | 'full-light'
   | 'outline-dark'
