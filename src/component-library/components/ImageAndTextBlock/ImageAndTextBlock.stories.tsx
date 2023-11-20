@@ -20,6 +20,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Short: StoryObj<typeof ImageAndTextBlock> = {
   args: {
+    theme: 'a',
     length: 'short',
     image: (
       <Image
@@ -54,7 +55,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: {
       button1: (
-        <Button size="large" theme="full-dark">
+        <Button size="large" theme="full">
           <button>
             <span>
               Learn more about <strong>self-pay</strong>
@@ -64,7 +65,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
       ),
       button2: {
         button: (
-          <Button size="large" theme="outline-dark">
+          <Button size="large" theme="outline">
             <button>
               <span>
                 Access care with <strong>insurance</strong>
@@ -88,6 +89,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
 
 export const Long: StoryObj<typeof ImageAndTextBlock> = {
   args: {
+    theme: 'b',
     imageAlignment: 'right',
     length: 'long',
     image: (
@@ -132,7 +134,7 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: {
       button1: (
-        <Button size="large" theme="full-dark">
+        <Button size="large" theme="full">
           <button>
             <span>
               Learn more about <strong>self-pay</strong>
@@ -142,7 +144,7 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
       ),
       button2: {
         button: (
-          <Button size="large" theme="outline-dark">
+          <Button size="large" theme="outline">
             <button>
               <span>
                 Access care with <strong>insurance</strong>

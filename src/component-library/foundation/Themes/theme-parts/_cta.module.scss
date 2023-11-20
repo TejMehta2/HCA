@@ -193,3 +193,28 @@
   // Focus
   --cta-carousel-focus-outline: #{$dark-blue};
 }
+
+//Text Buttons
+
+@mixin apply-text-buttons-dark {
+  // Base
+  --cta-text-color: #{$dark-blue};
+  --cta-text-underline: #{$dark-blue};
+
+  // Disabled
+  --cta-text-disabled-color: #{$dark-blue-40};
+
+  // Active
+  --cta-text-active-color: #{$dark-blue-40};
+}
+
+@mixin apply-text-buttons-light {
+  // Base
+  --cta-text-color: #{$white};
+
+  // Disabled
+  --cta-text-disabled-color: #{$dark-blue-40};
+
+  // Active
+  --cta-text-active-color: #{$main-turquoise};
+}

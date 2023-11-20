@@ -17,4 +17,5 @@ export interface ImageAndTextBlockProps {
   };
   imageAlignment?: imageAlignmentTypes;
   length?: lengthTypes;
+  theme: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l';
 }

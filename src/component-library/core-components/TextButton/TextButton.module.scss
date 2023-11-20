@@ -54,70 +54,45 @@
       pointer-events: none;
     }
   }
+
+  button,
+  a {
+    color: var(--cta-text-color);
+
+    &::after {
+      background-color: var(--cta-text-color);
+    }
+
+    &:active {
+      color: --cta-text-active-color;
+
+      &::after {
+        background: transparent;
+      }
+    }
+
+    &:disabled {
+      color: var(--cta-text-disabled-color);
+
+      &::after {
+        background: var(--cta-text-disabled-color);
+      }
+    }
+
+    &:focus-visible {
+      border: px-to-rem(2) solid var(--cta-text-color);
+    }
+  }
 }
 
 /* stylelint-disable no-descending-specificity */
 
 .dark {
-  button,
-  a {
-    color: $dark-blue;
-
-    &::after {
-      background: $dark-blue;
-    }
-
-    &:active {
-      color: $dark-blue-40;
-
-      &::after {
-        background: transparent;
-      }
-    }
-
-    &:disabled {
-      color: $dark-blue-40;
-
-      &::after {
-        background: $dark-blue-40;
-      }
-    }
-
-    &:focus-visible {
-      border: px-to-rem(2) solid $dark-blue;
-    }
-  }
+  @include apply-text-buttons-dark;
 }
 
 .light {
-  button,
-  a {
-    color: $white;
-
-    &::after {
-      background: $white;
-    }
-
-    &:active {
-      color: $main-turquoise;
-
-      &::after {
-        background: transparent;
-      }
-    }
-
-    &:disabled {
-      color: $dark-blue-40;
-
-      &::after {
-        background: $dark-blue-40;
-      }
-    }
-
-    &:focus-visible {
-      border: px-to-rem(2) solid $white;
-    }
-  }
+  @include apply-text-buttons-light;
 }
 
 /* stylelint-enable no-descending-specificity */
