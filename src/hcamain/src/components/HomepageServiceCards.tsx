@@ -2,10 +2,14 @@ import React from 'react';
 import {
   Field,
   LinkField,
+  ImageField
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type ServiceFields = {
-  name: Field<string>
+  Title: Field<string>;
+  Description: Field<string>;
+  Image :  ImageField;
+  Link: LinkField;
 }
 
 interface Fields {
@@ -13,8 +17,8 @@ interface Fields {
   Title : Field<string>;
   Description : Field<string>;
   CTA : LinkField;
-  Listofservices : {
-    results: ServiceFields[]
+  services : {
+    ServicesList: ServiceFields[]
   }
 }
 
