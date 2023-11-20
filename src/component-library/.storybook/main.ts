@@ -28,6 +28,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-a11y"),
   ],
+  staticDirs: ['../assets/images'],
   framework: {
     //name: getAbsolutePath("@storybook/react-webpack5"),
     name: getAbsolutePath("@storybook/nextjs"),

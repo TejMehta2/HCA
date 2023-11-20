@@ -1,0 +1,52 @@
+@use '../Themes/themes-mixin.module' as *;
+@use '../../foundation/index.module.scss' as *;
+@use '../../utilities/index.module' as *;
+
+// Themes by letter from design library
+.a {
+  @include apply-theme-a;
+}
+
+.b {
+  @include apply-theme-b;
+}
+
+.c {
+  @include apply-theme-c;
+}
+
+.d {
+  @include apply-theme-d;
+}
+
+.e {
+  @include apply-theme-e;
+}
+
+.f {
+  @include apply-theme-f;
+}
+
+.g {
+  @include apply-theme-g;
+}
+
+.h {
+  @include apply-theme-h;
+}
+
+.i {
+  @include apply-theme-i;
+}
+
+.j {
+  @include apply-theme-j;
+}
+
+.k {
+  @include apply-theme-k;
+}
+
+.l {
+  @include apply-theme-l;
+}

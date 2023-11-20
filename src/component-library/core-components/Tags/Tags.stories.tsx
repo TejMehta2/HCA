@@ -17,6 +17,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Green: StoryObj<typeof Tags> = {
   args: {
+    theme: 'green',
     children: <a href="#">Green</a>,
   },
 };
@@ -44,9 +45,15 @@ export const White: StoryObj<typeof Tags> = {
     },
   },
 };
-export const MainTurquoise: StoryObj<typeof Tags> = {
+export const Blue: StoryObj<typeof Tags> = {
   args: {
-    theme: 'main-turquoise',
-    children: <a href="#">Main Turquoise</a>,
+    theme: 'blue',
+    children: <a href="#">Blue</a>,
+  },
+};
+export const Coral: StoryObj<typeof Tags> = {
+  args: {
+    theme: 'coral',
+    children: <a href="#">Coral</a>,
   },
 };

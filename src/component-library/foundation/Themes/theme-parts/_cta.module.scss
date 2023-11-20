@@ -1,0 +1,195 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-cta-full-dark {
+  // Base
+  --cta-full-background: #{$dark-blue};
+  --cta-full-text: #{$white};
+  --cta-full-border: #{$dark-blue};
+
+  // Hover
+  --cta-full-hover-background: #{$white};
+  --cta-full-hover-text: #{$dark-blue};
+  --cta-full-hover-border: #{$dark-blue};
+
+  // Disabled
+  --cta-full-disabled-background: #{$dark-blue-40};
+  --cta-full-disabled-text: #{$dark-blue-40};
+  --cta-full-disabled-border: #{$dark-blue-40};
+
+  // Active
+  --cta-full-active-background: #{$dark-blue-40};
+  --cta-full-active-text: #{$dark-blue-40};
+  --cta-full-active-border: #{$dark-blue-40};
+
+  // Focus
+  --cta-full-focus-background: #{$dark-blue-40};
+  --cta-full-focus-text: #{$dark-blue-40};
+  --cta-full-focus-border: #{$dark-blue-40};
+}
+@mixin apply-cta-full-light {
+  // Base
+  --cta-full-background: #{$main-turquoise};
+  --cta-full-text: #{$dark-blue};
+  --cta-full-border: #{$main-turquoise};
+
+  // Hover
+  --cta-full-hover-background: #{$dark-blue};
+  --cta-full-hover-text: #{$white};
+  --cta-full-hover-border: #{$white};
+
+  // Disabled
+  --cta-full-disabled-background: #{$dark-blue-60};
+  --cta-full-disabled-text: #{$dark-blue-20};
+  --cta-full-disabled-border: #{$dark-blue-60};
+
+  // Active
+  --cta-full-active-background: #{$dark-blue};
+  --cta-full-active-text: #{$dark-blue-10};
+  --cta-full-active-border: #{$dark-blue-10};
+
+  // Focus
+  --cta-full-focus-outline: #{$main-turquoise};
+}
+@mixin apply-cta-full-light-blue {
+  // Base
+  --cta-full-background: #{$main-turquoise-5};
+  --cta-full-text: #{$dark-blue};
+  --cta-full-border: #{$main-turquoise-5};
+
+  // Hover
+  --cta-full-hover-background: #{$main-turquoise-10};
+
+  // Disabled
+  --cta-full-disabled-text: #{$dark-blue-40};
+
+  // Active
+  --cta-full-active-background: #{$main-turquoise-5};
+
+  // Focus
+  --cta-full-focus-border: #{$dark-blue};
+}
+@mixin apply-cta-outline-dark {
+  // Base
+  --cta-outline-background: transparent;
+  --cta-outline-text: #{$dark-blue};
+  --cta-outline-border: #{$dark-blue};
+
+  // Hover
+  --cta-outline-hover-background: #{$dark-blue};
+  --cta-outline-hover-text: #{$white};
+  --cta-outline-hover-border: #{$dark-blue};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$dark-blue-40};
+  --cta-outline-disabled-border: #{$dark-blue-40};
+
+  // Active
+  --cta-outline-active-background: #{$dark-blue-60};
+  --cta-outline-active-text: #{$white};
+  --cta-outline-active-border: #{$dark-blue-60};
+
+  // Focus
+  --cta-outline-focus-outline: #{$dark-blue};
+}
+@mixin apply-cta-outline-light {
+  // Base
+  --cta-outline-background: transparent;
+  --cta-outline-text: #{$white};
+  --cta-outline-border: #{$white};
+
+  // Hover
+  --cta-outline-hover-background: #{$main-turquoise};
+  --cta-outline-hover-text: #{$dark-blue};
+  --cta-outline-hover-border: #{$main-turquoise};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$dark-blue};
+  --cta-outline-disabled-text: #{$dark-blue-20};
+  --cta-outline-disabled-border: #{$dark-blue-20};
+
+  // Active
+  --cta-outline-active-background: #{$main-turquoise-60};
+  --cta-outline-active-text: #{$dark-blue};
+  --cta-outline-active-border: #{$main-turquoise-60};
+
+  // Focus
+  --cta-outline-focus-outline: #{$white};
+}
+@mixin apply-cta-social-dark {
+  // Base
+  --cta-social-background: #{$dark-blue};
+  --cta-social-text: #{$white};
+  --cta-social-border: #{$dark-blue-60};
+
+  // Hover
+  --cta-social-hover-border: #{$white};
+
+  // Active
+  --cta-social-active-border: #{$dark-blue-40};
+
+  // Focus
+  --cta-social-focus-border: #{$dark-blue-9};
+  --cta-social-focus-outline: #{$white};
+}
+@mixin apply-cta-social-light {
+  // Base
+  --cta-social-background: #{$white};
+  --cta-social-text: #{$dark-blue};
+  --cta-social-border: #{$dark-blue-9};
+
+  // Hover
+  --cta-social-hover-border: #{$dark-blue};
+
+  // Active
+  --cta-social-active-border: #{$dark-blue-40};
+
+  // Focus
+  --cta-social-focus-border: #{$dark-blue-9};
+  --cta-social-focus-outline: #{$dark-blue};
+}
+@mixin apply-cta-carousel-dark {
+  // Base
+  --cta-carousel-background: #{$dark-blue};
+  --cta-carousel-text: #{$white};
+  --cta-carousel-border: #{$dark-blue};
+
+  // Hover
+  --cta-carousel-hover-background: #{$white};
+  --cta-carousel-hover-text: #{$dark-blue};
+
+  // Disabled
+  --cta-carousel-disabled-background: #{$dark-blue-40};
+  --cta-carousel-disabled-text: #{$dark-blue-10};
+
+  // Active
+  --cta-carousel-active-background: #{$white};
+  --cta-carousel-active-text: #{$dark-blue};
+  --cta-carousel-active-border: #{$dark-blue-40};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$main-turquoise};
+}
+@mixin apply-cta-carousel-light {
+  // Base
+  --cta-carousel-background: #{$main-turquoise};
+  --cta-carousel-text: #{$dark-blue};
+  --cta-carousel-border: #{$main-turquoise};
+
+  // Hover
+  --cta-carousel-hover-background: #{$dark-blue};
+  --cta-carousel-hover-text: #{$white};
+  --cta-carousel-hover-border: #{$white};
+
+  // Disabled
+  --cta-carousel-disabled-background: #{$dark-blue-40};
+  --cta-carousel-disabled-text: #{$dark-blue-10};
+
+  // Active
+  --cta-carousel-active-background: #{$dark-blue};
+  --cta-carousel-active-text: #{$dark-blue-9};
+  --cta-carousel-active-border: #{$dark-blue-10};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$dark-blue};
+}

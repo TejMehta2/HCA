@@ -6,7 +6,7 @@ import Text from '../../foundation/Text/Text';
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
-  const { callback, theme = 'main-turquoise', tabs } = props;
+  const { callback, tabs } = props;
 
   // Hooks
   const id = useId(); // Generate a unique ID for the form elements
@@ -41,7 +41,6 @@ const Tabs = (props: TabsProps): JSX.Element => {
           ['--current-tab-offset-width' as string]: `${tabDimensions?.[currentTabIndex]?.offsetWidth}px`,
           ['--current-tab-offset-left' as string]: `${tabDimensions?.[currentTabIndex]?.offsetLeft}px`,
         }}
-        className={styles[theme]}
       >
         {tabs.map((tab, index) => {
           const composedChildId = `${id}-${index}`;
@@ -61,7 +60,6 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 ref={(element: HTMLLabelElement) =>
                   refs?.current?.push(element)
                 }
-                className={styles[theme]}
                 htmlFor={composedChildId}
               >
                 {!!tab.icon && <Icons iconName={tab.icon} />}

@@ -1,5 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "**/mocks", "**/poc"]
+  "exclude": ["node_modules", "**/mocks", "**/poc"],
+  "compilerOptions": { "module": "NodeNext", "moduleResolution": "NodeNext" }
 }

@@ -1,0 +1,77 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:nth-of-type(4n + 1) {
+    background-color: $light-orange;
+  }
+
+  &:nth-of-type(4n + 2) {
+    background-color: $green-40;
+  }
+
+  &:nth-of-type(4n + 3) {
+    background-color: $light-orange-40;
+  }
+
+  &:nth-of-type(4n + 4) {
+    background-color: $main-turquoise-20;
+  }
+
+  @include media(screen-l) {
+    height: 100vh;
+  }
+}
+
+.image {
+  height: px-to-rem(268);
+
+  @include media(screen-l) {
+    height: px-to-rem(253);
+  }
+
+  @include media(screen-xl) {
+    height: px-to-rem(378);
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-info {
+  flex: 1;
+  padding: $spacing-7 $spacing-6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: px-to-rem(44);
+
+  @include media(screen-l) {
+    gap: px-to-rem(32);
+  }
+
+  & a {
+    width: 100%;
+
+    & span {
+      margin: auto;
+    }
+
+    @include media(screen-l) {
+      width: fit-content;
+    }
+  }
+}
+
+.copy {
+  & :last-child {
+    margin-top: $spacing-4;
+  }
+}
