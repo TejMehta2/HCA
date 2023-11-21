@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import { ImageAndTextBlockProps } from './ImageAndTextBlock.types';
+import Button from '../../core-components/Button/Button';
+import TextButton from '../../core-components/TextButton/TextButton';
 import styles from './ImageAndTextBlock.module.scss';
 
 const useWindowWidth = (size: number) => {
@@ -59,9 +61,17 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
 
               {ctas && (
                 <div className={styles['ctas']}>
-                  {ctas?.button1}
+                  <Button size="large" theme="full">
+                    {ctas?.button1}
+                  </Button>
                   {ctas.button2 &&
-                    (isXl ? ctas.button2.text : ctas.button2.button)}
+                    (isXl ? (
+                      <TextButton>{ctas.button2}</TextButton>
+                    ) : (
+                      <Button size="large" theme="outline">
+                        {ctas.button2}
+                      </Button>
+                    ))}
                 </div>
               )}
             </div>

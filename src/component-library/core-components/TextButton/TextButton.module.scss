@@ -17,12 +17,12 @@
     border: 0;
     padding: 0 0 px-to-rem(8);
     position: relative;
-    color: var(--cta-text-color);
+    color: var(--cta-text);
 
     @include apply-body-medium-large;
 
     &::after {
-      background-color: var(--cta-text-color);
+      background-color: var(--cta-text);
       content: '';
       display: block;
       width: 100%;
@@ -34,7 +34,7 @@
     }
 
     &:active {
-      color: --cta-text-active-color;
+      color: var(--cta-active-text);
 
       &::after {
         background: transparent;
@@ -42,10 +42,10 @@
     }
 
     &:disabled {
-      color: var(--cta-text-disabled-color);
+      color: var(--cta-disabled-text);
 
       &::after {
-        background: var(--cta-text-disabled-color);
+        background: var(--cta-disabled-text);
       }
     }
 
@@ -60,7 +60,7 @@
     }
 
     &:focus-visible {
-      border: px-to-rem(2) solid var(--cta-text-color);
+      border: px-to-rem(2) solid var(--cta-text);
       padding: px-to-rem(4) px-to-rem(8);
       border-radius: $radius-small;
 

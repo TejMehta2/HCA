@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ImageField,
-  LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { ImageField, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   Icon: ImageField;
@@ -23,17 +20,13 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
 );
 
 export const Primary = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
 
 export const Secondary = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
 
 export const LightText = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
-
