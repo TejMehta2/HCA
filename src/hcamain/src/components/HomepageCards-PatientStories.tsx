@@ -2,14 +2,14 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  ImageField,
+  ImageField
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface StoriesFields {
   Title: Field<string>;
   Description: Field<string>;
   Date: Field<string>;
-  Image :  ImageField
+  Image :  ImageField;
 }
 
 interface Fields {
@@ -19,7 +19,7 @@ interface Fields {
   CTALink: LinkField;
   CardCTAText: Field<string>;
   stories :  {
-    StoriesList: StoriesFields[]
+    StoriesList: StoriesFields[];
     }
 }
 

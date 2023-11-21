@@ -18,7 +18,7 @@ interface Fields {
   Description : Field<string>;
   CTA : LinkField;
   services : {
-    ServicesList: ServiceFields[]
+    ServicesList: ServiceFields[];
   }
 }
 
