@@ -15,7 +15,7 @@
     width: calc(100% + px-to-rem(2));
     height: calc(100% + px-to-rem(2));
     background-color: $hoverColor;
-    border-radius: $large-radius;
+    border-radius: $radius-large;
     z-index: -1;
     box-sizing: border-box;
   }
@@ -47,7 +47,7 @@
 
   a,
   button {
-    border-radius: $large-radius;
+    border-radius: $radius-large;
     cursor: pointer;
     display: flex;
     align-items: center;

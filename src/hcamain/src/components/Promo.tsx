@@ -10,6 +10,8 @@ import {
 import Button from '@hca/component-library/core-components/Button/Button';
 import Text from '@hca/component-library/foundation/Text/Text';
 import Themes from '@hca/component-library/foundation/Themes/Themes';
+import CardBlog from '@hca/component-library/components/CardBlog/CardBlog';
+import Tags from '@hca/component-library/core-components/Tags/Tags';
 
 interface Fields {
   PromoIcon: ImageField;
@@ -53,6 +55,12 @@ export const Default = (props: PromoProps): JSX.Element => {
             </div>
             <div className="field-promolink">
               <Themes theme="a">
+                <CardBlog>
+                  <a>Test link</a>
+                  <Tags>
+                    <a href="#">Test tag</a>
+                  </Tags>
+                </CardBlog>
                 <Button size={'small'} theme={'outline'}>
                   <JssLink field={props.fields.PromoLink}>
                     Themed outline button

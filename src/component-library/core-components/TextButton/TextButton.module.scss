@@ -62,7 +62,7 @@
     &:focus-visible {
       border: px-to-rem(2) solid var(--cta-text-color);
       padding: px-to-rem(4) px-to-rem(8);
-      border-radius: $small-radius;
+      border-radius: $radius-small;
 
       &::after {
         display: none;

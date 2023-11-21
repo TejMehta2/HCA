@@ -22,17 +22,17 @@
 .small {
   width: px-to-rem(63);
   height: px-to-rem(63);
-  border-radius: $small-radius;
+  border-radius: $radius-small;
 }
 
 .medium {
   width: px-to-rem(87);
   height: px-to-rem(87);
-  border-radius: $medium-radius;
+  border-radius: $radius-medium;
 }
 
 .large {
   width: px-to-rem(160);
   height: px-to-rem(160);
-  border-radius: $large-radius;
+  border-radius: $radius-large;
 }

@@ -1,0 +1,47 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardBlogStories from './CardBlog.stories'
+
+<Meta of={CardBlogStories} />
+
+# CardBlog
+
+## Description
+
+The CardBlog component is a simple blog card with an optional image.
+
+It inherits its theme from the cascade. Use the `variation="feature"` prop to set the card as feature themed. The default variation is "standard".
+
+It is intended to be used in card carousels, and blog card blocks. 
+
+It can be composed like this:
+
+``` tsx
+import Text from "@hca/component-library/foundation/Text/Text";
+import Tags from "@hca/component-library/core-components/Tags/Tags";
+import {
+  Image as JssImage,
+  Link as JssLink,
+  RichText as JssRichText,
+  DateField as JssDate,
+  Text as JssText
+} from "@sitecore-jss/sitecore-jss-nextjs";
+
+<CardBlog variation='feature'>
+  <JssImage />
+  <JssDate tag="time"/>
+  <Text variation="display-5">
+    <JssLink />
+  </Text>
+  <Text variation="body-large">
+    <JssText tag="span" />
+  </Text>
+  <Tags>
+    <JssLink />
+  </Tags>
+</CardBlog>
+```
+
+## Example 
+
+<Canvas of={CardBlogStories.Default} />
+<Controls of={CardBlogStories.Default} />
