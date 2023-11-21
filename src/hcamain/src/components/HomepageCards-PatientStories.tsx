@@ -9,7 +9,7 @@ interface StoriesFields {
   Title: Field<string>;
   Description: Field<string>;
   Date: Field<string>;
-  Image:  ImageField;
+  Image: ImageField;
 }
 
 interface Fields {
@@ -18,9 +18,9 @@ interface Fields {
   Icon: ImageField;
   CTALink: LinkField;
   CardCTAText: Field<string>;
-  stories:  {
+  stories: {
     StoriesList: StoriesFields[];
-    };
+  };
 }
 
 type HomepageCardsPatientStoriesProps = {
@@ -28,7 +28,9 @@ type HomepageCardsPatientStoriesProps = {
   fields: Fields;
 };
 
-const HomepageCardsPatientStoriesDefaultComponent = (props: HomepageCardsPatientStoriesProps): JSX.Element => (
+const HomepageCardsPatientStoriesDefaultComponent = (
+  props: HomepageCardsPatientStoriesProps
+): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
@@ -36,14 +38,14 @@ const HomepageCardsPatientStoriesDefaultComponent = (props: HomepageCardsPatient
   </div>
 );
 
-export const Carousel = (props: HomepageCardsPatientStoriesProps): JSX.Element => {
-  
-  return <HomepageCardsPatientStoriesDefaultComponent {...props} />
+export const Carousel = (
+  props: HomepageCardsPatientStoriesProps
+): JSX.Element => {
+  return <HomepageCardsPatientStoriesDefaultComponent {...props} />;
 };
 
-export const Standard = (props: HomepageCardsPatientStoriesProps): JSX.Element => {
-  
-  return <HomepageCardsPatientStoriesDefaultComponent {...props} />
+export const Standard = (
+  props: HomepageCardsPatientStoriesProps
+): JSX.Element => {
+  return <HomepageCardsPatientStoriesDefaultComponent {...props} />;
 };
-
-

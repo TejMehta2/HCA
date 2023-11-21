@@ -10,7 +10,7 @@ type ServiceFields = {
   Description: Field<string>;
   Image: ImageField;
   Link: LinkField;
-}
+};
 
 interface Fields {
   Heading: Field<string>;
@@ -27,7 +27,9 @@ type HomepageServiceCardsProps = {
   fields: Fields;
 };
 
-const HomepageServiceCardsDefaultComponent = (props: HomepageServiceCardsProps): JSX.Element => (
+const HomepageServiceCardsDefaultComponent = (
+  props: HomepageServiceCardsProps
+): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Homepage Service Cards</span>
@@ -36,7 +38,5 @@ const HomepageServiceCardsDefaultComponent = (props: HomepageServiceCardsProps):
 );
 
 export const Standard = (props: HomepageServiceCardsProps): JSX.Element => {
-  
-  return <HomepageServiceCardsDefaultComponent {...props} />
+  return <HomepageServiceCardsDefaultComponent {...props} />;
 };
-
