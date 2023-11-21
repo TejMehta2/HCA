@@ -2,24 +2,24 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  ImageField
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type ServiceFields = {
   Title: Field<string>;
   Description: Field<string>;
-  Image :  ImageField;
+  Image: ImageField;
   Link: LinkField;
 }
 
 interface Fields {
-  Heading : Field<string>;
-  Title : Field<string>;
-  Description : Field<string>;
-  CTA : LinkField;
-  services : {
+  Heading: Field<string>;
+  Title: Field<string>;
+  Description: Field<string>;
+  CTA: LinkField;
+  services: {
     ServicesList: ServiceFields[];
-  }
+  };
 }
 
 type HomepageServiceCardsProps = {

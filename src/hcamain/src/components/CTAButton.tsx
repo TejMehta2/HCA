@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ImageField,
-  LinkField
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
