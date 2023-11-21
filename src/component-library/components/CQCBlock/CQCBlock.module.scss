@@ -7,14 +7,25 @@
   border-radius: $small-radius;
   padding: px-to-rem(16);
   display: grid;
+  grid-template: auto auto auto / minmax(auto, px-to-rem(235)) max-content;
   grid-template-areas:
     'logo logo'
     'title icon'
     'text icon';
-  grid-template-rows: auto auto auto;
-  grid-template-columns: minmax(auto, px-to-rem(235)) max-content;
-  column-gap: px-to-rem(23);
-  row-gap: px-to-rem(8);
+  gap: px-to-rem(8) px-to-rem(23);
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  grid-area: icon;
+  color: $main-turquoise;
+  display: flex;
 }
 
 .dark {
@@ -24,6 +35,11 @@
 }
 
 .rating {
+  display: flex;
+}
+
+.logo {
+  grid-area: logo;
   display: flex;
 }
 
@@ -46,11 +62,10 @@
 }
 
 .long {
+  grid-template: auto auto / min-content max-content;
   grid-template-areas:
     'logo title'
     'logo text';
-  grid-template-rows: auto auto;
-  grid-template-columns: min-content max-content;
   gap: 0;
   align-items: center;
 
@@ -64,24 +79,6 @@
   }
 }
 
-.logo {
-  grid-area: logo;
-  display: flex;
-}
-
-.title {
-  grid-area: title;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .text {
   grid-area: text;
-}
-
-.icon {
-  grid-area: icon;
-  color: $main-turquoise;
-  display: flex;
 }

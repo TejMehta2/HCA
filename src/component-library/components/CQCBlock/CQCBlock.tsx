@@ -19,6 +19,7 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
 
   const cqcLength = rating ? 'long' : length;
   const ratingClass = rating ? rating.replace(/\s+/g, '-').toLowerCase() : null;
+  const blockTitle = rating ? rating : title;
 
   return (
     <Themes theme={setTheme}>
@@ -35,9 +36,11 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
           {theme === 'light' ? logo.light : logo.dark}
         </div>
         <div className={styles.title}>
-          <Text tag="span" variation="body-semi-bold-small">
-            {rating ? rating : title}
-          </Text>
+          {blockTitle && (
+            <Text tag="span" variation="body-semi-bold-small">
+              {blockTitle}
+            </Text>
+          )}
           {cqcLength === 'long' && <span className={styles.icon}>{icon}</span>}
         </div>
         {text && (
