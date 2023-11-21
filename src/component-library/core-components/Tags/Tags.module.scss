@@ -1,13 +1,13 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-a {
+.tags a {
   // Imported styles
   @include apply-body-medium-medium;
 
   // Shared styles
   display: inline-block;
-  border-radius: $small-radius;
+  border-radius: $radius-small;
   padding: px-to-rem(4) px-to-rem(16);
   text-decoration: none;
   outline: solid #{px-to-rem(2)} transparent;

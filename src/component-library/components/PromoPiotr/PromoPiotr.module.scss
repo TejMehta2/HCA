@@ -3,7 +3,7 @@
 
 .wrapper {
   display: grid;
-  border-radius: $small-radius;
+  border-radius: $radius-small;
   gap: $spacing-4;
   padding: $spacing-2;
   max-width: px-to-rem(900);

@@ -1,15 +1,8 @@
 ﻿---
-ID: "f42f659b-814b-49a4-97eb-933a99c18704"
-Parent: "6e19e490-758f-4f02-8e25-e966b12dfa70"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Pages/Patient Story Page/Patient story/Title
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "6e19e490-758f-4f02-8e25-e966b12dfa70"
+Parent: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Pages/Patient Story Page/Data
 Languages:
 - Language: en
   Versions:
@@ -28,7 +21,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3ddce79c-c625-46e7-9d34-7f293a4d8a3b"
+      Value: "7b0513ec-d6d8-474e-9d5a-68ae99c354f2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
