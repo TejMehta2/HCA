@@ -16,7 +16,7 @@ SharedFields:
     query GetHomepagePatientStory( $datasource: String!, $language: String!) 
     {
         item(path: $datasource, language: $language) {
-        ...on HomepageCardsPatientStories_df5e901c69b44fef9a72cdade49c9209 {
+        ...on HomepageCardsPatientStories {
               Title : field(name:"Title"){value},
               Text : field(name:"Text"){value},
           	  Icon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
@@ -101,14 +101,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d2f1cd93-ebb9-4535-b602-440ddb4f6aaa"
+      Value: "02256fb1-031b-4ff7-b9b9-f96cd9d8cca9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231119T211308Z
+      Value: 20231121T120931Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
