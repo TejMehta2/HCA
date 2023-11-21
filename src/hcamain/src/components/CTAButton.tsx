@@ -23,17 +23,14 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
 );
 
 export const Primary = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
 
 export const Secondary = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
 
 export const LightText = (props: CTAProps): JSX.Element => {
-  
-  return <CTADefaultComponent {...props} />
+  return <CTADefaultComponent {...props} />;
 };
 
