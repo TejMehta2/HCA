@@ -4,6 +4,7 @@
 
 @mixin apply-shared-theme-dark {
   --text: #{$white};
+  --text-date: #{$dark-blue-20};
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$dark-blue};
   @include apply-cta-full-light;
@@ -13,6 +14,7 @@
 
 @mixin apply-shared-theme-light {
   --text: #{$dark-blue};
+  --text-date: #{$dark-blue-40};
   --card-secondary-background: #{$dark-blue};
   --card-secondary-text: #{$white};
   @include apply-cta-full-dark;
@@ -25,6 +27,7 @@
 
   --background: #{$main-turquoise};
   --card-background: #{$main-turquoise-10};
+  --card-background-blog: #{$white};
   @include apply-tag-blue;
   @include apply-tabs-white;
 }
@@ -34,6 +37,7 @@
 
   --background: #{$green};
   --card-background: #{$green-20};
+  --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
 }
@@ -43,6 +47,7 @@
 
   --background: #{$beige};
   --card-background: #{$white};
+  --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-orange;
 }
@@ -52,6 +57,7 @@
 
   --background: #{$light-orange};
   --card-background: #{$beige};
+  --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-white;
 }
@@ -61,6 +67,7 @@
 
   --background: #{$dark-blue};
   --card-background: #{$dark-blue-80};
+  --card-background-blog: #{$dark-blue-80};
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
 }
@@ -70,6 +77,7 @@
 
   --background: #{$white};
   --card-background: #{$beige};
+  --card-background-blog: #{$beige};
   @include apply-tag-orange;
   @include apply-tabs-orange;
 }
@@ -79,6 +87,7 @@
 
   --background: #{$green-40};
   --card-background: #{$white};
+  --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
 }
@@ -88,7 +97,8 @@
 
   --background: #{$green-20};
   --card-background: #{$white};
-  @include apply-tag-white;
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
   @include apply-tabs-white;
 }
 
@@ -97,7 +107,8 @@
 
   --background: #{$main-turquoise-20};
   --card-background: #{$white};
-  @include apply-tag-white;
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
   @include apply-tabs-white;
 }
 
@@ -106,7 +117,8 @@
 
   --background: #{$main-turquoise-10};
   --card-background: #{$white};
-  @include apply-tag-white;
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
   @include apply-tabs-white;
 }
 
@@ -115,7 +127,8 @@
 
   --background: #{$main-turquoise-5};
   --card-background: #{$white};
-  @include apply-tag-white;
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
   @include apply-tabs-white;
 }
 
@@ -124,6 +137,7 @@
 
   --background: #{$coral-60};
   --card-background: #{$white};
+  --card-background-blog: #{$white};
   @include apply-tag-coral;
   @include apply-tabs-white;
 }
