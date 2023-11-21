@@ -29,8 +29,8 @@ export const Short: StoryObj<typeof CQCBlock> = {
     },
     title: 'Care Quality Commission verified',
     text: 'All our hospitals are rated Good or Oustanding.',
-
     icon: <Icons iconName="iconCheckCircle"></Icons>,
+    link: <a href="#"></a>,
   },
 };
 
@@ -49,6 +49,7 @@ export const Long: StoryObj<typeof CQCBlock> = {
     title: 'Care Quality Commission verified',
     text: 'All our hospitals are rated Good or Oustanding.',
     icon: <Icons iconName="iconCheckCircle"></Icons>,
+    link: <a href="#"></a>,
   },
   parameters: {
     backgrounds: {
@@ -71,6 +72,7 @@ export const Rating: StoryObj<typeof CQCBlock> = {
     },
     icon: <Icons iconName="iconCheckCircle"></Icons>,
     rating: 'Outstanding',
+    link: <a href="#"></a>,
   },
   parameters: {
     backgrounds: {

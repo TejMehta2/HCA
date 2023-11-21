@@ -12,7 +12,26 @@
     'logo logo'
     'title icon'
     'text icon';
-  gap: px-to-rem(8) px-to-rem(23);
+  gap: px-to-rem(8) 0;
+  width: fit-content;
+  position: relative;
+}
+
+.link {
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+
+    &:hover {
+      background: transparent;
+    }
+  }
 }
 
 .title {
@@ -34,13 +53,18 @@
   }
 }
 
-.rating {
-  display: flex;
-}
-
 .logo {
   grid-area: logo;
   display: flex;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    padding-left: px-to-rem(8);
+  }
 }
 
 .requires-improvement {
@@ -62,18 +86,23 @@
 }
 
 .long {
-  grid-template: auto auto / min-content max-content;
-  grid-template-areas:
-    'logo title'
-    'logo text';
-  gap: 0;
-  align-items: center;
+  @include media(screen-m) {
+    grid-template: auto auto / min-content max-content;
+    grid-template-areas:
+      'logo title'
+      'logo text';
+    gap: 0;
+    align-items: center;
 
-  .title {
-    justify-content: unset;
-    gap: px-to-rem(8);
+    .title {
+      justify-content: unset;
+      gap: px-to-rem(8);
+    }
   }
+}
 
+.rating,
+.long {
   .logo {
     padding: 0 px-to-rem(23) 0 0;
   }

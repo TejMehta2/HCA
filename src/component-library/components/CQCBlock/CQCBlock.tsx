@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CQCBlockProps } from './CQCBlock.types';
 import styles from './CQCBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Text from '../../foundation/Text/Text';
+
+const useWindowWidth = (size: number) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [setWidth]);
+
+  return width >= size;
+};
 
 const CQCBlock = (props: CQCBlockProps): JSX.Element => {
   const {
@@ -13,6 +33,7 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
     rating,
     length = 'short',
     theme = 'light',
+    link,
   } = props;
 
   const setTheme = theme === 'light' ? 'f' : 'e';
@@ -20,6 +41,9 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
   const cqcLength = rating ? 'long' : length;
   const ratingClass = rating ? rating.replace(/\s+/g, '-').toLowerCase() : null;
   const blockTitle = rating ? rating : title;
+
+  //  medium screen breakpoint
+  const isScreenM = useWindowWidth(600);
 
   return (
     <Themes theme={setTheme}>
@@ -32,6 +56,7 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
           rating && theme === 'dark' ? styles.dark : '',
         ].join(' ')}
       >
+        <div className={styles.link}>{link}</div>
         <div className={styles.logo}>
           {theme === 'light' ? logo.light : logo.dark}
         </div>
@@ -41,7 +66,9 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
               {blockTitle}
             </Text>
           )}
-          {cqcLength === 'long' && <span className={styles.icon}>{icon}</span>}
+          {cqcLength === 'long' && isScreenM && (
+            <span className={styles.icon}>{icon}</span>
+          )}
         </div>
         {text && (
           <div className={styles.text}>
@@ -50,7 +77,9 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
             </Text>
           </div>
         )}
-        {cqcLength === 'short' && <span className={styles.icon}>{icon}</span>}
+        {((cqcLength === 'long' && !isScreenM) || cqcLength === 'short') && (
+          <span className={styles.icon}>{icon}</span>
+        )}
       </div>
     </Themes>
   );

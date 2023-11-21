@@ -27,6 +27,7 @@ const mockProps: CQCBlockProps = {
   },
   icon: <Icons iconName="iconCheckCircle"></Icons>,
   rating: 'Outstanding',
+  link: <a href="#"></a>,
 };
 
 describe('CQCBlock', () => {
