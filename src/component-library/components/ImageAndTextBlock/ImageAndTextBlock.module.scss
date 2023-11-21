@@ -1,8 +1,14 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+.background {
+  background: var(--background);
+}
+
 .wrapper {
   @include responsive-container;
+
+  padding: $spacing-13 0;
 }
 
 .container {
@@ -47,6 +53,7 @@
   @include responsive-grid-span($default: 6, $breakpoint-l: 5);
   @include responsive-grid-start($default: 1, $breakpoint-l: 8);
 
+  color: var(--text);
   display: flex;
   flex-direction: column;
   justify-content: center;
