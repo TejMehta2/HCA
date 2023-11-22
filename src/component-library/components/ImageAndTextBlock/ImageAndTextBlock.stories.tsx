@@ -3,8 +3,6 @@ import ImageAndTextBlock from './ImageAndTextBlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
-import Button from '../../core-components/Button/Button';
-import TextButton from '../../core-components/TextButton/TextButton';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ImageAndTextBlock> = {
@@ -20,6 +18,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Short: StoryObj<typeof ImageAndTextBlock> = {
   args: {
+    theme: 'a',
     length: 'short',
     image: (
       <Image
@@ -54,40 +53,26 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: {
       button1: (
-        <Button size="large" theme="full-dark">
-          <button>
-            <span>
-              Learn more about <strong>self-pay</strong>
-            </span>
-          </button>
-        </Button>
+        <button>
+          <span>
+            Learn more about <strong>self-pay</strong>
+          </span>
+        </button>
       ),
-      button2: {
-        button: (
-          <Button size="large" theme="outline-dark">
-            <button>
-              <span>
-                Access care with <strong>insurance</strong>
-              </span>
-            </button>
-          </Button>
-        ),
-        text: (
-          <TextButton>
-            <button>
-              <span>
-                Access care with <strong>insurance</strong>
-              </span>
-            </button>
-          </TextButton>
-        ),
-      },
+      button2: (
+        <button>
+          <span>
+            Access care with <strong>insurance</strong>
+          </span>
+        </button>
+      ),
     },
   },
 };
 
 export const Long: StoryObj<typeof ImageAndTextBlock> = {
   args: {
+    theme: 'b',
     imageAlignment: 'right',
     length: 'long',
     image: (
@@ -124,7 +109,6 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
         </Text>
       </>
     ),
-
     subheader: (
       <Text tag="h3" variation="subheading-1">
         payment plans
@@ -132,34 +116,19 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: {
       button1: (
-        <Button size="large" theme="full-dark">
-          <button>
-            <span>
-              Learn more about <strong>self-pay</strong>
-            </span>
-          </button>
-        </Button>
+        <button>
+          <span>
+            Learn more about <strong>self-pay</strong>
+          </span>
+        </button>
       ),
-      button2: {
-        button: (
-          <Button size="large" theme="outline-dark">
-            <button>
-              <span>
-                Access care with <strong>insurance</strong>
-              </span>
-            </button>
-          </Button>
-        ),
-        text: (
-          <TextButton>
-            <button>
-              <span>
-                Access care with <strong>insurance</strong>
-              </span>
-            </button>
-          </TextButton>
-        ),
-      },
+      button2: (
+        <button>
+          <span>
+            Access care with <strong>insurance</strong>
+          </span>
+        </button>
+      ),
     },
   },
 };

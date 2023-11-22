@@ -37,7 +37,7 @@
 
     &:focus-visible {
       padding: px-to-rem(4) px-to-rem(8);
-      border-radius: $small-radius;
+      border-radius: $radius-small;
       border: 1px solid $dark-blue;
     }
 

@@ -3,9 +3,11 @@ import { TextButtonProps } from './TextButton.types';
 import styles from './TextButton.module.scss';
 
 const TextButton = (props: TextButtonProps): JSX.Element => {
-  const { theme = 'dark', children } = props;
+  const { theme, children } = props;
   return (
-    <div className={[styles['text-button'], styles[theme]].join(' ')}>
+    <div
+      className={[styles['text-button'], `${theme && styles[theme]}`].join(' ')}
+    >
       {children}
     </div>
   );

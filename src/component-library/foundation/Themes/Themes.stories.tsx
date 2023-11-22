@@ -10,6 +10,7 @@ import Tabs from '../../core-components/Tabs/Tabs';
 import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
+import CardBlog from '../../components/CardBlog/CardBlog';
 
 // TODO - replace demo cards with actual cards, and make sure they theme children correctly.
 
@@ -58,7 +59,32 @@ const meta: Meta<typeof Themes> = {
         <TextLink>
           <a href="#">TextLink</a>
         </TextLink>
-
+        <CardBlog>
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">Standard theme card</a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </CardBlog>
+        <CardBlog variation="feature">
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">Feature theme card</a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </CardBlog>
         <Tabs
           tabs={[
             { icon: 'iconOneOff', label: 'One-off' },

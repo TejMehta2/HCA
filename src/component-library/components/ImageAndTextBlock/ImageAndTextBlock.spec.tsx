@@ -20,6 +20,7 @@ const mockProps: ImageAndTextBlockProps = {
       height="605"
     />
   ),
+  theme: 'a',
 };
 
 describe('ImageAndTextBlock', () => {

@@ -48,6 +48,14 @@
   --tag-focus-background: #{$main-turquoise-40};
   --tag-focus-outline: #{$dark-blue};
 }
+@mixin apply-tag-light-blue {
+  --tag-background: #{$main-turquoise-10};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$main-turquoise-40};
+  --tag-active-background: #{$main-turquoise-10};
+  --tag-focus-background: #{$main-turquoise-40};
+  --tag-focus-outline: #{$dark-blue};
+}
 @mixin apply-tag-secondary-green {
   --tag-secondary-background: #{$green-20};
   --tag-secondary-text: #{$dark-blue};
@@ -87,4 +95,12 @@
   --tag-secondary-active-background: #{$main-turquoise-20};
   --tag-secondary-focus-background: #{$main-turquoise-40};
   --tag-secondary-focus-outline: #{$dark-blue};
+}
+@mixin apply-tag-light-light-blue {
+  --tag-background: #{$main-turquoise-10};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$main-turquoise-40};
+  --tag-active-background: #{$main-turquoise-10};
+  --tag-focus-background: #{$main-turquoise-40};
+  --tag-focus-outline: #{$dark-blue};
 }
