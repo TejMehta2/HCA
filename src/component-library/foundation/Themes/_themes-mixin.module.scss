@@ -9,6 +9,7 @@
   @include apply-cta-full-light;
   @include apply-cta-outline-light;
   @include apply-tag-secondary-green;
+  @include apply-cqc-light;
 }
 
 @mixin apply-shared-theme-light {
@@ -18,6 +19,7 @@
   @include apply-cta-full-dark;
   @include apply-cta-outline-dark;
   @include apply-tag-secondary-dark-blue;
+  @include apply-cqc-dark;
 }
 
 @mixin apply-theme-a {

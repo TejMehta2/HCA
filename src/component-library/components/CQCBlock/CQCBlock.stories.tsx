@@ -37,7 +37,6 @@ export const Short: StoryObj<typeof CQCBlock> = {
 export const Long: StoryObj<typeof CQCBlock> = {
   args: {
     length: 'long',
-    theme: 'light',
     logo: {
       dark: (
         <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
@@ -61,7 +60,6 @@ export const Long: StoryObj<typeof CQCBlock> = {
 
 export const Rating: StoryObj<typeof CQCBlock> = {
   args: {
-    theme: 'light',
     logo: {
       dark: (
         <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />

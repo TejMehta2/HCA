@@ -1,0 +1,11 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-cqc-dark {
+  --cqc-background: #{$dark-blue};
+  --cqc-text: #{$white};
+}
+
+@mixin apply-cqc-light {
+  --cqc-background: #{$white};
+  --cqc-text: #{$dark-blue};
+}
