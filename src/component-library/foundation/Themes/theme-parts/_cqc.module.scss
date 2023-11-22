@@ -5,6 +5,7 @@
   --cqc-text: #{$white};
   --cqc-logo-light-display: block;
   --cqc-logo-dark-display: none;
+  --cqc-focus-outline: #{$white};
 }
 
 @mixin apply-cqc-light {
@@ -12,4 +13,5 @@
   --cqc-text: #{$dark-blue};
   --cqc-logo-light-display: none;
   --cqc-logo-dark-display: block;
+  --cqc-focus-outline: #{$dark-blue};
 }

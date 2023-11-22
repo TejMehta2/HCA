@@ -4,7 +4,7 @@
 .wrapper {
   background-color: var(--cqc-background);
   color: var(--cqc-text);
-  border-radius: $small-radius;
+  border-radius: $radius-small;
   padding: px-to-rem(16);
   display: grid;
   grid-template: auto auto auto / minmax(auto, px-to-rem(235)) max-content;
@@ -35,9 +35,20 @@
     font-size: 0;
     color: transparent;
     background: transparent;
+    border-radius: $radius-small;
 
     &:hover {
       background: transparent;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: solid #{px-to-rem(2)} transparent;
+      outline-offset: px-to-rem(-6);
+      outline-color: var(--cqc-focus-outline);
     }
   }
 }

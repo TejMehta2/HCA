@@ -1,27 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CQCBlockProps } from './CQCBlock.types';
 import styles from './CQCBlock.module.scss';
 import Text from '../../foundation/Text/Text';
-
-const useWindowWidth = (size: number) => {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [setWidth]);
-
-  return width >= size;
-};
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const CQCBlock = (props: CQCBlockProps): JSX.Element => {
   const {
