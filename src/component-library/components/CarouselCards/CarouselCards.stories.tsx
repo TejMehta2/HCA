@@ -1,0 +1,130 @@
+import React from 'react';
+import Image from 'next/image';
+import CarouselCards from './CarouselCards';
+import type { Meta, StoryObj } from '@storybook/react';
+import CardPatientStories from '../CardPatientStories/CardPatientStories';
+
+// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const meta: Meta<typeof CarouselCards> = {
+  title: 'components/CarouselCards',
+  component: CarouselCards,
+  parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
+    layout: 'centered',
+  },
+};
+
+export default meta;
+// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+export const Default: StoryObj<typeof CarouselCards> = {
+  args: {
+    title: <span>Orthopaedics Patient Stories</span>,
+    link: (
+      <a href="#">
+        <span>
+          View all <strong>patient stories</strong>
+        </span>
+      </a>
+    ),
+    children: [
+      <React.Fragment key={1}>
+        <CardPatientStories
+          title={<span>Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+        <CardPatientStories
+          title={<span>2 Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+        <CardPatientStories
+          title={<span>3 Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+        <CardPatientStories
+          title={<span>4 Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+      </React.Fragment>,
+    ],
+  },
+};
