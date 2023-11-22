@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import CardPatientStories from './CardPatientStories';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -16,10 +17,21 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CardPatientStories> = {
   args: {
-    image: <img src="https://picsum.photos/400/300" alt="dummy alt text" />,
-    title: 'Every new birth tells its own story',
-    bodyCopy:
-      'Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.',
+    image: (
+      <Image
+        src="/side-scrolling-placeholder.png"
+        alt="baby crying"
+        width="456"
+        height="253"
+      />
+    ),
+    title: <span>Every new birth tells its own story</span>,
+    bodyCopy: (
+      <span>
+        Quis laboris proident sint amet id cillum do dolor in tempor est
+        exercitation aute sint tempor eu ut.
+      </span>
+    ),
     link: (
       <a href="#">
         <span>
