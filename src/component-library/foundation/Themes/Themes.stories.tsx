@@ -34,30 +34,6 @@ const meta: Meta<typeof Themes> = {
           padding: '1rem',
         }}
       >
-        <CQCBlock
-          link={<a href="#"></a>}
-          title="Care Quality Commission verified"
-          text="All our hospitals are rated Good or Oustanding."
-          icon={<Icons iconName="iconCheckCircle"></Icons>}
-          logo={{
-            dark: (
-              <Image
-                src="/cqc-white.png"
-                alt="cqc logo"
-                width="120"
-                height="37"
-              />
-            ),
-            light: (
-              <Image
-                src="/cqc-color.png"
-                alt="cqc logo"
-                width="120"
-                height="37"
-              />
-            ),
-          }}
-        ></CQCBlock>
         <Text variation="display-1">Heading</Text>
         <Text variation="subheading-1">Subheading</Text>
         <Text>
@@ -91,6 +67,31 @@ const meta: Meta<typeof Themes> = {
           ]}
           callback={() => {}}
         />
+
+        <CQCBlock
+          link={<a href="#"></a>}
+          title="Care Quality Commission verified"
+          text="All our hospitals are rated Good or Oustanding."
+          icon={<Icons iconName="iconCheckCircle"></Icons>}
+          logo={{
+            dark: (
+              <Image
+                src="/cqc-white.png"
+                alt="cqc logo"
+                width="120"
+                height="37"
+              />
+            ),
+            light: (
+              <Image
+                src="/cqc-color.png"
+                alt="cqc logo"
+                width="120"
+                height="37"
+              />
+            ),
+          }}
+        ></CQCBlock>
       </div>
     ),
   },

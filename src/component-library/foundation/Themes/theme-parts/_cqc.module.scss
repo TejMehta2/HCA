@@ -3,9 +3,13 @@
 @mixin apply-cqc-dark {
   --cqc-background: #{$dark-blue};
   --cqc-text: #{$white};
+  --cqc-logo-light-display: block;
+  --cqc-logo-dark-display: none;
 }
 
 @mixin apply-cqc-light {
   --cqc-background: #{$white};
   --cqc-text: #{$dark-blue};
+  --cqc-logo-light-display: none;
+  --cqc-logo-dark-display: block;
 }
