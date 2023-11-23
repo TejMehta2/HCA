@@ -1,0 +1,13 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-doctify-dark {
+  --doctify-text: #{$dark-blue};
+  --doctify-logo-light-display: block;
+  --doctify-logo-dark-display: none;
+}
+
+@mixin apply-doctify-light {
+  --doctify-text: #{$white};
+  --doctify-logo-light-display: none;
+  --doctify-logo-dark-display: block;
+}

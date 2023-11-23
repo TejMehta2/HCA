@@ -17,16 +17,60 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Doctify> = {
   args: {
+    link: <a href="#"></a>,
     rating: 4,
     reviews: '13,500 +',
+    theme: 'dark',
     logo: {
       dark: (
-        <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
+        <Image
+          src="/doctify-dark.png"
+          alt="doctify logo"
+          width="83"
+          height="21"
+        />
       ),
       light: (
-        <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
+        <Image
+          src="/doctify-light.png"
+          alt="doctify logo"
+          width="83"
+          height="21"
+        />
       ),
     },
+  },
+};
+
+export const Light: StoryObj<typeof Doctify> = {
+  args: {
+    link: <a href="#"></a>,
+    rating: 5,
+    reviews: '13,500 +',
     theme: 'light',
+    logo: {
+      dark: (
+        <Image
+          src="/doctify-dark.png"
+          alt="doctify logo"
+          width="83"
+          height="21"
+        />
+      ),
+      light: (
+        <Image
+          src="/doctify-light.png"
+          alt="doctify logo"
+          width="83"
+          height="21"
+        />
+      ),
+    },
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
   },
 };

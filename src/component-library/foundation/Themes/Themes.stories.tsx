@@ -11,6 +11,7 @@ import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 import CardBlog from '../../components/CardBlog/CardBlog';
+import Doctify from '../../components/Doctify/Doctify';
 
 // TODO - replace demo cards with actual cards, and make sure they theme children correctly.
 
@@ -118,6 +119,30 @@ const meta: Meta<typeof Themes> = {
             ),
           }}
         ></CQCBlock>
+
+        <Doctify
+          link={<a href="#"></a>}
+          rating={5}
+          reviews="13,500 +"
+          logo={{
+            dark: (
+              <Image
+                src="/doctify-dark.png"
+                alt="doctify logo"
+                width="83"
+                height="21"
+              />
+            ),
+            light: (
+              <Image
+                src="/doctify-light.png"
+                alt="doctify logo"
+                width="83"
+                height="21"
+              />
+            ),
+          }}
+        />
       </div>
     ),
   },

@@ -11,6 +11,7 @@
   @include apply-cta-outline-light;
   @include apply-tag-secondary-green;
   @include apply-cqc-light;
+  @include apply-doctify-light;
   @include apply-text-buttons-light;
 }
 
@@ -23,6 +24,7 @@
   @include apply-cta-outline-dark;
   @include apply-tag-secondary-dark-blue;
   @include apply-cqc-dark;
+  @include apply-doctify-dark;
   @include apply-text-buttons-dark;
 }
 

@@ -1,3 +1,77 @@
-.bold {
-  font-weight: bold;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--doctify-text);
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8) 0;
+  width: fit-content;
+  position: relative;
+
+  &.light {
+    @include apply-doctify-light;
+  }
+
+  &.dark {
+    @include apply-doctify-dark;
+  }
+}
+
+.link {
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+    border-radius: $radius-small;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.review-container {
+  grid-area: 'review-container';
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(8);
+}
+
+.reviews {
+  @include apply-body-large;
+}
+
+.rating {
+  display: flex;
+  gap: px-to-rem(8);
+  color: $main-turquoise;
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+  @include apply-body-semi-bold-small;
+  gap: px-to-rem(8);
+}
+
+.centre {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.light-logo {
+  display: var(--doctify-logo-dark-display);
+}
+
+.dark-logo {
+  display: var(--doctify-logo-light-display);
 }
