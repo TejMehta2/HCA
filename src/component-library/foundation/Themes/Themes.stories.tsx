@@ -7,6 +7,9 @@ import Tags from '../../core-components/Tags/Tags';
 import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Tabs from '../../core-components/Tabs/Tabs';
+import CQCBlock from '../../components/CQCBlock/CQCBlock';
+import Icons from '../../foundation/Icons/Icons';
+import Image from 'next/image';
 import CardBlog from '../../components/CardBlog/CardBlog';
 
 // TODO - replace demo cards with actual cards, and make sure they theme children correctly.
@@ -90,6 +93,31 @@ const meta: Meta<typeof Themes> = {
           ]}
           callback={() => {}}
         />
+
+        <CQCBlock
+          link={<a href="#"></a>}
+          title="Care Quality Commission verified"
+          text="All our hospitals are rated Good or Oustanding."
+          icon={<Icons iconName="iconCheckCircle"></Icons>}
+          logo={{
+            dark: (
+              <Image
+                src="/cqc-white.png"
+                alt="cqc logo"
+                width="120"
+                height="37"
+              />
+            ),
+            light: (
+              <Image
+                src="/cqc-color.png"
+                alt="cqc logo"
+                width="120"
+                height="37"
+              />
+            ),
+          }}
+        ></CQCBlock>
       </div>
     ),
   },

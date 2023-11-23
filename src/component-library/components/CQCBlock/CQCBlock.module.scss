@@ -1,0 +1,140 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--cqc-background);
+  color: var(--cqc-text);
+  border-radius: $radius-small;
+  padding: px-to-rem(16);
+  display: grid;
+  grid-template: auto auto auto / minmax(auto, px-to-rem(235)) max-content;
+  grid-template-areas:
+    'logo logo'
+    'title icon'
+    'text icon';
+  gap: px-to-rem(8) 0;
+  width: fit-content;
+  position: relative;
+
+  &.light {
+    @include apply-cqc-light;
+  }
+
+  &.dark {
+    @include apply-cqc-dark;
+  }
+}
+
+.link {
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+    border-radius: $radius-small;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: solid #{px-to-rem(2)} transparent;
+      outline-offset: px-to-rem(-6);
+      outline-color: var(--cqc-focus-outline);
+    }
+  }
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  grid-area: icon;
+  color: $main-turquoise;
+  display: flex;
+}
+
+.dark {
+  .icon {
+    color: $green-40;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+}
+
+.light-logo {
+  display: var(--cqc-logo-dark-display);
+}
+
+.dark-logo {
+  display: var(--cqc-logo-light-display);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    padding-left: px-to-rem(8);
+  }
+}
+
+.requires-improvement {
+  .icon {
+    color: $light-orange;
+  }
+}
+
+.inadequate {
+  .icon {
+    color: $red;
+  }
+
+  &.dark {
+    .icon {
+      color: $coral;
+    }
+  }
+}
+
+.long {
+  @include media(screen-m) {
+    grid-template: auto auto / min-content max-content;
+    grid-template-areas:
+      'logo title'
+      'logo text';
+    gap: 0;
+    align-items: center;
+
+    .title {
+      justify-content: unset;
+      gap: px-to-rem(8);
+    }
+  }
+}
+
+.rating,
+.long {
+  .logo {
+    padding: 0 px-to-rem(23) 0 0;
+  }
+}
+
+.text {
+  grid-area: text;
+}
