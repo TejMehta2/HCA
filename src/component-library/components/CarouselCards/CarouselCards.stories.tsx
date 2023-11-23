@@ -10,7 +10,7 @@ const meta: Meta<typeof CarouselCards> = {
   component: CarouselCards,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -102,6 +102,54 @@ export const Default: StoryObj<typeof CarouselCards> = {
         />
         <CardPatientStories
           title={<span>4 Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+        <CardPatientStories
+          title={<span>5 Every new birth tells its own story</span>}
+          bodyCopy={
+            <span>
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut
+            </span>
+          }
+          image={
+            <Image
+              src="/side-scrolling-placeholder.png"
+              alt="baby crying"
+              width="456"
+              height="253"
+            />
+          }
+          link={
+            <a href="#">
+              <span>
+                Read the <strong>Story</strong>
+              </span>
+            </a>
+          }
+        />
+        <CardPatientStories
+          title={<span>6 Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est
