@@ -1,0 +1,28 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardServiceStories from './CardService.stories';
+
+<Meta of={CardServiceStories} />
+
+# CardService
+
+## Description
+
+The CardService component is a card which consists of a title, image and link. The title and image can be passed as `children` and the link should set via the `link` prop. The whole card is clickable.
+
+It is intended to be used on the homepage as part of the Homepage Service Card Block.
+
+It can be composed like this:
+
+```tsx
+<CardService
+  link={<JssLink field={props.fields.PromoLink}>Learn More</JssLink>}
+>
+  <JssImage field={props.fields.PromoIcon} />
+  <Text variation="display-6">Cardiac Care</Text>
+</CardService>
+```
+
+## Example
+
+<Canvas of={CardServiceStories.Default} />
+<Controls of={CardServiceStories.Default} />
