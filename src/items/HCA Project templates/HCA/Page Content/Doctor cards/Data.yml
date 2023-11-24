@@ -1,15 +1,8 @@
 ﻿---
-ID: "9310f1da-09cb-4a8c-a99b-0a8cf12bf56c"
-Parent: "3b62d357-85a9-4d2d-9ee0-9b272b0b773e"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Page Content/Cards - Doctor cards/Data/Title"
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "4d96e85b-0112-49db-9535-cad74644f85b"
+Parent: "ad431ae8-75c6-4abf-b28b-e7d488e59f07"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Page Content/Doctor cards/Data
 Languages:
 - Language: en
   Versions:
@@ -28,7 +21,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a7f5dcbb-41f0-455d-8e43-8f86e1212365"
+      Value: "4c8d3c55-f178-4d08-9aa4-82844ad74bfe"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
