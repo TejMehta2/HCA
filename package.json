@@ -15,7 +15,7 @@
     "hcamain:start:production": "npm run start:production -w src/hcamain",
     "hcamain:build": "npm run build -w src/hcamain",
     "hcamain:next:start": "npm run next:start -w src/hcamain",
-    "hcamain:type-check": "npm run type-check -w src/hcamain",
+    "hcamain:type-check": "npm run bootstrap -w src/hcamain && npm run type-check -w src/hcamain",
     "microsite:start": "npm run start:connected -w src/microsite",
     "microsite:start:production": "npm run start:production -w src/microsite",
     "microsite:build": "npm run build -w src/microsite",
