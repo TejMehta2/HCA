@@ -18,7 +18,7 @@ export default meta;
 export const Default: StoryObj<typeof Doctify> = {
   args: {
     link: <a href="#"></a>,
-    rating: 4,
+    rating: 5,
     reviews: '13,500 +',
     theme: 'dark',
     logo: {
