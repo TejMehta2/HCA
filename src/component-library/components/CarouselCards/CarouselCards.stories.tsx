@@ -53,7 +53,7 @@ export const Default: StoryObj<typeof CarouselCards> = {
           }
         />
         <CardPatientStories
-          title={<span>2 Every new birth tells its own story</span>}
+          title={<span>Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est
@@ -77,7 +77,7 @@ export const Default: StoryObj<typeof CarouselCards> = {
           }
         />
         <CardPatientStories
-          title={<span>3 Every new birth tells its own story</span>}
+          title={<span>Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est
@@ -101,7 +101,7 @@ export const Default: StoryObj<typeof CarouselCards> = {
           }
         />
         <CardPatientStories
-          title={<span>4 Every new birth tells its own story</span>}
+          title={<span>Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est
@@ -125,7 +125,7 @@ export const Default: StoryObj<typeof CarouselCards> = {
           }
         />
         <CardPatientStories
-          title={<span>5 Every new birth tells its own story</span>}
+          title={<span>Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est
@@ -149,7 +149,7 @@ export const Default: StoryObj<typeof CarouselCards> = {
           }
         />
         <CardPatientStories
-          title={<span>6 Every new birth tells its own story</span>}
+          title={<span>Every new birth tells its own story</span>}
           bodyCopy={
             <span>
               Quis laboris proident sint amet id cillum do dolor in tempor est

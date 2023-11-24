@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CarouselCardsProps } from './CarouselCards.types';
 import styles from './CarouselCards.module.scss';
 import Slider, { CustomArrowProps } from '@ant-design/react-slick';
@@ -7,6 +7,7 @@ import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Themes from '../../foundation/Themes/Themes';
 
+/* Custom previous arrow */
 const PrevArrow = (props: CustomArrowProps) => {
   const { className, onClick } = props;
   return (
@@ -21,6 +22,7 @@ const PrevArrow = (props: CustomArrowProps) => {
   );
 };
 
+/* Custom next arrow */
 const NextArrow = (props: CustomArrowProps) => {
   const { className, onClick } = props;
   return (
@@ -37,7 +39,26 @@ const NextArrow = (props: CustomArrowProps) => {
 
 const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
   const { title, link, children } = props;
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
+  /* fix for Tabindex of carousel ctas */
+  useEffect(() => {
+    const cards = carouselRef.current!.querySelectorAll('.slick-slide');
+
+    if (!cards) return;
+
+    /* On change of slide, check which slides are visible and adjsut tabindexes of ctas */
+    cards.forEach((card) => {
+      if (card.classList.contains('slick-active')) {
+        card.querySelector('a, button')?.setAttribute('tabindex', '0');
+      } else {
+        card.querySelector('a, button')?.setAttribute('tabindex', '-1');
+      }
+    });
+  }, [currentSlide]);
+
+  /* Carousel settings */
   const settings = {
     speed: 500,
     slidesToShow: 3,
@@ -46,6 +67,23 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     className: styles['slick-wrapper'],
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    afterChange: (newSlide: number) => {
+      setCurrentSlide(newSlide);
+    },
+    responsive: [
+      {
+        breakpoint: 1135,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -58,7 +96,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
             </Text>
           </div>
 
-          <div className={styles['carousel-wrapper']}>
+          <div ref={carouselRef} className={styles['carousel-wrapper']}>
             <Slider {...settings}>
               {children && children[0].props.children}
             </Slider>

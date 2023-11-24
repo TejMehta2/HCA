@@ -25,6 +25,7 @@
   --cta-full-focus-background: #{$dark-blue-40};
   --cta-full-focus-text: #{$dark-blue-40};
   --cta-full-focus-border: #{$dark-blue-40};
+  --cta-full-focus-outline: #{$main-turquoise};
 }
 @mixin apply-cta-full-light {
   // Base
