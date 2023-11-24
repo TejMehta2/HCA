@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as DoctifyStories from './Doctify.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as DoctifyStories from './Doctify.stories';
 
 <Meta of={DoctifyStories} />
 
@@ -7,17 +7,40 @@ import * as DoctifyStories from './Doctify.stories'
 
 ## Description
 
-The Doctify component is...
+The Doctify component is made up of a rating, a reviews count, and a logo. It can be aligned to the left, right or centre. It has theme styling for use on dark or light backgrounds or can be nested in a parent component using a Theme.
 
-It is intended to be used in...
+It is intended to be used in different parts of the site with one example being the footer.
 
 It can be composed like this:
 
-``` tsx
-<Doctify></Doctify>
+```tsx
+<Doctify
+  link={<a href="#"></a>}
+  rating={4}
+  reviews="13,500 +"
+  theme="light"
+  logo={{
+    dark: (
+      <Image
+        src="/doctify-dark.png"
+        alt="doctify logo"
+        width="83"
+        height="21"
+      />
+    ),
+    light: (
+      <Image
+        src="/doctify-light.png"
+        alt="doctify logo"
+        width="83"
+        height="21"
+      />
+    ),
+  }}
+></Doctify>
 ```
 
-## Example 
+## Example
 
 <Canvas of={DoctifyStories.Default} />
 <Controls of={DoctifyStories.Default} />
