@@ -1,29 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import { ImageAndTextBlockProps } from './ImageAndTextBlock.types';
 import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
+import useWindowWidth from '../../hooks/useWindowWidth';
 import styles from './ImageAndTextBlock.module.scss';
-
-const useWindowWidth = (size: number) => {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [setWidth]);
-
-  return width >= size;
-};
 
 const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   const {
