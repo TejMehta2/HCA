@@ -51,9 +51,13 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     /* On change of slide, check which slides are visible and adjsut tabindexes of ctas */
     cards.forEach((card) => {
       if (card.classList.contains('slick-active')) {
-        card.querySelector('a, button')?.setAttribute('tabindex', '0');
+        card
+          .querySelectorAll('a, button')
+          ?.forEach((cta) => cta.setAttribute('tabindex', '0'));
       } else {
-        card.querySelector('a, button')?.setAttribute('tabindex', '-1');
+        card
+          .querySelectorAll('a, button')
+          ?.forEach((cta) => cta.setAttribute('tabindex', '-1'));
       }
     });
   }, [currentSlide]);

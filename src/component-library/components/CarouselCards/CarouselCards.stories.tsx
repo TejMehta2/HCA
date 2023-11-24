@@ -3,6 +3,9 @@ import Image from 'next/image';
 import CarouselCards from './CarouselCards';
 import type { Meta, StoryObj } from '@storybook/react';
 import CardPatientStories from '../CardPatientStories/CardPatientStories';
+import CardBlog from '../CardBlog/CardBlog';
+import Text from '../../foundation/Text/Text';
+import Tags from '../../core-components/Tags/Tags';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CarouselCards> = {
@@ -16,7 +19,7 @@ const meta: Meta<typeof CarouselCards> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof CarouselCards> = {
+export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
   args: {
     title: <span>Orthopaedics Patient Stories</span>,
     link: (
@@ -172,6 +175,119 @@ export const Default: StoryObj<typeof CarouselCards> = {
             </a>
           }
         />
+      </React.Fragment>,
+    ],
+  },
+};
+
+export const BlogCards: StoryObj<typeof CarouselCards> = {
+  args: {
+    title: <span>Orthopaedic Care</span>,
+    link: (
+      <a href="#">
+        <span>
+          View <strong>all</strong>
+        </span>
+      </a>
+    ),
+    children: [
+      <React.Fragment key={1}>
+        <CardBlog>
+          <>
+            <Image
+              src="/image-and-text-component-placeholder.jpg"
+              alt="two children playing"
+              width="643"
+              height="605"
+            />
+            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+            <Text variation="heading-2" tag="h3">
+              <a href="#">
+                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
+                rating
+              </a>
+            </Text>
+            <Text variation="body-large">
+              There are over 1400 at The Portland, each year. Hear new mums
+              sharing theirs
+            </Text>
+            <Tags>
+              <a href="#">Announcement</a>
+            </Tags>
+          </>
+        </CardBlog>
+        <CardBlog>
+          <>
+            <Image
+              src="/image-and-text-component-placeholder.jpg"
+              alt="two children playing"
+              width="643"
+              height="605"
+            />
+            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+            <Text variation="heading-2" tag="h3">
+              <a href="#">
+                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
+                rating
+              </a>
+            </Text>
+            <Text variation="body-large">
+              There are over 1400 at The Portland, each year. Hear new mums
+              sharing theirs
+            </Text>
+            <Tags>
+              <a href="#">Announcement</a>
+            </Tags>
+          </>
+        </CardBlog>
+        <CardBlog>
+          <>
+            <Image
+              src="/image-and-text-component-placeholder.jpg"
+              alt="two children playing"
+              width="643"
+              height="605"
+            />
+            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+            <Text variation="heading-2" tag="h3">
+              <a href="#">
+                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
+                rating
+              </a>
+            </Text>
+            <Text variation="body-large">
+              There are over 1400 at The Portland, each year. Hear new mums
+              sharing theirs
+            </Text>
+            <Tags>
+              <a href="#">Announcement</a>
+            </Tags>
+          </>
+        </CardBlog>
+        <CardBlog>
+          <>
+            <Image
+              src="/image-and-text-component-placeholder.jpg"
+              alt="two children playing"
+              width="643"
+              height="605"
+            />
+            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+            <Text variation="heading-2" tag="h3">
+              <a href="#">
+                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
+                rating
+              </a>
+            </Text>
+            <Text variation="body-large">
+              There are over 1400 at The Portland, each year. Hear new mums
+              sharing theirs
+            </Text>
+            <Tags>
+              <a href="#">Announcement</a>
+            </Tags>
+          </>
+        </CardBlog>
       </React.Fragment>,
     ],
   },
