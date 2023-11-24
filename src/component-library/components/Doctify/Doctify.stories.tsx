@@ -40,12 +40,19 @@ export const Default: StoryObj<typeof Doctify> = {
       ),
     },
   },
+
+  parameters: {
+    backgrounds: {
+      default: 'main-turqoise',
+      values: [{ name: 'main-turqoise', value: '#77c7c3' }],
+    },
+  },
 };
 
 export const Light: StoryObj<typeof Doctify> = {
   args: {
     link: <a href="#"></a>,
-    rating: 5,
+    rating: 4,
     reviews: '13,500 +',
     theme: 'light',
     logo: {
