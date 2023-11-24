@@ -41,37 +41,11 @@
   & div[class*='slick-slide'] {
     padding-right: $spacing-4;
 
-    &:nth-of-type(4n + 1) {
-      & > div {
-        background-color: $light-orange;
-      }
-    }
-
-    &:nth-of-type(4n + 2) {
-      & > div {
-        //background-color: $green-40;
-        @include apply-theme-g;
-        background-color: var(--background);
-      }
-    }
-
-    &:nth-of-type(4n + 3) {
-      & > div {
-        background-color: $light-orange-40;
-      }
-    }
-
-    &:nth-of-type(4n + 4) {
-      & > div {
-        background-color: $main-turquoise-20;
-      }
-    }
-
     /* images zoom in slightly on hover. Transition timing can be found in CardPatientStories component */
     & img {
       transition: 0.6s ease;
     }
-    
+
     &:hover {
       & img {
         transform: scale(1.05);
@@ -84,7 +58,7 @@
     }
   }
 
-  /* need to set negative of card spacing in parent */
+  /* quirk of react-slick. Need to set negative of card spacing in parent */
   & div[class*='slick-list'] {
     margin-right: calc($spacing-4 * -1);
   }

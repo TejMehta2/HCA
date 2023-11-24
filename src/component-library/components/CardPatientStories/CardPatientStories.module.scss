@@ -1,35 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-/* react-slick automatically appends a wrapper div around each slide which means card are no longer siblings.
-This gets around it by using the parent class as the sibling element
- */
-div[class*='slick-slide'] {
-  &:nth-of-type(4n + 1) {
-    .card {
-      background-color: $light-orange;
-    }
-  }
-
-  &:nth-of-type(4n + 2) {
-    .card {
-      background-color: $green-40;
-    }
-  }
-
-  &:nth-of-type(4n + 3) {
-    .card {
-      background-color: $light-orange-40;
-    }
-  }
-
-  &:nth-of-type(4n + 4) {
-    .card {
-      background-color: $main-turquoise-20;
-    }
-  }
-}
-
 .card {
   width: 100%;
   height: 100%;
@@ -96,5 +67,34 @@ div[class*='slick-slide'] {
 .copy {
   & :last-child {
     margin-top: $spacing-4;
+  }
+}
+
+/* react-slick automatically appends a wrapper div around each slide which means card are no longer siblings.
+This gets around it by using the parent class as the sibling element
+ */
+div[class*='slick-slide'] {
+  &:nth-of-type(4n + 1) {
+    .card {
+      background-color: $light-orange;
+    }
+  }
+
+  &:nth-of-type(4n + 2) {
+    .card {
+      background-color: $green-40;
+    }
+  }
+
+  &:nth-of-type(4n + 3) {
+    .card {
+      background-color: $light-orange-40;
+    }
+  }
+
+  &:nth-of-type(4n + 4) {
+    .card {
+      background-color: $main-turquoise-20;
+    }
   }
 }
