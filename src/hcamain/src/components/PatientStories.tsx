@@ -15,9 +15,9 @@ interface StoriesFields {
 interface Fields {
   Title: Field<string>;
   Text: Field<string>;
-  Icon: ImageField;
-  CTALink: LinkField;
   CardCTAText: Field<string>;
+  CTAIcon: ImageField;
+  CTALink: LinkField;
   stories: {
     StoriesList: StoriesFields[];
   };
@@ -38,14 +38,10 @@ const PatientStoriesDefaultComponent = (
   </div>
 );
 
-export const Carousel = (
-  props: PatientStoriesProps
-): JSX.Element => {
+export const Carousel = (props: PatientStoriesProps): JSX.Element => {
   return <PatientStoriesDefaultComponent {...props} />;
 };
 
-export const Standard = (
-  props: PatientStoriesProps
-): JSX.Element => {
+export const Standard = (props: PatientStoriesProps): JSX.Element => {
   return <PatientStoriesDefaultComponent {...props} />;
 };
