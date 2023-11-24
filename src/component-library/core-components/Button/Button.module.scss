@@ -284,14 +284,15 @@
       }
 
       &:active {
-        background-color: var(--cta-carousel-disabled-background);
-        color: var(--cta-carousel-disabled-text);
-        border-color: var(--cta-carousel-active-background);
+        background-color: var(--cta-carousel-active-background);
+        color: var(--cta-carousel-active-text);
+        border-color: var(--cta-carousel-active-border);
       }
 
       &:disabled {
-        background-color: var(--cta-carousel-active-text);
-        color: var(--cta-carousel-active-border);
+        background-color: var(--cta-carousel-disabled-background);
+        color: var(--cta-carousel-disabled-text);
+        border-color: var(--cta-carousel-disabled-background);
       }
 
       &:focus {

@@ -25,6 +25,7 @@
   --cta-full-focus-background: #{$dark-blue-40};
   --cta-full-focus-text: #{$dark-blue-40};
   --cta-full-focus-border: #{$dark-blue-40};
+  --cta-full-focus-outline: #{$main-turquoise};
 }
 @mixin apply-cta-full-light {
   // Base
@@ -161,6 +162,7 @@
   // Disabled
   --cta-carousel-disabled-background: #{$dark-blue-40};
   --cta-carousel-disabled-text: #{$dark-blue-10};
+  --cta-carousel-disabled-border: #{$dark-blue-40};
 
   // Active
   --cta-carousel-active-background: #{$white};
@@ -184,6 +186,7 @@
   // Disabled
   --cta-carousel-disabled-background: #{$dark-blue-40};
   --cta-carousel-disabled-text: #{$dark-blue-10};
+  --cta-carousel-disabled-border: #{$dark-blue-40};
 
   // Active
   --cta-carousel-active-background: #{$dark-blue};
