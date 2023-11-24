@@ -1,83 +1,26 @@
 ﻿---
-ID: "c02783cf-b67e-4849-88ed-8b324ca0089a"
-Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
-Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Doctor cards
+ID: "41deaad3-a6a4-4d3f-b57f-94fad1fa3281"
+Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Service Cards
 SharedFields:
-- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
-  Hint: componentName
-  Value: Doctor cards
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
+  Value: sxa/16x16/promo.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
   Value: |
-    query GetDoctorCards( $datasource: String!, $language: String!) 
-    {
-        item(path: $datasource, language: $language) {
-        ...on DoctorCards {
-              Title : field(name:"Title"){value},
-              NumberOfCards : field(name:"Number of Cards"){value},
-              CTACard : field(name:"CTACard"){...on LinkField{url}},
-          	  CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
-              CTALink : field(name:"CTA Link"){...on LinkField{url}},
-              ...on DoctifyFilters
-          	  {
-                practice
-                {
-                   PracticeList: targetItems
-                    {
-                      Title : field(name:"Title"){value},
-                      Description : field(name:"Description"){value},
-                      Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                      DoctifyPractice : field(name:"Doctify Practice"){value},
-                    }
-                }
-                service
-                {
-                   ServicesList: targetItems
-                    {
-                      Title : field(name:"Title"){value},
-                      Description : field(name:"Description"){value},
-                      Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                      DoctifyKeywordId : field(name:"Title"){value},
-                    }
-                  }
-                customFilters
-                {
-                   CustomFiltersList: targetItems
-                    {
-                      CustomFiltersList : field(name:"Filter"){value},
-                    }
-                  }
-              }
-        	}
-       }
-    }
-    
-    
-- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
-  Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Doctor cards
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
+    {4247AAD4-EBDE-4994-998F-E067A51B1FE4}
+    {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
+    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
+    {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
+    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
   Value: 0
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{3E46AB03-87FD-4CF1-927D-2AA1054AFCCC}"
-- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
-  Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Doctor cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Doctor cards Folder']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{E8A46815-CDE1-4AE5-9338-9A357AC9095B}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -114,21 +57,21 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20211012T120926Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ca1004c9-ee40-40f9-a1e2-7a0cea0465e5"
+      Value: "60e4957a-2419-4b5b-baf5-30b044da9344"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T151937Z
+      Value: 20231124T125353Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
