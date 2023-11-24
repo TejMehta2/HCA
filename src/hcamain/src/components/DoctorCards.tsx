@@ -1,5 +1,9 @@
 import React from 'react';
-import { Field, ImageField, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { 
+  Field,
+  ImageField,
+  LinkField
+} from '@sitecore-jss/sitecore-jss-nextjs';
 
 type PracticeFields = {
   Title: Field<string>;
