@@ -145,3 +145,37 @@
   @include apply-tag-coral;
   @include apply-tabs-white;
 }
+
+@mixin theme-mode($light, $dark) {
+  :where([data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme] [data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme] [data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+}

@@ -48,6 +48,43 @@ The CSS custom properties of the theme can be consumed manually:
 }
 ```
 
+## Modes
+
+Each theme has a light or dark mode, which determines colours automatically applied to nested components such as Cards.
+
+We can also access and apply styles for light and dark modes via the `theme-mode` mixin e.g. to hide or show a specific logo based on the current theme's mode:
+
+``` scss
+.my-themed-component {
+  background: var(--background);
+  color: var(--text);
+
+  .card {
+    background: var(--card-background);
+    color: var(--card-text);
+  }
+
+  @include theme-mode(light, dark) using ($mode) {
+    @if $mode == light {
+      .light-logo {
+        display: block;
+      }
+      .dark-logo {
+        display: none;
+      }
+    }
+    @if $mode == dark {
+      .light-logo {
+        display: none;
+      }
+      .dark-logo {
+        display: block;
+      }
+    }
+  }
+}
+```
+
 ## CSS custom property list
 
 The vast majority of the theme properties are consumed automatically by core-components, these are grouped in the mixins in the "./theme-parts" directory.

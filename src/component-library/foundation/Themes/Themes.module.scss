@@ -50,3 +50,20 @@
 .l {
   @include apply-theme-l;
 }
+
+:export {
+  mode: {
+    a: dark;
+    b: dark;
+    c: dark;
+    d: dark;
+    e: light;
+    f: dark;
+    g: dark;
+    h: dark;
+    i: dark;
+    j: dark;
+    k: dark;
+    l: dark;
+  }
+}
