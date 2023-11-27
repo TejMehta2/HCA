@@ -6,11 +6,7 @@ import styles from './Doctify.module.scss';
 const Doctify = (props: DoctifyProps): JSX.Element => {
   const { rating, reviews, logo, link, theme, alignment } = props;
 
-  const themeOveride = theme
-    ? theme !== 'dark'
-      ? styles.light
-      : styles.dark
-    : '';
+  const themeOveride = theme ? styles[theme] : '';
 
   const stars = [];
   const inactiveStars = [];
