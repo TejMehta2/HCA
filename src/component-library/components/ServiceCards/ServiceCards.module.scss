@@ -1,0 +1,39 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  padding: $spacing-10 0;
+  background-color: $beige;
+}
+
+.container {
+  @include responsive-container;
+}
+
+.grid {
+  @include responsive-grid;
+}
+
+.text {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+}
+
+.cards {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+
+  @include responsive-grid-start($default: 1, $breakpoint-l: 7);
+
+  // @include responsive-grid;
+
+  // & > div:nth-child(-n + 2) {
+  //   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+  // }
+
+  // & > div:nth-last-child(-n + 3) {
+  //   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+  // }
+
+  // & > div:last-child {
+  //   @include responsive-grid-start($default: 1, $breakpoint-l: 7);
+  // }
+}
