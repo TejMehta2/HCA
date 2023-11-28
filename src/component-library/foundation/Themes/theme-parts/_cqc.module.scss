@@ -1,17 +1,13 @@
 @use '../../Colours/colours.module' as *;
 
 @mixin apply-cqc-dark {
-  --cqc-background: #{$dark-blue};
+  --cqc-background: #{$dark-blue-80};
   --cqc-text: #{$white};
-  --cqc-logo-light-display: block;
-  --cqc-logo-dark-display: none;
   --cqc-focus-outline: #{$white};
 }
 
 @mixin apply-cqc-light {
   --cqc-background: #{$white};
   --cqc-text: #{$dark-blue};
-  --cqc-logo-light-display: none;
-  --cqc-logo-dark-display: block;
   --cqc-focus-outline: #{$dark-blue};
 }
