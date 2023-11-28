@@ -1,0 +1,33 @@
+﻿---
+ID: "8305886d-5e02-4572-84d8-b26e3c5bd5c6"
+Parent: "8f098170-d135-4eaa-9eab-a35917061e83"
+Template: "8f098170-d135-4eaa-9eab-a35917061e83"
+Path: /sitecore/templates/Project/HCA/Page Content/GP and Urgent care services Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {8E9F33A8-60EE-4C02-B264-288A8B84D0A0}
+    {8F098170-D135-4EAA-9EAB-A35917061E83}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a945aa32-0310-4cee-ab09-c80bcf186f00"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231128T110822Z
