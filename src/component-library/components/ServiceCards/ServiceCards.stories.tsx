@@ -5,7 +5,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import CardService from '../CardService/CardService';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
-import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -33,14 +32,12 @@ export const Default: StoryObj<typeof ServiceCards> = {
       </Text>
     ),
     cta: (
-      <Button size="large" theme="outline-dark">
-        <a href="#">
-          <Icons iconName="iconSearch"></Icons> Search all service lines
-        </a>
-      </Button>
+      <a href="#">
+        <Icons iconName="iconSearch"></Icons> Search all service lines
+      </a>
     ),
     children: [
-      <React.Fragment key={1}>
+      <>
         <CardService link={<a href="#">Learn More</a>}>
           <Image
             src="/image-and-text-component-placeholder.jpg"
@@ -48,7 +45,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
             width="643"
             height="605"
           />
-          <Text variation="display-6">Cardiac Care</Text>
+          <Text variation="display-6">Cardiac Care 1</Text>
         </CardService>
 
         <CardService link={<a href="#">Learn More</a>}>
@@ -58,7 +55,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
             width="643"
             height="605"
           />
-          <Text variation="display-6">Cardiac Care</Text>
+          <Text variation="display-6">Cardiac Care 2</Text>
         </CardService>
 
         <CardService link={<a href="#">Learn More</a>}>
@@ -68,7 +65,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
             width="643"
             height="605"
           />
-          <Text variation="display-6">Cardiac Care</Text>
+          <Text variation="display-6">Cardiac Care 3</Text>
         </CardService>
 
         <CardService link={<a href="#">Learn More</a>}>
@@ -78,8 +75,9 @@ export const Default: StoryObj<typeof ServiceCards> = {
             width="643"
             height="605"
           />
-          <Text variation="display-6">Cardiac Care</Text>
+          <Text variation="display-6">Cardiac Care 4</Text>
         </CardService>
+
         <CardService link={<a href="#">Learn More</a>}>
           <Image
             src="/image-and-text-component-placeholder.jpg"
@@ -87,9 +85,9 @@ export const Default: StoryObj<typeof ServiceCards> = {
             width="643"
             height="605"
           />
-          <Text variation="display-6">Cardiac Care</Text>
+          <Text variation="display-6">Cardiac Care 5</Text>
         </CardService>
-      </React.Fragment>,
+      </>,
     ],
   },
 };
