@@ -18,10 +18,26 @@
 
   &.light {
     @include apply-cqc-light;
+
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
   }
 
   &.dark {
     @include apply-cqc-dark;
+
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
   }
 }
 
@@ -77,12 +93,25 @@
   display: flex;
 }
 
-.light-logo {
-  display: var(--cqc-logo-dark-display);
-}
+@include theme-mode(light, dark) using ($mode) {
+  @if $mode == light {
+    .light-logo {
+      display: none;
+    }
 
-.dark-logo {
-  display: var(--cqc-logo-light-display);
+    .dark-logo {
+      display: block;
+    }
+  }
+  @if $mode == dark {
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
+  }
 }
 
 .rating {
