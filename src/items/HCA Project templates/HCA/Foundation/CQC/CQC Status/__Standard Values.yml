@@ -19,13 +19,16 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "7edb9b23-9055-4551-a6d4-edca5a3f364d"
+      Hint: Title
+      Value: $name
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dd73fd1e-4410-4d4f-99cb-7b3231aa6d8e"
+      Value: "c6a41251-32fd-427e-aad2-c1ade33d919a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T085421Z
+      Value: 20231128T095354Z
