@@ -24,8 +24,7 @@ try {
     const targetDirectory = path.join(destinationDirectory, folder);
     fs.cpSync(sourceDirectory, targetDirectory, {
       recursive: true,
-      filter: (source, destination) => {
-        console.log(source, destination);
+      filter: (source) => {
         if (
           source.endsWith('.spec.tsx') ||
           source.endsWith('.stories.tsx') ||
