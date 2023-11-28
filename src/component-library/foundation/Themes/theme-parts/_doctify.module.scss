@@ -1,0 +1,17 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-doctify-dark {
+  --doctify-text: #{$dark-blue};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
+  --doctify-logo-light-display: block;
+  --doctify-logo-dark-display: none;
+}
+
+@mixin apply-doctify-light {
+  --doctify-text: #{$white};
+  --doctify-full-star: #{$main-turquoise};
+  --doctify-empty-star: #{$white};
+  --doctify-logo-light-display: none;
+  --doctify-logo-dark-display: block;
+}
