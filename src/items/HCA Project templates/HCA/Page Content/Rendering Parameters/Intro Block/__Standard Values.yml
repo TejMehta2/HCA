@@ -1,0 +1,27 @@
+﻿---
+ID: "c017ed17-d494-4e81-90e7-2f77373c99bd"
+Parent: "c15fb683-e7c6-4b2c-a4d6-c4bf68f74ddd"
+Template: "c15fb683-e7c6-4b2c-a4d6-c4bf68f74ddd"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Intro Block/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b92a1597-061d-453c-b4e0-2a3e7b6b55ed"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231128T122258Z
