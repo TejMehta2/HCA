@@ -1,0 +1,31 @@
+﻿---
+ID: "a27b9adf-e3bd-40ea-a577-c85e5707161f"
+Parent: "01522cb0-f5ea-40e4-8843-c3bbbdb46abd"
+Template: "01522cb0-f5ea-40e4-8843-c3bbbdb46abd"
+Path: /sitecore/templates/Project/HCA/Foundation/CQC/CQC Status/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231128T085421Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "dd73fd1e-4410-4d4f-99cb-7b3231aa6d8e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231128T085421Z
