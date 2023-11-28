@@ -78,6 +78,11 @@
 
     li {
       display: flex;
+
+      svg {
+        width: px-to-rem(14);
+        height: px-to-rem(13);
+      }
     }
   }
 }

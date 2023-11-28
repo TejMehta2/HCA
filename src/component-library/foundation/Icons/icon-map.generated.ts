@@ -115,7 +115,7 @@ export type IconName =
   | 'iconStar'
   | 'iconStethoscope'
   | 'iconVideo'
-  | 'iconWarning'
+  | 'iconWarning';
 
 const iconMap = new Map<IconName, () => JSX.Element>([
   ['icon3Lines', icon3Lines],
@@ -176,6 +176,6 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconStethoscope', iconStethoscope],
   ['iconVideo', iconVideo],
   ['iconWarning', iconWarning],
-])
+]);
 
-export default iconMap
+export default iconMap;

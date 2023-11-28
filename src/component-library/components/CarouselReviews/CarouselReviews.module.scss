@@ -17,8 +17,9 @@
   gap: $spacing-3;
 
   & svg {
-    color: transparent;
-    border: 1px solid red;
+    color: $main-turquoise;
+    width: px-to-rem(25.29);
+    height: px-to-rem(25.29);
   }
 }
 
@@ -27,9 +28,41 @@
 }
 
 .doctify {
-  margin-top: $spacing-6;
+  margin-top: px-to-rem(122);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: px-to-rem(8);
+}
+
+.slick-wrapper {
+  position: relative;
+
+  & div[class*='slick-list'] {
+    overflow: hidden;
+  }
+
+  & div[class*='slick-slide'] {
+    > div {
+      max-width: px-to-rem(741);
+      margin: auto;
+    }
+  }
+
+  & div[class*='slick-arrow'] {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 50%;
+  }
+
+  & div[class*='slick-prev'] {
+    transform: translateY(calc(100% + $spacing-7)) translateX(-100%);
+    @include media(screen-m) {
+    }
+  }
+
+  & div[class*='slick-next'] {
+    transform: translateY(calc(100% + $spacing-7)) translateX(px-to-rem(12));
+  }
 }
