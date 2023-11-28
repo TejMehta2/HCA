@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "copy": "npx ts-node component-library-copy.ts",
     "test": "cross-env NODE_ENV=test jest",
     "scaffold": "npx ts-node scaffold/index.ts ",
     "register-icons": "npx ts-node foundation/Icons/register-icons.ts",
