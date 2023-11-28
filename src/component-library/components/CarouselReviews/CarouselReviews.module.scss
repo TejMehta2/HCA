@@ -1,0 +1,35 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../CarouselCards/Slick.module.scss' as *;
+
+.wrapper {
+  background-color: var(--background);
+  padding: $spacing-7 $spacing-4;
+  text-align: center;
+  color: var(--text);
+  overflow-x: clip;
+}
+
+.stars {
+  margin: $spacing-3 0 px-to-rem(9);
+  display: flex;
+  justify-content: center;
+  gap: $spacing-3;
+
+  & svg {
+    color: transparent;
+    border: 1px solid red;
+  }
+}
+
+.carousel {
+  margin-top: $spacing-7;
+}
+
+.doctify {
+  margin-top: $spacing-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: px-to-rem(8);
+}
