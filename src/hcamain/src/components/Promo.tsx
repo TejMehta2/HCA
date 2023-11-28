@@ -7,11 +7,11 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@hca/component-library/core-components/Button/Button';
-import Text from '@hca/component-library/foundation/Text/Text';
-import Themes from '@hca/component-library/foundation/Themes/Themes';
-import CardBlog from '@hca/component-library/components/CardBlog/CardBlog';
-import Tags from '@hca/component-library/core-components/Tags/Tags';
+import Button from '@component-library/core-components/Button/Button';
+import Text from '@component-library/foundation/Text/Text';
+import Themes from '@component-library/foundation/Themes/Themes';
+import CardBlog from '@component-library/components/CardBlog/CardBlog';
+import Tags from '@component-library/core-components/Tags/Tags';
 
 interface Fields {
   PromoIcon: ImageField;
