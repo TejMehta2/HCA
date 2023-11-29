@@ -44,6 +44,7 @@
 
   & div[class*='slick-list'] {
     overflow: hidden;
+    margin-right: calc($spacing-4 * -1);
   }
 
   & div[class*='slick-slide'] {
@@ -55,10 +56,6 @@
     }
   }
 
-  & div[class*='slick-list'] {
-    margin-right: calc($spacing-4 * -1);
-  }
-
   & div[class*='slick-arrow'] {
     position: absolute;
     z-index: 1;
@@ -68,8 +65,6 @@
 
   & div[class*='slick-prev'] {
     transform: translateY(calc(100% + $spacing-7)) translateX(-100%);
-    @include media(screen-m) {
-    }
   }
 
   & div[class*='slick-next'] {
