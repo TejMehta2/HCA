@@ -70,7 +70,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
               <span>Verified by</span>
             </Text>
             <Image
-              src="/doctify.png"
+              src="/doctify-dark.png"
               alt="doctify logo"
               width="83"
               height="21"
