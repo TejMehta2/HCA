@@ -60,9 +60,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
           </div>
 
           <div className={styles['carousel']}>
-            <Slider {...settings}>
-              {children && children[0].props.children}
-            </Slider>
+            <Slider {...settings}>{children}</Slider>
           </div>
 
           <div className={styles['doctify']}>
