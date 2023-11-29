@@ -17,7 +17,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CarouselReviews> = {
   args: {
-    rating: <span>4.85</span>,
+    rating: 4.85,
     reviewCount: <span>13,500+ reviews</span>,
     children: [
       <React.Fragment key={1}>

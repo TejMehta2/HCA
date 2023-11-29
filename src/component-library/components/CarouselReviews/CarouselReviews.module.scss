@@ -3,11 +3,15 @@
 @use '../CarouselCards/Slick.module.scss' as *;
 
 .wrapper {
-  background-color: var(--background);
-  padding: $spacing-7 $spacing-4;
-  text-align: center;
-  color: var(--text);
   overflow-x: clip;
+  background-color: var(--background);
+  color: var(--text);
+  text-align: center;
+}
+
+.container {
+  padding: $spacing-7 0;
+  @include responsive-container;
 }
 
 .stars {
@@ -43,10 +47,16 @@
   }
 
   & div[class*='slick-slide'] {
+    padding-right: $spacing-4;
+
     > div {
       max-width: px-to-rem(741);
       margin: auto;
     }
+  }
+
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-4 * -1);
   }
 
   & div[class*='slick-arrow'] {

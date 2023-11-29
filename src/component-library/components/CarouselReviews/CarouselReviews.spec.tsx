@@ -2,14 +2,32 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import CarouselReviews from './CarouselReviews';
 import { CarouselReviewsProps } from './CarouselReviews.types';
+import Text from '../../foundation/Text/Text';
 
 const mockProps: CarouselReviewsProps = {
-  children: <p>Hello world</p>,
+  rating: 4.85,
+  reviewCount: <span>13,500+ reviews</span>,
+  children: [
+    <React.Fragment key={1}>
+      <Text tag="p" variation="body-extra-large">
+        All the staff and services at The Wellington were exemplary. It was like
+        being treated in a 6* hospital within a 4-5* star hotel. All my needs
+        were immediately attended to. The team had the utmost patience and
+        flexibility
+      </Text>
+      <Text tag="p" variation="body-extra-large">
+        2 All the staff and services at The Wellington were exemplary. It was
+        like being treated in a 6* hospital within a 4-5* star hotel. All my
+        needs were immediately attended to. The team had the utmost patience and
+        flexibility
+      </Text>
+    </React.Fragment>,
+  ],
 };
 
 describe('CarouselReviews', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<CarouselReviews {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('13,500+ reviews')).toBeVisible();
   });
 });

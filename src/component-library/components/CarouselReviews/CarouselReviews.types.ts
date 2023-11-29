@@ -1,5 +1,5 @@
 export interface CarouselReviewsProps {
-  rating: JSX.Element;
+  rating: number;
   reviewCount: JSX.Element;
   children?: JSX.Element[];
 }
