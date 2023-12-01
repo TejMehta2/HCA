@@ -31,7 +31,8 @@ type ContentCardsSliderProps = {
   fields: Fields;
 };
 
-const ContentCardsSliderDefaultComponent = (props: ContentCardsSliderProps): JSX.Element => (
+const ContentCardsSliderDefaultComponent = (
+  props: ContentCardsSliderProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
