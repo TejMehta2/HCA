@@ -38,6 +38,6 @@ const ServiceCardsDefaultComponent = (
   </div>
 );
 
-export const Standard = (props: ServiceCardsProps): JSX.Element => {
+export const Default = (props: ServiceCardsProps): JSX.Element => {
   return <ServiceCardsDefaultComponent {...props} />;
 };

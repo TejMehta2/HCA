@@ -42,6 +42,6 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
   return <PatientStoriesDefaultComponent {...props} />;
 };
 
-export const Standard = (props: PatientStoriesProps): JSX.Element => {
+export const Default = (props: PatientStoriesProps): JSX.Element => {
   return <PatientStoriesDefaultComponent {...props} />;
 };
