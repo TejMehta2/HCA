@@ -9,7 +9,7 @@ import { NextArrow, PrevArrow } from '../CarouselCards/CustomArrows';
 import Slider from '@ant-design/react-slick';
 
 const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
-  const { rating, reviewCount, children } = props;
+  const { theme, rating, reviewCount, children } = props;
 
   /* Carousel settings */
   const settings = {
@@ -40,7 +40,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
   }
 
   return (
-    <Themes theme="k">
+    <Themes theme={theme}>
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
           <div>
