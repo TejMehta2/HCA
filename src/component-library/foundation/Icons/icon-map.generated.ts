@@ -52,6 +52,8 @@ import iconRedo from './assets-dist/Redo.svg';
 import iconSearch from './assets-dist/Search.svg';
 import iconShape from './assets-dist/Shape.svg';
 import iconSmallPin from './assets-dist/Small Pin.svg';
+import iconStarEmpty from './assets-dist/Star Empty.svg';
+import iconStarHalf from './assets-dist/Star Half.svg';
 import iconStar from './assets-dist/Star.svg';
 import iconStethoscope from './assets-dist/Stethoscope.svg';
 import iconVideo from './assets-dist/Video.svg';
@@ -112,6 +114,8 @@ export type IconName =
   | 'iconSearch'
   | 'iconShape'
   | 'iconSmallPin'
+  | 'iconStarEmpty'
+  | 'iconStarHalf'
   | 'iconStar'
   | 'iconStethoscope'
   | 'iconVideo'
@@ -172,6 +176,8 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconSearch', iconSearch],
   ['iconShape', iconShape],
   ['iconSmallPin', iconSmallPin],
+  ['iconStarEmpty', iconStarEmpty],
+  ['iconStarHalf', iconStarHalf],
   ['iconStar', iconStar],
   ['iconStethoscope', iconStethoscope],
   ['iconVideo', iconVideo],
