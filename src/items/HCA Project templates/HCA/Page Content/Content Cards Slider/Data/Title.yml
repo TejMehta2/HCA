@@ -1,18 +1,15 @@
 ﻿---
-ID: "fa0234f0-0dcd-4a9a-b19b-057eb715ebdf"
-Parent: "7238defc-de84-42d4-bc1a-ca3dc44e2570"
+ID: "17be2717-992a-4d65-918b-07bb26210837"
+Parent: "b30f54f8-a01d-4037-a50c-a897ce1a7720"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/GP and Urgent care services/Data/Pages
+Path: /sitecore/templates/Project/HCA/Page Content/Content Cards Slider/Data/Title
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: DataSource=sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Blog Page,Location Page,Patient Story Page,Service Page, Page Proxy
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -31,7 +28,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8306f97c-cdb8-4769-9053-600402b31517"
+      Value: "ff520c16-757a-4bca-b752-7ce77e5733d2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

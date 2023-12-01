@@ -1,21 +1,32 @@
 ﻿---
-ID: "8f098170-d135-4eaa-9eab-a35917061e83"
-Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
+ID: "3e64bdcb-0966-4a73-8fc4-ec040329c957"
+Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/GP and Urgent care services Folder
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards Slider
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/folder_window.png
+  Value: sxa/16x16/promo.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: |
+    {4247AAD4-EBDE-4994-998F-E067A51B1FE4}
+    {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
+    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
+    {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
+    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Value: 0
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{8305886D-5E02-4572-84D8-B26E3C5BD5C6}"
+  Value: "{292CD99C-4CCA-45E4-B49E-0D36E8F221E5}"
 Languages:
 - Language: "de-DE"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Promo Ordner
+    Value: Promo
   Versions:
   - Version: 1
     Fields:
@@ -46,26 +57,26 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20120620T144015Z
+      Value: 20211012T120926Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\admin
+        sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a9c4bbdf-a625-4a9c-86f7-2172fc7a87d9"
+      Value: "3651c09e-8707-40d3-8fb8-fa4d5b380ef9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T110822Z
+      Value: 20231201T140958Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ フォルダー
+    Value: プロモ
   Versions:
   - Version: 1
     Fields:
@@ -94,7 +105,7 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销文件夹
+    Value: 促销
   Versions:
   - Version: 1
     Fields:

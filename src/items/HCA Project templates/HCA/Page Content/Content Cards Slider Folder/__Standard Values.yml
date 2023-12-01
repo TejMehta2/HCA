@@ -1,14 +1,14 @@
 ﻿---
-ID: "8305886d-5e02-4572-84d8-b26e3c5bd5c6"
-Parent: "8f098170-d135-4eaa-9eab-a35917061e83"
-Template: "8f098170-d135-4eaa-9eab-a35917061e83"
-Path: /sitecore/templates/Project/HCA/Page Content/GP and Urgent care services Folder/__Standard Values
+ID: "f5c84377-f127-4a38-940d-4362f9715238"
+Parent: "2813f051-0c69-4e36-9202-d418d27138bc"
+Template: "2813f051-0c69-4e36-9202-d418d27138bc"
+Path: /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
   Value: |
-    {8E9F33A8-60EE-4C02-B264-288A8B84D0A0}
-    {8F098170-D135-4EAA-9EAB-A35917061E83}
+    {A790183F-6621-463A-A43C-695D1435328E}
+    {2813F051-0C69-4E36-9202-D418D27138BC}
 Languages:
 - Language: en
   Versions:
@@ -23,11 +23,11 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a945aa32-0310-4cee-ab09-c80bcf186f00"
+      Value: "87cf9a3b-0de0-44bb-b3b4-40bb1a1a3f32"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T110822Z
+      Value: 20231201T140959Z

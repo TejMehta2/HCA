@@ -5,18 +5,13 @@ import {
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-interface TagsFields {
-  Title: Field<string>;
-}
-
 interface PagesFields {
   Title: Field<string>;
   Description: Field<string>;
-  Date: Field<string>;
   Image: ImageField;
-  DoctifyPractice: Field<string>;
-  tags: {
-    TagsList: TagsFields[];
+  Link: LinkField;
+  url: {
+    path: Field<string>;
   };
 }
 
@@ -31,12 +26,12 @@ interface Fields {
   };
 }
 
-type GPAndUrgentCareServicesProps = {
+type ContentCardsSliderProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
 
-const GPAndUrgentCareServicesDefaultComponent = (props: GPAndUrgentCareServicesProps): JSX.Element => (
+const ContentCardsSliderDefaultComponent = (props: ContentCardsSliderProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
@@ -45,7 +40,7 @@ const GPAndUrgentCareServicesDefaultComponent = (props: GPAndUrgentCareServicesP
 );
 
 export const Standard = (
-  props: GPAndUrgentCareServicesProps
+  props: ContentCardsSliderProps
 ): JSX.Element => {
-  return <GPAndUrgentCareServicesDefaultComponent {...props} />;
+  return <ContentCardsSliderDefaultComponent {...props} />;
 };
