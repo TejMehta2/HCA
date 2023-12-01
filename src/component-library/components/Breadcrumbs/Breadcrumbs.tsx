@@ -3,11 +3,8 @@ import { BreadcrumbsProps } from './Breadcrumbs.types';
 import styles from './Breadcrumbs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Link from 'next/link';
-import useWindowWidth from '../../hooks/useWindowWidth';
 
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
-  const isM = useWindowWidth(1135);
-
   const { children } = props;
 
   const firstBreadcrumbLink = children && children[0].props.href;
@@ -15,21 +12,21 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      {isM ? (
-        <>
+      <div className={styles.container}>
+        <span className={styles['breadcrumbs-list']}>
           <Link href="/">
             <Icons iconName="iconHome"></Icons>
           </Link>
           {children}
-        </>
-      ) : (
-        <Link href={firstBreadcrumbLink}>
+        </span>
+
+        <Link href={firstBreadcrumbLink} className={styles['breadcrumb-back']}>
           <Icons iconName="iconArrowLeft"></Icons>
           <div>
             <span>Back to</span> {firstBreadcrumbText}
           </div>
         </Link>
-      )}
+      </div>
     </div>
   );
 };

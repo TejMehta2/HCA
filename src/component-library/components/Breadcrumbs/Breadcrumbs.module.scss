@@ -12,9 +12,11 @@
   align-items: center;
 
   @include media(screen-l) {
-    padding: px-to-rem(24) $spacing-11;
-    flex-wrap: wrap;
-    gap: px-to-rem(12) 0;
+    padding: px-to-rem(24) 0;
+  }
+
+  .container {
+    @include responsive-container;
   }
 
   a {
@@ -42,6 +44,22 @@
         background: $white;
         margin: 0 px-to-rem(12);
       }
+    }
+  }
+
+  .breadcrumb-back {
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+
+  .breadcrumbs-list {
+    display: none;
+    flex-wrap: wrap;
+    gap: px-to-rem(12) 0;
+
+    @include media(screen-l) {
+      display: flex;
     }
   }
 }
