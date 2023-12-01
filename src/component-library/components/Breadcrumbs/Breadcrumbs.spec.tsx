@@ -6,21 +6,21 @@ import { BreadcrumbsProps } from './Breadcrumbs.types';
 const mockProps: BreadcrumbsProps = {
   children: [
     <a href="#" key={1}>
-      Services & Treatments
+      First Breadcrumb
     </a>,
     <a href="#" key={2}>
-      Services & Treatments
+      Second Breadcrumb
     </a>,
     <a href="#" key={3}>
-      Services & Treatments
+      Third Breadcrumb
     </a>,
-    <span key={4}>Service Lines</span>,
+    <span key={4}>Current Page</span>,
   ],
 };
 
 describe('Breadcrumbs', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<Breadcrumbs {...mockProps} />);
-    expect(getByText('Services & Treatments')).toBeVisible();
+    expect(getByText('Current Page')).toBeVisible();
   });
 });
