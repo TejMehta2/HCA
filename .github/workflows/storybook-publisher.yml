@@ -2,8 +2,10 @@ name: Storybook Publisher
 
 on:
   push:
-    tags:
-      - 'storybook-v*'
+    branches:
+      - dev
+    paths:
+      - 'src/component-library/**'
 
 jobs:
   publish:
