@@ -16,4 +16,4 @@ We decided to use react-slick (https://www.npmjs.com/package/@ant-design/react-s
 
 ## Consequences
 
-There are a few drawbacks to using react-slick, each of which have been recorded in the CarouslCards docs
+There are a few drawbacks to using react-slick, each of which have been recorded in the CarouselCards docs
