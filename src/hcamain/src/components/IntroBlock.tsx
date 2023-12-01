@@ -42,9 +42,7 @@ type IntroBlockProps = {
   fields: Fields;
 };
 
-const IntroBlockDefaultComponent = (
-  props: IntroBlockProps
-): JSX.Element => (
+const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
