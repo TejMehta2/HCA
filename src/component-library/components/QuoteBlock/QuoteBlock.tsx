@@ -8,13 +8,15 @@ const QuoteBlock = (props: QuoteBlockProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <span className={styles.quote}>“{children}”</span>
-      <div className={styles.author}>
-        {author.image}
-        <div className={styles['author-details']}>
-          <span className={styles.name}>{author.name}</span>
-          <Tags>{author.tag}</Tags>
+      {author && (
+        <div className={styles.author}>
+          {author.image && author.image}
+          <div className={styles['author-details']}>
+            {author.name && <span className={styles.name}>{author.name}</span>}
+            {author.tag && <Tags>{author.tag}</Tags>}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
