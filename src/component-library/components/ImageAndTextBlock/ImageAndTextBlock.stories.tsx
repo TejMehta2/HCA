@@ -22,7 +22,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
     length: 'short',
     image: (
       <Image
-        src="/image-and-text-component-placeholder.jpg"
+        src="/placeholders/image-and-text-component-placeholder.jpg"
         alt="two children playing"
         width="643"
         height="605"
@@ -77,7 +77,7 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
     length: 'long',
     image: (
       <Image
-        src="/image-and-text-component-placeholder.jpg"
+        src="/placeholders/image-and-text-component-placeholder.jpg"
         alt="two children playing"
         width="643"
         height="605"

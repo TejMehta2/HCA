@@ -1,25 +1,11 @@
+@use '../Spacing/spacing.module' as *;
 @use '../../utilities/index.module' as *;
 
 // To be applied to either site components, or the main site wrapper
-$grid-margin-s: px-to-rem(16);
-$grid-margin-m: px-to-rem(32);
-$grid-margin-l: px-to-rem(88);
-$grid-margin-xl: px-to-rem(104);
+
 @mixin responsive-container {
-  margin-left: $grid-margin-s;
-  margin-right: $grid-margin-s;
-  @include media(screen-m) {
-    margin-left: $grid-margin-m;
-    margin-right: $grid-margin-m;
-  }
-  @include media(screen-l) {
-    margin-left: $grid-margin-l;
-    margin-right: $grid-margin-l;
-  }
-  @include media(screen-xl) {
-    margin-left: $grid-margin-xl;
-    margin-right: $grid-margin-xl;
-  }
+  margin-left: $spacing-14;
+  margin-right: $spacing-14;
 }
 
 // To be applied to site components where a layout which falls into the global grid layout is expected in the design

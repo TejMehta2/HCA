@@ -1,0 +1,193 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.footer {
+  padding-top: $spacing-9;
+  padding-bottom: $spacing-7;
+  background-color: var(--background);
+  color: var(--text);
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.inner {
+  @include responsive-container;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-9;
+}
+
+.top-row {
+  @include responsive-grid;
+
+  list-style: none;
+  padding: 0;
+  row-gap: px-to-rem(8);
+
+  li {
+    display: block;
+  }
+
+  .logo {
+    margin-bottom: calc(#{$spacing-6} - #{px-to-rem(8)});
+
+    svg {
+      width: px-to-rem(170);
+      height: px-to-rem(69);
+      @include media(screen-l) {
+        width: px-to-rem(156);
+        height: px-to-rem(63);
+      }
+    }
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+
+    // Logic for if buttons should share row with logo, or wrap depending on quantity and breakpoint
+    &.with-1-buttons {
+      @include responsive-grid-span(
+        $default: 6,
+        $breakpoint-m: 3,
+        $breakpoint-l: 9
+      );
+    }
+
+    &.with-2-buttons {
+      @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+    }
+
+    &.with-3-buttons {
+      @include responsive-grid-span(
+        $default: 6,
+        $breakpoint-m: 3,
+        $breakpoint-l: 3,
+        $breakpoint-xl: 3
+      );
+    }
+
+    &.with-4-buttons {
+      @include responsive-grid-span(
+        $default: 6,
+        $breakpoint-m: 6,
+        $breakpoint-l: 12,
+        $breakpoint-xl: 12
+      );
+    }
+  }
+
+  .button {
+    a,
+    button {
+      padding-left: px-to-rem(
+        12
+      ); // Overrides Button component responsive padding from spacing variable
+
+      padding-right: px-to-rem(
+        12
+      ); // Overrides Button component responsive padding from spacing variable
+
+      width: 100%;
+      justify-content: center;
+    }
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 3,
+      $breakpoint-xl: 3
+    );
+  }
+}
+
+.hr {
+  margin: 0;
+  border-color: var(--text-date);
+}
+
+.columns {
+  @include responsive-grid;
+
+  row-gap: $spacing-7;
+
+  > * {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 3,
+      $breakpoint-xl: 3
+    );
+  }
+
+  .links,
+  .reviews {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subheading {
+    @include apply-subheading-2;
+
+    color: var(--text-date);
+    margin-bottom: px-to-rem(16);
+  }
+
+  .links {
+    gap: px-to-rem(16);
+  }
+
+  .reviews {
+    gap: px-to-rem(24);
+  }
+
+  .socials {
+    margin-top: px-to-rem(40);
+    display: flex;
+    flex-wrap: wrap;
+    gap: px-to-rem(8);
+  }
+}
+
+.bottom-row {
+  display: flex;
+  flex-flow: column wrap;
+  gap: px-to-rem(40);
+  @include media(screen-m) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.icon {
+  width: px-to-rem(66);
+  height: px-to-rem(66);
+  flex-shrink: 0;
+}
+
+.legals {
+  display: flex;
+  flex-flow: column wrap;
+  gap: px-to-rem(24);
+  @include media(screen-m) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  list-style: none;
+  padding: 0;
+}
+
+.point {
+  display: none;
+  @include media(screen-l) {
+    display: block;
+  }
+
+  position: relative;
+  background-color: currentcolor;
+  border-radius: px-to-rem(2);
+  width: px-to-rem(2);
+  height: px-to-rem(2);
+}
