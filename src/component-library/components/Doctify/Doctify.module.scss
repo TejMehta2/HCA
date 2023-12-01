@@ -11,10 +11,26 @@
 
   &.light {
     @include apply-doctify-light;
+
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
   }
 
   &.dark {
     @include apply-doctify-dark;
+
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
   }
 }
 
@@ -87,10 +103,23 @@
   justify-content: flex-end;
 }
 
-.light-logo {
-  display: var(--doctify-logo-dark-display);
-}
+@include theme-mode(light, dark) using ($mode) {
+  @if $mode == light {
+    .light-logo {
+      display: block;
+    }
 
-.dark-logo {
-  display: var(--doctify-logo-light-display);
+    .dark-logo {
+      display: none;
+    }
+  }
+  @if $mode == dark {
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
+  }
 }

@@ -223,24 +223,37 @@
   &,
   &-light,
   &-dark {
+    transition: all 0.2s ease;
+
+    &.small {
+      a,
+      button {
+        padding: px-to-rem(12) px-to-rem(24);
+      }
+    }
+
+    .sr-only {
+      @include sr-only;
+    }
+
     a,
     button {
-      background-color: var(--cta-outline-background);
-      color: var(--cta-outline-text);
-      border: 1px solid var(--cta-outline-border);
+      background-color: transparent;
+      color: var(--cta-social-text);
+      border: 1px solid var(--cta-social-border);
       display: flex;
 
       &:hover {
-        border-color: var(--cta-outline-hover-border);
+        border-color: var(--cta-social-hover-border);
       }
 
       &:active {
-        border-color: var(--cta-outline-active-border);
+        border-color: var(--cta-social-active-border);
       }
 
       &:focus-visible {
-        border-color: var(--cta-outline-active-border);
-        outline: 2px solid var(--cta-outline-active-outline);
+        border-color: var(--cta-social-focus-border);
+        outline: 2px solid var(--cta-social-focus-outline);
         outline-offset: -5px;
       }
     }
@@ -311,23 +324,5 @@
 
   &-light {
     @include apply-cta-carousel-light;
-  }
-}
-
-/* stylelint-enable no-descending-specificity */
-
-.social-dark,
-.social-light {
-  transition: all 0.2s ease;
-
-  &.small {
-    a,
-    button {
-      padding: px-to-rem(12) px-to-rem(24);
-    }
-  }
-
-  .sr-only {
-    @include sr-only;
   }
 }
