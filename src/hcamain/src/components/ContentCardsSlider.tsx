@@ -39,8 +39,6 @@ const ContentCardsSliderDefaultComponent = (props: ContentCardsSliderProps): JSX
   </div>
 );
 
-export const Standard = (
-  props: ContentCardsSliderProps
-): JSX.Element => {
+export const Standard = (props: ContentCardsSliderProps): JSX.Element => {
   return <ContentCardsSliderDefaultComponent {...props} />;
 };
