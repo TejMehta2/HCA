@@ -4,8 +4,8 @@
 // To be applied to either site components, or the main site wrapper
 
 @mixin responsive-container {
-  margin-left: $spacing-10;
-  margin-right: $spacing-10;
+  margin-left: $spacing-14;
+  margin-right: $spacing-14;
 }
 
 // To be applied to site components where a layout which falls into the global grid layout is expected in the design

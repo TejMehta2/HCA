@@ -5,7 +5,7 @@ const Spacing = (props: SpacingProps): JSX.Element => {
   const {} = props;
   return (
     <ul>
-      {Array(13)
+      {Array(14)
         .fill(0)
         .map((_, index) => (
           <li
