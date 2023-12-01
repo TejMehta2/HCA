@@ -10,6 +10,53 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetIntroBlock($datasource: String!, $language: String!) 
+    {
+        item(path: $datasource, language: $language) {
+        ...on IntroBlock {
+              Title : field(name:"Title"){value},
+              Text : field(name:"Text"){value},
+          	  CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
+              CTALink : field(name:"CTA Link"){...on LinkField{url}},
+              counters {
+                CountersList: targetItems
+                 {      		
+          	       ... on Scores 
+                  {
+                    Number : field(name:"Number"){value},
+                    Text : field(name:"Text"){value}
+                  }
+                 }
+              }
+          	  cQCStatus  {
+                CQCStatus: targetItem
+                {      		
+          		... on CQCStatus 
+                  {
+                    Title : field(name:"Title"){value},
+                    Icon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
+                    Logo : field(name:"Logo"){...on ImageField{src, alt, height, width}},
+                  }
+                }
+              }
+          	 doctifyReviews  {
+                DoctifyReviews: targetItem
+                {      		
+          		... on DoctifyReviews 
+                  {
+                    Stars : field(name:"Stars"){value},
+                    Reviews : field(name:"Reviews"){value}
+                  }
+                }
+              }
+          }
+     }
+    }
+    
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Intro Block
@@ -74,14 +121,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fc01d53a-7935-4b60-9a5d-c9b5a8978a98"
+      Value: "a01fec47-52dc-4a65-b84c-59456a5d2db2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T122300Z
+      Value: 20231201T135241Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
