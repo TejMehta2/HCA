@@ -6,12 +6,12 @@ import Link from 'next/link';
 import useWindowWidth from '../../hooks/useWindowWidth';
 
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
-  const isM = useWindowWidth(600);
+  const isM = useWindowWidth(1135);
 
   const { children } = props;
 
-  const firstBreadcrumbLink = children[0].props.href;
-  const firstBreadcrumbText = children[0].props.children;
+  const firstBreadcrumbLink = children && children[0].props.href;
+  const firstBreadcrumbText = children && children[0].props.children;
 
   return (
     <div className={styles.wrapper}>
@@ -23,12 +23,12 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
           {children}
         </>
       ) : (
-        <div>
+        <Link href={firstBreadcrumbLink}>
           <Icons iconName="iconArrowLeft"></Icons>
-          <Link href={firstBreadcrumbLink}>
+          <div>
             <span>Back to</span> {firstBreadcrumbText}
-          </Link>
-        </div>
+          </div>
+        </Link>
       )}
     </div>
   );
