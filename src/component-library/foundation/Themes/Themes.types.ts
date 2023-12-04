@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type themeType =
+export type Theme =
   | 'a'
   | 'b'
   | 'c'
@@ -16,5 +16,5 @@ export type themeType =
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;
-  theme: themeType;
+  theme: Theme;
 }

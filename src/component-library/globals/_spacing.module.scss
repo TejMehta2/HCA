@@ -19,6 +19,7 @@ $spacing-breakpoints: (
     spacing-11: 72,
     spacing-12: 72,
     spacing-13: 80,
+    spacing-14: 16,
   ),
   screen-m: (
     spacing-6: 32,
@@ -26,10 +27,12 @@ $spacing-breakpoints: (
     spacing-11: 80,
     spacing-12: 80,
     spacing-13: 96,
+    spacing-14: 32,
   ),
   screen-l: (
     spacing-12: 96,
     spacing-13: 112,
+    spacing-14: 88,
   ),
   screen-xl: (
     spacing-8: 64,
@@ -37,6 +40,7 @@ $spacing-breakpoints: (
     spacing-11: 96,
     spacing-12: 112,
     spacing-13: 128,
+    spacing-14: 104,
   ),
 );
 

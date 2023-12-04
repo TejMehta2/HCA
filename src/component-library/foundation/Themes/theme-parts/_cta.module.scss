@@ -117,7 +117,7 @@
   // Focus
   --cta-outline-focus-outline: #{$white};
 }
-@mixin apply-cta-social-dark {
+@mixin apply-cta-social-light {
   // Base
   --cta-social-background: #{$dark-blue};
   --cta-social-text: #{$white};
@@ -133,7 +133,7 @@
   --cta-social-focus-border: #{$dark-blue-9};
   --cta-social-focus-outline: #{$white};
 }
-@mixin apply-cta-social-light {
+@mixin apply-cta-social-dark {
   // Base
   --cta-social-background: #{$white};
   --cta-social-text: #{$dark-blue};
@@ -219,4 +219,14 @@
 
   // Active
   --cta-active-text: #{$main-turquoise};
+}
+
+@mixin apply-text-link-dark {
+  --text-link-active-text: #{$dark-blue-60};
+  --text-link-disabled-text: #{$dark-blue-40};
+}
+
+@mixin apply-text-link-light {
+  --text-link-active-text: #{$main-turquoise};
+  --text-link-disabled-text: #{$dark-blue-40};
 }
