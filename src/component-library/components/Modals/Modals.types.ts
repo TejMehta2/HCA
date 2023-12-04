@@ -2,6 +2,6 @@ import { ReactNode } from 'react';
 
 export interface ModalsProps {
   children?: ReactNode | JSX.Element;
-  defaultOpen?: true;
+  defaultOpen?: boolean;
   variation?: 'right' | 'full';
 }

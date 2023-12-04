@@ -28,9 +28,9 @@ const MyComponent = () => {
   const dialogRef = useRef<HTMLDialogElement>()
   return (
     <>
-      <button onClick={dialogRef?.current?.close}>Close</button>
-      <button onClick={dialogRef?.current?.showModal}>Open</button>
-      <button onClick={dialogRef?.current?.open ? dialogRef?.current?.showModal : dialogRef?.current?.showModal}>Toggle</button>
+      <button onClick={() => dialogRef?.current?.close()}>Close</button>
+      <button onClick={() => dialogRef?.current?.showModal()}>Open</button>
+      <button onClick={() => dialogRef?.current?.open ? dialogRef?.current?.close() : dialogRef?.current?.showModal()}>Toggle</button>
       <Modals dialogRef={dialogRef}>Content</Modals>
     </>
   )
