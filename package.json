@@ -11,7 +11,8 @@
     "component-library:scaffold": "npm run scaffold -w src/component-library",
     "component-library:type-check": "npm run type-check -w src/component-library",
     "component-library:test": "npm run test -w src/component-library",
-    "hcamain:start": "npm run start:connected -w src/hcamain",
+	
+    "hcamain:start": "dotnet leprechaun /c HCALeprechaun.config && dotnet leprechaun /c PSGLeprechaun.config && npm run start:connected -w src/hcamain",
     "hcamain:start:production": "npm run start:production -w src/hcamain",
     "hcamain:build": "npm run build -w src/hcamain",
     "hcamain:next:start": "npm run next:start -w src/hcamain",

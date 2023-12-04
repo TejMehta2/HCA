@@ -41,5 +41,11 @@
                 
             }
         ]
-    }
+    },
+	"leprechaun":{
+		"configuration": {
+			"@extends":"PSGLeprehaun.Base",
+			"@name":"Project.PSG"
+		}
+	}
 }
