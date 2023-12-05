@@ -40,6 +40,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-blue;
   @include apply-tabs-white;
+  @include apply-accordion-turquoise;
 }
 
 @mixin apply-theme-b {
@@ -50,6 +51,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
+  @include apply-accordion-green;
 }
 
 @mixin apply-theme-c {
@@ -60,6 +62,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-orange;
+  @include apply-accordion-white;
 }
 
 @mixin apply-theme-d {
@@ -70,6 +73,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-white;
+  @include apply-accordion-beige-60;
 }
 
 @mixin apply-theme-e {
@@ -80,6 +84,7 @@
   --card-background-blog: #{$dark-blue-80};
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
+  @include apply-accordion-dark-blue;
 }
 
 @mixin apply-theme-f {
@@ -90,6 +95,7 @@
   --card-background-blog: #{$beige};
   @include apply-tag-orange;
   @include apply-tabs-orange;
+  @include apply-accordion-beige;
 }
 
 @mixin apply-theme-g {
@@ -100,6 +106,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
+  @include apply-accordion-green-10;
 }
 
 @mixin apply-theme-h {
@@ -110,6 +117,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-light-blue;
   @include apply-tabs-white;
+  @include apply-accordion-white;
 }
 
 @mixin apply-theme-i {
@@ -120,6 +128,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-light-blue;
   @include apply-tabs-white;
+  @include apply-accordion-turquoise-5;
 }
 
 @mixin apply-theme-j {
@@ -130,6 +139,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-light-blue;
   @include apply-tabs-white;
+  @include apply-accordion-white;
 }
 
 @mixin apply-theme-k {
@@ -140,6 +150,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-light-blue;
   @include apply-tabs-white;
+  @include apply-accordion-white;
 }
 
 @mixin apply-theme-l {
@@ -150,6 +161,7 @@
   --card-background-blog: #{$white};
   @include apply-tag-coral;
   @include apply-tabs-white;
+  @include apply-accordion-coral;
 }
 
 @mixin theme-mode($light, $dark) {
