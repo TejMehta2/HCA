@@ -20,7 +20,7 @@ const dialogRef = useRef<HTMLDialogElement>()
 <button onClick={() => dialogRef?.current?.showModal()}>Open</button>
 
 <ModalAppointment 
-  dialogRef={ref}
+  ref={dialogRef}
   title1={
     <Text variation={'display-4'} tag="h2">
       Need a specialist?

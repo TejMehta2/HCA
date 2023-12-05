@@ -2,6 +2,8 @@
 @use '../../utilities/index.module' as *;
 
 .modal-appointment {
+  @include responsive-container;
+
   height: 100%;
   color: var(--text);
   text-align: center;

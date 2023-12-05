@@ -43,7 +43,9 @@ export const Default: StoryObj<typeof CardDoctor> = {
     department: <span>Orthopaedics</span>,
     cta: (
       <a href="#">
-        View <strong>profile</strong>
+        <span>
+          View <strong>profile</strong>
+        </span>
       </a>
     ),
   },
@@ -67,7 +69,9 @@ export const CroppedImage: StoryObj<typeof CardDoctor> = {
     department: <span>Orthopaedics</span>,
     cta: (
       <a href="#">
-        View <strong>profile</strong>
+        <span>
+          View <strong>profile</strong>
+        </span>
       </a>
     ),
   },
@@ -110,7 +114,9 @@ export const Themed: StoryObj<typeof CardDoctor> = {
     department: <span>Orthopaedics</span>,
     cta: (
       <a href="#">
-        View <strong>profile</strong>
+        <span>
+          View <strong>profile</strong>
+        </span>
       </a>
     ),
   },

@@ -42,7 +42,9 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
         department={<span>Orthopaedics</span>}
         cta={
           <a href="#">
-            View <strong>profile</strong>
+            <span>
+              View <strong>profile</strong>
+            </span>
           </a>
         }
       />,
@@ -64,7 +66,9 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
         department={<span>Orthopaedics</span>}
         cta={
           <a href="#">
-            View <strong>profile</strong>
+            <span>
+              View <strong>profile</strong>
+            </span>
           </a>
         }
       />,
@@ -86,7 +90,9 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
         department={<span>Orthopaedics</span>}
         cta={
           <a href="#">
-            View <strong>profile</strong>
+            <span>
+              View <strong>profile</strong>
+            </span>
           </a>
         }
       />,
@@ -108,14 +114,18 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
         department={<span>Orthopaedics</span>}
         cta={
           <a href="#">
-            View <strong>profile</strong>
+            <span>
+              View <strong>profile</strong>
+            </span>
           </a>
         }
       />,
     ],
     cta: (
       <a href="#">
-        View all <strong>hip pain consultants</strong>
+        <span>
+          View all <strong>hip pain consultants</strong>
+        </span>
       </a>
     ),
     theme: 'a',
