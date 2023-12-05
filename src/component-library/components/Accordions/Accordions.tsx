@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { AccordionGroupProps } from './AccordionGroup.types';
-import styles from './AccordionGroup.module.scss';
+import { AccordionsProps } from './Accordions.types';
+import styles from './Accordions.module.scss';
 import Button from '../../core-components/Button/Button';
 import Accordion from '../Accordion/Accordion';
 
-const AccordionGroup = (props: AccordionGroupProps): JSX.Element => {
+const Accordions = (props: AccordionsProps): JSX.Element => {
   const { header, accordions, cta } = props;
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const onShow = (index: number) => {
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+    } else {
+      setActiveIndex(null);
+    }
+  };
 
   return (
     <div className={styles['accordion-group']}>
@@ -19,7 +27,7 @@ const AccordionGroup = (props: AccordionGroupProps): JSX.Element => {
             key={index}
             title={title}
             isActive={activeIndex === index}
-            onShow={() => setActiveIndex(index)}
+            onShow={() => onShow(index)}
           >
             {children}
           </Accordion>
@@ -37,4 +45,4 @@ const AccordionGroup = (props: AccordionGroupProps): JSX.Element => {
   );
 };
 
-export default AccordionGroup;
+export default Accordions;

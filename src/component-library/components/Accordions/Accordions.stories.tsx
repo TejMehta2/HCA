@@ -1,14 +1,13 @@
 import React from 'react';
-import AccordionGroup from './AccordionGroup';
+import Accordions from './Accordions';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
-import { ThemesProps } from '../../foundation/Themes/Themes.types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof AccordionGroup> = {
-  title: 'components/AccordionGroup',
-  component: AccordionGroup,
+const meta: Meta<typeof Accordions> = {
+  title: 'components/Accordions',
+  component: Accordions,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
@@ -26,7 +25,7 @@ const meta: Meta<typeof AccordionGroup> = {
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-export const Default: StoryObj<typeof AccordionGroup> = {
+export const Default: StoryObj<typeof Accordions> = {
   args: {
     header: (
       <Text tag="h3" variation="display-3">

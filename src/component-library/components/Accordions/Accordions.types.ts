@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface AccordionGroupProps {
+export interface AccordionsProps {
   header?: ReactNode | JSX.Element;
   accordions: {
     title: ReactNode | JSX.Element;
