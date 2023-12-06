@@ -71,9 +71,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
           </div>
 
           <div ref={carouselRef} className={styles['carousel-wrapper']}>
-            <Slider {...settings}>
-              {children && children[0].props.children}
-            </Slider>
+            <Slider {...settings}>{children && children}</Slider>
           </div>
 
           <Button size="large" theme="full-dark">

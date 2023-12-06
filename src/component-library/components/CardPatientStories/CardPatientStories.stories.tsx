@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import CardPatientStories from './CardPatientStories';
 import type { Meta, StoryObj } from '@storybook/react';
+import Text from '../../foundation/Text/Text';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CardPatientStories> = {
@@ -25,12 +26,16 @@ export const Default: StoryObj<typeof CardPatientStories> = {
         height="253"
       />
     ),
-    title: <span>Every new birth tells its own story</span>,
+    title: (
+      <Text tag="h3" variation="display-4">
+        Every new birth tells its own story
+      </Text>
+    ),
     bodyCopy: (
-      <span>
+      <Text tag="p" variation="body-large">
         Quis laboris proident sint amet id cillum do dolor in tempor est
         exercitation aute sint tempor eu ut.
-      </span>
+      </Text>
     ),
     link: (
       <a href="#">
