@@ -1,9 +1,7 @@
 import React from 'react';
 import Accordion from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react';
-import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
-import { ThemesProps } from '../../foundation/Themes/Themes.types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Accordion> = {
@@ -16,7 +14,7 @@ const meta: Meta<typeof Accordion> = {
 
   decorators: [
     (Story) => (
-      <Themes theme={'a'}>
+      <Themes theme={'f'}>
         <Story />
       </Themes>
     ),

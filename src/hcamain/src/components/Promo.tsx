@@ -12,7 +12,6 @@ import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
-import Accordions from '@component-library/components/Accordions/Accordions';
 
 interface Fields {
   PromoIcon: ImageField;
@@ -76,53 +75,6 @@ export const Default = (props: PromoProps): JSX.Element => {
             </div>
           </div>
         </div>
-
-        <Accordions
-          header={
-            <Text tag="h3" variation="display-3">
-              Hip Pain FAQ
-            </Text>
-          }
-          accordions={[
-            {
-              title:
-                'How long will I have to wait to book a hip pain appointment?',
-              children: (
-                <p>
-                  Eiusmod irure nostrud culpa veniam nisi incididunt nostrud
-                  commodo deserunt anim quis cupidatat irure duis. Eu voluptate
-                  pariatur non. Elit dolore consequat veniam et. Eiusmod
-                  consectetur sit dolor laborum excepteur laborum quis.
-                </p>
-              ),
-            },
-            {
-              title:
-                'How long will I have to wait to book a hip pain appointment?',
-              children: (
-                <p>
-                  Eiusmod irure nostrud culpa veniam nisi incididunt nostrud
-                  commodo deserunt anim quis cupidatat irure duis. Eu voluptate
-                  pariatur non. Elit dolore consequat veniam et. Eiusmod
-                  consectetur sit dolor laborum excepteur laborum quis.
-                </p>
-              ),
-            },
-            {
-              title:
-                'How long will I have to wait to book a hip pain appointment?',
-              children: (
-                <p>
-                  Eiusmod irure nostrud culpa veniam nisi incididunt nostrud
-                  commodo deserunt anim quis cupidatat irure duis. Eu voluptate
-                  pariatur non. Elit dolore consequat veniam et. Eiusmod
-                  consectetur sit dolor laborum excepteur laborum quis.
-                </p>
-              ),
-            },
-          ]}
-          cta={<button>View all FAQs</button>}
-        ></Accordions>
       </div>
     );
   }

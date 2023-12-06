@@ -36,7 +36,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
 
       {cta && (
         <div className={styles.cta}>
-          <Button theme="full-dark" size="large">
+          <Button theme="full" size="large">
             {cta}
           </Button>
         </div>

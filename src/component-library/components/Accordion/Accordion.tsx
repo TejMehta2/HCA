@@ -11,7 +11,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
 
   const handleKeydown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'Enter' || e.key === 'Space') {
-      onShow();
+      () => onShow();
     }
   };
 
