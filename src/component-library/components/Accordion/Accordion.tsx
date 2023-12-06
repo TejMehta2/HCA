@@ -1,13 +1,12 @@
-import React, { KeyboardEvent } from 'react';
+import React, { KeyboardEvent, useId } from 'react';
 import { AccordionProps } from './Accordion.types';
 import styles from './Accordion.module.scss';
 import Icons from '../../foundation/Icons/Icons';
-import { v4 as uuidv4 } from 'uuid';
 
 const Accordion = (props: AccordionProps): JSX.Element => {
   const { children, title, isActive, onShow } = props;
 
-  const accordionContentId = uuidv4();
+  const accordionContentId = useId();
 
   const handleKeydown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'Enter' || e.key === 'Space') {
