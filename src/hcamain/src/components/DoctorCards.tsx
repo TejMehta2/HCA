@@ -53,6 +53,6 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
   </div>
 );
 
-export const Standard = (props: DoctorCardsProps): JSX.Element => {
+export const Default = (props: DoctorCardsProps): JSX.Element => {
   return <DoctorCardsDefaultComponent {...props} />;
 };

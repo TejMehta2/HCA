@@ -7,6 +7,7 @@
   --text-date: #{$dark-blue-20};
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$dark-blue};
+  --card-body-text: #{$dark-blue-10};
   @include apply-cta-full-light;
   @include apply-cta-social-light;
   @include apply-cta-outline-light;
@@ -22,6 +23,7 @@
   --text-date: #{$dark-blue-40};
   --card-secondary-background: #{$dark-blue};
   --card-secondary-text: #{$white};
+  --card-body-text: #{$dark-blue-60};
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
   @include apply-cta-outline-dark;

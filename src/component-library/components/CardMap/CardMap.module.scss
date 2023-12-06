@@ -1,0 +1,32 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: $radius-small;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-4;
+  width: 100%;
+  min-height: px-to-rem(195);
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    @include media(screen-l) {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  @include media(screen-l) {
+    max-width: px-to-rem(280);
+    min-height: px-to-rem(332);
+  }
+}

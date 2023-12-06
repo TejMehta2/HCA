@@ -1,8 +1,15 @@
 ﻿---
-ID: "a25b0fc1-5d1f-45e5-8861-6863e390b8f5"
-Parent: "74ca523d-47ae-47b1-bb55-4508656f60b3"
-Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Doctor cards/Standard
+ID: "2ffa16c6-9052-4ce3-9a81-95694b145328"
+Parent: "b30f54f8-a01d-4037-a50c-a897ce1a7720"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Page Content/Content Cards Slider/Data/Heading
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -10,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T063536Z
+      Value: 20231128T111013Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4ab4284b-92f5-49b6-969f-6b5197d1a2ac"
+      Value: "b453d064-6508-40dc-bd83-576cfdaf0ed6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231122T085856Z
+      Value: 20231128T113723Z
