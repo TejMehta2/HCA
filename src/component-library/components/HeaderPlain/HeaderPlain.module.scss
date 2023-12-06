@@ -1,0 +1,31 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.grid {
+  color: var(--text);
+  background: var(--background);
+  border-radius: 0 0 $radius-large 0;
+  padding: $spacing-12 $spacing-11;
+
+  @include responsive-grid;
+
+  gap: 0;
+
+  & > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+  }
+}
+
+.heading {
+  grid-row-start: 2;
+  margin-bottom: $spacing-5;
+}
+
+.subheading {
+  grid-row-start: 1;
+  margin-bottom: px-to-rem(12);
+}
+
+.body-copy {
+  grid-row-start: 3;
+}
