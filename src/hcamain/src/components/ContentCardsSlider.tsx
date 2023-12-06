@@ -5,39 +5,42 @@ import {
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-type ServiceFields = {
+interface PagesFields {
   Title: Field<string>;
   Description: Field<string>;
   Image: ImageField;
   Link: LinkField;
-};
+  url: {
+    path: Field<string>;
+  };
+}
 
 interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
-  Description: Field<string>;
-  CTAIcon: ImageField;
+  Icon: ImageField;
   CTALink: LinkField;
-  services: {
-    ServicesList: ServiceFields[];
+  CTACardText: Field<string>;
+  pages: {
+    PagesList: PagesFields[];
   };
 }
 
-type ServiceCardsProps = {
+type ContentCardsSliderProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
 
-const ServiceCardsDefaultComponent = (
-  props: ServiceCardsProps
+const ContentCardsSliderDefaultComponent = (
+  props: ContentCardsSliderProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">Homepage Service Cards</span>
+      <span className="is-empty-hint">CTA</span>
     </div>
   </div>
 );
 
-export const Default = (props: ServiceCardsProps): JSX.Element => {
-  return <ServiceCardsDefaultComponent {...props} />;
+export const Default = (props: ContentCardsSliderProps): JSX.Element => {
+  return <ContentCardsSliderDefaultComponent {...props} />;
 };
