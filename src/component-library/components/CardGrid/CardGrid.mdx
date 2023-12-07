@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as CardGridStories from './CardGrid.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardGridStories from './CardGrid.stories';
 
 <Meta of={CardGridStories} />
 
@@ -7,17 +7,76 @@ import * as CardGridStories from './CardGrid.stories'
 
 ## Description
 
-The CardGrid component is...
+The CardGrid component is a grid for displaying content cards so that each card is displayed neatly
 
-It is intended to be used in...
+It is intended to be used on any page and requires a theme and children
 
 It can be composed like this:
 
-``` tsx
-<CardGrid></CardGrid>
+```tsx
+<CardGrid theme="a">
+  <CardPatientStories
+    key={0}
+    title={
+      <Text variation="heading-1" tag="h4">
+        Cardiac care
+      </Text>
+    }
+    bodyCopy={
+      <Text variation="body-large" tag="p">
+        There are over 1400 at The Portland, each year. Hear new mums sharing
+        theirs
+      </Text>
+    }
+    image={
+      <Image
+        src="/placeholders/multicard.jpg"
+        alt="baby crying"
+        width="363"
+        height="243"
+      />
+    }
+    link={
+      <a href="#">
+        <span>
+          Read the <strong>Story</strong>
+        </span>
+      </a>
+    }
+  />
+  <CardPatientStories
+    key={1}
+    title={
+      <Text variation="heading-1" tag="h4">
+        Cardiac care
+      </Text>
+    }
+    bodyCopy={
+      <Text variation="body-large" tag="p">
+        There are over 1400 at The Portland, each year. Hear new mums sharing
+        theirs
+      </Text>
+    }
+    image={
+      <Image
+        src="/placeholders/multicard.jpg"
+        alt="baby crying"
+        width="363"
+        height="243"
+      />
+    }
+    link={
+      <a href="#">
+        <span>
+          Read the <strong>Story</strong>
+        </span>
+      </a>
+    }
+  />
+</CardGrid>
 ```
 
-## Example 
+## Example
 
 <Canvas of={CardGridStories.Default} />
 <Controls of={CardGridStories.Default} />

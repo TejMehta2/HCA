@@ -6,22 +6,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
-  &:nth-of-type(4n + 1) {
-    background-color: $light-orange;
-  }
-
-  &:nth-of-type(4n + 2) {
-    background-color: $green-40;
-  }
-
-  &:nth-of-type(4n + 3) {
-    background-color: $light-orange-40;
-  }
-
-  &:nth-of-type(4n + 4) {
-    background-color: $main-turquoise-20;
-  }
 }
 
 .image {
@@ -49,6 +33,10 @@
 
   @include media(screen-l) {
     gap: px-to-rem(32);
+  }
+
+  .body-text{
+    color: var(--card-body-text);
   }
 
   & a {
