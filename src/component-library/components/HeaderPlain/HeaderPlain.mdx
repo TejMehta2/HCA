@@ -1,0 +1,30 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderPlainStories from './HeaderPlain.stories';
+
+<Meta of={HeaderPlainStories} />
+
+# HeaderPlain
+
+## Description
+
+The `HeaderPlain` component consists of a header, body copy and an optional subheader. It should be nested within a theme and will inherit the colours from that theme.
+
+It can be composed like this:
+
+```tsx
+<HeaderPlain
+  subheading={<Text tag="h3">Optional meta title</Text>}
+  heading={<Text tag="h1">News & articles about healthcare</Text>}
+>
+  <p>
+    Quis laboris proident sint amet id cillum do dolor in tempor est.
+    Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et
+    culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+  </p>
+</HeaderPlain>
+```
+
+## Example
+
+<Canvas of={HeaderPlainStories.Default} />
+<Controls of={HeaderPlainStories.Default} />
