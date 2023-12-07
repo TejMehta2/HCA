@@ -20,23 +20,30 @@ SharedFields:
               Title : field(name:"Title"){value},
               Text : field(name:"Text"){value},
               CardCTAText : field(name:"Card CTA Text"){value},
-              CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
-              CTALink : field(name:"CTA Link"){...on LinkField{url}},
-              stories 
+              CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
           	  {
-         	    StoriesList: targetItems
-        	    {
-                	Title : field(name:"Title"){value},
-                	Description : field(name:"Description"){value},
-                    Date : field(name:"Date"){value},
-                    Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                } 
-             }
-         }
+                Icon: targetItem
+                {      		
+              	... on HCAIcon
+                  {
+                    SVGMarkup : field(name:"SVG Markup"){value}
+                  }
+                }
+              },
+              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
+              stories 
+          	   {
+         	     StoriesList: targetItems
+        		 {
+                	   Title : field(name:"Title"){value},
+                	   Description : field(name:"Description"){value},
+                       Date : field(name:"Date"){value},
+                       Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
+                     } 
+           }
+        }
      }
     }
-    
-    
     
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
@@ -103,14 +110,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c223d8d1-b95c-4e23-a279-efd7ebb651ab"
+      Value: "694dd0ab-f454-411e-958d-b2df5c461552"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T151752Z
+      Value: 20231207T070630Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

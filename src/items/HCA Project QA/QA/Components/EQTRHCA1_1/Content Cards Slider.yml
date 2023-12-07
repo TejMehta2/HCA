@@ -1,0 +1,43 @@
+﻿---
+ID: "106380de-5ba8-4063-81e8-f25659c56197"
+Parent: "a588ca89-b2fd-40e2-ac8c-4a05110ec00c"
+Template: "a790183f-6621-463a-a43c-695d1435328e"
+Path: /sitecore/content/HCA/HCA Main/QA/Components/EQTRHCA1_1/Content Cards Slider
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0120cb1f-140d-43eb-8ed4-aac38f98dcf0"
+      Hint: CTA Card Text
+      Value: Learn <b>more</b>
+    - ID: "17be2717-992a-4d65-918b-07bb26210837"
+      Hint: Title
+      Value: Peace of mind with our GP services
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T092351Z
+    - ID: "2ffa16c6-9052-4ce3-9a81-95694b145328"
+      Hint: Heading
+      Value: GP & Urgent care services
+    - ID: "8c120705-ad32-4f5e-a87e-84b01b1f2d83"
+      Hint: Pages
+      Value: |
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
+        {9BD9EEF6-9471-4D4B-92EC-F9545F740B4A}
+        {471F79FD-281B-435A-90B8-6FB3B3F15886}
+        {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "deb4c2a1-910d-4781-b744-d2ff2debf1bc"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTA Link
+      Value: |
+        <link text="View all &lt;b&gt;GP services&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231207T062820Z

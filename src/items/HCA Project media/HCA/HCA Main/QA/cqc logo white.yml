@@ -1,0 +1,60 @@
+﻿---
+ID: "7a5cf5be-67d8-49ee-ba0f-835551243f06"
+Parent: "a4cb4849-a3c2-4f1c-9691-54fc537d4940"
+Template: "f1828a2c-7e5d-4bbd-98ca-320474871548"
+Path: /sitecore/media library/Project/HCA/HCA Main/QA/cqc logo white
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "-/media/7A5CF5BE67D849EEBA0F835551243F06.ashx?h=16&thn=1&w=16"
+- ID: "22eac599-f13b-4607-a89d-c091763a467d"
+  Hint: Width
+  Value: 120
+- ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
+  Hint: Blob
+  BlobID: "4b008d59-f6ec-47b5-ac45-af401470dc87"
+  Value: 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
+- ID: "6954b7c7-2487-423f-8600-436cb3b6dc0e"
+  Hint: Size
+  Value: 3408
+- ID: "6f47a0a5-9c94-4b48-abeb-42d38def6054"
+  Hint: Mime Type
+  Value: image/png
+- ID: "c06867fe-9a43-4c7d-b739-48780492d06f"
+  Hint: Extension
+  Value: png
+- ID: "cb09946f-3218-4823-87d2-d5007c199a96"
+  Hint: Dimensions
+  Value: 120 x 37
+- ID: "de2ca9e4-c117-4c8a-a139-1ff4b199d15a"
+  Hint: Height
+  Value: 37
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T144806Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "65885c44-8fcd-4a7f-94f1-ee63703fe193"
+      Hint: Alt
+      Value: cqc logo white
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bf6fa10d-fd89-4e0b-9028-fc0b2b2f9f70"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T144806Z

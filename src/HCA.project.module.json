@@ -38,6 +38,11 @@
                 "path": "/sitecore/content/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete",
                 "scope": "SingleItem"
+            },
+			{
+                "name": "HCA Project QA",
+                "path": "/sitecore/content/HCA/HCA Main/QA",
+                "allowedPushOperations": "CreateUpdateAndDelete"               
             }
         ]
     }

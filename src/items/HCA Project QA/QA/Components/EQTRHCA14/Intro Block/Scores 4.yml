@@ -1,0 +1,29 @@
+﻿---
+ID: "e81616c6-17c7-44ca-add2-0a58dcf9f31e"
+Parent: "b814fe43-6f16-4064-9da1-b894c682b758"
+Template: "66038c46-e4e0-49be-8d37-5d8ea90ebd7b"
+Path: /sitecore/content/HCA/HCA Main/QA/Components/EQTRHCA14/Intro Block/Scores 4
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "2496fb09-1929-4184-a62a-36c44eba0deb"
+      Hint: Text
+      Value: patients
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231205T105833Z
+    - ID: "2baa43f4-7140-4514-97fc-6f9638b651e7"
+      Hint: Number
+      Value: 400
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3301eeca-3e32-4b01-9ad2-d17d2ea78c75"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231205T105843Z

@@ -5,6 +5,10 @@ import {
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
+type CTAIconFields = {
+  SVGMarkup: Field<string>;
+};
+
 interface CountersFields {
   Number: Field<string>;
   Text: Field<string>;
@@ -12,7 +16,7 @@ interface CountersFields {
 
 interface CQCStatusFields {
   Title: Field<string>;
-  Icon: ImageField;
+  Icon: Field<string>;
   Logo: ImageField;
 }
 
@@ -24,7 +28,9 @@ interface DoctifyReviewsFields {
 interface Fields {
   Title: Field<string>;
   Text: Field<string>;
-  CTAIcon: ImageField;
+  CTAIcon: {
+    Icon: CTAIconFields[];
+  };
   CTALink: LinkField;
   counters: {
     CountersList: CountersFields[];
