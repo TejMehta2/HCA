@@ -10,7 +10,7 @@
 
   button,
   a {
-    color: $dark-blue;
+    color: inherit;
     display: flex;
     column-gap: px-to-rem(4);
     cursor: pointer;
@@ -22,13 +22,14 @@
     @include apply-body-medium-large;
 
     &:hover {
+      &,
       span {
         text-decoration: underline;
       }
     }
 
     &:active {
-      color: $dark-blue-60;
+      color: var(--text-link-active-text);
     }
 
     &:focus {
@@ -36,13 +37,13 @@
     }
 
     &:focus-visible {
-      padding: px-to-rem(4) px-to-rem(8);
-      border-radius: $small-radius;
-      border: 1px solid $dark-blue;
+      outline-offset: px-to-rem(4);
+      border-radius: $radius-small;
+      outline: 1px solid currentcolor;
     }
 
     &:disabled {
-      color: $dark-blue-40;
+      color: var(--text-link-disabled-text);
       pointer-events: none;
     }
   }

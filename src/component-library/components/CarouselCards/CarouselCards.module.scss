@@ -1,0 +1,91 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use './Slick.module.scss' as *;
+
+.wrapper {
+  overflow-x: clip;
+  background: var(--background);
+  color: var(--text);
+}
+
+.container {
+  position: relative;
+  padding: $spacing-8 0 $spacing-9;
+  @include responsive-container;
+}
+
+.intro {
+  @include responsive-grid;
+
+  & > * {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 6
+    );
+  }
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 95%;
+  margin: px-to-rem(122) 0 $spacing-7;
+
+  @include media(screen-m) {
+    width: 100%;
+    margin-top: $spacing-7;
+  }
+}
+
+.slick-wrapper {
+  & div[class*='slick-slide'] {
+    padding-right: $spacing-4;
+
+    /* images zoom in slightly on hover. Transition timing can be found in CardPatientStories component */
+    & img {
+      transition: 0.6s ease;
+    }
+
+    &:hover {
+      & img {
+        transform: scale(1.05);
+      }
+    }
+
+    & > div {
+      border-radius: $radius-medium;
+      overflow: hidden;
+    }
+  }
+
+  /* quirk of react-slick. Need to set negative of card spacing in parent */
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-4 * -1);
+  }
+
+  & div[class*='slick-arrow'] {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: calc(var(--spacing-7) * -1);
+    transform: translateY(-100%);
+
+    @include media(screen-m) {
+      left: unset;
+      right: 0;
+    }
+  }
+
+  & div[class*='slick-prev'] {
+    @include media(screen-m) {
+      transform: translateY(-100%) translateX(calc(-100% - px-to-rem(8)));
+    }
+  }
+
+  & div[class*='slick-next'] {
+    transform: translateY(-100%) translateX(calc(100% + px-to-rem(8)));
+    @include media(screen-m) {
+      transform: translateY(-100%);
+    }
+  }
+}

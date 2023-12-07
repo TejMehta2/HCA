@@ -1,0 +1,17 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-tabs-white {
+  --tab-text: #{$dark-blue};
+  --tab-active-text: #{$dark-blue};
+  --tab-background: #{$white};
+}
+@mixin apply-tabs-orange {
+  --tab-text: #{$dark-blue};
+  --tab-active-text: #{$dark-blue};
+  --tab-background: #{$light-orange};
+}
+@mixin apply-tabs-blue {
+  --tab-text: #{$white};
+  --tab-active-text: #{$dark-blue};
+  --tab-background: #{$main-turquoise-10};
+}

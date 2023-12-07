@@ -17,10 +17,12 @@
     border: 0;
     padding: 0 0 px-to-rem(8);
     position: relative;
+    color: var(--cta-text);
 
     @include apply-body-medium-large;
 
     &::after {
+      background-color: var(--cta-text);
       content: '';
       display: block;
       width: 100%;
@@ -29,6 +31,22 @@
       bottom: px-to-rem(0);
       left: 0;
       position: absolute;
+    }
+
+    &:active {
+      color: var(--cta-active-text);
+
+      &::after {
+        background: transparent;
+      }
+    }
+
+    &:disabled {
+      color: var(--cta-disabled-text);
+
+      &::after {
+        background: var(--cta-disabled-text);
+      }
     }
 
     &:hover {
@@ -42,16 +60,13 @@
     }
 
     &:focus-visible {
+      border: px-to-rem(2) solid var(--cta-text);
       padding: px-to-rem(4) px-to-rem(8);
-      border-radius: $small-radius;
+      border-radius: $radius-small;
 
       &::after {
         display: none;
       }
-    }
-
-    &:disabled {
-      pointer-events: none;
     }
   }
 }
@@ -59,65 +74,11 @@
 /* stylelint-disable no-descending-specificity */
 
 .dark {
-  button,
-  a {
-    color: $dark-blue;
-
-    &::after {
-      background: $dark-blue;
-    }
-
-    &:active {
-      color: $dark-blue-40;
-
-      &::after {
-        background: transparent;
-      }
-    }
-
-    &:disabled {
-      color: $dark-blue-40;
-
-      &::after {
-        background: $dark-blue-40;
-      }
-    }
-
-    &:focus-visible {
-      border: px-to-rem(2) solid $dark-blue;
-    }
-  }
+  @include apply-text-buttons-dark;
 }
 
 .light {
-  button,
-  a {
-    color: $white;
-
-    &::after {
-      background: $white;
-    }
-
-    &:active {
-      color: $main-turquoise;
-
-      &::after {
-        background: transparent;
-      }
-    }
-
-    &:disabled {
-      color: $dark-blue-40;
-
-      &::after {
-        background: $dark-blue-40;
-      }
-    }
-
-    &:focus-visible {
-      border: px-to-rem(2) solid $white;
-    }
-  }
+  @include apply-text-buttons-light;
 }
 
 /* stylelint-enable no-descending-specificity */

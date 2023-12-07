@@ -19,34 +19,19 @@ fieldset {
     top: 0;
     left: 0;
     height: 100%;
-    z-index: -1;
-    border-radius: $large-radius;
+    border-radius: $radius-large;
 
     // CSS custom properties are updated in the React component logic, based on the currently selected tab
     width: var(--current-tab-offset-width, 0);
     transform: translateX(var(--current-tab-offset-left, 0));
+
+    // Apply theme to animated background element
+    background-color: var(--tab-background);
   }
 
   // Animate unless user is interacting and not on component load
   &:focus-within::before {
     transition: all 0.4s ease;
-  }
-
-  // Apply theme to animated background element
-  &.main-turquoise::before {
-    background-color: $main-turquoise;
-  }
-
-  &.main-turquoise-20::before {
-    background-color: $main-turquoise-20;
-  }
-
-  &.light-orange::before {
-    background-color: $light-orange;
-  }
-
-  &.white::before {
-    background-color: $white;
   }
 }
 
@@ -59,25 +44,33 @@ label {
   @include apply-body-semi-bold-extra-large;
 
   // Shared styles
+  position: relative;
   display: flex;
   align-items: center;
   gap: $spacing-2;
-  border-radius: $large-radius;
+  border-radius: $radius-large;
   padding: $spacing-4 $spacing-5;
   text-decoration: none;
   user-select: none;
   cursor: pointer;
   white-space: nowrap;
   outline: solid #{px-to-rem(2)} transparent;
+  color: var(--tab-text);
 
   // Hover
   &:hover {
     text-decoration: underline;
   }
 
+  transition: color 0.4s ease;
+
   // Focus
   :focus + & {
-    outline-color: $dark-blue;
+    outline-color: var(--tab-text);
+  }
+
+  :checked + & {
+    color: var(--tab-active-text);
   }
 }
 

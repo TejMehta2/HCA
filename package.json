@@ -15,7 +15,8 @@
     "hcamain:start:production": "npm run start:production -w src/hcamain",
     "hcamain:build": "npm run build -w src/hcamain",
     "hcamain:next:start": "npm run next:start -w src/hcamain",
-    "hcamain:type-check": "npm run type-check -w src/hcamain",
+    "hcamain:type-check": "npm run bootstrap -w src/hcamain && npm run type-check -w src/hcamain",
+    "hcamain:copy": "npm run copy -w src/component-library hcamain/src/temp",
     "microsite:start": "npm run start:connected -w src/microsite",
     "microsite:start:production": "npm run start:production -w src/microsite",
     "microsite:build": "npm run build -w src/microsite",
@@ -45,5 +46,8 @@
     "stylelint-prettier": "^4.0.2",
     "ts-node": "^10.9.1",
     "vercel": "^32.5.3"
+  },
+  "dependencies": {
+    "use-debounce": "^10.0.0"
   }
 }

@@ -1,111 +1,55 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-a {
+.tags a {
   // Imported styles
   @include apply-body-medium-medium;
 
   // Shared styles
-  display: block;
-  border-radius: $small-radius;
+  display: inline-block;
+  border-radius: $radius-small;
   padding: px-to-rem(4) px-to-rem(16);
   text-decoration: none;
   outline: solid #{px-to-rem(2)} transparent;
   outline-offset: px-to-rem(-3);
   cursor: pointer;
+  background-color: var(--tag-background);
+  color: var(--tag-text);
 
-  // Themed tag styles
-  .green & {
-    color: $dark-blue;
-    background-color: $green-20;
+  &:hover {
+    background-color: var(--tag-hover-background);
   }
 
-  .dark-blue & {
-    background-color: $dark-blue-80;
-    color: $white;
+  &:active {
+    background-color: var(--tag-active-background);
   }
 
-  .orange & {
-    color: $dark-blue;
-    background-color: $light-orange-40;
+  &:focus {
+    background-color: var(--tag-focus-focus);
+    outline-color: var(--tag-focus-outline);
   }
+}
 
-  .white & {
-    color: $dark-blue;
-    background-color: $white;
-  }
+.green {
+  @include apply-tag-green;
+}
 
-  .main-turquoise & {
-    color: $dark-blue;
-    background-color: $main-turquoise-20;
-  }
+.dark-blue {
+  @include apply-tag-dark-blue;
+}
 
-  // Pseudo-class styles
-  // Hover
-  .green &:hover {
-    background-color: $green-40;
-  }
+.orange {
+  @include apply-tag-orange;
+}
 
-  .dark-blue &:hover {
-    background-color: $dark-blue;
-  }
+.white {
+  @include apply-tag-white;
+}
 
-  .orange &:hover {
-    background-color: $light-orange-60;
-  }
+.blue {
+  @include apply-tag-blue;
+}
 
-  .white &:hover {
-    background-color: $beige;
-  }
-
-  .main-turquoise &:hover {
-    background-color: $main-turquoise-40;
-  }
-
-  // Active
-  .green &:active {
-    background-color: $green-20;
-  }
-
-  .dark-blue &:active {
-    background-color: $dark-blue-80;
-  }
-
-  .orange &:active {
-    background-color: $light-orange-40;
-  }
-
-  .white &:active {
-    background-color: $white;
-  }
-
-  .main-turquoise &:active {
-    background-color: $main-turquoise-20;
-  }
-
-  // Focus
-  .green &:focus {
-    background-color: $green-40;
-    outline-color: $dark-blue;
-  }
-
-  .dark-blue &:focus {
-    background-color: $dark-blue;
-    outline-color: $green-40;
-  }
-
-  .orange &:focus {
-    background-color: $light-orange-60;
-    outline-color: $dark-blue;
-  }
-
-  .white &:focus {
-    background-color: $beige;
-    outline-color: $dark-blue;
-  }
-
-  .main-turquoise &:focus {
-    background-color: $main-turquoise-40;
-    outline-color: $dark-blue;
-  }
+.coral {
+  @include apply-tag-coral;
 }

@@ -45,7 +45,7 @@
 // Modal variations
 .modal {
   pointer-events: all;
-  border-radius: $large-radius $large-radius 0 0;
+  border-radius: $radius-large $radius-large 0 0;
   background-color: $white;
   position: absolute;
   top: px-to-rem(112);
@@ -79,7 +79,7 @@
 
 .right {
   @include media(screen-m) {
-    border-radius: $large-radius 0 0 0;
+    border-radius: $radius-large 0 0 0;
     min-width: px-to-rem(364);
     top: px-to-rem(53);
     width: auto;
@@ -120,9 +120,5 @@
   .right & {
     margin-left: $spacing-4;
     margin-right: $spacing-4;
-  }
-
-  .full & {
-    @include responsive-container;
   }
 }

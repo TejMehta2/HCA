@@ -3,8 +3,10 @@ import { TagsProps } from './Tags.types';
 import styles from './Tags.module.scss';
 
 const Tags = (props: TagsProps): JSX.Element => {
-  const { children, theme = 'green' } = props;
-  return <div className={styles[theme]}>{children}</div>;
+  const { children, theme = '' } = props;
+  return (
+    <div className={[styles.tags, styles[theme]].join(' ')}>{children}</div>
+  );
 };
 
 export default Tags;

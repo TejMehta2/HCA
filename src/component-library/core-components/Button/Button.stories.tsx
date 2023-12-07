@@ -127,6 +127,21 @@ export const SmallFullLight: StoryObj<typeof Button> = {
   },
 };
 
+export const SmallOutlineDark: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    children: (
+      <>
+        <button type="button">
+          Small <strong>Button</strong>
+          <Icons iconName="iconPhone" />
+        </button>
+      </>
+    ),
+    theme: 'outline-dark',
+  },
+};
+
 export const SmallOutlineLight: StoryObj<typeof Button> = {
   args: {
     size: 'small',
@@ -149,21 +164,6 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
   },
 };
 
-export const SmallOutlineDark: StoryObj<typeof Button> = {
-  args: {
-    size: 'small',
-    children: (
-      <>
-        <button type="button">
-          Small <strong>Button</strong>
-          <Icons iconName="iconPhone" />
-        </button>
-      </>
-    ),
-    theme: 'outline-dark',
-  },
-};
-
 export const SmallFullLightBlue: StoryObj<typeof Button> = {
   args: {
     size: 'small',
@@ -176,21 +176,6 @@ export const SmallFullLightBlue: StoryObj<typeof Button> = {
       </>
     ),
     theme: 'full-light-blue',
-  },
-};
-
-export const SocialLight: StoryObj<typeof Button> = {
-  args: {
-    size: 'small',
-    theme: 'social-light',
-    children: (
-      <>
-        <button>
-          <Icons iconName="iconFacebook" />
-          <span className="sr-only">Facebook link</span>
-        </button>
-      </>
-    ),
   },
 };
 
@@ -207,6 +192,21 @@ export const SocialDark: StoryObj<typeof Button> = {
       </>
     ),
   },
+};
+
+export const SocialLight: StoryObj<typeof Button> = {
+  args: {
+    size: 'small',
+    theme: 'social-light',
+    children: (
+      <>
+        <button>
+          <Icons iconName="iconFacebook" />
+          <span className="sr-only">Facebook link</span>
+        </button>
+      </>
+    ),
+  },
   parameters: {
     backgrounds: {
       default: 'dark-blue',
@@ -214,6 +214,7 @@ export const SocialDark: StoryObj<typeof Button> = {
     },
   },
 };
+
 const loading = true;
 export const LoadingLargeFullDark: StoryObj<typeof Button> = {
   args: {

@@ -1,0 +1,189 @@
+@use '../Colours/colours.module' as *;
+@use './theme-parts/index.module' as *;
+@forward './theme-parts/index.module';
+
+@mixin apply-shared-theme-dark {
+  --text: #{$white};
+  --text-date: #{$dark-blue-20};
+  --card-secondary-background: #{$white};
+  --card-secondary-text: #{$dark-blue};
+  --card-body-text: #{$dark-blue-10};
+  @include apply-cta-full-light;
+  @include apply-cta-social-light;
+  @include apply-cta-outline-light;
+  @include apply-tag-secondary-green;
+  @include apply-cqc-dark;
+  @include apply-doctify-light;
+  @include apply-text-buttons-light;
+  @include apply-text-link-light;
+}
+
+@mixin apply-shared-theme-light {
+  --text: #{$dark-blue};
+  --text-date: #{$dark-blue-40};
+  --card-secondary-background: #{$dark-blue};
+  --card-secondary-text: #{$white};
+  --card-body-text: #{$dark-blue-60};
+  @include apply-cta-full-dark;
+  @include apply-cta-social-dark;
+  @include apply-cta-outline-dark;
+  @include apply-tag-secondary-dark-blue;
+  @include apply-cqc-light;
+  @include apply-doctify-dark;
+  @include apply-text-buttons-dark;
+  @include apply-text-link-dark;
+}
+
+@mixin apply-theme-a {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise};
+  --card-background: #{$main-turquoise-10};
+  --card-background-blog: #{$white};
+  @include apply-tag-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-b {
+  @include apply-shared-theme-light;
+
+  --background: #{$green};
+  --card-background: #{$green-20};
+  --card-background-blog: #{$white};
+  @include apply-tag-green;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-c {
+  @include apply-shared-theme-light;
+
+  --background: #{$beige};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+}
+
+@mixin apply-theme-d {
+  @include apply-shared-theme-light;
+
+  --background: #{$light-orange};
+  --card-background: #{$beige};
+  --card-background-blog: #{$white};
+  @include apply-tag-orange;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-e {
+  @include apply-shared-theme-dark;
+
+  --background: #{$dark-blue};
+  --card-background: #{$dark-blue-80};
+  --card-background-blog: #{$dark-blue-80};
+  @include apply-tag-dark-blue;
+  @include apply-tabs-blue;
+}
+
+@mixin apply-theme-f {
+  @include apply-shared-theme-light;
+
+  --background: #{$white};
+  --card-background: #{$beige};
+  --card-background-blog: #{$beige};
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+}
+
+@mixin apply-theme-g {
+  @include apply-shared-theme-light;
+
+  --background: #{$green-40};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-green;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-h {
+  @include apply-shared-theme-light;
+
+  --background: #{$green-20};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-i {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-20};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-j {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-10};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-k {
+  @include apply-shared-theme-light;
+
+  --background: #{$main-turquoise-5};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-light-blue;
+  @include apply-tabs-white;
+}
+
+@mixin apply-theme-l {
+  @include apply-shared-theme-light;
+
+  --background: #{$coral-60};
+  --card-background: #{$white};
+  --card-background-blog: #{$white};
+  @include apply-tag-coral;
+  @include apply-tabs-white;
+}
+
+@mixin theme-mode($light, $dark) {
+  :where([data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+
+  :where([data-theme] [data-theme] [data-theme] [data-theme-mode='light']) {
+    @content (light);
+  }
+
+  :where([data-theme] [data-theme] [data-theme] [data-theme-mode='dark']) {
+    @content (dark);
+  }
+}
