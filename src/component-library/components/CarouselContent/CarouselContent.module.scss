@@ -1,0 +1,31 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../CarouselCards/Slick.module.scss' as *;
+
+.wrapper {
+  overflow-x: clip;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.container {
+  padding: $spacing-13 0;
+  @include responsive-container;
+}
+
+.slick-wrapper {
+  position: relative;
+
+  & div[class*='slick-list'] {
+    overflow: hidden;
+  }
+}
+
+.slide {
+  width: 100%;
+  @include responsive-grid;
+
+  > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+  }
+}
