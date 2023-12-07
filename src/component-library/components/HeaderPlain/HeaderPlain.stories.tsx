@@ -92,7 +92,9 @@ export const Themed: StoryObj<typeof HeaderPlain> = {
       >
         {themes.map((theme, index) => (
           <Themes key={index} theme={theme}>
-            <Story />
+            <div style={{ paddingBottom: 16 }}>
+              <Story />
+            </div>
           </Themes>
         ))}
       </div>
