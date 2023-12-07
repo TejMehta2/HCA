@@ -12,11 +12,31 @@
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
           },
+		  {
+			"path": "/QA",
+			"scope": "ItemAndDescendants",
+			"allowedPushOperations": "CreateUpdateAndDelete"               
+          },
           {
             "path": "/Media",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },        
+          },    
+		  {
+            "path": "/Data/CQC",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Data/Doctify Reviews",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },	
+          {
+            "path": "/Data/Tags/BlogTags",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },		  
           {
             "path": "/Data",
             "scope": "ItemAndChildren",
@@ -36,6 +56,21 @@
             "path": "/Settings/Site Grouping",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
+          },
+		  {
+            "path": "/Settings/Custom Settings",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+		  {
+            "path": "/Settings/CQC Statuses",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+		  {
+            "path": "/Settings/DoctifyFilters",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
           },
           {
             "path": "/Settings",
