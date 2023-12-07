@@ -19,11 +19,19 @@
 .heading {
   grid-row-start: 2;
   margin-bottom: $spacing-5;
+
+  & > * {
+    @include apply-display-1;
+  }
 }
 
 .subheading {
   grid-row-start: 1;
   margin-bottom: px-to-rem(12);
+
+  & > * {
+    @include apply-subheading-1;
+  }
 }
 
 .body-copy {

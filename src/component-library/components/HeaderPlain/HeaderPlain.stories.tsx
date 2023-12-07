@@ -63,16 +63,8 @@ const themes: ThemesProps['theme'][] = [
 ];
 export const Themed: StoryObj<typeof HeaderPlain> = {
   args: {
-    subheading: (
-      <Text tag="h3" variation="subheading-1">
-        Optional meta title
-      </Text>
-    ),
-    heading: (
-      <Text tag="h1" variation="display-1">
-        News & articles about healthcare
-      </Text>
-    ),
+    subheading: <Text tag="h3">Optional meta title</Text>,
+    heading: <Text tag="h1">News & articles about healthcare</Text>,
     children: (
       <p>
         Quis laboris proident sint amet id cillum do dolor in tempor est.
