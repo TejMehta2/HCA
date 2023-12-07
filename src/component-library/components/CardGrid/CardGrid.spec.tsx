@@ -38,35 +38,6 @@ const mockProps: CardGridProps = {
         </a>
       }
     />,
-    <CardPatientStories
-      key={1}
-      title={
-        <Text variation="heading-1" tag="h4">
-          Cardiac care
-        </Text>
-      }
-      bodyCopy={
-        <Text variation="body-large" tag="p">
-          There are over 1400 at The Portland, each year. Hear new mums sharing
-          theirs
-        </Text>
-      }
-      image={
-        <Image
-          src="/placeholders/multicard.jpg"
-          alt="baby crying"
-          width="363"
-          height="243"
-        />
-      }
-      link={
-        <a href="#">
-          <span>
-            Read the <strong>Story</strong>
-          </span>
-        </a>
-      }
-    />,
   ],
 };
 
