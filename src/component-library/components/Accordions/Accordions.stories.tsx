@@ -11,13 +11,15 @@ const meta: Meta<typeof Accordions> = {
   component: Accordions,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 
   decorators: [
     (Story) => (
       <Themes theme={'f'}>
-        <Story />
+        <div style={{ padding: '1rem' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],
