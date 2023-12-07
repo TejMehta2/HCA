@@ -1,0 +1,89 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  border-radius: $radius-small;
+  overflow: hidden;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  .image {
+    max-height: px-to-rem(176);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+  }
+
+  .text-content {
+    position: relative;
+    padding: $spacing-7 $spacing-6;
+  }
+
+  .address {
+    margin-top: $spacing-4;
+  }
+
+  .ctas {
+    margin-top: $spacing-5;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    a {
+      width: 100%;
+
+      span {
+        margin: auto;
+      }
+
+      @include media(screen-l) {
+        width: fit-content;
+      }
+    }
+  }
+}
+
+/* Extra styles for when it is used within a map */
+.on-map {
+  max-width: px-to-rem(251);
+
+  @include media(screen-l) {
+    max-width: px-to-rem(403);
+  }
+
+  .close {
+    position: absolute;
+    right: px-to-rem(19);
+    top: px-to-rem(19);
+
+    button span {
+      display: none;
+
+      @include media(screen-l) {
+        display: block;
+      }
+    }
+  }
+
+  .text-content {
+    padding-top: $spacing-8;
+  }
+
+  .ctas {
+    @include media(screen-l) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

@@ -77,12 +77,19 @@
   padding-top: $spacing-2;
 }
 
-.body-copy {
+.body-text {
   padding-top: px-to-rem(24);
 }
 
 .cta {
   padding-top: $spacing-6;
+
+  @include media(screen-m) {
+    a,
+    button {
+      width: fit-content;
+    }
+  }
 }
 
 @include media(screen-l) {

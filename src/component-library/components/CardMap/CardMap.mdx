@@ -1,0 +1,43 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardMapStories from './CardMap.stories';
+
+<Meta of={CardMapStories} />
+
+# CardMap
+
+### ID: EQTRHCA6
+
+## Description
+
+
+The CardMap component is intended to be used within the homepage map component. It consists of a number, title, and CTA
+
+It can be composed like this:
+
+```tsx
+<CardMap
+  theme="e"
+  amount={
+    <Text tag="p" variation="display-1">
+      35
+    </Text>
+  }
+  title={
+    <Text tag="p" variation="heading-2">
+      Locations across the UK
+    </Text>
+  }
+  cta={
+    <a href="#">
+      <span>
+        View <strong>all</strong>
+      </span>
+    </a>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={CardMapStories.Default} />
+<Controls of={CardMapStories.Default} />

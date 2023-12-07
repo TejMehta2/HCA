@@ -6,6 +6,7 @@ import Icons from '../../foundation/Icons/Icons';
 import CQCBlock from '../CQCBlock/CQCBlock';
 import Image from 'next/image';
 import Button from '../../core-components/Button/Button';
+import Doctify from '../Doctify/Doctify';
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Footer> = {
   title: 'components/Footer',
@@ -122,27 +123,26 @@ export const Default: StoryObj<typeof Footer> = {
               ),
             }}
           />,
-          <CQCBlock
-            link={<a href="#">CQCBlock2</a>}
-            theme="dark"
-            title="Care Quality Commission verified"
-            text="All our hospitals are rated Good or Oustanding."
-            icon={<Icons iconName="iconCheckCircle"></Icons>}
+          <Doctify
+            alignment="left"
+            link={<a href="#"></a>}
+            rating={5}
+            reviews="13,500 +"
             logo={{
               dark: (
                 <Image
-                  src="/cqc-white.png"
-                  alt="cqc logo"
-                  width="120"
-                  height="37"
+                  src="/doctify-dark.png"
+                  alt="doctify logo"
+                  width="83"
+                  height="21"
                 />
               ),
               light: (
                 <Image
-                  src="/cqc-color.png"
-                  alt="cqc logo"
-                  width="120"
-                  height="37"
+                  src="/doctify-light.png"
+                  alt="doctify logo"
+                  width="83"
+                  height="21"
                 />
               ),
             }}
