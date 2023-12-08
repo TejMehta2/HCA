@@ -1,6 +1,6 @@
 export interface CardPatientStoriesProps {
-  image: JSX.Element;
+  image?: JSX.Element;
   title: JSX.Element;
-  bodyCopy: JSX.Element;
+  bodyCopy?: JSX.Element;
   link: JSX.Element;
 }
