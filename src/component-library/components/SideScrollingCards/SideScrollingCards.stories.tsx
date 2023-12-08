@@ -4,6 +4,7 @@ import SideScrollingCards from './SideScrollingCards';
 import type { Meta, StoryObj } from '@storybook/react';
 import CardPatientStories from '../CardPatientStories/CardPatientStories';
 import Icons from '../../foundation/Icons/Icons';
+import Text from '../../foundation/Text/Text';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SideScrollingCards> = {
@@ -36,104 +37,122 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
       </a>
     ),
     children: [
-      <React.Fragment key={1}>
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+      <CardPatientStories
+        key={0}
+        title={
+          <Text variation="display-4" tag="h2">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>2 Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={1}
+        title={
+          <Text variation="display-4" tag="h2">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>3 Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={2}
+        title={
+          <Text variation="display-4" tag="h2">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>4 Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={3}
+        title={
+          <Text variation="display-4" tag="h2">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-      </React.Fragment>,
+          </a>
+        }
+      />,
     ],
   },
 };

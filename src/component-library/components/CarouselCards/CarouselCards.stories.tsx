@@ -30,152 +30,180 @@ export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
       </a>
     ),
     children: [
-      <React.Fragment key={1}>
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+      <CardPatientStories
+        key={0}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={1}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={2}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={3}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={4}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-        <CardPatientStories
-          title={<span>Every new birth tells its own story</span>}
-          bodyCopy={
+          </a>
+        }
+      />,
+      <CardPatientStories
+        key={5}
+        title={
+          <Text tag="h3" variation="display-4">
+            Every new birth tells its own story
+          </Text>
+        }
+        bodyCopy={
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est
+            exercitation aute sint tempor eu ut.
+          </Text>
+        }
+        image={
+          <Image
+            src="/side-scrolling-placeholder.png"
+            alt="baby crying"
+            width="456"
+            height="253"
+          />
+        }
+        link={
+          <a href="#">
             <span>
-              Quis laboris proident sint amet id cillum do dolor in tempor est
-              exercitation aute sint tempor eu ut
+              Read the <strong>Story</strong>
             </span>
-          }
-          image={
-            <Image
-              src="/side-scrolling-placeholder.png"
-              alt="baby crying"
-              width="456"
-              height="253"
-            />
-          }
-          link={
-            <a href="#">
-              <span>
-                Read the <strong>Story</strong>
-              </span>
-            </a>
-          }
-        />
-      </React.Fragment>,
+          </a>
+        }
+      />,
     ],
   },
 };
@@ -191,104 +219,98 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       </a>
     ),
     children: [
-      <React.Fragment key={1}>
-        <CardBlog>
-          <>
-            <Image
-              src="/placeholders/image-and-text-component-placeholder.jpg"
-              alt="two children playing"
-              width="643"
-              height="605"
-            />
-            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-            <Text variation="heading-2" tag="h3">
-              <a href="#">
-                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
-                rating
-              </a>
-            </Text>
-            <Text variation="body-large">
-              There are over 1400 at The Portland, each year. Hear new mums
-              sharing theirs
-            </Text>
-            <Tags>
-              <a href="#">Announcement</a>
-            </Tags>
-          </>
-        </CardBlog>
-        <CardBlog>
-          <>
-            <Image
-              src="/placeholders/image-and-text-component-placeholder.jpg"
-              alt="two children playing"
-              width="643"
-              height="605"
-            />
-            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-            <Text variation="heading-2" tag="h3">
-              <a href="#">
-                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
-                rating
-              </a>
-            </Text>
-            <Text variation="body-large">
-              There are over 1400 at The Portland, each year. Hear new mums
-              sharing theirs
-            </Text>
-            <Tags>
-              <a href="#">Announcement</a>
-            </Tags>
-          </>
-        </CardBlog>
-        <CardBlog>
-          <>
-            <Image
-              src="/placeholders/image-and-text-component-placeholder.jpg"
-              alt="two children playing"
-              width="643"
-              height="605"
-            />
-            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-            <Text variation="heading-2" tag="h3">
-              <a href="#">
-                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
-                rating
-              </a>
-            </Text>
-            <Text variation="body-large">
-              There are over 1400 at The Portland, each year. Hear new mums
-              sharing theirs
-            </Text>
-            <Tags>
-              <a href="#">Announcement</a>
-            </Tags>
-          </>
-        </CardBlog>
-        <CardBlog>
-          <>
-            <Image
-              src="/placeholders/image-and-text-component-placeholder.jpg"
-              alt="two children playing"
-              width="643"
-              height="605"
-            />
-            <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-            <Text variation="heading-2" tag="h3">
-              <a href="#">
-                The Harley Street Clinic retain CQC &apos;Outstanding&apos;
-                rating
-              </a>
-            </Text>
-            <Text variation="body-large">
-              There are over 1400 at The Portland, each year. Hear new mums
-              sharing theirs
-            </Text>
-            <Tags>
-              <a href="#">Announcement</a>
-            </Tags>
-          </>
-        </CardBlog>
-      </React.Fragment>,
+      <CardBlog key={0}>
+        <>
+          <Image
+            src="/placeholders/image-and-text-component-placeholder.jpg"
+            alt="two children playing"
+            width="643"
+            height="605"
+          />
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">
+              The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+            </a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </>
+      </CardBlog>,
+      <CardBlog key={1}>
+        <>
+          <Image
+            src="/placeholders/image-and-text-component-placeholder.jpg"
+            alt="two children playing"
+            width="643"
+            height="605"
+          />
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">
+              The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+            </a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </>
+      </CardBlog>,
+      <CardBlog key={2}>
+        <>
+          <Image
+            src="/placeholders/image-and-text-component-placeholder.jpg"
+            alt="two children playing"
+            width="643"
+            height="605"
+          />
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">
+              The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+            </a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </>
+      </CardBlog>,
+      <CardBlog key={3}>
+        <>
+          <Image
+            src="/placeholders/image-and-text-component-placeholder.jpg"
+            alt="two children playing"
+            width="643"
+            height="605"
+          />
+          <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+          <Text variation="heading-2" tag="h3">
+            <a href="#">
+              The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+            </a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
+          </Text>
+          <Tags>
+            <a href="#">Announcement</a>
+          </Tags>
+        </>
+      </CardBlog>,
     ],
   },
 };
