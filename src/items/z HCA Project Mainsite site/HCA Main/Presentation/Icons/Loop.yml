@@ -1,0 +1,38 @@
+﻿---
+ID: "d80fae80-c629-4990-81e1-485e0918ce13"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Loop
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T141829Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a94dcebe-decd-40f2-b69c-ae4497206737"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T141837Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SVG Markup
+      Value: |
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="13" cy="11" r="8" stroke="#112F34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 17L3 21" stroke="#112F34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>

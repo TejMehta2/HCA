@@ -1,0 +1,26 @@
+﻿---
+ID: "ff92c63e-73c3-4bef-b709-3e16a890459a"
+Parent: "4391b7c8-4858-4926-9ad1-555a69d50922"
+Template: "64b4984e-9b3e-40b9-9cb3-97f74da3e25e"
+Path: /sitecore/content/HCA/HCA Main/Data/CQC/CQC 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231205T105342Z
+    - ID: "4d5a4bf6-6019-4639-945b-d96f40169939"
+      Hint: Status
+      Value: "{A64BBA88-C227-41A7-8EF6-2D2E3C9C3112}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e9e22f8d-6165-4b1b-997d-b7431adb1845"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231205T105407Z

@@ -1,0 +1,45 @@
+﻿---
+ID: "bd7adf4c-48b0-4561-8011-66d10f712b06"
+Parent: "5e798c0d-385b-410e-9f5a-2b3326924a9e"
+Template: "3ba463ce-c246-403c-998e-cda9c0aaefc3"
+Path: /sitecore/content/HCA/HCA Main/QA/Home/Data/Patient stories
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231201T184900Z
+    - ID: "3e825f07-23e5-4788-ad4f-f8c021369847"
+      Hint: Card CTA Text
+      Value: Search all stories
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "42d71f88-8ddf-4bef-8658-5ccffce3013a"
+    - ID: "943f4079-f82e-4226-b595-2796b2aa1545"
+      Hint: Title
+      Value: Stories from our patients
+    - ID: "a028bacb-1e44-4266-8d99-9859c416810b"
+      Hint: Stories
+      Value: |
+        {9BD9EEF6-9471-4D4B-92EC-F9545F740B4A}
+        {45179635-2018-4AA4-B7EF-C235A71D4350}
+        {CE7E7EE8-F170-428E-AFC3-149439994639}
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTA Link
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{F4A0CBD8-DC65-4B9C-8C4E-2A7E23CE52A3}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231204T102445Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: Icon
+      Value: "{BD3EAB19-4025-4FD8-AB00-1DC967B764C0}"
+    - ID: "f0f7eafa-09d8-4f07-b552-f72923f55cc6"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim.&nbsp;

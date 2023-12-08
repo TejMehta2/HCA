@@ -19,17 +19,26 @@ SharedFields:
         ...on IntroBlock {
               Title : field(name:"Title"){value},
               Text : field(name:"Text"){value},
-          	  CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
-              CTALink : field(name:"CTA Link"){...on LinkField{url}},
+          	  CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
+          	  {
+                Icon: targetItem
+                {      		
+              	... on HCAIcon
+                  {
+                    SVGMarkup : field(name:"SVG Markup"){value}
+                  }
+                }
+              },
+              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
               counters {
                 CountersList: targetItems
-                 {      		
+                {      		
           	       ... on Scores 
                   {
                     Number : field(name:"Number"){value},
                     Text : field(name:"Text"){value}
                   }
-                 }
+                }
               }
           	  cQCStatus  {
                 CQCStatus: targetItem
@@ -37,12 +46,12 @@ SharedFields:
           		... on CQCStatus 
                   {
                     Title : field(name:"Title"){value},
-                    Icon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
+                    Icon : field(name:"Icon"){value},
                     Logo : field(name:"Logo"){...on ImageField{src, alt, height, width}},
                   }
                 }
               }
-          	 doctifyReviews  {
+          	  doctifyReviews  {
                 DoctifyReviews: targetItem
                 {      		
           		... on DoctifyReviews 
@@ -50,7 +59,7 @@ SharedFields:
                     Stars : field(name:"Stars"){value},
                     Reviews : field(name:"Reviews"){value}
                   }
-                }
+              }
               }
           }
      }
@@ -121,14 +130,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a01fec47-52dc-4a65-b84c-59456a5d2db2"
+      Value: "0e83a420-0744-4e1c-abef-4b20a4ef6aaa"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231201T135241Z
+      Value: 20231207T070435Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
