@@ -8,6 +8,8 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$dark-blue};
   --card-body-text: #{$dark-blue-10};
+  --tooltip-background: #{$white};
+  --tooltip-text: #{$dark-blue};
   @include apply-cta-full-light;
   @include apply-cta-social-light;
   @include apply-cta-outline-light;
@@ -24,6 +26,8 @@
   --card-secondary-background: #{$dark-blue};
   --card-secondary-text: #{$white};
   --card-body-text: #{$dark-blue-60};
+  --tooltip-text: #{$white};
+  --tooltip-background: #{$dark-blue};
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
   @include apply-cta-outline-dark;
