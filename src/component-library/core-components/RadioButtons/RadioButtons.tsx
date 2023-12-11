@@ -4,7 +4,8 @@ import styles from './RadioButtons.module.scss';
 
 const RadioButtons = (props: RadioButtonsProps): JSX.Element => {
   const { children } = props;
-  return <div className={styles.bold}>{children}</div>;
+
+  return <fieldset className={styles.wrapper}>{children}</fieldset>;
 };
 
 export default RadioButtons;

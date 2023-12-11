@@ -1,5 +1,6 @@
 export interface RadioButtonProps {
-  id: string;
   label: string;
+  name: string;
   mode?: 'light' | 'dark' | 'medium';
+  disabled?: boolean;
 }

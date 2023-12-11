@@ -15,7 +15,6 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof RadioButton> = {
   args: {
-    id: 'example',
     label: 'radio button',
     mode: 'light',
   },
@@ -23,7 +22,6 @@ export const Default: StoryObj<typeof RadioButton> = {
 
 export const Medium: StoryObj<typeof RadioButton> = {
   args: {
-    id: 'example',
     label: 'radio button',
     mode: 'medium',
   },
@@ -38,7 +36,6 @@ export const Medium: StoryObj<typeof RadioButton> = {
 
 export const Dark: StoryObj<typeof RadioButton> = {
   args: {
-    id: 'example',
     label: 'radio button',
     mode: 'dark',
   },

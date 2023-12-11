@@ -50,6 +50,7 @@
   display: flex;
   gap: 0 $spacing-4;
   color: var(--text);
+  align-items: center;
 
   input {
     appearance: none;
@@ -63,6 +64,8 @@
     &:checked {
       background: var(--background-selected);
       border-color: var(--background-selected);
+
+      @include apply-body-medium-large;
 
       &::after {
         display: inline-block;
@@ -89,6 +92,15 @@
     &:disabled {
       background: var(--background-disabled);
       border-color: var(--border-disabled);
+
+      &:checked {
+        border: var(--background-disabled-selected);
+        background: var(--background-disabled-selected);
+      }
+
+      &::after {
+        background: $white;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as RadioButtonsStories from './RadioButtons.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as RadioButtonsStories from './RadioButtons.stories';
 
 <Meta of={RadioButtonsStories} />
 
@@ -7,17 +7,21 @@ import * as RadioButtonsStories from './RadioButtons.stories'
 
 ## Description
 
-The RadioButtons component is...
+The RadioButtons component is accepts the `RadioButton` component as children and displays a group of radio buttons.
 
-It is intended to be used in...
+It is intended to be used in forms
 
 It can be composed like this:
 
-``` tsx
-<RadioButtons></RadioButtons>
+```tsx
+<RadioButtons>
+  <RadioButton key="1" label="example A" mode="light" name="test" />,
+  <RadioButton key="2" label="example B" mode="light" name="test" />,
+  <RadioButton key="3" label="example C" mode="light" name="test" />,
+</RadioButtons>
 ```
 
-## Example 
+## Example
 
 <Canvas of={RadioButtonsStories.Default} />
 <Controls of={RadioButtonsStories.Default} />

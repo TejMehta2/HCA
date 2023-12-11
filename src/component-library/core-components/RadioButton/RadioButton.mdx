@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as RadioButtonStories from './RadioButton.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as RadioButtonStories from './RadioButton.stories';
 
 <Meta of={RadioButtonStories} />
 
@@ -7,17 +7,19 @@ import * as RadioButtonStories from './RadioButton.stories'
 
 ## Description
 
-The RadioButton component is...
-
-It is intended to be used in...
+The RadioButton component is intended to be used as a child of the `RadioButtons` component. `label` and `name` are mandatory props. `disabled` and `mode` are optional (with `light` being set as the default).
 
 It can be composed like this:
 
-``` tsx
-<RadioButton></RadioButton>
+```tsx
+<RadioButtons>
+  <RadioButton key="1" label="example A" mode="light" name="test" />,
+  <RadioButton key="2" label="example B" mode="light" name="test" />,
+  <RadioButton key="3" label="example C" mode="light" name="test" />,
+</RadioButtons>
 ```
 
-## Example 
+## Example
 
 <Canvas of={RadioButtonStories.Default} />
 <Controls of={RadioButtonStories.Default} />
