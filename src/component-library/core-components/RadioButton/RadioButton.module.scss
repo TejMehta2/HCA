@@ -1,0 +1,84 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+@mixin apply-light-mode {
+  --border-default: #{$dark-blue-10};
+  --background-selected: #{$coral};
+  --background-disabled: #{$dark-blue-5};
+  --border-disabled: #{$dark-blue-10};
+  --background-disabled-selected: #{$dark-blue-10};
+}
+@mixin apply-dark-mode {
+  --border-default: #{$dark-blue-40};
+  --background-selected: #{$main-turquoise};
+  --background-disabled: #{$dark-blue-40};
+  --border-disabled: #{$dark-blue-60};
+  --background-disabled-selected: #{$dark-blue-10};
+}
+@mixin apply-medium-mode {
+  --border-default: #{$dark-blue-60};
+  --background-selected: #{$dark-blue};
+  --background-disabled: #{$main-turquoise-40};
+  --border-disabled: #{$dark-blue-20};
+  --background-disabled-selected: #{$dark-blue-20};
+}
+
+.light {
+  @include apply-light-mode;
+}
+
+.dark {
+  @include apply-dark-mode;
+}
+
+.medium {
+  @include apply-medium-mode;
+}
+
+.wrapper {
+  @include apply-body-large;
+
+  display: flex;
+  gap: 0 $spacing-4;
+
+  input {
+    appearance: none;
+    margin: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    height: px-to-rem(24);
+    width: px-to-rem(24);
+    position: relative;
+
+    &:checked {
+      background: var(--background-selected);
+      border-color: var(--background-selected);
+
+      &::after {
+        display: inline-block;
+        content: '';
+        border-radius: 50%;
+        background: $dark-blue;
+        width: px-to-rem(4);
+        height: px-to-rem(4);
+        position: absolute;
+        inset: 50% 0 0 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $dark-blue;
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      background: var(--background-disabled);
+      border-color: var(--border-disabled);
+    }
+  }
+}
