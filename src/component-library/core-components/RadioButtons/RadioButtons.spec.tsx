@@ -6,9 +6,9 @@ import RadioButton from '../RadioButton/RadioButton';
 
 const mockProps: RadioButtonsProps = {
   children: [
-    <RadioButton key="1" label="example A" name="test" />,
-    <RadioButton key="2" label="example B" name="test" />,
-    <RadioButton key="3" label="example C" name="test" />,
+    <RadioButton key="1" label="example A" name="test" value="test1" />,
+    <RadioButton key="2" label="example B" name="test" value="test2" />,
+    <RadioButton key="3" label="example C" name="test" value="test3" />,
   ],
 };
 

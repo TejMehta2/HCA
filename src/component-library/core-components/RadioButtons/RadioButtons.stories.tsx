@@ -19,9 +19,27 @@ export default meta;
 export const Default: StoryObj<typeof RadioButtons> = {
   args: {
     children: [
-      <RadioButton key="1" label="example A" mode="light" name="test" />,
-      <RadioButton key="2" label="example B" mode="light" name="test" />,
-      <RadioButton key="3" label="example C" mode="light" name="test" />,
+      <RadioButton
+        key="1"
+        label="example A"
+        mode="light"
+        value="example-a"
+        name="test"
+      />,
+      <RadioButton
+        key="2"
+        label="example B"
+        mode="light"
+        value="example-b"
+        name="test"
+      />,
+      <RadioButton
+        key="3"
+        label="example C"
+        mode="light"
+        value="example-c"
+        name="test"
+      />,
     ],
   },
 };

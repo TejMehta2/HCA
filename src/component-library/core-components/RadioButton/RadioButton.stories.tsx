@@ -17,6 +17,7 @@ export const Default: StoryObj<typeof RadioButton> = {
   args: {
     label: 'radio button',
     mode: 'light',
+    value: 'light-example',
   },
 };
 
@@ -24,6 +25,7 @@ export const Medium: StoryObj<typeof RadioButton> = {
   args: {
     label: 'radio button',
     mode: 'medium',
+    value: 'medium-example',
   },
 
   parameters: {
@@ -38,6 +40,7 @@ export const Dark: StoryObj<typeof RadioButton> = {
   args: {
     label: 'radio button',
     mode: 'dark',
+    value: 'dark-example',
   },
   parameters: {
     backgrounds: {

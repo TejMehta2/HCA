@@ -6,6 +6,7 @@ import { RadioButtonProps } from './RadioButton.types';
 const mockProps: RadioButtonProps = {
   label: 'Hello world',
   name: 'test',
+  value: 'test',
 };
 
 describe('RadioButton', () => {
