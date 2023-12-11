@@ -108,3 +108,11 @@
 .active {
   opacity: 1;
 }
+
+.icon {
+  pointer-events: none;
+
+  svg {
+    pointer-events: inherit;
+  }
+}

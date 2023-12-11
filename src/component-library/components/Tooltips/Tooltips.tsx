@@ -22,28 +22,28 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
     const screenWidth = window.innerWidth;
     //  get distance from left to the trigger button
     const offsetLeft = tooltipContent?.getBoundingClientRect().left;
+
     //  gets distance from left including the trigger
     const getBoundingRight = tooltipContent?.getBoundingClientRect().right;
 
-    if (getBoundingRight && tooltipContentWidth && screenWidth) {
-      const offsetRight = screenWidth - getBoundingRight;
-      offsetRight < tooltipContentWidth ? setOffsetRight(true) : '';
-    }
+    //  get distance from right
+    const offsetRight = getBoundingRight && screenWidth - getBoundingRight;
 
-    if (offsetLeft && tooltipContentWidth) {
-      offsetLeft < tooltipContentWidth ? setOffsetLeft(true) : '';
+    if (tooltipContentWidth && offsetLeft && offsetRight) {
+      if (
+        tooltipContentWidth < offsetLeft ||
+        tooltipContentWidth < offsetRight
+      ) {
+        setOffsetRight(offsetRight < tooltipContentWidth);
+
+        setOffsetLeft(offsetLeft < tooltipContentWidth);
+      }
     }
 
     const handleClickOutside = (e: MouseEvent | TouchEvent): void => {
       e.preventDefault();
 
-      if (
-        (tooltipTrigger && e.target === tooltipTrigger.current) ||
-        (tooltipTrigger &&
-          tooltipTrigger.current &&
-          tooltipTrigger.current.contains(e.target as Node))
-      ) {
-      } else {
+      if (e.target !== tooltipTrigger?.current) {
         if (isActive === true) {
           setIsActive(!isActive);
         }
@@ -86,7 +86,9 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
         aria-label="More Information"
         aria-describedby={tooltipContentId}
       >
-        <Icons iconName="iconInfo"></Icons>
+        <span className={styles.icon}>
+          <Icons iconName="iconInfo"></Icons>
+        </span>
       </button>
       <div
         className={[styles.content, styles[isActive ? 'active' : '']].join(' ')}
