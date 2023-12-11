@@ -28,8 +28,8 @@
 
 .content {
   opacity: 0;
-  background: var(--tooltip-background);
-  color: (--tooltip-text);
+  background: var(--card-secondary-background);
+  color: (--card-secondary-text);
   padding: $spacing-2 $spacing-5;
   border-radius: $radius-small;
   position: absolute;
@@ -47,7 +47,7 @@
     height: 0;
     border-left: px-to-rem(7) solid transparent;
     border-right: px-to-rem(7) solid transparent;
-    border-bottom: px-to-rem(7) solid var(--tooltip-background);
+    border-bottom: px-to-rem(7) solid var(--card-secondary-background);
     position: absolute;
     top: px-to-rem(-7);
     left: calc(50% - px-to-rem(7));
