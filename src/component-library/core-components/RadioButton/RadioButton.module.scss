@@ -4,23 +4,32 @@
 @mixin apply-light-mode {
   --border-default: #{$dark-blue-10};
   --background-selected: #{$coral};
+  --background-selected-dot: #{$dark-blue};
   --background-disabled: #{$dark-blue-5};
   --border-disabled: #{$dark-blue-10};
   --background-disabled-selected: #{$dark-blue-10};
+  --border-focus: #{$dark-blue};
+  --text: #{$dark-blue};
 }
 @mixin apply-dark-mode {
   --border-default: #{$dark-blue-40};
   --background-selected: #{$main-turquoise};
+  --background-selected-dot: #{$dark-blue};
   --background-disabled: #{$dark-blue-40};
   --border-disabled: #{$dark-blue-60};
   --background-disabled-selected: #{$dark-blue-10};
+  --border-focus: #{$white};
+  --text: #{$white};
 }
 @mixin apply-medium-mode {
   --border-default: #{$dark-blue-60};
+  --background-selected-dot: #{$white};
   --background-selected: #{$dark-blue};
   --background-disabled: #{$main-turquoise-40};
   --border-disabled: #{$dark-blue-20};
   --background-disabled-selected: #{$dark-blue-20};
+  --border-focus: #{$white};
+  --text: #{$dark-blue};
 }
 
 .light {
@@ -40,6 +49,7 @@
 
   display: flex;
   gap: 0 $spacing-4;
+  color: var(--text);
 
   input {
     appearance: none;
@@ -58,7 +68,7 @@
         display: inline-block;
         content: '';
         border-radius: 50%;
-        background: $dark-blue;
+        background: var(--background-selected-dot);
         width: px-to-rem(4);
         height: px-to-rem(4);
         position: absolute;
@@ -72,7 +82,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $dark-blue;
+      outline: 2px solid var(--border-focus);
       outline-offset: 2px;
     }
 

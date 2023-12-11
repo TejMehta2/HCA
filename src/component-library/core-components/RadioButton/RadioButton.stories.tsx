@@ -20,3 +20,32 @@ export const Default: StoryObj<typeof RadioButton> = {
     mode: 'light',
   },
 };
+
+export const Medium: StoryObj<typeof RadioButton> = {
+  args: {
+    id: 'example',
+    label: 'radio button',
+    mode: 'medium',
+  },
+
+  parameters: {
+    backgrounds: {
+      default: 'main-turquoise',
+      values: [{ name: 'main-turquoise', value: '#77c7c3' }],
+    },
+  },
+};
+
+export const Dark: StoryObj<typeof RadioButton> = {
+  args: {
+    id: 'example',
+    label: 'radio button',
+    mode: 'dark',
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
+  },
+};
