@@ -13,7 +13,7 @@ const meta: Meta<typeof ServiceCards> = {
   component: ServiceCards,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -33,7 +33,10 @@ export const Default: StoryObj<typeof ServiceCards> = {
     ),
     cta: (
       <a href="#">
-        <Icons iconName="iconSearch"></Icons> Search all service lines
+        <Icons iconName="iconSearch"></Icons>{' '}
+        <span>
+          Search all <strong>service lines</strong>
+        </span>
       </a>
     ),
     children: [
