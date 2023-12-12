@@ -9,6 +9,8 @@ const CarouselContent = (props: CarouselContentProps): JSX.Element => {
   const { slides, theme } = props;
 
   const renderedSlides = slides.map((slide, index) => {
+    /* Fragment is needed to get around a bug with react-slick. 
+    Without it, the carousel automatically applies some inline styles which break the appearance */
     return (
       <React.Fragment key={index}>
         <div className={styles.slide}>
