@@ -1,0 +1,55 @@
+﻿---
+ID: "9d0a0d9e-b398-4004-9342-f3f589f2345e"
+Parent: "766da7e9-2efe-4132-a387-6b257a08fdc8"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Path: /sitecore/content/HCA/HCA Main/QA/Blog Pages/Blog Page 2
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{EE83ADCB-DF28-4CB4-BAC4-1DD2F1CD9DB9}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T090958Z
+    - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
+      Hint: Tags
+      Value: "{C631A9B1-127D-4DF1-892D-74BE147BC048}"
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Blog Page 2
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Description
+      Value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a pellentesque lectus. Nunc efficitur consequat est imperdiet commodo. Pellentesque nec lacus vitae elit ornare lacinia non blandit sem. Nulla mollis commodo tristique. Cras at lorem turpis. Integer lobortis fringilla urna ac semper. Aliquam elementum, nisl sit amet ultrices sodales, sapien urna volutpat orci, sit amet porttitor mi lorem eget risus. Sed mattis magna id mi vehicula mattis. Suspendisse sed volutpat urna. Ut et lobortis metus. Pellentesque rhoncus nisi congue augue interdum, nec fringilla nisl mollis.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fc8fbfda-beda-4d5f-9eff-728114c23634"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{2F8B4D7D-5BCD-4E93-8BD8-66B2C7DE8A18}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T124223Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: The Harley Street Clinic retain CQC 'Outstanding' rating
+    - ID: "e1b9a21b-a32e-429b-bbe5-047b323fd263"
+      Hint: Date
+      Value: 20231206T124100Z

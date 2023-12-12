@@ -10,7 +10,7 @@ SharedFields:
     ^({[^}]+}\|?){0,1}$
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: DataSource=sitecore/content/HCA/HCA Main&IncludeTemplatesForDisplay=Service Page&IncludeTemplatesForSelection=Service Page
+  Value: DataSource=/sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Service Page
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Treelist
@@ -39,11 +39,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fe690e6b-3ffc-461b-a231-4559b6cced78"
+      Value: "cc11e5bf-0885-4174-a3e7-24a1622b6e07"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231113T211621Z
+      Value: 20231205T081509Z

@@ -5,6 +5,10 @@ import {
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
+type CTAIconFields = {
+  SVGMarkup: Field<string>;
+};
+
 interface StoriesFields {
   Title: Field<string>;
   Description: Field<string>;
@@ -16,7 +20,9 @@ interface Fields {
   Title: Field<string>;
   Text: Field<string>;
   CardCTAText: Field<string>;
-  CTAIcon: ImageField;
+  CTAIcon: {
+    Icon: CTAIconFields[];
+  };
   CTALink: LinkField;
   stories: {
     StoriesList: StoriesFields[];

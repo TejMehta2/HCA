@@ -20,8 +20,17 @@ SharedFields:
               Heading : field(name:"Heading"){value},
               Title : field(name:"Title"){value},
               Description : field(name:"Description"){value},
-          	  CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
-              CTALink : field(name:"CTA Link"){...on LinkField{url}},
+              CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
+          	  {
+                Icon: targetItem
+              	{      		
+              	... on HCAIcon
+                  {
+                    SVGMarkup : field(name:"SVG Markup"){value}
+                  }
+                }
+              },
+              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
               services
           	  {
          	    ServicesList: targetItems
@@ -30,13 +39,11 @@ SharedFields:
                   Description : field(name:"Description"){value},
                   Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
                   Link : field(name:"Link"){...on LinkField{url}},
-                 } 
-         	 }
+                } 
+         	}
         }
      }
     }
-    
-    
     
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
@@ -103,14 +110,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eeaf6a3e-14b3-4f91-b3eb-64ca384b45e3"
+      Value: "f6b66c01-cf7b-449e-adae-a95b7987e406"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T151850Z
+      Value: 20231207T070753Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

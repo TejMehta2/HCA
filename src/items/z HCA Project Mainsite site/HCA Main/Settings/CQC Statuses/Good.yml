@@ -1,0 +1,32 @@
+﻿---
+ID: "a64bba88-c227-41a7-8ef6-2d2e3c9c3112"
+Parent: "e42c4cf5-2240-45ca-b4b7-59ef55f94006"
+Template: "01522cb0-f5ea-40e4-8843-c3bbbdb46abd"
+Path: /sitecore/content/HCA/HCA Main/Settings/CQC Statuses/Good
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231128T093534Z
+    - ID: "7edb9b23-9055-4551-a6d4-edca5a3f364d"
+      Hint: Title
+      Value: Good
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b628883d-3d1f-4568-bdf1-f1c66403e323"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cac4f9dc-c36a-4c56-97db-ebce1e7e2f29"
+      Hint: CQC Logo
+      Value: "{6D1499AD-8E5F-456F-A0D2-7AE0BB354EE8}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T143556Z
+    - ID: "f7469f76-595c-49cc-b0cc-66a5e3d33383"
+      Hint: Icon
+      Value: iconCheckCircle

@@ -1,0 +1,29 @@
+﻿---
+ID: "ff0f5c72-028d-4727-9c2e-7b1e42fd4d8e"
+Parent: "fbc6258d-285a-4023-8211-77fecf239e13"
+Template: "85734d28-e226-4bf4-9a00-3f878e3c8235"
+Path: /sitecore/content/HCA/HCA Main/Data/Doctify Reviews/Doctify Reviews 2
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231205T105244Z
+    - ID: "8768d68c-852a-48ad-98d6-f5b0ddac4fbd"
+      Hint: Stars
+      Value: 5
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8b7fdb15-c1c1-4b08-957c-48ee7c880450"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T145717Z
+    - ID: "ef0cf15c-3c69-4958-9cc1-e71ad136219d"
+      Hint: Reviews
+      Value: 13,500+

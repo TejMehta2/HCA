@@ -1,0 +1,48 @@
+﻿---
+ID: "1db4d60b-be6a-47c7-9c66-6a42a7d4620d"
+Parent: "5e798c0d-385b-410e-9f5a-2b3326924a9e"
+Template: "ad431ae8-75c6-4abf-b28b-e7d488e59f07"
+Path: /sitecore/content/HCA/HCA Main/QA/Home/Data/Doctor cards
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T091345Z
+    - ID: "5a674cd7-c9eb-4be4-8577-5c3d6d72c70c"
+      Hint: CTA Card
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "87491169-0e76-45df-8e75-70f5a9ad49b0"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTA Link
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "ab11cab9-17e6-42ac-98ca-aec3d7127a85"
+      Hint: Custom Filters
+      Value: |
+        {FECB604C-7B7C-4BB1-912B-B5F3F4CFD1B2}
+        {72140792-0899-4D71-A6C7-6A3F358253BB}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d4e8f601-4189-4c53-a450-1b938d34f437"
+      Hint: Practice
+      Value: "{E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231205T091517Z
+    - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
+      Hint: Service
+      Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
+    - ID: "f75ab386-350c-44ca-97a1-3b63a8a61cdc"
+      Hint: Number of Cards
+      Value: 4
+    - ID: "fd86c684-2a05-4705-8d10-4eb1bc9156f5"
+      Hint: Title
+      Value: Hip pain consultants
