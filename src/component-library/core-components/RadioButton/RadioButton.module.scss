@@ -1,0 +1,106 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+@mixin apply-light-mode {
+  --border-default: #{$dark-blue-10};
+  --background-selected: #{$coral};
+  --background-selected-dot: #{$dark-blue};
+  --background-disabled: #{$dark-blue-5};
+  --border-disabled: #{$dark-blue-10};
+  --background-disabled-selected: #{$dark-blue-10};
+  --border-focus: #{$dark-blue};
+  --text: #{$dark-blue};
+}
+@mixin apply-dark-mode {
+  --border-default: #{$dark-blue-40};
+  --background-selected: #{$main-turquoise};
+  --background-selected-dot: #{$dark-blue};
+  --background-disabled: #{$dark-blue-40};
+  --border-disabled: #{$dark-blue-60};
+  --background-disabled-selected: #{$dark-blue-10};
+  --border-focus: #{$white};
+  --text: #{$white};
+}
+@mixin apply-medium-mode {
+  --border-default: #{$dark-blue-60};
+  --background-selected-dot: #{$white};
+  --background-selected: #{$dark-blue};
+  --background-disabled: #{$main-turquoise-40};
+  --border-disabled: #{$dark-blue-20};
+  --background-disabled-selected: #{$dark-blue-20};
+  --border-focus: #{$white};
+  --text: #{$dark-blue};
+}
+
+.light {
+  @include apply-light-mode;
+}
+
+.dark {
+  @include apply-dark-mode;
+}
+
+.medium {
+  @include apply-medium-mode;
+}
+
+.wrapper {
+  @include apply-body-large;
+
+  display: flex;
+  gap: 0 $spacing-4;
+  color: var(--text);
+  align-items: center;
+
+  input {
+    appearance: none;
+    margin: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    height: px-to-rem(24);
+    width: px-to-rem(24);
+    position: relative;
+
+    &:checked {
+      background: var(--background-selected);
+      border-color: var(--background-selected);
+
+      @include apply-body-medium-large;
+
+      &::after {
+        display: inline-block;
+        content: '';
+        border-radius: 50%;
+        background: var(--background-selected-dot);
+        width: px-to-rem(4);
+        height: px-to-rem(4);
+        position: absolute;
+        inset: 50% 0 0 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      background: var(--background-disabled);
+      border-color: var(--border-disabled);
+
+      &:checked {
+        border: var(--background-disabled-selected);
+        background: var(--background-disabled-selected);
+      }
+
+      &::after {
+        background: $white;
+      }
+    }
+  }
+}
