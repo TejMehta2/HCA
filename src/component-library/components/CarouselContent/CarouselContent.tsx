@@ -10,19 +10,21 @@ const CarouselContent = (props: CarouselContentProps): JSX.Element => {
 
   const renderedSlides = slides.map((slide, index) => {
     return (
-      <div key={index} className={styles.slide}>
-        <div>
-          {slide.title}
-          {slide.body}
+      <React.Fragment key={index}>
+        <div className={styles.slide}>
+          <div className={styles.image}>{slide.image}</div>
+          <div className={styles.text}>
+            {slide.title}
+            {slide.body}
+          </div>
         </div>
-        <div>{slide.image}</div>
-      </div>
+      </React.Fragment>
     );
   });
 
   /* Carousel settings */
   const settings = {
-    speed: 1200,
+    speed: 1800,
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
