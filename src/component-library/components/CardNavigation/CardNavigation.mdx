@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardNavigationStories from './CardNavigation.stories';
+
+<Meta of={CardNavigationStories} />
+
+# CardNavigation
+
+## Description
+
+The CardNavigation component has two different versions. One for featured services and another for featured blogs
+
+Both versions have a category, title, and body text. Featured Services also has a CTA while Featured Blogs has date and tag fields
+
+It is intended to be used in the navigation and will **only appear on desktop**
+
+It can be composed like this:
+
+```tsx
+<CardNavigation
+  category="service"
+  title={
+    <Text tag="p" variation="heading-2">
+      Featured Scan
+    </Text>
+  }
+  body={
+    <Text tag="p" variation="body-medium">
+      Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
+    </Text>
+  }
+  cta={
+    <a href="#">
+      <span>
+        Learn <strong>more</strong>
+      </span>
+    </a>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={CardNavigationStories.FeaturedService} />
+<Controls of={CardNavigationStories.FeaturedService} />
