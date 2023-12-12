@@ -49,7 +49,7 @@
     border-right: px-to-rem(7) solid transparent;
     border-bottom: px-to-rem(7) solid var(--card-secondary-background);
     position: absolute;
-    top: px-to-rem(-7);
+    top: px-to-rem(-6);
     left: calc(50% - px-to-rem(7));
   }
 }
@@ -64,7 +64,7 @@
     color: $dark-blue;
 
     &::before {
-      border-bottom: px-to-rem(7) solid $dark-blue;
+      border-bottom: px-to-rem(7) solid $white;
     }
   }
 }
