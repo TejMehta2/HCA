@@ -32,10 +32,6 @@
     left: 0;
   }
 
-  /* & div[class*='slick-prev'] {
-    transform: translateY(calc(100% + $spacing-7)) translateX(-100%);
-  } */
-
   & div[class*='slick-next'] {
     transform: translateX(calc(100% + $spacing-3));
   }
