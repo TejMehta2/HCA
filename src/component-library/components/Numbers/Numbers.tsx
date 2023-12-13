@@ -8,7 +8,7 @@ const Numbers = (props: NumbersProps): JSX.Element => {
   return (
     <span className={`${styles.wrapper} ${styles[size]}`}>
       {
-        <Text tag="p" variation="body-medium-large">
+        <Text tag="span" variation="body-medium-large">
           {number}
         </Text>
       }
