@@ -1,18 +1,8 @@
 ﻿---
-ID: "ea5fdc51-8f27-47db-8fbe-e291519c5fed"
-Parent: "25f576aa-3682-41b2-8c4f-80414d58c084"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/ThemesParameters/Theme/Theme
-SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{DB2E4A4F-E2E9-4CAF-B908-0D41E5F45E6E}"
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Droplink
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "5cf00198-9d40-4d18-87b6-ff62c17baad8"
+Parent: "db2e4a4f-e2e9-4caf-b908-0d41e5f45e6e"
+Template: "fc5333c3-fdd8-4831-b992-6962fb1ee907"
+Path: "/sitecore/content/HCA/HCA Main/Presentation/Themes/K-Turquoise-5"
 Languages:
 - Language: en
   Versions:
@@ -20,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231213T143146Z
+      Value: 20231213T160405Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ceb644f9-347e-4f1c-91ea-c5fd087a1fb0"
+      Value: "d8472abb-02f9-4f45-af25-bb0960c2f0cb"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231213T160506Z
+      Value: 20231213T160405Z
