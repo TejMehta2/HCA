@@ -1,0 +1,23 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SwitchesStories from './Switches.stories';
+
+<Meta of={SwitchesStories} />
+
+# Switches
+
+## Description
+
+The Switches component is consists of switch that can be toggled and a label for the switch. It has three modes `light`, `dark` and `medium`.
+
+It is intended to be used in forms.
+
+It can be composed like this:
+
+```tsx
+<Switches label="example" mode="dark" />
+```
+
+## Example
+
+<Canvas of={SwitchesStories.Default} />
+<Controls of={SwitchesStories.Default} />
