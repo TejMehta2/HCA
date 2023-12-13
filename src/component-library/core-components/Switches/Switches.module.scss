@@ -32,13 +32,11 @@
   @include apply-medium-mode;
 }
 
-.wrapper {
-  display: flex;
+.switch {
+  display: grid;
+  grid: auto / px-to-rem(40) 1fr;
   gap: 0 px-to-rem(8);
   align-items: center;
-}
-
-.switch {
   position: relative;
   width: px-to-rem(40);
   height: px-to-rem(24);

@@ -14,8 +14,8 @@ const Switches = (props: SwitchesProps): JSX.Element => {
   const id = useId();
 
   return (
-    <div className={[styles.wrapper, styles[mode]].join(' ')}>
-      <div className={styles.switch}>
+    <div className={styles[mode]}>
+      <label className={styles.switch} htmlFor={id}>
         <input
           type="checkbox"
           id={id}
@@ -23,9 +23,9 @@ const Switches = (props: SwitchesProps): JSX.Element => {
           onChange={handleToggle}
           disabled={disabled}
         />
-        <label htmlFor={id} className={styles.toggle} />
-      </div>
-      <label className={styles.label}>{label}</label>
+        <span className={styles.toggle} />
+        <span className={styles.label}>{label}</span>
+      </label>
     </div>
   );
 };
