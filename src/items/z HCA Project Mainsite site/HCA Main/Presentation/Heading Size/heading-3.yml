@@ -2,7 +2,7 @@
 ID: "37d25c6a-1cc1-4062-b797-d766ecbad4ec"
 Parent: "61a472d9-0f55-4113-93d6-93161d0cc807"
 Template: "fc5333c3-fdd8-4831-b992-6962fb1ee907"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Heading Size/Heading 3
+Path: "/sitecore/content/HCA/HCA Main/Presentation/Heading Size/heading-3"
 Languages:
 - Language: en
   Versions:
