@@ -21,21 +21,18 @@ export const Default: StoryObj<typeof RadioButtons> = {
     children: (
       <>
         <RadioButton
-          key="1"
           label="example A"
           mode="light"
           value="example-a"
           name="test"
         />
         <RadioButton
-          key="2"
           label="example B"
           mode="light"
           value="example-b"
           name="test"
         />
         <RadioButton
-          key="3"
           label="example C"
           mode="light"
           value="example-c"
