@@ -1,5 +1,8 @@
-import { ReactNode } from 'react';
+// import { ChangeEventHandler } from 'react';
 
 export interface CheckboxProps {
-  children?: ReactNode | JSX.Element;
+  label: string;
+  mode?: 'light' | 'dark' | 'medium';
+  // checked: boolean;
+  // onChange: ChangeEventHandler<HTMLInputElement>;
 }

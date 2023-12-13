@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkboxes from './Checkboxes';
 import type { Meta, StoryObj } from '@storybook/react';
+import Checkbox from '../Checkbox/Checkbox';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Checkboxes> = {
@@ -16,6 +17,12 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Checkboxes> = {
   args: {
-    children: <p>Checkboxes</p>,
+    children: (
+      <>
+        <Checkbox label="example 1" />
+        <Checkbox label="example 2" />
+        <Checkbox label="example 1" />
+      </>
+    ),
   },
 };
