@@ -6,45 +6,66 @@ Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Patient stories
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: Patient stories
+  Value: PatientStories
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetPatientStory( $datasource: String!, $language: String!) 
-    {
-        item(path: $datasource, language: $language) {
-        ...on PatientStories {
-              Title : field(name:"Title"){value},
-              Text : field(name:"Text"){value},
-              CardCTAText : field(name:"Card CTA Text"){value},
-              CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
-          	  {
-                Icon: targetItem
-                {      		
-              	... on HCAIcon
-                  {
-                    SVGMarkup : field(name:"SVG Markup"){value}
-                  }
+    # Write your query or mutation here
+    query GetPatientStory($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on PatientStories {
+          title {
+            value
+          }
+          text {
+            value
+          }
+          cardCTAText {
+            value
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
                 }
-              },
-              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
-              stories 
-          	   {
-         	     StoriesList: targetItems
-        		 {
-                	   Title : field(name:"Title"){value},
-                	   Description : field(name:"Description"){value},
-                       Date : field(name:"Date"){value},
-                       Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                     } 
-           }
+              }
+            }
+          }
+          cTALink {
+            ... on LinkField {
+              url
+              text
+            }
+          }
+          stories {
+            StoriesList: targetItems {
+              url {
+                url
+              }
+              ... on PatientStoryPage {
+                title {
+                  value
+                }
+                description {
+                  value
+                }
+                date {
+                  value
+                }
+                image {
+                 value
+                 jsonValue
+                }
+              }
+            }
+          }
         }
-     }
+      }
     }
-    
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
@@ -110,14 +131,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "694dd0ab-f454-411e-958d-b2df5c461552"
+      Value: "23c66fd4-ccc2-497c-9d26-002f851b65be"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231207T070630Z
+      Value: 20231214T200848Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
