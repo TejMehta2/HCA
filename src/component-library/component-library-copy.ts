@@ -8,36 +8,53 @@ const destinationDirectory = path.join(
 );
 fs.mkdirSync(destinationDirectory, { recursive: true });
 
-const foldersToCopy = [
-  'components',
-  'core-components',
-  'foundation',
-  'globals',
-  'assets',
-  'hooks',
-  'utilities',
-];
+const performCopy = () => {
+  const foldersToCopy = [
+    'components',
+    'core-components',
+    'foundation',
+    'globals',
+    'assets',
+    'hooks',
+    'utilities',
+  ];
 
-try {
-  foldersToCopy.forEach((folder) => {
-    const sourceDirectory = path.join(__dirname, folder);
-    const targetDirectory = path.join(destinationDirectory, folder);
-    fs.cpSync(sourceDirectory, targetDirectory, {
-      recursive: true,
-      filter: (source) => {
-        if (
-          source.endsWith('.spec.tsx') ||
-          source.endsWith('.stories.tsx') ||
-          source.endsWith('.mdx') ||
-          source.includes('placeholder')
-        ) {
-          return false;
-        }
-        return true;
-      },
+  try {
+    foldersToCopy.forEach((folder) => {
+      const sourceDirectory = path.join(__dirname, folder);
+      const targetDirectory = path.join(destinationDirectory, folder);
+      fs.cpSync(sourceDirectory, targetDirectory, {
+        recursive: true,
+        filter: (source) => {
+          if (
+            source.endsWith('.spec.tsx') ||
+            source.endsWith('.stories.tsx') ||
+            source.endsWith('.mdx') ||
+            source.includes('placeholder')
+          ) {
+            return false;
+          }
+          return true;
+        },
+      });
     });
-  });
-  console.log('success!');
-} catch (err) {
-  console.error(err);
-}
+    console.log(`Copied ${__dirname} to ${destinationDirectory}`);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+let isWatching = false;
+performCopy(); // Run on initial script call
+// Then run on watched changes
+fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
+  if (isWatching) return;
+  isWatching = true;
+  if (eventType === 'change') {
+    console.log(`Change detected in ${fileName}`);
+    performCopy();
+  }
+  setTimeout(() => {
+    isWatching = false;
+  }, 500);
+});
