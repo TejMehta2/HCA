@@ -1,9 +1,12 @@
 import React from 'react';
 import {
   Field,
+  Text,
+  Link,
   LinkField,
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CarouselCards from 'temp/component-library/components/CarouselCards/CarouselCards';
 
 type CTAIconFields = {
   SVGMarkup: Field<string>;
@@ -38,9 +41,10 @@ const PatientStoriesDefaultComponent = (
   props: PatientStoriesProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
-    </div>
+    <CarouselCards
+      title={<Text field={props.fields.Title} />}
+      link={<Link field={props.fields.CTALink} />}
+    ></CarouselCards>
   </div>
 );
 
