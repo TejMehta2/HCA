@@ -1,0 +1,57 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: px-to-rem(8);
+  padding: $spacing-10 0;
+
+  @include responsive-container;
+}
+
+.arrow,
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: unset;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  border-radius: 50%;
+  width: px-to-rem(40);
+  aspect-ratio: 1/1;
+
+  @include apply-body-medium-large;
+}
+
+.arrow {
+  &:hover {
+    color: var(--pagination-arrow-hover);
+  }
+
+  &:focus-visible {
+    outline: px-to-rem(4) solid var(--pagination-arrow-hover);
+  }
+}
+
+.number {
+  &:hover {
+    background-color: var(--pagination-hover);
+    color: var(--card-secondary-text);
+  }
+
+  &:focus-visible {
+    outline: px-to-rem(4) solid var(--pagination-hover);
+  }
+}
+
+.current-page {
+  background-color: var(--pagination);
+}

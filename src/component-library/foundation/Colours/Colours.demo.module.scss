@@ -3,6 +3,8 @@
 // Export color variables for use in Webpack.
 :export {
   turquoise: {
+    main-turquoise-140: $main-turquoise-140;
+    main-turquoise-120: $main-turquoise-120;
     main-turquoise: $main-turquoise;
     main-turquoise-80: $main-turquoise-80;
     main-turquoise-60: $main-turquoise-60;
@@ -54,6 +56,7 @@
     coral-5: $coral-5;
   }
   red: {
+    red-120: $red-120;
     red: $red;
     red-80: $red-80;
     red-60: $red-60;

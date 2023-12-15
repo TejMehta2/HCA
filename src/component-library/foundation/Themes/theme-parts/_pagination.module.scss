@@ -1,51 +1,61 @@
 @use '../../Colours/colours.module' as *;
 
 @mixin apply-pagination-turquoise-10 {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$main-turquoise-10};
+  --pagination: #{$main-turquoise-10};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-white {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$white};
+  --pagination: #{$white};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$light-orange};
 }
 
 @mixin apply-pagination-green-20 {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$green-20};
+  --pagination: #{$green-20};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-beige-60 {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$beige-60};
+  --pagination: #{$beige-60};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-grey {
-  --pagination-active-text: #{$white};
-  --pagination-active-background: #{$dark-blue-60};
+  --pagination: #{$dark-blue-60};
+  --pagination-hover: #{$main-turquoise-140};
+  --pagination-arrow-hover: #{$main-turquoise-80};
 }
 
 @mixin apply-pagination-orange {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$light-orange};
+  --pagination: #{$light-orange};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$light-orange};
 }
 
 @mixin apply-pagination-green-10 {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$green-10};
+  --pagination: #{$green-10};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-green {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$green};
+  --pagination: #{$green};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$green};
 }
 
 @mixin apply-pagination-turquoise {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$main-turquoise};
+  --pagination: #{$main-turquoise};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$main-turquoise-120};
 }
 
 @mixin apply-pagination-coral-5 {
-  --pagination-active-text: #{$dark-blue};
-  --pagination-active-background: #{$coral-5};
+  --pagination: #{$coral-5};
+  --pagination-hover: #{$dark-blue};
+  --pagination-arrow-hover: #{$white};
 }
