@@ -1,0 +1,38 @@
+﻿---
+ID: "2ac67fa2-ca7e-462c-8369-45822a7e4599"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Hospital
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231217T110644Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d0f5be4b-5352-4ba7-934d-ea1ecdc1ea8d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231217T110646Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SVG Markup
+      Value: |
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 7.5L12 2L21 7.5M19 10V21.4C19 21.5591 18.9368 21.7117 18.8243 21.8243C18.7117 21.9368 18.5591 22 18.4 22H5.6C5.44087 22 5.28826 21.9368 5.17574 21.8243C5.06321 21.7117 5 21.5591 5 21.4V10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.667 18H10.333V15.667H8V12.333H10.333V10H13.667V12.333H16V15.667H13.667V18Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>

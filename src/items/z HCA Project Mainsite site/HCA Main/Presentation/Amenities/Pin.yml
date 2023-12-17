@@ -1,0 +1,29 @@
+﻿---
+ID: "9556a913-cd4e-47dd-99f5-24ae9dfa72d5"
+Parent: "4f01608e-2fc1-4663-9853-0a78f8b7aece"
+Template: "28d0dea0-5eda-4ea9-a135-b5b642846092"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Amenities/Pin
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231217T124501Z
+    - ID: "65a9ef0d-857e-4201-a474-2f91662e3817"
+      Hint: Icon
+      Value: "{E6D4BA6C-BC0A-43BB-9EF5-45225F261EB0}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c3c5b808-92d6-4c04-92ce-f61033660a09"
+    - ID: "a17e6d73-e816-4f01-bb73-49e5596311be"
+      Hint: Title
+      Value: Quis laboris proi
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231217T125258Z
