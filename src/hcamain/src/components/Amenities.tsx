@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
   SVGMarkup: Field<string>;
@@ -29,9 +26,7 @@ type AmenitiesProps = {
   fields: Fields;
 };
 
-const AmenitiesDefaultComponent = (
-  props: AmenitiesProps
-): JSX.Element => (
+const AmenitiesDefaultComponent = (props: AmenitiesProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Homepage Service Cards</span>
