@@ -3,10 +3,7 @@ import {
   Field,
   LinkField,
   ImageField,
-  Text,
-  Link,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import CarouselCards from '@hca/component-library/components/CarouselCards/CarouselCards';
 
 type CTAIconFields = {
   SVGMarkup: Field<string>;

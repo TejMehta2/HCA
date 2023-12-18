@@ -12,9 +12,9 @@ interface BlogTags {
 interface BlogFields {
   Date: Field<string>;
   Image: ImageField;
-  Tags:{
+  Tags: {
     TagsList: BlogTags[];
-  }
+  };
 }
 
 interface Fields {
@@ -43,14 +43,10 @@ const HomepageCardsBlogCardsDefaultComponent = (
   </div>
 );
 
-export const Carousel = (
-  props: HomepageCardsBlogCardsProps
-): JSX.Element => {
+export const Carousel = (props: HomepageCardsBlogCardsProps): JSX.Element => {
   return <HomepageCardsBlogCardsDefaultComponent {...props} />;
 };
 
-export const Standard = (
-  props: HomepageCardsBlogCardsProps
-): JSX.Element => {
+export const Standard = (props: HomepageCardsBlogCardsProps): JSX.Element => {
   return <HomepageCardsBlogCardsDefaultComponent {...props} />;
 };
