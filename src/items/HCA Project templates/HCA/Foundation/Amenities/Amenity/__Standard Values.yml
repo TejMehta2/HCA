@@ -1,0 +1,34 @@
+﻿---
+ID: "99486ea8-462b-4a00-8a49-e0458d1565e7"
+Parent: "28d0dea0-5eda-4ea9-a135-b5b642846092"
+Template: "28d0dea0-5eda-4ea9-a135-b5b642846092"
+Path: /sitecore/templates/Project/HCA/Foundation/Amenities/Amenity/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231217T102832Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5366a002-f33d-47bb-838c-3b4bae204181"
+    - ID: "a17e6d73-e816-4f01-bb73-49e5596311be"
+      Hint: Title
+      Value: $name
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231217T102837Z
