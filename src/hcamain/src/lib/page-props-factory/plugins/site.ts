@@ -18,8 +18,8 @@ class SitePlugin implements Plugin {
       context.params === undefined
         ? '/'
         : Array.isArray(context.params.path)
-        ? context.params.path.join('/')
-        : context.params.path ?? '/';
+          ? context.params.path.join('/')
+          : context.params.path ?? '/';
 
     // Get site name (from path)
     const siteData = getSiteRewriteData(path, config.jssAppName);
