@@ -4,7 +4,7 @@ import styles from './Checkboxes.module.scss';
 
 const Checkboxes = (props: CheckboxesProps): JSX.Element => {
   const { children } = props;
-  return <div className={styles.bold}>{children}</div>;
+  return <fieldset className={styles.wrapper}>{children}</fieldset>;
 };
 
 export default Checkboxes;

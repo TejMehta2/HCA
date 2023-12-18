@@ -1,8 +1,12 @@
-// import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler } from 'react';
 
 export interface CheckboxProps {
   label: string;
+  name: string;
+  value: string | number;
   mode?: 'light' | 'dark' | 'medium';
-  // checked: boolean;
-  // onChange: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
+  indeterminate?: boolean;
+  onChange?: ChangeEventHandler;
+  checked?: boolean;
 }

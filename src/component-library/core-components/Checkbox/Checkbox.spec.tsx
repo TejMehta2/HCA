@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 import { CheckboxProps } from './Checkbox.types';
 
 const mockProps: CheckboxProps = {
-  children: <p>Hello world</p>,
+  label: 'Hello world',
 };
 
 describe('Checkbox', () => {

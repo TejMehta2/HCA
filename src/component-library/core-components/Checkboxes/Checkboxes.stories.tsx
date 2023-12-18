@@ -19,9 +19,9 @@ export const Default: StoryObj<typeof Checkboxes> = {
   args: {
     children: (
       <>
-        <Checkbox label="example 1" />
-        <Checkbox label="example 2" />
-        <Checkbox label="example 1" />
+        <Checkbox label="Example 1" name="example" value={1} />
+        <Checkbox label="Example 2" name="example" value={2} />
+        <Checkbox label="Example 3" name="example" value={3} />
       </>
     ),
   },

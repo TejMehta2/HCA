@@ -1,3 +1,8 @@
-.bold {
-  font-weight: bold;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: grid;
+  gap: px-to-rem(8) 0;
+  border: 0;
 }
