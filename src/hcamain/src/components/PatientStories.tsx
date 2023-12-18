@@ -9,9 +9,10 @@ import {
   LinkFieldValue,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import SideScrollingCards from 'temp/component-library/components/SideScrollingCards/SideScrollingCards';
-import CardPatientStories from 'temp/component-library/components/CardPatientStories/CardPatientStories';
-import Icons from 'temp/component-library/foundation/Icons/Icons';
+import SideScrollingCards from '@component-library/components/SideScrollingCards/SideScrollingCards';
+import Icons from '@component-library/foundation/Icons/Icons';
+import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
+
 
 type CTAIconFields = {
   SVGMarkup: Field<string>;
