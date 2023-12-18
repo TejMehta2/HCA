@@ -115,12 +115,6 @@
   .icon {
     padding-left: px-to-rem(8);
   }
-
-  &.dark {
-    .icon {
-      color: $green-40;
-    }
-  }
 }
 
 .requires-improvement {
@@ -137,6 +131,15 @@
   &.dark {
     .icon {
       color: $coral;
+    }
+  }
+}
+
+.outstanding,
+.good {
+  &.dark {
+    .icon {
+      color: $green-40;
     }
   }
 }
