@@ -19,8 +19,8 @@ class PersonalizePlugin implements Plugin {
       context.params === undefined
         ? '/'
         : Array.isArray(context.params.path)
-          ? context.params.path.join('/')
-          : context.params.path ?? '/';
+        ? context.params.path.join('/')
+        : context.params.path ?? '/';
 
     // Get variant for personalization (from path)
     const personalizeData = getPersonalizedRewriteData(path);
