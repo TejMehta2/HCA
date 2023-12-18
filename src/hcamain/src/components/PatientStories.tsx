@@ -13,7 +13,6 @@ import SideScrollingCards from '@component-library/components/SideScrollingCards
 import Icons from '@component-library/foundation/Icons/Icons';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 
-
 type CTAIconFields = {
   SVGMarkup: Field<string>;
 };
