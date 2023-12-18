@@ -1,15 +1,8 @@
 ﻿---
-ID: "6572a61e-d3d4-46a0-acde-3b5b374d4ac3"
-Parent: "94f9f93b-df4d-4924-bd30-fa0959169e26"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyPractice/Doctify Practice/Doctify Practice
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "94f9f93b-df4d-4924-bd30-fa0959169e26"
+Parent: "47531a4e-d960-4055-8a21-3354e7d9e505"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyPracticeMapping/Doctify Mapping
 Languages:
 - Language: en
   Versions:
@@ -28,7 +21,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fea129d8-4062-427e-ad7f-215dd99b0bfd"
+      Value: "74466339-37d2-4239-a8f9-f1715d4715c6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
