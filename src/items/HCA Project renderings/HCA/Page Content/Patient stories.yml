@@ -35,10 +35,16 @@ SharedFields:
               }
             }
           }
-          cTALink {
+          cTALink {               
             ... on LinkField {
-              url
               text
+              anchor
+              linkType
+              className          
+              target
+              queryString
+              id
+              href: url
             }
           }
           stories {
@@ -56,9 +62,9 @@ SharedFields:
                 date {
                   value
                 }
-                image {
-                 value
-                 jsonValue
+               image {             
+                  src
+                  alt              
                 }
               }
             }
@@ -131,14 +137,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "23c66fd4-ccc2-497c-9d26-002f851b65be"
+      Value: "5627dea5-7104-4441-b23a-5ae851514c9d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231214T200848Z
+      Value: 20231218T182839Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
