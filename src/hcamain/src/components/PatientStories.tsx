@@ -4,12 +4,14 @@ import {
   Link as JssLink,
   Field,
   Text,
-  LinkField,
   ImageField,
   RichText,
+  LinkFieldValue,
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import SideScrollingCards from 'temp/component-library/components/SideScrollingCards/SideScrollingCards';
 import CardPatientStories from 'temp/component-library/components/CardPatientStories/CardPatientStories';
+import Icons from 'temp/component-library/foundation/Icons/Icons';
 
 type CTAIconFields = {
   SVGMarkup: Field<string>;
@@ -21,7 +23,7 @@ interface StoriesFields {
   date: Field<string>;
   image: ImageField;
   link: LinkField;
-  url: string;
+  url: { url: string };
 }
 
 interface Fields {
@@ -33,7 +35,7 @@ interface Fields {
       cTAIcon: {
         ctaIcon: CTAIconFields[];
       };
-      cTALink: LinkField;
+      cTALink: LinkFieldValue;
       stories: {
         StoriesList: StoriesFields[];
       };
@@ -50,10 +52,14 @@ const PatientStoriesDefaultComponent = (
   props: PatientStoriesProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
-    <JssImage field={props.fields.data.item.stories.StoriesList[1].image} />
     <SideScrollingCards
       title={<Text field={props.fields.data.item.title} />}
-      link={<JssLink field={props.fields.data.item.cTALink} />}
+      link={
+        <JssLink field={props.fields.data.item.cTALink}>
+          <Icons iconName="iconSearch" />
+          <span>{props.fields.data.item.cTALink.text}</span>
+        </JssLink>
+      }
       bodyCopy={<RichText field={props.fields.data.item.text} />}
     >
       {props.fields.data.item.stories.StoriesList.map((story, index) => (
@@ -61,7 +67,9 @@ const PatientStoriesDefaultComponent = (
           key={index}
           title={<Text field={story.title} tag={'h3'} />}
           link={
-            <a href={story.url}>{props.fields.data.item.cardCTAText.value} </a>
+            <a href={story.url.url}>
+              {props.fields.data.item.cardCTAText.value}
+            </a>
           }
           bodyCopy={<RichText field={story.description} />}
           image={<JssImage field={story.image} />}
