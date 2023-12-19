@@ -13,18 +13,17 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    # Write your query or mutation here
     query GetPatientStory($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on PatientStories {
           title {
-            value
+            jsonValue
           }
           text {
-            value
+            jsonValue
           }
           cardCTAText {
-            value
+            jsonValue  
           }
           cTAIcon {
             Icon: targetItem {
@@ -35,17 +34,8 @@ SharedFields:
               }
             }
           }
-          cTALink {               
-            ... on LinkField {
-              text
-              anchor
-              linkType
-              className          
-              target
-              queryString
-              id
-              href: url
-            }
+          cTALink {        
+            jsonValue  
           }
           stories {
             StoriesList: targetItems {
@@ -62,9 +52,8 @@ SharedFields:
                 date {
                   value
                 }
-               image {             
-                  src
-                  alt              
+               image {   
+                  jsonValue                         
                 }
               }
             }
@@ -137,14 +126,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5627dea5-7104-4441-b23a-5ae851514c9d"
+      Value: "3749a3f8-e650-44c4-a296-6889bb37b649"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231218T182839Z
+      Value: 20231219T174255Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
