@@ -6,15 +6,17 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
   const {
     label,
     name,
+    id,
     value,
     mode = 'light',
     disabled,
     indeterminate = false,
     onChange,
+    checked,
   } = props;
 
   const [indeterminateState, setIndeterminateState] = useState(false);
-  const [checkedState, setcheckedState] = useState(false);
+  const [checkedState, setcheckedState] = useState(checked);
 
   const checkboxRef = useRef<HTMLInputElement | null>(null);
 
@@ -31,7 +33,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     onChange && onChange(e);
   };
 
-  const id = useId();
+  //const id = useId();
 
   return (
     <div className={styles.wrapper}>

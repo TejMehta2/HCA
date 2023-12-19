@@ -7,30 +7,30 @@ import styles from './NestedCheckboxes.module.scss';
 const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
   const { items } = props;
 
-  const CHECKBOX_STATES = {
-    Checked: 'Checked',
-    Indeterminate: 'Indeterminate',
-    Empty: 'Empty',
-  };
-
   const childList: ReactNode[] | JSX.Element[] = [];
 
-  const [checked, setChecked] = useState(CHECKBOX_STATES.Empty);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    childList.map((item) => console.log(item));
+    const listApartFromCurrent = childList.filter(
+      (item) => item && item.props.children.props.id !== e.target.id
+    );
+    const listApartFromCurrentCheckedCount = listApartFromCurrent.filter(
+      (item) => item && item.props.children.props.checked === true
+    );
+    console.log(listApartFromCurrent);
+    console.log(listApartFromCurrentCheckedCount);
+    childList.map((item) => console.log(item.props.children.props.checked));
   };
 
   items[0]?.subItems.map((item, index) => {
     const listItem = (
       <li key={index}>
         <Checkbox
+          id={item.id}
           label={item.label}
           name={item.name}
           value={item.value}
-          checked={false}
           onChange={handleChange}
+          checked={item.checked}
         />
       </li>
     );
@@ -43,6 +43,7 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
     <ul className={styles.list}>
       <li>
         <Checkbox
+          id={mainCheckbox.id}
           label={mainCheckbox.label}
           name={mainCheckbox.name}
           value={mainCheckbox.value}

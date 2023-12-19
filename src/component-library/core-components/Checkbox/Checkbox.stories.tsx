@@ -16,6 +16,9 @@ export default meta;
 export const Default: StoryObj<typeof Checkbox> = {
   args: {
     label: 'Checkbox',
+    id: '1',
+    name: 'example',
+    value: 'example',
   },
 };
 
@@ -23,6 +26,9 @@ export const Dark: StoryObj<typeof Checkbox> = {
   args: {
     label: 'Checkbox',
     mode: 'dark',
+    id: '1',
+    name: 'example',
+    value: 'example',
   },
 
   parameters: {
@@ -35,6 +41,9 @@ export const Dark: StoryObj<typeof Checkbox> = {
 
 export const Medium: StoryObj<typeof Checkbox> = {
   args: {
+    id: '1',
+    name: 'example',
+    value: 'example',
     label: 'Checkbox',
     mode: 'medium',
   },
