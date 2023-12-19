@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  /* useRef,
+  useLayoutEffect, */
+} from 'react';
 import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';
 import Themes from '../../foundation/Themes/Themes';
@@ -8,6 +14,7 @@ import CardGrid from '../CardGrid/CardGrid';
 const Pagination = (props: PaginationProps): JSX.Element => {
   const { theme, itemsPerPage, currentPage = 1, data } = props;
   const [page, setPage] = useState(currentPage);
+  //const [offsetLeft, setOffsetLeft] = useState(0);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
 
   const totalItems = data.length;
@@ -107,6 +114,17 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     [generateButton]
   );
 
+  /* const containerRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const currentElements = Array.from(containerRef.current!.children);
+
+    if (currentElements === null) {
+      return;
+    }
+
+    console.log(currentElements);
+  }, [containerRef, pageButtons]); */
+
   useEffect(() => {
     paginationHandler(page, pageCount);
   }, [page, pageCount, paginationHandler]);
@@ -114,21 +132,25 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
-        <div className={styles.container}>
+        <div
+          className={styles.container}
+          /* ref={containerRef} */
+          /* style={{
+            // consumed in the CSS to animate the background element
+            ['--current-tab-offset-left' as string]: `${tabDimensions?.[currentTabIndex]?.offsetLeft}px`,
+          }} */
+        >
           <button
-            className={[styles['arrow'], page === 1 && styles['hide']].join(
-              ' '
-            )}
+            className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
             onClick={() => pageChangeHandler(page - 1)}
           >
             <Icons iconName="iconArrowLeft" />
           </button>
           {pageButtons}
           <button
-            className={[
-              styles['arrow'],
-              page === pageCount && styles['hide'],
-            ].join(' ')}
+            className={`${styles['arrow']} ${
+              page === pageCount ? styles['hide'] : ''
+            }`}
             onClick={() => pageChangeHandler(page + 1)}
           >
             <Icons iconName="iconArrowRight" />

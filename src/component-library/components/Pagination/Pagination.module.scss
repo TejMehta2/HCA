@@ -12,8 +12,26 @@
   justify-content: center;
   gap: px-to-rem(8);
   padding: $spacing-10 0;
+  z-index: 1;
 
   @include responsive-container;
+
+  // Style the animated background element
+  /* &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    border-radius: 50%;
+    width: px-to-rem(40);
+    aspect-ratio: 1/1;
+    transform: translateX(var(--current-tab-offset-left, 0)) translateY(-50%);
+    z-index: -1;
+
+    // Apply theme to animated background element
+    background-color: var(--pagination);
+  } */
 }
 
 .arrow,
