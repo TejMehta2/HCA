@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface CardFields {
   Title: Field<string>;
