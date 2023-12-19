@@ -1,0 +1,23 @@
+﻿---
+ID: "4f01608e-2fc1-4663-9853-0a78f8b7aece"
+Parent: "3a96a972-1f1a-4fd7-8704-b3934dff1274"
+Template: "ee68a558-8bc2-492e-a0f6-365b7f0f1dd9"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Amenities
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231217T104056Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2678ba47-1d22-40ff-83c1-3f346b228d74"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231217T104056Z

@@ -1,0 +1,51 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-pagination-turquoise-10 {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$main-turquoise-10};
+}
+
+@mixin apply-pagination-white {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$white};
+}
+
+@mixin apply-pagination-green-20 {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$green-20};
+}
+
+@mixin apply-pagination-beige-60 {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$beige-60};
+}
+
+@mixin apply-pagination-grey {
+  --pagination-active-text: #{$white};
+  --pagination-active-background: #{$dark-blue-60};
+}
+
+@mixin apply-pagination-orange {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$light-orange};
+}
+
+@mixin apply-pagination-green-10 {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$green-10};
+}
+
+@mixin apply-pagination-green {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$green};
+}
+
+@mixin apply-pagination-turquoise {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$main-turquoise};
+}
+
+@mixin apply-pagination-coral-5 {
+  --pagination-active-text: #{$dark-blue};
+  --pagination-active-background: #{$coral-5};
+}
