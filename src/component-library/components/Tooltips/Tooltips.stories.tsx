@@ -28,6 +28,20 @@ export const Default: StoryObj<typeof Tooltips> = {
   },
 };
 
+export const Dark: StoryObj<typeof Tooltips> = {
+  args: {
+    theme: 'dark',
+    children: <p>Based on 127 patient reviews.</p>,
+  },
+
+  parameters: {
+    backgrounds: {
+      default: 'dark-blue',
+      values: [{ name: 'dark-blue', value: '#112f34' }],
+    },
+  },
+};
+
 export const Left: StoryObj<typeof Tooltips> = {
   args: {
     theme: 'light',

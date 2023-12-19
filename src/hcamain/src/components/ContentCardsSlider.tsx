@@ -20,15 +20,19 @@ interface PagesFields {
 }
 
 interface Fields {
-  Heading: Field<string>;
-  Title: Field<string>;
-  CTAIcon: {
-    Icon: CTAIconFields[];
-  };
-  CTALink: LinkField;
-  CTACardText: Field<string>;
-  pages: {
-    PagesList: PagesFields[];
+  data: {
+    item: {
+      Heading: Field<string>;
+      Title: Field<string>;
+      CTAIcon: {
+        Icon: CTAIconFields[];
+      };
+      CTALink: LinkField;
+      CTACardText: Field<string>;
+      pages: {
+        PagesList: PagesFields[];
+      };
+    };
   };
 }
 
@@ -41,9 +45,11 @@ const ContentCardsSliderDefaultComponent = (
   props: ContentCardsSliderProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
-    </div>
+    <h1>ContentCardsSliderDefaultComponent</h1>
+    {/* <CarouselCards
+      title={<Text field={props.fields.data.item.Title} />}
+      link={<Link field={props.fields.data.item.CTALink} />}
+    ></CarouselCards> */}
   </div>
 );
 
