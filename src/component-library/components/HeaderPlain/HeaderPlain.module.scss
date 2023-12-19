@@ -20,7 +20,8 @@
   grid-row-start: 2;
   margin-bottom: $spacing-5;
 
-  & > * {
+  & > h1,
+  h2 {
     @include apply-display-1;
   }
 }

@@ -81,3 +81,20 @@ export const Rating: StoryObj<typeof CQCBlock> = {
     },
   },
 };
+
+export const RatingDark: StoryObj<typeof CQCBlock> = {
+  args: {
+    theme: 'dark',
+    logo: {
+      dark: (
+        <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
+      ),
+      light: (
+        <Image src="/cqc-color.png" alt="cqc logo" width="120" height="37" />
+      ),
+    },
+    icon: <Icons iconName="iconCheckCircle"></Icons>,
+    rating: 'Outstanding',
+    link: <a href="#"></a>,
+  },
+};
