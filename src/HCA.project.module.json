@@ -40,5 +40,11 @@
                 "scope": "SingleItem"
             }
         ]
-    }
+    },
+	"leprechaun":{
+		"configuration": {
+			"@extends":"HCALeprehaun.Base",
+			"@name":"Project.HCA"
+		}
+	}
 }
