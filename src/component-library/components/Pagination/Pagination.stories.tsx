@@ -2,7 +2,6 @@ import React from 'react';
 import Pagination from './Pagination';
 import type { Meta, StoryObj } from '@storybook/react';
 import CardPatientStories from '../CardPatientStories/CardPatientStories';
-import CardGrid from '../CardGrid/CardGrid';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 
@@ -19,14 +18,14 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-const gridChildren = [];
-for (let i = 0; i < 14; i++) {
-  gridChildren.push(
+const data = [];
+for (let i = 0; i < 24; i++) {
+  data.push(
     <CardPatientStories
       key={i}
       title={
         <Text variation="heading-1" tag="h4">
-          Cardiac care
+          {(i + 1).toString() + 'Cardiac care'}
         </Text>
       }
       bodyCopy={
@@ -57,8 +56,8 @@ for (let i = 0; i < 14; i++) {
 export const Default: StoryObj<typeof Pagination> = {
   args: {
     theme: 'f',
-    itemsPerPage: 1,
-    currentPage: 5,
-    element: <CardGrid theme="f" children={gridChildren} />,
+    itemsPerPage: 6,
+    currentPage: 1,
+    data: data,
   },
 };

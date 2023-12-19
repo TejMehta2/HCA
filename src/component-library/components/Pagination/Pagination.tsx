@@ -1,123 +1,142 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
+import CardGrid from '../CardGrid/CardGrid';
 
 const Pagination = (props: PaginationProps): JSX.Element => {
-  const { theme, itemsPerPage, currentPage = 1, element } = props;
+  const { theme, itemsPerPage, currentPage = 1, data } = props;
   const [page, setPage] = useState(currentPage);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
 
-  const totalItems = element.props.children.length;
+  const totalItems = data.length;
   const pageCount = Math.ceil(totalItems / itemsPerPage);
 
-  const paginationHandler = (current: number, max: number) => {
-    if (!current || !max) {
-      return;
-    }
+  /* Get list of items to show on page */
+  const indexOfLastItem = page * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-    const items = [
-      <button
-        key={1}
-        onClick={() => setPage(1)}
-        className={`${styles['number']} ${
-          1 === current ? styles['current-page'] : ''
-        }`}
-      >
-        1
-      </button>,
-    ];
+  const pageChangeHandler = useCallback(
+    (newPage: number) => {
+      if (newPage < 1 || newPage > pageCount) {
+        return;
+      }
+      setPage(newPage);
+    },
+    [pageCount]
+  );
 
-    //console.log(pageButtons, max, items);
-
-    if (current === 1 && max === 1) {
-      return;
-    }
-
-    if (current > 3) {
-      items.push(<span key={current - 2}>...</span>);
-    }
-
-    let range = 1;
-
-    if (
-      current === 1 ||
-      current === 2 ||
-      current === max ||
-      current === max - 1
-    ) {
-      range = 2;
-    }
-
-    const r1 = current - range;
-    const r2 = current + range;
-
-    for (let i = r1 > 2 ? r1 : 2; i <= Math.min(max, r2); i++) {
-      items.push(
+  /* Individual page button */
+  const generateButton = useCallback(
+    (number: number) => {
+      return (
         <button
-          key={i}
-          onClick={() => setPage(i)}
+          key={number}
+          onClick={() => pageChangeHandler(number)}
           className={`${styles['number']} ${
-            i === current ? styles['current-page'] : ''
+            number === page ? styles['current-page'] : ''
           }`}
         >
-          {i}
+          {number}
         </button>
       );
-    }
+    },
+    [page, pageChangeHandler]
+  );
 
-    if (r2 + 1 < max) {
-      items.push(<span key={current + 2}>...</span>);
-    }
+  const paginationHandler = useCallback(
+    (current: number, max: number) => {
+      if (!current || !max) {
+        return;
+      }
 
-    if (r2 < max) {
-      items.push(
-        <button
-          key={max}
-          onClick={() => setPage(max)}
-          className={`${styles['number']} ${
-            max === current ? styles['current-page'] : ''
-          }`}
-        >
-          {max}
-        </button>
-      );
-    }
+      /* There will always be at least 1 page */
+      const items = [generateButton(1)];
 
-    console.log(items);
-    setPageButtons(items);
+      /* If only one page, return */
+      if (current === 1 && max === 1) {
+        return;
+      }
 
-    return;
-  };
+      /* Append an ellipsis if current page is greater than 3 */
+      if (current > 3 && max > 4) {
+        items.push(<span key={'span' + (current - 2)}>...</span>);
+      }
+
+      /* Range is the amount of pages that is shown on either side of the current page. 
+      This is always 1 unless near the start or end of page list */
+      let range = 1;
+
+      if (
+        current === 1 ||
+        current === 2 ||
+        current === max ||
+        current === max - 1
+      ) {
+        range = 2;
+      }
+
+      /* Lower range */
+      const r1 = current - range;
+
+      /* Upper range */
+      const r2 = current + range;
+
+      /* create buttons for all buttons which should be visible */
+      for (let i = r1 > 2 ? r1 : 2; i <= Math.min(max, r2); i++) {
+        items.push(generateButton(i));
+      }
+
+      /* Append another ellipsis if current page is more than 1 number away from the highest page */
+      if (r2 + 1 < max) {
+        items.push(<span key={'span' + (current + 2)}>...</span>);
+      }
+
+      /* Generate last page */
+      if (r2 < max) {
+        items.push(generateButton(max));
+      }
+
+      /* Set page buttons array with new list of visible pages */
+      setPageButtons(items);
+
+      return;
+    },
+    [generateButton]
+  );
 
   useEffect(() => {
     paginationHandler(page, pageCount);
-  }, [page, pageCount]);
+  }, [page, pageCount, paginationHandler]);
 
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {page > 1 && (
-            <button
-              className={styles['arrow']}
-              onClick={() => setPage(page - 1)}
-            >
-              <Icons iconName="iconArrowLeft" />
-            </button>
-          )}
+          <button
+            className={[styles['arrow'], page === 1 && styles['hide']].join(
+              ' '
+            )}
+            onClick={() => pageChangeHandler(page - 1)}
+          >
+            <Icons iconName="iconArrowLeft" />
+          </button>
           {pageButtons}
-          {page < pageCount && (
-            <button
-              className={styles['arrow']}
-              onClick={() => setPage(page + 1)}
-            >
-              <Icons iconName="iconArrowRight" />
-            </button>
-          )}
+          <button
+            className={[
+              styles['arrow'],
+              page === pageCount && styles['hide'],
+            ].join(' ')}
+            onClick={() => pageChangeHandler(page + 1)}
+          >
+            <Icons iconName="iconArrowRight" />
+          </button>
         </div>
-        <div>{element}</div>
+        <div>
+          <CardGrid theme={theme}>{currentItems}</CardGrid>
+        </div>
       </div>
     </Themes>
   );
