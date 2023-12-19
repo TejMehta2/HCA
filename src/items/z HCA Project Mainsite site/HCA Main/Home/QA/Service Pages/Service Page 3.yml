@@ -1,0 +1,44 @@
+﻿---
+ID: "32517adb-fa33-49db-bc56-47acb44d5e12"
+Parent: "12f34b20-353a-41b8-8f89-433b844f5395"
+Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Service Pages/Service Page 3
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{790804C6-362E-4D9A-AB35-F2DC06EAD3AC}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T124958Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Service Page 1
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Description
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "90286c00-da36-4586-be0b-d943bbfb9b57"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{E87A405D-8498-41B8-B0DF-40200678D574}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231206T135737Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Women’s Health
