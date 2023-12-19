@@ -6,7 +6,6 @@ import {
   Text,
   ImageField,
   RichText,
-  LinkFieldValue,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import SideScrollingCards from '@component-library/components/SideScrollingCards/SideScrollingCards';
@@ -21,7 +20,7 @@ interface StoriesFields {
   title: Field<string>;
   description: Field<string>;
   date: Field<string>;
-  image: ImageField;
+  image: { jsonValue: ImageField };
   link: LinkField;
   url: { url: string };
 }
@@ -29,13 +28,13 @@ interface StoriesFields {
 interface Fields {
   data: {
     item: {
-      title: Field<string>;
-      text: Field<string>;
-      cardCTAText: Field<string>;
+      title: { jsonValue?: Field<string> };
+      text: { jsonValue?: Field<string> };
+      cardCTAText: { jsonValue?: Field<string> };
       cTAIcon: {
         ctaIcon: CTAIconFields[];
       };
-      cTALink: LinkFieldValue;
+      cTALink: { jsonValue: LinkField };
       stories: {
         StoriesList: StoriesFields[];
       };
@@ -53,14 +52,14 @@ const PatientStoriesDefaultComponent = (
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <SideScrollingCards
-      title={<Text field={props.fields.data.item.title} />}
+      title={<Text field={props.fields.data.item.title.jsonValue} />}
       link={
-        <JssLink field={props.fields.data.item.cTALink}>
+        <JssLink field={props.fields.data.item.cTALink.jsonValue}>
           <Icons iconName="iconSearch" />
-          <span>{props.fields.data.item.cTALink.text}</span>
+          <span>{props.fields.data.item.cTALink.jsonValue?.value.text}</span>
         </JssLink>
       }
-      bodyCopy={<RichText field={props.fields.data.item.text} />}
+      bodyCopy={<RichText field={props.fields.data.item.text.jsonValue} />}
     >
       {props.fields.data.item.stories.StoriesList.map((story, index) => (
         <CardPatientStories
@@ -68,11 +67,11 @@ const PatientStoriesDefaultComponent = (
           title={<Text field={story.title} tag={'h3'} />}
           link={
             <a href={story.url.url}>
-              {props.fields.data.item.cardCTAText.value}
+              {props.fields.data.item.cardCTAText.jsonValue?.value}
             </a>
           }
           bodyCopy={<RichText field={story.description} />}
-          image={<JssImage field={story.image} />}
+          image={<JssImage field={story.image.jsonValue} />}
         ></CardPatientStories>
       ))}
     </SideScrollingCards>
