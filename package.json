@@ -18,6 +18,7 @@
     "hcamain:next:start": "npm run next:start -w src/hcamain",
     "hcamain:type-check": "npm run bootstrap -w src/hcamain && npm run type-check -w src/hcamain",
     "hcamain:copy": "npm run copy -w src/component-library hcamain/src/temp",
+    "hcamain:copy:watch": "npm run copy -w src/component-library hcamain/src/temp --watch",
     "microsite:start": "npm run start:connected -w src/microsite",
     "microsite:start:production": "npm run start:production -w src/microsite",
     "microsite:build": "npm run build -w src/microsite",
