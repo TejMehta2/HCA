@@ -11,7 +11,7 @@ const meta: Meta<typeof CardGrid> = {
   component: CardGrid,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
