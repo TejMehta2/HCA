@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const useActiveElement = () => {
-  const [active, setActive] = useState(document.activeElement);
+  const [active, setActive] = useState(
+    typeof window !== 'undefined' && document.activeElement
+  );
 
   const handleFocusIn = () => {
     setActive(document.activeElement);

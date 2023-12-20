@@ -1,0 +1,94 @@
+﻿---
+ID: "7b773c15-0ce4-4ccc-866a-a1bea1cb8894"
+Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Home
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 0
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{A85B664B-272D-4AE7-97E6-C3C675446B4C}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{E3D8EE56-0930-47C6-AF97-7744E3769C08}"
+          p:before="*"
+          s:ds="local:/Data/Intro Block"
+          s:id="{2DB261B1-AD36-49DE-8ADC-AC29E96FE20E}"
+          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7B4A4F3B4F-F60C-458E-8744-F47455B728A9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{381EB4D7-DE94-45A4-9DC2-4FC583C99B37}"
+          p:after="r[@uid='{E3D8EE56-0930-47C6-AF97-7744E3769C08}']"
+          s:ds="local:/Data/Service Cards"
+          s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
+          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{C0CA0A4D-E049-482A-BBEA-F341984C48DC}"
+          p:after="r[@uid='{381EB4D7-DE94-45A4-9DC2-4FC583C99B37}']"
+          s:ds="local:/Data/Content Cards Slider"
+          s:id="{48202108-8993-4112-BB48-EA8210D338FE}"
+          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7B161AE91B-AB51-4856-9B3F-564D84419F7F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{239C1A02-B307-4F5A-B243-06BDF9852696}"
+          p:after="r[@uid='{C0CA0A4D-E049-482A-BBEA-F341984C48DC}']"
+          s:ds="local:/Data/Patient stories"
+          s:id="{CD8E122B-EEF0-4172-9020-DE23AE20CDC5}"
+          s:par="GridParameters&amp;FieldNames=%7B442459D1-E007-4F26-B6BB-A1289883689B%7D&amp;Styles&amp;RenderingIdentifier=EQTRHCA59&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{EE9955D2-EC8E-4CDC-9152-3076B5B636F0}"
+          p:after="*[1=2]"
+          s:ds="local:/Data/Doctor cards"
+          s:id="{C02783CF-B67E-4849-88ED-8B324CA0089A}"
+          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7BA25B0FC1-5D1F-45E5-8861-6863E390B8F5%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231201T184328Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Home
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8d9b00b6-7f46-4fbf-8db2-eccdf0a64ab4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231205T092943Z
+    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Hint: Title
+      Value: Home

@@ -44,17 +44,19 @@ const performCopy = () => {
   }
 };
 
-let isWatching = false;
-performCopy(); // Run on initial script call
-// Then run on watched changes
-fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
-  if (isWatching) return;
-  isWatching = true;
-  if (eventType === 'change') {
-    console.log(`Change detected in ${fileName}`);
-    performCopy();
-  }
-  setTimeout(() => {
-    isWatching = false;
-  }, 500);
-});
+if (process.argv.includes('--watch')) {
+  let isWatching = false;
+  fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
+    if (isWatching) return;
+    isWatching = true;
+    if (eventType === 'change') {
+      console.log(`Change detected in ${fileName}`);
+      performCopy();
+    }
+    setTimeout(() => {
+      isWatching = false;
+    }, 500);
+  });
+} else {
+  performCopy();
+}

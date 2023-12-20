@@ -6,16 +6,16 @@
       {
         "name": "z HCA Project Mainsite site",
         "path": "/sitecore/content/HCA/HCA Main",
-        "rules": [         
+        "rules": [      
+		  {
+			"path": "/home/QA",
+			"scope": "ItemAndDescendants",
+			"allowedPushOperations": "CreateUpdateAndDelete"               
+          },		
           {
             "path": "/home",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
-          },
-		  {
-			"path": "/QA",
-			"scope": "ItemAndDescendants",
-			"allowedPushOperations": "CreateUpdateAndDelete"               
           },
           {
             "path": "/Media",
