@@ -1,8 +1,8 @@
 ﻿---
-ID: "e6d4ba6c-bc0a-43bb-9ef5-45225f261eb0"
+ID: "4291454a-d5d2-4f79-9dd4-5dd541dc8c3f"
 Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
 Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Pin
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Location
 Languages:
 - Language: en
   Versions:
@@ -21,7 +21,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9a4e0c77-dd91-44db-b670-57630fff7b43"
+      Value: "fe45d111-8440-47b9-8e53-45ca1a9624b9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -33,9 +33,9 @@ Languages:
       Hint: SvgMarkup
       Value: |
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Pin">
-        <path id="Vector" d="M20 10C20 14.418 12 22 12 22C12 22 4 14.418 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path id="Vector_2" d="M12 11C12.2652 11 12.5196 10.8946 12.7071 10.7071C12.8946 10.5196 13 10.2652 13 10C13 9.73478 12.8946 9.48043 12.7071 9.29289C12.5196 9.10536 12.2652 9 12 9C11.7348 9 11.4804 9.10536 11.2929 9.29289C11.1054 9.48043 11 9.73478 11 10C11 10.2652 11.1054 10.5196 11.2929 10.7071C11.4804 10.8946 11.7348 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="Location">
+        <path id="Vector" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+        <path id="Vector_2" d="M13.93 17.869C13.608 18.799 12.293 18.798 11.972 17.868L10.352 13.174L5.78196 11.231C4.87696 10.846 4.96796 9.533 5.91796 9.277L16.15 6.516C16.3318 6.46683 16.5237 6.4682 16.7049 6.51996C16.886 6.57171 17.0497 6.6719 17.1781 6.80973C17.3066 6.94756 17.3951 7.11781 17.434 7.30217C17.4729 7.48653 17.4608 7.67801 17.399 7.856L13.93 17.869Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
         </svg>
         

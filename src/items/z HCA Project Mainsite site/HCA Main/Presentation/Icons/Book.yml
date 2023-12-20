@@ -1,8 +1,8 @@
 ﻿---
-ID: "e6d4ba6c-bc0a-43bb-9ef5-45225f261eb0"
+ID: "58e74e44-2137-47fe-9f08-a3a4ec026ffb"
 Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
 Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Pin
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Book
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231220T174830Z
+      Value: 20231220T174826Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,21 +21,22 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9a4e0c77-dd91-44db-b670-57630fff7b43"
+      Value: "c6dea0e7-dbe3-40c2-8a4d-ee1bfb8b18ea"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231220T174830Z
+      Value: 20231220T174826Z
     - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
       Hint: SvgMarkup
       Value: |
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Pin">
-        <path id="Vector" d="M20 10C20 14.418 12 22 12 22C12 22 4 14.418 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path id="Vector_2" d="M12 11C12.2652 11 12.5196 10.8946 12.7071 10.7071C12.8946 10.5196 13 10.2652 13 10C13 9.73478 12.8946 9.48043 12.7071 9.29289C12.5196 9.10536 12.2652 9 12 9C11.7348 9 11.4804 9.10536 11.2929 9.29289C11.1054 9.48043 11 9.73478 11 10C11 10.2652 11.1054 10.5196 11.2929 10.7071C11.4804 10.8946 11.7348 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="Book">
+        <path id="Vector" d="M4 19V5C4 4.46957 4.21071 3.96086 4.58579 3.58579C4.96086 3.21071 5.46957 3 6 3H19.4C19.5591 3 19.7117 3.06321 19.8243 3.17574C19.9368 3.28826 20 3.44087 20 3.6V16.714M6 17H20M6 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_2" d="M6 21C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19C4 18.4696 4.21071 17.9609 4.58579 17.5858C4.96086 17.2107 5.46957 17 6 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_3" d="M9 7H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
         </svg>
         

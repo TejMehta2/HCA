@@ -1,8 +1,8 @@
 ﻿---
-ID: "e6d4ba6c-bc0a-43bb-9ef5-45225f261eb0"
+ID: "651ed938-03e5-46a7-a21f-dd9a829038e3"
 Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
 Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Pin
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Plus
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231220T174830Z
+      Value: 20231220T174831Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,21 +21,20 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9a4e0c77-dd91-44db-b670-57630fff7b43"
+      Value: "a6eb6704-fc49-4b81-b669-a95d6fcc75e7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231220T174830Z
+      Value: 20231220T174831Z
     - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
       Hint: SvgMarkup
       Value: |
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Pin">
-        <path id="Vector" d="M20 10C20 14.418 12 22 12 22C12 22 4 14.418 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path id="Vector_2" d="M12 11C12.2652 11 12.5196 10.8946 12.7071 10.7071C12.8946 10.5196 13 10.2652 13 10C13 9.73478 12.8946 9.48043 12.7071 9.29289C12.5196 9.10536 12.2652 9 12 9C11.7348 9 11.4804 9.10536 11.2929 9.29289C11.1054 9.48043 11 9.73478 11 10C11 10.2652 11.1054 10.5196 11.2929 10.7071C11.4804 10.8946 11.7348 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="Plus">
+        <path id="Vector" d="M6 12H12M12 12H18M12 12V6M12 12V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
         </svg>
         

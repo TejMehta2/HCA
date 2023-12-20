@@ -1,8 +1,8 @@
 ﻿---
-ID: "e6d4ba6c-bc0a-43bb-9ef5-45225f261eb0"
+ID: "17a515f8-3aca-4c01-8653-485979c82b50"
 Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
 Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Pin
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Linkedin
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231220T174830Z
+      Value: 20231220T174829Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,21 +21,21 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9a4e0c77-dd91-44db-b670-57630fff7b43"
+      Value: "f23c8e7c-980d-4221-b5f6-e38fc9022c0d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231220T174830Z
+      Value: 20231220T174829Z
     - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
       Hint: SvgMarkup
       Value: |
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Pin">
-        <path id="Vector" d="M20 10C20 14.418 12 22 12 22C12 22 4 14.418 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path id="Vector_2" d="M12 11C12.2652 11 12.5196 10.8946 12.7071 10.7071C12.8946 10.5196 13 10.2652 13 10C13 9.73478 12.8946 9.48043 12.7071 9.29289C12.5196 9.10536 12.2652 9 12 9C11.7348 9 11.4804 9.10536 11.2929 9.29289C11.1054 9.48043 11 9.73478 11 10C11 10.2652 11.1054 10.5196 11.2929 10.7071C11.4804 10.8946 11.7348 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="Linkedin">
+        <path id="Vector" d="M6.52865 4.12657C6.52865 5.30106 5.65619 6.25314 4.22181 6.25314C2.87246 6.25131 2 5.30106 2 4.12657C2 2.95209 2.90018 2 4.27911 2C5.65804 2 6.50092 2.92268 6.52865 4.12657ZM2.11275 21.6078V7.92941H6.38817V21.6078H2.11275Z" fill="currentColor"/>
+        <path id="Vector_2" d="M8.9464 12.2928C8.9464 10.5872 8.89094 9.16088 8.83364 7.92941H12.5471L12.7449 9.83175H12.8299C13.3919 8.93664 14.7708 7.62247 17.0776 7.62247C19.8909 7.62247 22 9.49723 22 13.5243V21.6079H17.7246V14.0279C17.7246 12.2653 17.1054 11.0632 15.5582 11.0632C14.3771 11.0632 13.6747 11.8738 13.3641 12.6568C13.2514 12.9361 13.2237 13.3276 13.2237 13.7191V21.606H8.94824V12.291L8.9464 12.2928Z" fill="currentColor"/>
         </g>
         </svg>
         
