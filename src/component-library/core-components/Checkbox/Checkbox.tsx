@@ -1,4 +1,4 @@
-import React, { useId, useRef, useState, useEffect, ChangeEvent } from 'react';
+import React, { useRef, useState, useEffect, ChangeEvent } from 'react';
 import { CheckboxProps } from './Checkbox.types';
 import styles from './Checkbox.module.scss';
 
@@ -22,7 +22,8 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   useEffect(() => {
     setIndeterminateState(indeterminate);
-  }, [indeterminate]);
+    setcheckedState(checked);
+  }, [indeterminate, checked]);
 
   if (checkboxRef && checkboxRef.current) {
     checkboxRef.current.indeterminate = indeterminateState;
@@ -32,8 +33,6 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     setcheckedState(!checkedState);
     onChange && onChange(e);
   };
-
-  //const id = useId();
 
   return (
     <div className={styles.wrapper}>

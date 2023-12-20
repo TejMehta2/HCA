@@ -1,4 +1,4 @@
-import React, { ReactNode, ChangeEvent, useState } from 'react';
+import React, { ReactNode, ChangeEvent, useState, useEffect } from 'react';
 import { NestedCheckboxesProps } from './NestedCheckboxes.types';
 import Checkbox from '../Checkbox/Checkbox';
 
@@ -9,16 +9,54 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
 
   const childList: ReactNode[] | JSX.Element[] = [];
 
+  const [checkboxes, setCheckboxes] = useState([]);
+  const [indeterminate, setIndeterminate] = useState(false);
+  const [mainChecked, setMainChecked] = useState(false);
+
+  useEffect(() => {
+    const checkboxList = [];
+    items[0]?.subItems.map((item) => {
+      checkboxList.push(item);
+    });
+
+    setCheckboxes(checkboxList);
+  }, [items]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const listApartFromCurrent = childList.filter(
-      (item) => item && item.props.children.props.id !== e.target.id
+    //  update nested checkbox list
+    const updateCheckboxes = checkboxes.map((item) => {
+      if (item.id === e.target.id) {
+        const targetChecked = e.target.checked;
+        return { ...item, checked: targetChecked };
+      }
+      return item;
+    });
+
+    setCheckboxes(updateCheckboxes);
+
+    //  determine if indeterminate
+
+    const checkboxListLength: number = updateCheckboxes.length;
+    const checkedNestedItems = updateCheckboxes.filter(
+      (item) => item.checked === true
     );
-    const listApartFromCurrentCheckedCount = listApartFromCurrent.filter(
-      (item) => item && item.props.children.props.checked === true
-    );
-    console.log(listApartFromCurrent);
-    console.log(listApartFromCurrentCheckedCount);
-    childList.map((item) => console.log(item.props.children.props.checked));
+
+    if (
+      checkedNestedItems.length < checkboxListLength &&
+      checkedNestedItems.length > 0
+    ) {
+      setIndeterminate(true);
+    } else {
+      setIndeterminate(false);
+    }
+
+    //  dertermine if main checkbox is checked
+
+    if (checkedNestedItems.length === checkboxListLength) {
+      setMainChecked(true);
+    } else if (checkedNestedItems.length === 0) {
+      setMainChecked(false);
+    }
   };
 
   items[0]?.subItems.map((item, index) => {
@@ -47,6 +85,8 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
           label={mainCheckbox.label}
           name={mainCheckbox.name}
           value={mainCheckbox.value}
+          indeterminate={indeterminate}
+          checked={mainChecked}
         />
 
         <ul>{childList}</ul>
