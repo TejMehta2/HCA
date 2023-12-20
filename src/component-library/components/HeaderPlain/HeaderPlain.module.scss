@@ -37,4 +37,6 @@
 
 .body-copy {
   grid-row-start: 3;
+
+  @include apply-body-large;
 }
