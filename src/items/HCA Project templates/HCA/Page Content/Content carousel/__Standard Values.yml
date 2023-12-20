@@ -1,0 +1,27 @@
+﻿---
+ID: "a9399e80-432a-4794-8c56-bed3492d9c43"
+Parent: "ef01f14f-abaa-450a-94c4-d6f9d681f4de"
+Template: "ef01f14f-abaa-450a-94c4-d6f9d681f4de"
+Path: /sitecore/templates/Project/HCA/Page Content/Content carousel/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{FEAA953E-FEDC-4191-A1C0-36992F53D08A}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T082925Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "389d6ed3-7a6d-4521-a467-6242d5319ba7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231219T083008Z

@@ -1,0 +1,38 @@
+﻿---
+ID: "66d4963c-148e-40eb-a03d-e868b37d6e18"
+Parent: "5e798c0d-385b-410e-9f5a-2b3326924a9e"
+Template: "d043ac13-964d-4351-9cfc-2ec430980925"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Home/Data/Service Cards
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "164cae5b-071a-456a-be6b-7613241c9599"
+      Hint: Description
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T091408Z
+    - ID: "7ee31b61-dda1-4893-8d00-3eaf1c608b7e"
+      Hint: Heading
+      Value: Our service lines
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f4f77a4f-e80c-4347-9074-8433888e2c06"
+    - ID: "8da1a961-cc60-4ab4-a214-19e099f6e302"
+      Hint: Services
+      Value: |
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "c105a5a2-141b-4090-808e-fa24176aaf31"
+      Hint: Title
+      Value: Exceptional care you can trust
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231204T130013Z
