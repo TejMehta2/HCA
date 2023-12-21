@@ -43,6 +43,10 @@ docker pull "$($sitecoreDockerRegistry)sitecore-xmcloud-cm:$($sitecoreVersion)"
 Write-Host "Running npm i" -ForegroundColor Green
 npm i
 
+# Run npm hcamain:leprechaun
+Write-Host "Running npm run hcamain:leprechaun" -ForegroundColor Green
+npm run hcamain:leprechaun
+
 # Build all containers in the Sitecore instance, forcing a pull of latest base containers
 Write-Host "Building containers..." -ForegroundColor Green
 docker compose build

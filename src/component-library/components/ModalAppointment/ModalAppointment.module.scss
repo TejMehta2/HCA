@@ -59,9 +59,15 @@
   }
 
   .cta {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: px-to-rem(8);
+
+    button,
+    a {
+      width: 100%;
+      justify-content: center;
+    }
+
     @include media(screen-m, max) {
       // Overrides Button component responsive padding from spacing variable
       button,
@@ -71,7 +77,7 @@
       }
     }
     @include media(screen-m) {
-      align-items: center;
+      justify-content: center;
     }
   }
 }
