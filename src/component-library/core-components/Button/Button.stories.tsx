@@ -3,6 +3,8 @@ import Button from './Button';
 import Icons from '../../foundation/Icons/Icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import Themes from '../../foundation/Themes/Themes';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
   title: 'core-components/Button',
@@ -31,6 +33,14 @@ export const LargeFullDark: StoryObj<typeof Button> = {
     ),
     theme: 'full-dark',
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="f">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const LargeFullLight: StoryObj<typeof Button> = {
@@ -45,6 +55,15 @@ export const LargeFullLight: StoryObj<typeof Button> = {
     ),
     theme: 'full-light',
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
+
   parameters: {
     backgrounds: {
       default: 'dark-blue',
@@ -66,6 +85,14 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
     ),
     theme: 'outline-dark',
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="f">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const LargeOutlineLight: StoryObj<typeof Button> = {
@@ -88,6 +115,14 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const SmallFullDark: StoryObj<typeof Button> = {
@@ -103,6 +138,14 @@ export const SmallFullDark: StoryObj<typeof Button> = {
     ),
     theme: 'full-dark',
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="f">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const SmallFullLight: StoryObj<typeof Button> = {
@@ -125,6 +168,14 @@ export const SmallFullLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const SmallOutlineDark: StoryObj<typeof Button> = {
@@ -162,6 +213,14 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const SmallFullLightBlue: StoryObj<typeof Button> = {
@@ -213,6 +272,14 @@ export const SocialLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <div style={{ background: '#112f34' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const loading = true;
@@ -260,6 +327,14 @@ export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <div style={{ background: '#112f34' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const HoverCarouselButton: StoryObj<typeof Button> = {
