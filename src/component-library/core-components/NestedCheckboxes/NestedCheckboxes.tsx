@@ -1,5 +1,6 @@
 import React, { ReactNode, ChangeEvent, useState, useEffect } from 'react';
 import { NestedCheckboxesProps } from './NestedCheckboxes.types';
+import { CheckboxProps } from '../Checkbox/Checkbox.types';
 import Checkbox from '../Checkbox/Checkbox';
 
 import styles from './NestedCheckboxes.module.scss';
@@ -9,12 +10,12 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
 
   const childList: ReactNode[] | JSX.Element[] = [];
 
-  const [checkboxes, setCheckboxes] = useState([]);
+  const [checkboxes, setCheckboxes] = useState<CheckboxProps[]>([]);
   const [indeterminate, setIndeterminate] = useState(false);
   const [mainChecked, setMainChecked] = useState(false);
 
   useEffect(() => {
-    const checkboxList = [];
+    const checkboxList: CheckboxProps[] = [];
     items[0]?.subItems.map((item) => {
       checkboxList.push(item);
     });
@@ -22,9 +23,9 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
     setCheckboxes(checkboxList);
   }, [items]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleNestedCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     //  update nested checkbox list
-    const updateCheckboxes = checkboxes.map((item) => {
+    const updateCheckboxes = checkboxes.map((item: CheckboxProps) => {
       if (item.id === e.target.id) {
         const targetChecked = e.target.checked;
         return { ...item, checked: targetChecked };
@@ -59,7 +60,38 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
     }
   };
 
-  items[0]?.subItems.map((item, index) => {
+  const handleMainCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //  if indeterminate set all nested checkboxes to unchecked
+    if (indeterminate === true) {
+      setIndeterminate(false);
+      setMainChecked(false);
+
+      const updateNestedCheckboxes = checkboxes.map((item: CheckboxProps) => {
+        return { ...item, checked: false };
+      });
+      setCheckboxes(updateNestedCheckboxes);
+    } else if (e.target.checked === true) {
+      // if main checkbox is checked set all nested checkboxes to checked
+      setMainChecked(true);
+
+      const updateNestedCheckboxes = checkboxes.map((item: CheckboxProps) => {
+        return { ...item, checked: true };
+      });
+
+      setCheckboxes(updateNestedCheckboxes);
+    } else {
+      //  if main checkbox is unchecked set all nested checkboxes to unchecked
+      setMainChecked(false);
+
+      const updateNestedCheckboxes = checkboxes.map((item: CheckboxProps) => {
+        return { ...item, checked: false };
+      });
+
+      setCheckboxes(updateNestedCheckboxes);
+    }
+  };
+
+  checkboxes.map((item, index) => {
     const listItem = (
       <li key={index}>
         <Checkbox
@@ -67,7 +99,7 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
           label={item.label}
           name={item.name}
           value={item.value}
-          onChange={handleChange}
+          onChange={handleNestedCheckboxChange}
           checked={item.checked}
         />
       </li>
@@ -87,6 +119,7 @@ const NestedCheckboxes = (props: NestedCheckboxesProps): JSX.Element => {
           value={mainCheckbox.value}
           indeterminate={indeterminate}
           checked={mainChecked}
+          onChange={handleMainCheckboxChange}
         />
 
         <ul>{childList}</ul>

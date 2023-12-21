@@ -4,12 +4,15 @@ import Checkbox from './Checkbox';
 import { CheckboxProps } from './Checkbox.types';
 
 const mockProps: CheckboxProps = {
-  label: 'Hello world',
+  label: 'Checkbox',
+  id: '1',
+  name: 'example',
+  value: 'example',
 };
 
 describe('Checkbox', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<Checkbox {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Checkbox')).toBeVisible();
   });
 });

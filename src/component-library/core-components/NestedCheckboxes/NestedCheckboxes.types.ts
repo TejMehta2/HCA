@@ -7,5 +7,4 @@ export interface NestedCheckboxesSubItemsProps {
 
 export interface NestedCheckboxesProps {
   items: NestedCheckboxesSubItemsProps[];
-  compute: (id: string | number, newStatus: string) => void;
 }

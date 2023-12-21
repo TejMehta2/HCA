@@ -12,7 +12,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     disabled,
     indeterminate = false,
     onChange,
-    checked,
+    checked = false,
   } = props;
 
   const [indeterminateState, setIndeterminateState] = useState(false);

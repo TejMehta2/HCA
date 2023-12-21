@@ -1,8 +1,5 @@
-import React from 'react';
 import NestedCheckboxes from './NestedCheckboxes';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import Checkbox from '../Checkbox/Checkbox';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof NestedCheckboxes> = {
@@ -31,23 +28,20 @@ export const Default: StoryObj<typeof NestedCheckboxes> = {
           {
             id: '1',
             label: 'Example 1',
-            name: 'example-1',
+            name: 'example',
             value: 'example-1',
-            checked: false,
           },
           {
             id: '2',
             label: 'Example 2',
-            name: 'example-2',
+            name: 'example',
             value: 'example-2',
-            checked: false,
           },
           {
             id: '3',
             label: 'Example 3',
-            name: 'example-3',
+            name: 'example',
             value: 'example-3',
-            checked: false,
           },
         ],
       },
