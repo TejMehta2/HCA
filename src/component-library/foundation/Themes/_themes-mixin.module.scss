@@ -148,7 +148,7 @@
   @include apply-shared-theme-light;
 
   --background: #{$coral-60};
-  --card-background: #{$white};
+  --card-background: #{$coral-5};
   @include apply-tag-coral;
   @include apply-tabs-white;
   @include apply-pagination-coral-5;
