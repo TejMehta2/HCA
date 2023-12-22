@@ -98,7 +98,7 @@
   @include apply-shared-theme-light;
 
   --background: #{$green-40};
-  --card-background: #{$white};
+  --card-background: #{$green-10};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-10;
@@ -118,7 +118,7 @@
   @include apply-shared-theme-light;
 
   --background: #{$main-turquoise-20};
-  --card-background: #{$white};
+  --card-background: #{$main-turquoise-5};
   @include apply-tag-light-blue;
   @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
