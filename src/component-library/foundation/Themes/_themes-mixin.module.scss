@@ -39,7 +39,6 @@
 
   --background: #{$main-turquoise};
   --card-background: #{$main-turquoise-10};
-  --card-background-blog: #{$white};
   @include apply-tag-blue;
   @include apply-tabs-white;
   @include apply-pagination-turquoise-10;
@@ -50,7 +49,6 @@
 
   --background: #{$green};
   --card-background: #{$green-20};
-  --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-20;
@@ -61,7 +59,6 @@
 
   --background: #{$beige};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-white;
@@ -72,7 +69,6 @@
 
   --background: #{$light-orange};
   --card-background: #{$beige};
-  --card-background-blog: #{$white};
   @include apply-tag-orange;
   @include apply-tabs-white;
   @include apply-pagination-beige-60;
@@ -83,7 +79,6 @@
 
   --background: #{$dark-blue};
   --card-background: #{$dark-blue-80};
-  --card-background-blog: #{$dark-blue-80};
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
   @include apply-pagination-grey;
@@ -94,7 +89,6 @@
 
   --background: #{$white};
   --card-background: #{$beige};
-  --card-background-blog: #{$beige};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-orange;
@@ -105,7 +99,6 @@
 
   --background: #{$green-40};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-10;
@@ -116,9 +109,8 @@
 
   --background: #{$green-20};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-green;
   @include apply-pagination-green;
 }
 
@@ -127,9 +119,8 @@
 
   --background: #{$main-turquoise-20};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -138,9 +129,8 @@
 
   --background: #{$main-turquoise-10};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -149,9 +139,8 @@
 
   --background: #{$main-turquoise-5};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -160,7 +149,6 @@
 
   --background: #{$coral-60};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
   @include apply-tag-coral;
   @include apply-tabs-white;
   @include apply-pagination-coral-5;
