@@ -15,3 +15,13 @@
   --tab-active-text: #{$dark-blue};
   --tab-background: #{$main-turquoise-10};
 }
+@mixin apply-tabs-turquoise {
+  --tab-text: #{$dark-blue};
+  --tab-active-text: #{$dark-blue};
+  --tab-background: #{$main-turquoise};
+}
+@mixin apply-tabs-green {
+  --tab-text: #{$dark-blue};
+  --tab-active-text: #{$dark-blue};
+  --tab-background: #{$green};
+}
