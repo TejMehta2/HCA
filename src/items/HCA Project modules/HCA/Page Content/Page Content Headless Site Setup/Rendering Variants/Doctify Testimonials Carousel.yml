@@ -1,95 +1,21 @@
 ﻿---
-ID: "cd8e122b-eef0-4172-9020-de23ae20cdc5"
-Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
-Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Patient stories
+ID: "48afbb78-b821-4e40-949f-888e9ae2f321"
+Parent: "5b062fc3-248d-4a39-aceb-b7800359f535"
+Template: "3aea335c-d06d-45b1-841a-cbc8d2d1ce40"
+Path: /sitecore/system/Settings/Project/HCA/Page Content/Page Content Headless Site Setup/Rendering Variants/Doctify Testimonials Carousel
 SharedFields:
-- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
-  Hint: componentName
-  Value: PatientStories
-- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
-  Hint: Placeholders
-  Value: 
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
-  Value: |
-    query GetPatientStory($datasource: String!, $language: String!) {
-      item(path: $datasource, language: $language) {
-        ... on PatientStories {
-          title {
-            jsonValue
-          }
-          text {
-            jsonValue
-          }
-          cardCTAText {
-            jsonValue  
-          }
-          cTAIcon {
-            Icon: targetItem {
-              ... on HCAIcon {
-                svgMarkup {
-                  value
-                }
-              }
-            }
-          }
-          cTALink {        
-            jsonValue  
-          }
-          stories {
-            StoriesList: targetItems {
-              url {
-                url
-              }
-              ... on PatientStoryPage {
-                title {
-                  value
-                }
-                description {
-                  value
-                }
-                date {
-                  value
-                }
-               image {   
-                  jsonValue                         
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    
-- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
-  Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Patient stories
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
-- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
-  Hint: __Read Only
-  Value: 
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{BE4CCE0D-9280-4084-B5EB-52E962A574CA}"
-- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
-  Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Patient stories Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Patient stories Folder']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
-  Value: |
-    <image mediaid="{085375F9-D10D-4A21-9713-6895C75A40F0}" />
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "52c91c75-6698-4701-a8a2-242ace59a8d6"
+  Hint: Location
+  Value: "{C6F65339-F4DA-40FA-88D1-E1ECFFD54B91}"
+- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
+  Hint: Name
+  Value: Doctify Testimonials Carousel
+- ID: "ad0e8de7-f6c1-49fa-b2c4-87e10fbdaa52"
+  Hint: Fields
+  Value: __Icon=Office%2F32x32%2Fwindow_dialog.png
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Value: "{52764FC1-C4A7-4D4E-B14A-B716B9B4E9D7}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -126,21 +52,21 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20211019T093905Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\JssImport
+        sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a2d134e8-3d50-4b72-b846-995ac6670b3e"
+      Value: "786f5ad3-4481-4355-afa6-160f37fa5347"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240102T143149Z
+      Value: 20231228T092503Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
