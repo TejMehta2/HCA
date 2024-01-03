@@ -1,7 +1,7 @@
 import React from 'react';
 import CardGrid from './CardGrid';
 import type { Meta, StoryObj } from '@storybook/react';
-import CardPatientStories from '../CardPatientStories/CardPatientStories';
+import CardContent from '../CardContent/CardContent';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 
@@ -21,7 +21,7 @@ export default meta;
 const defaultChildren = [];
 for (let i = 0; i < 9; i++) {
   defaultChildren.push(
-    <CardPatientStories
+    <CardContent
       key={i}
       title={
         <Text variation="heading-1" tag="h4">
@@ -64,7 +64,7 @@ export const TwoCards: StoryObj<typeof CardGrid> = {
   args: {
     theme: 'a',
     children: [
-      <CardPatientStories
+      <CardContent
         key={0}
         title={
           <Text variation="heading-1" tag="h4">
@@ -93,7 +93,7 @@ export const TwoCards: StoryObj<typeof CardGrid> = {
           </a>
         }
       />,
-      <CardPatientStories
+      <CardContent
         key={1}
         title={
           <Text variation="heading-1" tag="h4">
@@ -129,7 +129,7 @@ export const TwoCards: StoryObj<typeof CardGrid> = {
 const noImageChildren = [];
 for (let i = 0; i < 9; i++) {
   noImageChildren.push(
-    <CardPatientStories
+    <CardContent
       key={i}
       title={
         <Text variation="heading-1" tag="h4">
@@ -162,7 +162,7 @@ export const NoImage: StoryObj<typeof CardGrid> = {
 const noBodyChildren = [];
 for (let i = 0; i < 9; i++) {
   noBodyChildren.push(
-    <CardPatientStories
+    <CardContent
       key={i}
       title={
         <Text variation="heading-1" tag="h4">

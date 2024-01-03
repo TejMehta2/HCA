@@ -1,0 +1,80 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardBlockStories from './CardBlock.stories'
+
+<Meta of={CardBlockStories} />
+
+# CardBlock
+
+## Description
+
+The CardBlock component is design to present a variety of different Card components in a grid format.
+
+It is intended to be used in as page level component.
+
+The variation prop dictates the type of layout presented: `side-by-side`, `3-columns` or `4-columns`.
+
+It can take the following card components as children:
+
+- BlogCard
+- PatientStoriesCard
+- DoctorCard
+- ContentCard
+- LocationCard
+
+It can be composed like this:
+
+``` tsx
+<CardBlock
+  title={
+    <Text variation={'display-2'} tag="h2">
+      Blog Card Block
+    </Text>
+  }
+  subtitle={
+    <Text variation={'subheading-1'} tag="h2">
+      Meta title
+    </Text>
+  }
+  copy={
+    <Text variation={'body-large'} tag="p">
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
+      mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
+      eiusmod ullamco eu esse laborum deserunt et officia reprehenderit.
+      Aliquip laboris duis ex labore veniam labore do nostrud minim labore
+      eiusmod voluptate sit commodo officia. Commodo tempor tempor magna
+      deserunt sunt dolore dolore.
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size={'large'} theme={'full'}>
+        <a href="#">
+          Learn more about <strong>self-pay</strong>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          Access care with <strong>insurance</strong>
+        </a>
+      </TextButton>
+    </>
+  }
+  >
+  <CardBlog>
+    <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+    <Text variation="heading-2" tag="h3">
+      <a href="#">
+        The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+      </a>
+    </Text>
+    <Text variation="body-large">
+      There are over 1400 at The Portland, each year. Hear new mums sharing
+      theirs
+    </Text>
+    <Tags>
+      <a href="#">Announcement</a>
+    </Tags>
+  </CardBlog>
+  {/* ... other cards */}
+</CardBlock>
+```

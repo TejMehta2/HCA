@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  background-color: var(--background);
+  background-color: var(--card-background);
   color: var(--text);
   border-radius: $radius-small;
   overflow: hidden;

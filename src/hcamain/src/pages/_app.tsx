@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { I18nProvider } from 'next-localization';
 import { SitecorePageProps } from 'lib/page-props';
 import '@component-library/globals/index.scss';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 function App({
   Component,
@@ -14,7 +15,9 @@ function App({
     // Note Next.js does not (currently) provide anything for translation, only i18n routing.
     // If your app is not multilingual, next-localization and references to it can be removed.
     <I18nProvider lngDict={dictionary} locale={pageProps.locale}>
-      <Component {...rest} />
+      <Themes theme={'j'}>
+        <Component {...rest} />
+      </Themes>
     </I18nProvider>
   );
 }

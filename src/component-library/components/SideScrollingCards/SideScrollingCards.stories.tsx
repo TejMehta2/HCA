@@ -52,7 +52,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
         }
         image={
           <Image
-            src="/side-scrolling-placeholder.png"
+            src="/placeholders/crying-baby.png"
             alt="baby crying"
             width="456"
             height="253"
@@ -81,7 +81,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
         }
         image={
           <Image
-            src="/side-scrolling-placeholder.png"
+            src="/placeholders/crying-baby.png"
             alt="baby crying"
             width="456"
             height="253"
@@ -110,7 +110,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
         }
         image={
           <Image
-            src="/side-scrolling-placeholder.png"
+            src="/placeholders/crying-baby.png"
             alt="baby crying"
             width="456"
             height="253"
@@ -139,7 +139,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
         }
         image={
           <Image
-            src="/side-scrolling-placeholder.png"
+            src="/placeholders/crying-baby.png"
             alt="baby crying"
             width="456"
             height="253"
