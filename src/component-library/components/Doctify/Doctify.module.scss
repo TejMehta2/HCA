@@ -8,26 +8,6 @@
   gap: px-to-rem(8) 0;
   width: fit-content;
   position: relative;
-
-  &.light {
-    .light-logo {
-      display: block;
-    }
-
-    .dark-logo {
-      display: none;
-    }
-  }
-
-  &.dark {
-    .light-logo {
-      display: none;
-    }
-
-    .dark-logo {
-      display: block;
-    }
-  }
 }
 
 .link {

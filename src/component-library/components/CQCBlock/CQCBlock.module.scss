@@ -41,6 +41,14 @@
   }
 }
 
+div[class*='Themes_f'] {
+  .wrapper {
+    &.light {
+      border: 1px solid $dark-blue-9;
+    }
+  }
+}
+
 .link {
   a {
     position: absolute;
