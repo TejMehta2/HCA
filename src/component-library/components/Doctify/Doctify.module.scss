@@ -3,8 +3,7 @@
 
 .wrapper {
   color: var(--text);
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: px-to-rem(8) 0;
   width: fit-content;
   position: relative;
