@@ -30,6 +30,8 @@ const DoctifyTestimonialsCarouselDefaultComponent = (
   </div>
 );
 
-export const Default = (props: DoctifyTestimonialsCarouselProps): JSX.Element => {
+export const Default = (
+  props: DoctifyTestimonialsCarouselProps
+): JSX.Element => {
   return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
 };

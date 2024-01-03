@@ -1,5 +1,10 @@
 import React from 'react';
-import { Field, Placeholder, ComponentRendering, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  Placeholder,
+  ComponentRendering,
+  ImageField,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   Title: Field<string>;
@@ -28,6 +33,5 @@ const HeaderWithImageDefaultComponent = (
 };
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
-
   return <HeaderWithImageDefaultComponent {...props} />;
 };
