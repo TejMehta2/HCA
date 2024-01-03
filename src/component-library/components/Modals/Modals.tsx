@@ -93,7 +93,11 @@ const Modals = (
     >
       <Overlay />
       <div
-        className={[draggable, touchStart ? dragging : ''].join(' ')}
+        className={[
+          styles[variation],
+          draggable,
+          touchStart ? dragging : '',
+        ].join(' ')}
         style={{
           ['--touch-position' as string]: `${Math.max(
             0,
@@ -104,7 +108,7 @@ const Modals = (
         onTouchMove={touchMoveHandler}
         onTouchEnd={touchEndHandler}
       >
-        <div className={[modal, styles[variation]].join(' ')}>
+        <div className={modal}>
           <div className={handle}>
             <SvgHandle />
           </div>

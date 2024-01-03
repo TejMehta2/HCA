@@ -79,17 +79,27 @@
 
 .right {
   @include media(screen-m) {
-    border-radius: $radius-large 0 0 0;
-    min-width: px-to-rem(364);
-    top: px-to-rem(53);
-    width: auto;
-    right: 0;
+    transform: translate(100%, 0);
+
+    & > div:first-child {
+      border-radius: $radius-large 0 0 0;
+      min-width: px-to-rem(364);
+      top: px-to-rem(53);
+      width: auto;
+      right: 0;
+    }
+
+    dialog[open] & {
+      transform: translate(0, 0);
+    }
   }
 }
 
 .full {
   @include media(screen-l) {
-    top: px-to-rem(87);
+    & > div:first-child {
+      top: px-to-rem(87);
+    }
   }
 }
 

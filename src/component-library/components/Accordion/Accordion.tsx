@@ -4,7 +4,14 @@ import styles from './Accordion.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 
 const Accordion = (props: AccordionProps): JSX.Element => {
-  const { children, title, isActive, onShow } = props;
+  const {
+    children,
+    title,
+    isActive,
+    onShow,
+    openIcon = 'iconPlus',
+    closeIcon = 'iconMinus',
+  } = props;
 
   const accordionContentId = useId();
 
@@ -33,8 +40,8 @@ const Accordion = (props: AccordionProps): JSX.Element => {
       >
         {title}
         <span className={styles.toggle}>
-          <Icons iconName="iconMinus"></Icons>
-          <Icons iconName="iconPlus"></Icons>
+          <Icons iconName={closeIcon}></Icons>
+          <Icons iconName={openIcon}></Icons>
         </span>
       </button>
       <div className={styles.content} id={accordionContentId}>

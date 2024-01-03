@@ -1,0 +1,72 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  position: relative;
+
+  dialog {
+    div[class^='Modals_close'] {
+      top: px-to-rem(27);
+      right: px-to-rem(19);
+      background-color: $white;
+    }
+
+    div[class^='Modals_content'] {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: $radius-large 0 0 0;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-5 $spacing-5;
+  margin-bottom: $spacing-5;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-3 $spacing-5;
+  border-top: 1px solid $dark-blue-9;
+  position: sticky;
+  bottom: 0;
+  background-color: $white;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  gap: $spacing-5;
+  padding: 0 $spacing-5;
+
+  button[class^='Accordion_trigger'] {
+    padding: px-to-rem(16) 0;
+    border-top: 1px solid $dark-blue-9;
+  }
+
+  div[class^='Accordion_content'] {
+    padding: 0;
+
+    & > fieldset {
+      padding: 0 0 $spacing-5 0;
+    }
+  }
+
+  div[class^='Accordion_accordion'] {
+    background-color: transparent;
+
+    &:first-of-type {
+      button[class^='Accordion_trigger'] {
+        border: 0;
+      }
+    }
+  }
+}
