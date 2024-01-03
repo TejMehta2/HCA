@@ -19,7 +19,7 @@ export default meta;
 export const Default: StoryObj<typeof CardDoctorLayout> = {
   args: {
     title: (
-      <Text variation="display-5" tag="h2">
+      <Text variation="display-3" tag="h2">
         Hip pain consultants
       </Text>
     ),
@@ -35,7 +35,7 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
           />
         }
         title={
-          <Text variation="display-3" tag="h3">
+          <Text variation="display-5" tag="h3">
             John Smith
           </Text>
         }
@@ -59,7 +59,7 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
           />
         }
         title={
-          <Text variation="display-3" tag="h2">
+          <Text variation="display-5" tag="h2">
             John Smith
           </Text>
         }
@@ -83,7 +83,7 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
           />
         }
         title={
-          <Text variation="display-3" tag="h2">
+          <Text variation="display-5" tag="h2">
             John Smith
           </Text>
         }
@@ -107,7 +107,7 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
           />
         }
         title={
-          <Text variation="display-3" tag="h2">
+          <Text variation="display-5" tag="h2">
             John Smith
           </Text>
         }
