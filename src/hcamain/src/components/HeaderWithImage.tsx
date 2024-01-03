@@ -24,11 +24,11 @@ const HeaderWithImageDefaultComponent = (
   const phKey = `CTAButton-${props.params.DynamicPlaceholderId}`;
   return (
     <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Header with image</span>
-      <Placeholder name={phKey} rendering={props.rendering} />
+      <div className="component-content">
+        <span className="is-empty-hint">Header with image</span>
+        <Placeholder name={phKey} rendering={props.rendering} />
+      </div>
     </div>
-  </div>
   );
 };
 
