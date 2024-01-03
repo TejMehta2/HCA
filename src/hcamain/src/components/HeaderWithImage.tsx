@@ -21,7 +21,7 @@ type HeaderWithImageProps = {
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
-  const phKey = `CTAButton-${props.params.DynamicPlaceholderId}`;
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
