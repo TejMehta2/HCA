@@ -1,18 +1,18 @@
 ﻿---
-ID: "b791330d-3cf2-4c11-a07f-5a29d392c972"
+ID: "be0ce91d-874a-4f9c-8418-6c173f5593af"
 Parent: "b1b16383-93ae-4128-bc61-74abca8696f0"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/HeadingParameters/Content/Heading Size
+Path: /sitecore/templates/Project/HCA/Foundation/HeadingParameters/Content/HeadingTag
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: /sitecore/content/HCA/HCA Main/Presentation/Heading Size
+  Value: /sitecore/content/HCA/HCA Main/Presentation/Heading Tags
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -31,7 +31,7 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d338ed4e-9a18-4351-bbc1-473a3afe5c3f"
+      Value: "31ebb4ef-6400-41cc-895f-ce14eea3779d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

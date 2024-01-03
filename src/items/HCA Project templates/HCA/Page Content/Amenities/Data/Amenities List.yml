@@ -2,7 +2,7 @@
 ID: "5455a723-12c3-4842-8008-268c45cf5ed9"
 Parent: "883f9e64-7e30-43fb-8e4a-d22123bf132d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Amenities/Data/Amenities
+Path: /sitecore/templates/Project/HCA/Page Content/Amenities/Data/Amenities List
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
