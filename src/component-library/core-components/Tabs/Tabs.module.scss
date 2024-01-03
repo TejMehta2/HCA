@@ -45,14 +45,6 @@
     }
   }
 
-  input {
-    @include sr-only;
-
-    &:checked + label {
-      color: var(--tab-active-text);
-    }
-  }
-
   label {
     // Imported styles
     @include apply-body-semi-bold-extra-large;
@@ -81,6 +73,14 @@
     // Focus
     :focus + & {
       outline-color: var(--tab-text);
+    }
+  }
+
+  input {
+    @include sr-only;
+
+    &:checked + label {
+      color: var(--tab-active-text);
     }
   }
 }
