@@ -103,7 +103,8 @@
 
 .hr {
   margin: 0;
-  border-color: var(--text-date);
+  border-color: $dark-blue-60;
+  border-style: solid;
 }
 
 .columns {
