@@ -36,7 +36,7 @@ const mockProps: SideScrollingCardsProps = {
         }
         image={
           <Image
-            src="/side-scrolling-placeholder.png"
+            src="/placeholders/crying-baby.png"
             alt="baby crying"
             width="456"
             height="253"

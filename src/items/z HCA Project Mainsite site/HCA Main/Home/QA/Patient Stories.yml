@@ -1,0 +1,31 @@
+﻿---
+ID: "f4a0cbd8-dc65-4b9c-8c4e-2a7e23ce52a3"
+Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
+Template: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Patient Stories
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{B7BA40E4-F38F-4D62-BD01-979BE59453D2}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T090851Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: Patient Stories
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "aa7ffaa3-d062-4e45-b91a-9fe4bee32692"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231204T090851Z

@@ -87,24 +87,31 @@
           );
         opacity: 0;
       }
+    }
+  }
 
-      &:hover {
+  /* Hover on container, adjust child elements */
+  &:hover {
+    .link {
+      a {
         &::before {
           opacity: 0;
         }
+      }
+    }
 
+    .link {
+      a {
         &::after {
           opacity: 1;
         }
       }
     }
 
-    &:hover {
-      & ~ div {
-        a {
-          &::after {
-            width: 0;
-          }
+    div:nth-of-type(2) {
+      a {
+        &::after {
+          width: 0;
         }
       }
     }

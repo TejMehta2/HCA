@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface CardLocationProps {
   image?: ReactNode | JSX.Element;
@@ -11,5 +10,4 @@ export interface CardLocationProps {
     button2: ReactNode | JSX.Element;
     close?: ReactNode | JSX.Element;
   };
-  theme: Theme;
 }

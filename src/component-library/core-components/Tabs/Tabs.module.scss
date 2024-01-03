@@ -47,6 +47,10 @@
 
   input {
     @include sr-only;
+
+    &:checked + label {
+      color: var(--tab-active-text);
+    }
   }
 
   label {
@@ -77,10 +81,6 @@
     // Focus
     :focus + & {
       outline-color: var(--tab-text);
-    }
-
-    :checked + & {
-      color: var(--tab-active-text);
     }
   }
 }

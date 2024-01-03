@@ -15,12 +15,12 @@
 }
 
 .light {
-  border: 4px solid $dark-blue-9;
+  border: px-to-rem(3) solid $dark-blue-9;
   border-bottom-color: $dark-blue;
 }
 
 .dark {
-  border: 4px solid $dark-blue-60;
+  border: px-to-rem(3) solid $dark-blue-60;
   border-bottom-color: $white;
 }
 

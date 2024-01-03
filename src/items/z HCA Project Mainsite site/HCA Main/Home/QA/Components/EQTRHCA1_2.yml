@@ -1,0 +1,58 @@
+﻿---
+ID: "a40aa402-2414-44ad-a672-fde82397f26f"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA1_2
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{F2595246-B1E8-4237-A606-267E06C7DE15}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{C18BA240-1E8A-4A78-88D6-BC01B823F32B}"
+          s:ds="{966E5739-9EE8-4378-8D0A-3BFDAF2CE3EE}"
+          s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T072959Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA1_2
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "faada0fe-cc39-4151-b0a4-94261f2d7971"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231219T095224Z
+    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Hint: Title
+      Value: EQTRHCA1_2

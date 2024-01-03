@@ -74,22 +74,6 @@
   & > div {
     min-height: px-to-rem(608);
 
-    &:nth-of-type(4n + 1) {
-      background-color: $light-orange;
-    }
-
-    &:nth-of-type(4n + 2) {
-      background-color: $green-40;
-    }
-
-    &:nth-of-type(4n + 3) {
-      background-color: $light-orange-40;
-    }
-
-    &:nth-of-type(4n + 4) {
-      background-color: $main-turquoise-20;
-    }
-
     @include media(screen-l) {
       width: px-to-rem(456);
       height: unset;
@@ -98,5 +82,7 @@
     @include media(screen-xl) {
       width: px-to-rem(533);
     }
+
+    border-radius: 0;
   }
 }

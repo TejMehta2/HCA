@@ -9,7 +9,6 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-import Themes from '@component-library/foundation/Themes/Themes';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 
@@ -54,24 +53,22 @@ export const Default = (props: PromoProps): JSX.Element => {
               </div>
             </div>
             <div className="field-promolink">
-              <Themes theme="a">
-                <CardBlog>
-                  <a>Test link</a>
-                  <Tags>
-                    <a href="#">Test tag</a>
-                  </Tags>
-                </CardBlog>
-                <Button size={'small'} theme={'outline'}>
-                  <JssLink field={props.fields.PromoLink}>
-                    Themed outline button
-                  </JssLink>
-                </Button>
-                <Button size={'small'} theme={'full'}>
-                  <JssLink field={props.fields.PromoLink}>
-                    Themed full button
-                  </JssLink>
-                </Button>
-              </Themes>
+              <CardBlog>
+                <a>Test link</a>
+                <Tags>
+                  <a href="#">Test tag</a>
+                </Tags>
+              </CardBlog>
+              <Button size={'small'} theme={'outline'}>
+                <JssLink field={props.fields.PromoLink}>
+                  Themed outline button
+                </JssLink>
+              </Button>
+              <Button size={'small'} theme={'full'}>
+                <JssLink field={props.fields.PromoLink}>
+                  Themed full button
+                </JssLink>
+              </Button>
             </div>
           </div>
         </div>

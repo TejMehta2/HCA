@@ -1,7 +1,7 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-@mixin apply-hover-transition($hoverColor) {
+@mixin apply-hover-transition($initialBackgroundColor, $hoverColor) {
   position: relative;
   background-clip: padding-box;
   z-index: 1;
@@ -18,6 +18,18 @@
     border-radius: $radius-large;
     z-index: -1;
     box-sizing: border-box;
+  }
+
+  &::after {
+    width: calc(100% + px-to-rem(2));
+    height: calc(100% + px-to-rem(2));
+    display: inline-block;
+    content: '';
+    position: absolute;
+    left: 0;
+    border-radius: $radius-large;
+    background-color: $initialBackgroundColor;
+    z-index: -2;
   }
 
   &:hover {
@@ -37,6 +49,7 @@
   a {
     text-decoration: none;
     width: max-content;
+
     @include media(screen-m, max) {
       width: 100%;
       text-align: center;
@@ -45,7 +58,6 @@
   }
 
   button {
-    background: unset;
     border: 0;
     cursor: inherit;
   }
@@ -59,6 +71,7 @@
     gap: px-to-rem(8);
     padding: 0;
     color: inherit;
+    position: relative;
 
     @include apply-body-large;
 
@@ -113,11 +126,13 @@
   &-light {
     a,
     button {
-      background-color: var(--cta-full-background);
       color: var(--cta-full-text);
       border: 1px solid var(--cta-full-border);
 
-      @include apply-hover-transition(var(--cta-full-hover-background));
+      @include apply-hover-transition(
+        var(--cta-full-background),
+        var(--background)
+      );
 
       &:hover {
         color: var(--cta-full-hover-text);
@@ -153,7 +168,10 @@
       color: var(--cta-full-text);
       border: var(--cta-full-border);
 
-      @include apply-hover-transition(var(--cta-full-hover-background));
+      @include apply-hover-transition(
+        var(--cta-full-hover-background),
+        var(--background)
+      );
 
       &:active {
         background-color: var(--cta-full-disabled-text);
@@ -185,11 +203,13 @@
   &-light {
     a,
     button {
-      background-color: var(--cta-outline-background);
       color: var(--cta-outline-text);
       border: 1px solid var(--cta-outline-border);
 
-      @include apply-hover-transition(var(--cta-outline-hover-background));
+      @include apply-hover-transition(
+        var(--background),
+        var(--cta-outline-hover-background)
+      );
 
       &:hover {
         color: var(--cta-outline-hover-text);

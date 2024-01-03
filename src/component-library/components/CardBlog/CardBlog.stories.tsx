@@ -24,6 +24,44 @@ export const Default: StoryObj<typeof CardBlog> = {
     children: (
       <>
         <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+        <Text tag="h3" variation="heading-2">
+          <a href="#">
+            The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+          </a>
+        </Text>
+        <Text variation="body-large">
+          There are over 1400 at The Portland, each year. Hear new mums sharing
+          theirs
+        </Text>
+        <Tags>
+          <a href="#">Announcement</a>
+        </Tags>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="a">
+        <div style={{ background: 'var(--background)', padding: '1rem' }}>
+          <Story />
+        </div>
+      </Themes>
+    ),
+  ],
+};
+
+export const Featured: StoryObj<typeof CardBlog> = {
+  args: {
+    variation: 'feature',
+    children: (
+      <>
+        <Image
+          src="/placeholders/image-and-text-component-placeholder.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
         <Text tag="h3" variation="display-5">
           <a href="#">
             The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
@@ -49,6 +87,7 @@ export const Default: StoryObj<typeof CardBlog> = {
     ),
   ],
 };
+
 export const WithImage: StoryObj<typeof CardBlog> = {
   args: {
     children: (
@@ -60,7 +99,7 @@ export const WithImage: StoryObj<typeof CardBlog> = {
           height="605"
         />
         <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-        <Text tag="h3" variation="display-5">
+        <Text tag="h3" variation="heading-2">
           <a href="#">
             The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
           </a>
