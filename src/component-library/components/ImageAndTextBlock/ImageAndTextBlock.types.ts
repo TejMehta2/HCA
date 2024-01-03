@@ -16,4 +16,5 @@ export interface ImageAndTextBlockProps {
   imageAlignment?: imageAlignmentTypes;
   length?: lengthTypes;
   theme: Theme;
+  ratings: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
 }

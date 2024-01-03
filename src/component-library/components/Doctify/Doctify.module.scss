@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: var(--doctify-text);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   gap: px-to-rem(8) 0;
@@ -10,8 +10,6 @@
   position: relative;
 
   &.light {
-    @include apply-doctify-light;
-
     .light-logo {
       display: block;
     }
@@ -22,8 +20,6 @@
   }
 
   &.dark {
-    @include apply-doctify-dark;
-
     .light-logo {
       display: none;
     }

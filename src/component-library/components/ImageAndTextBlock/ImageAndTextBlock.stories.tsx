@@ -3,6 +3,9 @@ import ImageAndTextBlock from './ImageAndTextBlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
+import Doctify from '../Doctify/Doctify';
+import CQCBlock from '../CQCBlock/CQCBlock';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ImageAndTextBlock> = {
@@ -130,5 +133,97 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
         </button>
       ),
     },
+  },
+};
+
+export const Rating: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'f',
+    length: 'short',
+    image: (
+      <Image
+        src="/placeholders/image-and-text-component-rating-placeholder.jpg"
+        alt="hospital building"
+        width="643"
+        height="605"
+      />
+    ),
+
+    header: (
+      <Text tag="h2" variation="display-2">
+        New to private healthcare?
+      </Text>
+    ),
+    children: (
+      <>
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      </>
+    ),
+
+    subheader: (
+      <Text tag="h3" variation="subheading-1">
+        payment plans
+      </Text>
+    ),
+
+    ratings: [
+      <Doctify
+        key={1}
+        alignment="left"
+        link={<a href="#"></a>}
+        rating={4}
+        reviews="13,500 +"
+        logo={{
+          dark: (
+            <Image
+              src="/doctify-dark.png"
+              alt="doctify logo"
+              width="83"
+              height="21"
+            />
+          ),
+          light: (
+            <Image
+              src="/doctify-light.png"
+              alt="doctify logo"
+              width="83"
+              height="21"
+            />
+          ),
+        }}
+      />,
+
+      <CQCBlock
+        key={2}
+        link={<a href="#">CQCBlock</a>}
+        theme="light"
+        rating="Outstanding"
+        icon={<Icons iconName="iconCheckCircle"></Icons>}
+        logo={{
+          dark: (
+            <Image
+              src="/cqc-white.png"
+              alt="cqc logo"
+              width="120"
+              height="37"
+            />
+          ),
+          light: (
+            <Image
+              src="/cqc-color.png"
+              alt="cqc logo"
+              width="120"
+              height="37"
+            />
+          ),
+        }}
+      />,
+    ],
   },
 };
