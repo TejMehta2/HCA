@@ -1,9 +1,9 @@
 import React from 'react';
 import Pagination from './Pagination';
 import type { Meta, StoryObj } from '@storybook/react';
-import CardPatientStories from '../CardPatientStories/CardPatientStories';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
+import CardContent from '../CardContent/CardContent';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Pagination> = {
@@ -18,10 +18,10 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-const data = [];
+const data: JSX.Element[] = [];
 for (let i = 0; i < 24; i++) {
   data.push(
-    <CardPatientStories
+    <CardContent
       key={i}
       title={
         <Text variation="heading-1" tag="h4">
@@ -53,11 +53,24 @@ for (let i = 0; i < 24; i++) {
   );
 }
 
+const itemsPerPage = 6;
+const totalItems = data.length;
+const pageCount = Math.ceil(totalItems / itemsPerPage);
+
+/* Mock callback function for fetching data (Will be API on sitecore integration) */
+const getPageContent = (page: number) => {
+  const indexOfLastItem = page * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  return data.slice(indexOfFirstItem, indexOfLastItem);
+};
+
 export const Default: StoryObj<typeof Pagination> = {
   args: {
     theme: 'f',
-    itemsPerPage: 6,
-    currentPage: 1,
-    data: data,
+    pageCount: pageCount,
+    data: getPageContent(1),
+    callback: (newPage: number) => {
+      return getPageContent(newPage);
+    },
   },
 };

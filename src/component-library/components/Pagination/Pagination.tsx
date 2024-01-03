@@ -2,8 +2,8 @@ import React, {
   useCallback,
   useEffect,
   useState,
-  /* useRef,
-  useLayoutEffect, */
+  useRef,
+  useLayoutEffect,
 } from 'react';
 import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';
@@ -12,27 +12,25 @@ import Icons from '../../foundation/Icons/Icons';
 import CardGrid from '../CardGrid/CardGrid';
 
 const Pagination = (props: PaginationProps): JSX.Element => {
-  const { theme, itemsPerPage, currentPage = 1, data } = props;
+  const { theme, pageCount, currentPage = 1, data, callback } = props;
   const [page, setPage] = useState(currentPage);
-  //const [offsetLeft, setOffsetLeft] = useState(0);
+  const [offsetLeft, setOffsetLeft] = useState(0);
+  const [pageContent, setPageContent] = useState(data);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
 
-  const totalItems = data.length;
-  const pageCount = Math.ceil(totalItems / itemsPerPage);
-
-  /* Get list of items to show on page */
-  const indexOfLastItem = page * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
+  /* changing page */
   const pageChangeHandler = useCallback(
     (newPage: number) => {
+      /* dont run if going above or below min & max pages */
       if (newPage < 1 || newPage > pageCount) {
         return;
       }
+
+      /* Set new page and fetch new page content */
       setPage(newPage);
+      setPageContent(callback(newPage));
     },
-    [pageCount]
+    [pageCount, callback]
   );
 
   /* Individual page button */
@@ -53,6 +51,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     [page, pageChangeHandler]
   );
 
+  /* Create page buttons */
   const paginationHandler = useCallback(
     (current: number, max: number) => {
       if (!current || !max) {
@@ -76,12 +75,9 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       This is always 1 unless near the start or end of page list */
       let range = 1;
 
-      if (
-        current === 1 ||
-        current === 2 ||
-        current === max ||
-        current === max - 1
-      ) {
+      if (current === 1 || current === max) {
+        range = 3;
+      } else if (current === 2 || current === max - 1) {
         range = 2;
       }
 
@@ -114,7 +110,8 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     [generateButton]
   );
 
-  /* const containerRef = useRef<HTMLDivElement>(null);
+  /* Get OffsetLeft of current page so that background can be positioned correctly */
+  const containerRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const currentElements = Array.from(containerRef.current!.children);
 
@@ -122,8 +119,12 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       return;
     }
 
-    console.log(currentElements);
-  }, [containerRef, pageButtons]); */
+    currentElements?.map((buttonElement: HTMLElement) => {
+      if (buttonElement.classList.contains(styles['current-page'])) {
+        setOffsetLeft(buttonElement.offsetLeft);
+      }
+    });
+  }, [containerRef, pageButtons]);
 
   useEffect(() => {
     paginationHandler(page, pageCount);
@@ -132,32 +133,36 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
-        <div
-          className={styles.container}
-          /* ref={containerRef} */
-          /* style={{
-            // consumed in the CSS to animate the background element
-            ['--current-tab-offset-left' as string]: `${tabDimensions?.[currentTabIndex]?.offsetLeft}px`,
-          }} */
-        >
-          <button
-            className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
-            onClick={() => pageChangeHandler(page - 1)}
+        <div className={styles.container}>
+          <div
+            className={styles.buttons}
+            ref={containerRef}
+            style={{
+              // consumed in the CSS to animate the background element
+              ['--current-page-offset-left' as string]: `${offsetLeft}px`,
+            }}
           >
-            <Icons iconName="iconArrowLeft" />
-          </button>
-          {pageButtons}
-          <button
-            className={`${styles['arrow']} ${
-              page === pageCount ? styles['hide'] : ''
-            }`}
-            onClick={() => pageChangeHandler(page + 1)}
-          >
-            <Icons iconName="iconArrowRight" />
-          </button>
-        </div>
-        <div>
-          <CardGrid theme={theme}>{currentItems}</CardGrid>
+            <button
+              className={`${styles['arrow']} ${
+                page === 1 ? styles['hide'] : ''
+              }`}
+              onClick={() => pageChangeHandler(page - 1)}
+            >
+              <Icons iconName="iconArrowSmallLeft" />
+            </button>
+            {pageButtons}
+            <button
+              className={`${styles['arrow']} ${
+                page === pageCount ? styles['hide'] : ''
+              }`}
+              onClick={() => pageChangeHandler(page + 1)}
+            >
+              <Icons iconName="iconArrowSmallRight" />
+            </button>
+          </div>
+          <div>
+            <CardGrid theme={theme}>{pageContent}</CardGrid>
+          </div>
         </div>
       </div>
     </Themes>

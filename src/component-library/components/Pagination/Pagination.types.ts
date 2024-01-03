@@ -2,7 +2,8 @@ import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface PaginationProps {
   theme: Theme;
-  itemsPerPage: number;
-  currentPage: number;
+  pageCount: number;
+  currentPage?: number;
   data: JSX.Element[];
+  callback: (page: number) => JSX.Element[];
 }
