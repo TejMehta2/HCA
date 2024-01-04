@@ -2,36 +2,11 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: var(--doctify-text);
-  display: flex;
-  flex-direction: column;
+  color: var(--text);
+  display: grid;
   gap: px-to-rem(8) 0;
   width: fit-content;
   position: relative;
-
-  &.light {
-    @include apply-doctify-light;
-
-    .light-logo {
-      display: block;
-    }
-
-    .dark-logo {
-      display: none;
-    }
-  }
-
-  &.dark {
-    @include apply-doctify-dark;
-
-    .light-logo {
-      display: none;
-    }
-
-    .dark-logo {
-      display: block;
-    }
-  }
 }
 
 .link {

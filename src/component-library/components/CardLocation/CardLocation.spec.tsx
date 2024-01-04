@@ -5,7 +5,6 @@ import { CardLocationProps } from './CardLocation.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CardLocationProps = {
-  theme: 'j',
   title: (
     <Text tag="h3" variation="heading-1">
       The Harley Street Clinic

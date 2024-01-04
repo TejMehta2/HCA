@@ -8,12 +8,12 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$dark-blue};
   --card-body-text: #{$dark-blue-10};
+
   @include apply-cta-full-light;
   @include apply-cta-social-light;
   @include apply-cta-outline-light;
   @include apply-tag-secondary-green;
   @include apply-cqc-dark;
-  @include apply-doctify-light;
   @include apply-text-buttons-light;
   @include apply-text-link-light;
 }
@@ -24,12 +24,12 @@
   --card-secondary-background: #{$dark-blue};
   --card-secondary-text: #{$white};
   --card-body-text: #{$dark-blue-60};
+
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
   @include apply-cta-outline-dark;
   @include apply-tag-secondary-dark-blue;
   @include apply-cqc-light;
-  @include apply-doctify-dark;
   @include apply-text-buttons-dark;
   @include apply-text-link-dark;
 }
@@ -39,7 +39,8 @@
 
   --background: #{$main-turquoise};
   --card-background: #{$main-turquoise-10};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-blue;
   @include apply-tabs-white;
   @include apply-pagination-turquoise-10;
@@ -50,7 +51,8 @@
 
   --background: #{$green};
   --card-background: #{$green-20};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-20;
@@ -61,7 +63,8 @@
 
   --background: #{$beige};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$dark-blue-20};
+  --doctify-full-star: #{$coral};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-white;
@@ -72,7 +75,8 @@
 
   --background: #{$light-orange};
   --card-background: #{$beige};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-orange;
   @include apply-tabs-white;
   @include apply-pagination-beige-60;
@@ -83,7 +87,9 @@
 
   --background: #{$dark-blue};
   --card-background: #{$dark-blue-80};
-  --card-background-blog: #{$dark-blue-80};
+  --doctify-full-star: #{$main-turquoise};
+  --doctify-empty-star: #{$white};
+
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
   @include apply-pagination-grey;
@@ -94,7 +100,9 @@
 
   --background: #{$white};
   --card-background: #{$beige};
-  --card-background-blog: #{$beige};
+  --doctify-empty-star: #{$dark-blue-9};
+  --doctify-full-star: #{$coral};
+  --cqc-outline: #{$dark-blue-9};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-orange;
@@ -104,8 +112,9 @@
   @include apply-shared-theme-light;
 
   --background: #{$green-40};
-  --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --card-background: #{$green-10};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-10;
@@ -116,9 +125,10 @@
 
   --background: #{$green-20};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-green;
   @include apply-pagination-green;
 }
 
@@ -126,10 +136,11 @@
   @include apply-shared-theme-light;
 
   --background: #{$main-turquoise-20};
-  --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --card-background: #{$main-turquoise-5};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -138,9 +149,10 @@
 
   --background: #{$main-turquoise-10};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -149,9 +161,10 @@
 
   --background: #{$main-turquoise-5};
   --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --doctify-empty-star: #{$dark-blue-20};
+  --doctify-full-star: #{$main-turquoise-120};
   @include apply-tag-light-blue;
-  @include apply-tabs-white;
+  @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
@@ -159,8 +172,9 @@
   @include apply-shared-theme-light;
 
   --background: #{$coral-60};
-  --card-background: #{$white};
-  --card-background-blog: #{$white};
+  --card-background: #{$coral-5};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$dark-blue};
   @include apply-tag-coral;
   @include apply-tabs-white;
   @include apply-pagination-coral-5;

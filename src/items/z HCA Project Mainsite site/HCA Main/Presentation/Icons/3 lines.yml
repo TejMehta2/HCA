@@ -1,0 +1,40 @@
+﻿---
+ID: "f53bc710-c981-445a-9b20-69aa7fe0a9fe"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/3 lines
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231220T174824Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "27948161-7dd7-43d7-b125-17dc108ebe42"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231220T174825Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SvgMarkup
+      Value: |
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="3 lines">
+        <path id="Vector" d="M3 5H21M3 12H21M3 19H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        </svg>
+        

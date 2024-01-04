@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Accordions from '../Accordions/Accordions';
-import { AccordionsProps } from '../Accordions/Accordions.types';
+import Accordions from '../../site-components/Accordions/Accordions';
+import { AccordionsProps } from '../../site-components/Accordions/Accordions.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: AccordionsProps = {

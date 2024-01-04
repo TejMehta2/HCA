@@ -4,9 +4,7 @@ import Icons from '../../foundation/Icons/Icons';
 import styles from './Doctify.module.scss';
 
 const Doctify = (props: DoctifyProps): JSX.Element => {
-  const { rating, reviews, logo, link, theme, alignment } = props;
-
-  const themeOveride = theme ? styles[theme] : '';
+  const { rating, reviews, logo, link, alignment } = props;
 
   const stars = [];
   const inactiveStars = [];
@@ -24,7 +22,7 @@ const Doctify = (props: DoctifyProps): JSX.Element => {
   }
 
   return (
-    <div className={[styles.wrapper, styles[rating], themeOveride].join(' ')}>
+    <div className={[styles.wrapper, styles[rating]].join(' ')}>
       <div className={styles.link}>{link}</div>
       <div className={styles['review-container']}>
         <span className={styles.rating}>

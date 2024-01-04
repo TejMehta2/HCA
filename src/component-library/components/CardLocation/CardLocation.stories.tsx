@@ -19,7 +19,6 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CardLocation> = {
   args: {
-    theme: 'j',
     image: (
       <Image
         src="/placeholders/location-card.jpg"
@@ -64,7 +63,6 @@ export const Default: StoryObj<typeof CardLocation> = {
 
 export const NoImage: StoryObj<typeof CardLocation> = {
   args: {
-    theme: 'j',
     title: (
       <Text tag="h3" variation="heading-1">
         The Harley Street Clinic
@@ -101,7 +99,6 @@ export const NoImage: StoryObj<typeof CardLocation> = {
 
 export const NoDistance: StoryObj<typeof CardLocation> = {
   args: {
-    theme: 'j',
     title: (
       <Text tag="h3" variation="heading-1">
         The Harley Street Clinic
@@ -133,7 +130,6 @@ export const NoDistance: StoryObj<typeof CardLocation> = {
 
 export const OnMap: StoryObj<typeof CardLocation> = {
   args: {
-    theme: 'j',
     title: (
       <Text tag="h3" variation="heading-2">
         The Harley Street Clinic

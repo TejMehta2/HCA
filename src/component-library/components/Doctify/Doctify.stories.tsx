@@ -2,6 +2,7 @@ import React from 'react';
 import Doctify from './Doctify';
 import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Doctify> = {
@@ -18,9 +19,8 @@ export default meta;
 export const Default: StoryObj<typeof Doctify> = {
   args: {
     link: <a href="#"></a>,
-    rating: 5,
+    rating: 4,
     reviews: '13,500 +',
-    theme: 'dark',
     logo: {
       dark: (
         <Image
@@ -41,12 +41,15 @@ export const Default: StoryObj<typeof Doctify> = {
     },
   },
 
-  parameters: {
-    backgrounds: {
-      default: 'main-turqoise',
-      values: [{ name: 'main-turqoise', value: '#77c7c3' }],
-    },
-  },
+  decorators: [
+    (Story) => (
+      <Themes theme="f">
+        <div style={{ background: 'var(--background)', padding: '1rem' }}>
+          <Story />
+        </div>
+      </Themes>
+    ),
+  ],
 };
 
 export const Light: StoryObj<typeof Doctify> = {
@@ -54,7 +57,6 @@ export const Light: StoryObj<typeof Doctify> = {
     link: <a href="#"></a>,
     rating: 4,
     reviews: '13,500 +',
-    theme: 'light',
     logo: {
       dark: (
         <Image
@@ -74,10 +76,14 @@ export const Light: StoryObj<typeof Doctify> = {
       ),
     },
   },
-  parameters: {
-    backgrounds: {
-      default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
-    },
-  },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <div style={{ background: 'var(--background)', padding: '1rem' }}>
+          <Story />
+        </div>
+      </Themes>
+    ),
+  ],
 };

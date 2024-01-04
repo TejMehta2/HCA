@@ -2,12 +2,11 @@
 
 @mixin apply-cqc-dark {
   --cqc-background: #{$dark-blue-80};
-  --cqc-text: #{$white};
   --cqc-focus-outline: #{$white};
 }
 
 @mixin apply-cqc-light {
   --cqc-background: #{$white};
-  --cqc-text: #{$dark-blue};
   --cqc-focus-outline: #{$dark-blue};
+  --cqc-outline: unset;
 }
