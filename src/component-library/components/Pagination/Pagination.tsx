@@ -31,6 +31,11 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       /* Set new page and fetch new page content */
       setPage(newPage);
       setPageContent(callback(newPage));
+
+      /* Scroll to top of component */
+      if (componentRef.current) {
+        componentRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     },
     [pageCount, callback, page]
   );
@@ -131,46 +136,33 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     paginationHandler(page, pageCount);
   }, [page, pageCount, paginationHandler]);
 
-  /* Scroll to top of component when page content changes */
-  useEffect(() => {
-    if (componentRef.current) {
-      componentRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [pageContent]);
-
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper} ref={componentRef}>
-        <div className={styles.container}>
-          <div>
-            <CardGrid theme={theme}>{pageContent}</CardGrid>
-          </div>
-          <div
-            className={styles.buttons}
-            ref={containerRef}
-            style={{
-              // consumed in the CSS to animate the background element
-              ['--current-page-offset-left' as string]: `${offsetLeft}px`,
-            }}
+        <CardGrid theme={theme}>{pageContent}</CardGrid>
+        <div
+          className={styles.buttons}
+          ref={containerRef}
+          style={{
+            // consumed in the CSS to animate the background element
+            ['--current-page-offset-left' as string]: `${offsetLeft}px`,
+          }}
+        >
+          <button
+            className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
+            onClick={() => pageChangeHandler(page - 1)}
           >
-            <button
-              className={`${styles['arrow']} ${
-                page === 1 ? styles['hide'] : ''
-              }`}
-              onClick={() => pageChangeHandler(page - 1)}
-            >
-              <Icons iconName="iconArrowSmallLeft" />
-            </button>
-            {pageButtons}
-            <button
-              className={`${styles['arrow']} ${
-                page === pageCount ? styles['hide'] : ''
-              }`}
-              onClick={() => pageChangeHandler(page + 1)}
-            >
-              <Icons iconName="iconArrowSmallRight" />
-            </button>
-          </div>
+            <Icons iconName="iconArrowSmallLeft" />
+          </button>
+          {pageButtons}
+          <button
+            className={`${styles['arrow']} ${
+              page === pageCount ? styles['hide'] : ''
+            }`}
+            onClick={() => pageChangeHandler(page + 1)}
+          >
+            <Icons iconName="iconArrowSmallRight" />
+          </button>
         </div>
       </div>
     </Themes>

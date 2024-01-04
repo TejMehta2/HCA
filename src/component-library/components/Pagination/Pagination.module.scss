@@ -5,10 +5,6 @@
   background-color: var(--background);
 }
 
-.container {
-  @include responsive-container;
-}
-
 .buttons {
   position: relative;
   display: flex;
