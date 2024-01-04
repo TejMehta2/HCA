@@ -69,6 +69,7 @@ describe('Pagination', () => {
     const { getByText } = render(<Pagination {...mockProps} />);
     expect(getByText('1Cardiac care')).toBeVisible();
   });
+
   it('Calls the callback function with the new page number', async () => {
     let pageNumber = 0;
     const callback = (newPage: number) => {
@@ -80,11 +81,12 @@ describe('Pagination', () => {
     );
 
     await act(async () => {
-      await getByText('2').click(); // Click the second item
+      await getByText('2').click(); // Click the second page
     });
 
     await expect(pageNumber).toBe(2);
   });
+
   it('Does not call the callback function when the current page number is clicked', async () => {
     let pageNumber = 0;
     const callback = (newPage: number) => {
