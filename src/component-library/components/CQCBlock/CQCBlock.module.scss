@@ -15,10 +15,7 @@
   gap: px-to-rem(8) 0;
   width: fit-content;
   position: relative;
-
-  &.light {
-    border: 1px solid var(--cqc-outline);
-  }
+  border: 1px solid var(--cqc-outline);
 }
 
 .link {
