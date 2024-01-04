@@ -6,7 +6,6 @@ import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 
 const mockProps: CQCBlockProps = {
-  theme: 'dark',
   logo: {
     dark: (
       <Image

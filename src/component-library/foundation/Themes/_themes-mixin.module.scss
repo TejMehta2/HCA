@@ -8,6 +8,7 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$dark-blue};
   --card-body-text: #{$dark-blue-10};
+
   @include apply-cta-full-light;
   @include apply-cta-social-light;
   @include apply-cta-outline-light;
@@ -23,6 +24,7 @@
   --card-secondary-background: #{$dark-blue};
   --card-secondary-text: #{$white};
   --card-body-text: #{$dark-blue-60};
+
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
   @include apply-cta-outline-dark;
@@ -87,6 +89,7 @@
   --card-background: #{$dark-blue-80};
   --doctify-full-star: #{$main-turquoise};
   --doctify-empty-star: #{$white};
+
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
   @include apply-pagination-grey;
@@ -99,6 +102,7 @@
   --card-background: #{$beige};
   --doctify-empty-star: #{$dark-blue-9};
   --doctify-full-star: #{$coral};
+  --cqc-outline: #{$dark-blue-9};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-orange;
