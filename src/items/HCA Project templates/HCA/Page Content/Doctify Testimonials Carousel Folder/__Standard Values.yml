@@ -1,0 +1,33 @@
+﻿---
+ID: "f7a3245a-2789-4199-8435-581acba5e853"
+Parent: "942a4fe9-93fc-4a33-b13e-e75044bb75b2"
+Template: "942a4fe9-93fc-4a33-b13e-e75044bb75b2"
+Path: /sitecore/templates/Project/HCA/Page Content/Doctify Testimonials Carousel Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {3ED835BE-C7A4-4F52-9E8A-F1DE2FABC7C3}
+    {942A4FE9-93FC-4A33-B13E-E75044BB75B2}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8be54569-3f57-440a-b44c-ccb68e0ae5a4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231228T092502Z
