@@ -50,7 +50,6 @@ const mockProps: HomepageIntroBlockProps = {
   ),
   cqc: (
     <CQCBlock
-      theme="light"
       link={<a href="#"></a>}
       title="Care Quality Commission verified"
       text="All our hospitals are rated Good or Oustanding."

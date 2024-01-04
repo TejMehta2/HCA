@@ -63,7 +63,6 @@ export const Default: StoryObj<typeof HomepageIntroBlock> = {
     ),
     cqc: (
       <CQCBlock
-        theme="light"
         link={<a href="#"></a>}
         title="Care Quality Commission verified"
         text="All our hospitals are rated Good or Oustanding."
@@ -162,7 +161,6 @@ export const ImageAlignmentLeft: StoryObj<typeof HomepageIntroBlock> = {
     ),
     cqc: (
       <CQCBlock
-        theme="light"
         link={<a href="#"></a>}
         title="Care Quality Commission verified"
         text="All our hospitals are rated Good or Oustanding."

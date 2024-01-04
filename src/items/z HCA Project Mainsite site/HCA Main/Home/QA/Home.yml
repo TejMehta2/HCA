@@ -24,7 +24,7 @@ SharedFields:
           s:ds="local:/Data/Intro Block"
           s:id="{2DB261B1-AD36-49DE-8ADC-AC29E96FE20E}"
           s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7B4A4F3B4F-F60C-458E-8744-F47455B728A9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-          s:ph="main"
+          s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
           uid="{381EB4D7-DE94-45A4-9DC2-4FC583C99B37}"
@@ -32,7 +32,7 @@ SharedFields:
           s:ds="local:/Data/Service Cards"
           s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
           s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-          s:ph="main"
+          s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
           uid="{C0CA0A4D-E049-482A-BBEA-F341984C48DC}"
@@ -40,7 +40,7 @@ SharedFields:
           s:ds="local:/Data/Content Cards Slider"
           s:id="{48202108-8993-4112-BB48-EA8210D338FE}"
           s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7B161AE91B-AB51-4856-9B3F-564D84419F7F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
-          s:ph="main"
+          s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
           uid="{239C1A02-B307-4F5A-B243-06BDF9852696}"
@@ -48,7 +48,7 @@ SharedFields:
           s:ds="local:/Data/Patient stories"
           s:id="{CD8E122B-EEF0-4172-9020-DE23AE20CDC5}"
           s:par="GridParameters&amp;FieldNames=%7B442459D1-E007-4F26-B6BB-A1289883689B%7D&amp;Styles&amp;RenderingIdentifier=EQTRHCA59&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-          s:ph="main"
+          s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
           uid="{EE9955D2-EC8E-4CDC-9152-3076B5B636F0}"
@@ -56,7 +56,7 @@ SharedFields:
           s:ds="local:/Data/Doctor cards"
           s:id="{C02783CF-B67E-4849-88ED-8B324CA0089A}"
           s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7BA25B0FC1-5D1F-45E5-8861-6863E390B8F5%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-          s:ph="main"
+          s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
     </r>
@@ -81,14 +81,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8d9b00b6-7f46-4fbf-8db2-eccdf0a64ab4"
+      Value: "7c6b3fb3-7a18-4e09-bc5c-1f8264283bae"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231205T092943Z
+      Value: 20231221T093251Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: Home
