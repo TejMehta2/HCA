@@ -100,7 +100,6 @@ export const Default: StoryObj<typeof Footer> = {
         reviews: [
           <CQCBlock
             link={<a href="#">CQCBlock</a>}
-            theme="dark"
             title="Care Quality Commission verified"
             text="All our hospitals are rated Good or Oustanding."
             icon={<Icons iconName="iconCheckCircle"></Icons>}

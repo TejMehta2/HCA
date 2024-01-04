@@ -202,7 +202,6 @@ export const Rating: StoryObj<typeof ImageAndTextBlock> = {
       <CQCBlock
         key={2}
         link={<a href="#">CQCBlock</a>}
-        theme="light"
         rating="Outstanding"
         icon={<Icons iconName="iconCheckCircle"></Icons>}
         logo={{
