@@ -12,7 +12,7 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
     text,
     rating,
     length = 'short',
-    theme,
+
     link,
   } = props;
 
@@ -23,12 +23,6 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
   //  medium screen breakpoint
   const isScreenM = useWindowWidth(600);
 
-  const themeOverride = theme
-    ? theme !== 'dark'
-      ? styles.light
-      : styles.dark
-    : '';
-
   return (
     <div
       className={[
@@ -36,7 +30,6 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
         styles[cqcLength],
         rating ? styles.rating : '',
         ratingClass ? styles[ratingClass] : '',
-        themeOverride,
       ].join(' ')}
     >
       <div className={styles.link}>{link}</div>

@@ -3,7 +3,7 @@
 
 .wrapper {
   background-color: var(--cqc-background);
-  color: var(--cqc-text);
+  color: var(--text);
   border-radius: $radius-small;
   padding: px-to-rem(16);
   display: grid;
@@ -15,30 +15,7 @@
   gap: px-to-rem(8) 0;
   width: fit-content;
   position: relative;
-
-  &.light {
-    @include apply-cqc-light;
-
-    .light-logo {
-      display: block;
-    }
-
-    .dark-logo {
-      display: none;
-    }
-  }
-
-  &.dark {
-    @include apply-cqc-dark;
-
-    .light-logo {
-      display: none;
-    }
-
-    .dark-logo {
-      display: block;
-    }
-  }
+  border: 1px solid var(--cqc-outline);
 }
 
 .link {
