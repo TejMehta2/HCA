@@ -6,12 +6,12 @@ import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
-import CQCBlock from '../CQCBlock/CQCBlock';
-import Doctify from '../Doctify/Doctify';
+import CQCBlock from '../../components/CQCBlock/CQCBlock';
+import Doctify from '../../components/Doctify/Doctify';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HeaderLocation> = {
-  title: 'components/HeaderLocation',
+  title: 'site-components/HeaderLocation',
   component: HeaderLocation,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout

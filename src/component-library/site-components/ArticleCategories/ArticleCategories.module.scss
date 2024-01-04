@@ -1,0 +1,27 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  padding: $spacing-10 0;
+}
+
+.container {
+  @include responsive-container;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  margin-top: $spacing-7;
+
+  > div {
+    width: 100%;
+
+    @include media(screen-m) {
+      width: auto;
+    }
+  }
+}

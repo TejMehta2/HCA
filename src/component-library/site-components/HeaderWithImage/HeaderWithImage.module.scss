@@ -1,0 +1,74 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
+
+.hero-with-image {
+  background-color: var(--background);
+  min-height: px-to-rem(560);
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+
+  @include media(screen-l, max) {
+    border-radius: 0 0 $radius-large 0;
+    margin-bottom: px-to-rem(32);
+  }
+  @include media(screen-xl) {
+    aspect-ratio: 1280/560; // to maintain scaling on svg mask effect, ratio based on design dimensions
+  }
+
+  .ctas {
+    // nested for increased specificity of a/button tag overrides
+    > *:not(:last-child) {
+      margin-bottom: $spacing-2;
+    }
+    @include media(screen-m) {
+      max-width: px-to-rem(304);
+    }
+    @include media(screen-l, max) {
+      a,
+      button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.inner {
+  height: 100%;
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+  @include responsive-grid;
+}
+
+.content {
+  @include responsive-grid-span(6, 5, 6, 6);
+
+  max-width: px-to-rem(535);
+}
+
+.shape {
+  position: absolute;
+  width: px-to-rem(500);
+  height: px-to-rem(500);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+.image {
+  @include diamond-image-mask;
+}
+
+.title {
+  margin-bottom: $spacing-5;
+}
+
+.copy {
+  margin-bottom: $spacing-5;
+}
