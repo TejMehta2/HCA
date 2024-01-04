@@ -17,12 +17,14 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [pageContent, setPageContent] = useState(data);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
+  const componentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   /* changing page */
   const pageChangeHandler = useCallback(
     (newPage: number) => {
-      /* dont run if going above or below min & max pages */
-      if (newPage < 1 || newPage > pageCount) {
+      /* dont run if going above or below min & max pages or if same as current page */
+      if (newPage < 1 || newPage > pageCount || newPage === page) {
         return;
       }
 
@@ -30,7 +32,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       setPage(newPage);
       setPageContent(callback(newPage));
     },
-    [pageCount, callback]
+    [pageCount, callback, page]
   );
 
   /* Individual page button */
@@ -111,7 +113,6 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   );
 
   /* Get OffsetLeft of current page so that background can be positioned correctly */
-  const containerRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const currentElements = Array.from(containerRef.current!.children);
 
@@ -130,10 +131,20 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     paginationHandler(page, pageCount);
   }, [page, pageCount, paginationHandler]);
 
+  /* Scroll to top of component when page content changes */
+  useEffect(() => {
+    if (componentRef.current) {
+      componentRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [pageContent]);
+
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} ref={componentRef}>
         <div className={styles.container}>
+          <div>
+            <CardGrid theme={theme}>{pageContent}</CardGrid>
+          </div>
           <div
             className={styles.buttons}
             ref={containerRef}
@@ -159,9 +170,6 @@ const Pagination = (props: PaginationProps): JSX.Element => {
             >
               <Icons iconName="iconArrowSmallRight" />
             </button>
-          </div>
-          <div>
-            <CardGrid theme={theme}>{pageContent}</CardGrid>
           </div>
         </div>
       </div>
