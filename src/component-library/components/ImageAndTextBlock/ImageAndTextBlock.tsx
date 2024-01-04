@@ -16,6 +16,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     imageAlignment = 'left',
     length = 'short',
     theme,
+    ratings,
   } = props;
 
   const isXl = useWindowWidth(1440);
@@ -55,6 +56,8 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                     ))}
                 </div>
               )}
+
+              {ratings && <div className={styles.ratings}>{ratings}</div>}
             </div>
           </div>
         </div>

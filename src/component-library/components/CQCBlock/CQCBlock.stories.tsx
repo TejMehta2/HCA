@@ -3,6 +3,7 @@ import CQCBlock from './CQCBlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CQCBlock> = {
@@ -18,7 +19,6 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Short: StoryObj<typeof CQCBlock> = {
   args: {
-    theme: 'dark',
     logo: {
       dark: (
         <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
@@ -32,11 +32,18 @@ export const Short: StoryObj<typeof CQCBlock> = {
     icon: <Icons iconName="iconCheckCircle"></Icons>,
     link: <a href="#"></a>,
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const Long: StoryObj<typeof CQCBlock> = {
   args: {
-    theme: 'light',
     length: 'long',
     logo: {
       dark: (
@@ -61,7 +68,6 @@ export const Long: StoryObj<typeof CQCBlock> = {
 
 export const Rating: StoryObj<typeof CQCBlock> = {
   args: {
-    theme: 'light',
     logo: {
       dark: (
         <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
@@ -74,17 +80,25 @@ export const Rating: StoryObj<typeof CQCBlock> = {
     rating: 'Outstanding',
     link: <a href="#"></a>,
   },
+
   parameters: {
     backgrounds: {
       default: 'dark-blue',
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="f">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const RatingDark: StoryObj<typeof CQCBlock> = {
   args: {
-    theme: 'dark',
     logo: {
       dark: (
         <Image src="/cqc-white.png" alt="cqc logo" width="120" height="37" />
@@ -97,4 +111,12 @@ export const RatingDark: StoryObj<typeof CQCBlock> = {
     rating: 'Outstanding',
     link: <a href="#"></a>,
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="e">
+        <Story />
+      </Themes>
+    ),
+  ],
 };

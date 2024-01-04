@@ -9,6 +9,5 @@ export interface CQCBlockProps {
   icon: ReactNode | JSX.Element;
   length?: 'short' | 'long';
   rating?: 'Outstanding' | 'Good' | 'Requires improvement' | 'Inadequate';
-  theme?: 'light' | 'dark';
   link: ReactNode | JSX.Element;
 }

@@ -88,7 +88,6 @@ const mockProps: FooterProps = {
       reviews: [
         <CQCBlock
           link={<a href="#">CQCBlock</a>}
-          theme="dark"
           title="Care Quality Commission verified"
           text="All our hospitals are rated Good or Oustanding."
           icon={<Icons iconName="iconCheckCircle"></Icons>}
@@ -113,7 +112,6 @@ const mockProps: FooterProps = {
         />,
         <CQCBlock
           link={<a href="#">CQCBlock2</a>}
-          theme="dark"
           title="Care Quality Commission"
           text="All our hospitals are rated Good or Oustanding."
           icon={<Icons iconName="iconCheckCircle"></Icons>}

@@ -7,7 +7,7 @@ import * as DoctifyStories from './Doctify.stories';
 
 ## Description
 
-The Doctify component is made up of a rating, a reviews count, and a logo. It can be aligned to the left, right or centre. It has theme styling for use on dark or light backgrounds or can be nested in a parent component using a Theme.
+The Doctify component is made up of a rating, a reviews count, and a logo. It can be aligned to the left, right or centre. It will set the text and star colors based on the parent theme.
 
 It is intended to be used in different parts of the site with one example being the footer.
 
@@ -18,7 +18,6 @@ It can be composed like this:
   link={<a href="#"></a>}
   rating={4}
   reviews="13,500 +"
-  theme="light"
   logo={{
     dark: (
       <Image

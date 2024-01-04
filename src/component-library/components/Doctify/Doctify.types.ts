@@ -8,6 +8,6 @@ export interface DoctifyProps {
     light: ReactNode | JSX.Element;
   };
   link: ReactNode | JSX.Element;
-  theme?: 'dark' | 'light';
+
   alignment?: 'left' | 'centre' | 'right';
 }
