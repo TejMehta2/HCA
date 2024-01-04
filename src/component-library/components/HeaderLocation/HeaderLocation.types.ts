@@ -19,5 +19,5 @@ export interface HeaderLocationProps {
   image: JSX.Element;
   theme: Extract<Theme, 'g' | 'h' | 'i' | 'j' | 'k'>;
   cqc?: JSX.Element;
-  doctify: JSX.Element;
+  doctify?: JSX.Element;
 }

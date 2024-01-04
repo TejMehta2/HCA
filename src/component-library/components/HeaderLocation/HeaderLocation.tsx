@@ -16,7 +16,7 @@ const HeaderLocation = (props: HeaderLocationProps): JSX.Element => {
   } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles['hero-with-image']}>
+      <div className={styles['hero-location']}>
         <div className={styles.inner}>
           <div className={styles.content}>
             <div className={styles['location-wrapper']}>

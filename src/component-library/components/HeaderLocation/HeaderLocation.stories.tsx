@@ -25,7 +25,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
   args: {
     title: (
       <Text variation="display-1" tag="h2">
-        Services lines
+        The Wellington Hospital
       </Text>
     ),
 
@@ -33,7 +33,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
       <Doctify
         alignment="left"
         link={<a href="#"></a>}
-        rating={5}
+        rating={4}
         reviews="13,500 +"
         logo={{
           dark: (
@@ -60,7 +60,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
       icon: <Icons iconName="iconPin"></Icons>,
       text: (
         <Text variation="body-large" tag="span">
-          Wellington Place St John's Wood London NW8 9LE
+          Wellington Place St John&apos;s Wood London NW8 9LE
         </Text>
       ),
       link: (
@@ -100,7 +100,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
     ),
     image: (
       <Image
-        src="/placeholders/lab-technician.jpeg"
+        src="/placeholders/header-location-placeholder.png"
         alt="lab technician"
         width="1024"
         height="683"

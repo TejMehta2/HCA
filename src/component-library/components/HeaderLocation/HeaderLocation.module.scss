@@ -1,19 +1,20 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
 
-.hero-with-image {
+.hero-location {
   background-color: var(--background);
-  min-height: px-to-rem(560);
   color: var(--text);
   overflow: hidden;
   position: relative;
 
   @include media(screen-l, max) {
+    min-height: px-to-rem(709);
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
   }
   @include media(screen-xl) {
-    aspect-ratio: 1280/560; // to maintain scaling on svg mask effect, ratio based on design dimensions
+    aspect-ratio: 1280/709; // to maintain scaling on svg mask effect, ratio based on design dimensions
   }
 
   .ctas {
@@ -38,9 +39,6 @@
       }
     }
 
-    @include media(screen-m) {
-      max-width: px-to-rem(304);
-    }
     @include media(screen-l, max) {
       a,
       button {
@@ -78,27 +76,7 @@
 }
 
 .image {
-  display: none;
-  @include media(screen-l) {
-    display: block;
-  }
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  mask: url('./assets/shape.svg');
-  mask-repeat: no-repeat;
-  mask-size: auto 180%;
-  mask-position: left;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-position: center left;
-    object-fit: cover;
-  }
+  @include diamond-image-mask;
 }
 
 .location-info {
@@ -140,7 +118,6 @@
 
 .cta-wrapper {
   display: flex;
-  flex-direction: column;
   flex-flow: column-reverse;
   gap: $spacing-6 0;
   margin-top: $spacing-6;
