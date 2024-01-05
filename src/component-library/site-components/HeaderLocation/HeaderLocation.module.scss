@@ -1,0 +1,138 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
+
+.hero-location {
+  background-color: var(--background);
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+
+  @include media(screen-l, max) {
+    min-height: px-to-rem(709);
+    border-radius: 0 0 $radius-large 0;
+    margin-bottom: px-to-rem(32);
+  }
+  @include media(screen-xl) {
+    aspect-ratio: 1280/709; // to maintain scaling on svg mask effect, ratio based on design dimensions
+  }
+
+  .ctas {
+    display: flex;
+    flex-direction: column;
+
+    @include media(screen-m) {
+      width: max-content;
+    }
+
+    > * {
+      width: 100%;
+
+      button,
+      a {
+        width: inherit;
+        justify-content: center;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: px-to-rem(4);
+      }
+    }
+
+    @include media(screen-l, max) {
+      a,
+      button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.inner {
+  height: 100%;
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+  @include responsive-grid;
+}
+
+.content {
+  @include responsive-grid-span(6, 5, 6, 6);
+
+  max-width: px-to-rem(535);
+}
+
+.shape {
+  position: absolute;
+  width: px-to-rem(500);
+  height: px-to-rem(500);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+.image {
+  @include diamond-image-mask;
+}
+
+.location-info {
+  display: grid;
+  grid: auto auto / 1fr;
+  gap: $spacing-5 0;
+
+  @include media(screen-l) {
+    display: grid;
+    grid: auto auto / 1.25fr 1fr;
+    gap: px-to-rem(8) px-to-rem(24);
+  }
+}
+
+.address {
+  display: grid;
+  gap: 0 px-to-rem(8);
+  grid: auto auto / max-content auto;
+}
+
+.address-details {
+  display: grid;
+  gap: px-to-rem(8) 0;
+}
+
+.open {
+  display: flex;
+  gap: 0 px-to-rem(8);
+}
+
+.location-wrapper {
+  display: grid;
+  gap: $spacing-6 0;
+
+  @include media(screen-m) {
+    gap: $spacing-5 0;
+  }
+}
+
+.cta-wrapper {
+  display: flex;
+  flex-flow: column-reverse;
+  gap: $spacing-6 0;
+  margin-top: $spacing-6;
+
+  @include media(screen-l) {
+    flex-flow: column;
+  }
+}
+
+.cqc {
+  & > div {
+    width: 100%;
+
+    @include media(screen-m) {
+      width: max-content;
+    }
+  }
+}

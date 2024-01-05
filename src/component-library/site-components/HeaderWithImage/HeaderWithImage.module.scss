@@ -1,5 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
 
 .hero-with-image {
   background-color: var(--background);
@@ -61,27 +62,7 @@
 }
 
 .image {
-  display: none;
-  @include media(screen-l) {
-    display: block;
-  }
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  mask: url('./assets/shape.svg');
-  mask-repeat: no-repeat;
-  mask-size: auto 180%;
-  mask-position: left;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-position: center left;
-    object-fit: cover;
-  }
+  @include diamond-image-mask;
 }
 
 .title {
