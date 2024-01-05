@@ -9,15 +9,12 @@ import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
-import CardGrid from '../CardGrid/CardGrid';
 
 const Pagination = (props: PaginationProps): JSX.Element => {
-  const { theme, pageCount, currentPage = 1, data, callback } = props;
+  const { theme, pageCount, currentPage = 1, callback } = props;
   const [page, setPage] = useState(currentPage);
   const [offsetLeft, setOffsetLeft] = useState(0);
-  const [pageContent, setPageContent] = useState(data);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
-  const componentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   /* changing page */
@@ -30,12 +27,8 @@ const Pagination = (props: PaginationProps): JSX.Element => {
 
       /* Set new page and fetch new page content */
       setPage(newPage);
-      setPageContent(callback(newPage));
-
-      /* Scroll to top of component */
-      if (componentRef.current) {
-        componentRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
+      //setPageContent(callback(newPage));
+      callback(newPage);
     },
     [pageCount, callback, page]
   );
@@ -138,8 +131,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
 
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper} ref={componentRef}>
-        <CardGrid theme={theme}>{pageContent}</CardGrid>
+      <div className={styles.wrapper}>
         <div
           className={styles.buttons}
           ref={containerRef}

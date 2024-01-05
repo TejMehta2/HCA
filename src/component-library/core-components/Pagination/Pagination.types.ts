@@ -4,6 +4,5 @@ export interface PaginationProps {
   theme: Theme;
   pageCount: number;
   currentPage?: number;
-  data: JSX.Element[];
-  callback: (page: number) => JSX.Element[];
+  callback: (page: number) => void;
 }

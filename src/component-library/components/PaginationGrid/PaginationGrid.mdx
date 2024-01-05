@@ -1,15 +1,13 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
-import * as PaginationStories from './Pagination.stories';
+import * as PaginationGridStories from './PaginationGrid.stories';
 
-<Meta of={PaginationStories} />
+<Meta of={PaginationGridStories} />
 
-# Pagination
+# PaginationGrid
 
 ## Description
 
-The Pagination component is a wrapper component which splits the CardGrid component onto multiple pages
-
-The page numbers shown are dynamic and are dependant on the current page of the user. The first and last page is always shown along with the previous and next page numbers
+The PaginationGrid is a wrapper component which uses the Pagination component and splits the CardGrid component onto multiple pages
 
 it includes a callback function which can be used to fetch the content to be shown on a particular page. This content is always rendered as a card, but any type of card can be used
 
@@ -20,12 +18,8 @@ It is intended to be used in the blog page and any generic content page
 It can be composed like this:
 
 ```tsx
-<Pagination
+<PaginationGrid
   theme="f"
-  pageCount={14}
-  callback={(newPage: number) => {
-    return getPageContent(newPage);
-  }}
   data={[
     <CardContent
       key={i}
@@ -58,10 +52,12 @@ It can be composed like this:
     />,
     (... more cards)
   ]}
+  pageCount={14}
+  getPageContent={getPageContent}
 />
 ```
 
 ## Example
 
-<Canvas of={PaginationStories.Default} />
-<Controls of={PaginationStories.Default} />
+<Canvas of={PaginationGridStories.Default} />
+<Controls of={PaginationGridStories.Default} />
