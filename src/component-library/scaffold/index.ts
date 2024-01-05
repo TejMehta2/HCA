@@ -63,8 +63,13 @@ const questions: PromptObject[] = [
     message: 'Choose a directory',
     choices: [
       {
+        title: 'site-components',
+        description: 'e.g. card blocks, carousel blocks',
+        value: 'site-components',
+      },
+      {
         title: 'components',
-        description: 'e.g. cards, carousels',
+        description: 'e.g. cards, modals, tooltips',
         value: 'components',
       },
       {
