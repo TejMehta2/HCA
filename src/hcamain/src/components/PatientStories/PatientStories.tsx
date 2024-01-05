@@ -9,7 +9,7 @@ import {
   LinkField,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import SideScrollingCards from '@component-library/components/SideScrollingCards/SideScrollingCards';
+import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import Text from '@component-library/foundation/Text/Text';
 
