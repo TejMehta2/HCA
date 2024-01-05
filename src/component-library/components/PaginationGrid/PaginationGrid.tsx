@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { PaginationGridProps } from './PaginationGrid.types';
-import CardGrid from '../CardGrid/CardGrid';
+import CardGrid from '../../site-components/CardGrid/CardGrid';
 import Pagination from '../../core-components/Pagination/Pagination';
 
 const PaginationGrid = (props: PaginationGridProps): JSX.Element => {
