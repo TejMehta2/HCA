@@ -1,15 +1,77 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../CarouselCards/Slick.module.scss' as *;
 
 .wrapper {
   background-color: var(--background);
   color: var(--text);
+  overflow: clip;
 }
 
 .container {
+  padding-bottom: $spacing-12;
+
   @include responsive-container;
 }
 
 .heading {
   padding: $spacing-8 0 $spacing-6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .tabs-container {
+  display: flex;
+  align-items: center;
+  width: max-content;
+} */
+
+/* .tab-wrapper {
+  width: 100vw;
+} */
+
+.tab-content {
+  /* @include responsive-container; */
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 359/257;
+
+    @include media(screen-m) {
+      aspect-ratio: 680/417;
+    }
+
+    @include media(screen-l) {
+      aspect-ratio: 552/320;
+    }
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+}
+
+.slick-wrapper {
+  position: relative;
+  width: 100%;
+
+  & div[class*='slick-track'] {
+    cursor: unset;
+  }
+
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-14 * -1);
+  }
+
+  & div[class*='slick-slide'] {
+    padding-right: $spacing-14;
+  }
 }

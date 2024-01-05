@@ -2,6 +2,7 @@ import React from 'react';
 import TabsBlock from './TabsBlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
+import Image from 'next/image';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof TabsBlock> = {
@@ -15,6 +16,7 @@ const meta: Meta<typeof TabsBlock> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+
 export const Default: StoryObj<typeof TabsBlock> = {
   args: {
     theme: 'k',
@@ -23,5 +25,87 @@ export const Default: StoryObj<typeof TabsBlock> = {
         Our appointments & memberships
       </Text>
     ),
+    tabs: [
+      { icon: 'iconOneOff', label: 'One-off' },
+      { icon: 'iconFlexible', label: 'Flexi' },
+      { icon: 'iconCalendar', label: 'Annual' },
+    ],
+    tabsContent: [
+      {
+        tab: 'One-off',
+        image: (
+          <Image
+            src="/placeholders/riverside-building-at-dusk.png"
+            alt="riverside building at dusk"
+            width="643"
+            height="605"
+          />
+        ),
+        title: (
+          <Text tag="h3" variation="display-5">
+            One-off appointments
+          </Text>
+        ),
+        bodyCopy: (
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        ),
+      },
+      {
+        tab: 'Flexi',
+        image: (
+          <Image
+            src="/placeholders/riverside-building-at-dusk.png"
+            alt="riverside building at dusk"
+            width="643"
+            height="605"
+          />
+        ),
+        title: (
+          <Text tag="h3" variation="display-5">
+            Flexi appointments
+          </Text>
+        ),
+        bodyCopy: (
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        ),
+      },
+      {
+        tab: 'Annual',
+        image: (
+          <Image
+            src="/placeholders/riverside-building-at-dusk.png"
+            alt="riverside building at dusk"
+            width="643"
+            height="605"
+          />
+        ),
+        title: (
+          <Text tag="h3" variation="display-5">
+            Annual appointments
+          </Text>
+        ),
+        bodyCopy: (
+          <Text tag="p" variation="body-large">
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        ),
+      },
+    ],
   },
 };
