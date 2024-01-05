@@ -1,20 +1,24 @@
 ﻿---
-ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
+ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
 Parent: "6875a32e-04d7-4721-8fb3-5f97015e824e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Intro Block/Data/Doctify Reviews
+Path: /sitecore/templates/Project/HCA/Page Content/Intro Block/Data/CQCStatus
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "{FBC6258D-285A-4023-8211-77FECF239E13}"
+  Value: "{E42C4CF5-2240-45CA-B4B7-59EF55F94006}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
+  Value: 400
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: CQC Status
   Versions:
   - Version: 1
     Fields:
@@ -31,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "beff5901-fa9b-43d8-ba55-1d8ba40904e7"
+      Value: "9bf867bd-9342-4d15-b82a-ddb0de19d3e1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T122850Z
+      Value: 20240104T221444Z

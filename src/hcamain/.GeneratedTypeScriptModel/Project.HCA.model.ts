@@ -28,7 +28,7 @@ export namespace PageContent {
             /**
             * Represents the Amenities List field (5455a723-12c3-4842-8008-268c45cf5ed9).
             */
-            "Amenities List"?: Item[];
+            AmenitiesList?: Item[];
 
             /**
             * Represents the Image field (6198bd6f-14ad-4894-be7c-486fa8bcf2fc).
@@ -56,7 +56,7 @@ export namespace PageContent {
             /**
             * Represents the Amenities List field (5455a723-12c3-4842-8008-268c45cf5ed9).
             */
-            "Amenities List"?: {
+            AmenitiesList?: {
                 jsonValue: Item[]
             };
 
@@ -512,7 +512,7 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (cddfe7c4-c61f-48a4-8719-85e660642a13).
             */
-            "CTA Card Text"?: Field<string>;
+            CTACardText?: Field<string>;
 
             /**
             * Represents the Pages field (e6568c06-70ff-4b88-b5ed-44a0bd98df50).
@@ -535,7 +535,7 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (cddfe7c4-c61f-48a4-8719-85e660642a13).
             */
-            "CTA Card Text"?: {
+            CTACardText?: {
                 jsonValue: Field<string>
             };
 
@@ -693,7 +693,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content carousel
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Carousel
     */
     export type ContentCarousel =  {
         fields?: { 
@@ -706,7 +706,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content carousel
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Carousel
     */
     export type ContentCarouselJson =  {
         
@@ -723,7 +723,7 @@ export namespace PageContent {
 export namespace PageContent.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content carousel
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Carousel
     */
     export type ContentCarousel = HCAProjectFoundation.HeadingParameters & 
 HCAProjectFoundation.ThemesParameters &  {
@@ -732,7 +732,7 @@ HCAProjectFoundation.ThemesParameters &  {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content carousel
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Carousel
     */
     export type ContentCarouselJson = HCAProjectFoundation.HeadingParametersJson & 
 HCAProjectFoundation.ThemesParametersJson &  {
@@ -743,7 +743,7 @@ HCAProjectFoundation.ThemesParametersJson &  {
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content carousel Folder
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Carousel Folder
     */
     export type ContentCarouselFolder =  {
         fields?: {         }
@@ -751,7 +751,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content carousel Folder
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Carousel Folder
     */
     export type ContentCarouselFolderJson =  {
         
@@ -929,11 +929,115 @@ export namespace Foundation.Doctify {
         
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Testimonial
+    */
+    export type DoctifyTestimonial =  {
+        fields?: { 
+            /**
+            * Represents the Text field (afdb5fb5-7e19-49e6-b389-dbdacd6791e9).
+            */
+            Text?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Testimonial
+    */
+    export type DoctifyTestimonialJson =  {
+        
+            /**
+            * Represents the Text field (afdb5fb5-7e19-49e6-b389-dbdacd6791e9).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
 }
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctor cards
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctify Testimonials Carousel
+    */
+    export type DoctifyTestimonialsCarousel =  {
+        fields?: { 
+            /**
+            * Represents the Reviews field (9977d5cd-e77b-4490-b9f6-48cd55cf0ff5).
+            */
+            Reviews?: Item;
+
+            /**
+            * Represents the Testimonials field (f816dbdb-faef-4a84-924a-8f551ce45706).
+            */
+            Testimonials?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctify Testimonials Carousel
+    */
+    export type DoctifyTestimonialsCarouselJson =  {
+        
+            /**
+            * Represents the Reviews field (9977d5cd-e77b-4490-b9f6-48cd55cf0ff5).
+            */
+            Reviews?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Testimonials field (f816dbdb-faef-4a84-924a-8f551ce45706).
+            */
+            Testimonials?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctify Testimonials Carousel
+    */
+    export type DoctifyTestimonialsCarousel =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctify Testimonials Carousel
+    */
+    export type DoctifyTestimonialsCarouselJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctify Testimonials Carousel Folder
+    */
+    export type DoctifyTestimonialsCarouselFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctify Testimonials Carousel Folder
+    */
+    export type DoctifyTestimonialsCarouselFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctor Cards
     */
     export type DoctorCards = HCAProjectFoundation.Doctify.DoctifyFilters & 
 HCAProjectFoundation.Ctabase &  {
@@ -957,7 +1061,7 @@ HCAProjectFoundation.Ctabase &  {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctor cards
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctor Cards
     */
     export type DoctorCardsJson = HCAProjectFoundation.Doctify.DoctifyFiltersJson & 
 HCAProjectFoundation.CtabaseJson &  {
@@ -989,7 +1093,7 @@ HCAProjectFoundation.CtabaseJson &  {
 export namespace PageContent.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor cards
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards
     */
     export type DoctorCards = HCAProjectFoundation.HeadingParameters &  {
         fields?: {         }
@@ -997,7 +1101,7 @@ export namespace PageContent.RenderingParameters {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor cards
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards
     */
     export type DoctorCardsJson = HCAProjectFoundation.HeadingParametersJson &  {
         
@@ -1007,7 +1111,7 @@ export namespace PageContent.RenderingParameters {
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctor cards Folder
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctor Cards Folder
     */
     export type DoctorCardsFolder =  {
         fields?: {         }
@@ -1015,7 +1119,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctor cards Folder
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctor Cards Folder
     */
     export type DoctorCardsFolderJson =  {
         
@@ -1051,6 +1155,100 @@ export namespace Foundation {
 
 
     }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Header With Image
+    */
+    export type HeaderWithImage =  {
+        fields?: { 
+            /**
+            * Represents the Image field (eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a).
+            */
+            Image?: ImageField;
+
+            /**
+            * Represents the Text field (6d02e9c7-eee5-499f-b3ed-1ea57186b925).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (dae2c26c-d179-4609-94f3-33169a4dc39f).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Header With Image
+    */
+    export type HeaderWithImageJson =  {
+        
+            /**
+            * Represents the Image field (eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a).
+            */
+            Image?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Text field (6d02e9c7-eee5-499f-b3ed-1ea57186b925).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (dae2c26c-d179-4609-94f3-33169a4dc39f).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Header With Image
+    */
+    export type HeaderWithImage = HCAProjectFoundation.HeadingParameters & 
+HCAProjectFoundation.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Header With Image
+    */
+    export type HeaderWithImageJson = HCAProjectFoundation.HeadingParametersJson & 
+HCAProjectFoundation.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Header With Image Folder
+    */
+    export type HeaderWithImageFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Header With Image Folder
+    */
+    export type HeaderWithImageFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/HeadingParameters
@@ -1219,12 +1417,12 @@ export namespace PageContent {
             /**
             * Represents the CQC Status field (a238486c-a225-48be-be0a-864e6fe4e0e0).
             */
-            "CQC Status"?: Item;
+            CQCStatus?: Item;
 
             /**
             * Represents the Doctify Reviews field (c1ad7d36-37ef-40e0-a5f8-749f50c0ae13).
             */
-            "Doctify Reviews"?: Item;
+            DoctifyReviews?: Item;
 
             /**
             * Represents the Image field (235db187-da6f-4bb9-a6ad-a281cb8af961).
@@ -1259,14 +1457,14 @@ export namespace PageContent {
             /**
             * Represents the CQC Status field (a238486c-a225-48be-be0a-864e6fe4e0e0).
             */
-            "CQC Status"?: {
+            CQCStatus?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Doctify Reviews field (c1ad7d36-37ef-40e0-a5f8-749f50c0ae13).
             */
-            "Doctify Reviews"?: {
+            DoctifyReviews?: {
                 jsonValue: Item
             };
 
@@ -1442,6 +1640,36 @@ export namespace HCA.Project.HCA {
 
     }
 }
+export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxy = HCAProjectFoundation.HcabasePageData &  {
+        fields?: { 
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            Link?: LinkField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxyJson = HCAProjectFoundation.HcabasePageDataJson &  {
+        
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            Link?: {
+                jsonValue: LinkField
+            };
+
+
+    }
+}
 export namespace PageContent {
 
     /**
@@ -1473,34 +1701,6 @@ export namespace PageContent {
     }
 }
 export namespace Foundation {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxy = HCAProjectFoundation.HcabasePageData &  {
-        fields?: { 
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            Link?: LinkField;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxyJson = HCAProjectFoundation.HcabasePageDataJson &  {
-        
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            Link?: {
-                jsonValue: LinkField
-            };
-
-
-    }
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/ParameterOption
@@ -1552,40 +1752,10 @@ export namespace HCA.Project.HCA {
 
     }
 }
-export namespace Pages {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Pages/Patient Story Page
-    */
-    export type PatientStoryPage = HCAProjectFoundation.HcabasePage &  {
-        fields?: { 
-            /**
-            * Represents the Date field (2a6cef4b-c5d4-4812-9996-bcbed7bbaae1).
-            */
-            Date?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Patient Story Page
-    */
-    export type PatientStoryPageJson = HCAProjectFoundation.HcabasePageJson &  {
-        
-            /**
-            * Represents the Date field (2a6cef4b-c5d4-4812-9996-bcbed7bbaae1).
-            */
-            Date?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-}
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient stories
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories
     */
     export type PatientStories = HCAProjectFoundation.Ctabase &  {
         fields?: { 
@@ -1613,7 +1783,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient stories
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories
     */
     export type PatientStoriesJson = HCAProjectFoundation.CtabaseJson &  {
         
@@ -1651,7 +1821,7 @@ export namespace PageContent {
 export namespace PageContent.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient stories
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories
     */
     export type PatientStories =  {
         fields?: {         }
@@ -1659,7 +1829,7 @@ export namespace PageContent.RenderingParameters {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient stories
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories
     */
     export type PatientStoriesJson =  {
         
@@ -1669,7 +1839,7 @@ export namespace PageContent.RenderingParameters {
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient stories Folder
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Folder
     */
     export type PatientStoriesFolder =  {
         fields?: {         }
@@ -1677,10 +1847,40 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient stories Folder
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Folder
     */
     export type PatientStoriesFolderJson =  {
         
+
+    }
+}
+export namespace Pages {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Pages/Patient Story Page
+    */
+    export type PatientStoryPage = HCAProjectFoundation.HcabasePage &  {
+        fields?: { 
+            /**
+            * Represents the Date field (2a6cef4b-c5d4-4812-9996-bcbed7bbaae1).
+            */
+            Date?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Patient Story Page
+    */
+    export type PatientStoryPageJson = HCAProjectFoundation.HcabasePageJson &  {
+        
+            /**
+            * Represents the Date field (2a6cef4b-c5d4-4812-9996-bcbed7bbaae1).
+            */
+            Date?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }

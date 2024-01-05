@@ -2,7 +2,7 @@
 ID: "943f4079-f82e-4226-b595-2796b2aa1545"
 Parent: "7d511e55-c747-4d08-b6b2-fc6de84c6c6e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Patient stories/Data/Title
+Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories/Data/Title
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type

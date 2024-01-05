@@ -2,7 +2,7 @@
 ID: "bb849d18-a4fb-4299-a897-da296112f1e0"
 Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Header with image Folder
+Path: /sitecore/templates/Project/HCA/Page Content/Header With Image Folder
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon

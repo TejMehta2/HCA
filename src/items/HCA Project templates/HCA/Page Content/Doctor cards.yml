@@ -2,7 +2,7 @@
 ID: "ad431ae8-75c6-4abf-b28b-e7d488e59f07"
 Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Doctor cards
+Path: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon

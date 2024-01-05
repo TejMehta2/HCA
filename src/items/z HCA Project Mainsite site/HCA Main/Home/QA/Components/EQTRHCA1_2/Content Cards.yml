@@ -24,17 +24,17 @@ Languages:
       Value: Key Service Lines
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f1b0bf40-9d6f-4374-8d98-853582ca1fba"
+      Value: "e23f1467-3cff-4929-bb81-091918863ae4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
-      Hint: CTA Card Text
+      Hint: CTACardText
       Value: Read the story
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231219T073318Z
+      Value: 20240104T193547Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
@@ -43,3 +43,4 @@ Languages:
         {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
         {243D187A-D33E-4842-BECF-F9B0EF556411}
         {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}
+        {C009CCFC-1E88-471E-B777-DC6C03415427}

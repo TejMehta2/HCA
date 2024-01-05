@@ -2,37 +2,20 @@
 ID: "c0f5fd77-9c6a-4493-af3c-4b12298f6a25"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Content carousel
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Content Carousel
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: Content carousel
+  Value: ContentCarousel
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: |
-    query GetContentCarousel($datasource: String!, $language: String!){
-      item(path: $datasource, language: $language) {
-        ...on ContentCarousel {
-              cards
-                {
-                   CardsList: targetItems
-                    {
-                      Title : field(name:"Title"){value},
-                      Text : field(name:"Text"){value},
-                      Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                    }
-                }
-       }
-      }
-    }
-    
-    
+  Value: 
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Content carousel
+  Value: /sitecore/templates/Project/HCA/Page Content/Content Carousel
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -44,7 +27,7 @@ SharedFields:
   Value: "{07C6C377-28C7-4F74-8B57-57C600E33C4F}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Content carousel Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Content carousel Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Content Carousel Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Content Carousel Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -98,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "76d7c4fc-6e94-45b4-b0f5-55ecf418c8d7"
+      Value: "b0c705fb-c407-44c8-8425-47b2536ede9b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231229T174252Z
+      Value: 20240104T222510Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

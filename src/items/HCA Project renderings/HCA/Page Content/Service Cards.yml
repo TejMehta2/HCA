@@ -20,7 +20,7 @@ SharedFields:
               Heading : field(name:"Heading"){value},
               Title : field(name:"Title"){value},
               Description : field(name:"Description"){value},
-              CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
+              cTAIcon
           	  {
                 Icon: targetItem
               	{      		
@@ -114,14 +114,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eff8ba71-1ef0-44b8-97aa-d5fd78c61ff0"
+      Value: "ca8ca8c1-e4cc-40b5-9ad0-4708169e1280"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240101T145130Z
+      Value: 20240104T145229Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

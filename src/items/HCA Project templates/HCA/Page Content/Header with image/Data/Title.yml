@@ -2,7 +2,7 @@
 ID: "dae2c26c-d179-4609-94f3-33169a4dc39f"
 Parent: "2cb787c3-3d5f-4d80-9664-e8efe05441b3"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Header with image/Data/Title
+Path: /sitecore/templates/Project/HCA/Page Content/Header With Image/Data/Title
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
