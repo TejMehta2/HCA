@@ -18,69 +18,37 @@ const Filters = (props: FiltersProps): JSX.Element => {
   const [filterAccordions, setFilterAccordions] = useState();
 
   useEffect(() => {
-    setFilterAccordions(filters);
-  }, [filters]);
+    const showMoreButton = (
+      <TextButton theme="dark">
+        <button
+          onClick={() => {
+            console.log('show more');
+          }}
+        >
+          <span>Show More</span>
+          <Icons iconName="iconPlus"></Icons>
+        </button>
+      </TextButton>
+    );
 
-  const showMoreButton = (
-    <TextButton theme="dark">
-      <button
-        onClick={() => {
-          console.log('show more');
-        }}
-      >
-        <span>Show More</span>
-        <Icons iconName="iconPlus"></Icons>
-      </button>
-    </TextButton>
-  );
-
-  if (filterAccordions) {
-    const updatedFilters = [...filterAccordions];
-    updatedFilters?.map((filter) => {
+    const updatedFilters = filters?.map((filter) => {
       const filterItems = filter.children.props.children;
 
       if (filterItems.length > 6) {
-        filterItems.push(showMoreButton); // this is causing an error
+        const nextIndex = filterItems.length;
+        const updatedChildren = { ...filterItems, [nextIndex]: showMoreButton };
+
+        return { ...filter, children: updatedChildren };
+      } else {
+        return { ...filter, children: filterItems };
       }
     });
 
-    setFilterAccordions(updatedFilters);
-
+    console.log(filters);
     console.log(updatedFilters);
-  }
 
-  // useEffect(() => {
-  //   const showMoreButton = (
-  //     <TextButton theme="dark">
-  //       <button
-  //         onClick={() => {
-  //           console.log('show more');
-  //         }}
-  //       >
-  //         <span>Show More</span>
-  //         <Icons iconName="iconPlus"></Icons>
-  //       </button>
-  //     </TextButton>
-  //   );
-
-  //   const updatedFilters = filters?.map((filter) => {
-  //     const filterItems = filter.children.props.children;
-
-  //     if (filterItems.length > 6) {
-  //       const nextIndex = filterItems.length;
-  //       const updatedChildren = { ...filterItems, [nextIndex]: showMoreButton };
-
-  //       return { ...filter, children: updatedChildren };
-  //     } else {
-  //       return { ...filter, children: filterItems };
-  //     }
-  //   });
-
-  //   console.log(filters);
-  //   console.log(updatedFilters);
-
-  //   setFilterAccordions(updatedFilters);
-  // }, [filters]);
+    setFilterAccordions(updatedFilters);
+  }, [filters]);
 
   return (
     <div className={styles.wrapper}>
