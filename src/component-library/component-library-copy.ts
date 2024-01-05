@@ -12,6 +12,7 @@ const performCopy = () => {
   const foldersToCopy = [
     'components',
     'core-components',
+    'site-components',
     'foundation',
     'globals',
     'assets',
