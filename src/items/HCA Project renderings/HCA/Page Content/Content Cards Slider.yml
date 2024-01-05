@@ -20,7 +20,7 @@ SharedFields:
               Heading : field(name:"Heading"){value},
               Title : field(name:"Title"){value},
               CTACardText : field(name:"CTA Card Text"){value},
-          	  CTAIcon : icon_dc1f5853348248dc8a23eb4ec1115f01
+          	  cTAIcon
           	  {
                 Icon: targetItem
                 {      		
@@ -133,14 +133,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "85c1b318-e85b-4aba-9151-96f26cec2d9a"
+      Value: "59c7207a-f288-40e1-bb51-2668658c4048"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231229T182134Z
+      Value: 20240104T151003Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

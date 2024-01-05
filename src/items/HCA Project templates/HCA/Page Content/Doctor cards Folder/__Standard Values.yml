@@ -2,7 +2,7 @@
 ID: "99160fa9-5545-4662-bccb-43b411ba156c"
 Parent: "3659df04-7b4b-4edb-bb57-403d402fd38a"
 Template: "3659df04-7b4b-4edb-bb57-403d402fd38a"
-Path: /sitecore/templates/Project/HCA/Page Content/Doctor cards Folder/__Standard Values
+Path: /sitecore/templates/Project/HCA/Page Content/Doctor Cards Folder/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters

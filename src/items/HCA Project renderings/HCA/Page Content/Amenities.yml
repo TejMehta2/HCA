@@ -12,37 +12,7 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: |
-    query GetAmenities($datasource: String!, $language: String!) 
-    {
-        item(path: $datasource, language: $language) {
-        ...on Amenities {
-              Title : field(name:"Title"){value},
-              Text : field(name:"Text"){value},
-              amenities {
-                AmenitiesList: targetItems
-                {      		
-          	      ... on Amenity 
-                  {
-                    Title : field(name:"Title"){value},
-                    icon : icon_65a9ef0d857e4201a4742f91662e3817
-                    {
-                      Icon: targetItem
-                      {      		
-                      ... on HCAIcon
-                        {
-                          SVGMarkup : field(name:"SVG Markup"){value}
-                        }
-                      }
-                    }
-                  }
-               }
-              }
-          }
-     }
-    }
-    
-    
+  Value: 
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Amenities
@@ -111,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7cf6b8f1-73a6-412c-80c9-1580de640c4d"
+      Value: "23ff587e-8089-4071-9afa-bc353877b554"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231229T161655Z
+      Value: 20240104T162515Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

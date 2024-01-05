@@ -6,7 +6,7 @@ Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Content Cards
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: Content Cards
+  Value: ContentCards
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
@@ -17,15 +17,19 @@ SharedFields:
     {
         item(path: $datasource, language: $language) {
         ...on ContentCards {
-              Title : field(name:"Title"){value},
-              CTACardText : field(name:"CTA Card Text"){value},
+              title {
+                jsonValue
+              },
+              cTACardText {
+                        jsonValue
+                      },
               pages
                 {
                    PagesList: targetItems
                     {
-                      Title : field(name:"Title"){value},
-                      Description : field(name:"Description"){value},
-                      Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
+                      title : field(name:"Title"){value},
+                      description : field(name:"Description"){value},
+                      image : field(name:"Image"){...on ImageField{src, alt, height, width}},
                       ... on LocationPage
                       {
                         url { path },
@@ -44,7 +48,7 @@ SharedFields:
                       }
                       ... on PageProxy
                       {
-              	     Link : field(name:"Link"){...on LinkField{url}}
+              	     link : field(name:"Link"){...on LinkField{url}}
                       }
                     }
                 }
@@ -121,14 +125,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e2d0e907-a543-4167-9280-4bc1bfd6be1c"
+      Value: "29df7deb-c28c-4a31-81bb-a308ef076cf6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231229T175847Z
+      Value: 20240104T215257Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

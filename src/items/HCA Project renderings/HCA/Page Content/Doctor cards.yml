@@ -2,7 +2,7 @@
 ID: "c02783cf-b67e-4849-88ed-8b324ca0089a"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Doctor cards
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Doctor Cards
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
@@ -20,11 +20,18 @@ SharedFields:
               Title : field(name:"Title"){value},
               NumberOfCards : field(name:"Number of Cards"){value},
               CTACard : field(name:"CTACard"){...on LinkField{url}},
-          	  CTAIcon : field(name:"Icon"){...on ImageField{src, alt, height, width}},
-              CTALink : field(name:"CTA Link"){...on LinkField{url}},
-              ...on DoctifyFilters
+          	  cTAIcon
           	  {
-                practice
+                Icon: targetItem
+              	{      		
+              	... on HCAIcon
+                  {
+                    SVGMarkup : field(name:"SVG Markup"){value}
+                  }
+                }
+              },
+              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
+              practice
                 {
                    PracticeList: targetItems
                     {
@@ -34,7 +41,7 @@ SharedFields:
                       DoctifyPractice : field(name:"Doctify Practice"){value},
                     }
                 }
-                service
+              service
                 {
                    ServicesList: targetItems
                     {
@@ -44,22 +51,20 @@ SharedFields:
                       DoctifyKeywordId : field(name:"Title"){value},
                     }
                   }
-                customFilters
+              customFilters
                 {
                    CustomFiltersList: targetItems
                     {
                       CustomFiltersList : field(name:"Filter"){value},
                     }
                   }
-              }
-        	}
-       }
+              }		
+     }
     }
-    
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Doctor cards
+  Value: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -71,7 +76,7 @@ SharedFields:
   Value: "{3E46AB03-87FD-4CF1-927D-2AA1054AFCCC}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Doctor cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Doctor cards Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Doctor Cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Doctor Cards Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -125,14 +130,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9de26db5-a53c-4b84-a5b3-77a541f0caca"
+      Value: "a8f0a34d-f9a5-4088-884a-99b878354861"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240101T162742Z
+      Value: 20240104T190319Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

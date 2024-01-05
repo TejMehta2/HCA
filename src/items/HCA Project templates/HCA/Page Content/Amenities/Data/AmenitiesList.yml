@@ -1,23 +1,30 @@
 ﻿---
-ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
-Parent: "efeb57c6-09bd-4889-afe4-5a83ee96a3e7"
+ID: "5455a723-12c3-4842-8008-268c45cf5ed9"
+Parent: "883f9e64-7e30-43fb-8e4a-d22123bf132d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Content Cards/Data/CTA Card Text
+Path: /sitecore/templates/Project/HCA/Page Content/Amenities/Data/AmenitiesList
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{4F01608E-2FC1-4663-9853-0A78F8B7AECE}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Multilist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 400
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Amenities List
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231218T070448Z
+      Value: 20231217T124345Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "66988c51-26da-4a75-be60-f0f75ed630fa"
+      Value: "73b15aae-1a3a-4c6b-833b-9a1179ab993a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231218T071306Z
+      Value: 20240104T163044Z

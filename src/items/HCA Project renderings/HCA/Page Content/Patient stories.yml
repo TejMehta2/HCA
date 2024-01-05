@@ -2,7 +2,7 @@
 ID: "cd8e122b-eef0-4172-9020-de23ae20cdc5"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Patient stories
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Patient Stories
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
@@ -67,7 +67,7 @@ SharedFields:
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Patient stories
+  Value: /sitecore/templates/Project/HCA/Page Content/Patient Stories
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -79,7 +79,7 @@ SharedFields:
   Value: "{BE4CCE0D-9280-4084-B5EB-52E962A574CA}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Patient stories Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Patient stories Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Patient Stories Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Patient Stories Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -133,14 +133,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a2d134e8-3d50-4b72-b846-995ac6670b3e"
+      Value: "bd99a034-f454-45bc-bbe3-98f9f52a015c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240102T143149Z
+      Value: 20240104T190338Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

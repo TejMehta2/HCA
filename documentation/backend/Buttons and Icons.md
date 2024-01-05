@@ -7,4 +7,4 @@ Rendering Parameters documentation, [documentation](https://equator.atlassian.ne
 
 ## Sitecore integration
 
-![An image](./assets/icons.png)
+![An image](./assets/buttons.png)

@@ -2,7 +2,7 @@
 ID: "fa22236c-8aa9-4195-a767-994a8ed45410"
 Parent: "5faa66ec-b2d6-4f0b-a910-7dd459559f62"
 Template: "d0f04c92-a8c5-4bbe-ac3f-37130553829f"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA33/Header with image
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA33/Header With Image
 Languages:
 - Language: en
   Versions:
@@ -16,24 +16,17 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3f11f561-7e02-4b6b-a819-1e612032d921"
-    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
-      Hint: CTALink
-      Value: |
-        <link text="Find a consultant" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+      Value: "d25da616-8752-4753-8ca8-2376357bff76"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240101T204405Z
+      Value: 20240104T220709Z
     - ID: "dae2c26c-d179-4609-94f3-33169a4dc39f"
       Hint: Title
       Value: Services lines
-    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
-      Hint: CTAIcon
-      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
     - ID: "eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a"
       Hint: Image
       Value: |

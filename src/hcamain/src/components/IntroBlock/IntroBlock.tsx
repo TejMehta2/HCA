@@ -51,7 +51,7 @@ type IntroBlockProps = {
 const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
+      <span className="is-empty-hint">Intro Block no datasource</span>
     </div>
   </div>
 );

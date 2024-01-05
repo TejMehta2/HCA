@@ -46,10 +46,6 @@ const ContentCardsSliderDefaultComponent = (
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <h1>ContentCardsSliderDefaultComponent</h1>
-    {/* <CarouselCards
-      title={<Text field={props.fields.data.item.Title} />}
-      link={<Link field={props.fields.data.item.CTALink} />}
-    ></CarouselCards> */}
   </div>
 );
 

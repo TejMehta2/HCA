@@ -2,7 +2,7 @@
 ID: "a9399e80-432a-4794-8c56-bed3492d9c43"
 Parent: "ef01f14f-abaa-450a-94c4-d6f9d681f4de"
 Template: "ef01f14f-abaa-450a-94c4-d6f9d681f4de"
-Path: /sitecore/templates/Project/HCA/Page Content/Content carousel/__Standard Values
+Path: /sitecore/templates/Project/HCA/Page Content/Content Carousel/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters

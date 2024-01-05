@@ -20,7 +20,7 @@ interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
   Description: Field<string>;
-  CTAIcon: {
+  cTAIcon: {
     Icon: CTAIconFields[];
   };
   CTALink: LinkField;

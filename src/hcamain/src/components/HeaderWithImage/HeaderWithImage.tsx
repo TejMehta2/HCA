@@ -4,6 +4,9 @@ import {
   Placeholder,
   ComponentRendering,
   ImageField,
+  RichText,
+  Text,
+  Image,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
@@ -21,17 +24,27 @@ type HeaderWithImageProps = {
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
-        <span className="is-empty-hint">Header with image</span>
-        <Placeholder name={phKey} rendering={props.rendering} />
+        <span className="is-empty-hint">Header with image no datasource</span>
       </div>
     </div>
   );
 };
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
-  return <HeaderWithImageDefaultComponent {...props} />;
+  console.log(props.fields);
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  if (!props.fields) {
+    return <HeaderWithImageDefaultComponent {...props} />;
+  }
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <Text field={props.fields.Title} />
+      <RichText field={props.fields.Text} />
+      <Image field={props.fields.Image} />
+      <Placeholder name={phKey} rendering={props.rendering} />
+    </div>
+  );
 };
