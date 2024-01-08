@@ -5,7 +5,13 @@ import Button from '../../core-components/Button/Button';
 import Accordion from '../../components/Accordion/Accordion';
 
 const Accordions = (props: AccordionsProps): JSX.Element => {
-  const { header, accordions, cta } = props;
+  const {
+    header,
+    accordions,
+    cta,
+    openIcon = 'iconPlus',
+    closeIcon = 'iconMinus',
+  } = props;
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -22,12 +28,15 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
       {header && <div className={styles.header}>{header}</div>}
 
       <div className={styles.accordions}>
-        {accordions.map(({ title, children }, index) => (
+        {accordions.map(({ title, children, accordionClass }, index) => (
           <Accordion
             key={index}
             title={title}
             isActive={activeIndex === index}
             onShow={() => onShow(index)}
+            openIcon={openIcon}
+            closeIcon={closeIcon}
+            accordionClass={accordionClass}
           >
             {children}
           </Accordion>

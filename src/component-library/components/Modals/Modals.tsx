@@ -11,7 +11,12 @@ const Modals = (
   props: ModalsProps,
   ref: React.MutableRefObject<HTMLDialogElement | null>
 ): JSX.Element => {
-  const { children, defaultOpen = false, variation = 'full' } = props;
+  const {
+    children,
+    defaultOpen = false,
+    variation = 'full',
+    modalClass,
+  } = props;
   const {
     draggable,
     dragging,
@@ -89,11 +94,15 @@ const Modals = (
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={wrapper}
+      className={[wrapper, modalClass && styles[modalClass]].join(' ')}
     >
       <Overlay />
       <div
-        className={[draggable, touchStart ? dragging : ''].join(' ')}
+        className={[
+          styles[variation],
+          draggable,
+          touchStart ? dragging : '',
+        ].join(' ')}
         style={{
           ['--touch-position' as string]: `${Math.max(
             0,
@@ -104,7 +113,7 @@ const Modals = (
         onTouchMove={touchMoveHandler}
         onTouchEnd={touchEndHandler}
       >
-        <div className={[modal, styles[variation]].join(' ')}>
+        <div className={modal}>
           <div className={handle}>
             <SvgHandle />
           </div>

@@ -87,3 +87,29 @@
     padding: 0 $spacing-6 0;
   }
 }
+
+.filters {
+  .trigger {
+    padding: px-to-rem(16) 0;
+    border-top: 1px solid $dark-blue-9;
+    border-radius: 0;
+  }
+
+  .content {
+    padding: 0;
+
+    & > fieldset {
+      padding: 0 0 $spacing-5 0;
+    }
+  }
+
+  &.accordion {
+    background-color: transparent;
+
+    &:first-of-type {
+      .trigger {
+        border: 0;
+      }
+    }
+  }
+}

@@ -79,17 +79,27 @@
 
 .right {
   @include media(screen-m) {
-    border-radius: $radius-large 0 0 0;
-    min-width: px-to-rem(364);
-    top: px-to-rem(53);
-    width: auto;
-    right: 0;
+    transform: translate(100%, 0);
+
+    & > div:first-child {
+      border-radius: $radius-large 0 0 0;
+      min-width: px-to-rem(364);
+      top: px-to-rem(53);
+      width: auto;
+      right: 0;
+    }
+
+    dialog[open] & {
+      transform: translate(0, 0);
+    }
   }
 }
 
 .full {
   @include media(screen-l) {
-    top: px-to-rem(87);
+    & > div:first-child {
+      top: px-to-rem(87);
+    }
   }
 }
 
@@ -120,5 +130,24 @@
   .right & {
     margin-left: $spacing-4;
     margin-right: $spacing-4;
+  }
+}
+
+.filters {
+  .close {
+    top: px-to-rem(27);
+    right: px-to-rem(19);
+    background-color: $white;
+    z-index: 2;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: $radius-large 0 0 0;
+    overflow: hidden;
   }
 }
