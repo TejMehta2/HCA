@@ -50,6 +50,7 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
   });
 
   const slider = (
+    // eslint-disable-next-line
     // @ts-ignore
     <Slider {...settings} ref={sliderRef}>
       {tabsContainer}
