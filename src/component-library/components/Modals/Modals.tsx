@@ -94,7 +94,7 @@ const Modals = (
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={[wrapper, styles[modalClass]].join(' ')}
+      className={[wrapper, modalClass && styles[modalClass]].join(' ')}
     >
       <Overlay />
       <div
