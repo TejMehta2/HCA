@@ -115,6 +115,281 @@ export const Default: StoryObj<typeof Filters> = {
               name="locations"
               label="Harley Street Clinic"
             ></Checkbox>
+            <Checkbox
+              id="7"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="8"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+          </Checkboxes>
+        ),
+      },
+      {
+        title: 'Locations',
+        children: (
+          <Checkboxes>
+            <Checkbox
+              id="1"
+              value="Christie"
+              name="locations"
+              label="Christie Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="2"
+              value="london-bridge"
+              name="locations"
+              label="London Bridge Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="3"
+              value="portland"
+              name="locations"
+              label="Portland Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="4"
+              value="lister"
+              name="locations"
+              label="Lister Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="5"
+              value="wellington-hospital"
+              name="locations"
+              label="Wellington Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="6"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="7"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="8"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+          </Checkboxes>
+        ),
+      },
+      {
+        title: 'Locations',
+        children: (
+          <Checkboxes>
+            <Checkbox
+              id="1"
+              value="Christie"
+              name="locations"
+              label="Christie Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="2"
+              value="london-bridge"
+              name="locations"
+              label="London Bridge Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="3"
+              value="portland"
+              name="locations"
+              label="Portland Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="4"
+              value="lister"
+              name="locations"
+              label="Lister Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="5"
+              value="wellington-hospital"
+              name="locations"
+              label="Wellington Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="6"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="7"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="8"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+          </Checkboxes>
+        ),
+      },
+      {
+        title: 'Locations',
+        children: (
+          <Checkboxes>
+            <Checkbox
+              id="1"
+              value="Christie"
+              name="locations"
+              label="Christie Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="2"
+              value="london-bridge"
+              name="locations"
+              label="London Bridge Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="3"
+              value="portland"
+              name="locations"
+              label="Portland Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="4"
+              value="lister"
+              name="locations"
+              label="Lister Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="5"
+              value="wellington-hospital"
+              name="locations"
+              label="Wellington Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="6"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="7"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="8"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+          </Checkboxes>
+        ),
+      },
+      {
+        title: 'Locations',
+        children: (
+          <Checkboxes>
+            <Checkbox
+              id="1"
+              value="Christie"
+              name="locations"
+              label="Christie Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="2"
+              value="london-bridge"
+              name="locations"
+              label="London Bridge Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="3"
+              value="portland"
+              name="locations"
+              label="Portland Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="4"
+              value="lister"
+              name="locations"
+              label="Lister Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="5"
+              value="wellington-hospital"
+              name="locations"
+              label="Wellington Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="6"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="7"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+            <Checkbox
+              id="8"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
+          </Checkboxes>
+        ),
+      },
+      {
+        title: 'Locations',
+        children: (
+          <Checkboxes>
+            <Checkbox
+              id="1"
+              value="Christie"
+              name="locations"
+              label="Christie Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="2"
+              value="london-bridge"
+              name="locations"
+              label="London Bridge Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="3"
+              value="portland"
+              name="locations"
+              label="Portland Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="4"
+              value="lister"
+              name="locations"
+              label="Lister Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="5"
+              value="wellington-hospital"
+              name="locations"
+              label="Wellington Hospital"
+            ></Checkbox>
+            <Checkbox
+              id="6"
+              value="harley-street"
+              name="locations"
+              label="Harley Street Clinic"
+            ></Checkbox>
           </Checkboxes>
         ),
       },

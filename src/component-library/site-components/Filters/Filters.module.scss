@@ -9,6 +9,7 @@
       top: px-to-rem(27);
       right: px-to-rem(19);
       background-color: $white;
+      z-index: 2;
     }
 
     div[class^='Modals_content'] {
@@ -18,6 +19,7 @@
       display: flex;
       flex-direction: column;
       border-radius: $radius-large 0 0 0;
+      overflow: hidden;
     }
   }
 }
@@ -26,7 +28,7 @@
   display: flex;
   justify-content: center;
   padding: $spacing-5 $spacing-5;
-  margin-bottom: $spacing-5;
+  border-bottom: px-to-rem(1) solid $dark-blue-9;
 }
 
 .footer {
@@ -45,7 +47,26 @@
   flex-direction: column;
   flex: 1 1 100%;
   gap: $spacing-5;
-  padding: 0 $spacing-5;
+  padding: $spacing-5 $spacing-5 0 $spacing-5;
+  overflow-y: auto;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: px-to-rem(13);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $main-turquoise-20;
+    border-radius: $radius-medium;
+    background-clip: padding-box;
+    border: px-to-rem(3) solid transparent;
+  }
 
   button[class^='Accordion_trigger'] {
     padding: px-to-rem(16) 0;
