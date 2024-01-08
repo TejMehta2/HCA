@@ -6,6 +6,7 @@ import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 import Checkbox from '../../core-components/Checkbox/Checkbox';
 
 const mockProps: FiltersProps = {
+  resultsCount: 10,
   filters: [
     {
       title: 'Locations',
