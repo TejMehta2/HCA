@@ -16,6 +16,7 @@
 
 .heading {
   @include responsive-grid;
+
   align-items: center;
   padding: $spacing-8 0 $spacing-6;
 
