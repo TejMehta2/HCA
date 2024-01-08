@@ -4,4 +4,5 @@ export interface ModalsProps {
   children?: ReactNode | JSX.Element;
   defaultOpen?: boolean;
   variation?: 'right' | 'full';
+  modalClass?: string;
 }
