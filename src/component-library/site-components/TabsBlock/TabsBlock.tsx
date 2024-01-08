@@ -49,6 +49,13 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
     );
   });
 
+  const slider = (
+    // @ts-ignore
+    <Slider {...settings} ref={sliderRef}>
+      {tabsContainer}
+    </Slider>
+  );
+
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
@@ -57,10 +64,7 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
             <span className={styles.title}>{title}</span>
             <Tabs tabs={tabs} callback={tabChangeHandler} />
           </div>
-
-          <Slider {...settings} ref={sliderRef}>
-            {tabsContainer}
-          </Slider>
+          {slider}
         </div>
       </div>
     </Themes>
