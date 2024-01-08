@@ -4,6 +4,7 @@ import { IconName } from '../../foundation/Icons/icon-map.generated';
 export type Accordions = {
   title: ReactNode | JSX.Element;
   children: ReactNode | JSX.Element;
+  accordionClass?: string;
 }[];
 
 export interface AccordionsProps {

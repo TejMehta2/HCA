@@ -132,3 +132,22 @@
     margin-right: $spacing-4;
   }
 }
+
+.filters {
+  .close {
+    top: px-to-rem(27);
+    right: px-to-rem(19);
+    background-color: $white;
+    z-index: 2;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: $radius-large 0 0 0;
+    overflow: hidden;
+  }
+}

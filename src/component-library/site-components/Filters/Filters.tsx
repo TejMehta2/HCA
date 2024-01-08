@@ -27,7 +27,12 @@ const Filters = (props: FiltersProps): JSX.Element => {
       </Button>
 
       <Themes theme="f">
-        <Modals ref={dialogRef} defaultOpen={false} variation="right">
+        <Modals
+          ref={dialogRef}
+          defaultOpen={false}
+          variation="right"
+          modalClass="filters"
+        >
           <div className={styles.header}>
             <Text variation="body-semi-bold-extra-large">Filter By:</Text>
           </div>

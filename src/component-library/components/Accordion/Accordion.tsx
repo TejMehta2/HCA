@@ -11,6 +11,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
     onShow,
     openIcon = 'iconPlus',
     closeIcon = 'iconMinus',
+    accordionClass,
   } = props;
 
   const accordionContentId = useId();
@@ -27,9 +28,11 @@ const Accordion = (props: AccordionProps): JSX.Element => {
 
   return (
     <div
-      className={[styles.accordion, styles[isActive ? 'open' : 'closed']].join(
-        ' '
-      )}
+      className={[
+        styles.accordion,
+        styles[isActive ? 'open' : 'closed'],
+        accordionClass && styles[accordionClass],
+      ].join(' ')}
     >
       <button
         className={styles.trigger}
