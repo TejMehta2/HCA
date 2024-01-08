@@ -2,7 +2,7 @@ import { Tab } from '../../core-components/Tabs/Tabs.types';
 import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface TabsContent {
-  tab: string;
+  tab: Tab;
   image: JSX.Element;
   title: JSX.Element;
   bodyCopy: JSX.Element;
@@ -11,6 +11,5 @@ export interface TabsContent {
 export interface TabsBlockProps {
   theme: Theme;
   title: JSX.Element;
-  tabs: Tab[];
   tabsContent: TabsContent[];
 }

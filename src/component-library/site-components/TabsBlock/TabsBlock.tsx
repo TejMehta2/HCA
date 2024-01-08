@@ -4,9 +4,10 @@ import styles from './TabsBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Tabs from '../../core-components/Tabs/Tabs';
 import Slider, { Settings } from '@ant-design/react-slick';
+import { Tab } from '../../core-components/Tabs/Tabs.types';
 
 const TabsBlock = (props: TabsBlockProps): JSX.Element => {
-  const { theme, title, tabs, tabsContent } = props;
+  const { theme, title, tabsContent } = props;
   const sliderRef = useRef<Slider>(null);
 
   /* Carousel settings */
@@ -17,36 +18,43 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
     infinite: false,
     swipe: false,
     arrows: false,
+    waitForAnimate: false,
     accessibility: false,
     className: styles['slick-wrapper'],
   };
 
   const tabChangeHandler = (newLabel: string) => {
-    const newIndex = tabs.findIndex((tab) => tab.label === newLabel);
-    console.log(newIndex, newLabel);
+    const newIndex = tabsContent.findIndex(
+      (tabContent) => tabContent.tab.label === newLabel
+    );
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(newIndex);
     }
   };
 
-  const tabsContainer = tabsContent.map((tabContent) => (
-    <div key={tabContent.tab} className={styles['tab-wrapper']}>
-      <div className={styles['tab-content']}>
-        {tabContent.image}
-        <div>
-          {tabContent.title}
-          {tabContent.bodyCopy}
+  const tabs: Tab[] = [];
+  const tabsContainer = tabsContent.map((tabContent, index) => {
+    tabs.push(tabContent.tab);
+
+    return (
+      <div key={index} className={styles['tab-wrapper']}>
+        <div className={styles['tab-content']}>
+          {tabContent.image}
+          <div>
+            {tabContent.title}
+            {tabContent.bodyCopy}
+          </div>
         </div>
       </div>
-    </div>
-  ));
+    );
+  });
 
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.heading}>
-            {title}
+            <span className={styles.title}>{title}</span>
             <Tabs tabs={tabs} callback={tabChangeHandler} />
           </div>
 

@@ -15,30 +15,33 @@
 }
 
 .heading {
-  padding: $spacing-8 0 $spacing-6;
-  display: flex;
-  justify-content: space-between;
+  @include responsive-grid;
   align-items: center;
+  padding: $spacing-8 0 $spacing-6;
+
+  .title {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+  }
+
+  & > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 7);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 6);
+
+    @include media(screen-l) {
+      justify-self: end;
+    }
+  }
 }
 
-/* .tabs-container {
-  display: flex;
-  align-items: center;
-  width: max-content;
-} */
-
-/* .tab-wrapper {
-  width: 100vw;
-} */
-
 .tab-content {
-  /* @include responsive-container; */
+  @include responsive-grid;
 
   width: 100%;
-  display: flex;
   align-items: center;
 
   & > img {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+
     width: 100%;
     height: auto;
     aspect-ratio: 359/257;
@@ -53,9 +56,17 @@
   }
 
   & > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 8);
+
     display: flex;
     flex-direction: column;
     gap: $spacing-6;
+    margin-top: $spacing-7;
+
+    @include media(screen-l) {
+      margin-top: 0;
+    }
   }
 }
 

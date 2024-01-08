@@ -25,14 +25,9 @@ export const Default: StoryObj<typeof TabsBlock> = {
         Our appointments & memberships
       </Text>
     ),
-    tabs: [
-      { icon: 'iconOneOff', label: 'One-off' },
-      { icon: 'iconFlexible', label: 'Flexi' },
-      { icon: 'iconCalendar', label: 'Annual' },
-    ],
     tabsContent: [
       {
-        tab: 'One-off',
+        tab: { icon: 'iconOneOff', label: 'One-off' },
         image: (
           <Image
             src="/placeholders/riverside-building-at-dusk.png"
@@ -57,7 +52,7 @@ export const Default: StoryObj<typeof TabsBlock> = {
         ),
       },
       {
-        tab: 'Flexi',
+        tab: { icon: 'iconFlexible', label: 'Flexi' },
         image: (
           <Image
             src="/placeholders/riverside-building-at-dusk.png"
@@ -82,7 +77,7 @@ export const Default: StoryObj<typeof TabsBlock> = {
         ),
       },
       {
-        tab: 'Annual',
+        tab: { icon: 'iconCalendar', label: 'Annual' },
         image: (
           <Image
             src="/placeholders/riverside-building-at-dusk.png"
