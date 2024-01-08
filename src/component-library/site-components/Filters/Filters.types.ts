@@ -1,5 +1,6 @@
-import { accordions } from '../Accordions/Accordions.types';
+import { Accordions } from '../Accordions/Accordions.types';
 
 export interface FiltersProps {
-  filters?: accordions;
+  filters?: Accordions;
+  resultsCount: number;
 }

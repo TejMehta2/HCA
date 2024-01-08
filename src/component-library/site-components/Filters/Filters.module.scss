@@ -50,23 +50,7 @@
   padding: $spacing-5 $spacing-5 0 $spacing-5;
   overflow-y: auto;
 
-  /* width */
-  &::-webkit-scrollbar {
-    width: px-to-rem(13);
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: $main-turquoise-20;
-    border-radius: $radius-medium;
-    background-clip: padding-box;
-    border: px-to-rem(3) solid transparent;
-  }
+  @include scrollbar;
 
   button[class^='Accordion_trigger'] {
     padding: px-to-rem(16) 0;

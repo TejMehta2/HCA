@@ -11,7 +11,7 @@ import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../Accordions/Accordions';
 
 const Filters = (props: FiltersProps): JSX.Element => {
-  const { filters } = props;
+  const { filters, resultsCount } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -48,7 +48,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
             </TextButton>
             <Button theme="full-dark" size="small">
               <button onClick={() => dialogRef?.current?.close()}>
-                See XX Results
+                See {resultsCount} Results
               </button>
             </Button>
           </div>

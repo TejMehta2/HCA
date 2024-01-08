@@ -19,6 +19,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Filters> = {
   args: {
+    resultsCount: 20,
     filters: [
       {
         title: 'Locations',
