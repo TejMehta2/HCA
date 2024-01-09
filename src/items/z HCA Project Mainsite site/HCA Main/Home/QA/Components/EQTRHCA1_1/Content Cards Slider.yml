@@ -9,7 +9,7 @@ Languages:
   - Version: 1
     Fields:
     - ID: "0120cb1f-140d-43eb-8ed4-aac38f98dcf0"
-      Hint: CTA Card Text
+      Hint: CTACardText
       Value: Learn <b>more</b>
     - ID: "17be2717-992a-4d65-918b-07bb26210837"
       Hint: Title
@@ -24,12 +24,12 @@ Languages:
       Hint: Pages
       Value: |
         {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
-        {9BD9EEF6-9471-4D4B-92EC-F9545F740B4A}
         {471F79FD-281B-435A-90B8-6FB3B3F15886}
         {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
+        {45179635-2018-4AA4-B7EF-C235A71D4350}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "deb4c2a1-910d-4781-b744-d2ff2debf1bc"
+      Value: "689631e5-4aac-434a-886a-ef337a6e3f7f"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -40,4 +40,4 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231207T062820Z
+      Value: 20240105T224850Z
