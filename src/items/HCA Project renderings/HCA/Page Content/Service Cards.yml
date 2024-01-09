@@ -12,40 +12,7 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: |
-    query GetServiceCards( $datasource: String!, $language: String!) 
-    {
-        item(path: $datasource, language: $language) {
-        ...on ServiceCards{
-              Heading : field(name:"Heading"){value},
-              Title : field(name:"Title"){value},
-              Description : field(name:"Description"){value},
-              cTAIcon
-          	  {
-                Icon: targetItem
-              	{      		
-              	... on HCAIcon
-                  {
-                    SVGMarkup : field(name:"SVG Markup"){value}
-                  }
-                }
-              },
-              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
-              services
-          	  {
-         	    ServicesList: targetItems
-        	    {
-                  Title : field(name:"Title"){value},
-                  Description : field(name:"Description"){value},
-                  Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                  Link : field(name:"Link"){...on LinkField{url}},
-                } 
-         	}
-        }
-     }
-    }
-    
-    
+  Value: 
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Service Cards
@@ -114,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ca8ca8c1-e4cc-40b5-9ad0-4708169e1280"
+      Value: "34fe995f-6b50-43ff-994d-ec6f1febb85d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T145229Z
+      Value: 20240108T123548Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
