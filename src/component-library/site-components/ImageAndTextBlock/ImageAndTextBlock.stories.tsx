@@ -227,7 +227,7 @@ export const Rating: StoryObj<typeof ImageAndTextBlock> = {
   },
 };
 
-export const Amenities: StoryObj<typeof ImageAndTextBlock> = {
+export const iconList: StoryObj<typeof ImageAndTextBlock> = {
   args: {
     theme: 'e',
     imageAlignment: 'left',
@@ -256,7 +256,7 @@ export const Amenities: StoryObj<typeof ImageAndTextBlock> = {
       </>
     ),
 
-    itemsList: [
+    iconList: [
       { icon: <Icons iconName="iconPin"></Icons>, text: 'Quis laboris proi' },
       { icon: <Icons iconName="iconRedo"></Icons>, text: 'Quis laboris proi' },
       {
