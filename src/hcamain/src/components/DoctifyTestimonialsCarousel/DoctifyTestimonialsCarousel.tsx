@@ -51,7 +51,6 @@ export const Default = (
   }
 
   const themeName: Theme = props.params.Theme;
-  console.log(themeName);
 
   const ratingAsNumber = Number(props.fields.Reviews.fields.Stars.value);
 
