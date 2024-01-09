@@ -2,10 +2,9 @@
 @use '../../foundation/index.module.scss' as *;
 @use '../../utilities/index.module' as *;
 
-// Themes by name from design library
+// Themes by name from design library to match backend
 
 /* stylelint-disable selector-class-pattern */
-
 .A-HCA-Main-Turquoise {
   @include apply-theme-a;
 }
