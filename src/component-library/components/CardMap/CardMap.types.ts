@@ -4,5 +4,9 @@ export interface CardMapProps {
   amount: ReactNode | JSX.Element;
   title: ReactNode | JSX.Element;
   cta: ReactNode | JSX.Element;
-  theme: 'b' | 'e' | 'd' | 'l';
+  theme:
+    | 'B-HCA-Green'
+    | 'E-HCA-Dark-Grey'
+    | 'D-HCA-Light-Orange'
+    | 'L-HCA-Coral-60';
 }

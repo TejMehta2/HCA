@@ -106,7 +106,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
         height="683"
       />
     ),
-    theme: 'i',
+    theme: 'I-HCA-Turquoise-20',
 
     cqc: (
       <CQCBlock

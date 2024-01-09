@@ -156,7 +156,7 @@ export const Default: StoryObj<typeof Themes> = {
 
 export const Nesting: StoryObj<typeof Themes> = {
   args: {
-    theme: 'l',
+    theme: 'L-HCA-Coral-60',
     children: (
       <div
         style={{
@@ -234,7 +234,7 @@ export const Nesting: StoryObj<typeof Themes> = {
 
 export const Overrides: StoryObj<typeof Themes> = {
   args: {
-    theme: 'l',
+    theme: 'L-HCA-Coral-60',
     children: (
       <div
         style={{
@@ -297,38 +297,38 @@ export const Overrides: StoryObj<typeof Themes> = {
 };
 
 export const ThemeA: StoryObj<typeof Themes> = {
-  args: { theme: 'a' },
+  args: { theme: 'A-HCA-Main-Turquoise' },
 };
 export const ThemeB: StoryObj<typeof Themes> = {
-  args: { theme: 'b' },
+  args: { theme: 'B-HCA-Green' },
 };
 export const ThemeC: StoryObj<typeof Themes> = {
-  args: { theme: 'c' },
+  args: { theme: 'C-HCA-Beige' },
 };
 export const ThemeD: StoryObj<typeof Themes> = {
-  args: { theme: 'd' },
+  args: { theme: 'D-HCA-Light-Orange' },
 };
 export const ThemeE: StoryObj<typeof Themes> = {
-  args: { theme: 'e' },
+  args: { theme: 'E-HCA-Dark-Grey' },
 };
 export const ThemeF: StoryObj<typeof Themes> = {
-  args: { theme: 'f' },
+  args: { theme: 'F-HCA-White' },
 };
 export const ThemeG: StoryObj<typeof Themes> = {
-  args: { theme: 'g' },
+  args: { theme: 'G-HCA-Green-40' },
 };
 export const ThemeH: StoryObj<typeof Themes> = {
-  args: { theme: 'h' },
+  args: { theme: 'H-HCA-Green-20' },
 };
 export const ThemeI: StoryObj<typeof Themes> = {
-  args: { theme: 'i' },
+  args: { theme: 'I-HCA-Turquoise-20' },
 };
 export const ThemeJ: StoryObj<typeof Themes> = {
-  args: { theme: 'j' },
+  args: { theme: 'J-HCA-Turquoise-10' },
 };
 export const ThemeK: StoryObj<typeof Themes> = {
-  args: { theme: 'k' },
+  args: { theme: 'K-HCA-Turquoise-5' },
 };
 export const ThemeL: StoryObj<typeof Themes> = {
-  args: { theme: 'l' },
+  args: { theme: 'L-HCA-Coral-60' },
 };

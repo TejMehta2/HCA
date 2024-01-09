@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CarouselContentProps = {
-  theme: 'f',
+  theme: 'F-HCA-White',
   slides: [
     {
       title: (

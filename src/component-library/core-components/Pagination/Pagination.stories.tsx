@@ -20,7 +20,7 @@ const getPageContent = (page: number) => console.log(page);
 
 export const Default: StoryObj<typeof Pagination> = {
   args: {
-    theme: 'f',
+    theme: 'F-HCA-White',
     pageCount: 14,
     callback: (newPage: number) => {
       return getPageContent(newPage);

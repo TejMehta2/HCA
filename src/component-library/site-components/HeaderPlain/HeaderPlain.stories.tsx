@@ -15,7 +15,7 @@ const meta: Meta<typeof HeaderPlain> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'a'}>
+      <Themes theme={'A-HCA-Main-Turquoise'}>
         <Story />
       </Themes>
     ),

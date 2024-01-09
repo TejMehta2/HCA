@@ -7,7 +7,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
-import { CarouselReviewsTheme } from '@component-library/site-components/CarouselReviews/CarouselReviews.types';
+import { CarouselReviewsTheme as Theme } from '@component-library/site-components/CarouselReviews/CarouselReviews.types';
 
 interface TestimonialsFields {
   fields: {
@@ -28,7 +28,10 @@ interface Fields {
 }
 
 type DoctifyTestimonialsCarouselProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: Theme; // TODO - this should reflect what CMS provides, not what FE consumes
+  };
   fields: Fields;
 };
 
@@ -47,7 +50,7 @@ export const Default = (
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
 
-  const themeName: CarouselReviewsTheme = props.params.Theme;
+  const themeName: Theme = props.params.Theme;
   console.log(themeName);
 
   const ratingAsNumber = Number(props.fields.Reviews.fields.Stars.value);

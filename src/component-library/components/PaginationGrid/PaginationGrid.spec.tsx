@@ -54,7 +54,7 @@ const getPageContent = (page: number) => {
 };
 
 const mockProps: PaginationGridProps = {
-  theme: 'f',
+  theme: 'F-HCA-White',
   pageCount: pageCount,
   data: getPageContent(1),
   getPageContent: (newPage: number) => {

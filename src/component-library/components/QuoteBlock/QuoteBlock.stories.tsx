@@ -16,7 +16,7 @@ const meta: Meta<typeof QuoteBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme={'a'}>
+      <Themes theme={'A-HCA-Main-Turquoise'}>
         <Story />
       </Themes>
     ),

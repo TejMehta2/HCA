@@ -4,7 +4,7 @@ import Themes from './Themes';
 import { ThemesProps } from './Themes.types';
 
 const mockProps: ThemesProps = {
-  theme: 'a',
+  theme: 'A-HCA-Main-Turquoise',
   children: <>Hello world</>,
 };
 
