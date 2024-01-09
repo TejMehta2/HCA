@@ -16,28 +16,35 @@ SharedFields:
     query GetContentCardSlider( $datasource: String!, $language: String!) 
     {
         item(path: $datasource, language: $language) {
-        ...on ContentCardsSlider {
-              Heading : field(name:"Heading"){value},
-              Title : field(name:"Title"){value},
-              CTACardText : field(name:"CTA Card Text"){value},
-          	  cTAIcon
-          	  {
-                Icon: targetItem
-                {      		
-              	... on HCAIcon
-                  {
-                    SVGMarkup : field(name:"SVG Markup"){value}
+        ...on ContentCardsSlider_a790183f6621463aa43c695d1435328e {
+              heading {
+                jsonValue
+              },
+              title {
+                jsonValue
+              },
+              cTACardText {
+                jsonValue
+              },
+          	  cTAIcon {
+                Icon: targetItem {
+                  ... on HCAIcon {
+                    svgMarkup {
+                    value
                   }
                 }
-              },
-              CTALink : field(name:"CTA Link"){...on LinkField{url, text}},
+              }
+             }
+             cTALink {        
+               jsonValue  
+              }
               pages
                 {
                    PagesList: targetItems
                     {
-                      Title : field(name:"Title"){value},
-                      Description : field(name:"Description"){value},
-                      Image : field(name:"Image"){...on ImageField{src, alt, height, width}},
+                      title : field(name:"Title"){value},
+                      description : field(name:"Description"){value},
+                      image : field(name:"Image"){...on ImageField{src, alt, height, width}},
                       ... on LocationPage
                       {
                         url { path },
@@ -46,7 +53,7 @@ SharedFields:
                       {
                         url { path },
                       }
-                      ... on PatientStories
+                      ... on PatientStoryPage
                       {
                         url { path },
                       }
@@ -133,14 +140,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "59c7207a-f288-40e1-bb51-2668658c4048"
+      Value: "a54b3643-1b89-4964-9b8d-03b4616dff86"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T151003Z
+      Value: 20240105T231000Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

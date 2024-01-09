@@ -9,7 +9,7 @@ import {
 interface PagesFields {
   title: Field<string>;
   description: Field<string>;
-  Image: ImageField;
+  image: ImageField;
   link: { url: string };
   url: { path: string };
 }

@@ -21,7 +21,7 @@ export const Default: StoryObj<typeof CardService> = {
     children: (
       <>
         <Image
-          src="/placeholders/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"

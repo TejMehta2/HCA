@@ -25,7 +25,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
     length: 'short',
     image: (
       <Image
-        src="/placeholders/image-and-text-component-placeholder.jpg"
+        src="/placeholders/children-playing.jpg"
         alt="two children playing"
         width="643"
         height="605"
@@ -80,7 +80,7 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
     length: 'long',
     image: (
       <Image
-        src="/placeholders/image-and-text-component-placeholder.jpg"
+        src="/placeholders/children-playing.jpg"
         alt="two children playing"
         width="643"
         height="605"
@@ -142,7 +142,7 @@ export const Rating: StoryObj<typeof ImageAndTextBlock> = {
     length: 'short',
     image: (
       <Image
-        src="/placeholders/image-and-text-component-rating-placeholder.jpg"
+        src="/placeholders/hospital-in-london.jpg"
         alt="hospital building"
         width="643"
         height="605"
@@ -223,6 +223,58 @@ export const Rating: StoryObj<typeof ImageAndTextBlock> = {
           ),
         }}
       />,
+    ],
+  },
+};
+
+export const iconList: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'e',
+    imageAlignment: 'left',
+    length: 'short',
+    image: (
+      <Image
+        src="/placeholders/finger-touching-screen.jpg"
+        alt="two children playing"
+        width="643"
+        height="605"
+      />
+    ),
+
+    header: (
+      <Text tag="h2" variation="display-2">
+        Patient amenities
+      </Text>
+    ),
+    children: (
+      <>
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim.
+        </Text>
+      </>
+    ),
+
+    iconList: [
+      { icon: <Icons iconName="iconPin"></Icons>, text: 'Quis laboris proi' },
+      { icon: <Icons iconName="iconRedo"></Icons>, text: 'Quis laboris proi' },
+      {
+        icon: <Icons iconName="iconMobile"></Icons>,
+        text: 'Quis laboris proident sint amet',
+      },
+      {
+        icon: <Icons iconName="iconStethoscope"></Icons>,
+        text: 'Quis laboris proident sint amet',
+      },
+      {
+        icon: <Icons iconName="iconHospital"></Icons>,
+        text: 'Quis laboris proi',
+      },
+      {
+        icon: <Icons iconName="iconSearch"></Icons>,
+        text: 'Quis laboris proi',
+      },
     ],
   },
 };
