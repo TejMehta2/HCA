@@ -2,68 +2,70 @@
 @use '../../foundation/index.module.scss' as *;
 @use '../../utilities/index.module' as *;
 
-// Themes by letter from design library
-.a {
+// Themes by name from design library to match backend
+
+/* stylelint-disable selector-class-pattern */
+.A-HCA-Main-Turquoise {
   @include apply-theme-a;
 }
 
-.b {
+.B-HCA-Green {
   @include apply-theme-b;
 }
 
-.c {
+.C-HCA-Beige {
   @include apply-theme-c;
 }
 
-.d {
+.D-HCA-Light-Orange {
   @include apply-theme-d;
 }
 
-.e {
+.E-HCA-Dark-Grey {
   @include apply-theme-e;
 }
 
-.f {
+.F-HCA-White {
   @include apply-theme-f;
 }
 
-.g {
+.G-HCA-Green-40 {
   @include apply-theme-g;
 }
 
-.h {
+.H-HCA-Green-20 {
   @include apply-theme-h;
 }
 
-.i {
+.I-HCA-Turquoise-20 {
   @include apply-theme-i;
 }
 
-.j {
+.J-HCA-Turquoise-10 {
   @include apply-theme-j;
 }
 
-.k {
+.K-HCA-Turquoise-5 {
   @include apply-theme-k;
 }
 
-.l {
+.L-HCA-Coral-60 {
   @include apply-theme-l;
 }
 
 :export {
   mode: {
-    a: dark;
-    b: dark;
-    c: dark;
-    d: dark;
-    e: light;
-    f: dark;
-    g: dark;
-    h: dark;
-    i: dark;
-    j: dark;
-    k: dark;
-    l: dark;
+    a-hca-main-turquoise: dark;
+    b-hca-green: dark;
+    c-hca-beige: dark;
+    d-hca-light-orange: dark;
+    e-hca-dark-grey: light;
+    f-hca-white: dark;
+    g-hca-green-40: dark;
+    h-hca-green-20: dark;
+    i-hca-turquoise-20: dark;
+    j-hca-turquoise-10: dark;
+    k-hca-turquoise-5: dark;
+    l-hca-coral-60: dark;
   }
 }

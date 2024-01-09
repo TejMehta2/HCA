@@ -57,7 +57,7 @@ const mockProps: CardDoctorLayoutProps = {
       View all <strong>hip pain consultants</strong>
     </a>
   ),
-  theme: 'a',
+  theme: 'A-HCA-Main-Turquoise',
 };
 
 describe('CardDoctorLayout', () => {

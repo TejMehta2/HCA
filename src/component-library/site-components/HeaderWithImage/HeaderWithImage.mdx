@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as HeaderWithImageStories from './HeaderWithImage.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HeaderWithImageStories from './HeaderWithImage.stories';
 
 <Meta of={HeaderWithImageStories} />
 
@@ -15,7 +15,7 @@ This component takes a subset of the globally available themes as a prop. You ca
 
 In order to allow control of tags via the CMS, the title, copy and ctas props expect you to wrap their value in the `<Text />` and `<Buttons />` foundation and core components, as shown below:
 
-``` tsx
+```tsx
 <HeaderWithImage
   title={
     <Text variation={'display-1'} tag="h2">
@@ -25,9 +25,8 @@ In order to allow control of tags via the CMS, the title, copy and ctas props ex
   copy={
     <Text variation={'body-large'} tag="p">
       Quis laboris proident sint amet id cillum do dolor in tempor est.
-      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-      laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-      dolore.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
+      et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     </Text>
   }
   ctas={
@@ -58,6 +57,6 @@ In order to allow control of tags via the CMS, the title, copy and ctas props ex
       height="683"
     />
   }
-  theme={'b'}
+  theme={'B-HCA-Green'}
 />
 ```
