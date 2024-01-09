@@ -6,7 +6,7 @@ import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
 
 const mockProps: ArticleCategoriesProps = {
-  theme: 'd',
+  theme: 'D-HCA-Light-Orange',
   title: (
     <Text variation="display-3" tag="h3">
       Article categories

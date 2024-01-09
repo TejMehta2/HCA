@@ -5,5 +5,14 @@ export interface HeaderWithImageProps {
   copy: JSX.Element;
   ctas: JSX.Element;
   image: JSX.Element;
-  theme: Extract<Theme, 'a' | 'b' | 'c' | 'd' | 'e' | 'g' | 'h'>;
+  theme: Extract<
+    Theme,
+    | 'A-HCA-Main-Turquoise'
+    | 'B-HCA-Green'
+    | 'C-HCA-Beige'
+    | 'D-HCA-Light-Orange'
+    | 'E-HCA-Dark-Grey'
+    | 'G-HCA-Green-40'
+    | 'H-HCA-Green-20'
+  >;
 }

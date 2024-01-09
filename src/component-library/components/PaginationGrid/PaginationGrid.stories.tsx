@@ -65,7 +65,7 @@ const getPageContent = (page: number) => {
 
 export const Default: StoryObj<typeof PaginationGrid> = {
   args: {
-    theme: 'f',
+    theme: 'F-HCA-White',
     data: getPageContent(1),
     pageCount: pageCount,
     getPageContent: getPageContent,

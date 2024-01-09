@@ -42,7 +42,7 @@ export const FeaturedService: StoryObj<typeof CardNavigation> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>
@@ -77,7 +77,7 @@ export const FeaturedBlog: StoryObj<typeof CardNavigation> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>

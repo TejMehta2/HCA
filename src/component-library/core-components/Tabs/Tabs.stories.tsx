@@ -19,7 +19,7 @@ const meta: Meta<typeof Tabs> = {
   tags: [],
   decorators: [
     (Story) => (
-      <Themes theme={'f'}>
+      <Themes theme={'F-HCA-White'}>
         <Story />
       </Themes>
     ),

@@ -5,7 +5,7 @@ import { CardMapProps } from './CardMap.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CardMapProps = {
-  theme: 'e',
+  theme: 'E-HCA-Dark-Grey',
   amount: (
     <Text tag="p" variation="display-1">
       35

@@ -17,7 +17,14 @@ export interface HeaderLocationProps {
   address: address;
   ctas: JSX.Element;
   image: JSX.Element;
-  theme: Extract<Theme, 'g' | 'h' | 'i' | 'j' | 'k'>;
+  theme: Extract<
+    Theme,
+    | 'G-HCA-Green-40'
+    | 'H-HCA-Green-20'
+    | 'I-HCA-Turquoise-20'
+    | 'J-HCA-Turquoise-10'
+    | 'K-HCA-Turquoise-5'
+  >;
   cqc?: JSX.Element;
   doctify?: JSX.Element;
 }
