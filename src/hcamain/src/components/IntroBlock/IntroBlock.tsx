@@ -6,7 +6,7 @@ import {
   Text,
   RichText,
   Image,
-  Link
+  Link,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
@@ -86,12 +86,12 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       </ul>
       <br />
       {props?.fields?.CTAIcon && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-                  }}
-                />
-              )}
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+          }}
+        />
+      )}
       <Link field={props.fields.CTALink}></Link>
       <br />
       <span>

@@ -4,7 +4,7 @@ import {
   LinkField,
   ImageField,
   Text,
-  RichText
+  RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type CTAIconFields = {
@@ -28,7 +28,7 @@ interface Fields {
         Icon: CTAIconFields;
       };
       cTALink: { jsonValue: LinkField };
-      cTACardText: { jsonValue: Field<string>};
+      cTACardText: { jsonValue: Field<string> };
       pages: {
         PagesList: PagesFields[];
       };

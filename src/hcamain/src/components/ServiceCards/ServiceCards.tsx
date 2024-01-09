@@ -5,7 +5,7 @@ import {
   ImageField,
   Text,
   RichText,
-  Link
+  Link,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
