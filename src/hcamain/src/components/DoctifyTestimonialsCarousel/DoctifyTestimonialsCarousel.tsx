@@ -7,6 +7,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
+import { CarouselReviewsTheme } from '@component-library/site-components/CarouselReviews/CarouselReviews.types';
 
 interface TestimonialsFields {
   fields: {
@@ -46,6 +47,9 @@ export const Default = (
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
 
+  const themeName: CarouselReviewsTheme = props.params.Theme;
+  console.log(themeName);
+
   const ratingAsNumber = Number(props.fields.Reviews.fields.Stars.value);
 
   return (
@@ -56,7 +60,7 @@ export const Default = (
           <JssText field={props.fields.Reviews.fields.Reviews} /> Reviews
         </>
       }
-      theme="k"
+      theme={themeName}
     >
       {props.fields.Testimonials.map((testimonial, index) => (
         <React.Fragment key={index}>
