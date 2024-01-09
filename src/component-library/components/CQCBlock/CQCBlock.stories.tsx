@@ -35,7 +35,7 @@ export const Short: StoryObj<typeof CQCBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),
@@ -90,7 +90,7 @@ export const Rating: StoryObj<typeof CQCBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="f">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -114,7 +114,7 @@ export const RatingDark: StoryObj<typeof CQCBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),

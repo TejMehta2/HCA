@@ -179,7 +179,7 @@ export const Nesting: StoryObj<typeof Themes> = {
         <Tags>
           <a href="#">Tags</a>
         </Tags>
-        <Themes theme="a">
+        <Themes theme="A-HCA-Main-Turquoise">
           <div
             style={{
               display: 'grid',
@@ -201,7 +201,7 @@ export const Nesting: StoryObj<typeof Themes> = {
             <Tags>
               <a href="#">Tags</a>
             </Tags>
-            <Themes theme="e">
+            <Themes theme="E-HCA-Dark-Grey">
               <div
                 style={{
                   display: 'grid',

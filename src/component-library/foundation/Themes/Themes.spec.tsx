@@ -15,6 +15,9 @@ describe('Themes', () => {
   });
   it('Has data-theme attribute', async () => {
     const { getByText } = render(<Themes {...mockProps} />);
-    expect(getByText('Hello world')).toHaveAttribute('data-theme', 'a');
+    expect(getByText('Hello world')).toHaveAttribute(
+      'data-theme',
+      'A-HCA-Main-Turquoise'
+    );
   });
 });

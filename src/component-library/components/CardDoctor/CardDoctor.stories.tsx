@@ -78,18 +78,18 @@ export const CroppedImage: StoryObj<typeof CardDoctor> = {
 };
 
 const themes: ThemesProps['theme'][] = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
+  'A-HCA-Main-Turquoise',
+  'B-HCA-Green',
+  'C-HCA-Beige',
+  'D-HCA-Light-Orange',
+  'E-HCA-Dark-Grey',
+  'F-HCA-White',
+  'G-HCA-Green-40',
+  'H-HCA-Green-20',
+  'I-HCA-Turquoise-20',
+  'J-HCA-Turquoise-10',
+  'K-HCA-Turquoise-5',
+  'L-HCA-Coral-60',
 ];
 
 export const Themed: StoryObj<typeof CardDoctor> = {
