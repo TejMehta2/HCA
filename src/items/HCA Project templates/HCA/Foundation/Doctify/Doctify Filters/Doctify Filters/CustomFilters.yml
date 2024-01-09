@@ -1,23 +1,30 @@
 ﻿---
-ID: "5a674cd7-c9eb-4be4-8577-5c3d6d72c70c"
-Parent: "4d96e85b-0112-49db-9535-cad74644f85b"
+ID: "ab11cab9-17e6-42ac-98ca-aec3d7127a85"
+Parent: "8788a45c-672c-40fc-8b02-cfcf2b351eba"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Doctor Cards/Data/CTA Card
+Path: /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Filters/Doctify Filters/CustomFilters
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{5E6DDF22-B396-47D4-A0BD-D8A98F6FB035}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: General Link
+  Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 300
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Custom Filters
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231122T081541Z
+      Value: 20231109T160804Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3faa4817-5e98-44d1-9d99-13afb49d32b3"
+      Value: "a6afeecb-5f54-4f06-802e-7609be6cc1f6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231123T101304Z
+      Value: 20240108T115946Z

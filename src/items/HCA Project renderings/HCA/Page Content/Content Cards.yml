@@ -38,7 +38,7 @@ SharedFields:
                       {
                         url { path },
                       }
-                      ... on PatientStories
+                      ... on PatientStoryPage
                       {
                         url { path },
                       }
@@ -125,14 +125,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29df7deb-c28c-4a31-81bb-a308ef076cf6"
+      Value: "019ef559-35ed-49c2-8217-4f04429da5ec"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T215257Z
+      Value: 20240105T230946Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

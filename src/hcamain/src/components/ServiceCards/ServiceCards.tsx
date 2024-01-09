@@ -3,30 +3,33 @@ import {
   Field,
   LinkField,
   ImageField,
+  Text,
+  RichText,
+  Link
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-type CTAIconFields = {
-  SVGMarkup: Field<string>;
+type HCAIconFields = {
+  fields: {
+    SvgMarkup: Field<string>;
+  };
 };
 
 type ServiceFields = {
-  Title: Field<string>;
-  Description: Field<string>;
-  Image: ImageField;
-  Link: LinkField;
+  fields: {
+    Title: Field<string>;
+    Description: Field<string>;
+    Image: ImageField;
+    Link: LinkField;
+  };
 };
 
 interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
   Description: Field<string>;
-  cTAIcon: {
-    Icon: CTAIconFields[];
-  };
+  CTAIcon: HCAIconFields;
   CTALink: LinkField;
-  services: {
-    ServicesList: ServiceFields[];
-  };
+  Services: ServiceFields[];
 }
 
 type ServiceCardsProps = {
@@ -45,5 +48,40 @@ const ServiceCardsDefaultComponent = (
 );
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
-  return <ServiceCardsDefaultComponent {...props} />;
+  if (!props.fields) {
+    return <ServiceCardsDefaultComponent {...props} />;
+  }
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <Text field={props.fields.Heading} />
+      <br />
+      <Text field={props.fields.Title} />
+      <br />
+      <RichText field={props.fields.Description} />
+      <br />
+      {props?.fields?.CTAIcon && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+          }}
+        />
+      )}
+      <Link field={props.fields.CTALink}></Link>
+      <br />
+      <span>
+        <b>ServiceFields</b>
+      </span>
+      <br />
+      <ul>
+        {props.fields.Services.map((service, index) => (
+          <li key={index}>
+            <Text field={service.fields.Title} />
+            <br />
+            <RichText field={service.fields.Description} />
+          </li>
+        ))}
+      </ul>
+      <br />
+    </div>
+  );
 };

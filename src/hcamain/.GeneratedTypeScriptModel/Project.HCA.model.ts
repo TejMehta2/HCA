@@ -600,7 +600,7 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
             */
-            "CTA Card Text"?: Field<string>;
+            CTACardText?: Field<string>;
 
             /**
             * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
@@ -628,7 +628,7 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
             */
-            "CTA Card Text"?: {
+            CTACardText?: {
                 jsonValue: Field<string>
             };
 
@@ -814,7 +814,7 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Custom Filters field (ab11cab9-17e6-42ac-98ca-aec3d7127a85).
             */
-            "Custom Filters"?: Item[];
+            CustomFilters?: Item[];
 
             /**
             * Represents the Practice field (d4e8f601-4189-4c53-a450-1b938d34f437).
@@ -837,7 +837,7 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Custom Filters field (ab11cab9-17e6-42ac-98ca-aec3d7127a85).
             */
-            "Custom Filters"?: {
+            CustomFilters?: {
                 jsonValue: Item[]
             };
 
@@ -1045,12 +1045,12 @@ HCAProjectFoundation.Ctabase &  {
             /**
             * Represents the CTA Card field (5a674cd7-c9eb-4be4-8577-5c3d6d72c70c).
             */
-            "CTA Card"?: LinkField;
+            CTACard?: LinkField;
 
             /**
-            * Represents the Number of Cards field (f75ab386-350c-44ca-97a1-3b63a8a61cdc).
+            * Represents the Number Of Cards field (f75ab386-350c-44ca-97a1-3b63a8a61cdc).
             */
-            "Number of Cards"?: Field<number>;
+            NumberOfCards?: Field<number>;
 
             /**
             * Represents the Title field (fd86c684-2a05-4705-8d10-4eb1bc9156f5).
@@ -1069,14 +1069,14 @@ HCAProjectFoundation.CtabaseJson &  {
             /**
             * Represents the CTA Card field (5a674cd7-c9eb-4be4-8577-5c3d6d72c70c).
             */
-            "CTA Card"?: {
+            CTACard?: {
                 jsonValue: LinkField
             };
 
             /**
-            * Represents the Number of Cards field (f75ab386-350c-44ca-97a1-3b63a8a61cdc).
+            * Represents the Number Of Cards field (f75ab386-350c-44ca-97a1-3b63a8a61cdc).
             */
-            "Number of Cards"?: {
+            NumberOfCards?: {
                 jsonValue: Field<number>
             };
 

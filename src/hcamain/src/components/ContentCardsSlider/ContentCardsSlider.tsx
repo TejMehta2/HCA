@@ -3,32 +3,32 @@ import {
   Field,
   LinkField,
   ImageField,
+  Text,
+  RichText
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type CTAIconFields = {
-  SVGMarkup: Field<string>;
+  svgMarkup: Field<string>;
 };
 
 interface PagesFields {
-  Title: Field<string>;
-  Description: Field<string>;
-  Image: ImageField;
-  Link: LinkField;
-  url: {
-    path: Field<string>;
-  };
+  title: Field<string>;
+  description: Field<string>;
+  image: ImageField;
+  link: { url: string };
+  url: { path: string };
 }
 
 interface Fields {
   data: {
     item: {
-      Heading: Field<string>;
-      Title: Field<string>;
-      CTAIcon: {
-        Icon: CTAIconFields[];
+      heading: { jsonValue: Field<string> };
+      title: { jsonValue: Field<string> };
+      cTAIcon: {
+        Icon: CTAIconFields;
       };
-      CTALink: LinkField;
-      CTACardText: Field<string>;
+      cTALink: { jsonValue: LinkField };
+      cTACardText: { jsonValue: Field<string>};
       pages: {
         PagesList: PagesFields[];
       };
@@ -50,5 +50,29 @@ const ContentCardsSliderDefaultComponent = (
 );
 
 export const Default = (props: ContentCardsSliderProps): JSX.Element => {
-  return <ContentCardsSliderDefaultComponent {...props} />;
+  if (!props.fields) {
+    return <ContentCardsSliderDefaultComponent {...props} />;
+  }
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <Text field={props.fields.data.item.title.jsonValue} />
+      <br />
+      <Text field={props.fields.data.item.cTACardText.jsonValue} />
+      <ul>
+        {props.fields.data.item.pages.PagesList.map((cards, index) => (
+          <li key={index}>
+            <Text field={cards.title} />
+            <br />
+            <RichText tag="span" field={cards.description} />
+            <br />
+            {!cards.link ? (
+              <a href={cards.url.path}>Link</a>
+            ) : (
+              <a href={cards.link.url}>Url</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
