@@ -100,7 +100,7 @@ export const Default: StoryObj<typeof HeaderLocation> = {
     ),
     image: (
       <Image
-        src="/placeholders/header-location-placeholder.png"
+        src="/placeholders/the-wellington-hospital.png"
         alt="lab technician"
         width="1024"
         height="683"

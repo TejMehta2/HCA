@@ -17,6 +17,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     length = 'short',
     theme,
     ratings,
+    amenities,
   } = props;
 
   const isXl = useWindowWidth(1440);
@@ -24,7 +25,12 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
   return (
     <Themes theme={theme}>
       <div className={styles.background}>
-        <div className={styles['wrapper']}>
+        <div
+          className={[
+            styles['wrapper'],
+            amenities ? styles['amenties-wrapper'] : '',
+          ].join(' ')}
+        >
           <div
             className={[
               styles['container'],
@@ -58,6 +64,16 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               )}
 
               {ratings && <div className={styles.ratings}>{ratings}</div>}
+              {amenities && (
+                <ul className={styles.amenities}>
+                  {amenities.map((amenity, index) => (
+                    <li key={index}>
+                      {amenity.icon}
+                      {amenity.text}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>
