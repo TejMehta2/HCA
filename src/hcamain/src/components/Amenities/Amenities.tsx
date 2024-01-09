@@ -8,7 +8,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
-import iconList from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
+import { iconList } from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
 
 type HCAIconFields = {
   fields: {
@@ -66,13 +66,11 @@ export const Default = (props: AmenitiesProps): JSX.Element => {
     });
   });
 
-  console.log(props);
-
   return (
     <div className={`component ${props.params.styles}`}>
       <ImageAndTextBlock
-        theme={props.params.Theme}
-        ImageAligment="left"
+        theme="E-HCA-Dark-Grey"
+        imageAlignment="left"
         length="short"
         header={
           <Text tag="h2" variation="display-2">
@@ -86,18 +84,6 @@ export const Default = (props: AmenitiesProps): JSX.Element => {
           <JssText field={props.fields.Text}></JssText>
         </Text>
       </ImageAndTextBlock>
-
-      {/* <RichText field={props.fields.Title} />
-      <ul>
-        {props.fields.AmenitiesList.map((story, index) => (
-          <li key={index}>
-            <Text field={story.fields.Title} />
-            <span
-              
-            />
-          </li>
-        ))}
-      </ul> */}
     </div>
   );
 };
