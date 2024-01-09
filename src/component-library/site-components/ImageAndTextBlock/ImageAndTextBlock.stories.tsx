@@ -256,7 +256,7 @@ export const Amenities: StoryObj<typeof ImageAndTextBlock> = {
       </>
     ),
 
-    amenities: [
+    itemsList: [
       { icon: <Icons iconName="iconPin"></Icons>, text: 'Quis laboris proi' },
       { icon: <Icons iconName="iconRedo"></Icons>, text: 'Quis laboris proi' },
       {
