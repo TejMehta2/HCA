@@ -1,4 +1,4 @@
-﻿# may contain OAuth secrets, do not commit
+# may contain OAuth secrets, do not commit
 .sitecore/user.json
 
 # NuGet cache for Sitecore CLI
@@ -82,3 +82,4 @@ packages/
 /node_modules
 src/component-library/node_modules
 *.tsbuildinfo
+src/hcamain/.GeneratedTypeScriptModel/
