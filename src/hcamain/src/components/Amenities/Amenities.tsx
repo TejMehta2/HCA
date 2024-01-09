@@ -2,9 +2,13 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  RichText,
-  Text,
+  Text as JssText,
+  RichText as JssRichText,
+  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
+import Text from '@component-library/foundation/Text/Text';
+import iconList from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
 
 type HCAIconFields = {
   fields: {
@@ -27,7 +31,9 @@ interface Fields {
 }
 
 type AmenitiesProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+  };
   fields: Fields;
 };
 
@@ -45,21 +51,53 @@ export const Default = (props: AmenitiesProps): JSX.Element => {
   if (!props.fields) {
     return <AmenitiesDefaultComponent {...props} />;
   }
+
+  const amenitiesList: iconList = [];
+  props.fields.AmenitiesList.map((item) => {
+    amenitiesList.push({
+      text: item.fields.Title.value,
+      icon: (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: item.fields.Icon.fields.SvgMarkup.value,
+          }}
+        ></span>
+      ),
+    });
+  });
+
+  console.log(props);
+
   return (
     <div className={`component ${props.params.styles}`}>
-      <RichText field={props.fields.Title} />
+      <ImageAndTextBlock
+        theme={props.params.Theme}
+        ImageAligment="left"
+        length="short"
+        header={
+          <Text tag="h2" variation="display-2">
+            <JssRichText field={props.fields.Title} />
+          </Text>
+        }
+        iconList={amenitiesList}
+        image={<JssImage field={props.fields.Image} />}
+      >
+        <Text tag="p" variation="body-large">
+          <JssText field={props.fields.Text}></JssText>
+        </Text>
+      </ImageAndTextBlock>
+
+      {/* <RichText field={props.fields.Title} />
       <ul>
         {props.fields.AmenitiesList.map((story, index) => (
           <li key={index}>
             <Text field={story.fields.Title} />
             <span
-              dangerouslySetInnerHTML={{
-                __html: story.fields.Icon.fields.SvgMarkup.value,
-              }}
+              
             />
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
