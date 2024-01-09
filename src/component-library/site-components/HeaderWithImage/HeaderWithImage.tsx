@@ -4,7 +4,7 @@ import styles from './HeaderWithImage.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
-  const { title, copy, ctas, theme = 'a', image } = props;
+  const { title, copy, ctas, theme = 'A-HCA-Main-Turquoise', image } = props;
   return (
     <Themes theme={theme}>
       <div className={styles['hero-with-image']}>

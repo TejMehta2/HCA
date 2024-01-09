@@ -10,7 +10,7 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
     copy,
     ctas,
     children,
-    theme = 'a',
+    theme = 'A-HCA-Main-Turquoise',
     variation = '3-columns',
   } = props;
   return (

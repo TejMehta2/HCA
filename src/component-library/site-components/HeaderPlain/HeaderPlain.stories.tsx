@@ -15,7 +15,7 @@ const meta: Meta<typeof HeaderPlain> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'a'}>
+      <Themes theme={'A-HCA-Main-Turquoise'}>
         <Story />
       </Themes>
     ),
@@ -48,18 +48,18 @@ export const Default: StoryObj<typeof HeaderPlain> = {
 };
 
 const themes: ThemesProps['theme'][] = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
+  'A-HCA-Main-Turquoise',
+  'B-HCA-Green',
+  'C-HCA-Beige',
+  'D-HCA-Light-Orange',
+  'E-HCA-Dark-Grey',
+  'F-HCA-White',
+  'G-HCA-Green-40',
+  'H-HCA-Green-20',
+  'I-HCA-Turquoise-20',
+  'J-HCA-Turquoise-10',
+  'K-HCA-Turquoise-5',
+  'L-HCA-Coral-60',
 ];
 export const Themed: StoryObj<typeof HeaderPlain> = {
   args: {

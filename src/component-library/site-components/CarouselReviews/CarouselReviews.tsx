@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from '../CarouselCards/CustomArrows';
 import Slider from '@ant-design/react-slick';
+import DoctifyLogo from '../../assets/images/doctify-dark.png';
 
 const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
   const { theme, rating, reviewCount, children } = props;
@@ -68,7 +69,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
               <span>Verified by</span>
             </Text>
             <Image
-              src="/doctify-dark.png"
+              src={DoctifyLogo}
               alt="doctify logo"
               width="83"
               height="21"

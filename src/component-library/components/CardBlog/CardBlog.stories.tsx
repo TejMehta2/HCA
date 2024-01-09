@@ -41,7 +41,7 @@ export const Default: StoryObj<typeof CardBlog> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="a">
+      <Themes theme="A-HCA-Main-Turquoise">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>
@@ -79,7 +79,7 @@ export const Featured: StoryObj<typeof CardBlog> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="a">
+      <Themes theme="A-HCA-Main-Turquoise">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>
@@ -116,7 +116,7 @@ export const WithImage: StoryObj<typeof CardBlog> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="a">
+      <Themes theme="A-HCA-Main-Turquoise">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>
@@ -126,18 +126,18 @@ export const WithImage: StoryObj<typeof CardBlog> = {
 };
 
 const themes: ThemesProps['theme'][] = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
+  'A-HCA-Main-Turquoise',
+  'B-HCA-Green',
+  'C-HCA-Beige',
+  'D-HCA-Light-Orange',
+  'E-HCA-Dark-Grey',
+  'F-HCA-White',
+  'G-HCA-Green-40',
+  'H-HCA-Green-20',
+  'I-HCA-Turquoise-20',
+  'J-HCA-Turquoise-10',
+  'K-HCA-Turquoise-5',
+  'L-HCA-Coral-60',
 ];
 export const Themed: StoryObj<typeof CardBlog> = {
   args: {

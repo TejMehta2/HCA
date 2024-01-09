@@ -57,10 +57,10 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
           <div className={styles.reviews}>
             <div className={styles.cqc}>{cqc}</div>
             <div className={styles.mobile}>
-              <Themes theme={'a'}>{doctify}</Themes>
+              <Themes theme={'A-HCA-Main-Turquoise'}>{doctify}</Themes>
             </div>
             <div className={styles.tablet}>
-              <Themes theme={'e'}>{doctify}</Themes>
+              <Themes theme={'E-HCA-Dark-Grey'}>{doctify}</Themes>
             </div>
           </div>
         </div>
