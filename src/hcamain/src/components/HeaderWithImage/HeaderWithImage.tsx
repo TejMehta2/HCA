@@ -62,6 +62,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
+  const buttonSize: ButtonProps['size'] = 'small'; // Explicit type here to provide type safety
   return (
     <div className={`component ${props.params.styles}`}>
       <HeaderWithImage
