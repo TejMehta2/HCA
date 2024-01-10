@@ -1,10 +1,10 @@
 import React from 'react';
 import {
+  Image as JssImage,
   Field,
   Link as JssLink,
   LinkField,
-  ImageField,
-  Text as JSSText,
+  ImageFieldValue,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
@@ -20,8 +20,7 @@ type CTAIconFields = {
 interface PagesFields {
   title: Field<string>;
   description: Field<string>;
-  image: ImageField;
-  link: { url: string };
+  image: ImageFieldValue;
   url: { path: string };
 }
 
@@ -67,7 +66,15 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
   console.log(props);
   return (
     <CarouselCards
-      title={<span>{props.fields.data.item.title.jsonValue.value}</span>}
+      theme={props.params.Theme}
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-4'}
+        >
+          {props.fields.data.item.title.jsonValue.value}
+        </Text>
+      }
       link={
         <JssLink field={props.fields.data.item.cTALink.jsonValue}>
           <RichText
@@ -82,62 +89,33 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
       {props.fields.data.item.pages.PagesList.map((cards, index) => (
         <CardContent
           key={index}
+          image={
+            cards.image?.src ? <JssImage field={cards.image} /> : undefined
+          }
           title={
-            <Text tag={props.params.HeadingTag} variation="display-4">
+            <Text tag="h3" variation="display-4">
               {cards.title.value}
             </Text>
           }
           bodyCopy={
-            <Text tag="p" variation="body-large">
-              {cards.description.value}
-            </Text>
+            cards.description ? (
+              <Text tag="p" variation="body-large">
+                <RichText tag="span" field={cards.description} />
+              </Text>
+            ) : undefined
           }
           link={
-            !cards.link ? (
-              <a href={cards.url.path}>
-                <RichText
-                  tag="span"
-                  field={{
-                    value: props.fields.data.item.cTACardText.jsonValue.value,
-                  }}
-                />
-              </a>
-            ) : (
-              <a href={cards.link.url}>
-                <RichText
-                  tag="span"
-                  field={{
-                    value: props.fields.data.item.cTACardText.jsonValue.value,
-                  }}
-                />
-              </a>
-            )
+            <a href={cards.url.path}>
+              <RichText
+                tag="span"
+                field={{
+                  value: props.fields.data.item.cTACardText.jsonValue.value,
+                }}
+              />
+            </a>
           }
         />
       ))}
     </CarouselCards>
   );
 };
-
-{
-  /* <div className={`component ${props.params.styles}`}>
-  <Text field={props.fields.data.item.title.jsonValue} />
-  <br />
-  <Text field={props.fields.data.item.cTACardText.jsonValue} />
-  <ul>
-    {props.fields.data.item.pages.PagesList.map((cards, index) => (
-      <li key={index}>
-        <Text field={cards.title} />
-        <br />
-        <RichText tag="span" field={cards.description} />
-        <br />
-        {!cards.link ? (
-          <a href={cards.url.path}>Link</a>
-        ) : (
-          <a href={cards.link.url}>Url</a>
-        )}
-      </li>
-    ))}
-  </ul>
-</div>; */
-}
