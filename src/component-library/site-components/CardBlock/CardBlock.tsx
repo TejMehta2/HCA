@@ -12,18 +12,23 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
     children,
     theme = 'A-HCA-Main-Turquoise',
     variation = '3-columns',
+    gapSize = 'large',
   } = props;
   return (
     <Themes theme={theme}>
       <div className={styles.block}>
         <div
-          className={[styles.grid, styles[`variation-${variation}`]].join(' ')}
+          className={[
+            styles.grid,
+            styles[`variation-${variation}`],
+            styles[gapSize],
+          ].join(' ')}
         >
           <div className={styles.header}>
-            <div className={styles.subtitle}>{subtitle}</div>
+            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             <div className={styles.title}>{title}</div>
-            <div className={styles.copy}>{copy}</div>
-            <div className={styles.ctas}>{ctas}</div>
+            {copy && <div className={styles.copy}>{copy}</div>}
+            {ctas && <div className={styles.ctas}>{ctas}</div>}
           </div>
           {children}
         </div>
