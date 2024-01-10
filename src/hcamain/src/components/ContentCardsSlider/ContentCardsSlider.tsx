@@ -64,7 +64,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
   if (!props.fields) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
-  console.log(props);
+
   return (
     <CarouselCards
       theme={props.params.Theme || 'F-HCA-White'}
