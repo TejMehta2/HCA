@@ -11,7 +11,7 @@ All npm commands below should be run at the root of the solution i.e the directo
 
 ### Component library Storybook
 
-1. Run `npm run storybook`
+1. Run `npm run component-library:storybook`
 2. Navigate your browser to the local host reported in the console
 
 ### NextJS Front end
