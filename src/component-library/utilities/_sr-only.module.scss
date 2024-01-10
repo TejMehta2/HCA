@@ -1,10 +1,11 @@
 // For elements which are only visible to screen-reader users e.g. radio fields which are used for utility
+/* stylelint-disable unit-disallowed-list */
 @mixin sr-only {
   position: absolute;
-  width: px-to-rem(1);
-  height: px-to-rem(1);
+  width: 1px;
+  height: 1px;
   padding: 0;
-  margin: px-to-rem(-1);
+  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
