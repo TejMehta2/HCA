@@ -42,7 +42,6 @@
   }
 }
 
-// Modal variations
 .modal {
   pointer-events: all;
   border-radius: $radius-large $radius-large 0 0;
@@ -133,6 +132,7 @@
   }
 }
 
+// Content variation overrides from props
 .filters {
   .close {
     top: px-to-rem(27);
@@ -149,5 +149,11 @@
     flex-direction: column;
     border-radius: $radius-large 0 0 0;
     overflow: hidden;
+  }
+}
+
+.sorting {
+  .modal {
+    top: auto;
   }
 }

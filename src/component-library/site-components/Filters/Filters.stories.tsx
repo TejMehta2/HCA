@@ -22,7 +22,7 @@ export const Default: StoryObj<typeof Filters> = {
     resultsCount: 20,
     filters: [
       {
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         title: 'Locations',
         children: (
           <Checkboxes>
@@ -79,7 +79,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -135,7 +135,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -191,7 +191,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -247,7 +247,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -303,7 +303,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -359,7 +359,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -403,7 +403,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -447,7 +447,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -491,7 +491,7 @@ export const Default: StoryObj<typeof Filters> = {
       },
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
@@ -536,7 +536,7 @@ export const Default: StoryObj<typeof Filters> = {
 
       {
         title: 'Locations',
-        accordionClass: 'filters',
+        contentVariation: 'filters',
         children: (
           <Checkboxes>
             <Checkbox
