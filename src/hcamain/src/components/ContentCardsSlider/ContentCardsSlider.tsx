@@ -12,6 +12,7 @@ import Text from '@component-library/foundation/Text/Text';
 import CardContent from 'temp/component-library/components/CardContent/CardContent';
 import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import { TextProps } from '@component-library/foundation/Text/Text.types';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type CTAIconFields = {
   svgMarkup: Field<string>;
@@ -66,7 +67,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
   console.log(props);
   return (
     <CarouselCards
-      theme={props.params.Theme}
+      theme={props.params.Theme || 'F-HCA-White'}
       title={
         <Text
           tag={props.params.HeadingTag || 'h2'}
@@ -93,7 +94,10 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
             cards.image?.src ? <JssImage field={cards.image} /> : undefined
           }
           title={
-            <Text tag="h3" variation="display-4">
+            <Text
+              tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+              variation="display-4"
+            >
               {cards.title.value}
             </Text>
           }
