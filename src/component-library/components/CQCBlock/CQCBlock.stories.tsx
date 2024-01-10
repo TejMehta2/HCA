@@ -64,6 +64,14 @@ export const Long: StoryObj<typeof CQCBlock> = {
       values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
+
+  decorators: [
+    (Story) => (
+      <Themes theme="F-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const Rating: StoryObj<typeof CQCBlock> = {
