@@ -222,7 +222,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={0}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -245,7 +245,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={1}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -268,7 +268,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={2}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -291,7 +291,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={3}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"

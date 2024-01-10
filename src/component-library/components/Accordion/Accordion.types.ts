@@ -8,5 +8,5 @@ export interface AccordionProps {
   isActive: boolean;
   closeIcon?: IconName;
   openIcon?: IconName;
-  accordionClass?: string;
+  contentVariation?: 'filters';
 }

@@ -50,7 +50,7 @@ const preview: Preview = {
 
   },
   decorators: [
-    (Story) => (<Themes theme='j'><Story/></Themes>)
+    (Story) => (<Themes theme={'J-HCA-Turquoise-10'}><Story/></Themes>)
   ]
 };
 

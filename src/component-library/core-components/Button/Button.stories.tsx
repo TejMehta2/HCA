@@ -36,7 +36,7 @@ export const LargeFullDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="f">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -58,7 +58,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),
@@ -88,7 +88,7 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="f">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -118,7 +118,7 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),
@@ -141,7 +141,7 @@ export const SmallFullDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="f">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -171,7 +171,7 @@ export const SmallFullLight: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),
@@ -216,7 +216,7 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="e">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),

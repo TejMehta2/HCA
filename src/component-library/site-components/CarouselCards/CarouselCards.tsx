@@ -61,7 +61,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
   };
 
   return (
-    <Themes theme="c">
+    <Themes theme="C-HCA-Beige">
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
           <div className={styles['intro']}>

@@ -50,7 +50,7 @@ const meta: Meta<typeof CardBlock> = {
         </TextButton>
       </>
     ),
-    theme: 'j',
+    theme: 'J-HCA-Turquoise-10',
   },
   argTypes: {
     title: {

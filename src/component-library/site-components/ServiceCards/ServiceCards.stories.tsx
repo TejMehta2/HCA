@@ -43,7 +43,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
       <>
         <CardService link={<a href="#">Learn More</a>}>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -53,7 +53,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
 
         <CardService link={<a href="#">Learn More</a>}>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -63,7 +63,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
 
         <CardService link={<a href="#">Learn More</a>}>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -73,7 +73,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
 
         <CardService link={<a href="#">Learn More</a>}>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -83,7 +83,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
 
         <CardService link={<a href="#">Learn More</a>}>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"

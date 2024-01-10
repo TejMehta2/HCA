@@ -7,7 +7,7 @@ import Text from '../../foundation/Text/Text';
 import CardPatientStories from '../../components/CardPatientStories/CardPatientStories';
 
 const mockProps: CardGridProps = {
-  theme: 'a',
+  theme: 'A-HCA-Main-Turquoise',
   children: [
     <CardPatientStories
       key={0}

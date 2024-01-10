@@ -2,68 +2,71 @@
 @use '../../foundation/index.module.scss' as *;
 @use '../../utilities/index.module' as *;
 
-// Themes by letter from design library
-.a {
+// Themes by name from design library to match backend
+
+/* stylelint-disable selector-class-pattern */
+.A-HCA-Main-Turquoise {
   @include apply-theme-a;
 }
 
-.b {
+.B-HCA-Green {
   @include apply-theme-b;
 }
 
-.c {
+.C-HCA-Beige {
   @include apply-theme-c;
 }
 
-.d {
+.D-HCA-Light-Orange {
   @include apply-theme-d;
 }
 
-.e {
+.E-HCA-Dark-Grey {
   @include apply-theme-e;
 }
 
-.f {
+.F-HCA-White {
   @include apply-theme-f;
 }
 
-.g {
+.G-HCA-Green-40 {
   @include apply-theme-g;
 }
 
-.h {
+.H-HCA-Green-20 {
   @include apply-theme-h;
 }
 
-.i {
+.I-HCA-Turquoise-20 {
   @include apply-theme-i;
 }
 
-.j {
+.J-HCA-Turquoise-10 {
   @include apply-theme-j;
 }
 
-.k {
+.K-HCA-Turquoise-5 {
   @include apply-theme-k;
 }
 
-.l {
+.L-HCA-Coral-60 {
   @include apply-theme-l;
 }
 
+/* prettier-ignore */
 :export {
   mode: {
-    a: dark;
-    b: dark;
-    c: dark;
-    d: dark;
-    e: light;
-    f: dark;
-    g: dark;
-    h: dark;
-    i: dark;
-    j: dark;
-    k: dark;
-    l: dark;
+    A-HCA-Main-Turquoise: dark;
+    B-HCA-Green: dark;
+    C-HCA-Beige: dark;
+    D-HCA-Light-Orange: dark;
+    E-HCA-Dark-Grey: light;
+    F-HCA-White: dark;
+    G-HCA-Green-40: dark;
+    H-HCA-Green-20: dark;
+    I-HCA-Turquoise-20: dark;
+    J-HCA-Turquoise-10: dark;
+    K-HCA-Turquoise-5: dark;
+    L-HCA-Coral-60: dark;
   }
 }

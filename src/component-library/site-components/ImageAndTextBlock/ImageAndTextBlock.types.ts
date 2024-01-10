@@ -17,4 +17,8 @@ export interface ImageAndTextBlockProps {
   length?: lengthTypes;
   theme: Theme;
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
+  iconList?: {
+    icon: ReactNode | JSX.Element;
+    text: string;
+  }[];
 }

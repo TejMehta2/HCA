@@ -28,7 +28,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
       {header && <div className={styles.header}>{header}</div>}
 
       <div className={styles.accordions}>
-        {accordions.map(({ title, children, accordionClass }, index) => (
+        {accordions.map(({ title, children, contentVariation }, index) => (
           <Accordion
             key={index}
             title={title}
@@ -36,7 +36,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
             onShow={() => onShow(index)}
             openIcon={openIcon}
             closeIcon={closeIcon}
-            accordionClass={accordionClass}
+            contentVariation={contentVariation}
           >
             {children}
           </Accordion>

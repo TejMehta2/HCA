@@ -5,7 +5,7 @@ import { CTABlockProps } from './CTABlock.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CTABlockProps = {
-  theme: 'a',
+  theme: 'A-HCA-Main-Turquoise',
   subheader: (
     <Text tag="p" variation="subheading-1">
       meta title

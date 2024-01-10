@@ -14,13 +14,13 @@ const mockProps: ImageAndTextBlockProps = {
   ),
   image: (
     <Image
-      src="/placeholders/image-and-text-component-placeholder.jpg"
+      src="/placeholders/children-playing.jpg"
       alt="two children playing"
       width="643"
       height="605"
     />
   ),
-  theme: 'a',
+  theme: 'A-HCA-Main-Turquoise',
 };
 
 describe('ImageAndTextBlock', () => {
