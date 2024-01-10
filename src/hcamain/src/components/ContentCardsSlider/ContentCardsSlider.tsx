@@ -9,7 +9,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
-import CardContent from 'temp/component-library/components/CardContent/CardContent';
+import CardContent from '@component-library/components/CardContent/CardContent';
 import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import { TextProps } from '@component-library/foundation/Text/Text.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
