@@ -10,6 +10,8 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderWithImage from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
+import { TextVariationUnionTypes } from '@component-library/foundation/Text/Text.types';
+import { HeaderWithImageProps as ThemeProps } from '@component-library/site-components/HeaderWithImage/HeaderWithImage.types';
 //import Button from '@component-library/core-components/Button/Button';
 
 interface Fields {
@@ -19,7 +21,13 @@ interface Fields {
 }
 
 type HeaderWithImageProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: ThemeProps['theme']; // TODO - this should reflect what CMS provides, not what FE consumes
+    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
+    HeadingSize: TextVariationUnionTypes; // TODO - this should reflect what CMS provides, not what FE consumes
+    styles: string;
+  };
   rendering: ComponentRendering;
   fields: Fields;
 };
@@ -57,9 +65,12 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
   return (
     <div className={`component ${props.params.styles}`}>
       <HeaderWithImage
-        theme="a"
+        theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
         title={
-          <Text variation="display-1" tag="h2">
+          <Text
+            variation={props.params.HeadingSize || 'display-1'}
+            tag={props.params.HeadingTag || 'h2'}
+          >
             <JSSText field={props.fields.Title} />
           </Text>
         }

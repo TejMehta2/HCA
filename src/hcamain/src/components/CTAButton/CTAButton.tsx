@@ -1,5 +1,6 @@
 import React from 'react';
-import { Field, LinkField, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import Button from '@component-library/core-components/Button/Button';
 
 type CTAIconFields = {
   fields: {
@@ -31,28 +32,46 @@ export const Primary = (props: CTAProps): JSX.Element => {
     return <CTADefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
+    <Button theme="full" size="large">
       <a href={props.fields.CTALink.value.href}>
-        <Text
+        {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            }}
+          />
+        )}
+        <RichText
           tag="span"
           field={{
             value: props.fields.CTALink.value.text,
           }}
         />
       </a>
-    </div>
+    </Button>
   );
 };
 
 export const Secondary = (props: CTAProps): JSX.Element => {
-  return <CTADefaultComponent {...props} />;
+  return (
+    <Button theme="outline" size="large">
+      <a href={props.fields.CTALink.value.href}>
+        {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            }}
+          />
+        )}
+        <RichText
+          tag="span"
+          field={{
+            value: props.fields.CTALink.value.text,
+          }}
+        />
+      </a>
+    </Button>
+  );
 };
 
 export const LightText = (props: CTAProps): JSX.Element => {
