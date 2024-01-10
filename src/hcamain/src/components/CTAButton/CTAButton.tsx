@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 
 type CTAIconFields = {
   fields: {
@@ -16,6 +17,7 @@ interface Fields {
 type CTAProps = {
   params: { [key: string]: string };
   fields: Fields;
+  size: ButtonProps['size'];
 };
 
 const CTADefaultComponent = (props: CTAProps): JSX.Element => (
@@ -27,12 +29,11 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
 );
 
 export const Primary = (props: CTAProps): JSX.Element => {
-  console.log(props.fields);
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
   return (
-    <Button theme="full" size="large">
+    <Button theme="full" size={props.size || 'large'}>
       <a href={props.fields.CTALink.value.href}>
         {props?.fields?.CTAIcon?.fields.SvgMarkup && (
           <span
@@ -54,7 +55,7 @@ export const Primary = (props: CTAProps): JSX.Element => {
 
 export const Secondary = (props: CTAProps): JSX.Element => {
   return (
-    <Button theme="outline" size="large">
+    <Button theme="outline" size={props.size || 'large'}>
       <a href={props.fields.CTALink.value.href}>
         {props?.fields?.CTAIcon?.fields.SvgMarkup && (
           <span

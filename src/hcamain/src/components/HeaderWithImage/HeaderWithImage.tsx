@@ -12,7 +12,7 @@ import HeaderWithImage from '@component-library/site-components/HeaderWithImage/
 import Text from '@component-library/foundation/Text/Text';
 import { TextVariationUnionTypes } from '@component-library/foundation/Text/Text.types';
 import { HeaderWithImageProps as ThemeProps } from '@component-library/site-components/HeaderWithImage/HeaderWithImage.types';
-//import Button from '@component-library/core-components/Button/Button';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 
 interface Fields {
   Title: Field<string>;
@@ -80,7 +80,13 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           </Text>
         }
         image={<JSSImage field={props.fields.Image} />}
-        ctas={<Placeholder name={phKey} rendering={props.rendering} />}
+        ctas={
+          <Placeholder
+            name={phKey}
+            rendering={props.rendering}
+            size={buttonSize}
+          />
+        }
       />
     </div>
   );
