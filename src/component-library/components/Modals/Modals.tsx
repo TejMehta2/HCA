@@ -15,7 +15,7 @@ const Modals = (
     children,
     defaultOpen = false,
     variation = 'full',
-    modalClass,
+    contentVariation,
   } = props;
   const {
     draggable,
@@ -94,7 +94,9 @@ const Modals = (
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={[wrapper, modalClass && styles[modalClass]].join(' ')}
+      className={[wrapper, contentVariation && styles[contentVariation]].join(
+        ' '
+      )}
     >
       <Overlay />
       <div
