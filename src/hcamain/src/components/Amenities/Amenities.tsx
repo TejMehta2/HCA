@@ -41,12 +41,36 @@ const AmenitiesDefaultComponent = (props: AmenitiesProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: AmenitiesProps): JSX.Element => {
+export const ImageLeft = (props: AmenitiesProps): JSX.Element => {
   if (!props.fields) {
     return <AmenitiesDefaultComponent {...props} />;
   }
   return (
     <div className={`component ${props.params.styles}`}>
+      <RichText field={props.fields.Title} />
+      <ul>
+        {props.fields.AmenitiesList.map((story, index) => (
+          <li key={index}>
+            <Text field={story.fields.Title} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: story.fields.Icon.fields.SvgMarkup.value,
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export const ImageRight = (props: AmenitiesProps): JSX.Element => {
+  if (!props.fields) {
+    return <AmenitiesDefaultComponent {...props} />;
+  }
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <span>Image Right</span>
       <RichText field={props.fields.Title} />
       <ul>
         {props.fields.AmenitiesList.map((story, index) => (

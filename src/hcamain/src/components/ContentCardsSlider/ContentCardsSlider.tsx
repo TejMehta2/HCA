@@ -15,7 +15,6 @@ interface PagesFields {
   title: Field<string>;
   description: Field<string>;
   image: ImageField;
-  link: { url: string };
   url: { path: string };
 }
 

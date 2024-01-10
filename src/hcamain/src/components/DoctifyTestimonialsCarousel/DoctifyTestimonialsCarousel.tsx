@@ -4,6 +4,7 @@ import {
   Field,
   Text as JssText,
   RichText,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
@@ -15,10 +16,18 @@ interface TestimonialsFields {
   };
 }
 
+interface DoctifyLogoFields {
+  fields: {
+    Text: Field<string>;
+    Logo: ImageField;
+  };
+}
+
 interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
+    DoctifyLogo: DoctifyLogoFields;
   };
 }
 

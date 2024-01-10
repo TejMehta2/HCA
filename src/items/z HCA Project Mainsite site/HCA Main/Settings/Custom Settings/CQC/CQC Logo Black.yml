@@ -2,7 +2,7 @@
 ID: "6d1499ad-8e5f-456f-a0d2-7ae0bb354ee8"
 Parent: "7dbc8a3b-d53e-4c02-8a2c-debabef8d2f3"
 Template: "a04c63d5-f960-4965-9ddd-0fd523502db5"
-Path: /sitecore/content/HCA/HCA Main/Settings/Custom Settings/CQC Logo Black
+Path: /sitecore/content/HCA/HCA Main/Settings/Custom Settings/CQC/CQC Logo Black
 Languages:
 - Language: en
   Versions:
@@ -21,14 +21,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b19e561f-e9ab-4c55-8cc9-d65611ffd3eb"
+      Value: "aef03640-e05d-42c0-9df8-ef72dae5aaf4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231206T144839Z
+      Value: 20240110T110428Z
     - ID: "deaa091e-8c4e-4093-ad6a-f79f00b2521a"
       Hint: Logo
       Value: |
