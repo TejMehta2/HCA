@@ -215,6 +215,7 @@ export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
 
 export const BlogCards: StoryObj<typeof CarouselCards> = {
   args: {
+    theme: 'C-HCA-Beige',
     title: (
       <Text tag="h2" variation="display-3">
         Orthopaedic Care
