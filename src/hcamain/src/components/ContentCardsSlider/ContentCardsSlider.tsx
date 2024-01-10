@@ -1,11 +1,18 @@
 import React from 'react';
 import {
+  Image as JssImage,
   Field,
+  Link as JssLink,
   LinkField,
-  ImageField,
-  Text,
+  ImageFieldValue,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import Text from '@component-library/foundation/Text/Text';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import { Theme } from '@component-library/foundation/Themes/Themes.types';
+import { TextProps } from '@component-library/foundation/Text/Text.types';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type CTAIconFields = {
   svgMarkup: Field<string>;
@@ -14,8 +21,7 @@ type CTAIconFields = {
 interface PagesFields {
   title: Field<string>;
   description: Field<string>;
-  image: ImageField;
-  link: { url: string };
+  image: ImageFieldValue;
   url: { path: string };
 }
 
@@ -37,7 +43,12 @@ interface Fields {
 }
 
 type ContentCardsSliderProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme; // TODO - this should reflect what CMS provides, not what FE consumes
+    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
+    HeadingSize: TextProps['variation']; // TODO - this should reflect what CMS provides, not what FE consumes
+    styles: string;
+  };
   fields: Fields;
 };
 
@@ -53,26 +64,62 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
   if (!props.fields) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.data.item.title.jsonValue} />
-      <br />
-      <Text field={props.fields.data.item.cTACardText.jsonValue} />
-      <ul>
-        {props.fields.data.item.pages.PagesList.map((cards, index) => (
-          <li key={index}>
-            <Text field={cards.title} />
-            <br />
-            <RichText tag="span" field={cards.description} />
-            <br />
-            {!cards.link ? (
-              <a href={cards.url.path}>Link</a>
-            ) : (
-              <a href={cards.link.url}>Url</a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <CarouselCards
+      theme={props.params.Theme || 'F-HCA-White'}
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-4'}
+        >
+          {props.fields.data.item.title.jsonValue.value}
+        </Text>
+      }
+      link={
+        <JssLink field={props.fields.data.item.cTALink.jsonValue}>
+          <RichText
+            tag="span"
+            field={{
+              value: props.fields.data.item.cTALink.jsonValue.value.text,
+            }}
+          />
+        </JssLink>
+      }
+    >
+      {props.fields.data.item.pages.PagesList.map((cards, index) => (
+        <CardContent
+          key={index}
+          image={
+            cards.image?.src ? <JssImage field={cards.image} /> : undefined
+          }
+          title={
+            <Text
+              tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+              variation="display-4"
+            >
+              {cards.title.value}
+            </Text>
+          }
+          bodyCopy={
+            cards.description ? (
+              <Text tag="p" variation="body-large">
+                <RichText tag="span" field={cards.description} />
+              </Text>
+            ) : undefined
+          }
+          link={
+            <a href={cards.url.path}>
+              <RichText
+                tag="span"
+                field={{
+                  value: props.fields.data.item.cTACardText.jsonValue.value,
+                }}
+              />
+            </a>
+          }
+        />
+      ))}
+    </CarouselCards>
   );
 };
