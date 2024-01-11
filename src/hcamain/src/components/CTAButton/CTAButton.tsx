@@ -1,5 +1,10 @@
 import React from 'react';
-import { Field, LinkField, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import Button from '@component-library/core-components/Button/Button';
+import {
+  ButtonProps,
+  ButtonThemeUnionTypes,
+} from '@component-library/core-components/Button/Button.types';
 
 type CTAIconFields = {
   fields: {
@@ -15,6 +20,7 @@ interface Fields {
 type CTAProps = {
   params: { [key: string]: string };
   fields: Fields;
+  size: ButtonProps['size'];
 };
 
 const CTADefaultComponent = (props: CTAProps): JSX.Element => (
@@ -25,13 +31,9 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
   </div>
 );
 
-export const Full = (props: CTAProps): JSX.Element => {
-  console.log(props.fields);
-  if (!props.fields) {
-    return <CTADefaultComponent {...props} />;
-  }
-  return (
-    <div className={`component ${props.params.styles}`}>
+const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
+  <Button theme={theme} size={props.size || 'large'}>
+    <a href={props.fields.CTALink.value.href}>
       {props?.fields?.CTAIcon?.fields.SvgMarkup && (
         <span
           dangerouslySetInnerHTML={{
@@ -39,18 +41,27 @@ export const Full = (props: CTAProps): JSX.Element => {
           }}
         />
       )}
-      <a href={props.fields.CTALink.value.href}>
-        <Text
-          tag="span"
-          field={{
-            value: props.fields.CTALink.value.text,
-          }}
-        />
-      </a>
-    </div>
-  );
+      <RichText
+        tag="span"
+        field={{
+          value: props.fields.CTALink.value.text,
+        }}
+      />
+    </a>
+  </Button>
+);
+
+export const Full = (props: CTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CTADefaultComponent {...props} />;
+  }
+  return createCTA(props, 'full');
 };
 
 export const Outline = (props: CTAProps): JSX.Element => {
+  return createCTA(props, 'outline');
+};
+
+export const LightText = (props: CTAProps): JSX.Element => {
   return <CTADefaultComponent {...props} />;
 };
