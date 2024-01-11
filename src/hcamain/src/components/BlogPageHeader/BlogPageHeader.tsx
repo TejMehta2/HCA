@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  RichText,
-  Text,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, RichText, Text } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   Heading: Field<string>;
@@ -35,9 +31,9 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
   return (
     <div className={`component ${props.params.styles}`}>
       <Text field={props.fields.Heading} />
-      <br/>
+      <br />
       <Text field={props.fields.Title} />
-      <br/>
+      <br />
       <RichText field={props.fields.Text} />
     </div>
   );
