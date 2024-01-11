@@ -31,7 +31,7 @@ type HeaderWithImageProps = {
       | 'E-HCA-Dark-Grey'
       | 'G-HCA-Green-40'
       | 'H-HCA-Green-20'
-    >; // TODO - this should reflect what CMS provides, not what FE consumes
+    >;
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
     styles: string;
