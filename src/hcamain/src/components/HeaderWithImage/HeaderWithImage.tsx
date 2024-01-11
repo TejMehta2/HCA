@@ -22,16 +22,16 @@ interface Fields {
 type HeaderWithImageProps = {
   params: {
     [key: string]: string;
-    Theme: Extract<
-      Theme,
-      | 'A-HCA-Main-Turquoise'
-      | 'B-HCA-Green'
-      | 'C-HCA-Beige'
-      | 'D-HCA-Light-Orange'
-      | 'E-HCA-Dark-Grey'
-      | 'G-HCA-Green-40'
-      | 'H-HCA-Green-20'
-    >;
+    Theme: Theme;
+    /* TODO themes from BE to only take specific theme types
+    | 'A-HCA-Main-Turquoise'
+    | 'B-HCA-Green'
+    | 'C-HCA-Beige'
+    | 'D-HCA-Light-Orange'
+    | 'E-HCA-Dark-Grey'
+    | 'G-HCA-Green-40'
+    | 'H-HCA-Green-20'
+   */
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
     styles: string;
