@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{DA4E2173-1C07-4EE3-8CC5-EC6E3D1AE5FD}" />
+    <image mediaid="{37B83968-BA8A-4C88-A5E7-837E64FFA1DE}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -19,7 +19,7 @@ SharedFields:
           uid="{C46F5C59-CBBE-4AFA-B1DD-2236E3F625DA}"
           s:ds="{FA22236C-8AA9-4195-A767-994A8ED45410}"
           s:id="{994091D4-153B-4CE9-B394-52AB8C5F491D}"
-          s:par="Heading Tag&amp;Heading Size&amp;GridParameters&amp;FieldNames=%7BBEFE0627-542F-4DDA-A24D-AE90D457D820%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag&amp;HeadingSize=display-1&amp;GridParameters&amp;FieldNames=%7BBEFE0627-542F-4DDA-A24D-AE90D457D820%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -46,6 +46,12 @@ Languages:
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{6631EAD8-9757-462B-A168-8876B3B0A968}"
+              p:after="r[@uid='{A376BE42-9E45-4883-89BB-3A55FC633E9A}']"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-main/cta-buttons-1" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -64,14 +70,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4291f1cb-152f-4aff-aacd-8fd217361984"
+      Value: "56fcdab7-2a57-42e3-9cf3-f0cb01f7edf5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T225831Z
+      Value: 20240110T201104Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA33

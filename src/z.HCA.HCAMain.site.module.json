@@ -59,7 +59,12 @@
           },
 		  {
             "path": "/Settings/Custom Settings",
-            "scope": "ItemAndChildren",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+		  {
+            "path": "/Settings/Custom Settings1",
+            "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
           },
 		  {

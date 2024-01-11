@@ -9,15 +9,13 @@ import {
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
-import { Theme } from '@component-library/foundation/Themes/Themes.types';
-import { TextProps } from '@component-library/foundation/Text/Text.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface PagesFields {
   title: Field<string>;
   description: Field<string>;
   image: ImageField;
-  link: { url: string };
   url: { path: string };
 }
 
@@ -35,9 +33,9 @@ interface Fields {
 
 type ContentCardsProps = {
   params: {
-    Theme: Theme; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingSize: TextProps['variation']; // TODO - this should reflect what CMS provides, not what FE consumes
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
     styles: string;
   };
   fields: Fields;
@@ -93,19 +91,11 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
               </Text>
             }
             link={
-              !card.link ? (
-                <a href={card.url.path}>
-                  <span>
-                    {props.fields.data.item.cTACardText.jsonValue.value}
-                  </span>
-                </a>
-              ) : (
-                <a href={card.link.url}>
-                  <span>
-                    {props.fields.data.item.cTACardText.jsonValue.value}
-                  </span>
-                </a>
-              )
+              <a href={card.url.path}>
+                <span>
+                  {props.fields.data.item.cTACardText.jsonValue.value}
+                </span>
+              </a>
             }
           />
         ))}
