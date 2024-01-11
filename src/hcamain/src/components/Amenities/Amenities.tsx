@@ -2,13 +2,9 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Text as JssText,
-  Image as JssImage,
+  RichText,
+  Text,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
-import Text from '@component-library/foundation/Text/Text';
-import { iconList } from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
-import { TextVariationUnionTypes } from '@component-library/foundation/Text/Text.types';
 
 type HCAIconFields = {
   fields: {
@@ -31,11 +27,7 @@ interface Fields {
 }
 
 type AmenitiesProps = {
-  params: {
-    [key: string]: string;
-    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingSize: TextVariationUnionTypes; // TODO - this should reflect what CMS provides, not what FE consumes
-  };
+  params: { [key: string]: string };
   fields: Fields;
 };
 
@@ -53,42 +45,21 @@ export const Default = (props: AmenitiesProps): JSX.Element => {
   if (!props.fields) {
     return <AmenitiesDefaultComponent {...props} />;
   }
-
-  const amenitiesList: iconList = [];
-  props.fields.AmenitiesList.map((item) => {
-    amenitiesList.push({
-      text: item.fields.Title.value,
-      icon: (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: item.fields.Icon.fields.SvgMarkup.value,
-          }}
-        ></span>
-      ),
-    });
-  });
-
   return (
     <div className={`component ${props.params.styles}`}>
-      <ImageAndTextBlock
-        theme="E-HCA-Dark-Grey"
-        imageAlignment="left"
-        length="short"
-        header={
-          <Text
-            tag={props.params.HeadingTag}
-            variation={props.params.HeadingSize || 'display-2'}
-          >
-            <JssText field={props.fields.Title} />
-          </Text>
-        }
-        iconList={amenitiesList}
-        image={<JssImage field={props.fields.Image} />}
-      >
-        <Text tag="p" variation="body-large">
-          <JssText field={props.fields.Text}></JssText>
-        </Text>
-      </ImageAndTextBlock>
+      <RichText field={props.fields.Title} />
+      <ul>
+        {props.fields.AmenitiesList.map((story, index) => (
+          <li key={index}>
+            <Text field={story.fields.Title} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: story.fields.Icon.fields.SvgMarkup.value,
+              }}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
