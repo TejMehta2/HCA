@@ -25,7 +25,7 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
   </div>
 );
 
-export const Primary = (props: CTAProps): JSX.Element => {
+export const Full = (props: CTAProps): JSX.Element => {
   console.log(props.fields);
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
@@ -51,10 +51,6 @@ export const Primary = (props: CTAProps): JSX.Element => {
   );
 };
 
-export const Secondary = (props: CTAProps): JSX.Element => {
-  return <CTADefaultComponent {...props} />;
-};
-
-export const LightText = (props: CTAProps): JSX.Element => {
+export const Outline = (props: CTAProps): JSX.Element => {
   return <CTADefaultComponent {...props} />;
 };
