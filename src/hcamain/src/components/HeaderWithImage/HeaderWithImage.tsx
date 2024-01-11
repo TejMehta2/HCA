@@ -10,9 +10,8 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderWithImage from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
-import { TextVariationUnionTypes } from '@component-library/foundation/Text/Text.types';
-import { HeaderWithImageProps as ThemeProps } from '@component-library/site-components/HeaderWithImage/HeaderWithImage.types';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface Fields {
   Title: Field<string>;
@@ -23,9 +22,18 @@ interface Fields {
 type HeaderWithImageProps = {
   params: {
     [key: string]: string;
-    Theme: ThemeProps['theme']; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingSize: TextVariationUnionTypes; // TODO - this should reflect what CMS provides, not what FE consumes
+    Theme: Extract<
+      Theme,
+      | 'A-HCA-Main-Turquoise'
+      | 'B-HCA-Green'
+      | 'C-HCA-Beige'
+      | 'D-HCA-Light-Orange'
+      | 'E-HCA-Dark-Grey'
+      | 'G-HCA-Green-40'
+      | 'H-HCA-Green-20'
+    >; // TODO - this should reflect what CMS provides, not what FE consumes
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
     styles: string;
   };
   rendering: ComponentRendering;
