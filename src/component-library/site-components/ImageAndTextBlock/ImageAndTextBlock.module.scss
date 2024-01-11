@@ -186,6 +186,7 @@
     display: flex;
     align-items: center;
     gap: 0 $spacing-2;
+    @include apply-body-large;
 
     span {
       display: flex;
