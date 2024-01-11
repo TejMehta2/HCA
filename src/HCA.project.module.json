@@ -27,6 +27,11 @@
                 "name": "HCA Project templates",
                 "path": "/sitecore/templates/Project/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete"               
+            },  
+            {
+                "name": "HCA Project Branches",
+                "path": "/sitecore/templates/Branches/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete"               
             },           
             {
                 "name": "HCA Project media",

@@ -1,8 +1,8 @@
 ﻿---
-ID: "5b062fc3-248d-4a39-aceb-b7800359f535"
-Parent: "a7bcdc79-952b-42c2-844a-dd2fa0fd1a01"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: /sitecore/system/Settings/Project/HCA/Page Content/Page Content Headless Site Setup/Rendering Variants
+ID: "36855602-342d-464f-88a6-f55fd87860ca"
+Parent: "b86f7b06-f388-4811-bdaa-3ea70d17cfab"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Image Short Text/Image Right
 Languages:
 - Language: en
   Versions:
@@ -10,22 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T110550Z
+      Value: 20231114T134832Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b908e3a3-e63e-4a46-b18b-279911ea2012"
+      Value: "15fa5383-e056-4bd3-bd79-62f66f7a20c4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T110550Z
+      Value: 20231114T134832Z
