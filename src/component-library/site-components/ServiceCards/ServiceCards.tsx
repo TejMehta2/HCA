@@ -46,7 +46,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
                       <div className={styles['col-2']}>{col2}</div>
                     </>
                   )}
-                  {!isL && children && children[0].props.children}
+                  {!isL && children && children}
                 </div>
               </div>
             </div>
