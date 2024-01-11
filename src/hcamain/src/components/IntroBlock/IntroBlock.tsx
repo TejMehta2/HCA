@@ -120,9 +120,13 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       <br />
       <Text field={props.fields.DoctifyReviews.fields.Stars} />
       <br />
-      <Text field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text} />
+      <Text
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text}
+      />
       <br />
-      <Image field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo} />
+      <Image
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
+      />
       <br />
     </div>
   );
