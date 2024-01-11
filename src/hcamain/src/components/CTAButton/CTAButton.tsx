@@ -1,7 +1,10 @@
 import React from 'react';
 import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
-import { ButtonProps } from '@component-library/core-components/Button/Button.types';
+import {
+  ButtonProps,
+  ButtonThemeUnionTypes,
+} from '@component-library/core-components/Button/Button.types';
 
 type CTAIconFields = {
   fields: {
@@ -28,51 +31,35 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
   </div>
 );
 
+const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
+  <Button theme={theme} size={props.size || 'large'}>
+    <a href={props.fields.CTALink.value.href}>
+      {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+          }}
+        />
+      )}
+      <RichText
+        tag="span"
+        field={{
+          value: props.fields.CTALink.value.text,
+        }}
+      />
+    </a>
+  </Button>
+);
+
 export const Primary = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
-  return (
-    <Button theme="full" size={props.size || 'large'}>
-      <a href={props.fields.CTALink.value.href}>
-        {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        <RichText
-          tag="span"
-          field={{
-            value: props.fields.CTALink.value.text,
-          }}
-        />
-      </a>
-    </Button>
-  );
+  return createCTA(props, 'full');
 };
 
 export const Secondary = (props: CTAProps): JSX.Element => {
-  return (
-    <Button theme="outline" size={props.size || 'large'}>
-      <a href={props.fields.CTALink.value.href}>
-        {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        <RichText
-          tag="span"
-          field={{
-            value: props.fields.CTALink.value.text,
-          }}
-        />
-      </a>
-    </Button>
-  );
+  return createCTA(props, 'outline');
 };
 
 export const LightText = (props: CTAProps): JSX.Element => {
