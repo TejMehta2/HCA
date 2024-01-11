@@ -1,8 +1,8 @@
-export type CarouselReviewsTheme = 'F-HCA-White' | 'K-HCA-Turquoise-5';
+import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface CarouselReviewsProps {
   rating: number;
   reviewCount: JSX.Element;
   children?: JSX.Element[];
-  theme: CarouselReviewsTheme;
+  theme: Theme;
 }

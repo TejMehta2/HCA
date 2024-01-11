@@ -48,7 +48,9 @@ SharedFields:
                       }
                       ... on PageProxy
                       {
-              	     link : field(name:"Link"){...on LinkField{url}}
+              	        url : field(name:"Link"){
+                          ...on LinkField { path : url }
+                        }
                       }
                     }
                 }
@@ -125,14 +127,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "019ef559-35ed-49c2-8217-4f04429da5ec"
+      Value: "1e4f7213-9c2e-4c37-9836-0ab12b410541"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240105T230946Z
+      Value: 20240110T124615Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

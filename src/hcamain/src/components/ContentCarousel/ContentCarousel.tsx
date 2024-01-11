@@ -8,8 +8,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
 import Text from '@component-library/foundation/Text/Text';
-import { Theme } from '@component-library/foundation/Themes/Themes.types';
-import { TextProps } from '@component-library/foundation/Text/Text.types';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface CardFields {
   fields: {
@@ -25,9 +24,9 @@ interface Fields {
 
 type ContentCarouselProps = {
   params: {
-    Theme: Theme; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingTag: keyof JSX.IntrinsicElements; // TODO - this should reflect what CMS provides, not what FE consumes
-    HeadingSize: TextProps['variation']; // TODO - this should reflect what CMS provides, not what FE consumes
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
     styles: string;
   };
   fields: Fields;

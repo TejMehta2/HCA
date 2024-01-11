@@ -4,10 +4,11 @@ import {
   Field,
   Text as JssText,
   RichText,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
-import { CarouselReviewsTheme as Theme } from '@component-library/site-components/CarouselReviews/CarouselReviews.types';
+import { Theme } from 'src/types/params';
 
 interface TestimonialsFields {
   fields: {
@@ -15,10 +16,18 @@ interface TestimonialsFields {
   };
 }
 
+interface DoctifyLogoFields {
+  fields: {
+    Text: Field<string>;
+    Logo: ImageField;
+  };
+}
+
 interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
+    DoctifyLogo: DoctifyLogoFields;
   };
 }
 
@@ -29,8 +38,8 @@ interface Fields {
 
 type DoctifyTestimonialsCarouselProps = {
   params: {
-    [key: string]: string;
-    Theme: Theme; // TODO - this should reflect what CMS provides, not what FE consumes
+    Theme: Theme; // TODO - check CMS should only allow 'F-HCA-White' | 'K-HCA-Turquoise-5'
+    styles: string;
   };
   fields: Fields;
 };

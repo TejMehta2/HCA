@@ -15,6 +15,13 @@ type HCAIconFields = {
   };
 };
 
+interface DoctifyLogoFields {
+  fields: {
+    Text: Field<string>;
+    Logo: ImageField;
+  };
+}
+
 interface CountersFields {
   fields: {
     Number: Field<string>;
@@ -34,6 +41,7 @@ interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
+    DoctifyLogo: DoctifyLogoFields;
   };
 }
 
@@ -111,6 +119,15 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       <Text field={props.fields.DoctifyReviews.fields.Reviews} />
       <br />
       <Text field={props.fields.DoctifyReviews.fields.Stars} />
+      <br />
+      <Text
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text}
+      />
+      <br />
+      <Image
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
+      />
+      <br />
     </div>
   );
 };
