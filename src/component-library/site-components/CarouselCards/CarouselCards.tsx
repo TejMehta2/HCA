@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { CarouselCardsProps } from './CarouselCards.types';
 import styles from './CarouselCards.module.scss';
 import Slider from '@ant-design/react-slick';
-import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from './CustomArrows';
 
 const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
-  const { title, link, children } = props;
+  const { theme, title, link, children } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -61,14 +60,10 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
   };
 
   return (
-    <Themes theme="C-HCA-Beige">
+    <Themes theme={theme}>
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
-          <div className={styles['intro']}>
-            <Text tag="h2" variation="display-3">
-              {title}
-            </Text>
-          </div>
+          <div className={styles['intro']}>{title}</div>
 
           <div ref={carouselRef} className={styles['carousel-wrapper']}>
             <Slider {...settings}>{children && children}</Slider>
