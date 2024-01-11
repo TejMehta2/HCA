@@ -63,6 +63,11 @@
             "allowedPushOperations": "CreateAndUpdate"
           },
 		  {
+            "path": "/Settings/Custom Settings1",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+		  {
             "path": "/Settings/CQC Statuses",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
