@@ -1,0 +1,42 @@
+﻿---
+ID: "7f17fe2c-2aa8-4773-bcd3-898a577a5727"
+Parent: "84b90a15-22aa-4061-b14e-6e6cc3851805"
+Template: "777be7c2-4026-4f19-9a22-75fa0b109b21"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA15/Amenities Image Right
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "108d5af2-f154-40d8-9f38-52972a67a897"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231217T125620Z
+    - ID: "5455a723-12c3-4842-8008-268c45cf5ed9"
+      Hint: AmenitiesList
+      Value: |
+        {9556A913-CD4E-47DD-99F5-24AE9DFA72D5}
+        {3AA07FA8-1FEA-4096-B313-A24C4C5030A9}
+        {0D76B10E-E82E-4814-A9F9-2DFE8D153674}
+        {7DE86751-1531-44EA-BC80-F3C2294552B4}
+        {8D5DD2EF-7C85-4838-9DD6-BFB09DE93D7F}
+        {73A5F206-7E03-4AC5-B165-B40CA8299F85}
+    - ID: "5bcb634d-fb9e-440c-8258-432b2475df21"
+      Hint: Title
+      Value: Patient amenities
+    - ID: "6198bd6f-14ad-4894-be7c-486fa8bcf2fc"
+      Hint: Image
+      Value: |
+        <image mediaid="{74F9A9B7-CC52-4B53-8BDF-8614ED671E6C}" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "34bd4744-2b7b-43ee-b784-1b0f3d559dd3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240110T131720Z

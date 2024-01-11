@@ -51,14 +51,14 @@ const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
   </Button>
 );
 
-export const Primary = (props: CTAProps): JSX.Element => {
+export const Full = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
   return createCTA(props, 'full');
 };
 
-export const Secondary = (props: CTAProps): JSX.Element => {
+export const Outline = (props: CTAProps): JSX.Element => {
   return createCTA(props, 'outline');
 };
 

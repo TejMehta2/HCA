@@ -16,7 +16,6 @@ interface PagesFields {
   title: Field<string>;
   description: Field<string>;
   image: ImageField;
-  link: { url: string };
   url: { path: string };
 }
 
@@ -92,19 +91,11 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
               </Text>
             }
             link={
-              !card.link ? (
-                <a href={card.url.path}>
-                  <span>
-                    {props.fields.data.item.cTACardText.jsonValue.value}
-                  </span>
-                </a>
-              ) : (
-                <a href={card.link.url}>
-                  <span>
-                    {props.fields.data.item.cTACardText.jsonValue.value}
-                  </span>
-                </a>
-              )
+              <a href={card.url.path}>
+                <span>
+                  {props.fields.data.item.cTACardText.jsonValue.value}
+                </span>
+              </a>
             }
           />
         ))}
