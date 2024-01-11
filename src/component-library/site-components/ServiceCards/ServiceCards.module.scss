@@ -79,6 +79,7 @@
 
 .body-text {
   padding-top: px-to-rem(24);
+  @include apply-body-large;
 }
 
 .cta {
