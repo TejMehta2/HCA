@@ -45,24 +45,11 @@ const HeaderWithImageDefaultComponent = (
 };
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
-  /* const ctas = props.rendering.placeholders!['cta-buttons-1'].map(
-    (cta, index) => {
-      return (
-        <Button key={index} size="large" theme="full">
-          <a href={cta.fields.CTALink.value.href}>
-            <Icons iconName="iconStethoscope" />
-            <span>{cta.fields.CTALink.value.text}</span>
-          </a>
-        </Button>
-      );
-    }
-  ); */
-  console.log(props);
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
-  const buttonSize: ButtonProps['size'] = 'small'; // Explicit type here to provide type safety
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
   return (
     <div className={`component ${props.params.styles}`}>
       <HeaderWithImage
@@ -92,7 +79,3 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
     </div>
   );
 };
-/* <JSSText field={props.fields.Title} />
-      <RichText field={props.fields.Text} />
-      <JSSImage field={props.fields.Image} />
-      <Placeholder name={phKey} rendering={props.rendering} /> */
