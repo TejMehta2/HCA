@@ -1,0 +1,33 @@
+﻿---
+ID: "f308b6c8-4f82-4fac-8511-570c63476b13"
+Parent: "94dd91c8-8bc7-4093-98e1-edcc44817ea9"
+Template: "94dd91c8-8bc7-4093-98e1-edcc44817ea9"
+Path: /sitecore/templates/Project/HCA/Page Content/Image Short Text Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {CA5950CB-FC53-4F90-8C56-DF8224683E27}
+    {94DD91C8-8BC7-4093-98E1-EDCC44817EA9}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e7bff135-15a2-4402-aecc-7d118f53d9e1"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231114T122311Z
