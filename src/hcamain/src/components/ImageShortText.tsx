@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  ImageField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   Heading: Field<string>;
@@ -16,7 +13,9 @@ export type ImageShortTextProps = {
   fields: Fields;
 };
 
-const ImageShortTextDefaultComponent = (props: ImageShortTextProps): JSX.Element => (
+const ImageShortTextDefaultComponent = (
+  props: ImageShortTextProps
+): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Promo</span>
@@ -25,13 +24,9 @@ const ImageShortTextDefaultComponent = (props: ImageShortTextProps): JSX.Element
 );
 
 export const ImageLeft = (props: ImageShortTextProps): JSX.Element => {
- 
-  return <ImageShortTextDefaultComponent {...props} />
+  return <ImageShortTextDefaultComponent {...props} />;
 };
- 
-export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
- 
-  return <ImageShortTextDefaultComponent {...props} />
-};
- 
 
+export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
+  return <ImageShortTextDefaultComponent {...props} />;
+};
