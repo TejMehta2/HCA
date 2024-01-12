@@ -1,4 +1,4 @@
-# DoctifyTestimonialsCarousel documentation
+# CTAButton documentation
 
 ## Additional information
 
