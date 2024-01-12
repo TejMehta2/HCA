@@ -83,7 +83,7 @@
       pointer-events: none;
     }
 
-    & > span {
+    & > span:has(svg) {
       display: flex;
     }
   }

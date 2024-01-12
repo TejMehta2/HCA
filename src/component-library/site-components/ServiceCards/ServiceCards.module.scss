@@ -3,7 +3,8 @@
 
 .wrapper {
   padding: $spacing-10 0;
-  background-color: $beige;
+  background-color: var(--background);
+  color: var(--text);
   overflow: clip;
 }
 
@@ -79,6 +80,7 @@
 
 .body-text {
   padding-top: px-to-rem(24);
+  @include apply-body-large;
 }
 
 .cta {
