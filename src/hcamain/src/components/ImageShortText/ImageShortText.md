@@ -1,4 +1,4 @@
-# BlogPageHeader documentation
+# ImageShortText documentation
 
 ## Additional information
 

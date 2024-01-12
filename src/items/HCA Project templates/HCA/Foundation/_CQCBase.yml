@@ -2,7 +2,7 @@
 ID: "2903d704-0bff-48f0-863b-38ae20c7b717"
 Parent: "a3532dc4-ab01-4987-8b42-5b4deb5bc81f"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Foundation/_CQCBasePage
+Path: /sitecore/templates/Project/HCA/Foundation/_CQCBase
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template

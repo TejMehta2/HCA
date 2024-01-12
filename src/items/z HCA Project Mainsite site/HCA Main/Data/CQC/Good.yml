@@ -2,7 +2,7 @@
 ID: "8c94a4c4-dccb-42ef-89a7-51c869753a8f"
 Parent: "4391b7c8-4858-4926-9ad1-555a69d50922"
 Template: "64b4984e-9b3e-40b9-9cb3-97f74da3e25e"
-Path: /sitecore/content/HCA/HCA Main/Data/CQC/CQC
+Path: /sitecore/content/HCA/HCA Main/Data/CQC/Good
 Languages:
 - Language: en
   Versions:
@@ -16,11 +16,15 @@ Languages:
       Value: "{A64BBA88-C227-41A7-8EF6-2D2E3C9C3112}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "19d2f0f5-0109-44f8-b031-f20736aff256"
+      Value: "9808677a-076a-4994-aebb-59e2bdc9162c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231205T103508Z
+      Value: 20240112T121749Z
+    - ID: "db2959e1-65ed-409a-bad1-79700462a81d"
+      Hint: ReportLink
+      Value: |
+        <link linktype="external" url="https://www.cqc.org.uk/provider/1-101728688" />
