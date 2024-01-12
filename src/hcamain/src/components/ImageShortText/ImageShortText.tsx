@@ -6,7 +6,7 @@ import {
   RichText,
   Image,
   ComponentRendering,
-  Placeholder
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
@@ -46,10 +46,7 @@ export const ImageLeft = (props: ImageShortTextProps): JSX.Element => {
       <RichText field={props.fields.Text} />
       <br />
       <Image field={props.fields.Image} />
-      <Placeholder
-            name={phKey}
-            rendering={props.rendering}
-          />
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };
@@ -68,10 +65,7 @@ export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
       <RichText field={props.fields.Text} />
       <br />
       <Image field={props.fields.Image} />
-      <Placeholder
-            name={phKey}
-            rendering={props.rendering}
-          />
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };
