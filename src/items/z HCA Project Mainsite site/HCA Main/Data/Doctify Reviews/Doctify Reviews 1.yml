@@ -11,12 +11,16 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231201T103905Z
+    - ID: "5b49825d-7ce3-43a8-b6fe-a1719cfa513e"
+      Hint: Link
+      Value: |
+        <link linktype="external" url="https://www.doctify.com/uk" />
     - ID: "8768d68c-852a-48ad-98d6-f5b0ddac4fbd"
       Hint: Stars
       Value: 3
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1479b1d9-6b24-48c9-ba02-cb98df0d681d"
+      Value: "d45e5ee0-1ae5-4b0e-a41b-d061df39f9a3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -26,7 +30,7 @@ Languages:
       Value: "{56367E53-F4A7-41B5-AACD-432164E17071}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240110T105535Z
+      Value: 20240112T114454Z
     - ID: "ef0cf15c-3c69-4958-9cc1-e71ad136219d"
       Hint: Reviews
       Value: 13,500+
