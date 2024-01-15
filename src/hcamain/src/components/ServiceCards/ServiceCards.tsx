@@ -7,6 +7,7 @@ import {
   ImageFieldValue,
   Image as JssImage,
   Link as JssLink,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardService from '@component-library/components/CardService/CardService';
@@ -60,6 +61,9 @@ const ServiceCardsDefaultComponent = (
 );
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <ServiceCardsDefaultComponent {...props} />;
   }
@@ -79,35 +83,40 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       bodyText={<JssRichText field={props.fields.Description} />}
       cta={
-        <JssLink field={props.fields.CTALink}>
-          {props?.fields?.CTAIcon && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-              }}
-            />
-          )}
-          {props?.fields?.CTALink.value.text && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields.CTALink.value.text,
-              }}
-            ></span>
-          )}
-        </JssLink>
+        !isExperienceEditor ? (
+          <JssLink field={props.fields.CTALink}>
+            {props?.fields?.CTAIcon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+                }}
+              />
+            )}
+            {props?.fields?.CTALink.value.text && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.CTALink.value.text,
+                }}
+              ></span>
+            )}
+          </JssLink>
+        ) : (
+          <JssLink field={props.fields.CTALink.value}></JssLink>
+        )
       }
     >
-      {props.fields.Services.map((service, index) => (
-        <CardService
-          link={<a href={service.url}>{service.name}</a>}
-          key={index}
-        >
-          <JssImage field={service.fields.Image} />
-          <Text tag="div" variation="display-6">
-            <JssText field={service.fields.Title} />
-          </Text>
-        </CardService>
-      ))}
+      {props.fields.Services &&
+        props.fields.Services.map((service, index) => (
+          <CardService
+            link={<a href={service.url}>{service.name}</a>}
+            key={index}
+          >
+            <JssImage field={service.fields.Image} />
+            <Text tag="div" variation="display-6">
+              <JssText field={service.fields.Title} />
+            </Text>
+          </CardService>
+        ))}
     </ServiceCards>
   );
 };
