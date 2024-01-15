@@ -24,7 +24,36 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
+              uid="{B6E69D9B-46D8-488A-9E90-4F6274341AB6}"
+              p:before="*"
+              s:ds="local:/Page Data/Footer CTAs/App Download"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="/headless-footer/cta-buttons-1" />
+            <r
+              uid="{0984C0C3-A9F2-406F-A1ED-C93E1F0C04FF}"
+              p:after="r[@uid='{B6E69D9B-46D8-488A-9E90-4F6274341AB6}']"
+              s:ds="local:/Page Data/Footer CTAs/Get a second opinion"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-footer/cta-buttons-1" />
+            <r
+              uid="{31A094A8-D246-4104-86FF-63FB9C44184B}"
+              p:after="r[@uid='{0984C0C3-A9F2-406F-A1ED-C93E1F0C04FF}']"
+              s:ds="local:/Page Data/Footer CTAs/Find a doctor"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-footer/cta-buttons-1" />
+            <r
+              uid="{71ABE3E6-3347-4EB0-8392-AB3567D781F0}"
+              p:after="r[@uid='{31A094A8-D246-4104-86FF-63FB9C44184B}']"
+              s:ds="local:/Page Data/Footer CTAs/Pay my bill"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="/headless-footer/cta-buttons-1" />
+            <r
               uid="{2FC77572-5EA2-4493-ACF3-A22C76EC03F8}"
+              p:after="*[1=2]"
               s:ds="{12F4EE91-5EB0-4F81-BE3F-01379BFA0842}"
               s:id="{CD744279-02D3-49CD-870C-0A657549C9DC}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
@@ -47,14 +76,14 @@ Languages:
         sitecore\5dv29vxgiA
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "816651af-70b9-4e51-87d9-5507a865aff0"
+      Value: "2592b8e9-b70a-4786-9c43-489c69c0fc2a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240108T122836Z
+      Value: 20240115T130211Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA58
