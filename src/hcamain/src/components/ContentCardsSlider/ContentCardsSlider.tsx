@@ -112,7 +112,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
               <RichText
                 tag="span"
                 field={{
-                  value: props.fields.data.item.cTACardText.jsonValue.value,
+                  value: props.fields.data.item?.cTACardText.jsonValue.value,
                 }}
               />
             </a>

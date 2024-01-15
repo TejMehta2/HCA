@@ -93,7 +93,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
             link={
               <a href={card.url.path}>
                 <span>
-                  {props.fields.data.item.cTACardText.jsonValue.value}
+                  {props.fields.data.item?.cTACardText.jsonValue.value}
                 </span>
               </a>
             }
