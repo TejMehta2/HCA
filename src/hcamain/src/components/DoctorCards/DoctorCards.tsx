@@ -95,9 +95,15 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
         </Text>
       }
       cta={
-        <a href="#">
-          View all <strong>hip pain consultants</strong>
-        </a>
+        <JssLink field={props.fields.CTALink}>
+          {props?.fields?.CTALink.value.text && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields.CTALink.value.text,
+              }}
+            ></span>
+          )}
+        </JssLink>
       }
       //  TODO - needs theme to come from sitecore
       theme="A-HCA-Main-Turquoise"
@@ -120,11 +126,11 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           }
           department={<span>{getSpeciality(doctor)}</span>}
           cta={
-            <JssLink field={props.fields.CTALink}>
-              {props?.fields?.CTALink.value.text && (
+            <JssLink field={props.fields.CTACard}>
+              {props?.fields?.CTACard.value.text && (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: props.fields.CTALink.value.text,
+                    __html: props.fields.CTACard.value.text,
                   }}
                 ></span>
               )}
@@ -133,70 +139,5 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
         />
       ))}
     </CardDoctorLayout>
-
-    // <div className={`component ${props.params.styles}`}>
-    //   <Text field={props.fields.Title} />
-    //   <br />
-    //   <Text field={props.fields.NumberOfCards} />
-    //   <br />
-    //   <Link field={props.fields.CTACard}></Link>
-    //   <br />
-    //   {props?.fields?.CTAIcon && (
-    //     <span
-    //       dangerouslySetInnerHTML={{
-    //         __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-    //       }}
-    //     />
-    //   )}
-    //   <Link field={props.fields.CTALink}></Link>
-    //   <br />
-    //   <span>
-    //     <b>Practice</b>
-    //   </span>
-    //   <br />
-    //   <ul>
-    //     {props.fields.Practice.map((practice, index) => (
-    //       <li key={index}>
-    //         <Text field={practice.fields.Title} />
-    //         <br />
-    //         <RichText tag="span" field={practice.fields.Description} />
-    //         <br />
-    //         <Image field={practice.fields.Image} />
-    //         <br />
-    //         <Text field={practice.fields.DoctifyPractice} />
-    //       </li>
-    //     ))}
-    //   </ul>
-    //   <br />
-    //   <span>
-    //     <b>Service</b>
-    //   </span>
-    //   <br />
-    //   <ul>
-    //     {props.fields.Service.map((service, index) => (
-    //       <li key={index}>
-    //         <Text field={service.fields.Title} />
-    //         <br />
-    //         <RichText tag="span" field={service.fields.Description} />
-    //         <br />
-    //         <Image field={service.fields.Image} />
-    //         <br />
-    //         <Text field={service.fields.DoctifyKeywordId} />
-    //       </li>
-    //     ))}
-    //   </ul>
-    //   <br />
-    //   <span>
-    //     <b>CustomFilters</b>
-    //   </span>
-    //   <br />
-    //   <ul>
-    //     {props.fields.CustomFilters.map((customFilters, index) => (
-    //       <li key={index}>
-    //         <Text field={customFilters.fields.Filter} />
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 };
