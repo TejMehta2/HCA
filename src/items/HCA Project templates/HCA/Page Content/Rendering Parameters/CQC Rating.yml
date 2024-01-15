@@ -1,8 +1,8 @@
 ﻿---
-ID: "be4cce0d-9280-4084-b5eb-52e962a574ca"
+ID: "f59d8452-9124-4a51-92d0-c53242a367c0"
 Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/CQC Rating
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
@@ -14,14 +14,12 @@ SharedFields:
     {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
     {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
     {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
-    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
-    {39263096-45D2-439E-83BB-194F4DA3C828}
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value: 
+  Value: 0
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{567FC383-FC58-4024-BFC1-9319F873ED8A}"
+  Value: "{BF1A104B-EDD6-4A7C-BA2E-6FFA93831D7D}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -65,14 +63,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4d54da81-5f7d-481d-88ad-ae98b3368901"
+      Value: "c8426507-4cec-4c43-99a3-230a35cf52c8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T125159Z
+      Value: 20240114T054012Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
