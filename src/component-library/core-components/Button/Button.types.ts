@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 type ButtonSizeUnionTypes = 'small' | 'large';
-type ButtonThemeUnionTypes =
+export type ButtonThemeUnionTypes =
   | 'full'
   | 'outline'
   | 'social'

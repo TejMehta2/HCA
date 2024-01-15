@@ -9,7 +9,7 @@ import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 
 const mockProps: CardBlockProps = {
-  theme: 'j',
+  theme: 'J-HCA-Turquoise-10',
   variation: '3-columns',
   subtitle: (
     <Text variation={'subheading-1'} tag="h2">

@@ -2,11 +2,17 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  ImageField,
-  Text,
-  RichText,
-  Link,
+  RichText as JssRichText,
+  Text as JssText,
+  ImageFieldValue,
+  Image as JssImage,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+
+import CardService from '@component-library/components/CardService/CardService';
+import Text from '@component-library/foundation/Text/Text';
+import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
+import { HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
   fields: {
@@ -18,9 +24,11 @@ type ServiceFields = {
   fields: {
     Title: Field<string>;
     Description: Field<string>;
-    Image: ImageField;
-    Link: LinkField;
+    Image: ImageFieldValue;
   };
+
+  url: string;
+  name: string;
 };
 
 interface Fields {
@@ -33,7 +41,11 @@ interface Fields {
 }
 
 type ServiceCardsProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -51,37 +63,51 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   if (!props.fields) {
     return <ServiceCardsDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <RichText field={props.fields.Description} />
-      <br />
-      {props?.fields?.CTAIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <Link field={props.fields.CTALink}></Link>
-      <br />
-      <span>
-        <b>ServiceFields</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.Services.map((service, index) => (
-          <li key={index}>
-            <Text field={service.fields.Title} />
-            <br />
-            <RichText field={service.fields.Description} />
-          </li>
-        ))}
-      </ul>
-      <br />
-    </div>
+    <ServiceCards
+      title={
+        <Text
+          variation={props.params.HeadingSize || 'display-2'}
+          tag={props.params.HeadingTag || 'h2'}
+        >
+          <JssText field={props.fields.Heading} />
+        </Text>
+      }
+      subtitle={
+        <Text variation="subheading-1">{props.fields.Heading.value}</Text>
+      }
+      bodyText={<JssRichText field={props.fields.Description} />}
+      cta={
+        <JssLink field={props.fields.CTALink}>
+          {props?.fields?.CTAIcon && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+              }}
+            />
+          )}
+          {props?.fields?.CTALink.value.text && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields.CTALink.value.text,
+              }}
+            ></span>
+          )}
+        </JssLink>
+      }
+    >
+      {props.fields.Services.map((service, index) => (
+        <CardService
+          link={<a href={service.url}>{service.name}</a>}
+          key={index}
+        >
+          <JssImage field={service.fields.Image} />
+          <Text tag="div" variation="display-6">
+            <JssText field={service.fields.Title} />
+          </Text>
+        </CardService>
+      ))}
+    </ServiceCards>
   );
 };

@@ -18,6 +18,8 @@ We also need to be able to watch for changes, in case we need to perform full-st
 
 We will copy the necessary files from the component-library into the gitignored src/temp folder of hcamain.
 
+The files which are copied should be identical, but we skip the files which are not needed to run the website, e.g. story and tests.
+
 We will reference imports into hcamain React components from the component library using the alias `@component-library/``.
 
 We will start watching for file changes in component-library and perform a new copy when files change (debounced to one copy per 500ms)

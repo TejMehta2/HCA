@@ -58,7 +58,7 @@ const ModalCallUs = (
   );
 
   return (
-    <Themes theme={'a'}>
+    <Themes theme={'A-HCA-Main-Turquoise'}>
       <Modals ref={ref} defaultOpen={defaultOpen}>
         <div className={styles['modal-contact-us']}>
           <div className={styles.main}>

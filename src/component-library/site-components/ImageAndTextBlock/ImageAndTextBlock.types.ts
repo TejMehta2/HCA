@@ -1,8 +1,12 @@
 import { ReactNode } from 'react';
 import { Theme } from '../../foundation/Themes/Themes.types';
 
-type imageAlignmentTypes = 'right' | 'left';
+export type imageAlignmentTypes = 'right' | 'left';
 type lengthTypes = 'short' | 'long';
+export type iconList = {
+  icon: ReactNode | JSX.Element;
+  text: string;
+}[];
 
 export interface ImageAndTextBlockProps {
   header: ReactNode | JSX.Element;
@@ -17,4 +21,5 @@ export interface ImageAndTextBlockProps {
   length?: lengthTypes;
   theme: Theme;
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
+  iconList?: iconList;
 }

@@ -2,10 +2,13 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Text,
-  RichText,
-  Image,
+  Text as JssText,
+  RichText as JssRichText,
+  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
+import Text from '@component-library/foundation/Text/Text';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface CardFields {
   fields: {
@@ -20,7 +23,12 @@ interface Fields {
 }
 
 type ContentCarouselProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    styles: string;
+  };
   fields: Fields;
 };
 
@@ -37,18 +45,26 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
     return <ContentCarouselDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <ul>
-        {props.fields.Cards.map((cards, index) => (
-          <li key={index}>
-            <Text field={cards.fields.Title} />
-            <br />
-            <RichText field={cards.fields.Text} />
-            <br />
-            <Image field={cards.fields.Image} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <CarouselContent
+        theme={props.params.Theme}
+        slides={props.fields.Cards.map((cards) => ({
+          title: (
+            <Text
+              tag={props.params.HeadingTag}
+              variation={props.params.HeadingSize}
+            >
+              <JssText tag={'span'} field={cards.fields.Title} />
+            </Text>
+          ),
+          body: (
+            <Text tag="p" variation="body-large">
+              <JssRichText tag={'span'} field={cards.fields.Text} />
+            </Text>
+          ),
+          image: <JssImage field={cards.fields.Image} />,
+        }))}
+      />
+    </>
   );
 };

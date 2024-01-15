@@ -11,7 +11,7 @@ const mockProps: ServiceCardsProps = {
     <React.Fragment key={1}>
       <CardService link={<a href="#">Learn More</a>}>
         <Image
-          src="/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"
@@ -21,7 +21,7 @@ const mockProps: ServiceCardsProps = {
 
       <CardService link={<a href="#">Learn More</a>}>
         <Image
-          src="/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"
@@ -31,7 +31,7 @@ const mockProps: ServiceCardsProps = {
 
       <CardService link={<a href="#">Learn More</a>}>
         <Image
-          src="/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"
@@ -41,7 +41,7 @@ const mockProps: ServiceCardsProps = {
 
       <CardService link={<a href="#">Learn More</a>}>
         <Image
-          src="/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"
@@ -51,7 +51,7 @@ const mockProps: ServiceCardsProps = {
 
       <CardService link={<a href="#">Learn More</a>}>
         <Image
-          src="/image-and-text-component-placeholder.jpg"
+          src="/placeholders/children-playing.jpg"
           alt="two children playing"
           width="643"
           height="605"

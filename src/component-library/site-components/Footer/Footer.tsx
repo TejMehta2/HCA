@@ -12,7 +12,7 @@ const Footer = (props: FooterProps): JSX.Element => {
   const LogoIcon = Logo as () => JSX.Element;
   const LogoMarkIcon = LogoMark as () => JSX.Element;
   return (
-    <Themes theme={'e'}>
+    <Themes theme={'E-HCA-Dark-Grey'}>
       <footer className={styles.footer}>
         <div className={styles.inner}>
           <ul className={styles['top-row']}>

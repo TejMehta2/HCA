@@ -40,57 +40,55 @@ export const Default: StoryObj<typeof ServiceCards> = {
       </a>
     ),
     children: [
-      <>
-        <CardService link={<a href="#">Learn More</a>}>
-          <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
-            alt="two children playing"
-            width="643"
-            height="605"
-          />
-          <Text variation="display-6">Cardiac Care 1</Text>
-        </CardService>
+      <CardService link={<a href="#">Learn More</a>} key={1}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 1</Text>
+      </CardService>,
 
-        <CardService link={<a href="#">Learn More</a>}>
-          <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
-            alt="two children playing"
-            width="643"
-            height="605"
-          />
-          <Text variation="display-6">Cardiac Care 2</Text>
-        </CardService>
+      <CardService link={<a href="#">Learn More</a>} key={2}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 2</Text>
+      </CardService>,
 
-        <CardService link={<a href="#">Learn More</a>}>
-          <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
-            alt="two children playing"
-            width="643"
-            height="605"
-          />
-          <Text variation="display-6">Cardiac Care 3</Text>
-        </CardService>
+      <CardService link={<a href="#">Learn More</a>} key={3}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 3</Text>
+      </CardService>,
 
-        <CardService link={<a href="#">Learn More</a>}>
-          <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
-            alt="two children playing"
-            width="643"
-            height="605"
-          />
-          <Text variation="display-6">Cardiac Care 4</Text>
-        </CardService>
+      <CardService link={<a href="#">Learn More</a>} key={4}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 4</Text>
+      </CardService>,
 
-        <CardService link={<a href="#">Learn More</a>}>
-          <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
-            alt="two children playing"
-            width="643"
-            height="605"
-          />
-          <Text variation="display-6">Cardiac Care 5</Text>
-        </CardService>
-      </>,
+      <CardService link={<a href="#">Learn More</a>} key={5}>
+        <Image
+          src="/placeholders/children-playing.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+        <Text variation="display-6">Cardiac Care 5</Text>
+      </CardService>,
     ],
   },
 };

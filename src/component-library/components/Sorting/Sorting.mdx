@@ -1,0 +1,75 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SortingStories from './Sorting.stories'
+
+<Meta of={SortingStories} />
+
+# Sorting
+
+## Description
+
+The Sorting component is designed to be used in conjunction with a list of results e.g. blog articles and is typically accompanied by a search bar and "filter by" menu.
+
+The component renders a "Sort by" CTA (which is intended to be positioned by a parent component) and a modal containing the list options.
+
+The modal is styled differently between mobile/tablet and desktop breakpoints.
+
+### Under the hood
+
+Sorting uses uncontrolled native HTML input elements, so that the elements themselves manage their own state. This means we don't need to pass a `checked` state for each option.
+
+Having uncontrolled input elements has some advantages:
+
+- Performance gains from not re-rendering the component when the state changes
+- Less boilerplate code to store/update state and pass state props
+- No need for useEffect or similar to syncronize state with elements
+
+There is currently a limit of 10 set to the child items, due to the way the labels receive the checked state from the inputs. This is necessary because we have a separate mobile and desktop set of labels, and we want to syncronise them via shared inputs without controlling state. The hard coded limit value can be found at the top of `Sorting.module.scss`.
+
+## Implementation
+
+We can optionally define a `defaultChecked` state for each option.
+
+When the options are changed by the user, the callback `onChange` event is fired, where it argument `event`
+
+### Anchoring
+
+The dropdown can anchor to the `left` or `right` side of the button which toggles its visibility. This is controlled via the `anchor` prop.
+
+## Composition
+
+Sorting can be composed like this:
+
+``` tsx
+<Sorting 
+  options={
+    [
+      {
+        id: 'option-a',
+        defaultChecked: true,
+        labelText: 'Alphabetically (A to Z)',
+      },
+      {
+        id: 'option-b',
+        labelText: 'Alphabetically (Z to A)',
+      },
+      { id: 'option-c', labelText: 'Price (Low to High)' },
+      {
+        id: 'option-d',
+        labelText: 'Price (High to Low)',
+      },
+    ]
+  }
+  onChange={
+    (event) => {
+      const target = event.target as HTMLInputElement;
+      console.log(target.value);
+      console.log(target.checked);
+    }
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={SortingStories.Default} />
+<Controls of={SortingStories.Default} />

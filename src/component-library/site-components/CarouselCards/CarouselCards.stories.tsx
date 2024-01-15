@@ -21,7 +21,12 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
   args: {
-    title: <span>Orthopaedics Patient Stories</span>,
+    theme: 'C-HCA-Beige',
+    title: (
+      <Text tag="h2" variation="display-3">
+        Orthopaedics Patient Stories
+      </Text>
+    ),
     link: (
       <a href="#">
         <span>
@@ -210,7 +215,12 @@ export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
 
 export const BlogCards: StoryObj<typeof CarouselCards> = {
   args: {
-    title: <span>Orthopaedic Care</span>,
+    theme: 'C-HCA-Beige',
+    title: (
+      <Text tag="h2" variation="display-3">
+        Orthopaedic Care
+      </Text>
+    ),
     link: (
       <a href="#">
         <span>
@@ -222,7 +232,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={0}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -245,7 +255,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={1}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -268,7 +278,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={2}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"
@@ -291,7 +301,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
       <CardBlog key={3}>
         <>
           <Image
-            src="/placeholders/image-and-text-component-placeholder.jpg"
+            src="/placeholders/children-playing.jpg"
             alt="two children playing"
             width="643"
             height="605"

@@ -45,13 +45,13 @@ const mockProps: HeaderLocationProps = {
   ),
   image: (
     <Image
-      src="/placeholders/header-location-placeholder.png"
+      src="/placeholders/the-wellington-hospital.png"
       alt="lab technician"
       width="1024"
       height="683"
     />
   ),
-  theme: 'i',
+  theme: 'I-HCA-Turquoise-20',
 };
 
 describe('HeaderLocation', () => {

@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/Intro Block/Data/CQCStatus
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "{E42C4CF5-2240-45CA-B4B7-59EF55F94006}"
+  Value: "{4391B7C8-4858-4926-9AD1-555A69D50922}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplink
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9bf867bd-9342-4d15-b82a-ddb0de19d3e1"
+      Value: "36bd6032-cc2b-4371-a493-6824d57d6daf"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T221444Z
+      Value: 20240112T111332Z

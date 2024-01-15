@@ -1,5 +1,14 @@
 import React from 'react';
-import { Field, Text, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+
+import {
+  Field,
+  Text as JssText,
+  RichText,
+  ImageField,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
+import Text from '@component-library/foundation/Text/Text';
+import { Theme } from 'src/types/params';
 
 interface TestimonialsFields {
   fields: {
@@ -7,10 +16,18 @@ interface TestimonialsFields {
   };
 }
 
+interface DoctifyLogoFields {
+  fields: {
+    Text: Field<string>;
+    Logo: ImageField;
+  };
+}
+
 interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
+    DoctifyLogo: DoctifyLogoFields;
   };
 }
 
@@ -20,7 +37,10 @@ interface Fields {
 }
 
 type DoctifyTestimonialsCarouselProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme; // TODO - check CMS should only allow 'F-HCA-White' | 'K-HCA-Turquoise-5'
+    styles: string;
+  };
   fields: Fields;
 };
 
@@ -38,17 +58,28 @@ export const Default = (
   if (!props.fields) {
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
+
+  const themeName: Theme = props.params.Theme;
+
+  const ratingAsNumber = Number(props.fields.Reviews.fields.Stars.value);
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Reviews.fields.Stars} /> <br />
-      <RichText field={props.fields.Reviews.fields.Reviews} />
-      <ul>
-        {props.fields.Testimonials.map((testimonial, index) => (
-          <li key={index}>
-            <Text field={testimonial.fields.Text} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <CarouselReviews
+      rating={ratingAsNumber}
+      reviewCount={
+        <>
+          <JssText field={props.fields.Reviews.fields.Reviews} /> Reviews
+        </>
+      }
+      theme={themeName}
+    >
+      {props.fields.Testimonials.map((testimonial, index) => (
+        <React.Fragment key={index}>
+          <Text tag="div" variation="body-extra-large">
+            <RichText tag="p" field={testimonial.fields.Text} />
+          </Text>
+        </React.Fragment>
+      ))}
+    </CarouselReviews>
   );
 };

@@ -19,7 +19,7 @@ SharedFields:
           uid="{5B9959FE-CC00-41A7-BD79-5431FC876408}"
           s:ds="{C9B14309-1C56-477B-B621-23BC3043DCDC}"
           s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
-          s:par="HeadingTag=h1&amp;HeadingSize=heading-1&amp;GridParameters&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag=h1&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -45,14 +45,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ce3b3048-0fa2-4629-8a50-f7c2ba09bdc3"
+      Value: "5c357fc4-ecbb-47f8-b8a5-ca1f30e6a6d4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231221T115327Z
+      Value: 20240111T095956Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA1

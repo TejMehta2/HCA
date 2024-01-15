@@ -9,7 +9,7 @@ const HeaderLocation = (props: HeaderLocationProps): JSX.Element => {
     address,
     open,
     ctas,
-    theme = 'i',
+    theme = 'I-HCA-Turquoise-20',
     image,
     cqc,
     doctify,

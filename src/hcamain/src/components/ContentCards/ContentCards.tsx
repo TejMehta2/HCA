@@ -2,15 +2,20 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  RichText,
-  Text,
+  RichText as JssRichText,
+  Text as JssText,
+  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import Text from '@component-library/foundation/Text/Text';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import getSubheadingTag from 'lib/subheading-tag-getter';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface PagesFields {
   title: Field<string>;
   description: Field<string>;
   image: ImageField;
-  link: { url: string };
   url: { path: string };
 }
 
@@ -27,7 +32,12 @@ interface Fields {
 }
 
 type ContentCardsProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    styles: string;
+  };
   fields: Fields;
 };
 
@@ -46,25 +56,50 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     return <ContentCardsDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.data.item.title.jsonValue} />
-      <br />
-      <Text field={props.fields.data.item.cTACardText.jsonValue} />
-      <ul>
-        {props.fields.data.item.pages.PagesList.map((cards, index) => (
-          <li key={index}>
-            <Text field={cards.title} />
-            <br />
-            <RichText tag="span" field={cards.description} />
-            <br />
-            {!cards.link ? (
-              <a href={cards.url.path}>Link</a>
-            ) : (
-              <a href={cards.link.url}>Url</a>
-            )}
-          </li>
+    <CardBlock
+      variation={'3-columns'}
+      gapSize={'small'}
+      theme={props.params.Theme}
+      title={
+        <Text
+          variation={props.params.HeadingSize}
+          tag={props.params.HeadingTag}
+        >
+          <JssText
+            tag={'span'}
+            field={props.fields.data.item.title.jsonValue}
+          />
+        </Text>
+      }
+    >
+      <>
+        {props.fields.data.item.pages.PagesList.map((card, index) => (
+          <CardContent
+            key={index}
+            image={<JssImage field={card.image} />}
+            title={
+              <Text
+                tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
+                variation="heading-1"
+              >
+                <JssText field={card.title} />
+              </Text>
+            }
+            bodyCopy={
+              <Text tag="p" variation="body-medium">
+                <JssRichText tag="span" field={card.description} />
+              </Text>
+            }
+            link={
+              <a href={card.url.path}>
+                <span>
+                  {props.fields.data.item.cTACardText.jsonValue.value}
+                </span>
+              </a>
+            }
+          />
         ))}
-      </ul>
-    </div>
+      </>
+    </CardBlock>
   );
 };

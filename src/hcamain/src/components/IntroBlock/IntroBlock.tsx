@@ -15,6 +15,13 @@ type HCAIconFields = {
   };
 };
 
+interface DoctifyLogoFields {
+  fields: {
+    Text: Field<string>;
+    Logo: ImageField;
+  };
+}
+
 interface CountersFields {
   fields: {
     Number: Field<string>;
@@ -27,6 +34,7 @@ interface CQCStatusFields {
     Title: Field<string>;
     Icon: Field<string>;
     Logo: ImageField;
+    ReportLink: LinkField;
   };
 }
 
@@ -34,6 +42,8 @@ interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
+    DoctifyLogo: DoctifyLogoFields;
+    Link: LinkField;
   };
 }
 
@@ -104,6 +114,8 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       <br />
       <Image field={props.fields.CQCStatus.fields.Logo} />
       <br />
+      <Link field={props.fields.CQCStatus.fields.ReportLink}></Link>
+      <br />
       <span>
         <b>DoctifyReviews</b>
       </span>
@@ -111,6 +123,16 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       <Text field={props.fields.DoctifyReviews.fields.Reviews} />
       <br />
       <Text field={props.fields.DoctifyReviews.fields.Stars} />
+      <br />
+      <Text
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text}
+      />
+      <br />
+      <Image
+        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
+      />
+      <br />
+      <Link field={props.fields.DoctifyReviews.fields.Link}></Link>
     </div>
   );
 };

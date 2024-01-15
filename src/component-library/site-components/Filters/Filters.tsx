@@ -26,12 +26,12 @@ const Filters = (props: FiltersProps): JSX.Element => {
         </button>
       </Button>
 
-      <Themes theme="f">
+      <Themes theme="F-HCA-White">
         <Modals
           ref={dialogRef}
           defaultOpen={false}
           variation="right"
-          modalClass="filters"
+          contentVariation="filters"
         >
           <div className={styles.header}>
             <Text variation="body-semi-bold-extra-large">Filter By:</Text>
