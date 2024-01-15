@@ -30,3 +30,6 @@ jobs:
 
       - name: Publish storybook to Chromatic
         run: npm run component-library:storybook:publish
+
+      - name: Disable workflow
+        run: gh workflow disable "Storybook Publisher"
