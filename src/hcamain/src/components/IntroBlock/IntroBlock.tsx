@@ -34,6 +34,7 @@ interface CQCStatusFields {
     Title: Field<string>;
     Icon: Field<string>;
     Logo: ImageField;
+    ReportLink: LinkField;
   };
 }
 
@@ -42,6 +43,7 @@ interface DoctifyReviewsFields {
     Stars: Field<string>;
     Reviews: Field<string>;
     DoctifyLogo: DoctifyLogoFields;
+    Link: LinkField;
   };
 }
 
@@ -112,6 +114,8 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       <br />
       <Image field={props.fields.CQCStatus.fields.Logo} />
       <br />
+      <Link field={props.fields.CQCStatus.fields.ReportLink}></Link>
+      <br />
       <span>
         <b>DoctifyReviews</b>
       </span>
@@ -128,6 +132,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
       />
       <br />
+      <Link field={props.fields.DoctifyReviews.fields.Link}></Link>
     </div>
   );
 };

@@ -1,0 +1,40 @@
+﻿---
+ID: "089b58bf-63e8-4cfd-9f53-3f959a78aeca"
+Parent: "01639051-cdeb-4fc0-9c61-a65fc9db12e3"
+Template: "3a256c8e-9cbe-4945-af56-1ad7a4e7042b"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA32/Blog Page Header
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240111T092041Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "55462d0e-1d24-40a1-bdac-6314fdf4d6d8"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9ac8396b-73a1-45de-ba4e-3fc18a9d967d"
+    - ID: "96b3721e-4032-4102-83f6-ec8b2369b78f"
+      Hint: Heading
+      Value: Our HCA blog
+    - ID: "b800cde5-8ae5-45e2-806d-08fc3c4f0bcd"
+      Hint: Title
+      Value: News & articles about healthcare
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240111T092248Z
