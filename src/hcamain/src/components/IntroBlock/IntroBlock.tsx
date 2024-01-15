@@ -39,9 +39,18 @@ interface CountersFields {
 interface CQCStatusFields {
   fields: {
     Title: Field<string>;
-    Icon: { value: IconName };
-    Logo: ImageFieldValue;
+    Text: Field<string>;
     ReportLink: LinkField;
+    Status: {
+      fields: {
+        ['CQC Logo']: {
+          fields: {
+            Logo: ImageFieldValue;
+          };
+        };
+        Icon: { value: IconName };
+      };
+    };
   };
 }
 
@@ -96,18 +105,45 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
 
   const cqc = (
     <CQCBlock
-      link={<a href="#"></a>}
+      link={
+        <JSSLink field={props.fields.CQCStatus.fields.ReportLink}></JSSLink>
+      }
       title={props.fields.CQCStatus.fields.Title.value}
-      text="All our hospitals are rated Good or Oustanding."
-      icon={<Icons iconName={props.fields.CQCStatus.fields.Icon.value}></Icons>}
+      text={props.fields.CQCStatus.fields.Text.value}
+      icon={
+        <Icons
+          iconName={props.fields.CQCStatus.fields.Status.fields.Icon.value}
+        ></Icons>
+      }
       logo={{
-        dark: <JSSImage field={props.fields.CQCStatus.fields.Logo} />,
-        light: <JSSImage field={props.fields.CQCStatus.fields.Logo} />,
+        dark: (
+          <JSSImage
+            field={
+              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+                .Logo
+            }
+          />
+        ),
+        light: (
+          <JSSImage
+            field={
+              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+                .Logo
+            }
+          />
+        ),
       }}
     />
   );
 
-  /* dark: (
+  const doctify = (
+    <Doctify
+      alignment="left"
+      link={<JSSLink field={props.fields.DoctifyReviews.fields.Link}></JSSLink>}
+      rating={props.fields.DoctifyReviews.fields.Stars.value}
+      reviews={props.fields.DoctifyReviews.fields.Reviews.value}
+      logo={{
+        dark: (
           <JSSImage
             field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
           />
@@ -116,17 +152,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
           <JSSImage
             field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
           />
-        ), */
-
-  const doctify = (
-    <Doctify
-      alignment="left"
-      link={<a href="#"></a>}
-      rating={props.fields.DoctifyReviews.fields.Stars.value}
-      reviews={props.fields.DoctifyReviews.fields.Reviews.value}
-      logo={{
-        dark: <span></span>,
-        light: <span></span>,
+        ),
       }}
     />
   );
@@ -161,67 +187,5 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       cqc={cqc}
       doctify={doctify}
     />
-  );
-};
-
-{
-  /* <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Title} />
-      <RichText field={props.fields.Text} />
-      <Image field={props.fields.Image} />
-      <br />
-      <span>
-        <b>Counters</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.Counters.map((counters, index) => (
-          <li key={index}>
-            <Text field={counters.fields.Text} />
-            <br />
-            <Text field={counters.fields.Number} />
-          </li>
-        ))}
-      </ul>
-      <br />
-      {props?.fields?.CTAIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <Link field={props.fields.CTALink}></Link>
-      <br />
-      <span>
-        <b>CQCStatus</b>
-      </span>
-      <br />
-      <Text field={props.fields.CQCStatus.fields.Title} />
-      <br />
-      <Text field={props.fields.CQCStatus.fields.Icon} />
-      <br />
-      <Image field={props.fields.CQCStatus.fields.Logo} />
-      <br />
-      <Link field={props.fields.CQCStatus.fields.ReportLink}></Link>
-      <br />
-      <span>
-        <b>DoctifyReviews</b>
-      </span>
-      <br />
-      <Text field={props.fields.DoctifyReviews.fields.Reviews} />
-      <br />
-      <Text field={props.fields.DoctifyReviews.fields.Stars} />
-      <br />
-      <Text
-        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text}
-      />
-      <br />
-      <Image
-        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
-      />
-      <br />
-      <Link field={props.fields.DoctifyReviews.fields.Link}></Link>
-    </div>
   );
 };
