@@ -1,27 +1,16 @@
 ﻿---
-ID: "db2959e1-65ed-409a-bad1-79700462a81d"
-Parent: "8132c506-1fb5-42fe-b889-f12707384c84"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_CQCBase/CQC/ReportLink
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: General Link
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
+ID: "37ebf66c-389d-45d4-9209-8b139a2f6eab"
+Parent: "6c54c425-d4ce-4fa1-b75e-cf5313fc54d4"
+Template: "49c111d0-6867-4798-a724-1f103166e6e9"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Doctify
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Report Link
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231107T123647Z
+      Value: 20240114T071601Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "420d0101-b8ab-4bee-8bb9-7a6cb184cbfe"
+      Value: "afe707b5-e68c-43b0-bbc1-52f91c80f547"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240112T123035Z
+      Value: 20240114T071601Z

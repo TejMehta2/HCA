@@ -1,0 +1,27 @@
+﻿---
+ID: "bf1a104b-edd6-4a7c-ba2e-6ffa93831d7d"
+Parent: "f59d8452-9124-4a51-92d0-c53242a367c0"
+Template: "f59d8452-9124-4a51-92d0-c53242a367c0"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/CQC Rating/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9b7c7c63-f62a-4320-a391-37462783d339"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240114T054012Z

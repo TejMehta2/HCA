@@ -21,7 +21,7 @@ interface PagesFields {
 
 interface Fields {
   data: {
-    item: {
+    item?: {
       title: { jsonValue: Field<string> };
       cTACardText: { jsonValue: Field<string> };
       pages: {
@@ -52,7 +52,7 @@ const ContentCardsDefaultComponent = (
 );
 
 export const Default = (props: ContentCardsProps): JSX.Element => {
-  if (!props.fields) {
+  if (!props.fields.data.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
   return (
