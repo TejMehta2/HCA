@@ -35,6 +35,7 @@ const SitecorePage = ({
   const isComponentRendering =
     layoutData.sitecore.context.renderingType === RenderingType.Component;
 
+  //console.log(layoutData.sitecore.route.placeholders['headless-main']);
   return (
     <ComponentPropsContext value={componentProps}>
       <SitecoreContext
@@ -96,12 +97,48 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
 
+  //  loop through components on page and identify doctor cards component
+  //  props.layoutData.sitecore.route!.placeholders['headless-main']
+  //  if (component.componentName === 'DoctorCards') {
+
+  //  for the doctors card component get the custom filter values to append to the Doctify URL
+  //  component.fields.CustomFilters
+
+  const pageComponents =
+    props.layoutData.sitecore.route!.placeholders['headless-main'];
+
+  await Promise.all(
+    pageComponents.map(async (component) => {
+      if (component.componentName === 'DoctorCards') {
+        const customFilters = [];
+        component.fields.CustomFilters.map((filter) => {
+          const customFilter = filter.fields.Filter.value;
+          customFilters.push(customFilter);
+        });
+        const customFiltersParams = customFilters.join('&');
+
+        // const res = await fetch(
+        //   `https://api.doctify.com/api/hca/search?${customFiltersParams}`
+        // );
+
+        const res = await fetch(
+          'https://api.doctify.com/api/hca/search?sortType=relevance&search=Dermatology&keywordId=2924&lat=51.5072178&lon=-0.1275862&distance=700'
+        );
+
+        const docitfyData = await res.json();
+
+        return (component.fields.apiData = docitfyData);
+      }
+    })
+  );
+
   return {
-    props,
+    props: props,
+
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-    revalidate: 5, // In seconds
+    revalidate: 5, // In secondthas
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
 };
