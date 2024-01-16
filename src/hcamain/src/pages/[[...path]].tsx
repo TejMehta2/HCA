@@ -119,7 +119,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const limit = component.fields.NumberOfCards.value;
 
         const res = await fetch(
-          `https://api.doctify.com/api/hca/search?sortType=relevance&search=Dermatology&keywordId=2924&lat=51.5072178&lon=-0.1275862&distance=700&${customFiltersParams}&limit=${limit}`
+          `https://api.doctify.com/api/hca/search?sortType=relevance&search=Dermatology&lat=51.5072178&lon=-0.1275862&distance=700&${customFiltersParams}&limit=${limit}`
         );
 
         const docitfyData = await res.json();

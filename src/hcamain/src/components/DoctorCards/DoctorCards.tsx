@@ -3,15 +3,13 @@ import {
   Field,
   ImageField,
   LinkField,
-  Text as JssText,
-  RichText as JssRichText,
   Link as JssLink,
-  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
   fields: {
@@ -52,12 +50,21 @@ interface Fields {
   Practice: PracticeFields[];
   Service: ServiceFields[];
   CustomFilters: FiltersFields[];
-  //apiData: TODO
+  apiData: [];
 }
 
 type DoctorCardsProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    Theme: Theme;
+  };
   fields: Fields;
+};
+
+type Doctor = {
+  firstName: string;
 };
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
@@ -76,7 +83,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
 
   const doctors = props.fields.apiData.rows;
 
-  const getSpeciality = (doctor) => {
+  const getSpeciality = (doctor: Doctor) => {
     const keywords = doctor.keywords;
 
     const topSpecialty = keywords.filter(
@@ -89,8 +96,10 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   return (
     <CardDoctorLayout
       title={
-        //  TO - needs variation from sitecore
-        <Text variation="display-3" tag={props.params.HeadingTag}>
+        <Text
+          tag={props.params.HeadingTag}
+          variation={props.params.HeadingSize || 'display-3'}
+        >
           {props.fields.Title.value}
         </Text>
       }
@@ -108,7 +117,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
       //  TODO - needs theme to come from sitecore
       theme="A-HCA-Main-Turquoise"
     >
-      {doctors.map((doctor, index) => (
+      {doctors.map((doctor: Doctor, index: number) => (
         <CardDoctor
           key={index}
           image={
