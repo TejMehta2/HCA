@@ -1,0 +1,11 @@
+# enables storybook-publisher once per day, to apply a daily limit to Chromatic builds
+name: Enable workflow
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+    
+jobs:
+  enable-workflow:
+    steps:
+    - name: enable
+      run: gh workflow enable "Storybook Publisher"
