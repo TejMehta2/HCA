@@ -74,7 +74,6 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
 );
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
-  console.log(props);
   if (!props.fields) {
     return <DoctorCardsDefaultComponent {...props} />;
   }
