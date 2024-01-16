@@ -20,7 +20,7 @@ SharedFields:
           p:before="*"
           s:ds="{922B88DF-DC99-46DA-B617-3161D0D34893}"
           s:id="{CD8E122B-EEF0-4172-9020-DE23AE20CDC5}"
-          s:par="GridParameters&amp;FieldNames=%7B442459D1-E007-4F26-B6BB-A1289883689B%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters&amp;FieldNames=%7B442459D1-E007-4F26-B6BB-A1289883689B%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -28,7 +28,7 @@ SharedFields:
           p:after="*[1=2]"
           s:ds="{DCD51D93-5559-467B-9209-521A7E64CB45}"
           s:id="{CD8E122B-EEF0-4172-9020-DE23AE20CDC5}"
-          s:par="GridParameters&amp;FieldNames=%7B6D128A3F-5E88-402A-9712-B581F176C82D%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters&amp;FieldNames=%7B6D128A3F-5E88-402A-9712-B581F176C82D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -54,14 +54,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "66c9dd79-20c2-4940-acc9-79940597856a"
+      Value: "815bf07e-3407-4360-8278-6395c2e5bd59"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231228T075443Z
+      Value: 20240115T151231Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: Home
