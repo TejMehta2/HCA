@@ -14,6 +14,10 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
+import {
+  FilterField,
+  ComponentRenderingDocCards,
+} from '../components/DoctorCards/DoctorCards.types';
 
 const SitecorePage = ({
   notFound,
@@ -35,7 +39,6 @@ const SitecorePage = ({
   const isComponentRendering =
     layoutData.sitecore.context.renderingType === RenderingType.Component;
 
-  //console.log(layoutData.sitecore.route.placeholders['headless-main']);
   return (
     <ComponentPropsContext value={componentProps}>
       <SitecoreContext
@@ -108,16 +111,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props.layoutData.sitecore.route!.placeholders['headless-main'];
 
   await Promise.all(
-    pageComponents.map(async (component) => {
-      if (component.componentName === 'DoctorCards') {
-        const customFilters = [];
-        component.fields.CustomFilters.map((filter) => {
+    pageComponents.map(async (component: ComponentRenderingDocCards) => {
+      if (component.componentName === 'DoctorCards' && component.fields) {
+        const customFilters: string[] = [];
+
+        component.fields.CustomFilters.map((filter: FilterField) => {
           const customFilter = filter.fields.Filter.value;
           customFilters.push(customFilter);
         });
+
         const customFiltersParams = customFilters.join('&');
         const limit = component.fields.NumberOfCards.value;
 
+        //TODO BE to provide essential props via Custom Filters
         const res = await fetch(
           `https://api.doctify.com/api/hca/search?sortType=relevance&search=Dermatology&lat=51.5072178&lon=-0.1275862&distance=700&${customFiltersParams}&limit=${limit}`
         );

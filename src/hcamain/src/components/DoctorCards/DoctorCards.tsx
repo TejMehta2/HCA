@@ -10,6 +10,7 @@ import CardDoctorLayout from '@component-library/site-components/CardDoctorLayou
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import { Doctor, DoctorRow } from './DoctorCards.types';
 
 type HCAIconFields = {
   fields: {
@@ -50,7 +51,7 @@ interface Fields {
   Practice: PracticeFields[];
   Service: ServiceFields[];
   CustomFilters: FiltersFields[];
-  apiData: [];
+  apiData: Doctor;
 }
 
 type DoctorCardsProps = {
@@ -61,10 +62,6 @@ type DoctorCardsProps = {
     Theme: Theme;
   };
   fields: Fields;
-};
-
-type Doctor = {
-  firstName: string;
 };
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
@@ -83,7 +80,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
 
   const doctors = props.fields.apiData.rows;
 
-  const getSpeciality = (doctor: Doctor) => {
+  const getSpeciality = (doctor: DoctorRow) => {
     const keywords = doctor.keywords;
 
     const topSpecialty = keywords.filter(
@@ -114,10 +111,9 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           )}
         </JssLink>
       }
-      //  TODO - needs theme to come from sitecore
-      theme="A-HCA-Main-Turquoise"
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
     >
-      {doctors.map((doctor: Doctor, index: number) => (
+      {doctors.map((doctor: DoctorRow, index: number) => (
         <CardDoctor
           key={index}
           image={
@@ -130,7 +126,9 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           }
           title={
             <Text variation="display-5" tag="h3">
-              {doctor.title} {doctor.firstName} {doctor.lastName}
+              <span>
+                {doctor.title} {doctor.firstName} {doctor.lastName}
+              </span>
             </Text>
           }
           department={<span>{getSpeciality(doctor)}</span>}
