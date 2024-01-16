@@ -11,6 +11,7 @@ import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor
 import Text from '@component-library/foundation/Text/Text';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import { Doctor, DoctorRow } from './DoctorCards.types';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields: {
@@ -94,7 +95,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     <CardDoctorLayout
       title={
         <Text
-          tag={props.params.HeadingTag}
+          tag={props.params.HeadingTag || 'h2'}
           variation={props.params.HeadingSize || 'display-3'}
         >
           {props.fields.Title.value}
@@ -125,7 +126,10 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
             />
           }
           title={
-            <Text variation="display-5" tag="h3">
+            <Text
+              variation="display-5"
+              tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+            >
               <span>
                 {doctor.title} {doctor.firstName} {doctor.lastName}
               </span>
