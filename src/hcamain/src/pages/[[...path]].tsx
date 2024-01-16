@@ -123,9 +123,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const customFiltersParams = customFilters.join('&');
         const limit = component.fields.NumberOfCards.value;
 
-        //TODO BE to provide essential props via Custom Filters
         const res = await fetch(
-          `https://api.doctify.com/api/hca/search?sortType=relevance&search=Dermatology&lat=51.5072178&lon=-0.1275862&distance=700&${customFiltersParams}&limit=${limit}`
+          `https://api.doctify.com/api/hca/search?${customFiltersParams}&limit=${limit}`
         );
 
         const docitfyData = await res.json();
