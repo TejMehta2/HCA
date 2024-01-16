@@ -100,15 +100,11 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
 
-  //  loop through components on page and identify doctor cards component
-  //  props.layoutData.sitecore.route!.placeholders['headless-main']
-  //  if (component.componentName === 'DoctorCards') {
-
-  //  for the doctors card component get the custom filter values to append to the Doctify URL
-  //  component.fields.CustomFilters
-
   const pageComponents =
     props.layoutData.sitecore.route!.placeholders['headless-main'];
+
+  //  loop through components on page and identify doctor cards component
+  //  for the doctors card component get the custom filter values to append to the Doctify URL
 
   await Promise.all(
     pageComponents.map(async (component: ComponentRenderingDocCards) => {
@@ -140,7 +136,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-    revalidate: 5, // In secondthas
+    revalidate: 5, // In seconds
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
 };
