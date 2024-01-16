@@ -1,20 +1,20 @@
 import React from 'react';
 import {
-  Image as JssImage,
-  RichText as JssRichText,
-  ImageField,
-  Field,
-  LinkField,
-  Link as JssLink,
-  Text as JssText,
-  Placeholder,
+  //   Image as JssImage,
+  //   RichText as JssRichText,
+  //   ImageField,
+  //   Field,
+  //   LinkField,
+  //   Link as JssLink,
+  //   Text as JssText,
+  //   Placeholder,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Footer from '@component-library/components/Footer/Footer';
-import Icons from '@component-library/foundation/Icons/Icons';
-import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
+// import Footer from '@component-library/components/Footer/Footer';
+// import Icons from '@component-library/foundation/Icons/Icons';
+// import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import {
-  Foundation,
+  //Foundation,
   Navigation,
 } from '.GeneratedTypeScriptModel/Project.HCA.model';
 
