@@ -1,0 +1,78 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as AccordionsBlockStories from './AccordionsBlock.stories';
+
+<Meta of={AccordionsBlockStories} />
+
+# AccordionsBlock
+
+## Description
+
+The `AccordionsBlock` component is used to display one or more AccordionsBlock with an optional header and call to action. 
+
+NB: The `Accordion` component is only used when nested in the `AccordionsBlock` component which controls the functionality of the AccordionsBlock as a group, and should be used even when using a single accordion.
+
+It is intended to be used in within a theme.
+
+It can be composed like this:
+
+```tsx
+<AccordionsBlock
+  header={
+    <Text tag="h3" variation="display-3">
+      Hip Pain FAQ
+    </Text>
+  }
+  AccordionsBlock={[
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'How long will I have to wait to book a hip pain appointment?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+  ]}
+  cta={<button>View all AccordionsBlock</button>}
+></AccordionsBlock>
+```
+
+## Example
+
+<Canvas of={AccordionsBlockStories.Default} />
+<Controls of={AccordionsBlockStories.Default} />

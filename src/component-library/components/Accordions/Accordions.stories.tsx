@@ -1,13 +1,12 @@
 import React from 'react';
 import Accordions from './Accordions';
 import type { Meta, StoryObj } from '@storybook/react';
-import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
 import { ThemesProps } from '../../foundation/Themes/Themes.types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Accordions> = {
-  title: 'site-components/Accordions',
+  title: 'components/Accordions',
   component: Accordions,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
@@ -30,11 +29,6 @@ export default meta;
 
 export const Default: StoryObj<typeof Accordions> = {
   args: {
-    header: (
-      <Text tag="h3" variation="display-3">
-        Hip Pain FAQ
-      </Text>
-    ),
     accordions: [
       {
         title: 'How long will I have to wait to book a hip pain appointment?',
@@ -81,8 +75,6 @@ export const Default: StoryObj<typeof Accordions> = {
         ),
       },
     ],
-
-    cta: <button>View all FAQs</button>,
   },
 };
 
@@ -102,11 +94,6 @@ const themes: ThemesProps['theme'][] = [
 ];
 export const Themed: StoryObj<typeof Accordions> = {
   args: {
-    header: (
-      <Text tag="h3" variation="display-3">
-        Hip Pain FAQ
-      </Text>
-    ),
     accordions: [
       {
         title: 'How long will I have to wait to book a hip pain appointment?',
@@ -153,8 +140,6 @@ export const Themed: StoryObj<typeof Accordions> = {
         ),
       },
     ],
-
-    cta: <button>View all FAQs</button>,
   },
   decorators: [
     (Story) => (

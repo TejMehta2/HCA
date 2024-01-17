@@ -1,15 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Accordions from '../../site-components/Accordions/Accordions';
-import { AccordionsProps } from '../../site-components/Accordions/Accordions.types';
-import Text from '../../foundation/Text/Text';
+import Accordions from '../Accordions/Accordions';
+import { AccordionsProps } from '../Accordions/Accordions.types';
 
 const mockProps: AccordionsProps = {
-  header: (
-    <Text tag="h3" variation="display-3">
-      Hip Pain FAQ
-    </Text>
-  ),
   accordions: [
     {
       title: 'How long will I have to wait to book a hip pain appointment?',
@@ -23,8 +17,6 @@ const mockProps: AccordionsProps = {
       ),
     },
   ],
-
-  cta: <button>View all FAQs</button>,
 };
 
 describe('Accordions', () => {
