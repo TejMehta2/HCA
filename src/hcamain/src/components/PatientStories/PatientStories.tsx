@@ -12,6 +12,9 @@ import {
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import Text from '@component-library/foundation/Text/Text';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type CTAIconFields = {
   svgMarkup: Field<string>;
@@ -44,7 +47,12 @@ interface Fields {
 }
 
 type PatientStoriesProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -61,12 +69,75 @@ const PatientStoriesDefaultComponent = (
 };
 
 export const Carousel = (props: PatientStoriesProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (!props.fields) {
+    return <PatientStoriesDefaultComponent {...props} />;
+  }
+
   return (
-    <div className={`component promo ${props.params.styles}`}>
-      <div className="component-content">
-        <p>Patient Stories Carousel Not Implemented</p>
-      </div>
-    </div>
+    <CarouselCards
+      theme={props.params.Theme || 'F-HCA-White'}
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-3'}
+        >
+          <JssText field={props.fields.data.item.title.jsonValue} />
+        </Text>
+      }
+      link={
+        !isExperienceEditor ? (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}>
+            {props?.fields?.data?.item?.cTAIcon?.Icon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
+                }}
+              />
+            )}
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.data.item.cTALink.jsonValue.value.text,
+              }}
+            />
+          </JssLink>
+        ) : (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
+        )
+      }
+    >
+      {props.fields.data.item.stories.StoriesList.map((story, index) => (
+        <CardPatientStories
+          key={index}
+          title={
+            <Text
+              tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+              variation="display-4"
+            >
+              <JssText field={story.title} />
+            </Text>
+          }
+          link={
+            <a href={story.url.url}>
+              <RichText
+                tag="span"
+                field={{
+                  value: props.fields.data.item.cardCTAText.jsonValue?.value,
+                }}
+              />
+            </a>
+          }
+          bodyCopy={
+            <Text tag="div" variation="body-large">
+              <RichText tag="span" field={story.description} />
+            </Text>
+          }
+          image={<JssImage field={story.image.jsonValue} />}
+        ></CardPatientStories>
+      ))}
+    </CarouselCards>
   );
 };
 
