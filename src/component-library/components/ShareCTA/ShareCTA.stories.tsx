@@ -23,16 +23,16 @@ export const Default: StoryObj<typeof ShareCTA> = {
       text: '',
     },
 
-    children: (
-      <>
-        <Text tag="h2" variation="display-2">
-          Share this cost
-        </Text>
+    heading: (
+      <Text tag="h2" variation="display-2">
+        Share this cost
+      </Text>
+    ),
 
-        <Text tag="p" variation="subheading-1">
-          Hip Surgery - £5,000
-        </Text>
-      </>
+    subheading: (
+      <Text tag="p" variation="subheading-1">
+        Hip Surgery - £5,000
+      </Text>
     ),
   },
 };

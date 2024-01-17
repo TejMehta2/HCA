@@ -6,5 +6,6 @@ export interface ShareCTAProps {
     title: string;
     text: string;
   };
-  children: ReactNode | JSX.Element;
+  heading: ReactNode | JSX.Element;
+  subheading: ReactNode | JSX.Element;
 }

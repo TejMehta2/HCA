@@ -14,12 +14,17 @@
   @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 8);
 }
 
+.headings {
+  display: grid;
+  gap: $spacing-4;
+}
+
 .share-buttons {
   display: grid;
   grid: auto / 1fr 1fr;
   list-style-type: none;
   gap: $spacing-4;
-  padding: 0;
+  padding: $spacing-7 0 0;
 
   * > button,
   a {
