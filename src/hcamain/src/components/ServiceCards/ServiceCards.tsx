@@ -72,19 +72,31 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <ServiceCards
       title={
-        <Text
-          variation={props.params.HeadingSize || 'display-2'}
-          tag={props.params.HeadingTag || 'h2'}
-        >
-          <JssText field={props.fields.Heading} />
-        </Text>
+        isExperienceEditor ? (
+          <JssText field={props.fields.Title} />
+        ) : (
+          <Text
+            variation={props.params.HeadingSize || 'display-2'}
+            tag={props.params.HeadingTag || 'h2'}
+          >
+            <JssText field={props.fields.Title} />
+          </Text>
+        )
       }
       subtitle={
-        <Text variation="subheading-1">{props.fields.Heading.value}</Text>
+        isExperienceEditor ? (
+          <JssText field={props.fields.Heading} />
+        ) : (
+          <Text variation="subheading-1">
+            <JssText field={props.fields.Heading} />
+          </Text>
+        )
       }
       bodyText={<JssRichText field={props.fields.Description} />}
       cta={
-        !isExperienceEditor ? (
+        isExperienceEditor ? (
+          <JssLink field={props.fields.CTALink.value}></JssLink>
+        ) : (
           <JssLink field={props.fields.CTALink}>
             {props?.fields?.CTAIcon && (
               <span
@@ -101,8 +113,6 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
               ></span>
             )}
           </JssLink>
-        ) : (
-          <JssLink field={props.fields.CTALink.value}></JssLink>
         )
       }
     >
