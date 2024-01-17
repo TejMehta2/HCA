@@ -7,6 +7,7 @@ import {
   Image as JSSImage,
   Link as JSSLink,
   ImageFieldValue,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
@@ -94,6 +95,8 @@ const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
 );
 
 export const Default = (props: IntroBlockProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
@@ -146,12 +149,16 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       logo={{
         dark: (
           <JSSImage
-            field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
+            field={
+              props.fields.DoctifyReviews.fields.DoctifyLogoDark.fields.Logo
+            }
           />
         ),
         light: (
           <JSSImage
-            field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
+            field={
+              props.fields.DoctifyReviews.fields.DoctifyLogoLight.fields.Logo
+            }
           />
         ),
       }}
@@ -175,14 +182,18 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       }
       stats={stats}
       cta={
-        <JSSLink field={props.fields.CTALink}>
-          <RichText
-            tag="span"
-            field={{
-              value: props.fields.CTALink.value.text,
-            }}
-          />
-        </JSSLink>
+        !isExperienceEditor ? (
+          <JSSLink field={props.fields.CTALink}>
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.CTALink.value.text,
+              }}
+            />
+          </JSSLink>
+        ) : (
+          <JSSLink field={props.fields.CTALink.value}></JSSLink>
+        )
       }
       image={<JSSImage field={props.fields.Image} />}
       cqc={cqc}
