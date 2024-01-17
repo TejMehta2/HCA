@@ -10,6 +10,10 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
   const { shareData, heading, subheading } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shareData.url);
+  };
+
   return (
     <>
       <Themes theme="F-HCA-White">
@@ -31,7 +35,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
               <ul className={styles['share-buttons']}>
                 <li>
                   <Button size="large" theme="square-outline">
-                    <button>
+                    <button onClick={handleCopy}>
                       <Icons iconName="iconEmail"></Icons>
                       <span>Copy Link</span>
                     </button>
@@ -39,26 +43,35 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
                 </li>
                 <li>
                   <Button size="large" theme="square-outline">
-                    <button>
+                    <a
+                      href={`mailto:?subject=${shareData.title}&body=${shareData.text}${shareData.url}`}
+                      title="Share by Email"
+                    >
                       <Icons iconName="iconEmail"></Icons>
                       <span>Email</span>
-                    </button>
+                    </a>
                   </Button>
                 </li>
                 <li>
                   <Button size="large" theme="square-outline">
-                    <button>
+                    <a
+                      href={`https://web.whatsapp.com/send?text=${shareData.url}`}
+                      rel="nofollow noopener"
+                      target="_blank"
+                    >
                       <Icons iconName="iconWhatsapp"></Icons>
                       <span>WhatsApp</span>
-                    </button>
+                    </a>
                   </Button>
                 </li>
                 <li>
                   <Button size="large" theme="square-outline">
-                    <button>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${shareData.url}`}
+                    >
                       <Icons iconName="iconFacebook"></Icons>
                       <span>Facebook</span>
-                    </button>
+                    </a>
                   </Button>
                 </li>
                 <li>

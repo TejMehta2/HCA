@@ -364,6 +364,7 @@
     padding: $spacing-5 $spacing-7;
     color: var(--cta-outline-text);
     background-color: transparent;
+    width: 100%;
 
     &:hover {
       border-color: var(--cta-outline-hover-border);

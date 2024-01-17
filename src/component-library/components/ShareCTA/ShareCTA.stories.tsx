@@ -18,9 +18,9 @@ export default meta;
 export const Default: StoryObj<typeof ShareCTA> = {
   args: {
     shareData: {
-      url: '',
-      title: '',
-      text: '',
+      url: 'http://localhost:3000/',
+      title: 'Test',
+      text: 'Test text',
     },
 
     heading: (
