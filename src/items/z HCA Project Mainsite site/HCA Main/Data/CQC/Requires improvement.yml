@@ -16,15 +16,21 @@ Languages:
       Value: "{F77BA80B-F0D0-4AC5-8A1E-59FF262CC555}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bbf0be2d-226a-45b9-b7a0-53b3d8689aa1"
+      Value: "42e59c7c-6012-483d-a340-ed4e97a1f097"
+    - ID: "b5cfb002-6c07-4b59-953f-abb43486f0ce"
+      Hint: Title
+      Value: Care Quality Commission verified
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240112T121835Z
+      Value: 20240112T180144Z
     - ID: "db2959e1-65ed-409a-bad1-79700462a81d"
       Hint: ReportLink
       Value: |
         <link linktype="external" url="https://www.cqc.org.uk/provider/1-101728688" />
+    - ID: "fd25675b-a6f6-4fc9-be43-f7b1eed271cb"
+      Hint: Text
+      Value: All our hospitals are rated Good or Oustanding.

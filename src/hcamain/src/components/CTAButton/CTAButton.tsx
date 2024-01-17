@@ -33,7 +33,7 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
 
 const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
   <Button theme={theme} size={props.size || 'large'}>
-    <a href={props.fields.CTALink.value.href}>
+    <a href={props.fields?.CTALink.value.href}>
       {props?.fields?.CTAIcon?.fields.SvgMarkup && (
         <span
           dangerouslySetInnerHTML={{
@@ -44,7 +44,7 @@ const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
       <RichText
         tag="span"
         field={{
-          value: props.fields.CTALink.value.text,
+          value: props.fields?.CTALink.value.text,
         }}
       />
     </a>

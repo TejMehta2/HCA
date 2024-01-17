@@ -1,0 +1,23 @@
+﻿---
+ID: "ee744484-162b-4f46-a2f7-415376a70105"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "3865dca4-5c15-4502-94f5-d56a5c4b155d"
+Path: /sitecore/content/HCA/HCA Main/Data/Social Media Profiles
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240108T155545Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ff0fed9a-6183-4ac2-ab72-39a38bbf96ca"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240108T155545Z
