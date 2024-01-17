@@ -14,10 +14,7 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
-import {
-  FilterField,
-  ComponentRenderingDocCards,
-} from '../components/DoctorCards/DoctorCards.types';
+import { fetchDoctorCardData } from '../components/DoctorCards/DoctorCardData';
 
 const SitecorePage = ({
   notFound,
@@ -103,32 +100,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const pageComponents =
     props.layoutData.sitecore.route!.placeholders['headless-main'];
 
-  //  loop through components on page and identify doctor cards component
-  //  for the doctors card component get the custom filter values to append to the Doctify URL
-
-  await Promise.all(
-    pageComponents.map(async (component: ComponentRenderingDocCards) => {
-      if (component.componentName === 'DoctorCards' && component.fields) {
-        const customFilters: string[] = [];
-
-        component.fields.CustomFilters.map((filter: FilterField) => {
-          const customFilter = filter.fields.Filter.value;
-          customFilters.push(customFilter);
-        });
-
-        const customFiltersParams = customFilters.join('&');
-        const limit = component.fields.NumberOfCards.value;
-
-        const res = await fetch(
-          `https://api.doctify.com/api/hca/search?${customFiltersParams}&limit=${limit}`
-        );
-
-        const docitfyData = await res.json();
-
-        return (component.fields.apiData = docitfyData);
-      }
-    })
-  );
+  await fetchDoctorCardData(pageComponents);
 
   return {
     props: props,

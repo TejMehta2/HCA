@@ -3,6 +3,7 @@ import {
   Field,
   ImageField,
   LinkField,
+  Text as JssText,
   Link as JssLink,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -96,12 +97,16 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   return (
     <CardDoctorLayout
       title={
-        <Text
-          tag={props.params.HeadingTag || 'h2'}
-          variation={props.params.HeadingSize || 'display-3'}
-        >
-          {props.fields.Title.value}
-        </Text>
+        isExperienceEditor ? (
+          <JssText field={props.fields.Title}></JssText>
+        ) : (
+          <Text
+            tag={props.params.HeadingTag || 'h2'}
+            variation={props.params.HeadingSize || 'display-3'}
+          >
+            {props.fields.Title.value}
+          </Text>
+        )
       }
       cta={
         isExperienceEditor ? (
