@@ -38,6 +38,7 @@ interface Fields {
   Description: Field<string>;
   CTAIcon: HCAIconFields;
   CTALink: LinkField;
+  CTACardText: Field<string>;
   Services: ServiceFields[];
 }
 
@@ -108,7 +109,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       {props.fields.Services &&
         props.fields.Services.map((service, index) => (
           <CardService
-            link={<a href={service.url}>{service.name}</a>}
+            link={<a href={service.url}>{props.fields.CTACardText.value}</a>}
             key={index}
           >
             <JssImage field={service.fields.Image} />

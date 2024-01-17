@@ -34,7 +34,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{9BDC061B-7825-48AC-956C-416E501B99AE}" />
+    <image mediaid="{D145D977-D3AB-4876-9F41-2AC98C2F240E}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -81,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "34fe995f-6b50-43ff-994d-ec6f1febb85d"
+      Value: "50c03b88-6948-4420-b189-8908e5e8cb72"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240108T123548Z
+      Value: 20240115T214048Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
