@@ -47,7 +47,7 @@ const IntegratedButton = (props: IntegratedButtonProps) => (
       <RichText
         tag="span"
         field={{
-          value: props.fields.CTALink.value.text,
+          value: props.fields?.CTALink.value.text,
         }}
       />
     </a>
