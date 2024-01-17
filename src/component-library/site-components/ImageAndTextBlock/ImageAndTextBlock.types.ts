@@ -13,10 +13,7 @@ export interface ImageAndTextBlockProps {
   image: ReactNode | JSX.Element;
   children: ReactNode | JSX.Element;
   subheader?: ReactNode | JSX.Element;
-  ctas?: {
-    button1?: ReactNode | JSX.Element;
-    button2?: ReactNode | JSX.Element;
-  };
+  ctas?: JSX.Element;
   imageAlignment?: imageAlignmentTypes;
   length?: lengthTypes;
   theme: Theme;

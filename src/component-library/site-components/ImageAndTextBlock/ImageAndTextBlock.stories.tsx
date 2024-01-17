@@ -6,6 +6,7 @@ import Text from '../../foundation/Text/Text';
 import Doctify from '../../components/Doctify/Doctify';
 import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
+import Button from '../../core-components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ImageAndTextBlock> = {
@@ -54,22 +55,28 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
         payment plans
       </Text>
     ),
-    ctas: {
-      button1: (
-        <button>
-          <span>
-            Learn more about <strong>self-pay</strong>
-          </span>
-        </button>
-      ),
-      button2: (
-        <button>
-          <span>
-            Access care with <strong>insurance</strong>
-          </span>
-        </button>
-      ),
-    },
+    ctas: (
+      <>
+        <Button size="large" theme="full">
+          <a href="#">
+            <span>
+              <Icons iconName={'icon3Lines'} />
+            </span>
+            <span>
+              Learn more about <strong>self-pay</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" theme="outline">
+          <a href="#">
+            <Icons iconName={'icon3Lines'} />
+            <span>
+              Access care with <strong>insurance</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
   },
 };
 
@@ -117,22 +124,24 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
         payment plans
       </Text>
     ),
-    ctas: {
-      button1: (
-        <button>
-          <span>
-            Learn more about <strong>self-pay</strong>
-          </span>
-        </button>
-      ),
-      button2: (
-        <button>
-          <span>
-            Access care with <strong>insurance</strong>
-          </span>
-        </button>
-      ),
-    },
+    ctas: (
+      <>
+        <Button size="large" theme="full">
+          <a href="#">
+            <span>
+              Learn more about <strong>self-pay</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" theme="outline">
+          <a href="#">
+            <span>
+              Access care with <strong>insurance</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
   },
 };
 
