@@ -4,6 +4,7 @@ import {
   ImageField,
   LinkField,
   Link as JssLink,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
@@ -74,6 +75,8 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
 );
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <DoctorCardsDefaultComponent {...props} />;
   }
@@ -101,53 +104,58 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
         </Text>
       }
       cta={
-        <JssLink field={props.fields.CTALink}>
-          {props?.fields?.CTALink.value.text && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields.CTALink.value.text,
-              }}
-            ></span>
-          )}
-        </JssLink>
+        isExperienceEditor ? (
+          <JssLink field={props.fields.CTALink}></JssLink>
+        ) : (
+          <JssLink field={props.fields.CTALink}>
+            {props?.fields?.CTALink.value.text && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.CTALink.value.text,
+                }}
+              ></span>
+            )}
+          </JssLink>
+        )
       }
       theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
     >
-      {doctors.map((doctor: DoctorRow, index: number) => (
-        <CardDoctor
-          key={index}
-          image={
-            <img
-              src={doctor.images.logo}
-              alt={`${doctor.title} ${doctor.firstName} ${doctor.lastName}`}
-              width="91"
-              height="91"
-            />
-          }
-          title={
-            <Text
-              variation="display-5"
-              tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
-            >
-              <span>
-                {doctor.title} {doctor.firstName} {doctor.lastName}
-              </span>
-            </Text>
-          }
-          department={<span>{getSpeciality(doctor)}</span>}
-          cta={
-            <JssLink field={props.fields.CTACard}>
-              {props?.fields?.CTACard.value.text && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.CTACard.value.text,
-                  }}
-                ></span>
-              )}
-            </JssLink>
-          }
-        />
-      ))}
+      {doctors &&
+        doctors.map((doctor: DoctorRow, index: number) => (
+          <CardDoctor
+            key={index}
+            image={
+              <img
+                src={doctor.images.logo}
+                alt={`${doctor.title} ${doctor.firstName} ${doctor.lastName}`}
+                width="91"
+                height="91"
+              />
+            }
+            title={
+              <Text
+                variation="display-5"
+                tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+              >
+                <span>
+                  {doctor.title} {doctor.firstName} {doctor.lastName}
+                </span>
+              </Text>
+            }
+            department={<span>{getSpeciality(doctor)}</span>}
+            cta={
+              <JssLink field={props.fields.CTACard}>
+                {props?.fields?.CTACard.value.text && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: props.fields.CTACard.value.text,
+                    }}
+                  ></span>
+                )}
+              </JssLink>
+            }
+          />
+        ))}
     </CardDoctorLayout>
   );
 };
