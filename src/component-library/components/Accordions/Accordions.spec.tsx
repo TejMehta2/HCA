@@ -2,14 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Accordions from './Accordions';
 import { AccordionsProps } from './Accordions.types';
-import Text from '../../foundation/Text/Text';
 
 const mockProps: AccordionsProps = {
-  header: (
-    <Text tag="h3" variation="display-3">
-      Hip Pain FAQ
-    </Text>
-  ),
   accordions: [
     {
       title:
@@ -44,8 +38,6 @@ const mockProps: AccordionsProps = {
       ),
     },
   ],
-
-  cta: <button>View all FAQs</button>,
 };
 
 describe('Accordions', () => {
