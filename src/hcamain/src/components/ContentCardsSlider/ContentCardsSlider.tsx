@@ -6,6 +6,7 @@ import {
   LinkField,
   ImageFieldValue,
   RichText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
@@ -26,7 +27,7 @@ interface PagesFields {
 
 interface Fields {
   data: {
-    item: {
+    item?: {
       heading: { jsonValue: Field<string> };
       title: { jsonValue: Field<string> };
       cTAIcon: {
@@ -60,7 +61,9 @@ const ContentCardsSliderDefaultComponent = (
 );
 
 export const Default = (props: ContentCardsSliderProps): JSX.Element => {
-  if (!props.fields) {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (!props.fields.data.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
 
@@ -76,14 +79,20 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
         </Text>
       }
       link={
-        <JssLink field={props.fields.data.item.cTALink.jsonValue}>
-          <RichText
-            tag="span"
-            field={{
-              value: props.fields.data.item.cTALink.jsonValue.value.text,
-            }}
-          />
-        </JssLink>
+        !isExperienceEditor ? (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}>
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.data.item.cTALink.jsonValue.value.text,
+              }}
+            />
+          </JssLink>
+        ) : (
+          <JssLink
+            field={props.fields.data.item.cTALink.jsonValue.value}
+          ></JssLink>
+        )
       }
     >
       {props.fields.data.item.pages.PagesList.map((cards, index) => (
@@ -112,7 +121,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
               <RichText
                 tag="span"
                 field={{
-                  value: props.fields.data.item.cTACardText.jsonValue.value,
+                  value: props.fields.data.item?.cTACardText.jsonValue.value,
                 }}
               />
             </a>

@@ -2,12 +2,15 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Text,
+  Text as JssText,
   RichText,
-  Image,
+  Image as JssImage,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
+import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
+import Text from '@component-library/foundation/Text/Text';
 
 interface Fields {
   Heading: Field<string>;
@@ -17,7 +20,13 @@ interface Fields {
 }
 
 export type ImageShortTextProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    DynamicPlaceholderId: string;
+    styles: string;
+  };
   rendering: ComponentRendering;
   fields: Fields;
 };
@@ -32,40 +41,45 @@ const ImageShortTextDefaultComponent = (
   </div>
 );
 
-export const ImageLeft = (props: ImageShortTextProps): JSX.Element => {
+interface ImageLeftProps extends ImageShortTextProps {
+  imageAlignment: 'left' | 'right';
+}
+export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
+  const { imageAlignment = 'left' } = props;
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <RichText field={props.fields.Text} />
-      <br />
-      <Image field={props.fields.Image} />
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
+    <>
+      <ImageAndTextBlock
+        theme={props.params.Theme}
+        imageAlignment={imageAlignment}
+        length="short"
+        subheader={
+          <Text tag="h3" variation="subheading-1">
+            <JssText field={props.fields.Heading} />
+          </Text>
+        }
+        header={
+          <Text tag="h2" variation="display-2">
+            <JssText field={props.fields.Title} />
+          </Text>
+        }
+        image={<JssImage field={props.fields.Image} />}
+        ctas={<Placeholder name={phKey} rendering={props.rendering} />}
+      >
+        <Text tag="div" variation="body-large">
+          <RichText field={props.fields.Text} />
+        </Text>
+      </ImageAndTextBlock>
+    </>
   );
 };
 
 export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
-  return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <RichText field={props.fields.Text} />
-      <br />
-      <Image field={props.fields.Image} />
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
-  );
+  return <ImageLeft {...props} imageAlignment={'right'} />;
 };

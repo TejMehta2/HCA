@@ -7,7 +7,7 @@ BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
 SharedFields:
 - ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
   Hint: TemplatesMapping
-  Value: "%7b0B18DB9E-ACEC-4F9E-99C0-61A20535AF37%7d%3d%257B1627A290-CB00-4F15-990C-9204530C7FCA%257D"
+  Value: "%7b0B18DB9E-ACEC-4F9E-99C0-61A20535AF37%7d%3d%257BB3F9F472-E598-475E-9A8B-483D6B485CEA%257D"
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
@@ -29,11 +29,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c369d61d-5ef0-4869-a3a3-6babf7b8d8fa"
+      Value: "25618155-f061-42db-b654-af92777b8929"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161651Z
+      Value: 20240108T122001Z
