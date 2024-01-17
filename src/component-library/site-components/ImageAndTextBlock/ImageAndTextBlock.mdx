@@ -17,8 +17,8 @@ It can be composed like this:
 import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
 
 <ImageAndTextBlock
-  theme: 'A-HCA-Main-Turquoise',
-  imageAligment="left"
+  theme='A-HCA-Main-Turquoise'
+  imageAlignment="left"
   length="short"
   header={
     <Text tag="h2" variation="display-2">
@@ -26,22 +26,24 @@ import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
     </Text>
   }
   image={<JssImage field={props.fields.PromoIcon} />}
-  ctas={{
-    button1: (
-      <button>
-        <span>
-          Learn more about <strong>self-pay</strong>
-        </span>
-      </button>
-    ),
-    button2: (
-      <button>
-        <span>
-          Access care with <strong>insurance</strong>
-        </span>
-      </button>
-    ),
-  }}
+  ctas={
+    <>
+      <Button size="large" theme="full">
+        <a href="#">
+          <span>
+            Learn more about <strong>self-pay</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" theme="outline">
+        <a href="#">
+          <span>
+            Access care with <strong>insurance</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
 >
   <Text tag="p" variation="body-large">
     Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -49,7 +51,7 @@ import { Image as JssImage } from '@sitecore-jss/sitecore-jss-nextjs';
     culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit
     occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.
   </Text>
-</ImageAndTextBlock>;
+</ImageAndTextBlock>
 ```
 
 ## Example

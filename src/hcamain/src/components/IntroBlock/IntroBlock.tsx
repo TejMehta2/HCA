@@ -2,12 +2,20 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  ImageField,
-  Text,
+  Text as JSSText,
   RichText,
-  Image,
-  Link,
+  Image as JSSImage,
+  Link as JSSLink,
+  ImageFieldValue,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
+import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
+import Doctify from '@component-library/components/Doctify/Doctify';
+import Text from '@component-library/foundation/Text/Text';
+import Icons from '@component-library/foundation/Icons/Icons';
+import { IconName } from '@component-library/foundation/Icons/icon-map.generated';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
   fields: {
@@ -18,7 +26,7 @@ type HCAIconFields = {
 interface DoctifyLogoFields {
   fields: {
     Text: Field<string>;
-    Logo: ImageField;
+    Logo: ImageFieldValue;
   };
 }
 
@@ -32,17 +40,27 @@ interface CountersFields {
 interface CQCStatusFields {
   fields: {
     Title: Field<string>;
-    Icon: Field<string>;
-    Logo: ImageField;
+    Text: Field<string>;
     ReportLink: LinkField;
+    Status: {
+      fields: {
+        ['CQC Logo']: {
+          fields: {
+            Logo: ImageFieldValue;
+          };
+        };
+        Icon: { value: IconName };
+      };
+    };
   };
 }
 
 interface DoctifyReviewsFields {
   fields: {
-    Stars: Field<string>;
-    Reviews: Field<string>;
-    DoctifyLogo: DoctifyLogoFields;
+    Stars: { value: number };
+    Reviews: { value: string };
+    DoctifyLogoLight: DoctifyLogoFields;
+    DoctifyLogoDark: DoctifyLogoFields;
     Link: LinkField;
   };
 }
@@ -50,7 +68,7 @@ interface DoctifyReviewsFields {
 interface Fields {
   Title: Field<string>;
   Text: Field<string>;
-  Image: ImageField;
+  Image: ImageFieldValue;
   CTAIcon: HCAIconFields;
   CTALink: LinkField;
   Counters: CountersFields[];
@@ -59,7 +77,12 @@ interface Fields {
 }
 
 type IntroBlockProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    styles: string;
+  };
   fields: Fields;
 };
 
@@ -72,67 +95,108 @@ const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
 );
 
 export const Default = (props: IntroBlockProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
+
+  const stats = props.fields.Counters.map((counters) => ({
+    value: <JSSText field={counters.fields.Number} />,
+    label: <JSSText field={counters.fields.Text} />,
+  }));
+
+  const cqc = (
+    <CQCBlock
+      link={
+        <JSSLink field={props.fields.CQCStatus.fields.ReportLink}></JSSLink>
+      }
+      title={props.fields.CQCStatus.fields.Title.value}
+      text={props.fields.CQCStatus.fields.Text.value}
+      icon={
+        <Icons
+          iconName={props.fields.CQCStatus.fields.Status.fields.Icon.value}
+        ></Icons>
+      }
+      logo={{
+        dark: (
+          <JSSImage
+            field={
+              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+                .Logo
+            }
+          />
+        ),
+        light: (
+          <JSSImage
+            field={
+              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+                .Logo
+            }
+          />
+        ),
+      }}
+    />
+  );
+
+  const doctify = (
+    <Doctify
+      alignment="left"
+      link={<JSSLink field={props.fields.DoctifyReviews.fields.Link}></JSSLink>}
+      rating={props.fields.DoctifyReviews.fields.Stars.value}
+      reviews={props.fields.DoctifyReviews.fields.Reviews.value}
+      logo={{
+        dark: (
+          <JSSImage
+            field={
+              props.fields.DoctifyReviews.fields.DoctifyLogoDark.fields.Logo
+            }
+          />
+        ),
+        light: (
+          <JSSImage
+            field={
+              props.fields.DoctifyReviews.fields.DoctifyLogoLight.fields.Logo
+            }
+          />
+        ),
+      }}
+    />
+  );
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Title} />
-      <RichText field={props.fields.Text} />
-      <Image field={props.fields.Image} />
-      <br />
-      <span>
-        <b>Counters</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.Counters.map((counters, index) => (
-          <li key={index}>
-            <Text field={counters.fields.Text} />
-            <br />
-            <Text field={counters.fields.Number} />
-          </li>
-        ))}
-      </ul>
-      <br />
-      {props?.fields?.CTAIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <Link field={props.fields.CTALink}></Link>
-      <br />
-      <span>
-        <b>CQCStatus</b>
-      </span>
-      <br />
-      <Text field={props.fields.CQCStatus.fields.Title} />
-      <br />
-      <Text field={props.fields.CQCStatus.fields.Icon} />
-      <br />
-      <Image field={props.fields.CQCStatus.fields.Logo} />
-      <br />
-      <Link field={props.fields.CQCStatus.fields.ReportLink}></Link>
-      <br />
-      <span>
-        <b>DoctifyReviews</b>
-      </span>
-      <br />
-      <Text field={props.fields.DoctifyReviews.fields.Reviews} />
-      <br />
-      <Text field={props.fields.DoctifyReviews.fields.Stars} />
-      <br />
-      <Text
-        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Text}
-      />
-      <br />
-      <Image
-        field={props.fields.DoctifyReviews.fields.DoctifyLogo.fields.Logo}
-      />
-      <br />
-      <Link field={props.fields.DoctifyReviews.fields.Link}></Link>
-    </div>
+    <HomepageIntroBlock
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-1'}
+        >
+          <JSSText field={props.fields.Title} />
+        </Text>
+      }
+      copy={
+        <Text tag="span" variation="body-large">
+          <RichText tag="p" field={props.fields.Text} />
+        </Text>
+      }
+      stats={stats}
+      cta={
+        !isExperienceEditor ? (
+          <JSSLink field={props.fields.CTALink}>
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.CTALink.value.text,
+              }}
+            />
+          </JSSLink>
+        ) : (
+          <JSSLink field={props.fields.CTALink.value}></JSSLink>
+        )
+      }
+      image={<JSSImage field={props.fields.Image} />}
+      cqc={cqc}
+      doctify={doctify}
+    />
   );
 };

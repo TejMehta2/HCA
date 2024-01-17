@@ -21,14 +21,17 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5933ce5a-7640-4d9d-80e1-7e76acc780e7"
+      Value: "83b43725-2721-44ea-b10a-1cc4564c6e64"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "c63de3da-8171-45b3-b7f5-698900bfcb0b"
-      Hint: DoctifyLogo
+      Hint: DoctifyLogoDark
       Value: "{56367E53-F4A7-41B5-AACD-432164E17071}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240110T105309Z
+      Value: 20240116T125914Z
+    - ID: "f3b50734-b60b-44fb-a0fe-fa568bf3948c"
+      Hint: DoctifyLogoLight
+      Value: "{4DEA428A-E552-41AB-82B2-9E43891C436F}"
