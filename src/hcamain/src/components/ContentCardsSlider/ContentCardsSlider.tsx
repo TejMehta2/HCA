@@ -26,7 +26,7 @@ interface PagesFields {
 
 interface Fields {
   data: {
-    item: {
+    item?: {
       heading: { jsonValue: Field<string> };
       title: { jsonValue: Field<string> };
       cTAIcon: {
@@ -60,7 +60,7 @@ const ContentCardsSliderDefaultComponent = (
 );
 
 export const Default = (props: ContentCardsSliderProps): JSX.Element => {
-  if (!props.fields) {
+  if (!props.fields.data.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
 
@@ -112,7 +112,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
               <RichText
                 tag="span"
                 field={{
-                  value: props.fields.data.item.cTACardText.jsonValue.value,
+                  value: props.fields.data.item?.cTACardText.jsonValue.value,
                 }}
               />
             </a>

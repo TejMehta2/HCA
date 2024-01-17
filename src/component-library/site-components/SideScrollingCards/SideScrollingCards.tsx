@@ -23,7 +23,8 @@ const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
       !focusedCta ||
       !focusedCta.parentElement ||
       !containerRef.current ||
-      !containerRef.current.parentElement
+      !containerRef.current.parentElement ||
+      !containerRef.current.contains(focusedCta)
     )
       return;
 

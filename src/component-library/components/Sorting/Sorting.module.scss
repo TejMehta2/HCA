@@ -32,6 +32,8 @@ $max-options: 5; // Increase max if more "sort by" options are required
 
 .label {
   @include apply-body-large;
+
+  user-select: none;
 }
 
 .icon {
@@ -40,7 +42,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
 
 // Low tech method to synchronize styles of multiple labels with input :checked pseudo selector without controlling inputs via state
 @for $i from 1 through $max-options {
-  input:nth-of-type(#{$i}):checked ~ * .option:nth-of-type(#{$i}) {
+  .wrapper:has(input:nth-of-type(#{$i}):checked) .option:nth-of-type(#{$i}) {
     .label {
       @include apply-body-medium-large;
     }
@@ -49,7 +51,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
       display: block;
     }
   }
-  input:nth-of-type(#{$i}):focus ~ * .option:nth-of-type(#{$i}) {
+  .wrapper:has(input:nth-of-type(#{$i}):focus) .option:nth-of-type(#{$i}) {
     .label {
       text-decoration: underline;
     }

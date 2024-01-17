@@ -58,7 +58,8 @@ interface DoctifyReviewsFields {
   fields: {
     Stars: { value: number };
     Reviews: { value: string };
-    DoctifyLogo: DoctifyLogoFields;
+    DoctifyLogoLight: DoctifyLogoFields;
+    DoctifyLogoDark: DoctifyLogoFields;
     Link: LinkField;
   };
 }

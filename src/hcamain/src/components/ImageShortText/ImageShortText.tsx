@@ -33,7 +33,7 @@ const ImageShortTextDefaultComponent = (
 );
 
 export const ImageLeft = (props: ImageShortTextProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const phKey = `image-short-text-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
@@ -52,7 +52,7 @@ export const ImageLeft = (props: ImageShortTextProps): JSX.Element => {
 };
 
 export const ImageRight = (props: ImageShortTextProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const phKey = `image-short-text-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
