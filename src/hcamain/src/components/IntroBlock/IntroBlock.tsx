@@ -100,7 +100,6 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
-  console.log(props);
 
   const stats = props.fields.Counters.map((counters) => ({
     value: <JSSText field={counters.fields.Number} />,
