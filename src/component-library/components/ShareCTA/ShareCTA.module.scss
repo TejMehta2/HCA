@@ -1,0 +1,28 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.modal-wrapper {
+  @include responsive-grid;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-13 0;
+  @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 8);
+}
+
+.share-buttons {
+  display: grid;
+  grid: auto / 1fr 1fr;
+  list-style-type: none;
+  gap: $spacing-4;
+  padding: 0;
+
+  * > button,
+  a {
+    width: 100%;
+  }
+}
