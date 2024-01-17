@@ -7,7 +7,7 @@ import * as AccordionsStories from './Accordions.stories';
 
 ## Description
 
-The `Accordions` component is used to display one or more accordions with an optional header and call to action. 
+The `Accordions` component is used to display one or more accordion.
 
 NB: The `Accordion` component is only used when nested in the `Accordions` component which controls the functionality of the Accordions as a group, and should be used even when using a single accordion.
 
@@ -17,11 +17,6 @@ It can be composed like this:
 
 ```tsx
 <Accordions
-  header={
-    <Text tag="h3" variation="display-3">
-      Hip Pain FAQ
-    </Text>
-  }
   accordions={[
     {
       title: 'How long will I have to wait to book a hip pain appointment?',
@@ -68,7 +63,6 @@ It can be composed like this:
       ),
     },
   ]}
-  cta={<button>View all FAQs</button>}
 ></Accordions>
 ```
 

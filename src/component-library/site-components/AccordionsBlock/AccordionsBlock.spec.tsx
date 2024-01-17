@@ -3,58 +3,101 @@ import { render } from '@testing-library/react';
 import AccordionsBlock from './AccordionsBlock';
 import { AccordionsBlockProps } from './AccordionsBlock.types';
 import Text from '../../foundation/Text/Text';
+import Button from '../../core-components/Button/Button';
+import TextButton from '../../core-components/TextButton/TextButton';
 
 const mockProps: AccordionsBlockProps = {
-  header: (
-    <Text tag="h3" variation="display-3">
-      Hip Pain FAQ
+  theme: 'H-HCA-Green-20',
+  subtitle: (
+    <Text tag="h3" variation="subheading-1">
+      Meta title
     </Text>
   ),
-  AccordionsBlock: [
-    {
-      title:
-        'How long will I have to wait to book a shoulder pain appointment?',
-      children: <p>Eiusmod irure nostrud culpa</p>,
-    },
+  header: (
+    <Text tag="h2" variation="display-3">
+      Accordion Block
+    </Text>
+  ),
+  body: (
+    <Text tag="p" variation="body-large">
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
+      mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
+      eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip
+      laboris duis ex labore veniam labore do nostrud minim labore eiusmod
+      voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt
+      dolore dolore.
+    </Text>
+  ),
+  accordions: [
     {
       title: 'How long will I have to wait to book a hip pain appointment?',
       children: (
         <p>
-          Eu voluptate pariatur non. Elit dolore consequat veniam et. Eiusmod
-          consectetur sit dolor laborum excepteur laborum quis.
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
         </p>
       ),
     },
     {
-      title: 'How long will I have to wait to book a hip pain appointment?',
+      title: 'What are the payment options for hip pain treatment at HCA?',
       children: (
         <p>
-          Eu voluptate pariatur non. Elit dolore consequat veniam et. Eiusmod
-          consectetur sit dolor laborum excepteur laborum quis.
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
         </p>
       ),
     },
     {
-      title: 'How long will I have to wait to book a hip pain appointment?',
+      title: 'What should I prepare for my hip pain appointment?',
       children: (
         <p>
-          Eu voluptate pariatur non. Elit dolore consequat veniam et. Eiusmod
-          consectetur sit dolor laborum excepteur laborum quis.
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
+        </p>
+      ),
+    },
+    {
+      title: 'Do you offer hip pain rehabilitation and support?',
+      children: (
+        <p>
+          Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
+          deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+          Elit dolore consequat veniam et. Eiusmod consectetur sit dolor laborum
+          excepteur laborum quis.
         </p>
       ),
     },
   ],
 
-  cta: <button>View all AccordionsBlock</button>,
+  ctas: (
+    <>
+      <Button theme="full" size="large">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  ),
 };
 
 describe('AccordionsBlock', () => {
-  it('Renders accordion from props', async () => {
+  it('Renders content from props', async () => {
     const { getByText } = render(<AccordionsBlock {...mockProps} />);
-    expect(
-      getByText(
-        'How long will I have to wait to book a shoulder pain appointment?'
-      )
-    ).toBeVisible();
+    expect(getByText('Accordion Block')).toBeVisible();
   });
 });
