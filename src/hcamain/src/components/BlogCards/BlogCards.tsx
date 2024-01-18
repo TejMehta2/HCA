@@ -74,7 +74,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             <Image field={card.fields.Image} />
             <br />
             <Text field={card.fields.Date} />
-            <br/>
+            <br />
             <a href={card.url}>
               <RichText
                 tag="span"

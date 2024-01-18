@@ -58,7 +58,9 @@ export const Default = (props: DoctifyProps): JSX.Element => {
       <br />
       <Text field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Text} />
       <br />
-      <Image field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Logo} />
+      <Image
+        field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Logo}
+      />
       <br />
       <Text field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Text} />
       <br />
