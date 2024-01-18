@@ -2,7 +2,7 @@
 ID: "7ee31b61-dda1-4893-8d00-3eaf1c608b7e"
 Parent: "a42023ef-3d78-4f59-b56f-bc6c098f028a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Service Cards/Homepage Service Cards/Heading
+Path: /sitecore/templates/Project/HCA/Page Content/Service Cards/Data/Heading
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
