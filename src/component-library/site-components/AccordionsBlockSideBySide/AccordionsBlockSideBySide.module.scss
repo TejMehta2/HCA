@@ -10,7 +10,6 @@
 .container {
   @include responsive-container;
   @include responsive-grid;
-  //align-items: center;
 
   @include media(screen-l, 'max') {
     row-gap: $spacing-8;
