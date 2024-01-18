@@ -14,6 +14,7 @@ import CardService from '@component-library/components/CardService/CardService';
 import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import { HeadingTag, HeadingSize } from 'src/types/params';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields: {
@@ -72,25 +73,20 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <ServiceCards
       title={
-        isExperienceEditor ? (
+        <Text
+          variation={props.params.HeadingSize || 'display-2'}
+          tag={props.params.HeadingTag || 'h2'}
+        >
           <JssText field={props.fields.Title} />
-        ) : (
-          <Text
-            variation={props.params.HeadingSize || 'display-2'}
-            tag={props.params.HeadingTag || 'h2'}
-          >
-            <JssText field={props.fields.Title} />
-          </Text>
-        )
+        </Text>
       }
       subtitle={
-        isExperienceEditor ? (
+        <Text
+          variation="subheading-1"
+          tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+        >
           <JssText field={props.fields.Heading} />
-        ) : (
-          <Text variation="subheading-1">
-            <JssText field={props.fields.Heading} />
-          </Text>
-        )
+        </Text>
       }
       bodyText={<JssRichText field={props.fields.Description} />}
       cta={
