@@ -51,7 +51,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
             <div className={styles['modal-content']}>
               <div className={styles.headings}>
                 {heading}
-                {subheading}
+                {subheading && subheading}
               </div>
               <div className={styles['share-buttons']}>{children}</div>
             </div>
