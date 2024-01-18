@@ -97,16 +97,12 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   return (
     <CardDoctorLayout
       title={
-        isExperienceEditor ? (
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-3'}
+        >
           <JssText field={props.fields.Title}></JssText>
-        ) : (
-          <Text
-            tag={props.params.HeadingTag || 'h2'}
-            variation={props.params.HeadingSize || 'display-3'}
-          >
-            {props.fields.Title.value}
-          </Text>
-        )
+        </Text>
       }
       cta={
         isExperienceEditor ? (
