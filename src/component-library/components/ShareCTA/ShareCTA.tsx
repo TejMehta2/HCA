@@ -7,20 +7,40 @@ import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
 
 const ShareCTA = (props: ShareCTAProps): JSX.Element => {
-  const { shareData, heading, subheading } = props;
+  const { shareData, shareCtaText, heading, subheading, children } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(shareData.url);
+  const isMobile = () => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleMobileShare = async () => {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    }
   };
 
   return (
     <>
       <Themes theme="F-HCA-White">
         <Button size="large" theme="outline">
-          <button onClick={() => dialogRef.current?.showModal()}>
+          <button
+            onClick={
+              isMobile()
+                ? handleMobileShare
+                : () => dialogRef.current?.showModal()
+            }
+          >
             <Icons iconName="iconShare"></Icons>
-            <span>Share</span>
+            {shareCtaText}
           </button>
         </Button>
       </Themes>
@@ -32,65 +52,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
                 {heading}
                 {subheading}
               </div>
-              <ul className={styles['share-buttons']}>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <button onClick={handleCopy}>
-                      <Icons iconName="iconEmail"></Icons>
-                      <span>Copy Link</span>
-                    </button>
-                  </Button>
-                </li>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <a
-                      href={`mailto:?subject=${shareData.title}&body=${shareData.text}${shareData.url}`}
-                      title="Share by Email"
-                    >
-                      <Icons iconName="iconEmail"></Icons>
-                      <span>Email</span>
-                    </a>
-                  </Button>
-                </li>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <a
-                      href={`https://web.whatsapp.com/send?text=${shareData.url}`}
-                      rel="nofollow noopener"
-                      target="_blank"
-                    >
-                      <Icons iconName="iconWhatsapp"></Icons>
-                      <span>WhatsApp</span>
-                    </a>
-                  </Button>
-                </li>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${shareData.url}`}
-                    >
-                      <Icons iconName="iconFacebook"></Icons>
-                      <span>Facebook</span>
-                    </a>
-                  </Button>
-                </li>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <button>
-                      <Icons iconName="iconMessenger"></Icons>
-                      <span>Messenger</span>
-                    </button>
-                  </Button>
-                </li>
-                <li>
-                  <Button size="large" theme="square-outline">
-                    <button>
-                      <Icons iconName="iconX"></Icons>
-                      <span>X (Twitter)</span>
-                    </button>
-                  </Button>
-                </li>
-              </ul>
+              <div className={styles['share-buttons']}>{children}</div>
             </div>
           </div>
         </Modals>

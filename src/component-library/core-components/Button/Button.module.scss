@@ -365,6 +365,7 @@
     color: var(--cta-outline-text);
     background-color: transparent;
     width: 100%;
+    justify-content: center;
 
     &:hover {
       border-color: var(--cta-outline-hover-border);
