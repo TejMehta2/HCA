@@ -8,7 +8,7 @@ import Modals from '../../components/Modals/Modals';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Themes from '../../foundation/Themes/Themes';
-import Accordions from '../Accordions/Accordions';
+import Accordions from '../../components/Accordions/Accordions';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const { filters, resultsCount } = props;
