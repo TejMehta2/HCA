@@ -82,7 +82,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     return <DoctorCardsDefaultComponent {...props} />;
   }
 
-  const doctors = props.fields.apiData.rows;
+  const doctors = props.fields.apiData && props.fields.apiData.rows;
 
   const getSpeciality = (doctor: DoctorRow) => {
     const keywords = doctor.keywords;

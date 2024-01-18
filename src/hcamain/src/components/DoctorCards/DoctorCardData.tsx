@@ -23,13 +23,21 @@ export const fetchDoctorCardData = async (
         const customFiltersParams = customFilters.join('&');
         const limit = component.fields.NumberOfCards.value;
 
-        const res = await fetch(
-          `${process.env.DOCTIFY_REQUEST_URL}?${customFiltersParams}&limit=${limit}`
-        );
+        try {
+          const res = await fetch(
+            `${process.env.DOCTIFY_REQUEST_URL}?${customFiltersParams}&limit=${limit}`
+          );
 
-        const docitfyData = await res.json();
+          if (res.ok) {
+            const docitfyData = await res.json();
 
-        return (component.fields.apiData = docitfyData);
+            return (component.fields.apiData = docitfyData);
+          } else {
+            console.error('Promise resolved but HTTP status failed');
+          }
+        } catch {
+          console.error('Promise rejected');
+        }
       }
     })
   );
