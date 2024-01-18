@@ -1,8 +1,8 @@
 ﻿---
-ID: "902b28db-7a4f-4cb3-a074-b1b432e69f4d"
-Parent: "1182ff71-0fc0-40c4-9d90-07f46c1ff740"
-Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: "/sitecore/templates/Project/HCA/Page Content/Homepage cards - Blog Cards/Content"
+ID: "323b5fa5-14b9-4306-948b-de893f141f2d"
+Parent: "914c677c-24f1-448c-97c9-fb339fd78b8a"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Blog Cards/Carousel
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231124T111201Z
+      Value: 20231124T130153Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9aaef195-0b09-4e9d-a54d-ee09ce8fd2f1"
+      Value: "3162e960-d99f-4035-9fa2-088dda4c0cdd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T113528Z
+      Value: 20231124T130153Z

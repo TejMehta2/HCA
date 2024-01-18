@@ -46,7 +46,7 @@ interface ImageLeftProps extends ImageShortTextProps {
 }
 export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const phKey = `image-short-text-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
