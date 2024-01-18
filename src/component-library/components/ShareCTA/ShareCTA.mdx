@@ -13,6 +13,8 @@ The params required are `shareData` which will provide a url, title and text for
 
 It is intended to be used on the treatment detail page.
 
+A `theme` should be provided to make sure the cta button colours are correct for the theme of the parent component.
+
 It can be composed like this:
 
 ```tsx
@@ -38,6 +40,7 @@ const handleCopy = () => {
       Hip Surgery - £5,000
     </Text>
   }
+  theme="F-HCA-White"
 >
   children: (
   <>

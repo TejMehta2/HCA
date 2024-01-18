@@ -7,7 +7,8 @@ import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
 
 const ShareCTA = (props: ShareCTAProps): JSX.Element => {
-  const { shareData, shareCtaText, heading, subheading, children } = props;
+  const { shareData, shareCtaText, heading, subheading, children, theme } =
+    props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const isMobile = () => {
@@ -30,7 +31,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
 
   return (
     <>
-      <Themes theme="F-HCA-White">
+      <Themes theme={theme}>
         <Button size="large" theme="outline">
           <button
             onClick={
