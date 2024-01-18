@@ -9,7 +9,7 @@ SharedFields:
   Value: ImageShortText
 - ID: "069a8361-b1cd-437c-8c32-a3be78941446"
   Hint: Placeholders
-  Value: "{88F33B66-D47F-43FC-B90B-002ED86E4F9E}"
+  Value: "{36205CA2-ED6B-4E30-B170-E2C8A52B4120}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
@@ -81,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "be21587d-0401-445c-8f5f-5a7a772b7f13"
+      Value: "2545655e-d9c2-46a4-8485-437da9b390db"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240112T115658Z
+      Value: 20240117T114842Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

@@ -31,13 +31,16 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
   </div>
 );
 
-const createCTA = (props: CTAProps, theme: ButtonThemeUnionTypes) => (
-  <Button theme={theme} size={props.size || 'large'}>
+interface IntegratedButtonProps extends CTAProps {
+  theme: ButtonThemeUnionTypes;
+}
+const IntegratedButton = (props: IntegratedButtonProps) => (
+  <Button theme={props.theme} size={props.size || 'large'}>
     <a href={props.fields?.CTALink.value.href}>
       {props?.fields?.CTAIcon?.fields.SvgMarkup && (
         <span
           dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            __html: props.fields?.CTAIcon.fields.SvgMarkup.value,
           }}
         />
       )}
@@ -55,13 +58,13 @@ export const Full = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
-  return createCTA(props, 'full');
+  return <IntegratedButton {...props} theme="full" />;
 };
 
 export const Outline = (props: CTAProps): JSX.Element => {
-  return createCTA(props, 'outline');
+  return <IntegratedButton {...props} theme="outline" />;
 };
 
-export const LightText = (props: CTAProps): JSX.Element => {
+export const TextButton = (props: CTAProps): JSX.Element => {
   return <CTADefaultComponent {...props} />;
 };

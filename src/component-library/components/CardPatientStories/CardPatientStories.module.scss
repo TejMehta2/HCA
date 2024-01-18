@@ -75,7 +75,7 @@ div[class*='slick-slide'] {
   overflow: hidden;
 
   @include media(screen-l) {
-    height: 50%;
+    max-height: 50%;
   }
 }
 

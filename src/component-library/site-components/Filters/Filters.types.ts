@@ -1,4 +1,4 @@
-import { Accordions } from '../Accordions/Accordions.types';
+import { Accordions } from '../../components/Accordions/Accordions.types';
 
 export interface FiltersProps {
   filters?: Accordions;

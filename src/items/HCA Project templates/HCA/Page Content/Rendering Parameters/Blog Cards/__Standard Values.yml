@@ -1,0 +1,27 @@
+﻿---
+ID: "cfc9def0-4a74-4ca2-a7b6-bf82e24a62d4"
+Parent: "db0fbf70-76b1-456e-8b90-1d093a8cbfbd"
+Template: "db0fbf70-76b1-456e-8b90-1d093a8cbfbd"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Cards/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1d114ffb-eec0-4fa6-abe4-342df2b2b03d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240118T071557Z

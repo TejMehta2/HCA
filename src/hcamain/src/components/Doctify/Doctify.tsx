@@ -19,7 +19,8 @@ interface DoctifyReviewsFields {
   fields: {
     Stars: Field<string>;
     Reviews: Field<string>;
-    DoctifyLogo: DoctifyLogoFields;
+    DoctifyLogoLight: DoctifyLogoFields;
+    DoctifyLogoDark: DoctifyLogoFields;
     Link: LinkField;
   };
 }
@@ -55,9 +56,15 @@ export const Default = (props: DoctifyProps): JSX.Element => {
       <br />
       <Text field={props.fields.Reviews.fields.Stars} />
       <br />
-      <Text field={props.fields.Reviews.fields.DoctifyLogo.fields.Text} />
+      <Text field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Text} />
       <br />
-      <Image field={props.fields.Reviews.fields.DoctifyLogo.fields.Logo} />
+      <Image
+        field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Logo}
+      />
+      <br />
+      <Text field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Text} />
+      <br />
+      <Image field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Logo} />
       <br />
       <Link field={props.fields.Reviews.fields.Link}></Link>
     </div>

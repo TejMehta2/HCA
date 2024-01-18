@@ -1,9 +1,6 @@
 import React from 'react';
 import Themes from '../../foundation/Themes/Themes';
 import { ImageAndTextBlockProps } from './ImageAndTextBlock.types';
-import Button from '../../core-components/Button/Button';
-import TextButton from '../../core-components/TextButton/TextButton';
-import useWindowWidth from '../../hooks/useWindowWidth';
 import styles from './ImageAndTextBlock.module.scss';
 
 const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
@@ -19,8 +16,6 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     ratings,
     iconList,
   } = props;
-
-  const isXl = useWindowWidth(1440);
 
   return (
     <Themes theme={theme}>
@@ -47,21 +42,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               <div className={styles['header']}>{header}</div>
               <div>{children}</div>
 
-              {ctas && (
-                <div className={styles['ctas']}>
-                  <Button size="large" theme="full">
-                    {ctas?.button1}
-                  </Button>
-                  {ctas.button2 &&
-                    (isXl ? (
-                      <TextButton>{ctas.button2}</TextButton>
-                    ) : (
-                      <Button size="large" theme="outline">
-                        {ctas.button2}
-                      </Button>
-                    ))}
-                </div>
-              )}
+              {ctas && <div className={styles['ctas']}>{ctas}</div>}
 
               {ratings && <div className={styles.ratings}>{ratings}</div>}
               {iconList && (
