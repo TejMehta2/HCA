@@ -6,6 +6,9 @@ on:
       - dev
     paths:
       - 'src/component-library/**'
+      
+env:
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
   publish:
