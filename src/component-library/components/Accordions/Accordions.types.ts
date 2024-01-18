@@ -8,9 +8,7 @@ export type Accordions = {
 }[];
 
 export interface AccordionsProps {
-  header?: ReactNode | JSX.Element;
   accordions: Accordions;
-  cta?: ReactNode | JSX.Element;
   openIcon?: IconName;
   closeIcon?: IconName;
 }

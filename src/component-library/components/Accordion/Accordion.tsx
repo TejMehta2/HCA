@@ -48,7 +48,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
         </span>
       </button>
       <div className={styles.content} id={accordionContentId}>
-        {isActive && children}
+        {children}
       </div>
     </div>
   );

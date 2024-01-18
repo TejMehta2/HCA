@@ -1,25 +1,38 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
-import * as AccordionsStories from './Accordions.stories';
+import * as AccordionsBlockStories from './AccordionsBlock.stories';
 
-<Meta of={AccordionsStories} />
+<Meta of={AccordionsBlockStories} />
 
-# Accordions
+# AccordionsBlock
 
 ## Description
 
-The `Accordions` component is used to display one or more accordions with an optional header and call to action. 
-
-NB: The `Accordion` component is only used when nested in the `Accordions` component which controls the functionality of the Accordions as a group, and should be used even when using a single accordion.
+The `AccordionsBlock` component is used to display several accordions along with a title and optional subtitle and ctas.
 
 It is intended to be used in within a theme.
 
 It can be composed like this:
 
 ```tsx
-<Accordions
+<AccordionsBlock
+  subtitle={
+    <Text tag="h3" variation="subheading-1">
+      Meta title
+    </Text>
+  }
   header={
-    <Text tag="h3" variation="display-3">
-      Hip Pain FAQ
+    <Text tag="h2" variation="display-3">
+      Accordion Block
+    </Text>
+  }
+  body={
+    <Text tag="p" variation="body-large">
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
+      mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
+      eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip
+      laboris duis ex labore veniam labore do nostrud minim labore eiusmod
+      voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt
+      dolore dolore.
     </Text>
   }
   accordions={[
@@ -35,7 +48,7 @@ It can be composed like this:
       ),
     },
     {
-      title: 'How long will I have to wait to book a hip pain appointment?',
+      title: 'What are the payment options for hip pain treatment at HCA?',
       children: (
         <p>
           Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
@@ -46,7 +59,7 @@ It can be composed like this:
       ),
     },
     {
-      title: 'How long will I have to wait to book a hip pain appointment?',
+      title: 'What should I prepare for my hip pain appointment?',
       children: (
         <p>
           Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
@@ -57,7 +70,7 @@ It can be composed like this:
       ),
     },
     {
-      title: 'How long will I have to wait to book a hip pain appointment?',
+      title: 'Do you offer hip pain rehabilitation and support?',
       children: (
         <p>
           Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo
@@ -68,11 +81,28 @@ It can be composed like this:
       ),
     },
   ]}
-  cta={<button>View all FAQs</button>}
-></Accordions>
+  ctas={
+    <>
+      <Button theme="full" size="large">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  }
+></AccordionsBlock>
 ```
 
 ## Example
 
-<Canvas of={AccordionsStories.Default} />
-<Controls of={AccordionsStories.Default} />
+<Canvas of={AccordionsBlockStories.Default} />
+<Controls of={AccordionsBlockStories.Default} />
