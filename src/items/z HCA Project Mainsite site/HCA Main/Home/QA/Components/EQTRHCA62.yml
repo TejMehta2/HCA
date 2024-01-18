@@ -49,19 +49,33 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{2A6F5117-89D0-43B4-8C3F-86BDE2FB757D}"
+              uid="{2BA35AE5-722F-4A75-A214-7AC794EFAAA0}"
               p:before="*"
+              s:ds="{62C2716A-CD78-40B7-B70E-3AC01AD47F6A}"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="/headless-main/image-short-text-2" />
+            <r
+              uid="{D412A505-9583-424C-B6D7-C9508A488009}"
+              p:after="r[@uid='{2BA35AE5-722F-4A75-A214-7AC794EFAAA0}']"
+              s:ds="{8C532F6B-24AB-4BF1-966E-867E48560EB8}"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="/headless-main/image-short-text-2" />
+            <r
+              uid="{B9DD8457-0C1C-4EA4-AFB3-2E9D3DAA9EA1}"
+              p:after="r[@uid='{D412A505-9583-424C-B6D7-C9508A488009}']"
               s:ds="{F13EF30D-6C6F-405B-9C6C-5FA4BA7C81B7}"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7BF61E01E9-711A-4C99-AE30-4E28463E1DF7%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-              s:ph="/headless-main/cta-buttons-1" />
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-main/image-short-text-1" />
             <r
-              uid="{7362B5BF-74A9-4668-8EB5-DF19D6776373}"
-              p:after="r[@uid='{2A6F5117-89D0-43B4-8C3F-86BDE2FB757D}']"
+              uid="{29FFCA36-B35C-4439-B097-C26E9C46F774}"
+              p:after="r[@uid='{B9DD8457-0C1C-4EA4-AFB3-2E9D3DAA9EA1}']"
               s:ds="{209072EB-F12D-45B4-B707-C1DBC5C41EBE}"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7BF61E01E9-711A-4C99-AE30-4E28463E1DF7%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-              s:ph="/headless-main/cta-buttons-1" />
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/image-short-text-1" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -80,14 +94,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "166d0045-9774-40eb-9c52-e01072127cd5"
+      Value: "b458eab9-e38f-43de-9d88-9d7412683271"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T132933Z
+      Value: 20240117T123020Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA62

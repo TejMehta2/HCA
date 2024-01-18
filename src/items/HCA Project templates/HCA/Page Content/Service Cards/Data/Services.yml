@@ -1,18 +1,18 @@
 ﻿---
-ID: "c58c6d3c-8e54-479b-bd03-8c0b579549d2"
-Parent: "902b28db-7a4f-4cb3-a074-b1b432e69f4d"
+ID: "8da1a961-cc60-4ab4-a214-19e099f6e302"
+Parent: "a42023ef-3d78-4f59-b56f-bc6c098f028a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Page Content/Homepage cards - Blog Cards/Content/Cards"
+Path: /sitecore/templates/Project/HCA/Page Content/Service Cards/Data/Services
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: DataSource=sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Blog Page
+  Value: DataSource=/sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Service Page,Page Proxy
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist
+  Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 500
 Languages:
 - Language: en
   Versions:
@@ -20,22 +20,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231124T111202Z
+      Value: 20231115T204420Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a9f6c5f1-1fcd-478c-9d28-8e43ac601a79"
+      Value: "68c557e0-e260-44ee-a374-510a06ac1a0c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T113528Z
+      Value: 20231204T100626Z

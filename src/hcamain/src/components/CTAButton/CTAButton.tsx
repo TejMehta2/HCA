@@ -65,6 +65,6 @@ export const Outline = (props: CTAProps): JSX.Element => {
   return <IntegratedButton {...props} theme="outline" />;
 };
 
-export const LightText = (props: CTAProps): JSX.Element => {
+export const TextButton = (props: CTAProps): JSX.Element => {
   return <CTADefaultComponent {...props} />;
 };
