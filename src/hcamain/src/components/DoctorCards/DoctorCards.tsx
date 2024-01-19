@@ -145,15 +145,19 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
             }
             department={<span>{getSpeciality(doctor)}</span>}
             cta={
-              <JssLink field={props.fields.CTACard}>
-                {props?.fields?.CTACard.value.text && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields.CTACard.value.text,
-                    }}
-                  ></span>
-                )}
-              </JssLink>
+              isExperienceEditor ? (
+                <JssLink field={props.fields.CTACard}></JssLink>
+              ) : (
+                <JssLink field={props.fields.CTACard}>
+                  {props?.fields?.CTACard.value.text && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: props.fields.CTACard.value.text,
+                      }}
+                    ></span>
+                  )}
+                </JssLink>
+              )
             }
           />
         ))}
