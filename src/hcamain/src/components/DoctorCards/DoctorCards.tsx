@@ -3,11 +3,17 @@ import {
   Field,
   ImageField,
   LinkField,
-  Text,
-  RichText,
-  Link,
-  Image,
+  Text as JssText,
+  Link as JssLink,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+
+import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
+import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
+import Text from '@component-library/foundation/Text/Text';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import { Doctor, DoctorRow } from './DoctorCards.types';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields: {
@@ -48,10 +54,16 @@ interface Fields {
   Practice: PracticeFields[];
   Service: ServiceFields[];
   CustomFilters: FiltersFields[];
+  apiData: Doctor;
 }
 
 type DoctorCardsProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    Theme: Theme;
+  };
   fields: Fields;
 };
 
@@ -64,73 +76,87 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
 );
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <DoctorCardsDefaultComponent {...props} />;
   }
+
+  const doctors = props.fields.apiData && props.fields.apiData.rows;
+
+  const getSpeciality = (doctor: DoctorRow) => {
+    const keywords = doctor.keywords;
+
+    const topSpecialty = keywords.filter(
+      (item) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+    );
+
+    return topSpecialty[0].name;
+  };
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Title} />
-      <br />
-      <Text field={props.fields.NumberOfCards} />
-      <br />
-      <Link field={props.fields.CTACard}></Link>
-      <br />
-      {props?.fields?.CTAIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <Link field={props.fields.CTALink}></Link>
-      <br />
-      <span>
-        <b>Practice</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.Practice.map((practice, index) => (
-          <li key={index}>
-            <Text field={practice.fields.Title} />
-            <br />
-            <RichText tag="span" field={practice.fields.Description} />
-            <br />
-            <Image field={practice.fields.Image} />
-            <br />
-            <Text field={practice.fields.DoctifyPractice} />
-          </li>
+    <CardDoctorLayout
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize || 'display-3'}
+        >
+          <JssText field={props.fields.Title}></JssText>
+        </Text>
+      }
+      cta={
+        isExperienceEditor ? (
+          <JssLink field={props.fields.CTALink}></JssLink>
+        ) : (
+          <JssLink field={props.fields.CTALink}>
+            {props?.fields?.CTALink.value.text && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.CTALink.value.text,
+                }}
+              ></span>
+            )}
+          </JssLink>
+        )
+      }
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
+    >
+      {doctors &&
+        doctors.map((doctor: DoctorRow, index: number) => (
+          <CardDoctor
+            key={index}
+            image={
+              <img
+                src={doctor.images.logo}
+                alt={`${doctor.title} ${doctor.firstName} ${doctor.lastName}`}
+                width="91"
+                height="91"
+              />
+            }
+            title={
+              <Text
+                variation="display-5"
+                tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+              >
+                <span>
+                  {doctor.title} {doctor.firstName} {doctor.lastName}
+                </span>
+              </Text>
+            }
+            department={<span>{getSpeciality(doctor)}</span>}
+            cta={
+              <JssLink field={props.fields.CTACard}>
+                {props?.fields?.CTACard.value.text && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: props.fields.CTACard.value.text,
+                    }}
+                  ></span>
+                )}
+              </JssLink>
+            }
+          />
         ))}
-      </ul>
-      <br />
-      <span>
-        <b>Service</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.Service.map((service, index) => (
-          <li key={index}>
-            <Text field={service.fields.Title} />
-            <br />
-            <RichText tag="span" field={service.fields.Description} />
-            <br />
-            <Image field={service.fields.Image} />
-            <br />
-            <Text field={service.fields.DoctifyKeywordId} />
-          </li>
-        ))}
-      </ul>
-      <br />
-      <span>
-        <b>CustomFilters</b>
-      </span>
-      <br />
-      <ul>
-        {props.fields.CustomFilters.map((customFilters, index) => (
-          <li key={index}>
-            <Text field={customFilters.fields.Filter} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    </CardDoctorLayout>
   );
 };
