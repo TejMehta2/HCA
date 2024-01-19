@@ -1,0 +1,122 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+/* This height will likely need to be done as an inline style as it will be dependant on how many featured locations there are */
+.wrapper {
+  position: relative;
+  overflow-x: clip;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.map-wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include responsive-grid;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+}
+
+.static-text {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  height: 100vh;
+
+  @include responsive-container;
+  @include responsive-grid-span($breakpoint-l: 5);
+
+  @include media(screen-l) {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+}
+
+/* Image will be the England map. 
+Real version will probably an SVG which will likely need more complex logic in order to fill in the correct counties */
+.image {
+  position: absolute;
+  right: -5%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  z-index: -1;
+
+  & img {
+    object-fit: contain;
+    transition: all 1s ease-out;
+    transform: translateY(0) scale(1.1);
+  }
+}
+
+.region {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.card {
+  opacity: 1;
+  transition: all 1s ease-in-out;
+
+  @include responsive-grid-span($default: 6);
+  @include responsive-container;
+
+  @include media(screen-l) {
+    position: absolute;
+    top: 50%;
+    right: 23%;
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.active {
+  opacity: 1;
+}
+
+@include media(screen-l) {
+  /* .transform-image-0 {
+    transform: translateY(0) scale(1.1);
+  }
+
+  .transform-image-1 {
+    transform: translateY(-20%) scale(1.5);
+  }
+
+  .transform-image-2 {
+    transform: translateY(10%) translateX(15%) scale(1.7);
+  }
+
+  .transform-image-3 {
+    transform: translateY(-5%) translateX(25%) scale(1.8);
+  } */
+
+  /* .transform-card-0 {
+    transform: translateY(-50%);
+  }
+
+  .transform-card-1 {
+    transform: translateY(-55%) translateX(40%);
+  }
+
+  .transform-card-2 {
+    transform: translateY(-55%) translateX(0%);
+  }
+
+  .transform-card-3 {
+    transform: translateY(-35%) translateX(30%);
+  } */
+}
