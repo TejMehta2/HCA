@@ -18,7 +18,13 @@ export default meta;
 export const Green: StoryObj<typeof Tags> = {
   args: {
     theme: 'green',
-    children: <a href="#">Green</a>,
+    children: (
+      <>
+        <a href="#">Green</a>
+        <p>p tag</p>
+        <span>span</span>
+      </>
+    ),
   },
 };
 export const DarkBlue: StoryObj<typeof Tags> = {

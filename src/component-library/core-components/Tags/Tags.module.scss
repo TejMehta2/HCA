@@ -1,20 +1,29 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.tags a {
+.tags {
+  display: flex;
+  gap: $spacing-2;
+  flex-wrap: wrap;
+}
+
+.tags > * {
   // Imported styles
   @include apply-body-medium-medium;
 
   // Shared styles
-  display: inline-block;
   border-radius: $radius-small;
   padding: px-to-rem(4) px-to-rem(16);
   text-decoration: none;
   outline: solid #{px-to-rem(2)} transparent;
   outline-offset: px-to-rem(-3);
-  cursor: pointer;
   background-color: var(--tag-background);
   color: var(--tag-text);
+}
+
+.tags > a,
+.tags > button {
+  cursor: pointer;
 
   &:hover {
     background-color: var(--tag-hover-background);
