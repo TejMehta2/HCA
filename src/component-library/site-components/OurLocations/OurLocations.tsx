@@ -6,6 +6,7 @@ import CardMap from '../../components/CardMap/CardMap';
 import Themes from '../../foundation/Themes/Themes';
 import Image from 'next/image';
 import MapEngland from '../../assets/locations/map-england.png';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const OurLocations = (props: OurLocationsProps): JSX.Element => {
   const { subtitle, title, body, cta, locations } = props;
@@ -14,6 +15,8 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
   const [mapStyles, setMapStyles] = useState<string>('');
   const [cardStyles, setCardStyles] = useState<string>('');
   const map = useRef<HTMLDivElement>(null);
+
+  const isL = useWindowWidth(1135);
 
   /* Each location card shows for the scroll duration of the full height of the viewport */
   /* Adding 1 to length so that last card has room to scroll and doesn't just appear at the last scroll pixel */
@@ -38,7 +41,8 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
     /* Don't update if component is not within viewport */
     if (position < mapPosition || position > mapHeight + mapPosition) return;
 
-    /* Deterimine which card to show by dividing the full component height by the users current scroll position within the component   */
+    /* Deterimine which card to show by dividing the full component height by the users current scroll position within the component. 
+    This is then rounded down so that it can be compared with the key number in the locations array */
     let cardToShow = Math.floor((position - mapPosition) / viewportHeight);
 
     /* Error handling to ensure never exceeds amount of cards in array */
@@ -82,17 +86,36 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
     setCardStyles(newCardStyles);
   }, [cardShowing, locations]);
 
-  /* Can be separate component */
-  /* transform-card-1,2,etc will likely need to be inline styles where the position of the card is set by coordinates from the cms. 
-  THIS NEEDS MORE THOUGHT */
   const locationCards = locations.map((location) => {
     return (
       <React.Fragment key={location.id}>
+        {location.area && (
+          <div
+            className={`${styles.image} ${styles.region} ${
+              cardShowing === location.id ? styles.active : ''
+            }`}
+          >
+            <Image
+              src={location.area}
+              alt="a map of England with the current region highlighted"
+              width={913}
+              height={1069}
+              style={isL ? { transform: mapStyles } : {}}
+            />
+            <Image
+              src={MapEngland}
+              alt="a map of England with region borders"
+              width={913}
+              height={1069}
+              style={isL ? { transform: mapStyles } : {}}
+            />
+          </div>
+        )}
         <div
           className={`${styles.card}  ${
             cardShowing === location.id ? styles.active : ''
           }`}
-          style={{ transform: cardStyles }}
+          style={isL ? { transform: cardStyles } : {}}
         >
           <CardMap
             theme={location.theme}
@@ -115,21 +138,6 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
             }
           />
         </div>
-        {location.area && (
-          <div
-            className={`${styles.image} ${styles.region} ${
-              cardShowing === location.id ? styles.active : ''
-            }`}
-          >
-            <Image
-              src={location.area}
-              alt="a map of England with the current region highlighted"
-              width={913}
-              height={1069}
-              style={{ transform: mapStyles }}
-            />
-          </div>
-        )}
       </React.Fragment>
     );
   });
@@ -139,7 +147,7 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
       <div
         ref={map}
         className={styles.wrapper}
-        style={{ height: componentHeight + 'vh' }}
+        style={isL ? { height: componentHeight + 'vh' } : {}}
       >
         <div className={styles['map-wrapper']}>
           {/* Left side static text */}
@@ -152,15 +160,14 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
             {cta}
           </div>
 
-          {/* Image / SVG Map */}
-          {/* transform-image-1,2,etc will likely need to be inline styles where the position of the card is set by coordinates from the cms. */}
+          {/* Country Map */}
           <div className={styles.image}>
             <Image
               src={MapEngland}
               alt="a map of England with region borders"
               width={913}
               height={1069}
-              style={{ transform: mapStyles }}
+              style={isL ? { transform: mapStyles } : {}}
             />
           </div>
 

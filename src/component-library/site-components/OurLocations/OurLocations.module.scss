@@ -10,16 +10,18 @@
 }
 
 .map-wrapper {
-  position: sticky;
-  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: px-to-rem(40);
 
   @include responsive-grid;
 
   @include media(screen-l) {
+    position: sticky;
+    top: 0;
     flex-direction: row;
+    padding-bottom: 0;
   }
 }
 
@@ -27,14 +29,21 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-6;
-  height: 100vh;
+  background: linear-gradient(
+    rgba($main-turquoise-20, 1) 75%,
+    rgba($main-turquoise-20, 0)
+  );
+  padding: $spacing-4 $spacing-14 px-to-rem(95);
+  z-index: 1;
 
-  @include responsive-container;
   @include responsive-grid-span($breakpoint-l: 5);
 
   @include media(screen-l) {
-    margin-right: 0;
+    padding: 0;
+    margin-left: $spacing-14;
     justify-content: center;
+    height: 100vh;
+    background: none;
   }
 
   & > div {
@@ -47,29 +56,61 @@
 /* Image will be the England map. 
 Real version will probably an SVG which will likely need more complex logic in order to fill in the correct counties */
 .image {
-  position: absolute;
-  right: -5%;
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  overflow: hidden;
-  z-index: -1;
+  //overflow: hidden;
+  top: 0;
+  //transform: translateY(-50vh);
+  @include responsive-grid-span($default: 6);
+
+  @include media(screen-l) {
+    position: absolute;
+    top: unset;
+    transform: none;
+    right: -5%;
+  }
 
   & img {
-    object-fit: contain;
     transition: all 1s ease-out;
-    transform: translateY(0) scale(1.1);
+    transform: scale(1.1);
+    object-fit: contain;
+
+    @include media(screen-l, 'max') {
+      width: 100%;
+    }
+
+    @include media(screen-m, 'max') {
+      height: 100%;
+      transform: scale(1.4);
+    }
   }
 }
 
 .region {
-  opacity: 0;
-  transition: all 1s ease-in-out;
+  opacity: 1;
+
+  @include media(screen-l) {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
+
+  & > img {
+    &:first-of-type {
+      position: absolute;
+      z-index: 1;
+    }
+  }
 }
 
 .card {
   opacity: 1;
   transition: all 1s ease-in-out;
+  z-index: 1;
+  display: grid;
+  align-items: end;
+  //height: 100vh;
 
   @include responsive-grid-span($default: 6);
   @include responsive-container;
@@ -79,44 +120,14 @@ Real version will probably an SVG which will likely need more complex logic in o
     top: 50%;
     right: 23%;
     opacity: 0;
+    pointer-events: none;
     transform: translateY(-50%);
+    display: block;
+    height: unset;
   }
 }
 
 .active {
   opacity: 1;
-}
-
-@include media(screen-l) {
-  /* .transform-image-0 {
-    transform: translateY(0) scale(1.1);
-  }
-
-  .transform-image-1 {
-    transform: translateY(-20%) scale(1.5);
-  }
-
-  .transform-image-2 {
-    transform: translateY(10%) translateX(15%) scale(1.7);
-  }
-
-  .transform-image-3 {
-    transform: translateY(-5%) translateX(25%) scale(1.8);
-  } */
-
-  /* .transform-card-0 {
-    transform: translateY(-50%);
-  }
-
-  .transform-card-1 {
-    transform: translateY(-55%) translateX(40%);
-  }
-
-  .transform-card-2 {
-    transform: translateY(-55%) translateX(0%);
-  }
-
-  .transform-card-3 {
-    transform: translateY(-35%) translateX(30%);
-  } */
+  pointer-events: all;
 }
