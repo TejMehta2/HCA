@@ -20,7 +20,20 @@ The first CardBlog child should have the `variation="feature"` prop.
 It can be composed like this:
 
 ``` tsx
-<CardBlogBlock>
+<CardBlogBlock
+  title={
+    <Text variation={'display-5'}>
+      <span>From the blog</span>
+    </Text>
+  }
+  cta={
+    <Button size={'large'} theme={'full'}>
+      <a href="#">
+        Visit our <strong>blog</strong>
+      </a>
+    </Button>
+  }
+>
   {/* Large feature card */}
   <CardBlog variation={'feature'}>
     <Image
