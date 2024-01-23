@@ -1,8 +1,8 @@
 ﻿---
-ID: "a27b9adf-e3bd-40ea-a577-c85e5707161f"
-Parent: "01522cb0-f5ea-40e4-8843-c3bbbdb46abd"
-Template: "01522cb0-f5ea-40e4-8843-c3bbbdb46abd"
-Path: /sitecore/templates/Project/HCA/Foundation/CQC/CQC Status/__Standard Values
+ID: "7018d56d-962e-4cc5-8558-658351aa92e8"
+Parent: "44c0c860-da24-4608-9d22-ef9accff1e36"
+Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA68/Data
 Languages:
 - Language: en
   Versions:
@@ -10,10 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231128T085421Z
-    - ID: "25e7f1d6-983d-437f-9430-f9cb0790d4ea"
-      Hint: CQCLogoDark
-      Value: "{6D1499AD-8E5F-456F-A0D2-7AE0BB354EE8}"
+      Value: 20240118T124654Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -22,19 +19,13 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "7edb9b23-9055-4551-a6d4-edca5a3f364d"
-      Hint: Title
-      Value: $name
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6783a7b3-7418-43a0-856f-72a729459fa5"
+      Value: "2607e4ba-024a-4a13-b5e9-852a71900069"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "cac4f9dc-c36a-4c56-97db-ebce1e7e2f29"
-      Hint: CQCLogoLight
-      Value: "{7B9D70E4-8AEE-4F78-AA25-51FCF2993FB3}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240123T110224Z
+      Value: 20240118T124654Z
