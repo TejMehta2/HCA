@@ -15,7 +15,8 @@ export type ButtonThemeUnionTypes =
   | 'social-dark'
   | 'standard-carousel-light'
   | 'standard-carousel-dark'
-  | 'hover-carousel';
+  | 'hover-carousel'
+  | 'square-outline';
 
 export interface ButtonProps {
   size: ButtonSizeUnionTypes;
