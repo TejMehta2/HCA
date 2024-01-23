@@ -6,7 +6,7 @@ import Text from '../../foundation/Text/Text';
 import Tags from '../../core-components/Tags/Tags';
 import CardPatientStories from '../../components/CardPatientStories/CardPatientStories';
 import Image from 'next/image';
-import CardDoctor from '../../components/CardDoctor/CardDoctor';
+import CardDoctor from '../../site-components/CardDoctor/CardDoctor';
 import CardLocation from '../../components/CardLocation/CardLocation';
 import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';

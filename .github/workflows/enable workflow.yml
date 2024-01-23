@@ -3,7 +3,8 @@ name: Enable workflow
 on:
   schedule:
     - cron:  '0 0 * * *'
-    
+env:
+  GH_TOKEN: ${{ github.token }}
 jobs:
   enable-workflow:
     runs-on: ubuntu-latest

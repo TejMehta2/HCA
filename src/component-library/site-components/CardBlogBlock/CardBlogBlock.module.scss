@@ -23,7 +23,8 @@
     @include responsive-grid-span(6, 3, 3, 3);
   }
 
-  > *:first-child {
+  > *:nth-child(10n - 9),
+  *:nth-child(10n + 8) {
     @include responsive-grid-span(6, 6, 6, 6);
 
     grid-row-end: span 2;
