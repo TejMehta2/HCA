@@ -41,6 +41,8 @@
   --card-background: #{$main-turquoise-10};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$main-turquoise-10};
+  --quote-tag-background-hover: #{$main-turquoise-20};
   @include apply-tag-blue;
   @include apply-tabs-white;
   @include apply-pagination-turquoise-10;
@@ -53,6 +55,8 @@
   --card-background: #{$green-20};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$green-20};
+  --quote-tag-background-hover: #{$green-40};
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-20;
@@ -65,6 +69,8 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$dark-blue-20};
   --doctify-full-star: #{$coral};
+  --quote-tag-background: #{$light-orange-60};
+  --quote-tag-background-hover: #{$light-orange};
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-white;
@@ -77,6 +83,9 @@
   --card-background: #{$beige};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$beige-60};
+  --quote-tag-background-hover: #{$beige};
+
   @include apply-tag-orange;
   @include apply-tabs-white;
   @include apply-pagination-beige-60;
@@ -89,6 +98,8 @@
   --card-background: #{$dark-blue-80};
   --doctify-full-star: #{$main-turquoise};
   --doctify-empty-star: #{$white};
+  --quote-tag-background: #{$dark-blue-60};
+  --quote-tag-background-hover: #{$dark-blue-80};
 
   @include apply-tag-dark-blue;
   @include apply-tabs-blue;
@@ -103,6 +114,9 @@
   --doctify-empty-star: #{$dark-blue-9};
   --doctify-full-star: #{$coral};
   --cqc-outline: #{$dark-blue-9};
+  --quote-tag-background: #{$light-orange-60};
+  --quote-tag-background-hover: #{$light-orange-80};
+
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-orange;
@@ -115,6 +129,9 @@
   --card-background: #{$green-10};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$green-10};
+  --quote-tag-background-hover: #{$green-20};
+
   @include apply-tag-green;
   @include apply-tabs-white;
   @include apply-pagination-green-10;
@@ -127,6 +144,9 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$green-60};
+  --quote-tag-background-hover: #{$green};
+
   @include apply-tag-light-blue;
   @include apply-tabs-green;
   @include apply-pagination-green;
@@ -139,6 +159,9 @@
   --card-background: #{$main-turquoise-5};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$main-turquoise};
+  --quote-tag-background-hover: #{$main-turquoise-120};
+
   @include apply-tag-light-blue;
   @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
@@ -151,6 +174,9 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$main-turquoise};
+  --quote-tag-background-hover: #{$main-turquoise-120};
+
   @include apply-tag-light-blue;
   @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
@@ -163,6 +189,9 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$dark-blue-20};
   --doctify-full-star: #{$main-turquoise-120};
+  --quote-tag-background: #{$main-turquoise};
+  --quote-tag-background-hover: #{$main-turquoise-120};
+
   @include apply-tag-light-blue;
   @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
@@ -175,6 +204,9 @@
   --card-background: #{$coral-5};
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$dark-blue};
+  --quote-tag-background: #{$coral-5};
+  --quote-tag-background-hover: #{$coral-20};
+
   @include apply-tag-coral;
   @include apply-tabs-white;
   @include apply-pagination-coral-5;
