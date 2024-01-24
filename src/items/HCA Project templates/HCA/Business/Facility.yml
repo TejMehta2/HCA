@@ -6,7 +6,12 @@ Path: /sitecore/templates/Project/HCA/Business/Facility
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+  Value: |
+    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
+    {98EA1087-9FBA-4281-9C6E-A0335879D121}
+    {4DCBD05D-11C4-4F14-A0A3-DA168219D593}
+    {7C939055-87B4-4806-81C4-FEB962BD3E01}
+    {DDE07725-B365-4244-8D3C-4DFEA59A3C67}
 Languages:
 - Language: en
   Versions:
@@ -25,11 +30,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2c9076f9-9218-4e0e-86a5-2c6baa82e9ab"
+      Value: "a192979f-65f0-49cc-9b1b-0a534bcb2c13"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T152429Z
+      Value: 20240118T231427Z

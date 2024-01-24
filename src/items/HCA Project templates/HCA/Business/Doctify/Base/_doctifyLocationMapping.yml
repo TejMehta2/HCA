@@ -6,7 +6,9 @@ Path: /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyLocationMapp
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+  Value: |
+    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
+    {47531A4E-D960-4055-8A21-3354E7D9E505}
 Languages:
 - Language: en
   Versions:
@@ -25,11 +27,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5a5413e5-304a-4fb9-beff-6dbb73b809b8"
+      Value: "1d8d5f8f-ddca-4c43-b2b6-bfe0e8d3d15d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240117T152722Z
+      Value: 20240118T144709Z
