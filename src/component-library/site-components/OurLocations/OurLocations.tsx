@@ -211,7 +211,7 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
           {/* Country Map */}
           <div className={styles.image}>
             {generateImage(
-              MapEngland,
+              MapEngland.src,
               'a map of England with region borders',
               isL ? { transform: mapStyles } : { display: 'none' }
             )}
