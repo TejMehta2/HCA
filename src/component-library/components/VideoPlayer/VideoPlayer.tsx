@@ -19,7 +19,7 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
     //  mute is required by most browsers to autoplay
     const isYoutube = videoSrc.includes('www.youtube.com');
     const muteParam = isYoutube ? 'mute' : 'muted';
-    //  this will only apply one mobile browsers
+    //  this will only apply on mobile browsers
     const fullscreenParam = !isScreenM ? '&playsinline=0' : '';
 
     setVideoSrc(`${videoSrc}?autoplay=1&${muteParam}=1&${fullscreenParam}`);
