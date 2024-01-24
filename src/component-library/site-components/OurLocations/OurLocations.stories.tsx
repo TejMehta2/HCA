@@ -5,9 +5,13 @@ import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import { location } from './OurLocations.types';
-import LondonArea from '../../assets/locations/London.png';
-import ManchesterArea from '../../assets/locations/Manchester.png';
-import BirminghamArea from '../../assets/locations/Birmingham.png';
+import MapEngland from '../../assets/locations/map-england.png';
+import LondonDesktopArea from '../../assets/locations/London.png';
+import LondonMobileArea from '../../assets/locations/LondonMobile.png';
+import ManchesterDesktopArea from '../../assets/locations/Manchester.png';
+import ManchesterMobileArea from '../../assets/locations/ManchesterMobile.png';
+import BirminghamDesktopArea from '../../assets/locations/Birmingham.png';
+import BirminghamMobileArea from '../../assets/locations/BirminghamMobile.png';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OurLocations> = {
@@ -29,6 +33,7 @@ const locations: location[] = [
     name: 'Locations across the UK',
     amount: '35',
     theme: 'E-HCA-Dark-Grey',
+    area: { mobile: MapEngland },
     mapStyles: {
       translateY: '0',
       scale: '1.1',
@@ -42,7 +47,7 @@ const locations: location[] = [
     name: 'Locations across London',
     amount: '9',
     theme: 'D-HCA-Light-Orange',
-    area: LondonArea,
+    area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: {
       translateY: '-20%',
       scale: '1.5',
@@ -57,7 +62,7 @@ const locations: location[] = [
     name: 'Locations across Manchester',
     amount: '2',
     theme: 'L-HCA-Coral-60',
-    area: ManchesterArea,
+    area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
     mapStyles: {
       translateY: '10%',
       translateX: '15%',
@@ -73,7 +78,7 @@ const locations: location[] = [
     name: 'Location across Birmingham',
     amount: '1',
     theme: 'B-HCA-Green',
-    area: BirminghamArea,
+    area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
     mapStyles: {
       translateY: '-5%',
       translateX: '25%',
@@ -94,7 +99,7 @@ export const Default: StoryObj<typeof OurLocations> = {
       </Text>
     ),
     title: (
-      <Text tag="h2" variation="display-3">
+      <Text tag="h2" variation="display-2">
         The widest range of locations in the UK
       </Text>
     ),

@@ -1,19 +1,18 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-/* This height will likely need to be done as an inline style as it will be dependant on how many featured locations there are */
 .wrapper {
   position: relative;
   overflow-x: clip;
   background-color: var(--background);
   color: var(--text);
+  z-index: 1;
 }
 
-.map-wrapper {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: px-to-rem(40);
 
   @include responsive-grid;
 
@@ -21,11 +20,12 @@
     position: sticky;
     top: 0;
     flex-direction: row;
-    padding-bottom: 0;
   }
 }
 
-.static-text {
+.header {
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   gap: $spacing-6;
@@ -34,16 +34,19 @@
     rgba($main-turquoise-20, 0)
   );
   padding: $spacing-4 $spacing-14 px-to-rem(95);
-  z-index: 1;
+  z-index: 2;
+  transition: transform 1.5s ease-out;
 
   @include responsive-grid-span($breakpoint-l: 5);
 
   @include media(screen-l) {
+    position: static;
     padding: 0;
     margin-left: $spacing-14;
     justify-content: center;
     height: 100vh;
     background: none;
+    transition: none;
   }
 
   & > div {
@@ -53,27 +56,28 @@
   }
 }
 
-/* Image will be the England map. 
-Real version will probably an SVG which will likely need more complex logic in order to fill in the correct counties */
-.image {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  //overflow: hidden;
-  top: 0;
-  //transform: translateY(-50vh);
-  @include responsive-grid-span($default: 6);
+/* On smaller screens, the header hides / moves up once the user has scrolled */
+.hide {
+  transform: translateY(-100%);
 
   @include media(screen-l) {
-    position: absolute;
-    top: unset;
     transform: none;
+  }
+}
+
+.image {
+  @include media(screen-l) {
+    position: absolute;
     right: -5%;
+    transform: none;
+    display: flex;
+    justify-content: flex-end;
   }
 
+  /* Need to use max-width for media queries as there was a strange quirk where 
+  setting it back to auto on larger screens was messing with the position of it */
   & img {
-    transition: all 1s ease-out;
+    transition: transform 1s ease-out;
     transform: scale(1.1);
     object-fit: contain;
 
@@ -88,29 +92,24 @@ Real version will probably an SVG which will likely need more complex logic in o
   }
 }
 
+/* mobile only image for full map + region colour */
 .region {
-  opacity: 1;
+  display: none;
 
   @include media(screen-l) {
     opacity: 0;
-    transition: all 1s ease-in-out;
-  }
-
-  & > img {
-    &:first-of-type {
-      position: absolute;
-      z-index: 1;
-    }
+    transition: opacity 1s ease-in-out;
+    display: flex;
   }
 }
 
-.card {
+.card-container {
+  display: flex;
+  align-items: center;
+  position: relative;
   opacity: 1;
-  transition: all 1s ease-in-out;
-  z-index: 1;
-  display: grid;
-  align-items: end;
-  //height: 100vh;
+  margin-bottom: px-to-rem(40);
+  height: 100vh;
 
   @include responsive-grid-span($default: 6);
   @include responsive-container;
@@ -122,12 +121,33 @@ Real version will probably an SVG which will likely need more complex logic in o
     opacity: 0;
     pointer-events: none;
     transform: translateY(-50%);
-    display: block;
-    height: unset;
+    margin-bottom: 0;
+    height: auto;
+    transition:
+      transform 1s ease-in-out,
+      opacity 1s ease-in-out;
+  }
+}
+
+.card {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  @include media(screen-l) {
+    position: static;
   }
 }
 
 .active {
   opacity: 1;
   pointer-events: all;
+}
+
+.mobile {
+  display: block;
+
+  @include media(screen-l) {
+    display: none;
+  }
 }
