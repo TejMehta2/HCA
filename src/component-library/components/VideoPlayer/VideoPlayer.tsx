@@ -3,6 +3,7 @@ import { VideoPlayerProps } from './VideoPlayer.types';
 import styles from './VideoPlayer.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const { videoUrl, overlayImage } = props;
@@ -11,12 +12,17 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const [hideOverlay, sethideOverlay] = useState(false);
   const [hideOnLoad, sethideOnLoad] = useState(true);
 
+  //  medium screen breakpoint
+  const isScreenM = useWindowWidth(600);
+
   const handlePlay = () => {
     //  mute is required by most browsers to autoplay
     const isYoutube = videoSrc.includes('www.youtube.com');
     const muteParam = isYoutube ? 'mute' : 'muted';
+    //  this will only apply one mobile browsers
+    const fullscreenParam = !isScreenM ? '&playsinline=0' : '';
 
-    setVideoSrc(`${videoSrc}?autoplay=1&${muteParam}=1`);
+    setVideoSrc(`${videoSrc}?autoplay=1&${muteParam}=1&${fullscreenParam}`);
     sethideOverlay(true);
   };
 
