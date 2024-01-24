@@ -1,18 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { VideoPlayerProps } from './VideoPlayer.types';
 import styles from './VideoPlayer.module.scss';
+import Icons from '../../foundation/Icons/Icons';
+import Button from '../../core-components/Button/Button';
 
 const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
-  const { children } = props;
+  const { videoUrl, overlayImage } = props;
+
+  const [videoSrc, setVideoSrc] = useState(videoUrl);
+  const [hideOverlay, sethideOverlay] = useState(false);
+  const [hideOnLoad, sethideOnLoad] = useState(true);
+
+  const handlePlay = () => {
+    //  mute is required by most browsers to autoplay
+    const isYoutube = videoSrc.includes('www.youtube.com');
+    const muteParam = isYoutube ? 'mute' : 'muted';
+
+    setVideoSrc(`${videoSrc}?autoplay=1&${muteParam}=1`);
+    sethideOverlay(true);
+  };
+
+  //  slight delay to account for large images taking time to load
+  useEffect(() => {
+    setTimeout(() => {
+      sethideOnLoad(false);
+    }, 1000);
+  }, []);
+
   return (
     <div className={styles.player}>
+      <div
+        className={[styles.overlay, hideOverlay ? styles['hide'] : ''].join(
+          ' '
+        )}
+      >
+        {overlayImage}
+        <div className={[styles.play, hideOnLoad ? styles.hide : ''].join(' ')}>
+          <Button theme="play" size="small">
+            <button onClick={handlePlay} className={styles['overlay-button']}>
+              <Icons iconName={'iconPlay'}></Icons>
+            </button>
+          </Button>
+        </div>
+      </div>
+
       <iframe
-        id="ytplayer"
-        type="text/html"
-        width="640"
-        height="360"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-        frameborder="0"
+        src={videoSrc}
+        allow="autoplay; fullscreen"
+        allowFullScreen
+        className={hideOnLoad ? styles.hide : ''}
       ></iframe>
     </div>
   );

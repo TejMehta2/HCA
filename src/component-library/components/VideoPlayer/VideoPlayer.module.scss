@@ -1,3 +1,35 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
 .player {
-  width: 100%;
+  position: relative;
+
+  iframe {
+    width: 100%;
+    height: auto;
+    border: 0;
+    aspect-ratio: 16/9;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

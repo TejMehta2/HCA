@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
 export interface VideoPlayerProps {
-  children?: ReactNode | JSX.Element;
+  videoUrl: string;
+  overlayImage: ReactNode | JSX.Element;
 }

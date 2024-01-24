@@ -386,3 +386,31 @@
     }
   }
 }
+
+.play {
+  button,
+  a {
+    height: px-to-rem(101);
+    width: px-to-rem(101);
+    position: relative;
+    border-radius: 50%;
+    padding: 0;
+    background: $white;
+
+    svg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: $dark-blue;
+    }
+
+    &:hover {
+      background: $main-turquoise-5;
+    }
+
+    &:active {
+      background: $main-turquoise-10;
+    }
+  }
+}
