@@ -6,7 +6,6 @@ import OurLocationsRegion, {
   RegionImage,
 } from '../../components/OurLocationsRegion/OurLocationsRegion';
 import MapEngland from '../../assets/locations/map-england.png';
-import useWindowWidth from '../../hooks/useWindowWidth';
 
 const OurLocations = (props: OurLocationsProps): JSX.Element => {
   const { subtitle, title, body, cta, locations } = props;
@@ -14,8 +13,6 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
   const [cardShowing, setCardShowing] = useState<number>(0);
   const [mobileScrolled, setMobileScrolled] = useState<boolean>(false);
   const map = useRef<HTMLDivElement>(null);
-
-  const isL = useWindowWidth(1135);
 
   /* Each location card shows for the scroll duration of the full height of the viewport */
   /* Adding 1 to length so that last card has room to scroll and doesn't just appear at the last scroll pixel */
@@ -103,7 +100,10 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
       <div
         ref={map}
         className={styles.wrapper}
-        style={isL ? { height: componentHeight + 'vh' } : {}}
+        style={{
+          // consumed in the CSS to set height of component (desktop only)
+          ['--component-height' as string]: `${componentHeight}vh`,
+        }}
       >
         <div className={styles.container}>
           {/* Header Section */}
@@ -122,9 +122,8 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
           <RegionImage
             src={MapEngland.src}
             alt="a map of England with region borders"
-            imgStyle={
-              isL ? locations[cardShowing].mapStyles : { display: 'none' }
-            }
+            classNames={styles.desktop}
+            imgStyle={locations[cardShowing].mapStyles}
           />
 
           {/* Cards */}

@@ -7,6 +7,11 @@
   background-color: var(--background);
   color: var(--text);
   z-index: 1;
+
+  /* --component-height set in JS as it depends on the amount of regions displayed */
+  @include media(screen-l) {
+    height: var(--component-height);
+  }
 }
 
 .container {
@@ -62,5 +67,13 @@
 
   @include media(screen-l) {
     transform: none;
+  }
+}
+
+.desktop {
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
   }
 }
