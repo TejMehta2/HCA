@@ -1,0 +1,9 @@
+import { ReactNode } from 'react';
+
+export interface AdvancedBlockHeaderProps {
+  subtitle?: ReactNode | JSX.Element;
+  title?: ReactNode | JSX.Element;
+  body?: ReactNode | JSX.Element;
+  ctas?: ReactNode | JSX.Element;
+  children?: ReactNode | JSX.Element;
+}

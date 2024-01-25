@@ -1,0 +1,11 @@
+.wrapper {
+  [class*="HeaderWithImage_hero-with-image"] {
+    overflow: visible !important;
+  }
+  [class*="HeaderWithImage_image"] {
+    height: 200%;
+    top: -50%;
+    mask-size: auto 90%;
+    z-index: 1;
+  }
+}

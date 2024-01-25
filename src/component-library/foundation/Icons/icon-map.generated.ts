@@ -48,6 +48,7 @@ import iconMobile from './assets-dist/Mobile.svg';
 import iconOneOff from './assets-dist/One-off.svg';
 import iconPhone from './assets-dist/Phone.svg';
 import iconPin from './assets-dist/Pin.svg';
+import iconPlay from './assets-dist/Play.svg';
 import iconPlusSmall from './assets-dist/Plus small.svg';
 import iconPlus from './assets-dist/Plus.svg';
 import iconRedo from './assets-dist/Redo.svg';
@@ -115,6 +116,7 @@ export type IconName =
   | 'iconOneOff'
   | 'iconPhone'
   | 'iconPin'
+  | 'iconPlay'
   | 'iconPlusSmall'
   | 'iconPlus'
   | 'iconRedo'
@@ -182,6 +184,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconOneOff', iconOneOff],
   ['iconPhone', iconPhone],
   ['iconPin', iconPin],
+  ['iconPlay', iconPlay],
   ['iconPlusSmall', iconPlusSmall],
   ['iconPlus', iconPlus],
   ['iconRedo', iconRedo],

@@ -1,0 +1,41 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  padding-top: $spacing-13;
+  padding-bottom: $spacing-13;
+  color: var(--text);
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subtitle {
+  margin-bottom: px-to-rem(8);
+}
+
+.title {
+  margin-bottom: $spacing-6;
+}
+
+.body {
+  margin-bottom: $spacing-7;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-6;
+  margin-top: $spacing-7;
+}
+
+.children {
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-7;
+}
