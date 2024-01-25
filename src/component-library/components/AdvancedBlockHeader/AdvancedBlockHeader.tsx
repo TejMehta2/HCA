@@ -3,14 +3,21 @@ import { AdvancedBlockHeaderProps } from './AdvancedBlockHeader.types';
 import styles from './AdvancedBlockHeader.module.scss';
 
 const AdvancedBlockHeader = (props: AdvancedBlockHeaderProps): JSX.Element => {
-  const { subtitle, title, body, ctas, children } = props;
+  const {
+    subtitle,
+    title,
+    body,
+    ctas,
+    children,
+    paddingSize = 'large',
+  } = props;
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.subtitle}>{subtitle}</div>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.body}>{body}</div>
-      <div className={styles.children}>{children}</div>
-      <div className={styles.ctas}>{ctas}</div>
+    <div className={[styles.wrapper, styles[paddingSize]].join(' ')}>
+      {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
+      {title && <div className={styles.title}>{title}</div>}
+      {body && <div className={styles.body}>{body}</div>}
+      {children && <div className={styles.children}>{children}</div>}
+      {ctas && <div className={styles.ctas}>{ctas}</div>}
     </div>
   );
 };
