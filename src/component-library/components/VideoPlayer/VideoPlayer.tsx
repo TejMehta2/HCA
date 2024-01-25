@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { VideoPlayerProps } from './VideoPlayer.types';
 import styles from './VideoPlayer.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
-import useWindowWidth from '../../hooks/useWindowWidth';
 
 const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const { videoUrl, overlayImage } = props;
 
   const [videoSrc, setVideoSrc] = useState(videoUrl);
   const [hideOverlay, sethideOverlay] = useState(false);
-  const [hideOnLoad, sethideOnLoad] = useState(true);
 
+  const width = window.innerWidth;
   //  medium screen breakpoint
-  const isScreenM = useWindowWidth(600);
+  const isScreenM = width > 600;
 
   const handlePlay = () => {
     //  mute is required by most browsers to autoplay
@@ -26,13 +25,6 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
     sethideOverlay(true);
   };
 
-  //  slight delay to account for large images taking time to load
-  useEffect(() => {
-    setTimeout(() => {
-      sethideOnLoad(false);
-    }, 1000);
-  }, []);
-
   return (
     <div className={styles.player}>
       <div
@@ -41,10 +33,11 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
         )}
       >
         {overlayImage}
-        <div className={[styles.play, hideOnLoad ? styles.hide : ''].join(' ')}>
+        <div className={styles.play}>
           <Button theme="play" size="small">
             <button onClick={handlePlay} className={styles['overlay-button']}>
               <Icons iconName={'iconPlay'}></Icons>
+              <span className="sr-only">Play video</span>
             </button>
           </Button>
         </div>
@@ -54,7 +47,6 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
         src={videoSrc}
         allow="autoplay; fullscreen"
         allowFullScreen
-        className={hideOnLoad ? styles.hide : ''}
       ></iframe>
     </div>
   );
