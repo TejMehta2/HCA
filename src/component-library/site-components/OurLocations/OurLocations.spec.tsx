@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import OurLocations from './OurLocations';
-import { OurLocationsProps, location } from './OurLocations.types';
+import { OurLocationsProps } from './OurLocations.types';
+import { OurLocationsRegionProps } from '../../components/OurLocationsRegion/OurLocationsRegion.types';
 import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
@@ -13,20 +14,15 @@ import ManchesterMobileArea from '../../assets/locations/ManchesterMobile.png';
 import BirminghamDesktopArea from '../../assets/locations/Birmingham.png';
 import BirminghamMobileArea from '../../assets/locations/BirminghamMobile.png';
 
-const locations: location[] = [
+const locations: OurLocationsRegionProps[] = [
   {
     id: 0,
     name: 'Locations across the UK',
     amount: '35',
     theme: 'E-HCA-Dark-Grey',
     area: { mobile: MapEngland },
-    mapStyles: {
-      translateY: '0',
-      scale: '1.1',
-    },
-    cardStyles: {
-      translateY: '-50%',
-    },
+    mapStyles: { transform: 'translateY(0) scale(1.1)' },
+    cardStyles: { transform: 'translateY(-50%)' },
   },
   {
     id: 1,
@@ -34,14 +30,8 @@ const locations: location[] = [
     amount: '9',
     theme: 'D-HCA-Light-Orange',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
-    mapStyles: {
-      translateY: '-20%',
-      scale: '1.5',
-    },
-    cardStyles: {
-      translateY: '-55%',
-      translateX: '40%',
-    },
+    mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(40%)' },
   },
   {
     id: 2,
@@ -49,15 +39,8 @@ const locations: location[] = [
     amount: '2',
     theme: 'L-HCA-Coral-60',
     area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
-    mapStyles: {
-      translateY: '10%',
-      translateX: '15%',
-      scale: '1.7',
-    },
-    cardStyles: {
-      translateY: '-55%',
-      translateX: '0',
-    },
+    mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(0)' },
   },
   {
     id: 3,
@@ -65,15 +48,8 @@ const locations: location[] = [
     amount: '1',
     theme: 'B-HCA-Green',
     area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
-    mapStyles: {
-      translateY: '-5%',
-      translateX: '25%',
-      scale: '1.7',
-    },
-    cardStyles: {
-      translateY: '-35%',
-      translateX: '30%',
-    },
+    mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
+    cardStyles: { transform: 'translateY(-35%) translateX(30%)' },
   },
 ];
 

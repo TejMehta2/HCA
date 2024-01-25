@@ -7,7 +7,7 @@ import Tags from '../../core-components/Tags/Tags';
 import CardPatientStories from '../../components/CardPatientStories/CardPatientStories';
 import Image from 'next/image';
 import CardDoctor from '../../site-components/CardDoctor/CardDoctor';
-import CardLocation from '../../components/CardLocation/CardLocation';
+import CardMap from '../../components/CardMap/CardMap';
 import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 import CardContent from '../../components/CardContent/CardContent';
@@ -161,8 +161,8 @@ const CardDoctorExample = () => (
   />
 );
 
-const CardLocationExample = () => (
-  <CardLocation
+const CardMapExample = () => (
+  <CardMap
     image={
       <Image
         src="/placeholders/location-card.jpg"
@@ -324,7 +324,7 @@ export const CardContentBlock: StoryObj<typeof CardBlock> = {
   },
 };
 
-export const CardLocationBlock: StoryObj<typeof CardBlock> = {
+export const CardMapBlock: StoryObj<typeof CardBlock> = {
   args: {
     title: (
       <Text variation={'display-2'} tag="h2">
@@ -333,12 +333,12 @@ export const CardLocationBlock: StoryObj<typeof CardBlock> = {
     ),
     children: (
       <>
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
       </>
     ),
     variation: '3-columns',
