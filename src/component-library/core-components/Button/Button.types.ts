@@ -16,7 +16,8 @@ export type ButtonThemeUnionTypes =
   | 'standard-carousel-light'
   | 'standard-carousel-dark'
   | 'hover-carousel'
-  | 'square-outline';
+  | 'square-outline'
+  | 'play';
 
 export interface ButtonProps {
   size: ButtonSizeUnionTypes;
