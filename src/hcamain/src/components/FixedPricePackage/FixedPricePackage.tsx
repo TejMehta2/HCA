@@ -6,7 +6,7 @@ import {
   Image,
   ImageFieldValue,
   ComponentRendering,
-  Placeholder
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
