@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  Text as JssText
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   SearchPlaceholder: Field<string>;
@@ -13,7 +10,9 @@ type ConsultantSearchProps = {
   fields: Fields;
 };
 
-const ConsultantSearchDefaultComponent = (props: ConsultantSearchProps): JSX.Element => (
+const ConsultantSearchDefaultComponent = (
+  props: ConsultantSearchProps
+): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Consultant Search no datasource</span>
