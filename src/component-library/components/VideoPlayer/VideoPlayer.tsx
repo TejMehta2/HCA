@@ -10,11 +10,10 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const [videoSrc, setVideoSrc] = useState(videoUrl);
   const [hideOverlay, sethideOverlay] = useState(false);
 
-  const width = window.innerWidth;
-  //  medium screen breakpoint
-  const isScreenM = width > 600;
-
   const handlePlay = () => {
+    const width = window.innerWidth;
+    //  medium screen breakpoint
+    const isScreenM = width > 600;
     //  mute is required by most browsers to autoplay
     const isYoutube = videoSrc.includes('www.youtube.com');
     const muteParam = isYoutube ? 'mute' : 'muted';
