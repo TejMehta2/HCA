@@ -1,5 +1,11 @@
 import React from 'react';
-import { Field, ImageField, Placeholder,ComponentRendering, RichText, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  ImageField,
+  Placeholder,
+  ComponentRendering,
+  Text,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 
@@ -7,7 +13,6 @@ interface LogosFields {
   Logo: ImageField;
   Link: { path: string };
 }
-
 
 interface Fields {
   Heading: Field<string>;
@@ -29,9 +34,7 @@ type LogoBlogProps = {
   fields: Fields;
 };
 
-const LogoBlogDefaultComponent = (
-  props: LogoBlogProps
-): JSX.Element => {
+const LogoBlogDefaultComponent = (props: LogoBlogProps): JSX.Element => {
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
@@ -54,11 +57,7 @@ export const Default = (props: LogoBlogProps): JSX.Element => {
       <br />
       <Text field={props.fields.Title} />
       <br />
-      <Placeholder
-            name={phKey}
-            rendering={props.rendering}
-            size={buttonSize}
-          />
+      <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
     </div>
   );
 };

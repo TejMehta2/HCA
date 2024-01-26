@@ -12,9 +12,7 @@ type PlainHeaderProps = {
   fields: Fields;
 };
 
-const PlainHeaderDefaultComponent = (
-  props: PlainHeaderProps
-): JSX.Element => {
+const PlainHeaderDefaultComponent = (props: PlainHeaderProps): JSX.Element => {
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
