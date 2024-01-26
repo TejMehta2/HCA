@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as LogoBlockStories from './LogoBlock.stories'
+
+<Meta of={LogoBlockStories} />
+
+# LogoBlock
+
+## Description
+
+The LogoBlock component is a wrapper to present agrid of logos.
+
+It is intended to be used with the AdvancedBlockHeader component. See the docs for AdvancedBlockHeader for correspodning prop info.
+
+It can be composed like this:
+
+``` tsx
+<LogoBlock 
+  header={
+    <AdvancedBlockHeader />
+  }
+  logos={
+    [
+      <Image src="/placeholders/hca-logo.svg" alt="" width="131" height="56" />
+      // ...
+    ]
+  }
+/>
+
+```
+
+## Example 
+
+<Canvas of={LogoBlockStories.Default} />
+<Controls of={LogoBlockStories.Default} />

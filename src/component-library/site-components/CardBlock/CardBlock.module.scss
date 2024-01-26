@@ -10,7 +10,6 @@
   @include responsive-container;
   @include responsive-grid;
 
-  padding-top: $spacing-13;
   padding-bottom: $spacing-13;
 }
 
@@ -50,44 +49,7 @@
   }
 }
 
-.subtitle {
-  margin-bottom: $spacing-2;
-}
-
-.title {
-  margin-bottom: $spacing-6;
-}
-
-.copy {
-  margin-bottom: $spacing-7;
-}
-
-.subtitle,
-.title,
-.copy {
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.ctas {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-5;
-  @include media(screem-m) {
-    flex-direction: row;
-  }
-}
-
-// gapSize variations
-.large {
-  .header {
-    margin-bottom: calc(#{$spacing-13} - #{px-to-rem(16)});
-  }
-}
-
-.small {
-  .header {
-    margin-bottom: calc(#{$spacing-7} - #{px-to-rem(16)});
-  }
+.header {
+  /* stylelint-disable unit-disallowed-list */
+  margin-bottom: -1rem; // offset gap
 }

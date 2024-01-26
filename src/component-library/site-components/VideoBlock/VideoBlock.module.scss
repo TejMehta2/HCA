@@ -1,0 +1,38 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+}
+
+.content {
+  @include responsive-grid;
+  @include responsive-container;
+
+  padding-bottom: $spacing-13;
+
+  .side-by-side & {
+    @include media(screen-l) {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.header {
+  @include responsive-grid-span(6, 6, 8, 7);
+
+  .side-by-side & {
+    @include responsive-grid-span(6, 6, 4, 4);
+  }
+}
+
+.video {
+  @include responsive-grid-span(6, 6, 12, 12);
+
+  align-self: center;
+
+  .side-by-side & {
+    @include responsive-grid-start(1, 1, 6, 6);
+    @include responsive-grid-span(6, 6, 7, 7);
+  }
+}

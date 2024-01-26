@@ -51,7 +51,7 @@ const meta: Meta<typeof Themes> = {
         <Button size="small" theme="outline">
           <button>Button outline</button>
         </Button>
-        <Tags>
+        <Tags contentVariation="quote">
           <a href="#">Tags</a>
         </Tags>
         <TextButton>

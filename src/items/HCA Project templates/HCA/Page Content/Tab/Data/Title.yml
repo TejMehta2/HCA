@@ -1,8 +1,15 @@
 ﻿---
-ID: "6d1499ad-8e5f-456f-a0d2-7ae0bb354ee8"
-Parent: "7dbc8a3b-d53e-4c02-8a2c-debabef8d2f3"
-Template: "a04c63d5-f960-4965-9ddd-0fd523502db5"
-Path: /sitecore/content/HCA/HCA Main/Settings/Custom Settings/CQC/CQC Logo Black
+ID: "dc9e5fc1-28b4-4d82-a705-57504942c664"
+Parent: "4e378eb9-1cca-4fa1-9da8-392ad6ef619a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Page Content/Tab/Data/Title
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
 Languages:
 - Language: en
   Versions:
@@ -10,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231113T092107Z
+      Value: 20240118T121718Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,15 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "aef03640-e05d-42c0-9df8-ef72dae5aaf4"
+      Value: "519fc9d9-380c-4601-a0a6-d04cf628a559"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240110T110428Z
-    - ID: "deaa091e-8c4e-4093-ad6a-f79f00b2521a"
-      Hint: Logo
-      Value: |
-        <image mediaid="{34EC2C9F-9142-4CF0-A933-DE0A10EEC6B3}" />
+      Value: 20240118T122553Z

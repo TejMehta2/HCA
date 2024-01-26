@@ -22,11 +22,15 @@ Languages:
         {CD58E2CC-A116-48E7-9CDA-56D62C48C80A}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4b55c39d-d1c3-4472-b718-ec51edfb15d8"
+      Value: "3459842c-f70a-49d1-bc69-960d09f7edd9"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240118T075557Z
+      Value: 20240123T084359Z

@@ -1,9 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import CardLocation from './CardLocation';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
-import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CardLocation> = {
@@ -19,148 +17,23 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CardLocation> = {
   args: {
-    image: (
-      <Image
-        src="/placeholders/location-card.jpg"
-        alt="a building"
-        width="358"
-        height="176"
-      />
+    theme: 'E-HCA-Dark-Grey',
+    amount: (
+      <Text tag="p" variation="display-1">
+        35
+      </Text>
     ),
     title: (
-      <Text tag="h3" variation="heading-1">
-        The Harley Street Clinic
+      <Text tag="p" variation="heading-2">
+        Locations across the UK
       </Text>
     ),
-    address: (
-      <Text tag="h3" variation="body-large">
-        35 Weymouth Street W1G 8BJ London
-      </Text>
+    cta: (
+      <a href="#">
+        <span>
+          View <strong>all</strong>
+        </span>
+      </a>
     ),
-    distance: (
-      <Text tag="h3" variation="body-semi-bold-small">
-        0.12 miles from your location
-      </Text>
-    ),
-    ctas: {
-      button1: (
-        <a href="#">
-          <span>
-            Learn <strong>more</strong>
-          </span>
-        </a>
-      ),
-      button2: (
-        <a href="#">
-          <span>
-            Get <strong>directions</strong>
-          </span>
-        </a>
-      ),
-    },
-  },
-};
-
-export const NoImage: StoryObj<typeof CardLocation> = {
-  args: {
-    title: (
-      <Text tag="h3" variation="heading-1">
-        The Harley Street Clinic
-      </Text>
-    ),
-    address: (
-      <Text tag="h3" variation="body-large">
-        35 Weymouth Street W1G 8BJ London
-      </Text>
-    ),
-    distance: (
-      <Text tag="p" variation="body-semi-bold-small">
-        0.12 miles from your location
-      </Text>
-    ),
-    ctas: {
-      button1: (
-        <a href="#">
-          <span>
-            Learn <strong>more</strong>
-          </span>
-        </a>
-      ),
-      button2: (
-        <a href="#">
-          <span>
-            Get <strong>directions</strong>
-          </span>
-        </a>
-      ),
-    },
-  },
-};
-
-export const NoDistance: StoryObj<typeof CardLocation> = {
-  args: {
-    title: (
-      <Text tag="h3" variation="heading-1">
-        The Harley Street Clinic
-      </Text>
-    ),
-    address: (
-      <Text tag="p" variation="body-large">
-        35 Weymouth Street W1G 8BJ London
-      </Text>
-    ),
-    ctas: {
-      button1: (
-        <a href="#">
-          <span>
-            Learn <strong>more</strong>
-          </span>
-        </a>
-      ),
-      button2: (
-        <a href="#">
-          <span>
-            Get <strong>directions</strong>
-          </span>
-        </a>
-      ),
-    },
-  },
-};
-
-export const OnMap: StoryObj<typeof CardLocation> = {
-  args: {
-    title: (
-      <Text tag="h3" variation="heading-2">
-        The Harley Street Clinic
-      </Text>
-    ),
-    address: (
-      <Text tag="p" variation="body-large">
-        35 Weymouth Street W1G 8BJ London
-      </Text>
-    ),
-    ctas: {
-      button1: (
-        <a href="#">
-          <span>
-            Learn <strong>more</strong>
-          </span>
-        </a>
-      ),
-      button2: (
-        <a href="#">
-          <span>
-            Get <strong>directions</strong>
-          </span>
-        </a>
-      ),
-      close: (
-        <button onClick={() => alert('close map popup')}>
-          <span>Close</span>
-          <Icons iconName="iconCross" />
-        </button>
-      ),
-    },
   },
 };
