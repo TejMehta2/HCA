@@ -1,16 +1,12 @@
 import React from 'react';
-import { 
-  Field,
-   LinkField,
-   RichText as JssRichText,
-    Text as JssText,
-     Item }
-      from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
-import Text from '@component-library/foundation/Text/Text';
 import {
-  ButtonProps,
-} from '@component-library/core-components/Button/Button.types';
+  Field,
+  LinkField,
+  Text as JssText,
+  Item,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Text from '@component-library/foundation/Text/Text';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 
 type CTAIconFields = {
   fields: {
@@ -22,7 +18,7 @@ type QuestionFields = Item & {
   fields?: {
     Question?: Field<string>;
     Answer?: Field<string>;
-  };  
+  };
 };
 
 interface Fields {
@@ -30,7 +26,7 @@ interface Fields {
   Title?: Field<string>;
   CTAIcon?: CTAIconFields;
   CTALink?: LinkField;
-  Questions:QuestionFields[];
+  Questions: QuestionFields[];
 }
 
 type FAQProps = {
@@ -48,18 +44,16 @@ const FAQBLockDefaultComponent = (props: FAQProps): JSX.Element => (
 );
 
 export const Default = (props: FAQProps): JSX.Element => {
-  if (!props.fields){
+  if (!props.fields) {
     return <FAQBLockDefaultComponent {...props} />;
   }
   return (
-  <div>
-     {
-          <Text tag={'h2'} variation={'display-5'}>
-            <JssText field={props.fields.Title} />
-          </Text>
-        }
-  </div>
-
-    );
-  };
-  
+    <div>
+      {
+        <Text tag={'h2'} variation={'display-5'}>
+          <JssText field={props.fields.Title} />
+        </Text>
+      }
+    </div>
+  );
+};
