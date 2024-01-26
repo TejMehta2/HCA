@@ -1,0 +1,23 @@
+﻿---
+ID: "2aca95bc-4519-422f-8226-c7c3a4847c82"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "a5221ed0-6c71-4122-9bea-5ca059579383"
+Path: /sitecore/content/HCA/HCA Main/Data/Logos Folder
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240126T115110Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "247b7c38-1326-4ef6-8d16-78c910eadf66"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240126T115110Z
