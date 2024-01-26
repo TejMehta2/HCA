@@ -5,10 +5,7 @@ import Themes from '../../foundation/Themes/Themes';
 
 const CardBlock = (props: CardBlockProps): JSX.Element => {
   const {
-    subtitle,
-    title,
-    copy,
-    ctas,
+    header,
     children,
     theme = 'A-HCA-Main-Turquoise',
     variation = '3-columns',
@@ -24,12 +21,7 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
             styles[gapSize],
           ].join(' ')}
         >
-          <div className={styles.header}>
-            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
-            <div className={styles.title}>{title}</div>
-            {copy && <div className={styles.copy}>{copy}</div>}
-            {ctas && <div className={styles.ctas}>{ctas}</div>}
-          </div>
+          <div className={styles.header}>{header}</div>
           {children}
         </div>
       </div>
