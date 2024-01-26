@@ -1,0 +1,44 @@
+﻿---
+ID: "03176101-5aff-4bc2-b638-cf1fbe4458c4"
+Parent: "7176e9ca-051f-4888-af99-5d27ed8b4cdf"
+Template: "a5ce15f7-7e35-4125-80fa-f4fceb78b293"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Fixed Price Package Image Right
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240125T205552Z
+    - ID: "3470f254-0d5b-47ed-a2dd-06762877c205"
+      Hint: Title
+      Value: £5,000
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "854987bd-7482-422c-ac78-8a46675149ca"
+      Hint: Image
+      Value: |
+        <image mediaid="{07155E60-85C9-40B1-A4DA-CFED874CA542}" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "938dd41d-1972-456a-a582-0fd01a33350e"
+    - ID: "9e4f4a5f-c7b3-44c7-ae0b-f3293e174d4a"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.&nbsp;
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240125T211034Z
+    - ID: "e047cb8d-86e6-4685-acf2-837384cae897"
+      Hint: Heading
+      Value: Cost information
