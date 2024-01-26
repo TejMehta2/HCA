@@ -3,16 +3,27 @@ import {
   Field,
   LinkField,
   ImageField,
-  Text,
-  Image,
-  Link,
+  Image as JssImage,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Icons from '@component-library/foundation/Icons/Icons';
+import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
+
+type logoField = {
+  Logo: ImageField;
+};
 
 type CQSStatusFields = {
   fields: {
     Title: Field<string>;
     Icon: Field<string>;
     Logo: ImageField;
+    CQCLogoLight: {
+      fields: logoField;
+    };
+    CQCLogoDark: {
+      fields: logoField;
+    };
   };
 };
 
@@ -38,24 +49,30 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   if (!props.fields) {
     return <CQCRatingDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <span>
-        <b>CQC</b>
-      </span>
-      <br />
-      <Link field={props.fields.ReportLink}></Link>
-      <br />
-      <span>
-        <b>CQC Status</b>
-      </span>
-      <br />
-      <Text field={props.fields.Status.fields.Title} />
-      <br />
-      <Text field={props.fields.Status.fields.Icon} />
-      <br />
-      <Image field={props.fields.Status.fields.Logo} />
-      <br />
+    <div className={`component ${props.params.styles}`} component-name="cqc">
+      <CQCBlock
+        link={<JssLink field={props.fields.ReportLink}></JssLink>}
+        rating="Outstanding"
+        icon={<Icons iconName="iconCheckCircle"></Icons>}
+        logo={{
+          dark: (
+            <JssImage
+              field={props.fields.Status.fields.CQCLogoLight.fields.Logo}
+              width="120"
+              height="37"
+            />
+          ),
+          light: (
+            <JssImage
+              field={props.fields.Status.fields.CQCLogoDark.fields.Logo}
+              width="120"
+              height="37"
+            />
+          ),
+        }}
+      ></CQCBlock>
     </div>
   );
 };

@@ -97,10 +97,12 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
 
-  const pageComponents =
-    props.layoutData.sitecore.route!.placeholders['headless-main'];
+  if (props.layoutData.sitecore.route) {
+    const pageComponents =
+      props.layoutData.sitecore.route!.placeholders['headless-main'];
 
-  await fetchDoctorCardData(pageComponents);
+    await fetchDoctorCardData(pageComponents);
+  }
 
   return {
     props: props,

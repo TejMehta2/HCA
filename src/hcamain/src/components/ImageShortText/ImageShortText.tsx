@@ -11,6 +11,7 @@ import {
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 interface Fields {
   Heading: Field<string>;
@@ -50,6 +51,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
+
   return (
     <>
       <ImageAndTextBlock
@@ -67,7 +69,11 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           </Text>
         }
         image={<JssImage field={props.fields.Image} />}
-        ctas={<Placeholder name={phKey} rendering={props.rendering} />}
+        ctas={
+          <PlaceHolderWrapper>
+            <Placeholder name={phKey} rendering={props.rendering} />
+          </PlaceHolderWrapper>
+        }
       >
         <Text tag="div" variation="body-large">
           <RichText field={props.fields.Text} />
