@@ -34,17 +34,6 @@
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 5);
   }
 
-  .panel1:only-child {
-    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 12);
-    max-width: px-to-rem(457);
-    margin: auto;
-
-    .cta {
-      gap: px-to-rem(24);
-      justify-items: center;
-    }
-  }
-
   .hr {
     @include responsive-grid-span(4, 2, 2, 2);
     @include responsive-grid-start(2, 3, 6);
@@ -90,6 +79,18 @@
     }
     @include media(screen-m) {
       justify-content: center;
+    }
+  }
+
+  .panel1:only-child {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 12);
+
+    max-width: px-to-rem(457);
+    margin: auto;
+
+    .cta {
+      gap: px-to-rem(24);
+      justify-items: center;
     }
   }
 }
