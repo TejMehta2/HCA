@@ -1,0 +1,27 @@
+﻿---
+ID: "4e6717a6-5527-490a-9b8b-d5978d1445ea"
+Parent: "f07fbcad-e04a-4c33-bc65-a186bb9472e1"
+Template: "f07fbcad-e04a-4c33-bc65-a186bb9472e1"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Fixed Price Package/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2c579ee5-7007-4d1c-b1f2-e619090581ff"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240125T202957Z

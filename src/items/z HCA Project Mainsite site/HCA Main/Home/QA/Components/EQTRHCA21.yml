@@ -1,0 +1,42 @@
+﻿---
+ID: "c702518c-0553-4180-a19d-8c3c3e071e5d"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA21
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{D8477165-04B9-434F-990E-858BBB534441}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240126T100312Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA21
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "18a9fdae-194e-412e-9a58-8670a4888c55"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240126T100312Z
+    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Hint: Title
+      Value: EQTRHCA21

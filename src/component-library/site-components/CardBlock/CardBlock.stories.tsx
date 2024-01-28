@@ -7,10 +7,11 @@ import Tags from '../../core-components/Tags/Tags';
 import CardPatientStories from '../../components/CardPatientStories/CardPatientStories';
 import Image from 'next/image';
 import CardDoctor from '../../site-components/CardDoctor/CardDoctor';
-import CardLocation from '../../components/CardLocation/CardLocation';
+import CardMap from '../../components/CardMap/CardMap';
 import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 import CardContent from '../../components/CardContent/CardContent';
+import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CardBlock> = {
@@ -21,57 +22,10 @@ const meta: Meta<typeof CardBlock> = {
     layout: 'fullscreen',
   },
   args: {
-    subtitle: (
-      <Text variation={'subheading-1'} tag="h2">
-        Meta title
-      </Text>
-    ),
-    copy: (
-      <Text variation={'body-large'} tag="p">
-        Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
-        mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
-        eiusmod ullamco eu esse laborum deserunt et officia reprehenderit.
-        Aliquip laboris duis ex labore veniam labore do nostrud minim labore
-        eiusmod voluptate sit commodo officia. Commodo tempor tempor magna
-        deserunt sunt dolore dolore.
-      </Text>
-    ),
-    ctas: (
-      <>
-        <Button size={'large'} theme={'full'}>
-          <a href="#">
-            Learn more about <strong>self-pay</strong>
-          </a>
-        </Button>
-        <TextButton>
-          <a href="#">
-            Access care with <strong>insurance</strong>
-          </a>
-        </TextButton>
-      </>
-    ),
     theme: 'J-HCA-Turquoise-10',
   },
   argTypes: {
-    title: {
-      control: false,
-      table: {
-        disable: true,
-      },
-    },
-    subtitle: {
-      control: false,
-      table: {
-        disable: true,
-      },
-    },
-    copy: {
-      control: false,
-      table: {
-        disable: true,
-      },
-    },
-    ctas: {
+    header: {
       control: false,
       table: {
         disable: true,
@@ -161,8 +115,8 @@ const CardDoctorExample = () => (
   />
 );
 
-const CardLocationExample = () => (
-  <CardLocation
+const CardMapExample = () => (
+  <CardMap
     image={
       <Image
         src="/placeholders/location-card.jpg"
@@ -240,10 +194,42 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const CardBlogBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Blog Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Blog Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <>
@@ -261,10 +247,42 @@ export const CardBlogBlock: StoryObj<typeof CardBlock> = {
 
 export const CardPatientStoriesBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Patient Stories Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Patient Stories Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <>
@@ -282,10 +300,42 @@ export const CardPatientStoriesBlock: StoryObj<typeof CardBlock> = {
 
 export const CardDoctorBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Consultant Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Consultant Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <>
@@ -305,10 +355,42 @@ export const CardDoctorBlock: StoryObj<typeof CardBlock> = {
 
 export const CardContentBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Location Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Location Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <>
@@ -324,21 +406,53 @@ export const CardContentBlock: StoryObj<typeof CardBlock> = {
   },
 };
 
-export const CardLocationBlock: StoryObj<typeof CardBlock> = {
+export const CardMapBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Location Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Location Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <>
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
-        <CardLocationExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
+        <CardMapExample />
       </>
     ),
     variation: '3-columns',
@@ -347,10 +461,42 @@ export const CardLocationBlock: StoryObj<typeof CardBlock> = {
 
 export const SideBySideBlock: StoryObj<typeof CardBlock> = {
   args: {
-    title: (
-      <Text variation={'display-2'} tag="h2">
-        Side-by-side Card Block
-      </Text>
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        body={
+          <Text variation={'body-large'}>
+            Quis laboris proident sint amet id cillum do dolor in tempor est.
+            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+            sunt lorem ut.
+          </Text>
+        }
+        ctas={
+          <>
+            <Button size={'small'} theme={'full'}>
+              <a href="#">
+                <span>
+                  Learn more about <strong>self-pay</strong>
+                </span>
+              </a>
+            </Button>
+            <TextButton>
+              <a href="#">
+                <span>
+                  Access care with <strong>insurance</strong>
+                </span>
+              </a>
+            </TextButton>
+          </>
+        }
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Side-by-side Card Block
+          </Text>
+        }
+      />
     ),
     children: (
       <CardContent

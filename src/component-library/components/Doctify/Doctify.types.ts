@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 export interface DoctifyProps {
-  reviews: string;
-  rating: number;
+  reviews: ReactNode | JSX.Element;
+  rating: string | number | JSX.Element;
   logo: {
     dark: ReactNode | JSX.Element;
     light: ReactNode | JSX.Element;
