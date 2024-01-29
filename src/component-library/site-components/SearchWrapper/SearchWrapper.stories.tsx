@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';
 import CardBlog from '../../components/CardBlog/CardBlog';
 import HeaderPlain from '../HeaderPlain/HeaderPlain';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -66,7 +67,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
         heading={
           <Text variation={'display-2'}>News & articles about healthcare </Text>
         }
-        search={<input type="text" />}
+        search={<SearchBar placeholder="" />}
         theme={'F-HCA-White'}
       >
         <Text variation="body-large">

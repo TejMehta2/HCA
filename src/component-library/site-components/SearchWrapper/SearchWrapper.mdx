@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as SearchWrapperStories from './SearchWrapper.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchWrapperStories from './SearchWrapper.stories';
 
 <Meta of={SearchWrapperStories} />
 
@@ -7,17 +7,52 @@ import * as SearchWrapperStories from './SearchWrapper.stories'
 
 ## Description
 
-The SearchWrapper component is...
+The SearchWrapper component is a layout component which consumes the `PlainHeader` and `PaginationGrid` components to to display a results page.
 
-It is intended to be used in...
+It is intended to be used for blog results or other searches which display results as cards.
 
 It can be composed like this:
 
-``` tsx
-<SearchWrapper></SearchWrapper>
+```tsx
+<SearchWrapper
+  header={
+    <HeaderPlain
+      subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
+      heading={
+        <Text variation={'display-2'}>News & articles about healthcare </Text>
+      }
+      search={<SearchBar />}
+      theme={'F-HCA-White'}
+    >
+      <Text variation="body-large">
+        Quis laboris proident sint amet id cillum do dolor in tempor est.
+        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+        dolore.
+      </Text>
+    </HeaderPlain>
+  }
+  searchDetail={
+    <Text tag="h2" variation="heading-1">
+      45 articles including ‘Cardiac care’
+    </Text>
+  }
+  showing={
+    <Text tag="p" variation="body-medium">
+      Showing 1-12
+    </Text>
+  }
+>
+  <PaginationGrid
+    theme="F-HCA-White"
+    data={getPageContent(1)}
+    pageCount={pageCount}
+    getPageContent={getPageContent}
+  />
+</SearchWrapper>
 ```
 
-## Example 
+## Example
 
 <Canvas of={SearchWrapperStories.Default} />
 <Controls of={SearchWrapperStories.Default} />
