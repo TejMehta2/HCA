@@ -7,6 +7,8 @@ jobs:
   enable-workflow:
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code
+      uses: actions/checkout@v2
     - run: gh workflow enable "Storybook Publisher"
       env:
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
