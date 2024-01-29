@@ -1,0 +1,29 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  background: var(--background);
+  padding: $spacing-12 0;
+}
+
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+
+  & > * {
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+
+  & time {
+    @include apply-body-medium;
+  }
+}
