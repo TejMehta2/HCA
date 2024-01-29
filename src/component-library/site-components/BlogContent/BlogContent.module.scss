@@ -19,6 +19,7 @@
 
   & > img {
     @include responsive-grid-span($breakpoint-l: 12);
+
     border-radius: $radius-medium;
     margin: $spacing-12 0;
   }
