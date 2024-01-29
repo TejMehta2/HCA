@@ -5,6 +5,9 @@ on:
       - dev
     paths:
       - 'src/component-library/**'
+concurrency:
+  group: chromatic
+  cancel-in-progress: true
 jobs:
   publish:
     runs-on: ubuntu-latest
