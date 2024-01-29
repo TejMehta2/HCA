@@ -6,6 +6,7 @@ import PaginationGrid from '../../components/PaginationGrid/PaginationGrid';
 import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';
 import CardBlog from '../../components/CardBlog/CardBlog';
+import HeaderPlain from '../HeaderPlain/HeaderPlain';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -59,21 +60,27 @@ const getPageContent = (page: number) => {
 
 export const Default: StoryObj<typeof SearchWrapper> = {
   args: {
-    subtitle: <Text variation={'subheading-1'}>Sub title</Text>,
-    title: <Text variation={'display-2'}>Advanced block</Text>,
-    body: (
-      <Text variation="body-large">
-        Quis laboris proident sint amet id cillum do dolor in tempor est.
-        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-        dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt
-        lorem ut.
-      </Text>
+    header: (
+      <HeaderPlain
+        subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
+        heading={
+          <Text variation={'display-2'}>News & articles about healthcare </Text>
+        }
+        search={<input type="text" />}
+        theme={'F-HCA-White'}
+      >
+        <Text variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore.
+        </Text>
+      </HeaderPlain>
     ),
-    search: <input type="text" />,
+
     searchDetail: (
       <Text tag="h2" variation="heading-1">
-        45 articles including ‘orthopaedics’
+        45 articles including ‘Cardiac care’
       </Text>
     ),
     showing: (

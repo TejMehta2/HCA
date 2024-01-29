@@ -4,31 +4,9 @@
 .wrapper {
 }
 
-.title {
-  margin-top: $spacing-3;
-}
-
-.body {
-  margin-top: px-to-rem(24);
-}
-
-.header-wrapper {
-  @include responsive-grid;
-  margin: $spacing-13 $spacing-11;
-}
-
-.header {
-  @include responsive-grid-span(6, 6, 6, 6);
-}
-
-.search {
-  @include responsive-grid-span(6, 6, 9, 9);
-
-  margin-top: $spacing-7;
-}
-
 .search-detail {
   display: grid;
   gap: px-to-rem(8);
+  margin: 0 $spacing-11 px-to-rem(65) $spacing-11;
   @include responsive-grid-span(6, 6, 6, 6);
 }

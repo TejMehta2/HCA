@@ -40,3 +40,9 @@
 
   @include apply-body-large;
 }
+
+.search {
+  grid-row-start: 4;
+  margin-top: $spacing-7;
+  @include responsive-grid-span(6, 6, 9, 9);
+}
