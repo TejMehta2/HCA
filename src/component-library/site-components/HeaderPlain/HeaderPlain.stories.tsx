@@ -13,19 +13,13 @@ const meta: Meta<typeof HeaderPlain> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  decorators: [
-    (Story) => (
-      <Themes theme={'A-HCA-Main-Turquoise'}>
-        <Story />
-      </Themes>
-    ),
-  ],
 };
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof HeaderPlain> = {
   args: {
+    theme: 'A-HCA-Main-Turquoise',
     subheading: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title

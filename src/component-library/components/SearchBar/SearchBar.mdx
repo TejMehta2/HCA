@@ -1,0 +1,26 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchBarStories from './SearchBar.stories';
+
+<Meta of={SearchBarStories} />
+
+# SearchBar
+
+## Description
+
+THIS COMPONENT IS STILL A WORK IN PROGRESS
+
+The SearchBar component is used in various places such as the blog search page or as a field on a form.
+
+It can be composed like this:
+
+```tsx
+<SearchBar
+  handleInputChange={onChangeFunction}
+  placeholder="search"
+></SearchBar>
+```
+
+## Example
+
+<Canvas of={SearchBarStories.Default} />
+<Controls of={SearchBarStories.Default} />
