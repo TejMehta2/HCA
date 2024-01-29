@@ -19,12 +19,12 @@ interface TabsFields {
     TabText: Field<string>;
     Title: Field<string>;
     Text: Field<string>;
+    Image: ImageFieldValue;
   };
 }
 
 interface Fields {
   Title: Field<string>;
-  Image: ImageFieldValue;
   Tabs: TabsFields[];
 }
 
