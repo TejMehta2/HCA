@@ -6,13 +6,15 @@
   gap: px-to-rem(8);
   @include responsive-grid-span(6, 6, 6, 6);
 
-  margin: 0 $spacing-4 px-to-rem(65) $spacing-4;
+  @include responsive-container;
+
+  padding: 0 0 px-to-rem(65) 0;
 
   @include media(screen-m) {
-    margin: 0 $spacing-10 px-to-rem(65) $spacing-10;
+    padding: 0 0 px-to-rem(65) 0;
   }
 
   @include media(screen-l) {
-    margin: 0 $spacing-11 px-to-rem(65) $spacing-11;
+    padding: 0 0 px-to-rem(65) 0;
   }
 }

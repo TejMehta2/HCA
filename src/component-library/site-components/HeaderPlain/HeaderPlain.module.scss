@@ -5,14 +5,16 @@
   color: var(--text);
   background: var(--background);
   border-radius: 0 0 $radius-large 0;
-  padding: $spacing-9 $spacing-4;
+  padding: $spacing-9 0;
+
+  @include responsive-container;
 
   @include media(screen-m) {
-    padding: $spacing-9 $spacing-10;
+    padding: $spacing-9 0;
   }
 
   @include media(screen-l) {
-    padding: $spacing-12 $spacing-11;
+    padding: $spacing-12 0;
   }
 
   @include responsive-grid;
