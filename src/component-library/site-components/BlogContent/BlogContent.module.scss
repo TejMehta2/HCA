@@ -1,0 +1,25 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background);
+  color: var(--text);
+  padding: $spacing-5 0 $spacing-12;
+}
+
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+
+  /* WIP WILL NEED TO BE ADJUSTED DURING SITECORE INTEGRATION */
+  & > p {
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+
+  & > img {
+    @include responsive-grid-span($breakpoint-l: 12);
+    border-radius: $radius-medium;
+    margin: $spacing-12 0;
+  }
+}
