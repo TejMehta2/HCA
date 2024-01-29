@@ -3,11 +3,10 @@ name: Enable workflow
 on:
   schedule:
     - cron:  '0 0 * * *'
-env:
-  GH_TOKEN: ${{ github.token }}
 jobs:
   enable-workflow:
     runs-on: ubuntu-latest
     steps:
-    - name: enable
-      run: gh workflow enable "Storybook Publisher"
+    - run: gh workflow enable "Storybook Publisher"
+      env:
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
