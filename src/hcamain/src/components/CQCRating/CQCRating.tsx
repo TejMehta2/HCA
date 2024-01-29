@@ -1,44 +1,15 @@
 import React from 'react';
 import {
-  Field,
-  LinkField,
-  ImageField,
   Image as JssImage,
   Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
-
-type logoField = {
-  Logo: ImageField;
-};
-
-type CQSStatusFields = {
-  fields: {
-    Title: Field<string>;
-    Icon: Field<string>;
-    Logo: ImageField;
-    CQCLogoLight: {
-      fields: logoField;
-    };
-    CQCLogoDark: {
-      fields: logoField;
-    };
-  };
-};
-
-interface Fields {
-  Status: CQSStatusFields;
-  ReportLink: LinkField;
-}
-
-type CQCRatingProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-};
+import { CQCBlockProps } from '@component-library/components/CQCBlock/CQCBlock.types';
+import { CQCRatingProps } from './CQCRating.types';
 
 const CQCRatingDefaultComponent = (props: CQCRatingProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CQC Rating no datasource</span>
     </div>
@@ -49,12 +20,17 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   if (!props.fields) {
     return <CQCRatingDefaultComponent {...props} />;
   }
-
+  const { hideRating = false, length = 'long' } = props;
+  const defaultRating = props.fields.Status
+    .displayName as CQCBlockProps['rating'];
   return (
-    <div className={`component ${props.params.styles}`} component-name="cqc">
+    <div className={`component ${props.params?.styles}`} component-name="cqc">
       <CQCBlock
-        link={<JssLink field={props.fields.ReportLink}></JssLink>}
-        rating="Outstanding"
+        title={props.fields.Title?.value}
+        text={props.fields.Text?.value}
+        link={<JssLink field={props.fields.ReportLink} />}
+        length={length}
+        rating={hideRating ? undefined : defaultRating}
         icon={<Icons iconName="iconCheckCircle"></Icons>}
         logo={{
           dark: (

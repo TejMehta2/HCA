@@ -1,40 +1,12 @@
 import React from 'react';
 import {
-  Field,
-  LinkField,
-  ImageField,
   Text as JssText,
   Image as JssImage,
   Link as JssLink,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Doctify from '@component-library/components/Doctify/Doctify';
-
-interface DoctifyLogoFields {
-  fields: {
-    Text: Field<string>;
-    Logo: ImageField;
-  };
-}
-
-interface DoctifyReviewsFields {
-  fields: {
-    Stars: Field<string>;
-    Reviews: Field<string>;
-    DoctifyLogoLight: DoctifyLogoFields;
-    DoctifyLogoDark: DoctifyLogoFields;
-    Link: LinkField;
-  };
-}
-
-interface Fields {
-  Reviews: DoctifyReviewsFields;
-}
-
-type DoctifyProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-};
+import { DoctifyProps } from './Doctify.types';
 
 const DoctifyDefaultComponent = (props: DoctifyProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
@@ -50,7 +22,6 @@ export const Default = (props: DoctifyProps): JSX.Element => {
   if (!props.fields) {
     return <DoctifyDefaultComponent {...props} />;
   }
-
   return (
     <div
       className={`component ${props.params.styles}`}
