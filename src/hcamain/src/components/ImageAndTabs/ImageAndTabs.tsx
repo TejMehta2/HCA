@@ -19,12 +19,12 @@ interface TabsFields {
     TabText: Field<string>;
     Title: Field<string>;
     Text: Field<string>;
+    Image: ImageFieldValue;
   };
 }
 
 interface Fields {
   Title: Field<string>;
-  Image: ImageFieldValue;
   Tabs: TabsFields[];
 }
 
@@ -51,8 +51,6 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
     <div className={`component ${props.params.styles}`}>
       <Text field={props.fields.Title} />
       <br />
-      <Image field={props.fields.Image} />
-      <br />
       <ul>
         {props.fields.Tabs.map((tab, index) => (
           <li key={index}>
@@ -69,6 +67,8 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
             <Text field={tab.fields.Title} />
             <br />
             <RichText tag="span" field={tab.fields.Text} />
+            <br />
+            <Image field={tab.fields.Image} />
             <br />
           </li>
         ))}

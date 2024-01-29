@@ -3,8 +3,10 @@ import {
   Field,
   Text as JssText,
   RichText,
+  Image,
   ComponentRendering,
   Placeholder,
+  ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
@@ -18,6 +20,7 @@ interface Fields {
   TabText: Field<string>;
   Title: Field<string>;
   Text: Field<string>;
+  Image: ImageFieldValue;
 }
 
 type TabProps = {
@@ -52,6 +55,8 @@ export const Default = (props: TabProps): JSX.Element => {
       <JssText field={props.fields.TabText} />
       <br />
       <JssText field={props.fields.Title} />
+      <br />
+      <Image field={props.fields.Image} />
       <br />
       <RichText tag="span" field={props.fields.Text} />
       <br />
