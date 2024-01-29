@@ -1,15 +1,15 @@
 ﻿---
-ID: "6a6f74eb-df07-48f5-b913-377b1a80b99a"
-Parent: "09cf26c7-7b36-478c-9f5e-29a806833a2e"
+ID: "726261ae-5637-4c85-9743-eeffd98f70e4"
+Parent: "4e378eb9-1cca-4fa1-9da8-392ad6ef619a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Image And Tabs/Data/Image
+Path: /sitecore/templates/Project/HCA/Page Content/Tab/Data/Image
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Image
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 500
 Languages:
 - Language: en
   Versions:
@@ -17,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240122T120207Z
+      Value: 20240129T094826Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f58d67b6-688d-4019-a45b-e62ebb2d2883"
+      Value: "d1d8bbf6-9f1d-4aa0-bbed-59760e588b5d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240122T122744Z
+      Value: 20240129T094826Z

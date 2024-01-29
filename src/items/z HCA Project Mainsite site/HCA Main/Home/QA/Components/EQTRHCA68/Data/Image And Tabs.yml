@@ -17,10 +17,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240122T121556Z
-    - ID: "6a6f74eb-df07-48f5-b913-377b1a80b99a"
-      Hint: Image
-      Value: |
-        <image mediaid="{DDFC3EFF-770D-47BE-B0ED-B0C9F63CBF4E}" />
     - ID: "6fa75cd1-e82b-41ac-b69b-5bddfbed5e55"
       Hint: Title
       Value: Our appointments & memberships
