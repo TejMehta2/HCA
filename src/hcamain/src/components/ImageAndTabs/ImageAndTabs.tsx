@@ -1,78 +1,102 @@
 import React from 'react';
 import {
   Field,
-  Text,
-  RichText,
-  Image,
+  Item,
+  Text as JssText,
+  RichText as JssRichText,
+  Image as JssImage,
   ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import TabsBlock from '@component-library/site-components/TabsBlock/TabsBlock';
+import Text from '@component-library/foundation/Text/Text';
+import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
+  fields?: {
+    SvgMarkup?: Field<string>;
   };
 };
 
-interface TabsFields {
-  fields: {
-    TabIcon: HCAIconFields;
-    TabText: Field<string>;
-    Title: Field<string>;
-    Text: Field<string>;
-    Image: ImageFieldValue;
+type TabsFields = Item & {
+  fields?: {
+    TabIcon?: HCAIconFields;
+    TabTitle?: Field<string>;
+    Text?: Field<string>;
+    Title?: Field<string>;
+    Image?: ImageFieldValue;
   };
-}
+};
 
 interface Fields {
-  Title: Field<string>;
-  Tabs: TabsFields[];
+  Title?: Field<string>;
+  Tabs?: TabsFields[];
 }
 
 type ImageAndTabsProps = {
-  params: { [key: string]: string };
-  fields: Fields;
+  params: {
+    Theme?: Theme;
+    HeadingTag?: HeadingTag;
+    HeadingSize?: HeadingSize;
+    styles?: string;
+  };
+  fields?: Fields;
 };
 
 const ImageAndTabsDefaultComponent = (
   props: ImageAndTabsProps
-): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Tab no datasource</span>
+): JSX.Element => {
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">Tab no datasource</span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: ImageAndTabsProps): JSX.Element => {
   if (!props.fields) {
     return <ImageAndTabsDefaultComponent {...props} />;
   }
+  console.log(props);
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Title} />
-      <br />
-      <ul>
-        {props.fields.Tabs.map((tab, index) => (
-          <li key={index}>
-            {tab?.fields?.TabIcon && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: tab?.fields?.TabIcon.fields.SvgMarkup.value,
-                }}
-              />
-            )}
-            <br />
-            <Text field={tab.fields.TabText} />
-            <br />
-            <Text field={tab.fields.Title} />
-            <br />
-            <RichText tag="span" field={tab.fields.Text} />
-            <br />
-            <Image field={tab.fields.Image} />
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <TabsBlock
+      theme={props.params?.Theme}
+      title={
+        <Text
+          tag={props.params.HeadingTag}
+          variation={props.params.HeadingSize}
+        >
+          <JssText field={props.fields.Title} />
+        </Text>
+      }
+      tabsContent={props.fields.Tabs?.map((tab) => ({
+        tab: {
+          icon: (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: tab.fields.TabIcon?.fields?.SvgMarkup?.value || '',
+              }}
+            />
+          ),
+          label: tab.fields.TabTitle?.value,
+        },
+        image: <JssImage field={tab.fields?.Image} />,
+        title: (
+          <Text
+            tag={getSubheadingTag(props.params.HeadingTag, 'p')}
+            variation="display-5"
+          >
+            <JssText field={tab.fields.Title} />
+          </Text>
+        ),
+        bodyCopy: (
+          <Text tag="div" variation="body-large">
+            <JssRichText tag="p" field={tab.fields.Text} />
+          </Text>
+        ),
+      }))}
+    />
   );
 };
