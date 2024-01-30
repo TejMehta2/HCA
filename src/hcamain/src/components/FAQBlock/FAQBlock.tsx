@@ -12,7 +12,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import { Accordions } from '@component-library/components/Accordions/Accordions.types';
-import AccordionsBlockSideBySide from 'temp/component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
+import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 
 type CTAIconFields = {
   fields: {
