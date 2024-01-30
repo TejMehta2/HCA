@@ -27,14 +27,18 @@ const ModalAppointment = (
               <div className={styles.copy}>{copy1}</div>
               <div className={styles.cta}>{cta1}</div>
             </div>
-            <div className={styles.hr}>
-              <hr />
-            </div>
-            <div className={styles.panel2}>
-              <div className={styles.title}>{title2}</div>
-              <div className={styles.copy}>{copy2}</div>
-              <div className={styles.cta}>{cta2}</div>
-            </div>
+            {(title2 || cta2 || copy2) && (
+              <>
+                <div className={styles.hr}>
+                  <hr />
+                </div>
+                <div className={styles.panel2}>
+                  {title2 && <div className={styles.title}>{title2}</div>}
+                  {copy2 && <div className={styles.copy}>{copy2}</div>}
+                  {cta2 && <div className={styles.cta}>{cta2}</div>}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </Modals>

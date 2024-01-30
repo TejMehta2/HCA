@@ -1,15 +1,13 @@
 name: Storybook Publisher
-
 on:
   push:
     branches:
       - dev
     paths:
       - 'src/component-library/**'
-      
-env:
-  GH_TOKEN: ${{ github.token }}
-
+concurrency:
+  group: chromatic
+  cancel-in-progress: true
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -18,7 +16,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
 
       - name: Use Node.js
         uses: actions/setup-node@v2
@@ -36,3 +33,6 @@ jobs:
 
       - name: Disable workflow
         run: gh workflow disable "Storybook Publisher"
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+

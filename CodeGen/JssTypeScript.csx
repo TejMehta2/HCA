@@ -53,7 +53,7 @@ public string RenderImportStatements()
     var foundModules = new System.Collections.Generic.HashSet<string>();
 
     localCode.AppendLine($@"// @ts-ignore ");
-    localCode.AppendLine($@"import {{ Field, ImageField, FileField, LinkField, Item }} from '@sitecore-jss/sitecore-jss-nextjs';");
+    localCode.AppendLine($@"import {{ Field, ImageField, LinkField, Item }} from '@sitecore-jss/sitecore-jss-nextjs';");
 
     foreach (var template in GetBaseTemplates(Templates))
     {
@@ -61,11 +61,6 @@ public string RenderImportStatements()
         if (!foundModules.Contains(shortNameSpaceRoot))
         {
             foundModules.Add(shortNameSpaceRoot);
-            var split = template.RootNamespace.Split('.');
-            var layer = split[0];
-            var module = split[1];
-            localCode.AppendLine($@"// @ts-ignore ");
-            localCode.AppendLine($@"import {{ {shortNameSpaceRoot} as {GetNameSpaceAlias(template)} }} from ""./{layer}.{module}.model""");
         }
     }
 
@@ -253,13 +248,8 @@ public string GetFieldType(TemplateFieldCodeGenerationMetadata field)
 
 public string GetNameSpaceAlias(TemplateCodeGenerationMetadata template)
 {
-    var split = template.RootNamespace.Split('.');
-    var layer = split[0];
-    var module = split[1];
-
     var currNamespace = GetShortNameSpaceRoot(template);
-
-    return $@"{layer}{module}{currNamespace}";
+    return $@"{currNamespace}";
 }
 
 public string GetShortNameSpaceRoot(TemplateCodeGenerationMetadata template)

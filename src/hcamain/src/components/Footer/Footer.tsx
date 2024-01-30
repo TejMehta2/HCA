@@ -1,135 +1,69 @@
-import {
-  Text,
-  RichText,
-  Field,
-  withDatasourceCheck,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import { ComponentProps } from 'lib/component-props';
+import React from 'react';
+import { Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
+import Footer from '@component-library/site-components/Footer/Footer';
+import { FooterProps, Profile } from './Footer.types';
+import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
 
-type ContentBlockProps = ComponentProps & {
-  fields: {
-    heading: Field<string>;
-    content: Field<string>;
-  };
-};
+import { Default as Doctify } from '../Doctify/Doctify';
+import { Default as CQCRating } from '../CQCRating/CQCRating';
 
-const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => (
-  <div className="contentBlock">
-    <Text tag="h2" className="contentTitle" field={fields.heading} />
-
-    <RichText className="contentDescription" field={fields.content} />
+const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
+  <div className={`component ${props.params.styles}`}>
+    <div className="component-content">
+      <span className="is-empty-hint">Empty Footer</span>
+    </div>
   </div>
 );
 
-export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
-
-// import React from 'react';
-// import {
-//   Image as JssImage,
-//   RichText as JssRichText,
-//   ImageField,
-//   Field,
-//   LinkField,
-//   Link as JssLink,
-//   Text as JssText,
-//   Placeholder,
-//   ComponentRendering,
-// } from '@sitecore-jss/sitecore-jss-nextjs';
-// import Footer from '@component-library/components/Footer/Footer';
-// import Icons from '@component-library/foundation/Icons/Icons';
-// import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
-// import {
-//   Foundation,
-//   Navigation,
-// } from '.GeneratedTypeScriptModel/Project.HCA.model';
-
-// type FooterProps = Navigation.Footer & {
-//   params: { [key: string]: string };
-//   rendering: ComponentRendering & { params: { [key: string]: string } };
-// };
-
-// const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
-//   <div className={`component ${props.params.styles}`}>
-//     <div className="component-content">
-//       <span className="is-empty-hint">Empty Footer</span>
-//     </div>
-//   </div>
-// );
-
-// export const Default = (props: FooterProps): JSX.Element => {
-//   const id = props.params.RenderingIdentifier;
-//   const bottomLineLinks: Navigation.NavigationLinksList = props.fields
-//     ?.BottomLineLinksFolder as Navigation.NavigationLinksList;
-
-//   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
-
-//   const cqc = props.fields?.CqcStatus as Foundation.Cqc.Cqc;
-//   const reviews = [
-//     {
-//       reviews: [
-//         <CQCBlock
-//           link={<a href="#">CQCBlock</a>}
-//           key="1"
-//           title={cqc.fields?.Title?.value}
-//           text={cqc.fields?.Text?.value}
-//           icon={<Icons iconName="{iconCheckCircle}"></Icons>}
-//           logo={{
-//             dark: (
-//               <JssImage
-//                 src="/cqc-white.png"
-//                 alt="cqc logo"
-//                 width="120"
-//                 height="37"
-//               />
-//             ),
-//             light: (
-//               <JssImage
-//                 src="/cqc-color.png"
-//                 alt="cqc logo"
-//                 width="120"
-//                 height="37"
-//               />
-//             ),
-//           }}
-//         />,
-//       ],
-//     },
-//   ];
-
-//   if (props.fields) {
-//     return (
-//       <div
-//         className={`component promo ${props.params.styles}`}
-//         id={id ? id : undefined}
-//       >
-//         <Placeholder name={phKey} rendering={props.rendering} />
-//         <Footer
-//           buttons={[]}
-//           legals={(bottomLineLinks.fields?.Links || []).map((_item, _index) => {
-//             const link = _item as Navigation.NavigationLink;
-//             return <JssLink field={link.fields?.Link} key={_index}></JssLink>;
-//           })}
-//           columns={(props.fields?.NavigationColumnsFolders || []).map(
-//             (_item, _index) => {
-//               const linksColumn = _item as Navigation.NavigationLinksList;
-//               console.log(_index, linksColumn.fields?.Title);
-//               return {
-//                 title: <JssText field={linksColumn.fields?.Title}></JssText>,
-//                 links: (linksColumn.fields?.Links || []).map(
-//                   (_item, _index) => (
-//                     <JssLink
-//                       field={(_item as Navigation.NavigationLink).fields?.Link}
-//                       key={_index}
-//                     ></JssLink>
-//                   )
-//                 ),
-//               };
-//             }
-//           )}
-//         />
-//       </div>
-//     );
-//   }
-
-//   return <FooterDefaultComponent {...props} />;
-// };
+export const Default = (props: FooterProps): JSX.Element => {
+  if (!props.fields) {
+    return <FooterDefaultComponent {...props} />;
+  }
+  // Map children using utilities
+  const socials = props.fields.SocialMediaProfilesGroup?.fields?.Profiles?.map(
+    (profile: Profile, index: number) => (
+      <SocialMediaCta key={index} {...profile} />
+    )
+  );
+  const columns =
+    props.fields?.NavigationColumnsFolders?.map(columnMapper(socials)) || [];
+  const reviewColumn = {
+    reviews: [
+      props.fields?.CqcStatus?.fields ? (
+        <CQCRating
+          key={1}
+          length="short"
+          hideRating={true}
+          {...props.fields.CqcStatus}
+        />
+      ) : (
+        <></>
+      ),
+      props.fields.DoctifyReviews?.fields ? (
+        <Doctify
+          params={props.params}
+          key={2}
+          fields={{ Reviews: props.fields.DoctifyReviews }}
+        />
+      ) : (
+        <></>
+      ),
+    ],
+  };
+  const legals = props.fields?.BottomLineLinksFolder?.fields?.Links?.reduce(
+    linkReducer,
+    []
+  );
+  return (
+    <Footer
+      buttons={
+        <Placeholder
+          name={`cta-buttons-${props.params.DynamicPlaceholderId}`}
+          rendering={props.rendering}
+        />
+      }
+      columns={[...columns, reviewColumn]}
+      legals={legals}
+    />
+  );
+};

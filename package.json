@@ -6,6 +6,7 @@
     "src/microsite"
   ],
   "scripts": {
+    "install-dotnetsdk": "build/dotnet-install.sh --runtime dotnet --version 6.0.0",
     "component-library:storybook": "npm run storybook -w src/component-library",
     "component-library:storybook:publish": "npm run chromatic -w src/component-library",
     "component-library:scaffold": "npm run scaffold -w src/component-library",
@@ -14,7 +15,7 @@
     "hcamain:start": "npm run start:connected -w src/hcamain",
     "hcamain:start:production": "npm run start:production -w src/hcamain",
     "hcamain:build": "npm run build -w src/hcamain",
-    "hcamain:leprechaun": "dotnet leprechaun /c HCALeprechaun.config",
+    "hcamain:leprechaun": "dotnet tool restore && dotnet leprechaun /c HCALeprechaun.config",
     "hcamain:next:start": "npm run next:start -w src/hcamain",
     "hcamain:type-check": "npm run bootstrap -w src/hcamain && npm run type-check -w src/hcamain",
     "hcamain:copy": "npm run copy -w src/component-library hcamain/src/temp",
@@ -22,7 +23,7 @@
     "microsite:start": "npm run start:connected -w src/microsite",
     "microsite:start:production": "npm run start:production -w src/microsite",
     "microsite:build": "npm run build -w src/microsite",
-    "microsite:leprechaun": "dotnet leprechaun /c PSGLeprechaun.config",
+    "microsite:leprechaun": "dotnet tool restore && dotnet leprechaun /c PSGLeprechaun.config",
     "microsite:next:start": "npm run next:start -w src/microsite",
     "lint": "npm run lint:ts && npm run lint:scss && npm run hcamain:type-check && npm run component-library:type-check",
     "lint:ts": "eslint src/**/*.*{tsx,ts}",

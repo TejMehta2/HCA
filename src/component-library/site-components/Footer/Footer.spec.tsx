@@ -9,32 +9,34 @@ import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Image from 'next/image';
 
 const mockProps: FooterProps = {
-  buttons: [
-    <a href="#">
-      <Icons iconName="iconMobile" />
-      <span>
-        App <strong>download</strong>
-      </span>
-    </a>,
-    <a href="#">
-      <Icons iconName="iconRedo" />
-      <span>
-        Get a <strong>second opinion</strong>
-      </span>
-    </a>,
-    <a href="#">
-      <Icons iconName="iconStethoscope" />
-      <span>
-        Find a <strong>doctor</strong>
-      </span>
-    </a>,
-    <a href="#">
-      <Icons iconName="iconCreditCard" />
-      <span>
-        Pay my <strong>bill</strong>
-      </span>
-    </a>,
-  ],
+  buttons: (
+    <>
+      <a href="#">
+        <Icons iconName="iconMobile" />
+        <span>
+          App <strong>download</strong>
+        </span>
+      </a>
+      <a href="#">
+        <Icons iconName="iconRedo" />
+        <span>
+          Get a <strong>second opinion</strong>
+        </span>
+      </a>
+      <a href="#">
+        <Icons iconName="iconStethoscope" />
+        <span>
+          Find a <strong>doctor</strong>
+        </span>
+      </a>
+      <a href="#">
+        <Icons iconName="iconCreditCard" />
+        <span>
+          Pay my <strong>bill</strong>
+        </span>
+      </a>
+    </>
+  ),
   columns: [
     {
       title: 'About HCA',

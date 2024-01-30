@@ -1,0 +1,12 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.search-detail {
+  display: grid;
+  gap: px-to-rem(8);
+  @include responsive-grid-span(6, 6, 6, 6);
+
+  @include responsive-container;
+
+  padding: 0 0 px-to-rem(65) 0;
+}

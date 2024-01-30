@@ -3,7 +3,6 @@ import { FooterProps } from './Footer.types';
 import styles from './Footer.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import TextLink from '../../core-components/TextLink/TextLink';
-import Button from '../../core-components/Button/Button';
 import Logo from '../../foundation/BrandAssets/Logo white.svg';
 import LogoMark from '../../foundation/BrandAssets/Logo mark white.svg';
 
@@ -15,26 +14,13 @@ const Footer = (props: FooterProps): JSX.Element => {
     <Themes theme={'E-HCA-Dark-Grey'}>
       <footer className={styles.footer}>
         <div className={styles.inner}>
-          <ul className={styles['top-row']}>
-            <li
-              className={[
-                styles.logo,
-                styles[`with-${Math.min(buttons.length, 5)}-buttons`],
-              ].join(' ')}
-            >
-              <a href="/">
-                <span className="sr-only">Home</span>
-                <LogoIcon />
-              </a>
-            </li>
-            {buttons.map((button, index) => (
-              <li key={index} className={styles.button}>
-                <Button size={'small'} theme={'outline'}>
-                  {button}
-                </Button>
-              </li>
-            ))}
-          </ul>
+          <div className={styles['top-row']}>
+            <a className={styles.logo} href="/">
+              <span className="sr-only">Home</span>
+              <LogoIcon />
+            </a>
+            {buttons}
+          </div>
           <hr className={styles.hr} />
           <div className={styles.columns}>
             {columns.map((column, index) => (
@@ -66,23 +52,25 @@ const Footer = (props: FooterProps): JSX.Element => {
               </div>
             ))}
           </div>
-          <div className={styles['bottom-row']}>
-            <div className={styles.icon}>
-              <LogoMarkIcon />
+          {legals && (
+            <div className={styles['bottom-row']}>
+              <div className={styles.icon}>
+                <LogoMarkIcon />
+              </div>
+              <ul className={styles.legals}>
+                {legals.map((legal, index) => (
+                  <>
+                    {index > 0 && (
+                      <li aria-hidden={true} className={styles.point}></li>
+                    )}
+                    <li key={index}>
+                      <TextLink>{legal}</TextLink>
+                    </li>
+                  </>
+                ))}
+              </ul>
             </div>
-            <ul className={styles.legals}>
-              {legals.map((legal, index) => (
-                <>
-                  {index > 0 && (
-                    <li aria-hidden={true} className={styles.point}></li>
-                  )}
-                  <li key={index}>
-                    <TextLink>{legal}</TextLink>
-                  </li>
-                </>
-              ))}
-            </ul>
-          </div>
+          )}
         </div>
       </footer>
     </Themes>

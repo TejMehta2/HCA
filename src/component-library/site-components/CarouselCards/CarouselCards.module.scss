@@ -38,8 +38,18 @@
 }
 
 .slick-wrapper {
+  & div[class*='slick-track'] {
+    display: flex;
+  }
+
   & div[class*='slick-slide'] {
     padding-right: $spacing-4;
+    height: inherit;
+
+    /* Empty div is automatically appended around each Card by react-slick. Need to set to full height so that cards are all equal */
+    & > div {
+      height: 100%;
+    }
   }
 
   /* quirk of react-slick. Need to set negative of card spacing in parent */
