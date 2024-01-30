@@ -6,6 +6,7 @@ import {
   Text as JssText,
   Item,
   RichText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import AccordionsBlock from '@component-library/site-components/AccordionsBlock/AccordionsBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -70,6 +71,8 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => (
 );
 
 export const Default = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <FAQBlockDefaultComponent {...props} />;
   }
@@ -105,29 +108,35 @@ export const Default = (props: FAQProps): JSX.Element => {
       ctas={
         props.fields?.CTALink && (
           <Button theme="full" size="large">
-            <JssLink field={props.fields?.CTALink}>
-              {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
+            {isExperienceEditor ? (
+              <JssLink field={props.fields.CTALink}></JssLink>
+            ) : (
+              <JssLink field={props.fields?.CTALink}>
+                {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
+                    }}
+                  ></span>
+                )}
+                <RichText
+                  tag="span"
+                  field={{
+                    value: props.fields?.CTALink.value.text,
                   }}
-                ></span>
-              )}
-              <RichText
-                tag="span"
-                field={{
-                  value: props.fields?.CTALink.value.text,
-                }}
-              />
-            </JssLink>
+                />
+              </JssLink>
+            )}
           </Button>
         )
       }
-    ></AccordionsBlock>
+    />
   );
 };
 
 export const RightAligned = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <FAQBlockDefaultComponent {...props} />;
   }
@@ -154,26 +163,30 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
       }
       accordions={accordions}
       ctas={
-        props.fields?.CTALink?.value.text ? (
+        props.fields?.CTALink?.value.text && (
           <Button theme="full" size="large">
-            <JssLink field={props.fields?.CTALink}>
-              {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
+            {isExperienceEditor ? (
+              <JssLink field={props.fields.CTALink}></JssLink>
+            ) : (
+              <JssLink field={props.fields?.CTALink}>
+                {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
+                    }}
+                  ></span>
+                )}
+                <RichText
+                  tag="span"
+                  field={{
+                    value: props.fields?.CTALink.value.text,
                   }}
-                ></span>
-              )}
-              <RichText
-                tag="span"
-                field={{
-                  value: props.fields?.CTALink.value.text,
-                }}
-              />
-            </JssLink>
+                />
+              </JssLink>
+            )}
           </Button>
-        ) : undefined
+        )
       }
-    ></AccordionsBlockSideBySide>
+    />
   );
 };
