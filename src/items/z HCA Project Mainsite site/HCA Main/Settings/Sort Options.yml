@@ -1,0 +1,23 @@
+﻿---
+ID: "774bb445-d793-4e8f-be34-81989dd8bd2d"
+Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
+Template: "78b8d602-be19-4189-981d-66b67529c278"
+Path: /sitecore/content/HCA/HCA Main/Settings/Sort Options
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240128T214849Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f3cd8a65-cb88-4e11-805c-ad6caf94f22b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240128T214849Z

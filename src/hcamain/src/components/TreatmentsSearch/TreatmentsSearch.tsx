@@ -6,6 +6,7 @@ import {
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useI18n } from 'next-localization';
 
 type HCAIconFields = {
   fields: {
@@ -36,6 +37,7 @@ const TreatmentsSearchDefaultComponent = (props: TreatmentsSearchProps): JSX.Ele
 
 export const Default = (props: TreatmentsSearchProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const { t } = useI18n();
   if (!props.fields) {
     return <TreatmentsSearchDefaultComponent {...props} />;
   }
@@ -55,6 +57,10 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props.fields.Text} />
       <br />
+      <p>Text: {t('Close')}</p>
+      <p>Text: {t('ShowMore')}</p>
+      <p>Text: {t('Showing')}</p>
+      <p>Text: {t('ClearAll')}</p>
       <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );

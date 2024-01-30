@@ -4,6 +4,9 @@ Parent: "02d9b284-5a87-4c9f-ae58-3d76d04c9e59"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Project/HCA/Foundation/Search/Filter Group/Filter Group/Filters
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{38C99F19-63E6-41D4-90B9-EA99083FE7CA}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Multilist
@@ -28,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "794947ea-5196-4e51-bea6-1a60328e8332"
+      Value: "48b8d15d-b00c-4630-9d0b-b6667a1659b9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240124T213214Z
+      Value: 20240130T065344Z

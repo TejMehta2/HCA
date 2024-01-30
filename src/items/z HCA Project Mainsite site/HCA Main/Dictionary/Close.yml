@@ -3,6 +3,10 @@ ID: "df75011c-59b8-4429-88b5-2650814d4b39"
 Parent: "4ca68be3-17da-488a-8b66-58aa0c80d4ae"
 Template: "6d1cd897-1936-4a3a-a511-289a94c2a7b1"
 Path: /sitecore/content/HCA/HCA Main/Dictionary/Close
+SharedFields:
+- ID: "580c75a8-c01a-4580-83cb-987776ceb3af"
+  Hint: Key
+  Value: Close
 Languages:
 - Language: en
   Fields:
@@ -25,11 +29,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f45dd2b4-d583-4b85-a130-c7c562752f94"
+      Value: "fef8321f-9837-401c-ac46-bf2ee7b95d8c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240125T123421Z
+      Value: 20240130T052304Z

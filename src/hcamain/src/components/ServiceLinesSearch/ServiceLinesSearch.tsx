@@ -6,6 +6,7 @@ import {
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useI18n } from 'next-localization';
 
 type HCAIconFields = {
   fields: {
@@ -13,11 +14,32 @@ type HCAIconFields = {
   };
 };
 
+type FilterOptionsFields = {
+  fields: {
+    Header: Field<string>;
+    Filters: Field<string>;
+  };
+};
+
+type SortOptionsFields = {
+  fields: {
+    Filter: Field<string>;
+  };
+};
+
 interface Fields {
-  TabIcon: HCAIconFields;
-  TabText: Field<string>;
+  Heading: Field<string>;
   Title: Field<string>;
   Text: Field<string>;
+  SearchPlaceholder: Field<string>;
+  FilterOptionsIcon: HCAIconFields;
+  FilterOptionsText: Field<string>;
+  FilterOptions: FilterOptionsFields[];
+  SortOptionsIcon: HCAIconFields;
+  SortOptionsText: Field<string>;
+  SortOptions: SortOptionsFields[];
+  SearchResultsText: Field<string>;
+  ResultsPerPage: Field<string>;
 }
 
 type TabProps = {
@@ -36,6 +58,7 @@ const TabDefaultComponent = (props: TabProps): JSX.Element => (
 
 export const Default = (props: TabProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const { t } = useI18n();
   if (!props.fields) {
     return <TabDefaultComponent {...props} />;
   }
@@ -55,6 +78,10 @@ export const Default = (props: TabProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props.fields.Text} />
       <br />
+      <p>Text: {t('Close')}</p>
+      <p>Text: {t('ShowMore')}</p>
+      <p>Text: {t('Showing')}</p>
+      <p>Text: {t('ClearAll')}</p>
       <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
