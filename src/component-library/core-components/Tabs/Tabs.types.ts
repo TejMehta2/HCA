@@ -1,8 +1,8 @@
 import { IconName } from '../../foundation/Icons/icon-map.generated';
 
 export interface Tab {
-  label: string;
-  icon?: IconName;
+  label?: string;
+  icon?: IconName | JSX.Element;
   ariaControls?: 'string'; // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
 }
 

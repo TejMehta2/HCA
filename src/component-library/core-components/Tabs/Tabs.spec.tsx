@@ -3,7 +3,7 @@ import { render, act } from '@testing-library/react';
 import Tabs from './Tabs';
 import { TabsProps } from './Tabs.types';
 
-const mockProps: TabsProps = {
+const mockProps = {
   callback: (name: string) => console.log(name),
   tabs: [
     { icon: 'iconOneOff', label: 'One-off' },
@@ -14,7 +14,7 @@ const mockProps: TabsProps = {
 
 describe('Tabs', () => {
   it('Renders the tabs', async () => {
-    const { getByText } = render(<Tabs {...mockProps} />);
+    const { getByText } = render(<Tabs {...(mockProps as TabsProps)} />);
     expect(getByText(mockProps.tabs[0].label)).toBeVisible();
     expect(getByText(mockProps.tabs[1].label)).toBeVisible();
     expect(getByText(mockProps.tabs[2].label)).toBeVisible();
@@ -24,7 +24,9 @@ describe('Tabs', () => {
     const callback = (label: string) => {
       tab = label;
     };
-    const { getByText } = render(<Tabs {...mockProps} callback={callback} />);
+    const { getByText } = render(
+      <Tabs {...(mockProps as TabsProps)} callback={callback} />
+    );
 
     await act(async () => {
       await getByText(mockProps.tabs[1].label).click(); // Click the second item
@@ -43,7 +45,9 @@ describe('Tabs', () => {
     const callback = (label: string) => {
       tab = label;
     };
-    const { getByText } = render(<Tabs {...mockProps} callback={callback} />);
+    const { getByText } = render(
+      <Tabs {...(mockProps as TabsProps)} callback={callback} />
+    );
     await act(async () => {
       await getByText(mockProps.tabs[0].label).click();
     });

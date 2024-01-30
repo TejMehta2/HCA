@@ -9,7 +9,7 @@ export interface TabsContent {
 }
 
 export interface TabsBlockProps {
-  theme: Theme;
-  title: JSX.Element;
-  tabsContent: TabsContent[];
+  theme?: Theme;
+  title?: JSX.Element;
+  tabsContent?: TabsContent[];
 }

@@ -74,6 +74,10 @@
     :focus + & {
       outline-color: var(--tab-text);
     }
+
+    > span {
+      display: flex;
+    }
   }
 
   input {

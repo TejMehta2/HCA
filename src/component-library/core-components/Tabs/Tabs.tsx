@@ -44,15 +44,16 @@ const Tabs = (props: TabsProps): JSX.Element => {
       >
         {tabs.map((tab, index) => {
           const composedChildId = `${id}-${index}`;
+          const { ariaControls, icon, label = composedChildId } = tab;
           return (
             <div key={composedChildId}>
               <input
-                aria-controls={tab.ariaControls}
-                aria-label={tab.label}
+                aria-controls={ariaControls}
+                aria-label={label}
                 defaultChecked={index === 0}
                 id={composedChildId}
                 name={id}
-                onChange={() => handleChange(tab.label, index)}
+                onChange={() => handleChange(label, index)}
                 type="radio"
                 value={id}
               />
@@ -62,9 +63,13 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 }
                 htmlFor={composedChildId}
               >
-                {!!tab.icon && <Icons iconName={tab.icon} />}
+                {!!icon && typeof icon === 'string' ? (
+                  <Icons iconName={icon} />
+                ) : (
+                  icon
+                )}
                 <Text tag="span" variation="body-semi-bold-extra-large">
-                  {tab.label}
+                  {label}
                 </Text>
               </label>
             </div>
