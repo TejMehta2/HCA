@@ -23,9 +23,13 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "726261ae-5637-4c85-9743-eeffd98f70e4"
+      Hint: Image
+      Value: |
+        <image mediaid="{DDFC3EFF-770D-47BE-B0ED-B0C9F63CBF4E}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f6d697c4-8c76-4970-a203-f21e34d28346"
+      Value: "39119c45-7e41-4881-b107-6c3e813981e4"
     - ID: "a1358851-56ea-4d29-a932-e23b7e9c49b8"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.&nbsp;
@@ -38,7 +42,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240122T122655Z
+      Value: 20240129T121424Z
     - ID: "dbc58a37-0c51-4d8e-a7c3-dd175bcc1cc8"
       Hint: TabTitle
       Value: "One-off"
