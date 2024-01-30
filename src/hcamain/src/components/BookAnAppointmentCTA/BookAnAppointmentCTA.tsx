@@ -8,7 +8,6 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useI18n } from 'next-localization';
 
-
 type HCAIconFields = {
   fields: {
     SvgMarkup: Field<string>;
