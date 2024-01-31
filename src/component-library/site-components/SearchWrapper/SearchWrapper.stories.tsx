@@ -5,7 +5,11 @@ import Text from '../../foundation/Text/Text';
 import PaginationGrid from '../../components/PaginationGrid/PaginationGrid';
 import HeaderPlain from '../HeaderPlain/HeaderPlain';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { BLOG_MOCK_VALUES, SERVICE_LINES_MOCK_VALUES } from './MockData';
+import {
+  BLOG_MOCK_VALUES,
+  SERVICE_LINES_MOCK_VALUES,
+  LOCATIONS_MOCK_VALUES,
+} from './MockData';
 import Filters from '../Filters/Filters';
 import Sorting from '../../components/Sorting/Sorting';
 import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
@@ -141,6 +145,192 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
         data={SERVICE_LINES_MOCK_VALUES.firstPageContent}
         pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
         getPageContent={SERVICE_LINES_MOCK_VALUES.pageContent}
+      />
+    ),
+  },
+};
+
+export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
+  args: {
+    header: (
+      <HeaderPlain
+        heading={
+          <Text variation={'display-2'}>All orthopaedic treatments</Text>
+        }
+        search={<SearchBar placeholder="" />}
+        theme={'F-HCA-White'}
+        filters={
+          <Filters
+            resultsCount={40}
+            filters={[
+              {
+                contentVariation: 'filters',
+                title: 'Locations',
+                children: (
+                  <Checkboxes>
+                    <Checkbox
+                      id="1"
+                      value="Christie"
+                      name="locations"
+                      label="Christie Hospital"
+                    ></Checkbox>
+                    <Checkbox
+                      id="2"
+                      value="london-bridge"
+                      name="locations"
+                      label="London Bridge Hospital"
+                    ></Checkbox>
+                  </Checkboxes>
+                ),
+              },
+            ]}
+          ></Filters>
+        }
+        sort={
+          <Sorting
+            options={[
+              {
+                id: 'option-a',
+                defaultChecked: true,
+                labelText: 'Alphabetically (A to Z)',
+              },
+              {
+                id: 'option-b',
+                labelText: 'Alphabetically (Z to A)',
+              },
+              { id: 'option-c', labelText: 'Price (Low to High)' },
+              {
+                id: 'option-d',
+                labelText: 'Price (High to Low)',
+              },
+            ]}
+            onChange={(event) => {
+              const target = event.target as HTMLInputElement;
+              console.log(target.value);
+              console.log(target.checked);
+            }}
+          />
+        }
+      >
+        <Text variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore.
+        </Text>
+      </HeaderPlain>
+    ),
+
+    theme: 'F-HCA-White',
+
+    searchDetail: (
+      <Text tag="h2" variation="heading-1">
+        64 service lines
+      </Text>
+    ),
+    showing: (
+      <Text tag="p" variation="body-medium">
+        Showing 1-12
+      </Text>
+    ),
+    children: (
+      <PaginationGrid
+        theme="F-HCA-White"
+        data={SERVICE_LINES_MOCK_VALUES.firstPageContent}
+        pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
+        getPageContent={SERVICE_LINES_MOCK_VALUES.pageContent}
+      />
+    ),
+  },
+};
+
+export const LocationsList: StoryObj<typeof SearchWrapper> = {
+  args: {
+    header: (
+      <HeaderPlain
+        heading={<Text variation={'display-2'}>Find a location</Text>}
+        search={<SearchBar placeholder="" />}
+        theme={'A-HCA-Main-Turquoise'}
+        filters={
+          <Filters
+            resultsCount={40}
+            filters={[
+              {
+                contentVariation: 'filters',
+                title: 'Locations',
+                children: (
+                  <Checkboxes>
+                    <Checkbox
+                      id="1"
+                      value="Christie"
+                      name="locations"
+                      label="Christie Hospital"
+                    ></Checkbox>
+                    <Checkbox
+                      id="2"
+                      value="london-bridge"
+                      name="locations"
+                      label="London Bridge Hospital"
+                    ></Checkbox>
+                  </Checkboxes>
+                ),
+              },
+            ]}
+          ></Filters>
+        }
+        sort={
+          <Sorting
+            options={[
+              {
+                id: 'option-a',
+                defaultChecked: true,
+                labelText: 'Alphabetically (A to Z)',
+              },
+              {
+                id: 'option-b',
+                labelText: 'Alphabetically (Z to A)',
+              },
+              { id: 'option-c', labelText: 'Price (Low to High)' },
+              {
+                id: 'option-d',
+                labelText: 'Price (High to Low)',
+              },
+            ]}
+            onChange={(event) => {
+              const target = event.target as HTMLInputElement;
+              console.log(target.value);
+              console.log(target.checked);
+            }}
+          />
+        }
+      >
+        <Text variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore.
+        </Text>
+      </HeaderPlain>
+    ),
+
+    theme: 'F-HCA-White',
+
+    searchDetail: (
+      <Text tag="h2" variation="heading-1">
+        64 service lines
+      </Text>
+    ),
+    showing: (
+      <Text tag="p" variation="body-medium">
+        Showing 1-12
+      </Text>
+    ),
+    children: (
+      <PaginationGrid
+        theme="C-HCA-Beige"
+        data={LOCATIONS_MOCK_VALUES.firstPageContent}
+        pageCount={LOCATIONS_MOCK_VALUES.pageCount}
+        getPageContent={LOCATIONS_MOCK_VALUES.pageContent}
       />
     ),
   },

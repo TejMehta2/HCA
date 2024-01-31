@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';
 import CardBlog from '../../components/CardBlog/CardBlog';
 import CardContent from '../../components/CardContent/CardContent';
+import CardMap from '../../components/CardMap/CardMap';
 
 const BLOG_MOCK_DATA: JSX.Element[] = [];
 for (let i = 0; i < 24; i++) {
@@ -57,6 +58,49 @@ for (let i = 0; i < 24; i++) {
   );
 }
 
+const LOCATIONS_MOCK_DATA: JSX.Element[] = [];
+for (let i = 0; i < 24; i++) {
+  LOCATIONS_MOCK_DATA.push(
+    <CardMap
+      image={
+        <Image
+          src="/placeholders/hospital-in-london.jpg"
+          alt="two children playing"
+          width="643"
+          height="605"
+        />
+      }
+      theme="F-HCA-White"
+      title={
+        <Text tag="h3" variation="heading-2">
+          The Harley Street Clinic
+        </Text>
+      }
+      address={
+        <Text tag="p" variation="body-large">
+          35 Weymouth Street W1G 8BJ London
+        </Text>
+      }
+      ctas={{
+        button1: (
+          <a href="#">
+            <span>
+              Learn <strong>more</strong>
+            </span>
+          </a>
+        ),
+        button2: (
+          <a href="#">
+            <span>
+              Get <strong>directions</strong>
+            </span>
+          </a>
+        ),
+      }}
+    />
+  );
+}
+
 const setMockValues = (MOCK_DATA: JSX.Element[]) => {
   const itemsPerPage = 12;
   const totalItems = MOCK_DATA.length;
@@ -77,3 +121,4 @@ const setMockValues = (MOCK_DATA: JSX.Element[]) => {
 
 export const BLOG_MOCK_VALUES = setMockValues(BLOG_MOCK_DATA);
 export const SERVICE_LINES_MOCK_VALUES = setMockValues(SERVICE_LINES_MOCK_DATA);
+export const LOCATIONS_MOCK_VALUES = setMockValues(LOCATIONS_MOCK_DATA);
