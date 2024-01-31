@@ -64,16 +64,15 @@ for (let i = 0; i < 24; i++) {
     <CardMap
       image={
         <Image
-          src="/placeholders/hospital-in-london.jpg"
+          src="/placeholders/the-wellington-hospital.png"
           alt="two children playing"
           width="643"
           height="605"
         />
       }
-      theme="F-HCA-White"
       title={
         <Text tag="h3" variation="heading-2">
-          The Harley Street Clinic
+          London Bridge Hospital
         </Text>
       }
       address={

@@ -21,7 +21,7 @@ const meta: Meta<typeof SearchWrapper> = {
   component: SearchWrapper,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -325,13 +325,22 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
         Showing 1-12
       </Text>
     ),
-    children: (
-      <PaginationGrid
-        theme="C-HCA-Beige"
-        data={LOCATIONS_MOCK_VALUES.firstPageContent}
-        pageCount={LOCATIONS_MOCK_VALUES.pageCount}
-        getPageContent={LOCATIONS_MOCK_VALUES.pageContent}
-      />
-    ),
+    tabbedResults: [
+      {
+        tab: { icon: 'iconGrid', label: 'Grid view' },
+        tabContent: (
+          <PaginationGrid
+            theme="F-HCA-White"
+            data={LOCATIONS_MOCK_VALUES.firstPageContent}
+            pageCount={LOCATIONS_MOCK_VALUES.pageCount}
+            getPageContent={LOCATIONS_MOCK_VALUES.pageContent}
+          />
+        ),
+      },
+      {
+        tab: { icon: 'iconPin', label: 'Map view' },
+        tabContent: <span>MAP CONTENT HERE</span>,
+      },
+    ],
   },
 };
