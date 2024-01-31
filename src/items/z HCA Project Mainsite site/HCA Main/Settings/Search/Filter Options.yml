@@ -1,8 +1,8 @@
 ﻿---
 ID: "38c99f19-63e6-41d4-90b9-ea99083fe7ca"
-Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
+Parent: "3144974c-def7-4111-a8ed-4f4682215f5c"
 Template: "78b8d602-be19-4189-981d-66b67529c278"
-Path: /sitecore/content/HCA/HCA Main/Settings/Filter Options
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options
 Languages:
 - Language: en
   Versions:
@@ -13,11 +13,11 @@ Languages:
       Value: 20240128T212623Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2529c2c3-332b-4f55-a1f6-b4e5ee9b579d"
+      Value: "e038e0a2-c680-4268-9581-d20aad813810"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240128T212623Z
+      Value: 20240131T090825Z

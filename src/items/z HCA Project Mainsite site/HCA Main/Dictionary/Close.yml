@@ -6,7 +6,7 @@ Path: /sitecore/content/HCA/HCA Main/Dictionary/Close
 SharedFields:
 - ID: "580c75a8-c01a-4580-83cb-987776ceb3af"
   Hint: Key
-  Value: Close
+  Value: close
 Languages:
 - Language: en
   Fields:
@@ -29,11 +29,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fef8321f-9837-401c-ac46-bf2ee7b95d8c"
+      Value: "77676e53-f502-4ca4-8992-6a0914052e0a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240130T052304Z
+      Value: 20240131T091623Z

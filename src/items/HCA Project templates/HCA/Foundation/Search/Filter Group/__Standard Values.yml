@@ -25,11 +25,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4f991af6-bce4-4a84-8f57-b4e5c5c53c05"
+      Value: "57153d9f-0b18-441a-a22d-ad9d71e94e38"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "c204214a-0246-4eff-97f5-3c5aa324191e"
+      Hint: Header
+      Value: $name
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240130T071303Z
+      Value: 20240131T091000Z

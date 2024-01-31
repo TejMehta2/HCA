@@ -1,27 +1,16 @@
 ﻿---
-ID: "7a298203-0924-4526-8276-f59df39e9e07"
-Parent: "d58ba290-5a83-4246-adc8-37af9a1c0ef4"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_SearchBase/Search/SearchPlaceholder
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 400
+ID: "e8b7ba01-3b89-4116-b966-01e3707c97f2"
+Parent: "655c5323-b313-4dab-9c32-d37fb7447539"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Locations/London
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Search Placeholder
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240124T211804Z
+      Value: 20240130T071333Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +21,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9d57c290-7b5d-4109-8f18-fbb3bd523f93"
+      Value: "b8fd1fac-2b15-4ba3-b248-2397c0197e07"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240124T212334Z
+      Value: 20240131T194947Z
+    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
+      Hint: Filter
+      Value: city=London

@@ -77,6 +77,11 @@
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
           },
+		  {
+            "path": "/Settings/Search",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
           {
             "path": "/Settings",
             "scope": "ItemAndChildren",

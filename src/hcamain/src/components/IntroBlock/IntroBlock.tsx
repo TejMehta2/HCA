@@ -6,6 +6,7 @@ import {
   RichText,
   Image as JSSImage,
   Link as JSSLink,
+  ImageField,
   ImageFieldValue,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -22,6 +23,9 @@ type HCAIconFields = {
     SvgMarkup: Field<string>;
   };
 };
+export type logoField = {
+  Logo: ImageField;
+};
 
 interface DoctifyLogoFields {
   fields: {
@@ -30,6 +34,19 @@ interface DoctifyLogoFields {
   };
 }
 
+interface CQSStatusFields {
+  fields: {
+    Title: Field<string>;
+    Icon: Field<string>;
+    CQCLogoLight: {
+      fields: logoField;
+    };
+    CQCLogoDark: {
+      fields: logoField;
+    };
+  };
+};
+
 interface CountersFields {
   fields: {
     Number: Field<string>;
@@ -37,21 +54,12 @@ interface CountersFields {
   };
 }
 
-interface CQCStatusFields {
+interface CQCFields {
   fields: {
     Title: Field<string>;
     Text: Field<string>;
     ReportLink: LinkField;
-    Status: {
-      fields: {
-        ['CQC Logo']: {
-          fields: {
-            Logo: ImageFieldValue;
-          };
-        };
-        Icon: { value: IconName };
-      };
-    };
+    Status: CQSStatusFields;
   };
 }
 
@@ -72,7 +80,7 @@ interface Fields {
   CTAIcon: HCAIconFields;
   CTALink: LinkField;
   Counters: CountersFields[];
-  CQCStatus: CQCStatusFields;
+  CQCStatus: CQCFields;
   DoctifyReviews: DoctifyReviewsFields;
 }
 
@@ -115,14 +123,15 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       text={props.fields.CQCStatus.fields.Text.value}
       icon={
         <Icons
-          iconName={props.fields.CQCStatus.fields.Status.fields.Icon.value}
-        ></Icons>
+           iconName="iconCheckCircle"
+         ></Icons>
+        //  {props.fields.CQCStatus.fields.Status.fields.Icon}
       }
       logo={{
         dark: (
           <JSSImage
             field={
-              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+              props.fields.CQCStatus.fields.Status.fields.CQCLogoDark.fields
                 .Logo
             }
           />
@@ -130,7 +139,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         light: (
           <JSSImage
             field={
-              props.fields.CQCStatus.fields.Status.fields['CQC Logo'].fields
+              props.fields.CQCStatus.fields.Status.fields.CQCLogoLight.fields
                 .Logo
             }
           />

@@ -1,24 +1,16 @@
 ﻿---
-ID: "b986bed3-e141-48a1-b73b-2736f2a856f7"
-Parent: "4ca68be3-17da-488a-8b66-58aa0c80d4ae"
-Template: "6d1cd897-1936-4a3a-a511-289a94c2a7b1"
-Path: /sitecore/content/HCA/HCA Main/Dictionary/Show more
-SharedFields:
-- ID: "580c75a8-c01a-4580-83cb-987776ceb3af"
-  Hint: Key
-  Value: "show-more"
+ID: "3f92d879-2702-42ff-92df-cb51c265752c"
+Parent: "74b661f5-1a80-46d7-a41a-cee3d7a55e26"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Hospitals/The Wilmslow Hospital
 Languages:
 - Language: en
-  Fields:
-  - ID: "2ba3454a-9a9c-4cdf-a9f8-107fd484eb6e"
-    Hint: Phrase
-    Value: Show more
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240125T123325Z
+      Value: 20240130T083225Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -29,11 +21,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "80697915-2b26-4991-9cc5-27c24b0b1f9a"
+      Value: "dcdd2ea2-34cd-49fd-92fa-06adba0b700a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240131T091630Z
+      Value: 20240131T194933Z
+    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
+      Hint: Filter
+      Value: practice=The Wilmslow Hospital

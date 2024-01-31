@@ -14,11 +14,32 @@ type HCAIconFields = {
   };
 };
 
+type FilterOptionsFields = {
+  fields: {
+    Header: Field<string>;
+    Filters: SortOptionsFields[];
+  };
+};
+
+type SortOptionsFields = {
+  fields: {
+    Filter: Field<string>;
+  };
+};
+
 interface Fields {
-  TreatmentsSearchIcon: HCAIconFields;
-  TreatmentsSearchText: Field<string>;
+  Heading: Field<string>;
   Title: Field<string>;
   Text: Field<string>;
+  SearchPlaceholder: Field<string>;
+  FilterOptionsIcon: HCAIconFields;
+  FilterOptionsText: Field<string>;
+  FilterOptions: FilterOptionsFields[];
+  SortOptionsIcon: HCAIconFields;
+  SortOptionsText: Field<string>;
+  SortOptions: SortOptionsFields[];
+  SearchResultsText: Field<string>;
+  ResultsPerPage: Field<string>;
 }
 
 type TreatmentsSearchProps = {
@@ -27,7 +48,9 @@ type TreatmentsSearchProps = {
   fields: Fields;
 };
 
-const TreatmentsSearchDefaultComponent = (props: TreatmentsSearchProps): JSX.Element => (
+const TreatmentsSearchDefaultComponent = (
+  props: TreatmentsSearchProps
+): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">TreatmentsSearch no datasource</span>
@@ -43,24 +66,66 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
   }
   return (
     <div className={`component ${props.params.styles}`}>
-      {props?.fields?.TreatmentsSearchIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.TreatmentsSearchIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <br />
-      <JssText field={props.fields.TreatmentsSearchText} />
+      <JssText field={props.fields.Heading} />
       <br />
       <JssText field={props.fields.Title} />
       <br />
       <RichText tag="span" field={props.fields.Text} />
       <br />
-      <p>Text: {t('Close')}</p>
-      <p>Text: {t('ShowMore')}</p>
-      <p>Text: {t('Showing')}</p>
-      <p>Text: {t('ClearAll')}</p>
+      <JssText field={props.fields.SearchPlaceholder} />
+      <br />
+      {props?.fields?.FilterOptionsIcon && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props?.fields?.FilterOptionsIcon.fields.SvgMarkup.value,
+          }}
+        />
+      )}
+      <JssText field={props.fields.FilterOptionsText} />
+      <br />
+      <ul>
+        {props.fields.FilterOptions.map((filterOptions, index) => (
+          <li key={index}>
+            <br />
+            <JssText field={filterOptions.fields.Header} />
+            <br />
+            <ul>
+              {filterOptions.fields.Filters.map((filter, index) => (
+                <li key={index}>
+                  <JssText field={filter.fields.Filter} />
+                  <br />
+                </li>
+              ))}
+            </ul>
+            <br />
+          </li>
+        ))}
+      </ul>
+      <br />
+      {props?.fields?.SortOptionsIcon && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props?.fields?.SortOptionsIcon.fields.SvgMarkup.value,
+          }}
+        />
+      )}
+      <JssText field={props.fields.SortOptionsText} />
+      <br />
+      <ul>
+        {props.fields.SortOptions.map((sortOptions, index) => (
+          <li key={index}>
+            <JssText field={sortOptions.fields.Filter} />
+            <br />
+          </li>
+        ))}
+      </ul>
+      <br />
+      <JssText field={props.fields.SearchResultsText} />
+      <JssText field={props.fields.ResultsPerPage} />
+      <p>Text: {t('close')}</p>
+      <p>Text: {t('show-more')}</p>
+      <p>Text: {t('showing')}</p>
+      <p>Text: {t('clear-all')}</p>
       <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );

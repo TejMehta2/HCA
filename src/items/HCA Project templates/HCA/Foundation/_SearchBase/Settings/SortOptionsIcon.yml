@@ -1,8 +1,8 @@
 ﻿---
-ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
-Parent: "d58ba290-5a83-4246-adc8-37af9a1c0ef4"
+ID: "d24cbb38-fc72-42d9-a404-f1412bf128eb"
+Parent: "7a28280a-c001-4a88-b393-e2e372e6c89d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_SearchBase/Search/FilterOptionsIcon
+Path: /sitecore/templates/Project/HCA/Foundation/_SearchBase/Settings/SortOptionsIcon
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
@@ -12,13 +12,13 @@ SharedFields:
   Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
+  Value: 800
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Filter Options Icon
+    Value: Sort Options Icon
   Versions:
   - Version: 1
     Fields:
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "644b1b07-2991-4d43-8e7b-68f4440d76ec"
+      Value: "e7754274-dbf4-4d88-8bab-195a34f654d0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240124T212334Z
+      Value: 20240130T065455Z
