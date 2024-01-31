@@ -150,9 +150,12 @@
       }
 
       &:disabled {
-        background-color: var(--cta-full-disabled-background);
         color: var(--cta-full-disabled-text);
         border-color: var(--cta-full-disabled-border);
+
+        &::after {
+          background-color: var(--cta-full-disabled-background);
+        }
       }
 
       &:focus-visible {
