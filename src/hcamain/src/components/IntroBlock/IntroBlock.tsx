@@ -45,7 +45,7 @@ interface CQSStatusFields {
       fields: logoField;
     };
   };
-};
+}
 
 interface CountersFields {
   fields: {
@@ -122,9 +122,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       title={props.fields.CQCStatus.fields.Title.value}
       text={props.fields.CQCStatus.fields.Text.value}
       icon={
-        <Icons
-           iconName="iconCheckCircle"
-         ></Icons>
+        <Icons iconName="iconCheckCircle"></Icons>
         //  {props.fields.CQCStatus.fields.Status.fields.Icon}
       }
       logo={{
