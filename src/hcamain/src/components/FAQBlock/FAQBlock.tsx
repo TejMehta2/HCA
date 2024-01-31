@@ -5,7 +5,15 @@ import {
   Link as JssLink,
   Text as JssText,
   Item,
+  RichText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import AccordionsBlock from '@component-library/site-components/AccordionsBlock/AccordionsBlock';
+import Text from '@component-library/foundation/Text/Text';
+import Button from '@component-library/core-components/Button/Button';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import { Accordions } from '@component-library/components/Accordions/Accordions.types';
+import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 
 type CTAIconFields = {
   fields: {
@@ -32,8 +40,26 @@ interface Fields {
 }
 
 type FAQProps = {
-  params: { [key: string]: string };
+  params: {
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    styles: string;
+  };
   fields: Fields;
+};
+
+const getAccordions = (questions: QuestionFields[]) => {
+  const accordions: Accordions = [];
+
+  for (const accordion of questions) {
+    accordions.push({
+      title: accordion.fields.Question?.value,
+      children: <p>{accordion.fields.Answer?.value}</p>,
+    });
+  }
+
+  return accordions;
 };
 
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => (
@@ -45,92 +71,122 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => (
 );
 
 export const Default = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <FAQBlockDefaultComponent {...props} />;
   }
+
+  const accordions = getAccordions(props.fields.Questions);
+
   return (
-    <div>
-      <JssText field={props.fields.Heading} />
-      <br />
-      <JssText field={props.fields.Title} />
-      <br />
-      <JssText field={props.fields.Text} />
-      <br />
-      {props.fields?.CTALink && (
-        <JssLink field={props.fields?.CTALink}>
-          {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
-              }}
-            ></span>
-          )}
-        </JssLink>
-      )}
-      <br />
-      <ul>
-        {props.fields.Questions.map((question, index) => (
-          <li key={index}>
-            <br />
-            <JssText field={question.fields.Question} />
-            <br />
-            <JssText field={question.fields.Answer} />
-            <br />
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <AccordionsBlock
+      theme={props.params.Theme}
+      subtitle={
+        props.fields.Title?.value ? (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields.Title} />
+          </Text>
+        ) : undefined
+      }
+      header={
+        <Text
+          tag={props.params.HeadingTag}
+          variation={props.params.HeadingSize}
+        >
+          <JssText field={props.fields.Heading} />
+        </Text>
+      }
+      body={
+        props.fields.Title?.value ? (
+          <Text tag="p" variation="body-large">
+            <JssText field={props.fields.Text} />
+          </Text>
+        ) : undefined
+      }
+      accordions={accordions}
+      ctas={
+        props.fields?.CTALink && (
+          <Button theme="full" size="large">
+            {isExperienceEditor ? (
+              <JssLink field={props.fields.CTALink}></JssLink>
+            ) : (
+              <JssLink field={props.fields?.CTALink}>
+                {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
+                    }}
+                  ></span>
+                )}
+                <RichText
+                  tag="span"
+                  field={{
+                    value: props.fields?.CTALink.value.text,
+                  }}
+                />
+              </JssLink>
+            )}
+          </Button>
+        )
+      }
+    />
   );
 };
 
 export const RightAligned = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <FAQBlockDefaultComponent {...props} />;
   }
+
+  const accordions = getAccordions(props.fields.Questions);
+
   return (
-    <div>
-      <JssText field={props.fields.Heading} />
-      <br />
-      <JssText field={props.fields.Title} />
-      <br />
-      <JssText field={props.fields.Text} />
-      <br />
-      {props.fields?.CTALink && (
-        <JssLink field={props.fields?.CTALink}>
-          {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
-              }}
-            ></span>
-          )}
-        </JssLink>
-      )}
-      <br />
-      <ul>
-        {props.fields.Questions.map((question, index) => (
-          <li key={index}>
-            <br />
-            <JssText field={question.fields.Question} />
-            <br />
-            <JssText field={question.fields.Answer} />
-            <br />
-            {question.fields?.CTALink && (
-              <JssLink field={question.fields?.CTALink}>
-                {question.fields?.CTAIcon?.fields.SvgMarkup && (
+    <AccordionsBlockSideBySide
+      theme={props.params.Theme}
+      header={
+        <Text
+          tag={props.params.HeadingTag}
+          variation={props.params.HeadingSize}
+        >
+          <JssText field={props.fields.Title} />
+        </Text>
+      }
+      body={
+        props.fields.Title?.value ? (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields.Text} />
+          </Text>
+        ) : undefined
+      }
+      accordions={accordions}
+      ctas={
+        props.fields?.CTALink?.value.text && (
+          <Button theme="full" size="large">
+            {isExperienceEditor ? (
+              <JssLink field={props.fields.CTALink}></JssLink>
+            ) : (
+              <JssLink field={props.fields?.CTALink}>
+                {props?.fields?.CTAIcon?.fields.SvgMarkup && (
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: question.fields.CTAIcon?.fields?.SvgMarkup?.value,
+                      __html: props.fields.CTAIcon?.fields?.SvgMarkup?.value,
                     }}
                   ></span>
                 )}
+                <RichText
+                  tag="span"
+                  field={{
+                    value: props.fields?.CTALink.value.text,
+                  }}
+                />
               </JssLink>
             )}
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>
+          </Button>
+        )
+      }
+    />
   );
 };
