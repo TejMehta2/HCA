@@ -3,11 +3,13 @@ import SearchWrapper from './SearchWrapper';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import PaginationGrid from '../../components/PaginationGrid/PaginationGrid';
-import Image from 'next/image';
-import Tags from '../../core-components/Tags/Tags';
-import CardBlog from '../../components/CardBlog/CardBlog';
 import HeaderPlain from '../HeaderPlain/HeaderPlain';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import { BLOG_MOCK_VALUES, SERVICE_LINES_MOCK_VALUES } from './MockData';
+import Filters from '../Filters/Filters';
+import Sorting from '../../components/Sorting/Sorting';
+import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
+import Checkbox from '../../core-components/Checkbox/Checkbox';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -21,43 +23,6 @@ const meta: Meta<typeof SearchWrapper> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-
-const MOCK_DATA: JSX.Element[] = [];
-for (let i = 0; i < 24; i++) {
-  MOCK_DATA.push(
-    <CardBlog key={i}>
-      <Image
-        src="/placeholders/children-playing.jpg"
-        alt="two children playing"
-        width="643"
-        height="605"
-      />
-      <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
-      <Text tag="h3" variation="heading-2">
-        <a href="#">
-          The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
-        </a>
-      </Text>
-      <Text variation="body-large">
-        There are over 1400 at The Portland, each year. Hear new mums sharing
-        theirs
-      </Text>
-      <Tags>
-        <a href="#">Announcement</a>
-      </Tags>
-    </CardBlog>
-  );
-}
-
-const itemsPerPage = 6;
-const totalItems = MOCK_DATA.length;
-const pageCount = Math.ceil(totalItems / itemsPerPage);
-
-const getPageContent = (page: number) => {
-  const indexOfLastItem = page * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  return MOCK_DATA.slice(indexOfFirstItem, indexOfLastItem);
-};
 
 export const Default: StoryObj<typeof SearchWrapper> = {
   args: {
@@ -92,9 +57,90 @@ export const Default: StoryObj<typeof SearchWrapper> = {
     children: (
       <PaginationGrid
         theme="F-HCA-White"
-        data={getPageContent(1)}
-        pageCount={pageCount}
-        getPageContent={getPageContent}
+        data={BLOG_MOCK_VALUES.firstPageContent}
+        pageCount={BLOG_MOCK_VALUES.pageCount}
+        getPageContent={BLOG_MOCK_VALUES.pageContent}
+      />
+    ),
+  },
+};
+
+export const ServiceLines: StoryObj<typeof SearchWrapper> = {
+  args: {
+    header: (
+      <HeaderPlain
+        heading={<Text variation={'display-2'}>All Service Lines</Text>}
+        search={<SearchBar placeholder="" />}
+        theme={'C-HCA-Beige'}
+        filters={
+          <Filters
+            resultsCount={40}
+            filters={[
+              {
+                contentVariation: 'filters',
+                title: 'Locations',
+                children: (
+                  <Checkboxes>
+                    <Checkbox
+                      id="1"
+                      value="Christie"
+                      name="locations"
+                      label="Christie Hospital"
+                    ></Checkbox>
+                    <Checkbox
+                      id="2"
+                      value="london-bridge"
+                      name="locations"
+                      label="London Bridge Hospital"
+                    ></Checkbox>
+                  </Checkboxes>
+                ),
+              },
+            ]}
+          ></Filters>
+        }
+        sort={
+          <Sorting
+            options={[
+              {
+                id: 'option-a',
+                defaultChecked: true,
+                labelText: 'Alphabetically (A to Z)',
+              },
+              {
+                id: 'option-b',
+                labelText: 'Alphabetically (Z to A)',
+              },
+              { id: 'option-c', labelText: 'Price (Low to High)' },
+              {
+                id: 'option-d',
+                labelText: 'Price (High to Low)',
+              },
+            ]}
+            onChange={(event) => {
+              const target = event.target as HTMLInputElement;
+              console.log(target.value);
+              console.log(target.checked);
+            }}
+          />
+        }
+      ></HeaderPlain>
+    ),
+
+    theme: 'C-HCA-Beige',
+
+    searchDetail: (
+      <Text tag="h2" variation="heading-1">
+        64 service lines
+      </Text>
+    ),
+
+    children: (
+      <PaginationGrid
+        theme="C-HCA-Beige"
+        data={SERVICE_LINES_MOCK_VALUES.firstPageContent}
+        pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
+        getPageContent={SERVICE_LINES_MOCK_VALUES.pageContent}
       />
     ),
   },

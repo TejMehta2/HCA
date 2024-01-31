@@ -108,6 +108,18 @@ $max-options: 5; // Increase max if more "sort by" options are required
   position: relative;
 }
 
+.button {
+  button {
+    width: 100%;
+    justify-content: center;
+
+    @include media(screen-m) {
+      width: max-content;
+      justify-content: unset;
+    }
+  }
+}
+
 // style "selected" state for button which opens dialog
 .desktop,
 .mobile {
