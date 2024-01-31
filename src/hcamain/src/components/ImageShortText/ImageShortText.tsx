@@ -59,12 +59,15 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         imageAlignment={imageAlignment}
         length="short"
         subheader={
-          <Text tag="h3" variation="subheading-1">
+          <Text tag="p" variation="subheading-1">
             <JssText field={props.fields.Heading} />
           </Text>
         }
         header={
-          <Text tag="h2" variation="display-2">
+          <Text
+            tag={props.params.HeadingTag}
+            variation={props.params.HeadingSize}
+          >
             <JssText field={props.fields.Title} />
           </Text>
         }
