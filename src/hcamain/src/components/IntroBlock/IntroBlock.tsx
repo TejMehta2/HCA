@@ -15,7 +15,7 @@ import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
 import Doctify from '@component-library/components/Doctify/Doctify';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { IconName } from '@component-library/foundation/Icons/icon-map.generated';
+// import { IconName } from '@component-library/foundation/Icons/icon-map.generated';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
