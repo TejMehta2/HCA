@@ -1,0 +1,60 @@
+﻿---
+ID: "305384c4-3e2e-4a88-86be-108d4446743c"
+Parent: "b76101a0-849f-421d-822b-809aee93adcc"
+Template: "f1828a2c-7e5d-4bbd-98ca-320474871548"
+Path: /sitecore/media library/Project/HCA/HCA Main/System/Template Thumbnails/Book An Appointment CTA
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "-/media/305384C43E2E4A8886BE108D4446743C.ashx?h=16&thn=1&w=16"
+- ID: "22eac599-f13b-4607-a89d-c091763a467d"
+  Hint: Width
+  Value: 302
+- ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
+  Hint: Blob
+  BlobID: "bc010d9f-ac55-4261-a6c0-7c1d58ffca07"
+  Value: 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
+- ID: "6954b7c7-2487-423f-8600-436cb3b6dc0e"
+  Hint: Size
+  Value: 3493
+- ID: "6f47a0a5-9c94-4b48-abeb-42d38def6054"
+  Hint: Mime Type
+  Value: image/png
+- ID: "c06867fe-9a43-4c7d-b739-48780492d06f"
+  Hint: Extension
+  Value: png
+- ID: "cb09946f-3218-4823-87d2-d5007c199a96"
+  Hint: Dimensions
+  Value: 302 x 64
+- ID: "de2ca9e4-c117-4c8a-a139-1ff4b199d15a"
+  Hint: Height
+  Value: 64
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T221643Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "65885c44-8fcd-4a7f-94f1-ee63703fe193"
+      Hint: Alt
+      Value: Book An Appointment CTA
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d2857675-1a0b-450e-9273-3552a430a6bf"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240129T221643Z
