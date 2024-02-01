@@ -38,7 +38,7 @@ export const Default: StoryObj<typeof CardMap> = {
       </Text>
     ),
     distance: (
-      <Text tag="h3" variation="body-semi-bold-small">
+      <Text tag="h3" variation="body-bold-small">
         0.12 miles from your location
       </Text>
     ),
@@ -74,7 +74,7 @@ export const NoImage: StoryObj<typeof CardMap> = {
       </Text>
     ),
     distance: (
-      <Text tag="p" variation="body-semi-bold-small">
+      <Text tag="p" variation="body-bold-small">
         0.12 miles from your location
       </Text>
     ),

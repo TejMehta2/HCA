@@ -55,8 +55,8 @@ Intended for use solely in the Text module
   @include apply-body-medium-extra-large;
 }
 
-.body-semi-bold-extra-large {
-  @include apply-body-semi-bold-extra-large;
+.body-bold-extra-large {
+  @include apply-body-bold-extra-large;
 }
 
 .body-large {
@@ -67,8 +67,8 @@ Intended for use solely in the Text module
   @include apply-body-medium-large;
 }
 
-.body-semi-bold-large {
-  @include apply-body-semi-bold-large;
+.body-bold-large {
+  @include apply-body-bold-large;
 }
 
 .body-medium {
@@ -79,8 +79,8 @@ Intended for use solely in the Text module
   @include apply-body-medium-medium;
 }
 
-.body-semi-bold-medium {
-  @include apply-body-semi-bold-large;
+.body-bold-medium {
+  @include apply-body-bold-large;
 }
 
 .body-small {
@@ -91,6 +91,6 @@ Intended for use solely in the Text module
   @include apply-body-medium-small;
 }
 
-.body-semi-bold-small {
-  @include apply-body-semi-bold-small;
+.body-bold-small {
+  @include apply-body-bold-small;
 }

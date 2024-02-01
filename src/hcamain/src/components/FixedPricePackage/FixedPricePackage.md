@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# FixedPricePackage documentation
 
 ## Additional information
 

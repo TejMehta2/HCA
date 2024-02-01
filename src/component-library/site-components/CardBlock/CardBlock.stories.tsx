@@ -136,7 +136,7 @@ const CardMapExample = () => (
       </Text>
     }
     distance={
-      <Text tag="h3" variation="body-semi-bold-small">
+      <Text tag="h3" variation="body-bold-small">
         0.12 miles from your location
       </Text>
     }

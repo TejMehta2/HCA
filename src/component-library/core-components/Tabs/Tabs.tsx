@@ -68,7 +68,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 ) : (
                   icon
                 )}
-                <Text tag="span" variation="body-semi-bold-extra-large">
+                <Text tag="span" variation="body-bold-extra-large">
                   {label}
                 </Text>
               </label>
