@@ -250,7 +250,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       <HeaderPlain
         heading={<Text variation={'display-2'}>Find a location</Text>}
         search={<SearchBar placeholder="" />}
-        theme={'A-HCA-Main-Turquoise'}
+        theme={'D-HCA-Light-Orange'}
         filters={
           <Filters
             resultsCount={40}
