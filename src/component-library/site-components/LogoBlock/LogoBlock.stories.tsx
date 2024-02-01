@@ -63,41 +63,8 @@ export const Default: StoryObj<typeof LogoBlock> = {
 
 export const ThreeColumnStandard: StoryObj<typeof LogoBlock> = {
   args: {
-    header: (
-      <AdvancedBlockHeader
-        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
-        title={<Text variation={'display-2'}>Logo Block</Text>}
-        body={
-          <Text variation={'body-large'}>
-            Quis laboris proident sint amet id cillum do dolor in tempor est.
-            Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-            laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-            dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
-            sunt lorem ut.
-          </Text>
-        }
-        ctas={
-          <>
-            <Button size={'small'} theme={'full'}>
-              <a href="#">
-                <span>
-                  Learn more about <strong>self-pay</strong>
-                </span>
-              </a>
-            </Button>
-            <TextButton>
-              <a href="#">
-                <span>
-                  Access care with <strong>insurance</strong>
-                </span>
-              </a>
-            </TextButton>
-          </>
-        }
-      />
-    ),
+    ...Default.args,
     columns: 3,
-    logos: [logo, logo, logo, logo, logo, logo, logo, logo, logo],
   },
 };
 
