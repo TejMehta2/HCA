@@ -16,7 +16,7 @@ const mockProps: CardMapProps = {
     </Text>
   ),
   distance: (
-    <Text tag="p" variation="body-semi-bold-small">
+    <Text tag="p" variation="body-bold-small">
       0.12 miles from your location
     </Text>
   ),

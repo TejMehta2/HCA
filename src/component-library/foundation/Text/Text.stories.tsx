@@ -105,15 +105,15 @@ export const BodyMediumExtraLarge: StoryObj<typeof Text> = {
   args: {
     tag: 'p',
     variation: 'body-medium-extra-large',
-    children: 'Body Extra Large',
+    children: 'Body Medium Extra Large',
   },
 };
 
-export const BodySemiBoldExtraLarge: StoryObj<typeof Text> = {
+export const BodyBoldExtraLarge: StoryObj<typeof Text> = {
   args: {
     tag: 'p',
-    variation: 'body-semi-bold-extra-large',
-    children: 'Body Extra Large',
+    variation: 'body-bold-extra-large',
+    children: 'Body Bold Extra Large',
   },
 };
 
@@ -133,11 +133,11 @@ export const BodyMediumLarge: StoryObj<typeof Text> = {
   },
 };
 
-export const BodySemiBoldLarge: StoryObj<typeof Text> = {
+export const BodyBoldLarge: StoryObj<typeof Text> = {
   args: {
     tag: 'p',
-    variation: 'body-semi-bold-large',
-    children: 'Body Semi Bold Large',
+    variation: 'body-bold-large',
+    children: 'Body Bold Large',
   },
 };
 
@@ -157,11 +157,11 @@ export const BodyMediumMedium: StoryObj<typeof Text> = {
   },
 };
 
-export const BodySemiBoldMedium: StoryObj<typeof Text> = {
+export const BodyBoldMedium: StoryObj<typeof Text> = {
   args: {
     tag: 'p',
-    variation: 'body-semi-bold-medium',
-    children: 'Body Semi Bold Medium',
+    variation: 'body-bold-medium',
+    children: 'Body Bold Medium',
   },
 };
 
@@ -181,10 +181,10 @@ export const BodyMediumSmall: StoryObj<typeof Text> = {
   },
 };
 
-export const BodySemiBoldSmall: StoryObj<typeof Text> = {
+export const BodyBoldSmall: StoryObj<typeof Text> = {
   args: {
     tag: 'p',
-    variation: 'body-semi-bold-small',
-    children: 'Body Semi Bold Small',
+    variation: 'body-bold-small',
+    children: 'Body Bold Small',
   },
 };

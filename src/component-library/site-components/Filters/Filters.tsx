@@ -34,7 +34,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
           contentVariation="filters"
         >
           <div className={styles.header}>
-            <Text variation="body-semi-bold-extra-large">Filter By:</Text>
+            <Text variation="body-bold-extra-large">Filter By:</Text>
           </div>
 
           {filters && (

@@ -65,7 +65,7 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
           </div>
 
           <div className={styles['doctify']}>
-            <Text tag="p" variation="body-semi-bold-large">
+            <Text tag="p" variation="body-bold-large">
               <span>Verified by</span>
             </Text>
             <Image
