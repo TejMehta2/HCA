@@ -21,8 +21,8 @@ type CTAIconFields = {
 
 interface LogosFields {
   fields: {
-  LogoImage: ImageField;
-  Link: LinkField;
+    LogoImage: ImageField;
+    Link: LinkField;
   };
 }
 
@@ -32,7 +32,7 @@ interface Fields {
   CTAIcon?: CTAIconFields;
   CTALink: LinkField;
   Text: Field<string>;
-  Logos:  LogosFields[];
+  Logos: LogosFields[];
 }
 
 type LogoBlockProps = {
@@ -71,13 +71,13 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <Text field={props.fields.Title} />
       <br />
       <JssRichText
-                className="promo-text"
-                field={props.fields.Text}
-              />
-    <br/>
+        className="promo-text"
+        field={props.fields.Text}
+      />
+      <br />
       <JssLink field={props.fields.CTALink}></JssLink>
 
-      <br/>
+      <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (
           <li key={index}>
