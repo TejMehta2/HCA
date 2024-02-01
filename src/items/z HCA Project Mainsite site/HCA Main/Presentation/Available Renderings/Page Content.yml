@@ -33,6 +33,7 @@ SharedFields:
     {2F6CD296-A8AA-437B-BB3C-B0DEFE8F1D6C}
     {661BAB13-E030-4FDD-91D9-FA7499AF8CCA}
     {CFF4D5A2-1F9F-4CD5-8872-FA45CD5BE407}
+    {272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}
     {DAB5093E-7F1D-4A11-AF6F-8434F202DA0B}
     {365E71DF-CAE5-4D04-A34B-D601669C8A5F}
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
@@ -60,7 +61,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
       Value: 20240131T195039Z

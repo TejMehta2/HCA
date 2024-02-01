@@ -121,7 +121,7 @@ const Sorting = (props: SortingProps): JSX.Element => {
         <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>
           <div className={styles.fieldset}>
             <div className={styles.legend}>
-              <Text variation={'body-semi-bold-extra-large'}>
+              <Text variation={'body-bold-extra-large'}>
                 <span id={labelId}>Sort by:</span>
               </Text>
             </div>

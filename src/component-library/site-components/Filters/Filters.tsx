@@ -17,14 +17,16 @@ const Filters = (props: FiltersProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <Button theme="full-dark" size="large">
-        <button onClick={() => dialogRef.current?.showModal()}>
-          <Icons iconName="iconFilterCircle" />
-          <span>
-            <strong>Filter</strong> By
-          </span>
-        </button>
-      </Button>
+      <div className={styles.toggle}>
+        <Button theme="full-dark" size="large">
+          <button onClick={() => dialogRef.current?.showModal()}>
+            <Icons iconName="iconFilterCircle" />
+            <span>
+              <strong>Filter</strong> By
+            </span>
+          </button>
+        </Button>
+      </div>
 
       <Themes theme="F-HCA-White">
         <Modals
@@ -34,7 +36,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
           contentVariation="filters"
         >
           <div className={styles.header}>
-            <Text variation="body-semi-bold-extra-large">Filter By:</Text>
+            <Text variation="body-bold-extra-large">Filter By:</Text>
           </div>
 
           {filters && (

@@ -6,4 +6,5 @@ export interface LogoBlockProps {
   logos?: JSX.Element[];
   theme?: Theme;
   variation?: 'standard' | 'side-by-side';
+  columns?: 3 | 4;
 }

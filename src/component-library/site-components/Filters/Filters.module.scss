@@ -5,6 +5,18 @@
   position: relative;
 }
 
+.toggle {
+  button {
+    width: 100%;
+    justify-content: center;
+
+    @include media(screen-m) {
+      width: max-content;
+      justify-content: unset;
+    }
+  }
+}
+
 .header {
   display: flex;
   justify-content: center;

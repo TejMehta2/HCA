@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta, Stories } from '@storybook/blocks';
 import * as TextStories from './Text.stories';
 
 <Meta of={TextStories} />
+
 
 # Text
 
@@ -31,8 +32,6 @@ const MyComponent = () => {
 export default MyComponent
 ```
 
-<Canvas of={TextStories.BodyMediumLarge}  />
-
 ## SCSS mixins module
 
 The text SCSS module exports several SASS mixins which are intended to be imported directly into component scss module files.
@@ -53,3 +52,4 @@ The SCSS mixins module applies permutations of the following CSS font properties
   @include apply-body-medium-medium;
 }
 ```
+<Stories />

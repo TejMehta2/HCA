@@ -39,7 +39,7 @@ const CQCBlock = (props: CQCBlockProps): JSX.Element => {
       </div>
       <div className={styles.title}>
         {blockTitle && (
-          <Text tag="span" variation="body-semi-bold-small">
+          <Text tag="span" variation="body-bold-small">
             {blockTitle}
           </Text>
         )}
