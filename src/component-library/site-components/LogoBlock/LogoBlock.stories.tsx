@@ -61,6 +61,13 @@ export const Default: StoryObj<typeof LogoBlock> = {
   },
 };
 
+export const ThreeColumnStandard: StoryObj<typeof LogoBlock> = {
+  args: {
+    ...Default.args,
+    columns: 3,
+  },
+};
+
 export const SideBySide: StoryObj<typeof LogoBlock> = {
   args: {
     ...Default.args,
