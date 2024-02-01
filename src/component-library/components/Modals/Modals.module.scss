@@ -12,6 +12,7 @@
   transition: opacity;
   transition-delay: 0.3s;
   background: transparent;
+  z-index: 2;
 
   &[open] {
     opacity: 1;
