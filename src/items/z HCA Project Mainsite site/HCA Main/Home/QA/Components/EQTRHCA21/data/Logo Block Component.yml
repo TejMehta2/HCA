@@ -25,9 +25,17 @@ Languages:
     - ID: "74c22fa1-e733-4ff8-9649-694c4cdf7260"
       Hint: Title
       Value: Logo Block
+    - ID: "7d6483df-202c-44aa-9305-74ec87bc051a"
+      Hint: Text
+      Value: |
+        <div style="color: #000000; background-color: #ffffff; width: 436.797px; margin: 0px 14.3906px 0px 28.7969px; padding: 0px;">
+        <p style="margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;"><strong style="margin: 0px; padding: 0px;">Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div>&nbsp;</div>
+        </div>
+        <div style="color: #000000; background-color: #ffffff; width: 436.797px; margin: 0px 28.7969px 0px 14.3906px; padding: 0px;">&nbsp;</div>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0975d215-b654-4e30-92ae-4bf15349c9d1"
+      Value: "cea5f5b7-fa69-4f1e-80fc-b006651c2acb"
     - ID: "a4f7b735-8a5e-4157-afbf-f6e354336852"
       Hint: Logos
       Value: "{49AF603A-2DC7-4FB9-93D9-71D0ABBE41D4}|{B5C8EC16-837B-4C77-BECA-B1C54539F192}|{AAEF0CDE-ABD9-4275-B64E-83C4F587CF3E}|{5E300DB3-6CEC-44FE-96DE-DEB831223CEF}|{0D89561A-2926-42DD-BEE6-F9C90D2385FA}|{27B48E61-9F9E-4D53-A1C5-F180BF7D275F}|{A1202048-7FD5-4CF4-AA1F-EF66DBC5C2E2}|{F548281E-837D-475B-827F-ACB652A28E58}|{549F3767-87DB-4A42-88E6-8B04C1155241}|{7500AE21-EC01-45A9-837D-1A06BC80C31F}|{BBB5EF59-171C-48FC-A547-4ECBFA608151}|{7077D60A-99F3-40D3-A883-15EA8660E581}"
@@ -41,4 +49,4 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240131T152657Z
+      Value: 20240201T092342Z

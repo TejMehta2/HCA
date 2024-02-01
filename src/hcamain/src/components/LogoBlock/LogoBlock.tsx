@@ -6,6 +6,7 @@ import {
   Placeholder,
   ComponentRendering,
   Link as JssLink,
+  RichText as JssRichText,
   Image,
   Text,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -30,6 +31,7 @@ interface Fields {
   Title: Field<string>;
   CTAIcon?: CTAIconFields;
   CTALink: LinkField;
+  Text: Field<string>;
   Logos:  LogosFields[];
 }
 
@@ -68,6 +70,11 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <br />
       <Text field={props.fields.Title} />
       <br />
+      <JssRichText
+                className="promo-text"
+                field={props.fields.Text}
+              />
+    <br/>
       <JssLink field={props.fields.CTALink}></JssLink>
 
       <br/>
