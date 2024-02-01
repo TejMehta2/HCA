@@ -1,40 +1,23 @@
 ﻿---
-ID: "0c726be9-ca4e-415c-b3d0-9640c37e7947"
-Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
-Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Plain Header
+ID: "b74dd507-e9cd-4d69-9a91-e659ad427796"
+Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Page Content/Logo Block
 SharedFields:
-- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
-  Hint: componentName
-  Value: PlainHeader
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: SXA_MDI/16x16/Promo.png
-- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
-  Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Plain Header
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
-- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
-  Hint: __Read Only
-  Value: 
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{D4706420-3DF1-4009-8C25-9C306D91BD1E}"
-- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
-  Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Plain Header Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Plain Header Folder']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
+  Value: Office/32x32/window_dialog.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
   Value: |
-    <image mediaid="{D75A6B94-1EFA-428C-AB5B-1442B00895E2}" />
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsRenderingsWithDynamicPlaceholders=true
+    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
+    {AAE4E009-0F80-46F2-A8BF-AF389624B0DA}
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{89DABC56-9FBE-4D21-86CF-A0579F912AAD}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -66,26 +49,30 @@ Languages:
       Hint: __Updated
       Value: 20231114T034000Z
 - Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20111213T133000Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\JssImport
+        sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f55b86ca-5498-483e-b881-12ca5bd869d6"
+      Value: "7ef3b2d0-03ef-4aeb-9c0d-d57159eac1b6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240131T153508Z
+      Value: 20240126T121354Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
