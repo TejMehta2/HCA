@@ -4,9 +4,8 @@ import {
   RichText,
   Placeholder,
   ComponentRendering,
-  Text
-}
-  from '@sitecore-jss/sitecore-jss-nextjs';
+  Text,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
@@ -54,6 +53,5 @@ export const Default = (props: CTABlockProps): JSX.Element => {
       <br />
       <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
     </div>
-
   );
 };
