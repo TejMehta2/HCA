@@ -59,15 +59,23 @@
 
   // Hover
   --cta-full-hover-background: #{$main-turquoise-10};
+  --background: var(
+    --cta-full-hover-background
+  ); // Override theme functionality for this button
+
+  --cta-full-hover-border: #{$main-turquoise-10};
 
   // Disabled
   --cta-full-disabled-text: #{$dark-blue-40};
+  --cta-full-disabled-border: #{$main-turquoise-5};
+  --cta-full-disabled-background: #{$main-turquoise-5};
 
   // Active
   --cta-full-active-background: #{$main-turquoise-5};
 
   // Focus
-  --cta-full-focus-border: #{$dark-blue};
+  --cta-full-focus-outline: #{$dark-blue};
+  --cta-full-focus-border: #{$main-turquoise-5};
 }
 @mixin apply-cta-outline-dark {
   // Base

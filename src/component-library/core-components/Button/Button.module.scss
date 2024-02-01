@@ -127,7 +127,8 @@
 
   &,
   &-dark,
-  &-light {
+  &-light,
+  &-light-blue {
     a,
     button {
       color: var(--cta-full-text);
@@ -168,30 +169,6 @@
   // Overrides
   &-light-blue {
     @include apply-cta-full-light-blue;
-
-    a,
-    button {
-      background-color: var(--cta-full-background);
-      color: var(--cta-full-text);
-      border: var(--cta-full-border);
-
-      @include apply-hover-transition(
-        var(--cta-full-hover-background),
-        var(--background)
-      );
-
-      &:active {
-        background-color: var(--cta-full-disabled-text);
-      }
-
-      &:disabled {
-        color: var(--cta-full-disabled-background);
-      }
-
-      &:focus-visible {
-        border-color: var(--cta-full-focus-border);
-      }
-    }
   }
 
   // Overrides
