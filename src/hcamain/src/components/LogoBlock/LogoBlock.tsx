@@ -70,10 +70,7 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <br />
       <Text field={props.fields.Title} />
       <br />
-      <JssRichText
-        className="promo-text"
-        field={props.fields.Text}
-      />
+      <JssRichText className="promo-text" field={props.fields.Text} />
       <br />
       <JssLink field={props.fields.CTALink}></JssLink>
 
