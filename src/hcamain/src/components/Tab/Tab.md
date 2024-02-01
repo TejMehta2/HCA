@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# Tab documentation
 
 ## Additional information
 

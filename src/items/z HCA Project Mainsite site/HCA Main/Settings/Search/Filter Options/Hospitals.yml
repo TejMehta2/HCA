@@ -1,0 +1,33 @@
+﻿---
+ID: "74b661f5-1a80-46d7-a41a-cee3d7a55e26"
+Parent: "38c99f19-63e6-41d4-90b9-ea99083fe7ca"
+Template: "906c2695-c56a-4a20-947d-36b709fdeb95"
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Hospitals
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240130T071401Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "eefb6ebb-bd84-4570-8b90-a92727d93337"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "c204214a-0246-4eff-97f5-3c5aa324191e"
+      Hint: Header
+      Value: Hospitals
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240131T090930Z
+    - ID: "e037b311-a21a-440f-81fd-8858921e9f72"
+      Hint: Filters
+      Value: |
+        {34316BD0-62C2-49F1-8274-33EC0938BDD2}
+        {269C1E99-16CE-4780-BB47-9B94DBE25ED3}
+        {CFEC795C-AB68-440B-B5AC-1FD84F4F395D}
+        {B10E1EFD-C9FB-4562-A1EC-81D278E346B2}

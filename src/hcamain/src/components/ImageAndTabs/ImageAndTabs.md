@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# ImageAndTabs documentation
 
 ## Additional information
 

@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# ConsultantSearch documentation
 
 ## Additional information
 
