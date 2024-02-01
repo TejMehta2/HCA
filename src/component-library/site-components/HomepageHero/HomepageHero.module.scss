@@ -1,0 +1,83 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  --image-size: #{px-to-rem(566)};
+
+  background-color: var(--background);
+  color: var(--text);
+  padding: $spacing-13 0 calc((var(--image-size) / 2) + px-to-rem(40));
+  position: relative;
+  z-index: 1;
+  overflow-x: clip;
+  margin-bottom: calc(var(--image-size) / 2 - px-to-rem(40));
+
+  @include media(screen-m) {
+    --image-size: #{px-to-rem(894)};
+    padding-bottom: $spacing-13;
+    margin-bottom: 0;
+  }
+
+  @include media(screen-l) {
+    --image-size: #{px-to-rem(1336)};
+  }
+
+  @include media(screen-xl) {
+    --image-size: #{px-to-rem(1460)};
+  }
+}
+
+.container {
+  @include responsive-container;
+  @include responsive-grid;
+}
+
+.title,
+.cta-section {
+  @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+}
+
+.search {
+  @include responsive-grid-span($breakpoint-l: 7);
+}
+
+.cta-section {
+  margin-top: $spacing-7;
+}
+
+.ctas {
+  margin-top: $spacing-3;
+  display: grid;
+  gap: $spacing-2;
+}
+
+.image {
+  position: absolute;
+  bottom: calc((var(--image-size) / 2) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--image-size);
+  height: var(--image-size);
+  mask: url('../../assets/shapes/diamond-curved.svg');
+  mask-repeat: no-repeat;
+  mask-size: 100%;
+  mask-position: center;
+  z-index: -1;
+
+  @include media(screen-m) {
+    top: -50%;
+    left: unset;
+    bottom: unset;
+    transform: none;
+    right: -36%;
+    mask-size: auto 100%;
+    mask-position: left;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+}
