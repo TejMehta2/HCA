@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# BookAnAppointmentCTA documentation
 
 ## Additional information
 

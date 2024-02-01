@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# TreatmentsSearch documentation
 
 ## Additional information
 

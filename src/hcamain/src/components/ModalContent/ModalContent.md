@@ -1,4 +1,4 @@
-# ServiceCards documentation
+# ModalContent documentation
 
 ## Additional information
 

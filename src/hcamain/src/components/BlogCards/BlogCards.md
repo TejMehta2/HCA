@@ -1,4 +1,4 @@
-# BlogPageHeader documentation
+# BlogCards documentation
 
 ## Additional information
 
