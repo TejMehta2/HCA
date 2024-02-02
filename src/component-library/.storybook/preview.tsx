@@ -49,9 +49,9 @@ const preview: Preview = {
     viewport: { viewports: customViewports },
 
   },
-  decorators: [
-    (Story) => (<Themes theme={'J-HCA-Turquoise-10'}><Story/></Themes>)
-  ]
+  // decorators: [
+  //   (Story) => (<Themes theme={'J-HCA-Turquoise-10'}><Story/></Themes>)
+  // ]
 };
 
 export default preview;
