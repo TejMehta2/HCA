@@ -1,4 +1,6 @@
 .main-wrapper {
+  background-color: var(--background);
+  transition: 1000ms linear;
   & > div {
     height: 100vh;
   }
