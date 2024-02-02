@@ -40,25 +40,25 @@ interface Fields {
   ResultsPerPage: Field<string>;
 }
 
-type TreatmentsSearchProps = {
+type TestAndScansSearchProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
 
-const TreatmentsSearchDefaultComponent = (
-  props: TreatmentsSearchProps
+const TestAndScansSearchDefaultComponent = (
+  props: TestAndScansSearchProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">TreatmentsSearch no datasource</span>
+      <span className="is-empty-hint">TestAndScansSearch no datasource</span>
     </div>
   </div>
 );
 
-export const Default = (props: TreatmentsSearchProps): JSX.Element => {
+export const Default = (props: TestAndScansSearchProps): JSX.Element => {
   const { t } = useI18n();
   if (!props.fields) {
-    return <TreatmentsSearchDefaultComponent {...props} />;
+    return <TestAndScansSearchDefaultComponent {...props} />;
   }
   return (
     <div className={`component ${props.params.styles}`}>

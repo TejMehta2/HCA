@@ -1,6 +1,6 @@
 ﻿---
 ID: "17076077-07fe-4a6f-bc9c-166df461fc19"
-Parent: "655c5323-b313-4dab-9c32-d37fb7447539"
+Parent: "89640792-56c1-48ec-86d8-dc9273f8a691"
 Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
 Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Locations/Manchester
 Languages:
@@ -21,14 +21,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2d84ad6e-d2dc-4ca5-ad05-fd65fd6bf9cf"
+      Value: "bbca6733-17b9-4990-89e8-e97fdd34257b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240131T194952Z
+      Value: 20240201T135434Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
       Value: city=Manchester
