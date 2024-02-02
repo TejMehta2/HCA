@@ -53,6 +53,25 @@
   @include apply-theme-l;
 }
 
+.master-A-HCA-Main-Turquoise,
+.master-B-HCA-Green,
+.master-C-HCA-Beige,
+.master-D-HCA-Light-Orange,
+.master-E-HCA-Dark-Grey,
+.master-F-HCA-White,
+.master-G-HCA-Green-40,
+.master-H-HCA-Green-20,
+.master-I-HCA-Turquoise-20,
+.master-J-HCA-Turquoise-10,
+.master-K-HCA-Turquoise-5,
+.master-L-HCA-Coral-60 {
+  .E-HCA-Dark-Grey,
+  .F-HCA-White {
+    --background: #{inherit};
+    --text: #{inherit};
+  }
+}
+
 /* prettier-ignore */
 :export {
   mode: {

@@ -8,28 +8,13 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
   const wrapperRef = useRef(null as HTMLElement | null);
 
-  //const [componentThemes, setComponentThemes] = useState<string[] | null>(null);
   const [currentTheme, setCurrentTheme] = useState('');
-  const [isIntersecting, setIsIntersecting] = useState(false);
-
-  // useEffect(() => {
-  //   const themes: string[] = [];
-
-  //   children?.props.children?.map((component) => {
-  //     if (component.props.theme) {
-  //       themes.push(component.props.theme);
-  //     }
-  //   });
-
-  //   setComponentThemes(themes);
-  // }, [children]);
 
   useEffect(() => {
     const targetSections = wrapperRef?.current.querySelectorAll('& > div');
-    targetSections.forEach((section) => {
-      section.removeAttribute('class');
-    });
-
+    // targetSections.forEach((section) => {
+    //   section.removeAttribute('class');
+    // });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -39,15 +24,17 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
         }
       });
     });
-
     targetSections.forEach((section) => {
       observer.observe(section);
     });
   }, []);
 
   return (
-    <Themes theme={currentTheme}>
-      <div className={styles['main-wrapper']} ref={wrapperRef}>
+    <Themes theme={currentTheme} topLevelTheme={currentTheme}>
+      <div
+        className={[styles['main-wrapper'], 'scroll-wrapper'].join(' ')}
+        ref={wrapperRef}
+      >
         {children}
       </div>
     </Themes>
