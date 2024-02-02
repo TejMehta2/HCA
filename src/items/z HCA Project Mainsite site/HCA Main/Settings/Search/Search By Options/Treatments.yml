@@ -1,8 +1,8 @@
 ﻿---
-ID: "cd85fb13-da7f-4504-9ce2-b70b10d8068a"
-Parent: "1a9f80c4-fb24-4fce-bd4b-c6bcca2978a7"
+ID: "d4667332-3f33-47b9-a6d6-4c6cc51c8683"
+Parent: "3ae88b2e-b437-4881-9c4d-ad3602659aa4"
 Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
-Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Hospitals/London Bridge Hospital
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Search By Options/Treatments
 Languages:
 - Language: en
   Versions:
@@ -10,10 +10,10 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240130T071418Z
+      Value: 20240202T131127Z
     - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
       Hint: DisplayName
-      Value: London Bridge Hospital
+      Value: Treatments
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -24,14 +24,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "be9020b5-a98d-40c5-9fbf-8f7769c3a6d0"
+      Value: "7d44216f-2b2c-4a51-9f73-f4e7fa16315a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T164527Z
+      Value: 20240202T163622Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: practice=London Bridge Hospital
+      Value: searchby=Treatments

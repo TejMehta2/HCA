@@ -1871,6 +1871,22 @@ export namespace Foundation.Search {
 
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Search/Filter Option Folder
+    */
+    export type FilterOptionFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Search/Filter Option Folder
+    */
+    export type FilterOptionFolderJson =  {
+        
+
+    }
 }
 export namespace PageContent {
 
@@ -3833,6 +3849,60 @@ export namespace PageContent {
         
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Test And Scans Search
+    */
+    export type TestAndScansSearch = Foundation.SearchBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Test And Scans Search
+    */
+    export type TestAndScansSearchJson = Foundation.SearchBaseJson &  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Search
+    */
+    export type TestAndScansSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Search
+    */
+    export type TestAndScansSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Test And Scans Search Folder
+    */
+    export type TestAndScansSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Test And Scans Search Folder
+    */
+    export type TestAndScansSearchFolderJson =  {
+        
+
+    }
 }
 export namespace Foundation.RenderingParameters {
 
@@ -4304,6 +4374,11 @@ Foundation.HcabasePageDataJson &  {
     export type SearchBase =  {
         fields?: { 
             /**
+            * Represents the Filter By field (8c843399-baed-4ba8-a58a-08e16d580077).
+            */
+            FilterBy?: Item[];
+
+            /**
             * Represents the Filter Options field (4f6c6765-00b6-42ff-b817-3609cc730145).
             */
             FilterOptions?: Item[];
@@ -4327,6 +4402,11 @@ Foundation.HcabasePageDataJson &  {
             * Represents the Results Per Page field (97368152-ecf3-40f0-affb-f9a3c57b6d05).
             */
             ResultsPerPage?: Field<number>;
+
+            /**
+            * Represents the Search By field (3b5deddf-c424-405c-8de6-18c4c1aa0fc7).
+            */
+            SearchBy?: Item[];
 
             /**
             * Represents the Search Placeholder field (7a298203-0924-4526-8276-f59df39e9e07).
@@ -4372,6 +4452,13 @@ Foundation.HcabasePageDataJson &  {
     export type SearchBaseJson =  {
         
             /**
+            * Represents the Filter By field (8c843399-baed-4ba8-a58a-08e16d580077).
+            */
+            FilterBy?: {
+                jsonValue: Item[]
+            };
+
+            /**
             * Represents the Filter Options field (4f6c6765-00b6-42ff-b817-3609cc730145).
             */
             FilterOptions?: {
@@ -4404,6 +4491,13 @@ Foundation.HcabasePageDataJson &  {
             */
             ResultsPerPage?: {
                 jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Search By field (3b5deddf-c424-405c-8de6-18c4c1aa0fc7).
+            */
+            SearchBy?: {
+                jsonValue: Item[]
             };
 
             /**

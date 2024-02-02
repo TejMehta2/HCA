@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Foundation/Search/Filter Option Folder
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Business/32x32/funnel_add.png
+  Value: core3/32x32/folder_open.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5e43f52f-322d-427f-a4d3-5b7a0045a1ba"
+      Value: "fa019f44-0a93-4ab6-83fd-917420923463"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240201T202225Z
+      Value: 20240202T131000Z

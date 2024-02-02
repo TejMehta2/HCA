@@ -20,9 +20,12 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T065253Z
+    - ID: "3b5deddf-c424-405c-8de6-18c4c1aa0fc7"
+      Hint: SearchBy
+      Value: "{B3304991-B3D0-467B-B753-985960595D8F}"
     - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
       Hint: FilterOptions
-      Value: 
+      Value: "{74B661F5-1A80-46D7-A41A-CEE3D7A55E26}"
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -34,14 +37,19 @@ Languages:
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
       Value: Search for a <b>service or treatments</b>
+    - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
+      Hint: FilterBy
+      Value: "{CC2A321E-AA1B-4AE2-BA3E-CFA836280CF8}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b4bfb890-15b0-4f1e-8b55-1314ec309cf7"
+      Value: "208efb8a-1777-4b15-ba73-0164dbb96774"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
         {B6B5F55F-0965-4996-BE5A-70F6B3581C95}
         {60468383-EF7B-4714-9B6B-CBEEABF06C94}
+        {A53B7570-5EF6-4ABA-9C89-2C388E56B2CF}
+        {80C4B662-9AA6-4679-A3DC-F38A78F7A1B7}
     - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
       Hint: ResultsPerPage
       Value: 12
@@ -60,4 +68,4 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T070536Z
+      Value: 20240202T165626Z
