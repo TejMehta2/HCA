@@ -74,7 +74,8 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                 <span
                   dangerouslySetInnerHTML={{
                     __html:
-                      modalContent.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
+                      modalContent.fields.PrimaryCTAIcon?.fields.SvgMarkup
+                        .value,
                   }}
                 ></span>
               )}
@@ -85,7 +86,8 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                 <span
                   dangerouslySetInnerHTML={{
                     __html:
-                      modalContent.fields.SecondaryCTAIcon?.fields?.SvgMarkup.value,
+                      modalContent.fields.SecondaryCTAIcon?.fields?.SvgMarkup
+                        .value,
                   }}
                 ></span>
               )}
