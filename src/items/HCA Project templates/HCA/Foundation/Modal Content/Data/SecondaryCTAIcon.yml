@@ -1,27 +1,30 @@
 ﻿---
-ID: "eebd3076-badf-4340-b1da-735d54239c77"
+ID: "71340edf-a535-4119-8cc3-2036bae2e824"
 Parent: "4273089f-d11e-4e40-a7e3-b15f496c46d9"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Modal Content/Data/PrimaryCTA
+Path: /sitecore/templates/Project/HCA/Foundation/Modal Content/Data/SecondaryCTAIcon
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{DF22D821-536E-49CC-8A7E-BF1ABDC94E9B}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: General Link
+  Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 500
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Primary CTA
+    Value: Secondary CTA Icon
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240202T115918Z
+      Value: 20240202T115932Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,7 +35,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e4e9e546-a2c3-44f6-8489-d02ef98380b3"
+      Value: "4cd4e019-acca-43b8-b2c5-a32d69cecbf3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

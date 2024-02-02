@@ -1,10 +1,9 @@
 import React from 'react';
 import {
   Field,
+  Text as JssText,
   LinkField,
   Link as JssLink,
-  ComponentRendering,
-  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useI18n } from 'next-localization';
 
@@ -14,14 +13,25 @@ type HCAIconFields = {
   };
 };
 
+type ModalContentFields = {
+  fields: {
+    Title: Field<string>;
+    Text: Field<string>;
+    PrimaryCTAIcon: HCAIconFields;
+    PrimaryCTA: LinkField;
+    SecondaryCTAIcon: HCAIconFields;
+    SecondaryCTA: LinkField;
+  };
+};
+
 interface Fields {
   CTAIcon: HCAIconFields;
   CTALink: LinkField;
+  ModalContent: ModalContentFields[];
 }
 
 type BookAnAppointmentCTAProps = {
   params: { [key: string]: string };
-  rendering: ComponentRendering;
   fields: Fields;
 };
 
@@ -36,7 +46,6 @@ const BookAnAppointmentCTADefaultComponent = (
 );
 
 export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
-  const phKey = `book-an-appointment-cta-${props.params.DynamicPlaceholderId}`;
   const { t } = useI18n();
   if (!props.fields) {
     return <BookAnAppointmentCTADefaultComponent {...props} />;
@@ -47,12 +56,44 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
         {props?.fields?.CTALink.value.text && (
           <span
             dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon?.fields.SvgMarkup,
+              __html: props.fields.CTAIcon?.fields.SvgMarkup.value,
             }}
           ></span>
         )}
       </JssLink>
-      <Placeholder name={phKey} rendering={props.rendering} />
+
+      <ul>
+        {props.fields.ModalContent.map((modalContent, index) => (
+          <li key={index}>
+            <JssText field={modalContent.fields.Title} />
+            <br />
+            <JssText field={modalContent.fields.Text} />
+            <br />
+            <JssLink field={modalContent.fields?.PrimaryCTA}>
+              {modalContent.fields.PrimaryCTA.value.text && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      modalContent.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+            <br />
+            <JssLink field={modalContent.fields?.SecondaryCTA}>
+              {modalContent?.fields?.SecondaryCTA?.value.text && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      modalContent.fields.SecondaryCTAIcon?.fields?.SvgMarkup.value,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+            <br />
+          </li>
+        ))}
+      </ul>
       <p>Translated text: {t('close')}</p>
     </div>
   );

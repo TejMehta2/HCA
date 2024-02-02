@@ -1,17 +1,8 @@
 ﻿---
-ID: "1de8ceb3-5e9d-495d-91b9-12bd249680db"
-Parent: "7bfcaa48-b14e-45df-9c72-d01460580782"
-Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
-Path: /sitecore/layout/Placeholder Settings/Project/HCA/Page Content/Book An Appointment CTA
-SharedFields:
-- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
-  Hint: Placeholder Key
-  Value: "book-an-appointment-cta-{*}"
-- ID: "e391b526-d0c5-439d-803e-17512eae6222"
-  Hint: Allowed Controls
-  Value: |
-    {CFF4D5A2-1F9F-4CD5-8872-FA45CD5BE407}
-    {C25766C8-9AFD-4D28-87FE-147774F6806D}
+ID: "4273089f-d11e-4e40-a7e3-b15f496c46d9"
+Parent: "3d67ae05-dab2-41b5-b6ba-e531a3b08b4a"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Foundation/Modal Content/Data
 Languages:
 - Language: en
   Versions:
@@ -19,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240129T213844Z
+      Value: 20240129T205303Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -30,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "672e882f-bda2-4f89-9f68-8bdd9bad4a4c"
+      Value: "77088931-6cb3-477f-8f8a-4f6e75a176e0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T213952Z
+      Value: 20240129T205326Z

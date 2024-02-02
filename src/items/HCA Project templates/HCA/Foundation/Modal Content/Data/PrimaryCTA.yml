@@ -1,26 +1,27 @@
 ﻿---
-ID: "aa94c4fb-e401-4b18-a2b5-baf15e89b12e"
-Parent: "a7bcdc79-952b-42c2-844a-dd2fa0fd1a01"
-Template: "3aea335c-d06d-45b1-841a-cbc8d2d1ce40"
-Path: /sitecore/system/Settings/Project/HCA/Page Content/Page Content Headless Site Setup/Add Modal Contents Data Item
+ID: "eebd3076-badf-4340-b1da-735d54239c77"
+Parent: "4273089f-d11e-4e40-a7e3-b15f496c46d9"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Foundation/Modal Content/Data/PrimaryCTA
 SharedFields:
-- ID: "52c91c75-6698-4701-a8a2-242ace59a8d6"
-  Hint: Location
-  Value: "{BA2F959D-A614-4C92-8B57-F1FC1A323ABE}"
-- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
-  Hint: Name
-  Value: Modal Content
-- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
-  Hint: Template
-  Value: "{BEC03000-D856-4DCC-AA4D-8F2CC8F6B25C}"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: General Link
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Primary CTA
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240129T205219Z
+      Value: 20240202T115918Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +32,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3fb79dde-f5cb-416a-9c64-fe657b066047"
+      Value: "e4e9e546-a2c3-44f6-8489-d02ef98380b3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T205219Z
+      Value: 20240202T121814Z
