@@ -2,18 +2,27 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  ComponentRendering,
-  Placeholder,
+  LinkField,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+
+type HCAIconFields = {
+  fields: {
+    SvgMarkup: Field<string>;
+  };
+};
 
 interface Fields {
   Title: Field<string>;
   Text: Field<string>;
+  PrimaryCTAIcon: HCAIconFields;
+  PrimaryCTA: LinkField;
+  SecondaryCTAIcon: HCAIconFields;
+  SecondaryCTA: LinkField;
 }
 
 type ModalContentProps = {
   params: { [key: string]: string };
-  rendering: ComponentRendering;
   fields: Fields;
 };
 
@@ -28,7 +37,6 @@ const ModalContentDefaultComponent = (
 );
 
 export const Default = (props: ModalContentProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <ModalContentDefaultComponent {...props} />;
   }
@@ -38,7 +46,25 @@ export const Default = (props: ModalContentProps): JSX.Element => {
       <br />
       <JssText field={props.fields.Text} />
       <br />
-      <Placeholder name={phKey} rendering={props.rendering} />
+      <JssLink field={props.fields?.PrimaryCTA}>
+        {props.fields.PrimaryCTA.value.text && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.PrimaryCTAIcon?.fields.SvgMarkup,
+            }}
+          ></span>
+        )}
+      </JssLink>
+      <br />
+      <JssLink field={props.fields?.SecondaryCTA}>
+        {props?.fields?.SecondaryCTA.value.text && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.SecondaryCTAIcon?.fields.SvgMarkup,
+            }}
+          ></span>
+        )}
+      </JssLink>
     </div>
   );
 };

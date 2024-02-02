@@ -1,8 +1,8 @@
 ﻿---
-ID: "564707c1-f3f5-40c4-9fdf-edb061af777a"
-Parent: "0d548691-3d02-4748-9689-f3af616d1aff"
+ID: "1ee0402b-ff50-44ee-a0c7-0164e3b69946"
+Parent: "ab2437a0-9d58-4dbb-a2fa-5fc52a5d61fc"
 Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA71/Data/Modal Content 1/CTA Button 1
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA71/Data/Book An Appointment CTA/Modal Content 2/CTA Button 2
 Languages:
 - Language: en
   Versions:
@@ -13,18 +13,18 @@ Languages:
       Value: 20240129T211425Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bbe3934d-4b1f-4723-a5c3-92cd5f8c7c46"
+      Value: "21e35d15-e685-492d-81eb-9de2179f9429"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Find a &lt;b&gt;consultant&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link text="View all &lt;b&gt;GP services&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T214738Z
+      Value: 20240129T215700Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
-      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+      Value: 
