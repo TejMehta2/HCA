@@ -12,7 +12,8 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(initialTheme);
 
   useEffect(() => {
-    const targetSections = wrapperRef?.current?.querySelectorAll('& > div');
+    const targetSections =
+      wrapperRef?.current?.querySelectorAll(':scope > div');
 
     const observer = new IntersectionObserver(
       (entries) => {

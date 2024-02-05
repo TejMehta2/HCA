@@ -13,6 +13,8 @@ import Themes from '../../foundation/Themes/Themes';
 import ServiceCards from '../../site-components/ServiceCards/ServiceCards';
 import CardService from '../CardService/CardService';
 
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
+
 const mockProps: ScrollTransitionProps = {
   initialTheme: 'F-HCA-White',
   children: (
@@ -186,6 +188,7 @@ const mockProps: ScrollTransitionProps = {
 
 describe('ScrollTransition', () => {
   it('Renders children from props', async () => {
+    mockAllIsIntersecting(true);
     const { getByText } = render(<ScrollTransition {...mockProps} />);
     expect(getByText('Committed to your care')).toBeVisible();
   });
