@@ -4,6 +4,21 @@
 
 // Themes by name from design library to match backend
 
+$themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
+  D-HCA-Light-Orange, E-HCA-Dark-Grey, F-HCA-White, G-HCA-Green-40,
+  H-HCA-Green-20, I-HCA-Turquoise-20, J-HCA-Turquoise-10, K-HCA-Turquoise-5,
+  L-HCA-Coral-60;
+
+@each $theme in $themeOptions {
+  body {
+    div[data-theme='#{$theme}'] + div[data-theme='#{$theme}'] {
+      & > div {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
 /* stylelint-disable selector-class-pattern */
 .A-HCA-Main-Turquoise {
   @include apply-theme-a;

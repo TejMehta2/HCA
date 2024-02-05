@@ -42,16 +42,18 @@ const SearchWrapper = (props: SearchWrapperProps): JSX.Element => {
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
-        <div className={styles.header}>{header}</div>
-        <div className={styles['results-header']}>
-          <div className={styles['search-detail']}>
-            {searchDetail && <div>{searchDetail}</div>}
-            {showing && <div>{showing}</div>}
+        {header}
+        <Themes theme={theme}>
+          <div className={styles['results-header']}>
+            <div className={styles['search-detail']}>
+              {searchDetail && searchDetail}
+              {showing && <div>{showing}</div>}
+            </div>
+            {tabbedResults && (
+              <Tabs tabs={tabs} callback={tabChangeHandler}></Tabs>
+            )}
           </div>
-          {tabbedResults && (
-            <Tabs tabs={tabs} callback={tabChangeHandler}></Tabs>
-          )}
-        </div>
+        </Themes>
 
         {tabbedResults
           ? tabContent
