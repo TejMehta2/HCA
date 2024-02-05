@@ -5,7 +5,7 @@ import Themes from '../../foundation/Themes/Themes';
 import { Theme as ThemeTypes } from '../../foundation/Themes/Themes.types';
 
 const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
-  const { children, initialTheme } = props;
+  const { children, initialTheme = 'F-HCA-White' } = props;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -18,7 +18,9 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const intersectingTheme = entry.target.getAttribute('data-theme');
+            const intersectingTheme = entry.target.getAttribute(
+              'data-theme'
+            ) as ThemeTypes;
             if (intersectingTheme) {
               setCurrentTheme(intersectingTheme);
             }
