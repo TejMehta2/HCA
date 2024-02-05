@@ -1,8 +1,8 @@
 ﻿---
-ID: "f1f7efab-eff6-4f67-abe2-c6131fca08ab"
+ID: "27b3b237-06a5-4481-830e-16eeb609984d"
 Parent: "847ace4a-a241-450f-95a3-c4da40e2f158"
 Template: "96e5e6df-b4f7-4587-b195-83bf31746cbe"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data/Locations Map/Map Card 1
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data/Locations Map/Manchester
 Languages:
 - Language: en
   Versions:
@@ -13,7 +13,7 @@ Languages:
       Value: 20240202T090254Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ec8cefed-c994-4080-a0d3-8c05b638ca05"
+      Value: "cd77d64c-cbdf-4263-91aa-487939abd824"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
       Hint: Colour
       Value: #F9C099
@@ -27,10 +27,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
-      Value: 9
+      Value: 2
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T090449Z
+      Value: 20240205T133249Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
       Value: Locations across London

@@ -2,7 +2,9 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
+  Image as JSSImage,
   RichText,
+  ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type CardsFields = {
@@ -10,7 +12,6 @@ type CardsFields = {
     Number: Field<string>;
     Text: Field<string>;
     Colour: Field<string>;
-    BackgroundImage: Field<string>;
     ForegroundImage: Field<string>;
     PositionX: Field<string>;
     PositionY: Field<string>;
@@ -21,6 +22,7 @@ interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
   Text: Field<string>;
+  BackgroundImage: ImageFieldValue;
   Cards: CardsFields[];
 }
 
@@ -51,6 +53,8 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props.fields.Text} />
       <br />
+      <JSSImage field={props.fields.BackgroundImage} />
+      <br />
       <ul>
         {props.fields.Cards.map((card, index) => (
           <li key={index}>
@@ -60,8 +64,6 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
             <JssText field={card.fields.Text} />
             <br />
             <JssText field={card.fields.Colour} />
-            <br />
-            <JssText field={card.fields.BackgroundImage} />
             <br />
             <JssText field={card.fields.ForegroundImage} />
             <br />
