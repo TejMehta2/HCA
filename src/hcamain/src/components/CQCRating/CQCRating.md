@@ -1,4 +1,4 @@
-# IntroBlock documentation
+# CQCRating documentation
 
 ## Additional information
 

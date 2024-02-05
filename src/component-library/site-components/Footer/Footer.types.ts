@@ -6,7 +6,7 @@ export interface FooterColumn {
 }
 
 export interface FooterProps {
-  buttons: JSX.Element[];
+  buttons: JSX.Element;
   columns: FooterColumn[];
-  legals: JSX.Element[];
+  legals?: JSX.Element[];
 }

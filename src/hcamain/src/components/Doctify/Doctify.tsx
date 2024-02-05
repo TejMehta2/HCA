@@ -1,38 +1,12 @@
 import React from 'react';
 import {
-  Field,
-  LinkField,
-  ImageField,
-  Text,
-  Image,
-  Link,
+  Text as JssText,
+  Image as JssImage,
+  Link as JssLink,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-
-interface DoctifyLogoFields {
-  fields: {
-    Text: Field<string>;
-    Logo: ImageField;
-  };
-}
-
-interface DoctifyReviewsFields {
-  fields: {
-    Stars: Field<string>;
-    Reviews: Field<string>;
-    DoctifyLogoLight: DoctifyLogoFields;
-    DoctifyLogoDark: DoctifyLogoFields;
-    Link: LinkField;
-  };
-}
-
-interface Fields {
-  Reviews: DoctifyReviewsFields;
-}
-
-type DoctifyProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-};
+import Doctify from '@component-library/components/Doctify/Doctify';
+import { DoctifyProps } from './Doctify.types';
 
 const DoctifyDefaultComponent = (props: DoctifyProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
@@ -43,30 +17,43 @@ const DoctifyDefaultComponent = (props: DoctifyProps): JSX.Element => (
 );
 
 export const Default = (props: DoctifyProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <DoctifyDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <span>
-        <b>DoctifyReviews</b>
-      </span>
-      <br />
-      <Text field={props.fields.Reviews.fields.Reviews} />
-      <br />
-      <Text field={props.fields.Reviews.fields.Stars} />
-      <br />
-      <Text field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Text} />
-      <br />
-      <Image
-        field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Logo}
-      />
-      <br />
-      <Text field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Text} />
-      <br />
-      <Image field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Logo} />
-      <br />
-      <Link field={props.fields.Reviews.fields.Link}></Link>
+    <div
+      className={`component ${props.params.styles}`}
+      component-name="doctify"
+    >
+      <Doctify
+        link={<JssLink field={props.fields.Reviews.fields.Link}></JssLink>}
+        rating={
+          isExperienceEditor ? (
+            <JssText field={props.fields.Reviews.fields.Stars} />
+          ) : (
+            props.fields.Reviews.fields.Stars.value
+          )
+        }
+        reviews={<JssText field={props.fields.Reviews.fields.Reviews} />}
+        logo={{
+          dark: (
+            <JssImage
+              field={props.fields.Reviews.fields.DoctifyLogoDark?.fields.Logo}
+              width="83"
+              height="21"
+            />
+          ),
+          light: (
+            <JssImage
+              field={props.fields.Reviews.fields.DoctifyLogoLight?.fields.Logo}
+              width="83"
+              height="21"
+            />
+          ),
+        }}
+      ></Doctify>
     </div>
   );
 };

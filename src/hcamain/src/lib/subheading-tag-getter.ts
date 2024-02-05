@@ -1,7 +1,7 @@
 // Returns the next heading tag in the hierarchy, based on the provided parent tag.
 // This is useful for page components where CMS content can determine the parent heading tag, and we need the child heading tags to correspond for correct SEO
 const getSubheadingTag = (
-  parentTag: keyof JSX.IntrinsicElements,
+  parentTag: keyof JSX.IntrinsicElements = 'p',
   fallback: keyof JSX.IntrinsicElements
 ) => {
   switch (parentTag) {

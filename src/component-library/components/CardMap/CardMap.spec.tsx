@@ -5,29 +5,42 @@ import { CardMapProps } from './CardMap.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CardMapProps = {
-  theme: 'E-HCA-Dark-Grey',
-  amount: (
-    <Text tag="p" variation="display-1">
-      35
-    </Text>
-  ),
   title: (
-    <Text tag="p" variation="heading-2">
-      Locations across the UK
+    <Text tag="h3" variation="heading-1">
+      The Harley Street Clinic
     </Text>
   ),
-  cta: (
-    <a href="#">
-      <span>
-        View <strong>all</strong>
-      </span>
-    </a>
+  address: (
+    <Text tag="p" variation="body-large">
+      35 Weymouth Street W1G 8BJ London
+    </Text>
   ),
+  distance: (
+    <Text tag="p" variation="body-bold-small">
+      0.12 miles from your location
+    </Text>
+  ),
+  ctas: {
+    button1: (
+      <a href="#">
+        <span>
+          Learn <strong>more</strong>
+        </span>
+      </a>
+    ),
+    button2: (
+      <a href="#">
+        <span>
+          Get <strong>directions</strong>
+        </span>
+      </a>
+    ),
+  },
 };
 
 describe('CardMap', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<CardMap {...mockProps} />);
-    expect(getByText('Locations across the UK')).toBeVisible();
+    expect(getByText('The Harley Street Clinic')).toBeVisible();
   });
 });

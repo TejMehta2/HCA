@@ -9,6 +9,7 @@ import {
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
@@ -60,16 +61,21 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       variation={'3-columns'}
       gapSize={'small'}
       theme={props.params.Theme}
-      title={
-        <Text
-          variation={props.params.HeadingSize}
-          tag={props.params.HeadingTag}
-        >
-          <JssText
-            tag={'span'}
-            field={props.fields.data.item.title.jsonValue}
-          />
-        </Text>
+      header={
+        <AdvancedBlockHeader
+          paddingSize="small"
+          title={
+            <Text
+              variation={props.params.HeadingSize}
+              tag={props.params.HeadingTag}
+            >
+              <JssText
+                tag={'span'}
+                field={props.fields.data.item.title.jsonValue}
+              />
+            </Text>
+          }
+        />
       }
     >
       <>

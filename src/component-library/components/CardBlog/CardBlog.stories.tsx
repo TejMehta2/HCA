@@ -29,6 +29,34 @@ export const Default: StoryObj<typeof CardBlog> = {
             The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
           </a>
         </Text>
+
+        <Tags>
+          <a href="#">Announcement</a>
+        </Tags>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-Main-Turquoise">
+        <div style={{ background: 'var(--background)', padding: '1rem' }}>
+          <Story />
+        </div>
+      </Themes>
+    ),
+  ],
+};
+
+export const DefaultWithBodyCopy: StoryObj<typeof CardBlog> = {
+  args: {
+    children: (
+      <>
+        <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+        <Text tag="h3" variation="heading-2">
+          <a href="#">
+            The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+          </a>
+        </Text>
         <Text variation="body-large">
           There are over 1400 at The Portland, each year. Hear new mums sharing
           theirs

@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 
 export interface CardMapProps {
-  amount: ReactNode | JSX.Element;
+  image?: ReactNode | JSX.Element;
   title: ReactNode | JSX.Element;
-  cta: ReactNode | JSX.Element;
-  theme:
-    | 'B-HCA-Green'
-    | 'E-HCA-Dark-Grey'
-    | 'D-HCA-Light-Orange'
-    | 'L-HCA-Coral-60';
+  distance?: ReactNode | JSX.Element;
+  address: ReactNode | JSX.Element;
+  ctas: {
+    button1: ReactNode | JSX.Element;
+    button2: ReactNode | JSX.Element;
+    close?: ReactNode | JSX.Element;
+  };
 }

@@ -1,0 +1,51 @@
+﻿---
+ID: "cc15b472-61eb-4a50-9f99-b071deaba95b"
+Parent: "5b96cc58-0137-4ccf-af1f-b3232d7b384e"
+Template: "84c0a918-4b11-4b73-9d1a-3e90e6e22a55"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA68/Data/Image And Tabs/Tab 1
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "-100"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240118T124729Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "726261ae-5637-4c85-9743-eeffd98f70e4"
+      Hint: Image
+      Value: |
+        <image mediaid="{DDFC3EFF-770D-47BE-B0ED-B0C9F63CBF4E}" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "39119c45-7e41-4881-b107-6c3e813981e4"
+    - ID: "a1358851-56ea-4d29-a932-e23b7e9c49b8"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.&nbsp;
+    - ID: "a6a9c001-62a7-4327-9a48-ef9f8ad16363"
+      Hint: TabIcon
+      Value: "{14B83E94-8B31-4684-B2A5-FBE16EA4F3BD}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240129T121424Z
+    - ID: "dbc58a37-0c51-4d8e-a7c3-dd175bcc1cc8"
+      Hint: TabTitle
+      Value: "One-off"
+    - ID: "dc9e5fc1-28b4-4d82-a705-57504942c664"
+      Hint: Title
+      Value: "One-off appointments"

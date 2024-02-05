@@ -99,8 +99,9 @@
 .ctas {
   display: flex;
   flex-direction: column;
-  gap: px-to-rem(8);
   padding-top: $spacing-7;
+  gap: px-to-rem(8) 0;
+
   @include media(screen-m) {
     min-width: px-to-rem(314);
     align-self: self-start;

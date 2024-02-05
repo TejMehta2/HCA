@@ -127,7 +127,8 @@
 
   &,
   &-dark,
-  &-light {
+  &-light,
+  &-light-blue {
     a,
     button {
       color: var(--cta-full-text);
@@ -150,9 +151,12 @@
       }
 
       &:disabled {
-        background-color: var(--cta-full-disabled-background);
         color: var(--cta-full-disabled-text);
         border-color: var(--cta-full-disabled-border);
+
+        &::after {
+          background-color: var(--cta-full-disabled-background);
+        }
       }
 
       &:focus-visible {
@@ -165,30 +169,6 @@
   // Overrides
   &-light-blue {
     @include apply-cta-full-light-blue;
-
-    a,
-    button {
-      background-color: var(--cta-full-background);
-      color: var(--cta-full-text);
-      border: var(--cta-full-border);
-
-      @include apply-hover-transition(
-        var(--cta-full-hover-background),
-        var(--background)
-      );
-
-      &:active {
-        background-color: var(--cta-full-disabled-text);
-      }
-
-      &:disabled {
-        color: var(--cta-full-disabled-background);
-      }
-
-      &:focus-visible {
-        border-color: var(--cta-full-focus-border);
-      }
-    }
   }
 
   // Overrides
@@ -353,5 +333,64 @@
 
   &-light {
     @include apply-cta-carousel-light;
+  }
+}
+
+.square-outline {
+  button,
+  a {
+    border: 1px solid $dark-blue-10;
+    border-radius: $radius-small;
+    padding: $spacing-5 $spacing-7;
+    color: var(--cta-outline-text);
+    background-color: transparent;
+    width: 100%;
+    justify-content: center;
+
+    &:hover {
+      border-color: var(--cta-outline-hover-border);
+    }
+
+    &:active {
+      border-color: var(--cta-outline-active-border);
+    }
+
+    &:disabled {
+      background-color: var(--cta-outline-disabled-background);
+      color: var(--cta-outline-disabled-text);
+      border-color: var(--cta-outline-disabled-border);
+    }
+
+    &:focus-visible {
+      @include apply-focus-outline(var(--cta-outline-focus-outline));
+    }
+  }
+}
+
+.play {
+  button,
+  a {
+    height: px-to-rem(101);
+    width: px-to-rem(101);
+    position: relative;
+    border-radius: 50%;
+    padding: 0;
+    background: $white;
+
+    svg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: $dark-blue;
+    }
+
+    &:hover {
+      background: $main-turquoise-5;
+    }
+
+    &:active {
+      background: $main-turquoise-10;
+    }
   }
 }

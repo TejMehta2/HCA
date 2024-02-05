@@ -1,22 +1,27 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.grid {
+.wrapper {
   color: var(--text);
   background: var(--background);
   border-radius: 0 0 $radius-large 0;
-  padding: $spacing-12 $spacing-11;
+}
 
+.grid {
+  padding: $spacing-9 0;
   @include responsive-grid;
+
+  @include responsive-container;
 
   gap: 0;
 
-  & > div {
+  & > div:not(.search) {
     @include responsive-grid-span($default: 6, $breakpoint-l: 6);
   }
 }
 
 .heading {
+  display: flex;
   grid-row-start: 2;
   margin-bottom: $spacing-5;
 
@@ -39,4 +44,37 @@
   grid-row-start: 3;
 
   @include apply-body-large;
+}
+
+.search {
+  grid-row-start: 4;
+  margin-top: $spacing-7;
+  display: grid;
+  @include responsive-grid-span(6, 6, 9, 9);
+
+  &:has(.filters) {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-rem(8) 0;
+    @include responsive-grid-span(6, 6, 12, 12);
+
+    @include media(screen-m) {
+      gap: px-to-rem(8);
+      flex-flow: row wrap;
+
+      .searchbar {
+        width: 100%;
+      }
+    }
+
+    @include media(screen-l) {
+      flex-direction: row;
+      gap: 0 $spacing-2;
+
+      .searchbar {
+        width: unset;
+        flex: 1 1 auto;
+      }
+    }
+  }
 }

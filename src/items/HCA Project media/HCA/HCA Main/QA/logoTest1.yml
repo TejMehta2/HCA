@@ -1,0 +1,57 @@
+﻿---
+ID: "2fec7033-10ad-4428-ac90-8b1ffc04b663"
+Parent: "a4cb4849-a3c2-4f1c-9691-54fc537d4940"
+Template: "f1828a2c-7e5d-4bbd-98ca-320474871548"
+Path: /sitecore/media library/Project/HCA/HCA Main/QA/logoTest1
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "-/media/2FEC703310AD4428AC908B1FFC04B663.ashx?h=16&thn=1&w=16"
+- ID: "22eac599-f13b-4607-a89d-c091763a467d"
+  Hint: Width
+  Value: 314
+- ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
+  Hint: Blob
+  BlobID: "0d105266-7152-4687-b849-1180b81fa831"
+  Value: iVBORw0KGgoAAAANSUhEUgAAAToAAACYCAYAAAB04SUNAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOwSURBVHgB7drNbVxVAIbhc861AbGIPLIsYlaTCoAKSAe4A0IFmApiV4A7SEoIHSQVABXY2eBIljWzgQWZmcPcIY4Sy8k68+l5NnPuz2xfnZ9by0ecn5/vfXnv3s+194el1mnpZVoAPg3zUvofq95/64vFs8PDw4sPvVjvunl5eTkddnefrB8/LADb4eny9b+ndwWv3b7x6urqeNj97HeRA7bMo7Fdf60bdvvBezO6q+vrx72XkwKwxXotJ1/t75/eXL8N3TiTa7X9WgACLPrql68PDs7G8SZ0/+/JjcvVslcAMszXe3bfjXt2mz26NuyeFJEDsuwNu58/GQf1zWzuvAAE+ntok1Z3do4KQKgvFovjNtT6QwEINdTh+9ZL/bYAxOrT8TDCIQSQbNoKQDihA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QDyhA+IJHRBP6IB4QgfEEzogntAB8YQOiCd0QLzWS39ZAHLNWyvtvACEWvX+Z1v15YsCEKs/q7PZbO/1cjUrAIGWQ3vQJpPJvJb6vACkqeXp4WRysTl1XQz1p/XPvACEqLXOl62djuNN6MbirWo5LQAhlqt+OrZtHL/9ju7+/v5Z72IHbL/lumX3D/bPbq7r7RdeXV8ft14er4d7BWCLbJar65ncu5Hb3L/r5cvZbNqWy5P1IcWPBWAb9P5iuTM8ulmuvqt+7H9j8HZWq6O+6ke1tW9672Z5wCehl/Ky9n7RS33+z047ezCZfPBA9T++C5/j7JteBgAAAABJRU5ErkJggg==
+- ID: "6954b7c7-2487-423f-8600-436cb3b6dc0e"
+  Hint: Size
+  Value: 1051
+- ID: "6f47a0a5-9c94-4b48-abeb-42d38def6054"
+  Hint: Mime Type
+  Value: image/png
+- ID: "c06867fe-9a43-4c7d-b739-48780492d06f"
+  Hint: Extension
+  Value: png
+- ID: "cb09946f-3218-4823-87d2-d5007c199a96"
+  Hint: Dimensions
+  Value: 314 x 152
+- ID: "de2ca9e4-c117-4c8a-a139-1ff4b199d15a"
+  Hint: Height
+  Value: 152
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240131T150137Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "efee0cd6-1eee-4849-b0c4-554a8f1fcabd"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240131T150137Z

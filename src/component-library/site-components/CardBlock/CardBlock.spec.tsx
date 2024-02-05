@@ -7,44 +7,50 @@ import Tags from '../../core-components/Tags/Tags';
 import { CardBlockProps } from './CardBlock.types';
 import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
+import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 const mockProps: CardBlockProps = {
   theme: 'J-HCA-Turquoise-10',
   variation: '3-columns',
-  subtitle: (
-    <Text variation={'subheading-1'} tag="h2">
-      Meta title
-    </Text>
+  header: (
+    <AdvancedBlockHeader
+      subtitle={
+        <Text variation={'subheading-1'} tag="h2">
+          Meta title
+        </Text>
+      }
+      title={
+        <Text variation={'display-2'} tag="h2">
+          Blog Card Block
+        </Text>
+      }
+      body={
+        <Text variation={'body-large'} tag="p">
+          Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+          cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+          adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+          reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud
+          minim labore eiusmod voluptate sit commodo officia. Commodo tempor
+          tempor magna deserunt sunt dolore dolore.
+        </Text>
+      }
+      ctas={
+        <>
+          <Button size={'large'} theme={'full'}>
+            <a href="#">
+              Learn more about <strong>self-pay</strong>
+            </a>
+          </Button>
+          <TextButton>
+            <a href="#">
+              Access care with <strong>insurance</strong>
+            </a>
+          </TextButton>
+        </>
+      }
+    />
   ),
-  copy: (
-    <Text variation={'body-large'} tag="p">
-      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum
-      mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing
-      eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip
-      laboris duis ex labore veniam labore do nostrud minim labore eiusmod
-      voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt
-      dolore dolore.
-    </Text>
-  ),
-  ctas: (
-    <>
-      <Button size={'large'} theme={'full'}>
-        <a href="#">
-          Learn more about <strong>self-pay</strong>
-        </a>
-      </Button>
-      <TextButton>
-        <a href="#">
-          Access care with <strong>insurance</strong>
-        </a>
-      </TextButton>
-    </>
-  ),
-  title: (
-    <Text variation={'display-2'} tag="h2">
-      Blog Card Block
-    </Text>
-  ),
+
   children: (
     <>
       <CardBlog>

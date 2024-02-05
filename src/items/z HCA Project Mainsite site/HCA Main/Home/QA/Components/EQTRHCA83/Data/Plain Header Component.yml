@@ -1,0 +1,41 @@
+﻿---
+ID: "5f239766-069d-4e04-8d03-46dc0d457c2e"
+Parent: "fb2cf80e-4e8f-4661-a1c6-5527faa5fc0e"
+Template: "759f577c-e1d5-415b-b66a-3e5a42c038ec"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA83/Data/Plain Header Component
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "088df122-a53e-40e5-8602-1ed6be28cbbd"
+      Hint: Heading
+      Value: HEALTHCARE FOR BUSINESS
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240125T125904Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "821748a1-60bd-44fd-8f99-beb3826ef5f1"
+      Hint: Title
+      Value: Private GP services
+    - ID: "88d3d237-562e-4cbe-9358-5e1344bd995b"
+      Hint: Text
+      Value: |
+        <strong style="color: #000000; background-color: #ffffff; margin: 0px; padding: 0px; text-align: justify;">Lorem Ipsum</strong><span style="color: #000000; background-color: #ffffff; text-align: justify;">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b42bd119-21ef-4129-ad1a-6920157a033c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240131T132801Z

@@ -245,7 +245,8 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
           </Text>
           <Text variation="body-large">
             There are over 1400 at The Portland, each year. Hear new mums
-            sharing theirs
+            sharing theirs There are over 1400 at The Portland, each year. Hear
+            new mums sharing theirs
           </Text>
           <Tags>
             <a href="#">Announcement</a>

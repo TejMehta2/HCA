@@ -30,7 +30,7 @@ const Colour = (props: ColourProps) => {
           border: '1px solid lightgray',
         }}
       />
-      <Text tag="p" variation="body-semi-bold-medium">
+      <Text tag="p" variation="body-bold-medium">
         {getColourName(colour)}
       </Text>
       <Text tag="p" variation="body-medium">

@@ -21,32 +21,82 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Footer> = {
   args: {
-    buttons: [
-      <a href="#">
-        <Icons iconName="iconMobile" />
-        <span>
-          App <strong>download</strong>
-        </span>
-      </a>,
-      <a href="#">
-        <Icons iconName="iconRedo" />
-        <span>
-          Get a <strong>second opinion</strong>
-        </span>
-      </a>,
-      <a href="#">
-        <Icons iconName="iconStethoscope" />
-        <span>
-          Find a <strong>doctor</strong>
-        </span>
-      </a>,
-      <a href="#">
-        <Icons iconName="iconCreditCard" />
-        <span>
-          Pay my <strong>bill</strong>
-        </span>
-      </a>,
-    ],
+    buttons: (
+      <>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconMobile" />
+            <span>
+              App <strong>download</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconRedo" />
+            <span>
+              Get a <strong>second opinion</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconStethoscope" />
+            <span>
+              Find a <strong>doctor</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconCreditCard" />
+            <span>
+              Pay my <strong>bill</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconMobile" />
+            <span>
+              App <strong>download</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconRedo" />
+            <span>
+              Get a <strong>second opinion</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconStethoscope" />
+            <span>
+              Find a <strong>doctor</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconCreditCard" />
+            <span>
+              Pay my <strong>bill</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size={'small'} theme={'outline'}>
+          <a href="#">
+            <Icons iconName="iconCreditCard" />
+            <span>
+              Pay my <strong>bill</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
     columns: [
       {
         title: 'About HCA',

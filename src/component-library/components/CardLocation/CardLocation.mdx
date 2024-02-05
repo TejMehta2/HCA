@@ -5,45 +5,34 @@ import * as CardLocationStories from './CardLocation.stories';
 
 # CardLocation
 
+### ID: EQTRHCA6
+
 ## Description
 
-The CardLocation component consists of a title, address, and 2 CTAs. There are also optional fields for image, distance, and an extra cta.
-
-The extra CTA is for use in the map component and can be used to close the information popup cards. There are a few styling tweaks applied when this card is used within the map
-
-It is intended to be used on any page and should be nested in a theme.
+The CardLocation component is intended to be used within the homepage map component. It consists of a number, title, and CTA
 
 It can be composed like this:
 
 ```tsx
 <CardLocation
-  theme="J-HCA-Turquoise-10"
+  theme="E-HCA-Dark-Grey"
+  amount={
+    <Text tag="p" variation="display-1">
+      35
+    </Text>
+  }
   title={
-    <Text tag="h3" variation="heading-2">
-      The Harley Street Clinic
+    <Text tag="p" variation="heading-2">
+      Locations across the UK
     </Text>
   }
-  address={
-    <Text tag="p" variation="body-large">
-      35 Weymouth Street W1G 8BJ London
-    </Text>
+  cta={
+    <a href="#">
+      <span>
+        View <strong>all</strong>
+      </span>
+    </a>
   }
-  ctas={{
-    button1: (
-      <a href="#">
-        <span>
-          Learn <strong>more</strong>
-        </span>
-      </a>
-    ),
-    button2: (
-      <a href="#">
-        <span>
-          Get <strong>directions</strong>
-        </span>
-      </a>
-    ),
-  }}
 />
 ```
 

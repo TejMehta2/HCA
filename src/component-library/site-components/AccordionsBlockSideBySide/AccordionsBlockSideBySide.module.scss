@@ -1,0 +1,45 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  padding: $spacing-13 0;
+}
+
+.container {
+  @include responsive-container;
+  @include responsive-grid;
+
+  @include media(screen-l, 'max') {
+    row-gap: $spacing-8;
+  }
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+
+  @include responsive-grid-span($default: 6, $breakpoint-l: 4);
+
+  .subtitle {
+    margin-bottom: px-to-rem(8);
+  }
+
+  .body {
+    margin-top: $spacing-6;
+  }
+
+  .ctas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-6;
+    margin-top: $spacing-7;
+  }
+}
+
+.accordions {
+  @include responsive-grid-start($breakpoint-l: 6);
+  @include responsive-grid-span($default: 6, $breakpoint-l: 7);
+}

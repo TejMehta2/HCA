@@ -11,16 +11,16 @@ export type TextVariationUnionTypes =
   | 'subheading-2'
   | 'body-extra-large'
   | 'body-medium-extra-large'
-  | 'body-semi-bold-extra-large'
+  | 'body-bold-extra-large'
   | 'body-large'
   | 'body-medium-large'
-  | 'body-semi-bold-large'
+  | 'body-bold-large'
   | 'body-medium'
   | 'body-medium-medium'
-  | 'body-semi-bold-medium'
+  | 'body-bold-medium'
   | 'body-small'
   | 'body-medium-small'
-  | 'body-semi-bold-small';
+  | 'body-bold-small';
 
 export interface TextProps {
   tag?: keyof JSX.IntrinsicElements;

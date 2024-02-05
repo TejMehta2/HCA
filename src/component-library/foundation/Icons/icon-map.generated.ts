@@ -20,6 +20,7 @@ import iconChevronRight from './assets-dist/Chevron Right.svg';
 import iconChevronUp from './assets-dist/Chevron Up.svg';
 import iconClock from './assets-dist/Clock.svg';
 import iconComment from './assets-dist/Comment.svg';
+import iconCopy from './assets-dist/Copy.svg';
 import iconCreditCard from './assets-dist/Credit card.svg';
 import iconCrossSmall from './assets-dist/Cross Small.svg';
 import iconCross from './assets-dist/Cross.svg';
@@ -40,17 +41,20 @@ import iconLinkedin from './assets-dist/Linkedin.svg';
 import iconList from './assets-dist/List.svg';
 import iconLocation from './assets-dist/Location.svg';
 import iconMenu from './assets-dist/Menu.svg';
+import iconMessenger from './assets-dist/Messenger.svg';
 import iconMinusSmall from './assets-dist/Minus small.svg';
 import iconMinus from './assets-dist/Minus.svg';
 import iconMobile from './assets-dist/Mobile.svg';
 import iconOneOff from './assets-dist/One-off.svg';
 import iconPhone from './assets-dist/Phone.svg';
 import iconPin from './assets-dist/Pin.svg';
+import iconPlay from './assets-dist/Play.svg';
 import iconPlusSmall from './assets-dist/Plus small.svg';
 import iconPlus from './assets-dist/Plus.svg';
 import iconRedo from './assets-dist/Redo.svg';
 import iconSearch from './assets-dist/Search.svg';
 import iconShape from './assets-dist/Shape.svg';
+import iconShare from './assets-dist/Share.svg';
 import iconSmallPin from './assets-dist/Small Pin.svg';
 import iconStarEmpty from './assets-dist/Star Empty.svg';
 import iconStarHalf from './assets-dist/Star Half.svg';
@@ -58,6 +62,8 @@ import iconStar from './assets-dist/Star.svg';
 import iconStethoscope from './assets-dist/Stethoscope.svg';
 import iconVideo from './assets-dist/Video.svg';
 import iconWarning from './assets-dist/Warning.svg';
+import iconWhatsapp from './assets-dist/Whatsapp.svg';
+import iconX from './assets-dist/X.svg';
 
 export type IconName =
   | 'icon3Lines'
@@ -82,6 +88,7 @@ export type IconName =
   | 'iconChevronUp'
   | 'iconClock'
   | 'iconComment'
+  | 'iconCopy'
   | 'iconCreditCard'
   | 'iconCrossSmall'
   | 'iconCross'
@@ -102,24 +109,29 @@ export type IconName =
   | 'iconList'
   | 'iconLocation'
   | 'iconMenu'
+  | 'iconMessenger'
   | 'iconMinusSmall'
   | 'iconMinus'
   | 'iconMobile'
   | 'iconOneOff'
   | 'iconPhone'
   | 'iconPin'
+  | 'iconPlay'
   | 'iconPlusSmall'
   | 'iconPlus'
   | 'iconRedo'
   | 'iconSearch'
   | 'iconShape'
+  | 'iconShare'
   | 'iconSmallPin'
   | 'iconStarEmpty'
   | 'iconStarHalf'
   | 'iconStar'
   | 'iconStethoscope'
   | 'iconVideo'
-  | 'iconWarning';
+  | 'iconWarning'
+  | 'iconWhatsapp'
+  | 'iconX';
 
 const iconMap = new Map<IconName, () => JSX.Element>([
   ['icon3Lines', icon3Lines],
@@ -144,6 +156,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconChevronUp', iconChevronUp],
   ['iconClock', iconClock],
   ['iconComment', iconComment],
+  ['iconCopy', iconCopy],
   ['iconCreditCard', iconCreditCard],
   ['iconCrossSmall', iconCrossSmall],
   ['iconCross', iconCross],
@@ -164,17 +177,20 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconList', iconList],
   ['iconLocation', iconLocation],
   ['iconMenu', iconMenu],
+  ['iconMessenger', iconMessenger],
   ['iconMinusSmall', iconMinusSmall],
   ['iconMinus', iconMinus],
   ['iconMobile', iconMobile],
   ['iconOneOff', iconOneOff],
   ['iconPhone', iconPhone],
   ['iconPin', iconPin],
+  ['iconPlay', iconPlay],
   ['iconPlusSmall', iconPlusSmall],
   ['iconPlus', iconPlus],
   ['iconRedo', iconRedo],
   ['iconSearch', iconSearch],
   ['iconShape', iconShape],
+  ['iconShare', iconShare],
   ['iconSmallPin', iconSmallPin],
   ['iconStarEmpty', iconStarEmpty],
   ['iconStarHalf', iconStarHalf],
@@ -182,6 +198,8 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconStethoscope', iconStethoscope],
   ['iconVideo', iconVideo],
   ['iconWarning', iconWarning],
+  ['iconWhatsapp', iconWhatsapp],
+  ['iconX', iconX],
 ]);
 
 export default iconMap;

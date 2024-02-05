@@ -9,9 +9,10 @@ const Doctify = (props: DoctifyProps): JSX.Element => {
   const stars = [];
   const inactiveStars = [];
   const maxRating = 5;
-  const inactiveStarCount = maxRating - rating;
+  const ratingNumber = Number(rating);
+  const inactiveStarCount = maxRating - ratingNumber;
 
-  for (let i = 0; i < rating; i++) {
+  for (let i = 0; i < ratingNumber; i++) {
     stars.push(<Icons iconName="iconStar" />);
   }
 
@@ -22,7 +23,7 @@ const Doctify = (props: DoctifyProps): JSX.Element => {
   }
 
   return (
-    <div className={[styles.wrapper, styles[rating]].join(' ')}>
+    <div className={[styles.wrapper, styles[ratingNumber]].join(' ')}>
       <div className={styles.link}>{link}</div>
       <div className={styles['review-container']}>
         <span className={styles.rating}>

@@ -47,7 +47,7 @@
 
   label {
     // Imported styles
-    @include apply-body-semi-bold-extra-large;
+    @include apply-body-bold-extra-large;
 
     // Shared styles
     position: relative;
@@ -73,6 +73,10 @@
     // Focus
     :focus + & {
       outline-color: var(--tab-text);
+    }
+
+    > span {
+      display: flex;
     }
   }
 
