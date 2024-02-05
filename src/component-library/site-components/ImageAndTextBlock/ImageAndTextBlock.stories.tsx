@@ -287,3 +287,67 @@ export const iconList: StoryObj<typeof ImageAndTextBlock> = {
     ],
   },
 };
+
+export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'C-HCA-Beige',
+    imageAlignment: 'left',
+    length: 'short',
+    image: (
+      <Image
+        src="/placeholders/doctor-inspecting-a-childs-arm.jpg"
+        alt="a doctor inspecting a childs arm"
+        width="643"
+        height="605"
+      />
+    ),
+    subheader: (
+      <Text tag="h3" variation="subheading-1">
+        Contacts
+      </Text>
+    ),
+    header: (
+      <Text tag="h2" variation="display-2">
+        Talk to us
+      </Text>
+    ),
+    contactList: [
+      {
+        title: (
+          <Text tag="h4" variation="subheading-2">
+            Embassy team
+          </Text>
+        ),
+        number: (
+          <Text tag="p" variation="display-6">
+            020 3131 5978
+          </Text>
+        ),
+        icon: <Icons iconName="iconClock"></Icons>,
+        openingHours: (
+          <Text tag="p" variation="body-large">
+            Monday to Friday 8am - 6pm
+          </Text>
+        ),
+      },
+      {
+        title: (
+          <Text tag="h4" variation="subheading-2">
+            Internation team (agencies & insurers)
+          </Text>
+        ),
+        number: (
+          <Text tag="p" variation="display-6">
+            020 3131 5978
+          </Text>
+        ),
+        icon: <Icons iconName="iconClock"></Icons>,
+        openingHours: (
+          <Text tag="p" variation="body-large">
+            Monday to Friday 8am - 6pm
+          </Text>
+        ),
+      },
+    ],
+  },
+};
