@@ -12,6 +12,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(initialTheme);
 
   useEffect(() => {
+    const ref = wrapperRef;
     const targetSections =
       wrapperRef?.current?.querySelectorAll(':scope > div');
 
@@ -33,6 +34,12 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
     targetSections?.forEach((section) => {
       observer.observe(section);
     });
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
   }, []);
 
   return (
