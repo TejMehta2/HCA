@@ -8,7 +8,7 @@ export type iconList = {
   text: string;
 }[];
 
-export type contactList = {
+type contactList = {
   title: JSX.Element;
   number: JSX.Element;
   icon: JSX.Element;
