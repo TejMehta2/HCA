@@ -1,7 +1,6 @@
 import type { Preview } from "@storybook/react";
 import "../globals/index.scss";
-import Themes from '../foundation/Themes/Themes'
-import React from "react";
+
 
 const customViewports = {
   small: {
@@ -49,9 +48,6 @@ const preview: Preview = {
     viewport: { viewports: customViewports },
 
   },
-  // decorators: [
-  //   (Story) => (<Themes theme={'J-HCA-Turquoise-10'}><Story/></Themes>)
-  // ]
 };
 
 export default preview;
