@@ -3,8 +3,6 @@ import {
   Field,
   Text as JssText,
   RichText,
-  ComponentRendering,
-  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useI18n } from 'next-localization';
 
@@ -23,6 +21,7 @@ type FilterOptionsFields = {
 
 type SortOptionsFields = {
   fields: {
+    DisplayName: Field<string>;
     Filter: Field<string>;
   };
 };
@@ -40,11 +39,12 @@ interface Fields {
   SortOptions: SortOptionsFields[];
   SearchResultsText: Field<string>;
   ResultsPerPage: Field<string>;
+  SearchBy: SortOptionsFields[];
+  FilterBy: SortOptionsFields[];
 }
 
 type ServiceLinesSearchProps = {
   params: { [key: string]: string };
-  rendering: ComponentRendering;
   fields: Fields;
 };
 
@@ -59,7 +59,6 @@ const ServiceLinesSearchDefaultComponent = (
 );
 
 export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   const { t } = useI18n();
   if (!props.fields) {
     return <ServiceLinesSearchDefaultComponent {...props} />;
@@ -114,6 +113,8 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
       <ul>
         {props.fields.SortOptions.map((sortOptions, index) => (
           <li key={index}>
+            <JssText field={sortOptions.fields.DisplayName} />
+            <br />
             <JssText field={sortOptions.fields.Filter} />
             <br />
           </li>
@@ -121,12 +122,35 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
       </ul>
       <br />
       <JssText field={props.fields.SearchResultsText} />
+      <br />
       <JssText field={props.fields.ResultsPerPage} />
+      <br />
+      <ul>
+        {props.fields.FilterBy.map((filterBy, index) => (
+          <li key={index}>
+            <JssText field={filterBy.fields.DisplayName} />
+            <br />
+            <JssText field={filterBy.fields.Filter} />
+            <br />
+          </li>
+        ))}
+      </ul>
+      <br />
+      <ul>
+        {props.fields.SearchBy.map((searchby, index) => (
+          <li key={index}>
+            <JssText field={searchby.fields.DisplayName} />
+            <br />
+            <JssText field={searchby.fields.Filter} />
+            <br />
+          </li>
+        ))}
+      </ul>
+      <br />
       <p>Text: {t('close')}</p>
       <p>Text: {t('show-more')}</p>
       <p>Text: {t('showing')}</p>
       <p>Text: {t('clear-all')}</p>
-      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };

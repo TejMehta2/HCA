@@ -1,0 +1,37 @@
+﻿---
+ID: "484fb531-3f36-4ae5-b211-2540650571c2"
+Parent: "fefccad7-6142-4c70-8ecf-f61822a793a9"
+Template: "fefccad7-6142-4c70-8ecf-f61822a793a9"
+Path: /sitecore/templates/Project/HCA/Foundation/Search/Filter Option Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {FEFCCAD7-6142-4C70-8ECF-F61822A793A9}
+    {18D058D2-B182-4AAB-B4A6-40C9997957F8}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T133406Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6628490f-ef77-4252-894d-a5dc575eb6c2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240201T133429Z
