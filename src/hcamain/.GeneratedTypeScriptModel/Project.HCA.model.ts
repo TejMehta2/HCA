@@ -745,6 +745,70 @@ export namespace PageContent {
         
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
+    */
+    export type CallUsTodayCta = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the Contact Unit field (3128343e-984c-4c99-9dc2-cc13b1152783).
+            */
+            ContactUnit?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
+    */
+    export type CallUsTodayCtaJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the Contact Unit field (3128343e-984c-4c99-9dc2-cc13b1152783).
+            */
+            ContactUnit?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA
+    */
+    export type CallUsTodayCta =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA
+    */
+    export type CallUsTodayCtaJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA Folder
+    */
+    export type CallUsTodayCtaFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA Folder
+    */
+    export type CallUsTodayCtaFolderJson =  {
+        
+
+    }
 }
 export namespace Business {
 
