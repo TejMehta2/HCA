@@ -12,6 +12,8 @@ import {
 import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import Scripts from 'src/Scripts';
 
+import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
+
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
 const publicUrl = getPublicUrl();
@@ -31,6 +33,8 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const fields = route?.fields as RouteFields;
   const isPageEditing = layoutData.sitecore.context.pageEditing;
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
+
+  const isHomepage = layoutData?.sitecore.context.itemPath === '/';
 
   return (
     <>
@@ -52,7 +56,15 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         </header>
         <main>
           <div id="content">
-            {route && <Placeholder name="headless-main" rendering={route} />}
+            {isHomepage ? (
+              <ScrollTransition initialTheme="F-HCA-White">
+                {route && (
+                  <Placeholder name="headless-main" rendering={route} />
+                )}
+              </ScrollTransition>
+            ) : (
+              route && <Placeholder name="headless-main" rendering={route} />
+            )}
           </div>
         </main>
         <footer>
