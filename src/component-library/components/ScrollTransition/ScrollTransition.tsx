@@ -18,6 +18,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        //console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const intersectingTheme = entry.target.getAttribute(
@@ -26,6 +27,13 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
             if (intersectingTheme) {
               setCurrentTheme(intersectingTheme);
             }
+
+            const animateSections =
+              entry.target.querySelectorAll('[data-animate]');
+
+            animateSections.forEach((section) => {
+              section.setAttribute('data-animate-active', 'true');
+            });
           }
         });
       },

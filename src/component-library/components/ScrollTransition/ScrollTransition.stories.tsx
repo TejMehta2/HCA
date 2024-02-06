@@ -5,8 +5,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 import HomepageIntroBlock from '../../site-components/HomepageIntroBlock/HomepageIntroBlock';
-import Doctify from '../../components/Doctify/Doctify';
-import CQCBlock from '../../components/CQCBlock/CQCBlock';
+import Doctify from '../Doctify/Doctify';
+import CQCBlock from '../CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
 import Tags from '../../core-components/Tags/Tags';
 import Themes from '../../foundation/Themes/Themes';
@@ -17,7 +17,7 @@ import CardBlog from '../CardBlog/CardBlog';
 import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Button from '../../core-components/Button/Button';
 import OurLocations from '../../site-components/OurLocations/OurLocations';
-import { OurLocationsRegionProps } from '../../components/OurLocationsRegion/OurLocationsRegion.types';
+import { OurLocationsRegionProps } from '../OurLocationsRegion/OurLocationsRegion.types';
 import MapEngland from '../../assets/locations/map-england.png';
 import LondonDesktopArea from '../../assets/locations/London.png';
 import LondonMobileArea from '../../assets/locations/LondonMobile.png';
@@ -28,7 +28,7 @@ import BirminghamMobileArea from '../../assets/locations/BirminghamMobile.png';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
-  title: 'POC/ScrollTransition',
+  title: 'Components/ScrollTransition',
   component: ScrollTransition,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
