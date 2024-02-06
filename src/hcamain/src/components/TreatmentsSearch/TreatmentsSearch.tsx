@@ -3,8 +3,6 @@ import {
   Field,
   Text as JssText,
   RichText,
-  ComponentRendering,
-  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useI18n } from 'next-localization';
 
@@ -44,7 +42,6 @@ interface Fields {
 
 type TreatmentsSearchProps = {
   params: { [key: string]: string };
-  rendering: ComponentRendering;
   fields: Fields;
 };
 
@@ -59,7 +56,6 @@ const TreatmentsSearchDefaultComponent = (
 );
 
 export const Default = (props: TreatmentsSearchProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   const { t } = useI18n();
   if (!props.fields) {
     return <TreatmentsSearchDefaultComponent {...props} />;
@@ -126,7 +122,6 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
       <p>Text: {t('show-more')}</p>
       <p>Text: {t('showing')}</p>
       <p>Text: {t('clear-all')}</p>
-      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };

@@ -1,0 +1,27 @@
+﻿---
+ID: "c7e09818-2ab3-4e88-b7eb-badcf79ac9af"
+Parent: "812f0f0d-0d34-4c27-8f0c-13afc4147492"
+Template: "812f0f0d-0d34-4c27-8f0c-13afc4147492"
+Path: /sitecore/templates/Project/HCA/Page Content/Book An Appointment CTA/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{3D67AE05-DAB2-41B5-B6BA-E531A3B08B4A}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240202T175352Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7a81b103-e6b4-43b8-a19f-fa7791b2e96c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240202T175410Z

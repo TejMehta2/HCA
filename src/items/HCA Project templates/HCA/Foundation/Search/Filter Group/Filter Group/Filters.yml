@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Foundation/Search/Filter Group/Filter Grou
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "query:./*[@@templateid='{18D058D2-B182-4AAB-B4A6-40C9997957F8}']"
+  Value: "{0ABD57A9-A4E7-4DA4-9C6C-5D04083A48A1}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist
+  Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 200
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "93413c62-461e-47c5-80b8-696223c2f9b0"
+      Value: "a69f5bae-aaad-47d8-aff0-5a28d2f01b11"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240130T131447Z
+      Value: 20240201T135509Z

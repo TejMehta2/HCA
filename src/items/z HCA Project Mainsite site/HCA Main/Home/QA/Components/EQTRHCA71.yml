@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{E07A39F1-93FF-4AF1-850E-3727F429C3EB}" />
+    <image mediaid="{01B25F32-6CB6-467D-A180-F3FD20358C92}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -32,66 +32,6 @@ Languages:
     - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
       Hint: __Lock
       Value: <r />
-    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
-      Hint: __Final Renderings
-      Value: |
-        <r xmlns:p="p" xmlns:s="s"
-          p:p="1">
-          <d
-            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
-            <r
-              uid="{2E10BF93-4944-4695-BEB9-42AB0FB7BB17}"
-              p:before="*"
-              s:ds="local:/Data/Modal Content 1/CTA Button 1"
-              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
-              s:ph="/headless-main/book-an-appointment-cta-1/column-1-3/cta-buttons-4" />
-            <r
-              uid="{FE93C4C9-05E3-43B5-85C9-9156BB4C6C65}"
-              p:after="r[@uid='{2E10BF93-4944-4695-BEB9-42AB0FB7BB17}']"
-              s:ds="local:/Data/Modal Content 2/CTA Button 1"
-              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
-              s:ph="/headless-main/book-an-appointment-cta-1/column-2-3/cta-buttons-5" />
-            <r
-              uid="{C9403EA3-BB56-40A4-984B-576FB43FF7C4}"
-              p:after="r[@uid='{FE93C4C9-05E3-43B5-85C9-9156BB4C6C65}']"
-              s:ds="local:/Data/Modal Content 2/CTA Button 2"
-              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
-              s:ph="/headless-main/book-an-appointment-cta-1/column-2-3/cta-buttons-5" />
-            <r
-              uid="{817162D8-6AC7-4815-92AA-29A98FA6372B}"
-              p:after="r[@uid='{C9403EA3-BB56-40A4-984B-576FB43FF7C4}']"
-              s:ds="local:/Data/Modal Content 2"
-              s:id="{CFF4D5A2-1F9F-4CD5-8872-FA45CD5BE407}"
-              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BDBB221D3-ACAD-40B4-9E46-58E1D0556F8A%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
-              s:ph="/headless-main/book-an-appointment-cta-1/column-2-3" />
-            <r
-              uid="{539CD44E-16E0-4395-9BAC-167D9500BF44}"
-              p:after="r[@uid='{817162D8-6AC7-4815-92AA-29A98FA6372B}']"
-              s:ds="local:/Data/Modal Content 1"
-              s:id="{CFF4D5A2-1F9F-4CD5-8872-FA45CD5BE407}"
-              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BDBB221D3-ACAD-40B4-9E46-58E1D0556F8A%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-              s:ph="/headless-main/book-an-appointment-cta-1/column-1-3" />
-            <r
-              uid="{A3D311E2-5C91-40AC-83AF-E7FFB5632791}"
-              p:after="r[@uid='{539CD44E-16E0-4395-9BAC-167D9500BF44}']"
-              s:ds="local:/Data/Modal Content"
-              s:id="{CFF4D5A2-1F9F-4CD5-8872-FA45CD5BE407}"
-              s:par="FieldNames=%7bDBB221D3-ACAD-40B4-9E46-58E1D0556F8A%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7b7465D855-992E-4DC2-9855-A03250DFA74B%7d&amp;HeadingSize&amp;HeadingTag&amp;DynamicPlaceholderId=2"
-              s:ph="/headless-main/book-an-appointment-cta-1" />
-            <r
-              uid="{66DF4F1B-5D7A-432F-8A61-64EDEF4203B0}"
-              p:after="r[@uid='{A3D311E2-5C91-40AC-83AF-E7FFB5632791}']"
-              s:id="{15CABDFF-FFD9-48F4-826D-A4C3D7868D3A}"
-              s:par="ColumnWidth1=%7B89647981-C99C-44E3-A55E-65BFF555E4C3%7D&amp;ColumnWidth2=%7B89647981-C99C-44E3-A55E-65BFF555E4C3%7D&amp;ColumnWidth3&amp;ColumnWidth4&amp;ColumnWidth5&amp;ColumnWidth6&amp;ColumnWidth7&amp;ColumnWidth8&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;SplitterSize=2&amp;EnabledPlaceholders=1%2C2&amp;FieldNames&amp;Styles1&amp;Styles2&amp;Styles3&amp;Styles4&amp;Styles5&amp;Styles6&amp;Styles7&amp;Styles&amp;Styles8&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-              s:ph="/headless-main/book-an-appointment-cta-1" />
-            <r
-              uid="{CB2376AA-4B91-4A06-B799-D1CF43672C84}"
-              s:par="FieldNames=%7b4D3BD9AD-F895-4F4E-BC41-E5D3BA4F38A4%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;DynamicPlaceholderId=1" />
-          </d>
-        </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240129T214826Z
@@ -108,14 +48,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8c90d23e-3e4a-4c12-9a29-4d1c472e768d"
+      Value: "454745f5-d307-4b16-a9c2-2324437d6cc9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T220117Z
+      Value: 20240202T180208Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA71
