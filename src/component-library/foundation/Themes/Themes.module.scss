@@ -4,7 +4,19 @@
 
 // Themes by name from design library to match backend
 
-/* stylelint-disable selector-class-pattern */
+/* stylelint-disable value-keyword-case, selector-class-pattern, scss/dollar-variable-pattern */
+$themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
+  D-HCA-Light-Orange, E-HCA-Dark-Grey, F-HCA-White, G-HCA-Green-40,
+  H-HCA-Green-20, I-HCA-Turquoise-20, J-HCA-Turquoise-10, K-HCA-Turquoise-5,
+  L-HCA-Coral-60;
+
+@each $theme in $themeOptions {
+  :is([data-theme='#{$theme}'])
+    + :is([data-theme='#{$theme}'], :has([data-theme='#{$theme}'])) {
+    --theme-collapse-padding-top: 0;
+  }
+}
+
 .A-HCA-Main-Turquoise {
   @include apply-theme-a;
 }
@@ -87,17 +99,17 @@
 /* prettier-ignore */
 :export {
   mode: {
-    A-HCA-Main-Turquoise: dark;
-    B-HCA-Green: dark;
-    C-HCA-Beige: dark;
-    D-HCA-Light-Orange: dark;
-    E-HCA-Dark-Grey: light;
-    F-HCA-White: dark;
-    G-HCA-Green-40: dark;
-    H-HCA-Green-20: dark;
-    I-HCA-Turquoise-20: dark;
-    J-HCA-Turquoise-10: dark;
-    K-HCA-Turquoise-5: dark;
-    L-HCA-Coral-60: dark;
+    a-hca-main-turquoise: dark;
+    b-hca-green: dark;
+    c-hca-beige: dark;
+    d-hca-light-orange: dark;
+    e-hca-dark-grey: light;
+    f-hca-white: dark;
+    g-hca-green-40: dark;
+    h-hca-green-20: dark;
+    i-hca-turquoise-20: dark;
+    j-hca-turquoise-10: dark;
+    k-hca-turquoise-5: dark;
+    l-hca-coral-60: dark;
   }
 }
