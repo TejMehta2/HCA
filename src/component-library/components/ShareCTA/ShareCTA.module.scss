@@ -3,6 +3,7 @@
 
 .modal-wrapper {
   @include responsive-grid;
+  @include responsive-container;
 }
 
 .modal-content {
@@ -10,8 +11,8 @@
   flex-direction: column;
   justify-content: center;
   padding: $spacing-13 0;
-  @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 3);
-  @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 8);
+  @include responsive-grid-start($breakpoint-m: 1, $breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-m: 6, $breakpoint-l: 8);
 }
 
 .headings {
@@ -20,9 +21,14 @@
 }
 
 .share-buttons {
-  display: grid;
-  grid: auto / 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   gap: $spacing-4;
-  padding: $spacing-7 0 0;
+  padding: $spacing-7 0 0 0;
+
+  @include media(screen-m) {
+    display: grid;
+    grid: auto / 1fr 1fr;
+  }
 }
