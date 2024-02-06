@@ -10,7 +10,7 @@
 
   @include responsive-container;
 
-  padding: $spacing-11 0 $spacing-7 0;
+  padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
 
   @include media(screen-m) {
     flex-direction: row;
