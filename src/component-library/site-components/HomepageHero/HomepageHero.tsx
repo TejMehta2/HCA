@@ -13,7 +13,7 @@ const HomepageHero = (props: HomepageHeroProps): JSX.Element => {
           <div className={styles.search}>{search}</div>
           <div className={styles['cta-section']}>
             {ctaTitle}
-            <div className={styles['ctas']}>{ctas}</div>
+            <div className={styles.ctas}>{ctas}</div>
           </div>
           <div className={styles.image}>{image}</div>
         </div>
