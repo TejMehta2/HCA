@@ -10,7 +10,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{26179672-337D-45E6-8BC0-2BA4E4C9FEE6}" />
+    <image mediaid="{1569648F-56A2-4906-82C3-6A5DCCC42B09}" />
 Languages:
 - Language: en
   Versions:
@@ -32,11 +32,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "edc9886e-81c1-420d-871b-f7ae782dcc0d"
+      Value: "2681ddaa-b181-4ba8-bef5-11b52592a1d4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240119T174315Z
+      Value: 20240205T231818Z
