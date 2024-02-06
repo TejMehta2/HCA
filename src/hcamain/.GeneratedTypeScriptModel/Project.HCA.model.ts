@@ -2614,6 +2614,122 @@ export namespace HCA.Project.HCA {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search
+    */
+    export type HeroBannerWithSearch =  {
+        fields?: { 
+            /**
+            * Represents the CTA Heading field (1de0fca7-3911-40da-978b-d47f369505ac).
+            */
+            CTAHeading?: Field<string>;
+
+            /**
+            * Represents the Image field (588531f6-d34c-4c8e-a2fe-76c3b14706b0).
+            */
+            Image?: ImageField;
+
+            /**
+            * Represents the Search Icon field (683bbbba-fd98-4f03-b889-a3bddc01e2fe).
+            */
+            SearchIcon?: Item;
+
+            /**
+            * Represents the Search Placeholder field (2f3126f4-1894-4e15-a6db-d8c2e89cfb6e).
+            */
+            SearchPlaceholder?: Field<string>;
+
+            /**
+            * Represents the Title field (71b95f4c-fff2-4239-9be8-664c632bcfd5).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search
+    */
+    export type HeroBannerWithSearchJson =  {
+        
+            /**
+            * Represents the CTA Heading field (1de0fca7-3911-40da-978b-d47f369505ac).
+            */
+            CTAHeading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Image field (588531f6-d34c-4c8e-a2fe-76c3b14706b0).
+            */
+            Image?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Search Icon field (683bbbba-fd98-4f03-b889-a3bddc01e2fe).
+            */
+            SearchIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Search Placeholder field (2f3126f4-1894-4e15-a6db-d8c2e89cfb6e).
+            */
+            SearchPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (71b95f4c-fff2-4239-9be8-664c632bcfd5).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search
+    */
+    export type HeroBannerWithSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search
+    */
+    export type HeroBannerWithSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search Folder
+    */
+    export type HeroBannerWithSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search Folder
+    */
+    export type HeroBannerWithSearchFolderJson =  {
+        
+
+    }
+}
 export namespace Foundation {
 
     /**
