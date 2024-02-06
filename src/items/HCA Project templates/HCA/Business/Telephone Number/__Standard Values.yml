@@ -1,0 +1,34 @@
+﻿---
+ID: "bb163f78-9ca8-4c55-ac16-2418d8ab1c2b"
+Parent: "b1eba38c-c69b-4286-ad4c-96b5d17aafe8"
+Template: "b1eba38c-c69b-4286-ad4c-96b5d17aafe8"
+Path: /sitecore/templates/Project/HCA/Business/Telephone Number/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T173045Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9bb633f0-6401-4d42-a71b-c85e22d9124e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "bcb8e0ef-378c-4ad7-bbab-f463ddfc2307"
+      Hint: PhoneNumberLabel
+      Value: $name
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240119T173051Z

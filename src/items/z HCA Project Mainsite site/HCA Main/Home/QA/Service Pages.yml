@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{798626FF-0FB4-4B30-9899-C66008D2F2B5}" />
+    <image mediaid="{BF88478F-C15E-4397-8875-7BA360601106}" />
 Languages:
 - Language: en
   Versions:
@@ -21,11 +21,11 @@ Languages:
       Value: Service Page
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "76a5b015-3564-4061-90f2-0c6ddfb0d0d5"
+      Value: "cf827645-31af-45ea-8988-6e615448a978"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231206T105845Z
+      Value: 20240119T173626Z

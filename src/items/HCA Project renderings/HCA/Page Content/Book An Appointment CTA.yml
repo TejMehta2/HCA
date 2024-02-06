@@ -9,7 +9,7 @@ SharedFields:
   Value: BookAnAppointmentCTA
 - ID: "069a8361-b1cd-437c-8c32-a3be78941446"
   Hint: Placeholders
-  Value: "{1DE8CEB3-5E9D-495D-91B9-12BD249680DB}"
+  Value: 
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
@@ -81,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ba739090-9111-4d1b-bc34-87fc4eb3e5b7"
+      Value: "1e6f70b6-8377-4482-a0a6-477a349a2760"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T221651Z
+      Value: 20240202T175822Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
