@@ -1,0 +1,33 @@
+﻿---
+ID: "adeffc25-b0cd-42c5-8f8e-4e571e677fa9"
+Parent: "afcc3cd3-31b2-4ade-b111-0cd361e6cb27"
+Template: "afcc3cd3-31b2-4ade-b111-0cd361e6cb27"
+Path: /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {29A4BEDA-F21C-4046-BDF1-A5C240E5600B}
+    {AFCC3CD3-31B2-4ADE-B111-0CD361E6CB27}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7087a5c4-9b41-41e7-831d-e942718589e6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240205T183149Z

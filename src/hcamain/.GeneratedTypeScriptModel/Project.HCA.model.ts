@@ -745,6 +745,42 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Condition
+    */
+    export type Condition = Business.Doctify.Base.doctifyConditionMapping & 
+Business.Base.treatmentsSelector & 
+Business.Base.diagnosisSelector &  {
+        fields?: { 
+            /**
+            * Represents the Name field (0744d2aa-d1a4-4b12-aa8c-0e22d7c86518).
+            */
+            Name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Condition
+    */
+    export type ConditionJson = Business.Doctify.Base.doctifyConditionMappingJson & 
+Business.Base.treatmentsSelectorJson & 
+Business.Base.diagnosisSelectorJson &  {
+        
+            /**
+            * Represents the Name field (0744d2aa-d1a4-4b12-aa8c-0e22d7c86518).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Consultant Search
@@ -806,6 +842,40 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Consultant Search Folder
     */
     export type ConsultantSearchFolderJson =  {
+        
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Contact Unit
+    */
+    export type ContactUnit = Business.Base.facilityContactUnit &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Contact Unit
+    */
+    export type ContactUnitJson = Business.Base.facilityContactUnitJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Contact Units Folder
+    */
+    export type ContactUnitsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Contact Units Folder
+    */
+    export type ContactUnitsFolderJson =  {
         
 
     }
@@ -1137,6 +1207,96 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Business.OpeningHours {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Opening Hours/DayOfWeek
+    */
+    export type DayOfWeek =  {
+        fields?: { 
+            /**
+            * Represents the DayName field (87a87711-dde0-40fb-8aab-ad0ca36026c9).
+            */
+            DayName?: Field<string>;
+
+            /**
+            * Represents the SchemaCanonicalUrl field (8cf0b054-2691-498e-8622-88c1d543fbca).
+            */
+            SchemaCanonicalUrl?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Opening Hours/DayOfWeek
+    */
+    export type DayOfWeekJson =  {
+        
+            /**
+            * Represents the DayName field (87a87711-dde0-40fb-8aab-ad0ca36026c9).
+            */
+            DayName?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the SchemaCanonicalUrl field (8cf0b054-2691-498e-8622-88c1d543fbca).
+            */
+            SchemaCanonicalUrl?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Opening Hours/DaysOfWeekFolder
+    */
+    export type DaysOfWeekFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Opening Hours/DaysOfWeekFolder
+    */
+    export type DaysOfWeekFolderJson =  {
+        
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Diagnosis
+    */
+    export type Diagnosis = Business.Doctify.Base.doctifyDiagnosisMapping &  {
+        fields?: { 
+            /**
+            * Represents the Name field (e5a5eccf-e46f-4fb8-beba-b2e9c72dc03c).
+            */
+            Name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Diagnosis
+    */
+    export type DiagnosisJson = Business.Doctify.Base.doctifyDiagnosisMappingJson &  {
+        
+            /**
+            * Represents the Name field (e5a5eccf-e46f-4fb8-beba-b2e9c72dc03c).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctify
@@ -1798,6 +1958,66 @@ export namespace Foundation.FaqQuestion {
 
     }
 }
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Facility
+    */
+    export type Facility = Business.Doctify.Base.doctifyLocationMapping & 
+Business.Base.treatmentsSelector & 
+Business.Base.diagnosisSelector & 
+Business.Base.specialtiesSelector &  {
+        fields?: { 
+            /**
+            * Represents the City field (64765ef6-ea35-4e9e-8007-effd7c669ee6).
+            */
+            City?: Field<string>;
+
+            /**
+            * Represents the ContactUnits field (1de31a1a-0b18-4473-9cd1-41efa2177819).
+            */
+            ContactUnits?: Item[];
+
+            /**
+            * Represents the FacilityType field (06b564e0-460c-438b-ae4b-b09b0c2f4f60).
+            */
+            FacilityType?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Facility
+    */
+    export type FacilityJson = Business.Doctify.Base.doctifyLocationMappingJson & 
+Business.Base.treatmentsSelectorJson & 
+Business.Base.diagnosisSelectorJson & 
+Business.Base.specialtiesSelectorJson &  {
+        
+            /**
+            * Represents the City field (64765ef6-ea35-4e9e-8007-effd7c669ee6).
+            */
+            City?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ContactUnits field (1de31a1a-0b18-4473-9cd1-41efa2177819).
+            */
+            ContactUnits?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the FacilityType field (06b564e0-460c-438b-ae4b-b09b0c2f4f60).
+            */
+            FacilityType?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
 export namespace Foundation.Search {
 
     /**
@@ -1985,6 +2205,72 @@ export namespace PageContent {
     */
     export type FixedPricePackageFolderJson =  {
         
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/FixedPricePackage
+    */
+    export type FixedPricePackage =  {
+        fields?: { 
+            /**
+            * Represents the Description field (ea4449a2-41ec-4177-8f7d-72cb27a0288f).
+            */
+            Description?: Field<string>;
+
+            /**
+            * Represents the PackageIdentifier field (6642ffeb-4058-4d49-b20c-085aeda73e2c).
+            */
+            PackageIdentifier?: Field<string>;
+
+            /**
+            * Represents the PackageName field (6e8bf389-cd95-4f7c-9c06-c803993a0d69).
+            */
+            PackageName?: Field<string>;
+
+            /**
+            * Represents the Price field (b39eef6b-5068-4616-b0b4-72131dbd4c8b).
+            */
+            Price?: Field<number>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/FixedPricePackage
+    */
+    export type FixedPricePackageJson =  {
+        
+            /**
+            * Represents the Description field (ea4449a2-41ec-4177-8f7d-72cb27a0288f).
+            */
+            Description?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PackageIdentifier field (6642ffeb-4058-4d49-b20c-085aeda73e2c).
+            */
+            PackageIdentifier?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PackageName field (6e8bf389-cd95-4f7c-9c06-c803993a0d69).
+            */
+            PackageName?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Price field (b39eef6b-5068-4616-b0b4-72131dbd4c8b).
+            */
+            Price?: {
+                jsonValue: Field<number>
+            };
+
 
     }
 }
@@ -2296,6 +2582,122 @@ export namespace HCA.Project.HCA {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Headless Tenant
     */
     export type HeadlessTenantJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search
+    */
+    export type HeroBannerWithSearch =  {
+        fields?: { 
+            /**
+            * Represents the CTA Heading field (1de0fca7-3911-40da-978b-d47f369505ac).
+            */
+            CTAHeading?: Field<string>;
+
+            /**
+            * Represents the Image field (588531f6-d34c-4c8e-a2fe-76c3b14706b0).
+            */
+            Image?: ImageField;
+
+            /**
+            * Represents the Search Icon field (683bbbba-fd98-4f03-b889-a3bddc01e2fe).
+            */
+            SearchIcon?: Item;
+
+            /**
+            * Represents the Search Placeholder field (2f3126f4-1894-4e15-a6db-d8c2e89cfb6e).
+            */
+            SearchPlaceholder?: Field<string>;
+
+            /**
+            * Represents the Title field (71b95f4c-fff2-4239-9be8-664c632bcfd5).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search
+    */
+    export type HeroBannerWithSearchJson =  {
+        
+            /**
+            * Represents the CTA Heading field (1de0fca7-3911-40da-978b-d47f369505ac).
+            */
+            CTAHeading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Image field (588531f6-d34c-4c8e-a2fe-76c3b14706b0).
+            */
+            Image?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Search Icon field (683bbbba-fd98-4f03-b889-a3bddc01e2fe).
+            */
+            SearchIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Search Placeholder field (2f3126f4-1894-4e15-a6db-d8c2e89cfb6e).
+            */
+            SearchPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (71b95f4c-fff2-4239-9be8-664c632bcfd5).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search
+    */
+    export type HeroBannerWithSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search
+    */
+    export type HeroBannerWithSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search Folder
+    */
+    export type HeroBannerWithSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search Folder
+    */
+    export type HeroBannerWithSearchFolderJson =  {
         
 
     }
@@ -2646,7 +3048,7 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Location Page
     */
     export type LocationPage = Foundation.HcabasePage & 
-Foundation.Doctify.DoctifyPracticeMapping &  {
+Business.Facility &  {
         fields?: {         }
 
     }
@@ -2655,7 +3057,7 @@ Foundation.Doctify.DoctifyPracticeMapping &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Location Page
     */
     export type LocationPageJson = Foundation.HcabasePageJson & 
-Foundation.Doctify.DoctifyPracticeMappingJson &  {
+Business.FacilityJson &  {
         
 
     }
@@ -2976,6 +3378,100 @@ export namespace Navigation {
             * Represents the Title field (a541959d-74c3-488f-b625-76952888a8a2).
             */
             Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace Business.OpeningHours {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Opening Hours/OpeningHours
+    */
+    export type OpeningHours =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Opening Hours/OpeningHours
+    */
+    export type OpeningHoursJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Opening Hours/OpeningHoursSpecification
+    */
+    export type OpeningHoursSpecification =  {
+        fields?: { 
+            /**
+            * Represents the Closes field (9b888acf-cbdb-429a-8470-57c9e188c065).
+            */
+            Closes?: Field<string>;
+
+            /**
+            * Represents the Day Of Week field (47e5be15-97eb-4c5e-acfb-da68de36152f).
+            */
+            DayOfWeek?: Item[];
+
+            /**
+            * Represents the Opens field (b87da11a-58d6-4e00-9eae-7fda27668110).
+            */
+            Opens?: Field<string>;
+
+            /**
+            * Represents the Valid From field (f47e4f9b-0c5f-447b-8e0d-40ef13c77121).
+            */
+            ValidFrom?: Field<string>;
+
+            /**
+            * Represents the Valid Through field (1a050cdb-56e6-49ba-ba26-d61f8e1adf45).
+            */
+            ValidThrough?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Opening Hours/OpeningHoursSpecification
+    */
+    export type OpeningHoursSpecificationJson =  {
+        
+            /**
+            * Represents the Closes field (9b888acf-cbdb-429a-8470-57c9e188c065).
+            */
+            Closes?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Day Of Week field (47e5be15-97eb-4c5e-acfb-da68de36152f).
+            */
+            DayOfWeek?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Opens field (b87da11a-58d6-4e00-9eae-7fda27668110).
+            */
+            Opens?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Valid From field (f47e4f9b-0c5f-447b-8e0d-40ef13c77121).
+            */
+            ValidFrom?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Valid Through field (1a050cdb-56e6-49ba-ba26-d61f8e1adf45).
+            */
+            ValidThrough?: {
                 jsonValue: Field<string>
             };
 
@@ -3622,26 +4118,6 @@ export namespace PageContent {
 
     }
 }
-export namespace Pages {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Pages/Service Page
-    */
-    export type ServicePage = Foundation.HcabasePage & 
-Foundation.Doctify.DoctifyKeywordIdMapping &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Service Page
-    */
-    export type ServicePageJson = Foundation.HcabasePageJson & 
-Foundation.Doctify.DoctifyKeywordIdMappingJson &  {
-        
-
-    }
-}
 export namespace SocialMedia {
 
     /**
@@ -3741,6 +4217,128 @@ export namespace SocialMedia {
     */
     export type SocialMediaProvidersFolderJson =  {
         
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Specialty
+    */
+    export type Specialty = Business.Doctify.Base.doctifySpecialtyMapping & 
+Business.Base.treatmentsSelector & 
+Business.Base.conditionsSelector & 
+Business.Base.diagnosisSelector & 
+Business.Base.supportingServicesSelector &  {
+        fields?: { 
+            /**
+            * Represents the Name field (44247618-f7a5-41b0-9cf9-3bc67e968d5c).
+            */
+            Name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Specialty
+    */
+    export type SpecialtyJson = Business.Doctify.Base.doctifySpecialtyMappingJson & 
+Business.Base.treatmentsSelectorJson & 
+Business.Base.conditionsSelectorJson & 
+Business.Base.diagnosisSelectorJson & 
+Business.Base.supportingServicesSelectorJson &  {
+        
+            /**
+            * Represents the Name field (44247618-f7a5-41b0-9cf9-3bc67e968d5c).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace Pages {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Pages/Specialty Page
+    */
+    export type SpecialtyPage = Foundation.HcabasePage & 
+Business.Specialty &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Specialty Page
+    */
+    export type SpecialtyPageJson = Foundation.HcabasePageJson & 
+Business.SpecialtyJson &  {
+        
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Subspecialty
+    */
+    export type Subspecialty = Business.Doctify.Base.doctifySpecialtyMapping & 
+Business.Base.treatmentsSelector & 
+Business.Base.diagnosisSelector & 
+Business.Base.conditionsSelector &  {
+        fields?: { 
+            /**
+            * Represents the Name field (a68d7021-6caf-43b9-82e3-f79d906de741).
+            */
+            Name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Subspecialty
+    */
+    export type SubspecialtyJson = Business.Doctify.Base.doctifySpecialtyMappingJson & 
+Business.Base.treatmentsSelectorJson & 
+Business.Base.diagnosisSelectorJson & 
+Business.Base.conditionsSelectorJson &  {
+        
+            /**
+            * Represents the Name field (a68d7021-6caf-43b9-82e3-f79d906de741).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/SupportService
+    */
+    export type SupportService =  {
+        fields?: { 
+            /**
+            * Represents the Name field (871a1f5c-db3b-4380-81e2-0b5d98636554).
+            */
+            Name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/SupportService
+    */
+    export type SupportServiceJson =  {
+        
+            /**
+            * Represents the Name field (871a1f5c-db3b-4380-81e2-0b5d98636554).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }
@@ -3858,6 +4456,40 @@ export namespace PageContent {
 
     }
 }
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Telephone Number
+    */
+    export type TelephoneNumber = Business.Base.telephoneNumberDetails &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Telephone Number
+    */
+    export type TelephoneNumberJson = Business.Base.telephoneNumberDetailsJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Telephone Numbers Folder
+    */
+    export type TelephoneNumbersFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Telephone Numbers Folder
+    */
+    export type TelephoneNumbersFolderJson =  {
+        
+
+    }
+}
 export namespace Foundation.RenderingParameters {
 
     /**
@@ -3885,6 +4517,56 @@ export namespace Foundation.RenderingParameters {
                 jsonValue: Field<string>
             };
 
+
+    }
+}
+export namespace Business {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Treatment
+    */
+    export type Treatment =  {
+        fields?: { 
+            /**
+            * Represents the FixedPricePackage field (a57e3ea7-f74f-4ebf-9553-8a843b04fe64).
+            */
+            FixedPricePackage?: Item;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Treatment
+    */
+    export type TreatmentJson =  {
+        
+            /**
+            * Represents the FixedPricePackage field (a57e3ea7-f74f-4ebf-9553-8a843b04fe64).
+            */
+            FixedPricePackage?: {
+                jsonValue: Item
+            };
+
+
+    }
+}
+export namespace Pages {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Pages/Treatment Page
+    */
+    export type TreatmentPage = Foundation.HcabasePage & 
+Business.Treatment &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Treatment Page
+    */
+    export type TreatmentPageJson = Foundation.HcabasePageJson & 
+Business.TreatmentJson &  {
+        
 
     }
 }
@@ -4098,10 +4780,38 @@ export namespace Foundation {
 
     }
 }
-export namespace Foundation.Doctify {
+export namespace Foundation.Doctify.Base {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyKeywordIdMapping
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyConsultantMapping
+    */
+    export type DoctifyConsultantMapping =  {
+        fields?: { 
+            /**
+            * Represents the DoctifyConsultantSlug field (f16d2228-5a7b-4f0a-9240-cec61c7a6cf8).
+            */
+            DoctifyConsultantSlug?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyConsultantMapping
+    */
+    export type DoctifyConsultantMappingJson =  {
+        
+            /**
+            * Represents the DoctifyConsultantSlug field (f16d2228-5a7b-4f0a-9240-cec61c7a6cf8).
+            */
+            DoctifyConsultantSlug?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyKeywordIdMapping
     */
     export type DoctifyKeywordIdMapping =  {
         fields?: { 
@@ -4114,7 +4824,7 @@ export namespace Foundation.Doctify {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyKeywordIdMapping
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyKeywordIdMapping
     */
     export type DoctifyKeywordIdMappingJson =  {
         
@@ -4129,7 +4839,7 @@ export namespace Foundation.Doctify {
     }
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyPracticeMapping
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyPracticeMapping
     */
     export type DoctifyPracticeMapping =  {
         fields?: { 
@@ -4142,7 +4852,7 @@ export namespace Foundation.Doctify {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/_DoctifyPracticeMapping
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifyPracticeMapping
     */
     export type DoctifyPracticeMappingJson =  {
         
@@ -4507,6 +5217,360 @@ export namespace SocialMedia.Base {
             */
             SocialMediaProfilesGroup?: {
                 jsonValue: Item
+            };
+
+
+    }
+}
+export namespace Business.Base {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_conditionsSelector
+    */
+    export type conditionsSelector =  {
+        fields?: { 
+            /**
+            * Represents the Conditions field (5d8115a3-1009-4cf5-b69f-2a93a728380b).
+            */
+            Conditions?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_conditionsSelector
+    */
+    export type conditionsSelectorJson =  {
+        
+            /**
+            * Represents the Conditions field (5d8115a3-1009-4cf5-b69f-2a93a728380b).
+            */
+            Conditions?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_diagnosisSelector
+    */
+    export type diagnosisSelector =  {
+        fields?: { 
+            /**
+            * Represents the Diagnosis field (ea6ad3a6-765a-4d15-939f-b257b76b7787).
+            */
+            Diagnosis?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_diagnosisSelector
+    */
+    export type diagnosisSelectorJson =  {
+        
+            /**
+            * Represents the Diagnosis field (ea6ad3a6-765a-4d15-939f-b257b76b7787).
+            */
+            Diagnosis?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+}
+export namespace Business.Doctify.Base {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyConditionMapping
+    */
+    export type doctifyConditionMapping = Foundation.Doctify.Base.DoctifyKeywordIdMapping &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyConditionMapping
+    */
+    export type doctifyConditionMappingJson = Foundation.Doctify.Base.DoctifyKeywordIdMappingJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyDiagnosisMapping
+    */
+    export type doctifyDiagnosisMapping = Foundation.Doctify.Base.DoctifyKeywordIdMapping &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyDiagnosisMapping
+    */
+    export type doctifyDiagnosisMappingJson = Foundation.Doctify.Base.DoctifyKeywordIdMappingJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyLocationMapping
+    */
+    export type doctifyLocationMapping = Foundation.Doctify.Base.DoctifyPracticeMapping &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyLocationMapping
+    */
+    export type doctifyLocationMappingJson = Foundation.Doctify.Base.DoctifyPracticeMappingJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifySpecialtyMapping
+    */
+    export type doctifySpecialtyMapping = Foundation.Doctify.Base.DoctifyKeywordIdMapping &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifySpecialtyMapping
+    */
+    export type doctifySpecialtyMappingJson = Foundation.Doctify.Base.DoctifyKeywordIdMappingJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyTreatmentMapping
+    */
+    export type doctifyTreatmentMapping = Foundation.Doctify.Base.DoctifyKeywordIdMapping &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Doctify/Base/_doctifyTreatmentMapping
+    */
+    export type doctifyTreatmentMappingJson = Foundation.Doctify.Base.DoctifyKeywordIdMappingJson &  {
+        
+
+    }
+}
+export namespace Business.Base {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_facilityContactUnit
+    */
+    export type facilityContactUnit = Business.Base.telephoneNumberSelector &  {
+        fields?: { 
+            /**
+            * Represents the Contact Unit Name field (f11e7b8e-2e89-424c-807b-af08ce4f29db).
+            */
+            ContactUnitName?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_facilityContactUnit
+    */
+    export type facilityContactUnitJson = Business.Base.telephoneNumberSelectorJson &  {
+        
+            /**
+            * Represents the Contact Unit Name field (f11e7b8e-2e89-424c-807b-af08ce4f29db).
+            */
+            ContactUnitName?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace Business.OpeningHours {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Opening Hours/_openingHoursSelector
+    */
+    export type openingHoursSelector =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Opening Hours/_openingHoursSelector
+    */
+    export type openingHoursSelectorJson =  {
+        
+
+    }
+}
+export namespace Business.Base {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_specialtiesSelector
+    */
+    export type specialtiesSelector =  {
+        fields?: { 
+            /**
+            * Represents the Specialties field (35a54b2e-44e5-4b28-ab9b-3b72ad4547ea).
+            */
+            Specialties?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_specialtiesSelector
+    */
+    export type specialtiesSelectorJson =  {
+        
+            /**
+            * Represents the Specialties field (35a54b2e-44e5-4b28-ab9b-3b72ad4547ea).
+            */
+            Specialties?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_supportingServicesSelector
+    */
+    export type supportingServicesSelector =  {
+        fields?: { 
+            /**
+            * Represents the Supporting Services field (b26a6d18-8415-4828-944a-8ebd7305891c).
+            */
+            "Supporting Services"?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_supportingServicesSelector
+    */
+    export type supportingServicesSelectorJson =  {
+        
+            /**
+            * Represents the Supporting Services field (b26a6d18-8415-4828-944a-8ebd7305891c).
+            */
+            "Supporting Services"?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_telephoneNumberDetails
+    */
+    export type telephoneNumberDetails =  {
+        fields?: { 
+            /**
+            * Represents the Internation Phone Number field (a045dc2d-cbe9-441a-83fd-cf0b824b5678).
+            */
+            InternationPhoneNumber?: Field<string>;
+
+            /**
+            * Represents the Phone Number field (c16d95c6-0161-41e8-a672-c65659203216).
+            */
+            PhoneNumber?: Field<string>;
+
+            /**
+            * Represents the Phone Number Label field (bcb8e0ef-378c-4ad7-bbab-f463ddfc2307).
+            */
+            PhoneNumberLabel?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_telephoneNumberDetails
+    */
+    export type telephoneNumberDetailsJson =  {
+        
+            /**
+            * Represents the Internation Phone Number field (a045dc2d-cbe9-441a-83fd-cf0b824b5678).
+            */
+            InternationPhoneNumber?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Phone Number field (c16d95c6-0161-41e8-a672-c65659203216).
+            */
+            PhoneNumber?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Phone Number Label field (bcb8e0ef-378c-4ad7-bbab-f463ddfc2307).
+            */
+            PhoneNumberLabel?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_telephoneNumberSelector
+    */
+    export type telephoneNumberSelector =  {
+        fields?: { 
+            /**
+            * Represents the Telephone Number field (970e5839-53a1-405c-8ada-3e7c4da4fc4d).
+            */
+            TelephoneNumber?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_telephoneNumberSelector
+    */
+    export type telephoneNumberSelectorJson =  {
+        
+            /**
+            * Represents the Telephone Number field (970e5839-53a1-405c-8ada-3e7c4da4fc4d).
+            */
+            TelephoneNumber?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Business/Base/_treatmentsSelector
+    */
+    export type treatmentsSelector =  {
+        fields?: { 
+            /**
+            * Represents the Treatments field (66081df9-22ae-4792-887a-c17c8fc5f4c0).
+            */
+            Treatments?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Business/Base/_treatmentsSelector
+    */
+    export type treatmentsSelectorJson =  {
+        
+            /**
+            * Represents the Treatments field (66081df9-22ae-4792-887a-c17c8fc5f4c0).
+            */
+            Treatments?: {
+                jsonValue: Item[]
             };
 
 
