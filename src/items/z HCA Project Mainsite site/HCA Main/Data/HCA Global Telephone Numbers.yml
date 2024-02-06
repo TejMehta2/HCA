@@ -1,0 +1,23 @@
+﻿---
+ID: "c7dc21ce-7a98-4c78-a36f-74cc528a84c4"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "1dd55312-6947-4ce8-8d9e-2bcc7b8c16e9"
+Path: /sitecore/content/HCA/HCA Main/Data/HCA Global Telephone Numbers
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T172901Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "35a32e7c-2289-463f-91a7-ff65dd8eb55e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240119T172901Z

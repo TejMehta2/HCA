@@ -2,8 +2,8 @@
 @use '../../utilities/index.module' as *;
 
 .intro-block {
-  background-color: white;
-  color: $dark-blue;
+  background-color: var(--background);
+  color: var(--text);
 
   .grid {
     padding-top: $spacing-13;
