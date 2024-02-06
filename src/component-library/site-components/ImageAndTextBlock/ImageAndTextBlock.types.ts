@@ -8,17 +8,10 @@ export type iconList = {
   text: string;
 }[];
 
-type contactList = {
-  title: JSX.Element;
-  number: JSX.Element;
-  icon: JSX.Element;
-  openingHours: JSX.Element;
-}[];
-
 export interface ImageAndTextBlockProps {
   header: ReactNode | JSX.Element;
   image: ReactNode | JSX.Element;
-  children?: ReactNode | JSX.Element;
+  children: ReactNode | JSX.Element;
   subheader?: ReactNode | JSX.Element;
   ctas?: JSX.Element;
   imageAlignment?: imageAlignmentTypes;
@@ -26,5 +19,4 @@ export interface ImageAndTextBlockProps {
   theme: Theme;
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
   iconList?: iconList;
-  contactList?: contactList;
 }

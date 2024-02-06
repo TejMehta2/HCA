@@ -186,29 +186,3 @@
     }
   }
 }
-
-.contact-list {
-  width: 100%;
-
-  @include media(screen-l) {
-    width: 80%;
-  }
-
-  & > div:not(:first-of-type) {
-    margin-top: $spacing-6;
-    border-top: px-to-rem(1) solid var(--text);
-    padding-top: $spacing-6;
-  }
-
-  .number {
-    margin-top: $spacing-2;
-  }
-
-  .hours {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: $spacing-2;
-    margin-top: $spacing-3;
-  }
-}

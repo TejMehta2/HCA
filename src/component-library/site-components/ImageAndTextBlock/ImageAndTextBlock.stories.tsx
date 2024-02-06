@@ -7,6 +7,7 @@ import Doctify from '../../components/Doctify/Doctify';
 import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
+import ContactList from '../../components/ContactList/ContactList';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ImageAndTextBlock> = {
@@ -311,43 +312,47 @@ export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
         Talk to us
       </Text>
     ),
-    contactList: [
-      {
-        title: (
-          <Text tag="h4" variation="subheading-2">
-            Embassy team
-          </Text>
-        ),
-        number: (
-          <Text tag="p" variation="display-6">
-            020 3131 5978
-          </Text>
-        ),
-        icon: <Icons iconName="iconClock"></Icons>,
-        openingHours: (
-          <Text tag="p" variation="body-large">
-            Monday to Friday 8am - 6pm
-          </Text>
-        ),
-      },
-      {
-        title: (
-          <Text tag="h4" variation="subheading-2">
-            Internation team (agencies & insurers)
-          </Text>
-        ),
-        number: (
-          <Text tag="p" variation="display-6">
-            020 3131 5978
-          </Text>
-        ),
-        icon: <Icons iconName="iconClock"></Icons>,
-        openingHours: (
-          <Text tag="p" variation="body-large">
-            Monday to Friday 8am - 6pm
-          </Text>
-        ),
-      },
-    ],
+    children: (
+      <ContactList
+        items={[
+          {
+            title: (
+              <Text tag="h4" variation="subheading-2">
+                Embassy team
+              </Text>
+            ),
+            number: (
+              <Text tag="p" variation="display-6">
+                020 3131 5978
+              </Text>
+            ),
+            icon: <Icons iconName="iconClock"></Icons>,
+            openingHours: (
+              <Text tag="p" variation="body-large">
+                Monday to Friday 8am - 6pm
+              </Text>
+            ),
+          },
+          {
+            title: (
+              <Text tag="h4" variation="subheading-2">
+                Internation team (agencies & insurers)
+              </Text>
+            ),
+            number: (
+              <Text tag="p" variation="display-6">
+                020 3131 5978
+              </Text>
+            ),
+            icon: <Icons iconName="iconClock"></Icons>,
+            openingHours: (
+              <Text tag="p" variation="body-large">
+                Monday to Friday 8am - 6pm
+              </Text>
+            ),
+          },
+        ]}
+      />
+    ),
   },
 };
