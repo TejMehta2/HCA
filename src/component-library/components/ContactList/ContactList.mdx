@@ -1,0 +1,62 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ContactListStories from './ContactList.stories';
+
+<Meta of={ContactListStories} />
+
+# ContactList
+
+## Description
+
+The ContactList component consists of an array of contact details. Each of these contains a title, number, icon, and opening hours string.
+
+It is intended to be used in the Image & Text block, but can be reused in any other component
+
+It can be composed like this:
+
+```tsx
+<ContactList
+  items={[
+    {
+      title: (
+        <Text tag="h4" variation="subheading-2">
+          Embassy team
+        </Text>
+      ),
+      number: (
+        <Text tag="p" variation="display-6">
+          020 3131 5978
+        </Text>
+      ),
+      icon: <Icons iconName="iconClock"></Icons>,
+      openingHours: (
+        <Text tag="p" variation="body-large">
+          Monday to Friday 8am - 6pm
+        </Text>
+      ),
+    },
+    {
+      title: (
+        <Text tag="h4" variation="subheading-2">
+          Internation team (agencies & insurers)
+        </Text>
+      ),
+      number: (
+        <Text tag="p" variation="display-6">
+          020 3131 5978
+        </Text>
+      ),
+      icon: <Icons iconName="iconClock"></Icons>,
+      openingHours: (
+        <Text tag="p" variation="body-large">
+          Monday to Friday 8am - 6pm
+        </Text>
+      ),
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={ContactListStories.Default} />
+<Controls of={ContactListStories.Default} />
