@@ -1,16 +1,27 @@
 ﻿---
-ID: "16a73a06-0954-40b5-8488-e7481c20da0b"
-Parent: "953b5783-adbb-46ce-93b2-c527210d93d5"
-Template: "3d67ae05-dab2-41b5-b6ba-e531a3b08b4a"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA84/Data/Modal Content
+ID: "eebd3076-badf-4340-b1da-735d54239c77"
+Parent: "4273089f-d11e-4e40-a7e3-b15f496c46d9"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Foundation/Modal Content/Data/PrimaryCTA
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: General Link
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Primary CTA
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240129T205936Z
+      Value: 20240202T115918Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -19,19 +30,13 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "8bdcda68-7ca6-4187-bd0b-0eac908580c5"
-      Hint: Title
-      Value: "Need a specialist?"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5f484b4e-b2bc-4db5-96bd-a4e097b78eea"
+      Value: "e4e9e546-a2c3-44f6-8489-d02ef98380b3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T210346Z
-    - ID: "fdad35a7-2d56-4054-999f-3d35fbb308cd"
-      Hint: Text
-      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo.
+      Value: 20240202T121814Z
