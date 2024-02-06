@@ -1,0 +1,35 @@
+﻿---
+ID: "a935916b-5640-4259-bad6-c09410bb57a3"
+Parent: "d27d00cf-d030-4824-8581-2b2ebee62150"
+Template: "d27d00cf-d030-4824-8581-2b2ebee62150"
+Path: /sitecore/templates/Project/HCA/Business/Contact Units Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{7208A23D-E679-4BF3-A4F2-BE85817BDBC2}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T162327Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "89e9f36c-8091-4cea-9663-6078123360e6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T162344Z

@@ -59,31 +59,29 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
   }
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
   return (
-    <div className={`component ${props.params.styles}`}>
-      <HeaderWithImage
-        theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
-        title={
-          <Text
-            variation={props.params.HeadingSize || 'display-1'}
-            tag={props.params.HeadingTag || 'h2'}
-          >
-            <JSSText field={props.fields.Title} />
-          </Text>
-        }
-        copy={
-          <Text variation="body-large" tag="span">
-            <RichText tag="p" field={props.fields.Text} />
-          </Text>
-        }
-        image={<JSSImage field={props.fields.Image} />}
-        ctas={
-          <Placeholder
-            name={phKey}
-            rendering={props.rendering}
-            size={buttonSize}
-          />
-        }
-      />
-    </div>
+    <HeaderWithImage
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
+      title={
+        <Text
+          variation={props.params.HeadingSize || 'display-1'}
+          tag={props.params.HeadingTag || 'h2'}
+        >
+          <JSSText field={props.fields.Title} />
+        </Text>
+      }
+      copy={
+        <Text variation="body-large" tag="span">
+          <RichText tag="p" field={props.fields.Text} />
+        </Text>
+      }
+      image={<JSSImage field={props.fields.Image} />}
+      ctas={
+        <Placeholder
+          name={phKey}
+          rendering={props.rendering}
+          size={buttonSize}
+        />
+      }
+    />
   );
 };

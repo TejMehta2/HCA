@@ -7,6 +7,7 @@ import Doctify from '../../components/Doctify/Doctify';
 import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
+import ContactList from '../../components/ContactList/ContactList';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ImageAndTextBlock> = {
@@ -285,5 +286,73 @@ export const iconList: StoryObj<typeof ImageAndTextBlock> = {
         text: 'Quis laboris proi',
       },
     ],
+  },
+};
+
+export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'C-HCA-Beige',
+    imageAlignment: 'left',
+    length: 'short',
+    image: (
+      <Image
+        src="/placeholders/doctor-inspecting-a-childs-arm.jpg"
+        alt="a doctor inspecting a childs arm"
+        width="643"
+        height="605"
+      />
+    ),
+    subheader: (
+      <Text tag="h3" variation="subheading-1">
+        Contacts
+      </Text>
+    ),
+    header: (
+      <Text tag="h2" variation="display-2">
+        Talk to us
+      </Text>
+    ),
+    children: (
+      <ContactList
+        items={[
+          {
+            title: (
+              <Text tag="h4" variation="subheading-2">
+                Embassy team
+              </Text>
+            ),
+            number: (
+              <Text tag="p" variation="display-6">
+                020 3131 5978
+              </Text>
+            ),
+            icon: <Icons iconName="iconClock"></Icons>,
+            openingHours: (
+              <Text tag="p" variation="body-large">
+                Monday to Friday 8am - 6pm
+              </Text>
+            ),
+          },
+          {
+            title: (
+              <Text tag="h4" variation="subheading-2">
+                Internation team (agencies & insurers)
+              </Text>
+            ),
+            number: (
+              <Text tag="p" variation="display-6">
+                020 3131 5978
+              </Text>
+            ),
+            icon: <Icons iconName="iconClock"></Icons>,
+            openingHours: (
+              <Text tag="p" variation="body-large">
+                Monday to Friday 8am - 6pm
+              </Text>
+            ),
+          },
+        ]}
+      />
+    ),
   },
 };

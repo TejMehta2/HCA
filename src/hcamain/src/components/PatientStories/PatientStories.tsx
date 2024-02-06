@@ -148,61 +148,59 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
     return <PatientStoriesDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <SideScrollingCards
-        title={<JssText field={props.fields.data.item.title.jsonValue} />}
-        link={
-          !isExperienceEditor ? (
-            <JssLink field={props.fields.data.item.cTALink.jsonValue}>
-              {props?.fields?.data?.item?.cTAIcon?.Icon && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
-                  }}
-                />
-              )}
+    <SideScrollingCards
+      title={<JssText field={props.fields.data.item.title.jsonValue} />}
+      link={
+        !isExperienceEditor ? (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}>
+            {props?.fields?.data?.item?.cTAIcon?.Icon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
+                }}
+              />
+            )}
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.data.item.cTALink.jsonValue.value.text,
+              }}
+            />
+          </JssLink>
+        ) : (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
+        )
+      }
+      bodyCopy={
+        <RichText tag="span" field={props.fields.data.item.text.jsonValue} />
+      }
+    >
+      {props.fields.data.item.stories.StoriesList.map((story, index) => (
+        <CardPatientStories
+          key={index}
+          title={
+            <Text tag="h3" variation="display-4">
+              <JssText field={story.title} />
+            </Text>
+          }
+          link={
+            <a href={story.url.url}>
               <RichText
                 tag="span"
                 field={{
-                  value: props.fields.data.item.cTALink.jsonValue.value.text,
+                  value: props.fields.data.item.cardCTAText.jsonValue?.value,
                 }}
               />
-            </JssLink>
-          ) : (
-            <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
-          )
-        }
-        bodyCopy={
-          <RichText tag="span" field={props.fields.data.item.text.jsonValue} />
-        }
-      >
-        {props.fields.data.item.stories.StoriesList.map((story, index) => (
-          <CardPatientStories
-            key={index}
-            title={
-              <Text tag="h3" variation="display-4">
-                <JssText field={story.title} />
-              </Text>
-            }
-            link={
-              <a href={story.url.url}>
-                <RichText
-                  tag="span"
-                  field={{
-                    value: props.fields.data.item.cardCTAText.jsonValue?.value,
-                  }}
-                />
-              </a>
-            }
-            bodyCopy={
-              <Text tag="div" variation="body-large">
-                <RichText tag="span" field={story.description} />
-              </Text>
-            }
-            image={<JssImage field={story.image.jsonValue} />}
-          ></CardPatientStories>
-        ))}
-      </SideScrollingCards>
-    </div>
+            </a>
+          }
+          bodyCopy={
+            <Text tag="div" variation="body-large">
+              <RichText tag="span" field={story.description} />
+            </Text>
+          }
+          image={<JssImage field={story.image.jsonValue} />}
+        ></CardPatientStories>
+      ))}
+    </SideScrollingCards>
   );
 };

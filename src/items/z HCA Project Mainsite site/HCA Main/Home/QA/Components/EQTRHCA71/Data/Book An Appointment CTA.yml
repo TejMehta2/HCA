@@ -11,9 +11,14 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240129T214914Z
+    - ID: "39493498-2ce7-47f0-aeca-fb632d319422"
+      Hint: ModalContent
+      Value: |
+        {0D548691-3D02-4748-9689-F3AF616D1AFF}
+        {AB2437A0-9D58-4DBB-A2FA-5FC52A5D61FC}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "321bb9fa-f73a-49ee-99c9-0b630abfb0c2"
+      Value: "c7bb7f7b-e845-4ee6-bdb9-22504bbf7238"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -24,4 +29,4 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T215012Z
+      Value: 20240202T124024Z

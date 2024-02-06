@@ -10,6 +10,7 @@ const Footer = (props: FooterProps): JSX.Element => {
   const { columns, legals, buttons } = props;
   const LogoIcon = Logo as () => JSX.Element;
   const LogoMarkIcon = LogoMark as () => JSX.Element;
+
   return (
     <Themes theme={'E-HCA-Dark-Grey'}>
       <footer className={styles.footer}>
@@ -59,14 +60,14 @@ const Footer = (props: FooterProps): JSX.Element => {
               </div>
               <ul className={styles.legals}>
                 {legals.map((legal, index) => (
-                  <>
+                  <React.Fragment key={index}>
                     {index > 0 && (
                       <li aria-hidden={true} className={styles.point}></li>
                     )}
-                    <li key={index}>
+                    <li>
                       <TextLink>{legal}</TextLink>
                     </li>
-                  </>
+                  </React.Fragment>
                 ))}
               </ul>
             </div>
