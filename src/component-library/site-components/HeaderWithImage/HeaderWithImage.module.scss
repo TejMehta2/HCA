@@ -23,15 +23,8 @@
       margin-bottom: $spacing-2;
     }
     @include media(screen-m) {
-      max-width: px-to-rem(304);
-    }
-    @include media(screen-l, max) {
-      a,
-      button {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-      }
+      width: max-content;
+      max-width: px-to-rem(500);
     }
   }
 }

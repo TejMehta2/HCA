@@ -66,7 +66,11 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       <br />
       <Text field={props.fields.CTAHeading} />
       <br />
-      <Placeholder name={phKey} rendering={props.rendering} />
+      <Placeholder
+        name={phKey}
+        rendering={props.rendering}
+        contentVariation="full-width"
+      />
     </div>
   );
 };

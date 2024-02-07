@@ -28,12 +28,6 @@
     > * {
       width: 100%;
 
-      button,
-      a {
-        width: inherit;
-        justify-content: center;
-      }
-
       &:not(:last-child) {
         margin-bottom: px-to-rem(4);
       }
