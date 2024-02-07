@@ -118,9 +118,9 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={<a href={service.url}>{props.fields.CTACardText.value}</a>}
             key={index}
           >
-            <JssImage field={service.fields.Image} editable={false}/>
+            <JssImage field={service.fields.Image} editable={false} />
             <Text tag="div" variation="display-6">
-              <JssText field={service.fields.Title} editable={false}/>
+              <JssText field={service.fields.Title} editable={false} />
             </Text>
           </CardService>
         ))}

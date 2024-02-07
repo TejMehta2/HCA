@@ -62,7 +62,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
             <br />
             <JssText field={card.fields.Text} />
             <br />
-            <span >{card.fields.Theme.name?.toString()}</span>
+            <span>{card.fields.Theme.name?.toString()}</span>
             <br />
             <JSSImage field={card.fields.ForegroundImageDesktop} />
             <br />
