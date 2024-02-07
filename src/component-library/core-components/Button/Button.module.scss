@@ -48,13 +48,6 @@
 .button {
   a {
     text-decoration: none;
-    width: max-content;
-
-    @include media(screen-m, max) {
-      width: 100%;
-      text-align: center;
-      justify-content: center;
-    }
   }
 
   button {
@@ -72,6 +65,13 @@
     padding: 0;
     color: inherit;
     position: relative;
+    width: max-content;
+
+    @include media(screen-m, max) {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
 
     @include apply-body-large;
 
