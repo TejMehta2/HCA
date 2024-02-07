@@ -2,7 +2,7 @@ import React, { forwardRef, useState, TouchEvent } from 'react';
 import { ModalsProps } from './Modals.types';
 import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
-import TextButton from '../../core-components/TextButton/TextButton';
+import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
 
 // A toggle-able React Modal using the native HTML5 dialog element
@@ -38,12 +38,12 @@ const Modals = (
   const CloseButton = () => (
     <div className={close}>
       <form method="dialog">
-        <TextButton>
+        <TextLink>
           <button>
             Close
             <Icons iconName="iconCross" />
           </button>
-        </TextButton>
+        </TextLink>
       </form>
     </div>
   );

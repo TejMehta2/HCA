@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as ThemesStories from './Themes.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ThemesStories from './Themes.stories';
 
 <Meta of={ThemesStories} />
 
@@ -15,18 +15,18 @@ The current theme can be assigned as follows.
 
 ### Via SCSS mixin
 
-``` scss
+```scss
 .my-component {
   @include apply-theme-a;
 }
 .my-component .my-nested-component {
-  @include apply-theme-b
+  @include apply-theme-b;
 }
 ```
 
 ### Via React component
 
-``` tsx
+```tsx
 <Themes theme={'A-HCA-Main-Turquoise'}>
   <MyComponent />
 </Themes>
@@ -36,7 +36,7 @@ Many of the site components inherit the theme from the cascade, as demonstrated 
 
 The CSS custom properties of the theme can be consumed manually:
 
-``` scss
+```scss
 .my-themed-component {
   background: var(--background);
   color: var(--text);
@@ -54,7 +54,7 @@ Each theme has a light or dark mode, which determines colours automatically appl
 
 We can also access and apply styles for light and dark modes via the `theme-mode` mixin e.g. to hide or show a specific logo based on the current theme's mode:
 
-``` scss
+```scss
 .my-themed-component {
   background: var(--background);
   color: var(--text);
@@ -85,17 +85,34 @@ We can also access and apply styles for light and dark modes via the `theme-mode
 }
 ```
 
+## Padding collapse for adjacent components with the same theme
+
+We have created a proof of concept (src\component-library\poc\PaddingCollapse\PaddingCollapse.mdx) to display how the padding can be collapsed if two components with the same theme are used next to one another.
+
+The `--theme-collapse-padding-top` custom property can be used in the component styles to set the padding top to 0 when the themes match.
+
+e.g.
+
+```
+.example {
+    padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
+}
+```
+
 ## CSS custom property list
 
 The vast majority of the theme properties are consumed automatically by core-components, these are grouped in the mixins in the "./theme-parts" directory.
 
 ### Base (consumed manually in components)
+
 - `--text`
 - `--background`
 - `--card-background`
 - `--card-secondary-background`
 - `--card-secondary-text`
+
 ### CTAs (consumed automatically by Buttons component)
+
 - `--cta-full-background`
 - `--cta-full-text`
 - `--cta-full-border`
@@ -125,7 +142,9 @@ The vast majority of the theme properties are consumed automatically by core-com
 - `--cta-outline-active-text`
 - `--cta-outline-active-border`
 - `--cta-outline-focus-outline`
+
 ### Tags (consumed automatically by Tags component)
+
 - `--tag-background`
 - `--tag-text`
 - `--tag-hover-background`
@@ -140,19 +159,21 @@ The vast majority of the theme properties are consumed automatically by core-com
 - `--tag-secondary-focus-outline`
 
 ### Tabs (consumed automatically by Tabs component)
+
 - `--tab-text`
 - `--tab-active-text`
 - `--tab-background`
 
 ### CQC (consumed automatically by CQC component)
--  `--cqc-background`
--  `--cqc-text`
--  `--cqc-logo-light-display`
--  `--cqc-logo-dark-display`
+
+- `--cqc-background`
+- `--cqc-text`
+- `--cqc-logo-light-display`
+- `--cqc-logo-dark-display`
 
 ## Demo
 
-<Canvas of={ThemesStories.ThemeA}  />
+<Canvas of={ThemesStories.ThemeA} />
 <Controls of={ThemesStories.ThemeA} />
 
 ### Nested Themes
@@ -160,7 +181,8 @@ The vast majority of the theme properties are consumed automatically by core-com
 Themes can be nested, as shown below.
 
 #### In React
-``` tsx
+
+```tsx
 <Themes theme={'A-HCA-Main-Turquoise'}>
   <ParentComponent>
     <h2>Here theme a</h2>
@@ -171,9 +193,10 @@ Themes can be nested, as shown below.
   </ParentComponent>
 </Themes>
 ```
+
 #### In SCSS
 
-``` scss
+```scss
 .wrapper {
   @include apply-theme-a;
 
@@ -186,4 +209,3 @@ Themes can be nested, as shown below.
 ### Overrides
 
 Various components can override their theme styles via props e.g. Buttons and Tags.
-
