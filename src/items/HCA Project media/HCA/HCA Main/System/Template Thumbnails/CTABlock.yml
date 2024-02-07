@@ -1,8 +1,8 @@
 ﻿---
 ID: "e89c5ec4-7a50-42e8-b588-e42aef5ae74c"
-Parent: "a4cb4849-a3c2-4f1c-9691-54fc537d4940"
+Parent: "b76101a0-849f-421d-822b-809aee93adcc"
 Template: "f1828a2c-7e5d-4bbd-98ca-320474871548"
-Path: /sitecore/media library/Project/HCA/HCA Main/QA/CTABlock
+Path: /sitecore/media library/Project/HCA/HCA Main/System/Template Thumbnails/CTABlock
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
