@@ -349,3 +349,30 @@ export const HoverCarouselButton: StoryObj<typeof Button> = {
     ),
   },
 };
+
+export const ResponsiveContainerExample: StoryObj<typeof Button> = {
+  args: {
+    size: 'large',
+    children: (
+      <button type="button" onClick={exampleClick}>
+        <Icons iconName="iconPhone" />
+        Large <strong>Button</strong>
+      </button>
+    ),
+    theme: 'full-dark',
+  },
+
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '1rem' }}>
+        <Themes theme="F-HCA-White">
+          <Story />
+        </Themes>
+      </div>
+    ),
+  ],
+
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
