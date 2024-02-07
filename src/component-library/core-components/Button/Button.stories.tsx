@@ -364,9 +364,11 @@ export const ResponsiveContainerExample: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
-        <Story />
-      </Themes>
+      <div style={{ padding: '1rem' }}>
+        <Themes theme="F-HCA-White">
+          <Story />
+        </Themes>
+      </div>
     ),
   ],
 
