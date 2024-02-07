@@ -63,7 +63,7 @@ const ContentCardsSliderDefaultComponent = (
 export const Default = (props: ContentCardsSliderProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
-  if (!props.fields.data.item) {
+  if (!props.fields?.data?.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
 
