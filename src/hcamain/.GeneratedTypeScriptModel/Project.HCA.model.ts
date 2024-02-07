@@ -695,6 +695,96 @@ export namespace Foundation.Cqc {
 export namespace PageContent {
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/CTA Block
+    */
+    export type CtaBlock =  {
+        fields?: { 
+            /**
+            * Represents the Heading field (f79f7278-290d-4268-a48b-e6eedda56618).
+            */
+            Heading?: Field<string>;
+
+            /**
+            * Represents the Text field (0e7dc7c3-75ae-4895-8f37-53beef0051cf).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (6b6db542-a329-44cd-a350-0ba0f386640e).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/CTA Block
+    */
+    export type CtaBlockJson =  {
+        
+            /**
+            * Represents the Heading field (f79f7278-290d-4268-a48b-e6eedda56618).
+            */
+            Heading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Text field (0e7dc7c3-75ae-4895-8f37-53beef0051cf).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (6b6db542-a329-44cd-a350-0ba0f386640e).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/CTA Block
+    */
+    export type CtaBlock = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/CTA Block
+    */
+    export type CtaBlockJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/CTA Block Folder
+    */
+    export type CtaBlockFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/CTA Block Folder
+    */
+    export type CtaBlockFolderJson =  {
+        
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/CTA Button
     */
     export type CtaButton = Foundation.Ctabase &  {
@@ -3154,6 +3244,122 @@ Business.FacilityJson &  {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Locations Map
+    */
+    export type LocationsMap = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the BackgroundImage field (af283409-3112-4268-acc1-469e5c62ab6d).
+            */
+            BackgroundImage?: ImageField;
+
+            /**
+            * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
+            */
+            Cards?: Item[];
+
+            /**
+            * Represents the Heading field (53e1bf97-8923-4d23-8f1f-78a53a0b0c94).
+            */
+            Heading?: Field<string>;
+
+            /**
+            * Represents the Text field (a9ada15f-0a53-4831-b67c-c2e5d8aee6aa).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (338112bf-431e-4d75-854e-1c272b743ae1).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Locations Map
+    */
+    export type LocationsMapJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the BackgroundImage field (af283409-3112-4268-acc1-469e5c62ab6d).
+            */
+            BackgroundImage?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
+            */
+            Cards?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Heading field (53e1bf97-8923-4d23-8f1f-78a53a0b0c94).
+            */
+            Heading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Text field (a9ada15f-0a53-4831-b67c-c2e5d8aee6aa).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (338112bf-431e-4d75-854e-1c272b743ae1).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Map
+    */
+    export type LocationsMap = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Map
+    */
+    export type LocationsMapJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Locations Map Folder
+    */
+    export type LocationsMapFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Locations Map Folder
+    */
+    export type LocationsMapFolderJson =  {
+        
+
+    }
+}
 export namespace Foundation.Logos {
 
     /**
@@ -3317,6 +3523,106 @@ export namespace Foundation.Logos {
     }
 }
 export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Map Card
+    */
+    export type MapCard = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
+            */
+            CardStyles?: Field<string>;
+
+            /**
+            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
+            */
+            ForegroundImageDesktop?: ImageField;
+
+            /**
+            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
+            */
+            ForegroundImageMobile?: ImageField;
+
+            /**
+            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            */
+            MapStyles?: Field<string>;
+
+            /**
+            * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
+            */
+            Number?: Field<string>;
+
+            /**
+            * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            */
+            Theme?: Item;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Map Card
+    */
+    export type MapCardJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
+            */
+            CardStyles?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
+            */
+            ForegroundImageDesktop?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
+            */
+            ForegroundImageMobile?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            */
+            MapStyles?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
+            */
+            Number?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            */
+            Theme?: {
+                jsonValue: Item
+            };
+
+
+    }
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/Modal Content

@@ -198,7 +198,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
             />
           </JSSLink>
         ) : (
-          <JSSLink field={props.fields.CTALink.value}></JSSLink>
+          <JSSLink field={props.fields.CTALink}></JSSLink>
         )
       }
       image={<JSSImage field={props.fields.Image} />}

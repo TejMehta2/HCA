@@ -89,9 +89,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
             />
           </JssLink>
         ) : (
-          <JssLink
-            field={props.fields.data.item.cTALink.jsonValue.value}
-          ></JssLink>
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
         )
       }
     >

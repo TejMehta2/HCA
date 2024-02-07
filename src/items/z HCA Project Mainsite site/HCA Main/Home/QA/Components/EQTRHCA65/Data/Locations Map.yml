@@ -1,0 +1,46 @@
+﻿---
+ID: "847ace4a-a241-450f-95a3-c4da40e2f158"
+Parent: "649707d6-d4b9-42da-bbd1-f7fa77e00f43"
+Template: "0c29dd89-c80e-4868-912e-b3d0b8ca2e88"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data/Locations Map
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0558a871-33a4-4598-ba3d-48c3c8c960e7"
+      Hint: Cards
+      Value: |
+        {CE6D9E57-E1FB-420B-BDDB-1820411B9B3C}
+        {F1F7EFAB-EFF6-4F67-ABE2-C6131FCA08AB}
+        {540014C3-7B4B-49E6-A894-F3DB751E1160}
+        {27B3B237-06A5-4481-830E-16EEB609984D}
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240202T085825Z
+    - ID: "338112bf-431e-4d75-854e-1c272b743ae1"
+      Hint: Title
+      Value: The widest range of locations in the UK
+    - ID: "53e1bf97-8923-4d23-8f1f-78a53a0b0c94"
+      Hint: Heading
+      Value: Our locations
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c46c82c1-37c9-4c7e-a2db-3e2a1f24d3f4"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Search all &lt;b&gt;locations&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "a9ada15f-0a53-4831-b67c-c2e5d8aee6aa"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum.
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240207T073240Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
