@@ -3466,19 +3466,24 @@ export namespace Foundation {
     export type MapCard = Foundation.Ctabase &  {
         fields?: { 
             /**
-            * Represents the BackgroundImage field (09eb586f-498f-4079-8508-a69f56667771).
+            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
             */
-            BackgroundImage?: Field<string>;
+            CardStyles?: Field<string>;
 
             /**
-            * Represents the Colour field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
             */
-            Colour?: Field<string>;
+            ForegroundImageDesktop?: ImageField;
 
             /**
-            * Represents the ForegroundImage field (c29669ce-4b49-4342-ac91-38ab9781c12f).
+            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
             */
-            ForegroundImage?: ImageField;
+            ForegroundImageMobile?: ImageField;
+
+            /**
+            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            */
+            MapStyles?: Field<string>;
 
             /**
             * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
@@ -3486,19 +3491,14 @@ export namespace Foundation {
             Number?: Field<string>;
 
             /**
-            * Represents the PositionX field (64f64b91-a724-4592-b254-1074e323f51f).
-            */
-            PositionX?: Field<string>;
-
-            /**
-            * Represents the PositionY field (09288575-7091-48ef-bdd9-f527623b3052).
-            */
-            PositionY?: Field<string>;
-
-            /**
             * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
             */
             Text?: Field<string>;
+
+            /**
+            * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            */
+            Theme?: Item;
         }
 
     }
@@ -3509,24 +3509,31 @@ export namespace Foundation {
     export type MapCardJson = Foundation.CtabaseJson &  {
         
             /**
-            * Represents the BackgroundImage field (09eb586f-498f-4079-8508-a69f56667771).
+            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
             */
-            BackgroundImage?: {
+            CardStyles?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the Colour field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
             */
-            Colour?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the ForegroundImage field (c29669ce-4b49-4342-ac91-38ab9781c12f).
-            */
-            ForegroundImage?: {
+            ForegroundImageDesktop?: {
                 jsonValue: ImageField
+            };
+
+            /**
+            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
+            */
+            ForegroundImageMobile?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            */
+            MapStyles?: {
+                jsonValue: Field<string>
             };
 
             /**
@@ -3537,24 +3544,17 @@ export namespace Foundation {
             };
 
             /**
-            * Represents the PositionX field (64f64b91-a724-4592-b254-1074e323f51f).
-            */
-            PositionX?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the PositionY field (09288575-7091-48ef-bdd9-f527623b3052).
-            */
-            PositionY?: {
-                jsonValue: Field<string>
-            };
-
-            /**
             * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
             */
             Text?: {
                 jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
+            */
+            Theme?: {
+                jsonValue: Item
             };
 
 

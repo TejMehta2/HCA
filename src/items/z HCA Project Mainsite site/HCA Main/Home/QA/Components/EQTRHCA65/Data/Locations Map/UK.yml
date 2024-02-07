@@ -8,15 +8,25 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "09288575-7091-48ef-bdd9-f527623b3052"
+      Hint: CardStyles
+      Value: "translateY(-50%)"
+    - ID: "09eb586f-498f-4079-8508-a69f56667771"
+      Hint: ForegroundImageDesktop
+      Value: |
+        <image mediaid="{0E3B0984-F357-40E8-8AE2-BBFE4586AEE8}" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T090254Z
+    - ID: "64f64b91-a724-4592-b254-1074e323f51f"
+      Hint: MapStyles
+      Value: translateY(0) scale(1.1)
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "08db54a7-8eff-4e22-b3e5-de6cbdd09164"
+      Value: "52f8407b-73de-40ac-8340-e6495d646266"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
-      Hint: Colour
-      Value: #F9C099
+      Hint: Theme
+      Value: "{88ACC656-0617-442E-953A-8E53DB20A316}"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -25,12 +35,16 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "c29669ce-4b49-4342-ac91-38ab9781c12f"
+      Hint: ForegroundImageMobile
+      Value: |
+        <image mediaid="{0E3B0984-F357-40E8-8AE2-BBFE4586AEE8}" />
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
       Value: 35
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240205T133509Z
+      Value: 20240207T074017Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
       Value: Locations across UK

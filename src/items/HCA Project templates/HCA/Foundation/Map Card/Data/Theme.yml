@@ -1,15 +1,18 @@
 ﻿---
-ID: "c29669ce-4b49-4342-ac91-38ab9781c12f"
+ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
 Parent: "55d9b117-4f7b-4232-85ce-6a3c54965aa2"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Map Card/Data/ForegroundImage
+Path: /sitecore/templates/Project/HCA/Foundation/Map Card/Data/Theme
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{DB2E4A4F-E2E9-4CAF-B908-0D41E5F45E6E}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Image
+  Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
+  Value: 300
 Languages:
 - Language: en
   Versions:
@@ -28,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cb615448-abde-44f8-b36d-f7a9a7c9e781"
+      Value: "e2d193a6-b31b-494c-8cc6-f5b574fee622"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240205T133636Z
+      Value: 20240207T075121Z

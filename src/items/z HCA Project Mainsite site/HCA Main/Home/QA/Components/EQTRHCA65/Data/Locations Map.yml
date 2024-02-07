@@ -11,6 +11,7 @@ Languages:
     - ID: "0558a871-33a4-4598-ba3d-48c3c8c960e7"
       Hint: Cards
       Value: |
+        {CE6D9E57-E1FB-420B-BDDB-1820411B9B3C}
         {F1F7EFAB-EFF6-4F67-ABE2-C6131FCA08AB}
         {540014C3-7B4B-49E6-A894-F3DB751E1160}
         {27B3B237-06A5-4481-830E-16EEB609984D}
@@ -25,7 +26,7 @@ Languages:
       Value: Our locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "59765cdb-831f-4b18-a4a0-7d56890df8c1"
+      Value: "c46c82c1-37c9-4c7e-a2db-3e2a1f24d3f4"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -33,17 +34,13 @@ Languages:
     - ID: "a9ada15f-0a53-4831-b67c-c2e5d8aee6aa"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum.
-    - ID: "af283409-3112-4268-acc1-469e5c62ab6d"
-      Hint: BackgroundImage
-      Value: |
-        <image mediaid="{0E3B0984-F357-40E8-8AE2-BBFE4586AEE8}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240205T133330Z
+      Value: 20240207T073240Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
