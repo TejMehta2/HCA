@@ -11,7 +11,7 @@ $themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
   L-HCA-Coral-60;
 
 @each $theme in $themeOptions {
-  :is([data-theme='#{$theme}'])
+  .theme:is([data-theme='#{$theme}'])
     + :is([data-theme='#{$theme}'], :has([data-theme='#{$theme}'])) {
     --theme-collapse-padding-top: 0;
   }

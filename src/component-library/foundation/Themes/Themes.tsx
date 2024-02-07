@@ -7,7 +7,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
   const CustomTag = tag as keyof JSX.IntrinsicElements;
   return (
     <CustomTag
-      className={styles[theme]}
+      className={[styles.theme, styles[theme]].join(' ')}
       data-theme={theme}
       data-theme-mode={styles?.[`mode-${theme}`]}
     >
