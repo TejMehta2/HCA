@@ -1,5 +1,13 @@
 import React from 'react';
-import { Field, RichText, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  RichText,
+  Text as JssText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Text from '@component-library/foundation/Text/Text';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import { HeadingTag, HeadingSize, Theme } from 'src/types/params';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 interface Fields {
   Heading: Field<string>;
@@ -8,7 +16,12 @@ interface Fields {
 }
 
 type PlainHeaderProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+    Theme: Theme;
+  };
   fields: Fields;
 };
 
@@ -26,13 +39,28 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <PlainHeaderDefaultComponent {...props} />;
   }
+
   return (
-    <div>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
+    <HeaderPlain
+      theme={props.params.Theme}
+      subheading={
+        <Text
+          tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
+          variation="subheading-1"
+        >
+          <JssText field={props.fields.Heading} />
+        </Text>
+      }
+      heading={
+        <Text
+          tag={props.params.HeadingTag || 'h1'}
+          variation={props.params.HeadingSize || 'display-1'}
+        >
+          <JssText field={props.fields.Title} />
+        </Text>
+      }
+    >
       <RichText field={props.fields.Text} />
-    </div>
+    </HeaderPlain>
   );
 };
