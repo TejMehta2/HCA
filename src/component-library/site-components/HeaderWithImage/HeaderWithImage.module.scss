@@ -24,13 +24,7 @@
     }
     @include media(screen-m) {
       width: max-content;
-      max-width: px-to-rem(304);
-    }
-
-    a,
-    button {
-      width: 100%;
-      justify-content: center;
+      max-width: px-to-rem(500);
     }
   }
 }
