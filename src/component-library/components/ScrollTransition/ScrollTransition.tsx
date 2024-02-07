@@ -5,7 +5,11 @@ import Themes from '../../foundation/Themes/Themes';
 import { Theme as ThemeTypes } from '../../foundation/Themes/Themes.types';
 
 const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
-  const { children, initialTheme = 'F-HCA-White' } = props;
+  const {
+    children,
+    initialTheme = 'F-HCA-White',
+    transitionBackground = true,
+  } = props;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -18,16 +22,18 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        //console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const intersectingTheme = entry.target.getAttribute(
-              'data-theme'
-            ) as ThemeTypes;
-            if (intersectingTheme) {
-              setCurrentTheme(intersectingTheme);
+            if (transitionBackground) {
+              const intersectingTheme = entry.target.getAttribute(
+                'data-theme'
+              ) as ThemeTypes;
+              if (intersectingTheme) {
+                setCurrentTheme(intersectingTheme);
+              }
             }
 
+            /* Animate individual component sections */
             const animateSections =
               entry.target.querySelectorAll('[data-animate]');
 
@@ -48,17 +54,23 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
         observer.unobserve(ref.current);
       }
     };
-  }, []);
+  }, [transitionBackground]);
 
-  return (
+  const pageContent = (
+    <div
+      className={[styles['main-wrapper'], 'scroll-wrapper'].join(' ')}
+      ref={wrapperRef}
+    >
+      {children}
+    </div>
+  );
+
+  return transitionBackground ? (
     <Themes theme={currentTheme} topLevelTheme={currentTheme}>
-      <div
-        className={[styles['main-wrapper'], 'scroll-wrapper'].join(' ')}
-        ref={wrapperRef}
-      >
-        {children}
-      </div>
+      {pageContent}
     </Themes>
+  ) : (
+    pageContent
   );
 };
 

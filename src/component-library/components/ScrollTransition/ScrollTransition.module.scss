@@ -5,23 +5,33 @@
   background-color: var(--background);
   color: var(--text);
   transition: 1000ms linear;
-}
 
-[data-animate='1'] {
-  transition: transform 1s ease-in-out;
-  transform: translateY(100%);
-
-  &[data-animate-active] {
-    transform: translateY(0);
+  /* Transitions for component elements as they come into view */
+  [data-animate] {
+    transition: transform 1s ease-in-out;
   }
-}
 
-[data-animate='2'] {
-  transition: transform 1s ease-in-out;
-  transition-delay: 0.3s;
-  transform: translateY(100%);
+  [data-animate='xs'] {
+    transform: translateY(px-to-rem(50));
+  }
 
-  &[data-animate-active] {
+  [data-animate='s'] {
+    transform: translateY(px-to-rem(200));
+  }
+
+  [data-animate='m'] {
+    transform: translateY(px-to-rem(400));
+  }
+
+  [data-animate='l'] {
+    transform: translateY(px-to-rem(600));
+  }
+
+  [data-animate-delay] {
+    transition-delay: 0.3s;
+  }
+
+  [data-animate-active] {
     transform: translateY(0);
   }
 }
