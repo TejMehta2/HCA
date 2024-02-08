@@ -6,5 +6,5 @@ export interface AdvancedBlockHeaderProps {
   body?: ReactNode | JSX.Element;
   ctas?: ReactNode | JSX.Element;
   children?: ReactNode | JSX.Element;
-  paddingSize?: 'small' | 'large';
+  paddingSize?: 'small' | 'large' | 'none';
 }

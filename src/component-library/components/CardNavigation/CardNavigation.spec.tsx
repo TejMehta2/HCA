@@ -5,7 +5,6 @@ import { CardNavigationProps } from './CardNavigation.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CardNavigationProps = {
-  category: 'service',
   title: (
     <Text tag="p" variation="heading-2">
       Featured Scan
