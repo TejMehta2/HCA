@@ -1,8 +1,6 @@
 import React from 'react';
 import BlogFilterList from './BlogFilterList';
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../../core-components/Button/Button';
-import Icons from '../../foundation/Icons/Icons';
 import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -23,26 +21,19 @@ const filters = [
   'Orthopaedic care',
 ];
 
-const clearFilters = () => {
-  console.log('clear one or all filters');
+const clearFilters = (index: number) => {
+  if (index === undefined) {
+    console.log('clear all filters');
+    return;
+  }
+  console.log('clear filter ' + index);
 };
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof BlogFilterList> = {
   args: {
-    filters: (
-      <>
-        {filters.map((filter, index) => (
-          <Button key={index} size="small" theme="full-light-blue">
-            <button onClick={clearFilters}>
-              <span>{filter}</span>
-              <Icons iconName="iconCrossSmall" />
-            </button>
-          </Button>
-        ))}
-      </>
-    ),
+    filters: filters,
     clearFilters: clearFilters,
   },
   decorators: [

@@ -15,29 +15,23 @@ It is intended to be used in the blog listing page
 It can be composed like this:
 
 ```tsx
-const clearFilters = () => {
-  console.log('clear one or all filters');
+const filters = [
+  'Orthopaedic care',
+  'Orthopaedic care',
+  'Orthopaedic care',
+  'Orthopaedic care',
+  'Orthopaedic care',
+];
+
+const clearFilters = (index: number) => {
+  if (index === undefined) {
+    console.log('clear all filters');
+    return;
+  }
+  console.log('clear filter ' + index);
 };
 
-<BlogFilterList
-  filters={
-    <>
-      <Button key={index} size={'small'} theme={'full-light-blue'}>
-        <button onClick={clearFilters}>
-          <span>Orthopaedic care</span>
-          <Icons iconName="iconCrossSmall" />
-        </button>
-      </Button>
-      <Button key={index} size={'small'} theme={'full-light-blue'}>
-        <button onClick={clearFilters}>
-          <span>Orthopaedic care</span>
-          <Icons iconName="iconCrossSmall" />
-        </button>
-      </Button>
-    </>
-  }
-  clearFilters={clearFilters}
-/>;
+<BlogFilterList filters={filters} clearFilters={clearFilters} />;
 ```
 
 ## Example

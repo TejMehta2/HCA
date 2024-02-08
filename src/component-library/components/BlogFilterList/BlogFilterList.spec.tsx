@@ -2,8 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import BlogFilterList from './BlogFilterList';
 import { BlogFilterListProps } from './BlogFilterList.types';
-import Button from '../../core-components/Button/Button';
-import Icons from '../../foundation/Icons/Icons';
 
 const filters = [
   'Orthopaedic care',
@@ -13,23 +11,16 @@ const filters = [
   'Orthopaedic care',
 ];
 
-const clearFilters = () => {
-  console.log('clear one or all filters');
+const clearFilters = (index: number) => {
+  if (index === undefined) {
+    console.log('clear all filters');
+    return;
+  }
+  console.log('clear filter ' + index);
 };
 
 const mockProps: BlogFilterListProps = {
-  filters: (
-    <>
-      {filters.map((filter, index) => (
-        <Button key={index} size={'small'} theme={'full-light-blue'}>
-          <button onClick={clearFilters}>
-            <span>{filter}</span>
-            <Icons iconName="iconCrossSmall" />
-          </button>
-        </Button>
-      ))}
-    </>
-  ),
+  filters: filters,
   clearFilters: clearFilters,
 };
 
