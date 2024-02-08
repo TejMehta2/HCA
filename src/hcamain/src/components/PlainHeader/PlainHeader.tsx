@@ -44,10 +44,7 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
     <HeaderPlain
       theme={props.params.Theme}
       subheading={
-        <Text
-          tag={getSubheadingTag(props.params.HeadingTag, 'h3')}
-          variation="subheading-1"
-        >
+        <Text variation="subheading-1">
           <JssText field={props.fields.Heading} />
         </Text>
       }
