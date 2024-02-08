@@ -21,6 +21,7 @@ type CTAProps = {
   params: { [key: string]: string };
   fields: Fields;
   size: ButtonProps['size'];
+  contentVariation: ButtonProps['contentVariation'];
 };
 
 const CTADefaultComponent = (props: CTAProps): JSX.Element => (
@@ -35,7 +36,11 @@ interface IntegratedButtonProps extends CTAProps {
   theme: ButtonThemeUnionTypes;
 }
 const IntegratedButton = (props: IntegratedButtonProps) => (
-  <Button theme={props.theme} size={props.size || 'large'}>
+  <Button
+    theme={props.theme}
+    size={props.size || 'large'}
+    contentVariation={props.contentVariation}
+  >
     <a href={props.fields?.CTALink.value.href}>
       {props?.fields?.CTAIcon?.fields.SvgMarkup && (
         <span
