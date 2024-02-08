@@ -54,7 +54,8 @@
   @include media(screen-l) {
     position: absolute;
     top: 50%;
-    right: 23%;
+    /* right: 23%; */
+    right: px-to-rem(320);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-50%);
