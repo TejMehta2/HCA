@@ -36,6 +36,11 @@
             "path": "/Data/Tags/BlogTags",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Data/Authors",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
           },		  
           {
             "path": "/Data",
