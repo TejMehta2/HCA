@@ -15,13 +15,13 @@ Languages:
       Hint: NavigationTabs
       Value: "{044E4C9B-F6C0-4EE2-A35C-A8CD8D16F035}|{CCD24E7B-D808-4AF5-89EF-2C392AD380A3}|{68DDDDED-9192-477B-905F-A33C945B9739}"
     - ID: "854abf43-7a6a-4c8a-9226-07f9b985bd4a"
-      Hint: ComplementaryLinksSecondaryFolder
+      Hint: SecondaryComplementaryLinksFolder
       Value: "{57809FCD-49FF-4D8F-A2C6-2263F16E2FCA}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0de4f114-ce63-44d0-b0b0-59511f1df063"
+      Value: "0f711531-3173-4688-a23c-0160ce4917ff"
     - ID: "b06bcb16-571f-444c-a3f8-af18c7cae5fb"
-      Hint: ComplementaryLinksPrimaryFolder
+      Hint: PrimaryComplementaryLinksFolder
       Value: "{74EAB260-2B06-4FD7-9D34-58A3006AA343}"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
@@ -29,4 +29,4 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240208T010307Z
+      Value: 20240208T140817Z

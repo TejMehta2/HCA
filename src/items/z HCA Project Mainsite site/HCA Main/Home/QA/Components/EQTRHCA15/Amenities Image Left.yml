@@ -15,7 +15,7 @@ Languages:
       Hint: __Created
       Value: 20231217T125620Z
     - ID: "5455a723-12c3-4842-8008-268c45cf5ed9"
-      Hint: Amenities
+      Hint: AmenitiesList
       Value: |
         {9556A913-CD4E-47DD-99F5-24AE9DFA72D5}
         {3AA07FA8-1FEA-4096-B313-A24C4C5030A9}
@@ -32,11 +32,11 @@ Languages:
         <image mediaid="{74F9A9B7-CC52-4B53-8BDF-8614ED671E6C}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3d743093-7fd4-456b-875d-d29bde07cf2f"
+      Value: "9f38e7e2-7756-4633-b522-626e88438165"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231217T131831Z
+      Value: 20240111T101418Z

@@ -2,7 +2,7 @@
 ID: "acace0dc-41c2-4d06-aed0-4a4a19f131c7"
 Parent: "cc3b7d99-bd00-44b2-8142-dc644c50b6e2"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer Parameters
+Path: /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon

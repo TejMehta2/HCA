@@ -23,7 +23,7 @@ Languages:
       Hint: __Revision
       Value: "6330fbbb-e7e0-4ba5-9c7e-4b60157b58d5"
     - ID: "9bda5df1-cce6-4637-aeb7-6b5996c615a5"
-      Hint: Logo
+      Hint: LogoImage
       Value: |
         <image mediaid="{2FEC7033-10AD-4428-AC90-8B1FFC04B663}" />
     - ID: "ad27e018-981a-4714-ae3e-20eda670d5b4"
@@ -33,7 +33,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
       Value: 20240131T150654Z
