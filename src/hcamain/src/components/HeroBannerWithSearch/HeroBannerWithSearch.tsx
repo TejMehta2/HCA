@@ -60,7 +60,6 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
     return <HeroBannerWithSearchDefaultComponent {...props} />;
   }
 
-  console.log(props);
   return (
     <HomepageHero
       theme={props.params.Theme || 'D-HCA-Light-Orange'}
