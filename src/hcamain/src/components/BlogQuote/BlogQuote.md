@@ -1,0 +1,4 @@
+# BlogQuote documentation
+
+## Additional information
+

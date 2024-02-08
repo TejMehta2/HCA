@@ -1,0 +1,4 @@
+# BlogText documentation
+
+## Additional information
+

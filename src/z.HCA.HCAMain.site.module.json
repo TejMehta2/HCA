@@ -38,6 +38,11 @@
             "allowedPushOperations": "CreateAndUpdate"
           },
           {
+            "path": "/Data/Authors",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },		  
+          {
             "path": "/Data",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
