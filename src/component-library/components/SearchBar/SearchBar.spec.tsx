@@ -4,12 +4,12 @@ import SearchBar from './SearchBar';
 import { SearchBarProps } from './SearchBar.types';
 
 const mockProps: SearchBarProps = {
-  placeholder: 'Hello world',
+  placeholder: 'Cardiac Care',
 };
 
 describe('SearchBar', () => {
-  it('Renders children from props', async () => {
-    const rendered = render(<SearchBar {...mockProps} />);
-    rendered.getByPlaceholderText('Hello world');
+  it('Renders placeholder from props', async () => {
+    const { getByText } = render(<SearchBar {...mockProps} />);
+    expect(getByText('Cardiac Care')).toBeVisible();
   });
 });
