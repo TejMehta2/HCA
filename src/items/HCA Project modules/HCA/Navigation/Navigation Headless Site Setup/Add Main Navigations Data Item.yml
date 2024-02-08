@@ -1,19 +1,18 @@
 ﻿---
-ID: "4ca68be3-17da-488a-8b66-58aa0c80d4ae"
-Parent: "6a6e307d-47ed-4fbe-9031-d23bfb6ee492"
-Template: "0a2847e6-9885-450b-b61e-f9e6528480ef"
-Path: /sitecore/content/HCA/HCA Main/Dictionary
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+ID: "0e1b44a5-22b2-44b6-8c98-b970ee176421"
+Parent: "3ed99dc6-d1bc-4803-a5cc-640f2ecf9f28"
+Template: "3aea335c-d06d-45b1-841a-cbc8d2d1ce40"
+Path: /sitecore/system/Settings/Project/HCA/Navigation/Navigation Headless Site Setup/Add Main Navigations Data Item
 SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Office/32x32/book2.png
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 1500
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{95DA6E6D-AA58-4322-A36E-E5C63FCF1AD1}"
+- ID: "52c91c75-6698-4701-a8a2-242ace59a8d6"
+  Hint: Location
+  Value: "{BA2F959D-A614-4C92-8B57-F1FC1A323ABE}"
+- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
+  Hint: Name
+  Value: Main Navigation
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Value: "{AEABB1B2-3D15-49CF-A3FA-E73B2707A142}"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161625Z
+      Value: 20240208T004918Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ad41cbd3-861d-4ef6-abe8-b5105269c6f4"
+      Value: "212bbce0-4d18-4322-b090-699bed570a07"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161625Z
+      Value: 20240208T004918Z
