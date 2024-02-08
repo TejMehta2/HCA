@@ -69,7 +69,15 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         </main>
         <footer>
           <div id="footer">
-            {route && <Placeholder name="headless-footer" rendering={route} />}
+            {isHomepage ? (
+              <ScrollTransition transitionBackground={false}>
+                {route && (
+                  <Placeholder name="headless-footer" rendering={route} />
+                )}
+              </ScrollTransition>
+            ) : (
+              route && <Placeholder name="headless-footer" rendering={route} />
+            )}
           </div>
         </footer>
       </div>
