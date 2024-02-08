@@ -1,8 +1,15 @@
 ﻿---
+<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E/5.yml
+ID: "b0df3375-4b47-466b-840e-b5fd80c5ee9b"
+Parent: "839dded0-cbbf-47b8-b17a-70bb4eb391ea"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: /sitecore/media library/Project/HCA/HCA Main/System/5/5/E/5
+========
 ID: "649707d6-d4b9-42da-bbd1-f7fa77e00f43"
 Parent: "c50ba834-3177-49fd-8130-8d03c7e3fc14"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data
+>>>>>>>> dev:src/items/z HCA Project Mainsite site/HCA Main/Home/QA/Components/EQTRHCA65/Data.yml
 Languages:
 - Language: en
   Versions:
@@ -10,7 +17,11 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
+<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E/5.yml
+      Value: 20240208T145243Z
+========
       Value: 20240202T085738Z
+>>>>>>>> dev:src/items/z HCA Project Mainsite site/HCA Main/Home/QA/Components/EQTRHCA65/Data.yml
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +32,19 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
+<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E/5.yml
+      Value: "71e85e28-80c9-457a-89a5-5a35e46dc1e3"
+========
       Value: "801b5cee-545a-4582-83b5-3c297277b099"
+>>>>>>>> dev:src/items/z HCA Project Mainsite site/HCA Main/Home/QA/Components/EQTRHCA65/Data.yml
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
+<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E/5.yml
+      Value: 20240208T145243Z
+========
       Value: 20240202T085738Z
+>>>>>>>> dev:src/items/z HCA Project Mainsite site/HCA Main/Home/QA/Components/EQTRHCA65/Data.yml

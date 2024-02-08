@@ -1,19 +1,8 @@
 ﻿---
-ID: "4ca68be3-17da-488a-8b66-58aa0c80d4ae"
-Parent: "6a6e307d-47ed-4fbe-9031-d23bfb6ee492"
-Template: "0a2847e6-9885-450b-b61e-f9e6528480ef"
-Path: /sitecore/content/HCA/HCA Main/Dictionary
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
-SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Office/32x32/book2.png
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 1500
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{95DA6E6D-AA58-4322-A36E-E5C63FCF1AD1}"
+ID: "f0066a00-0fe3-4642-bdf3-70aaeed68f1f"
+Parent: "4c22ae2e-0a07-49c8-b62f-c60060da2dbe"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Main Navigation Links List/Content
 Languages:
 - Language: en
   Versions:
@@ -21,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161625Z
+      Value: 20240207T234500Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ad41cbd3-861d-4ef6-abe8-b5105269c6f4"
+      Value: "59e40c57-8482-420b-9ed9-3ba1b60181f8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161625Z
+      Value: 20240208T003940Z

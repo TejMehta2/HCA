@@ -1,0 +1,33 @@
+﻿---
+ID: "b921a21d-e3b3-4a5c-a150-6eea8690d682"
+Parent: "b50e9f4b-0bca-4d64-9335-2f42440a303d"
+Template: "6f19b186-dfde-4fa1-977c-f0a23e2c469a"
+Path: /sitecore/content/HCA/HCA Main/Settings/Days of Week/Friday
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 600
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T153545Z
+    - ID: "87a87711-dde0-40fb-8aab-ad0ca36026c9"
+      Hint: DayName
+      Value: Friday
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d2ea7a8c-df93-421d-bdc9-6a731cbd0bb0"
+    - ID: "8cf0b054-2691-498e-8622-88c1d543fbca"
+      Hint: SchemaCanonicalUrl
+      Value: "https://schema.org/Friday"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T153647Z
