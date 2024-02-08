@@ -7,7 +7,6 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import { HeadingTag, HeadingSize, Theme } from 'src/types/params';
-import getSubheadingTag from 'lib/subheading-tag-getter';
 
 interface Fields {
   Heading: Field<string>;
