@@ -20,6 +20,10 @@
   &.small {
     padding-bottom: $spacing-7;
   }
+
+  &.none {
+    padding: 0;
+  }
 }
 
 .subtitle {
