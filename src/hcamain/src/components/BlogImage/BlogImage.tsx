@@ -10,9 +10,7 @@ type BlogImageProps = {
   fields: Fields;
 };
 
-const BlogImageDefaultComponent = (
-  props: BlogImageProps
-): JSX.Element => {
+const BlogImageDefaultComponent = (props: BlogImageProps): JSX.Element => {
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
