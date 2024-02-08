@@ -3,13 +3,7 @@ import { render } from '@testing-library/react';
 import BlogFilterList from './BlogFilterList';
 import { BlogFilterListProps } from './BlogFilterList.types';
 
-const filters = [
-  'Orthopaedic care',
-  'Orthopaedic care',
-  'Orthopaedic care',
-  'Orthopaedic care',
-  'Orthopaedic care',
-];
+const filters = ['Orthopaedic care'];
 
 const clearFilters = (index: number) => {
   if (index === undefined) {
