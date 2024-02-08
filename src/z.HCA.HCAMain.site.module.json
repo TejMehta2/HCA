@@ -2,16 +2,16 @@
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "z HCA Project Main Site",
   "items": {
-    "includes": [     
+    "includes": [
       {
         "name": "z HCA Project Mainsite site",
         "path": "/sitecore/content/HCA/HCA Main",
-        "rules": [      
-		  {
-			"path": "/home/QA",
-			"scope": "ItemAndDescendants",
-			"allowedPushOperations": "CreateUpdateAndDelete"               
-          },		
+        "rules": [
+          {
+            "path": "/home/QA",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
+          },
           {
             "path": "/home",
             "scope": "SingleItem",
@@ -21,8 +21,8 @@
             "path": "/Media",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },    
-		  {
+          },
+          {
             "path": "/Data/CQC",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
@@ -31,12 +31,12 @@
             "path": "/Data/Doctify Reviews",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
-          },	
+          },
           {
             "path": "/Data/Tags/BlogTags",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
-          },		  
+          },
           {
             "path": "/Data",
             "scope": "ItemAndChildren",
@@ -57,27 +57,32 @@
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
           },
-		  {
+          {
             "path": "/Settings/Custom Settings",
             "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
           },
-		  {
-            "path": "/Settings/Custom Settings1",
+          {
+            "path": "/Settings/Navigation Settings",
             "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
           },
-		  {
+          {
+            "path": "/Settings/Days of Week",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
             "path": "/Settings/CQC Statuses",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
           },
-		  {
+          {
             "path": "/Settings/DoctifyFilters",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
           },
-		  {
+          {
             "path": "/Settings/Search",
             "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
@@ -86,7 +91,7 @@
             "path": "/Settings",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },                 
+          },
           {
             "path": "/*",
             "scope": "Ignored"
