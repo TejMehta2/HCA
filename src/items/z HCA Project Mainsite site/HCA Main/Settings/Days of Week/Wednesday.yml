@@ -1,0 +1,33 @@
+﻿---
+ID: "148ec6a8-5cb0-4616-bb2f-8a131486fc55"
+Parent: "b50e9f4b-0bca-4d64-9335-2f42440a303d"
+Template: "6f19b186-dfde-4fa1-977c-f0a23e2c469a"
+Path: /sitecore/content/HCA/HCA Main/Settings/Days of Week/Wednesday
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T153505Z
+    - ID: "87a87711-dde0-40fb-8aab-ad0ca36026c9"
+      Hint: DayName
+      Value: Wednesday
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "258edc83-46fe-4f65-91ad-907f17f55e15"
+    - ID: "8cf0b054-2691-498e-8622-88c1d543fbca"
+      Hint: SchemaCanonicalUrl
+      Value: "https://schema.org/Wednesday"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T153641Z
