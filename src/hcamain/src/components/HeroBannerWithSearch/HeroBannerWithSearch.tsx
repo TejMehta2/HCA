@@ -2,12 +2,18 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Image,
+  Image as JssImage,
   RichText,
-  Text,
+  Text as JssText,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+
+import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
+import SearchBar from '@component-library/components/SearchBar/SearchBar';
+import Text from '@component-library/foundation/Text/Text';
+import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields: {
@@ -24,7 +30,12 @@ interface Fields {
 }
 
 type HeroBannerWithSearchProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   rendering: ComponentRendering;
   fields: Fields;
 };
@@ -48,29 +59,42 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
   if (!props.fields) {
     return <HeroBannerWithSearchDefaultComponent {...props} />;
   }
+
+  console.log(props);
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Title} />
-      <br />
-      <Image field={props.fields.Image} />
-      <br />
-      {props?.fields?.SearchIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.SearchIcon.fields.SvgMarkup.value,
-          }}
+    <HomepageHero
+      theme={props.params.Theme || 'D-HCA-Light-Orange'}
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h1'}
+          variation={props.params.HeadingSize || 'display-1'}
+        >
+          <JssText field={props.fields.Title} />
+        </Text>
+      }
+      search={
+        <SearchBar
+          placeholder={<RichText field={props.fields.SearchPlaceholder} />}
         />
-      )}
-      <br />
-      <RichText field={props.fields.SearchPlaceholder} />
-      <br />
-      <Text field={props.fields.CTAHeading} />
-      <br />
-      <Placeholder
-        name={phKey}
-        rendering={props.rendering}
-        contentVariation="full-width"
-      />
-    </div>
+      }
+      ctaTitle={
+        <Text
+          tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
+          variation="subheading-1"
+        >
+          <JssText field={props.fields.CTAHeading} />
+        </Text>
+      }
+      ctas={
+        <>
+          <Placeholder
+            name={phKey}
+            rendering={props.rendering}
+            contentVariation="full-width"
+          />
+        </>
+      }
+      image={<JssImage field={props.fields.Image} />}
+    />
   );
 };

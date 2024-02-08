@@ -9,10 +9,6 @@
   width: 100%;
 
   @include apply-body-medium-large;
-
-  &::placeholder {
-    color: inherit;
-  }
 }
 
 .search-wrapper {
@@ -33,4 +29,13 @@
     height: px-to-rem(24);
     left: px-to-rem(32);
   }
+}
+
+.placeholder {
+  position: absolute;
+  left: px-to-rem(74);
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include apply-body-medium-large;
 }
