@@ -1,15 +1,8 @@
 ﻿---
-<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E.yml
-ID: "839dded0-cbbf-47b8-b17a-70bb4eb391ea"
-Parent: "9f8ee57a-c806-493d-8b22-2254db773f20"
-Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
-Path: /sitecore/media library/Project/HCA/HCA Main/System/5/5/E
-========
 ID: "1bddb910-273f-4bd5-aa0e-31568f735f62"
 Parent: "0c29dd89-c80e-4868-912e-b3d0b8ca2e88"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
 Path: /sitecore/templates/Project/HCA/Page Content/Locations Map/Data
->>>>>>>> dev:src/items/HCA Project templates/HCA/Page Content/Locations Map/Data.yml
 Languages:
 - Language: en
   Versions:
@@ -17,11 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E.yml
-      Value: 20240208T145243Z
-========
       Value: 20240202T075851Z
->>>>>>>> dev:src/items/HCA Project templates/HCA/Page Content/Locations Map/Data.yml
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,19 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E.yml
-      Value: "7715276f-2c79-4d74-9a10-768886090519"
-========
       Value: "a8ca9420-7863-4357-829d-21932cb01482"
->>>>>>>> dev:src/items/HCA Project templates/HCA/Page Content/Locations Map/Data.yml
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-<<<<<<<< HEAD:src/items/HCA Project media/HCA/HCA Main/System/5/5/E.yml
-      Value: 20240208T145243Z
-========
       Value: 20240202T090220Z
->>>>>>>> dev:src/items/HCA Project templates/HCA/Page Content/Locations Map/Data.yml
