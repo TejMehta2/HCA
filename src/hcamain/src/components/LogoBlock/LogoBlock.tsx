@@ -98,3 +98,47 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
     </div>
   );
 };
+
+export const SideBySide = (props: LogoBlockProps): JSX.Element => {
+  if (!props.fields) {
+    return <LogoBlockDefaultComponent {...props} />;
+  }
+
+  return (
+    <div className={`component ${props.params.styles}`}>
+      <Text field={props.fields.Heading} />
+      <br />
+      <Text field={props.fields.Title} />
+      <br />
+      <JssRichText className="promo-text" field={props.fields.Text} />
+      <br />
+      <JssLink field={props.fields.CTALink}>
+        {props?.fields?.CTAIcon && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            }}
+          />
+        )}
+        {props?.fields?.CTALink.value.text && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTALink.value.text,
+            }}
+          ></span>
+        )}
+      </JssLink>
+      <br />
+      <ul>
+        {props.fields.Logos.map((logo, index) => (
+          <li key={index}>
+            <JssLink field={logo.fields.Link}>
+              <Image field={logo.fields?.LogoImage} />
+            </JssLink>
+            <br />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
