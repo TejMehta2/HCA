@@ -59,7 +59,7 @@ const locations: OurLocationsRegionProps[] = [
     theme: 'D-HCA-Light-Orange',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
-    cardStyles: { transform: 'translateY(-55%) translateX(40%)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(60%)' },
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ const locations: OurLocationsRegionProps[] = [
     theme: 'L-HCA-Coral-60',
     area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
     mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
-    cardStyles: { transform: 'translateY(-55%) translateX(0)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(15%)' },
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ const locations: OurLocationsRegionProps[] = [
     theme: 'B-HCA-Green',
     area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
     mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
-    cardStyles: { transform: 'translateY(-35%) translateX(30%)' },
+    cardStyles: { transform: 'translateY(-35%) translateX(50%)' },
   },
 ];
 
