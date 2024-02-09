@@ -2,24 +2,17 @@ import React from 'react';
 import {
   Field,
   RichText,
+  Placeholder,
+  ComponentRendering,
   Text,
-  LinkField,
-  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
-
-type HCAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
-  };
-};
 
 interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
   Text: Field<string>;
-  CTAIcon: HCAIconFields;
-  CTALink: LinkField;
 }
 
 type CTABlockProps = {
@@ -29,6 +22,8 @@ type CTABlockProps = {
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
   };
+
+  rendering: ComponentRendering;
   fields: Fields;
 };
 
@@ -43,9 +38,11 @@ const CTABlockDefaultComponent = (props: CTABlockProps): JSX.Element => {
 };
 
 export const Default = (props: CTABlockProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <CTABlockDefaultComponent {...props} />;
   }
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
   return (
     <div className={`component ${props.params.styles}`}>
       <Text field={props.fields.Heading} />
@@ -54,22 +51,7 @@ export const Default = (props: CTABlockProps): JSX.Element => {
       <br />
       <RichText field={props.fields.Text} />
       <br />
-      <JssLink field={props.fields.CTALink}>
-        {props?.fields?.CTAIcon && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        {props?.fields?.CTALink.value.text && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTALink.value.text,
-            }}
-          ></span>
-        )}
-      </JssLink>
+      <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
     </div>
   );
 };
