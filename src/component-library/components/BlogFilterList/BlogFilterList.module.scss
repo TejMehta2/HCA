@@ -1,0 +1,16 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-3;
+
+  & > div {
+    width: 100%;
+    @include media(screen-m) {
+      width: auto;
+    }
+  }
+}

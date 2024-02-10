@@ -12,7 +12,7 @@ import CardLocation from '../CardLocation/CardLocation';
 export const RegionImage = (props: RegionImageProps): JSX.Element => {
   const { src, alt, classNames, imgStyle } = props;
   return (
-    <div className={`${styles.image} ${classNames}`}>
+    <div className={`${styles.image} ${classNames}`} data-animate="l">
       <Image src={src} alt={alt} width={913} height={1069} style={imgStyle} />
     </div>
   );
@@ -62,7 +62,7 @@ const OurLocationsRegion = (props: OurLocationsRegionProps): JSX.Element => {
             imgStyle={isL ? mapStyles : {}}
           />
         )}
-        <div className={`${styles.card}`}>
+        <div className={`${styles.card}`} data-animate="m">
           <CardLocation
             theme={theme}
             amount={

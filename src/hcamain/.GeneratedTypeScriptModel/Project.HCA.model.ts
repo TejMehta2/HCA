@@ -172,6 +172,76 @@ export namespace Foundation.Amenities {
 
     }
 }
+export namespace Foundation.Author {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Author/Author
+    */
+    export type Author =  {
+        fields?: { 
+            /**
+            * Represents the Avatar field (fc6fa1ed-68bb-40e4-bd15-40e627d045a2).
+            */
+            Avatar?: ImageField;
+
+            /**
+            * Represents the Name field (dea16331-9c35-4ac9-9a6e-81b11f81867a).
+            */
+            Name?: Field<string>;
+
+            /**
+            * Represents the Position field (4c198898-6bfd-4ea5-8afc-834c5eb62892).
+            */
+            Position?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Author/Author
+    */
+    export type AuthorJson =  {
+        
+            /**
+            * Represents the Avatar field (fc6fa1ed-68bb-40e4-bd15-40e627d045a2).
+            */
+            Avatar?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Name field (dea16331-9c35-4ac9-9a6e-81b11f81867a).
+            */
+            Name?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Position field (4c198898-6bfd-4ea5-8afc-834c5eb62892).
+            */
+            Position?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Author/Authors Folder
+    */
+    export type AuthorsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Author/Authors Folder
+    */
+    export type AuthorsFolderJson =  {
+        
+
+    }
+}
 export namespace PageContent {
 
     /**
@@ -248,6 +318,70 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Cards Folder
     */
     export type BlogCardsFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Image
+    */
+    export type BlogImage =  {
+        fields?: { 
+            /**
+            * Represents the Image field (fb20c52b-7356-4409-8299-a77febc5597b).
+            */
+            Image?: ImageField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Image
+    */
+    export type BlogImageJson =  {
+        
+            /**
+            * Represents the Image field (fb20c52b-7356-4409-8299-a77febc5597b).
+            */
+            Image?: {
+                jsonValue: ImageField
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Image
+    */
+    export type BlogImage =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Image
+    */
+    export type BlogImageJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Image Folder
+    */
+    export type BlogImageFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Image Folder
+    */
+    export type BlogImageFolderJson =  {
         
 
     }
@@ -380,6 +514,148 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Page Header Folder
     */
     export type BlogPageHeaderFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Quote
+    */
+    export type BlogQuote =  {
+        fields?: { 
+            /**
+            * Represents the Author field (3886f36e-e16a-4070-8e87-cace5960e294).
+            */
+            Author?: Item[];
+
+            /**
+            * Represents the Quote field (2302f051-cf20-4f44-98a5-bef06ccfbc90).
+            */
+            Quote?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Quote
+    */
+    export type BlogQuoteJson =  {
+        
+            /**
+            * Represents the Author field (3886f36e-e16a-4070-8e87-cace5960e294).
+            */
+            Author?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Quote field (2302f051-cf20-4f44-98a5-bef06ccfbc90).
+            */
+            Quote?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Quote
+    */
+    export type BlogQuote = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Quote
+    */
+    export type BlogQuoteJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Quote Folder
+    */
+    export type BlogQuoteFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Quote Folder
+    */
+    export type BlogQuoteFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Text
+    */
+    export type BlogText =  {
+        fields?: { 
+            /**
+            * Represents the Text field (6e67b4e2-5b5a-472d-8ffe-0278ed969e13).
+            */
+            Text?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Text
+    */
+    export type BlogTextJson =  {
+        
+            /**
+            * Represents the Text field (6e67b4e2-5b5a-472d-8ffe-0278ed969e13).
+            */
+            Text?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Text
+    */
+    export type BlogText =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Text
+    */
+    export type BlogTextJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Text Folder
+    */
+    export type BlogTextFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Text Folder
+    */
+    export type BlogTextFolderJson =  {
         
 
     }
@@ -697,7 +973,7 @@ export namespace PageContent {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/CTA Block
     */
-    export type CtaBlock =  {
+    export type CtaBlock = Foundation.Ctabase &  {
         fields?: { 
             /**
             * Represents the Heading field (f79f7278-290d-4268-a48b-e6eedda56618).
@@ -720,7 +996,7 @@ export namespace PageContent {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/CTA Block
     */
-    export type CtaBlockJson =  {
+    export type CtaBlockJson = Foundation.CtabaseJson &  {
         
             /**
             * Represents the Heading field (f79f7278-290d-4268-a48b-e6eedda56618).
@@ -2533,26 +2809,6 @@ export namespace Navigation {
 
 
     }
-}
-export namespace Navigation.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer
-    */
-    export type Footer =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer
-    */
-    export type FooterJson =  {
-        
-
-    }
-}
-export namespace Navigation {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Navigation/Footer Folder
@@ -2566,6 +2822,82 @@ export namespace Navigation {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Footer Folder
     */
     export type FooterFolderJson =  {
+        
+
+    }
+}
+export namespace Navigation.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer Parameters
+    */
+    export type FooterParameters =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Footer Parameters
+    */
+    export type FooterParametersJson =  {
+        
+
+    }
+}
+export namespace Foundation.Settings {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Settings/Generic Setting
+    */
+    export type GenericSetting =  {
+        fields?: { 
+            /**
+            * Represents the Key field (f73431c9-2a83-4829-82b1-fc92062b6c02).
+            */
+            Key?: Field<string>;
+
+            /**
+            * Represents the Value field (7e4ec787-c4e7-49bf-872c-fdf54a101de5).
+            */
+            Value?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Settings/Generic Setting
+    */
+    export type GenericSettingJson =  {
+        
+            /**
+            * Represents the Key field (f73431c9-2a83-4829-82b1-fc92062b6c02).
+            */
+            Key?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Value field (7e4ec787-c4e7-49bf-872c-fdf54a101de5).
+            */
+            Value?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Settings/Generic Settings Folder
+    */
+    export type GenericSettingsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Settings/Generic Settings Folder
+    */
+    export type GenericSettingsFolderJson =  {
         
 
     }
@@ -3252,11 +3584,6 @@ export namespace PageContent {
     export type LocationsMap = Foundation.Ctabase &  {
         fields?: { 
             /**
-            * Represents the BackgroundImage field (af283409-3112-4268-acc1-469e5c62ab6d).
-            */
-            BackgroundImage?: ImageField;
-
-            /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
             Cards?: Item[];
@@ -3284,13 +3611,6 @@ export namespace PageContent {
     */
     export type LocationsMapJson = Foundation.CtabaseJson &  {
         
-            /**
-            * Represents the BackgroundImage field (af283409-3112-4268-acc1-469e5c62ab6d).
-            */
-            BackgroundImage?: {
-                jsonValue: ImageField
-            };
-
             /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
@@ -3522,6 +3842,148 @@ export namespace Foundation.Logos {
 
     }
 }
+export namespace Navigation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Main Navigation
+    */
+    export type MainNavigation =  {
+        fields?: { 
+            /**
+            * Represents the Logo field (9ffdc928-1e83-4c59-86b9-82c1265607e6).
+            */
+            Logo?: ImageField;
+
+            /**
+            * Represents the Navigation Tabs field (6b2b0879-3624-4bf1-9c6b-fbb0efc597da).
+            */
+            NavigationTabs?: Item[];
+
+            /**
+            * Represents the Primary Complementary Links Folder field (b06bcb16-571f-444c-a3f8-af18c7cae5fb).
+            */
+            PrimaryComplementaryLinksFolder?: Item;
+
+            /**
+            * Represents the Secondary Complementary Links Folder field (854abf43-7a6a-4c8a-9226-07f9b985bd4a).
+            */
+            SecondaryComplementaryLinksFolder?: Item;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Main Navigation
+    */
+    export type MainNavigationJson =  {
+        
+            /**
+            * Represents the Logo field (9ffdc928-1e83-4c59-86b9-82c1265607e6).
+            */
+            Logo?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Navigation Tabs field (6b2b0879-3624-4bf1-9c6b-fbb0efc597da).
+            */
+            NavigationTabs?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Primary Complementary Links Folder field (b06bcb16-571f-444c-a3f8-af18c7cae5fb).
+            */
+            PrimaryComplementaryLinksFolder?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Secondary Complementary Links Folder field (854abf43-7a6a-4c8a-9226-07f9b985bd4a).
+            */
+            SecondaryComplementaryLinksFolder?: {
+                jsonValue: Item
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Main Navigation Folder
+    */
+    export type MainNavigationFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Main Navigation Folder
+    */
+    export type MainNavigationFolderJson =  {
+        
+
+    }
+}
+export namespace Navigation.NavigationBlocks {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Main Navigation Links List
+    */
+    export type MainNavigationLinksList = Navigation.NavigationLinksList &  {
+        fields?: { 
+            /**
+            * Represents the Cta field (5a386308-a4e3-4ddd-bd64-81dac4b94b4a).
+            */
+            Cta?: LinkField;
+
+            /**
+            * Represents the Variant field (1a81003b-9993-42ad-888b-44c19f28aeaa).
+            */
+            Variant?: Item;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Main Navigation Links List
+    */
+    export type MainNavigationLinksListJson = Navigation.NavigationLinksListJson &  {
+        
+            /**
+            * Represents the Cta field (5a386308-a4e3-4ddd-bd64-81dac4b94b4a).
+            */
+            Cta?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the Variant field (1a81003b-9993-42ad-888b-44c19f28aeaa).
+            */
+            Variant?: {
+                jsonValue: Item
+            };
+
+
+    }
+}
+export namespace Navigation.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Main Navigation Parameters
+    */
+    export type MainNavigationParameters =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Main Navigation Parameters
+    */
+    export type MainNavigationParametersJson =  {
+        
+
+    }
+}
 export namespace Foundation {
 
     /**
@@ -3712,6 +4174,148 @@ export namespace Foundation {
 
     }
 }
+export namespace Navigation.NavigationBlocks {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Navigation Blog Post Card
+    */
+    export type NavigationBlogPostCard =  {
+        fields?: { 
+            /**
+            * Represents the Cta field (614b8843-274e-4578-bea3-7b211acac5a8).
+            */
+            Cta?: LinkField;
+
+            /**
+            * Represents the Date field (9b031789-5f8b-4740-b463-040954a354e4).
+            */
+            Date?: Field<string>;
+
+            /**
+            * Represents the Description field (cd5ff2e2-21ce-4529-9de3-9e233fa74db2).
+            */
+            Description?: Field<string>;
+
+            /**
+            * Represents the Tag field (b88e5296-e277-4937-b8be-ce84fb94d88c).
+            */
+            Tag?: Field<string>;
+
+            /**
+            * Represents the Title field (cc1dccc3-0142-4c9b-a675-a25995c468ae).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Navigation Blog Post Card
+    */
+    export type NavigationBlogPostCardJson =  {
+        
+            /**
+            * Represents the Cta field (614b8843-274e-4578-bea3-7b211acac5a8).
+            */
+            Cta?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the Date field (9b031789-5f8b-4740-b463-040954a354e4).
+            */
+            Date?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Description field (cd5ff2e2-21ce-4529-9de3-9e233fa74db2).
+            */
+            Description?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Tag field (b88e5296-e277-4937-b8be-ce84fb94d88c).
+            */
+            Tag?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (cc1dccc3-0142-4c9b-a675-a25995c468ae).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Navigation Content Block
+    */
+    export type NavigationContentBlock =  {
+        fields?: { 
+            /**
+            * Represents the Cta field (48331203-1a9e-4a25-a329-b056249f0bf6).
+            */
+            Cta?: LinkField;
+
+            /**
+            * Represents the Description field (f1312906-4e03-41b4-9d76-468c903e08f0).
+            */
+            Description?: Field<string>;
+
+            /**
+            * Represents the Title field (e99f74fd-83ea-49af-8620-a13ed990fed0).
+            */
+            Title?: Field<string>;
+
+            /**
+            * Represents the Variant field (2783eca4-d840-4a51-8b27-b2ef67c9f401).
+            */
+            Variant?: Item;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Navigation Content Block
+    */
+    export type NavigationContentBlockJson =  {
+        
+            /**
+            * Represents the Cta field (48331203-1a9e-4a25-a329-b056249f0bf6).
+            */
+            Cta?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the Description field (f1312906-4e03-41b4-9d76-468c903e08f0).
+            */
+            Description?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (e99f74fd-83ea-49af-8620-a13ed990fed0).
+            */
+            Title?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Variant field (2783eca4-d840-4a51-8b27-b2ef67c9f401).
+            */
+            Variant?: {
+                jsonValue: Item
+            };
+
+
+    }
+}
 export namespace Navigation {
 
     /**
@@ -3776,6 +4380,58 @@ export namespace Navigation {
             * Represents the Title field (a541959d-74c3-488f-b625-76952888a8a2).
             */
             Title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Navigation Tab
+    */
+    export type NavigationTab =  {
+        fields?: { 
+            /**
+            * Represents the MobileTabCta field (54383e58-0b47-4c2a-9d23-1f8bf970ffbd).
+            */
+            MobileTabCta?: LinkField;
+
+            /**
+            * Represents the TabCta field (0373261e-b294-4fbb-8165-7ae3c436d18f).
+            */
+            TabCta?: LinkField;
+
+            /**
+            * Represents the TabTitle field (b4822256-10b6-453b-a125-f80091ad670e).
+            */
+            TabTitle?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Navigation Tab
+    */
+    export type NavigationTabJson =  {
+        
+            /**
+            * Represents the MobileTabCta field (54383e58-0b47-4c2a-9d23-1f8bf970ffbd).
+            */
+            MobileTabCta?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the TabCta field (0373261e-b294-4fbb-8165-7ae3c436d18f).
+            */
+            TabCta?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the TabTitle field (b4822256-10b6-453b-a125-f80091ad670e).
+            */
+            TabTitle?: {
                 jsonValue: Field<string>
             };
 
@@ -3950,36 +4606,6 @@ export namespace HCA.Project.HCA {
 
     }
 }
-export namespace Foundation {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxy = Foundation.HcabasePageData &  {
-        fields?: { 
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            Link?: LinkField;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
-        
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            Link?: {
-                jsonValue: LinkField
-            };
-
-
-    }
-}
 export namespace PageContent {
 
     /**
@@ -4002,6 +4628,36 @@ export namespace PageContent {
         
             /**
             * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
+            */
+            Link?: {
+                jsonValue: LinkField
+            };
+
+
+    }
+}
+export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxy = Foundation.HcabasePageData &  {
+        fields?: { 
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            Link?: LinkField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
+        
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
             */
             Link?: {
                 jsonValue: LinkField

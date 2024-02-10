@@ -15,7 +15,7 @@ const Footer = (props: FooterProps): JSX.Element => {
     <Themes theme={'E-HCA-Dark-Grey'}>
       <footer className={styles.footer}>
         <div className={styles.inner}>
-          <div className={styles['top-row']}>
+          <div className={styles['top-row']} data-animate="xs">
             <a className={styles.logo} href="/">
               <span className="sr-only">Home</span>
               <LogoIcon />
@@ -23,7 +23,7 @@ const Footer = (props: FooterProps): JSX.Element => {
             {buttons}
           </div>
           <hr className={styles.hr} />
-          <div className={styles.columns}>
+          <div className={styles.columns} data-animate="xs" data-animate-delay>
             {columns.map((column, index) => (
               <div key={index} className={styles.column}>
                 {column.title && (

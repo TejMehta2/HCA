@@ -7,9 +7,7 @@ import * as CardNavigationStories from './CardNavigation.stories';
 
 ## Description
 
-The CardNavigation component has two different versions. One for featured services and another for featured blogs
-
-Both versions have a category, title, and body text. Featured Services also has a CTA while Featured Blogs has date and tag fields
+The CardNavigation can be used for featured services andor featured blogs, depending on the type of content provided.
 
 It is intended to be used in the navigation and will **only appear on desktop**
 
@@ -17,7 +15,6 @@ It can be composed like this:
 
 ```tsx
 <CardNavigation
-  category="service"
   title={
     <Text tag="p" variation="heading-2">
       Featured Scan

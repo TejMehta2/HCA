@@ -25,7 +25,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
         ].join(' ')}
       >
         <div className={styles.grid}>
-          <div className={styles['text-wrapper']}>
+          <div className={styles['text-wrapper']} data-animate="l">
             <div className={styles.title}>{title}</div>
             <div className={styles.copy}>{copy}</div>
             <ul className={styles.stats}>
@@ -53,7 +53,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
               </Button>
             </div>
           </div>
-          <div className={styles['image-wrapper']}>
+          <div className={styles['image-wrapper']} data-animate="s">
             <div className={styles.image}>{image}</div>
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>

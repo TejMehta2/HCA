@@ -32,10 +32,13 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               styles[`image-${imageAlignment}`],
             ].join(' ')}
           >
-            <div className={[styles['image'], styles[length]].join(' ')}>
+            <div
+              className={[styles['image'], styles[length]].join(' ')}
+              data-animate="s"
+            >
               {image}
             </div>
-            <div className={styles['content']}>
+            <div className={styles['content']} data-animate="l">
               {subheader && (
                 <div className={styles['subheader']}>{subheader}</div>
               )}

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type TextVariationUnionTypes =
   | 'display-1'
   | 'display-2'
@@ -25,5 +27,5 @@ export type TextVariationUnionTypes =
 export interface TextProps {
   tag?: keyof JSX.IntrinsicElements;
   variation?: TextVariationUnionTypes;
-  children: string | JSX.Element;
+  children: string | JSX.Element | ReactNode;
 }

@@ -3,7 +3,7 @@
 
 .wrapper {
   position: relative;
-  overflow-x: clip;
+  overflow: clip;
   background-color: var(--background);
   color: var(--text);
   z-index: 1;

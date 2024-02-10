@@ -9,7 +9,7 @@ Languages:
   - Version: 1
     Fields:
     - ID: "0120cb1f-140d-43eb-8ed4-aac38f98dcf0"
-      Hint: CTA Card Text
+      Hint: CTACardText
       Value: View all GP services
     - ID: "17be2717-992a-4d65-918b-07bb26210837"
       Hint: Title
