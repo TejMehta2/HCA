@@ -20,7 +20,7 @@ SharedFields:
           p:before="*"
           s:ds="local:/Data/Logo Block Default - 3 columns"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7B1CE28904-D60E-4E85-A7FD-81E910B3E4C6%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -28,7 +28,7 @@ SharedFields:
           p:after="r[@uid='{4FE0F450-BA40-4E22-9069-1CA3760E93D1}']"
           s:ds="local:/Data/Logo Block Default - 4 columns"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7BB8ACA3B1-D237-4ACD-BC45-8D85FC19AD44%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+          s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -36,7 +36,7 @@ SharedFields:
           p:after="*[1=2]"
           s:ds="local:/Data/Logo Block SideBySide"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7BC497B808-7195-47DC-8281-82AD8CDC3366%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+          s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -85,14 +85,14 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "941d5471-59d6-43de-a597-5352aff11c4a"
+      Value: "296ebda6-89b3-47af-ae36-434b0da40018"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240209T132256Z
+      Value: 20240212T105033Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA21

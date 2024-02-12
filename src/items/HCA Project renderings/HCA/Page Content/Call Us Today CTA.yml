@@ -10,6 +10,95 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetCallUsTodayCTA($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on CallUsTodayCTA_6d1ace35819d4515a86d89ab96696f61 {
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          contactUnit {
+            contactUnitList: targetItems {
+              ...ContactUnitFields
+            }
+          }
+        }
+      }
+    }
+    
+    fragment ContactUnitFields on ContactUnit {
+      contactUnitName {
+        value
+      }
+      telephoneNumber {
+        telephoneNumberList: targetItems {
+          ...TelephoneNumberFields
+        }
+      }
+      children {
+        results {
+          ... on OpeningHours {
+            ...OpeningHoursFields
+          }
+        }
+      }
+    }
+    
+    fragment OpeningHoursFields on OpeningHours {
+      children {
+        results {
+          ... on OpeningHoursSpecification {
+            dayOfWeek {
+              dayOfWeekList: targetItems {
+                ...DayOfWeekFields
+              }
+            }
+            opens {
+              value
+            }
+            closes {
+              value
+            }
+            validFrom {
+              value
+            }
+            validThrough {
+              value
+            }
+          }
+        }
+      }
+    }
+    
+    fragment DayOfWeekFields on DayOfWeek {
+      dayName {
+        value
+      }
+    }
+    
+    fragment TelephoneNumberFields on TelephoneNumber {
+      internationPhoneNumber {
+        value
+      }
+      phoneNumberLabel {
+        value
+      }
+      phoneNumber {
+        value
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
@@ -31,7 +120,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{4C52B76F-AAAB-4383-A3C6-51FD1D5604F4}" />
+    <image mediaid="{A7804F32-BF2D-4C06-8D99-F571A8767096}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -78,14 +167,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "df10b3fb-e038-4059-b969-31f3505f93c4"
+      Value: "57df3532-11b6-42d5-8f6c-1308fb24bd5f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T092108Z
+      Value: 20240212T115637Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

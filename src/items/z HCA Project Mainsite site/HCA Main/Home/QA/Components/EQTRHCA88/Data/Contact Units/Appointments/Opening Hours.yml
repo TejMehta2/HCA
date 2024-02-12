@@ -1,0 +1,23 @@
+﻿---
+ID: "cd7a7d74-d814-4c13-a37f-e90be94bba81"
+Parent: "37bf7f00-42fe-4dac-8cb2-1612b9ac865d"
+Template: "ecd9edc1-11c6-49c2-93f9-bd5cd46a7206"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/Data/Contact Units/Appointments/Opening Hours
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T163333Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7f7644e7-1704-4ef0-9794-22c23c98e091"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T163333Z
