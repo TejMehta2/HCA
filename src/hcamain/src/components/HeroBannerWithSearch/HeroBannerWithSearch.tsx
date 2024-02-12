@@ -3,7 +3,6 @@ import {
   Field,
   ImageField,
   Image as JssImage,
-  RichText,
   Text as JssText,
   ComponentRendering,
   Placeholder,
