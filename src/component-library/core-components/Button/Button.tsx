@@ -5,7 +5,13 @@ import styles from './Button.module.scss';
 import { LoaderThemeUnionTypes } from '../../foundation/Loader/Loader.types';
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { size = 'large', theme = 'full-dark', children, loading } = props;
+  const {
+    size = 'large',
+    theme = 'full-dark',
+    children,
+    loading,
+    contentVariation,
+  } = props;
 
   const lightLoaderThemes = ['outline-dark', 'full-light-blue'];
 
@@ -23,6 +29,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         styles[size],
         styles[theme],
         styles[loading ? 'loading' : ''],
+        contentVariation && styles[contentVariation],
       ].join(' ')}
       aria-live="polite"
     >

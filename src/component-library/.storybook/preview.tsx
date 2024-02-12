@@ -20,7 +20,7 @@ const customViewports = {
   Large: {
     name: 'Large',
     styles: {
-      width: '1180px',
+      width: '1280px',
       height: '820px',
     },
   },

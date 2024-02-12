@@ -3,7 +3,6 @@ import {
   Field,
   LinkField,
   ImageField,
-  Placeholder,
   ComponentRendering,
   RichText as JssRichText,
   Image,
@@ -61,11 +60,9 @@ const LogoBlockDefaultComponent = (props: LogoBlockProps): JSX.Element => {
 };
 
 export const Default = (props: LogoBlockProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
-  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   console.log(props);
   return (
@@ -109,7 +106,7 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
           <Image field={logo.fields?.LogoImage} />
         </JSSLink>
       ))}
-    />
+    />);}
     /* <div className={`component ${props.params.styles}`}>
       <Text field={props.fields.Heading} />
       <br />
@@ -117,18 +114,120 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <br />
       <JssRichText className="promo-text" field={props.fields.Text} />
       <br />
-      <JssLink field={props.fields.CTALink}></JssLink>
-
+      <JssLink field={props.fields.CTALink}>
+        {props?.fields?.CTAIcon && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            }}
+          />
+        )}
+        {props?.fields?.CTALink.value.text && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTALink.value.text,
+            }}
+          ></span>
+        )}
+      </JssLink>
       <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (
           <li key={index}>
-            <Image field={logo.fields?.LogoImage} />
+            <JssLink field={logo.fields.Link}>
+              <Image field={logo.fields?.LogoImage} />
+            </JssLink>
             <br />
-            <JssLink field={logo.fields.Link} />
           </li>
         ))}
       </ul>
+    </div>
+  );
+};*/
+
+export const SideBySide = (props: LogoBlockProps): JSX.Element => {
+  if (!props.fields) {
+    return <LogoBlockDefaultComponent {...props} />;
+  }
+
+  console.log(props);
+  return (
+    <LogoBlock
+      theme={props.params.Theme}
+      header={
+        <AdvancedBlockHeader
+          subtitle={
+            <Text variation={'subheading-1'}>
+              <JSSText field={props.fields.Heading} />
+            </Text>
+          }
+          title={
+            <Text
+              tag={props.params.HeadingTag}
+              variation={props.params.HeadingSize}
+            >
+              <JSSText field={props.fields.Title} />
+            </Text>
+          }
+          body={
+            <Text tag="div" variation={'body-large'}>
+              <JssRichText
+                tag="p"
+                className="promo-text"
+                field={props.fields.Text}
+              />
+            </Text>
+          }
+          ctas={
+            <Placeholder
+              name={phKey}
+              rendering={props.rendering}
+              size={buttonSize}
+            />
+          }
+        />
+      }
+      logos={props.fields.Logos.map((logo, index) => (
+        <JSSLink key={index} field={logo.fields.Link}>
+          <Image field={logo.fields?.LogoImage} />
+        </JSSLink>
+      ))}
+    />)}
+    /* <div className={`component ${props.params.styles}`}>
+      <Text field={props.fields.Heading} />
+      <br />
+      <Text field={props.fields.Title} />
+      <br />
+      <JssRichText className="promo-text" field={props.fields.Text} />
+      <br />
+      <JssLink field={props.fields.CTALink}>
+        {props?.fields?.CTAIcon && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
+            }}
+          />
+        )}
+        {props?.fields?.CTALink.value.text && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.CTALink.value.text,
+            }}
+          ></span>
+        )}
+      </JssLink>
+      <br />
+      <ul>
+        {props.fields.Logos.map((logo, index) => (
+          <li key={index}>
+            <JssLink field={logo.fields.Link}>
+              <Image field={logo.fields?.LogoImage} />
+            </JssLink>
+            <br />
+          </li>
+        ))}
+      </ul>
+    </div>
       <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
     </div> */
   );

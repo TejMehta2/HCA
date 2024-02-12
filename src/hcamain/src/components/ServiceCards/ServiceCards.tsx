@@ -91,7 +91,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       bodyText={<JssRichText field={props.fields.Description} />}
       cta={
         isExperienceEditor ? (
-          <JssLink field={props.fields.CTALink.value}></JssLink>
+          <JssLink field={props.fields.CTALink}></JssLink>
         ) : (
           <JssLink field={props.fields.CTALink}>
             {props?.fields?.CTAIcon && (
@@ -118,9 +118,9 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={<a href={service.url}>{props.fields.CTACardText.value}</a>}
             key={index}
           >
-            <JssImage field={service.fields.Image} />
+            <JssImage field={service.fields.Image} editable={false} />
             <Text tag="div" variation="display-6">
-              <JssText field={service.fields.Title} />
+              <JssText field={service.fields.Title} editable={false} />
             </Text>
           </CardService>
         ))}

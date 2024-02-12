@@ -18,7 +18,6 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const FeaturedService: StoryObj<typeof CardNavigation> = {
   args: {
-    category: 'service',
     title: (
       <Text tag="p" variation="heading-2">
         Featured Scan
@@ -53,7 +52,6 @@ export const FeaturedService: StoryObj<typeof CardNavigation> = {
 
 export const FeaturedBlog: StoryObj<typeof CardNavigation> = {
   args: {
-    category: 'blog',
     date: <time dateTime="Sept 7, 2023">Sept 7, 2023</time>,
     title: (
       <Text tag="p" variation="heading-2">

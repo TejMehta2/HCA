@@ -129,7 +129,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         dark: (
           <JSSImage
             field={
-              props.fields.CQCStatus.fields.Status.fields.CQCLogoDark.fields
+              props.fields.CQCStatus.fields.Status.fields.CQCLogoLight.fields
                 .Logo
             }
           />
@@ -137,7 +137,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         light: (
           <JSSImage
             field={
-              props.fields.CQCStatus.fields.Status.fields.CQCLogoLight.fields
+              props.fields.CQCStatus.fields.Status.fields.CQCLogoDark.fields
                 .Logo
             }
           />
@@ -198,7 +198,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
             />
           </JSSLink>
         ) : (
-          <JSSLink field={props.fields.CTALink.value}></JSSLink>
+          <JSSLink field={props.fields.CTALink}></JSSLink>
         )
       }
       image={<JSSImage field={props.fields.Image} />}

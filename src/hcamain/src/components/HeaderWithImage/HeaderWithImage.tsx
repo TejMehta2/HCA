@@ -80,6 +80,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           name={phKey}
           rendering={props.rendering}
           size={buttonSize}
+          contentVariation="full-width"
         />
       }
     />

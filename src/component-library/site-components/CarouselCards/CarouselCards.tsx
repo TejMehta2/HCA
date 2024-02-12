@@ -63,9 +63,17 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     <Themes theme={theme}>
       <div className={styles['wrapper']}>
         <div className={styles['container']}>
-          {title && <div className={styles['intro']}>{title}</div>}
+          {title && (
+            <div className={styles['intro']} data-animate="s">
+              {title}
+            </div>
+          )}
 
-          <div ref={carouselRef} className={styles['carousel-wrapper']}>
+          <div
+            ref={carouselRef}
+            className={styles['carousel-wrapper']}
+            data-animate="m"
+          >
             <Slider {...settings}>{children && children}</Slider>
           </div>
 
