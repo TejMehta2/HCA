@@ -105,9 +105,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                 {contactUnit.telephoneNumber.telephoneNumberList.map(
                   (telephoneNumber, index) => (
                     <li key={index}>
-                      <JssText
-                        field={telephoneNumber.phoneNumberLabel.value}
-                      />
+                      <JssText field={telephoneNumber.phoneNumberLabel.value} />
                       <br />
                       <JssText field={telephoneNumber.phoneNumber.value} />
                       <br />
@@ -143,9 +141,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                           <br />
                           <JssText field={openingHours.validFrom.value} />
                           <br />
-                          <JssText
-                            field={openingHours.validThrough.value}
-                          />
+                          <JssText field={openingHours.validThrough.value} />
                         </li>
                       ))}
                     </ul>

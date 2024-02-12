@@ -8,23 +8,23 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface TelephoneNumberFields {
-  phoneNumberLabel: { jsonValue: Field<string> };
-  phoneNumber: { jsonValue: Field<string> };
-  internationPhoneNumber: { jsonValue: Field<string> };
+  phoneNumberLabel: { value: Field<string> };
+  phoneNumber: { value: Field<string> };
+  internationPhoneNumber: { value: Field<string> };
 }
 
 interface DayOfWeekFields {
-  dayName: { jsonValue: Field<string> };
+  dayName: { value: Field<string> };
 }
 
 interface OpeningHoursSpecificationFields {
   dayOfWeek: {
     dayOfWeekList: DayOfWeekFields[];
   };
-  opens: { jsonValue: Field<string> };
-  closes: { jsonValue: Field<string> };
-  validFrom: { jsonValue: Field<string> };
-  validThrough: { jsonValue: Field<string> };
+  opens: { value: Field<string> };
+  closes: { value: Field<string> };
+  validFrom: { value: Field<string> };
+  validThrough: { value: Field<string> };
 }
 
 interface OpeningHoursFields {
@@ -34,7 +34,7 @@ interface OpeningHoursFields {
 }
 
 interface ContactUnitFields {
-  contactUnitName: { jsonValue: Field<string> };
+  contactUnitName: { value: Field<string> };
   telephoneNumber: {
     telephoneNumberList: TelephoneNumberFields[];
   };
@@ -92,20 +92,18 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
         {props.fields.data.item.contactUnits.contactUnitList.map(
           (contactUnit, index) => (
             <li key={index}>
-              <JssText field={contactUnit.contactUnitName.jsonValue} />
+              <JssText field={contactUnit.contactUnitName.value} />
               <br />
               <ul>
                 {contactUnit.telephoneNumber.telephoneNumberList.map(
                   (telephoneNumber, index) => (
                     <li key={index}>
-                      <JssText
-                        field={telephoneNumber.phoneNumberLabel.jsonValue}
-                      />
+                      <JssText field={telephoneNumber.phoneNumberLabel.value} />
                       <br />
-                      <JssText field={telephoneNumber.phoneNumber.jsonValue} />
+                      <JssText field={telephoneNumber.phoneNumber.value} />
                       <br />
                       <JssText
-                        field={telephoneNumber.internationPhoneNumber.jsonValue}
+                        field={telephoneNumber.internationPhoneNumber.value}
                       />
                     </li>
                   )
@@ -124,21 +122,19 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                             {openingHours.dayOfWeek.dayOfWeekList.map(
                               (day, index) => (
                                 <li key={index}>
-                                  <JssText field={day.dayName.jsonValue} />
+                                  <JssText field={day.dayName.value} />
                                 </li>
                               )
                             )}
                           </ul>
                           <br />
-                          <JssText field={openingHours.opens.jsonValue} />
+                          <JssText field={openingHours.opens.value} />
                           <br />
-                          <JssText field={openingHours.closes.jsonValue} />
+                          <JssText field={openingHours.closes.value} />
                           <br />
-                          <JssText field={openingHours.validFrom.jsonValue} />
+                          <JssText field={openingHours.validFrom.value} />
                           <br />
-                          <JssText
-                            field={openingHours.validThrough.jsonValue}
-                          />
+                          <JssText field={openingHours.validThrough.value} />
                         </li>
                       ))}
                     </ul>
