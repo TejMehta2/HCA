@@ -2,6 +2,8 @@ import React from 'react';
 import CTABlock from './CTABlock';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
+import Button from '../../core-components/Button/Button';
+import TextButton from '../../core-components/TextButton/TextButton';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CTABlock> = {
@@ -38,28 +40,30 @@ export const Default: StoryObj<typeof CTABlock> = {
         deserunt sunt dolore dolore.
       </Text>
     ),
-    ctas: {
-      button1: (
-        <a href="#">
-          <span>
-            Click <strong>me</strong>
-          </span>
-        </a>
-      ),
-      button2: (
-        <a href="#">
-          <span>
-            Click <strong>me</strong>
-          </span>
-        </a>
-      ),
-      button3: (
-        <a href="#">
-          <span>
-            Text <strong>button</strong>
-          </span>
-        </a>
-      ),
-    },
+    ctas: (
+      <>
+        <Button size="large" theme="full">
+          <a href="#">
+            <span>
+              Click <strong>me</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" theme="outline">
+          <a href="#">
+            <span>
+              Click <strong>me</strong>
+            </span>
+          </a>
+        </Button>
+        <TextButton>
+          <a href="#">
+            <span>
+              Text <strong>button</strong>
+            </span>
+          </a>
+        </TextButton>
+      </>
+    ),
   },
 };
