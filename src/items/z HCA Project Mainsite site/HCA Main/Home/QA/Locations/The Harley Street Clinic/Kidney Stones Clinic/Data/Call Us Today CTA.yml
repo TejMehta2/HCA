@@ -1,0 +1,33 @@
+﻿---
+ID: "40ae0e8b-afe4-485f-b271-358253ee47a8"
+Parent: "b0e0d159-f735-4c5f-9a71-2a588afca955"
+Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Call Us Today CTA
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240211T201113Z
+    - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
+      Hint: ContactUnit
+      Value: "{C7F6CFFB-E283-41A8-A66C-0630FF822617}|{D87C3036-3788-420D-88EF-B8D4E63CA240}|{49939958-5CD0-4ED4-8D0C-D0A58D666BC3}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "cbee9f1b-3def-4c4d-b0cc-63e7d181696b"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Call us &lt;b&gt;today&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240211T221831Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"

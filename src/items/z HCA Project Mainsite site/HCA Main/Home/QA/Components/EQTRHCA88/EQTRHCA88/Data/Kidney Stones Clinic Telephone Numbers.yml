@@ -1,0 +1,23 @@
+﻿---
+ID: "61896c1b-7f11-401f-a3ec-46b4c2cda04f"
+Parent: "19642323-7f9e-4f1a-8811-3509294f195c"
+Template: "1dd55312-6947-4ce8-8d9e-2bcc7b8c16e9"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/EQTRHCA88/Data/Kidney Stones Clinic Telephone Numbers
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T204218Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fe686b61-3bd0-4c1a-9e79-1df237f6afb0"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240122T165511Z

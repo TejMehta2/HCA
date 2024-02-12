@@ -1,0 +1,23 @@
+﻿---
+ID: "e495dd0f-e624-43de-89c0-2eca93d5d302"
+Parent: "418861af-2d70-48dc-9858-a29561c35b78"
+Template: "d27d00cf-d030-4824-8581-2b2ebee62150"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T162502Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "721f564b-fd9d-424e-be1f-68ed9e2625c9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T162502Z
