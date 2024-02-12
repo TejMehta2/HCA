@@ -1,0 +1,4 @@
+# BlogDetailsHeader documentation
+
+## Additional information
+

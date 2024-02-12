@@ -8,23 +8,23 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface TelephoneNumberFields {
-  phoneNumberLabel: { value: Field<string> };
-  phoneNumber: { value: Field<string> };
-  internationPhoneNumber: { value: Field<string> };
+  phoneNumberLabel: { value: string };
+  phoneNumber: { value: string };
+  internationPhoneNumber: { value: string };
 }
 
 interface DayOfWeekFields {
-  dayName: { value: Field<string> };
+  dayName: { value: string };
 }
 
 interface OpeningHoursSpecificationFields {
   dayOfWeek: {
     dayOfWeekList: DayOfWeekFields[];
   };
-  opens: { value: Field<string> };
-  closes: { value: Field<string> };
-  validFrom: { value: Field<string> };
-  validThrough: { value: Field<string> };
+  opens: { value: string };
+  closes: { value: string };
+  validFrom: { value: string };
+  validThrough: { value: string };
 }
 
 interface OpeningHoursFields {
@@ -34,7 +34,7 @@ interface OpeningHoursFields {
 }
 
 interface ContactUnitFields {
-  contactUnitName: { value: Field<string> };
+  contactUnitName: { value: string };
   telephoneNumber: {
     telephoneNumberList: TelephoneNumberFields[];
   };
@@ -68,7 +68,7 @@ const CallUsTodayCTADefaultComponent = (
   return (
     <div className={`component ${props.params.styles}`}>
       <div className="component-content">
-        <span className="is-empty-hint">Header with text</span>
+        <span className="is-empty-hint">TalkToUs no datasource</span>
       </div>
     </div>
   );
@@ -92,19 +92,17 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
         {props.fields.data.item.contactUnits.contactUnitList.map(
           (contactUnit, index) => (
             <li key={index}>
-              <JssText field={contactUnit.contactUnitName.value} />
+              <JssText field={contactUnit.contactUnitName} />
               <br />
               <ul>
                 {contactUnit.telephoneNumber.telephoneNumberList.map(
                   (telephoneNumber, index) => (
                     <li key={index}>
-                      <JssText field={telephoneNumber.phoneNumberLabel.value} />
+                      <JssText field={telephoneNumber.phoneNumberLabel} />
                       <br />
-                      <JssText field={telephoneNumber.phoneNumber.value} />
+                      <JssText field={telephoneNumber.phoneNumber} />
                       <br />
-                      <JssText
-                        field={telephoneNumber.internationPhoneNumber.value}
-                      />
+                      <JssText field={telephoneNumber.internationPhoneNumber} />
                     </li>
                   )
                 )}
@@ -122,19 +120,19 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                             {openingHours.dayOfWeek.dayOfWeekList.map(
                               (day, index) => (
                                 <li key={index}>
-                                  <JssText field={day.dayName.value} />
+                                  <JssText field={day.dayName} />
                                 </li>
                               )
                             )}
                           </ul>
                           <br />
-                          <JssText field={openingHours.opens.value} />
+                          <JssText field={openingHours.opens} />
                           <br />
-                          <JssText field={openingHours.closes.value} />
+                          <JssText field={openingHours.closes} />
                           <br />
-                          <JssText field={openingHours.validFrom.value} />
+                          <JssText field={openingHours.validFrom} />
                           <br />
-                          <JssText field={openingHours.validThrough.value} />
+                          <JssText field={openingHours.validThrough} />
                         </li>
                       ))}
                     </ul>

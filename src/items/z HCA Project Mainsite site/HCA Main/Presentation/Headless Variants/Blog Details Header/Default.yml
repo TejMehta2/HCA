@@ -1,8 +1,8 @@
 ﻿---
-ID: "f1c1e9fe-fd8a-4872-b715-cb9cba927e1c"
-Parent: "b7240dd6-f183-4013-b70e-d8ac23dccc04"
+ID: "cccf3ce9-d9a0-45e1-be06-544c110ffba7"
+Parent: "328558a2-fba2-4454-8675-1e3ca65e628b"
 Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
-Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/CTA Button/LightText
+Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Blog Details Header/Default
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T063548Z
+      Value: 20240209T220337Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "85a055a9-3569-4806-b175-9c128be9465a"
+      Value: "564fce90-69d4-4168-bf77-fae01df3b88f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240105T170303Z
+      Value: 20240209T220337Z

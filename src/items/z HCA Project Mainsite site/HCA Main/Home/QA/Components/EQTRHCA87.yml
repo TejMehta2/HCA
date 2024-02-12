@@ -1,13 +1,13 @@
 ﻿---
-ID: "9d81dff3-6931-446c-b917-2b356bd4bf28"
-Parent: "885debf4-54ed-4591-9b63-ed4215b66b4e"
-Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/EQTRHCA70
+ID: "9b3f7d06-e3ef-4203-b4bf-e7620d975d86"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA87
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{249800DB-95C5-4E70-988B-6A806E1A5FBE}" />
+    <image mediaid="{666ACFC3-7861-4C9B-B594-E9763F8ABEED}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -16,10 +16,10 @@ SharedFields:
       <d
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
-          uid="{575A017E-071D-4420-8255-5D7C885C285E}"
-          s:ds="local:/Data/Call Us Today CTA"
-          s:id="{E2ACB40C-B73B-4BE1-8B5C-4498D9920248}"
-          s:par="GridParameters&amp;FieldNames=%7BEA48E2B2-C94A-44A0-AEBF-6CB1232508B8%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          uid="{BC867F69-64E0-406B-950B-09F36351770C}"
+          s:ds=""
+          s:id="{6B604A3D-BF64-4BFA-8C2B-F9B6B1640392}"
+          s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -31,25 +31,28 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240119T204145Z
+      Value: 20240210T144437Z
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
-      Value: Kidney Stones Clinic
+      Value: EQTRHCA87
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "53639107-5266-4ebf-a056-f0cbe86692d2"
+      Value: "7ef460ac-2f1f-44b6-8c6a-d0b9b4d2348a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240212T152511Z
+      Value: 20240210T144515Z
+    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Hint: Title
+      Value: EQTRHCA87
