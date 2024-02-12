@@ -48,7 +48,7 @@ export const Default = (props: CTABlockProps): JSX.Element => {
 
   return (
     <CTABlock
-      theme={props.params.Theme}
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
       subheader={
         <Text tag="p" variation="subheading-1">
           <JSSText field={props.fields.Heading} />
