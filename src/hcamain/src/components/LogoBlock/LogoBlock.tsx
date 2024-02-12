@@ -12,12 +12,6 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
-type CTAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
-  };
-};
-
 interface LogosFields {
   fields: {
     LogoImage: ImageField;
@@ -28,8 +22,6 @@ interface LogosFields {
 interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
-  CTAIcon?: CTAIconFields;
-  CTALink: LinkField;
   Text: Field<string>;
   Logos: LogosFields[];
 }
@@ -70,23 +62,6 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <br />
       <JssRichText className="promo-text" field={props.fields.Text} />
       <br />
-      <JssLink field={props.fields.CTALink}>
-        {props?.fields?.CTAIcon && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        {props?.fields?.CTALink.value.text && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTALink.value.text,
-            }}
-          ></span>
-        )}
-      </JssLink>
-      <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (
           <li key={index}>
@@ -115,23 +90,6 @@ export const SideBySide = (props: LogoBlockProps): JSX.Element => {
       <Text field={props.fields.Title} />
       <br />
       <JssRichText className="promo-text" field={props.fields.Text} />
-      <br />
-      <JssLink field={props.fields.CTALink}>
-        {props?.fields?.CTAIcon && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        {props?.fields?.CTALink.value.text && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTALink.value.text,
-            }}
-          ></span>
-        )}
-      </JssLink>
       <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (

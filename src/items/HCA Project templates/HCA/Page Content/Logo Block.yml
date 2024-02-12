@@ -9,9 +9,7 @@ SharedFields:
   Value: Office/32x32/window_dialog.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: |
-    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
-    {AAE4E009-0F80-46F2-A8BF-AF389624B0DA}
+  Value: "{44A022DB-56D3-419A-B43B-E27E4D8E9C41}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -65,14 +63,14 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "943ccf07-1d93-466d-a222-ad03a660359f"
+      Value: "0ab73a18-c2c0-4210-aa29-1346c1180074"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240201T131508Z
+      Value: 20240212T162109Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
