@@ -1,7 +1,7 @@
-import { ChangeEventHandler, ReactNode } from 'react';
+import { ChangeEventHandler } from 'react';
 
 export interface SearchBarProps {
   handleInputChange?: ChangeEventHandler<HTMLInputElement>;
-  placeholder?: string | ReactNode | JSX.Element;
+  placeholder?: string;
   searchValue?: string;
 }

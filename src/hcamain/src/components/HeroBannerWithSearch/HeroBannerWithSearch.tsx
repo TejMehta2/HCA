@@ -59,7 +59,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
   if (!props.fields) {
     return <HeroBannerWithSearchDefaultComponent {...props} />;
   }
-
+  console.log(props);
   return (
     <HomepageHero
       theme={props.params.Theme || 'D-HCA-Light-Orange'}
@@ -71,11 +71,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           <JssText field={props.fields.Title} />
         </Text>
       }
-      search={
-        <SearchBar
-          placeholder={<RichText field={props.fields.SearchPlaceholder} />}
-        />
-      }
+      search={<SearchBar placeholder={props.fields.SearchPlaceholder.value} />}
       ctaTitle={
         <Text
           tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
