@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import CTABlock from './CTABlock';
 import { CTABlockProps } from './CTABlock.types';
 import Text from '../../foundation/Text/Text';
+import Button from '../../core-components/Button/Button';
+import TextButton from '../../core-components/TextButton/TextButton';
 
 const mockProps: CTABlockProps = {
   theme: 'A-HCA-Main-Turquoise',
@@ -26,29 +28,31 @@ const mockProps: CTABlockProps = {
       dolore dolore.
     </Text>
   ),
-  ctas: {
-    button1: (
-      <a href="#">
-        <span>
-          Click <strong>me</strong>
-        </span>
-      </a>
-    ),
-    button2: (
-      <a href="#">
-        <span>
-          Click <strong>me</strong>
-        </span>
-      </a>
-    ),
-    button3: (
-      <a href="#">
-        <span>
-          Text <strong>button</strong>
-        </span>
-      </a>
-    ),
-  },
+  ctas: (
+    <>
+      <Button size="large" theme="full">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" theme="outline">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Text <strong>button</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  ),
 };
 
 describe('CTABlock', () => {

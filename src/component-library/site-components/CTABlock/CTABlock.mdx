@@ -25,29 +25,31 @@ It can be composed like this:
       Call-to-action block
     </Text>
   }
-  ctas={{
-    button1: (
-      <a href="#">
-        <span>
-          Click <strong>me</strong>
-        </span>
-      </a>
-    ),
-    button2: (
-      <a href="#">
-        <span>
-          Click <strong>me</strong>
-        </span>
-      </a>
-    ),
-    button3: (
-      <a href="#">
-        <span>
-          Text <strong>button</strong>
-        </span>
-      </a>
-    ),
-  }}
+  ctas={
+    <>
+      <Button size="large" theme="full">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" theme="outline">
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Text <strong>button</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  }
 >
   <Text tag="p" variation="body-large">
     Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum

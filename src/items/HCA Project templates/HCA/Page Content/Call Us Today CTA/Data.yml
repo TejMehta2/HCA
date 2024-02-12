@@ -1,8 +1,8 @@
 ﻿---
-ID: "37d25c6a-1cc1-4062-b797-d766ecbad4ec"
-Parent: "61a472d9-0f55-4113-93d6-93161d0cc807"
-Template: "fc5333c3-fdd8-4831-b992-6962fb1ee907"
-Path: "/sitecore/content/HCA/HCA Main/Presentation/Heading Size/heading-3"
+ID: "d1002355-a4b8-4211-93a1-07101385af9f"
+Parent: "6d1ace35-819d-4515-a86d-89ab96696f61"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA/Data
 Languages:
 - Language: en
   Versions:
@@ -10,22 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231110T112825Z
+      Value: 20240202T091859Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "27ab181d-e2bd-472b-b44c-5b2c6b3c1ec2"
+      Value: "76c4ed52-36a2-4fa3-b853-2b01544a412a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231219T174158Z
+      Value: 20240202T091913Z
