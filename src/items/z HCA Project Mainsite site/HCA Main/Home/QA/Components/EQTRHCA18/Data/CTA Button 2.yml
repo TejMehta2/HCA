@@ -1,0 +1,35 @@
+﻿---
+ID: "0f2c6e0f-d4a1-4373-9956-80ca247df3c3"
+Parent: "c3d74f74-59ea-4b0f-a847-e09d5ca4c5df"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA18/Data/CTA Button 2
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T145724Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e42e4906-b8e3-4948-bd43-7798af3aee79"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Click &lt;b&gt;me&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240201T145837Z

@@ -2,12 +2,13 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
+  @include responsive-grid-span(6, 3, 3, 3);
+
   display: none;
   background-color: var(--card-background);
   color: var(--text);
   border-radius: $radius-small;
   padding: $spacing-7 $spacing-6;
-  max-width: px-to-rem(268);
   min-height: px-to-rem(341);
   flex-direction: column;
   justify-content: space-between;

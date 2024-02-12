@@ -26,7 +26,7 @@ Languages:
       Hint: __Revision
       Value: "7a0de50e-93aa-43ba-aa28-2dbb0d715c01"
     - ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
-      Hint: CQC Status
+      Hint: CQCStatus
       Value: "{A64BBA88-C227-41A7-8EF6-2D2E3C9C3112}"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
@@ -40,7 +40,7 @@ Languages:
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
-      Hint: Doctify Reviews
+      Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
     - ID: "d0db9d3f-ad94-4795-ae43-5c3ce95ea702"
       Hint: Counters

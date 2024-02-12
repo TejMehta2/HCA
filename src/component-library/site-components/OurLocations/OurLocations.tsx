@@ -109,6 +109,7 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
           {/* Header Section */}
           <div
             className={`${styles.header} ${mobileScrolled ? styles.hide : ''}`}
+            data-animate="m"
           >
             <div>
               {subtitle}

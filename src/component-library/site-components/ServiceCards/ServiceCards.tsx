@@ -23,7 +23,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div className={styles.grid}>
-              <div className={styles.text}>
+              <div className={styles.text} data-animate="s">
                 <div className={styles['sticky-track']}>
                   <div className={styles.sticky}>
                     {subtitle}
@@ -38,7 +38,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
                 </div>
               </div>
 
-              <div className={styles.cards}>
+              <div className={styles.cards} data-animate="l">
                 <div className={styles.row}>
                   {isL && (
                     <>

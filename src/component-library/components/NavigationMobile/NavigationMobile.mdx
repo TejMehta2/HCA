@@ -1,0 +1,20 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as NavigationMobileStories from './NavigationMobile.stories'
+
+<Meta of={NavigationMobileStories} />
+
+# NavigationMobile
+
+## Description
+
+The NavigationMobile component is the version of the main site navigation and header which appears only on mobile and tablet devices.
+
+The navigation has three levels and shares the same props as its sibling: the NavigationDesktop component.
+
+It is only inteded to be rendered in the `site-components/Navigation` component. See there for shared features between desktop and mobile.
+
+### User interaction
+
+The primary and secondary nav buttons (those having a caret) allow the user to reach the next level of navigation on click.
+
+The eyebrow, back links and bottom buttons render conditionally, depending on current selection of navigation level.
