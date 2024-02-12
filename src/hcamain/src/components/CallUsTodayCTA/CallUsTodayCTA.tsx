@@ -109,9 +109,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                       <br />
                       <JssText field={telephoneNumber.phoneNumber} />
                       <br />
-                      <JssText
-                        field={telephoneNumber.internationPhoneNumber}
-                      />
+                      <JssText field={telephoneNumber.internationPhoneNumber} />
                     </li>
                   )
                 )}

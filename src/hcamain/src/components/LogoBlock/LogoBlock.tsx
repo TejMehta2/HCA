@@ -8,7 +8,7 @@ import {
   RichText as JssRichText,
   Image,
   Text,
-  Placeholder
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
