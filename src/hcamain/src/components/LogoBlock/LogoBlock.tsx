@@ -8,6 +8,7 @@ import {
   RichText as JssRichText,
   Image,
   Text,
+  Placeholder
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
@@ -56,6 +57,7 @@ const LogoBlockDefaultComponent = (props: LogoBlockProps): JSX.Element => {
 };
 
 export const Default = (props: LogoBlockProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
@@ -95,11 +97,13 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
           </li>
         ))}
       </ul>
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };
 
 export const SideBySide = (props: LogoBlockProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
@@ -139,6 +143,7 @@ export const SideBySide = (props: LogoBlockProps): JSX.Element => {
           </li>
         ))}
       </ul>
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };
