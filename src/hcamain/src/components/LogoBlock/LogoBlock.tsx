@@ -17,12 +17,6 @@ import Text from 'temp/component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
 
-/* type CTAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
-  };
-}; */
-
 interface LogosFields {
   fields: {
     LogoImage: ImageField;
