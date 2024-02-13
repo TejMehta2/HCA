@@ -133,7 +133,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
                                 }
                                 value={queryValue}
                                 name={queryKey}
-                                label={filter.fields.DisplayName.value}
+                                label={filter.displayName}
                                 defaultChecked={
                                   searchParams
                                     .getAll(queryKey)
@@ -169,7 +169,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
                     return {
                       id: option.id || `sort-by-${index}`,
                       value: queryValue,
-                      labelText: option.fields.DisplayName.value,
+                      labelText: option.displayName,
                       name: queryKey,
                       defaultChecked: searchParams.get(queryKey) === queryValue,
                     };
