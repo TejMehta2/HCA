@@ -4,13 +4,18 @@ import {
   LinkField,
   ImageField,
   ComponentRendering,
-  Link as JssLink,
   RichText as JssRichText,
   Image,
-  Text,
+  Text as JSSText,
+  Link as JSSLink,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
+import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
+import Text from '@component-library/foundation/Text/Text';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
 
 interface LogosFields {
   fields: {
@@ -32,6 +37,7 @@ type LogoBlockProps = {
     Theme: Theme;
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
+    Columns: string;
     styles: string;
   };
   rendering: ComponentRendering;
@@ -48,60 +54,67 @@ const LogoBlockDefaultComponent = (props: LogoBlockProps): JSX.Element => {
   );
 };
 
-export const Default = (props: LogoBlockProps): JSX.Element => {
+interface LogoBlockExtendedProps extends LogoBlockProps {
+  variation?: 'standard' | 'side-by-side';
+}
+export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const { variation = 'standard' } = props;
+
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
 
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
+
+  const columns: ColumnProps['columns'] = +props.params.Columns === 4 ? 4 : 3;
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <JssRichText className="promo-text" field={props.fields.Text} />
-      <br />
-      <ul>
-        {props.fields.Logos.map((logo, index) => (
-          <li key={index}>
-            <JssLink field={logo.fields.Link}>
-              <Image field={logo.fields?.LogoImage} />
-            </JssLink>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
+    <LogoBlock
+      theme={props.params.Theme}
+      columns={columns}
+      variation={variation}
+      header={
+        <AdvancedBlockHeader
+          subtitle={
+            <Text variation={'subheading-1'}>
+              <JSSText field={props.fields.Heading} />
+            </Text>
+          }
+          title={
+            <Text
+              tag={props.params.HeadingTag || 'h2'}
+              variation={props.params.HeadingSize || 'display-2'}
+            >
+              <JSSText field={props.fields.Title} />
+            </Text>
+          }
+          body={
+            <Text tag="div" variation={'body-large'}>
+              <JssRichText field={props.fields.Text} />
+            </Text>
+          }
+          ctas={
+            <Placeholder
+              name={phKey}
+              rendering={props.rendering}
+              size={buttonSize}
+            />
+          }
+        />
+      }
+      logos={props.fields.Logos.map((logo, index) => (
+        <JSSLink key={index} field={logo.fields.Link}>
+          <Image field={logo.fields?.LogoImage} />
+        </JSSLink>
+      ))}
+    />
   );
 };
 
 export const SideBySide = (props: LogoBlockProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
-
-  return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <JssRichText className="promo-text" field={props.fields.Text} />
-      <br />
-      <ul>
-        {props.fields.Logos.map((logo, index) => (
-          <li key={index}>
-            <JssLink field={logo.fields.Link}>
-              <Image field={logo.fields?.LogoImage} />
-            </JssLink>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
-  );
+  return <Default {...props} variation="side-by-side" />;
 };
