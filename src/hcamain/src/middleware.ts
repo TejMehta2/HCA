@@ -18,6 +18,7 @@ export const config = {
    */
   matcher: [
     '/',
-    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg).*)',
+    /*exclude Finder and sublevels as these are delegated to their own pages*/
+    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|Finder/).*)',
   ],
 };
