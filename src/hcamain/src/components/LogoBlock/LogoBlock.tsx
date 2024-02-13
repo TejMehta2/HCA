@@ -15,12 +15,13 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import Text from 'temp/component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
 
-type CTAIconFields = {
+/* type CTAIconFields = {
   fields: {
     SvgMarkup: Field<string>;
   };
-};
+}; */
 
 interface LogosFields {
   fields: {
@@ -42,6 +43,7 @@ type LogoBlockProps = {
     Theme: Theme;
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
+    Columns: string;
     styles: string;
   };
   rendering: ComponentRendering;
@@ -58,16 +60,25 @@ const LogoBlockDefaultComponent = (props: LogoBlockProps): JSX.Element => {
   );
 };
 
-export const Default = (props: LogoBlockProps): JSX.Element => {
+interface LogoBlockExtendedProps extends LogoBlockProps {
+  variation?: 'standard' | 'side-by-side';
+}
+export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
+  const { variation = 'standard' } = props;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
 
-  console.log(props);
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
+
+  const columns: ColumnProps['columns'] = +props.params.Columns === 4 ? 4 : 3;
+
   return (
     <LogoBlock
       theme={props.params.Theme}
+      columns={columns}
+      variation={variation}
       header={
         <AdvancedBlockHeader
           subtitle={
@@ -85,11 +96,7 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
           }
           body={
             <Text tag="div" variation={'body-large'}>
-              <JssRichText
-                tag="p"
-                className="promo-text"
-                field={props.fields.Text}
-              />
+              <JssRichText tag="p" field={props.fields.Text} />
             </Text>
           }
           ctas={
@@ -106,98 +113,13 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
           <Image field={logo.fields?.LogoImage} />
         </JSSLink>
       ))}
-    />);}
-    /* <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <JssRichText className="promo-text" field={props.fields.Text} />
-      <br />
-      <ul>
-        {props.fields.Logos.map((logo, index) => (
-          <li key={index}>
-            <JssLink field={logo.fields.Link}>
-              <Image field={logo.fields?.LogoImage} />
-            </JssLink>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
+    />
   );
-};*/
+};
 
 export const SideBySide = (props: LogoBlockProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
-
-  console.log(props);
-  return (
-    <LogoBlock
-      theme={props.params.Theme}
-      header={
-        <AdvancedBlockHeader
-          subtitle={
-            <Text variation={'subheading-1'}>
-              <JSSText field={props.fields.Heading} />
-            </Text>
-          }
-          title={
-            <Text
-              tag={props.params.HeadingTag}
-              variation={props.params.HeadingSize}
-            >
-              <JSSText field={props.fields.Title} />
-            </Text>
-          }
-          body={
-            <Text tag="div" variation={'body-large'}>
-              <JssRichText
-                tag="p"
-                className="promo-text"
-                field={props.fields.Text}
-              />
-            </Text>
-          }
-          ctas={
-            <Placeholder
-              name={phKey}
-              rendering={props.rendering}
-              size={buttonSize}
-            />
-          }
-        />
-      }
-      logos={props.fields.Logos.map((logo, index) => (
-        <JSSLink key={index} field={logo.fields.Link}>
-          <Image field={logo.fields?.LogoImage} />
-        </JSSLink>
-      ))}
-    />)}
-    /* <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Heading} />
-      <br />
-      <Text field={props.fields.Title} />
-      <br />
-      <JssRichText className="promo-text" field={props.fields.Text} />
-      <br />
-      <ul>
-        {props.fields.Logos.map((logo, index) => (
-          <li key={index}>
-            <JssLink field={logo.fields.Link}>
-              <Image field={logo.fields?.LogoImage} />
-            </JssLink>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </div>
-      <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
-    </div> */
-  );
+  return <Default {...props} variation="side-by-side" />;
 };
