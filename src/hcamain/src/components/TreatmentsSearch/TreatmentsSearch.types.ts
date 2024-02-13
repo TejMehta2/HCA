@@ -31,7 +31,7 @@ export type FilterOptionsFields = Item & {
 
 export type SortOptionsFields = Item & {
   fields: {
-    DisplayName: Field<string>;
+    displayName: Field<string>;
     Filter: Field<string>;
   };
 };
