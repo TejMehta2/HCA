@@ -44,8 +44,6 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
     return <TreatmentsSearchDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   // TODO - get/compute these from API response when API implemented
   const resultsPerPage = props.fields.ResultsPerPage.value || 12;
   const resultsLength = data?.treatments?.length || 0;
