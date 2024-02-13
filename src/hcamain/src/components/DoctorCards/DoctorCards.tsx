@@ -6,14 +6,21 @@ import {
   Text as JssText,
   Link as JssLink,
   useSitecoreContext,
+  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
-import { Doctor, DoctorRow } from './DoctorCards.types';
+import {
+  ComponentRenderingDocCards,
+  Doctor,
+  DoctorRow,
+} from './DoctorCards.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import { GetStaticComponentProps } from '@sitecore-jss/sitecore-jss-nextjs';
+import { fetchDoctorCard } from './DoctorCardData';
 
 type HCAIconFields = {
   fields: {
@@ -54,7 +61,6 @@ interface Fields {
   Practice: PracticeFields[];
   Service: ServiceFields[];
   CustomFilters: FiltersFields[];
-  apiData: Doctor;
 }
 
 type DoctorCardsProps = {
@@ -65,6 +71,9 @@ type DoctorCardsProps = {
     Theme: Theme;
   };
   fields: Fields;
+  rendering: {
+    uid: string;
+  };
 };
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
@@ -78,11 +87,12 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
 export const Default = (props: DoctorCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+  const apiData = useComponentProps<Doctor>(props.rendering.uid);
   if (!props.fields) {
     return <DoctorCardsDefaultComponent {...props} />;
   }
 
-  const doctors = props.fields.apiData && props.fields.apiData.rows;
+  const doctors = apiData && apiData.rows;
 
   const getSpeciality = (doctor: DoctorRow) => {
     const keywords = doctor.keywords;
@@ -163,4 +173,8 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
         ))}
     </CardDoctorLayout>
   );
+};
+
+export const getStaticProps: GetStaticComponentProps = async (rendering) => {
+  return await fetchDoctorCard(rendering as ComponentRenderingDocCards);
 };

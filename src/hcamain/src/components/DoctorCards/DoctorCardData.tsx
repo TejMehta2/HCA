@@ -1,44 +1,31 @@
 import { FilterField, ComponentRenderingDocCards } from './DoctorCards.types';
-import {
-  ComponentRendering,
-  HtmlElementRendering,
-} from '@sitecore-jss/sitecore-jss-nextjs';
 
-export const fetchDoctorCardData = async (
-  pageComponents: (ComponentRendering | HtmlElementRendering)[]
+export const fetchDoctorCard = async (
+  component: ComponentRenderingDocCards
 ) => {
-  //  loop through components on page and identify doctor cards component
-  //  for the doctors card component get the custom filter values to append to the Doctify URL
+  const customFilters: string[] = [];
 
-  await Promise.all(
-    pageComponents.map(async (component: ComponentRenderingDocCards) => {
-      if (component.componentName === 'DoctorCards' && component.fields) {
-        const customFilters: string[] = [];
+  component.fields.CustomFilters.map((filter: FilterField) => {
+    const customFilter = filter.fields.Filter.value;
+    customFilters.push(customFilter);
+  });
 
-        component.fields.CustomFilters.map((filter: FilterField) => {
-          const customFilter = filter.fields.Filter.value;
-          customFilters.push(customFilter);
-        });
+  const customFiltersParams = customFilters.join('&');
+  const limit = component.fields.NumberOfCards.value;
 
-        const customFiltersParams = customFilters.join('&');
-        const limit = component.fields.NumberOfCards.value;
+  try {
+    const res = await fetch(
+      `${process.env.DOCTIFY_REQUEST_URL}?${customFiltersParams}&limit=${limit}`
+    );
 
-        try {
-          const res = await fetch(
-            `${process.env.DOCTIFY_REQUEST_URL}?${customFiltersParams}&limit=${limit}`
-          );
+    if (res.ok) {
+      const docitfyData = await res.json();
 
-          if (res.ok) {
-            const docitfyData = await res.json();
-
-            return (component.fields.apiData = docitfyData);
-          } else {
-            console.error('Promise resolved but HTTP status failed');
-          }
-        } catch {
-          console.error('Promise rejected');
-        }
-      }
-    })
-  );
+      return docitfyData;
+    } else {
+      console.error('Promise resolved but HTTP status failed');
+    }
+  } catch {
+    console.error('Promise rejected');
+  }
 };
