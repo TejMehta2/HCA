@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  MutableRefObject,
+} from 'react';
 import { SearchWrapperProps } from './SearchWrapper.types';
 import styles from './SearchWrapper.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Tabs from '../../core-components/Tabs/Tabs';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 
-const SearchWrapper = (props: SearchWrapperProps): JSX.Element => {
+const SearchWrapper = (
+  props: SearchWrapperProps,
+  ref: MutableRefObject<HTMLDivElement | null>
+): JSX.Element => {
   const {
     header,
     children,
@@ -45,7 +53,7 @@ const SearchWrapper = (props: SearchWrapperProps): JSX.Element => {
         {header}
         <Themes theme={theme}>
           <div className={styles['results-header']}>
-            <div className={styles['search-detail']}>
+            <div className={styles['search-detail']} ref={ref}>
               {searchDetail && searchDetail}
               {showing && <div>{showing}</div>}
             </div>
@@ -63,4 +71,4 @@ const SearchWrapper = (props: SearchWrapperProps): JSX.Element => {
   );
 };
 
-export default SearchWrapper;
+export default forwardRef(SearchWrapper);

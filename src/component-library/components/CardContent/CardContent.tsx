@@ -13,9 +13,11 @@ const CardContent = (props: CardContentProps): JSX.Element => {
           {title}
           {bodyCopy && <div className={styles['body-text']}>{bodyCopy}</div>}
         </div>
-        <Button size="small" theme="full">
-          {link}
-        </Button>
+        {link && (
+          <Button size="small" theme="full">
+            {link}
+          </Button>
+        )}
       </div>
     </div>
   );

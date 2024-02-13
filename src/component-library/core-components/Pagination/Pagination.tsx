@@ -7,15 +7,18 @@ import React, {
 } from 'react';
 import { PaginationProps } from './Pagination.types';
 import styles from './Pagination.module.scss';
-import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
 
 const Pagination = (props: PaginationProps): JSX.Element => {
-  const { theme, pageCount, currentPage = 1, callback } = props;
+  const { pageCount, currentPage = 1, callback } = props;
   const [page, setPage] = useState(currentPage);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [pageButtons, setPageButtons] = useState<JSX.Element[]>();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setPage(currentPage);
+  }, [currentPage]); // sync with async default page i.e. to read page from URL bar on load
 
   /* changing page */
   const pageChangeHandler = useCallback(
@@ -28,7 +31,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       /* Set new page and fetch new page content */
       setPage(newPage);
       //setPageContent(callback(newPage));
-      callback(newPage);
+      callback?.(newPage);
     },
     [pageCount, callback, page]
   );
@@ -38,6 +41,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     (number: number) => {
       return (
         <button
+          type="button"
           key={number}
           onClick={() => pageChangeHandler(number)}
           className={`${styles['number']} ${
@@ -130,34 +134,34 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   }, [page, pageCount, paginationHandler]);
 
   return (
-    <Themes theme={theme}>
-      <div className={styles.wrapper}>
-        <div
-          className={styles.buttons}
-          ref={containerRef}
-          style={{
-            // consumed in the CSS to animate the background element
-            ['--current-page-offset-left' as string]: `${offsetLeft}px`,
-          }}
+    <div className={styles.wrapper}>
+      <div
+        className={styles.buttons}
+        ref={containerRef}
+        style={{
+          // consumed in the CSS to animate the background element
+          ['--current-page-offset-left' as string]: `${offsetLeft}px`,
+        }}
+      >
+        <button
+          type="button"
+          className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
+          onClick={() => pageChangeHandler(page - 1)}
         >
-          <button
-            className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
-            onClick={() => pageChangeHandler(page - 1)}
-          >
-            <Icons iconName="iconArrowSmallLeft" />
-          </button>
-          {pageButtons}
-          <button
-            className={`${styles['arrow']} ${
-              page === pageCount ? styles['hide'] : ''
-            }`}
-            onClick={() => pageChangeHandler(page + 1)}
-          >
-            <Icons iconName="iconArrowSmallRight" />
-          </button>
-        </div>
+          <Icons iconName="iconArrowSmallLeft" />
+        </button>
+        {pageButtons}
+        <button
+          type="button"
+          className={`${styles['arrow']} ${
+            page === pageCount ? styles['hide'] : ''
+          }`}
+          onClick={() => pageChangeHandler(page + 1)}
+        >
+          <Icons iconName="iconArrowSmallRight" />
+        </button>
       </div>
-    </Themes>
+    </div>
   );
 };
 

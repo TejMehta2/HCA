@@ -44,6 +44,12 @@ const Sorting = (props: SortingProps): JSX.Element => {
     onChange,
     anchorDropdown = 'right',
     defaultOpen = false,
+    buttonText = (
+      <span>
+        <strong>Sort</strong> by
+      </span>
+    ),
+    buttonIcon = <Icons iconName={'iconArrowDown'} />,
   } = props;
 
   const mobileDialogRef = useRef<HTMLDialogElement>(null);
@@ -73,10 +79,8 @@ const Sorting = (props: SortingProps): JSX.Element => {
   ));
   const ctaContent = (
     <>
-      <Icons iconName={'iconArrowDown'} />
-      <span>
-        <strong>Sort</strong> by
-      </span>
+      {buttonIcon}
+      {buttonText}
     </>
   );
   const labelId = useId();
@@ -87,7 +91,9 @@ const Sorting = (props: SortingProps): JSX.Element => {
       role={'radiogroup'}
       className={styles.wrapper}
       onChange={(event) => {
-        onChange(event as ChangeEvent<HTMLInputElement>);
+        mobileDialogRef?.current?.close();
+        desktopDialogRef?.current?.close();
+        onChange?.(event as ChangeEvent<HTMLInputElement>);
       }}
     >
       <div className={styles.desktop}>
@@ -96,6 +102,7 @@ const Sorting = (props: SortingProps): JSX.Element => {
             <button
               onClick={toggleDesktopModal}
               onMouseEnter={() => desktopDialogRef?.current?.show()}
+              type="button"
             >
               {ctaContent}
             </button>
@@ -115,7 +122,9 @@ const Sorting = (props: SortingProps): JSX.Element => {
       <div className={styles.mobile}>
         <div className={styles.button}>
           <Button size={'large'} theme={'full'}>
-            <button onClick={toggleMobileModal}>{ctaContent}</button>
+            <button onClick={toggleMobileModal} type="button">
+              {ctaContent}
+            </button>
           </Button>
         </div>
         <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>

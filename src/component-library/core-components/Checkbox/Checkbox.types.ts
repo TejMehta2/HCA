@@ -8,6 +8,7 @@ export interface CheckboxProps {
   mode?: 'light' | 'dark' | 'medium';
   disabled?: boolean;
   indeterminate?: boolean;
+  defaultChecked?: boolean;
   onChange?: ChangeEventHandler;
   checked?: boolean;
 }

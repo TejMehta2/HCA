@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, ChangeEvent } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CheckboxProps } from './Checkbox.types';
 import styles from './Checkbox.module.scss';
 
@@ -11,28 +11,21 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     mode = 'light',
     disabled,
     indeterminate = false,
+    defaultChecked,
     onChange,
-    checked = false,
+    checked,
   } = props;
 
   const [indeterminateState, setIndeterminateState] = useState(false);
-  const [checkedState, setcheckedState] = useState(checked);
-
   const checkboxRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     setIndeterminateState(indeterminate);
-    setcheckedState(checked);
   }, [indeterminate, checked]);
 
   if (checkboxRef && checkboxRef.current) {
     checkboxRef.current.indeterminate = indeterminateState;
   }
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setcheckedState(!checkedState);
-    onChange && onChange(e);
-  };
 
   return (
     <div className={styles.wrapper}>
@@ -43,8 +36,9 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
         value={value}
         disabled={disabled}
         ref={(el) => el && (el.indeterminate = indeterminate)}
-        onChange={handleChange}
-        checked={checkedState}
+        defaultChecked={defaultChecked}
+        onChange={onChange}
+        checked={checked}
       />
       <label htmlFor={id} className={[styles.label, styles[mode]].join(' ')}>
         <span className={styles.text}>{label}</span>

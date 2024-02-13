@@ -29,22 +29,25 @@ const Modals = (
   } = styles;
 
   const Overlay = () => (
-    <form method="dialog">
+    <>
       {/* Opaque overlay button for closing modal on background click */}
-      <button className={overlay} aria-hidden={true} />
-    </form>
+      <button
+        type="button"
+        onClick={() => ref?.current?.close()}
+        className={overlay}
+        aria-hidden={true}
+      />
+    </>
   );
 
   const CloseButton = () => (
     <div className={close}>
-      <form method="dialog">
-        <TextLink>
-          <button>
-            Close
-            <Icons iconName="iconCross" />
-          </button>
-        </TextLink>
-      </form>
+      <TextLink>
+        <button type="button" onClick={() => ref?.current?.close()}>
+          Close
+          <Icons iconName="iconCross" />
+        </button>
+      </TextLink>
     </div>
   );
 
