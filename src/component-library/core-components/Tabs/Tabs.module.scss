@@ -2,10 +2,12 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  overflow-x: auto;
-
   // Padding to allow focus ring on children to show despite overflow rules
   padding: px-to-rem(2);
+
+  @include media(screen-m, max) {
+    overflow-x: auto;
+  }
 
   &::-webkit-scrollbar {
     display: none;

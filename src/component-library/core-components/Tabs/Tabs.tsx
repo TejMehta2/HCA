@@ -3,10 +3,13 @@ import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
   const { callback, tabs } = props;
+
+  const isXl = useWindowWidth(1440);
 
   // Hooks
   const id = useId(); // Generate a unique ID for the form elements
@@ -27,11 +30,13 @@ const Tabs = (props: TabsProps): JSX.Element => {
   useLayoutEffect(() => {
     // Store the dimensions from label elements on load
     const dimensions = refs?.current?.map((labelElement) => {
-      const { offsetWidth, offsetLeft } = labelElement;
-      return { offsetWidth, offsetLeft };
+      return {
+        offsetWidth: labelElement?.offsetWidth,
+        offsetLeft: labelElement?.offsetLeft,
+      };
     });
     setTabDimensions(dimensions);
-  }, [refs]);
+  }, [refs, isXl]);
 
   return (
     <div className={styles.wrapper}>
