@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { middlewareCF } from '../../middleware';
+// import { middlewareCF } from '../../middleware';
 
 import Link from 'next/link';
 import axios from 'axios';
@@ -34,7 +34,7 @@ const CdpPageView = (props: ComponentData) => {
   console.log('searchData: ', externalData);
   console.log('post', props.rendering);
 
-  const test = middlewareCF();
+  // const test = middlewareCF();
 
   return (
     <>
