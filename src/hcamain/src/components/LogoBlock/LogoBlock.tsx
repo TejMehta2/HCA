@@ -60,6 +60,7 @@ interface LogoBlockExtendedProps extends LogoBlockProps {
 export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   const { variation = 'standard' } = props;
+
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
@@ -82,15 +83,15 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
           }
           title={
             <Text
-              tag={props.params.HeadingTag}
-              variation={props.params.HeadingSize}
+              tag={props.params.HeadingTag || 'h2'}
+              variation={props.params.HeadingSize || 'display-2'}
             >
               <JSSText field={props.fields.Title} />
             </Text>
           }
           body={
             <Text tag="div" variation={'body-large'}>
-              <JssRichText tag="p" field={props.fields.Text} />
+              <JssRichText field={props.fields.Text} />
             </Text>
           }
           ctas={
