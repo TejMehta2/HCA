@@ -1,4 +1,4 @@
-# BlogDetailsHeader documentation
+# Breadcrumbs documentation
 
 ## Additional information
 

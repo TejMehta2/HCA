@@ -1,8 +1,8 @@
 ﻿---
-ID: "a653d53f-9d9a-4d83-8d4e-eb6bb2a0e2f6"
-Parent: "5808a17b-f3a5-4972-84c5-93c200e124bc"
-Template: "5808a17b-f3a5-4972-84c5-93c200e124bc"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us/__Standard Values
+ID: "01d60731-c6f1-4792-ab4b-71bacfc74c99"
+Parent: "29f8349c-40c3-4a92-8c10-8ab834d1eb27"
+Template: "29f8349c-40c3-4a92-8c10-8ab834d1eb27"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA Params/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -17,11 +17,11 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "735a5a3e-94b4-48ff-89ee-39e9216cb7da"
+      Value: "d976a38a-e73e-45f8-b3ec-b3e1323e2fa0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240212T064426Z
+      Value: 20240202T091804Z

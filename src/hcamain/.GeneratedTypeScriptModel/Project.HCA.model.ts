@@ -3877,7 +3877,7 @@ export namespace PageContent {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Logo Block
     */
-    export type LogoBlock = Foundation.Ctabase &  {
+    export type LogoBlock =  {
         fields?: { 
             /**
             * Represents the Heading field (4daf344d-fa07-44fa-b4b1-5b3ab1552954).
@@ -3905,7 +3905,7 @@ export namespace PageContent {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Logo Block
     */
-    export type LogoBlockJson = Foundation.CtabaseJson &  {
+    export type LogoBlockJson =  {
         
             /**
             * Represents the Heading field (4daf344d-fa07-44fa-b4b1-5b3ab1552954).
