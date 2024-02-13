@@ -55,9 +55,9 @@ export interface Fields {
 
 export type TreatmentsSearchProps = {
   params: {
-    headingSize: HeadingSize;
-    headingTag: HeadingTag;
-    theme: Theme;
+    HeadingSize: HeadingSize;
+    HeadingTag: HeadingTag;
+    Theme: Theme;
     [key: string]: string;
   };
   fields: Fields;

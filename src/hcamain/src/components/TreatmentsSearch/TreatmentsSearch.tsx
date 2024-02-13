@@ -82,8 +82,8 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
               }
               heading={
                 <Text
-                  variation={props.params.headingSize || 'display-2'}
-                  tag={props.params.headingTag || 'h2'}
+                  variation={props.params.HeadingSize || 'display-4'}
+                  tag={props.params.HeadingTag || 'h3'}
                 >
                   <JssText field={props.fields.Title} />
                 </Text>
@@ -95,7 +95,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
                   placeholder={props.fields.SearchPlaceholder.value}
                 />
               }
-              theme={props.params.theme}
+              theme={props.params.Theme || 'C-HCA-Beige'}
               filters={
                 <Filters
                   buttonText={
@@ -182,6 +182,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
               </Text>
             </HeaderPlain>
           }
+          theme={props.params.Theme || 'C-HCA-Beige'}
           searchDetail={
             <Text tag="h3" variation="heading-1">
               <span>
@@ -197,7 +198,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params.theme}>
+          <CardGrid theme={props.params.Theme || 'C-HCA-Beige'}>
             {data?.treatments?.map((item, index) => (
               <CardContent
                 key={index}
