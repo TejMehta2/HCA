@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{646E5D41-664D-4A87-8D0E-A5258E5DDBED}" />
+    <image mediaid="{BF9060B8-DEFE-47DF-ADA8-22BD98F0AD23}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -40,15 +40,15 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{6B4DEEC8-F85D-4F4C-BABB-E9337697D0BC}"
+              uid="{9E1C02F7-72C2-4FB6-A097-ED49BD429B6C}"
               p:before="*"
-              s:ds="local:/Data/Hero Banner With Search/CTA Button 1"
-              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ds="local:/Data/Book An Appointment CTA"
+              s:id="{DA8BBECE-7AE8-4E3A-ACCD-511225BFB247}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4D3BD9AD-F895-4F4E-BC41-E5D3BA4F38A4%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{8FA89B74-026A-435D-B8DC-0DFF809CCB39}"
-              p:after="r[@uid='{6B4DEEC8-F85D-4F4C-BABB-E9337697D0BC}']"
+              p:after="r[@uid='{9E1C02F7-72C2-4FB6-A097-ED49BD429B6C}']"
               s:ds="local:/Data/Hero Banner With Search/CTA Button 2"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
@@ -71,14 +71,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "738d0144-0afe-4d2d-b834-d374f3e56630"
+      Value: "544b4483-efdc-458a-a2b9-184a8ba47e92"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240205T191602Z
+      Value: 20240212T200807Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA35

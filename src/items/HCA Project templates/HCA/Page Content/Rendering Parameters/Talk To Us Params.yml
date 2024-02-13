@@ -1,8 +1,8 @@
 ﻿---
-ID: "29f8349c-40c3-4a92-8c10-8ab834d1eb27"
+ID: "5808a17b-f3a5-4972-84c5-93c200e124bc"
 Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us Params
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
@@ -14,12 +14,14 @@ SharedFields:
     {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
     {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
     {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
+    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
+    {39263096-45D2-439E-83BB-194F4DA3C828}
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value: 0
+  Value: 
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{01D60731-C6F1-4792-AB4B-71BACFC74C99}"
+  Value: "{A653D53F-9D9A-4D83-8D4E-EB6BB2A0E2F6}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -63,14 +65,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "75893470-a6fb-47f7-a521-8cbea9e278e4"
+      Value: "eba9d55c-543b-4f7e-9851-cb64b7d92a88"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T091804Z
+      Value: 20240212T075358Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
