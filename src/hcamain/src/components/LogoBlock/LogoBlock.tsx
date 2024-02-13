@@ -13,7 +13,7 @@ import {
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
-import Text from 'temp/component-library/foundation/Text/Text';
+import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
 
