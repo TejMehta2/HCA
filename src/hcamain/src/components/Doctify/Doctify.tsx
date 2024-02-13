@@ -28,6 +28,7 @@ export const Default = (props: DoctifyProps): JSX.Element => {
       component-name="doctify"
     >
       <Doctify
+        alignment={props.alignment}
         link={<JssLink field={props.fields.Reviews.fields.Link}></JssLink>}
         rating={
           isExperienceEditor ? (

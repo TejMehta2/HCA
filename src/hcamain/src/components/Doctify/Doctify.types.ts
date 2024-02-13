@@ -28,4 +28,5 @@ export interface Fields {
 export type DoctifyProps = {
   params: { [key: string]: string };
   fields: Fields;
+  alignment?: 'left' | 'right' | 'centre';
 };

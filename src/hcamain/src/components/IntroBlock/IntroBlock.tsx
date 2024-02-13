@@ -11,12 +11,13 @@ import {
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
-import CQCBlock from '@component-library/components/CQCBlock/CQCBlock';
-import Doctify from '@component-library/components/Doctify/Doctify';
 import Text from '@component-library/foundation/Text/Text';
-import Icons from '@component-library/foundation/Icons/Icons';
-// import { IconName } from '@component-library/foundation/Icons/icon-map.generated';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+
+import { Default as Doctify } from '../Doctify/Doctify';
+import { Default as CQCRating } from '../CQCRating/CQCRating';
+import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
+import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
 
 type HCAIconFields = {
   fields: {
@@ -26,26 +27,6 @@ type HCAIconFields = {
 export type logoField = {
   Logo: ImageField;
 };
-
-interface DoctifyLogoFields {
-  fields: {
-    Text: Field<string>;
-    Logo: ImageFieldValue;
-  };
-}
-
-interface CQSStatusFields {
-  fields: {
-    Title: Field<string>;
-    Icon: Field<string>;
-    CQCLogoLight: {
-      fields: logoField;
-    };
-    CQCLogoDark: {
-      fields: logoField;
-    };
-  };
-}
 
 interface CountersFields {
   fields: {
@@ -63,16 +44,6 @@ interface CQCFields {
   };
 }
 
-interface DoctifyReviewsFields {
-  fields: {
-    Stars: { value: number };
-    Reviews: { value: string };
-    DoctifyLogoLight: DoctifyLogoFields;
-    DoctifyLogoDark: DoctifyLogoFields;
-    Link: LinkField;
-  };
-}
-
 interface Fields {
   Title: Field<string>;
   Text: Field<string>;
@@ -80,8 +51,8 @@ interface Fields {
   CTAIcon: HCAIconFields;
   CTALink: LinkField;
   Counters: CountersFields[];
-  CQCStatus: CQCFields;
-  DoctifyReviews: DoctifyReviewsFields;
+  CQCStatus?: CQCFields;
+  DoctifyReviews?: DoctifyReviewsFields;
 }
 
 type IntroBlockProps = {
@@ -113,64 +84,6 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
     value: <JSSText field={counters.fields.Number} />,
     label: <JSSText field={counters.fields.Text} />,
   }));
-
-  const cqc = (
-    <CQCBlock
-      link={
-        <JSSLink field={props.fields.CQCStatus.fields.ReportLink}></JSSLink>
-      }
-      title={props.fields.CQCStatus.fields.Title.value}
-      text={props.fields.CQCStatus.fields.Text.value}
-      icon={
-        <Icons iconName="iconCheckCircle"></Icons>
-        //  {props.fields.CQCStatus.fields.Status.fields.Icon}
-      }
-      logo={{
-        dark: (
-          <JSSImage
-            field={
-              props.fields.CQCStatus.fields.Status.fields.CQCLogoLight.fields
-                .Logo
-            }
-          />
-        ),
-        light: (
-          <JSSImage
-            field={
-              props.fields.CQCStatus.fields.Status.fields.CQCLogoDark.fields
-                .Logo
-            }
-          />
-        ),
-      }}
-    />
-  );
-
-  const doctify = (
-    <Doctify
-      alignment="left"
-      link={<JSSLink field={props.fields.DoctifyReviews.fields.Link}></JSSLink>}
-      rating={props.fields.DoctifyReviews.fields.Stars.value}
-      reviews={props.fields.DoctifyReviews.fields.Reviews.value}
-      logo={{
-        dark: (
-          <JSSImage
-            field={
-              props.fields.DoctifyReviews.fields.DoctifyLogoDark.fields.Logo
-            }
-          />
-        ),
-        light: (
-          <JSSImage
-            field={
-              props.fields.DoctifyReviews.fields.DoctifyLogoLight.fields.Logo
-            }
-          />
-        ),
-      }}
-    />
-  );
-
   return (
     <HomepageIntroBlock
       title={
@@ -202,8 +115,29 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         )
       }
       image={<JSSImage field={props.fields.Image} />}
-      cqc={cqc}
-      doctify={doctify}
+      cqc={
+        props.fields.CQCStatus ? (
+          <CQCRating
+            length="short"
+            hideRating={true}
+            {...props.fields.CQCStatus}
+          />
+        ) : (
+          <></>
+        )
+      }
+      doctify={
+        props.fields.DoctifyReviews?.fields ? (
+          <Doctify
+            alignment="left"
+            params={props.params}
+            key={2}
+            fields={{ Reviews: props.fields.DoctifyReviews }}
+          />
+        ) : (
+          <></>
+        )
+      }
     />
   );
 };

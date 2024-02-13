@@ -70,8 +70,8 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
         </Text>
       }
       copy={
-        <Text variation="body-large" tag="span">
-          <RichText tag="p" field={props.fields.Text} />
+        <Text variation="body-large" tag="div">
+          <RichText field={props.fields.Text} />
         </Text>
       }
       image={<JSSImage field={props.fields.Image} />}
