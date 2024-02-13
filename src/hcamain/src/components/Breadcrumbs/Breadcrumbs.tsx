@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  Text
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, Text } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
   svgMarkup: Field<string>;
@@ -15,11 +12,11 @@ type AncestorsFields = {
 
 interface Fields {
   data: {
-    item:{
+    item: {
       homeIcon: {
         Icon: HCAIconFields;
       };
-    }
+    };
     contextItem: {
       title: { value: string };
       url: { path: string };
@@ -51,16 +48,18 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   }
   return (
     <div className={`component ${props.params.styles}`}>
-       {props.fields.data.item?.homeIcon?.Icon.svgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.data.item?.homeIcon.Icon.svgMarkup?.value,
-            }}
-          ></span>
-        )}
+      {props.fields.data.item?.homeIcon?.Icon.svgMarkup && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props.fields.data.item?.homeIcon.Icon.svgMarkup?.value,
+          }}
+        ></span>
+      )}
       <Text field={props.fields.data.contextItem.title} />
       <br />
-      <a href={props.fields.data.contextItem.url.path}>{props.fields.data.contextItem.url.path}</a>
+      <a href={props.fields.data.contextItem.url.path}>
+        {props.fields.data.contextItem.url.path}
+      </a>
       <br />
       <ul>
         {props.fields.data.contextItem.ancestors.map((ancestor, index) => (
