@@ -10,7 +10,9 @@ export interface SortingOptionProps {
 
 export interface SortingProps {
   options: SortingOptionProps[];
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   anchorDropdown?: 'left' | 'right';
   defaultOpen?: boolean; // for test and mocking purposes
+  buttonIcon?: JSX.Element;
+  buttonText?: JSX.Element;
 }

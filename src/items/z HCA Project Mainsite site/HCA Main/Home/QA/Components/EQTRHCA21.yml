@@ -20,7 +20,7 @@ SharedFields:
           p:before="*"
           s:ds="local:/Data/Logo Block Default - 3 columns"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7B1CE28904-D60E-4E85-A7FD-81E910B3E4C6%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -28,7 +28,7 @@ SharedFields:
           p:after="r[@uid='{4FE0F450-BA40-4E22-9069-1CA3760E93D1}']"
           s:ds="local:/Data/Logo Block Default - 4 columns"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7BB8ACA3B1-D237-4ACD-BC45-8D85FC19AD44%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+          s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -36,7 +36,7 @@ SharedFields:
           p:after="*[1=2]"
           s:ds="local:/Data/Logo Block SideBySide"
           s:id="{272FE8B6-B1AE-4DA5-A64A-BA053EEC99A4}"
-          s:par="Columns=%7BC497B808-7195-47DC-8281-82AD8CDC3366%7D&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+          s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -57,16 +57,43 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{E1AADB9E-11C6-4228-B307-3334C1E8C7C0}"
+              uid="{95554BBC-B7D1-4E77-A55C-6FE2AA86C864}"
               p:before="*"
-              s:ds="local:/data/CTA Button"
+              s:ds="local:/Data/CTA Button 2"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="FieldNames=%7b6F268521-B216-4A2C-ABC4-702B692C8D1E%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7b7465D855-992E-4DC2-9855-A03250DFA74B%7d&amp;DynamicPlaceholderId=2"
-              s:ph="/headless-main/cta-buttons-1"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="/headless-main/cta-buttons-3" />
+            <r
+              uid="{8C6E6B57-CE36-468B-A65A-2F1E59DA9BED}"
+              p:after="r[@uid='{95554BBC-B7D1-4E77-A55C-6FE2AA86C864}']"
+              s:ds="local:/Data/CTA Button 2"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
+              s:ph="/headless-main/cta-buttons-4" />
+            <r
+              uid="{BBD9362F-4B6F-47CA-800D-4E702C219B7A}"
+              p:after="r[@uid='{8C6E6B57-CE36-468B-A65A-2F1E59DA9BED}']"
+              s:ds="local:/Data/CTA Button 2"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{C46B4B98-CCF9-48F0-A47F-23D18D3491BC}"
+              p:after="r[@uid='{BBD9362F-4B6F-47CA-800D-4E702C219B7A}']"
+              s:ds="local:/Data/CTA Button 1"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="/headless-main/cta-buttons-3"
               s:ccb="Clear on publish" />
             <r
               uid="{4FE0F450-BA40-4E22-9069-1CA3760E93D1}"
-              s:par="FieldNames=%7b5158F259-35EA-4012-A531-98A55F9B52F1%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;HeadingSize=display-2&amp;Theme=F-HCA-White&amp;HeadingTag&amp;DynamicPlaceholderId=1" />
+              s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
+            <r
+              uid="{536CDB04-0F5B-477A-97C4-41228A6C95FE}"
+              s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4" />
+            <r
+              uid="{D3810C51-196C-4BAB-BB9F-AE967FDD07A9}"
+              s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -85,14 +112,14 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "941d5471-59d6-43de-a597-5352aff11c4a"
+      Value: "8bc0ee8c-a5da-437c-9596-20fec2c5306e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240209T132256Z
+      Value: 20240212T162521Z
     - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
       Hint: Title
       Value: EQTRHCA21

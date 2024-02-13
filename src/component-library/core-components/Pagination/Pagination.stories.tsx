@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from './Pagination';
 import type { Meta, StoryObj } from '@storybook/react';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Pagination> = {
@@ -20,7 +21,6 @@ const getPageContent = (page: number) => console.log(page);
 
 export const Default: StoryObj<typeof Pagination> = {
   args: {
-    theme: 'F-HCA-White',
     pageCount: 14,
     callback: (newPage: number) => {
       return getPageContent(newPage);
@@ -28,9 +28,9 @@ export const Default: StoryObj<typeof Pagination> = {
   },
   decorators: [
     (Story) => (
-      <div>
+      <Themes theme={'F-HCA-White'}>
         <Story />
-      </div>
+      </Themes>
     ),
   ],
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import SearchWrapper from './SearchWrapper';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
-import PaginationGrid from '../../components/PaginationGrid/PaginationGrid';
 import HeaderPlain from '../HeaderPlain/HeaderPlain';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import {
@@ -14,6 +13,8 @@ import Filters from '../Filters/Filters';
 import Sorting from '../../components/Sorting/Sorting';
 import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 import Checkbox from '../../core-components/Checkbox/Checkbox';
+import CardGrid from '../CardGrid/CardGrid';
+import Pagination from '../../core-components/Pagination/Pagination';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -59,12 +60,15 @@ export const Default: StoryObj<typeof SearchWrapper> = {
       </Text>
     ),
     children: (
-      <PaginationGrid
-        theme="F-HCA-White"
-        data={BLOG_MOCK_VALUES.firstPageContent}
-        pageCount={BLOG_MOCK_VALUES.pageCount}
-        getPageContent={BLOG_MOCK_VALUES.pageContent}
-      />
+      <>
+        <CardGrid theme="F-HCA-White">
+          {BLOG_MOCK_VALUES.firstPageContent}
+        </CardGrid>
+        <Pagination
+          pageCount={BLOG_MOCK_VALUES.pageCount}
+          callback={console.log}
+        />
+      </>
     ),
   },
 };
@@ -140,12 +144,15 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
     ),
 
     children: (
-      <PaginationGrid
-        theme="C-HCA-Beige"
-        data={SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
-        getPageContent={SERVICE_LINES_MOCK_VALUES.pageContent}
-      />
+      <>
+        <CardGrid theme="F-HCA-White">
+          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
+        </CardGrid>
+        <Pagination
+          pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
+          callback={console.log}
+        />
+      </>
     ),
   },
 };
@@ -234,12 +241,15 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
       </Text>
     ),
     children: (
-      <PaginationGrid
-        theme="F-HCA-White"
-        data={SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
-        getPageContent={SERVICE_LINES_MOCK_VALUES.pageContent}
-      />
+      <>
+        <CardGrid theme="F-HCA-White">
+          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
+        </CardGrid>
+        <Pagination
+          pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
+          callback={console.log}
+        />
+      </>
     ),
   },
 };
@@ -329,12 +339,15 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       {
         tab: { icon: 'iconGrid', label: 'Grid view' },
         tabContent: (
-          <PaginationGrid
-            theme="F-HCA-White"
-            data={LOCATIONS_MOCK_VALUES.firstPageContent}
-            pageCount={LOCATIONS_MOCK_VALUES.pageCount}
-            getPageContent={LOCATIONS_MOCK_VALUES.pageContent}
-          />
+          <>
+            <CardGrid theme="F-HCA-White">
+              {LOCATIONS_MOCK_VALUES.firstPageContent}
+            </CardGrid>
+            <Pagination
+              pageCount={LOCATIONS_MOCK_VALUES.pageCount}
+              callback={console.log}
+            />
+          </>
         ),
       },
       {

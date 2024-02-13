@@ -4,11 +4,12 @@ import SearchWrapper from './SearchWrapper';
 import { SearchWrapperProps } from './SearchWrapper.types';
 
 import Text from '../../foundation/Text/Text';
-import PaginationGrid from '../../components/PaginationGrid/PaginationGrid';
 import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';
 import CardBlog from '../../components/CardBlog/CardBlog';
 import HeaderPlain from '../HeaderPlain/HeaderPlain';
+import CardGrid from '../CardGrid/CardGrid';
+import Pagination from '../../core-components/Pagination/Pagination';
 
 const MOCK_DATA: JSX.Element[] = [];
 for (let i = 0; i < 24; i++) {
@@ -77,12 +78,10 @@ const mockProps: SearchWrapperProps = {
     </Text>
   ),
   children: (
-    <PaginationGrid
-      theme="F-HCA-White"
-      data={getPageContent(1)}
-      pageCount={pageCount}
-      getPageContent={getPageContent}
-    />
+    <>
+      <CardGrid theme="F-HCA-White">{getPageContent(1)}</CardGrid>
+      <Pagination pageCount={pageCount} callback={console.log} />
+    </>
   ),
 };
 

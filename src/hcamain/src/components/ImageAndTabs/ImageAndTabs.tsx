@@ -59,7 +59,6 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
   if (!props.fields) {
     return <ImageAndTabsDefaultComponent {...props} />;
   }
-  console.log(props);
   return (
     <TabsBlock
       theme={props.params?.Theme}

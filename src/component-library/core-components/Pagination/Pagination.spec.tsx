@@ -4,7 +4,6 @@ import Pagination from './Pagination';
 import { PaginationProps } from './Pagination.types';
 
 const mockProps: PaginationProps = {
-  theme: 'F-HCA-White',
   pageCount: 14,
   callback: (newPage: number) => console.log(newPage),
 };

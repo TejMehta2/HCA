@@ -40,6 +40,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
         onKeyDown={handleKeydown}
         aria-expanded={isActive}
         aria-controls={accordionContentId}
+        type="button"
       >
         {title}
         <span className={styles.toggle}>

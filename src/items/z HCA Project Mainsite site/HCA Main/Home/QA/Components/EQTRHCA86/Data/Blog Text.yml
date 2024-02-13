@@ -31,18 +31,20 @@ Languages:
         </p>
         <p>In addition to championing London Bridge Hospital&rsquo;s staff and leadership, the CQC also complimented its patient-centred processes and initiatives, including;
         </p>
-        <p>the 24-hour, 7 day a week medical concierge and triage service, which accepted urgent, unplanned admissions into London Bridge Hospit
-        </p>
-        <p>the development of a bespoke pain scoring tool for liver transplant patients,
-        </p>
-        <p>and the hospital&rsquo;s commitment to ensuring international patients from all over the world had their needs met, by providing carers with the same cultural and religious orientation who could relate to a patient needs and reassure them and their families.</p>
+        <ul>
+            <li>the 24-hour, 7 day a week medical concierge and triage service, which accepted urgent, unplanned admissions into London Bridge Hospit
+            </li>
+            <li>the development of a bespoke pain scoring tool for liver transplant patients,
+            </li>
+            <li>and the hospital&rsquo;s commitment to ensuring international patients from all over the world had their needs met, by providing carers with the same cultural and religious orientation who could relate to a patient needs and reassure them and their families.</li>
+        </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "53947ee9-b9fa-492b-ae11-5f347d3b5cda"
+      Value: "f5db92d6-b0b7-464d-96af-f7f6a2b31589"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240207T220222Z
+      Value: 20240209T220019Z

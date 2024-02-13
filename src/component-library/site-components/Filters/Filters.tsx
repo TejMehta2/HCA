@@ -11,19 +11,39 @@ import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../../components/Accordions/Accordions';
 
 const Filters = (props: FiltersProps): JSX.Element => {
-  const { filters, resultsCount } = props;
+  const {
+    buttonText = (
+      <span>
+        <strong>Filter</strong> By
+      </span>
+    ),
+    buttonIcon = <Icons iconName="iconFilterCircle" />,
+    filters,
+    resultsCount,
+  } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const clearFields = () => {
+    // Clear all the checked input fields
+    if (!dialogRef?.current) return;
+    const fields = dialogRef.current.querySelectorAll('input:checked');
+    fields?.forEach((field: HTMLInputElement, index) => {
+      if (index === fields.length - 1) {
+        field.click(); // interact with last field to trigger a form change event
+      } else {
+        field.checked = false; // update other fields without triggering form change event
+      }
+    });
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
         <Button theme="full-dark" size="large">
-          <button onClick={() => dialogRef.current?.showModal()}>
-            <Icons iconName="iconFilterCircle" />
-            <span>
-              <strong>Filter</strong> By
-            </span>
+          <button onClick={() => dialogRef.current?.showModal()} type="button">
+            {buttonIcon}
+            {buttonText}
           </button>
         </Button>
       </div>
@@ -51,10 +71,12 @@ const Filters = (props: FiltersProps): JSX.Element => {
 
           <div className={styles.footer}>
             <TextButton theme="dark">
-              <button>Clear All</button>
+              <button type="button" onClick={clearFields}>
+                Clear All
+              </button>
             </TextButton>
             <Button theme="full-dark" size="small">
-              <button onClick={() => dialogRef?.current?.close()}>
+              <button onClick={() => dialogRef?.current?.close()} type="button">
                 See {resultsCount} Results
               </button>
             </Button>

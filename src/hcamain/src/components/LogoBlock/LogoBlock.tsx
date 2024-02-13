@@ -8,6 +8,7 @@ import {
   Image,
   Text as JSSText,
   Link as JSSLink,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
@@ -31,8 +32,6 @@ interface LogosFields {
 interface Fields {
   Heading: Field<string>;
   Title: Field<string>;
-  CTAIcon?: CTAIconFields;
-  CTALink: LinkField;
   Text: Field<string>;
   Logos: LogosFields[];
 }
@@ -60,6 +59,7 @@ const LogoBlockDefaultComponent = (props: LogoBlockProps): JSX.Element => {
 };
 
 export const Default = (props: LogoBlockProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
@@ -114,23 +114,6 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
       <br />
       <JssRichText className="promo-text" field={props.fields.Text} />
       <br />
-      <JssLink field={props.fields.CTALink}>
-        {props?.fields?.CTAIcon && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        {props?.fields?.CTALink.value.text && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTALink.value.text,
-            }}
-          ></span>
-        )}
-      </JssLink>
-      <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (
           <li key={index}>
@@ -141,11 +124,13 @@ export const Default = (props: LogoBlockProps): JSX.Element => {
           </li>
         ))}
       </ul>
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };*/
 
 export const SideBySide = (props: LogoBlockProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
@@ -200,23 +185,6 @@ export const SideBySide = (props: LogoBlockProps): JSX.Element => {
       <br />
       <JssRichText className="promo-text" field={props.fields.Text} />
       <br />
-      <JssLink field={props.fields.CTALink}>
-        {props?.fields?.CTAIcon && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTAIcon.fields.SvgMarkup.value,
-            }}
-          />
-        )}
-        {props?.fields?.CTALink.value.text && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.CTALink.value.text,
-            }}
-          ></span>
-        )}
-      </JssLink>
-      <br />
       <ul>
         {props.fields.Logos.map((logo, index) => (
           <li key={index}>
@@ -227,6 +195,7 @@ export const SideBySide = (props: LogoBlockProps): JSX.Element => {
           </li>
         ))}
       </ul>
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
       <Placeholder name={phKey} rendering={props.rendering} size={buttonSize} />
     </div> */

@@ -21,11 +21,14 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1d97d6ef-3cfa-483c-92ef-29fc75380ec2"
+      Value: "b43d58fa-e671-41ef-8c12-438289fab5ce"
+    - ID: "970e5839-53a1-405c-8ada-3e7c4da4fc4d"
+      Hint: TelephoneNumber
+      Value: "{C4C7330D-3D7E-4B63-A425-B709C94C0813}"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240122T165518Z
+      Value: 20240211T210248Z

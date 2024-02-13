@@ -10,7 +10,7 @@ export type logoField = {
 };
 
 export type CQSStatusFields = Item & {
-  displayName: string;
+  displayName?: string;
   fields: {
     Title: Field<string>;
     Icon: Field<string>;

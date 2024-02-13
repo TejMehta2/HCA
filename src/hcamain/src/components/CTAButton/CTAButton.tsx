@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
+import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import {
   ButtonProps,
   ButtonThemeUnionTypes,
@@ -71,5 +72,16 @@ export const Outline = (props: CTAProps): JSX.Element => {
 };
 
 export const TextButton = (props: CTAProps): JSX.Element => {
-  return <CTADefaultComponent {...props} />;
+  return (
+    <TextButtonComponent>
+      <a href={props.fields?.CTALink.value.href}>
+        <RichText
+          tag="span"
+          field={{
+            value: props.fields?.CTALink.value.text,
+          }}
+        />
+      </a>
+    </TextButtonComponent>
+  );
 };
