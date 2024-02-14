@@ -30,7 +30,6 @@ const TestAndScansSearchDefaultComponent = (
 
 export const Default = (props: TestAndScansSearchProps): JSX.Element => {
   // Hooks
-  // const { t: localise } = useI18n();
   const paginationRef = useRef<HTMLInputElement>(null);
   const searchWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -42,8 +41,6 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
   if (!props.fields || error) {
     return <TestAndScansSearchDefaultComponent {...props} />;
   }
-
-  console.log(props);
 
   // TODO - get/compute these from API response when API implemented
   const resultsPerPage = props.fields.ResultsPerPage.value || 12;
@@ -258,102 +255,6 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
           />
         </SearchWrapper>
       </form>
-      {/* TODO - make localisation fields into props */}
-      {/* <p>Text: {localise('close')}</p>
-      <p>Text: {localise('show-more')}</p>
-      <p>Text: {localise('showing')}</p>
-      <p>Text: {localise('clear-all')}</p> */}
     </>
   );
-
-  //const { t } = useI18n();
-  /*if (!props.fields) {
-    return <TestAndScansSearchDefaultComponent {...props} />;
-  }
-  return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.Heading} />
-      <br />
-      <JssText field={props.fields.Title} />
-      <br />
-      <RichText tag="span" field={props.fields.Text} />
-      <br />
-      <JssText field={props.fields.SearchPlaceholder} />
-      <br />
-      {props?.fields?.FilterOptionsIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.FilterOptionsIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <JssText field={props.fields.FilterOptionsText} />
-      <br />
-      <ul>
-        {props.fields.FilterOptions.map((filterOptions, index) => (
-          <li key={index}>
-            <br />
-            <JssText field={filterOptions.fields.Header} />
-            <br />
-            <ul>
-              {filterOptions.fields.Filters.map((filter, index) => (
-                <li key={index}>
-                  <JssText field={filter.fields.Filter} />
-                  <br />
-                </li>
-              ))}
-            </ul>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-      {props?.fields?.SortOptionsIcon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.SortOptionsIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <JssText field={props.fields.SortOptionsText} />
-      <br />
-      <ul>
-        {props.fields.SortOptions.map((sortOptions, index) => (
-          <li key={index}>
-            <JssText field={sortOptions.fields.DisplayName} />
-            <br />
-            <JssText field={sortOptions.fields.Filter} />
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-      <JssText field={props.fields.SearchResultsText} />
-      <br />
-      <JssText field={props.fields.ResultsPerPage} />
-      <br />
-      <ul>
-        {props.fields.FilterBy.map((filterBy, index) => (
-          <li key={index}>
-            <JssText field={filterBy.fields.DisplayName} />
-            <br />
-            <JssText field={filterBy.fields.Filter} />
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-      <ul>
-        {props.fields.SearchBy.map((searchby, index) => (
-          <li key={index}>
-            <JssText field={searchby.fields.DisplayName} />
-            <br />
-            <JssText field={searchby.fields.Filter} />
-            <br />
-          </li>
-        ))}
-      </ul>
-        ]
-    </div>
-  ); */
 };
