@@ -5,26 +5,25 @@ import styles from './SearchDropdown.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import { capitalizeFirstLetter } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  console.log('Dropdown props', props);
   const { setIsSelfPayment } = useContext(ConsultantFinderContext);
-  console.log('data consultants', props.data);
 
-  const capitalizeFirstLetter = (string: string) => {
-    if (!string) {
-      return '';
-    } else {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-  };
+  // const capitalizeFirstLetter = (string: string) => {
+  //   if (!string) {
+  //     return '';
+  //   } else {
+  //     return string.charAt(0).toUpperCase() + string.slice(1);
+  //   }
+  // };
 
-  const handleClick = (name: string, value: string) => {
+  const handleClick = (name: string) => {
     props.setIsComponentVisible(false);
     setIsSelfPayment(false);
 
     if (props.setSearchStringPayment) {
-      props.setSearchStringPayment(value || name);
+      props.setSearchStringPayment(name);
     }
   };
 
@@ -58,9 +57,9 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
               {props.data.length > 0 &&
                 props.data.map((item: any) => (
                   <li
-                    key={item.id || item.doctifyId || item.Order}
+                    key={item.id}
                     aria-label="option"
-                    onClick={() => handleClick(item.name, item.Value)}
+                    onClick={() => handleClick(item.name)}
                   >
                     <span
                       className={
@@ -77,7 +76,7 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
                       {!props.resultsIcon && <Icons iconName="iconSearch" />}
                     </span>
                     <Text tag="p" variation="body-medium">
-                      {capitalizeFirstLetter(item.Value || item.name)}
+                      {capitalizeFirstLetter(item.name)}
                     </Text>
                   </li>
                 ))}

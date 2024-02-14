@@ -37,6 +37,11 @@ interface Fields {
   SearchIcon: any;
   InsuranceProvidersFilterHeaderText: Field<string>;
   InsurersList: any;
+  API_Insurance_BaseURL: Field<string>;
+  API_Insurance_NoResultsMsg: Field<string>;
+  API_Insurance_Limit: Field<string>;
+  SearchPlaceholderText: Field<string>;
+  SelfPayCheckBoxText: Field<string>;
 }
 
 type StepProps = {
@@ -62,6 +67,7 @@ export const Default = (props: StepProps): JSX.Element => {
   } = useContext(ConsultantFinderContext);
   console.log('payment', props);
 
+  // tbc
   // useEffect(() => {
   //   // Check if the 'test' query parameter is empty or not present
   //   const isTestParamEmpty =
@@ -101,12 +107,10 @@ export const Default = (props: StepProps): JSX.Element => {
           </Text>
           <form autoComplete="off">
             <SearchPayment
-              placeholder={'Type in your insurance provider'}
-              doctifyBaseURL={
-                'https://api.doctify.com/api/hca/listing/insurers'
-              }
-              limit={20}
-              noResultsMsg={'no results'}
+              placeholder={props.fields.SearchPlaceholderText.value}
+              doctifyBaseURL={props.fields.API_Insurance_BaseURL.value}
+              limit={Number(props.fields.API_Insurance_Limit.value)}
+              noResultsMsg={props.fields.API_Insurance_NoResultsMsg.value}
               searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
               searchStringPayment={searchStringPayment}
               setSearchStringPayment={setSearchStringPayment}
@@ -116,26 +120,25 @@ export const Default = (props: StepProps): JSX.Element => {
               insurersList={props.fields.InsurersList}
             />
 
-            <Container marginTop="spacing-8">
+            <Container marginTop="spacing-8" marginBottom="spacing-4">
               <Text tag="h2" variation="heading-2">
-                Not paying through insurance?
+                {props.fields.TitleText.value}
               </Text>
-
-              <Checkbox
-                id="1"
-                label="I am self-paying"
-                name="selfpayment"
-                value="selfpayment"
-                checked={isSelfPayment}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.checked) {
-                    setSearchStringPayment('');
-                  }
-                  setIsSelfPayment(e.target.checked);
-                  console.log(e.target.checked);
-                }}
-              ></Checkbox>
             </Container>
+
+            <Checkbox
+              id="1"
+              label={props.fields.SelfPayCheckBoxText.value}
+              name="selfpayment"
+              value="selfpayment"
+              checked={isSelfPayment}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                if (e.target.checked) {
+                  setSearchStringPayment('');
+                }
+                setIsSelfPayment(e.target.checked);
+              }}
+            ></Checkbox>
           </form>
         </ImageAndTextBlock>
         <Navigation>
@@ -157,34 +160,6 @@ export const Default = (props: StepProps): JSX.Element => {
             </button>
           </Button>
         </Navigation>
-
-        {/* <div>Message: {message}</div>
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.NextLink} title={props.fields.NextLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BackLink} title={props.fields.BackLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.StartLink} title={props.fields.StartLink.value.text}></JssLink>
-              </Button>
-            </div>
-          </div> 
-        </div> */}
       </div>
     );
   }

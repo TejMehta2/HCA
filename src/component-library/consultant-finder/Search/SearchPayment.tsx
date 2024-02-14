@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useId, useState, useContext } from 'react';
+import React, { MouseEventHandler, useId, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -8,6 +8,7 @@ let cancelToken;
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import SearchDdropdownPayment from './SearchDropwdownPayment';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { transformFields } from '../../utility-functions/index';
 
 const SearchPayment = (props: SearchProps): JSX.Element => {
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -18,15 +19,6 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
   const [error, setError] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
-
-  // to move this in utility files
-  function transformFields(fields) {
-    const transformedObject = {};
-    for (const key in fields) {
-      transformedObject[key] = fields[key].value;
-    }
-    return transformedObject;
-  }
 
   // we are using search specialists api from Doctify when we have id for specialty
   const getDoctifyData = (userInput: string) => {
@@ -39,15 +31,13 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     cancelToken = axios.CancelToken.source();
 
     axios
-      .get(URL)
+      .get(URL, { cancelToken: cancelToken.token })
       .then((resp) => {
-        console.log('resp insurers', resp.data);
-
         const docitfyInsurersFiltered = resp.data.filter((item) =>
           item.name.toUpperCase().startsWith(userInput.toUpperCase())
         );
 
-        console.log('filtered results', docitfyInsurersFiltered);
+        // console.log('filtered results', docitfyInsurersFiltered);
 
         if (docitfyInsurersFiltered.length > 0) {
           setNoResults(false);
@@ -84,7 +74,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
 
     setData(popularDataSitecore);
 
-    console.log('data sitecore insurers', popularDataSitecore);
+    // console.log('data sitecore insurers', popularDataSitecore);
   };
 
   const handleClose = () => {
@@ -100,11 +90,23 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     setLoading(false);
     setError(false);
     setNoResults(false);
+    setData([]);
+    // getSitecoreData();
+
+    // Cancel any ongoing API request
+    if (typeof cancelToken !== 'undefined') {
+      cancelToken.cancel('Operation canceled due to new request.');
+    }
+
+    // Reset cancelToken
+    cancelToken = axios.CancelToken.source();
+
+    // Call sitecore data
     getSitecoreData();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    console.log('value input', e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
@@ -114,12 +116,9 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     }
 
     if (e.target.value.trim().length > 0) {
-      // // get data depending if there is an keyword id or not
       getDoctifyData(userInput);
-      console.log('get the data');
     } else if (e.target.value.trim().length === 0) {
       handlePopularSearch();
-      console.log('popular search');
     }
   };
 
