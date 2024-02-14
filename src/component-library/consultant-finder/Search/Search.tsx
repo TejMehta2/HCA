@@ -68,7 +68,6 @@ const Search = (props: SearchProps): JSX.Element => {
     }
 
     setSearchStringConsultantName('');
-
     setIsComponentVisible(false);
   };
 

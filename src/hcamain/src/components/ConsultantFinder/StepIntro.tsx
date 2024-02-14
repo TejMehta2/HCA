@@ -71,8 +71,6 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const handleClickAdvanceSearch = () => {
-    // router.push(props.fields.AdvancedSearchLink.value.href);
-
     router.push({
       pathname: props.fields.AdvancedSearchLink.value.href,
       query: { keywordId: keywordId, searchString: searchString },
@@ -104,7 +102,6 @@ export const Default = (props: StepProps): JSX.Element => {
           <Text tag="div" variation="body-large">
             <JssRichText field={props.fields.BodyText} />
           </Text>
-          {/* props.fields.SearchPlaceholderText.value */}
           <form autoComplete="off">
             <Search
               placeholder={'Type in a service, condition, treatment...'}
@@ -129,23 +126,25 @@ export const Default = (props: StepProps): JSX.Element => {
             displayFlex="displayFlex"
             withButtons={true}
           >
-            <Button size={'small'} theme={'full-dark'}>
+            <Button
+              size={'small'}
+              theme={'full-dark'}
+              contentVariation="full-width"
+            >
               <button
                 disabled={keywordId === 0 ? true : false}
                 onClick={handleClickQuickSearch}
               >
-                {/* <span
-                  dangerouslySetInnerHTML={{
-                    __html: props.fields.SearchIcon.fields.SvgMarkup.value,
-                  }}
-                ></span> */}
-                {/* Icon component should get this markup? */}
                 <Icons iconName="iconSearch" />
                 <span>{props.fields.QuickSearchLink.value.text}</span>
               </button>
             </Button>
 
-            <Button size={'small'} theme={'outline-dark'}>
+            <Button
+              size={'small'}
+              theme={'outline-dark'}
+              contentVariation="full-width"
+            >
               <button
                 disabled={keywordId === 0 ? true : false}
                 onClick={handleClickAdvanceSearch}

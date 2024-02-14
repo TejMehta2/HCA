@@ -9,6 +9,7 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSearchStringConsultantName } = useContext(ConsultantFinderContext);
   console.log('Dropdown props', props);
+  console.log('loading', props.loading);
   const specialties =
     props?.data?.filter((item) => item.type === 'specialty') || [];
   console.log('specialties', specialties);
@@ -36,14 +37,14 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
           <Loader theme="light" />
         </div>
       )}
-      {props.noResults && (
+      {props.noResults && !props.loading && (
         <Text tag="p" variation="body-small">
           {props.noResultsMsg ||
             'No matches found, please try typing something else.'}
         </Text>
       )}
       {/* results */}
-      {!props.noResults && (
+      {!props.noResults && !props.loading && (
         <div className={styles['consultant-finder-search-dropdown-results']}>
           <div className={styles['consultant-finder-search-dropdown-col']}>
             <div className={styles['consultant-finder-search-dropdown-header']}>
