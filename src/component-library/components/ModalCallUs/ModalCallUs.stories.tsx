@@ -20,22 +20,23 @@ export const Default: StoryObj<typeof ModalCallUs> = {
     contacts: [
       {
         title: <span>General enquiries & Appointments</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>media & Press</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>feedback & Complaints</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
+
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>customer service</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
     ],
@@ -47,7 +48,7 @@ export const OneNumber: StoryObj<typeof ModalCallUs> = {
     contacts: [
       {
         title: <span>General enquiries & Appointments</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
     ],
@@ -60,32 +61,32 @@ export const ManyNumbers: StoryObj<typeof ModalCallUs> = {
     contacts: [
       {
         title: <span>General enquiries & Appointments</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>media & Press</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>feedback & Complaints</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>customer service</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       {
         title: <span>media</span>,
-        phone: '3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday 6pm</span>,
       },
       {
         title: <span>feedback & Complaints</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
     ],
