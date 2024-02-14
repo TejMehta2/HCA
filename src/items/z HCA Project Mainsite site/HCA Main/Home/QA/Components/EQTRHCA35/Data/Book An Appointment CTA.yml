@@ -1,0 +1,32 @@
+﻿---
+ID: "e83f2ed4-eac3-4159-a57d-aad7c8e66a0a"
+Parent: "3643ee2a-12d1-4a57-990f-fbfeff3a6efe"
+Template: "812f0f0d-0d34-4c27-8f0c-13afc4147492"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA35/Data/Book An Appointment CTA
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T214914Z
+    - ID: "39493498-2ce7-47f0-aeca-fb632d319422"
+      Hint: ModalContent
+      Value: |
+        {0D548691-3D02-4748-9689-F3AF616D1AFF}
+        {AB2437A0-9D58-4DBB-A2FA-5FC52A5D61FC}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c7bb7f7b-e845-4ee6-bdb9-22504bbf7238"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Book an &lt;b&gt;appointment&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240202T124024Z

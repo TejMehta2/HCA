@@ -13,22 +13,38 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetBreadcrumbs($contextItem: String!, $language: String!) 
-    {
-      contextItem: item(path: $contextItem, language: $language) {
-        title: field(name:"Title"){
-                jsonValue
-        }
-        url {path}
-        ancestors(hasLayout: true) {
-            title: field(name:"Title"){
-                jsonValue
+    query GetBreadcrumbs($datasource: String!, $contextItem: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on Breadcrumbs {
+          homeIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
               }
-            url {path}
+            }
+          }
+        }
+      }
+      contextItem: item(path: $contextItem, language: $language) {
+        title: field(name: "Title") {
+          jsonValue
+        }
+        
+        url {
+          path
+        }
+        ancestors(hasLayout: true) {
+          title: field(name: "Title") {
+            jsonValue
+          }
+          url {
+            path
+          }
         }
       }
     }
-    
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
@@ -97,14 +113,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1ed7864b-32e5-42a9-9517-36536c2eab50"
+      Value: "d4252dc3-aa75-4989-aec8-2a86ea066851"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240210T183138Z
+      Value: 20240213T081412Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

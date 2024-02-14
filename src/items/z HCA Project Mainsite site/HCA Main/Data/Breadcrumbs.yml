@@ -1,0 +1,34 @@
+﻿---
+ID: "d7168f1c-c910-484e-bc17-07a05b7bf53c"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "7e2315e0-8eb2-4108-8f6e-7b5ace223b0e"
+Path: /sitecore/content/HCA/HCA Main/Data/Breadcrumbs
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240213T080323Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "45ac1365-5e8d-4efb-af8d-fc44f5f1a95b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "bafbf038-64c5-4ed8-96ba-d96293361814"
+      Hint: HomeIcon
+      Value: "{99DE60FF-2C3F-414C-BFBA-8F49BE791902}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240213T080342Z

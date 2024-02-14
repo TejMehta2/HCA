@@ -14,7 +14,6 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
-import { fetchDoctorCardData } from '../components/DoctorCards/DoctorCardData';
 
 const SitecorePage = ({
   notFound,
@@ -96,13 +95,6 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
-
-  if (props.layoutData.sitecore.route) {
-    const pageComponents =
-      props.layoutData.sitecore.route!.placeholders['headless-main'];
-
-    await fetchDoctorCardData(pageComponents);
-  }
 
   return {
     props: props,

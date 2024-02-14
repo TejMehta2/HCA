@@ -15,7 +15,7 @@ SharedFields:
   Value: |
     query GetCallUsTodayCTA($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
-        ... on CallUsTodayCTA_6d1ace35819d4515a86d89ab96696f61 {
+        ... on CallUsTodayCTA {
           cTAIcon {
             Icon: targetItem {
               ... on HCAIcon {
@@ -167,14 +167,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "57df3532-11b6-42d5-8f6c-1308fb24bd5f"
+      Value: "7d98c526-a497-4f58-be14-f8741f12b9b8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240212T115637Z
+      Value: 20240213T142712Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
