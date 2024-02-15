@@ -11,7 +11,9 @@ const meta: Meta<SearchProps> = {
 
 export default meta;
 
-export const Payment: StoryObj<SearchProps> = (args) => {
+export const Payment: StoryObj<SearchProps> = (
+  args: React.JSX.IntrinsicAttributes & SearchProps
+) => {
   const [searchStringPayment, setSearchStringPayment] = React.useState('');
 
   return (
