@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export default interface SearchProps {
@@ -16,7 +17,7 @@ export default interface SearchProps {
   searchStringConsultantName?: string;
   setSearchStringConsultantName?: React.Dispatch<React.SetStateAction<string>>;
   popularConsultantsList?: any;
-  searchStringPayment?: string; 
+  searchStringPayment?: string;
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
   insurersList?: any;
