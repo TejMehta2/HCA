@@ -8,6 +8,8 @@ import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDeta
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Tags from '@component-library/core-components/Tags/Tags';
+import { format, parseISO } from 'date-fns';
+import Link from 'next/link';
 
 type BlogTags = {
   title: { jsonValue: Field<string> };
@@ -50,36 +52,26 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
-  console.log(props);
 
-  const year = props.fields.data.contextItem.date.value.slice(0, 4);
-  const month = props.fields.data.contextItem.date.value.slice(4, 6);
-  const day = props.fields.data.contextItem.date.value.slice(6, 8);
-  const hours = props.fields.data.contextItem.date.value.slice(9, 11);
-  const minutes = props.fields.data.contextItem.date.value.slice(11, 13);
-  const seconds = props.fields.data.contextItem.date.value.slice(13, 15);
-
-  const fomattedDate = new Date(
-    Date.UTC(+year, +month - 1, +day, +hours, +minutes, +seconds)
-  );
-
-  console.log(props.fields.data.contextItem.date.value);
+  const parsedDate = parseISO(props.fields.data.contextItem.date.value);
+  const formattedDate = format(parsedDate, 'MMM d, yyyy');
 
   return (
     <HeaderBlogDetails
       theme={props.params.Theme}
       tag={
         <Tags contentVariation="quote">
-          <a href="#">
+          {/* TODO link for tag blog filter. Piotr to add url to global settings and filter parameter will be set in FE */}
+          <Link href="#">
             <JSSText
               field={
                 props.fields.data.contextItem.tags.tagList[0].title.jsonValue
               }
             />
-          </a>
+          </Link>
         </Tags>
       }
-      date={<time dateTime="Sept 7, 2023">Sept 7, 2023</time>}
+      date={<time dateTime={formattedDate}>{formattedDate}</time>}
       title={
         <Text
           tag={props.params.HeadingTag || 'h1'}
@@ -88,25 +80,11 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
           <JSSText field={props.fields.data.contextItem.title.jsonValue} />
         </Text>
       }
+      bodyCopy={
+        <Text tag="div" variation="body-large">
+          <RichText field={props.fields.data.contextItem.text.jsonValue} />
+        </Text>
+      }
     />
   );
-
-  /* return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.data.contextItem.title.jsonValue} />
-      <br />
-      <RichText field={props.fields.data.contextItem.text.jsonValue} />
-      <br />
-      <Text field={props.fields.data.contextItem.date.jsonValue} />
-      <br />
-      <ul>
-        {props.fields.data.contextItem.tags.tagList.map((tag, index) => (
-          <li key={index}>
-            <Text field={tag.title.jsonValue} />
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>
-  ); */
 };

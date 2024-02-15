@@ -5,4 +5,5 @@ export interface HeaderBlogDetailsProps {
   tag: JSX.Element;
   date: JSX.Element;
   title: JSX.Element;
+  bodyCopy?: JSX.Element;
 }
