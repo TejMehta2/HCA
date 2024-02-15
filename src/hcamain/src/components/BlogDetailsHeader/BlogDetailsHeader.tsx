@@ -58,7 +58,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
 
   return (
     <HeaderBlogDetails
-      theme={props.params.Theme}
+      theme={props.params.Theme || 'F-HCA-White'}
       tag={
         <Tags contentVariation="quote">
           {/* TODO link for tag blog filter. Piotr to add url to global settings and filter parameter will be set in FE */}
