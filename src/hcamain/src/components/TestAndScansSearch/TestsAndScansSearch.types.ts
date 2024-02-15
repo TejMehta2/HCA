@@ -1,8 +1,8 @@
 import { Field, Item } from '@sitecore-jss/sitecore-jss-nextjs';
 import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
 
-export interface ServiceLinesResponse {
-  serviceLines: {
+export interface TestsAndScansResponse {
+  scans: {
     Description: string;
     Image: string;
     Title: string;
@@ -12,13 +12,6 @@ export interface ServiceLinesResponse {
 export type HCAIconFields = {
   fields: {
     SvgMarkup: Field<string>;
-  };
-};
-
-export type FilterOptionFields = Item & {
-  fields: {
-    Header: Field<string>;
-    Filter: Field<string>;
   };
 };
 
@@ -48,17 +41,17 @@ export interface Fields {
   SortOptionsText: Field<string>;
   SortOptions: SortOptionsFields[];
   SearchResultsText: Field<string>;
-  ResultsPerPage: Field<number>;
+  ResultsPerPage: Field<string>;
   SearchBy: SortOptionsFields[];
-  FilterBy: FilterOptionFields[];
+  FilterBy: SortOptionsFields[];
 }
 
-export type ServiceLinesSearchProps = {
+export type TestAndScansSearchProps = {
   params: {
+    [key: string]: string;
     HeadingSize: HeadingSize;
     HeadingTag: HeadingTag;
     Theme: Theme;
-    [key: string]: string;
   };
   fields: Fields;
 };
