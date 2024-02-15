@@ -2,17 +2,17 @@
 @use '../../utilities/index.module' as *;
 
 .consultant-finder-navigation {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $white;
-    padding: $spacing-2 $spacing-6;
-    position: fixed;
-    bottom: 0;
-    text-align: left;
-    z-index: 1000;
-    // new border color
-    border-top: 1px solid #ADB4BF;
-}
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  padding: $spacing-2 $spacing-6;
+  position: fixed;
+  bottom: 0;
+  text-align: left;
+  z-index: 1000;
 
+  // new border color
+  border-top: 1px solid #adb4bf;
+}

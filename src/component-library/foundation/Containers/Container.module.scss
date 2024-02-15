@@ -2,90 +2,88 @@
 @use '../../utilities/index.module' as *;
 
 .container {
-    // display flex
-    &.displayFlex {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+  // display flex
+  &.display-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+  }
+
+  // width
+  &.width-50 {
+    div {
+      width: 50%;
+    }
+  }
+
+  &.width-100 {
+    div {
+      width: 100%;
+    }
+  }
+
+  &.with-buttons {
+    div {
+      width: 100%;
+
+      &:first-child {
+        margin-right: 0;
+        margin-bottom: $spacing-4;
 
         @include media(screen-l) {
-            flex-direction: row;
+          margin-right: $spacing-2;
+          margin-bottom: 0;
         }
+      }
+
+      @include media(screen-l) {
+        width: 50%;
+      }
     }
+  }
 
-    &.with-buttons {
-        div {
-            width: 100%;
+  // margin classes
+  &.margin-left-spacing-4 {
+    margin-left: $spacing-4;
+  }
 
-            &:first-child {
-                margin-right: 0;
-                margin-bottom: $spacing-4;
+  &.margin-left-spacing-6 {
+    margin-left: $spacing-6;
+  }
 
-                @include media(screen-l) {
-                    margin-right: $spacing-2;
-                    margin-bottom: 0;
-                }
-            }
+  &.margin-right-spacing-2 {
+    margin-right: $spacing-2;
+  }
 
-            @include media(screen-l) {
-                width: 50%;
-            }
-        }
-    }
+  &.margin-right-spacing-4 {
+    margin-right: $spacing-4;
+  }
 
-    // width
-    &.width-50 {
-        div {
-            width: 50%;
-        }
-    }
+  &.margin-right-spacing-6 {
+    margin-right: $spacing-6;
+  }
 
-    &.width-100 {
-        div {
-            width: 100%;
-        }
-    }
+  &.margin-top-spacing-4 {
+    margin-top: $spacing-4;
+  }
 
-    // margin classes 
-    &.marginLeft-spacing-4 {
-        margin-left: $spacing-4;
-    }
+  &.margin-top-spacing-8 {
+    margin-top: $spacing-8;
+  }
 
-    &.marginLeft-spacing-6 {
-        margin-left: $spacing-6;
-    }
+  &.margin-bottom-spacing-4 {
+    margin-bottom: $spacing-4;
+  }
 
-    &.marginRight-spacing-2 {
-        margin-right: $spacing-2;
-    }
+  &.margin-bottom-spacing-6 {
+    margin-bottom: $spacing-6;
+  }
 
-    &.marginRight-spacing-4 {
-        margin-right: $spacing-4;
-    }
-
-    &.marginRight-spacing-6 {
-        margin-right: $spacing-6;
-    }
-
-    &.marginTop-spacing-4 {
-        margin-top: $spacing-4;
-    }
-
-    &.marginTop-spacing-8 {
-        margin-top: $spacing-8;
-    }
-
-    &.marginBottom-spacing-4 {
-        margin-bottom: $spacing-4;
-    }
-
-    &.marginBottom-spacing-6 {
-        margin-bottom: $spacing-6;
-    }
-
-    &.marginBottom-spacing-8 {
-        margin-bottom: $spacing-8;
-    }
+  &.margin-bottom-spacing-8 {
+    margin-bottom: $spacing-8;
+  }
 }
-
-

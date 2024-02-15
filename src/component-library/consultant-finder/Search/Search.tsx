@@ -6,7 +6,7 @@ import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
 import SearchDdropdown from './SearchDropwdown';
-let cancelToken: axios.CancelTokenSource;
+let cancelToken: any;
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import TextLink from '../../core-components/TextLink/TextLink';
 import { transformFields } from '../../utility-functions/index';

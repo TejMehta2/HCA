@@ -16,11 +16,11 @@ const Container = (props: ContainerProps): JSX.Element => {
   } = props;
 
   const containerClasses = classNames(styles.container, {
-    [styles[`marginTop-${marginTop}`]]: marginTop,
-    [styles[`marginBottom-${marginBottom}`]]: marginBottom,
-    [styles[`marginLeft-${marginLeft}`]]: marginLeft,
-    [styles[`marginRight-${marginRight}`]]: marginRight,
-    [styles.displayFlex]: displayFlex,
+    [styles[`margin-top-${marginTop}`]]: marginTop,
+    [styles[`margin-bottom-${marginBottom}`]]: marginBottom,
+    [styles[`margin-left-${marginLeft}`]]: marginLeft,
+    [styles[`margin-right-${marginRight}`]]: marginRight,
+    [styles['display-flex']]: displayFlex,
     [styles[`width-${width}`]]: width,
     [styles['with-buttons']]: withButtons,
   });

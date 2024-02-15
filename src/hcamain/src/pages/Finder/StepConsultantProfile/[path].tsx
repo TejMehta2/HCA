@@ -105,13 +105,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
       slugPath = path;
     }
   }
+  console.log(slugPath);
 
   // Assumes we have a service that calls CH GraphQL to get the data
   // based on the blog name
   //const blogData = await externalDataFactory.get(blogPath);
   //props.blogData = blogData;
 
-  props.slugData = 'andy profile data';
+  // props.slugData = 'andy profile data';
   return {
     props,
     // Next.js will attempt to re-generate the page:

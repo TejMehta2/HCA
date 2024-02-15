@@ -5,7 +5,7 @@ import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
-let cancelToken: axios.CancelTokenSource;
+let cancelToken: any;
 import SearchDdropdownPayment from './SearchDropwdownPayment';
 import TextLink from '../../core-components/TextLink/TextLink';
 import { transformFields } from '../../utility-functions/index';
@@ -32,7 +32,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     axios
       .get(URL, { cancelToken: cancelToken.token })
       .then((resp) => {
-        const docitfyInsurersFiltered = resp.data.filter((item) =>
+        const docitfyInsurersFiltered = resp.data.filter((item: any) =>
           item.name.toUpperCase().startsWith(userInput.toUpperCase())
         );
 
