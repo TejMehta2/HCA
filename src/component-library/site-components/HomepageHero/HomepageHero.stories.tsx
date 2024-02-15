@@ -2,10 +2,10 @@ import React from 'react';
 import HomepageHero from './HomepageHero';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
+import SearchButton from '../../components/SearchButton/SearchButton';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HomepageHero> = {
@@ -27,7 +27,13 @@ export const Default: StoryObj<typeof HomepageHero> = {
         Extraordinary Healthcare
       </Text>
     ),
-    search: <SearchBar placeholder="How can we help you?" />,
+    search: (
+      <SearchButton>
+        <span>
+          How can we <b>help you?</b>
+        </span>
+      </SearchButton>
+    ),
     ctaTitle: (
       <Text tag="h2" variation="subheading-1">
         Get Started
