@@ -326,9 +326,6 @@ export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
                 <Text tag="p" variation="display-6">
                   020 3131 5978
                 </Text>
-                <Text tag="p" variation="display-6">
-                  020 3131 5978
-                </Text>
               </>
             ),
             icon: <Icons iconName="iconClock"></Icons>,
