@@ -6,7 +6,6 @@
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
-import NotFound from 'src/NotFound';
 import Layout from 'src/Layout';
 import {
   RenderingType,
@@ -19,7 +18,6 @@ import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils
 import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
-import { sitemapFetcher } from 'lib/sitemap-fetcher';
 
 const SitecorePage = ({
   notFound,

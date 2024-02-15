@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from 'react';
-
 export default interface SearchProps {
   placeholder: string;
   doctifyBaseURL: string;

@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from 'react';
-
 export default interface SearchDropdownProps {
   data: any;
   loading: boolean;
@@ -16,7 +14,7 @@ export default interface SearchDropdownProps {
   setInputValue?: React.Dispatch<React.SetStateAction<string>>;
   searchStringConsultantName?: string;
   setSearchStringConsultantName?: React.Dispatch<React.SetStateAction<string>>;
-  searchStringPayment?: string; 
+  searchStringPayment?: string;
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
 }

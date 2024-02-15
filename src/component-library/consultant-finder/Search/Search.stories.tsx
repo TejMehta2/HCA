@@ -13,7 +13,9 @@ const meta: Meta<SearchProps> = {
 
 export default meta;
 
-export const TreatmentConditions: StoryObj<SearchProps> = (args) => {
+export const TreatmentConditions: StoryObj<SearchProps> = (
+  args: React.JSX.IntrinsicAttributes & SearchProps
+) => {
   const [searchString, setSearchString] = React.useState('');
 
   return (

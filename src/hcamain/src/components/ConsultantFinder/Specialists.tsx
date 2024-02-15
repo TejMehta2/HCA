@@ -85,7 +85,7 @@ const CdpPageView = (): JSX.Element => {
   return (
     <>
       <Link href="/Finder/Step-Locations">Back</Link>
-      <h1>Let's get you to the right specialist</h1>
+      <h1>Let`&apos;s get you to the right specialist</h1>
     </>
   );
 };

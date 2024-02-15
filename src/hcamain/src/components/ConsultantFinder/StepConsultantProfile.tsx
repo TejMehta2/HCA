@@ -1,14 +1,13 @@
 // Consultant profile component
-// Place on page in wildcarded folder e.g. \XMCloud\HCA-Eqtr\HCA-XMCloud\src\hcamain\src\pages\finder\StepConsultantProfile 
+// Place on page in wildcarded folder e.g. \XMCloud\HCA-Eqtr\HCA-XMCloud\src\hcamain\src\pages\finder\StepConsultantProfile
 // alongside the [...path].tsx page definition,
 // the last path element being the wildcard and carrying the doctify slug
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React , {useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -16,18 +15,15 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 
-import { encode } from 'querystring';
-import { useSearchParams } from 'next/navigation';
+// import { encode } from 'querystring';
+// import { useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 
-
-
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC 
-  
+  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
+
   // add specific fields defined in the data template here...
   EnquireNowLink: LinkField;
   BookOnlineLink: LinkField;
@@ -37,30 +33,30 @@ interface Fields {
   // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-  
+
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
 }
 
-const URL = 'https://api.doctify.com/api/hca/specialists/';
+// const URL = 'https://api.doctify.com/api/hca/specialists/';
 
-export const getStaticProps: GetStaticComponentProps = async (
-  rendering,
-  layoutData,
-  context
-) => {
-  // based on https://github.com/vercel/next.js/discussions/38061
-  const urlBase = new URLSearchParams(encode(context.params));
-  const slug = context.params['path'][context.params['path'].length-1]; // e.g. mr-andrew-goldberg
-  const requestURL = `${URL}${slug}`;
-  const post = await fetch(requestURL).then(
-    (res) => `GetStaticComponentProps: urlBase=${slug}, requestURL=${requestURL}`
-  );
+// export const getStaticProps: GetStaticComponentProps = async (
+//   rendering,
+//   layoutData,
+//   context
+// ) => {
+//   // based on https://github.com/vercel/next.js/discussions/38061
+//   const urlBase = new URLSearchParams(encode(context.params));
+//   const slug = context.params['path'][context.params['path'].length - 1]; // e.g. mr-andrew-goldberg
+//   const requestURL = `${URL}${slug}`;
+//   const post = await fetch(requestURL).then(
+//     (res) =>
+//       `GetStaticComponentProps: urlBase=${slug}, requestURL=${requestURL}`
+//   );
 
-  return post;
-};
-
+//   return post;
+// };
 
 type StepProps = {
   rendering: ComponentRendering;
@@ -79,7 +75,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const externalData = useComponentProps<string>(props.rendering.uid);
   console.log('profile');
-  const {message, setMessage} = useContext(ConsultantFinderContext);
+  const { message, setMessage } = useContext(ConsultantFinderContext);
 
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
@@ -89,7 +85,9 @@ export const Default = (props: StepProps): JSX.Element => {
         id={id ? id : undefined}
       >
         <div>Message: {message}</div>
-            <button onClick={()=> setMessage('testing new')}>Change message</button>
+        <button onClick={() => setMessage('testing new')}>
+          Change message
+        </button>
         <div>External data: {externalData}</div>
         <div className="component-content">
           <div className="field-promoicon">
@@ -133,7 +131,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <JssLink field={props.fields.StartLink} title={props.fields.StartLink.value.text}></JssLink>
               </Button>
             </div> */}
-          </div> 
+          </div>
         </div>
       </div>
     );
@@ -141,5 +139,3 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
-
-

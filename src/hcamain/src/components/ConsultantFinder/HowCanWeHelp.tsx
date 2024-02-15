@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 // import { middlewareCF } from '../../middleware';
 
 import Link from 'next/link';
-import axios from 'axios';
 
 import {
-  Text,
-  RichText,
   Field,
-  GetServerSideComponentProps,
-  GetStaticComponentProps,
-  withDatasourceCheck,
-  useComponentProps
+  // GetServerSideComponentProps,
+  // GetStaticComponentProps,
+  useComponentProps,
+  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-
-const URL = 'https://api.doctify.com/api/hca/search?sortType=nearest&search=Dermatology&keywordId=2924&lat=51.5072178&lon=-0.1275862&distance=700&limit=12';
+// const URL =
+//   'https://api.doctify.com/api/hca/search?sortType=nearest&search=Dermatology&keywordId=2924&lat=51.5072178&lon=-0.1275862&distance=700&limit=12';
 
 type ComponentData = {
   rendering: ComponentRendering;
@@ -44,26 +37,23 @@ const CdpPageView = (props: ComponentData) => {
   );
 };
 
-export const getStaticProps: GetStaticComponentProps = async (
-  rendering,
-  layoutData,
-  context
-) => {
-  
-  const post = await fetch(URL).then(
-    (res) => `${res.json()}, ${JSON.stringify(context)}`
-  );
-  return post;
-};
+// export const getStaticProps: GetStaticComponentProps = async (
+//   rendering,
+//   layoutData,
+//   context
+// ) => {
+//   const post = await fetch(URL).then(
+//     (res) => `${res.json()}, ${JSON.stringify(context)}`
+//   );
+//   return post;
+// };
 
-export const getServerSideProps: GetServerSideComponentProps = async (
-  rendering,
-  layoutData
-) => {
-  const post = await fetch(URL).then((res) => res.json());
-  return post;
-};
- 
-
+// export const getServerSideProps: GetServerSideComponentProps = async (
+//   _rendering,
+//   _layoutData
+// ) => {
+//   const post = await fetch(URL).then((res) => res.json());
+//   return post;
+// };
 
 export default CdpPageView;
