@@ -82,8 +82,8 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
               }
               heading={
                 <Text
-                  variation={props.params.headingSize || 'display-2'}
-                  tag={props.params.headingTag || 'h2'}
+                  variation={props.params.HeadingSize || 'display-2'}
+                  tag={props.params.HeadingTag || 'h2'}
                 >
                   <JssText field={props.fields.Title} />
                 </Text>
@@ -95,7 +95,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
                   placeholder={props.fields.SearchPlaceholder.value}
                 />
               }
-              theme={props.params.theme}
+              theme={props.params.Theme}
               filters={
                 <Filters
                   buttonText={
@@ -197,7 +197,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params.theme}>
+          <CardGrid theme={props.params.Theme}>
             {data?.serviceLines?.map((item, index) => (
               <CardContent
                 key={index}

@@ -1,8 +1,8 @@
 import { Field, Item } from '@sitecore-jss/sitecore-jss-nextjs';
 import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
 
-export interface ServiceLinesResponse {
-  serviceLines: {
+export interface TreatmentsResponse {
+  treatments: {
     Description: string;
     Image: string;
     Title: string;
@@ -31,7 +31,7 @@ export type FilterOptionsFields = Item & {
 
 export type SortOptionsFields = Item & {
   fields: {
-    DisplayName: Field<string>;
+    displayName: Field<string>;
     Filter: Field<string>;
   };
 };
@@ -53,7 +53,7 @@ export interface Fields {
   FilterBy: FilterOptionFields[];
 }
 
-export type ServiceLinesSearchProps = {
+export type TreatmentsSearchProps = {
   params: {
     HeadingSize: HeadingSize;
     HeadingTag: HeadingTag;
