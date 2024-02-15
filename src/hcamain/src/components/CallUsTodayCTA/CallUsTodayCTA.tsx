@@ -9,7 +9,7 @@ import {
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import Button from '@component-library/core-components/Button/Button';
 import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.types';
-import { formatDaysText } from './CallUsTodayCTA.utilities';
+import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/FormatDaysText';
 
 type HCAIconFields = {
   svgMarkup: Field<string>;

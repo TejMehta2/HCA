@@ -10,7 +10,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ContactList from '@component-library/components/ContactList/ContactList';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
-import { formatDaysText } from 'components/CallUsTodayCTA/CallUsTodayCTA.utilities';
+import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/FormatDaysText';
 import { ContactItem } from '@component-library/components/ContactList/ContactList.types';
 
 interface TelephoneNumberFields {
