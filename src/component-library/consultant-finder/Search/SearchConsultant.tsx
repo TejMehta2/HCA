@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { MouseEventHandler, useId, useState, useContext } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
@@ -5,9 +6,10 @@ import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
 import SearchDdropdownConsultant from './SearchDropwdownConsultant';
-let cancelToken;
+let cancelToken: axios.CancelTokenSource;
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { transformFields } from '../../utility-functions/index';
 
 const SearchConsultant = (props: SearchProps): JSX.Element => {
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -19,15 +21,6 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
   const doctifyURL = `https://api.doctify.com/api/hca/search?sortType=relevance&keywordId=${keywordId}&distance=700&lat=51.5073509&lon=-0.1277583&limit=5&offset=0`;
-
-  // to move this in utility files
-  function transformFields(fields) {
-    const transformedObject = {};
-    for (const key in fields) {
-      transformedObject[key] = fields[key].value;
-    }
-    return transformedObject;
-  }
 
   // we are using search specialists api from Doctify when we have id for specialty
   const getDoctifyDataWithId = () => {
@@ -111,9 +104,11 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
   const getSitecoreData = () => {
     const sitecorePopularConsultantList = props.popularConsultantsList;
 
-    const popularDataSitecore = sitecorePopularConsultantList.map((item) => ({
-      ...transformFields(item.fields),
-    }));
+    const popularDataSitecore = sitecorePopularConsultantList.map(
+      (item: any) => ({
+        ...transformFields(item.fields),
+      })
+    );
 
     setData(popularDataSitecore);
 
@@ -186,7 +181,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
             value={props.searchStringConsultantName}
           />
         </label>
-        {!loading && isComponentVisible && (
+        {isComponentVisible && (
           <SearchDdropdownConsultant
             data={data}
             loading={loading}

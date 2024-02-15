@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { MouseEventHandler, useId, useState, useContext } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
@@ -5,9 +6,10 @@ import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
 import SearchDdropdown from './SearchDropwdown';
-let cancelToken;
+let cancelToken: axios.CancelTokenSource;
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { transformFields } from '../../utility-functions/index';
 
 const Search = (props: SearchProps): JSX.Element => {
   const { setSearchStringConsultantName, setConsultantSlug } = useContext(
@@ -21,32 +23,26 @@ const Search = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
 
-  // Function to transform each item's fields into an object
-  function transformFields(fields) {
-    const transformedObject = {};
-    for (const key in fields) {
-      transformedObject[key] = fields[key].value;
-    }
-    return transformedObject;
-  }
-
   // console.log('test', props.conditionsTreatmentsList);
   // console.log('test specialities', props.specialitiesList);
 
   const transformedDataTreatments = props.conditionsTreatmentsList.map(
-    (item) => ({
+    (item: any) => ({
       ...transformFields(item.fields),
     })
   );
 
-  const transformedDataSpecialty = props.specialitiesList.map((item) => ({
+  const transformedDataSpecialty = props.specialitiesList.map((item: any) => ({
     ...transformFields(item.fields),
   }));
 
   // console.log('transformed treatments', transformedDataTreatments);
   // console.log('transformed specialty', transformedDataSpecialty);
 
-  const newData = [...transformedDataTreatments, ...transformedDataSpecialty];
+  const newData: any = [
+    ...transformedDataTreatments,
+    ...transformedDataSpecialty,
+  ];
   // console.log(newData);
 
   const handlePopularSearch = () => {
@@ -151,7 +147,7 @@ const Search = (props: SearchProps): JSX.Element => {
             value={props.searchString}
           />
         </label>
-        {!loading && isComponentVisible && (
+        {isComponentVisible && (
           <SearchDdropdown
             data={data}
             loading={loading}

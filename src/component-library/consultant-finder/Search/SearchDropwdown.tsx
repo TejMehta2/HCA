@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
@@ -11,10 +12,10 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   console.log('Dropdown props', props);
   console.log('loading', props.loading);
   const specialties =
-    props?.data?.filter((item) => item.type === 'specialty') || [];
+    props?.data?.filter((item: any) => item.type === 'specialty') || [];
   console.log('specialties', specialties);
   const conditionsProcedures =
-    props?.data?.filter((item) => item.type !== 'specialty') || [];
+    props?.data?.filter((item: any) => item.type !== 'specialty') || [];
   console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
@@ -35,6 +36,9 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
       {props.loading && (
         <div className={styles['consultant-finder-search-dropdown-loader']}>
           <Loader theme="light" />
+          <Text tag="p" variation="body-small">
+            Loading...
+          </Text>
         </div>
       )}
       {props.noResults && !props.loading && (

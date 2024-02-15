@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 
 import {
   Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -63,11 +63,11 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   console.log('how can we help', props);
-  console.log('icon', props.fields.BackLink);
-  console.log(props.fields.API_Autocomplete_BaseURL.value);
 
   const handleClickQuickSearch = () => {
-    router.push(props.fields.QuickSearchLink.value.href);
+    router.push(
+      props.fields.QuickSearchLink.value.href || '/Finder/Step-Consultant-Cards'
+    );
   };
 
   const handleClickAdvanceSearch = () => {

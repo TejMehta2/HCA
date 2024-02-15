@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
@@ -32,16 +33,19 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
       {props.loading && (
         <div className={styles['consultant-finder-search-dropdown-loader']}>
           <Loader theme="light" />
+          <Text tag="p" variation="body-small">
+            Loading...
+          </Text>
         </div>
       )}
-      {props.noResults && (
+      {props.noResults && !props.loading && (
         <Text tag="p" variation="body-small">
           {props.noResultsMsg ||
             'No matches found, please try typing something else.'}
         </Text>
       )}
       {/* results */}
-      {!props.noResults && (
+      {!props.noResults && !props.loading && (
         <div className={styles['consultant-finder-search-dropdown-results']}>
           <div
             className={

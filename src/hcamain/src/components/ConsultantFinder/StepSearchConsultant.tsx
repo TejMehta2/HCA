@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import {
   Image as JssImage,
@@ -13,7 +14,7 @@ import {
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
-import ImageAndTextBlock from 'temp/component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
+import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import SearchConsultant from '@component-library/consultant-finder/Search/SearchConsultant';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -34,6 +35,8 @@ interface Fields {
   BackLink: LinkField;
   PopularConsultantsList: any;
   SearchIcon: any;
+  SearchErrorMsgNoResults: Field<string>;
+  SearchPlaceholderText: Field<string>;
 }
 
 type StepProps = {
@@ -60,15 +63,15 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   console.log('search consultant by name', props);
 
-  useEffect(() => {
-    // Check if the 'test' query parameter is empty or not present
-    const isTestParamEmpty = !router.query.keywordId;
+  // useEffect(() => {
+  //   // Check if the 'test' query parameter is empty or not present
+  //   const isTestParamEmpty = !router.query.keywordId;
 
-    // If 'test' query parameter is empty, redirect to '/Finder/Step-Intro'
-    if (isTestParamEmpty) {
-      router.push('/Finder/Step-Intro');
-    }
-  }, [router.query.keywordId]);
+  //   // If 'test' query parameter is empty, redirect to '/Finder/Step-Intro'
+  //   if (isTestParamEmpty) {
+  //     router.push('/Finder/Step-Intro');
+  //   }
+  // }, [router.query.keywordId]);
 
   if (props.fields) {
     return (
@@ -98,12 +101,12 @@ export const Default = (props: StepProps): JSX.Element => {
           </Text>
           <form autoComplete="off">
             <SearchConsultant
-              placeholder={'Type in a consultant name'}
+              placeholder={props.fields.SearchPlaceholderText.value}
               doctifyBaseURL={
                 'https://api.doctify.com/api/hca/search/autocomplete?search'
               }
               limit={20}
-              noResultsMsg={'no results'}
+              noResultsMsg={props.fields.SearchErrorMsgNoResults.value}
               searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}
@@ -122,40 +125,14 @@ export const Default = (props: StepProps): JSX.Element => {
           <Button size={'small'} theme={'full-dark'}>
             <button
               disabled={consultantSlug === '' ? true : false}
-              onClick={() => router.push(props.fields.NextLink.value.href)}
+              onClick={() =>
+                router.push(props.fields.NextLink.value.href || '')
+              }
             >
               <span>{props.fields.NextLink.value.text || 'Next'}</span>
             </button>
           </Button>
         </Navigation>
-        {/* <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div>Message: {message}</div>
-            <button onClick={()=> setMessage('testing new')}>Change message</button>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.NextLink} title={props.fields.NextLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BackLink} title={props.fields.BackLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.StartLink} title={props.fields.StartLink.value.text}></JssLink>
-              </Button>
-            </div>
-          </div> 
-        </div> */}
       </div>
     );
   }

@@ -1,11 +1,11 @@
-import React, { MouseEventHandler, useId, useState, useContext, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { MouseEventHandler, useId, useState } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
-let cancelToken;
-import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+let cancelToken: axios.CancelTokenSource;
 import SearchDdropdownPayment from './SearchDropwdownPayment';
 import TextLink from '../../core-components/TextLink/TextLink';
 import { transformFields } from '../../utility-functions/index';
@@ -13,7 +13,6 @@ import { transformFields } from '../../utility-functions/index';
 const SearchPayment = (props: SearchProps): JSX.Element => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
-  const { keywordId } = useContext(ConsultantFinderContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -68,9 +67,11 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
   const getSitecoreData = () => {
     const sitecorePopularConsultantList = props.insurersList;
 
-    const popularDataSitecore = sitecorePopularConsultantList.map((item) => ({
-      ...transformFields(item.fields),
-    }));
+    const popularDataSitecore = sitecorePopularConsultantList.map(
+      (item: any) => ({
+        ...transformFields(item.fields),
+      })
+    );
 
     setData(popularDataSitecore);
 
@@ -141,7 +142,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
             value={props.searchStringPayment}
           />
         </label>
-        {!loading && isComponentVisible && (
+        {isComponentVisible && (
           <SearchDdropdownPayment
             data={data}
             loading={loading}

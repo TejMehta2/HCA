@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import {
@@ -154,7 +155,11 @@ export const Default = (props: StepProps): JSX.Element => {
               disabled={
                 searchStringPayment === '' && !isSelfPayment ? true : false
               }
-              onClick={() => router.push(props.fields.NextLink.value.href)}
+              onClick={() =>
+                router.push(
+                  props.fields.NextLink.value.href || '/Finder/Step-Locations'
+                )
+              }
             >
               <span>{props.fields.NextLink.value.text}</span>
             </button>

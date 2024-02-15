@@ -19,9 +19,11 @@
 
             &:first-child {
                 margin-right: 0;
+                margin-bottom: $spacing-4;
 
                 @include media(screen-l) {
                     margin-right: $spacing-2;
+                    margin-bottom: 0;
                 }
             }
 
@@ -29,30 +31,18 @@
                 width: 50%;
             }
         }
-
-        button {
-            width: 100%;
-        }
     }
 
     // width
     &.width-50 {
         div {
             width: 50%;
-
-            @include media(screen-l) {
-                width: 50%;
-            }
         }
     }
 
     &.width-100 {
         div {
             width: 100%;
-
-            @include media(screen-l) {
-                width: 100%;
-            }
         }
     }
 
