@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as ModalCallUsStories from './ModalCallUs.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ModalCallUsStories from './ModalCallUs.stories';
 
 <Meta of={ModalCallUsStories} />
 
@@ -13,16 +13,16 @@ The implementation of the open/close behavior is inherited from the Modals compo
 
 It can be composed like this:
 
-``` tsx
+```tsx
 const dialogRef = useRef<HTMLDialogElement>()
 <button onClick={() => dialogRef?.current?.showModal()}>Open</button>
 
-<ModalCallUs 
+<ModalCallUs
   ref={dialogRef}
   mainContact={
     {
       title: <span>General enquiries & Appointments</span>,
-      phone: '020 3131 5978',
+      phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
       availability: <span>Monday to Friday 8am - 6pm</span>,
     }
   }
@@ -30,7 +30,7 @@ const dialogRef = useRef<HTMLDialogElement>()
     [
       {
         title: <span>media & Press</span>,
-        phone: '020 3131 5978',
+        phone: { text: '020 3131 5978', number: '+4420 3131 5978' },
         availability: <span>Monday to Friday 8am - 6pm</span>,
       },
       // ...
