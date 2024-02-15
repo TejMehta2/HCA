@@ -146,7 +146,7 @@ public string RenderInterfaceFields(TemplateCodeGenerationMetadata template, boo
             /**
             * {field.HelpText}
             */
-            {GetFieldCodeName(field)}{GetNullable(field)}: {fieldType};");
+            {GetFieldCodeName(field, useJsonValue: useJsonValue)}{GetNullable(field)}: {fieldType};");
     }
     if (useJsonValue)
     {
@@ -167,11 +167,11 @@ public string GetAliasedFullCodeName(TemplateCodeGenerationMetadata template, st
     return $@"{nameSpace}.{template.CodeName}{suffix}";
 }
 
-public string GetFieldCodeName(TemplateFieldCodeGenerationMetadata field, string suffix = "")
+public string GetFieldCodeName(TemplateFieldCodeGenerationMetadata field, string suffix = "", bool useJsonValue = false)
 {
     // Check if field name needs to be quoted and add quotes as needed
     var name = System.Text.RegularExpressions.Regex.IsMatch(field.Name, "[ -]+") ? $"\"{field.Name}{suffix}\"" : field.Name + suffix;
-    return name;
+    return useJsonValue ? FirstLetterLowerCase(name) : name;
 }
 
 public string GetNullable(TemplateFieldCodeGenerationMetadata field)
@@ -306,4 +306,16 @@ public List<TemplateCodeGenerationMetadata> GetBaseTemplates(IEnumerable<Templat
     }
 
     return foundTemplates;
+}
+
+public string FirstLetterLowerCase(string input)
+{  
+   if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+    char[] inputArray = input.ToCharArray();
+    inputArray[0] = char.ToLower(inputArray[0]);
+    return new string(inputArray);  
 }
