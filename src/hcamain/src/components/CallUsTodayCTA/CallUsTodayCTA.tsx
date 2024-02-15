@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Field,
   Text as JssText,
   LinkField,
-  Link as JssLink,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { useI18n } from 'next-localization';
+
+import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
+import Button from '@component-library/core-components/Button/Button';
+import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.types';
+import { formatDaysText } from './CallUsTodayCTA.utilities';
 
 type HCAIconFields = {
   svgMarkup: Field<string>;
@@ -79,78 +83,78 @@ const CallUsTodayCTADefaultComponent = (
 };
 
 export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
-  const { t } = useI18n();
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
   if (!props.fields) {
     return <CallUsTodayCTADefaultComponent {...props} />;
   }
-  return (
-    <div className={`component ${props.params.styles}`}>
-      <JssLink field={props.fields.data.item?.cTALink}>
-        {props.fields.data.item?.cTAIcon?.Icon.svgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.data.item?.cTAIcon?.Icon?.svgMarkup?.value,
-            }}
-          ></span>
-        )}
-      </JssLink>
-      <br />
-      <ul>
-        {props.fields.data.item.contactUnit.contactUnitList.map(
-          (contactUnit, index) => (
-            <li key={index}>
-              <JssText field={contactUnit.contactUnitName} />
-              <br />
-              <ul>
-                {contactUnit.telephoneNumber.telephoneNumberList.map(
-                  (telephoneNumber, index) => (
-                    <li key={index}>
-                      <JssText field={telephoneNumber.phoneNumberLabel} />
-                      <br />
-                      <JssText field={telephoneNumber.phoneNumber} />
-                      <br />
-                      <JssText field={telephoneNumber.internationPhoneNumber} />
-                    </li>
-                  )
-                )}
-              </ul>
-              <br />
-              <span>Opening Hours</span>
-              <br />
-              <ul>
-                {contactUnit.children.results.map((children, index) => (
-                  <li key={index}>
-                    <ul>
-                      {children.children.results.map((openingHours, index) => (
-                        <li key={index}>
-                          <ul>
-                            {openingHours.dayOfWeek.dayOfWeekList.map(
-                              (day, index) => (
-                                <li key={index}>
-                                  <JssText field={day.dayName} />
-                                </li>
-                              )
-                            )}
-                          </ul>
-                          <br />
-                          <JssText field={openingHours.opens} />
-                          <br />
-                          <JssText field={openingHours.closes} />
-                          <br />
-                          <JssText field={openingHours.validFrom} />
-                          <br />
-                          <JssText field={openingHours.validThrough} />
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-            </li>
+
+  const contacts: Contact[] = [];
+  props.fields.data.item.contactUnit.contactUnitList.map((contactUnit) => {
+    const title = contactUnit.contactUnitName;
+    const phone = contactUnit.telephoneNumber.telephoneNumberList.map(
+      (telephoneNumber) => {
+        return {
+          text: telephoneNumber.phoneNumber.value,
+          number: telephoneNumber.internationPhoneNumber.value,
+        };
+      }
+    );
+
+    const availability: string[] = [];
+
+    contactUnit.children.results.map((children) => {
+      children.children.results.map((openingHours) => {
+        const days: string[] = [];
+
+        openingHours.dayOfWeek.dayOfWeekList.map((day) => {
+          days.push(day.dayName.value);
+        });
+
+        availability.push(
+          formatDaysText(
+            days,
+            openingHours.opens.value,
+            openingHours.closes.value
           )
-        )}
-      </ul>
-      <p>Text: {t('close')}</p>
-    </div>
+        );
+      });
+    });
+
+    const availabilityString = availability.join(', ');
+
+    contacts.push({
+      title: <JssText field={title} />,
+      phone: phone[0],
+      availability: <span>{availabilityString}</span>,
+    });
+  });
+
+  return (
+    <>
+      <Button size="large" theme="outline">
+        <button onClick={() => dialogRef?.current?.showModal()}>
+          {props.fields.data.item?.cTALink.jsonValue.value.text && (
+            <>
+              {props.fields.data.item?.cTAIcon?.Icon.svgMarkup && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields.data.item?.cTAIcon?.Icon.svgMarkup.value,
+                  }}
+                ></span>
+              )}
+              <JssRichText
+                field={{
+                  value: props.fields.data.item?.cTALink.jsonValue.value.text,
+                }}
+              />
+            </>
+          )}
+        </button>
+      </Button>
+
+      <ModalCallUs ref={dialogRef} contacts={contacts} />
+    </>
   );
 };

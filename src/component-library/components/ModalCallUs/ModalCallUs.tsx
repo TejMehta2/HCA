@@ -29,16 +29,16 @@ const ModalCallUs = (
       <div className={styles.mobile}>
         {isMain ? (
           <Button size={'small'} theme={'full'}>
-            <a href={`tel:${contact.phone}`}>
+            <a href={`tel:${contact.phone.number}`}>
               <Icons iconName="iconPhone" />
-              {contact.phone}
+              {contact.phone.text}
             </a>
           </Button>
         ) : (
           <TextButton>
-            <a href={`tel:${contact.phone}`}>
+            <a href={`tel:${contact.phone.number}`}>
               <Icons iconName="iconPhone" />
-              {contact.phone}
+              {contact.phone.text}
             </a>
           </TextButton>
         )}
@@ -46,7 +46,7 @@ const ModalCallUs = (
       <div className={styles.desktop}>
         <div className={styles.link}>
           <Text variation={isMain ? 'display-1' : 'display-5'}>
-            <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+            <a href={`tel:${contact.phone.number}`}>{contact.phone.text}</a>
           </Text>
         </div>
       </div>
