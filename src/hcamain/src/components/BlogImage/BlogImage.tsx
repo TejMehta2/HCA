@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageField, Image } from '@sitecore-jss/sitecore-jss-nextjs';
-import BlogContent from 'temp/component-library/site-components/BlogContent/BlogContent';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface Fields {
