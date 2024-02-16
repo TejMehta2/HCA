@@ -106,21 +106,39 @@ export const Default = (props: StepProps): JSX.Element => {
           </Text>
           <form autoComplete="off">
             <SearchConsultant
-              placeholder={props.fields.SearchPlaceholderText.value}
-              doctifyBaseURL={props.fields.API_Autocomplete_BaseURL.value}
-              doctifySearchBaseURL={
-                props.fields.API_DoctifySearch_BaseURL.value
+              placeholder={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Type in a consultant name'
               }
-              limit={Number(props.fields.API_Autocomplete_Limit.value)}
-              noResultsMsg={props.fields.API_Autocomplete_NoResultsMsg.value}
-              searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
+              doctifyBaseURL={
+                props?.fields?.API_Autocomplete_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/search/autocomplete?search'
+              }
+              doctifySearchBaseURL={
+                props?.fields?.API_DoctifySearch_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/search'
+              }
+              limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+              noResultsMsg={
+                props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                'No matches found, please try typing something else.'
+              }
+              searchIcon={
+                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+              }
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}
-              popularConsultantsList={props.fields.PopularConsultantsList}
-              searchConsultantsResultsHeaderText={
-                props.fields.SearchConsultantsResultsHeaderText.value
+              popularConsultantsList={
+                props?.fields?.PopularConsultantsList || []
               }
-              loadingText={props.fields.API_Autocomplete_LoadingMsg.value}
+              searchConsultantsResultsHeaderText={
+                props?.fields?.SearchConsultantsResultsHeaderText?.value ||
+                'SPECIALISTS'
+              }
+              loadingText={
+                props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                'Loading...'
+              }
             />
           </form>
         </ImageAndTextBlock>
