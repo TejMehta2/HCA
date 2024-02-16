@@ -72,7 +72,7 @@
   display: grid;
   padding-top: $spacing-7;
   padding-bottom: $spacing-7;
-  row-gap: $spacing-7;
+  gap: px-to-rem(60) $spacing-7;
 
   hr {
     display: none;
@@ -93,5 +93,10 @@
 
   .contact {
     gap: $spacing-2;
+  }
+
+  .availability {
+    display: grid;
+    grid: auto/ px-to-rem(24) 1fr;
   }
 }

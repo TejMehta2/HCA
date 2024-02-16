@@ -1,0 +1,82 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as GoogleMapsEmbedStories from './GoogleMapsEmbed.stories'
+
+<Meta of={GoogleMapsEmbedStories} />
+
+# GoogleMapsEmbed
+
+## Description
+
+The GoogleMapsEmbed component is a wrapper for a Google maps embed.
+
+The props extend the official [Google Maps map options interface](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
+
+The props also accept a callback function, which is called after the map is rendered and allows you to interact with the JS API map object directly.
+
+It is recommended to apply useCallback and useMemo as below to avoid unecessary re-renders. For dynamic data, we can add the results to the dependency arrays.
+
+The logic in the Story demo will likely be refactored into re-usable component.
+
+It can be composed like this:
+
+``` tsx
+const DemoGoogleMapsEmbedWrapper = () => {
+  const [cardVisible, setCardVisible] = useState(false);
+
+  const callback = useCallback((map: google.maps.Map) => {
+    const marker = new window.google.maps.Marker({
+      position: {
+        lat: 51.52036,
+        lng: -0.14797,
+      },
+      map,
+      title: 'Marker Title',
+    });
+    marker.addListener('click', () => {
+      setCardVisible(true);
+    });
+  }, []);
+
+  const mapMemo = useMemo(
+    () => (
+      <GoogleMapsEmbed
+        apiKey={''}
+        center={{
+          lat: 51.5072,
+          lng: 0.1276,
+        }}
+        zoom={10}
+        callback={callback}
+      />
+    ),
+    [callback]
+  );
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.inner}>
+        {mapMemo}
+        <div className={styles.children}>
+          {cardVisible && (
+            <CardMap
+              ctas={{
+                close: (
+                  <button onClick={() => setCardVisible(false)}>
+                    <span>Close</span>
+                    <Icons iconName="iconCross" />
+                  </button>
+                )
+              }}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+## Example 
+
+<Canvas of={GoogleMapsEmbedStories.Default} />
+<Controls of={GoogleMapsEmbedStories.Default} />

@@ -1,0 +1,27 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchButtonStories from './SearchButton.stories';
+
+<Meta of={SearchButtonStories} />
+
+# SearchButton
+
+## Description
+
+The SearchButton component is a button which looks like a search bar and triggers a modal to open. The contents of the modal can be set via the `modalContent` prop.
+
+It is intended to be used in the HomepageHero component.
+
+It can be composed like this:
+
+```tsx
+<SearchButton modalContent={<p>content</p>}>
+  <span>
+    How can we <b>help you?</b>
+  </span>
+</SearchButton>
+```
+
+## Example
+
+<Canvas of={SearchButtonStories.Default} />
+<Controls of={SearchButtonStories.Default} />
