@@ -79,10 +79,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div id={id ? id : undefined}>
         <ImageAndTextBlock
           theme="F-HCA-White"
           imageAlignment="left"
@@ -104,21 +101,41 @@ export const Default = (props: StepProps): JSX.Element => {
           </Text>
           <form autoComplete="off">
             <Search
-              placeholder={'Type in a service, condition, treatment...'}
-              doctifyBaseURL={props.fields.API_Autocomplete_BaseURL.value}
-              limit={Number(props.fields.API_Autocomplete_Limit.value)}
-              noResultsMsg={props.fields.API_Autocomplete_NoResultsMsg.value}
-              specialtyLabel={props.fields.SpecialitiesFilterHeaderText.value}
+              placeholder={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Type in a service, condition, treatment...'
+              }
+              doctifyBaseURL={
+                props?.fields?.API_Autocomplete_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/search/autocomplete?search'
+              }
+              limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+              noResultsMsg={
+                props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                'No matches found, please try typing something else.'
+              }
+              specialtyLabel={
+                props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                'Specialties'
+              }
               conditionsProceduresLabel={
-                props.fields.ConditionsTreatmentsFilterHeaderText.value
+                props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
+                'Conditions/ Procedures'
               }
               setKeywordId={setKeywordId}
               searchString={searchString}
               setSearchString={setSearchString}
-              searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
-              conditionsTreatmentsList={props.fields.ConditionsTreatmentsList}
-              specialitiesList={props.fields.SpecialitiesList}
-              loadingText={props.fields.API_Autocomplete_LoadingMsg.value}
+              searchIcon={
+                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+              }
+              conditionsTreatmentsList={
+                props?.fields?.ConditionsTreatmentsList || []
+              }
+              specialitiesList={props?.fields?.SpecialitiesList || []}
+              loadingText={
+                props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                'Loading...'
+              }
             />
           </form>
 

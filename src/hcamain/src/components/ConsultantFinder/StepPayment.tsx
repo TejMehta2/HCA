@@ -83,10 +83,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div id={id ? id : undefined}>
         <ImageAndTextBlock
           theme="F-HCA-White"
           imageAlignment="left"
@@ -108,18 +105,32 @@ export const Default = (props: StepProps): JSX.Element => {
           </Text>
           <form autoComplete="off">
             <SearchPayment
-              placeholder={props.fields.SearchPlaceholderText.value}
-              doctifyBaseURL={props.fields.API_Insurance_BaseURL.value}
-              limit={Number(props.fields.API_Insurance_Limit.value)}
-              noResultsMsg={props.fields.API_Insurance_NoResultsMsg.value}
-              searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
+              placeholder={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Type in your insurance provider'
+              }
+              doctifyBaseURL={
+                props?.fields?.API_Insurance_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/listing/insurers'
+              }
+              limit={Number(props?.fields?.API_Insurance_Limit?.value) || 20}
+              noResultsMsg={
+                props?.fields?.API_Insurance_NoResultsMsg?.value ||
+                'No matches found, please try typing something else.'
+              }
+              searchIcon={
+                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+              }
               searchStringPayment={searchStringPayment}
               setSearchStringPayment={setSearchStringPayment}
               insuranceProvidersFilterHeaderText={
-                props.fields.InsuranceProvidersFilterHeaderText.value
+                props?.fields?.InsuranceProvidersFilterHeaderText?.value ||
+                'INSURERS'
               }
-              insurersList={props.fields.InsurersList}
-              loadingText={props.fields.API_Insurance_LoadingMsg.value}
+              insurersList={props?.fields?.InsurersList || []}
+              loadingText={
+                props?.fields?.API_Insurance_LoadingMsg?.value || 'Loading...'
+              }
             />
 
             <Container marginTop="spacing-8" marginBottom="spacing-4">
