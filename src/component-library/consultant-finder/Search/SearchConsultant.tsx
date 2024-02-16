@@ -130,6 +130,15 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
     setLoading(false);
     setError(false);
     setNoResults(false);
+    setData([]);
+
+    // Cancel any ongoing API request
+    if (typeof cancelToken !== 'undefined') {
+      cancelToken.cancel('Operation canceled due to new request.');
+    }
+
+    // Reset cancelToken
+    cancelToken = axios.CancelToken.source();
 
     if (keywordId > 0) {
       // call doctify api
@@ -196,7 +205,6 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
               props.searchConsultantsResultsHeaderText
             }
             loadingText={props.loadingText}
-            doctifySearchBaseURL={props.doctifySearchBaseURL}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

@@ -34,7 +34,7 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
         <div className={styles['consultant-finder-search-dropdown-loader']}>
           <Loader theme="light" />
           <Text tag="p" variation="body-small">
-            Loading...
+            {props.loadingText}
           </Text>
         </div>
       )}

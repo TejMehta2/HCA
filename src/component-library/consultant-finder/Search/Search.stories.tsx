@@ -35,6 +35,7 @@ TreatmentConditions.args = {
   noResultsMsg: 'No matches found, please try typing something else.',
   specialtyLabel: 'Specialties',
   conditionsProceduresLabel: 'Conditions/Procedures',
+  loadingText: 'Loading...',
   conditionsTreatmentsList: [
     {
       id: '036f2449-86bb-41d3-a5a1-3ad396c9b27d',

@@ -32,6 +32,7 @@ Payment.args = {
   doctifyBaseURL: 'https://api.doctify.com/api/hca/listing/insurers',
   limit: 20,
   noResultsMsg: 'No matches found, please try typing something else.',
+  loadingText: 'Loading...',
   insurersList: [
     {
       id: 'bd931ca2-edcf-43b7-bdca-fca3c8b47722',

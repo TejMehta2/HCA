@@ -24,6 +24,7 @@ interface Fields {
   SearchByConsultantLink: LinkField;
   API_Autocomplete_BaseURL: Field<string>;
   API_Autocomplete_Limit: Field<string>;
+  API_Autocomplete_LoadingMsg: Field<string>;
   SearchPlaceholderText: Field<string>;
   API_Autocomplete_NoResultsMsg: Field<string>;
   ConditionsTreatmentsFilterHeaderText: Field<string>;
@@ -57,7 +58,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const id = props.params.RenderingIdentifier;
-  console.log(ConsultantFinderContext);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
     ConsultantFinderContext
   );
@@ -118,6 +118,7 @@ export const Default = (props: StepProps): JSX.Element => {
               searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
               conditionsTreatmentsList={props.fields.ConditionsTreatmentsList}
               specialitiesList={props.fields.SpecialitiesList}
+              loadingText={props.fields.API_Autocomplete_LoadingMsg.value}
             />
           </form>
 

@@ -41,6 +41,7 @@ interface Fields {
   API_Insurance_BaseURL: Field<string>;
   API_Insurance_NoResultsMsg: Field<string>;
   API_Insurance_Limit: Field<string>;
+  API_Insurance_LoadingMsg: Field<string>;
   SearchPlaceholderText: Field<string>;
   SelfPayCheckBoxText: Field<string>;
 }
@@ -119,6 +120,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 props.fields.InsuranceProvidersFilterHeaderText.value
               }
               insurersList={props.fields.InsurersList}
+              loadingText={props.fields.API_Insurance_LoadingMsg.value}
             />
 
             <Container marginTop="spacing-8" marginBottom="spacing-4">

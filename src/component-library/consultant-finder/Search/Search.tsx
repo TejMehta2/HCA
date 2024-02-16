@@ -50,6 +50,16 @@ const Search = (props: SearchProps): JSX.Element => {
     setLoading(false);
     setError(false);
     setNoResults(false);
+    setData([]);
+
+    // Cancel any ongoing API request
+    if (typeof cancelToken !== 'undefined') {
+      cancelToken.cancel('Operation canceled due to new request.');
+    }
+
+    // Reset cancelToken
+    cancelToken = axios.CancelToken.source();
+
     setData(newData);
     // console.log('popular search data:', newData);
   };
@@ -160,6 +170,7 @@ const Search = (props: SearchProps): JSX.Element => {
             resultsIcon={props.searchIcon}
             specialtyLabel={props.specialtyLabel}
             conditionsProceduresLabel={props.conditionsProceduresLabel}
+            loadingText={props.loadingText}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

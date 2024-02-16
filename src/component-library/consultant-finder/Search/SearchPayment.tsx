@@ -92,7 +92,6 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     setError(false);
     setNoResults(false);
     setData([]);
-    // getSitecoreData();
 
     // Cancel any ongoing API request
     if (typeof cancelToken !== 'undefined') {
@@ -156,6 +155,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
             insuranceProvidersFilterHeaderText={
               props.insuranceProvidersFilterHeaderText
             }
+            loadingText={props.loadingText}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

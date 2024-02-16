@@ -41,6 +41,7 @@ interface Fields {
   API_Autocomplete_BaseURL: Field<string>;
   API_Autocomplete_NoResultsMsg: Field<string>;
   API_Autocomplete_Limit: Field<string>;
+  API_DoctifySearch_BaseURL: Field<string>;
 }
 
 type StepProps = {
@@ -107,7 +108,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <SearchConsultant
               placeholder={props.fields.SearchPlaceholderText.value}
               doctifyBaseURL={props.fields.API_Autocomplete_BaseURL.value}
-              doctifySearchBaseURL={`https://api.doctify.com/api/hca/search`}
+              doctifySearchBaseURL={
+                props.fields.API_DoctifySearch_BaseURL.value
+              }
               limit={Number(props.fields.API_Autocomplete_Limit.value)}
               noResultsMsg={props.fields.API_Autocomplete_NoResultsMsg.value}
               searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
