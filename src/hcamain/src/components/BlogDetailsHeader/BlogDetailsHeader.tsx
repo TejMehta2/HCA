@@ -53,8 +53,6 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <HeaderBlogDetails
       theme={props.params.Theme}
