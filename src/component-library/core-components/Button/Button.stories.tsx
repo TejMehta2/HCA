@@ -28,7 +28,9 @@ export const LargeFullDark: StoryObj<typeof Button> = {
     children: (
       <button type="button" onClick={exampleClick}>
         <Icons iconName="iconPhone" />
-        Large <strong>Button</strong>
+        <span>
+          Large <strong>Button</strong>
+        </span>
       </button>
     ),
     theme: 'full-dark',
@@ -78,7 +80,9 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Large <strong>Button</strong>
+          <span>
+            Large <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -101,7 +105,9 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Large <strong>Button</strong>
+          <span>
+            Large <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -131,7 +137,9 @@ export const SmallFullDark: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Small <strong>Button</strong>
+          <span>
+            Small <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -154,7 +162,9 @@ export const SmallFullLight: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Small <strong>Button</strong>
+          <span>
+            Small <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -184,7 +194,9 @@ export const SmallOutlineDark: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Small <strong>Button</strong>
+          <span>
+            Small <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -229,7 +241,9 @@ export const SmallFullLightBlue: StoryObj<typeof Button> = {
     children: (
       <>
         <button type="button">
-          Small <strong>Button</strong>
+          <span>
+            Small <strong>Button</strong>
+          </span>
           <Icons iconName="iconPhone" />
         </button>
       </>
@@ -356,7 +370,9 @@ export const ResponsiveContainerExample: StoryObj<typeof Button> = {
     children: (
       <button type="button" onClick={exampleClick}>
         <Icons iconName="iconPhone" />
-        Large <strong>Button</strong>
+        <span>
+          Large <strong>Button</strong>
+        </span>
       </button>
     ),
     theme: 'full-dark',

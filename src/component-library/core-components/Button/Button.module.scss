@@ -86,6 +86,10 @@
     & > span:has(svg) {
       display: flex;
     }
+
+    svg {
+      min-width: min-content;
+    }
   }
 
   &.loading {

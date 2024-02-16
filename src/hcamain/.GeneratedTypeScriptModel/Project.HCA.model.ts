@@ -48,28 +48,28 @@ export namespace PageContent {
             /**
             * Represents the Amenities List field (5455a723-12c3-4842-8008-268c45cf5ed9).
             */
-            AmenitiesList?: {
+            amenitiesList?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Image field (6198bd6f-14ad-4894-be7c-486fa8bcf2fc).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (108d5af2-f154-40d8-9f38-52972a67a897).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (5bcb634d-fb9e-440c-8258-432b2475df21).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -158,14 +158,14 @@ export namespace Foundation.Amenities {
             /**
             * Represents the Icon field (65a9ef0d-857e-4201-a474-2f91662e3817).
             */
-            Icon?: {
+            icon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Title field (a17e6d73-e816-4f01-bb73-49e5596311be).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -205,21 +205,21 @@ export namespace Foundation.Author {
             /**
             * Represents the Avatar field (fc6fa1ed-68bb-40e4-bd15-40e627d045a2).
             */
-            Avatar?: {
+            avatar?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Name field (dea16331-9c35-4ac9-9a6e-81b11f81867a).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Position field (4c198898-6bfd-4ea5-8afc-834c5eb62892).
             */
-            Position?: {
+            position?: {
                 jsonValue: Field<string>
             };
 
@@ -270,14 +270,14 @@ export namespace PageContent {
             /**
             * Represents the Cards field (34cb7155-44a0-46a7-936e-7c65eeef67e8).
             */
-            Cards?: {
+            cards?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (223f2ea2-1d66-4c63-a3e7-870f064728e2).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -397,7 +397,7 @@ export namespace PageContent {
             /**
             * Represents the Image field (fb20c52b-7356-4409-8299-a77febc5597b).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
@@ -468,14 +468,14 @@ export namespace Pages {
             /**
             * Represents the Date field (e1b9a21b-a32e-429b-bbe5-047b323fd263).
             */
-            Date?: {
+            date?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Tags field (2fa63bb5-b5b6-4ce7-85ef-36b6b3352524).
             */
-            Tags?: {
+            tags?: {
                 jsonValue: Item[]
             };
 
@@ -515,21 +515,21 @@ export namespace PageContent {
             /**
             * Represents the Heading field (96b3721e-4032-4102-83f6-ec8b2369b78f).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (55462d0e-1d24-40a1-bdac-6314fdf4d6d8).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (b800cde5-8ae5-45e2-806d-08fc3c4f0bcd).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -598,14 +598,14 @@ export namespace PageContent {
             /**
             * Represents the Author field (3886f36e-e16a-4070-8e87-cace5960e294).
             */
-            Author?: {
+            author?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Quote field (2302f051-cf20-4f44-98a5-bef06ccfbc90).
             */
-            Quote?: {
+            quote?: {
                 jsonValue: Field<string>
             };
 
@@ -671,7 +671,7 @@ export namespace PageContent {
             /**
             * Represents the Text field (6e67b4e2-5b5a-472d-8ffe-0278ed969e13).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
@@ -735,7 +735,7 @@ export namespace PageContent {
             /**
             * Represents the Modal Content field (39493498-2ce7-47f0-aeca-fb632d319422).
             */
-            ModalContent?: {
+            modalContent?: {
                 jsonValue: Item[]
             };
 
@@ -799,7 +799,7 @@ export namespace PageContent {
             /**
             * Represents the Home Icon field (bafbf038-64c5-4ed8-96ba-d96293361814).
             */
-            HomeIcon?: {
+            homeIcon?: {
                 jsonValue: Item
             };
 
@@ -870,14 +870,14 @@ export namespace Foundation.Cqc {
             /**
             * Represents the Text field (fd25675b-a6f6-4fc9-be43-f7b1eed271cb).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (b5cfb002-6c07-4b59-953f-abb43486f0ce).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -997,7 +997,7 @@ export namespace Foundation.Settings {
             /**
             * Represents the Logo field (deaa091e-8c4e-4093-ad6a-f79f00b2521a).
             */
-            Logo?: {
+            logo?: {
                 jsonValue: ImageField
             };
 
@@ -1042,28 +1042,28 @@ export namespace Foundation.Cqc {
             /**
             * Represents the CQC Logo Dark field (25e7f1d6-983d-437f-9430-f9cb0790d4ea).
             */
-            CQCLogoDark?: {
+            cQCLogoDark?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the CQC Logo Light field (cac4f9dc-c36a-4c56-97db-ebce1e7e2f29).
             */
-            CQCLogoLight?: {
+            cQCLogoLight?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Icon field (f7469f76-595c-49cc-b0cc-66a5e3d33383).
             */
-            Icon?: {
+            icon?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (7edb9b23-9055-4551-a6d4-edca5a3f364d).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -1119,21 +1119,21 @@ export namespace PageContent {
             /**
             * Represents the Heading field (f79f7278-290d-4268-a48b-e6eedda56618).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (0e7dc7c3-75ae-4895-8f37-53beef0051cf).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (6b6db542-a329-44cd-a350-0ba0f386640e).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -1251,7 +1251,7 @@ export namespace PageContent {
             /**
             * Represents the Contact Unit field (3128343e-984c-4c99-9dc2-cc13b1152783).
             */
-            ContactUnit?: {
+            contactUnit?: {
                 jsonValue: Item[]
             };
 
@@ -1319,7 +1319,7 @@ Business.Base.diagnosisSelectorJson &  {
             /**
             * Represents the Name field (0744d2aa-d1a4-4b12-aa8c-0e22d7c86518).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
@@ -1349,7 +1349,7 @@ export namespace PageContent {
             /**
             * Represents the Search Placeholder field (9bb105bf-4a73-4ffd-b83f-f6b9fc0b5345).
             */
-            SearchPlaceholder?: {
+            searchPlaceholder?: {
                 jsonValue: Field<string>
             };
 
@@ -1459,21 +1459,21 @@ export namespace Foundation.ContentCard {
             /**
             * Represents the Image field (d8fecc64-a0b7-4e73-b436-929a62a044ee).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (ce8136f4-2e0b-4236-af51-e522ee8ab699).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (57f21df8-fa55-4267-8bb7-743b504d1ddd).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -1529,21 +1529,21 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (cddfe7c4-c61f-48a4-8719-85e660642a13).
             */
-            CTACardText?: {
+            cTACardText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Pages field (e6568c06-70ff-4b88-b5ed-44a0bd98df50).
             */
-            Pages?: {
+            pages?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (7271b4dd-8299-46fc-b5a1-d2422b5e4fc3).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -1624,28 +1624,28 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
             */
-            CTACardText?: {
+            cTACardText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Pages field (8c120705-ad32-4f5e-a87e-84b01b1f2d83).
             */
-            Pages?: {
+            pages?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (17be2717-992a-4d65-918b-07bb26210837).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -1709,7 +1709,7 @@ export namespace PageContent {
             /**
             * Represents the Cards field (13620367-04c6-4085-98fe-4980726cc3bd).
             */
-            Cards?: {
+            cards?: {
                 jsonValue: Item[]
             };
 
@@ -1782,14 +1782,14 @@ export namespace Business.OpeningHours {
             /**
             * Represents the DayName field (87a87711-dde0-40fb-8aab-ad0ca36026c9).
             */
-            DayName?: {
+            dayName?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the SchemaCanonicalUrl field (8cf0b054-2691-498e-8622-88c1d543fbca).
             */
-            SchemaCanonicalUrl?: {
+            schemaCanonicalUrl?: {
                 jsonValue: Field<string>
             };
 
@@ -1835,7 +1835,7 @@ export namespace Business {
             /**
             * Represents the Name field (e5a5eccf-e46f-4fb8-beba-b2e9c72dc03c).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
@@ -1865,7 +1865,7 @@ export namespace PageContent {
             /**
             * Represents the Reviews field (35d080dc-c6a0-4f8c-814e-b69ac26672dd).
             */
-            Reviews?: {
+            reviews?: {
                 jsonValue: Item
             };
 
@@ -1931,7 +1931,7 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Filter field (51584e8c-360b-47ea-96e0-bd5d45dec2af).
             */
-            Filter?: {
+            filter?: {
                 jsonValue: Field<string>
             };
 
@@ -1969,21 +1969,21 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Custom Filters field (ab11cab9-17e6-42ac-98ca-aec3d7127a85).
             */
-            CustomFilters?: {
+            customFilters?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Practice field (d4e8f601-4189-4c53-a450-1b938d34f437).
             */
-            Practice?: {
+            practice?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Service field (e1dd6602-4ddc-4428-a336-986c1a3e5583).
             */
-            Service?: {
+            service?: {
                 jsonValue: Item[]
             };
 
@@ -2067,35 +2067,35 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Doctify Logo Dark field (c63de3da-8171-45b3-b7f5-698900bfcb0b).
             */
-            DoctifyLogoDark?: {
+            doctifyLogoDark?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Doctify Logo Light field (f3b50734-b60b-44fb-a0fe-fa568bf3948c).
             */
-            DoctifyLogoLight?: {
+            doctifyLogoLight?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Link field (5b49825d-7ce3-43a8-b6fe-a1719cfa513e).
             */
-            Link?: {
+            link?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Reviews field (ef0cf15c-3c69-4958-9cc1-e71ad136219d).
             */
-            Reviews?: {
+            reviews?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Stars field (8768d68c-852a-48ad-98d6-f5b0ddac4fbd).
             */
-            Stars?: {
+            stars?: {
                 jsonValue: Field<number>
             };
 
@@ -2146,14 +2146,14 @@ export namespace Foundation.Settings {
             /**
             * Represents the Logo field (e227a9fb-8081-4188-84d2-add5670a5822).
             */
-            Logo?: {
+            logo?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (e74a74ec-9484-41df-9de3-506afcd31ab2).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
@@ -2183,7 +2183,7 @@ export namespace Foundation.Doctify {
             /**
             * Represents the Text field (afdb5fb5-7e19-49e6-b389-dbdacd6791e9).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
@@ -2218,14 +2218,14 @@ export namespace PageContent {
             /**
             * Represents the Reviews field (9977d5cd-e77b-4490-b9f6-48cd55cf0ff5).
             */
-            Reviews?: {
+            reviews?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Testimonials field (f816dbdb-faef-4a84-924a-8f551ce45706).
             */
-            Testimonials?: {
+            testimonials?: {
                 jsonValue: Item[]
             };
 
@@ -2301,21 +2301,21 @@ Foundation.CtabaseJson &  {
             /**
             * Represents the CTA Card field (5a674cd7-c9eb-4be4-8577-5c3d6d72c70c).
             */
-            CTACard?: {
+            cTACard?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Number Of Cards field (f75ab386-350c-44ca-97a1-3b63a8a61cdc).
             */
-            NumberOfCards?: {
+            numberOfCards?: {
                 jsonValue: Field<number>
             };
 
             /**
             * Represents the Title field (fd86c684-2a05-4705-8d10-4eb1bc9156f5).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -2396,28 +2396,28 @@ export namespace PageContent {
             /**
             * Represents the Heading field (ae4b03e7-ac89-4f52-8832-3c0cc5ef6e09).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Questions field (7a4dfcc9-d784-4ba0-9b16-3845f8bda62a).
             */
-            Questions?: {
+            questions?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Text field (6ff89c24-0c42-41a0-91e8-a6d7e68c167c).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (ed208587-49ec-48b5-81d0-2c4de0185875).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -2490,14 +2490,14 @@ export namespace Foundation.FaqQuestion {
             /**
             * Represents the Answer field (1d63eaee-6a20-4bd9-894d-9902c8fdd2d0).
             */
-            Answer?: {
+            answer?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Question field (e1aec2c8-0955-4e5a-8d5f-d811854bf894).
             */
-            Question?: {
+            question?: {
                 jsonValue: Field<string>
             };
 
@@ -2543,21 +2543,21 @@ Business.Base.specialtiesSelectorJson &  {
             /**
             * Represents the City field (64765ef6-ea35-4e9e-8007-effd7c669ee6).
             */
-            City?: {
+            city?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the ContactUnits field (1de31a1a-0b18-4473-9cd1-41efa2177819).
             */
-            ContactUnits?: {
+            contactUnits?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the FacilityType field (06b564e0-460c-438b-ae4b-b09b0c2f4f60).
             */
-            FacilityType?: {
+            facilityType?: {
                 jsonValue: Field<string>
             };
 
@@ -2592,14 +2592,14 @@ export namespace Foundation.Search {
             /**
             * Represents the Filters field (e037b311-a21a-440f-81fd-8858921e9f72).
             */
-            Filters?: {
+            filters?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Header field (c204214a-0246-4eff-97f5-3c5aa324191e).
             */
-            Header?: {
+            header?: {
                 jsonValue: Field<string>
             };
 
@@ -2648,14 +2648,14 @@ export namespace Foundation.Search {
             /**
             * Represents the Display Name field (38dc3113-9c54-437f-8347-c1b4a1acd73f).
             */
-            DisplayName?: {
+            displayName?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Filter field (eb2f85a0-e72f-4048-aadf-c719635b6efd).
             */
-            Filter?: {
+            filter?: {
                 jsonValue: Field<string>
             };
 
@@ -2716,28 +2716,28 @@ export namespace PageContent {
             /**
             * Represents the Heading field (e047cb8d-86e6-4685-acf2-837384cae897).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Image field (854987bd-7482-422c-ac78-8a46675149ca).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (9e4f4a5f-c7b3-44c7-ae0b-f3293e174d4a).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (3470f254-0d5b-47ed-a2dd-06762877c205).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -2820,28 +2820,28 @@ export namespace Business {
             /**
             * Represents the Description field (ea4449a2-41ec-4177-8f7d-72cb27a0288f).
             */
-            Description?: {
+            description?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the PackageIdentifier field (6642ffeb-4058-4d49-b20c-085aeda73e2c).
             */
-            PackageIdentifier?: {
+            packageIdentifier?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the PackageName field (6e8bf389-cd95-4f7c-9c06-c803993a0d69).
             */
-            PackageName?: {
+            packageName?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Price field (b39eef6b-5068-4616-b0b4-72131dbd4c8b).
             */
-            Price?: {
+            price?: {
                 jsonValue: Field<number>
             };
 
@@ -2891,35 +2891,35 @@ export namespace Navigation {
             /**
             * Represents the Bottom Line Links Folder field (07c88682-dd4a-4cfb-b32e-b2d8d9a184ac).
             */
-            BottomLineLinksFolder?: {
+            bottomLineLinksFolder?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the CQC Status field (53012c86-fb70-4ced-bf15-99343f26f98b).
             */
-            CqcStatus?: {
+            cqcStatus?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Doctify Reviews field (6391ed4e-3117-408e-8e21-b6b4418cc78c).
             */
-            DoctifyReviews?: {
+            doctifyReviews?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Logo field (3f6ce072-2ff1-4a92-8761-c2085112d9d6).
             */
-            Logo?: {
+            logo?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Navigation Columns Folders field (4adb7f7d-1d44-451c-8996-c398bfc37d75).
             */
-            NavigationColumnsFolders?: {
+            navigationColumnsFolders?: {
                 jsonValue: Item[]
             };
 
@@ -2990,14 +2990,14 @@ export namespace Foundation.Settings {
             /**
             * Represents the Key field (f73431c9-2a83-4829-82b1-fc92062b6c02).
             */
-            Key?: {
+            key?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Value field (7e4ec787-c4e7-49bf-872c-fdf54a101de5).
             */
-            Value?: {
+            value?: {
                 jsonValue: Field<string>
             };
 
@@ -3043,7 +3043,7 @@ export namespace Foundation {
             /**
             * Represents the SVG Markup field (f42617c7-46b7-46f3-a075-69ebf514838e).
             */
-            SvgMarkup?: {
+            svgMarkup?: {
                 jsonValue: Field<string>
             };
 
@@ -3083,21 +3083,21 @@ export namespace PageContent {
             /**
             * Represents the Image field (eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (6d02e9c7-eee5-499f-b3ed-1ea57186b925).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (dae2c26c-d179-4609-94f3-33169a4dc39f).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3170,14 +3170,14 @@ export namespace Foundation.RenderingParameters {
             /**
             * Represents the HeadingSize field (b791330d-3cf2-4c11-a07f-5a29d392c972).
             */
-            HeadingSize?: {
+            headingSize?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the HeadingTag field (be0ce91d-874a-4f9c-8418-6c173f5593af).
             */
-            HeadingTag?: {
+            headingTag?: {
                 jsonValue: Field<string>
             };
 
@@ -3261,35 +3261,35 @@ export namespace PageContent {
             /**
             * Represents the CTA Heading field (1de0fca7-3911-40da-978b-d47f369505ac).
             */
-            CTAHeading?: {
+            cTAHeading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Image field (588531f6-d34c-4c8e-a2fe-76c3b14706b0).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Search Icon field (683bbbba-fd98-4f03-b889-a3bddc01e2fe).
             */
-            SearchIcon?: {
+            searchIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Search Placeholder field (2f3126f4-1894-4e15-a6db-d8c2e89cfb6e).
             */
-            SearchPlaceholder?: {
+            searchPlaceholder?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (71b95f4c-fff2-4239-9be8-664c632bcfd5).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3380,14 +3380,14 @@ export namespace PageContent {
             /**
             * Represents the Tabs field (24209e86-b618-4604-981a-20948ddb46eb).
             */
-            Tabs?: {
+            tabs?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (6fa75cd1-e82b-41ac-b69b-5bddfbed5e55).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3468,28 +3468,28 @@ export namespace PageContent {
             /**
             * Represents the Heading field (c08c23c3-34b4-44e0-bcb6-8e8b9528b7ca).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Image field (0999ccb0-f298-4b06-8cc7-1c9c4584ed1a).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (362d2151-9881-41fb-a9f2-4722fae21e24).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (d0cf786e-4622-4026-8bfb-ae4c5011f300).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3578,42 +3578,42 @@ export namespace PageContent {
             /**
             * Represents the Counters field (d0db9d3f-ad94-4795-ae43-5c3ce95ea702).
             */
-            Counters?: {
+            counters?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the CQC Status field (a238486c-a225-48be-be0a-864e6fe4e0e0).
             */
-            CQCStatus?: {
+            cQCStatus?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Doctify Reviews field (c1ad7d36-37ef-40e0-a5f8-749f50c0ae13).
             */
-            DoctifyReviews?: {
+            doctifyReviews?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Image field (235db187-da6f-4bb9-a6ad-a281cb8af961).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (7b92fe8b-f992-41d1-bd78-93b8e82b81d1).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (b9bb0431-2236-460a-8136-154adf67e91c).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3697,7 +3697,7 @@ export namespace Foundation.RenderingParameters {
             /**
             * Represents the Columns field (bc271425-c210-4d8e-8c71-5779b0052e78).
             */
-            Columns?: {
+            columns?: {
                 jsonValue: Field<string>
             };
 
@@ -3762,28 +3762,28 @@ export namespace PageContent {
             /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
-            Cards?: {
+            cards?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Heading field (53e1bf97-8923-4d23-8f1f-78a53a0b0c94).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (a9ada15f-0a53-4831-b67c-c2e5d8aee6aa).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (338112bf-431e-4d75-854e-1c272b743ae1).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -3856,14 +3856,14 @@ export namespace Foundation.Logos {
             /**
             * Represents the Link field (ad27e018-981a-4714-ae3e-20eda670d5b4).
             */
-            Link?: {
+            link?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the LogoImage field (9bda5df1-cce6-4637-aeb7-6b5996c615a5).
             */
-            LogoImage?: {
+            logoImage?: {
                 jsonValue: ImageField
             };
 
@@ -3908,28 +3908,28 @@ export namespace PageContent {
             /**
             * Represents the Heading field (4daf344d-fa07-44fa-b4b1-5b3ab1552954).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Logos field (a4f7b735-8a5e-4157-afbf-f6e354336852).
             */
-            Logos?: {
+            logos?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Text field (7d6483df-202c-44aa-9305-74ec87bc051a).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (74c22fa1-e733-4ff8-9649-694c4cdf7260).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -4030,28 +4030,28 @@ export namespace Navigation {
             /**
             * Represents the Logo field (9ffdc928-1e83-4c59-86b9-82c1265607e6).
             */
-            Logo?: {
+            logo?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Navigation Tabs field (6b2b0879-3624-4bf1-9c6b-fbb0efc597da).
             */
-            NavigationTabs?: {
+            navigationTabs?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Primary Complementary Links Folder field (b06bcb16-571f-444c-a3f8-af18c7cae5fb).
             */
-            PrimaryComplementaryLinksFolder?: {
+            primaryComplementaryLinksFolder?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Secondary Complementary Links Folder field (854abf43-7a6a-4c8a-9226-07f9b985bd4a).
             */
-            SecondaryComplementaryLinksFolder?: {
+            secondaryComplementaryLinksFolder?: {
                 jsonValue: Item
             };
 
@@ -4102,14 +4102,14 @@ export namespace Navigation.NavigationBlocks {
             /**
             * Represents the Cta field (5a386308-a4e3-4ddd-bd64-81dac4b94b4a).
             */
-            Cta?: {
+            cta?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Variant field (1a81003b-9993-42ad-888b-44c19f28aeaa).
             */
-            Variant?: {
+            variant?: {
                 jsonValue: Item
             };
 
@@ -4187,49 +4187,49 @@ export namespace Foundation {
             /**
             * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
             */
-            CardStyles?: {
+            cardStyles?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
             */
-            ForegroundImageDesktop?: {
+            foregroundImageDesktop?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
             */
-            ForegroundImageMobile?: {
+            foregroundImageMobile?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
             */
-            MapStyles?: {
+            mapStyles?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
             */
-            Number?: {
+            number?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
             */
-            Theme?: {
+            theme?: {
                 jsonValue: Item
             };
 
@@ -4282,45 +4282,171 @@ export namespace Foundation {
             /**
             * Represents the Primary CTA field (eebd3076-badf-4340-b1da-735d54239c77).
             */
-            PrimaryCTA?: {
+            primaryCTA?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Primary CTA Icon field (39de5b4b-939b-41ec-8f16-3a6f92032608).
             */
-            PrimaryCTAIcon?: {
+            primaryCTAIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Secondary CTA field (40124139-ae1f-40e2-9472-d3251f5cbfdf).
             */
-            SecondaryCTA?: {
+            secondaryCTA?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Secondary CTA Icon field (71340edf-a535-4119-8cc3-2036bae2e824).
             */
-            SecondaryCTAIcon?: {
+            secondaryCTAIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Text field (fdad35a7-2d56-4054-999f-3d35fbb308cd).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (8bdcda68-7ca6-4187-bd0b-0eac908580c5).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContent =  {
+        fields?: { 
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            PrimaryCTA?: LinkField;
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            PrimaryCTAIcon?: Item;
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            SecondaryCTA?: LinkField;
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            SecondaryCTAIcon?: Item;
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContentJson =  {
+        
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            primaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            primaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            secondaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            secondaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Modal Content
+    */
+    export type ModalContent = Foundation.RenderingParameters.HeadingParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Modal Content
+    */
+    export type ModalContentJson = Foundation.RenderingParameters.HeadingParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content Folder
+    */
+    export type ModalContentFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content Folder
+    */
+    export type ModalContentFolderJson =  {
+        
 
     }
 }
@@ -4367,35 +4493,35 @@ export namespace Navigation.NavigationBlocks {
             /**
             * Represents the Cta field (614b8843-274e-4578-bea3-7b211acac5a8).
             */
-            Cta?: {
+            cta?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Date field (9b031789-5f8b-4740-b463-040954a354e4).
             */
-            Date?: {
+            date?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Description field (cd5ff2e2-21ce-4529-9de3-9e233fa74db2).
             */
-            Description?: {
+            description?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Tag field (b88e5296-e277-4937-b8be-ce84fb94d88c).
             */
-            Tag?: {
+            tag?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (cc1dccc3-0142-4c9b-a675-a25995c468ae).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -4438,28 +4564,28 @@ export namespace Navigation.NavigationBlocks {
             /**
             * Represents the Cta field (48331203-1a9e-4a25-a329-b056249f0bf6).
             */
-            Cta?: {
+            cta?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Description field (f1312906-4e03-41b4-9d76-468c903e08f0).
             */
-            Description?: {
+            description?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (e99f74fd-83ea-49af-8620-a13ed990fed0).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Variant field (2783eca4-d840-4a51-8b27-b2ef67c9f401).
             */
-            Variant?: {
+            variant?: {
                 jsonValue: Item
             };
 
@@ -4489,7 +4615,7 @@ export namespace Navigation {
             /**
             * Represents the Link field (e5346173-0fb0-45a3-8e04-2fcbe3820f74).
             */
-            Link?: {
+            link?: {
                 jsonValue: LinkField
             };
 
@@ -4522,14 +4648,14 @@ export namespace Navigation {
             /**
             * Represents the Links field (ef9b6d78-b9e5-4bf2-81ec-876cefc411d2).
             */
-            Links?: {
+            links?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (a541959d-74c3-488f-b625-76952888a8a2).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -4567,21 +4693,21 @@ export namespace Navigation {
             /**
             * Represents the MobileTabCta field (54383e58-0b47-4c2a-9d23-1f8bf970ffbd).
             */
-            MobileTabCta?: {
+            mobileTabCta?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the TabCta field (0373261e-b294-4fbb-8165-7ae3c436d18f).
             */
-            TabCta?: {
+            tabCta?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the TabTitle field (b4822256-10b6-453b-a125-f80091ad670e).
             */
-            TabTitle?: {
+            tabTitle?: {
                 jsonValue: Field<string>
             };
 
@@ -4647,35 +4773,35 @@ export namespace Business.OpeningHours {
             /**
             * Represents the Closes field (9b888acf-cbdb-429a-8470-57c9e188c065).
             */
-            Closes?: {
+            closes?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Day Of Week field (47e5be15-97eb-4c5e-acfb-da68de36152f).
             */
-            DayOfWeek?: {
+            dayOfWeek?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Opens field (b87da11a-58d6-4e00-9eae-7fda27668110).
             */
-            Opens?: {
+            opens?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Valid From field (f47e4f9b-0c5f-447b-8e0d-40ef13c77121).
             */
-            ValidFrom?: {
+            validFrom?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Valid Through field (1a050cdb-56e6-49ba-ba26-d61f8e1adf45).
             */
-            ValidThrough?: {
+            validThrough?: {
                 jsonValue: Field<string>
             };
 
@@ -4710,14 +4836,14 @@ export namespace HCA.Project.HCA {
             /**
             * Represents the Content field (38b0e5ab-0239-472e-8605-a55987ae3f43).
             */
-            Content?: {
+            content?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (f253d55f-c5e7-4bbd-8423-45ee6c8a12ec).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -4779,7 +4905,7 @@ export namespace Foundation {
             /**
             * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
             */
-            Link?: {
+            link?: {
                 jsonValue: LinkField
             };
 
@@ -4809,7 +4935,7 @@ export namespace PageContent {
             /**
             * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
             */
-            Link?: {
+            link?: {
                 jsonValue: LinkField
             };
 
@@ -4906,28 +5032,28 @@ export namespace PageContent {
             /**
             * Represents the Card CTA Text field (3e825f07-23e5-4788-ad4f-f8c021369847).
             */
-            CardCTAText?: {
+            cardCTAText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Stories field (a028bacb-1e44-4266-8d99-9859c416810b).
             */
-            Stories?: {
+            stories?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Text field (f0f7eafa-09d8-4f07-b552-f72923f55cc6).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (943f4079-f82e-4226-b595-2796b2aa1545).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -4995,7 +5121,7 @@ export namespace Pages {
             /**
             * Represents the Date field (2a6cef4b-c5d4-4812-9996-bcbed7bbaae1).
             */
-            Date?: {
+            date?: {
                 jsonValue: Field<string>
             };
 
@@ -5035,21 +5161,21 @@ export namespace PageContent {
             /**
             * Represents the Heading field (088df122-a53e-40e5-8602-1ed6be28cbbd).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (88d3d237-562e-4cbe-9358-5e1344bd995b).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (821748a1-60bd-44fd-8f99-beb3826ef5f1).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -5140,14 +5266,14 @@ export namespace Foundation {
             /**
             * Represents the Number field (2baa43f4-7140-4514-97fc-6f9638b651e7).
             */
-            Number?: {
+            number?: {
                 jsonValue: Field<number>
             };
 
             /**
             * Represents the Text field (2496fb09-1929-4184-a62a-36c44eba0deb).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
@@ -5197,35 +5323,35 @@ export namespace PageContent {
             /**
             * Represents the CTA Card Text field (429ab872-c8f4-411f-ba93-a365b1e65954).
             */
-            CTACardText?: {
+            cTACardText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Description field (164cae5b-071a-456a-be6b-7613241c9599).
             */
-            Description?: {
+            description?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Heading field (7ee31b61-dda1-4893-8d00-3eaf1c608b7e).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Services field (8da1a961-cc60-4ab4-a214-19e099f6e302).
             */
-            Services?: {
+            services?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Title field (c105a5a2-141b-4090-808e-fa24176aaf31).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -5350,14 +5476,14 @@ export namespace SocialMedia {
             /**
             * Represents the Profile Url field (00de350b-24c0-48ac-9429-a72a1e1faff7).
             */
-            ProfileUrl?: {
+            profileUrl?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Social Media Provider field (598e7241-54de-4560-beec-ea2c902d2e1d).
             */
-            SocialMediaProvider?: {
+            socialMediaProvider?: {
                 jsonValue: Item
             };
 
@@ -5385,7 +5511,7 @@ export namespace SocialMedia {
             /**
             * Represents the Profiles field (c3c02e07-e04a-4172-a0a3-526f47a98310).
             */
-            Profiles?: {
+            profiles?: {
                 jsonValue: Item[]
             };
 
@@ -5455,7 +5581,7 @@ Business.Base.supportingServicesSelectorJson &  {
             /**
             * Represents the Name field (44247618-f7a5-41b0-9cf9-3bc67e968d5c).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
@@ -5511,7 +5637,7 @@ Business.Base.conditionsSelectorJson &  {
             /**
             * Represents the Name field (a68d7021-6caf-43b9-82e3-f79d906de741).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
@@ -5539,7 +5665,7 @@ Business.Base.conditionsSelectorJson &  {
             /**
             * Represents the Name field (871a1f5c-db3b-4380-81e2-0b5d98636554).
             */
-            Name?: {
+            name?: {
                 jsonValue: Field<string>
             };
 
@@ -5589,35 +5715,35 @@ export namespace PageContent {
             /**
             * Represents the Image field (726261ae-5637-4c85-9743-eeffd98f70e4).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Tab Icon field (a6a9c001-62a7-4327-9a48-ef9f8ad16363).
             */
-            TabIcon?: {
+            tabIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Tab Title field (dbc58a37-0c51-4d8e-a7c3-dd175bcc1cc8).
             */
-            TabTitle?: {
+            tabTitle?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (a1358851-56ea-4d29-a932-e23b7e9c49b8).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (dc9e5fc1-28b4-4d82-a705-57504942c664).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -5708,28 +5834,28 @@ export namespace PageContent {
             /**
             * Represents the Heading field (54bea005-8cdc-4336-a0da-e5c96bc25bf5).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Image field (a90f7a4d-b2d9-4ebb-8f56-4827d6654d69).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Text field (9045fca9-2bdb-406e-865e-7a4b498cc18c).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (f7d96de3-bf29-4523-a9c7-a675b4c2e058).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -5885,7 +6011,7 @@ export namespace Foundation.RenderingParameters {
             /**
             * Represents the Theme field (ea5fdc51-8f27-47db-8fbe-e291519c5fed).
             */
-            Theme?: {
+            theme?: {
                 jsonValue: Field<string>
             };
 
@@ -5915,7 +6041,7 @@ export namespace Business {
             /**
             * Represents the FixedPricePackage field (a57e3ea7-f74f-4ebf-9553-8a843b04fe64).
             */
-            FixedPricePackage?: {
+            fixedPricePackage?: {
                 jsonValue: Item
             };
 
@@ -6031,21 +6157,21 @@ export namespace Foundation {
             /**
             * Represents the Abstract Description field (cb5cd4c3-e70e-40de-b786-191285ba1ca3).
             */
-            AbstractDescription?: {
+            abstractDescription?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Abstract Image field (f75ec234-5a41-49cb-a275-fbb100b0c23b).
             */
-            AbstractImage?: {
+            abstractImage?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Abstract Title field (55b6773d-302d-4a16-9421-8649d41ed0d0).
             */
-            AbstractTitle?: {
+            abstractTitle?: {
                 jsonValue: Field<string>
             };
 
@@ -6098,14 +6224,14 @@ export namespace Foundation {
             /**
             * Represents the Report Link field (db2959e1-65ed-409a-bad1-79700462a81d).
             */
-            ReportLink?: {
+            reportLink?: {
                 jsonValue: LinkField
             };
 
             /**
             * Represents the Status field (4d5a4bf6-6019-4639-945b-d96f40169939).
             */
-            Status?: {
+            status?: {
                 jsonValue: Item
             };
 
@@ -6138,14 +6264,14 @@ export namespace Foundation {
             /**
             * Represents the CTA Icon field (dc1f5853-3482-48dc-8a23-eb4ec1115f01).
             */
-            CTAIcon?: {
+            cTAIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the CTA Link field (a902abe7-6f90-452b-98d4-62a9d12d1df0).
             */
-            CTALink?: {
+            cTALink?: {
                 jsonValue: LinkField
             };
 
@@ -6175,7 +6301,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the DoctifyConsultantSlug field (f16d2228-5a7b-4f0a-9240-cec61c7a6cf8).
             */
-            DoctifyConsultantSlug?: {
+            doctifyConsultantSlug?: {
                 jsonValue: Field<string>
             };
 
@@ -6327,21 +6453,21 @@ Foundation.HcabasePageDataJson &  {
             /**
             * Represents the Description field (77332344-9643-4f3c-96fc-e015f6b423de).
             */
-            Description?: {
+            description?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Image field (9def8dc9-3351-41a7-82c4-2c7f56f95e25).
             */
-            Image?: {
+            image?: {
                 jsonValue: ImageField
             };
 
             /**
             * Represents the Title field (dd6c2904-20c1-4670-b538-d523f08e60f0).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -6369,7 +6495,7 @@ Foundation.HcabasePageDataJson &  {
             /**
             * Represents the Icon field (41f62b60-e9c2-4694-b01d-cd8f0e164351).
             */
-            Icon?: {
+            icon?: {
                 jsonValue: Item
             };
 
@@ -6490,98 +6616,98 @@ Foundation.HcabasePageDataJson &  {
             /**
             * Represents the Filter By field (8c843399-baed-4ba8-a58a-08e16d580077).
             */
-            FilterBy?: {
+            filterBy?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Filter Options field (4f6c6765-00b6-42ff-b817-3609cc730145).
             */
-            FilterOptions?: {
+            filterOptions?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Filter Options Icon field (259ad86c-22e0-48ca-b39d-bd11e184fe5c).
             */
-            FilterOptionsIcon?: {
+            filterOptionsIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Filter Options Text field (aed33a70-e7a0-4f69-80d2-919af9efc66e).
             */
-            FilterOptionsText?: {
+            filterOptionsText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Heading field (16514838-f543-4c64-8da2-3a99f94fb5bf).
             */
-            Heading?: {
+            heading?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Results Per Page field (97368152-ecf3-40f0-affb-f9a3c57b6d05).
             */
-            ResultsPerPage?: {
+            resultsPerPage?: {
                 jsonValue: Field<number>
             };
 
             /**
             * Represents the Search By field (3b5deddf-c424-405c-8de6-18c4c1aa0fc7).
             */
-            SearchBy?: {
+            searchBy?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Search Placeholder field (7a298203-0924-4526-8276-f59df39e9e07).
             */
-            SearchPlaceholder?: {
+            searchPlaceholder?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Search Results Text field (16809488-0f7d-4b5e-9ab5-ed6805194fa7).
             */
-            SearchResultsText?: {
+            searchResultsText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Sort Options field (94e928c6-4dfd-49c7-b02f-755e5d8f20c7).
             */
-            SortOptions?: {
+            sortOptions?: {
                 jsonValue: Item[]
             };
 
             /**
             * Represents the Sort Options Icon field (d24cbb38-fc72-42d9-a404-f1412bf128eb).
             */
-            SortOptionsIcon?: {
+            sortOptionsIcon?: {
                 jsonValue: Item
             };
 
             /**
             * Represents the Sort Options Text field (d8e43b76-ac40-4d8d-ac11-6e5df0bfe778).
             */
-            SortOptionsText?: {
+            sortOptionsText?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Text field (f6bc67ae-5bdc-4f15-942d-4d9762b4eb81).
             */
-            Text?: {
+            text?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Title field (05ef89c0-fe59-45b4-81da-001d21f4332a).
             */
-            Title?: {
+            title?: {
                 jsonValue: Field<string>
             };
 
@@ -6611,7 +6737,7 @@ export namespace SocialMedia.Base {
             /**
             * Represents the Social Media Profiles Group field (ce0034df-0c52-469b-82ae-364780c582fe).
             */
-            SocialMediaProfilesGroup?: {
+            socialMediaProfilesGroup?: {
                 jsonValue: Item
             };
 
@@ -6641,7 +6767,7 @@ export namespace Business.Base {
             /**
             * Represents the Conditions field (5d8115a3-1009-4cf5-b69f-2a93a728380b).
             */
-            Conditions?: {
+            conditions?: {
                 jsonValue: Item[]
             };
 
@@ -6669,7 +6795,7 @@ export namespace Business.Base {
             /**
             * Represents the Diagnosis field (ea6ad3a6-765a-4d15-939f-b257b76b7787).
             */
-            Diagnosis?: {
+            diagnosis?: {
                 jsonValue: Item[]
             };
 
@@ -6781,7 +6907,7 @@ export namespace Business.Base {
             /**
             * Represents the Contact Unit Name field (f11e7b8e-2e89-424c-807b-af08ce4f29db).
             */
-            ContactUnitName?: {
+            contactUnitName?: {
                 jsonValue: Field<string>
             };
 
@@ -6829,7 +6955,7 @@ export namespace Business.Base {
             /**
             * Represents the Specialties field (35a54b2e-44e5-4b28-ab9b-3b72ad4547ea).
             */
-            Specialties?: {
+            specialties?: {
                 jsonValue: Item[]
             };
 
@@ -6895,21 +7021,21 @@ export namespace Business.Base {
             /**
             * Represents the Internation Phone Number field (a045dc2d-cbe9-441a-83fd-cf0b824b5678).
             */
-            InternationPhoneNumber?: {
+            internationPhoneNumber?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Phone Number field (c16d95c6-0161-41e8-a672-c65659203216).
             */
-            PhoneNumber?: {
+            phoneNumber?: {
                 jsonValue: Field<string>
             };
 
             /**
             * Represents the Phone Number Label field (bcb8e0ef-378c-4ad7-bbab-f463ddfc2307).
             */
-            PhoneNumberLabel?: {
+            phoneNumberLabel?: {
                 jsonValue: Field<string>
             };
 
@@ -6937,7 +7063,7 @@ export namespace Business.Base {
             /**
             * Represents the Telephone Number field (970e5839-53a1-405c-8ada-3e7c4da4fc4d).
             */
-            TelephoneNumber?: {
+            telephoneNumber?: {
                 jsonValue: Item[]
             };
 
@@ -6965,7 +7091,7 @@ export namespace Business.Base {
             /**
             * Represents the Treatments field (66081df9-22ae-4792-887a-c17c8fc5f4c0).
             */
-            Treatments?: {
+            treatments?: {
                 jsonValue: Item[]
             };
 
