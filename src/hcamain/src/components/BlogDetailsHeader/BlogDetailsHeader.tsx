@@ -8,7 +8,6 @@ import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDeta
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Tags from '@component-library/core-components/Tags/Tags';
-//import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
@@ -21,7 +20,7 @@ interface Fields {
     contextItem: {
       title: { jsonValue: Field<string> };
       text: { jsonValue: Field<string> };
-      date: Field<string>;
+      date: { jsonValue: Field<string> };
       tags: { tagList: BlogTags[] };
     };
   };
@@ -53,10 +52,8 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
-  console.log(props);
 
-  //const parsedDate = parseISO(timestamp);
-  //const formattedDate = format(parsedDate, 'MMM d, yyyy');
+  console.log(props);
 
   return (
     <HeaderBlogDetails
@@ -72,7 +69,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
           ))}
         </>
       }
-      date={<JssDate field={props.fields.data.contextItem.date} />}
+      date={<JssDate field={props.fields.data.contextItem.date.jsonValue} />}
       title={
         <Text
           tag={props.params.HeadingTag || 'h1'}
