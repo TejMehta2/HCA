@@ -80,7 +80,6 @@ export const Default = (props: StepProps): JSX.Element => {
   //     router.push('/Finder/Step-Intro');
   //   }
   // }, [router.query.keywordId, router.query.searchString]);
-
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
