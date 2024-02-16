@@ -1,30 +1,23 @@
 ﻿---
-ID: "39493498-2ce7-47f0-aeca-fb632d319422"
-Parent: "0e110593-d934-4bc4-a1ad-ab8143efcfb4"
+ID: "bbfd5812-b426-4455-9f7c-6b5fb5523763"
+Parent: "b70acecf-ec00-4a8b-9633-9a8feb1b3ec1"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Book An Appointment CTA/Data/ModalContent
+Path: /sitecore/templates/Project/HCA/Page Content/Modal Content/Data/Text
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "query:./*[@@templateid='{175E0D25-53C5-4C6B-B6E7-62521E02DB68}']"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist
+  Value: Rich Text
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 200
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Modal Content
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240202T120709Z
+      Value: 20240214T201047Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -35,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b3343937-6575-4883-83cf-d44de43a1af0"
+      Value: "1de8a086-92e1-48d0-a900-1e85e3422c91"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240214T201456Z
+      Value: 20240214T201853Z

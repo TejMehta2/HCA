@@ -1,8 +1,15 @@
 ﻿---
-ID: "20a7de39-3a1f-4738-bbc2-2df8c07c3989"
-Parent: "a9133d7e-3cd0-4415-b35d-047dd79bd57c"
-Template: "6b40e84c-8785-49fc-8a10-6bca862ff7ea"
-Path: /sitecore/content/HCA/HCA Main/Data/Tags/BlogTags/Tag2
+ID: "05db6403-e163-4b0d-8aa3-e29c8adb2345"
+Parent: "b70acecf-ec00-4a8b-9633-9a8feb1b3ec1"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Page Content/Modal Content/Data/Title
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -10,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231116T110221Z
+      Value: 20240214T201047Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,14 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29310296-1a41-431f-b517-f14042ea2f75"
-    - ID: "b8a8b6c9-4757-496b-9aae-5f46ff381563"
-      Hint: Title
-      Value: Tag2
+      Value: "cdbfab2a-0472-44c6-9779-c70326f09249"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231116T110221Z
+      Value: 20240214T201853Z
