@@ -2,6 +2,7 @@
 export default interface SearchProps {
   placeholder: string;
   doctifyBaseURL: string;
+  doctifySearchBaseURL?: string;
   limit: number;
   noResultsMsg: string;
   specialtyLabel?: string;
@@ -19,4 +20,6 @@ export default interface SearchProps {
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
   insurersList?: any;
+  searchConsultantsResultsHeaderText?: string;
+  loadingText: string;
 }

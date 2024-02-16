@@ -20,7 +20,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
   const [error, setError] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
-  const doctifyURL = `https://api.doctify.com/api/hca/search?sortType=relevance&keywordId=${keywordId}&distance=700&lat=51.5073509&lon=-0.1277583&limit=5&offset=0`;
+  const doctifyURL = `${props.doctifySearchBaseURL}?sortType=relevance&keywordId=${keywordId}&distance=700&lat=51.5073509&lon=-0.1277583&limit=5&offset=0`;
 
   // we are using search specialists api from Doctify when we have id for specialty
   const getDoctifyDataWithId = () => {
@@ -192,6 +192,11 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
             resultsIcon={props.searchIcon}
             searchStringConsultantName={props.searchStringConsultantName}
             setSearchStringConsultantName={props.setSearchStringConsultantName}
+            searchConsultantsResultsHeaderText={
+              props.searchConsultantsResultsHeaderText
+            }
+            loadingText={props.loadingText}
+            doctifySearchBaseURL={props.doctifySearchBaseURL}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

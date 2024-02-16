@@ -35,8 +35,12 @@ interface Fields {
   BackLink: LinkField;
   PopularConsultantsList: any;
   SearchIcon: any;
-  SearchErrorMsgNoResults: Field<string>;
   SearchPlaceholderText: Field<string>;
+  SearchConsultantsResultsHeaderText: Field<string>;
+  API_Autocomplete_LoadingMsg: Field<string>;
+  API_Autocomplete_BaseURL: Field<string>;
+  API_Autocomplete_NoResultsMsg: Field<string>;
+  API_Autocomplete_Limit: Field<string>;
 }
 
 type StepProps = {
@@ -102,15 +106,18 @@ export const Default = (props: StepProps): JSX.Element => {
           <form autoComplete="off">
             <SearchConsultant
               placeholder={props.fields.SearchPlaceholderText.value}
-              doctifyBaseURL={
-                'https://api.doctify.com/api/hca/search/autocomplete?search'
-              }
-              limit={20}
-              noResultsMsg={props.fields.SearchErrorMsgNoResults.value}
+              doctifyBaseURL={props.fields.API_Autocomplete_BaseURL.value}
+              doctifySearchBaseURL={`https://api.doctify.com/api/hca/search`}
+              limit={Number(props.fields.API_Autocomplete_Limit.value)}
+              noResultsMsg={props.fields.API_Autocomplete_NoResultsMsg.value}
               searchIcon={props.fields.SearchIcon.fields.SvgMarkup.value}
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}
               popularConsultantsList={props.fields.PopularConsultantsList}
+              searchConsultantsResultsHeaderText={
+                props.fields.SearchConsultantsResultsHeaderText.value
+              }
+              loadingText={props.fields.API_Autocomplete_LoadingMsg.value}
             />
           </form>
         </ImageAndTextBlock>

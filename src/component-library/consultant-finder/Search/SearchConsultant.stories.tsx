@@ -30,6 +30,7 @@ export const Consultant: StoryObj<SearchProps> = (
 Consultant.args = {
   placeholder: 'Type in a consultant name',
   doctifyBaseURL: 'https://api.doctify.com/api/hca/search/autocomplete?search',
+  doctifySearchBaseURL: 'https://api.doctify.com/api/hca/search',
   limit: 20,
   noResultsMsg: 'No matches found, please try typing something else.',
   popularConsultantsList: [
@@ -239,4 +240,6 @@ Consultant.args = {
       },
     },
   ],
+  searchConsultantsResultsHeaderText: 'SPECIALISTS',
+  loadingText: 'Loading...',
 };

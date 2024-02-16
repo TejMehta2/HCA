@@ -17,4 +17,7 @@ export default interface SearchDropdownProps {
   searchStringPayment?: string;
   setSearchStringPayment?: React.Dispatch<React.SetStateAction<string>>;
   insuranceProvidersFilterHeaderText?: string;
+  searchConsultantsResultsHeaderText?: string;
+  loadingText: string;
+  doctifySearchBaseURL: string;
 }
