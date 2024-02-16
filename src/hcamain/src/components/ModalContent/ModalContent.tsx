@@ -7,8 +7,10 @@ import {
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text from '@component-library/foundation/Text/Text';
+import { HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
   fields: {
@@ -26,7 +28,11 @@ interface Fields {
 }
 
 type ModalContentProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -46,8 +52,6 @@ export const Default = (props: ModalContentProps): JSX.Element => {
   if (!props.fields) {
     return <ModalContentDefaultComponent {...props} />;
   }
-
-  console.log(props);
 
   return (
     <>
@@ -74,7 +78,10 @@ export const Default = (props: ModalContentProps): JSX.Element => {
       <ModalAppointment
         ref={dialogRef}
         title1={
-          <Text variation={'display-4'} tag="h2">
+          <Text
+            variation={props.params.HeadingSize || 'display-4'}
+            tag={props.params.HeadingTag || 'h2'}
+          >
             <JssText field={props.fields.Title} />
           </Text>
         }
@@ -109,7 +116,7 @@ export const Default = (props: ModalContentProps): JSX.Element => {
               </Button>
             )}
             {props.fields.SecondaryCTA.value.text && (
-              <Button size={'large'} theme={'outline'}>
+              <TextButton>
                 <JssLink field={props.fields?.SecondaryCTA}>
                   <span
                     dangerouslySetInnerHTML={{
@@ -124,47 +131,11 @@ export const Default = (props: ModalContentProps): JSX.Element => {
                     }}
                   />
                 </JssLink>
-              </Button>
+              </TextButton>
             )}
           </>
         }
       />
     </>
-
-    // <>
-    //   <JssText field={props.fields.Title} />
-    //   <br />
-    //   <JssText field={props.fields.Text} />
-    //   <br />
-    //   <JssLink field={props.fields?.PrimaryCTA}>
-    //     <>
-    //       <span
-    //         dangerouslySetInnerHTML={{
-    //           __html: props.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
-    //         }}
-    //       ></span>
-    //       <RichText
-    //         tag="span"
-    //         field={{
-    //           value: props.fields.PrimaryCTA.value.text,
-    //         }}
-    //       />
-    //     </>
-    //   </JssLink>
-    //   <br />
-    //   <JssLink field={props.fields?.SecondaryCTA}>
-    //     <span
-    //       dangerouslySetInnerHTML={{
-    //         __html: props.fields.SecondaryCTAIcon?.fields.SvgMarkup.value,
-    //       }}
-    //     ></span>
-    //     <RichText
-    //       tag="span"
-    //       field={{
-    //         value: props.fields.SecondaryCTA.value.text,
-    //       }}
-    //     />
-    //   </JssLink>
-    // </>
   );
 };
