@@ -5,6 +5,7 @@ import { JssDateProps } from './JssDate.types';
 const JssDate = (props: JssDateProps) => {
   const { field, formatter = formatDate } = props;
   if (!field) return <></>;
+
   return (
     <DateField
       tag={'time'}
