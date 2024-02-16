@@ -32,17 +32,9 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     return <BlogTextDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
       <RichText field={props.fields.Text} />
     </BlogContent>
   );
-
-  /* return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Text} />
-    </div>
-  ); */
 };
