@@ -1257,26 +1257,6 @@ export namespace PageContent {
 
 
     }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA
-    */
-    export type CallUsTodayCta =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA
-    */
-    export type CallUsTodayCtaJson =  {
-        
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA Folder
@@ -1290,6 +1270,24 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA Folder
     */
     export type CallUsTodayCtaFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA Params
+    */
+    export type CallUsTodayCtaParams =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Call Us Today CTA Params
+    */
+    export type CallUsTodayCtaParamsJson =  {
         
 
     }
@@ -5737,28 +5735,6 @@ export namespace PageContent {
 
 
     }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us
-    */
-    export type TalkToUs = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us
-    */
-    export type TalkToUsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
-        
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Talk To Us Folder
@@ -5772,6 +5748,26 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Talk To Us Folder
     */
     export type TalkToUsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us Params
+    */
+    export type TalkToUsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Talk To Us Params
+    */
+    export type TalkToUsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
         
 
     }

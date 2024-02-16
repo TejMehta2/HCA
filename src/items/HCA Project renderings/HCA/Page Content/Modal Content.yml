@@ -1,51 +1,18 @@
 ﻿---
-ID: "2da667ea-068a-4479-9039-2e3323148f24"
+ID: "52568943-7b8d-4016-9be1-2f2cc2b2cab1"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Blog Details Header
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Modal Content
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: BlogDetailsHeader
+  Value: ModalContent
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
-  Value: |
-    query GetDetailsHeader($contextItem: String!, $language: String!) 
-    {
-      contextItem: item(path: $contextItem, language: $language) {
-      name
-        ...on BlogPage {
-              title {
-                jsonValue
-              }
-              text : field(name:"Description"){
-                jsonValue
-              }
-          	  date {
-                  jsonValue
-                }
-             tags
-        	 {
-                tagList: targetItems
-                {      		
-                  ... on Tag 
-                  {
-                     title {
-                      jsonValue
-                    }
-                  }
-    	    }
-              } 
-         }
-     }
-    }
-    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Blog Details Header
+  Value: /sitecore/templates/Project/HCA/Page Content/Modal Content
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -54,17 +21,17 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{4B945D57-85D7-4143-B252-D7025A6935E2}"
+  Value: "{BA8C24AC-58E3-4FC4-A88A-213D68C75495}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Blog Details Header Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Blog Details Header Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Modal Content Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Modal Content Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{EE365810-D70A-45E5-876F-D40AF22E0DBB}" />
+    <image mediaid="{4C52B76F-AAAB-4383-A3C6-51FD1D5604F4}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -111,14 +78,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "208312e4-99dc-40d9-af2f-abc72ec68b6d"
+      Value: "a1bbd5ed-7cb6-4ca1-8ba6-d643017c8856"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240216T081724Z
+      Value: 20240214T202340Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

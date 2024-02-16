@@ -1,8 +1,8 @@
 ﻿---
-ID: "d86035e4-019c-4c53-9445-acea05a1c536"
+ID: "20a7de39-3a1f-4738-bbc2-2df8c07c3989"
 Parent: "a9133d7e-3cd0-4415-b35d-047dd79bd57c"
 Template: "6b40e84c-8785-49fc-8a10-6bca862ff7ea"
-Path: /sitecore/content/HCA/HCA Main/Data/Tags/BlogTags/Tag3
+Path: /sitecore/content/HCA/HCA Main/Data/Tags/BlogTags/News
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231116T110226Z
+      Value: 20231116T110221Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,14 +21,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f9e3172b-72e4-44ee-b1ef-a3a4d142719d"
+      Value: "29310296-1a41-431f-b517-f14042ea2f75"
     - ID: "b8a8b6c9-4757-496b-9aae-5f46ff381563"
       Hint: Title
-      Value: Tag3
+      Value: Tag2
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231116T110226Z
+      Value: 20231116T110221Z
