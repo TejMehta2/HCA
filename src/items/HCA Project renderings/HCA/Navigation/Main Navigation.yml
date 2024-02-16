@@ -51,6 +51,9 @@ SharedFields:
                 hasChildren
                 children {
                   results {
+                    template {
+                      name
+                    }
                     ...NavigationContentBlockFragment
                     ...NavigationBlogPostCardFragment
                     ...MainNavigationLinksListFragment
@@ -218,14 +221,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "69a55b6e-3ccf-485d-a47b-9bf6ebbbfa82"
+      Value: "9ac96cfa-e5e4-4690-87dd-8dd37a330b93"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240208T144147Z
+      Value: 20240216T101658Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
