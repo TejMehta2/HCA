@@ -35,24 +35,10 @@ export const Default = (props: BlogImageProps): JSX.Element => {
   return (
     <>
       <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
-        <p>
-          London Bridge Hospital, part of HCA Healthcare UK, has once again been
-          rated as &quot;Outstanding&quot; by the Care Quality Commission (CQC),
-          following a recent inspection. London Bridge Hospital has held its
-          Outstanding rating since 2016.
-        </p>
-      </BlogContent>
-      <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
         <figure>
           <Image field={props.fields.Image} />
         </figure>
       </BlogContent>
     </>
   );
-
-  /* return (
-    <div className={`component ${props.params.styles}`}>
-      <Image field={props.fields.Image} />
-    </div>
-  ); */
 };

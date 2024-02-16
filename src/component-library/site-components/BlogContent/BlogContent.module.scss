@@ -4,27 +4,21 @@
 .wrapper {
   background: var(--background);
   color: var(--text);
-  padding: $spacing-5 0 $spacing-12;
 }
 
 .container {
-  //@include responsive-grid;
   @include responsive-container;
 
   row-gap: 0;
+  margin-top: $spacing-12;
+  margin-bottom: $spacing-12;
 
-  & > :last-child {
-    margin-bottom: 0;
-  }
-
-  /* WIP WILL NEED TO BE ADJUSTED DURING SITECORE INTEGRATION */
   p,
-  h2 {
-    @include responsive-grid-start($breakpoint-l: 3);
-    @include responsive-grid-span($breakpoint-l: 8);
-    @include apply-body-large;
-
-    margin-bottom: $spacing-5;
+  h2,
+  ul,
+  ol {
+    max-width: px-to-rem(742);
+    margin: $spacing-5 auto;
   }
 
   h2 {
@@ -35,12 +29,18 @@
     @include apply-body-large;
   }
 
-  figure {
-    @include responsive-grid-span($breakpoint-l: 12);
+  ul,
+  ol {
+    @include apply-body-large;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
 
-    display: block;
+  figure {
     border-radius: $radius-medium;
-    margin: $spacing-12 0;
+    overflow: hidden;
+    margin: 0;
     aspect-ratio: 1120/523;
 
     img {

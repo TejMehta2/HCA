@@ -1,12 +1,19 @@
 import React from 'react';
-import { Field, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface Fields {
   Text: Field<string>;
 }
 
 type BlogTextProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -24,9 +31,18 @@ export const Default = (props: BlogTextProps): JSX.Element => {
   if (!props.fields) {
     return <BlogTextDefaultComponent {...props} />;
   }
+
+  console.log(props);
+
   return (
+    <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
+      <RichText field={props.fields.Text} />
+    </BlogContent>
+  );
+
+  /* return (
     <div className={`component ${props.params.styles}`}>
       <Text field={props.fields.Text} />
     </div>
-  );
+  ); */
 };
