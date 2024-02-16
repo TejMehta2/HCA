@@ -10,44 +10,9 @@ import Text from '@component-library/foundation/Text/Text';
 import ContactList from '@component-library/components/ContactList/ContactList';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
-import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/FormatDaysText';
 import { ContactItem } from '@component-library/components/ContactList/ContactList.types';
-
-interface TelephoneNumberFields {
-  phoneNumberLabel: { value: string };
-  phoneNumber: { value: string };
-  internationPhoneNumber: { value: string };
-}
-
-interface DayOfWeekFields {
-  dayName: { value: string };
-}
-
-interface OpeningHoursSpecificationFields {
-  dayOfWeek: {
-    dayOfWeekList: DayOfWeekFields[];
-  };
-  opens: { value: string };
-  closes: { value: string };
-  validFrom: { value: string };
-  validThrough: { value: string };
-}
-
-interface OpeningHoursFields {
-  children: {
-    results: OpeningHoursSpecificationFields[];
-  };
-}
-
-interface ContactUnitFields {
-  contactUnitName: { value: string };
-  telephoneNumber: {
-    telephoneNumberList: TelephoneNumberFields[];
-  };
-  children: {
-    results: OpeningHoursFields[];
-  };
-}
+import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
+import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 
 interface Fields {
   data: {
@@ -93,57 +58,39 @@ export const Default = (props: TalkToUsLeftProps): JSX.Element => {
 
   const contactListItems: ContactItem[] = [];
 
-  props.fields.data.item.contactUnits.contactUnitList.map((contactUnit) => {
-    const numbers = contactUnit.telephoneNumber.telephoneNumberList.map(
-      (telephoneNumber, index) => {
-        return (
-          <Text tag="p" variation="display-6" key={index}>
-            <a href={`tel:${telephoneNumber.internationPhoneNumber.value}`}>
-              {telephoneNumber.phoneNumber.value}
-            </a>
+  props.fields.data.item.contactUnits.contactUnitList.map(
+    (contactUnit: ContactUnitFields) => {
+      const numbers = contactUnit.telephoneNumber.telephoneNumberList.map(
+        (telephoneNumber, index) => {
+          return (
+            <Text tag="p" variation="display-6" key={index}>
+              <a href={`tel:${telephoneNumber.internationPhoneNumber.value}`}>
+                {telephoneNumber.phoneNumber.value}
+              </a>
+            </Text>
+          );
+        }
+      );
+
+      const availabilityString = OpeningHours(contactUnit);
+
+      const contactListItem = {
+        title: (
+          <Text tag="h4" variation="subheading-2">
+            <JssText field={contactUnit.contactUnitName} />
           </Text>
-        );
-      }
-    );
-
-    const availability: string[] = [];
-
-    contactUnit.children.results.map((children) => {
-      children.children.results.map((openingHours) => {
-        const days: string[] = [];
-
-        openingHours.dayOfWeek.dayOfWeekList.map((day) => {
-          days.push(day.dayName.value);
-        });
-
-        availability.push(
-          formatDaysText(
-            days,
-            openingHours.opens.value,
-            openingHours.closes.value
-          )
-        );
-      });
-    });
-
-    const availabilityString = availability.join(', ');
-
-    const contactListItem = {
-      title: (
-        <Text tag="h4" variation="subheading-2">
-          <JssText field={contactUnit.contactUnitName} />
-        </Text>
-      ),
-      icon: <Icons iconName="iconClock"></Icons>,
-      openingHours: (
-        <Text tag="p" variation="body-large">
-          {availabilityString}
-        </Text>
-      ),
-      number: numbers,
-    };
-    contactListItems.push(contactListItem);
-  });
+        ),
+        icon: <Icons iconName="iconClock"></Icons>,
+        openingHours: (
+          <Text tag="p" variation="body-large">
+            {availabilityString}
+          </Text>
+        ),
+        number: numbers,
+      };
+      contactListItems.push(contactListItem);
+    }
+  );
 
   return (
     <ImageAndTextBlock

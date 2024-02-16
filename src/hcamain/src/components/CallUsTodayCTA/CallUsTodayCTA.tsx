@@ -9,47 +9,12 @@ import {
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 import Button from '@component-library/core-components/Button/Button';
 import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.types';
-import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/FormatDaysText';
+import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
+import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 
 type HCAIconFields = {
   svgMarkup: Field<string>;
 };
-
-interface TelephoneNumberFields {
-  phoneNumberLabel: { value: string };
-  phoneNumber: { value: string };
-  internationPhoneNumber: { value: string };
-}
-
-interface DayOfWeekFields {
-  dayName: { value: string };
-}
-
-interface OpeningHoursSpecificationFields {
-  dayOfWeek: {
-    dayOfWeekList: DayOfWeekFields[];
-  };
-  opens: { value: string };
-  closes: { value: string };
-  validFrom: { value: string };
-  validThrough: { value: string };
-}
-
-interface OpeningHoursFields {
-  children: {
-    results: OpeningHoursSpecificationFields[];
-  };
-}
-
-interface ContactUnitFields {
-  contactUnitName: { value: string };
-  telephoneNumber: {
-    telephoneNumberList: TelephoneNumberFields[];
-  };
-  children: {
-    results: OpeningHoursFields[];
-  };
-}
 
 interface Fields {
   data: {
@@ -101,27 +66,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
       }
     );
 
-    const availability: string[] = [];
-
-    contactUnit.children.results.map((children) => {
-      children.children.results.map((openingHours) => {
-        const days: string[] = [];
-
-        openingHours.dayOfWeek.dayOfWeekList.map((day) => {
-          days.push(day.dayName.value);
-        });
-
-        availability.push(
-          formatDaysText(
-            days,
-            openingHours.opens.value,
-            openingHours.closes.value
-          )
-        );
-      });
-    });
-
-    const availabilityString = availability.join(', ');
+    const availabilityString = OpeningHours(contactUnit);
 
     contacts.push({
       title: <JssText field={title} />,
