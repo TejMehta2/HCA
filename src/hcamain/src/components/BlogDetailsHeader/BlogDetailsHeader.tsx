@@ -8,8 +8,9 @@ import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDeta
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Tags from '@component-library/core-components/Tags/Tags';
-import { format, parseISO } from 'date-fns';
+//import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
+import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
 type BlogTags = {
   title: { jsonValue: Field<string> };
@@ -20,7 +21,7 @@ interface Fields {
     contextItem: {
       title: { jsonValue: Field<string> };
       text: { jsonValue: Field<string> };
-      date: { value: string };
+      date: Field<string>;
       tags: { tagList: BlogTags[] };
     };
   };
@@ -52,26 +53,26 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
+  console.log(props);
 
-  const parsedDate = parseISO(props.fields.data.contextItem.date.value);
-  const formattedDate = format(parsedDate, 'MMM d, yyyy');
+  //const parsedDate = parseISO(timestamp);
+  //const formattedDate = format(parsedDate, 'MMM d, yyyy');
 
   return (
     <HeaderBlogDetails
-      theme={props.params.Theme || 'F-HCA-White'}
+      theme={props.params.Theme}
       tag={
-        <Tags contentVariation="quote">
-          {/* TODO link for tag blog filter. Piotr to add url to global settings and filter parameter will be set in FE */}
-          <Link href="#">
-            <JSSText
-              field={
-                props.fields.data.contextItem.tags.tagList[0].title.jsonValue
-              }
-            />
-          </Link>
-        </Tags>
+        <>
+          {props.fields.data.contextItem.tags.tagList.map((tag, index) => (
+            <Tags key={index} contentVariation="quote">
+              <Link href={{ pathname: '/' }}>
+                <JSSText field={tag.title.jsonValue} />
+              </Link>
+            </Tags>
+          ))}
+        </>
       }
-      date={<time dateTime={formattedDate}>{formattedDate}</time>}
+      date={<JssDate field={props.fields.data.contextItem.date} />}
       title={
         <Text
           tag={props.params.HeadingTag || 'h1'}
