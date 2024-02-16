@@ -15,6 +15,9 @@ import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 import Checkbox from '../../core-components/Checkbox/Checkbox';
 import CardGrid from '../CardGrid/CardGrid';
 import Pagination from '../../core-components/Pagination/Pagination';
+import LocationMap from '../../components/LocationMap/LocationMap';
+import { Default as locationMapProps } from '../../components/LocationMap/LocationMap.stories';
+import { LocationMapProps } from '../../components/LocationMap/LocationMap.types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -352,7 +355,9 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       },
       {
         tab: { icon: 'iconPin', label: 'Map view' },
-        tabContent: <span>MAP CONTENT HERE</span>,
+        tabContent: (
+          <LocationMap {...(locationMapProps.args as LocationMapProps)} />
+        ),
       },
     ],
   },
