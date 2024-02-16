@@ -9,7 +9,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
-import SearchBar from '@component-library/components/SearchBar/SearchBar';
+import SearchButton from '@component-library/components/SearchButton/SearchButton';
 import Text from '@component-library/foundation/Text/Text';
 import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
@@ -69,7 +69,11 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           <JssText field={props.fields.Title} />
         </Text>
       }
-      search={<SearchBar placeholder={props.fields.SearchPlaceholder.value} />}
+      search={
+        <SearchButton>
+          <JssText field={props.fields.SearchPlaceholder} />
+        </SearchButton>
+      }
       ctaTitle={
         <Text
           tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
