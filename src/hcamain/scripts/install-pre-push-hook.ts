@@ -9,9 +9,7 @@ const installHooks = async () => {
     const appPath = path.join(__dirname, '..').replace(/\\/g, '/');
     const { stdout } = await promisify(exec)('git rev-parse --show-toplevel');
     const gitRootPath = stdout.trim();
-    console.log(
-      chalk.green(`Writing data to local .git folder ${gitRootPath}...`)
-    );
+    console.log(chalk.green(`Writing data to local .git folder ${gitRootPath}...`));
 
     const data = `#!/bin/sh
 #
@@ -24,11 +22,7 @@ echo "Running lint check..."
 cd ${appPath}
 npm run lint`;
 
-    await promisify(fs.writeFile)(
-      `${gitRootPath}/.git/hooks/pre-push`,
-      data,
-      'utf8'
-    );
+    await promisify(fs.writeFile)(`${gitRootPath}/.git/hooks/pre-push`, data, 'utf8');
     console.log(chalk.green('Success'));
   } catch (error) {
     console.log(chalk.red(`Error installing hook: ${error}`));

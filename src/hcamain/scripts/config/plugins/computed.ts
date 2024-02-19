@@ -1,4 +1,5 @@
-import { ConfigPlugin, JssConfig } from '..';
+import { JssConfig } from 'lib/config';
+import { ConfigPlugin } from '..';
 
 /**
  * This plugin will set computed config props.
@@ -12,8 +13,7 @@ class ComputedPlugin implements ConfigPlugin {
   async exec(config: JssConfig) {
     return Object.assign({}, config, {
       graphQLEndpoint:
-        config.graphQLEndpoint ||
-        `${config.sitecoreApiHost}${config.graphQLEndpointPath}`,
+        config.graphQLEndpoint || `${config.sitecoreApiHost}${config.graphQLEndpointPath}`,
     });
   }
 }

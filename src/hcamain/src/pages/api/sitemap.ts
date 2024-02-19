@@ -4,7 +4,6 @@ import {
   GraphQLSitemapXmlService,
   AxiosResponse,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { siteResolver } from 'lib/site-resolver';
 import config from 'temp/config';
 
@@ -35,9 +34,7 @@ const sitemapApi = async (
   // if sitemap is match otherwise redirect to 404 page
   if (sitemapPath) {
     const isAbsoluteUrl = sitemapPath.match(ABSOLUTE_URL_REGEXP);
-    const sitemapUrl = isAbsoluteUrl
-      ? sitemapPath
-      : `${config.sitecoreApiHost}${sitemapPath}`;
+    const sitemapUrl = isAbsoluteUrl ? sitemapPath : `${config.sitecoreApiHost}${sitemapPath}`;
     res.setHeader('Content-Type', 'text/xml;charset=utf-8');
 
     // need to prepare stream from sitemap url
@@ -58,13 +55,15 @@ const sitemapApi = async (
     return res.redirect('/404');
   }
 
+  const reqtHost = req.headers.host;
+  const reqProtocol = req.headers['x-forwarded-proto'] || 'https';
   const SitemapLinks = sitemaps
     .map((item) => {
       const parseUrl = item.split('/');
       const lastSegment = parseUrl[parseUrl.length - 1];
 
       return `<sitemap>
-        <loc>${getPublicUrl()}/${lastSegment}</loc>
+        <loc>${reqProtocol}://${reqtHost}/${lastSegment}</loc>
       </sitemap>`;
     })
     .join('');

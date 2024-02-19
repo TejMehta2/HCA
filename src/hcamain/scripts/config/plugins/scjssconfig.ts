@@ -1,4 +1,5 @@
-import { ConfigPlugin, JssConfig } from '..';
+import { JssConfig } from 'lib/config';
+import { ConfigPlugin } from '..';
 
 /**
  * This plugin will set config props based on scjssconfig.json.
@@ -20,8 +21,7 @@ class ScJssConfigPlugin implements ConfigPlugin {
 
     return Object.assign({}, config, {
       sitecoreApiKey: config.sitecoreApiKey || scJssConfig.sitecore?.apiKey,
-      sitecoreApiHost:
-        config.sitecoreApiHost || scJssConfig.sitecore?.layoutServiceHost,
+      sitecoreApiHost: config.sitecoreApiHost || scJssConfig.sitecore?.layoutServiceHost,
     });
   }
 }

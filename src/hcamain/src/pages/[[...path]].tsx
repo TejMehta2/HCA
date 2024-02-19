@@ -69,10 +69,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   let paths: StaticPath[] = [];
   let fallback: boolean | 'blocking' = 'blocking';
 
-  if (
-    process.env.NODE_ENV !== 'development' &&
-    !process.env.DISABLE_SSG_FETCH
-  ) {
+  if (process.env.NODE_ENV !== 'development' && !process.env.DISABLE_SSG_FETCH) {
     try {
       // Note: Next.js runs export in production mode
       paths = await sitemapFetcher.fetch(context);
@@ -97,8 +94,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
 
   return {
-    props: props,
-
+    props,
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds

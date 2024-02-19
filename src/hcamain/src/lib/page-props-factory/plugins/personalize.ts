@@ -1,18 +1,12 @@
 import { GetServerSidePropsContext, GetStaticPropsContext } from 'next';
 import { Plugin } from '..';
-import {
-  getPersonalizedRewriteData,
-  personalizeLayout,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { getPersonalizedRewriteData, personalizeLayout } from '@sitecore-jss/sitecore-jss-nextjs';
 import { SitecorePageProps } from 'lib/page-props';
 
 class PersonalizePlugin implements Plugin {
   order = 3;
 
-  async exec(
-    props: SitecorePageProps,
-    context: GetServerSidePropsContext | GetStaticPropsContext
-  ) {
+  async exec(props: SitecorePageProps, context: GetServerSidePropsContext | GetStaticPropsContext) {
     if (context.preview) return props;
 
     const path =

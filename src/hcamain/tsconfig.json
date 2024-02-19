@@ -9,6 +9,7 @@
       "graphql-types": [
         "node_modules/@types/graphql-let/__generated__/__types__"
       ],
+      "react": ["node_modules/react"],
       "@component-library/*": [
         "src/temp/component-library/*",
         "../component-library/*"
