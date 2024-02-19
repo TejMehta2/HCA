@@ -117,14 +117,6 @@ export const Default = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields.Questions);
 
-  /* const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [accordions.questionSchema],
-  }; */
-
-  //const faqSchema = getFaqSchema(accordions.questionSchema)
-
   return (
     <>
       {getFaqSchema(accordions.questionSchema)}
