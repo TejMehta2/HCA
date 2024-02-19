@@ -1,11 +1,13 @@
 import React from 'react';
 import {
   Field,
-  Text,
   Image,
   ImageField,
   Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
+import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface AuthorFields {
   fields: {
@@ -21,7 +23,12 @@ interface Fields {
 }
 
 type BlogQuoteProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -39,23 +46,27 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.Quote} />
-      <br />
-      <ul>
-        {props.fields.Author.map((author, index) => (
-          <li key={index}>
-            <br />
-            <JssText field={author.fields.Name} />
-            <br />
-            <JssText field={author.fields.Position} />
-            <Image field={author.fields.Avatar} />
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-    </div>
+    <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
+      <QuoteBlock
+        author={{
+          name: props.fields.Author[0].fields.Name.value,
+          image: <Image field={props.fields.Author[0].fields.Avatar} />,
+          tag: (
+            <span>
+              <JssText field={props.fields.Author[0].fields.Position} />
+            </span>
+          ),
+        }}
+        children={
+          <span
+            dangerouslySetInnerHTML={{
+              __html: props.fields.Quote.value,
+            }}
+          ></span>
+        }
+      />
+    </BlogContent>
   );
 };
