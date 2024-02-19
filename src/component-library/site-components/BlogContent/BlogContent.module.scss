@@ -13,26 +13,33 @@
   margin-top: $spacing-12;
   margin-bottom: $spacing-12;
 
-  p,
-  h2,
-  ul,
-  ol {
+  & > div {
     max-width: px-to-rem(742);
-    margin: $spacing-5 auto;
+    margin: auto;
   }
 
-  h2 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @include apply-heading-1;
+
+    margin: $spacing-5 auto;
   }
 
   p {
     @include apply-body-large;
+
+    margin: $spacing-5 auto;
   }
 
   ul,
   ol {
     @include apply-body-large;
 
+    margin: $spacing-5 auto;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-4);
