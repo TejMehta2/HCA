@@ -1,6 +1,6 @@
-interface ContactItem {
+export interface ContactItem {
   title: JSX.Element;
-  number: JSX.Element;
+  number: JSX.Element | JSX.Element[];
   icon: JSX.Element;
   openingHours: JSX.Element;
 }

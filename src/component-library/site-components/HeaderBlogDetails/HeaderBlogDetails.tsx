@@ -4,7 +4,7 @@ import styles from './HeaderBlogDetails.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
-  const { theme, tag, date, title } = props;
+  const { theme, tag, date, title, bodyCopy } = props;
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
@@ -14,6 +14,7 @@ const HeaderBlogDetails = (props: HeaderBlogDetailsProps): JSX.Element => {
             {date}
           </div>
           {title}
+          {bodyCopy && <div className={styles.copy}>{bodyCopy}</div>}
         </div>
       </div>
     </Themes>

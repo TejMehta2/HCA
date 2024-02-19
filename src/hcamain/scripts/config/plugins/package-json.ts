@@ -13,7 +13,8 @@ class PackageJsonPlugin implements ConfigPlugin {
 
     return Object.assign({}, config, {
       sitecoreSiteName: config.sitecoreSiteName || packageConfig.config.appName,
-      graphQLEndpointPath: config.graphQLEndpointPath || packageConfig.config.graphQLEndpointPath,
+      graphQLEndpointPath:
+        config.graphQLEndpointPath || packageConfig.config.graphQLEndpointPath,
       defaultLanguage: config.defaultLanguage || packageConfig.config.language,
     });
   }

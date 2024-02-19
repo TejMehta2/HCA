@@ -14,7 +14,8 @@ class EdgePlatformPlugin implements ConfigPlugin {
     const sitecoreEdgeUrl =
       process.env[`${constantCase('sitecoreEdgeUrl')}`]?.replace(/\/$/, '') ||
       'https://edge-platform.sitecorecloud.io';
-    const sitecoreEdgeContextId = process.env[`${constantCase('sitecoreEdgeContextId')}`];
+    const sitecoreEdgeContextId =
+      process.env[`${constantCase('sitecoreEdgeContextId')}`];
 
     if (config.sitecoreApiKey && sitecoreEdgeContextId) {
       console.log(

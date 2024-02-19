@@ -1,5 +1,15 @@
 import React from 'react';
-import { Field, RichText, Text } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  RichText,
+  Text as JSSText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDetails/HeaderBlogDetails';
+import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import Text from '@component-library/foundation/Text/Text';
+import Tags from '@component-library/core-components/Tags/Tags';
+import Link from 'next/link';
+import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
 type BlogTags = {
   title: { jsonValue: Field<string> };
@@ -19,6 +29,9 @@ interface Fields {
 type BlogDetailsHeaderProps = {
   params: {
     [key: string]: string;
+    Theme: Theme;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
   };
   fields: Fields;
 };
@@ -39,22 +52,35 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <Text field={props.fields.data.contextItem.title.jsonValue} />
-      <br />
-      <RichText field={props.fields.data.contextItem.text.jsonValue} />
-      <br />
-      <Text field={props.fields.data.contextItem.date.jsonValue} />
-      <br />
-      <ul>
-        {props.fields.data.contextItem.tags.tagList.map((tag, index) => (
-          <li key={index}>
-            <Text field={tag.title.jsonValue} />
-            <br />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <HeaderBlogDetails
+      theme={props.params.Theme}
+      tag={
+        <>
+          {props.fields.data.contextItem.tags.tagList.map((tag, index) => (
+            <Tags key={index} contentVariation="quote">
+              <Link href={{ pathname: '/' }}>
+                <JSSText field={tag.title.jsonValue} />
+              </Link>
+            </Tags>
+          ))}
+        </>
+      }
+      date={<JssDate field={props.fields.data.contextItem.date.jsonValue} />}
+      title={
+        <Text
+          tag={props.params.HeadingTag || 'h1'}
+          variation={props.params.HeadingSize || 'display-1'}
+        >
+          <JSSText field={props.fields.data.contextItem.title.jsonValue} />
+        </Text>
+      }
+      bodyCopy={
+        <Text tag="div" variation="body-large">
+          <RichText field={props.fields.data.contextItem.text.jsonValue} />
+        </Text>
+      }
+    />
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Field,
   Text as JssText,
@@ -6,6 +6,11 @@ import {
   Link as JssLink,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Button from '@component-library/core-components/Button/Button';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
+import Text from '@component-library/foundation/Text/Text';
+import { HeadingTag, HeadingSize } from 'src/types/params';
 
 type HCAIconFields = {
   fields: {
@@ -23,7 +28,11 @@ interface Fields {
 }
 
 type ModalContentProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+    HeadingTag: HeadingTag;
+    HeadingSize: HeadingSize;
+  };
   fields: Fields;
 };
 
@@ -38,45 +47,95 @@ const ModalContentDefaultComponent = (
 );
 
 export const Default = (props: ModalContentProps): JSX.Element => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
   if (!props.fields) {
     return <ModalContentDefaultComponent {...props} />;
   }
 
   return (
     <>
-      <JssText field={props.fields.Title} />
-      <br />
-      <JssText field={props.fields.Text} />
-      <br />
-      <JssLink field={props.fields?.PrimaryCTA}>
-        <>
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
-            }}
-          ></span>
-          <RichText
-            tag="span"
-            field={{
-              value: props.fields.PrimaryCTA.value.text,
-            }}
-          />
-        </>
-      </JssLink>
-      <br />
-      <JssLink field={props.fields?.SecondaryCTA}>
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.SecondaryCTAIcon?.fields.SvgMarkup.value,
-          }}
-        ></span>
-        <RichText
-          tag="span"
-          field={{
-            value: props.fields.SecondaryCTA.value.text,
-          }}
-        />
-      </JssLink>
+      <Button size="large" theme="full">
+        <button onClick={() => dialogRef?.current?.showModal()}>
+          {props?.fields?.PrimaryCTA.value.text && (
+            <>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
+                }}
+              ></span>
+              <RichText
+                tag="span"
+                field={{
+                  value: props?.fields?.PrimaryCTA.value.text,
+                }}
+              />
+            </>
+          )}
+        </button>
+      </Button>
+
+      <ModalAppointment
+        ref={dialogRef}
+        title1={
+          <Text
+            variation={props.params.HeadingSize || 'display-4'}
+            tag={props.params.HeadingTag || 'h2'}
+          >
+            <JssText field={props.fields.Title} />
+          </Text>
+        }
+        copy1={
+          <Text variation={'body-large'}>
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields.PrimaryCTA.value.text,
+              }}
+            />
+          </Text>
+        }
+        cta1={
+          <>
+            {props.fields.PrimaryCTA.value.text && (
+              <Button size={'large'} theme={'full'}>
+                <JssLink field={props.fields?.PrimaryCTA}>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props.fields.PrimaryCTAIcon?.fields.SvgMarkup.value,
+                    }}
+                  ></span>
+                  <RichText
+                    tag="span"
+                    field={{
+                      value: props.fields.PrimaryCTA.value.text,
+                    }}
+                  />
+                </JssLink>
+              </Button>
+            )}
+            {props.fields.SecondaryCTA.value.text && (
+              <TextButton>
+                <JssLink field={props.fields?.SecondaryCTA}>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props.fields.SecondaryCTAIcon?.fields.SvgMarkup.value,
+                    }}
+                  ></span>
+                  <RichText
+                    tag="span"
+                    field={{
+                      value: props.fields.SecondaryCTA.value.text,
+                    }}
+                  />
+                </JssLink>
+              </TextButton>
+            )}
+          </>
+        }
+      />
     </>
   );
 };
