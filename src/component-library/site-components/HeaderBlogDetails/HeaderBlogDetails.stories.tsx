@@ -30,5 +30,13 @@ export const Default: StoryObj<typeof HeaderBlogDetails> = {
         The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
       </Text>
     ),
+    bodyCopy: (
+      <Text tag="p" variation="body-large">
+        London Bridge Hospital, part of HCA Healthcare UK, has once again been
+        rated as &apos;Outstanding&apos; by the Care Quality Commission (CQC),
+        following a recent inspection. London Bridge Hospital has held its
+        Outstanding rating since 2016.
+      </Text>
+    ),
   },
 };
