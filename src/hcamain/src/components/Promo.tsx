@@ -32,7 +32,10 @@ export const Default = (props: PromoProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div className={`component promo ${props.params.styles}`} id={id ? id : undefined}>
+      <div
+        className={`component promo ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.PromoIcon} />
@@ -59,7 +62,10 @@ export const WithText = (props: PromoProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div className={`component promo ${props.params.styles}`} id={id ? id : undefined}>
+      <div
+        className={`component promo ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.PromoIcon} />
@@ -67,11 +73,17 @@ export const WithText = (props: PromoProps): JSX.Element => {
           <div className="promo-text">
             <div>
               <div className="field-promotext">
-                <JssRichText className="promo-text" field={props.fields.PromoText} />
+                <JssRichText
+                  className="promo-text"
+                  field={props.fields.PromoText}
+                />
               </div>
             </div>
             <div className="field-promotext">
-              <JssRichText className="promo-text" field={props.fields.PromoText2} />
+              <JssRichText
+                className="promo-text"
+                field={props.fields.PromoText2}
+              />
             </div>
           </div>
         </div>

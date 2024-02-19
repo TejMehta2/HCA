@@ -25,7 +25,9 @@ type NavigationProps = {
   relativeLevel: number;
 };
 
-const getNavigationText = function (props: NavigationProps): JSX.Element | string {
+const getNavigationText = function (
+  props: NavigationProps
+): JSX.Element | string {
   let text;
 
   if (props.fields.NavigationTitle) {
@@ -52,19 +54,27 @@ export const Default = (props: NavigationProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const styles =
     props.params != null
-      ? `${props.params.GridParameters ?? ''} ${props.params.Styles ?? ''}`.trimEnd()
+      ? `${props.params.GridParameters ?? ''} ${
+          props.params.Styles ?? ''
+        }`.trimEnd()
       : '';
   const id = props.params != null ? props.params.RenderingIdentifier : null;
 
   if (!Object.values(props.fields).length) {
     return (
-      <div className={`component navigation ${styles}`} id={id ? id : undefined}>
+      <div
+        className={`component navigation ${styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">[Navigation]</div>
       </div>
     );
   }
 
-  const handleToggleMenu = (event?: React.MouseEvent<HTMLElement>, flag?: boolean): void => {
+  const handleToggleMenu = (
+    event?: React.MouseEvent<HTMLElement>,
+    flag?: boolean
+  ): void => {
     if (event && sitecoreContext?.pageEditing) {
       event.preventDefault();
     }
@@ -82,7 +92,9 @@ export const Default = (props: NavigationProps): JSX.Element => {
       <NavigationList
         key={`${key}${element.Id}`}
         fields={element}
-        handleClick={(event: React.MouseEvent<HTMLElement>) => handleToggleMenu(event, false)}
+        handleClick={(event: React.MouseEvent<HTMLElement>) =>
+          handleToggleMenu(event, false)
+        }
         relativeLevel={1}
       />
     ));
@@ -110,9 +122,9 @@ export const Default = (props: NavigationProps): JSX.Element => {
 const NavigationList = (props: NavigationProps) => {
   const { sitecoreContext } = useSitecoreContext();
   const [active, setActive] = useState(false);
-  const classNameList = `${props.fields.Styles.concat('rel-level' + props.relativeLevel).join(
-    ' '
-  )}`;
+  const classNameList = `${props.fields.Styles.concat(
+    'rel-level' + props.relativeLevel
+  ).join(' ')}`;
 
   let children: JSX.Element[] = [];
   if (props.fields.Children && props.fields.Children.length) {
@@ -127,7 +139,11 @@ const NavigationList = (props: NavigationProps) => {
   }
 
   return (
-    <li className={`${classNameList} ${active ? 'active' : ''}`} key={props.fields.Id} tabIndex={0}>
+    <li
+      className={`${classNameList} ${active ? 'active' : ''}`}
+      key={props.fields.Id}
+      tabIndex={0}
+    >
       <div
         className={`navigation-title ${children.length ? 'child' : ''}`}
         onClick={() => setActive(() => !active)}

@@ -15,7 +15,10 @@ export const createGraphQLClientFactory = (config: JssConfig) => {
 
   if (config.sitecoreEdgeContextId) {
     clientConfig = {
-      endpoint: getEdgeProxyContentUrl(config.sitecoreEdgeContextId, config.sitecoreEdgeUrl),
+      endpoint: getEdgeProxyContentUrl(
+        config.sitecoreEdgeContextId,
+        config.sitecoreEdgeUrl
+      ),
     };
   } else if (config.graphQLEndpoint && config.sitecoreApiKey) {
     clientConfig = {
