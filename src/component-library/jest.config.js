@@ -22,6 +22,6 @@ module.exports = {
   modulePaths: ['<rootDir>'],
   testEnvironment: 'jsdom',
   testMatch: [
-    '**/(core-components|components|foundation|scaffold)/**/*.spec.(tsx|ts)',
+    '**/(core-components|components|foundation|scaffold|consultant-finder)/**/*.spec.(tsx|ts)',
   ],
 };

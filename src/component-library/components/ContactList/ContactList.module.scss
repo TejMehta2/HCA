@@ -38,12 +38,17 @@
 
   .number {
     margin-top: $spacing-2;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   .hours {
-    display: flex;
+    display: grid;
+    grid: auto / px-to-rem(24) 1fr;
     align-items: center;
-    flex-wrap: wrap;
     gap: $spacing-2;
     margin-top: $spacing-3;
   }
