@@ -30,34 +30,27 @@ const ImageDefault = (props: ImageProps): JSX.Element => (
 
 export const Banner = (props: ImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
-  const backgroundStyle = {
-    backgroundImage: `url('${props?.fields?.Image?.value?.src}')`,
-  };
+  const isPageEditing = sitecoreContext.pageEditing;
+  const classHeroBannerEmpty =
+    isPageEditing && props.fields?.Image?.value?.class === 'scEmptyImage'
+      ? 'hero-banner-empty'
+      : '';
+  const backgroundStyle = { backgroundImage: `url('${props?.fields?.Image?.value?.src}')` };
   const modifyImageProps = {
     ...props.fields.Image,
     editable: props?.fields?.Image?.editable
       ?.replace(`width="${props?.fields?.Image?.value?.width}"`, 'width="100%"')
-      .replace(
-        `height="${props?.fields?.Image?.value?.height}"`,
-        'height="100%"'
-      ),
+      .replace(`height="${props?.fields?.Image?.value?.height}"`, 'height="100%"'),
   };
   const id = props.params.RenderingIdentifier;
 
   return (
     <div
-      className={`component hero-banner ${props.params.styles}`}
+      className={`component hero-banner ${props.params.styles} ${classHeroBannerEmpty}`}
       id={id ? id : undefined}
     >
-      <div
-        className="component-content sc-sxa-image-hero-banner"
-        style={backgroundStyle}
-      >
-        {sitecoreContext.pageEditing ? (
-          <JssImage field={modifyImageProps} />
-        ) : (
-          ''
-        )}
+      <div className="component-content sc-sxa-image-hero-banner" style={backgroundStyle}>
+        {sitecoreContext.pageEditing ? <JssImage field={modifyImageProps} /> : ''}
       </div>
     </div>
   );
@@ -71,12 +64,9 @@ export const Default = (props: ImageProps): JSX.Element => {
     const id = props.params.RenderingIdentifier;
 
     return (
-      <div
-        className={`component image ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div className={`component image ${props.params.styles}`} id={id ? id : undefined}>
         <div className="component-content">
-          {sitecoreContext.pageState === 'edit' ? (
+          {sitecoreContext.pageState === 'edit' || !props.fields.TargetUrl?.value?.href ? (
             <Image />
           ) : (
             <JssLink field={props.fields.TargetUrl}>
