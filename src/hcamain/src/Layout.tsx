@@ -3,7 +3,12 @@
  */
 import React from 'react';
 import Head from 'next/head';
-import { Placeholder, LayoutServiceData, Field, HTMLLink } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Placeholder,
+  LayoutServiceData,
+  Field,
+  HTMLLink,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
 import Scripts from 'src/Scripts';
 
@@ -45,7 +50,9 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       {/* root placeholder for the app, which we add components to using route data */}
       <div className={mainClassPageEditing}>
         <header>
-          <div id="header">{route && <Placeholder name="headless-header" rendering={route} />}</div>
+          <div id="header">
+            {route && <Placeholder name="headless-header" rendering={route} />}
+          </div>
         </header>
         <main>
           <div id="content">

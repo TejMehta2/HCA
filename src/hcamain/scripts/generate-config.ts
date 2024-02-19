@@ -21,7 +21,8 @@ const defaultConfig: JssConfig = {
   graphQLEndpointPath: process.env[`${constantCase('graphQLEndpointPath')}`],
   defaultLanguage: process.env[`${constantCase('defaultLanguage')}`],
   graphQLEndpoint: process.env[`${constantCase('graphQLEndpoint')}`],
-  layoutServiceConfigurationName: process.env[`${constantCase('layoutServiceConfigurationName')}`],
+  layoutServiceConfigurationName:
+    process.env[`${constantCase('layoutServiceConfigurationName')}`],
   publicUrl: process.env[`${constantCase('publicUrl')}`],
 };
 
@@ -57,7 +58,9 @@ const config = {};\n`;
 
   // Set configuration values, allowing override with environment variables
   Object.keys(config).forEach((prop) => {
-    configText += `config.${prop} = process.env.${constantCase(prop)} || '${config[prop]}',\n`;
+    configText += `config.${prop} = process.env.${constantCase(prop)} || '${
+      config[prop]
+    }',\n`;
   });
 
   configText += `module.exports = config;`;

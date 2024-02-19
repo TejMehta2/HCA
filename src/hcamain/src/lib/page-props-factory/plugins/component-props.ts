@@ -1,4 +1,7 @@
-import { ComponentPropsService, ComponentPropsError } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  ComponentPropsService,
+  ComponentPropsError,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import { SitecorePageProps } from 'lib/page-props';
 import { GetServerSidePropsContext, GetStaticPropsContext } from 'next';
 import { moduleFactory } from 'temp/componentBuilder';
@@ -13,22 +16,27 @@ class ComponentPropsPlugin implements Plugin {
     this.componentPropsService = new ComponentPropsService();
   }
 
-  async exec(props: SitecorePageProps, context: GetServerSidePropsContext | GetStaticPropsContext) {
+  async exec(
+    props: SitecorePageProps,
+    context: GetServerSidePropsContext | GetStaticPropsContext
+  ) {
     if (!props.layoutData.sitecore.route) return props;
 
     // Retrieve component props using side-effects defined on components level
     if (isServerSidePropsContext(context)) {
-      props.componentProps = await this.componentPropsService.fetchServerSideComponentProps({
-        layoutData: props.layoutData,
-        context,
-        moduleFactory,
-      });
+      props.componentProps =
+        await this.componentPropsService.fetchServerSideComponentProps({
+          layoutData: props.layoutData,
+          context,
+          moduleFactory,
+        });
     } else {
-      props.componentProps = await this.componentPropsService.fetchStaticComponentProps({
-        layoutData: props.layoutData,
-        context,
-        moduleFactory,
-      });
+      props.componentProps =
+        await this.componentPropsService.fetchStaticComponentProps({
+          layoutData: props.layoutData,
+          context,
+          moduleFactory,
+        });
     }
 
     const errors = Object.keys(props.componentProps)

@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugins = require('scripts/temp/generate-component-builder-plugins');
-import { PackageDefinition, ComponentFile } from '@sitecore-jss/sitecore-jss-dev-tools';
+import {
+  PackageDefinition,
+  ComponentFile,
+} from '@sitecore-jss/sitecore-jss-dev-tools';
 
 export interface ComponentBuilderPluginConfig {
   watch?: boolean;

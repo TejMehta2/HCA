@@ -3,7 +3,10 @@ import { GraphQLRobotsService } from '@sitecore-jss/sitecore-jss-nextjs';
 import { siteResolver } from 'lib/site-resolver';
 import config from 'temp/config';
 
-const robotsApi = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const robotsApi = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   res.setHeader('Content-Type', 'text/plain');
 
   // Resolve site based on hostname
