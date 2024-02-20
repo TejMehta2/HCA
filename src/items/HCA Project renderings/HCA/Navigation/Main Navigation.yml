@@ -23,7 +23,7 @@ SharedFields:
             value
             jsonValue
           }
-          mobileLogo {
+          darkLogo {
             value
             jsonValue
           }
@@ -233,14 +233,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4f6e7c5d-48db-4f02-a2ae-6b1d40a84028"
+      Value: "5ff7c272-fc3f-4be1-8c19-4d8a11de309f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240219T175754Z
+      Value: 20240220T095113Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
