@@ -1,27 +1,12 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.sticky {
-  z-index: 2;
+.wrapper {
   display: none;
   @include media(screen-l) {
     display: block;
   }
 
-  position: sticky;
-  top: 0;
-  transition: transform 0.2s ease;
-
-  &.up {
-    transform: translateY(0);
-  }
-
-  &.down:not(.open) {
-    transform: translateY(-100%);
-  }
-}
-
-.wrapper {
   background-color: var(--background);
 
   &.closed {
