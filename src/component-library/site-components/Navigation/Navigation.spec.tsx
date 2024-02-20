@@ -9,11 +9,12 @@ import { render } from '@testing-library/react';
 import { NavigationProps } from './Navigation.types';
 
 const serviceCard: TabContent = {
-  variation: 'card',
+  variation: 'single',
+  template: 'Navigation Content Block',
   heading: 'Featured Scan',
   description: (
     <Text tag="p" variation="body-medium">
-      Ea et ea voluptate culpa laborum qui Enim eiusmod qui ullamco aute anim.
+      Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
     </Text>
   ),
   cta: (
@@ -25,7 +26,7 @@ const serviceCard: TabContent = {
   ),
 };
 const blogCard: TabContent = {
-  variation: 'card',
+  template: 'Navigation Blog Post Card',
   heading: 'Test or scan related blog article',
   description: (
     <Text tag="p" variation="body-medium">
@@ -74,7 +75,8 @@ const mockProps: NavigationProps = {
       ),
       content: [
         {
-          variation: 'header',
+          template: 'Navigation Content Block',
+          variation: 'double',
           heading: 'Services & Treatments',
           description: (
             <Text variation="body-large">
@@ -99,6 +101,7 @@ const mockProps: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'Services lines',
           links: [
@@ -134,6 +137,7 @@ const mockProps: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'GP Services & Urgent Care',
           links: [
@@ -166,6 +170,7 @@ const mockProps: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'Treatments',
           links: [
@@ -213,6 +218,7 @@ const mockProps: NavigationProps = {
       ),
       content: [
         {
+          template: 'Main Navigation Links List',
           variation: 'double',
           heading: 'Tests & Scans',
           links: [
@@ -281,6 +287,7 @@ const mockProps: NavigationProps = {
       ),
       content: [
         {
+          template: 'Main Navigation Links List',
           variation: 'double',
           heading: 'Our locations',
           links: [
@@ -339,6 +346,7 @@ const mockProps: NavigationProps = {
       ),
       content: [
         {
+          template: 'Main Navigation Links List',
           variation: 'single-wide',
           heading: 'Patient Information',
           links: [
@@ -371,6 +379,7 @@ const mockProps: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-wide',
           heading: 'Other Information',
           links: [

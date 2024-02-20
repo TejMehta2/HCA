@@ -1,3 +1,4 @@
+/* eslint react/jsx-key: 0 */
 import React, { useState } from 'react';
 import { NavigationDesktopProps } from './NavigationDesktop.types';
 import styles from './NavigationDesktop.module.scss';
@@ -35,62 +36,93 @@ const NavigationDesktop = (props: NavigationDesktopProps): JSX.Element => {
 
   const isOpen = () => currentTab !== null;
 
-  const tabContentSwitch = (content: TabContent) => {
-    const { variation, heading, description, date, tag, links, cta } = content;
-    switch (variation) {
-      case 'single-narrow':
-        return (
-          <div className={styles[`span-${2}`]}>
-            <Text variation={'body-bold-extra-large'}>{heading}</Text>
-            <ul>{links?.map((link, index) => <li key={index}>{link}</li>)}</ul>
-            <TextButton>{cta}</TextButton>
-          </div>
-        );
-      case 'single-wide':
-        return (
-          <div className={styles[`span-${3}`]}>
-            <Text variation={'body-bold-extra-large'}>{heading}</Text>
-            <ul>{links?.map((link, index) => <li key={index}>{link}</li>)}</ul>
-            <Button size={'large'} theme={'full'}>
-              {cta}
-            </Button>
-          </div>
-        );
-      case 'double':
-        return (
-          <div className={styles[`span-${6}`]}>
-            <Text variation={'body-bold-extra-large'}>{heading}</Text>
-            <ul className={styles.double}>
-              {links?.map((link, index) => <li key={index}>{link}</li>)}
-            </ul>
-            <Button size={'large'} theme={'full'}>
-              {cta}
-            </Button>
-          </div>
-        );
-      case 'header':
-        return (
-          <>
-            <div className={styles[`span-${4}`]}>
-              <AdvancedBlockHeader
-                paddingSize="none"
-                title={
-                  <Text tag="h3" variation={'display-4'}>
-                    {heading}
-                  </Text>
-                }
-                body={description}
-                ctas={
-                  <Button size={'large'} theme={'full'}>
-                    {cta}
-                  </Button>
-                }
-              />
-            </div>
-            <div className={styles[`span-${1}`]} />
-          </>
-        );
-      case 'card':
+  const TabChildComponent = (props: TabContent) => {
+    const { variation, template, heading, description, date, tag, links, cta } =
+      props;
+    switch (template) {
+      case 'Main Navigation Links List':
+        switch (variation) {
+          case 'single-narrow':
+            return (
+              <div className={styles[`span-${2}`]}>
+                <Text variation={'body-bold-extra-large'}>{heading}</Text>
+                <ul>{links?.map((link) => <li>{link}</li>)}</ul>
+                <TextButton>{cta}</TextButton>
+              </div>
+            );
+          case 'single-wide':
+            return (
+              <div className={styles[`span-${3}`]}>
+                <Text variation={'body-bold-extra-large'}>{heading}</Text>
+                <ul>{links?.map((link) => <li>{link}</li>)}</ul>
+                <Button size={'large'} theme={'full'}>
+                  {cta}
+                </Button>
+              </div>
+            );
+          case 'double':
+            return (
+              <div className={styles[`span-${6}`]}>
+                <Text variation={'body-bold-extra-large'}>{heading}</Text>
+                <ul className={styles.double}>
+                  {links?.map((link) => <li>{link}</li>)}
+                </ul>
+                <Button size={'large'} theme={'full'}>
+                  {cta}
+                </Button>
+              </div>
+            );
+          default:
+            return <></>;
+        }
+      case 'Navigation Content Block':
+        switch (variation) {
+          case 'double':
+            return (
+              <>
+                <div className={styles[`span-${4}`]}>
+                  <AdvancedBlockHeader
+                    paddingSize="none"
+                    title={
+                      <Text tag="h3" variation={'display-4'}>
+                        {heading}
+                      </Text>
+                    }
+                    body={<Text variation="body-large">{description}</Text>}
+                    ctas={
+                      <Button size={'large'} theme={'full'}>
+                        {cta}
+                      </Button>
+                    }
+                  />
+                </div>
+                <div className={styles[`span-${1}`]} />
+              </>
+            );
+          case 'single':
+            return (
+              <div className={styles[`span-${3}`]}>
+                <CardNavigation
+                  title={
+                    <Text tag="h3" variation={'heading-2'}>
+                      {heading}
+                    </Text>
+                  }
+                  body={
+                    <Text tag="p" variation="body-medium">
+                      {description}
+                    </Text>
+                  }
+                  cta={
+                    <Button size="small" theme="full">
+                      {cta}
+                    </Button>
+                  }
+                />
+              </div>
+            );
+        }
+      case 'Navigation Blog Post Card':
         return (
           <div className={styles[`span-${3}`]}>
             <CardNavigation
@@ -99,19 +131,16 @@ const NavigationDesktop = (props: NavigationDesktopProps): JSX.Element => {
                   {heading}
                 </Text>
               }
-              body={description}
-              cta={
-                <Button size="small" theme="full">
-                  cta
-                </Button>
+              body={
+                <Text tag="p" variation="body-medium">
+                  {description}
+                </Text>
               }
-              tag={tag}
+              tag={<span>{tag}</span>}
               date={date}
             />
           </div>
         );
-      default:
-        return <p>Unsupported navigation component: {content.variation}</p>;
     }
   };
 
@@ -149,59 +178,52 @@ const NavigationDesktop = (props: NavigationDesktopProps): JSX.Element => {
                 {isOpen() ? <LogoWhite /> : <LogoBlue />}
               </a>
               <ul className={styles.tabs}>
-                {tabs.map((tab, index) => (
-                  <li
-                    key={index}
-                    onMouseEnter={tabHandler(index)}
-                    className={[
-                      styles.control,
-                      currentTab === index ? styles.active : '',
-                    ].join(' ')}
-                  >
-                    <TextLink variation="body-medium">
-                      <label onFocus={tabHandler(index)}>
-                        <input
-                          className="sr-only"
-                          type="radio"
-                          name="tab"
-                          checked={currentTab === index}
-                          onChange={tabHandler(index)}
-                        />
-                        {tab.heading}
-                      </label>
-                    </TextLink>
-                  </li>
-                ))}
-                <li className="sr-only">
-                  <label onFocus={tabHandler(null)}>
-                    <input
-                      type="radio"
-                      name="tab"
-                      checked={currentTab === null}
-                      onChange={tabHandler(null)}
-                    />
-                    None
-                  </label>
-                </li>
+                {tabs.map((tab, tabIndex) => {
+                  if (tab.hasChildren)
+                    return (
+                      <>
+                        <li
+                          onMouseEnter={tabHandler(tabIndex)}
+                          className={[
+                            styles.control,
+                            currentTab === tabIndex ? styles.active : '',
+                          ].join(' ')}
+                        >
+                          <TextLink variation="body-medium">
+                            <button
+                              aria-expanded={currentTab === tabIndex}
+                              aria-controls={`#navigation-tab-${tabIndex}`}
+                              onClick={tabHandler(
+                                currentTab === tabIndex ? null : tabIndex
+                              )}
+                            >
+                              {tab.heading}
+                            </button>
+                          </TextLink>
+                        </li>
+                        <li
+                          className={[
+                            styles.drawer,
+                            currentTab === tabIndex ? styles.active : '',
+                          ].join(' ')}
+                        >
+                          <div
+                            id={`navigation-tab-${tabIndex}`}
+                            className={[styles.content].join(' ')}
+                          >
+                            {tab?.content?.map(TabChildComponent)}
+                          </div>
+                        </li>
+                      </>
+                    );
+                  return (
+                    <li className={styles.control}>
+                      <TextLink variation="body-medium">{tab.cta}</TextLink>
+                    </li>
+                  );
+                })}
                 <li className={styles.control}>{search}</li>
               </ul>
-            </div>
-            <div
-              className={[styles.drawer, isOpen() ? styles.active : ''].join(
-                ' '
-              )}
-            >
-              {tabs.map((tab, index) => (
-                <div
-                  key={index}
-                  className={[
-                    styles.content,
-                    currentTab === index ? styles.active : '',
-                  ].join(' ')}
-                >
-                  {tab?.content?.map(tabContentSwitch)}
-                </div>
-              ))}
             </div>
           </div>
         </div>

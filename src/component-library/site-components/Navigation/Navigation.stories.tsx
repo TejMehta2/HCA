@@ -56,7 +56,8 @@ const meta: Meta<typeof Navigation> = {
 };
 
 const serviceCard: TabContent = {
-  variation: 'card',
+  variation: 'single',
+  template: 'Navigation Content Block',
   heading: 'Featured Scan',
   description: (
     <Text tag="p" variation="body-medium">
@@ -72,7 +73,7 @@ const serviceCard: TabContent = {
   ),
 };
 const blogCard: TabContent = {
-  variation: 'card',
+  template: 'Navigation Blog Post Card',
   heading: 'Test or scan related blog article',
   description: (
     <Text tag="p" variation="body-medium">
@@ -124,7 +125,8 @@ export const Default: StoryObj<typeof Navigation> = {
         ),
         content: [
           {
-            variation: 'header',
+            template: 'Navigation Content Block',
+            variation: 'double',
             heading: 'Services & Treatments',
             description: (
               <Text variation="body-large">
@@ -149,6 +151,7 @@ export const Default: StoryObj<typeof Navigation> = {
             ),
           },
           {
+            template: 'Main Navigation Links List',
             variation: 'single-narrow',
             heading: 'Services lines',
             links: [
@@ -184,6 +187,7 @@ export const Default: StoryObj<typeof Navigation> = {
             ),
           },
           {
+            template: 'Main Navigation Links List',
             variation: 'single-narrow',
             heading: 'GP Services & Urgent Care',
             links: [
@@ -216,6 +220,7 @@ export const Default: StoryObj<typeof Navigation> = {
             ),
           },
           {
+            template: 'Main Navigation Links List',
             variation: 'single-narrow',
             heading: 'Treatments',
             links: [
@@ -263,6 +268,7 @@ export const Default: StoryObj<typeof Navigation> = {
         ),
         content: [
           {
+            template: 'Main Navigation Links List',
             variation: 'double',
             heading: 'Tests & Scans',
             links: [
@@ -331,6 +337,7 @@ export const Default: StoryObj<typeof Navigation> = {
         ),
         content: [
           {
+            template: 'Main Navigation Links List',
             variation: 'double',
             heading: 'Our locations',
             links: [
@@ -389,6 +396,7 @@ export const Default: StoryObj<typeof Navigation> = {
         ),
         content: [
           {
+            template: 'Main Navigation Links List',
             variation: 'single-wide',
             heading: 'Patient Information',
             links: [
@@ -421,6 +429,7 @@ export const Default: StoryObj<typeof Navigation> = {
             ),
           },
           {
+            template: 'Main Navigation Links List',
             variation: 'single-wide',
             heading: 'Other Information',
             links: [
