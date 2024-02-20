@@ -8,7 +8,6 @@ import { useScrollDirection } from '../../hooks/useScrollDirection';
 const Navigation = (props: NavigationProps): JSX.Element => {
   // Hooks
   const scrollDirection = useScrollDirection();
-  // console.log(props);
   return (
     <div className={[styles.sticky, styles[scrollDirection]].join(' ')}>
       <NavigationDesktop {...props} />
