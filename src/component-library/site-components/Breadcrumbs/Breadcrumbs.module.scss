@@ -35,6 +35,7 @@
     @include media(screen-l) {
       display: flex;
       text-wrap: nowrap;
+      gap: 0;
 
       &::after {
         content: '';
