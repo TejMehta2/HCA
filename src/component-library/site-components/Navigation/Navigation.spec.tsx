@@ -66,7 +66,7 @@ const mockProps: NavigationProps = {
   tabs: [
     {
       heading: 'Service & Treatments',
-      cta: (
+      mobileTabCta: (
         <a href="#">
           <span>
             View all <strong>Service & Treatments</strong>
@@ -206,10 +206,11 @@ const mockProps: NavigationProps = {
           ),
         },
       ],
+      hasChildren: true,
     },
     {
       heading: 'Tests & Scans',
-      cta: (
+      mobileTabCta: (
         <a href="#">
           <span>
             View all <strong>Tests & Scans</strong>
@@ -271,14 +272,17 @@ const mockProps: NavigationProps = {
         serviceCard,
         blogCard,
       ],
+      hasChildren: true,
     },
     {
       heading: 'Find a consultant',
       content: [],
+      hasChildren: false,
+      tabCta: <a href="#">Find a consultant</a>,
     },
     {
       heading: 'Find a location',
-      cta: (
+      mobileTabCta: (
         <a href="#">
           <span>
             View all <strong>Find a location</strong>
@@ -334,10 +338,11 @@ const mockProps: NavigationProps = {
         blogCard,
         blogCard,
       ],
+      hasChildren: true,
     },
     {
       heading: 'Patient & Visitor Information',
-      modilecta: (
+      mobileTabCta: (
         <a href="#">
           <span>
             View all <strong>Patient & Visitor Information</strong>
@@ -414,6 +419,7 @@ const mockProps: NavigationProps = {
         serviceCard,
         blogCard,
       ],
+      hasChildren: true,
     },
   ],
   search: (

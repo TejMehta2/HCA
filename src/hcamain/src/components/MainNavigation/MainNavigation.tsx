@@ -26,7 +26,6 @@ const MainNavigationDefaultComponent = (
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
-  console.log(props.fields.data.item.navigationTabs.targetItems);
   const tabs: NavigationTab[] =
     props.fields.data.item.navigationTabs?.targetItems.map((tab) => ({
       heading: tab.tabTitle.value,

@@ -483,16 +483,9 @@ export const Default: StoryObj<typeof Navigation> = {
   },
   decorators: [
     (Story) => (
-      <>
+      <header>
         <Story />
-        <div
-          style={{
-            display: 'block',
-            minHeight: '150vh',
-            background: 'hsl(0, 70%, 70%)',
-          }}
-        />
-      </>
+      </header>
     ),
   ],
 };
