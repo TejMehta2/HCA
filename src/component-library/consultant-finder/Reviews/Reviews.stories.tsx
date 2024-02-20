@@ -12,10 +12,25 @@ const meta: Meta<typeof Reviews> = {
   },
 };
 
+const tooltipContent = (
+  <div>
+    <p>This is a tooltip content.</p>
+  </div>
+);
+
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Reviews> = {
   args: {
-    children: <p>Reviews</p>,
+    reviewsTotal: 35,
+    reviewsCount: 4.5,
+    reviewsText: 'Patients',
+    isConsultantProfileReviews: true,
+    hasTooltip: true,
+    tooltipContent: tooltipContent,
+    titleText: 'Patient rating',
+    doctifyLogo: null,
+    doctifyText: 'Verified by',
+    hasDocitfyBranding: true,
   },
 };
