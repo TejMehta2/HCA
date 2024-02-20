@@ -56,154 +56,174 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
   }
 
   return (
-    <>
-      <Button size="large" theme="full">
-        <button onClick={() => dialogRef?.current?.showModal()}>
-          {props?.fields?.CTALink.value.text && (
-            <>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: props.fields.CTAIcon?.fields.SvgMarkup.value,
-                }}
-              ></span>
-              <RichText
-                tag="span"
-                field={{
-                  value: props?.fields?.CTALink.value.text,
-                }}
-              />
-            </>
-          )}
-        </button>
-      </Button>
+    props.fields.ModalContent && (
+      <>
+        <Button size="large" theme="full">
+          <button onClick={() => dialogRef?.current?.showModal()}>
+            {props?.fields?.CTALink.value.text && (
+              <>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.fields.CTAIcon?.fields.SvgMarkup.value,
+                  }}
+                ></span>
+                <RichText
+                  tag="span"
+                  field={{
+                    value: props?.fields?.CTALink.value.text,
+                  }}
+                />
+              </>
+            )}
+          </button>
+        </Button>
 
-      <ModalAppointment
-        ref={dialogRef}
-        title1={
-          <Text variation={'display-4'} tag="h2">
-            <JssText field={props.fields.ModalContent[0].fields.Title} />
-          </Text>
-        }
-        copy1={
-          <Text variation={'body-large'}>
-            <JssText field={props.fields.ModalContent[0].fields.Text} />
-          </Text>
-        }
-        cta1={
-          <>
-            {props.fields.ModalContent[0].fields.PrimaryCTA.value.text && (
-              <Button size={'large'} theme={'full'}>
-                <JssLink
-                  field={props.fields.ModalContent[0].fields?.PrimaryCTA}
-                >
-                  <>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          props.fields.ModalContent[0].fields.PrimaryCTAIcon
-                            ?.fields.SvgMarkup.value,
-                      }}
-                    ></span>
-                    <RichText
-                      tag="span"
-                      field={{
-                        value:
-                          props.fields.ModalContent[0].fields.PrimaryCTA.value
-                            .text,
-                      }}
-                    />
-                  </>
-                </JssLink>
-              </Button>
-            )}
-            {props.fields.ModalContent[0].fields.SecondaryCTA.value.text && (
-              <Button size={'large'} theme={'outline'}>
-                <JssLink
-                  field={props.fields.ModalContent[0].fields?.SecondaryCTA}
-                >
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields.ModalContent[0].fields.SecondaryCTAIcon
-                          ?.fields.SvgMarkup.value,
-                    }}
-                  ></span>
-                  <RichText
-                    tag="span"
-                    field={{
-                      value:
-                        props.fields.ModalContent[0].fields.SecondaryCTA.value
-                          .text,
-                    }}
-                  />
-                </JssLink>
-              </Button>
-            )}
-          </>
-        }
-        title2={
-          <Text variation={'display-4'} tag="h2">
-            <JssText field={props.fields.ModalContent[1].fields.Title} />
-          </Text>
-        }
-        copy2={
-          <Text variation={'body-large'}>
-            <JssText field={props.fields.ModalContent[1].fields.Text} />
-          </Text>
-        }
-        cta2={
-          <>
-            {props.fields.ModalContent[1].fields.PrimaryCTA.value.text && (
-              <Button size={'large'} theme={'full'}>
-                <JssLink
-                  field={props.fields.ModalContent[1].fields?.PrimaryCTA}
-                >
-                  <>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          props.fields.ModalContent[1].fields.PrimaryCTAIcon
-                            ?.fields.SvgMarkup.value,
-                      }}
-                    ></span>
-                    <RichText
-                      tag="span"
-                      field={{
-                        value:
-                          props.fields.ModalContent[1].fields.PrimaryCTA.value
-                            .text,
-                      }}
-                    />
-                  </>
-                </JssLink>
-              </Button>
-            )}
-            {props.fields.ModalContent[1].fields.SecondaryCTA.value.text && (
-              <Button size={'large'} theme={'outline'}>
-                <JssLink
-                  field={props.fields.ModalContent[1].fields?.SecondaryCTA}
-                >
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields.ModalContent[1].fields.SecondaryCTAIcon
-                          ?.fields.SvgMarkup.value,
-                    }}
-                  ></span>
-                  <RichText
-                    tag="span"
-                    field={{
-                      value:
-                        props.fields.ModalContent[1].fields.SecondaryCTA.value
-                          .text,
-                    }}
-                  />
-                </JssLink>
-              </Button>
-            )}
-          </>
-        }
-      />
-    </>
+        <ModalAppointment
+          ref={dialogRef}
+          title1={
+            props.fields.ModalContent[0] && (
+              <Text variation={'display-4'} tag="h2">
+                <JssText field={props.fields.ModalContent[0].fields.Title} />
+              </Text>
+            )
+          }
+          copy1={
+            props.fields.ModalContent[0] && (
+              <Text variation={'body-large'}>
+                <JssText field={props.fields.ModalContent[0].fields.Text} />
+              </Text>
+            )
+          }
+          cta1={
+            props.fields.ModalContent[0] && (
+              <>
+                {props.fields.ModalContent[0].fields.PrimaryCTA.value.text && (
+                  <Button size={'large'} theme={'full'}>
+                    <JssLink
+                      field={props.fields.ModalContent[0].fields?.PrimaryCTA}
+                    >
+                      <>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props.fields.ModalContent[0].fields.PrimaryCTAIcon
+                                ?.fields.SvgMarkup.value,
+                          }}
+                        ></span>
+                        <RichText
+                          tag="span"
+                          field={{
+                            value:
+                              props.fields.ModalContent[0].fields.PrimaryCTA
+                                .value.text,
+                          }}
+                        />
+                      </>
+                    </JssLink>
+                  </Button>
+                )}
+
+                {props.fields.ModalContent[0] &&
+                  props.fields.ModalContent[0].fields.SecondaryCTA.value
+                    .text && (
+                    <Button size={'large'} theme={'outline'}>
+                      <JssLink
+                        field={
+                          props.fields.ModalContent[0].fields?.SecondaryCTA
+                        }
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props.fields.ModalContent[0].fields
+                                .SecondaryCTAIcon?.fields.SvgMarkup.value,
+                          }}
+                        ></span>
+                        <RichText
+                          tag="span"
+                          field={{
+                            value:
+                              props.fields.ModalContent[0].fields.SecondaryCTA
+                                .value.text,
+                          }}
+                        />
+                      </JssLink>
+                    </Button>
+                  )}
+              </>
+            )
+          }
+          title2={
+            props.fields.ModalContent[1] && (
+              <Text variation={'display-4'} tag="h2">
+                <JssText field={props.fields.ModalContent[1].fields.Title} />
+              </Text>
+            )
+          }
+          copy2={
+            props.fields.ModalContent[1] && (
+              <Text variation={'body-large'}>
+                <JssText field={props.fields.ModalContent[1].fields.Text} />
+              </Text>
+            )
+          }
+          cta2={
+            props.fields.ModalContent[1] && (
+              <>
+                {props.fields.ModalContent[1].fields.PrimaryCTA.value.text && (
+                  <Button size={'large'} theme={'full'}>
+                    <JssLink
+                      field={props.fields.ModalContent[1].fields?.PrimaryCTA}
+                    >
+                      <>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props.fields.ModalContent[1].fields.PrimaryCTAIcon
+                                ?.fields.SvgMarkup.value,
+                          }}
+                        ></span>
+                        <RichText
+                          tag="span"
+                          field={{
+                            value:
+                              props.fields.ModalContent[1].fields.PrimaryCTA
+                                .value.text,
+                          }}
+                        />
+                      </>
+                    </JssLink>
+                  </Button>
+                )}
+                {props.fields.ModalContent[1].fields.SecondaryCTA.value
+                  .text && (
+                  <Button size={'large'} theme={'outline'}>
+                    <JssLink
+                      field={props.fields.ModalContent[1].fields?.SecondaryCTA}
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            props.fields.ModalContent[1].fields.SecondaryCTAIcon
+                              ?.fields.SvgMarkup.value,
+                        }}
+                      ></span>
+                      <RichText
+                        tag="span"
+                        field={{
+                          value:
+                            props.fields.ModalContent[1].fields.SecondaryCTA
+                              .value.text,
+                        }}
+                      />
+                    </JssLink>
+                  </Button>
+                )}
+              </>
+            )
+          }
+        />
+      </>
+    )
   );
 };

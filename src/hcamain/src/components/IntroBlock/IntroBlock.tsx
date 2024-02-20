@@ -96,7 +96,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       }
       copy={
         <Text tag="span" variation="body-large">
-          <RichText tag="p" field={props.fields.Text} />
+          <RichText field={props.fields.Text} />
         </Text>
       }
       stats={stats}
