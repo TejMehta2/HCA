@@ -95,7 +95,7 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         </Text>
       }
       copy={
-        <Text tag="span" variation="body-large">
+        <Text tag="div" variation="body-large">
           <RichText field={props.fields.Text} />
         </Text>
       }
@@ -104,7 +104,6 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
         !isExperienceEditor ? (
           <JSSLink field={props.fields.CTALink}>
             <RichText
-              tag="span"
               field={{
                 value: props.fields.CTALink.value.text,
               }}
