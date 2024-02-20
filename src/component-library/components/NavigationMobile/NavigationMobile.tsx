@@ -1,3 +1,4 @@
+/* eslint react/jsx-key: 0 */
 import React, { useEffect, useState } from 'react';
 import { NavigationMobileProps } from './NavigationMobile.types';
 import styles from './NavigationMobile.module.scss';
@@ -68,8 +69,8 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
   // Transform props to filter out desktop child components
   const mobileTabs: NavigationTab[] = tabs.map((tab) => ({
     ...tab,
-    content: tab.content?.filter((item) =>
-      ['single-narrow', 'single-wide', 'double'].includes(item.variation)
+    content: tab.content?.filter(
+      (item) => item.template === 'Main Navigation Links List'
     ),
   }));
 
@@ -153,72 +154,72 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
               >
                 <ul>
                   {mobileTabs.map((primary, primaryIndex) => {
-                    return (
-                      <>
-                        <li
-                          className={
-                            primaryChoice === null ? '' : styles.hidden
-                          }
-                          key={primaryIndex}
-                        >
-                          <TextLink full={true}>
-                            <button
-                              onClick={() => {
-                                setPrimaryChoice(primaryIndex);
-                                if (primary.content.length <= 1) {
-                                  setSecondaryChoice(0);
-                                }
-                              }}
-                            >
-                              <span>{primary.heading}</span>
-                              <Icons iconName={'iconChevronRight'} />
-                            </button>
-                          </TextLink>
-                        </li>
-                        <li
-                          className={[
-                            styles.grow,
-                            primaryChoice === primaryIndex ? '' : styles.hidden,
-                          ].join(' ')}
-                        >
-                          <ul>
-                            {primary.content?.map(
-                              (secondary, secondaryIndex) => {
-                                return (
-                                  <>
-                                    <li
-                                      className={
-                                        primaryChoice === primaryIndex &&
-                                        secondaryChoice === null
-                                          ? ''
-                                          : styles.hidden
-                                      }
-                                      key={secondaryIndex}
-                                    >
-                                      <TextLink full={true}>
-                                        <button
-                                          onClick={() =>
-                                            setSecondaryChoice(secondaryIndex)
-                                          }
-                                        >
-                                          <span>{secondary.heading}</span>
-                                          <Icons
-                                            iconName={'iconChevronRight'}
-                                          />
-                                        </button>
-                                      </TextLink>
-                                    </li>
-                                    <li
-                                      className={[
-                                        styles.grow,
-                                        secondaryChoice === secondaryIndex
-                                          ? ''
-                                          : styles.hidden,
-                                      ].join(' ')}
-                                    >
-                                      <ul>
-                                        {secondary.links?.map(
-                                          (tertiary, tertiaryIndex) => (
+                    if (primary.hasChildren) {
+                      return (
+                        <>
+                          <li
+                            className={
+                              primaryChoice === null ? '' : styles.hidden
+                            }
+                          >
+                            <TextLink full={true}>
+                              <button
+                                onClick={() => {
+                                  setPrimaryChoice(primaryIndex);
+                                  if (primary.content.length <= 1) {
+                                    setSecondaryChoice(0);
+                                  }
+                                }}
+                              >
+                                <span>{primary.heading}</span>
+                                <Icons iconName={'iconChevronRight'} />
+                              </button>
+                            </TextLink>
+                          </li>
+                          <li
+                            className={[
+                              styles.grow,
+                              primaryChoice === primaryIndex
+                                ? ''
+                                : styles.hidden,
+                            ].join(' ')}
+                          >
+                            <ul>
+                              {primary.content?.map(
+                                (secondary, secondaryIndex) => {
+                                  return (
+                                    <>
+                                      <li
+                                        className={
+                                          primaryChoice === primaryIndex &&
+                                          secondaryChoice === null
+                                            ? ''
+                                            : styles.hidden
+                                        }
+                                      >
+                                        <TextLink full={true}>
+                                          <button
+                                            onClick={() =>
+                                              setSecondaryChoice(secondaryIndex)
+                                            }
+                                          >
+                                            <span>{secondary.heading}</span>
+                                            <Icons
+                                              iconName={'iconChevronRight'}
+                                            />
+                                          </button>
+                                        </TextLink>
+                                      </li>
+                                      <li
+                                        className={[
+                                          styles.grow,
+                                          secondaryChoice === secondaryIndex
+                                            ? ''
+                                            : styles.hidden,
+                                        ].join(' ')}
+                                      >
+                                        <ul>
+                                          {secondary.links?.map((tertiary) => (
                                             <li
                                               className={
                                                 primaryChoice ===
@@ -228,49 +229,65 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                                   ? ''
                                                   : styles.hidden
                                               }
-                                              key={tertiaryIndex}
                                             >
                                               {tertiary}
                                             </li>
-                                          )
-                                        )}
-                                      </ul>
-                                    </li>
-                                    <li
-                                      className={[
-                                        styles.bottom,
-                                        primaryChoice === primaryIndex &&
-                                        secondaryChoice === secondaryIndex
-                                          ? ''
-                                          : styles.hidden,
-                                      ].join(' ')}
-                                    >
-                                      <Button size={'large'} theme={'outline'}>
-                                        {secondary.mobileCta}
-                                      </Button>
-                                    </li>
-                                  </>
-                                );
-                              }
-                            )}
-                          </ul>
-                        </li>
-                        <li
-                          className={[
-                            styles.bottom,
-                            primaryChoice === primaryIndex &&
-                            (secondaryChoice === null ||
-                              primary.content.length <= 1)
-                              ? ''
-                              : styles.hidden,
-                          ].join(' ')}
-                        >
-                          <Button size={'large'} theme={'outline'}>
-                            {primary.cta}
-                          </Button>
-                        </li>
-                      </>
-                    );
+                                          ))}
+                                        </ul>
+                                      </li>
+                                      <li
+                                        className={[
+                                          styles.bottom,
+                                          primaryChoice === primaryIndex &&
+                                          secondaryChoice === secondaryIndex
+                                            ? ''
+                                            : styles.hidden,
+                                        ].join(' ')}
+                                      >
+                                        <Button
+                                          size={'large'}
+                                          theme={'outline'}
+                                        >
+                                          {secondary.mobileCta}
+                                        </Button>
+                                      </li>
+                                    </>
+                                  );
+                                }
+                              )}
+                            </ul>
+                          </li>
+                          {primary.mobileCta && (
+                            <li
+                              className={[
+                                styles.bottom,
+                                primaryChoice === primaryIndex &&
+                                (secondaryChoice === null ||
+                                  primary.content.length <= 1)
+                                  ? ''
+                                  : styles.hidden,
+                              ].join(' ')}
+                            >
+                              <Button size={'large'} theme={'outline'}>
+                                {primary.mobileCta}
+                              </Button>
+                            </li>
+                          )}
+                        </>
+                      );
+                    } else {
+                      return (
+                        <>
+                          <li
+                            className={
+                              primaryChoice === null ? '' : styles.hidden
+                            }
+                          >
+                            <TextLink full={true}>{primary.cta}</TextLink>
+                          </li>
+                        </>
+                      );
+                    }
                   })}
                 </ul>
               </div>

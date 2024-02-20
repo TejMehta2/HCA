@@ -2,6 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .sticky {
+  z-index: 2;
   display: block;
   @include media(screen-l) {
     display: none;
