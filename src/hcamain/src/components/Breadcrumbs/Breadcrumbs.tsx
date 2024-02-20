@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Text as JSSText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 
@@ -52,14 +52,14 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   const breadcrumbList = props.fields.data.contextItem.ancestors.map(
     (ancestor, index) => (
       <Link href={ancestor.url.path} key={index}>
-        <JSSText field={ancestor.title.jsonValue} />
+        <JssText field={ancestor.title.jsonValue} />
       </Link>
     )
   );
 
   breadcrumbList.push(
     <span key={breadcrumbList.length}>
-      <JSSText field={props.fields.data.contextItem.title.jsonValue} />
+      <JssText field={props.fields.data.contextItem.title.jsonValue} />
     </span>
   );
 
