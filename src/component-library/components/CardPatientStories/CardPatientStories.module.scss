@@ -8,22 +8,23 @@
   flex-direction: column;
   border-radius: $radius-medium;
   overflow: hidden;
+  background-color: var(--background);
 
   // Sequential background colours
   &:nth-of-type(4n + 1) {
-    background-color: $light-orange;
+    @include apply-theme-d;
   }
 
   &:nth-of-type(4n + 2) {
-    background-color: $green-40;
+    @include apply-theme-g;
   }
 
   &:nth-of-type(4n + 3) {
-    background-color: $light-orange-40;
+    @include apply-theme-c;
   }
 
   &:nth-of-type(4n + 4) {
-    background-color: $main-turquoise-20;
+    @include apply-theme-i;
   }
 
   img {
@@ -47,25 +48,25 @@ This gets around it by using the parent class as the sibling element to apply se
 div[class*='slick-slide'] {
   &:nth-of-type(4n + 1) {
     .card {
-      background-color: $light-orange;
+      @include apply-theme-d;
     }
   }
 
   &:nth-of-type(4n + 2) {
     .card {
-      background-color: $green-40;
+      @include apply-theme-g;
     }
   }
 
   &:nth-of-type(4n + 3) {
     .card {
-      background-color: $light-orange-40;
+      @include apply-theme-l;
     }
   }
 
   &:nth-of-type(4n + 4) {
     .card {
-      background-color: $main-turquoise-20;
+      @include apply-theme-i;
     }
   }
 }
