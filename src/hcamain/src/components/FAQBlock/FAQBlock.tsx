@@ -82,11 +82,11 @@ const getAccordions = (questions: QuestionFields[]) => {
   return { accordions, questionSchema };
 };
 
-const getFaqSchema = (questionSchema: FAQSchema) => {
+const FaqSchema = (props: FAQSchema): JSX.Element => {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [questionSchema],
+    mainEntity: [props],
   };
 
   return (
@@ -119,7 +119,7 @@ export const Default = (props: FAQProps): JSX.Element => {
 
   return (
     <>
-      {getFaqSchema(accordions.questionSchema)}
+      <FaqSchema {...accordions.questionSchema} />
       <AccordionsBlock
         theme={props.params.Theme || 'F-HCA-White'}
         subtitle={
@@ -186,7 +186,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   return (
     <>
-      {getFaqSchema(accordions.questionSchema)}
+      <FaqSchema {...accordions.questionSchema} />
       <AccordionsBlockSideBySide
         theme={props.params.Theme}
         header={
