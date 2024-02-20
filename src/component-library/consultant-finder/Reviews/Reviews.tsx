@@ -39,7 +39,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
   }
 
   return (
-    <div className={styles.reviews}>
+    <div className={styles.reviews} data-testid="reviews-component">
       {props.isConsultantProfileReviews && (
         <div className={styles['reviews-header']}>
           <Text tag="h2" variation="subheading-2">
