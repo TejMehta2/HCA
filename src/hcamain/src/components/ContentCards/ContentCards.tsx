@@ -12,6 +12,7 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 
 interface PagesFields {
   title: Field<string>;
@@ -37,6 +38,7 @@ type ContentCardsProps = {
     Theme: Theme;
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
+    Columns: string;
     styles: string;
   };
   fields: Fields;
@@ -56,9 +58,13 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
   if (!props.fields.data.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
+
+  const columns: CardBlockProps['variation'] =
+    +props.params.Columns === 4 ? '4-columns' : '3-columns';
+
   return (
     <CardBlock
-      variation={'3-columns'}
+      variation={columns}
       gapSize={'small'}
       theme={props.params.Theme}
       header={
