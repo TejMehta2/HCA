@@ -116,7 +116,7 @@ export const Default: StoryObj<typeof Navigation> = {
     tabs: [
       {
         heading: 'Service & Treatments',
-        mobileCta: (
+        mobileTabCta: (
           <a href="#">
             <span>
               View all <strong>Service & Treatments</strong>
@@ -260,7 +260,7 @@ export const Default: StoryObj<typeof Navigation> = {
       },
       {
         heading: 'Tests & Scans',
-        cta: (
+        mobileTabCta: (
           <a href="#">
             <span>
               View all <strong>Tests & Scans</strong>
@@ -328,11 +328,11 @@ export const Default: StoryObj<typeof Navigation> = {
         heading: 'Find a consultant',
         content: [],
         hasChildren: false,
-        cta: <a href="#">Find a consultant</a>,
+        tabCta: <a href="#">Find a consultant</a>,
       },
       {
         heading: 'Find a location',
-        cta: (
+        mobileTabCta: (
           <a href="#">
             <span>
               View all <strong>Find a location</strong>
@@ -392,7 +392,7 @@ export const Default: StoryObj<typeof Navigation> = {
       },
       {
         heading: 'Patient & Visitor Information',
-        cta: (
+        mobileTabCta: (
           <a href="#">
             <span>
               View all <strong>Patient & Visitor Information</strong>

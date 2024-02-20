@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { NavigationMobileProps } from './NavigationMobile.types';
 import styles from './NavigationMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
@@ -7,7 +6,10 @@ import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
 import Icons from '../../foundation/Icons/Icons';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Button from '../../core-components/Button/Button';
-import { NavigationTab } from '../../site-components/Navigation/Navigation.types';
+import {
+  NavigationProps,
+  NavigationTab,
+} from '../../site-components/Navigation/Navigation.types';
 
 interface BackButtonProps {
   callback: () => void;
@@ -28,7 +30,7 @@ const BackButton = (props: BackButtonProps) => {
   );
 };
 
-const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
+const NavigationMobile = (props: NavigationProps): JSX.Element => {
   const {
     eyebrow,
     tabs,

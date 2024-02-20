@@ -337,7 +337,7 @@ const mockProps: NavigationProps = {
     },
     {
       heading: 'Patient & Visitor Information',
-      cta: (
+      modilecta: (
         <a href="#">
           <span>
             View all <strong>Patient & Visitor Information</strong>

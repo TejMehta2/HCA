@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavigationDesktopProps } from './NavigationDesktop.types';
 import styles from './NavigationDesktop.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
@@ -8,12 +7,15 @@ import TextLink from '../../core-components/TextLink/TextLink';
 
 import CardNavigation from '../../components/CardNavigation/CardNavigation';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
-import { TabContent } from '../../site-components/Navigation/Navigation.types';
+import {
+  NavigationProps,
+  TabContent,
+} from '../../site-components/Navigation/Navigation.types';
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Button from '../../core-components/Button/Button';
 
-const NavigationDesktop = (props: NavigationDesktopProps): JSX.Element => {
+const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   const {
     eyebrow,
     tabs,
