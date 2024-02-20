@@ -11,11 +11,11 @@ import iconArrowSmallUp from './assets-dist/Arrow small up.svg'
 import iconArrowUp from './assets-dist/Arrow up.svg'
 import iconBook from './assets-dist/Book.svg'
 import iconCalendar from './assets-dist/Calendar.svg'
-import iconCfreviewsemptystar from './assets-dist/CfReviewsEmptyStar.svg'
-import iconCfreviewsfullstar from './assets-dist/CfReviewsFullStar.svg'
-import iconCfreviewshalfstar from './assets-dist/CfReviewsHalfStar.svg'
-import iconCfreviewsquarterfullstar from './assets-dist/CfReviewsQuarterFullStar.svg'
-import iconCfreviewsquarterstar from './assets-dist/CfReviewsQuarterStar.svg'
+import iconCfstarfull0 from './assets-dist/CFStarFull0.svg'
+import iconCfstarfull100 from './assets-dist/CFStarFull100.svg'
+import iconCfstarfull25 from './assets-dist/CFStarFull25.svg'
+import iconCfstarfull50 from './assets-dist/CFStarFull50.svg'
+import iconCfstarfull75 from './assets-dist/CFStarFull75.svg'
 import iconCheckCircle from './assets-dist/Check Circle.svg'
 import iconCheckSmall from './assets-dist/Check Small.svg'
 import iconCheck from './assets-dist/Check.svg'
@@ -84,11 +84,11 @@ export type IconName =
   | 'iconArrowUp'
   | 'iconBook'
   | 'iconCalendar'
-  | 'iconCfreviewsemptystar'
-  | 'iconCfreviewsfullstar'
-  | 'iconCfreviewshalfstar'
-  | 'iconCfreviewsquarterfullstar'
-  | 'iconCfreviewsquarterstar'
+  | 'iconCfstarfull0'
+  | 'iconCfstarfull100'
+  | 'iconCfstarfull25'
+  | 'iconCfstarfull50'
+  | 'iconCfstarfull75'
   | 'iconCheckCircle'
   | 'iconCheckSmall'
   | 'iconCheck'
@@ -157,11 +157,11 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconArrowUp', iconArrowUp],
   ['iconBook', iconBook],
   ['iconCalendar', iconCalendar],
-  ['iconCfreviewsemptystar', iconCfreviewsemptystar],
-  ['iconCfreviewsfullstar', iconCfreviewsfullstar],
-  ['iconCfreviewshalfstar', iconCfreviewshalfstar],
-  ['iconCfreviewsquarterfullstar', iconCfreviewsquarterfullstar],
-  ['iconCfreviewsquarterstar', iconCfreviewsquarterstar],
+  ['iconCfstarfull0', iconCfstarfull0],
+  ['iconCfstarfull100', iconCfstarfull100],
+  ['iconCfstarfull25', iconCfstarfull25],
+  ['iconCfstarfull50', iconCfstarfull50],
+  ['iconCfstarfull75', iconCfstarfull75],
   ['iconCheckCircle', iconCheckCircle],
   ['iconCheckSmall', iconCheckSmall],
   ['iconCheck', iconCheck],
