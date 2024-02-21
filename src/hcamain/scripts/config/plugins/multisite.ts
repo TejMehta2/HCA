@@ -1,9 +1,11 @@
 import chalk from 'chalk';
-import { ConfigPlugin, JssConfig } from '..';
 import {
   GraphQLSiteInfoService,
   SiteInfo,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { createGraphQLClientFactory } from 'lib/graphql-client-factory/create';
+import { JssConfig } from 'lib/config';
+import { ConfigPlugin } from '..';
 
 /**
  * This plugin will set the "sites" config prop.
@@ -16,30 +18,17 @@ class MultisitePlugin implements ConfigPlugin {
   async exec(config: JssConfig) {
     let sites: SiteInfo[] = [];
     let allSites: SiteInfo[] = [];
-
-    const endpoint = config.graphQLEndpoint;
-    const apiKey = config.sitecoreApiKey;
     const excludeFromMultisite = config.excludeFromMultisite;
-
-    if (!endpoint || !apiKey) {
-      console.warn(
-        chalk.yellow(
-          'Skipping site information fetch (missing GraphQL endpoint or API key).'
-        )
-      );
-    } else {
-      console.log(`Fetching site information from ${endpoint}`);
-      try {
-        const siteInfoService = new GraphQLSiteInfoService({
-          endpoint,
-          apiKey,
-        });
-        allSites = await siteInfoService.fetchSiteInfo();
-        sites = allSites.filter((_) => _.name == excludeFromMultisite);
-      } catch (error) {
-        console.error(chalk.red('Error fetching site information'));
-        console.error(error);
-      }
+    console.log('Fetching site information');
+    try {
+      const siteInfoService = new GraphQLSiteInfoService({
+        clientFactory: createGraphQLClientFactory(config),
+      });
+      allSites = await siteInfoService.fetchSiteInfo();
+      sites = allSites.filter((_) => _.name == excludeFromMultisite);
+    } catch (error) {
+      console.error(chalk.red('Error fetching site information'));
+      console.error(error);
     }
 
     return Object.assign({}, config, {

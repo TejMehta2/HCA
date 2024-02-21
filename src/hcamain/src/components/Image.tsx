@@ -30,6 +30,11 @@ const ImageDefault = (props: ImageProps): JSX.Element => (
 
 export const Banner = (props: ImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  const isPageEditing = sitecoreContext.pageEditing;
+  const classHeroBannerEmpty =
+    isPageEditing && props.fields?.Image?.value?.class === 'scEmptyImage'
+      ? 'hero-banner-empty'
+      : '';
   const backgroundStyle = {
     backgroundImage: `url('${props?.fields?.Image?.value?.src}')`,
   };
@@ -46,7 +51,7 @@ export const Banner = (props: ImageProps): JSX.Element => {
 
   return (
     <div
-      className={`component hero-banner ${props.params.styles}`}
+      className={`component hero-banner ${props.params.styles} ${classHeroBannerEmpty}`}
       id={id ? id : undefined}
     >
       <div
@@ -76,7 +81,8 @@ export const Default = (props: ImageProps): JSX.Element => {
         id={id ? id : undefined}
       >
         <div className="component-content">
-          {sitecoreContext.pageState === 'edit' ? (
+          {sitecoreContext.pageState === 'edit' ||
+          !props.fields.TargetUrl?.value?.href ? (
             <Image />
           ) : (
             <JssLink field={props.fields.TargetUrl}>

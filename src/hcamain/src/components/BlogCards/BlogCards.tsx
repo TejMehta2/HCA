@@ -12,7 +12,7 @@ import {
 import CardBlogBlock from '@component-library/site-components/CardBlogBlock/CardBlogBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
-import { HeadingSize, Theme } from 'src/types/params';
+import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
 import Tags from '@component-library/core-components/Tags/Tags';
 import Button from '@component-library/core-components/Button/Button';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
@@ -49,7 +49,12 @@ interface Fields {
 }
 
 type BlogCardsProps = {
-  params: { Theme: Theme; HeadingSize: HeadingSize; styles: string };
+  params: {
+    Theme: Theme;
+    HeadingSize: HeadingSize;
+    styles: string;
+    HeadingTag: HeadingTag;
+  };
   fields?: Fields;
 };
 
@@ -69,7 +74,10 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
   return (
     <CarouselCards
       title={
-        <Text tag={'h2'} variation={props.params.HeadingSize}>
+        <Text
+          tag={props.params.HeadingTag || 'h2'}
+          variation={props.params.HeadingSize}
+        >
           <JssText field={props.fields.Title} />
         </Text>
       }

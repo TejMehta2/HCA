@@ -11,10 +11,7 @@ class ComponentBuilderPlugin implements ComponentBuilderPluginType {
   order = 9999;
 
   exec(config: ComponentBuilderPluginConfig) {
-    generateComponentBuilder({
-      packages: config.packages,
-      watch: config.watch,
-    });
+    generateComponentBuilder(config);
 
     return config;
   }
