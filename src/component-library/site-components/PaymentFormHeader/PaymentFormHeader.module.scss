@@ -1,0 +1,78 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+//  TODO Text and border colours need to be updated when variables for them are available
+
+.header {
+  @include responsive-container;
+
+  padding: $spacing-3 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $dark-blue;
+}
+
+.logo-section {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+}
+
+.logo {
+  svg {
+    width: auto;
+    height: px-to-rem(50);
+  }
+
+  @include media(screen-l) {
+    margin-right: px-to-rem(16);
+    padding-right: px-to-rem(16);
+    border-right: 1px solid #adb4bf;
+  }
+}
+
+.payments-text {
+  @include apply-subheading-2;
+
+  @include media(screen-l, max) {
+    display: none;
+  }
+}
+
+.contact {
+  display: flex;
+
+  @include apply-body-medium;
+
+  @include media(screen-l, max) {
+    display: none;
+  }
+}
+
+.contact-text {
+  margin-right: $spacing-4;
+  color: #4b596f;
+}
+
+.opening-hours,
+.phone a {
+  @include apply-body-medium-medium;
+
+  color: $dark-blue;
+  display: flex;
+  gap: 0 $spacing-2;
+
+  svg {
+    min-width: px-to-rem(24);
+  }
+}
+
+.phone {
+  a {
+    text-decoration: none;
+    margin-right: px-to-rem(16);
+    padding-right: px-to-rem(16);
+    border-right: 1px solid #adb4bf;
+  }
+}
