@@ -180,7 +180,11 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               )}
               {card.fields.ArticleType && (
                 <Tags>
-                    <JssText key={card.fields.ArticleType.id} tag="p" field={card.fields.ArticleType.fields.Title} />
+                  <JssText
+                    key={card.fields.ArticleType.id}
+                    tag="p"
+                    field={card.fields.ArticleType.fields.Title}
+                  />
                 </Tags>
               )}
             </CardBlog>
