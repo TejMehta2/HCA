@@ -13,34 +13,30 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetDetailsHeader($contextItem: String!, $language: String!) 
-    {
+    query GetDetailsHeader($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
-      name
-        ...on BlogPage {
-              title {
-                jsonValue
-              }
-              text : field(name:"Description"){
-                jsonValue
-              }
-          	  date {
-                  jsonValue
+        name
+        ... on BlogPage {
+          title {
+            jsonValue
+          }
+          text: field(name: "Description") {
+            jsonValue
+          }
+          date {
+            jsonValue
+          }
+          articleType {
+             targetItem {
+              ... on Tag {
+                title {
+                  value
                 }
-             tags
-        	 {
-                tagList: targetItems
-                {      		
-                  ... on Tag 
-                  {
-                     title {
-                      jsonValue
-                    }
-                  }
-    	    }
-              } 
-         }
-     }
+              }
+            }
+          }
+        }
+      }
     }
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
@@ -111,14 +107,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "208312e4-99dc-40d9-af2f-abc72ec68b6d"
+      Value: "64766585-592d-4d2e-b5fe-967453b66227"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240216T081724Z
+      Value: 20240220T144551Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

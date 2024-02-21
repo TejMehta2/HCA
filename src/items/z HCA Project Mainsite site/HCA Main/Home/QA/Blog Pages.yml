@@ -16,6 +16,9 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231204T090944Z
+    - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
+      Hint: ArticleType
+      Value: "{D86035E4-019C-4C53-9445-ACEA05A1C536}"
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Blog Pages
@@ -27,13 +30,16 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "807f4c24-34f9-4e7e-a4e4-2fc31b740c60"
+      Hint: Category
+      Value: "{D609A3AE-8783-4787-8140-72B4BEA6D586}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2ea5180c-6007-4f6d-af0a-e120ff9b966a"
+      Value: "a00031a2-359f-47c8-bb5d-0fe798b67a80"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231204T090944Z
+      Value: 20240220T150602Z

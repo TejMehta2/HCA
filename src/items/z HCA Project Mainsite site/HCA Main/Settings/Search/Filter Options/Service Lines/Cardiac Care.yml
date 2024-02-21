@@ -1,0 +1,29 @@
+﻿---
+ID: "afa012a9-9cba-49d2-a119-0a1e7b0f6455"
+Parent: "482d888a-13ae-4b4d-ac33-a4c584e2ea72"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Service Lines/Cardiac Care
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240220T101833Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: Cardiac Care
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "24439014-5b23-43d9-a2f1-059dad6a6b37"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240220T101848Z
+    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
+      Hint: Filter
+      Value: serviceline=Cardiac Care
