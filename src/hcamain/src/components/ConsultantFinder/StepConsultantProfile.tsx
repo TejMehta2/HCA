@@ -7,6 +7,8 @@
 
 import React, { useContext } from 'react';
 import {
+  GetServerSideComponentProps,
+  GetStaticComponentProps,
   Image as JssImage,
   RichText as JssRichText,
   ImageField,
@@ -17,7 +19,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 
-// import { encode } from 'querystring';
+import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 
@@ -39,24 +41,37 @@ interface Fields {
   BackLink: LinkField;
 }
 
-// const URL = 'https://api.doctify.com/api/hca/specialists/';
+// request e.g. https://www.hcacloud.localhost/Finder/StepConsultantProfile/mr-andrew-goldberg
+const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists/';
+/**
+ * Will be called during SSG
+ * @param {ComponentRendering} rendering
+ * @param {LayoutServiceData} layoutData
+ * @param {GetStaticPropsContext} context
+ */
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering,
+  layoutData,
+  context
+) => {
+  // based on https://github.com/vercel/next.js/discussions/38061
+  const slug = context?.params?.requestPath; // e.g. mr-andrew-goldberg
+  const requestURL = `${Doctify_Specialists_URL}${slug}`;
 
-// export const getStaticProps: GetStaticComponentProps = async (
-//   rendering,
-//   layoutData,
-//   context
-// ) => {
-//   // based on https://github.com/vercel/next.js/discussions/38061
-//   const urlBase = new URLSearchParams(encode(context.params));
-//   const slug = context.params['path'][context.params['path'].length - 1]; // e.g. mr-andrew-goldberg
-//   const requestURL = `${URL}${slug}`;
-//   const post = await fetch(requestURL).then(
-//     (res) =>
-//       `GetStaticComponentProps: urlBase=${slug}, requestURL=${requestURL}`
-//   );
+  try {
+    const res = await fetch(requestURL);
+    if (res.ok) {
+      const docitfyData = await res.json();
+      return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfyData=${JSON.stringify(docitfyData)}`;
+    } else {
+      return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfy call failed res=${res.status} text=${res.statusText}`;
+    }
+  } catch(e) {
+    return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfy call failed with exception=${e}`;
+  }
 
-//   return post;
-// };
+  return null;
+};
 
 type StepProps = {
   rendering: ComponentRendering;
@@ -74,7 +89,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const externalData = useComponentProps<string>(props.rendering.uid);
-  console.log('profile');
+  console.log('profile', externalData);
   const { message, setMessage } = useContext(ConsultantFinderContext);
 
   const id = props.params.RenderingIdentifier;
