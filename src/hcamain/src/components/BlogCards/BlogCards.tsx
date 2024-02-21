@@ -111,7 +111,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             <Text tag={'p'} variation={'body-large'}>
               <JssRichText tag="span" field={card.fields.Description} />
             </Text>
-            {!!card.fields.Tags && (
+            {!!card.fields.ArticleType && (
               <Tags>
                 <JssText
                   key={card.fields.ArticleType?.id}
@@ -178,11 +178,9 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   <JssRichText tag="span" field={card.fields.Description} />
                 </Text>
               )}
-              {card.fields.Tags && (
+              {card.fields.ArticleType && (
                 <Tags>
-                  {card.fields.Tags.map((tag) => (
-                    <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                  ))}
+                    <JssText key={card.fields.ArticleType.id} tag="p" field={card.fields.ArticleType.fields.Title} />
                 </Tags>
               )}
             </CardBlog>
