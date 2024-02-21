@@ -116,5 +116,5 @@ export const ImageRight = (props: TalkToUsProps): JSX.Element => {
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
   }
-  return <Default {...props} imageAlignment="right" />;
+  return <ImageLeft {...props} imageAlignment="right" />;
 };

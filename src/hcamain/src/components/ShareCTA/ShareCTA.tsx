@@ -85,7 +85,9 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
       <br />
       <JssText field={props.fields.data.contextItem.description} />
       <br />
-      <a href={props.fields.data.contextItem.url.path}>{props.fields.data.contextItem.url.path}</a>
+      <a href={props.fields.data.contextItem.url.path}>
+        {props.fields.data.contextItem.url.path}
+      </a>
       <br />
       <p>Text: {localise('close')}</p>
     </div>
