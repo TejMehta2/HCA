@@ -19,7 +19,7 @@ const mockProps: ReviewsProps = {
   titleText: 'Sample title text',
   doctifyText: 'Sample doctify text',
   doctifyLogo: <img src="doctify-logo.png" alt="Doctify Logo" />,
-  hasDocitfyBranding: true,
+  hasDoctifyBranding: true,
 };
 
 describe('Reviews', () => {

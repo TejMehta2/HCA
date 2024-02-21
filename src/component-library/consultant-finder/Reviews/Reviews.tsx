@@ -87,7 +87,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
         </div>
       )}
 
-      {props.hasDocitfyBranding && (
+      {props.hasDoctifyBranding && (
         <div className={styles['reviews-doctify']}>
           <Text tag="p" variation="body-medium-large">
             {props.doctifyText}

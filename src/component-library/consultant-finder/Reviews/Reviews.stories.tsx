@@ -31,6 +31,6 @@ export const Default: StoryObj<typeof Reviews> = {
     titleText: 'Patient rating',
     doctifyLogo: null,
     doctifyText: 'Verified by',
-    hasDocitfyBranding: true,
+    hasDoctifyBranding: true,
   },
 };

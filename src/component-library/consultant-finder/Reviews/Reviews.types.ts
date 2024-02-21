@@ -10,5 +10,5 @@ export interface ReviewsProps {
   titleText?: string;
   doctifyText?: string;
   doctifyLogo?: ReactNode | JSX.Element;
-  hasDocitfyBranding?: boolean;
+  hasDoctifyBranding?: boolean;
 }
