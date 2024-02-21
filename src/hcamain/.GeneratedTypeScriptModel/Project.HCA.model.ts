@@ -323,6 +323,84 @@ export namespace PageContent {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Categories
+    */
+    export type BlogCategories =  {
+        fields?: { 
+            /**
+            * Represents the Categories field (bf40b42c-ed62-4fe4-950c-c426c7c60dee).
+            */
+            Categories?: Item[];
+
+            /**
+            * Represents the Title field (3e5ea060-55e8-4b5e-b6cf-432b2cec757c).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Categories
+    */
+    export type BlogCategoriesJson =  {
+        
+            /**
+            * Represents the Categories field (bf40b42c-ed62-4fe4-950c-c426c7c60dee).
+            */
+            categories?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Title field (3e5ea060-55e8-4b5e-b6cf-432b2cec757c).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Categories
+    */
+    export type BlogCategories = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Categories
+    */
+    export type BlogCategoriesJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Categories Folder
+    */
+    export type BlogCategoriesFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Categories Folder
+    */
+    export type BlogCategoriesFolderJson =  {
+        
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Details Header
     */
     export type BlogDetailsHeader =  {
@@ -448,14 +526,19 @@ export namespace Pages {
     export type BlogPage = Foundation.HcabasePage &  {
         fields?: { 
             /**
+            * Represents the Article Type field (2fa63bb5-b5b6-4ce7-85ef-36b6b3352524).
+            */
+            ArticleType?: Item;
+
+            /**
+            * Represents the Category field (807f4c24-34f9-4e7e-a4e4-2fc31b740c60).
+            */
+            Category?: Item[];
+
+            /**
             * Represents the Date field (e1b9a21b-a32e-429b-bbe5-047b323fd263).
             */
             Date?: Field<string>;
-
-            /**
-            * Represents the Tags field (2fa63bb5-b5b6-4ce7-85ef-36b6b3352524).
-            */
-            Tags?: Item[];
         }
 
     }
@@ -466,17 +549,24 @@ export namespace Pages {
     export type BlogPageJson = Foundation.HcabasePageJson &  {
         
             /**
+            * Represents the Article Type field (2fa63bb5-b5b6-4ce7-85ef-36b6b3352524).
+            */
+            articleType?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Category field (807f4c24-34f9-4e7e-a4e4-2fc31b740c60).
+            */
+            category?: {
+                jsonValue: Item[]
+            };
+
+            /**
             * Represents the Date field (e1b9a21b-a32e-429b-bbe5-047b323fd263).
             */
             date?: {
                 jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Tags field (2fa63bb5-b5b6-4ce7-85ef-36b6b3352524).
-            */
-            tags?: {
-                jsonValue: Item[]
             };
 
 
@@ -1556,7 +1646,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards
     */
     export type ContentCards = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.LayoutParameters &  {
         fields?: {         }
 
     }
@@ -1565,7 +1656,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards
     */
     export type ContentCardsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.LayoutParametersJson &  {
         
 
     }
@@ -1651,26 +1743,6 @@ export namespace PageContent {
 
 
     }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards Slider
-    */
-    export type ContentCardsSlider = Foundation.RenderingParameters.HeadingParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards Slider
-    */
-    export type ContentCardsSliderJson = Foundation.RenderingParameters.HeadingParametersJson &  {
-        
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder
@@ -1687,6 +1759,26 @@ export namespace PageContent {
         
 
     }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards Slider Params
+    */
+    export type ContentCardsSliderParams = Foundation.RenderingParameters.HeadingParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Cards Slider Params
+    */
+    export type ContentCardsSliderParamsJson = Foundation.RenderingParameters.HeadingParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Carousel
@@ -1750,6 +1842,24 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Carousel Folder
     */
     export type ContentCarouselFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/CopyLinkShare
+    */
+    export type CopyLinkShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/CopyLinkShare
+    */
+    export type CopyLinkShareJson = Foundation.Share.ShareBaseJson &  {
         
 
     }
@@ -2359,6 +2469,26 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/EmailShare
+    */
+    export type EmailShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/EmailShare
+    */
+    export type EmailShareJson = Foundation.Share.ShareBaseJson &  {
+        
+
+    }
+}
+export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/FAQ Block
@@ -2504,6 +2634,24 @@ export namespace Foundation.FaqQuestion {
 
     }
 }
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/FacebookShare
+    */
+    export type FacebookShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/FacebookShare
+    */
+    export type FacebookShareJson = Foundation.Share.ShareBaseJson &  {
+        
+
+    }
+}
 export namespace Business {
 
     /**
@@ -2636,6 +2784,11 @@ export namespace Foundation.Search {
             * Represents the Filter field (eb2f85a0-e72f-4048-aadf-c719635b6efd).
             */
             Filter?: Field<string>;
+
+            /**
+            * Represents the FilterValue field (85fa5517-5a1f-4408-846a-72f8cafd3401).
+            */
+            FilterValue?: Item;
         }
 
     }
@@ -2657,6 +2810,13 @@ export namespace Foundation.Search {
             */
             filter?: {
                 jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the FilterValue field (85fa5517-5a1f-4408-846a-72f8cafd3401).
+            */
+            filterValue?: {
+                jsonValue: Item
             };
 
 
@@ -4235,6 +4395,26 @@ export namespace Foundation {
 
 
     }
+}
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/MessengerShare
+    */
+    export type MessengerShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/MessengerShare
+    */
+    export type MessengerShareJson = Foundation.Share.ShareBaseJson &  {
+        
+
+    }
+}
+export namespace Foundation {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/Modal Content
@@ -5447,6 +5627,92 @@ export namespace PageContent {
         
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Share CTA
+    */
+    export type ShareCta = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the Share Platforms field (e3123d4e-d595-4289-bbd7-2e1f9d93e018).
+            */
+            SharePlatforms?: Item[];
+
+            /**
+            * Represents the Text field (a7692fd9-daf8-4ae2-a0ff-fe8bc58597a5).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (6564dfdb-3439-4c5f-9cd0-97131313fecd).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Share CTA
+    */
+    export type ShareCtaJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the Share Platforms field (e3123d4e-d595-4289-bbd7-2e1f9d93e018).
+            */
+            sharePlatforms?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Text field (a7692fd9-daf8-4ae2-a0ff-fe8bc58597a5).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (6564dfdb-3439-4c5f-9cd0-97131313fecd).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Share CTA Folder
+    */
+    export type ShareCtaFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Share CTA Folder
+    */
+    export type ShareCtaFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Share CTA Params
+    */
+    export type ShareCtaParams =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Share CTA Params
+    */
+    export type ShareCtaParamsJson =  {
+        
+
+    }
 }
 export namespace SocialMedia {
 
@@ -5792,9 +6058,9 @@ export namespace PageContent {
     export type TalkToUs =  {
         fields?: { 
             /**
-            * Represents the Contact Units field (8e509528-fe72-46e1-a5c8-7e0869ec3785).
+            * Represents the ContactUnits field (8e509528-fe72-46e1-a5c8-7e0869ec3785).
             */
-            "Contact Units"?: Item[];
+            ContactUnits?: Item[];
 
             /**
             * Represents the Heading field (54bea005-8cdc-4336-a0da-e5c96bc25bf5).
@@ -5825,9 +6091,9 @@ export namespace PageContent {
     export type TalkToUsJson =  {
         
             /**
-            * Represents the Contact Units field (8e509528-fe72-46e1-a5c8-7e0869ec3785).
+            * Represents the ContactUnits field (8e509528-fe72-46e1-a5c8-7e0869ec3785).
             */
-            "Contact Units"?: {
+            contactUnits?: {
                 jsonValue: Item[]
             };
 
@@ -6120,6 +6386,40 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Treatments Search Folder
     */
     export type TreatmentsSearchFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/TwitterXShare
+    */
+    export type TwitterXShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/TwitterXShare
+    */
+    export type TwitterXShareJson = Foundation.Share.ShareBaseJson &  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/WhatsAppShare
+    */
+    export type WhatsAppShare = Foundation.Share.ShareBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/WhatsAppShare
+    */
+    export type WhatsAppShareJson = Foundation.Share.ShareBaseJson &  {
         
 
     }
@@ -6708,6 +7008,36 @@ Foundation.HcabasePageDataJson &  {
             * Represents the Title field (05ef89c0-fe59-45b4-81da-001d21f4332a).
             */
             title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace Foundation.Share {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Share/_ShareBase
+    */
+    export type ShareBase =  {
+        fields?: { 
+            /**
+            * Represents the CTA Text field (1c2c7ab9-e534-4c88-b3ba-13b01e0b2431).
+            */
+            CTAText?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Share/_ShareBase
+    */
+    export type ShareBaseJson =  {
+        
+            /**
+            * Represents the CTA Text field (1c2c7ab9-e534-4c88-b3ba-13b01e0b2431).
+            */
+            cTAText?: {
                 jsonValue: Field<string>
             };
 

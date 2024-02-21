@@ -11,8 +11,8 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
-type BlogTags = {
-  title: { jsonValue: Field<string> };
+type ArticleTypeFields = {
+  title: { value: string };
 };
 
 interface Fields {
@@ -21,7 +21,7 @@ interface Fields {
       title: { jsonValue: Field<string> };
       text: { jsonValue: Field<string> };
       date: { jsonValue: Field<string> };
-      tags: { tagList: BlogTags[] };
+      articleType: { targetItem: ArticleTypeFields };
     };
   };
 }
@@ -58,13 +58,15 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
       theme={props.params.Theme}
       tag={
         <>
-          {props.fields.data.contextItem.tags.tagList.map((tag, index) => (
-            <Tags key={index} contentVariation="quote">
-              <Link href={{ pathname: '/' }}>
-                <JSSText field={tag.title.jsonValue} />
-              </Link>
-            </Tags>
-          ))}
+          <Tags contentVariation="quote">
+            <Link href={{ pathname: '/' }}>
+              <JSSText
+                field={
+                  props.fields.data.contextItem.articleType.targetItem.title
+                }
+              />
+            </Link>
+          </Tags>
         </>
       }
       date={<JssDate field={props.fields.data.contextItem.date.jsonValue} />}

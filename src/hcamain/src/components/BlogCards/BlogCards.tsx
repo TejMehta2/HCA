@@ -24,7 +24,7 @@ type HCAIconFields = {
   };
 };
 
-type BlogTags = Item & {
+type ArticleTypeFields = Item & {
   fields?: {
     Title?: Field<string>;
   };
@@ -36,7 +36,7 @@ type BlogFields = Item & {
     Description?: Field<string>;
     Date?: Field<string>;
     Image?: ImageField;
-    Tags?: BlogTags[];
+    ArticleType?: ArticleTypeFields;
   };
   url?: string;
 };
@@ -105,9 +105,11 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             </Text>
             {!!card.fields.Tags && (
               <Tags>
-                {card.fields.Tags.map((tag) => (
-                  <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                ))}
+                <JssText
+                  key={card.fields.ArticleType?.id}
+                  tag="p"
+                  field={card.fields.ArticleType?.fields.Title}
+                />
               </Tags>
             )}
           </CardBlog>
