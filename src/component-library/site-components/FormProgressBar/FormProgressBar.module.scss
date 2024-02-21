@@ -1,0 +1,54 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+  background-color: var(--background);
+
+  // TODO change to theme var once colours are updated as there is no equivalent
+  color: #626f82;
+  border-top: 1px solid rgba(#adb4bf, 0.4);
+  border-bottom: 1px solid rgba(#adb4bf, 0.4);
+}
+
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+}
+
+.pages {
+  @include responsive-grid-start($breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-l: 8);
+
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-2;
+  overflow-x: auto;
+}
+
+.page {
+  padding: $spacing-4 $spacing-5;
+  border-radius: $radius-large;
+  white-space: nowrap;
+
+  &.active {
+    color: var(--text);
+    background: var(--tab-background);
+  }
+
+  & > * {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
