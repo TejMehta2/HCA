@@ -53,7 +53,9 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
               <br />
               <JssText field={categorie.filter} />
               <br />
-              <span>{categorie.filterValue.jsonValue?.id?.replaceAll("-","")}</span>
+              <span>
+                {categorie.filterValue.jsonValue?.id?.replaceAll('-', '')}
+              </span>
               <br />
             </li>
           )
