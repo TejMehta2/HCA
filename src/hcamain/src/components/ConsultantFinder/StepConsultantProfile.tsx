@@ -89,7 +89,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const externalData = useComponentProps<string>(props.rendering.uid);
-  console.log('profile', externalData);
+  //console.log('profile', externalData);
   const { message, setMessage } = useContext(ConsultantFinderContext);
 
   const id = props.params.RenderingIdentifier;
