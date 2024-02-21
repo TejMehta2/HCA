@@ -9,6 +9,8 @@
     <PlatformVersion>1.*</PlatformVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Update="Sitecore.XA.Feature.LayoutServices.Integration" Version="10.3.0" />
+    <PackageReference Update="Sitecore.JavaScriptServices.ViewEngine" Version="21.0.583" />
     <PackageReference Update="Sitecore.XmCloud.Kernel" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.XmCloud.ContentSearch" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.XmCloud.ContentSearch.Linq" Version="$(PlatformVersion)" />
