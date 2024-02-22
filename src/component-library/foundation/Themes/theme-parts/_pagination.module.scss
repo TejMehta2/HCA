@@ -1,61 +1,61 @@
 @use '../../Colours/colours.module' as *;
 
 @mixin apply-pagination-turquoise-10 {
-  --pagination: #{$main-turquoise-10};
-  --pagination-hover: #{$dark-blue};
+  --pagination: #{$teal-10};
+  --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-white {
   --pagination: #{$white};
-  --pagination-hover: #{$dark-blue};
-  --pagination-arrow-hover: #{$light-orange};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$tangerine-100};
 }
 
 @mixin apply-pagination-green-20 {
-  --pagination: #{$green-20};
-  --pagination-hover: #{$dark-blue};
+  --pagination: #{$fern-20};
+  --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-beige-60 {
-  --pagination: #{$beige-60};
-  --pagination-hover: #{$dark-blue};
+  --pagination: #{$goldenrod-60};
+  --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-grey {
-  --pagination: #{$dark-blue-60};
-  --pagination-hover: #{$main-turquoise-140};
-  --pagination-arrow-hover: #{$main-turquoise-80};
+  --pagination: #{$navy-blue-60};
+  --pagination-hover: #{$teal-140};
+  --pagination-arrow-hover: #{$teal-80};
 }
 
 @mixin apply-pagination-orange {
-  --pagination: #{$light-orange};
-  --pagination-hover: #{$dark-blue};
-  --pagination-arrow-hover: #{$light-orange};
+  --pagination: #{$tangerine-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$tangerine-100};
 }
 
 @mixin apply-pagination-green-10 {
-  --pagination: #{$green-10};
-  --pagination-hover: #{$dark-blue};
+  --pagination: #{$fern-10};
+  --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$white};
 }
 
 @mixin apply-pagination-green {
-  --pagination: #{$green};
-  --pagination-hover: #{$dark-blue};
-  --pagination-arrow-hover: #{$green};
+  --pagination: #{$fern-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$fern-100};
 }
 
 @mixin apply-pagination-turquoise {
-  --pagination: #{$main-turquoise};
-  --pagination-hover: #{$dark-blue};
-  --pagination-arrow-hover: #{$main-turquoise-120};
+  --pagination: #{$teal-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$teal-120};
 }
 
 @mixin apply-pagination-coral-5 {
-  --pagination: #{$coral-5};
-  --pagination-hover: #{$dark-blue};
+  --pagination: #{$orange-20};
+  --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$white};
 }

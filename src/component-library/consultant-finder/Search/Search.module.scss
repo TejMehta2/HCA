@@ -17,11 +17,11 @@
 
   input {
     appearance: none;
-    border: 1px solid $dark-blue;
+    border: 1px solid $navy-blue-100;
     border-radius: $radius-large;
     width: 100%;
     padding: $spacing-5 $spacing-7 $spacing-5 $spacing-9;
-    color: $dark-blue;
+    color: $navy-blue-100;
     background-color: $white;
     @include apply-body-medium-large;
   }

@@ -69,7 +69,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 };
@@ -118,7 +118,7 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
@@ -175,7 +175,7 @@ export const SmallFullLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
@@ -222,7 +222,7 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
@@ -283,13 +283,13 @@ export const SocialLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <div style={{ background: '#112f34' }}>
+      <div style={{ background: 'navy-blue-100' }}>
         <Story />
       </div>
     ),
@@ -338,13 +338,13 @@ export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <div style={{ background: '#112f34' }}>
+      <div style={{ background: 'navy-blue-100' }}>
         <Story />
       </div>
     ),

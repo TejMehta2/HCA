@@ -1,27 +1,27 @@
 @use '../../Colours/colours.module' as *;
 
 @mixin apply-tabs-white {
-  --tab-text: #{$dark-blue};
-  --tab-active-text: #{$dark-blue};
+  --tab-text: #{$navy-blue-100};
+  --tab-active-text: #{$navy-blue-100};
   --tab-background: #{$white};
 }
 @mixin apply-tabs-orange {
-  --tab-text: #{$dark-blue};
-  --tab-active-text: #{$dark-blue};
-  --tab-background: #{$light-orange};
+  --tab-text: #{$navy-blue-100};
+  --tab-active-text: #{$navy-blue-100};
+  --tab-background: #{$tangerine-100};
 }
 @mixin apply-tabs-blue {
   --tab-text: #{$white};
-  --tab-active-text: #{$dark-blue};
-  --tab-background: #{$main-turquoise-10};
+  --tab-active-text: #{$navy-blue-100};
+  --tab-background: #{$teal-10};
 }
 @mixin apply-tabs-turquoise {
-  --tab-text: #{$dark-blue};
-  --tab-active-text: #{$dark-blue};
-  --tab-background: #{$main-turquoise};
+  --tab-text: #{$navy-blue-100};
+  --tab-active-text: #{$navy-blue-100};
+  --tab-background: #{$teal-100};
 }
 @mixin apply-tabs-green {
-  --tab-text: #{$dark-blue};
-  --tab-active-text: #{$dark-blue};
-  --tab-background: #{$green};
+  --tab-text: #{$navy-blue-100};
+  --tab-active-text: #{$navy-blue-100};
+  --tab-background: #{$fern-100};
 }

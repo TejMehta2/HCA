@@ -61,7 +61,7 @@ export const Long: StoryObj<typeof CQCBlock> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
@@ -92,7 +92,7 @@ export const Rating: StoryObj<typeof CQCBlock> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
