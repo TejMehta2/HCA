@@ -7,7 +7,7 @@
   background-color: var(--background);
 
   // TODO change to theme var once colours are updated as there is no equivalent
-  color: #626f82;
+  color: var(--text-date);
   border-top: 1px solid rgba(#adb4bf, 0.4);
   border-bottom: 1px solid rgba(#adb4bf, 0.4);
 }
