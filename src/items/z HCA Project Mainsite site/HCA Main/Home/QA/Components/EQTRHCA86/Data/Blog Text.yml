@@ -22,7 +22,7 @@ Languages:
     - ID: "6e67b4e2-5b5a-472d-8ffe-0278ed969e13"
       Hint: Text
       Value: |
-        <p>"Nothing but excellent"</p>
+        <h1>"Nothing but excellent"</h1>
         <p>The CQC highlighted a "strong, visible person-centred culture" at London Bridge Hospital, where colleagues are highly motivated to offer kind and compassionate care. According to the report, relatives of patients described staff as &ldquo;nothing but excellent&rdquo; and found them to be very caring and "always smiling".
         </p>
         <p>After inspecting the hospital&rsquo;s level 3 22- bed Critical Care Unit,&nbsp; the CQC also noted that staff were "proud to work in critical care", "enthusiastic about the care and services they provided", and "felt valued and supported by the team members and management."</p>
@@ -40,11 +40,11 @@ Languages:
         </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f5db92d6-b0b7-464d-96af-f7f6a2b31589"
+      Value: "6a1bf898-35da-4540-9f5b-42aac3f238c1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240209T220019Z
+      Value: 20240219T064355Z

@@ -82,6 +82,11 @@ const questions: PromptObject[] = [
         description: 'e.g. fonts, colours, spacings',
         value: 'foundation',
       },
+      {
+        title: 'consultant-finder',
+        description: 'e.g. reviews, search, profile',
+        value: 'consultant-finder',
+      },
     ],
     initial: 0,
   },
