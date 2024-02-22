@@ -27,7 +27,7 @@ The current theme can be assigned as follows.
 ### Via React component
 
 ```tsx
-<Themes theme={'A-HCA-Main-Turquoise'}>
+<Themes theme={'D-HCA-Teal'}>
   <MyComponent />
 </Themes>
 ```
@@ -173,8 +173,8 @@ The vast majority of the theme properties are consumed automatically by core-com
 
 ## Demo
 
-<Canvas of={ThemesStories.ThemeA} />
-<Controls of={ThemesStories.ThemeA} />
+<Canvas of={ThemesStories.ThemeAWhite} />
+<Controls of={ThemesStories.ThemeAWhite} />
 
 ### Nested Themes
 
@@ -183,10 +183,10 @@ Themes can be nested, as shown below.
 #### In React
 
 ```tsx
-<Themes theme={'A-HCA-Main-Turquoise'}>
+<Themes theme={'D-HCA-Teal'}>
   <ParentComponent>
     <h2>Here theme a</h2>
-    <Themes theme={'B-HCA-Green'}>
+    <Themes theme={'F-HCA-Fern'}>
       <h3>Here theme b</h3>
       <ChildComponent />
     </Themes>

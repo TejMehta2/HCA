@@ -5,8 +5,8 @@ export interface CardLocationProps {
   title: ReactNode | JSX.Element;
   cta: ReactNode | JSX.Element;
   theme:
-    | 'B-HCA-Green'
-    | 'E-HCA-Dark-Grey'
+    | 'F-HCA-Fern'
+    | 'B-HCA-Navy-Blue'
     | 'D-HCA-Light-Orange'
-    | 'L-HCA-Coral-60';
+    | 'G-HCA-Orange';
 }

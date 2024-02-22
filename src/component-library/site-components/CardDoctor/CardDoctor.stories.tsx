@@ -16,7 +16,7 @@ const meta: Meta<typeof CardDoctor> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-Main-Turquoise'}>
+      <Themes theme={'D-HCA-Teal'}>
         <Story />
       </Themes>
     ),
@@ -78,18 +78,18 @@ export const CroppedImage: StoryObj<typeof CardDoctor> = {
 };
 
 const themes: ThemesProps['theme'][] = [
-  'A-HCA-Main-Turquoise',
-  'B-HCA-Green',
-  'C-HCA-Beige',
+  'D-HCA-Teal',
+  'F-HCA-Fern',
+  'I-HCA-Goldenrod',
   'D-HCA-Light-Orange',
-  'E-HCA-Dark-Grey',
-  'F-HCA-White',
+  'B-HCA-Navy-Blue',
+  'A-HCA-White',
   'G-HCA-Green-40',
-  'H-HCA-Green-20',
+  'K-HCA-Fern-20',
   'I-HCA-Turquoise-20',
   'J-HCA-Turquoise-10',
-  'K-HCA-Turquoise-5',
-  'L-HCA-Coral-60',
+  'L-HCA-Teal-5',
+  'G-HCA-Orange',
 ];
 
 export const Themed: StoryObj<typeof CardDoctor> = {

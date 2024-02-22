@@ -34,7 +34,54 @@
   @include apply-text-link-dark;
 }
 
-@mixin apply-theme-a {
+@mixin apply-theme-a-white {
+  @include apply-shared-theme-light;
+
+  --background: #{$white};
+  --card-background: #{$tangerine-20};
+  --doctify-empty-star: #{$navy-blue-30};
+  --doctify-full-star: #{$orange-100};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$tangerine-70};
+  --quote-tag-background-hover: #{$tangerine-70};
+
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+  @include apply-pagination-orange;
+}
+
+@mixin apply-theme-b-navy {
+  @include apply-shared-theme-dark;
+
+  --background: #{$navy-blue-100};
+  --card-background: #{$navy-blue-80};
+  --doctify-full-star: #{$teal-100};
+  --doctify-empty-star: #{$white};
+  --quote-tag-background: #{$navy-blue-80};
+  --quote-tag-background-hover: #{$navy-blue-60};
+
+  @include apply-tag-dark-blue;
+  @include apply-tabs-blue;
+  @include apply-pagination-grey;
+}
+
+@mixin apply-theme-c-denim {
+  @include apply-shared-theme-dark;
+
+  --background: #{$denim-100};
+  --card-background: #{$denim-80};
+  --doctify-full-star: #{$denim-40};
+  --doctify-empty-star: #{$white};
+  --quote-tag-background: #{$denim-40};
+  --quote-tag-background-hover: #{$denim-50};
+
+  //todo
+  @include apply-tag-dark-blue;
+  @include apply-tabs-blue;
+  @include apply-pagination-grey;
+}
+
+@mixin apply-theme-d-teal {
   @include apply-shared-theme-light;
 
   --background: #{$teal-100};
@@ -48,7 +95,24 @@
   @include apply-pagination-turquoise-10;
 }
 
-@mixin apply-theme-b {
+@mixin apply-theme-e-cerulean {
+  @include apply-shared-theme-light;
+
+  --background: #{$denim-40};
+  --card-background: #{$denim-5};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$navy-blue-100};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$denim-5};
+  --quote-tag-background-hover: #{$denim-20};
+
+  //todo
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+  @include apply-pagination-orange;
+}
+
+@mixin apply-theme-f-fern {
   @include apply-shared-theme-light;
 
   --background: #{$fern-100};
@@ -62,82 +126,70 @@
   @include apply-pagination-green-20;
 }
 
-@mixin apply-theme-c {
+@mixin apply-theme-g-orange {
+  @include apply-shared-theme-light;
+
+  --background: #{$orange-100};
+  --card-background: #{$orange-20};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$navy-blue-100};
+  --quote-tag-background: #{$orange-40};
+  --quote-tag-background-hover: #{$orange-20};
+
+  @include apply-tag-coral;
+  @include apply-tabs-white;
+  @include apply-pagination-coral-5;
+}
+
+@mixin apply-theme-h-tangerine {
+  @include apply-shared-theme-light;
+
+  --background: #{$tangerine-100};
+  --card-background: #{$tangerine-30};
+  --doctify-empty-star: #{$white};
+  --doctify-full-star: #{$navy-blue-100};
+  --quote-tag-background: #{$tangerine-30};
+  --quote-tag-background-hover: #{$goldenrod-40};
+
+  //todo
+  @include apply-tag-coral;
+  @include apply-tabs-white;
+  @include apply-pagination-coral-5;
+}
+
+@mixin apply-theme-i-goldenrod {
   @include apply-shared-theme-light;
 
   --background: #{$goldenrod-100};
   --card-background: #{$white};
-  --doctify-empty-star: #{$navy-blue-20};
-  --doctify-full-star: #{$orange-100};
-  --quote-tag-background: #{$tangerine-70};
-  --quote-tag-background-hover: #{$tangerine-100};
+  --doctify-empty-star: #{$navy-blue-70};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$goldenrod-20};
+  --quote-tag-background-hover: #{$goldenrod-60};
+
+  //todo
   @include apply-tag-orange;
   @include apply-tabs-orange;
   @include apply-pagination-white;
 }
 
-@mixin apply-theme-d {
+@mixin apply-theme-j-tangerine-20 {
   @include apply-shared-theme-light;
 
-  --background: #{$tangerine-100};
-  --card-background: #{$goldenrod-100};
-  --doctify-empty-star: #{$white};
-  --doctify-full-star: #{$navy-blue-100};
-  --quote-tag-background: #{$goldenrod-60};
-  --quote-tag-background-hover: #{$goldenrod-100};
+  --background: #{$tangerine-20};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$orange-100};
+  --quote-tag-background-hover: #{$orange-60};
 
-  @include apply-tag-orange;
+  //todo
+  @include apply-tag-coral;
   @include apply-tabs-white;
-  @include apply-pagination-beige-60;
+  @include apply-pagination-coral-5;
 }
 
-@mixin apply-theme-e {
-  @include apply-shared-theme-dark;
-
-  --background: #{$navy-blue-100};
-  --card-background: #{$navy-blue-80};
-  --doctify-full-star: #{$teal-100};
-  --doctify-empty-star: #{$white};
-  --quote-tag-background: #{$navy-blue-60};
-  --quote-tag-background-hover: #{$navy-blue-80};
-
-  @include apply-tag-dark-blue;
-  @include apply-tabs-blue;
-  @include apply-pagination-grey;
-}
-
-@mixin apply-theme-f {
-  @include apply-shared-theme-light;
-
-  --background: #{$white};
-  --card-background: #{$goldenrod-100};
-  --doctify-empty-star: #{$navy-blue-9};
-  --doctify-full-star: #{$orange-100};
-  --cqc-outline: #{$navy-blue-9};
-  --quote-tag-background: #{$tangerine-70};
-  --quote-tag-background-hover: #{$tangerine-70};
-
-  @include apply-tag-orange;
-  @include apply-tabs-orange;
-  @include apply-pagination-orange;
-}
-
-@mixin apply-theme-g {
-  @include apply-shared-theme-light;
-
-  --background: #{$fern-40};
-  --card-background: #{$fern-10};
-  --doctify-empty-star: #{$white};
-  --doctify-full-star: #{$navy-blue-100};
-  --quote-tag-background: #{$fern-10};
-  --quote-tag-background-hover: #{$fern-20};
-
-  @include apply-tag-green;
-  @include apply-tabs-white;
-  @include apply-pagination-green-10;
-}
-
-@mixin apply-theme-h {
+@mixin apply-theme-k-fern-20 {
   @include apply-shared-theme-light;
 
   --background: #{$fern-20};
@@ -152,64 +204,51 @@
   @include apply-pagination-green;
 }
 
-@mixin apply-theme-i {
-  @include apply-shared-theme-light;
-
-  --background: #{$teal-20};
-  --card-background: #{$teal-5};
-  --doctify-empty-star: #{$white};
-  --doctify-full-star: #{$navy-blue-100};
-  --quote-tag-background: #{$teal-100};
-  --quote-tag-background-hover: #{$teal-120};
-
-  @include apply-tag-light-blue;
-  @include apply-tabs-turquoise;
-  @include apply-pagination-turquoise;
-}
-
-@mixin apply-theme-j {
-  @include apply-shared-theme-light;
-
-  --background: #{$teal-10};
-  --card-background: #{$white};
-  --doctify-empty-star: #{$white};
-  --doctify-full-star: #{$navy-blue-100};
-  --quote-tag-background: #{$teal-100};
-  --quote-tag-background-hover: #{$teal-120};
-
-  @include apply-tag-light-blue;
-  @include apply-tabs-turquoise;
-  @include apply-pagination-turquoise;
-}
-
-@mixin apply-theme-k {
+@mixin apply-theme-l-teal-5 {
   @include apply-shared-theme-light;
 
   --background: #{$teal-5};
   --card-background: #{$white};
-  --doctify-empty-star: #{$navy-blue-20};
+  --doctify-empty-star: #{$navy-blue-50};
   --doctify-full-star: #{$teal-120};
-  --quote-tag-background: #{$teal-100};
-  --quote-tag-background-hover: #{$teal-120};
+  --quote-tag-background: #{$teal-40};
+  --quote-tag-background-hover: #{$teal-80};
 
   @include apply-tag-light-blue;
   @include apply-tabs-turquoise;
   @include apply-pagination-turquoise;
 }
 
-@mixin apply-theme-l {
+@mixin apply-theme-m-goldenrod-20 {
   @include apply-shared-theme-light;
 
-  --background: #{$orange-60};
-  --card-background: #{$orange-20};
-  --doctify-empty-star: #{$white};
-  --doctify-full-star: #{$navy-blue-100};
-  --quote-tag-background: #{$orange-20};
-  --quote-tag-background-hover: #{$orange-20};
+  --background: #{$goldenrod-20};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$orange-150};
+  --quote-tag-background: #{$tangerine-100};
+  --quote-tag-background-hover: #{$orange-100};
 
-  @include apply-tag-coral;
-  @include apply-tabs-white;
-  @include apply-pagination-coral-5;
+  @include apply-tag-light-blue;
+  @include apply-tabs-turquoise;
+  @include apply-pagination-turquoise;
+}
+
+@mixin apply-theme-n-denim-5 {
+  @include apply-shared-theme-light;
+
+  --background: #{$denim-5};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$navy-blue-100};
+  --cqc-outline: #{$denim-100};
+  --quote-tag-background: #{$denim-40};
+  --quote-tag-background-hover: #{$denim-50};
+
+  //todo
+  @include apply-tag-orange;
+  @include apply-tabs-orange;
+  @include apply-pagination-orange;
 }
 
 @mixin theme-mode($light, $dark) {

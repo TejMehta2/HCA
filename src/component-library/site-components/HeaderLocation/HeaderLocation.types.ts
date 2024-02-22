@@ -20,10 +20,10 @@ export interface HeaderLocationProps {
   theme: Extract<
     Theme,
     | 'G-HCA-Green-40'
-    | 'H-HCA-Green-20'
+    | 'K-HCA-Fern-20'
     | 'I-HCA-Turquoise-20'
     | 'J-HCA-Turquoise-10'
-    | 'K-HCA-Turquoise-5'
+    | 'L-HCA-Teal-5'
   >;
   cqc?: JSX.Element;
   doctify?: JSX.Element;

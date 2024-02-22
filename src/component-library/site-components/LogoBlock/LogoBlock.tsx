@@ -7,7 +7,7 @@ const LogoBlock = (props: LogoBlockProps): JSX.Element => {
   const {
     logos,
     header,
-    theme = 'F-HCA-White',
+    theme = 'A-HCA-White',
     variation = 'standard',
     columns = 4,
   } = props;

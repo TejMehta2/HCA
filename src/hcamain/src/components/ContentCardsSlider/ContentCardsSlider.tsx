@@ -69,7 +69,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
 
   return (
     <CarouselCards
-      theme={props.params.Theme || 'F-HCA-White'}
+      theme={props.params.Theme || 'A-HCA-White'}
       title={
         <Text
           tag={props.params.HeadingTag || 'h2'}

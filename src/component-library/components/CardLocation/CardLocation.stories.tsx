@@ -17,7 +17,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CardLocation> = {
   args: {
-    theme: 'E-HCA-Dark-Grey',
+    theme: 'B-HCA-Navy-Blue',
     amount: (
       <Text tag="p" variation="display-1">
         35

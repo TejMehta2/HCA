@@ -11,7 +11,7 @@ const meta: Meta<typeof Tooltips> = {
   decorators: [
     (Story) => (
       <div style={{ height: '75px' }}>
-        <Themes theme={'F-HCA-White'}>
+        <Themes theme={'A-HCA-White'}>
           <Story />
         </Themes>
       </div>

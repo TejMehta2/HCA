@@ -45,7 +45,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
           </button>
         </Button>
       </Themes>
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Modals ref={dialogRef} defaultOpen={false}>
           <div className={styles['modal-wrapper']}>
             <div className={styles['modal-content']}>
