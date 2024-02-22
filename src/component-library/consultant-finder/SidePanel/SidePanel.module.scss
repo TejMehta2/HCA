@@ -1,0 +1,10 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.side-panel {
+  width: 100%;
+  max-width: px-to-rem(400);
+  border-radius: $radius-medium;
+  background-color: $main-turquoise-5;
+  padding: $spacing-6;
+}

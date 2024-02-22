@@ -2,6 +2,8 @@
 @use '../../utilities/index.module' as *;
 
 .reviews {
+  margin-bottom: $spacing-5;
+  
   svg {
     width: px-to-rem(25);
     height: px-to-rem(25);
