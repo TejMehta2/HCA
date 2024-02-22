@@ -73,7 +73,7 @@ const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: IntroBlockProps): JSX.Element => {
+export const ImageLeft = (props: IntroBlockProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
@@ -139,4 +139,11 @@ export const Default = (props: IntroBlockProps): JSX.Element => {
       }
     />
   );
+};
+
+export const ImageRight = (props: IntroBlockProps): JSX.Element => {
+  if (!props.fields) {
+    return <IntroBlockDefaultComponent {...props} />;
+  }
+  return <ImageLeft {...props} />;
 };
