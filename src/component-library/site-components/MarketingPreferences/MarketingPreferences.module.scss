@@ -9,4 +9,8 @@
 
 .copy {
   padding: $spacing-4 0;
+
+  a {
+    color: var(--text);
+  }
 }
