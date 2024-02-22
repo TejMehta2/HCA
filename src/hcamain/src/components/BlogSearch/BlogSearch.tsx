@@ -48,9 +48,7 @@ type BlogSearchProps = {
   fields: Fields;
 };
 
-const BlogSearchDefaultComponent = (
-  props: BlogSearchProps
-): JSX.Element => (
+const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">BlogSearch no datasource</span>

@@ -134,4 +134,4 @@ export const WithoutImage = (props: ContentCardsSliderProps): JSX.Element => {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
   return <WithImage {...props} />;
-}
+};

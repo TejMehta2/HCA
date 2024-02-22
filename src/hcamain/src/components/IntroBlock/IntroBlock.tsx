@@ -146,4 +146,4 @@ export const ImageRight = (props: IntroBlockProps): JSX.Element => {
     return <IntroBlockDefaultComponent {...props} />;
   }
   return <ImageLeft {...props} />;
-}
+};
