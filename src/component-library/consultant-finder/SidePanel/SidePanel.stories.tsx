@@ -3,6 +3,11 @@ import SidePanel from './SidePanel';
 import type { Meta, StoryObj } from '@storybook/react';
 import InfoBox from '../InfoBox/InfoBox';
 import Reviews from '../Reviews/Reviews';
+import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
+import Themes from '../../foundation/Themes/Themes';
+import Container from '../../foundation/Containers/Container';
+import Text from '../../foundation/Text/Text';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SidePanel> = {
@@ -12,6 +17,13 @@ const meta: Meta<typeof SidePanel> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+      <Themes theme={'F-HCA-White'}>
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export default meta;
@@ -46,6 +58,28 @@ export const Default: StoryObj<typeof SidePanel> = {
           longTextTitle="TITLE"
           shortText="Next initial appointment on Fri, Oct 28"
         />
+        <Themes theme={'A-HCA-Main-Turquoise'}>
+          <Text tag="p" variation="body-medium-small">
+            Last checked: 1 min ago
+          </Text>
+        </Themes>
+        <Container marginTop="spacing-5">
+          <Button theme="full-dark" size="small" contentVariation="full-width">
+            <button>
+              <span>
+                <strong>Book</strong> online
+              </span>
+            </button>
+          </Button>
+          <Button theme="outline" size="small" contentVariation="full-width">
+            <button>
+              <Icons iconName="iconPhone" />
+              <span>
+                <strong>Call to</strong> book
+              </span>
+            </button>
+          </Button>
+        </Container>
       </div>
     ),
   },
