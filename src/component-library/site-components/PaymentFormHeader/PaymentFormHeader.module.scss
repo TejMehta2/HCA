@@ -4,9 +4,15 @@
 //  TODO Text and border colours need to be updated when variables for them are available
 
 .header {
-  @include responsive-container;
-
   padding: $spacing-3 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $white;
+}
+
+.container {
+  @include responsive-container;
   display: flex;
   justify-content: space-between;
   align-items: center;

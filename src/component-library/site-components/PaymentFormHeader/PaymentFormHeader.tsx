@@ -7,32 +7,34 @@ const PaymentFormHeader = (props: PaymentFormHeaderProps): JSX.Element => {
   const { paymentsText, contactText, phoneNumber, openingHours, close } = props;
   return (
     <header className={styles.header}>
-      <div className={styles['logo-section']}>
-        <a className={styles.logo} href="/">
-          <span className="sr-only">Home</span>
-          <LogoBlue />
-        </a>
-        <div className={styles['payments-text']}>{paymentsText}</div>
-      </div>
-
-      {phoneNumber && (
-        <div className={styles.contact}>
-          <div className={styles['contact-text']}>{contactText}</div>
-          <div className={styles.phone}>
-            <a href={`tel:${phoneNumber.number}`}>
-              {phoneNumber.icon}
-              {phoneNumber.text}
-            </a>
-          </div>
-          {openingHours && (
-            <div className={styles['opening-hours']}>
-              {openingHours.icon} {openingHours.text}
-            </div>
-          )}
+      <div className={styles.container}>
+        <div className={styles['logo-section']}>
+          <a className={styles.logo} href="/">
+            <span className="sr-only">Home</span>
+            <LogoBlue />
+          </a>
+          <div className={styles['payments-text']}>{paymentsText}</div>
         </div>
-      )}
 
-      {close && close}
+        {phoneNumber && (
+          <div className={styles.contact}>
+            <div className={styles['contact-text']}>{contactText}</div>
+            <div className={styles.phone}>
+              <a href={`tel:${phoneNumber.number}`}>
+                {phoneNumber.icon}
+                {phoneNumber.text}
+              </a>
+            </div>
+            {openingHours && (
+              <div className={styles['opening-hours']}>
+                {openingHours.icon} {openingHours.text}
+              </div>
+            )}
+          </div>
+        )}
+
+        {close && close}
+      </div>
     </header>
   );
 };
