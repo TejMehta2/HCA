@@ -6,7 +6,11 @@ export interface NavigationEyebrow {
 }
 
 export interface TabContent {
-  variation: 'single-narrow' | 'single-wide' | 'double' | 'header' | 'card';
+  variation?: 'single-narrow' | 'single-wide' | 'double' | 'single';
+  template:
+    | 'Navigation Content Block'
+    | 'Main Navigation Links List'
+    | 'Navigation Blog Post Card';
   heading?: string;
   description?: JSX.Element;
   date?: JSX.Element;
@@ -18,8 +22,10 @@ export interface TabContent {
 
 export interface NavigationTab {
   heading: string;
-  cta?: JSX.Element;
+  tabCta?: JSX.Element;
+  mobileTabCta?: JSX.Element;
   content: TabContent[];
+  hasChildren?: boolean;
 }
 export interface NavigationProps {
   eyebrow?: NavigationEyebrow;

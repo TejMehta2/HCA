@@ -17,10 +17,8 @@ Languages:
       Hint: __Created
       Value: 20231204T090952Z
     - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
-      Hint: Tags
-      Value: |
-        {C631A9B1-127D-4DF1-892D-74BE147BC048}
-        {D86035E4-019C-4C53-9445-ACEA05A1C536}
+      Hint: ArticleType
+      Value: "{D86035E4-019C-4C53-9445-ACEA05A1C536}"
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Blog Page 1
@@ -40,7 +38,7 @@ Languages:
         Sed ac velit quis felis blandit accumsan. In molestie lorem vitae quam consequat, vehicula interdum odio commodo. Vivamus dictum velit et eros pulvinar bibendum. Fusce in semper sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec consectetur arcu nec nulla efficitur, ac pretium magna ornare. Suspendisse potenti. Aliquam dignissim hendrerit augue, ut dignissim mauris cursus vitae. Nam in ipsum ultrices, porta leo ut, luctus tellus. Sed nec vestibulum diam, et condimentum nulla. Nam in placerat nibh. Donec sed nunc orci. Sed semper nisl mauris, eget molestie metus elementum eget. Maecenas vel blandit neque, at accumsan diam. Donec hendrerit ligula eu purus euismod tincidunt.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7f88244e-1862-414d-8ffc-abc42232473c"
+      Value: "1c4e4cf6-298b-4828-a90c-14a9353b10d3"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -51,7 +49,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231206T124028Z
+      Value: 20240220T150459Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retain CQC 'Outstanding' rating

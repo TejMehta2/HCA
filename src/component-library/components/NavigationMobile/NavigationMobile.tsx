@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { NavigationMobileProps } from './NavigationMobile.types';
 import styles from './NavigationMobile.module.scss';
-import { useScrollDirection } from '../../hooks/useScrollDirection';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
 import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
 import Icons from '../../foundation/Icons/Icons';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Button from '../../core-components/Button/Button';
-import { NavigationTab } from '../../site-components/Navigation/Navigation.types';
+import {
+  NavigationProps,
+  NavigationTab,
+} from '../../site-components/Navigation/Navigation.types';
 
 interface BackButtonProps {
   callback: () => void;
@@ -29,7 +30,7 @@ const BackButton = (props: BackButtonProps) => {
   );
 };
 
-const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
+const NavigationMobile = (props: NavigationProps): JSX.Element => {
   const {
     eyebrow,
     tabs,
@@ -39,7 +40,6 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
   } = props;
 
   // Hooks
-  const scrollDirection = useScrollDirection();
   const [isOpen, setIsOpen] = useState(false);
 
   const [primaryChoice, setPrimaryChoice] = useState<number | null>(null);
@@ -68,8 +68,8 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
   // Transform props to filter out desktop child components
   const mobileTabs: NavigationTab[] = tabs.map((tab) => ({
     ...tab,
-    content: tab.content?.filter((item) =>
-      ['single-narrow', 'single-wide', 'double'].includes(item.variation)
+    content: tab.content?.filter(
+      (item) => item.template === 'Main Navigation Links List'
     ),
   }));
 
@@ -89,77 +89,72 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
   );
 
   return (
-    <div
-      className={[
-        styles.sticky,
-        styles[scrollDirection],
-        styles[isOpen ? 'open' : ''],
-      ].join(' ')}
-    >
-      <Themes theme={isOpen ? themeOpen : themeClosed}>
-        <div className={[styles.wrapper, isOpen ? '' : styles.open].join(' ')}>
-          <nav className={[styles.navigation].join(' ')} role="navigation">
-            <div className={styles.main}>
-              <a className={styles.logo} href="/">
-                <span className="sr-only">Home</span>
-                {isOpen ? <LogoWhite /> : <LogoBlue />}
-              </a>
-              <div className={styles.ctas}>
-                {search}
-                {toggleButton}
-              </div>
+    <Themes theme={isOpen ? themeOpen : themeClosed}>
+      <div
+        className={[styles.wrapper, isOpen ? styles.open : styles.closed].join(
+          ' '
+        )}
+      >
+        <nav className={[styles.navigation].join(' ')} role="navigation">
+          <div className={styles.main}>
+            <a className={styles.logo} href="/">
+              <span className="sr-only">Home</span>
+              {isOpen ? <LogoWhite /> : <LogoBlue />}
+            </a>
+            <div className={styles.ctas}>
+              {search}
+              {toggleButton}
             </div>
-            <div
-              className={[styles.drawer, isOpen ? styles.open : ''].join(' ')}
-            >
-              {primaryChoice !== null && (
-                <>
-                  {(secondaryChoice === null ||
-                    mobileTabs[primaryChoice].content.length <= 1) && (
+          </div>
+          <div className={[styles.drawer, isOpen ? styles.open : ''].join(' ')}>
+            {primaryChoice !== null && (
+              <>
+                {(secondaryChoice === null ||
+                  mobileTabs[primaryChoice].content.length <= 1) && (
+                  <BackButton
+                    callback={() => {
+                      setPrimaryChoice(null);
+                      setSecondaryChoice(null);
+                    }}
+                    displayText={
+                      <>
+                        Back to <strong>Menu</strong>
+                      </>
+                    }
+                  />
+                )}
+                {secondaryChoice !== null &&
+                  mobileTabs[primaryChoice].content.length > 1 && (
                     <BackButton
-                      callback={() => {
-                        setPrimaryChoice(null);
-                        setSecondaryChoice(null);
-                      }}
+                      callback={() => setSecondaryChoice(null)}
                       displayText={
                         <>
-                          Back to <strong>Menu</strong>
+                          Back to{' '}
+                          <strong>{mobileTabs[primaryChoice].heading}</strong>
                         </>
                       }
                     />
                   )}
-                  {secondaryChoice !== null &&
-                    mobileTabs[primaryChoice].content.length > 1 && (
-                      <BackButton
-                        callback={() => setSecondaryChoice(null)}
-                        displayText={
-                          <>
-                            Back to{' '}
-                            <strong>{mobileTabs[primaryChoice].heading}</strong>
-                          </>
-                        }
-                      />
-                    )}
-                </>
-              )}
+              </>
+            )}
 
-              <div
-                className={[
-                  styles.links,
-                  primaryChoice === null && secondaryChoice === null
-                    ? styles.primary
-                    : '',
-                ].join(' ')}
-              >
-                <ul>
-                  {mobileTabs.map((primary, primaryIndex) => {
+            <div
+              className={[
+                styles.links,
+                primaryChoice === null && secondaryChoice === null
+                  ? styles.primary
+                  : '',
+              ].join(' ')}
+            >
+              <ul>
+                {mobileTabs.map((primary, primaryIndex) => {
+                  if (primary.hasChildren) {
                     return (
-                      <>
+                      <React.Fragment key={primaryIndex}>
                         <li
                           className={
                             primaryChoice === null ? '' : styles.hidden
                           }
-                          key={primaryIndex}
                         >
                           <TextLink full={true}>
                             <button
@@ -185,7 +180,7 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                             {primary.content?.map(
                               (secondary, secondaryIndex) => {
                                 return (
-                                  <>
+                                  <React.Fragment key={secondaryIndex}>
                                     <li
                                       className={
                                         primaryChoice === primaryIndex &&
@@ -193,7 +188,6 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                           ? ''
                                           : styles.hidden
                                       }
-                                      key={secondaryIndex}
                                     >
                                       <TextLink full={true}>
                                         <button
@@ -218,8 +212,9 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                     >
                                       <ul>
                                         {secondary.links?.map(
-                                          (tertiary, tertiaryIndex) => (
+                                          (tertiary, index) => (
                                             <li
+                                              key={index}
                                               className={
                                                 primaryChoice ===
                                                   primaryIndex &&
@@ -228,7 +223,6 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                                   ? ''
                                                   : styles.hidden
                                               }
-                                              key={tertiaryIndex}
                                             >
                                               {tertiary}
                                             </li>
@@ -249,44 +243,58 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                         {secondary.mobileCta}
                                       </Button>
                                     </li>
-                                  </>
+                                  </React.Fragment>
                                 );
                               }
                             )}
                           </ul>
                         </li>
-                        <li
-                          className={[
-                            styles.bottom,
-                            primaryChoice === primaryIndex &&
-                            (secondaryChoice === null ||
-                              primary.content.length <= 1)
-                              ? ''
-                              : styles.hidden,
-                          ].join(' ')}
-                        >
-                          <Button size={'large'} theme={'outline'}>
-                            {primary.cta}
-                          </Button>
-                        </li>
-                      </>
+                        {primary.mobileTabCta && (
+                          <li
+                            className={[
+                              styles.bottom,
+                              primaryChoice === primaryIndex &&
+                              (secondaryChoice === null ||
+                                primary.content.length <= 1)
+                                ? ''
+                                : styles.hidden,
+                            ].join(' ')}
+                          >
+                            <Button size={'large'} theme={'outline'}>
+                              {primary.mobileTabCta}
+                            </Button>
+                          </li>
+                        )}
+                      </React.Fragment>
                     );
-                  })}
-                </ul>
-              </div>
-              {primaryChoice === null && (
-                <div className={styles.eyebrow}>
-                  <div className={styles['eyebrow-inner']}>
-                    {eyebrow?.left}
-                    {eyebrow?.right}
-                  </div>
-                </div>
-              )}
+                  } else {
+                    return (
+                      <React.Fragment key={primaryIndex}>
+                        <li
+                          className={
+                            primaryChoice === null ? '' : styles.hidden
+                          }
+                        >
+                          <TextLink full={true}>{primary.tabCta}</TextLink>
+                        </li>
+                      </React.Fragment>
+                    );
+                  }
+                })}
+              </ul>
             </div>
-          </nav>
-        </div>
-      </Themes>
-    </div>
+            {primaryChoice === null && (
+              <div className={styles.eyebrow}>
+                <div className={styles['eyebrow-inner']}>
+                  {eyebrow?.left}
+                  {eyebrow?.right}
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
+      </div>
+    </Themes>
   );
 };
 

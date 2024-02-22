@@ -50,7 +50,7 @@ const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: TalkToUsLeftProps): JSX.Element => {
+export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
@@ -116,5 +116,5 @@ export const ImageRight = (props: TalkToUsProps): JSX.Element => {
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
   }
-  return <Default {...props} imageAlignment="right" />;
+  return <ImageLeft {...props} imageAlignment="right" />;
 };

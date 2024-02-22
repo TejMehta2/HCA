@@ -1,26 +1,13 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.sticky {
+.wrapper {
   display: none;
   @include media(screen-l) {
     display: block;
   }
 
-  position: sticky;
-  top: 0;
-  transition: transform 0.2s ease;
-
-  &.up {
-    transform: translateY(0);
-  }
-
-  &.down:not(.open) {
-    transform: translateY(-100%);
-  }
-}
-
-.wrapper {
+  position: relative;
   background-color: var(--background);
 
   &.closed {
@@ -89,12 +76,6 @@
   margin: 0;
   display: flex;
   gap: px-to-rem(10);
-  position: relative;
-
-  &:focus-within {
-    outline: solid px-to-rem(1) var(--text);
-    outline-offset: px-to-rem(-5);
-  }
 }
 
 .control {
@@ -111,7 +92,8 @@
   display: flex;
   align-items: center;
 
-  &.active::after {
+  &.active::after,
+  &:hover:has(a)::after {
     content: '';
     background: currentcolor;
     height: px-to-rem(2);
@@ -158,10 +140,6 @@
 .content {
   @include responsive-container;
   @include responsive-grid;
-
-  &:not(.active) {
-    display: none;
-  }
 
   ul {
     list-style: none;

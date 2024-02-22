@@ -1,27 +1,24 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.sticky {
+.wrapper {
   display: block;
   @include media(screen-l) {
     display: none;
   }
 
-  position: sticky;
-  top: 0;
-  transition: transform 0.2s ease;
-
-  &.up {
-    transform: translateY(0);
-  }
-
-  &.down:not(.open) {
-    transform: translateY(-100%);
-  }
-}
-
-.wrapper {
+  position: relative;
   background-color: var(--background);
+
+  &.closed {
+    background-color: color-mix(
+      in srgb,
+      var(--card-background),
+      transparent 40%
+    ); // apply opacity to hex color
+
+    backdrop-filter: blur(#{px-to-rem(28)});
+  }
 }
 
 .navigation {
