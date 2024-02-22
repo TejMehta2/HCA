@@ -18,6 +18,7 @@ import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils
 import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
+import NotFound from 'src/NotFound';
 
 const SitecorePage = ({
   notFound,
@@ -30,9 +31,10 @@ const SitecorePage = ({
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !layoutData?.sitecore?.route) {
+
+  if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
-    return <div>NOT FOUND FROM THE FINDER LEVEL SUB-PAGE</div>;
+    return <NotFound />;
   }
 
   const isEditing = layoutData.sitecore.context.pageEditing;

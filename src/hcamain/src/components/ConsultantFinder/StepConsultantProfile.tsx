@@ -22,6 +22,7 @@ import Text from '@component-library/foundation/Text/Text';
 import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { checkIfLiveBookingIsAvailable, getSpecialistProfileData, isErrorWithProfileData } from 'src/pages/Finder/StepConsultantProfile/finderHelpers';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -41,8 +42,14 @@ interface Fields {
   BackLink: LinkField;
 }
 
-// request e.g. https://www.hcacloud.localhost/Finder/StepConsultantProfile/mr-andrew-goldberg
-const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists/';
+interface ServerSideProps
+{
+  Slug: string;
+  IsLiveDiaryConsultant: boolean;
+  ProfileJson: string;
+  ErrorWithProfileData: boolean;
+}
+
 /**
  * Will be called during SSG
  * @param {ComponentRendering} rendering
@@ -55,22 +62,22 @@ export const getStaticProps: GetStaticComponentProps = async (
   context
 ) => {
   // based on https://github.com/vercel/next.js/discussions/38061
-  const slug = context?.params?.requestPath; // e.g. mr-andrew-goldberg
-  const requestURL = `${Doctify_Specialists_URL}${slug}`;
-
-  try {
-    const res = await fetch(requestURL);
-    if (res.ok) {
-      const docitfyData = await res.json();
-      return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfyData=${JSON.stringify(docitfyData)}`;
-    } else {
-      return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfy call failed res=${res.status} text=${res.statusText}`;
-    }
-  } catch(e) {
-    return `GetStaticComponentProps: slug=${slug}, requestURL=${requestURL}, docitfy call failed with exception=${e}`;
+  const slug = context?.params?.requestPath as string; // e.g. mr-andrew-goldberg
+  const consultantProfileJson = await getSpecialistProfileData(slug);
+  const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
+  const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
+  //console.log("consultantProfileJson: ", consultantProfileJson);
+  
+  let returnProps: ServerSideProps =
+  {
+    Slug: slug,
+    ErrorWithProfileData: errorWithProfileData,
+    IsLiveDiaryConsultant: isLiveDiaryConsultant,
+    ProfileJson: consultantProfileJson
   }
 
-  return null;
+  // returned stuff from the server side
+  return returnProps;
 };
 
 type StepProps = {
@@ -88,8 +95,9 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const externalData = useComponentProps<string>(props.rendering.uid);
-  //console.log('profile', externalData);
+  const serverSideData = useComponentProps<ServerSideProps>(props.rendering.uid);
+  //console.log('server side data from component props: ', serverSideData);
+  console.log('Is live diaries consultant:', serverSideData?.IsLiveDiaryConsultant);
   const { message, setMessage } = useContext(ConsultantFinderContext);
 
   const id = props.params.RenderingIdentifier;
@@ -103,7 +111,11 @@ export const Default = (props: StepProps): JSX.Element => {
         <button onClick={() => setMessage('testing new')}>
           Change message
         </button>
-        <div>External data: {externalData}</div>
+        <div>Slug: {serverSideData?.Slug}</div>
+        <div>Error with data?: {serverSideData?.ErrorWithProfileData ? "true" : "false"}</div>
+        <div>Is live diaries consultant?: {serverSideData?.IsLiveDiaryConsultant ? "true" : "false"}</div>
+        <div>Their doctify profile data: {JSON.stringify(serverSideData?.ProfileJson)}</div>
+
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.CardImage} />
@@ -154,3 +166,5 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
+
+
