@@ -150,7 +150,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </JssLink>
           </TextButton>
 
-          <Button size={'small'} theme={'full-dark'}>
+          <Button size={'small'} variation={'full-dark'}>
             <button
               disabled={consultantSlug === '' ? true : false}
               onClick={() =>

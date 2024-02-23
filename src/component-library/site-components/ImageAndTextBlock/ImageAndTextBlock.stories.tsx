@@ -58,7 +58,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: (
       <>
-        <Button size="large" theme="full">
+        <Button size="large" variation="full">
           <a href="#">
             <span>
               <Icons iconName={'icon3Lines'} />
@@ -68,7 +68,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
             </span>
           </a>
         </Button>
-        <Button size="large" theme="outline">
+        <Button size="large" variation="outline">
           <a href="#">
             <Icons iconName={'icon3Lines'} />
             <span>
@@ -127,14 +127,14 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
     ),
     ctas: (
       <>
-        <Button size="large" theme="full">
+        <Button size="large" variation="full">
           <a href="#">
             <span>
               Learn more about <strong>self-pay</strong>
             </span>
           </a>
         </Button>
-        <Button size="large" theme="outline">
+        <Button size="large" variation="outline">
           <a href="#">
             <span>
               Access care with <strong>insurance</strong>

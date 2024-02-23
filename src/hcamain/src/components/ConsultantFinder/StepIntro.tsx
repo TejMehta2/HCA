@@ -146,7 +146,7 @@ export const Default = (props: StepProps): JSX.Element => {
           >
             <Button
               size={'small'}
-              theme={'full-dark'}
+              variation={'full-dark'}
               contentVariation="full-width"
             >
               <button
@@ -160,7 +160,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
             <Button
               size={'small'}
-              theme={'outline-dark'}
+              variation={'outline-dark'}
               contentVariation="full-width"
             >
               <button

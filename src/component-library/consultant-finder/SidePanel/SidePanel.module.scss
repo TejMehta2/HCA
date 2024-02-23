@@ -1,0 +1,23 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.side-panel {
+  width: 100%;
+  max-width: px-to-rem(400);
+  border-radius: $radius-medium;
+  background-color: $main-turquoise-5;
+  padding: $spacing-6;
+  text-align: center;
+  position: static;
+
+  @include media(screen-l) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+  }
+
+  button {
+    margin-bottom: $spacing-2;
+  }
+}

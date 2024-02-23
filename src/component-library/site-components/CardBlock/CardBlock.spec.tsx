@@ -36,7 +36,7 @@ const mockProps: CardBlockProps = {
       }
       ctas={
         <>
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <a href="#">
               Learn more about <strong>self-pay</strong>
             </a>

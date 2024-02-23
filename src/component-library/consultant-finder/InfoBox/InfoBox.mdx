@@ -1,0 +1,46 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as InfoBoxStories from './InfoBox.stories'
+
+<Meta of={InfoBoxStories} />
+
+# InfoBox
+
+## Description
+
+The InfoBox component has 2 variations: 'short' and 'long'.
+This can be set by using 'isShortInfo' to either 'true' or 'false'.
+
+It is intended to be used in Consultant Profile pages.
+
+It can be composed like this:
+
+## Example short version
+
+``` tsx
+<InfoBox
+  backgroundColour="orange"
+  icon={null}
+  isShortInfo={true}
+  longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+  longTextTitle=""
+  shortText="Next initial appointment on Fri, Oct 28"
+/>
+```
+
+## Example long version
+
+``` tsx
+<InfoBox
+  backgroundColour="orange"
+  icon={null}
+  isShortInfo={false}
+  longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+  longTextTitle="TITLE"
+  shortText="Next initial appointment on Fri, Oct 28"
+/>
+```
+
+## Example 
+
+<Canvas of={InfoBoxStories.Default} />
+<Controls of={InfoBoxStories.Default} />

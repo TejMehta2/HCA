@@ -71,7 +71,7 @@ const mockProps: OurLocationsProps = {
     </Text>
   ),
   cta: (
-    <Button size="large" theme="full">
+    <Button size="large" variation="full">
       <a href="#">
         <span>
           <Icons iconName={'iconSearch'} />

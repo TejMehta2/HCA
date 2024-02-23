@@ -40,7 +40,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
-        <Button theme="full-dark" size="large">
+        <Button variation="full-dark" size="large">
           <button onClick={() => dialogRef.current?.showModal()} type="button">
             {buttonIcon}
             {buttonText}
@@ -75,7 +75,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
                 Clear All
               </button>
             </TextButton>
-            <Button theme="full-dark" size="small">
+            <Button variation="full-dark" size="small">
               <button onClick={() => dialogRef?.current?.close()} type="button">
                 See {resultsCount} Results
               </button>

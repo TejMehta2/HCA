@@ -57,7 +57,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                 <ul>
                   {links?.map((link, index) => <li key={index}>{link}</li>)}
                 </ul>
-                <Button size={'large'} theme={'full'}>
+                <Button size={'large'} variation={'full'}>
                   {cta}
                 </Button>
               </div>
@@ -69,7 +69,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                 <ul className={styles.double}>
                   {links?.map((link, index) => <li key={index}>{link}</li>)}
                 </ul>
-                <Button size={'large'} theme={'full'}>
+                <Button size={'large'} variation={'full'}>
                   {cta}
                 </Button>
               </div>
@@ -92,7 +92,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                     }
                     body={<Text variation="body-large">{description}</Text>}
                     ctas={
-                      <Button size={'large'} theme={'full'}>
+                      <Button size={'large'} variation={'full'}>
                         {cta}
                       </Button>
                     }
@@ -116,7 +116,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                     </Text>
                   }
                   cta={
-                    <Button size="small" theme="full">
+                    <Button size="small" variation="full">
                       {cta}
                     </Button>
                   }

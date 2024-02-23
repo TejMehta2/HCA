@@ -51,10 +51,10 @@ const meta: Meta<typeof Themes> = {
           soluta quae repellat iure modi sequi laboriosam dignissimos quidem
           eius repudiandae esse amet?
         </Text>
-        <Button size="small" theme="full">
+        <Button size="small" variation="full">
           <button>Button full</button>
         </Button>
-        <Button size="small" theme="outline">
+        <Button size="small" variation="outline">
           <button>Button outline</button>
         </Button>
         <Tags contentVariation="quote">
@@ -183,10 +183,10 @@ export const Nesting: StoryObj<typeof Themes> = {
         }}
       >
         <Text variation="display-3">Parent theme</Text>
-        <Button size="small" theme="full">
+        <Button size="small" variation="full">
           <button>Button full</button>
         </Button>
-        <Button size="small" theme="outline">
+        <Button size="small" variation="outline">
           <button>Button outline</button>
         </Button>
         <Tags>
@@ -205,10 +205,10 @@ export const Nesting: StoryObj<typeof Themes> = {
             }}
           >
             <Text variation="display-3">Child theme</Text>
-            <Button size="small" theme="full">
+            <Button size="small" variation="full">
               <button>Button full</button>
             </Button>
-            <Button size="small" theme="outline">
+            <Button size="small" variation="outline">
               <button>Button outline</button>
             </Button>
             <Tags>
@@ -227,10 +227,10 @@ export const Nesting: StoryObj<typeof Themes> = {
                 }}
               >
                 <Text variation="display-3">Child theme</Text>
-                <Button size="small" theme="full">
+                <Button size="small" variation="full">
                   <button>Button full</button>
                 </Button>
-                <Button size="small" theme="outline">
+                <Button size="small" variation="outline">
                   <button>Button outline</button>
                 </Button>
                 <Tags>
@@ -261,10 +261,10 @@ export const Overrides: StoryObj<typeof Themes> = {
         }}
       >
         <Text variation="display-3">Theme L</Text>
-        <Button size="small" theme="full">
+        <Button size="small" variation="full">
           <button>Button full</button>
         </Button>
-        <Button size="small" theme="outline">
+        <Button size="small" variation="outline">
           <button>Button outline</button>
         </Button>
         <Tags>
@@ -282,16 +282,16 @@ export const Overrides: StoryObj<typeof Themes> = {
           }}
         >
           <Text variation="display-3">Overrides via prop</Text>
-          <Button size="small" theme="full-dark">
+          <Button size="small" variation="full-dark">
             <button>Button full-dark</button>
           </Button>
-          <Button size="small" theme="full-light">
+          <Button size="small" variation="full-light">
             <button>Button full-light</button>
           </Button>
-          <Button size="small" theme="outline-dark">
+          <Button size="small" variation="outline-dark">
             <button>Button outline-dark</button>
           </Button>
-          <Button size="small" theme="outline-light">
+          <Button size="small" variation="outline-light">
             <button>Button outline-light</button>
           </Button>
           <Tags theme="green">

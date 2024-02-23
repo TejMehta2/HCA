@@ -208,7 +208,7 @@ export const CardBlogBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -261,7 +261,7 @@ export const CardPatientStoriesBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -314,7 +314,7 @@ export const CardDoctorBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -369,7 +369,7 @@ export const CardContentBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -422,7 +422,7 @@ export const CardMapBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -475,7 +475,7 @@ export const SideBySideBlock: StoryObj<typeof CardBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>

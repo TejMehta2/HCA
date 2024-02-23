@@ -83,7 +83,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       }
       link={
         props.fields?.CTALink && (
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <JssLink field={props.fields?.CTALink}>
               {props?.fields?.CTALink.value.text && (
                 <span
@@ -141,7 +141,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         }
         cta={
           props.fields?.CTALink && (
-            <Button size={'large'} theme={'full'}>
+            <Button size={'large'} variation={'full'}>
               <JssLink field={props.fields?.CTALink}>
                 {props?.fields?.CTALink.value.text && (
                   <span

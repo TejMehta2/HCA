@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SidePanelStories from './SidePanel.stories'
+
+<Meta of={SidePanelStories} />
+
+# SidePanel
+
+## Description
+
+The SidePanel component is a simple container for aside box on Consultant Finder.
+
+It just gets children.
+
+It can be composed like this:
+
+``` tsx
+<SidePanel>
+  <div>
+    <Reviews
+      doctifyLogo={null}
+      doctifyText="Reviewed By"
+      hasDoctifyBranding
+      isConsultantProfileReviews
+      reviewsCount={5}
+      reviewsText="Patients"
+      reviewsTotal={5}
+      titleText="PATIENTS REVIEWS"
+    />
+    <InfoBox
+      backgroundColour="green"
+      icon={null}
+      isShortInfo
+      longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+      longTextTitle="TITLE"
+      shortText="Next initial appointment on Fri, Oct 28"
+    />
+    <InfoBox
+      backgroundColour="orange"
+      icon={null}
+      isShortInfo
+      longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+      longTextTitle="TITLE"
+      shortText="Next initial appointment on Fri, Oct 28"
+    />
+  </div>
+</SidePanel>
+```
+
+## Example 
+
+<Canvas of={SidePanelStories.Default} />
+<Controls of={SidePanelStories.Default} />

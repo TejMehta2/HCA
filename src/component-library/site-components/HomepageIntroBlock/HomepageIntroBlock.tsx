@@ -48,7 +48,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
               ))}
             </ul>
             <div className={styles.cta}>
-              <Button size={'large'} theme={'full-dark'}>
+              <Button size={'large'} variation={'full-dark'}>
                 {cta}
               </Button>
             </div>

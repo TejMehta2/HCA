@@ -7,9 +7,12 @@ import * as ButtonStories from './Button.stories';
 
 The Button component is intended apply styles by wrapping a button, JSS Link or Link tag (in the `children` prop). The styles will then target the button or anchor tag that is rendered.
 
-The theme is built up of the button color - dark or light and variation - outline or full. There are variations of dark and light for the social buttons which have their own theme. This is controlled by the `theme` prop.
+It inherits its colours from the closest parent theme (See [themes docs](/?path=/docs/foundation-themes--docs)).
 
-The color theme (light/dark) of the button can be inherited from the cascade theme by setting a theme prop which does not include "dark" or "light", e.g. "full" or "outline".
+The `variation` prop is used specify styles of buttons e.g. full or outline, but you can also append a mode override of `-light` or `-dark` (e.g. `full-dark`) to give greater control. (see [themes overrides](/?path=/story/foundation-themes--overrides))
+
+Also see modes section in [themes docs](/?path=/docs/foundation-themes--docs)
+Light and dark versions of the variations exist to support contrasting background colours within a theme.
 
 The size prop controls the button padding to show the appropriate button size - small or large.
 
@@ -22,19 +25,23 @@ const exampleClick = () => {
   alert('Button was clicked');
 };
 
-<Button theme="full-dark" size="large">
-  <button onClick="exampleClick">
+<Button variation="full-dark" size="large">
+  <button onClick={exampleClick}>
     <span>Button Text</span>
-    <Icons iconName="iconPhone" />
+    <span>
+      <Icons iconName="iconPhone" />
+    </span>
   </button>
 </Button>;
 ```
 
 ```tsx
 import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs';
-<Button theme="full-dark" size="large">
+<Button variation="full-dark" size="large">
   <JssLink field={props.fields.PromoLink}>
-    <Icons iconName="iconPhone" />
+    <span>
+      <Icons iconName="iconPhone" />
+    </span>
     <span>Button Text</span>
   </JssLink>
 </Button>;
@@ -42,9 +49,11 @@ import { Link as JssLink } from '@sitecore-jss/sitecore-jss-nextjs';
 
 ```tsx
 import Link from 'next/link';
-<Button theme="full-dark" size="large">
+<Button variation="full-dark" size="large">
   <Link href="/test">
-    <Icons iconName="iconPhone" />
+    <span>
+      <Icons iconName="iconPhone" />
+    </span>
     <span>Button Text</span>
   </Link>
 </Button>;
@@ -53,7 +62,7 @@ import Link from 'next/link';
 For loading buttons set the loading prop on the `Button` component.
 
 ```tsx
-<Button theme="full-dark" size="large" loading={loading}>
+<Button variation="full-dark" size="large" loading={loading}>
   <JssLink field={props.fields.Link}>
     <span>'test text'</span>
   </JssLink>

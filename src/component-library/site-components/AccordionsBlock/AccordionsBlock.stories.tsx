@@ -90,7 +90,7 @@ export const Default: StoryObj<typeof AccordionsBlock> = {
 
     ctas: (
       <>
-        <Button theme="full" size="large">
+        <Button variation="full" size="large">
           <a href="#">
             <span>
               Click <strong>me</strong>
@@ -165,7 +165,7 @@ export const Faqs: StoryObj<typeof AccordionsBlock> = {
     ],
 
     ctas: (
-      <Button theme="full" size="large">
+      <Button variation="full" size="large">
         <a href="#">
           <span>
             View all <strong>FAQs</strong>

@@ -118,7 +118,7 @@ const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
                 {bodyCopy}
               </Text>
             </div>
-            <Button size="large" theme="outline-dark">
+            <Button size="large" variation="outline-dark">
               {link}
             </Button>
           </div>

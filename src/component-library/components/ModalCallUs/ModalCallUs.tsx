@@ -28,7 +28,7 @@ const ModalCallUs = (
 
       <div className={styles.mobile}>
         {isMain ? (
-          <Button size={'small'} theme={'full'}>
+          <Button size={'small'} variation={'full'}>
             <a href={`tel:${contact.phone.number}`}>
               <Icons iconName="iconPhone" />
               {contact.phone.text}

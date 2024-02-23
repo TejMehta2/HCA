@@ -38,7 +38,7 @@ export const Default: StoryObj<typeof ModalSearch> = {
     suggestions: (
       <>
         {suggestions.map((suggestion, index) => (
-          <Button key={index} size={'small'} theme={'full-light-blue'}>
+          <Button key={index} size={'small'} variation={'full-light-blue'}>
             <button>
               <Icons iconName="iconSearch" />
               <span>{suggestion}</span>

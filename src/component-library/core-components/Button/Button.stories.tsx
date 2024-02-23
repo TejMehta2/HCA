@@ -33,7 +33,7 @@ export const LargeFullDark: StoryObj<typeof Button> = {
         </span>
       </button>
     ),
-    theme: 'full-dark',
+    variation: 'full-dark',
   },
 
   decorators: [
@@ -55,7 +55,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
         </span>
       </a>
     ),
-    theme: 'full-light',
+    variation: 'full-light',
   },
 
   decorators: [
@@ -87,7 +87,7 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'outline-dark',
+    variation: 'outline-dark',
   },
 
   decorators: [
@@ -112,7 +112,7 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'outline-light',
+    variation: 'outline-light',
   },
 
   parameters: {
@@ -144,7 +144,7 @@ export const SmallFullDark: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'full-dark',
+    variation: 'full-dark',
   },
 
   decorators: [
@@ -169,7 +169,7 @@ export const SmallFullLight: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'full-light',
+    variation: 'full-light',
   },
 
   parameters: {
@@ -201,7 +201,7 @@ export const SmallOutlineDark: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'outline-dark',
+    variation: 'outline-dark',
   },
 };
 
@@ -216,7 +216,7 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'outline-light',
+    variation: 'outline-light',
   },
 
   parameters: {
@@ -248,14 +248,14 @@ export const SmallFullLightBlue: StoryObj<typeof Button> = {
         </button>
       </>
     ),
-    theme: 'full-light-blue',
+    variation: 'full-light-blue',
   },
 };
 
 export const SocialDark: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'social-dark',
+    variation: 'social-dark',
     children: (
       <>
         <button>
@@ -270,7 +270,7 @@ export const SocialDark: StoryObj<typeof Button> = {
 export const SocialLight: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'social-light',
+    variation: 'social-light',
     children: (
       <>
         <button>
@@ -306,14 +306,14 @@ export const LoadingLargeFullDark: StoryObj<typeof Button> = {
         <span>test text</span>
       </button>
     ),
-    theme: 'full-dark',
+    variation: 'full-dark',
   },
 };
 
 export const StandardCarouselButtonDark: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'standard-carousel-dark',
+    variation: 'standard-carousel-dark',
     children: (
       <button>
         <Icons iconName="iconArrowRight" />
@@ -326,7 +326,7 @@ export const StandardCarouselButtonDark: StoryObj<typeof Button> = {
 export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'standard-carousel-light',
+    variation: 'standard-carousel-light',
     children: (
       <button>
         <Icons iconName="iconArrowRight" />
@@ -354,7 +354,7 @@ export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
 export const HoverCarouselButton: StoryObj<typeof Button> = {
   args: {
     size: 'small',
-    theme: 'hover-carousel',
+    variation: 'hover-carousel',
     children: (
       <button>
         <Icons iconName="iconArrowRight" />
@@ -375,7 +375,7 @@ export const ResponsiveContainerExample: StoryObj<typeof Button> = {
         </span>
       </button>
     ),
-    theme: 'full-dark',
+    variation: 'full-dark',
   },
 
   decorators: [

@@ -32,7 +32,7 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
   return (
     <>
       <Themes theme={theme}>
-        <Button size="large" theme="outline">
+        <Button size="large" variation="outline">
           <button
             onClick={
               isMobile()

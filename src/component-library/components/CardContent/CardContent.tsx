@@ -14,7 +14,7 @@ const CardContent = (props: CardContentProps): JSX.Element => {
           {bodyCopy && <div className={styles['body-text']}>{bodyCopy}</div>}
         </div>
         {link && (
-          <Button size="small" theme="full">
+          <Button size="small" variation="full">
             {link}
           </Button>
         )}

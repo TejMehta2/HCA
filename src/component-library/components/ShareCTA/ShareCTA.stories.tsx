@@ -40,14 +40,14 @@ export const Default: StoryObj<typeof ShareCTA> = {
 
     children: (
       <>
-        <Button size="large" theme="square-outline">
+        <Button size="large" variation="square-outline">
           <button onClick={handleCopy}>
             <Icons iconName="iconCopy"></Icons>
             <span>Copy Link</span>
           </button>
         </Button>
 
-        <Button size="large" theme="square-outline">
+        <Button size="large" variation="square-outline">
           <a
             href={`mailto:?subject=${encodeURI('Hip Surgery')}&body=${encodeURI(
               'Quis laboris proident sint amet id cillum do dolor in tempor est https://hca-digital-dev-hca-main.hcatest.co.uk/'
@@ -59,7 +59,7 @@ export const Default: StoryObj<typeof ShareCTA> = {
           </a>
         </Button>
 
-        <Button size="large" theme="square-outline">
+        <Button size="large" variation="square-outline">
           <a
             href={`https://web.whatsapp.com/send?text=${encodeURI(
               'https://hca-digital-dev-hca-main.hcatest.co.uk/'
@@ -72,7 +72,7 @@ export const Default: StoryObj<typeof ShareCTA> = {
           </a>
         </Button>
 
-        <Button size="large" theme="square-outline">
+        <Button size="large" variation="square-outline">
           <a
             href={`https://www.facebook.com/sharer/sharer.php?u=https://hca-digital-dev-hca-main.hcatest.co.uk/`}
             rel="nofollow noopener"
@@ -87,7 +87,7 @@ export const Default: StoryObj<typeof ShareCTA> = {
             //  TODO messenger on desktop may be possible but would need app id, need to confirm 
             https://developers.facebook.com/docs/sharing/reference/send-dialog#examples
 
-            <Button size="large" theme="square-outline">
+            <Button size="large" variation="square-outline">
                     <a
                       href={`http://www.facebook.com/dialog/send?app_id=123456789&amp;link=${encodeURI(
                         'https://hca-digital-dev-hca-main.hcatest.co.uk/'
@@ -100,7 +100,7 @@ export const Default: StoryObj<typeof ShareCTA> = {
                     </a>
             </Button> */}
 
-        <Button size="large" theme="square-outline">
+        <Button size="large" variation="square-outline">
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURI(
               'Hip Surgery - £5,000'

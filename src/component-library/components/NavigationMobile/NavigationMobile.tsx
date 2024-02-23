@@ -239,7 +239,10 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                           : styles.hidden,
                                       ].join(' ')}
                                     >
-                                      <Button size={'large'} theme={'outline'}>
+                                      <Button
+                                        size={'large'}
+                                        variation={'outline'}
+                                      >
                                         {secondary.mobileCta}
                                       </Button>
                                     </li>
@@ -260,7 +263,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                 : styles.hidden,
                             ].join(' ')}
                           >
-                            <Button size={'large'} theme={'outline'}>
+                            <Button size={'large'} variation={'outline'}>
                               {primary.mobileTabCta}
                             </Button>
                           </li>
