@@ -64,14 +64,22 @@ export const Default: StoryObj<typeof SidePanel> = {
           </Text>
         </Themes>
         <Container marginTop="spacing-5">
-          <Button theme="full-dark" size="small" contentVariation="full-width">
+          <Button
+            variation="full-dark"
+            size="small"
+            contentVariation="full-width"
+          >
             <button>
               <span>
                 <strong>Book</strong> online
               </span>
             </button>
           </Button>
-          <Button theme="outline" size="small" contentVariation="full-width">
+          <Button
+            variation="outline"
+            size="small"
+            contentVariation="full-width"
+          >
             <button>
               <Icons iconName="iconPhone" />
               <span>

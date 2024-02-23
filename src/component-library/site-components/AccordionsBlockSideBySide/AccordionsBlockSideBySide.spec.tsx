@@ -77,7 +77,7 @@ const mockProps: AccordionsBlockSideBySideProps = {
 
   ctas: (
     <>
-      <Button theme="full" size="large">
+      <Button variation="full" size="large">
         <a href="#">
           <span>
             Click <strong>me</strong>

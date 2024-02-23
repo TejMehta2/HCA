@@ -86,7 +86,7 @@ export const Default: StoryObj<typeof OurLocations> = {
       </Text>
     ),
     cta: (
-      <Button size="large" theme="full">
+      <Button size="large" variation="full">
         <a href="#">
           <span>
             <Icons iconName={'iconSearch'} />

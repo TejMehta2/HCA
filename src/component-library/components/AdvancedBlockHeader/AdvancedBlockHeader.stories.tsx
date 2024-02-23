@@ -31,7 +31,7 @@ export const Default: StoryObj<typeof AdvancedBlockHeader> = {
     ),
     ctas: (
       <>
-        <Button size={'small'} theme={'full'}>
+        <Button size={'small'} variation={'full'}>
           <a href="#">
             <span>
               Click <strong>me</strong>

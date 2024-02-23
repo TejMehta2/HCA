@@ -4,7 +4,7 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import {
   ButtonProps,
-  ButtonThemeUnionTypes,
+  ButtonVariationUnionTypes,
 } from '@component-library/core-components/Button/Button.types';
 
 type CTAIconFields = {
@@ -34,11 +34,11 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => (
 );
 
 interface IntegratedButtonProps extends CTAProps {
-  theme: ButtonThemeUnionTypes;
+  variation: ButtonVariationUnionTypes;
 }
 const IntegratedButton = (props: IntegratedButtonProps) => (
   <Button
-    theme={props.theme}
+    variation={props.variation}
     size={props.size || 'large'}
     contentVariation={props.contentVariation}
   >
@@ -64,11 +64,11 @@ export const Full = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
-  return <IntegratedButton {...props} theme="full" />;
+  return <IntegratedButton {...props} variation="full" />;
 };
 
 export const Outline = (props: CTAProps): JSX.Element => {
-  return <IntegratedButton {...props} theme="outline" />;
+  return <IntegratedButton {...props} variation="outline" />;
 };
 
 export const TextButton = (props: CTAProps): JSX.Element => {

@@ -23,7 +23,7 @@ export const Default: StoryObj<typeof Footer> = {
   args: {
     buttons: (
       <>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconMobile" />
             <span>
@@ -31,7 +31,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconRedo" />
             <span>
@@ -39,7 +39,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconStethoscope" />
             <span>
@@ -47,7 +47,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconCreditCard" />
             <span>
@@ -55,7 +55,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconMobile" />
             <span>
@@ -63,7 +63,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconRedo" />
             <span>
@@ -71,7 +71,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconStethoscope" />
             <span>
@@ -79,7 +79,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconCreditCard" />
             <span>
@@ -87,7 +87,7 @@ export const Default: StoryObj<typeof Footer> = {
             </span>
           </a>
         </Button>
-        <Button size={'small'} theme={'outline'}>
+        <Button size={'small'} variation={'outline'}>
           <a href="#">
             <Icons iconName="iconCreditCard" />
             <span>
@@ -107,19 +107,19 @@ export const Default: StoryObj<typeof Footer> = {
           <a href="#">Contact HCA UK</a>,
         ],
         socials: [
-          <Button size={'small'} theme={'social'}>
+          <Button size={'small'} variation={'social'}>
             <a href="#">
               <Icons iconName="iconFacebook" />
               <span className="sr-only">Facebook link</span>
             </a>
           </Button>,
-          <Button size={'small'} theme={'social'}>
+          <Button size={'small'} variation={'social'}>
             <a href="#">
               <Icons iconName="iconInstagram" />
               <span className="sr-only">Instagram link</span>
             </a>
           </Button>,
-          <Button size={'small'} theme={'social'}>
+          <Button size={'small'} variation={'social'}>
             <a href="#">
               <Icons iconName="iconLinkedin" />
               <span className="sr-only">Linkedin link</span>

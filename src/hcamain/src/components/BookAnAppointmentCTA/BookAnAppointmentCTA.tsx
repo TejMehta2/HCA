@@ -59,7 +59,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
 
   return (
     <>
-      <Button size="large" theme="full">
+      <Button size="large" variation="full">
         <button onClick={() => dialogRef?.current?.showModal()}>
           {props?.fields?.CTALink.value.text && (
             <>
@@ -99,7 +99,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
           props.fields.ModalContent[0] && (
             <>
               {props.fields.ModalContent[0].fields.PrimaryCTA.value.text && (
-                <Button size={'large'} theme={'full'}>
+                <Button size={'large'} variation={'full'}>
                   <JssLink
                     field={props.fields.ModalContent[0].fields?.PrimaryCTA}
                   >
@@ -126,7 +126,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
 
               {props.fields.ModalContent[0] &&
                 props.fields.ModalContent[0].fields.SecondaryCTA.value.text && (
-                  <Button size={'large'} theme={'outline'}>
+                  <Button size={'large'} variation={'outline'}>
                     <JssLink
                       field={props.fields.ModalContent[0].fields?.SecondaryCTA}
                     >
@@ -169,7 +169,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
           props.fields.ModalContent[1] && (
             <>
               {props.fields.ModalContent[1].fields.PrimaryCTA.value.text && (
-                <Button size={'large'} theme={'full'}>
+                <Button size={'large'} variation={'full'}>
                   <JssLink
                     field={props.fields.ModalContent[1].fields?.PrimaryCTA}
                   >
@@ -194,7 +194,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
                 </Button>
               )}
               {props.fields.ModalContent[1].fields.SecondaryCTA.value.text && (
-                <Button size={'large'} theme={'outline'}>
+                <Button size={'large'} variation={'outline'}>
                   <JssLink
                     field={props.fields.ModalContent[1].fields?.SecondaryCTA}
                   >

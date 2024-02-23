@@ -6,7 +6,7 @@ import { ButtonProps } from './Button.types';
 const mockProps: ButtonProps = {
   children: 'Button',
   size: 'large',
-  theme: 'full-dark',
+  variation: 'full-dark',
 };
 
 describe('Button', () => {
