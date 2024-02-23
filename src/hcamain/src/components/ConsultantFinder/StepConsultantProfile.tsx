@@ -158,7 +158,7 @@ export const Default = (props: StepProps): JSX.Element => {
               {/* if consultant has live diaries then show 'book online' */}
               {serverSideData?.IsLiveDiaryConsultant && (
                 <Button
-                  theme="full-dark"
+                  variation="full-dark"
                   size="small"
                   contentVariation="full-width"
                 >
@@ -173,7 +173,7 @@ export const Default = (props: StepProps): JSX.Element => {
               {!serverSideData?.IsLiveDiaryConsultant &&
                 !serverSideData?.ProfileJson?.hideAppointmentRequest && (
                   <Button
-                    theme="full-dark"
+                    variation="full-dark"
                     size="small"
                     contentVariation="full-width"
                   >
@@ -185,7 +185,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Button>
                 )}
               <Button
-                theme="outline"
+                variation="outline"
                 size="small"
                 contentVariation="full-width"
               >
