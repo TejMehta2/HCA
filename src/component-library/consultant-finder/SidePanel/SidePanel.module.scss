@@ -11,9 +11,8 @@
   position: static;
 
   @include media(screen-l) {
-    position: fixed;
+    position: sticky;
     top: 0;
-    right: 0;
     z-index: 2000;
   }
 

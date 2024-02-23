@@ -33,6 +33,12 @@ import {
 import Container from '@component-library/foundation/Containers/Container';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import ConsultantFinderProfileWrapper from '@component-library/consultant-finder/ConsultantFinderProfileWrapper/ConsultantFinderProfileWrapper';
+import SideWrapper from '@component-library/consultant-finder/SideWrapper/SideWrapper';
+import MainWrapper from '@component-library/consultant-finder/MainWrapper/MainWrapper';
+import Tabs from '@component-library/core-components/Tabs/Tabs';
+import ProfilePageSection from '@component-library/consultant-finder/ProfilePageSection/ProfilePageSection';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -117,63 +123,310 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <SidePanel>
-          <div>
-            <Reviews
-              doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
-              doctifyText="Reviewed By"
-              hasDoctifyBranding={true}
-              isConsultantProfileReviews={true}
-              reviewsCount={
-                serverSideData?.ProfileJson?.review?.overallExperience
-              }
-              reviewsText="Patients"
-              reviewsTotal={
-                serverSideData?.ProfileJson?.review?.reviewsTotal || 0
-              }
-              noReviewsMsg={
-                'This consultant does not have any reviews at the moment.'
-              }
-              titleText="PATIENTS REVIEWS"
-            />
-            <InfoBox
-              backgroundColour="green"
-              icon={null}
-              isShortInfo
-              longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-              shortText="Next initial appointment on Fri, Oct 28"
-            />
-            <InfoBox
-              backgroundColour="orange"
-              icon={null}
-              isShortInfo
-              longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-              shortText="Next initial appointment on Fri, Oct 28"
-            />
-            <Container marginTop="spacing-5">
-              {/* if consultant has live diaries then show 'book online' */}
-              {serverSideData?.IsLiveDiaryConsultant && (
-                <Button
-                  variation="full-dark"
-                  size="small"
-                  contentVariation="full-width"
-                >
-                  <button>
-                    <span>
-                      <strong>Book</strong> online
-                    </span>
-                  </button>
-                </Button>
-              )}
-              {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-              {!serverSideData?.IsLiveDiaryConsultant &&
-                !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+      <div id={id ? id : undefined}>
+        {/* top section */}
+        <div>
+          <Breadcrumbs>
+            <a href="#">Services & Treatments</a>
+            <a href="#">Services & Treatments</a>
+            <a href="#">Services & Treatments</a>
+            <span>Service Lines</span>
+          </Breadcrumbs>
+          <Tabs
+            callback={() => {}}
+            tabs={[
+              {
+                icon: 'iconOneOff',
+                label: 'One-off',
+              },
+              {
+                icon: 'iconFlexible',
+                label: 'Flexi',
+              },
+              {
+                icon: 'iconCalendar',
+                label: 'Annual',
+              },
+            ]}
+          />
+        </div>
+        <ConsultantFinderProfileWrapper>
+          <MainWrapper>
+            <div>
+              <Tabs
+                callback={() => {}}
+                tabs={[
+                  {
+                    icon: 'iconOneOff',
+                    label: 'One-off',
+                  },
+                  {
+                    icon: 'iconFlexible',
+                    label: 'Flexi',
+                  },
+                  {
+                    icon: 'iconCalendar',
+                    label: 'Annual',
+                  },
+                ]}
+              />
+            </div>
+            <ProfilePageSection>Test</ProfilePageSection>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>{' '}
+            <button onClick={() => setMessage('testing new')}>
+              Change message
+            </button>
+            <div>Slug: {serverSideData?.Slug}</div>
+            <div>
+              Error with data?:{' '}
+              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+            </div>
+            <div>
+              Is live diaries consultant?:{' '}
+              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+            </div>
+          </MainWrapper>
+          <SideWrapper>
+            <SidePanel>
+              <Reviews
+                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
+                doctifyText="Reviewed By"
+                hasDoctifyBranding={true}
+                isConsultantProfileReviews={true}
+                reviewsCount={
+                  serverSideData?.ProfileJson?.review?.overallExperience
+                }
+                reviewsText="Patients"
+                reviewsTotal={
+                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                }
+                noReviewsMsg={
+                  'This consultant does not have any reviews at the moment.'
+                }
+                titleText="PATIENTS REVIEWS"
+              />
+              <InfoBox
+                backgroundColour="green"
+                icon={null}
+                isShortInfo
+                longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+                shortText="Next initial appointment on Fri, Oct 28"
+              />
+              <InfoBox
+                backgroundColour="orange"
+                icon={null}
+                isShortInfo
+                longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+                shortText="Next initial appointment on Fri, Oct 28"
+              />
+              <Container marginTop="spacing-5">
+                {/* if consultant has live diaries then show 'book online' */}
+                {serverSideData?.IsLiveDiaryConsultant && (
                   <Button
                     variation="full-dark"
                     size="small"
@@ -181,26 +434,42 @@ export const Default = (props: StepProps): JSX.Element => {
                   >
                     <button>
                       <span>
-                        <strong>Enquire</strong> now
+                        <strong>Book</strong> online
                       </span>
                     </button>
                   </Button>
                 )}
-              <Button
-                variation="outline"
-                size="small"
-                contentVariation="full-width"
-              >
-                <button>
-                  <Icons iconName="iconPhone" />
-                  <span>
-                    <strong>Call to</strong> book
-                  </span>
-                </button>
-              </Button>
-            </Container>
-          </div>
-        </SidePanel>
+                {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+                {!serverSideData?.IsLiveDiaryConsultant &&
+                  !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+                    <Button
+                      variation="full-dark"
+                      size="small"
+                      contentVariation="full-width"
+                    >
+                      <button>
+                        <span>
+                          <strong>Enquire</strong> now
+                        </span>
+                      </button>
+                    </Button>
+                  )}
+                <Button
+                  variation="outline"
+                  size="small"
+                  contentVariation="full-width"
+                >
+                  <button>
+                    <Icons iconName="iconPhone" />
+                    <span>
+                      <strong>Call to</strong> book
+                    </span>
+                  </button>
+                </Button>
+              </Container>
+            </SidePanel>
+          </SideWrapper>
+        </ConsultantFinderProfileWrapper>
         <div>Message: {message}</div>
         <button onClick={() => setMessage('testing new')}>
           Change message
