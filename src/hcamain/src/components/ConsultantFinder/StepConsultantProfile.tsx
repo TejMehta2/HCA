@@ -135,6 +135,9 @@ export const Default = (props: StepProps): JSX.Element => {
               reviewsTotal={
                 serverSideData?.ProfileJson?.review?.reviewsTotal || 0
               }
+              noReviewsMsg={
+                'This consultant does not have any reviews at the moment.'
+              }
               titleText="PATIENTS REVIEWS"
             />
             <InfoBox

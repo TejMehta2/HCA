@@ -41,13 +41,19 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
   return (
     <div className={styles.reviews} data-testid="reviews-component">
       {props.isConsultantProfileReviews && (
-        <div className={styles['reviews-header']}>
+        <div
+          className={`${styles['reviews-header']} ${
+            props.reviewsTotal === 0 ? styles['reviews-header-no-reviews'] : ''
+          }`}
+        >
           <Text tag="h2" variation="subheading-2">
             {props.titleText}
           </Text>
-          <Text tag="h3" variation="display-1">
-            {props.reviewsCount}
-          </Text>
+          {props.reviewsTotal > 0 && (
+            <Text tag="h3" variation="display-1">
+              {props.reviewsCount}
+            </Text>
+          )}
         </div>
       )}
 
@@ -78,11 +84,19 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
         )}
       </div>
 
-      {props.isConsultantProfileReviews && (
+      {props.isConsultantProfileReviews && props.reviewsTotal > 0 && (
         <div className={styles['reviews-total']}>
           <Icons iconName="iconComment" />
           <Text tag="p" variation="body-medium-large">
             {props.reviewsTotal} {props.reviewsText}
+          </Text>
+        </div>
+      )}
+
+      {props.isConsultantProfileReviews && props.reviewsTotal === 0 && (
+        <div className={styles['reviews-no-reviews-text']}>
+          <Text tag="p" variation="body-medium-large">
+            {props.noReviewsMsg}
           </Text>
         </div>
       )}
