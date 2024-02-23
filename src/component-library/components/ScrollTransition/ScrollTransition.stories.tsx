@@ -101,14 +101,14 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
           ctas={
             <>
-              <Button size="large" theme="full">
+              <Button size="large" variation="full">
                 <a href="#">
                   <span>
                     Book an <strong>appointment</strong>
                   </span>
                 </a>
               </Button>
-              <Button size="large" theme="outline">
+              <Button size="large" variation="outline">
                 <a href="#">
                   <Icons iconName="iconPhone" />
                   <span>
@@ -426,14 +426,14 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
           ctas={
             <>
-              <Button size="large" theme="full">
+              <Button size="large" variation="full">
                 <a href="#">
                   <span>
                     Learn more about <strong>self-pay</strong>
                   </span>
                 </a>
               </Button>
-              <Button size="large" theme="outline">
+              <Button size="large" variation="outline">
                 <a href="#">
                   <span>
                     Access care with <strong>insurance</strong>
@@ -471,7 +471,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </Text>
           }
           cta={
-            <Button size="large" theme="full">
+            <Button size="large" variation="full">
               <a href="#">
                 <span>
                   <Icons iconName={'iconSearch'} />
@@ -496,7 +496,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
       <Footer
         buttons={
           <>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconMobile" />
                 <span>
@@ -504,7 +504,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconRedo" />
                 <span>
@@ -512,7 +512,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconStethoscope" />
                 <span>
@@ -520,7 +520,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconCreditCard" />
                 <span>
@@ -548,19 +548,19 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
               </a>,
             ],
             socials: [
-              <Button key={0} size={'small'} theme={'social'}>
+              <Button key={0} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconFacebook" />
                   <span className="sr-only">Facebook link</span>
                 </a>
               </Button>,
-              <Button key={1} size={'small'} theme={'social'}>
+              <Button key={1} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconInstagram" />
                   <span className="sr-only">Instagram link</span>
                 </a>
               </Button>,
-              <Button key={2} size={'small'} theme={'social'}>
+              <Button key={2} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconLinkedin" />
                   <span className="sr-only">Linkedin link</span>

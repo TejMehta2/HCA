@@ -98,7 +98,7 @@ const Sorting = (props: SortingProps): JSX.Element => {
     >
       <div className={styles.desktop}>
         <div className={styles.button}>
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <button
               onClick={toggleDesktopModal}
               onMouseEnter={() => desktopDialogRef?.current?.show()}
@@ -121,7 +121,7 @@ const Sorting = (props: SortingProps): JSX.Element => {
       </div>
       <div className={styles.mobile}>
         <div className={styles.button}>
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <button onClick={toggleMobileModal} type="button">
               {ctaContent}
             </button>

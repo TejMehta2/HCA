@@ -147,7 +147,7 @@ export const Default = (props: FAQProps): JSX.Element => {
         accordions={accordions.accordions}
         ctas={
           props.fields?.CTALink && (
-            <Button theme="full" size="large">
+            <Button variation="full" size="large">
               {isExperienceEditor ? (
                 <JssLink field={props.fields.CTALink}></JssLink>
               ) : (
@@ -207,7 +207,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         accordions={accordions.accordions}
         ctas={
           props.fields?.CTALink?.value.text && (
-            <Button theme="full" size="large">
+            <Button variation="full" size="large">
               {isExperienceEditor ? (
                 <JssLink field={props.fields.CTALink}></JssLink>
               ) : (

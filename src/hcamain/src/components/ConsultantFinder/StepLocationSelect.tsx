@@ -61,19 +61,19 @@ export const Default = (props: StepProps): JSX.Element => {
             </div>
             <div className="field-promolink">
               <h2>Links from the base template</h2>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.NextLink}
                   title={props.fields.NextLink.value.text}
                 ></JssLink>
               </Button>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.BackLink}
                   title={props.fields.BackLink.value.text}
                 ></JssLink>
               </Button>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.StartLink}
                   title={props.fields.StartLink.value.text}
