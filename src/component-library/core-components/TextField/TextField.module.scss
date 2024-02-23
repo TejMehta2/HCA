@@ -1,0 +1,56 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  width: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .input {
+    position: relative;
+
+    input {
+      color: var(--text);
+      padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
+      height: $spacing-9;
+      border: 1px solid #626f82;
+      border-radius: $radius-large;
+
+      @include apply-body-medium-large;
+    }
+
+    .cross {
+      position: absolute;
+      display: flex;
+      right: $spacing-6;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  // TODO error colour
+  &.error {
+    color: #da3943;
+
+    input {
+      border-color: #da3943;
+    }
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}

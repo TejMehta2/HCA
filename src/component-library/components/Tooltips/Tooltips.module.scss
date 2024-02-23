@@ -111,6 +111,7 @@
 
 .icon {
   pointer-events: none;
+  display: flex;
 
   svg {
     pointer-events: inherit;
