@@ -200,9 +200,9 @@
     button {
       color: var(--cta-outline-text);
       border: 1px solid var(--cta-outline-border);
-
+      background-color: transparent;
       @include apply-hover-transition(
-        var(--background),
+        transparent,
         var(--cta-outline-hover-background)
       );
 

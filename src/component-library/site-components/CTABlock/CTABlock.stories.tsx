@@ -42,14 +42,14 @@ export const Default: StoryObj<typeof CTABlock> = {
     ),
     ctas: (
       <>
-        <Button size="large" theme="full">
+        <Button size="large" variation="full">
           <a href="#">
             <span>
               Click <strong>me</strong>
             </span>
           </a>
         </Button>
-        <Button size="large" theme="outline">
+        <Button size="large" variation="outline">
           <a href="#">
             <span>
               Click <strong>me</strong>

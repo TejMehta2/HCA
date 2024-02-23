@@ -7,7 +7,7 @@ import * as NavigationStories from './Navigation.stories'
 
 ## Description
 
-The Navigation site-component which renders both the NavigationMobile and NavigationDesktop components.
+The Navigation site-component renders both the NavigationMobile and NavigationDesktop components.
 
 It is intended to be used as the main navigation for a site.
 
@@ -17,12 +17,27 @@ It is intended to be used as the main navigation for a site.
 - The navigation header transitions up out of view while the use is scrolling down, unless the nav drawer is open.
 - The navigation header shows a different theme when closed vs. when opened.
 
-### Differences
+### Prop structure
 
-The expected prop type is structured so that the tabs represent the first level of navigation, and the content within each tab represents a list of child components of type ('single-narrow' | 'single-wide' | 'double' | 'header' | 'card'). The child components can be added in any order.
+The expected prop type is structured so that the tabs represent the first level of navigation, and the content within each tab represents a list of child 
+components of template and variations.
+
+#### Second level child template/variation (grid columns occupied on desktop):
+
+- 'Main Navigation Links List'
+- - 'single-narrow' (2)
+- - 'single-wide' (3)
+- - 'double' (6)
+- 'Navigation Content Block'
+- - 'single' (3) (styled as a card)
+- - 'double' (5)
+- 'Navigation Blog Post Card' (3)
+
+#### Mobile/Desktop Differences
 
 - The desktop navigation consumes the content array within each tab in props, and renders them all as child components within each tab's drawer. 
-- The mobile navigation renders only the child types ('single-narrow' | 'single-wide' | 'double') as the secondary level of navigation, and extracts the `links` attribute within to render as the tertiary level navigation.
+- The mobile navigation renders the child template 'Main Navigation Links List' as the secondary level of navigation, and extracts the `links` attribute from within to render as the tertiary level navigation.
+- The mobile navigation will concatenate the primary and secondary navigation views in the case that there is only one secondary level 'Main Navigation Links List'
 
 ### Usage 
 
@@ -30,11 +45,12 @@ It can be composed like this:
 
 ``` tsx
 const serviceCard: TabContent = {
-  variation: 'card',
+  variation: 'single',
+  template: 'Navigation Content Block',
   heading: 'Featured Scan',
   description: (
     <Text tag="p" variation="body-medium">
-      Ea et ea voluptate culpa laborum qui Enim eiusmod qui ullamco aute anim.
+      Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
     </Text>
   ),
   cta: (
@@ -45,9 +61,8 @@ const serviceCard: TabContent = {
     </a>
   ),
 };
-
 const blogCard: TabContent = {
-  variation: 'card',
+  template: 'Navigation Blog Post Card',
   heading: 'Test or scan related blog article',
   description: (
     <Text tag="p" variation="body-medium">
@@ -89,13 +104,14 @@ const props: NavigationProps = {
       ),
       content: [
         {
-          variation: 'header',
+          template: 'Navigation Content Block',
+          variation: 'double',
           heading: 'Services & Treatments',
           description: (
             <Text variation="body-large">
-              Quis laboris proident sint amet id cillum do dolor in tempor est.
-              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-              laborum et culpa minim.
+              Quis laboris proident sint amet id cillum do dolor in tempor
+              est. Exercitation aute sint tempor eu ut aliquip commodo enim
+              nulla et laborum et culpa minim.
             </Text>
           ),
           cta: (
@@ -114,13 +130,14 @@ const props: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'Services lines',
           links: [
             <TextLink variation={'body-large'}>
               <a href="#">Cancer Care</a>
             </TextLink>,
-            // ...
+            {/* ... */}
           ],
           cta: (
             <a href="#">
@@ -138,13 +155,14 @@ const props: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'GP Services & Urgent Care',
           links: [
             <TextLink variation={'body-large'}>
               <a href="#">GP Services</a>
             </TextLink>,
-            // ...
+            {/* ... */}
           ],
           cta: (
             <a href="#">
@@ -162,13 +180,14 @@ const props: NavigationProps = {
           ),
         },
         {
+          template: 'Main Navigation Links List',
           variation: 'single-narrow',
           heading: 'Treatments',
           links: [
             <TextLink variation={'body-large'}>
               <a href="#">Cancer Care</a>
             </TextLink>,
-            // ...
+            {/* ... */}
           ],
           cta: (
             <a href="#">
@@ -187,148 +206,13 @@ const props: NavigationProps = {
         },
       ],
     },
-    {
-      heading: 'Tests & Scans',
-      cta: (
-        <a href="#">
-          <span>
-            View all <strong>Tests & Scans</strong>
-          </span>
-        </a>
-      ),
-      content: [
-        {
-          variation: 'double',
-          heading: 'Tests & Scans',
-          links: [
-            <TextLink variation={'body-large'}>
-              <a href="#">CT Scans</a>
-            </TextLink>,
-            // ...
-          ],
-          cta: (
-            <a href="#">
-              <span>
-                View <strong>all</strong>
-              </span>
-            </a>
-          ),
-          mobileCta: (
-            <a href="#">
-              <span>
-                View all <strong>Tests & Scans</strong>
-              </span>
-            </a>
-          ),
-        },
-        serviceCard,
-        blogCard,
-      ],
-    },
+    // ...
     {
       heading: 'Find a consultant',
-      content: [],
+      mobileCta: <a href={'#'}>Find a consultant</a>,
+      hasChildren: false
     },
-    {
-      heading: 'Find a location',
-      cta: (
-        <a href="#">
-          <span>
-            View all <strong>Find a location</strong>
-          </span>
-        </a>
-      ),
-      content: [
-        {
-          variation: 'double',
-          heading: 'Our locations',
-          links: [
-            <TextLink variation={'body-large'}>
-              <a href="#">The Harley Street Clinic</a>
-            </TextLink>,
-            // ...
-          ],
-          cta: (
-            <a href="#">
-              <span>
-                View <strong>all</strong>
-              </span>
-            </a>
-          ),
-          mobileCta: (
-            <a href="#">
-              <span>
-                View all <strong>Our locations</strong>
-              </span>
-            </a>
-          ),
-        },
-        blogCard,
-        blogCard,
-      ],
-    },
-    {
-      heading: 'Patient & Visitor Information',
-      cta: (
-        <a href="#">
-          <span>
-            View all <strong>Patient & Visitor Information</strong>
-          </span>
-        </a>
-      ),
-      content: [
-        {
-          variation: 'single-wide',
-          heading: 'Patient Information',
-          links: [
-            <TextLink variation={'body-large'}>
-              <a href="#">The Harley Street Clinic</a>
-            </TextLink>,
-            // ...
-          ],
-          cta: (
-            <a href="#">
-              <span>
-                View <strong>all</strong>
-              </span>
-            </a>
-          ),
-          mobileCta: (
-            <a href="#">
-              <span>
-                View all <strong>Patient Information</strong>
-              </span>
-            </a>
-          ),
-        },
-        {
-          variation: 'single-wide',
-          heading: 'Other Information',
-          links: [
-            <TextLink variation={'body-large'}>
-              <a href="#">Visitor Information</a>
-            </TextLink>,
-            // ...
-          ],
-          cta: (
-            <a href="#">
-              <span>
-                View <strong>all</strong>
-              </span>
-            </a>
-          ),
-          mobileCta: (
-            <a href="#">
-              <span>
-                View all <strong>Other Information</strong>
-              </span>
-            </a>
-          ),
-        },
-        serviceCard,
-        blogCard,
-      ],
-    },
+    // ...
   ],
   search: (
     <TextLink>

@@ -24,7 +24,7 @@ type HCAIconFields = {
   };
 };
 
-type BlogTags = Item & {
+type ArticleTypeFields = Item & {
   fields?: {
     Title?: Field<string>;
   };
@@ -36,7 +36,7 @@ type BlogFields = Item & {
     Description?: Field<string>;
     Date?: Field<string>;
     Image?: ImageField;
-    Tags?: BlogTags[];
+    ArticleType?: ArticleTypeFields;
   };
   url?: string;
 };
@@ -83,7 +83,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       }
       link={
         props.fields?.CTALink && (
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <JssLink field={props.fields?.CTALink}>
               {props?.fields?.CTALink.value.text && (
                 <span
@@ -111,11 +111,13 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             <Text tag={'p'} variation={'body-large'}>
               <JssRichText tag="span" field={card.fields.Description} />
             </Text>
-            {!!card.fields.Tags && (
+            {!!card.fields.ArticleType && (
               <Tags>
-                {card.fields.Tags.map((tag) => (
-                  <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                ))}
+                <JssText
+                  key={card.fields.ArticleType?.id}
+                  tag="p"
+                  field={card.fields.ArticleType?.fields.Title}
+                />
               </Tags>
             )}
           </CardBlog>
@@ -139,7 +141,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         }
         cta={
           props.fields?.CTALink && (
-            <Button size={'large'} theme={'full'}>
+            <Button size={'large'} variation={'full'}>
               <JssLink field={props.fields?.CTALink}>
                 {props?.fields?.CTALink.value.text && (
                   <span
@@ -176,11 +178,13 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   <JssRichText tag="span" field={card.fields.Description} />
                 </Text>
               )}
-              {card.fields.Tags && (
+              {card.fields.ArticleType && (
                 <Tags>
-                  {card.fields.Tags.map((tag) => (
-                    <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                  ))}
+                  <JssText
+                    key={card.fields.ArticleType.id}
+                    tag="p"
+                    field={card.fields.ArticleType.fields.Title}
+                  />
                 </Tags>
               )}
             </CardBlog>

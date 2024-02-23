@@ -12,7 +12,7 @@ const CardDoctorLayout = (props: CardDoctorLayoutProps): JSX.Element => {
           <div className={styles.title}>{title}</div>
           <div className={styles.children}>{children}</div>
           <div className={styles.cta}>
-            <Button size={'large'} theme={'full'}>
+            <Button size={'large'} variation={'full'}>
               {cta}
             </Button>
           </div>

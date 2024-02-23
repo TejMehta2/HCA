@@ -47,19 +47,19 @@ const mockProps: FooterProps = {
         <a href="#">Contact HCA UK</a>,
       ],
       socials: [
-        <Button size={'small'} theme={'social'}>
+        <Button size={'small'} variation={'social'}>
           <a href="#">
             <Icons iconName="iconFacebook" />
             <span className="sr-only">Facebook link</span>
           </a>
         </Button>,
-        <Button size={'small'} theme={'social'}>
+        <Button size={'small'} variation={'social'}>
           <a href="#">
             <Icons iconName="iconInstagram" />
             <span className="sr-only">Instagram link</span>
           </a>
         </Button>,
-        <Button size={'small'} theme={'social'}>
+        <Button size={'small'} variation={'social'}>
           <a href="#">
             <Icons iconName="iconLinkedin" />
             <span className="sr-only">Linkedin link</span>

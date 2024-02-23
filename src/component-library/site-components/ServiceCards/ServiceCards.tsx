@@ -30,7 +30,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
                     <div className={styles.title}>{title}</div>
                     <div className={styles['body-text']}>{bodyText}</div>
                     <div className={styles.cta}>
-                      <Button size="large" theme="outline-dark">
+                      <Button size="large" variation="outline-dark">
                         {cta}
                       </Button>
                     </div>

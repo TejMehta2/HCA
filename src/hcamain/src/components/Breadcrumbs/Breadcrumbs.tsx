@@ -8,7 +8,10 @@ type HCAIconFields = {
 };
 
 type AncestorsFields = {
-  title: { jsonValue: Field<string> };
+  navigationTitle: { value: string };
+  abstractTitle: { value: string };
+  displayName: string;
+  name: string;
   url: { path: string };
 };
 
@@ -20,7 +23,10 @@ interface Fields {
       };
     };
     contextItem: {
-      title: { jsonValue: Field<string> };
+      navigationTitle: { value: string };
+      abstractTitle: { value: string };
+      displayName: string;
+      name: string;
       url: { path: string };
       ancestors: AncestorsFields[];
     };
@@ -64,4 +70,13 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   );
 
   return <Breadcrumbs children={breadcrumbList} />;
+
+  {/* <span>Name to choose:</span>
+      <Text field={props.fields.data.contextItem.navigationTitle} />
+      <br />
+      <Text field={props.fields.data.contextItem.abstractTitle} />
+      <br />
+      <span>{props.fields.data.contextItem.displayName}</span>
+      <br />
+      <span>{props.fields.data.contextItem.name}</span> */}
 };
