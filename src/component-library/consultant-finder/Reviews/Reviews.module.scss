@@ -48,5 +48,10 @@
 
   &-doctify-image {
     margin-left: $spacing-1;
+
+    img {
+      width: px-to-rem(83);
+      height: auto;
+    }
   }
 }

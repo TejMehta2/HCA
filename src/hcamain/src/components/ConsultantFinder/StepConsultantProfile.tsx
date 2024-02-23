@@ -42,14 +42,13 @@ interface Fields {
   BookOnlineLink: LinkField;
   BackFromAdvSearchLink: LinkField;
   BackFromFindByConsultantLink: LinkField;
-
   // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  DoctifyLogoImage: ImageField;
 }
 
 interface ServerSideProps {
@@ -125,7 +124,7 @@ export const Default = (props: StepProps): JSX.Element => {
         <SidePanel>
           <div>
             <Reviews
-              doctifyLogo={null}
+              doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
               doctifyText="Reviewed By"
               hasDoctifyBranding={true}
               isConsultantProfileReviews={true}
