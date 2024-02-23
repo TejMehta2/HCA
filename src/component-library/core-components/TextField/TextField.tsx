@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { TextFieldProps } from './TextField.types';
 import styles from './TextField.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -11,22 +11,18 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     tooltip,
     type = 'text',
     required = false,
-    pattern,
     errorMessage,
   } = props;
 
-  const [value, setValue] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-
-    if (!pattern || !required) return;
-    setHasError(!!!event.target.value.match(pattern));
+  const clearInput = () => {
+    if (!inputRef.current) return;
+    inputRef.current.value = '';
   };
 
   return (
-    <div className={`${styles.wrapper} ${hasError ? styles.error : ''}`}>
+    <div className={styles.wrapper}>
       {label && (
         <label htmlFor={id}>
           {label}
@@ -35,26 +31,17 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         </label>
       )}
       <span className={styles.input}>
-        <input
-          id={id}
-          type={type}
-          value={value}
-          required={required}
-          pattern={pattern}
-          onChange={onChangeHandler}
-        />
-        {value && (
-          <span className={styles.cross} onClick={() => setValue('')}>
-            <Icons iconName="iconCross" />
-          </span>
-        )}
+        <input id={id} ref={inputRef} type={type} required={required} />
+
+        <span className={styles.cross} onClick={clearInput}>
+          <Icons iconName="iconCross" />
+        </span>
       </span>
-      {hasError && (
-        <div className={styles['error-message']}>
-          <Icons iconName="iconWarning" />
-          <Text variation="body-medium-medium">{errorMessage}</Text>
-        </div>
-      )}
+
+      <div className={styles['error-message']}>
+        <Icons iconName="iconWarning" />
+        <Text variation="body-medium-medium">{errorMessage}</Text>
+      </div>
     </div>
   );
 };

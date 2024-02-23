@@ -40,7 +40,6 @@ export const Required: StoryObj<typeof TextField> = {
     id: 'input1',
     label: 'Field label',
     required: true,
-    pattern: "^[a-zA-Z0-9- ,.:!*#~&/()+%'`@-]{1,50}$",
     errorMessage: 'Error message',
   },
   decorators: [
@@ -58,7 +57,6 @@ export const Email: StoryObj<typeof TextField> = {
     label: 'Email Address',
     type: 'email',
     required: true,
-    pattern: '^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$',
     errorMessage: 'Error message',
   },
   decorators: [

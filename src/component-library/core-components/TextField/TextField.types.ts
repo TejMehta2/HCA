@@ -4,6 +4,5 @@ export interface TextFieldProps {
   label?: string;
   tooltip?: JSX.Element;
   required?: boolean;
-  pattern?: string;
   errorMessage?: string;
 }

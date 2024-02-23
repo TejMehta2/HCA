@@ -30,27 +30,38 @@
     }
 
     .cross {
-      position: absolute;
       display: flex;
+      position: absolute;
       right: $spacing-6;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
+      opacity: 0;
+    }
+  }
+
+  .error-message {
+    display: none;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
     }
   }
 
   // TODO error colour
-  &.error {
+  &:has(input:not(:focus):invalid) {
     color: #da3943;
 
     input {
       border-color: #da3943;
     }
-  }
-}
 
-.error-message {
-  display: flex;
-  align-items: center;
-  gap: $spacing-2;
+    .error-message {
+      display: flex;
+    }
+  }
 }
