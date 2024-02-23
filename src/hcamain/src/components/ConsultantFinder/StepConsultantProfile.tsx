@@ -18,11 +18,21 @@ import {
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
+import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
+import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
+import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
-import { checkIfLiveBookingIsAvailable, getSpecialistProfileData, isErrorWithProfileData } from 'src/pages/Finder/StepConsultantProfile/finderHelpers';
+import {
+  checkIfLiveBookingIsAvailable,
+  getSpecialistProfileData,
+  isErrorWithProfileData,
+} from 'src/pages/Finder/StepConsultantProfile/finderHelpers';
+import Container from '@component-library/foundation/Containers/Container';
+import Button from '@component-library/core-components/Button/Button';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -42,11 +52,10 @@ interface Fields {
   BackLink: LinkField;
 }
 
-interface ServerSideProps
-{
+interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
-  ProfileJson: string;
+  ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
 
@@ -67,14 +76,13 @@ export const getStaticProps: GetStaticComponentProps = async (
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
   //console.log("consultantProfileJson: ", consultantProfileJson);
-  
-  let returnProps: ServerSideProps =
-  {
+
+  const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
-    ProfileJson: consultantProfileJson
-  }
+    ProfileJson: consultantProfileJson,
+  };
 
   // returned stuff from the server side
   return returnProps;
@@ -95,9 +103,16 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const serverSideData = useComponentProps<ServerSideProps>(props.rendering.uid);
+  console.log('consultant profile data', props.fields);
+  const serverSideData = useComponentProps<ServerSideProps>(
+    props.rendering.uid
+  );
+  console.log('consultant data,', serverSideData?.ProfileJson);
   //console.log('server side data from component props: ', serverSideData);
-  console.log('Is live diaries consultant:', serverSideData?.IsLiveDiaryConsultant);
+  console.log(
+    'Is live diaries consultant:',
+    serverSideData?.IsLiveDiaryConsultant
+  );
   const { message, setMessage } = useContext(ConsultantFinderContext);
 
   const id = props.params.RenderingIdentifier;
@@ -107,14 +122,100 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
+        <SidePanel>
+          <div>
+            <Reviews
+              doctifyLogo={null}
+              doctifyText="Reviewed By"
+              hasDoctifyBranding={true}
+              isConsultantProfileReviews={true}
+              reviewsCount={
+                serverSideData?.ProfileJson?.review?.overallExperience
+              }
+              reviewsText="Patients"
+              reviewsTotal={
+                serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+              }
+              titleText="PATIENTS REVIEWS"
+            />
+            <InfoBox
+              backgroundColour="green"
+              icon={null}
+              isShortInfo
+              longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+              shortText="Next initial appointment on Fri, Oct 28"
+            />
+            <InfoBox
+              backgroundColour="orange"
+              icon={null}
+              isShortInfo
+              longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+              shortText="Next initial appointment on Fri, Oct 28"
+            />
+            <Container marginTop="spacing-5">
+              {/* if consultant has live diaries then show 'book online' */}
+              {serverSideData?.IsLiveDiaryConsultant && (
+                <Button
+                  theme="full-dark"
+                  size="small"
+                  contentVariation="full-width"
+                >
+                  <button>
+                    <span>
+                      <strong>Book</strong> online
+                    </span>
+                  </button>
+                </Button>
+              )}
+              {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+              {!serverSideData?.IsLiveDiaryConsultant &&
+                !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+                  <Button
+                    theme="full-dark"
+                    size="small"
+                    contentVariation="full-width"
+                  >
+                    <button>
+                      <span>
+                        <strong>Enquire</strong> now
+                      </span>
+                    </button>
+                  </Button>
+                )}
+              <Button
+                theme="outline"
+                size="small"
+                contentVariation="full-width"
+              >
+                <button>
+                  <Icons iconName="iconPhone" />
+                  <span>
+                    <strong>Call to</strong> book
+                  </span>
+                </button>
+              </Button>
+            </Container>
+          </div>
+        </SidePanel>
         <div>Message: {message}</div>
         <button onClick={() => setMessage('testing new')}>
           Change message
         </button>
         <div>Slug: {serverSideData?.Slug}</div>
-        <div>Error with data?: {serverSideData?.ErrorWithProfileData ? "true" : "false"}</div>
-        <div>Is live diaries consultant?: {serverSideData?.IsLiveDiaryConsultant ? "true" : "false"}</div>
-        <div>Their doctify profile data: {JSON.stringify(serverSideData?.ProfileJson)}</div>
+        <div>
+          Error with data?:{' '}
+          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+        </div>
+        <div>
+          Is live diaries consultant?:{' '}
+          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+        </div>
+        {/* <div>
+          Their doctify profile data:{' '}
+          {JSON.stringify(serverSideData?.ProfileJson)}
+        </div> */}
 
         <div className="component-content">
           <div className="field-promoicon">
@@ -128,36 +229,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 </Text>
               </div>
             </div>
-            {/* <div className="field-promolink">
-              <h2>Links from the specifc component template</h2>
-              <h3>The profile will render either the enquire now or book online link</h3>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.EnquireNowLink} title={props.fields.EnquireNowLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BookOnlineLink} title={props.fields.BookOnlineLink.value.text}></JssLink>
-              </Button>
-              <h3>Back if coming from advanced search path...</h3>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BackFromAdvSearchLink} title={props.fields.BackFromAdvSearchLink.value.text}></JssLink>
-              </Button>
-              <h3>Back if coming from find consultant path...</h3>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BackFromFindByConsultantLink} title={props.fields.BackFromFindByConsultantLink.value.text}></JssLink>
-              </Button>
-            </div>            
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.NextLink} title={props.fields.NextLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.BackLink} title={props.fields.BackLink.value.text}></JssLink>
-              </Button>
-              <Button size={'small'} theme={'outline'}>
-                <JssLink field={props.fields.StartLink} title={props.fields.StartLink.value.text}></JssLink>
-              </Button>
-            </div> */}
           </div>
         </div>
       </div>
@@ -166,5 +237,3 @@ export const Default = (props: StepProps): JSX.Element => {
 
   return <StepDefaultComponent {...props} />;
 };
-
-

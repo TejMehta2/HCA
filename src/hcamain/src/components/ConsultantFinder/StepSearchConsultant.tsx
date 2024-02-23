@@ -154,7 +154,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <button
               disabled={consultantSlug === '' ? true : false}
               onClick={() =>
-                router.push(props.fields.NextLink.value.href || '')
+                router.push(
+                  `/Finder/StepConsultantProfile/${consultantSlug}` || ''
+                )
               }
             >
               <span>{props.fields.NextLink.value.text || 'Next'}</span>
