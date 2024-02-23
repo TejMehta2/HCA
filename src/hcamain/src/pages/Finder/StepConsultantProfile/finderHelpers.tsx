@@ -119,7 +119,7 @@ export async function getSpecialistProfileData(
     }
   } catch (e) {
     //docitfy call threw
-    docitfyData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching the profile, please retry"}`;
+    docitfyData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching the getSpecialistProfileData, please retry"}`;
     console.error(`getSpecialistProfileData failed with exception ${e}`);
   }
   return docitfyData;
@@ -135,3 +135,110 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
       consultantProfileJsonString?.indexOf(`errorText`) > 0);
   return isError;
 }
+
+// get HCA facilities data 
+const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
+export async function getFacilitiesData (
+  serviceURL?: string
+): Promise<string> {
+  const requestURL = `${serviceURL ?? Doctify_To_HCA_Facilities_URL}`;
+  let facilitiesData: string = '';
+  try {
+    // need to cache these requests so we don't make hundreds of them
+    // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+    const res = await fetch(requestURL, {
+      cache: 'force-cache',
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
+      facilitiesData = await res.json();
+    } else {
+      //docitfy call failed
+      facilitiesData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.error(
+        `getFacilitiesData failed with error ${facilitiesData}`
+      );
+    }
+  } catch (e) {
+    //docitfy call threw
+    facilitiesData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getFacilitiesData, please retry"}`;
+    console.error(`getFacilitiesData failed with exception ${e}`);
+  }
+  return facilitiesData;
+}
+
+// get the HCA facility url from the Doctify practice slug 
+export async function facilityURLFromDoctifySlug(doctifyLocationSlug: string): Promise<string> {
+  const facilities = await getFacilitiesData();
+  // TODO placeholder //(facilities:JSON);
+  let locationURL: string = "https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital";
+  return locationURL;
+}
+
+//C2 APIs
+
+// first appointment
+// post in GMC number/s
+//{
+//  "consultants" : ["4113571","6140048","2805843"]
+//}
+// returns
+/*
+{
+    "availability": [
+        {
+            "initial_appointment": "2024-02-24T08:00:00Z",
+            "follow_appointment": "2024-02-24T08:00:00Z",
+            "gmc": "4113571",
+            "mnemonic": "GOLDAND",
+            "refreshdate": "2024-02-22T15:45:07Z"
+        },
+        {
+            "initial_appointment": "2024-03-27T09:30:00Z",
+            "follow_appointment": "2024-03-13T09:45:00Z",
+            "gmc": "2805843",
+            "mnemonic": "DAVJENN",
+            "refreshdate": "2024-02-22T15:47:44Z"
+        },
+        {
+            "initial_appointment": "2024-02-26T16:15:00Z",
+            "follow_appointment": "2024-02-26T16:15:00Z",
+            "gmc": "6140048",
+            "mnemonic": "IBRMAZ",
+            "refreshdate": "2024-02-22T15:48:46Z"
+        }
+    ]
+}
+*/
+let C2_FirstAppointment_API_URL: string = "https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88";
+export async function LDB_FirstAppointment(gmcNumber: string, serviceURL?: string): Promise<string> {
+  const requestURL = `${serviceURL ?? C2_FirstAppointment_API_URL}`;
+  let firstAppointmentData: string = '';
+  let body = `{"consultants" : ["${gmcNumber}"] }`;
+  try {
+    // very light cache on these requests they contain time sensitive data
+    const res = await fetch(requestURL, {
+      cache: 'force-cache',
+      method: 'post',
+      body: body,
+      //headers: [''], // TODO Auth headers
+      next: { revalidate: 10 },
+    });
+    if (res.ok) {
+      firstAppointmentData = await res.json();
+    } else {
+      //docitfy call failed
+      firstAppointmentData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.error(
+        `LDB_FirstAppointment failed with error ${firstAppointmentData}`
+      );
+    }
+  } catch (e) {
+    //docitfy call threw
+    firstAppointmentData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching LDB_FirstAppointment, please retry"}`;
+    console.error(`LDB_FirstAppointment failed with exception ${e}`);
+  }
+
+  return firstAppointmentData;
+}
+
