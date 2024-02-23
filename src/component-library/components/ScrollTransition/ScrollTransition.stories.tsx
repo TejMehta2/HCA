@@ -56,7 +56,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 1,
     name: 'Locations across London',
     amount: '9',
-    theme: 'D-HCA-Light-Orange',
+    theme: 'H-HCA-Tangerine',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
     cardStyles: { transform: 'translateY(-55%) translateX(60%)' },
@@ -83,11 +83,11 @@ const locations: OurLocationsRegionProps[] = [
 
 export const Default: StoryObj<typeof ScrollTransition> = {
   args: {
-    initialTheme: 'D-HCA-Light-Orange',
+    initialTheme: 'H-HCA-Tangerine',
     children: (
       <>
         <HomepageHero
-          theme="D-HCA-Light-Orange"
+          theme="H-HCA-Tangerine"
           title={
             <Text tag="h1" variation="display-1">
               Extraordinary Healthcare

@@ -41,7 +41,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 1,
     name: 'Locations across London',
     amount: '9',
-    theme: 'D-HCA-Light-Orange',
+    theme: 'H-HCA-Tangerine',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
     cardStyles: { transform: 'translateY(-55%) translateX(60%)' },

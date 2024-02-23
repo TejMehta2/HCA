@@ -10,9 +10,9 @@ export interface HeaderWithImageProps {
     | 'D-HCA-Teal'
     | 'F-HCA-Fern'
     | 'I-HCA-Goldenrod'
-    | 'D-HCA-Light-Orange'
+    | 'H-HCA-Tangerine'
     | 'B-HCA-Navy-Blue'
-    | 'G-HCA-Green-40'
+    | 'K-HCA-Fern-20'
     | 'K-HCA-Fern-20'
    */
 }

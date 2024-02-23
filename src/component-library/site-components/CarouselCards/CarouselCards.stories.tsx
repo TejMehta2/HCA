@@ -21,7 +21,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
   args: {
-    theme: 'I-HCA-Goldenrod',
+    theme: 'J-HCA-Tangerine-20',
     title: (
       <Text tag="h2" variation="display-3">
         Orthopaedics Patient Stories
@@ -215,7 +215,7 @@ export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
 
 export const BlogCards: StoryObj<typeof CarouselCards> = {
   args: {
-    theme: 'I-HCA-Goldenrod',
+    theme: 'J-HCA-Tangerine-20',
     title: (
       <Text tag="h2" variation="display-3">
         Orthopaedic Care

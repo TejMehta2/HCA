@@ -16,21 +16,21 @@ const PaddingCollapse = (): JSX.Element => {
       </div>
       <div className={styles['test-wrapper']}>
         Two of the same theme side by side
-        <Themes theme="D-HCA-Light-Orange">
+        <Themes theme="H-HCA-Tangerine">
           <div className={styles.content}>Test</div>
         </Themes>
-        <Themes theme="D-HCA-Light-Orange">
+        <Themes theme="H-HCA-Tangerine">
           <div className={styles.content}>Test</div>
         </Themes>
       </div>
       <div className={styles['test-wrapper']}>
         Two of the same theme side by side nested
-        <Themes theme="G-HCA-Green-40">
+        <Themes theme="K-HCA-Fern-20">
           <div className={styles.content}>Test</div>
-          <Themes theme="D-HCA-Light-Orange">
+          <Themes theme="H-HCA-Tangerine">
             <div className={styles.content}>Test</div>
           </Themes>
-          <Themes theme="D-HCA-Light-Orange">
+          <Themes theme="H-HCA-Tangerine">
             <div className={styles.content}>Test</div>
           </Themes>
         </Themes>
