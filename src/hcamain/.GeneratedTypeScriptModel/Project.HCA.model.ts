@@ -741,6 +741,60 @@ export namespace PageContent {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Search
+    */
+    export type BlogSearch = Foundation.SearchBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Search
+    */
+    export type BlogSearchJson = Foundation.SearchBaseJson &  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Search
+    */
+    export type BlogSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Search
+    */
+    export type BlogSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Search Folder
+    */
+    export type BlogSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Search Folder
+    */
+    export type BlogSearchFolderJson =  {
+        
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Text
     */
     export type BlogText =  {
@@ -3310,12 +3364,12 @@ export namespace Foundation.RenderingParameters {
     export type HeadingParameters =  {
         fields?: { 
             /**
-            * Represents the HeadingSize field (b791330d-3cf2-4c11-a07f-5a29d392c972).
+            * Represents the Heading Size field (b791330d-3cf2-4c11-a07f-5a29d392c972).
             */
             HeadingSize?: Field<string>;
 
             /**
-            * Represents the HeadingTag field (be0ce91d-874a-4f9c-8418-6c173f5593af).
+            * Represents the Heading Tag field (be0ce91d-874a-4f9c-8418-6c173f5593af).
             */
             HeadingTag?: Field<string>;
         }
@@ -3328,14 +3382,14 @@ export namespace Foundation.RenderingParameters {
     export type HeadingParametersJson =  {
         
             /**
-            * Represents the HeadingSize field (b791330d-3cf2-4c11-a07f-5a29d392c972).
+            * Represents the Heading Size field (b791330d-3cf2-4c11-a07f-5a29d392c972).
             */
             headingSize?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the HeadingTag field (be0ce91d-874a-4f9c-8418-6c173f5593af).
+            * Represents the Heading Tag field (be0ce91d-874a-4f9c-8418-6c173f5593af).
             */
             headingTag?: {
                 jsonValue: Field<string>
