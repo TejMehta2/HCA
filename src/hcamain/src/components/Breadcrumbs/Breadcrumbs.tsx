@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 
@@ -55,28 +55,31 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
+  const getTitle = (data: AncestorsFields) => {
+    if (data.navigationTitle) {
+      return data.navigationTitle.value;
+    } else if (data.abstractTitle) {
+      return data.abstractTitle.value;
+    } else if (data.displayName) {
+      return data.displayName;
+    } else {
+      return data.name;
+    }
+  };
+
   const breadcrumbList = props.fields.data.contextItem.ancestors.map(
-    (ancestor, index) => (
-      <Link href={ancestor.url.path} key={index}>
-        <JssText field={ancestor.title.jsonValue} />
-      </Link>
-    )
+    (ancestor, index) => {
+      const title = getTitle(ancestor);
+      return (
+        <Link href={ancestor.url.path} key={index}>
+          {title}
+        </Link>
+      );
+    }
   );
 
-  breadcrumbList.push(
-    <span key={breadcrumbList.length}>
-      <JssText field={props.fields.data.contextItem.title.jsonValue} />
-    </span>
-  );
+  const title = getTitle(props.fields.data.contextItem);
+  breadcrumbList.push(<span key={breadcrumbList.length}>{title}</span>);
 
   return <Breadcrumbs children={breadcrumbList} />;
-
-  {/* <span>Name to choose:</span>
-      <Text field={props.fields.data.contextItem.navigationTitle} />
-      <br />
-      <Text field={props.fields.data.contextItem.abstractTitle} />
-      <br />
-      <span>{props.fields.data.contextItem.displayName}</span>
-      <br />
-      <span>{props.fields.data.contextItem.name}</span> */}
 };
