@@ -14,9 +14,13 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
 
 interface Fields {
-  Title: Field<string>;
-  Text: Field<string>;
-  Image: ImageField;
+  data: {
+    contextItem: {
+      title: { jsonValue: Field<string> };
+      text: { jsonValue: Field<string> };
+      image: { jsonValue: ImageField };
+    };
+  };
 }
 
 type HeaderWithImageProps = {
@@ -66,15 +70,15 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           variation={props.params.HeadingSize || 'display-1'}
           tag={props.params.HeadingTag || 'h2'}
         >
-          <JSSText field={props.fields.Title} />
+          <JSSText field={props.fields.data.contextItem.title.jsonValue} />
         </Text>
       }
       copy={
         <Text variation="body-large" tag="div">
-          <RichText field={props.fields.Text} />
+          <RichText field={props.fields.data.contextItem.text.jsonValue} />
         </Text>
       }
-      image={<JSSImage field={props.fields.Image} />}
+      image={<JSSImage field={props.fields.data.contextItem.image.jsonValue} />}
       ctas={
         <Placeholder
           name={phKey}

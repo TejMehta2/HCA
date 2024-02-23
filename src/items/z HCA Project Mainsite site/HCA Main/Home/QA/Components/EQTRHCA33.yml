@@ -1,13 +1,13 @@
 ﻿---
 ID: "5faa66ec-b2d6-4f0b-a910-7dd459559f62"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA33
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{37B83968-BA8A-4C88-A5E7-837E64FFA1DE}" />
+    <image mediaid="{78474FC2-11A8-4367-B85F-9190408114B7}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -68,16 +68,23 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: This is a text description
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "56fcdab7-2a57-42e3-9cf3-f0cb01f7edf5"
+      Value: "501d8f4c-c7a3-4d9c-8ae2-7c39e475efdc"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{C785147A-B62E-4EAF-9B79-FA85910301B2}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240110T201104Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Value: 20240223T164217Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA33

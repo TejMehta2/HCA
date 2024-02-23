@@ -2,7 +2,7 @@
 ID: "fe5c34c7-3318-456f-917b-5813a66bc976"
 Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search Params
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon

@@ -22,7 +22,7 @@ type CTAIconFields = {
 
 interface StoriesFields {
   title: Field<string>;
-  description: Field<string>;
+  text: Field<string>;
   date: Field<string>;
   image: { jsonValue: ImageField };
   link: LinkField;
@@ -131,7 +131,7 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
           }
           bodyCopy={
             <Text tag="div" variation="body-large">
-              <RichText tag="span" field={story.description} />
+              <RichText tag="span" field={story.text} />
             </Text>
           }
           image={<JssImage field={story.image.jsonValue} />}
@@ -195,7 +195,7 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
           }
           bodyCopy={
             <Text tag="div" variation="body-large">
-              <RichText tag="span" field={story.description} />
+              <RichText tag="span" field={story.text} />
             </Text>
           }
           image={<JssImage field={story.image.jsonValue} />}

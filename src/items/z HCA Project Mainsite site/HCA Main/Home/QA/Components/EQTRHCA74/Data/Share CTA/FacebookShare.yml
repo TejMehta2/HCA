@@ -1,23 +1,19 @@
 ﻿---
-ID: "77332344-9643-4f3c-96fc-e015f6b423de"
-Parent: "24dbd44e-e3be-4f71-9cf7-fd26fb105e11"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_HCABasePageData/Data/Description
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Rich Text
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
+ID: "37d27410-a6f4-4201-bf48-2d9789acb043"
+Parent: "0469b785-18d7-40a3-9f67-632227545c3d"
+Template: "e6052be0-1783-41a6-9457-494e2a2d463e"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/FacebookShare
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
+    - ID: "1c2c7ab9-e534-4c88-b3ba-13b01e0b2431"
+      Hint: CTAText
+      Value: Facebook
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231116T103924Z
+      Value: 20240217T215625Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +24,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "798f0116-242b-4dd8-93b8-3340692c7176"
+      Value: "6c821885-2be0-48dc-b7c6-91be12a43486"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231116T103924Z
+      Value: 20240219T151846Z

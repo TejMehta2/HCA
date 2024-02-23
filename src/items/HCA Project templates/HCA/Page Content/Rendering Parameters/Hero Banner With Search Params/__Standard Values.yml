@@ -1,8 +1,8 @@
 ﻿---
-ID: "7a080fbc-80bb-4233-8f8e-dfa8ef4108d9"
-Parent: "d4706420-3df1-4009-8c25-9c306d91bd1e"
-Template: "d4706420-3df1-4009-8c25-9c306d91bd1e"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Plain Header/__Standard Values
+ID: "122d3c7c-a8c9-458f-834b-1af52c958a12"
+Parent: "fe5c34c7-3318-456f-917b-5813a66bc976"
+Template: "fe5c34c7-3318-456f-917b-5813a66bc976"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Hero Banner With Search Params/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -17,11 +17,11 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a5bbbff4-f9c4-402c-8faa-96fe04e58586"
+      Value: "b0c184b3-ad8d-42cd-b2e6-a9532095a6f3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240125T124738Z
+      Value: 20240205T183147Z

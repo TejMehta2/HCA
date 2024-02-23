@@ -18,6 +18,7 @@ type SharePlatformsFields = {
 interface Fields {
   data: {
     item: {
+      title: { jsonValue: Field<string> };
       text: { jsonValue: Field<string> };
       cTAIcon: {
         Icon: CTAIconFields;
@@ -29,7 +30,7 @@ interface Fields {
     };
     contextItem: {
       title: { value: string };
-      description: { value: string };
+      text: { value: string };
       url: { url: string };
     };
   };
@@ -57,10 +58,12 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
   }
   return (
     <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.data.item.text.jsonValue} />
+      <JssText field={props.fields.data?.item?.title.jsonValue} />
+      <br />
+      <JssText field={props.fields.data?.item?.text.jsonValue} />
       <br />
       <ul>
-        {props.fields.data.item.sharePlatforms.sharePlatformsList.map(
+        {props.fields.data?.item?.sharePlatforms.sharePlatformsList.map(
           (sharePlatform, index) => (
             <li key={index}>
               <JssText field={sharePlatform.cTAText.jsonValue} />
@@ -70,22 +73,22 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
         )}
       </ul>
       <br />
-      <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
+      <JssLink field={props.fields.data?.item?.cTALink.jsonValue}></JssLink>
       <br />
       {props?.fields?.data?.item?.cTAIcon?.Icon && (
         <span
           dangerouslySetInnerHTML={{
-            __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
+            __html: props.fields.data?.item?.cTAIcon.Icon.svgMarkup.value,
           }}
         />
       )}
       <br />
-      <JssText field={props.fields.data.contextItem.title} />
+      <JssText field={props.fields.data?.contextItem.title} />
       <br />
-      <JssText field={props.fields.data.contextItem.description} />
+      <JssText field={props.fields.data?.contextItem.text} />
       <br />
-      <a href={props.fields.data.contextItem.url.url}>
-        {props.fields.data.contextItem.url.url}
+      <a href={props.fields.data?.contextItem.url.url}>
+        {props.fields.data?.contextItem.url.url}
       </a>
       <br />
       <p>Text: {localise('close')}</p>

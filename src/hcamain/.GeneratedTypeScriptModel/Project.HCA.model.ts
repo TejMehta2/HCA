@@ -3270,22 +3270,7 @@ export namespace PageContent {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Header With Image
     */
     export type HeaderWithImage =  {
-        fields?: { 
-            /**
-            * Represents the Image field (eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a).
-            */
-            Image?: ImageField;
-
-            /**
-            * Represents the Text field (6d02e9c7-eee5-499f-b3ed-1ea57186b925).
-            */
-            Text?: Field<string>;
-
-            /**
-            * Represents the Title field (dae2c26c-d179-4609-94f3-33169a4dc39f).
-            */
-            Title?: Field<string>;
-        }
+        fields?: {         }
 
     }
 
@@ -3294,27 +3279,6 @@ export namespace PageContent {
     */
     export type HeaderWithImageJson =  {
         
-            /**
-            * Represents the Image field (eccb05c9-7f5f-4bbc-8963-d0c83f3fa46a).
-            */
-            image?: {
-                jsonValue: ImageField
-            };
-
-            /**
-            * Represents the Text field (6d02e9c7-eee5-499f-b3ed-1ea57186b925).
-            */
-            text?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Title field (dae2c26c-d179-4609-94f3-33169a4dc39f).
-            */
-            title?: {
-                jsonValue: Field<string>
-            };
-
 
     }
 }
@@ -6806,14 +6770,14 @@ Foundation.HcabasePageDataJson &  {
     export type HcabasePageData =  {
         fields?: { 
             /**
-            * Represents the Description field (77332344-9643-4f3c-96fc-e015f6b423de).
-            */
-            Description?: Field<string>;
-
-            /**
             * Represents the Image field (9def8dc9-3351-41a7-82c4-2c7f56f95e25).
             */
             Image?: ImageField;
+
+            /**
+            * Represents the Text field (77332344-9643-4f3c-96fc-e015f6b423de).
+            */
+            Text?: Field<string>;
 
             /**
             * Represents the Title field (dd6c2904-20c1-4670-b538-d523f08e60f0).
@@ -6829,17 +6793,17 @@ Foundation.HcabasePageDataJson &  {
     export type HcabasePageDataJson =  {
         
             /**
-            * Represents the Description field (77332344-9643-4f3c-96fc-e015f6b423de).
-            */
-            description?: {
-                jsonValue: Field<string>
-            };
-
-            /**
             * Represents the Image field (9def8dc9-3351-41a7-82c4-2c7f56f95e25).
             */
             image?: {
                 jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Text field (77332344-9643-4f3c-96fc-e015f6b423de).
+            */
+            text?: {
+                jsonValue: Field<string>
             };
 
             /**
