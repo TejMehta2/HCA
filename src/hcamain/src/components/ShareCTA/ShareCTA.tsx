@@ -18,7 +18,6 @@ type SharePlatformsFields = {
 interface Fields {
   data: {
     item: {
-      title: { jsonValue: Field<string> };
       text: { jsonValue: Field<string> };
       cTAIcon: {
         Icon: CTAIconFields;
@@ -31,13 +30,15 @@ interface Fields {
     contextItem: {
       title: { value: string };
       description: { value: string };
-      url: { path: string };
+      url: { url: string };
     };
   };
 }
 
 type ShareCTAProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+  };
   fields: Fields;
 };
 
@@ -56,8 +57,6 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
   }
   return (
     <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.data.item.title.jsonValue} />
-      <br />
       <JssText field={props.fields.data.item.text.jsonValue} />
       <br />
       <ul>
@@ -85,8 +84,8 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
       <br />
       <JssText field={props.fields.data.contextItem.description} />
       <br />
-      <a href={props.fields.data.contextItem.url.path}>
-        {props.fields.data.contextItem.url.path}
+      <a href={props.fields.data.contextItem.url.url}>
+        {props.fields.data.contextItem.url.url}
       </a>
       <br />
       <p>Text: {localise('close')}</p>

@@ -17,9 +17,18 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{3623425F-644A-4A18-AADA-EECF26CFC97E}"
-          s:ds="local:/Data/Talk To Us"
+          p:before="*"
+          s:ds="local:/Data/Talk To Us Image Left"
           s:id="{EA3631D1-CA63-485E-9220-16C037F53AD4}"
           s:par="HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B2C664B6E-173D-4704-8E0D-9D864112EA6D%7D&amp;Styles&amp;Theme=J-Turquoise-10&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{3A744992-8EE0-4F7C-A898-1D41C8E299F6}"
+          p:after="*[1=2]"
+          s:ds="local:/Data/Talk To Us Image Right"
+          s:id="{EA3631D1-CA63-485E-9220-16C037F53AD4}"
+          s:par="HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BA61567F6-0B96-4B05-9B87-8C136006FD59%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -45,11 +54,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "198b78a9-8f74-4d91-a63a-e34ecb8e54d3"
+      Value: "142a6276-f122-4861-9ead-4555d8ead3ee"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240212T085522Z
+      Value: 20240222T191350Z
