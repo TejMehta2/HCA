@@ -77,7 +77,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
 
   return (
     <>
-      <Button size="large" theme="outline">
+      <Button size="large" variation="outline">
         <button onClick={() => dialogRef?.current?.showModal()}>
           {props.fields.data.item?.cTALink.jsonValue.value.text && (
             <>

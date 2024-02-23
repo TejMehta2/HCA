@@ -64,14 +64,14 @@ export const Default = (props: StepProps): JSX.Element => {
             <div className="field-promolink">
               <h2>Links from the specifc component template</h2>
               <h3>Back if coming from advanced search path...</h3>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.BackFromAdvSearchLink}
                   title={props.fields.BackFromAdvSearchLink.value.text}
                 ></JssLink>
               </Button>
               <h3>Back if coming from find consultant path...</h3>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.BackFromFindByConsultantLink}
                   title={props.fields.BackFromFindByConsultantLink.value.text}
@@ -80,19 +80,19 @@ export const Default = (props: StepProps): JSX.Element => {
             </div>
             <div className="field-promolink">
               <h2>Links from the base template</h2>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.NextLink}
                   title={props.fields.NextLink.value.text}
                 ></JssLink>
               </Button>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.BackLink}
                   title={props.fields.BackLink.value.text}
                 ></JssLink>
               </Button>
-              <Button size={'small'} theme={'outline'}>
+              <Button size={'small'} variation={'outline'}>
                 <JssLink
                   field={props.fields.StartLink}
                   title={props.fields.StartLink.value.text}

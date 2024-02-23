@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-type TextButtonThemeUnionTypes = 'dark' | 'light';
+type TextButtonVariationUnionTypes = 'dark' | 'light';
 export interface TextButtonProps {
-  theme?: TextButtonThemeUnionTypes;
+  theme?: TextButtonVariationUnionTypes;
   children?: ReactNode | JSX.Element;
 }

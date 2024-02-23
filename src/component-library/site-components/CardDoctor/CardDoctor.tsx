@@ -12,7 +12,7 @@ const CardDoctor = (props: CardDoctorProps): JSX.Element => {
       <div className={styles.title}>{title}</div>
       <Text variation="subheading-1">{department}</Text>
       <div className={styles.cta}>
-        <Button size={'small'} theme={'full'}>
+        <Button size={'small'} variation={'full'}>
           {cta}
         </Button>
       </div>

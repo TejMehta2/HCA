@@ -10,7 +10,7 @@ const BlogFilterList = (props: BlogFilterListProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       {filters.map((filter, index) => (
-        <Button key={index} size="small" theme="full-light-blue">
+        <Button key={index} size="small" variation="full-light-blue">
           <button onClick={() => clearFilters(index)}>
             <span>{filter}</span>
             <Icons iconName="iconCrossSmall" />

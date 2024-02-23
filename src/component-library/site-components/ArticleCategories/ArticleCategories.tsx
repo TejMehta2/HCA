@@ -13,7 +13,7 @@ const ArticleCategories = (props: ArticleCategoriesProps): JSX.Element => {
           {title}
           <div className={styles.categories}>
             {categories.map((category, index) => (
-              <Button key={index} size="large" theme="outline">
+              <Button key={index} size="large" variation="outline">
                 {category}
               </Button>
             ))}

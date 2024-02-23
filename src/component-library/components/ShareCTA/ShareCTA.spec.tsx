@@ -34,7 +34,7 @@ const mockProps: ShareCTAProps = {
   theme: 'F-HCA-White',
 
   children: (
-    <Button size="large" theme="square-outline">
+    <Button size="large" variation="square-outline">
       <a
         href={`mailto:?subject=${encodeURI('Hip Surgery')}&body=${encodeURI(
           'Quis laboris proident sint amet id cillum do dolor in tempor est https://hca-digital-dev-hca-main.hcatest.co.uk/'

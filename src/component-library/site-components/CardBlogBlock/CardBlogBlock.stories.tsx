@@ -92,7 +92,7 @@ export const Default: StoryObj<typeof CardBlogBlock> = {
       </>
     ),
     cta: (
-      <Button size={'large'} theme={'full'}>
+      <Button size={'large'} variation={'full'}>
         <a href="#">
           Visit our <strong>blog</strong>
         </a>

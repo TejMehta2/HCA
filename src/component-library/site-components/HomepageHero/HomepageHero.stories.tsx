@@ -41,14 +41,14 @@ export const Default: StoryObj<typeof HomepageHero> = {
     ),
     ctas: (
       <>
-        <Button size="large" theme="full" contentVariation="full-width">
+        <Button size="large" variation="full" contentVariation="full-width">
           <a href="#">
             <span>
               Book an <strong>appointment</strong>
             </span>
           </a>
         </Button>
-        <Button size="large" theme="outline" contentVariation="full-width">
+        <Button size="large" variation="outline" contentVariation="full-width">
           <a href="#">
             <Icons iconName="iconPhone" />
             <span>

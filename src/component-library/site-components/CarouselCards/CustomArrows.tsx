@@ -8,7 +8,7 @@ export const PrevArrow = (props: CustomArrowProps) => {
   const { className, onClick } = props;
   return (
     <div className={className}>
-      <Button size="small" theme="standard-carousel-dark">
+      <Button size="small" variation="standard-carousel-dark">
         <button onClick={onClick} disabled={onClick === null && true}>
           <Icons iconName="iconArrowLeft" />
           <span className="sr-only">Previous Slide</span>
@@ -23,7 +23,7 @@ export const NextArrow = (props: CustomArrowProps) => {
   const { className, onClick } = props;
   return (
     <div className={className}>
-      <Button size="small" theme="standard-carousel-dark">
+      <Button size="small" variation="standard-carousel-dark">
         <button onClick={onClick} disabled={onClick === null && true}>
           <Icons iconName="iconArrowRight" />
           <span className="sr-only">Next Slide</span>
