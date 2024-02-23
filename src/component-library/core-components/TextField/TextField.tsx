@@ -21,7 +21,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
 
-    if (!pattern) return;
+    if (!pattern || !required) return;
     setHasError(!!!event.target.value.match(pattern));
   };
 

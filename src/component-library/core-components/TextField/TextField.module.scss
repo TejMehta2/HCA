@@ -20,7 +20,7 @@
     position: relative;
 
     input {
-      color: var(--text);
+      color: inherit;
       padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
       height: $spacing-9;
       border: 1px solid #626f82;
