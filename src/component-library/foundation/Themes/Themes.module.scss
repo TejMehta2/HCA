@@ -5,9 +5,10 @@
 // Themes by name from design library to match backend
 
 /* stylelint-disable value-keyword-case, selector-class-pattern, scss/dollar-variable-pattern */
-$themeOptions: D-HCA-Teal, F-HCA-Fern, I-HCA-Goldenrod, D-HCA-Light-Orange,
-  B-HCA-Navy-Blue, A-HCA-White, G-HCA-Green-40, K-HCA-Fern-20,
-  I-HCA-Turquoise-20, J-HCA-Turquoise-10, L-HCA-Teal-5, G-HCA-Orange;
+$themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
+  E-HCA-Cerulean, F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
+  J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
+  N-HCA-Denim-5;
 
 @each $theme in $themeOptions {
   .#{$theme}:is([data-theme='#{$theme}'])
@@ -72,31 +73,35 @@ $themeOptions: D-HCA-Teal, F-HCA-Fern, I-HCA-Goldenrod, D-HCA-Light-Orange,
   @include apply-theme-n-denim-5;
 }
 
-.master-D-HCA-Teal,
-.master-F-HCA-Fern,
-.master-I-HCA-Goldenrod,
-.master-D-HCA-Light-Orange,
-.master-B-HCA-Navy-Blue,
 .master-A-HCA-White,
-.master-G-HCA-Green-40,
+.master-B-HCA-Navy-Blue,
+.master-C-HCA-Denim,
+.master-D-HCA-Teal,
+.master-E-HCA-Cerulean,
+.master-F-HCA-Fern,
+.master-G-HCA-Orange,
+.master-H-HCA-Tangerine,
+.master-I-HCA-Goldenrod,
+.master-J-HCA-Tangerine-20,
 .master-K-HCA-Fern-20,
-.master-I-HCA-Turquoise-20,
-.master-J-HCA-Turquoise-10,
 .master-L-HCA-Teal-5,
-.master-G-HCA-Orange {
+.master-M-HCA-Goldenrod-20,
+.master-N-HCA-Denim-5 {
   & > div {
-    & > .D-HCA-Teal,
-    & > .F-HCA-Fern,
-    & > .I-HCA-Goldenrod,
-    & > .D-HCA-Light-Orange,
-    & > .B-HCA-Navy-Blue,
     & > .A-HCA-White,
-    & > .G-HCA-Green-40,
+    & > .B-HCA-Navy-Blue,
+    & > .C-HCA-Denim,
+    & > .D-HCA-Teal,
+    & > .E-HCA-Cerulean,
+    & > .F-HCA-Fern,
+    & > .G-HCA-Orange,
+    & > .H-HCA-Tangerine,
+    & > .I-HCA-Goldenrod,
+    & > .J-HCA-Tangerine-20,
     & > .K-HCA-Fern-20,
-    & > .I-HCA-Turquoise-20,
-    & > .J-HCA-Turquoise-10,
     & > .L-HCA-Teal-5,
-    & > .G-HCA-Orange {
+    & > .M-HCA-Goldenrod-20,
+    & > .N-HCA-Denim-5 {
       --background: #{transparent};
       --text: #{unset};
     }
@@ -106,17 +111,19 @@ $themeOptions: D-HCA-Teal, F-HCA-Fern, I-HCA-Goldenrod, D-HCA-Light-Orange,
 /* prettier-ignore */
 :export {
   mode: {
-    D-HCA-Teal: dark;
-    F-HCA-Fern: dark;
-    I-HCA-Goldenrod: dark;
-    D-HCA-Light-Orange: dark;
-    B-HCA-Navy-Blue: light;
     A-HCA-White: dark;
-    G-HCA-Green-40: dark;
-    K-HCA-Fern-20: dark;
-    I-HCA-Turquoise-20: dark;
-    J-HCA-Turquoise-10: dark;
-    L-HCA-Teal-5: dark;
+    B-HCA-Navy-Blue: light;
+    C-HCA-Denim: light;
+    D-HCA-Teal: dark;
+    E-HCA-Cerulean: dark;
+    F-HCA-Fern: dark;
     G-HCA-Orange: dark;
+    H-HCA-Tangerine: dark;
+    I-HCA-Goldenrod: dark;
+    J-HCA-Tangerine-20: dark;
+    K-HCA-Fern-20: dark;
+    L-HCA-Teal-5: dark;
+    M-HCA-Goldenrod-20: dark;
+    N-HCA-Denim-5: dark;
   }
 }

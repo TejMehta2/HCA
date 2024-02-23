@@ -12,7 +12,7 @@
   @include apply-cta-full-light;
   @include apply-cta-social-light;
   @include apply-cta-outline-light;
-  @include apply-tag-secondary-green;
+  @include apply-tag-secondary-teal-20;
   @include apply-cqc-dark;
   @include apply-text-buttons-light;
   @include apply-text-link-light;
@@ -28,7 +28,7 @@
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
   @include apply-cta-outline-dark;
-  @include apply-tag-secondary-dark-blue;
+  @include apply-tag-secondary-navy-blue-80;
   @include apply-cqc-light;
   @include apply-text-buttons-dark;
   @include apply-text-link-dark;
@@ -42,12 +42,12 @@
   --doctify-empty-star: #{$navy-blue-30};
   --doctify-full-star: #{$orange-100};
   --cqc-outline: #{$navy-blue-30};
-  --quote-tag-background: #{$tangerine-70};
-  --quote-tag-background-hover: #{$tangerine-70};
+  --quote-tag-background: #{$orange-60};
+  --quote-tag-background-hover: $orange-80;
 
-  @include apply-tag-orange;
-  @include apply-tabs-orange;
-  @include apply-pagination-orange;
+  @include apply-tag-orange-40;
+  @include apply-tabs(#{$orange-60});
+  @include apply-pagination-orange-60;
 }
 
 @mixin apply-theme-b-navy {
@@ -60,9 +60,9 @@
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-60};
 
-  @include apply-tag-dark-blue;
-  @include apply-tabs-blue;
-  @include apply-pagination-grey;
+  @include apply-tag-navy-blue-70;
+  @include apply-tabs($navy-blue-80, $white);
+  @include apply-pagination-navy-blue-70;
 }
 
 @mixin apply-theme-c-denim {
@@ -75,10 +75,10 @@
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
 
-  //todo
-  @include apply-tag-dark-blue;
-  @include apply-tabs-blue;
-  @include apply-pagination-grey;
+  @include apply-tag-denim-40;
+  @include apply-tabs($denim-40, $white);
+  @include apply-pagination-denim-40-light;
+  @include apply-tag-secondary-denim-10;
 }
 
 @mixin apply-theme-d-teal {
@@ -90,9 +90,9 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$teal-10};
   --quote-tag-background-hover: #{$teal-20};
-  @include apply-tag-blue;
-  @include apply-tabs-white;
-  @include apply-pagination-turquoise-10;
+  @include apply-tag-teal-20;
+  @include apply-tabs($teal-10);
+  @include apply-pagination-teal-10;
 }
 
 @mixin apply-theme-e-cerulean {
@@ -106,10 +106,9 @@
   --quote-tag-background: #{$denim-5};
   --quote-tag-background-hover: #{$denim-20};
 
-  //todo
-  @include apply-tag-orange;
-  @include apply-tabs-orange;
-  @include apply-pagination-orange;
+  @include apply-tag-denim-20;
+  @include apply-tabs($denim-5);
+  @include apply-pagination-denim-10;
 }
 
 @mixin apply-theme-f-fern {
@@ -121,9 +120,9 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$fern-20};
   --quote-tag-background-hover: #{$fern-40};
-  @include apply-tag-green;
-  @include apply-tabs-white;
-  @include apply-pagination-green-20;
+  @include apply-tag-fern-60;
+  @include apply-tabs($fern-20);
+  @include apply-pagination-fern-20;
 }
 
 @mixin apply-theme-g-orange {
@@ -136,9 +135,9 @@
   --quote-tag-background: #{$orange-40};
   --quote-tag-background-hover: #{$orange-20};
 
-  @include apply-tag-coral;
-  @include apply-tabs-white;
-  @include apply-pagination-coral-5;
+  @include apply-tag-orange-60;
+  @include apply-tabs($orange-20);
+  @include apply-pagination-orange-20;
 }
 
 @mixin apply-theme-h-tangerine {
@@ -149,12 +148,11 @@
   --doctify-empty-star: #{$white};
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$tangerine-30};
-  --quote-tag-background-hover: #{$goldenrod-40};
+  --quote-tag-background-hover: #{$goldenrod-100};
 
-  //todo
-  @include apply-tag-coral;
-  @include apply-tabs-white;
-  @include apply-pagination-coral-5;
+  @include apply-tag-tangerine-70;
+  @include apply-tabs($tangerine-30);
+  @include apply-pagination-tangerine-30;
 }
 
 @mixin apply-theme-i-goldenrod {
@@ -167,10 +165,9 @@
   --quote-tag-background: #{$goldenrod-20};
   --quote-tag-background-hover: #{$goldenrod-60};
 
-  //todo
-  @include apply-tag-orange;
-  @include apply-tabs-orange;
-  @include apply-pagination-white;
+  @include apply-tag-goldenrod;
+  @include apply-tabs($goldenrod-20);
+  @include apply-pagination-goldenrod-20;
 }
 
 @mixin apply-theme-j-tangerine-20 {
@@ -183,10 +180,9 @@
   --quote-tag-background: #{$orange-100};
   --quote-tag-background-hover: #{$orange-60};
 
-  //todo
-  @include apply-tag-coral;
-  @include apply-tabs-white;
-  @include apply-pagination-coral-5;
+  @include apply-tag-orange-40;
+  @include apply-tabs($orange-100);
+  @include apply-pagination-orange;
 }
 
 @mixin apply-theme-k-fern-20 {
@@ -199,9 +195,9 @@
   --quote-tag-background: #{$fern-60};
   --quote-tag-background-hover: #{$fern-100};
 
-  @include apply-tag-light-blue;
-  @include apply-tabs-green;
-  @include apply-pagination-green;
+  @include apply-tag-fern-20;
+  @include apply-tabs($fern-60);
+  @include apply-pagination-fern;
 }
 
 @mixin apply-theme-l-teal-5 {
@@ -214,9 +210,9 @@
   --quote-tag-background: #{$teal-40};
   --quote-tag-background-hover: #{$teal-80};
 
-  @include apply-tag-light-blue;
-  @include apply-tabs-turquoise;
-  @include apply-pagination-turquoise;
+  @include apply-tag-teal-10;
+  @include apply-tabs($teal-40);
+  @include apply-pagination-teal-40;
 }
 
 @mixin apply-theme-m-goldenrod-20 {
@@ -229,9 +225,9 @@
   --quote-tag-background: #{$tangerine-100};
   --quote-tag-background-hover: #{$orange-100};
 
-  @include apply-tag-light-blue;
-  @include apply-tabs-turquoise;
-  @include apply-pagination-turquoise;
+  @include apply-tag-goldenrod;
+  @include apply-tabs($tangerine-100);
+  @include apply-pagination-tangerine;
 }
 
 @mixin apply-theme-n-denim-5 {
@@ -241,14 +237,12 @@
   --card-background: #{$white};
   --doctify-empty-star: #{$navy-blue-50};
   --doctify-full-star: #{$navy-blue-100};
-  --cqc-outline: #{$denim-100};
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
 
-  //todo
-  @include apply-tag-orange;
-  @include apply-tabs-orange;
-  @include apply-pagination-orange;
+  @include apply-tag-denim-10;
+  @include apply-tabs($denim-40);
+  @include apply-pagination-denim-40;
 }
 
 @mixin theme-mode($light, $dark) {

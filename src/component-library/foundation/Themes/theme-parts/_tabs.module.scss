@@ -1,27 +1,7 @@
 @use '../../Colours/colours.module' as *;
 
-@mixin apply-tabs-white {
-  --tab-text: #{$navy-blue-100};
-  --tab-active-text: #{$navy-blue-100};
-  --tab-background: #{$white};
-}
-@mixin apply-tabs-orange {
-  --tab-text: #{$navy-blue-100};
-  --tab-active-text: #{$navy-blue-100};
-  --tab-background: #{$tangerine-100};
-}
-@mixin apply-tabs-blue {
-  --tab-text: #{$white};
-  --tab-active-text: #{$navy-blue-100};
-  --tab-background: #{$teal-10};
-}
-@mixin apply-tabs-turquoise {
-  --tab-text: #{$navy-blue-100};
-  --tab-active-text: #{$navy-blue-100};
-  --tab-background: #{$teal-100};
-}
-@mixin apply-tabs-green {
-  --tab-text: #{$navy-blue-100};
-  --tab-active-text: #{$navy-blue-100};
-  --tab-background: #{$fern-100};
+@mixin apply-tabs($background, $text: $navy-blue-100) {
+  --tab-text: #{$text};
+  --tab-active-text: #{$text};
+  --tab-background: #{$background};
 }

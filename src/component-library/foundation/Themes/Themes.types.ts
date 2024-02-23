@@ -1,17 +1,6 @@
 import { ReactNode } from 'react';
 
 export type Theme =
-  | 'D-HCA-Teal'
-  | 'F-HCA-Fern'
-  | 'I-HCA-Goldenrod'
-  | 'D-HCA-Light-Orange'
-  | 'B-HCA-Navy-Blue'
-  | 'A-HCA-White'
-  | 'G-HCA-Green-40'
-  | 'I-HCA-Turquoise-20'
-  | 'J-HCA-Turquoise-10'
-  | 'L-HCA-Teal-5'
-  | 'G-HCA-Orange'
   | 'A-HCA-White'
   | 'B-HCA-Navy-Blue'
   | 'C-HCA-Denim'
