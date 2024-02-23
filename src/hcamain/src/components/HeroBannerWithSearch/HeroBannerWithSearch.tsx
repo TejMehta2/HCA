@@ -79,7 +79,9 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       }
       search={
         <SearchButton>
-          <JssText field={props.fields.data.item?.searchPlaceholder.jsonValue} />
+          <JssText
+            field={props.fields.data.item?.searchPlaceholder.jsonValue}
+          />
         </SearchButton>
       }
       ctaTitle={
@@ -99,7 +101,9 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           />
         </>
       }
-      image={<JssImage field={props.fields.data.contextItem.image?.jsonValue} />}
+      image={
+        <JssImage field={props.fields.data.contextItem.image?.jsonValue} />
+      }
     />
   );
 };
