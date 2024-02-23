@@ -14,7 +14,7 @@ import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 
-const MainNavigationfaultComponent = (
+const MainNavigationDefaultComponent = (
   props: MainNavigationProps
 ): JSX.Element => (
   <div className={`component ${props.params.styles}`}>
@@ -25,7 +25,7 @@ const MainNavigationfaultComponent = (
 );
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
-  if (!props.fields) return <MainNavigationfaultComponent {...props} />;
+  if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
     props.fields.data.item.navigationTabs?.targetItems.map((tab) => ({
       heading: tab.tabTitle.value,
@@ -38,20 +38,23 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           <JssDate field={child.date?.jsonValue} />
         ) : undefined,
         tag: <JssText field={child.tag} />,
-        links: child.children?.results.map((result) => (
-          <TextLink variation={'body-large'}>
+        links: child.children?.results.map((result, index) => (
+          <TextLink key={index} variation={'body-large'}>
             <JssLink field={result.link.jsonValue} />
           </TextLink>
         )),
         cta: <JssLink field={child.cta.jsonValue} />,
-        mobileCta: child.cta.jsonValue.value.href ? (
-          <JssLink field={child.cta.jsonValue} />
-        ) : undefined,
+        mobileCta:
+          child.cta.jsonValue.value.href && child.mobileCtaText ? (
+            <JssLink field={child.cta.jsonValue}>
+              <JssText field={child.mobileCtaText} />
+            </JssLink>
+          ) : undefined,
       })),
-      mobileCta: tab.mobileTabCta.jsonValue.value.href ? (
+      mobileTabCta: tab.mobileTabCta.jsonValue.value.href ? (
         <JssLink field={tab.mobileTabCta.jsonValue} />
       ) : undefined,
-      cta: tab.tabCta.jsonValue.value.href ? (
+      tabCta: tab.tabCta.jsonValue.value.href ? (
         <JssLink field={tab.tabCta.jsonValue}>
           <JssText field={tab.tabTitle} />
         </JssLink>
@@ -64,8 +67,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
     left: (
       <>
         {props.fields.data.item.primaryComplementaryLinksFolder.targetItem.links.targetItems.map(
-          (link) => (
-            <TextLink variation={'body-medium'}>
+          (link, index) => (
+            <TextLink key={index} variation={'body-medium'}>
               <JssLink field={link.link.jsonValue} />
             </TextLink>
           )
@@ -75,8 +78,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
     right: (
       <>
         {props.fields.data.item.secondaryComplementaryLinksFolder.targetItem.links.targetItems.map(
-          (link) => (
-            <TextLink variation={'body-medium'}>
+          (link, index) => (
+            <TextLink key={index} variation={'body-medium'}>
               <JssLink field={link.link.jsonValue} />
             </TextLink>
           )

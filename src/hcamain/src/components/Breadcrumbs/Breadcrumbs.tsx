@@ -6,7 +6,10 @@ type HCAIconFields = {
 };
 
 type AncestorsFields = {
-  title: { value: string };
+  navigationTitle: { value: string };
+  abstractTitle: { value: string };
+  displayName: string;
+  name: string;
   url: { path: string };
 };
 
@@ -18,7 +21,10 @@ interface Fields {
       };
     };
     contextItem: {
-      title: { value: string };
+      navigationTitle: { value: string };
+      abstractTitle: { value: string };
+      displayName: string;
+      name: string;
       url: { path: string };
       ancestors: AncestorsFields[];
     };
@@ -55,7 +61,14 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
           }}
         ></span>
       )}
-      <Text field={props.fields.data.contextItem.title} />
+      <span>Name to choose:</span>
+      <Text field={props.fields.data.contextItem.navigationTitle} />
+      <br />
+      <Text field={props.fields.data.contextItem.abstractTitle} />
+      <br />
+      <span>{props.fields.data.contextItem.displayName}</span>
+      <br />
+      <span>{props.fields.data.contextItem.name}</span>
       <br />
       <a href={props.fields.data.contextItem.url.path}>
         {props.fields.data.contextItem.url.path}
@@ -64,7 +77,13 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
       <ul>
         {props.fields.data.contextItem.ancestors.map((ancestor, index) => (
           <li key={index}>
-            <Text field={ancestor.title} />
+            <Text field={ancestor.navigationTitle} />
+            <br />
+            <Text field={ancestor.abstractTitle} />
+            <br />
+            <span>{ancestor.displayName}</span>
+            <br />
+            <span>{ancestor.name}</span>
             <br />
             <a href={ancestor.url.path}>{ancestor.url.path}</a>
             <br />
