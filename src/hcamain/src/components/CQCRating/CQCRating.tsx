@@ -34,14 +34,14 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
         logo={{
           dark: (
             <JssImage
-              field={props.fields.Status.fields.CQCLogoLight.fields.Logo}
+              field={props.fields.Status?.fields.CQCLogoLight.fields.Logo}
               width="120"
               height="37"
             />
           ),
           light: (
             <JssImage
-              field={props.fields.Status.fields.CQCLogoDark.fields.Logo}
+              field={props.fields.Status?.fields.CQCLogoDark.fields.Logo}
               width="120"
               height="37"
             />
