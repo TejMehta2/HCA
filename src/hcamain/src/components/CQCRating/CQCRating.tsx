@@ -21,8 +21,7 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
     return <CQCRatingDefaultComponent {...props} />;
   }
   const { hideRating = false, length = 'long' } = props;
-  const defaultRating = props.fields.Status
-    .displayName as CQCBlockProps['rating'];
+  const defaultRating = props.fields.Status?.displayName as CQCBlockProps['rating'];
   return (
     <div className={`component ${props.params?.styles}`} component-name="cqc">
       <CQCBlock
