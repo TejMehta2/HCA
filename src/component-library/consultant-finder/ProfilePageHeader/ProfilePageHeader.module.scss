@@ -1,0 +1,67 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  margin: $spacing-7 0;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+   
+  .image {
+    height: px-to-rem(104);
+    width: px-to-rem(104);
+    max-width: px-to-rem(104);
+    max-height: px-to-rem(104);
+
+    @include media(screen-l) {
+      height: px-to-rem(170);
+      width: px-to-rem(170);
+      max-width: px-to-rem(170);
+      max-height: px-to-rem(170);
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .top-specialty {
+    margin: $spacing-3 0;
+  }
+
+  .details {
+    margin-left: $spacing-4;
+
+    @include media(screen-l) {
+      margin-left: $spacing-7;
+    }
+  }
+
+  .info-desktop {
+    display: none;
+
+    @include media(screen-l) {
+      display: block;
+    }
+  }
+
+  .info-mobile {
+    display: block;
+    margin: $spacing-5 0;
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+
+}

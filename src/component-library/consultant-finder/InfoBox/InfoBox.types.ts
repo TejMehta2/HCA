@@ -6,5 +6,5 @@ export interface InfoBoxProps {
   shortText?: ReactNode | JSX.Element | string;
   longTextTitle: string;
   longText?: ReactNode | JSX.Element | string;
-  backgroundColour: 'green' | 'orange' | 'turquoise';
+  backgroundColour: 'green' | 'orange' | 'turquoise' | 'beige';
 }

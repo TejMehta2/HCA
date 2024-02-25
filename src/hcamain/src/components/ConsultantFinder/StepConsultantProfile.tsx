@@ -39,6 +39,7 @@ import SideWrapper from '@component-library/consultant-finder/SideWrapper/SideWr
 import MainWrapper from '@component-library/consultant-finder/MainWrapper/MainWrapper';
 import Tabs from '@component-library/core-components/Tabs/Tabs';
 import ProfilePageSection from '@component-library/consultant-finder/ProfilePageSection/ProfilePageSection';
+import ProfilePageHeader from '@component-library/consultant-finder/ProfilePageHeader/ProfilePageHeader';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -119,11 +120,23 @@ export const Default = (props: StepProps): JSX.Element => {
     serverSideData?.IsLiveDiaryConsultant
   );
   const { message, setMessage } = useContext(ConsultantFinderContext);
+  const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
+    (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+  );
 
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
+        <div>Slug: {serverSideData?.Slug}</div>
+        <div>
+          Error with data?:{' '}
+          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
+        </div>
+        <div>
+          Is live diaries consultant?:{' '}
+          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
+        </div>
         {/* top section */}
         <div>
           <Breadcrumbs>
@@ -152,6 +165,12 @@ export const Default = (props: StepProps): JSX.Element => {
         </div>
         <ConsultantFinderProfileWrapper>
           <MainWrapper>
+            <ProfilePageHeader
+              image={serverSideData?.ProfileJson?.images?.logo}
+              name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
+              topSpecialty={topSpecialty[0].name}
+              infoBoxText={'some text'}
+            ></ProfilePageHeader>
             <div>
               <Tabs
                 callback={() => {}}
