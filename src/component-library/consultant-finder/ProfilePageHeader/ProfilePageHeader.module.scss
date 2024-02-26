@@ -4,11 +4,8 @@
 .profile-header {
   display: flex;
   flex-direction: column;
-  margin: $spacing-7 0;
-
-  @include media(screen-l) {
-    flex-direction: row;
-  }
+  margin: $spacing-7 0 0 0;
+  width: 100%;
 
   &-container {
     display: flex;
@@ -53,6 +50,7 @@
 
     @include media(screen-l) {
       display: block;
+      width: fit-content;
     }
   }
 
@@ -61,6 +59,19 @@
     margin: $spacing-5 0;
     @include media(screen-l) {
       display: none;
+    }
+  }
+
+  .tabs {
+    display: none;
+    @include media(screen-l) {
+      display: block;
+      margin: $spacing-7 0 0  0;
+      border-bottom: 1px solid #ADB4BF;
+      padding: 0 $spacing-14 $spacing-2 ;
+      width: calc(100% + (2 *  $spacing-14));
+      margin-left: calc(-1 *  $spacing-14);
+      margin-right: calc(-1 *  $spacing-14);
     }
   }
 

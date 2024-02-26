@@ -3,6 +3,7 @@
 
 .side-wrapper {
   display: none;
+  margin-right: $spacing-14;
 
   @include media(screen-l) {
     display: block;

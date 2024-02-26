@@ -23,28 +23,29 @@ const ProfilePageHeader = (props: ProfilePageHeaderProps): JSX.Element => {
               </Text>
             </div>
           </div>
-          <div className={styles['info-desktop']}>
-            <InfoBox
-              backgroundColour="beige"
-              icon={<Icons iconName="iconStethoscope" />}
-              isShortInfo={true}
-              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle=""
-              shortText="Next initial appointment on Fri, Oct 28"
-            />
-          </div>
+          {props.overallExperienceYears > 0 && (
+            <div className={styles['info-desktop']}>
+              <InfoBox
+                backgroundColour="beige"
+                icon={<Icons iconName="iconStethoscope" />}
+                isShortInfo={true}
+                shortText={`${props.overallExperienceYears} ${props.overallExperienceYearsText}`}
+              />
+            </div>
+          )}
         </div>
       </div>
-      <div className={styles['info-mobile']}>
-        <InfoBox
-          backgroundColour="orange"
-          icon={null}
-          isShortInfo={true}
-          longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-          longTextTitle=""
-          shortText="Next initial appointment on Fri, Oct 28"
-        />
-      </div>
+      {props.overallExperienceYears > 0 && (
+        <div className={styles['info-mobile']}>
+          <InfoBox
+            backgroundColour="beige"
+            icon={<Icons iconName="iconStethoscope" />}
+            isShortInfo={true}
+            shortText={`${props.overallExperienceYears} ${props.overallExperienceYearsText}`}
+          />
+        </div>
+      )}
+      <div className={styles.tabs}>{props.children}</div>
     </div>
   );
 };

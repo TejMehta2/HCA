@@ -9,6 +9,8 @@
   padding: $spacing-6;
   text-align: center;
   position: static;
+  display: block;
+  margin: auto;
 
   @include media(screen-l) {
     position: sticky;

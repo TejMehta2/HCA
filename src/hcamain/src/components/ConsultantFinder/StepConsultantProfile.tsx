@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Consultant profile component
 // Place on page in wildcarded folder e.g. \XMCloud\HCA-Eqtr\HCA-XMCloud\src\hcamain\src\pages\finder\StepConsultantProfile
 // alongside the [...path].tsx page definition,
@@ -40,6 +41,11 @@ import MainWrapper from '@component-library/consultant-finder/MainWrapper/MainWr
 import Tabs from '@component-library/core-components/Tabs/Tabs';
 import ProfilePageSection from '@component-library/consultant-finder/ProfilePageSection/ProfilePageSection';
 import ProfilePageHeader from '@component-library/consultant-finder/ProfilePageHeader/ProfilePageHeader';
+import About from '@component-library/consultant-finder/About/About';
+import DataComponentSimple from '@component-library/consultant-finder/DataComponentSimple/DataComponentSimple';
+import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
+import TreatmentsConditions from '@component-library/consultant-finder/TreatmentsConditions/TreatmentsConditions';
+import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/ConsultantFees';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -124,6 +130,73 @@ export const Default = (props: StepProps): JSX.Element => {
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
+  // calculate years of experience
+  const yearsExperience = (yearsExp: string) => {
+    // Check if yearsExp is a string
+    if (typeof yearsExp !== 'string') {
+      // Handle the case where yearsExp is not a string
+      return 0; // Or whatever default value you want to return
+    }
+
+    const reversedDate = yearsExp.split('-').reverse().join('-');
+    const yearsNew =
+      new Date(
+        new Date().getTime() - new Date(reversedDate).getTime()
+      ).getFullYear() - 1970;
+    return yearsNew;
+  };
+
+  // languages
+  const languagesList: string[] = [];
+  serverSideData?.ProfileJson?.languages.forEach((item: any) => {
+    languagesList.push(capitalizeFirstLetter(item.name));
+  });
+  const languagesString = languagesList.toString().split(',').join(', ');
+
+  // gmcNumber
+  const gmcNumber = serverSideData?.ProfileJson?.registrationBodies.filter(
+    (item: any) => item.name === 'General Medical Council'
+  )[0]?.registrationNumber;
+
+  // subspecialties
+  const subSpecialtiesData = serverSideData?.ProfileJson?.keywords
+    .filter(
+      (item: any) =>
+        item.keywordType === 'specialty' &&
+        item.parentName !== 'ABSTRACT_TOP_LEVEL_KEYWORD'
+    )
+    .map((item: any) => item.name)
+    .toString()
+    .split(',')
+    .join(', ');
+
+  // conditions & treatments
+  const treatments = serverSideData?.ProfileJson?.keywords.filter(
+    (item: any) => item.keywordType === 'procedure'
+  );
+  const conditions = serverSideData?.ProfileJson?.keywords.filter(
+    (item: any) => item.keywordType === 'condition'
+  );
+
+  // fees
+  // check object has properties or it is defined and not null
+  const isObjectDefined = (Obj: object) => {
+    if (
+      Obj === null ||
+      typeof Obj !== 'object' ||
+      Object.prototype.toString.call(Obj) === '[object Array]'
+    ) {
+      return false;
+    } else {
+      for (const prop in Obj) {
+        if (Obj.hasOwnProperty(prop)) {
+          return true;
+        }
+      }
+      return JSON.stringify(Obj) !== JSON.stringify({});
+    }
+  };
+
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
@@ -168,245 +241,134 @@ export const Default = (props: StepProps): JSX.Element => {
             <ProfilePageHeader
               image={serverSideData?.ProfileJson?.images?.logo}
               name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
-              topSpecialty={topSpecialty[0].name}
+              topSpecialty={topSpecialty[0]?.name || ''}
               infoBoxText={'some text'}
-            ></ProfilePageHeader>
-            <div>
+              overallExperienceYears={
+                yearsExperience(
+                  serverSideData?.ProfileJson?.yearsOfExperience
+                ) || 0
+              }
+              overallExperienceYearsText={'years of experience'}
+            >
               <Tabs
                 callback={() => {}}
                 tabs={[
                   {
-                    icon: 'iconOneOff',
-                    label: 'One-off',
+                    icon: 'iconBook',
+                    label: 'About',
                   },
                   {
-                    icon: 'iconFlexible',
-                    label: 'Flexi',
+                    icon: 'iconPin',
+                    label: 'Locations',
                   },
                   {
-                    icon: 'iconCalendar',
-                    label: 'Annual',
+                    icon: 'iconCreditCard',
+                    label: 'Fees',
+                  },
+                  {
+                    icon: 'iconComment',
+                    label: 'Reviews',
                   },
                 ]}
               />
-            </div>
-            <ProfilePageSection>Test</ProfilePageSection>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>{' '}
-            <button onClick={() => setMessage('testing new')}>
-              Change message
-            </button>
-            <div>Slug: {serverSideData?.Slug}</div>
-            <div>
-              Error with data?:{' '}
-              {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-            </div>
-            <div>
-              Is live diaries consultant?:{' '}
-              {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-            </div>
+            </ProfilePageHeader>
+            <ProfilePageSection>
+              <About
+                title={'About'}
+                description={serverSideData?.ProfileJson?.about}
+              >
+                <SidePanel>
+                  <Reviews
+                    doctifyLogo={
+                      <JssImage field={props.fields.DoctifyLogoImage} />
+                    }
+                    doctifyText="Reviewed By"
+                    hasDoctifyBranding={true}
+                    isConsultantProfileReviews={true}
+                    reviewsCount={
+                      serverSideData?.ProfileJson?.review?.overallExperience
+                    }
+                    reviewsText="Patients"
+                    reviewsTotal={
+                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                    }
+                    noReviewsMsg={
+                      'This consultant does not have any reviews at the moment.'
+                    }
+                    titleText="PATIENTS REVIEWS"
+                  />
+                  <InfoBox
+                    backgroundColour="green"
+                    icon={null}
+                    isShortInfo
+                    longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                    longTextTitle="TITLE"
+                    shortText="Next initial appointment on Fri, Oct 28"
+                  />
+                  <InfoBox
+                    backgroundColour="orange"
+                    icon={null}
+                    isShortInfo
+                    longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                    longTextTitle="TITLE"
+                    shortText="Next initial appointment on Fri, Oct 28"
+                  />
+                </SidePanel>
+              </About>
+            </ProfilePageSection>
+            {subSpecialtiesData.length > 0 && (
+              <ProfilePageSection>
+                <DataComponentSimple
+                  title={'Subspecialities'}
+                  data={subSpecialtiesData}
+                ></DataComponentSimple>
+              </ProfilePageSection>
+            )}
+            <ProfilePageSection>
+              <TreatmentsConditions
+                treatmentsLabel={'ALL PROCEDURES'}
+                conditionsLabel={'ALL CONDITIONS'}
+                treatmentsList={treatments}
+                conditionsList={conditions}
+                noTreatmentsMsg={'No treatments'}
+                noConditionsMsg={'No conditions'}
+              ></TreatmentsConditions>
+            </ProfilePageSection>
+            <ProfilePageSection>
+              <DataComponentSimple
+                title={'Languages'}
+                data={languagesString}
+              ></DataComponentSimple>
+            </ProfilePageSection>
+            {/* No fees check */}
+            <ProfilePageSection>
+              <ConsultantFees
+                title={'Consultation Fees'}
+                newAppointmentFees={
+                  serverSideData?.ProfileJson?.consultationFees?.new || null
+                }
+                newAppointmentFeesLabel={'New appointment'}
+                followUpAppointmentFees={
+                  serverSideData?.ProfileJson?.consultationFees?.followUp ||
+                  null
+                }
+                followUpAppointmentFeesLabel={'Follow-up appointment'}
+              ></ConsultantFees>
+            </ProfilePageSection>
+            <ProfilePageSection>
+              <DataComponentSimple
+                title={'qualifications'}
+                data={serverSideData?.ProfileJson?.suffix}
+              ></DataComponentSimple>
+            </ProfilePageSection>
+            {serverSideData?.ProfileJson?.registrationBodies.length > 0 && (
+              <ProfilePageSection>
+                <DataComponentSimple
+                  title={'Registered with'}
+                  data={`General Medical Council: ${gmcNumber}`}
+                ></DataComponentSimple>
+              </ProfilePageSection>
+            )}
           </MainWrapper>
           <SideWrapper>
             <SidePanel>
@@ -489,7 +451,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </SidePanel>
           </SideWrapper>
         </ConsultantFinderProfileWrapper>
-        <div>Message: {message}</div>
+        {/* <div>Message: {message}</div>
         <button onClick={() => setMessage('testing new')}>
           Change message
         </button>
@@ -501,13 +463,13 @@ export const Default = (props: StepProps): JSX.Element => {
         <div>
           Is live diaries consultant?:{' '}
           {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-        </div>
+        </div> */}
         {/* <div>
           Their doctify profile data:{' '}
           {JSON.stringify(serverSideData?.ProfileJson)}
         </div> */}
 
-        <div className="component-content">
+        {/* <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.CardImage} />
           </div>
@@ -520,7 +482,7 @@ export const Default = (props: StepProps): JSX.Element => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

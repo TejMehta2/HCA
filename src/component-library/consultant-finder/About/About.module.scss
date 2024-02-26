@@ -1,0 +1,27 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.about {
+  width: 100%;
+
+  .headline {
+    margin-bottom: $spacing-5;
+  }
+
+  .description {
+    @include apply-body-large;
+
+    p {
+      margin-bottom: $spacing-4;
+    }
+  }
+
+  .reviews {
+    display: block;
+    margin-bottom: $spacing-7;
+
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+}

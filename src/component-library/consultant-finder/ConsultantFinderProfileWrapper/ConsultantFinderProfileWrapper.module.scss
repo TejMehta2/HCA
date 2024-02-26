@@ -1,6 +1,10 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
 .consultant-finder-profile-wrapper {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  // margin: 0 $spacing-14;
 }
