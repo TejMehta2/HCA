@@ -7,25 +7,37 @@ import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
 
 const ShareCTA = (props: ShareCTAProps): JSX.Element => {
-  const { shareData, shareCtaText, heading, subheading, children, theme } =
-    props;
+  const {
+    shareData,
+    shareCtaText,
+    heading,
+    subheading,
+    children,
+    theme,
+    shareCtaIcon = (
+      <span>
+        <Icons iconName="iconShare" />
+      </span>
+    ),
+  } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const isMobile = () => {
-    if (
+  const handleClick = () => {
+    const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+        navigator?.userAgent
+      );
 
-  const handleMobileShare = async () => {
-    if (navigator.share) {
-      await navigator.share(shareData);
+    const handleMobileShare = async () => {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      }
+    };
+    if (isMobile) {
+      handleMobileShare();
+      navigator?.share(shareData);
+    } else {
+      dialogRef.current?.showModal();
     }
   };
 
@@ -33,14 +45,8 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
     <>
       <Themes theme={theme}>
         <Button size="large" variation="outline">
-          <button
-            onClick={
-              isMobile()
-                ? handleMobileShare
-                : () => dialogRef.current?.showModal()
-            }
-          >
-            <Icons iconName="iconShare"></Icons>
+          <button onClick={handleClick}>
+            {shareCtaIcon}
             {shareCtaText}
           </button>
         </Button>

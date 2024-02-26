@@ -23,6 +23,11 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240221T223936Z
+    - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
+      Hint: FilterOptions
+      Value: |
+        {219A3219-D07C-449F-8FC1-94A2BA338A1C}
+        {2E743516-67EA-49F1-8EF5-ADBC540675DE}
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -36,14 +41,10 @@ Languages:
       Value: Search services, treatments, conditions...
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c064a898-070d-4f16-bdb7-ea8f14054eb0"
+      Value: "febf503a-3086-405f-8c67-ed2c994a8d51"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
-      Value: |
-        {B6B5F55F-0965-4996-BE5A-70F6B3581C95}
-        {60468383-EF7B-4714-9B6B-CBEEABF06C94}
-        {80C4B662-9AA6-4679-A3DC-F38A78F7A1B7}
-        {A53B7570-5EF6-4ABA-9C89-2C388E56B2CF}
+      Value: 
     - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
       Hint: ResultsPerPage
       Value: 12
@@ -56,7 +57,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240222T110639Z
+      Value: 20240223T140857Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

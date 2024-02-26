@@ -8,6 +8,7 @@ export interface ShareCTAProps {
     text: string;
   };
   shareCtaText: ReactNode | JSX.Element;
+  shareCtaIcon?: ReactNode | JSX.Element;
   heading: ReactNode | JSX.Element;
   subheading?: ReactNode | JSX.Element;
   children: ReactNode | JSX.Element;

@@ -3,41 +3,60 @@ import {
   Field,
   LinkField,
   Text as JssText,
-  Link as JssLink,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { useI18n } from 'next-localization';
+import ShareCTA from '@component-library/components/ShareCTA/ShareCTA';
+import Button from '@component-library/core-components/Button/Button';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Text from '@component-library/foundation/Text/Text';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 type CTAIconFields = {
   svgMarkup: Field<string>;
 };
 
+type ShareTemplate =
+  | 'CopyLinkShare'
+  | 'FacebookShare'
+  | 'MessengerShare'
+  | 'TwitterXShare'
+  | 'WhatsAppShare'
+  | 'EmailShare';
 type SharePlatformsFields = {
+  template: { name: ShareTemplate };
   cTAText: { jsonValue: Field<string> };
 };
+
+const findSharePlatformCtaText =
+  (platformList: SharePlatformsFields[]) => (template: ShareTemplate) =>
+    platformList.find((item) => item.template.name === template)?.cTAText
+      .jsonValue;
 
 interface Fields {
   data: {
     item: {
-      title: { jsonValue: Field<string> };
-      text: { jsonValue: Field<string> };
-      cTAIcon: {
+      title?: { jsonValue: Field<string> };
+      text?: { jsonValue: Field<string> };
+      cTAIcon?: {
         Icon: CTAIconFields;
       };
-      cTALink: { jsonValue: LinkField };
+      cTALink?: { jsonValue: LinkField };
       sharePlatforms: {
         sharePlatformsList: SharePlatformsFields[];
       };
     };
-    contextItem: {
-      title: { value: string };
-      description: { value: string };
-      url: { path: string };
+    contextItem?: {
+      title?: { value: string };
+      description?: { value: string };
+      url?: { url: string };
     };
   };
 }
 
 type ShareCTAProps = {
-  params: { [key: string]: string };
+  params: {
+    [key: string]: string;
+  };
   fields: Fields;
 };
 
@@ -50,46 +69,105 @@ const ShareCTADefaultComponent = (props: ShareCTAProps): JSX.Element => (
 );
 
 export const Default = (props: ShareCTAProps): JSX.Element => {
-  const { t: localise } = useI18n();
   if (!props.fields) {
     return <ShareCTADefaultComponent {...props} />;
   }
+  // Prime the higher order function with the share list
+  const findCtaText = findSharePlatformCtaText(
+    props.fields.data.item.sharePlatforms.sharePlatformsList
+  );
+  // Organize the re-usable share data
+  const shareData = {
+    url: props.fields.data.contextItem?.url?.url || '',
+    title: props.fields.data.contextItem?.title?.value || '',
+    text: props.fields.data.contextItem?.description?.value || '',
+  };
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.data.item.title.jsonValue} />
-      <br />
-      <JssText field={props.fields.data.item.text.jsonValue} />
-      <br />
-      <ul>
-        {props.fields.data.item.sharePlatforms.sharePlatformsList.map(
-          (sharePlatform, index) => (
-            <li key={index}>
-              <JssText field={sharePlatform.cTAText.jsonValue} />
-              <br />
-            </li>
+    <Themes theme={'J-HCA-Turquoise-10'}>
+      <ShareCTA
+        shareCtaText={
+          <JssRichText
+            field={{
+              value: props.fields.data.item.cTALink?.jsonValue.value.text,
+            }}
+          />
+        }
+        shareCtaIcon={
+          props.fields.data.item.cTAIcon?.Icon.svgMarkup.value && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
+              }}
+            ></span>
           )
-        )}
-      </ul>
-      <br />
-      <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
-      <br />
-      {props?.fields?.data?.item?.cTAIcon?.Icon && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
-          }}
-        />
-      )}
-      <br />
-      <JssText field={props.fields.data.contextItem.title} />
-      <br />
-      <JssText field={props.fields.data.contextItem.description} />
-      <br />
-      <a href={props.fields.data.contextItem.url.path}>
-        {props.fields.data.contextItem.url.path}
-      </a>
-      <br />
-      <p>Text: {localise('close')}</p>
-    </div>
+        }
+        shareData={shareData}
+        heading={
+          <Text tag="h2" variation="display-2">
+            <JssText field={props.fields.data.item.title?.jsonValue} />
+          </Text>
+        }
+        subheading={
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields.data.item.text?.jsonValue} />
+          </Text>
+        }
+        theme="F-HCA-White"
+      >
+        <Button size="large" variation="square-outline">
+          <button
+            onClick={() => {
+              navigator?.clipboard?.writeText?.(shareData.url);
+            }}
+          >
+            <Icons iconName="iconCopy" />
+            <JssText tag="span" field={findCtaText('CopyLinkShare')} />
+          </button>
+        </Button>
+        <Button size="large" variation="square-outline">
+          <a
+            href={`mailto:?subject=${encodeURI(
+              shareData.title
+            )}&body=${encodeURI(shareData.text)}`}
+            title="Share by Email"
+          >
+            <Icons iconName="iconEmail" />
+            <JssText tag="span" field={findCtaText('EmailShare')} />
+          </a>
+        </Button>
+        <Button size="large" variation="square-outline">
+          <a
+            href={`https://wa.me/send?text=${encodeURI(shareData.url)}`}
+            rel="nofollow noopener"
+            target="_blank"
+          >
+            <Icons iconName="iconWhatsapp" />
+            <JssText tag="span" field={findCtaText('WhatsAppShare')} />
+          </a>
+        </Button>
+        <Button size="large" variation="square-outline">
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${shareData.url}`}
+            rel="nofollow noopener"
+            target="_blank"
+          >
+            <Icons iconName="iconFacebook" />
+            <JssText tag="span" field={findCtaText('FacebookShare')} />
+          </a>
+        </Button>
+        <Button size="large" variation="square-outline">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURI(
+              shareData.title
+            )}/&url=${shareData.url}`}
+            rel="nofollow noopener"
+            target="_blank"
+          >
+            <Icons iconName="iconX" />
+            <JssText tag="span" field={findCtaText('TwitterXShare')} />
+          </a>
+        </Button>
+      </ShareCTA>
+    </Themes>
   );
 };
