@@ -28,7 +28,7 @@ const ModalCallUs = (
 
       <div className={styles.mobile}>
         {isMain ? (
-          <Button size={'small'} theme={'full'}>
+          <Button size={'small'} variation={'full'}>
             <a href={`tel:${contact.phone.number}`}>
               <Icons iconName="iconPhone" />
               {contact.phone.text}
@@ -58,7 +58,7 @@ const ModalCallUs = (
   );
 
   return (
-    <Themes theme={'A-HCA-Main-Turquoise'}>
+    <Themes theme={'D-HCA-Teal'}>
       <Modals ref={ref} defaultOpen={defaultOpen}>
         <div className={styles['modal-contact-us']}>
           <div className={styles.main}>

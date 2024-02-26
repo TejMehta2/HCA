@@ -40,7 +40,7 @@ export const Default: StoryObj<typeof Sorting> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'E-HCA-Dark-Grey'}>
+      <Themes theme={'B-HCA-Navy-Blue'}>
         <div
           style={{
             background: 'var(--background)',

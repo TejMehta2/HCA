@@ -22,7 +22,7 @@ const mockProps: HeaderWithImageProps = {
   ),
   ctas: (
     <>
-      <Button size="large" theme="full">
+      <Button size="large" variation="full">
         <a href="#">
           <Icons iconName="iconStethoscope" />
           <span>
@@ -30,7 +30,7 @@ const mockProps: HeaderWithImageProps = {
           </span>
         </a>
       </Button>
-      <Button size="large" theme="outline">
+      <Button size="large" variation="outline">
         <a href="#">
           <Icons iconName="iconPhone" />
           <span>
@@ -48,7 +48,7 @@ const mockProps: HeaderWithImageProps = {
       height="683"
     />
   ),
-  theme: 'B-HCA-Green',
+  theme: 'F-HCA-Fern',
 };
 
 describe('HeaderWithImage', () => {

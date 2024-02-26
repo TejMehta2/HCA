@@ -13,6 +13,7 @@ type ExtendedDate = Field<string> & {
 };
 export interface MainNavigationTabChild {
   cta: ExtendedLink;
+  mobileCtaText: Field<string>;
   description: Field<string>;
   title: Field<string>;
   variant: {

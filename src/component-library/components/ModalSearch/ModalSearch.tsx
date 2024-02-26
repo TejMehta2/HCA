@@ -12,7 +12,7 @@ const ModalSearch = (
     defaultOpen = false,
     searchBar,
     suggestions,
-    theme = 'A-HCA-Main-Turquoise',
+    theme = 'D-HCA-Teal',
   } = props;
   return (
     <Themes theme={theme}>

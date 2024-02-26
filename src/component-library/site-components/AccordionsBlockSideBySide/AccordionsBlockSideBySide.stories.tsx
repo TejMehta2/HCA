@@ -19,7 +19,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof AccordionsBlockSideBySide> = {
   args: {
-    theme: 'H-HCA-Green-20',
+    theme: 'K-HCA-Fern-20',
     subtitle: (
       <Text tag="h3" variation="subheading-1">
         Meta title
@@ -89,7 +89,7 @@ export const Default: StoryObj<typeof AccordionsBlockSideBySide> = {
 
     ctas: (
       <>
-        <Button theme="full" size="large">
+        <Button variation="full" size="large">
           <a href="#">
             <span>
               Click <strong>me</strong>
@@ -110,7 +110,7 @@ export const Default: StoryObj<typeof AccordionsBlockSideBySide> = {
 
 export const BecomingAPatient: StoryObj<typeof AccordionsBlockSideBySide> = {
   args: {
-    theme: 'H-HCA-Green-20',
+    theme: 'K-HCA-Fern-20',
     header: (
       <Text tag="h2" variation="display-1">
         Becoming a patient

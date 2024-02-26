@@ -1,0 +1,26 @@
+﻿---
+ID: "3c7305bb-3ca2-4761-bc7b-64f3919f238b"
+Parent: "42bff29d-b737-4959-9f68-384beee07cb8"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: /sitecore/content/HCA/HCA Main/Settings/Search/Filter Options/Article Type/Blog
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240223T151124Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: Blog
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e0f5cb62-903f-4ad4-9f1a-da332a3ad14a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240223T151124Z

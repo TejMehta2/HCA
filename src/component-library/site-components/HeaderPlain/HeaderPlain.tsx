@@ -9,7 +9,7 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
     subheading,
     children,
     search,
-    theme = 'A-HCA-Main-Turquoise',
+    theme = 'D-HCA-Teal',
     filters,
     sort,
   } = props;

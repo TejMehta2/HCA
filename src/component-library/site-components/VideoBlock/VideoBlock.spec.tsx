@@ -24,7 +24,7 @@ const mockProps: VideoBlockProps = {
       }
       ctas={
         <>
-          <Button size={'small'} theme={'full'}>
+          <Button size={'small'} variation={'full'}>
             <a href="#">
               <span>
                 Learn more about <strong>self-pay</strong>

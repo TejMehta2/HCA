@@ -4,11 +4,11 @@
 .button {
   display: flex;
   gap: 0 px-to-rem(16);
-  color: $dark-blue;
+  color: $navy-blue-100;
   background-color: $white;
   padding: px-to-rem(16) px-to-rem(24);
   border-radius: $radius-large;
-  border: 1px solid $dark-blue-30;
+  border: 1px solid $navy-blue-30;
   width: 100%;
   cursor: pointer;
 

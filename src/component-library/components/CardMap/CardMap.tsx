@@ -23,7 +23,7 @@ const CardMap = (props: CardMapProps): JSX.Element => {
         {ctas && (
           <div className={styles['ctas']}>
             {ctas.button1 && (
-              <Button size="small" theme="full">
+              <Button size="small" variation="full">
                 {ctas.button1}
               </Button>
             )}

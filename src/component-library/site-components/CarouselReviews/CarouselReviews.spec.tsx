@@ -5,7 +5,7 @@ import { CarouselReviewsProps } from './CarouselReviews.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CarouselReviewsProps = {
-  theme: 'F-HCA-White',
+  theme: 'A-HCA-White',
   rating: 4.85,
   reviewCount: <span>13,500+ reviews</span>,
   children: [

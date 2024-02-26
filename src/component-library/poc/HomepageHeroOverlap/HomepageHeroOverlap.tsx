@@ -30,7 +30,7 @@ const HomepageHeroOverlap = (props: HomepageHeroOverlapProps): JSX.Element => {
         }
         ctas={
           <>
-            <Button size={'large'} theme={'full'}>
+            <Button size={'large'} variation={'full'}>
               <a href="#">
                 <Icons iconName={'iconStethoscope'} />
                 <span>
@@ -38,7 +38,7 @@ const HomepageHeroOverlap = (props: HomepageHeroOverlapProps): JSX.Element => {
                 </span>
               </a>
             </Button>
-            <Button size={'large'} theme={'outline'}>
+            <Button size={'large'} variation={'outline'}>
               <a href="#">
                 <Icons iconName={'iconPhone'} />
                 <span>
@@ -56,7 +56,7 @@ const HomepageHeroOverlap = (props: HomepageHeroOverlapProps): JSX.Element => {
             height="683"
           />
         }
-        theme={'B-HCA-Green'}
+        theme={'F-HCA-Fern'}
       />
       <HomepageIntroBlock
         imageAlignment="left"

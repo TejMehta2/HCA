@@ -16,7 +16,7 @@ const meta: Meta<typeof VideoPlayer> = {
 
   decorators: [
     (Story) => (
-      <Themes theme={'F-HCA-White'}>
+      <Themes theme={'A-HCA-White'}>
         <Story />
       </Themes>
     ),

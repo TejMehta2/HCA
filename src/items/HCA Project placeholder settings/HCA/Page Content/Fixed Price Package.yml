@@ -9,7 +9,9 @@ SharedFields:
   Value: "fixed-price-package-{*}"
 - ID: "e391b526-d0c5-439d-803e-17512eae6222"
   Hint: Allowed Controls
-  Value: "{04A5E56B-66DF-461C-961C-36B35F181976}"
+  Value: |
+    {04A5E56B-66DF-461C-961C-36B35F181976}
+    {F095BEE5-AF27-4678-96E7-FC13DE83F630}
 Languages:
 - Language: en
   Versions:
@@ -28,11 +30,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a5016234-1bb7-4cf9-94ce-0b500f6ca677"
+      Value: "4a0d1f39-b641-4ed4-92fd-b6068e3d5e80"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240125T203729Z
+      Value: 20240222T194334Z

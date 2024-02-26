@@ -7,16 +7,16 @@ import { LoaderThemeUnionTypes } from '../../foundation/Loader/Loader.types';
 const Button = (props: ButtonProps): JSX.Element => {
   const {
     size = 'large',
-    theme = 'full-dark',
+    variation = 'full-dark',
     children,
     loading,
     contentVariation,
   } = props;
 
-  const lightLoaderThemes = ['outline-dark', 'full-light-blue'];
+  const lightLoaderVariations = ['outline-dark', 'full-light-blue'];
 
   let loaderTheme: LoaderThemeUnionTypes;
-  if (lightLoaderThemes.includes(theme)) {
+  if (lightLoaderVariations.includes(variation)) {
     loaderTheme = 'light';
   } else {
     loaderTheme = 'dark';
@@ -27,7 +27,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       className={[
         styles.button,
         styles[size],
-        styles[theme],
+        styles[variation],
         styles[loading ? 'loading' : ''],
         contentVariation && styles[contentVariation],
       ].join(' ')}

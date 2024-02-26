@@ -85,7 +85,7 @@ export const Default = (props: StepProps): JSX.Element => {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
-          theme="F-HCA-White"
+          theme="A-HCA-White"
           imageAlignment="left"
           length="short"
           subheader={
@@ -162,7 +162,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </JssLink>
           </TextButton>
 
-          <Button size={'small'} theme={'full-dark'}>
+          <Button size={'small'} variation={'full-dark'}>
             <button
               disabled={
                 searchStringPayment === '' && !isSelfPayment ? true : false

@@ -47,7 +47,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 0,
     name: 'Locations across the UK',
     amount: '35',
-    theme: 'E-HCA-Dark-Grey',
+    theme: 'B-HCA-Navy-Blue',
     area: { mobile: MapEngland },
     mapStyles: { transform: 'translateY(0) scale(1.1)' },
     cardStyles: { transform: 'translateY(-50%)' },
@@ -56,7 +56,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 1,
     name: 'Locations across London',
     amount: '9',
-    theme: 'D-HCA-Light-Orange',
+    theme: 'H-HCA-Tangerine',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
     cardStyles: { transform: 'translateY(-55%) translateX(60%)' },
@@ -65,7 +65,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 2,
     name: 'Locations across Manchester',
     amount: '2',
-    theme: 'L-HCA-Coral-60',
+    theme: 'G-HCA-Orange',
     area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
     mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-55%) translateX(15%)' },
@@ -74,7 +74,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 3,
     name: 'Location across Birmingham',
     amount: '1',
-    theme: 'B-HCA-Green',
+    theme: 'F-HCA-Fern',
     area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
     mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-35%) translateX(50%)' },
@@ -83,11 +83,11 @@ const locations: OurLocationsRegionProps[] = [
 
 export const Default: StoryObj<typeof ScrollTransition> = {
   args: {
-    initialTheme: 'D-HCA-Light-Orange',
+    initialTheme: 'H-HCA-Tangerine',
     children: (
       <>
         <HomepageHero
-          theme="D-HCA-Light-Orange"
+          theme="H-HCA-Tangerine"
           title={
             <Text tag="h1" variation="display-1">
               Extraordinary Healthcare
@@ -101,14 +101,14 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
           ctas={
             <>
-              <Button size="large" theme="full">
+              <Button size="large" variation="full">
                 <a href="#">
                   <span>
                     Book an <strong>appointment</strong>
                   </span>
                 </a>
               </Button>
-              <Button size="large" theme="outline">
+              <Button size="large" variation="outline">
                 <a href="#">
                   <Icons iconName="iconPhone" />
                   <span>
@@ -170,7 +170,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             />
           }
           cqc={
-            <Themes theme="F-HCA-White">
+            <Themes theme="A-HCA-White">
               <CQCBlock
                 link={<a href="#"></a>}
                 title="Care Quality Commission verified"
@@ -198,7 +198,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </Themes>
           }
           doctify={
-            <Themes theme="E-HCA-Dark-Grey">
+            <Themes theme="B-HCA-Navy-Blue">
               <Doctify
                 alignment="left"
                 link={<a href="#"></a>}
@@ -306,7 +306,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
               </span>
             </a>
           }
-          theme="F-HCA-White"
+          theme="A-HCA-White"
           children={[
             <CardBlog key={0}>
               <>
@@ -408,7 +408,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           ]}
         ></CarouselCards>
         <ImageAndTextBlock
-          theme="B-HCA-Green"
+          theme="F-HCA-Fern"
           imageAlignment="left"
           length="short"
           header={
@@ -426,14 +426,14 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
           ctas={
             <>
-              <Button size="large" theme="full">
+              <Button size="large" variation="full">
                 <a href="#">
                   <span>
                     Learn more about <strong>self-pay</strong>
                   </span>
                 </a>
               </Button>
-              <Button size="large" theme="outline">
+              <Button size="large" variation="outline">
                 <a href="#">
                   <span>
                     Access care with <strong>insurance</strong>
@@ -471,7 +471,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </Text>
           }
           cta={
-            <Button size="large" theme="full">
+            <Button size="large" variation="full">
               <a href="#">
                 <span>
                   <Icons iconName={'iconSearch'} />
@@ -496,7 +496,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
       <Footer
         buttons={
           <>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconMobile" />
                 <span>
@@ -504,7 +504,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconRedo" />
                 <span>
@@ -512,7 +512,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconStethoscope" />
                 <span>
@@ -520,7 +520,7 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
                 </span>
               </a>
             </Button>
-            <Button size={'small'} theme={'outline'}>
+            <Button size={'small'} variation={'outline'}>
               <a href="#">
                 <Icons iconName="iconCreditCard" />
                 <span>
@@ -548,19 +548,19 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
               </a>,
             ],
             socials: [
-              <Button key={0} size={'small'} theme={'social'}>
+              <Button key={0} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconFacebook" />
                   <span className="sr-only">Facebook link</span>
                 </a>
               </Button>,
-              <Button key={1} size={'small'} theme={'social'}>
+              <Button key={1} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconInstagram" />
                   <span className="sr-only">Instagram link</span>
                 </a>
               </Button>,
-              <Button key={2} size={'small'} theme={'social'}>
+              <Button key={2} size={'small'} variation={'social'}>
                 <a href="#">
                   <Icons iconName="iconLinkedin" />
                   <span className="sr-only">Linkedin link</span>

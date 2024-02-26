@@ -10,7 +10,7 @@ import TextButton from '../../core-components/TextButton/TextButton';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 const mockProps: CardBlockProps = {
-  theme: 'J-HCA-Turquoise-10',
+  theme: 'A-HCA-White',
   variation: '3-columns',
   header: (
     <AdvancedBlockHeader
@@ -36,7 +36,7 @@ const mockProps: CardBlockProps = {
       }
       ctas={
         <>
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <a href="#">
               Learn more about <strong>self-pay</strong>
             </a>

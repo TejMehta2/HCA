@@ -1,0 +1,36 @@
+﻿---
+ID: "3ec9119d-e834-4b16-a16a-4e5c42222444"
+Parent: "19642323-7f9e-4f1a-8811-3509294f195c"
+Template: "9880d549-1351-4eee-a2da-98df2df2fb46"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/EQTRHCA88/Data/Talk To Us Image Left
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240211T201113Z
+    - ID: "54bea005-8cdc-4336-a0da-e5c96bc25bf5"
+      Hint: Heading
+      Value: Contacts
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f3d8e80e-6109-4425-a639-bde355a1e746"
+    - ID: "8e509528-fe72-46e1-a5c8-7e0869ec3785"
+      Hint: Contact Units
+      Value: "{72A93805-4D8F-415D-A5B4-47D21E82755C}|{37BF7F00-42FE-4DAC-8CB2-1612B9AC865D}"
+    - ID: "a90f7a4d-b2d9-4ebb-8f56-4827d6654d69"
+      Hint: Image
+      Value: |
+        <image mediaid="{C785147A-B62E-4EAF-9B79-FA85910301B2}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240212T090107Z
+    - ID: "f7d96de3-bf29-4523-a9c7-a675b4c2e058"
+      Hint: Title
+      Value: Talk to us

@@ -19,7 +19,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 0,
     name: 'Locations across the UK',
     amount: '35',
-    theme: 'E-HCA-Dark-Grey',
+    theme: 'B-HCA-Navy-Blue',
     area: { mobile: MapEngland },
     mapStyles: { transform: 'translateY(0) scale(1.1)' },
     cardStyles: { transform: 'translateY(-50%)' },
@@ -28,7 +28,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 1,
     name: 'Locations across London',
     amount: '9',
-    theme: 'D-HCA-Light-Orange',
+    theme: 'H-HCA-Tangerine',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
     cardStyles: { transform: 'translateY(-55%) translateX(40%)' },
@@ -37,7 +37,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 2,
     name: 'Locations across Manchester',
     amount: '2',
-    theme: 'L-HCA-Coral-60',
+    theme: 'G-HCA-Orange',
     area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
     mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-55%) translateX(0)' },
@@ -46,7 +46,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 3,
     name: 'Location across Birmingham',
     amount: '1',
-    theme: 'B-HCA-Green',
+    theme: 'F-HCA-Fern',
     area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
     mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-35%) translateX(30%)' },
@@ -71,7 +71,7 @@ const mockProps: OurLocationsProps = {
     </Text>
   ),
   cta: (
-    <Button size="large" theme="full">
+    <Button size="large" variation="full">
       <a href="#">
         <span>
           <Icons iconName={'iconSearch'} />

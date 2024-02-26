@@ -60,7 +60,7 @@ const ContentCardsSliderDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ContentCardsSliderProps): JSX.Element => {
+export const WithImage = (props: ContentCardsSliderProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields?.data?.item) {
@@ -69,7 +69,7 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
 
   return (
     <CarouselCards
-      theme={props.params.Theme || 'F-HCA-White'}
+      theme={props.params.Theme || 'A-HCA-White'}
       title={
         <Text
           tag={props.params.HeadingTag || 'h2'}
@@ -128,4 +128,10 @@ export const Default = (props: ContentCardsSliderProps): JSX.Element => {
       ))}
     </CarouselCards>
   );
+};
+export const WithoutImage = (props: ContentCardsSliderProps): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <ContentCardsSliderDefaultComponent {...props} />;
+  }
+  return <WithImage {...props} />;
 };
