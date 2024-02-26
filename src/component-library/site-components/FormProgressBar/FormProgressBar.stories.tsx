@@ -50,7 +50,7 @@ export const Default: StoryObj<typeof FormProgressBar> = {
   decorators: [
     (Story) => {
       return (
-        <Themes theme={'F-HCA-White'}>
+        <Themes theme={'A-HCA-White'}>
           <Story />
         </Themes>
       );
