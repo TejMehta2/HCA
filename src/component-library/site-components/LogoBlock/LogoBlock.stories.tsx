@@ -39,7 +39,7 @@ export const Default: StoryObj<typeof LogoBlock> = {
         }
         ctas={
           <>
-            <Button size={'small'} theme={'full'}>
+            <Button size={'small'} variation={'full'}>
               <a href="#">
                 <span>
                   Learn more about <strong>self-pay</strong>
@@ -73,6 +73,6 @@ export const SideBySide: StoryObj<typeof LogoBlock> = {
     ...Default.args,
     logos: [logo, logo, logo, logo, logo, logo],
     variation: 'side-by-side',
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
   },
 };

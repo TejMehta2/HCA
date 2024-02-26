@@ -13,7 +13,7 @@ const CardPatientStories = (props: CardPatientStoriesProps): JSX.Element => {
           {title}
           {bodyCopy && <div className={styles['body-text']}>{bodyCopy}</div>}
         </div>
-        <Button size="small" theme="full">
+        <Button size="small" variation="full">
           {link}
         </Button>
       </div>

@@ -1,0 +1,16 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  background-color: var(--background);
+  padding: $spacing-6;
+}
+
+.copy {
+  padding: $spacing-4 0;
+
+  a {
+    color: var(--text);
+  }
+}

@@ -20,7 +20,7 @@ export default meta;
 
 export const Default: StoryObj<typeof AccordionsBlock> = {
   args: {
-    theme: 'H-HCA-Green-20',
+    theme: 'K-HCA-Fern-20',
     subtitle: (
       <Text tag="h3" variation="subheading-1">
         Meta title
@@ -90,7 +90,7 @@ export const Default: StoryObj<typeof AccordionsBlock> = {
 
     ctas: (
       <>
-        <Button theme="full" size="large">
+        <Button variation="full" size="large">
           <a href="#">
             <span>
               Click <strong>me</strong>
@@ -111,7 +111,7 @@ export const Default: StoryObj<typeof AccordionsBlock> = {
 
 export const Faqs: StoryObj<typeof AccordionsBlock> = {
   args: {
-    theme: 'H-HCA-Green-20',
+    theme: 'K-HCA-Fern-20',
     header: (
       <Text tag="h3" variation="display-3">
         FAQ
@@ -165,7 +165,7 @@ export const Faqs: StoryObj<typeof AccordionsBlock> = {
     ],
 
     ctas: (
-      <Button theme="full" size="large">
+      <Button variation="full" size="large">
         <a href="#">
           <span>
             View all <strong>FAQs</strong>

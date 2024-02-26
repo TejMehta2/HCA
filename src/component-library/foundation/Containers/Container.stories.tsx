@@ -18,13 +18,13 @@ export const Default: StoryObj<typeof Container> = (
 ) => (
   <>
     <Container {...args}>
-      <Button theme="full-dark" size="large" contentVariation="full-width">
+      <Button variation="full-dark" size="large" contentVariation="full-width">
         <button>
           <span>Button Text</span>
           <Icons iconName="iconPhone" />
         </button>
       </Button>
-      <Button theme="full-dark" size="large" contentVariation="full-width">
+      <Button variation="full-dark" size="large" contentVariation="full-width">
         <button>
           <span>Button Text</span>
           <Icons iconName="iconPhone" />

@@ -19,7 +19,7 @@ const mockProps: AdvancedBlockHeaderProps = {
   ),
   ctas: (
     <>
-      <Button size={'small'} theme={'full'}>
+      <Button size={'small'} variation={'full'}>
         <span>
           Click <strong>me</strong>
         </span>

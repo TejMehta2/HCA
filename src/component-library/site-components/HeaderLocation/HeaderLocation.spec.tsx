@@ -25,7 +25,7 @@ const mockProps: HeaderLocationProps = {
   },
   ctas: (
     <>
-      <Button size="large" theme="full">
+      <Button size="large" variation="full">
         <a href="#">
           <Icons iconName="iconStethoscope" />
           <span>
@@ -33,7 +33,7 @@ const mockProps: HeaderLocationProps = {
           </span>
         </a>
       </Button>
-      <Button size="large" theme="outline">
+      <Button size="large" variation="outline">
         <a href="#">
           <Icons iconName="iconPhone" />
           <span>
@@ -51,7 +51,7 @@ const mockProps: HeaderLocationProps = {
       height="683"
     />
   ),
-  theme: 'I-HCA-Turquoise-20',
+  theme: 'E-HCA-Cerulean',
 };
 
 describe('HeaderLocation', () => {

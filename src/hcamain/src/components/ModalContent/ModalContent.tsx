@@ -55,7 +55,7 @@ export const Default = (props: ModalContentProps): JSX.Element => {
 
   return (
     <>
-      <Button size="large" theme="full">
+      <Button size="large" variation="full">
         <button onClick={() => dialogRef?.current?.showModal()}>
           {props?.fields?.PrimaryCTA.value.text && (
             <>
@@ -98,7 +98,7 @@ export const Default = (props: ModalContentProps): JSX.Element => {
         cta1={
           <>
             {props.fields.PrimaryCTA.value.text && (
-              <Button size={'large'} theme={'full'}>
+              <Button size={'large'} variation={'full'}>
                 <JssLink field={props.fields?.PrimaryCTA}>
                   <span
                     dangerouslySetInnerHTML={{

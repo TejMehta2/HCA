@@ -14,7 +14,7 @@ const CardLocation = (props: CardLocationProps): JSX.Element => {
           {title}
         </div>
         {cta && (
-          <Button size="small" theme="outline">
+          <Button size="small" variation="outline">
             {cta}
           </Button>
         )}
