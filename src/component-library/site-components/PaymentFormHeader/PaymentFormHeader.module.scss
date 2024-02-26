@@ -1,8 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-//  TODO Text and border colours need to be updated when variables for them are available
-
 .header {
   padding: $spacing-3 0;
   position: sticky;
