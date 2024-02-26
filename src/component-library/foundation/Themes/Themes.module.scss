@@ -5,10 +5,10 @@
 // Themes by name from design library to match backend
 
 /* stylelint-disable value-keyword-case, selector-class-pattern, scss/dollar-variable-pattern */
-$themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
-  D-HCA-Light-Orange, E-HCA-Dark-Grey, F-HCA-White, G-HCA-Green-40,
-  H-HCA-Green-20, I-HCA-Turquoise-20, J-HCA-Turquoise-10, K-HCA-Turquoise-5,
-  L-HCA-Coral-60;
+$themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
+  E-HCA-Cerulean, F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
+  J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
+  N-HCA-Denim-5;
 
 @each $theme in $themeOptions {
   .#{$theme}:is([data-theme='#{$theme}'])
@@ -17,79 +17,91 @@ $themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
   }
 }
 
-.A-HCA-Main-Turquoise {
-  @include apply-theme-a;
+.A-HCA-White {
+  @include apply-theme-a-white;
 }
 
-.B-HCA-Green {
-  @include apply-theme-b;
+.B-HCA-Navy-Blue {
+  @include apply-theme-b-navy;
 }
 
-.C-HCA-Beige {
-  @include apply-theme-c;
+.C-HCA-Denim {
+  @include apply-theme-c-denim;
 }
 
-.D-HCA-Light-Orange {
-  @include apply-theme-d;
+.D-HCA-Teal {
+  @include apply-theme-d-teal;
 }
 
-.E-HCA-Dark-Grey {
-  @include apply-theme-e;
+.E-HCA-Cerulean {
+  @include apply-theme-e-cerulean;
 }
 
-.F-HCA-White {
-  @include apply-theme-f;
+.F-HCA-Fern {
+  @include apply-theme-f-fern;
 }
 
-.G-HCA-Green-40 {
-  @include apply-theme-g;
+.G-HCA-Orange {
+  @include apply-theme-g-orange;
 }
 
-.H-HCA-Green-20 {
-  @include apply-theme-h;
+.H-HCA-Tangerine {
+  @include apply-theme-h-tangerine;
 }
 
-.I-HCA-Turquoise-20 {
-  @include apply-theme-i;
+.I-HCA-Goldenrod {
+  @include apply-theme-i-goldenrod;
 }
 
-.J-HCA-Turquoise-10 {
-  @include apply-theme-j;
+.J-HCA-Tangerine-20 {
+  @include apply-theme-j-tangerine-20;
 }
 
-.K-HCA-Turquoise-5 {
-  @include apply-theme-k;
+.K-HCA-Fern-20 {
+  @include apply-theme-k-fern-20;
 }
 
-.L-HCA-Coral-60 {
-  @include apply-theme-l;
+.L-HCA-Teal-5 {
+  @include apply-theme-l-teal-5;
 }
 
-.master-A-HCA-Main-Turquoise,
-.master-B-HCA-Green,
-.master-C-HCA-Beige,
-.master-D-HCA-Light-Orange,
-.master-E-HCA-Dark-Grey,
-.master-F-HCA-White,
-.master-G-HCA-Green-40,
-.master-H-HCA-Green-20,
-.master-I-HCA-Turquoise-20,
-.master-J-HCA-Turquoise-10,
-.master-K-HCA-Turquoise-5,
-.master-L-HCA-Coral-60 {
+.M-HCA-Goldenrod-20 {
+  @include apply-theme-m-goldenrod-20;
+}
+
+.N-HCA-Denim-5 {
+  @include apply-theme-n-denim-5;
+}
+
+.master-A-HCA-White,
+.master-B-HCA-Navy-Blue,
+.master-C-HCA-Denim,
+.master-D-HCA-Teal,
+.master-E-HCA-Cerulean,
+.master-F-HCA-Fern,
+.master-G-HCA-Orange,
+.master-H-HCA-Tangerine,
+.master-I-HCA-Goldenrod,
+.master-J-HCA-Tangerine-20,
+.master-K-HCA-Fern-20,
+.master-L-HCA-Teal-5,
+.master-M-HCA-Goldenrod-20,
+.master-N-HCA-Denim-5 {
   & > div {
-    & > .A-HCA-Main-Turquoise,
-    & > .B-HCA-Green,
-    & > .C-HCA-Beige,
-    & > .D-HCA-Light-Orange,
-    & > .E-HCA-Dark-Grey,
-    & > .F-HCA-White,
-    & > .G-HCA-Green-40,
-    & > .H-HCA-Green-20,
-    & > .I-HCA-Turquoise-20,
-    & > .J-HCA-Turquoise-10,
-    & > .K-HCA-Turquoise-5,
-    & > .L-HCA-Coral-60 {
+    & > .A-HCA-White,
+    & > .B-HCA-Navy-Blue,
+    & > .C-HCA-Denim,
+    & > .D-HCA-Teal,
+    & > .E-HCA-Cerulean,
+    & > .F-HCA-Fern,
+    & > .G-HCA-Orange,
+    & > .H-HCA-Tangerine,
+    & > .I-HCA-Goldenrod,
+    & > .J-HCA-Tangerine-20,
+    & > .K-HCA-Fern-20,
+    & > .L-HCA-Teal-5,
+    & > .M-HCA-Goldenrod-20,
+    & > .N-HCA-Denim-5 {
       --background: #{transparent};
       --text: #{unset};
     }
@@ -99,17 +111,19 @@ $themeOptions: A-HCA-Main-Turquoise, B-HCA-Green, C-HCA-Beige,
 /* prettier-ignore */
 :export {
   mode: {
-    A-HCA-Main-Turquoise: dark;
-    B-HCA-Green: dark;
-    C-HCA-Beige: dark;
-    D-HCA-Light-Orange: dark;
-    E-HCA-Dark-Grey: light;
-    F-HCA-White: dark;
-    G-HCA-Green-40: dark;
-    H-HCA-Green-20: dark;
-    I-HCA-Turquoise-20: dark;
-    J-HCA-Turquoise-10: dark;
-    K-HCA-Turquoise-5: dark;
-    L-HCA-Coral-60: dark;
+    A-HCA-White: dark;
+    B-HCA-Navy-Blue: light;
+    C-HCA-Denim: light;
+    D-HCA-Teal: dark;
+    E-HCA-Cerulean: dark;
+    F-HCA-Fern: dark;
+    G-HCA-Orange: dark;
+    H-HCA-Tangerine: dark;
+    I-HCA-Goldenrod: dark;
+    J-HCA-Tangerine-20: dark;
+    K-HCA-Fern-20: dark;
+    L-HCA-Teal-5: dark;
+    M-HCA-Goldenrod-20: dark;
+    N-HCA-Denim-5: dark;
   }
 }

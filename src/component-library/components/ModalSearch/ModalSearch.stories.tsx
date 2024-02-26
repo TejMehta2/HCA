@@ -48,6 +48,6 @@ export const Default: StoryObj<typeof ModalSearch> = {
       </>
     ),
     defaultOpen: true,
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
   },
 };

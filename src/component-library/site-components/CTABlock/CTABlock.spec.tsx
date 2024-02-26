@@ -7,7 +7,7 @@ import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 
 const mockProps: CTABlockProps = {
-  theme: 'A-HCA-Main-Turquoise',
+  theme: 'D-HCA-Teal',
   subheader: (
     <Text tag="p" variation="subheading-1">
       meta title

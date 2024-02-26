@@ -15,7 +15,7 @@ function App({
     // Note Next.js does not (currently) provide anything for translation, only i18n routing.
     // If your app is not multilingual, next-localization and references to it can be removed.
     <I18nProvider lngDict={dictionary} locale={pageProps.locale}>
-      <Themes theme={'J-HCA-Turquoise-10'}>
+      <Themes theme={'L-HCA-Teal-5'}>
         <Component {...rest} />
       </Themes>
     </I18nProvider>

@@ -51,15 +51,15 @@
 }
 
 .green {
-  @include apply-tag-green;
+  @include apply-tag-fern-60;
 }
 
 .dark-blue {
-  @include apply-tag-dark-blue;
+  @include apply-tag-navy-blue-70;
 }
 
 .orange {
-  @include apply-tag-orange;
+  @include apply-tag-orange-40;
 }
 
 .white {
@@ -67,9 +67,9 @@
 }
 
 .blue {
-  @include apply-tag-blue;
+  @include apply-tag-teal-20;
 }
 
 .coral {
-  @include apply-tag-coral;
+  @include apply-tag-orange-60;
 }

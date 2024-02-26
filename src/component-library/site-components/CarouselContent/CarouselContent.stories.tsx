@@ -18,7 +18,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CarouselContent> = {
   args: {
-    theme: 'F-HCA-White',
+    theme: 'A-HCA-White',
     slides: [
       {
         title: (
