@@ -20,7 +20,7 @@ type CTAIconFields = {
 
 interface PagesFields {
   title: Field<string>;
-  description: Field<string>;
+  text: Field<string>;
   image: ImageFieldValue;
   url: { path: string };
 }
@@ -108,9 +108,9 @@ export const WithImage = (props: ContentCardsSliderProps): JSX.Element => {
             </Text>
           }
           bodyCopy={
-            cards.description ? (
+            cards.text ? (
               <Text tag="p" variation="body-large">
-                <RichText tag="span" field={cards.description} />
+                <RichText tag="span" field={cards.text} />
               </Text>
             ) : undefined
           }

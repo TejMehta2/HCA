@@ -16,6 +16,9 @@ SharedFields:
     query GetShareCTA($datasource: String!, $contextItem: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on ShareCTA {
+          title {
+            jsonValue
+          }
           text {
             jsonValue
           }
@@ -49,7 +52,7 @@ SharedFields:
         title: field(name: "Title") {
           value
         }
-        description: field(name: "Description") {
+        text: field(name: "Text") {
           value
         }
         url {
@@ -126,14 +129,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "adce0fd8-0ca1-4642-83a5-cfd77870871a"
+      Value: "4d95a1d3-5197-44c1-a59d-c5e7e00fb651"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240223T152831Z
+      Value: 20240223T210212Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

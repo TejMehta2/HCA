@@ -16,7 +16,7 @@ import { CardBlockProps } from '@component-library/site-components/CardBlock/Car
 
 interface PagesFields {
   title: Field<string>;
-  description: Field<string>;
+  text: Field<string>;
   image: ImageField;
   url: { path: string };
 }
@@ -99,7 +99,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
             }
             bodyCopy={
               <Text tag="p" variation="body-medium">
-                <JssRichText tag="span" field={card.description} />
+                <JssRichText tag="span" field={card.text} />
               </Text>
             }
             link={

@@ -47,7 +47,7 @@ interface Fields {
     };
     contextItem?: {
       title?: { value: string };
-      description?: { value: string };
+      text?: { value: string };
       url?: { url: string };
     };
   };
@@ -80,7 +80,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
   const shareData = {
     url: props.fields.data.contextItem?.url?.url || '',
     title: props.fields.data.contextItem?.title?.value || '',
-    text: props.fields.data.contextItem?.description?.value || '',
+    text: props.fields.data.contextItem?.text?.value || '',
   };
   return (
     <Themes theme={'J-HCA-Turquoise-10'}>
