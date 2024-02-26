@@ -13,6 +13,7 @@ import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
 import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
 import { Default as Doctify } from '../Doctify/Doctify';
 import { Default as CQCRating } from '../CQCRating/CQCRating';
+import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 
 interface CQCFields {
   fields: {
@@ -34,6 +35,9 @@ interface Fields {
       getDirections: { jsonValue: Field<string> };
       doctifyReviews: DoctifyReviewsFields;
       cQCRating: CQCFields;
+      contactUnits: {
+        contactUnitList: ContactUnitFields[];
+      };
     };
   };
 }
@@ -88,6 +92,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
             hideRating={true}
             {...props.fields.data.contextItem.cQCRating}
           />
+      <span>Contact Unit like on Talk to Us or Call us Today</span>
       <PlaceHolderWrapper>
             <Placeholder name={phKey} rendering={props.rendering} />
           </PlaceHolderWrapper>
