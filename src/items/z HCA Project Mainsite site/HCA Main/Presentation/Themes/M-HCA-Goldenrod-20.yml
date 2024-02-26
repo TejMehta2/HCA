@@ -1,8 +1,8 @@
 ﻿---
-ID: "f60f7897-ce0f-4c3b-8fb5-b10aa9732339"
+ID: "1d709ef6-d8b6-4487-a1e6-f187dc8c1e55"
 Parent: "db2e4a4f-e2e9-4caf-b908-0d41e5f45e6e"
 Template: "fc5333c3-fdd8-4831-b992-6962fb1ee907"
-Path: "/sitecore/content/HCA/HCA Main/Presentation/Themes/D-HCA-Light-Orange"
+Path: "/sitecore/content/HCA/HCA Main/Presentation/Themes/M-HCA-Goldenrod-20"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231213T151856Z
+      Value: 20240226T122640Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "01fb8337-75a3-4a05-848a-f9ef6f609855"
+      Value: "c4bc6a04-a562-45d0-95f3-e6eb4a3c8786"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231213T151856Z
+      Value: 20240226T122640Z
