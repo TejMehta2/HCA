@@ -46,6 +46,7 @@ import DataComponentSimple from '@component-library/consultant-finder/DataCompon
 import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 import TreatmentsConditions from '@component-library/consultant-finder/TreatmentsConditions/TreatmentsConditions';
 import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/ConsultantFees';
+import OverallRating from '@component-library/consultant-finder/OverallRating/OverallRating';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -212,11 +213,11 @@ export const Default = (props: StepProps): JSX.Element => {
         </div>
         {/* top section */}
         <div>
+          {/* de facut linkul */}
           <Breadcrumbs>
-            <a href="#">Services & Treatments</a>
-            <a href="#">Services & Treatments</a>
-            <a href="#">Services & Treatments</a>
-            <span>Service Lines</span>
+            <a href="#">Consultant Finder</a>
+            {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
+            <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
           </Breadcrumbs>
           <Tabs
             callback={() => {}}
@@ -369,6 +370,22 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></DataComponentSimple>
               </ProfilePageSection>
             )}
+            <OverallRating
+              title={'Reviews'}
+              subtitle={'Overall Rating'}
+              overallExperienceLabel={'Overall experience'}
+              personalCareLabel={'Personal care received'}
+              explanationLabel={'Explanation of care provided'}
+              overallExperience={
+                serverSideData?.ProfileJson?.review?.overallExperience || 0
+              }
+              overalCare={
+                serverSideData?.ProfileJson?.review?.bedsideManner || 0
+              }
+              explanation={
+                serverSideData?.ProfileJson?.review?.explanation || 0
+              }
+            ></OverallRating>
           </MainWrapper>
           <SideWrapper>
             <SidePanel>

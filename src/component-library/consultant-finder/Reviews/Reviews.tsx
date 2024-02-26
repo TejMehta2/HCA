@@ -75,7 +75,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
         {!props.isConsultantProfileReviews && (
           <div className={styles['reviews-compact-text']}>
             <Text tag="p" variation="body-medium-large">
-              {props.reviewsCount} / {fullStars}
+              {props.reviewsCount} / 5
             </Text>
           </div>
         )}
