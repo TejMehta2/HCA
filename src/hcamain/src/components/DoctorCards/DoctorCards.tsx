@@ -129,7 +129,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           </JssLink>
         )
       }
-      theme={props.params.Theme || 'D-HCA-Teal'}
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
     >
       {doctors &&
         doctors.map((doctor: DoctorRow, index: number) => (

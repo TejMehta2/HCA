@@ -19,7 +19,7 @@ export default meta;
 
 export const Default: StoryObj<typeof TabsBlock> = {
   args: {
-    theme: 'L-HCA-Teal-5',
+    theme: 'K-HCA-Turquoise-5',
     title: (
       <Text tag="h2" variation="display-4">
         Our appointments & memberships

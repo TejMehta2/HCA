@@ -94,7 +94,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
 
   return (
     <ImageAndTextBlock
-      theme={props.params.Theme || 'D-HCA-Teal'}
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
       imageAlignment={imageAlignment}
       length="short"
       header={

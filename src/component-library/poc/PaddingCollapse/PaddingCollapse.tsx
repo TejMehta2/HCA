@@ -7,30 +7,30 @@ const PaddingCollapse = (): JSX.Element => {
     <>
       <div className={styles['test-wrapper']}>
         Two different themes side by side
-        <Themes theme="G-HCA-Orange">
+        <Themes theme="L-HCA-Coral-60">
           <div className={styles.content}>Test</div>
         </Themes>
-        <Themes theme="F-HCA-Fern">
+        <Themes theme="B-HCA-Green">
           <div className={styles.content}>Test</div>
         </Themes>
       </div>
       <div className={styles['test-wrapper']}>
         Two of the same theme side by side
-        <Themes theme="H-HCA-Tangerine">
+        <Themes theme="D-HCA-Light-Orange">
           <div className={styles.content}>Test</div>
         </Themes>
-        <Themes theme="H-HCA-Tangerine">
+        <Themes theme="D-HCA-Light-Orange">
           <div className={styles.content}>Test</div>
         </Themes>
       </div>
       <div className={styles['test-wrapper']}>
         Two of the same theme side by side nested
-        <Themes theme="K-HCA-Fern-20">
+        <Themes theme="G-HCA-Green-40">
           <div className={styles.content}>Test</div>
-          <Themes theme="H-HCA-Tangerine">
+          <Themes theme="D-HCA-Light-Orange">
             <div className={styles.content}>Test</div>
           </Themes>
-          <Themes theme="H-HCA-Tangerine">
+          <Themes theme="D-HCA-Light-Orange">
             <div className={styles.content}>Test</div>
           </Themes>
         </Themes>

@@ -23,7 +23,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Short: StoryObj<typeof ImageAndTextBlock> = {
   args: {
-    theme: 'D-HCA-Teal',
+    theme: 'A-HCA-Main-Turquoise',
     length: 'short',
     image: (
       <Image
@@ -83,7 +83,7 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
 
 export const Long: StoryObj<typeof ImageAndTextBlock> = {
   args: {
-    theme: 'F-HCA-Fern',
+    theme: 'B-HCA-Green',
     imageAlignment: 'right',
     length: 'long',
     image: (
@@ -148,7 +148,7 @@ export const Long: StoryObj<typeof ImageAndTextBlock> = {
 
 export const Rating: StoryObj<typeof ImageAndTextBlock> = {
   args: {
-    theme: 'A-HCA-White',
+    theme: 'F-HCA-White',
     length: 'short',
     image: (
       <Image
@@ -239,7 +239,7 @@ export const Rating: StoryObj<typeof ImageAndTextBlock> = {
 
 export const iconList: StoryObj<typeof ImageAndTextBlock> = {
   args: {
-    theme: 'B-HCA-Navy-Blue',
+    theme: 'E-HCA-Dark-Grey',
     imageAlignment: 'left',
     length: 'short',
     image: (
@@ -291,7 +291,7 @@ export const iconList: StoryObj<typeof ImageAndTextBlock> = {
 
 export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
   args: {
-    theme: 'I-HCA-Goldenrod',
+    theme: 'C-HCA-Beige',
     imageAlignment: 'left',
     length: 'short',
     image: (

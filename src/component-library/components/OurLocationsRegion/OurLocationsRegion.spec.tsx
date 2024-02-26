@@ -8,7 +8,7 @@ const mockProps: OurLocationsRegionProps = {
   id: 0,
   name: 'Locations across the UK',
   amount: '35',
-  theme: 'B-HCA-Navy-Blue',
+  theme: 'E-HCA-Dark-Grey',
   area: { mobile: MapEngland },
   mapStyles: { transform: 'translateY(0) scale(1.1)' },
   cardStyles: { transform: 'translateY(-50%)' },

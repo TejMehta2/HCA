@@ -56,7 +56,7 @@ const HomepageHeroOverlap = (props: HomepageHeroOverlapProps): JSX.Element => {
             height="683"
           />
         }
-        theme={'F-HCA-Fern'}
+        theme={'B-HCA-Green'}
       />
       <HomepageIntroBlock
         imageAlignment="left"

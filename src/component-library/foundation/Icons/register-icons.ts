@@ -9,7 +9,7 @@ const assetsFolderName = 'assets-src';
 const assetsDistFolderName = 'assets-dist';
 const assetsDirectory = path.join(__dirname, assetsFolderName);
 const splitter = /\W/;
-const defaultStrokeFill = '#0c2141';
+const defaultStrokeFill = '#112F34';
 
 // Helpers
 const toPascalCase = (text: string) =>

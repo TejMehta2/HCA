@@ -7,7 +7,7 @@ import { Theme as ThemeTypes } from '../../foundation/Themes/Themes.types';
 const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const {
     children,
-    initialTheme = 'A-HCA-White',
+    initialTheme = 'F-HCA-White',
     transitionBackground = true,
   } = props;
 

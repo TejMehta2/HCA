@@ -102,7 +102,7 @@ const SideScrollingCards = (props: SideScrollingCardsProps): JSX.Element => {
   }, [sideScrollSetup]);
 
   return (
-    <Themes theme="J-HCA-Tangerine-20">
+    <Themes theme="C-HCA-Beige">
       <div className={styles['wrapper']} style={{ height: `${height}px` }}>
         <div
           ref={containerRef}

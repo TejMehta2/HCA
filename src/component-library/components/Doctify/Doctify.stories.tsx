@@ -43,7 +43,7 @@ export const Default: StoryObj<typeof Doctify> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="A-HCA-White">
+      <Themes theme="F-HCA-White">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>
@@ -79,7 +79,7 @@ export const Light: StoryObj<typeof Doctify> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="B-HCA-Navy-Blue">
+      <Themes theme="E-HCA-Dark-Grey">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>

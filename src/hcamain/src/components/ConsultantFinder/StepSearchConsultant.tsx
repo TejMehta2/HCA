@@ -86,7 +86,7 @@ export const Default = (props: StepProps): JSX.Element => {
       >
         <div>keyword id specialty: {keywordId}</div>
         <ImageAndTextBlock
-          theme="A-HCA-White"
+          theme="F-HCA-White"
           imageAlignment="left"
           length="short"
           subheader={

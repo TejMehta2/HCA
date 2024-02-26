@@ -38,7 +38,7 @@ interface Fields {
 
 type DoctifyTestimonialsCarouselProps = {
   params: {
-    Theme: Theme; // TODO - check CMS should only allow 'A-HCA-White' | 'L-HCA-Teal-5'
+    Theme: Theme; // TODO - check CMS should only allow 'F-HCA-White' | 'K-HCA-Turquoise-5'
     styles: string;
   };
   fields: Fields;

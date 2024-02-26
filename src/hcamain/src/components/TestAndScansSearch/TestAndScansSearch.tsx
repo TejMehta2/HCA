@@ -71,7 +71,7 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
 
         <SearchWrapper
           ref={searchWrapperRef}
-          theme={props.params.Theme || 'I-HCA-Goldenrod'}
+          theme={props.params.Theme || 'C-HCA-Beige'}
           header={
             <HeaderPlain
               subheading={
@@ -94,7 +94,7 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
                   placeholder={props.fields.SearchPlaceholder.value}
                 />
               }
-              theme={props.params.Theme || 'I-HCA-Goldenrod'}
+              theme={props.params.Theme || 'C-HCA-Beige'}
               filters={
                 <Filters
                   buttonText={
@@ -193,7 +193,7 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params.Theme || 'I-HCA-Goldenrod'}>
+          <CardGrid theme={props.params.Theme || 'C-HCA-Beige'}>
             {data?.scans?.map((item, index) => (
               <CardContent
                 key={index}

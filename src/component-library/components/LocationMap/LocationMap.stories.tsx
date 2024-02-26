@@ -94,7 +94,7 @@ export const Default: StoryObj<typeof LocationMap> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'K-HCA-Fern-20'}>
+      <Themes theme={'H-HCA-Green-20'}>
         <Story />
       </Themes>
     ),

@@ -6,7 +6,7 @@ import Themes from '../../foundation/Themes/Themes';
 const MarketingPreferences = (
   props: MarketingPreferencesProps
 ): JSX.Element => {
-  const { title, bodyCopy, preferences, theme = 'K-HCA-Fern-20' } = props;
+  const { title, bodyCopy, preferences, theme = 'H-HCA-Green-20' } = props;
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>

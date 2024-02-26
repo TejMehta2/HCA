@@ -47,7 +47,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 0,
     name: 'Locations across the UK',
     amount: '35',
-    theme: 'B-HCA-Navy-Blue',
+    theme: 'E-HCA-Dark-Grey',
     area: { mobile: MapEngland },
     mapStyles: { transform: 'translateY(0) scale(1.1)' },
     cardStyles: { transform: 'translateY(-50%)' },
@@ -56,7 +56,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 1,
     name: 'Locations across London',
     amount: '9',
-    theme: 'H-HCA-Tangerine',
+    theme: 'D-HCA-Light-Orange',
     area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
     mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
     cardStyles: { transform: 'translateY(-55%) translateX(60%)' },
@@ -65,7 +65,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 2,
     name: 'Locations across Manchester',
     amount: '2',
-    theme: 'G-HCA-Orange',
+    theme: 'L-HCA-Coral-60',
     area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
     mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-55%) translateX(15%)' },
@@ -74,7 +74,7 @@ const locations: OurLocationsRegionProps[] = [
     id: 3,
     name: 'Location across Birmingham',
     amount: '1',
-    theme: 'F-HCA-Fern',
+    theme: 'B-HCA-Green',
     area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
     mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
     cardStyles: { transform: 'translateY(-35%) translateX(50%)' },
@@ -83,11 +83,11 @@ const locations: OurLocationsRegionProps[] = [
 
 export const Default: StoryObj<typeof ScrollTransition> = {
   args: {
-    initialTheme: 'H-HCA-Tangerine',
+    initialTheme: 'D-HCA-Light-Orange',
     children: (
       <>
         <HomepageHero
-          theme="H-HCA-Tangerine"
+          theme="D-HCA-Light-Orange"
           title={
             <Text tag="h1" variation="display-1">
               Extraordinary Healthcare
@@ -170,7 +170,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             />
           }
           cqc={
-            <Themes theme="A-HCA-White">
+            <Themes theme="F-HCA-White">
               <CQCBlock
                 link={<a href="#"></a>}
                 title="Care Quality Commission verified"
@@ -198,7 +198,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </Themes>
           }
           doctify={
-            <Themes theme="B-HCA-Navy-Blue">
+            <Themes theme="E-HCA-Dark-Grey">
               <Doctify
                 alignment="left"
                 link={<a href="#"></a>}
@@ -306,7 +306,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
               </span>
             </a>
           }
-          theme="A-HCA-White"
+          theme="F-HCA-White"
           children={[
             <CardBlog key={0}>
               <>
@@ -408,7 +408,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           ]}
         ></CarouselCards>
         <ImageAndTextBlock
-          theme="F-HCA-Fern"
+          theme="B-HCA-Green"
           imageAlignment="left"
           length="short"
           header={

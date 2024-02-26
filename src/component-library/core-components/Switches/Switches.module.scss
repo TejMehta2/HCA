@@ -2,22 +2,22 @@
 @use '../../utilities/index.module' as *;
 
 @mixin apply-light-mode {
-  --background-selected: #{$orange-100};
-  --background-disabled: #{$navy-blue-10};
-  --border-focus: #{$navy-blue-100};
-  --text: #{$navy-blue-100};
+  --background-selected: #{$coral};
+  --background-disabled: #{$dark-blue-10};
+  --border-focus: #{$dark-blue};
+  --text: #{$dark-blue};
 }
 @mixin apply-dark-mode {
-  --background-selected: #{$teal-100};
-  --background-disabled: #{$navy-blue-10};
+  --background-selected: #{$main-turquoise};
+  --background-disabled: #{$dark-blue-10};
   --border-focus: #{$white};
   --text: #{$white};
 }
 @mixin apply-medium-mode {
-  --background-selected: #{$navy-blue-100};
-  --background-disabled: #{$navy-blue-20};
+  --background-selected: #{$dark-blue};
+  --background-disabled: #{$dark-blue-20};
   --border-focus: #{$white};
-  --text: #{$navy-blue-100};
+  --text: #{$dark-blue};
 }
 
 .light {
@@ -44,7 +44,7 @@
   .toggle {
     position: absolute;
     inset: 0;
-    background: $navy-blue-40;
+    background: $dark-blue-40;
     border-radius: $radius-large;
     transition: background 0.4s ease-in-out;
 
@@ -79,7 +79,7 @@
       background-color: var(--background-disabled);
 
       &::before {
-        background-color: $navy-blue-9;
+        background-color: $dark-blue-9;
       }
     }
 

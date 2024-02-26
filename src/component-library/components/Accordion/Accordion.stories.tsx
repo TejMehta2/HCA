@@ -14,7 +14,7 @@ const meta: Meta<typeof Accordion> = {
 
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={'F-HCA-White'}>
         <Story />
       </Themes>
     ),

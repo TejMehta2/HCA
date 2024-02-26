@@ -87,6 +87,6 @@ export const Default: StoryObj<typeof HeaderWithImage> = {
         height="683"
       />
     ),
-    theme: 'F-HCA-Fern',
+    theme: 'B-HCA-Green',
   },
 };

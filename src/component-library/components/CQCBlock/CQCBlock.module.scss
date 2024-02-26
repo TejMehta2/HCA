@@ -55,7 +55,7 @@
 
 .icon {
   grid-area: icon;
-  color: $teal-100;
+  color: $main-turquoise;
   display: flex;
 }
 
@@ -96,18 +96,18 @@
 
 .requires-improvement {
   .icon {
-    color: $tangerine-100;
+    color: $light-orange;
   }
 }
 
 .inadequate {
   .icon {
-    color: $red-100;
+    color: $red;
   }
 
   &.dark {
     .icon {
-      color: $orange-100;
+      color: $coral;
     }
   }
 }
@@ -116,7 +116,7 @@
 .good {
   &.dark {
     .icon {
-      color: $fern-40;
+      color: $green-40;
     }
   }
 }

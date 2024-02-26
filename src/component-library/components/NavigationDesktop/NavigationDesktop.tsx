@@ -19,8 +19,8 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   const {
     eyebrow,
     tabs,
-    themeOpen = 'B-HCA-Navy-Blue',
-    themeClosed = 'I-HCA-Goldenrod',
+    themeOpen = 'E-HCA-Dark-Grey',
+    themeClosed = 'C-HCA-Beige',
     defaultTab = null,
     search,
   } = props;

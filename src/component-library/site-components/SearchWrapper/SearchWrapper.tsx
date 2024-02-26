@@ -19,7 +19,7 @@ const SearchWrapper = (
     children,
     searchDetail,
     showing,
-    theme = 'A-HCA-White',
+    theme = 'F-HCA-White',
     tabbedResults,
   } = props;
 

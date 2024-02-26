@@ -19,7 +19,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CTABlock> = {
   args: {
-    theme: 'D-HCA-Teal',
+    theme: 'A-HCA-Main-Turquoise',
     subheader: (
       <Text tag="p" variation="subheading-1">
         meta title

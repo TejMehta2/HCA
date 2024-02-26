@@ -7,7 +7,7 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
   const {
     header,
     children,
-    theme = 'D-HCA-Teal',
+    theme = 'A-HCA-Main-Turquoise',
     variation = '3-columns',
     gapSize = 'large',
   } = props;

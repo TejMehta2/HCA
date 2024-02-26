@@ -83,7 +83,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
     text: props.fields.data.contextItem?.description?.value || '',
   };
   return (
-    <Themes theme={'L-HCA-Teal-5'}>
+    <Themes theme={'J-HCA-Turquoise-10'}>
       <ShareCTA
         shareCtaText={
           <JssRichText
@@ -112,7 +112,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText field={props.fields.data.item.text?.jsonValue} />
           </Text>
         }
-        theme="A-HCA-White"
+        theme="F-HCA-White"
       >
         <Button size="large" variation="square-outline">
           <button

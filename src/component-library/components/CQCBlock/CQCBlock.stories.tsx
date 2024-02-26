@@ -35,7 +35,7 @@ export const Short: StoryObj<typeof CQCBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="B-HCA-Navy-Blue">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),
@@ -61,13 +61,13 @@ export const Long: StoryObj<typeof CQCBlock> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#0c2141' }],
+      values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <Themes theme="A-HCA-White">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -92,13 +92,13 @@ export const Rating: StoryObj<typeof CQCBlock> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#0c2141' }],
+      values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <Themes theme="A-HCA-White">
+      <Themes theme="F-HCA-White">
         <Story />
       </Themes>
     ),
@@ -122,7 +122,7 @@ export const RatingDark: StoryObj<typeof CQCBlock> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="B-HCA-Navy-Blue">
+      <Themes theme="E-HCA-Dark-Grey">
         <Story />
       </Themes>
     ),

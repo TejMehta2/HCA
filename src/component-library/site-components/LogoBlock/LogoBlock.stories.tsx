@@ -73,6 +73,6 @@ export const SideBySide: StoryObj<typeof LogoBlock> = {
     ...Default.args,
     logos: [logo, logo, logo, logo, logo, logo],
     variation: 'side-by-side',
-    theme: 'D-HCA-Teal',
+    theme: 'A-HCA-Main-Turquoise',
   },
 };

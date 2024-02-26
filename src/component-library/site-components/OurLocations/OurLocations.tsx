@@ -96,7 +96,7 @@ const OurLocations = (props: OurLocationsProps): JSX.Element => {
 
   /* Theme will always be turquoise (it's the colour of the sea) */
   return (
-    <Themes theme="L-HCA-Teal-5">
+    <Themes theme="I-HCA-Turquoise-20">
       <div
         ref={map}
         className={styles.wrapper}

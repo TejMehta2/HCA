@@ -33,7 +33,7 @@ export const Default = (props: BlogTextProps): JSX.Element => {
   }
 
   return (
-    <BlogContent theme={props.params.Theme || 'A-HCA-White'}>
+    <BlogContent theme={props.params.Theme || 'F-HCA-White'}>
       <RichText field={props.fields.Text} />
     </BlogContent>
   );

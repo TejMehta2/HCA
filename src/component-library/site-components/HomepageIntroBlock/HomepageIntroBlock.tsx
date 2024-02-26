@@ -17,7 +17,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     doctify,
   } = props;
   return (
-    <Themes theme="A-HCA-White">
+    <Themes theme="F-HCA-White">
       <div
         className={[
           styles['intro-block'],
@@ -58,10 +58,10 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>
               <div className={styles.mobile}>
-                <Themes theme={'D-HCA-Teal'}>{doctify}</Themes>
+                <Themes theme={'A-HCA-Main-Turquoise'}>{doctify}</Themes>
               </div>
               <div className={styles.tablet}>
-                <Themes theme={'B-HCA-Navy-Blue'}>{doctify}</Themes>
+                <Themes theme={'E-HCA-Dark-Grey'}>{doctify}</Themes>
               </div>
             </div>
           </div>

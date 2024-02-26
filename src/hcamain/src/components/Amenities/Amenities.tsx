@@ -78,7 +78,7 @@ const outputImageAndTextBlock = (
 ) => {
   return (
     <ImageAndTextBlock
-      theme={props.params.Theme || 'B-HCA-Navy-Blue'}
+      theme={props.params.Theme || 'E-HCA-Dark-Grey'}
       imageAlignment={alignment}
       length="short"
       header={

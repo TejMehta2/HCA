@@ -290,12 +290,12 @@
 
 .hover-carousel {
   button {
-    background-color: $tangerine-100;
+    background-color: $light-orange;
     padding: px-to-rem(16);
     border-radius: 50%;
 
     &:active {
-      background-color: $tangerine-70;
+      background-color: $light-orange-80;
     }
   }
 }
@@ -350,7 +350,7 @@
 .square-outline {
   button,
   a {
-    border: 1px solid $navy-blue-10;
+    border: 1px solid $dark-blue-10;
     border-radius: $radius-small;
     padding: $spacing-5 $spacing-7;
     color: var(--cta-outline-text);
@@ -393,15 +393,15 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      color: $navy-blue-100;
+      color: $dark-blue;
     }
 
     &:hover {
-      background: $teal-5;
+      background: $main-turquoise-5;
     }
 
     &:active {
-      background: $teal-10;
+      background: $main-turquoise-10;
     }
   }
 }

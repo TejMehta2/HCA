@@ -56,7 +56,7 @@ const mockProps: SearchWrapperProps = {
         <Text variation={'display-2'}>News & articles about healthcare </Text>
       }
       //search={<input type="text" />}
-      theme={'A-HCA-White'}
+      theme={'F-HCA-White'}
     >
       <Text variation="body-large">
         Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -79,7 +79,7 @@ const mockProps: SearchWrapperProps = {
   ),
   children: (
     <>
-      <CardGrid theme="A-HCA-White">{getPageContent(1)}</CardGrid>
+      <CardGrid theme="F-HCA-White">{getPageContent(1)}</CardGrid>
       <Pagination pageCount={pageCount} callback={console.log} />
     </>
   ),

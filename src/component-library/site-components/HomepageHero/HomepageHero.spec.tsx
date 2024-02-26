@@ -9,7 +9,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 
 const mockProps: HomepageHeroProps = {
-  theme: 'H-HCA-Tangerine',
+  theme: 'D-HCA-Light-Orange',
   title: (
     <Text tag="h1" variation="display-1">
       Extraordinary Healthcare

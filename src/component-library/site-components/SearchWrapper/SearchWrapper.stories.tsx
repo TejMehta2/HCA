@@ -41,7 +41,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
           <Text variation={'display-2'}>News & articles about healthcare </Text>
         }
         search={<SearchBar placeholder="" />}
-        theme={'A-HCA-White'}
+        theme={'F-HCA-White'}
       >
         <Text variation="body-large">
           Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -64,7 +64,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
+        <CardGrid theme="F-HCA-White">
           {BLOG_MOCK_VALUES.firstPageContent}
         </CardGrid>
         <Pagination
@@ -82,7 +82,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
       <HeaderPlain
         heading={<Text variation={'display-2'}>All Service Lines</Text>}
         search={<SearchBar placeholder="" />}
-        theme={'I-HCA-Goldenrod'}
+        theme={'C-HCA-Beige'}
         filters={
           <Filters
             resultsCount={40}
@@ -138,7 +138,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
       ></HeaderPlain>
     ),
 
-    theme: 'I-HCA-Goldenrod',
+    theme: 'C-HCA-Beige',
 
     searchDetail: (
       <Text tag="h2" variation="heading-1">
@@ -148,7 +148,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
 
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
+        <CardGrid theme="F-HCA-White">
           {SERVICE_LINES_MOCK_VALUES.firstPageContent}
         </CardGrid>
         <Pagination
@@ -168,7 +168,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
           <Text variation={'display-2'}>All orthopaedic treatments</Text>
         }
         search={<SearchBar placeholder="" />}
-        theme={'A-HCA-White'}
+        theme={'F-HCA-White'}
         filters={
           <Filters
             resultsCount={40}
@@ -231,7 +231,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
       </HeaderPlain>
     ),
 
-    theme: 'A-HCA-White',
+    theme: 'F-HCA-White',
 
     searchDetail: (
       <Text tag="h2" variation="heading-1">
@@ -245,7 +245,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
+        <CardGrid theme="F-HCA-White">
           {SERVICE_LINES_MOCK_VALUES.firstPageContent}
         </CardGrid>
         <Pagination
@@ -263,7 +263,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       <HeaderPlain
         heading={<Text variation={'display-2'}>Find a location</Text>}
         search={<SearchBar placeholder="" />}
-        theme={'H-HCA-Tangerine'}
+        theme={'D-HCA-Light-Orange'}
         filters={
           <Filters
             resultsCount={40}
@@ -326,7 +326,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       </HeaderPlain>
     ),
 
-    theme: 'A-HCA-White',
+    theme: 'F-HCA-White',
 
     searchDetail: (
       <Text tag="h2" variation="heading-1">
@@ -343,7 +343,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
         tab: { icon: 'iconGrid', label: 'Grid view' },
         tabContent: (
           <>
-            <CardGrid theme="A-HCA-White">
+            <CardGrid theme="F-HCA-White">
               {LOCATIONS_MOCK_VALUES.firstPageContent}
             </CardGrid>
             <Pagination
