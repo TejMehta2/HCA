@@ -43,7 +43,7 @@
   --doctify-full-star: #{$orange-100};
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$orange-60};
-  --quote-tag-background-hover: $orange-80;
+  --quote-tag-background-hover: #{$orange-80};
 
   @include apply-tag-orange-40;
   @include apply-tabs(#{$orange-60});
@@ -74,9 +74,10 @@
   --doctify-empty-star: #{$white};
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
+  --text-date: #{$navy-blue-10};
 
   @include apply-tag-denim-40;
-  @include apply-tabs($denim-40, $white);
+  @include apply-tabs($denim-40, $navy-blue-100);
   @include apply-pagination-denim-40-light;
   @include apply-tag-secondary-denim-10;
 }
