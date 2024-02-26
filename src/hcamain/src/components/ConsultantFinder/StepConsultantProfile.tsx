@@ -17,6 +17,7 @@ import {
   LinkField,
   useComponentProps,
   ComponentRendering,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
@@ -47,6 +48,9 @@ import { capitalizeFirstLetter } from '@component-library/utility-functions/inde
 import TreatmentsConditions from '@component-library/consultant-finder/TreatmentsConditions/TreatmentsConditions';
 import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/ConsultantFees';
 import OverallRating from '@component-library/consultant-finder/OverallRating/OverallRating';
+import Locations from '@component-library/consultant-finder/Locations/Locations';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -219,23 +223,27 @@ export const Default = (props: StepProps): JSX.Element => {
             {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
             <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
           </Breadcrumbs>
-          <Tabs
+          {/* <Tabs
             callback={() => {}}
             tabs={[
               {
-                icon: 'iconOneOff',
-                label: 'One-off',
+                icon: 'iconBook',
+                label: 'About',
               },
               {
-                icon: 'iconFlexible',
-                label: 'Flexi',
+                icon: 'iconPin',
+                label: 'Locations',
               },
               {
-                icon: 'iconCalendar',
-                label: 'Annual',
+                icon: 'iconCreditCard',
+                label: 'Fees',
+              },
+              {
+                icon: 'iconComment',
+                label: 'Reviews',
               },
             ]}
-          />
+          /> */}
         </div>
         <ConsultantFinderProfileWrapper>
           <MainWrapper>
@@ -370,6 +378,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></DataComponentSimple>
               </ProfilePageSection>
             )}
+            <ProfilePageSection>
+              <Locations
+                title={'Locations'}
+                locations={serverSideData?.ProfileJson?.practices}
+              ></Locations>
+            </ProfilePageSection>
             <OverallRating
               title={'Reviews'}
               subtitle={'Overall Rating'}
@@ -500,6 +514,50 @@ export const Default = (props: StepProps): JSX.Element => {
             </div>
           </div>
         </div> */}
+
+        <Navigation showOnMobile={true}>
+          {/* if consultant has live diaries then show 'book online' */}
+          {serverSideData?.IsLiveDiaryConsultant && (
+            <Button
+              variation="full-dark"
+              size="small"
+              contentVariation="full-width"
+            >
+              <button>
+                <span>
+                  <strong>Book</strong> online
+                </span>
+              </button>
+            </Button>
+          )}
+          {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+          {!serverSideData?.IsLiveDiaryConsultant &&
+            !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+              <Button
+                variation="full-dark"
+                size="small"
+                contentVariation="full-width"
+              >
+                <button>
+                  <span>
+                    <strong>Enquire</strong> now
+                  </span>
+                </button>
+              </Button>
+            )}
+          <Button
+            variation="outline"
+            size="small"
+            contentVariation="full-width"
+          >
+            <button>
+              {/* <Icons iconName="iconPhone" /> */}
+              <span>
+                <strong>Call to</strong> book
+              </span>
+            </button>
+          </Button>
+        </Navigation>
       </div>
     );
   }

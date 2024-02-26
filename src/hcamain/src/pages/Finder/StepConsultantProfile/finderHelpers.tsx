@@ -127,7 +127,7 @@ export async function getSpecialistProfileData(
 
 export function isErrorWithProfileData(consultantProfileJson: string): boolean {
   let isError: boolean = false;
-  let consultantProfileJsonString: string = consultantProfileJson.toString();
+  const consultantProfileJsonString: string = consultantProfileJson.toString();
   isError =
     consultantProfileJsonString == null ||
     consultantProfileJsonString == undefined ||
@@ -136,11 +136,9 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
   return isError;
 }
 
-// get HCA facilities data 
+// get HCA facilities data
 const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
-export async function getFacilitiesData (
-  serviceURL?: string
-): Promise<string> {
+export async function getFacilitiesData(serviceURL?: string): Promise<string> {
   const requestURL = `${serviceURL ?? Doctify_To_HCA_Facilities_URL}`;
   let facilitiesData: string = '';
   try {
@@ -155,9 +153,7 @@ export async function getFacilitiesData (
     } else {
       //docitfy call failed
       facilitiesData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(
-        `getFacilitiesData failed with error ${facilitiesData}`
-      );
+      console.error(`getFacilitiesData failed with error ${facilitiesData}`);
     }
   } catch (e) {
     //docitfy call threw
@@ -167,11 +163,14 @@ export async function getFacilitiesData (
   return facilitiesData;
 }
 
-// get the HCA facility url from the Doctify practice slug 
-export async function facilityURLFromDoctifySlug(doctifyLocationSlug: string): Promise<string> {
+// get the HCA facility url from the Doctify practice slug
+export async function facilityURLFromDoctifySlug(
+  doctifyLocationSlug: string
+): Promise<string> {
   const facilities = await getFacilitiesData();
   // TODO placeholder //(facilities:JSON);
-  let locationURL: string = "https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital";
+  const locationURL: string =
+    'https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital';
   return locationURL;
 }
 
@@ -210,11 +209,15 @@ export async function facilityURLFromDoctifySlug(doctifyLocationSlug: string): P
     ]
 }
 */
-let C2_FirstAppointment_API_URL: string = "https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88";
-export async function LDB_FirstAppointment(gmcNumber: string, serviceURL?: string): Promise<string> {
+const C2_FirstAppointment_API_URL: string =
+  'https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88';
+export async function LDB_FirstAppointment(
+  gmcNumber: string,
+  serviceURL?: string
+): Promise<string> {
   const requestURL = `${serviceURL ?? C2_FirstAppointment_API_URL}`;
   let firstAppointmentData: string = '';
-  let body = `{"consultants" : ["${gmcNumber}"] }`;
+  const body = `{"consultants" : ["${gmcNumber}"] }`;
   try {
     // very light cache on these requests they contain time sensitive data
     const res = await fetch(requestURL, {
@@ -241,4 +244,3 @@ export async function LDB_FirstAppointment(gmcNumber: string, serviceURL?: strin
 
   return firstAppointmentData;
 }
-

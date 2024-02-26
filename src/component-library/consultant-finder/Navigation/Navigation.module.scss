@@ -15,4 +15,11 @@
 
   // new border color
   border-top: 1px solid #adb4bf;
+
+  &.show-on-mobile {
+    display: flex;
+    @include media(screen-l) {
+      display: none;
+    }
+  }
 }
