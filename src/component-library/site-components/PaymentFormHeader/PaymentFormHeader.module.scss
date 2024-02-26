@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: $dark-blue;
+  color: $navy-blue-100;
 }
 
 .logo-section {
@@ -35,7 +35,7 @@
   @include media(screen-l) {
     margin-right: px-to-rem(16);
     padding-right: px-to-rem(16);
-    border-right: 1px solid #adb4bf;
+    border-right: 1px solid $navy-blue-30;
   }
 }
 
@@ -66,7 +66,7 @@
 .phone a {
   @include apply-body-medium-medium;
 
-  color: $dark-blue;
+  color: $navy-blue-100;
   display: flex;
   gap: 0 $spacing-2;
 
@@ -80,6 +80,6 @@
     text-decoration: none;
     margin-right: px-to-rem(16);
     padding-right: px-to-rem(16);
-    border-right: 1px solid #adb4bf;
+    border-right: 1px solid $navy-blue-30;
   }
 }
