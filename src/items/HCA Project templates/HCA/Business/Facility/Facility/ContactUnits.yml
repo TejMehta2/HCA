@@ -4,6 +4,9 @@ Parent: "7d3d1239-c54f-48dc-b644-cec21da8956e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Project/HCA/Business/Facility/Facility/ContactUnits
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "query:./*[@@templatename='Page Data']/*[@@templatename='Contact Units Folder']"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Multiroot Treelist
@@ -28,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1b6cfaa2-1265-443a-a6a0-0fb760d24aea"
+      Value: "fd89e999-5e89-4fa5-92d7-281bff3fa590"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240118T231427Z
+      Value: 20240226T105136Z

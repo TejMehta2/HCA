@@ -45,7 +45,7 @@ interface TalkToUsLeftProps extends TalkToUsProps {
 const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">ImageShortText no datasource</span>
+      <span className="is-empty-hint">TalkToUs no datasource</span>
     </div>
   </div>
 );
