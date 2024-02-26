@@ -24,13 +24,13 @@ type HeaderWithImageProps = {
     [key: string]: string;
     Theme: Theme;
     /* TODO themes from BE to only take specific theme types
-    | 'D-HCA-Teal'
-    | 'F-HCA-Fern'
-    | 'I-HCA-Goldenrod'
-    | 'H-HCA-Tangerine'
-    | 'B-HCA-Navy-Blue'
-    | 'K-HCA-Fern-20'
-    | 'K-HCA-Fern-20'
+    | 'A-HCA-Main-Turquoise'
+    | 'B-HCA-Green'
+    | 'C-HCA-Beige'
+    | 'D-HCA-Light-Orange'
+    | 'E-HCA-Dark-Grey'
+    | 'G-HCA-Green-40'
+    | 'H-HCA-Green-20'
    */
     HeadingTag: HeadingTag;
     HeadingSize: HeadingSize;
@@ -60,7 +60,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
   return (
     <HeaderWithImage
-      theme={props.params.Theme || 'D-HCA-Teal'}
+      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
       title={
         <Text
           variation={props.params.HeadingSize || 'display-1'}

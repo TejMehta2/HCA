@@ -48,7 +48,7 @@ const mockProps: HeaderWithImageProps = {
       height="683"
     />
   ),
-  theme: 'F-HCA-Fern',
+  theme: 'B-HCA-Green',
 };
 
 describe('HeaderWithImage', () => {

@@ -105,7 +105,7 @@
     }
 
     border: none;
-    border-left: solid 1px $teal-10;
+    border-left: solid 1px $main-turquoise-10;
     @include media(screen-m, max) {
       &:nth-of-type(4n - 3) {
         display: none;

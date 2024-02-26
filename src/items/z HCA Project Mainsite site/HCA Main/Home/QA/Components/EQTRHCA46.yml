@@ -1,58 +1,58 @@
 ﻿---
-ID: '0ed4ba06-6137-417a-834a-b9328d9de1b0'
-Parent: '4b129700-c6dd-4467-b4af-2d13bd7420e5'
-Template: '0b18db9e-acec-4f9e-99c0-61a20535af37'
+ID: "0ed4ba06-6137-417a-834a-b9328d9de1b0"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA46
 SharedFields:
-  - ID: 'c7c26117-dbb1-42b2-ab5e-f7223845cca3'
-    Hint: __Thumbnail
-    Value: |
-      <image mediaid="{F0ADAC44-D471-467A-AF7F-003C242DE8E5}" />
-  - ID: 'f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e'
-    Hint: __Renderings
-    Value: |
-      <r xmlns:p="p" xmlns:s="s"
-        p:p="1">
-        <d
-          id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
-          <r
-            uid="{F39B4F22-7B00-4E4E-8147-E00812AEA751}"
-            s:ds="{CBB046FC-EF9C-4A8C-A3BD-D9514D28F97E}"
-            s:id="{C0F5FD77-9C6A-4493-AF3C-4B12298F6A25}"
-            s:par="FieldNames=%7b9466E52C-E3D0-43AE-9169-B578BBDFC5A8%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;HeadingSize&amp;Theme=F-HCA-Fern&amp;HeadingTag=h1&amp;DynamicPlaceholderId=1"
-            s:ph="headless-main"
-            s:ccb="Clear on publish" />
-        </d>
-      </r>
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{F0ADAC44-D471-467A-AF7F-003C242DE8E5}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{F39B4F22-7B00-4E4E-8147-E00812AEA751}"
+          s:ds="{CBB046FC-EF9C-4A8C-A3BD-D9514D28F97E}"
+          s:id="{C0F5FD77-9C6A-4493-AF3C-4B12298F6A25}"
+          s:par="FieldNames=%7b9466E52C-E3D0-43AE-9169-B578BBDFC5A8%7d&amp;CacheClearingBehavior=Clear+on+publish&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;HeadingSize&amp;Theme=B-HCA-Green&amp;HeadingTag=h1&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
 Languages:
-  - Language: en
-    Versions:
-      - Version: 1
-        Fields:
-          - ID: '25bed78c-4957-4165-998a-ca1b52f67497'
-            Hint: __Created
-            Value: 20231219T081804Z
-          - ID: '4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'
-            Hint: NavigationTitle
-            Value: EQTRHCA46
-          - ID: '52807595-0f8f-4b20-8d2a-cb71d28c6103'
-            Hint: __Owner
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: '5dd74568-4d4b-44c1-b513-0af5f4cda34f'
-            Hint: __Created by
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: '8cdc337e-a112-42fb-bbb4-4143751e123f'
-            Hint: __Revision
-            Value: '8aab79b6-cbab-48e2-b7db-6024f493e02b'
-          - ID: 'badd9cf9-53e0-4d0c-bcc0-2d784c282f6a'
-            Hint: __Updated by
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: 'd9cf14b1-fa16-4ba6-9288-e8a174d4d522'
-            Hint: __Updated
-            Value: 20240110T152539Z
-          - ID: 'f253d55f-c5e7-4bbd-8423-45ee6c8a12ec'
-            Hint: Title
-            Value: EQTRHCA46
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T081804Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA46
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8aab79b6-cbab-48e2-b7db-6024f493e02b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240110T152539Z
+    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Hint: Title
+      Value: EQTRHCA46

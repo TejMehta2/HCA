@@ -19,7 +19,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
   return (
     <>
       {/* confirmed with Design this component is only intended to use this theme */}
-      <Themes theme="I-HCA-Goldenrod">
+      <Themes theme="C-HCA-Beige">
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div className={styles.grid}>

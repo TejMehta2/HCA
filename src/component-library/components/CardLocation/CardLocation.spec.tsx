@@ -5,7 +5,7 @@ import { CardLocationProps } from './CardLocation.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: CardLocationProps = {
-  theme: 'B-HCA-Navy-Blue',
+  theme: 'E-HCA-Dark-Grey',
   amount: (
     <Text tag="p" variation="display-1">
       35

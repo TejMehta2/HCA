@@ -11,7 +11,7 @@ const meta: Meta<typeof Tooltips> = {
   decorators: [
     (Story) => (
       <div style={{ height: '75px' }}>
-        <Themes theme={'A-HCA-White'}>
+        <Themes theme={'F-HCA-White'}>
           <Story />
         </Themes>
       </div>
@@ -37,7 +37,7 @@ export const Dark: StoryObj<typeof Tooltips> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#0c2141' }],
+      values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
 };

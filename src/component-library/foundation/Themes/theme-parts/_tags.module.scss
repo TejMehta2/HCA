@@ -1,138 +1,106 @@
 @use '../../Colours/colours.module' as *;
 
-@mixin apply-tag-fern-60 {
-  --tag-background: #{$fern-60};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$fern-80};
-  --tag-active-background: #{$fern-80};
-  --tag-focus-background: #{$fern-60};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-green {
+  --tag-background: #{$green-20};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$green-40};
+  --tag-active-background: #{$green-20};
+  --tag-focus-background: #{$green-40};
+  --tag-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-navy-blue-70 {
-  --tag-background: #{$navy-blue-70};
+@mixin apply-tag-dark-blue {
+  --tag-background: #{$dark-blue-60};
   --tag-text: #{$white};
-  --tag-hover-background: #{$navy-blue-70};
-  --tag-active-background: #{navy-blue-70};
-  --tag-focus-background: #{$navy-blue-100};
-  --tag-focus-outline: #{$fern-40};
+  --tag-hover-background: #{$dark-blue};
+  --tag-active-background: #{$dark-blue-60};
+  --tag-focus-background: #{$dark-blue};
+  --tag-focus-outline: #{$green-40};
 }
-@mixin apply-tag-orange-40 {
-  --tag-background: #{$orange-40};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$orange-80};
-  --tag-active-background: #{$orange-80};
-  --tag-focus-background: #{$orange-80};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-orange {
+  --tag-background: #{$light-orange-40};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$light-orange-60};
+  --tag-active-background: #{$light-orange-40};
+  --tag-focus-background: #{$light-orange-60};
+  --tag-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-orange-60 {
-  --tag-background: #{$orange-60};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$orange-80};
-  --tag-active-background: #{$orange-80};
-  --tag-focus-background: #{$orange-60};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-coral {
+  --tag-background: #{$coral-20};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$coral-40};
+  --tag-active-background: #{$coral-20};
+  --tag-focus-background: #{$coral-40};
+  --tag-focus-outline: #{$dark-blue};
 }
 @mixin apply-tag-white {
   --tag-background: #{$white};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$goldenrod-100};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$beige};
   --tag-active-background: #{$white};
-  --tag-focus-background: #{$goldenrod-100};
-  --tag-focus-outline: #{$navy-blue-100};
+  --tag-focus-background: #{$beige};
+  --tag-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-teal-20 {
-  --tag-background: #{$teal-20};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$teal-40};
-  --tag-active-background: #{$teal-20};
-  --tag-focus-background: #{$teal-40};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-blue {
+  --tag-background: #{$main-turquoise-20};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$main-turquoise-40};
+  --tag-active-background: #{$main-turquoise-20};
+  --tag-focus-background: #{$main-turquoise-40};
+  --tag-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-teal-10 {
-  --tag-background: #{$teal-10};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$teal-40};
-  --tag-active-background: #{$teal-10};
-  --tag-focus-background: #{$teal-40};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-light-blue {
+  --tag-background: #{$main-turquoise-10};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$main-turquoise-40};
+  --tag-active-background: #{$main-turquoise-10};
+  --tag-focus-background: #{$main-turquoise-40};
+  --tag-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-secondary-teal-20 {
-  --tag-secondary-background: #{$teal-20};
-  --tag-secondary-text: #{$navy-blue-100};
-  --tag-secondary-hover-background: #{$teal-40};
-  --tag-secondary-active-background: #{$teal-20};
-  --tag-secondary-focus-background: #{$teal-40};
-  --tag-secondary-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-secondary-green {
+  --tag-secondary-background: #{$green-20};
+  --tag-secondary-text: #{$dark-blue};
+  --tag-secondary-hover-background: #{$green-40};
+  --tag-secondary-active-background: #{$green-20};
+  --tag-secondary-focus-background: #{$green-40};
+  --tag-secondary-focus-outline: #{$dark-blue};
 }
-@mixin apply-tag-secondary-navy-blue-80 {
-  --tag-secondary-background: #{$navy-blue-80};
+@mixin apply-tag-secondary-dark-blue {
+  --tag-secondary-background: #{$dark-blue-80};
   --tag-secondary-text: #{$white};
-  --tag-secondary-hover-background: #{$navy-blue-100};
-  --tag-secondary-active-background: #{$navy-blue-80};
-  --tag-secondary-focus-background: #{$navy-blue-100};
-  --tag-secondary-focus-outline: #{$fern-40};
+  --tag-secondary-hover-background: #{$dark-blue};
+  --tag-secondary-active-background: #{$dark-blue-80};
+  --tag-secondary-focus-background: #{$dark-blue};
+  --tag-secondary-focus-outline: #{$green-40};
 }
-
-@mixin apply-tag-denim-10 {
-  --tag-background: #{$denim-10};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$denim-20};
-  --tag-active-background: #{$denim-20};
-  --tag-focus-background: #{$denim-20};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-secondary-orange {
+  --tag-secondary-background: #{$light-orange-40};
+  --tag-secondary-text: #{$dark-blue};
+  --tag-secondary-hover-background: #{$light-orange-60};
+  --tag-secondary-active-background: #{$light-orange-40};
+  --tag-secondary-focus-background: #{$light-orange-60};
+  --tag-secondary-focus-outline: #{$dark-blue};
 }
-
-@mixin apply-tag-denim-20 {
-  --tag-background: #{$denim-20};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$denim-50};
-  --tag-active-background: #{$denim-50};
-  --tag-focus-background: #{$denim-50};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-secondary-white {
+  --tag-secondary-background: #{$white};
+  --tag-secondary-text: #{$dark-blue};
+  --tag-secondary-hover-background: #{$beige};
+  --tag-secondary-active-background: #{$white};
+  --tag-secondary-focus-background: #{$beige};
+  --tag-secondary-focus-outline: #{$dark-blue};
 }
-
-@mixin apply-tag-denim-40 {
-  --tag-background: #{$denim-40};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$denim-50};
-  --tag-active-background: #{$denim-50};
-  --tag-focus-background: #{$denim-50};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-secondary-blue {
+  --tag-secondary-background: #{$main-turquoise-20};
+  --tag-secondary-text: #{$dark-blue};
+  --tag-secondary-hover-background: #{$main-turquoise-40};
+  --tag-secondary-active-background: #{$main-turquoise-20};
+  --tag-secondary-focus-background: #{$main-turquoise-40};
+  --tag-secondary-focus-outline: #{$dark-blue};
 }
-
-@mixin apply-tag-secondary-denim-10 {
-  --tag-secondary-background: #{$denim-10};
-  --tag-secondary-text: #{$navy-blue-100};
-  --tag-secondary-hover-background: #{$navy-blue-70};
-  --tag-secondary-hover-text: #{$white};
-  --tag-secondary-active-background: #{$navy-blue-70};
-  --tag-secondary-focus-background: #{$denim-10};
-  --tag-secondary-focus-outline: #{$navy-blue-100};
-}
-
-@mixin apply-tag-tangerine-70 {
-  --tag-background: #{$tangerine-70};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$tangerine-100};
-  --tag-active-background: #{$tangerine-100};
-  --tag-focus-background: #{$tangerine-70};
-  --tag-focus-outline: #{$navy-blue-100};
-}
-
-@mixin apply-tag-goldenrod {
-  --tag-background: #{$goldenrod-100};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$tangerine-100};
-  --tag-active-background: #{$tangerine-100};
-  --tag-focus-background: #{$goldenrod-100};
-  --tag-focus-outline: #{$navy-blue-100};
-}
-
-@mixin apply-tag-fern-20 {
-  --tag-background: #{$fern-20};
-  --tag-text: #{$navy-blue-100};
-  --tag-hover-background: #{$fern-100};
-  --tag-active-background: #{$fern-100};
-  --tag-focus-background: #{$fern-20};
-  --tag-focus-outline: #{$navy-blue-100};
+@mixin apply-tag-light-light-blue {
+  --tag-background: #{$main-turquoise-10};
+  --tag-text: #{$dark-blue};
+  --tag-hover-background: #{$main-turquoise-40};
+  --tag-active-background: #{$main-turquoise-10};
+  --tag-focus-background: #{$main-turquoise-40};
+  --tag-focus-outline: #{$dark-blue};
 }

@@ -2,10 +2,10 @@
 @use '../../utilities/index.module' as *;
 
 .search {
-  color: $navy-blue-100;
+  color: $dark-blue;
   padding: px-to-rem(18) px-to-rem(32) px-to-rem(18) px-to-rem(72);
   border-radius: $radius-large;
-  border: 1px solid $navy-blue-30;
+  border: 1px solid $dark-blue-30;
   width: 100%;
 
   @include apply-body-medium-large;

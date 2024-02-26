@@ -61,7 +61,7 @@
 
   .content {
     background: $white;
-    color: $navy-blue-100;
+    color: $dark-blue;
 
     &::before {
       border-bottom: px-to-rem(7) solid $white;
@@ -71,15 +71,15 @@
 
 .light {
   .button {
-    color: $navy-blue-100;
+    color: $dark-blue;
   }
 
   .content {
-    background: $navy-blue-100;
+    background: $dark-blue;
     color: $white;
 
     &::before {
-      border-bottom: px-to-rem(7) solid $navy-blue-100;
+      border-bottom: px-to-rem(7) solid $dark-blue;
     }
   }
 }

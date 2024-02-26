@@ -3,7 +3,7 @@
 
 .modal-contact-us {
   text-align: center;
-  color: $navy-blue-100;
+  color: $dark-blue;
   display: grid;
   grid-template-rows: 1fr auto;
   align-items: center;
@@ -46,7 +46,7 @@
   }
 
   .background {
-    background-color: $fern-10;
+    background-color: $green-10;
   }
 }
 
@@ -82,7 +82,7 @@
 
     hr {
       border: none;
-      border-left: solid 1px $navy-blue-10;
+      border-left: solid 1px $dark-blue-10;
 
       &:nth-of-type(3n),
       &:nth-of-type(3n + 2) {

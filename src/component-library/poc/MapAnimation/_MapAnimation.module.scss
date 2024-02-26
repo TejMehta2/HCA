@@ -2,7 +2,7 @@
 
 /* dummy code for mock previous component */
 .dummy-component {
-  background-color: $teal-100;
+  background-color: $main-turquoise;
   width: 100%;
   height: 1200px;
 }
@@ -50,15 +50,15 @@ Real version will probably an SVG which will likely need more complex logic in o
 }
 
 .card:nth-child(1) {
-  background-color: $orange-100;
+  background-color: $coral;
 }
 
 .card:nth-child(2) {
-  background-color: $fern-100;
+  background-color: $green;
 }
 
 .card:nth-child(3) {
-  background-color: $tangerine-100;
+  background-color: $light-orange;
 }
 
 .active {

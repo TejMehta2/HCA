@@ -10,7 +10,7 @@ import TextButton from '../../core-components/TextButton/TextButton';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 const mockProps: CardBlockProps = {
-  theme: 'A-HCA-White',
+  theme: 'J-HCA-Turquoise-10',
   variation: '3-columns',
   header: (
     <AdvancedBlockHeader

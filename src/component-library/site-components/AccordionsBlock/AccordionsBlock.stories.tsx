@@ -20,7 +20,7 @@ export default meta;
 
 export const Default: StoryObj<typeof AccordionsBlock> = {
   args: {
-    theme: 'K-HCA-Fern-20',
+    theme: 'H-HCA-Green-20',
     subtitle: (
       <Text tag="h3" variation="subheading-1">
         Meta title
@@ -111,7 +111,7 @@ export const Default: StoryObj<typeof AccordionsBlock> = {
 
 export const Faqs: StoryObj<typeof AccordionsBlock> = {
   args: {
-    theme: 'K-HCA-Fern-20',
+    theme: 'H-HCA-Green-20',
     header: (
       <Text tag="h3" variation="display-3">
         FAQ

@@ -7,7 +7,7 @@ const VideoBlock = (props: VideoBlockProps): JSX.Element => {
   const {
     video,
     header,
-    theme = 'A-HCA-White',
+    theme = 'F-HCA-White',
     variation = 'standard',
   } = props;
   return (

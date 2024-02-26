@@ -128,6 +128,6 @@ export const Default: StoryObj<typeof CardDoctorLayout> = {
         </span>
       </a>
     ),
-    theme: 'D-HCA-Teal',
+    theme: 'A-HCA-Main-Turquoise',
   },
 };

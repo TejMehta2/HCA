@@ -19,7 +19,7 @@ const meta: Meta<typeof SidePanel> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={'F-HCA-White'}>
         <Story />
       </Themes>
     ),
@@ -58,7 +58,7 @@ export const Default: StoryObj<typeof SidePanel> = {
           longTextTitle="TITLE"
           shortText="Next initial appointment on Fri, Oct 28"
         />
-        <Themes theme={'D-HCA-Teal'}>
+        <Themes theme={'A-HCA-Main-Turquoise'}>
           <Text tag="p" variation="body-medium-small">
             Last checked: 1 min ago
           </Text>

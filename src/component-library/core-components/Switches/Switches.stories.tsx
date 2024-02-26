@@ -35,7 +35,7 @@ export const Dark: StoryObj<typeof Switches> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#0c2141' }],
+      values: [{ name: 'dark-blue', value: '#112f34' }],
     },
   },
 };

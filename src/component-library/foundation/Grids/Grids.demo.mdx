@@ -38,7 +38,7 @@ This is a suggested way of applying the mixins to a component in the main conten
 @use '../index.module.scss' as *;
 
 .grid > * {
-  background-color: $orange-60;
+  background-color: $coral-60;
   text-align: center;
 }
 
@@ -63,18 +63,19 @@ This is a suggested way of applying the mixins to a component in the main conten
   @include responsive-grid-start;
   @include responsive-grid-span;
 }
+
 ```
 
 ### In module React component
 
 ```tsx dark
 // Grids.demo.tsx
-import React from 'react';
-import { GridsProps } from './Grids.demo.types';
-import styles from './Grids.demo.module.scss';
-import Text from '../Text/Text';
+import React from 'react'
+import { GridsProps } from './Grids.demo.types'
+import styles from './Grids.demo.module.scss'
+import Text from '../Text/Text'
 const Grids = (props: GridsProps) => {
-  const {} = props;
+  const {} = props
   return (
     <div className={styles.grid}>
       <Text>no class</Text>
@@ -105,10 +106,10 @@ const Grids = (props: GridsProps) => {
         <Text>.default</Text>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Grids;
+export default Grids
 ```
 
-<Canvas of={GridsStories.Default} />
+<Canvas of={GridsStories.Default}  />

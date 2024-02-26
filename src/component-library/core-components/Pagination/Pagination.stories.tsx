@@ -28,7 +28,7 @@ export const Default: StoryObj<typeof Pagination> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={'F-HCA-White'}>
         <Story />
       </Themes>
     ),

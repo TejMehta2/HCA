@@ -48,7 +48,7 @@ export const Default: StoryObj<typeof CardContent> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'D-HCA-Teal'}>
+      <Themes theme={'A-HCA-Main-Turquoise'}>
         <Story />
       </Themes>
     ),

@@ -6,7 +6,7 @@ import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 
 const mockProps: TabsBlockProps = {
-  theme: 'L-HCA-Teal-5',
+  theme: 'K-HCA-Turquoise-5',
   title: (
     <Text tag="h2" variation="display-4">
       Our appointments & memberships

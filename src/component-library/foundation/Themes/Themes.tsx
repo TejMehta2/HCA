@@ -3,7 +3,12 @@ import { ThemesProps } from './Themes.types';
 import styles from './Themes.module.scss';
 
 const Themes = (props: ThemesProps): JSX.Element => {
-  const { children, theme = 'D-HCA-Teal', tag = 'div', topLevelTheme } = props;
+  const {
+    children,
+    theme = 'A-HCA-Main-Turquoise',
+    tag = 'div',
+    topLevelTheme,
+  } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
   return (
     <CustomTag

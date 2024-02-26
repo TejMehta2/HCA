@@ -85,7 +85,7 @@ export const Default = (props: StepProps): JSX.Element => {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
-          theme="A-HCA-White"
+          theme="F-HCA-White"
           imageAlignment="left"
           length="short"
           subheader={

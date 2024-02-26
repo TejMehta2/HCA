@@ -38,7 +38,7 @@ const mockProps: ModalSearchProps = {
     </>
   ),
   defaultOpen: true,
-  theme: 'D-HCA-Teal',
+  theme: 'A-HCA-Main-Turquoise',
 };
 
 describe('ModalSearch', () => {

@@ -7,7 +7,7 @@ import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 
 const mockProps: AccordionsBlockSideBySideProps = {
-  theme: 'K-HCA-Fern-20',
+  theme: 'H-HCA-Green-20',
   subtitle: (
     <Text tag="h3" variation="subheading-1">
       Meta title
