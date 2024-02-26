@@ -77,25 +77,27 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       <br />
       <JssText field={props.fields.data?.contextItem?.postCode.jsonValue} />
       <br />
-      <JssText field={props.fields.data?.contextItem?.getDirections.jsonValue} />
+      <JssText
+        field={props.fields.data?.contextItem?.getDirections.jsonValue}
+      />
       <br />
       <span>DoctifyReviews</span>
       <br />
       <Doctify
-            alignment="left"
-            params={props.params}
-            key={2}
-            fields={{ Reviews: props.fields.data.contextItem.doctifyReviews }}
-          />
+        alignment="left"
+        params={props.params}
+        key={2}
+        fields={{ Reviews: props.fields.data.contextItem.doctifyReviews }}
+      />
       <CQCRating
-            length="short"
-            hideRating={true}
-            {...props.fields.data.contextItem.cQCRating}
-          />
+        length="short"
+        hideRating={true}
+        {...props.fields.data.contextItem.cQCRating}
+      />
       <span>Contact Unit like on Talk to Us or Call us Today</span>
       <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
-          </PlaceHolderWrapper>
+        <Placeholder name={phKey} rendering={props.rendering} />
+      </PlaceHolderWrapper>
     </div>
   );
 };
