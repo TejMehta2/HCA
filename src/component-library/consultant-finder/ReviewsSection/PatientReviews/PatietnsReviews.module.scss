@@ -1,0 +1,22 @@
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
+
+.patients-reviews {
+  margin: $spacing-7 0;
+
+  .review {
+    margin: $spacing-7 0;
+    padding-bottom: $spacing-7;
+    border-bottom: 1px solid #ADB4BF;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+  }
+}

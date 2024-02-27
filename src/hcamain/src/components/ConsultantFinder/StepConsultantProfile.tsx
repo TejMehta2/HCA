@@ -51,6 +51,8 @@ import OverallRating from '@component-library/consultant-finder/OverallRating/Ov
 import Locations from '@component-library/consultant-finder/Locations/Locations';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
+import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -259,27 +261,29 @@ export const Default = (props: StepProps): JSX.Element => {
               }
               overallExperienceYearsText={'years of experience'}
             >
-              <Tabs
-                callback={() => {}}
-                tabs={[
-                  {
-                    icon: 'iconBook',
-                    label: 'About',
-                  },
-                  {
-                    icon: 'iconPin',
-                    label: 'Locations',
-                  },
-                  {
-                    icon: 'iconCreditCard',
-                    label: 'Fees',
-                  },
-                  {
-                    icon: 'iconComment',
-                    label: 'Reviews',
-                  },
-                ]}
-              />
+              <Themes theme={'F-HCA-White'}>
+                <Tabs
+                  callback={() => {}}
+                  tabs={[
+                    {
+                      icon: 'iconBook',
+                      label: 'About',
+                    },
+                    {
+                      icon: 'iconPin',
+                      label: 'Locations',
+                    },
+                    {
+                      icon: 'iconCreditCard',
+                      label: 'Fees',
+                    },
+                    {
+                      icon: 'iconComment',
+                      label: 'Reviews',
+                    },
+                  ]}
+                />
+              </Themes>
             </ProfilePageHeader>
             <ProfilePageSection>
               <About
@@ -400,6 +404,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 serverSideData?.ProfileJson?.review?.explanation || 0
               }
             ></OverallRating>
+            <ReviewsSection></ReviewsSection>
           </MainWrapper>
           <SideWrapper>
             <SidePanel>
