@@ -23,7 +23,7 @@
       color: inherit;
       padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
       height: $spacing-9;
-      border: 1px solid #626f82;
+      border: 1px solid $navy-blue-60;
       border-radius: $radius-large;
 
       @include apply-body-medium-large;
