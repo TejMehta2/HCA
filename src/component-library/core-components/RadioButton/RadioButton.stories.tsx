@@ -45,7 +45,7 @@ export const Dark: StoryObj<typeof RadioButton> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 };

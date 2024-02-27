@@ -57,7 +57,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         <main>
           <div id="content">
             {isHomepage ? (
-              <ScrollTransition initialTheme="F-HCA-White">
+              <ScrollTransition initialTheme="A-HCA-White">
                 {route && (
                   <Placeholder name="headless-main" rendering={route} />
                 )}

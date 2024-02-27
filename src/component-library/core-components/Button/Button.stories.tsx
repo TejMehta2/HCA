@@ -38,7 +38,7 @@ export const LargeFullDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
@@ -60,7 +60,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="E-HCA-Dark-Grey">
+      <Themes theme="B-HCA-Navy-Blue">
         <Story />
       </Themes>
     ),
@@ -69,7 +69,7 @@ export const LargeFullLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 };
@@ -92,7 +92,7 @@ export const LargeOutlineDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
@@ -118,13 +118,13 @@ export const LargeOutlineLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <Themes theme="E-HCA-Dark-Grey">
+      <Themes theme="B-HCA-Navy-Blue">
         <Story />
       </Themes>
     ),
@@ -149,7 +149,7 @@ export const SmallFullDark: StoryObj<typeof Button> = {
 
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
@@ -175,13 +175,13 @@ export const SmallFullLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <Themes theme="E-HCA-Dark-Grey">
+      <Themes theme="B-HCA-Navy-Blue">
         <Story />
       </Themes>
     ),
@@ -222,13 +222,13 @@ export const SmallOutlineLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <Themes theme="E-HCA-Dark-Grey">
+      <Themes theme="B-HCA-Navy-Blue">
         <Story />
       </Themes>
     ),
@@ -283,13 +283,13 @@ export const SocialLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <div style={{ background: '#112f34' }}>
+      <div style={{ background: 'navy-blue-100' }}>
         <Story />
       </div>
     ),
@@ -338,13 +338,13 @@ export const StandardCarouselButtonLight: StoryObj<typeof Button> = {
   parameters: {
     backgrounds: {
       default: 'dark-blue',
-      values: [{ name: 'dark-blue', value: '#112f34' }],
+      values: [{ name: 'dark-blue', value: '#0c2141' }],
     },
   },
 
   decorators: [
     (Story) => (
-      <div style={{ background: '#112f34' }}>
+      <div style={{ background: 'navy-blue-100' }}>
         <Story />
       </div>
     ),
@@ -381,7 +381,7 @@ export const ResponsiveContainerExample: StoryObj<typeof Button> = {
   decorators: [
     (Story) => (
       <div style={{ padding: '1rem' }}>
-        <Themes theme="F-HCA-White">
+        <Themes theme="A-HCA-White">
           <Story />
         </Themes>
       </div>

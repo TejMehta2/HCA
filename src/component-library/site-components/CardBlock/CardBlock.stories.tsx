@@ -22,7 +22,7 @@ const meta: Meta<typeof CardBlock> = {
     layout: 'fullscreen',
   },
   args: {
-    theme: 'J-HCA-Turquoise-10',
+    theme: 'A-HCA-White',
   },
   argTypes: {
     header: {

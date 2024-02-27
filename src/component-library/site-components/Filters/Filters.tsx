@@ -48,7 +48,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
         </Button>
       </div>
 
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Modals
           ref={dialogRef}
           defaultOpen={false}

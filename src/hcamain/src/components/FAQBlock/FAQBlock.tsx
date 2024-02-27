@@ -121,7 +121,7 @@ export const Default = (props: FAQProps): JSX.Element => {
     <>
       <FaqSchema {...accordions.questionSchema} />
       <AccordionsBlock
-        theme={props.params.Theme || 'F-HCA-White'}
+        theme={props.params.Theme || 'A-HCA-White'}
         subtitle={
           props.fields.Title?.value ? (
             <Text tag="p" variation="subheading-1">

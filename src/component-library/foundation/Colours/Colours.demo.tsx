@@ -69,16 +69,17 @@ const ColourContainer = () => {
     <div style={{ padding: '20px' }}>
       <>
         <h3>Primary Colours</h3>
-        <ColourGroup group={filterGroup('turquoise')} />
-        <ColourGroup group={filterGroup('blue')} />
+        <ColourGroup group={filterGroup('teal')} />
+        <ColourGroup group={filterGroup('navy')} />
+        <ColourGroup group={filterGroup('denim')} />
         <ColourGroup group={filterGroup('white')} />
       </>
       <>
         <h3>Secondary Colours</h3>
-        <ColourGroup group={filterGroup('green')} />
-        <ColourGroup group={filterGroup('beige')} />
+        <ColourGroup group={filterGroup('fern')} />
+        <ColourGroup group={filterGroup('goldenrod')} />
+        <ColourGroup group={filterGroup('tangerine')} />
         <ColourGroup group={filterGroup('orange')} />
-        <ColourGroup group={filterGroup('coral')} />
         <ColourGroup group={filterGroup('red')} />
       </>
     </div>

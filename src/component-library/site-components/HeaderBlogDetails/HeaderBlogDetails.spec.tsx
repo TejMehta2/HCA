@@ -6,7 +6,7 @@ import Tags from '../../core-components/Tags/Tags';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: HeaderBlogDetailsProps = {
-  theme: 'F-HCA-White',
+  theme: 'A-HCA-White',
   tag: (
     <Tags contentVariation="quote">
       <a href="#">Announcement</a>

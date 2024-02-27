@@ -104,7 +104,7 @@ export const Default: StoryObj<typeof GoogleMapsEmbed> = {
   args: {},
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-Main-Turquoise'}>
+      <Themes theme={'D-HCA-Teal'}>
         <Story />
       </Themes>
     ),
