@@ -44,7 +44,7 @@ const Modals = (
     <div className={close}>
       <TextLink>
         <button type="button" onClick={() => ref?.current?.close()}>
-          Close
+          <span>Close</span>
           <Icons iconName="iconCross" />
         </button>
       </TextLink>
