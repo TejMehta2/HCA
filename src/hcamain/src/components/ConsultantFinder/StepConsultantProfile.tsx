@@ -53,6 +53,7 @@ import Navigation from '@component-library/consultant-finder/Navigation/Navigati
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import Themes from '@component-library/foundation/Themes/Themes';
+import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -225,27 +226,31 @@ export const Default = (props: StepProps): JSX.Element => {
             {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
             <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
           </Breadcrumbs>
-          {/* <Tabs
-            callback={() => {}}
-            tabs={[
-              {
-                icon: 'iconBook',
-                label: 'About',
-              },
-              {
-                icon: 'iconPin',
-                label: 'Locations',
-              },
-              {
-                icon: 'iconCreditCard',
-                label: 'Fees',
-              },
-              {
-                icon: 'iconComment',
-                label: 'Reviews',
-              },
-            ]}
-          /> */}
+          <MobileTabs>
+            <Themes theme={'F-HCA-White'}>
+              <Tabs
+                callback={() => {}}
+                tabs={[
+                  {
+                    icon: 'iconBook',
+                    label: 'About',
+                  },
+                  {
+                    icon: 'iconPin',
+                    label: 'Locations',
+                  },
+                  {
+                    icon: 'iconCreditCard',
+                    label: 'Fees',
+                  },
+                  {
+                    icon: 'iconComment',
+                    label: 'Reviews',
+                  },
+                ]}
+              />
+            </Themes>
+          </MobileTabs>
         </div>
         <ConsultantFinderProfileWrapper>
           <MainWrapper>
