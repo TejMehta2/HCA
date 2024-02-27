@@ -14,7 +14,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
   align-items: center;
   padding-top: px-to-rem(19);
   padding-bottom: px-to-rem(19);
-  border-bottom: solid px-to-rem(1) $dark-blue-9;
+  border-bottom: solid px-to-rem(1) $navy-blue-9;
 
   &:last-of-type {
     border-bottom: none;
@@ -75,7 +75,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
     content: '';
     width: calc(100% + 2 * #{$spacing-14});
     height: px-to-rem(1);
-    background-color: $dark-blue-9;
+    background-color: $navy-blue-9;
   }
 }
 

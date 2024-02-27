@@ -18,7 +18,7 @@ const ModalAppointment = (
     defaultOpen = false,
   } = props;
   return (
-    <Themes theme="F-HCA-White">
+    <Themes theme="A-HCA-White">
       <Modals ref={ref} defaultOpen={defaultOpen}>
         <div className={styles['modal-appointment']}>
           <div className={styles.grid}>

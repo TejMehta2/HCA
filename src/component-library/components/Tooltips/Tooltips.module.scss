@@ -61,7 +61,7 @@
 
   .content {
     background: $white;
-    color: $dark-blue;
+    color: $navy-blue-100;
 
     &::before {
       border-bottom: px-to-rem(7) solid $white;
@@ -71,15 +71,15 @@
 
 .light {
   .button {
-    color: $dark-blue;
+    color: $navy-blue-100;
   }
 
   .content {
-    background: $dark-blue;
+    background: $navy-blue-100;
     color: $white;
 
     &::before {
-      border-bottom: px-to-rem(7) solid $dark-blue;
+      border-bottom: px-to-rem(7) solid $navy-blue-100;
     }
   }
 }
@@ -111,6 +111,7 @@
 
 .icon {
   pointer-events: none;
+  display: flex;
 
   svg {
     pointer-events: inherit;

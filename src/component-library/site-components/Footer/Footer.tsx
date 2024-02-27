@@ -12,7 +12,7 @@ const Footer = (props: FooterProps): JSX.Element => {
   const LogoMarkIcon = LogoMark as () => JSX.Element;
 
   return (
-    <Themes theme={'E-HCA-Dark-Grey'}>
+    <Themes theme={'B-HCA-Navy-Blue'}>
       <footer className={styles.footer}>
         <div className={styles.inner}>
           <div className={styles['top-row']} data-animate="xs">

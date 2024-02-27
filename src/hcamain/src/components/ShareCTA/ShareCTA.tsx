@@ -83,7 +83,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
     text: props.fields.data.contextItem?.text?.value || '',
   };
   return (
-    <Themes theme={'J-HCA-Turquoise-10'}>
+    <Themes theme={'L-HCA-Teal-5'}>
       <ShareCTA
         shareCtaText={
           <JssRichText
@@ -112,7 +112,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText field={props.fields.data.item.text?.jsonValue} />
           </Text>
         }
-        theme="F-HCA-White"
+        theme="A-HCA-White"
       >
         <Button size="large" variation="square-outline">
           <button
@@ -129,7 +129,6 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             href={`mailto:?subject=${encodeURI(
               shareData.title
             )}&body=${encodeURI(shareData.text)}`}
-            title="Share by Email"
           >
             <Icons iconName="iconEmail" />
             <JssText tag="span" field={findCtaText('EmailShare')} />

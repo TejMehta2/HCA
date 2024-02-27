@@ -84,11 +84,15 @@
     padding: 0;
     margin: 0 0 $spacing-7;
     width: fit-content;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
+    display: flex;
+    flex-wrap: wrap;
     gap: $spacing-5;
     @include media(screen-m) {
-      grid-template-columns: repeat(5, auto);
+      gap: px-to-rem(16);
+    }
+
+    li {
+      flex: 0 1 auto;
     }
 
     .stat {
@@ -105,16 +109,10 @@
     }
 
     border: none;
-    border-left: solid 1px $main-turquoise-10;
-    @include media(screen-m, max) {
-      &:nth-of-type(4n - 3) {
-        display: none;
-      }
-    }
-    @include media(screen-m, min) {
-      &:nth-of-type(3n - 2) {
-        display: none;
-      }
+    border-left: solid 1px $teal-10;
+
+    &:last-child {
+      display: none;
     }
   }
 

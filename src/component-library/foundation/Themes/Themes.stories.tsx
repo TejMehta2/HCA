@@ -12,10 +12,15 @@ import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 import CardBlog from '../../components/CardBlog/CardBlog';
 import Doctify from '../../components/Doctify/Doctify';
+import Pagination from '../../core-components/Pagination/Pagination';
 
 // TODO - replace demo cards with actual cards, and make sure they theme children correctly.
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+
+/* Mock callback function for fetching data  */
+const getPageContent = (page: number) => console.log(page);
+
 const meta: Meta<typeof Themes> = {
   title: 'foundation/Themes',
   component: Themes,
@@ -23,6 +28,7 @@ const meta: Meta<typeof Themes> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
+
   args: {
     children: (
       <div
@@ -143,6 +149,13 @@ const meta: Meta<typeof Themes> = {
             ),
           }}
         />
+
+        <Pagination
+          pageCount={14}
+          callback={(newPage: number) => {
+            return getPageContent(newPage);
+          }}
+        />
       </div>
     ),
   },
@@ -156,7 +169,7 @@ export const Default: StoryObj<typeof Themes> = {
 
 export const Nesting: StoryObj<typeof Themes> = {
   args: {
-    theme: 'L-HCA-Coral-60',
+    theme: 'G-HCA-Orange',
     children: (
       <div
         style={{
@@ -179,7 +192,7 @@ export const Nesting: StoryObj<typeof Themes> = {
         <Tags>
           <a href="#">Tags</a>
         </Tags>
-        <Themes theme="A-HCA-Main-Turquoise">
+        <Themes theme="D-HCA-Teal">
           <div
             style={{
               display: 'grid',
@@ -201,7 +214,7 @@ export const Nesting: StoryObj<typeof Themes> = {
             <Tags>
               <a href="#">Tags</a>
             </Tags>
-            <Themes theme="E-HCA-Dark-Grey">
+            <Themes theme="B-HCA-Navy-Blue">
               <div
                 style={{
                   display: 'grid',
@@ -234,7 +247,7 @@ export const Nesting: StoryObj<typeof Themes> = {
 
 export const Overrides: StoryObj<typeof Themes> = {
   args: {
-    theme: 'L-HCA-Coral-60',
+    theme: 'G-HCA-Orange',
     children: (
       <div
         style={{
@@ -296,39 +309,45 @@ export const Overrides: StoryObj<typeof Themes> = {
   },
 };
 
-export const ThemeA: StoryObj<typeof Themes> = {
-  args: { theme: 'A-HCA-Main-Turquoise' },
+export const ThemeAWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'A-HCA-White' },
 };
-export const ThemeB: StoryObj<typeof Themes> = {
-  args: { theme: 'B-HCA-Green' },
+export const ThemeBNavyBlue: StoryObj<typeof Themes> = {
+  args: { theme: 'B-HCA-Navy-Blue' },
 };
-export const ThemeC: StoryObj<typeof Themes> = {
-  args: { theme: 'C-HCA-Beige' },
+export const ThemeCDenim: StoryObj<typeof Themes> = {
+  args: { theme: 'C-HCA-Denim' },
 };
-export const ThemeD: StoryObj<typeof Themes> = {
-  args: { theme: 'D-HCA-Light-Orange' },
+export const ThemeDTeal: StoryObj<typeof Themes> = {
+  args: { theme: 'D-HCA-Teal' },
 };
-export const ThemeE: StoryObj<typeof Themes> = {
-  args: { theme: 'E-HCA-Dark-Grey' },
+export const ThemeECerulean: StoryObj<typeof Themes> = {
+  args: { theme: 'E-HCA-Cerulean' },
 };
-export const ThemeF: StoryObj<typeof Themes> = {
-  args: { theme: 'F-HCA-White' },
+export const ThemeFFern: StoryObj<typeof Themes> = {
+  args: { theme: 'F-HCA-Fern' },
 };
-export const ThemeG: StoryObj<typeof Themes> = {
-  args: { theme: 'G-HCA-Green-40' },
+export const ThemeGOrange: StoryObj<typeof Themes> = {
+  args: { theme: 'G-HCA-Orange' },
 };
-export const ThemeH: StoryObj<typeof Themes> = {
-  args: { theme: 'H-HCA-Green-20' },
+export const ThemeHTangerine: StoryObj<typeof Themes> = {
+  args: { theme: 'H-HCA-Tangerine' },
 };
-export const ThemeI: StoryObj<typeof Themes> = {
-  args: { theme: 'I-HCA-Turquoise-20' },
+export const ThemeIGoldenrod: StoryObj<typeof Themes> = {
+  args: { theme: 'I-HCA-Goldenrod' },
 };
-export const ThemeJ: StoryObj<typeof Themes> = {
-  args: { theme: 'J-HCA-Turquoise-10' },
+export const ThemeJTangerine20: StoryObj<typeof Themes> = {
+  args: { theme: 'J-HCA-Tangerine-20' },
 };
-export const ThemeK: StoryObj<typeof Themes> = {
-  args: { theme: 'K-HCA-Turquoise-5' },
+export const ThemeKFern20: StoryObj<typeof Themes> = {
+  args: { theme: 'K-HCA-Fern-20' },
 };
-export const ThemeL: StoryObj<typeof Themes> = {
-  args: { theme: 'L-HCA-Coral-60' },
+export const ThemeLTeal5: StoryObj<typeof Themes> = {
+  args: { theme: 'L-HCA-Teal-5' },
+};
+export const ThemeMGoldenrod20: StoryObj<typeof Themes> = {
+  args: { theme: 'M-HCA-Goldenrod-20' },
+};
+export const ThemeNDenim5: StoryObj<typeof Themes> = {
+  args: { theme: 'N-HCA-Denim-5' },
 };

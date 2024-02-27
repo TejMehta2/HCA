@@ -38,7 +38,7 @@ export const Default: StoryObj<typeof BlogFilterList> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'F-HCA-White'}>
+      <Themes theme={'A-HCA-White'}>
         <div style={{ padding: '1rem' }}>
           <Story />
         </div>
