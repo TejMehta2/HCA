@@ -12,19 +12,19 @@
 
   // Sequential background colours
   &:nth-of-type(4n + 1) {
-    @include apply-theme-d;
+    @include apply-theme-i-goldenrod;
   }
 
   &:nth-of-type(4n + 2) {
-    @include apply-theme-g;
+    @include apply-theme-k-fern-20;
   }
 
   &:nth-of-type(4n + 3) {
-    @include apply-theme-c;
+    @include apply-theme-g-orange;
   }
 
   &:nth-of-type(4n + 4) {
-    @include apply-theme-i;
+    @include apply-theme-l-teal-5;
   }
 
   img {
@@ -48,25 +48,25 @@ This gets around it by using the parent class as the sibling element to apply se
 div[class*='slick-slide'] {
   &:nth-of-type(4n + 1) {
     .card {
-      @include apply-theme-d;
+      @include apply-theme-i-goldenrod;
     }
   }
 
   &:nth-of-type(4n + 2) {
     .card {
-      @include apply-theme-g;
+      @include apply-theme-k-fern-20;
     }
   }
 
   &:nth-of-type(4n + 3) {
     .card {
-      @include apply-theme-l;
+      @include apply-theme-g-orange;
     }
   }
 
   &:nth-of-type(4n + 4) {
     .card {
-      @include apply-theme-i;
+      @include apply-theme-l-teal-5;
     }
   }
 }

@@ -15,7 +15,7 @@
   width: 100%;
   display: flex;
   gap: 2rem;
-  background-color: $beige;
+  background-color: $goldenrod-100;
   padding: 4rem 2rem;
   overflow: hidden;
   position: absolute;
@@ -27,11 +27,11 @@
   }
 
   & > div:first-of-type {
-    background-color: $main-turquoise;
+    background-color: $teal-100;
   }
 
   & > div:last-of-type {
-    background-color: $coral;
+    background-color: $orange-100;
   }
 }
 

@@ -34,10 +34,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-6;
-  background: linear-gradient(
-    rgba($main-turquoise-20, 1) 75%,
-    rgba($main-turquoise-20, 0)
-  );
+  background: linear-gradient(rgba($teal-20, 1) 75%, rgba($teal-20, 0));
   padding: $spacing-4 $spacing-14 px-to-rem(95);
   z-index: 2;
   transition: transform 1.5s ease-out;

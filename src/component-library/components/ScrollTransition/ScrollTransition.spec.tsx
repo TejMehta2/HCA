@@ -16,7 +16,7 @@ import CardService from '../CardService/CardService';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 const mockProps: ScrollTransitionProps = {
-  initialTheme: 'F-HCA-White',
+  initialTheme: 'A-HCA-White',
   children: (
     <>
       <HomepageIntroBlock
@@ -61,7 +61,7 @@ const mockProps: ScrollTransitionProps = {
           />
         }
         cqc={
-          <Themes theme="F-HCA-White">
+          <Themes theme="A-HCA-White">
             <CQCBlock
               link={<a href="#"></a>}
               title="Care Quality Commission verified"
@@ -89,7 +89,7 @@ const mockProps: ScrollTransitionProps = {
           </Themes>
         }
         doctify={
-          <Themes theme="E-HCA-Dark-Grey">
+          <Themes theme="B-HCA-Navy-Blue">
             <Doctify
               alignment="left"
               link={<a href="#"></a>}

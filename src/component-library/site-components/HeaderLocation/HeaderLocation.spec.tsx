@@ -51,7 +51,7 @@ const mockProps: HeaderLocationProps = {
       height="683"
     />
   ),
-  theme: 'I-HCA-Turquoise-20',
+  theme: 'E-HCA-Cerulean',
 };
 
 describe('HeaderLocation', () => {

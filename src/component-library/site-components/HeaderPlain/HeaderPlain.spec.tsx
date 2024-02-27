@@ -14,7 +14,7 @@ const mockProps: HeaderPlainProps = {
       et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     </p>
   ),
-  theme: 'A-HCA-Main-Turquoise',
+  theme: 'D-HCA-Teal',
 };
 
 describe('HeaderPlain', () => {
