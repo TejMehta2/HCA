@@ -41,6 +41,7 @@ const SitecorePage = ({
   const isEditing = layoutData.sitecore.context.pageEditing;
   const isComponentRendering =
     layoutData.sitecore.context.renderingType === RenderingType.Component;
+
   return (
     <div>
       hello finder profile sub-page world

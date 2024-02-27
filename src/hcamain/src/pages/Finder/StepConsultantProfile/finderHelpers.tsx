@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import { parse } from 'node-html-parser';
 
 // get all the active hca consultants on consultant finder
@@ -69,6 +70,12 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
           }
         }
       );
+      if(ldbSlugs.length == 0)
+      {
+        console.error(
+          `Warning LDB consultant slugs list for is empty from call getActiveLiveDiaryConsultantSlugs`
+        );
+      }
       //console.log("CF LDB slugs:", ldbSlugs);
     } else {
       // couldn't get the ldb consultant slugs
@@ -100,7 +107,7 @@ export async function getSpecialistProfileData(
   serviceURL?: string
 ): Promise<string> {
   const requestURL = `${serviceURL ?? Doctify_Specialists_URL}${slug}`;
-  let docitfyData: string = '';
+  let docitfyData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
@@ -110,6 +117,24 @@ export async function getSpecialistProfileData(
     });
     if (res.ok) {
       docitfyData = await res.json();
+
+      // patch in HCA facilities on doctify practice entries
+      if (docitfyData) {
+        let practice: any;
+        for (practice in docitfyData?.practices) {
+          try {
+            const facilityURL = await facilityURLFromDoctifySlug(
+              docitfyData?.practices[practice]?.slug
+            );
+            docitfyData.practices[practice]['facilityURL'] = facilityURL;
+          } catch (e) {
+            //HCA practice call threw
+            console.error(
+              `getSpecialistProfileData failed to patch in HCA facility in practice data ${e}, slug: ${docitfyData?.practices[practice]?.slug}`
+            );
+          }
+        }
+      }
     } else {
       //docitfy call failed
       docitfyData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
@@ -138,9 +163,9 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 
 // get HCA facilities data
 const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
-export async function getFacilitiesData(serviceURL?: string): Promise<string> {
+export async function getFacilitiesData(serviceURL?: string): Promise<any> {
   const requestURL = `${serviceURL ?? Doctify_To_HCA_Facilities_URL}`;
-  let facilitiesData: string = '';
+  let facilitiesData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
@@ -148,6 +173,18 @@ export async function getFacilitiesData(serviceURL?: string): Promise<string> {
       cache: 'force-cache',
       next: { revalidate: 3600 },
     });
+
+    /* if running client side, CORS
+    const res = await fetch(requestURL, {
+      headers: 
+      {
+        "Content-Type": "application/json",
+        'mode':'no-cors'
+      },
+      cache: 'force-cache',
+      next: { revalidate: 3600 },
+    });*/
+
     if (res.ok) {
       facilitiesData = await res.json();
     } else {
@@ -167,10 +204,20 @@ export async function getFacilitiesData(serviceURL?: string): Promise<string> {
 export async function facilityURLFromDoctifySlug(
   doctifyLocationSlug: string
 ): Promise<string> {
+  let locationURL: string = '';
   const facilities = await getFacilitiesData();
-  // TODO placeholder //(facilities:JSON);
-  const locationURL: string =
-    'https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital';
+
+  if(facilities.findIndex) // got something usable back
+  {
+    let index = facilities.findIndex(
+      (facility: any) => facility.UniqueKey === doctifyLocationSlug
+    );
+    if (index > -1) {
+      locationURL = facilities[index]?.Values?.fullURL; //"https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital";
+    }
+  }
+
+
   return locationURL;
 }
 
@@ -209,7 +256,7 @@ export async function facilityURLFromDoctifySlug(
     ]
 }
 */
-const C2_FirstAppointment_API_URL: string =
+let C2_FirstAppointment_API_URL: string =
   'https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88';
 export async function LDB_FirstAppointment(
   gmcNumber: string,
