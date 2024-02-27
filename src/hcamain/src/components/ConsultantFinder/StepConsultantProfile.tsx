@@ -326,6 +326,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     longTextTitle="TITLE"
                     shortText="Next initial appointment on Fri, Oct 28"
                   />
+                  <Text tag="p" variation="body-small">
+                    Last checked: 1 min ago
+                  </Text>
                 </SidePanel>
               </About>
             </ProfilePageSection>
@@ -441,6 +444,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 longTextTitle="TITLE"
                 shortText="Next initial appointment on Fri, Oct 28"
               />
+              <Text tag="p" variation="body-small">
+                Last checked: 1 min ago
+              </Text>
               <Container marginTop="spacing-5">
                 {/* if consultant has live diaries then show 'book online' */}
                 {serverSideData?.IsLiveDiaryConsultant && (

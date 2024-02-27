@@ -13,7 +13,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log('use effect');
+    console.log('use effect peers');
     axios
       .get(
         `https://api.doctify.com/api/hca/specialists/${'mr-andrew-goldberg'}/peerRecommendations`

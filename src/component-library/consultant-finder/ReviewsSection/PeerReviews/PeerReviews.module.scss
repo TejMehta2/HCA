@@ -10,11 +10,17 @@
     border-bottom: 1px solid #ADB4BF;
   }
 
+  .rating {
+    display: flex;
+    align-items: center;
+  }
+
   .image {
     height: px-to-rem(76);
     width: px-to-rem(76);
     max-width: px-to-rem(76);
     max-height: px-to-rem(76);
+    margin-right: $spacing-4;
 
     img {
       border-radius: 50%;
