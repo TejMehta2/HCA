@@ -129,7 +129,6 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             href={`mailto:?subject=${encodeURI(
               shareData.title
             )}&body=${encodeURI(shareData.text)}`}
-            title="Share by Email"
           >
             <Icons iconName="iconEmail" />
             <JssText tag="span" field={findCtaText('EmailShare')} />

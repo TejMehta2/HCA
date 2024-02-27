@@ -8,6 +8,7 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$navy-blue-100};
   --card-body-text: #{$navy-blue-10};
+  --field-error-colour: #{$red-60};
 
   @include apply-cta-full-light;
   @include apply-cta-social-light;
@@ -24,6 +25,7 @@
   --card-secondary-background: #{$navy-blue-100};
   --card-secondary-text: #{$white};
   --card-body-text: #{$navy-blue-70};
+  --field-error-colour: #{$red-100};
 
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
