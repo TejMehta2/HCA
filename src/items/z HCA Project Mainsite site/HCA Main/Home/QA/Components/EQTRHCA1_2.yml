@@ -1,83 +1,80 @@
 ﻿---
-ID: 'a40aa402-2414-44ad-a672-fde82397f26f'
-Parent: '4b129700-c6dd-4467-b4af-2d13bd7420e5'
-Template: '0b18db9e-acec-4f9e-99c0-61a20535af37'
+ID: "a40aa402-2414-44ad-a672-fde82397f26f"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA1_2
 SharedFields:
-  - ID: 'c7c26117-dbb1-42b2-ab5e-f7223845cca3'
-    Hint: __Thumbnail
-    Value: |
-      <image mediaid="{F2595246-B1E8-4237-A606-267E06C7DE15}" />
-  - ID: 'f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e'
-    Hint: __Renderings
-    Value: |
-      <r xmlns:p="p" xmlns:s="s"
-        p:p="1">
-        <d
-          id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
-          <r
-            uid="{C18BA240-1E8A-4A78-88D6-BC01B823F32B}"
-            p:before="*"
-            s:ds="{966E5739-9EE8-4378-8D0A-3BFDAF2CE3EE}"
-            s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
-            s:par="Columns&amp;HeadingTag=h1&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-            s:ph="headless-main"
-            s:ccb="Clear on publish" />
-          <r
-            uid="{508324E9-8AC1-4A59-8C85-54340968C384}"
-            p:after="r[@uid='{C18BA240-1E8A-4A78-88D6-BC01B823F32B}']"
-            s:ds="{7985DEC4-0CC5-442C-871C-B947CB5A8346}"
-            s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
-            s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-            s:ph="headless-main"
-            s:ccb="Clear on publish" />
-          <r
-            uid="{A839E60B-51C3-484D-A9B5-CED5056F4E10}"
-            p:after="r[@uid='{508324E9-8AC1-4A59-8C85-54340968C384}']"
-            s:ds="{AD72753D-D115-47B7-A50C-A192F096E64F}"
-            s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
-            s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-            s:ph="headless-main"
-            s:ccb="Clear on publish" />
-          <r
-            uid="{2ACF52F4-D584-48D6-918B-A1885EE70671}"
-            p:after="*[1=2]"
-            s:ds=""
-            s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
-            s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-            s:ph="headless-main"
-            s:ccb="Clear on publish" />
-        </d>
-      </r>
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{F2595246-B1E8-4237-A606-267E06C7DE15}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{C18BA240-1E8A-4A78-88D6-BC01B823F32B}"
+          p:before="*"
+          s:ds="{966E5739-9EE8-4378-8D0A-3BFDAF2CE3EE}"
+          s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+          s:par="Columns&amp;HeadingTag=h1&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{508324E9-8AC1-4A59-8C85-54340968C384}"
+          p:after="r[@uid='{C18BA240-1E8A-4A78-88D6-BC01B823F32B}']"
+          s:ds="{7985DEC4-0CC5-442C-871C-B947CB5A8346}"
+          s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+          s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{A839E60B-51C3-484D-A9B5-CED5056F4E10}"
+          p:after="r[@uid='{508324E9-8AC1-4A59-8C85-54340968C384}']"
+          s:ds="{AD72753D-D115-47B7-A50C-A192F096E64F}"
+          s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+          s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+        <r
+          uid="{2ACF52F4-D584-48D6-918B-A1885EE70671}"
+          p:after="*[1=2]"
+          s:ds=""
+          s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+          s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B0334386D-3AD8-400F-A37E-1FBF7C149FF6%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
 Languages:
-  - Language: en
-    Versions:
-      - Version: 1
-        Fields:
-          - ID: '25bed78c-4957-4165-998a-ca1b52f67497'
-            Hint: __Created
-            Value: 20231219T072959Z
-          - ID: '4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'
-            Hint: NavigationTitle
-            Value: EQTRHCA1_2
-          - ID: '52807595-0f8f-4b20-8d2a-cb71d28c6103'
-            Hint: __Owner
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: '5dd74568-4d4b-44c1-b513-0af5f4cda34f'
-            Hint: __Created by
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: '8cdc337e-a112-42fb-bbb4-4143751e123f'
-            Hint: __Revision
-            Value: 'a6d2287c-a3f3-4489-8e3e-f343f4a9690c'
-          - ID: 'badd9cf9-53e0-4d0c-bcc0-2d784c282f6a'
-            Hint: __Updated by
-            Value: |
-              sitecore\carmen.popovici@eqtr.com
-          - ID: 'd9cf14b1-fa16-4ba6-9288-e8a174d4d522'
-            Hint: __Updated
-            Value: 20240216T114908Z
-          - ID: 'f253d55f-c5e7-4bbd-8423-45ee6c8a12ec'
-            Hint: Title
-            Value: EQTRHCA1_2
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T072959Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA1_2
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c6ad99c2-7bf7-4772-9753-4cfc3585e361"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240226T103604Z

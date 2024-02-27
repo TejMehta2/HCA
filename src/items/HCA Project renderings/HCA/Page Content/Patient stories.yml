@@ -49,7 +49,7 @@ SharedFields:
                 title {
                   value
                 }
-                description {
+                text{
                   value
                 }
                 date {
@@ -133,14 +133,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bd99a034-f454-45bc-bbe3-98f9f52a015c"
+      Value: "25cf6082-4fde-4278-ab82-c32823ff71c7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T190338Z
+      Value: 20240223T205626Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

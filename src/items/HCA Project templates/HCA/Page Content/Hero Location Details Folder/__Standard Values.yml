@@ -1,0 +1,33 @@
+﻿---
+ID: "5231be4f-072c-442b-a3f4-d6589b8701fa"
+Parent: "8ec6ad0c-2d5d-4177-a4cd-33f792c81c7a"
+Template: "8ec6ad0c-2d5d-4177-a4cd-33f792c81c7a"
+Path: /sitecore/templates/Project/HCA/Page Content/Hero Location Details Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {2491BC05-9A98-40E7-8CC5-106C986B7C6A}
+    {8EC6AD0C-2D5D-4177-A4CD-33F792C81C7A}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c3a35be6-db1f-45c1-aa26-e17f28d3f8db"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240224T130655Z

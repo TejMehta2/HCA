@@ -9,9 +9,15 @@ import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPl
 import { HeadingTag, HeadingSize, Theme } from 'src/types/params';
 
 interface Fields {
-  Heading: Field<string>;
-  Title: Field<string>;
-  Text: Field<string>;
+  data: {
+    item: {
+      heading: { jsonValue: Field<string> };
+    };
+    contextItem: {
+      title: { jsonValue: Field<string> };
+      text: { jsonValue: Field<string> };
+    };
+  };
 }
 
 type PlainHeaderProps = {
@@ -44,7 +50,7 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
       theme={props.params.Theme}
       subheading={
         <Text variation="subheading-1">
-          <JssText field={props.fields.Heading} />
+          <JssText field={props.fields.data.item?.heading.jsonValue} />
         </Text>
       }
       heading={
@@ -52,11 +58,11 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
           tag={props.params.HeadingTag || 'h1'}
           variation={props.params.HeadingSize || 'display-1'}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields.data.contextItem.title.jsonValue} />
         </Text>
       }
     >
-      <RichText field={props.fields.Text} />
+      <RichText field={props.fields.data.contextItem.text.jsonValue} />
     </HeaderPlain>
   );
 };

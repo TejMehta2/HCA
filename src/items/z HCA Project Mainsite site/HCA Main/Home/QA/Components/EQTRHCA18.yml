@@ -1,83 +1,80 @@
 ﻿---
-ID: 'b15ff80c-4429-419d-a754-f6e6f5e4ede1'
-Parent: '4b129700-c6dd-4467-b4af-2d13bd7420e5'
-Template: '0b18db9e-acec-4f9e-99c0-61a20535af37'
+ID: "b15ff80c-4429-419d-a754-f6e6f5e4ede1"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA18
 SharedFields:
-  - ID: 'c7c26117-dbb1-42b2-ab5e-f7223845cca3'
-    Hint: __Thumbnail
-    Value: |
-      <image mediaid="{96DCA354-FB0B-469B-96FC-5E4308DF49DE}" />
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{96DCA354-FB0B-469B-96FC-5E4308DF49DE}" />
 Languages:
-  - Language: en
-    Versions:
-      - Version: 1
-        Fields:
-          - ID: '001dd393-96c5-490b-924a-b0f25cd9efd8'
-            Hint: __Lock
-            Value: <r />
-          - ID: '04bf00db-f5fb-41f7-8ab7-22408372a981'
-            Hint: __Final Renderings
-            Value: |
-              <r xmlns:p="p" xmlns:s="s"
-                p:p="1">
-                <d
-                  id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
-                  <r
-                    uid="{27969B43-E1B5-428F-AC03-27C810BC824F}"
-                    p:before="*"
-                    s:ds="{51BB46DF-CB43-4228-975E-F45FA647CD4B}"
-                    s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-                    s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-                    s:ph="/headless-main/cta-buttons-1" />
-                  <r
-                    uid="{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}"
-                    p:after="r[@uid='{27969B43-E1B5-428F-AC03-27C810BC824F}']"
-                    s:ds="{0F2C6E0F-D4A1-4373-9956-80CA247DF3C3}"
-                    s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-                    s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-                    s:ph="/headless-main/cta-buttons-1" />
-                  <r
-                    uid="{1802139F-4454-4465-AD44-0F08F645F571}"
-                    p:after="r[@uid='{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}']"
-                    s:ds="{7397515C-BCA6-49CD-BCAF-BCC64622C6DA}"
-                    s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-                    s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-                    s:ph="/headless-main/cta-buttons-1" />
-                  <r
-                    uid="{EFF3E93C-0B95-4337-9354-9526FE09333E}"
-                    p:after="*[1=2]"
-                    s:ds="local:/Data/CTA Block Component"
-                    s:id="{C81703EF-34C2-41A3-BC78-7258389E59D2}"
-                    s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B08F75B35-E42A-453F-967E-205FDEDAA2CD%7D&amp;Styles&amp;Theme=D-HCA-Teal&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-                    s:ph="headless-main"
-                    s:ccb="Clear on publish" />
-                </d>
-              </r>
-          - ID: '25bed78c-4957-4165-998a-ca1b52f67497'
-            Hint: __Created
-            Value: 20240201T142503Z
-          - ID: '4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'
-            Hint: NavigationTitle
-            Value: EQTRHCA18
-          - ID: '52807595-0f8f-4b20-8d2a-cb71d28c6103'
-            Hint: __Owner
-            Value: |
-              sitecore\naoum.zilas@eqtr.com
-          - ID: '5dd74568-4d4b-44c1-b513-0af5f4cda34f'
-            Hint: __Created by
-            Value: |
-              sitecore\naoum.zilas@eqtr.com
-          - ID: '8cdc337e-a112-42fb-bbb4-4143751e123f'
-            Hint: __Revision
-            Value: 'b946ed40-e8bb-4423-b637-f7c7898b3183'
-          - ID: 'badd9cf9-53e0-4d0c-bcc0-2d784c282f6a'
-            Hint: __Updated by
-            Value: |
-              sitecore\naoum.zilas@eqtr.com
-          - ID: 'd9cf14b1-fa16-4ba6-9288-e8a174d4d522'
-            Hint: __Updated
-            Value: 20240201T150146Z
-          - ID: 'f253d55f-c5e7-4bbd-8423-45ee6c8a12ec'
-            Hint: Title
-            Value: EQTRHCA18
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{27969B43-E1B5-428F-AC03-27C810BC824F}"
+              p:before="*"
+              s:ds="{51BB46DF-CB43-4228-975E-F45FA647CD4B}"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}"
+              p:after="r[@uid='{27969B43-E1B5-428F-AC03-27C810BC824F}']"
+              s:ds="{0F2C6E0F-D4A1-4373-9956-80CA247DF3C3}"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{1802139F-4454-4465-AD44-0F08F645F571}"
+              p:after="r[@uid='{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}']"
+              s:ds="{7397515C-BCA6-49CD-BCAF-BCC64622C6DA}"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{EFF3E93C-0B95-4337-9354-9526FE09333E}"
+              p:after="*[1=2]"
+              s:ds="local:/Data/CTA Block Component"
+              s:id="{C81703EF-34C2-41A3-BC78-7258389E59D2}"
+              s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B08F75B35-E42A-453F-967E-205FDEDAA2CD%7D&amp;Styles&amp;Theme=A-HCA-Main-Turquoise&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main"
+              s:ccb="Clear on publish" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T142503Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA18
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0654fee1-6bcc-471e-886a-050487130c33"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240226T103604Z

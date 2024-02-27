@@ -16,16 +16,24 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields: {
-    SvgMarkup: Field<string>;
+    svgMarkup: Field<string>;
   };
 };
 
 interface Fields {
-  Title: Field<string>;
-  Image: ImageField;
-  SearchIcon: HCAIconFields;
-  SearchPlaceholder: Field<string>;
-  CTAHeading: Field<string>;
+  data: {
+    contextItem: {
+      title: { jsonValue: Field<string> };
+      image: { jsonValue: ImageField };
+    };
+    item: {
+      searchIcon: {
+        Icon: HCAIconFields;
+      };
+      searchPlaceholder: { jsonValue: Field<string> };
+      cTAHeading: { jsonValue: Field<string> };
+    };
+  };
 }
 
 type HeroBannerWithSearchProps = {
@@ -66,12 +74,14 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           tag={props.params.HeadingTag || 'h1'}
           variation={props.params.HeadingSize || 'display-1'}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields.data.contextItem.title.jsonValue} />
         </Text>
       }
       search={
         <SearchButton>
-          <JssText field={props.fields.SearchPlaceholder} />
+          <JssText
+            field={props.fields.data.item?.searchPlaceholder.jsonValue}
+          />
         </SearchButton>
       }
       ctaTitle={
@@ -79,7 +89,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
           variation="subheading-1"
         >
-          <JssText field={props.fields.CTAHeading} />
+          <JssText field={props.fields.data.item?.cTAHeading.jsonValue} />
         </Text>
       }
       ctas={
@@ -91,7 +101,9 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           />
         </>
       }
-      image={<JssImage field={props.fields.Image} />}
+      image={
+        <JssImage field={props.fields.data.contextItem.image?.jsonValue} />
+      }
     />
   );
 };
