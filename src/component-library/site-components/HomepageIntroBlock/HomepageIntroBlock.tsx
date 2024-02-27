@@ -31,9 +31,6 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <ul className={styles.stats}>
               {stats.map((stat, index) => (
                 <React.Fragment key={index}>
-                  <li className={styles.hr} aria-hidden="true">
-                    <hr />
-                  </li>
                   <li>
                     <p className={styles.stat}>
                       <Text variation="display-2" tag="span">
@@ -43,6 +40,9 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
                         {stat.label}
                       </Text>
                     </p>
+                  </li>
+                  <li className={styles.hr} aria-hidden="true">
+                    <hr />
                   </li>
                 </React.Fragment>
               ))}
