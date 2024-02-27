@@ -8,6 +8,7 @@ import Reviews from '../../Reviews/Reviews';
 import Text from '../../../foundation/Text/Text';
 import TextButton from '../../../core-components/TextButton/TextButton';
 import Icons from '../../../foundation/Icons/Icons';
+import Loader from '../../../foundation/Loader/Loader';
 
 const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -41,80 +42,81 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   };
 
   return (
-    <div className={styles['patients-reviews']}>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <Text tag="p" variation="body-bold-extra-large">
-            Reviews from patients ({total})
-          </Text>
-        </div>
-        <div className={styles.sort}>
-          <Sorting
-            options={[
-              {
-                id: 'option-a',
-                defaultChecked: true,
-                labelText: 'Newest',
-              },
-              {
-                id: 'option-b',
-                labelText: 'Oldest',
-              },
-            ]}
-            onChange={(event) => {
-              const target = event.target as HTMLInputElement;
-              console.log('value', target.value);
-              console.log(target.checked);
-
-              // Set selectValue based on the checked option
-              if (target.value === 'Newest') {
-                setSelectValue('asc');
-              } else if (target.value === 'Oldest') {
-                setSelectValue('desc');
-              }
-              setReviews([]);
-              setOffset(0);
-            }}
-          />
-        </div>
-      </div>
-
-      <div className={styles['review-wrapper']}>
-        {reviews.length > 0 &&
-          reviews.map((review) => (
-            <div key={review.id} className={styles.review}>
-              <div className={styles.rating}>
-                <div>
-                  <Text tag="p" variation="body-extra-large">
-                    Overall experience
-                  </Text>
-                </div>
-                <Reviews
-                  reviewsTotal={5}
-                  reviewsCount={review.overallExperience}
-                  isConsultantProfileReviews={false}
-                  hasDoctifyBranding={false}
-                />
-              </div>
-              <div>
-                <Text tag="p" variation="body-large">
-                  {review.text}
-                </Text>
-              </div>
+    <>
+      {isLoading && <Loader theme={'dark'} />}
+      {!isLoading && (
+        <div className={styles['patients-reviews']}>
+          <div className={styles.header}>
+            <div className={styles.title}>
+              <Text tag="p" variation="body-bold-extra-large">
+                Reviews from patients ({total})
+              </Text>
             </div>
-          ))}
-        {reviews.length < total && (
-          <div>
-            <TextButton theme="dark">
-              <button onClick={loadMore}>
-                Load more
-                <Icons iconName="iconPlus" />
-              </button>
-            </TextButton>
+            <div className={styles.sort}>
+              <Sorting
+                options={[
+                  {
+                    id: 'option-a',
+                    defaultChecked: true,
+                    labelText: 'Newest',
+                    value: 'asc',
+                  },
+                  {
+                    id: 'option-b',
+                    labelText: 'Oldest',
+                    value: 'desc',
+                  },
+                ]}
+                onChange={(event) => {
+                  const target = event.target as HTMLInputElement;
+                  console.log('value', target.value);
+                  console.log(target.checked);
+                  setReviews([]);
+                  setSelectValue(target.value);
+                  setOffset(0);
+                }}
+              />
+            </div>
           </div>
-        )}
-      </div>
-    </div>
+
+          <div className={styles['review-wrapper']}>
+            {reviews.length > 0 &&
+              reviews.map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <div className={styles.rating}>
+                    <div>
+                      <Text tag="p" variation="body-extra-large">
+                        Overall experience
+                      </Text>
+                    </div>
+                    <Reviews
+                      reviewsTotal={5}
+                      reviewsCount={review.overallExperience}
+                      isConsultantProfileReviews={false}
+                      hasDoctifyBranding={false}
+                    />
+                  </div>
+                  <div>
+                    <Text tag="p" variation="body-large">
+                      {review.text}
+                    </Text>
+                  </div>
+                </div>
+              ))}
+            {reviews.length < total && (
+              <div>
+                <TextButton theme="dark">
+                  <button onClick={loadMore}>
+                    Load more
+                    <Icons iconName="iconPlus" />
+                  </button>
+                </TextButton>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
