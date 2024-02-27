@@ -14,6 +14,7 @@ const mockProps: FormProgressBarProps = {
           <Text variation="body-medium-extra-large">Patient Details</Text>
         </a>
       ),
+      stage: 'previous',
     },
     {
       pageControl: (
@@ -22,7 +23,7 @@ const mockProps: FormProgressBarProps = {
           <Text variation="body-bold-extra-large">Payment</Text>
         </div>
       ),
-      active: true,
+      stage: 'active',
     },
     {
       pageControl: (
@@ -31,6 +32,7 @@ const mockProps: FormProgressBarProps = {
           <Text variation="body-medium-extra-large">Confirmation</Text>
         </div>
       ),
+      stage: 'inactive',
     },
   ],
 };

@@ -1,6 +1,6 @@
 interface Page {
   pageControl: JSX.Element;
-  active?: boolean;
+  stage?: 'active' | 'inactive' | 'previous';
 }
 
 export interface FormProgressBarProps {

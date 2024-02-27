@@ -5,7 +5,7 @@
   padding-top: $spacing-4;
   padding-bottom: $spacing-4;
   background-color: var(--background);
-  color: var(--text-date);
+  color: var(--text);
   border-top: 1px solid rgba($navy-blue-30, 0.4);
   border-bottom: 1px solid rgba($navy-blue-30, 0.4);
 }
@@ -30,15 +30,19 @@
   border-radius: $radius-large;
   white-space: nowrap;
 
-  &.active {
-    color: var(--text);
-    background: var(--tab-background);
-  }
-
   & > * {
     display: flex;
     align-items: center;
     gap: $spacing-2;
+  }
+
+  &.active {
+    color: var(--tab-text);
+    background: var(--tab-background);
+  }
+
+  &.inactive {
+    color: var(--text-date);
   }
 
   a {

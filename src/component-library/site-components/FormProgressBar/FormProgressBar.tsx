@@ -11,7 +11,7 @@ const FormProgressBar = (props: FormProgressBarProps): JSX.Element => {
           {pages.map((page, index) => (
             <div
               key={index}
-              className={`${styles.page} ${page.active && styles.active}`}
+              className={`${styles.page} ${page.stage && styles[page.stage]}`}
             >
               {page.pageControl}
             </div>

@@ -22,11 +22,12 @@ export const Default: StoryObj<typeof FormProgressBar> = {
     pages: [
       {
         pageControl: (
-          <a href="#">
+          <div>
             <Icons iconName="iconInfo" />
             <Text variation="body-medium-extra-large">Patient Details</Text>
-          </a>
+          </div>
         ),
+        stage: 'previous',
       },
       {
         pageControl: (
@@ -35,7 +36,7 @@ export const Default: StoryObj<typeof FormProgressBar> = {
             <Text variation="body-bold-extra-large">Payment</Text>
           </div>
         ),
-        active: true,
+        stage: 'active',
       },
       {
         pageControl: (
@@ -44,6 +45,7 @@ export const Default: StoryObj<typeof FormProgressBar> = {
             <Text variation="body-medium-extra-large">Confirmation</Text>
           </div>
         ),
+        stage: 'inactive',
       },
     ],
   },
