@@ -28,7 +28,7 @@ export const Default: StoryObj<typeof TextField> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
@@ -44,7 +44,7 @@ export const Required: StoryObj<typeof TextField> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
@@ -61,7 +61,7 @@ export const Email: StoryObj<typeof TextField> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="F-HCA-White">
+      <Themes theme="A-HCA-White">
         <Story />
       </Themes>
     ),
