@@ -25,6 +25,7 @@
       height: $spacing-9;
       border: 1px solid $navy-blue-60;
       border-radius: $radius-large;
+      width: 100%;
 
       @include apply-body-medium-large;
     }
@@ -52,8 +53,7 @@
     }
   }
 
-  // TODO error colour
-  &:has(input:not(:focus):invalid) {
+  &:has(input:not(:focus):user-invalid) {
     color: var(--field-error-colour);
 
     input {
@@ -64,4 +64,18 @@
       display: flex;
     }
   }
+
+  // @supports not selector(:user-invalid) {
+  //   &:has(input:not(:focus):invalid) {
+  //     color: var(--field-error-colour);
+
+  //     input {
+  //       border-color: var(--field-error-colour);
+  //     }
+
+  //     .error-message {
+  //       display: flex;
+  //     }
+  //   }
+  // }
 }

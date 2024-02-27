@@ -2,10 +2,10 @@
 @use '../../utilities/index.module' as *;
 
 .search {
-  color: $dark-blue;
+  color: $navy-blue-100;
   padding: px-to-rem(18) px-to-rem(32) px-to-rem(18) px-to-rem(72);
   border-radius: $radius-large;
-  border: 1px solid $dark-blue-30;
+  border: 1px solid $navy-blue-30;
   width: 100%;
 
   @include apply-body-medium-large;
@@ -37,7 +37,7 @@
 
 .results {
   padding: px-to-rem(24) px-to-rem(32);
-  border: 1px solid $dark-blue;
+  border: 1px solid $navy-blue-100;
   border-radius: $radius-large;
 
   ul {
@@ -52,7 +52,7 @@
       display: flex;
       gap: $spacing-3;
       @include apply-body-medium-large;
-      color: $dark-blue;
+      color: $navy-blue-100;
     }
   }
 }

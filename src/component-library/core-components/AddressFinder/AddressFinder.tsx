@@ -3,6 +3,7 @@ import { AddressFinderProps } from './AddressFinder.types';
 import styles from './AddressFinder.module.scss';
 import TextButton from '../TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
+import TextField from '../TextField/TextField';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const { helpText } = props;
@@ -96,6 +97,8 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     setManualFieldsVisible(true);
   };
 
+  const [resultsVisible, resultsFieldsVisible] = useState(false);
+
   return (
     <>
       <div className={styles['search-wrapper']}>
@@ -106,7 +109,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         />
       </div>
       <TextButton theme="dark">
-        <button onClick={handleManualFields}>
+        <button onClick={handleManualFields} type="button">
           Enter your address manually
         </button>
       </TextButton>
@@ -124,6 +127,36 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
             })}
         </ul>
       </div>
+
+      {manualFieldsVisible && (
+        <div className={styles['manual-fields']}>
+          <TextField
+            id="address-1"
+            label="Address Line 1"
+            required={true}
+            errorMessage="Please fill in the first line of your address"
+          />
+          <TextField id="address-2" label="Address Line 2" />
+          <TextField
+            id="city"
+            label="City"
+            required={true}
+            errorMessage="Please fill in the city"
+          />
+          <TextField
+            id="postcode"
+            label="Postcode"
+            required={true}
+            errorMessage="Please fill in the postcode"
+          />
+          <TextField
+            id="country"
+            label="Country"
+            required={true}
+            errorMessage="Please fill in the country"
+          />
+        </div>
+      )}
     </>
   );
 };
