@@ -6,7 +6,7 @@ import { CarouselCardsProps } from './CarouselCards.types';
 import CardPatientStories from '../../components/CardPatientStories/CardPatientStories';
 
 const mockProps: CarouselCardsProps = {
-  theme: 'A-HCA-Main-Turquoise',
+  theme: 'D-HCA-Teal',
   title: <span>Orthopaedics Patient Stories</span>,
   link: (
     <a href="#">

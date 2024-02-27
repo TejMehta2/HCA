@@ -2,34 +2,34 @@
 @use '../../utilities/index.module' as *;
 
 @mixin apply-light-mode {
-  --border-default: #{$dark-blue-10};
-  --background-selected: #{$coral};
-  --background-selected-dot: #{$dark-blue};
-  --background-disabled: #{$dark-blue-5};
-  --border-disabled: #{$dark-blue-10};
-  --background-disabled-selected: #{$dark-blue-10};
-  --border-focus: #{$dark-blue};
-  --text: #{$dark-blue};
+  --border-default: #{$navy-blue-10};
+  --background-selected: #{$orange-100};
+  --background-selected-dot: #{$navy-blue-100};
+  --background-disabled: #{$navy-blue-5};
+  --border-disabled: #{$navy-blue-10};
+  --background-disabled-selected: #{$navy-blue-10};
+  --border-focus: #{$navy-blue-100};
+  --text: #{$navy-blue-100};
 }
 @mixin apply-dark-mode {
-  --border-default: #{$dark-blue-40};
-  --background-selected: #{$main-turquoise};
-  --background-selected-dot: #{$dark-blue};
-  --background-disabled: #{$dark-blue-40};
-  --border-disabled: #{$dark-blue-60};
-  --background-disabled-selected: #{$dark-blue-10};
+  --border-default: #{$navy-blue-40};
+  --background-selected: #{$teal-100};
+  --background-selected-dot: #{$navy-blue-100};
+  --background-disabled: #{$navy-blue-40};
+  --border-disabled: #{$navy-blue-60};
+  --background-disabled-selected: #{$navy-blue-10};
   --border-focus: #{$white};
   --text: #{$white};
 }
 @mixin apply-medium-mode {
-  --border-default: #{$dark-blue-60};
+  --border-default: #{$navy-blue-60};
   --background-selected-dot: #{$white};
-  --background-selected: #{$dark-blue};
-  --background-disabled: #{$main-turquoise-40};
-  --border-disabled: #{$dark-blue-20};
-  --background-disabled-selected: #{$dark-blue-20};
+  --background-selected: #{$navy-blue-100};
+  --background-disabled: #{$teal-40};
+  --border-disabled: #{$navy-blue-20};
+  --background-disabled-selected: #{$navy-blue-20};
   --border-focus: #{$white};
-  --text: #{$dark-blue};
+  --text: #{$navy-blue-100};
 }
 
 .light {

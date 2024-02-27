@@ -4,7 +4,7 @@ import BlogContent from './BlogContent';
 import { BlogContentProps } from './BlogContent.types';
 
 const mockProps: BlogContentProps = {
-  theme: 'F-HCA-White',
+  theme: 'A-HCA-White',
   children: (
     <p>
       London Bridge Hospital, part of HCA Healthcare UK, has once again been

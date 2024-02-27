@@ -22,7 +22,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof HeaderPlain> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     subheading: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
@@ -46,7 +46,7 @@ export const Default: StoryObj<typeof HeaderPlain> = {
 
 export const DefaultWithSearch: StoryObj<typeof HeaderPlain> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     subheading: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
@@ -71,7 +71,7 @@ export const DefaultWithSearch: StoryObj<typeof HeaderPlain> = {
 
 export const DefaultWithSearchAndFilters: StoryObj<typeof HeaderPlain> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     subheading: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
