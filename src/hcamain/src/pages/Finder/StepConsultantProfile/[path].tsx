@@ -79,7 +79,8 @@ const SitecorePage = ({
 // add to sitemap
 export const getStaticPaths: GetStaticPaths = async () => {
   let fallback: boolean | 'blocking' = 'blocking';
-  let paths: any[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let paths: any = [];
   let slugs: string[] = [];
 
   console.log('IN Finder profile subpage GetStaticPaths');

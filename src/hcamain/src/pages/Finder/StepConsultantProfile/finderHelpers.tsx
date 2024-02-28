@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Console } from 'console';
 import { parse } from 'node-html-parser';
 
 // get all the active hca consultants on consultant finder

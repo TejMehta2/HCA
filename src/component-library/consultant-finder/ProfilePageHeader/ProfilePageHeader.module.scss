@@ -12,7 +12,7 @@
     flex-direction: row;
     align-items: center;
   }
-   
+
   .image {
     height: px-to-rem(104);
     width: px-to-rem(104);
@@ -66,13 +66,12 @@
     display: none;
     @include media(screen-l) {
       display: block;
-      margin: $spacing-7 0 0  0;
-      border-bottom: 1px solid #ADB4BF;
-      padding: 0 $spacing-14 $spacing-2 ;
-      width: calc(100% + (2 *  $spacing-14));
-      margin-left: calc(-1 *  $spacing-14);
-      margin-right: calc(-1 *  $spacing-14);
+      margin: $spacing-7 0 0 0;
+      border-bottom: 1px solid #adb4bf;
+      padding: 0 $spacing-14 $spacing-2;
+      width: calc(100% + (2 * $spacing-14));
+      margin-left: calc(-1 * $spacing-14);
+      margin-right: calc(-1 * $spacing-14);
     }
   }
-
 }

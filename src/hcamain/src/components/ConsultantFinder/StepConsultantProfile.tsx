@@ -6,28 +6,22 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React, { useContext, useEffect } from 'react';
-import ReactDOMServer from 'react-dom/server';
+import React from 'react';
 import {
-  GetServerSideComponentProps,
   GetStaticComponentProps,
   Image as JssImage,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
   useComponentProps,
   ComponentRendering,
-  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
-import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import {
   checkIfLiveBookingIsAvailable,
   getSpecialistProfileData,
@@ -51,8 +45,6 @@ import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/
 import OverallRating from '@component-library/consultant-finder/OverallRating/OverallRating';
 import Locations from '@component-library/consultant-finder/Locations/Locations';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
-import TextButton from '@component-library/core-components/TextButton/TextButton';
-import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import Themes from '@component-library/foundation/Themes/Themes';
 import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
 import { yearsExperience } from '@component-library/utility-functions/index';

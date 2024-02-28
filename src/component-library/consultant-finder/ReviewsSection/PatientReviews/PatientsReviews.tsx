@@ -28,7 +28,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
         // console.log(resp);
         setIsLoading(false);
         console.log('reviews', resp.data);
-        setReviews((reviews) => [...reviews, ...resp.data.rows]);
+        setReviews((reviews: any) => [...reviews, ...resp.data.rows]);
         setTotal(resp.data.total);
       })
       .catch((error) => {
@@ -120,12 +120,25 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                   )}
                   <div className={styles['date-branding-wrapper']}>
                     {review?.createdAt !== null && review?.createdAt !== '' && (
-                      <Text tag="p" variation="body-medium">
-                        {formatDate(review?.createdAt)}
-                      </Text>
+                      <div className={styles.date}>
+                        <Text tag="p" variation="body-medium">
+                          {formatDate(review?.createdAt)}
+                        </Text>
+                      </div>
                     )}
-                    <div className={styles.date}></div>
-                    <div>Verified by: Doctify</div>
+                    <div className={styles.branding}>
+                      <Text tag="p" variation="body-medium">
+                        Verified by:
+                      </Text>
+                      {props.docitfyLogo && (
+                        <img
+                          src={props.docitfyLogo}
+                          alt="doctify logo"
+                          width="83"
+                          height="21"
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
