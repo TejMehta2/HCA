@@ -222,6 +222,7 @@ export const Default = (props: StepProps): JSX.Element => {
         {/* top section */}
         <div>
           {/* de facut linkul */}
+          <iframe src="/Finder/Frame-Reviews"></iframe>
           <Breadcrumbs>
             <a href="#">Consultant Finder</a>
             {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}

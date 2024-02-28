@@ -8,10 +8,10 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const header = document.querySelector('header'); // Change this selector according to your header element
+      const header = document.querySelector('header');
 
       if (header) {
-        console.log(header);
+        console.log('header', header);
         setHeaderHeight(header.offsetHeight);
       }
     };
@@ -28,7 +28,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
   const marginTop = isSticky ? headerHeight : 0;
 
   return (
-    <div className={`${styles['side-panel']}`} style={{ marginTop }}>
+    <div className={`${styles['side-panel']}`} style={{ top: marginTop }}>
       {children}
     </div>
   );
