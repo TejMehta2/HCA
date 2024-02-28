@@ -76,10 +76,13 @@ const ReviewsSection = (): JSX.Element => {
             />
           </Themes>
           {typeOfReviews === 'patient' && (
-            <PatientsReviews slug={consultantSlug}></PatientsReviews>
+            <PatientsReviews
+              slug={consultantSlug}
+              docitfyLogo={''}
+            ></PatientsReviews>
           )}
           {typeOfReviews === 'peer' && (
-            <PeerReviews slug={consultantSlug}></PeerReviews>
+            <PeerReviews slug={consultantSlug} docitfyLogo={''}></PeerReviews>
           )}
         </div>
       )}

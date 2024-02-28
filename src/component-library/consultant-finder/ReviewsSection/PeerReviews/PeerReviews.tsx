@@ -7,6 +7,7 @@ import Text from '../../../foundation/Text/Text';
 import TextButton from '../../../core-components/TextButton/TextButton';
 import Icons from '../../../foundation/Icons/Icons';
 import LoaderCF from '../../LoaderCF/LoaderCF';
+import { formatDate } from '../../../utility-functions/index';
 
 const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -39,7 +40,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   return (
     <>
       {isLoading && <LoaderCF />}
-      {!isLoading && (
+      {!isLoading && total > 0 && (
         <div className={styles['patients-reviews']}>
           <div className={styles.header}>
             <div className={styles.title}>
@@ -62,15 +63,61 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
                         height="76"
                       />
                     </div>
-                    <Text tag="p" variation="body-bold-extra-large">
-                      {review.recommender.title} {review.recommender.firstName}{' '}
-                      {review.recommender.lastName}
-                    </Text>
+                    <div className={styles.text}>
+                      <Text tag="p" variation="body-bold-extra-large">
+                        {review.recommender.title}{' '}
+                        {review.recommender.firstName}{' '}
+                        {review.recommender.lastName}
+                      </Text>
+                      {review.keywords.length > 0 && (
+                        <Text tag="p" variation="body-small">
+                          {
+                            // Filter specialties and get their names
+                            review.keywords
+                              .filter(
+                                (keyword: any) => keyword.type === 'specialty'
+                              )
+                              .map((keyword: any) => keyword.name)
+                              .join(', ')
+                          }
+                        </Text>
+                      )}
+                    </div>
                   </div>
+                  {review.connection !== null &&
+                    review.connection.length > 0 && (
+                      <div className={styles.connection}>
+                        <Text tag="p" variation="body-medium">
+                          {review.connection}
+                        </Text>
+                      </div>
+                    )}
                   <div>
                     <Text tag="p" variation="body-large">
                       {review.recommendation}
                     </Text>
+                  </div>
+                  <div className={styles['date-branding-wrapper']}>
+                    {review?.createdAt !== null && review?.createdAt !== '' && (
+                      <div className={styles.date}>
+                        <Text tag="p" variation="body-medium">
+                          {formatDate(review?.createdAt)}
+                        </Text>
+                      </div>
+                    )}
+                    <div className={styles.branding}>
+                      <Text tag="p" variation="body-medium">
+                        Verified by:
+                      </Text>
+                      {props.docitfyLogo && (
+                        <img
+                          src={props.docitfyLogo}
+                          alt="doctify logo"
+                          width="83"
+                          height="21"
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -86,6 +133,11 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
             )}
           </div>
         </div>
+      )}
+      {!isLoading && total === 0 && (
+        <Text tag="p" variation="body-large">
+          There are no peer reviews for this consultant
+        </Text>
       )}
     </>
   );

@@ -38,4 +38,24 @@
       flex-direction: row;
     }
   }
+
+  .date-branding-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin: $spacing-4 0 0 0;
+  }
+
+  .date {
+    padding-right: $spacing-2;
+    margin-right: $spacing-2;
+    border-right: 1px solid #adb4bf;
+  }
+
+  .connection {
+    display: inline-flex;
+    margin: $spacing-4 0;
+    border-radius: $radius-small;
+    padding: $spacing-1 $spacing-4;
+    background-color: #F8D9CE;
+  }
 }
