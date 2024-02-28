@@ -2,47 +2,46 @@ import React from 'react';
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
+import Params from 'src/types/params';
 
 type HCAIconFields = {
-  svgMarkup: Field<string>;
+  svgMarkup?: Field<string>;
 };
 
 type AncestorsFields = {
-  navigationTitle: { value: string };
-  abstractTitle: { value: string };
-  displayName: string;
-  name: string;
-  url: { path: string };
+  navigationTitle?: { value?: string };
+  abstractTitle?: { value?: string };
+  displayName?: string;
+  name?: string;
+  url?: { path?: string };
 };
 
 interface Fields {
-  data: {
-    item: {
-      homeIcon: {
-        Icon: HCAIconFields;
+  data?: {
+    item?: {
+      homeIcon?: {
+        Icon?: HCAIconFields;
       };
     };
-    contextItem: {
-      navigationTitle: { value: string };
-      abstractTitle: { value: string };
-      displayName: string;
-      name: string;
-      url: { path: string };
-      ancestors: AncestorsFields[];
+    contextItem?: {
+      navigationTitle?: { value?: string };
+      abstractTitle?: { value?: string };
+      displayName?: string;
+      name?: string;
+      url?: { path?: string };
+      ancestors?: AncestorsFields[];
     };
   };
 }
 
 type BreadcrumbsProps = {
-  params: {
-    [key: string]: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`}>
+    <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
         <span className="is-empty-hint">Breadcrumbs no datasource</span>
       </div>
@@ -55,31 +54,31 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
-  const getTitle = (data: AncestorsFields) => {
-    if (data.navigationTitle) {
-      return data.navigationTitle.value;
-    } else if (data.abstractTitle) {
-      return data.abstractTitle.value;
-    } else if (data.displayName) {
-      return data.displayName;
+  const getTitle = (data?: AncestorsFields) => {
+    if (data?.navigationTitle) {
+      return data?.navigationTitle?.value;
+    } else if (data?.abstractTitle) {
+      return data?.abstractTitle?.value;
+    } else if (data?.displayName) {
+      return data?.displayName;
     } else {
-      return data.name;
+      return data?.name;
     }
   };
 
-  const breadcrumbList = props.fields.data.contextItem.ancestors.map(
+  const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
       const title = getTitle(ancestor);
       return (
-        <Link href={ancestor.url.path} key={index}>
+        <Link href={ancestor?.url?.path || ''} key={index}>
           {title}
         </Link>
       );
     }
   );
 
-  const title = getTitle(props.fields.data.contextItem);
-  breadcrumbList.push(<span key={breadcrumbList.length}>{title}</span>);
+  const title = getTitle(props.fields?.data?.contextItem);
+  breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
 
   return <Breadcrumbs children={breadcrumbList} />;
 };

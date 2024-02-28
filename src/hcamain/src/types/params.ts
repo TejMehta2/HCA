@@ -26,3 +26,13 @@ export type HeadingSize =
   | 'display-4'
   | 'display-5'
   | 'display-6';
+
+interface Params {
+  styles?: string;
+  Theme?: Theme;
+  HeadingTag?: HeadingTag;
+  HeadingSize?: HeadingSize;
+  DynamicPlaceholderId?: string;
+  Columns?: number;
+}
+export default Params;

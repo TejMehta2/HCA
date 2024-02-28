@@ -5,29 +5,28 @@ import {
   Text as JssText,
   Image as JSSImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
 
 type VideoProvidersFields = {
-  name: string;
+  name?: string;
 };
 
 interface Fields {
-  Heading: Field<string>;
-  Title: Field<string>;
-  Text: Field<string>;
-  Platform: VideoProvidersFields;
-  VideoUrl: Field<string>;
-  VideoThumbnail: ImageFieldValue;
+  Heading?: Field<string>;
+  Title?: Field<string>;
+  Text?: Field<string>;
+  Platform?: VideoProvidersFields;
+  VideoUrl?: Field<string>;
+  VideoThumbnail?: ImageFieldValue;
 }
 
 type VideoPlayerProps = {
-  params: {
-    [key: string]: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">VideoPlayer no datasource</span>
     </div>
@@ -39,18 +38,18 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.Heading} />
+    <div className={`component ${props.params?.styles}`}>
+      <JssText field={props.fields?.Heading} />
       <br />
-      <JssText field={props.fields.Title} />
+      <JssText field={props.fields?.Title} />
       <br />
-      <JssText field={props.fields.Text} />
+      <JssText field={props.fields?.Text} />
       <br />
-      <span>{props.fields.Platform?.name}</span>
+      <span>{props.fields?.Platform?.name}</span>
       <br />
-      <span>{props.fields.VideoUrl.value}</span>
+      <span>{props.fields?.VideoUrl?.value}</span>
       <br />
-      <JSSImage field={props.fields.VideoThumbnail} />
+      <JSSImage field={props.fields?.VideoThumbnail} />
       <br />
     </div>
   );

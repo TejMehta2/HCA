@@ -4,33 +4,34 @@ import {
   Text as JssText,
   Item,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
 
 type CategoriesFields = {
-  displayName: { value: string };
-  filter: { value: string };
-  filterValue: { jsonValue: Item };
+  displayName?: { value?: string };
+  filter?: { value?: string };
+  filterValue?: { jsonValue?: Item };
 };
 
 interface Fields {
-  data: {
-    item: {
-      title: { jsonValue: Field<string> };
-      categories: {
-        categoriesList: CategoriesFields[];
+  data?: {
+    item?: {
+      title?: { jsonValue: Field<string> };
+      categories?: {
+        categoriesList?: CategoriesFields[];
       };
     };
   };
 }
 
 type BlogCategoriesProps = {
-  params: { [key: string]: string };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const BlogCategoriesDefaultComponent = (
-  props: BlogCategoriesProps
+  props?: BlogCategoriesProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props?.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">BlogCategories no datasource</span>
     </div>
@@ -42,18 +43,18 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     return <BlogCategoriesDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.data.item.title.jsonValue} />
+    <div className={`component ${props.params?.styles}`}>
+      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
       <br />
       <ul>
-        {props.fields.data.item.categories.categoriesList.map(
-          (categorie, index) => (
+        {props.fields?.data?.item?.categories?.categoriesList?.map(
+          (category, index) => (
             <li key={index}>
-              <JssText field={categorie.displayName} />
+              <JssText field={category.displayName} />
               <br />
-              <JssText field={categorie.filter} />
+              <JssText field={category.filter} />
               <br />
-              <span>{categorie.filterValue.jsonValue?.id}</span>
+              <span>{category?.filterValue?.jsonValue?.id}</span>
               <br />
             </li>
           )
