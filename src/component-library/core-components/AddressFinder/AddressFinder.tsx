@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
 import { AddressFinderProps } from './AddressFinder.types';
 import styles from './AddressFinder.module.scss';
 import TextButton from '../TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import TextField from '../TextField/TextField';
+import Loader from '../../foundation/Loader/Loader';
+import Text from '../../foundation/Text/Text';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const { helpText } = props;
 
-  const results = [
+  const mockTestAddress = {
+    line1: '123 Test Street',
+    city: 'London',
+    country: 'United Kingdom',
+    postcode: 'SE1 1AB',
+  };
+
+  const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState();
+  const [resultsVisible, setResultsVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState(mockTestAddress);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const mockResults = [
     {
       address: '10 Elliot Street, Sacriston, DURHAM',
       postcode: 'DH7 6JH',
@@ -24,100 +42,49 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       postcode: 'EH7 5LU',
       id: '7.730GOGBRCAznBwAAAAABAwEAAAAA9A0DkYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
     },
-    {
-      address: '4/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LU',
-      id: '7.730iOGBRCAznBwAAAAABAwEAAAAA9Az60YAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '7/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LX',
-      id: '7.730aOGBRCAznBwAAAAABAwEAAAAA9A0kEYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '5/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LX',
-      id: '7.730fOGBRCAznBwAAAAABAwEAAAAA9A0ekYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '9/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LX',
-      id: '7.730UOGBRCAznBwAAAAABAwEAAAAA9A0pkYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '10 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2PP',
-      id: '7.7301OGBRCAznBwAAAAABAwEAAAAAXgtnkYAhAAIAAAAAAAAAAAD..2QAAAAA.....wAAAAAAAAAAAAAAAAAAADEwIGVsbGlvdCBzdHJlZXQAAAAAAA--',
-    },
-    {
-      address: '10 Elliot Street, ARBROATH, Angus',
-      postcode: 'DD11 3BY',
-      id: '7.730WOGBRCAznBwAAAAABAwEAAAB3md0YAhAAIAAAAAAAAAAA..9kAAAAAP....8AAAAAAAAAAAAAAAAAAAAxMCBlbGxpb3Qgc3RyZWV0AAAAAAA-',
-    },
-    {
-      address: '10 Elliot Street, Elliots Town, NEW TREDEGAR, Gwent',
-      postcode: 'NP24 6DP',
-      id: '7.730POGBRCAznBwAAAAABAwEAAAAAixZsEYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: 'Flat 10, Minerva Court, 20 Elliot Street, GLASGOW',
-      postcode: 'G3 8EB',
-      id: '7.730TOGBRCAznBwAAAAABAwEAAAAAubB80YAhAAIQAGAAAAAAAAAxMAAA..9aAAAAAP....8AAAAAAAAAAAAAAAAAAAAxMCBlbGxpb3Qgc3RyZWV0AAAAAAA-',
-    },
-    {
-      address: 'Flat 10, Citadel Court, 2 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2PP',
-      id: '7.730GOGBRCAznBwAAAAABAwEAAAAAXgtFEYAhAAIQAGAAAAAAAAAxMAAA..9aAAAAAP....8AAAAAAAAAAAAAAAAAAAAxMCBlbGxpb3Qgc3RyZWV0AAAAAAA-',
-    },
-    {
-      address: 'Flat 10, 4 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2PP',
-      id: '7.730QOGBRCAznBwAAAAABAwEAAAAAXgtY0YAhAAIAAAAAAAAAMTAAAP..WgAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: 'Flat 10, 17 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2RL',
-      id: '7.730.OGBRCAznBwAAAAABAwEAAAAAXgtw0YAhAAIAAAAAAAAAMTAAAP..WgAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: 'Flat 10, 22 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2BA',
-      id: '7.730AOGBRCAznBwAAAAABAwEAAAAAXgs_UYAhAAIAAAAAAAAAMTAAAP..WgAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: 'Flat 10, 24 Elliot Street, PLYMOUTH',
-      postcode: 'PL1 2BE',
-      id: '7.730GOGBRCAznBwAAAAABAwEAAAAAXgt8EYAhAAIAAAAAAAAAMTAAAP..WgAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
   ];
-
-  const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
 
   const handleManualFields = () => {
     setManualFieldsVisible(true);
   };
 
-  const [resultsVisible, resultsFieldsVisible] = useState(false);
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setResults(mockResults);
+
+    setSearchTerm(e.target.value);
+  };
+
+  const clearInput = () => {
+    if (!inputRef.current) return;
+    inputRef.current.value = '';
+  };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <div className={styles['search-wrapper']}>
         <input
           type="text"
           className={styles.search}
           placeholder="Start typing your address..."
+          onChange={handleTextChange}
+          ref={inputRef}
         />
+        <span className={styles.cross} onClick={clearInput}>
+          <Icons iconName="iconCross" />
+        </span>
       </div>
-      <TextButton theme="dark">
-        <button onClick={handleManualFields} type="button">
-          Enter your address manually
-        </button>
-      </TextButton>
+      <div className={styles['manual-button']}>
+        <TextButton theme="dark">
+          <button onClick={handleManualFields} type="button">
+            Enter your address manually
+          </button>
+        </TextButton>
+      </div>
       {helpText && <div>{helpText}</div>}
-      <div className={styles.results}>
-        <ul>
-          {results &&
-            results.map((result) => {
+      {results && results.length && (
+        <div className={styles.results}>
+          <ul>
+            {results.map((result) => {
               return (
                 <li key={result.id}>
                   <Icons iconName="iconPin"></Icons>
@@ -125,8 +92,39 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
                 </li>
               );
             })}
-        </ul>
-      </div>
+          </ul>
+
+          {loading && (
+            <div className={styles.loader}>
+              <Loader theme="light" />
+              <Text tag="p" variation="body-small">
+                Loading...
+              </Text>
+            </div>
+          )}
+        </div>
+      )}
+
+      {selectedAddress && (
+        <div className={styles['selected-address']}>
+          <Text variation="body-medium-extra-large">Your Address</Text>
+          <div>{selectedAddress.line1}</div>
+          {selectedAddress.line2 && <div>{selectedAddress.line2}</div>}
+          <div>
+            {selectedAddress.city}, {selectedAddress.country}
+          </div>
+          <div>{selectedAddress.postcode}</div>
+
+          <div className={styles.selectedControls}>
+            <TextButton theme="dark">
+              <button>Edit</button>
+            </TextButton>
+            <TextButton theme="dark">
+              <button>Remove</button>
+            </TextButton>
+          </div>
+        </div>
+      )}
 
       {manualFieldsVisible && (
         <div className={styles['manual-fields']}>
@@ -157,7 +155,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
