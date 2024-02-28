@@ -1,0 +1,40 @@
+﻿---
+ID: "ad93221b-93fc-41ee-85a6-2238a52b4e8b"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Icons/Share
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240219T174400Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "49b76e1e-dfe5-4d26-a5b2-68affc6892fa"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240223T201248Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SvgMarkup
+      Value: |
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Share">
+        <path id="Vector" d="M20.5 13.5V19.5C20.5 20.0304 20.2893 20.5391 19.9142 20.9142C19.5391 21.2893 19.0304 21.5 18.5 21.5H6.5C5.96957 21.5 5.46086 21.2893 5.08579 20.9142C4.71071 20.5391 4.5 20.0304 4.5 19.5V13.5M12.5 15.5V3.5M12.5 3.5L9 7M12.5 3.5L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        </svg>
+        

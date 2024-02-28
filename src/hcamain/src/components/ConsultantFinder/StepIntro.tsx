@@ -81,7 +81,7 @@ export const Default = (props: StepProps): JSX.Element => {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
-          theme="F-HCA-White"
+          theme="A-HCA-White"
           imageAlignment="left"
           length="short"
           subheader={
@@ -146,7 +146,7 @@ export const Default = (props: StepProps): JSX.Element => {
           >
             <Button
               size={'small'}
-              theme={'full-dark'}
+              variation={'full-dark'}
               contentVariation="full-width"
             >
               <button
@@ -160,7 +160,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
             <Button
               size={'small'}
-              theme={'outline-dark'}
+              variation={'outline-dark'}
               contentVariation="full-width"
             >
               <button

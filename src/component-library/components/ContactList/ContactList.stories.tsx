@@ -96,7 +96,7 @@ export const Default: StoryObj<typeof ContactList> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme="C-HCA-Beige">
+      <Themes theme="I-HCA-Goldenrod">
         <div style={{ background: 'var(--background)', padding: '1rem' }}>
           <Story />
         </div>

@@ -22,7 +22,7 @@ It can be composed like this:
         <Text variation={'display-2'}>News & articles about healthcare </Text>
       }
       search={<SearchBar />}
-      theme={'F-HCA-White'}
+      theme={'A-HCA-White'}
     >
       <Text variation="body-large">
         Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -43,13 +43,8 @@ It can be composed like this:
     </Text>
   }
 >
-  <CardGrid theme="F-HCA-White">
-    {/* ... cards */}
-  </CardGrid>
-  <Pagination
-    pageCount={1}
-    callback={console.log}
-  />
+  <CardGrid theme="A-HCA-White">{/* ... cards */}</CardGrid>
+  <Pagination pageCount={1} callback={console.log} />
 </SearchWrapper>
 ```
 

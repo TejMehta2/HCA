@@ -22,7 +22,7 @@ import useSearchForm from 'src/hooks/useSearchForm/useSearchForm';
 const TreatmentsSearchDefaultComponent = (
   props: TreatmentsSearchProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">TreatmentsSearch no datasource</span>
     </div>
@@ -45,29 +45,29 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
   }
 
   // TODO - get/compute these from API response when API implemented
-  const resultsPerPage = props.fields.ResultsPerPage.value || 12;
+  const resultsPerPage = props.fields?.ResultsPerPage?.value || 12;
   const resultsLength = data?.treatments?.length || 0;
   const resultsRange = `1-${resultsPerPage}`;
   const pageCount = 3;
 
   // Flatten CMS params for mapping
-  const filterByList = props.fields.FilterBy.map(
-    (item) => item.fields.Filter.value
+  const filterByList = props.fields?.FilterBy?.map(
+    (item) => item?.fields?.Filter?.value
   );
-  const SearchByList = props.fields.SearchBy.map(
-    (item) => item.fields.Filter.value
+  const SearchByList = props.fields?.SearchBy?.map(
+    (item) => item?.fields?.Filter?.value
   );
 
   return (
     <>
       <form {...formHandlers}>
         {/* Map CMS params */}
-        {[...filterByList, ...SearchByList].map((param) => (
+        {[...(filterByList || []), ...(SearchByList || [])].map((param) => (
           <input
             key={param}
             type={'hidden'}
-            name={param.split('=')[0]}
-            value={param.split('=')[0]}
+            name={param?.split('=')[0]}
+            value={param?.split('=')[0]}
           />
         ))}
 
@@ -77,71 +77,73 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
             <HeaderPlain
               subheading={
                 <Text variation={'subheading-1'}>
-                  <JssText field={props.fields.Heading} />
+                  <JssText field={props.fields?.Heading} />
                 </Text>
               }
               heading={
                 <Text
-                  variation={props.params.HeadingSize || 'display-4'}
-                  tag={props.params.HeadingTag || 'h3'}
+                  variation={props.params?.HeadingSize || 'display-4'}
+                  tag={props.params?.HeadingTag || 'h3'}
                 >
-                  <JssText field={props.fields.Title} />
+                  <JssText field={props.fields?.Title} />
                 </Text>
               }
               search={
                 <SearchBar
                   defaultValue={searchParams.get('searchString') || undefined}
                   name={'searchString'}
-                  placeholder={props.fields.SearchPlaceholder.value}
+                  placeholder={props.fields?.SearchPlaceholder?.value}
                 />
               }
-              theme={props.params.Theme || 'C-HCA-Beige'}
+              theme={props.params?.Theme || 'I-HCA-Goldenrod'}
               filters={
                 <Filters
                   buttonText={
-                    <JssText field={props.fields.FilterOptionsText} />
+                    <JssText field={props.fields?.FilterOptionsText} />
                   }
                   buttonIcon={
                     props?.fields?.FilterOptionsIcon && (
                       <span
                         dangerouslySetInnerHTML={{
                           __html:
-                            props?.fields?.FilterOptionsIcon.fields.SvgMarkup
-                              .value,
+                            props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup
+                              ?.value || [],
                         }}
                       />
                     )
                   }
                   resultsCount={resultsLength}
-                  filters={props.fields.FilterOptions.map(
+                  filters={props.fields?.FilterOptions?.map(
                     (option, optionIndex) => ({
                       contentVariation: 'filters',
-                      title: option.fields.Header.value,
+                      title: option?.fields?.Header?.value,
                       children: (
                         <Checkboxes>
-                          {option.fields.Filters.map((filter, filterIndex) => {
-                            const queryParts =
-                              filter.fields.Filter.value.split('=');
-                            const queryKey = queryParts[0];
-                            const queryValue = queryParts[1];
-                            return (
-                              <Checkbox
-                                key={filterIndex}
-                                id={
-                                  filter.id ||
-                                  `filter-${optionIndex}-${filterIndex}`
-                                }
-                                value={queryValue}
-                                name={queryKey}
-                                label={filter.displayName || ''}
-                                defaultChecked={
-                                  searchParams
-                                    .getAll(queryKey)
-                                    .includes(queryValue) || undefined
-                                }
-                              />
-                            );
-                          })}
+                          {option?.fields?.Filters?.map(
+                            (filter, filterIndex) => {
+                              const queryParts =
+                                filter?.fields?.Filter?.value?.split('=');
+                              const queryKey = queryParts?.[0] || '';
+                              const queryValue = queryParts?.[1] || '';
+                              return (
+                                <Checkbox
+                                  key={filterIndex}
+                                  id={
+                                    filter.id ||
+                                    `filter-${optionIndex}-${filterIndex}`
+                                  }
+                                  value={queryValue}
+                                  name={queryKey}
+                                  label={filter.displayName || ''}
+                                  defaultChecked={
+                                    searchParams
+                                      .getAll(queryKey)
+                                      .includes(queryValue) || undefined
+                                  }
+                                />
+                              );
+                            }
+                          )}
                         </Checkboxes>
                       ),
                     })
@@ -150,44 +152,48 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
               }
               sort={
                 <Sorting
-                  buttonText={<JssText field={props.fields.SortOptionsText} />}
+                  buttonText={<JssText field={props.fields?.SortOptionsText} />}
                   buttonIcon={
                     props?.fields?.SortOptionsIcon && (
                       <span
                         dangerouslySetInnerHTML={{
                           __html:
-                            props?.fields?.SortOptionsIcon.fields.SvgMarkup
-                              .value,
+                            props?.fields?.SortOptionsIcon?.fields?.SvgMarkup
+                              ?.value || '',
                         }}
                       />
                     )
                   }
-                  options={props.fields.SortOptions.map((option, index) => {
-                    const queryParts = option.fields.Filter.value.split('=');
-                    const queryKey = queryParts[0];
-                    const queryValue = queryParts[1];
-                    return {
-                      id: option.id || `sort-by-${index}`,
-                      value: queryValue,
-                      labelText: option.displayName || '',
-                      name: queryKey,
-                      defaultChecked: searchParams.get(queryKey) === queryValue,
-                    };
-                  })}
+                  options={
+                    props.fields?.SortOptions?.map((option, index) => {
+                      const queryParts =
+                        option?.fields?.Filter?.value?.split('=');
+                      const queryKey = queryParts?.[0] || '';
+                      const queryValue = queryParts?.[1] || '';
+                      return {
+                        id: option.id || `sort-by-${index}`,
+                        value: queryValue,
+                        labelText: option.displayName || '',
+                        name: queryKey,
+                        defaultChecked:
+                          searchParams.get(queryKey) === queryValue,
+                      };
+                    }) || []
+                  }
                 />
               }
             >
               <Text variation="body-large" tag="div">
-                <RichText tag="div" field={props.fields.Text} />
+                <RichText tag="div" field={props.fields?.Text} />
               </Text>
             </HeaderPlain>
           }
-          theme={props.params.Theme || 'C-HCA-Beige'}
+          theme={props.params?.Theme || 'I-HCA-Goldenrod'}
           searchDetail={
             <Text tag="h3" variation="heading-1">
               <span>
                 <span>{resultsLength} articles including ‘</span>
-                <JssText field={props.fields.SearchResultsText} />
+                <JssText field={props.fields?.SearchResultsText} />
                 <span>’</span>{' '}
               </span>
             </Text>
@@ -198,7 +204,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params.Theme || 'C-HCA-Beige'}>
+          <CardGrid theme={props.params?.Theme || 'I-HCA-Goldenrod'}>
             {data?.treatments?.map((item, index) => (
               <CardContent
                 key={index}
@@ -211,7 +217,11 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
                   <Text variation="body-large">{item.Description}</Text>
                 }
                 image={
-                  <Image src={item.Image} alt="" width="363" height="243" />
+                  item?.Image ? (
+                    <Image src={item?.Image} alt="" width="363" height="243" />
+                  ) : (
+                    <></>
+                  )
                 }
                 // TODO update 'learn more' link
                 link={

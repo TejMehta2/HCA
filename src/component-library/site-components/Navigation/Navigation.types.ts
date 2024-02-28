@@ -22,8 +22,8 @@ export interface TabContent {
 
 export interface NavigationTab {
   heading: string;
-  cta?: JSX.Element;
-  mobileCta?: JSX.Element;
+  tabCta?: JSX.Element;
+  mobileTabCta?: JSX.Element;
   content: TabContent[];
   hasChildren?: boolean;
 }

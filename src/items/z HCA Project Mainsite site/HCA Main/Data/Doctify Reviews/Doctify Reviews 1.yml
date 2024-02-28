@@ -17,20 +17,20 @@ Languages:
         <link linktype="external" url="https://www.doctify.com/uk" />
     - ID: "8768d68c-852a-48ad-98d6-f5b0ddac4fbd"
       Hint: Stars
-      Value: 3
+      Value: 4
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d45e5ee0-1ae5-4b0e-a41b-d061df39f9a3"
+      Value: "34a7611f-68c6-43d3-8603-2d53e47372a6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "c63de3da-8171-45b3-b7f5-698900bfcb0b"
-      Hint: DoctifyLogo
+      Hint: DoctifyLogoDark
       Value: "{56367E53-F4A7-41B5-AACD-432164E17071}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240112T114454Z
+      Value: 20240224T152158Z
     - ID: "ef0cf15c-3c69-4958-9cc1-e71ad136219d"
       Hint: Reviews
       Value: 13,500+

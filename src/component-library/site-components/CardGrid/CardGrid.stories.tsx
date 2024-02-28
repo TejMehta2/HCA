@@ -55,14 +55,14 @@ for (let i = 0; i < 9; i++) {
 
 export const Default: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     children: defaultChildren,
   },
 };
 
 export const TwoCards: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     children: [
       <CardContent
         key={0}
@@ -154,7 +154,7 @@ for (let i = 0; i < 9; i++) {
 
 export const NoImage: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     children: noImageChildren,
   },
 };
@@ -182,7 +182,7 @@ for (let i = 0; i < 9; i++) {
 
 export const NoBody: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'A-HCA-Main-Turquoise',
+    theme: 'D-HCA-Teal',
     children: noBodyChildren,
   },
 };

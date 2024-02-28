@@ -6,27 +6,28 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
-import { HeadingTag, HeadingSize, Theme } from 'src/types/params';
+import Params from 'src/types/params';
 
 interface Fields {
-  Heading: Field<string>;
-  Title: Field<string>;
-  Text: Field<string>;
+  data?: {
+    item?: {
+      heading?: { jsonValue?: Field<string> };
+    };
+    contextItem?: {
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+    };
+  };
 }
 
 type PlainHeaderProps = {
-  params: {
-    [key: string]: string;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-    Theme: Theme;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const PlainHeaderDefaultComponent = (props: PlainHeaderProps): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`}>
+    <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
         <span className="is-empty-hint">Header with text</span>
       </div>
@@ -41,22 +42,22 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
 
   return (
     <HeaderPlain
-      theme={props.params.Theme}
+      theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         <Text variation="subheading-1">
-          <JssText field={props.fields.Heading} />
+          <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
         </Text>
       }
       heading={
         <Text
-          tag={props.params.HeadingTag || 'h1'}
-          variation={props.params.HeadingSize || 'display-1'}
+          tag={props.params?.HeadingTag || 'h1'}
+          variation={props.params?.HeadingSize || 'display-1'}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
     >
-      <RichText field={props.fields.Text} />
+      <RichText field={props.fields?.data?.contextItem?.text?.jsonValue} />
     </HeaderPlain>
   );
 };

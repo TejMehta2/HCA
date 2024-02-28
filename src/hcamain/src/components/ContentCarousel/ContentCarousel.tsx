@@ -8,34 +8,29 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
 import Text from '@component-library/foundation/Text/Text';
-import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import Params from 'src/types/params';
 
 interface CardFields {
-  fields: {
-    Title: Field<string>;
-    Text: Field<string>;
-    Image: ImageField;
+  fields?: {
+    Title?: Field<string>;
+    Text?: Field<string>;
+    Image?: ImageField;
   };
 }
 
 interface Fields {
-  Cards: CardFields[];
+  Cards?: CardFields[];
 }
 
 type ContentCarouselProps = {
-  params: {
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-    styles: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const ContentCarouselDefaultComponent = (
   props: ContentCarouselProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <h1>ContentCarouselDefaultComponent</h1>
   </div>
 );
@@ -47,23 +42,25 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
   return (
     <>
       <CarouselContent
-        theme={props.params.Theme}
-        slides={props.fields.Cards.map((cards) => ({
-          title: (
-            <Text
-              tag={props.params.HeadingTag}
-              variation={props.params.HeadingSize}
-            >
-              <JssText tag={'span'} field={cards.fields.Title} />
-            </Text>
-          ),
-          body: (
-            <Text tag="p" variation="body-large">
-              <JssRichText tag={'span'} field={cards.fields.Text} />
-            </Text>
-          ),
-          image: <JssImage field={cards.fields.Image} />,
-        }))}
+        theme={props.params?.Theme || 'A-HCA-White'}
+        slides={
+          props.fields?.Cards?.map((cards) => ({
+            title: (
+              <Text
+                tag={props.params?.HeadingTag}
+                variation={props.params?.HeadingSize}
+              >
+                <JssText tag={'span'} field={cards?.fields?.Title} />
+              </Text>
+            ),
+            body: (
+              <Text tag="p" variation="body-large">
+                <JssRichText tag={'span'} field={cards?.fields?.Text} />
+              </Text>
+            ),
+            image: <JssImage field={cards?.fields?.Image} />,
+          })) || []
+        }
       />
     </>
   );

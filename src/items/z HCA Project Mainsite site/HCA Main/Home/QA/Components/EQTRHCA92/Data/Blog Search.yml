@@ -1,0 +1,63 @@
+﻿---
+ID: "b91908a6-21e1-4e71-adbe-06fc3d1b4c77"
+Parent: "ebed4cab-7f63-4cd9-9bb0-3ab3fbf5890b"
+Template: "e3a4027c-5832-4980-8667-97f278244352"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA92/Data/Blog Search
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "05ef89c0-fe59-45b4-81da-001d21f4332a"
+      Hint: Title
+      Value: News & articles about healthcare 
+    - ID: "16514838-f543-4c64-8da2-3a99f94fb5bf"
+      Hint: Heading
+      Value: Our HCA blog
+    - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
+      Hint: SearchResultsText
+      Value: articles including 
+    - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
+      Hint: FilterOptionsIcon
+      Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240221T223936Z
+    - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
+      Hint: FilterOptions
+      Value: |
+        {219A3219-D07C-449F-8FC1-94A2BA338A1C}
+        {2E743516-67EA-49F1-8EF5-ADBC540675DE}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7a298203-0924-4526-8276-f59df39e9e07"
+      Hint: SearchPlaceholder
+      Value: Search services, treatments, conditions...
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "febf503a-3086-405f-8c67-ed2c994a8d51"
+    - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
+      Hint: SortOptions
+      Value: 
+    - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
+      Hint: ResultsPerPage
+      Value: 12
+    - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
+      Hint: FilterOptionsText
+      Value: Filter by
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240223T140857Z
+    - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

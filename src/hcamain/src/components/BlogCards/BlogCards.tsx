@@ -12,7 +12,7 @@ import {
 import CardBlogBlock from '@component-library/site-components/CardBlogBlock/CardBlogBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
-import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
+import Params from 'src/types/params';
 import Tags from '@component-library/core-components/Tags/Tags';
 import Button from '@component-library/core-components/Button/Button';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
@@ -24,7 +24,7 @@ type HCAIconFields = {
   };
 };
 
-type BlogTags = Item & {
+type ArticleTypeFields = Item & {
   fields?: {
     Title?: Field<string>;
   };
@@ -36,7 +36,7 @@ type BlogFields = Item & {
     Description?: Field<string>;
     Date?: Field<string>;
     Image?: ImageField;
-    Tags?: BlogTags[];
+    ArticleType?: ArticleTypeFields;
   };
   url?: string;
 };
@@ -49,17 +49,12 @@ interface Fields {
 }
 
 type BlogCardsProps = {
-  params: {
-    Theme: Theme;
-    HeadingSize: HeadingSize;
-    styles: string;
-    HeadingTag: HeadingTag;
-  };
+  params?: Params;
   fields?: Fields;
 };
 
 const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
     </div>
@@ -75,20 +70,20 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     <CarouselCards
       title={
         <Text
-          tag={props.params.HeadingTag || 'h2'}
-          variation={props.params.HeadingSize}
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields?.Title} />
         </Text>
       }
       link={
         props.fields?.CTALink && (
-          <Button size={'large'} theme={'full'}>
+          <Button size={'large'} variation={'full'}>
             <JssLink field={props.fields?.CTALink}>
               {props?.fields?.CTALink.value.text && (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: props.fields.CTALink.value.text,
+                    __html: props.fields?.CTALink.value.text,
                   }}
                 ></span>
               )}
@@ -96,9 +91,9 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
           </Button>
         )
       }
-      theme={props.params.Theme}
+      theme={props.params?.Theme || 'A-HCA-White'}
     >
-      {props.fields.Cards?.map((card) => {
+      {props.fields?.Cards?.map((card) => {
         return (
           <CardBlog key={card.id}>
             <JssImage field={card.fields.Image} />
@@ -111,11 +106,13 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             <Text tag={'p'} variation={'body-large'}>
               <JssRichText tag="span" field={card.fields.Description} />
             </Text>
-            {!!card.fields.Tags && (
+            {!!card.fields.ArticleType && (
               <Tags>
-                {card.fields.Tags.map((tag) => (
-                  <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                ))}
+                <JssText
+                  key={card.fields.ArticleType?.id}
+                  tag="p"
+                  field={card.fields.ArticleType?.fields.Title}
+                />
               </Tags>
             )}
           </CardBlog>
@@ -134,17 +131,17 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
       <CardBlogBlock
         title={
           <Text tag={'h2'} variation={'display-5'}>
-            <JssText field={props.fields.Title} />
+            <JssText field={props.fields?.Title} />
           </Text>
         }
         cta={
           props.fields?.CTALink && (
-            <Button size={'large'} theme={'full'}>
+            <Button size={'large'} variation={'full'}>
               <JssLink field={props.fields?.CTALink}>
                 {props?.fields?.CTALink.value.text && (
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: props.fields.CTALink.value.text,
+                      __html: props.fields?.CTALink.value.text,
                     }}
                   ></span>
                 )}
@@ -152,9 +149,9 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
             </Button>
           )
         }
-        theme={props.params.Theme}
+        theme={props.params?.Theme || 'A-HCA-White'}
       >
-        {props.fields.Cards?.map((card, index) => {
+        {props.fields?.Cards?.map((card, index) => {
           const isFeature = index % 10 === 0 || index % 10 === 7; // scaling logic to accommodate more than 5 cards
           return (
             <CardBlog
@@ -176,11 +173,13 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   <JssRichText tag="span" field={card.fields.Description} />
                 </Text>
               )}
-              {card.fields.Tags && (
+              {card.fields.ArticleType && (
                 <Tags>
-                  {card.fields.Tags.map((tag) => (
-                    <JssText key={tag.id} tag="p" field={tag.fields.Title} />
-                  ))}
+                  <JssText
+                    key={card.fields.ArticleType.id}
+                    tag="p"
+                    field={card.fields.ArticleType.fields.Title}
+                  />
                 </Tags>
               )}
             </CardBlog>

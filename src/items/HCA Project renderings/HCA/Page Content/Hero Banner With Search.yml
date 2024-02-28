@@ -13,6 +13,39 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetHeroBannerWithSearch($datasource: String!, $contextItem: String!, $language: String!) {
+      contextItem: item(path: $contextItem, language: $language) {
+          title: field(name:"Title") {
+            jsonValue
+          }
+          image: field(name:"Image"){
+            jsonValue
+          }
+      }
+      item(path: $datasource, language: $language) {
+        ... on HeroBannerWithSearch {
+          searchIcon {
+             Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          searchPlaceholder{
+            jsonValue
+          }
+          cTAHeading{
+            jsonValue
+          }
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Hero Banner With Search
@@ -81,14 +114,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e591c704-aaf2-4cd5-8d76-1e734174c879"
+      Value: "9127c5f0-5969-41e7-8687-e4f811d342bd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240205T192109Z
+      Value: 20240223T182506Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

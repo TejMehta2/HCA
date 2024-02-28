@@ -45,7 +45,7 @@ const cardStandard = (
 );
 
 const mockProps: CardBlogBlockProps = {
-  theme: 'H-HCA-Green-20',
+  theme: 'K-HCA-Fern-20',
   title: (
     <Text variation={'display-5'}>
       <span>From the blog</span>
@@ -61,7 +61,7 @@ const mockProps: CardBlogBlockProps = {
     </>
   ),
   cta: (
-    <Button size={'large'} theme={'full'}>
+    <Button size={'large'} variation={'full'}>
       <a href="#">
         Visit our <strong>blog</strong>
       </a>

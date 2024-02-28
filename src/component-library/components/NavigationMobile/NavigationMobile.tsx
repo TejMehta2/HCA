@@ -1,15 +1,15 @@
-/* eslint react/jsx-key: 0 */
 import React, { useEffect, useState } from 'react';
-import { NavigationMobileProps } from './NavigationMobile.types';
 import styles from './NavigationMobile.module.scss';
-import { useScrollDirection } from '../../hooks/useScrollDirection';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
 import LogoWhite from '../../foundation/BrandAssets/Logo white.svg';
 import Icons from '../../foundation/Icons/Icons';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Button from '../../core-components/Button/Button';
-import { NavigationTab } from '../../site-components/Navigation/Navigation.types';
+import {
+  NavigationProps,
+  NavigationTab,
+} from '../../site-components/Navigation/Navigation.types';
 
 interface BackButtonProps {
   callback: () => void;
@@ -30,17 +30,16 @@ const BackButton = (props: BackButtonProps) => {
   );
 };
 
-const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
+const NavigationMobile = (props: NavigationProps): JSX.Element => {
   const {
     eyebrow,
     tabs,
-    themeOpen = 'E-HCA-Dark-Grey',
-    themeClosed = 'C-HCA-Beige',
+    themeOpen = 'B-HCA-Navy-Blue',
+    themeClosed = 'I-HCA-Goldenrod',
     search,
   } = props;
 
   // Hooks
-  const scrollDirection = useScrollDirection();
   const [isOpen, setIsOpen] = useState(false);
 
   const [primaryChoice, setPrimaryChoice] = useState<number | null>(null);
@@ -90,137 +89,132 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
   );
 
   return (
-    <div
-      className={[
-        styles.sticky,
-        styles[scrollDirection],
-        styles[isOpen ? 'open' : ''],
-      ].join(' ')}
-    >
-      <Themes theme={isOpen ? themeOpen : themeClosed}>
-        <div className={[styles.wrapper, isOpen ? '' : styles.open].join(' ')}>
-          <nav className={[styles.navigation].join(' ')} role="navigation">
-            <div className={styles.main}>
-              <a className={styles.logo} href="/">
-                <span className="sr-only">Home</span>
-                {isOpen ? <LogoWhite /> : <LogoBlue />}
-              </a>
-              <div className={styles.ctas}>
-                {search}
-                {toggleButton}
-              </div>
+    <Themes theme={isOpen ? themeOpen : themeClosed}>
+      <div
+        className={[styles.wrapper, isOpen ? styles.open : styles.closed].join(
+          ' '
+        )}
+      >
+        <nav className={[styles.navigation].join(' ')} role="navigation">
+          <div className={styles.main}>
+            <a className={styles.logo} href="/">
+              <span className="sr-only">Home</span>
+              {isOpen ? <LogoWhite /> : <LogoBlue />}
+            </a>
+            <div className={styles.ctas}>
+              {search}
+              {toggleButton}
             </div>
-            <div
-              className={[styles.drawer, isOpen ? styles.open : ''].join(' ')}
-            >
-              {primaryChoice !== null && (
-                <>
-                  {(secondaryChoice === null ||
-                    mobileTabs[primaryChoice].content.length <= 1) && (
+          </div>
+          <div className={[styles.drawer, isOpen ? styles.open : ''].join(' ')}>
+            {primaryChoice !== null && (
+              <>
+                {(secondaryChoice === null ||
+                  mobileTabs[primaryChoice].content.length <= 1) && (
+                  <BackButton
+                    callback={() => {
+                      setPrimaryChoice(null);
+                      setSecondaryChoice(null);
+                    }}
+                    displayText={
+                      <>
+                        Back to <strong>Menu</strong>
+                      </>
+                    }
+                  />
+                )}
+                {secondaryChoice !== null &&
+                  mobileTabs[primaryChoice].content.length > 1 && (
                     <BackButton
-                      callback={() => {
-                        setPrimaryChoice(null);
-                        setSecondaryChoice(null);
-                      }}
+                      callback={() => setSecondaryChoice(null)}
                       displayText={
                         <>
-                          Back to <strong>Menu</strong>
+                          Back to{' '}
+                          <strong>{mobileTabs[primaryChoice].heading}</strong>
                         </>
                       }
                     />
                   )}
-                  {secondaryChoice !== null &&
-                    mobileTabs[primaryChoice].content.length > 1 && (
-                      <BackButton
-                        callback={() => setSecondaryChoice(null)}
-                        displayText={
-                          <>
-                            Back to{' '}
-                            <strong>{mobileTabs[primaryChoice].heading}</strong>
-                          </>
-                        }
-                      />
-                    )}
-                </>
-              )}
+              </>
+            )}
 
-              <div
-                className={[
-                  styles.links,
-                  primaryChoice === null && secondaryChoice === null
-                    ? styles.primary
-                    : '',
-                ].join(' ')}
-              >
-                <ul>
-                  {mobileTabs.map((primary, primaryIndex) => {
-                    if (primary.hasChildren) {
-                      return (
-                        <>
-                          <li
-                            className={
-                              primaryChoice === null ? '' : styles.hidden
-                            }
-                          >
-                            <TextLink full={true}>
-                              <button
-                                onClick={() => {
-                                  setPrimaryChoice(primaryIndex);
-                                  if (primary.content.length <= 1) {
-                                    setSecondaryChoice(0);
-                                  }
-                                }}
-                              >
-                                <span>{primary.heading}</span>
-                                <Icons iconName={'iconChevronRight'} />
-                              </button>
-                            </TextLink>
-                          </li>
-                          <li
-                            className={[
-                              styles.grow,
-                              primaryChoice === primaryIndex
-                                ? ''
-                                : styles.hidden,
-                            ].join(' ')}
-                          >
-                            <ul>
-                              {primary.content?.map(
-                                (secondary, secondaryIndex) => {
-                                  return (
-                                    <>
-                                      <li
-                                        className={
-                                          primaryChoice === primaryIndex &&
-                                          secondaryChoice === null
-                                            ? ''
-                                            : styles.hidden
-                                        }
-                                      >
-                                        <TextLink full={true}>
-                                          <button
-                                            onClick={() =>
-                                              setSecondaryChoice(secondaryIndex)
-                                            }
-                                          >
-                                            <span>{secondary.heading}</span>
-                                            <Icons
-                                              iconName={'iconChevronRight'}
-                                            />
-                                          </button>
-                                        </TextLink>
-                                      </li>
-                                      <li
-                                        className={[
-                                          styles.grow,
-                                          secondaryChoice === secondaryIndex
-                                            ? ''
-                                            : styles.hidden,
-                                        ].join(' ')}
-                                      >
-                                        <ul>
-                                          {secondary.links?.map((tertiary) => (
+            <div
+              className={[
+                styles.links,
+                primaryChoice === null && secondaryChoice === null
+                  ? styles.primary
+                  : '',
+              ].join(' ')}
+            >
+              <ul>
+                {mobileTabs.map((primary, primaryIndex) => {
+                  if (primary.hasChildren) {
+                    return (
+                      <React.Fragment key={primaryIndex}>
+                        <li
+                          className={
+                            primaryChoice === null ? '' : styles.hidden
+                          }
+                        >
+                          <TextLink full={true}>
+                            <button
+                              onClick={() => {
+                                setPrimaryChoice(primaryIndex);
+                                if (primary.content.length <= 1) {
+                                  setSecondaryChoice(0);
+                                }
+                              }}
+                            >
+                              <span>{primary.heading}</span>
+                              <Icons iconName={'iconChevronRight'} />
+                            </button>
+                          </TextLink>
+                        </li>
+                        <li
+                          className={[
+                            styles.grow,
+                            primaryChoice === primaryIndex ? '' : styles.hidden,
+                          ].join(' ')}
+                        >
+                          <ul>
+                            {primary.content?.map(
+                              (secondary, secondaryIndex) => {
+                                return (
+                                  <React.Fragment key={secondaryIndex}>
+                                    <li
+                                      className={
+                                        primaryChoice === primaryIndex &&
+                                        secondaryChoice === null
+                                          ? ''
+                                          : styles.hidden
+                                      }
+                                    >
+                                      <TextLink full={true}>
+                                        <button
+                                          onClick={() =>
+                                            setSecondaryChoice(secondaryIndex)
+                                          }
+                                        >
+                                          <span>{secondary.heading}</span>
+                                          <Icons
+                                            iconName={'iconChevronRight'}
+                                          />
+                                        </button>
+                                      </TextLink>
+                                    </li>
+                                    <li
+                                      className={[
+                                        styles.grow,
+                                        secondaryChoice === secondaryIndex
+                                          ? ''
+                                          : styles.hidden,
+                                      ].join(' ')}
+                                    >
+                                      <ul>
+                                        {secondary.links?.map(
+                                          (tertiary, index) => (
                                             <li
+                                              key={index}
                                               className={
                                                 primaryChoice ===
                                                   primaryIndex &&
@@ -232,78 +226,78 @@ const NavigationMobile = (props: NavigationMobileProps): JSX.Element => {
                                             >
                                               {tertiary}
                                             </li>
-                                          ))}
-                                        </ul>
-                                      </li>
-                                      <li
-                                        className={[
-                                          styles.bottom,
-                                          primaryChoice === primaryIndex &&
-                                          secondaryChoice === secondaryIndex
-                                            ? ''
-                                            : styles.hidden,
-                                        ].join(' ')}
+                                          )
+                                        )}
+                                      </ul>
+                                    </li>
+                                    <li
+                                      className={[
+                                        styles.bottom,
+                                        primaryChoice === primaryIndex &&
+                                        secondaryChoice === secondaryIndex
+                                          ? ''
+                                          : styles.hidden,
+                                      ].join(' ')}
+                                    >
+                                      <Button
+                                        size={'large'}
+                                        variation={'outline'}
                                       >
-                                        <Button
-                                          size={'large'}
-                                          theme={'outline'}
-                                        >
-                                          {secondary.mobileCta}
-                                        </Button>
-                                      </li>
-                                    </>
-                                  );
-                                }
-                              )}
-                            </ul>
-                          </li>
-                          {primary.mobileCta && (
-                            <li
-                              className={[
-                                styles.bottom,
-                                primaryChoice === primaryIndex &&
-                                (secondaryChoice === null ||
-                                  primary.content.length <= 1)
-                                  ? ''
-                                  : styles.hidden,
-                              ].join(' ')}
-                            >
-                              <Button size={'large'} theme={'outline'}>
-                                {primary.mobileCta}
-                              </Button>
-                            </li>
-                          )}
-                        </>
-                      );
-                    } else {
-                      return (
-                        <>
+                                        {secondary.mobileCta}
+                                      </Button>
+                                    </li>
+                                  </React.Fragment>
+                                );
+                              }
+                            )}
+                          </ul>
+                        </li>
+                        {primary.mobileTabCta && (
                           <li
-                            className={
-                              primaryChoice === null ? '' : styles.hidden
-                            }
+                            className={[
+                              styles.bottom,
+                              primaryChoice === primaryIndex &&
+                              (secondaryChoice === null ||
+                                primary.content.length <= 1)
+                                ? ''
+                                : styles.hidden,
+                            ].join(' ')}
                           >
-                            <TextLink full={true}>{primary.cta}</TextLink>
+                            <Button size={'large'} variation={'outline'}>
+                              {primary.mobileTabCta}
+                            </Button>
                           </li>
-                        </>
-                      );
-                    }
-                  })}
-                </ul>
-              </div>
-              {primaryChoice === null && (
-                <div className={styles.eyebrow}>
-                  <div className={styles['eyebrow-inner']}>
-                    {eyebrow?.left}
-                    {eyebrow?.right}
-                  </div>
-                </div>
-              )}
+                        )}
+                      </React.Fragment>
+                    );
+                  } else {
+                    return (
+                      <React.Fragment key={primaryIndex}>
+                        <li
+                          className={
+                            primaryChoice === null ? '' : styles.hidden
+                          }
+                        >
+                          <TextLink full={true}>{primary.tabCta}</TextLink>
+                        </li>
+                      </React.Fragment>
+                    );
+                  }
+                })}
+              </ul>
             </div>
-          </nav>
-        </div>
-      </Themes>
-    </div>
+            {primaryChoice === null && (
+              <div className={styles.eyebrow}>
+                <div className={styles['eyebrow-inner']}>
+                  {eyebrow?.left}
+                  {eyebrow?.right}
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
+      </div>
+    </Themes>
   );
 };
 

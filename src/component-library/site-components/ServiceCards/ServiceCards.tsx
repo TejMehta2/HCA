@@ -19,7 +19,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
   return (
     <>
       {/* confirmed with Design this component is only intended to use this theme */}
-      <Themes theme="C-HCA-Beige">
+      <Themes theme="I-HCA-Goldenrod">
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div className={styles.grid}>
@@ -30,7 +30,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
                     <div className={styles.title}>{title}</div>
                     <div className={styles['body-text']}>{bodyText}</div>
                     <div className={styles.cta}>
-                      <Button size="large" theme="outline-dark">
+                      <Button size="large" variation="outline-dark">
                         {cta}
                       </Button>
                     </div>

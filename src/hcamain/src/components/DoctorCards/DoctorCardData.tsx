@@ -5,13 +5,13 @@ export const fetchDoctorCard = async (
 ) => {
   const customFilters: string[] = [];
 
-  component.fields.CustomFilters.map((filter: FilterField) => {
-    const customFilter = filter.fields.Filter.value;
-    customFilters.push(customFilter);
+  component?.fields?.CustomFilters?.map((filter: FilterField) => {
+    const customFilter = filter?.fields?.Filter?.value;
+    customFilters.push(customFilter || '');
   });
 
   const customFiltersParams = customFilters.join('&');
-  const limit = component.fields.NumberOfCards.value;
+  const limit = component?.fields?.NumberOfCards?.value;
 
   try {
     const res = await fetch(

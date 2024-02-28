@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 type ButtonSizeUnionTypes = 'small' | 'large';
-export type ButtonThemeUnionTypes =
+export type ButtonVariationUnionTypes =
   | 'full'
   | 'outline'
   | 'social'
@@ -21,7 +21,7 @@ export type ButtonThemeUnionTypes =
 
 export interface ButtonProps {
   size: ButtonSizeUnionTypes;
-  theme: ButtonThemeUnionTypes;
+  variation: ButtonVariationUnionTypes;
   children?: ReactNode | JSX.Element;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   loading?: boolean;

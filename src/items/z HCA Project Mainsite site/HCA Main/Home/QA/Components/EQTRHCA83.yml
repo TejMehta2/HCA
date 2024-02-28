@@ -1,13 +1,13 @@
 ﻿---
 ID: "8debf86c-6f04-4642-9687-be6e565c1eb1"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Template: "b63580c4-4e8a-49e4-a7c8-0e09552fcfbc"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA83
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{8609F118-D857-4992-B6EA-1FB7CE95607F}" />
+    <image mediaid="{99F6C53C-57AF-48D3-9838-1C85B12830F8}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -74,16 +74,19 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5b5452a4-9de4-4d31-8207-923ec291b31a"
+      Value: "0f59332b-9e2e-4629-81be-66e51a048919"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240201T093759Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
+      Value: 20240223T212431Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA83

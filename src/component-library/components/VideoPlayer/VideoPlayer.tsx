@@ -33,7 +33,7 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
       >
         {overlayImage}
         <div className={styles.play}>
-          <Button theme="play" size="small">
+          <Button variation="play" size="small">
             <button onClick={handlePlay} className={styles['overlay-button']}>
               <Icons iconName={'iconPlay'}></Icons>
               <span className="sr-only">Play video</span>
