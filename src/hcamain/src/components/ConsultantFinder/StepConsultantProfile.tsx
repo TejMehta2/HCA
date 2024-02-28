@@ -6,7 +6,8 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import {
   GetServerSideComponentProps,
   GetStaticComponentProps,
@@ -412,10 +413,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 serverSideData?.ProfileJson?.review?.explanation || 0
               }
             ></OverallRating>
-            <ReviewsSection></ReviewsSection>
           </MainWrapper>
           <SideWrapper>
-            <SidePanel>
+            <SidePanel isSticky={true}>
               <Reviews
                 doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
                 doctifyText="Reviewed By"
