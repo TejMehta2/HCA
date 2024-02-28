@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface PatientsReviewsProps {
+export interface LoaderCFProps {
   children?: ReactNode | JSX.Element;
-  slug: string;
 }

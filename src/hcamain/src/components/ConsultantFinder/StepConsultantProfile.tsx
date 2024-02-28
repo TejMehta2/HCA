@@ -55,6 +55,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import Themes from '@component-library/foundation/Themes/Themes';
 import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
+import { yearsExperience } from '@component-library/utility-functions/index';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -134,26 +135,11 @@ export const Default = (props: StepProps): JSX.Element => {
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
-  const { message, setMessage } = useContext(ConsultantFinderContext);
+
+  // top specialty
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
-
-  // calculate years of experience
-  const yearsExperience = (yearsExp: string) => {
-    // Check if yearsExp is a string
-    if (typeof yearsExp !== 'string') {
-      // Handle the case where yearsExp is not a string
-      return 0; // Or whatever default value you want to return
-    }
-
-    const reversedDate = yearsExp.split('-').reverse().join('-');
-    const yearsNew =
-      new Date(
-        new Date().getTime() - new Date(reversedDate).getTime()
-      ).getFullYear() - 1970;
-    return yearsNew;
-  };
 
   // languages
   const languagesList: string[] = [];
@@ -187,42 +173,12 @@ export const Default = (props: StepProps): JSX.Element => {
     (item: any) => item.keywordType === 'condition'
   );
 
-  // fees
-  // check object has properties or it is defined and not null
-  const isObjectDefined = (Obj: object) => {
-    if (
-      Obj === null ||
-      typeof Obj !== 'object' ||
-      Object.prototype.toString.call(Obj) === '[object Array]'
-    ) {
-      return false;
-    } else {
-      for (const prop in Obj) {
-        if (Obj.hasOwnProperty(prop)) {
-          return true;
-        }
-      }
-      return JSON.stringify(Obj) !== JSON.stringify({});
-    }
-  };
-
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        <div>Slug: {serverSideData?.Slug}</div>
-        <div>
-          Error with data?:{' '}
-          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-        </div>
-        <div>
-          Is live diaries consultant?:{' '}
-          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-        </div>
         {/* top section */}
         <div>
-          {/* de facut linkul */}
-          <iframe src="/Finder/Frame-Reviews"></iframe>
           <Breadcrumbs>
             <a href="#">Consultant Finder</a>
             {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
@@ -414,6 +370,16 @@ export const Default = (props: StepProps): JSX.Element => {
                 serverSideData?.ProfileJson?.review?.explanation || 0
               }
             ></OverallRating>
+            {/* iframe with patient and peer reviews */}
+            <iframe
+              src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+              width="100%"
+              height="700px"
+              id="specialistReviews"
+              name="specialistReviews"
+              scrolling="no"
+            ></iframe>
+            {/* iframe with patient and peer reviews */}
           </MainWrapper>
           <SideWrapper>
             <SidePanel isSticky={true}>
@@ -499,39 +465,6 @@ export const Default = (props: StepProps): JSX.Element => {
             </SidePanel>
           </SideWrapper>
         </ConsultantFinderProfileWrapper>
-        {/* <div>Message: {message}</div>
-        <button onClick={() => setMessage('testing new')}>
-          Change message
-        </button>
-        <div>Slug: {serverSideData?.Slug}</div>
-        <div>
-          Error with data?:{' '}
-          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-        </div>
-        <div>
-          Is live diaries consultant?:{' '}
-          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-        </div> */}
-        {/* <div>
-          Their doctify profile data:{' '}
-          {JSON.stringify(serverSideData?.ProfileJson)}
-        </div> */}
-
-        {/* <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <Navigation showOnMobile={true}>
           {/* if consultant has live diaries then show 'book online' */}
           {serverSideData?.IsLiveDiaryConsultant && (

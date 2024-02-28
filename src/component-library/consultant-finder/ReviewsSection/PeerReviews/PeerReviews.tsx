@@ -6,7 +6,7 @@ import axios from 'axios';
 import Text from '../../../foundation/Text/Text';
 import TextButton from '../../../core-components/TextButton/TextButton';
 import Icons from '../../../foundation/Icons/Icons';
-import Loader from '../../../foundation/Loader/Loader';
+import LoaderCF from '../../LoaderCF/LoaderCF';
 
 const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -14,10 +14,9 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log('use effect peers');
     axios
       .get(
-        `https://api.doctify.com/api/hca/specialists/${'mr-andrew-goldberg'}/peerRecommendations`
+        `https://api.doctify.com/api/hca/specialists/${props.slug}/peerRecommendations`
       )
       .then((resp) => {
         // console.log(resp);
@@ -39,7 +38,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
 
   return (
     <>
-      {isLoading && <Loader theme={'dark'} />}
+      {isLoading && <LoaderCF />}
       {!isLoading && (
         <div className={styles['patients-reviews']}>
           <div className={styles.header}>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Console } from 'console';
 import { parse } from 'node-html-parser';
 
@@ -70,8 +71,7 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
           }
         }
       );
-      if(ldbSlugs.length == 0)
-      {
+      if (ldbSlugs.length == 0) {
         console.error(
           `Warning LDB consultant slugs list for is empty from call getActiveLiveDiaryConsultantSlugs`
         );
@@ -207,16 +207,15 @@ export async function facilityURLFromDoctifySlug(
   let locationURL: string = '';
   const facilities = await getFacilitiesData();
 
-  if(facilities.findIndex) // got something usable back
-  {
-    let index = facilities.findIndex(
+  if (facilities.findIndex) {
+    // got something usable back
+    const index = facilities.findIndex(
       (facility: any) => facility.UniqueKey === doctifyLocationSlug
     );
     if (index > -1) {
       locationURL = facilities[index]?.Values?.fullURL; //"https://www.hcahealthcare.co.uk/facilities/the-harborne-hospital";
     }
   }
-
 
   return locationURL;
 }
@@ -256,7 +255,7 @@ export async function facilityURLFromDoctifySlug(
     ]
 }
 */
-let C2_FirstAppointment_API_URL: string =
+const C2_FirstAppointment_API_URL: string =
   'https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88';
 export async function LDB_FirstAppointment(
   gmcNumber: string,

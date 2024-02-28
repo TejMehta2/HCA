@@ -11,7 +11,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
       const header = document.querySelector('header');
 
       if (header) {
-        console.log('header', header);
+        // console.log('header', header);
         setHeaderHeight(header.offsetHeight);
       }
     };
