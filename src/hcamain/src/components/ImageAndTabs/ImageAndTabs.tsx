@@ -9,7 +9,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import TabsBlock from '@component-library/site-components/TabsBlock/TabsBlock';
 import Text from '@component-library/foundation/Text/Text';
-import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
+import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
@@ -34,12 +34,7 @@ interface Fields {
 }
 
 type ImageAndTabsProps = {
-  params: {
-    Theme?: Theme;
-    HeadingTag?: HeadingTag;
-    HeadingSize?: HeadingSize;
-    styles?: string;
-  };
+  params?: Params;
   fields?: Fields;
 };
 
@@ -47,7 +42,7 @@ const ImageAndTabsDefaultComponent = (
   props: ImageAndTabsProps
 ): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`}>
+    <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
         <span className="is-empty-hint">Tab no datasource</span>
       </div>
@@ -61,38 +56,38 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
   }
   return (
     <TabsBlock
-      theme={props.params?.Theme}
+      theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
-          tag={props.params.HeadingTag}
-          variation={props.params.HeadingSize}
+          tag={props.params?.HeadingTag}
+          variation={props.params?.HeadingSize}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields?.Title} />
         </Text>
       }
-      tabsContent={props.fields.Tabs?.map((tab) => ({
+      tabsContent={props.fields?.Tabs?.map((tab) => ({
         tab: {
           icon: (
             <span
               dangerouslySetInnerHTML={{
-                __html: tab.fields.TabIcon?.fields?.SvgMarkup?.value || '',
+                __html: tab?.fields?.TabIcon?.fields?.SvgMarkup?.value || '',
               }}
             />
           ),
-          label: tab.fields.TabTitle?.value,
+          label: tab?.fields?.TabTitle?.value,
         },
-        image: <JssImage field={tab.fields?.Image} />,
+        image: <JssImage field={tab?.fields?.Image} />,
         title: (
           <Text
-            tag={getSubheadingTag(props.params.HeadingTag, 'p')}
+            tag={getSubheadingTag(props.params?.HeadingTag, 'p')}
             variation="display-5"
           >
-            <JssText field={tab.fields.Title} />
+            <JssText field={tab?.fields?.Title} />
           </Text>
         ),
         bodyCopy: (
           <Text tag="div" variation="body-large">
-            <JssRichText tag="p" field={tab.fields.Text} />
+            <JssRichText tag="p" field={tab?.fields?.Text} />
           </Text>
         ),
       }))}

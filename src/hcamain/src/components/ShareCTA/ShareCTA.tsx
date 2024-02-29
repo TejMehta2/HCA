@@ -10,9 +10,10 @@ import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
+import Params from 'src/types/params';
 
 type CTAIconFields = {
-  svgMarkup: Field<string>;
+  svgMarkup?: Field<string>;
 };
 
 type ShareTemplate =
@@ -23,14 +24,14 @@ type ShareTemplate =
   | 'WhatsAppShare'
   | 'EmailShare';
 type SharePlatformsFields = {
-  template: { name: ShareTemplate };
-  cTAText: { jsonValue: Field<string> };
+  template?: { name?: ShareTemplate };
+  cTAText?: { jsonValue?: Field<string> };
 };
 
 const findSharePlatformCtaText =
   (platformList: SharePlatformsFields[]) => (template: ShareTemplate) =>
-    platformList.find((item) => item.template.name === template)?.cTAText
-      .jsonValue;
+    platformList?.find((item) => item?.template?.name === template)?.cTAText
+      ?.jsonValue;
 
 interface Fields {
   data: {
@@ -54,14 +55,12 @@ interface Fields {
 }
 
 type ShareCTAProps = {
-  params: {
-    [key: string]: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const ShareCTADefaultComponent = (props: ShareCTAProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">ShareCTA no datasource</span>
     </div>
@@ -74,13 +73,13 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
   }
   // Prime the higher order function with the share list
   const findCtaText = findSharePlatformCtaText(
-    props.fields.data.item.sharePlatforms.sharePlatformsList
+    props.fields?.data.item.sharePlatforms.sharePlatformsList
   );
   // Organize the re-usable share data
   const shareData = {
-    url: props.fields.data.contextItem?.url?.url || '',
-    title: props.fields.data.contextItem?.title?.value || '',
-    text: props.fields.data.contextItem?.text?.value || '',
+    url: props.fields?.data.contextItem?.url?.url || '',
+    title: props.fields?.data.contextItem?.title?.value || '',
+    text: props.fields?.data.contextItem?.text?.value || '',
   };
   return (
     <Themes theme={'L-HCA-Teal-5'}>
@@ -88,15 +87,17 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
         shareCtaText={
           <JssRichText
             field={{
-              value: props.fields.data.item.cTALink?.jsonValue.value.text,
+              value: props.fields?.data.item.cTALink?.jsonValue.value.text,
             }}
           />
         }
         shareCtaIcon={
-          props.fields.data.item.cTAIcon?.Icon.svgMarkup.value && (
+          props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
             <span
               dangerouslySetInnerHTML={{
-                __html: props.fields.data.item.cTAIcon.Icon.svgMarkup.value,
+                __html:
+                  props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
+                  '',
               }}
             ></span>
           )
@@ -104,12 +105,12 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
         shareData={shareData}
         heading={
           <Text tag="h2" variation="display-2">
-            <JssText field={props.fields.data.item.title?.jsonValue} />
+            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>
         }
         subheading={
           <Text tag="p" variation="subheading-1">
-            <JssText field={props.fields.data.item.text?.jsonValue} />
+            <JssText field={props.fields?.data?.item?.text?.jsonValue} />
           </Text>
         }
         theme="A-HCA-White"

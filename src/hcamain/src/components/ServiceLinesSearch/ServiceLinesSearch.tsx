@@ -22,7 +22,7 @@ import useSearchForm from 'src/hooks/useSearchForm/useSearchForm';
 const ServiceLinesSearchDefaultComponent = (
   props: ServiceLinesSearchProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">ServiceLinesSearch no datasource</span>
     </div>
@@ -45,29 +45,29 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
   }
 
   // TODO - get/compute these from API response when API implemented
-  const resultsPerPage = props.fields.ResultsPerPage.value || 12;
+  const resultsPerPage = props.fields?.ResultsPerPage?.value || 12;
   const resultsLength = data?.serviceLines?.length || 0;
   const resultsRange = `1-${resultsPerPage}`;
   const pageCount = 3;
 
   // Flatten CMS params for mapping
-  const filterByList = props.fields.FilterBy.map(
-    (item) => item.fields.Filter.value
+  const filterByList = props.fields?.FilterBy?.map(
+    (item) => item?.fields?.Filter?.value
   );
-  const SearchByList = props.fields.SearchBy.map(
-    (item) => item.fields.Filter.value
+  const SearchByList = props?.fields?.SearchBy?.map(
+    (item) => item?.fields?.Filter?.value
   );
 
   return (
     <>
       <form {...formHandlers}>
         {/* Map CMS params */}
-        {[...filterByList, ...SearchByList].map((param) => (
+        {[...(filterByList || []), ...(SearchByList || [])].map((param) => (
           <input
             key={param}
             type={'hidden'}
-            name={param.split('=')[0]}
-            value={param.split('=')[0]}
+            name={param?.split('=')[0]}
+            value={param?.split('=')[0]}
           />
         ))}
 
@@ -77,71 +77,75 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
             <HeaderPlain
               subheading={
                 <Text variation={'subheading-1'}>
-                  <JssText field={props.fields.Heading} />
+                  <JssText field={props.fields?.Heading} />
                 </Text>
               }
               heading={
                 <Text
-                  variation={props.params.HeadingSize || 'display-2'}
-                  tag={props.params.HeadingTag || 'h2'}
+                  variation={props.params?.HeadingSize || 'display-2'}
+                  tag={props.params?.HeadingTag || 'h2'}
                 >
-                  <JssText field={props.fields.Title} />
+                  <JssText field={props.fields?.Title} />
                 </Text>
               }
               search={
                 <SearchBar
                   defaultValue={searchParams.get('searchString') || undefined}
                   name={'searchString'}
-                  placeholder={props.fields.SearchPlaceholder.value}
+                  placeholder={props.fields?.SearchPlaceholder?.value}
                 />
               }
-              theme={props.params.Theme}
+              theme={props.params?.Theme || 'A-HCA-White'}
               filters={
                 <Filters
                   buttonText={
-                    <JssText field={props.fields.FilterOptionsText} />
+                    <JssText field={props.fields?.FilterOptionsText} />
                   }
                   buttonIcon={
                     props?.fields?.FilterOptionsIcon && (
                       <span
                         dangerouslySetInnerHTML={{
                           __html:
-                            props?.fields?.FilterOptionsIcon.fields.SvgMarkup
-                              .value,
+                            props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup
+                              ?.value || '',
                         }}
                       />
                     )
                   }
                   resultsCount={resultsLength}
-                  filters={props.fields.FilterOptions.map(
+                  filters={props.fields?.FilterOptions?.map(
                     (option, optionIndex) => ({
                       contentVariation: 'filters',
-                      title: option.fields.Header.value,
+                      title: option?.fields?.Header?.value,
                       children: (
                         <Checkboxes>
-                          {option.fields.Filters.map((filter, filterIndex) => {
-                            const queryParts =
-                              filter.fields.Filter.value.split('=');
-                            const queryKey = queryParts[0];
-                            const queryValue = queryParts[1];
-                            return (
-                              <Checkbox
-                                key={filterIndex}
-                                id={
-                                  filter.id ||
-                                  `filter-${optionIndex}-${filterIndex}`
-                                }
-                                value={queryValue}
-                                name={queryKey}
-                                label={filter.fields.DisplayName.value}
-                                defaultChecked={
-                                  searchParams
-                                    .getAll(queryKey)
-                                    .includes(queryValue) || undefined
-                                }
-                              />
-                            );
-                          })}
+                          {option?.fields?.Filters?.map(
+                            (filter, filterIndex) => {
+                              const queryParts =
+                                filter?.fields?.Filter?.value.split('=');
+                              const queryKey = queryParts?.[0] || '';
+                              const queryValue = queryParts?.[1] || '';
+                              return (
+                                <Checkbox
+                                  key={filterIndex}
+                                  id={
+                                    filter.id ||
+                                    `filter-${optionIndex}-${filterIndex}`
+                                  }
+                                  value={queryValue}
+                                  name={queryKey}
+                                  label={
+                                    filter?.fields?.DisplayName?.value || ''
+                                  }
+                                  defaultChecked={
+                                    searchParams
+                                      ?.getAll(queryKey)
+                                      ?.includes(queryValue) || undefined
+                                  }
+                                />
+                              );
+                            }
+                          )}
                         </Checkboxes>
                       ),
                     })
@@ -150,35 +154,39 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
               }
               sort={
                 <Sorting
-                  buttonText={<JssText field={props.fields.SortOptionsText} />}
+                  buttonText={<JssText field={props.fields?.SortOptionsText} />}
                   buttonIcon={
                     props?.fields?.SortOptionsIcon && (
                       <span
                         dangerouslySetInnerHTML={{
                           __html:
-                            props?.fields?.SortOptionsIcon.fields.SvgMarkup
-                              .value,
+                            props?.fields?.SortOptionsIcon?.fields?.SvgMarkup
+                              ?.value || '',
                         }}
                       />
                     )
                   }
-                  options={props.fields.SortOptions.map((option, index) => {
-                    const queryParts = option.fields.Filter.value.split('=');
-                    const queryKey = queryParts[0];
-                    const queryValue = queryParts[1];
-                    return {
-                      id: option.id || `sort-by-${index}`,
-                      value: queryValue,
-                      labelText: option.fields.DisplayName.value,
-                      name: queryKey,
-                      defaultChecked: searchParams.get(queryKey) === queryValue,
-                    };
-                  })}
+                  options={
+                    props?.fields?.SortOptions?.map((option, index) => {
+                      const queryParts =
+                        option?.fields?.Filter?.value?.split('=');
+                      const queryKey = queryParts?.[0] || '';
+                      const queryValue = queryParts?.[1] || '';
+                      return {
+                        id: option.id || `sort-by-${index}`,
+                        value: queryValue,
+                        labelText: option?.fields?.DisplayName?.value || '',
+                        name: queryKey,
+                        defaultChecked:
+                          searchParams?.get(queryKey) === queryValue,
+                      };
+                    }) || []
+                  }
                 />
               }
             >
               <Text variation="body-large" tag="div">
-                <RichText tag="div" field={props.fields.Text} />
+                <RichText tag="div" field={props.fields?.Text} />
               </Text>
             </HeaderPlain>
           }
@@ -186,7 +194,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
             <Text tag="h3" variation="heading-1">
               <span>
                 <span>{resultsLength} articles including ‘</span>
-                <JssText field={props.fields.SearchResultsText} />
+                <JssText field={props.fields?.SearchResultsText} />
                 <span>’</span>{' '}
               </span>
             </Text>
@@ -197,7 +205,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params.Theme}>
+          <CardGrid theme={props.params?.Theme || 'A-HCA-White'}>
             {data?.serviceLines?.map((item, index) => (
               <CardContent
                 key={index}
@@ -210,7 +218,11 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
                   <Text variation="body-large">{item.Description}</Text>
                 }
                 image={
-                  <Image src={item.Image} alt="" width="363" height="243" />
+                  item?.Image ? (
+                    <Image src={item?.Image} alt="" width="363" height="243" />
+                  ) : (
+                    <></>
+                  )
                 }
               />
             ))}
@@ -251,11 +263,6 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
           />
         </SearchWrapper>
       </form>
-      {/* TODO - make localisation fields into props */}
-      {/* <p>Text: {localise('close')}</p>
-      <p>Text: {localise('show-more')}</p>
-      <p>Text: {localise('showing')}</p>
-      <p>Text: {localise('clear-all')}</p> */}
     </>
   );
 };

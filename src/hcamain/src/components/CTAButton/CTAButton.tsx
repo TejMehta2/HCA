@@ -6,27 +6,28 @@ import {
   ButtonProps,
   ButtonVariationUnionTypes,
 } from '@component-library/core-components/Button/Button.types';
+import Params from 'src/types/params';
 
 type CTAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
+  fields?: {
+    SvgMarkup?: Field<string>;
   };
 };
 
 interface Fields {
-  CTAIcon: CTAIconFields;
-  CTALink: LinkField;
+  CTAIcon?: CTAIconFields;
+  CTALink?: LinkField;
 }
 
 type CTAProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-  size: ButtonProps['size'];
-  contentVariation: ButtonProps['contentVariation'];
+  params?: Params;
+  fields?: Fields;
+  size?: ButtonProps['size'];
+  contentVariation?: ButtonProps['contentVariation'];
 };
 
 const CTADefaultComponent = (props: CTAProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">CTA</span>
     </div>
@@ -42,18 +43,18 @@ const IntegratedButton = (props: IntegratedButtonProps) => (
     size={props.size || 'large'}
     contentVariation={props.contentVariation}
   >
-    <a href={props.fields?.CTALink.value.href}>
-      {props?.fields?.CTAIcon?.fields.SvgMarkup && (
+    <a href={props.fields?.CTALink?.value?.href}>
+      {props.fields?.CTAIcon?.fields?.SvgMarkup && (
         <span
           dangerouslySetInnerHTML={{
-            __html: props.fields?.CTAIcon.fields.SvgMarkup.value,
+            __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
           }}
         />
       )}
       <RichText
         tag="span"
         field={{
-          value: props.fields?.CTALink.value.text,
+          value: props.fields?.CTALink?.value?.text,
         }}
       />
     </a>
@@ -74,11 +75,11 @@ export const Outline = (props: CTAProps): JSX.Element => {
 export const TextButton = (props: CTAProps): JSX.Element => {
   return (
     <TextButtonComponent>
-      <a href={props.fields?.CTALink.value.href}>
+      <a href={props.fields?.CTALink?.value?.href}>
         <RichText
           tag="span"
           field={{
-            value: props.fields?.CTALink.value.text,
+            value: props.fields?.CTALink?.value?.text,
           }}
         />
       </a>
