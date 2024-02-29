@@ -25,6 +25,6 @@ const mockProps: SelectFieldProps = {
 describe('SelectField', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<SelectField {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Select field label')).toBeVisible();
   });
 });

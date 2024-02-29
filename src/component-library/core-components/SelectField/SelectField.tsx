@@ -79,7 +79,9 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
               onClick={selectItem}
               role="option"
               aria-selected={option.text === activeValue}
-              className={option.text === activeValue ? styles.active : ''}
+              className={`${styles.option} ${
+                option.text === activeValue ? styles.active : ''
+              }`}
             >
               <Text tag="span" variation="body-medium-large">
                 {option.text}
