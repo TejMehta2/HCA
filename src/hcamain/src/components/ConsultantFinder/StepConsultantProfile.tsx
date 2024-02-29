@@ -23,6 +23,7 @@ import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 // import { useSearchParams } from 'next/navigation';
 import {
+  LDB_FirstAppointment,
   checkIfLiveBookingIsAvailable,
   getSpecialistProfileData,
   isErrorWithProfileData,
@@ -69,6 +70,7 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
+  FirstAppointment: any;
   ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
@@ -89,12 +91,15 @@ export const getStaticProps: GetStaticComponentProps = async (
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
+  const firstAppointment = isLiveDiaryConsultant && !errorWithProfileData ? 
+                              await LDB_FirstAppointment(consultantProfileJson?.gmcNumber) : null;
   //console.log("consultantProfileJson: ", consultantProfileJson);
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
+    FirstAppointment: firstAppointment,
     ProfileJson: consultantProfileJson,
   };
 
@@ -127,7 +132,7 @@ export const Default = (props: StepProps): JSX.Element => {
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
-
+  console.log('first appointment:', serverSideData?.FirstAppointment);
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'

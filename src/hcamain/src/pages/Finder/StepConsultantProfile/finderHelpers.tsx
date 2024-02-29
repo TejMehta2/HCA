@@ -149,8 +149,12 @@ export async function getSpecialistProfileData(
         if(docitfyData.isLiveDiaryConsultant)
         {
           try {
-            let GMCNumber = docitfyData?.registrationBodies[0].registrationNumber; // e.g. "4113571"
-            const res = await LDB_FirstAppointment(GMCNumber);
+            // gmcNumber
+            const gmcNumber = docitfyData?.registrationBodies.filter(
+              (item: any) => item.name === 'General Medical Council'
+            )[0]?.registrationNumber;
+            const res = await LDB_FirstAppointment(gmcNumber); // e.g. "4113571"
+            docitfyData.gmcNumber = gmcNumber;
             docitfyData.firstAppointment = res;
             //console.log("first apt:", res);
           } catch (e) {
