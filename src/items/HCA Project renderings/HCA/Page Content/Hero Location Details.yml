@@ -19,7 +19,7 @@ SharedFields:
     query GetHeroLocationDetails($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
         ... on LocationPage {
-          title {
+          title: field(name: "Title") {
             jsonValue
           }
           image {
@@ -270,14 +270,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "003aab7b-44f1-446c-845c-6ed3b08d06d1"
+      Value: "bf2445db-bebe-421a-8519-b471afb09809"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T082857Z
+      Value: 20240228T220222Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
