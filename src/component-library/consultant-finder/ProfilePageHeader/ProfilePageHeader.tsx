@@ -9,19 +9,23 @@ const ProfilePageHeader = (props: ProfilePageHeaderProps): JSX.Element => {
   return (
     <div className={styles['profile-header']}>
       <div className={styles['profile-header-container']}>
-        <div className={styles.image}>
-          <img src={props.image} alt="test" width="170" height="170" />
-        </div>
+        {props.image && (
+          <div className={styles.image}>
+            <img src={props.image} alt="test" width="170" height="170" />
+          </div>
+        )}
         <div className={styles.details}>
           <div className={styles.speciality}>
             <Text tag="h2" variation="display-4">
               {props.name}
             </Text>
-            <div className={styles['top-specialty']}>
-              <Text tag="p" variation="subheading-2">
-                {props.topSpecialty}
-              </Text>
-            </div>
+            {props.topSpecialty !== '' && (
+              <div className={styles['top-specialty']}>
+                <Text tag="p" variation="subheading-2">
+                  {props.topSpecialty}
+                </Text>
+              </div>
+            )}
           </div>
           {props.overallExperienceYears > 0 && (
             <div className={styles['info-desktop']}>

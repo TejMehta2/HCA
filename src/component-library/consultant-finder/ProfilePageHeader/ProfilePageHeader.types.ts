@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface ProfilePageHeaderProps {
   children: ReactNode | JSX.Element;
-  image: string;
+  image: string | null;
   name: string;
   topSpecialty: string;
   infoBoxText: string;

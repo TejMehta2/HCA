@@ -4,4 +4,5 @@ export interface ConsultantFeesProps {
   newAppointmentFeesLabel: string;
   followUpAppointmentFees: string;
   followUpAppointmentFeesLabel: string;
+  noFeesInfo: string;
 }

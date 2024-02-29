@@ -64,6 +64,7 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   DoctifyLogoImage: ImageField;
+  ProfileImagePlaceholderImage: any;
 }
 
 interface ServerSideProps {
@@ -205,7 +206,11 @@ export const Default = (props: StepProps): JSX.Element => {
         <ConsultantFinderProfileWrapper>
           <MainWrapper>
             <ProfilePageHeader
-              image={serverSideData?.ProfileJson?.images?.logo}
+              image={
+                serverSideData?.ProfileJson?.images?.logo ||
+                props?.fields?.ProfileImagePlaceholderImage?.value.src ||
+                null
+              }
               name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
               topSpecialty={topSpecialty[0]?.name || ''}
               infoBoxText={'some text'}
@@ -268,17 +273,13 @@ export const Default = (props: StepProps): JSX.Element => {
                   <InfoBox
                     backgroundColour="green"
                     icon={null}
-                    isShortInfo
-                    longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-                    longTextTitle="TITLE"
+                    isShortInfo={true}
                     shortText="Next initial appointment on Fri, Oct 28"
                   />
                   <InfoBox
                     backgroundColour="orange"
                     icon={null}
-                    isShortInfo
-                    longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-                    longTextTitle="TITLE"
+                    isShortInfo={true}
                     shortText="Next initial appointment on Fri, Oct 28"
                   />
                   <Text tag="p" variation="body-small">
@@ -301,8 +302,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 conditionsLabel={'ALL CONDITIONS'}
                 treatmentsList={treatments}
                 conditionsList={conditions}
-                noTreatmentsMsg={'No treatments'}
-                noConditionsMsg={'No conditions'}
+                noTreatmentsMsg={
+                  "This consultant doesn't have any procedures information at the moment."
+                }
+                noConditionsMsg={
+                  "This consultant doesn't have any conditions information at the moment."
+                }
               ></TreatmentsConditions>
             </ProfilePageSection>
             <ProfilePageSection>
@@ -324,28 +329,35 @@ export const Default = (props: StepProps): JSX.Element => {
                   null
                 }
                 followUpAppointmentFeesLabel={'Follow-up appointment'}
+                noFeesInfo={
+                  "This consultant doesn't have any consultation fees information at the moment."
+                }
               ></ConsultantFees>
             </ProfilePageSection>
             <ProfilePageSection>
               <DataComponentSimple
                 title={'qualifications'}
-                data={serverSideData?.ProfileJson?.suffix}
+                data={
+                  serverSideData?.ProfileJson?.suffix ||
+                  "This consultant doesn't have any qualification information at the moment."
+                }
               ></DataComponentSimple>
             </ProfilePageSection>
-            {serverSideData?.ProfileJson?.registrationBodies.length > 0 && (
-              <ProfilePageSection>
-                <DataComponentSimple
-                  title={'Registered with'}
-                  data={`General Medical Council: ${gmcNumber}`}
-                ></DataComponentSimple>
-              </ProfilePageSection>
-            )}
+            {serverSideData?.ProfileJson?.registrationBodies &&
+              serverSideData?.ProfileJson?.registrationBodies.length > 0 && (
+                <ProfilePageSection>
+                  <DataComponentSimple
+                    title={'Registered with'}
+                    data={`General Medical Council: ${gmcNumber}`}
+                  ></DataComponentSimple>
+                </ProfilePageSection>
+              )}
             <ProfilePageSection>
               <Locations
                 title={'Locations'}
                 locations={serverSideData?.ProfileJson?.practices}
                 noLocationsText={
-                  'This consultant doesn’t have any locations information at the moment.'
+                  "This consultant doesn't have any locations information at the moment."
                 }
               ></Locations>
             </ProfilePageSection>
@@ -398,17 +410,13 @@ export const Default = (props: StepProps): JSX.Element => {
               <InfoBox
                 backgroundColour="green"
                 icon={null}
-                isShortInfo
-                longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-                longTextTitle="TITLE"
+                isShortInfo={true}
                 shortText="Next initial appointment on Fri, Oct 28"
               />
               <InfoBox
                 backgroundColour="orange"
                 icon={null}
-                isShortInfo
-                longText="If you're experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-                longTextTitle="TITLE"
+                isShortInfo={true}
                 shortText="Next initial appointment on Fri, Oct 28"
               />
               <Text tag="p" variation="body-small">

@@ -10,12 +10,23 @@ const ConsultantFees = (props: ConsultantFeesProps): JSX.Element => {
         {props.title}
       </Text>
       <div className={styles.info}>
-        <Text tag="p" variation="body-extra-large">
-          {props.newAppointmentFeesLabel}: £{props.newAppointmentFees}
-        </Text>
-        <Text tag="p" variation="body-extra-large">
-          {props.followUpAppointmentFeesLabel}: £{props.followUpAppointmentFees}
-        </Text>
+        {props.newAppointmentFees && props.newAppointmentFees !== '' && (
+          <Text tag="p" variation="body-extra-large">
+            {props.newAppointmentFeesLabel}: £{props.newAppointmentFees}
+          </Text>
+        )}
+        {props.followUpAppointmentFees &&
+          props.followUpAppointmentFees !== '' && (
+            <Text tag="p" variation="body-extra-large">
+              {props.followUpAppointmentFeesLabel}: £
+              {props.followUpAppointmentFees}
+            </Text>
+          )}
+        {!props.followUpAppointmentFees && !props.followUpAppointmentFees && (
+          <Text tag="p" variation="body-extra-large">
+            {props.noFeesInfo}
+          </Text>
+        )}
       </div>
     </div>
   );
