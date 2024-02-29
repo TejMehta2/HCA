@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { parse } from 'node-html-parser';
-import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { getHCAConfig } from './getHCAConfig';
+import { getDoctifyConfig } from './getDoctifyConfig';
+import { getC2Config } from './getC2Config';
 
 // get all the active hca consultants on consultant finder
-const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
+//const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
+  const HCAAPIConfig = await getHCAConfig();
+  const consultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
   // using current/legacy website xml sitemap for now
   // replace once we have a backend that can query doctify for list of consultant slugs
   try {
@@ -48,10 +52,11 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
 }
 
 // get all the active live diary consultants
-const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
+//const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
 export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
-
+  const HCAAPIConfig = await getHCAConfig();
+  const ldbConsultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
   // using current/legacy live diary consultants list for now
   // replace once we have a backend that can query for a list of live diary consultant slugs
   try {
@@ -102,12 +107,17 @@ export async function checkIfLiveBookingIsAvailable(
 }
 
 // get profile data from Doctify for consultant based on slug
-const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists/';
+//const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
 export async function getSpecialistProfileData(
   slug: string,
   serviceURL?: string
 ): Promise<any> {
-  const requestURL = `${serviceURL ?? Doctify_Specialists_URL}${slug}`;
+
+  const DoctifyConfig = await getDoctifyConfig();
+  //console.log(DoctifyConfig);
+  const Doctify_Specialists_URL = DoctifyConfig.aPI_DoctifySpecialists_BaseURL;
+
+  const requestURL = `${serviceURL ?? Doctify_Specialists_URL}/${slug}`;
   let docitfyData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
@@ -192,9 +202,10 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 }
 
 // get HCA facilities data
-const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
+//const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
 export async function getFacilitiesData(serviceURL?: string): Promise<any> {
-  const requestURL = `${serviceURL ?? Doctify_To_HCA_Facilities_URL}`;
+  const HCAAPIConfig = await getHCAConfig();
+  const requestURL = `${serviceURL ?? HCAAPIConfig.aPI_HCA_DoctifyToFacilities_BaseURL}`;
   let facilitiesData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
@@ -248,61 +259,6 @@ export async function facilityURLFromDoctifySlug(
   }
 
   return locationURL;
-}
-
-//C2 APIs
-interface Ic2Config {
-  //C2_FirstAppointment
-  aPI_C2_FirstAppointment_BaseURL: string;
-  aPI_C2_FirstAppointment_NoResultsMsg: string;
-  aPI_C2_FirstAppointment_LoadingMsg: string;
-  aPI_C2_FirstAppointment_Header: string;
-  //C2_GetConsultantDetails
-  aPI_C2_GetConsultantDetails_BaseURL: string;
-  aPI_C2_GetConsultantDetails_NoResultsMsg: string;
-  aPI_C2_GetConsultantDetails_LoadingMsg: string;
-  aPI_C2_GetConsultantDetails_Header: string;
-  //C2_GetConsultantSlots
-  aPI_C2_GetConsultantSlots_BaseURL: string;
-  aPI_C2_GetConsultantSlots_NoResultsMsg: string;
-  aPI_C2_GetConsultantSlots_LoadingMsg: string;
-  aPI_C2_GetConsultantSlots_Header: string;
-  //C2_ReserveConsultantSlot
-  aPI_C2_ReserveConsultantSlot_BaseURL: string;
-  aPI_C2_ReserveConsultantSlot_NoResultsMsg: string;
-  aPI_C2_ReserveConsultantSlot_LoadingMsg: string;
-  aPI_C2_ReserveConsultantSlot_Header: string;
-}
-
-export async function getC2Config(): Promise<Ic2Config> 
-{
-  // Sitecore item
-  const C2APISettingsItemId = '{13DC9C82-D428-4DDB-845F-2712590E133E}';
-  const C2APISettingsTemplateName = 'C2_API_Settings';
-
-  let c2Config: Ic2Config = {
-    aPI_C2_FirstAppointment_BaseURL: '',
-    aPI_C2_FirstAppointment_NoResultsMsg: '',
-    aPI_C2_FirstAppointment_LoadingMsg: '',
-    aPI_C2_FirstAppointment_Header: '',
-    aPI_C2_GetConsultantDetails_BaseURL: '',
-    aPI_C2_GetConsultantDetails_NoResultsMsg: '',
-    aPI_C2_GetConsultantDetails_LoadingMsg: '',
-    aPI_C2_GetConsultantDetails_Header: '',
-    aPI_C2_GetConsultantSlots_BaseURL: '',
-    aPI_C2_GetConsultantSlots_NoResultsMsg: '',
-    aPI_C2_GetConsultantSlots_LoadingMsg: '',
-    aPI_C2_GetConsultantSlots_Header: '',
-    aPI_C2_ReserveConsultantSlot_BaseURL: '',
-    aPI_C2_ReserveConsultantSlot_NoResultsMsg: '',
-    aPI_C2_ReserveConsultantSlot_LoadingMsg: '',
-    aPI_C2_ReserveConsultantSlot_Header: ''
-  };
-  c2Config = await getItemFromGraphQL(C2APISettingsItemId, C2APISettingsTemplateName, c2Config);
-  //console.log('c2Config result:', JSON.stringify(c2Config));
-  //console.log('aPI_C2_FirstAppointment_BaseURL: ', c2Config.aPI_C2_FirstAppointment_BaseURL);
-
-  return c2Config;
 }
 
 // first appointment
