@@ -2,7 +2,7 @@ export interface TextFieldProps {
   id: string;
   type?: 'text' | 'email';
   label?: string;
-  tooltip?: JSX.Element;
+  helpText?: string;
   required?: boolean;
   errorMessage?: string;
 }

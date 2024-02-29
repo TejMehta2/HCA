@@ -4,7 +4,22 @@ import SelectField from './SelectField';
 import { SelectFieldProps } from './SelectField.types';
 
 const mockProps: SelectFieldProps = {
-  children: <p>Hello world</p>,
+  id: 'select1',
+  label: 'Select field label',
+  placeholder: 'Please select',
+  required: true,
+  errorMessage: 'Error message',
+  options: [
+    {
+      text: 'Option 1',
+    },
+    {
+      text: 'Option 2',
+    },
+    {
+      text: 'Option 3',
+    },
+  ],
 };
 
 describe('SelectField', () => {

@@ -1,5 +1,13 @@
-import { ReactNode } from 'react';
+interface Options {
+  text: string;
+}
 
 export interface SelectFieldProps {
-  children?: ReactNode | JSX.Element;
+  id: string;
+  label?: string;
+  helpText?: string;
+  placeholder?: string;
+  required?: boolean;
+  errorMessage?: string;
+  options: Options[];
 }
