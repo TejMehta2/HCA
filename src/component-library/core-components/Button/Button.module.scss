@@ -413,3 +413,20 @@
     justify-content: center;
   }
 }
+
+.card {
+  &.full {
+    &,
+    &-dark,
+    &-light,
+    &-light-blue {
+      a,
+      button {
+        @include apply-hover-transition(
+          var(--cta-full-background),
+          var(--card-background)
+        );
+      }
+    }
+  }
+}
