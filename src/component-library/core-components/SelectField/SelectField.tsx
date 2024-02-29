@@ -47,32 +47,30 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
-      <div className={styles['label-button']}>
-        {label && (
-          <label htmlFor={id}>
-            {label}
-            {!required && ' (Optional)'}
-          </label>
-        )}
-        <input type="hidden" value={activeValue} required={required} />
-        <span className={styles.select}>
-          <button
-            id={id}
-            ref={buttonRef}
-            role="combobox"
-            aria-label="open dropdown"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-            aria-controls="select-dropdown"
-            onClick={toggleModal}
-          >
-            {activeValue}
-          </button>
-          <span className={styles.arrow}>
-            <Icons iconName="iconArrowDropdown" />
-          </span>
+      {label && (
+        <label htmlFor={id}>
+          {label}
+          {!required && ' (Optional)'}
+        </label>
+      )}
+      <input type="hidden" value={activeValue} required={required} />
+      <span className={styles.select}>
+        <button
+          id={id}
+          ref={buttonRef}
+          role="combobox"
+          aria-label="open dropdown"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="select-dropdown"
+          onClick={toggleModal}
+        >
+          {activeValue}
+        </button>
+        <span className={styles.arrow}>
+          <Icons iconName="iconArrowDropdown" />
         </span>
-      </div>
+      </span>
       <ModalDropdown ref={dialogRef}>
         <div role="listbox" id="select-dropdown" className={styles.options}>
           {options.map((option, index) => (
