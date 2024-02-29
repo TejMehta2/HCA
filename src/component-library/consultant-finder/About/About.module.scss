@@ -4,6 +4,14 @@
 .about {
   width: 100%;
 
+  ul {
+    margin: 0;
+    word-break: break-all;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: disc;
+  }
+
   .headline {
     margin-bottom: $spacing-5;
   }

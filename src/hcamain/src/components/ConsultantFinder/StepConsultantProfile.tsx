@@ -10,6 +10,7 @@ import React from 'react';
 import {
   GetStaticComponentProps,
   Image as JssImage,
+  Link as JssLink,
   ImageField,
   Field,
   LinkField,
@@ -65,6 +66,29 @@ interface Fields {
   BackLink: LinkField;
   DoctifyLogoImage: ImageField;
   ProfileImagePlaceholderImage: any;
+  AboutHeadingText: Field<string>;
+  AboutTabText: Field<string>;
+  LocationsTabText: Field<string>;
+  ReviewsTabText: Field<string>;
+  FeesTabText: Field<string>;
+  AllProceduresSubHeadingText: Field<string>;
+  AllConditionsSubHeadingText: Field<string>;
+  SubSpecialtiesSubHeadingText: Field<string>;
+  LanguagesSubHeadingText: Field<string>;
+  LocationsHeadingText: Field<string>;
+  ConsultationFeesHeadingText: Field<string>;
+  RegisteredWithSubHeadingText: Field<string>;
+  QualificationsSubHeadingText: Field<string>;
+  NewAppointmentText: Field<string>;
+  FollowUpAppointmentText: Field<string>;
+  ReviewsHeadingText: Field<string>;
+  OverallRatingSubHeadingText: Field<string>;
+  OverallExperienceCategoryText: Field<string>;
+  PersonalCareReceivedCategoryText: Field<string>;
+  ExplainationOfCareCategoryText: Field<string>;
+  LastCheckedText: Field<string>;
+  BookOnlineButtonLink: LinkField;
+  CallToBookButtonText: Field<string>;
 }
 
 interface ServerSideProps {
@@ -184,19 +208,22 @@ export const Default = (props: StepProps): JSX.Element => {
                 tabs={[
                   {
                     icon: 'iconBook',
-                    label: 'About',
+                    label: `${props?.fields?.AboutTabText?.value}` || 'About',
                   },
                   {
                     icon: 'iconPin',
-                    label: 'Locations',
+                    label:
+                      `${props?.fields?.LocationsTabText?.value}` ||
+                      'Locations',
                   },
                   {
                     icon: 'iconCreditCard',
-                    label: 'Fees',
+                    label: `${props?.fields?.FeesTabText?.value}` || 'Fees',
                   },
                   {
                     icon: 'iconComment',
-                    label: 'Reviews',
+                    label:
+                      `${props?.fields?.ReviewsTabText?.value}` || 'Reviews',
                   },
                 ]}
               />
@@ -227,19 +254,22 @@ export const Default = (props: StepProps): JSX.Element => {
                   tabs={[
                     {
                       icon: 'iconBook',
-                      label: 'About',
+                      label: `${props?.fields?.AboutTabText?.value}` || 'About',
                     },
                     {
                       icon: 'iconPin',
-                      label: 'Locations',
+                      label:
+                        `${props?.fields?.LocationsTabText?.value}` ||
+                        'Locations',
                     },
                     {
                       icon: 'iconCreditCard',
-                      label: 'Fees',
+                      label: `${props?.fields?.FeesTabText?.value}` || 'Fees',
                     },
                     {
                       icon: 'iconComment',
-                      label: 'Reviews',
+                      label:
+                        `${props?.fields?.ReviewsTabText?.value}` || 'Reviews',
                     },
                   ]}
                 />
@@ -247,7 +277,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </ProfilePageHeader>
             <ProfilePageSection>
               <About
-                title={'About'}
+                title={props?.fields?.AboutHeadingText?.value || 'About'}
                 description={serverSideData?.ProfileJson?.about}
               >
                 <SidePanel>
@@ -291,15 +321,24 @@ export const Default = (props: StepProps): JSX.Element => {
             {subSpecialtiesData.length > 0 && (
               <ProfilePageSection>
                 <DataComponentSimple
-                  title={'Subspecialities'}
+                  title={
+                    props.fields.SubSpecialtiesSubHeadingText.value ||
+                    'Subspecialities'
+                  }
                   data={subSpecialtiesData}
                 ></DataComponentSimple>
               </ProfilePageSection>
             )}
             <ProfilePageSection>
               <TreatmentsConditions
-                treatmentsLabel={'ALL PROCEDURES'}
-                conditionsLabel={'ALL CONDITIONS'}
+                treatmentsLabel={
+                  props?.fields?.AllProceduresSubHeadingText?.value ||
+                  'ALL PROCEDURES'
+                }
+                conditionsLabel={
+                  props.fields.AllConditionsSubHeadingText.value ||
+                  'ALL CONDITIONS'
+                }
                 treatmentsList={treatments}
                 conditionsList={conditions}
                 noTreatmentsMsg={
@@ -312,23 +351,33 @@ export const Default = (props: StepProps): JSX.Element => {
             </ProfilePageSection>
             <ProfilePageSection>
               <DataComponentSimple
-                title={'Languages'}
+                title={
+                  props?.fields?.LanguagesSubHeadingText?.value || 'Languages'
+                }
                 data={languagesString}
               ></DataComponentSimple>
             </ProfilePageSection>
             {/* No fees check */}
             <ProfilePageSection>
               <ConsultantFees
-                title={'Consultation Fees'}
+                title={
+                  props?.fields?.ConsultationFeesHeadingText?.value ||
+                  'Consultation Fees'
+                }
                 newAppointmentFees={
                   serverSideData?.ProfileJson?.consultationFees?.new || null
                 }
-                newAppointmentFeesLabel={'New appointment'}
+                newAppointmentFeesLabel={
+                  props?.fields?.NewAppointmentText?.value || 'New appointment'
+                }
                 followUpAppointmentFees={
                   serverSideData?.ProfileJson?.consultationFees?.followUp ||
                   null
                 }
-                followUpAppointmentFeesLabel={'Follow-up appointment'}
+                followUpAppointmentFeesLabel={
+                  props?.fields?.NewAppointmentText?.value ||
+                  'Follow-up appointment'
+                }
                 noFeesInfo={
                   "This consultant doesn't have any consultation fees information at the moment."
                 }
@@ -336,7 +385,10 @@ export const Default = (props: StepProps): JSX.Element => {
             </ProfilePageSection>
             <ProfilePageSection>
               <DataComponentSimple
-                title={'qualifications'}
+                title={
+                  props?.fields?.QualificationsSubHeadingText?.value ||
+                  'qualifications'
+                }
                 data={
                   serverSideData?.ProfileJson?.suffix ||
                   "This consultant doesn't have any qualification information at the moment."
@@ -347,14 +399,22 @@ export const Default = (props: StepProps): JSX.Element => {
               serverSideData?.ProfileJson?.registrationBodies.length > 0 && (
                 <ProfilePageSection>
                   <DataComponentSimple
-                    title={'Registered with'}
-                    data={`General Medical Council: ${gmcNumber}`}
+                    title={
+                      props?.fields?.RegisteredWithSubHeadingText?.value ||
+                      'Registered with'
+                    }
+                    data={`${
+                      serverSideData?.ProfileJson?.registrationBodies[0]
+                        ?.name || 'General Medical Council'
+                    }: ${gmcNumber}`}
                   ></DataComponentSimple>
                 </ProfilePageSection>
               )}
             <ProfilePageSection>
               <Locations
-                title={'Locations'}
+                title={
+                  props?.fields?.LocationsHeadingText?.value || 'Locations'
+                }
                 locations={serverSideData?.ProfileJson?.practices}
                 noLocationsText={
                   "This consultant doesn't have any locations information at the moment."
@@ -362,11 +422,23 @@ export const Default = (props: StepProps): JSX.Element => {
               ></Locations>
             </ProfilePageSection>
             <OverallRating
-              title={'Reviews'}
-              subtitle={'Overall Rating'}
-              overallExperienceLabel={'Overall experience'}
-              personalCareLabel={'Personal care received'}
-              explanationLabel={'Explanation of care provided'}
+              title={props?.fields?.ReviewsHeadingText?.value || 'Reviews'}
+              subtitle={
+                props?.fields?.OverallRatingSubHeadingText?.value ||
+                'Overall Rating'
+              }
+              overallExperienceLabel={
+                props?.fields?.OverallExperienceCategoryText?.value ||
+                'Overall experience'
+              }
+              personalCareLabel={
+                props?.fields?.PersonalCareReceivedCategoryText?.value ||
+                'Personal care received'
+              }
+              explanationLabel={
+                props?.fields?.ExplainationOfCareCategoryText?.value ||
+                'Explanation of care provided'
+              }
               overallExperience={
                 serverSideData?.ProfileJson?.review?.overallExperience || 0
               }
@@ -391,7 +463,9 @@ export const Default = (props: StepProps): JSX.Element => {
           <SideWrapper>
             <SidePanel isSticky={true}>
               <Reviews
-                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
+                doctifyLogo={
+                  <JssImage field={props?.fields?.DoctifyLogoImage} />
+                }
                 doctifyText="Reviewed By"
                 hasDoctifyBranding={true}
                 isConsultantProfileReviews={true}
@@ -420,22 +494,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 shortText="Next initial appointment on Fri, Oct 28"
               />
               <Text tag="p" variation="body-small">
-                Last checked: 1 min ago
+                {`${props?.fields?.LastCheckedText?.value || 'Last checked:'}
+                1 min ago`}
               </Text>
               <Container marginTop="spacing-5">
                 {/* if consultant has live diaries then show 'book online' */}
                 {serverSideData?.IsLiveDiaryConsultant && (
-                  <Button
-                    variation="full-dark"
-                    size="small"
-                    contentVariation="full-width"
-                  >
-                    <button>
-                      <span>
-                        <strong>Book</strong> online
-                      </span>
-                    </button>
-                  </Button>
+                  <Container marginBottom="spacing-4">
+                    <Button
+                      variation="full-dark"
+                      size="small"
+                      contentVariation="full-width"
+                    >
+                      <JssLink
+                        field={props.fields.BookOnlineButtonLink}
+                        title={props.fields.BookOnlineButtonLink.value.text}
+                      ></JssLink>
+                    </Button>
+                  </Container>
                 )}
                 {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
                 {!serverSideData?.IsLiveDiaryConsultant &&
@@ -460,7 +536,8 @@ export const Default = (props: StepProps): JSX.Element => {
                   <button>
                     <Icons iconName="iconPhone" />
                     <span>
-                      <strong>Call to</strong> book
+                      {props?.fields?.CallToBookButtonText?.value ||
+                        'Call to book'}
                     </span>
                   </button>
                 </Button>

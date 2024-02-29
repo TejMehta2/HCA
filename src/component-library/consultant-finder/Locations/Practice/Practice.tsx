@@ -9,6 +9,7 @@ import {
 } from '../../../utility-functions';
 import Icons from '../../../foundation/Icons/Icons';
 import TextButton from '../../../core-components/TextButton/TextButton';
+import TextLink from '../../../core-components/TextLink/TextLink';
 
 const Locations = (props: PracticeProps): JSX.Element => {
   // address
@@ -52,9 +53,9 @@ const Locations = (props: PracticeProps): JSX.Element => {
       {props.slug !== 'video-consultation' && (
         <div>
           {props.facilityURL !== null && props.facilityURL !== '' && (
-            <TextButton theme="dark">
+            <TextLink>
               <a href={props.facilityURL}>{props.name}</a>
-            </TextButton>
+            </TextLink>
           )}
           {(props.facilityURL === null || props.facilityURL === '') && (
             <Text tag="p" variation="body-medium-extra-large">
@@ -62,7 +63,9 @@ const Locations = (props: PracticeProps): JSX.Element => {
             </Text>
           )}
           <div className={styles.address}>
-            <Icons iconName="iconPin" />
+            <div className={styles.icon}>
+              <Icons iconName="iconPin" />
+            </div>
             <Text tag="p" variation="body-medium-large">
               {printAddress}
             </Text>
