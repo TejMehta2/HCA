@@ -121,7 +121,7 @@ const Locations = (props: PracticeProps): JSX.Element => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View on Google Maps
+                  {props.viewOnGoogleMapsText}
                 </a>
               </TextButton>
             )}

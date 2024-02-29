@@ -3,5 +3,6 @@
 export interface LocationsProps {
   locations: any;
   title: string;
+  viewOnGoogleMapText: string;
   noLocationsText: string;
 }

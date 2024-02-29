@@ -10,4 +10,5 @@ export interface PracticeProps {
   slug: string;
   workingOpeningHours: any;
   facilityURL: string | null;
+  viewOnGoogleMapsText: string;
 }

@@ -89,6 +89,9 @@ interface Fields {
   LastCheckedText: Field<string>;
   BookOnlineButtonLink: LinkField;
   CallToBookButtonText: Field<string>;
+  NextInitialAppointmentText: Field<string>;
+  NextFollowOnAppointmentText: Field<string>;
+  ViewOnGoogleMapsText: Field<string>;
 }
 
 interface ServerSideProps {
@@ -304,16 +307,25 @@ export const Default = (props: StepProps): JSX.Element => {
                     backgroundColour="green"
                     icon={null}
                     isShortInfo={true}
-                    shortText="Next initial appointment on Fri, Oct 28"
+                    shortText={`${
+                      props?.fields?.NextInitialAppointmentText?.value ||
+                      'Next initial appointment'
+                    } on Fri, Oct 28`}
                   />
                   <InfoBox
                     backgroundColour="orange"
                     icon={null}
                     isShortInfo={true}
-                    shortText="Next initial appointment on Fri, Oct 28"
+                    shortText={`${
+                      props?.fields?.FollowUpAppointmentText?.value ||
+                      'Next follow up appointment'
+                    } on Fri, Oct 28`}
                   />
                   <Text tag="p" variation="body-small">
-                    Last checked: 1 min ago
+                    {`${
+                      props?.fields?.LastCheckedText?.value || 'Last checked:'
+                    }
+                1 min ago`}
                   </Text>
                 </SidePanel>
               </About>
@@ -419,6 +431,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 noLocationsText={
                   "This consultant doesn't have any locations information at the moment."
                 }
+                viewOnGoogleMapText={
+                  props?.fields?.ViewOnGoogleMapsText?.value ||
+                  'View on Google Maps'
+                }
               ></Locations>
             </ProfilePageSection>
             <OverallRating
@@ -485,13 +501,19 @@ export const Default = (props: StepProps): JSX.Element => {
                 backgroundColour="green"
                 icon={null}
                 isShortInfo={true}
-                shortText="Next initial appointment on Fri, Oct 28"
+                shortText={`${
+                  props?.fields?.NextInitialAppointmentText?.value ||
+                  'Next initial appointment'
+                } on Fri, Oct 28`}
               />
               <InfoBox
                 backgroundColour="orange"
                 icon={null}
                 isShortInfo={true}
-                shortText="Next initial appointment on Fri, Oct 28"
+                shortText={`${
+                  props?.fields?.FollowUpAppointmentText?.value ||
+                  'Next follow up appointment'
+                } on Fri, Oct 28`}
               />
               <Text tag="p" variation="body-small">
                 {`${props?.fields?.LastCheckedText?.value || 'Last checked:'}
@@ -553,11 +575,10 @@ export const Default = (props: StepProps): JSX.Element => {
               size="small"
               contentVariation="full-width"
             >
-              <button>
-                <span>
-                  <strong>Book</strong> online
-                </span>
-              </button>
+              <JssLink
+                field={props.fields.BookOnlineButtonLink}
+                title={props.fields.BookOnlineButtonLink.value.text}
+              ></JssLink>
             </Button>
           )}
           {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}

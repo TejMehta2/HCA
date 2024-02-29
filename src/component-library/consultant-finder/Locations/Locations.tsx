@@ -30,6 +30,7 @@ const Locations = (props: LocationsProps): JSX.Element => {
                 slug={practice?.slug}
                 workingOpeningHours={practice?.workingOpeningHours}
                 facilityURL={practice?.facilityURL}
+                viewOnGoogleMapsText={props.viewOnGoogleMapText}
               ></Practice>
             )
         )}
