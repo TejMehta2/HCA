@@ -55,7 +55,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   }
 
   const getTitle = (data?: AncestorsFields) => {
-    if (data?.navigationTitle) {
+    if (data?.navigationTitle?.value) {
       return data?.navigationTitle?.value;
     } else if (data?.abstractTitle) {
       return data?.abstractTitle?.value;
