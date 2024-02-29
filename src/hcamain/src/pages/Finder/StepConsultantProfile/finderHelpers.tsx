@@ -1,5 +1,5 @@
-import { Console } from 'console';
 import { parse } from 'node-html-parser';
+import { getItemFromGraphQL } from './getItemFromGraphQL';
 
 // get all the active hca consultants on consultant finder
 const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
@@ -50,6 +50,7 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
 const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
 export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
+
   // using current/legacy live diary consultants list for now
   // replace once we have a backend that can query for a list of live diary consultant slugs
   try {
@@ -70,8 +71,7 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
           }
         }
       );
-      if(ldbSlugs.length == 0)
-      {
+      if (ldbSlugs.length == 0) {
         console.error(
           `Warning LDB consultant slugs list for is empty from call getActiveLiveDiaryConsultantSlugs`
         );
@@ -105,7 +105,7 @@ const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists/';
 export async function getSpecialistProfileData(
   slug: string,
   serviceURL?: string
-): Promise<string> {
+): Promise<any> {
   const requestURL = `${serviceURL ?? Doctify_Specialists_URL}${slug}`;
   let docitfyData: any = '';
   try {
@@ -131,6 +131,31 @@ export async function getSpecialistProfileData(
             //HCA practice call threw
             console.error(
               `getSpecialistProfileData failed to patch in HCA facility in practice data ${e}, slug: ${docitfyData?.practices[practice]?.slug}`
+            );
+          }
+        }
+
+        docitfyData.isLiveDiaryConsultant = false;
+        try {
+          const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
+          docitfyData.isLiveDiaryConsultant = isLiveDiaryConsultant;
+        } catch (e) {
+          console.error(
+            `getSpecialistProfileData failed to patch in isLiveDiaryConsultant ${e}, slug: ${slug}`
+          );
+        }
+
+        if(docitfyData.isLiveDiaryConsultant)
+        {
+          try {
+            let GMCNumber = docitfyData?.registrationBodies[0].registrationNumber; // e.g. "4113571"
+            const res = await LDB_FirstAppointment(GMCNumber);
+            docitfyData.firstAppointment = res;
+            //console.log("first apt:", res);
+          } catch (e) {
+            //first appointment call threw
+            console.error(
+              `getSpecialistProfileData failed to patch in first appointment ${e}, slug: ${slug}`
             );
           }
         }
@@ -207,8 +232,8 @@ export async function facilityURLFromDoctifySlug(
   let locationURL: string = '';
   const facilities = await getFacilitiesData();
 
-  if(facilities.findIndex) // got something usable back
-  {
+  if (facilities.findIndex) {
+    // got something usable back
     let index = facilities.findIndex(
       (facility: any) => facility.UniqueKey === doctifyLocationSlug
     );
@@ -217,11 +242,63 @@ export async function facilityURLFromDoctifySlug(
     }
   }
 
-
   return locationURL;
 }
 
 //C2 APIs
+interface Ic2Config {
+  //C2_FirstAppointment
+  aPI_C2_FirstAppointment_BaseURL: string;
+  aPI_C2_FirstAppointment_NoResultsMsg: string;
+  aPI_C2_FirstAppointment_LoadingMsg: string;
+  aPI_C2_FirstAppointment_Header: string;
+  //C2_GetConsultantDetails
+  aPI_C2_GetConsultantDetails_BaseURL: string;
+  aPI_C2_GetConsultantDetails_NoResultsMsg: string;
+  aPI_C2_GetConsultantDetails_LoadingMsg: string;
+  aPI_C2_GetConsultantDetails_Header: string;
+  //C2_GetConsultantSlots
+  aPI_C2_GetConsultantSlots_BaseURL: string;
+  aPI_C2_GetConsultantSlots_NoResultsMsg: string;
+  aPI_C2_GetConsultantSlots_LoadingMsg: string;
+  aPI_C2_GetConsultantSlots_Header: string;
+  //C2_ReserveConsultantSlot
+  aPI_C2_ReserveConsultantSlot_BaseURL: string;
+  aPI_C2_ReserveConsultantSlot_NoResultsMsg: string;
+  aPI_C2_ReserveConsultantSlot_LoadingMsg: string;
+  aPI_C2_ReserveConsultantSlot_Header: string;
+}
+
+export async function getC2Config(): Promise<Ic2Config> 
+{
+  // Sitecore item
+  const C2APISettingsItemId = '{13DC9C82-D428-4DDB-845F-2712590E133E}';
+  const C2APISettingsTemplateName = 'C2_API_Settings';
+
+  let c2Config: Ic2Config = {
+    aPI_C2_FirstAppointment_BaseURL: '',
+    aPI_C2_FirstAppointment_NoResultsMsg: '',
+    aPI_C2_FirstAppointment_LoadingMsg: '',
+    aPI_C2_FirstAppointment_Header: '',
+    aPI_C2_GetConsultantDetails_BaseURL: '',
+    aPI_C2_GetConsultantDetails_NoResultsMsg: '',
+    aPI_C2_GetConsultantDetails_LoadingMsg: '',
+    aPI_C2_GetConsultantDetails_Header: '',
+    aPI_C2_GetConsultantSlots_BaseURL: '',
+    aPI_C2_GetConsultantSlots_NoResultsMsg: '',
+    aPI_C2_GetConsultantSlots_LoadingMsg: '',
+    aPI_C2_GetConsultantSlots_Header: '',
+    aPI_C2_ReserveConsultantSlot_BaseURL: '',
+    aPI_C2_ReserveConsultantSlot_NoResultsMsg: '',
+    aPI_C2_ReserveConsultantSlot_LoadingMsg: '',
+    aPI_C2_ReserveConsultantSlot_Header: ''
+  };
+  c2Config = await getItemFromGraphQL(C2APISettingsItemId, C2APISettingsTemplateName, c2Config);
+  //console.log('c2Config result:', JSON.stringify(c2Config));
+  //console.log('aPI_C2_FirstAppointment_BaseURL: ', c2Config.aPI_C2_FirstAppointment_BaseURL);
+
+  return c2Config;
+}
 
 // first appointment
 // post in GMC number/s
@@ -256,26 +333,33 @@ export async function facilityURLFromDoctifySlug(
     ]
 }
 */
-let C2_FirstAppointment_API_URL: string =
-  'https://prod-25.uksouth.logic.azure.com:443/workflows/3a504e4d13694a599d0abd14fc5d4873/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N_MbmGrCmDWQza4Gj7M7PFrRyLaHYXZTwtmgCR49U88';
 export async function LDB_FirstAppointment(
   gmcNumber: string,
   serviceURL?: string
-): Promise<string> {
-  const requestURL = `${serviceURL ?? C2_FirstAppointment_API_URL}`;
+): Promise<any> {
+  const config = await getC2Config();
+  const requestURL = `${serviceURL ?? config.aPI_C2_FirstAppointment_BaseURL}`;
+
   let firstAppointmentData: string = '';
   const body = `{"consultants" : ["${gmcNumber}"] }`;
   try {
     // very light cache on these requests they contain time sensitive data
     const res = await fetch(requestURL, {
-      cache: 'force-cache',
       method: 'post',
       body: body,
-      //headers: [''], // TODO Auth headers
+      headers: {
+        "content-type": "application/json",
+        "securitytoken": `"${config.aPI_C2_FirstAppointment_Header}"`
+      }, 
+      cache: 'force-cache',
       next: { revalidate: 10 },
     });
     if (res.ok) {
-      firstAppointmentData = await res.json();
+      let result = await res.json();
+      if(result && result.availability && result.availability.length == 1)
+      {
+        firstAppointmentData = result.availability[0];
+      }
     } else {
       //docitfy call failed
       firstAppointmentData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
@@ -291,3 +375,5 @@ export async function LDB_FirstAppointment(
 
   return firstAppointmentData;
 }
+
+

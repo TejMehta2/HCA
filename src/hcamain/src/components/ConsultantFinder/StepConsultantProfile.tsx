@@ -28,6 +28,7 @@ import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import {
+  LDB_FirstAppointment,
   checkIfLiveBookingIsAvailable,
   getSpecialistProfileData,
   isErrorWithProfileData,
@@ -75,6 +76,7 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
+  FirstAppointment: any;
   ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
@@ -95,12 +97,13 @@ export const getStaticProps: GetStaticComponentProps = async (
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
-  //console.log("consultantProfileJson: ", consultantProfileJson);
+  const firstAppointment = isLiveDiaryConsultant && !errorWithProfileData ? await LDB_FirstAppointment(consultantProfileJson.registrationBodies[0].registrationNumber) : null;
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
+    FirstAppointment: firstAppointment,
     ProfileJson: consultantProfileJson,
   };
 
@@ -123,16 +126,19 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('consultant profile data', props.fields);
+  //console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  console.log('consultant data,', serverSideData?.ProfileJson);
-  //console.log('server side data from component props: ', serverSideData);
+  //console.log('consultant data,', serverSideData?.ProfileJson);
+  console.log('server side data from component props: ', serverSideData);
   console.log(
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
+
+  console.log("firstAppointment: ", serverSideData?.FirstAppointment);
+
   const { message, setMessage } = useContext(ConsultantFinderContext);
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
