@@ -14,6 +14,12 @@
     opacity: 0;
   }
 
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
+    }
+  }
+
   &:has(.results) {
     .manual-button {
       display: none;
@@ -70,10 +76,17 @@
     gap: 16px 0;
 
     li {
-      display: flex;
-      gap: $spacing-3;
-      @include apply-body-medium-large;
-      color: $navy-blue-100;
+      width: 100%;
+
+      button {
+        display: flex;
+        gap: $spacing-3;
+        @include apply-body-medium-large;
+        color: $navy-blue-100;
+        background: transparent;
+        border: 0;
+        width: inherit;
+      }
     }
   }
 }
@@ -90,4 +103,16 @@
 }
 
 .selected-address {
+  margin-top: px-to-rem(57);
+}
+
+.selected-controls {
+  display: flex;
+  margin-top: $spacing-4;
+  gap: 0 $spacing-5;
+}
+
+.selected-fields {
+  margin-top: $spacing-4;
+  @include apply-body-medium-large;
 }

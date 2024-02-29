@@ -9,13 +9,15 @@ const meta: Meta<typeof AddressFinder> = {
   component: AddressFinder,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ width: 700, margin: 'auto', padding: '2rem' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],

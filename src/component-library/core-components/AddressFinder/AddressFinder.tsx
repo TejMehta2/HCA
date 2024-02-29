@@ -9,6 +9,7 @@ import Text from '../../foundation/Text/Text';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const { helpText } = props;
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const mockTestAddress = {
     line1: '123 Test Street',
@@ -17,41 +18,73 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     postcode: 'SE1 1AB',
   };
 
+  const mockResults = [
+    {
+      line1: '1 Test Street',
+      line2: 'Somewhere',
+      city: 'London',
+      country: 'UK',
+      postcode: 'SE1 1AB',
+      id: '1',
+    },
+    {
+      line1: '2 Test Street',
+      line2: 'Somewhere',
+      city: 'London',
+      country: 'UK',
+      postcode: 'SE1 1AB',
+      id: '2',
+    },
+    {
+      line1: '3 Test Street',
+      line2: '',
+      city: 'London',
+      country: 'UK',
+      postcode: 'SE1 1AB',
+      id: '3',
+    },
+  ];
+
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState();
   const [resultsVisible, setResultsVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAddress, setSelectedAddress] = useState(mockTestAddress);
+  const [showSelectedAddress, setShowSelectedAddress] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const mockResults = [
-    {
-      address: '10 Elliot Street, Sacriston, DURHAM',
-      postcode: 'DH7 6JH',
-      id: '7.730OOGBRCAznBwAAAAABAwEAAAAARog6UYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '2/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LU',
-      id: '7.7304OGBRCAznBwAAAAABAwEAAAAA9Az1kYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-    {
-      address: '8/10 Elliot Street, EDINBURGH',
-      postcode: 'EH7 5LU',
-      id: '7.730GOGBRCAznBwAAAAABAwEAAAAA9A0DkYAgAAAAAAAAMTAAAP..ZAAAAAD.....AAAAAAAAAAAAAAAAAAAAMTAgZWxsaW90IHN0cmVldAAAAAAA',
-    },
-  ];
-
-  const handleManualFields = () => {
+  const showManualFields = () => {
     setManualFieldsVisible(true);
+  };
+
+  const clearAddress = () => {
+    setSelectedAddress({
+      line1: '',
+      line2: '',
+      city: '',
+      country: '',
+      postCode: '',
+    });
+    setShowSelectedAddress(false);
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     setResults(mockResults);
 
     setSearchTerm(e.target.value);
+  };
+
+  const selectResult = (result) => {
+    const { line1, line2, city, country, postcode } = result;
+    setSelectedAddress({
+      line1: line1,
+      line2: line2,
+      city: city,
+      country: country,
+      postcode: postcode,
+    });
+
+    setShowSelectedAddress(true);
   };
 
   const clearInput = () => {
@@ -75,7 +108,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       </div>
       <div className={styles['manual-button']}>
         <TextButton theme="dark">
-          <button onClick={handleManualFields} type="button">
+          <button onClick={showManualFields} type="button">
             Enter your address manually
           </button>
         </TextButton>
@@ -85,10 +118,14 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         <div className={styles.results}>
           <ul>
             {results.map((result) => {
+              const { line1, line2, city, country, postcode } = result;
               return (
                 <li key={result.id}>
-                  <Icons iconName="iconPin"></Icons>
-                  {result.address}
+                  <button onClick={() => selectResult(result)}>
+                    <Icons iconName="iconPin"></Icons>
+                    {line1}, {line2 && `${line2},`} {city}, {country},{' '}
+                    {postcode}
+                  </button>
                 </li>
               );
             })}
@@ -105,22 +142,25 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         </div>
       )}
 
-      {selectedAddress && (
+      {showSelectedAddress && (
         <div className={styles['selected-address']}>
           <Text variation="body-medium-extra-large">Your Address</Text>
-          <div>{selectedAddress.line1}</div>
-          {selectedAddress.line2 && <div>{selectedAddress.line2}</div>}
-          <div>
-            {selectedAddress.city}, {selectedAddress.country}
-          </div>
-          <div>{selectedAddress.postcode}</div>
 
-          <div className={styles.selectedControls}>
+          <div className={styles['selected-fields']}>
+            <div>{selectedAddress.line1}</div>
+            {selectedAddress.line2 && <div>{selectedAddress.line2}</div>}
+            <div>
+              {selectedAddress.city}, {selectedAddress.country}
+            </div>
+            <div>{selectedAddress.postcode}</div>
+          </div>
+
+          <div className={styles['selected-controls']}>
             <TextButton theme="dark">
-              <button>Edit</button>
+              <button onClick={showManualFields}>Edit</button>
             </TextButton>
             <TextButton theme="dark">
-              <button>Remove</button>
+              <button onClick={clearAddress}>Remove</button>
             </TextButton>
           </div>
         </div>
