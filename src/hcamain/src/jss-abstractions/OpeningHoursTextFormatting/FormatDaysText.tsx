@@ -24,10 +24,10 @@ export const formatDaysText = (
     availabilityDays = days.join(', ');
   }
 
-  const opensFormatted = format(parse(opens, 'hh:mm', new Date()), 'haaa');
-  const closessFormatted = format(parse(closes, 'HH:mm', new Date()), 'haaa');
+  const opensFormatted = format(parse(opens, 'HH:mm', new Date()), 'haaa');
+  const closesFormatted = format(parse(closes, 'HH:mm', new Date()), 'haaa');
 
-  const openingHoursText = `${availabilityDays} ${opensFormatted} - ${closessFormatted}`;
+  const openingHoursText = `${availabilityDays} ${opensFormatted} - ${closesFormatted}`;
 
   return openingHoursText;
 };
