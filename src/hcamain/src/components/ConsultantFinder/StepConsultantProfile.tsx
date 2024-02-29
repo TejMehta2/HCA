@@ -281,7 +281,7 @@ export const Default = (props: StepProps): JSX.Element => {
             <ProfilePageSection>
               <About
                 title={props?.fields?.AboutHeadingText?.value || 'About'}
-                description={serverSideData?.ProfileJson?.about}
+                description={serverSideData?.ProfileJson?.about || ''}
               >
                 <SidePanel>
                   <Reviews
