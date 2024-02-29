@@ -1,12 +1,8 @@
 ﻿---
-ID: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
-Parent: "5b5c8266-2ef7-4a47-bea4-d054898ae345"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: /sitecore/content/HCA/HCA Main/Home/QA
-SharedFields:
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "08a63ffa-8f3b-472e-a2d9-96d2b637dbd4"
+Parent: "356d9019-5404-4327-bdf8-76998f5fafa6"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Headless Variants/Location Cards/Slider
 Languages:
 - Language: en
   Versions:
@@ -14,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231201T183821Z
+      Value: 20240228T211808Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -25,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "17c1fbb7-4c2f-463a-8ac0-05e5ca9e1708"
+      Value: "e274ec11-d093-4625-b1c3-f9d5116e4b90"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240229T072453Z
+      Value: 20240228T211808Z

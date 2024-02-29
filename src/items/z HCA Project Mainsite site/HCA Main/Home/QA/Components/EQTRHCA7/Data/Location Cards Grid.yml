@@ -1,0 +1,23 @@
+﻿---
+ID: "f3180861-1563-4223-83eb-384b613aae4e"
+Parent: "068edb6b-434c-4284-a1ad-28e7970a70ab"
+Template: "38ab0ea0-da28-4136-b857-77f863de1795"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Grid
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240228T212043Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2100b75e-066d-48a2-add4-1091079e073f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240228T212043Z
