@@ -75,13 +75,13 @@ interface ServerSideProps {
 
 /**
  * Will be called during SSG
- * @param {ComponentRendering} rendering
- * @param {LayoutServiceData} layoutData
+ * @param {ComponentRendering} _rendering
+ * @param {LayoutServiceData} _layoutData
  * @param {GetStaticPropsContext} context
  */
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering,
-  layoutData,
+  _rendering,
+  _layoutData,
   context
 ) => {
   // based on https://github.com/vercel/next.js/discussions/38061
@@ -344,6 +344,9 @@ export const Default = (props: StepProps): JSX.Element => {
               <Locations
                 title={'Locations'}
                 locations={serverSideData?.ProfileJson?.practices}
+                noLocationsText={
+                  'This consultant doesn’t have any locations information at the moment.'
+                }
               ></Locations>
             </ProfilePageSection>
             <OverallRating

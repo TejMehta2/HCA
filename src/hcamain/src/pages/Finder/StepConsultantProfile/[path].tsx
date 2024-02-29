@@ -12,7 +12,7 @@ import {
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
-  StaticPath,
+  // StaticPath,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
@@ -21,9 +21,9 @@ import { componentBuilder } from 'temp/componentBuilder';
 //import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import NotFound from 'src/NotFound';
 import {
-  checkIfLiveBookingIsAvailable,
+  // checkIfLiveBookingIsAvailable,
   getActiveConsultantSlugs,
-  getSpecialistProfileData,
+  // getSpecialistProfileData,
 } from './finderHelpers';
 
 const SitecorePage = ({
@@ -48,7 +48,7 @@ const SitecorePage = ({
 
   return (
     <div>
-      hello finder profile sub-page world
+      {/* hello finder profile sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}

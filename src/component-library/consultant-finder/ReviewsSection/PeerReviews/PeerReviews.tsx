@@ -8,11 +8,13 @@ import TextButton from '../../../core-components/TextButton/TextButton';
 import Icons from '../../../foundation/Icons/Icons';
 import LoaderCF from '../../LoaderCF/LoaderCF';
 import { formatDate } from '../../../utility-functions/index';
+const reviewPerRow = 2;
 
 const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [next, setNext] = useState(reviewPerRow);
 
   useEffect(() => {
     axios
@@ -34,7 +36,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
         }, []);
 
   const loadMore = () => {
-    console.log('load more');
+    setNext(next + reviewPerRow);
   };
 
   return (
@@ -52,7 +54,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
 
           <div className={styles['review-wrapper']}>
             {reviews.length > 0 &&
-              reviews.map((review) => (
+              reviews?.slice(0, next)?.map((review) => (
                 <div key={review.id} className={styles.review}>
                   <div className={styles.rating}>
                     <div className={styles.image}>
@@ -71,15 +73,12 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
                       </Text>
                       {review.keywords.length > 0 && (
                         <Text tag="p" variation="body-small">
-                          {
-                            // Filter specialties and get their names
-                            review.keywords
-                              .filter(
-                                (keyword: any) => keyword.type === 'specialty'
-                              )
-                              .map((keyword: any) => keyword.name)
-                              .join(', ')
-                          }
+                          {review.keywords
+                            .filter(
+                              (keyword: any) => keyword.type === 'specialty'
+                            )
+                            .map((keyword: any) => keyword.name)
+                            .join(', ')}
                         </Text>
                       )}
                     </div>
@@ -121,7 +120,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
                   </div>
                 </div>
               ))}
-            {reviews.length < total && (
+            {!isLoading && next < reviews?.length && (
               <div>
                 <TextButton theme="dark">
                   <button onClick={loadMore}>

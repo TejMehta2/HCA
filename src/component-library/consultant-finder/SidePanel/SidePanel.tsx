@@ -23,6 +23,8 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
         window.removeEventListener('scroll', handleScroll);
       };
     }
+
+    return () => {};
   }, [isSticky]);
 
   const marginTop = isSticky ? headerHeight : 0;

@@ -142,7 +142,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                   </div>
                 </div>
               ))}
-            {reviews.length < total && (
+            {!isLoading && reviews.length < total && (
               <div>
                 <TextButton theme="dark">
                   <button onClick={loadMore}>
