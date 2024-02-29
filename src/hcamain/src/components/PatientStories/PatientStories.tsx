@@ -213,6 +213,7 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
             </Text>
           }
           image={<JssImage field={story?.image?.jsonValue} />}
+          contentVariation="mixed"
         ></CardPatientStories>
       ))}
     </SideScrollingCards>
