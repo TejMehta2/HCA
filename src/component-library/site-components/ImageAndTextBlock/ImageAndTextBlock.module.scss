@@ -186,3 +186,9 @@
     }
   }
 }
+
+.hide-on-mobile {
+  @include media(screen-l, max) {
+    display: none;
+  }
+}

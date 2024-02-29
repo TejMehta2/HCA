@@ -15,6 +15,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     theme,
     ratings,
     iconList,
+    hideImageOnMobile,
   } = props;
 
   return (
@@ -33,7 +34,11 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
             ].join(' ')}
           >
             <div
-              className={[styles['image'], styles[length]].join(' ')}
+              className={[
+                styles['image'],
+                styles[length],
+                hideImageOnMobile ? styles['hide-on-mobile'] : '',
+              ].join(' ')}
               data-animate="s"
             >
               {image}

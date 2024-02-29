@@ -48,9 +48,11 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
               ))}
             </ul>
             <div className={styles.cta}>
-              <Button size={'large'} variation={'full-dark'}>
-                {cta}
-              </Button>
+              <Themes theme="A-HCA-White">
+                <Button size={'large'} variation={'full-dark'}>
+                  {cta}
+                </Button>
+              </Themes>
             </div>
           </div>
           <div className={styles['image-wrapper']} data-animate="s">
