@@ -69,6 +69,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
       const title = getTitle(ancestor);
+
       return (
         <Link href={ancestor?.url?.path || ''} key={index}>
           {title}
@@ -77,8 +78,19 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     }
   );
 
-  const title = getTitle(props.fields?.data?.contextItem);
-  breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
+  //  exclude the last item which is the home breadcrumb
 
-  return <Breadcrumbs children={breadcrumbList} />;
+  const filteredBreadcrumbList = breadcrumbList?.filter((breadcrumb, index) => {
+    if (index + 1 !== props.fields?.data?.contextItem?.ancestors?.length) {
+      return breadcrumb;
+    }
+    return;
+  });
+
+  const title = getTitle(props.fields?.data?.contextItem);
+  filteredBreadcrumbList?.push(
+    <span key={filteredBreadcrumbList?.length}>{title}</span>
+  );
+
+  return <Breadcrumbs children={filteredBreadcrumbList} />;
 };
