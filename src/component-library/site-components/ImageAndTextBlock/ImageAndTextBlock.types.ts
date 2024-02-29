@@ -19,4 +19,5 @@ export interface ImageAndTextBlockProps {
   theme: Theme;
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
   iconList?: iconList;
+  hideImageOnMobile?: boolean;
 }
