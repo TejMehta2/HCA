@@ -15,7 +15,7 @@
   @include media(screen-l) {
     position: sticky;
     top: 0;
-    z-index: 2000;
+    z-index: 1;
   }
 
   button {

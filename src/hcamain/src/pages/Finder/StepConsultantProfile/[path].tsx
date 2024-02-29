@@ -12,7 +12,7 @@ import {
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
-  StaticPath,
+  // StaticPath,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
@@ -20,7 +20,11 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 //import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import NotFound from 'src/NotFound';
-import { checkIfLiveBookingIsAvailable, getActiveConsultantSlugs, getSpecialistProfileData } from './finderHelpers';
+import {
+  // checkIfLiveBookingIsAvailable,
+  getActiveConsultantSlugs,
+  // getSpecialistProfileData,
+} from './finderHelpers';
 
 const SitecorePage = ({
   notFound,
@@ -44,7 +48,7 @@ const SitecorePage = ({
 
   return (
     <div>
-      hello finder profile sub-page world
+      {/* hello finder profile sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}
@@ -69,20 +73,24 @@ const SitecorePage = ({
   );
 };
 
-// paths are known in advance 
+// paths are known in advance
 // https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // TODO
 // add to sitemap
 export const getStaticPaths: GetStaticPaths = async () => {
   let fallback: boolean | 'blocking' = 'blocking';
-  let paths: any[] = [];
-  let slugs:string[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let paths: any = [];
+  let slugs: string[] = [];
 
   console.log('IN Finder profile subpage GetStaticPaths');
-  
-  // note getStaticPaths runs on every request in dev mode, 
-  // so only do this for all consultants if deployed 
-  if (process.env.NODE_ENV !== 'development' && !process.env.DISABLE_SSG_FETCH) {
+
+  // note getStaticPaths runs on every request in dev mode,
+  // so only do this for all consultants if deployed
+  if (
+    process.env.NODE_ENV !== 'development' &&
+    !process.env.DISABLE_SSG_FETCH
+  ) {
     try {
       // Note: Next.js runs export in production mode
       //paths = await sitemapFetcher.fetch(context);
@@ -93,15 +101,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 
     fallback = process.env.EXPORT_MODE ? false : fallback;
-  }
-  else
-  {
+  } else {
     //mock the real call with just a few consultants to pre-fetch if in dev.
-    slugs = ['mr-andrew-goldberg','mr-sam-singh','mr-christian-brown'];
+    slugs = ['mr-andrew-goldberg', 'mr-sam-singh', 'mr-christian-brown'];
   }
 
-  paths = slugs.map(slug => ({
-    params: {path: slug},
+  paths = slugs.map((slug) => ({
+    params: { path: slug },
   }));
   fallback = 'blocking';
 
@@ -125,7 +131,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   const props = await sitecorePagePropsFactory.create(context);
   //console.log('props:', props);
-
 
   // if needed here, we can get our slug from the url path like this...
   /*
@@ -160,4 +165,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default SitecorePage;
-

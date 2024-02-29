@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface ConsultantFeesProps {
   title: string;
   newAppointmentFees: string;

@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { ReviewsSectionProps } from './ReviewsSection.types';
-import styles from './ReviewsSection.module.scss';
+import React, { useEffect, useState } from 'react';
 import Tabs from '../../core-components/Tabs/Tabs';
 import Themes from '../../foundation/Themes/Themes';
 import PatientsReviews from './PatientReviews/PatientsReviews';
 import PeerReviews from './PeerReviews/PeerReviews';
 
-const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
-  const { children } = props;
+const ReviewsSection = (): JSX.Element => {
   const [typeOfReviews, setTypeOfReviews] = useState<'patient' | 'peer'>(
     'patient'
   );
+  const [consultantSlug, setConsultantSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log('iframe', window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get('slug');
+    console.log('iframe slug', slug);
+    if (slug) {
+      setConsultantSlug(slug);
+    }
+  }, []);
 
   const handleTabChange = (label: string) => {
     if (label === 'Patient Reviews') {
@@ -20,23 +28,65 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
     }
   };
 
+  // test iframe
+  // Function to update iframe height
+  const updateIframeHeight = () => {
+    const contentHeight = document.body.scrollHeight;
+
+    if (window.parent) {
+      const iframe = window.parent.document.getElementById('specialistReviews');
+      if (iframe) {
+        iframe.style.height = contentHeight + 'px';
+      }
+    }
+  };
+
+  // Set up a MutationObserver to watch for changes in the DOM
+  useEffect(() => {
+    const observer = new MutationObserver(updateIframeHeight);
+
+    // Observe changes in the body element
+    const body = document.body;
+    observer.observe(body, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Clean up the observer when the component unmounts
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className={styles.bold}>
-      <Themes theme={'F-HCA-White'}>
-        <Tabs
-          callback={handleTabChange}
-          tabs={[
-            {
-              label: 'Patient Reviews',
-            },
-            {
-              label: 'Peer Reviews',
-            },
-          ]}
-        />
-      </Themes>
-      {typeOfReviews === 'patient' && <PatientsReviews></PatientsReviews>}
-      {typeOfReviews === 'peer' && <PeerReviews></PeerReviews>}
+    <div>
+      {consultantSlug && (
+        <div>
+          <Themes theme={'F-HCA-White'}>
+            <Tabs
+              callback={handleTabChange}
+              tabs={[
+                {
+                  label: 'Patient Reviews',
+                },
+                {
+                  label: 'Peer Reviews',
+                },
+              ]}
+            />
+          </Themes>
+          {typeOfReviews === 'patient' && (
+            <PatientsReviews
+              slug={consultantSlug}
+              docitfyLogo={''}
+            ></PatientsReviews>
+          )}
+          {typeOfReviews === 'peer' && (
+            <PeerReviews slug={consultantSlug} docitfyLogo={''}></PeerReviews>
+          )}
+        </div>
+      )}
+      {consultantSlug === null && <div>No consultant selected</div>}
     </div>
   );
 };

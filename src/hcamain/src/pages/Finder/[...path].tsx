@@ -31,7 +31,6 @@ const SitecorePage = ({
     handleEditorFastRefresh();
   }, []);
 
-
   if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
     return <NotFound />;
@@ -42,7 +41,7 @@ const SitecorePage = ({
     layoutData.sitecore.context.renderingType === RenderingType.Component;
   return (
     <div>
-      hello finder level sub-page world
+      {/* hello finder level sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}
@@ -70,7 +69,7 @@ const SitecorePage = ({
 // paths are not known example. https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // replace with list of known slugs...
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths: StaticPath[] = [];
+  const paths: StaticPath[] = [];
   let fallback: boolean | 'blocking' = 'blocking';
 
   fallback = 'blocking';

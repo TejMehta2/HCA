@@ -6,29 +6,23 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React, { useContext } from 'react';
+import React from 'react';
 import {
-  GetServerSideComponentProps,
   GetStaticComponentProps,
   Image as JssImage,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
   useComponentProps,
   ComponentRendering,
-  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
-import { encode } from 'querystring';
 // import { useSearchParams } from 'next/navigation';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import {
-  LDB_FirstAppointment,
   checkIfLiveBookingIsAvailable,
   getSpecialistProfileData,
   isErrorWithProfileData,
@@ -51,10 +45,9 @@ import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/
 import OverallRating from '@component-library/consultant-finder/OverallRating/OverallRating';
 import Locations from '@component-library/consultant-finder/Locations/Locations';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
-import TextButton from '@component-library/core-components/TextButton/TextButton';
-import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 import Themes from '@component-library/foundation/Themes/Themes';
 import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
+import { yearsExperience } from '@component-library/utility-functions/index';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -76,20 +69,19 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
-  FirstAppointment: any;
   ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
 
 /**
  * Will be called during SSG
- * @param {ComponentRendering} rendering
- * @param {LayoutServiceData} layoutData
+ * @param {ComponentRendering} _rendering
+ * @param {LayoutServiceData} _layoutData
  * @param {GetStaticPropsContext} context
  */
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering,
-  layoutData,
+  _rendering,
+  _layoutData,
   context
 ) => {
   // based on https://github.com/vercel/next.js/discussions/38061
@@ -97,13 +89,12 @@ export const getStaticProps: GetStaticComponentProps = async (
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
-  const firstAppointment = isLiveDiaryConsultant && !errorWithProfileData ? await LDB_FirstAppointment(consultantProfileJson.registrationBodies[0].registrationNumber) : null;
+  //console.log("consultantProfileJson: ", consultantProfileJson);
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
-    FirstAppointment: firstAppointment,
     ProfileJson: consultantProfileJson,
   };
 
@@ -126,39 +117,21 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  //console.log('consultant profile data', props.fields);
+  console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  //console.log('consultant data,', serverSideData?.ProfileJson);
-  console.log('server side data from component props: ', serverSideData);
+  console.log('consultant data,', serverSideData?.ProfileJson);
+  //console.log('server side data from component props: ', serverSideData);
   console.log(
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
 
-  console.log("firstAppointment: ", serverSideData?.FirstAppointment);
-
-  const { message, setMessage } = useContext(ConsultantFinderContext);
+  // top specialty
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
-
-  // calculate years of experience
-  const yearsExperience = (yearsExp: string) => {
-    // Check if yearsExp is a string
-    if (typeof yearsExp !== 'string') {
-      // Handle the case where yearsExp is not a string
-      return 0; // Or whatever default value you want to return
-    }
-
-    const reversedDate = yearsExp.split('-').reverse().join('-');
-    const yearsNew =
-      new Date(
-        new Date().getTime() - new Date(reversedDate).getTime()
-      ).getFullYear() - 1970;
-    return yearsNew;
-  };
 
   // languages
   const languagesList: string[] = [];
@@ -192,41 +165,12 @@ export const Default = (props: StepProps): JSX.Element => {
     (item: any) => item.keywordType === 'condition'
   );
 
-  // fees
-  // check object has properties or it is defined and not null
-  const isObjectDefined = (Obj: object) => {
-    if (
-      Obj === null ||
-      typeof Obj !== 'object' ||
-      Object.prototype.toString.call(Obj) === '[object Array]'
-    ) {
-      return false;
-    } else {
-      for (const prop in Obj) {
-        if (Obj.hasOwnProperty(prop)) {
-          return true;
-        }
-      }
-      return JSON.stringify(Obj) !== JSON.stringify({});
-    }
-  };
-
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        <div>Slug: {serverSideData?.Slug}</div>
-        <div>
-          Error with data?:{' '}
-          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-        </div>
-        <div>
-          Is live diaries consultant?:{' '}
-          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-        </div>
         {/* top section */}
         <div>
-          {/* de facut linkul */}
           <Breadcrumbs>
             <a href="#">Consultant Finder</a>
             {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
@@ -400,6 +344,9 @@ export const Default = (props: StepProps): JSX.Element => {
               <Locations
                 title={'Locations'}
                 locations={serverSideData?.ProfileJson?.practices}
+                noLocationsText={
+                  'This consultant doesn’t have any locations information at the moment.'
+                }
               ></Locations>
             </ProfilePageSection>
             <OverallRating
@@ -418,10 +365,19 @@ export const Default = (props: StepProps): JSX.Element => {
                 serverSideData?.ProfileJson?.review?.explanation || 0
               }
             ></OverallRating>
-            <ReviewsSection></ReviewsSection>
+            {/* iframe with patient and peer reviews */}
+            <iframe
+              src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+              width="100%"
+              height="700px"
+              id="specialistReviews"
+              name="specialistReviews"
+              scrolling="no"
+            ></iframe>
+            {/* iframe with patient and peer reviews */}
           </MainWrapper>
           <SideWrapper>
-            <SidePanel>
+            <SidePanel isSticky={true}>
               <Reviews
                 doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
                 doctifyText="Reviewed By"
@@ -504,39 +460,6 @@ export const Default = (props: StepProps): JSX.Element => {
             </SidePanel>
           </SideWrapper>
         </ConsultantFinderProfileWrapper>
-        {/* <div>Message: {message}</div>
-        <button onClick={() => setMessage('testing new')}>
-          Change message
-        </button>
-        <div>Slug: {serverSideData?.Slug}</div>
-        <div>
-          Error with data?:{' '}
-          {serverSideData?.ErrorWithProfileData ? 'true' : 'false'}
-        </div>
-        <div>
-          Is live diaries consultant?:{' '}
-          {serverSideData?.IsLiveDiaryConsultant ? 'true' : 'false'}
-        </div> */}
-        {/* <div>
-          Their doctify profile data:{' '}
-          {JSON.stringify(serverSideData?.ProfileJson)}
-        </div> */}
-
-        {/* <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <Navigation showOnMobile={true}>
           {/* if consultant has live diaries then show 'book online' */}
           {serverSideData?.IsLiveDiaryConsultant && (

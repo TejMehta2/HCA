@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface SidePanelProps {
+export interface LoaderCFProps {
   children?: ReactNode | JSX.Element;
-  isSticky?: boolean;
 }

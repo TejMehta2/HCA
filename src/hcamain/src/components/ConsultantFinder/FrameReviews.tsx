@@ -2,15 +2,11 @@
 
 import React from 'react';
 import {
-  Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
-import Text from '@component-library/foundation/Text/Text';
+import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -34,7 +30,7 @@ type StepProps = {
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">Consultant Finder Step</span>
+      <span className="is-empty-hint">Consultant Finder Reviews</span>
     </div>
   </div>
 );
@@ -48,7 +44,7 @@ export const Default = (props: StepProps): JSX.Element => {
         id={id ? id : undefined}
       >
         <div className="component-content">
-          <div>HELLO REVIEWS</div>
+          <ReviewsSection />
         </div>
       </div>
     );

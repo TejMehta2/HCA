@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { parse } from 'node-html-parser';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
 
@@ -234,7 +235,7 @@ export async function facilityURLFromDoctifySlug(
 
   if (facilities.findIndex) {
     // got something usable back
-    let index = facilities.findIndex(
+    const index = facilities.findIndex(
       (facility: any) => facility.UniqueKey === doctifyLocationSlug
     );
     if (index > -1) {
@@ -375,5 +376,3 @@ export async function LDB_FirstAppointment(
 
   return firstAppointmentData;
 }
-
-

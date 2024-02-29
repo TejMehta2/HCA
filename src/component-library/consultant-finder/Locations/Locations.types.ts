@@ -3,4 +3,5 @@
 export interface LocationsProps {
   locations: any;
   title: string;
+  noLocationsText: string;
 }

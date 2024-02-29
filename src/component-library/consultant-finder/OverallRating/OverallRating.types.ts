@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface OverallRatingProps {
   title?: string;
   subtitle: string;

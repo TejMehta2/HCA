@@ -3,7 +3,10 @@ import React from 'react';
 import { PracticeProps } from './Practice.types';
 import styles from './Practice.module.scss';
 import Text from '../../../foundation/Text/Text';
-import { capitalizeFirstLetter } from '../../../utility-functions';
+import {
+  capitalizeFirstLetter,
+  isObjectDefined,
+} from '../../../utility-functions';
 import Icons from '../../../foundation/Icons/Icons';
 import TextButton from '../../../core-components/TextButton/TextButton';
 
@@ -20,23 +23,6 @@ const Locations = (props: PracticeProps): JSX.Element => {
   });
 
   const printAddress = address.toString().split(',').join(', ');
-
-  const isObjectDefined = (Obj: object) => {
-    if (
-      Obj === null ||
-      typeof Obj !== 'object' ||
-      Object.prototype.toString.call(Obj) === '[object Array]'
-    ) {
-      return false;
-    } else {
-      for (const prop in Obj) {
-        if (Obj.hasOwnProperty(prop)) {
-          return true;
-        }
-      }
-      return JSON.stringify(Obj) !== JSON.stringify({});
-    }
-  };
 
   // working hours
   const weekDays = [
@@ -63,70 +49,81 @@ const Locations = (props: PracticeProps): JSX.Element => {
 
   return (
     <div className={styles.practice}>
-      <Text tag="p" variation="body-medium-extra-large">
-        {props.name}
-      </Text>
-      <div className={styles.address}>
-        <Icons iconName="iconPin" />
-        <Text tag="p" variation="body-medium-large">
-          {printAddress}
-        </Text>
-      </div>
-      <div className={styles['working-hours']}>
-        <div className={styles.icon}>
-          <Icons iconName="iconClock" />
-        </div>
+      {props.slug !== 'video-consultation' && (
         <div>
-          {isObjectDefined(props.workingOpeningHours) && (
-            <ul>
-              {Object.keys(props.workingOpeningHours).map(
-                (key: any, index: any) => (
-                  <li key={index}>
-                    <Text tag="span" variation="body-medium-large">
-                      {weekDays[key - 1]}:{' '}
-                    </Text>
-                    {props.workingOpeningHours[key].length > 0 &&
-                      props.workingOpeningHours[key].map(
-                        (time: any, index: any) => (
-                          <div key={index}>
-                            <Text tag="span" variation="body-medium-large">
-                              {convertTime(time.open)} -{' '}
-                              {convertTime(time.close)}
-                            </Text>
-                          </div>
-                        )
-                      )}{' '}
-                    {props.workingOpeningHours[key].length === 0 && (
-                      <Text tag="span" variation="body-medium-large">
-                        Unavailable
-                      </Text>
-                    )}
-                  </li>
-                )
-              )}
-            </ul>
+          {props.facilityURL !== null && props.facilityURL !== '' && (
+            <TextButton theme="dark">
+              <a href={props.facilityURL}>{props.name}</a>
+            </TextButton>
           )}
-          {!isObjectDefined(props.workingOpeningHours) && (
-            <Text tag="p" variation="body-medium-large">
-              Unavailable
+          {(props.facilityURL === null || props.facilityURL === '') && (
+            <Text tag="p" variation="body-medium-extra-large">
+              {props.name}
             </Text>
           )}
+          <div className={styles.address}>
+            <Icons iconName="iconPin" />
+            <Text tag="p" variation="body-medium-large">
+              {printAddress}
+            </Text>
+          </div>
+          <div className={styles['working-hours']}>
+            <div className={styles.icon}>
+              <Icons iconName="iconClock" />
+            </div>
+            <div>
+              {isObjectDefined(props.workingOpeningHours) && (
+                <ul>
+                  {Object.keys(props.workingOpeningHours).map(
+                    (key: any, index: any) => (
+                      <li key={index}>
+                        <Text tag="span" variation="body-medium-large">
+                          {weekDays[key - 1]}:{' '}
+                        </Text>
+                        {props.workingOpeningHours[key].length > 0 &&
+                          props.workingOpeningHours[key].map(
+                            (time: any, index: any) => (
+                              <div key={index}>
+                                <Text tag="span" variation="body-medium-large">
+                                  {convertTime(time.open)} -{' '}
+                                  {convertTime(time.close)}
+                                </Text>
+                              </div>
+                            )
+                          )}{' '}
+                        {props.workingOpeningHours[key].length === 0 && (
+                          <Text tag="span" variation="body-medium-large">
+                            Unavailable
+                          </Text>
+                        )}
+                      </li>
+                    )
+                  )}
+                </ul>
+              )}
+              {!isObjectDefined(props.workingOpeningHours) && (
+                <Text tag="p" variation="body-medium-large">
+                  Unavailable
+                </Text>
+              )}
+            </div>
+          </div>
+          {props.lat !== null &&
+            props.lat !== '' &&
+            props.long !== null &&
+            props.long !== '' && (
+              <TextButton>
+                <a
+                  href={`https://maps.google.com/?q=${props.lat},${props.long}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View on Google Maps
+                </a>
+              </TextButton>
+            )}
         </div>
-      </div>
-      {props.lat !== null &&
-        props.lat !== '' &&
-        props.long !== null &&
-        props.long !== '' && (
-          <TextButton>
-            <a
-              href={`https://maps.google.com/?q=${props.lat},${props.long}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              View on Google Maps
-            </a>
-          </TextButton>
-        )}
+      )}
     </div>
   );
 };

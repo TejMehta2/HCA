@@ -9,4 +9,5 @@ export interface PracticeProps {
   long: any;
   slug: string;
   workingOpeningHours: any;
+  facilityURL: string | null;
 }

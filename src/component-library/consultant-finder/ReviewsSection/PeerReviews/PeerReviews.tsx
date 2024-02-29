@@ -6,18 +6,20 @@ import axios from 'axios';
 import Text from '../../../foundation/Text/Text';
 import TextButton from '../../../core-components/TextButton/TextButton';
 import Icons from '../../../foundation/Icons/Icons';
-import Loader from '../../../foundation/Loader/Loader';
+import LoaderCF from '../../LoaderCF/LoaderCF';
+import { formatDate } from '../../../utility-functions/index';
+const reviewPerRow = 2;
 
 const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [next, setNext] = useState(reviewPerRow);
 
   useEffect(() => {
-    console.log('use effect peers');
     axios
       .get(
-        `https://api.doctify.com/api/hca/specialists/${'mr-andrew-goldberg'}/peerRecommendations`
+        `https://api.doctify.com/api/hca/specialists/${props.slug}/peerRecommendations`
       )
       .then((resp) => {
         // console.log(resp);
@@ -34,13 +36,13 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
         }, []);
 
   const loadMore = () => {
-    console.log('load more');
+    setNext(next + reviewPerRow);
   };
 
   return (
     <>
-      {isLoading && <Loader theme={'dark'} />}
-      {!isLoading && (
+      {isLoading && <LoaderCF />}
+      {!isLoading && total > 0 && (
         <div className={styles['patients-reviews']}>
           <div className={styles.header}>
             <div className={styles.title}>
@@ -52,7 +54,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
 
           <div className={styles['review-wrapper']}>
             {reviews.length > 0 &&
-              reviews.map((review) => (
+              reviews?.slice(0, next)?.map((review) => (
                 <div key={review.id} className={styles.review}>
                   <div className={styles.rating}>
                     <div className={styles.image}>
@@ -63,19 +65,62 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
                         height="76"
                       />
                     </div>
-                    <Text tag="p" variation="body-bold-extra-large">
-                      {review.recommender.title} {review.recommender.firstName}{' '}
-                      {review.recommender.lastName}
-                    </Text>
+                    <div className={styles.text}>
+                      <Text tag="p" variation="body-bold-extra-large">
+                        {review.recommender.title}{' '}
+                        {review.recommender.firstName}{' '}
+                        {review.recommender.lastName}
+                      </Text>
+                      {review.keywords.length > 0 && (
+                        <Text tag="p" variation="body-small">
+                          {review.keywords
+                            .filter(
+                              (keyword: any) => keyword.type === 'specialty'
+                            )
+                            .map((keyword: any) => keyword.name)
+                            .join(', ')}
+                        </Text>
+                      )}
+                    </div>
                   </div>
+                  {review.connection !== null &&
+                    review.connection.length > 0 && (
+                      <div className={styles.connection}>
+                        <Text tag="p" variation="body-medium">
+                          {review.connection}
+                        </Text>
+                      </div>
+                    )}
                   <div>
                     <Text tag="p" variation="body-large">
                       {review.recommendation}
                     </Text>
                   </div>
+                  <div className={styles['date-branding-wrapper']}>
+                    {review?.createdAt !== null && review?.createdAt !== '' && (
+                      <div className={styles.date}>
+                        <Text tag="p" variation="body-medium">
+                          {formatDate(review?.createdAt)}
+                        </Text>
+                      </div>
+                    )}
+                    <div className={styles.branding}>
+                      <Text tag="p" variation="body-medium">
+                        Verified by:
+                      </Text>
+                      {props.docitfyLogo && (
+                        <img
+                          src={props.docitfyLogo}
+                          alt="doctify logo"
+                          width="83"
+                          height="21"
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
-            {reviews.length < total && (
+            {!isLoading && next < reviews?.length && (
               <div>
                 <TextButton theme="dark">
                   <button onClick={loadMore}>
@@ -87,6 +132,11 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
             )}
           </div>
         </div>
+      )}
+      {!isLoading && total === 0 && (
+        <Text tag="p" variation="body-large">
+          There are no peer reviews for this consultant
+        </Text>
       )}
     </>
   );
