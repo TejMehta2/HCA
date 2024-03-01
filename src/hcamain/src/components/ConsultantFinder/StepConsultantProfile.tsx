@@ -24,10 +24,13 @@ import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 // import { useSearchParams } from 'next/navigation';
 import {
-  checkIfLiveBookingIsAvailable,
+  getLDBFirstAppointmentData as getLDBFirstAppointmentData,
+} from 'src/pages/Finder/lib/API_C2';
+import { checkIfLiveBookingIsAvailable } from 'src/pages/Finder/lib/API_HCA';
+import {
   getSpecialistProfileData,
-  isErrorWithProfileData,
-} from 'src/pages/Finder/StepConsultantProfile/finderHelpers';
+  isErrorWithProfileData
+} from 'src/pages/Finder/lib/API_Doctify';
 import Container from '@component-library/foundation/Containers/Container';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
@@ -65,6 +68,8 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   DoctifyLogoImage: ImageField;
+  API_C2_FirstAppointment_BaseURL: Field<string>;
+  API_C2_FirstAppointment_Header: Field<string>;
   ProfileImagePlaceholderImage: any;
   AboutHeadingText: Field<string>;
   AboutTabText: Field<string>;
@@ -97,6 +102,7 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
+  FirstAppointment: any;
   ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
@@ -117,12 +123,15 @@ export const getStaticProps: GetStaticComponentProps = async (
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
+  const firstAppointment = isLiveDiaryConsultant && !errorWithProfileData ? 
+                              await getLDBFirstAppointmentData(consultantProfileJson?.gmcNumber) : null;
   //console.log("consultantProfileJson: ", consultantProfileJson);
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
+    FirstAppointment: firstAppointment,
     ProfileJson: consultantProfileJson,
   };
 
@@ -155,6 +164,16 @@ export const Default = (props: StepProps): JSX.Element => {
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
+  console.log('first appointment:', serverSideData?.FirstAppointment);
+
+  /*
+  // example client side get first appointment call
+  getLDBFirstAppointmentData( "4113571", 
+                              props.fields.API_C2_FirstAppointment_BaseURL.value, 
+                              props.fields.API_C2_FirstAppointment_Header.value)
+                              .then(res=>
+                                {  console.log('first appointment client side:', res);
+                                });*/
 
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
