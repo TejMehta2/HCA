@@ -47,7 +47,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
           <div className={styles.header}>
             <div className={styles.title}>
               <Text tag="p" variation="body-bold-extra-large">
-                Reviews from peers ({total})
+                {props.reviewsFromPeersTitleText} ({total})
               </Text>
             </div>
           </div>
@@ -106,7 +106,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
                     )}
                     <div className={styles.branding}>
                       <Text tag="p" variation="body-medium">
-                        Verified by:
+                        {props.verifyByDoctifyText}
                       </Text>
                       {props.docitfyLogo && (
                         <img
@@ -135,7 +135,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
       )}
       {!isLoading && total === 0 && (
         <Text tag="p" variation="body-large">
-          There are no peer reviews for this consultant
+          {props.noReviewsText}
         </Text>
       )}
     </>

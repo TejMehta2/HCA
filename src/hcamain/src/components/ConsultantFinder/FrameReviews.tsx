@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
 import React from 'react';
@@ -9,46 +10,67 @@ import {
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
-  TitleText: Field<string>;
-  CardImage: ImageField;
-
-  StartLink: LinkField;
-  NextLink: LinkField;
-  BackLink: LinkField;
+  DoctifyReviewsImage: any;
+  NoReviewsText: Field<string>;
+  PatientReviewsText: Field<string>;
+  PeerReivewsText: Field<string>;
+  ReasonText: Field<string>;
+  ReviewsFromPatientsTitleText: Field<string>;
+  ReviewsFromPeersTitleText: Field<string>;
+  VerifyByDoctifyText: Field<string>;
 }
 
-type StepProps = {
+type ReviewFrameProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
 
-const StepDefaultComponent = (props: StepProps): JSX.Element => (
-  <div className={`component promo ${props.params.styles}`}>
+const ReviewsFrameDefaultComponent = (): JSX.Element => (
+  <div>
     <div className="component-content">
       <span className="is-empty-hint">Consultant Finder Reviews</span>
     </div>
   </div>
 );
 
-export const Default = (props: StepProps): JSX.Element => {
+export const Default = (props: ReviewFrameProps): JSX.Element => {
+  console.log('reviews frame props', props);
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div id={id ? id : undefined}>
         <div className="component-content">
-          <ReviewsSection />
+          <ReviewsSection
+            DoctifyReviewsImage={
+              props?.fields?.DoctifyReviewsImage?.value?.src || ''
+            }
+            NoReviewsText={
+              props?.fields?.NoReviewsText?.value ||
+              'This consultant doesn’t have any reviews at the moment.'
+            }
+            PatientReviewsText={
+              props?.fields?.PatientReviewsText?.value || 'patient reviews'
+            }
+            PeerReivewsText={
+              props?.fields?.PeerReivewsText?.value || 'peer reivews'
+            }
+            ReasonText={''}
+            ReviewsFromPatientsTitleText={
+              props?.fields?.ReviewsFromPatientsTitleText?.value ||
+              'Reviews from patients'
+            }
+            ReviewsFromPeersTitleText={
+              props?.fields?.ReviewsFromPeersTitleText?.value ||
+              'Reviews from peers'
+            }
+            VerifyByDoctifyText={
+              props?.fields?.VerifyByDoctifyText?.value || 'Verified by'
+            }
+          />
         </div>
       </div>
     );
   }
 
-  return <StepDefaultComponent {...props} />;
+  return <ReviewsFrameDefaultComponent />;
 };

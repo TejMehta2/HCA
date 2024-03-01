@@ -50,7 +50,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
           <div className={styles.header}>
             <div className={styles.title}>
               <Text tag="p" variation="body-bold-extra-large">
-                Reviews from patients ({total})
+                {props.reviewsFromPatientsTitleText} ({total})
               </Text>
             </div>
             <div className={styles.sort}>
@@ -128,7 +128,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                     )}
                     <div className={styles.branding}>
                       <Text tag="p" variation="body-medium">
-                        Verified by:
+                        {props.verifyByDoctifyText}
                       </Text>
                       {props.docitfyLogo && (
                         <img
@@ -157,7 +157,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
       )}
       {!isLoading && total === 0 && (
         <Text tag="p" variation="body-large">
-          There are no patient reviews for this consultant
+          {props.noReviewsText}
         </Text>
       )}
     </>
