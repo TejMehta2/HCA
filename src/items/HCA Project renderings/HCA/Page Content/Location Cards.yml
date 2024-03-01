@@ -10,6 +10,99 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetLocationCards($datasource: String!, $contextItem: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on LocationCards {
+          heading {
+            jsonValue
+          }
+          title {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          locations {
+            LocationsList: targetItems {
+              ... on LocationPage {
+                title {
+                  value
+                }
+                image {
+                  jsonValue
+                }
+                city {
+                  value
+                }
+                street {
+                  value
+                }
+                postCode {
+                  value
+                }
+                getDirections {
+                  value
+                }
+                url {
+                  path
+                }
+              }
+            }
+          }
+          filterOptions {
+            filterOptionsList: targetItems {
+              ... on FilterOption {
+                displayName: field(name: "DisplayName") {
+                  value
+                }
+                filter {
+                  value
+                }
+                filterValue {
+                  value
+                }
+              }
+            }
+          }
+        cTAText {
+            jsonValue
+          }
+        getDirectionsText {
+            jsonValue
+          }
+        }
+      }
+      contextItem: item(path: $contextItem, language: $language) {
+        ... on TreatmentPage {
+          id
+        }
+        ... on SpecialtyPage {
+          id
+        }
+        ... on DiagnosisPage {
+          id
+        }
+        ... on ConditionPage {
+          id
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Location Cards
@@ -31,7 +124,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{4C52B76F-AAAB-4383-A3C6-51FD1D5604F4}" />
+    <image mediaid="{71DA7EEE-94E4-477E-836E-D473E39C7D67}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -78,14 +171,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5933d9d7-dc99-4dce-9cf8-6f85e9269dbc"
+      Value: "4cb242fe-8335-4ffb-a9ae-91fb2f932883"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240228T211038Z
+      Value: 20240301T095106Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
