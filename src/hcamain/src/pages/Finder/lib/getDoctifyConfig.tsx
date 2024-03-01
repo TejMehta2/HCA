@@ -52,7 +52,11 @@ export async function getDoctifyConfig(): Promise<IDoctifyConfig> {
     aPI_DoctifySpecialists_NoResultsMsg: '',
     aPI_DoctifySpecialists_LoadingMsg: '',
   };
-  DoctifyConfig = await getItemFromGraphQL(DoctifyAPISettingsItemId, DoctifyAPISettingsTemplateName, DoctifyConfig);
+  DoctifyConfig = await getItemFromGraphQL(
+    DoctifyAPISettingsItemId,
+    DoctifyAPISettingsTemplateName,
+    DoctifyConfig
+  );
   //console.log('DoctifyConfig result:', JSON.stringify(DoctifyConfig));
   return DoctifyConfig;
 }

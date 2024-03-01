@@ -59,7 +59,7 @@ export async function getLDBFirstAppointmentData(
       next: { revalidate: 10 },
     });
     if (res.ok) {
-      let result = await res.json();
+      const result = await res.json();
       if (result && result.availability && result.availability.length == 1) {
         firstAppointmentData = result.availability[0];
       }

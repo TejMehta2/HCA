@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { parse } from 'node-html-parser';
 import { getHCAConfig } from './getHCAConfig';
 
@@ -9,8 +10,7 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
   const HCAAPIConfig = await getHCAConfig();
   const consultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
 
-  if(consultantSlugsURL && consultantSlugsURL.length > 0)
-  {
+  if (consultantSlugsURL && consultantSlugsURL.length > 0) {
     // using current/legacy website xml sitemap for now
     // replace once we have a backend that can query doctify for list of consultant slugs
     try {
@@ -61,8 +61,7 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   const ldbConsultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
   // using current/legacy live diary consultants list for now
   // replace once we have a backend that can query for a list of live diary consultant slugs
-  if(ldbConsultantSlugsURL && ldbConsultantSlugsURL.length > 0)
-  {
+  if (ldbConsultantSlugsURL && ldbConsultantSlugsURL.length > 0) {
     try {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch

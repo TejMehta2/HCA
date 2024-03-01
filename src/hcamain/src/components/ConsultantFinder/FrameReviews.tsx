@@ -2,11 +2,7 @@
 // Template finder component
 
 import React from 'react';
-import {
-  ImageField,
-  Field,
-  LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/ReviewsSection';
 
 interface Fields {
