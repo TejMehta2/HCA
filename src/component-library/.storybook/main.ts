@@ -25,6 +25,8 @@ const config: StorybookConfig = {
     "../site-components/**/*.mdx",
     "../consultant-finder/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../consultant-finder/**/*.mdx",
+    "../yext/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../yext/**/*.mdx",
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
