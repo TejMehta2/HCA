@@ -9,11 +9,11 @@ export async function getSpecialistProfileData(
   slug: string,
   serviceURL?: string
 ): Promise<any> {
-  const DoctifyConfig = await getDoctifyConfig();
+  const config = !serviceURL ? await  getDoctifyConfig() : null;
   //console.log(DoctifyConfig);
-  const Doctify_Specialists_URL = DoctifyConfig.aPI_DoctifySpecialists_BaseURL;
+  const Doctify_Specialists_URL = serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
 
-  const requestURL = `${serviceURL ?? Doctify_Specialists_URL}/${slug}`;
+  const requestURL = `${Doctify_Specialists_URL}/${slug}`;
   let docitfyData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
@@ -100,9 +100,10 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 // get HCA facilities data
 //const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
 export async function getFacilitiesData(serviceURL?: string): Promise<any> {
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = !serviceURL ? await getHCAConfig() : null;
+
   const requestURL = `${
-    serviceURL ?? HCAAPIConfig.aPI_HCA_DoctifyToFacilities_BaseURL
+    serviceURL ?? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_BaseURL
   }`;
   let facilitiesData: any = '';
   try {
@@ -135,6 +136,7 @@ export async function getFacilitiesData(serviceURL?: string): Promise<any> {
     facilitiesData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getFacilitiesData, please retry"}`;
     console.error(`getFacilitiesData failed with exception ${e}`);
   }
+  
   return facilitiesData;
 }
 
@@ -145,7 +147,7 @@ export async function facilityURLFromDoctifySlug(
   let locationURL: string = '';
   const facilities = await getFacilitiesData();
 
-  if (facilities.findIndex) {
+  if (facilities?.findIndex) {
     // got something usable back
     const index = facilities.findIndex(
       (facility: any) => facility.UniqueKey === doctifyLocationSlug
