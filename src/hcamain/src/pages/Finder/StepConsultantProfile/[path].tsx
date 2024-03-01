@@ -22,9 +22,8 @@ import { componentBuilder } from 'temp/componentBuilder';
 import NotFound from 'src/NotFound';
 import {
   // checkIfLiveBookingIsAvailable,
-  getActiveConsultantSlugs,
-  // getSpecialistProfileData,
-} from './finderHelpers';
+  getActiveConsultantSlugs
+} from '../lib/API_HCA';
 
 const SitecorePage = ({
   notFound,
