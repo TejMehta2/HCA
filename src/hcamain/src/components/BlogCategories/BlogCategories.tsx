@@ -3,6 +3,7 @@ import {
   Field,
   Text as JssText,
   Item,
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
@@ -19,6 +20,7 @@ interface Fields {
       categories?: {
         categoriesList?: CategoriesFields[];
       };
+      blogUrl?: { jsonValue?: LinkField };
     };
   };
 }

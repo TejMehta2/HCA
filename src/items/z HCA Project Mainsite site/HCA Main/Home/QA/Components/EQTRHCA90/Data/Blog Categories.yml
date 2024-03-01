@@ -8,6 +8,10 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "159de352-e23d-4e0e-88f8-98a7fa62f73e"
+      Hint: BlogUrl
+      Value: |
+        <link class="" id="{766DA7E9-2EFE-4132-A387-6B257A08FDC8}" querystring="?category=" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA Main/Home/QA/Blogs" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240217T204842Z
@@ -24,7 +28,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "83dec027-e1cd-48c8-a2d9-25335fe76785"
+      Value: "ab002172-f5fc-41c0-8de6-31035202dfb2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -44,4 +48,4 @@ Languages:
         {A9E9D760-4D51-4DC0-A608-1BA978D84551}
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240220T161302Z
+      Value: 20240301T083639Z
