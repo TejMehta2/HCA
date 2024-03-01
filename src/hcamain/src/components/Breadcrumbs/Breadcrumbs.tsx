@@ -78,19 +78,18 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     }
   );
 
-  //  exclude the last item which is the home breadcrumb
-
-  const filteredBreadcrumbList = breadcrumbList?.filter((breadcrumb, index) => {
-    if (index + 1 !== props.fields?.data?.contextItem?.ancestors?.length) {
-      return breadcrumb;
-    }
-    return;
-  });
-
   const title = getTitle(props.fields?.data?.contextItem);
-  filteredBreadcrumbList?.push(
-    <span key={filteredBreadcrumbList?.length}>{title}</span>
-  );
+  breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
 
-  return <Breadcrumbs children={filteredBreadcrumbList} />;
+  if (!props?.fields?.data?.contextItem?.ancestors?.length) {
+    return <></>;
+  }
+  return (
+    <Breadcrumbs
+      children={breadcrumbList?.slice(
+        0,
+        props?.fields?.data?.contextItem?.ancestors?.length - 1
+      )}
+    />
+  );
 };
