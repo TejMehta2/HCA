@@ -19,7 +19,7 @@ SharedFields:
           p:before="*"
           s:ds="local:/Data/Blog Quote"
           s:id="{1E7AC667-741E-42D2-B79C-E5A5A9B1C15B}"
-          s:par="HeadingTag=h1&amp;QuoteSize=%7B425703B4-27C0-42BD-93D3-4E14FE846314%7D&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag=h1&amp;QuoteSize=display-1&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -27,7 +27,7 @@ SharedFields:
           p:after="r[@uid='{FFA68BE6-CA15-42D4-8FB8-5656A134B5EE}']"
           s:ds="local:/Data/Blog Quote QuoteSize 2"
           s:id="{1E7AC667-741E-42D2-B79C-E5A5A9B1C15B}"
-          s:par="HeadingTag&amp;QuoteSize=%7BC3F1296A-E478-4832-A0E2-D4D279617158%7D&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:par="HeadingTag&amp;QuoteSize=display-2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -35,7 +35,7 @@ SharedFields:
           p:after="r[@uid='{C7CCF59A-62F7-4B65-B09C-276A6EBC17E6}']"
           s:ds="local:/Data/Blog Quote QuoteSize 3"
           s:id="{1E7AC667-741E-42D2-B79C-E5A5A9B1C15B}"
-          s:par="HeadingTag&amp;QuoteSize=%7B47100D07-2E98-4190-85E1-3351B1740D1C%7D&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+          s:par="HeadingTag&amp;QuoteSize=display-3&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -43,7 +43,7 @@ SharedFields:
           p:after="*[1=2]"
           s:ds="local:/Data/Blog Quote QuoteSize 4"
           s:id="{1E7AC667-741E-42D2-B79C-E5A5A9B1C15B}"
-          s:par="HeadingTag&amp;QuoteSize=%7B57CAF4AD-5A22-4F12-881A-4B4EAE62C87B%7D&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+          s:par="HeadingTag&amp;QuoteSize=display-4&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B1B454894-D2A1-4513-8B74-CEBFD1A0D894%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -69,11 +69,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b48d0df2-9871-4ef6-93da-77dbe3517129"
+      Value: "8deaa9b7-35b5-4a9f-95b4-8da1a0a2e00b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102826Z
+      Value: 20240301T105750Z
