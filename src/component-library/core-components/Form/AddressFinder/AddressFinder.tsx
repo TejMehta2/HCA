@@ -1,11 +1,11 @@
-import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
+import React, { useState, ChangeEvent, useRef } from 'react';
 import { AddressFinderProps } from './AddressFinder.types';
 import styles from './AddressFinder.module.scss';
-import TextButton from '../TextButton/TextButton';
-import Icons from '../../foundation/Icons/Icons';
-import TextField from '../TextField/TextField';
-import Loader from '../../foundation/Loader/Loader';
-import Text from '../../foundation/Text/Text';
+import TextButton from '../../TextButton/TextButton';
+import Icons from '../../../foundation/Icons/Icons';
+import Loader from '../../../foundation/Loader/Loader';
+import Text from '../../../foundation/Text/Text';
+import TextField from '../../TextField/TextField';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const { helpText } = props;
@@ -48,7 +48,6 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState();
-  const [resultsVisible, setResultsVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAddress, setSelectedAddress] = useState(mockTestAddress);
   const [showSelectedAddress, setShowSelectedAddress] = useState(false);

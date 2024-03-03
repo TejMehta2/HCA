@@ -1,5 +1,5 @@
-@use '../../foundation/index.module' as *;
-@use '../../utilities/index.module' as *;
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
 
 .wrapper {
   position: relative;
@@ -95,13 +95,6 @@
   margin-top: $spacing-3;
 }
 
-.manual-fields {
-  margin-top: px-to-rem(100);
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-5 0;
-}
-
 .selected-address {
   margin-top: px-to-rem(57);
 }
@@ -115,4 +108,8 @@
 .selected-fields {
   margin-top: $spacing-4;
   @include apply-body-medium-large;
+}
+
+.manual-fields {
+  margin-top: px-to-rem(100);
 }
