@@ -22,7 +22,7 @@ const VideoConsultation = (props: VideoConsultationProps): JSX.Element => {
       <TextLink>
         <a href={`tel:${props.phoneNumber}`}>
           <Icons iconName="iconPhone" />
-          <span>{props.phoneNumber}</span>
+          <span>{props.displayNumber}</span>
         </a>
       </TextLink>
     </div>

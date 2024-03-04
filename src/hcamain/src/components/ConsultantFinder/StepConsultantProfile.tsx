@@ -95,8 +95,11 @@ interface Fields {
   ExplainationOfCareCategoryText: Field<string>;
   LastCheckedText: Field<string>;
   BookOnlineButtonLink: LinkField;
-  CallToBookButtonLink: LinkField;
   CallToBookButtonText: Field<string>;
+  PhoneNumberHref: Field<string>;
+  DisplayNumber: Field<string>;
+  VideoConsultationText: Field<string>;
+  VideoConsultationTitle: Field<string>;
   NextInitialAppointmentText: Field<string>;
   NextFollowOnAppointmentText: Field<string>;
   ViewOnGoogleMapsText: Field<string>;
@@ -551,6 +554,20 @@ export const Default = (props: StepProps): JSX.Element => {
                   props?.fields?.ViewOnGoogleMapsText?.value ||
                   'View on Google Maps'
                 }
+                videoConsultationText={
+                  props?.fields?.VideoConsultationText?.value ||
+                  'Call to book a video consultation.'
+                }
+                videoConsultationTitle={
+                  props?.fields?.VideoConsultationTitle?.value ||
+                  'Video Consultation'
+                }
+                phoneNumberHref={
+                  props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                }
+                displayNumber={
+                  props?.fields?.DisplayNumber?.value || '0204 5711 724'
+                }
               ></Locations>
             </ProfilePageSection>
             <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
@@ -695,12 +712,19 @@ export const Default = (props: StepProps): JSX.Element => {
                   size="small"
                   contentVariation="full-width"
                 >
-                  <JssLink field={props.fields.CallToBookButtonLink}>
+                  <a
+                    href={`tel:${
+                      props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                    }`}
+                  >
                     <span>
                       <Icons iconName="iconPhone" />
                     </span>
-                    <span>{props.fields.CallToBookButtonLink.value.text}</span>
-                  </JssLink>
+                    <span>
+                      {props?.fields?.CallToBookButtonText?.value ||
+                        'Call to book'}
+                    </span>
+                  </a>
                 </Button>
               </Container>
             </SidePanel>
@@ -743,10 +767,18 @@ export const Default = (props: StepProps): JSX.Element => {
             size="small"
             contentVariation="full-width"
           >
-            <JssLink
-              field={props.fields.CallToBookButtonLink}
-              title={props.fields.CallToBookButtonLink.value.text}
-            ></JssLink>
+            <a
+              href={`tel:${
+                props?.fields?.PhoneNumberHref?.value || '+442045711724'
+              }`}
+            >
+              <span>
+                <Icons iconName="iconPhone" />
+              </span>
+              <span>
+                {props?.fields?.CallToBookButtonText?.value || 'Call to book'}
+              </span>
+            </a>
           </Button>
         </Navigation>
       </div>

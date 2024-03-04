@@ -5,4 +5,8 @@ export interface LocationsProps {
   title: string;
   viewOnGoogleMapText: string;
   noLocationsText: string;
+  videoConsultationText: string;
+  videoConsultationTitle: string;
+  phoneNumberHref: string;
+  displayNumber: string;
 }

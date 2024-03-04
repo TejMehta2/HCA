@@ -3,4 +3,5 @@ export interface VideoConsultationProps {
   title?: string;
   text?: string;
   phoneNumber: string;
+  displayNumber: string;
 }

@@ -40,9 +40,10 @@ const Locations = (props: LocationsProps): JSX.Element => {
             practice.slug === 'video-consultation' && (
               <VideoConsultation
                 key={practice.id}
-                title={'Video Consultation'}
-                text={'Call to book a video consultation.'}
-                phoneNumber={'+442045711724'}
+                title={props.videoConsultationTitle}
+                text={props.videoConsultationText}
+                phoneNumber={props.phoneNumberHref}
+                displayNumber={props.displayNumber}
               />
             )
         )}
