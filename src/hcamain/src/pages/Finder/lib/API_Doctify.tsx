@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getHCAConfig } from './getHCAConfig';
 import { getDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
@@ -9,9 +10,10 @@ export async function getSpecialistProfileData(
   slug: string,
   serviceURL?: string
 ): Promise<any> {
-  const config = !serviceURL ? await  getDoctifyConfig() : null;
+  const config = !serviceURL ? await getDoctifyConfig() : null;
   //console.log(DoctifyConfig);
-  const Doctify_Specialists_URL = serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
+  const Doctify_Specialists_URL =
+    serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
 
   const requestURL = `${Doctify_Specialists_URL}/${slug}`;
   let docitfyData: any = '';
@@ -136,7 +138,7 @@ export async function getFacilitiesData(serviceURL?: string): Promise<any> {
     facilitiesData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getFacilitiesData, please retry"}`;
     console.error(`getFacilitiesData failed with exception ${e}`);
   }
-  
+
   return facilitiesData;
 }
 

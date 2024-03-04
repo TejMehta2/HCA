@@ -34,7 +34,7 @@
     justify-content: space-between;
     flex-direction: column;
 
-    @include media(screen-l) {
+    @include media(screen-m) {
       flex-direction: row;
     }
   }
@@ -57,5 +57,14 @@
     border-radius: $radius-small;
     padding: $spacing-1 $spacing-4;
     background-color: #f8d9ce;
+  }
+
+  .branding {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-left: $spacing-1;
+    }
   }
 }

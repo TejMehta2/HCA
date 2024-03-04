@@ -59,4 +59,13 @@
     margin-right: $spacing-2;
     border-right: 1px solid #adb4bf;
   }
+
+  .branding {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-left: $spacing-1;
+    }
+  }
 }

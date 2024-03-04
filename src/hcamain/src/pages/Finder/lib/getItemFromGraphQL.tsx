@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLRequestClient } from '@sitecore-jss/sitecore-jss-nextjs/graphql';
 import config from 'temp/config';
 
@@ -30,7 +31,8 @@ export async function getItemFromGraphQL(
     `;
     // map in desired keys (properties) to fetch
     Object.keys(itemToFetch).forEach(
-      (key) => (GQLQuery += `
+      (key) =>
+        (GQLQuery += `
           ${key} { 
             value 
           }`)

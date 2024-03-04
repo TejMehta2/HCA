@@ -3,8 +3,9 @@ import Tabs from '../../core-components/Tabs/Tabs';
 import Themes from '../../foundation/Themes/Themes';
 import PatientsReviews from './PatientReviews/PatientsReviews';
 import PeerReviews from './PeerReviews/PeerReviews';
+import { ReviewsSectionProps } from './ReviewsSection.types';
 
-const ReviewsSection = (): JSX.Element => {
+const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
   const [typeOfReviews, setTypeOfReviews] = useState<'patient' | 'peer'>(
     'patient'
   );
@@ -78,11 +79,20 @@ const ReviewsSection = (): JSX.Element => {
           {typeOfReviews === 'patient' && (
             <PatientsReviews
               slug={consultantSlug}
-              docitfyLogo={''}
+              docitfyLogo={props.DoctifyReviewsImage}
+              reviewsFromPatientsTitleText={props.ReviewsFromPatientsTitleText}
+              verifyByDoctifyText={props.VerifyByDoctifyText}
+              noReviewsText={props.NoReviewsText}
             ></PatientsReviews>
           )}
           {typeOfReviews === 'peer' && (
-            <PeerReviews slug={consultantSlug} docitfyLogo={''}></PeerReviews>
+            <PeerReviews
+              slug={consultantSlug}
+              docitfyLogo={props.DoctifyReviewsImage}
+              reviewsFromPeersTitleText={props.ReviewsFromPeersTitleText}
+              verifyByDoctifyText={props.VerifyByDoctifyText}
+              noReviewsText={props.NoReviewsText}
+            ></PeerReviews>
           )}
         </div>
       )}

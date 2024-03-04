@@ -45,9 +45,13 @@ export async function getC2Config(): Promise<Ic2Config> {
     aPI_C2_ReserveConsultantSlot_BaseURL: '',
     aPI_C2_ReserveConsultantSlot_NoResultsMsg: '',
     aPI_C2_ReserveConsultantSlot_LoadingMsg: '',
-    aPI_C2_ReserveConsultantSlot_Header: ''
+    aPI_C2_ReserveConsultantSlot_Header: '',
   };
-  c2Config = await getItemFromGraphQL(C2APISettingsItemId, C2APISettingsTemplateName, c2Config);
+  c2Config = await getItemFromGraphQL(
+    C2APISettingsItemId,
+    C2APISettingsTemplateName,
+    c2Config
+  );
   //console.log('c2Config result:', JSON.stringify(c2Config));
   //console.log('aPI_C2_FirstAppointment_BaseURL: ', c2Config.aPI_C2_FirstAppointment_BaseURL);
   return c2Config;
