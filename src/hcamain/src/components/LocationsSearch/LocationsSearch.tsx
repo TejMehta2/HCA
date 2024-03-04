@@ -75,10 +75,11 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
       <JssText field={props?.fields?.SearchPlaceholder} />
       <br />
       <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value || '',
-          }}
-        ></span>
+        dangerouslySetInnerHTML={{
+          __html:
+            props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value || '',
+        }}
+      ></span>
       <br />
       <JssText field={props?.fields?.FilterOptionsText} />
       <br />
@@ -102,10 +103,11 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
       </ul>
       <br />
       <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value || '',
-          }}
-        ></span>
+        dangerouslySetInnerHTML={{
+          __html:
+            props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value || '',
+        }}
+      ></span>
       <JssText field={props?.fields?.SortOptionsText} />
       <br />
       <ul>
@@ -124,18 +126,18 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
       <JssText field={props?.fields?.GridViewText} />
       <br />
       <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.GridViewIcon?.fields?.SvgMarkup?.value || '',
-          }}
-        ></span>
+        dangerouslySetInnerHTML={{
+          __html: props?.fields?.GridViewIcon?.fields?.SvgMarkup?.value || '',
+        }}
+      ></span>
       <br />
       <JssText field={props?.fields?.MapViewText} />
       <br />
       <span
-          dangerouslySetInnerHTML={{
-            __html: props?.fields?.MapViewIcon?.fields?.SvgMarkup?.value || '',
-          }}
-        ></span>
+        dangerouslySetInnerHTML={{
+          __html: props?.fields?.MapViewIcon?.fields?.SvgMarkup?.value || '',
+        }}
+      ></span>
       <br />
       <p>Text: {t('close')}</p>
       <br />
