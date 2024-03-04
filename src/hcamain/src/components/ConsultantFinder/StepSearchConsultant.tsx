@@ -125,10 +125,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 'No matches found, please try typing something else.'
               }
               searchIcon={
-                props?.fields?.SearchIconSearchBar?.fields?.SvgMarkup?.value || null
+                props?.fields?.SearchIconSearchBar?.fields?.SvgMarkup?.value ||
+                null
               }
               searchIconResults={
-                props?.fields?.SearchIconResults?.fields?.SvgMarkup?.value || null
+                props?.fields?.SearchIconResults?.fields?.SvgMarkup?.value ||
+                null
               }
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}

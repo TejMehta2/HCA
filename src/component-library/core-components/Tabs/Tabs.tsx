@@ -6,7 +6,8 @@ import Text from '../../foundation/Text/Text';
 import useWindowWidth from '../../hooks/useWindowWidth';
 
 // avoid useLayoutEffect when SSR pages https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-export const useBrowserLayoutEffect = typeof window === 'undefined' ? useLayoutEffect : () => {}
+export const useBrowserLayoutEffect =
+  typeof window === 'undefined' ? useLayoutEffect : () => {};
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
