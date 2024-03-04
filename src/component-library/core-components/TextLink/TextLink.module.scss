@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .text-link {
-  width: max-content;
+  display: inline-block;
 
   a {
     text-decoration: none;
@@ -45,6 +45,11 @@
     &:disabled {
       color: var(--text-link-disabled-text);
       pointer-events: none;
+    }
+
+    > svg,
+    > :has(svg) {
+      flex: 0 0 auto;
     }
   }
 
