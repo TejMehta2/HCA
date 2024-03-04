@@ -61,7 +61,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const {
-    keywordId,
     searchStringConsultantName,
     setSearchStringConsultantName,
     consultantSlug,
