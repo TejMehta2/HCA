@@ -56,9 +56,6 @@ import {
 } from '@component-library/utility-functions/index';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
   EnquireNowLink: LinkField;
   BookOnlineLink: LinkField;
   BackFromAdvSearchLink: LinkField;
