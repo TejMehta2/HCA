@@ -81,11 +81,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div>keyword id specialty: {keywordId}</div>
+      <div id={id ? id : undefined}>
         <ImageAndTextBlock
           theme="A-HCA-White"
           imageAlignment="left"
