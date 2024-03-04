@@ -340,6 +340,11 @@ export namespace PageContent {
     export type BlogCategories =  {
         fields?: { 
             /**
+            * Represents the Blog Url field (159de352-e23d-4e0e-88f8-98a7fa62f73e).
+            */
+            BlogUrl?: LinkField;
+
+            /**
             * Represents the Categories field (bf40b42c-ed62-4fe4-950c-c426c7c60dee).
             */
             Categories?: Item[];
@@ -357,6 +362,13 @@ export namespace PageContent {
     */
     export type BlogCategoriesJson =  {
         
+            /**
+            * Represents the Blog Url field (159de352-e23d-4e0e-88f8-98a7fa62f73e).
+            */
+            blogUrl?: {
+                jsonValue: LinkField
+            };
+
             /**
             * Represents the Categories field (bf40b42c-ed62-4fe4-950c-c426c7c60dee).
             */
@@ -720,7 +732,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Quote
     */
     export type BlogQuote = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.QuoteParameters &  {
         fields?: {         }
 
     }
@@ -729,7 +742,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Quote
     */
     export type BlogQuoteJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.QuoteParametersJson &  {
         
 
     }
@@ -4015,7 +4029,7 @@ export namespace HCA.Project.HCA {
 export namespace Foundation.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/Layout Parameters
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/LayoutParameters
     */
     export type LayoutParameters =  {
         fields?: { 
@@ -4028,7 +4042,7 @@ export namespace Foundation.RenderingParameters {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/Layout Parameters
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/LayoutParameters
     */
     export type LayoutParametersJson =  {
         
@@ -4051,9 +4065,19 @@ export namespace PageContent {
 Foundation.ComponentBase &  {
         fields?: { 
             /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            CTAText?: Field<string>;
+
+            /**
             * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
             */
             FilterOptions?: Item[];
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            GetDirectionsText?: Field<string>;
 
             /**
             * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
@@ -4070,10 +4094,24 @@ Foundation.ComponentBase &  {
 Foundation.ComponentBaseJson &  {
         
             /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
             */
             filterOptions?: {
                 jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            getDirectionsText?: {
+                jsonValue: Field<string>
             };
 
             /**
@@ -4085,30 +4123,6 @@ Foundation.ComponentBaseJson &  {
 
 
     }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards
-    */
-    export type LocationCards = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.LayoutParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards
-    */
-    export type LocationCardsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.LayoutParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
-        
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
@@ -4122,6 +4136,28 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
     */
     export type LocationCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.LayoutParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.LayoutParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
         
 
     }
@@ -4246,6 +4282,108 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Locations Map Folder
     */
     export type LocationsMapFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Locations Search
+    */
+    export type LocationsSearch = Foundation.SearchBase &  {
+        fields?: { 
+            /**
+            * Represents the Grid View Icon field (8412c5bf-99ea-4872-bdc1-820be9a3bd13).
+            */
+            GridViewIcon?: Item;
+
+            /**
+            * Represents the Grid View Text field (548d0877-04dd-4666-8e8a-18f78dd45d5c).
+            */
+            GridViewText?: Field<string>;
+
+            /**
+            * Represents the Map View Icon field (16583a49-e1c2-44aa-8645-f9aa55a8147d).
+            */
+            MapViewIcon?: Item;
+
+            /**
+            * Represents the Map View Text field (90875e3c-58b9-40d7-b491-b56f4a462018).
+            */
+            MapViewText?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Locations Search
+    */
+    export type LocationsSearchJson = Foundation.SearchBaseJson &  {
+        
+            /**
+            * Represents the Grid View Icon field (8412c5bf-99ea-4872-bdc1-820be9a3bd13).
+            */
+            gridViewIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Grid View Text field (548d0877-04dd-4666-8e8a-18f78dd45d5c).
+            */
+            gridViewText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Map View Icon field (16583a49-e1c2-44aa-8645-f9aa55a8147d).
+            */
+            mapViewIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Map View Text field (90875e3c-58b9-40d7-b491-b56f4a462018).
+            */
+            mapViewText?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Search
+    */
+    export type LocationsSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Search
+    */
+    export type LocationsSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Locations Search Folder
+    */
+    export type LocationsSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Locations Search Folder
+    */
+    export type LocationsSearchFolderJson =  {
         
 
     }
@@ -4700,96 +4838,6 @@ export namespace Foundation.Share {
 
     }
 }
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
-    */
-    export type ModalContent =  {
-        fields?: { 
-            /**
-            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
-            */
-            PrimaryCTA?: LinkField;
-
-            /**
-            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
-            */
-            PrimaryCTAIcon?: Item;
-
-            /**
-            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
-            */
-            SecondaryCTA?: LinkField;
-
-            /**
-            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
-            */
-            SecondaryCTAIcon?: Item;
-
-            /**
-            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
-            */
-            Text?: Field<string>;
-
-            /**
-            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
-            */
-            Title?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content
-    */
-    export type ModalContentJson =  {
-        
-            /**
-            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
-            */
-            primaryCTA?: {
-                jsonValue: LinkField
-            };
-
-            /**
-            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
-            */
-            primaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
-            */
-            secondaryCTA?: {
-                jsonValue: LinkField
-            };
-
-            /**
-            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
-            */
-            secondaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
-            */
-            text?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
-            */
-            title?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-}
 export namespace Foundation {
 
     /**
@@ -4872,6 +4920,96 @@ export namespace Foundation {
 
             /**
             * Represents the Title field (8bdcda68-7ca6-4187-bd0b-0eac908580c5).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContent =  {
+        fields?: { 
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            PrimaryCTA?: LinkField;
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            PrimaryCTAIcon?: Item;
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            SecondaryCTA?: LinkField;
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            SecondaryCTAIcon?: Item;
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContentJson =  {
+        
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            primaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            primaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            secondaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            secondaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
             */
             title?: {
                 jsonValue: Field<string>
@@ -5308,36 +5446,6 @@ export namespace HCA.Project.HCA {
 
     }
 }
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Page Proxy
-    */
-    export type PageProxy = Foundation.HcabasePageData &  {
-        fields?: { 
-            /**
-            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
-            */
-            Link?: LinkField;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Page Proxy
-    */
-    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
-        
-            /**
-            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
-            */
-            link?: {
-                jsonValue: LinkField
-            };
-
-
-    }
-}
 export namespace Foundation {
 
     /**
@@ -5360,6 +5468,36 @@ export namespace Foundation {
         
             /**
             * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            link?: {
+                jsonValue: LinkField
+            };
+
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Page Proxy
+    */
+    export type PageProxy = Foundation.HcabasePageData &  {
+        fields?: { 
+            /**
+            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
+            */
+            Link?: LinkField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Page Proxy
+    */
+    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
+        
+            /**
+            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
             */
             link?: {
                 jsonValue: LinkField
@@ -5621,6 +5759,34 @@ Foundation.RenderingParameters.ThemesParametersJson &  {
     }
 }
 export namespace Foundation.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/QuoteParameters
+    */
+    export type QuoteParameters =  {
+        fields?: { 
+            /**
+            * Represents the Quote Size field (88950ba1-253b-47fd-a6fa-aaa0f1df15b6).
+            */
+            QuoteSize?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/QuoteParameters
+    */
+    export type QuoteParametersJson =  {
+        
+            /**
+            * Represents the Quote Size field (88950ba1-253b-47fd-a6fa-aaa0f1df15b6).
+            */
+            quoteSize?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/RenderingParameterOptions Folder
