@@ -55,10 +55,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
       <br />
       <JSSImage field={props.fields?.VideoThumbnail} />
       <br />
-      <Placeholder
-        name={phKey}
-        rendering={props.rendering}
-      />
+      <Placeholder name={phKey} rendering={props.rendering} />
     </div>
   );
 };
