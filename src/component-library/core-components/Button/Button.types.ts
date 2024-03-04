@@ -25,5 +25,5 @@ export interface ButtonProps {
   children?: ReactNode | JSX.Element;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   loading?: boolean;
-  contentVariation?: 'full-width';
+  contentVariation?: 'full-width' | 'card';
 }

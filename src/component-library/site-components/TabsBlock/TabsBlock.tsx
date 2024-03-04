@@ -7,7 +7,7 @@ import Slider, { Settings } from '@ant-design/react-slick';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 
 const TabsBlock = (props: TabsBlockProps): JSX.Element => {
-  const { theme = 'A-HCA-Main-Turquoise', title, tabsContent = [] } = props;
+  const { theme = 'D-HCA-Teal', title, tabsContent = [] } = props;
   const sliderRef = useRef<Slider>(null);
 
   /* Carousel settings */
@@ -23,7 +23,7 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
     className: styles['slick-wrapper'],
   };
 
-  const tabChangeHandler = (newLabel: string) => {
+  const tabChangeHandler = ({ label: newLabel }: { label: string }) => {
     const newIndex = tabsContent.findIndex(
       (tabContent) => tabContent.tab.label === newLabel
     );

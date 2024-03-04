@@ -7,6 +7,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { Fields as CQCFields } from 'components/CQCRating/CQCRating.types';
 import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
+import Params from 'src/types/params';
 
 // We extend generated types from Leprechaun, and overwrite types which are not specific enough for integration, mostly generic Sitecore Item
 // We mostly cast them as optional, because we are unsure
@@ -22,9 +23,9 @@ export type Profile = Item & {
     ProfileUrl?: TextField & {
       value?: string;
     };
-    SocialMediaProvider: Item & {
+    SocialMediaProvider?: Item & {
       fields?: {
-        Icon?: unknown; // THINK - renders as ID string in props, why?
+        Icon?: unknown; // THINK - renders as ID string in props, why
       };
     };
   };
@@ -50,11 +51,11 @@ export type Fields = Navigation.Footer['fields'] & {
   NavigationColumnsFolders?: NavigationColumnsFolder[];
   SocialMediaProfilesGroup?: SocialMediaProfilesGroup;
   DoctifyReviews?: DoctifyReviewsFields;
-  CqcStatus: { fields: CQCFields };
+  CqcStatus?: { fields?: CQCFields };
 };
 
 export type FooterProps = Navigation.Footer & {
-  params: { [key: string]: string };
-  rendering: ComponentRendering & { params: { [key: string]: string } };
+  params?: Params;
+  rendering?: ComponentRendering & { params?: Params };
   fields?: Fields;
 };

@@ -11,6 +11,9 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240130T084101Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: Glasgow
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -19,16 +22,19 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
+      Hint: FilterValue
+      Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c10ca1d9-3689-4893-b3eb-2b2aa070ca8b"
+      Value: "7ea5c264-fb69-465b-8516-c2aeca8fa5ad"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T124903Z
+      Value: 20240229T213226Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
       Value: city=Glasgow

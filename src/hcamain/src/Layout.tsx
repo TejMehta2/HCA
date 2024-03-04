@@ -13,6 +13,7 @@ import config from 'temp/config';
 import Scripts from 'src/Scripts';
 
 import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
+import Params from 'src/types/params';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -22,11 +23,14 @@ interface LayoutProps {
   layoutData: LayoutServiceData;
   headLinks: HTMLLink[];
 }
-
 interface RouteFields {
   [key: string]: unknown;
   Title?: Field;
 }
+
+type FirstComponentProps = {
+  params?: Params;
+};
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const { route } = layoutData.sitecore;
@@ -35,6 +39,20 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
   const isHomepage = layoutData?.sitecore.context.itemPath === '/';
+
+  //  On the homepage get the theme of the first component to set the initial theme of the ScrollTransition component
+
+  let firstComponentTheme;
+  if (isHomepage) {
+    const firstComponent = layoutData.sitecore.route?.placeholders[
+      'headless-main'
+    ][0] as FirstComponentProps;
+    const firstComponentParams = firstComponent?.params as Params;
+
+    firstComponentTheme = firstComponentParams.Theme
+      ? firstComponentParams?.Theme
+      : 'B-HCA-Navy-Blue';
+  }
 
   return (
     <>
@@ -57,7 +75,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         <main>
           <div id="content">
             {isHomepage ? (
-              <ScrollTransition initialTheme="F-HCA-White">
+              <ScrollTransition initialTheme={firstComponentTheme}>
                 {route && (
                   <Placeholder name="headless-main" rendering={route} />
                 )}

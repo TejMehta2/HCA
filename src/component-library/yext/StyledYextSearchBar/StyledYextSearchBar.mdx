@@ -1,0 +1,24 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as StyledYextSearchBarStories from './StyledYextSearchBar.stories'
+
+<Meta of={StyledYextSearchBarStories} />
+
+# StyledYextSearchBar
+
+## Description
+
+The StyledYextSearchBar component is essentially the Yext Searchbar React component, but with the styles overriden using the exposed customCssClasses interface.
+
+It is intended to be used in the main site search of the site.
+
+There are a limited set of keys which can be used in customCssClasses, these are visible by inspecting the component prop types.
+
+See the [official docs](https://hitchhikers.yext.com/docs/search/searchbar-react-component/) for more info.
+
+As with all the interactive Yext components, the search bar needs to be nested within a YextProvider:
+
+```tsx
+<YextProvider>
+  <StyledYextSearchBar />
+</YextProvider>
+```

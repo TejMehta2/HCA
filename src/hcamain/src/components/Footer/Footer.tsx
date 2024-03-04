@@ -8,7 +8,7 @@ import { Default as Doctify } from '../Doctify/Doctify';
 import { Default as CQCRating } from '../CQCRating/CQCRating';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Empty Footer</span>
     </div>
@@ -20,7 +20,7 @@ export const Default = (props: FooterProps): JSX.Element => {
     return <FooterDefaultComponent {...props} />;
   }
   // Map children using utilities
-  const socials = props.fields.SocialMediaProfilesGroup?.fields?.Profiles?.map(
+  const socials = props.fields?.SocialMediaProfilesGroup?.fields?.Profiles?.map(
     (profile: Profile, index: number) => (
       <SocialMediaCta key={index} {...profile} />
     )
@@ -34,16 +34,16 @@ export const Default = (props: FooterProps): JSX.Element => {
           key={1}
           length="short"
           hideRating={true}
-          {...props.fields.CqcStatus}
+          {...props.fields?.CqcStatus}
         />
       ) : (
         <></>
       ),
-      props.fields.DoctifyReviews?.fields ? (
+      props.fields?.DoctifyReviews?.fields ? (
         <Doctify
           params={props.params}
           key={2}
-          fields={{ Reviews: props.fields.DoctifyReviews }}
+          fields={{ Reviews: props.fields?.DoctifyReviews }}
         />
       ) : (
         <></>
@@ -57,10 +57,14 @@ export const Default = (props: FooterProps): JSX.Element => {
   return (
     <Footer
       buttons={
-        <Placeholder
-          name={`cta-buttons-${props.params.DynamicPlaceholderId}`}
-          rendering={props.rendering}
-        />
+        props.rendering ? (
+          <Placeholder
+            name={`cta-buttons-${props.params?.DynamicPlaceholderId}`}
+            rendering={props.rendering}
+          />
+        ) : (
+          <></>
+        )
       }
       columns={[...columns, reviewColumn]}
       legals={legals}

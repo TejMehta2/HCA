@@ -18,7 +18,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof ArticleCategories> = {
   args: {
-    theme: 'D-HCA-Light-Orange',
+    theme: 'H-HCA-Tangerine',
     title: (
       <Text variation="display-3" tag="h3">
         Article categories

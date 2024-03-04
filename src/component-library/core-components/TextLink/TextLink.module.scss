@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .text-link {
-  width: max-content;
+  display: inline-block;
 
   a {
     text-decoration: none;
@@ -13,6 +13,7 @@
   label {
     color: inherit;
     display: flex;
+    align-items: center;
     column-gap: px-to-rem(4);
     cursor: pointer;
     background: 0;
@@ -44,6 +45,11 @@
     &:disabled {
       color: var(--text-link-disabled-text);
       pointer-events: none;
+    }
+
+    > svg,
+    > :has(svg) {
+      flex: 0 0 auto;
     }
   }
 

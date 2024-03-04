@@ -17,7 +17,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     doctify,
   } = props;
   return (
-    <Themes theme="F-HCA-White">
+    <Themes theme="A-HCA-White">
       <div
         className={[
           styles['intro-block'],
@@ -31,9 +31,6 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <ul className={styles.stats}>
               {stats.map((stat, index) => (
                 <React.Fragment key={index}>
-                  <li className={styles.hr} aria-hidden="true">
-                    <hr />
-                  </li>
                   <li>
                     <p className={styles.stat}>
                       <Text variation="display-2" tag="span">
@@ -44,13 +41,18 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
                       </Text>
                     </p>
                   </li>
+                  <li className={styles.hr} aria-hidden="true">
+                    <hr />
+                  </li>
                 </React.Fragment>
               ))}
             </ul>
             <div className={styles.cta}>
-              <Button size={'large'} variation={'full-dark'}>
-                {cta}
-              </Button>
+              <Themes theme="A-HCA-White">
+                <Button size={'large'} variation={'full-dark'}>
+                  {cta}
+                </Button>
+              </Themes>
             </div>
           </div>
           <div className={styles['image-wrapper']} data-animate="s">
@@ -58,10 +60,10 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>
               <div className={styles.mobile}>
-                <Themes theme={'A-HCA-Main-Turquoise'}>{doctify}</Themes>
+                <Themes theme={'D-HCA-Teal'}>{doctify}</Themes>
               </div>
               <div className={styles.tablet}>
-                <Themes theme={'E-HCA-Dark-Grey'}>{doctify}</Themes>
+                <Themes theme={'B-HCA-Navy-Blue'}>{doctify}</Themes>
               </div>
             </div>
           </div>

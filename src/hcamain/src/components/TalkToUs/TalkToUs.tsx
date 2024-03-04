@@ -9,33 +9,28 @@ import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBl
 import Text from '@component-library/foundation/Text/Text';
 import ContactList from '@component-library/components/ContactList/ContactList';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
+import Params from 'src/types/params';
 import { ContactItem } from '@component-library/components/ContactList/ContactList.types';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 
 interface Fields {
-  data: {
-    item: {
-      heading: { jsonValue: Field<string> };
-      title: { jsonValue: Field<string> };
-      text: { jsonValue: Field<string> };
-      image: { jsonValue: ImageField };
-      contactUnits: {
-        contactUnitList: ContactUnitFields[];
+  data?: {
+    item?: {
+      heading?: { jsonValue?: Field<string> };
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+      image?: { jsonValue?: ImageField };
+      contactUnits?: {
+        contactUnitList?: ContactUnitFields[];
       };
     };
   };
 }
 
 type TalkToUsProps = {
-  params: {
-    [key: string]: string;
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 interface TalkToUsLeftProps extends TalkToUsProps {
@@ -43,9 +38,9 @@ interface TalkToUsLeftProps extends TalkToUsProps {
 }
 
 const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
-  <div className={`component promo ${props.params.styles}`}>
+  <div className={`component promo ${props.params?.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">ImageShortText no datasource</span>
+      <span className="is-empty-hint">TalkToUs no datasource</span>
     </div>
   </div>
 );
@@ -58,14 +53,14 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
 
   const contactListItems: ContactItem[] = [];
 
-  props.fields.data.item.contactUnits.contactUnitList.map(
+  props.fields?.data?.item?.contactUnits?.contactUnitList?.map(
     (contactUnit: ContactUnitFields) => {
-      const numbers = contactUnit.telephoneNumber.telephoneNumberList.map(
+      const numbers = contactUnit?.telephoneNumber?.telephoneNumberList?.map(
         (telephoneNumber, index) => {
           return (
             <Text tag="p" variation="display-6" key={index}>
-              <a href={`tel:${telephoneNumber.internationPhoneNumber.value}`}>
-                {telephoneNumber.phoneNumber.value}
+              <a href={`tel:${telephoneNumber?.internationPhoneNumber?.value}`}>
+                {telephoneNumber?.phoneNumber?.value}
               </a>
             </Text>
           );
@@ -94,18 +89,18 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
 
   return (
     <ImageAndTextBlock
-      theme={props.params.Theme || 'A-HCA-Main-Turquoise'}
+      theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"
       header={
         <Text
-          tag={props.params.HeadingTag || 'h4'}
-          variation={props.params.HeadingSize || 'subheading-2'}
+          tag={props.params?.HeadingTag || 'h4'}
+          variation={props.params?.HeadingSize || 'subheading-2'}
         >
-          <JssText field={props.fields.data.item.title.jsonValue} />
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
       }
-      image={<JssImage field={props.fields.data.item.image.jsonValue} />}
+      image={<JssImage field={props.fields?.data?.item?.image?.jsonValue} />}
     >
       <ContactList items={contactListItems} />
     </ImageAndTextBlock>

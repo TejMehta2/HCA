@@ -19,7 +19,7 @@ const meta: Meta<typeof Tabs> = {
   tags: [],
   decorators: [
     (Story) => (
-      <Themes theme={'F-HCA-White'}>
+      <Themes theme={'A-HCA-White'}>
         <Story />
       </Themes>
     ),
@@ -30,7 +30,14 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Tabs> = {
   args: {
-    callback: (name: string) => console.log(name),
+    callback: ({
+      label,
+    }: {
+      label: string;
+      value: string;
+      name: string;
+      index: number;
+    }) => console.log(label),
     tabs: [
       { icon: 'iconOneOff', label: 'One-off' },
       { icon: 'iconFlexible', label: 'Flexi' },
@@ -41,7 +48,14 @@ export const Default: StoryObj<typeof Tabs> = {
 
 export const NoIcon: StoryObj<typeof Tabs> = {
   args: {
-    callback: (name: string) => console.log(name),
+    callback: ({
+      label,
+    }: {
+      label: string;
+      value: string;
+      name: string;
+      index: number;
+    }) => console.log(label),
     tabs: [{ label: 'One-off' }, { label: 'Flexi' }, { label: 'Annual' }],
   },
   decorators: [
@@ -55,7 +69,14 @@ export const NoIcon: StoryObj<typeof Tabs> = {
 
 export const Overflow: StoryObj<typeof Tabs> = {
   args: {
-    callback: (name: string) => console.log(name),
+    callback: ({
+      label,
+    }: {
+      label: string;
+      value: string;
+      name: string;
+      index: number;
+    }) => console.log(label),
     tabs: [
       { icon: 'iconOneOff', label: 'One-off' },
       { icon: 'iconFlexible', label: 'Flexi' },

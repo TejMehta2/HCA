@@ -4,7 +4,7 @@ import Themes from './Themes';
 import { ThemesProps } from './Themes.types';
 
 const mockProps: ThemesProps = {
-  theme: 'A-HCA-Main-Turquoise',
+  theme: 'D-HCA-Teal',
   children: <>Hello world</>,
 };
 
@@ -17,7 +17,7 @@ describe('Themes', () => {
     const { getByText } = render(<Themes {...mockProps} />);
     expect(getByText('Hello world')).toHaveAttribute(
       'data-theme',
-      'A-HCA-Main-Turquoise'
+      'D-HCA-Teal'
     );
   });
 });

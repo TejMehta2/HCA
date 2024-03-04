@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{9E508C0A-9E94-484B-8F62-077C7B649928}" />
+    <image mediaid="{C8B62DD5-E44E-4A7C-AD78-8EEB92291B4A}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -71,14 +71,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ab0cc17c-7686-464f-acd3-fe6ee9ab71b4"
+      Value: "d987340a-8352-416d-a06f-69efcdf62337"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240117T122500Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
-      Hint: Title
-      Value: EQTRHCA14_1
+      Value: 20240226T103710Z

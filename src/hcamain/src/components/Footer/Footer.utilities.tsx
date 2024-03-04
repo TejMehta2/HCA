@@ -20,7 +20,7 @@ export const linkReducer = (
 export const SocialMediaCta = (props: Profile) => (
   <Button key={props.id} size={'small'} variation={'social'}>
     <a
-      href={props.fields.ProfileUrl?.value}
+      href={props.fields?.ProfileUrl?.value}
       target={'blank'}
       rel={'noopener noreferrer'}
     >

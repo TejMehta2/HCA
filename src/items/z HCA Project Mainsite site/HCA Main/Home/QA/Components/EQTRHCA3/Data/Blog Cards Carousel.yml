@@ -20,17 +20,21 @@ Languages:
         {471F79FD-281B-435A-90B8-6FB3B3F15886}
         {9D0A0D9E-B398-4004-9342-F3F589F2345E}
         {CD58E2CC-A116-48E7-9CDA-56D62C48C80A}
+    - ID: "7e5ae1ed-f9e1-4159-944f-61c9ec66e767"
+      Hint: BlogUrl
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?documenttype=" id="{969326B0-3955-48CF-8362-4120323DEC38}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f72db6bc-98e0-4fca-95fb-43f1d15e7805"
+      Value: "cab7e4f0-98b9-4626-80a8-28e5bc03e3ce"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{969326B0-3955-48CF-8362-4120323DEC38}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240123T084328Z
+      Value: 20240229T075228Z

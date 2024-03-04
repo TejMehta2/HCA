@@ -1,0 +1,338 @@
+﻿---
+ID: "48ea1434-f118-4ce2-9417-3d42054df8bb"
+Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Hero Location Details
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: componentName
+  Value: HeroLocationDetails
+- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
+  Hint: Placeholders
+  Value: "{88F33B66-D47F-43FC-B90B-002ED86E4F9E}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetHeroLocationDetails($contextItem: String!, $language: String!) {
+      contextItem: item(path: $contextItem, language: $language) {
+        ... on LocationPage {
+          title: field(name: "Title") {
+            jsonValue
+          }
+          image {
+            jsonValue
+          }
+          city {
+            jsonValue
+          }
+          street {
+            jsonValue
+          }
+          postCode {
+            jsonValue
+          }
+          getDirections {
+            jsonValue
+          }
+          doctifyReviews {
+            fields: targetItem {
+              ... on DoctifyReviews {
+                Stars: field(name: "Stars") {
+                  value
+                }
+                Reviews: field(name: "Reviews") {
+                  value
+                }
+                DoctifyLogoLight: field(name: "DoctifyLogoLight") {
+                  ...DoctifyLogoFields
+                }
+                DoctifyLogoDark: field(name: "DoctifyLogoDark") {
+                  ...DoctifyLogoFields
+                }
+                Link: field(name: "Link") {
+                  value
+                }
+              }
+            }
+          }
+          cQCRating {
+            fields: targetItem {
+              ... on CQC {
+                Status: field(name: "Status") {
+                  ...CQCStatusFields
+                }
+                Title: field(name: "Title") {
+                  value
+                }
+                ReportLink: field(name: "ReportLink") {
+                  ... on LinkField {
+                    url
+                  }
+                }
+                Text: field(name: "Text") {
+                  value
+                }
+              }
+            }
+          }
+          contactUnits {
+            contactUnitList: targetItems {
+              ...ContactUnitFields
+            }
+          }
+        }
+      }
+    }
+    
+    fragment DoctifyLogoFields on LookupField {
+      fields: targetItem {
+        ... on DoctifySettings {
+          Text: field(name: "Text") {
+            value
+          }
+          Logo: field(name: "Logo") {
+            ... on ImageField {
+              src
+              alt
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+    
+    fragment CQCStatusFields on LookupField {
+      fields: targetItem {
+        ... on CQCStatus {
+          displayName
+          Title: field(name: "Title") {
+            value
+          }
+          Icon: field(name: "Icon") {
+            value
+          }
+          CQCLogoLight: field(name: "CQCLogoLight") {
+            ...CQCLogoFields
+          }
+          CQCLogoDark: field(name: "CQCLogoDark") {
+            ...CQCLogoFields
+          }
+        }
+      }
+    }
+    
+    fragment CQCLogoFields on LookupField {
+      fields: targetItem {
+        ... on CQCSettings {
+          Logo: field(name: "Logo") {
+            ... on ImageField {
+              src
+              alt
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+    
+    fragment ContactUnitFields on ContactUnit {
+      contactUnitName {
+        value
+      }
+      telephoneNumber {
+        telephoneNumberList: targetItems {
+          ...TelephoneNumberFields
+        }
+      }
+      children {
+        results {
+          ... on OpeningHours {
+            ...OpeningHoursFields
+          }
+        }
+      }
+    }
+    
+    fragment OpeningHoursFields on OpeningHours {
+      children {
+        results {
+          ... on OpeningHoursSpecification {
+            dayOfWeek {
+              dayOfWeekList: targetItems {
+                ...DayOfWeekFields
+              }
+            }
+            opens {
+              value
+            }
+            closes {
+              value
+            }
+            validFrom {
+              value
+            }
+            validThrough {
+              value
+            }
+          }
+        }
+      }
+    }
+    
+    fragment DayOfWeekFields on DayOfWeek {
+      dayName {
+        value
+      }
+    }
+    
+    fragment TelephoneNumberFields on TelephoneNumber {
+      internationPhoneNumber {
+        value
+      }
+      phoneNumberLabel {
+        value
+      }
+      phoneNumber {
+        value
+      }
+    }
+    
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: /sitecore/templates/Project/HCA/Page Content/Hero Location Details
+- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+  Hint: Open Properties after Add
+  Value: 0
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Value: 
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: Parameters Template
+  Value: "{CC198C7E-91E0-48D4-9727-A18BADB74791}"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Hero Location Details Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Hero Location Details Folder']"
+- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
+  Hint: AddFieldEditorButton
+  Value: 
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{E70B81B5-504B-40BC-B008-6A4695F9A027}" />
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: OtherProperties
+  Value: IsRenderingsWithDynamicPlaceholders=true
+Languages:
+- Language: "de-DE"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Promo
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231114T034000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231114T034000Z
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120931Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bf2445db-bebe-421a-8519-b471afb09809"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240228T220222Z
+- Language: "ja-JP"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: プロモ
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231114T034000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231114T034000Z
+- Language: "zh-CN"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 促销
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231114T034000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231114T034000Z

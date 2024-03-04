@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{1D8362BD-4179-465C-A73D-54C140897801}" />
+    <image mediaid="{43E6F5B9-3D7D-43CF-A544-4130E591A301}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -64,17 +64,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b0224c48-53c2-425e-8b5f-0dc1ad124488"
+      Value: "967679df-8d8e-4b60-83e6-e44233a23a16"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T211508Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
-      Hint: Title
-      Value: EQTRHCA84
+      Value: 20240226T103604Z
   - Version: 2
     Fields:
     - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
@@ -111,17 +108,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eda39738-831e-434f-ba56-7a6e0ca24ac0"
+      Value: "be6376cd-711e-4bb6-bf0d-6ddd8e0c4088"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T174949Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
-      Hint: Title
-      Value: EQTRHCA84
+      Value: 20240226T103605Z
   - Version: 3
     Fields:
     - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
@@ -159,14 +153,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fd052379-bf2e-40b4-83fa-bde7e7a4e0f6"
+      Value: "31d750ae-6b47-47b9-83ab-37386ac61651"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240214T203652Z
-    - ID: "f253d55f-c5e7-4bbd-8423-45ee6c8a12ec"
-      Hint: Title
-      Value: EQTRHCA84
+      Value: 20240226T103648Z

@@ -11,35 +11,36 @@ import Button from '@component-library/core-components/Button/Button';
 import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.types';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
+import Params from 'src/types/params';
 
 type HCAIconFields = {
-  svgMarkup: Field<string>;
+  svgMarkup?: Field<string>;
 };
 
 interface Fields {
-  data: {
-    item: {
-      cTAIcon: {
-        Icon: HCAIconFields;
+  data?: {
+    item?: {
+      cTAIcon?: {
+        Icon?: HCAIconFields;
       };
-      cTALink: { jsonValue: LinkField };
-      contactUnit: {
-        contactUnitList: ContactUnitFields[];
+      cTALink?: { jsonValue?: LinkField };
+      contactUnit?: {
+        contactUnitList?: ContactUnitFields[];
       };
     };
   };
 }
 
 type CallUsTodayCTAProps = {
-  params: { [key: string]: string };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const CallUsTodayCTADefaultComponent = (
   props: CallUsTodayCTAProps
 ): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`}>
+    <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
         <span className="is-empty-hint">CallUsTodayCTA no datasource</span>
       </div>
@@ -55,13 +56,13 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
   }
 
   const contacts: Contact[] = [];
-  props.fields.data.item.contactUnit.contactUnitList.map((contactUnit) => {
-    const title = contactUnit.contactUnitName;
-    const phone = contactUnit.telephoneNumber.telephoneNumberList.map(
+  props.fields?.data?.item?.contactUnit?.contactUnitList?.map((contactUnit) => {
+    const title = contactUnit?.contactUnitName;
+    const phone = contactUnit?.telephoneNumber?.telephoneNumberList.map(
       (telephoneNumber) => {
         return {
-          text: telephoneNumber.phoneNumber.value,
-          number: telephoneNumber.internationPhoneNumber.value,
+          text: telephoneNumber?.phoneNumber?.value,
+          number: telephoneNumber?.internationPhoneNumber?.value,
         };
       }
     );
@@ -70,7 +71,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
 
     contacts.push({
       title: <JssText field={title} />,
-      phone: phone[0],
+      phone: phone?.[0],
       availability: <span>{availabilityString}</span>,
     });
   });
@@ -79,19 +80,22 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
     <>
       <Button size="large" variation="outline">
         <button onClick={() => dialogRef?.current?.showModal()}>
-          {props.fields.data.item?.cTALink.jsonValue.value.text && (
+          {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
             <>
-              {props.fields.data.item?.cTAIcon?.Icon.svgMarkup && (
+              {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
                 <span
                   dangerouslySetInnerHTML={{
                     __html:
-                      props.fields.data.item?.cTAIcon?.Icon.svgMarkup.value,
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup
+                        ?.value || '',
                   }}
                 ></span>
               )}
               <JssRichText
                 field={{
-                  value: props.fields.data.item?.cTALink.jsonValue.value.text,
+                  value:
+                    props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
+                    '',
                 }}
               />
             </>

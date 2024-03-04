@@ -25,9 +25,14 @@ const Tabs = (props: TabsProps): JSX.Element => {
   ]); // Store dimensions for each tab
   const [currentTabIndex, setCurrentTabIndex] = useState(0); // Track the currently selected tab, for styling purposes only
 
-  const handleChange = (label: string, index: number) => {
-    setCurrentTabIndex(index);
-    callback(label); // Call the callback prop
+  const handleChange = (args: {
+    name: string;
+    value: string;
+    label: string;
+    index: number;
+  }) => {
+    setCurrentTabIndex(args.index);
+    callback(args); // Call the callback prop
   };
 
   const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
@@ -54,7 +59,13 @@ const Tabs = (props: TabsProps): JSX.Element => {
       >
         {tabs.map((tab, index) => {
           const composedChildId = `${id}-${index}`;
-          const { ariaControls, icon, label = composedChildId } = tab;
+          const {
+            ariaControls,
+            icon,
+            label = composedChildId,
+            value = composedChildId,
+            name = id,
+          } = tab;
           return (
             <div key={composedChildId}>
               <input
@@ -62,10 +73,17 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 aria-label={label}
                 defaultChecked={index === 0}
                 id={composedChildId}
-                name={id}
-                onChange={() => handleChange(label, index)}
+                name={name}
+                onChange={() =>
+                  handleChange({
+                    name,
+                    value,
+                    label,
+                    index,
+                  })
+                }
                 type="radio"
-                value={id}
+                value={value}
               />
               <label
                 ref={(element: HTMLLabelElement) =>
