@@ -55,7 +55,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   }
 
   const getTitle = (data?: AncestorsFields) => {
-    if (data?.navigationTitle) {
+    if (data?.navigationTitle?.value) {
       return data?.navigationTitle?.value;
     } else if (data?.abstractTitle) {
       return data?.abstractTitle?.value;
@@ -69,6 +69,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
       const title = getTitle(ancestor);
+
       return (
         <Link href={ancestor?.url?.path || ''} key={index}>
           {title}
@@ -80,5 +81,15 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   const title = getTitle(props.fields?.data?.contextItem);
   breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
 
-  return <Breadcrumbs children={breadcrumbList} />;
+  if (!props?.fields?.data?.contextItem?.ancestors?.length) {
+    return <></>;
+  }
+  return (
+    <Breadcrumbs
+      children={breadcrumbList?.slice(
+        0,
+        props?.fields?.data?.contextItem?.ancestors?.length - 1
+      )}
+    />
+  );
 };
