@@ -103,6 +103,7 @@
 
   .sticky {
     position: sticky;
+
     //  use calc to account for header
     top: calc($spacing-10 + px-to-rem(118));
   }
