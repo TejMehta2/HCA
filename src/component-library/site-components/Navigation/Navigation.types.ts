@@ -11,7 +11,7 @@ export interface TabContent {
     | 'Navigation Content Block'
     | 'Main Navigation Links List'
     | 'Navigation Blog Post Card';
-  heading?: string;
+  heading?: JSX.Element;
   description?: JSX.Element;
   date?: JSX.Element;
   tag?: JSX.Element;

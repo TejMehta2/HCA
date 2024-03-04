@@ -58,7 +58,7 @@ const meta: Meta<typeof Navigation> = {
 const serviceCard: TabContent = {
   variation: 'single',
   template: 'Navigation Content Block',
-  heading: 'Featured Scan',
+  heading: <>Featured Scan</>,
   description: (
     <Text tag="p" variation="body-medium">
       Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
@@ -74,7 +74,7 @@ const serviceCard: TabContent = {
 };
 const blogCard: TabContent = {
   template: 'Navigation Blog Post Card',
-  heading: 'Test or scan related blog article',
+  heading: <a href="#">Test or scan related blog article</a>,
   description: (
     <Text tag="p" variation="body-medium">
       Ea et ea voluptate culpa laborum qui. Enim eiusmod qui ullamco aute anim.
@@ -127,7 +127,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Navigation Content Block',
             variation: 'double',
-            heading: 'Services & Treatments',
+            heading: <>Services & Treatments</>,
             description: (
               <Text variation="body-large">
                 Quis laboris proident sint amet id cillum do dolor in tempor
@@ -153,7 +153,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-narrow',
-            heading: 'Services lines',
+            heading: <>Services lines</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">Cancer Care</a>
@@ -189,7 +189,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-narrow',
-            heading: 'GP Services & Urgent Care',
+            heading: <>GP Services & Urgent Care</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">GP Services</a>
@@ -222,7 +222,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-narrow',
-            heading: 'Treatments',
+            heading: <>Treatments</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">Cancer Care</a>
@@ -271,7 +271,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'double',
-            heading: 'Tests & Scans',
+            heading: <>Tests & Scans</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">CT Scans</a>
@@ -343,7 +343,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'double',
-            heading: 'Our locations',
+            heading: <>Our locations</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">The Harley Street Clinic</a>
@@ -403,7 +403,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-wide',
-            heading: 'Patient Information',
+            heading: <>Patient Information</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">The Harley Street Clinic</a>
@@ -436,7 +436,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-wide',
-            heading: 'Other Information',
+            heading: <>Other Information</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">Visitor Information</a>
