@@ -4,6 +4,8 @@ import {
   ImageFieldValue,
   Text as JssText,
   Image as JSSImage,
+  Placeholder,
+  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
@@ -22,6 +24,7 @@ interface Fields {
 
 type VideoPlayerProps = {
   params?: Params;
+  rendering: ComponentRendering;
   fields?: Fields;
 };
 
@@ -34,6 +37,7 @@ const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
 );
 
 export const Default = (props: VideoPlayerProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
@@ -51,6 +55,10 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
       <br />
       <JSSImage field={props.fields?.VideoThumbnail} />
       <br />
+      <Placeholder
+        name={phKey}
+        rendering={props.rendering}
+      />
     </div>
   );
 };
