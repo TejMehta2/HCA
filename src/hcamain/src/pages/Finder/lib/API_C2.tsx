@@ -94,8 +94,12 @@ export async function getLDBConsultantDetails(
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
   const config = !serviceURL && !headerKey ? await getC2Config() : null;
-  const followOnFrag = isFollowOnAppointment ? `followonappointment=yes` : `initialappointment=yes`;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL}&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
+  const followOnFrag = isFollowOnAppointment
+    ? `followonappointment=yes`
+    : `initialappointment=yes`;
+  const requestURL = `${
+    serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
+  }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
 
   let returnData: string = '';
@@ -116,9 +120,7 @@ export async function getLDBConsultantDetails(
     } else {
       //C2 call failed
       returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(
-        `getLDBConsultantDetails failed with error ${returnData}`
-      );
+      console.error(`getLDBConsultantDetails failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
@@ -138,7 +140,7 @@ export async function getLDBConsultantSlots(
   DateTo: string, // 2024-07-13
   isFollowOnAppointment: boolean, // true if follow up false if initial
   ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
-  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129  
+  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   HCAConsultantId?: string, // or e.g. ConsultantGUID 4066576
   LocationId?: string, // or LocationGUID e.g.COCLB
   serviceURL?: string,
@@ -146,14 +148,22 @@ export async function getLDBConsultantSlots(
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
   const config = !serviceURL && !headerKey ? await getC2Config() : null;
-  const followOnFrag = isFollowOnAppointment ? `followonappointment=yes` : `initialappointment=yes`;
-  const fragConsultant = ConsultantGUID ? `ConsultantGUID=${ConsultantGUID}` :  `HCAConsultantId=${HCAConsultantId}`;
-  const fragLocation = LocationGUID ? `LocationGUID=${LocationGUID}` :  `LocationId=${LocationId}`;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL}&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
+  const followOnFrag = isFollowOnAppointment
+    ? `followonappointment=yes`
+    : `initialappointment=yes`;
+  const fragConsultant = ConsultantGUID
+    ? `ConsultantGUID=${ConsultantGUID}`
+    : `HCAConsultantId=${HCAConsultantId}`;
+  const fragLocation = LocationGUID
+    ? `LocationGUID=${LocationGUID}`
+    : `LocationId=${LocationId}`;
+  const requestURL = `${
+    serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
+  }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantSlots_Header}`;
-  
+
   let returnData: string = '';
-  
+
   try {
     // very light cache on these requests they contain time sensitive data
     const res = await fetch(requestURL, {
@@ -170,9 +180,7 @@ export async function getLDBConsultantSlots(
     } else {
       //C2 call failed
       returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(
-        `getLDBConsultantSlots failed with error ${returnData}`
-      );
+      console.error(`getLDBConsultantSlots failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
@@ -183,38 +191,37 @@ export async function getLDBConsultantSlots(
   return returnData;
 }
 
-interface ILDBDemographics
-{
-    previouslyBeenWithHCA: boolean;
-    title: string;
-    firstName: string;
-    lastName: string;
-    gender: string;
-    dateOfBirth: string;
-    email: string;
-    phone: string;
-    address1: string;
-    address2: string;
-    towncity: string;
-    postcode: string;
-    country: string;
-    marketingPreferenceEmail: boolean;
-    marketingPreferencePhone: boolean;
-    marketingPreferenceSMS: boolean;
-    marketingPreferencePost: boolean;
-    selectedSpeciality : string;
-    datesCannotDo : string;
-    representativeTitle :string;
-    representativeFirstName : string;
-    representativeLastName : string;
-    representativeRelation : string;
-    representativeEmail : string;
-    representativePhone : string;
-    bookingBy : string;
-    paidBy : string;
-    insuranceProvider : string;
-    insurancePolicyNumber : string;
-    insuranceAuthorisationCode : string;
+interface ILDBDemographics {
+  previouslyBeenWithHCA: boolean;
+  title: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  dateOfBirth: string;
+  email: string;
+  phone: string;
+  address1: string;
+  address2: string;
+  towncity: string;
+  postcode: string;
+  country: string;
+  marketingPreferenceEmail: boolean;
+  marketingPreferencePhone: boolean;
+  marketingPreferenceSMS: boolean;
+  marketingPreferencePost: boolean;
+  selectedSpeciality: string;
+  datesCannotDo: string;
+  representativeTitle: string;
+  representativeFirstName: string;
+  representativeLastName: string;
+  representativeRelation: string;
+  representativeEmail: string;
+  representativePhone: string;
+  bookingBy: string;
+  paidBy: string;
+  insuranceProvider: string;
+  insurancePolicyNumber: string;
+  insuranceAuthorisationCode: string;
 }
 
 /*
@@ -231,7 +238,7 @@ export async function LDBMakeBooking(
   demographics: ILDBDemographics, // demographics of the patient
   reasonForAppointment: string, // free format reason for the appointment
   ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
-  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129  
+  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   HCAConsultantId?: string, // or e.g. ConsultantGUID 4066576
   LocationId?: string, // or LocationGUID e.g.COCLB
   serviceURL?: string,
@@ -239,12 +246,20 @@ export async function LDBMakeBooking(
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
   const config = !serviceURL && !headerKey ? await getC2Config() : null;
-  const fragFollowOn = isFollowOnAppointment ? `"initialappointment": null, "followonappointment": "yes"` : `"initialappointment": "yes", "followonappointment": null`;
-  const fragConsultant = ConsultantGUID ? `"ConsultantGUID": "${ConsultantGUID}"` :  `"HCAConsultantId": "${HCAConsultantId}"`;
-  const fragLocation = LocationGUID ? `"LocationGUID": "${LocationGUID}"` :  `"FacilityId": "${LocationId}"`;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL}`;
+  const fragFollowOn = isFollowOnAppointment
+    ? `"initialappointment": null, "followonappointment": "yes"`
+    : `"initialappointment": "yes", "followonappointment": null`;
+  const fragConsultant = ConsultantGUID
+    ? `"ConsultantGUID": "${ConsultantGUID}"`
+    : `"HCAConsultantId": "${HCAConsultantId}"`;
+  const fragLocation = LocationGUID
+    ? `"LocationGUID": "${LocationGUID}"`
+    : `"FacilityId": "${LocationId}"`;
+  const requestURL = `${
+    serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
+  }`;
   const header = `${headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header}`;
-  
+
   let returnData: string = '';
 
   const demographicsString = JSON.stringify(demographics);
@@ -254,7 +269,7 @@ export async function LDBMakeBooking(
   ${fragLocation},
   "dateFrom": "${dateFrom}",
   ${fragFollowOn},
-  "patientCode" : ${patientCode ? "${patientCode}" : null},
+  "patientCode" : ${patientCode ? '${patientCode}' : null},
   "demographics": ${demographicsString},
   "visitReasonDetails": {
       "reasonForAppointment": "${reasonForAppointment}"
@@ -278,9 +293,7 @@ export async function LDBMakeBooking(
     } else {
       //C2 call failed
       returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(
-        `LDBMakeBooking failed with error ${returnData}`
-      );
+      console.error(`LDBMakeBooking failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
