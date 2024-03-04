@@ -22,7 +22,7 @@ const ConsultantFees = (props: ConsultantFeesProps): JSX.Element => {
               {props.followUpAppointmentFees}
             </Text>
           )}
-        {!props.followUpAppointmentFees && !props.followUpAppointmentFees && (
+        {!props.followUpAppointmentFees && !props.newAppointmentFees && (
           <Text tag="p" variation="body-extra-large">
             {props.noFeesInfo}
           </Text>
