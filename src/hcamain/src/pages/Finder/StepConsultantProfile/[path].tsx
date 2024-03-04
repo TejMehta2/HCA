@@ -23,7 +23,7 @@ import NotFound from 'src/NotFound';
 import {
   // checkIfLiveBookingIsAvailable,
   getActiveConsultantSlugs,
-} from '../lib/API_HCA';
+} from '../../../lib/consultant-finder/API_HCA';
 
 const SitecorePage = ({
   notFound,

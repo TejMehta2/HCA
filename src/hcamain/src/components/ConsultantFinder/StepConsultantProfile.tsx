@@ -24,12 +24,12 @@ import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 // import { useSearchParams } from 'next/navigation';
-import { getLDBFirstAppointmentData as getLDBFirstAppointmentData } from 'src/pages/Finder/lib/API_C2';
-import { checkIfLiveBookingIsAvailable } from 'src/pages/Finder/lib/API_HCA';
+import { getLDBFirstAppointmentData as getLDBFirstAppointmentData } from 'lib/consultant-finder/API_C2';
+import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_HCA';
 import {
   getSpecialistProfileData,
   isErrorWithProfileData,
-} from 'src/pages/Finder/lib/API_Doctify';
+} from 'lib/consultant-finder/API_Doctify';
 import Container from '@component-library/foundation/Containers/Container';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
