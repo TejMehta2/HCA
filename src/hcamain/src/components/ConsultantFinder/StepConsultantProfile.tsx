@@ -207,7 +207,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const handleTabClick = (label: any) => {
     // Determine which ref to use based on the label
     let ref: any;
-    switch (label) {
+    switch (label.label) {
       case 'About':
         ref = aboutRef;
         break;
@@ -300,7 +300,7 @@ export const Default = (props: StepProps): JSX.Element => {
             <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
           </Breadcrumbs>
           <MobileTabs>
-            <Themes theme={'F-HCA-White'}>
+            <Themes theme={'A-HCA-White'}>
               <Tabs
                 callback={(label) => {
                   console.log(label);
@@ -351,7 +351,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 props?.fields?.ExperienceText?.value || 'years of experience'
               }
             >
-              <Themes theme={'F-HCA-White'}>
+              <Themes theme={'A-HCA-White'}>
                 <Tabs
                   callback={(label) => {
                     console.log(label);

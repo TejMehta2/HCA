@@ -67,7 +67,7 @@
     @include media(screen-l) {
       display: block;
       margin: $spacing-7 0 0 0;
-      border-bottom: 1px solid #adb4bf;
+      border-bottom: 1px solid $navy-blue-30;
       padding: 0 $spacing-14 $spacing-2;
       width: calc(100% + (2 * $spacing-14));
       margin-left: calc(-1 * $spacing-14);

@@ -3,7 +3,7 @@
 
 .tabs {
   display: block;
-  border-bottom: 1px solid #adb4bf;
+  border-bottom: 1px solid $navy-blue-30;
 
   @include media(screen-l) {
     display: none;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import Tabs from '../../core-components/Tabs/Tabs';
 import Themes from '../../foundation/Themes/Themes';
@@ -21,10 +22,11 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
     }
   }, []);
 
-  const handleTabChange = (label: string) => {
-    if (label === 'Patient Reviews') {
+  const handleTabChange = (label: any) => {
+    console.log(label);
+    if (label.label === 'Patient Reviews') {
       setTypeOfReviews('patient');
-    } else if (label === 'Peer Reviews') {
+    } else if (label.label === 'Peer Reviews') {
       setTypeOfReviews('peer');
     }
   };
@@ -63,9 +65,9 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
     <div>
       {consultantSlug && (
         <div>
-          <Themes theme={'F-HCA-White'}>
+          <Themes theme={'A-HCA-White'}>
             <Tabs
-              callback={handleTabChange}
+              callback={(label) => handleTabChange(label)}
               tabs={[
                 {
                   label: 'Patient Reviews',
