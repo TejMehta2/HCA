@@ -53,6 +53,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
   }
   return (
     <VideoBlock
+      theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
           subtitle={
