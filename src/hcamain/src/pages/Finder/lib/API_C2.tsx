@@ -64,17 +64,229 @@ export async function getLDBFirstAppointmentData(
         firstAppointmentData = result.availability[0];
       }
     } else {
-      //docitfy call failed
+      //C2 call failed
       firstAppointmentData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
       console.error(
-        `LDB_FirstAppointment failed with error ${firstAppointmentData}`
+        `getLDBFirstAppointmentData failed with error ${firstAppointmentData}`
       );
     }
   } catch (e) {
-    //docitfy call threw
-    firstAppointmentData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching LDB_FirstAppointment, please retry"}`;
-    console.error(`LDB_FirstAppointment failed with exception ${e}`);
+    //C2 call threw
+    firstAppointmentData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    console.error(`getLDBFirstAppointmentData failed with exception ${e}`);
   }
 
   return firstAppointmentData;
+}
+
+/*
+The Consultant Details API is fed a consultant GMC number, and the appointment type required (initial or 
+follow on). It returns basic details around the consultant, and a list of the consultant’s availability at the HCA 
+facilities (if any) with the first available time included for each location. It is expected that the caller should 
+store the GUIDs for the consultant (CRMID), and facility (facilityCRMID), and the HCA facility location 
+(facilityLocation) which will be passed and used on further calls.
+*/
+export async function getLDBConsultantDetails(
+  GMCNumber: string, // or 4066576
+  isFollowOnAppointment: boolean, // true if follow up false if initial
+  serviceURL?: string,
+  headerKey?: string
+): Promise<any> {
+  // preference is passed params, otherwise get from settings
+  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const followOnFrag = isFollowOnAppointment ? `followonappointment=yes` : `initialappointment=yes`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL}&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
+  const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
+
+  let returnData: string = '';
+
+  try {
+    // very light cache on these requests they contain time sensitive data
+    const res = await fetch(requestURL, {
+      method: 'get',
+      headers: {
+        'content-type': 'application/json',
+        securitytoken: `"${header}"`,
+      },
+      cache: 'force-cache',
+      next: { revalidate: 10 },
+    });
+    if (res.ok) {
+      returnData = await res.json();
+    } else {
+      //C2 call failed
+      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.error(
+        `getLDBConsultantDetails failed with error ${returnData}`
+      );
+    }
+  } catch (e) {
+    //C2 call threw
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantDetails, please retry"}`;
+    console.error(`getLDBConsultantDetails failed with exception ${e}`);
+  }
+
+  return returnData;
+}
+
+/*
+The Consultant Availability API is used to discover the available slots for a given consultant at a given 
+facility location for a given date range.
+*/
+export async function getLDBConsultantSlots(
+  DateFrom: string, // 2024-07-12
+  DateTo: string, // 2024-07-13
+  isFollowOnAppointment: boolean, // true if follow up false if initial
+  ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
+  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129  
+  HCAConsultantId?: string, // or e.g. ConsultantGUID 4066576
+  LocationId?: string, // or LocationGUID e.g.COCLB
+  serviceURL?: string,
+  headerKey?: string
+): Promise<any> {
+  // preference is passed params, otherwise get from settings
+  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const followOnFrag = isFollowOnAppointment ? `followonappointment=yes` : `initialappointment=yes`;
+  const fragConsultant = ConsultantGUID ? `ConsultantGUID=${ConsultantGUID}` :  `HCAConsultantId=${HCAConsultantId}`;
+  const fragLocation = LocationGUID ? `LocationGUID=${LocationGUID}` :  `LocationId=${LocationId}`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL}&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
+  const header = `${headerKey ?? config?.aPI_C2_GetConsultantSlots_Header}`;
+  
+  let returnData: string = '';
+  
+  try {
+    // very light cache on these requests they contain time sensitive data
+    const res = await fetch(requestURL, {
+      method: 'get',
+      headers: {
+        'content-type': 'application/json',
+        securitytoken: `"${header}"`,
+      },
+      cache: 'force-cache',
+      next: { revalidate: 10 },
+    });
+    if (res.ok) {
+      returnData = await res.json();
+    } else {
+      //C2 call failed
+      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.error(
+        `getLDBConsultantSlots failed with error ${returnData}`
+      );
+    }
+  } catch (e) {
+    //C2 call threw
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantSlots, please retry"}`;
+    console.error(`getLDBConsultantSlots failed with exception ${e}`);
+  }
+
+  return returnData;
+}
+
+interface ILDBDemographics
+{
+    previouslyBeenWithHCA: boolean;
+    title: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    dateOfBirth: string;
+    email: string;
+    phone: string;
+    address1: string;
+    address2: string;
+    towncity: string;
+    postcode: string;
+    country: string;
+    marketingPreferenceEmail: boolean;
+    marketingPreferencePhone: boolean;
+    marketingPreferenceSMS: boolean;
+    marketingPreferencePost: boolean;
+    selectedSpeciality : string;
+    datesCannotDo : string;
+    representativeTitle :string;
+    representativeFirstName : string;
+    representativeLastName : string;
+    representativeRelation : string;
+    representativeEmail : string;
+    representativePhone : string;
+    bookingBy : string;
+    paidBy : string;
+    insuranceProvider : string;
+    insurancePolicyNumber : string;
+    insuranceAuthorisationCode : string;
+}
+
+/*
+This endpoint will create a Diary Booking in the CRM for the Consultant in a Pending state.  
+The Diary Booking will also be placed on the Booking Queue so it can be actioned by the team.  
+The Pending state reflects that the Diary Booking needs to be processed to Meditech by one of the team members.  
+The Team members will pick a Diary Booking off the Queue and once processed will 
+update the status to a relevant status e.g. Confirmed or Cancelled.  
+*/
+export async function LDBMakeBooking(
+  patientCode: string | null, // patient X number
+  dateFrom: string, // e.g. 2023-08-29T10:30:00
+  isFollowOnAppointment: boolean, // true if follow up false if initial
+  demographics: ILDBDemographics, // demographics of the patient
+  reasonForAppointment: string, // free format reason for the appointment
+  ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
+  LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129  
+  HCAConsultantId?: string, // or e.g. ConsultantGUID 4066576
+  LocationId?: string, // or LocationGUID e.g.COCLB
+  serviceURL?: string,
+  headerKey?: string
+): Promise<any> {
+  // preference is passed params, otherwise get from settings
+  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const fragFollowOn = isFollowOnAppointment ? `"initialappointment": null, "followonappointment": "yes"` : `"initialappointment": "yes", "followonappointment": null`;
+  const fragConsultant = ConsultantGUID ? `"ConsultantGUID": "${ConsultantGUID}"` :  `"HCAConsultantId": "${HCAConsultantId}"`;
+  const fragLocation = LocationGUID ? `"LocationGUID": "${LocationGUID}"` :  `"FacilityId": "${LocationId}"`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL}`;
+  const header = `${headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header}`;
+  
+  let returnData: string = '';
+
+  const demographicsString = JSON.stringify(demographics);
+
+  const body = `
+  ${fragConsultant},
+  ${fragLocation},
+  "dateFrom": "${dateFrom}",
+  ${fragFollowOn},
+  "patientCode" : ${patientCode ? "${patientCode}" : null},
+  "demographics": ${demographicsString},
+  "visitReasonDetails": {
+      "reasonForAppointment": "${reasonForAppointment}"
+  }
+  `;
+
+  try {
+    // very light cache on these requests they contain time sensitive data
+    const res = await fetch(requestURL, {
+      method: 'post',
+      body: body,
+      headers: {
+        'content-type': 'application/json',
+        securitytoken: `"${header}"`,
+      },
+      cache: 'force-cache',
+      next: { revalidate: 10 },
+    });
+    if (res.ok) {
+      returnData = await res.json();
+    } else {
+      //C2 call failed
+      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.error(
+        `LDBMakeBooking failed with error ${returnData}`
+      );
+    }
+  } catch (e) {
+    //C2 call threw
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+    console.error(`LDBMakeBooking failed with exception ${e}`);
+  }
+
+  return returnData;
 }
