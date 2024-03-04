@@ -19,7 +19,6 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log('use effect');
     axios
       .get(
         `https://api.doctify.com/api/hca/specialists/${props.slug}/reviews?limit=2&offset=${offset}&order=${selectValue}`
