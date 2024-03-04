@@ -3,7 +3,7 @@ import { SidePanelProps } from './SidePanel.types';
 import styles from './SidePanel.module.scss';
 
 const SidePanel = (props: SidePanelProps): JSX.Element => {
-  const { children, isSticky } = props;
+  const { children, isSticky, isMobile } = props;
   const [headerHeight, setHeaderHeight] = useState(0);
 
   useEffect(() => {
@@ -28,9 +28,12 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
   }, [isSticky]);
 
   const marginTop = isSticky ? headerHeight : 0;
+  const className = !isMobile
+    ? styles['side-panel']
+    : `${styles['side-panel']} ${styles['side-panel-mobile']}`;
 
   return (
-    <div className={`${styles['side-panel']}`} style={{ top: marginTop }}>
+    <div className={className} style={{ top: marginTop }}>
       {children}
     </div>
   );

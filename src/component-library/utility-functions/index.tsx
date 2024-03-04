@@ -65,3 +65,18 @@ export const formatDate = (dateToFormat: string) => {
 
   return date;
 };
+
+// format time to GB fomat: Day of the Week, Short Month: Wed, Mar 27
+export const formatDateShort = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const options: object = {
+    weekday: 'short',
+    month: 'short',
+    day: '2-digit',
+  };
+
+  const formattedDate = date.toLocaleDateString('en-US', options);
+
+  return formattedDate;
+};

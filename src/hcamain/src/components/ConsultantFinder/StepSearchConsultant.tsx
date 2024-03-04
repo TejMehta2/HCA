@@ -34,7 +34,8 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   PopularConsultantsList: any;
-  SearchIcon: any;
+  SearchIconSearchBar: any;
+  SearchIconResults: any;
   SearchPlaceholderText: Field<string>;
   SearchConsultantsResultsHeaderText: Field<string>;
   API_Autocomplete_LoadingMsg: Field<string>;
@@ -124,7 +125,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 'No matches found, please try typing something else.'
               }
               searchIcon={
-                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+                props?.fields?.SearchIconSearchBar?.fields?.SvgMarkup?.value || null
+              }
+              searchIconResults={
+                props?.fields?.SearchIconResults?.fields?.SvgMarkup?.value || null
               }
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}

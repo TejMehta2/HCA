@@ -7,4 +7,8 @@
 
   // new color
   border-bottom: 1px solid #adb4bf;
+
+  &-no-border-bottom {
+    border-bottom: none;
+  }
 }

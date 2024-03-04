@@ -21,4 +21,12 @@
   button {
     margin-bottom: $spacing-2;
   }
+
+  &-mobile {
+    display: block;
+
+    @include media(screen-l) {
+      display: none;
+    }
+  }
 }

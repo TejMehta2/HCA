@@ -6,7 +6,7 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
   GetStaticComponentProps,
@@ -42,7 +42,6 @@ import ProfilePageSection from '@component-library/consultant-finder/ProfilePage
 import ProfilePageHeader from '@component-library/consultant-finder/ProfilePageHeader/ProfilePageHeader';
 import About from '@component-library/consultant-finder/About/About';
 import DataComponentSimple from '@component-library/consultant-finder/DataComponentSimple/DataComponentSimple';
-import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 import TreatmentsConditions from '@component-library/consultant-finder/TreatmentsConditions/TreatmentsConditions';
 import ConsultantFees from '@component-library/consultant-finder/ConsultantFees/ConsultantFees';
 import OverallRating from '@component-library/consultant-finder/OverallRating/OverallRating';
@@ -50,7 +49,11 @@ import Locations from '@component-library/consultant-finder/Locations/Locations'
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Themes from '@component-library/foundation/Themes/Themes';
 import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
-import { yearsExperience } from '@component-library/utility-functions/index';
+import {
+  capitalizeFirstLetter,
+  yearsExperience,
+  formatDateShort,
+} from '@component-library/utility-functions/index';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -60,7 +63,7 @@ interface Fields {
   BookOnlineLink: LinkField;
   BackFromAdvSearchLink: LinkField;
   BackFromFindByConsultantLink: LinkField;
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
+  Breadcrumb: Field<string>;
   TitleText: Field<string>;
   CardImage: ImageField;
   StartLink: LinkField;
@@ -174,16 +177,73 @@ export const Default = (props: StepProps): JSX.Element => {
     'Is live diaries consultant:',
     serverSideData?.IsLiveDiaryConsultant
   );
-  console.log('first appointment:', serverSideData?.FirstAppointment);
+
+  console.log('fist appointment:', serverSideData?.FirstAppointment);
+  console.log(
+    'initial appointment:',
+    serverSideData?.FirstAppointment?.initial_appointment
+  );
+  console.log(
+    'follow up appointment:',
+    serverSideData?.FirstAppointment?.follow_appointment
+  );
+
+  console.log(
+    'formatted first appointment',
+    formatDateShort(serverSideData?.FirstAppointment?.initial_appointment)
+  );
+  console.log(
+    'formatted follow up appointment',
+    formatDateShort(serverSideData?.FirstAppointment?.follow_appointment)
+  );
+
+  // Refs for each tab section
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const locationsRef = useRef<HTMLDivElement>(null);
+  const feesRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+
+  // Callback function to handle tab clicks
+  const handleTabClick = (label: any) => {
+    // Determine which ref to use based on the label
+    let ref: any;
+    switch (label) {
+      case 'About':
+        ref = aboutRef;
+        break;
+      case 'Locations':
+        ref = locationsRef;
+        break;
+      case 'Fees':
+        ref = feesRef;
+        break;
+      case 'Reviews':
+        ref = reviewsRef;
+        break;
+      default:
+        break;
+    }
+
+    // Scroll to the section if ref exists
+    if (ref && ref.current) {
+      console.log('ref', ref);
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    } else {
+      console.log('Ref not found or not initialized'); // Debugging check
+    }
+  };
 
   /*
   // example client side get first appointment call
   getLDBFirstAppointmentData( "4113571", 
-                              props.fields.API_C2_FirstAppointment_BaseURL.value, 
-                              props.fields.API_C2_FirstAppointment_Header.value)
-                              .then(res=>
-                                {  console.log('first appointment client side:', res);
-                                });*/
+  props.fields.API_C2_FirstAppointment_BaseURL.value, 
+  props.fields.API_C2_FirstAppointment_Header.value)
+  .then(res=>
+    {  console.log('first appointment client side:', res);
+    });*/
 
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
@@ -229,14 +289,23 @@ export const Default = (props: StepProps): JSX.Element => {
         {/* top section */}
         <div>
           <Breadcrumbs>
-            <a href="#">Consultant Finder</a>
-            {topSpecialty[0]?.name && <a href="#">{topSpecialty[0]?.name}</a>}
+            <Link href="/Finder/Step-Intro">
+              {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
+            </Link>
+            {topSpecialty[0]?.name && (
+              <Link href={`/Finder/{topSpecialty[0]?.name}`}>
+                {topSpecialty[0]?.name}
+              </Link>
+            )}
             <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
           </Breadcrumbs>
           <MobileTabs>
             <Themes theme={'F-HCA-White'}>
               <Tabs
-                callback={() => {}}
+                callback={(label) => {
+                  console.log(label);
+                  handleTabClick(label);
+                }}
                 tabs={[
                   {
                     icon: 'iconBook',
@@ -284,7 +353,10 @@ export const Default = (props: StepProps): JSX.Element => {
             >
               <Themes theme={'F-HCA-White'}>
                 <Tabs
-                  callback={() => {}}
+                  callback={(label) => {
+                    console.log(label);
+                    handleTabClick(label);
+                  }}
                   tabs={[
                     {
                       icon: 'iconBook',
@@ -309,66 +381,66 @@ export const Default = (props: StepProps): JSX.Element => {
                 />
               </Themes>
             </ProfilePageHeader>
-            <ProfilePageSection>
+            <SidePanel isMobile={true}>
+              <Reviews
+                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
+                doctifyText={props?.fields?.DoctifyText?.value || 'Reviewed By'}
+                hasDoctifyBranding={true}
+                isConsultantProfileReviews={true}
+                reviewsCount={
+                  serverSideData?.ProfileJson?.review?.overallExperience
+                }
+                reviewsText="Patients"
+                reviewsTotal={
+                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                }
+                noReviewsMsg={
+                  'This consultant does not have any reviews at the moment.'
+                }
+                titleText={
+                  props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
+                }
+              />
+              {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                serverSideData?.FirstAppointment?.initial_appointment &&
+                serverSideData?.FirstAppointment?.follow_appointment && (
+                  <>
+                    <InfoBox
+                      backgroundColour="green"
+                      icon={null}
+                      isShortInfo={true}
+                      shortText={`${
+                        props?.fields?.NextInitialAppointmentText?.value ||
+                        'Next initial appointment'
+                      } ${formatDateShort(
+                        serverSideData?.FirstAppointment?.initial_appointment
+                      )}`}
+                    />
+                    <InfoBox
+                      backgroundColour="orange"
+                      icon={null}
+                      isShortInfo={true}
+                      shortText={`${
+                        props?.fields?.NextFollowOnAppointmentText?.value ||
+                        'Next follow up appointment'
+                      } ${formatDateShort(
+                        serverSideData?.FirstAppointment?.follow_appointment
+                      )}`}
+                    />
+                    <Text tag="p" variation="body-small">
+                      {`${
+                        props?.fields?.LastCheckedText?.value || 'Last checked:'
+                      }
+                1 min ago`}
+                    </Text>
+                  </>
+                )}
+            </SidePanel>
+            <ProfilePageSection ref={aboutRef}>
               <About
                 title={props?.fields?.AboutHeadingText?.value || 'About'}
                 description={serverSideData?.ProfileJson?.about || ''}
-              >
-                <SidePanel>
-                  <Reviews
-                    doctifyLogo={
-                      <JssImage field={props.fields.DoctifyLogoImage} />
-                    }
-                    doctifyText={
-                      props?.fields?.DoctifyText?.value || 'Reviewed By'
-                    }
-                    hasDoctifyBranding={true}
-                    isConsultantProfileReviews={true}
-                    reviewsCount={
-                      serverSideData?.ProfileJson?.review?.overallExperience
-                    }
-                    reviewsText="Patients"
-                    reviewsTotal={
-                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
-                    }
-                    noReviewsMsg={
-                      'This consultant does not have any reviews at the moment.'
-                    }
-                    titleText={
-                      props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
-                    }
-                  />
-                  {serverSideData?.ProfileJson?.isLiveDiaryConsultant && (
-                    <>
-                      <InfoBox
-                        backgroundColour="green"
-                        icon={null}
-                        isShortInfo={true}
-                        shortText={`${
-                          props?.fields?.NextInitialAppointmentText?.value ||
-                          'Next initial appointment'
-                        } on Fri, Oct 28`}
-                      />
-                      <InfoBox
-                        backgroundColour="orange"
-                        icon={null}
-                        isShortInfo={true}
-                        shortText={`${
-                          props?.fields?.FollowUpAppointmentText?.value ||
-                          'Next follow up appointment'
-                        } on Fri, Oct 28`}
-                      />
-                      <Text tag="p" variation="body-small">
-                        {`${
-                          props?.fields?.LastCheckedText?.value ||
-                          'Last checked:'
-                        }
-                1 min ago`}
-                      </Text>
-                    </>
-                  )}
-                </SidePanel>
-              </About>
+              ></About>
             </ProfilePageSection>
             {subSpecialtiesData.length > 0 && (
               <ProfilePageSection>
@@ -412,7 +484,7 @@ export const Default = (props: StepProps): JSX.Element => {
               ></DataComponentSimple>
             </ProfilePageSection>
             {/* No fees check */}
-            <ProfilePageSection>
+            <ProfilePageSection ref={feesRef}>
               <ConsultantFees
                 title={
                   props?.fields?.ConsultationFeesHeadingText?.value ||
@@ -466,7 +538,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   ></DataComponentSimple>
                 </ProfilePageSection>
               )}
-            <ProfilePageSection>
+            <ProfilePageSection ref={locationsRef}>
               <Locations
                 title={
                   props?.fields?.LocationsHeadingText?.value || 'Locations'
@@ -481,34 +553,36 @@ export const Default = (props: StepProps): JSX.Element => {
                 }
               ></Locations>
             </ProfilePageSection>
-            <OverallRating
-              title={props?.fields?.ReviewsHeadingText?.value || 'Reviews'}
-              subtitle={
-                props?.fields?.OverallRatingSubHeadingText?.value ||
-                'Overall Rating'
-              }
-              overallExperienceLabel={
-                props?.fields?.OverallExperienceCategoryText?.value ||
-                'Overall experience'
-              }
-              personalCareLabel={
-                props?.fields?.PersonalCareReceivedCategoryText?.value ||
-                'Personal care received'
-              }
-              explanationLabel={
-                props?.fields?.ExplainationOfCareCategoryText?.value ||
-                'Explanation of care provided'
-              }
-              overallExperience={
-                serverSideData?.ProfileJson?.review?.overallExperience || 0
-              }
-              overalCare={
-                serverSideData?.ProfileJson?.review?.bedsideManner || 0
-              }
-              explanation={
-                serverSideData?.ProfileJson?.review?.explanation || 0
-              }
-            ></OverallRating>
+            <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
+              <OverallRating
+                title={props?.fields?.ReviewsHeadingText?.value || 'Reviews'}
+                subtitle={
+                  props?.fields?.OverallRatingSubHeadingText?.value ||
+                  'Overall Rating'
+                }
+                overallExperienceLabel={
+                  props?.fields?.OverallExperienceCategoryText?.value ||
+                  'Overall experience'
+                }
+                personalCareLabel={
+                  props?.fields?.PersonalCareReceivedCategoryText?.value ||
+                  'Personal care received'
+                }
+                explanationLabel={
+                  props?.fields?.ExplainationOfCareCategoryText?.value ||
+                  'Explanation of care provided'
+                }
+                overallExperience={
+                  serverSideData?.ProfileJson?.review?.overallExperience || 0
+                }
+                overalCare={
+                  serverSideData?.ProfileJson?.review?.bedsideManner || 0
+                }
+                explanation={
+                  serverSideData?.ProfileJson?.review?.explanation || 0
+                }
+              ></OverallRating>
+            </ProfilePageSection>
             {/* iframe with patient and peer reviews */}
             <iframe
               src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
@@ -543,34 +617,40 @@ export const Default = (props: StepProps): JSX.Element => {
                   props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                 }
               />
-              {serverSideData?.ProfileJson?.isLiveDiaryConsultant && (
-                <>
-                  <InfoBox
-                    backgroundColour="green"
-                    icon={null}
-                    isShortInfo={true}
-                    shortText={`${
-                      props?.fields?.NextInitialAppointmentText?.value ||
-                      'Next initial appointment'
-                    } on Fri, Oct 28`}
-                  />
-                  <InfoBox
-                    backgroundColour="orange"
-                    icon={null}
-                    isShortInfo={true}
-                    shortText={`${
-                      props?.fields?.FollowUpAppointmentText?.value ||
-                      'Next follow up appointment'
-                    } on Fri, Oct 28`}
-                  />
-                  <Text tag="p" variation="body-small">
-                    {`${
-                      props?.fields?.LastCheckedText?.value || 'Last checked:'
-                    }
+              {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                serverSideData?.FirstAppointment?.initial_appointment &&
+                serverSideData?.FirstAppointment?.follow_appointment && (
+                  <>
+                    <InfoBox
+                      backgroundColour="green"
+                      icon={null}
+                      isShortInfo={true}
+                      shortText={`${
+                        props?.fields?.NextInitialAppointmentText?.value ||
+                        'Next initial appointment'
+                      } ${formatDateShort(
+                        serverSideData?.FirstAppointment?.initial_appointment
+                      )}`}
+                    />
+                    <InfoBox
+                      backgroundColour="orange"
+                      icon={null}
+                      isShortInfo={true}
+                      shortText={`${
+                        props?.fields?.NextFollowOnAppointmentText?.value ||
+                        'Next follow up appointment'
+                      } ${formatDateShort(
+                        serverSideData?.FirstAppointment?.follow_appointment
+                      )}`}
+                    />
+                    <Text tag="p" variation="body-small">
+                      {`${
+                        props?.fields?.LastCheckedText?.value || 'Last checked:'
+                      }
                 1 min ago`}
-                  </Text>
-                </>
-              )}
+                    </Text>
+                  </>
+                )}
               <Container marginTop="spacing-5">
                 {/* if consultant has live diaries then show 'book online' */}
                 {serverSideData?.IsLiveDiaryConsultant && (

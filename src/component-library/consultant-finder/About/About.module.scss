@@ -23,13 +23,4 @@
       margin-bottom: $spacing-4;
     }
   }
-
-  .reviews {
-    display: block;
-    margin-bottom: $spacing-7;
-
-    @include media(screen-l) {
-      display: none;
-    }
-  }
 }

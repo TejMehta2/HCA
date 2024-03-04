@@ -11,6 +11,7 @@ export default interface SearchProps {
   setSearchString?: React.Dispatch<React.SetStateAction<string>>;
   setKeywordId?: React.Dispatch<React.SetStateAction<number>>;
   searchIcon: any;
+  searchIconResults?: any;
   conditionsTreatmentsList?: any;
   specialitiesList?: any;
   searchStringConsultantName?: string;

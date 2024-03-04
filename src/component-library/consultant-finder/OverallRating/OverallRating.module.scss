@@ -2,8 +2,6 @@
 @use '../../utilities/index.module' as *;
 
 .overall-rating {
-  padding: $spacing-7 0;
-
   .reviews {
     display: flex;
     flex-wrap: wrap;
