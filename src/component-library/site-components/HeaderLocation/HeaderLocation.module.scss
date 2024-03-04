@@ -99,6 +99,10 @@
 .open {
   display: flex;
   gap: 0 px-to-rem(8);
+
+  svg {
+    min-width: min-content;
+  }
 }
 
 .location-wrapper {
