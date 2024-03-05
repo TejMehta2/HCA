@@ -80,7 +80,6 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     return <IntroBlockDefaultComponent {...props} />;
   }
 
-  console.log(props);
   const cta = props.fields?.CTALink && (
     <JSSLink field={props.fields?.CTALink}>
       {isExperienceEditor ? (
