@@ -17,8 +17,8 @@ Languages:
       Hint: __Created
       Value: 20231204T090958Z
     - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
-      Hint: Tags
-      Value: "{C631A9B1-127D-4DF1-892D-74BE147BC048}"
+      Hint: ArticleType
+      Value: 
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Blog Page 2
@@ -31,11 +31,11 @@ Languages:
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
-      Hint: Description
+      Hint: Text
       Value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a pellentesque lectus. Nunc efficitur consequat est imperdiet commodo. Pellentesque nec lacus vitae elit ornare lacinia non blandit sem. Nulla mollis commodo tristique. Cras at lorem turpis. Integer lobortis fringilla urna ac semper. Aliquam elementum, nisl sit amet ultrices sodales, sapien urna volutpat orci, sit amet porttitor mi lorem eget risus. Sed mattis magna id mi vehicula mattis. Suspendisse sed volutpat urna. Ut et lobortis metus. Pellentesque rhoncus nisi congue augue interdum, nec fringilla nisl mollis.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fc8fbfda-beda-4d5f-9eff-728114c23634"
+      Value: "066bf85e-14dc-4e4c-a0e5-92213c96a5a1"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -43,10 +43,10 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\alina.antemir@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231206T124223Z
+      Value: 20240305T173444Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retain CQC 'Outstanding' rating
