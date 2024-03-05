@@ -64,7 +64,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h1'}
+              tag={props.params?.HeadingTag || 'h2'}
               variation={props.params?.HeadingSize || 'display-2'}
             >
               <JssText field={props.fields?.Title} />
