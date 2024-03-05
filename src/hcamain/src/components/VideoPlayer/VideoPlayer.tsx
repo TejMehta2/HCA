@@ -35,7 +35,6 @@ type VideoPlayerProps = {
   params?: Params;
   rendering: ComponentRendering;
   fields?: Fields;
-  rendering?: ComponentRendering;
 };
 
 const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
