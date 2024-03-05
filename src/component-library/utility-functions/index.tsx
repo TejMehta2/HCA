@@ -67,7 +67,12 @@ export const formatDate = (dateToFormat: string) => {
 };
 
 // format time to GB fomat: Day of the Week, Short Month: Wed, Mar 27
-export const formatDateShort = (dateString: string) => {
+export const formatDateShort = (dateString: string | undefined) => {
+  // Check if dateString is undefined or null
+  if (!dateString) {
+    return ''; // or any default value you want to return
+  }
+
   const date = new Date(dateString);
 
   const options: object = {
