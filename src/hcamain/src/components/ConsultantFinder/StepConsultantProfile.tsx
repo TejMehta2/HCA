@@ -226,7 +226,6 @@ export const Default = (props: StepProps): JSX.Element => {
 
     // Scroll to the section if ref exists
     if (ref && ref.current) {
-      console.log('ref', ref);
       ref.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
