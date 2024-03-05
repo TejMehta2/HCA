@@ -52,7 +52,7 @@ import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTa
 import {
   capitalizeFirstLetter,
   yearsExperience,
-  formatDateShort,
+  // formatDateShort,
 } from '@component-library/utility-functions/index';
 
 interface Fields {
@@ -424,7 +424,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
                   />
-                  {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                  {/* {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     serverSideData?.FirstAppointment?.initial_appointment &&
                     serverSideData?.FirstAppointment?.follow_appointment && (
                       <>
@@ -459,7 +459,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 1 min ago`}
                         </Text>
                       </>
-                    )}
+                    )} */}
                 </SidePanel>
                 <ProfilePageSection ref={aboutRef}>
                   <About
@@ -664,7 +664,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
                   />
-                  {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                  {/* {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     serverSideData?.FirstAppointment?.initial_appointment &&
                     serverSideData?.FirstAppointment?.follow_appointment && (
                       <>
@@ -699,7 +699,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 1 min ago`}
                         </Text>
                       </>
-                    )}
+                    )} */}
                   <Container marginTop="spacing-5">
                     {/* if consultant has live diaries then show 'book online' */}
                     {serverSideData?.IsLiveDiaryConsultant && (
