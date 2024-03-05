@@ -23,10 +23,10 @@ Languages:
     - ID: "7e5ae1ed-f9e1-4159-944f-61c9ec66e767"
       Hint: BlogUrl
       Value: |
-        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?documenttype=" id="{969326B0-3955-48CF-8362-4120323DEC38}" />
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?articleTypeId=" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cab7e4f0-98b9-4626-80a8-28e5bc03e3ce"
+      Value: "2b09b4fa-2232-4e1c-b620-e2ce45baff3e"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -37,4 +37,4 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240229T075228Z
+      Value: 20240305T132801Z
