@@ -131,6 +131,14 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   // based on https://github.com/vercel/next.js/discussions/38061
   const slug = context?.params?.requestPath as string; // e.g. mr-andrew-goldberg
+
+  // Check if slug is defined
+  if (!slug) {
+    return {
+      notFound: true, // This will result in a 404 page being rendered
+    };
+  }
+
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
