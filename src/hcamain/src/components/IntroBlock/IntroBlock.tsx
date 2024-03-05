@@ -68,12 +68,19 @@ const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
   </div>
 );
 
-export const ImageLeft = (props: IntroBlockProps): JSX.Element => {
+interface ImageLeftProps extends IntroBlockProps {
+  imageAlignment: 'left' | 'right';
+}
+
+export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
+  const { imageAlignment = 'left' } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
+
+  console.log(props);
   const cta = props.fields?.CTALink && (
     <JSSLink field={props.fields?.CTALink}>
       {isExperienceEditor ? (
@@ -93,6 +100,7 @@ export const ImageLeft = (props: IntroBlockProps): JSX.Element => {
   }));
   return (
     <HomepageIntroBlock
+      imageAlignment={imageAlignment}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -140,5 +148,5 @@ export const ImageRight = (props: IntroBlockProps): JSX.Element => {
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
-  return <ImageLeft {...props} />;
+  return <ImageLeft {...props} imageAlignment="right" />;
 };
