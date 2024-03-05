@@ -3,6 +3,7 @@ import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 import Params from 'src/types/params';
+import Head from 'next/head';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -39,6 +40,44 @@ type BreadcrumbsProps = {
   fields?: Fields;
 };
 
+type BreadcrumbSchema = {
+  '@type': string;
+  position: number;
+  name: string | undefined;
+  item: string | undefined;
+}[];
+
+const getTitle = (data?: AncestorsFields) => {
+  if (data?.navigationTitle?.value) {
+    return data?.navigationTitle?.value;
+  } else if (data?.abstractTitle) {
+    return data?.abstractTitle?.value;
+  } else if (data?.displayName) {
+    return data?.displayName;
+  } else {
+    return data?.name;
+  }
+};
+
+const BreadcrumbSchema = (props: AncestorsFields[]): JSX.Element => {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [props],
+  };
+
+  console.log(props);
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </Head>
+  );
+};
+
 const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
   return (
     <div className={`component ${props.params?.styles}`}>
@@ -53,18 +92,6 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   if (!props.fields) {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
-
-  const getTitle = (data?: AncestorsFields) => {
-    if (data?.navigationTitle?.value) {
-      return data?.navigationTitle?.value;
-    } else if (data?.abstractTitle) {
-      return data?.abstractTitle?.value;
-    } else if (data?.displayName) {
-      return data?.displayName;
-    } else {
-      return data?.name;
-    }
-  };
 
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
@@ -87,5 +114,10 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <></>;
   }
 
-  return <Breadcrumbs children={breadcrumbList} />;
+  return (
+    <>
+      <BreadcrumbSchema {...props.fields?.data?.contextItem?.ancestors} />
+      <Breadcrumbs children={breadcrumbList} />
+    </>
+  );
 };
