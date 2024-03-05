@@ -193,7 +193,7 @@ export const Default = (props: StepProps): JSX.Element => {
     return <div>Profile is missing data, please retry later</div>;
   }
 
-  // console.log('consultant data,', serverSideData?.ProfileJson);
+  console.log('consultant data,', serverSideData?.ProfileJson);
   // //console.log('server side data from component props: ', serverSideData);
   // console.log(
   //   'Is live diaries consultant:',
