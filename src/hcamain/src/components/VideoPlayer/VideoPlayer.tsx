@@ -4,13 +4,13 @@ import {
   ImageFieldValue,
   Text as JssText,
   Image as JssImage,
-  useSitecoreContext,
+  Placeholder,
+  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import VideoBlock from '@component-library/site-components/VideoBlock/VideoBlock';
 import VideoPlayer from '@component-library/components/VideoPlayer/VideoPlayer';
-import TextButton from '@component-library/core-components/TextButton/TextButton';
-import Button from '@component-library/core-components/Button/Button';
+import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 
@@ -30,6 +30,7 @@ interface Fields {
 type VideoPlayerProps = {
   params?: Params;
   fields?: Fields;
+  rendering?: ComponentRendering;
 };
 
 const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
@@ -41,8 +42,8 @@ const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
 );
 
 export const Default = (props: VideoPlayerProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
@@ -74,24 +75,15 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
               <JssText field={props.fields?.Text} />
             </Text>
           }
-          // ctas={
-          //   <>
-          //     <Button size={'small'} variation={'full'}>
-          //       <a href="#">
-          //         <span>
-          //           Learn more about <strong>self-pay</strong>
-          //         </span>
-          //       </a>
-          //     </Button>
-          //     <TextButton>
-          //       <a href="#">
-          //         <span>
-          //           Access care with <strong>insurance</strong>
-          //         </span>
-          //       </a>
-          //     </TextButton>
-          //   </>
-          // }
+          ctas={
+            props.rendering && (
+              <Placeholder
+                name={phKey}
+                rendering={props.rendering}
+                size={buttonSize}
+              />
+            )
+          }
         />
       }
       video={
@@ -101,19 +93,5 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
         />
       }
     ></VideoBlock>
-    // <div className={`component ${props.params?.styles}`}>
-    //   <JssText field={props.fields?.Heading} />
-    //   <br />
-    //   <JssText field={props.fields?.Title} />
-    //   <br />
-    //   <JssText field={props.fields?.Text} />
-    //   <br />
-    //   <span>{props.fields?.Platform?.name}</span>
-    //   <br />
-    //   <span>{props.fields?.VideoUrl?.value}</span>
-    //   <br />
-    //   <JssImage field={props.fields?.VideoThumbnail} />
-    //   <br />
-    // </div>
   );
 };
