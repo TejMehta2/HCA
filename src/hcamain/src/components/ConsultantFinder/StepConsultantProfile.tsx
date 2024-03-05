@@ -178,6 +178,17 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
+
+  // Refs for each tab section
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const locationsRef = useRef<HTMLDivElement>(null);
+  const feesRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+
+  if (!serverSideData) {
+    return <div>No data</div>;
+  }
+
   console.log('consultant data,', serverSideData?.ProfileJson);
   //console.log('server side data from component props: ', serverSideData);
   console.log(
@@ -203,12 +214,6 @@ export const Default = (props: StepProps): JSX.Element => {
     'formatted follow up appointment',
     formatDateShort(serverSideData?.FirstAppointment?.follow_appointment)
   );
-
-  // Refs for each tab section
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const locationsRef = useRef<HTMLDivElement>(null);
-  const feesRef = useRef<HTMLDivElement>(null);
-  const reviewsRef = useRef<HTMLDivElement>(null);
 
   // Callback function to handle tab clicks
   const handleTabClick = (label: any) => {
@@ -292,498 +297,526 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        {/* top section */}
-        <div>
-          <Breadcrumbs>
-            <Link href="/Finder/Step-Intro">
-              {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
-            </Link>
-            {topSpecialty[0]?.name && (
-              <Link href={`/Finder/{topSpecialty[0]?.name}`}>
-                {topSpecialty[0]?.name}
-              </Link>
-            )}
-            <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
-          </Breadcrumbs>
-          <MobileTabs>
-            <Themes theme={'A-HCA-White'}>
-              <Tabs
-                callback={(label) => {
-                  console.log(label);
-                  handleTabClick(label);
-                }}
-                tabs={[
-                  {
-                    icon: 'iconBook',
-                    label: `${props?.fields?.AboutTabText?.value}` || 'About',
-                  },
-                  {
-                    icon: 'iconPin',
-                    label:
-                      `${props?.fields?.LocationsTabText?.value}` ||
-                      'Locations',
-                  },
-                  {
-                    icon: 'iconCreditCard',
-                    label: `${props?.fields?.FeesTabText?.value}` || 'Fees',
-                  },
-                  {
-                    icon: 'iconComment',
-                    label:
-                      `${props?.fields?.ReviewsTabText?.value}` || 'Reviews',
-                  },
-                ]}
-              />
-            </Themes>
-          </MobileTabs>
-        </div>
-        <ConsultantFinderProfileWrapper>
-          <MainWrapper>
-            <ProfilePageHeader
-              image={
-                serverSideData?.ProfileJson?.images?.logo ||
-                props?.fields?.ProfileImagePlaceholderImage?.value.src ||
-                null
-              }
-              name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
-              topSpecialty={topSpecialty[0]?.name || ''}
-              infoBoxText={'some text'}
-              overallExperienceYears={
-                yearsExperience(
-                  serverSideData?.ProfileJson?.yearsOfExperience
-                ) || 0
-              }
-              overallExperienceYearsText={
-                props?.fields?.ExperienceText?.value || 'years of experience'
-              }
-            >
-              <Themes theme={'A-HCA-White'}>
-                <Tabs
-                  callback={(label) => {
-                    console.log(label);
-                    handleTabClick(label);
-                  }}
-                  tabs={[
-                    {
-                      icon: 'iconBook',
-                      label: `${props?.fields?.AboutTabText?.value}` || 'About',
-                    },
-                    {
-                      icon: 'iconPin',
-                      label:
-                        `${props?.fields?.LocationsTabText?.value}` ||
-                        'Locations',
-                    },
-                    {
-                      icon: 'iconCreditCard',
-                      label: `${props?.fields?.FeesTabText?.value}` || 'Fees',
-                    },
-                    {
-                      icon: 'iconComment',
-                      label:
-                        `${props?.fields?.ReviewsTabText?.value}` || 'Reviews',
-                    },
-                  ]}
-                />
-              </Themes>
-            </ProfilePageHeader>
-            <SidePanel isMobile={true}>
-              <Reviews
-                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
-                doctifyText={props?.fields?.DoctifyText?.value || 'Reviewed By'}
-                hasDoctifyBranding={true}
-                isConsultantProfileReviews={true}
-                reviewsCount={
-                  serverSideData?.ProfileJson?.review?.overallExperience
-                }
-                reviewsText="Patients"
-                reviewsTotal={
-                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
-                }
-                noReviewsMsg={
-                  'This consultant does not have any reviews at the moment.'
-                }
-                titleText={
-                  props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
-                }
-              />
-              {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
-                serverSideData?.FirstAppointment?.initial_appointment &&
-                serverSideData?.FirstAppointment?.follow_appointment && (
-                  <>
-                    <InfoBox
-                      backgroundColour="green"
-                      icon={null}
-                      isShortInfo={true}
-                      shortText={`${
-                        props?.fields?.NextInitialAppointmentText?.value ||
-                        'Next initial appointment'
-                      } ${formatDateShort(
-                        serverSideData?.FirstAppointment?.initial_appointment
-                      )}`}
-                    />
-                    <InfoBox
-                      backgroundColour="orange"
-                      icon={null}
-                      isShortInfo={true}
-                      shortText={`${
-                        props?.fields?.NextFollowOnAppointmentText?.value ||
-                        'Next follow up appointment'
-                      } ${formatDateShort(
-                        serverSideData?.FirstAppointment?.follow_appointment
-                      )}`}
-                    />
-                    <Text tag="p" variation="body-small">
-                      {`${
-                        props?.fields?.LastCheckedText?.value || 'Last checked:'
-                      }
-                1 min ago`}
-                    </Text>
-                  </>
+        {serverSideData && (
+          <div>
+            {/* top section */}
+            <div>
+              <Breadcrumbs>
+                <Link href="/Finder/Step-Intro">
+                  {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
+                </Link>
+                {topSpecialty[0]?.name && (
+                  <Link href={`/Finder/{topSpecialty[0]?.name}`}>
+                    {topSpecialty[0]?.name}
+                  </Link>
                 )}
-            </SidePanel>
-            <ProfilePageSection ref={aboutRef}>
-              <About
-                title={props?.fields?.AboutHeadingText?.value || 'About'}
-                description={serverSideData?.ProfileJson?.about || ''}
-              ></About>
-            </ProfilePageSection>
-            {subSpecialtiesData.length > 0 && (
-              <ProfilePageSection>
-                <DataComponentSimple
-                  title={
-                    props.fields.SubSpecialtiesSubHeadingText.value ||
-                    'Subspecialities'
+                <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
+              </Breadcrumbs>
+              <MobileTabs>
+                <Themes theme={'A-HCA-White'}>
+                  <Tabs
+                    callback={(label) => {
+                      console.log(label);
+                      handleTabClick(label);
+                    }}
+                    tabs={[
+                      {
+                        icon: 'iconBook',
+                        label:
+                          `${props?.fields?.AboutTabText?.value}` || 'About',
+                      },
+                      {
+                        icon: 'iconPin',
+                        label:
+                          `${props?.fields?.LocationsTabText?.value}` ||
+                          'Locations',
+                      },
+                      {
+                        icon: 'iconCreditCard',
+                        label: `${props?.fields?.FeesTabText?.value}` || 'Fees',
+                      },
+                      {
+                        icon: 'iconComment',
+                        label:
+                          `${props?.fields?.ReviewsTabText?.value}` ||
+                          'Reviews',
+                      },
+                    ]}
+                  />
+                </Themes>
+              </MobileTabs>
+            </div>
+            <ConsultantFinderProfileWrapper>
+              <MainWrapper>
+                <ProfilePageHeader
+                  image={
+                    serverSideData?.ProfileJson?.images?.logo ||
+                    props?.fields?.ProfileImagePlaceholderImage?.value.src ||
+                    null
                   }
-                  data={subSpecialtiesData}
-                ></DataComponentSimple>
-              </ProfilePageSection>
-            )}
-            <ProfilePageSection>
-              <TreatmentsConditions
-                treatmentsLabel={
-                  props?.fields?.AllProceduresSubHeadingText?.value ||
-                  'ALL PROCEDURES'
-                }
-                conditionsLabel={
-                  props.fields.AllConditionsSubHeadingText.value ||
-                  'ALL CONDITIONS'
-                }
-                treatmentsList={treatments}
-                conditionsList={conditions}
-                noTreatmentsMsg={
-                  props?.fields?.NoTreatmentsMsg?.value ||
-                  "This consultant doesn't have any procedures information at the moment."
-                }
-                noConditionsMsg={
-                  props?.fields?.NoConditionsMsg?.value ||
-                  "This consultant doesn't have any conditions information at the moment."
-                }
-              ></TreatmentsConditions>
-            </ProfilePageSection>
-            <ProfilePageSection>
-              <DataComponentSimple
-                title={
-                  props?.fields?.LanguagesSubHeadingText?.value || 'Languages'
-                }
-                data={languagesString}
-              ></DataComponentSimple>
-            </ProfilePageSection>
-            {/* No fees check */}
-            <ProfilePageSection ref={feesRef}>
-              <ConsultantFees
-                title={
-                  props?.fields?.ConsultationFeesHeadingText?.value ||
-                  'Consultation Fees'
-                }
-                newAppointmentFees={
-                  serverSideData?.ProfileJson?.consultationFees?.new || null
-                }
-                newAppointmentFeesLabel={
-                  props?.fields?.NewAppointmentText?.value || 'New appointment'
-                }
-                followUpAppointmentFees={
-                  serverSideData?.ProfileJson?.consultationFees?.followUp ||
-                  null
-                }
-                followUpAppointmentFeesLabel={
-                  props?.fields?.NewAppointmentText?.value ||
-                  'Follow-up appointment'
-                }
-                noFeesInfo={
-                  props.fields.NoFeesInfo.value ||
-                  "This consultant doesn't have any consultation fees information at the moment."
-                }
-              ></ConsultantFees>
-            </ProfilePageSection>
-            <ProfilePageSection>
-              <DataComponentSimple
-                title={
-                  props?.fields?.QualificationsSubHeadingText?.value ||
-                  'qualifications'
-                }
-                data={
-                  serverSideData?.ProfileJson?.suffix ||
-                  props?.fields?.NoQualificationsMsg?.value ||
-                  "This consultant doesn't have any qualification information at the moment."
-                }
-              ></DataComponentSimple>
-            </ProfilePageSection>
-            {serverSideData?.ProfileJson?.registrationBodies &&
-              serverSideData?.ProfileJson?.registrationBodies.length > 0 && (
+                  name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
+                  topSpecialty={topSpecialty[0]?.name || ''}
+                  infoBoxText={'some text'}
+                  overallExperienceYears={
+                    yearsExperience(
+                      serverSideData?.ProfileJson?.yearsOfExperience
+                    ) || 0
+                  }
+                  overallExperienceYearsText={
+                    props?.fields?.ExperienceText?.value ||
+                    'years of experience'
+                  }
+                >
+                  <Themes theme={'A-HCA-White'}>
+                    <Tabs
+                      callback={(label) => {
+                        console.log(label);
+                        handleTabClick(label);
+                      }}
+                      tabs={[
+                        {
+                          icon: 'iconBook',
+                          label:
+                            `${props?.fields?.AboutTabText?.value}` || 'About',
+                        },
+                        {
+                          icon: 'iconPin',
+                          label:
+                            `${props?.fields?.LocationsTabText?.value}` ||
+                            'Locations',
+                        },
+                        {
+                          icon: 'iconCreditCard',
+                          label:
+                            `${props?.fields?.FeesTabText?.value}` || 'Fees',
+                        },
+                        {
+                          icon: 'iconComment',
+                          label:
+                            `${props?.fields?.ReviewsTabText?.value}` ||
+                            'Reviews',
+                        },
+                      ]}
+                    />
+                  </Themes>
+                </ProfilePageHeader>
+                <SidePanel isMobile={true}>
+                  <Reviews
+                    doctifyLogo={
+                      <JssImage field={props.fields.DoctifyLogoImage} />
+                    }
+                    doctifyText={
+                      props?.fields?.DoctifyText?.value || 'Reviewed By'
+                    }
+                    hasDoctifyBranding={true}
+                    isConsultantProfileReviews={true}
+                    reviewsCount={
+                      serverSideData?.ProfileJson?.review?.overallExperience
+                    }
+                    reviewsText="Patients"
+                    reviewsTotal={
+                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                    }
+                    noReviewsMsg={
+                      'This consultant does not have any reviews at the moment.'
+                    }
+                    titleText={
+                      props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
+                    }
+                  />
+                  {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                    serverSideData?.FirstAppointment?.initial_appointment &&
+                    serverSideData?.FirstAppointment?.follow_appointment && (
+                      <>
+                        <InfoBox
+                          backgroundColour="green"
+                          icon={null}
+                          isShortInfo={true}
+                          shortText={`${
+                            props?.fields?.NextInitialAppointmentText?.value ||
+                            'Next initial appointment'
+                          } ${formatDateShort(
+                            serverSideData?.FirstAppointment
+                              ?.initial_appointment
+                          )}`}
+                        />
+                        <InfoBox
+                          backgroundColour="orange"
+                          icon={null}
+                          isShortInfo={true}
+                          shortText={`${
+                            props?.fields?.NextFollowOnAppointmentText?.value ||
+                            'Next follow up appointment'
+                          } ${formatDateShort(
+                            serverSideData?.FirstAppointment?.follow_appointment
+                          )}`}
+                        />
+                        <Text tag="p" variation="body-small">
+                          {`${
+                            props?.fields?.LastCheckedText?.value ||
+                            'Last checked:'
+                          }
+                1 min ago`}
+                        </Text>
+                      </>
+                    )}
+                </SidePanel>
+                <ProfilePageSection ref={aboutRef}>
+                  <About
+                    title={props?.fields?.AboutHeadingText?.value || 'About'}
+                    description={serverSideData?.ProfileJson?.about || ''}
+                  ></About>
+                </ProfilePageSection>
+                {subSpecialtiesData.length > 0 && (
+                  <ProfilePageSection>
+                    <DataComponentSimple
+                      title={
+                        props.fields.SubSpecialtiesSubHeadingText.value ||
+                        'Subspecialities'
+                      }
+                      data={subSpecialtiesData}
+                    ></DataComponentSimple>
+                  </ProfilePageSection>
+                )}
+                <ProfilePageSection>
+                  <TreatmentsConditions
+                    treatmentsLabel={
+                      props?.fields?.AllProceduresSubHeadingText?.value ||
+                      'ALL PROCEDURES'
+                    }
+                    conditionsLabel={
+                      props.fields.AllConditionsSubHeadingText.value ||
+                      'ALL CONDITIONS'
+                    }
+                    treatmentsList={treatments}
+                    conditionsList={conditions}
+                    noTreatmentsMsg={
+                      props?.fields?.NoTreatmentsMsg?.value ||
+                      "This consultant doesn't have any procedures information at the moment."
+                    }
+                    noConditionsMsg={
+                      props?.fields?.NoConditionsMsg?.value ||
+                      "This consultant doesn't have any conditions information at the moment."
+                    }
+                  ></TreatmentsConditions>
+                </ProfilePageSection>
                 <ProfilePageSection>
                   <DataComponentSimple
                     title={
-                      props?.fields?.RegisteredWithSubHeadingText?.value ||
-                      'Registered with'
+                      props?.fields?.LanguagesSubHeadingText?.value ||
+                      'Languages'
                     }
-                    data={`${
-                      serverSideData?.ProfileJson?.registrationBodies[0]
-                        ?.name || 'General Medical Council'
-                    }: ${gmcNumber}`}
+                    data={languagesString}
                   ></DataComponentSimple>
                 </ProfilePageSection>
-              )}
-            <ProfilePageSection ref={locationsRef}>
-              <Locations
-                title={
-                  props?.fields?.LocationsHeadingText?.value || 'Locations'
-                }
-                locations={serverSideData?.ProfileJson?.practices}
-                noLocationsText={
-                  "This consultant doesn't have any locations information at the moment."
-                }
-                viewOnGoogleMapText={
-                  props?.fields?.ViewOnGoogleMapsText?.value ||
-                  'View on Google Maps'
-                }
-                videoConsultationText={
-                  props?.fields?.VideoConsultationText?.value ||
-                  'Call to book a video consultation.'
-                }
-                videoConsultationTitle={
-                  props?.fields?.VideoConsultationTitle?.value ||
-                  'Video Consultation'
-                }
-                phoneNumberHref={
-                  props?.fields?.PhoneNumberHref?.value || '+442045711724'
-                }
-                displayNumber={
-                  props?.fields?.DisplayNumber?.value || '0204 5711 724'
-                }
-              ></Locations>
-            </ProfilePageSection>
-            <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
-              <OverallRating
-                title={props?.fields?.ReviewsHeadingText?.value || 'Reviews'}
-                subtitle={
-                  props?.fields?.OverallRatingSubHeadingText?.value ||
-                  'Overall Rating'
-                }
-                overallExperienceLabel={
-                  props?.fields?.OverallExperienceCategoryText?.value ||
-                  'Overall experience'
-                }
-                personalCareLabel={
-                  props?.fields?.PersonalCareReceivedCategoryText?.value ||
-                  'Personal care received'
-                }
-                explanationLabel={
-                  props?.fields?.ExplainationOfCareCategoryText?.value ||
-                  'Explanation of care provided'
-                }
-                overallExperience={
-                  serverSideData?.ProfileJson?.review?.overallExperience || 0
-                }
-                overalCare={
-                  serverSideData?.ProfileJson?.review?.bedsideManner || 0
-                }
-                explanation={
-                  serverSideData?.ProfileJson?.review?.explanation || 0
-                }
-              ></OverallRating>
-            </ProfilePageSection>
-            {/* iframe with patient and peer reviews */}
-            <iframe
-              src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
-              width="100%"
-              height="700px"
-              id="specialistReviews"
-              name="specialistReviews"
-              scrolling="no"
-            ></iframe>
-            {/* iframe with patient and peer reviews */}
-          </MainWrapper>
-          <SideWrapper>
-            <SidePanel isSticky={true}>
-              <Reviews
-                doctifyLogo={
-                  <JssImage field={props?.fields?.DoctifyLogoImage} />
-                }
-                doctifyText={props?.fields?.DoctifyText?.value || 'Reviewed By'}
-                hasDoctifyBranding={true}
-                isConsultantProfileReviews={true}
-                reviewsCount={
-                  serverSideData?.ProfileJson?.review?.overallExperience
-                }
-                reviewsText="Patients"
-                reviewsTotal={
-                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
-                }
-                noReviewsMsg={
-                  'This consultant does not have any reviews at the moment.'
-                }
-                titleText={
-                  props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
-                }
-              />
-              {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
-                serverSideData?.FirstAppointment?.initial_appointment &&
-                serverSideData?.FirstAppointment?.follow_appointment && (
-                  <>
-                    <InfoBox
-                      backgroundColour="green"
-                      icon={null}
-                      isShortInfo={true}
-                      shortText={`${
-                        props?.fields?.NextInitialAppointmentText?.value ||
-                        'Next initial appointment'
-                      } ${formatDateShort(
-                        serverSideData?.FirstAppointment?.initial_appointment
-                      )}`}
-                    />
-                    <InfoBox
-                      backgroundColour="orange"
-                      icon={null}
-                      isShortInfo={true}
-                      shortText={`${
-                        props?.fields?.NextFollowOnAppointmentText?.value ||
-                        'Next follow up appointment'
-                      } ${formatDateShort(
-                        serverSideData?.FirstAppointment?.follow_appointment
-                      )}`}
-                    />
-                    <Text tag="p" variation="body-small">
-                      {`${
-                        props?.fields?.LastCheckedText?.value || 'Last checked:'
-                      }
+                {/* No fees check */}
+                <ProfilePageSection ref={feesRef}>
+                  <ConsultantFees
+                    title={
+                      props?.fields?.ConsultationFeesHeadingText?.value ||
+                      'Consultation Fees'
+                    }
+                    newAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.new || null
+                    }
+                    newAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'New appointment'
+                    }
+                    followUpAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.followUp ||
+                      null
+                    }
+                    followUpAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'Follow-up appointment'
+                    }
+                    noFeesInfo={
+                      props.fields.NoFeesInfo.value ||
+                      "This consultant doesn't have any consultation fees information at the moment."
+                    }
+                  ></ConsultantFees>
+                </ProfilePageSection>
+                <ProfilePageSection>
+                  <DataComponentSimple
+                    title={
+                      props?.fields?.QualificationsSubHeadingText?.value ||
+                      'qualifications'
+                    }
+                    data={
+                      serverSideData?.ProfileJson?.suffix ||
+                      props?.fields?.NoQualificationsMsg?.value ||
+                      "This consultant doesn't have any qualification information at the moment."
+                    }
+                  ></DataComponentSimple>
+                </ProfilePageSection>
+                {serverSideData?.ProfileJson?.registrationBodies &&
+                  serverSideData?.ProfileJson?.registrationBodies.length >
+                    0 && (
+                    <ProfilePageSection>
+                      <DataComponentSimple
+                        title={
+                          props?.fields?.RegisteredWithSubHeadingText?.value ||
+                          'Registered with'
+                        }
+                        data={`${
+                          serverSideData?.ProfileJson?.registrationBodies[0]
+                            ?.name || 'General Medical Council'
+                        }: ${gmcNumber}`}
+                      ></DataComponentSimple>
+                    </ProfilePageSection>
+                  )}
+                <ProfilePageSection ref={locationsRef}>
+                  <Locations
+                    title={
+                      props?.fields?.LocationsHeadingText?.value || 'Locations'
+                    }
+                    locations={serverSideData?.ProfileJson?.practices}
+                    noLocationsText={
+                      "This consultant doesn't have any locations information at the moment."
+                    }
+                    viewOnGoogleMapText={
+                      props?.fields?.ViewOnGoogleMapsText?.value ||
+                      'View on Google Maps'
+                    }
+                    videoConsultationText={
+                      props?.fields?.VideoConsultationText?.value ||
+                      'Call to book a video consultation.'
+                    }
+                    videoConsultationTitle={
+                      props?.fields?.VideoConsultationTitle?.value ||
+                      'Video Consultation'
+                    }
+                    phoneNumberHref={
+                      props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                    }
+                    displayNumber={
+                      props?.fields?.DisplayNumber?.value || '0204 5711 724'
+                    }
+                  ></Locations>
+                </ProfilePageSection>
+                <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
+                  <OverallRating
+                    title={
+                      props?.fields?.ReviewsHeadingText?.value || 'Reviews'
+                    }
+                    subtitle={
+                      props?.fields?.OverallRatingSubHeadingText?.value ||
+                      'Overall Rating'
+                    }
+                    overallExperienceLabel={
+                      props?.fields?.OverallExperienceCategoryText?.value ||
+                      'Overall experience'
+                    }
+                    personalCareLabel={
+                      props?.fields?.PersonalCareReceivedCategoryText?.value ||
+                      'Personal care received'
+                    }
+                    explanationLabel={
+                      props?.fields?.ExplainationOfCareCategoryText?.value ||
+                      'Explanation of care provided'
+                    }
+                    overallExperience={
+                      serverSideData?.ProfileJson?.review?.overallExperience ||
+                      0
+                    }
+                    overalCare={
+                      serverSideData?.ProfileJson?.review?.bedsideManner || 0
+                    }
+                    explanation={
+                      serverSideData?.ProfileJson?.review?.explanation || 0
+                    }
+                  ></OverallRating>
+                </ProfilePageSection>
+                {/* iframe with patient and peer reviews */}
+                <iframe
+                  src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+                  width="100%"
+                  height="700px"
+                  id="specialistReviews"
+                  name="specialistReviews"
+                  scrolling="no"
+                ></iframe>
+                {/* iframe with patient and peer reviews */}
+              </MainWrapper>
+              <SideWrapper>
+                <SidePanel isSticky={true}>
+                  <Reviews
+                    doctifyLogo={
+                      <JssImage field={props?.fields?.DoctifyLogoImage} />
+                    }
+                    doctifyText={
+                      props?.fields?.DoctifyText?.value || 'Reviewed By'
+                    }
+                    hasDoctifyBranding={true}
+                    isConsultantProfileReviews={true}
+                    reviewsCount={
+                      serverSideData?.ProfileJson?.review?.overallExperience
+                    }
+                    reviewsText="Patients"
+                    reviewsTotal={
+                      serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                    }
+                    noReviewsMsg={
+                      'This consultant does not have any reviews at the moment.'
+                    }
+                    titleText={
+                      props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
+                    }
+                  />
+                  {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
+                    serverSideData?.FirstAppointment?.initial_appointment &&
+                    serverSideData?.FirstAppointment?.follow_appointment && (
+                      <>
+                        <InfoBox
+                          backgroundColour="green"
+                          icon={null}
+                          isShortInfo={true}
+                          shortText={`${
+                            props?.fields?.NextInitialAppointmentText?.value ||
+                            'Next initial appointment'
+                          } ${formatDateShort(
+                            serverSideData?.FirstAppointment
+                              ?.initial_appointment
+                          )}`}
+                        />
+                        <InfoBox
+                          backgroundColour="orange"
+                          icon={null}
+                          isShortInfo={true}
+                          shortText={`${
+                            props?.fields?.NextFollowOnAppointmentText?.value ||
+                            'Next follow up appointment'
+                          } ${formatDateShort(
+                            serverSideData?.FirstAppointment?.follow_appointment
+                          )}`}
+                        />
+                        <Text tag="p" variation="body-small">
+                          {`${
+                            props?.fields?.LastCheckedText?.value ||
+                            'Last checked:'
+                          }
                 1 min ago`}
-                    </Text>
-                  </>
-                )}
-              <Container marginTop="spacing-5">
-                {/* if consultant has live diaries then show 'book online' */}
-                {serverSideData?.IsLiveDiaryConsultant && (
-                  <Container marginBottom="spacing-4">
+                        </Text>
+                      </>
+                    )}
+                  <Container marginTop="spacing-5">
+                    {/* if consultant has live diaries then show 'book online' */}
+                    {serverSideData?.IsLiveDiaryConsultant && (
+                      <Container marginBottom="spacing-4">
+                        <Button
+                          variation="full-dark"
+                          size="small"
+                          contentVariation="full-width"
+                        >
+                          <JssLink
+                            field={props.fields.BookOnlineButtonLink}
+                            title={props.fields.BookOnlineButtonLink.value.text}
+                          ></JssLink>
+                        </Button>
+                      </Container>
+                    )}
+                    {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+                    {!serverSideData?.IsLiveDiaryConsultant &&
+                      !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+                        <Container marginBottom="spacing-4">
+                          <Button
+                            variation="full-dark"
+                            size="small"
+                            contentVariation="full-width"
+                          >
+                            <Link
+                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
+                            >
+                              <span>
+                                <Icons iconName="iconPhone" />
+                              </span>
+                              <span>
+                                {props?.fields?.EnquireNowButtonLink?.value
+                                  ?.title || 'Enquire now'}
+                              </span>
+                            </Link>
+                          </Button>
+                        </Container>
+                      )}
                     <Button
-                      variation="full-dark"
+                      variation="outline"
                       size="small"
                       contentVariation="full-width"
                     >
-                      <JssLink
-                        field={props.fields.BookOnlineButtonLink}
-                        title={props.fields.BookOnlineButtonLink.value.text}
-                      ></JssLink>
+                      <a
+                        href={`tel:${
+                          props?.fields?.PhoneNumberHref?.value ||
+                          '+442045711724'
+                        }`}
+                      >
+                        <span>
+                          <Icons iconName="iconPhone" />
+                        </span>
+                        <span>
+                          {props?.fields?.CallToBookButtonText?.value ||
+                            'Call to book'}
+                        </span>
+                      </a>
                     </Button>
                   </Container>
-                )}
-                {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-                {!serverSideData?.IsLiveDiaryConsultant &&
-                  !serverSideData?.ProfileJson?.hideAppointmentRequest && (
-                    <Container marginBottom="spacing-4">
-                      <Button
-                        variation="full-dark"
-                        size="small"
-                        contentVariation="full-width"
-                      >
-                        <Link
-                          href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
-                        >
-                          <span>
-                            <Icons iconName="iconPhone" />
-                          </span>
-                          <span>
-                            {props?.fields?.EnquireNowButtonLink?.value
-                              ?.title || 'Enquire now'}
-                          </span>
-                        </Link>
-                      </Button>
-                    </Container>
-                  )}
+                </SidePanel>
+              </SideWrapper>
+            </ConsultantFinderProfileWrapper>
+            <Navigation showOnMobile={true}>
+              {/* if consultant has live diaries then show 'book online' */}
+              {serverSideData?.IsLiveDiaryConsultant && (
                 <Button
-                  variation="outline"
+                  variation="full-dark"
                   size="small"
                   contentVariation="full-width"
                 >
-                  <a
-                    href={`tel:${
-                      props?.fields?.PhoneNumberHref?.value || '+442045711724'
-                    }`}
-                  >
-                    <span>
-                      <Icons iconName="iconPhone" />
-                    </span>
-                    <span>
-                      {props?.fields?.CallToBookButtonText?.value ||
-                        'Call to book'}
-                    </span>
-                  </a>
+                  <JssLink
+                    field={props.fields.BookOnlineButtonLink}
+                    title={props.fields.BookOnlineButtonLink.value.text}
+                  ></JssLink>
                 </Button>
-              </Container>
-            </SidePanel>
-          </SideWrapper>
-        </ConsultantFinderProfileWrapper>
-        <Navigation showOnMobile={true}>
-          {/* if consultant has live diaries then show 'book online' */}
-          {serverSideData?.IsLiveDiaryConsultant && (
-            <Button
-              variation="full-dark"
-              size="small"
-              contentVariation="full-width"
-            >
-              <JssLink
-                field={props.fields.BookOnlineButtonLink}
-                title={props.fields.BookOnlineButtonLink.value.text}
-              ></JssLink>
-            </Button>
-          )}
-          {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-          {!serverSideData?.IsLiveDiaryConsultant &&
-            !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+              )}
+              {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+              {!serverSideData?.IsLiveDiaryConsultant &&
+                !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+                  <Button
+                    variation="full-dark"
+                    size="small"
+                    contentVariation="full-width"
+                  >
+                    <Link
+                      href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
+                    >
+                      <span>
+                        {props?.fields?.EnquireNowButtonLink?.value?.title ||
+                          'Enquire now'}
+                      </span>
+                    </Link>
+                  </Button>
+                )}
               <Button
-                variation="full-dark"
+                variation="outline"
                 size="small"
                 contentVariation="full-width"
               >
-                <Link
-                  href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
+                <a
+                  href={`tel:${
+                    props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                  }`}
                 >
                   <span>
-                    {props?.fields?.EnquireNowButtonLink?.value?.title ||
-                      'Enquire now'}
+                    <Icons iconName="iconPhone" />
                   </span>
-                </Link>
+                  <span>
+                    {props?.fields?.CallToBookButtonText?.value ||
+                      'Call to book'}
+                  </span>
+                </a>
               </Button>
-            )}
-          <Button
-            variation="outline"
-            size="small"
-            contentVariation="full-width"
-          >
-            <a
-              href={`tel:${
-                props?.fields?.PhoneNumberHref?.value || '+442045711724'
-              }`}
-            >
-              <span>
-                <Icons iconName="iconPhone" />
-              </span>
-              <span>
-                {props?.fields?.CallToBookButtonText?.value || 'Call to book'}
-              </span>
-            </a>
-          </Button>
-        </Navigation>
+            </Navigation>
+          </div>
+        )}
       </div>
     );
   }
