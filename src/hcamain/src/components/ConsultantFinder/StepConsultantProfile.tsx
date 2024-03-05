@@ -185,8 +185,12 @@ export const Default = (props: StepProps): JSX.Element => {
   const feesRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
 
-  if (!serverSideData) {
-    return <div>No data</div>;
+  if (
+    !serverSideData ||
+    !serverSideData.ErrorWithProfileData ||
+    !serverSideData.ProfileJson
+  ) {
+    return <div>Profile is missing data, please retry later</div>;
   }
 
   // console.log('consultant data,', serverSideData?.ProfileJson);
