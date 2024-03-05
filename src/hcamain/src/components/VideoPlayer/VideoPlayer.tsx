@@ -3,7 +3,11 @@ import {
   Field,
   ImageFieldValue,
   Text as JssText,
+<<<<<<< HEAD
   Image as JssImage,
+=======
+  Image as JSSImage,
+>>>>>>> dev
   Placeholder,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -29,6 +33,7 @@ interface Fields {
 
 type VideoPlayerProps = {
   params?: Params;
+  rendering: ComponentRendering;
   fields?: Fields;
   rendering?: ComponentRendering;
 };
