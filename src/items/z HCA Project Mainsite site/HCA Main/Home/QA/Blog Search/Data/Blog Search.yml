@@ -1,8 +1,8 @@
 ﻿---
-ID: "c17ff791-c279-4f09-ac8f-7e2c32cab836"
-Parent: "cd89a01f-4d79-476e-85e8-2e4876358e08"
-Template: "957ed275-bf13-4fc2-80f7-0c1b1a1870fc"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA78/Data/Test And Scans Search
+ID: "254dead9-f687-4163-a735-b6e4731c815e"
+Parent: "a2faae7b-c453-45aa-8c60-db89e528e0c0"
+Template: "e3a4027c-5832-4980-8667-97f278244352"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Blog Search/Data/Blog Search
 Languages:
 - Language: en
   Versions:
@@ -10,24 +10,27 @@ Languages:
     Fields:
     - ID: "05ef89c0-fe59-45b4-81da-001d21f4332a"
       Hint: Title
-      Value: All tests & scans
+      Value: News & articles about healthcare 
+    - ID: "16514838-f543-4c64-8da2-3a99f94fb5bf"
+      Hint: Heading
+      Value: Our HCA blog
     - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
       Hint: SearchResultsText
-      Value: tests & scans
+      Value: articles including 
     - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
       Hint: FilterOptionsIcon
       Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240202T065253Z
+      Value: 20240221T223936Z
     - ID: "3b5deddf-c424-405c-8de6-18c4c1aa0fc7"
       Hint: SearchBy
-      Value: "{B3304991-B3D0-467B-B753-985960595D8F}"
+      Value: "{576F23ED-76D7-43ED-9CF0-5F4E0BC7468B}"
     - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
       Hint: FilterOptions
       Value: |
-        {74B661F5-1A80-46D7-A41A-CEE3D7A55E26}
-        {655C5323-B313-4DAB-9C32-D37FB7447539}
+        {219A3219-D07C-449F-8FC1-94A2BA338A1C}
+        {2E743516-67EA-49F1-8EF5-ADBC540675DE}
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -38,13 +41,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
-      Value: Search for a <b>service or treatments</b>
-    - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
-      Hint: FilterBy
-      Value: 
+      Value: Search services, treatments, conditions...
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "53938ed6-deb7-491b-aa56-49c5ef675a3a"
+      Value: "79a3847f-98dd-4f95-83c4-316e69e773b7"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -60,12 +60,9 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "d24cbb38-fc72-42d9-a404-f1412bf128eb"
-      Hint: SortOptionsIcon
-      Value: "{F940A8AD-D316-4D03-893A-01169C3E95D2}"
-    - ID: "d8e43b76-ac40-4d8d-ac11-6e5df0bfe778"
-      Hint: SortOptionsText
-      Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T131019Z
+      Value: 20240305T131302Z
+    - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

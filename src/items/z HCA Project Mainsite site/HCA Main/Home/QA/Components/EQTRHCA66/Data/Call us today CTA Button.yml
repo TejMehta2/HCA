@@ -1,7 +1,7 @@
 ﻿---
 ID: "fcec825a-9d16-47f8-a193-93676e9a3720"
 Parent: "eb6d0a6f-6cbd-40f1-8366-891c0d45a55b"
-Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
 Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/Call us today CTA Button
 Languages:
 - Language: en
@@ -11,9 +11,12 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240226T082437Z
+    - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
+      Hint: ContactUnit
+      Value: "{BBBB0B4C-9824-4923-9131-297A75FB7D61}|{54541FFE-872B-4DE6-B3BC-9528907A6F0F}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fa23b5d9-cc02-4676-a4f5-6bde85c1ebd4"
+      Value: "0b403996-a0a9-463a-aa58-323efb2039be"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -24,7 +27,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T082701Z
+      Value: 20240305T082631Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
-      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"
