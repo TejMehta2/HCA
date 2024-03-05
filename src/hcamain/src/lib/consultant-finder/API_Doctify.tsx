@@ -38,7 +38,7 @@ export async function getSpecialistProfileData(
             docitfyData.practices[practice]['facilityURL'] = facilityURL;
           } catch (e) {
             //HCA practice call threw
-            console.error(
+            console.warn(
               `getSpecialistProfileData failed to patch in HCA facility in practice data ${e}, slug: ${docitfyData?.practices[practice]?.slug}`
             );
           }
@@ -50,7 +50,7 @@ export async function getSpecialistProfileData(
             await checkIfLiveBookingIsAvailable(slug);
           docitfyData.isLiveDiaryConsultant = isLiveDiaryConsultant;
         } catch (e) {
-          console.error(
+          console.warn(
             `getSpecialistProfileData failed to patch in isLiveDiaryConsultant ${e}, slug: ${slug}`
           );
         }
@@ -67,7 +67,7 @@ export async function getSpecialistProfileData(
             //console.log("first apt:", res);
           } catch (e) {
             //first appointment call threw
-            console.error(
+            console.warn(
               `getSpecialistProfileData failed to patch in first appointment ${e}, slug: ${slug}`
             );
           }
@@ -76,14 +76,14 @@ export async function getSpecialistProfileData(
     } else {
       //docitfy call failed
       docitfyData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(
-        `getSpecialistProfileData failed with error ${docitfyData}`
+      console.warn(
+        `getSpecialistProfileData failed to retrieve Doctify slug:${slug} with error:${docitfyData}`
       );
     }
   } catch (e) {
     //docitfy call threw
     docitfyData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching the getSpecialistProfileData, please retry"}`;
-    console.error(`getSpecialistProfileData failed with exception ${e}`);
+    console.warn(`getSpecialistProfileData failed with exception ${e}`);
   }
   return docitfyData;
 }
@@ -131,12 +131,12 @@ export async function getFacilitiesData(serviceURL?: string): Promise<any> {
     } else {
       //docitfy call failed
       facilitiesData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
-      console.error(`getFacilitiesData failed with error ${facilitiesData}`);
+      console.warn(`getFacilitiesData failed with error ${facilitiesData}`);
     }
   } catch (e) {
     //docitfy call threw
     facilitiesData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getFacilitiesData, please retry"}`;
-    console.error(`getFacilitiesData failed with exception ${e}`);
+    console.warn(`getFacilitiesData failed with exception ${e}`);
   }
 
   return facilitiesData;

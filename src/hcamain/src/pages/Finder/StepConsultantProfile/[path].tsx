@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: any = [];
   let slugs: string[] = [];
 
-  console.log('IN Finder profile subpage GetStaticPaths');
+  console.log('IN StepConsultantProfile GetStaticPaths');
 
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
@@ -95,8 +95,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
       //paths = await sitemapFetcher.fetch(context);
       slugs = await getActiveConsultantSlugs();
     } catch (error) {
-      console.log('Error occurred while fetching static paths');
-      console.log(error);
+      console.warn(
+        'Error occurred in StepConsultantProfile getStaticPaths',
+        error
+      );
     }
 
     fallback = process.env.EXPORT_MODE ? false : fallback;
@@ -112,6 +114,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   //console.log('paths:', paths);
   //console.log('fallback:', fallback);
+
+  console.log('OUT StepConsultantProfile GetStaticPaths');
   return {
     paths,
     fallback,
@@ -120,11 +124,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // data load can be done here and/or at the component level too with get component props.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN Finder profile subpage GetStaticProps');
+  console.log('IN StepConsultantProfile GetStaticProps');
   //console.log('context.params', context.params);
 
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
+    console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
     context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
   }
@@ -153,6 +158,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // but also at the component level using component props...
 
+  console.log('OUT StepConsultantProfile GetStaticProps');
   return {
     props,
     // Next.js will attempt to re-generate the page:
