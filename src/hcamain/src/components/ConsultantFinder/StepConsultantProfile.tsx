@@ -18,10 +18,10 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Text from '@component-library/foundation/Text/Text';
+// import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
-import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
+// import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 // import { useSearchParams } from 'next/navigation';
 import { getLDBFirstAppointmentData as getLDBFirstAppointmentData } from 'lib/consultant-finder/API_C2';
