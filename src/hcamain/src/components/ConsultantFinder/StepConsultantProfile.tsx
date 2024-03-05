@@ -187,7 +187,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   if (
     !serverSideData ||
-    !serverSideData.ErrorWithProfileData ||
+    serverSideData.ErrorWithProfileData ||
     !serverSideData.ProfileJson
   ) {
     return <div>Profile is missing data, please retry later</div>;
