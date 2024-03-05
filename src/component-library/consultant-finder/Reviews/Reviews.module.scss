@@ -11,6 +11,10 @@
 
   &-header {
     text-align: center;
+
+    &-no-reviews {
+      margin-bottom: $spacing-5;
+    }
   }
 
   &-container,
@@ -46,7 +50,16 @@
     margin: $spacing-4 0;
   }
 
+  &-no-reviews-text {
+    margin: $spacing-5 0 $spacing-2;
+  }
+
   &-doctify-image {
     margin-left: $spacing-1;
+
+    img {
+      width: px-to-rem(83);
+      height: auto;
+    }
   }
 }

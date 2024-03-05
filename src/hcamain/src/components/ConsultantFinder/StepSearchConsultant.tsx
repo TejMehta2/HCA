@@ -34,7 +34,8 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   PopularConsultantsList: any;
-  SearchIcon: any;
+  SearchIconSearchBar: any;
+  SearchIconResults: any;
   SearchPlaceholderText: Field<string>;
   SearchConsultantsResultsHeaderText: Field<string>;
   API_Autocomplete_LoadingMsg: Field<string>;
@@ -60,7 +61,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const {
-    keywordId,
     searchStringConsultantName,
     setSearchStringConsultantName,
     consultantSlug,
@@ -80,11 +80,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div>keyword id specialty: {keywordId}</div>
+      <div id={id ? id : undefined}>
         <ImageAndTextBlock
           theme="A-HCA-White"
           imageAlignment="left"
@@ -124,7 +120,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 'No matches found, please try typing something else.'
               }
               searchIcon={
-                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+                props?.fields?.SearchIconSearchBar?.fields?.SvgMarkup?.value ||
+                null
+              }
+              searchIconResults={
+                props?.fields?.SearchIconResults?.fields?.SvgMarkup?.value ||
+                null
               }
               searchStringConsultantName={searchStringConsultantName}
               setSearchStringConsultantName={setSearchStringConsultantName}
@@ -154,7 +155,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <button
               disabled={consultantSlug === '' ? true : false}
               onClick={() =>
-                router.push(props.fields.NextLink.value.href || '')
+                router.push(
+                  `/Finder/StepConsultantProfile/${consultantSlug}` || ''
+                )
               }
             >
               <span>{props.fields.NextLink.value.text || 'Next'}</span>

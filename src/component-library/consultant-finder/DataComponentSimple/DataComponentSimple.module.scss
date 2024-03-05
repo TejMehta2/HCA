@@ -1,0 +1,26 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.data {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+
+  .items {
+    flex-grow: 1;
+  }
+
+  .title {
+    width: 100%;
+    margin-right: 0;
+
+    @include media(screen-l) {
+      flex: 0 0 40%;
+      margin-right: $spacing-2;
+    }
+  }
+}
