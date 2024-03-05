@@ -109,7 +109,6 @@ interface Fields {
   ExperienceText: Field<string>;
   EnquireNowButtonLink: LinkField;
 }
-
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
@@ -253,19 +252,19 @@ export const Default = (props: StepProps): JSX.Element => {
     });*/
 
   // top specialty
-  const topSpecialty = serverSideData?.ProfileJson.keywords.filter(
+  const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
   // languages
   const languagesList: string[] = [];
-  serverSideData?.ProfileJson?.languages.forEach((item: any) => {
+  serverSideData?.ProfileJson?.languages?.forEach((item: any) => {
     languagesList.push(capitalizeFirstLetter(item.name));
   });
   const languagesString = languagesList.toString().split(',').join(', ');
 
   // gmcNumber
-  const gmcNumber = serverSideData?.ProfileJson?.registrationBodies.filter(
+  const gmcNumber = serverSideData?.ProfileJson?.registrationBodies?.filter(
     (item: any) => item.name === 'General Medical Council'
   )[0]?.registrationNumber;
 
