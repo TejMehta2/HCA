@@ -1,8 +1,8 @@
 ﻿---
-ID: "c28fcb78-136b-4972-ba6a-e2e2929f008d"
-Parent: "d7d8768d-0a06-4452-b75e-612f3bd5409f"
+ID: "b8df3a7e-d189-4488-b00c-f37b0c7f0d1b"
+Parent: "3026948f-fe68-4a20-8b7e-87f1574754bb"
 Template: "4d8873cb-38ef-40c2-939b-879d5e9699de"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85/Data/Find A Consultant CTA
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85_1/Data/Find A Consultant CTA
 Languages:
 - Language: en
   Versions:
@@ -13,7 +13,7 @@ Languages:
       Value: 20240305T211931Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8b84e81e-6c4c-40de-acf4-5483b5c84d91"
+      Value: "7854bbd4-ed4b-4fb5-83d4-d7cfbf45861c"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -34,7 +34,7 @@ Languages:
       Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T113905Z
+      Value: 20240306T113838Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"

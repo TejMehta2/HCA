@@ -1,8 +1,8 @@
 ﻿---
-ID: "c28fcb78-136b-4972-ba6a-e2e2929f008d"
-Parent: "d7d8768d-0a06-4452-b75e-612f3bd5409f"
+ID: "c4b093d8-6203-4a66-82dc-5d990bbda379"
+Parent: "5567f0dc-1872-4b64-978b-ec885b322a93"
 Template: "4d8873cb-38ef-40c2-939b-879d5e9699de"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85/Data/Find A Consultant CTA
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85_2/Data/Find A Consultant CTA
 Languages:
 - Language: en
   Versions:
@@ -13,7 +13,7 @@ Languages:
       Value: 20240305T211931Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8b84e81e-6c4c-40de-acf4-5483b5c84d91"
+      Value: "dd30e837-4b3f-4d45-8980-74f7c4f124a4"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -31,13 +31,13 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d4e8f601-4189-4c53-a450-1b938d34f437"
       Hint: Practice
-      Value: 
+      Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T113905Z
+      Value: 20240306T113821Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
     - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
       Hint: Service
-      Value: 
+      Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"

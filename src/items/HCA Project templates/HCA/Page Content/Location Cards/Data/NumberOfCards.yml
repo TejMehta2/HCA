@@ -1,30 +1,27 @@
 ﻿---
-ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
+ID: "ec60c2d1-b6a4-4eae-a88d-ccb016b6b677"
 Parent: "50ac1d5e-3aa2-4261-8f69-36c4cceaee24"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Location Cards/Data/FilterOptions
+Path: /sitecore/templates/Project/HCA/Page Content/Location Cards/Data/NumberOfCards
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{0ABD57A9-A4E7-4DA4-9C6C-5D04083A48A1}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: Integer
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 500
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Filter Options
+    Value: Number Of Cards
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240228T211350Z
+      Value: 20240306T115703Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -35,7 +32,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c2172c82-19a3-4357-a63f-26e49095a3ea"
+      Value: "3dc92378-0ef7-4aaa-9e49-a7a19a9bd2f5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

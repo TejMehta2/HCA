@@ -1,14 +1,18 @@
 ﻿---
-ID: "62387da0-75e1-4f73-8410-d8fbebb87d3f"
-Parent: "3ab86eb4-7d6b-47b7-9529-ccd0506b1007"
+ID: "a1a8cadb-32f4-4dc7-83e7-60c36ee5e5e5"
+Parent: "04918c07-94c3-42db-a841-17ad88ae533c"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Business/Treatment
+Path: /sitecore/templates/Project/HCA/Foundation/Doctify/Base/_DoctifySlugMapping
 SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/escalator.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {8EE0F30C-5FB0-4BDF-A519-9173D8402ED5}
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{5800C6CC-B872-45B4-AF1B-01B5BEB29F76}"
 Languages:
 - Language: en
   Versions:
@@ -16,22 +20,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240115T152126Z
+      Value: 20240306T074258Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "76973000-da67-4145-bc60-5b4647a04b4c"
+      Value: "1a1d4851-e78e-4251-8d0a-43b9425058f2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T111005Z
+      Value: 20240306T075341Z

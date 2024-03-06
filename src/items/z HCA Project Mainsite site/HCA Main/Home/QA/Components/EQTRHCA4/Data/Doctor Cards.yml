@@ -1,8 +1,8 @@
 ﻿---
 ID: "85e98614-b2af-4ade-aa90-e019eea4c812"
-Parent: "f95f258d-f3d3-4a4b-83e9-92e46e26bcb3"
+Parent: "2e1ec0b9-aeb8-49fa-b22c-3d7f56b41d09"
 Template: "ad431ae8-75c6-4abf-b28b-e7d488e59f07"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA4/Doctor Cards
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA4/Data/Doctor Cards
 Languages:
 - Language: en
   Versions:
@@ -17,7 +17,7 @@ Languages:
         <link text="View &lt;b&gt;profile&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f4fffe54-108d-4846-811c-d78dfeea27cb"
+      Value: "9441af06-0919-4e41-b29a-219df19a8563"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -36,7 +36,7 @@ Languages:
       Value: "{E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240108T115601Z
+      Value: 20240306T092133Z
     - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
       Hint: Service
       Value: "{83A3005A-C95D-4D62-83CD-C3547A06D0D7}"

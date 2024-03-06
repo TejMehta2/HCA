@@ -1,30 +1,23 @@
 ﻿---
-ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
-Parent: "50ac1d5e-3aa2-4261-8f69-36c4cceaee24"
+ID: "3cbe06d2-824b-4a70-89db-360b27942e66"
+Parent: "689dea71-8529-49b0-9857-4a6184cdc2bd"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Location Cards/Data/FilterOptions
+Path: /sitecore/templates/Project/HCA/Business/Consultant/Consultant Content/Online Booking
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{0ABD57A9-A4E7-4DA4-9C6C-5D04083A48A1}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: Checkbox
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 100
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Filter Options
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240228T211350Z
+      Value: 20240306T080433Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -35,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c2172c82-19a3-4357-a63f-26e49095a3ea"
+      Value: "5890a34e-13b7-4807-8c8b-742f6f703dbe"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T120737Z
+      Value: 20240306T080513Z

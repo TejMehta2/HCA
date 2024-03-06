@@ -31,15 +31,6 @@ SharedFields:
           }
           practice {
             PracticeList: targetItems {
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              image: field(name: "Image") {
-                jsonValue
-              }
               doctifyPractice: field(name: "Doctify Practice") {
                 value
               }
@@ -47,15 +38,6 @@ SharedFields:
           }
           service {
             ServicesList: targetItems {
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              image: field(name: "Image") {
-                jsonValue
-              }
               doctifyKeywordId: field(name: "Doctify KeywordId") {
                 value
               }
@@ -86,7 +68,7 @@ SharedFields:
             value
           }
         }
-        ... on ConditionPage {
+        ... on TreatmentPage {
           doctifyKeywordId {
             value
           }
@@ -162,14 +144,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "aef5425c-f408-46ae-92e6-b6f7a2803bfe"
+      Value: "52e7dbf4-9b7d-4cb4-a607-1702a9fc90f3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T065604Z
+      Value: 20240306T114007Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

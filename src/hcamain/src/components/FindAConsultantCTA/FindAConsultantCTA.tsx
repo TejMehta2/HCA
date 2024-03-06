@@ -1,9 +1,6 @@
 import React from 'react';
 import {
   Field,
-  ImageField,
-  Text as JssText,
-  Image as JSSImage,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -12,23 +9,11 @@ type CTAIconFields = {
   svgMarkup?: Field<string>;
 };
 
-type FilterOptionFields = {
-  displayName?: { value?: string };
-  filter?: { value?: string };
-  filterValue?: { value?: string };
-};
-
 type PracticeFields = {
-  title?: { value?: string };
-  text?: { value?: string };
-  image?: { jsonValue?: ImageField };
   doctifyPractice?: { value?: string };
 };
 
 type ServiceFields = {
-  title?: { value?: string };
-  text?: { value?: string };
-  image?: { jsonValue?: ImageField };
   doctifyKeywordId?: { value?: string };
 };
 
@@ -99,12 +84,6 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
         {props.fields?.data?.item?.practice?.PracticeList?.map(
           (practice, index) => (
             <li key={index}>
-              <JssText field={practice?.title} />
-              <br />
-              <JssText field={practice?.text} />
-              <br />
-              <JSSImage field={practice?.image?.jsonValue} />
-              <br />
               <span>{practice?.doctifyPractice?.value}</span>
               <br />
             </li>
@@ -118,12 +97,6 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
         {props.fields?.data?.item?.service?.ServicesList?.map(
           (service, index) => (
             <li key={index}>
-              <JssText field={service?.title} />
-              <br />
-              <JssText field={service?.text} />
-              <br />
-              <JSSImage field={service?.image?.jsonValue} />
-              <br />
               <span>{service?.doctifyKeywordId?.value}</span>
             </li>
           )
