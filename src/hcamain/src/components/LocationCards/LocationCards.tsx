@@ -45,7 +45,7 @@ interface Fields {
       };
       cTAText?: { jsonValue?: Field<string> };
       getDirectionsText?: { jsonValue?: Field<string> };
-      numberOfCards?: { jsonValue?: Field<string> }; 
+      numberOfCards?: { jsonValue?: Field<string> };
     };
     contextItem?: {
       treatmentId?: string;
@@ -137,10 +137,14 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       <br />
       <JssText field={props.fields?.data?.item?.getDirectionsText?.jsonValue} />
       <br />
-      <span>Page ID when the page is of type Treatment: </span> <span>{props.fields?.data?.contextItem?.treatmentId}</span>
-      <span>Page ID when the page is of type Condition: </span> <span>{props.fields?.data?.contextItem?.conditionId}</span>
-      <span>Page ID when the page is of type Diagnosis: </span> <span>{props.fields?.data?.contextItem?.scanId}</span>
-      <span>Page ID when the page is of type SpecialtyPage: </span> <span>{props.fields?.data?.contextItem?.serviceLineId}</span>
+      <span>Page ID when the page is of type Treatment: </span>{' '}
+      <span>{props.fields?.data?.contextItem?.treatmentId}</span>
+      <span>Page ID when the page is of type Condition: </span>{' '}
+      <span>{props.fields?.data?.contextItem?.conditionId}</span>
+      <span>Page ID when the page is of type Diagnosis: </span>{' '}
+      <span>{props.fields?.data?.contextItem?.scanId}</span>
+      <span>Page ID when the page is of type SpecialtyPage: </span>{' '}
+      <span>{props.fields?.data?.contextItem?.serviceLineId}</span>
       <br />
     </div>
   );
