@@ -3,10 +3,14 @@ import {
   Field,
   ImageField,
   Text as JssText,
-  Image as JSSImage,
+  Image as JssImage,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import CardMap from '@component-library/components/CardMap/CardMap';
+import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
+import Text from '@component-library/foundation/Text/Text';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -67,75 +71,132 @@ const LocationCardsDefaultComponent = (
   </div>
 );
 
+const MapCards = (props: LocationCardsProps) => {
+  return props.fields?.data?.item?.locations?.LocationsList?.map(
+    (location, index) => (
+      <CardMap
+        key={index}
+        title={
+          <Text variation="heading-1" tag="h4">
+            <JssText field={location?.title} />
+          </Text>
+        }
+        address={
+          <>
+            {location?.city?.value && (
+              <>
+                <JssText field={location?.city} />,
+              </>
+            )}
+            {location?.street?.value && (
+              <>
+                <JssText field={location?.street} />,
+              </>
+            )}
+            {location?.postCode?.value && (
+              <>
+                <JssText field={location?.postCode} />,
+              </>
+            )}
+          </>
+        }
+        image={<JssImage field={location?.image?.jsonValue} />}
+        ctas={{
+          button1: (
+            <a href="#">
+              <span>
+                Learn <strong>more</strong>
+              </span>
+            </a>
+          ),
+          button2: (
+            <a href="#">
+              <span>
+                Get <strong>directions</strong>
+              </span>
+            </a>
+          ),
+        }}
+      />
+    )
+  );
+};
+
 export const Grid = (props: LocationCardsProps): JSX.Element => {
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
   }
+
+  console.log(props);
   return (
-    <div className={`component ${props.params?.styles}`}>
-      <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.text?.jsonValue} />
-      <br />
-      <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
-        {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup.value,
-            }}
-          />
-        )}
-      </a>
-      <br />
-      <span>Locations:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.locations?.LocationsList?.map(
-          (location, index) => (
-            <li key={index}>
-              <JssText field={location?.title} />
-              <br />
-              <JSSImage field={location?.image?.jsonValue} />
-              <br />
-              <JssText field={location?.city} />
-              <br />
-              <JssText field={location?.street} />
-              <br />
-              <JssText field={location?.postCode} />
-              <br />
-              <JssText field={location?.getDirections} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <span>Filter Options:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.filterOptions?.filterOptionsList?.map(
-          (filterOption, index) => (
-            <li key={index}>
-              <JssText field={filterOption?.displayName} />
-              <br />
-              <JssText field={filterOption?.filter} />
-              <br />
-              <span>{filterOption?.filterValue?.value}</span>
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.getDirectionsText?.jsonValue} />
-      <br />
-      <span>Page ID: </span> <span>{props.fields?.data?.contextItem?.id}</span>
-      <br />
-    </div>
+    <CardGrid theme={props.params?.Theme || 'A-HCA-White'}>
+      {MapCards(props)}
+    </CardGrid>
+
+    // <div className={`component ${props.params?.styles}`}>
+    //   <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+    //   <br />
+    //   <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+    //   <br />
+    //   <JssText field={props.fields?.data?.item?.text?.jsonValue} />
+    //   <br />
+    //   <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
+    //     {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
+    //       <span
+    //         dangerouslySetInnerHTML={{
+    //           __html: props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup.value,
+    //         }}
+    //       />
+    //     )}
+    //   </a>
+    //   <br />
+    //   <span>Locations:</span>
+    //   <br />
+    //   <ul>
+    //     {props.fields?.data?.item?.locations?.LocationsList?.map(
+    //       (location, index) => (
+    //         <li key={index}>
+    //           <JssText field={location?.title} />
+    //           <br />
+    //           <JssImage field={location?.image?.jsonValue} />
+    //           <br />
+    //           <JssText field={location?.city} />
+    //           <br />
+    //           <JssText field={location?.street} />
+    //           <br />
+    //           <JssText field={location?.postCode} />
+    //           <br />
+    //           <JssText field={location?.getDirections} />
+    //           <br />
+    //         </li>
+    //       )
+    //     )}
+    //   </ul>
+    //   <br />
+    //   <span>Filter Options:</span>
+    //   <br />
+    //   <ul>
+    //     {props.fields?.data?.item?.filterOptions?.filterOptionsList?.map(
+    //       (filterOption, index) => (
+    //         <li key={index}>
+    //           <JssText field={filterOption?.displayName} />
+    //           <br />
+    //           <JssText field={filterOption?.filter} />
+    //           <br />
+    //           <span>{filterOption?.filterValue?.value}</span>
+    //           <br />
+    //         </li>
+    //       )
+    //     )}
+    //   </ul>
+    //   <br />
+    //   <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
+    //   <br />
+    //   <JssText field={props.fields?.data?.item?.getDirectionsText?.jsonValue} />
+    //   <br />
+    //   <span>Page ID: </span> <span>{props.fields?.data?.contextItem?.id}</span>
+    //   <br />
+    // </div>
   );
 };
 
@@ -143,5 +204,20 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
   }
-  return <Grid {...props} />;
+  return (
+    <CarouselCards
+      theme={props.params?.Theme || 'A-HCA-White'}
+      title={
+        <Text
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-4'}
+        >
+          {props.fields?.data?.item?.title?.jsonValue?.value}
+        </Text>
+      }
+      // link={link}
+    >
+      {MapCards(props)}
+    </CarouselCards>
+  );
 };
