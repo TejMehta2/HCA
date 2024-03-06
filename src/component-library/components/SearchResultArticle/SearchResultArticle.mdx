@@ -1,0 +1,53 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchResultArticleStories from './SearchResultArticle.stories';
+
+<Meta of={SearchResultArticleStories} />
+
+# SearchResultArticle
+
+## Description
+
+The SearchResultArticle component displays a result for article or test & treatments searches. It can optionally show just one full button or both a full button and a text button on the result.
+
+It is intended to be integrated with Yext search results.
+
+It can be composed like this:
+
+```tsx
+<SearchResultArticle
+    image={
+      <Image
+        src="/placeholders/couple-on-bench.jpeg"
+        alt="couple on bench"
+        width="140"
+        height="140"
+      />
+    }
+    title={
+      <Text variation="heading-1">
+        HCA Healthcare UK invests £7m in new fleet of state-of- the art da Vinci
+        Xi robots
+      </Text>
+    }
+    copy={
+      <Text variation="body-large">
+        The announcement today includes the investment in the da Vinci's
+        minimally invasive robotic capability at HCA Healthcare UK's The Lister
+        Hospital for the first time. HCA Healthcare UK has invested in four new
+        da Vinci Xi robots, confirming its status...
+      </Text>
+    }
+    ctas: {{
+      link: <button>Read more</button>,
+      email:
+        <button>
+          <Icons iconName="iconEmail"></Icons>Email us
+        </button>
+    }}>
+</SearchResultArticle>
+```
+
+## Example
+
+<Canvas of={SearchResultArticleStories.Default} />
+<Controls of={SearchResultArticleStories.Default} />
