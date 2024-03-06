@@ -41,6 +41,33 @@ export const Default: StoryObj<typeof SearchWrapper> = {
           <Text variation={'display-2'}>News & articles about healthcare </Text>
         }
         search={<SearchBar placeholder="" />}
+        filters={
+          <Filters
+            resultsCount={40}
+            filters={[
+              {
+                contentVariation: 'filters',
+                title: 'Locations',
+                children: (
+                  <Checkboxes>
+                    <Checkbox
+                      id="1"
+                      value="Christie"
+                      name="locations"
+                      label="Christie Hospital"
+                    ></Checkbox>
+                    <Checkbox
+                      id="2"
+                      value="london-bridge"
+                      name="locations"
+                      label="London Bridge Hospital"
+                    ></Checkbox>
+                  </Checkboxes>
+                ),
+              },
+            ]}
+          ></Filters>
+        }
         theme={'A-HCA-White'}
       >
         <Text variation="body-large">
