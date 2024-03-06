@@ -244,7 +244,6 @@ export const Default = (props: StepProps): JSX.Element => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
       });
     } else {
       console.log('Ref not found or not initialized'); // Debugging check
@@ -733,9 +732,6 @@ export const Default = (props: StepProps): JSX.Element => {
                               href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
                             >
                               <span>
-                                <Icons iconName="iconPhone" />
-                              </span>
-                              <span>
                                 {props?.fields?.EnquireNowButtonLink?.value
                                   ?.title || 'Enquire now'}
                               </span>
@@ -767,7 +763,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 </SidePanel>
               </SideWrapper>
             </ConsultantFinderProfileWrapper>
-            <Navigation showOnMobile={true}>
+            <Navigation showOnMobile={true} hasCustomBtnMobile={true}>
               {/* if consultant has live diaries then show 'book online' */}
               {serverSideData?.IsLiveDiaryConsultant && (
                 <Button
@@ -809,9 +805,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     props?.fields?.PhoneNumberHref?.value || '+442045711724'
                   }`}
                 >
-                  <span>
-                    <Icons iconName="iconPhone" />
-                  </span>
                   <span>
                     {props?.fields?.CallToBookButtonText?.value ||
                       'Call to book'}
