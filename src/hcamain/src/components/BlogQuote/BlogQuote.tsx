@@ -43,7 +43,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   }
 
   return (
-    <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+    <BlogContent theme={props.params?.Theme || 'A-HCA-White'} quoteBlock>
       <QuoteBlock
         author={{
           name: props.fields?.Author?.[0].fields?.Name?.value,
