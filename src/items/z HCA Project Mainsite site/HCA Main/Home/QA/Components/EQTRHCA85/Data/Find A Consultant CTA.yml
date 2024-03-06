@@ -1,0 +1,45 @@
+﻿---
+ID: "c28fcb78-136b-4972-ba6a-e2e2929f008d"
+Parent: "d7d8768d-0a06-4452-b75e-612f3bd5409f"
+Template: "4d8873cb-38ef-40c2-939b-879d5e9699de"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85/Data/Find A Consultant CTA
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240305T211931Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1cae4fc9-78f4-4602-a6bd-e899100926b0"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Find a &lt;b&gt;hip replacement consultant&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "ab11cab9-17e6-42ac-98ca-aec3d7127a85"
+      Hint: CustomFilters
+      Value: |
+        {FECB604C-7B7C-4BB1-912B-B5F3F4CFD1B2}
+        {50B8A193-0615-4369-9D96-C8CC47DA004D}
+        {8D09569E-77AF-4246-9E13-2C37988A65E3}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d4e8f601-4189-4c53-a450-1b938d34f437"
+      Hint: Practice
+      Value: |
+        {114F95BA-9012-4A8F-9507-426B2A948885}
+        {0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}
+        {8F20EEFF-201D-43AC-8D49-E1789D91392B}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240306T063902Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+    - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
+      Hint: Service
+      Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
