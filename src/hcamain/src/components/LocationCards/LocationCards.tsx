@@ -4,6 +4,7 @@ import {
   ImageField,
   Text as JssText,
   Image as JssImage,
+  RichText as JssRichText,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -11,6 +12,8 @@ import CardMap from '@component-library/components/CardMap/CardMap';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import Text from '@component-library/foundation/Text/Text';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -29,6 +32,7 @@ type LocationsFields = {
   street?: { value?: string };
   postCode?: { value?: string };
   getDirections?: { value?: string };
+  url: { path?: string };
 };
 
 interface Fields {
@@ -103,16 +107,20 @@ const MapCards = (props: LocationCardsProps) => {
         image={<JssImage field={location?.image?.jsonValue} />}
         ctas={{
           button1: (
-            <a href="#">
-              <span>
-                Learn <strong>more</strong>
-              </span>
+            <a href={location?.url?.path}>
+              <JssRichText
+                field={props?.fields?.data?.item?.cTAText?.jsonValue}
+              />
             </a>
           ),
           button2: (
             <a href="#">
               <span>
-                Get <strong>directions</strong>
+                <JssText
+                  field={
+                    props?.fields?.data?.item?.getDirectionsText?.jsonValue
+                  }
+                />
               </span>
             </a>
           ),
@@ -127,11 +135,32 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
   return (
-    <CardGrid theme={props.params?.Theme || 'A-HCA-White'}>
-      {MapCards(props)}
-    </CardGrid>
+    <CardBlock
+      theme={props.params?.Theme || 'A-HCA-White'}
+      header={
+        <AdvancedBlockHeader
+          contentVariation="half-width"
+          title={
+            <Text variation={'display-5'} tag="h3">
+              Blog Card Block
+            </Text>
+          }
+          body={
+            <Text variation={'body-large'}>
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum
+            </Text>
+          }
+          paddingSize="small"
+        ></AdvancedBlockHeader>
+      }
+      variation="3-columns"
+      cta={<a href="#">View all hip pain locations</a>}
+    >
+      <>{MapCards(props)}</>
+    </CardBlock>
 
     // <div className={`component ${props.params?.styles}`}>
     //   <JssText field={props.fields?.data?.item?.heading?.jsonValue} />

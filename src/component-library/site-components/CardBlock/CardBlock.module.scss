@@ -53,3 +53,8 @@
   /* stylelint-disable unit-disallowed-list */
   margin-bottom: -1rem; // offset gap
 }
+
+.cta {
+  @include responsive-grid-span(6, 6, 12, 12);
+  padding-top: calc($spacing-7 - px-to-rem(1));
+}
