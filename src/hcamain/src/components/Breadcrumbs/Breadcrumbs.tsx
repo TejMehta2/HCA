@@ -44,7 +44,7 @@ type BreadcrumbSchema = {
   '@type': string;
   position: number;
   name: string | undefined;
-  item: string | undefined;
+  item?: string | undefined;
 }[];
 
 const getTitle = (data?: AncestorsFields) => {
@@ -57,25 +57,6 @@ const getTitle = (data?: AncestorsFields) => {
   } else {
     return data?.name;
   }
-};
-
-const BreadcrumbSchema = (props: AncestorsFields[]): JSX.Element => {
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [props],
-  };
-
-  console.log(props);
-
-  return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-    </Head>
-  );
 };
 
 const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
@@ -93,9 +74,18 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
+  const breadcrumbSchemaItem: BreadcrumbSchema = [];
+
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
       const title = getTitle(ancestor);
+
+      breadcrumbSchemaItem.push({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: title,
+        item: ancestor?.url?.path,
+      });
 
       return (
         <Link href={ancestor?.url?.path || ''} key={index}>
@@ -114,9 +104,28 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <></>;
   }
 
+  breadcrumbSchemaItem.push({
+    '@type': 'ListItem',
+    position: breadcrumbSchemaItem.length + 1,
+    name: title,
+  });
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [breadcrumbSchemaItem],
+  };
+
+  console.log(breadcrumbSchema);
+
   return (
     <>
-      <BreadcrumbSchema {...props.fields?.data?.contextItem?.ancestors} />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      </Head>
       <Breadcrumbs children={breadcrumbList} />
     </>
   );
