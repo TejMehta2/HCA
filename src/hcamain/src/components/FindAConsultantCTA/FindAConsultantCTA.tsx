@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Field,
-  LinkField,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
 type CTAIconFields = {
@@ -73,7 +70,7 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
               __html: props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup.value,
             }}
           />
-        )} 
+        )}
         <span>{props.fields?.data?.item?.cTALink?.jsonValue?.value.text}</span>
       </a>
       <br />
@@ -123,4 +120,3 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
     </div>
   );
 };
-
