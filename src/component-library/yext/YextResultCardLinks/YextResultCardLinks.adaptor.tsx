@@ -1,22 +1,21 @@
 import React from 'react';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
-import YextResultCardArticles from './YextResultCardArticles';
+import YextResultCardArticles from '../YextResultCardArticles/YextResultCardArticles';
 import { CardProps } from '@yext/search-ui-react';
 
 // TODO - replace these props with Yext type generated interfaced
 // https://hitchhikers.yext.com/docs/search/search-result-typing/?target=using-generated-types-in-your-project
 interface YextArticleCardProps {}
 
-const YextResultCardArticlesAdaptor = (
+const YextResultCardLinksAdaptor = (
   props: CardProps<YextArticleCardProps>
 ): JSX.Element => {
   const {} = props;
   // TODO - unpack props to replace these static values once Yext type generation is available
-  const title =
-    'HCA Healthcare UK invests £7m in new fleet of state-of- the art da Vinci Xi robots';
+  const title = 'Private Colonoscopy London';
   const description =
-    'The announcement today includes the investment in the da Vinci&apos;s minimally invasive robotic capability at HCA Healthcare UK&apos;s The Lister Hospital for the first time. HCA Healthcare UK has invested in four new da Vinci Xi robots, confirming its status...';
+    'You could be referred by your GP or physician for a colonoscopy if you&apos;ve had blood in your stool or noticed any changes in your bowel habits. It&apos;s an effective diagnostic procedure that allows our consultant to examine your bowel in detail. You might have a colonoscopy as part of a biopsy...';
   const image = {
     alt: '',
     src: '/placeholders/children-playing.jpg',
@@ -25,7 +24,11 @@ const YextResultCardArticlesAdaptor = (
   };
   const cta = {
     url: '#',
-    label: 'Read more',
+    label: 'Learn more',
+  };
+  const email = {
+    label: 'Email us',
+    emailAddress: '#',
   };
   return (
     <YextResultCardArticles
@@ -46,9 +49,10 @@ const YextResultCardArticlesAdaptor = (
       }
       ctas={{
         button: <a href={cta.url}>{cta.label}</a>,
+        textButton: <a href={`mailto:${email.emailAddress}`}>{email.label}</a>,
       }}
     />
   );
 };
 
-export default YextResultCardArticlesAdaptor;
+export default YextResultCardLinksAdaptor;
