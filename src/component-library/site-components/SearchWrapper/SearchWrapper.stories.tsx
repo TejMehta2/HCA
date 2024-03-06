@@ -40,7 +40,9 @@ export const Default: StoryObj<typeof SearchWrapper> = {
         heading={
           <Text variation={'display-2'}>News & articles about healthcare </Text>
         }
-        search={<SearchBar placeholder="" />}
+        search={
+          <SearchBar placeholder="Search services, treatments, conditions..." />
+        }
         theme={'A-HCA-White'}
       >
         <Text variation="body-large">
