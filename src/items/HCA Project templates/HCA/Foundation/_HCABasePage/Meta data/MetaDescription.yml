@@ -1,17 +1,21 @@
 ﻿---
-ID: "f1a8a75b-63a0-4eda-94f2-89e152314262"
+ID: "a507a55f-819a-46b1-a386-a5abecad832c"
 Parent: "82bf28db-bc71-42d7-b1d2-2f68b69b4152"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_HCABasePage/Meta data/Meta Image
+Path: /sitecore/templates/Project/HCA/Foundation/_HCABasePage/Meta data/MetaDescription
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Image
+  Value: "Multi-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 200
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Meta Description
   Versions:
   - Version: 1
     Fields:
@@ -28,11 +32,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7d851bbc-32b8-4707-a4e0-b371b5d56928"
+      Value: "8bf19267-8506-41c9-ad68-b55570c73e77"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231116T104017Z
+      Value: 20240306T072831Z
