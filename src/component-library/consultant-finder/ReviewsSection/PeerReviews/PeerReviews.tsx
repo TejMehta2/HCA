@@ -33,7 +33,7 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
         setIsLoading(false);
       });
     // eslint-disable-next-line
-        }, []);
+  }, []);
 
   const loadMore = () => {
     setNext(next + reviewPerRow);
