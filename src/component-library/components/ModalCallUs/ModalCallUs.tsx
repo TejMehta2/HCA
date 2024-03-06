@@ -23,22 +23,22 @@ const ModalCallUs = (
   }): JSX.Element => (
     <div className={styles.contact}>
       <div className={styles.title}>
-        <Text variation={'subheading-1'}>{contact.title}</Text>
+        <Text variation={'subheading-1'}>{contact?.title}</Text>
       </div>
 
       <div className={styles.mobile}>
         {isMain ? (
           <Button size={'small'} variation={'full'}>
-            <a href={`tel:${contact.phone.number}`}>
+            <a href={`tel:${contact?.phone?.number}`}>
               <Icons iconName="iconPhone" />
-              {contact.phone.text}
+              {contact?.phone?.text}
             </a>
           </Button>
         ) : (
           <TextButton>
-            <a href={`tel:${contact.phone.number}`}>
+            <a href={`tel:${contact?.phone?.number}`}>
               <Icons iconName="iconPhone" />
-              {contact.phone.text}
+              {contact?.phone?.text}
             </a>
           </TextButton>
         )}
@@ -46,13 +46,13 @@ const ModalCallUs = (
       <div className={styles.desktop}>
         <div className={styles.link}>
           <Text variation={isMain ? 'display-1' : 'display-5'}>
-            <a href={`tel:${contact.phone.number}`}>{contact.phone.text}</a>
+            <a href={`tel:${contact?.phone?.number}`}>{contact?.phone?.text}</a>
           </Text>
         </div>
       </div>
       <div className={styles.availability}>
         <Icons iconName={'iconClock'} />
-        <Text variation={'body-medium-large'}>{contact.availability}</Text>
+        <Text variation={'body-medium-large'}>{contact?.availability}</Text>
       </div>
     </div>
   );
