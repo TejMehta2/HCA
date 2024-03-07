@@ -83,6 +83,10 @@
     grid: auto auto / 1.25fr 1fr;
     gap: px-to-rem(8) px-to-rem(24);
   }
+
+  svg {
+    min-width: min-content;
+  }
 }
 
 .address {
@@ -99,10 +103,6 @@
 .open {
   display: flex;
   gap: 0 px-to-rem(8);
-
-  svg {
-    min-width: min-content;
-  }
 }
 
 .location-wrapper {

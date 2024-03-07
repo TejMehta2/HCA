@@ -17,7 +17,6 @@ import { Default as CQCRating } from '../CQCRating/CQCRating';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import Params from 'src/types/params';
 import HeaderLocation from '@component-library/site-components/HeaderLocation/HeaderLocation';
-import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
