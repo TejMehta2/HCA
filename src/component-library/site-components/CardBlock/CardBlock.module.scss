@@ -8,6 +8,7 @@
 
 .block {
   @include responsive-container;
+
   padding-bottom: $spacing-13;
 }
 
@@ -58,5 +59,6 @@
 
 .cta {
   @include responsive-grid-span(6, 6, 12, 12);
+
   padding-top: $spacing-7;
 }
