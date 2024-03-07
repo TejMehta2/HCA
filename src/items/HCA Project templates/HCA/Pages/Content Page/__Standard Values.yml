@@ -6,10 +6,7 @@ Path: /sitecore/templates/Project/HCA/Pages/Content Page/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: |
-    {0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}
-    {C14B6289-8AC2-439C-9E5B-40DE9F820C3F}
-    {1C82E550-EBCD-4E5D-8ABD-D50D0809541E}
+  Value: 
 - ID: "4a749557-242b-4372-8a20-b2db9d406301"
   Hint: __AutoThumbnails
   Value: 
@@ -31,11 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "108870a5-9945-4ce9-8ce2-1d30015640f8"
+      Value: "e5e71e5f-c73b-480a-9868-5ea3acce175a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102402Z
+      Value: 20240304T154350Z
