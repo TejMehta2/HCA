@@ -4,11 +4,17 @@ import styles from './BlogContent.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const BlogContent = (props: BlogContentProps): JSX.Element => {
-  const { theme, children } = props;
+  const { theme, children, contentVariation } = props;
   return (
     <Themes theme={theme}>
       <div className={styles.wrapper}>
-        <div className={styles.container}>{children}</div>
+        <div
+          className={`${styles.container} ${
+            contentVariation === 'quote' ? styles['quote-block'] : ''
+          }`}
+        >
+          {children}
+        </div>
       </div>
     </Themes>
   );
