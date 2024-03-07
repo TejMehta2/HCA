@@ -74,17 +74,21 @@ const SearchDdropdownConsultant = (props: SearchDropdownProps): JSX.Element => {
                           }}
                         ></span>
                       )}
-                      {!props.resultsIcon && <Icons iconName="iconSearch" />}
+                      {!props.resultsIcon && (
+                        <Icons iconName="iconStethoscope" />
+                      )}
                     </span>
                     <div>
-                      <Text tag="h4" variation="body-small">
-                        {item?.specialty ||
-                          item?.keywords?.[0]?.name ||
-                          'Specialty'}
-                      </Text>
                       <Text tag="p" variation="body-medium">
                         {`${item.firstName} ${item.lastName}`}
                       </Text>
+                      <div className={styles.specialty}>
+                        <Text tag="h4" variation="body-small">
+                          {item?.specialty ||
+                            item?.keywords?.[0]?.name ||
+                            'Specialty'}
+                        </Text>
+                      </div>
                     </div>
                   </li>
                 ))}

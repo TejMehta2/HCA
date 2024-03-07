@@ -4,6 +4,7 @@ export interface ReviewsProps {
   reviewsTotal: number;
   reviewsCount: number;
   reviewsText?: string;
+  noReviewsMsg?: string;
   isConsultantProfileReviews: boolean;
   hasTooltip?: boolean;
   tooltipContent?: ReactNode | JSX.Element;

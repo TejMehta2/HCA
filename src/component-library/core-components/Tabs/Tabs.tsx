@@ -5,6 +5,10 @@ import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import useWindowWidth from '../../hooks/useWindowWidth';
 
+// avoid useLayoutEffect when SSR pages https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+export const useBrowserLayoutEffect =
+  typeof window === 'undefined' ? useLayoutEffect : () => {};
+
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
   const { callback, tabs } = props;
@@ -32,7 +36,8 @@ const Tabs = (props: TabsProps): JSX.Element => {
   };
 
   const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
-  useLayoutEffect(() => {
+
+  useBrowserLayoutEffect(() => {
     // Store the dimensions from label elements on load
     const dimensions = refs?.current?.map((labelElement) => {
       return {

@@ -25,7 +25,9 @@ Languages:
       Value: "{0452ADC8-ECC8-42AA-B890-AB8D1E146BA9}"
     - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
       Hint: FilterOptions
-      Value: "{74B661F5-1A80-46D7-A41A-CEE3D7A55E26}"
+      Value: |
+        {74B661F5-1A80-46D7-A41A-CEE3D7A55E26}
+        {655C5323-B313-4DAB-9C32-D37FB7447539}
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -39,10 +41,10 @@ Languages:
       Value: "How can we help you?"
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
-      Value: "{CC2A321E-AA1B-4AE2-BA3E-CFA836280CF8}"
+      Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6e2a4aaf-af66-404b-a8e2-447f023f7aaa"
+      Value: "28e98757-63c1-4f30-a6c6-7bcd230962ba"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -66,4 +68,4 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T165204Z
+      Value: 20240305T130744Z

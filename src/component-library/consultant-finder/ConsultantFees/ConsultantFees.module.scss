@@ -1,0 +1,8 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.fees {
+  .info {
+    margin-top: $spacing-5;
+  }
+}

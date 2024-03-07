@@ -78,18 +78,14 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     }
   );
 
+  //  remove home which should be the last item in ancestors
+  breadcrumbList?.pop();
   const title = getTitle(props.fields?.data?.contextItem);
   breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
 
   if (!props?.fields?.data?.contextItem?.ancestors?.length) {
     return <></>;
   }
-  return (
-    <Breadcrumbs
-      children={breadcrumbList?.slice(
-        0,
-        props?.fields?.data?.contextItem?.ancestors?.length - 1
-      )}
-    />
-  );
+
+  return <Breadcrumbs children={breadcrumbList} />;
 };

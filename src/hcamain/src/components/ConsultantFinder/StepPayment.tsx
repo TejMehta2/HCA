@@ -88,6 +88,7 @@ export const Default = (props: StepProps): JSX.Element => {
           theme="A-HCA-White"
           imageAlignment="left"
           length="short"
+          hideImageOnMobile={true}
           subheader={
             <Text tag="h3" variation="subheading-1">
               <JssRichText field={props.fields.HeadingText} />

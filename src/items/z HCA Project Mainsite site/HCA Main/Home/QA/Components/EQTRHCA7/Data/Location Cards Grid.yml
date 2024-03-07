@@ -10,23 +10,13 @@ Languages:
     Fields:
     - ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
       Hint: FilterOptions
-      Value: |
-        {BF199CE6-1A69-47EE-8580-8DD517EA0E5C}
-        {136C4723-50DD-4583-B2D7-BF1628EE428D}
-        {E8B7BA01-3B89-4116-B966-01E3707C97F2}
-        {17076077-07FE-4A6F-BC9C-166DF461FC19}
-        {0E7EDF6E-E7BA-4BDB-914B-58B281647E64}
+      Value: 
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240228T212043Z
     - ID: "50f18c4e-7dd1-4672-91b5-74dc61a1dade"
       Hint: Locations
-      Value: |
-        {114F95BA-9012-4A8F-9507-426B2A948885}
-        {0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}
-        {8F20EEFF-201D-43AC-8D49-E1789D91392B}
-        {57625A30-7050-4DC3-915E-489D97422642}
-        {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
+      Value: 
     - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum
@@ -35,7 +25,7 @@ Languages:
       Value: Get directions
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6a2554de-7227-46cd-be2f-0202d4866f64"
+      Value: "185316b9-0494-4ca3-85c5-81fa66c93b44"
     - ID: "b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012"
       Hint: CTAText
       Value: Learn more
@@ -48,4 +38,7 @@ Languages:
       Value: Locations
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T095429Z
+      Value: 20240306T120858Z
+    - ID: "ec60c2d1-b6a4-4eae-a88d-ccb016b6b677"
+      Hint: NumberOfCards
+      Value: 3

@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories/Data/Stories
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: DataSource=/sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Patient Story Page
+  Value: "StartSearchLocation={your folder guid which you want to use as source folder}&TemplateFilter={your template guid which you want filter in the sourcce folder}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Treelist
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ac389190-68db-49f2-beac-7d4bf5420eb0"
+      Value: "7aca9d5c-30ea-4e7c-ba43-a25621127a53"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231204T101029Z
+      Value: 20240306T091632Z
