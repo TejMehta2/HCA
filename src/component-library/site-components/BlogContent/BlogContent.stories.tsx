@@ -92,6 +92,7 @@ export const BlogImage: StoryObj<typeof BlogContent> = {
 export const BlogQuote: StoryObj<typeof BlogContent> = {
   args: {
     theme: 'A-HCA-White',
+    contentVariation: 'quote',
     children: (
       <QuoteBlock
         author={{
