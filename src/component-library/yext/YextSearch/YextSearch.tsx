@@ -9,6 +9,7 @@ import YextTabs from '../YextTabs/YextTabs';
 import YextProvider from '../YextProvider/YextProvider';
 import StyledYextSearchBar from '../StyledYextSearchBar/StyledYextSearchBar';
 import YextResultCardArticlesAdaptor from '../YextResultCardArticles/YextResultCardArticles.adaptor';
+import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLinks.adaptor';
 import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
 
 const YextSearch = (): JSX.Element => {
@@ -32,6 +33,7 @@ const YextSearch = (): JSX.Element => {
               },
               tests_and_treatments: {
                 label: 'Tests & Treatments',
+                CardComponent: YextResultCardLinksAdaptor,
               },
               specialties: {
                 label: 'Service Lines',
