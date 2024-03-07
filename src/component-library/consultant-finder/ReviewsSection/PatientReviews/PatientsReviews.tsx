@@ -35,7 +35,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
         setIsLoading(false);
       });
     // eslint-disable-next-line
-        }, [offset, selectValue]);
+  }, [offset, selectValue]);
 
   const loadMore = () => {
     setOffset((prev) => prev + 2);

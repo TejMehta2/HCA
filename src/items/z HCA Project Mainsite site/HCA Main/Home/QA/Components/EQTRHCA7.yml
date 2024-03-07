@@ -6,8 +6,7 @@ Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA7
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{DFE16670-4C41-46F6-B75A-1296673CA8A9}" />
+  Value: 
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -52,11 +51,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "941e4a32-7f38-4188-b829-1fcfec641f82"
+      Value: "9b8ac83a-30f2-4756-afc0-2a3bd7e2704f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T103016Z
+      Value: 20240306T065910Z

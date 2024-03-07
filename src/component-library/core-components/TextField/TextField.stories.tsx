@@ -10,7 +10,7 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -29,7 +29,9 @@ export const Default: StoryObj<typeof TextField> = {
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],
@@ -45,7 +47,9 @@ export const Required: StoryObj<typeof TextField> = {
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],
@@ -62,7 +66,9 @@ export const Email: StoryObj<typeof TextField> = {
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],

@@ -74,7 +74,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   fallback = 'blocking';
 
-  console.log('IN Finder subpage GetStaticPaths');
+  //console.log('IN Finder subpage GetStaticPaths');
   //console.log('paths:', paths);
   //console.log('fallback:', fallback);
   return {
@@ -87,7 +87,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN Finder subpage GetStaticProps');
+  //console.log('IN Finder subpage GetStaticProps');
   //console.log('context.params', context.params);
 
   if (context.params) {

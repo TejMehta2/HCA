@@ -66,7 +66,7 @@ export const Default = (props: StepProps): JSX.Element => {
     consultantSlug,
   } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
-  console.log('search consultant by name', props);
+  //console.log('search consultant by name', props);
 
   // useEffect(() => {
   //   // Check if the 'test' query parameter is empty or not present
@@ -85,6 +85,7 @@ export const Default = (props: StepProps): JSX.Element => {
           theme="A-HCA-White"
           imageAlignment="left"
           length="short"
+          hideImageOnMobile={true}
           subheader={
             <Text tag="h3" variation="subheading-1">
               <JssRichText field={props.fields.HeadingText} />

@@ -53,9 +53,13 @@ interface Fields {
       };
       cTAText?: { jsonValue?: Field<string> };
       getDirectionsText?: { jsonValue?: Field<string> };
+      numberOfCards?: { jsonValue?: Field<string> };
     };
     contextItem?: {
-      id?: string;
+      treatmentId?: string;
+      serviceLineId?: string;
+      scanId?: string;
+      conditionId?: string;
     };
   };
 }

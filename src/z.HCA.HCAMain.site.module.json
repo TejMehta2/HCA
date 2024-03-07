@@ -41,6 +41,11 @@
             "path": "/Data/Authors",
             "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
+          },	
+          {
+            "path": "/Data/Consultants",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
           },		  
           {
             "path": "/Data",
@@ -90,7 +95,7 @@
           {
             "path": "/Settings/Search",
             "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
+            "allowedPushOperations": "CreateUpdateAndDelete"
           },
           {
             "path": "/Settings",

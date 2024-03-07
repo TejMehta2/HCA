@@ -25,7 +25,6 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof ShareCTA> = {
   args: {
-    theme: 'A-HCA-White',
     shareData: {
       url: 'https://hca-digital-dev-hca-main.hcatest.co.uk/',
       title: 'Hip Surgery - £5,000',
