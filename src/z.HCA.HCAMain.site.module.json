@@ -84,7 +84,7 @@
           },
           {
             "path": "/Settings/DoctifyFilters",
-            "scope": "ItemAndChildren",
+            "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
           },
           {

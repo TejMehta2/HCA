@@ -11,10 +11,6 @@ Languages:
     - ID: "09288575-7091-48ef-bdd9-f527623b3052"
       Hint: CardStyles
       Value: "translateY(-35%) translateX(30%)"
-    - ID: "09eb586f-498f-4079-8508-a69f56667771"
-      Hint: ForegroundImageDesktop
-      Value: |
-        <image mediaid="{93D39D25-6CA9-44B3-A684-1530DD28A732}" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T090254Z
@@ -35,10 +31,6 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
-    - ID: "c29669ce-4b49-4342-ac91-38ab9781c12f"
-      Hint: ForegroundImageMobile
-      Value: |
-        <image mediaid="{2215075E-D9A6-4915-A9D2-E88E64E21761}" />
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
       Value: 1

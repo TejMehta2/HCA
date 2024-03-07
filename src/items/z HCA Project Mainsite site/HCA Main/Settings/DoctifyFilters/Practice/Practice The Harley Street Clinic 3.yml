@@ -1,0 +1,26 @@
+﻿---
+ID: "50b8a193-0615-4369-9d96-c8cc47da004d"
+Parent: "b899cb04-dd6d-4bc0-a4bc-0bc1f699542e"
+Template: "74c813ec-af5a-4a1b-b0b6-5ea004f908e7"
+Path: /sitecore/content/HCA/HCA Main/Settings/DoctifyFilters/Practice/Practice The Harley Street Clinic 3
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231113T200242Z
+    - ID: "51584e8c-360b-47ea-96e0-bd5d45dec2af"
+      Hint: Filter
+      Value: "practice=the-harley-street-clinic-3"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "18b8776d-b01f-49b4-a3cb-ea5219ffdd0a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231113T210547Z

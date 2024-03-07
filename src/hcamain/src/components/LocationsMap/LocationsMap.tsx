@@ -14,10 +14,9 @@ type CardsFields = {
     Number?: Field<string>;
     Text?: Field<string>;
     Theme?: Item;
-    ForegroundImageDesktop?: ImageFieldValue;
-    ForegroundImageMobile?: ImageFieldValue;
     MapStyles?: Field<string>;
     CardStyles?: Field<string>;
+    PinPosition?: Field<string>;
   };
 };
 
@@ -25,6 +24,8 @@ interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;
+  BackgroundImage?: ImageFieldValue;
+  PinImage?: ImageFieldValue;
   Cards?: CardsFields[];
 }
 
@@ -55,6 +56,8 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props.fields?.Text} />
       <br />
+      <JSSImage field={props.fields?.BackgroundImage} />
+      <br />
       <ul>
         {props.fields?.Cards?.map((card, index) => (
           <li key={index}>
@@ -65,13 +68,11 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
             <br />
             <span>{card?.fields?.Theme?.name?.toString()}</span>
             <br />
-            <JSSImage field={card?.fields?.ForegroundImageDesktop} />
-            <br />
-            <JSSImage field={card?.fields?.ForegroundImageMobile} />
-            <br />
             <JssText field={card?.fields?.MapStyles} />
             <br />
             <JssText field={card?.fields?.CardStyles} />
+            <br />
+            <JssText field={card?.fields?.PinPosition} />
             <br />
           </li>
         ))}

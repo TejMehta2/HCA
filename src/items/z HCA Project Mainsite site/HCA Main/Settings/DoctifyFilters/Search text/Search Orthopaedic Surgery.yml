@@ -1,0 +1,26 @@
+﻿---
+ID: "c4635909-9348-484c-bc85-c28953fbe609"
+Parent: "6491a791-14ec-48de-8650-d224a8d44582"
+Template: "74c813ec-af5a-4a1b-b0b6-5ea004f908e7"
+Path: /sitecore/content/HCA/HCA Main/Settings/DoctifyFilters/Search text/Search Orthopaedic Surgery
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231113T204820Z
+    - ID: "51584e8c-360b-47ea-96e0-bd5d45dec2af"
+      Hint: Filter
+      Value: search=Orthopaedic%20Surgery
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c98192cb-4e74-45b7-9df9-cf0bb9c48437"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231113T205235Z

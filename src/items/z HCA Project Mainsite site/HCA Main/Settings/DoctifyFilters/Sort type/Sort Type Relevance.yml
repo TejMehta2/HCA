@@ -1,0 +1,26 @@
+﻿---
+ID: "fe9f3577-4e74-49ac-9ac4-8bf3964df0ab"
+Parent: "f2f3cc5b-37a3-49f7-9877-4bcce89fdc8b"
+Template: "74c813ec-af5a-4a1b-b0b6-5ea004f908e7"
+Path: /sitecore/content/HCA/HCA Main/Settings/DoctifyFilters/Sort type/Sort Type Relevance
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231113T195957Z
+    - ID: "51584e8c-360b-47ea-96e0-bd5d45dec2af"
+      Hint: Filter
+      Value: sortType=relevance
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ea12b168-19b9-4d0b-bc4e-bd6170ff1c96"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231113T210533Z
