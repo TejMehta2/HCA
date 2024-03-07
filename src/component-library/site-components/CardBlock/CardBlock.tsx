@@ -15,16 +15,18 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
   } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles.block}>
-        <div
-          className={[
-            styles.grid,
-            styles[`variation-${variation}`],
-            styles[gapSize],
-          ].join(' ')}
-        >
-          <div className={styles.header}>{header}</div>
-          {children}
+      <div className={styles.wrapper}>
+        <div className={styles.block}>
+          <div
+            className={[
+              styles.grid,
+              styles[`variation-${variation}`],
+              styles[gapSize],
+            ].join(' ')}
+          >
+            <div className={styles.header}>{header}</div>
+            {children}
+          </div>
           <div className={styles.cta}>
             <Button variation="full" size="large">
               {cta}
