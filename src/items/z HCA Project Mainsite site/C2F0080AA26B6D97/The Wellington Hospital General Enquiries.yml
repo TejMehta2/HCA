@@ -1,0 +1,32 @@
+﻿---
+ID: "4d20631a-6a04-48c1-8a98-3b046ed043b4"
+Parent: "49c9ef54-baa4-4048-98f7-22011042104d"
+Template: "b1eba38c-c69b-4286-ad4c-96b5d17aafe8"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/The Wellington Hospital Telephone Numbers/The Wellington Hospital General Enquiries
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T204432Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "44776676-7a43-45e9-90a6-3feefd10c399"
+    - ID: "a045dc2d-cbe9-441a-83fd-cf0b824b5678"
+      Hint: InternationPhoneNumber
+      Value: +447921874889
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "bcb8e0ef-378c-4ad7-bbab-f463ddfc2307"
+      Hint: PhoneNumberLabel
+      Value: General Enquiries
+    - ID: "c16d95c6-0161-41e8-a672-c65659203216"
+      Hint: PhoneNumber
+      Value: 07921 874 889
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240306T100744Z

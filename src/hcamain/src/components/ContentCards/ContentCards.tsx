@@ -48,7 +48,7 @@ const ContentCardsDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ContentCardsProps): JSX.Element => {
+export const WithImage = (props: ContentCardsProps): JSX.Element => {
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
@@ -108,4 +108,11 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       </>
     </CardBlock>
   );
+};
+
+export const WithoutImage = (props: ContentCardsProps): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <ContentCardsDefaultComponent {...props} />;
+  }
+  return <WithImage {...props} />;
 };
