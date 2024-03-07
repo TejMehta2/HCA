@@ -136,8 +136,6 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <CardBlock
       theme={props.params?.Theme || 'A-HCA-White'}
