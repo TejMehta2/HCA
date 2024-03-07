@@ -3,6 +3,7 @@ import {
   Field,
   ImageField,
   Text as JssText,
+  Link as JssLink,
   Image as JssImage,
   RichText as JssRichText,
   LinkField,
@@ -160,9 +161,16 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       }
       variation="3-columns"
       cta={
-        <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
-          View all hip pain locations
-        </a>
+        props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
+            <JssRichText
+              tag="span"
+              field={{
+                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+              }}
+            />
+          </JssLink>
+        )
       }
     >
       <>{MapCards(props)}</>
@@ -192,9 +200,16 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         </Text>
       }
       link={
-        <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
-          View all hip pain locations
-        </a>
+        props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
+            <JssRichText
+              tag="span"
+              field={{
+                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+              }}
+            />
+          </JssLink>
+        )
       }
     >
       {MapCards(props)}
