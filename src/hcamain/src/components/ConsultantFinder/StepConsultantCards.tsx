@@ -45,7 +45,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('search consultant by name', props);
+  //console.log('search consultant by name', props);
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
