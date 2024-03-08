@@ -21,6 +21,7 @@
 
     input {
       color: inherit;
+      width: 100%;
       padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
       height: $spacing-9;
       border: 1px solid $navy-blue-60;
@@ -52,7 +53,6 @@
     }
   }
 
-  // TODO error colour
   &:has(input:not(:focus):invalid) {
     color: var(--field-error-colour);
 

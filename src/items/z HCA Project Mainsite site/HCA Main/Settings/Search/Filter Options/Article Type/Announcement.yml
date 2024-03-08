@@ -14,16 +14,19 @@ Languages:
     - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
       Hint: DisplayName
       Value: Announcement
+    - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
+      Hint: FilterValue
+      Value: "{C631A9B1-127D-4DF1-892D-74BE147BC048}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "419e43fd-4f98-4309-8a40-3150dddd90ab"
+      Value: "145384dc-7b09-4e44-854a-e12dedd6150f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240223T222731Z
+      Value: 20240305T131607Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: Announcement
+      Value: articleTypeId=

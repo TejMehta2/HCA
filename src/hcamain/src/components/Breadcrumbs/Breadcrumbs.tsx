@@ -14,7 +14,7 @@ type AncestorsFields = {
   abstractTitle?: { value?: string };
   displayName?: string;
   name?: string;
-  url?: { path?: string };
+  url?: { url?: string };
 };
 
 interface Fields {
@@ -29,7 +29,6 @@ interface Fields {
       abstractTitle?: { value?: string };
       displayName?: string;
       name?: string;
-      url?: { path?: string };
       ancestors?: AncestorsFields[];
     };
   };
@@ -88,7 +87,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
       });
 
       return (
-        <Link href={ancestor?.url?.path || ''} key={index}>
+        <Link href={ancestor?.url?.url || ''} key={index}>
           {title}
         </Link>
       );

@@ -31,8 +31,6 @@ const mockProps: ShareCTAProps = {
     </Text>
   ),
 
-  theme: 'A-HCA-White',
-
   children: (
     <Button size="large" variation="square-outline">
       <a

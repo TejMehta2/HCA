@@ -1,16 +1,19 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.block {
+.wrapper {
   background-color: var(--background);
   color: var(--text);
 }
 
-.grid {
+.block {
   @include responsive-container;
-  @include responsive-grid;
 
   padding-bottom: $spacing-13;
+}
+
+.grid {
+  @include responsive-grid;
 }
 
 /* stylelint-disable no-descending-specificity */
@@ -52,4 +55,10 @@
 .header {
   /* stylelint-disable unit-disallowed-list */
   margin-bottom: -1rem; // offset gap
+}
+
+.cta {
+  @include responsive-grid-span(6, 6, 12, 12);
+
+  padding-top: $spacing-7;
 }

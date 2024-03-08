@@ -13,13 +13,17 @@ Languages:
       Value: 20240208T000452Z
     - ID: "6b2b0879-3624-4bf1-9c6b-fbb0efc597da"
       Hint: NavigationTabs
-      Value: "{044E4C9B-F6C0-4EE2-A35C-A8CD8D16F035}|{CCD24E7B-D808-4AF5-89EF-2C392AD380A3}|{68DDDDED-9192-477B-905F-A33C945B9739}"
+      Value: "{044E4C9B-F6C0-4EE2-A35C-A8CD8D16F035}|{CCD24E7B-D808-4AF5-89EF-2C392AD380A3}|{68DDDDED-9192-477B-905F-A33C945B9739}|{0DE6B6B0-020E-482F-ADCE-0FB1DF57D4F9}|{32FEFB0F-653B-474A-B182-8AB813544D57}"
     - ID: "854abf43-7a6a-4c8a-9226-07f9b985bd4a"
       Hint: SecondaryComplementaryLinksFolder
       Value: "{57809FCD-49FF-4D8F-A2C6-2263F16E2FCA}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0f711531-3173-4688-a23c-0160ce4917ff"
+      Value: "1d6f8e6f-9855-4c97-9af6-68e3fe88fbeb"
+    - ID: "9ffdc928-1e83-4c59-86b9-82c1265607e6"
+      Hint: Logo
+      Value: |
+        <image mediaid="{D0E57F35-27A3-4E88-83FB-475874B143A3}" />
     - ID: "b06bcb16-571f-444c-a3f8-af18c7cae5fb"
       Hint: PrimaryComplementaryLinksFolder
       Value: "{74EAB260-2B06-4FD7-9D34-58A3006AA343}"
@@ -27,6 +31,10 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
+    - ID: "cc99cd32-d8b5-4338-ae31-cb62c1f93f96"
+      Hint: DarkLogo
+      Value: |
+        <image mediaid="{62DBA60D-3197-4BD7-A09F-852D7C123440}" />
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240208T140817Z
+      Value: 20240220T134739Z
