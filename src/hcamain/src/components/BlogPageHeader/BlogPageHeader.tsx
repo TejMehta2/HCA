@@ -4,7 +4,6 @@ import {
   RichText,
   LinkField,
   Text as JssText,
-  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
