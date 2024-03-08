@@ -3,10 +3,17 @@ import {
   Field,
   ImageField,
   Text as JssText,
-  Image as JSSImage,
+  Link as JssLink,
+  Image as JssImage,
+  RichText as JssRichText,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import CardMap from '@component-library/components/CardMap/CardMap';
+import Text from '@component-library/foundation/Text/Text';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -25,6 +32,7 @@ type LocationsFields = {
   street?: { value?: string };
   postCode?: { value?: string };
   getDirections?: { value?: string };
+  url: { path?: string };
 };
 
 interface Fields {
@@ -71,82 +79,106 @@ const LocationCardsDefaultComponent = (
   </div>
 );
 
+const MapCards = (props: LocationCardsProps) => {
+  return props.fields?.data?.item?.locations?.LocationsList?.map(
+    (location, index) => (
+      <CardMap
+        key={index}
+        title={
+          <Text variation="heading-1" tag="h4">
+            <JssText field={location?.title} />
+          </Text>
+        }
+        address={
+          <>
+            {location?.city?.value && (
+              <Text variation={'body-large'} tag="span">
+                <JssText field={location?.city} />
+                &nbsp;
+              </Text>
+            )}
+            {location?.street?.value && (
+              <Text variation={'body-large'} tag="span">
+                <JssText field={location?.street} />
+                &nbsp;
+              </Text>
+            )}
+            {location?.postCode?.value && (
+              <Text variation={'body-large'} tag="span">
+                <JssText field={location?.postCode} />
+              </Text>
+            )}
+          </>
+        }
+        image={<JssImage field={location?.image?.jsonValue} />}
+        ctas={{
+          button1: (
+            <a href={location?.url?.path}>
+              <JssRichText
+                field={props?.fields?.data?.item?.cTAText?.jsonValue}
+              />
+            </a>
+          ),
+          button2: (
+            <a href={location?.getDirections?.value}>
+              <span>
+                <JssText
+                  field={
+                    props?.fields?.data?.item?.getDirectionsText?.jsonValue
+                  }
+                />
+              </span>
+            </a>
+          ),
+        }}
+      />
+    )
+  );
+};
+
 export const Grid = (props: LocationCardsProps): JSX.Element => {
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
   }
+
   return (
-    <div className={`component ${props.params?.styles}`}>
-      <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.text?.jsonValue} />
-      <br />
-      <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
-        {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup.value,
-            }}
-          />
-        )}
-      </a>
-      <br />
-      <span>Locations:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.locations?.LocationsList?.map(
-          (location, index) => (
-            <li key={index}>
-              <JssText field={location?.title} />
-              <br />
-              <JSSImage field={location?.image?.jsonValue} />
-              <br />
-              <JssText field={location?.city} />
-              <br />
-              <JssText field={location?.street} />
-              <br />
-              <JssText field={location?.postCode} />
-              <br />
-              <JssText field={location?.getDirections} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <span>Filter Options:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.filterOptions?.filterOptionsList?.map(
-          (filterOption, index) => (
-            <li key={index}>
-              <JssText field={filterOption?.displayName} />
-              <br />
-              <JssText field={filterOption?.filter} />
-              <br />
-              <span>{filterOption?.filterValue?.value}</span>
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.getDirectionsText?.jsonValue} />
-      <br />
-      <span>Page ID when the page is of type Treatment: </span>{' '}
-      <span>{props.fields?.data?.contextItem?.treatmentId}</span>
-      <span>Page ID when the page is of type Condition: </span>{' '}
-      <span>{props.fields?.data?.contextItem?.conditionId}</span>
-      <span>Page ID when the page is of type Diagnosis: </span>{' '}
-      <span>{props.fields?.data?.contextItem?.scanId}</span>
-      <span>Page ID when the page is of type SpecialtyPage: </span>{' '}
-      <span>{props.fields?.data?.contextItem?.serviceLineId}</span>
-      <br />
-    </div>
+    <CardBlock
+      theme={props.params?.Theme || 'A-HCA-White'}
+      header={
+        <AdvancedBlockHeader
+          contentVariation="half-width"
+          title={
+            <Text
+              tag={props.params?.HeadingTag || 'h3'}
+              variation={props.params?.HeadingSize || 'display-5'}
+            >
+              {props.fields?.data?.item?.title?.jsonValue?.value}
+            </Text>
+          }
+          body={
+            <Text variation={'body-large'}>
+              <JssText field={props.fields.data?.item?.text?.jsonValue} />
+            </Text>
+          }
+          paddingSize="small"
+        ></AdvancedBlockHeader>
+      }
+      variation="3-columns"
+      cta={
+        props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
+            <JssRichText
+              tag="span"
+              field={{
+                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+              }}
+            />
+          </JssLink>
+        )
+      }
+    >
+      <>{MapCards(props)}</>
+    </CardBlock>
   );
 };
 
@@ -154,5 +186,37 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
   }
-  return <Grid {...props} />;
+
+  return (
+    <CarouselCards
+      theme={props.params?.Theme || 'A-HCA-White'}
+      title={
+        <Text
+          tag={props.params?.HeadingTag || 'h3'}
+          variation={props.params?.HeadingSize || 'display-5'}
+        >
+          {props.fields?.data?.item?.title?.jsonValue?.value}
+        </Text>
+      }
+      bodyCopy={
+        <Text variation={'body-large'}>
+          <JssText field={props.fields.data?.item?.text?.jsonValue} />
+        </Text>
+      }
+      link={
+        props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
+            <JssRichText
+              tag="span"
+              field={{
+                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+              }}
+            />
+          </JssLink>
+        )
+      }
+    >
+      {MapCards(props)}
+    </CarouselCards>
+  );
 };
