@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './YextResultCardFAQs.module.scss';
 import Accordion from '../../components/Accordion/Accordion';
 import { YextResultCardFAQsProps } from './YextResultCardFAQs.types';
 
@@ -12,14 +11,12 @@ const YextResultCardFAQs = (props: YextResultCardFAQsProps): JSX.Element => {
 
   const { title, children } = props;
   return (
-    <div className={styles.wrapper}>
-      <Accordion
-        title={title}
-        children={children}
-        onShow={handleShow}
-        isActive={active}
-      />
-    </div>
+    <Accordion
+      title={title}
+      children={children}
+      onShow={handleShow}
+      isActive={active}
+    />
   );
 };
 
