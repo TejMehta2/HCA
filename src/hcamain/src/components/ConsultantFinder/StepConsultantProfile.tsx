@@ -193,32 +193,6 @@ export const Default = (props: StepProps): JSX.Element => {
     return <div>Profile is missing data, please retry later</div>;
   }
 
-  // console.log('consultant data,', serverSideData?.ProfileJson);
-  // //console.log('server side data from component props: ', serverSideData);
-  // console.log(
-  //   'Is live diaries consultant:',
-  //   serverSideData?.IsLiveDiaryConsultant
-  // );
-
-  // console.log('fist appointment:', serverSideData?.FirstAppointment);
-  // console.log(
-  //   'initial appointment:',
-  //   serverSideData?.FirstAppointment?.initial_appointment
-  // );
-  // console.log(
-  //   'follow up appointment:',
-  //   serverSideData?.FirstAppointment?.follow_appointment
-  // );
-
-  // console.log(
-  //   'formatted first appointment',
-  //   formatDateShort(serverSideData?.FirstAppointment?.initial_appointment)
-  // );
-  // console.log(
-  //   'formatted follow up appointment',
-  //   formatDateShort(serverSideData?.FirstAppointment?.follow_appointment)
-  // );
-
   // Callback function to handle tab clicks
   const handleTabClick = (label: any) => {
     // Determine which ref to use based on the label
