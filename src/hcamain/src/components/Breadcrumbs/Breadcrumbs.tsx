@@ -73,6 +73,8 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
+  console.log(props);
+
   const breadcrumbSchemaItem: BreadcrumbSchema = [];
 
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
@@ -83,7 +85,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
         '@type': 'ListItem',
         position: index + 1,
         name: title,
-        item: ancestor?.url?.path,
+        item: ancestor?.url?.url,
       });
 
       return (
