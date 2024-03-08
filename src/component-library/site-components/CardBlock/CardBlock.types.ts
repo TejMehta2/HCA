@@ -6,4 +6,5 @@ export interface CardBlockProps {
   theme: Theme;
   variation: 'side-by-side' | '3-columns' | '4-columns';
   gapSize?: 'small' | 'large';
+  cta?: JSX.Element;
 }

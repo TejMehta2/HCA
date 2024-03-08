@@ -1,8 +1,8 @@
 ﻿---
-ID: "cf07dd8c-dbe1-4f8e-8ef3-4cce17a36abb"
-Parent: "3e46ab03-87fd-4cf1-927d-2aa1054afccc"
-Template: "3e46ab03-87fd-4cf1-927d-2aa1054afccc"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards/__Standard Values
+ID: "0e3df4e3-974e-45a3-aef5-7ca8b2c2934c"
+Parent: "c26ec39e-2883-4116-8475-7dc51909bde7"
+Template: "c26ec39e-2883-4116-8475-7dc51909bde7"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Search/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -17,11 +17,11 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5e355d55-18f0-4028-a808-903830cb40c7"
+      Value: "d4a4adaf-e93d-48a1-b315-578ee6680f10"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T111600Z
+      Value: 20240307T223131Z

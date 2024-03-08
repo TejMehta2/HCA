@@ -10,9 +10,16 @@ const AdvancedBlockHeader = (props: AdvancedBlockHeaderProps): JSX.Element => {
     ctas,
     children,
     paddingSize = 'large',
+    contentVariation,
   } = props;
   return (
-    <div className={[styles.wrapper, styles[paddingSize]].join(' ')}>
+    <div
+      className={[
+        styles.wrapper,
+        styles[paddingSize],
+        contentVariation && styles[contentVariation],
+      ].join(' ')}
+    >
       {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
       {title && <div className={styles.title}>{title}</div>}
       {body && <div className={styles.body}>{body}</div>}

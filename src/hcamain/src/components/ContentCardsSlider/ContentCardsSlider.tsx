@@ -55,7 +55,12 @@ const ContentCardsSliderDefaultComponent = (
   </div>
 );
 
-export const WithImage = (props: ContentCardsSliderProps): JSX.Element => {
+interface WithImageProps extends ContentCardsSliderProps {
+  showImage: boolean;
+}
+
+export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { showImage = true } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields?.data?.item) {
@@ -94,12 +99,14 @@ export const WithImage = (props: ContentCardsSliderProps): JSX.Element => {
         <CardContent
           key={index}
           image={
-            cards?.image?.src ? <JssImage field={cards?.image} /> : undefined
+            cards?.image?.src && showImage ? (
+              <JssImage field={cards?.image} />
+            ) : undefined
           }
           title={
             <Text
               tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              variation="display-4"
+              variation="heading-1"
             >
               {cards?.title?.value}
             </Text>
@@ -131,5 +138,5 @@ export const WithoutImage = (props: ContentCardsSliderProps): JSX.Element => {
   if (!props.fields?.data?.item) {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
-  return <WithImage {...props} />;
+  return <WithImage {...props} showImage={false} />;
 };
