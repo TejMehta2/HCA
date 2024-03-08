@@ -198,7 +198,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
             noResultsMsg={props.noResultsMsg}
             error={error}
             setIsComponentVisible={setIsComponentVisible}
-            resultsIcon={props.searchIcon}
+            resultsIcon={props.searchIconResults}
             searchStringConsultantName={props.searchStringConsultantName}
             setSearchStringConsultantName={props.setSearchStringConsultantName}
             searchConsultantsResultsHeaderText={

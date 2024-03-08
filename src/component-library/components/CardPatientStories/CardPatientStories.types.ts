@@ -3,4 +3,5 @@ export interface CardPatientStoriesProps {
   title: JSX.Element;
   bodyCopy?: JSX.Element;
   link: JSX.Element;
+  contentVariation?: 'mixed';
 }

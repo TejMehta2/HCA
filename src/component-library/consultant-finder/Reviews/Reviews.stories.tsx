@@ -25,6 +25,7 @@ export const Default: StoryObj<typeof Reviews> = {
     reviewsTotal: 35,
     reviewsCount: 4.5,
     reviewsText: 'Patients',
+    noReviewsMsg: 'This consultant does not have any reviews at the moment.',
     isConsultantProfileReviews: true,
     hasTooltip: true,
     tooltipContent: tooltipContent,

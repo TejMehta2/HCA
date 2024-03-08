@@ -15,7 +15,7 @@ const meta: Meta<typeof ImageAndTextBlock> = {
   component: ImageAndTextBlock,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -356,5 +356,12 @@ export const TalkToUs: StoryObj<typeof ImageAndTextBlock> = {
         ]}
       />
     ),
+  },
+};
+
+export const hideImageOnMobile: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    ...Short.args,
+    hideImageOnMobile: true,
   },
 };

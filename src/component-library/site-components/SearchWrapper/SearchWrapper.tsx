@@ -33,7 +33,7 @@ const SearchWrapper = (
     tabs.push(item.tab);
   });
 
-  const tabChangeHandler = (newLabel: string) => {
+  const tabChangeHandler = ({ label: newLabel }: { label: string }) => {
     const newIndex = tabbedResults?.findIndex(
       (tabContent) => tabContent.tab.label === newLabel
     );

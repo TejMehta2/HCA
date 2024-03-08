@@ -46,6 +46,7 @@ interface Fields {
   CTAIcon?: HCAIconFields;
   CTALink?: LinkField;
   Cards?: BlogFields[];
+  BlogUrl?: LinkField;
 }
 
 type BlogCardsProps = {

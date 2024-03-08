@@ -1,0 +1,11 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.tabs {
+  display: block;
+  border-bottom: 1px solid $navy-blue-30;
+
+  @include media(screen-l) {
+    display: none;
+  }
+}

@@ -4,7 +4,12 @@ import Tabs from './Tabs';
 import { TabsProps } from './Tabs.types';
 
 const mockProps = {
-  callback: (name: string) => console.log(name),
+  callback: (args: {
+    label: string;
+    value: string;
+    name: string;
+    index: number;
+  }) => console.log(args.label),
   tabs: [
     { icon: 'iconOneOff', label: 'One-off' },
     { icon: 'iconFlexible', label: 'Flexi' },
@@ -21,7 +26,14 @@ describe('Tabs', () => {
   });
   it('Calls the callback function with the label of a clicked tab', async () => {
     let tab = '';
-    const callback = (label: string) => {
+    const callback = ({
+      label,
+    }: {
+      label: string;
+      value: string;
+      name: string;
+      index: number;
+    }) => {
       tab = label;
     };
     const { getByText } = render(
@@ -42,7 +54,14 @@ describe('Tabs', () => {
   });
   it('Does not call the callback function when the current tab is clicked', async () => {
     let tab = '';
-    const callback = (label: string) => {
+    const callback = ({
+      label,
+    }: {
+      label: string;
+      value: string;
+      name: string;
+      index: number;
+    }) => {
       tab = label;
     };
     const { getByText } = render(

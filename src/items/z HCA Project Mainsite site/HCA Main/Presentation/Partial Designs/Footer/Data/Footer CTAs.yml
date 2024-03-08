@@ -1,0 +1,31 @@
+﻿---
+ID: "214079d2-e2f2-45ac-a41b-adf791abc6c7"
+Parent: "8db12926-6436-40f8-bcbf-8ec2ffb6ca6e"
+Template: "6299a2ea-c1b8-4f0d-86c5-9189bf77f702"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Partial Designs/Footer/Data/Footer CTAs
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240115T125245Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b132fc13-fe14-4ca6-b010-f2fc34e2e028"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240130T095921Z

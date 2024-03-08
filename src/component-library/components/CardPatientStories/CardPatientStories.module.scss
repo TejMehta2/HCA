@@ -8,24 +8,7 @@
   flex-direction: column;
   border-radius: $radius-medium;
   overflow: hidden;
-  background-color: var(--background);
-
-  // Sequential background colours
-  &:nth-of-type(4n + 1) {
-    @include apply-theme-i-goldenrod;
-  }
-
-  &:nth-of-type(4n + 2) {
-    @include apply-theme-k-fern-20;
-  }
-
-  &:nth-of-type(4n + 3) {
-    @include apply-theme-g-orange;
-  }
-
-  &:nth-of-type(4n + 4) {
-    @include apply-theme-l-teal-5;
-  }
+  background-color: var(--card-background);
 
   img {
     width: 100%;
@@ -38,35 +21,6 @@
   &:hover {
     & img {
       transform: scale(1.05);
-    }
-  }
-}
-
-/* react-slick automatically appends a wrapper div around each slide which means card are no longer siblings.
-This gets around it by using the parent class as the sibling element to apply sequential background colours
-*/
-div[class*='slick-slide'] {
-  &:nth-of-type(4n + 1) {
-    .card {
-      @include apply-theme-i-goldenrod;
-    }
-  }
-
-  &:nth-of-type(4n + 2) {
-    .card {
-      @include apply-theme-k-fern-20;
-    }
-  }
-
-  &:nth-of-type(4n + 3) {
-    .card {
-      @include apply-theme-g-orange;
-    }
-  }
-
-  &:nth-of-type(4n + 4) {
-    .card {
-      @include apply-theme-l-teal-5;
     }
   }
 }
@@ -112,5 +66,28 @@ div[class*='slick-slide'] {
 .copy {
   & :last-child {
     margin-top: $spacing-4;
+  }
+}
+
+.mixed {
+  &.card {
+    background-color: var(--background);
+
+    //  Sequential background colours
+    &:nth-of-type(4n + 1) {
+      @include apply-theme-i-goldenrod;
+    }
+
+    &:nth-of-type(4n + 2) {
+      @include apply-theme-k-fern-20;
+    }
+
+    &:nth-of-type(4n + 3) {
+      @include apply-theme-a-white;
+    }
+
+    &:nth-of-type(4n + 4) {
+      @include apply-theme-l-teal-5;
+    }
   }
 }
