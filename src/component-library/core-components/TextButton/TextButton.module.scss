@@ -68,6 +68,10 @@
         display: none;
       }
     }
+
+    svg {
+      min-width: min-content;
+    }
   }
 }
 
