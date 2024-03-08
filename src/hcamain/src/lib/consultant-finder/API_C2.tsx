@@ -191,7 +191,7 @@ export async function getLDBConsultantSlots(
   return returnData;
 }
 
-interface ILDBDemographics {
+export interface ILDBDemographics {
   previouslyBeenWithHCA: boolean;
   title: string;
   firstName: string;
