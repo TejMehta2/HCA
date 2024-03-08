@@ -1,15 +1,18 @@
 ﻿---
-ID: "55462d0e-1d24-40a1-bdac-6314fdf4d6d8"
-Parent: "5a2b86aa-ce3c-41b8-b489-d6834d4d415c"
+ID: "bdad9d3c-099b-407c-bab3-3bdbfa11fb90"
+Parent: "4d96e85b-0112-49db-9535-cad74644f85b"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Blog Page Header/Data/Text
+Path: /sitecore/templates/Project/HCA/Page Content/Doctor Cards/Data/Consultants
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "StartSearchLocation={E6C26467-6202-4A21-9740-A8B384BD21ED}&TemplateFilter={89B968B7-8522-4C91-BA84-FE32F449A5CB}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Rich Text
+  Value: Multilist with Search
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 400
 Languages:
 - Language: en
   Versions:
@@ -17,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240111T085146Z
+      Value: 20240307T235647Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6d2f2add-ee39-49c9-aedb-18ab7fe8c312"
+      Value: "4b83c7ce-ac79-4d29-979b-39edecf62e49"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240111T085146Z
+      Value: 20240308T001329Z
