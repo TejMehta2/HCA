@@ -2,8 +2,6 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  @include responsive-container;
-
   display: flex;
   flex-direction: column;
   padding: $spacing-6 $spacing-6 $spacing-7;
