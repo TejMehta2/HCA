@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Field,
+  Item,
   Text as JssText,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -24,6 +25,7 @@ type SortOptionsFields = {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValue?: Item;
   };
 };
 
@@ -91,7 +93,11 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <ul>
               {filterOptions?.fields?.Filters?.map((filter, index) => (
                 <li key={index}>
+                  <JssText field={filter?.fields?.DisplayName} />
+                  <br />
                   <JssText field={filter?.fields?.Filter} />
+                  <br />
+                  <span>{filter?.fields?.FilterValue?.id}</span>
                   <br />
                 </li>
               ))}
