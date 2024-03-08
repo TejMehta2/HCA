@@ -11,13 +11,16 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240306T083626Z
+    - ID: "54cdb024-17aa-421d-b306-fd86e4fcd420"
+      Hint: Doctify Slug
+      Value: "professor-gordana-prelevic"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8f5b4e51-3bcd-498d-bd41-3fac436de372"
+      Value: "babe9781-3414-4cfd-8cfe-9bf86b092b1e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T083626Z
+      Value: 20240307T215940Z

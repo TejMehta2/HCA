@@ -11,13 +11,16 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240306T083559Z
+    - ID: "54cdb024-17aa-421d-b306-fd86e4fcd420"
+      Hint: Doctify Slug
+      Value: "dr-jesse-kumar-1"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ef8a3996-7c6d-4f8c-a371-e7eaad66d738"
+      Value: "9d332c2d-535a-4339-b68e-2c2087657874"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T083559Z
+      Value: 20240307T220014Z

@@ -14,13 +14,16 @@ Languages:
     - ID: "3cbe06d2-824b-4a70-89db-360b27942e66"
       Hint: Online Booking
       Value: 1
+    - ID: "54cdb024-17aa-421d-b306-fd86e4fcd420"
+      Hint: Doctify Slug
+      Value: "dulmini-kariyawasam"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f29c6a18-7f93-45a3-93d8-f1eb76be3282"
+      Value: "eac27966-a3f2-41b0-90a7-498faa39d363"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T082940Z
+      Value: 20240307T220217Z
