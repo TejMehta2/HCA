@@ -124,6 +124,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={sortOptions?.fields?.Filter} />
             <br />
+            <span>{sortOptions?.fields?.FilterValue?.id}</span>
+            <br />
           </li>
         ))}
       </ul>
@@ -139,6 +141,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={filterBy?.fields?.Filter} />
             <br />
+            <span>{filterBy?.fields?.FilterValue?.id}</span>
           </li>
         ))}
       </ul>
@@ -150,6 +153,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={searchby?.fields?.Filter} />
             <br />
+            <span>{searchby?.fields?.FilterValue?.id}</span>
           </li>
         ))}
       </ul>
