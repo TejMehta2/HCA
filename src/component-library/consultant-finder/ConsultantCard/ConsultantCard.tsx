@@ -29,7 +29,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           reviewsTotal={5}
           reviewsCount={props.reviewsCount}
           isConsultantProfileReviews={false}
-          hasTooltip={true}
+          hasTooltip={false}
           tooltipContent={'tooltip'}
           doctifyText={'Reviewd By'}
           doctifyLogo={null}
