@@ -507,8 +507,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  console.log('consultant cards', props);
-  console.log('ss data', serverSideData);
+  // console.log('consultant cards', props);
+  // console.log('ss data', serverSideData);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
     ConsultantFinderContext
   );
@@ -517,23 +517,69 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [totalPgaes, setTotalPages] = useState(0);
   const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
-  console.log('offset query', router.query.offset);
+  // console.log('offset query', router.query.offset);
   const [offset, setOffset] = useState(initialOffset);
-  console.log('queryParams', searchParams.toString());
-  
-  const currentPage = Math.ceil((initialOffset + 1) / 12);
-  console.log('current page', currentPage);
+  // console.log('queryParams', searchParams.toString());
 
+  const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
+
+  const currentPage = Math.ceil((initialOffset + 1) / 12);
+  // console.log('current page', currentPage);
+
+  const topHospitalsList = serverSideData?.HCAFacilities.map(
+    (item: any) => item.Values
+  );
+
+  // if there is no search string then use default params
+  // if there are then use whatever
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const practice = event.target.value;
+    const isChecked = event.target.checked;
+
+    let updatedPractices: string[];
+    if (isChecked) {
+      updatedPractices = [...checkedPractices, practice];
+    } else {
+      updatedPractices = checkedPractices.filter((item) => item !== practice);
+    }
+    setCheckedPractices(updatedPractices);
+    updateUrlParams(updatedPractices);
+  };
+
+  // Update URL query parameters
+  const updateUrlParams = (practices: string[]) => {
+    const queryParams = { ...router.query };
+    delete queryParams.practice;
+    delete queryParams.requestPath;
+    if (practices.length > 0) {
+      queryParams.practice = practices.join(',');
+    }
+    router.push({ pathname: router.pathname, query: queryParams });
+  };
 
   useEffect(() => {
+    const practiceQuery = router.query.practice;
+    if (practiceQuery) {
+      console.log('practiceQuery', practiceQuery);
+      const practices = Array.isArray(practiceQuery)
+        ? practiceQuery
+        : practiceQuery.split(',');
+      setCheckedPractices(practices);
+      console.log('practices', practices);
+      setCheckedPractices(practices);
+    } else {
+      setCheckedPractices([]); // Reset checked practices if there are no query parameters
+    }
+
     axios
       .get(
         `https://api.doctify.com/api/hca/search?sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700&limit=12&offset=${offset}`
       )
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
         const totalPages = Math.ceil(resp.data.total / 12);
-        console.log('total pages', totalPages);
+        // console.log('total pages', totalPages);
         setTotalPages(totalPages);
       })
       .catch((error) => {
@@ -603,19 +649,18 @@ export const Default = (props: StepProps): JSX.Element => {
                 title: 'Locations',
                 children: (
                   <div>
-                    serverSideData.
-                    <Checkbox
-                      id="1"
-                      value="Christie"
-                      name="locations"
-                      label="Christie Hospital"
-                    ></Checkbox>
-                    <Checkbox
-                      id="2"
-                      value="london-bridge"
-                      name="locations"
-                      label="London Bridge Hospital"
-                    ></Checkbox>
+                    {topHospitalsList.length > 0 &&
+                      topHospitalsList.map((hospital: any, index: number) => (
+                        <Checkbox
+                          key={index}
+                          id={hospital?.slug}
+                          value={hospital?.slug}
+                          name={hospital?.doctifyName}
+                          label={hospital?.doctifyName}
+                          checked={checkedPractices.includes(hospital?.slug)}
+                          onChange={handleCheckboxChange}
+                        ></Checkbox>
+                      ))}
                   </div>
                 ),
               },
@@ -636,11 +681,11 @@ export const Default = (props: StepProps): JSX.Element => {
               <Pagination
                 pageCount={totalPgaes}
                 callback={(newPage: number) => {
-                  console.log(newPage);
+                  // console.log(newPage);
 
                   const offset = (newPage - 1) * 12;
                   setOffset(offset);
-                  console.log('offset: ', offset);
+                  // console.log('offset: ', offset);
 
                   // Update the URL query parameters
                   const { requestPath, ...queryParams } = router.query; // Exclude requestPath
