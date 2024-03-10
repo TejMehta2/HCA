@@ -17,12 +17,12 @@ type SortOptionsFields = {
   filterValue?: { jsonValue?: Item };
 };
 
-type BlogPageFields {
-    title?: { jsonValue?: Field<string> };
-    text?: { jsonValue?: Field<string> };
-    date?: { jsonValue?: Field<string> };
-    articleType?: { targetItem?: ArticleTypeFields };
-}
+type BlogPageFields = {
+  title?: { jsonValue?: Field<string> };
+  text?: { jsonValue?: Field<string> };
+  date?: { jsonValue?: Field<string> };
+  articleType?: { targetItem?: ArticleTypeFields };
+};
 
 type ArticleTypeFields = {
   title?: { value?: string };
