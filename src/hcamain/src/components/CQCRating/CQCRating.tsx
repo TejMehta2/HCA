@@ -23,6 +23,19 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
   const { hideRating = false, length = 'long' } = props;
   const defaultRating = props.fields?.Status
     ?.displayName as CQCBlockProps['rating'];
+
+  console.log(props);
+  console.log(defaultRating);
+  const lightLogo = props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo
+    .fields
+    ? props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo.fields
+    : props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo;
+
+  const darkLogo = props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo
+    .fields
+    ? props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo.fields
+    : props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo;
+
   return (
     <div className={`component ${props.params?.styles}`} component-name="cqc">
       <CQCBlock
@@ -37,20 +50,8 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
         rating={hideRating ? undefined : defaultRating}
         icon={<Icons iconName="iconCheckCircle"></Icons>}
         logo={{
-          dark: (
-            <JssImage
-              field={props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo}
-              width="120"
-              height="37"
-            />
-          ),
-          light: (
-            <JssImage
-              field={props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo}
-              width="120"
-              height="37"
-            />
-          ),
+          dark: <JssImage field={lightLogo} width="120" height="37" />,
+          light: <JssImage field={darkLogo} width="120" height="37" />,
         }}
       ></CQCBlock>
     </div>

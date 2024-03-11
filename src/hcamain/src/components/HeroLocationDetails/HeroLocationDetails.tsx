@@ -147,7 +147,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       cqc={
         <CQCRating
           length="short"
-          {...props.fields?.data?.contextItem?.cQCRating?.fields?.Status}
+          {...props.fields?.data?.contextItem?.cQCRating}
         />
       }
     ></HeaderLocation>
