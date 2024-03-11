@@ -1,3 +1,28 @@
-.bold {
-  font-weight: bold;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 0 $spacing-3;
+
+    svg {
+      opacity: 1;
+      width: min-content;
+      height: auto;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4 0;
+  margin-top: $spacing-4;
 }

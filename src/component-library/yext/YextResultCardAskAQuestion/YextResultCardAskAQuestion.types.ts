@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
 export interface YextResultCardAskAQuestionProps {
-  children?: ReactNode | JSX.Element;
+  title: JSX.Element | string;
+  children: JSX.Element | ReactNode;
 }
