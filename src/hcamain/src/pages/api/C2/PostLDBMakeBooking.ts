@@ -6,29 +6,39 @@ const PostLDBMakeBooking = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
-  const patientCode = req.body?.patientCode as string; // patient X number
   const dateFrom = req.body?.dateFrom as string; // e.g. 2023-08-29T10:30:00
   const isFollowOnAppointment =
-    (req.body?.isFollowOnAppointment as string) == 'true' ? true : false; // true if follow up false if initial
+    req.body?.isFollowOnAppointment.toString() === 'true' ? true : false; // true if follow up false if initial
   const demographics = req.body?.demographics as ILDBDemographics; //demographics as ILDBDemographics, // demographics of the patient
   const reasonForAppointment = req.body?.reasonForAppointment as string; // free format reason for the appointment
+  const selectedSpeciality = req.body?.selectedSpeciality as string; // e.g. orthopaedics
   const ConsultantGUID = req.body?.ConsultantGUID as string; // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   const LocationGUID = req.body?.LocationGUID as string; // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   const HCAConsultantId = req.body?.HCAConsultantId as string; // or e.g. ConsultantGUID 4066576
-  const LocationId = req.body?.LocationId as string; // or LocationGUID e.g.COCLB
+  const FacilityId = req.body?.FacilityId as string; // or LocationGUID e.g.COCLB
 
-  //const response = 'Hello world ' + JSON.stringify(demographics);
-
-  const response = await LDBMakeBooking(
-    patientCode,
+  console.log(
     dateFrom,
     isFollowOnAppointment,
     demographics,
     reasonForAppointment,
+    selectedSpeciality,
     ConsultantGUID,
     LocationGUID,
     HCAConsultantId,
-    LocationId
+    FacilityId
+  );
+
+  const response = await LDBMakeBooking(
+    dateFrom,
+    isFollowOnAppointment,
+    demographics,
+    reasonForAppointment,
+    selectedSpeciality,
+    ConsultantGUID,
+    LocationGUID,
+    HCAConsultantId,
+    FacilityId
   );
 
   return res.status(200).json(response);

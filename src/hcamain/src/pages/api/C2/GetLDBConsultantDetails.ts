@@ -12,7 +12,7 @@ const GetLDBConsultantDetails = async (
 
   const response = await getLDBConsultantDetails(
     gmcNumber as string,
-    (isFollowOnAppointment as string) == 'true' ? true : false
+    isFollowOnAppointment?.toString() === 'true' ? true : false
   ); // e.g. "4113571", "true"
   return res.status(200).json(response);
 };

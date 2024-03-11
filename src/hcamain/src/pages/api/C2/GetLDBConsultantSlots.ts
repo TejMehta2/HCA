@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getLDBFirstAppointmentData } from 'lib/consultant-finder/API_C2';
+import { getLDBConsultantSlots } from 'lib/consultant-finder/API_C2';
 
 // wrapper for C2 Get Consultant Slots API ability to call from the client side (internally without passing secrets)
 const GetLDBConsultantSlots = async (
@@ -7,10 +7,36 @@ const GetLDBConsultantSlots = async (
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
   const {
-    query: { gmcNumber },
+    query: {
+      dateFrom,
+      dateTo,
+      isFollowOnAppointment,
+      consultantGUID,
+      locationGUID,
+      hCAConsultantId,
+      locationId,
+    },
   } = req;
 
-  const response = await getLDBFirstAppointmentData(gmcNumber as string); // e.g. "4113571"
+  /*
+console.log(
+  dateFrom as string, dateTo as string, 
+  (isFollowOnAppointment?.toString()) === 'true' ? true : false,
+  (consultantGUID as string) ?? null, 
+  (locationGUID as string) ?? null,
+  (hCAConsultantId as string) ?? null,
+  (locationId as string) ?? null
+);
+*/
+  const response = await getLDBConsultantSlots(
+    dateFrom as string,
+    dateTo as string, // yyyy-mm-dd
+    isFollowOnAppointment?.toString() === 'true' ? true : false, // true or false
+    (consultantGUID as string) ?? null, // from GetLDBConsultantDetails
+    (locationGUID as string) ?? null, // from GetLDBConsultantDetails
+    (hCAConsultantId as string) ?? null, // GMC (deprecated use consultantGUID)
+    (locationId as string) ?? null
+  ); // Meditech Mnemonic (deprecated use locationGUID)
   return res.status(200).json(response);
 };
 

@@ -44,7 +44,7 @@ export async function getLDBFirstAppointmentData(
   const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
   const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
 
-  let firstAppointmentData: string = '';
+  let returnData: string = '';
   const body = `{"consultants" : ["${gmcNumber}"] }`;
   try {
     // very light cache on these requests they contain time sensitive data
@@ -61,22 +61,24 @@ export async function getLDBFirstAppointmentData(
     if (res.ok) {
       const result = await res.json();
       if (result && result.availability && result.availability.length == 1) {
-        firstAppointmentData = result.availability[0];
+        returnData = result.availability[0];
       }
     } else {
       //C2 call failed
-      firstAppointmentData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+      returnData = JSON.parse(returnData);
       console.error(
-        `getLDBFirstAppointmentData failed with error ${firstAppointmentData}`
+        `getLDBFirstAppointmentData failed with error ${returnData}`
       );
     }
   } catch (e) {
     //C2 call threw
-    firstAppointmentData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    returnData = JSON.parse(returnData);
     console.error(`getLDBFirstAppointmentData failed with exception ${e}`);
   }
 
-  return firstAppointmentData;
+  return returnData;
 }
 
 /*
@@ -119,13 +121,15 @@ export async function getLDBConsultantDetails(
       returnData = await res.json();
     } else {
       //C2 call failed
-      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+      returnData = JSON.parse(returnData);
       console.error(`getLDBConsultantDetails failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantDetails, please retry"}`;
     console.error(`getLDBConsultantDetails failed with exception ${e}`);
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantDetails, please retry"}`;
+    returnData = JSON.parse(returnData);
   }
 
   return returnData;
@@ -179,12 +183,14 @@ export async function getLDBConsultantSlots(
       returnData = await res.json();
     } else {
       //C2 call failed
-      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+      returnData = JSON.parse(returnData);
       console.error(`getLDBConsultantSlots failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
     returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantSlots, please retry"}`;
+    returnData = JSON.parse(returnData);
     console.error(`getLDBConsultantSlots failed with exception ${e}`);
   }
 
@@ -193,6 +199,7 @@ export async function getLDBConsultantSlots(
 
 export interface ILDBDemographics {
   previouslyBeenWithHCA: boolean;
+  patientCode: string;
   title: string;
   firstName: string;
   lastName: string;
@@ -219,6 +226,7 @@ export interface ILDBDemographics {
   representativePhone: string;
   bookingBy: string;
   paidBy: string;
+  gpreferral: boolean;
   insuranceProvider: string;
   insurancePolicyNumber: string;
   insuranceAuthorisationCode: string;
@@ -232,15 +240,15 @@ The Team members will pick a Diary Booking off the Queue and once processed will
 update the status to a relevant status e.g. Confirmed or Cancelled.  
 */
 export async function LDBMakeBooking(
-  patientCode: string | null, // patient X number
   dateFrom: string, // e.g. 2023-08-29T10:30:00
   isFollowOnAppointment: boolean, // true if follow up false if initial
   demographics: ILDBDemographics, // demographics of the patient
   reasonForAppointment: string, // free format reason for the appointment
+  selectedSpeciality: string, // e.g. "Orthopaedic Surgery" from the page
   ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   HCAConsultantId?: string, // or e.g. ConsultantGUID 4066576
-  LocationId?: string, // or LocationGUID e.g.COCLB
+  FacilityId?: string, // or LocationGUID e.g.COCLB
   serviceURL?: string,
   headerKey?: string
 ): Promise<any> {
@@ -254,7 +262,7 @@ export async function LDBMakeBooking(
     : `"HCAConsultantId": "${HCAConsultantId}"`;
   const fragLocation = LocationGUID
     ? `"LocationGUID": "${LocationGUID}"`
-    : `"FacilityId": "${LocationId}"`;
+    : `"FacilityId": "${FacilityId}"`;
   const requestURL = `${
     serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
   }`;
@@ -262,19 +270,26 @@ export async function LDBMakeBooking(
 
   let returnData: string = '';
 
-  const demographicsString = JSON.stringify(demographics);
+  let demographicsString = JSON.stringify(demographics).substring(1);
+  demographicsString =
+    '{' + demographicsString.substring(0, demographicsString.length - 1) + '}';
 
-  const body = `
-  ${fragConsultant},
-  ${fragLocation},
-  "dateFrom": "${dateFrom}",
-  ${fragFollowOn},
-  "patientCode" : ${patientCode ? '${patientCode}' : null},
-  "demographics": ${demographicsString},
-  "visitReasonDetails": {
-      "reasonForAppointment": "${reasonForAppointment}"
-  }
-  `;
+  const body = `{
+    ${fragConsultant},
+    ${fragLocation},
+    "dateFrom": "${dateFrom}",
+    ${fragFollowOn},
+    "patientCode": "${
+      demographics?.patientCode ? demographics?.patientCode : ''
+    }",
+    "demographics": ${demographicsString},
+    "visitReasonDetails": {
+        "selectedSpeciality": "${selectedSpeciality}",
+        "reasonForAppointment": "${reasonForAppointment}"
+    }
+  }`;
+
+  console.log('booking json:', body);
 
   try {
     // very light cache on these requests they contain time sensitive data
@@ -285,19 +300,26 @@ export async function LDBMakeBooking(
         'content-type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
-      next: { revalidate: 10 },
+      cache: 'no-cache',
     });
+
     if (res.ok) {
       returnData = await res.json();
     } else {
       //C2 call failed
-      returnData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      let errorDetails = '';
+      try {
+        errorDetails = await res.text();
+      } finally {
+      }
+      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+      returnData = JSON.parse(returnData);
       console.error(`LDBMakeBooking failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
     returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+    returnData = JSON.parse(returnData);
     console.error(`LDBMakeBooking failed with exception ${e}`);
   }
 
