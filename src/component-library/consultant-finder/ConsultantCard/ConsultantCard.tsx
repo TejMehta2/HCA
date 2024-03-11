@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Link from 'next/link';
 import { ConsultantCardProps } from './ConsultantCard.types';
@@ -7,61 +8,146 @@ import Reviews from '../Reviews/Reviews';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import TextButton from '../../core-components/TextButton/TextButton';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
+  // top specialty
+  const topSpecialty =
+    props.keywords ||
+    props.keywords.filter(
+      (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+    );
+
+  // get specialties
+  const specialties = props.keywords.filter(
+    (item: any) => item.keywordType === 'specialty'
+  );
+  const specialtiesNames = specialties.map((item: any) => item.name).join(', ');
+
   return (
     <div className={styles['consultant-card']}>
-      <div className={styles.header}>
-        <div className={styles.photo}>
-          <img src="" alt="consultant profile photo" width="105" height="105" />
+      <div className={styles['main-content']}>
+        <div className={styles.header}>
+          <div className={styles.photo}>
+            <img
+              src={props.profilePhoto}
+              alt="consultant profile photo"
+              width="105"
+              height="105"
+            />
+          </div>
+          <div className={styles['title-subspecialty']}>
+            <TextLink>
+              <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+                <Text tag="h2" variation="heading-2">
+                  {props.name}
+                </Text>
+              </Link>
+            </TextLink>
+
+            {topSpecialty && topSpecialty[0]?.name && (
+              <Text tag="h3" variation="subheading-2">
+                {topSpecialty[0]?.name}
+              </Text>
+            )}
+          </div>
         </div>
+        <div className={styles.reviews}>
+          <Reviews
+            reviewsTotal={5}
+            reviewsCount={props.reviewsCount}
+            isConsultantProfileReviews={false}
+            hasTooltip={false}
+            tooltipContent={'tooltip'}
+            doctifyText={'Reviewd By'}
+            doctifyLogo={null}
+            hasDoctifyBranding={true}
+          />
+        </div>
+        {props.hospitals && props.hospitals.length > 0 && (
+          <div className={styles['list']}>
+            <div className={styles['list-title']}>
+              <Text tag="h3" variation="body-medium-small">
+                Practices
+              </Text>
+            </div>
+            <div className={styles['list-content']}>
+              {props.hospitals.map(
+                (practice: any) =>
+                  practice.slug !== 'video-consultation' && (
+                    <Text key={practice.id} tag="p" variation="body-small">
+                      {practice.name}
+                    </Text>
+                  )
+              )}
+            </div>
+          </div>
+        )}
+        {specialtiesNames && specialtiesNames.length > 0 && (
+          <div className={styles['list']}>
+            <div className={styles['list-title']}>
+              <Text tag="h3" variation="body-medium-small">
+                Treatments
+              </Text>
+            </div>
+            <div className={styles['list-content']}>
+              <Text tag="p" variation="body-small">
+                {specialtiesNames}
+              </Text>
+            </div>
+          </div>
+        )}
       </div>
-      <div className={styles['title-subspecialty']}>
-        <Text tag="h2" variation="heading-2">
-          {props.name}
-        </Text>
-        <Text tag="h3" variation="subheading-2">
-          {props.specialty}
-        </Text>
-      </div>
-      <div className={styles.reviews}>
-        <Reviews
-          reviewsTotal={5}
-          reviewsCount={props.reviewsCount}
-          isConsultantProfileReviews={false}
-          hasTooltip={false}
-          tooltipContent={'tooltip'}
-          doctifyText={'Reviewd By'}
-          doctifyLogo={null}
-          hasDoctifyBranding={true}
-        />
-      </div>
-      <div className={styles['treatments-procedures']}>Treatments</div>
       <div className={styles.buttons}>
-        <Button variation="full-dark" size="large">
-          <Link href="/test">
-            <span>
-              <Icons iconName="iconPhone" />
-            </span>
-            <span>Button Text</span>
-          </Link>
-        </Button>
-        <Button variation="full-dark" size="large">
-          <Link href="/test">
-            <span>
-              <Icons iconName="iconPhone" />
-            </span>
-            <span>Button Text</span>
-          </Link>
-        </Button>
-      </div>
-      <div>
-        <TextButton>
-          <Link href="/test">
-            View profile
-            <Icons iconName="iconArrowSmallRight" />
-          </Link>
-        </TextButton>
+        {!props.hideAppointmentRequest &&
+          !props.consultantsSlugs.includes(props.slug) && (
+            <div className={styles.button}>
+              <Button
+                variation="full-dark"
+                size="large"
+                contentVariation="full-width"
+              >
+                <Link href="/test">
+                  <span>Enquire now</span>
+                </Link>
+              </Button>
+            </div>
+          )}
+        {props.consultantsSlugs.includes(props.slug) && (
+          <div className={styles.button}>
+            <Button
+              variation="full-dark"
+              size="large"
+              contentVariation="full-width"
+            >
+              <Link href="/test">
+                <span>Book now</span>
+              </Link>
+            </Button>
+          </div>
+        )}
+        <div className={styles.button}>
+          <Button
+            variation="outline"
+            size="large"
+            contentVariation="full-width"
+          >
+            <Link href="/test">
+              <span>
+                <Icons iconName="iconPhone" />
+              </span>
+              <span>Call to book</span>
+            </Link>
+          </Button>
+        </div>
+        <div className={styles['button-profile']}>
+          <TextButton>
+            <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+              View profile
+              <Icons iconName="iconArrowSmallRight" />
+            </Link>
+          </TextButton>
+        </div>
       </div>
     </div>
   );

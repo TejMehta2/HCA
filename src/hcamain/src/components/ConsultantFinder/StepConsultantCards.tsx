@@ -3,6 +3,7 @@
 // Template finder component
 
 import React, { useEffect, useState, useContext } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSearchParams, usePathname } from 'next/navigation';
 import {
@@ -27,6 +28,11 @@ import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Filters from '@component-library/site-components/Filters/Filters';
 import Search from '@component-library/consultant-finder/Search/Search';
 import Tooltips from '@component-library/components/Tooltips/Tooltips';
+import Sorting from '@component-library/components/Sorting/Sorting';
+import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
+import Loader from '@component-library/foundation/Loader/Loader';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import { getActiveConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 // import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
 
 interface Fields {
@@ -57,6 +63,7 @@ interface ServerSideProps {
   HCAFacilities: any;
   Insurers: any;
   PopularLanguages: any;
+  LiveDiaryConsultantsSlugs: object[];
 }
 
 /**
@@ -215,6 +222,8 @@ export const getStaticProps: GetStaticComponentProps = async (
     },
   ];
   const insurersURL = `https://api.doctify.com/api/hca/listing/insurers`;
+  const liveDiariesSlugURL =
+    'https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants';
 
   const getData = async (requestURL: string) => {
     const res = await fetch(requestURL, {
@@ -249,11 +258,13 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const hcaFacilities = await getData(topLevelHospitalsURL);
   const insurers = await getData(insurersURL);
+  const consultantsSlugsLD = await getData(liveDiariesSlugURL);
 
   const returnProps: ServerSideProps = {
     HCAFacilities: hcaFacilities,
     Insurers: insurers,
     PopularLanguages: languages,
+    LiveDiaryConsultantsSlugs: consultantsSlugsLD,
   };
 
   return returnProps;
@@ -507,8 +518,12 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  // console.log('consultant cards', props);
-  // console.log('ss data', serverSideData);
+  const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs.map(
+    (item: any) => item.UniqueKey
+  );
+  console.log('consultantsSlugs', consultantsSlugs);
+  console.log('consultant cards', props);
+  console.log('ss data', serverSideData);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
     ConsultantFinderContext
   );
@@ -516,10 +531,14 @@ export const Default = (props: StepProps): JSX.Element => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [totalPgaes, setTotalPages] = useState(0);
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
   // console.log('offset query', router.query.offset);
   const [offset, setOffset] = useState(initialOffset);
-  // console.log('queryParams', searchParams.toString());
+  const [isChecked, setIsChecked] = useState(false);
+  console.log('queryParams', searchParams.toString());
 
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
 
@@ -529,6 +548,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const topHospitalsList = serverSideData?.HCAFacilities.map(
     (item: any) => item.Values
   );
+
+  const [relevance, setRelevance] = useState('');
 
   // if there is no search string then use default params
   // if there are then use whatever
@@ -559,32 +580,64 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     const practiceQuery = router.query.practice;
+    const videoPractice = router.query.videoConsultation;
     if (practiceQuery) {
-      console.log('practiceQuery', practiceQuery);
+      // console.log('practiceQuery', practiceQuery);
       const practices = Array.isArray(practiceQuery)
         ? practiceQuery
         : practiceQuery.split(',');
       setCheckedPractices(practices);
-      console.log('practices', practices);
+      // console.log('practices', practices);
       setCheckedPractices(practices);
     } else {
       setCheckedPractices([]); // Reset checked practices if there are no query parameters
     }
 
+    if (videoPractice) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+
+    // console.log('relevance', router.query.relevance);
+
+    // console.log('call api');
+
+    setLoading(true);
+    //  console.log('queryParams', searchParams.toString());
+
+    // sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700
+    // .get(`https://api.doctify.com/api/hca/search?${searchParams.toString()}`)
+    const defaultParams = `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700`;
+    // daca nu avem ce trebuie atunci sa luam default
+
     axios
-      .get(
-        `https://api.doctify.com/api/hca/search?sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700&limit=12&offset=${offset}`
-      )
+      .get(`https://api.doctify.com/api/hca/search?${searchParams.toString()}`)
       .then((resp) => {
-        // console.log(resp.data);
+        console.log(resp.data);
         const totalPages = Math.ceil(resp.data.total / 12);
         // console.log('total pages', totalPages);
         setTotalPages(totalPages);
+        if (resp.data.rows.length > 0) {
+          setResults(resp.data.rows);
+        } else {
+          setResults([]);
+        }
+        setLoading(false);
+        setError(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
+        setError(true);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
   if (props.fields) {
@@ -593,6 +646,12 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
+        <Breadcrumbs>
+          <Link href="/Finder/Step-Intro">
+            {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
+          </Link>
+          <span>Results</span>
+        </Breadcrumbs>
         <div>
           <Search
             placeholder={
@@ -632,16 +691,6 @@ export const Default = (props: StepProps): JSX.Element => {
             }
           />
         </div>
-        {/* sa vad daca au online sau nu */}
-        <ConsultantCard
-          name={''}
-          slug={''}
-          specialty={''}
-          treatmentsList={[]}
-          conditionsList={[]}
-          hospitals={[]}
-          reviewsCount={0}
-        />
         <div>
           <Filters
             filters={[
@@ -665,44 +714,142 @@ export const Default = (props: StepProps): JSX.Element => {
                 ),
               },
               {
-                title: 'Locations2',
+                title: 'Video Consultation',
                 children: (
                   <div>
-                    <input type="radio" name="insurance" value="26" />
+                    <Checkbox
+                      key={'video'}
+                      id={'video'}
+                      value={'video_consultation'}
+                      name={'video'}
+                      label={'Yes'}
+                      checked={isChecked}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        const target = e.target;
+                        setIsChecked(target.checked);
+
+                        const queryParams = { ...router.query };
+                        if (target.checked) {
+                          queryParams.videoConsultation = 'true';
+                        } else {
+                          delete queryParams.videoConsultation;
+                        }
+                        router.push({
+                          pathname: router.pathname,
+                          query: queryParams,
+                        });
+                      }}
+                    ></Checkbox>
                   </div>
                 ),
               },
             ]}
             resultsCount={0}
           ></Filters>
+        </div>
+        <div>
+          {router.query.sortType && (
+            <Sorting
+              options={[
+                {
+                  id: 'relevance',
+                  defaultChecked: router.query.sortType === 'relevance',
+                  labelText: 'Most relevant',
+                  value: 'relevance',
+                },
+                {
+                  id: 'rating',
+                  defaultChecked: router.query.sortType === 'rating',
+                  labelText: 'Highest rated by patients',
+                  value: 'rating',
+                },
+                {
+                  id: 'nearest',
+                  defaultChecked: router.query.sortType === 'nearest',
+                  labelText: 'Nearest',
+                  value: 'nearest',
+                },
+              ]}
+              onChange={(event) => {
+                const target = event.target as HTMLInputElement;
+                // console.log(target.value);
+                // console.log(target.checked);
 
-          {totalPgaes > 1 && (
-            <Themes theme={'A-HCA-White'}>
-              <Pagination
-                pageCount={totalPgaes}
-                callback={(newPage: number) => {
-                  // console.log(newPage);
-
-                  const offset = (newPage - 1) * 12;
-                  setOffset(offset);
-                  // console.log('offset: ', offset);
-
-                  // Update the URL query parameters
-                  const { requestPath, ...queryParams } = router.query; // Exclude requestPath
-                  router.push(
-                    {
-                      pathname: router.pathname,
-                      query: { ...queryParams, offset: offset },
-                    },
-                    undefined,
-                    { shallow: true }
-                  );
-                }}
-                currentPage={currentPage}
-              />
-            </Themes>
+                if (target.checked) {
+                  // Update URL parameters with selected sorting option
+                  const queryParams = {
+                    ...router.query,
+                    sortType: target.value,
+                  };
+                  if ('requestPath' in queryParams) {
+                    delete queryParams.requestPath;
+                  }
+                  router.push({
+                    pathname: router.pathname,
+                    query: queryParams,
+                  });
+                }
+              }}
+            />
           )}
         </div>
+
+        {loading && (
+          <div>
+            Loading....
+            <Loader theme={'light'} />
+          </div>
+        )}
+        {!loading && !error && results.length === 0 && <div>No results</div>}
+        {/* sa vad daca au online sau nu */}
+        <ConsultantFinderResults>
+          {!loading &&
+            !error &&
+            results.length > 0 &&
+            results.map((consultant: any) => (
+              <ConsultantCard
+                key={consultant?.id}
+                // placeholder
+                profilePhoto={consultant?.images?.logo}
+                name={`${consultant?.firstName} ${consultant?.lastName}`}
+                slug={consultant?.slug}
+                keywords={consultant?.keywords || null}
+                hospitals={consultant?.practices || null}
+                reviewsCount={consultant?.overallExperience || 0}
+                hideAppointmentRequest={consultant?.hideAppointmentRequest}
+                consultantsSlugs={consultantsSlugs}
+              />
+            ))}
+        </ConsultantFinderResults>
+
+        {error && !loading && <div>There was an error, Please try again</div>}
+
+        {!error && !loading && totalPgaes > 1 && (
+          <Themes theme={'A-HCA-White'}>
+            <Pagination
+              pageCount={totalPgaes}
+              callback={(newPage: number) => {
+                // console.log(newPage);
+
+                const offset = (newPage - 1) * 12;
+                setOffset(offset);
+                // console.log('offset: ', offset);
+
+                // Update the URL query parameters
+                const { requestPath, ...queryParams } = router.query; // Exclude requestPath
+                router.push(
+                  {
+                    pathname: router.pathname,
+                    query: { ...queryParams, offset: offset },
+                  },
+                  undefined,
+                  { shallow: true }
+                );
+              }}
+              currentPage={currentPage}
+            />
+          </Themes>
+        )}
       </div>
     );
   }

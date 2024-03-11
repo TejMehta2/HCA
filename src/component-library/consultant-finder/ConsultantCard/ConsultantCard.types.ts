@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export interface ConsultantCardProps {
   children?: ReactNode | JSX.Element;
   name: string;
   slug: string;
-  specialty: string;
   profilePhoto?: string;
-  treatmentsList: string[];
-  conditionsList: string[];
+  keywords: any;
   hospitals: string[];
   reviewsCount: number;
+  hideAppointmentRequest: boolean;
+  consultantsSlugs: string[];
 }
