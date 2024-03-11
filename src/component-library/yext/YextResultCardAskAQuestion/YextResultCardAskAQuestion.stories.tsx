@@ -48,11 +48,26 @@ export const Default: StoryObj<typeof YextResultCardAskAQuestion> = {
         </Text>
 
         <form>
-          <TextField id="name" label="Name" required={true} />
-          <TextField id="email" label="Email" required={true} />
+          <TextField
+            id="name"
+            label="Name"
+            required={true}
+            errorMessage="This field is required"
+          />
+          <TextField
+            id="email"
+            label="Email"
+            required={true}
+            errorMessage="This field is required"
+          />
           <Checkbox
             id="consent"
-            label="By submitting my email address, I consent to being contacted via email at the address provided. Learn more here."
+            label={
+              <span>
+                By submitting my email address, I consent to being contacted via
+                email at the address provided. <a href="#">Learn more here.</a>
+              </span>
+            }
             name="example"
             value="example"
           ></Checkbox>
