@@ -1,29 +1,28 @@
 ﻿---
-ID: "c02783cf-b67e-4849-88ed-8b324ca0089a"
+ID: "67881255-6e2b-4e5c-937f-41c2de0dd318"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Doctor Cards
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Blog Related Articles
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: DoctorCards
+  Value: BlogRelatedArticles
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetDoctorCards($datasource: String!, $contextItem: String!, $language: String!
-    ) {
+    query GetRelatedArticles($datasource: String!, $contextItem: String!, $language: String!) {
       item(path: $datasource, language: $language) {
-        ... on DoctorCards {
+        ... on BlogRelatedArticles {
+          heading {
+            jsonValue
+          }
           title {
             jsonValue
           }
-          numberOfCards {
-            jsonValue
-          }
-          cTACard {
+          text {
             jsonValue
           }
           cTAIcon {
@@ -38,61 +37,78 @@ SharedFields:
           cTALink {
             jsonValue
           }
-          consultants {
-            ConsultantsList: targetItems {
-              ... on Consultant {
-                displayName
-                onlineBooking {
+          articles {
+            ArticlesList: targetItems {
+              ... on BlogPage {
+                title {
+                  jsonValue
+                }
+                text {
+                  jsonValue
+                }
+                date {
+                  jsonValue
+                }
+                articleType {
+                  targetItem {
+                    ... on Tag {
+                      title {
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          searchBy {
+            SearchByList: targetItems {
+              ... on FilterOption {
+                displayName: field(name: "DisplayName") {
                   value
                 }
-                doctifySlug {
+                filter {
                   value
+                }
+                filterValue {
+                  targetItem {
+                    id
+                  }
                 }
               }
             }
           }
-          practice {
-            PracticeList: targetItems {
-              doctifyPractice: field(name: "Doctify Practice") {
-                value
+          filterBy {
+            FilterByList: targetItems {
+              ... on FilterOption {
+                displayName: field(name: "DisplayName") {
+                  value
+                }
+                filter {
+                  value
+                }
+                filterValue {
+                  targetItem {
+                    id
+                  }
+                }
               }
             }
           }
-          service {
-            ServicesList: targetItems {
-              doctifyKeywordId: field(name: "Doctify KeywordId") {
-                value
-              }
-            }
+          numberOfCards {
+            jsonValue
           }
-          customFilters {
-            CustomFiltersList: targetItems {
-              filter: field(name: "Filter") {
-                value
-              }
-            }
+          blogUrl {
+            jsonValue
           }
         }
       }
       contextItem: item(path: $contextItem, language: $language) {
-        ... on SpecialtyPage {
-          doctifyKeywordId {
-            value
-          }
-        }
-        ... on LocationPage {
-          doctifyPractice {
-            value
-          }
-        }
-        ... on DiagnosisPage {
-          doctifyKeywordId {
-            value
-          }
-        }
-        ... on TreatmentPage {
-          doctifyKeywordId {
-            value
+        ... on BlogPage {
+          category {
+            category: targetItems {
+              id
+            }
           }
         }
       }
@@ -100,7 +116,7 @@ SharedFields:
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
+  Value: /sitecore/templates/Project/HCA/Page Content/Blog Related Articles
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -109,17 +125,17 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{3E46AB03-87FD-4CF1-927D-2AA1054AFCCC}"
+  Value: "{958E44FC-7719-48B6-878F-1555B6439AD0}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Doctor Cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Doctor Cards Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Blog Related Articles Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Blog Related Articles Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{FE70F24D-2B29-4B38-BA7F-27B20A061EF4}" />
+    <image mediaid="{93F6CAE0-E1CC-4217-8F69-0F2AC24F0019}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -166,14 +182,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6ffa3acf-23f5-4189-8f71-780e0030a4ba"
+      Value: "f5ea9ce2-7759-4539-a27c-03988d2ef8ee"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240308T194739Z
+      Value: 20240310T055216Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
