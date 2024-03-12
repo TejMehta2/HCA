@@ -47,7 +47,7 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
   if (!props.fields) {
     return <BlogCategoriesDefaultComponent {...props} />;
   }
-  console.log(props);
+
   return (
     <ArticleCategories
       theme={props.params?.Theme || 'G-HCA-Orange'}
@@ -71,7 +71,7 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
           >
             <Icons iconName="iconFilterCircle" />
             <span>
-              <JssText field={category.displayName} />
+              <JssText field={category?.displayName} />
             </span>
           </a>
         )
