@@ -6,6 +6,9 @@ import {
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import ArticleCategories from '@component-library/site-components/ArticleCategories/ArticleCategories';
+import Text from '@component-library/foundation/Text/Text';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 type CategoriesFields = {
   displayName?: { value?: string };
@@ -44,7 +47,38 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
   if (!props.fields) {
     return <BlogCategoriesDefaultComponent {...props} />;
   }
+  console.log(props);
   return (
+    <ArticleCategories
+      theme={props.params?.Theme || 'G-HCA-Orange'}
+      title={
+        <Text
+          variation={props.params?.HeadingSize || 'display-3'}
+          tag={props.params?.HeadingTag || 'h3'}
+        >
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      categories={props.fields?.data?.item?.categories?.categoriesList?.map(
+        (category, index) => (
+          <a
+            href={
+              props.fields?.data?.item?.blogUrl?.jsonValue?.value.href +
+              '?' +
+              category.filter?.value
+            }
+            key={index}
+          >
+            <Icons iconName="iconFilterCircle" />
+            <span>
+              <JssText field={category.displayName} />
+            </span>
+          </a>
+        )
+      )}
+    />
+  );
+  /* return (
     <div className={`component ${props.params?.styles}`}>
       <JssText field={props.fields?.data?.item?.title?.jsonValue} />
       <br />
@@ -64,5 +98,5 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
       </ul>
       <br />
     </div>
-  );
+  ); */
 };
