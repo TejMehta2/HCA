@@ -16,8 +16,8 @@ const YextResultCardAskAQuestion = (
   return (
     <Accordion
       title={
-        <div className={styles.title}>
-          {title}
+        <div className={styles['title-wrapper']}>
+          <div className={styles.title}>{title}</div>
           {titleDescription && (
             <div className={styles['title-description']}>
               {titleDescription}

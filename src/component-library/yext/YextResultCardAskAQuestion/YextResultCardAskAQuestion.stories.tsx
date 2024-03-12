@@ -32,10 +32,8 @@ export const Default: StoryObj<typeof YextResultCardAskAQuestion> = {
   args: {
     title: (
       <>
-        <div>
-          <Icons iconName="iconQuestion" />
-          <Text variation="heading-2">Ask a question</Text>
-        </div>
+        <Icons iconName="iconQuestion" />
+        <Text variation="heading-2">Ask a question</Text>
       </>
     ),
     titleDescription: (

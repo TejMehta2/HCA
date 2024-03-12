@@ -1,13 +1,13 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.title {
+.title-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 
-  & > div {
+  .title {
     display: flex;
     align-items: center;
     gap: 0 $spacing-3;
