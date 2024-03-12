@@ -28,6 +28,7 @@ import BirminghamMobileArea from '../../assets/locations/BirminghamMobile.png';
 import HomepageHero from '../../site-components/HomepageHero/HomepageHero';
 import SearchBar from '../SearchBar/SearchBar';
 import Footer from '../../site-components/Footer/Footer';
+import DiamondLine from '../../site-components/DiamondLine/DiamondLine';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
@@ -226,6 +227,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </Themes>
           }
         />
+        <DiamondLine side="right" />
         <ServiceCards
           title={
             <Text variation="display-2">Exceptional care you can trust</Text>
@@ -407,6 +409,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </CardBlog>,
           ]}
         ></CarouselCards>
+        <DiamondLine side="left" theme="H-HCA-Tangerine" />
         <ImageAndTextBlock
           theme="F-HCA-Fern"
           imageAlignment="left"
