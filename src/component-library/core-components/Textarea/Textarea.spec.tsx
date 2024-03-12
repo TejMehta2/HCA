@@ -4,12 +4,16 @@ import Textarea from './Textarea';
 import { TextareaProps } from './Textarea.types';
 
 const mockProps: TextareaProps = {
-  children: <p>Hello world</p>,
+  id: 'question',
+  label: 'Question',
+  required: true,
+  helperText: 'Optional helper text',
+  errorMessage: 'This field is required',
 };
 
 describe('Textarea', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<Textarea {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Question')).toBeVisible();
   });
 });
