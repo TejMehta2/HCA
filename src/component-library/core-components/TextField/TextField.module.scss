@@ -53,7 +53,7 @@
     }
   }
 
-  &:has(input:not(:focus):invalid) {
+  &:has(input:not(:focus):user-invalid) {
     color: var(--field-error-colour);
 
     input {

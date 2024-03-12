@@ -7,6 +7,7 @@ import Themes from '../../foundation/Themes/Themes';
 import TextField from '../../core-components/TextField/TextField';
 import Checkbox from '../../core-components/Checkbox/Checkbox';
 import Button from '../../core-components/Button/Button';
+import Textarea from '../../core-components/Textarea/Textarea';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof YextResultCardAskAQuestion> = {
@@ -35,6 +36,10 @@ export const Default: StoryObj<typeof YextResultCardAskAQuestion> = {
           <Icons iconName="iconQuestion" />
           <Text variation="heading-2">Ask a question</Text>
         </div>
+      </>
+    ),
+    titleDescription: (
+      <>
         <Text>
           Can&apos;t find what you&apos;re looking for? Ask a question below.
         </Text>
@@ -42,12 +47,19 @@ export const Default: StoryObj<typeof YextResultCardAskAQuestion> = {
     ),
     children: (
       <>
-        <Text variation="body-extra-large">
-          Enter your question and contact information, and we&apos;ll get back
-          to you with a response shortly.
-        </Text>
-
         <form>
+          <Text variation="body-extra-large">
+            Enter your question and contact information, and we&apos;ll get back
+            to you with a response shortly.
+          </Text>
+
+          <Textarea
+            id="question"
+            label="Question"
+            required={true}
+            helperText="Optional helper text"
+            errorMessage="This field is required"
+          />
           <TextField
             id="name"
             label="Name"
@@ -71,7 +83,7 @@ export const Default: StoryObj<typeof YextResultCardAskAQuestion> = {
             name="example"
             value="example"
           ></Checkbox>
-          <Button variation="full" size="large">
+          <Button variation="full" size="large" contentVariation="card">
             <button type="submit">Submit</button>
           </Button>
         </form>

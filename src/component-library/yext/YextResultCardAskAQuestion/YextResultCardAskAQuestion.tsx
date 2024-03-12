@@ -12,10 +12,19 @@ const YextResultCardAskAQuestion = (
     setActive(!active);
   };
 
-  const { title, children } = props;
+  const { title, titleDescription, children } = props;
   return (
     <Accordion
-      title={<div className={styles.title}>{title}</div>}
+      title={
+        <div className={styles.title}>
+          {title}
+          {titleDescription && (
+            <div className={styles['title-description']}>
+              {titleDescription}
+            </div>
+          )}
+        </div>
+      }
       children={children}
       onShow={handleShow}
       isActive={active}
