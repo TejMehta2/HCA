@@ -1,0 +1,24 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-list-header {
+  display: flex;
+  // justify-content: flex-start;
+  align-items: center;
+  margin: $spacing-2 $spacing-14;
+
+  .consultant-list-header-search {
+    display: flex;
+    flex: 1;
+    margin-right: $spacing-2;
+  }
+
+  .consultant-list-header-filters {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.consultant-list-header-title {
+  margin: $spacing-7  $spacing-14;
+}

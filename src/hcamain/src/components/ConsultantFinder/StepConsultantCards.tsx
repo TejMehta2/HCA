@@ -33,6 +33,13 @@ import ConsultantFinderResults from '@component-library/consultant-finder/Consul
 import Loader from '@component-library/foundation/Loader/Loader';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import { getActiveConsultantSlugs } from 'lib/consultant-finder/API_HCA';
+import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
+import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
+import ConsultantListHeaderSearch from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderSearch';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Container from '@component-library/foundation/Containers/Container';
+import ConsultantListHeaderTtitle from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderTitle';
 // import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
 
 interface Fields {
@@ -521,9 +528,9 @@ export const Default = (props: StepProps): JSX.Element => {
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs.map(
     (item: any) => item.UniqueKey
   );
-  console.log('consultantsSlugs', consultantsSlugs);
-  console.log('consultant cards', props);
-  console.log('ss data', serverSideData);
+  // console.log('consultantsSlugs', consultantsSlugs);
+  // console.log('consultant cards', props);
+  // console.log('ss data', serverSideData);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
     ConsultantFinderContext
   );
@@ -538,7 +545,7 @@ export const Default = (props: StepProps): JSX.Element => {
   // console.log('offset query', router.query.offset);
   const [offset, setOffset] = useState(initialOffset);
   const [isChecked, setIsChecked] = useState(false);
-  console.log('queryParams', searchParams.toString());
+  // console.log('queryParams', searchParams.toString());
 
   const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
 
@@ -550,6 +557,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const [relevance, setRelevance] = useState('');
+  const test = true;
 
   // if there is no search string then use default params
   // if there are then use whatever
@@ -580,11 +588,17 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
+    if (!router.isReady) return;
+
+    console.log('router ready', searchParams.toString());
+  }, [router.isReady]);
+
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-
+    // console.log('useEffect');
     const practiceQuery = router.query.practice;
     const videoPractice = router.query.videoConsultation;
     if (practiceQuery) {
@@ -614,11 +628,23 @@ export const Default = (props: StepProps): JSX.Element => {
 
     // sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700
     // .get(`https://api.doctify.com/api/hca/search?${searchParams.toString()}`)
-    const defaultParams = `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700`;
+    const defaultParams = `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=700`;
     // daca nu avem ce trebuie atunci sa luam default
+    const URLprams = searchParams.toString();
+    const baseURL = `https://api.doctify.com/api/hca/search?`;
+    let requestURL: string;
+    console.log('URLprams', URLprams);
+
+    if (URLprams.length > 0) {
+      console.log('query params');
+      requestURL = `${baseURL}${URLprams}`;
+    } else {
+      console.log('default params');
+      requestURL = `${baseURL}${defaultParams}`;
+    }
 
     axios
-      .get(`https://api.doctify.com/api/hca/search?${searchParams.toString()}`)
+      .get(requestURL)
       .then((resp) => {
         console.log(resp.data);
         const totalPages = Math.ceil(resp.data.total / 12);
@@ -652,147 +678,163 @@ export const Default = (props: StepProps): JSX.Element => {
           </Link>
           <span>Results</span>
         </Breadcrumbs>
-        <div>
-          <Search
-            placeholder={
-              props?.fields?.SearchPlaceholderText?.value ||
-              'Type in a service, condition, treatment...'
-            }
-            doctifyBaseURL={
-              props?.fields?.API_Autocomplete_BaseURL?.value ||
-              'https://api.doctify.com/api/hca/search/autocomplete?search'
-            }
-            limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-            noResultsMsg={
-              props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-              'No matches found, please try typing something else.'
-            }
-            specialtyLabel={
-              props?.fields?.SpecialitiesFilterHeaderText?.value ||
-              'Specialties'
-            }
-            conditionsProceduresLabel={
-              props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
-              'Conditions/ Procedures'
-            }
-            setKeywordId={setKeywordId}
-            searchString={searchString}
-            setSearchString={setSearchString}
-            searchIcon={
-              props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
-            }
-            conditionsTreatmentsList={
-              props?.fields?.ConditionsTreatmentsList ||
-              conditionsTreatmentsListMock
-            }
-            specialitiesList={props?.fields?.SpecialitiesList || []}
-            loadingText={
-              props?.fields?.API_Autocomplete_LoadingMsg?.value || 'Loading...'
-            }
-          />
-        </div>
-        <div>
-          <Filters
-            filters={[
-              {
-                title: 'Locations',
-                children: (
-                  <div>
-                    {topHospitalsList.length > 0 &&
-                      topHospitalsList.map((hospital: any, index: number) => (
-                        <Checkbox
-                          key={index}
-                          id={hospital?.slug}
-                          value={hospital?.slug}
-                          name={hospital?.doctifyName}
-                          label={hospital?.doctifyName}
-                          checked={checkedPractices.includes(hospital?.slug)}
-                          onChange={handleCheckboxChange}
-                        ></Checkbox>
-                      ))}
-                  </div>
-                ),
-              },
-              {
-                title: 'Video Consultation',
-                children: (
-                  <div>
-                    <Checkbox
-                      key={'video'}
-                      id={'video'}
-                      value={'video_consultation'}
-                      name={'video'}
-                      label={'Yes'}
-                      checked={isChecked}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        const target = e.target;
-                        setIsChecked(target.checked);
+        <ConsultantListHeader>
+          <ConsultantListHeaderSearch>
+            <Search
+              placeholder={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Type in a service, condition, treatment...'
+              }
+              doctifyBaseURL={
+                props?.fields?.API_Autocomplete_BaseURL?.value ||
+                'https://api.doctify.com/api/hca/search/autocomplete?search'
+              }
+              limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
+              noResultsMsg={
+                props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                'No matches found, please try typing something else.'
+              }
+              specialtyLabel={
+                props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                'Specialties'
+              }
+              conditionsProceduresLabel={
+                props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
+                'Conditions/ Procedures'
+              }
+              setKeywordId={setKeywordId}
+              searchString={searchString}
+              setSearchString={setSearchString}
+              searchIcon={
+                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+              }
+              conditionsTreatmentsList={
+                props?.fields?.ConditionsTreatmentsList ||
+                conditionsTreatmentsListMock
+              }
+              specialitiesList={props?.fields?.SpecialitiesList || []}
+              loadingText={
+                props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                'Loading...'
+              }
+            />
+          </ConsultantListHeaderSearch>
+          <ConsultantListHeaderFilters>
+            <Filters
+              filters={[
+                {
+                  title: 'Locations',
+                  children: (
+                    <div>
+                      {topHospitalsList.length > 0 &&
+                        topHospitalsList.map((hospital: any, index: number) => (
+                          <Checkbox
+                            key={index}
+                            id={hospital?.slug}
+                            value={hospital?.slug}
+                            name={hospital?.doctifyName}
+                            label={hospital?.doctifyName}
+                            checked={checkedPractices.includes(hospital?.slug)}
+                            onChange={handleCheckboxChange}
+                          ></Checkbox>
+                        ))}
+                    </div>
+                  ),
+                },
+                {
+                  title: 'Video Consultation',
+                  children: (
+                    <div>
+                      <Checkbox
+                        key={'video'}
+                        id={'video'}
+                        value={'video_consultation'}
+                        name={'video'}
+                        label={'Yes'}
+                        checked={isChecked}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                          const target = e.target;
+                          setIsChecked(target.checked);
 
-                        const queryParams = { ...router.query };
-                        if (target.checked) {
-                          queryParams.videoConsultation = 'true';
-                        } else {
-                          delete queryParams.videoConsultation;
-                        }
-                        router.push({
-                          pathname: router.pathname,
-                          query: queryParams,
-                        });
-                      }}
-                    ></Checkbox>
-                  </div>
-                ),
-              },
-            ]}
-            resultsCount={0}
-          ></Filters>
-        </div>
-        <div>
-          {router.query.sortType && (
-            <Sorting
-              options={[
-                {
-                  id: 'relevance',
-                  defaultChecked: router.query.sortType === 'relevance',
-                  labelText: 'Most relevant',
-                  value: 'relevance',
-                },
-                {
-                  id: 'rating',
-                  defaultChecked: router.query.sortType === 'rating',
-                  labelText: 'Highest rated by patients',
-                  value: 'rating',
-                },
-                {
-                  id: 'nearest',
-                  defaultChecked: router.query.sortType === 'nearest',
-                  labelText: 'Nearest',
-                  value: 'nearest',
+                          const queryParams = { ...router.query };
+                          if (target.checked) {
+                            queryParams.videoConsultation = 'true';
+                          } else {
+                            delete queryParams.videoConsultation;
+                          }
+                          router.push({
+                            pathname: router.pathname,
+                            query: queryParams,
+                          });
+                        }}
+                      ></Checkbox>
+                    </div>
+                  ),
                 },
               ]}
-              onChange={(event) => {
-                const target = event.target as HTMLInputElement;
-                // console.log(target.value);
-                // console.log(target.checked);
+              resultsCount={0}
+            ></Filters>
+            <Container marginLeft="spacing-4">
+              {router.isReady && (
+                <Sorting
+                  options={[
+                    {
+                      id: 'relevance',
+                      defaultChecked: router.query.sortType === 'relevance',
+                      labelText: 'Most relevant',
+                      value: 'relevance',
+                    },
+                    {
+                      id: 'rating',
+                      defaultChecked: router.query.sortType === 'rating',
+                      labelText: 'Highest rated by patients',
+                      value: 'rating',
+                    },
+                    {
+                      id: 'nearest',
+                      defaultChecked: router.query.sortType === 'nearest',
+                      labelText: 'Nearest',
+                      value: 'nearest',
+                    },
+                  ]}
+                  onChange={(event) => {
+                    const target = event.target as HTMLInputElement;
+                    // console.log(target.value);
+                    // console.log(target.checked);
 
-                if (target.checked) {
-                  // Update URL parameters with selected sorting option
-                  const queryParams = {
-                    ...router.query,
-                    sortType: target.value,
-                  };
-                  if ('requestPath' in queryParams) {
-                    delete queryParams.requestPath;
-                  }
-                  router.push({
-                    pathname: router.pathname,
-                    query: queryParams,
-                  });
-                }
-              }}
-            />
-          )}
-        </div>
+                    if (target.checked) {
+                      // Update URL parameters with selected sorting option
+                      const queryParams = {
+                        ...router.query,
+                        sortType: target.value,
+                      };
+                      if ('requestPath' in queryParams) {
+                        delete queryParams.requestPath;
+                      }
+                      router.push({
+                        pathname: router.pathname,
+                        query: queryParams,
+                      });
+                    }
+                  }}
+                />
+              )}
+            </Container>
+            <Container marginLeft="spacing-4">
+              <TextButton theme="dark">
+                <button>
+                  Reset all
+                  <Icons iconName="iconReset" />
+                </button>
+              </TextButton>
+            </Container>
+          </ConsultantListHeaderFilters>
+        </ConsultantListHeader>
+        <ConsultantListHeaderTtitle>
+          <Text tag="h5" variation="display-5">
+            {`Let's get you to the right specialist`}
+          </Text>
+        </ConsultantListHeaderTtitle>
 
         {loading && (
           <div>
@@ -824,7 +866,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
         {error && !loading && <div>There was an error, Please try again</div>}
 
-        {!error && !loading && totalPgaes > 1 && (
+        {!error && !loading && totalPgaes > 1 && results.length > 0 && (
           <Themes theme={'A-HCA-White'}>
             <Pagination
               pageCount={totalPgaes}

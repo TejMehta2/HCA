@@ -9,6 +9,7 @@ import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
+import InfoBox from '../InfoBox/InfoBox';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
   // top specialty
@@ -98,6 +99,21 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           </div>
         )}
       </div>
+      {props.consultantsSlugs.includes(props.slug) && (
+        <div className={styles.appointment}>
+          <InfoBox
+            backgroundColour="green"
+            icon={null}
+            isShortInfo={true}
+            shortText="Next initial appointment on Fri, Oct 28"
+          />
+          <div className={styles.info}>
+            <Text tag="p" variation="body-small">
+              Last checked 1 min ago
+            </Text>
+          </div>
+        </div>
+      )}
       <div className={styles.buttons}>
         {!props.hideAppointmentRequest &&
           !props.consultantsSlugs.includes(props.slug) && (
