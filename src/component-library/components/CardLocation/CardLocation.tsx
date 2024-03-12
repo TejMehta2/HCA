@@ -1,25 +1,26 @@
 import React from 'react';
 import { CardLocationProps } from './CardLocation.types';
 import styles from './CardLocation.module.scss';
-import Themes from '../../foundation/Themes/Themes';
 import Button from '../../core-components/Button/Button';
 
 const CardLocation = (props: CardLocationProps): JSX.Element => {
-  const { amount, title, cta, theme } = props;
+  const { quantity, title, subtitle, cta, icon } = props;
   return (
-    <Themes theme={theme}>
-      <div className={styles.wrapper}>
-        <div>
-          {amount}
-          {title}
-        </div>
-        {cta && (
-          <Button size="small" variation="outline">
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        {quantity && <div className={styles.quantity}>{quantity}</div>}
+        {title && <div className={styles.title}>{title}</div>}
+      </div>
+      {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
+      {icon && <div className={styles.icon}>{icon}</div>}
+      {cta && (
+        <div className={styles.cta}>
+          <Button size={'large'} variation={'outline'}>
             {cta}
           </Button>
-        )}
-      </div>
-    </Themes>
+        </div>
+      )}
+    </div>
   );
 };
 

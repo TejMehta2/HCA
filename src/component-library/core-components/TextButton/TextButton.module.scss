@@ -10,7 +10,7 @@
 
   button,
   a {
-    display: flex;
+    display: inline-flex;
     column-gap: px-to-rem(4);
     cursor: pointer;
     background: 0;
@@ -67,6 +67,10 @@
       &::after {
         display: none;
       }
+    }
+
+    svg {
+      min-width: min-content;
     }
   }
 }

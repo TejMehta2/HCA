@@ -1,0 +1,42 @@
+﻿---
+ID: "320aaac4-7ea8-4d85-a1df-af4a1f601b31"
+Parent: "214079d2-e2f2-45ac-a41b-adf791abc6c7"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: /sitecore/content/HCA/HCA Main/Presentation/Partial Designs/Footer/Data/Footer CTAs/Find a doctor
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240115T125614Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "900447a8-cb08-457b-af69-e9cfa1f487c0"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Find a doctor" linktype="anchor" url="Find a doctor" anchor="Find a doctor" title="" class="" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240130T095921Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{53BD34BD-A10D-4E5A-8C34-2798420ACC58}"

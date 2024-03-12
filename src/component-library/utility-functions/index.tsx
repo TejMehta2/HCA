@@ -21,3 +21,67 @@ export const transformFields = (
   }
   return transformedObject;
 };
+
+// check object has properties or it is defined and not null
+export const isObjectDefined = (Obj: object) => {
+  if (
+    Obj === null ||
+    typeof Obj !== 'object' ||
+    Object.prototype.toString.call(Obj) === '[object Array]'
+  ) {
+    return false;
+  } else {
+    for (const prop in Obj) {
+      if (Obj.hasOwnProperty(prop)) {
+        return true;
+      }
+    }
+    return JSON.stringify(Obj) !== JSON.stringify({});
+  }
+};
+
+// calculate years of experience
+export const yearsExperience = (yearsExp: string) => {
+  // Check if yearsExp is a string
+  if (typeof yearsExp !== 'string') {
+    // Handle the case where yearsExp is not a string
+    return 0; // Or whatever default value you want to return
+  }
+
+  const reversedDate = yearsExp.split('-').reverse().join('-');
+  const yearsNew =
+    new Date(
+      new Date().getTime() - new Date(reversedDate).getTime()
+    ).getFullYear() - 1970;
+  return yearsNew;
+};
+
+// format date DD-MM-YYYY
+// 2024-02-19T11:58:44.022Z to 19-02-2024
+export const formatDate = (dateToFormat: string) => {
+  const dateTest = dateToFormat;
+  const entryDate = dateTest.substring(0, 10);
+  const date = entryDate.split('-').reverse().join('-');
+
+  return date;
+};
+
+// format time to GB fomat: Day of the Week, Short Month: Wed, Mar 27
+export const formatDateShort = (dateString: string | undefined) => {
+  // Check if dateString is undefined or null
+  if (!dateString) {
+    return ''; // or any default value you want to return
+  }
+
+  const date = new Date(dateString);
+
+  const options: object = {
+    weekday: 'short',
+    month: 'short',
+    day: '2-digit',
+  };
+
+  const formattedDate = date.toLocaleDateString('en-US', options);
+
+  return formattedDate;
+};

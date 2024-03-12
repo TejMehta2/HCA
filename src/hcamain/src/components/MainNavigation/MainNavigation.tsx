@@ -5,7 +5,10 @@ import {
   NavigationEyebrow,
   NavigationTab,
 } from '@component-library/site-components/Navigation/Navigation.types';
-import { MainNavigationProps } from './MainNavigation.types';
+import {
+  MainNavigationProps,
+  MainNavigationTabChild,
+} from './MainNavigation.types';
 import {
   Link as JssLink,
   Text as JssText,
@@ -24,6 +27,19 @@ const MainNavigationDefaultComponent = (
   </div>
 );
 
+const TabChildHeading = (props: MainNavigationTabChild) => {
+  const { cta, title, template } = props;
+  if (template?.name === 'Navigation Blog Post Card' && cta?.jsonValue) {
+    // Combine heading and CTA for blog cards to have a link as heading
+    return (
+      <JssLink field={cta?.jsonValue}>
+        <JssText field={title} />
+      </JssLink>
+    );
+  }
+  return <JssText field={title} />;
+};
+
 export const Default = (props: MainNavigationProps): JSX.Element => {
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
@@ -33,7 +49,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         tab?.children?.results?.map((child) => ({
           variation: child?.variant?.targetItem?.value?.value,
           template: child?.template?.name || 'Main Navigation Links List',
-          heading: child?.title?.value,
+          heading: <TabChildHeading {...child} />,
           description: <JssText field={child?.description} />,
           date: child?.date?.jsonValue ? (
             <JssDate field={child?.date?.jsonValue} />

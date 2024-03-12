@@ -12,7 +12,92 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: 
+  Value: |
+    query GetDoctorCards($datasource: String!, $contextItem: String!, $language: String!
+    ) {
+      item(path: $datasource, language: $language) {
+        ... on DoctorCards {
+          title {
+            jsonValue
+          }
+          numberOfCards {
+            jsonValue
+          }
+          cTACard {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          consultants {
+            ConsultantsList: targetItems {
+              ... on Consultant {
+                displayName
+                onlineBooking {
+                  value
+                }
+                doctifySlug {
+                  value
+                }
+              }
+            }
+          }
+          practice {
+            PracticeList: targetItems {
+              doctifyPractice: field(name: "Doctify Practice") {
+                value
+              }
+            }
+          }
+          service {
+            ServicesList: targetItems {
+              doctifyKeywordId: field(name: "Doctify KeywordId") {
+                value
+              }
+            }
+          }
+          customFilters {
+            CustomFiltersList: targetItems {
+              filter: field(name: "Filter") {
+                value
+              }
+            }
+          }
+        }
+      }
+      contextItem: item(path: $contextItem, language: $language) {
+        ... on SpecialtyPage {
+          doctifyKeywordId {
+            value
+          }
+        }
+        ... on LocationPage {
+          doctifyPractice {
+            value
+          }
+        }
+        ... on DiagnosisPage {
+          doctifyKeywordId {
+            value
+          }
+        }
+        ... on TreatmentPage {
+          doctifyKeywordId {
+            value
+          }
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
@@ -81,14 +166,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bdaab628-5427-411d-b764-f704e8eaad6e"
+      Value: "6ffa3acf-23f5-4189-8f71-780e0030a4ba"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240108T113257Z
+      Value: 20240308T194739Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

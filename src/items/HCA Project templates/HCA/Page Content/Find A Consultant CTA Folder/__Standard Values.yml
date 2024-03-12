@@ -1,0 +1,33 @@
+﻿---
+ID: "c8784222-3920-4d94-a847-f410763467de"
+Parent: "7058e8eb-8b7c-454e-9ecc-1199aa6e4f32"
+Template: "7058e8eb-8b7c-454e-9ecc-1199aa6e4f32"
+Path: /sitecore/templates/Project/HCA/Page Content/Find A Consultant CTA Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {4D8873CB-38EF-40C2-939B-879D5E9699DE}
+    {7058E8EB-8B7C-454E-9ECC-1199AA6E4F32}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "895f9dfe-a62d-424f-bfd3-de19a77f8e3f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240305T211035Z

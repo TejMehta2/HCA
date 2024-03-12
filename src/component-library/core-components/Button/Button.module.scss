@@ -145,14 +145,20 @@
       color: var(--cta-full-text);
       border: 1px solid var(--cta-full-border);
 
-      @include apply-hover-transition(
-        var(--cta-full-background),
-        var(--background)
-      );
+      @media (hover: hover) and (pointer: fine) {
+        @include apply-hover-transition(
+          var(--cta-full-background),
+          var(--background)
+        );
 
-      &:hover {
-        color: var(--cta-full-hover-text);
-        border-color: var(--cta-full-hover-border);
+        &:hover {
+          color: var(--cta-full-hover-text);
+          border-color: var(--cta-full-hover-border);
+        }
+      }
+
+      @media (pointer: coarse) {
+        background-color: var(--cta-full-background);
       }
 
       &:active {
@@ -201,14 +207,17 @@
       color: var(--cta-outline-text);
       border: 1px solid var(--cta-outline-border);
       background-color: transparent;
-      @include apply-hover-transition(
-        transparent,
-        var(--cta-outline-hover-background)
-      );
 
-      &:hover {
-        color: var(--cta-outline-hover-text);
-        border-color: var(--cta-outline-hover-border);
+      @media (hover: hover) and (pointer: fine) {
+        @include apply-hover-transition(
+          transparent,
+          var(--cta-outline-hover-background)
+        );
+
+        &:hover {
+          color: var(--cta-outline-hover-text);
+          border-color: var(--cta-outline-hover-border);
+        }
       }
 
       &:active {
@@ -422,10 +431,16 @@
     &-light-blue {
       a,
       button {
-        @include apply-hover-transition(
-          var(--cta-full-background),
-          var(--card-background)
-        );
+        @media (hover: hover) and (pointer: fine) {
+          @include apply-hover-transition(
+            var(--cta-full-background),
+            var(--card-background)
+          );
+        }
+
+        @media (pointer: coarse) {
+          background-color: var(--cta-full-background);
+        }
       }
     }
   }

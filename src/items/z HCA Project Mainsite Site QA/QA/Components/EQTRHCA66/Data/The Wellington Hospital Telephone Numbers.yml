@@ -1,0 +1,23 @@
+﻿---
+ID: "49c9ef54-baa4-4048-98f7-22011042104d"
+Parent: "eb6d0a6f-6cbd-40f1-8366-891c0d45a55b"
+Template: "1dd55312-6947-4ce8-8d9e-2bcc7b8c16e9"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/The Wellington Hospital Telephone Numbers
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T204218Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7e742168-9e74-486f-92d8-07123d3437b1"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240306T100737Z

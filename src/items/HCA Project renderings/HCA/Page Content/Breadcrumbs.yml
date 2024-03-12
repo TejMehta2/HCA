@@ -36,9 +36,6 @@ SharedFields:
         }
         displayName
         name
-        url {
-          path
-        }
         ancestors(hasLayout: true) {
           navigationTitle: field(name: "Navigation Title") {
             value
@@ -49,7 +46,7 @@ SharedFields:
           displayName
           name 
           url {
-            path
+            url
           }
         }
       }
@@ -122,14 +119,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "14c9138e-a823-4be5-a79c-5970fc9f64e9"
+      Value: "3b6d4a92-4be6-44ff-ab6c-f1ddb472af5d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240222T103845Z
+      Value: 20240306T151515Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

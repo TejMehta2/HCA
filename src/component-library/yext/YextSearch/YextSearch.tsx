@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   ResultsCount,
-  Pagination,
   UniversalResults,
   VerticalResults,
 } from '@yext/search-ui-react';
@@ -10,14 +9,19 @@ import YextTabs from '../YextTabs/YextTabs';
 import YextProvider from '../YextProvider/YextProvider';
 import StyledYextSearchBar from '../StyledYextSearchBar/StyledYextSearchBar';
 import YextResultCardArticlesAdaptor from '../YextResultCardArticles/YextResultCardArticles.adaptor';
+import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLinks.adaptor';
+import YextResultCardFAQsAdaptor from '../YextResultCardFAQs/YextResultCardFAQs.adaptor';
+import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
 
 const YextSearch = (): JSX.Element => {
+  const resultsCountRef = useRef<HTMLDivElement>(null);
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <YextProvider>
           <StyledYextSearchBar />
           <YextTabs />
+          <div ref={resultsCountRef}></div>
           <ResultsCount />
           <UniversalResults
             verticalConfigMap={{
@@ -30,6 +34,7 @@ const YextSearch = (): JSX.Element => {
               },
               tests_and_treatments: {
                 label: 'Tests & Treatments',
+                CardComponent: YextResultCardLinksAdaptor,
               },
               specialties: {
                 label: 'Service Lines',
@@ -37,13 +42,22 @@ const YextSearch = (): JSX.Element => {
               healthcare_professionals: {
                 label: 'Consultants',
               },
+              faqs: {
+                CardComponent: YextResultCardFAQsAdaptor,
+              },
             }}
           />
           <VerticalResults
             CardComponent={YextResultCardArticlesAdaptor}
             customCssClasses={{ verticalResultsContainer: styles.vertical }}
           />
-          <Pagination />
+          <YextCustomPagination
+            callback={() => {
+              resultsCountRef?.current?.scrollIntoView({
+                behavior: 'smooth',
+              });
+            }}
+          />
         </YextProvider>
       </div>
     </div>

@@ -13,7 +13,7 @@ type AncestorsFields = {
   abstractTitle?: { value?: string };
   displayName?: string;
   name?: string;
-  url?: { path?: string };
+  url?: { url?: string };
 };
 
 interface Fields {
@@ -28,7 +28,6 @@ interface Fields {
       abstractTitle?: { value?: string };
       displayName?: string;
       name?: string;
-      url?: { path?: string };
       ancestors?: AncestorsFields[];
     };
   };
@@ -71,25 +70,21 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
       const title = getTitle(ancestor);
 
       return (
-        <Link href={ancestor?.url?.path || ''} key={index}>
+        <Link href={ancestor?.url?.url || ''} key={index}>
           {title}
         </Link>
       );
     }
   );
 
+  //  remove home which should be the last item in ancestors
+  breadcrumbList?.pop();
   const title = getTitle(props.fields?.data?.contextItem);
   breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
 
   if (!props?.fields?.data?.contextItem?.ancestors?.length) {
     return <></>;
   }
-  return (
-    <Breadcrumbs
-      children={breadcrumbList?.slice(
-        0,
-        props?.fields?.data?.contextItem?.ancestors?.length - 1
-      )}
-    />
-  );
+
+  return <Breadcrumbs children={breadcrumbList} />;
 };

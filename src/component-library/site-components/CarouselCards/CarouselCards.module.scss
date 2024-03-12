@@ -18,6 +18,7 @@
   @include responsive-grid;
 
   & > * {
+    @include responsive-grid-start(1);
     @include responsive-grid-span(
       $default: 6,
       $breakpoint-m: 3,
@@ -82,4 +83,8 @@
       transform: translateY(-100%);
     }
   }
+}
+
+.copy {
+  padding-top: $spacing-5;
 }

@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{730AAB1C-AF73-41AE-B60E-900C3A2DE2AE}" />
+    <image mediaid="{5F5AF500-0397-4F09-974B-BC44123B2697}" />
 Languages:
 - Language: en
   Versions:
@@ -26,11 +26,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f41d44e2-75ce-48d4-993f-63492c5443a2"
+      Value: "0c157f5f-dab4-4e92-92eb-63c896c7a392"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\alina.antemir@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231220T135541Z
+      Value: 20240305T170809Z

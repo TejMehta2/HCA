@@ -1,0 +1,18 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "z HCA Project Main Site QA",
+  "items": {
+    "includes": [
+      {
+        "name": "z HCA Project Mainsite Site QA",
+        "path": "/sitecore/content/HCA/HCA Main/home/QA",
+        "allowedPushOperations": "CreateUpdateAndDelete"        
+      },
+      {
+        "name": "z HCA Project Mainsite Media Library QA",
+        "path": "/sitecore/media library/Project/HCA/HCA Main/QA",
+        "allowedPushOperations": "CreateUpdateAndDelete"      
+      }
+    ]
+  }
+}

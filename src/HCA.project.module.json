@@ -36,7 +36,8 @@
             {
                 "name": "HCA Project media",
                 "path": "/sitecore/media library/Project/HCA",
-                "allowedPushOperations": "CreateUpdateAndDelete"
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "SingleItem"              
             },
             {
                 "name": "HCA Project Content Root",

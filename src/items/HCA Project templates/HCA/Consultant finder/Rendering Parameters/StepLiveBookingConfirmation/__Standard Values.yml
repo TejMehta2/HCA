@@ -1,0 +1,27 @@
+﻿---
+ID: "021fec8f-41cd-467d-ad93-483d9a508e35"
+Parent: "bfea4e7a-a43b-4917-bdf5-bf0e7f30d5e1"
+Template: "bfea4e7a-a43b-4917-bdf5-bf0e7f30d5e1"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/StepLiveBookingConfirmation/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "886d1eb3-4fe9-41f0-8ad8-fd27b33ab8d6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240116T134611Z

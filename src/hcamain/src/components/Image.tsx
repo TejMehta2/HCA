@@ -39,7 +39,7 @@ export const Banner = (props: ImageProps): JSX.Element => {
     backgroundImage: `url('${props?.fields?.Image?.value?.src}')`,
   };
   const modifyImageProps = {
-    ...props.fields.Image,
+    ...props?.fields?.Image,
     editable: props?.fields?.Image?.editable
       ?.replace(`width="${props?.fields?.Image?.value?.width}"`, 'width="100%"')
       .replace(

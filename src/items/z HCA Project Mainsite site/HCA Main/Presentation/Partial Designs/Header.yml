@@ -11,7 +11,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{608E2FFD-7245-4E15-8135-E99C5C78B9CE}" />
+    <image mediaid="{4E693F1B-4989-40EE-AC76-D784875FA6EC}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -20,18 +20,12 @@ SharedFields:
       <d
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
-          uid="{285B03A5-CD60-4C2B-9FE9-A77E2BD4ED08}"
-          p:before="*"
-          s:ds="local:/Data/Title"
-          s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
-          s:par="?Styles=%7bFDDCDB29-4AF8-4074-8E22-4B04B6F42795%7d&amp;FieldNames=%7b7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7d&amp;GridParameters=%7b7465D855-992E-4DC2-9855-A03250DFA74B%7d%7c%7b81225C08-5783-4BED-A86A-AB2B87198885%7d"
-          s:ph="headless-header" />
-        <r
-          uid="{8E403C6D-C8E0-460C-85D6-CF08AED46883}"
-          p:after="*[1=2]"
-          s:id="{1DEB067F-0BB1-405E-94F5-2ABB537A6160}"
-          s:par="?LevelFrom={1BB88840-5FB3-4353-AD8D-81136F6FF75A}&amp;LevelTo={1BB88840-5FB3-4353-AD8D-81136F6FF75A}&amp;FieldNames=%7bDB5FDD6E-2D1E-43E7-A508-E4791960D165%7d&amp;AddRoot=1&amp;Styles=%7bE2F361E7-C715-403D-A6B2-D3201479130F%7d%7c%7b7E3799BE-4AEF-435C-A6EE-ABEFE277A055%7d&amp;GridParameters=%7b7465D855-992E-4DC2-9855-A03250DFA74B%7d&amp;NavigationRoot=%7b5B5C8266-2EF7-4A47-BEA4-D054898AE345%7d"
-          s:ph="headless-header" />
+          uid="{9612C83D-AB0D-4789-A59F-295998AAF845}"
+          s:ds="{D623D293-8E69-48DD-AFD4-8D45681630D8}"
+          s:id="{512EE550-05F4-428D-B0F9-D65CCE94F387}"
+          s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-header"
+          s:ccb="Clear on publish" />
       </d>
     </r>
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
@@ -42,6 +36,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231016T161647Z
@@ -55,11 +52,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7b35fef7-fb01-4996-b004-818c783c5678"
+      Value: "78138323-3e2b-4b35-b5e3-7cba5ca5955f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\alina.antemir@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102817Z
+      Value: 20240305T170827Z

@@ -2,7 +2,6 @@ import React from 'react';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 import YextResultCardArticles from './YextResultCardArticles';
-import Button from '../../core-components/Button/Button';
 import { CardProps } from '@yext/search-ui-react';
 
 // TODO - replace these props with Yext type generated interfaced
@@ -40,16 +39,14 @@ const YextResultCardArticlesAdaptor = (
           {title}
         </Text>
       }
-      description={
+      copy={
         <Text tag="div" variation={'body-large'}>
           {description}
         </Text>
       }
-      cta={
-        <Button size={'large'} variation={'full'}>
-          <a href={cta.url}>{cta.label}</a>
-        </Button>
-      }
+      ctas={{
+        button: <a href={cta.url}>{cta.label}</a>,
+      }}
     />
   );
 };

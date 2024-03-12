@@ -1,0 +1,33 @@
+﻿---
+ID: "bbbb0b4c-9824-4923-9131-297a75fb7d61"
+Parent: "8ee05e4d-0600-43ba-9495-f5918db823c0"
+Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/Contact Units/The Wellington Hospital
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T181941Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c13e535a-7f8c-4bc1-a17c-c46f3b5bfb86"
+    - ID: "970e5839-53a1-405c-8ada-3e7c4da4fc4d"
+      Hint: TelephoneNumber
+      Value: "{4D20631A-6A04-48C1-8A98-3B046ED043B4}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240306T100627Z
+    - ID: "f11e7b8e-2e89-424c-807b-af08ce4f29db"
+      Hint: ContactUnitName
+      Value: General Enquires
