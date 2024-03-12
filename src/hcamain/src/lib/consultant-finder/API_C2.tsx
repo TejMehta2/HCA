@@ -61,7 +61,23 @@ export async function getLDBFirstAppointmentData(
     if (res.ok) {
       const result = await res.json();
       if (result && result.availability && result.availability.length == 1) {
-        returnData = result.availability[0];
+        const retRecord = result.availability[0];
+        try {
+          const timeRefreshed = Date.parse(retRecord?.refreshdate);
+          const timeSpanRefreshed = Date.now() - timeRefreshed;
+          const minsSinceRefreshed = Math.floor(
+            timeSpanRefreshed / (1000 * 60)
+          );
+          retRecord.refreshedText = `${minsSinceRefreshed} ${
+            minsSinceRefreshed > 1 ? 'minutes' : 'minute'
+          } ago`;
+        } catch (e) {
+          console.warn(
+            `issue doing time conversion in getLDBFirstAppointmentData exception:${e}`
+          );
+        }
+
+        returnData = retRecord;
       }
     } else {
       //C2 call failed
