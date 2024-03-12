@@ -4,7 +4,7 @@ import MapEngland from '../../assets/locations/map-england.png';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OurLocationsRegion> = {
-  title: 'components/OurLocationRegion',
+  title: 'poc/OurLocationRegion',
   component: OurLocationsRegion,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout

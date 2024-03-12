@@ -6,7 +6,7 @@ import {
 import styles from './OurLocationsRegion.module.scss';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
-import CardLocation from '../CardLocation/CardLocation';
+import CardLocation from '../../components/CardLocation/CardLocation';
 
 /* Create image */
 export const RegionImage = (props: RegionImageProps): JSX.Element => {
