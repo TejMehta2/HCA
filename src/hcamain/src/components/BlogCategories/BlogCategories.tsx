@@ -78,25 +78,4 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
       )}
     />
   );
-  /* return (
-    <div className={`component ${props.params?.styles}`}>
-      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <ul>
-        {props.fields?.data?.item?.categories?.categoriesList?.map(
-          (category, index) => (
-            <li key={index}>
-              <JssText field={category.displayName} />
-              <br />
-              <JssText field={category.filter} />
-              <br />
-              <span>{category?.filterValue?.jsonValue?.id}</span>
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-    </div>
-  ); */
 };
