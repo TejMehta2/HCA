@@ -20,7 +20,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
     const targetSections = wrapperRef?.current?.querySelectorAll(
       ':scope > div:not([data-content="diamond"])'
     );
-    console.log(targetSections);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
