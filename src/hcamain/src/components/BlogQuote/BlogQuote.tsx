@@ -8,6 +8,7 @@ import {
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import Params from 'src/types/params';
+import Text from '@component-library/foundation/Text/Text';
 
 interface AuthorFields {
   fields?: {
@@ -41,6 +42,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
+  console.log(props);
 
   return (
     <BlogContent
@@ -58,11 +60,13 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
           ),
         }}
         children={
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.Quote?.value || '',
-            }}
-          ></span>
+          <Text variation={props.params?.HeadingSize || 'display-5'}>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields?.Quote?.value || '',
+              }}
+            ></span>
+          </Text>
         }
       />
     </BlogContent>
