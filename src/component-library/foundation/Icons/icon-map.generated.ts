@@ -56,6 +56,7 @@ import iconPin from './assets-dist/Pin.svg';
 import iconPlay from './assets-dist/Play.svg';
 import iconPlusSmall from './assets-dist/Plus small.svg';
 import iconPlus from './assets-dist/Plus.svg';
+import iconQuestion from './assets-dist/Question.svg';
 import iconRedo from './assets-dist/Redo.svg';
 import iconSearch from './assets-dist/Search.svg';
 import iconShape from './assets-dist/Shape.svg';
@@ -129,6 +130,7 @@ export type IconName =
   | 'iconPlay'
   | 'iconPlusSmall'
   | 'iconPlus'
+  | 'iconQuestion'
   | 'iconRedo'
   | 'iconSearch'
   | 'iconShape'
@@ -202,6 +204,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconPlay', iconPlay],
   ['iconPlusSmall', iconPlusSmall],
   ['iconPlus', iconPlus],
+  ['iconQuestion', iconQuestion],
   ['iconRedo', iconRedo],
   ['iconSearch', iconSearch],
   ['iconShape', iconShape],
