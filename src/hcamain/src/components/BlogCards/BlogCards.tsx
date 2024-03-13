@@ -67,6 +67,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
+  console.log(props);
+
   return (
     <CarouselCards
       title={
@@ -80,7 +82,10 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       link={
         props.fields?.CTALink && (
           <Button size={'large'} variation={'full'}>
-            <JssLink field={props.fields?.CTALink}>
+            <JssLink
+              href={props.fields.BlogUrl?.value.href}
+              field={props.fields?.CTALink}
+            >
               {props?.fields?.CTALink.value.text && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -141,7 +146,10 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         cta={
           props.fields?.CTALink && (
             <Button size={'large'} variation={'full'}>
-              <JssLink field={props.fields?.CTALink}>
+              <JssLink
+                href={props.fields.BlogUrl?.value.href}
+                field={props.fields?.CTALink}
+              >
                 {props?.fields?.CTALink.value.text && (
                   <span
                     dangerouslySetInnerHTML={{
