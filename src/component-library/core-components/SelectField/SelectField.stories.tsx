@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import SelectField from './SelectField';
 import type { Meta, StoryObj } from '@storybook/react';
 import Themes from '../../foundation/Themes/Themes';
