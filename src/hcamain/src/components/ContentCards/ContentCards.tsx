@@ -48,7 +48,12 @@ const ContentCardsDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ContentCardsProps): JSX.Element => {
+interface WithImageProps extends ContentCardsProps {
+  showImage: boolean;
+}
+
+export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { showImage = true } = props;
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
@@ -82,7 +87,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
           <CardContent
             key={index}
-            image={<JssImage field={card.image} />}
+            image={showImage ? <JssImage field={card.image} /> : undefined}
             title={
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
@@ -108,4 +113,12 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       </>
     </CardBlock>
   );
+};
+
+export const WithoutImage = (props: ContentCardsProps): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <ContentCardsDefaultComponent {...props} />;
+  }
+
+  return <WithImage {...props} showImage={false} />;
 };

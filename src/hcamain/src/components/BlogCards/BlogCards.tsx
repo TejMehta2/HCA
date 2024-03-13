@@ -46,6 +46,7 @@ interface Fields {
   CTAIcon?: HCAIconFields;
   CTALink?: LinkField;
   Cards?: BlogFields[];
+  BlogUrl?: LinkField;
 }
 
 type BlogCardsProps = {
@@ -71,7 +72,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize}
+          variation={props.params?.HeadingSize || 'display-5'}
         >
           <JssText field={props.fields?.Title} />
         </Text>
@@ -130,7 +131,10 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
     <>
       <CardBlogBlock
         title={
-          <Text tag={'h2'} variation={'display-5'}>
+          <Text
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-5'}
+          >
             <JssText field={props.fields?.Title} />
           </Text>
         }

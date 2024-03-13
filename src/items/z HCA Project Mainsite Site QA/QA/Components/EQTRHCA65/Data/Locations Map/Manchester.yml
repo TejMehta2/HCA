@@ -1,0 +1,42 @@
+﻿---
+ID: "27b3b237-06a5-4481-830e-16eeb609984d"
+Parent: "847ace4a-a241-450f-95a3-c4da40e2f158"
+Template: "96e5e6df-b4f7-4587-b195-83bf31746cbe"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data/Locations Map/Manchester
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "09288575-7091-48ef-bdd9-f527623b3052"
+      Hint: CardStyles
+      Value: "translateY(-55%) translateX(0)"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240202T090254Z
+    - ID: "64f64b91-a724-4592-b254-1074e323f51f"
+      Hint: MapStyles
+      Value: translateY(10%) translateX(15%) scale(1.7)
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fbc1dbef-629d-4321-932f-eb85891f65cd"
+    - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
+      Hint: Theme
+      Value: "{6B409952-7051-4051-985C-6EA97FF5A328}"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View &lt;b&gt;all&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
+      Hint: Number
+      Value: 2
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240207T073804Z
+    - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
+      Hint: Text
+      Value: Locations across London

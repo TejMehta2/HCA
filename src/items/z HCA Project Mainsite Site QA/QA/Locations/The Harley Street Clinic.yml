@@ -1,0 +1,51 @@
+﻿---
+ID: "114f95ba-9012-4a8f-9507-426b2a948885"
+Parent: "4de3bb9f-9b36-4b44-9db2-15283c093353"
+Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T174243Z
+    - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
+      Hint: PostCode
+      Value: W1G 8BJ
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: The Harley Street Clinic
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "64765ef6-ea35-4e9e-8007-effd7c669ee6"
+      Hint: City
+      Value: London
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c793cf2a-0493-4ce0-b7d1-2f4d99db30bd"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{9F050C48-9D23-4281-8195-8F146AFFCBCC}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
+      Hint: Street
+      Value: 35 Weymouth Street
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240301T102741Z

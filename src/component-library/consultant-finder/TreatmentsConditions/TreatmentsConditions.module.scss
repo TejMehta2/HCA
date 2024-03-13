@@ -1,0 +1,38 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.treatments-contidions {
+  display: flex;
+  flex-direction: column;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+
+  .item {
+    flex-basis: 100%;
+
+    &:first-of-type {
+      margin-right: 0;
+
+      @include media(screen-l) {
+        margin-right: $spacing-1;
+      }
+    }
+
+    @include media(screen-l) {
+      flex-basis: 50%;
+    }
+  }
+
+  ul {
+    margin: $spacing-5 0;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: disc;
+
+    li {
+      @include apply-body-large;
+    }
+  }
+}

@@ -11,6 +11,9 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240130T084042Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: Birmingham
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -19,16 +22,19 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
+      Hint: FilterValue
+      Value: "{114F95BA-9012-4A8F-9507-426B2A948885}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5396fd82-5582-40e5-b945-c820a6b1ea03"
+      Value: "d2c7bdf3-f9dc-4096-952e-bfff7d2a2b92"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240202T124903Z
+      Value: 20240229T213217Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
       Value: city=Birmingham

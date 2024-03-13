@@ -18,6 +18,7 @@ import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils
 import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
+import NotFound from 'src/NotFound';
 
 const SitecorePage = ({
   notFound,
@@ -30,9 +31,9 @@ const SitecorePage = ({
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !layoutData?.sitecore?.route) {
+  if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
-    return <div>NOT FOUND FROM THE FINDER LEVEL SUB-PAGE</div>;
+    return <NotFound />;
   }
 
   const isEditing = layoutData.sitecore.context.pageEditing;
@@ -40,7 +41,7 @@ const SitecorePage = ({
     layoutData.sitecore.context.renderingType === RenderingType.Component;
   return (
     <div>
-      hello finder level sub-page world
+      {/* hello finder level sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}
@@ -68,15 +69,14 @@ const SitecorePage = ({
 // paths are not known example. https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // replace with list of known slugs...
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths: StaticPath[] = [];
+  const paths: StaticPath[] = [];
   let fallback: boolean | 'blocking' = 'blocking';
 
-  paths = [];
   fallback = 'blocking';
 
-  console.log('IN Finder subpage GetStaticPaths');
-  console.log('paths:', paths);
-  console.log('fallback:', fallback);
+  //console.log('IN Finder subpage GetStaticPaths');
+  //console.log('paths:', paths);
+  //console.log('fallback:', fallback);
   return {
     paths,
     fallback,
@@ -87,8 +87,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN Finder subpage GetStaticProps');
-  console.log('context.params', context.params);
+  //console.log('IN Finder subpage GetStaticProps');
+  //console.log('context.params', context.params);
 
   if (context.params) {
     // e.g. context.params { path: [ 'Step-Locationss' ] }
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     context.params.path = [`Finder/${context.params.path}/`];
   }
   const props = await sitecorePagePropsFactory.create(context);
-  console.log('props:', props);
+  //console.log('props:', props);
 
   return {
     props,

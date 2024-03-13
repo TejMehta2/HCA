@@ -1,0 +1,33 @@
+﻿---
+ID: "03585172-f57d-448c-9e1f-314ce5ea1e40"
+Parent: "2a425f18-98a5-452b-b00a-71eb49b55cd8"
+Template: "2a425f18-98a5-452b-b00a-71eb49b55cd8"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSearchConsultant Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {D0134881-A2B6-468D-B327-DD6E24EF9D4A}
+    {2A425F18-98A5-452B-B00A-71EB49B55CD8}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0573f4c4-358c-46f7-8726-b0eedd1c9713"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240115T115435Z

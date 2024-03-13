@@ -1,0 +1,29 @@
+﻿---
+ID: "2e42bdee-a979-4251-bc3f-dda054f450d8"
+Parent: "27a9a9de-c617-4801-a897-d7cb93e77f3b"
+Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Appointments
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T162954Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "10c12a03-c9bc-4cb6-b2b1-836c3ac114d9"
+    - ID: "970e5839-53a1-405c-8ada-3e7c4da4fc4d"
+      Hint: TelephoneNumber
+      Value: "{DCFBF0E6-BFC5-49CC-A45F-916A4676D006}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240306T100700Z
+    - ID: "f11e7b8e-2e89-424c-807b-af08ce4f29db"
+      Hint: ContactUnitName
+      Value: Appointments

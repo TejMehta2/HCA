@@ -3,8 +3,8 @@ import { ShareCTAProps } from './ShareCTA.types';
 import styles from './ShareCTA.module.scss';
 import Button from '../../core-components/Button/Button';
 import Modals from '../Modals/Modals';
-import Themes from '../../foundation/Themes/Themes';
 import Icons from '../../foundation/Icons/Icons';
+import Themes from '../../foundation/Themes/Themes';
 
 const ShareCTA = (props: ShareCTAProps): JSX.Element => {
   const {
@@ -13,7 +13,6 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
     heading,
     subheading,
     children,
-    theme,
     shareCtaIcon = (
       <span>
         <Icons iconName="iconShare" />
@@ -43,14 +42,12 @@ const ShareCTA = (props: ShareCTAProps): JSX.Element => {
 
   return (
     <>
-      <Themes theme={theme}>
-        <Button size="large" variation="outline">
-          <button onClick={handleClick}>
-            {shareCtaIcon}
-            {shareCtaText}
-          </button>
-        </Button>
-      </Themes>
+      <Button size="large" variation="outline">
+        <button onClick={handleClick}>
+          {shareCtaIcon}
+          {shareCtaText}
+        </button>
+      </Button>
       <Themes theme="A-HCA-White">
         <Modals ref={dialogRef} defaultOpen={false}>
           <div className={styles['modal-wrapper']}>

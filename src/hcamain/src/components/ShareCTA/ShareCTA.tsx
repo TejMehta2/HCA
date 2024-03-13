@@ -9,7 +9,6 @@ import ShareCTA from '@component-library/components/ShareCTA/ShareCTA';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
-import Themes from '@component-library/foundation/Themes/Themes';
 import Params from 'src/types/params';
 
 type CTAIconFields = {
@@ -82,39 +81,37 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
     text: props.fields?.data.contextItem?.text?.value || '',
   };
   return (
-    <Themes theme={'L-HCA-Teal-5'}>
-      <ShareCTA
-        shareCtaText={
-          <JssRichText
-            field={{
-              value: props.fields?.data.item.cTALink?.jsonValue.value.text,
+    <ShareCTA
+      shareCtaText={
+        <JssRichText
+          field={{
+            value: props.fields?.data.item.cTALink?.jsonValue.value.text,
+          }}
+        />
+      }
+      shareCtaIcon={
+        props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+          <span
+            dangerouslySetInnerHTML={{
+              __html:
+                props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value || '',
             }}
-          />
-        }
-        shareCtaIcon={
-          props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html:
-                  props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
-                  '',
-              }}
-            ></span>
-          )
-        }
-        shareData={shareData}
-        heading={
-          <Text tag="h2" variation="display-2">
-            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-          </Text>
-        }
-        subheading={
-          <Text tag="p" variation="subheading-1">
-            <JssText field={props.fields?.data?.item?.text?.jsonValue} />
-          </Text>
-        }
-        theme="A-HCA-White"
-      >
+          ></span>
+        )
+      }
+      shareData={shareData}
+      heading={
+        <Text tag="h2" variation="display-2">
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      subheading={
+        <Text tag="p" variation="subheading-1">
+          <JssText field={props.fields?.data?.item?.text?.jsonValue} />
+        </Text>
+      }
+    >
+      {findCtaText('CopyLinkShare') && (
         <Button size="large" variation="square-outline">
           <button
             onClick={() => {
@@ -125,6 +122,8 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText tag="span" field={findCtaText('CopyLinkShare')} />
           </button>
         </Button>
+      )}
+      {findCtaText('EmailShare') && (
         <Button size="large" variation="square-outline">
           <a
             href={`mailto:?subject=${encodeURI(
@@ -135,9 +134,11 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText tag="span" field={findCtaText('EmailShare')} />
           </a>
         </Button>
+      )}
+      {findCtaText('WhatsAppShare') && (
         <Button size="large" variation="square-outline">
           <a
-            href={`https://wa.me/send?text=${encodeURI(shareData.url)}`}
+            href={`https://wa.me/send?text=${shareData.url}`}
             rel="nofollow noopener"
             target="_blank"
           >
@@ -145,6 +146,8 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText tag="span" field={findCtaText('WhatsAppShare')} />
           </a>
         </Button>
+      )}
+      {findCtaText('FacebookShare') && (
         <Button size="large" variation="square-outline">
           <a
             href={`https://www.facebook.com/sharer/sharer.php?u=${shareData.url}`}
@@ -155,11 +158,25 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText tag="span" field={findCtaText('FacebookShare')} />
           </a>
         </Button>
+      )}
+      {findCtaText('MessengerShare') && (
+        <Button size="large" variation="square-outline">
+          <a
+            href={`http://www.facebook.com/dialog/send?app_id=2003187033308504&link=${shareData.url}&redirect_uri=${shareData.url}`}
+            rel="nofollow noopener"
+            target="_blank"
+          >
+            <Icons iconName="iconMessenger" />
+            <JssText tag="span" field={findCtaText('MessengerShare')} />
+          </a>
+        </Button>
+      )}
+      {findCtaText('TwitterXShare') && (
         <Button size="large" variation="square-outline">
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURI(
               shareData.title
-            )}/&url=${shareData.url}`}
+            )}&url=${shareData.url}`}
             rel="nofollow noopener"
             target="_blank"
           >
@@ -167,7 +184,7 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
             <JssText tag="span" field={findCtaText('TwitterXShare')} />
           </a>
         </Button>
-      </ShareCTA>
-    </Themes>
+      )}
+    </ShareCTA>
   );
 };

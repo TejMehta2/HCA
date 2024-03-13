@@ -23,7 +23,7 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
     className: styles['slick-wrapper'],
   };
 
-  const tabChangeHandler = (newLabel: string) => {
+  const tabChangeHandler = ({ label: newLabel }: { label: string }) => {
     const newIndex = tabsContent.findIndex(
       (tabContent) => tabContent.tab.label === newLabel
     );
