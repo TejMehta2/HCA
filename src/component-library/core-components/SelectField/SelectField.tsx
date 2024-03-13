@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { SelectFieldProps } from './SelectField.types';
 import styles from './SelectField.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -35,15 +35,18 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
     setActiveValue(selectedValue);
   };
 
-  const handleClickOutside = (event: MouseEvent | TouchEvent): void => {
-    event.preventDefault();
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent): void => {
+      event.preventDefault();
 
-    if (wrapperRef?.current?.contains(event.target as HTMLDivElement)) return;
+      if (wrapperRef?.current?.contains(event.target as HTMLDivElement)) return;
 
-    closeModal();
-  };
+      closeModal();
+    };
 
-  document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
@@ -53,11 +56,17 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
           {!required && ' (Optional)'}
         </label>
       )}
-      <input type="hidden" value={activeValue} required={required} />
+      <input
+        type="text"
+        value={activeValue === placeholder ? '' : activeValue}
+        required={required}
+        className={styles['hidden-input']}
+      />
       <span className={styles.select}>
         <button
           id={id}
           ref={buttonRef}
+          type="button"
           role="combobox"
           aria-label="open dropdown"
           aria-haspopup="listbox"
@@ -76,6 +85,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
           {options.map((option, index) => (
             <button
               key={index}
+              type="button"
               onClick={selectItem}
               role="option"
               aria-selected={option.text === activeValue}

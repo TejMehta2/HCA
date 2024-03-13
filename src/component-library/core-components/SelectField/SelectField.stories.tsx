@@ -46,3 +46,42 @@ export const Default: StoryObj<typeof SelectField> = {
     ),
   ],
 };
+
+const dummySubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert('submitted');
+};
+
+export const WithForm: StoryObj<typeof SelectField> = {
+  args: {
+    id: 'select1',
+    label: 'Select field label',
+    placeholder: 'Please select',
+    helpText: 'Helper text',
+    required: true,
+    errorMessage: 'Error message',
+    options: [
+      {
+        text: 'Option 1',
+      },
+      {
+        text: 'Option 2',
+      },
+      {
+        text: 'Option 3',
+      },
+    ],
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <form onSubmit={dummySubmit}>
+            <Story />
+            <button>submit</button>
+          </form>
+        </div>
+      </Themes>
+    ),
+  ],
+};

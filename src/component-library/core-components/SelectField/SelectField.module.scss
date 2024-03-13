@@ -51,11 +51,13 @@
     gap: $spacing-2;
   }
 
-  &:has(input:not(:focus):invalid) {
+  &:has(input:invalid) {
     color: var(--field-error-colour);
 
-    input {
-      border-color: var(--field-error-colour);
+    .select {
+      button {
+        border-color: var(--field-error-colour);
+      }
     }
 
     .error-message {
@@ -90,4 +92,8 @@
       background-color: $orange-40;
     }
   }
+}
+
+.hidden-input {
+  display: none;
 }
