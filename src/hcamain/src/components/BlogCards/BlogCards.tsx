@@ -67,8 +67,6 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <CarouselCards
       title={
@@ -114,11 +112,11 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             </Text>
             {!!card.fields.ArticleType && (
               <Tags>
-                <JssText
-                  key={card.fields.ArticleType?.id}
-                  tag="p"
-                  field={card.fields.ArticleType?.fields.Title}
-                />
+                <a
+                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.url}`}
+                >
+                  {card.fields?.ArticleType.fields.Title?.value}
+                </a>
               </Tags>
             )}
           </CardBlog>
@@ -132,6 +130,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
   if (!props.fields) {
     return <BlogCardsDefaultComponent {...props} />;
   }
+
   return (
     <>
       <CardBlogBlock
@@ -187,11 +186,11 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               )}
               {card.fields.ArticleType && (
                 <Tags>
-                  <JssText
-                    key={card.fields.ArticleType.id}
-                    tag="p"
-                    field={card.fields.ArticleType.fields.Title}
-                  />
+                  <a
+                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.url}`}
+                  >
+                    {card.fields?.ArticleType.fields.Title?.value}
+                  </a>
                 </Tags>
               )}
             </CardBlog>
