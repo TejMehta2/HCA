@@ -43,6 +43,8 @@
   .eyebrow-inner {
     @include responsive-container;
 
+    display: flex;
+    flex-direction: column;
     padding-top: $spacing-7;
     padding-bottom: $spacing-7;
 
