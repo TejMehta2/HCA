@@ -12,18 +12,16 @@ import TextLink from '../../core-components/TextLink/TextLink';
 import InfoBox from '../InfoBox/InfoBox';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
-  // top specialty
-  const topSpecialty =
-    props.keywords ||
-    props.keywords.filter(
-      (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
-    );
-
   // get specialties
   const specialties = props.keywords.filter(
     (item: any) => item.keywordType === 'specialty'
   );
   const specialtiesNames = specialties.map((item: any) => item.name).join(', ');
+
+  // top specialty
+  const topSpecialty = specialties.filter(
+    (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+  );
 
   return (
     <div className={styles['consultant-card']}>
@@ -61,7 +59,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             hasTooltip={false}
             tooltipContent={'tooltip'}
             doctifyText={'Reviewd By'}
-            doctifyLogo={null}
+            doctifyLogo={props.doctifyLogo}
             hasDoctifyBranding={true}
           />
         </div>

@@ -41,24 +41,27 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import ConsultantListHeaderTtitle from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderTitle';
 // import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
+import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_C2';
+import RadioButtons from '@component-library/core-components/RadioButtons/RadioButtons';
+import RadioButton from '@component-library/core-components/RadioButton/RadioButton';
+import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
   EnquireNowLink: LinkField;
   BookOnlineLink: LinkField;
   ViewProfileLink: LinkField;
   BackFromAdvSearchLink: LinkField;
   BackFromQuickSearchLink: LinkField;
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  LocationFilterOptions: object[];
+  LanguageFilterOptions: object[];
+  GenderFilterOptions: object[];
+  ProfileImagePlaceholderImage: any;
+  DoctifyLogoImage: ImageField;
 }
 
 type StepProps = {
@@ -67,9 +70,7 @@ type StepProps = {
   fields: Fields;
 };
 interface ServerSideProps {
-  HCAFacilities: any;
   Insurers: any;
-  PopularLanguages: any;
   LiveDiaryConsultantsSlugs: object[];
 }
 
@@ -85,149 +86,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   _context
 ) => {
   // get filters data
-  const topLevelHospitalsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbytype/hospitals/TopLevelHospital`;
-  const languages = [
-    {
-      UniqueKey: 'Language.English',
-      Key: 'English',
-      Type: 'Language',
-      Value: 'English',
-      Order: 1,
-      Values: {
-        Value: 'English',
-        Order: '1',
-        id: '114',
-        name: 'english',
-        isoCode: 'en',
-      },
-    },
-    {
-      UniqueKey: 'Language.Arabic',
-      Key: 'Arabic',
-      Type: 'Language',
-      Value: 'Arabic',
-      Order: 2,
-      Values: {
-        Value: 'Arabic',
-        Order: '2',
-        id: '113',
-        name: 'arabic',
-        isoCode: 'ar',
-      },
-    },
-    {
-      UniqueKey: 'Language.French',
-      Key: 'French',
-      Type: 'Language',
-      Value: 'French',
-      Order: 3,
-      Values: {
-        Value: 'French',
-        Order: '3',
-        id: '106',
-        name: 'french',
-        isoCode: 'fr',
-      },
-    },
-    {
-      UniqueKey: 'Language.Italian',
-      Key: 'Italian',
-      Type: 'Language',
-      Value: 'Italian',
-      Order: 4,
-      Values: {
-        Value: 'Italian',
-        Order: '4',
-        id: '101',
-        name: 'italian',
-        isoCode: 'it',
-      },
-    },
-    {
-      UniqueKey: 'Language.Hindi',
-      Key: 'Hindi',
-      Type: 'Language',
-      Value: 'Hindi',
-      Order: 5,
-      Values: {
-        Value: 'Hindi',
-        Order: '5',
-        id: '56',
-        name: 'hindi',
-        isoCode: 'hi',
-      },
-    },
-    {
-      UniqueKey: 'Language.Punjabi',
-      Key: 'Punjabi',
-      Type: 'Language',
-      Value: 'Punjabi',
-      Order: 6,
-      Values: {
-        Value: 'Punjabi',
-        Order: '6',
-        id: '104',
-        name: 'punjabi',
-        isoCode: 'pa',
-      },
-    },
-    {
-      UniqueKey: 'Language.Urdu',
-      Key: 'Urdu',
-      Type: 'Language',
-      Value: 'Urdu',
-      Order: 7,
-      Values: {
-        Value: 'Urdu',
-        Order: '7',
-        id: '105',
-        name: 'urdu',
-        isoCode: 'ur',
-      },
-    },
-    {
-      UniqueKey: 'Language.Gujarati',
-      Key: 'Gujarati',
-      Type: 'Language',
-      Value: 'Gujarati',
-      Order: 8,
-      Values: {
-        Value: 'Gujarati',
-        Order: '8',
-        id: '102',
-        name: 'gujarati',
-        isoCode: 'gu',
-      },
-    },
-    {
-      UniqueKey: 'Language.Greek',
-      Key: 'Greek',
-      Type: 'Language',
-      Value: 'Greek',
-      Order: 9,
-      Values: {
-        Value: 'Greek',
-        Order: '9',
-        id: '52',
-        name: 'greek',
-        isoCode: 'el',
-      },
-    },
-    {
-      UniqueKey: 'Language.Spanish',
-      Key: 'Spanish',
-      Type: 'Language',
-      Value: 'Spanish',
-      Order: 10,
-      Values: {
-        Value: 'Spanish',
-        Order: '10',
-        id: '109',
-        name: 'spanish',
-        isoCode: 'es',
-      },
-    },
-  ];
   const insurersURL = `https://api.doctify.com/api/hca/listing/insurers`;
   const liveDiariesSlugURL =
     'https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants';
@@ -263,14 +121,13 @@ export const getStaticProps: GetStaticComponentProps = async (
     return data;
   };
 
-  const hcaFacilities = await getData(topLevelHospitalsURL);
+  // to use
+  // const slugs = await checkIfLiveBookingIsAvailable();
   const insurers = await getData(insurersURL);
   const consultantsSlugsLD = await getData(liveDiariesSlugURL);
 
   const returnProps: ServerSideProps = {
-    HCAFacilities: hcaFacilities,
     Insurers: insurers,
-    PopularLanguages: languages,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
   };
 
@@ -525,11 +382,17 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
+
+  console.log(serverSideData?.Insurers);
+  const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+  );
+  console.log('insurers', insurersDoctify);
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs.map(
     (item: any) => item.UniqueKey
   );
   // console.log('consultantsSlugs', consultantsSlugs);
-  // console.log('consultant cards', props);
+  console.log('consultant cards', props);
   // console.log('ss data', serverSideData);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
     ConsultantFinderContext
@@ -538,6 +401,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [totalPgaes, setTotalPages] = useState(0);
+  const [total, setTotal] = useState(0);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -551,10 +415,6 @@ export const Default = (props: StepProps): JSX.Element => {
 
   const currentPage = Math.ceil((initialOffset + 1) / 12);
   // console.log('current page', currentPage);
-
-  const topHospitalsList = serverSideData?.HCAFacilities.map(
-    (item: any) => item.Values
-  );
 
   const [relevance, setRelevance] = useState('');
   const test = true;
@@ -647,13 +507,16 @@ export const Default = (props: StepProps): JSX.Element => {
       .get(requestURL)
       .then((resp) => {
         console.log(resp.data);
-        const totalPages = Math.ceil(resp.data.total / 12);
-        // console.log('total pages', totalPages);
-        setTotalPages(totalPages);
+        setTotal(resp?.data?.total || 0);
+
         if (resp.data.rows.length > 0) {
-          setResults(resp.data.rows);
+          setResults(resp?.data?.rows || []);
+          const totalPages = Math.ceil(resp.data.total / 12);
+          // console.log('total pages', totalPages);
+          setTotalPages(totalPages);
         } else {
           setResults([]);
+          setTotalPages(0);
         }
         setLoading(false);
         setError(false);
@@ -668,10 +531,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div id={id ? id : undefined}>
         <Breadcrumbs>
           <Link href="/Finder/Step-Intro">
             {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
@@ -726,18 +586,23 @@ export const Default = (props: StepProps): JSX.Element => {
                   title: 'Locations',
                   children: (
                     <div>
-                      {topHospitalsList.length > 0 &&
-                        topHospitalsList.map((hospital: any, index: number) => (
-                          <Checkbox
-                            key={index}
-                            id={hospital?.slug}
-                            value={hospital?.slug}
-                            name={hospital?.doctifyName}
-                            label={hospital?.doctifyName}
-                            checked={checkedPractices.includes(hospital?.slug)}
-                            onChange={handleCheckboxChange}
-                          ></Checkbox>
-                        ))}
+                      {props?.fields?.LocationFilterOptions &&
+                        props?.fields?.LocationFilterOptions.length > 0 &&
+                        props?.fields?.LocationFilterOptions.map(
+                          (hospital: any, index: number) => (
+                            <Checkbox
+                              key={index}
+                              id={hospital?.fields?.slug?.value}
+                              value={hospital?.fields?.slug?.value}
+                              name={hospital?.fields?.doctifyName?.value}
+                              label={hospital?.fields?.doctifyName?.value}
+                              checked={checkedPractices.includes(
+                                hospital?.fields?.slug?.value
+                              )}
+                              onChange={handleCheckboxChange}
+                            ></Checkbox>
+                          )
+                        )}
                     </div>
                   ),
                 },
@@ -771,8 +636,101 @@ export const Default = (props: StepProps): JSX.Element => {
                     </div>
                   ),
                 },
+                {
+                  title: 'Gender',
+                  children: (
+                    <div>
+                      {props?.fields?.GenderFilterOptions && (
+                        <RadioButtons>
+                          {props?.fields?.GenderFilterOptions?.length > 0 &&
+                            props?.fields?.GenderFilterOptions.map(
+                              (genderOption: any, index) => (
+                                <RadioButton
+                                  key={index}
+                                  label={genderOption?.name}
+                                  mode="light"
+                                  name="gender"
+                                  value={genderOption?.fields?.Value?.value}
+                                  onChange={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                  ) => console.log(e.target.value)}
+                                  // checked={true}
+                                />
+                              )
+                            )}
+                        </RadioButtons>
+                      )}
+                    </div>
+                  ),
+                },
+                {
+                  title: 'Cover for treatment or procedure',
+                  children: (
+                    <div>
+                      <RadioButtons>
+                        <RadioButton
+                          key="self-pay"
+                          label={'I am paying by myself'}
+                          mode="light"
+                          name="insurer"
+                          value="0"
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            console.log(e.target.value)
+                          }
+                          // checked={true}
+                        />
+                      </RadioButtons>
+                      <Container marginTop="spacing-2" marginBottom="spacing-2">
+                        <Text tag="h3" variation="body-bold-extra-large">
+                          Insurers available
+                        </Text>
+                      </Container>
+                      {insurersDoctify && (
+                        <RadioButtons>
+                          {insurersDoctify?.length > 0 &&
+                            insurersDoctify.map((insurer: any) => (
+                              <RadioButton
+                                key={insurer.id}
+                                label={capitalizeFirstLetter(insurer.name)}
+                                mode="light"
+                                name="insurer"
+                                value={insurer.id}
+                                onChange={(
+                                  e: React.ChangeEvent<HTMLInputElement>
+                                ) => console.log(e.target.value)}
+                                // checked={true}
+                              />
+                            ))}
+                        </RadioButtons>
+                      )}
+                    </div>
+                  ),
+                },
+                {
+                  title: 'Languages',
+                  children: (
+                    <div>
+                      {props?.fields?.LanguageFilterOptions &&
+                        props?.fields?.LanguageFilterOptions?.length > 0 && (
+                          <select name="language">
+                            <option value="">Please select language</option>
+                            {props.fields.LanguageFilterOptions.map(
+                              (language: any) => (
+                                <option
+                                  key={language?.fields?.id?.value}
+                                  value={language?.fields?.id?.value}
+                                >
+                                  {language?.fields?.Value?.value}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        )}
+                    </div>
+                  ),
+                },
               ]}
-              resultsCount={0}
+              resultsCount={total}
             ></Filters>
             <Container marginLeft="spacing-4">
               {router.isReady && (
@@ -844,6 +802,8 @@ export const Default = (props: StepProps): JSX.Element => {
         )}
         {!loading && !error && results.length === 0 && <div>No results</div>}
         {/* sa vad daca au online sau nu */}
+
+        {/* sa mut logica  */}
         <ConsultantFinderResults>
           {!loading &&
             !error &&
@@ -852,12 +812,17 @@ export const Default = (props: StepProps): JSX.Element => {
               <ConsultantCard
                 key={consultant?.id}
                 // placeholder
-                profilePhoto={consultant?.images?.logo}
+                profilePhoto={
+                  consultant?.images?.logo ||
+                  props?.fields?.ProfileImagePlaceholderImage?.value?.src ||
+                  null
+                }
                 name={`${consultant?.firstName} ${consultant?.lastName}`}
                 slug={consultant?.slug}
                 keywords={consultant?.keywords || null}
                 hospitals={consultant?.practices || null}
                 reviewsCount={consultant?.overallExperience || 0}
+                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
                 hideAppointmentRequest={consultant?.hideAppointmentRequest}
                 consultantsSlugs={consultantsSlugs}
               />

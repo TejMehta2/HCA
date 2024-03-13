@@ -11,4 +11,5 @@ export interface ConsultantCardProps {
   reviewsCount: number;
   hideAppointmentRequest: boolean;
   consultantsSlugs: string[];
+  doctifyLogo: ReactNode | JSX.Element;
 }
