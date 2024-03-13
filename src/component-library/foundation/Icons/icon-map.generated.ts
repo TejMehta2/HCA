@@ -29,6 +29,7 @@ import iconCopy from './assets-dist/Copy.svg';
 import iconCreditCard from './assets-dist/Credit card.svg';
 import iconCrossSmall from './assets-dist/Cross Small.svg';
 import iconCross from './assets-dist/Cross.svg';
+import iconDiamondOutline from './assets-dist/Diamond Outline.svg';
 import iconDownload from './assets-dist/Download.svg';
 import iconEdit from './assets-dist/Edit.svg';
 import iconEmail from './assets-dist/Email.svg';
@@ -103,6 +104,7 @@ export type IconName =
   | 'iconCreditCard'
   | 'iconCrossSmall'
   | 'iconCross'
+  | 'iconDiamondOutline'
   | 'iconDownload'
   | 'iconEdit'
   | 'iconEmail'
@@ -177,6 +179,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconCreditCard', iconCreditCard],
   ['iconCrossSmall', iconCrossSmall],
   ['iconCross', iconCross],
+  ['iconDiamondOutline', iconDiamondOutline],
   ['iconDownload', iconDownload],
   ['iconEdit', iconEdit],
   ['iconEmail', iconEmail],
