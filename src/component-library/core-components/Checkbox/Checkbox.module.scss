@@ -76,6 +76,11 @@
       display: flex;
       padding-left: px-to-rem(32);
     }
+
+    a {
+      color: var(--text);
+      font-weight: 500;
+    }
   }
 
   input[type='checkbox'] {
