@@ -1,0 +1,106 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as OurLocationsStories from './OurLocations.stories';
+
+<Meta of={OurLocationsStories} />
+
+# OurLocations
+
+## Description
+
+The OurLocations component consists of a subtitle, title, body, cta, and list of locations.
+
+The locations are created with the OurLocationsRegion component
+
+It is intended to be used only on the homepage
+
+### Mobile & Tablet
+
+The header and location sections are stacked vertically and each location displays an image highlighting the specific region in England.
+
+The header section slides up once the user starts scrolling down the component
+
+### Desktop
+
+The desktop version only ever shows one location card at a time. By scrolling down the page the cards will hide / show and the map in the background will zoom and pan to a specific region.
+This effect is achieved by using `position: sticky; top: 0;` on the container and setting each card region to be 100% of the viewport height.
+Every time the user scrolls the equivalent height of their screen, it will switch to a different active location
+
+It can be composed like this:
+
+```tsx
+const locations: location[] = [
+  {
+    id: 0,
+    name: 'Locations across the UK',
+    amount: '35',
+    theme: 'B-HCA-Navy-Blue',
+    area: { mobile: MapEngland },
+    mapStyles: { transform: 'translateY(0) scale(1.1)' },
+    cardStyles: { transform: 'translateY(-50%)' },
+  },
+  {
+    id: 1,
+    name: 'Locations across London',
+    amount: '9',
+    theme: 'H-HCA-Tangerine',
+    area: { mobile: LondonMobileArea, desktop: LondonDesktopArea },
+    mapStyles: { transform: 'translateY(-20%) scale(1.5)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(40%)' },
+  },
+  {
+    id: 2,
+    name: 'Locations across Manchester',
+    amount: '2',
+    theme: 'G-HCA-Orange',
+    area: { mobile: ManchesterMobileArea, desktop: ManchesterDesktopArea },
+    mapStyles: { transform: 'translateY(10%) translateX(15%) scale(1.7)' },
+    cardStyles: { transform: 'translateY(-55%) translateX(0)' },
+  },
+  {
+    id: 3,
+    name: 'Location across Birmingham',
+    amount: '1',
+    theme: 'F-HCA-Fern',
+    area: { mobile: BirminghamMobileArea, desktop: BirminghamDesktopArea },
+    mapStyles: { transform: 'translateY(-5%) translateX(25%) scale(1.7)' },
+    cardStyles: { transform: 'translateY(-35%) translateX(30%)' },
+  },
+];
+
+<OurLocations
+  subtitle={
+    <Text tag="h3" variation="subheading-1">
+      our locations
+    </Text>
+  }
+  title={
+    <Text tag="h2" variation="display-2">
+      The widest range of locations in the UK
+    </Text>
+  }
+  body={
+    <Text tag="p" variation="body-large">
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum.
+    </Text>
+  }
+  cta={
+    <Button size="large" variation="full">
+      <a href="#">
+        <span>
+          <Icons iconName={'iconSearch'} />
+        </span>
+        <span>
+          Search all <strong>locations</strong>
+        </span>
+      </a>
+    </Button>
+  }
+  locations={locations}
+/>;
+```
+
+## Example
+
+<Canvas of={OurLocationsStories.Default} />
+<Controls of={OurLocationsStories.Default} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Field,
+  Item,
   RichText,
   LinkField,
   Text as JssText,
@@ -25,7 +26,9 @@ type FilterOptionsFields = {
 
 type SortOptionsFields = {
   fields?: {
+    DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValue?: Item;
   };
 };
 
@@ -106,7 +109,11 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
             <ul>
               {filterOptions?.fields?.Filters?.map((filter, index) => (
                 <li key={index}>
+                  <JssText field={filter?.fields?.DisplayName} />
+                  <br />
                   <JssText field={filter?.fields?.Filter} />
+                  <br />
+                  <span>{filter?.fields?.FilterValue?.id}</span>
                   <br />
                 </li>
               ))}
@@ -127,7 +134,11 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
       <ul>
         {props?.fields?.SortOptions?.map((sortOptions, index) => (
           <li key={index}>
+            <JssText field={sortOptions?.fields?.DisplayName} />
+            <br />
             <JssText field={sortOptions?.fields?.Filter} />
+            <br />
+            <span>{sortOptions?.fields?.FilterValue?.id}</span>
             <br />
           </li>
         ))}
