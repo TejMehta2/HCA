@@ -2,7 +2,7 @@
 ID: "3e56aa23-c053-48c0-a543-754a47380eb7"
 Parent: "9596067b-f81a-4e4c-8d98-00e46518f20b"
 Template: "3d67ae05-dab2-41b5-b6ba-e531a3b08b4a"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA18/Data/Book an appointment/Modal 2
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA18/Data/Book an appointment/Modal 2"
 Languages:
 - Language: en
   Versions:
@@ -17,7 +17,7 @@ Languages:
     - ID: "40124139-ae1f-40e2-9472-d3251f5cbfdf"
       Hint: SecondaryCTA
       Value: |
-        <link text="see more" anchor="" linktype="internal" class="" title="" target="|Custom" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="see more" url="/HCA/HCA-Main/Home/QA/Home" />
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -34,18 +34,18 @@ Languages:
       Value: Lorem ipsum dolor sit amet
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1ece61fe-57df-4ab3-ad71-e34a6f50af94"
+      Value: "46fe4628-1c00-4305-815c-7d4b9c907fbb"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T225759Z
+      Value: 20240314T102617Z
     - ID: "eebd3076-badf-4340-b1da-735d54239c77"
       Hint: PrimaryCTA
       Value: |
-        <link text="Click me" anchor="" linktype="internal" class="" title="" target="|Custom" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="Click me" url="/HCA/HCA-Main/Home/QA/Home" />
     - ID: "fdad35a7-2d56-4054-999f-3d35fbb308cd"
       Hint: Text
       Value: <p>Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus. Aenean nulla justo, efficitur non viverra vel, euismod sit amet orci. Fusce molestie ante leo, a congue nisi laoreet quis. Donec egestas nunc justo, sit amet malesuada augue aliquam id. Aenean ultricies dolor a nibh convallis, vel tristique nibh luctus.</p>

@@ -2,7 +2,7 @@
 ID: "bb3da09a-43ed-4baa-9eac-b29247ac21b5"
 Parent: "482bd956-bf05-4a24-9fb3-ace2e32c2498"
 Template: "3ed835be-c7a4-4f52-9e8a-f1de2fabc7c3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA67/Page Data/Doctify Testimonials Carousel
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA67/Page Data/Doctify Testimonials Carousel"
 Languages:
 - Language: en
   Versions:
@@ -21,17 +21,17 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ad83f78c-360f-41a3-ad9b-5afe5429fd16"
+      Value: "dcf6ee6c-1e63-45bd-808a-4f74ac4e9a94"
     - ID: "9977d5cd-e77b-4490-b9f6-48cd55cf0ff5"
       Hint: Reviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240105T074025Z
+      Value: 20240314T002348Z
     - ID: "f816dbdb-faef-4a84-924a-8f551ce45706"
       Hint: Testimonials
       Value: |

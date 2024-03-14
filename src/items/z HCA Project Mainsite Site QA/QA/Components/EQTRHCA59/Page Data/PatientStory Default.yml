@@ -2,7 +2,7 @@
 ID: "922b88df-dc99-46da-b617-3161d0d34893"
 Parent: "ceb0677e-2e26-4c73-9b4c-5f2657dd5384"
 Template: "3ba463ce-c246-403c-998e-cda9c0aaefc3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA59/Page Data/PatientStory Default
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59/Page Data/PatientStory Default"
 Languages:
 - Language: en
   Versions:
@@ -16,7 +16,7 @@ Languages:
       Value: Read the <b>story</b>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "436a5dad-4ba0-4c0b-a6ad-20ae096fb068"
+      Value: "6c3ff4b3-a19d-4f0b-b76e-ae085574c208"
     - ID: "943f4079-f82e-4226-b595-2796b2aa1545"
       Hint: Title
       Value: Stories from our patients
@@ -29,14 +29,14 @@ Languages:
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Search &lt;b&gt;all stories&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Search &lt;b&gt;all stories&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231207T064557Z
+      Value: 20240314T102613Z
     - ID: "f0f7eafa-09d8-4f07-b552-f72923f55cc6"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim.&nbsp;

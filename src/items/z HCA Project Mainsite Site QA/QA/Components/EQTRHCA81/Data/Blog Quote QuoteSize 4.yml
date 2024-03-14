@@ -2,7 +2,7 @@
 ID: "29c283b5-a683-4930-b80b-a161202d0bf6"
 Parent: "e7c52231-2c1c-485b-b807-facb63b2a952"
 Template: "2bafd43b-01af-4691-a061-5af0cb2edcc9"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA81/Data/Blog Quote QuoteSize 4
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA81/Data/Blog Quote QuoteSize 4"
 Languages:
 - Language: en
   Versions:

@@ -2,7 +2,7 @@
 ID: "ebed4cab-7f63-4cd9-9bb0-3ab3fbf5890b"
 Parent: "3b21cfa0-ed27-4ffe-bf6b-1eee2d54a121"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA92/Data
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA92/Data"
 Languages:
 - Language: en
   Versions:

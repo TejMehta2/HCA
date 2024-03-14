@@ -2,7 +2,7 @@
 ID: "9f32d9ed-0c3a-4e48-a616-604e842e233e"
 Parent: "52800310-4d20-47d9-8cb9-1ffcac1b7b5b"
 Template: "08f2036c-ac23-444a-afe7-6fd691d01d9e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA76/Data/Treatments Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA76/Data/Treatments Search"
 Languages:
 - Language: en
   Versions:

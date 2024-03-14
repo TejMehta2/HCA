@@ -2,7 +2,7 @@
 ID: "7b2f6a99-0f15-45a3-b872-0ff246c2ebe7"
 Parent: "3b13d49a-7733-4c68-b884-65fa0417b2d0"
 Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA14_1/Page Data/CTA Lorem 2
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA14_1/Page Data/CTA Lorem 2"
 Languages:
 - Language: en
   Versions:
@@ -21,18 +21,18 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "494a65c6-98ab-45e1-962e-1968aa4b74cd"
+      Value: "e22e2962-7c21-4ff9-bb4e-779695aaf760"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Book &lt;b&gt;online&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="|Custom" querystring="" id="{5C351891-6061-49A9-88F1-A287CB2E9419}" />
+        <link class="" id="{5C351891-6061-49A9-88F1-A287CB2E9419}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="Book &lt;b&gt;online&lt;/b&gt;" url="/HCA/HCA-Main/Home/QA/Components/EQTRHCA14_1" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T211305Z
+      Value: 20240314T102617Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{58E74E44-2137-47FE-9F08-A3A4EC026FFB}"

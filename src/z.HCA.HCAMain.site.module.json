@@ -5,7 +5,7 @@
     "includes": [
       {
         "name": "z HCA Project Mainsite site",
-        "path": "/sitecore/content/HCA/HCA Main",
+        "path": "/sitecore/content/HCA/HCA-Main",
         "rules": [
           {
             "path": "/home",

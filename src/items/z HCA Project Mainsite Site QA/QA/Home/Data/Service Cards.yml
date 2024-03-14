@@ -2,7 +2,7 @@
 ID: "66d4963c-148e-40eb-a03d-e868b37d6e18"
 Parent: "5e798c0d-385b-410e-9f5a-2b3326924a9e"
 Template: "d043ac13-964d-4351-9cfc-2ec430980925"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Home/Data/Service Cards
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Home/Data/Service Cards"
 Languages:
 - Language: en
   Versions:

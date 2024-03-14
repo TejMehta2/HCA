@@ -2,7 +2,7 @@
 ID: "16a73a06-0954-40b5-8488-e7481c20da0b"
 Parent: "953b5783-adbb-46ce-93b2-c527210d93d5"
 Template: "175e0d25-53c5-4c6b-b6e7-62521e02db68"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA84/Data/Modal Content
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA84/Data/Modal Content"
 Languages:
 - Language: en
   Versions:
@@ -86,21 +86,21 @@ Languages:
     - ID: "872960fa-91ae-4c72-9df2-ea6cc530f183"
       Hint: PrimaryCTA
       Value: |
-        <link text="Download our &lt;b&gt;GP App&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Download our &lt;b&gt;GP App&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "93600cac-ad29-461b-b2cc-08396c1cefc8"
+      Value: "7de77148-64d1-4282-927b-8259feeebfc0"
     - ID: "b127ef4d-194e-4c08-b936-9e111d2a260e"
       Hint: SecondaryCTA
       Value: |
-        <link text="View all &lt;b&gt;GP services&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;GP services&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "bbfd5812-b426-4455-9f7c-6b5fb5523763"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240214T202245Z
+      Value: 20240314T102615Z

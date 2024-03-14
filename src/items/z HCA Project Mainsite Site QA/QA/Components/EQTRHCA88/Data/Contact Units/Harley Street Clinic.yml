@@ -2,7 +2,7 @@
 ID: "2fddd8a6-d212-4695-aab0-a8f9732b84f4"
 Parent: "aea74f45-4c9b-40b4-853e-8eb5900e5db1"
 Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/Data/Contact Units/Harley Street Clinic
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA88/Data/Contact Units/Harley Street Clinic"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder

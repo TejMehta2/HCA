@@ -2,7 +2,7 @@
 ID: "f3180861-1563-4223-83eb-384b613aae4e"
 Parent: "068edb6b-434c-4284-a1ad-28e7970a70ab"
 Template: "38ab0ea0-da28-4136-b857-77f863de1795"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Grid
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Grid"
 Languages:
 - Language: en
   Versions:

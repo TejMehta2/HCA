@@ -1,0 +1,26 @@
+﻿---
+ID: "43fa3a0d-9525-4656-992c-66eb0ea30c87"
+Parent: "5e6ddf22-b396-47d4-a0bd-d8a98f6fb035"
+Template: "74c813ec-af5a-4a1b-b0b6-5ea004f908e7"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/DoctifyFilters/VideoConsultation true"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231113T201004Z
+    - ID: "51584e8c-360b-47ea-96e0-bd5d45dec2af"
+      Hint: Filter
+      Value: videoConsultation=true
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fb527e89-f465-4b9a-97dc-3b12a95caeaa"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231113T201007Z

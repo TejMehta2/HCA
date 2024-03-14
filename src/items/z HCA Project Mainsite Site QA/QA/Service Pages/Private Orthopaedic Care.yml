@@ -2,7 +2,7 @@
 ID: "0211c1e8-8ed0-4986-92bd-9a3f01a37e2a"
 Parent: "12f34b20-353a-41b8-8f89-433b844f5395"
 Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Service Pages/Private Orthopaedic Care
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Private Orthopaedic Care"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder

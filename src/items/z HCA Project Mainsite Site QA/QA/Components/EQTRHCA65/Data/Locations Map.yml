@@ -2,7 +2,7 @@
 ID: "847ace4a-a241-450f-95a3-c4da40e2f158"
 Parent: "649707d6-d4b9-42da-bbd1-f7fa77e00f43"
 Template: "0c29dd89-c80e-4868-912e-b3d0b8ca2e88"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA65/Data/Locations Map
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA65/Data/Locations Map"
 Languages:
 - Language: en
   Versions:
@@ -26,25 +26,25 @@ Languages:
       Value: Our locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c0a09fcc-8c84-4a7a-8dcd-85e6fa50b70c"
+      Value: "7d0e8f61-2b9d-4bfa-a696-b68b12c0b7ce"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Search all &lt;b&gt;locations&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Search all &lt;b&gt;locations&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "a9ada15f-0a53-4831-b67c-c2e5d8aee6aa"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum.
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "bc81486e-594e-455d-9e76-3e171d945a48"
       Hint: PinImage
       Value: |
         <image mediaid="{AEC41405-9481-4954-95C7-0A6616BACDF0}" />
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240307T222156Z
+      Value: 20240314T102615Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"

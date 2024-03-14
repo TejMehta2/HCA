@@ -2,7 +2,7 @@
 ID: "1eed5bb7-e6c6-40b5-9460-5e98278d7aa0"
 Parent: "3b13d49a-7733-4c68-b884-65fa0417b2d0"
 Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA14_1/Page Data/Call Us
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA14_1/Page Data/Call Us"
 Languages:
 - Language: en
   Versions:

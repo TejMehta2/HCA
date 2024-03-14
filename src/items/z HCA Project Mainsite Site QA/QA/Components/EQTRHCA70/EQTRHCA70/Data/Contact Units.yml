@@ -2,7 +2,7 @@
 ID: "e495dd0f-e624-43de-89c0-2eca93d5d302"
 Parent: "418861af-2d70-48dc-9858-a29561c35b78"
 Template: "d27d00cf-d030-4824-8581-2b2ebee62150"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units"
 Languages:
 - Language: en
   Versions:

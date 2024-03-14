@@ -2,7 +2,7 @@
 ID: "b814fe43-6f16-4064-9da1-b894c682b758"
 Parent: "baebca6c-1105-47fb-a57d-de7510a88ea2"
 Template: "58c7ade7-c0c4-4fdf-b844-fbe221c162bd"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA14/Page Data/Intro Block Image
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA14/Page Data/Intro Block Image"
 Languages:
 - Language: en
   Versions:
@@ -28,21 +28,21 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "50cfdae4-ae5c-4f11-aeed-6446a84ae889"
+      Value: "4e65a6a2-0c0a-40d2-b738-bbe7c6cda7cd"
     - ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
       Hint: CQCStatus
       Value: "{8C94A4C4-DCCB-42EF-89A7-51C869753A8F}"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="About &lt;b&gt;HCA Healthcare UK&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="About &lt;b&gt;HCA Healthcare UK&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "b9bb0431-2236-460a-8136-154adf67e91c"
       Hint: Title
       Value: Committed to your care
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
       Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
@@ -54,7 +54,7 @@ Languages:
         {B95C2B26-44A7-4F37-8B4C-45F0DFA93813}
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240304T162728Z
+      Value: 20240314T102615Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"

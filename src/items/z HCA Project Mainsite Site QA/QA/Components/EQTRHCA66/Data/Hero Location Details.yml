@@ -2,7 +2,7 @@
 ID: "cd79e921-e31c-45e2-b8f0-7455a750c088"
 Parent: "eb6d0a6f-6cbd-40f1-8366-891c0d45a55b"
 Template: "2491bc05-9a98-40e7-8cc5-106c986b7c6a"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/Hero Location Details
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66/Data/Hero Location Details"
 Languages:
 - Language: en
   Versions:

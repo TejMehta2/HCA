@@ -2,7 +2,7 @@
 ID: "1c7d160f-8ac3-48cb-8fa5-7e72dc3aa745"
 Parent: "a0632f03-962f-44b5-aecd-aea74347cfd1"
 Template: "297af256-6890-4667-9957-9f2cb1f52c93"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA79/Data/Service Line Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA79/Data/Service Line Search"
 Languages:
 - Language: en
   Versions:

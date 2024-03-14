@@ -2,7 +2,7 @@
 ID: "cf4fd544-ab01-4fed-9fed-a69afde35d0d"
 Parent: "2eafa0b9-c4bb-4633-a9d1-5da17eaa312a"
 Template: "ad431ae8-75c6-4abf-b28b-e7d488e59f07"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA4_2/Data/Doctor Cards
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA4_2/Data/Doctor Cards"
 Languages:
 - Language: en
   Versions:
@@ -14,10 +14,10 @@ Languages:
     - ID: "5a674cd7-c9eb-4be4-8577-5c3d6d72c70c"
       Hint: CTACard
       Value: |
-        <link text="View &lt;b&gt;profile&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View &lt;b&gt;profile&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "69326be1-53d8-49b5-974b-3eae47fdd735"
+      Value: "390c3a96-5c61-48ec-a8df-896046d7f012"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -32,7 +32,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "bdad9d3c-099b-407c-bab3-3bdbfa11fb90"
       Hint: Consultants
       Value: |
@@ -47,7 +47,7 @@ Languages:
       Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240308T202005Z
+      Value: 20240314T102613Z
     - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
       Hint: Service
       Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"

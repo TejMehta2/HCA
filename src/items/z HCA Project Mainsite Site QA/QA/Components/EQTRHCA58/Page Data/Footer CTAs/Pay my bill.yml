@@ -2,7 +2,7 @@
 ID: "4f737c5e-e977-49a8-bba1-fac1e5b8be3a"
 Parent: "8eafa720-019b-4787-b7b0-6cd7c398e49b"
 Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA58/Page Data/Footer CTAs/Pay my bill
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA58/Page Data/Footer CTAs/Pay my bill"
 Languages:
 - Language: en
   Versions:

@@ -2,7 +2,7 @@
 ID: "6dc9cd06-92e9-4bee-ba15-9162e7163c9b"
 Parent: "fb2eabbe-fd0c-4fce-b086-46051ec50522"
 Template: "777be7c2-4026-4f19-9a22-75fa0b109b21"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA15/Page Data/Amenities Image Left
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA15/Page Data/Amenities Image Left"
 Languages:
 - Language: en
   Versions:
@@ -32,11 +32,11 @@ Languages:
         <image mediaid="{74F9A9B7-CC52-4B53-8BDF-8614ED671E6C}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "86b3981a-2b14-4e06-907e-d1ac1fc31fe0"
+      Value: "2e3c6d83-fff4-4c4b-ba39-6976555508ec"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T132341Z
+      Value: 20240313T102318Z

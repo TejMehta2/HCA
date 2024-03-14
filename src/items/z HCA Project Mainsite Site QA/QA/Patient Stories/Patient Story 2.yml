@@ -2,7 +2,7 @@
 ID: "45179635-2018-4aa4-b7ef-c235a71d4350"
 Parent: "f4a0cbd8-dc65-4b9c-8c4e-2a7e23ce52a3"
 Template: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Patient Stories/Patient Story 2
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Patient Stories/Patient Story 2"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail

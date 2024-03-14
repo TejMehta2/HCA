@@ -2,7 +2,7 @@
 ID: "c0bd3e9d-ab12-42d0-9699-ac971d620e7f"
 Parent: "b84afa51-0505-4500-a747-a608cee01db6"
 Template: "a790183f-6621-463a-a43c-695d1435328e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA1_1/Page Data/Content Cards Slider WithoutImage
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA1_1/Page Data/Content Cards Slider WithoutImage"
 Languages:
 - Language: en
   Versions:
@@ -29,15 +29,15 @@ Languages:
         {45179635-2018-4AA4-B7EF-C235A71D4350}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "47fcce6b-5686-404b-b74a-fedf8f2df699"
+      Value: "3cff1095-5dff-404c-b453-066f0eb3ca3f"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="View all &lt;b&gt;GP services&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;GP services&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T102525Z
+      Value: 20240314T102614Z

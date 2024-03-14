@@ -2,7 +2,7 @@
 ID: "2f22b9f7-c2bb-4626-a9b3-f3c2c11be295"
 Parent: "068edb6b-434c-4284-a1ad-28e7970a70ab"
 Template: "38ab0ea0-da28-4136-b857-77f863de1795"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Slider
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA7/Data/Location Cards Slider"
 Languages:
 - Language: en
   Versions:

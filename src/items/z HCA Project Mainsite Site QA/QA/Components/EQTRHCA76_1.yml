@@ -2,7 +2,7 @@
 ID: "1189aa6e-ec93-4507-abde-7ed81d2d5c3c"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA76_1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA76_1"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail

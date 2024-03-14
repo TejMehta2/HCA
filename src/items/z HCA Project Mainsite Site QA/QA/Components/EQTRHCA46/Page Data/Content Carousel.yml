@@ -2,7 +2,7 @@
 ID: "cbb046fc-ef9c-4a8c-a3bd-d9514d28f97e"
 Parent: "76192b08-856e-4e2a-93e0-f2f18da62c60"
 Template: "ef01f14f-abaa-450a-94c4-d6f9d681f4de"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA46/Page Data/Content Carousel
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA46/Page Data/Content Carousel"
 Languages:
 - Language: en
   Versions:

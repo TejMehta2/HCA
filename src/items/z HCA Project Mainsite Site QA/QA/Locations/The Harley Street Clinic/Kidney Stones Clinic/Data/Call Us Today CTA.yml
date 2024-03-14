@@ -2,7 +2,7 @@
 ID: "40ae0e8b-afe4-485f-b271-358253ee47a8"
 Parent: "b0e0d159-f735-4c5f-9a71-2a588afca955"
 Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Call Us Today CTA
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Call Us Today CTA"
 Languages:
 - Language: en
   Versions:

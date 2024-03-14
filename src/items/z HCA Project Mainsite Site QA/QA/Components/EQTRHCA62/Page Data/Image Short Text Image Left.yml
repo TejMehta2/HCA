@@ -2,7 +2,7 @@
 ID: "9f363597-ba5d-4cbe-a176-c89fcdc3d7a8"
 Parent: "03509096-abda-4482-84ab-1bfdf2cb781f"
 Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA62/Page Data/Image Short Text Image Left
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA62/Page Data/Image Short Text Image Left"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
