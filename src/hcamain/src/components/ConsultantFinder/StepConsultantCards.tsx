@@ -383,11 +383,11 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
-  console.log(serverSideData?.Insurers);
+  // console.log(serverSideData?.Insurers);
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
-  console.log('insurers', insurersDoctify);
+  // console.log('insurers', insurersDoctify);
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs.map(
     (item: any) => item.UniqueKey
   );
@@ -636,8 +636,9 @@ export const Default = (props: StepProps): JSX.Element => {
     const URLprams = searchParams.toString();
     const baseURL = `https://api.doctify.com/api/hca/search?`;
     let requestURL: string;
-    console.log('URLprams', URLprams);
+    // console.log('URLprams', URLprams);
 
+    // to remove
     if (URLprams.length > 0) {
       console.log('query params');
       requestURL = `${baseURL}${URLprams}`;
