@@ -405,6 +405,9 @@ export const Default = (props: StepProps): JSX.Element => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [checkedOptionGender, setCheckedOptionGender] = useState('');
+  const [selectedInsurer, setSelectedInsurer] = useState<number>(0);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
   const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
   // console.log('offset query', router.query.offset);
   const [offset, setOffset] = useState(initialOffset);
@@ -422,9 +425,10 @@ export const Default = (props: StepProps): JSX.Element => {
   // if there is no search string then use default params
   // if there are then use whatever
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const practice = event.target.value;
-    const isChecked = event.target.checked;
+  // hospitals
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const practice = e.target.value;
+    const isChecked = e.target.checked;
 
     let updatedPractices: string[];
     if (isChecked) {
@@ -441,10 +445,112 @@ export const Default = (props: StepProps): JSX.Element => {
     const queryParams = { ...router.query };
     delete queryParams.practice;
     delete queryParams.requestPath;
+    delete queryParams.offset;
     if (practices.length > 0) {
       queryParams.practice = practices.join(',');
     }
-    router.push({ pathname: router.pathname, query: queryParams });
+    router.push({
+      pathname: router.pathname,
+      query: { ...queryParams, offset: 0 },
+    });
+  };
+
+  // gender
+  const handleGenderOptions = (value: string) => {
+    setCheckedOptionGender(value);
+    const { requestPath, offset, ...updatedQuery } = router.query;
+    router.push({
+      pathname: router.pathname,
+      query: { ...updatedQuery, gender: value, offset: 0 },
+    });
+  };
+
+  // insurer
+  const handleRadioButtonChange = (value: number) => {
+    setSelectedInsurer(value);
+    if (value === 0) {
+      const { insurer, offset, ...queryWithoutInsurer } = router.query;
+      router.push({
+        pathname: router.pathname,
+        query: { ...queryWithoutInsurer, offset: 0 },
+      });
+    } else {
+      router.push({
+        pathname: router.pathname,
+        query: { ...router.query, insurer: value },
+      });
+    }
+  };
+
+  // languages
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    setSelectedLanguage(selectedValue);
+    if (selectedValue !== '') {
+      const { requestPath, ...updatedQuery } = router.query;
+      router.push({
+        pathname: router.pathname,
+        query: { ...updatedQuery, language: selectedValue, offset: 0 },
+      });
+    } else {
+      const { language, ...queryWithoutLanguage } = router.query;
+      router.push({
+        pathname: router.pathname,
+        query: { ...queryWithoutLanguage, offset: 0 },
+      });
+    }
+  };
+
+  // reset all filters
+  const handleResetFilters = () => {
+    console.log('reset');
+    const {
+      offset,
+      sortBy,
+      language,
+      insurer,
+      gender,
+      videoConsultation,
+      practice,
+      requestPath,
+      ...queryParams
+    } = router.query;
+
+    const newQueryParams: any = { ...queryParams };
+
+    // Remove language if it exists
+    if ('language' in newQueryParams) {
+      delete newQueryParams.language;
+    }
+
+    // Remove insurer if it exists
+    if ('insurer' in newQueryParams) {
+      delete newQueryParams.insurer;
+    }
+
+    // Remove gender if it exists
+    if ('gender' in newQueryParams) {
+      delete newQueryParams.gender;
+    }
+
+    // Remove videoConsultation if it exists
+    if ('videoConsultation' in newQueryParams) {
+      delete newQueryParams.videoConsultation;
+    }
+
+    // Remove practice if it exists
+    if ('practice' in newQueryParams) {
+      delete newQueryParams.practice;
+    }
+
+    // Update offset and sortBy to their default values
+    newQueryParams.offset = 0;
+    newQueryParams.sortType = 'relevance';
+
+    router.push({
+      pathname: router.pathname,
+      query: newQueryParams,
+    });
   };
 
   useEffect(() => {
@@ -473,15 +579,30 @@ export const Default = (props: StepProps): JSX.Element => {
       setCheckedPractices([]); // Reset checked practices if there are no query parameters
     }
 
+    // video
     if (videoPractice) {
       setIsChecked(true);
     } else {
       setIsChecked(false);
     }
 
-    // console.log('relevance', router.query.relevance);
+    // gender
+    const genderQueryParam = router.query.gender;
+    if (genderQueryParam) {
+      setCheckedOptionGender(genderQueryParam.toString());
+    }
 
-    // console.log('call api');
+    // insurer
+    const { insurer } = router.query;
+    if (insurer) {
+      setSelectedInsurer(Number(insurer));
+    }
+
+    // languages
+    const { language } = router.query;
+    if (language) {
+      setSelectedLanguage(language.toString());
+    }
 
     setLoading(true);
     //  console.log('queryParams', searchParams.toString());
@@ -624,8 +745,10 @@ export const Default = (props: StepProps): JSX.Element => {
                           const queryParams = { ...router.query };
                           if (target.checked) {
                             queryParams.videoConsultation = 'true';
+                            queryParams.offset = '0';
                           } else {
                             delete queryParams.videoConsultation;
+                            delete queryParams.offset;
                           }
                           router.push({
                             pathname: router.pathname,
@@ -653,8 +776,11 @@ export const Default = (props: StepProps): JSX.Element => {
                                   value={genderOption?.fields?.Value?.value}
                                   onChange={(
                                     e: React.ChangeEvent<HTMLInputElement>
-                                  ) => console.log(e.target.value)}
-                                  // checked={true}
+                                  ) => handleGenderOptions(e.target.value)}
+                                  checked={
+                                    checkedOptionGender ===
+                                    genderOption?.fields?.Value?.value
+                                  }
                                 />
                               )
                             )}
@@ -675,9 +801,9 @@ export const Default = (props: StepProps): JSX.Element => {
                           name="insurer"
                           value="0"
                           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            console.log(e.target.value)
+                            handleRadioButtonChange(Number(e.target.value))
                           }
-                          // checked={true}
+                          checked={selectedInsurer === 0}
                         />
                       </RadioButtons>
                       <Container marginTop="spacing-2" marginBottom="spacing-2">
@@ -697,8 +823,12 @@ export const Default = (props: StepProps): JSX.Element => {
                                 value={insurer.id}
                                 onChange={(
                                   e: React.ChangeEvent<HTMLInputElement>
-                                ) => console.log(e.target.value)}
-                                // checked={true}
+                                ) =>
+                                  handleRadioButtonChange(
+                                    Number(e.target.value)
+                                  )
+                                }
+                                checked={selectedInsurer === insurer.id}
                               />
                             ))}
                         </RadioButtons>
@@ -712,7 +842,11 @@ export const Default = (props: StepProps): JSX.Element => {
                     <div>
                       {props?.fields?.LanguageFilterOptions &&
                         props?.fields?.LanguageFilterOptions?.length > 0 && (
-                          <select name="language">
+                          <select
+                            name="language"
+                            value={selectedLanguage}
+                            onChange={handleLanguageChange}
+                          >
                             <option value="">Please select language</option>
                             {props.fields.LanguageFilterOptions.map(
                               (language: any) => (
@@ -755,16 +889,14 @@ export const Default = (props: StepProps): JSX.Element => {
                       value: 'nearest',
                     },
                   ]}
-                  onChange={(event) => {
-                    const target = event.target as HTMLInputElement;
-                    // console.log(target.value);
-                    // console.log(target.checked);
+                  onChange={(e) => {
+                    const target = e.target as HTMLInputElement;
 
                     if (target.checked) {
-                      // Update URL parameters with selected sorting option
                       const queryParams = {
                         ...router.query,
                         sortType: target.value,
+                        offset: 0,
                       };
                       if ('requestPath' in queryParams) {
                         delete queryParams.requestPath;
@@ -780,7 +912,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </Container>
             <Container marginLeft="spacing-4">
               <TextButton theme="dark">
-                <button>
+                <button onClick={handleResetFilters}>
                   Reset all
                   <Icons iconName="iconReset" />
                 </button>
