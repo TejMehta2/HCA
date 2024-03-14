@@ -2,7 +2,7 @@
 ID: "12f34b20-353a-41b8-8f89-433b844f5395"
 Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
 Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Service Pages
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -15,9 +15,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231204T124939Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: Service Page
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
       Value: "193e3776-bd58-4ee5-88af-a5455f675826"

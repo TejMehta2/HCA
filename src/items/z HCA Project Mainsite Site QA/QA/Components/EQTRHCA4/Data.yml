@@ -2,7 +2,7 @@
 ID: "2e1ec0b9-aeb8-49fa-b22c-3d7f56b41d09"
 Parent: "f95f258d-f3d3-4a4b-83e9-92e46e26bcb3"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA4/Data
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA4/Data"
 Languages:
 - Language: en
   Versions:

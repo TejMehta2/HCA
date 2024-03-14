@@ -2,7 +2,7 @@
 ID: "9bd9eef6-9471-4d4b-92ec-f9545f740b4a"
 Parent: "f4a0cbd8-dc65-4b9c-8c4e-2a7e23ce52a3"
 Template: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Patient Stories/Patient Story 1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Patient Stories/Patient Story 1"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -19,9 +19,6 @@ Languages:
     - ID: "2a6cef4b-c5d4-4812-9996-bcbed7bbaae1"
       Hint: Date
       Value: 20231204T101200Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: Patient Story 1
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs.

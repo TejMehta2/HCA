@@ -2,7 +2,7 @@
 ID: "f4a0cbd8-dc65-4b9c-8c4e-2a7e23ce52a3"
 Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
 Template: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Patient Stories
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Patient Stories"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -16,9 +16,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231204T090851Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: Patient Stories
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
       Value: "aa7ffaa3-d062-4e45-b91a-9fe4bee32692"

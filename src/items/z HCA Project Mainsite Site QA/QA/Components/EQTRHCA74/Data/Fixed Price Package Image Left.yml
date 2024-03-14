@@ -2,7 +2,7 @@
 ID: "c0727a0b-8fbe-4e1f-a973-a21d6cfeb844"
 Parent: "7176e9ca-051f-4888-af99-5d27ed8b4cdf"
 Template: "a5ce15f7-7e35-4125-80fa-f4fceb78b293"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Fixed Price Package Image Left
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA74/Data/Fixed Price Package Image Left"
 Languages:
 - Language: en
   Versions:

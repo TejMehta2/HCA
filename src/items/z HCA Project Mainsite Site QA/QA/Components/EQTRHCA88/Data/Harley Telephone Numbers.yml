@@ -2,7 +2,7 @@
 ID: "d954c852-fd91-463e-878f-5b1d6ee50037"
 Parent: "1d46c754-29b6-436d-9a99-35e5cb5b4db1"
 Template: "1dd55312-6947-4ce8-8d9e-2bcc7b8c16e9"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/Data/Harley Telephone Numbers
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA88/Data/Harley Telephone Numbers"
 Languages:
 - Language: en
   Versions:

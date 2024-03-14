@@ -2,7 +2,7 @@
 ID: "0469b785-18d7-40a3-9f67-632227545c3d"
 Parent: "7176e9ca-051f-4888-af99-5d27ed8b4cdf"
 Template: "932d4b95-ee85-466a-91e5-c8b0af7639ad"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Share CTA
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA74/Data/Share CTA"
 Languages:
 - Language: en
   Versions:
@@ -19,21 +19,21 @@ Languages:
       Value: Share this cost
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0ac64938-1887-45a6-86ae-b86869d7a59d"
+      Value: "b2ab39f3-23ea-4cfd-925c-8c5116e10f64"
     - ID: "a7692fd9-daf8-4ae2-a0ff-fe8bc58597a5"
       Hint: Text
       Value: "Hip surgery - £5,000"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Share &lt;b&gt;cost information&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{6A6E307D-47ED-4FBE-9031-D23BFB6EE492}" />
+        <link class="" id="{6A6E307D-47ED-4FBE-9031-D23BFB6EE492}" querystring="" anchor="" target="" title="" linktype="internal" text="Share &lt;b&gt;cost information&lt;/b&gt;" url="/HCA/HCA-Main" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240223T201316Z
+      Value: 20240314T102612Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{AD93221B-93FC-41EE-85A6-2238A52B4E8B}"

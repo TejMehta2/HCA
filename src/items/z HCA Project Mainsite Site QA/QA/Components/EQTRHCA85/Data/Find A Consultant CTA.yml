@@ -2,7 +2,7 @@
 ID: "c28fcb78-136b-4972-ba6a-e2e2929f008d"
 Parent: "d7d8768d-0a06-4452-b75e-612f3bd5409f"
 Template: "4d8873cb-38ef-40c2-939b-879d5e9699de"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85/Data/Find A Consultant CTA
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA85/Data/Find A Consultant CTA"
 Languages:
 - Language: en
   Versions:

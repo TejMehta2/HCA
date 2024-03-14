@@ -2,7 +2,7 @@
 ID: "05c5126c-0584-4cc1-961e-f21895ffe7e5"
 Parent: "c9bf69cc-4370-435c-a0a1-7c956c945dd3"
 Template: "e6052be0-1783-41a6-9457-494e2a2d463e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/FacebookShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/FacebookShare"
 Languages:
 - Language: en
   Versions:

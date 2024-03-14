@@ -2,7 +2,7 @@
 ID: "b9a643d9-59af-41f8-9905-5c17b9a3344a"
 Parent: "5912dfd9-4f63-4d23-baeb-ff60b6fef45f"
 Template: "91f54bea-23d3-4b5c-94be-225249f59c63"
-Path: "/sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Appointments/Opening Hours/Mon-Fri Opening Hours"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Appointments/Opening Hours/Mon-Fri Opening Hours"
 Languages:
 - Language: en
   Versions:

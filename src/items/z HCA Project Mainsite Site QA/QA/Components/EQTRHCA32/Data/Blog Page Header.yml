@@ -2,7 +2,7 @@
 ID: "089b58bf-63e8-4cfd-9f53-3f959a78aeca"
 Parent: "6ce48c3f-93be-4b9c-996a-bf34901f50cc"
 Template: "3a256c8e-9cbe-4945-af56-1ad7a4e7042b"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA32/Data/Blog Page Header
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA32/Data/Blog Page Header"
 Languages:
 - Language: en
   Versions:
@@ -36,7 +36,7 @@ Languages:
       Value: Search <b>services, treatments, conditions...</b>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7d3a0496-e0d3-4107-b374-3cb353c52361"
+      Value: "716150ae-dfbb-42e7-b67a-8ec1df4152b5"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -48,14 +48,14 @@ Languages:
     - ID: "98252ef4-2f53-4e6c-b55a-bc2a3b8030c5"
       Hint: BlogUrl
       Value: |
-        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+        <link class="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" querystring="" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blog Search" />
     - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
       Hint: FilterOptionsText
       Value: Filter by
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d24cbb38-fc72-42d9-a404-f1412bf128eb"
       Hint: SortOptionsIcon
       Value: "{F940A8AD-D316-4D03-893A-01169C3E95D2}"
@@ -64,7 +64,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240307T234912Z
+      Value: 20240314T102617Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

@@ -2,7 +2,7 @@
 ID: "bd7adf4c-48b0-4561-8011-66d10f712b06"
 Parent: "5e798c0d-385b-410e-9f5a-2b3326924a9e"
 Template: "3ba463ce-c246-403c-998e-cda9c0aaefc3"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Home/Data/Patient stories
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Home/Data/Patient stories"
 Languages:
 - Language: en
   Versions:
@@ -16,7 +16,7 @@ Languages:
       Value: Read the story
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3e7d28f2-e053-4672-ac0f-aa45319750d1"
+      Value: "2e2f7d02-be17-4957-be3c-e5ffd66c9586"
     - ID: "943f4079-f82e-4226-b595-2796b2aa1545"
       Hint: Title
       Value: Stories from our patients
@@ -29,14 +29,14 @@ Languages:
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Search all stories" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{F4A0CBD8-DC65-4B9C-8C4E-2A7E23CE52A3}" />
+        <link class="" id="{F4A0CBD8-DC65-4B9C-8C4E-2A7E23CE52A3}" querystring="" anchor="" target="" title="" linktype="internal" text="Search all stories" url="/HCA/HCA-Main/Home/QA/Patient Stories" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231220T174938Z
+      Value: 20240314T102617Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{0432505D-CB53-4C1B-B9FB-EBB03A19CD13}"

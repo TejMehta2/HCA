@@ -2,7 +2,7 @@
 ID: "13d28e0f-dd4a-4f68-a501-00606ba5b1ab"
 Parent: "e848f5ad-07a1-41a2-8cf4-bf83ad2802f6"
 Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Right Aligned/FAQ Question 3
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Right Aligned/FAQ Question 3"
 Languages:
 - Language: en
   Versions:
@@ -16,18 +16,18 @@ Languages:
       Value: 20240129T163127Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b95db777-5371-46ed-897b-9b36798e5dbc"
+      Value: "d65ad20c-b040-46a6-a4ec-1b84863518a5"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Search for a &lt;b&gt;consultant&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Search for a &lt;b&gt;consultant&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T163526Z
+      Value: 20240314T102613Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"

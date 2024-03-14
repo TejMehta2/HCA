@@ -2,7 +2,7 @@
 ID: "c17ff791-c279-4f09-ac8f-7e2c32cab836"
 Parent: "cd89a01f-4d79-476e-85e8-2e4876358e08"
 Template: "957ed275-bf13-4fc2-80f7-0c1b1a1870fc"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA78/Data/Test And Scans Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA78/Data/Test And Scans Search"
 Languages:
 - Language: en
   Versions:

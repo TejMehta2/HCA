@@ -2,7 +2,7 @@
 ID: "f9400eae-740f-4789-a02a-64aeec0188c1"
 Parent: "c9bf69cc-4370-435c-a0a1-7c956c945dd3"
 Template: "26ca976b-7777-4a26-9701-72f187a6d738"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/CopyLinkShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/CopyLinkShare"
 Languages:
 - Language: en
   Versions:

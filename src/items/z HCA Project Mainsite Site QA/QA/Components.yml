@@ -2,7 +2,7 @@
 ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder

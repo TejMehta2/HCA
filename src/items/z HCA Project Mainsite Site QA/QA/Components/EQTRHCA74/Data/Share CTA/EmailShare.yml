@@ -2,7 +2,7 @@
 ID: "787b2ce7-e76c-431e-9fe1-462d0d513d9b"
 Parent: "0469b785-18d7-40a3-9f67-632227545c3d"
 Template: "09c9ec15-48dd-4f55-a56c-dd5965ed840a"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/EmailShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/EmailShare"
 Languages:
 - Language: en
   Versions:

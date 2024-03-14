@@ -2,7 +2,7 @@
 ID: "8eafa720-019b-4787-b7b0-6cd7c398e49b"
 Parent: "94df9059-19f5-4928-a88f-162a6a395d59"
 Template: "6299a2ea-c1b8-4f0d-86c5-9189bf77f702"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA58/Page Data/Footer CTAs
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA58/Page Data/Footer CTAs"
 Languages:
 - Language: en
   Versions:

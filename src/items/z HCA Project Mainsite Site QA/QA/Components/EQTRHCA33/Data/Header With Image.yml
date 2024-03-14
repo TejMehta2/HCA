@@ -2,7 +2,7 @@
 ID: "fa22236c-8aa9-4195-a767-994a8ed45410"
 Parent: "ad617343-01b6-49c1-aae1-330425c67117"
 Template: "d0f04c92-a8c5-4bbe-ac3f-37130553829f"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA33/Data/Header With Image
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33/Data/Header With Image"
 Languages:
 - Language: en
   Versions:

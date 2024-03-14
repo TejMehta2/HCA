@@ -1,0 +1,45 @@
+﻿---
+ID: "c1554816-c0b7-47cd-b731-50cc784c4f65"
+Parent: "7e06b7ed-4382-45fc-8812-0d34c42dd18e"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA1_2/Page Data/Content Cards - 4 columns"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T073045Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: Key Service Lines
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0c29936e-b944-4672-88ad-f156f4699225"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: Read the story
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240313T202524Z
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
+        {243D187A-D33E-4842-BECF-F9B0EF556411}
+        {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}

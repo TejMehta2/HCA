@@ -2,7 +2,7 @@
 ID: "3304abed-5a62-436e-8fef-870423c94236"
 Parent: "eb6d0a6f-6cbd-40f1-8366-891c0d45a55b"
 Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66/Data/Call Us Today CTA
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66/Data/Call Us Today CTA"
 Languages:
 - Language: en
   Versions:
@@ -13,21 +13,16 @@ Languages:
       Value: 20240211T201113Z
     - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
       Hint: ContactUnit
-      Value: "{BBBB0B4C-9824-4923-9131-297A75FB7D61}|{54541FFE-872B-4DE6-B3BC-9528907A6F0F}"
+      Value: |
+        {BBBB0B4C-9824-4923-9131-297A75FB7D61}
+        {54541FFE-872B-4DE6-B3BC-9528907A6F0F}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d878bfbb-e202-4424-8cdd-a9f208949627"
-    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
-      Hint: CTALink
-      Value: |
-        <link text="Call us &lt;b&gt;today&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+      Value: "e2b77742-e151-4f2a-ba35-a7b26e6ef556"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T101000Z
-    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
-      Hint: CTAIcon
-      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"
+      Value: 20240313T215201Z
