@@ -87,6 +87,13 @@
 
     &:checked + label {
       color: var(--tab-active-text);
+      background-color: var(--tab-background);
+    }
+  }
+
+  &.scroll-max-large {
+    @include media(screen-l, max) {
+      overflow-x: auto;
     }
   }
 }

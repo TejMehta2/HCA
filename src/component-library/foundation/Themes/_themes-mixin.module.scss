@@ -79,7 +79,7 @@
   --text-date: #{$navy-blue-10};
 
   @include apply-tag-denim-40;
-  @include apply-tabs($denim-40, $white, $navy-blue-100);
+  //@include apply-tabs($denim-40, $white, $navy-blue-100);
   @include apply-pagination-denim-40-light;
   @include apply-tag-secondary-denim-10;
 }

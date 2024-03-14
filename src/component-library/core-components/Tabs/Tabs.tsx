@@ -11,7 +11,7 @@ export const useBrowserLayoutEffect =
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
-  const { callback, tabs } = props;
+  const { callback, tabs, contentVariation } = props;
 
   const isXl = useWindowWidth(1440);
 
@@ -49,7 +49,12 @@ const Tabs = (props: TabsProps): JSX.Element => {
   }, [refs, isXl]);
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={[
+        styles.wrapper,
+        contentVariation && styles[contentVariation],
+      ].join(' ')}
+    >
       <fieldset
         style={{
           // consumed in the CSS to animate the background element
