@@ -159,3 +159,9 @@
     top: auto;
   }
 }
+
+.no-transition {
+  .overlay {
+    transition: none;
+  }
+}

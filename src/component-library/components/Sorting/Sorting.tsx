@@ -124,7 +124,11 @@ const Sorting = (props: SortingProps): JSX.Element => {
             </button>
           </Button>
         </div>
-        <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>
+        <Modals
+          ref={mobileDialogRef}
+          defaultOpen={defaultOpen}
+          contentVariation="no-transition"
+        >
           <div className={styles.fieldset}>
             <div className={styles.legend}>
               <Text variation={'body-bold-extra-large'}>
