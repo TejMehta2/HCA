@@ -101,11 +101,19 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
 
   return ldbSlugs;
 }
-// check live booking is availabe for consultant based on slug
 
+// check live booking is availabe for consultant based on slug
 export async function checkIfLiveBookingIsAvailable(
   slug: string
 ): Promise<boolean> {
   const ldbSlugs = await getActiveLiveDiaryConsultantSlugs();
   return ldbSlugs.indexOf(slug) > -1;
+}
+
+// check live booking is availabe for consultants based on slugs
+export async function checkIfLiveBookingsIsAvailable(
+  slugs: string[]
+): Promise<boolean[]> {
+  const ldbSlugs = await getActiveLiveDiaryConsultantSlugs();
+  return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }

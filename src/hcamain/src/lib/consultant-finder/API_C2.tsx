@@ -34,6 +34,78 @@ import { getC2Config } from './getC2Config';
     ]
 }
 */
+// pass an array of gmc numbers
+export async function getLDBFirstAppointmentDatas(
+  gmcNumber: string[], // pass as individual gmcNumber=xx&gmcNumber=yy
+  gmcNumbers: string, // pass as comma separated gmcNumbers=xx,yy
+  serviceURL?: string,
+  headerKey?: string
+): Promise<any> {
+  // preference is passed params, otherwise get from settings
+  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
+  const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
+
+  let returnData: any = '';
+  let gmcArray: string[] = [];
+  if (gmcNumber) {
+    gmcArray = gmcArray.concat(gmcNumber);
+  }
+
+  if (gmcNumbers) {
+    gmcArray = gmcArray.concat(gmcNumbers?.split(','));
+  }
+
+  const gmcArrayBody = gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
+  const body = `{"consultants" : [${gmcArrayBody}] }`;
+  //console.log("body", body);
+
+  try {
+    // very light cache on these requests they contain time sensitive data
+    const res = await fetch(requestURL, {
+      method: 'post',
+      body: body,
+      headers: {
+        'content-type': 'application/json',
+        securitytoken: `"${header}"`,
+      },
+      cache: 'force-cache',
+      next: { revalidate: 60 },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      if (result && result.availability) {
+        //console.log("result.availability", result.availability);
+        result.availability.forEach(
+          (retRecord: { refreshdate: string; refreshedText: string }) => {
+            calcMinutesSinceUpdate(retRecord);
+          }
+        );
+      }
+
+      // remap in the correct order and provide null for entries where no info was found
+      returnData = gmcArray.map((gmc: any) =>
+        (result.availability as object[]).find((rec: any) => rec.gmc == gmc)
+      );
+    } else {
+      //C2 call failed
+      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+      returnData = JSON.parse(returnData);
+      console.error(
+        `getLDBFirstAppointmentData failed with error ${returnData}`
+      );
+    }
+  } catch (e) {
+    //C2 call threw
+    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    returnData = JSON.parse(returnData);
+    console.error(`getLDBFirstAppointmentData failed with exception ${e}`);
+  }
+
+  return returnData;
+}
+
+// pass a single gmc number
 export async function getLDBFirstAppointmentData(
   gmcNumber: string,
   serviceURL?: string,
@@ -56,27 +128,13 @@ export async function getLDBFirstAppointmentData(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 10 },
+      next: { revalidate: 60 },
     });
     if (res.ok) {
       const result = await res.json();
       if (result && result.availability && result.availability.length == 1) {
         const retRecord = result.availability[0];
-        try {
-          const timeRefreshed = Date.parse(retRecord?.refreshdate);
-          const timeSpanRefreshed = Date.now() - timeRefreshed;
-          const minsSinceRefreshed = Math.floor(
-            timeSpanRefreshed / (1000 * 60)
-          );
-          retRecord.refreshedText = `${minsSinceRefreshed} ${
-            minsSinceRefreshed > 1 ? 'minutes' : 'minute'
-          } ago`;
-        } catch (e) {
-          console.warn(
-            `issue doing time conversion in getLDBFirstAppointmentData exception:${e}`
-          );
-        }
-
+        calcMinutesSinceUpdate(retRecord);
         returnData = retRecord;
       }
     } else {
@@ -97,6 +155,20 @@ export async function getLDBFirstAppointmentData(
   return returnData;
 }
 
+function calcMinutesSinceUpdate(record: any) {
+  try {
+    const timeRefreshed = Date.parse(record?.refreshdate);
+    const timeSpanRefreshed = Date.now() - timeRefreshed;
+    const minsSinceRefreshed = Math.floor(timeSpanRefreshed / (1000 * 60));
+    record.refreshedText = `${minsSinceRefreshed} ${
+      minsSinceRefreshed > 1 ? 'minutes' : 'minute'
+    } ago`;
+  } catch (e) {
+    console.warn(
+      `issue doing time conversion in getLDBFirstAppointmentData exception:${e}`
+    );
+  }
+}
 /*
 The Consultant Details API is fed a consultant GMC number, and the appointment type required (initial or 
 follow on). It returns basic details around the consultant, and a list of the consultant’s availability at the HCA 
@@ -131,7 +203,7 @@ export async function getLDBConsultantDetails(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 10 },
+      next: { revalidate: 60 },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -193,7 +265,7 @@ export async function getLDBConsultantSlots(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 10 },
+      next: { revalidate: 60 },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -305,7 +377,7 @@ export async function LDBMakeBooking(
     }
   }`;
 
-  console.log('booking json:', body);
+  //console.log('booking json:', body);
 
   try {
     // very light cache on these requests they contain time sensitive data
