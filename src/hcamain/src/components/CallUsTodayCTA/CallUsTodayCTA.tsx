@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import {
   Field,
   Text as JssText,
-  LinkField,
   RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
