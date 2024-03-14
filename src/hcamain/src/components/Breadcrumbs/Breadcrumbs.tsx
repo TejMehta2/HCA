@@ -112,7 +112,7 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [breadcrumbSchemaItem],
+    itemListElement: breadcrumbSchemaItem,
   };
 
   return (
