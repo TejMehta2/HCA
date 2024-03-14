@@ -23,8 +23,15 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{27969B43-E1B5-428F-AC03-27C810BC824F}"
+              uid="{4F4CBE94-88D4-4A0A-80BF-BDEF89C194D7}"
               p:before="*"
+              s:ds="local:/Data/Text 1"
+              s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="headless-main" />
+            <r
+              uid="{27969B43-E1B5-428F-AC03-27C810BC824F}"
+              p:after="r[@uid='{4F4CBE94-88D4-4A0A-80BF-BDEF89C194D7}']"
               s:ds="{51BB46DF-CB43-4228-975E-F45FA647CD4B}"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
@@ -44,6 +51,13 @@ Languages:
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
               s:ph="/headless-main/cta-buttons-1" />
             <r
+              uid="{B7BAC6B7-D291-4816-A744-066DE2DCE272}"
+              p:after="r[@uid='{1802139F-4454-4465-AD44-0F08F645F571}']"
+              s:ds="local:/Data/Book an appointment"
+              s:id="{DA8BBECE-7AE8-4E3A-ACCD-511225BFB247}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4D3BD9AD-F895-4F4E-BC41-E5D3BA4F38A4%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
               uid="{EFF3E93C-0B95-4337-9354-9526FE09333E}"
               p:after="*[1=2]"
               s:ds="local:/Data/CTA Block Component"
@@ -56,9 +70,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240201T142503Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA18
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -69,11 +80,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "71fda251-3e56-4b50-8913-21f609830cdf"
+      Value: "f0844dbd-4eeb-4790-a889-0880419d444b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102906Z
+      Value: 20240313T232219Z

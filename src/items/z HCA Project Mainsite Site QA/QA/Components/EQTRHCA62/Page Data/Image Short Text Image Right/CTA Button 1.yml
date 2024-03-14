@@ -1,0 +1,30 @@
+﻿---
+ID: "62c2716a-cd78-40b7-b70e-3ac01ad47f6a"
+Parent: "3a52fef5-201b-45fb-a7a7-58bb6d29774c"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA62/Page Data/Image Short Text Image Right/CTA Button 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240104T225614Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "57a97826-be8e-497e-b73e-e5b7681f64cc"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Go to home" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240112T140419Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"

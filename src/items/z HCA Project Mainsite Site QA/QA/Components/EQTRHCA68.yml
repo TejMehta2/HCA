@@ -17,34 +17,9 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{132277F2-D625-45A3-B734-708E097CDC25}"
-          p:before="*"
           s:ds="local:/Data/Image And Tabs"
           s:id="{DF447C3A-4058-4DC3-B090-D3FD49CD0B29}"
           s:par="HeadingTag&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7BC2AAB3F0-0DC1-4AA5-A4AF-F03E3F75C7D9%7D&amp;Styles&amp;Theme=A-HCA-Main-Turquoise&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-          s:ph="headless-main"
-          s:ccb="Clear on publish" />
-        <r
-          uid="{74B8C8E1-6B76-4B4A-8EA7-E46DEA4BC641}"
-          p:after="r[@uid='{132277F2-D625-45A3-B734-708E097CDC25}']"
-          s:ds="local:/Data/Tab 1"
-          s:id="{EFBF18B4-4A7C-4ACB-A5C7-0B99828B61C8}"
-          s:par="HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-          s:ph="headless-main"
-          s:ccb="Clear on publish" />
-        <r
-          uid="{4892F945-3B33-4E42-B9A5-53D517DB7E26}"
-          p:after="r[@uid='{74B8C8E1-6B76-4B4A-8EA7-E46DEA4BC641}']"
-          s:ds="local:/Data/Tab 2"
-          s:id="{EFBF18B4-4A7C-4ACB-A5C7-0B99828B61C8}"
-          s:par="HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-          s:ph="headless-main"
-          s:ccb="Clear on publish" />
-        <r
-          uid="{044CF79F-2F7A-4844-AEC0-27F2184336D0}"
-          p:after="*[1=2]"
-          s:ds="local:/Data/Tab 3"
-          s:id="{EFBF18B4-4A7C-4ACB-A5C7-0B99828B61C8}"
-          s:par="HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -57,9 +32,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240118T124610Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA68
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -70,11 +42,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "acc0b729-a60a-4285-924f-fcd233e67a8b"
+      Value: "128a82f6-72df-4de7-acb8-797134a90651"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T103720Z
+      Value: 20240314T002856Z

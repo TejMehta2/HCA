@@ -19,9 +19,6 @@ Languages:
     - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
       Hint: ArticleType
       Value: 
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: Blog Page 2
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

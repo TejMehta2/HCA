@@ -17,7 +17,7 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{99A5637A-AF44-49A5-A737-37759F1F89E9}"
-          s:ds="{BB3DA09A-43ED-4BAA-9EAC-B29247AC21B5}"
+          s:ds="local:/Page Data/Doctify Testimonials Carousel"
           s:id="{3ABEDA2F-52F2-47FC-BB13-E06EE0B7843B}"
           s:par="GridParameters&amp;FieldNames=%7B37437569-E596-48FF-80AE-1381F51B1B9A%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
@@ -32,9 +32,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231228T112212Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA67
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -45,11 +42,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "22852c36-03da-4ead-acd0-966d6258b72b"
+      Value: "4a206a75-a8c2-453d-b2b4-cef3409d5bb2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T103621Z
+      Value: 20240314T002404Z
