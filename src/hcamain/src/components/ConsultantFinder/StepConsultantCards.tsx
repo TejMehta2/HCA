@@ -26,7 +26,7 @@ import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Filters from '@component-library/site-components/Filters/Filters';
-import Search from '@component-library/consultant-finder/Search/Search';
+import Search from '@component-library/consultant-finder/Search/SearchConsultantsList';
 import Tooltips from '@component-library/components/Tooltips/Tooltips';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
@@ -513,10 +513,22 @@ export const Default = (props: StepProps): JSX.Element => {
       videoConsultation,
       practice,
       requestPath,
+      search,
+      keywordId,
       ...queryParams
     } = router.query;
 
     const newQueryParams: any = { ...queryParams };
+
+    // Remove search if it exists
+    if ('search' in newQueryParams) {
+      delete newQueryParams.search;
+    }
+
+    // Remove keywordId if it exists
+    if ('keywordId' in newQueryParams) {
+      delete newQueryParams.keywordId;
+    }
 
     // Remove language if it exists
     if ('language' in newQueryParams) {
@@ -554,17 +566,17 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if (!router.isReady) return;
-
-    console.log('router ready', searchParams.toString());
-  }, [router.isReady]);
-
-  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-    // console.log('useEffect');
+
+    // If router is not ready, set loading to true
+    if (!router.isReady) {
+      setLoading(true);
+      return; // Exit early if router is not ready
+    }
+
     const practiceQuery = router.query.practice;
     const videoPractice = router.query.videoConsultation;
     if (practiceQuery) {
@@ -604,11 +616,21 @@ export const Default = (props: StepProps): JSX.Element => {
       setSelectedLanguage(language.toString());
     }
 
-    setLoading(true);
-    //  console.log('queryParams', searchParams.toString());
+    // Set the search string based on the query parameter if it exists
+    const { search, keywordId } = router.query;
 
-    // sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&distance=700
-    // .get(`https://api.doctify.com/api/hca/search?${searchParams.toString()}`)
+    if (search) {
+      setSearchString(search.toString());
+    } else {
+      setSearchString('');
+    }
+    if (keywordId) {
+      setKeywordId(Number(keywordId));
+    } else {
+      setKeywordId(0);
+    }
+
+    setLoading(true);
     const defaultParams = `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=700`;
     // daca nu avem ce trebuie atunci sa luam default
     const URLprams = searchParams.toString();
@@ -648,7 +670,7 @@ export const Default = (props: StepProps): JSX.Element => {
         setError(true);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query]);
+  }, [router.isReady, router.query]);
 
   if (props.fields) {
     return (
@@ -659,335 +681,353 @@ export const Default = (props: StepProps): JSX.Element => {
           </Link>
           <span>Results</span>
         </Breadcrumbs>
-        <ConsultantListHeader>
-          <ConsultantListHeaderSearch>
-            <Search
-              placeholder={
-                props?.fields?.SearchPlaceholderText?.value ||
-                'Type in a service, condition, treatment...'
-              }
-              doctifyBaseURL={
-                props?.fields?.API_Autocomplete_BaseURL?.value ||
-                'https://api.doctify.com/api/hca/search/autocomplete?search'
-              }
-              limit={Number(props?.fields?.API_Autocomplete_Limit?.value) || 20}
-              noResultsMsg={
-                props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
-                'No matches found, please try typing something else.'
-              }
-              specialtyLabel={
-                props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                'Specialties'
-              }
-              conditionsProceduresLabel={
-                props?.fields?.ConditionsTreatmentsFilterHeaderText?.value ||
-                'Conditions/ Procedures'
-              }
-              setKeywordId={setKeywordId}
-              searchString={searchString}
-              setSearchString={setSearchString}
-              searchIcon={
-                props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
-              }
-              conditionsTreatmentsList={
-                props?.fields?.ConditionsTreatmentsList ||
-                conditionsTreatmentsListMock
-              }
-              specialitiesList={props?.fields?.SpecialitiesList || []}
-              loadingText={
-                props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                'Loading...'
-              }
-            />
-          </ConsultantListHeaderSearch>
-          <ConsultantListHeaderFilters>
-            <Filters
-              filters={[
-                {
-                  title: 'Locations',
-                  children: (
-                    <div>
-                      {props?.fields?.LocationFilterOptions &&
-                        props?.fields?.LocationFilterOptions.length > 0 &&
-                        props?.fields?.LocationFilterOptions.map(
-                          (hospital: any, index: number) => (
-                            <Checkbox
-                              key={index}
-                              id={hospital?.fields?.slug?.value}
-                              value={hospital?.fields?.slug?.value}
-                              name={hospital?.fields?.doctifyName?.value}
-                              label={hospital?.fields?.doctifyName?.value}
-                              checked={checkedPractices.includes(
-                                hospital?.fields?.slug?.value
-                              )}
-                              onChange={handleCheckboxChange}
-                            ></Checkbox>
-                          )
-                        )}
-                    </div>
-                  ),
-                },
-                {
-                  title: 'Video Consultation',
-                  children: (
-                    <div>
-                      <Checkbox
-                        key={'video'}
-                        id={'video'}
-                        value={'video_consultation'}
-                        name={'video'}
-                        label={'Yes'}
-                        checked={isChecked}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                          const target = e.target;
-                          setIsChecked(target.checked);
-
-                          const queryParams = { ...router.query };
-                          if (target.checked) {
-                            queryParams.videoConsultation = 'true';
-                            queryParams.offset = '0';
-                          } else {
-                            delete queryParams.videoConsultation;
-                            delete queryParams.offset;
-                          }
-                          router.push({
-                            pathname: router.pathname,
-                            query: queryParams,
-                          });
-                        }}
-                      ></Checkbox>
-                    </div>
-                  ),
-                },
-                {
-                  title: 'Gender',
-                  children: (
-                    <div>
-                      {props?.fields?.GenderFilterOptions && (
-                        <RadioButtons>
-                          {props?.fields?.GenderFilterOptions?.length > 0 &&
-                            props?.fields?.GenderFilterOptions.map(
-                              (genderOption: any, index) => (
-                                <RadioButton
+        {router.isReady && (
+          <div>
+            <ConsultantListHeader>
+              <ConsultantListHeaderSearch>
+                <Search
+                  placeholder={
+                    props?.fields?.SearchPlaceholderText?.value ||
+                    'Type in a service, condition, treatment...'
+                  }
+                  doctifyBaseURL={
+                    props?.fields?.API_Autocomplete_BaseURL?.value ||
+                    'https://api.doctify.com/api/hca/search/autocomplete?search'
+                  }
+                  limit={
+                    Number(props?.fields?.API_Autocomplete_Limit?.value) || 20
+                  }
+                  noResultsMsg={
+                    props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                    'No matches found, please try typing something else.'
+                  }
+                  specialtyLabel={
+                    props?.fields?.SpecialitiesFilterHeaderText?.value ||
+                    'Specialties'
+                  }
+                  conditionsProceduresLabel={
+                    props?.fields?.ConditionsTreatmentsFilterHeaderText
+                      ?.value || 'Conditions/ Procedures'
+                  }
+                  setKeywordId={setKeywordId}
+                  searchString={searchString}
+                  setSearchString={setSearchString}
+                  searchIcon={
+                    props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+                  }
+                  conditionsTreatmentsList={
+                    props?.fields?.ConditionsTreatmentsList ||
+                    conditionsTreatmentsListMock
+                  }
+                  specialitiesList={props?.fields?.SpecialitiesList || []}
+                  loadingText={
+                    props?.fields?.API_Autocomplete_LoadingMsg?.value ||
+                    'Loading...'
+                  }
+                />
+              </ConsultantListHeaderSearch>
+              <ConsultantListHeaderFilters>
+                <Filters
+                  filters={[
+                    {
+                      title: 'Locations',
+                      children: (
+                        <div>
+                          {props?.fields?.LocationFilterOptions &&
+                            props?.fields?.LocationFilterOptions.length > 0 &&
+                            props?.fields?.LocationFilterOptions.map(
+                              (hospital: any, index: number) => (
+                                <Checkbox
                                   key={index}
-                                  label={genderOption?.name}
-                                  mode="light"
-                                  name="gender"
-                                  value={genderOption?.fields?.Value?.value}
-                                  onChange={(
-                                    e: React.ChangeEvent<HTMLInputElement>
-                                  ) => handleGenderOptions(e.target.value)}
-                                  checked={
-                                    checkedOptionGender ===
-                                    genderOption?.fields?.Value?.value
-                                  }
-                                />
+                                  id={hospital?.fields?.slug?.value}
+                                  value={hospital?.fields?.slug?.value}
+                                  name={hospital?.fields?.doctifyName?.value}
+                                  label={hospital?.fields?.doctifyName?.value}
+                                  checked={checkedPractices.includes(
+                                    hospital?.fields?.slug?.value
+                                  )}
+                                  onChange={handleCheckboxChange}
+                                ></Checkbox>
                               )
                             )}
-                        </RadioButtons>
-                      )}
-                    </div>
-                  ),
-                },
-                {
-                  title: 'Cover for treatment or procedure',
-                  children: (
-                    <div>
-                      <RadioButtons>
-                        <RadioButton
-                          key="self-pay"
-                          label={'I am paying by myself'}
-                          mode="light"
-                          name="insurer"
-                          value="0"
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            handleRadioButtonChange(Number(e.target.value))
-                          }
-                          checked={selectedInsurer === 0}
-                        />
-                      </RadioButtons>
-                      <Container marginTop="spacing-2" marginBottom="spacing-2">
-                        <Text tag="h3" variation="body-bold-extra-large">
-                          Insurers available
-                        </Text>
-                      </Container>
-                      {insurersDoctify && (
-                        <RadioButtons>
-                          {insurersDoctify?.length > 0 &&
-                            insurersDoctify.map((insurer: any) => (
-                              <RadioButton
-                                key={insurer.id}
-                                label={capitalizeFirstLetter(insurer.name)}
-                                mode="light"
-                                name="insurer"
-                                value={insurer.id}
-                                onChange={(
-                                  e: React.ChangeEvent<HTMLInputElement>
-                                ) =>
-                                  handleRadioButtonChange(
-                                    Number(e.target.value)
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'Video Consultation',
+                      children: (
+                        <div>
+                          <Checkbox
+                            key={'video'}
+                            id={'video'}
+                            value={'video_consultation'}
+                            name={'video'}
+                            label={'Yes'}
+                            checked={isChecked}
+                            onChange={(
+                              e: React.ChangeEvent<HTMLInputElement>
+                            ) => {
+                              const target = e.target;
+                              setIsChecked(target.checked);
+
+                              const queryParams = { ...router.query };
+                              if (target.checked) {
+                                queryParams.videoConsultation = 'true';
+                                queryParams.offset = '0';
+                              } else {
+                                delete queryParams.videoConsultation;
+                                delete queryParams.offset;
+                              }
+                              router.push({
+                                pathname: router.pathname,
+                                query: queryParams,
+                              });
+                            }}
+                          ></Checkbox>
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'Gender',
+                      children: (
+                        <div>
+                          {props?.fields?.GenderFilterOptions && (
+                            <RadioButtons>
+                              {props?.fields?.GenderFilterOptions?.length > 0 &&
+                                props?.fields?.GenderFilterOptions.map(
+                                  (genderOption: any, index) => (
+                                    <RadioButton
+                                      key={index}
+                                      label={genderOption?.name}
+                                      mode="light"
+                                      name="gender"
+                                      value={genderOption?.fields?.Value?.value}
+                                      onChange={(
+                                        e: React.ChangeEvent<HTMLInputElement>
+                                      ) => handleGenderOptions(e.target.value)}
+                                      checked={
+                                        checkedOptionGender ===
+                                        genderOption?.fields?.Value?.value
+                                      }
+                                    />
                                   )
-                                }
-                                checked={selectedInsurer === insurer.id}
-                              />
-                            ))}
-                        </RadioButtons>
-                      )}
-                    </div>
-                  ),
-                },
-                {
-                  title: 'Languages',
-                  children: (
-                    <div>
-                      {props?.fields?.LanguageFilterOptions &&
-                        props?.fields?.LanguageFilterOptions?.length > 0 && (
-                          <select
-                            name="language"
-                            value={selectedLanguage}
-                            onChange={handleLanguageChange}
+                                )}
+                            </RadioButtons>
+                          )}
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'Cover for treatment or procedure',
+                      children: (
+                        <div>
+                          <RadioButtons>
+                            <RadioButton
+                              key="self-pay"
+                              label={'I am paying by myself'}
+                              mode="light"
+                              name="insurer"
+                              value="0"
+                              onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                              ) =>
+                                handleRadioButtonChange(Number(e.target.value))
+                              }
+                              checked={selectedInsurer === 0}
+                            />
+                          </RadioButtons>
+                          <Container
+                            marginTop="spacing-2"
+                            marginBottom="spacing-2"
                           >
-                            <option value="">Please select language</option>
-                            {props.fields.LanguageFilterOptions.map(
-                              (language: any) => (
-                                <option
-                                  key={language?.fields?.id?.value}
-                                  value={language?.fields?.id?.value}
-                                >
-                                  {language?.fields?.Value?.value}
-                                </option>
-                              )
+                            <Text tag="h3" variation="body-bold-extra-large">
+                              Insurers available
+                            </Text>
+                          </Container>
+                          {insurersDoctify && (
+                            <RadioButtons>
+                              {insurersDoctify?.length > 0 &&
+                                insurersDoctify.map((insurer: any) => (
+                                  <RadioButton
+                                    key={insurer.id}
+                                    label={capitalizeFirstLetter(insurer.name)}
+                                    mode="light"
+                                    name="insurer"
+                                    value={insurer.id}
+                                    onChange={(
+                                      e: React.ChangeEvent<HTMLInputElement>
+                                    ) =>
+                                      handleRadioButtonChange(
+                                        Number(e.target.value)
+                                      )
+                                    }
+                                    checked={selectedInsurer === insurer.id}
+                                  />
+                                ))}
+                            </RadioButtons>
+                          )}
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'Languages',
+                      children: (
+                        <div>
+                          {props?.fields?.LanguageFilterOptions &&
+                            props?.fields?.LanguageFilterOptions?.length >
+                              0 && (
+                              <select
+                                name="language"
+                                value={selectedLanguage}
+                                onChange={handleLanguageChange}
+                              >
+                                <option value="">Please select language</option>
+                                {props.fields.LanguageFilterOptions.map(
+                                  (language: any) => (
+                                    <option
+                                      key={language?.fields?.id?.value}
+                                      value={language?.fields?.id?.value}
+                                    >
+                                      {language?.fields?.Value?.value}
+                                    </option>
+                                  )
+                                )}
+                              </select>
                             )}
-                          </select>
-                        )}
-                    </div>
-                  ),
-                },
-              ]}
-              resultsCount={total}
-            ></Filters>
-            <Container marginLeft="spacing-4">
-              {router.isReady && (
-                <Sorting
-                  options={[
-                    {
-                      id: 'relevance',
-                      defaultChecked: router.query.sortType === 'relevance',
-                      labelText: 'Most relevant',
-                      value: 'relevance',
-                    },
-                    {
-                      id: 'rating',
-                      defaultChecked: router.query.sortType === 'rating',
-                      labelText: 'Highest rated by patients',
-                      value: 'rating',
-                    },
-                    {
-                      id: 'nearest',
-                      defaultChecked: router.query.sortType === 'nearest',
-                      labelText: 'Nearest',
-                      value: 'nearest',
+                        </div>
+                      ),
                     },
                   ]}
-                  onChange={(e) => {
-                    const target = e.target as HTMLInputElement;
+                  resultsCount={total}
+                ></Filters>
+                <Container marginLeft="spacing-4">
+                  <Sorting
+                    options={[
+                      {
+                        id: 'relevance',
+                        defaultChecked: router.query.sortType === 'relevance',
+                        labelText: 'Most relevant',
+                        value: 'relevance',
+                      },
+                      {
+                        id: 'rating',
+                        defaultChecked: router.query.sortType === 'rating',
+                        labelText: 'Highest rated by patients',
+                        value: 'rating',
+                      },
+                      {
+                        id: 'nearest',
+                        defaultChecked: router.query.sortType === 'nearest',
+                        labelText: 'Nearest',
+                        value: 'nearest',
+                      },
+                    ]}
+                    onChange={(e) => {
+                      const target = e.target as HTMLInputElement;
 
-                    if (target.checked) {
-                      const queryParams = {
-                        ...router.query,
-                        sortType: target.value,
-                        offset: 0,
-                      };
-                      if ('requestPath' in queryParams) {
-                        delete queryParams.requestPath;
+                      if (target.checked) {
+                        const queryParams = {
+                          ...router.query,
+                          sortType: target.value,
+                          offset: 0,
+                        };
+                        if ('requestPath' in queryParams) {
+                          delete queryParams.requestPath;
+                        }
+                        router.push({
+                          pathname: router.pathname,
+                          query: queryParams,
+                        });
                       }
-                      router.push({
-                        pathname: router.pathname,
-                        query: queryParams,
-                      });
+                    }}
+                  />
+                </Container>
+                <Container marginLeft="spacing-4">
+                  <TextButton theme="dark">
+                    <button onClick={handleResetFilters}>
+                      Reset all
+                      <Icons iconName="iconReset" />
+                    </button>
+                  </TextButton>
+                </Container>
+              </ConsultantListHeaderFilters>
+            </ConsultantListHeader>
+            <ConsultantListHeaderTtitle>
+              <Text tag="h5" variation="display-5">
+                {`Let's get you to the right specialist`}
+              </Text>
+            </ConsultantListHeaderTtitle>
+
+            {loading && (
+              <div>
+                Loading....
+                <Loader theme={'light'} />
+              </div>
+            )}
+            {!loading && !error && results.length === 0 && (
+              <div>No results</div>
+            )}
+            {/* sa vad daca au online sau nu */}
+
+            {/* sa mut logica  */}
+            <ConsultantFinderResults>
+              {!loading &&
+                !error &&
+                results.length > 0 &&
+                results.map((consultant: any) => (
+                  <ConsultantCard
+                    key={consultant?.id}
+                    // placeholder
+                    profilePhoto={
+                      consultant?.images?.logo ||
+                      props?.fields?.ProfileImagePlaceholderImage?.value?.src ||
+                      null
                     }
+                    name={`${consultant?.firstName} ${consultant?.lastName}`}
+                    slug={consultant?.slug}
+                    keywords={consultant?.keywords || null}
+                    hospitals={consultant?.practices || null}
+                    reviewsCount={consultant?.overallExperience || 0}
+                    doctifyLogo={
+                      <JssImage field={props.fields.DoctifyLogoImage} />
+                    }
+                    hideAppointmentRequest={consultant?.hideAppointmentRequest}
+                    consultantsSlugs={consultantsSlugs}
+                  />
+                ))}
+            </ConsultantFinderResults>
+
+            {error && !loading && (
+              <div>There was an error, Please try again</div>
+            )}
+
+            {!error && !loading && totalPgaes > 1 && results.length > 0 && (
+              <Themes theme={'A-HCA-White'}>
+                <Pagination
+                  pageCount={totalPgaes}
+                  callback={(newPage: number) => {
+                    // console.log(newPage);
+
+                    const offset = (newPage - 1) * 12;
+                    setOffset(offset);
+                    // console.log('offset: ', offset);
+
+                    // Update the URL query parameters
+                    const { requestPath, ...queryParams } = router.query; // Exclude requestPath
+                    router.push(
+                      {
+                        pathname: router.pathname,
+                        query: { ...queryParams, offset: offset },
+                      },
+                      undefined,
+                      { shallow: true }
+                    );
                   }}
+                  currentPage={currentPage}
                 />
-              )}
-            </Container>
-            <Container marginLeft="spacing-4">
-              <TextButton theme="dark">
-                <button onClick={handleResetFilters}>
-                  Reset all
-                  <Icons iconName="iconReset" />
-                </button>
-              </TextButton>
-            </Container>
-          </ConsultantListHeaderFilters>
-        </ConsultantListHeader>
-        <ConsultantListHeaderTtitle>
-          <Text tag="h5" variation="display-5">
-            {`Let's get you to the right specialist`}
-          </Text>
-        </ConsultantListHeaderTtitle>
-
-        {loading && (
-          <div>
-            Loading....
-            <Loader theme={'light'} />
+              </Themes>
+            )}
           </div>
-        )}
-        {!loading && !error && results.length === 0 && <div>No results</div>}
-        {/* sa vad daca au online sau nu */}
-
-        {/* sa mut logica  */}
-        <ConsultantFinderResults>
-          {!loading &&
-            !error &&
-            results.length > 0 &&
-            results.map((consultant: any) => (
-              <ConsultantCard
-                key={consultant?.id}
-                // placeholder
-                profilePhoto={
-                  consultant?.images?.logo ||
-                  props?.fields?.ProfileImagePlaceholderImage?.value?.src ||
-                  null
-                }
-                name={`${consultant?.firstName} ${consultant?.lastName}`}
-                slug={consultant?.slug}
-                keywords={consultant?.keywords || null}
-                hospitals={consultant?.practices || null}
-                reviewsCount={consultant?.overallExperience || 0}
-                doctifyLogo={<JssImage field={props.fields.DoctifyLogoImage} />}
-                hideAppointmentRequest={consultant?.hideAppointmentRequest}
-                consultantsSlugs={consultantsSlugs}
-              />
-            ))}
-        </ConsultantFinderResults>
-
-        {error && !loading && <div>There was an error, Please try again</div>}
-
-        {!error && !loading && totalPgaes > 1 && results.length > 0 && (
-          <Themes theme={'A-HCA-White'}>
-            <Pagination
-              pageCount={totalPgaes}
-              callback={(newPage: number) => {
-                // console.log(newPage);
-
-                const offset = (newPage - 1) * 12;
-                setOffset(offset);
-                // console.log('offset: ', offset);
-
-                // Update the URL query parameters
-                const { requestPath, ...queryParams } = router.query; // Exclude requestPath
-                router.push(
-                  {
-                    pathname: router.pathname,
-                    query: { ...queryParams, offset: offset },
-                  },
-                  undefined,
-                  { shallow: true }
-                );
-              }}
-              currentPage={currentPage}
-            />
-          </Themes>
         )}
       </div>
     );
