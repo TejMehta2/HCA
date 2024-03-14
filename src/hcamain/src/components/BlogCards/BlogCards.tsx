@@ -113,7 +113,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             {!!card.fields.ArticleType && (
               <Tags>
                 <a
-                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.url}`}
+                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
                 >
                   {card.fields?.ArticleType.fields.Title?.value}
                 </a>
@@ -187,7 +187,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               {card.fields.ArticleType && (
                 <Tags>
                   <a
-                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.url}`}
+                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
                   >
                     {card.fields?.ArticleType.fields.Title?.value}
                   </a>
