@@ -23,7 +23,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: HCAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTAText?: { jsonValue?: Field<string> };
       contactUnit?: {
         contactUnitList?: ContactUnitFields[];
       };
@@ -80,7 +80,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
     <>
       <Button size="large" variation="outline">
         <button onClick={() => dialogRef?.current?.showModal()}>
-          {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+          {props.fields?.data?.item?.cTAText?.jsonValue && (
             <>
               {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
                 <span
@@ -94,8 +94,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
               <JssRichText
                 field={{
                   value:
-                    props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
-                    '',
+                    props.fields?.data?.item?.cTAText?.jsonValue?.value || '',
                 }}
               />
             </>
