@@ -18,31 +18,6 @@
             "allowedPushOperations": "CreateOnly"
           },
           {
-            "path": "/Data/CQC",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Doctify Reviews",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Tags/BlogTags",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Authors",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Consultants",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
-          },
-          {
             "path": "/Data",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateAndUpdate"
