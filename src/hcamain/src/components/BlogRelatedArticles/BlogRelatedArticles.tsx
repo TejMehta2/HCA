@@ -4,8 +4,17 @@ import {
   LinkField,
   Item,
   Text as JssText,
-  RichText,
+  Link as JssLink,
+  RichText as JssRichText,
+  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import Text from '@component-library/foundation/Text/Text';
+import Button from '@component-library/core-components/Button/Button';
+import CardBlog from '@component-library/components/CardBlog/CardBlog';
+import Tags from '@component-library/core-components/Tags/Tags';
+import JssDate from '../../jss-abstractions/JssDate/JssDate';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -57,7 +66,7 @@ interface Fields {
 }
 
 type BlogRelatedArticlesProps = {
-  params: { [key: string]: string };
+  params: Params;
   fields: Fields;
 };
 
@@ -75,7 +84,68 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   if (!props.fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
+  console.log(props);
+
   return (
+    <CarouselCards
+      title={
+        <Text
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-5'}
+        >
+          <JssText field={props?.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      link={
+        props.fields?.data?.item?.blogUrl?.jsonValue?.value && (
+          <Button size={'large'} variation={'full'}>
+            <JssLink
+              field={props.fields?.data?.item?.blogUrl?.jsonValue?.value}
+            >
+              {props.fields?.data?.item?.blogUrl?.jsonValue?.value?.href && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.blogUrl?.jsonValue?.value?.href,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+          </Button>
+        )
+      }
+      theme={props.params?.Theme || 'A-HCA-White'}
+    >
+      {props.fields?.data?.item?.articles?.ArticlesList?.map((card, index) => {
+        return (
+          <CardBlog key={index}>
+            {/* <JssImage field={card.fields.Image} /> */}
+            <JssDate field={card.date?.jsonValue} />
+            <Text tag={'h3'} variation={'heading-2'}>
+              <a href="#">
+                <JssText field={card.title?.jsonValue} />
+              </a>
+            </Text>
+            <Text tag={'p'} variation={'body-large'}>
+              <JssRichText tag="span" field={card.text?.jsonValue} />
+            </Text>
+            {!!card.articleType && (
+              <Tags>
+                <a href="#">
+                  <JssText
+                    tag="p"
+                    field={card.articleType?.targetItem?.title}
+                  />
+                </a>
+              </Tags>
+            )}
+          </CardBlog>
+        );
+      })}
+    </CarouselCards>
+  );
+
+  /* return (
     <div className={`component ${props.params.styles}`}>
       <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
       <br />
@@ -102,5 +172,5 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       <br />
       <a href={props.fields?.data?.item?.blogUrl?.jsonValue?.value?.href}></a>
     </div>
-  );
+  ); */
 };
