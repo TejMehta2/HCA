@@ -351,3 +351,6 @@ export const ThemeMGoldenrod20: StoryObj<typeof Themes> = {
 export const ThemeNDenim5: StoryObj<typeof Themes> = {
   args: { theme: 'N-HCA-Denim-5' },
 };
+export const ThemeOTeal20: StoryObj<typeof Themes> = {
+  args: { theme: 'O-HCA-Teal-20' },
+};

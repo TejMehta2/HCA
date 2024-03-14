@@ -1,0 +1,58 @@
+﻿---
+ID: "6744f0f5-e0ec-4c4a-968a-8f6a938e77b5"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
+Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA4_1
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{89C09422-6563-4110-848C-E2F873C24304}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{8E6447C4-19FC-4C6E-8540-33D0EF32C52C}"
+          s:ds="{85E98614-B2AF-4ADE-AA90-E019EEA4C812}"
+          s:id="{C02783CF-B67E-4849-88ED-8B324CA0089A}"
+          s:par="HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7BA25B0FC1-5D1F-45E5-8861-6863E390B8F5%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T092557Z
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: EQTRHCA4
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6572a61e-d3d4-46a0-acde-3b5b374d4ac3"
+      Hint: Doctify Practice
+      Value: "the-lister-hospital"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8320a076-3148-44d5-9d72-fae574e2cee5"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240308T200142Z
