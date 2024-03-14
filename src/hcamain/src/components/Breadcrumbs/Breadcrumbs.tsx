@@ -46,18 +46,6 @@ type BreadcrumbSchema = {
   item?: string | undefined;
 }[];
 
-const getTitle = (data?: AncestorsFields) => {
-  if (data?.navigationTitle?.value) {
-    return data?.navigationTitle?.value;
-  } else if (data?.abstractTitle) {
-    return data?.abstractTitle?.value;
-  } else if (data?.displayName) {
-    return data?.displayName;
-  } else {
-    return data?.name;
-  }
-};
-
 const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
   return (
     <div className={`component ${props.params?.styles}`}>
@@ -73,7 +61,17 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
-  console.log(props);
+  const getTitle = (data?: AncestorsFields) => {
+    if (data?.navigationTitle?.value) {
+      return data?.navigationTitle?.value;
+    } else if (data?.abstractTitle) {
+      return data?.abstractTitle?.value;
+    } else if (data?.displayName) {
+      return data?.displayName;
+    } else {
+      return data?.name;
+    }
+  };
 
   const breadcrumbSchemaItem: BreadcrumbSchema = [];
 
@@ -116,8 +114,6 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     '@type': 'BreadcrumbList',
     itemListElement: [breadcrumbSchemaItem],
   };
-
-  console.log(breadcrumbSchema);
 
   return (
     <>
