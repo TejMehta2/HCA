@@ -3,6 +3,7 @@ import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Link from 'next/link';
 import Params from 'src/types/params';
+import Head from 'next/head';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -38,6 +39,13 @@ type BreadcrumbsProps = {
   fields?: Fields;
 };
 
+type BreadcrumbSchema = {
+  '@type': string;
+  position: number;
+  name: string | undefined;
+  item?: string | undefined;
+}[];
+
 const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
   return (
     <div className={`component ${props.params?.styles}`}>
@@ -65,9 +73,18 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     }
   };
 
+  const breadcrumbSchemaItem: BreadcrumbSchema = [];
+
   const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
     (ancestor, index) => {
       const title = getTitle(ancestor);
+
+      breadcrumbSchemaItem.push({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: title,
+        item: ancestor?.url?.url,
+      });
 
       return (
         <Link href={ancestor?.url?.url || ''} key={index}>
@@ -86,5 +103,27 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
     return <></>;
   }
 
-  return <Breadcrumbs children={breadcrumbList} />;
+  breadcrumbSchemaItem.push({
+    '@type': 'ListItem',
+    position: breadcrumbSchemaItem.length + 1,
+    name: title,
+  });
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbSchemaItem,
+  };
+
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      </Head>
+      <Breadcrumbs children={breadcrumbList} />
+    </>
+  );
 };
