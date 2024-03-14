@@ -449,20 +449,28 @@ export const Default = (props: StepProps): JSX.Element => {
     if (practices.length > 0) {
       queryParams.practice = practices.join(',');
     }
-    router.push({
-      pathname: router.pathname,
-      query: { ...queryParams, offset: 0 },
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...queryParams, offset: 0 },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   // gender
   const handleGenderOptions = (value: string) => {
     setCheckedOptionGender(value);
     const { requestPath, offset, ...updatedQuery } = router.query;
-    router.push({
-      pathname: router.pathname,
-      query: { ...updatedQuery, gender: value, offset: 0 },
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...updatedQuery, gender: value, offset: 0 },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   // insurer
@@ -470,15 +478,23 @@ export const Default = (props: StepProps): JSX.Element => {
     setSelectedInsurer(value);
     if (value === 0) {
       const { insurer, offset, ...queryWithoutInsurer } = router.query;
-      router.push({
-        pathname: router.pathname,
-        query: { ...queryWithoutInsurer, offset: 0 },
-      });
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { ...queryWithoutInsurer, offset: 0 },
+        },
+        undefined,
+        { shallow: true }
+      );
     } else {
-      router.push({
-        pathname: router.pathname,
-        query: { ...router.query, insurer: value },
-      });
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { ...router.query, insurer: value },
+        },
+        undefined,
+        { shallow: true }
+      );
     }
   };
 
@@ -488,16 +504,24 @@ export const Default = (props: StepProps): JSX.Element => {
     setSelectedLanguage(selectedValue);
     if (selectedValue !== '') {
       const { requestPath, ...updatedQuery } = router.query;
-      router.push({
-        pathname: router.pathname,
-        query: { ...updatedQuery, language: selectedValue, offset: 0 },
-      });
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { ...updatedQuery, language: selectedValue, offset: 0 },
+        },
+        undefined,
+        { shallow: true }
+      );
     } else {
       const { language, ...queryWithoutLanguage } = router.query;
-      router.push({
-        pathname: router.pathname,
-        query: { ...queryWithoutLanguage, offset: 0 },
-      });
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { ...queryWithoutLanguage, offset: 0 },
+        },
+        undefined,
+        { shallow: true }
+      );
     }
   };
 
@@ -559,10 +583,14 @@ export const Default = (props: StepProps): JSX.Element => {
     newQueryParams.offset = 0;
     newQueryParams.sortType = 'relevance';
 
-    router.push({
-      pathname: router.pathname,
-      query: newQueryParams,
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: newQueryParams,
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   useEffect(() => {
@@ -779,10 +807,14 @@ export const Default = (props: StepProps): JSX.Element => {
                                 delete queryParams.videoConsultation;
                                 delete queryParams.offset;
                               }
-                              router.push({
-                                pathname: router.pathname,
-                                query: queryParams,
-                              });
+                              router.push(
+                                {
+                                  pathname: router.pathname,
+                                  query: queryParams,
+                                },
+                                undefined,
+                                { shallow: true }
+                              );
                             }}
                           ></Checkbox>
                         </div>
@@ -935,10 +967,14 @@ export const Default = (props: StepProps): JSX.Element => {
                         if ('requestPath' in queryParams) {
                           delete queryParams.requestPath;
                         }
-                        router.push({
-                          pathname: router.pathname,
-                          query: queryParams,
-                        });
+                        router.push(
+                          {
+                            pathname: router.pathname,
+                            query: queryParams,
+                          },
+                          undefined,
+                          { shallow: true }
+                        );
                       }
                     }}
                   />

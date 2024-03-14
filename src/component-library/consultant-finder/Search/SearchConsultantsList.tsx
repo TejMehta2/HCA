@@ -52,10 +52,14 @@ const Search = (props: SearchProps): JSX.Element => {
     const { search, keywordId, ...queryParams } = router.query;
     console.log(search, keywordId);
 
-    router.push({
-      pathname: router.pathname,
-      query: queryParams,
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: queryParams,
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   const handlePopularSearch = () => {

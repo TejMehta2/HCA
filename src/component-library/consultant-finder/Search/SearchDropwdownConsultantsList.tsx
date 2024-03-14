@@ -31,10 +31,14 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
 
     setSearchStringConsultantName('');
     // Update the URL with the search value and keyword ID
-    router.push({
-      pathname: router.pathname,
-      query: { search: name, keywordId: id, ...router.query },
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { search: name, keywordId: id, ...router.query },
+      },
+      undefined,
+      { shallow: true }
+    );
     props.setIsComponentVisible(false);
   };
 
