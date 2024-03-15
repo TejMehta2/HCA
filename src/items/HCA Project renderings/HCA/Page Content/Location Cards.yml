@@ -73,7 +73,10 @@ SharedFields:
                 filter {
                   value
                 }
-                filterValue {
+                filterValueString  {
+                  value
+                }
+                filterValueGuid {
                   targetItem {
                     id
                   }
@@ -175,14 +178,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "89478375-a8d8-4b16-a57b-60dcfe84362f"
+      Value: "f25468ad-c38b-457d-8ac1-5d1d7210920d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T131326Z
+      Value: 20240315T122522Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

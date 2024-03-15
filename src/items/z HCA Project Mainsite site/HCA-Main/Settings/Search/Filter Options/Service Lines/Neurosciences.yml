@@ -16,14 +16,17 @@ Languages:
       Value: Neurosciences
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "31b8a14a-9c89-4b8c-bc5a-10d9b9ebe769"
+      Value: "002f5ef4-497e-4cb2-879a-a71c3dd8ba6b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240220T101915Z
+      Value: 20240315T122032Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: serviceline=Neurosciences
+      Value: serviceLineId
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: Neurosciences

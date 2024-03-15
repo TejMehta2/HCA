@@ -10,7 +10,7 @@ import Params from 'src/types/params';
 
 interface Fields {
   data?: {
-    item?: {
+    currentItem?: {
       heading?: { jsonValue?: Field<string> };
     };
     contextItem?: {
@@ -45,7 +45,9 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         <Text variation="subheading-1">
-          <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          <JssText
+            field={props.fields?.data?.currentItem?.heading?.jsonValue}
+          />
         </Text>
       }
       heading={

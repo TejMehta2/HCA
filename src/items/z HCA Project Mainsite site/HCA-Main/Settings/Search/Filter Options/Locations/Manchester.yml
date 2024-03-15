@@ -23,18 +23,21 @@ Languages:
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
-      Hint: FilterValue
-      Value: "{114F95BA-9012-4A8F-9507-426B2A948885}"
+      Hint: FilterValueGuid
+      Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "11b93607-283a-4e37-9218-6d00cf06b63c"
+      Value: "e5ce07a5-5e91-4735-8dd3-b700f82ff147"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240229T213245Z
+      Value: 20240315T122157Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: city=Manchester
+      Value: city
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: Manchester

@@ -25,7 +25,8 @@ type SortOptionsFields = {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
-    FilterValue?: Item;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 
@@ -97,7 +98,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   <br />
                   <JssText field={filter?.fields?.Filter} />
                   <br />
-                  <span>{filter?.fields?.FilterValue?.id}</span>
+                  <span>{filter?.fields?.FilterValueGuid?.id}</span>
                   <br />
                 </li>
               ))}
@@ -124,7 +125,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={sortOptions?.fields?.Filter} />
             <br />
-            <span>{sortOptions?.fields?.FilterValue?.id}</span>
+            <span>{sortOptions?.fields?.FilterValueGuid?.id}</span>
             <br />
           </li>
         ))}
@@ -141,7 +142,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={filterBy?.fields?.Filter} />
             <br />
-            <span>{filterBy?.fields?.FilterValue?.id}</span>
+            <span>{filterBy?.fields?.FilterValueGuid?.id}</span>
           </li>
         ))}
       </ul>
@@ -153,7 +154,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={searchby?.fields?.Filter} />
             <br />
-            <span>{searchby?.fields?.FilterValue?.id}</span>
+            <span>{searchby?.fields?.FilterValueGuid?.id}</span>
           </li>
         ))}
       </ul>

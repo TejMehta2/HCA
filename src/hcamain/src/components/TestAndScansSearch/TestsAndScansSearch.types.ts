@@ -26,6 +26,8 @@ export type SortOptionsFields = Item & {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 

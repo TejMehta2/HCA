@@ -24,7 +24,8 @@ type SortOptionsFields = {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
-    FilterValue?: Item;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 
@@ -40,7 +41,9 @@ interface Fields {
   SortOptionsText?: Field<string>;
   SortOptions?: SortOptionsFields[];
   SearchResultsText?: Field<string>;
-  ResultsPerPage?: Field<string>;
+  ResultsPerPage?: Field<number>;
+  SearchBy?: SortOptionsFields[];
+  FilterBy?: SortOptionsFields[];
 }
 
 type PatientStoriesSearchProps = {
@@ -95,7 +98,7 @@ export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
                   <br />
                   <JssText field={filter?.fields?.Filter} />
                   <br />
-                  <span>{filter?.fields?.FilterValue?.id}</span>
+                  <span>{filter?.fields?.FilterValueGuid?.id}</span>
                   <br />
                 </li>
               ))}
@@ -120,7 +123,7 @@ export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
             <br />
             <JssText field={sortOptions?.fields?.Filter} />
             <br />
-            <span>{sortOptions?.fields?.FilterValue?.id}</span>
+            <span>{sortOptions?.fields?.FilterValueGuid?.id}</span>
             <br />
           </li>
         ))}
