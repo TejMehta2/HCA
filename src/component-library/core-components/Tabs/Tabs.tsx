@@ -1,4 +1,10 @@
-import React, { useId, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+  useId,
+  useLayoutEffect,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -37,7 +43,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
 
   const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
 
-  useBrowserLayoutEffect(() => {
+  useEffect(() => {
     // Store the dimensions from label elements on load
     const dimensions = refs?.current?.map((labelElement) => {
       return {
