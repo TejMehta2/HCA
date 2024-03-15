@@ -1,15 +1,18 @@
 ﻿---
-ID: "a06f2027-8b9e-43e8-bc2a-ee8bee8089e2"
-Parent: "460a71dd-7dba-4848-b021-0177891d9789"
+ID: "11cd00c0-b15b-47cf-b8a5-6442fbb59f2d"
+Parent: "3cb3510a-f5c9-435d-b48d-94e2c30b3a6e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Google Service/Route endpoint
+Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Configuration/Known Locations
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{4DE3BB9F-9B36-4B44-9DB2-15283C093353}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 700
+  Value: 500
 Languages:
 - Language: en
   Versions:
@@ -17,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240313T122725Z
+      Value: 20240313T124413Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +31,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cfe5731b-de29-40d2-a286-be80003b577b"
+      Value: "21218ed2-89e4-4947-8213-99fe2694d279"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T124413Z
+      Value: 20240313T131604Z

@@ -1,12 +1,12 @@
 ﻿---
-ID: "40d95a2a-9ee0-454f-a9ef-70770a7c1aee"
-Parent: "c40cc24d-9c86-4fc5-aaea-8d8b2b7194cd"
+ID: "2b55c4a1-7b7e-4a53-94cc-f845d6acf7e9"
+Parent: "d3c532c5-e0d3-4ae4-b8ab-13246dd95e13"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Security/Client pre-authorisation max requests in window"
+Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Microsoft Service/MPlaces endpoint
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Integer
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 400
@@ -28,7 +28,7 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dba44d83-ce67-40bd-bf40-146b70db87e0"
+      Value: "50a63348-07c0-4946-bba4-34f2a1e6e07d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

@@ -1,15 +1,15 @@
 ﻿---
-ID: "39edea90-3643-404f-9f6f-374a5855122b"
-Parent: "c40cc24d-9c86-4fc5-aaea-8d8b2b7194cd"
+ID: "547ae2a8-674e-44c9-815a-3e522e8d197a"
+Parent: "d3c532c5-e0d3-4ae4-b8ab-13246dd95e13"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Security/Client pre-authorisation token window seconds"
+Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Microsoft Service/MRoute endpoint
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Integer
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 500
 Languages:
 - Language: en
   Versions:
@@ -28,7 +28,7 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ff5bba59-a43e-47fa-911a-387e6bf2732a"
+      Value: "939bd20d-a7db-4934-89c7-bab50813635f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

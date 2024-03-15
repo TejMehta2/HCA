@@ -1,12 +1,12 @@
 ﻿---
-ID: "1cc1894d-4c64-4367-880e-8c62f5bb5ee8"
-Parent: "c40cc24d-9c86-4fc5-aaea-8d8b2b7194cd"
+ID: "a06f2027-8b9e-43e8-bc2a-ee8bee8089e2"
+Parent: "460a71dd-7dba-4848-b021-0177891d9789"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Security/Service max post requests in window
+Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Google Service/GRoute endpoint
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Integer
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 700
@@ -17,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240313T122726Z
+      Value: 20240313T122725Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +28,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "77f7fc9c-dc3a-405e-bd2d-ef37a2883961"
+      Value: "cfe5731b-de29-40d2-a286-be80003b577b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T124414Z
+      Value: 20240313T124413Z

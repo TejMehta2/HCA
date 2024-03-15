@@ -1,15 +1,15 @@
 ﻿---
-ID: "547ae2a8-674e-44c9-815a-3e522e8d197a"
-Parent: "d3c532c5-e0d3-4ae4-b8ab-13246dd95e13"
+ID: "94e6b2c7-b93c-46ba-b26e-bfd33773ad77"
+Parent: "c40cc24d-9c86-4fc5-aaea-8d8b2b7194cd"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Microsoft Service/Route endpoint
+Path: /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings/Security/Enforce client token
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Checkbox
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -28,7 +28,7 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "939bd20d-a7db-4934-89c7-bab50813635f"
+      Value: "996085bb-5e2a-4b42-8064-1653cae7d662"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
