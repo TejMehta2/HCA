@@ -82,10 +82,10 @@
 .logo {
   padding-top: px-to-rem(16);
   padding-bottom: px-to-rem(16);
+  display: flex;
 
   svg {
-    width: auto;
-    height: px-to-rem(50);
+    aspect-ratio: 149 / 42;
   }
 }
 
