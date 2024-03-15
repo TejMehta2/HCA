@@ -360,7 +360,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   // console.log('insurers', insurersDoctify);
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  
+
   //console.log('consultantsSlugs', consultantsSlugs);
   console.log('consultant cards', props);
   // console.log('ss data', serverSideData);
@@ -390,8 +390,11 @@ export const Default = (props: StepProps): JSX.Element => {
   // console.log('current page', currentPage);
 
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
-  const cardAvailableAppointmentLoadingText:string = props.fields.API_C2_FirstAppointment_LoadingMsg.value; 
-  const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(cardAvailableAppointmentLoadingText);
+  const cardAvailableAppointmentLoadingText: string =
+    props.fields.API_C2_FirstAppointment_LoadingMsg.value;
+  const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
+    cardAvailableAppointmentLoadingText
+  );
   const [relevance, setRelevance] = useState('');
 
   // if there is no search string then use default params
@@ -430,43 +433,41 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
-  
+
   useEffect(() => {
-          // now make async client side call to find next appointments
-          // get the next available appointment details
-          // must pass gmc number to C2
-          const gmcArray = results.map(
-            (consultant: any) =>
-              consultant?.registrationBodies.filter(
-                (item: any) => item.name === 'General Medical Council'
-              )[0]?.registrationNumber
-          );
-          const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
+    // now make async client side call to find next appointments
+    // get the next available appointment details
+    // must pass gmc number to C2
+    const gmcArray = results.map(
+      (consultant: any) =>
+        consultant?.registrationBodies.filter(
+          (item: any) => item.name === 'General Medical Council'
+        )[0]?.registrationNumber
+    );
+    const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
 
-          // call to our local server api endpoint to get the first appointment data from C2
-          const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
-          axios
-            .get(getLDBFirstAppointmentDatasURL)
-            .then((firstAppointmentResponse) => {
-              // map in the first appointment data for each consultant, results will come in the same order as the request
-              firstAppointmentResponse.data.map(
-                (firstAppointment: any, index: number) =>
-                results[index]
-                    ? (results[index].firstAppointment =
-                        firstAppointment)
-                    : null
-              );
+    // call to our local server api endpoint to get the first appointment data from C2
+    const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
+    axios
+      .get(getLDBFirstAppointmentDatasURL)
+      .then((firstAppointmentResponse) => {
+        // map in the first appointment data for each consultant, results will come in the same order as the request
+        firstAppointmentResponse.data.map(
+          (firstAppointment: any, index: number) =>
+            results[index]
+              ? (results[index].firstAppointment = firstAppointment)
+              : null
+        );
 
-              // update with the new data
-              setLoadingNextAppointmentText("");
-              setResults(results);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+        // update with the new data
+        setLoadingNextAppointmentText('');
+        setResults(results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log('router ready', searchParams.toString());
   }, [doctifyLoaded]);
-
 
   // gender
   const handleGenderOptions = (value: string) => {
@@ -962,60 +963,56 @@ export const Default = (props: StepProps): JSX.Element => {
                   ]}
                   resultsCount={total}
                 ></Filters>
-                <Container marginLeft="spacing-4">
-                  <Sorting
-                    options={[
-                      {
-                        id: 'relevance',
-                        defaultChecked: router.query.sortType === 'relevance',
-                        labelText: 'Most relevant',
-                        value: 'relevance',
-                      },
-                      {
-                        id: 'rating',
-                        defaultChecked: router.query.sortType === 'rating',
-                        labelText: 'Highest rated by patients',
-                        value: 'rating',
-                      },
-                      {
-                        id: 'nearest',
-                        defaultChecked: router.query.sortType === 'nearest',
-                        labelText: 'Nearest',
-                        value: 'nearest',
-                      },
-                    ]}
-                    onChange={(e) => {
-                      const target = e.target as HTMLInputElement;
+                <Sorting
+                  options={[
+                    {
+                      id: 'relevance',
+                      defaultChecked: router.query.sortType === 'relevance',
+                      labelText: 'Most relevant',
+                      value: 'relevance',
+                    },
+                    {
+                      id: 'rating',
+                      defaultChecked: router.query.sortType === 'rating',
+                      labelText: 'Highest rated by patients',
+                      value: 'rating',
+                    },
+                    {
+                      id: 'nearest',
+                      defaultChecked: router.query.sortType === 'nearest',
+                      labelText: 'Nearest',
+                      value: 'nearest',
+                    },
+                  ]}
+                  onChange={(e) => {
+                    const target = e.target as HTMLInputElement;
 
-                      if (target.checked) {
-                        const queryParams = {
-                          ...router.query,
-                          sortType: target.value,
-                          offset: 0,
-                        };
-                        if ('requestPath' in queryParams) {
-                          delete queryParams.requestPath;
-                        }
-                        router.push(
-                          {
-                            pathname: router.pathname,
-                            query: queryParams,
-                          },
-                          undefined,
-                          { shallow: true }
-                        );
+                    if (target.checked) {
+                      const queryParams = {
+                        ...router.query,
+                        sortType: target.value,
+                        offset: 0,
+                      };
+                      if ('requestPath' in queryParams) {
+                        delete queryParams.requestPath;
                       }
-                    }}
-                  />
-                </Container>
-                <Container marginLeft="spacing-4">
-                  <TextButton theme="dark">
-                    <button onClick={handleResetFilters}>
-                      Reset all
-                      <Icons iconName="iconReset" />
-                    </button>
-                  </TextButton>
-                </Container>
+                      router.push(
+                        {
+                          pathname: router.pathname,
+                          query: queryParams,
+                        },
+                        undefined,
+                        { shallow: true }
+                      );
+                    }
+                  }}
+                />
+                <TextButton theme="dark">
+                  <button onClick={handleResetFilters}>
+                    Reset all
+                    <Icons iconName="iconReset" />
+                  </button>
+                </TextButton>
               </ConsultantListHeaderFilters>
             </ConsultantListHeader>
             <ConsultantListHeaderTtitle>

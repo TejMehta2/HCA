@@ -283,7 +283,13 @@ export const Default = (props: StepProps): JSX.Element => {
                   {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
                 </Link>
                 {topSpecialty[0]?.name && (
-                  <Link href={`/Finder/{topSpecialty[0]?.name}`}>
+                  <Link
+                    href={`/Finder/Step-Consultant-Cards?search=${
+                      topSpecialty[0]?.name || ''
+                    }&keywordId=${
+                      topSpecialty[0]?.id || ''
+                    }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`}
+                  >
                     {topSpecialty[0]?.name}
                   </Link>
                 )}
