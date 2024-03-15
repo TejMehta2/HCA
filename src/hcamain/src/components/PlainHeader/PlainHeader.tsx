@@ -45,7 +45,9 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         <Text variation="subheading-1">
-          <JssText field={props.fields?.data?.currentItem?.heading?.jsonValue} />
+          <JssText
+            field={props.fields?.data?.currentItem?.heading?.jsonValue}
+          />
         </Text>
       }
       heading={

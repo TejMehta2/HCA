@@ -73,7 +73,9 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
   if (props.fields?.data?.item?.customFilters?.CustomFiltersList) {
     for (const filter of props.fields.data.item.customFilters
       .CustomFiltersList) {
-      filterList.push(filter.filter?.value + "=" + filter.filterValueString?.value);
+      filterList.push(
+        filter.filter?.value + '=' + filter.filterValueString?.value
+      );
     }
   }
 
