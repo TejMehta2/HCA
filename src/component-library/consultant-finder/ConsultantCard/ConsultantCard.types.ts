@@ -14,5 +14,6 @@ export interface ConsultantCardProps {
   doctifyLogo: ReactNode | JSX.Element;
   isLiveDiaryConsultant: boolean;
   firstAppointment: any;
+  nextAppointmentTitle: string;
   loadingNextAppointmentText: string;
 }
