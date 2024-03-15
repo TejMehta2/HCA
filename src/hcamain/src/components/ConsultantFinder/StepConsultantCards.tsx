@@ -16,28 +16,20 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import ConsultantCard from '@component-library/consultant-finder/ConsultantCard/ConsultantCard';
-import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import Pagination from '@component-library/core-components/Pagination/Pagination';
-import axios from 'axios';
+import axios, { CancelTokenSource } from 'axios';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Filters from '@component-library/site-components/Filters/Filters';
 import Search from '@component-library/consultant-finder/Search/SearchConsultantsList';
-import Tooltips from '@component-library/components/Tooltips/Tooltips';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
 import Loader from '@component-library/foundation/Loader/Loader';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
-import {
-  checkIfLiveBookingIsAvailable,
-  checkIfLiveBookingsIsAvailable,
-  getActiveConsultantSlugs,
-  getActiveLiveDiaryConsultantSlugs,
-} from 'lib/consultant-finder/API_HCA';
+import { getActiveLiveDiaryConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
 import ConsultantListHeaderSearch from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderSearch';
@@ -46,8 +38,6 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import ConsultantListHeaderTtitle from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderTitle';
 import { getInsuranceData } from 'lib/consultant-finder/API_Doctify';
-// import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
-//import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_C2';
 import RadioButtons from '@component-library/core-components/RadioButtons/RadioButtons';
 import RadioButton from '@component-library/core-components/RadioButton/RadioButton';
 import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
@@ -379,23 +369,19 @@ export const Default = (props: StepProps): JSX.Element => {
   const [selectedInsurer, setSelectedInsurer] = useState<number>(0);
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const initialOffset = router.query.offset ? Number(router.query.offset) : 0;
+  const [isChecked, setIsChecked] = useState(false);
+  const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
+  const currentPage = Math.ceil((initialOffset + 1) / 12);
   // console.log('offset query', router.query.offset);
   const [offset, setOffset] = useState(initialOffset);
-  const [isChecked, setIsChecked] = useState(false);
-  // console.log('queryParams', searchParams.toString());
-
-  const [checkedPractices, setCheckedPractices] = useState<string[]>([]);
-
-  const currentPage = Math.ceil((initialOffset + 1) / 12);
-  // console.log('current page', currentPage);
-
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
   const cardAvailableAppointmentLoadingText: string =
     props.fields.API_C2_FirstAppointment_LoadingMsg.value;
+  const [nextAptRequestToken, setNextAptRequestToken] =
+    useState<CancelTokenSource | null>(null);
   const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
     cardAvailableAppointmentLoadingText
   );
-  const [relevance, setRelevance] = useState('');
 
   // if there is no search string then use default params
   // if there are then use whatever
@@ -435,44 +421,53 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
-    // now make async client side call to find next appointments
-    // get the next available appointment details
-    // must pass gmc number to C2
-    const gmcArray = results.map(
-      (consultant: any) =>
-        consultant?.registrationBodies.filter(
-          (item: any) => item.name === 'General Medical Council'
-        )[0]?.registrationNumber
-    );
-    const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
+    console.log('next apt useEffect', doctifyLoaded);
+    // Check if we made a request
+    if (nextAptRequestToken) {
+      // Cancel the previous request before making a new request
+      nextAptRequestToken.cancel();
+      setNextAptRequestToken(null);
+    }
 
-    // call to our local server api endpoint to get the first appointment data from C2
-    const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
-    axios
-      .get(getLDBFirstAppointmentDatasURL)
-      .then((firstAppointmentResponse) => {
-        // map in the first appointment data for each consultant, results will come in the same order as the request
-        firstAppointmentResponse.data.map(
-          (firstAppointment: any, index: number) =>
-            results[index]
-              ? ((results[index] as any).firstAppointment = firstAppointment)
-              : null
-        );
+    if (doctifyLoaded) {
+      // now make async client side call to find next appointments
+      // get the next available appointment details
+      // must pass gmc number to C2
+      const gmcArray = results.map(
+        (consultant: any) =>
+          consultant?.registrationBodies.filter(
+            (item: any) => item.name === 'General Medical Council'
+          )[0]?.registrationNumber
+      );
+      const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
 
-        // update with the new data
-        setLoadingNextAppointmentText('');
-        setResults(results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log('router ready', searchParams.toString());
-  }, [
-    doctifyLoaded,
-    props?.fields?.API_C2_FirstAppointment_BaseURL?.value,
-    results,
-    searchParams,
-  ]);
+      // call to our local server api endpoint to get the first appointment data from C2
+      const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
+      const cancelToken = axios.CancelToken.source();
+      setNextAptRequestToken(cancelToken);
+      axios
+        .get(getLDBFirstAppointmentDatasURL, {
+          cancelToken: cancelToken.token,
+        })
+        .then((firstAppointmentResponse) => {
+          // map in the first appointment data for each consultant, results will come in the same order as the request
+          firstAppointmentResponse.data.map(
+            (firstAppointment: any, index: number) =>
+              results[index]
+                ? ((results[index] as any).firstAppointment = firstAppointment)
+                : null
+          );
+
+          // update with the new data
+          setLoadingNextAppointmentText('');
+          setResults(results);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [doctifyLoaded]);
 
   // gender
   const handleGenderOptions = (value: string) => {
@@ -680,7 +675,6 @@ export const Default = (props: StepProps): JSX.Element => {
     const baseURL = `https://api.doctify.com/api/hca/search?`;
     let requestURL: string;
     // console.log('URLprams', URLprams);
-
     // to remove
     if (URLprams.length > 0) {
       console.log('query params');
@@ -690,6 +684,10 @@ export const Default = (props: StepProps): JSX.Element => {
       requestURL = `${baseURL}${defaultParams}`;
     }
 
+    //reset the loading state before making a call to get the data,
+    //will cancel outstanding slow requests for the next appointment data
+    setDoctifyLoaded(false);
+    setLoadingNextAppointmentText('loading...');
     axios
       .get(requestURL)
       .then((resp) => {
@@ -719,7 +717,6 @@ export const Default = (props: StepProps): JSX.Element => {
             }
             // set the state
             setResults(resp.data.rows);
-            setDoctifyLoaded(true);
           }
         } else {
           setResults([]);
@@ -732,6 +729,10 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log(error);
         setLoading(false);
         setError(true);
+      })
+      .finally(() => {
+        console.log('set doctify loaded true');
+        setDoctifyLoaded(true);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query]);
@@ -1065,6 +1066,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     consultantsSlugs={consultantsSlugs}
                     isLiveDiaryConsultant={consultant?.isLiveDiaryConsultant}
                     firstAppointment={consultant?.firstAppointment}
+                    nextAppointmentTitle="Next appointment on"
                     loadingNextAppointmentText={loadingNextAppointmentText}
                   />
                 ))}
