@@ -132,10 +132,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             {!!card.articleType && (
               <Tags>
                 <a href="#">
-                  <JssText
-                    tag="p"
-                    field={card.articleType?.targetItem?.title}
-                  />
+                  <JssText field={card.articleType?.targetItem?.title} />
                 </a>
               </Tags>
             )}
