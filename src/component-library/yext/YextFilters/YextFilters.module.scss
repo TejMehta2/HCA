@@ -1,0 +1,20 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 $spacing-6;
+}
+
+.label {
+  display: flex;
+  @include apply-body-medium-extra-large;
+}
+
+.filters {
+  fieldset {
+    display: flex;
+    gap: $spacing-6;
+  }
+}
