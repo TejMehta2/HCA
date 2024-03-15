@@ -24,7 +24,7 @@ export const Default: StoryObj<typeof TextField> = {
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+        <div style={{ maxWidth: '56rem', margin: 'auto', padding: '1rem' }}>
           <Story />
         </div>
       </Themes>

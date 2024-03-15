@@ -96,22 +96,19 @@ const Sorting = (props: SortingProps): JSX.Element => {
         onChange?.(event as ChangeEvent<HTMLInputElement>);
       }}
     >
-      <div className={styles.desktop}>
+      <div
+        className={styles.desktop}
+        onMouseLeave={() => desktopDialogRef?.current?.close()}
+        onMouseEnter={() => desktopDialogRef?.current?.show()}
+      >
         <div className={styles.button}>
           <Button size={'large'} variation={'full'}>
-            <button
-              onClick={toggleDesktopModal}
-              onMouseEnter={() => desktopDialogRef?.current?.show()}
-              type="button"
-            >
+            <button onClick={toggleDesktopModal} type="button">
               {ctaContent}
             </button>
           </Button>
         </div>
-        <div
-          className={styles.modal}
-          onMouseLeave={() => desktopDialogRef?.current?.close()}
-        >
+        <div className={styles.modal}>
           <ModalDropdown ref={desktopDialogRef} defaultOpen={defaultOpen}>
             <div className={[styles.fields, styles[anchorDropdown]].join(' ')}>
               {labels}
@@ -127,7 +124,11 @@ const Sorting = (props: SortingProps): JSX.Element => {
             </button>
           </Button>
         </div>
-        <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>
+        <Modals
+          ref={mobileDialogRef}
+          defaultOpen={defaultOpen}
+          contentVariation="no-transition"
+        >
           <div className={styles.fieldset}>
             <div className={styles.legend}>
               <Text variation={'body-bold-extra-large'}>
