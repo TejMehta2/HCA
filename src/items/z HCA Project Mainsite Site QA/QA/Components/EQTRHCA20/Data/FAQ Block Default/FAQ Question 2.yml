@@ -2,7 +2,7 @@
 ID: "b4138f1d-2055-4638-b313-73b753aa3c1a"
 Parent: "4590ff80-a7c8-49f7-9c40-21b45d29e94e"
 Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Default/FAQ Question 2
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Default/FAQ Question 2"
 Languages:
 - Language: en
   Versions:

@@ -2,7 +2,7 @@
 ID: "1c56970f-97d5-4e02-b50c-8dab398b554a"
 Parent: "74909a97-bfbe-4644-a79a-ada490661382"
 Template: "d4d2e7ef-3717-4ff3-9d00-f1a2f97b99ca"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA93/Data/Patient Stories Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA93/Data/Patient Stories Search"
 Languages:
 - Language: en
   Versions:

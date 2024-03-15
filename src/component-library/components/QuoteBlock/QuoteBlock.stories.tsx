@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import Themes from '../../foundation/Themes/Themes';
 import { ThemesProps } from '../../foundation/Themes/Themes.types';
+import Text from '../../foundation/Text/Text';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof QuoteBlock> = {
@@ -45,8 +46,12 @@ const themes: ThemesProps['theme'][] = [
 
 export const Default: StoryObj<typeof QuoteBlock> = {
   args: {
-    children:
-      'The personal savings allowance enables most people to earn interest tax-free across various savings options.',
+    children: (
+      <Text variation="display-5">
+        &quot;The personal savings allowance enables most people to earn
+        interest tax-free across various savings options.&quot;
+      </Text>
+    ),
     author: {
       name: 'John Smith',
       image: (

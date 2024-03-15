@@ -2,7 +2,7 @@
 ID: "6641ff46-e749-46ca-876c-fa2aafe47c20"
 Parent: "4e8b791c-c7be-4193-a6d6-f079a1e76b1c"
 Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA89/Data/CTA Button 1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA89/Data/CTA Button 1"
 Languages:
 - Language: en
   Versions:
@@ -21,15 +21,15 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cf40c162-06bd-4f72-ae06-3b6f6249b1b8"
+      Value: "0da08f2d-449a-4e61-887e-53657f5dc5eb"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Learn more about &lt;b&gt;self-pay&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="" title="" linktype="internal" text="Learn more about &lt;b&gt;self-pay&lt;/b&gt;" url="/HCA/HCA-Main/Home/QA/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240304T102234Z
+      Value: 20240314T102617Z

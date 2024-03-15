@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Field,
+  Item,
   ImageField,
   Text as JssText,
   Link as JssLink,
@@ -22,7 +23,8 @@ type CTAIconFields = {
 type FilterOptionFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
-  filterValue?: { value?: string };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { jsonValue?: Item };
 };
 
 type LocationsFields = {

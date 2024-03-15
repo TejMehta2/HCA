@@ -2,7 +2,7 @@
 ID: "bb05713a-5668-4603-95b6-e480162ef6eb"
 Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Blog Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Blog Search"
 SharedFields:
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
@@ -28,9 +28,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240305T132317Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: Blog Search
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

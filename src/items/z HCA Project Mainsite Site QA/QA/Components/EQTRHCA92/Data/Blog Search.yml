@@ -2,7 +2,7 @@
 ID: "b91908a6-21e1-4e71-adbe-06fc3d1b4c77"
 Parent: "ebed4cab-7f63-4cd9-9bb0-3ab3fbf5890b"
 Template: "e3a4027c-5832-4980-8667-97f278244352"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA92/Data/Blog Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA92/Data/Blog Search"
 Languages:
 - Language: en
   Versions:

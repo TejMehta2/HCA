@@ -2,7 +2,7 @@
 ID: "0815a2bd-54ac-42f3-9cdc-aadc4c4a136c"
 Parent: "297f6ece-96b8-4760-ada4-b24ce3e6e0bf"
 Template: "b7dd721a-c2d4-4907-ba35-0baf272d7f9a"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA6/Data/Locations Search
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA6/Data/Locations Search"
 Languages:
 - Language: en
   Versions:

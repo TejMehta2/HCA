@@ -2,7 +2,7 @@
 ID: "a895f772-85ce-4447-a05b-3c30f52d2909"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA88"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -33,9 +33,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240119T174243Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: The Harley Street Clinic
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

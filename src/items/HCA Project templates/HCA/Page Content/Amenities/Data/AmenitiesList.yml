@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Page Content/Amenities/Data/AmenitiesList
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "{4F01608E-2FC1-4663-9853-0A78F8B7AECE}"
+  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/*[@@name='Data']/*[@@templateid='{EE68A558-8BC2-492E-A0F6-365B7F0F1DD9}']&IncludeTemplatesForSelection=Amenity"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist
+  Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 400
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "73b15aae-1a3a-4c6b-833b-9a1179ab993a"
+      Value: "e5f97f78-296e-4a5b-b38f-b19f069ab3b5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240104T163044Z
+      Value: 20240313T224232Z

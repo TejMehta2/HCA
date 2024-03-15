@@ -2,7 +2,7 @@
 ID: "2b4fb69b-ed9c-482d-adba-63b86c79f3a9"
 Parent: "2098fe5e-363e-4289-8190-8def61368475"
 Template: "714f5ce9-8158-4564-b41d-fd85de57d810"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA94/Data/Blog Related Articles
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA94/Data/Blog Related Articles"
 Languages:
 - Language: en
   Versions:
@@ -19,12 +19,17 @@ Languages:
       Value: "{576F23ED-76D7-43ED-9CF0-5F4E0BC7468B}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5b57e898-f32e-4796-aac1-9967744c9d1a"
+      Value: "40f12a50-5dad-4510-9a2a-768062ecd00e"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View &lt;b&gt;all&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{766DA7E9-2EFE-4132-A387-6B257A08FDC8}" />
     - ID: "ba790b8f-68f7-4ce5-9e69-21fe2a71b86e"
       Hint: Articles
       Value: |
         {471F79FD-281B-435A-90B8-6FB3B3F15886}
         {9D0A0D9E-B398-4004-9342-F3F589F2345E}
+        {CD58E2CC-A116-48E7-9CDA-56D62C48C80A}
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -35,10 +40,10 @@ Languages:
     - ID: "d52673ae-9c87-46bb-b783-e1108e663511"
       Hint: BlogUrl
       Value: |
-        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?serviceLineId=" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+        <link class="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" querystring="?serviceLineId=" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blog Search" />
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
       Value: Related article
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240310T053019Z
+      Value: 20240315T081307Z

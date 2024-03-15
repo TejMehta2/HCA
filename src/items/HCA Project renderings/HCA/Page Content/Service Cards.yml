@@ -25,6 +25,9 @@ SharedFields:
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{41DEAAD3-A6A4-4D3F-B57F-94FAD1FA3281}"
+- ID: "b4bbc0be-7619-4678-b2f7-947d84aa77a9"
+  Hint: Content Dependencies
+  Value: "{E548CD8C-BCF7-46F6-A576-B1DCFAD66062}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
   Value: "query:$site/*[@@name='Data']/*[@@templatename='Service Cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Service Cards Folder']"
@@ -81,14 +84,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "50c03b88-6948-4420-b189-8908e5e8cb72"
+      Value: "f310f2cb-bdf2-44cb-9dae-cabf093296ea"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240115T214048Z
+      Value: 20240313T170404Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

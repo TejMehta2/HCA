@@ -2,7 +2,7 @@
 ID: "1d96a92b-3e26-47e3-961b-0616642cab1a"
 Parent: "d87c3036-3788-420d-88ef-b8d4e63ca240"
 Template: "ecd9edc1-11c6-49c2-93f9-bd5cd46a7206"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units/Harley Street Clinic/Opening Hours
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units/Harley Street Clinic/Opening Hours"
 Languages:
 - Language: en
   Versions:

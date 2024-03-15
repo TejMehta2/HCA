@@ -41,6 +41,7 @@
 .slick-wrapper {
   & div[class*='slick-track'] {
     display: flex;
+    cursor: default;
   }
 
   & div[class*='slick-slide'] {

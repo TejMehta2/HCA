@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Item,
   Field,
   Text as JssText,
   RichText,
@@ -21,7 +22,10 @@ type FilterOptionsFields = {
 
 type SortOptionsFields = {
   fields?: {
+    DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 

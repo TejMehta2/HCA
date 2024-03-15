@@ -2,7 +2,7 @@
 ID: "63f75974-00ec-44d4-b2ef-194e9071daaa"
 Parent: "418861af-2d70-48dc-9858-a29561c35b78"
 Template: "1dd55312-6947-4ce8-8d9e-2bcc7b8c16e9"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Kidney Stones Clinic Telephone Numbers
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Kidney Stones Clinic Telephone Numbers"
 Languages:
 - Language: en
   Versions:

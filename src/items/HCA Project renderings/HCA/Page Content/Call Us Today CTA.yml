@@ -25,7 +25,7 @@ SharedFields:
               }
             }
           }
-          cTALink {
+          cTAText {
             jsonValue
           }
           contactUnit {
@@ -98,7 +98,6 @@ SharedFields:
         value
       }
     }
-    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
@@ -167,14 +166,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7d98c526-a497-4f58-be14-f8741f12b9b8"
+      Value: "937f4063-6019-429a-bf11-bdcfa14a7cbc"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240213T142712Z
+      Value: 20240313T215508Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

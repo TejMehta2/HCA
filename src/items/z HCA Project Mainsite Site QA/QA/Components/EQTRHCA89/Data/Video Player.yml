@@ -2,7 +2,7 @@
 ID: "989c70f5-4ee7-47b0-8e66-c913c1c1ddd2"
 Parent: "4e8b791c-c7be-4193-a6d6-f079a1e76b1c"
 Template: "46bf57e7-393b-4cb0-9353-05a2b5c5b0dc"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA89/Data/Video Player
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA89/Data/Video Player"
 Languages:
 - Language: en
   Versions:

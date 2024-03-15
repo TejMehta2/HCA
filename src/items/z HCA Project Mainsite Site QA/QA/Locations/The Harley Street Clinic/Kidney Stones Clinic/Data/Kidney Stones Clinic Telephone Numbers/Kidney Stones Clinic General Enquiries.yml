@@ -2,7 +2,7 @@
 ID: "c4c7330d-3d7e-4b63-a425-b709c94c0813"
 Parent: "58d6d025-e0d7-45ca-a6a9-132d7ec0a4c4"
 Template: "b1eba38c-c69b-4286-ad4c-96b5d17aafe8"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Kidney Stones Clinic Telephone Numbers/Kidney Stones Clinic General Enquiries
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Kidney Stones Clinic Telephone Numbers/Kidney Stones Clinic General Enquiries"
 Languages:
 - Language: en
   Versions:

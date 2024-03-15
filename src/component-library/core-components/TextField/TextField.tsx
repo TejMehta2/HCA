@@ -8,7 +8,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const {
     id,
     label,
-    tooltip,
+    helpText,
     type = 'text',
     required = false,
     errorMessage,
@@ -27,7 +27,6 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         <label htmlFor={id}>
           {label}
           {!required && ' (Optional)'}
-          {tooltip && tooltip}
         </label>
       )}
       <span className={styles.input}>
@@ -37,6 +36,14 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           <Icons iconName="iconCross" />
         </span>
       </span>
+
+      {helpText && (
+        <div className={styles['help-text']}>
+          <Text tag="small" variation="body-large">
+            {helpText}
+          </Text>
+        </div>
+      )}
 
       <div className={styles['error-message']}>
         <Icons iconName="iconWarning" />

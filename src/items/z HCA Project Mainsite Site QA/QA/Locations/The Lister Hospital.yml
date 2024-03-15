@@ -2,7 +2,7 @@
 ID: "0b5f2bf5-203f-4368-854d-a79b5f4b5b0f"
 Parent: "4de3bb9f-9b36-4b44-9db2-15283c093353"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Lister Hospital
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Lister Hospital"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -18,9 +18,6 @@ Languages:
     - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
       Hint: PostCode
       Value: W1G 8BJ
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: The Lister Hospital
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

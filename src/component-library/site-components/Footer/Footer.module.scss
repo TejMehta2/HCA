@@ -80,12 +80,8 @@
     margin-bottom: calc(#{$spacing-6} - #{px-to-rem(8)});
 
     svg {
-      width: px-to-rem(170);
-      height: px-to-rem(69);
-      @include media(screen-l) {
-        width: px-to-rem(156);
-        height: px-to-rem(63);
-      }
+      width: px-to-rem(195);
+      height: px-to-rem(55);
     }
     @include responsive-grid-span($default: 6, $breakpoint-l: 12);
   }

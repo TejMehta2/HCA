@@ -2,7 +2,7 @@
 ID: "2d99585c-c055-48c6-8771-f93ac1d279f3"
 Parent: "c9bf69cc-4370-435c-a0a1-7c956c945dd3"
 Template: "51c1608d-cbe4-498b-8127-4a3670950caf"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/TwitterXShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/TwitterXShare"
 Languages:
 - Language: en
   Versions:

@@ -30,7 +30,7 @@ type ModalContentFields = {
 
 interface Fields {
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTAText?: Field<string>;
   ModalContent?: ModalContentFields[];
 }
 
@@ -62,7 +62,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
     <>
       <Button size="large" variation="full">
         <button onClick={() => dialogRef?.current?.showModal()}>
-          {props?.fields?.CTALink?.value?.text && (
+          {props?.fields?.CTAText?.value && (
             <>
               <span
                 dangerouslySetInnerHTML={{
@@ -73,7 +73,7 @@ export const Default = (props: BookAnAppointmentCTAProps): JSX.Element => {
               <RichText
                 tag="span"
                 field={{
-                  value: props?.fields?.CTALink.value?.text,
+                  value: props?.fields?.CTAText.value,
                 }}
               />
             </>

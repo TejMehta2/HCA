@@ -6,13 +6,16 @@ const ModalDropdown = (
   props: ModalDropdownProps,
   ref: React.MutableRefObject<HTMLDialogElement | null>
 ): JSX.Element => {
-  const { children, defaultOpen = false } = props;
+  const { children, defaultOpen = false, contentVariation } = props;
   return (
     <dialog
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={styles.wrapper}
+      className={[
+        styles.wrapper,
+        contentVariation && styles[contentVariation],
+      ].join(' ')}
     >
       <div className={styles.content}>{children}</div>
     </dialog>

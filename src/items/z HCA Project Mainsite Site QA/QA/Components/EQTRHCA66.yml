@@ -2,7 +2,7 @@
 ID: "dbcfd90a-07b1-4bd9-bf01-6b36899fc9d5"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA66
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -71,9 +71,6 @@ Languages:
     - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
       Hint: PostCode
       Value: NW8 9LE
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA66
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
