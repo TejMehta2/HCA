@@ -64,10 +64,10 @@
 .logo {
   padding-top: px-to-rem(12);
   padding-bottom: px-to-rem(12);
+  display: flex;
 
   svg {
-    width: auto;
-    height: px-to-rem(50);
+    aspect-ratio: 160.5 / 45;
   }
 }
 
