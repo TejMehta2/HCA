@@ -104,16 +104,19 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             backgroundColour="green"
             icon={null}
             isShortInfo={true}
-            shortText=//"Next initial appointment on Fri, Oct 28"
-            {`${
-              props?.nextInitialAppointmentText?.value ||
-              'Next initial appointment'
-            } ${formatDateShort(
-              props?.firstAppointment?.initial_appointment
-            )}`}
+            shortText={
+              //"Next initial appointment on Fri, Oct 28"
+              `${
+                (props as any)?.nextInitialAppointmentText?.value ||
+                'Next initial appointment'
+              } ${formatDateShort(
+                props?.firstAppointment?.initial_appointment
+              )}`
+            }
           />
           <div className={styles.info}>
-            <Text tag="p" variation="body-small">Last updated: &nbsp;
+            <Text tag="p" variation="body-small">
+              Last updated: &nbsp;
               {props.loadingNextAppointmentText}
               {props.firstAppointment?.refreshedText}
             </Text>
@@ -121,8 +124,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
         </div>
       )}
       <div className={styles.buttons}>
-        {!props.hideAppointmentRequest && 
-	        !props.isLiveDiaryConsultant && (
+        {!props.hideAppointmentRequest && !props.isLiveDiaryConsultant && (
           <div className={styles.button}>
             <Button
               variation="full-dark"

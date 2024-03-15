@@ -360,7 +360,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   // console.log('insurers', insurersDoctify);
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  
+
   //console.log('consultantsSlugs', consultantsSlugs);
   console.log('consultant cards', props);
   // console.log('ss data', serverSideData);
@@ -390,8 +390,11 @@ export const Default = (props: StepProps): JSX.Element => {
   // console.log('current page', currentPage);
 
   const [doctifyLoaded, setDoctifyLoaded] = useState(false);
-  const cardAvailableAppointmentLoadingText:string = props.fields.API_C2_FirstAppointment_LoadingMsg.value; 
-  const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(cardAvailableAppointmentLoadingText);
+  const cardAvailableAppointmentLoadingText: string =
+    props.fields.API_C2_FirstAppointment_LoadingMsg.value;
+  const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(
+    cardAvailableAppointmentLoadingText
+  );
   const [relevance, setRelevance] = useState('');
 
   // if there is no search string then use default params
@@ -430,43 +433,46 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
-  
+
   useEffect(() => {
-          // now make async client side call to find next appointments
-          // get the next available appointment details
-          // must pass gmc number to C2
-          const gmcArray = results.map(
-            (consultant: any) =>
-              consultant?.registrationBodies.filter(
-                (item: any) => item.name === 'General Medical Council'
-              )[0]?.registrationNumber
-          );
-          const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
+    // now make async client side call to find next appointments
+    // get the next available appointment details
+    // must pass gmc number to C2
+    const gmcArray = results.map(
+      (consultant: any) =>
+        consultant?.registrationBodies.filter(
+          (item: any) => item.name === 'General Medical Council'
+        )[0]?.registrationNumber
+    );
+    const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
 
-          // call to our local server api endpoint to get the first appointment data from C2
-          const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
-          axios
-            .get(getLDBFirstAppointmentDatasURL)
-            .then((firstAppointmentResponse) => {
-              // map in the first appointment data for each consultant, results will come in the same order as the request
-              firstAppointmentResponse.data.map(
-                (firstAppointment: any, index: number) =>
-                results[index]
-                    ? (results[index].firstAppointment =
-                        firstAppointment)
-                    : null
-              );
+    // call to our local server api endpoint to get the first appointment data from C2
+    const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
+    axios
+      .get(getLDBFirstAppointmentDatasURL)
+      .then((firstAppointmentResponse) => {
+        // map in the first appointment data for each consultant, results will come in the same order as the request
+        firstAppointmentResponse.data.map(
+          (firstAppointment: any, index: number) =>
+            results[index]
+              ? ((results[index] as any).firstAppointment = firstAppointment)
+              : null
+        );
 
-              // update with the new data
-              setLoadingNextAppointmentText("");
-              setResults(results);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+        // update with the new data
+        setLoadingNextAppointmentText('');
+        setResults(results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log('router ready', searchParams.toString());
-  }, [doctifyLoaded]);
-
+  }, [
+    doctifyLoaded,
+    props?.fields?.API_C2_FirstAppointment_BaseURL?.value,
+    results,
+    searchParams,
+  ]);
 
   // gender
   const handleGenderOptions = (value: string) => {
@@ -731,11 +737,12 @@ export const Default = (props: StepProps): JSX.Element => {
   }, [router.isReady, router.query]);
 
   if (props.fields) {
+    const fields = props?.fields as any;
     return (
       <div id={id ? id : undefined}>
         <Breadcrumbs>
           <Link href="/Finder/Step-Intro">
-            {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
+            {fields?.Breadcrumb?.value || 'Consultant Finder'}
           </Link>
           <span>Results</span>
         </Breadcrumbs>
@@ -745,42 +752,38 @@ export const Default = (props: StepProps): JSX.Element => {
               <ConsultantListHeaderSearch>
                 <Search
                   placeholder={
-                    props?.fields?.SearchPlaceholderText?.value ||
+                    fields?.SearchPlaceholderText?.value ||
                     'Type in a service, condition, treatment...'
                   }
                   doctifyBaseURL={
-                    props?.fields?.API_Autocomplete_BaseURL?.value ||
+                    (props?.fields as any)?.API_Autocomplete_BaseURL?.value ||
                     'https://api.doctify.com/api/hca/search/autocomplete?search'
                   }
-                  limit={
-                    Number(props?.fields?.API_Autocomplete_Limit?.value) || 20
-                  }
+                  limit={Number(fields?.API_Autocomplete_Limit?.value) || 20}
                   noResultsMsg={
-                    props?.fields?.API_Autocomplete_NoResultsMsg?.value ||
+                    fields?.API_Autocomplete_NoResultsMsg?.value ||
                     'No matches found, please try typing something else.'
                   }
                   specialtyLabel={
-                    props?.fields?.SpecialitiesFilterHeaderText?.value ||
-                    'Specialties'
+                    fields.SpecialitiesFilterHeaderText?.value || 'Specialties'
                   }
                   conditionsProceduresLabel={
-                    props?.fields?.ConditionsTreatmentsFilterHeaderText
-                      ?.value || 'Conditions/ Procedures'
+                    fields.ConditionsTreatmentsFilterHeaderText?.value ||
+                    'Conditions/ Procedures'
                   }
                   setKeywordId={setKeywordId}
                   searchString={searchString}
                   setSearchString={setSearchString}
                   searchIcon={
-                    props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+                    fields?.SearchIcon?.fields?.SvgMarkup?.value || null
                   }
                   conditionsTreatmentsList={
-                    props?.fields?.ConditionsTreatmentsList ||
+                    fields?.ConditionsTreatmentsList ||
                     conditionsTreatmentsListMock
                   }
-                  specialitiesList={props?.fields?.SpecialitiesList || []}
+                  specialitiesList={fields?.SpecialitiesList || []}
                   loadingText={
-                    props?.fields?.API_Autocomplete_LoadingMsg?.value ||
-                    'Loading...'
+                    fields?.API_Autocomplete_LoadingMsg?.value || 'Loading...'
                   }
                 />
               </ConsultantListHeaderSearch>
@@ -939,6 +942,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.LanguageFilterOptions?.length >
                               0 && (
                               <select
+                                title="language selection"
                                 name="language"
                                 value={selectedLanguage}
                                 onChange={handleLanguageChange}
