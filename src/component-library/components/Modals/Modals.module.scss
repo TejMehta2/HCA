@@ -159,10 +159,3 @@
     top: auto;
   }
 }
-
-/* stylelint-disable no-descending-specificity */
-.no-transition {
-  .overlay {
-    transition: none;
-  }
-}

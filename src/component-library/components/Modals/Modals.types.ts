@@ -4,5 +4,5 @@ export interface ModalsProps {
   children?: ReactNode | JSX.Element;
   defaultOpen?: boolean;
   variation?: 'right' | 'full';
-  contentVariation?: 'filters' | 'sorting' | 'no-transition';
+  contentVariation?: 'filters' | 'sorting';
 }
