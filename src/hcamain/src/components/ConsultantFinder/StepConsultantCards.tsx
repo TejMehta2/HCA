@@ -32,7 +32,12 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
 import Loader from '@component-library/foundation/Loader/Loader';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
-import { getActiveConsultantSlugs } from 'lib/consultant-finder/API_HCA';
+import {
+  checkIfLiveBookingIsAvailable,
+  checkIfLiveBookingsIsAvailable,
+  getActiveConsultantSlugs,
+  getActiveLiveDiaryConsultantSlugs,
+} from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
 import ConsultantListHeaderSearch from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderSearch';
@@ -40,13 +45,16 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import ConsultantListHeaderTtitle from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderTitle';
+import { getInsuranceData } from 'lib/consultant-finder/API_Doctify';
 // import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
-import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_C2';
+//import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_C2';
 import RadioButtons from '@component-library/core-components/RadioButtons/RadioButtons';
 import RadioButton from '@component-library/core-components/RadioButton/RadioButton';
 import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 
 interface Fields {
+  API_C2_FirstAppointment_LoadingMsg: Field<string>;
+  API_C2_FirstAppointment_BaseURL: Field<string>;
   EnquireNowLink: LinkField;
   BookOnlineLink: LinkField;
   ViewProfileLink: LinkField;
@@ -71,7 +79,7 @@ type StepProps = {
 };
 interface ServerSideProps {
   Insurers: any;
-  LiveDiaryConsultantsSlugs: object[];
+  LiveDiaryConsultantsSlugs: string[];
 }
 
 /**
@@ -85,46 +93,8 @@ export const getStaticProps: GetStaticComponentProps = async (
   _layoutData,
   _context
 ) => {
-  // get filters data
-  const insurersURL = `https://api.doctify.com/api/hca/listing/insurers`;
-  const liveDiariesSlugURL =
-    'https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants';
-
-  const getData = async (requestURL: string) => {
-    const res = await fetch(requestURL, {
-      cache: 'force-cache',
-      next: { revalidate: 3600 },
-    });
-
-    let data: any = '';
-    try {
-      if (res.ok) {
-        data = await res.json();
-      } else {
-        data = {
-          errorCode: res.status,
-          errorText: res.statusText,
-        };
-        console.warn(
-          `Request failed with error ${data.errorCode}: ${data.errorText}`
-        );
-      }
-    } catch (e) {
-      const errorObj = {
-        errorCode: 999,
-        errorText: 'An unexpected error occurred. Please retry.',
-      };
-      data = errorObj;
-      console.warn(`Request failed with exception: ${e}`);
-    }
-
-    return data;
-  };
-
-  // to use
-  // const slugs = await checkIfLiveBookingIsAvailable();
-  const insurers = await getData(insurersURL);
-  const consultantsSlugsLD = await getData(liveDiariesSlugURL);
+  const insurers = await getInsuranceData(); // was getData(insurersURL);
+  const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
 
   const returnProps: ServerSideProps = {
     Insurers: insurers,
@@ -379,6 +349,7 @@ export const Default = (props: StepProps): JSX.Element => {
       },
     },
   ];
+
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -388,10 +359,9 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   // console.log('insurers', insurersDoctify);
-  const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs.map(
-    (item: any) => item.UniqueKey
-  );
-  // console.log('consultantsSlugs', consultantsSlugs);
+  const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
+  
+  //console.log('consultantsSlugs', consultantsSlugs);
   console.log('consultant cards', props);
   // console.log('ss data', serverSideData);
   const { searchString, setSearchString, setKeywordId, keywordId } = useContext(
@@ -419,8 +389,10 @@ export const Default = (props: StepProps): JSX.Element => {
   const currentPage = Math.ceil((initialOffset + 1) / 12);
   // console.log('current page', currentPage);
 
+  const [doctifyLoaded, setDoctifyLoaded] = useState(false);
+  const cardAvailableAppointmentLoadingText:string = props.fields.API_C2_FirstAppointment_LoadingMsg.value; 
+  const [loadingNextAppointmentText, setLoadingNextAppointmentText] = useState(cardAvailableAppointmentLoadingText);
   const [relevance, setRelevance] = useState('');
-  const test = true;
 
   // if there is no search string then use default params
   // if there are then use whatever
@@ -458,6 +430,43 @@ export const Default = (props: StepProps): JSX.Element => {
       { shallow: true }
     );
   };
+  
+  useEffect(() => {
+          // now make async client side call to find next appointments
+          // get the next available appointment details
+          // must pass gmc number to C2
+          const gmcArray = results.map(
+            (consultant: any) =>
+              consultant?.registrationBodies.filter(
+                (item: any) => item.name === 'General Medical Council'
+              )[0]?.registrationNumber
+          );
+          const gmcList = gmcArray.map((gmc: any) => gmc).join(',');
+
+          // call to our local server api endpoint to get the first appointment data from C2
+          const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${gmcList}`;
+          axios
+            .get(getLDBFirstAppointmentDatasURL)
+            .then((firstAppointmentResponse) => {
+              // map in the first appointment data for each consultant, results will come in the same order as the request
+              firstAppointmentResponse.data.map(
+                (firstAppointment: any, index: number) =>
+                results[index]
+                    ? (results[index].firstAppointment =
+                        firstAppointment)
+                    : null
+              );
+
+              // update with the new data
+              setLoadingNextAppointmentText("");
+              setResults(results);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+    console.log('router ready', searchParams.toString());
+  }, [doctifyLoaded]);
+
 
   // gender
   const handleGenderOptions = (value: string) => {
@@ -686,6 +695,26 @@ export const Default = (props: StepProps): JSX.Element => {
           const totalPages = Math.ceil(resp.data.total / 12);
           // console.log('total pages', totalPages);
           setTotalPages(totalPages);
+          if (resp.data.rows.length > 0) {
+            // fill data with is live diary flag
+            if (serverSideData?.LiveDiaryConsultantsSlugs && resp.data.rows) {
+              // load the is live diary flag from the server side data, based on the results from the doctify search
+              resp.data.rows.forEach(
+                (consultant: {
+                  isLiveDiaryConsultant: boolean;
+                  slug: string;
+                }) => {
+                  consultant.isLiveDiaryConsultant =
+                    serverSideData?.LiveDiaryConsultantsSlugs.indexOf(
+                      consultant?.slug
+                    ) > -1;
+                }
+              );
+            }
+            // set the state
+            setResults(resp.data.rows);
+            setDoctifyLoaded(true);
+          }
         } else {
           setResults([]);
           setTotalPages(0);
@@ -1030,6 +1059,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                     hideAppointmentRequest={consultant?.hideAppointmentRequest}
                     consultantsSlugs={consultantsSlugs}
+                    isLiveDiaryConsultant={consultant?.isLiveDiaryConsultant}
+                    firstAppointment={consultant?.firstAppointment}
+                    loadingNextAppointmentText={loadingNextAppointmentText}
                   />
                 ))}
             </ConsultantFinderResults>

@@ -160,9 +160,15 @@ function calcMinutesSinceUpdate(record: any) {
     const timeRefreshed = Date.parse(record?.refreshdate);
     const timeSpanRefreshed = Date.now() - timeRefreshed;
     const minsSinceRefreshed = Math.floor(timeSpanRefreshed / (1000 * 60));
-    record.refreshedText = `${minsSinceRefreshed} ${
-      minsSinceRefreshed > 1 ? 'minutes' : 'minute'
-    } ago`;
+    if (isNaN(minsSinceRefreshed)) {
+      record.refreshedText = 'unavailable';
+    } else if (minsSinceRefreshed == 0) {
+      record.refreshedText = 'now';
+    } else {
+      record.refreshedText = `${minsSinceRefreshed} ${
+        minsSinceRefreshed > 1 ? 'minutes' : 'minute'
+      } ago`;
+    }
   } catch (e) {
     console.warn(
       `issue doing time conversion in getLDBFirstAppointmentData exception:${e}`

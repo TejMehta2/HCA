@@ -10,6 +10,7 @@ import Icons from '../../foundation/Icons/Icons';
 import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
 import InfoBox from '../InfoBox/InfoBox';
+import { formatDateShort } from '../../utility-functions';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
   // get specialties
@@ -97,37 +98,44 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           </div>
         )}
       </div>
-      {props.consultantsSlugs.includes(props.slug) && (
+      {props.isLiveDiaryConsultant && (
         <div className={styles.appointment}>
           <InfoBox
             backgroundColour="green"
             icon={null}
             isShortInfo={true}
-            shortText="Next initial appointment on Fri, Oct 28"
+            shortText=//"Next initial appointment on Fri, Oct 28"
+            {`${
+              props?.nextInitialAppointmentText?.value ||
+              'Next initial appointment'
+            } ${formatDateShort(
+              props?.firstAppointment?.initial_appointment
+            )}`}
           />
           <div className={styles.info}>
-            <Text tag="p" variation="body-small">
-              Last checked 1 min ago
+            <Text tag="p" variation="body-small">Last updated: &nbsp;
+              {props.loadingNextAppointmentText}
+              {props.firstAppointment?.refreshedText}
             </Text>
           </div>
         </div>
       )}
       <div className={styles.buttons}>
-        {!props.hideAppointmentRequest &&
-          !props.consultantsSlugs.includes(props.slug) && (
-            <div className={styles.button}>
-              <Button
-                variation="full-dark"
-                size="large"
-                contentVariation="full-width"
-              >
-                <Link href="/test">
-                  <span>Enquire now</span>
-                </Link>
-              </Button>
-            </div>
-          )}
-        {props.consultantsSlugs.includes(props.slug) && (
+        {!props.hideAppointmentRequest && 
+	        !props.isLiveDiaryConsultant && (
+          <div className={styles.button}>
+            <Button
+              variation="full-dark"
+              size="large"
+              contentVariation="full-width"
+            >
+              <Link href="/test">
+                <span>Enquire now</span>
+              </Link>
+            </Button>
+          </div>
+        )}
+        {props.isLiveDiaryConsultant && (
           <div className={styles.button}>
             <Button
               variation="full-dark"
