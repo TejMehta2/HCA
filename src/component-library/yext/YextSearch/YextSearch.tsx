@@ -20,7 +20,9 @@ const YextSearch = (): JSX.Element => {
       <div className={styles.inner}>
         <YextProvider>
           <StyledYextSearchBar />
-          <YextTabs />
+          <div className={styles.tabs}>
+            <YextTabs />
+          </div>
           <div ref={resultsCountRef}></div>
           <ResultsCount />
           <UniversalResults

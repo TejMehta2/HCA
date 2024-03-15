@@ -89,4 +89,10 @@
       color: var(--tab-active-text);
     }
   }
+
+  &.scroll-max-large {
+    @include media(screen-l, max) {
+      overflow-x: auto;
+    }
+  }
 }
