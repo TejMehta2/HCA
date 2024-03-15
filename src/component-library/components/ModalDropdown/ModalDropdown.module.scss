@@ -29,4 +29,8 @@
   &::backdrop {
     display: none;
   }
+
+  &.no-transition {
+    transition: none;
+  }
 }
