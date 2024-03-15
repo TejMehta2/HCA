@@ -33,6 +33,8 @@ export type SortOptionsFields = Item & {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 
@@ -50,7 +52,7 @@ export interface Fields {
   SearchResultsText?: Field<string>;
   ResultsPerPage?: Field<number>;
   SearchBy?: SortOptionsFields[];
-  FilterBy?: FilterOptionFields[];
+  FilterBy?: SortOptionsFields[];
 }
 
 export type ServiceLinesSearchProps = {

@@ -18,11 +18,14 @@ Languages:
       Value: 20231204T091016Z
     - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
       Hint: ArticleType
-      Value: 
+      Value: "{20A7DE39-3A1F-4738-BBC2-2DF8C07C3989}"
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: The Harley Street Clinic
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -32,7 +35,7 @@ Languages:
       Value: Sed euismod congue vehicula. Quisque a eros ac est varius consectetur at eu mauris. Maecenas fermentum vel ex eu euismod. Aenean iaculis magna et lacus tincidunt vestibulum. Mauris ac dui venenatis erat tempor pellentesque. Duis ullamcorper rhoncus ullamcorper. Donec bibendum dictum mauris eu laoreet. Aenean feugiat mi sed lorem cursus molestie
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1d352610-6af0-43aa-8b1a-11e76fbf16e9"
+      Value: "6eaed2eb-fc6c-4ef9-a245-974b1a2b707b"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -40,13 +43,20 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240307T112807Z
+      Value: 20240315T111824Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retain CQC 'Outstanding' rating
     - ID: "e1b9a21b-a32e-429b-bbe5-047b323fd263"
       Hint: Date
       Value: 20231107T124200Z
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />

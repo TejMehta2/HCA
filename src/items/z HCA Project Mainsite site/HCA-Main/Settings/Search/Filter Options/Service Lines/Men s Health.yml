@@ -16,14 +16,17 @@ Languages:
       Value: Men’s Health
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a48c0351-f83a-4a66-8344-7afaa85ffbcb"
+      Value: "764609f3-ecab-477a-a26f-5bbf817c6c4b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240220T102610Z
+      Value: 20240315T122029Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: serviceline=Men’s Health
+      Value: serviceLineId
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: Men’s Health

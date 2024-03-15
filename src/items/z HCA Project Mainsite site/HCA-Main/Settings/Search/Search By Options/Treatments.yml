@@ -24,14 +24,17 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b261be94-2b5d-4a2b-b844-138a2c810d08"
+      Value: "8c4a618d-8b6d-4067-a72c-be010bcd6def"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T125546Z
+      Value: 20240315T120204Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: verticalKey=treatments
+      Value: verticalKey
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: treatments

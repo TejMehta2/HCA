@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Field,
   LinkField,
+  ImageField,
   Item,
   Text as JssText,
   RichText,
@@ -14,17 +15,20 @@ type CTAIconFields = {
 type SortOptionsFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
-  filterValue?: { jsonValue?: Item };
+  filterString?: { value?: string };
+  filterValueGuid?: { jsonValue?: Item };
 };
 
 type BlogPageFields = {
-  title?: { jsonValue?: Field<string> };
-  text?: { jsonValue?: Field<string> };
+  abstractTitle?: { jsonValue?: Field<string> };
+  abstractText?: { jsonValue?: Field<string> };
+  abstractImage?: { jsonValue?: ImageField };
   date?: { jsonValue?: Field<string> };
   articleType?: { targetItem?: ArticleTypeFields };
 };
 
 type ArticleTypeFields = {
+  id?: string;
   title?: { value?: string };
 };
 
@@ -83,6 +87,25 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props?.fields?.data?.item?.text?.jsonValue} />
       <br />
+      <span></span>
+      <br />
+      <ul>
+        {props.fields?.data?.item?.articles?.ArticlesList?.map(
+          (article, index) => (
+            <li key={index}>
+              <JssText field={article.abstractTitle?.jsonValue} />
+              <br />
+              <JssText field={article.abstractText?.jsonValue} />
+              <br />
+              <span>{article?.articleType?.targetItem?.id}</span>
+              <br />
+              <span>{article?.articleType?.targetItem?.title?.value}</span>
+              <br />
+            </li>
+          )
+        )}
+      </ul>
+      <br />
       <ul>
         {props.fields?.data?.item?.searchBy?.SearchByList?.map(
           (searchBy, index) => (
@@ -91,7 +114,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               <br />
               <JssText field={searchBy.filter} />
               <br />
-              <span>{searchBy?.filterValue?.jsonValue?.id}</span>
+              <span>{searchBy?.filterValueGuid?.jsonValue?.id}</span>
               <br />
             </li>
           )

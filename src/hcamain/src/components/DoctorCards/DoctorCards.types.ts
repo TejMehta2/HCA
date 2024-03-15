@@ -155,6 +155,7 @@ export type ServiceFields = {
 export type FiltersFields = {
   fields?: {
     Filter?: Field<string>;
+    FilterValueString?: Field<string>;
   };
 };
 

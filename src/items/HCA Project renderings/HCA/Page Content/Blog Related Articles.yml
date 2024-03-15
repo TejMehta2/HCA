@@ -40,18 +40,22 @@ SharedFields:
           articles {
             ArticlesList: targetItems {
               ... on BlogPage {
-                title {
-                  jsonValue
+                abstractTitle {
+                  value
                 }
-                text {
+                abstractText {
+                  value
+                }
+                abstractImage {
                   jsonValue
                 }
                 date {
-                  jsonValue
+                  value
                 }
                 articleType {
                   targetItem {
                     ... on Tag {
+                      id
                       title {
                         value
                       }
@@ -70,7 +74,10 @@ SharedFields:
                 filter {
                   value
                 }
-                filterValue {
+                filterValueString {
+                  value
+                }
+                filterValueGuid {
                   targetItem {
                     id
                   }
@@ -87,7 +94,10 @@ SharedFields:
                 filter {
                   value
                 }
-                filterValue {
+                filterValueString {
+                  value
+                }
+                filterValueGuid {
                   targetItem {
                     id
                   }
@@ -182,14 +192,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f5ea9ce2-7759-4539-a27c-03988d2ef8ee"
+      Value: "f8351e67-643d-488b-87f8-f4f6cbba8a0a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240310T055216Z
+      Value: 20240315T120747Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

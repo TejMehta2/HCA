@@ -1,8 +1,18 @@
 ﻿---
-ID: "60468383-ef7b-4714-9b6b-cbeeabf06c94"
-Parent: "774bb445-d793-4e8f-be34-81989dd8bd2d"
-Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
-Path: "/sitecore/content/HCA/HCA-Main/Settings/Search/Sort Options/Alphabetically Z to A"
+ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
+Parent: "d92b0e4d-8cf6-4b2a-bc0c-49b15cb9d495"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Foundation/Search/Filter Option/Filter/FilterValueGuid
+SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "query:$site"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Droptree
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -10,10 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240201T210029Z
-    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
-      Hint: DisplayName
-      Value: Alphabetically (Z to A)
+      Value: 20240217T202559Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -24,17 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c8c1f63d-f2f4-4e6d-8d5c-fd8f6152eed9"
+      Value: "7a82eea2-25dd-4bc4-8440-8d41eef25d9f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T120218Z
-    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
-      Hint: Filter
-      Value: sortOrder
-    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
-      Hint: FilterValueString
-      Value: AlphaDesc
+      Value: 20240305T131530Z

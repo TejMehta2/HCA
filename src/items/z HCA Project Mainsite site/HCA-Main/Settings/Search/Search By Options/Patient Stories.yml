@@ -16,14 +16,17 @@ Languages:
       Value: Patient Stories
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "58d6be0f-9029-4053-a6ad-5d2697749bba"
+      Value: "ef469b69-63a1-4495-858b-e3c1393ee799"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T114206Z
+      Value: 20240315T120154Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: verticalKey=patientstories
+      Value: verticalKey
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: patientstories

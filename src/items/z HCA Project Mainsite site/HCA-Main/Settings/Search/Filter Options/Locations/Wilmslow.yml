@@ -23,18 +23,21 @@ Languages:
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
-      Hint: FilterValue
-      Value: "{114F95BA-9012-4A8F-9507-426B2A948885}"
+      Hint: FilterValueGuid
+      Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a2f82f92-5759-45ef-9c6a-8fec7131ffdd"
+      Value: "d7bad5f4-fbee-416b-b5ff-36df27785e04"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240229T213300Z
+      Value: 20240315T122203Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: city=Wilmslow
+      Value: city
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: Wilmslow
