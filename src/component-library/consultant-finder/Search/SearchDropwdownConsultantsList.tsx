@@ -34,7 +34,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
     router.push(
       {
         pathname: router.pathname,
-        query: { search: name, keywordId: id, ...router.query },
+        query: { search: name, keywordId: id, ...router.query, offset: '0' },
       },
       undefined,
       { shallow: true }

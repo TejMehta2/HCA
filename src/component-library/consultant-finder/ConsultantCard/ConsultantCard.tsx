@@ -132,7 +132,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link href="/test">
-                <span>Enquire now</span>
+                <span>{props.enquireNowCTAText}</span>
               </Link>
             </Button>
           </div>
@@ -145,7 +145,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link href="/test">
-                <span>Book now</span>
+                <span>{props.bookNowCTAText}</span>
               </Link>
             </Button>
           </div>
@@ -167,7 +167,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
         <div className={styles['button-profile']}>
           <TextButton>
             <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
-              View profile
+              {props.viewProfileCTAText}
               <Icons iconName="iconArrowSmallRight" />
             </Link>
           </TextButton>

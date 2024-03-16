@@ -15,4 +15,7 @@ export interface ConsultantCardProps {
   isLiveDiaryConsultant: boolean;
   firstAppointment: any;
   loadingNextAppointmentText: string;
+  enquireNowCTAText: string;
+  bookNowCTAText: string;
+  viewProfileCTAText: string;
 }

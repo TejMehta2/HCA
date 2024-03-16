@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { MouseEventHandler, useId, useState, useContext } from 'react';
+import React, {
+  MouseEventHandler,
+  useId,
+  useState,
+  useContext,
+  FormEvent,
+} from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from './Search.module.scss';
@@ -25,9 +31,6 @@ const Search = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
 
-  // console.log('test', props.conditionsTreatmentsList);
-  // console.log('test specialities', props.specialitiesList);
-
   const transformedDataTreatments = props.conditionsTreatmentsList.map(
     (item: any) => ({
       ...transformFields(item.fields),
@@ -38,19 +41,17 @@ const Search = (props: SearchProps): JSX.Element => {
     ...transformFields(item.fields),
   }));
 
-  // console.log('transformed treatments', transformedDataTreatments);
-  // console.log('transformed specialty', transformedDataSpecialty);
-
   const newData: any = [
     ...transformedDataTreatments,
     ...transformedDataSpecialty,
   ];
-  // console.log(newData);
 
   // remove search and keywordId from URL
   const removeSearchKeywordIdQueries = () => {
     const { search, keywordId, ...queryParams } = router.query;
     console.log(search, keywordId);
+
+    queryParams.offset = '0';
 
     router.push(
       {
@@ -78,7 +79,6 @@ const Search = (props: SearchProps): JSX.Element => {
     cancelToken = axios.CancelToken.source();
 
     setData(newData);
-    // console.log('popular search data:', newData);
   };
 
   const handleClose = () => {
@@ -165,55 +165,60 @@ const Search = (props: SearchProps): JSX.Element => {
   };
 
   return (
-    <div className={styles['consultant-finder-search']}>
-      <div ref={ref} className={styles['consultant-finder-search-searchbar']}>
-        <label htmlFor={searchId}>
-          <input
-            id={searchId}
-            type="text"
-            placeholder={props.placeholder}
-            onChange={handleChange}
-            onClick={handleOnClick}
-            value={props.searchString}
-          />
-        </label>
-        {isComponentVisible && (
-          <SearchDdropdown
-            data={data}
-            loading={loading}
-            noResults={noResults}
-            noResultsMsg={props.noResultsMsg}
-            error={error}
-            setKeywordId={props.setKeywordId}
-            setSearchString={props.setSearchString}
-            setIsComponentVisible={setIsComponentVisible}
-            resultsIcon={props.searchIcon}
-            specialtyLabel={props.specialtyLabel}
-            conditionsProceduresLabel={props.conditionsProceduresLabel}
-            loadingText={props.loadingText}
-          />
-        )}
-        <span className={styles['consultant-finder-search-icon']}>
-          {props.searchIcon && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.searchIcon,
-              }}
-            ></span>
+    <form
+      autoComplete="off"
+      onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}
+    >
+      <div className={styles['consultant-finder-search']}>
+        <div ref={ref} className={styles['consultant-finder-search-searchbar']}>
+          <label htmlFor={searchId}>
+            <input
+              id={searchId}
+              type="text"
+              placeholder={props.placeholder}
+              onChange={handleChange}
+              onClick={handleOnClick}
+              value={props.searchString}
+            />
+          </label>
+          {isComponentVisible && (
+            <SearchDdropdown
+              data={data}
+              loading={loading}
+              noResults={noResults}
+              noResultsMsg={props.noResultsMsg}
+              error={error}
+              setKeywordId={props.setKeywordId}
+              setSearchString={props.setSearchString}
+              setIsComponentVisible={setIsComponentVisible}
+              resultsIcon={props.searchIcon}
+              specialtyLabel={props.specialtyLabel}
+              conditionsProceduresLabel={props.conditionsProceduresLabel}
+              loadingText={props.loadingText}
+            />
           )}
-          {!props.searchIcon && <Icons iconName="iconSearch" />}
-        </span>
-        <div className={styles['consultant-finder-search-close-btn']}>
-          {props.searchString !== '' && (
-            <TextLink>
-              <button onClick={handleClose}>
-                <Icons iconName="iconCross" />
-              </button>
-            </TextLink>
-          )}
+          <span className={styles['consultant-finder-search-icon']}>
+            {props.searchIcon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.searchIcon,
+                }}
+              ></span>
+            )}
+            {!props.searchIcon && <Icons iconName="iconSearch" />}
+          </span>
+          <div className={styles['consultant-finder-search-close-btn']}>
+            {props.searchString !== '' && (
+              <TextLink>
+                <button onClick={handleClose}>
+                  <Icons iconName="iconCross" />
+                </button>
+              </TextLink>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
