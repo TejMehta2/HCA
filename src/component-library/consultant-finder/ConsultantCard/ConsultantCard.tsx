@@ -98,31 +98,29 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           </div>
         )}
       </div>
-      {props.isLiveDiaryConsultant && (
-        <div className={styles.appointment}>
-          <InfoBox
-            backgroundColour="green"
-            icon={null}
-            isShortInfo={true}
-            shortText={
-              //"Next initial appointment on Fri, Oct 28"
-              `${
-                props?.nextInitialAppointmentText?.value ||
-                'Next initial appointment'
+      {props.isLiveDiaryConsultant &&
+        props.firstAppointment &&
+        props.firstAppointment?.refreshedText != 'unavailable' && (
+          <div className={styles.appointment}>
+            <InfoBox
+              backgroundColour="green"
+              icon={null}
+              isShortInfo={true}
+              shortText={`${
+                props.nextAppointmentTitle || 'Next appointment on'
               } ${formatDateShort(
-                props?.firstAppointment?.initial_appointment
-              )}`
-            }
-          />
-          <div className={styles.info}>
-            <Text tag="p" variation="body-small">
-              Last updated: &nbsp;
-              {props.loadingNextAppointmentText}
-              {props.firstAppointment?.refreshedText}
-            </Text>
+                props?.firstAppointment?.follow_appointment
+              )}`}
+            />
+            <div className={styles.info}>
+              <Text tag="p" variation="body-small">
+                Last updated: &nbsp;
+                {props.loadingNextAppointmentText}
+                {props.firstAppointment?.refreshedText}
+              </Text>
+            </div>
           </div>
-        </div>
-      )}
+        )}
       <div className={styles.buttons}>
         {!props.hideAppointmentRequest && !props.isLiveDiaryConsultant && (
           <div className={styles.button}>
