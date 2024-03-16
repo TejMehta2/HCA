@@ -5,11 +5,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSearchParams, usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import {
   GetStaticComponentProps,
   Image as JssImage,
-  Link as JssLink,
   ImageField,
   Field,
   LinkField,
@@ -27,7 +26,6 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import Search from '@component-library/consultant-finder/Search/SearchConsultantsList';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
-import Loader from '@component-library/foundation/Loader/Loader';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import { getActiveLiveDiaryConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
@@ -162,9 +160,6 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
-
-  // if there is no search string then use default params
-  // if there are then use whatever
 
   // hospitals
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -522,7 +517,6 @@ export const Default = (props: StepProps): JSX.Element => {
   }, [router.isReady, router.query]);
 
   if (props.fields) {
-    const fields = props?.fields as any;
     return (
       <div id={id ? id : undefined}>
         {router.isReady && !pageNotFound && (
