@@ -19,4 +19,8 @@ export interface ConsultantCardProps {
   enquireNowCTAText: string;
   bookNowCTAText: string;
   viewProfileCTAText: string;
+  showMoreText: string;
+  showLessText: string;
+  iconShowMore?: ReactNode | JSX.Element;
+  iconShowLess?: ReactNode | JSX.Element;
 }

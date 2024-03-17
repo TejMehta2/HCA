@@ -22,7 +22,7 @@ import axios, { CancelTokenSource } from 'axios';
 import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
-import Filters from '@component-library/site-components/Filters/Filters';
+import Filters from '@component-library/consultant-finder/FiltersCF/FiltersCF';
 import Search from '@component-library/consultant-finder/Search/SearchConsultantsList';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
@@ -312,7 +312,6 @@ export const Default = (props: StepProps): JSX.Element => {
 
   // reset all filters
   const handleResetFilters = () => {
-    console.log('reset');
     const {
       offset,
       sortBy,
@@ -419,6 +418,8 @@ export const Default = (props: StepProps): JSX.Element => {
     const genderQueryParam = router.query.gender;
     if (genderQueryParam) {
       setCheckedOptionGender(genderQueryParam.toString());
+    } else {
+      setCheckedOptionGender('');
     }
 
     // insurer
@@ -860,7 +861,11 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></LoaderCF>
               )}
               {!loading && !error && results.length === 0 && (
-                <div>No results</div>
+                <Container marginTop="spacing-5" marginBottom="spacing-6">
+                  <Text tag="p" variation="body-small">
+                    No results
+                  </Text>
+                </Container>
               )}
               <ConsultantFinderResults>
                 {!loading &&
@@ -903,6 +908,10 @@ export const Default = (props: StepProps): JSX.Element => {
                         'View profile'
                       }
                       nextAppointmentTitle={''}
+                      showMoreText={'Show More'}
+                      showLessText={'Show Less'}
+                      iconShowMore={null}
+                      iconShowLess={null}
                     />
                   ))}
               </ConsultantFinderResults>

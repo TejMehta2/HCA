@@ -10,6 +10,7 @@ import Icons from '../../foundation/Icons/Icons';
 import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
 import InfoBox from '../InfoBox/InfoBox';
+import ReadMore from '../ReadMore/ReadMore';
 import { formatDateShort } from '../../utility-functions';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
@@ -72,14 +73,23 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               </Text>
             </div>
             <div className={styles['list-content']}>
-              {props.hospitals.map(
-                (practice: any) =>
-                  practice.slug !== 'video-consultation' && (
-                    <Text key={practice.id} tag="p" variation="body-small">
-                      {practice.name}
-                    </Text>
-                  )
-              )}
+              <ReadMore
+                showMoreText={props.showMoreText}
+                showLessText={props.showLessText}
+                iconShowLess={props.iconShowLess}
+                iconShowMore={props.iconShowMore}
+                tag="p"
+                maxContent={3}
+              >
+                {props.hospitals.map(
+                  (practice: any) =>
+                    practice.slug !== 'video-consultation' && (
+                      <Text key={practice.id} tag="p" variation="body-small">
+                        {practice.name}
+                      </Text>
+                    )
+                )}
+              </ReadMore>
             </div>
           </div>
         )}

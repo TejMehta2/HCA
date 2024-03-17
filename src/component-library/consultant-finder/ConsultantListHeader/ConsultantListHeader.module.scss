@@ -3,6 +3,7 @@
 
 .consultant-list-header {
   display: flex;
+
   // justify-content: flex-start;
   align-items: center;
   margin: $spacing-2 $spacing-14;
@@ -29,9 +30,8 @@
 
   &-filters {
     display: flex;
-    align-items: center;
+    place-items: center flex-start;
     flex-direction: column;
-    justify-items: flex-start;
     width: 100%;
 
     @include media(screen-m) {
