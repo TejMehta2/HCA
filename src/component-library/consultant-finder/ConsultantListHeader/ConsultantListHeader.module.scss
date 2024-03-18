@@ -1,0 +1,77 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-list-header {
+  display: flex;
+
+  // justify-content: flex-start;
+  align-items: center;
+  margin: $spacing-2 $spacing-14;
+  flex-direction: column;
+
+  @include media(screen-l) {
+    flex-direction: row;
+  }
+
+  &-search {
+    display: flex;
+    flex: inherit;
+    width: 100%;
+    margin-right: $spacing-2;
+
+    form {
+      width: 100%;
+    }
+
+    @include media(screen-m) {
+      flex: 1;
+    }
+  }
+
+  &-filters {
+    display: flex;
+    place-items: center flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+
+    @include media(screen-l) {
+      width: inherit;
+    }
+
+    button {
+      margin-bottom: $spacing-2;
+
+      @include media(screen-m) {
+        margin: 0;
+      }
+    }
+
+    & > div {
+      display: block;
+      width: 100%;
+      flex: inherit;
+      @include media(screen-m) {
+        display: flex;
+        width: fit-content;
+      }
+    }
+
+    & > div:nth-of-type(2) {
+      &:nth-of-type(2) {
+        margin: 0;
+
+        @include media(screen-m) {
+          margin: 0 $spacing-2;
+        }
+      }
+    }
+  }
+}
+
+.consultant-list-header-title {
+  margin: $spacing-7 $spacing-14;
+}
