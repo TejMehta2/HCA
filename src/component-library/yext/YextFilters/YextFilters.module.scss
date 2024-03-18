@@ -3,6 +3,8 @@
 
 .label {
   display: flex;
+  color: var(--text);
+
   @include apply-body-bold-extra-large;
 
   @include media(screen-l) {
