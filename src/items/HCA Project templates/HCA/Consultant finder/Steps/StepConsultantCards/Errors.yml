@@ -1,18 +1,12 @@
 ﻿---
-ID: "86fbdfcf-ecab-496a-89d8-322d5ee36fba"
-Parent: "e4b4c5f6-6fb1-480f-95d1-bf86b39891d8"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_Insurers/Insurance API Details/API_Insurance_Limit
+ID: "2bfcf5d4-b37f-45bf-9b54-9fcb6ad6836f"
+Parent: "bdffd922-d3e5-482d-8d97-36b861614923"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards/Errors
 SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Integer
-- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
-  Hint: Default value
-  Value: 20
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 700
 Languages:
 - Language: en
   Versions:
@@ -20,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240125T155353Z
+      Value: 20240318T110210Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +25,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "434b49e2-cb9f-4dd2-aa66-d8d558fb3f5f"
+      Value: "ebe9fff8-4b6d-4179-8a2e-15a9a01e1927"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240215T132730Z
+      Value: 20240318T110937Z

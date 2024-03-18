@@ -7,6 +7,10 @@ SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Image
+- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
+  Hint: Default value
+  Value: |
+    <image width="340" height="340" alt="Profile Image" src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/1f9338a55c1641f4afee80644a37744c?v=9eddbedb" stylelabs-content-id="219785" stylelabs-content-type="Image" thumbnailsrc="" />
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 2100
@@ -28,11 +32,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5a67538d-375b-4353-a8a2-89c92eb14c3a"
+      Value: "6fe9cac6-385a-4194-b483-4c1fe08809f1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240304T161747Z
+      Value: 20240313T053534Z
