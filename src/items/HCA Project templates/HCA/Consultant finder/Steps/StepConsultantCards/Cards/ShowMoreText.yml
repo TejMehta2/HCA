@@ -1,21 +1,18 @@
 ﻿---
-ID: "a2df356e-ccc2-4c8d-9215-174ad15502be"
-Parent: "e4b4c5f6-6fb1-480f-95d1-bf86b39891d8"
+ID: "9a86ad60-9259-4a54-a72a-308a6dbcf460"
+Parent: "1f5e3ef8-842e-47e5-9259-87aabce1642b"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_Insurers/Insurance API Details/API_Insurance_BaseURL
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards/Cards/ShowMoreText
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: 
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
   Hint: Default value
-  Value: "https://api.doctify.com/api/hca/listing/insurers"
+  Value: Show More
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 1500
 Languages:
 - Language: en
   Versions:
@@ -23,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240125T155304Z
+      Value: 20240318T110514Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -34,11 +31,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c6ec5b94-b228-4a0a-8e5f-8ae2b994f268"
+      Value: "e9106cfe-b273-4b7c-a445-911ef08ab8a0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240229T161307Z
+      Value: 20240318T110936Z
