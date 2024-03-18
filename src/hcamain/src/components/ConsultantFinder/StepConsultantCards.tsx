@@ -32,7 +32,6 @@ import ConsultantListHeader from '@component-library/consultant-finder/Consultan
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
 import ConsultantListHeaderSearch from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderSearch';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import ConsultantListHeaderTtitle from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderTitle';
 import { getInsuranceData } from 'lib/consultant-finder/API_Doctify';
@@ -83,6 +82,24 @@ interface Fields {
   API_DoctifySearch_Limit: Field<string>;
   API_DoctifySearch_DefaultParams: Field<string>;
   API_DoctifySearch_BaseURL: Field<string>;
+  API_Autocomplete_BaseURL: Field<string>;
+  API_Autocomplete_Limit: Field<string>;
+  API_Autocomplete_LoadingMsg: Field<string>;
+  API_Autocomplete_NoResultsMsg: Field<string>;
+  ConsultantFinderNodeText: Field<string>;
+  ResultsNodeText: Field<string>;
+  ShowMoreText: Field<string>;
+  ShowLessText: Field<string>;
+  ShowLessIcon: any;
+  ShowMoreIcon: any;
+  PracticesTitle: Field<string>;
+  TreatmentsTitle: Field<string>;
+  NextAppointmentOnText: Field<string>;
+  LastUpdatedText: Field<string>;
+  InsurersFilterTitle: Field<string>;
+  PhoneNumberHref: Field<string>;
+  CallToBookButtonText: Field<string>;
+  CallToBookIcon: any;
 }
 
 type StepProps = {
@@ -129,6 +146,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
+
   const insurersDoctify = serverSideData?.Insurers.sort((a: any, b: any) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
@@ -517,6 +535,14 @@ export const Default = (props: StepProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query]);
 
+  // if (
+  //   !serverSideData ||
+  //   !serverSideData.Insurers ||
+  //   !serverSideData.LiveDiaryConsultantsSlugs
+  // ) {
+  //   return <div>Data is missing, please retry later</div>;
+  // }
+
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
@@ -524,9 +550,10 @@ export const Default = (props: StepProps): JSX.Element => {
           <>
             <Breadcrumbs>
               <Link href="/Finder/Step-Intro">
-                {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
+                {props?.fields?.ConsultantFinderNodeText?.value ||
+                  'Consultant Finder'}
               </Link>
-              <span>Results</span>
+              <span>{props?.fields?.ResultsNodeText?.value || 'Results'}</span>
             </Breadcrumbs>
             <div>
               <ConsultantListHeader>
@@ -579,6 +606,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         title:
                           props?.fields?.LocationFilterTitle?.value ||
                           'Locations',
+                        contentVariation: 'filters',
                         children: (
                           <div>
                             {props?.fields?.LocationFilterOptions &&
@@ -605,6 +633,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         title:
                           props?.fields?.VideoConsultationFilterTitle?.value ||
                           'Video Consultation',
+                        contentVariation: 'filters',
                         children: (
                           <div>
                             <Checkbox
@@ -648,6 +677,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       {
                         title:
                           props?.fields?.GenderFilterTitle?.value || 'Gender',
+                        contentVariation: 'filters',
                         children: (
                           <div>
                             {props?.fields?.GenderFilterOptions && (
@@ -683,8 +713,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       },
                       {
                         title:
-                          props?.fields?.ConditionsTreatmentsFilterHeaderText
-                            ?.value || 'Cover for treatment or procedure',
+                          props?.fields?.CoverForTreatmentFilterTitle?.value ||
+                          'Cover for treatment or procedure',
+                        contentVariation: 'filters',
                         children: (
                           <div>
                             <RadioButtons>
@@ -713,7 +744,8 @@ export const Default = (props: StepProps): JSX.Element => {
                               marginBottom="spacing-2"
                             >
                               <Text tag="h3" variation="body-bold-extra-large">
-                                Insurers available
+                                {props?.fields?.InsurersFilterTitle?.value ||
+                                  'Insurers available'}
                               </Text>
                             </Container>
                             {insurersDoctify && (
@@ -747,6 +779,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         title:
                           props?.fields?.LanguagesFilterOptionTitle?.value ||
                           'Languages',
+                        contentVariation: 'filters',
                         children: (
                           <div>
                             {props?.fields?.LanguageFilterOptions &&
@@ -833,14 +866,13 @@ export const Default = (props: StepProps): JSX.Element => {
                   <TextButton theme="dark">
                     <button onClick={handleResetFilters}>
                       {props?.fields?.ResetAllText?.value || 'Reset all'}
-                      {/* <span
-      dangerouslySetInnerHTML={{
-        __html:
-          props?.fields?.ResetAllIcon?.fields?.SvgMarkup
-            ?.value || '',
-      }}
-    /> */}
-                      <Icons iconName="iconReset" />
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            props?.fields?.ResetAllIcon?.fields?.SvgMarkup
+                              ?.value || '',
+                        }}
+                      />
                     </button>
                   </TextButton>
                 </ConsultantListHeaderFilters>
@@ -855,7 +887,7 @@ export const Default = (props: StepProps): JSX.Element => {
               {loading && (
                 <LoaderCF
                   loadingMsg={
-                    props.fields.API_DoctifySearch_LoadingMsg.value ||
+                    props?.fields?.API_DoctifySearch_LoadingMsg?.value ||
                     'Loading....'
                   }
                 ></LoaderCF>
@@ -863,7 +895,8 @@ export const Default = (props: StepProps): JSX.Element => {
               {!loading && !error && results.length === 0 && (
                 <Container marginTop="spacing-5" marginBottom="spacing-6">
                   <Text tag="p" variation="body-small">
-                    No results
+                    {props?.fields?.API_DoctifySearch_NoResultsMsg?.value ||
+                      'No results'}
                   </Text>
                 </Container>
               )}
@@ -907,11 +940,44 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.ViewProfileLink?.value?.text ||
                         'View profile'
                       }
-                      nextAppointmentTitle={''}
-                      showMoreText={'Show More'}
-                      showLessText={'Show Less'}
-                      iconShowMore={null}
-                      iconShowLess={null}
+                      nextAppointmentTitle={
+                        props?.fields?.NextAppointmentOnText?.value ||
+                        'Next appointment on'
+                      }
+                      lastUpdatedText={
+                        props?.fields?.LastUpdatedText?.value || 'Last checked:'
+                      }
+                      showMoreText={
+                        props?.fields?.ShowMoreText?.value || 'Show More'
+                      }
+                      showLessText={
+                        props?.fields?.ShowLessText?.value || 'Show Less'
+                      }
+                      iconShowMore={
+                        props?.fields?.ShowMoreIcon?.fields?.SvgMarkup?.value ||
+                        null
+                      }
+                      iconShowLess={
+                        props?.fields?.ShowLessIcon?.fields?.SvgMarkup?.value ||
+                        null
+                      }
+                      practicesTitle={
+                        props?.fields?.PracticesTitle?.value || 'Practices'
+                      }
+                      treatmentsTitle={
+                        props?.fields?.TreatmentsTitle?.value || 'Treatments'
+                      }
+                      phoneNumberHref={
+                        props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                      }
+                      callToBookButtonText={
+                        props?.fields?.CallToBookButtonText?.value ||
+                        'Call to book'
+                      }
+                      callToBookButtonIcon={
+                        props?.fields?.CallToBookIcon?.fields?.SvgMarkup
+                          ?.value || null
+                      }
                     />
                   ))}
               </ConsultantFinderResults>

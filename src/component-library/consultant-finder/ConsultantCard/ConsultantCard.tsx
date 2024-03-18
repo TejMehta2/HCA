@@ -69,7 +69,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           <div className={styles['list']}>
             <div className={styles['list-title']}>
               <Text tag="h3" variation="body-medium-small">
-                Practices
+                {props.practicesTitle}
               </Text>
             </div>
             <div className={styles['list-content']}>
@@ -97,7 +97,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           <div className={styles['list']}>
             <div className={styles['list-title']}>
               <Text tag="h3" variation="body-medium-small">
-                Treatments
+                {props.treatmentsTitle}
               </Text>
             </div>
             <div className={styles['list-content']}>
@@ -124,7 +124,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             />
             <div className={styles.info}>
               <Text tag="p" variation="body-small">
-                Last updated: &nbsp;
+                {props.lastUpdatedText} &nbsp;
                 {props.loadingNextAppointmentText}
                 {props.firstAppointment?.refreshedText}
               </Text>
@@ -161,15 +161,24 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
         <div className={styles.button}>
           <Button
             variation="outline"
-            size="large"
+            size="small"
             contentVariation="full-width"
           >
-            <Link href="/test">
-              <span>
-                <Icons iconName="iconPhone" />
-              </span>
-              <span>Call to book</span>
-            </Link>
+            <a href={`tel:${props.phoneNumberHref}`}>
+              {props.callToBookButtonIcon && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.callToBookButtonIcon,
+                  }}
+                ></span>
+              )}
+              {!props.callToBookButtonIcon && (
+                <span>
+                  <Icons iconName="iconPhone" />
+                </span>
+              )}
+              <span>{props.callToBookButtonText}</span>
+            </a>
           </Button>
         </div>
         <div className={styles['button-profile']}>

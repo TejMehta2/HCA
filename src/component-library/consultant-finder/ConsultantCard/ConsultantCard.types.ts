@@ -15,6 +15,7 @@ export interface ConsultantCardProps {
   isLiveDiaryConsultant: boolean;
   firstAppointment: any;
   nextAppointmentTitle: string;
+  lastUpdatedText: string;
   loadingNextAppointmentText: string;
   enquireNowCTAText: string;
   bookNowCTAText: string;
@@ -23,4 +24,9 @@ export interface ConsultantCardProps {
   showLessText: string;
   iconShowMore?: ReactNode | JSX.Element;
   iconShowLess?: ReactNode | JSX.Element;
+  practicesTitle: string;
+  treatmentsTitle: string;
+  phoneNumberHref: string;
+  callToBookButtonText: string;
+  callToBookButtonIcon: string;
 }
