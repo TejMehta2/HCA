@@ -133,7 +133,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 </a>
               </Text>
             )}
-            <Text variation="body-large">
+            <Text tag="span" variation="body-large">
               <JssRichText field={card.abstractText} />
             </Text>
             {!!card.articleType && (
