@@ -29,10 +29,10 @@ type SortOptionsFields = {
 };
 
 type BlogPageFields = {
-  abstractTitle?: { jsonValue?: Field<string> };
-  abstractText?: { jsonValue?: Field<string> };
-  abstractImage?: { jsonValue?: ImageField };
-  date?: { jsonValue?: Field<string> };
+  abstractTitle?: Field<string>;
+  abstractText?: Field<string>;
+  abstractImage?: { jsonValue: ImageField };
+  date?: Field<string>;
   articleType?: { targetItem?: ArticleTypeFields };
 };
 
@@ -106,11 +106,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             <JssLink
               field={props.fields?.data?.item?.blogUrl?.jsonValue?.value}
             >
-              {props.fields?.data?.item?.blogUrl?.jsonValue?.value?.href && (
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <span
                   dangerouslySetInnerHTML={{
                     __html:
-                      props.fields?.data?.item?.blogUrl?.jsonValue?.value?.href,
+                      props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
                   }}
                 ></span>
               )}
@@ -121,17 +121,20 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
     >
       {props.fields?.data?.item?.articles?.ArticlesList?.map((card, index) => {
+        //console.log(card);
         return (
           <CardBlog key={index}>
-            {/* <JssImage field={card.fields.Image} /> */}
-            <JssDate field={card.date?.jsonValue} />
-            <Text tag={'h3'} variation={'heading-2'}>
-              <a href="#">
-                <JssText field={card.title?.jsonValue} />
-              </a>
-            </Text>
-            <Text tag={'p'} variation={'body-large'}>
-              <JssRichText tag="span" field={card.text?.jsonValue} />
+            <JssImage field={card.abstractImage?.jsonValue} />
+            <JssDate field={card.date} />
+            {card.abstractTitle && (
+              <Text tag="h3" variation="heading-2">
+                <a href="#">
+                  <JssText field={card.abstractTitle} />
+                </a>
+              </Text>
+            )}
+            <Text variation="body-large">
+              <JssRichText field={card.abstractText} />
             </Text>
             {!!card.articleType && (
               <Tags>
