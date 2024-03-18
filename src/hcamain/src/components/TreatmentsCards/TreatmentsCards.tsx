@@ -14,7 +14,7 @@ type CTAIconFields = {
 type TreatmentsFields = {
   abstractTitle?: { value?: Field<string> };
   abstractText?: { value?: Field<string> };
-  abstractImage?: { value?: ImageField };
+  abstractImage?: { jsonValue?: ImageField };
   title?: { value?: Field<string> };
   text?: { value?: Field<string> };
   image?: { jsonValue?: ImageField };
@@ -80,7 +80,7 @@ export const WithImage = (props: TreatmentsCardsProps): JSX.Element => {
         {props.fields?.data?.item?.treatments?.TreatmentsList?.map(
           (treatment, index) => (
             <li key={index}>
-              <JssText field={treatment.abstractTitle?.value?.value} />
+              <JssText field={treatment?.abstractTitle?.value} />
               <br />
               <JssText field={treatment.title?.value} />
               <br />
@@ -95,9 +95,9 @@ export const WithImage = (props: TreatmentsCardsProps): JSX.Element => {
         {props.fields?.data?.contextItem?.treatments?.TreatmentsList?.map(
           (treatment, index) => (
             <li key={index}>
-               <JssText field={treatment.abstractTitle?.value} />
+              <JssText field={treatment.abstractTitle?.value} />
               <br />
-              <JssText field={treatment.title?.value} />
+              <JssText field={treatment.abstractTitle?.value} />
               <br />
               <JssText field={treatment.abstractText?.value} />
               <br />
