@@ -1,0 +1,23 @@
+﻿---
+ID: "cd79e921-e31c-45e2-b8f0-7455a750c088"
+Parent: "eb6d0a6f-6cbd-40f1-8366-891c0d45a55b"
+Template: "2491bc05-9a98-40e7-8cc5-106c986b7c6a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66/Data/Hero Location Details"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240224T132523Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e49cf946-c0a4-4825-b3d5-fbf105e6e69b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240224T132523Z

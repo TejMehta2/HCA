@@ -1,0 +1,41 @@
+﻿---
+ID: "05320d7a-9d94-46a1-826c-9079a4906370"
+Parent: "cbb046fc-ef9c-4a8c-a3bd-d9514d28f97e"
+Template: "feaa953e-fedc-4191-a1c0-36992f53d08a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA46/Page Data/Content Carousel/Content Card 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T083622Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "57f21df8-fa55-4267-8bb7-743b504d1ddd"
+      Hint: Title
+      Value: How to plan your visit 2
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "210c44b1-c59d-408d-88ae-8b65480bd1cc"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "ce8136f4-2e0b-4236-af51-e522ee8ab699"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt lorem ut.
+    - ID: "d8fecc64-a0b7-4e73-b436-929a62a044ee"
+      Hint: Image
+      Value: |
+        <image mediaid="{FDC34E93-2513-4493-978B-F4FE3DBED33E}" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231219T084237Z

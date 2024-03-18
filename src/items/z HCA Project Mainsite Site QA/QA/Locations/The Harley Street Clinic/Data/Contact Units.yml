@@ -1,0 +1,23 @@
+﻿---
+ID: "a6756bbf-d505-49a6-b8e8-1b0857c358cd"
+Parent: "25c4edde-7dac-4294-9fb3-6f1183598e76"
+Template: "d27d00cf-d030-4824-8581-2b2ebee62150"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T162502Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "721f564b-fd9d-424e-be1f-68ed9e2625c9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T162502Z

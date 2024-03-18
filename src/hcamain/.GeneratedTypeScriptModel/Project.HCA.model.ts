@@ -823,22 +823,6 @@ export namespace PageContent {
 export namespace Foundation.Amenities {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Amenities/Amenities Folder
-    */
-    export type AmenitiesFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Amenities/Amenities Folder
-    */
-    export type AmenitiesFolderJson =  {
-        
-
-    }
-
-    /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/Amenities/Amenity
     */
     export type Amenity =  {
@@ -875,6 +859,22 @@ export namespace Foundation.Amenities {
                 jsonValue: Field<string>
             };
 
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Amenities/Amenity Items Folder
+    */
+    export type AmenityItemsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Amenities/Amenity Items Folder
+    */
+    export type AmenityItemsFolderJson =  {
+        
 
     }
 }
@@ -1361,22 +1361,12 @@ export namespace PageContent {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Page Header
     */
-    export type BlogPageHeader =  {
+    export type BlogPageHeader = Foundation.SearchBase &  {
         fields?: { 
             /**
-            * Represents the Heading field (96b3721e-4032-4102-83f6-ec8b2369b78f).
+            * Represents the Blog Url field (98252ef4-2f53-4e6c-b55a-bc2a3b8030c5).
             */
-            Heading?: Field<string>;
-
-            /**
-            * Represents the Text field (55462d0e-1d24-40a1-bdac-6314fdf4d6d8).
-            */
-            Text?: Field<string>;
-
-            /**
-            * Represents the Title field (b800cde5-8ae5-45e2-806d-08fc3c4f0bcd).
-            */
-            Title?: Field<string>;
+            BlogUrl?: LinkField;
         }
 
     }
@@ -1384,27 +1374,13 @@ export namespace PageContent {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Page Header
     */
-    export type BlogPageHeaderJson =  {
+    export type BlogPageHeaderJson = Foundation.SearchBaseJson &  {
         
             /**
-            * Represents the Heading field (96b3721e-4032-4102-83f6-ec8b2369b78f).
+            * Represents the Blog Url field (98252ef4-2f53-4e6c-b55a-bc2a3b8030c5).
             */
-            heading?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Text field (55462d0e-1d24-40a1-bdac-6314fdf4d6d8).
-            */
-            text?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Title field (b800cde5-8ae5-45e2-806d-08fc3c4f0bcd).
-            */
-            title?: {
-                jsonValue: Field<string>
+            blogUrl?: {
+                jsonValue: LinkField
             };
 
 
@@ -1527,6 +1503,122 @@ export namespace PageContent {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Related Articles
+    */
+    export type BlogRelatedArticles = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the Articles field (ba790b8f-68f7-4ce5-9e69-21fe2a71b86e).
+            */
+            Articles?: Item[];
+
+            /**
+            * Represents the Blog Url field (d52673ae-9c87-46bb-b783-e1108e663511).
+            */
+            BlogUrl?: LinkField;
+
+            /**
+            * Represents the Filter By field (0a6246a8-9677-43e5-9c7e-c6bd70bea67a).
+            */
+            FilterBy?: Item[];
+
+            /**
+            * Represents the Number Of Cards field (c3dbc99d-eecb-4c17-ad80-e7ee0b9669f4).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Search By field (517bb4e6-d83b-4040-8955-e7cb7eae1be6).
+            */
+            SearchBy?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Related Articles
+    */
+    export type BlogRelatedArticlesJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the Articles field (ba790b8f-68f7-4ce5-9e69-21fe2a71b86e).
+            */
+            articles?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Blog Url field (d52673ae-9c87-46bb-b783-e1108e663511).
+            */
+            blogUrl?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the Filter By field (0a6246a8-9677-43e5-9c7e-c6bd70bea67a).
+            */
+            filterBy?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Number Of Cards field (c3dbc99d-eecb-4c17-ad80-e7ee0b9669f4).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Search By field (517bb4e6-d83b-4040-8955-e7cb7eae1be6).
+            */
+            searchBy?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Related Articles Folder
+    */
+    export type BlogRelatedArticlesFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Blog Related Articles Folder
+    */
+    export type BlogRelatedArticlesFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Related Articles Params
+    */
+    export type BlogRelatedArticlesParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Related Articles Params
+    */
+    export type BlogRelatedArticlesParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Blog Search
     */
     export type BlogSearch = Foundation.SearchBase &  {
@@ -1647,8 +1739,18 @@ export namespace PageContent {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Book An Appointment CTA
     */
-    export type BookAnAppointmentCta = Foundation.Ctabase &  {
+    export type BookAnAppointmentCta =  {
         fields?: { 
+            /**
+            * Represents the CTA icon field (fda8c68a-8744-459d-a931-00b7a5b64515).
+            */
+            CTAIcon?: Item;
+
+            /**
+            * Represents the CTA Text field (81a6f998-135f-435b-8db0-ae62c669ca22).
+            */
+            CTAText?: Field<string>;
+
             /**
             * Represents the Modal Content field (39493498-2ce7-47f0-aeca-fb632d319422).
             */
@@ -1660,8 +1762,22 @@ export namespace PageContent {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Book An Appointment CTA
     */
-    export type BookAnAppointmentCtaJson = Foundation.CtabaseJson &  {
+    export type BookAnAppointmentCtaJson =  {
         
+            /**
+            * Represents the CTA icon field (fda8c68a-8744-459d-a931-00b7a5b64515).
+            */
+            cTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the CTA Text field (81a6f998-135f-435b-8db0-ae62c669ca22).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
             /**
             * Represents the Modal Content field (39493498-2ce7-47f0-aeca-fb632d319422).
             */
@@ -2187,12 +2303,22 @@ export namespace PageContent {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
     */
-    export type CallUsTodayCta = Foundation.Ctabase &  {
+    export type CallUsTodayCta =  {
         fields?: { 
             /**
             * Represents the Contact Unit field (3128343e-984c-4c99-9dc2-cc13b1152783).
             */
             ContactUnit?: Item[];
+
+            /**
+            * Represents the CTA Icon field (fa0ec83d-c7c7-4d1b-8307-97c25471b2a9).
+            */
+            CTAIcon?: Item;
+
+            /**
+            * Represents the CTA Text field (abedf982-8d06-4980-bc29-dc6822c9843e).
+            */
+            CTAText?: Field<string>;
         }
 
     }
@@ -2200,13 +2326,27 @@ export namespace PageContent {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
     */
-    export type CallUsTodayCtaJson = Foundation.CtabaseJson &  {
+    export type CallUsTodayCtaJson =  {
         
             /**
             * Represents the Contact Unit field (3128343e-984c-4c99-9dc2-cc13b1152783).
             */
             contactUnit?: {
                 jsonValue: Item[]
+            };
+
+            /**
+            * Represents the CTA Icon field (fa0ec83d-c7c7-4d1b-8307-97c25471b2a9).
+            */
+            cTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the CTA Text field (abedf982-8d06-4980-bc29-dc6822c9843e).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
             };
 
 
@@ -2779,22 +2919,6 @@ export namespace Foundation.ContentCard {
 
 
     }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Card Folder
-    */
-    export type ContentCardFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Card Folder
-    */
-    export type ContentCardFolderJson =  {
-        
-
-    }
 }
 export namespace PageContent {
 
@@ -2889,6 +3013,26 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Foundation.ContentCard {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Cards Folder
+    */
+    export type ContentCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Cards Folder
+    */
+    export type ContentCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider
@@ -3745,6 +3889,11 @@ export namespace PageContent {
 Foundation.Ctabase &  {
         fields?: { 
             /**
+            * Represents the Consultants field (bdad9d3c-099b-407c-bab3-3bdbfa11fb90).
+            */
+            Consultants?: Item[];
+
+            /**
             * Represents the CTA Card field (5a674cd7-c9eb-4be4-8577-5c3d6d72c70c).
             */
             CTACard?: LinkField;
@@ -3769,6 +3918,13 @@ Foundation.Ctabase &  {
 Foundation.CtabaseJson &  {
         
             /**
+            * Represents the Consultants field (bdad9d3c-099b-407c-bab3-3bdbfa11fb90).
+            */
+            consultants?: {
+                jsonValue: Item[]
+            };
+
+            /**
             * Represents the CTA Card field (5a674cd7-c9eb-4be4-8577-5c3d6d72c70c).
             */
             cTACard?: {
@@ -3791,28 +3947,6 @@ Foundation.CtabaseJson &  {
 
 
     }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards
-    */
-    export type DoctorCards = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards
-    */
-    export type DoctorCardsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
-        
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctor Cards Folder
@@ -3826,6 +3960,26 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Doctor Cards Folder
     */
     export type DoctorCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards Params
+    */
+    export type DoctorCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Doctor Cards Params
+    */
+    export type DoctorCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
         
 
     }
@@ -8816,6 +8970,11 @@ export namespace PageContent {
     export type LocationsMap = Foundation.Ctabase &  {
         fields?: { 
             /**
+            * Represents the Background Image field (c5d29658-12d9-4dc2-b36f-d90ce71e53a6).
+            */
+            BackgroundImage?: ImageField;
+
+            /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
             Cards?: Item[];
@@ -8824,6 +8983,11 @@ export namespace PageContent {
             * Represents the Heading field (53e1bf97-8923-4d23-8f1f-78a53a0b0c94).
             */
             Heading?: Field<string>;
+
+            /**
+            * Represents the Pin Image field (bc81486e-594e-455d-9e76-3e171d945a48).
+            */
+            PinImage?: ImageField;
 
             /**
             * Represents the Text field (a9ada15f-0a53-4831-b67c-c2e5d8aee6aa).
@@ -8844,6 +9008,13 @@ export namespace PageContent {
     export type LocationsMapJson = Foundation.CtabaseJson &  {
         
             /**
+            * Represents the Background Image field (c5d29658-12d9-4dc2-b36f-d90ce71e53a6).
+            */
+            backgroundImage?: {
+                jsonValue: ImageField
+            };
+
+            /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
             cards?: {
@@ -8855,6 +9026,13 @@ export namespace PageContent {
             */
             heading?: {
                 jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Pin Image field (bc81486e-594e-455d-9e76-3e171d945a48).
+            */
+            pinImage?: {
+                jsonValue: ImageField
             };
 
             /**
@@ -9352,19 +9530,9 @@ export namespace Foundation {
     export type MapCard = Foundation.Ctabase &  {
         fields?: { 
             /**
-            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
+            * Represents the Pin Position field (09288575-7091-48ef-bdd9-f527623b3052).
             */
             CardStyles?: Field<string>;
-
-            /**
-            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
-            */
-            ForegroundImageDesktop?: ImageField;
-
-            /**
-            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
-            */
-            ForegroundImageMobile?: ImageField;
 
             /**
             * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
@@ -9375,6 +9543,11 @@ export namespace Foundation {
             * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
             */
             Number?: Field<string>;
+
+            /**
+            * Represents the PinPosition field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
+            */
+            PinPosition?: Field<string>;
 
             /**
             * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
@@ -9395,24 +9568,10 @@ export namespace Foundation {
     export type MapCardJson = Foundation.CtabaseJson &  {
         
             /**
-            * Represents the CardStyles field (09288575-7091-48ef-bdd9-f527623b3052).
+            * Represents the Pin Position field (09288575-7091-48ef-bdd9-f527623b3052).
             */
             cardStyles?: {
                 jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the ForegroundImageDesktop field (09eb586f-498f-4079-8508-a69f56667771).
-            */
-            foregroundImageDesktop?: {
-                jsonValue: ImageField
-            };
-
-            /**
-            * Represents the ForegroundImageMobile field (c29669ce-4b49-4342-ac91-38ab9781c12f).
-            */
-            foregroundImageMobile?: {
-                jsonValue: ImageField
             };
 
             /**
@@ -9426,6 +9585,13 @@ export namespace Foundation {
             * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
             */
             number?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PinPosition field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
+            */
+            pinPosition?: {
                 jsonValue: Field<string>
             };
 
@@ -10284,6 +10450,60 @@ export namespace PageContent {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Folder
     */
     export type PatientStoriesFolderJson =  {
+        
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Search
+    */
+    export type PatientStoriesSearch = Foundation.SearchBase &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Search
+    */
+    export type PatientStoriesSearchJson = Foundation.SearchBaseJson &  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Search
+    */
+    export type PatientStoriesSearch = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Search
+    */
+    export type PatientStoriesSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Search Folder
+    */
+    export type PatientStoriesSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Search Folder
+    */
+    export type PatientStoriesSearchFolderJson =  {
         
 
     }

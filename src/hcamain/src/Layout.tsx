@@ -14,6 +14,7 @@ import Scripts from 'src/Scripts';
 
 import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
 import Params from 'src/types/params';
+import ErrorBoundary from 'lib/ErrorBoundary';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -54,6 +55,10 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       : 'B-HCA-Navy-Blue';
   }
 
+  const RenderWithErrorBoundary = (children: React.ReactNode) => (
+    <ErrorBoundary>{children}</ErrorBoundary>
+  );
+
   return (
     <>
       <Scripts />
@@ -69,7 +74,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       <div className={mainClassPageEditing}>
         <header>
           <div id="header">
-            {route && <Placeholder name="headless-header" rendering={route} />}
+            {route && (
+              <Placeholder
+                name="headless-header"
+                rendering={route}
+                renderEach={RenderWithErrorBoundary}
+              />
+            )}
           </div>
         </header>
         <main>
@@ -77,11 +88,21 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
             {isHomepage ? (
               <ScrollTransition initialTheme={firstComponentTheme}>
                 {route && (
-                  <Placeholder name="headless-main" rendering={route} />
+                  <Placeholder
+                    name="headless-main"
+                    rendering={route}
+                    renderEach={RenderWithErrorBoundary}
+                  />
                 )}
               </ScrollTransition>
             ) : (
-              route && <Placeholder name="headless-main" rendering={route} />
+              route && (
+                <Placeholder
+                  name="headless-main"
+                  rendering={route}
+                  renderEach={RenderWithErrorBoundary}
+                />
+              )
             )}
           </div>
         </main>
@@ -90,11 +111,21 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
             {isHomepage ? (
               <ScrollTransition transitionBackground={false}>
                 {route && (
-                  <Placeholder name="headless-footer" rendering={route} />
+                  <Placeholder
+                    name="headless-footer"
+                    rendering={route}
+                    renderEach={RenderWithErrorBoundary}
+                  />
                 )}
               </ScrollTransition>
             ) : (
-              route && <Placeholder name="headless-footer" rendering={route} />
+              route && (
+                <Placeholder
+                  name="headless-footer"
+                  rendering={route}
+                  renderEach={RenderWithErrorBoundary}
+                />
+              )
             )}
           </div>
         </footer>

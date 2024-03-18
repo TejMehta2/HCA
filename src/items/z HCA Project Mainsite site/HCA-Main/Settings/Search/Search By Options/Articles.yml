@@ -1,0 +1,32 @@
+﻿---
+ID: "576f23ed-76d7-43ed-9cf0-5f4e0bc7468b"
+Parent: "3ae88b2e-b437-4881-9c4d-ad3602659aa4"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Search/Search By Options/Articles"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240305T125522Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: Articles
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "343c6320-d4cf-4263-932e-c23af224d808"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240315T100128Z
+    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
+      Hint: Filter
+      Value: verticalKey
+    - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
+      Hint: FilterValueString
+      Value: articles

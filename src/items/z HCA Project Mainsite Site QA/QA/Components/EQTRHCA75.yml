@@ -1,0 +1,43 @@
+﻿---
+ID: "55e56f39-a8f7-4757-9bcf-2125a3ae62af"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA75"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: 
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{CD2222CB-9F16-438E-86F4-19D98CFE1BAC}"
+          s:ds="{D623D293-8E69-48DD-AFD4-8D45681630D8}"
+          s:id="{512EE550-05F4-428D-B0F9-D65CCE94F387}"
+          s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-header"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240208T145242Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "83cc6fba-2197-4cc6-baef-dcc4749765e2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240301T102817Z

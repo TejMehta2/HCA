@@ -1,4 +1,10 @@
-import React, { useId, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+  useId,
+  useLayoutEffect,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -11,7 +17,7 @@ export const useBrowserLayoutEffect =
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
-  const { callback, tabs } = props;
+  const { callback, tabs, contentVariation } = props;
 
   const isXl = useWindowWidth(1440);
 
@@ -37,7 +43,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
 
   const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
 
-  useBrowserLayoutEffect(() => {
+  useEffect(() => {
     // Store the dimensions from label elements on load
     const dimensions = refs?.current?.map((labelElement) => {
       return {
@@ -49,7 +55,12 @@ const Tabs = (props: TabsProps): JSX.Element => {
   }, [refs, isXl]);
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={[
+        styles.wrapper,
+        contentVariation && styles[contentVariation],
+      ].join(' ')}
+    >
       <fieldset
         style={{
           // consumed in the CSS to animate the background element

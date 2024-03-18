@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from './TextField';
 import type { Meta, StoryObj } from '@storybook/react';
-import Tooltips from '../../components/Tooltips/Tooltips';
 import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -10,7 +9,7 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -20,16 +19,14 @@ export const Default: StoryObj<typeof TextField> = {
   args: {
     id: 'input1',
     label: 'Field label',
-    tooltip: (
-      <Tooltips theme="light">
-        <p>This is a form field</p>
-      </Tooltips>
-    ),
+    helpText: 'Helper text',
   },
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto', padding: '1rem' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],
@@ -39,13 +36,16 @@ export const Required: StoryObj<typeof TextField> = {
   args: {
     id: 'input1',
     label: 'Field label',
+    helpText: 'Helper text',
     required: true,
     errorMessage: 'Error message',
   },
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],
@@ -62,7 +62,9 @@ export const Email: StoryObj<typeof TextField> = {
   decorators: [
     (Story) => (
       <Themes theme="A-HCA-White">
-        <Story />
+        <div style={{ maxWidth: '56rem', margin: 'auto' }}>
+          <Story />
+        </div>
       </Themes>
     ),
   ],

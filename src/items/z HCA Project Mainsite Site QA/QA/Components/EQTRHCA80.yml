@@ -1,0 +1,65 @@
+﻿---
+ID: "8ad0aabc-72c5-4207-bb4d-83065147524f"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA80"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{E80BA0AE-25CD-43A9-AA1C-7EE1AE2C41EA}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{A9F021C9-80CB-450E-92E6-7F09F432E6A5}"
+          s:ds=""
+          s:id="{2DA667EA-068A-4479-9039-2E3323148F24}"
+          s:par="HeadingTag&amp;HeadingSize=display-1&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240210T090654Z
+    - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
+      Hint: ArticleType
+      Value: 
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: |
+        London Bridge Hospital, part of HCA Healthcare UK, has once again been rated as "Outstanding" by the Care Quality Commission (CQC), following a recent inspection. London Bridge Hospital has held its Outstanding rating since 2016.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "069b07d0-4b53-4e4e-8aa0-7dd2bfc7d02f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\alina.antemir@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240305T173444Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: The Harley Street Clinic retains CQC Outstanding rating
+    - ID: "e1b9a21b-a32e-429b-bbe5-047b323fd263"
+      Hint: Date
+      Value: 20230907T080800Z

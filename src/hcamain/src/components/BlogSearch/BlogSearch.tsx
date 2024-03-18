@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Field,
+  Item,
   Text as JssText,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -24,6 +25,8 @@ type SortOptionsFields = {
   fields?: {
     DisplayName?: Field<string>;
     Filter?: Field<string>;
+    FilterValueString?: Field<string>;
+    FilterValueGuid?: Item;
   };
 };
 
@@ -91,7 +94,11 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <ul>
               {filterOptions?.fields?.Filters?.map((filter, index) => (
                 <li key={index}>
+                  <JssText field={filter?.fields?.DisplayName} />
+                  <br />
                   <JssText field={filter?.fields?.Filter} />
+                  <br />
+                  <span>{filter?.fields?.FilterValueGuid?.id}</span>
                   <br />
                 </li>
               ))}
@@ -118,6 +125,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={sortOptions?.fields?.Filter} />
             <br />
+            <span>{sortOptions?.fields?.FilterValueGuid?.id}</span>
+            <br />
           </li>
         ))}
       </ul>
@@ -133,6 +142,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={filterBy?.fields?.Filter} />
             <br />
+            <span>{filterBy?.fields?.FilterValueGuid?.id}</span>
           </li>
         ))}
       </ul>
@@ -144,6 +154,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             <br />
             <JssText field={searchby?.fields?.Filter} />
             <br />
+            <span>{searchby?.fields?.FilterValueGuid?.id}</span>
           </li>
         ))}
       </ul>

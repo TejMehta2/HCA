@@ -5,13 +5,8 @@
     "includes": [
       {
         "name": "z HCA Project Mainsite site",
-        "path": "/sitecore/content/HCA/HCA Main",
+        "path": "/sitecore/content/HCA/HCA-Main",
         "rules": [
-          {
-            "path": "/home/QA",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
-          },
           {
             "path": "/home",
             "scope": "SingleItem",
@@ -22,31 +17,6 @@
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
           },
-          {
-            "path": "/Data/CQC",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Doctify Reviews",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Tags/BlogTags",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Authors",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },	
-          {
-            "path": "/Data/Consultants",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
-          },		  
           {
             "path": "/Data",
             "scope": "ItemAndChildren",
@@ -105,6 +75,21 @@
           {
             "path": "/*",
             "scope": "Ignored"
+          }
+        ]
+      },
+      {
+        "name": "z HCA Project Mainsite Media Library",
+        "path": "/sitecore/media library/Project/HCA/HCA Main",
+        "rules": [
+          {
+            "path": "/Template Thumbnails",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
+          },
+          {
+            "path": "/*",
+            "scope": "Ignored" 
           }
         ]
       }

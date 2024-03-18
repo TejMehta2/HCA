@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Pages/Blog Page/Data/ArticleType
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: 
+  Value: "{A9133D7E-3CD0-4415-B35D-047DD79BD57C}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplink
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9b33ef19-f177-4771-b0f9-d37ccacabd27"
+      Value: "2121d4b8-98e3-4160-8b27-74f5b60fea1c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\alina.antemir@hcahealthcare.co.uk
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T173444Z
+      Value: 20240310T042224Z

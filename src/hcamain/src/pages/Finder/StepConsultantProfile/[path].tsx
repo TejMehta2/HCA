@@ -82,8 +82,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: any = [];
   let slugs: string[] = [];
 
-  console.log('IN StepConsultantProfile GetStaticPaths');
+  // TODO control the loading of real / test slugs from sitecore settings
 
+  //console.log('IN StepConsultantProfile GetStaticPaths');
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
   if (
@@ -104,9 +105,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback = process.env.EXPORT_MODE ? false : fallback;
   } else {
     //mock the real call with just a few consultants to pre-fetch if in dev.
-    slugs = ['mr-andrew-goldberg', 'mr-sam-singh', 'mr-christian-brown'];
+    //slugs = ['mr-andrew-goldberg', 'mr-sam-singh', 'mr-christian-brown'];
   }
 
+  slugs = [];
   paths = slugs.map((slug) => ({
     params: { path: slug },
   }));
@@ -124,7 +126,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // data load can be done here and/or at the component level too with get component props.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN StepConsultantProfile GetStaticProps');
+  //console.log('IN StepConsultantProfile GetStaticProps');
   //console.log('context.params', context.params);
 
   if (context.params) {
@@ -158,7 +160,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // but also at the component level using component props...
 
-  console.log('OUT StepConsultantProfile GetStaticProps');
+  //console.log('OUT StepConsultantProfile GetStaticProps');
   return {
     props,
     // Next.js will attempt to re-generate the page:

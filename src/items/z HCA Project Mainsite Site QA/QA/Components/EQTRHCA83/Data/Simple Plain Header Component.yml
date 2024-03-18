@@ -1,0 +1,34 @@
+﻿---
+ID: "cb1cbabd-2906-40f3-b758-9485cb7144b8"
+Parent: "fb2cf80e-4e8f-4661-a1c6-5527faa5fc0e"
+Template: "759f577c-e1d5-415b-b66a-3e5a42c038ec"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA83/Data/Simple Plain Header Component"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "088df122-a53e-40e5-8602-1ed6be28cbbd"
+      Hint: Heading
+      Value: HEALTHCARE FOR BUSINESS
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240125T125904Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b26cc230-2980-4852-96c8-d8c424dd3b43"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240131T154442Z

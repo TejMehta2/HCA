@@ -8,6 +8,8 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$navy-blue-100};
   --card-body-text: #{$navy-blue-10};
+  --field-unfilled-label: #{$navy-blue-30};
+  --field-active-outline: #{$white};
   --field-error-colour: #{$red-60};
 
   @include apply-cta-full-light;
@@ -25,6 +27,8 @@
   --card-secondary-background: #{$navy-blue-100};
   --card-secondary-text: #{$white};
   --card-body-text: #{$navy-blue-70};
+  --field-unfilled-label: #{$navy-blue-70};
+  --field-active-outline: #{$navy-blue-100};
   --field-error-colour: #{$red-100};
 
   @include apply-cta-full-dark;
@@ -246,6 +250,21 @@
   @include apply-tag-denim-10;
   @include apply-tabs($denim-40);
   @include apply-pagination-denim-40;
+}
+
+@mixin apply-theme-o-teal-20 {
+  @include apply-shared-theme-light;
+
+  --background: #{$teal-20};
+  --card-background: #{$teal-5};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$teal-140};
+  --quote-tag-background: #{$teal-80};
+  --quote-tag-background-hover: #{$teal-120};
+
+  @include apply-tag-teal-20;
+  @include apply-tabs($teal-100);
+  @include apply-pagination-teal-100;
 }
 
 @mixin theme-mode($light, $dark) {

@@ -8,8 +8,9 @@ import { getHCAConfig } from './getHCAConfig';
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
   const HCAAPIConfig = await getHCAConfig();
-  const consultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
+  const consultantSlugsURL = HCAAPIConfig?.aPI_HCA_All_Consultants_BaseURL;
 
+  //console.log("in get active slugs", consultantSlugsURL);
   if (consultantSlugsURL && consultantSlugsURL.length > 0) {
     // using current/legacy website xml sitemap for now
     // replace once we have a backend that can query doctify for list of consultant slugs

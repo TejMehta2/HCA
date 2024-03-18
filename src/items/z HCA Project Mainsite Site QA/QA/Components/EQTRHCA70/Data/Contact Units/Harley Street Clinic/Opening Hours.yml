@@ -1,0 +1,23 @@
+﻿---
+ID: "7d04fb0a-4dbf-4039-bafe-ef233c1b9558"
+Parent: "8c7a3ca9-5623-494d-a123-b91d6b256517"
+Template: "ecd9edc1-11c6-49c2-93f9-bd5cd46a7206"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Harley Street Clinic/Opening Hours"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T155437Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "18323160-16fe-4744-a6a6-483728013306"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T181949Z

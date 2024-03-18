@@ -1,0 +1,54 @@
+﻿---
+ID: "8f20eeff-201d-43ac-8d49-e1789d91392b"
+Parent: "4de3bb9f-9b36-4b44-9db2-15283c093353"
+Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/London Bridge Hospital"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240119T174310Z
+    - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
+      Hint: PostCode
+      Value: W1G 8BJ
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "64765ef6-ea35-4e9e-8007-effd7c669ee6"
+      Hint: City
+      Value: London
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ca01dd26-855f-443b-b650-09a97f9b5b74"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{9F050C48-9D23-4281-8195-8F146AFFCBCC}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
+      Hint: Street
+      Value: 35 Weymouth Street
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240301T102851Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: London Bridge Hospital

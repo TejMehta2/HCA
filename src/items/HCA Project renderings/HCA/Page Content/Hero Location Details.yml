@@ -94,12 +94,7 @@ SharedFields:
             value
           }
           Logo: field(name: "Logo") {
-            ... on ImageField {
-              src
-              alt
-              height
-              width
-            }
+            fields: jsonValue
           }
         }
       }
@@ -129,12 +124,7 @@ SharedFields:
       fields: targetItem {
         ... on CQCSettings {
           Logo: field(name: "Logo") {
-            ... on ImageField {
-              src
-              alt
-              height
-              width
-            }
+            fields: jsonValue
           }
         }
       }
@@ -270,14 +260,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bf2445db-bebe-421a-8519-b471afb09809"
+      Value: "192379af-86d0-4e9a-bd49-271f63adfb59"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240228T220222Z
+      Value: 20240307T114308Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
