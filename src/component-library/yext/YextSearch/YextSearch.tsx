@@ -13,6 +13,7 @@ import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLin
 import YextResultCardFAQsAdaptor from '../YextResultCardFAQs/YextResultCardFAQs.adaptor';
 import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
 import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
+import { Facets } from '@yext/search-ui-react';
 
 const YextSearch = (): JSX.Element => {
   const resultsCountRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ const YextSearch = (): JSX.Element => {
             <ResultsCount />
             <div className={styles.filters}>
               <YextFiltersAdaptor />
+              {/* <Facets /> */}
             </div>
           </div>
           <UniversalResults
