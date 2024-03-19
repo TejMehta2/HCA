@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSearchState } from '@yext/search-headless-react';
+import { useSearchState, useSearchActions } from '@yext/search-headless-react';
 import { executeSearch } from '@yext/search-ui-react';
 import YextFilters from './YextFilters';
 
@@ -17,19 +17,28 @@ const YextFiltersAdaptor = (): JSX.Element => {
   console.log(facets && facets[0].displayName);
 
   const resultCount = 20;
-  const title = 'Tests, Scans, Treatments';
-  const filters = [
-    {
-      id: '1',
-      label: 'Conditions (20)',
-      name: 'conditions',
-      value: 'conditions',
-    },
+  // const title = 'Tests, Scans, Treatments';
+  // const filters = [
+  //   {
+  //     id: '1',
+  //     label: 'Conditions (20)',
+  //     name: 'conditions',
+  //     value: 'conditions',
+  //   },
 
-    { id: '2', label: 'Tests (15)', name: 'tests', value: 'tests' },
+  //   { id: '2', label: 'Tests (15)', name: 'tests', value: 'tests' },
 
-    { id: '3', label: 'Treatments (2)', name: 'tests', value: 'tests' },
-  ];
+  //   { id: '3', label: 'Treatments (2)', name: 'tests', value: 'tests' },
+  // ];
+
+  const handleFacetClick = (
+    value: string | number | boolean | NumberRangeValue,
+    selected: boolean,
+    matcher = Matcher.Equals
+  ) => {
+    searchActions.setFacetOption(fieldId, { matcher, value }, selected);
+    searchActions.executeVerticalQuery();
+  };
 
   return facets?.length && facets[0] ? (
     <YextFilters
@@ -44,6 +53,7 @@ const YextFiltersAdaptor = (): JSX.Element => {
             name={facets[0]?.fieldId}
             value={filter.value}
             key={index}
+            onChange={() => handleFacetClick(filter.value, !o.selected)}
           ></Checkbox>
         ))}
       </Checkboxes>
