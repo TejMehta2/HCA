@@ -1,0 +1,33 @@
+﻿---
+ID: "2e1cb776-d52c-4717-b5c5-f78f6b0394fa"
+Parent: "5d2e7b84-90bc-458a-b9bf-e38b77dd7862"
+Template: "5d2e7b84-90bc-458a-b9bf-e38b77dd7862"
+Path: /sitecore/templates/Project/HCA/Page Content/Diamond Line Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {0167337A-5D40-4A0F-B9BF-A8A10820BF8D}
+    {5D2E7B84-90BC-458A-B9BF-E38B77DD7862}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6af775c5-2770-4c3f-a041-788e87677a80"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240319T133414Z
