@@ -1,6 +1,7 @@
 // Template finder component
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import {
   Image as JssImage,
   Link as JssLink,
@@ -13,6 +14,8 @@ import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import TermsConditionsCards from '@component-library/consultant-finder/TermsConditionsCards/TermsConditionsCards';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import Link from 'next/link';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -40,43 +43,78 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return; // Exit early if router is not ready
+    }
+
+    // get slug from URL
+    const slug = router?.query?.slug || '';
+    setSlug(slug.toString());
+  }, [router.isReady]);
+
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
-        <div className="component-content">
-          <div>Progress bar</div>
-          <TermsConditionsCards>
-            <InfoBox
-              backgroundColour="turquoise"
-              icon={null}
-              isShortInfo={false}
-              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-            />
-            <InfoBox
-              backgroundColour="turquoise"
-              icon={null}
-              isShortInfo={false}
-              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-            />
-            <InfoBox
-              backgroundColour="turquoise"
-              icon={null}
-              isShortInfo={false}
-              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-            />
-            <InfoBox
-              backgroundColour="turquoise"
-              icon={null}
-              isShortInfo={false}
-              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
-              longTextTitle="TITLE"
-            />
-          </TermsConditionsCards>
-          <div>Nav</div>
-          {/* <div className="field-promoicon">
+        {router.isReady && (
+          <div className="component-content">
+            <div>Progress bar</div>
+            <TermsConditionsCards>
+              <InfoBox
+                backgroundColour="turquoise"
+                icon={null}
+                isShortInfo={false}
+                longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+              />
+              <InfoBox
+                backgroundColour="turquoise"
+                icon={null}
+                isShortInfo={false}
+                longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+              />
+              <InfoBox
+                backgroundColour="turquoise"
+                icon={null}
+                isShortInfo={false}
+                longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+              />
+              <InfoBox
+                backgroundColour="turquoise"
+                icon={null}
+                isShortInfo={false}
+                longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+                longTextTitle="TITLE"
+              />
+            </TermsConditionsCards>
+            <Navigation hideTextMobile={true} hasCustomBtnMobile={true}>
+              <Text tag="p" variation="body-medium-extra-large">
+                Please accept to continue.
+              </Text>
+              <Button
+                variation="full-dark"
+                size="large"
+                contentVariation="full-width"
+              >
+                <Link href={`/Finder/Step-Appointment-Type?slug=${slug}`}>
+                  <span>
+                    {props?.fields?.NextLink?.value?.text ||
+                      'Accept and continue'}
+                  </span>
+                </Link>
+              </Button>
+            </Navigation>
+            {/* <div className="field-promoicon">
             <JssImage field={props.fields.CardImage} />
           </div>
           <div className="promo-text">
@@ -109,7 +147,8 @@ export const Default = (props: StepProps): JSX.Element => {
               </Button>
             </div>
           </div> */}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
