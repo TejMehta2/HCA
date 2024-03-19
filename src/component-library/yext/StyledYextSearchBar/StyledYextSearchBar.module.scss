@@ -1,5 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../components/SearchSuggestions/SearchSuggestions.module' as *;
 
 .wrapper {
   // .option {
@@ -9,6 +10,9 @@
     svg {
       display: none;
     }
+
+    width: auto;
+    height: px-to-rem(24);
 
     &::before {
       content: url('../../foundation//Icons//assets-dist//Search.svg');
@@ -27,7 +31,7 @@
     // Wrapper of bar and suggestions
     > :first-child {
       border: none;
-      background-color: transparent;
+      background-color: var(--field-background);
       box-shadow: none;
       justify-content: flex-start;
     }
@@ -53,9 +57,13 @@
     border: none;
     @include apply-body-bold-large;
 
+    background-color: var(--field-background);
+
     &::placeholder {
       color: var(--text);
       @include apply-body-large;
+
+      background-color: var(--field-background);
     }
   }
 
@@ -64,21 +72,10 @@
 
     // Suggestions
     + * {
-      margin-top: $spacing-1;
-      border-radius: $radius-large;
-      border: solid px-to-rem(1) var(--text);
-      padding: px-to-rem(24) px-to-rem(32);
+      @extend %suggestions;
 
-      // Suggestion results
       > * {
-        padding: 0;
-        padding: px-to-rem(8) 0;
-        @include apply-body-medium-large;
-
-        &:hover {
-          background-color: transparent;
-          text-decoration: underline;
-        }
+        @extend %suggestion;
       }
     }
   }

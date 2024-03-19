@@ -1,17 +1,12 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.wrapper {
-  background-color: var(--background);
-}
-
 .buttons {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  padding: $spacing-10 0;
   z-index: 1;
   width: max-content;
   margin: auto;

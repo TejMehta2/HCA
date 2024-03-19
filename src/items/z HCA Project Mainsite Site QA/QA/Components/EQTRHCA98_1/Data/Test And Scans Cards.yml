@@ -1,0 +1,32 @@
+﻿---
+ID: "f0b51c9b-088f-4a81-8eb2-1308a3c88c71"
+Parent: "0a19d4f9-63c0-4d9b-a03a-1f3ad626f9f2"
+Template: "9177c689-fd19-42f1-b157-0980ba967fce"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA98_1/Data/Test And Scans Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240318T100335Z
+    - ID: "838e0417-a20d-40ce-b8f3-51a29cf1ea3f"
+      Hint: NumberOfCards
+      Value: 6
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7d7ac62a-76ff-41e3-ac58-e0e46f49ec2d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Key tests & scans
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240318T125202Z
+    - ID: "e5e0f48b-6019-4c9b-83b0-1a3dced02373"
+      Hint: CTACardText
+      Value: Learn more

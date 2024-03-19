@@ -161,3 +161,36 @@ export async function facilityURLFromDoctifySlug(
 
   return locationURL;
 }
+
+// get insurance data from Doctify
+//const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
+export async function getInsuranceData(serviceURL?: string): Promise<any> {
+  const config = !serviceURL ? await getDoctifyConfig() : null;
+  //console.log(DoctifyConfig);
+  const Doctify_Insurance_URL = serviceURL ?? config?.aPI_Insurance_BaseURL;
+
+  const requestURL = `${Doctify_Insurance_URL}`;
+  let docitfyData: any = '';
+  try {
+    // need to cache these requests so we don't make hundreds of them
+    // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+    const res = await fetch(requestURL, {
+      cache: 'force-cache',
+      next: { revalidate: 3600 },
+    });
+    if (res.ok) {
+      docitfyData = await res.json();
+    } else {
+      //docitfy call failed
+      docitfyData = `{"errorCode": ${res.status}, "errorText": ${res.statusText}}`;
+      console.warn(
+        `getInsuranceData failed to retrieve Doctify insurance data with error:${docitfyData}`
+      );
+    }
+  } catch (e) {
+    //docitfy call threw
+    docitfyData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching the getInsuranceData, please retry"}`;
+    console.warn(`getInsuranceData failed with exception ${e}`);
+  }
+  return docitfyData;
+}
