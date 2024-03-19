@@ -11,16 +11,15 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import TermsConditionsCards from '@component-library/consultant-finder/TermsConditionsCards/TermsConditionsCards';
+import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
   // add specific fields defined in the data template here...
-
   // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
@@ -43,12 +42,41 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
+      <div id={id ? id : undefined}>
         <div className="component-content">
-          <div className="field-promoicon">
+          <div>Progress bar</div>
+          <TermsConditionsCards>
+            <InfoBox
+              backgroundColour="turquoise"
+              icon={null}
+              isShortInfo={false}
+              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+            />
+            <InfoBox
+              backgroundColour="turquoise"
+              icon={null}
+              isShortInfo={false}
+              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+            />
+            <InfoBox
+              backgroundColour="turquoise"
+              icon={null}
+              isShortInfo={false}
+              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+            />
+            <InfoBox
+              backgroundColour="turquoise"
+              icon={null}
+              isShortInfo={false}
+              longText="If you`re experiencing life-threatening symptoms such as chest pain or shortness of breath, we always recommend calling 999 instead of booking an appointment."
+              longTextTitle="TITLE"
+            />
+          </TermsConditionsCards>
+          <div>Nav</div>
+          {/* <div className="field-promoicon">
             <JssImage field={props.fields.CardImage} />
           </div>
           <div className="promo-text">
@@ -80,7 +108,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></JssLink>
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
