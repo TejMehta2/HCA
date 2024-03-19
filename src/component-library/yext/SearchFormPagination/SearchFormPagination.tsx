@@ -7,8 +7,10 @@ const SearchFormPagination = (
 ): JSX.Element => {
   const { offset, limit, resultsCount, scrollToRef } = props;
   const offsetRef = useRef<HTMLInputElement>(null);
+  const pageCount = Math.ceil(resultsCount / limit);
   const currentPage = offset / limit + 1;
-  if (resultsCount === 0) return <></>;
+  console.log('pagecount', pageCount);
+  if (resultsCount === 0 || pageCount <= 1) return <></>;
   return (
     <>
       <input
@@ -22,7 +24,7 @@ const SearchFormPagination = (
         aria-hidden="true"
       />
       <Pagination
-        pageCount={Math.ceil(resultsCount / limit)}
+        pageCount={pageCount}
         currentPage={currentPage}
         callback={(newPage) => {
           const newOffset = (newPage - 1) * limit;
