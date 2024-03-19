@@ -1,4 +1,4 @@
-# BlogRelatedArticles documentation
+# TestAndScansCards documentation
 
 ## Additional information
 

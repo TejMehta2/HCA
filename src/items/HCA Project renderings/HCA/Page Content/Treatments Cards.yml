@@ -1,21 +1,21 @@
 ﻿---
-ID: "67881255-6e2b-4e5c-937f-41c2de0dd318"
+ID: "111993b1-c48c-4388-9626-800e2cec55a1"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Blog Related Articles
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Treatments Cards
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: BlogRelatedArticles
+  Value: TreatmentsCards
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetRelatedArticles($datasource: String!, $contextItem: String!, $language: String!) {
+    query GetTreatmentCards($datasource: String!, $contextItem: String!, $language: String!) {
       item(path: $datasource, language: $language) {
-        ... on BlogRelatedArticles {
+        ... on TreatmentsCards {
           heading {
             jsonValue
           }
@@ -37,9 +37,15 @@ SharedFields:
           cTALink {
             jsonValue
           }
-          articles {
-            ArticlesList: targetItems {
-              ... on BlogPage {
+          numberOfCards {
+            jsonValue
+          }
+          cTACardText {
+            jsonValue
+          }
+          treatments {
+            TreatmentsList: targetItems {
+              ... on TreatmentPage {
                 abstractTitle {
                   value
                 }
@@ -49,78 +55,48 @@ SharedFields:
                 abstractImage {
                   jsonValue
                 }
-                date {
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                image {
                   jsonValue
                 }
-                articleType {
-                  targetItem {
-                    ... on Tag {
-                      id
-                      title {
-                        value
-                      }
-                    }
-                  }
-                }
-               url {
-                path
+                url {
+                  path
                 }
               }
             }
-          }
-          searchBy {
-            SearchByList: targetItems {
-              ... on FilterOption {
-                displayName: field(name: "DisplayName") {
-                  value
-                }
-                filter {
-                  value
-                }
-                filterValueString {
-                  value
-                }
-                filterValueGuid {
-                  targetItem {
-                    id
-                  }
-                }
-              }
-            }
-          }
-          filterBy {
-            FilterByList: targetItems {
-              ... on FilterOption {
-                displayName: field(name: "DisplayName") {
-                  value
-                }
-                filter {
-                  value
-                }
-                filterValueString {
-                  value
-                }
-                filterValueGuid {
-                  targetItem {
-                    id
-                  }
-                }
-              }
-            }
-          }
-          numberOfCards {
-            jsonValue
-          }
-          blogUrl {
-            jsonValue
           }
         }
       }
       contextItem: item(path: $contextItem, language: $language) {
-        ... on BlogPage {
-          category {
-            category: targetItems {
-              id
+        ... on ConditionPage {
+          id
+          treatments {
+            TreatmentsList: targetItems {
+              ... on TreatmentPage {
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
+                }
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                image {
+                  jsonValue
+                }
+              }
             }
           }
         }
@@ -129,7 +105,7 @@ SharedFields:
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Blog Related Articles
+  Value: /sitecore/templates/Project/HCA/Page Content/Treatments Cards
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -138,17 +114,17 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{958E44FC-7719-48B6-878F-1555B6439AD0}"
+  Value: "{91CF48B4-4E39-4DB4-93A0-AA8EDEFCF9C1}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Blog Related Articles Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Blog Related Articles Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Treatments Cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Treatments Cards Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{93F6CAE0-E1CC-4217-8F69-0F2AC24F0019}" />
+    <image mediaid="{D56A6AED-2C78-4290-BC75-EB145C38CC6A}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -195,14 +171,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e2c5a3c0-e57a-46e1-917b-5fc7aa3562fd"
+      Value: "b3fda709-c2d6-4593-8375-faa00f241a58"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T122513Z
+      Value: 20240318T125125Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

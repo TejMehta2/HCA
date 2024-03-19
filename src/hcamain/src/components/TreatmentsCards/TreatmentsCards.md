@@ -1,4 +1,4 @@
-# BlogRelatedArticles documentation
+# TreatmentsCards documentation
 
 ## Additional information
 

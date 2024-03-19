@@ -1,0 +1,33 @@
+﻿---
+ID: "444355e9-32e3-41dc-acbe-ed9e8f3cd63e"
+Parent: "8fa9696c-7d8d-436d-a439-5c1725cb0ec5"
+Template: "8fa9696c-7d8d-436d-a439-5c1725cb0ec5"
+Path: /sitecore/templates/Project/HCA/Page Content/Treatments Cards Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {4B3B58B7-53BB-48A2-88E4-420EC6E04F46}
+    {8FA9696C-7D8D-436D-A439-5C1725CB0EC5}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "58cda0ec-83cd-4341-9382-a72aa6f26ea9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240315T213325Z
