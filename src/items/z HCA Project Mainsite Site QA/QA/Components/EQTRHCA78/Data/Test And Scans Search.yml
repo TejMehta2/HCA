@@ -38,13 +38,13 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
-      Value: Search for a <b>service or treatments</b>
+      Value: Search for a service or treatments
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "53938ed6-deb7-491b-aa56-49c5ef675a3a"
+      Value: "270e5448-6cf0-4681-b9b8-46ed51a81647"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -68,4 +68,4 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T131019Z
+      Value: 20240319T160514Z
