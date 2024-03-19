@@ -987,26 +987,28 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
 
               {!error && !loading && totalPgaes > 1 && results.length > 0 && (
-                <Themes theme={'A-HCA-White'}>
-                  <Pagination
-                    pageCount={totalPgaes}
-                    callback={(newPage: number) => {
-                      const offset = (newPage - 1) * 12;
-                      setOffset(offset);
-                      // Update the URL query parameters
-                      const { requestPath, ...queryParams } = router.query;
-                      router.push(
-                        {
-                          pathname: router.pathname,
-                          query: { ...queryParams, offset: offset },
-                        },
-                        undefined,
-                        { shallow: true }
-                      );
-                    }}
-                    currentPage={Math.ceil((offset + 1) / 12)}
-                  />
-                </Themes>
+                <Container marginBottom="spacing-8" marginTop="spacing-8">
+                  <Themes theme={'A-HCA-White'}>
+                    <Pagination
+                      pageCount={totalPgaes}
+                      callback={(newPage: number) => {
+                        const offset = (newPage - 1) * 12;
+                        setOffset(offset);
+                        // Update the URL query parameters
+                        const { requestPath, ...queryParams } = router.query;
+                        router.push(
+                          {
+                            pathname: router.pathname,
+                            query: { ...queryParams, offset: offset },
+                          },
+                          undefined,
+                          { shallow: true }
+                        );
+                      }}
+                      currentPage={Math.ceil((offset + 1) / 12)}
+                    />
+                  </Themes>
+                </Container>
               )}
             </div>
           </>
