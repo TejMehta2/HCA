@@ -201,7 +201,7 @@ export const Default = (props: TestAndScansSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params?.Theme || 'I-HCA-Goldenrod'}>
+          <CardGrid>
             {data?.scans?.map((item, index) => (
               <CardContent
                 key={index}

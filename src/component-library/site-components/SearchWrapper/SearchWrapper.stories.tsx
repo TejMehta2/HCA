@@ -93,9 +93,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {BLOG_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{BLOG_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={BLOG_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -177,9 +175,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
 
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{SERVICE_LINES_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -274,9 +270,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{SERVICE_LINES_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -372,9 +366,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
         tab: { icon: 'iconGrid', label: 'Grid view' },
         tabContent: (
           <>
-            <CardGrid theme="A-HCA-White">
-              {LOCATIONS_MOCK_VALUES.firstPageContent}
-            </CardGrid>
+            <CardGrid>{LOCATIONS_MOCK_VALUES.firstPageContent}</CardGrid>
             <Pagination
               pageCount={LOCATIONS_MOCK_VALUES.pageCount}
               callback={console.log}
