@@ -7856,6 +7856,24 @@ export namespace ConsultantFinder.Forms {
 
     }
 }
+export namespace ConsultantFinder.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviews =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviewsJson =  {
+        
+
+    }
+}
 export namespace ConsultantFinder.Frames {
 
     /**
@@ -7969,26 +7987,6 @@ export namespace ConsultantFinder.Frames {
 
 
     }
-}
-export namespace ConsultantFinder.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviews =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviewsJson =  {
-        
-
-    }
-}
-export namespace ConsultantFinder.Frames {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews Folder
@@ -8832,6 +8830,328 @@ export namespace ConsultantFinder.Forms.LiveBookingForm {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Forms/Live Booking Form/Live Booking Form
     */
     export type LiveBookingFormJson = ConsultantFinder.Forms.LiveBookingForm.FormFieldsJson &  {
+        
+
+    }
+}
+export namespace Foundation.LocationApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    */
+    export type LocationApiSettings =  {
+        fields?: { 
+            /**
+            * Represents the Autocomplete endpoint field (6fef18c5-83a5-4f87-b592-674459f46918).
+            */
+            "Autocomplete endpoint"?: Field<string>;
+
+            /**
+            * Represents the Autocomplete suffix field (813e301c-f22b-495b-a87b-3454fecf794a).
+            */
+            "Autocomplete suffix"?: Field<string>;
+
+            /**
+            * Represents the Autosuggest endpoint field (6b90d1c7-bad1-4418-8ff1-5e8f40838898).
+            */
+            "Autosuggest endpoint"?: Field<string>;
+
+            /**
+            * Represents the Autosuggest suffix field (d8dc3ef6-2b36-4533-9d70-b20edf8ded49).
+            */
+            "Autosuggest suffix"?: Field<string>;
+
+            /**
+            * Represents the Client max requests field (40d95a2a-9ee0-454f-a9ef-70770a7c1aee).
+            */
+            "Client max requests"?: Field<number>;
+
+            /**
+            * Represents the Client token window seconds field (39edea90-3643-404f-9f6f-374a5855122b).
+            */
+            "Client token window seconds"?: Field<number>;
+
+            /**
+            * Represents the Default service provider field (7e51a996-c0ec-4be3-bd76-a388c8e130ba).
+            */
+            "Default service provider"?: Field<string>;
+
+            /**
+            * Represents the Enable response data log field (7e66b17c-8db8-48c1-b671-59ecf22507f2).
+            */
+            "Enable response data log"?: Field<boolean>;
+
+            /**
+            * Represents the Enable trace log field (9f247b8b-b8f7-4fa3-8bf6-07e694b49e5b).
+            */
+            "Enable trace log"?: Field<boolean>;
+
+            /**
+            * Represents the Enforce client token field (94e6b2c7-b93c-46ba-b26e-bfd33773ad77).
+            */
+            "Enforce client token"?: Field<boolean>;
+
+            /**
+            * Represents the Enforce max post request field (b23ff3b0-1987-4fd9-a685-37228a891440).
+            */
+            "Enforce max post request"?: Field<boolean>;
+
+            /**
+            * Represents the GPlaces endpoint field (9f69324f-bcd3-49d1-aa2f-433fdb4acf71).
+            */
+            "GPlaces endpoint"?: Field<string>;
+
+            /**
+            * Represents the GRoute endpoint field (a06f2027-8b9e-43e8-bc2a-ee8bee8089e2).
+            */
+            "GRoute endpoint"?: Field<string>;
+
+            /**
+            * Represents the GeoCode endpoint field (c57bb680-b772-4ced-b1d7-d5365e758022).
+            */
+            "GeoCode endpoint"?: Field<string>;
+
+            /**
+            * Represents the Google API key field (9826c1a1-ad1f-4ff0-843c-c9a3b3cbeac4).
+            */
+            "Google API key"?: Field<string>;
+
+            /**
+            * Represents the Known Locations field (11cd00c0-b15b-47cf-b8a5-6442fbb59f2d).
+            */
+            "Known Locations"?: Item[];
+
+            /**
+            * Represents the MPlaces endpoint field (2b55c4a1-7b7e-4a53-94cc-f845d6acf7e9).
+            */
+            "MPlaces endpoint"?: Field<string>;
+
+            /**
+            * Represents the MRoute endpoint field (547ae2a8-674e-44c9-815a-3e522e8d197a).
+            */
+            "MRoute endpoint"?: Field<string>;
+
+            /**
+            * Represents the Max post requests field (1cc1894d-4c64-4367-880e-8c62f5bb5ee8).
+            */
+            "Max post requests"?: Field<number>;
+
+            /**
+            * Represents the Max post requests seconds field (aac57024-837f-4f9d-ba2f-df23c802e91b).
+            */
+            "Max post requests seconds"?: Field<number>;
+
+            /**
+            * Represents the Max suggestions field (b73b395b-194b-46e1-8a8d-7e494093d123).
+            */
+            "Max suggestions"?: Field<number>;
+
+            /**
+            * Represents the Microsoft API key field (318ecc63-e507-40d8-998c-8b82c29e635b).
+            */
+            "Microsoft API key"?: Field<string>;
+
+            /**
+            * Represents the Only posts with an existing ASP Session field (1e9da9c5-8563-472a-b2eb-636cc6965f94).
+            */
+            "Only posts with an existing ASP Session"?: Field<boolean>;
+
+            /**
+            * Represents the Use google maps sessions field (8dc28fb3-af29-490c-a34a-ea3c99d58c65).
+            */
+            "Use google maps sessions"?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    */
+    export type LocationApiSettingsJson =  {
+        
+            /**
+            * Represents the Autocomplete endpoint field (6fef18c5-83a5-4f87-b592-674459f46918).
+            */
+            "Autocomplete endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Autocomplete suffix field (813e301c-f22b-495b-a87b-3454fecf794a).
+            */
+            "Autocomplete suffix"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Autosuggest endpoint field (6b90d1c7-bad1-4418-8ff1-5e8f40838898).
+            */
+            "Autosuggest endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Autosuggest suffix field (d8dc3ef6-2b36-4533-9d70-b20edf8ded49).
+            */
+            "Autosuggest suffix"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Client max requests field (40d95a2a-9ee0-454f-a9ef-70770a7c1aee).
+            */
+            "Client max requests"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Client token window seconds field (39edea90-3643-404f-9f6f-374a5855122b).
+            */
+            "Client token window seconds"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Default service provider field (7e51a996-c0ec-4be3-bd76-a388c8e130ba).
+            */
+            "Default service provider"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Enable response data log field (7e66b17c-8db8-48c1-b671-59ecf22507f2).
+            */
+            "Enable response data log"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enable trace log field (9f247b8b-b8f7-4fa3-8bf6-07e694b49e5b).
+            */
+            "Enable trace log"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enforce client token field (94e6b2c7-b93c-46ba-b26e-bfd33773ad77).
+            */
+            "Enforce client token"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enforce max post request field (b23ff3b0-1987-4fd9-a685-37228a891440).
+            */
+            "Enforce max post request"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the GPlaces endpoint field (9f69324f-bcd3-49d1-aa2f-433fdb4acf71).
+            */
+            "GPlaces endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the GRoute endpoint field (a06f2027-8b9e-43e8-bc2a-ee8bee8089e2).
+            */
+            "GRoute endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the GeoCode endpoint field (c57bb680-b772-4ced-b1d7-d5365e758022).
+            */
+            "GeoCode endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Google API key field (9826c1a1-ad1f-4ff0-843c-c9a3b3cbeac4).
+            */
+            "Google API key"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Known Locations field (11cd00c0-b15b-47cf-b8a5-6442fbb59f2d).
+            */
+            "Known Locations"?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the MPlaces endpoint field (2b55c4a1-7b7e-4a53-94cc-f845d6acf7e9).
+            */
+            "MPlaces endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the MRoute endpoint field (547ae2a8-674e-44c9-815a-3e522e8d197a).
+            */
+            "MRoute endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Max post requests field (1cc1894d-4c64-4367-880e-8c62f5bb5ee8).
+            */
+            "Max post requests"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Max post requests seconds field (aac57024-837f-4f9d-ba2f-df23c802e91b).
+            */
+            "Max post requests seconds"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Max suggestions field (b73b395b-194b-46e1-8a8d-7e494093d123).
+            */
+            "Max suggestions"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Microsoft API key field (318ecc63-e507-40d8-998c-8b82c29e635b).
+            */
+            "Microsoft API key"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Only posts with an existing ASP Session field (1e9da9c5-8563-472a-b2eb-636cc6965f94).
+            */
+            "Only posts with an existing ASP Session"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Use google maps sessions field (8dc28fb3-af29-490c-a34a-ea3c99d58c65).
+            */
+            "Use google maps sessions"?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainer =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainerJson =  {
         
 
     }
