@@ -19,6 +19,7 @@ const performCopy = () => {
     'assets',
     'hooks',
     'utilities',
+    'utility-functions',
   ];
 
   try {
