@@ -5,7 +5,7 @@
     "includes": [
       {
         "name": "z HCA Project Mainsite site",
-        "path": "/sitecore/content/HCA/HCA Main",
+        "path": "/sitecore/content/HCA/HCA-Main",
         "rules": [
           {
             "path": "/home",
@@ -16,31 +16,6 @@
             "path": "/Media",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Data/CQC",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Doctify Reviews",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Tags/BlogTags",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Authors",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Consultants",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
           },
           {
             "path": "/Data",

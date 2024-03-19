@@ -30,7 +30,7 @@ const ReviewsFrameDefaultComponent = (): JSX.Element => (
 );
 
 export const Default = (props: ReviewFrameProps): JSX.Element => {
-  console.log('reviews frame props', props);
+  //console.log('reviews frame props', props);
   const id = props.params.RenderingIdentifier;
   if (props.fields) {
     return (

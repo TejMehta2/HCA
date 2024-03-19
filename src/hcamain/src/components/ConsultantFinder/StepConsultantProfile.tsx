@@ -193,32 +193,6 @@ export const Default = (props: StepProps): JSX.Element => {
     return <div>Profile is missing data, please retry later</div>;
   }
 
-  // console.log('consultant data,', serverSideData?.ProfileJson);
-  // //console.log('server side data from component props: ', serverSideData);
-  // console.log(
-  //   'Is live diaries consultant:',
-  //   serverSideData?.IsLiveDiaryConsultant
-  // );
-
-  // console.log('fist appointment:', serverSideData?.FirstAppointment);
-  // console.log(
-  //   'initial appointment:',
-  //   serverSideData?.FirstAppointment?.initial_appointment
-  // );
-  // console.log(
-  //   'follow up appointment:',
-  //   serverSideData?.FirstAppointment?.follow_appointment
-  // );
-
-  // console.log(
-  //   'formatted first appointment',
-  //   formatDateShort(serverSideData?.FirstAppointment?.initial_appointment)
-  // );
-  // console.log(
-  //   'formatted follow up appointment',
-  //   formatDateShort(serverSideData?.FirstAppointment?.follow_appointment)
-  // );
-
   // Callback function to handle tab clicks
   const handleTabClick = (label: any) => {
     // Determine which ref to use based on the label
@@ -309,7 +283,13 @@ export const Default = (props: StepProps): JSX.Element => {
                   {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
                 </Link>
                 {topSpecialty[0]?.name && (
-                  <Link href={`/Finder/{topSpecialty[0]?.name}`}>
+                  <Link
+                    href={`/Finder/Step-Consultant-Cards?search=${
+                      topSpecialty[0]?.name || ''
+                    }&keywordId=${
+                      topSpecialty[0]?.id || ''
+                    }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`}
+                  >
                     {topSpecialty[0]?.name}
                   </Link>
                 )}
@@ -458,8 +438,8 @@ export const Default = (props: StepProps): JSX.Element => {
                           {`${
                             props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          }
-                1 min ago`}
+                          } ${serverSideData?.FirstAppointment?.refreshedText}
+                          `}
                         </Text>
                       </>
                     )}
@@ -698,8 +678,8 @@ export const Default = (props: StepProps): JSX.Element => {
                           {`${
                             props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          }
-                1 min ago`}
+                          } ${serverSideData?.FirstAppointment?.refreshedText}
+                          `}
                         </Text>
                       </>
                     )}

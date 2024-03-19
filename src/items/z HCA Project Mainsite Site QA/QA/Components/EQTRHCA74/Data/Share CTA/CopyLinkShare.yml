@@ -2,7 +2,7 @@
 ID: "c07fec5f-ea89-4e5b-b39c-0d1142d26286"
 Parent: "0469b785-18d7-40a3-9f67-632227545c3d"
 Template: "26ca976b-7777-4a26-9701-72f187a6d738"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/CopyLinkShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/CopyLinkShare"
 Languages:
 - Language: en
   Versions:

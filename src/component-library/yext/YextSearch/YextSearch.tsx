@@ -10,6 +10,7 @@ import YextProvider from '../YextProvider/YextProvider';
 import StyledYextSearchBar from '../StyledYextSearchBar/StyledYextSearchBar';
 import YextResultCardArticlesAdaptor from '../YextResultCardArticles/YextResultCardArticles.adaptor';
 import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLinks.adaptor';
+import YextResultCardFAQsAdaptor from '../YextResultCardFAQs/YextResultCardFAQs.adaptor';
 import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
 
 const YextSearch = (): JSX.Element => {
@@ -19,7 +20,9 @@ const YextSearch = (): JSX.Element => {
       <div className={styles.inner}>
         <YextProvider>
           <StyledYextSearchBar />
-          <YextTabs />
+          <div className={styles.tabs}>
+            <YextTabs />
+          </div>
           <div ref={resultsCountRef}></div>
           <ResultsCount />
           <UniversalResults
@@ -40,6 +43,9 @@ const YextSearch = (): JSX.Element => {
               },
               healthcare_professionals: {
                 label: 'Consultants',
+              },
+              faqs: {
+                CardComponent: YextResultCardFAQsAdaptor,
               },
             }}
           />

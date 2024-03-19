@@ -2,7 +2,7 @@
 ID: "5c351891-6061-49a9-88f1-a287cb2e9419"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA14_1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA14_1"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -40,8 +40,36 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{EA325F41-7843-455F-8E50-41776B6D2C9C}"
+              uid="{9A4C61B3-D679-499B-A9B9-EE2ABCA5E18C}"
               p:before="*"
+              s:ds="local:/Page Data/Text 1"
+              s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
+              s:ph="headless-main" />
+            <r
+              uid="{4F2C56B6-7874-4EE3-B429-B3CDC575C854}"
+              p:after="r[@uid='{9A4C61B3-D679-499B-A9B9-EE2ABCA5E18C}']"
+              s:ds="local:/Page Data/CTA Lorem"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/image-short-text-5" />
+            <r
+              uid="{030FDAAF-CE2A-4EFC-BC53-5033D13DAF11}"
+              p:after="r[@uid='{4F2C56B6-7874-4EE3-B429-B3CDC575C854}']"
+              s:ds="local:/Page Data/CTA Lorem 2"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="/headless-main/image-short-text-5" />
+            <r
+              uid="{07B00980-FA34-4733-873D-8C21055A139F}"
+              p:after="r[@uid='{030FDAAF-CE2A-4EFC-BC53-5033D13DAF11}']"
+              s:ds="local:/Page Data/Call Us"
+              s:id="{E2ACB40C-B73B-4BE1-8B5C-4498D9920248}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BEA48E2B2-C94A-44A0-AEBF-6CB1232508B8%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="/headless-main/image-short-text-5" />
+            <r
+              uid="{EA325F41-7843-455F-8E50-41776B6D2C9C}"
+              p:after="r[@uid='{07B00980-FA34-4733-873D-8C21055A139F}']"
               s:ds="{6AF9B2BD-ACCA-46F1-B0A8-EA203997A7C9}"
               s:id="{81FB8D66-F173-45D5-B89B-0164FC6063AD}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B0C537DD9-E10D-4025-9A69-C6686039CDFA%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
@@ -53,14 +81,18 @@ Languages:
               s:id="{25A26F72-B1FE-4E31-A9C6-AC1DFFEC09B7}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
               s:ph="/headless-main/image-short-text-1" />
+            <r
+              uid="{75D83C25-025A-41DF-A6F9-E9BC0076B00F}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Image Short Text"
+              s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
+              s:par="HeadingTag=h2&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240114T073238Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA14_1
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -71,11 +103,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d987340a-8352-416d-a06f-69efcdf62337"
+      Value: "d17c4972-a61e-4268-86c1-f438e99311de"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T103710Z
+      Value: 20240313T212452Z

@@ -1,6 +1,11 @@
 import React from 'react';
-import { Field, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  LinkField,
+  RichText as JssRichText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import Button from '@component-library/core-components/Button/Button';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -16,6 +21,7 @@ type ServiceFields = {
 
 type CustomFilters = {
   filter?: { value?: string };
+  filterValueString?: { value?: string };
 };
 
 interface Fields {
@@ -61,62 +67,61 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
   if (!props.fields) {
     return <FindAConsultantCTADefaultComponent {...props} />;
   }
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <a href={props.fields?.data?.item?.cTALink?.jsonValue?.value.href}>
-        {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup.value,
-            }}
-          />
-        )}
-        <span>{props.fields?.data?.item?.cTALink?.jsonValue?.value.text}</span>
-      </a>
-      <br />
 
-      <span>Practice:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.practice?.PracticeList?.map(
-          (practice, index) => (
-            <li key={index}>
-              <span>{practice?.doctifyPractice?.value}</span>
-              <br />
-            </li>
-          )
+  const filterList = [];
+
+  if (props.fields?.data?.item?.customFilters?.CustomFiltersList) {
+    for (const filter of props.fields.data.item.customFilters
+      .CustomFiltersList) {
+      filterList.push(
+        filter.filter?.value + '=' + filter.filterValueString?.value
+      );
+    }
+  }
+
+  if (props.fields?.data?.item?.practice?.PracticeList) {
+    for (const filter of props.fields?.data?.item?.practice?.PracticeList) {
+      filterList.push('practice=' + filter.doctifyPractice?.value);
+    }
+  }
+
+  if (props.fields?.data?.item?.service?.ServicesList) {
+    for (const filter of props.fields?.data?.item?.service?.ServicesList) {
+      filterList.push('service=' + filter.doctifyKeywordId?.value);
+    }
+  }
+
+  const filterParams = filterList ? '?' + filterList.join('&') : '';
+
+  return (
+    <Button size="large" variation="full">
+      <a
+        href={
+          props.fields?.data?.item?.cTALink?.jsonValue?.value.href +
+          filterParams
+        }
+      >
+        {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+          <>
+            {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html:
+                    props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
+                    '',
+                }}
+              ></span>
+            )}
+            <JssRichText
+              field={{
+                value:
+                  props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
+                  '',
+              }}
+            />
+          </>
         )}
-      </ul>
-      <br />
-      <span>Service:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.service?.ServicesList?.map(
-          (service, index) => (
-            <li key={index}>
-              <span>{service?.doctifyKeywordId?.value}</span>
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <span>CustomFilters:</span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.customFilters?.CustomFiltersList?.map(
-          (customFilter, index) => (
-            <li key={index}>
-              <span>{customFilter?.filter?.value}</span>
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <span>{props.fields?.data?.contextItem?.doctifyKeywordId?.value}</span>
-      <br />
-      <span>{props.fields?.data?.contextItem?.doctifyPractice?.value}</span>
-      <br />
-    </div>
+      </a>
+    </Button>
   );
 };

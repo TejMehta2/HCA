@@ -1,0 +1,41 @@
+﻿---
+ID: "676f2527-4fc5-45d4-8afb-a3b5021fc1cc"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Icons/Email"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231220T174828Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f7b35e84-7431-4f83-9b8c-de0c3c4ae0a5"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231220T174828Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SvgMarkup
+      Value: |
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Email">
+        <path id="Vector" d="M7 9L12 12.5L17 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_2" d="M2 17V7C2 6.46957 2.21071 5.96086 2.58579 5.58579C2.96086 5.21071 3.46957 5 4 5H20C20.5304 5 21.0391 5.21071 21.4142 5.58579C21.7893 5.96086 22 6.46957 22 7V17C22 17.5304 21.7893 18.0391 21.4142 18.4142C21.0391 18.7893 20.5304 19 20 19H4C3.46957 19 2.96086 18.7893 2.58579 18.4142C2.21071 18.0391 2 17.5304 2 17Z" stroke="currentColor" stroke-width="2"/>
+        </g>
+        </svg>
+        

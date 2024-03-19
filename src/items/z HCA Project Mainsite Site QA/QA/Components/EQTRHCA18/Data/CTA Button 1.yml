@@ -2,7 +2,7 @@
 ID: "51bb46df-cb43-4228-975e-f45fa647cd4b"
 Parent: "c3d74f74-59ea-4b0f-a847-e09d5ca4c5df"
 Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA18/Data/CTA Button 1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA18/Data/CTA Button 1"
 Languages:
 - Language: en
   Versions:
@@ -21,15 +21,15 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d072a0e4-192a-435e-9f74-68150420f5e5"
+      Value: "a5df3136-c970-403e-850d-58f31d745d3c"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Click &lt;b&gt;me&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="" title="" linktype="internal" text="Click &lt;b&gt;me&lt;/b&gt;" url="/HCA/HCA-Main/Home/QA/Home" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240213T151915Z
+      Value: 20240314T102616Z

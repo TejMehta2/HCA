@@ -2,7 +2,7 @@
 ID: "8e79b310-7be5-4d49-b794-b7f5a32fab21"
 Parent: "e848f5ad-07a1-41a2-8cf4-bf83ad2802f6"
 Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Right Aligned/FAQ Question 4
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Right Aligned/FAQ Question 4"
 Languages:
 - Language: en
   Versions:

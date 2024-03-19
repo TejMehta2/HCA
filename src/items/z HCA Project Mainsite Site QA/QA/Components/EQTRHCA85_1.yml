@@ -2,7 +2,23 @@
 ID: "af87bec5-dd1e-4b1f-af44-e6fc43010f6a"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85_1
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA85_1"
+SharedFields:
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{3A5E6D28-CADA-4CBF-A188-A95448EB6FCE}"
+          s:ds="local:/Data/Find A Consultant CTA"
+          s:id="{3715741B-A7EF-4B60-BE1E-72239704EC9D}"
+          s:par="GridParameters&amp;FieldNames=%7B98EC1CF4-A4A4-43CE-947B-86039A30AA53%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main" />
+      </d>
+    </r>
 Languages:
 - Language: en
   Versions:
@@ -11,9 +27,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240306T111727Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA85_1
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -23,11 +36,11 @@ Languages:
       Value: "the-lister-hospital"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b46279f0-c952-4d9f-8f5f-55f162a36410"
+      Value: "99c49b52-8301-4bcc-9f66-eae7a984b9a3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T111807Z
+      Value: 20240315T073312Z

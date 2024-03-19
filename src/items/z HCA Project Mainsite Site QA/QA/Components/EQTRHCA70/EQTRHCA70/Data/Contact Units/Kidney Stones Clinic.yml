@@ -2,7 +2,7 @@
 ID: "d9e56dec-719a-490b-b591-65c0d38e3db7"
 Parent: "e495dd0f-e624-43de-89c0-2eca93d5d302"
 Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units/Kidney Stones Clinic
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units/Kidney Stones Clinic"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder

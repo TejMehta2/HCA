@@ -2,7 +2,7 @@
 ID: "e94787da-e0ff-4cc6-8ac6-ea4ca272013f"
 Parent: "0469b785-18d7-40a3-9f67-632227545c3d"
 Template: "7190abcc-0c09-4320-9eac-9e78efc0c662"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/WhatsAppShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA74/Data/Share CTA/WhatsAppShare"
 Languages:
 - Language: en
   Versions:

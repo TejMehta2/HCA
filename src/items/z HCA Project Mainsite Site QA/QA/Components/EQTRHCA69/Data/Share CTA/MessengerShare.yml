@@ -2,7 +2,7 @@
 ID: "dbbeca20-491e-4b8e-9e0f-406991ac7269"
 Parent: "c9bf69cc-4370-435c-a0a1-7c956c945dd3"
 Template: "22615a23-b011-4733-b3ad-de15c4c7f637"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/MessengerShare
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA69/Data/Share CTA/MessengerShare"
 Languages:
 - Language: en
   Versions:

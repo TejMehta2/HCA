@@ -2,7 +2,7 @@
 ID: "08343bce-5421-4519-8a4e-edebb633fedc"
 Parent: "19642323-7f9e-4f1a-8811-3509294f195c"
 Template: "9880d549-1351-4eee-a2da-98df2df2fb46"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/EQTRHCA88/Data/Talk To Us Image Right
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA88/EQTRHCA88/Data/Talk To Us Image Right"
 Languages:
 - Language: en
   Versions:

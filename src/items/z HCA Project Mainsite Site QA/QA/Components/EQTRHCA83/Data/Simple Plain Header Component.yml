@@ -2,7 +2,7 @@
 ID: "cb1cbabd-2906-40f3-b758-9485cb7144b8"
 Parent: "fb2cf80e-4e8f-4661-a1c6-5527faa5fc0e"
 Template: "759f577c-e1d5-415b-b66a-3e5a42c038ec"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA83/Data/Simple Plain Header Component
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA83/Data/Simple Plain Header Component"
 Languages:
 - Language: en
   Versions:

@@ -2,7 +2,7 @@
 ID: "5912dfd9-4f63-4d23-baeb-ff60b6fef45f"
 Parent: "2e42bdee-a979-4251-bc3f-dda054f450d8"
 Template: "ecd9edc1-11c6-49c2-93f9-bd5cd46a7206"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Appointments/Opening Hours
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/Data/Contact Units/Appointments/Opening Hours"
 Languages:
 - Language: en
   Versions:

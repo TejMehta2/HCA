@@ -14,7 +14,8 @@ export type Theme =
   | 'K-HCA-Fern-20'
   | 'L-HCA-Teal-5'
   | 'M-HCA-Goldenrod-20'
-  | 'N-HCA-Denim-5';
+  | 'N-HCA-Denim-5'
+  | 'O-HCA-Teal-20';
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;

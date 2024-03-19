@@ -2,7 +2,7 @@
 ID: "71be6645-1a49-4f84-862c-81a690cd6380"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA85
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA85"
 SharedFields:
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
@@ -28,9 +28,6 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240305T211823Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA85
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

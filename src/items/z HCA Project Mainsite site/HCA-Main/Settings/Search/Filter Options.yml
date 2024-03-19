@@ -1,0 +1,27 @@
+﻿---
+ID: "0abd57a9-a4e7-4da4-9c6c-5d04083a48a1"
+Parent: "3144974c-def7-4111-a8ed-4f4682215f5c"
+Template: "fefccad7-6142-4c70-8ecf-f61822a793a9"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Search/Filter Options"
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: core3/32x32/folder_open.png
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T134102Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b77db737-d2f2-4b87-a95b-798394ff307e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240201T204716Z

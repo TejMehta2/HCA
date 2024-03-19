@@ -2,7 +2,7 @@
 ID: "8f20eeff-201d-43ac-8d49-e1789d91392b"
 Parent: "4de3bb9f-9b36-4b44-9db2-15283c093353"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/London Bridge Hospital
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/London Bridge Hospital"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -21,9 +21,6 @@ Languages:
     - ID: "40311572-fcbe-45c3-af0f-58719ec01a3b"
       Hint: PostCode
       Value: W1G 8BJ
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: London Bridge Hospital
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |

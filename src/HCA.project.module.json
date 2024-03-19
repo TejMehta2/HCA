@@ -44,6 +44,21 @@
                 "path": "/sitecore/content/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete",
                 "scope": "SingleItem"
+            },
+            {
+                "name": "HCA Project Rules",
+                "path": "/sitecore/system/Settings/Rules/Insert Options/Rules",
+                "rules": [
+                    {
+                        "path": "/HCA *",
+                        "scope": "ItemAndDescendants",
+                        "allowedPushOperations": "CreateUpdateAndDelete"
+                    },
+                    {
+                        "path": "*",
+                        "scope": "ignored"
+                     }
+                ]
             }
         ]
     },

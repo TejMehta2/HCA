@@ -2,7 +2,7 @@
 ID: "49939958-5cd0-4ed4-8d0c-d0a58d666bc3"
 Parent: "32c0e0f7-1f19-43a3-85cc-80211df7abf7"
 Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Contact Units/Kidney Stones Clinic
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Kidney Stones Clinic/Data/Contact Units/Kidney Stones Clinic"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder

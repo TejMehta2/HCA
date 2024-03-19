@@ -12,11 +12,12 @@ const ArticleCategories = (props: ArticleCategoriesProps): JSX.Element => {
         <div className={styles.container}>
           {title}
           <div className={styles.categories}>
-            {categories.map((category, index) => (
-              <Button key={index} size="large" variation="outline">
-                {category}
-              </Button>
-            ))}
+            {categories &&
+              categories.map((category, index) => (
+                <Button key={index} size="large" variation="outline">
+                  {category}
+                </Button>
+              ))}
           </div>
         </div>
       </div>

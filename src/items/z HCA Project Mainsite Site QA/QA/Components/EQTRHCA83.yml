@@ -2,7 +2,7 @@
 ID: "8debf86c-6f04-4642-9687-be6e565c1eb1"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "b63580c4-4e8a-49e4-a7c8-0e09552fcfbc"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA83
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA83"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -62,13 +62,13 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231206T075828Z
-    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
-      Hint: NavigationTitle
-      Value: EQTRHCA1
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: Hip pain scan
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -78,14 +78,17 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3642049b-e944-455c-b262-8dedc780ea40"
+      Value: "3aa4193f-3fc4-4226-b47b-929eacea2acd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T065926Z
+      Value: 20240318T124346Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA83

@@ -2,7 +2,7 @@
 ID: "c434bd20-dc97-4f51-8cb8-bbddb3b77e0a"
 Parent: "d954c852-fd91-463e-878f-5b1d6ee50037"
 Template: "b1eba38c-c69b-4286-ad4c-96b5d17aafe8"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA88/Data/Harley Telephone Numbers/Harley Appointments
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA88/Data/Harley Telephone Numbers/Harley Appointments"
 Languages:
 - Language: en
   Versions:

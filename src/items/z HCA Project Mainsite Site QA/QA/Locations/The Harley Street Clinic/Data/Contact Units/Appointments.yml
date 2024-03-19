@@ -2,7 +2,7 @@
 ID: "c7f6cffb-e283-41a8-a66c-0630ff822617"
 Parent: "a6756bbf-d505-49a6-b8e8-1b0857c358cd"
 Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units/Appointments
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units/Appointments"
 Languages:
 - Language: en
   Versions:

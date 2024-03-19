@@ -79,7 +79,7 @@ const mockProps: SearchWrapperProps = {
   ),
   children: (
     <>
-      <CardGrid theme="A-HCA-White">{getPageContent(1)}</CardGrid>
+      <CardGrid>{getPageContent(1)}</CardGrid>
       <Pagination pageCount={pageCount} callback={console.log} />
     </>
   ),

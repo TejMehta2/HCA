@@ -72,7 +72,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize}
+          variation={props.params?.HeadingSize || 'display-5'}
         >
           <JssText field={props.fields?.Title} />
         </Text>
@@ -80,7 +80,10 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       link={
         props.fields?.CTALink && (
           <Button size={'large'} variation={'full'}>
-            <JssLink field={props.fields?.CTALink}>
+            <JssLink
+              href={props.fields.BlogUrl?.value.href}
+              field={props.fields?.CTALink}
+            >
               {props?.fields?.CTALink.value.text && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -109,11 +112,11 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             </Text>
             {!!card.fields.ArticleType && (
               <Tags>
-                <JssText
-                  key={card.fields.ArticleType?.id}
-                  tag="p"
-                  field={card.fields.ArticleType?.fields.Title}
-                />
+                <a
+                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                >
+                  {card.fields?.ArticleType.fields.Title?.value}
+                </a>
               </Tags>
             )}
           </CardBlog>
@@ -127,18 +130,25 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
   if (!props.fields) {
     return <BlogCardsDefaultComponent {...props} />;
   }
+
   return (
     <>
       <CardBlogBlock
         title={
-          <Text tag={'h2'} variation={'display-5'}>
+          <Text
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-5'}
+          >
             <JssText field={props.fields?.Title} />
           </Text>
         }
         cta={
           props.fields?.CTALink && (
             <Button size={'large'} variation={'full'}>
-              <JssLink field={props.fields?.CTALink}>
+              <JssLink
+                href={props.fields.BlogUrl?.value.href}
+                field={props.fields?.CTALink}
+              >
                 {props?.fields?.CTALink.value.text && (
                   <span
                     dangerouslySetInnerHTML={{
@@ -176,11 +186,11 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               )}
               {card.fields.ArticleType && (
                 <Tags>
-                  <JssText
-                    key={card.fields.ArticleType.id}
-                    tag="p"
-                    field={card.fields.ArticleType.fields.Title}
-                  />
+                  <a
+                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                  >
+                    {card.fields?.ArticleType.fields.Title?.value}
+                  </a>
                 </Tags>
               )}
             </CardBlog>

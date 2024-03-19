@@ -2,7 +2,7 @@
 ID: "d0c3de29-0777-4e60-8dcf-79f169531f66"
 Parent: "c3d74f74-59ea-4b0f-a847-e09d5ca4c5df"
 Template: "add26115-d42f-45bb-b2d4-b13211aac2cc"
-Path: /sitecore/content/HCA/HCA Main/Home/QA/Components/EQTRHCA18/Data/CTA Block Component
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA18/Data/CTA Block Component"
 Languages:
 - Language: en
   Versions:

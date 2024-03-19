@@ -23,7 +23,7 @@ export const Default: StoryObj<typeof StyledYextSearchBar> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={'J-HCA-Tangerine-20'}>
         <div className={styles.inner}>
           <YextProvider>
             <Story />

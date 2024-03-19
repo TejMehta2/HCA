@@ -1,0 +1,23 @@
+﻿---
+ID: "7dbc8a3b-d53e-4c02-8a2c-debabef8d2f3"
+Parent: "953561d7-0f76-4b26-8912-5f4429f49070"
+Template: "b41821dc-4f48-44eb-879c-38a041ae127c"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Custom Settings/CQC"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231113T091958Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4452d777-6bec-479e-a810-bd7ff92fa4ff"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240115T132341Z

@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import CardContent from '../../components/CardContent/CardContent';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CardGrid> = {
@@ -13,6 +14,13 @@ const meta: Meta<typeof CardGrid> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <Themes theme={'D-HCA-Teal'}>
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export default meta;
@@ -55,14 +63,12 @@ for (let i = 0; i < 9; i++) {
 
 export const Default: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'D-HCA-Teal',
     children: defaultChildren,
   },
 };
 
 export const TwoCards: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'D-HCA-Teal',
     children: [
       <CardContent
         key={0}
@@ -154,7 +160,6 @@ for (let i = 0; i < 9; i++) {
 
 export const NoImage: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'D-HCA-Teal',
     children: noImageChildren,
   },
 };
@@ -182,7 +187,6 @@ for (let i = 0; i < 9; i++) {
 
 export const NoBody: StoryObj<typeof CardGrid> = {
   args: {
-    theme: 'D-HCA-Teal',
     children: noBodyChildren,
   },
 };
