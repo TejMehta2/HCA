@@ -11,7 +11,12 @@ const Modals = (
   props: ModalsProps,
   ref: React.MutableRefObject<HTMLDialogElement | null>
 ): JSX.Element => {
-  const { children, defaultOpen = false, variation = 'full' } = props;
+  const {
+    children,
+    defaultOpen = false,
+    variation = 'full',
+    contentVariation,
+  } = props;
   const {
     draggable,
     dragging,
@@ -92,7 +97,9 @@ const Modals = (
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}
-      className={wrapper}
+      className={[wrapper, contentVariation && styles[contentVariation]].join(
+        ' '
+      )}
     >
       <Overlay />
       <div
