@@ -17,7 +17,8 @@ export type ButtonVariationUnionTypes =
   | 'standard-carousel-dark'
   | 'hover-carousel'
   | 'square-outline'
-  | 'play';
+  | 'play'
+  | 'filter';
 
 export interface ButtonProps {
   size: ButtonSizeUnionTypes;
@@ -25,5 +26,5 @@ export interface ButtonProps {
   children?: ReactNode | JSX.Element;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   loading?: boolean;
-  contentVariation?: 'full-width' | 'card';
+  contentVariation?: 'full-width' | 'card' | 'search';
 }

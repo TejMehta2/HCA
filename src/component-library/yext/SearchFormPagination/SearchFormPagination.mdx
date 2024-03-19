@@ -1,0 +1,23 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SearchFormPaginationStories from './SearchFormPagination.stories'
+
+<Meta of={SearchFormPaginationStories} />
+
+# SearchFormPagination
+
+## Description
+
+The SearchFormPagination component is a logic wrapper around the Pagination component, which adapts it to work inside a form powered by the `useSearchForm` hook
+
+When the user clicks a page button, a hidden input field with the name "offset" is updated and a form change event is submitted, which is handled by the hook.
+
+The offset/limit syntax of pagination is native to Yext search.
+
+``` tsx
+<SearchFormPagination
+  offset={offset}
+  limit={limit}
+  resultsCount={resultsCount}
+  scrollToRef={searchWrapperRef}
+/>
+```

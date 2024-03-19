@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, ReactNode } from 'react';
 
 export interface SearchBarProps {
   placeholder?: string;
@@ -6,4 +6,7 @@ export interface SearchBarProps {
   defaultValue?: string;
   handleInputChange?: ChangeEventHandler<HTMLInputElement>;
   searchValue?: string;
+  suggestions?: string[];
+  locationCta?: JSX.Element;
+  children?: JSX.Element | ReactNode;
 }

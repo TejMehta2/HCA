@@ -1,4 +1,4 @@
-# LocationsSearch documentation
+# BlogRelatedArticles documentation
 
 ## Additional information
 

@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SearchFormLoadMoreStories from './SearchFormLoadMore.stories'
+
+<Meta of={SearchFormLoadMoreStories} />
+
+# SearchFormLoadMore
+
+## Description
+
+The SearchFormLoadMore component is a CTA which paginates the results from the Yext API integrated components which consume the `useSearchForm` hook.
+
+It is intended to be nested inside a form powered by the `useSearchForm` hook.
+
+When the user clicks the button to load more, a hidden input field with the name "limit" is updated and a form change event is submitted, which is handled by the hook.
+
+The offset/limit syntax of pagination is native to Yext search.
+
+``` tsx
+<SearchFormLoadMore
+  limit={6} // dynamic and managed by useSearchForm hook
+  resultsCount={24} // returned by API response
+  defaultLimit={6} // immutable and from Sitecore props
+>
+  <span>
+    <Icons iconName={'iconPlus'} />
+  </span>
+  <span>Show more</span>
+</SearchFormLoadMore>
+```
+
+## Example 
+
+<Canvas of={SearchFormLoadMoreStories.Default} />
+<Controls of={SearchFormLoadMoreStories.Default} />

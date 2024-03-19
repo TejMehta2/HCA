@@ -8,6 +8,7 @@
   --card-secondary-background: #{$white};
   --card-secondary-text: #{$navy-blue-100};
   --card-body-text: #{$navy-blue-10};
+  --field-background: #{$navy-blue-100};
   --field-unfilled-label: #{$navy-blue-30};
   --field-active-outline: #{$white};
   --field-error-colour: #{$red-60};
@@ -27,6 +28,7 @@
   --card-secondary-background: #{$navy-blue-100};
   --card-secondary-text: #{$white};
   --card-body-text: #{$navy-blue-70};
+  --field-background: #{$white};
   --field-unfilled-label: #{$navy-blue-70};
   --field-active-outline: #{$navy-blue-100};
   --field-error-colour: #{$red-100};
@@ -54,6 +56,10 @@
   @include apply-tag-orange-40;
   @include apply-tabs(#{$orange-60});
   @include apply-pagination-orange-60;
+
+  --filter-button-1: #{$orange-20};
+  --filter-button-2: #{$orange-40};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-b-navy {
@@ -69,6 +75,10 @@
   @include apply-tag-navy-blue-70;
   @include apply-tabs($navy-blue-80, $white);
   @include apply-pagination-navy-blue-70;
+
+  --filter-button-1: #{$navy-blue-80};
+  --filter-button-2: #{$navy-blue-70};
+  --filter-button-3: #{$navy-blue-40};
 }
 
 @mixin apply-theme-c-denim {
@@ -86,6 +96,10 @@
   @include apply-tabs($denim-40, $white, $navy-blue-100);
   @include apply-pagination-denim-40-light;
   @include apply-tag-secondary-denim-10;
+
+  --filter-button-1: #{$denim-80};
+  --filter-button-2: #{$denim-50};
+  --filter-button-3: #{$navy-blue-20};
 }
 
 @mixin apply-theme-d-teal {
@@ -100,6 +114,10 @@
   @include apply-tag-teal-20;
   @include apply-tabs($teal-10);
   @include apply-pagination-teal-10;
+
+  --filter-button-1: #{$teal-20};
+  --filter-button-2: #{$teal-10};
+  --filter-button-3: #{$navy-blue-60};
 }
 
 @mixin apply-theme-e-cerulean {
@@ -116,6 +134,10 @@
   @include apply-tag-denim-20;
   @include apply-tabs($denim-5);
   @include apply-pagination-denim-10;
+
+  --filter-button-1: #{$denim-10};
+  --filter-button-2: #{$denim-5};
+  --filter-button-3: #{$navy-blue-60};
 }
 
 @mixin apply-theme-f-fern {
@@ -130,6 +152,10 @@
   @include apply-tag-fern-60;
   @include apply-tabs($fern-20);
   @include apply-pagination-fern-20;
+
+  --filter-button-1: #{$fern-40};
+  --filter-button-2: #{$fern-10};
+  --filter-button-3: #{$navy-blue-60};
 }
 
 @mixin apply-theme-g-orange {
@@ -145,6 +171,10 @@
   @include apply-tag-orange-60;
   @include apply-tabs($orange-20);
   @include apply-pagination-orange-20;
+
+  --filter-button-1: #{$orange-40};
+  --filter-button-2: #{$orange-20};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-h-tangerine {
@@ -160,6 +190,10 @@
   @include apply-tag-tangerine-70;
   @include apply-tabs($tangerine-30);
   @include apply-pagination-tangerine-30;
+
+  --filter-button-1: #{$tangerine-30};
+  --filter-button-2: #{$tangerine-20};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-i-goldenrod {
@@ -175,6 +209,10 @@
   @include apply-tag-goldenrod;
   @include apply-tabs($goldenrod-20);
   @include apply-pagination-goldenrod-20;
+
+  --filter-button-1: #{$goldenrod-20};
+  --filter-button-2: #{$white};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-j-tangerine-20 {
@@ -190,6 +228,10 @@
   @include apply-tag-orange-40;
   @include apply-tabs($orange-100);
   @include apply-pagination-orange;
+
+  --filter-button-1: #{$orange-40};
+  --filter-button-2: #{$orange-20};
+  --filter-button-3: #{$navy-blue-60};
 }
 
 @mixin apply-theme-k-fern-20 {
@@ -205,6 +247,10 @@
   @include apply-tag-fern-20;
   @include apply-tabs($fern-60);
   @include apply-pagination-fern;
+
+  --filter-button-1: #{$fern-5};
+  --filter-button-2: #{$white};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-l-teal-5 {
@@ -220,6 +266,10 @@
   @include apply-tag-teal-10;
   @include apply-tabs($teal-40);
   @include apply-pagination-teal-40;
+
+  --filter-button-1: #{$teal-10};
+  --filter-button-2: #{$white};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-m-goldenrod-20 {
@@ -235,6 +285,10 @@
   @include apply-tag-goldenrod;
   @include apply-tabs($tangerine-100);
   @include apply-pagination-tangerine;
+
+  --filter-button-1: #{$goldenrod-60};
+  --filter-button-2: #{$goldenrod-100};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-n-denim-5 {
@@ -250,6 +304,10 @@
   @include apply-tag-denim-10;
   @include apply-tabs($denim-40);
   @include apply-pagination-denim-40;
+
+  --filter-button-1: #{$denim-10};
+  --filter-button-2: #{$denim-20};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin apply-theme-o-teal-20 {
@@ -265,6 +323,10 @@
   @include apply-tag-teal-20;
   @include apply-tabs($teal-100);
   @include apply-pagination-teal-100;
+
+  --filter-button-1: #{$teal-10};
+  --filter-button-2: #{$teal-5};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin theme-mode($light, $dark) {

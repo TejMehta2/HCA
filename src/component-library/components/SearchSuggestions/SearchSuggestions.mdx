@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as SearchSuggestionsStories from './SearchSuggestions.stories'
+
+<Meta of={SearchSuggestionsStories} />
+
+# SearchSuggestions
+
+## Description
+
+The SearchSuggestions component is a listbox wrapper for search suggestions.
+
+In appearance it is similar to a dropdown select menu.
+
+It is intended to be used in the [SearchBar](?path=/docs/components-searchbar--docs) component, to provide a list of search suggestions which populate the search bar when clicked.
+
+It doesn't handle its own state, but expects the currentValue prop to reflect the current state.
+
+The styles are organised with ths SCSS placeholder selected, so that they can be re-used in other search components, like [StyledYextSearchBar](?path=/story/yext-styledyextsearchbar--default)
+
+It can be composed like this:
+
+``` tsx
+<SearchSuggestions
+  suggestions={
+    ['Suggestion A', 'Suggestion B']
+  }
+  currentValue={'Suggestion A'}
+  setValue={
+    (newValue: string) => console.log(newValue)
+  }
+/>
+```

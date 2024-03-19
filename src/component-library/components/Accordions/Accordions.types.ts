@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { IconName } from '../../foundation/Icons/icon-map.generated';
 
-export type Accordions = {
+export interface AccordionProps {
   title: ReactNode | JSX.Element;
   children: ReactNode | JSX.Element;
   contentVariation?: 'filters';
-}[];
+}
+export type Accordions = AccordionProps[];
 
 export interface AccordionsProps {
   accordions: Accordions;

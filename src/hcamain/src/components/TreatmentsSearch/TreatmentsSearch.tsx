@@ -204,7 +204,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
             </Text>
           }
         >
-          <CardGrid theme={props.params?.Theme || 'I-HCA-Goldenrod'}>
+          <CardGrid>
             {data?.treatments?.map((item, index) => (
               <CardContent
                 key={index}

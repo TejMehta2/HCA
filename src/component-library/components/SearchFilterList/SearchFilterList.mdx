@@ -1,0 +1,37 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchFilterListStories from './SearchFilterList.stories';
+
+<Meta of={SearchFilterListStories} />
+
+# SearchFilterList
+
+## Description
+
+The SearchFilterList component is for displaying the current active filters applied in the search listing page.
+Each can be clicked to remove it and clicking the 'Clear filers' button will remove all of them
+
+It is intended to be used in the search listing page
+
+It can be composed like this:
+
+```tsx
+const clearFilters = (index: number) => {
+  console.log('clear filter ' + index);
+};
+
+<SearchFilterList 
+  filters={
+    [
+      {
+        label: 'Orthopaedic care 1',
+        id: 'care-1',
+      },
+    {
+        label: 'Orthopaedic care 2',
+        id: 'care-2',
+      },
+    ]
+  } 
+  clearFilters={clearFilters} 
+/>;
+```

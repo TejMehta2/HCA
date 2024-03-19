@@ -3,7 +3,15 @@ import { RadioButtonProps } from './RadioButton.types';
 import styles from './RadioButton.module.scss';
 
 const RadioButton = (props: RadioButtonProps): JSX.Element => {
-  const { label, name, value, mode = 'light', disabled } = props;
+  const {
+    label,
+    name,
+    value,
+    mode = 'light',
+    disabled,
+    onChange,
+    checked,
+  } = props;
 
   const id = useId();
 
@@ -15,6 +23,8 @@ const RadioButton = (props: RadioButtonProps): JSX.Element => {
         name={name}
         disabled={disabled}
         value={value}
+        onChange={onChange}
+        checked={checked}
       />
       {label}
     </label>

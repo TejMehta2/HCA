@@ -1,0 +1,39 @@
+﻿---
+ID: "4eef409a-6d62-4ae9-b025-d06963c5f132"
+Parent: "b8304b73-40b0-4e34-9e61-ca96af42b854"
+Template: "9177c689-fd19-42f1-b157-0980ba967fce"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA98/Data/Test And Scans Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240318T100335Z
+    - ID: "694439b2-0b3a-4b7b-9df0-04a530b796eb"
+      Hint: TestAndScans
+      Value: |
+        {D3FA1E51-B00E-422B-80E6-E91472922822}
+        {C6383C66-08FD-43DA-805C-A8A1CA08E7E0}
+        {A0EA0DCF-2F4B-4578-A24A-4F01EDF46AC2}
+        {599DD063-6A11-4DB6-8FAA-0DF21B0D456A}
+    - ID: "838e0417-a20d-40ce-b8f3-51a29cf1ea3f"
+      Hint: NumberOfCards
+      Value: 4
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a7c0a549-fe2e-42aa-9cbc-db703df58b65"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Key tests & scans
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240318T160644Z
+    - ID: "e5e0f48b-6019-4c9b-83b0-1a3dced02373"
+      Hint: CTACardText
+      Value: Learn more

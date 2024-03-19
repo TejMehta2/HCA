@@ -42,17 +42,23 @@ Languages:
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: Hip pain scan
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9b8ac83a-30f2-4756-afc0-2a3bd7e2704f"
+      Value: "a1807314-4814-46f1-bbc3-d3ef4bedc525"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T065910Z
+      Value: 20240318T124321Z
