@@ -7,6 +7,7 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Params from 'src/types/params';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   data?: {
@@ -41,25 +42,29 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
   }
 
   return (
-    <HeaderPlain
-      theme={props.params?.Theme || 'A-HCA-White'}
-      subheading={
-        <Text variation="subheading-1">
-          <JssText
-            field={props.fields?.data?.currentItem?.heading?.jsonValue}
-          />
-        </Text>
-      }
-      heading={
-        <Text
-          tag={props.params?.HeadingTag || 'h1'}
-          variation={props.params?.HeadingSize || 'display-1'}
-        >
-          <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
-        </Text>
-      }
-    >
-      <RichText field={props.fields?.data?.contextItem?.text?.jsonValue} />
-    </HeaderPlain>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <HeaderPlain
+        subheading={
+          <Text variation="subheading-1">
+            <JssText
+              field={props.fields?.data?.currentItem?.heading?.jsonValue}
+            />
+          </Text>
+        }
+        heading={
+          <Text
+            tag={props.params?.HeadingTag || 'h1'}
+            variation={props.params?.HeadingSize || 'display-1'}
+          >
+            <JssText
+              field={props.fields?.data?.contextItem?.title?.jsonValue}
+            />
+          </Text>
+        }
+        description={
+          <RichText field={props.fields?.data?.contextItem?.text?.jsonValue} />
+        }
+      />
+    </Themes>
   );
 };
