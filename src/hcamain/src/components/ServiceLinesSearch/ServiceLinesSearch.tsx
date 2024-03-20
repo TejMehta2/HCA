@@ -14,14 +14,14 @@ import Image from 'next/image';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import {
   Autocomplete,
-  ServiceLinesResponse,
-  ServiceLinesSearchProps,
-} from './ServiceLinesSearch.types';
+  ApiResponse,
+  ApiSearchProps,
+} from '../../types/searchProps';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
 import Icons from '@component-library/foundation/Icons/Icons';
-import getBaselineParams from './helpers/getBaselineParams';
+import getBaselineParams from 'lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -31,7 +31,7 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/servicelines`;
 
 const ServiceLinesSearchDefaultComponent = (
-  props: ServiceLinesSearchProps
+  props: ApiSearchProps
 ): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
@@ -40,7 +40,7 @@ const ServiceLinesSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
+export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
@@ -56,7 +56,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
     searchParams,
     autocompleteData,
     autocompleteError,
-  } = useSearchForm<ServiceLinesResponse, Autocomplete>({
+  } = useSearchForm<ApiResponse, Autocomplete>({
     baseUrl: BASE_URL,
     baselineParams,
     fallbackData: fallbackData,
@@ -261,7 +261,7 @@ export const Default = (props: ServiceLinesSearchProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: ServiceLinesSearchProps
+  rendering: ApiSearchProps
 ) => {
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
@@ -272,7 +272,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as ServiceLinesResponse;
+      rendering.fallbackData = fallbackData as ApiResponse;
       return rendering;
     } else {
       throw response.statusText;
