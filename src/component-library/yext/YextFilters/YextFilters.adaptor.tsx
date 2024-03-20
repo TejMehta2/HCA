@@ -18,16 +18,15 @@ const YextFiltersAdaptor = (): JSX.Element => {
 
   const facets = useSearchState((state) => state.filters.facets);
   console.log(facets);
-  console.log(facets && facets[0].displayName);
 
-  const resultCount = 20;
+  const resultCount = useSearchState((state) => state.vertical.resultsCount);
 
   const searchActions = useSearchActions();
 
   const handleFacetClick = (
     value: string | number | boolean | NumberRangeValue,
     selected: boolean,
-    fieldId,
+    fieldId: string,
     matcher = Matcher.Equals
   ) => {
     searchActions.setFacetOption(fieldId, { matcher, value }, selected);
