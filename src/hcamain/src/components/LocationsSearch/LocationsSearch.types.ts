@@ -1,7 +1,7 @@
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
-export interface TestsAndScansResponse {
+export interface SearchResponse {
   meta: Meta;
   response: Response;
 }
@@ -93,6 +93,7 @@ export interface FilterOption {
 export interface FilterCategory {
   displayName: string;
   fields: {
+    Header: Field<string>;
     Filters: FilterOption[];
   };
 }
@@ -112,10 +113,15 @@ export interface Fields {
   ResultsPerPage?: Field<number>;
   SearchBy?: FilterOption[];
   FilterBy?: FilterOption[];
+
+  GridViewIcon?: HCAIconFields;
+  GridViewText?: Field<string>;
+  MapViewIcon?: HCAIconFields;
+  MapViewText?: Field<string>;
 }
 
-export type TestsAndScansSearchProps = {
+export type LocationsSearchProps = {
   params?: Params;
   fields?: Fields;
-  fallbackData?: TestsAndScansResponse;
+  fallbackData?: SearchResponse;
 };

@@ -1,12 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.wrapper {
-  @include responsive-container;
-
-  padding-bottom: $spacing-13;
-}
-
 .inner {
   position: relative;
 }

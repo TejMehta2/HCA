@@ -75,7 +75,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
   }
   return (
     <HeaderPlain
-      theme={props.params?.Theme || 'A-HCA-White'}
+      // theme={props.params?.Theme || 'A-HCA-White'}
       subheading={
         <Text variation="subheading-1">
           <JssText field={props.fields?.Heading} />
