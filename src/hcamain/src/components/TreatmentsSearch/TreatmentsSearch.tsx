@@ -14,14 +14,15 @@ import Image from 'next/image';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import {
   Autocomplete,
-  TreatmentsResponse,
-  TreatmentsSearchProps,
-} from './TreatmentsSearch.types';
+  ApiResponse,
+  ApiSearchProps,
+} from '../../types/searchProps';
+
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
 import Icons from '@component-library/foundation/Icons/Icons';
-import getBaselineParamsTreatments from './helpers/getBaselineParamsTreatments';
+import getBaselineParams from 'lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -31,7 +32,7 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/treatments`;
 
 const TreatmentsSearchDefaultComponent = (
-  props: TreatmentsSearchProps
+  props: ApiSearchProps
 ): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
@@ -40,12 +41,12 @@ const TreatmentsSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: TreatmentsSearchProps): JSX.Element => {
+export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParamsTreatments(props);
+    getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -56,7 +57,7 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
     searchParams,
     autocompleteData,
     autocompleteError,
-  } = useSearchForm<TreatmentsResponse, Autocomplete>({
+  } = useSearchForm<ApiResponse, Autocomplete>({
     baseUrl: BASE_URL,
     baselineParams,
     fallbackData: fallbackData,
@@ -261,9 +262,9 @@ export const Default = (props: TreatmentsSearchProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: TreatmentsSearchProps
+  rendering: ApiSearchProps
 ) => {
-  const { baselineParams } = getBaselineParamsTreatments(rendering);
+  const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, BASE_URL); // compose API url
@@ -276,7 +277,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     if (response.ok) {
       const fallbackData = await response.json();
       console.log(fallbackData);
-      rendering.fallbackData = fallbackData as TreatmentsResponse;
+      rendering.fallbackData = fallbackData as ApiResponse;
       return rendering;
     } else {
       throw response.statusText;

@@ -1,7 +1,7 @@
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
-export interface TreatmentsResponse {
+export interface ApiResponse {
   meta: Meta;
   response: Response;
 }
@@ -114,8 +114,8 @@ export interface Fields {
   FilterBy?: FilterOption[];
 }
 
-export type TreatmentsSearchProps = {
+export type ApiSearchProps = {
   params?: Params;
   fields?: Fields;
-  fallbackData?: TreatmentsResponse;
+  fallbackData?: ApiResponse;
 };
