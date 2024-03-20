@@ -1,7 +1,4 @@
-import {
-  FilterOption,
-  ServiceLinesSearchProps,
-} from '../ServiceLinesSearch.types';
+import { FilterOption, ApiSearchProps } from '../types/searchProps';
 
 export const splitOptionToEntry = ({
   fields,
@@ -12,7 +9,7 @@ export const splitOptionToEntry = ({
   ];
 };
 
-const getBaselineParams = (props: ServiceLinesSearchProps) => {
+const getBaselineParams = (props: ApiSearchProps) => {
   // Immutable CMS params
   const filterByList = props.fields?.FilterBy?.map(splitOptionToEntry) || [];
   const SearchByList = props?.fields?.SearchBy?.map(splitOptionToEntry) || [];

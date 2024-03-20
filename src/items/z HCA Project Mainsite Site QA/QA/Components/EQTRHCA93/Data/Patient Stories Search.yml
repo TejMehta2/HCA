@@ -39,13 +39,13 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
-      Value: Search for <b>services or treatments</b>
+      Value: Search for services or treatments
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "919d5d09-5072-4467-9fa4-bc067cca6282"
+      Value: "e6aabb18-2cb4-4bb3-9e25-77fcf36a28e4"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -69,7 +69,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240307T225241Z
+      Value: 20240319T160704Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
