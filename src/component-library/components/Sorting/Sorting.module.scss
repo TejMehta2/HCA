@@ -114,7 +114,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
     width: 100%;
     justify-content: center;
 
-    @include media(screen-m) {
+    @include media(screen-l) {
       width: max-content;
       justify-content: unset;
     }
