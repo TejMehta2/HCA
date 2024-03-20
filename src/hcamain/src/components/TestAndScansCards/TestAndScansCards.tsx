@@ -85,13 +85,24 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <TestAndScansCardsDefaultComponent {...props} />;
   }
 
+  console.log(props);
+
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === 4 ? '4-columns' : '3-columns';
+
+  const queryParam = props.fields.data?.contextItem?.id
+    ? '?conditionId=' + props.fields.data?.contextItem?.id
+    : '';
 
   const link =
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
-      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+      <JssLink
+        field={props.fields?.data?.item?.cTALink?.jsonValue}
+        href={
+          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+        }
+      >
         <JssRichText
           tag="span"
           field={{
@@ -100,8 +111,60 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         />
       </JssLink>
     ) : (
-      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
+      <JssLink
+        field={props.fields?.data?.item?.cTALink?.jsonValue}
+        href={
+          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+        }
+      />
     ));
+
+  const getCards = (cards?: DiagnosisFields[]) => {
+    if (!cards) return;
+
+    const limit = props.fields?.data?.item?.numberOfCards?.jsonValue?.value
+      ? +props.fields?.data?.item?.numberOfCards?.jsonValue?.value
+      : -1;
+
+    return (
+      <>
+        {cards.slice(0, limit)?.map((card, index) => (
+          <CardContent
+            key={index}
+            image={
+              showImage ? (
+                <JssImage field={card.abstractImage?.jsonValue} />
+              ) : undefined
+            }
+            title={
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+                variation="heading-1"
+              >
+                <JssText field={card.abstractTitle} />
+              </Text>
+            }
+            bodyCopy={
+              <Text tag="p" variation="body-medium">
+                <JssRichText tag="span" field={card.abstractText} />
+              </Text>
+            }
+            link={
+              <a href={card?.url?.path}>
+                <span>
+                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
+                </span>
+              </a>
+            }
+          />
+        ))}
+      </>
+    );
+  };
+
+  const cards = props.fields?.data?.contextItem?.diagnosis?.DiagnosisList
+    ? getCards(props.fields?.data?.contextItem?.diagnosis?.DiagnosisList)
+    : getCards(props.fields?.data?.item?.testAndScans?.TestAndScansList);
 
   return (
     <CardBlock
@@ -126,40 +189,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       }
       cta={link}
     >
-      <>
-        {props.fields?.data?.item?.testAndScans?.TestAndScansList?.map(
-          (card, index) => (
-            <CardContent
-              key={index}
-              image={
-                showImage ? (
-                  <JssImage field={card.abstractImage?.jsonValue} />
-                ) : undefined
-              }
-              title={
-                <Text
-                  tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
-                  variation="heading-1"
-                >
-                  <JssText field={card.abstractTitle} />
-                </Text>
-              }
-              bodyCopy={
-                <Text tag="p" variation="body-medium">
-                  <JssRichText tag="span" field={card.abstractText} />
-                </Text>
-              }
-              link={
-                <a href={card?.url?.path}>
-                  <span>
-                    {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
-                  </span>
-                </a>
-              }
-            />
-          )
-        )}
-      </>
+      {cards && cards}
     </CardBlock>
   );
 };
