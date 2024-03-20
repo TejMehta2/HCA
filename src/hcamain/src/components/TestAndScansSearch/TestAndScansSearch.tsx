@@ -21,7 +21,7 @@ import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm'
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
 import Icons from '@component-library/foundation/Icons/Icons';
-import getBaselineParamsTestsAndScans from './helpers/getBaselineParamsTreatments';
+import getBaselineParams from '../../lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -45,7 +45,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParamsTestsAndScans(props);
+    getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -263,7 +263,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: TestsAndScansSearchProps
 ) => {
-  const { baselineParams } = getBaselineParamsTestsAndScans(rendering);
+  const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, BASE_URL); // compose API url
