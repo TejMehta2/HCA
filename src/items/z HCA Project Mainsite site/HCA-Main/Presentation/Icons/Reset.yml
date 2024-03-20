@@ -1,0 +1,38 @@
+﻿---
+ID: "6e6bf5b6-5a68-4b47-a633-1b79d23884a1"
+Parent: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Template: "ea685de8-4c20-44c3-8e45-a6a2ad5e276c"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Icons/Reset"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240320T100617Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b8295572-f0a4-40df-a036-148bcff091f9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240320T100744Z
+    - ID: "f42617c7-46b7-46f3-a075-69ebf514838e"
+      Hint: SvgMarkup
+      Value: |
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.44224 9.7242C4.11101 13.1221 5.43897 17.0835 8.71335 18.974C12.3208 21.0568 16.924 19.8372 18.9951 16.2499C21.0662 12.6626 19.8208 8.06641 16.2133 5.98362C13.5353 4.43746 10.3074 4.71115 7.97502 6.42337" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.7188 8.58496L7.67034 6.82496C7.61575 6.79344 7.5679 6.75148 7.52953 6.70147C7.49116 6.65147 7.46301 6.59439 7.4467 6.5335C7.43038 6.47262 7.42622 6.40911 7.43445 6.34662C7.44267 6.28412 7.46313 6.22386 7.49465 6.16927L9.25465 3.12086" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
