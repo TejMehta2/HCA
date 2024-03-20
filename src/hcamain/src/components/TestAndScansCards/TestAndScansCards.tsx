@@ -85,8 +85,6 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <TestAndScansCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === 4 ? '4-columns' : '3-columns';
 

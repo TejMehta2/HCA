@@ -25,7 +25,7 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
             ].join(' ')}
           >
             <div className={styles.header}>{header}</div>
-            {children && children}
+            {children}
           </div>
           <div className={styles.cta}>
             <Button variation="full" size="large">
