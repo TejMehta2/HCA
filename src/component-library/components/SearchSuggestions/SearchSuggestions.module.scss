@@ -16,6 +16,8 @@
 }
 
 %suggestion {
+  width: 100%;
+  border: none;
   cursor: pointer;
   padding: 0;
   padding: px-to-rem(8) px-to-rem(32);
@@ -28,6 +30,8 @@
   * {
     padding: 0;
   }
+
+  background-color: transparent;
 
   &:hover {
     color: var(--tag-text);
