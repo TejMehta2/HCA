@@ -44,7 +44,7 @@ Languages:
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "28e98757-63c1-4f30-a6c6-7bcd230962ba"
+      Value: "b10cf24b-a8ef-4c6a-8fa4-0e7a4e80834f"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -52,7 +52,7 @@ Languages:
         {60468383-EF7B-4714-9B6B-CBEEABF06C94}
     - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
       Hint: ResultsPerPage
-      Value: 12
+      Value: 3
     - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
       Hint: FilterOptionsText
       Value: Filter by
@@ -68,4 +68,4 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T130744Z
+      Value: 20240320T140900Z
