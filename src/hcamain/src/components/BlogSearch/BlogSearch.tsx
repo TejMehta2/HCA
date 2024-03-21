@@ -19,7 +19,7 @@ import {
 } from './BlogSearch.types';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
-import getBaselineParamsBlog from './helpers/getBaselineParamsBlog';
+import getBaselineParams from '../../lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -43,7 +43,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParamsBlog(props);
+    getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -221,7 +221,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogSearchProps
 ) => {
-  const { baselineParams } = getBaselineParamsBlog(rendering);
+  const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, BASE_URL); // compose API url
