@@ -493,4 +493,10 @@
   label {
     height: 100%;
   }
+
+  @include media(screen-l, max) {
+    button {
+      width: 100%;
+    }
+  }
 }

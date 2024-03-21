@@ -14,24 +14,25 @@ import Image from 'next/image';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import {
   Autocomplete,
-  PatientStoriesResponse,
-  PatientStoriesSearchProps,
-} from './PatientStoriesSearch.types';
+  ApiResponse,
+  ApiSearchProps,
+} from '../../types/searchProps';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
 import Icons from '@component-library/foundation/Icons/Icons';
-import getBaselineParamsPatients from './helpers/getBaselineParamsPatients';
-import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
+import getBaselineParams from 'lib/getBaselineParams';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
 
 const PatientStoriesSearchDefaultComponent = (
-  props: PatientStoriesSearchProps
+  props: ApiSearchProps
 ): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
@@ -40,12 +41,12 @@ const PatientStoriesSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
+export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParamsPatients(props);
+    getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -56,7 +57,7 @@ export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
     searchParams,
     autocompleteData,
     autocompleteError,
-  } = useSearchForm<PatientStoriesResponse, Autocomplete>({
+  } = useSearchForm<ApiResponse, Autocomplete>({
     baseUrl: BASE_URL,
     baselineParams,
     fallbackData: fallbackData,
@@ -101,113 +102,114 @@ export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
   }, []);
 
   return (
-    <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
-      <form {...formHandlers}>
-        <SearchContainer ref={searchWrapperRef}>
-          {fields?.Heading?.value && (
-            <Text variation={'subheading-1'}>
-              <JssText field={fields?.Heading} />
+    <form {...formHandlers}>
+      <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
+        <HeaderPlain
+          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          description={
+            <Text tag="div" variation="body-large">
+              <RichText tag="span" field={props?.fields?.Text} />
             </Text>
-          )}
-          {fields?.Title?.value && (
-            <Text
-              variation={params?.HeadingSize || 'display-2'}
-              tag={params?.HeadingTag || 'h2'}
+          }
+        >
+          <>
+            <SearchBar
+              defaultValue={searchParams.get('input') || undefined}
+              name={'input'}
+              placeholder={fields?.SearchPlaceholder?.value}
+              suggestions={autocompleteData?.response.results?.map(
+                (result) => `${result.value}`
+              )}
             >
-              <JssText field={fields?.Title} />
-            </Text>
-          )}
-          {fields?.Text?.value && (
-            <Text variation="body-large" tag="div">
-              <RichText tag="div" field={fields?.Text} />
-            </Text>
-          )}
-          <SearchBar
-            defaultValue={searchParams.get('input') || undefined}
-            name={'input'}
-            placeholder={fields?.SearchPlaceholder?.value}
-            suggestions={autocompleteData?.response.results?.map(
-              (result) => `${result.value}`
-            )}
-          >
-            <Filters
-              buttonText={<JssText field={fields?.FilterOptionsText} />}
-              buttonIcon={
-                <SitecoreSvg>
-                  {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              resultsCount={resultsCount}
-              filters={filterCategories?.map((category) => ({
-                title: category.title,
-                contentVariation: 'filters',
-                children: (
-                  <Checkboxes>
-                    {category.fields?.map((props) => {
-                      return <Checkbox {...props} key={props.id} />;
-                    })}
-                  </Checkboxes>
-                ),
-              }))}
-            />
-            <Sorting
-              buttonText={<JssText field={fields?.SortOptionsText} />}
-              buttonIcon={
-                <SitecoreSvg>
-                  {props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              options={
-                props?.fields?.SortOptions?.map(
-                  ({
-                    fields: {
-                      Filter,
-                      FilterValueGuid,
-                      FilterValueString,
-                      DisplayName,
-                    },
-                  }) => {
-                    const key = Filter?.value || '';
-                    const value =
-                      FilterValueGuid?.id || FilterValueString.value || '';
-                    return {
-                      id: `${key}-${value}`,
-                      value: value,
-                      labelText: DisplayName?.value || '',
-                      name: key,
-                      defaultChecked: searchParams?.get(key) === value,
-                    };
-                  }
-                ) || []
-              }
-            />
-          </SearchBar>
-          <SearchFilterList
-            filters={activeFilters || []}
-            clearFilters={() => {
-              activeFilters?.forEach(({ id }, index) => {
-                const field = document.getElementById(id) as HTMLInputElement;
-                if (!field) return;
-                if (index === activeFilters.length - 1) {
-                  field.click(); // interact with last field to trigger a form change event
-                } else {
-                  field.checked = false; // update other fields without triggering form change event
+              <Filters
+                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
                 }
-              });
-            }}
-          />
-          <Text tag="h3" variation="heading-1">
-            <span>
-              <span>{resultsCount} </span>
-              <JssText field={fields?.SearchResultsText} />
-              <span></span>{' '}
-            </span>
-          </Text>
-          {!!rangeEnd && (
-            <Text variation="body-medium">
-              <span>Showing {resultsRange}</span>
+                resultsCount={resultsCount}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+              <Sorting
+                buttonText={<JssText field={fields?.SortOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                options={
+                  props?.fields?.SortOptions?.map(
+                    ({
+                      fields: {
+                        Filter,
+                        FilterValueGuid,
+                        FilterValueString,
+                        DisplayName,
+                      },
+                    }) => {
+                      const key = Filter?.value || '';
+                      const value =
+                        FilterValueGuid?.id || FilterValueString.value || '';
+                      return {
+                        id: `${key}-${value}`,
+                        value: value,
+                        labelText: DisplayName?.value || '',
+                        name: key,
+                        defaultChecked: searchParams?.get(key) === value,
+                      };
+                    }
+                  ) || []
+                }
+              />
+            </SearchBar>
+            <SearchFilterList
+              filters={activeFilters || []}
+              clearFilters={() => {
+                activeFilters?.forEach(({ id }, index) => {
+                  const field = document.getElementById(id) as HTMLInputElement;
+                  if (!field) return;
+                  if (index === activeFilters.length - 1) {
+                    field.click(); // interact with last field to trigger a form change event
+                  } else {
+                    field.checked = false; // update other fields without triggering form change event
+                  }
+                });
+              }}
+            />
+          </>
+        </HeaderPlain>
+      </Themes>
+
+      <Themes theme={'A-HCA-White'}>
+        <SearchWrapper
+          ref={searchWrapperRef}
+          searchDetail={
+            <Text tag="h3" variation="heading-1">
+              <span>
+                <span>{resultsCount} </span>
+                <JssText field={fields?.SearchResultsText} />
+              </span>
             </Text>
-          )}
+          }
+          showing={
+            !!rangeEnd && (
+              <Text variation="body-medium">
+                <span>Showing {resultsRange}</span>
+              </Text>
+            )
+          }
+        >
           <CardGrid>
             {data?.response.results?.map((item, index) => {
               const { data } = item;
@@ -253,17 +255,17 @@ export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
             </span>
             <span>Show more</span>
           </SearchFormLoadMore>
-        </SearchContainer>
-      </form>
-    </Themes>
+        </SearchWrapper>
+      </Themes>
+    </form>
   );
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: PatientStoriesSearchProps
+  rendering: ApiSearchProps
 ) => {
-  const { baselineParams } = getBaselineParamsPatients(rendering);
+  const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, BASE_URL); // compose API url
@@ -272,7 +274,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as PatientStoriesResponse;
+      rendering.fallbackData = fallbackData as ApiResponse;
       return rendering;
     } else {
       throw response.statusText;
