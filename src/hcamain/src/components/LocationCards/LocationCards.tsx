@@ -8,6 +8,7 @@ import {
   Image as JssImage,
   RichText as JssRichText,
   LinkField,
+  GetStaticComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import CardMap from '@component-library/components/CardMap/CardMap';
@@ -15,6 +16,11 @@ import Text from '@component-library/foundation/Text/Text';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+
+import getBaselineParams from 'lib/getBaselineParams';
+import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
+
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -48,7 +54,7 @@ interface Fields {
       };
       cTALink?: { jsonValue?: LinkField };
       locations?: {
-        LocationsList?: LocationsFields[];
+        pagesList?: LocationsFields[];
       };
       filterOptions?: {
         filterOptionsList?: FilterOptionFields[];
@@ -82,7 +88,7 @@ const LocationCardsDefaultComponent = (
 );
 
 const MapCards = (props: LocationCardsProps) => {
-  return props.fields?.data?.item?.locations?.LocationsList?.map(
+  return props.fields?.data?.item?.locations?.PagesList?.map(
     (location, index) => (
       <CardMap
         key={index}
@@ -143,6 +149,15 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
+  console.log(props);
+
+  // Set up default baseline parameters from CMS
+  const { defaultLimit, defaultOffset, baselineParams } = getBaselineParams(
+    props.fields.data?.item
+  );
+
+  console.log(baselineParams);
+
   return (
     <CardBlock
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -179,7 +194,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      <>{MapCards(props)}</>
+      {/* <>{MapCards(props)}</> */}
     </CardBlock>
   );
 };
@@ -218,7 +233,31 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {MapCards(props)}
+      {/* {MapCards(props)} */}
     </CarouselCards>
   );
+};
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering: ApiSearchProps
+) => {
+  const { baselineParams } = getBaselineParams(rendering);
+  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const query = `?${params.join('&')}`;
+  const url = new URL(query, BASE_URL); // compose API url
+
+  try {
+    const response = await fetch(url.href);
+    if (response.ok) {
+      const fallbackData = await response.json();
+      rendering.fallbackData = fallbackData as ApiResponse;
+      return rendering;
+    } else {
+      throw response.statusText;
+    }
+  } catch (error) {
+    console.error(error);
+    return rendering;
+  }
 };
