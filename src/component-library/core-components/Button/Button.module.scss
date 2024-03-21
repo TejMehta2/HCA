@@ -151,11 +151,15 @@
       }
     }
 
-    &:focus-visible,
-    &:focus,
-    &:focus-within {
+    &:focus-visible {
       border-color: var(--text);
-      @include apply-focus-outline(var(--cta-full-focus-outline));
+      @include apply-focus-outline(currentColor);
+
+      span:has(svg) {
+        outline: solid px-to-rem(2) currentcolor;
+        border-radius: $radius-medium;
+        outline-offset: px-to-rem(-2);
+      }
     }
   }
 }
