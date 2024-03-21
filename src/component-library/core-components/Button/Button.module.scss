@@ -89,7 +89,7 @@
     }
 
     svg {
-      min-width: min-content;
+      flex-shrink: 0;
     }
   }
 
@@ -151,15 +151,11 @@
       }
     }
 
-    &:focus-visible {
+    &:focus-visible,
+    &:focus,
+    &:focus-within {
       border-color: var(--text);
-      @include apply-focus-outline(currentColor);
-
-      span:has(svg) {
-        outline: solid px-to-rem(2) currentcolor;
-        border-radius: $radius-medium;
-        outline-offset: px-to-rem(-2);
-      }
+      @include apply-focus-outline(var(--cta-full-focus-outline));
     }
   }
 }
