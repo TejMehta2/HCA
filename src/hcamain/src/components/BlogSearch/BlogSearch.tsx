@@ -26,7 +26,6 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Tags from '@component-library/core-components/Tags/Tags';
-//import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
@@ -60,8 +59,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     baselineParams,
     fallbackData: fallbackData,
   });
-
-  console.log(props);
 
   if (!fields || error || autocompleteError) {
     return <BlogSearchDefaultComponent {...props} />;
@@ -187,7 +184,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                 typeName,
               } = data;
 
-              //console.log(data);
               return (
                 <CardBlog key={index}>
                   {imageUrl ? (
@@ -207,29 +203,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   )}
                 </CardBlog>
               );
-              /* return (
-                <CardContent
-                  key={index}
-                  title={
-                    <Text variation="heading-1" tag="h4">
-                      {title}
-                    </Text>
-                  }
-                  bodyCopy={<Text variation="body-large">{description}</Text>}
-                  image={
-                    imageUrl ? (
-                      <Image src={imageUrl} alt="" width="363" height="243" />
-                    ) : undefined
-                  }
-                  link={
-                    <a href={url}>
-                      <span>
-                        Learn <strong>more</strong>
-                      </span>
-                    </a>
-                  }
-                />
-              ); */
             })}
           </CardGrid>
           <SearchFormPagination

@@ -9,7 +9,7 @@ const SearchFormPagination = (
   const offsetRef = useRef<HTMLInputElement>(null);
   const pageCount = Math.ceil(resultsCount / limit);
   const currentPage = offset / limit + 1;
-  console.log('pagecount', pageCount);
+
   if (resultsCount === 0 || pageCount <= 1) return <></>;
   return (
     <>
