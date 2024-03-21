@@ -2,8 +2,6 @@
 @use '../../utilities/index.module' as *;
 
 .text-button {
-  width: max-content;
-
   a {
     text-decoration: none;
   }
@@ -70,7 +68,7 @@
     }
 
     svg {
-      min-width: min-content;
+      flex-shrink: 0;
     }
   }
 }
