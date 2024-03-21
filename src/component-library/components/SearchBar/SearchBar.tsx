@@ -14,6 +14,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     suggestions = [],
     locationCta,
     children,
+    submitOnSelection,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -79,6 +80,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         {!hideSuggestions && (
           <div className={styles.suggestions}>
             <SearchSuggestions
+              submitOnSelection={submitOnSelection}
               currentValue={defaultValue}
               suggestions={suggestions}
               setValue={setValue}
