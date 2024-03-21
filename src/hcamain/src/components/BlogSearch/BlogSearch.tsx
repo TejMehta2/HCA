@@ -24,6 +24,7 @@ import SearchContainer from '@component-library/site-components/SearchContainer/
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
@@ -98,30 +99,18 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
   }, []);
 
   return (
-    <Themes theme={params?.Theme || 'A-HCA-White'}>
-      <form {...formHandlers}>
-        <SearchContainer ref={searchWrapperRef}>
-          <span>
-            {fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
-                <JssText field={fields?.Heading} />
-              </Text>
-            )}
-            {fields?.Title?.value && (
-              <Text
-                variation={params?.HeadingSize || 'display-2'}
-                tag={params?.HeadingTag || 'h2'}
-              >
-                <JssText field={fields?.Title} />
-              </Text>
-            )}
-          </span>
-          {fields?.Text?.value && (
-            <Text variation="body-large" tag="div">
-              <RichText tag="div" field={fields?.Text} />
+    <form {...formHandlers}>
+      <Themes theme={params?.Theme || 'A-HCA-White'}>
+        <HeaderPlain
+          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          description={
+            <Text tag="div" variation="body-large">
+              <RichText tag="span" field={props?.fields?.Text} />
             </Text>
-          )}
+          }
+        >
           <SearchBar
+            submitOnSelection={true}
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}
@@ -130,6 +119,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             )}
           >
             <Filters
+              submitOnClose={true}
               buttonText={<JssText field={fields?.FilterOptionsText} />}
               buttonIcon={
                 <SitecoreSvg>
@@ -164,6 +154,10 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               });
             }}
           />
+        </HeaderPlain>
+      </Themes>
+      <Themes theme="A-HCA-White">
+        <SearchContainer ref={searchWrapperRef}>
           <Text tag="h3" variation="heading-1">
             <span>
               <span>{resultsCount} </span>
@@ -212,8 +206,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             scrollToRef={searchWrapperRef}
           />
         </SearchContainer>
-      </form>
-    </Themes>
+      </Themes>
+    </form>
   );
 };
 
