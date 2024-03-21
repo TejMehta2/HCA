@@ -68,8 +68,6 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <CarouselCards
       title={

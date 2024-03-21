@@ -90,6 +90,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
+  const baseUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
+  const querystring =
+    props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring;
+
   return (
     <CarouselCards
       title={
@@ -138,7 +142,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             {!!card.articleType && (
               <Tags>
                 <a
-                  href={`${props.fields?.data?.item?.blogUrl?.jsonValue?.value.href}${props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring}${card.articleType?.targetItem?.id}`}
+                  href={`${baseUrl}${querystring}${card.articleType?.targetItem?.id}`}
                 >
                   <JssText field={card.articleType?.targetItem?.title} />
                 </a>
