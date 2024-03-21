@@ -53,6 +53,11 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
+      // rewrite webhooks
+      {
+        source: '/webhooks/sitecore/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
+      },
     ];
   },
   webpack(config) {

@@ -27,6 +27,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import unpackFilterOption from 'lib/unpackFilterOption';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/scans`;
 
@@ -79,15 +80,13 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
   // Parse filter options to be used in multiple components
   const filterCategories = props.fields?.FilterOptions?.map((category) => ({
     title: category?.displayName || '',
-    fields: category.fields?.Filters?.map(({ fields }) => {
-      const key = fields.Filter?.value || '';
-      const value =
-        fields.FilterValueGuid?.id || fields.FilterValueString.value || '';
+    fields: category.fields?.Filters?.map((option) => {
+      const { id, key, value, displayName } = unpackFilterOption(option);
       return {
-        id: `${key}-${value}`,
-        value: value,
+        id,
+        value,
         name: key,
-        label: fields.DisplayName?.value || '',
+        label: displayName,
         defaultChecked: searchParams.getAll(key).includes(value),
       };
     }),
@@ -158,27 +157,18 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                 </SitecoreSvg>
               }
               options={
-                props?.fields?.SortOptions?.map(
-                  ({
-                    fields: {
-                      Filter,
-                      FilterValueGuid,
-                      FilterValueString,
-                      DisplayName,
-                    },
-                  }) => {
-                    const key = Filter?.value || '';
-                    const value =
-                      FilterValueGuid?.id || FilterValueString.value || '';
-                    return {
-                      id: `${key}-${value}`,
-                      value: value,
-                      labelText: DisplayName?.value || '',
-                      name: key,
-                      defaultChecked: searchParams?.get(key) === value,
-                    };
-                  }
-                ) || []
+                props?.fields?.SortOptions?.map((option) => {
+                  const { id, key, value, displayName } =
+                    unpackFilterOption(option);
+
+                  return {
+                    id,
+                    value,
+                    labelText: displayName,
+                    name: key,
+                    defaultChecked: searchParams?.get(key) === value,
+                  };
+                }) || []
               }
             />
           </SearchBar>

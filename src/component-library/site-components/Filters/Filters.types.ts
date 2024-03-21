@@ -5,4 +5,5 @@ export interface FiltersProps {
   resultsCount: number;
   buttonIcon?: JSX.Element;
   buttonText?: JSX.Element;
+  submitOnClose?: boolean;
 }

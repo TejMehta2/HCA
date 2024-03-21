@@ -9,4 +9,5 @@ export interface SearchBarProps {
   suggestions?: string[];
   locationCta?: JSX.Element;
   children?: JSX.Element | ReactNode;
+  submitOnSelection?: boolean;
 }

@@ -8,11 +8,12 @@ interface useSearchFormArgs<T> {
   baselineParams?: [string, string][];
   fallbackData?: T;
   autocompleteBaseUrl?: string;
+  redirectUrl?: string;
 }
 const useSearchForm = <ResponseT, AutocompleteResponseT>(
   args: useSearchFormArgs<ResponseT>
 ) => {
-  const { baseUrl, baselineParams = [], fallbackData } = args;
+  const { baseUrl, baselineParams = [], fallbackData, redirectUrl } = args;
   const searchParams = useSearchParams(); // dynamic reference to page URL query params
   const router = useRouter();
   const pathname = usePathname();
@@ -62,9 +63,12 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
       console.log(event);
     },
     onSubmit: (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault(); // prevent page refresh if user submits via "enter" key
-      handleChangeEvent(event);
+      if (!redirectUrl) {
+        event.preventDefault(); // prevent page refresh if user submits via "enter" key
+        handleChangeEvent(event);
+      }
     },
+    action: `${redirectUrl}${query}`,
   };
 
   return {
@@ -75,6 +79,7 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     autocompleteData,
     autocompleteError,
     autocompleteIsLoading,
+    query,
   };
 };
 
