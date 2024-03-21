@@ -33,10 +33,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
-      Value: Search <b>services, treatments, conditions...</b>
+      Value: Search services, treatments, conditions...
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "716150ae-dfbb-42e7-b67a-8ec1df4152b5"
+      Value: "d921e098-62be-4f41-91d3-0ec06b899a40"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -55,7 +55,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d24cbb38-fc72-42d9-a404-f1412bf128eb"
       Hint: SortOptionsIcon
       Value: "{F940A8AD-D316-4D03-893A-01169C3E95D2}"
@@ -64,7 +64,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102617Z
+      Value: 20240320T132723Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

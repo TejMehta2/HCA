@@ -26,6 +26,7 @@ type HCAIconFields = {
 
 type ArticleTypeFields = Item & {
   fields?: {
+    id?: string;
     Title?: Field<string>;
   };
 };
@@ -115,7 +116,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
                 <a
                   href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
                 >
-                  {card.fields?.ArticleType.fields.Title?.value}
+                  {card.fields?.ArticleType.fields.id}
                 </a>
               </Tags>
             )}
