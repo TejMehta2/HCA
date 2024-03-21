@@ -18,9 +18,8 @@ import {
   ApiSearchProps,
 } from '../../types/searchProps';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
-// import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
-import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
-import Icons from '@component-library/foundation/Icons/Icons';
+import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
+// import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
 import getBaselineParams from 'lib/getBaselineParams';
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -28,6 +27,7 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
+import unpackFilterOption from 'lib/unpackFilterOption';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
 
@@ -80,15 +80,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
   // Parse filter options to be used in multiple components
   const filterCategories = props.fields?.FilterOptions?.map((category) => ({
     title: category?.displayName || '',
-    fields: category.fields?.Filters?.map(({ fields }) => {
-      const key = fields.Filter?.value || '';
-      const value =
-        fields.FilterValueGuid?.id || fields.FilterValueString.value || '';
+    fields: category.fields?.Filters?.map((option) => {
+      const { id, key, value, displayName } = unpackFilterOption(option);
       return {
-        id: `${key}-${value}`,
-        value: value,
+        id,
+        value,
         name: key,
-        label: fields.DisplayName?.value || '',
+        label: displayName,
         defaultChecked: searchParams.getAll(key).includes(value),
       };
     }),
@@ -105,7 +103,23 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
         <HeaderPlain
-          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          subheading={
+            fields?.Heading?.value && (
+              <Text variation={'subheading-1'}>
+                <JssText field={fields?.Heading} />
+              </Text>
+            )
+          }
+          heading={
+            fields?.Title?.value && (
+              <Text
+                variation={params?.HeadingSize || 'display-2'}
+                tag={params?.HeadingTag || 'h2'}
+              >
+                <JssText field={fields?.Title} />
+              </Text>
+            )
+          }
           description={
             <Text tag="div" variation="body-large">
               <RichText tag="span" field={props?.fields?.Text} />
@@ -149,27 +163,18 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                   </SitecoreSvg>
                 }
                 options={
-                  props?.fields?.SortOptions?.map(
-                    ({
-                      fields: {
-                        Filter,
-                        FilterValueGuid,
-                        FilterValueString,
-                        DisplayName,
-                      },
-                    }) => {
-                      const key = Filter?.value || '';
-                      const value =
-                        FilterValueGuid?.id || FilterValueString.value || '';
-                      return {
-                        id: `${key}-${value}`,
-                        value: value,
-                        labelText: DisplayName?.value || '',
-                        name: key,
-                        defaultChecked: searchParams?.get(key) === value,
-                      };
-                    }
-                  ) || []
+                  props?.fields?.SortOptions?.map((option) => {
+                    const { id, key, value, displayName } =
+                      unpackFilterOption(option);
+
+                    return {
+                      id,
+                      value,
+                      labelText: displayName,
+                      name: key,
+                      defaultChecked: searchParams?.get(key) === value,
+                    };
+                  }) || []
                 }
               />
             </SearchBar>
@@ -213,13 +218,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           <CardGrid>
             {data?.response.results?.map((item, index) => {
               const { data } = item;
-              const { title, description, imageUrl, url } = data;
+              const { title, description, imageUrl, url, name } = data;
               return (
                 <CardContent
                   key={index}
                   title={
                     <Text variation="heading-1" tag="h4">
-                      {title}
+                      {title || name}
                     </Text>
                   }
                   bodyCopy={<Text variation="body-large">{description}</Text>}
@@ -239,13 +244,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               );
             })}
           </CardGrid>
-          {/* <SearchFormPagination
+          <SearchFormPagination
             offset={offset}
             limit={limit}
             resultsCount={resultsCount}
             scrollToRef={searchWrapperRef}
-          /> */}
-          <SearchFormLoadMore
+          />
+          {/* <SearchFormLoadMore
             limit={limit}
             resultsCount={resultsCount}
             defaultLimit={defaultLimit}
@@ -254,7 +259,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               <Icons iconName={'iconPlus'} />
             </span>
             <span>Show more</span>
-          </SearchFormLoadMore>
+          </SearchFormLoadMore> */}
         </SearchWrapper>
       </Themes>
     </form>

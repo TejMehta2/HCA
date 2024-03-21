@@ -51,7 +51,7 @@ const SearchWrapper = (
             <Tabs tabs={tabs} callback={tabChangeHandler}></Tabs>
           )}
         </div>
-        {tabbedResults ? tabContent : children && children}
+        {tabbedResults ? tabContent : children}
       </div>
     </div>
   );
