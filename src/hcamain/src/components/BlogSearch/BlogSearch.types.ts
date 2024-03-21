@@ -36,6 +36,9 @@ export interface Data {
   name: string;
   imageUrl: null;
   url: string;
+  date: string;
+  typeId: string;
+  typeName: string;
   uid: number;
 }
 

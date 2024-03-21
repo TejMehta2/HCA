@@ -9,9 +9,9 @@ import Text from '@component-library/foundation/Text/Text';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Filters from '@component-library/site-components/Filters/Filters';
-import CardContent from '@component-library/components/CardContent/CardContent';
 import Image from 'next/image';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
+import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import {
   Autocomplete,
   BlogResponse,
@@ -25,6 +25,9 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import Tags from '@component-library/core-components/Tags/Tags';
+//import JssDate from '../../jss-abstractions/JssDate/JssDate';
+import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
@@ -58,7 +61,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     fallbackData: fallbackData,
   });
 
-  console.log(data);
+  console.log(props);
 
   if (!fields || error || autocompleteError) {
     return <BlogSearchDefaultComponent {...props} />;
@@ -170,11 +173,41 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               <span>Showing {resultsRange}</span>
             </Text>
           )}
+
           <CardGrid>
             {data?.response.results?.map((item, index) => {
               const { data } = item;
-              const { title, description, imageUrl, url } = data;
+              const {
+                title,
+                description,
+                imageUrl,
+                url,
+                date,
+                typeId,
+                typeName,
+              } = data;
+
+              //console.log(data);
               return (
+                <CardBlog key={index}>
+                  {imageUrl ? (
+                    <Image src={imageUrl} alt="" width="363" height="243" />
+                  ) : undefined}
+                  <time>{formatDate(new Date(date))}</time>
+                  <Text tag={'h3'} variation={'heading-2'}>
+                    <a href={url}>{title}</a>
+                  </Text>
+                  <Text tag={'p'} variation={'body-large'}>
+                    {description}
+                  </Text>
+                  {!!typeName && (
+                    <Tags>
+                      <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                    </Tags>
+                  )}
+                </CardBlog>
+              );
+              /* return (
                 <CardContent
                   key={index}
                   title={
@@ -196,7 +229,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     </a>
                   }
                 />
-              );
+              ); */
             })}
           </CardGrid>
           <SearchFormPagination
