@@ -5,9 +5,7 @@ import {
   ImageField,
   Text as JssText,
   RichText as JssRichText,
-  Link as JssLink,
   Image as JssImage,
-  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
@@ -78,8 +76,6 @@ interface WithImageProps extends TreatmentsCardsProps {
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
   const { showImage = true } = props;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
 
   if (!props.fields) {
     return <TreatmentsCardsDefaultComponent {...props} />;
@@ -88,33 +84,28 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === 4 ? '4-columns' : '3-columns';
 
-  const link = props.fields?.data?.contextItem?.id ? (
-    <a
-      href={`${props.fields.data?.item?.cTALink?.jsonValue?.value}?conditionId=${props.fields?.data?.contextItem?.id}`}
-    >
-      {props.fields.data?.item?.cTALink?.jsonValue?.value?.text}
-    </a>
-  ) : (
-    props.fields?.data?.item?.cTALink?.jsonValue &&
-    (!isExperienceEditor ? (
-      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
-        <JssRichText
-          tag="span"
-          field={{
-            value: props.fields.data?.item?.cTALink?.jsonValue?.value?.text,
+  //  check for conditionId and append if it exists
+  const allUrl = props.fields?.data?.contextItem?.id
+    ? `${props.fields.data?.item?.cTALink?.jsonValue?.value.href}?conditionId=${props.fields?.data?.contextItem?.id}`
+    : props.fields.data?.item?.cTALink?.jsonValue?.value.href;
+
+  const link = (
+    <a href={allUrl}>
+      {props.fields.data?.item?.cTALink?.jsonValue?.value?.text && (
+        <span
+          dangerouslySetInnerHTML={{
+            __html: props.fields.data?.item?.cTALink?.jsonValue?.value?.text,
           }}
-        />
-      </JssLink>
-    ) : (
-      <JssLink field={props.fields.data?.item?.cTALink?.jsonValue?.value} />
-    ))
+        ></span>
+      )}
+    </a>
   );
 
+  //  treatments can be set via item or contextItem
   const cards = props.fields?.data?.item?.treatments?.TreatmentsList?.length
     ? props.fields?.data?.item?.treatments?.TreatmentsList
     : props.fields?.data?.contextItem?.treatments?.TreatmentsList;
 
-  console.log(props);
   return (
     <CardBlock
       variation={columns}
@@ -162,9 +153,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             }
             link={
               <a href={card?.url?.path}>
-                <span>
-                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
-                </span>
+                <JssText
+                  tag="span"
+                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                />
               </a>
             }
           />
