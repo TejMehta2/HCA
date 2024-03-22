@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Field,
   Item,
@@ -18,7 +18,13 @@ import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 import getBaselineParams from 'lib/getBaselineParams';
-import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
+import {
+  Autocomplete,
+  LocationsSearchProps,
+  SearchResponse,
+} from '../LocationsSearch/LocationsSearch.types';
+import unpackFilterOption from 'lib/unpackFilterOption';
+import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
 
@@ -75,6 +81,7 @@ interface Fields {
 type LocationCardsProps = {
   params?: Params;
   fields?: Fields;
+  fallbackData?: SearchResponse;
 };
 
 const LocationCardsDefaultComponent = (
@@ -149,14 +156,62 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
+  const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
-  const { defaultLimit, defaultOffset, baselineParams } = getBaselineParams(
-    props.fields.data?.item
-  );
+  const { defaultLimit, defaultOffset, baselineParams } =
+    getBaselineParams(props);
 
-  console.log(baselineParams);
+  // Hooks
+  const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const {
+    data,
+    error,
+    formHandlers,
+    searchParams,
+    autocompleteData,
+    autocompleteError,
+  } = useSearchForm<SearchResponse, Autocomplete>({
+    baseUrl: BASE_URL,
+    baselineParams: [...baselineParams, ['verticalKey', 'locations']],
+    fallbackData: fallbackData,
+  });
+
+  if (!fields || error || autocompleteError) {
+    return <LocationCardsDefaultComponent {...props} />;
+  }
+
+  // Mutable query-based params
+  const limit = Number(searchParams.get('limit')) || defaultLimit;
+  const offset = Number(searchParams.get('offset')) || defaultOffset;
+
+  // Computed properties
+  const resultsCount = data?.response.resultsCount || 0;
+  const rangeStart = offset + 1;
+  const rangeEnd = Math.min(offset + limit, resultsCount);
+  const resultsRange = `${rangeStart}-${rangeEnd}`;
+
+  // Parse filter options to be used in multiple components
+  const filterCategories = props.fields?.FilterOptions?.map((category) => ({
+    title: category?.displayName || '',
+    fields: category.fields?.Filters?.map((option) => {
+      const { id, key, value, displayName } = unpackFilterOption(option);
+      return {
+        id,
+        value,
+        name: key,
+        label: displayName,
+        defaultChecked: searchParams.getAll(key).includes(value),
+      };
+    }),
+  }));
+
+  const activeFilters = filterCategories?.reduce((previous, { fields }) => {
+    return [
+      ...previous,
+      ...fields.filter(({ defaultChecked }) => defaultChecked),
+    ];
+  }, []);
 
   return (
     <CardBlock
@@ -194,7 +249,16 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {/* <>{MapCards(props)}</> */}
+      <>
+        {data?.response.results?.map((item) => {
+          console.log(item);
+          const { data } = item;
+          const { id, title, name, description, imageUrl, url, directions } =
+            data;
+          return <Text>{title}</Text>;
+        })}
+      </>
+      {/* {MapCards(props)} */}
     </CardBlock>
   );
 };
@@ -233,7 +297,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {/* {MapCards(props)} */}
+      {MapCards(props)}
     </CarouselCards>
   );
 };
