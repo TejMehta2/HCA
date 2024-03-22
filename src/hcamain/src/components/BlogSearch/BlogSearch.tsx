@@ -27,6 +27,7 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
+import unpackFilterOption from 'lib/unpackFilterOption';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
@@ -77,15 +78,13 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
   // Parse filter options to be used in multiple components
   const filterCategories = props.fields?.FilterOptions?.map((category) => ({
     title: category?.displayName || '',
-    fields: category.fields?.Filters?.map(({ fields }) => {
-      const key = fields.Filter?.value || '';
-      const value =
-        fields.FilterValueGuid?.id || fields.FilterValueString.value || '';
+    fields: category.fields?.Filters?.map((option) => {
+      const { id, key, value, displayName } = unpackFilterOption(option);
       return {
-        id: `${key}-${value}`,
-        value: value,
+        id,
+        value,
         name: key,
-        label: fields.DisplayName?.value || '',
+        label: displayName,
         defaultChecked: searchParams.getAll(key).includes(value),
       };
     }),
