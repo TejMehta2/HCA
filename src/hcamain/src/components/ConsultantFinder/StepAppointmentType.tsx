@@ -135,58 +135,6 @@ export const Default = (props: StepProps): JSX.Element => {
               </Button>
             </Container>
           </Navigation>
-          {/* <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the specifc component template</h2>
-              <h3>
-                These point to the same page as the next link, but also broken
-                out here just in case
-              </h3>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.InitialAppointmentLink}
-                  title={props.fields.InitialAppointmentLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.FollowOnAppointmentLink}
-                  title={props.fields.FollowOnAppointmentLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div> */}
         </div>
       </div>
     );
