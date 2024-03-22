@@ -25,6 +25,7 @@ import {
 } from '../LocationsSearch/LocationsSearch.types';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
+import { ApiResponse } from 'src/types/searchProps';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
 
@@ -94,62 +95,144 @@ const LocationCardsDefaultComponent = (
   </div>
 );
 
-const MapCards = (props: LocationCardsProps) => {
-  return props.fields?.data?.item?.locations?.PagesList?.map(
-    (location, index) => (
-      <CardMap
-        key={index}
-        title={
-          <Text variation="heading-1" tag="h4">
-            <JssText field={location?.title} />
-          </Text>
-        }
-        address={
-          <>
-            {location?.city?.value && (
-              <Text variation={'body-large'} tag="span">
-                <JssText field={location?.city} />
-                &nbsp;
-              </Text>
-            )}
-            {location?.street?.value && (
-              <Text variation={'body-large'} tag="span">
-                <JssText field={location?.street} />
-                &nbsp;
-              </Text>
-            )}
-            {location?.postCode?.value && (
-              <Text variation={'body-large'} tag="span">
-                <JssText field={location?.postCode} />
-              </Text>
-            )}
-          </>
-        }
-        image={<JssImage field={location?.image?.jsonValue} />}
-        ctas={{
-          button1: (
-            <a href={location?.url?.path}>
-              <JssRichText
-                field={props?.fields?.data?.item?.cTAText?.jsonValue}
-              />
-            </a>
-          ),
-          button2: (
-            <a href={location?.getDirections?.value}>
-              <span>
-                <JssText
-                  field={
-                    props?.fields?.data?.item?.getDirectionsText?.jsonValue
-                  }
+const MapCards = (props: LocationCardsProps, data) => {
+  // const isApiData = props.fields?.data?.item?.locations?.PagesList &&
+  // props.fields?.data?.item?.locations?.PagesList.length
+
+  const isApiData = true;
+
+  const locations = isApiData
+    ? data
+    : props.fields?.data?.item?.locations?.PagesList;
+
+  console.log(locations);
+  return (
+    locations &&
+    locations.map((location, index) => {
+      return (
+        <CardMap
+          key={index}
+          title={
+            <Text variation="heading-1" tag="h4">
+              {isApiData ? (
+                location.data.title
+              ) : (
+                <JssText field={location?.data.title} />
+              )}
+            </Text>
+          }
+          address={
+            <>
+              {location?.city?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={location?.city} />
+                  &nbsp;
+                </Text>
+              )}
+              {location?.street?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={location?.street} />
+                  &nbsp;
+                </Text>
+              )}
+              {location?.postCode?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={location?.postCode} />
+                </Text>
+              )}
+            </>
+          }
+          image={
+            isApiData ? (
+              <img src={location.data.imageUrl} alt={location?.data.title} />
+            ) : (
+              <JssImage field={location?.image?.jsonValue} />
+            )
+          }
+          ctas={{
+            button1: (
+              <a href={isApiData ? location?.url?.path : location.url}>
+                <JssRichText
+                  field={props?.fields?.data?.item?.cTAText?.jsonValue}
                 />
-              </span>
-            </a>
-          ),
-        }}
-      />
-    )
+              </a>
+            ),
+            button2: (
+              <a
+                href={
+                  isApiData
+                    ? location.directions
+                    : location?.getDirections?.value
+                }
+              >
+                <span>
+                  <JssText
+                    field={
+                      props?.fields?.data?.item?.getDirectionsText?.jsonValue
+                    }
+                  />
+                </span>
+              </a>
+            ),
+          }}
+        />
+      );
+    })
   );
 };
+
+// const mapApiCards = (data, props) => {
+//   console.log(data);
+//   return data?.map((location, index) => (
+//     <CardMap
+//       key={index}
+//       title={
+//         <Text variation="heading-1" tag="h4">
+//           {location?.title}
+//         </Text>
+//       }
+//       address={
+//         <>
+//           {location?.city?.value && (
+//             <Text variation={'body-large'} tag="span">
+//               <JssText field={location?.city} />
+//               &nbsp;
+//             </Text>
+//           )}
+//           {location?.street?.value && (
+//             <Text variation={'body-large'} tag="span">
+//               <JssText field={location?.street} />
+//               &nbsp;
+//             </Text>
+//           )}
+//           {location?.postCode?.value && (
+//             <Text variation={'body-large'} tag="span">
+//               <JssText field={location?.postCode} />
+//             </Text>
+//           )}
+//         </>
+//       }
+//       image={<JssImage field={location?.image?.jsonValue} />}
+//       ctas={{
+//         button1: (
+//           <a href={location?.url}>
+//             {' '}
+//             <JssRichText
+//               field={props?.fields?.data?.item?.cTAText?.jsonValue}
+//             />
+//           </a>
+//         ),
+//         button2: (
+//           <a href={location?.directions}>
+//             <JssText
+//               field={props?.fields?.data?.item?.getDirectionsText?.jsonValue}
+//             />
+//           </a>
+//         ),
+//       }}
+//     />
+//   ));
+// };
 
 export const Grid = (props: LocationCardsProps): JSX.Element => {
   if (!props.fields) {
@@ -249,15 +332,20 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      <>
-        {data?.response.results?.map((item) => {
+      {/* {props.fields?.data?.item?.locations?.PagesList &&
+      props.fields?.data?.item?.locations?.PagesList.length */}
+      {MapCards(props, data?.response.results)}
+      {/* mapApiCards(data?.response.results, props)
+        : mapApiCards(data?.response.results, props)} */}
+
+      {/* {data?.response.results?.map((item) => {
           console.log(item);
           const { data } = item;
           const { id, title, name, description, imageUrl, url, directions } =
             data;
           return <Text>{title}</Text>;
-        })}
-      </>
+        })} */}
+
       {/* {MapCards(props)} */}
     </CardBlock>
   );
