@@ -1,23 +1,22 @@
 ﻿---
 ID: "948372b9-6511-449c-8110-17755f205423"
 Parent: "9596067b-f81a-4e4c-8d98-00e46518f20b"
-Template: "3d67ae05-dab2-41b5-b6ba-e531a3b08b4a"
+Template: "175e0d25-53c5-4c6b-b6e7-62521e02db68"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA18/Data/Book an appointment/Modal"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
+    - ID: "05db6403-e163-4b0d-8aa3-e29c8adb2345"
+      Hint: Title
+      Value: Lorem ipsum dolor sit amet
+    - ID: "1832429f-ff7f-49c2-b955-649db94314b3"
+      Hint: SecondaryCTAIcon
+      Value: "{F53BC710-C981-445A-9B20-69AA7FE0A9FE}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240313T225544Z
-    - ID: "39de5b4b-939b-41ec-8f16-3a6f92032608"
-      Hint: PrimaryCTAIcon
-      Value: "{58E74E44-2137-47FE-9F08-A3A4EC026FFB}"
-    - ID: "40124139-ae1f-40e2-9472-d3251f5cbfdf"
-      Hint: SecondaryCTA
-      Value: |
-        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="see more" url="/HCA/HCA-Main/Home/QA/Home" />
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -26,26 +25,27 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\bartek.glomski@eqtr.com
-    - ID: "71340edf-a535-4119-8cc3-2036bae2e824"
-      Hint: SecondaryCTAIcon
-      Value: "{F53BC710-C981-445A-9B20-69AA7FE0A9FE}"
-    - ID: "8bdcda68-7ca6-4187-bd0b-0eac908580c5"
-      Hint: Title
-      Value: Lorem ipsum dolor sit amet
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "8056de59-f64d-454c-93b4-6d9f31e632fc"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\5dv29vxgiA
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20240314T102616Z
-    - ID: "eebd3076-badf-4340-b1da-735d54239c77"
+    - ID: "7649f056-4f79-402f-aac9-bc812d7934de"
+      Hint: PrimaryCTAIcon
+      Value: "{58E74E44-2137-47FE-9F08-A3A4EC026FFB}"
+    - ID: "872960fa-91ae-4c72-9df2-ea6cc530f183"
       Hint: PrimaryCTA
       Value: |
         <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="Click me" url="/HCA/HCA-Main/Home/QA/Home" />
-    - ID: "fdad35a7-2d56-4054-999f-3d35fbb308cd"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "09279ff5-3d34-404e-b900-23c0e73229a3"
+    - ID: "b127ef4d-194e-4c08-b936-9e111d2a260e"
+      Hint: SecondaryCTA
+      Value: |
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="see more" url="/HCA/HCA-Main/Home/QA/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "bbfd5812-b426-4455-9f7c-6b5fb5523763"
       Hint: Text
       Value: <p>Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus. Aenean nulla justo, efficitur non viverra vel, euismod sit amet orci. Fusce molestie ante leo, a congue nisi laoreet quis. Donec egestas nunc justo, sit amet malesuada augue aliquam id. Aenean ultricies dolor a nibh convallis, vel tristique nibh luctus.</p>
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240322T080834Z
