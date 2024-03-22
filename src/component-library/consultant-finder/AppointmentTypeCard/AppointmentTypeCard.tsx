@@ -1,0 +1,32 @@
+import React, { useContext } from 'react';
+import { AppointmentTypeCardProps } from './AppointmentTypeCard.types';
+import Text from '../../foundation/Text/Text';
+import styles from './AppointmentTypeCard.module.scss';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+
+const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
+  const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);
+
+  return (
+    <div
+      className={`${styles['appointment-type-card']} ${
+        selectedTypeOfAppointment === props.id ? styles['selected'] : ''
+      }`}
+      onClick={(e) => props.handleClick(e)}
+      data-is-follow-up-appointment={props.isFollowUpAppointment}
+      data-parent="parent"
+    >
+      <div className={styles.icon}></div>
+      <Text tag="h3" variation="body-medium-large">
+        {props.title}
+      </Text>
+      <div className={styles.description}>
+        <Text tag="p" variation="body-medium-small">
+          {props.text}
+        </Text>
+      </div>
+    </div>
+  );
+};
+
+export default AppointmentTypeCard;

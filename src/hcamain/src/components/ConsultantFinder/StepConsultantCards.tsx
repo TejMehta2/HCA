@@ -474,7 +474,7 @@ export const Default = (props: StepProps): JSX.Element => {
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
-    const requestURL: string = `${baseURL}?${defaultParams}`;
+    const requestURL: string = `${baseURL}?${URLprams}`;
 
     if (URLprams.length === 0) {
       setLoading(false);
