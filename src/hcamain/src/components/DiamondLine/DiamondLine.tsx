@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {}
 
@@ -17,13 +14,13 @@ const DiamondLineDefaultComponent = (props: DiamondLineProps): JSX.Element => {
   if (isExperienceEditor) {
     return (
       <div className={`component ${props.params.styles}`}>
-      <div className="component-content">
-        <span className="is-empty-hint">DiamondLine no datasource</span>
+        <div className="component-content">
+          <span className="is-empty-hint">DiamondLine no datasource</span>
+        </div>
       </div>
-    </div>
     );
   }
-  return <></>
+  return <></>;
 };
 
 export const LeftAligned = (props: DiamondLineProps): JSX.Element => {
