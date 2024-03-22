@@ -21,7 +21,6 @@ export const LeftAligned = (props: DiamondLineProps): JSX.Element => {
   if (!props.fields) {
     return <DiamondLineDefaultComponent {...props} />;
   }
-  console.log(props);
   return (
     <DiamondLine side="left" theme={props.params.Theme || 'H-HCA-Tangerine'} />
   );
