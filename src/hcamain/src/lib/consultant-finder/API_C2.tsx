@@ -159,7 +159,10 @@ function calcMinutesSinceUpdate(record: any) {
   try {
     const timeRefreshed = Date.parse(record?.refreshdate);
     const timeSpanRefreshed = Date.now() - timeRefreshed;
-    const minsSinceRefreshed = Math.floor(timeSpanRefreshed / (1000 * 60));
+    const minsSinceRefreshed = Math.max(
+      0,
+      Math.floor(timeSpanRefreshed / (1000 * 60))
+    );
     if (isNaN(minsSinceRefreshed)) {
       record.refreshedText = 'unavailable';
     } else if (minsSinceRefreshed == 0) {

@@ -118,3 +118,42 @@ export async function checkIfLiveBookingsIsAvailable(
   const ldbSlugs = await getActiveLiveDiaryConsultantSlugs();
   return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }
+
+// get all the holidays
+// e.g. https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/holidays
+export async function getHolidays(): Promise<string[]> {
+  let holidays;
+  const HCAAPIConfig = await getHCAConfig();
+  const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
+  console.log('holiday url', holidayURL);
+  console.log('config', HCAAPIConfig);
+  // using current/legacy live diary consultants list for now
+  // replace once we have a backend that can query for a list of live diary consultant slugs
+  if (holidayURL && holidayURL.length > 0) {
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(holidayURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        holidays = await res.json();
+        if (holidays.length == 0) {
+          console.error(`Warning Holidays empty on getHolidays() call`);
+        }
+      } else {
+        // couldn't get the ldb consultant slugs
+        console.error(
+          `Could not load holidays list for pre-render from ${holidayURL}`
+        );
+      }
+    } catch (e) {
+      console.error(
+        `Could not load holidays for pre-render from ${holidayURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return holidays;
+}
