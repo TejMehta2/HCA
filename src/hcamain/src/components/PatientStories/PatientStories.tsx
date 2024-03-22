@@ -55,17 +55,19 @@ const PatientStoriesDefaultComponent = (
   props: PatientStoriesProps
 ): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;  
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (isExperienceEditor) {
     return (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
-          <span className="is-empty-hint">Patient Stories please click to select datasource</span>
+          <span className="is-empty-hint">
+            Patient Stories please click to select datasource
+          </span>
         </div>
       </div>
     );
   }
-  return <></>
+  return <></>;
 };
 
 export const Carousel = (props: PatientStoriesProps): JSX.Element => {
