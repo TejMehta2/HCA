@@ -60,7 +60,7 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
 
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
-  const columns: ColumnProps['columns'] = props.params?.Columns === 4 ? 4 : 3;
+  const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
 
   return (
     <LogoBlock

@@ -33,6 +33,6 @@ interface Params {
   HeadingTag?: HeadingTag;
   HeadingSize?: HeadingSize;
   DynamicPlaceholderId?: string;
-  Columns?: number;
+  Columns?: string;
 }
 export default Params;
