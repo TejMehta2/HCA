@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as MarketingPreferencesStories from './MarketingPreferences.stories';
+
+<Meta of={MarketingPreferencesStories} />
+
+# MarketingPreferences
+
+## Description
+
+The MarketingPreferences component is intended to offer a brief description and checkboxes for the user to select preferences.
+
+It is intended to be used on the payment page.
+
+It can be composed like this:
+
+```tsx
+<MarketingPreferences
+  title={<Text variation="body-bold-extra-large">Marketing preferences</Text>}
+  bodyCopy={
+    <Text>
+      I consent to my Personal Data being used for information to be sent to me
+      which is relevant to me and/or my treatment. This may include updates on
+      new clinical products, services or HCA facilities, patient events or
+      information regarding HCA charity initiatives. For further information on
+      how your data is used, read our <a href="/">Privacy Policy</a>.
+    </Text>
+  }
+  preferences={
+    <Checkboxes>
+      <Checkbox
+        label="Email"
+        name="contactPreference"
+        value="email"
+        id="email"
+      />
+      <Checkbox label="SMS" name="contactPreference" value="sms" id="sms" />
+      <Checkbox
+        label="Phone"
+        name="contactPreference"
+        value="phone"
+        id="phone"
+      />
+      <Checkbox label="Post" name="contactPreference" value="post" id="post" />
+    </Checkboxes>
+  }
+></MarketingPreferences>
+```
+
+## Example
+
+<Canvas of={MarketingPreferencesStories.Default} />
+<Controls of={MarketingPreferencesStories.Default} />

@@ -1,0 +1,38 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CarouselReviewsStories from './CarouselReviews.stories';
+
+<Meta of={CarouselReviewsStories} />
+
+# CarouselReviews
+
+## Description
+
+The CarouselReviews component is a carousel which cycles through various reviews left by patients. It runs on an infinite loop, but does not transition automatically
+
+The carousel is using **react-slick** ([NPM](https://www.npmjs.com/package/@ant-design/react-slick))
+
+It is intended to be used on any page
+
+It can be composed like this:
+
+```tsx
+<CarouselReviews rating={4.85} reviewCount={<span>13,500+ reviews</span>}>
+  <React.Fragment key={1}>
+    <Text tag="p" variation="body-extra-large">
+      All the staff and services at The Wellington were exemplary. It was like
+      being treated in a 6* hospital within a 4-5* star hotel. All my needs were
+      immediately attended to. The team had the utmost patience and flexibility
+    </Text>
+    <Text tag="p" variation="body-extra-large">
+      2 All the staff and services at The Wellington were exemplary. It was like
+      being treated in a 6* hospital within a 4-5* star hotel. All my needs were
+      immediately attended to. The team had the utmost patience and flexibility
+    </Text>
+  </React.Fragment>
+</CarouselReviews>
+```
+
+## Example
+
+<Canvas of={CarouselReviewsStories.Default} />
+<Controls of={CarouselReviewsStories.Default} />

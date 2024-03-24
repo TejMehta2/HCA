@@ -1,0 +1,29 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(24);
+
+  @include responsive-grid-span(6, 6, 6, 6);
+
+  @include responsive-container;
+
+  padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
+
+  @include media(screen-m) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.search-detail {
+  gap: px-to-rem(8);
+  scroll-margin-top: $spacing-4;
+}
+
+.wrapper {
+  background: var(--background);
+  color: var(--text);
+}

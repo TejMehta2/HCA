@@ -1,0 +1,57 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as AdvancedBlockHeaderStories from './AdvancedBlockHeader.stories'
+
+<Meta of={AdvancedBlockHeaderStories} />
+
+# AdvancedBlockHeader
+
+## Description
+
+The AdvancedBlockHeader component is used in the advaned blocks to present a subtitle, title, description and CTAs.
+
+It can also take children, and will render them above the CTAs.
+
+It isn't defined in the figma designs explicitly, but occurs repeatedly in the advanced blocks category of site components.
+
+``` tsx
+<AdvancedBlockHeader
+  subtitle={
+    <Text variation={'subheading-1'}>Sub title</Text>
+  }
+  title={
+    <Text variation={'display-2'}>Advanced block</Text>
+  }
+  body={
+    <Text variation={'body-large'}>
+      Quis laboris proident sint amet id cillum do dolor in tempor est.
+      Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+      laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+      dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat sunt
+      lorem ut.
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size={'small'} variation={'full'}>
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          <span>
+            Click <strong>me</strong>
+          </span>
+        </a>
+      </TextButton>
+    </>
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={AdvancedBlockHeaderStories.Default} />
+<Controls of={AdvancedBlockHeaderStories.Default} />

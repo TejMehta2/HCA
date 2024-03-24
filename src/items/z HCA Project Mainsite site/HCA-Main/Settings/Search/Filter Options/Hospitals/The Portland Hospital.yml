@@ -1,0 +1,40 @@
+﻿---
+ID: "cfec795c-ab68-440b-b5ac-1fd84f4f395d"
+Parent: "1a9f80c4-fb24-4fce-bd4b-c6bcca2978a7"
+Template: "18d058d2-b182-4aab-b4a6-40c9997957f8"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Search/Filter Options/Hospitals/The Portland Hospital"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240130T083119Z
+    - ID: "38dc3113-9c54-437f-8347-c1b4a1acd73f"
+      Hint: DisplayName
+      Value: The Portland Hospital
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "85fa5517-5a1f-4408-846a-72f8cafd3401"
+      Hint: FilterValueGuid
+      Value: "{8F20EEFF-201D-43AC-8D49-E1789D91392B}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "54e1a287-932e-4216-8c0f-e2a3719e44cc"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240315T115955Z
+    - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
+      Hint: Filter
+      Value: locationId

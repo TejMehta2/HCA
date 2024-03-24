@@ -1,0 +1,149 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--cqc-background);
+  color: var(--text);
+  border-radius: $radius-small;
+  padding: px-to-rem(16);
+  display: grid;
+  grid-template: auto auto auto / minmax(auto, px-to-rem(235)) max-content;
+  grid-template-areas:
+    'logo logo'
+    'title icon'
+    'text icon';
+  gap: px-to-rem(8) 0;
+  width: fit-content;
+  position: relative;
+  border: 1px solid var(--cqc-outline);
+}
+
+.link {
+  a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+    border-radius: $radius-small;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline: solid #{px-to-rem(2)} transparent;
+      outline-offset: px-to-rem(-6);
+      outline-color: var(--cqc-focus-outline);
+    }
+  }
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  grid-area: icon;
+  color: $teal-100;
+  display: flex;
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+}
+
+@include theme-mode(light, dark) using ($mode) {
+  @if $mode == light {
+    .light-logo {
+      display: none;
+    }
+
+    .dark-logo {
+      display: block;
+    }
+  }
+  @if $mode == dark {
+    .light-logo {
+      display: block;
+    }
+
+    .dark-logo {
+      display: none;
+    }
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    padding-left: px-to-rem(8);
+  }
+}
+
+.requires-improvement {
+  .icon {
+    color: $tangerine-100;
+  }
+}
+
+.inadequate {
+  .icon {
+    color: $red-100;
+  }
+
+  &.dark {
+    .icon {
+      color: $orange-100;
+    }
+  }
+}
+
+.outstanding,
+.good {
+  &.dark {
+    .icon {
+      color: $fern-40;
+    }
+  }
+}
+
+.long {
+  @include media(screen-m) {
+    grid-template: auto auto / min-content max-content;
+    grid-template-areas:
+      'logo title'
+      'logo text';
+    gap: 0;
+    align-items: center;
+
+    .title {
+      justify-content: unset;
+      gap: px-to-rem(8);
+    }
+  }
+}
+
+.rating,
+.long {
+  .logo {
+    padding: 0 px-to-rem(23) 0 0;
+  }
+}
+
+.text {
+  grid-area: text;
+}

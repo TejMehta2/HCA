@@ -1,18 +1,18 @@
-import React from 'react'
-import colourVars from './Colours.demo.module.scss'
-import Text from '../Text/Text'
-import { ColourProps, ColourGroupProps } from './Colours.demo.types'
+import React from 'react';
+import colourVars from './Colours.demo.module.scss';
+import Text from '../Text/Text';
+import { ColourProps, ColourGroupProps } from './Colours.demo.types';
 
 // Convert the color key to the color proper name.
 const getColourName = (colour: string) => {
-  const array = colour.split('-')
-  array.shift()
-  return `${array.join(' ').toLowerCase()}`
-}
+  const array = colour.split('-');
+  array.shift();
+  return `${array.join(' ').toLowerCase()}`;
+};
 
 /* Individual Colour Block */
 const Colour = (props: ColourProps) => {
-  const { colour } = props
+  const { colour } = props;
 
   return (
     <li
@@ -30,19 +30,19 @@ const Colour = (props: ColourProps) => {
           border: '1px solid lightgray',
         }}
       />
-      <Text tag="p" variation="body-semi-bold-medium">
+      <Text tag="p" variation="body-bold-medium">
         {getColourName(colour)}
       </Text>
       <Text tag="p" variation="body-medium">
         {colourVars[colour]}
       </Text>
     </li>
-  )
-}
+  );
+};
 
 // A component for displaying a group of colors.
 const ColourGroup = (props: ColourGroupProps) => {
-  const { group } = props
+  const { group } = props;
   return (
     <ul
       style={{
@@ -54,35 +54,36 @@ const ColourGroup = (props: ColourGroupProps) => {
       }}
     >
       {group.map((colour) => {
-        return <Colour colour={colour} key={colour} />
+        return <Colour colour={colour} key={colour} />;
       })}
     </ul>
-  )
-}
+  );
+};
 
 /* Filter colour array to only include a certain section */
 const filterGroup = (filter: string) =>
-  Object.keys(colourVars).filter((colour) => colour.indexOf(filter) === 0)
+  Object.keys(colourVars).filter((colour) => colour.indexOf(filter) === 0);
 
 const ColourContainer = () => {
   return (
     <div style={{ padding: '20px' }}>
       <>
         <h3>Primary Colours</h3>
-        <ColourGroup group={filterGroup('turquoise')} />
-        <ColourGroup group={filterGroup('blue')} />
+        <ColourGroup group={filterGroup('teal')} />
+        <ColourGroup group={filterGroup('navy')} />
+        <ColourGroup group={filterGroup('denim')} />
         <ColourGroup group={filterGroup('white')} />
       </>
       <>
         <h3>Secondary Colours</h3>
-        <ColourGroup group={filterGroup('green')} />
-        <ColourGroup group={filterGroup('beige')} />
+        <ColourGroup group={filterGroup('fern')} />
+        <ColourGroup group={filterGroup('goldenrod')} />
+        <ColourGroup group={filterGroup('tangerine')} />
         <ColourGroup group={filterGroup('orange')} />
-        <ColourGroup group={filterGroup('coral')} />
         <ColourGroup group={filterGroup('red')} />
       </>
     </div>
-  )
-}
+  );
+};
 
-export default ColourContainer
+export default ColourContainer;

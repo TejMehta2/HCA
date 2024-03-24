@@ -1,0 +1,51 @@
+﻿---
+ID: "aec41405-9481-4954-95c7-0a6616bacdf0"
+Parent: "a4cb4849-a3c2-4f1c-9691-54fc537d4940"
+Template: "f1828a2c-7e5d-4bbd-98ca-320474871548"
+Path: /sitecore/media library/Project/HCA/HCA Main/QA/Locations Map Pin
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "-/media/AEC414059481495495C70A6616BACDF0.ashx?h=16&thn=1&w=16"
+- ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
+  Hint: Blob
+  BlobID: "f5285fc0-64b3-463c-bb1d-a9956843bbfa"
+  Value: PHN2ZyB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEwMSAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNTAuNTAwMSAxMjBDNTAuNTAwMSAxMjAgMTAxIDg2LjU0ODcgMTAxIDQ4QzEwMSAzNS4yNjk2IDkzLjc3NzMgMjMuMDYwNiA4NC43MDU1IDE0LjA1ODlDNzUuNjMzNyA1LjA1NzEzIDYzLjMyOTYgMCA1MC41MDAxIDBDMzcuNjcwNiAwIDI1LjM2NjYgNS4wNTcxMyAxNi4yOTQ4IDE0LjA1ODlDNy4yMjI5NCAyMy4wNjA2IDAuMDAwMTIyMDcgMzUuMjY5NiAwLjAwMDEyMjA3IDQ4QzAuMDAwMTIyMDcgODIuMzAwOSA1MC41MDAxIDEyMCA1MC41MDAxIDEyMFpNNzMuMzU0IDQ5LjkxMTVDNzMuMzU0IDYyLjIyOCA2My4zNTgxIDcyLjIxMjQgNTEuMDI3NiA3Mi4yMTI0QzM4LjY5NzIgNzIuMjEyNCAyOC43MDEzIDYyLjIyOCAyOC43MDEzIDQ5LjkxMTVDMjguNzAxMyAzNy41OTUxIDM4LjY5NzIgMjcuNjEwNiA1MS4wMjc2IDI3LjYxMDZDNjMuMzU4MSAyNy42MTA2IDczLjM1NCAzNy41OTUxIDczLjM1NCA0OS45MTE1Wk02NC44NDczIDUwLjQ0MjRDNjQuODQ3MyA1Ny43NzM2IDU4Ljg5NzQgNjMuNzE2NyA1MS41NTc4IDYzLjcxNjdDNDQuMjE4MiA2My43MTY3IDM4LjI2ODMgNTcuNzczNiAzOC4yNjgzIDUwLjQ0MjRDMzguMjY4MyA0My4xMTEyIDQ0LjIxODIgMzcuMTY4MSA1MS41NTc4IDM3LjE2ODFDNTguODk3NCAzNy4xNjgxIDY0Ljg0NzMgNDMuMTExMiA2NC44NDczIDUwLjQ0MjRaIiBmaWxsPSIjNzdDN0MzIi8+Cjwvc3ZnPgo=
+- ID: "6954b7c7-2487-423f-8600-436cb3b6dc0e"
+  Hint: Size
+  Value: 845
+- ID: "6f47a0a5-9c94-4b48-abeb-42d38def6054"
+  Hint: Mime Type
+  Value: image/svg+xml
+- ID: "c06867fe-9a43-4c7d-b739-48780492d06f"
+  Hint: Extension
+  Value: svg
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240307T222129Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "65885c44-8fcd-4a7f-94f1-ee63703fe193"
+      Hint: Alt
+      Value: Locations Map Pin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "43393313-7635-4573-ba9b-5a6cd5a93c8b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240307T222129Z

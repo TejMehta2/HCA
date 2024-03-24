@@ -8,7 +8,10 @@ import config from 'temp/config';
 class SitePlugin implements Plugin {
   order = 0;
 
-  async exec(props: SitecorePageProps, context: GetServerSidePropsContext | GetStaticPropsContext) {
+  async exec(
+    props: SitecorePageProps,
+    context: GetServerSidePropsContext | GetStaticPropsContext
+  ) {
     if (context.preview) return props;
 
     const path =
@@ -19,7 +22,7 @@ class SitePlugin implements Plugin {
         : context.params.path ?? '/';
 
     // Get site name (from path)
-    const siteData = getSiteRewriteData(path, config.jssAppName);
+    const siteData = getSiteRewriteData(path, config.sitecoreSiteName);
 
     // Resolve site by name
     props.site = siteResolver.getByName(siteData.siteName);

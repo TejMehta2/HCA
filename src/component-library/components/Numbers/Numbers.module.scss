@@ -1,0 +1,22 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  border-radius: 50%;
+  background-color: var(--pagination);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+
+  @include apply-body-medium-large;
+}
+
+.large {
+  width: px-to-rem(40);
+}
+
+.small {
+  width: px-to-rem(24);
+}

@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchBarStories from './SearchBar.stories';
+
+<Meta of={SearchBarStories} />
+
+# SearchBar
+
+## Description
+
+The SearchBar component is an interactive search bar with built-in custom suggestions.
+
+It is intended to be used mainly in the secondary searches around the HCA site. E.g. ServiceLinesSearch.
+
+The `suggestions` and `children` props are optional.
+
+Also the `defaultValue` can be replaced with `value` and `onChange` props to convert it from an uncontrolled to a controlled React field.
+
+It can be composed like this:
+
+```tsx
+<SearchBar
+  defaultValue={'Default value'}
+  placeholder={'Placeholder text...'}
+  name={'input'}
+  suggestions={
+    [
+      'Suggestion A',
+      'Suggestion B',
+      'Suggestion C',
+    ]
+  }
+  children={
+    <>
+      <Button size={'large'} variation={'full'}>
+        <button type="button">
+          <span>Filters</span>
+        </button>
+      </Button>
+      <Button size={'large'} variation={'outline'}>
+        <button type="button">
+          <span>Sort by</span>
+        </button>
+      </Button>
+    </>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={SearchBarStories.Default} />
+<Controls of={SearchBarStories.Default} />

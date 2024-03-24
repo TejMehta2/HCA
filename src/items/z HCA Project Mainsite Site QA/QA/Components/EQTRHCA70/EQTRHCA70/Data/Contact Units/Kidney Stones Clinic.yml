@@ -1,0 +1,33 @@
+﻿---
+ID: "d9e56dec-719a-490b-b591-65c0d38e3db7"
+Parent: "e495dd0f-e624-43de-89c0-2eca93d5d302"
+Template: "7208a23d-e679-4bf3-a4f2-be85817bdbc2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Contact Units/Kidney Stones Clinic"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T181941Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5f7fe975-be97-4278-91b3-4ebf3f3a59ad"
+    - ID: "970e5839-53a1-405c-8ada-3e7c4da4fc4d"
+      Hint: TelephoneNumber
+      Value: "{C4C7330D-3D7E-4B63-A425-B709C94C0813}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240125T134359Z
+    - ID: "f11e7b8e-2e89-424c-807b-af08ce4f29db"
+      Hint: ContactUnitName
+      Value: General Enquires

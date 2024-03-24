@@ -23,7 +23,7 @@ export const Default = (props: ${componentName}Props): JSX.Element => {
     </div>
   );
 };
-`
+`;
 }
 
-export default generateComponentSrc
+export default generateComponentSrc;

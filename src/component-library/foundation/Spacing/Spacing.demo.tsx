@@ -1,11 +1,11 @@
-import React from 'react'
-import { SpacingProps } from './Spacing.demo.types'
-import styles from './Spacing.demo.module.scss'
+import React from 'react';
+import { SpacingProps } from './Spacing.demo.types';
+import styles from './Spacing.demo.module.scss';
 const Spacing = (props: SpacingProps): JSX.Element => {
-  const {} = props
+  const {} = props;
   return (
     <ul>
-      {Array(13)
+      {Array(14)
         .fill(0)
         .map((_, index) => (
           <li
@@ -16,7 +16,7 @@ const Spacing = (props: SpacingProps): JSX.Element => {
           </li>
         ))}
     </ul>
-  )
-}
+  );
+};
 
-export default Spacing
+export default Spacing;

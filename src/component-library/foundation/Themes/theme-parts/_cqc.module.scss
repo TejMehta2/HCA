@@ -1,0 +1,12 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-cqc-dark {
+  --cqc-background: #{$navy-blue-80};
+  --cqc-focus-outline: #{$white};
+}
+
+@mixin apply-cqc-light {
+  --cqc-background: #{$white};
+  --cqc-focus-outline: #{$navy-blue-100};
+  --cqc-outline: unset;
+}

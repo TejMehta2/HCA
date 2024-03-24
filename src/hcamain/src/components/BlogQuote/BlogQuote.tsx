@@ -1,0 +1,73 @@
+import React from 'react';
+import {
+  Field,
+  Image,
+  ImageField,
+  Text as JssText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
+import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
+import Params from 'src/types/params';
+import Text from '@component-library/foundation/Text/Text';
+
+interface AuthorFields {
+  fields?: {
+    Name?: Field<string>;
+    Position?: Field<string>;
+    Avatar?: ImageField;
+  };
+}
+
+interface Fields {
+  Quote?: Field<string>;
+  Author?: AuthorFields[];
+}
+
+type BlogQuoteProps = {
+  params?: Params;
+  fields?: Fields;
+};
+
+const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
+  return (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">Header with image no datasource</span>
+      </div>
+    </div>
+  );
+};
+
+export const Default = (props: BlogQuoteProps): JSX.Element => {
+  if (!props.fields) {
+    return <BlogQuoteDefaultComponent {...props} />;
+  }
+
+  return (
+    <BlogContent
+      theme={props.params?.Theme || 'A-HCA-White'}
+      contentVariation="quote"
+    >
+      <QuoteBlock
+        author={{
+          name: props.fields?.Author?.[0].fields?.Name?.value,
+          image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
+          tag: (
+            <span>
+              <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
+            </span>
+          ),
+        }}
+        children={
+          <Text variation={props.params?.HeadingSize || 'display-5'}>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: props.fields?.Quote?.value || '',
+              }}
+            ></span>
+          </Text>
+        }
+      />
+    </BlogContent>
+  );
+};

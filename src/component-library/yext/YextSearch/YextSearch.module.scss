@@ -1,0 +1,21 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+}
+
+.inner {
+  padding-top: $spacing-13;
+  @include responsive-container;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.tabs {
+  padding: $spacing-5 0;
+}

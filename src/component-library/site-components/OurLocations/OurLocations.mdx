@@ -1,0 +1,104 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as OurLocationsStories from './OurLocations.stories'
+
+<Meta of={OurLocationsStories} />
+
+# OurLocations
+
+## Description
+
+The OurLocations component is a graphical representation of the location of various HCA sites around the UK.
+
+The desktop version zooms and pans over the UK map to highlight the pins representing the different locations, while transitioning the location cards in and out like a carousel. The change in location is triggered by the user reaching scroll breakpoints.
+
+The mobile version simply shows a list of the pinned maps with accompanying location info cards, without changing the scroll behavior.
+
+It is intended to be used only on the homepage.
+
+### Usage
+
+The props are constructed such that a CMS admin will be able to create/edit the location cards in order to manage the visible locations.
+
+The expectation is that if a new location is needed, then the content admin will be able to determine the `mapX` &  `mapY` position for the new map pin on the existing map background image, expressed as a decimal from 0 to 1.
+
+See [AdvancedBlockHeader](?path=/docs/components-advancedblockheader--docs) for more info on header props.
+
+It can be composed like this:
+
+``` tsx
+<OurLocations
+  // Required props
+  headerProps={
+    subtitle: (
+        <Text tag="h3" variation="subheading-1">
+          our locations
+        </Text>
+      ),
+      title: (
+        <Text tag="h2" variation="display-3">
+          Exceptional Healthcare across the UK
+        </Text>
+      ),
+      body: (
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum.
+        </Text>
+      ),
+      ctas: (
+        <Button size="large" variation="full">
+          <a href="#">
+            <span>
+              <Icons iconName={'iconSearch'} />
+            </span>
+            <span>
+              Search all <strong>locations</strong>
+            </span>
+          </a>
+        </Button>
+      ),
+  }
+  locations={
+    [
+      {
+        mapX: 0.5, // number from 0 to 1, representing position of pin on map
+        mapY: 0.5, // also the position of the map to be centered on screen
+        mapScale: 0.5, // scale/zoom of map while pin visible (1 is full size)
+        theme: 'B-HCA-Navy-Blue', // theme of map card
+        card: (
+          <CardLocation
+            quantity={
+              <Text tag="p" variation="display-1">
+                72
+              </Text>
+            }
+            title={
+              <Text tag="p" variation="heading-2">
+                Locations across the UK
+              </Text>
+            }
+            subtitle={
+              <Text tag="p" variation={'subheading-2'}>
+                Scroll down to explore
+              </Text>
+            }
+            icon={<Icons iconName={'iconArrowDown'} />} // Icon or CTA as per designs
+            cta={
+              <a href="#">
+                <span>
+                  View <strong>all</strong>
+                </span>
+              </a>
+            }
+          />
+        )
+      }
+      // ... more locations
+    ]
+    // Optional props
+    scrollSensitivity = 60, // For the desktop version, the scroll area (in vh) required to change to the next location. This is abstracted to a prop in order to allow for adjustment based on user feedback
+    mapImage = <Image src={MapImage} alt="" />, // The background map image, in case we need to update it at a later date. If the map changes significantly, the pin locations will also need to be re-aligned to the new map.
+  }
+/>
+```

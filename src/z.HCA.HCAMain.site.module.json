@@ -2,11 +2,11 @@
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "z HCA Project Main Site",
   "items": {
-    "includes": [     
+    "includes": [
       {
         "name": "z HCA Project Mainsite site",
-        "path": "/sitecore/content/HCA/HCA Main",
-        "rules": [         
+        "path": "/sitecore/content/HCA/HCA-Main",
+        "rules": [
           {
             "path": "/home",
             "scope": "SingleItem",
@@ -16,7 +16,7 @@
             "path": "/Media",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },        
+          },
           {
             "path": "/Data",
             "scope": "ItemAndChildren",
@@ -38,13 +38,58 @@
             "allowedPushOperations": "CreateOnly"
           },
           {
+            "path": "/Settings/Custom Settings",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Settings/Navigation Settings",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Settings/Days of Week",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Settings/CQC Statuses",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Settings/DoctifyFilters",
+            "scope": "ItemAndChildren",
+            "allowedPushOperations": "CreateAndUpdate"
+          },
+          {
+            "path": "/Settings/Search",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
+          },
+          {
             "path": "/Settings",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
-          },                 
+          },
           {
             "path": "/*",
             "scope": "Ignored"
+          }
+        ]
+      },
+      {
+        "name": "z HCA Project Mainsite Media Library",
+        "path": "/sitecore/media library/Project/HCA/HCA Main",
+        "rules": [
+          {
+            "path": "/Template Thumbnails",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
+          },
+          {
+            "path": "/*",
+            "scope": "Ignored" 
           }
         ]
       }

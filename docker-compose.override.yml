@@ -18,8 +18,9 @@ services:
       target: ${BUILD_CONFIGURATION}
       args:
         PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+        PROJECT_PATH: ${PROJECT_PATH}
     volumes:
-      - .\src\hcamain:C:\app
+      - .:${PROJECT_PATH}      
     environment:
       SITECORE_API_HOST: "http://cm"
       NEXTJS_DIST_DIR: ".next-container"
@@ -115,4 +116,5 @@ services:
       Sitecore_ConnectionStrings_DAM_dot_SearchPage: ${Sitecore_DAM_SearchPage}
       Sitecore_ConnectionStrings_DAM_dot_ExternalRedirectKey: ${Sitecore_DAM_ExternalRedirectKey}
       SITECORE_AppSettings_damEnabled__define: ${SITECORE_AppSettings_damEnabled__define}
+      Sitecore_GraphQL_ExposePlayground: "true"
     entrypoint: powershell -Command "& C:/tools/entrypoints/iis/Development.ps1"

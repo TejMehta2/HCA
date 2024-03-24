@@ -81,7 +81,7 @@ try {
     }
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
-    & $mkcert "*.hcaxmlcloud.localhost"
+    & $mkcert "*.hcacloud.localhost"
     & $mkcert "*.microsite.localhost"
     & $mkcert "hcacloud.xmcloudcm.localhost"
 

@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as HomepageHeroStories from './HomepageHero.stories';
+
+<Meta of={HomepageHeroStories} />
+
+# HomepageHero
+
+## Description
+
+The HomepageHero component consists of a theme, title, searchbar, cta title, ctas, and an image.
+
+The image is set within a diamond shape which overflows into the next component. Additional margins are added to avoid it blocking any text
+
+It is intended to be used on the homepage
+
+It can be composed like this:
+
+```tsx
+<HomepageHero
+  theme="H-HCA-Tangerine"
+  title={
+    <Text tag="h1" variation="display-1">
+      Extraordinary Healthcare
+    </Text>
+  }
+  search={<SearchBar placeholder="How can we help you?" />}
+  ctaTitle={
+    <Text tag="h2" variation="subheading-1">
+      Get Started
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size="large" variation="full">
+        <a href="#">
+          <span>
+            Book an <strong>appointment</strong>
+          </span>
+        </a>
+      </Button>
+      <Button size="large" variation="outline">
+        <a href="#">
+          <Icons iconName="iconPhone" />
+          <span>
+            Call us <strong>today</strong>
+          </span>
+        </a>
+      </Button>
+    </>
+  }
+  image={
+    <Image
+      src="/placeholders/couple-on-bench.jpeg"
+      alt="an old couple sitting on a bench having a nice time"
+      width={1460}
+      height={1460}
+    />
+  }
+/>
+```
+
+## Example
+
+<Canvas of={HomepageHeroStories.Default} />
+<Controls of={HomepageHeroStories.Default} />

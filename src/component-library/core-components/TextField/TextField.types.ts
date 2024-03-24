@@ -1,0 +1,8 @@
+export interface TextFieldProps {
+  id: string;
+  type?: 'text' | 'email';
+  label?: string;
+  helpText?: string;
+  required?: boolean;
+  errorMessage?: string;
+}

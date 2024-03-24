@@ -12,33 +12,60 @@
                 "name": "HCA Project placeholder settings",
                 "path": "/sitecore/layout/Placeholder Settings/Project/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete"
-            },    
+            },
             {
                 "name": "HCA Project layouts",
                 "path": "/sitecore/layout/Layouts/Project/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete"
-            },             
+            },
             {
                 "name": "HCA Project renderings",
                 "path": "/sitecore/layout/Renderings/Project/HCA",
-                "allowedPushOperations": "CreateUpdateAndDelete"               
+                "allowedPushOperations": "CreateUpdateAndDelete"
             },
             {
                 "name": "HCA Project templates",
                 "path": "/sitecore/templates/Project/HCA",
-                "allowedPushOperations": "CreateUpdateAndDelete"               
-            },           
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+            {
+                "name": "HCA Project Branches",
+                "path": "/sitecore/templates/Branches/Project/HCA",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
             {
                 "name": "HCA Project media",
                 "path": "/sitecore/media library/Project/HCA",
-                "allowedPushOperations": "CreateUpdateAndDelete"
-            },           
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "scope": "SingleItem"              
+            },
             {
                 "name": "HCA Project Content Root",
                 "path": "/sitecore/content/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete",
                 "scope": "SingleItem"
+            },
+            {
+                "name": "HCA Project Rules",
+                "path": "/sitecore/system/Settings/Rules/Insert Options/Rules",
+                "rules": [
+                    {
+                        "path": "/HCA *",
+                        "scope": "ItemAndDescendants",
+                        "allowedPushOperations": "CreateUpdateAndDelete"
+                    },
+                    {
+                        "path": "*",
+                        "scope": "ignored"
+                     }
+                ]
             }
         ]
+    },
+    "leprechaun": {
+        "configuration": {
+            "@extends": "HCALeprehaun.Base",
+            "@name": "Project.HCA"
+        }
     }
 }

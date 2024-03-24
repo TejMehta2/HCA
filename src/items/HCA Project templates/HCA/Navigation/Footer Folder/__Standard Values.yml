@@ -1,0 +1,33 @@
+﻿---
+ID: "36d11183-9988-45c5-8c56-a0dfaf40e72a"
+Parent: "9af1a604-c8e4-429e-b796-ffd32098d094"
+Template: "9af1a604-c8e4-429e-b796-ffd32098d094"
+Path: /sitecore/templates/Project/HCA/Navigation/Footer Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {6470D6D3-1EF4-4A6D-8079-9A18218874D1}
+    {9AF1A604-C8E4-429E-B796-FFD32098D094}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "80fc7ed9-f348-49ef-81b3-bb503b43b487"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240105T160451Z

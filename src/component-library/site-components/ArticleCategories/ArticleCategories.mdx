@@ -1,0 +1,68 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ArticleCategoriesStories from './ArticleCategories.stories';
+
+<Meta of={ArticleCategoriesStories} />
+
+# ArticleCategories
+
+## Description
+
+The ArticleCategories component takes a theme, title, and list of categories. Each item in this list is rendered as a button
+
+It is intended to be used on the blog pag to inform the user of the different categories used in blog articles
+
+It can be composed like this:
+
+```tsx
+<ArticleCategories
+  theme="H-HCA-Tangerine"
+  title={
+    <Text variation="display-3" tag="h3">
+      Article categories
+    </Text>
+  }
+  categories={[
+    <a href="#" key={1}>
+      <Icons iconName="iconFilterCircle" />
+      <span>General Health</span>
+    </a>,
+    <a href="#" key={2}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Cardiac Care</span>
+    </a>,
+    <a href="#" key={3}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Cancer Care</span>
+    </a>,
+    <a href="#" key={4}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Orthopaedic Care</span>
+    </a>,
+    <a href="#" key={5}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Woman&apos;s Health</span>
+    </a>,
+    <a href="#" key={6}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Men&apos;s Health</span>
+    </a>,
+    <a href="#" key={7}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Paediatrics</span>
+    </a>,
+    <a href="#" key={8}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Clinical neurosciences</span>
+    </a>,
+    <a href="#" key={9}>
+      <Icons iconName="iconFilterCircle" />
+      <span>Consultant Q&A</span>
+    </a>,
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={ArticleCategoriesStories.Default} />
+<Controls of={ArticleCategoriesStories.Default} />

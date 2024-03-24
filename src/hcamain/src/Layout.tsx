@@ -1,36 +1,63 @@
 /**
  * This Layout is needed for Starter Kit.
  */
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 import {
   Placeholder,
   LayoutServiceData,
   Field,
   HTMLLink,
-} from '@sitecore-jss/sitecore-jss-nextjs'
-import { getPublicUrl } from '@sitecore-jss/sitecore-jss-nextjs/utils'
-import Scripts from 'src/Scripts'
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import config from 'temp/config';
+import Scripts from 'src/Scripts';
+
+import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
+import Params from 'src/types/params';
+import ErrorBoundary from 'lib/ErrorBoundary';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
-const publicUrl = getPublicUrl()
+const publicUrl = config.publicUrl;
 
 interface LayoutProps {
-  layoutData: LayoutServiceData
-  headLinks: HTMLLink[]
+  layoutData: LayoutServiceData;
+  headLinks: HTMLLink[];
+}
+interface RouteFields {
+  [key: string]: unknown;
+  Title?: Field;
 }
 
-interface RouteFields {
-  [key: string]: unknown
-  Title?: Field
-}
+type FirstComponentProps = {
+  params?: Params;
+};
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
-  const { route } = layoutData.sitecore
-  const fields = route?.fields as RouteFields
-  const isPageEditing = layoutData.sitecore.context.pageEditing
-  const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode'
+  const { route } = layoutData.sitecore;
+  const fields = route?.fields as RouteFields;
+  const isPageEditing = layoutData.sitecore.context.pageEditing;
+  const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
+
+  const isHomepage = layoutData?.sitecore.context.itemPath === '/';
+
+  //  On the homepage get the theme of the first component to set the initial theme of the ScrollTransition component
+
+  let firstComponentTheme;
+  if (isHomepage) {
+    const firstComponent = layoutData.sitecore.route?.placeholders[
+      'headless-main'
+    ][0] as FirstComponentProps;
+    const firstComponentParams = firstComponent?.params as Params;
+
+    firstComponentTheme = firstComponentParams.Theme
+      ? firstComponentParams?.Theme
+      : 'B-HCA-Navy-Blue';
+  }
+
+  const RenderWithErrorBoundary = (children: React.ReactNode) => (
+    <ErrorBoundary>{children}</ErrorBoundary>
+  );
 
   return (
     <>
@@ -47,22 +74,64 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       <div className={mainClassPageEditing}>
         <header>
           <div id="header">
-            {route && <Placeholder name="headless-header" rendering={route} />}
+            {route && (
+              <Placeholder
+                name="headless-header"
+                rendering={route}
+                renderEach={RenderWithErrorBoundary}
+              />
+            )}
           </div>
         </header>
         <main>
           <div id="content">
-            {route && <Placeholder name="headless-main" rendering={route} />}
+            {isHomepage ? (
+              <ScrollTransition initialTheme={firstComponentTheme}>
+                {route && (
+                  <Placeholder
+                    name="headless-main"
+                    rendering={route}
+                    renderEach={RenderWithErrorBoundary}
+                  />
+                )}
+              </ScrollTransition>
+            ) : (
+              route && (
+                <Placeholder
+                  name="headless-main"
+                  rendering={route}
+                  renderEach={RenderWithErrorBoundary}
+                />
+              )
+            )}
           </div>
         </main>
         <footer>
           <div id="footer">
-            {route && <Placeholder name="headless-footer" rendering={route} />}
+            {isHomepage ? (
+              <ScrollTransition transitionBackground={false}>
+                {route && (
+                  <Placeholder
+                    name="headless-footer"
+                    rendering={route}
+                    renderEach={RenderWithErrorBoundary}
+                  />
+                )}
+              </ScrollTransition>
+            ) : (
+              route && (
+                <Placeholder
+                  name="headless-footer"
+                  rendering={route}
+                  renderEach={RenderWithErrorBoundary}
+                />
+              )
+            )}
           </div>
         </footer>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

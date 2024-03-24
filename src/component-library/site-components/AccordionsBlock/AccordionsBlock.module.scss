@@ -1,0 +1,17 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.container {
+  @include responsive-container;
+  @include responsive-grid;
+}
+
+.content {
+  @include responsive-grid-start($breakpoint-l: 3);
+  @include responsive-grid-span($default: 6, $breakpoint-l: 8);
+}

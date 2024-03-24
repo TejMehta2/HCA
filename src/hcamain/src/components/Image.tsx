@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Image as JssImage,
   Link as JssLink,
@@ -7,18 +7,18 @@ import {
   LinkField,
   Text,
   useSitecoreContext,
-} from '@sitecore-jss/sitecore-jss-nextjs'
+} from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
-  Image: ImageField
-  ImageCaption: Field<string>
-  TargetUrl: LinkField
+  Image: ImageField;
+  ImageCaption: Field<string>;
+  TargetUrl: LinkField;
 }
 
 type ImageProps = {
-  params: { [key: string]: string }
-  fields: Fields
-}
+  params: { [key: string]: string };
+  fields: Fields;
+};
 
 const ImageDefault = (props: ImageProps): JSX.Element => (
   <div className={`component image ${props.params.styles}`.trimEnd()}>
@@ -26,27 +26,32 @@ const ImageDefault = (props: ImageProps): JSX.Element => (
       <span className="is-empty-hint">Image</span>
     </div>
   </div>
-)
+);
 
 export const Banner = (props: ImageProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext()
+  const { sitecoreContext } = useSitecoreContext();
+  const isPageEditing = sitecoreContext.pageEditing;
+  const classHeroBannerEmpty =
+    isPageEditing && props.fields?.Image?.value?.class === 'scEmptyImage'
+      ? 'hero-banner-empty'
+      : '';
   const backgroundStyle = {
     backgroundImage: `url('${props?.fields?.Image?.value?.src}')`,
-  }
+  };
   const modifyImageProps = {
-    ...props.fields.Image,
+    ...props?.fields?.Image,
     editable: props?.fields?.Image?.editable
       ?.replace(`width="${props?.fields?.Image?.value?.width}"`, 'width="100%"')
       .replace(
         `height="${props?.fields?.Image?.value?.height}"`,
         'height="100%"'
       ),
-  }
-  const id = props.params.RenderingIdentifier
+  };
+  const id = props.params.RenderingIdentifier;
 
   return (
     <div
-      className={`component hero-banner ${props.params.styles}`}
+      className={`component hero-banner ${props.params.styles} ${classHeroBannerEmpty}`}
       id={id ? id : undefined}
     >
       <div
@@ -60,15 +65,15 @@ export const Banner = (props: ImageProps): JSX.Element => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const Default = (props: ImageProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext()
+  const { sitecoreContext } = useSitecoreContext();
 
   if (props.fields) {
-    const Image = () => <JssImage field={props.fields.Image} />
-    const id = props.params.RenderingIdentifier
+    const Image = () => <JssImage field={props.fields.Image} />;
+    const id = props.params.RenderingIdentifier;
 
     return (
       <div
@@ -76,7 +81,8 @@ export const Default = (props: ImageProps): JSX.Element => {
         id={id ? id : undefined}
       >
         <div className="component-content">
-          {sitecoreContext.pageState === 'edit' ? (
+          {sitecoreContext.pageState === 'edit' ||
+          !props.fields.TargetUrl?.value?.href ? (
             <Image />
           ) : (
             <JssLink field={props.fields.TargetUrl}>
@@ -90,8 +96,8 @@ export const Default = (props: ImageProps): JSX.Element => {
           />
         </div>
       </div>
-    )
+    );
   }
 
-  return <ImageDefault {...props} />
-}
+  return <ImageDefault {...props} />;
+};

@@ -1,0 +1,32 @@
+﻿---
+ID: "5b96cc58-0137-4ccf-af1f-b3232d7b384e"
+Parent: "7018d56d-962e-4cc5-8558-658351aa92e8"
+Template: "6ebf425a-4ae2-4da1-8042-46d776a9c114"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA68/Data/Image And Tabs"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "24209e86-b618-4604-981a-20948ddb46eb"
+      Hint: Tabs
+      Value: |
+        {CC15B472-61EB-4A50-9F99-B071DEABA95B}
+        {EEDFE752-16FD-4F53-8277-953B70286913}
+        {154A042A-089B-4A3B-BD96-D27EEBC6D4A2}
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240122T121556Z
+    - ID: "6fa75cd1-e82b-41ac-b69b-5bddfbed5e55"
+      Hint: Title
+      Value: Our appointments & memberships
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b40d98d6-a55d-4da0-8ada-338f35ab51d8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240122T123146Z

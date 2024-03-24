@@ -1,0 +1,29 @@
+﻿---
+ID: "933008ed-9f85-4025-bf54-aafeadab2ca2"
+Parent: "418861af-2d70-48dc-9858-a29561c35b78"
+Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Call Us Today CTA"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240211T201113Z
+    - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
+      Hint: ContactUnit
+      Value: |
+        {C7F6CFFB-E283-41A8-A66C-0630FF822617}
+        {D87C3036-3788-420D-88EF-B8D4E63CA240}
+        {49939958-5CD0-4ED4-8D0C-D0A58D666BC3}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "79666086-bd04-455d-af80-0fc0893fa301"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240313T215201Z

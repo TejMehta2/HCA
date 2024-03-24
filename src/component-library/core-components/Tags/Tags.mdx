@@ -1,0 +1,21 @@
+import { Canvas, Meta, Controls } from '@storybook/blocks';
+import * as TagsStories from './Tags.stories';
+
+<Meta of={TagsStories} />
+
+# Tags
+
+The Tags component is intended apply styles by wrapping a plain HTML link tag (in the `children` prop) which can be returned by wrapping a JSSLink component or NextJS Link component.
+
+Alernatively, non-link elements can be used.
+
+Tags can hold multiple child items, and will style them in a wrapping flex container.
+
+The theme (comprising of a background and text colour) are controlled by the `theme` prop.
+
+The theme can be inherited from the cascade by leaving the `theme` prop unset.
+
+The background of the Tags' parent component is intended to be determined by the parent, e.g. in the case of the `theme="white"`  version, which is displayed on an orange background in the designs.
+
+<Canvas of={TagsStories.Green}  />
+<Controls of={TagsStories.Green}  />

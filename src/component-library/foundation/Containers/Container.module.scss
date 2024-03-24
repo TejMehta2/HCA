@@ -1,0 +1,105 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.container {
+  // display flex
+  &.display-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+  }
+
+  // width
+  &.width-50 {
+    div {
+      width: 50%;
+    }
+  }
+
+  &.width-100 {
+    div {
+      width: 100%;
+    }
+  }
+
+  &.with-buttons {
+    div {
+      width: 100%;
+
+      &:first-child {
+        margin-right: 0;
+        margin-bottom: $spacing-4;
+
+        @include media(screen-l) {
+          margin-right: $spacing-2;
+          margin-bottom: 0;
+        }
+      }
+
+      @include media(screen-l) {
+        width: 50%;
+      }
+    }
+  }
+
+  // margin classes
+  // left
+  &.margin-left-spacing-4 {
+    margin-left: $spacing-4;
+  }
+
+  &.margin-left-spacing-6 {
+    margin-left: $spacing-6;
+  }
+
+  // right
+  &.margin-right-spacing-2 {
+    margin-right: $spacing-2;
+  }
+
+  &.margin-right-spacing-4 {
+    margin-right: $spacing-4;
+  }
+
+  &.margin-right-spacing-6 {
+    margin-right: $spacing-6;
+  }
+
+  // top
+  &.margin-top-spacing-2 {
+    margin-top: $spacing-2;
+  }
+
+  &.margin-top-spacing-4 {
+    margin-top: $spacing-4;
+  }
+
+  &.margin-top-spacing-5 {
+    margin-top: $spacing-5;
+  }
+
+  &.margin-top-spacing-8 {
+    margin-top: $spacing-8;
+  }
+
+  // bottom
+  &.margin-bottom-spacing-2 {
+    margin-bottom: $spacing-2;
+  }
+
+  &.margin-bottom-spacing-4 {
+    margin-bottom: $spacing-4;
+  }
+
+  &.margin-bottom-spacing-6 {
+    margin-bottom: $spacing-6;
+  }
+
+  &.margin-bottom-spacing-8 {
+    margin-bottom: $spacing-8;
+  }
+}

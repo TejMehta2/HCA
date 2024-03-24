@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardBlockStories from './CardBlock.stories'
+
+<Meta of={CardBlockStories} />
+
+# CardBlock
+
+## Description
+
+The CardBlock component is design to present a variety of different Card components in a grid format.
+
+It is intended to be used in as page level component.
+
+The `variation` prop dictates the type of layout presented: `side-by-side`, `3-columns` or `4-columns`.
+
+The `gapSize` prop dictates the space between the header (title, cta, copy) and card grid.
+
+It can take the following card components as children:
+
+- BlogCard
+- PatientStoriesCard
+- DoctorCard
+- ContentCard
+- LocationCard
+
+It can be composed like this:
+
+``` tsx
+<CardBlock
+  header={
+    <AdvancedBlockHeader /> // see AdvancedBlockHeader docs for props etc.
+  }
+  ctas={
+    <>
+      <Button size={'large'} variation={'full'}>
+        <a href="#">
+          Learn more about <strong>self-pay</strong>
+        </a>
+      </Button>
+      <TextButton>
+        <a href="#">
+          Access care with <strong>insurance</strong>
+        </a>
+      </TextButton>
+    </>
+  }
+  >
+  <CardBlog>
+    <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+    <Text variation="heading-2" tag="h3">
+      <a href="#">
+        The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+      </a>
+    </Text>
+    <Text variation="body-large">
+      There are over 1400 at The Portland, each year. Hear new mums sharing
+      theirs
+    </Text>
+    <Tags>
+      <a href="#">Announcement</a>
+    </Tags>
+  </CardBlog>
+  {/* ... other cards */}
+</CardBlock>
+```

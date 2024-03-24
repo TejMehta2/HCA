@@ -1,0 +1,76 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CardBlogBlockStories from './CardBlogBlock.stories'
+
+<Meta of={CardBlogBlockStories} />
+
+# CardBlogBlock
+
+## Description
+
+The CardBlogBlock component is a page level component.
+
+It is intended to be used as a signpost to the blogs or blog pages. 
+
+It provides simple wrapper component which is intended to consume CardBlog components as children.
+
+The first CardBlog child should have the `variation="feature"` prop. 
+
+## Composition
+
+It can be composed like this:
+
+``` tsx
+<CardBlogBlock
+  title={
+    <Text variation={'display-5'}>
+      <span>From the blog</span>
+    </Text>
+  }
+  cta={
+    <Button size={'large'} variation={'full'}>
+      <a href="#">
+        Visit our <strong>blog</strong>
+      </a>
+    </Button>
+  }
+>
+  {/* Large feature card */}
+  <CardBlog variation={'feature'}>
+    <Image
+      src="/placeholders/children-playing.jpg"
+      alt="two children playing"
+      width="643"
+      height="605"
+    />
+    <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+    <Text tag="h3" variation={'display-5'}>
+      <a href="#">HCA UK launches rapid response referral service</a>
+    </Text>
+    <Text variation={'body-large'}>
+      There are over 1400 at The Portland, each year. Hear new mums sharing
+      theirs
+    </Text>
+    <Tags>
+      <a href="#">Announcement</a>
+    </Tags>
+  </CardBlog>
+  {/* Small cards */}
+  <CardBlog>
+    <time dateTime="Sept 7, 2023">Sept 7, 2023</time>
+    <Text tag="h3" variation={'heading-2'}>
+      <a href="#">
+        The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
+      </a>
+    </Text>
+    <Tags>
+      <a href="#">Announcement</a>
+    </Tags>
+  </CardBlog>
+  {/* ... 3 more small cards */}
+</CardBlogBlock>
+```
+
+## Example 
+
+<Canvas of={CardBlogBlockStories.Default} />
+<Controls of={CardBlogBlockStories.Default} />

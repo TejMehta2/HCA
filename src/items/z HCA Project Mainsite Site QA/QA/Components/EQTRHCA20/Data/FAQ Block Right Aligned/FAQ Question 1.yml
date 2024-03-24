@@ -1,0 +1,29 @@
+﻿---
+ID: "9413dd7b-8d52-4e57-9ceb-9dea2122b569"
+Parent: "e848f5ad-07a1-41a2-8cf4-bf83ad2802f6"
+Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Right Aligned/FAQ Question 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1d63eaee-6a20-4bd9-894d-9902c8fdd2d0"
+      Hint: Answer
+      Value: Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T163127Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "26cefe5a-b07b-4492-a474-f9e48f9f8f84"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240129T163211Z
+    - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
+      Hint: Question
+      Value: I have a referral from my GP

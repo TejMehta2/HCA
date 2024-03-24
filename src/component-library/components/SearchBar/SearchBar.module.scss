@@ -1,0 +1,58 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: $spacing-2;
+}
+
+.search-bar {
+  background-color: var(--card-background);
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  position: relative;
+  flex: 1 1 auto;
+  color: var(--text);
+  border-radius: $radius-large;
+  border: solid px-to-rem(1) currentcolor;
+  padding: px-to-rem(18) px-to-rem(32);
+  @include apply-body-medium-large;
+
+  &:focus-within,
+  &:focus {
+    outline: px-to-rem(2) solid currentcolor;
+    outline-offset: px-to-rem(-5);
+  }
+
+  // padding-left: calc( px-to-rem(24 + 32) + #{$spacing-4}) ;
+  input {
+    background-color: inherit;
+    flex: 1;
+    padding: 0;
+    border: none;
+    outline: none;
+    color: inherit;
+    @include apply-body-medium-large;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  .clear {
+    height: px-to-rem(24);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.suggestions {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+}

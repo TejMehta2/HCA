@@ -1,0 +1,42 @@
+﻿---
+ID: "540014c3-7b4b-49e6-a894-f3db751e1160"
+Parent: "847ace4a-a241-450f-95a3-c4da40e2f158"
+Template: "96e5e6df-b4f7-4587-b195-83bf31746cbe"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA65/Data/Locations Map/London"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "09288575-7091-48ef-bdd9-f527623b3052"
+      Hint: CardStyles
+      Value: "translateY(-55%) translateX(40%)"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240202T090254Z
+    - ID: "64f64b91-a724-4592-b254-1074e323f51f"
+      Hint: MapStyles
+      Value: "translateY(-20%) scale(1.5)"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "93c680e4-e5ff-4c52-8fdb-1aceae0365bb"
+    - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
+      Hint: Theme
+      Value: "{F60F7897-CE0F-4C3B-8FB5-B10AA9732339}"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View &lt;b&gt;all&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
+      Hint: Number
+      Value: 9
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240314T102613Z
+    - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
+      Hint: Text
+      Value: Locations across London

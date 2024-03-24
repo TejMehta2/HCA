@@ -1,0 +1,42 @@
+﻿---
+ID: "c2d1a747-8655-4415-bf74-4f76d6e0a556"
+Parent: "87d7dbd8-e09e-4957-9ccc-78c64d8d6160"
+Template: "4b3b58b7-53bb-48a2-88e4-420ec6e04f46"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA97/Data/Treatments Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240318T092909Z
+    - ID: "60c1cb24-bd52-49e7-9756-e686b25b1b9f"
+      Hint: NumberOfCards
+      Value: 3
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9c74cbf4-6079-4180-a5ee-ea5bc9e54f39"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View all &lt;b&gt;hip pain tests &amp; scans&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{A40C792E-42F6-4549-82C1-BD82242BA0B7}" />
+    - ID: "a964b3b4-4ad5-4918-831c-36f91c9dc8f8"
+      Hint: Treatments
+      Value: |
+        {C91EF73F-FA0B-47CA-A3C5-1398576C0C97}
+        {4D3BAB9F-8E74-42C0-A5E8-E0622E25AE26}
+        {8DEBF86C-6F04-4642-9687-BE6E565C1EB1}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Hip pain tests & scans
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240318T124429Z
+    - ID: "ded86b0c-c734-4019-89c3-6c6a34a1cc8d"
+      Hint: CTACardText
+      Value: Learn more

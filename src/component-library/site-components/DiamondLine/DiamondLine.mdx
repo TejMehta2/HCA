@@ -1,0 +1,26 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as DiamondLineStories from './DiamondLine.stories';
+
+<Meta of={DiamondLineStories} />
+
+# DiamondLine
+
+## Description
+
+The DiamondLine component is a divider component that adds a diamond outline shape to the side of the page.
+There is the optional prop to choose whether it appears on the left or right side of the page
+
+It is intended to be used on the hompage to add some additional visual interest to the page. It should only show on desktop
+
+A larger example can be found in the `components/ScrollTransition` component
+
+It can be composed like this:
+
+```tsx
+<DiamondLine side="left" theme="H-HCA-Tangerine" />
+```
+
+## Example
+
+<Canvas of={DiamondLineStories.Default} />
+<Controls of={DiamondLineStories.Default} />

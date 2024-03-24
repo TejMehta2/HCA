@@ -1,0 +1,23 @@
+﻿---
+ID: "66b9ceec-9cb8-41c4-ad52-413c3f05eb3b"
+Parent: "953561d7-0f76-4b26-8912-5f4429f49070"
+Template: "4c4e36cc-5945-4963-aa6c-e5c063ebffa0"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Custom Settings/Doctify"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240110T104204Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "61f89cf9-e5e9-4990-a404-6e6f84293497"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240110T104446Z

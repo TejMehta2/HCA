@@ -2,7 +2,7 @@ import {
   generatePlugins,
   ModuleType,
   PluginDefinition,
-} from '@sitecore-jss/sitecore-jss-dev-tools'
+} from '@sitecore-jss/sitecore-jss-dev-tools';
 
 /*
   PLUGINS GENERATION
@@ -57,8 +57,8 @@ const pluginDefinitions: PluginDefinition[] = [
     rootPath: 'src/lib/site-resolver/plugins',
     moduleType: ModuleType.ESM,
   },
-]
+];
 
 pluginDefinitions.forEach((definition) => {
-  generatePlugins(definition)
-})
+  generatePlugins(definition);
+});

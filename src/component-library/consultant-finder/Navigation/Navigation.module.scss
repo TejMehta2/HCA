@@ -1,0 +1,36 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.consultant-finder-navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  padding: $spacing-2 $spacing-6;
+  position: fixed;
+  bottom: 0;
+  text-align: left;
+  z-index: 2;
+  border-top: 1px solid $navy-blue-30;
+
+  &.show-on-mobile {
+    display: flex;
+
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+
+  &.custom-btns-sm {
+    a {
+      padding: px-to-rem(16) $spacing-4;
+    }
+
+    @include media(screen-m) {
+      a {
+        padding: px-to-rem(16) $spacing-7;
+      }
+    }
+  }
+}

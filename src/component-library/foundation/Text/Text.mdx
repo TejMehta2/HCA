@@ -1,0 +1,55 @@
+import { Meta, Stories } from '@storybook/blocks';
+import * as TextStories from './Text.stories';
+
+<Meta of={TextStories} />
+
+
+# Text
+
+Text comprises of both a React component and a series of SCSS mixins. 
+
+Both of these can be used in isolation, depending on your needs. 
+
+## React component
+
+The React component imports the SASS mixins. So the mixins are the single source of truth.
+
+The React component applies the mixins from the SCSS module, and allows you to assign the font variation, HTML tag and children via props:
+
+``` tsx dark
+// MyComponent.demo.tsx
+import React from 'react'
+import Text from '../../foundation/Text/Text'
+
+const MyComponent = () => {
+  return (
+    <div className={styles.grid}>
+      <Text variation='body-medium-large' tag='p'>Lorem Ipsum</Text>
+    </div>
+  )
+}
+
+export default MyComponent
+```
+
+## SCSS mixins module
+
+The text SCSS module exports several SASS mixins which are intended to be imported directly into component scss module files.
+
+The SCSS mixins module applies permutations of the following CSS font properties responsively, so there should be no need to wrap the mixins in a media query:
+
+- `font-family`
+- `font-weight`
+- `line-height`
+- `letter-spacing`
+- `text-transform`
+
+```scss dark
+// MyComponent.module.scss
+@use '../../foundation/index.module.scss' as *;
+
+.my-component {
+  @include apply-body-medium-medium;
+}
+```
+<Stories />

@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as OurLocationsRegionStories from './OurLocationsRegion.stories';
+
+<Meta of={OurLocationsRegionStories} />
+
+# OurLocationsRegion
+
+## Description
+
+The OurLocationsRegion component consists of an Id, theme, title, amount, area, and map and card styles, and an activeRegion boolean.
+
+The map and card styles are intended to be overwritten with the styles of the active region so that each card can transition smoothly
+
+It is intended to be used in the OurLocations component
+
+It can be composed like this:
+
+```tsx
+<OurLocationsRegion id={0}
+    name='Locations across the UK'
+    amount='35'
+    theme='B-HCA-Navy-Blue'
+    area={{ mobile: MapEngland }}
+    mapStyles={{ transform: 'translateY(0) scale(1.1)' }}
+    cardStyles={{ transform: 'translateY(-50%)' }}
+    activeRegion={true}>
+```
+
+## Example
+
+<Canvas of={OurLocationsRegionStories.Default} />
+<Controls of={OurLocationsRegionStories.Default} />

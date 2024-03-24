@@ -1,0 +1,7 @@
+@use '../../Colours/colours.module' as *;
+
+@mixin apply-tabs($background, $text: $navy-blue-100, $text-active: $text) {
+  --tab-text: #{$text};
+  --tab-active-text: #{$text-active};
+  --tab-background: #{$background};
+}

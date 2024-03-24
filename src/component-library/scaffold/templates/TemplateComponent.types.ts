@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 export interface TemplateComponentProps {
-  children?: ReactNode | JSX.Element
+  children?: ReactNode | JSX.Element;
 }

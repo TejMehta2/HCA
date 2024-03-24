@@ -1,0 +1,53 @@
+import React from 'react';
+import ModalSearch from './ModalSearch';
+import type { Meta, StoryObj } from '@storybook/react';
+import SearchBar from '../SearchBar/SearchBar';
+import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
+
+// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const meta: Meta<typeof ModalSearch> = {
+  title: 'components/ModalSearch',
+  component: ModalSearch,
+  parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
+    layout: 'centered',
+  },
+};
+
+const suggestions = [
+  'How do I pay for treatment?',
+  'Locations near me',
+  'Operations & Covid 19',
+  'Careers',
+  'Neurology',
+  'Where can I park?',
+  'ENT',
+  'How do I pay for treatment?',
+  'Operations & Covid 19',
+  'Careers',
+  'Neurology',
+  'Where can I park?',
+  'ENT',
+];
+export default meta;
+// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+export const Default: StoryObj<typeof ModalSearch> = {
+  args: {
+    searchBar: <SearchBar placeholder="Start typing..." />,
+    suggestions: (
+      <>
+        {suggestions.map((suggestion, index) => (
+          <Button key={index} size={'small'} variation={'full-light-blue'}>
+            <button>
+              <Icons iconName="iconSearch" />
+              <span>{suggestion}</span>
+            </button>
+          </Button>
+        ))}
+      </>
+    ),
+    defaultOpen: true,
+    theme: 'D-HCA-Teal',
+  },
+};

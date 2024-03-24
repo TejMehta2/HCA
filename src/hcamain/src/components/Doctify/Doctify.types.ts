@@ -1,0 +1,33 @@
+import {
+  Field,
+  ImageField,
+  LinkField,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+
+export interface DoctifyLogoFields {
+  fields?: {
+    Text?: Field<string>;
+    Logo?: ImageField;
+  };
+}
+
+export interface DoctifyReviewsFields {
+  fields?: {
+    Stars?: Field<string>;
+    Reviews?: Field<string>;
+    DoctifyLogoLight?: DoctifyLogoFields;
+    DoctifyLogoDark?: DoctifyLogoFields;
+    Link?: LinkField;
+  };
+}
+
+export interface Fields {
+  Reviews?: DoctifyReviewsFields;
+}
+
+export type DoctifyProps = {
+  params?: Params;
+  fields?: Fields;
+  alignment?: 'left' | 'right' | 'centre';
+};

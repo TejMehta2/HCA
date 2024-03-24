@@ -1,0 +1,31 @@
+@use '../Colours/colours.module' as *;
+@use '../../utilities/index.module' as *;
+
+.loader {
+  width: px-to-rem(24);
+  height: px-to-rem(24);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1.3s linear infinite;
+}
+
+.light {
+  border: px-to-rem(3) solid $navy-blue-9;
+  border-bottom-color: $navy-blue-100;
+}
+
+.dark {
+  border: px-to-rem(3) solid $navy-blue-60;
+  border-bottom-color: $white;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

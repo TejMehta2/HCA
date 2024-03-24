@@ -1,0 +1,9 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 $spacing-14;
+}

@@ -1,51 +1,57 @@
-import fs from 'fs'
-import path from 'path'
-import prompts from 'prompts'
+import fs from 'fs';
+import path from 'path';
+import prompts, { PromptObject } from 'prompts';
 
-const templatePath = path.join(__dirname, 'templates')
+const templatePath = path.join(__dirname, 'templates');
 
 const generateSingleFile = (
-  componentPath,
-  componentFileName,
-  templateFileName
+  componentPath: string,
+  componentFileName: string,
+  templateFileName: string
 ) => {
   // Get file contents
-  const templateFileLocation = path.join(templatePath, templateFileName)
+  const templateFileLocation = path.join(templatePath, templateFileName);
   fs.readFile(templateFileLocation, 'utf8', (err, fileContent) => {
-    const splitOnce = (stringToSplit, subString) => {
-      const [first, ...rest] = stringToSplit.split(subString)
-      return [first, rest.length > 0 ? rest.join(subString) : null]
+    if (err) {
+      console.error(err);
     }
-    const [templatePrefix, fileSuffix] = splitOnce(templateFileName, '.')
+    const splitOnce = (stringToSplit: string, subString: string) => {
+      const [first, ...rest] = stringToSplit.split(subString);
+      return [first, rest.length > 0 ? rest.join(subString) : null];
+    };
+    const [templatePrefix, fileSuffix] = splitOnce(templateFileName, '.');
     const hydratedTemplate = fileContent
-      .replaceAll(templatePrefix, componentFileName)
-      .replaceAll('TemplateDirectory', componentPath)
+      .replaceAll(templatePrefix as string, componentFileName)
+      .replaceAll('TemplateDirectory', componentPath);
 
     const prefix =
-      fileSuffix === 'module.scss' && componentPath === 'foundation' ? '_' : ''
+      fileSuffix === 'module.scss' && componentPath === 'foundation' ? '_' : '';
     const destination = path.join(
       componentPath,
       `${componentFileName}/${prefix}${componentFileName}.${fileSuffix}`
-    )
-    fs.writeFileSync(destination, hydratedTemplate)
-  })
-}
+    );
+    fs.writeFileSync(destination, hydratedTemplate);
+  });
+};
 
-const generateAllFiles = (componentPath, componentFileName) => {
+const generateAllFiles = (componentPath: string, componentFileName: string) => {
   // Read files in templates folder
   fs.readdir(templatePath, (err, templateFileNames) => {
+    if (err) {
+      console.error(err);
+    }
     // Make sure our directories exist. Create recursively if not
-    const destinationFolder = path.join(componentPath, componentFileName)
-    fs.mkdirSync(destinationFolder, { recursive: true })
+    const destinationFolder = path.join(componentPath, componentFileName);
+    fs.mkdirSync(destinationFolder, { recursive: true });
     // Then we copy templates over
     templateFileNames.forEach((templateFileName) =>
       generateSingleFile(componentPath, componentFileName, templateFileName)
-    )
-  })
-}
+    );
+  });
+};
 
 // Handle user input
-const questions = [
+const questions: PromptObject[] = [
   {
     type: 'text',
     name: 'name',
@@ -57,8 +63,13 @@ const questions = [
     message: 'Choose a directory',
     choices: [
       {
+        title: 'site-components',
+        description: 'e.g. card blocks, carousel blocks',
+        value: 'site-components',
+      },
+      {
         title: 'components',
-        description: 'e.g. cards, carousels',
+        description: 'e.g. cards, modals, tooltips',
         value: 'components',
       },
       {
@@ -71,18 +82,30 @@ const questions = [
         description: 'e.g. fonts, colours, spacings',
         value: 'foundation',
       },
+      {
+        title: 'consultant-finder',
+        description: 'e.g. reviews, search, profile',
+        value: 'consultant-finder',
+      },
+      {
+        title: 'yext',
+        description: 'for components related to yext search',
+        value: 'yext',
+      },
     ],
     initial: 0,
   },
-]
-;(async () => {
-  const response = await prompts(questions)
-  const { name, directory } = response
+];
+(async () => {
+  const response = await prompts(questions);
+  const { name, directory } = response;
   try {
-    generateAllFiles(directory, name)
-    console.log(`Successfully scaffolded: "./${directory}/${name}/${name}.tsx"`)
+    generateAllFiles(directory, name);
+    console.log(
+      `Successfully scaffolded: "./${directory}/${name}/${name}.tsx"`
+    );
   } catch (err) {
-    console.log(`Could not scaffold "${directory}/${name}/"`)
-    console.error(err)
+    console.log(`Could not scaffold "${directory}/${name}/"`);
+    console.error(err);
   }
-})()
+})();

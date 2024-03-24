@@ -1,19 +1,19 @@
-import { useEffect } from 'react'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import NotFound from 'src/NotFound'
-import Layout from 'src/Layout'
+import { useEffect } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import NotFound from 'src/NotFound';
+import Layout from 'src/Layout';
 import {
   RenderingType,
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
   StaticPath,
-} from '@sitecore-jss/sitecore-jss-nextjs'
-import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils'
-import { SitecorePageProps } from 'lib/page-props'
-import { sitecorePagePropsFactory } from 'lib/page-props-factory'
-import { componentBuilder } from 'temp/componentBuilder'
-import { sitemapFetcher } from 'lib/sitemap-fetcher'
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
+import { SitecorePageProps } from 'lib/page-props';
+import { sitecorePagePropsFactory } from 'lib/page-props-factory';
+import { componentBuilder } from 'temp/componentBuilder';
+import { sitemapFetcher } from 'lib/sitemap-fetcher';
 
 const SitecorePage = ({
   notFound,
@@ -23,17 +23,17 @@ const SitecorePage = ({
 }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
-    handleEditorFastRefresh()
-  }, [])
+    handleEditorFastRefresh();
+  }, []);
 
   if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
-    return <NotFound />
+    return <NotFound />;
   }
 
-  const isEditing = layoutData.sitecore.context.pageEditing
+  const isEditing = layoutData.sitecore.context.pageEditing;
   const isComponentRendering =
-    layoutData.sitecore.context.renderingType === RenderingType.Component
+    layoutData.sitecore.context.renderingType === RenderingType.Component;
 
   return (
     <ComponentPropsContext value={componentProps}>
@@ -52,8 +52,8 @@ const SitecorePage = ({
         )}
       </SitecoreContext>
     </ComponentPropsContext>
-  )
-}
+  );
+};
 
 // This function gets called at build and export time to determine
 // pages for SSG ("paths", as tokenized array).
@@ -66,8 +66,8 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   // ahead of time (non-development mode in this example).
   // See https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
 
-  let paths: StaticPath[] = []
-  let fallback: boolean | 'blocking' = 'blocking'
+  let paths: StaticPath[] = [];
+  let fallback: boolean | 'blocking' = 'blocking';
 
   if (
     process.env.NODE_ENV !== 'development' &&
@@ -75,35 +75,52 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   ) {
     try {
       // Note: Next.js runs export in production mode
-      paths = await sitemapFetcher.fetch(context)
+      paths = await sitemapFetcher.fetch(context);
     } catch (error) {
-      console.log('Error occurred while fetching static paths')
-      console.log(error)
+      console.log('Error occurred while fetching static paths');
+      console.log(error);
     }
 
-    fallback = process.env.EXPORT_MODE ? false : fallback
+    fallback = process.env.EXPORT_MODE ? false : fallback;
   }
 
   return {
     paths,
     fallback,
-  }
-}
+  };
+};
 
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  const props = await sitecorePagePropsFactory.create(context)
-
-  return {
-    props,
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 5 seconds
-    revalidate: 5, // In seconds
-    notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+  // Allow pre-render errors to pass through in development, for debugging
+  if (process.env.NODE_ENV === 'development') {
+    const props = await sitecorePagePropsFactory.create(context);
+    return {
+      props,
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every 5 seconds
+      revalidate: 5, // In seconds
+      notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+    };
   }
-}
 
-export default SitecorePage
+  // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+  try {
+    const props = await sitecorePagePropsFactory.create(context);
+    return {
+      props,
+      revalidate: 5, // In seconds
+      notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
+};
+
+export default SitecorePage;

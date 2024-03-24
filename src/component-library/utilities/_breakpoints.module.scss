@@ -1,8 +1,8 @@
 /* stylelint-disable unit-disallowed-list */
 $breakpoints: (
-  /* 600px*/ screen-m: 37.5em,
-  /* 1135px*/ screen-l: 71em,
-  /* 1440px*/ screen-xl: 90em
+  /* 600px*/ screen-m: 37.5rem,
+  /* 1135px*/ screen-l: 71rem,
+  /* 1440px*/ screen-xl: 90rem
 );
 
 @function get-breakpoint($breakpoint) {
@@ -18,7 +18,7 @@ $breakpoints: (
   $breakpoint-value: get-breakpoint($breakpoint);
 
   @if $direction == max {
-    @media (max-width: ($breakpoint-value - 1)) {
+    @media (max-width: ($breakpoint-value - 0.063)) {
       @content;
     }
   } @else {

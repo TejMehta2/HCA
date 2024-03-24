@@ -1,0 +1,4 @@
+# CQCRating documentation
+
+## Additional information
+

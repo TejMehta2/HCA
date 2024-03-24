@@ -1,25 +1,16 @@
 {
     "renderingHosts": {
       "xmcloudpreview": {
-        "path": "./src/hcamain",
-        "nodeVersion": "16.15.1",
+        "path": ".",
+        "nodeVersion": "20.10.0",
         "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
         "enabled": true,
         "type": "sxa",
         "lintCommand": "lint",
-        "startCommand": "start:production",
-        "buildCommand": "build",
-        "runCommand": "next:start"
-      },
-      "micrositepreview": {
-        "path": "./src/microsite",
-        "nodeVersion": "16.15.1",
-        "jssDeploymentSecret":"110F1C44A496B45478640DD36F80C18C9",
-        "enabled": true,
-        "type": "sxa",
-        "lintCommand": "lint",
-        "startCommand": "start:production"
-    }
+        "startCommand": "hcamain:start:production",
+        "buildCommand": "hcamain:build",
+        "runCommand": "hcamain:next:start"
+      }
     },
     "postActions": {
         "actions":{
