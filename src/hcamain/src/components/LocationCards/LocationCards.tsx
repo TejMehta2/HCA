@@ -18,7 +18,7 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import getBaselineParams from 'lib/getBaselineParams';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
-import LocationCardApi from './LocationCardApi';
+import { LocationCardApi } from './LocationCardApi';
 import { LocationCardDefault } from './LocationCardDefault';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
@@ -268,13 +268,13 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       }
     >
       {isApiData ? (
-        <LocationCardApi
-          locations={data?.response.results}
-          linkText={props?.fields?.data?.item?.cTAText?.jsonValue}
-          directionsText={
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          }
-        />
+        data?.response.results &&
+        data?.response.results.length &&
+        LocationCardApi(
+          data?.response.results,
+          props?.fields?.data?.item?.cTAText?.jsonValue,
+          props?.fields?.data?.item?.getDirectionsText?.jsonValue
+        )
       ) : (
         <LocationCardDefault
           locations={props.fields?.data?.item?.locations?.PagesList}
@@ -343,14 +343,13 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {/* {isApiData ? (
-        <LocationCardApi
-          locations={data?.response.results}
-          linkText={props?.fields?.data?.item?.cTAText?.jsonValue}
-          directionsText={
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          }
-        />
+      {isApiData ? (
+        data?.response.results &&
+        LocationCardApi(
+          data?.response.results,
+          props?.fields?.data?.item?.cTAText?.jsonValue,
+          props?.fields?.data?.item?.getDirectionsText?.jsonValue
+        )
       ) : (
         <LocationCardDefault
           locations={props.fields?.data?.item?.locations?.PagesList}
@@ -359,7 +358,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
             props?.fields?.data?.item?.getDirectionsText?.jsonValue
           }
         />
-      )} */}
+      )}
     </CarouselCards>
   );
 };
