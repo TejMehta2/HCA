@@ -18,6 +18,12 @@ interface ConsultantFinderContextType {
   setSelectedTypeOfAppointment: React.Dispatch<React.SetStateAction<string>>;
   selectedLocation: string;
   setSelectedLocation: React.Dispatch<React.SetStateAction<string>>;
+  fristAppointmentDate: string;
+  setFirstAppointmentDate: React.Dispatch<React.SetStateAction<string>>;
+  consultantGUID: string;
+  setConsultantGUID: React.Dispatch<React.SetStateAction<string>>;
+  locationGUID: string;
+  setLocationGUID: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -41,6 +47,12 @@ export const ConsultantFinderContext =
     setSelectedTypeOfAppointment: () => {},
     selectedLocation: '',
     setSelectedLocation: () => {},
+    fristAppointmentDate: '',
+    setFirstAppointmentDate: () => {},
+    consultantGUID: '',
+    setConsultantGUID: () => {},
+    locationGUID: '',
+    setLocationGUID: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -59,6 +71,9 @@ export const ConsultantFinderContextProvider = ({
   const [selectedLocation, setSelectedLocation] = useState<string>('');
   const [selectedTypeOfAppointment, setSelectedTypeOfAppointment] =
     useState<string>('');
+  const [consultantGUID, setConsultantGUID] = useState<string>('');
+  const [locationGUID, setLocationGUID] = useState<string>('');
+  const [fristAppointmentDate, setFirstAppointmentDate] = useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -81,6 +96,12 @@ export const ConsultantFinderContextProvider = ({
         setSelectedTypeOfAppointment,
         selectedLocation,
         setSelectedLocation,
+        consultantGUID,
+        setConsultantGUID,
+        locationGUID,
+        setLocationGUID,
+        fristAppointmentDate,
+        setFirstAppointmentDate,
       }}
     >
       {children}

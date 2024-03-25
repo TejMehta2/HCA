@@ -22,9 +22,11 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
 import SelectLocation from '@component-library/consultant-finder/SelectLocation/SelectLocation';
-import axios from 'axios';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
+import axios from 'axios';
+
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
@@ -36,6 +38,9 @@ interface Fields {
   BackLink: LinkField;
   API_C2_GetConsultantDetails_BaseURL: Field<string>;
   CardTimeIcon: any;
+  CantFindBannerText: Field<string>;
+  CantFindPhoneNumber: Field<string>;
+  CantFindIcon: any;
 }
 
 type StepProps = {
@@ -52,7 +57,9 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const { selectedLocation } = useContext(ConsultantFinderContext);
+  const { selectedLocation, setSelectedTypeOfAppointment } = useContext(
+    ConsultantFinderContext
+  );
   const id = props.params.RenderingIdentifier;
   console.log('step location', props.fields);
   const router = useRouter();
@@ -85,6 +92,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
     // get isFollowup from URL
     const isFollowUpAppointment = router?.query?.isFollowOnAppointment || null;
+    if (isFollowUpAppointment) {
+      setSelectedTypeOfAppointment(isFollowUpAppointment?.toString());
+    }
 
     const requestURL_C2 = `${baseURL_C2}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${isFollowUpAppointment}`;
 
@@ -138,6 +148,29 @@ export const Default = (props: StepProps): JSX.Element => {
             {loading && <LoaderCF loadingMsg={'Loading...'} />}
             {!loading && error && (
               <div>There was an error, please try again</div>
+            )}
+            {props?.fields?.CantFindPhoneNumber?.value && (
+              <CantFind
+                title={
+                  <Text tag="p" variation="body-medium-large">
+                    {props?.fields?.CantFindBannerText?.value}
+                  </Text>
+                }
+              >
+                <TextButton>
+                  <a
+                    href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
+                      /\s/g,
+                      ''
+                    )}`}
+                  >
+                    <SitecoreSvg>
+                      {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
+                    </SitecoreSvg>
+                    <span>{props?.fields?.CantFindPhoneNumber?.value}</span>
+                  </a>
+                </TextButton>
+              </CantFind>
             )}
             <Navigation>
               <div>
