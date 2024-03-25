@@ -4,5 +4,6 @@ import { ReactNode } from 'react';
 export interface SelectLocationProps {
   children?: ReactNode | JSX.Element;
   locations: any;
+  icon: ReactNode | JSX.Element;
   noLocationsMsg: string;
 }

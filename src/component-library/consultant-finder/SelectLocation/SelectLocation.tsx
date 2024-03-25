@@ -1,21 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useContext } from 'react';
 import { SelectLocationProps } from './SelectLocation.types';
 import LocationCard from '../LocationCard/LocationCard';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import styles from './SelectLocation.module.scss';
 
 const SelectLocation = (props: SelectLocationProps): JSX.Element => {
+  const { setSelectedLocation } = useContext(ConsultantFinderContext);
+
   return (
     <div className={styles['select-location']}>
       {props.locations.length &&
         props.locations.length > 0 &&
-        props.locations.map((item: any) => (
+        props.locations.map((item: any, index: any) => (
           <LocationCard
-            key={item?.facilityCRMID}
-            icon={null}
+            key={index}
+            facilityCRMID={item?.facilityCRMID}
+            icon={props.icon}
             title={item?.facilityFullName}
             text={item?.facilityAddress}
-            handleClick={() => console.log('hello')}
+            time={item?.firstAppointmentSlotDateTime}
+            handleClick={() => setSelectedLocation(item?.facilityCRMID || '')}
           />
         ))}
       {!props.locations.length && props.locations.length === 0 && (

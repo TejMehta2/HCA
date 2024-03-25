@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -14,6 +14,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import Container from '@component-library/foundation/Containers/Container';
@@ -23,7 +24,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import SelectLocation from '@component-library/consultant-finder/SelectLocation/SelectLocation';
 import axios from 'axios';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
-
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
@@ -34,6 +35,7 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   API_C2_GetConsultantDetails_BaseURL: Field<string>;
+  CardTimeIcon: any;
 }
 
 type StepProps = {
@@ -50,6 +52,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  const { selectedLocation } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   console.log('step location', props.fields);
   const router = useRouter();
@@ -122,9 +125,17 @@ export const Default = (props: StepProps): JSX.Element => {
               }
             ></HeaderLDB>
             {!loading && !error && (
-              <SelectLocation locations={locations} noLocationsMsg={''} />
+              <SelectLocation
+                locations={locations}
+                noLocationsMsg={''}
+                icon={
+                  <SitecoreSvg>
+                    {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+              />
             )}
-            {loading && <LoaderCF loadingMsg={'Loading...'}/>}
+            {loading && <LoaderCF loadingMsg={'Loading...'} />}
             {!loading && error && (
               <div>There was an error, please try again</div>
             )}
@@ -142,7 +153,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
-                    disabled={false}
+                    disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
                         `${props?.fields?.NextLink?.value?.href}?slug=${slug}`

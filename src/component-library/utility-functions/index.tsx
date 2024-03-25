@@ -85,3 +85,19 @@ export const formatDateShort = (dateString: string | undefined) => {
 
   return formattedDate;
 };
+
+// format time to GB fomat: Day of the Week, number of date Month Year
+export const formatDateLong = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const options: object = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  };
+
+  const formattedDate = date.toLocaleDateString('en-GB', options);
+
+  return formattedDate;
+};

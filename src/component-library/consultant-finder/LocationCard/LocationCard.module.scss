@@ -11,12 +11,34 @@
   color: $navy-blue-100;
   cursor: pointer;
 
+  .description {
+    margin: $spacing-3 0;
+  }
+  
+  .main {
+    flex: 1;
+  }
+  
+  .title {
+    margin: 0 0 $spacing-3 0;
+  }
+  
+  .time {
+    display: flex;
+    align-items: center;
+    color: $navy-blue-60;
+  }
+  
+  .icon {
+    margin-right: $spacing-2;
+  }
+
   &.selected {
     background-color: $navy-blue-100;
     color: $white;
-  }
 
-  .title {
-    margin: $spacing-3 0;
+    .time {
+      color: $navy-blue-60;
+    }
   }
 }
