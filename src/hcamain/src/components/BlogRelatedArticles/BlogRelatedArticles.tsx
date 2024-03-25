@@ -16,6 +16,12 @@ import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
+import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
+import {
+  Autocomplete,
+  BlogResponse,
+  BlogSearchProps,
+} from '../BlogSearch/BlogSearch.types';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -90,9 +96,24 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
-  const baseUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
+  const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+  const BASE_BLOG_URL =
+    props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
   const querystring =
     props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring;
+
+  const {
+    data,
+    error,
+    formHandlers,
+    searchParams,
+    autocompleteData,
+    autocompleteError,
+  } = useSearchForm<BlogResponse, Autocomplete>({
+    baseUrl: BASE_API_URL,
+    baselineParams,
+    fallbackData: fallbackData,
+  });
 
   return (
     <CarouselCards
@@ -142,7 +163,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             {!!card.articleType && (
               <Tags>
                 <a
-                  href={`${baseUrl}${querystring}${card.articleType?.targetItem?.id}`}
+                  href={`${BASE_BLOG_URL}${querystring}${card.articleType?.targetItem?.id}`}
                 >
                   <JssText field={card.articleType?.targetItem?.title} />
                 </a>
