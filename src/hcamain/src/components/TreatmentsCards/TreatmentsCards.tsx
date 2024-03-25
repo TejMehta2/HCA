@@ -82,7 +82,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   }
 
   const columns: CardBlockProps['variation'] =
-    props.params?.Columns === 4 ? '4-columns' : '3-columns';
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
 
   //  check for conditionId and append if it exists
   const allUrl = props.fields?.data?.contextItem?.id
