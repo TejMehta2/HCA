@@ -201,7 +201,7 @@ export async function getLDBConsultantDetails(
   }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
 
-  let returnData: string = '';
+  let returnData: any = '';
 
   try {
     // very light cache on these requests they contain time sensitive data
@@ -216,6 +216,17 @@ export async function getLDBConsultantDetails(
     });
     if (res.ok) {
       returnData = await res.json();
+      // put spaces after commas in C2 facilities
+      if (returnData && returnData.availability) {
+        returnData.availability.forEach(
+          (availability: { facilityAddress: string }) => {
+            if (availability.facilityAddress) {
+              availability.facilityAddress =
+                availability.facilityAddress.replaceAll(',', ', ');
+            }
+          }
+        );
+      }
     } else {
       //C2 call failed
       returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
