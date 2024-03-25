@@ -229,7 +229,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   // const isApiData = props.fields?.data?.item?.locations?.PagesList &&
   // props.fields?.data?.item?.locations?.PagesList.length
 
-  const isApiData = true;
+  const isApiData = false;
 
   return (
     <CardBlock
@@ -267,23 +267,19 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {isApiData ? (
-        data?.response.results &&
-        data?.response.results.length &&
-        LocationCardApi(
-          data?.response.results,
-          props?.fields?.data?.item?.cTAText?.jsonValue,
-          props?.fields?.data?.item?.getDirectionsText?.jsonValue
-        )
-      ) : (
-        <LocationCardDefault
-          locations={props.fields?.data?.item?.locations?.PagesList}
-          linkText={props?.fields?.data?.item?.cTAText?.jsonValue}
-          directionsText={
+      {isApiData
+        ? data?.response.results &&
+          data?.response.results.length &&
+          LocationCardApi(
+            data?.response.results,
+            props?.fields?.data?.item?.cTAText?.jsonValue,
             props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          }
-        />
-      )}
+          )
+        : LocationCardDefault(
+            props.fields?.data?.item?.locations?.PagesList,
+            props?.fields?.data?.item?.cTAText?.jsonValue,
+            props?.fields?.data?.item?.getDirectionsText?.jsonValue
+          )}
     </CardBlock>
   );
 };
@@ -312,7 +308,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
   // const isApiData = props.fields?.data?.item?.locations?.PagesList &&
   // props.fields?.data?.item?.locations?.PagesList.length
 
-  const isApiData = true;
+  const isApiData = false;
 
   return (
     <CarouselCards
@@ -343,22 +339,18 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {isApiData ? (
-        data?.response.results &&
-        LocationCardApi(
-          data?.response.results,
-          props?.fields?.data?.item?.cTAText?.jsonValue,
-          props?.fields?.data?.item?.getDirectionsText?.jsonValue
-        )
-      ) : (
-        <LocationCardDefault
-          locations={props.fields?.data?.item?.locations?.PagesList}
-          linkText={props?.fields?.data?.item?.cTAText?.jsonValue}
-          directionsText={
+      {isApiData
+        ? data?.response.results &&
+          LocationCardApi(
+            data?.response.results,
+            props?.fields?.data?.item?.cTAText?.jsonValue,
             props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          }
-        />
-      )}
+          )
+        : LocationCardDefault(
+            props.fields?.data?.item?.locations?.PagesList,
+            props?.fields?.data?.item?.cTAText?.jsonValue,
+            props?.fields?.data?.item?.getDirectionsText?.jsonValue
+          )}
     </CarouselCards>
   );
 };

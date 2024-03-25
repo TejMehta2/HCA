@@ -27,12 +27,11 @@ type LocationCardDefault = {
   linkText: Field<string>;
 };
 
-export const LocationCardDefault = (props: LocationCardDefault) => {
-  const { locations, directionsText, linkText } = props;
+export const LocationCardDefault = (locations, directionsText, linkText) => {
+  const locationsArr = [];
 
-  return locations.map((location: Location, index) => {
-    console.log(location);
-    return (
+  locations.map((location: Location, index: number) => {
+    locationsArr.push(
       <CardMap
         key={index}
         title={
@@ -79,4 +78,6 @@ export const LocationCardDefault = (props: LocationCardDefault) => {
       />
     );
   });
+
+  return locationsArr;
 };

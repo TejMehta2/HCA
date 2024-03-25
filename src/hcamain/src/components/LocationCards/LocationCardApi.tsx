@@ -32,47 +32,44 @@ export const LocationCardApi = (locations, directionsText, linkText) => {
   //const { locations, directionsText, linkText } = props;
   const locationsArr = [];
 
-  locations &&
-    locations.length &&
-    locations.map((item: Location) => {
-      const { data } = item;
-      const { id, title, name, description, imageUrl, url, directions } = data;
+  locations.map((item: Location) => {
+    const { data } = item;
+    const { id, title, name, description, imageUrl, url, directions } = data;
 
-      locationsArr.push(
-        <CardMap
-          key={id}
-          title={
-            <Text variation="heading-1" tag="h4">
-              {title || name}
-            </Text>
-          }
-          address={
-            <>
-              {
-                <Text variation={'body-large'} tag="span">
-                  {description}
-                </Text>
-              }
-            </>
-          }
-          image={imageUrl ? <img src={imageUrl} alt={title} /> : undefined}
-          ctas={{
-            button1: (
-              <a href={url}>
-                <JssRichText field={linkText} tag="span" />
-              </a>
-            ),
-            button2: (
-              <a href={directions}>
-                <span>
-                  <JssText field={directionsText} />
-                </span>
-              </a>
-            ),
-          }}
-        />
-      );
-    });
-  console.log(locationsArr);
+    locationsArr.push(
+      <CardMap
+        key={id}
+        title={
+          <Text variation="heading-1" tag="h4">
+            {title || name}
+          </Text>
+        }
+        address={
+          <>
+            {
+              <Text variation={'body-large'} tag="span">
+                {description}
+              </Text>
+            }
+          </>
+        }
+        image={imageUrl ? <img src={imageUrl} alt={title} /> : undefined}
+        ctas={{
+          button1: (
+            <a href={url}>
+              <JssRichText field={linkText} tag="span" />
+            </a>
+          ),
+          button2: (
+            <a href={directions}>
+              <span>
+                <JssText field={directionsText} />
+              </span>
+            </a>
+          ),
+        }}
+      />
+    );
+  });
   return locationsArr;
 };
