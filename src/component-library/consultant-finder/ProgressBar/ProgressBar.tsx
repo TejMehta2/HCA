@@ -44,7 +44,7 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
               {step?.fields?.Selected?.value &&
                 currentPage !== step?.fields?.Order?.value && (
                   <TextLink>
-                    <Link href={'/'}>
+                    <Link href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}`}>
                       <Text tag="span" variation="body-medium-small">
                         {step?.fields?.StepText?.value}
                       </Text>

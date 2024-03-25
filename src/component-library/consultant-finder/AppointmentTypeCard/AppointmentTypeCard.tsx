@@ -16,10 +16,12 @@ const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
       data-is-follow-up-appointment={props.isFollowUpAppointment}
       data-parent="parent"
     >
-      <div className={styles.icon}></div>
-      <Text tag="h3" variation="body-medium-large">
-        {props.title}
-      </Text>
+      <div className={styles.icon}>{props.icon}</div>
+      <div className={styles.title}>
+        <Text tag="h3" variation="body-medium-large">
+          {props.title}
+        </Text>
+      </div>
       <div className={styles.description}>
         <Text tag="p" variation="body-medium-small">
           {props.text}
