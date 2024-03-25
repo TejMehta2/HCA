@@ -22,6 +22,7 @@ import Navigation from '@component-library/consultant-finder/Navigation/Navigati
 import Icons from '@component-library/foundation/Icons/Icons';
 import SelectLocation from '@component-library/consultant-finder/SelectLocation/SelectLocation';
 import axios from 'axios';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 interface Fields {
   HCALogo: ImageField;
@@ -123,7 +124,7 @@ export const Default = (props: StepProps): JSX.Element => {
             {!loading && !error && (
               <SelectLocation locations={locations} noLocationsMsg={''} />
             )}
-            {loading && <div>Loading...</div>}
+            {loading && <LoaderCF loadingMsg={'Loading...'}/>}
             {!loading && error && (
               <div>There was an error, please try again</div>
             )}
