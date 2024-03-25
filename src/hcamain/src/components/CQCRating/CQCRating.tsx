@@ -21,11 +21,13 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
     return <CQCRatingDefaultComponent {...props} />;
   }
   const { hideRating = false, length = 'long' } = props;
-  const defaultRating = props.fields?.Status
-    ?.displayName as CQCBlockProps['rating'];
 
-  console.log(props);
-  console.log(defaultRating);
+  const defaultRating = (
+    props.fields?.Status?.displayName
+      ? props.fields?.Status?.displayName
+      : props.fields?.Status?.fields?.displayName
+  ) as CQCBlockProps['rating'];
+
   const lightLogo = props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo
     .fields
     ? props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo.fields
