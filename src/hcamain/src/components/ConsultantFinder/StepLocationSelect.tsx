@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
   Image as JssImage,
   Link as JssLink,
@@ -13,20 +16,23 @@ import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import Container from '@component-library/foundation/Containers/Container';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import Icons from '@component-library/foundation/Icons/Icons';
+import SelectLocation from '@component-library/consultant-finder/SelectLocation/SelectLocation';
+import axios from 'axios';
 
 interface Fields {
-  [x: string]: any;
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
+  HCALogo: ImageField;
+  CurrentStep: any;
+  Steps: any;
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  API_C2_GetConsultantDetails_BaseURL: Field<string>;
 }
 
 type StepProps = {
@@ -45,21 +51,112 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   console.log('step location', props.fields);
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const baseURL_C2 =
+    props?.fields?.API_C2_GetConsultantDetails_BaseURL?.value ||
+    'https:/api/C2/GetLDBConsultantDetails?';
+  const [locations, setLocations] = useState([]);
+  const [loading, seLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    // get slug from URL
+    const slug = router?.query?.slug || '';
+    setSlug(slug.toString());
+
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+
+    // get isFollowup from URL
+    const isFollowUpAppointment = router?.query?.isFollowOnAppointment || null;
+
+    const requestURL_C2 = `${baseURL_C2}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${isFollowUpAppointment}`;
+
+    console.log('locations DoctifyURL', requestURL_C2);
+
+    axios
+      .get(requestURL_C2)
+      .then((res) => {
+        console.log('locations results', res);
+        seLoading(false);
+        setError(false);
+        setLocations(res.data.availability);
+      })
+      .catch((error) => {
+        setError(true);
+        console.log(error);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   if (props.fields) {
     return (
       <div
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <HeaderLDB
-          logo={<JssImage field={props?.fields?.HCALogo} />}
-          progress={
-            <ProgressBar
-              currentPage={props?.fields?.CurrentStep?.value}
-              steps={props?.fields?.Steps}
-            ></ProgressBar>
-          }
-        ></HeaderLDB>
+        {router.isReady && (
+          <>
+            <HeaderLDB
+              logo={<JssImage field={props?.fields?.HCALogo} />}
+              progress={
+                <ProgressBar
+                  currentPage={props?.fields?.CurrentStep?.value}
+                  steps={props?.fields?.Steps}
+                  slug={slug}
+                  gmcNumber={gmcNumber}
+                ></ProgressBar>
+              }
+            ></HeaderLDB>
+            {!loading && !error && (
+              <SelectLocation locations={locations} noLocationsMsg={''} />
+            )}
+            {loading && <div>Loading...</div>}
+            {!loading && error && (
+              <div>There was an error, please try again</div>
+            )}
+            <Navigation>
+              <div>
+                <TextButton>
+                  <Link
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                  >
+                    <Icons iconName="iconArrowSmallLeft" />
+                    <span>{props.fields.BackLink.value.text || 'Back'}</span>
+                  </Link>
+                </TextButton>
+              </div>
+              <Container>
+                <Button size={'small'} variation={'full-dark'}>
+                  <button
+                    disabled={false}
+                    onClick={() =>
+                      router.push(
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}`
+                      )
+                    }
+                  >
+                    <span>
+                      {props?.fields?.NextLink?.value?.text || 'Next'}
+                    </span>
+                  </button>
+                </Button>
+              </Container>
+            </Navigation>
+          </>
+        )}
       </div>
     );
   }

@@ -15,11 +15,11 @@ const SelectAppointmentType = (
       '[data-parent="parent"]'
     ) as HTMLDivElement;
     if (targetParent) {
-      setSelectedTypeOfAppointment(
-        targetParent.dataset.isFollowUpAppointment === 'true'
-          ? 'followup'
-          : 'initial'
-      );
+      const value = targetParent?.dataset?.isFollowUpAppointment;
+      console.log('value', value);
+      if (value) {
+        setSelectedTypeOfAppointment(value);
+      }
     }
   };
 
@@ -30,16 +30,14 @@ const SelectAppointmentType = (
         title={props.titleCard1}
         text={props.textCard1}
         handleClick={handleClick}
-        isFollowUpAppointment={true}
-        id={'followup'}
+        isFollowUpAppointment={'false'}
       />
       <AppointmentTypeCard
         icon={props.iconCard2}
         title={props.titleCard2}
         text={props.textCard2}
         handleClick={handleClick}
-        isFollowUpAppointment={false}
-        id={'initial'}
+        isFollowUpAppointment={'true'}
       />
     </div>
   );

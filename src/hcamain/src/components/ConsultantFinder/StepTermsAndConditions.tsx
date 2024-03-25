@@ -69,6 +69,7 @@ export const Default = (props: StepProps): JSX.Element => {
   console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -83,6 +84,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -164,7 +169,9 @@ export const Default = (props: StepProps): JSX.Element => {
               </Text>
               <Container customBtn={true}>
                 <Button variation="full-dark" size="large">
-                  <Link href={`/Finder/Step-Appointment-Type?slug=${slug}`}>
+                  <Link
+                    href={`/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}`}
+                  >
                     <span>{'Accept'}</span>
                   </Link>
                 </Button>

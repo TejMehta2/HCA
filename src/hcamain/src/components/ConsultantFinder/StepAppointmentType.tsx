@@ -2,6 +2,7 @@
 // Template finder component
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
   Image as JssImage,
   Link as JssLink,
@@ -15,7 +16,6 @@ import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
-import Link from 'next/link';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
@@ -57,10 +57,12 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   console.log('appointment type', props.fields);
   const id = props.params.RenderingIdentifier;
-  const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);
+  const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
+    useContext(ConsultantFinderContext);
 
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -75,6 +77,14 @@ export const Default = (props: StepProps): JSX.Element => {
     // get slug from URL
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+    // get type of selected appointment if present in URL
+    const typeOfAppointment = router?.query?.isFollowOnAppointment || null;
+    if (typeOfAppointment) {
+      setSelectedTypeOfAppointment(typeOfAppointment.toString());
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
@@ -142,7 +152,9 @@ export const Default = (props: StepProps): JSX.Element => {
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
-                  <Link href={`/Finder/Step-Terms-And-Conditions?slug=${slug}`}>
+                  <Link
+                    href={`/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}`}
+                  >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
@@ -154,7 +166,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     disabled={selectedTypeOfAppointment === '' ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}`
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
                       )
                     }
                   >

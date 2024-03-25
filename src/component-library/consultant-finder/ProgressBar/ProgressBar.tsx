@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Link from 'next/link';
 import { ProgressBarProps } from './ProgressBar.types';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import styles from './ProgressBar.module.scss';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 
 const ProgressBar = (props: ProgressBarProps): JSX.Element => {
+  const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);
   const { steps, currentPage } = props;
   return (
     <div className={styles['progress-bar']}>
@@ -44,7 +46,14 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
               {step?.fields?.Selected?.value &&
                 currentPage !== step?.fields?.Order?.value && (
                   <TextLink>
-                    <Link href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}`}>
+                    <Link
+                      href={`${step?.fields?.Link?.value?.href}?slug=${
+                        props.slug
+                      }&gmcNumber=${props.gmcNumber}${
+                        selectedTypeOfAppointment.length > 0 &&
+                        `&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                      }`}
+                    >
                       <Text tag="span" variation="body-medium-small">
                         {step?.fields?.StepText?.value}
                       </Text>

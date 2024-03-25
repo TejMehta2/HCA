@@ -711,7 +711,7 @@ export const Default = (props: StepProps): JSX.Element => {
                           contentVariation="full-width"
                         >
                           <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}`}
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
                           >
                             <span>
                               {props.fields.BookOnlineButtonLink.value.text ||
@@ -774,7 +774,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   contentVariation="full-width"
                 >
                   <Link
-                    href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}`}
+                    href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
                   >
                     <span>
                       {props.fields.BookOnlineButtonLink.value.text ||

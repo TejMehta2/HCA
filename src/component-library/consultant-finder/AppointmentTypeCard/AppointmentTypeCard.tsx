@@ -10,7 +10,9 @@ const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
   return (
     <div
       className={`${styles['appointment-type-card']} ${
-        selectedTypeOfAppointment === props.id ? styles['selected'] : ''
+        selectedTypeOfAppointment === props.isFollowUpAppointment
+          ? styles['selected']
+          : ''
       }`}
       onClick={(e) => props.handleClick(e)}
       data-is-follow-up-appointment={props.isFollowUpAppointment}
