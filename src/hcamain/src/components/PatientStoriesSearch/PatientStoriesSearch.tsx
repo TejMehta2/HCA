@@ -1,145 +1,291 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
-  Field,
-  Item,
+  GetStaticComponentProps,
   Text as JssText,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { useI18n } from 'next-localization';
+import SearchBar from '@component-library/components/SearchBar/SearchBar';
+import Text from '@component-library/foundation/Text/Text';
+import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
+import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
+import Filters from '@component-library/site-components/Filters/Filters';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import Image from 'next/image';
+import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
+import {
+  Autocomplete,
+  ApiResponse,
+  ApiSearchProps,
+} from '../../types/searchProps';
+import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
+import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
+// import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
+import getBaselineParams from 'lib/getBaselineParams';
+import Themes from '@component-library/foundation/Themes/Themes';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Sorting from '@component-library/components/Sorting/Sorting';
+import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
+import unpackFilterOption from 'lib/unpackFilterOption';
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
-};
-
-type FilterOptionsFields = {
-  fields?: {
-    Header?: Field<string>;
-    Filters?: SortOptionsFields[];
-  };
-};
-
-type SortOptionsFields = {
-  fields?: {
-    DisplayName?: Field<string>;
-    Filter?: Field<string>;
-    FilterValueString?: Field<string>;
-    FilterValueGuid?: Item;
-  };
-};
-
-interface Fields {
-  Heading?: Field<string>;
-  Title?: Field<string>;
-  Text?: Field<string>;
-  SearchPlaceholder?: Field<string>;
-  FilterOptionsIcon?: HCAIconFields;
-  FilterOptionsText?: Field<string>;
-  FilterOptions?: FilterOptionsFields[];
-  SortOptionsIcon?: HCAIconFields;
-  SortOptionsText?: Field<string>;
-  SortOptions?: SortOptionsFields[];
-  SearchResultsText?: Field<string>;
-  ResultsPerPage?: Field<number>;
-  SearchBy?: SortOptionsFields[];
-  FilterBy?: SortOptionsFields[];
-}
-
-type PatientStoriesSearchProps = {
-  params: { [key: string]: string };
-  fields: Fields;
-};
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
 
 const PatientStoriesSearchDefaultComponent = (
-  props: PatientStoriesSearchProps
+  props: ApiSearchProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">PatientStoriesSearch no datasource</span>
     </div>
   </div>
 );
 
-export const Default = (props: PatientStoriesSearchProps): JSX.Element => {
-  const { t } = useI18n();
-  if (!props.fields) {
+export const Default = (props: ApiSearchProps): JSX.Element => {
+  const { fallbackData, fields, params } = props;
+
+  // Set up default baseline parameters from CMS
+  const { defaultLimit, defaultOffset, baselineParams } =
+    getBaselineParams(props);
+
+  // Hooks
+  const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const {
+    data,
+    error,
+    formHandlers,
+    searchParams,
+    autocompleteData,
+    autocompleteError,
+  } = useSearchForm<ApiResponse, Autocomplete>({
+    baseUrl: BASE_URL,
+    baselineParams,
+    fallbackData: fallbackData,
+  });
+
+  if (!fields || error || autocompleteError) {
     return <PatientStoriesSearchDefaultComponent {...props} />;
   }
+
+  // Mutable query-based params
+  const limit = Number(searchParams.get('limit')) || defaultLimit;
+  const offset = Number(searchParams.get('offset')) || defaultOffset;
+
+  // Computed properties
+  const resultsCount = data?.response.resultsCount || 0;
+  const rangeStart = offset + 1;
+  const rangeEnd = Math.min(offset + limit, resultsCount);
+  const resultsRange = `${rangeStart}-${rangeEnd}`;
+
+  // Parse filter options to be used in multiple components
+  const filterCategories = props.fields?.FilterOptions?.map((category) => ({
+    title: category?.displayName || '',
+    fields: category.fields?.Filters?.map((option) => {
+      const { id, key, value, displayName } = unpackFilterOption(option);
+      return {
+        id,
+        value,
+        name: key,
+        label: displayName,
+        defaultChecked: searchParams.getAll(key).includes(value),
+      };
+    }),
+  }));
+
+  const activeFilters = filterCategories?.reduce((previous, { fields }) => {
+    return [
+      ...previous,
+      ...fields.filter(({ defaultChecked }) => defaultChecked),
+    ];
+  }, []);
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props?.fields?.Heading} />
-      <br />
-      <JssText field={props?.fields?.Title} />
-      <br />
-      <RichText tag="span" field={props?.fields?.Text} />
-      <br />
-      <JssText field={props?.fields?.SearchPlaceholder} />
-      <br />
-      <span
-        dangerouslySetInnerHTML={{
-          __html:
-            props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value || '',
-        }}
-      ></span>
-      <br />
-      <JssText field={props?.fields?.FilterOptionsText} />
-      <br />
-      <ul>
-        {props?.fields?.FilterOptions?.map((filterOptions, index) => (
-          <li key={index}>
-            <br />
-            <JssText field={filterOptions?.fields?.Header} />
-            <br />
-            <ul>
-              {filterOptions?.fields?.Filters?.map((filter, index) => (
-                <li key={index}>
-                  <JssText field={filter?.fields?.DisplayName} />
-                  <br />
-                  <JssText field={filter?.fields?.Filter} />
-                  <br />
-                  <span>{filter?.fields?.FilterValueGuid?.id}</span>
-                  <br />
-                </li>
-              ))}
-            </ul>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-      <span
-        dangerouslySetInnerHTML={{
-          __html:
-            props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value || '',
-        }}
-      ></span>
-      <JssText field={props?.fields?.SortOptionsText} />
-      <br />
-      <ul>
-        {props?.fields?.SortOptions?.map((sortOptions, index) => (
-          <li key={index}>
-            <JssText field={sortOptions?.fields?.DisplayName} />
-            <br />
-            <JssText field={sortOptions?.fields?.Filter} />
-            <br />
-            <span>{sortOptions?.fields?.FilterValueGuid?.id}</span>
-            <br />
-          </li>
-        ))}
-      </ul>
-      <br />
-      <JssText field={props?.fields?.SearchResultsText} />
-      <br />
-      <JssText field={props?.fields?.ResultsPerPage} />
-      <br />
-      <p>Text: {t('close')}</p>
-      <br />
-      <p>Text: {t('show-more')}</p>
-      <br />
-      <p>Text: {t('showing')}</p>
-      <br />
-      <p>Text: {t('clear-all')}</p>
-    </div>
+    <form {...formHandlers}>
+      <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
+        <HeaderPlain
+          subheading={
+            fields?.Heading?.value && (
+              <Text variation={'subheading-1'}>
+                <JssText field={fields?.Heading} />
+              </Text>
+            )
+          }
+          heading={
+            fields?.Title?.value && (
+              <Text
+                variation={params?.HeadingSize || 'display-2'}
+                tag={params?.HeadingTag || 'h2'}
+              >
+                <JssText field={fields?.Title} />
+              </Text>
+            )
+          }
+          description={
+            <Text tag="div" variation="body-large">
+              <RichText tag="span" field={props?.fields?.Text} />
+            </Text>
+          }
+        >
+          <>
+            <SearchBar
+              defaultValue={searchParams.get('input') || undefined}
+              name={'input'}
+              placeholder={fields?.SearchPlaceholder?.value}
+              suggestions={autocompleteData?.response.results?.map(
+                (result) => `${result.value}`
+              )}
+            >
+              <Filters
+                buttonText={<JssText field={fields?.FilterOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.FilterOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                resultsCount={resultsCount}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+              <Sorting
+                buttonText={<JssText field={fields?.SortOptionsText} />}
+                buttonIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.SortOptionsIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+                options={
+                  props?.fields?.SortOptions?.map((option) => {
+                    const { id, key, value, displayName } =
+                      unpackFilterOption(option);
+
+                    return {
+                      id,
+                      value,
+                      labelText: displayName,
+                      name: key,
+                      defaultChecked: searchParams?.get(key) === value,
+                    };
+                  }) || []
+                }
+              />
+            </SearchBar>
+            <SearchFilterList
+              filters={activeFilters || []}
+              clearFilters={() => {
+                activeFilters?.forEach(({ id }, index) => {
+                  const field = document.getElementById(id) as HTMLInputElement;
+                  if (!field) return;
+                  if (index === activeFilters.length - 1) {
+                    field.click(); // interact with last field to trigger a form change event
+                  } else {
+                    field.checked = false; // update other fields without triggering form change event
+                  }
+                });
+              }}
+            />
+          </>
+        </HeaderPlain>
+      </Themes>
+
+      <Themes theme={'A-HCA-White'}>
+        <SearchWrapper
+          ref={searchWrapperRef}
+          searchDetail={
+            <Text tag="h3" variation="heading-1">
+              <span>
+                <span>{resultsCount} </span>
+                <JssText field={fields?.SearchResultsText} />
+              </span>
+            </Text>
+          }
+          showing={
+            !!rangeEnd && (
+              <Text variation="body-medium">
+                <span>Showing {resultsRange}</span>
+              </Text>
+            )
+          }
+        >
+          <CardGrid>
+            {data?.response.results?.map((item, index) => {
+              const { data } = item;
+              const { title, description, imageUrl, url, name } = data;
+              return (
+                <CardContent
+                  key={index}
+                  title={
+                    <Text variation="heading-1" tag="h4">
+                      {title || name}
+                    </Text>
+                  }
+                  bodyCopy={<Text variation="body-large">{description}</Text>}
+                  image={
+                    imageUrl ? (
+                      <Image src={imageUrl} alt="" width="363" height="243" />
+                    ) : undefined
+                  }
+                  link={
+                    <a href={url}>
+                      <span>
+                        Learn <strong>more</strong>
+                      </span>
+                    </a>
+                  }
+                />
+              );
+            })}
+          </CardGrid>
+          <SearchFormPagination
+            offset={offset}
+            limit={limit}
+            resultsCount={resultsCount}
+            scrollToRef={searchWrapperRef}
+          />
+          {/* <SearchFormLoadMore
+            limit={limit}
+            resultsCount={resultsCount}
+            defaultLimit={defaultLimit}
+          >
+            <span>
+              <Icons iconName={'iconPlus'} />
+            </span>
+            <span>Show more</span>
+          </SearchFormLoadMore> */}
+        </SearchWrapper>
+      </Themes>
+    </form>
   );
+};
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering: ApiSearchProps
+) => {
+  const { baselineParams } = getBaselineParams(rendering);
+  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const query = `?${params.join('&')}`;
+  const url = new URL(query, BASE_URL); // compose API url
+
+  try {
+    const response = await fetch(url.href);
+    if (response.ok) {
+      const fallbackData = await response.json();
+      rendering.fallbackData = fallbackData as ApiResponse;
+      return rendering;
+    } else {
+      throw response.statusText;
+    }
+  } catch (error) {
+    console.error(error);
+    return rendering;
+  }
 };

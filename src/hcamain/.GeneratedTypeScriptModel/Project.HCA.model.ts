@@ -333,6 +333,46 @@ export namespace ConsultantFinder.Apicalls {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyInsurers
+    */
+    export type ApiDetailsDoctifyInsurers =  {
+        fields?: { 
+            /**
+            * Represents the API_Insurance_BaseURL field (a2df356e-ccc2-4c8d-9215-174ad15502be).
+            */
+            API_Insurance_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
+            */
+            API_Insurance_Limit?: Field<number>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyInsurers
+    */
+    export type ApiDetailsDoctifyInsurersJson =  {
+        
+            /**
+            * Represents the API_Insurance_BaseURL field (a2df356e-ccc2-4c8d-9215-174ad15502be).
+            */
+            aPI_Insurance_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
+            */
+            aPI_Insurance_Limit?: {
+                jsonValue: Field<number>
+            };
+
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifySearch
     */
     export type ApiDetailsDoctifySearch =  {
@@ -341,6 +381,11 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_DoctifySearch_BaseURL field (e860bf4c-1300-4b7e-8193-cf439f331c93).
             */
             API_DoctifySearch_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_DoctifySearch_DefaultParams field (fe79ea61-8daf-4daa-9f97-aa151c42ba82).
+            */
+            API_DoctifySearch_DefaultParams?: Field<string>;
 
             /**
             * Represents the API_DoctifySearch_Limit field (948f4514-4f9f-4499-83cd-1925c4ef694a).
@@ -369,6 +414,13 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_DoctifySearch_BaseURL field (e860bf4c-1300-4b7e-8193-cf439f331c93).
             */
             aPI_DoctifySearch_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_DoctifySearch_DefaultParams field (fe79ea61-8daf-4daa-9f97-aa151c42ba82).
+            */
+            aPI_DoctifySearch_DefaultParams?: {
                 jsonValue: Field<string>
             };
 
@@ -454,70 +506,6 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_DoctifySpecialists_NoResultsMsg field (8dc10da1-a6a8-4f90-ad42-88fd92021e31).
             */
             aPI_DoctifySpecialists_NoResultsMsg?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_Insurers
-    */
-    export type ApiDetailsInsurers =  {
-        fields?: { 
-            /**
-            * Represents the API_Insurance_BaseURL field (a2df356e-ccc2-4c8d-9215-174ad15502be).
-            */
-            API_Insurance_BaseURL?: Field<string>;
-
-            /**
-            * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
-            */
-            API_Insurance_Limit?: Field<number>;
-
-            /**
-            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
-            */
-            API_Insurance_LoadingMsg?: Field<string>;
-
-            /**
-            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
-            */
-            API_Insurance_NoResultsMsg?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_Insurers
-    */
-    export type ApiDetailsInsurersJson =  {
-        
-            /**
-            * Represents the API_Insurance_BaseURL field (a2df356e-ccc2-4c8d-9215-174ad15502be).
-            */
-            aPI_Insurance_BaseURL?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
-            */
-            aPI_Insurance_Limit?: {
-                jsonValue: Field<number>
-            };
-
-            /**
-            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
-            */
-            aPI_Insurance_LoadingMsg?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
-            */
-            aPI_Insurance_NoResultsMsg?: {
                 jsonValue: Field<string>
             };
 
@@ -2386,6 +2374,36 @@ export namespace PageContent.RenderingParameters {
 
     }
 }
+export namespace Foundation.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/CardThemesParameters
+    */
+    export type CardThemesParameters =  {
+        fields?: { 
+            /**
+            * Represents the Card Theme field (9d9bfc46-87f4-4fe2-ada8-863397e2fcce).
+            */
+            CardTheme?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/CardThemesParameters
+    */
+    export type CardThemesParametersJson =  {
+        
+            /**
+            * Represents the Card Theme field (9d9bfc46-87f4-4fe2-ada8-863397e2fcce).
+            */
+            cardTheme?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
 export namespace Business {
 
     /**
@@ -3403,6 +3421,58 @@ Business.DiagnosisJson &  {
 export namespace PageContent {
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Diamond Line
+    */
+    export type DiamondLine =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Diamond Line
+    */
+    export type DiamondLineJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Diamond Line
+    */
+    export type DiamondLine = Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Diamond Line
+    */
+    export type DiamondLineJson = Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Diamond Line Folder
+    */
+    export type DiamondLineFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Diamond Line Folder
+    */
+    export type DiamondLineFolderJson =  {
+        
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Doctify
     */
     export type Doctify =  {
@@ -3875,7 +3945,7 @@ export namespace ConsultantFinder.Settings {
     */
     export type DoctifyApiSettings = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearch & 
-ConsultantFinder.Apicalls.ApiDetailsInsurers & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurers & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialists &  {
         fields?: {         }
 
@@ -3886,7 +3956,7 @@ ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialists &  {
     */
     export type DoctifyApiSettingsJson = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearchJson & 
-ConsultantFinder.Apicalls.ApiDetailsInsurersJson & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurersJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialistsJson &  {
         
 
@@ -4237,6 +4307,16 @@ Business.Base.specialtiesSelector &  {
             GetDirections?: Field<string>;
 
             /**
+            * Represents the Latitude field (c4f65bc2-c900-456b-9636-fd83d11b3179).
+            */
+            Latitude?: Field<string>;
+
+            /**
+            * Represents the Longitude field (9ec4f5bd-c392-40ab-babd-34135bc9a1fa).
+            */
+            Longitude?: Field<string>;
+
+            /**
             * Represents the PostCode field (40311572-fcbe-45c3-af0f-58719ec01a3b).
             */
             PostCode?: Field<string>;
@@ -4296,6 +4376,20 @@ Business.Base.specialtiesSelectorJson &  {
             * Represents the GetDirections field (157522ca-ef62-4651-b3b2-4eb374879618).
             */
             getDirections?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Latitude field (c4f65bc2-c900-456b-9636-fd83d11b3179).
+            */
+            latitude?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Longitude field (9ec4f5bd-c392-40ab-babd-34135bc9a1fa).
+            */
+            longitude?: {
                 jsonValue: Field<string>
             };
 
@@ -7856,30 +7950,12 @@ export namespace ConsultantFinder.Forms {
 
     }
 }
-export namespace ConsultantFinder.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviews =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviewsJson =  {
-        
-
-    }
-}
 export namespace ConsultantFinder.Frames {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews
     */
-    export type FrameReviews =  {
+    export type FrameReviews = ConsultantFinder.Branding.DoctifyLogoDetails &  {
         fields?: { 
             /**
             * Represents the DoctifyReviewsImage field (43a1aa55-0f95-4230-9dc2-6951304ab200).
@@ -7927,7 +8003,7 @@ export namespace ConsultantFinder.Frames {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews
     */
-    export type FrameReviewsJson =  {
+    export type FrameReviewsJson = ConsultantFinder.Branding.DoctifyLogoDetailsJson &  {
         
             /**
             * Represents the DoctifyReviewsImage field (43a1aa55-0f95-4230-9dc2-6951304ab200).
@@ -7987,6 +8063,26 @@ export namespace ConsultantFinder.Frames {
 
 
     }
+}
+export namespace ConsultantFinder.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviews =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviewsJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Frames {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews Folder
@@ -8000,6 +8096,24 @@ export namespace ConsultantFinder.Frames {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews Folder
     */
     export type FrameReviewsFolderJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Data {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Data/GenderDataItem
+    */
+    export type GenderDataItem = ConsultantFinder.Data.DataItemCommon &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Data/GenderDataItem
+    */
+    export type GenderDataItemJson = ConsultantFinder.Data.DataItemCommonJson &  {
         
 
     }
@@ -8387,6 +8501,72 @@ Foundation.RenderingParameters.ThemesParameters &  {
     export type HeroLocationDetailsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
 Foundation.RenderingParameters.ThemesParametersJson &  {
         
+
+    }
+}
+export namespace ConsultantFinder.Data {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Data/HospitalDataItem
+    */
+    export type HospitalDataItem = ConsultantFinder.Data.TypedDataItemCommon &  {
+        fields?: { 
+            /**
+            * Represents the doctifyName field (50125969-67fa-4af0-82c1-796c5b9bc8c0).
+            */
+            doctifyName?: Field<string>;
+
+            /**
+            * Represents the HCAName field (fcb09062-138e-493e-a36b-1d0a8a1856e6).
+            */
+            HCAName?: Field<string>;
+
+            /**
+            * Represents the id field (8da426e5-cf1a-4d74-bef4-9d9dc4a82640).
+            */
+            id?: Field<number>;
+
+            /**
+            * Represents the slug field (475f040f-1f7c-4a34-b710-e6e7580c53ad).
+            */
+            slug?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Data/HospitalDataItem
+    */
+    export type HospitalDataItemJson = ConsultantFinder.Data.TypedDataItemCommonJson &  {
+        
+            /**
+            * Represents the doctifyName field (50125969-67fa-4af0-82c1-796c5b9bc8c0).
+            */
+            doctifyName?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the HCAName field (fcb09062-138e-493e-a36b-1d0a8a1856e6).
+            */
+            hCAName?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the id field (8da426e5-cf1a-4d74-bef4-9d9dc4a82640).
+            */
+            id?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the slug field (475f040f-1f7c-4a34-b710-e6e7580c53ad).
+            */
+            slug?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }
@@ -8786,6 +8966,60 @@ export namespace HCA.Project.HCA {
 
     }
 }
+export namespace ConsultantFinder.Data {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Data/LanguageDataItem
+    */
+    export type LanguageDataItem = ConsultantFinder.Data.TypedDataItemCommon &  {
+        fields?: { 
+            /**
+            * Represents the id field (194b8e61-7ad6-47ff-b6d4-02e31f2629b6).
+            */
+            id?: Field<number>;
+
+            /**
+            * Represents the isoCode field (d8d47394-e6e2-404d-be12-31069487a8c9).
+            */
+            isoCode?: Field<string>;
+
+            /**
+            * Represents the name field (7b07e1f6-80fa-4da6-b595-671dbd4312fa).
+            */
+            name?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Data/LanguageDataItem
+    */
+    export type LanguageDataItemJson = ConsultantFinder.Data.TypedDataItemCommonJson &  {
+        
+            /**
+            * Represents the id field (194b8e61-7ad6-47ff-b6d4-02e31f2629b6).
+            */
+            id?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the isoCode field (d8d47394-e6e2-404d-be12-31069487a8c9).
+            */
+            isoCode?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the name field (7b07e1f6-80fa-4da6-b595-671dbd4312fa).
+            */
+            name?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
 export namespace Foundation.RenderingParameters {
 
     /**
@@ -8837,7 +9071,175 @@ export namespace ConsultantFinder.Forms.LiveBookingForm {
 export namespace Foundation.LocationApi {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainer =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainerJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards
+    */
+    export type LocationCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            CTAText?: Field<string>;
+
+            /**
+            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
+            */
+            FilterOptions?: Item[];
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            GetDirectionsText?: Field<string>;
+
+            /**
+            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
+            */
+            Locations?: Item[];
+
+            /**
+            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
+            */
+            SearchOptions?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards
+    */
+    export type LocationCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
+            */
+            filterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            getDirectionsText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
+            */
+            locations?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
+            */
+            searchOptions?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
+    */
+    export type LocationCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
+    */
+    export type LocationCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.LayoutParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.LayoutParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace Pages {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Pages/Location Page
+    */
+    export type LocationPage = Foundation.HcabasePage & 
+Business.Facility &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Location Page
+    */
+    export type LocationPageJson = Foundation.HcabasePageJson & 
+Business.FacilityJson &  {
+        
+
+    }
+}
+export namespace Foundation.LocationApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/LocationApiSettings
     */
     export type LocationApiSettings =  {
         fields?: { 
@@ -8965,7 +9367,7 @@ export namespace Foundation.LocationApi {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/LocationApiSettings
     */
     export type LocationApiSettingsJson =  {
         
@@ -9137,172 +9539,6 @@ export namespace Foundation.LocationApi {
                 jsonValue: Field<boolean>
             };
 
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
-    */
-    export type LocationApiSettingsContainer =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
-    */
-    export type LocationApiSettingsContainerJson =  {
-        
-
-    }
-}
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards
-    */
-    export type LocationCards = Foundation.Ctabase & 
-Foundation.ComponentBase &  {
-        fields?: { 
-            /**
-            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
-            */
-            CTAText?: Field<string>;
-
-            /**
-            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
-            */
-            FilterOptions?: Item[];
-
-            /**
-            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
-            */
-            GetDirectionsText?: Field<string>;
-
-            /**
-            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
-            */
-            Locations?: Item[];
-
-            /**
-            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
-            */
-            NumberOfCards?: Field<number>;
-
-            /**
-            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
-            */
-            SearchOptions?: Item[];
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards
-    */
-    export type LocationCardsJson = Foundation.CtabaseJson & 
-Foundation.ComponentBaseJson &  {
-        
-            /**
-            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
-            */
-            cTAText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
-            */
-            filterOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
-            */
-            getDirectionsText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
-            */
-            locations?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
-            */
-            numberOfCards?: {
-                jsonValue: Field<number>
-            };
-
-            /**
-            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
-            */
-            searchOptions?: {
-                jsonValue: Item[]
-            };
-
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
-    */
-    export type LocationCardsFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
-    */
-    export type LocationCardsFolderJson =  {
-        
-
-    }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
-    */
-    export type LocationCardsParams = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.LayoutParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
-    */
-    export type LocationCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.LayoutParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
-        
-
-    }
-}
-export namespace Pages {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Pages/Location Page
-    */
-    export type LocationPage = Foundation.HcabasePage & 
-Business.Facility &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Location Page
-    */
-    export type LocationPageJson = Foundation.HcabasePageJson & 
-Business.FacilityJson &  {
-        
 
     }
 }
@@ -11651,7 +11887,7 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepCommon
     */
-    export type StepCommon =  {
+    export type StepCommon = ConsultantFinder.Branding.DoctifyLogoDetails &  {
         fields?: { 
             /**
             * Represents the BackLink field (26ad16c7-dafa-43a9-8706-0a23ea0409d7).
@@ -11709,7 +11945,7 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepCommon
     */
-    export type StepCommonJson =  {
+    export type StepCommonJson = ConsultantFinder.Branding.DoctifyLogoDetailsJson &  {
         
             /**
             * Represents the BackLink field (26ad16c7-dafa-43a9-8706-0a23ea0409d7).
@@ -11807,7 +12043,10 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards
     */
-    export type StepConsultantCards = ConsultantFinder.Steps.StepCommon &  {
+    export type StepConsultantCards = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifySearch & 
+ConsultantFinder.Apicalls.ApiC2FirstAppointment &  {
         fields?: { 
             /**
             * Represents the BackFromAdvSearchLink field (51207eff-e7ad-4b05-aad0-de59fe4e79fe).
@@ -11825,6 +12064,46 @@ export namespace ConsultantFinder.Steps {
             BookOnlineLink?: LinkField;
 
             /**
+            * Represents the CallToBookButtonText field (f6c333b8-7f1b-4be9-bf34-9bab7ddc87cf).
+            */
+            CallToBookButtonText?: Field<string>;
+
+            /**
+            * Represents the CallToBookIcon field (4c41bb26-711d-48d3-8562-2ed6aa5b9f0d).
+            */
+            CallToBookIcon?: Item;
+
+            /**
+            * Represents the ConditionsTreatmentsFilterHeaderText field (9daf9dd7-e4dc-4272-9fe9-ea8a7a25b372).
+            */
+            ConditionsTreatmentsFilterHeaderText?: Field<string>;
+
+            /**
+            * Represents the ConditionsTreatmentsList field (2e5e2b3d-f8c7-4f79-b16b-a30cff898d53).
+            */
+            ConditionsTreatmentsList?: Item[];
+
+            /**
+            * Represents the ConsultantFinderNodeText field (1af188e2-8cb8-4840-874b-a0755f937861).
+            */
+            ConsultantFinderNodeText?: Field<string>;
+
+            /**
+            * Represents the CoverForTreatmentFilterOptionSelfPayLabel field (a1443418-e627-457a-a36c-d4ae13960b95).
+            */
+            CoverForTreatmentFilterOptionSelfPayLabel?: Field<string>;
+
+            /**
+            * Represents the CoverForTreatmentFilterTitle field (6fb13f6c-de52-4dbd-a572-e4dccdcd8ed0).
+            */
+            CoverForTreatmentFilterTitle?: Field<string>;
+
+            /**
+            * Represents the DisplayNumber field (701fca24-65cd-4ebd-9d1e-c3d6630466a8).
+            */
+            DisplayNumber?: Field<string>;
+
+            /**
             * Represents the EnquireNowLink field (b2daaeac-da3f-417c-9668-34de5e90fa67).
             */
             EnquireNowLink?: LinkField;
@@ -11840,6 +12119,76 @@ export namespace ConsultantFinder.Steps {
             FilterByIcon?: Item;
 
             /**
+            * Represents the GenderFilterOptions field (3ab962a5-ac88-43b6-8e6a-ad1a53fee647).
+            */
+            GenderFilterOptions?: Item[];
+
+            /**
+            * Represents the GenderFilterTitle field (65cdad0f-7630-47f5-bcdc-eeb866bc3016).
+            */
+            GenderFilterTitle?: Field<string>;
+
+            /**
+            * Represents the GenericErrorRetryMessage field (90da4042-644f-4666-9390-45b30e48dda9).
+            */
+            GenericErrorRetryMessage?: Field<string>;
+
+            /**
+            * Represents the InsurersFilterTitle field (66525551-ace9-4fb1-aca5-1b2624593a3f).
+            */
+            InsurersFilterTitle?: Field<string>;
+
+            /**
+            * Represents the LanguageFilterOptions field (bfcec7dc-dc48-495e-8d73-13ae0f334c38).
+            */
+            LanguageFilterOptions?: Item[];
+
+            /**
+            * Represents the LanguagesFilterOptionPleaseSelectText field (2e8fbc7d-563e-481e-a2f5-9f320a317cad).
+            */
+            LanguagesFilterOptionPleaseSelectText?: Field<string>;
+
+            /**
+            * Represents the LanguagesFilterOptionTitle field (8827f7f4-2c1b-4a45-8185-fd61a1f9fecc).
+            */
+            LanguagesFilterOptionTitle?: Field<string>;
+
+            /**
+            * Represents the LastUpdatedText field (2c4c44a2-5dff-4009-bf30-96580673bbf1).
+            */
+            LastUpdatedText?: Field<string>;
+
+            /**
+            * Represents the LocationFilterOptions field (a5eaafdd-6e90-4c82-b4a5-ded230a73627).
+            */
+            LocationFilterOptions?: Item[];
+
+            /**
+            * Represents the LocationFilterTitle field (4fc3be97-e526-4a9c-ae7f-36cd94542c6c).
+            */
+            LocationFilterTitle?: Field<string>;
+
+            /**
+            * Represents the NextAppointmentOnText field (dd5f431d-e357-41a1-b0e7-424b6c984c79).
+            */
+            NextAppointmentOnText?: Field<string>;
+
+            /**
+            * Represents the PhoneNumberHref field (305d42f7-6e39-462e-955d-fc2431bf5f24).
+            */
+            PhoneNumberHref?: Field<string>;
+
+            /**
+            * Represents the PracticesTitle field (fc160c47-ee41-4787-8850-f8f8f6cb85e1).
+            */
+            PracticesTitle?: Field<string>;
+
+            /**
+            * Represents the ProfileImagePlaceholderImage field (6a9f5bea-7d2a-471e-bc40-a1870af3c461).
+            */
+            ProfileImagePlaceholderImage?: ImageField;
+
+            /**
             * Represents the ResetAllIcon field (57ffde03-2e98-4a85-808d-4f225c2deebf).
             */
             ResetAllIcon?: Item;
@@ -11848,6 +12197,11 @@ export namespace ConsultantFinder.Steps {
             * Represents the ResetAllText field (384cdd42-0025-4044-988e-765f52d6e0ee).
             */
             ResetAllText?: Field<string>;
+
+            /**
+            * Represents the ResultsNodeText field (cc4bc206-ba60-46a4-b25c-5e43daf570d9).
+            */
+            ResultsNodeText?: Field<string>;
 
             /**
             * Represents the SearchIcon field (0b9665ac-5cf0-4e4d-bb4d-5faf3a95ec0c).
@@ -11860,14 +12214,74 @@ export namespace ConsultantFinder.Steps {
             SearchPlaceholderText?: Field<string>;
 
             /**
+            * Represents the ShowLessIcon field (5f41c834-2127-432a-9952-087084e784aa).
+            */
+            ShowLessIcon?: Item;
+
+            /**
+            * Represents the ShowLessText field (b2fddcb5-d825-4ee3-8ea5-9d38bc6f9f8e).
+            */
+            ShowLessText?: Field<string>;
+
+            /**
+            * Represents the ShowMoreIcon field (4db0821e-5e6c-49c3-a439-8c556303f0b2).
+            */
+            ShowMoreIcon?: Item;
+
+            /**
+            * Represents the ShowMoreText field (9a86ad60-9259-4a54-a72a-308a6dbcf460).
+            */
+            ShowMoreText?: Field<string>;
+
+            /**
             * Represents the SortByButtonText field (1f626380-376e-4caf-8e03-a9cb03cfadd8).
             */
             SortByButtonText?: Field<string>;
 
             /**
+            * Represents the SortByHigestRatedOptionText field (45f94db8-90fb-4eb6-8e48-af51ef46d134).
+            */
+            SortByHigestRatedOptionText?: Field<string>;
+
+            /**
             * Represents the SortByIcon field (b6a5bbd8-ac09-48a9-89e2-53eb60a9b40a).
             */
             SortByIcon?: Item;
+
+            /**
+            * Represents the SortByMostNearestOptionText field (f0e0f366-f69f-4109-a426-2f5cc643d931).
+            */
+            SortByMostNearestOptionText?: Field<string>;
+
+            /**
+            * Represents the SortByMostRelevantOptionText field (21cac9e8-7845-4071-b049-06399231569d).
+            */
+            SortByMostRelevantOptionText?: Field<string>;
+
+            /**
+            * Represents the SpecialitiesFilterHeaderText field (c33c2090-86e7-4be2-9e2f-ae27468d83cd).
+            */
+            SpecialitiesFilterHeaderText?: Field<string>;
+
+            /**
+            * Represents the SpecialitiesList field (bf5f36c2-ef15-449d-a28c-9ba7ef6fd445).
+            */
+            SpecialitiesList?: Item[];
+
+            /**
+            * Represents the TreatmentsTitle field (2a5e95e0-f58e-460d-b97d-625d3f8a4d44).
+            */
+            TreatmentsTitle?: Field<string>;
+
+            /**
+            * Represents the VideoConsultationFilterOptionYesLabel field (84d2af66-c76b-4788-8d27-179998733674).
+            */
+            VideoConsultationFilterOptionYesLabel?: Field<string>;
+
+            /**
+            * Represents the VideoConsultationFilterTitle field (053c0aa5-f09f-4344-9352-631d0d8c83fd).
+            */
+            VideoConsultationFilterTitle?: Field<string>;
 
             /**
             * Represents the ViewProfileLink field (d76100d0-ec6d-4614-8fb3-3d25817e8296).
@@ -11880,7 +12294,10 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards
     */
-    export type StepConsultantCardsJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepConsultantCardsJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifySearchJson & 
+ConsultantFinder.Apicalls.ApiC2FirstAppointmentJson &  {
         
             /**
             * Represents the BackFromAdvSearchLink field (51207eff-e7ad-4b05-aad0-de59fe4e79fe).
@@ -11901,6 +12318,62 @@ export namespace ConsultantFinder.Steps {
             */
             bookOnlineLink?: {
                 jsonValue: LinkField
+            };
+
+            /**
+            * Represents the CallToBookButtonText field (f6c333b8-7f1b-4be9-bf34-9bab7ddc87cf).
+            */
+            callToBookButtonText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the CallToBookIcon field (4c41bb26-711d-48d3-8562-2ed6aa5b9f0d).
+            */
+            callToBookIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the ConditionsTreatmentsFilterHeaderText field (9daf9dd7-e4dc-4272-9fe9-ea8a7a25b372).
+            */
+            conditionsTreatmentsFilterHeaderText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ConditionsTreatmentsList field (2e5e2b3d-f8c7-4f79-b16b-a30cff898d53).
+            */
+            conditionsTreatmentsList?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the ConsultantFinderNodeText field (1af188e2-8cb8-4840-874b-a0755f937861).
+            */
+            consultantFinderNodeText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the CoverForTreatmentFilterOptionSelfPayLabel field (a1443418-e627-457a-a36c-d4ae13960b95).
+            */
+            coverForTreatmentFilterOptionSelfPayLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the CoverForTreatmentFilterTitle field (6fb13f6c-de52-4dbd-a572-e4dccdcd8ed0).
+            */
+            coverForTreatmentFilterTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the DisplayNumber field (701fca24-65cd-4ebd-9d1e-c3d6630466a8).
+            */
+            displayNumber?: {
+                jsonValue: Field<string>
             };
 
             /**
@@ -11925,6 +12398,104 @@ export namespace ConsultantFinder.Steps {
             };
 
             /**
+            * Represents the GenderFilterOptions field (3ab962a5-ac88-43b6-8e6a-ad1a53fee647).
+            */
+            genderFilterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the GenderFilterTitle field (65cdad0f-7630-47f5-bcdc-eeb866bc3016).
+            */
+            genderFilterTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the GenericErrorRetryMessage field (90da4042-644f-4666-9390-45b30e48dda9).
+            */
+            genericErrorRetryMessage?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the InsurersFilterTitle field (66525551-ace9-4fb1-aca5-1b2624593a3f).
+            */
+            insurersFilterTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the LanguageFilterOptions field (bfcec7dc-dc48-495e-8d73-13ae0f334c38).
+            */
+            languageFilterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the LanguagesFilterOptionPleaseSelectText field (2e8fbc7d-563e-481e-a2f5-9f320a317cad).
+            */
+            languagesFilterOptionPleaseSelectText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the LanguagesFilterOptionTitle field (8827f7f4-2c1b-4a45-8185-fd61a1f9fecc).
+            */
+            languagesFilterOptionTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the LastUpdatedText field (2c4c44a2-5dff-4009-bf30-96580673bbf1).
+            */
+            lastUpdatedText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the LocationFilterOptions field (a5eaafdd-6e90-4c82-b4a5-ded230a73627).
+            */
+            locationFilterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the LocationFilterTitle field (4fc3be97-e526-4a9c-ae7f-36cd94542c6c).
+            */
+            locationFilterTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the NextAppointmentOnText field (dd5f431d-e357-41a1-b0e7-424b6c984c79).
+            */
+            nextAppointmentOnText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PhoneNumberHref field (305d42f7-6e39-462e-955d-fc2431bf5f24).
+            */
+            phoneNumberHref?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PracticesTitle field (fc160c47-ee41-4787-8850-f8f8f6cb85e1).
+            */
+            practicesTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ProfileImagePlaceholderImage field (6a9f5bea-7d2a-471e-bc40-a1870af3c461).
+            */
+            profileImagePlaceholderImage?: {
+                jsonValue: ImageField
+            };
+
+            /**
             * Represents the ResetAllIcon field (57ffde03-2e98-4a85-808d-4f225c2deebf).
             */
             resetAllIcon?: {
@@ -11935,6 +12506,13 @@ export namespace ConsultantFinder.Steps {
             * Represents the ResetAllText field (384cdd42-0025-4044-988e-765f52d6e0ee).
             */
             resetAllText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ResultsNodeText field (cc4bc206-ba60-46a4-b25c-5e43daf570d9).
+            */
+            resultsNodeText?: {
                 jsonValue: Field<string>
             };
 
@@ -11953,9 +12531,44 @@ export namespace ConsultantFinder.Steps {
             };
 
             /**
+            * Represents the ShowLessIcon field (5f41c834-2127-432a-9952-087084e784aa).
+            */
+            showLessIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the ShowLessText field (b2fddcb5-d825-4ee3-8ea5-9d38bc6f9f8e).
+            */
+            showLessText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the ShowMoreIcon field (4db0821e-5e6c-49c3-a439-8c556303f0b2).
+            */
+            showMoreIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the ShowMoreText field (9a86ad60-9259-4a54-a72a-308a6dbcf460).
+            */
+            showMoreText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the SortByButtonText field (1f626380-376e-4caf-8e03-a9cb03cfadd8).
             */
             sortByButtonText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the SortByHigestRatedOptionText field (45f94db8-90fb-4eb6-8e48-af51ef46d134).
+            */
+            sortByHigestRatedOptionText?: {
                 jsonValue: Field<string>
             };
 
@@ -11964,6 +12577,55 @@ export namespace ConsultantFinder.Steps {
             */
             sortByIcon?: {
                 jsonValue: Item
+            };
+
+            /**
+            * Represents the SortByMostNearestOptionText field (f0e0f366-f69f-4109-a426-2f5cc643d931).
+            */
+            sortByMostNearestOptionText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the SortByMostRelevantOptionText field (21cac9e8-7845-4071-b049-06399231569d).
+            */
+            sortByMostRelevantOptionText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the SpecialitiesFilterHeaderText field (c33c2090-86e7-4be2-9e2f-ae27468d83cd).
+            */
+            specialitiesFilterHeaderText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the SpecialitiesList field (bf5f36c2-ef15-449d-a28c-9ba7ef6fd445).
+            */
+            specialitiesList?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the TreatmentsTitle field (2a5e95e0-f58e-460d-b97d-625d3f8a4d44).
+            */
+            treatmentsTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the VideoConsultationFilterOptionYesLabel field (84d2af66-c76b-4788-8d27-179998733674).
+            */
+            videoConsultationFilterOptionYesLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the VideoConsultationFilterTitle field (053c0aa5-f09f-4344-9352-631d0d8c83fd).
+            */
+            videoConsultationFilterTitle?: {
+                jsonValue: Field<string>
             };
 
             /**
@@ -12016,7 +12678,6 @@ export namespace ConsultantFinder.Steps {
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantProfile
     */
     export type StepConsultantProfile = ConsultantFinder.Steps.StepCommon & 
-ConsultantFinder.Branding.DoctifyLogoDetails & 
 ConsultantFinder.Apicalls.ApiC2FirstAppointment &  {
         fields?: { 
             /**
@@ -12341,7 +13002,6 @@ ConsultantFinder.Apicalls.ApiC2FirstAppointment &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantProfile
     */
     export type StepConsultantProfileJson = ConsultantFinder.Steps.StepCommonJson & 
-ConsultantFinder.Branding.DoctifyLogoDetailsJson & 
 ConsultantFinder.Apicalls.ApiC2FirstAppointmentJson &  {
         
             /**
@@ -13569,7 +14229,7 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepPayment
     */
-    export type StepPayment = ConsultantFinder.Apicalls.ApiDetailsInsurers & 
+    export type StepPayment = ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurers & 
 ConsultantFinder.Steps.StepCommon &  {
         fields?: { 
             /**
@@ -13608,7 +14268,7 @@ ConsultantFinder.Steps.StepCommon &  {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepPayment
     */
-    export type StepPaymentJson = ConsultantFinder.Apicalls.ApiDetailsInsurersJson & 
+    export type StepPaymentJson = ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurersJson & 
 ConsultantFinder.Steps.StepCommonJson &  {
         
             /**
@@ -14561,6 +15221,98 @@ export namespace Business {
 export namespace PageContent {
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Test And Scans Cards
+    */
+    export type TestAndScansCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Card Text field (e5e0f48b-6019-4c9b-83b0-1a3dced02373).
+            */
+            CTACardText?: Field<string>;
+
+            /**
+            * Represents the Number Of Cards field (838e0417-a20d-40ce-b8f3-51a29cf1ea3f).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Test And Scans field (694439b2-0b3a-4b7b-9df0-04a530b796eb).
+            */
+            TestAndScans?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Test And Scans Cards
+    */
+    export type TestAndScansCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Card Text field (e5e0f48b-6019-4c9b-83b0-1a3dced02373).
+            */
+            cTACardText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Number Of Cards field (838e0417-a20d-40ce-b8f3-51a29cf1ea3f).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Test And Scans field (694439b2-0b3a-4b7b-9df0-04a530b796eb).
+            */
+            testAndScans?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Test And Scans Cards Folder
+    */
+    export type TestAndScansCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Test And Scans Cards Folder
+    */
+    export type TestAndScansCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Cards Params
+    */
+    export type TestAndScansCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Cards Params
+    */
+    export type TestAndScansCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Test And Scans Search
     */
     export type TestAndScansSearch = Foundation.SearchBase &  {
@@ -14745,6 +15497,98 @@ export namespace ConsultantFinder.Data {
                 jsonValue: Field<string>
             };
 
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Treatments Cards
+    */
+    export type TreatmentsCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Card Text field (ded86b0c-c734-4019-89c3-6c6a34a1cc8d).
+            */
+            CTACardText?: Field<string>;
+
+            /**
+            * Represents the Number Of Cards field (60c1cb24-bd52-49e7-9756-e686b25b1b9f).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Treatments field (a964b3b4-4ad5-4918-831c-36f91c9dc8f8).
+            */
+            Treatments?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Treatments Cards
+    */
+    export type TreatmentsCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Card Text field (ded86b0c-c734-4019-89c3-6c6a34a1cc8d).
+            */
+            cTACardText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Number Of Cards field (60c1cb24-bd52-49e7-9756-e686b25b1b9f).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Treatments field (a964b3b4-4ad5-4918-831c-36f91c9dc8f8).
+            */
+            treatments?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Treatments Cards Folder
+    */
+    export type TreatmentsCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Treatments Cards Folder
+    */
+    export type TreatmentsCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Treatments Cards Params
+    */
+    export type TreatmentsCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Treatments Cards Params
+    */
+    export type TreatmentsCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
 
     }
 }

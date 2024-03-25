@@ -7,17 +7,23 @@
   border-radius: 0 0 $radius-large 0;
 }
 
-.grid {
-  padding: $spacing-9 0;
-  @include responsive-grid;
-
+.inner {
   @include responsive-container;
 
-  gap: 0;
+  padding: $spacing-12 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}
 
-  & > div:not(.search) {
-    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
-  }
+.grid {
+  @include responsive-grid;
+
+  gap: 0;
+}
+
+.half {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 6);
 }
 
 .heading {
@@ -33,7 +39,7 @@
 
 .subheading {
   grid-row-start: 1;
-  margin-bottom: px-to-rem(12);
+  margin-bottom: $spacing-3;
 
   & > * {
     @include apply-subheading-1;
@@ -44,37 +50,4 @@
   grid-row-start: 3;
 
   @include apply-body-large;
-}
-
-.search {
-  grid-row-start: 4;
-  margin-top: $spacing-7;
-  display: grid;
-  @include responsive-grid-span(6, 6, 9, 9);
-
-  &:has(.filters) {
-    display: flex;
-    flex-direction: column;
-    gap: px-to-rem(8) 0;
-    @include responsive-grid-span(6, 6, 12, 12);
-
-    @include media(screen-m) {
-      gap: px-to-rem(8);
-      flex-flow: row wrap;
-
-      .searchbar {
-        width: 100%;
-      }
-    }
-
-    @include media(screen-l) {
-      flex-direction: row;
-      gap: 0 $spacing-2;
-
-      .searchbar {
-        width: unset;
-        flex: 1 1 auto;
-      }
-    }
-  }
 }

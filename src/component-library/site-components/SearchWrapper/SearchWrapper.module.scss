@@ -6,12 +6,6 @@
   flex-direction: column;
   gap: px-to-rem(24);
 
-  @include responsive-grid-span(6, 6, 6, 6);
-
-  @include responsive-container;
-
-  padding: var(--theme-collapse-padding-top, #{$spacing-11}) 0 $spacing-7 0;
-
   @include media(screen-m) {
     flex-direction: row;
     justify-content: space-between;
@@ -24,6 +18,14 @@
 }
 
 .wrapper {
-  background: var(--background);
+  padding: var(--theme-collapse-padding-top, #{$spacing-9}) 0 $spacing-13 0;
   color: var(--text);
+}
+
+.inner {
+  @include responsive-container;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
 }

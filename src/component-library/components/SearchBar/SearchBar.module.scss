@@ -5,10 +5,25 @@
   position: relative;
   display: flex;
   gap: $spacing-2;
+  @include media(screen-l, max) {
+    flex-wrap: wrap;
+
+    > :nth-child(1) {
+      flex: 1 0 100%;
+    }
+
+    > :nth-child(1n + 2) {
+      flex-grow: 1;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .search-bar {
-  background-color: var(--card-background);
+  background-color: var(--field-background);
   display: flex;
   align-items: center;
   gap: $spacing-4;
@@ -46,6 +61,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    color: inherit;
   }
 }
 

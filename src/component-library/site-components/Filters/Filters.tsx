@@ -20,6 +20,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
     buttonIcon = <Icons iconName="iconFilterCircle" />,
     filters,
     resultsCount,
+    submitOnClose,
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -40,7 +41,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
-        <Button variation="full-dark" size="large" contentVariation="search">
+        <Button variation="full" size="large" contentVariation="search">
           <button onClick={() => dialogRef.current?.showModal()} type="button">
             {buttonIcon}
             {buttonText}
@@ -76,7 +77,12 @@ const Filters = (props: FiltersProps): JSX.Element => {
               </button>
             </TextButton>
             <Button variation="full-dark" size="small">
-              <button onClick={() => dialogRef?.current?.close()} type="button">
+              <button
+                onClick={() => {
+                  dialogRef?.current?.close();
+                }}
+                type={submitOnClose ? 'submit' : 'button'}
+              >
                 See {resultsCount} Results
               </button>
             </Button>

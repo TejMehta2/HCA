@@ -48,7 +48,7 @@
   .hours {
     display: grid;
     grid: auto / px-to-rem(24) 1fr;
-    align-items: center;
+    align-items: flex-start;
     gap: $spacing-2;
     margin-top: $spacing-3;
   }
