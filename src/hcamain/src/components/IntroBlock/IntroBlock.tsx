@@ -73,7 +73,6 @@ interface ImageLeftProps extends IntroBlockProps {
 }
 
 export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
-  console.log(props);
   const { imageAlignment = 'left' } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;

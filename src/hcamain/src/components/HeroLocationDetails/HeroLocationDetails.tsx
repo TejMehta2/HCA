@@ -70,7 +70,6 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   if (!props.fields) {
     return <HeroLocationDetailsDefaultComponent {...props} />;
   }
-  console.log(props);
 
   let availabilityString;
   props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.map(

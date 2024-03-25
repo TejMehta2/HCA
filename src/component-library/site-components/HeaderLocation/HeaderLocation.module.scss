@@ -85,7 +85,7 @@
   }
 
   svg {
-    min-width: min-content;
+    flex-shrink: 0;
   }
 }
 
