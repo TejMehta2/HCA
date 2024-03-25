@@ -1628,7 +1628,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Search
     */
     export type BlogSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -1637,7 +1638,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Search
     */
     export type BlogSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
@@ -9740,7 +9742,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Search
     */
     export type LocationsSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -9749,7 +9752,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Locations Search
     */
     export type LocationsSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
@@ -11056,7 +11060,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Search
     */
     export type PatientStoriesSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -11065,7 +11070,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Search
     */
     export type PatientStoriesSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
@@ -11476,7 +11482,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Service Lines Search
     */
     export type ServiceLinesSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -11485,7 +11492,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Service Lines Search
     */
     export type ServiceLinesSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
@@ -15334,7 +15342,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Search
     */
     export type TestAndScansSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -15343,7 +15352,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Test And Scans Search
     */
     export type TestAndScansSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
@@ -15616,7 +15626,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Treatments Search
     */
     export type TreatmentsSearch = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.CardThemesParameters &  {
         fields?: {         }
 
     }
@@ -15625,7 +15636,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Treatments Search
     */
     export type TreatmentsSearchJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.CardThemesParametersJson &  {
         
 
     }
