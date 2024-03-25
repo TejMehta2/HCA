@@ -22,12 +22,17 @@ import Navigation from '@component-library/consultant-finder/Navigation/Navigati
 import SelectAppointmentType from '@component-library/consultant-finder/SelectAppointmentType/SelectAppointmentType';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
   Steps: any;
   InitialAppointmentLink: LinkField;
+  InitialAppointmentIcon: any;
+  InitialAppointmentBodyText: Field<string>;
   FollowOnAppointmentLink: LinkField;
+  FollowUpAppointmentIcon: any;
+  FollowUpAppointmentBodyText: Field<string>;
   TitleText: Field<string>;
   CardImage: ImageField;
   StartLink: LinkField;
@@ -80,62 +85,88 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <div className="component-content">
-          <HeaderLDB
-            logo={<JssImage field={props?.fields?.HCALogo} />}
-            progress={
-              <ProgressBar
-                currentPage={props?.fields?.CurrentStep?.value}
-                steps={props?.fields?.Steps}
-              ></ProgressBar>
-            }
-          ></HeaderLDB>
-          <Headline>
-            <Text tag="h1" variation="heading-1">
-              {props?.fields?.BodyText?.value ||
-                'Please choose a type of appointment'}
-            </Text>
-          </Headline>
-          <SelectAppointmentType
-            iconCard1={undefined}
-            iconCard2={undefined}
-            titleCard1={
-              props?.fields?.InitialAppointmentLink?.value?.text ||
-              'Initial appointment'
-            }
-            titleCard2={
-              props?.fields?.FollowOnAppointmentLink?.value?.text ||
-              'Follow up appointment'
-            }
-            textCard1={undefined}
-            textCard2={undefined}
-          />
-          <Navigation hideTextMobile={true}>
-            <div>
-              <TextButton>
-                <Link href={`/Finder/Step-Terms-And-Conditions?slug=${slug}`}>
-                  <Icons iconName="iconArrowSmallLeft" />
-                  <span>{props.fields.BackLink.value.text || 'Back'}</span>
-                </Link>
-              </TextButton>
-            </div>
-            <Container>
-              <Button size={'small'} variation={'full-dark'}>
-                <button
-                  disabled={selectedTypeOfAppointment === '' ? true : false}
-                  onClick={() =>
-                    router.push(
-                      props?.fields?.NextLink?.value?.href ||
-                        '/Finder/Step-Slot'
-                    )
+        {router.isReady && (
+          <div className="component-content">
+            <HeaderLDB
+              logo={<JssImage field={props?.fields?.HCALogo} />}
+              progress={
+                <ProgressBar
+                  currentPage={props?.fields?.CurrentStep?.value}
+                  steps={props?.fields?.Steps}
+                  slug={slug}
+                ></ProgressBar>
+              }
+            ></HeaderLDB>
+            <Headline>
+              <Text tag="h1" variation="heading-1">
+                {props?.fields?.BodyText?.value ||
+                  'Please choose a type of appointment'}
+              </Text>
+            </Headline>
+            <SelectAppointmentType
+              iconCard1={
+                <SitecoreSvg>
+                  {
+                    props?.fields?.InitialAppointmentIcon?.fields?.SvgMarkup
+                      ?.value
                   }
-                >
-                  <span>{props?.fields?.NextLink?.value?.text || 'Next'}</span>
-                </button>
-              </Button>
-            </Container>
-          </Navigation>
-        </div>
+                </SitecoreSvg>
+              }
+              iconCard2={
+                <SitecoreSvg>
+                  {
+                    props?.fields?.FollowUpAppointmentIcon?.fields?.SvgMarkup
+                      ?.value
+                  }
+                </SitecoreSvg>
+              }
+              titleCard1={
+                props?.fields?.InitialAppointmentLink?.value?.text ||
+                'Initial appointment'
+              }
+              titleCard2={
+                props?.fields?.FollowOnAppointmentLink?.value?.text ||
+                'Follow up appointment'
+              }
+              textCard1={
+                <JssRichText
+                  field={props?.fields?.InitialAppointmentBodyText}
+                />
+              }
+              textCard2={
+                <JssRichText
+                  field={props?.fields?.FollowUpAppointmentBodyText}
+                />
+              }
+            />
+            <Navigation hideTextMobile={true}>
+              <div>
+                <TextButton>
+                  <Link href={`/Finder/Step-Terms-And-Conditions?slug=${slug}`}>
+                    <Icons iconName="iconArrowSmallLeft" />
+                    <span>{props.fields.BackLink.value.text || 'Back'}</span>
+                  </Link>
+                </TextButton>
+              </div>
+              <Container>
+                <Button size={'small'} variation={'full-dark'}>
+                  <button
+                    disabled={selectedTypeOfAppointment === '' ? true : false}
+                    onClick={() =>
+                      router.push(
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}`
+                      )
+                    }
+                  >
+                    <span>
+                      {props?.fields?.NextLink?.value?.text || 'Next'}
+                    </span>
+                  </button>
+                </Button>
+              </Container>
+            </Navigation>
+          </div>
+        )}
       </div>
     );
   }

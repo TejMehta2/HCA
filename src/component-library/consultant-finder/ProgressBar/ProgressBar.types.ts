@@ -5,4 +5,5 @@ export interface ProgressBarProps {
   children?: ReactNode | JSX.Element;
   currentPage: null | string;
   steps: any;
+  slug?: string;
 }
