@@ -15,7 +15,7 @@ export interface HeaderLocationProps {
   title: JSX.Element;
   open?: open;
   address: address;
-  ctas: JSX.Element;
+  ctas?: JSX.Element;
   image: JSX.Element;
   theme: Theme;
   cqc?: JSX.Element;
