@@ -6,7 +6,7 @@
 // e.g. https://www.hcacloud.localhost/finder/profile/mr-andrew-goldberg
 // as per https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   GetStaticComponentProps,
@@ -22,9 +22,6 @@ import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
-
-// import { useSearchParams } from 'next/navigation';
-import { getLDBFirstAppointmentData as getLDBFirstAppointmentData } from 'lib/consultant-finder/API_C2';
 import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_HCA';
 import {
   getSpecialistProfileData,
@@ -54,6 +51,7 @@ import {
   yearsExperience,
   formatDateShort,
 } from '@component-library/utility-functions/index';
+import axios, { CancelTokenSource } from 'axios';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -67,8 +65,8 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   DoctifyLogoImage: ImageField;
+  API_C2_FirstAppointment_LoadingMsg: Field<string>;
   API_C2_FirstAppointment_BaseURL: Field<string>;
-  API_C2_FirstAppointment_Header: Field<string>;
   ProfileImagePlaceholderImage: any;
   AboutHeadingText: Field<string>;
   AboutTabText: Field<string>;
@@ -112,7 +110,6 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
-  FirstAppointment: any;
   ProfileJson: any;
   ErrorWithProfileData: boolean;
 }
@@ -141,17 +138,11 @@ export const getStaticProps: GetStaticComponentProps = async (
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
-  const firstAppointment =
-    isLiveDiaryConsultant && !errorWithProfileData
-      ? await getLDBFirstAppointmentData(consultantProfileJson?.gmcNumber)
-      : null;
-  //console.log("consultantProfileJson: ", consultantProfileJson);
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
-    FirstAppointment: firstAppointment,
     ProfileJson: consultantProfileJson,
   };
 
@@ -174,6 +165,11 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  const [doctifyLoaded, setDoctifyLoaded] = useState(false);
+  const [firstAppointmentData, setFirstAppointmentData] = useState<any>();
+  const [nextAptRequestToken, setNextAptRequestToken] =
+    useState<CancelTokenSource | null>(null);
+
   //console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
@@ -184,6 +180,39 @@ export const Default = (props: StepProps): JSX.Element => {
   const locationsRef = useRef<HTMLDivElement>(null);
   const feesRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
+  //console.log('bef next apt useEffect', doctifyLoaded);
+  useEffect(() => {
+    //console.log('next apt useEffect', doctifyLoaded);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!doctifyLoaded) {
+      setDoctifyLoaded(true); // only want to call this once when the server side has loaded - deps are serverSideData
+      // Check if we made a request
+      if (nextAptRequestToken) {
+        // Cancel the previous request before making a new request
+        nextAptRequestToken.cancel();
+        setNextAptRequestToken(null);
+      }
+      // call to our local server api endpoint to get the first appointment data from C2
+      const getLDBFirstAppointmentDatasURL = `${props?.fields?.API_C2_FirstAppointment_BaseURL?.value}${serverSideData?.ProfileJson?.gmcNumber}`;
+      //console.log('load data', doctifyLoaded, getLDBFirstAppointmentDatasURL);
+
+      const cancelToken = axios.CancelToken.source();
+      setNextAptRequestToken(cancelToken);
+      axios
+        .get(getLDBFirstAppointmentDatasURL, {
+          cancelToken: cancelToken.token,
+        })
+        .then((firstAppointmentResponse) => {
+          // map in the first appointment data for each consultant, results will come in the same order as the request
+          setFirstAppointmentData(firstAppointmentResponse?.data);
+          //console.log('first apt', firstAppointmentResponse?.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [serverSideData]); // only trigger fetch on serverside data update
 
   if (
     !serverSideData ||
@@ -223,15 +252,6 @@ export const Default = (props: StepProps): JSX.Element => {
       console.log('Ref not found or not initialized'); // Debugging check
     }
   };
-
-  /*
-  // example client side get first appointment call
-  getLDBFirstAppointmentData( "4113571", 
-  props.fields.API_C2_FirstAppointment_BaseURL.value, 
-  props.fields.API_C2_FirstAppointment_Header.value)
-  .then(res=>
-    {  console.log('first appointment client side:', res);
-    });*/
 
   // top specialty
   const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
@@ -408,8 +428,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
-                    serverSideData?.FirstAppointment?.initial_appointment &&
-                    serverSideData?.FirstAppointment?.follow_appointment && (
+                    firstAppointmentData?.initial_appointment &&
+                    firstAppointmentData?.follow_appointment && (
                       <>
                         <InfoBox
                           backgroundColour="green"
@@ -419,8 +439,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.NextInitialAppointmentText?.value ||
                             'Next initial appointment'
                           } ${formatDateShort(
-                            serverSideData?.FirstAppointment
-                              ?.initial_appointment
+                            firstAppointmentData?.initial_appointment
                           )}`}
                         />
                         <InfoBox
@@ -431,14 +450,14 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.NextFollowOnAppointmentText?.value ||
                             'Next follow up appointment'
                           } ${formatDateShort(
-                            serverSideData?.FirstAppointment?.follow_appointment
+                            firstAppointmentData?.follow_appointment
                           )}`}
                         />
                         <Text tag="p" variation="body-small">
                           {`${
                             props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          } ${serverSideData?.FirstAppointment?.refreshedText}
+                          } ${firstAppointmentData?.refreshedText}
                           `}
                         </Text>
                       </>
@@ -648,8 +667,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
-                    serverSideData?.FirstAppointment?.initial_appointment &&
-                    serverSideData?.FirstAppointment?.follow_appointment && (
+                    firstAppointmentData?.initial_appointment &&
+                    firstAppointmentData?.follow_appointment && (
                       <>
                         <InfoBox
                           backgroundColour="green"
@@ -659,8 +678,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.NextInitialAppointmentText?.value ||
                             'Next initial appointment'
                           } ${formatDateShort(
-                            serverSideData?.FirstAppointment
-                              ?.initial_appointment
+                            firstAppointmentData?.initial_appointment
                           )}`}
                         />
                         <InfoBox
@@ -671,14 +689,14 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.NextFollowOnAppointmentText?.value ||
                             'Next follow up appointment'
                           } ${formatDateShort(
-                            serverSideData?.FirstAppointment?.follow_appointment
+                            firstAppointmentData?.follow_appointment
                           )}`}
                         />
                         <Text tag="p" variation="body-small">
                           {`${
                             props?.fields?.LastCheckedText?.value ||
                             'Last checked:'
-                          } ${serverSideData?.FirstAppointment?.refreshedText}
+                          } ${firstAppointmentData?.refreshedText}
                           `}
                         </Text>
                       </>
