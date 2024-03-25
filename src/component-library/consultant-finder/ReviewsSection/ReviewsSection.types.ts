@@ -3,6 +3,10 @@ import { ReactNode } from 'react';
 export interface ReviewsSectionProps {
   children?: ReactNode | JSX.Element;
   DoctifyReviewsImage: string;
+  DoctifyPatientReviewsURL: string;
+  DoctifyPatientReviewsLimit: number;
+  DoctifyPeerReviewsURL: string;
+  DoctifyPeerReviewsLimit: number;
   NoReviewsText: string;
   PatientReviewsText: string;
   PeerReivewsText: string;

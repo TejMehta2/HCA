@@ -7,6 +7,10 @@ import ReviewsSection from '@component-library/consultant-finder/ReviewsSection/
 
 interface Fields {
   DoctifyReviewsImage: any;
+  API_DoctifyPatientReviews_BaseURL: Field<string>;
+  API_DoctifyPatientReviews_Limit: Field<number>;
+  API_DoctifyPeerReviews_BaseURL: Field<string>;
+  API_DoctifyPeerReviews_Limit: Field<number>;
   NoReviewsText: Field<string>;
   PatientReviewsText: Field<string>;
   PeerReivewsText: Field<string>;
@@ -39,6 +43,18 @@ export const Default = (props: ReviewFrameProps): JSX.Element => {
           <ReviewsSection
             DoctifyReviewsImage={
               props?.fields?.DoctifyReviewsImage?.value?.src || ''
+            }
+            DoctifyPatientReviewsURL={
+              props?.fields?.API_DoctifyPatientReviews_BaseURL?.value || ''
+            }
+            DoctifyPatientReviewsLimit={
+              props?.fields?.API_DoctifyPatientReviews_Limit?.value || 2
+            }
+            DoctifyPeerReviewsURL={
+              props?.fields?.API_DoctifyPeerReviews_BaseURL?.value || ''
+            }
+            DoctifyPeerReviewsLimit={
+              props?.fields?.API_DoctifyPeerReviews_Limit?.value || 2
             }
             NoReviewsText={
               props?.fields?.NoReviewsText?.value ||
