@@ -23,17 +23,12 @@
   }
 
   &.hide-text-on-mobile {
-    display: block;
-
-    @include media(screen-m) {
-      display: flex;
-    }
-
     p {
       display: none;
 
       @include media(screen-m) {
         display: inline-block;
+        color: $navy-blue-100;
       }
     }
   }

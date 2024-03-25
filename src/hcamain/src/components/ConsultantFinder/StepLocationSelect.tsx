@@ -11,8 +11,11 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
+import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 
 interface Fields {
+  [x: string]: any;
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
 
   // add specific fields defined in the data template here...
@@ -41,47 +44,22 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+  console.log('step location', props.fields);
   if (props.fields) {
     return (
       <div
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
-        </div>
+        <HeaderLDB
+          logo={<JssImage field={props?.fields?.HCALogo} />}
+          progress={
+            <ProgressBar
+              currentPage={props?.fields?.CurrentStep?.value}
+              steps={props?.fields?.Steps}
+            ></ProgressBar>
+          }
+        ></HeaderLDB>
       </div>
     );
   }

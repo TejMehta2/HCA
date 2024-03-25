@@ -14,6 +14,8 @@ interface ConsultantFinderContextType {
   setSearchStringPayment: React.Dispatch<React.SetStateAction<string>>;
   isSelfPayment: boolean;
   setIsSelfPayment: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedTypeOfAppointment: string;
+  setSelectedTypeOfAppointment: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -33,6 +35,8 @@ export const ConsultantFinderContext =
     setSearchStringPayment: () => {},
     isSelfPayment: false,
     setIsSelfPayment: () => {},
+    selectedTypeOfAppointment: '',
+    setSelectedTypeOfAppointment: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -48,6 +52,8 @@ export const ConsultantFinderContextProvider = ({
   const [consultantSlug, setConsultantSlug] = useState<string>('');
   const [keywordId, setKeywordId] = useState<number>(0);
   const [isSelfPayment, setIsSelfPayment] = useState<boolean>(false);
+  const [selectedTypeOfAppointment, setSelectedTypeOfAppointment] =
+    useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -66,6 +72,8 @@ export const ConsultantFinderContextProvider = ({
         setSearchStringPayment,
         isSelfPayment,
         setIsSelfPayment,
+        selectedTypeOfAppointment,
+        setSelectedTypeOfAppointment,
       }}
     >
       {children}

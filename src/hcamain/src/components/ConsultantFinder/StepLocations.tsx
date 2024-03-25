@@ -41,6 +41,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+ 
   if (props.fields) {
     return (
       <div

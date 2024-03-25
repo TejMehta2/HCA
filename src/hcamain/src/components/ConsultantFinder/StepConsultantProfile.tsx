@@ -710,10 +710,14 @@ export const Default = (props: StepProps): JSX.Element => {
                           size="small"
                           contentVariation="full-width"
                         >
-                          <JssLink
-                            field={props.fields.BookOnlineButtonLink}
-                            title={props.fields.BookOnlineButtonLink.value.text}
-                          ></JssLink>
+                          <Link
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}`}
+                          >
+                            <span>
+                              {props.fields.BookOnlineButtonLink.value.text ||
+                                'Book online'}
+                            </span>
+                          </Link>
                         </Button>
                       </Container>
                     )}
@@ -769,10 +773,14 @@ export const Default = (props: StepProps): JSX.Element => {
                   size="small"
                   contentVariation="full-width"
                 >
-                  <JssLink
-                    field={props.fields.BookOnlineButtonLink}
-                    title={props.fields.BookOnlineButtonLink.value.text}
-                  ></JssLink>
+                  <Link
+                    href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}`}
+                  >
+                    <span>
+                      {props.fields.BookOnlineButtonLink.value.text ||
+                        'Book online'}
+                    </span>
+                  </Link>
                 </Button>
               )}
               {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
