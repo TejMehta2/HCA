@@ -5,7 +5,6 @@ import {
   LinkField,
   Text as JssText,
   Image as JssImage,
-  Link as JssLink,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -39,7 +38,7 @@ interface Fields {
       city?: { jsonValue?: Field<string> };
       street?: { jsonValue?: Field<string> };
       postCode?: { jsonValue?: Field<string> };
-      getDirections?: { jsonValue?: LinkField };
+      getDirections?: { jsonValue?: Field<string> };
       doctifyReviews?: DoctifyReviewsFields;
       cQCRating?: CQCFields;
       contactUnits?: {
@@ -113,13 +112,14 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           <TextButton>
             {props.fields?.data?.contextItem?.getDirections?.jsonValue
               ?.value && (
-              <JssLink
-                field={
+              <a
+                href={
                   props.fields?.data?.contextItem?.getDirections?.jsonValue
+                    .value
                 }
               >
                 Get Directions
-              </JssLink>
+              </a>
             )}
           </TextButton>
         ),
