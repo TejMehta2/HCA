@@ -22,6 +22,17 @@ export const Default = (props: DoctifyProps): JSX.Element => {
   if (!props.fields) {
     return <DoctifyDefaultComponent {...props} />;
   }
+
+  const lightLogo = props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields
+    ?.Logo.fields
+    ? props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo.fields
+    : props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo;
+
+  const darkLogo = props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo
+    .fields
+    ? props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo.fields
+    : props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo;
+
   return (
     <div
       className={`component ${props.params?.styles}`}
@@ -43,24 +54,8 @@ export const Default = (props: DoctifyProps): JSX.Element => {
         }
         reviews={<JssText field={props.fields?.Reviews?.fields?.Reviews} />}
         logo={{
-          dark: (
-            <JssImage
-              field={
-                props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo
-              }
-              width="83"
-              height="21"
-            />
-          ),
-          light: (
-            <JssImage
-              field={
-                props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo
-              }
-              width="83"
-              height="21"
-            />
-          ),
+          dark: <JssImage field={darkLogo} width="83" height="21" />,
+          light: <JssImage field={lightLogo} width="83" height="21" />,
         }}
       ></Doctify>
     </div>
