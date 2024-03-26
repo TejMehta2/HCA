@@ -26,6 +26,7 @@ import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import axios from 'axios';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
 
 interface Fields {
   HCALogo: ImageField;
@@ -41,6 +42,7 @@ interface Fields {
   CantFindBannerText: Field<string>;
   CantFindPhoneNumber: Field<string>;
   CantFindIcon: any;
+  HeadingText: Field<string>;
 }
 
 type StepProps = {
@@ -134,6 +136,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
+            <Headline>
+              <Text tag="h1" variation="heading-1">
+                {props?.fields?.HeadingText?.value ||
+                  'Please select a location'}
+              </Text>
+            </Headline>
             {!loading && !error && (
               <SelectLocation
                 locations={locations}

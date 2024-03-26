@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
 import React, { useContext, useEffect, useState } from 'react';
@@ -24,17 +25,11 @@ import Container from '@component-library/foundation/Containers/Container';
 import axios from 'axios';
 
 interface Fields {
-  HCALogo: ImageField | ImageFieldValue | undefined;
+  HCALogo: ImageField;
   CurrentStep: any;
   Steps: any;
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
