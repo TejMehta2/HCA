@@ -18,11 +18,17 @@ Languages:
         {54541FFE-872B-4DE6-B3BC-9528907A6F0F}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e2b77742-e151-4f2a-ba35-a7b26e6ef556"
+      Value: "18f0d822-a7e6-4b85-a990-c800945eb4a0"
+    - ID: "abedf982-8d06-4980-bc29-dc6822c9843e"
+      Hint: CTAText
+      Value: Call us <b>today</b>
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T215201Z
+      Value: 20240326T082030Z
+    - ID: "fa0ec83d-c7c7-4d1b-8307-97c25471b2a9"
+      Hint: CTAIcon
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"
