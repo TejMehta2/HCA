@@ -198,7 +198,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     onClick={() =>
                       router.push(
                         `${
-                          props?.fields?.NextLinks?.value?.href ||
+                          props?.fields?.NextLink?.value?.href ||
                           '/Finder/Step-Slot-Select'
                         }?slug=${slug}&gmcNumber=${gmcNumber}`
                       )

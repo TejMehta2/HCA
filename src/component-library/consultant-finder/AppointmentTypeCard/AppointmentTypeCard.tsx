@@ -25,7 +25,7 @@ const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
         </Text>
       </div>
       <div className={styles.description}>
-        <Text tag="p" variation="body-medium-small">
+        <Text tag="div" variation="body-medium-small">
           {props.text}
         </Text>
       </div>

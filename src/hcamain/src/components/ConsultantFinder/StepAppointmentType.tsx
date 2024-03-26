@@ -153,10 +153,12 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
-                    <span>{props.fields.BackLink.value.text || 'Back'}</span>
+                    <span>
+                      {props?.fields?.BackLink?.value?.text || 'Back'}
+                    </span>
                   </Link>
                 </TextButton>
               </div>
