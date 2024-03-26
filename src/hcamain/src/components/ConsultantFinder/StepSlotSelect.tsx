@@ -144,7 +144,7 @@ export const Default = (props: StepProps): JSX.Element => {
               </div>
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
-                  {`Appointment selected on ${selectedDate}, at ${selectedTime}`}
+                  {`Appointment selected on ${selectedDate} at ${selectedTime}`}
                 </Text>
               )}
               <Container>
