@@ -4,7 +4,9 @@ import { SlotsCalendarProps } from './SlotsCalendar.types';
 import styles from './SlotsCalendar.module.scss';
 import {
   formatDateYYYYMMDD,
+  formatDateLong,
   removeSeconds,
+  formatTime12hr,
 } from '../../utility-functions/index';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import LoaderCF from '../LoaderCF/LoaderCF';
@@ -22,6 +24,8 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     fristAppointmentDate,
     lat,
     lon,
+    setSelectedDate,
+    setSelectedTime,
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
@@ -107,6 +111,8 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setLoadingSlots(true);
     setDisablePrev(true);
     setDisableNext(true);
+    setSelectedDate('');
+    setSelectedTime('');
 
     const slotsURL = `https:/api/C2/GetLDBConsultantSlots?dateFrom=${firstDay}&dateTo=${lastDay}&isFollowOnAppointment=${selectedTypeOfAppointment}&consultantGUID=${consultantGUID}&locationGUID=${locationGUID}`;
     axios
@@ -167,6 +173,13 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         setDisablePrev(true);
         setDisableNext(true);
       });
+  };
+
+  const showSelection = (e, startTime, endTime) => {
+    setSelectedDate(formatDateLong(startTime));
+    setSelectedTime(formatTime12hr(startTime));
+    console.log(formatDateLong(startTime));
+    console.log(formatTime12hr(startTime));
   };
 
   useEffect(() => {
@@ -273,7 +286,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
 
                     if (newDate === formattedDate) {
                       return (
-                        <div key={dateIndex} className={styles['time']}>
+                        <div key={dateIndex} className={`${styles['time']}`}>
                           {date.slots.map(
                             (slot: any, slotIndex: any) =>
                               !slot.isBlocked && (
@@ -284,7 +297,13 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                                   //     ? 'time--not-bookable'
                                   //     : ''
                                   // }`}
-                                  onClick={(e) => console.log(e)}
+                                  onClick={(e) =>
+                                    showSelection(
+                                      e,
+                                      slot.startTime,
+                                      slot.endTime
+                                    )
+                                  }
                                 >
                                   {/* {!isBookableDate(formattedDate) && (
                               <span

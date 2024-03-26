@@ -116,3 +116,23 @@ export const formatDateLong = (dateString: string) => {
 export const removeSeconds = (time: string) => {
   return time.split(':').slice(0, 2).join(':');
 };
+
+// format time based on 12hr format am/pm
+export const formatTime12hr = (dateString: any) => {
+  const date = new Date(dateString);
+
+  const options: object = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+
+  let formattedTime = date.toLocaleTimeString('en-GB', options);
+
+  const hour = date.getHours();
+  if (hour === 0 || hour === 12) {
+    formattedTime = formattedTime.replace(/^0(?=:)/, '12');
+  }
+
+  return formattedTime;
+};

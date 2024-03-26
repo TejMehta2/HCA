@@ -55,8 +55,13 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   console.log('steps slot', props.fields);
-  const { selectedLocation, setSelectedTypeOfAppointment, setConsultantGUID } =
-    useContext(ConsultantFinderContext);
+  const {
+    selectedLocation,
+    setSelectedTypeOfAppointment,
+    setConsultantGUID,
+    selectedDate,
+    selectedTime,
+  } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
@@ -126,7 +131,7 @@ export const Default = (props: StepProps): JSX.Element => {
               }
             ></HeaderLDB>
             <SlotsCalendar />
-            <Navigation>
+            <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
                   <Link
@@ -137,10 +142,17 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Link>
                 </TextButton>
               </div>
+              {selectedDate !== '' && selectedTime !== '' && (
+                <Text tag="p" variation="body-medium-extra-large">
+                  {`Appointment selected on ${selectedDate}, at ${selectedTime}`}
+                </Text>
+              )}
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
-                    disabled={selectedLocation.length === 0 ? true : false}
+                    disabled={
+                      selectedDate === '' && selectedTime === '' ? true : false
+                    }
                     onClick={() =>
                       router.push(
                         `${
