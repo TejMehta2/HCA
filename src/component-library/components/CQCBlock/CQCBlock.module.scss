@@ -85,12 +85,20 @@
   }
 }
 
+.text {
+  grid-area: text;
+}
+
 .rating {
   display: flex;
   align-items: center;
 
   .icon {
     padding-left: px-to-rem(8);
+  }
+
+  .text {
+    display: none;
   }
 }
 
@@ -142,8 +150,4 @@
   .logo {
     padding: 0 px-to-rem(23) 0 0;
   }
-}
-
-.text {
-  grid-area: text;
 }

@@ -96,6 +96,9 @@ SharedFields:
                 image {
                   jsonValue
                 }
+                url {
+                  path
+                }
               }
             }
           }
@@ -171,14 +174,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b3fda709-c2d6-4593-8375-faa00f241a58"
+      Value: "aaaacda4-7f95-4319-b8df-71f28076e481"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T125125Z
+      Value: 20240326T085507Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

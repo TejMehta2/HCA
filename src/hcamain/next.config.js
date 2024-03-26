@@ -90,7 +90,7 @@ const nextConfig = {
   transpilePackages: ['@hca/component-library/*'],
   swcMinify: false,
   images: {
-    domains: ['upload.wikimedia.org'],
+    domains: ['upload.wikimedia.org', 'a.mktgcdn.com'],
   },
 };
 

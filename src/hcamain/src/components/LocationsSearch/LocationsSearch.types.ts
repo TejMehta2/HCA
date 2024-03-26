@@ -37,6 +37,9 @@ export interface Data {
   imageUrl: null;
   url: string;
   uid: number;
+  lat: string;
+  lng: string;
+  directions: string;
 }
 
 export interface HighlightedFields {

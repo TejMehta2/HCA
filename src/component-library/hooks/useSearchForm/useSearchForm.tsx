@@ -24,10 +24,17 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   ); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${baseUrl}/search`); // compose API url
+
+  const options = {
+    keepPreviousData: true, // Never show nothing
+    revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
+  };
+
   const { data, error, isLoading } = useSWR<ResponseT>(
     url.href,
     (url: string) => fetch(url).then((res) => res.json()),
     {
+      ...options,
       fallbackData,
       keepPreviousData: true,
     }
@@ -42,13 +49,17 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   } = useSWR<AutocompleteResponseT>(
     autocompleteUrl.href,
     (url: string) => fetch(url).then((res) => res.json()),
-    {}
+    options
   );
 
   // Update existing query params, to be read by useSwr hook
   const handleChangeEvent = (event: FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget);
-    const params = new URLSearchParams([...data.entries()] as string[][]);
+    const params = new URLSearchParams(
+      [...data.entries()]?.filter(
+        ([, value]: [string, string]) => value?.length
+      ) as string[][]
+    );
     const url = `${pathname}?${params}`;
     router.replace(url, undefined, { shallow: true });
   };
