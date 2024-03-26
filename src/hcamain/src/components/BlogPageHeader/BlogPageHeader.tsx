@@ -47,7 +47,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
     baseUrl: BASE_URL,
-    baselineParams: [...baselineParams, ['verticalKey', 'locations']],
+    baselineParams: [...baselineParams, ['verticalKey', 'articles']],
     redirectUrl: fields?.BlogUrl?.value.href || '',
   });
 

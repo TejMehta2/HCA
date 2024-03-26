@@ -20,7 +20,6 @@ import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Themes from '@component-library/foundation/Themes/Themes';
-import CardContent from '@component-library/components/CardContent/CardContent';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
@@ -31,6 +30,8 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import getBaselineParams from 'lib/getBaselineParams';
 import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import Button from '@component-library/core-components/Button/Button';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
 
@@ -182,7 +183,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
           </>
         </HeaderPlain>
       </Themes>
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         <SearchWrapper
           ref={searchWrapperRef}
           searchDetail={
@@ -215,17 +216,24 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                   <CardGrid>
                     {data?.response.results?.map((item) => {
                       const { data } = item;
-                      const { id, title, name, description, imageUrl, url } =
-                        data;
+                      const {
+                        id,
+                        title,
+                        name,
+                        description,
+                        imageUrl,
+                        url,
+                        directions,
+                      } = data;
                       return (
-                        <CardContent
+                        <CardMap
                           key={id}
                           title={
                             <Text variation="heading-1" tag="h4">
                               {title || name}
                             </Text>
                           }
-                          bodyCopy={
+                          address={
                             description ? (
                               <Text variation="body-large">{description}</Text>
                             ) : undefined
@@ -240,15 +248,30 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                               />
                             ) : undefined
                           }
-                          link={
-                            url ? (
-                              <a href={url}>
-                                <span>
-                                  Learn <strong>more</strong>
-                                </span>
-                              </a>
-                            ) : undefined
-                          }
+                          ctas={{
+                            button1: url ? (
+                              <Button size={'large'} variation={'full'}>
+                                <a href={url}>
+                                  <span>
+                                    Learn <strong>more</strong>
+                                  </span>
+                                </a>
+                              </Button>
+                            ) : undefined,
+                            button2: directions ? (
+                              <TextButton>
+                                <a
+                                  href={directions}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <span>
+                                    Learn <strong>more</strong>
+                                  </span>
+                                </a>
+                              </TextButton>
+                            ) : undefined,
+                          }}
                         />
                       );
                     })}
@@ -278,15 +301,11 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               tabContent: (
                 <LocationMap
                   apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
-                  center={{
-                    lat: 51.5072,
-                    lng: 0.1276,
-                  }}
                   locations={
                     data?.response.results.map(({ data }) => ({
                       center: {
-                        lat: 51.52036,
-                        lng: -0.14797,
+                        lat: Number(data.lat),
+                        lng: Number(data.lng),
                       },
                       card: (hideCard) => (
                         <CardMap
@@ -309,7 +328,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                               </a>
                             ),
                             button2: (
-                              <a href="#">
+                              <a href={data.directions}>
                                 <span>
                                   Get <strong>directions</strong>
                                 </span>
