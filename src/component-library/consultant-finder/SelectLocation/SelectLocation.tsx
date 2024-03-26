@@ -6,7 +6,13 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 import styles from './SelectLocation.module.scss';
 
 const SelectLocation = (props: SelectLocationProps): JSX.Element => {
-  const { setSelectedLocation } = useContext(ConsultantFinderContext);
+  const {
+    setSelectedLocation,
+    setLocationGUID,
+    setFirstAppointmentDate,
+    setLat,
+    setLon,
+  } = useContext(ConsultantFinderContext);
 
   return (
     <div className={styles['select-location']}>
@@ -20,7 +26,13 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             title={item?.facilityFullName}
             text={item?.facilityAddress}
             time={item?.firstAppointmentSlotDateTime}
-            handleClick={() => setSelectedLocation(item?.facilityCRMID || '')}
+            handleClick={() => {
+              setSelectedLocation(item?.facilityCRMID || '');
+              setLocationGUID(item?.facilityCRMID || '');
+              setFirstAppointmentDate(item?.firstAppointmentSlotDateTime || '');
+              setLat(item?.latitude || '');
+              setLon(item?.longitude || '');
+            }}
           />
         ))}
       {!props.locations.length && props.locations.length === 0 && (

@@ -57,9 +57,8 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const { selectedLocation, setSelectedTypeOfAppointment } = useContext(
-    ConsultantFinderContext
-  );
+  const { selectedLocation, setSelectedTypeOfAppointment, setConsultantGUID } =
+    useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   console.log('step location', props.fields);
   const router = useRouter();
@@ -106,7 +105,8 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log('locations results', res);
         seLoading(false);
         setError(false);
-        setLocations(res.data.availability);
+        setLocations(res?.data?.availability || []);
+        setConsultantGUID(res?.data?.CRMID || '');
       })
       .catch((error) => {
         setError(true);
@@ -149,7 +149,7 @@ export const Default = (props: StepProps): JSX.Element => {
             {!loading && error && (
               <div>There was an error, please try again</div>
             )}
-            {props?.fields?.CantFindPhoneNumber?.value && (
+            {props?.fields?.CantFindPhoneNumber?.value && !loading && (
               <CantFind
                 title={
                   <Text tag="p" variation="body-medium-large">
@@ -189,7 +189,10 @@ export const Default = (props: StepProps): JSX.Element => {
                     disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}`
+                        `${
+                          props?.fields?.NextLinks?.value?.href ||
+                          '/Finder/Step-Slot-Select'
+                        }?slug=${slug}&gmcNumber=${gmcNumber}`
                       )
                     }
                   >

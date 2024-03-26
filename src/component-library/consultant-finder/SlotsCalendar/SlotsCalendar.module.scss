@@ -1,0 +1,75 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.slots {
+  background-color: $teal-5;
+  padding: $spacing-6 $spacing-14;
+  height: 100vh;
+  color: $navy-blue-100;
+
+  .header {
+    display: flex;
+  }
+
+  .header-container,
+  .week-header,
+  .weekdays {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .header-container {
+    margin: $spacing-6 0 $spacing-5 0;
+  }
+
+  .weekdays {
+    margin: 0 px-to-rem(24);
+  }
+
+  .weekdays-item,
+  .week-header-item {
+    text-align: center;
+    width: 14.285714285714285714285714285714%;
+  }
+
+  .arrow {
+    button {
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      outline: none;
+      background-color: $teal-5;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      text-align: center;
+    }
+  }
+
+  .time {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      outline: none;
+      background-color: $white;
+      border: 1px solid $navy-blue-30;
+      border-radius: px-to-rem(31);
+      padding: $spacing-2 $spacing-4;
+      margin-bottom: $spacing-2;
+    }
+  }
+
+  .day {
+    color: $navy-blue-70;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
