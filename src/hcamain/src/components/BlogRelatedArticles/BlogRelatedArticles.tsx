@@ -1,15 +1,10 @@
 import React from 'react';
 import {
-  Field,
-  LinkField,
-  ImageField,
-  Item,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
   Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Params from 'src/types/params';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -17,69 +12,10 @@ import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
-import {
-  Autocomplete,
-  BlogResponse,
-  BlogSearchProps,
-} from '../BlogSearch/BlogSearch.types';
-
-type CTAIconFields = {
-  svgMarkup?: Field<string>;
-};
-
-type SortOptionsFields = {
-  displayName?: { value?: string };
-  filter?: { value?: string };
-  filterString?: { value?: string };
-  filterValueGuid?: { jsonValue?: Item };
-};
-
-type BlogPageFields = {
-  abstractTitle?: Field<string>;
-  abstractText?: Field<string>;
-  abstractImage?: { jsonValue: ImageField };
-  date?: { jsonValue: Field<string> };
-  articleType?: { targetItem?: ArticleTypeFields };
-  url?: { path: string };
-};
-
-type ArticleTypeFields = {
-  id?: string;
-  title?: { value?: string };
-};
-
-interface Fields {
-  data?: {
-    item?: {
-      heading?: { jsonValue?: Field<string> };
-      title?: { jsonValue?: Field<string> };
-      text?: { jsonValue?: Field<string> };
-      cTAIcon?: {
-        Icon?: CTAIconFields;
-      };
-      cTALink?: { jsonValue?: LinkField };
-      articles?: {
-        ArticlesList?: BlogPageFields[];
-      };
-      searchBy?: {
-        SearchByList?: SortOptionsFields[];
-      };
-      filterOptions?: {
-        FilterByList?: SortOptionsFields[];
-      };
-      numberOfCards?: { jsonValue?: Field<string> };
-      blogUrl?: { jsonValue?: LinkField };
-    };
-    contextItem?: {
-      categoryId?: { jsonValue?: Field<string> };
-    };
-  };
-}
-
-type BlogRelatedArticlesProps = {
-  params: Params;
-  fields: Fields;
-};
+import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
+import { BlogRelatedArticlesProps } from './BlogRelatedArticles.types';
+import Image from 'next/image';
+import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -92,28 +28,89 @@ const BlogRelatedArticlesDefaultComponent = (
 );
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
-  if (!props.fields) {
+  const { fallbackData, fields } = props;
+
+  const BASE_BLOG_URL =
+    props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
+
+  const queryString = 'serviceLineId';
+
+  const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+
+  const serviceLineId =
+    props.fields.data?.contextItem?.category?.category[0].id || '';
+
+  const { data } = useSearchForm<BlogResponse, Autocomplete>({
+    baseUrl: BASE_API_URL,
+    baselineParams: [
+      ['verticalKey', 'articles'],
+      [queryString, serviceLineId],
+    ],
+    fallbackData: fallbackData,
+  });
+
+  if (!fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
-  const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
-  const BASE_BLOG_URL =
-    props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
-  const querystring =
-    props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring;
+  let cardsList;
 
-  const {
-    data,
-    error,
-    formHandlers,
-    searchParams,
-    autocompleteData,
-    autocompleteError,
-  } = useSearchForm<BlogResponse, Autocomplete>({
-    baseUrl: BASE_API_URL,
-    baselineParams,
-    fallbackData: fallbackData,
-  });
+  if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
+    cardsList = props.fields.data.item.articles.ArticlesList.map(
+      (card, index) => (
+        <CardBlog key={index}>
+          <JssImage field={card.abstractImage?.jsonValue} />
+          <JssDate field={card.date?.jsonValue} />
+          {card.abstractTitle && (
+            <Text tag="h3" variation="heading-2">
+              <a href={card.url?.path}>
+                <JssText field={card.abstractTitle} />
+              </a>
+            </Text>
+          )}
+          <Text tag="span" variation="body-large">
+            <JssRichText field={card.abstractText} />
+          </Text>
+          {!!card.articleType && (
+            <Tags>
+              <a
+                href={`${BASE_BLOG_URL}?${queryString}=${card.articleType?.targetItem?.id}`}
+              >
+                <JssText field={card.articleType?.targetItem?.title} />
+              </a>
+            </Tags>
+          )}
+        </CardBlog>
+      )
+    );
+  } else if (data?.response.results) {
+    cardsList = data.response.results.map((card, index) => (
+      <CardBlog key={index}>
+        <Image
+          src={card.data.imageUrl}
+          alt={card.data.name}
+          width="643"
+          height="605"
+        />
+        <time>{formatDate(new Date(card.data.date))}</time>
+        {card.data.title && (
+          <Text tag="h3" variation="heading-2">
+            <a href={card.data.url}>{card.data.title}</a>
+          </Text>
+        )}
+        <Text tag="span" variation="body-large">
+          {card.data.description}
+        </Text>
+        {!!card.data.typeName && (
+          <Tags>
+            <a href={`${BASE_BLOG_URL}?${queryString}=${card.data.typeId}`}>
+              {card.data.typeName}
+            </a>
+          </Tags>
+        )}
+      </CardBlog>
+    ));
+  }
 
   return (
     <CarouselCards
@@ -145,33 +142,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'A-HCA-White'}
     >
-      {props.fields?.data?.item?.articles?.ArticlesList?.map((card, index) => {
-        return (
-          <CardBlog key={index}>
-            <JssImage field={card.abstractImage?.jsonValue} />
-            <JssDate field={card.date?.jsonValue} />
-            {card.abstractTitle && (
-              <Text tag="h3" variation="heading-2">
-                <a href={card.url?.path}>
-                  <JssText field={card.abstractTitle} />
-                </a>
-              </Text>
-            )}
-            <Text tag="span" variation="body-large">
-              <JssRichText field={card.abstractText} />
-            </Text>
-            {!!card.articleType && (
-              <Tags>
-                <a
-                  href={`${BASE_BLOG_URL}${querystring}${card.articleType?.targetItem?.id}`}
-                >
-                  <JssText field={card.articleType?.targetItem?.title} />
-                </a>
-              </Tags>
-            )}
-          </CardBlog>
-        );
-      })}
+      {cardsList}
     </CarouselCards>
   );
 };
