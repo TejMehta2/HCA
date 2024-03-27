@@ -3,6 +3,10 @@
 
 .inner {
   position: relative;
+  height: px-to-rem(716);
+  @include media(screen-l) {
+    height: px-to-rem(608);
+  }
 }
 
 .children {
