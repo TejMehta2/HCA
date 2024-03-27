@@ -39,7 +39,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   const serviceLineId =
     props.fields.data?.contextItem?.category?.category[0].id || '';
-
+  console.log(props);
   const { data } = useSearchForm<BlogResponse, Autocomplete>({
     baseUrl: BASE_API_URL,
     baselineParams: [
