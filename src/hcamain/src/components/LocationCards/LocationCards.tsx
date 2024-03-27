@@ -160,6 +160,34 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
 
   const isApiData = true;
 
+  const locationsApi =
+    data?.response.results &&
+    data?.response.results.length > 0 &&
+    props?.fields?.data?.item?.cTAText?.jsonValue &&
+    props?.fields?.data?.item?.getDirectionsText?.jsonValue ? (
+      LocationCardApi(
+        data?.response.results,
+        props?.fields?.data?.item?.cTAText?.jsonValue,
+        props?.fields?.data?.item?.getDirectionsText?.jsonValue
+      )
+    ) : (
+      <></>
+    );
+
+  const locationDefault =
+    props.fields?.data?.item?.locations?.PagesList &&
+    props.fields?.data?.item?.locations?.PagesList.length > 0 &&
+    props?.fields?.data?.item?.cTAText?.jsonValue &&
+    props?.fields?.data?.item?.getDirectionsText?.jsonValue ? (
+      LocationCardDefault(
+        props.fields?.data?.item?.locations?.PagesList,
+        props?.fields?.data?.item?.cTAText?.jsonValue,
+        props?.fields?.data?.item?.getDirectionsText?.jsonValue
+      )
+    ) : (
+      <></>
+    );
+
   return (
     <CarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
