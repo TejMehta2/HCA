@@ -7,7 +7,7 @@ import {
   Image as JssImage,
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
+//import { ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -19,9 +19,10 @@ import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
 import { BlogRelatedArticlesProps } from './BlogRelatedArticles.types';
 import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-import getBaselineParams from 'lib/getBaselineParams';
+//import getBaselineParams from 'lib/getBaselineParams';
 
 const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+const QUERY_STRING = 'serviceLineId';
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -37,11 +38,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { fields } = props;
 
   const fallbackData = useComponentProps<BlogResponse>(props.rendering.uid);
-
+  console.log(props);
+  console.log(fallbackData);
   const BASE_BLOG_URL =
     props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
-
-  const queryString = 'serviceLineId';
 
   const serviceLineId =
     props.fields.data?.contextItem?.category?.category[0].id || '';
@@ -50,7 +50,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     baseUrl: BASE_API_URL,
     baselineParams: [
       ['verticalKey', 'articles'],
-      [queryString, serviceLineId],
+      [QUERY_STRING, serviceLineId],
     ],
     fallbackData: fallbackData,
   });
@@ -80,7 +80,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           {!!card.articleType && (
             <Tags>
               <a
-                href={`${BASE_BLOG_URL}?${queryString}=${card.articleType?.targetItem?.id}`}
+                href={`${BASE_BLOG_URL}?${QUERY_STRING}=${card.articleType?.targetItem?.id}`}
               >
                 <JssText field={card.articleType?.targetItem?.title} />
               </a>
@@ -109,7 +109,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         </Text>
         {!!card.data.typeName && (
           <Tags>
-            <a href={`${BASE_BLOG_URL}?${queryString}=${card.data.typeId}`}>
+            <a href={`${BASE_BLOG_URL}?${QUERY_STRING}=${card.data.typeId}`}>
               {card.data.typeName}
             </a>
           </Tags>
@@ -155,19 +155,23 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
-  rendering: ApiSearchProps
+  rendering: BlogRelatedArticlesProps
 ) => {
-  const { baselineParams } = getBaselineParams(rendering);
-  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const serviceLineId =
+    rendering.fields?.data?.contextItem?.category?.category[0].id || '';
+
+  const params = [
+    ['verticalKey', 'articles'],
+    [QUERY_STRING, serviceLineId],
+  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_API_URL); // compose API url
+  const url = new URL(query, BASE_API_URL + '/search'); // compose API url
 
   try {
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as ApiResponse;
-      return rendering;
+      return fallbackData;
     } else {
       throw response.statusText;
     }
