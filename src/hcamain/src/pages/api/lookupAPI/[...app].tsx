@@ -161,7 +161,7 @@ export default async function handler(
           "Value": "Spring bank holiday",
           "Order": 31,
           */
-          console.log('res', res);
+          //console.log('res', res);
           if (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             !(res as any).errorCode &&
