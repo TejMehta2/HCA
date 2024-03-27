@@ -1,15 +1,10 @@
 import React from 'react';
 import {
-  Field,
-  Item,
-  ImageField,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  LinkField,
   GetStaticComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
@@ -18,182 +13,16 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import getBaselineParams from 'lib/getBaselineParams';
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
-import { LocationCardApi } from './LocationCardApi';
-import { LocationCardDefault } from './LocationCardDefault';
-
+import {
+  LocationCardApi,
+  LocationCardDefault,
+} from './helpers/getLocationCards';
+import {
+  Autocomplete,
+  LocationCardsProps,
+  SearchResponse,
+} from './LocationCardsTypes';
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
-
-export interface SearchResponse {
-  meta: Meta;
-  response: Response;
-}
-
-export interface Meta {
-  uuid: string;
-  errors: unknown[];
-}
-
-export interface Response {
-  businessId: number;
-  queryId: string;
-  resultsCount: number;
-  results: Result[];
-  appliedQueryFilters: unknown[];
-  facets: unknown[];
-  source: string;
-  searchIntents: unknown[];
-  locationBias: null;
-}
-
-export interface Result {
-  data: Data;
-  highlightedFields: HighlightedFields;
-}
-
-export interface Data {
-  id: string;
-  type: string;
-  title: string;
-  description: string;
-  name: string;
-  imageUrl: null;
-  url: string;
-  uid: number;
-}
-
-export interface HighlightedFields {
-  name: null;
-  description: null;
-  title: null;
-}
-
-export interface Autocomplete {
-  meta: Meta;
-  response: AutocompleteResponse;
-}
-
-export interface AutocompleteResponseMeta {
-  uuid: string;
-  errors: unknown[];
-}
-
-export interface AutocompleteResponse {
-  input: AutocompleteResponseInput;
-  results: AutocompleteResponseResult[];
-}
-
-export interface AutocompleteResponseInput {
-  value: string;
-  queryIntents: unknown[];
-}
-
-export interface AutocompleteResponseResult {
-  value: string;
-  matchedSubstrings: unknown[];
-  queryIntents: unknown[];
-  verticalKeys: unknown[];
-}
-
-export type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
-};
-
-export interface FilterOption {
-  displayName: string;
-  fields: {
-    DisplayName?: Field<string>;
-    Filter?: Field<string>; // e.g. { value: 'locationId' }
-    FilterValueGuid?: {
-      id: string; //  e.g. { id: 'Birmingham' }
-    };
-    FilterValueString: Field<string>; // e.g. { value: 'Birmingham' }
-  };
-}
-
-export interface FilterCategory {
-  displayName: string;
-  fields: {
-    Header: Field<string>;
-    Filters: FilterOption[];
-  };
-}
-
-type CTAIconFields = {
-  svgMarkup?: Field<string>;
-};
-
-type FilterOptionFields = {
-  displayName?: { value?: string };
-  filter?: { value?: string };
-  filterValueString?: { value?: string };
-  filterValueGuid?: { jsonValue?: Item };
-};
-
-type LocationsFields = {
-  title?: { value?: string };
-  image?: { jsonValue?: ImageField };
-  city?: { value?: string };
-  street?: { value?: string };
-  postCode?: { value?: string };
-  getDirections?: { value?: string };
-  url: { path?: string };
-};
-
-interface Fields {
-  data?: {
-    item?: {
-      heading?: { jsonValue?: Field<string> };
-      title?: { jsonValue?: Field<string> };
-      text?: { jsonValue?: Field<string> };
-      cTAIcon?: {
-        Icon?: CTAIconFields;
-      };
-      cTALink?: { jsonValue?: LinkField };
-      locations?: {
-        PagesList?: LocationsFields[];
-      };
-      filterOptions?: {
-        filterOptionsList?: FilterOptionFields[];
-      };
-      cTAText?: { jsonValue?: Field<string> };
-      getDirectionsText?: { jsonValue?: Field<string> };
-      numberOfCards?: { jsonValue?: Field<string> };
-    };
-    contextItem?: {
-      treatmentId?: string;
-      serviceLineId?: string;
-      scanId?: string;
-      conditionId?: string;
-    };
-  };
-  Heading?: Field<string>;
-  Title?: Field<string>;
-  Text?: Field<string>;
-  SearchPlaceholder?: Field<string>;
-  FilterOptionsIcon?: HCAIconFields;
-  FilterOptionsText?: Field<string>;
-  FilterOptions?: FilterCategory[];
-  SortOptionsIcon?: HCAIconFields;
-  SortOptionsText?: Field<string>;
-  SortOptions?: FilterOption[];
-  SearchResultsText?: Field<string>;
-  ResultsPerPage?: Field<number>;
-  SearchBy?: FilterOption[];
-  FilterBy?: FilterOption[];
-
-  GridViewIcon?: HCAIconFields;
-  GridViewText?: Field<string>;
-  MapViewIcon?: HCAIconFields;
-  MapViewText?: Field<string>;
-}
-
-type LocationCardsProps = {
-  params?: Params;
-  fields?: Fields;
-  fallbackData?: SearchResponse;
-};
 
 const LocationCardsDefaultComponent = (
   props: LocationCardsProps
@@ -208,11 +37,12 @@ const LocationCardsDefaultComponent = (
 export const Grid = (props: LocationCardsProps): JSX.Element => {
   const { fallbackData, fields } = props;
 
+  console.log(props);
+
   // Set up default baseline parameters from CMS
   const { baselineParams } = getBaselineParams(props);
 
   // Hooks
-
   const { data, error, autocompleteError } = useSearchForm<
     SearchResponse,
     Autocomplete
@@ -226,10 +56,42 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
+  if (!fields || error || autocompleteError) {
+    return <LocationCardsDefaultComponent {...props} />;
+  }
+
   // const isApiData = props.fields?.data?.item?.locations?.PagesList &&
   // props.fields?.data?.item?.locations?.PagesList.length
 
-  const isApiData = false;
+  const isApiData = true;
+
+  const locationsApi =
+    data?.response.results &&
+    data?.response.results.length > 0 &&
+    props?.fields?.data?.item?.cTAText?.jsonValue &&
+    props?.fields?.data?.item?.getDirectionsText?.jsonValue ? (
+      LocationCardApi(
+        data?.response.results,
+        props?.fields?.data?.item?.cTAText?.jsonValue,
+        props?.fields?.data?.item?.getDirectionsText?.jsonValue
+      )
+    ) : (
+      <></>
+    );
+
+  const locationDefault =
+    props.fields?.data?.item?.locations?.PagesList &&
+    props.fields?.data?.item?.locations?.PagesList.length > 0 &&
+    props?.fields?.data?.item?.cTAText?.jsonValue &&
+    props?.fields?.data?.item?.getDirectionsText?.jsonValue ? (
+      LocationCardDefault(
+        props.fields?.data?.item?.locations?.PagesList,
+        props?.fields?.data?.item?.cTAText?.jsonValue,
+        props?.fields?.data?.item?.getDirectionsText?.jsonValue
+      )
+    ) : (
+      <></>
+    );
 
   return (
     <CardBlock
@@ -267,19 +129,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {isApiData
-        ? data?.response.results &&
-          data?.response.results.length &&
-          LocationCardApi(
-            data?.response.results,
-            props?.fields?.data?.item?.cTAText?.jsonValue,
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          )
-        : LocationCardDefault(
-            props.fields?.data?.item?.locations?.PagesList,
-            props?.fields?.data?.item?.cTAText?.jsonValue,
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          )}
+      {isApiData ? locationsApi : locationDefault}
     </CardBlock>
   );
 };
@@ -301,14 +151,14 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     fallbackData: fallbackData,
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields || !data || error || autocompleteError) {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
   // const isApiData = props.fields?.data?.item?.locations?.PagesList &&
   // props.fields?.data?.item?.locations?.PagesList.length
 
-  const isApiData = false;
+  const isApiData = true;
 
   return (
     <CarouselCards
@@ -339,18 +189,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {isApiData
-        ? data?.response.results &&
-          LocationCardApi(
-            data?.response.results,
-            props?.fields?.data?.item?.cTAText?.jsonValue,
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          )
-        : LocationCardDefault(
-            props.fields?.data?.item?.locations?.PagesList,
-            props?.fields?.data?.item?.cTAText?.jsonValue,
-            props?.fields?.data?.item?.getDirectionsText?.jsonValue
-          )}
+      {isApiData ? locationsApi : locationDefault}
     </CarouselCards>
   );
 };

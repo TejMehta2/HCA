@@ -1,4 +1,9 @@
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  ImageField,
+  LinkField,
+  Item,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
 export interface SearchResponse {
@@ -37,6 +42,7 @@ export interface Data {
   imageUrl: null;
   url: string;
   uid: number;
+  directions: string;
 }
 
 export interface HighlightedFields {
@@ -98,7 +104,54 @@ export interface FilterCategory {
   };
 }
 
-export interface Fields {
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
+
+type FilterOptionFields = {
+  displayName?: { value?: string };
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { jsonValue?: Item };
+};
+
+export type LocationsFields = {
+  title?: { value?: string };
+  image?: { value?: ImageField };
+  city?: { value?: string };
+  street?: { value?: string };
+  postCode?: { value?: string };
+  getDirections?: { value?: string };
+  url: { path?: string };
+};
+
+interface Fields {
+  data?: {
+    item?: {
+      heading?: { jsonValue?: Field<string> };
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
+      locations?: {
+        PagesList?: LocationsFields[];
+      };
+      filterOptions?: {
+        filterOptionsList?: FilterOptionFields[];
+      };
+      cTAText?: { jsonValue?: Field<string> };
+      getDirectionsText?: { jsonValue?: Field<string> };
+      numberOfCards?: { jsonValue?: Field<string> };
+    };
+    contextItem?: {
+      treatmentId?: string;
+      serviceLineId?: string;
+      scanId?: string;
+      conditionId?: string;
+    };
+  };
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;
@@ -120,7 +173,7 @@ export interface Fields {
   MapViewText?: Field<string>;
 }
 
-export type ApiLocationCardsProps = {
+export type LocationCardsProps = {
   params?: Params;
   fields?: Fields;
   fallbackData?: SearchResponse;
