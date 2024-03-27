@@ -1,10 +1,13 @@
 import React from 'react';
 import {
+  GetStaticComponentProps,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
   Image as JssImage,
+  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -16,6 +19,9 @@ import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
 import { BlogRelatedArticlesProps } from './BlogRelatedArticles.types';
 import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
+import getBaselineParams from 'lib/getBaselineParams';
+
+const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -28,14 +34,14 @@ const BlogRelatedArticlesDefaultComponent = (
 );
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
-  const { fallbackData, fields } = props;
+  const { fields } = props;
+
+  const fallbackData = useComponentProps<BlogResponse>(props.rendering.uid);
 
   const BASE_BLOG_URL =
     props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
 
   const queryString = 'serviceLineId';
-
-  const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
   const serviceLineId =
     props.fields.data?.contextItem?.category?.category[0].id || '';
@@ -83,7 +89,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         </CardBlog>
       )
     );
-  } else if (data?.response.results) {
+  } else if (data?.response?.results) {
     cardsList = data.response.results.map((card, index) => (
       <CardBlog key={index}>
         <Image
@@ -145,4 +151,28 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       {cardsList}
     </CarouselCards>
   );
+};
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering: ApiSearchProps
+) => {
+  const { baselineParams } = getBaselineParams(rendering);
+  const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const query = `?${params.join('&')}`;
+  const url = new URL(query, BASE_API_URL); // compose API url
+
+  try {
+    const response = await fetch(url.href);
+    if (response.ok) {
+      const fallbackData = await response.json();
+      rendering.fallbackData = fallbackData as ApiResponse;
+      return rendering;
+    } else {
+      throw response.statusText;
+    }
+  } catch (error) {
+    console.error(error);
+    return rendering;
+  }
 };

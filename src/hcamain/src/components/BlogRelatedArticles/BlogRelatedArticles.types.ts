@@ -64,4 +64,5 @@ export type BlogRelatedArticlesProps = {
   params: Params;
   fields: Fields;
   fallbackData: BlogResponse;
+  rendering: { uid: string };
 };
