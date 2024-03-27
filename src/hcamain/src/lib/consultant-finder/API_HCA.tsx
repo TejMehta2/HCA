@@ -40,12 +40,12 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
         //console.log("CF all slugs:", slugs);
       } else {
         // couldn't get the consultant site map
-        console.error(
+        console.warn(
           `Could not load consultant slugs list for pre-render from ${consultantSlugsURL}`
         );
       }
     } catch (e) {
-      console.error(
+      console.warn(
         `Could not load consultant slugs list for pre-render from ${consultantSlugsURL} failed with exception ${e}`
       );
     }
@@ -82,19 +82,19 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
           }
         );
         if (ldbSlugs.length == 0) {
-          console.error(
+          console.warn(
             `Warning LDB consultant slugs list for is empty from call getActiveLiveDiaryConsultantSlugs`
           );
         }
         //console.log("CF LDB slugs:", ldbSlugs);
       } else {
         // couldn't get the ldb consultant slugs
-        console.error(
+        console.warn(
           `Could not load LDB consultant slugs list for pre-render from ${ldbConsultantSlugsURL}`
         );
       }
     } catch (e) {
-      console.error(
+      console.warn(
         `Could not load LDB consultant slugs list for pre-render from ${ldbConsultantSlugsURL} failed with exception ${e}`
       );
     }
@@ -125,8 +125,8 @@ export async function getHolidays(): Promise<string[]> {
   let holidays;
   const HCAAPIConfig = await getHCAConfig();
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
-  console.log('holiday url', holidayURL);
-  console.log('config', HCAAPIConfig);
+  //console.log('holiday url', holidayURL);
+  //console.log('config', HCAAPIConfig);
   // using current/legacy live diary consultants list for now
   // replace once we have a backend that can query for a list of live diary consultant slugs
   if (holidayURL && holidayURL.length > 0) {
@@ -140,16 +140,16 @@ export async function getHolidays(): Promise<string[]> {
       if (res.ok) {
         holidays = await res.json();
         if (holidays.length == 0) {
-          console.error(`Warning Holidays empty on getHolidays() call`);
+          console.warn(`Warning Holidays empty on getHolidays() call`);
         }
       } else {
-        // couldn't get the ldb consultant slugs
-        console.error(
+        // couldn't get the holidays
+        console.warn(
           `Could not load holidays list for pre-render from ${holidayURL}`
         );
       }
     } catch (e) {
-      console.error(
+      console.warn(
         `Could not load holidays for pre-render from ${holidayURL} failed with exception ${e}`
       );
     }
