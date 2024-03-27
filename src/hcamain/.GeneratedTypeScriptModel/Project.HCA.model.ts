@@ -346,6 +346,16 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
             */
             API_Insurance_Limit?: Field<number>;
+
+            /**
+            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
+            */
+            API_Insurance_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
+            */
+            API_Insurance_NoResultsMsg?: Field<string>;
         }
 
     }
@@ -367,6 +377,20 @@ export namespace ConsultantFinder.Apicalls {
             */
             aPI_Insurance_Limit?: {
                 jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
+            */
+            aPI_Insurance_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
+            */
+            aPI_Insurance_NoResultsMsg?: {
+                jsonValue: Field<string>
             };
 
 
@@ -4277,6 +4301,16 @@ Business.Base.specialtiesSelector &  {
             GetDirections?: Field<string>;
 
             /**
+            * Represents the Latitude field (c4f65bc2-c900-456b-9636-fd83d11b3179).
+            */
+            Latitude?: Field<string>;
+
+            /**
+            * Represents the Longitude field (9ec4f5bd-c392-40ab-babd-34135bc9a1fa).
+            */
+            Longitude?: Field<string>;
+
+            /**
             * Represents the PostCode field (40311572-fcbe-45c3-af0f-58719ec01a3b).
             */
             PostCode?: Field<string>;
@@ -4336,6 +4370,20 @@ Business.Base.specialtiesSelectorJson &  {
             * Represents the GetDirections field (157522ca-ef62-4651-b3b2-4eb374879618).
             */
             getDirections?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Latitude field (c4f65bc2-c900-456b-9636-fd83d11b3179).
+            */
+            latitude?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Longitude field (9ec4f5bd-c392-40ab-babd-34135bc9a1fa).
+            */
+            longitude?: {
                 jsonValue: Field<string>
             };
 
@@ -4858,6 +4906,24 @@ export namespace Navigation {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Footer Folder
     */
     export type FooterFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation.FormApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Form Api/Form Api Settings Container
+    */
+    export type FormApiSettingsContainer =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Form Api/Form Api Settings Container
+    */
+    export type FormApiSettingsContainerJson =  {
         
 
     }
@@ -7766,6 +7832,348 @@ export namespace ConsultantFinder.Forms.LiveBookingForm {
 
     }
 }
+export namespace Foundation.FormApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings
+    */
+    export type FormApiSettings =  {
+        fields?: { 
+            /**
+            * Represents the Bcc field (d4a86b79-c215-4bbe-a63e-e9ed0a7aaf9c).
+            */
+            Bcc?: Field<string>;
+
+            /**
+            * Represents the Cc field (e4369b71-77b9-45cb-afed-6f1b8908a923).
+            */
+            Cc?: Field<string>;
+
+            /**
+            * Represents the Client pre-authorisation max requests in window field (d595e21e-2ca5-4fa6-a258-67d4eb42318e).
+            */
+            "Client pre-authorisation max requests in window"?: Field<number>;
+
+            /**
+            * Represents the Client pre-authorisation token window seconds field (4f712c9f-9e74-4666-87a4-b30d5ba3c4fb).
+            */
+            "Client pre-authorisation token window seconds"?: Field<number>;
+
+            /**
+            * Represents the Enable response data log field (19458d85-f925-4e4e-8b07-4b9bb1af42fa).
+            */
+            "Enable response data log"?: Field<boolean>;
+
+            /**
+            * Represents the Enable trace log field (a8e3ee36-f8cf-4f9c-b814-e39b496bf246).
+            */
+            "Enable trace log"?: Field<boolean>;
+
+            /**
+            * Represents the Enforce client pre-authorisation token field (112c008a-d620-4790-8a72-5889378d3047).
+            */
+            "Enforce client pre-authorisation token"?: Field<boolean>;
+
+            /**
+            * Represents the Enforce service max post request window field (55e86ab9-24d2-43c9-a41e-553e3020ba32).
+            */
+            "Enforce service max post request window"?: Field<boolean>;
+
+            /**
+            * Represents the From field (fc6b5ad4-190c-41a2-8afb-1190b04cfb3a).
+            */
+            From?: Field<string>;
+
+            /**
+            * Represents the Happy path return html field (0f5f4a07-9283-433b-bb2e-510bb2770d50).
+            */
+            "Happy path return html"?: Field<string>;
+
+            /**
+            * Represents the Log to forms database field (82327bb6-820b-4c39-8b5a-aa36a1ef0b29).
+            */
+            "Log to forms database"?: Field<boolean>;
+
+            /**
+            * Represents the Log to forms database asynchronously field (7eca4a62-13b8-4e09-8169-da2985bfbd1c).
+            */
+            "Log to forms database asynchronously"?: Field<boolean>;
+
+            /**
+            * Represents the Message RichText field (6f1ecac1-3e3a-4de3-9ed7-3bf481bba769).
+            */
+            "Message RichText"?: Field<string>;
+
+            /**
+            * Represents the Message Text field (61f29268-6d8a-4a7f-91a3-a0ee46e10df9).
+            */
+            "Message Text"?: Field<string>;
+
+            /**
+            * Represents the Only accept posts with an existing ASP Session field (9914d604-b368-488c-8d3f-35908b400a4f).
+            */
+            "Only accept posts with an existing ASP Session"?: Field<boolean>;
+
+            /**
+            * Represents the Private Recaptcha key field (285b683c-ab9b-4df2-921f-33164dab428e).
+            */
+            "Private Recaptcha key"?: Field<string>;
+
+            /**
+            * Represents the Public Recaptch key field (684884f1-88fb-435a-9bcb-55c35bcec2c9).
+            */
+            "Public Recaptch key"?: Field<string>;
+
+            /**
+            * Represents the Recaptcha validation endpoint field (49416446-45c3-4c27-a367-e515e3def779).
+            */
+            "Recaptcha validation endpoint"?: Field<string>;
+
+            /**
+            * Represents the Return HTML field (402d2d6a-bb61-48ac-ad46-db27d8c3326b).
+            */
+            "Return HTML"?: Field<boolean>;
+
+            /**
+            * Represents the Sad path return html field (7bfadbd8-ae2c-4d50-b524-34824635737b).
+            */
+            "Sad path return html"?: Field<string>;
+
+            /**
+            * Represents the Send email field (6746f5ff-5d17-4612-9b80-a8697c1b3ee4).
+            */
+            "Send email"?: Field<boolean>;
+
+            /**
+            * Represents the Send email asynchronously field (75ed9843-9f4a-4b60-88ba-22e72fa9947c).
+            */
+            "Send email asynchronously"?: Field<boolean>;
+
+            /**
+            * Represents the Service max post requests in window field (87ca975f-c8d8-493a-80db-ac9586c4a236).
+            */
+            "Service max post requests in window"?: Field<number>;
+
+            /**
+            * Represents the Service max post requests window seconds field (43537a1c-2c5d-45b2-9142-80f22f783b43).
+            */
+            "Service max post requests window seconds"?: Field<number>;
+
+            /**
+            * Represents the Subject field (9e1dc96d-fdda-4d5c-af33-62646aeb4892).
+            */
+            Subject?: Field<string>;
+
+            /**
+            * Represents the To field (fc210a67-7ca8-4222-9941-bd4c8f146588).
+            */
+            To?: Field<string>;
+
+            /**
+            * Represents the Validate Recaptcha field (2483cc9f-13da-49cd-a96b-a7de847febaf).
+            */
+            "Validate Recaptcha"?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings
+    */
+    export type FormApiSettingsJson =  {
+        
+            /**
+            * Represents the Bcc field (d4a86b79-c215-4bbe-a63e-e9ed0a7aaf9c).
+            */
+            bcc?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Cc field (e4369b71-77b9-45cb-afed-6f1b8908a923).
+            */
+            cc?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Client pre-authorisation max requests in window field (d595e21e-2ca5-4fa6-a258-67d4eb42318e).
+            */
+            "Client pre-authorisation max requests in window"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Client pre-authorisation token window seconds field (4f712c9f-9e74-4666-87a4-b30d5ba3c4fb).
+            */
+            "Client pre-authorisation token window seconds"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Enable response data log field (19458d85-f925-4e4e-8b07-4b9bb1af42fa).
+            */
+            "Enable response data log"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enable trace log field (a8e3ee36-f8cf-4f9c-b814-e39b496bf246).
+            */
+            "Enable trace log"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enforce client pre-authorisation token field (112c008a-d620-4790-8a72-5889378d3047).
+            */
+            "Enforce client pre-authorisation token"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Enforce service max post request window field (55e86ab9-24d2-43c9-a41e-553e3020ba32).
+            */
+            "Enforce service max post request window"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the From field (fc6b5ad4-190c-41a2-8afb-1190b04cfb3a).
+            */
+            from?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Happy path return html field (0f5f4a07-9283-433b-bb2e-510bb2770d50).
+            */
+            "Happy path return html"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Log to forms database field (82327bb6-820b-4c39-8b5a-aa36a1ef0b29).
+            */
+            "Log to forms database"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Log to forms database asynchronously field (7eca4a62-13b8-4e09-8169-da2985bfbd1c).
+            */
+            "Log to forms database asynchronously"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Message RichText field (6f1ecac1-3e3a-4de3-9ed7-3bf481bba769).
+            */
+            "Message RichText"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Message Text field (61f29268-6d8a-4a7f-91a3-a0ee46e10df9).
+            */
+            "Message Text"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Only accept posts with an existing ASP Session field (9914d604-b368-488c-8d3f-35908b400a4f).
+            */
+            "Only accept posts with an existing ASP Session"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Private Recaptcha key field (285b683c-ab9b-4df2-921f-33164dab428e).
+            */
+            "Private Recaptcha key"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Public Recaptch key field (684884f1-88fb-435a-9bcb-55c35bcec2c9).
+            */
+            "Public Recaptch key"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Recaptcha validation endpoint field (49416446-45c3-4c27-a367-e515e3def779).
+            */
+            "Recaptcha validation endpoint"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Return HTML field (402d2d6a-bb61-48ac-ad46-db27d8c3326b).
+            */
+            "Return HTML"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Sad path return html field (7bfadbd8-ae2c-4d50-b524-34824635737b).
+            */
+            "Sad path return html"?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Send email field (6746f5ff-5d17-4612-9b80-a8697c1b3ee4).
+            */
+            "Send email"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Send email asynchronously field (75ed9843-9f4a-4b60-88ba-22e72fa9947c).
+            */
+            "Send email asynchronously"?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the Service max post requests in window field (87ca975f-c8d8-493a-80db-ac9586c4a236).
+            */
+            "Service max post requests in window"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Service max post requests window seconds field (43537a1c-2c5d-45b2-9142-80f22f783b43).
+            */
+            "Service max post requests window seconds"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Subject field (9e1dc96d-fdda-4d5c-af33-62646aeb4892).
+            */
+            subject?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the To field (fc210a67-7ca8-4222-9941-bd4c8f146588).
+            */
+            to?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Validate Recaptcha field (2483cc9f-13da-49cd-a96b-a7de847febaf).
+            */
+            "Validate Recaptcha"?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+}
 export namespace ConsultantFinder.Forms {
 
     /**
@@ -7896,24 +8304,6 @@ export namespace ConsultantFinder.Forms {
 
     }
 }
-export namespace ConsultantFinder.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviews =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviewsJson =  {
-        
-
-    }
-}
 export namespace ConsultantFinder.Frames {
 
     /**
@@ -8027,6 +8417,26 @@ export namespace ConsultantFinder.Frames {
 
 
     }
+}
+export namespace ConsultantFinder.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviews =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviewsJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Frames {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews Folder
@@ -9015,7 +9425,175 @@ export namespace ConsultantFinder.Forms.LiveBookingForm {
 export namespace Foundation.LocationApi {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainer =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
+    */
+    export type LocationApiSettingsContainerJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards
+    */
+    export type LocationCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            CTAText?: Field<string>;
+
+            /**
+            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
+            */
+            FilterOptions?: Item[];
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            GetDirectionsText?: Field<string>;
+
+            /**
+            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
+            */
+            Locations?: Item[];
+
+            /**
+            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
+            */
+            SearchOptions?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards
+    */
+    export type LocationCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
+            */
+            filterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
+            */
+            getDirectionsText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
+            */
+            locations?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
+            */
+            searchOptions?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
+    */
+    export type LocationCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
+    */
+    export type LocationCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.LayoutParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
+    */
+    export type LocationCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.LayoutParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace Pages {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Pages/Location Page
+    */
+    export type LocationPage = Foundation.HcabasePage & 
+Business.Facility &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Location Page
+    */
+    export type LocationPageJson = Foundation.HcabasePageJson & 
+Business.FacilityJson &  {
+        
+
+    }
+}
+export namespace Foundation.LocationApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/LocationApiSettings
     */
     export type LocationApiSettings =  {
         fields?: { 
@@ -9143,7 +9721,7 @@ export namespace Foundation.LocationApi {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/LocationApiSettings
     */
     export type LocationApiSettingsJson =  {
         
@@ -9315,172 +9893,6 @@ export namespace Foundation.LocationApi {
                 jsonValue: Field<boolean>
             };
 
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
-    */
-    export type LocationApiSettingsContainer =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Location Api/Location Api Settings Container
-    */
-    export type LocationApiSettingsContainerJson =  {
-        
-
-    }
-}
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards
-    */
-    export type LocationCards = Foundation.Ctabase & 
-Foundation.ComponentBase &  {
-        fields?: { 
-            /**
-            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
-            */
-            CTAText?: Field<string>;
-
-            /**
-            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
-            */
-            FilterOptions?: Item[];
-
-            /**
-            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
-            */
-            GetDirectionsText?: Field<string>;
-
-            /**
-            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
-            */
-            Locations?: Item[];
-
-            /**
-            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
-            */
-            NumberOfCards?: Field<number>;
-
-            /**
-            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
-            */
-            SearchOptions?: Item[];
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards
-    */
-    export type LocationCardsJson = Foundation.CtabaseJson & 
-Foundation.ComponentBaseJson &  {
-        
-            /**
-            * Represents the CTA Text field (b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012).
-            */
-            cTAText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Filter Options field (11de4251-0ada-4f47-a75c-27a4a7b9a442).
-            */
-            filterOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Get Directions Text field (767b8154-6c79-451f-ab22-d91aec9fd93c).
-            */
-            getDirectionsText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Locations field (50f18c4e-7dd1-4672-91b5-74dc61a1dade).
-            */
-            locations?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Number Of Cards field (ec60c2d1-b6a4-4eae-a88d-ccb016b6b677).
-            */
-            numberOfCards?: {
-                jsonValue: Field<number>
-            };
-
-            /**
-            * Represents the Search Options field (105842ca-b66f-4f76-b9be-027f6df1a693).
-            */
-            searchOptions?: {
-                jsonValue: Item[]
-            };
-
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
-    */
-    export type LocationCardsFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Location Cards Folder
-    */
-    export type LocationCardsFolderJson =  {
-        
-
-    }
-}
-export namespace PageContent.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
-    */
-    export type LocationCardsParams = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.LayoutParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Location Cards Params
-    */
-    export type LocationCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.LayoutParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
-        
-
-    }
-}
-export namespace Pages {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Pages/Location Page
-    */
-    export type LocationPage = Foundation.HcabasePage & 
-Business.Facility &  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Location Page
-    */
-    export type LocationPageJson = Foundation.HcabasePageJson & 
-Business.FacilityJson &  {
-        
 
     }
 }
