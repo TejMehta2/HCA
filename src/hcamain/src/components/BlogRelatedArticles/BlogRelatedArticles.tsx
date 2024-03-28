@@ -22,7 +22,7 @@ import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getBaselineParams from 'lib/getBaselineParams';
 
 const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
-const QUERY_STRING = 'serviceLineId';
+const queryString = 'serviceLineId';
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -41,8 +41,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   const fallbackData = useComponentProps<BlogResponse>(props.rendering?.uid);
 
-  const BASE_BLOG_URL =
-    props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
+  const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
 
   const serviceLineId =
     props.fields?.data?.contextItem?.category?.category[0].id || '';
@@ -52,7 +51,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     baselineParams: [
       ...baselineParams,
       ['verticalKey', 'articles'],
-      [QUERY_STRING, serviceLineId],
+      [queryString, serviceLineId],
     ],
     fallbackData: fallbackData,
   });
@@ -82,7 +81,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           {!!card.articleType && (
             <Tags>
               <a
-                href={`${BASE_BLOG_URL}?${QUERY_STRING}=${card.articleType?.targetItem?.id}`}
+                href={`${baseBlogUrl}?${queryString}=${card.articleType?.targetItem?.id}`}
               >
                 <JssText field={card.articleType?.targetItem?.title} />
               </a>
@@ -111,7 +110,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         </Text>
         {!!card.data.typeName && (
           <Tags>
-            <a href={`${BASE_BLOG_URL}?${QUERY_STRING}=${card.data.typeId}`}>
+            <a href={`${baseBlogUrl}?${queryString}=${card.data.typeId}`}>
               {card.data.typeName}
             </a>
           </Tags>
@@ -166,7 +165,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const params = [
     ...baselineParams,
     ['verticalKey', 'articles'],
-    [QUERY_STRING, serviceLineId],
+    [queryString, serviceLineId],
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
   const url = new URL(query, BASE_API_URL + '/search'); // compose API url
