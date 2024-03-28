@@ -10,6 +10,9 @@ SharedFields:
 - ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
   Hint: Name
   Value: Blog Page Header
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Value: "{197B3FD5-42C2-4740-87A6-86B0D0AAF475}"
 Languages:
 - Language: en
   Versions:
@@ -28,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3be0e4cd-ef2c-46fe-a493-fdd153480a35"
+      Value: "5be646e6-7eb9-4a47-9148-aa4d01544d75"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240111T085043Z
+      Value: 20240325T154015Z
