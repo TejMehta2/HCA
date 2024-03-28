@@ -19,7 +19,7 @@ import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
 import { BlogRelatedArticlesProps } from './BlogRelatedArticles.types';
 import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-//import getBaselineParams from 'lib/getBaselineParams';
+import getBaselineParams from 'lib/getBaselineParams';
 
 const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 const QUERY_STRING = 'serviceLineId';
@@ -27,7 +27,7 @@ const QUERY_STRING = 'serviceLineId';
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">BlogRelatedArticles no datasource</span>
     </div>
@@ -37,18 +37,20 @@ const BlogRelatedArticlesDefaultComponent = (
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { fields } = props;
 
-  const fallbackData = useComponentProps<BlogResponse>(props.rendering.uid);
-  console.log(props);
-  console.log(fallbackData);
+  const { baselineParams } = getBaselineParams(props);
+
+  const fallbackData = useComponentProps<BlogResponse>(props.rendering?.uid);
+
   const BASE_BLOG_URL =
     props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
 
   const serviceLineId =
-    props.fields.data?.contextItem?.category?.category[0].id || '';
+    props.fields?.data?.contextItem?.category?.category[0].id || '';
 
   const { data } = useSearchForm<BlogResponse, Autocomplete>({
     baseUrl: BASE_API_URL,
     baselineParams: [
+      ...baselineParams,
       ['verticalKey', 'articles'],
       [QUERY_STRING, serviceLineId],
     ],
@@ -160,7 +162,9 @@ export const getStaticProps: GetStaticComponentProps = async (
   const serviceLineId =
     rendering.fields?.data?.contextItem?.category?.category[0].id || '';
 
+  const { baselineParams } = getBaselineParams(rendering);
   const params = [
+    ...baselineParams,
     ['verticalKey', 'articles'],
     [QUERY_STRING, serviceLineId],
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings

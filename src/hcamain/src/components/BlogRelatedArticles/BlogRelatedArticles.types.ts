@@ -5,7 +5,8 @@ import {
   Item,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import { BlogResponse } from '../BlogSearch/BlogSearch.types';
+//import { BlogResponse } from '../BlogSearch/BlogSearch.types';
+import { ApiSearchProps } from 'src/types/searchProps';
 
 export type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -60,9 +61,10 @@ export interface Fields {
   };
 }
 
-export type BlogRelatedArticlesProps = {
-  params: Params;
-  fields: Fields;
-  fallbackData: BlogResponse;
-  rendering: { uid: string };
+export type BlogRelatedArticlesProps = ApiSearchProps & {
+  params?: Params;
+  fields?: Fields;
+  rendering?: {
+    uid?: string;
+  };
 };
