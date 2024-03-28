@@ -1,6 +1,6 @@
 ﻿---
 ID: "322d5a1c-4b77-4a6b-9909-b01dfd4349df"
-Parent: "b3d14704-d7c7-4b43-acbd-59e2e7209a64"
+Parent: "25bbaec2-0b7e-4030-a28f-a12b6250db01"
 Template: "35e75c72-4985-4e09-88c3-0eac6cd1e64f"
 Path: /sitecore/templates/Branches/Project/HCA/Page Content/Default Image Short Text Variant
 Languages:
@@ -46,14 +46,14 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8316cb2a-64c2-48fb-8b3c-53be98f057be"
+      Value: "233ebdb0-b678-4d50-a10d-5393f216c86e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240325T154905Z
+      Value: 20231114T122313Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
