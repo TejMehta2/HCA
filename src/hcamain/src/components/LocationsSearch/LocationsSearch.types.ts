@@ -1,5 +1,6 @@
 import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import { ApiSearchProps } from 'src/types/searchProps';
 
 export interface SearchResponse {
   meta: Meta;
@@ -15,17 +16,12 @@ export interface Response {
   businessId: number;
   queryId: string;
   resultsCount: number;
-  results: Result[];
+  locations: Data[];
   appliedQueryFilters: unknown[];
   facets: unknown[];
   source: string;
   searchIntents: unknown[];
   locationBias: null;
-}
-
-export interface Result {
-  data: Data;
-  highlightedFields: HighlightedFields;
 }
 
 export interface Data {
@@ -37,6 +33,9 @@ export interface Data {
   imageUrl: null;
   url: string;
   uid: number;
+  lat: string;
+  lng: string;
+  directions: string;
 }
 
 export interface HighlightedFields {
@@ -45,20 +44,7 @@ export interface HighlightedFields {
   title: null;
 }
 
-export interface Autocomplete {
-  meta: Meta;
-  response: AutocompleteResponse;
-}
-
-export interface AutocompleteResponseMeta {
-  uuid: string;
-  errors: unknown[];
-}
-
-export interface AutocompleteResponse {
-  input: AutocompleteResponseInput;
-  results: AutocompleteResponseResult[];
-}
+export type Autocomplete = AutocompleteResponseResult[];
 
 export interface AutocompleteResponseInput {
   value: string;
@@ -66,10 +52,13 @@ export interface AutocompleteResponseInput {
 }
 
 export interface AutocompleteResponseResult {
-  value: string;
-  matchedSubstrings: unknown[];
-  queryIntents: unknown[];
-  verticalKeys: unknown[];
+  LocationName: string;
+  LocationKey: string;
+  LocationType: number;
+  PostCode: string;
+  Latitude: number;
+  Longitude: number;
+  LatLongString: string;
 }
 
 export type HCAIconFields = {
@@ -120,8 +109,10 @@ export interface Fields {
   MapViewText?: Field<string>;
 }
 
-export type LocationsSearchProps = {
+export type LocationsSearchProps = ApiSearchProps & {
   params?: Params;
   fields?: Fields;
-  fallbackData?: SearchResponse;
+  rendering?: {
+    uid?: string;
+  };
 };

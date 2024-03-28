@@ -63,6 +63,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
           placeholder={placeholder}
           {...suggestionAttributes}
           {...controlAttributes}
+          autoComplete={'off'}
         />
         {locationCta}
         {defaultValue && (

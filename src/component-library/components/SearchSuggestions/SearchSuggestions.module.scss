@@ -28,8 +28,13 @@
   gap: $spacing-4;
   color: var(--text);
 
+  svg {
+    min-width: px-to-rem(24);
+  }
+
   * {
     padding: 0;
+    text-align: start;
   }
 
   background-color: transparent;

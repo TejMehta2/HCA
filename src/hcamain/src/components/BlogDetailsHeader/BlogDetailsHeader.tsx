@@ -52,7 +52,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
     <HeaderBlogDetails
       theme={props.params?.Theme || 'A-HCA-White'}
       tag={
-        <>
+        props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
           <Tags contentVariation="quote">
             <Link href={{ pathname: '/' }}>
               <JSSText
@@ -63,7 +63,9 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
               />
             </Link>
           </Tags>
-        </>
+        ) : (
+          <></>
+        )
       }
       date={
         <JssDate field={props.fields?.data?.contextItem?.date?.jsonValue} />

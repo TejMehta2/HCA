@@ -196,7 +196,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
         </HeaderPlain>
       </Themes>
 
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         <SearchWrapper
           ref={searchWrapperRef}
           searchDetail={

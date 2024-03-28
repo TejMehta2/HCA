@@ -56,7 +56,7 @@ const YextResultSectionLocationsAdaptor = (
       ),
     },
     openingHours: {
-      icon: <Icons iconName="iconPhone"></Icons>,
+      icon: <Icons iconName="iconClock"></Icons>,
       text: (
         <Text variation="body-large" tag="span">
           <strong>Open Now.</strong> Closes at 20:00

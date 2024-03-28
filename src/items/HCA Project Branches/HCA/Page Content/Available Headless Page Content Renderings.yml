@@ -1,6 +1,6 @@
 ﻿---
-ID: "d78ff265-1712-44a6-9c24-e9827c0930e4"
-Parent: "25bbaec2-0b7e-4030-a28f-a12b6250db01"
+ID: "4bddadfc-01af-40f3-8a95-f20aef02f85d"
+Parent: "b3d14704-d7c7-4b43-acbd-59e2e7209a64"
 Template: "35e75c72-4985-4e09-88c3-0eac6cd1e64f"
 Path: /sitecore/templates/Branches/Project/HCA/Page Content/Available Headless Page Content Renderings
 Languages:
@@ -14,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -25,14 +25,14 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e1d53a2f-cc85-4b89-8d2d-cf932ba479c3"
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
 - Language: en
   Versions:
   - Version: 1
@@ -46,14 +46,14 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b2073712-0071-489c-a747-01f8ab86b2ae"
+      Value: "6fa172ea-b15b-4ccf-a942-5f5824774beb"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T122312Z
+      Value: 20231114T110550Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
@@ -64,7 +64,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -75,14 +75,14 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e1d53a2f-cc85-4b89-8d2d-cf932ba479c3"
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
 - Language: "zh-CN"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
@@ -93,7 +93,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -104,11 +104,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e1d53a2f-cc85-4b89-8d2d-cf932ba479c3"
+      Value: "5c217150-f8bd-47e4-bb61-1c760e8ff820"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T105331Z
+      Value: 20231114T034000Z
