@@ -50,7 +50,15 @@ export const Default: StoryObj<typeof ServiceCards> = {
         <Text variation="display-6">Cardiac Care 1</Text>
       </CardService>,
 
-      <CardService link={<a href="#">Learn More</a>} key={2}>
+      <CardService
+        link={
+          <a href="#">
+            Learn more
+            12344342142344542315345345234523454352345435345345342543534253453453454353425345345234
+          </a>
+        }
+        key={2}
+      >
         <Image
           src="/placeholders/children-playing.jpg"
           alt="two children playing"

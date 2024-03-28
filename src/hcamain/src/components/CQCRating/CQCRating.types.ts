@@ -7,7 +7,7 @@ import {
 import Params from 'src/types/params';
 
 export type logoField = {
-  Logo?: ImageField;
+  Logo: { fields?: ImageField; value?: string };
 };
 
 export type CQSStatusFields = Item & {

@@ -7,13 +7,27 @@ interface useSearchFormArgs<T> {
   baseUrl: string;
   baselineParams?: [string, string][];
   fallbackData?: T;
-  autocompleteBaseUrl?: string;
+  searchPath?: string;
+  autocompletePath?: string;
+  baselineAutocompleteParams?: [string, string][];
+  autoCompleteSearchParamName?: string;
   redirectUrl?: string;
+  searchFieldName?: string;
 }
 const useSearchForm = <ResponseT, AutocompleteResponseT>(
   args: useSearchFormArgs<ResponseT>
 ) => {
-  const { baseUrl, baselineParams = [], fallbackData, redirectUrl } = args;
+  const {
+    baseUrl,
+    baselineParams = [],
+    fallbackData,
+    redirectUrl,
+    searchPath = '/search',
+    autocompletePath = '/autocomplete',
+    baselineAutocompleteParams = [],
+    autoCompleteSearchParamName = 'input',
+    searchFieldName = 'input',
+  } = args;
   const searchParams = useSearchParams(); // dynamic reference to page URL query params
   const router = useRouter();
   const pathname = usePathname();
@@ -23,18 +37,38 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     (entry) => `${entry[0]}=${entry[1]}`
   ); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, `${baseUrl}/search`); // compose API url
+  const url = new URL(query, `${baseUrl}${searchPath}`); // compose API url
+
+  const options = {
+    keepPreviousData: true, // Never show nothing
+    revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
+  };
+
   const { data, error, isLoading } = useSWR<ResponseT>(
     url.href,
     (url: string) => fetch(url).then((res) => res.json()),
     {
+      ...options,
       fallbackData,
       keepPreviousData: true,
     }
   );
 
-  const input = searchParams.get('input');
-  const autocompleteUrl = new URL(`?${input}`, `${baseUrl}/autocomplete`);
+  const input = searchParams.get(searchFieldName) || '';
+  const autoCompleteCombinedParams: [string, string][] = [
+    ...baselineAutocompleteParams,
+    [autoCompleteSearchParamName, input],
+  ];
+  const autoCompleteParamsMap = new Map(autoCompleteCombinedParams); // Express as Map to make keys unique
+  const autoCompleteParams = [...autoCompleteParamsMap.entries()].map(
+    (entry) => `${entry[0]}=${entry[1]}`
+  );
+  const autoCompleteQuery = `?${autoCompleteParams.join('&')}`;
+  const autocompleteUrl = new URL(
+    autoCompleteQuery,
+    `${baseUrl}${autocompletePath}`
+  );
+
   const {
     data: autocompleteData,
     error: autocompleteError,
@@ -42,7 +76,7 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   } = useSWR<AutocompleteResponseT>(
     autocompleteUrl.href,
     (url: string) => fetch(url).then((res) => res.json()),
-    {}
+    options
   );
 
   // Update existing query params, to be read by useSwr hook
