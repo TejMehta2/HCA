@@ -55,9 +55,10 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       : 'B-HCA-Navy-Blue';
   }
 
-  const RenderWithErrorBoundary = (children: React.ReactNode) => (
-    <ErrorBoundary>{children}</ErrorBoundary>
-  );
+  const RenderWithErrorBoundary = (
+    children: React.ReactNode,
+    index: number
+  ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
   return (
     <>
