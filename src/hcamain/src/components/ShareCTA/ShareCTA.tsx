@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Field,
   LinkField,
@@ -67,9 +67,12 @@ const ShareCTADefaultComponent = (props: ShareCTAProps): JSX.Element => (
 );
 
 export const Default = (props: ShareCTAProps): JSX.Element => {
+  const [copied, setCopied] = useState(false);
+
   if (!props.fields) {
     return <ShareCTADefaultComponent {...props} />;
   }
+
   // Prime the higher order function with the share list
   const findCtaText = findSharePlatformCtaText(
     props.fields?.data.item.sharePlatforms.sharePlatformsList
@@ -116,10 +119,20 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
           <button
             onClick={() => {
               navigator?.clipboard?.writeText?.(shareData.url);
+              setCopied(true);
             }}
           >
-            <Icons iconName="iconCopy" />
-            <JssText tag="span" field={findCtaText('CopyLinkShare')} />
+            {copied ? (
+              <>
+                <Icons iconName="iconCheck" />
+                <span>Copied</span>
+              </>
+            ) : (
+              <>
+                <Icons iconName="iconCopy" />
+                <JssText tag="span" field={findCtaText('CopyLinkShare')} />
+              </>
+            )}
           </button>
         </Button>
       )}
