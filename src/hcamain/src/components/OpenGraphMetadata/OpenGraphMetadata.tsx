@@ -50,11 +50,17 @@ export const Default = (props: OpenGraphMetadataProps): JSX.Element => {
       <br />
       <JssText field={props.fields?.data?.item?.twitterCard?.jsonValue} />
       <br />
-      <JssText field={props.fields?.data?.contextItem?.abstractTitle?.jsonValue} />
+      <JssText
+        field={props.fields?.data?.contextItem?.abstractTitle?.jsonValue}
+      />
       <br />
-      <JssText field={props.fields?.data?.contextItem?.abstractText?.jsonValue} />
+      <JssText
+        field={props.fields?.data?.contextItem?.abstractText?.jsonValue}
+      />
       <br />
-      <JssImage field={props.fields?.data?.contextItem?.abstractImage?.jsonValue} />
+      <JssImage
+        field={props.fields?.data?.contextItem?.abstractImage?.jsonValue}
+      />
       <span>{props.fields?.data?.contextItem?.id}</span>
     </div>
   );
