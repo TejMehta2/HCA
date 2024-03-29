@@ -1,0 +1,113 @@
+@use '../foundation/index.module' as *;
+@use '../utilities/index.module' as *;
+@use '../core-components/Button/Button.module.scss';
+@use '../core-components/TextField/TextField.module.scss';
+@use '../core-components/RadioButton/RadioButton.module.scss';
+@use '../core-components/Checkbox/Checkbox.module.scss';
+
+[data-byoc-sitecore-form],
+byoc-sitecore-form {
+  color: var(--text);
+  margin-top: $spacing-13;
+  margin-bottom: $spacing-13;
+
+  @include responsive-grid;
+  @include responsive-container;
+
+  .main-form-wrapper {
+    width: 100%;
+
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+
+  .component:not(:first-of-type) {
+    margin-top: $spacing-5;
+  }
+
+  /* Generic Labels & Text fields */
+  .text-component {
+    @include apply-heading-1;
+  }
+
+  .form-field-label {
+    display: block;
+    margin-bottom: $spacing-3;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .form-input-description {
+    margin-top: $spacing-3;
+
+    @include apply-body-large;
+  }
+
+  /* Input fields */
+
+  .form-input-element:not(.form-input-radio-element):not(
+      .form-input-checkbox-element
+    ) {
+    @extend %input-field;
+  }
+
+  /* Controls */
+  .radio-group-container,
+  .checkbox-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+
+  .radio-wrapper label {
+    display: flex;
+    gap: 0 $spacing-4;
+    align-items: center;
+
+    .form-input-wrapper-div {
+      display: flex;
+    }
+  }
+
+  .radio-wrapper .form-field-label {
+    margin: 0;
+
+    @include apply-body-extra-large;
+  }
+
+  .form-input-radio-element {
+    @extend %input-radio;
+  }
+
+  .checkbox-wrapper {
+    user-select: none;
+
+    label {
+      display: flex;
+      gap: 0;
+      align-items: center;
+    }
+
+    .form-field-label {
+      margin: 0;
+      padding-left: $spacing-7;
+
+      @extend %label;
+    }
+
+    .form-input-wrapper-div {
+      @extend %input-checkbox;
+    }
+
+    .checkbox-check-marker {
+      display: none !important;
+    }
+  }
+
+  /* Buttons */
+  .button-component {
+    @extend .button;
+    @extend .large;
+    @extend .full;
+  }
+}

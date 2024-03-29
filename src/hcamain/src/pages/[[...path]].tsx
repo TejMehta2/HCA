@@ -24,6 +24,14 @@ const SitecorePage = ({
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
+
+    // Disable form styles
+    [...document.querySelectorAll('byoc-sitecore-form style')].forEach(
+      (stylesheet) => {
+        console.log('first');
+        stylesheet.remove();
+      }
+    );
   }, []);
 
   if (notFound || !layoutData.sitecore.route) {
