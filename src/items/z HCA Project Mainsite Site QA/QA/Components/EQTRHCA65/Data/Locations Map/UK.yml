@@ -8,21 +8,24 @@ Languages:
   Versions:
   - Version: 1
     Fields:
-    - ID: "09288575-7091-48ef-bdd9-f527623b3052"
-      Hint: CardStyles
-      Value: "translateY(-50%)"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T090254Z
-    - ID: "64f64b91-a724-4592-b254-1074e323f51f"
-      Hint: MapStyles
-      Value: translateY(0) scale(1.1)
+    - ID: "2756feac-eccf-49fd-ba14-a13c1cfe5f8a"
+      Hint: Title
+      Value: UK
+    - ID: "40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e"
+      Hint: PinPositionY
+      Value: 10
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f5399dcf-c8eb-4e66-8e1a-83ba126789b1"
+      Value: "d58a41a8-fde2-44e0-8086-5bcfffdcc3e1"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
       Hint: Theme
       Value: "{88ACC656-0617-442E-953A-8E53DB20A316}"
+    - ID: "a8a330a5-a593-415e-9d5e-ce864b2bf010"
+      Hint: PinPositionX
+      Value: 10
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -30,13 +33,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
       Value: 35
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102613Z
+      Value: 20240327T070402Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
       Value: Locations across UK

@@ -181,7 +181,7 @@ export interface Fields {
         CustomFiltersList: FiltersFields[];
       };
     };
-    contextItem: {
+    contextItemSearchParams: {
       doctifyKeywordId?: { value?: string };
     };
   };

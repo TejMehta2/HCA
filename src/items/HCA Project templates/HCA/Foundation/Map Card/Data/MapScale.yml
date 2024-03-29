@@ -1,23 +1,30 @@
 ﻿---
-ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
+ID: "ca2e7233-45b8-40b4-93b1-9da72806a476"
 Parent: "55d9b117-4f7b-4232-85ce-6a3c54965aa2"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Map Card/Data/Text
+Path: /sitecore/templates/Project/HCA/Foundation/Map Card/Data/MapScale
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Number
+- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
+  Hint: Default value
+  Value: 1
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 50
+  Value: 1000
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Map Scale (1 is default scale, e.g. 0.5, 1.5)
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240202T082823Z
+      Value: 20240326T161424Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cbe76438-55e3-46de-9f5a-59126d25c9f0"
+      Value: "1bc3832a-ab67-4ba2-9624-7a23b2212e1a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240326T163259Z
+      Value: 20240326T170115Z
