@@ -1,15 +1,14 @@
 ﻿---
-ID: "91fbe056-c4a4-4e32-85b0-cdb79f3edc75"
-Parent: "d78ff265-1712-44a6-9c24-e9827c0930e4"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: /sitecore/templates/Branches/Project/HCA/Page Content/Available Headless Page Content Renderings/$name
+ID: "b388df66-276f-41f8-8b07-f56ee9575fc4"
+Parent: "ead737cd-718d-45c7-bd99-e8d3a0d49e78"
+Template: "ead737cd-718d-45c7-bd99-e8d3a0d49e78"
+Path: /sitecore/templates/Project/HCA/Page Content/Generic Search Folder/__Standard Values
 SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
   Value: |
-    {D52950C6-8721-4AC2-BABD-CC9BF7C54332}
-    {80F45169-A326-47F2-856B-C4AAB6025128}
-    {06CC8589-3696-4E7D-BBDC-E1CC77354ECC}
+    {67E43BF8-6811-4602-A842-1F6E30089DF0}
+    {EAD737CD-718D-45C7-BD99-E8D3A0D49E78}
 Languages:
 - Language: en
   Versions:
@@ -17,18 +16,18 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20171113T104335Z
+      Value: 20120621T071605Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "99ece396-f971-4693-bb11-e1f9a0390a54"
+      Value: "9e648deb-08bc-4bde-928c-6ab3a815685a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240329T120729Z
+      Value: 20240329T095309Z
