@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  useSitecoreContext
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
@@ -26,7 +26,7 @@ const TextBlockHeadingDefaultComponent = (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
           <span className="is-empty-hint">
-          Text Block Heading please click to select datasource
+            Text Block Heading please click to select datasource
           </span>
         </div>
       </div>
