@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "2302f051-cf20-4f44-98a5-bef06ccfbc90"
       Hint: Quote
-      Value: &ldquo;At London Bridge Hospital, we are committed to ensuring that every patient feels safe and comfortable in our care, so I'm delighted to see that this has been highlighted within the report.&rdquo;&rdquo;
+      Value: At London Bridge Hospital, we are committed to ensuring that every patient feels safe and comfortable in our care, so I'm delighted to see that this has been highlighted within the report.
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240208T095445Z
@@ -19,11 +19,11 @@ Languages:
       Value: "{7641AF1F-38B1-4A2A-9EA8-E4B0DB7A07C6}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d73fc9c2-8b60-47b5-aa1b-f9da94583c42"
+      Value: "20a160a6-7412-4589-b8fd-6b3c709bd526"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240208T100626Z
+      Value: 20240329T175445Z
