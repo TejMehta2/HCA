@@ -44,12 +44,12 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
             /* Also animate diamond line if it's the next sibling */
             if (
-              entry.target.nextSibling instanceof HTMLElement &&
-              entry.target.nextSibling?.getAttribute('data-content') ===
+              entry.target.nextElementSibling instanceof HTMLElement &&
+              entry.target.nextElementSibling?.getAttribute('data-content') ===
                 'diamond'
             ) {
               const diamondElement =
-                entry.target.nextSibling.querySelector('[data-animate]');
+                entry.target.nextElementSibling.querySelector('[data-animate]');
               diamondElement?.setAttribute('data-animate-active', 'true');
             }
           }
