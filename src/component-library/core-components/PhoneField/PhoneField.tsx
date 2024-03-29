@@ -8,7 +8,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 
 const PhoneField = (props: PhoneFieldProps): JSX.Element => {
-  const { label, required = false, helpText, errorMessage } = props;
+  const { label, required = false, helpText } = props;
   const inputId = useId();
 
   // const [isValid, setIsValid] = useState(null);
@@ -17,7 +17,7 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
   // const [notice, setNotice] = useState(null);
 
   // const handleSubmit = () => {
-  //   const errorMap = [
+  //   const errorMap: string[] = [
   //     'Invalid number',
   //     'Invalid country code',
   //     'Too short',
@@ -67,15 +67,14 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
         </div>
       )}
 
-      <div
-        className={[
-          styles['error-message'],
-          errorMessage ? '' : styles.hidden,
-        ].join(' ')}
+      {/* <div
+        className={[styles['error-message'], notice ? '' : styles.hidden].join(
+          ' '
+        )}
       >
         <Icons iconName="iconWarning" />
-        <Text variation="body-medium-medium">{errorMessage}</Text>
-      </div>
+        <Text variation="body-medium-medium">{notice}</Text>
+      </div> */}
 
       {/* <button type="button" onClick={handleSubmit}>
         Validate

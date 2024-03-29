@@ -2,7 +2,6 @@ import React from 'react';
 import PhoneField from './PhoneField';
 import type { Meta, StoryObj } from '@storybook/react';
 import Themes from '../../foundation/Themes/Themes';
-import Button from '../Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PhoneField> = {

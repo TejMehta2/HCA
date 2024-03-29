@@ -3,5 +3,4 @@ export interface PhoneFieldProps {
   helpText?: string;
   required?: boolean;
   errorMessage?: string;
-  ref: any;
 }
