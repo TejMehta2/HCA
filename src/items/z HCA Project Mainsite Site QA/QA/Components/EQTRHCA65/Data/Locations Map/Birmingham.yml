@@ -8,21 +8,24 @@ Languages:
   Versions:
   - Version: 1
     Fields:
-    - ID: "09288575-7091-48ef-bdd9-f527623b3052"
-      Hint: CardStyles
-      Value: "translateY(-35%) translateX(30%)"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T090254Z
-    - ID: "64f64b91-a724-4592-b254-1074e323f51f"
-      Hint: MapStyles
-      Value: "translateY(-5%) translateX(25%) scale(1.7)"
+    - ID: "2756feac-eccf-49fd-ba14-a13c1cfe5f8a"
+      Hint: Title
+      Value: Birmingham
+    - ID: "40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e"
+      Hint: PinPositionY
+      Value: 8
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c78c90af-6db1-4ac2-9961-9255c723356e"
+      Value: "c3a60c9a-3829-45ea-bcbe-7df3826600b4"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
       Hint: Theme
       Value: "{80BB723B-AE6D-4841-8B1F-09343026B5A8}"
+    - ID: "a8a330a5-a593-415e-9d5e-ce864b2bf010"
+      Hint: PinPositionX
+      Value: 10
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -30,13 +33,16 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
       Value: 1
+    - ID: "ca2e7233-45b8-40b4-93b1-9da72806a476"
+      Hint: MapScale
+      Value: 0.5
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102613Z
+      Value: 20240327T071959Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
       Value: Locations across London

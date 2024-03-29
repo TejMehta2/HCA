@@ -30,7 +30,7 @@ export interface Data {
   title: string;
   description: string;
   name: string;
-  imageUrl: null;
+  imageUrl: string;
   url: string;
   uid: number;
   lat: string;

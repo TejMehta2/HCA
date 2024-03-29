@@ -1,0 +1,44 @@
+﻿---
+ID: "fbd59fd2-958b-4b3a-9b58-3db568c4c725"
+Parent: "339f9703-c89f-4075-bd07-e72d7a818b93"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Consultant finder/ProgressBar/ProgressBar/Steps/Steps
+SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "{ABA9E6D5-791C-4127-BC00-7BF0F2D11AD2}"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Multilist
+- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
+  Hint: Default value
+  Value: "{8E419B73-2FBF-4333-BF44-A259FFDACF19}|{EAFF6711-CDFB-422D-81B2-6B8671A3CAFC}|{384DCAA2-90FA-4024-B37D-6CCFE5A74E5C}|{6F249214-A1DA-4AD0-BFC0-C33B1F723E90}|{0C8804B7-65C7-435C-BD8D-803E53ADC9EE}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240320T114322Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8724a6c4-97ad-4aec-afa0-61ecbcf3ff4f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240322T081940Z

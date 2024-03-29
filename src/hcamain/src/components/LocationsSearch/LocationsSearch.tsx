@@ -388,3 +388,10 @@ export const getStaticProps: GetStaticComponentProps = async (
     return { locations: [] };
   }
 };
+
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+  return <div className={`component ${props.params?.styles}`}></div>;
+};
