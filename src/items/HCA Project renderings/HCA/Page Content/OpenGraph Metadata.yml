@@ -1,22 +1,42 @@
 ﻿---
-ID: "64921d39-edf4-4ecd-972f-4c52496ee812"
+ID: "d6e768c1-e2d2-4fcb-8a7b-403686f042df"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Location Cards
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/OpenGraph Metadata
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: LocationCards
+  Value: OpenGraphMetadata
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetLocationCards($datasource: String!, $contextItem: String!, $language: String!) {
+    query GetOpenGraphMetadata($datasource: String!, $contextItem: String!, $language: String!) {
       item(path: $datasource, language: $language) {
-        ... on LocationCards {
-          heading {
+        ... on OpenGraphMetadata {
+          defaultMetaImage {
+            jsonValue
+          }
+          pageTitleSufix {
+            jsonValue
+          }
+          twitterCard {
+            jsonValue
+          }
+        }
+      }
+      contextItem: item(path: $contextItem, language: $language) {
+        id
+        ... on _HCABasePage {
+          abstractTitle {
+            jsonValue
+          }
+          abstractText {
+            jsonValue
+          }
+          abstractImage {
             jsonValue
           }
           title {
@@ -25,94 +45,31 @@ SharedFields:
           text {
             jsonValue
           }
-          cTAIcon {
-            Icon: targetItem {
-              ... on HCAIcon {
-                svgMarkup {
-                  value
-                }
-              }
-            }
-          }
-          cTALink {
+          image {
             jsonValue
           }
-          locations {
-            PagesList: targetItems {
-              ... on LocationPage {
-                title {
-                  value
-                }
-                image {
-                  value
-                }
-                city {
-                  value
-                }
-                street {
-                  value
-                }
-                postCode {
-                  value
-                }
-                getDirections {
-                  value
-                }
-                url {
-                  path
-                }
-              }
-            }
-          }
-          filterOptions {
-            filterOptionsList: targetItems {
-              ... on FilterOption {
-                displayName: field(name: "Display Name") {
-                  value
-                }
-                filter {
-                  value
-                }
-                filterValueString  {
-                  value
-                }
-                filterValueGuid {
-                  targetItem {
-                    id
-                  }
-                }
-              }
-            }
-          }
-          cTAText {
+          metaTitle {
             jsonValue
           }
-          getDirectionsText {
+          metaDescription {
             jsonValue
           }
-          numberOfCards {
+          metaImage {
             jsonValue
           }
-        }
-      }
-      contextItemSearchIdParams: item(path: $contextItem, language: $language) {
-        ... on TreatmentPage {
-          treatmentId: id
-        }
-        ... on SpecialtyPage {
-          serviceLineId: id
-        }
-        ... on DiagnosisPage {
-          doctifyKeywordId: id
-        }
-        ... on ConditionPage {
-          conditionId: id
+          noIndex {
+            jsonValue
+          }
+          noFollow {
+            jsonValue
+          }
         }
       }
     }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Location Cards
+  Value: /sitecore/templates/Project/HCA/Page Content/OpenGraph Metadata
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -121,17 +78,17 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{AEB36682-6F07-4230-9151-D5F2ACF6445B}"
+  Value: "{B75B574F-AB3F-46EF-9EC0-ABD289FA4F23}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Location Cards Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Location Cards Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='OpenGraph Metadata Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='OpenGraph Metadata Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{71DA7EEE-94E4-477E-836E-D473E39C7D67}" />
+    <image mediaid="{4C52B76F-AAAB-4383-A3C6-51FD1D5604F4}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -178,14 +135,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9fee2ccd-885d-4749-b9ff-7a02b3f89ed0"
+      Value: "b009cf05-9563-4c43-b9d5-c7cfe402f928"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240328T140628Z
+      Value: 20240328T161051Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

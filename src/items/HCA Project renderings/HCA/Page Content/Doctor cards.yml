@@ -78,7 +78,7 @@ SharedFields:
           }
         }
       }
-      contextItem: item(path: $contextItem, language: $language) {
+      contextItemSearchParams: item(path: $contextItem, language: $language) {
         ... on SpecialtyPage {
           doctifyKeywordId {
             value
@@ -170,14 +170,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5885b34e-0770-4a68-b774-a87ba4f5bdcf"
+      Value: "081ead6b-d89f-4c46-affe-577fff8cb29a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240322T150526Z
+      Value: 20240328T134559Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
