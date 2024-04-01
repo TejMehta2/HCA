@@ -2,7 +2,7 @@
 ID: "1c00bffa-726e-4b54-8910-f144081446cc"
 Parent: "bccd7d9e-442c-4d93-b0fa-72f5242545ce"
 Template: "49c111d0-6867-4798-a724-1f103166e6e9"
-Path: /sitecore/templates/Branches/Project/HCA/Page Content/Default Breadcrumbs Variant/$name
+Path: /sitecore/templates/Branches/Project/HCA/Navigation/Default Breadcrumbs Variant/$name
 Languages:
 - Language: en
   Versions:

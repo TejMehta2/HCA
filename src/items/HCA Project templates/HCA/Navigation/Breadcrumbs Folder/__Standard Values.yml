@@ -2,7 +2,7 @@
 ID: "0611ac98-ae76-41d4-bd1f-4e75a356cb7e"
 Parent: "a877ef40-a3aa-49cb-80d7-39f2eb20f14e"
 Template: "a877ef40-a3aa-49cb-80d7-39f2eb20f14e"
-Path: /sitecore/templates/Project/HCA/Page Content/Breadcrumbs Folder/__Standard Values
+Path: /sitecore/templates/Project/HCA/Navigation/Breadcrumbs Folder/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters

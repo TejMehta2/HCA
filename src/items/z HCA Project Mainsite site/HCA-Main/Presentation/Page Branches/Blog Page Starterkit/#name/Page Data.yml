@@ -1,19 +1,13 @@
 ﻿---
-ID: "11dbeb30-540c-42d2-bfc6-2e2055a07a9a"
-Parent: "89f256b2-ff4a-4459-a9f0-56a82881e218"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation/Available Renderings/Navigation"
-BranchID: "4e841618-96a7-4761-a5eb-b613cbd6c887"
+ID: "4d5f8906-0f46-4fd7-9d9e-b22aca1442e9"
+Parent: "89ece4ae-e832-487b-bb0d-f18680756f60"
+Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Page Branches/Blog Page Starterkit/$name/Page Data"
+BranchID: "8353e6f6-c531-4364-adc9-746a7f8add49"
 SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
-  Value: |
-    {512EE550-05F4-428D-B0F9-D65CCE94F387}
-    {6B604A3D-BF64-4BFA-8C2B-F9B6B1640392}
-    {CD744279-02D3-49CD-870C-0A657549C9DC}
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
-  Value: "{3A748197-A45F-4B5C-BC1A-E350F433F9E3}"
+  Value: "{C8C57E25-9A98-4C99-B9CD-893DF6CB97FA}"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +15,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161640Z
+      Value: 20240328T144708Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +26,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "49d107d6-f679-4f65-9599-27d008875f33"
+      Value: "a33f601c-b020-42b5-b70b-eef5e94e2847"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240401T141916Z
+      Value: 20240328T144708Z

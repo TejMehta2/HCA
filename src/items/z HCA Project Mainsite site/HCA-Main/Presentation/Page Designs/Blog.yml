@@ -1,18 +1,16 @@
 ﻿---
-ID: "858952b2-9664-4e15-a916-351a8513efd6"
-Parent: "89f256b2-ff4a-4459-a9f0-56a82881e218"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation/Available Renderings/Heros"
+ID: "38be252e-ad2c-4bb6-91a0-06f4f84b091a"
+Parent: "fcb81a9f-ff29-43ba-99bc-d02195957234"
+Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Page Designs/Blog"
 SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
+- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
+  Hint: PartialDesigns
+  Value: "{5BE50603-48D5-4B3C-8FB0-F6431DFB8108}|{8BD7AB54-7231-4AFB-BE2F-ECE7FF8F996F}|{E33E8F33-124A-41F7-A0BF-BD27ED8C23BF}|{86FB2621-C2AA-445D-9E0F-AE9678D5335E}"
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
   Value: |
-    {B1AC933A-6420-423A-822F-367CC48C419F}
-    {2DA667EA-068A-4479-9039-2E3323148F24}
-    {DB5B374D-B439-44D5-93C7-673CC91BCC56}
-    {48EA1434-F118-4CE2-9417-3D42054DF8BB}
-    {994091D4-153B-4CE9-B394-52AB8C5F491D}
-    {0C726BE9-CA4E-415C-B3D0-9640C37E7947}
+    <image mediaid="{1B528289-BDA5-4AF9-97F2-DA443055D7E0}" />
 Languages:
 - Language: en
   Versions:
@@ -20,7 +18,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240313T234339Z
+      Value: 20240328T151330Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +29,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cf86a7e0-ba67-4335-86fe-52a5d9566951"
+      Value: "b1f9f64f-da6c-48f9-b9e2-ada54d589656"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T234454Z
+      Value: 20240328T161214Z
