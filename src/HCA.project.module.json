@@ -9,6 +9,11 @@
                 "allowedPushOperations": "CreateUpdateAndDelete"
             },
             {
+                "name": "Foundation layouts settings",
+                "path": "/sitecore/layout/Layouts/Foundation/JSS Experience Accelerator/Presentation/JSS Layout",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+			{
                 "name": "HCA Project placeholder settings",
                 "path": "/sitecore/layout/Placeholder Settings/Project/HCA",
                 "allowedPushOperations": "CreateUpdateAndDelete"

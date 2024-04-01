@@ -69,10 +69,18 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         {headLinks.map((headLink) => (
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
+       
       </Head>
 
       {/* root placeholder for the app, which we add components to using route data */}
       <div className={mainClassPageEditing}>
+      {route && (
+          <Placeholder
+            name="headless-head"
+            rendering={route}
+            renderEach={RenderWithErrorBoundary}
+          />
+        )}
         <header>
           <div id="header">
             {route && (
