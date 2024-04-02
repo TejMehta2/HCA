@@ -20,7 +20,7 @@ SharedFields:
           p:before="*"
           s:ds="local:/Data/Blog Cards Standard"
           s:id="{A408DAA5-CBFC-452E-B5EA-9AE926C312A0}"
-          s:par="HeadingTag&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B3DFA8A71-9DD4-4435-A6E7-1671B8DC6646%7D&amp;Styles&amp;Theme=H-Green-20&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B3DFA8A71-9DD4-4435-A6E7-1671B8DC6646%7D&amp;Styles&amp;Theme=F-HCA-Fern&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
@@ -51,11 +51,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4fe0ab79-d2a0-45b9-9057-2af51afe9c48"
+      Value: "33136aa5-e753-483a-8b27-ff5f268d6849"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240329T071546Z
+      Value: 20240329T111455Z

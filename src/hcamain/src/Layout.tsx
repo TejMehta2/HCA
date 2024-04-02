@@ -73,6 +73,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
 
       {/* root placeholder for the app, which we add components to using route data */}
       <div className={mainClassPageEditing}>
+        {route && (
+          <Placeholder
+            name="headless-head"
+            rendering={route}
+            renderEach={RenderWithErrorBoundary}
+          />
+        )}
         <header>
           <div id="header">
             {route && (

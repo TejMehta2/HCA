@@ -6,7 +6,8 @@ Path: /sitecore/templates/Project/HCA/Foundation/Map Card/Data/PinPositionY
 SharedFields:
 - ID: "074f44ca-359a-4c13-b3aa-4a6be2a675b1"
   Hint: Validation
-  Value: "^([0-9]|[1-9][0-9]|100)$"
+  Value: |
+    ^(0|0\.\d{0,3}|1)$
 - ID: "337e20e1-999a-4eea-85ad-b58a03ae75cc"
   Hint: Quick Action Bar
   Value: "{30A2155E-EB7C-4B74-BA4F-89828F2498E7}"
@@ -21,10 +22,10 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Pin Position Y (value between 0 and 100)
+    Value: Pin Position Y (value between 0 and 1, with max 3 decimals)
   - ID: "b12e4906-b96b-495e-b343-cd2e92dc6347"
     Hint: ValidationText
-    Value: "Pin Position Y must have a value between 0 and 100!"
+    Value: "Pin Position Y must have a value between 0 and 1, with max 3 decimals!"
   Versions:
   - Version: 1
     Fields:
@@ -41,11 +42,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0106aa65-11e6-4f12-82f2-bd70af1541ab"
+      Value: "828748f9-94e3-475b-a044-79bf9e607347"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240327T071358Z
+      Value: 20240331T211131Z

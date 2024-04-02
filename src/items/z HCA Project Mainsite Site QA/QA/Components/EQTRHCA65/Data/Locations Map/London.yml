@@ -16,16 +16,16 @@ Languages:
       Value: London
     - ID: "40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e"
       Hint: PinPositionY
-      Value: 1
+      Value: 0.85
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1066b19a-d5dd-4fea-a5be-36ad855cf7c3"
+      Value: "c124bc81-1727-4903-95e0-389ea076db7b"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
       Hint: Theme
       Value: "{F60F7897-CE0F-4C3B-8FB5-B10AA9732339}"
     - ID: "a8a330a5-a593-415e-9d5e-ce864b2bf010"
       Hint: PinPositionX
-      Value: 0
+      Value: 0.66
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -36,13 +36,13 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
-      Value: 9
+      Value: 64
     - ID: "ca2e7233-45b8-40b4-93b1-9da72806a476"
       Hint: MapScale
-      Value: 1
+      Value: 0.8
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240327T071437Z
+      Value: 20240331T211555Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
       Value: Locations across London
