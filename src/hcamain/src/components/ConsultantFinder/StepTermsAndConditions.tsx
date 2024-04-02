@@ -3,9 +3,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
   Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -16,7 +16,6 @@ import Text from '@component-library/foundation/Text/Text';
 import TermsConditionsCards from '@component-library/consultant-finder/TermsConditionsCards/TermsConditionsCards';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
-import Link from 'next/link';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';

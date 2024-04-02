@@ -4,6 +4,7 @@
 .select-appointment {
   @include responsive-container;
   @include responsive-grid;
+
   margin-top: $spacing-7;
   margin-bottom: $spacing-10;
 

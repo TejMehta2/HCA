@@ -11,7 +11,6 @@ import Link from 'next/link';
 import {
   GetStaticComponentProps,
   Image as JssImage,
-  Link as JssLink,
   ImageField,
   Field,
   LinkField,

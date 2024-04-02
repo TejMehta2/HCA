@@ -58,7 +58,7 @@
 
       @include media(screen-m) {
         display: block;
-      } 
+      }
     }
 
     button {
@@ -96,7 +96,6 @@
       @include media(screen-m) {
         border-radius: px-to-rem(31);
       }
-        
 
       &.short-appointment {
         background-color: $teal-20;
@@ -118,7 +117,6 @@
       }
     }
   }
-
 
   .day {
     color: $navy-blue-70;

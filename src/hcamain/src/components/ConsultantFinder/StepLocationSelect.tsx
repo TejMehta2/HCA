@@ -6,8 +6,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
   Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
