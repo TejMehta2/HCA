@@ -96,8 +96,8 @@ export const Default = (props: StepProps): JSX.Element => {
 
   console.log('steps slot', props.fields);
   const {
-    // selectedLocation,
-    // setSelectedTypeOfAppointment,
+    selectedLocation,
+    selectedTypeOfAppointment,
     // setConsultantGUID,
     selectedDate,
     selectedTime,
@@ -125,6 +125,13 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
+
+    // if selected location and appointment type is missing then redirect to appointment type
+    if (selectedLocation === '' && selectedTypeOfAppointment === '') {
+      router.push(
+        `/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}`
+      );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -134,103 +141,108 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {router.isReady && (
-          <>
-            <HeaderLDB
-              logo={<JssImage field={props?.fields?.HCALogo} />}
-              progress={
-                <ProgressBar
-                  currentPage={props?.fields?.CurrentStep?.value}
-                  steps={props?.fields?.Steps}
-                  slug={slug}
-                  gmcNumber={gmcNumber}
-                ></ProgressBar>
-              }
-            ></HeaderLDB>
-            <SlotsCalendar
-              holidays={holidaysUK}
-              titleText={
-                props?.fields?.TitleText?.value || 'Please select a slot'
-              }
-              keyShortNoticeText={
-                props?.fields?.KeyShortNoticeText?.value || ''
-              }
-              keyBookOnlineText={props?.fields?.KeyBookOnlineText?.value || ''}
-              API_C2_GetConsultantSlots_LoadingMsg={
-                props?.fields?.API_C2_GetConsultantSlots_LoadingMsg?.value || ''
-              }
-              API_C2_GetConsultantSlots_BaseURL={
-                props?.fields?.API_C2_GetConsultantSlots_BaseURL?.value ||
-                'https:/api/C2/GetLDBConsultantSlots?'
-              }
-              API_C2_GetConsultantSlots_NoResultsMsg={
-                props?.fields?.API_C2_GetConsultantSlots_NoResultsMsg?.value ||
-                'No slots found'
-              }
-              viewMapText={
-                props?.fields?.ViewMapText?.value ||
-                'View location on Google Maps'
-              }
-            />
-            <Navigation hideTextMobile={true}>
-              <div>
-                <TextButton>
-                  <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
-                  >
-                    <Icons iconName="iconArrowSmallLeft" />
-                    <span>{props.fields.BackLink.value.text || 'Back'}</span>
-                  </Link>
-                </TextButton>
-              </div>
-              {selectedDate !== '' && selectedTime !== '' && (
-                <Text tag="p" variation="body-medium-extra-large">
-                  {isBookableContent &&
-                    `${
-                      props?.fields?.AppointmentSelectedText?.value ||
-                      'Appointment selected on'
-                    } ${selectedDate} at ${selectedTime}`}
-                  {!isBookableContent && `Call to book`}
-                </Text>
-              )}
-              {isBookableContent && (
-                <Container>
-                  <Button size={'small'} variation={'full-dark'}>
-                    <button
-                      disabled={
-                        selectedDate === '' && selectedTime === ''
-                          ? true
-                          : false
-                      }
-                      onClick={() =>
-                        router.push(`${props?.fields?.NextLink?.value?.href}`)
-                      }
+        {router.isReady &&
+          selectedLocation !== '' &&
+          selectedTypeOfAppointment !== '' && (
+            <>
+              <HeaderLDB
+                logo={<JssImage field={props?.fields?.HCALogo} />}
+                progress={
+                  <ProgressBar
+                    currentPage={props?.fields?.CurrentStep?.value}
+                    steps={props?.fields?.Steps}
+                    slug={slug}
+                    gmcNumber={gmcNumber}
+                  ></ProgressBar>
+                }
+              ></HeaderLDB>
+              <SlotsCalendar
+                holidays={holidaysUK}
+                titleText={
+                  props?.fields?.TitleText?.value || 'Please select a slot'
+                }
+                keyShortNoticeText={
+                  props?.fields?.KeyShortNoticeText?.value || ''
+                }
+                keyBookOnlineText={
+                  props?.fields?.KeyBookOnlineText?.value || ''
+                }
+                API_C2_GetConsultantSlots_LoadingMsg={
+                  props?.fields?.API_C2_GetConsultantSlots_LoadingMsg?.value ||
+                  ''
+                }
+                API_C2_GetConsultantSlots_BaseURL={
+                  props?.fields?.API_C2_GetConsultantSlots_BaseURL?.value ||
+                  'https:/api/C2/GetLDBConsultantSlots?'
+                }
+                API_C2_GetConsultantSlots_NoResultsMsg={
+                  props?.fields?.API_C2_GetConsultantSlots_NoResultsMsg
+                    ?.value || 'No slots found'
+                }
+                viewMapText={
+                  props?.fields?.ViewMapText?.value ||
+                  'View location on Google Maps'
+                }
+              />
+              <Navigation hideTextMobile={true}>
+                <div>
+                  <TextButton>
+                    <Link
+                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
                     >
-                      <span>
-                        {props?.fields?.NextLink?.value?.text || 'Book Slot'}
-                      </span>
-                    </button>
-                  </Button>
-                </Container>
-              )}
-              {!isBookableContent && (
-                <Container>
-                  <Button size={'small'} variation={'full-dark'}>
-                    <button
-                      disabled={
-                        selectedDate === '' && selectedTime === ''
-                          ? true
-                          : false
-                      }
-                    >
-                      <span>number</span>
-                    </button>
-                  </Button>
-                </Container>
-              )}
-            </Navigation>
-          </>
-        )}
+                      <Icons iconName="iconArrowSmallLeft" />
+                      <span>{props.fields.BackLink.value.text || 'Back'}</span>
+                    </Link>
+                  </TextButton>
+                </div>
+                {selectedDate !== '' && selectedTime !== '' && (
+                  <Text tag="p" variation="body-medium-extra-large">
+                    {isBookableContent &&
+                      `${
+                        props?.fields?.AppointmentSelectedText?.value ||
+                        'Appointment selected on'
+                      } ${selectedDate} at ${selectedTime}`}
+                    {!isBookableContent && `Call to book`}
+                  </Text>
+                )}
+                {isBookableContent && (
+                  <Container>
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button
+                        disabled={
+                          selectedDate === '' && selectedTime === ''
+                            ? true
+                            : false
+                        }
+                        onClick={() =>
+                          router.push(`${props?.fields?.NextLink?.value?.href}`)
+                        }
+                      >
+                        <span>
+                          {props?.fields?.NextLink?.value?.text || 'Book Slot'}
+                        </span>
+                      </button>
+                    </Button>
+                  </Container>
+                )}
+                {!isBookableContent && (
+                  <Container>
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button
+                        disabled={
+                          selectedDate === '' && selectedTime === ''
+                            ? true
+                            : false
+                        }
+                      >
+                        <span>number</span>
+                      </button>
+                    </Button>
+                  </Container>
+                )}
+              </Navigation>
+            </>
+          )}
       </div>
     );
   }
