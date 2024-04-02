@@ -43,6 +43,7 @@
       width: px-to-rem(24);
       height: px-to-rem(24);
       text-align: center;
+      cursor: pointer;
     }
   }
 
@@ -55,18 +56,31 @@
       appearance: none;
       border: none;
       outline: none;
+      display: flex;
+      justify-content: center;
       background-color: $white;
       border: 1px solid $navy-blue-30;
       border-radius: px-to-rem(31);
       padding: $spacing-2 $spacing-4;
       margin-bottom: $spacing-2;
+      cursor: pointer;
 
       &.short-appointment {
         background-color: $teal-20;
         border: 1px solid $teal-20;
       }
+
+      &.selected {
+        background-color: $navy-blue-100;
+        color: $white;
+      }
+
+      svg {
+        margin-right: $spacing-1;
+      }
     }
   }
+
 
   .day {
     color: $navy-blue-70;

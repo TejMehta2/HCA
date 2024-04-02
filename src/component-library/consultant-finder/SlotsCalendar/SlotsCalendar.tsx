@@ -182,11 +182,26 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       });
   };
 
-  const showSelection = (e, startTime, endTime, formattedDate) => {
+  const showSelection = (
+    e: any,
+    startTime: string,
+    endTime: string,
+    formattedDate: string
+  ) => {
     setSelectedDate(formatDateLong(startTime));
     setSelectedTime(formatTime12hr(startTime));
     console.log(formatDateLong(startTime));
     console.log(formatTime12hr(startTime));
+
+    const buttons = document.querySelectorAll('[data-button="slot-btn"]');
+
+    if (buttons.length > 0) {
+      buttons.forEach((btn) => {
+        btn.classList.remove(styles.selected);
+      });
+    }
+
+    e.target.closest('[data-button="slot-btn"]').classList.add(styles.selected);
 
     if (isBookableDate(formattedDate)) {
       setIsBookableContent(true);
@@ -356,10 +371,11 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                           (slot: any, slotIndex: any) =>
                             !slot.isBlocked && (
                               <button
+                                data-button={'slot-btn'}
                                 key={slotIndex}
                                 className={`${
                                   !isBookableDate(formattedDate)
-                                    ? 'short-appointment'
+                                    ? `${styles['short-appointment']}`
                                     : ''
                                 }`}
                                 onClick={(e) =>
@@ -371,38 +387,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                                   )
                                 }
                               >
-                                {/* {!isBookableDate(formattedDate) && (
-                              <span
-                                className="time--not-bookable-icon"
-                                aria-hidden="true"
-                                focusable="false"
-                              >
-                                <svg
-                                  width="18"
-                                  height="19"
-                                  viewBox="0 0 18 19"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M15.329 2.09861V5.02255H12.4051M8.89637 17.5955C7.54762 17.5954 6.22139 17.2497 5.04418 16.5915C3.86696 15.9332 2.87802 14.9843 2.17166 13.8354C1.46531 12.6864 1.06511 11.3756 1.00922 10.028C0.953337 8.68038 1.24363 7.34094 1.85243 6.1374C2.46122 4.93387 3.3682 3.90638 4.48687 3.15292C5.60555 2.39947 6.8986 1.94518 8.24271 1.83338C9.58681 1.72159 10.9371 1.95601 12.1649 2.5143C13.3927 3.07259 14.457 3.93613 15.2562 5.02255M12.1649 16.8125C11.5237 17.1651 11.3644 17.2379 10.6507 17.3999M14.7656 14.7188C14.3691 15.2568 14.3869 15.23 13.8688 15.6521M16.4375 12.0438C16.3144 12.4406 16.3094 12.5339 16.125 12.9062"
-                                    stroke="#34787F"
-                                    strokeWidth="1.5"
-                                    strokeMiterlimit="10"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                  <path
-                                    d="M11.0625 12.8125L8.25 10.5957V5.625"
-                                    stroke="#34787F"
-                                    strokeWidth="1.5"
-                                    strokeMiterlimit="10"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              </span>
-                            )} */}
+                                {!isBookableDate(formattedDate) && (
+                                  <Icons iconName="iconClock" />
+                                )}
                                 <Text tag="span" variation="body-medium-large">
                                   {removeSeconds(
                                     new Date(
