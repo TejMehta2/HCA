@@ -32,6 +32,8 @@ interface ConsultantFinderContextType {
   setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
   selectedTime: string;
   setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocationName: string;
+  setSelectedLocationName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -69,6 +71,8 @@ export const ConsultantFinderContext =
     setSelectedDate: () => {},
     selectedTime: '',
     setSelectedTime: () => {},
+    selectedLocationName: '',
+    setSelectedLocationName: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -94,6 +98,7 @@ export const ConsultantFinderContextProvider = ({
   const [lon, setLon] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
+  const [selectedLocationName, setSelectedLocationName] = useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -130,6 +135,8 @@ export const ConsultantFinderContextProvider = ({
         setSelectedDate,
         selectedTime,
         setSelectedTime,
+        selectedLocationName,
+        setSelectedLocationName,
       }}
     >
       {children}

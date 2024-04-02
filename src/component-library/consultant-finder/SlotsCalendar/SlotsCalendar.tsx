@@ -18,6 +18,7 @@ import TextLink from '../../core-components/TextLink/TextLink';
 const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const { children } = props;
   const {
+    selectedLocationName,
     locationGUID,
     selectedTypeOfAppointment,
     consultantGUID,
@@ -142,15 +143,20 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         // enable next/ prev after slots call was completed
         // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
         setDisableNext(false);
+        setDisablePrev(false);
 
-        if (firstDayOfWeek !== null) {
+        if (firstDay !== null) {
           const currentDate = new Date(fristAppointmentDate);
           currentDate.setHours(0, 0, 0, 0); // Reset time to midnight
-          const parsedFirstDayOfWeek = new Date(firstDayOfWeek);
+          const parsedFirstDayOfWeek = new Date(firstDay);
           parsedFirstDayOfWeek.setHours(0, 0, 0, 0); // Reset time to midnight
           const lastDayOfPrevWeek = new Date(
             parsedFirstDayOfWeek.getTime() - 24 * 60 * 60 * 1000
           );
+
+          console.log('first day of the week', firstDayOfWeek);
+          console.log('current date', currentDate);
+          console.log('lastDayOfPrevWeek', lastDayOfPrevWeek);
 
           if (currentDate > lastDayOfPrevWeek) {
             setDisablePrev(true);
@@ -205,24 +211,31 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         <Text tag="h1" variation="heading-1">
           Please select a slot
         </Text>
-        {lat !== '' && lon !== '' && (
-          <TextLink>
-            <a
-              href={`https://maps.google.com/?q=${lat},${lon}`}
-              target="_blank"
-            >
-              <Icons iconName="iconPin" />
-              <span>View location on Google Maps</span>
-            </a>
-          </TextLink>
-        )}
+        <div className={styles.location}>
+          <Text tag="h2" variation="body-medium-extra-large">
+            {selectedLocationName}
+          </Text>
+          {lat !== '' && lon !== '' && (
+            <div className={styles.map}>
+              <TextLink>
+                <a
+                  href={`https://maps.google.com/?q=${lat},${lon}`}
+                  target="_blank"
+                >
+                  <Icons iconName="iconPin" />
+                  <span>View location on Google Maps</span>
+                </a>
+              </TextLink>
+            </div>
+          )}
+        </div>
       </div>
       {/* {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
       {!loadingSlots && <div>Slots loaded</div>} */}
       <div className={styles.header}>
         <div className={styles['header-container']}>
           <div className={styles['arrow']}>
-            <button onClick={showPrevWeek} disabled={false}>
+            <button onClick={showPrevWeek} disabled={disablePrev}>
               <Icons iconName="iconChevronLeft" />
             </button>
           </div>
@@ -250,7 +263,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         </div>
       </div>
 
-      <div className={styles.times}>
+      
         <div className={styles['slots-main']}>
           {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
           {!loadingSlots && noSlots && (
@@ -360,7 +373,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
             </div>
           )}
         </div>
-      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import styles from './SelectLocation.module.scss';
 const SelectLocation = (props: SelectLocationProps): JSX.Element => {
   const {
     setSelectedLocation,
+    setSelectedLocationName,
     setLocationGUID,
     setFirstAppointmentDate,
     setLat,
@@ -28,6 +29,7 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             time={item?.firstAppointmentSlotDateTime}
             handleClick={() => {
               setSelectedLocation(item?.facilityCRMID || '');
+              setSelectedLocationName(item?.facilityFullName || '');
               setLocationGUID(item?.facilityCRMID || '');
               setFirstAppointmentDate(item?.firstAppointmentSlotDateTime || '');
               setLat(item?.latitude || '');

@@ -71,5 +71,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+  }
+
+  .location {
+    margin-left: 0;
+
+    @include media(screen-m) {
+      margin-left: $spacing-2;
+    }
+  }
+
+  .map {
+    display: flex;
+    justify-content: flex-end;
   }
 }
