@@ -39,6 +39,7 @@ label {
 
   &::placeholder {
     @include apply-body-large;
+
     color: $navy-blue-70;
   }
 }
@@ -56,4 +57,14 @@ input {
 
 .hidden {
   display: none;
+}
+
+.error {
+  label {
+    color: var(--field-error-colour);
+  }
+
+  input {
+    border: 1px solid var(--field-error-colour);
+  }
 }

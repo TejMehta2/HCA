@@ -1,7 +1,6 @@
 import React, { useId, useState } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
-
 import IntlTelInput from 'intl-tel-input/react/build/IntlTelInput.esm';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import Icons from '../../foundation/Icons/Icons';
@@ -11,30 +10,30 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
   const { label, required = false, helpText } = props;
   const inputId = useId();
 
-  // const [isValid, setIsValid] = useState(null);
-  // const [number, setNumber] = useState(null);
-  // const [errorCode, setErrorCode] = useState(null);
-  // const [notice, setNotice] = useState(null);
+  const [isValid, setIsValid] = useState<boolean | null>(null);
+  const [, setNumber] = useState<number | null>(null);
+  const [errorCode, setErrorCode] = useState<number | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
-  // const handleSubmit = () => {
-  //   const errorMap: string[] = [
-  //     'Invalid number',
-  //     'Invalid country code',
-  //     'Too short',
-  //     'Too long',
-  //     'Invalid number',
-  //   ];
+  const handleSubmit = () => {
+    const errorMap: string[] = [
+      'Invalid number',
+      'Invalid country code',
+      'Too short',
+      'Too long',
+      'Invalid number',
+    ];
 
-  //   if (isValid) {
-  //     setNotice(null);
-  //   } else {
-  //     const errorMessage = errorMap[errorCode] || 'Invalid number';
-  //     setNotice(`${errorMessage}`);
-  //   }
-  // };
+    if (isValid) {
+      setNotice(null);
+    } else {
+      const errorMessage = errorMap[errorCode || 0] || 'Invalid number';
+      setNotice(`${errorMessage}`);
+    }
+  };
 
   return (
-    <div className={styles.container}>
+    <div className={[styles.container, notice ? styles.error : ''].join(' ')}>
       {label && (
         <label htmlFor={inputId}>
           {label}
@@ -47,15 +46,16 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
           id: inputId,
           className: styles.input,
           required: required,
+          onBlur: handleSubmit,
         }}
-        // onChangeNumber={setNumber}
-        // onChangeValidity={setIsValid}
-        // onChangeErrorCode={setErrorCode}
+        onChangeNumber={setNumber}
+        onChangeValidity={setIsValid}
+        onChangeErrorCode={setErrorCode}
         initOptions={{
           nationalMode: false,
           initialCountry: 'gb',
           utilsScript:
-            'https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js', // just for formatting/placeholders etc
+            'https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.0/build/js/utils.js',
         }}
       />
 
@@ -67,18 +67,14 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
         </div>
       )}
 
-      {/* <div
+      <div
         className={[styles['error-message'], notice ? '' : styles.hidden].join(
           ' '
         )}
       >
         <Icons iconName="iconWarning" />
         <Text variation="body-medium-medium">{notice}</Text>
-      </div> */}
-
-      {/* <button type="button" onClick={handleSubmit}>
-        Validate
-      </button> */}
+      </div>
     </div>
   );
 };

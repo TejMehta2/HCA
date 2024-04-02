@@ -27,7 +27,6 @@ export const Required: StoryObj<typeof PhoneField> = {
     label: 'Field label',
     helpText: 'Helper text',
     required: true,
-    errorMessage: 'Required',
   },
   decorators: [
     (Story) => (

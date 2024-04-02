@@ -4,12 +4,13 @@ import PhoneField from './PhoneField';
 import { PhoneFieldProps } from './PhoneField.types';
 
 const mockProps: PhoneFieldProps = {
-  children: <p>Hello world</p>,
+  label: 'Field label',
+  helpText: 'Helper text',
 };
 
 describe('PhoneField', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<PhoneField {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Field label')).toBeVisible();
   });
 });
