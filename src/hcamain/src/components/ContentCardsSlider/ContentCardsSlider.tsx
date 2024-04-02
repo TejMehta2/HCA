@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image as JssImage,
+  Text as JssText,
   Field,
   Link as JssLink,
   LinkField,
@@ -92,6 +93,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         >
           {props.fields?.data?.item?.title?.jsonValue?.value}
         </Text>
+      }
+      subtitle={
+        props.fields?.data?.item?.heading?.jsonValue?.value ? (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        ) : (
+          <></>
+        )
       }
       link={link}
     >

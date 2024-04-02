@@ -105,16 +105,22 @@ $max-options: 5; // Increase max if more "sort by" options are required
 .desktop {
   display: none;
   position: relative;
+  height: 100%;
 }
 
 .button {
-  border-bottom: px-to-rem(4) solid transparent;
+  // border-bottom: px-to-rem(4) solid transparent;
+  &,
+  > * {
+    height: 100%;
+  }
 
   button {
     width: 100%;
     justify-content: center;
 
-    @include media(screen-m) {
+    @include media(screen-l) {
+      height: 100%;
       width: max-content;
       justify-content: unset;
     }

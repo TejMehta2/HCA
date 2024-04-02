@@ -1,24 +1,34 @@
 import React from 'react';
 import {
   Field,
-  LinkField,
   ImageField,
+  LinkField,
+  RichText as JssRichText,
   Text as JssText,
-  RichText,
+  Image as JssImage,
+  Link as JssLink,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import Text from '@component-library/foundation/Text/Text';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import getSubheadingTag from 'lib/subheading-tag-getter';
+import Params from 'src/types/params';
+import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
 };
 
 type DiagnosisFields = {
-  abstractTitle?: { value?: Field<string> };
-  abstractText?: { value?: Field<string> };
-  abstractImage?: { value?: ImageField };
+  abstractTitle?: Field<string>;
+  abstractText?: Field<string>;
+  abstractImage?: { jsonValue?: ImageField };
   title?: { value?: Field<string> };
   text?: { value?: Field<string> };
   image?: { jsonValue?: ImageField };
-  url?: string;
+  url?: { path?: string };
 };
 
 interface Fields {
@@ -48,7 +58,7 @@ interface Fields {
 }
 
 type TestAndScansCardsProps = {
-  params: { [key: string]: string };
+  params: Params;
   fields: Fields;
 };
 
@@ -62,52 +72,123 @@ const TestAndScansCardsDefaultComponent = (
   </div>
 );
 
-export const WithImage = (props: TestAndScansCardsProps): JSX.Element => {
+interface WithImageProps extends TestAndScansCardsProps {
+  showImage: boolean;
+}
+
+export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { showImage = true } = props;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
   if (!props.fields) {
     return <TestAndScansCardsDefaultComponent {...props} />;
   }
+
+  const columns: CardBlockProps['variation'] =
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const queryParam = props.fields.data?.contextItem?.id
+    ? '?conditionId=' + props.fields.data?.contextItem?.id
+    : '';
+
+  const link =
+    props.fields?.data?.item?.cTALink?.jsonValue &&
+    (!isExperienceEditor ? (
+      <JssLink
+        field={props.fields?.data?.item?.cTALink?.jsonValue}
+        href={
+          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+        }
+      >
+        <JssRichText
+          tag="span"
+          field={{
+            value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
+          }}
+        />
+      </JssLink>
+    ) : (
+      <JssLink
+        field={props.fields?.data?.item?.cTALink?.jsonValue}
+        href={
+          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+        }
+      />
+    ));
+
+  const getCards = (cards?: DiagnosisFields[]) => {
+    if (!cards) return;
+
+    const limit = props.fields?.data?.item?.numberOfCards?.jsonValue?.value
+      ? +props.fields?.data?.item?.numberOfCards?.jsonValue?.value
+      : -1;
+
+    return (
+      <>
+        {cards.slice(0, limit)?.map((card, index) => (
+          <CardContent
+            key={index}
+            image={
+              showImage ? (
+                <JssImage field={card.abstractImage?.jsonValue} />
+              ) : undefined
+            }
+            title={
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+                variation="heading-1"
+              >
+                <JssText field={card.abstractTitle} />
+              </Text>
+            }
+            bodyCopy={
+              <Text tag="p" variation="body-medium">
+                <JssRichText tag="span" field={card.abstractText} />
+              </Text>
+            }
+            link={
+              <a href={card?.url?.path}>
+                <span>
+                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
+                </span>
+              </a>
+            }
+          />
+        ))}
+      </>
+    );
+  };
+
+  const cards = props.fields?.data?.contextItem?.diagnosis?.DiagnosisList
+    ? getCards(props.fields?.data?.contextItem?.diagnosis?.DiagnosisList)
+    : getCards(props.fields?.data?.item?.testAndScans?.TestAndScansList);
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
-      <br />
-      <JssText field={props?.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <RichText tag="span" field={props?.fields?.data?.item?.text?.jsonValue} />
-      <br />
-      <span></span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.testAndScans?.TestAndScansList?.map(
-          (testAndScan, index) => (
-            <li key={index}>
-              <JssText field={testAndScan?.abstractTitle?.value} />
-              <br />
-              <JssText field={testAndScan.title?.value} />
-              <br />
-              <JssText field={testAndScan.abstractText?.value} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <ul>
-        {props.fields?.data?.contextItem?.diagnosis?.DiagnosisList?.map(
-          (diagnosis, index) => (
-            <li key={index}>
-              <JssText field={diagnosis.abstractTitle?.value} />
-              <br />
-              <JssText field={diagnosis.abstractText?.value} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <JssText field={props.fields?.data?.item?.numberOfCards?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.cTACardText?.jsonValue} />
-    </div>
+    <CardBlock
+      variation={columns}
+      gapSize={'small'}
+      theme={props.params?.Theme || 'A-HCA-White'}
+      header={
+        <AdvancedBlockHeader
+          paddingSize="small"
+          title={
+            <Text
+              variation={props.params?.HeadingSize || 'heading-1'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssText
+                tag={'span'}
+                field={props.fields?.data?.item?.title?.jsonValue}
+              />
+            </Text>
+          }
+        />
+      }
+      cta={link}
+    >
+      {cards && cards}
+    </CardBlock>
   );
 };
 
@@ -116,5 +197,5 @@ export const WithoutImage = (props: TestAndScansCardsProps): JSX.Element => {
     return <TestAndScansCardsDefaultComponent {...props} />;
   }
 
-  return <WithImage {...props} />;
+  return <WithImage {...props} showImage={false} />;
 };

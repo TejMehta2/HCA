@@ -16,13 +16,16 @@ Languages:
       Value: |
         {0D548691-3D02-4748-9689-F3AF616D1AFF}
         {AB2437A0-9D58-4DBB-A2FA-5FC52A5D61FC}
+    - ID: "81a6f998-135f-435b-8db0-ae62c669ca22"
+      Hint: CTAText
+      Value: Book an <b>appointment</b>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ee34ebc0-6c62-4329-ac8d-8f4205ce2d6e"
+      Value: "48fae714-27bf-48be-939d-bb5519b613d2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T231244Z
+      Value: 20240320T124214Z

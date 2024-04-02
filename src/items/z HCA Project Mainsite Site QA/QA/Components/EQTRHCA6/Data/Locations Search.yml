@@ -42,7 +42,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
-      Value: Enter a <b>place or postcode</b>
+      Value: Enter a place or postcode
     - ID: "8412c5bf-99ea-4872-bdc1-820be9a3bd13"
       Hint: GridViewIcon
       Value: "{E6819DCC-60C1-423E-A79A-430F56347B05}"
@@ -51,7 +51,7 @@ Languages:
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "65b21d7b-7520-4e50-a9fa-fbe0cf7cc00a"
+      Value: "e522c35c-ed86-41ec-8600-239792473f79"
     - ID: "90875e3c-58b9-40d7-b491-b56f4a462018"
       Hint: MapViewText
       Value: Map view
@@ -62,7 +62,7 @@ Languages:
         {60468383-EF7B-4714-9B6B-CBEEABF06C94}
     - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
       Hint: ResultsPerPage
-      Value: 12
+      Value: 3
     - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
       Hint: FilterOptionsText
       Value: Filter by
@@ -78,7 +78,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240304T121704Z
+      Value: 20240320T141205Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

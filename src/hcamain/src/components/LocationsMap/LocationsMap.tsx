@@ -2,21 +2,29 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Image as JSSImage,
+  LinkField,
   RichText,
   Item,
-  ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
+type HCAIconFields = {
+  fields?: {
+    SvgMarkup?: Field<string>;
+  };
+};
+
 type CardsFields = {
   fields?: {
-    Number?: Field<string>;
+    Title?: Field<string>;
     Text?: Field<string>;
+    Number?: Field<string>;
     Theme?: Item;
-    MapStyles?: Field<string>;
-    CardStyles?: Field<string>;
-    PinPosition?: Field<string>;
+    PinPositionX: Field<string>;
+    PinPositionY: Field<string>;
+    MapScale?: Field<string>;
+    CTAIcon?: HCAIconFields;
+    CTALink?: LinkField;
   };
 };
 
@@ -24,8 +32,6 @@ interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;
-  BackgroundImage?: ImageFieldValue;
-  PinImage?: ImageFieldValue;
   Cards?: CardsFields[];
 }
 
@@ -56,23 +62,23 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
       <br />
       <RichText tag="span" field={props.fields?.Text} />
       <br />
-      <JSSImage field={props.fields?.BackgroundImage} />
-      <br />
       <ul>
         {props.fields?.Cards?.map((card, index) => (
           <li key={index}>
             <br />
-            <JssText field={card?.fields?.Number} />
+            <JssText field={card?.fields?.Title} />
             <br />
             <JssText field={card?.fields?.Text} />
             <br />
+            <JssText field={card?.fields?.Number} />
+            <br />
             <span>{card?.fields?.Theme?.name?.toString()}</span>
             <br />
-            <JssText field={card?.fields?.MapStyles} />
+            <JssText field={card?.fields?.PinPositionX} />
             <br />
-            <JssText field={card?.fields?.CardStyles} />
+            <JssText field={card?.fields?.PinPositionY} />
             <br />
-            <JssText field={card?.fields?.PinPosition} />
+            <JssText field={card?.fields?.MapScale} />
             <br />
           </li>
         ))}

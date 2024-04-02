@@ -10,14 +10,14 @@ import CardDoctorLayout from '@component-library/site-components/CardDoctorLayou
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
 import {
-  ComponentRenderingDocCards,
+  // ComponentRenderingDocCards,
   Doctor,
   DoctorCardsProps,
   DoctorRow,
 } from './DoctorCards.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
-import { GetStaticComponentProps } from '@sitecore-jss/sitecore-jss-nextjs';
-import { fetchDoctorCard } from './DoctorCardData';
+// import { GetStaticComponentProps } from '@sitecore-jss/sitecore-jss-nextjs';
+// import { fetchDoctorCard } from './DoctorCardData';
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -36,15 +36,15 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   }
 
   const cta =
-    props.fields?.CTALink &&
+    props.fields?.data?.item?.cTALink &&
     (isExperienceEditor ? (
-      <JssLink field={props.fields?.CTALink}></JssLink>
+      <JssLink field={props.fields?.data?.item?.cTALink}></JssLink>
     ) : (
-      <JssLink field={props.fields?.CTALink}>
-        {props?.fields?.CTALink.value.text && (
+      <JssLink field={props.fields?.data?.item?.cTALink}>
+        {props.fields?.data?.item?.cTALink.jsonValue?.value && (
           <span
             dangerouslySetInnerHTML={{
-              __html: props.fields?.CTALink.value.text,
+              __html: props.fields?.data?.item?.cTALink.jsonValue.value,
             }}
           ></span>
         )}
@@ -52,15 +52,15 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     ));
 
   const ctaCard =
-    props.fields?.CTACard &&
+    props.fields?.data?.item?.cTACard &&
     (isExperienceEditor ? (
-      <JssLink field={props.fields?.CTACard}></JssLink>
+      <JssLink field={props.fields?.data?.item?.cTACard}></JssLink>
     ) : (
-      <JssLink field={props.fields?.CTACard}>
-        {props?.fields?.CTACard.value.text && (
+      <JssLink field={props.fields?.data?.item?.cTACard}>
+        {props.fields?.data?.item?.cTACard.jsonValue?.value && (
           <span
             dangerouslySetInnerHTML={{
-              __html: props.fields?.CTACard.value.text,
+              __html: props.fields?.data?.item?.cTACard.jsonValue?.value,
             }}
           ></span>
         )}
@@ -86,7 +86,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-3'}
         >
-          <JssText field={props.fields?.Title}></JssText>
+          <JssText field={props.fields?.data?.item?.title?.jsonValue}></JssText>
         </Text>
       }
       cta={cta || <></>}
@@ -122,6 +122,21 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   );
 };
 
-export const getStaticProps: GetStaticComponentProps = async (rendering) => {
-  return await fetchDoctorCard(rendering as ComponentRenderingDocCards);
+// export const getStaticProps: GetStaticComponentProps = async (rendering) => {
+//   return await fetchDoctorCard(rendering as ComponentRenderingDocCards);
+// };
+
+export const Updated = (props: DoctorCardsProps): JSX.Element => {
+  if (!props.fields) {
+    return <DoctorCardsDefaultComponent {...props} />;
+  }
+  return (
+    <div className={`component ${props.params?.styles}`}>
+      <br />
+      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+      <br />
+      <JssText field={props.fields?.data?.item?.numberOfCards?.jsonValue} />
+      <br />
+    </div>
+  );
 };

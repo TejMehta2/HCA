@@ -8,7 +8,7 @@ import Params from 'src/types/params';
 export interface DoctifyLogoFields {
   fields?: {
     Text?: Field<string>;
-    Logo?: ImageField;
+    Logo: { fields?: ImageField; value?: string };
   };
 }
 

@@ -1,0 +1,27 @@
+﻿---
+ID: "baccf5c8-fa95-421d-a20e-5b553a5ccdcb"
+Parent: "36bba076-f499-4e5d-9280-8b4a3cabf61f"
+Template: "36bba076-f499-4e5d-9280-8b4a3cabf61f"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Heading/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "766253f5-92d8-49fe-8b55-46c8f9b857f7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240329T120728Z

@@ -95,6 +95,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 }
                 type="radio"
                 value={value}
+                form="none"
               />
               <label
                 ref={(element: HTMLLabelElement) =>

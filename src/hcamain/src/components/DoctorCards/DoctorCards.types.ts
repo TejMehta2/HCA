@@ -128,46 +128,63 @@ export type ComponentRenderingDocCards = ComponentRendering & {
   fields?: ComponentFieldsDocCards;
 };
 
-export type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
+
+export type ConsultantsFields = {
+  title?: { value?: string };
+  description?: { value?: string };
+  image?: { jsonValue: ImageField };
+  doctifyPractice?: { value?: string };
 };
 
 export type PracticeFields = {
-  fields?: {
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Image?: ImageField;
-    DoctifyPractice?: Field<string>;
-  };
+  title?: { value?: string };
+  description?: { value?: string };
+  image?: { jsonValue: ImageField };
+  doctifyPractice?: { value?: string };
 };
 
 export type ServiceFields = {
-  fields?: {
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Image?: ImageField;
-    DoctifyKeywordId?: Field<string>;
-  };
+  title?: { value?: string };
+  description?: { value?: string };
+  image?: { jsonValue: ImageField };
+  doctifyKeywordId?: { value?: string };
 };
 
 export type FiltersFields = {
-  fields?: {
-    Filter?: Field<string>;
-    FilterValueString?: Field<string>;
-  };
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
 };
 
 export interface Fields {
-  Title?: Field<string>;
-  NumberOfCards?: Field<string>;
-  CTACard?: LinkField;
-  CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
-  Practice?: PracticeFields[];
-  Service?: ServiceFields[];
-  CustomFilters?: FiltersFields[];
+  data?: {
+    item?: {
+      title?: { jsonValue?: Field<string> };
+      numberOfCards?: { jsonValue?: Field<string> };
+      cTACard?: { jsonValue?: LinkField };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
+      consultants?: {
+        ConsultantsList: ConsultantsFields[];
+      };
+      Practice?: {
+        PracticeList: PracticeFields[];
+      };
+      Service?: {
+        ServicesList: ServiceFields[];
+      };
+      customFilters?: {
+        CustomFiltersList: FiltersFields[];
+      };
+    };
+    contextItemSearchParams: {
+      doctifyKeywordId?: { value?: string };
+    };
+  };
 }
 
 export type DoctorCardsProps = {

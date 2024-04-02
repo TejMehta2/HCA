@@ -14,16 +14,15 @@ Languages:
     - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
       Hint: ContactUnit
       Value: |
-        {C7F6CFFB-E283-41A8-A66C-0630FF822617}
-        {D87C3036-3788-420D-88EF-B8D4E63CA240}
-        {49939958-5CD0-4ED4-8D0C-D0A58D666BC3}
+        {44F3F91A-6517-4748-B0B3-DE08D210B2A7}
+        {DCF60739-46BA-41D4-A590-D17D719932D7}
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "79666086-bd04-455d-af80-0fc0893fa301"
+      Value: "730e4b2f-db40-48f8-8ece-964647d06565"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T215201Z
+      Value: 20240320T110158Z

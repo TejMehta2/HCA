@@ -6,7 +6,10 @@ Path: /sitecore/templates/Branches/Project/HCA/Page Content/Available Headless P
 SharedFields:
 - ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
   Hint: Renderings
-  Value: "{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
+  Value: |
+    {D52950C6-8721-4AC2-BABD-CC9BF7C54332}
+    {80F45169-A326-47F2-856B-C4AAB6025128}
+    {06CC8589-3696-4E7D-BBDC-E1CC77354ECC}
 Languages:
 - Language: en
   Versions:
@@ -21,11 +24,11 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1af55eaa-b272-44dd-9e91-e7207ea9e20d"
+      Value: "99ece396-f971-4693-bb11-e1f9a0390a54"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T122312Z
+      Value: 20240329T120729Z
