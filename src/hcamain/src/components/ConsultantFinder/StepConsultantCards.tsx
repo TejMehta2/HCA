@@ -978,6 +978,11 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.CallToBookIcon?.fields?.SvgMarkup
                           ?.value || null
                       }
+                      gmcNumber={
+                        consultant?.registrationBodies?.filter(
+                          (item: any) => item.name === 'General Medical Council'
+                        )[0]?.registrationNumber || ''
+                      }
                     />
                   ))}
               </ConsultantFinderResults>
