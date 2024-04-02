@@ -4,6 +4,8 @@
 @use '../core-components/TextField/TextField.module.scss';
 @use '../core-components/RadioButton/RadioButton.module.scss';
 @use '../core-components/Checkbox/Checkbox.module.scss';
+@use '../core-components/Textarea/Textarea.module.scss';
+@use '../core-components/SelectField/SelectField.module.scss';
 
 [data-byoc-sitecore-form],
 byoc-sitecore-form {
@@ -21,7 +23,7 @@ byoc-sitecore-form {
     @include responsive-grid-span($breakpoint-l: 8);
   }
 
-  .component:not(:first-of-type) {
+  .component:not(:first-of-type):not(.button-component) {
     margin-top: $spacing-5;
   }
 
@@ -47,8 +49,12 @@ byoc-sitecore-form {
 
   .form-input-element:not(.form-input-radio-element):not(
       .form-input-checkbox-element
-    ) {
+    ):not(textarea) {
     @extend %input-field;
+  }
+
+  input + .limit-counter {
+    display: none;
   }
 
   /* Controls */
@@ -59,27 +65,29 @@ byoc-sitecore-form {
     gap: $spacing-2;
   }
 
-  .radio-wrapper label {
-    display: flex;
-    gap: 0 $spacing-4;
-    align-items: center;
-
-    .form-input-wrapper-div {
+  .radio-wrapper {
+    label {
       display: flex;
+      gap: 0 $spacing-4;
+      align-items: center;
+
+      .form-input-wrapper-div {
+        display: flex;
+      }
+    }
+
+    .form-field-label {
+      margin: 0;
+
+      @include apply-body-extra-large;
+    }
+
+    .form-input-radio-element {
+      @extend %input-radio;
     }
   }
 
-  .radio-wrapper .form-field-label {
-    margin: 0;
-
-    @include apply-body-extra-large;
-  }
-
-  .form-input-radio-element {
-    @extend %input-radio;
-  }
-
-  .checkbox-wrapper {
+  .checkbox-component {
     user-select: none;
 
     label {
@@ -92,7 +100,7 @@ byoc-sitecore-form {
       margin: 0;
       padding-left: $spacing-7;
 
-      @extend %label;
+      @extend %label-checkbox;
     }
 
     .form-input-wrapper-div {
@@ -104,8 +112,68 @@ byoc-sitecore-form {
     }
   }
 
+  /* Textarea */
+  .longtext_input-component {
+    .form-input-wrapper-div {
+      @extend %input-textarea;
+    }
+  }
+
+  /* Select dropdown */
+  .singleselect_input-component,
+  .multiselect_input-component {
+    label {
+      position: relative;
+    }
+
+    .lp-flex-1 {
+      position: relative;
+
+      &::after {
+        @extend %select-icon;
+      }
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    .form-select-option-container {
+      @include apply-body-medium-large;
+
+      @extend %select-options;
+    }
+
+    .selected-indicator,
+    .mdi-menu-down {
+      display: none;
+    }
+  }
+
+  /* Validation */
+  .form-input-error-message {
+    color: var(--field-error-colour);
+    margin-top: $spacing-2;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-medium;
+
+    &::before {
+      content: '';
+      display: block;
+      mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Warning'%3E%3Cpath id='Vector' d='M12 7V13M12 17.01L12.01 16.999M12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22Z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E%0A");
+      background-color: var(--field-error-colour);
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+    }
+  }
+
   /* Buttons */
   .button-component {
+    margin-top: $spacing-8;
+
     @extend .button;
     @extend .large;
     @extend .full;

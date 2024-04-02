@@ -9,6 +9,10 @@
   border: 1px solid $navy-blue-60;
   border-radius: $radius-large;
 
+  &[type='date']:invalid::-webkit-datetime-edit {
+    color: var(--field-unfilled-label);
+  }
+
   @include apply-body-medium-large;
 }
 

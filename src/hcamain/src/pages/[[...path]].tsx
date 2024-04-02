@@ -28,7 +28,7 @@ const SitecorePage = ({
     // Disable form styles
     [...document.querySelectorAll('byoc-sitecore-form style')].forEach(
       (stylesheet) => {
-        console.log('first');
+        console.log('first1');
         stylesheet.remove();
       }
     );
