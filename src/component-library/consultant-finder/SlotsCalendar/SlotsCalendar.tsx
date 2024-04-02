@@ -300,9 +300,26 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       </div>
       {/* {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
       {!loadingSlots && <div>Slots loaded</div>} */}
+      <div className={styles['header-mobile']}>
+        <div className={`${styles['arrow']}`}>
+          <button onClick={showPrevWeek} disabled={disablePrev}>
+            <Icons iconName="iconChevronLeft" />
+          </button>
+        </div>
+        <div>
+          <Text tag="h2" variation="body-medium-medium">
+            Choose time
+          </Text>
+        </div>
+        <div className={`${styles['arrow']}`}>
+          <button onClick={showNextWeek} disabled={disableNext}>
+            <Icons iconName="iconChevronRight" />
+          </button>
+        </div>
+      </div>
       <div className={styles.header}>
         <div className={styles['header-container']}>
-          <div className={styles['arrow']}>
+          <div className={`${styles['arrow']} ${styles.desktop}`}>
             <button onClick={showPrevWeek} disabled={disablePrev}>
               <Icons iconName="iconChevronLeft" />
             </button>
@@ -323,7 +340,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
               </div>
             ))}
           </div>
-          <div className={styles['arrow']}>
+          <div className={`${styles['arrow']} ${styles.desktop}`}>
             <button onClick={showNextWeek} disabled={disableNext}>
               <Icons iconName="iconChevronRight" />
             </button>
