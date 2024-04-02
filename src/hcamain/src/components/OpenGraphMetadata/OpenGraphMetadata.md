@@ -1,4 +1,0 @@
-# OpenGraphMetadata documentation
-
-## Additional information
-

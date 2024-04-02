@@ -15,6 +15,7 @@ Languages:
         {F1F7EFAB-EFF6-4F67-ABE2-C6131FCA08AB}
         {540014C3-7B4B-49E6-A894-F3DB751E1160}
         {27B3B237-06A5-4481-830E-16EEB609984D}
+        {F2105099-7B8E-4C9D-8B02-E7A198B5B1DA}
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T085825Z
@@ -26,7 +27,7 @@ Languages:
       Value: Our locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ed37baf2-bdf0-4c86-8eae-ca19c5c00dab"
+      Value: "46e2fd01-aa91-428e-bccb-082c6453d2a4"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -40,7 +41,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T154858Z
+      Value: 20240331T212430Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
