@@ -4,6 +4,7 @@
 .terms {
   @include responsive-container;
   @include responsive-grid;
+
   margin-top: $spacing-8;
   margin-bottom: $spacing-8;
 
