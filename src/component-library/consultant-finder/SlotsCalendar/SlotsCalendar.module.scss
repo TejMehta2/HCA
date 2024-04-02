@@ -107,6 +107,16 @@
     }
   }
 
+  .btn-txt {
+    span {
+      font-size: px-to-rem(14);
+      
+      @include media(screen-m) {
+        font-size: px-to-rem(18);
+      }
+    }
+  }
+
   .day {
     color: $navy-blue-70;
   }

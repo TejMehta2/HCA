@@ -308,7 +308,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         </div>
         <div>
           <Text tag="h2" variation="body-medium-medium">
-            Choose time
+            {props.chooseTimeHeading}
           </Text>
         </div>
         <div className={`${styles['arrow']}`}>
@@ -406,16 +406,21 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                                   )
                                 }
                               >
-                                {!isBookableDate(formattedDate) && (
-                                  <Icons iconName="iconClock" />
-                                )}
-                                <Text tag="span" variation="body-medium-large">
-                                  {removeSeconds(
-                                    new Date(
-                                      slot.startTime
-                                    ).toLocaleTimeString()
-                                  )}
-                                </Text>
+                                {!isBookableDate(formattedDate) &&
+                                  // <Icons iconName="iconClock" />
+                                  props.shortNoticeIcon}
+                                <div className={styles['btn-txt']}>
+                                  <Text
+                                    tag="span"
+                                    variation="body-medium-large"
+                                  >
+                                    {removeSeconds(
+                                      new Date(
+                                        slot.startTime
+                                      ).toLocaleTimeString()
+                                    )}
+                                  </Text>
+                                </div>
                               </button>
                             )
                         )}

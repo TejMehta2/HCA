@@ -11,4 +11,6 @@ export interface SlotsCalendarProps {
   API_C2_GetConsultantSlots_BaseURL: string;
   API_C2_GetConsultantSlots_NoResultsMsg: string;
   viewMapText: string;
+  chooseTimeHeading: string;
+  shortNoticeIcon: any;
 }

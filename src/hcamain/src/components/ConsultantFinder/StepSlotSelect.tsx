@@ -46,6 +46,8 @@ interface Fields {
   ViewMapText: Field<string>;
   PhoneNumberToBook: Field<string>;
   PhoneNumberIcon: any;
+  ChooseTimeHeading: Field<string>;
+  BookByPhoneIcon: any;
 }
 
 type StepProps = {
@@ -183,6 +185,14 @@ export const Default = (props: StepProps): JSX.Element => {
                 viewMapText={
                   props?.fields?.ViewMapText?.value ||
                   'View location on Google Maps'
+                }
+                chooseTimeHeading={
+                  props?.fields?.ChooseTimeHeading?.value || 'Choose time'
+                }
+                shortNoticeIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.BookByPhoneIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
                 }
               />
               <Navigation hideTextMobile={true}>
