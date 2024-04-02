@@ -60,6 +60,11 @@
       border-radius: px-to-rem(31);
       padding: $spacing-2 $spacing-4;
       margin-bottom: $spacing-2;
+
+      &.short-appointment {
+        background-color: $teal-20;
+        border: 1px solid $teal-20;
+      }
     }
   }
 
@@ -83,6 +88,7 @@
 
     @include media(screen-m) {
       margin-left: $spacing-2;
+      text-align: right;
     }
   }
 

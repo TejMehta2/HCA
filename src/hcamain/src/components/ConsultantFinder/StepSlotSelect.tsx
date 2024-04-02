@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
@@ -5,6 +6,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
+  GetStaticComponentProps,
+  useComponentProps,
+  ComponentRendering,
   Image as JssImage,
   Link as JssLink,
   RichText as JssRichText,
@@ -22,7 +26,7 @@ import Navigation from '@component-library/consultant-finder/Navigation/Navigati
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
-import axios from 'axios';
+import { getHolidays } from '../../lib/consultant-finder/API_HCA';
 
 interface Fields {
   HCALogo: ImageField;
@@ -36,8 +40,34 @@ interface Fields {
 }
 
 type StepProps = {
+  rendering: ComponentRendering;
   params: { [key: string]: string };
   fields: Fields;
+};
+
+interface ServerSideProps {
+  Holidays: any;
+}
+
+/**
+ * Will be called during SSG
+ * @param {ComponentRendering} _rendering
+ * @param {LayoutServiceData} _layoutData
+ * @param {GetStaticPropsContext} _context
+ */
+export const getStaticProps: GetStaticComponentProps = async (
+  _rendering,
+  _layoutData,
+  _context
+) => {
+  const holidaysJson = await getHolidays();
+  console.log('ss holidays', holidaysJson);
+
+  const returnProps: ServerSideProps = {
+    Holidays: holidaysJson,
+  };
+
+  return returnProps;
 };
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
@@ -49,6 +79,13 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  const serverSideData = useComponentProps<ServerSideProps>(
+    props.rendering.uid
+  );
+  console.log('holidays', serverSideData);
+
+  const holidaysUK = serverSideData?.Holidays;
+
   console.log('steps slot', props.fields);
   const {
     selectedLocation,
@@ -79,30 +116,6 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
-
-    // // get isFollowup from URL
-    // const isFollowUpAppointment = router?.query?.isFollowOnAppointment || null;
-    // if (isFollowUpAppointment) {
-    //   setSelectedTypeOfAppointment(isFollowUpAppointment?.toString());
-    // }
-
-    // const requestURL_C2 = `${baseURL_C2}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${isFollowUpAppointment}`;
-
-    // console.log('locations DoctifyURL', requestURL_C2);
-
-    // axios
-    //   .get(requestURL_C2)
-    //   .then((res) => {
-    //     console.log('locations results', res);
-    //     seLoading(false);
-    //     setError(false);
-    //     setLocations(res?.data?.availability || []);
-    //     setConsultantGUID(res?.data?.CRMID || '');
-    //   })
-    //   .catch((error) => {
-    //     setError(true);
-    //     console.log(error);
-    //   });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -125,7 +138,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <SlotsCalendar />
+            <SlotsCalendar holidays={holidaysUK} />
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>

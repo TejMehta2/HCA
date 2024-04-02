@@ -39,7 +39,8 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const [noSlots, setNoSlots] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
-  const [datesNotToBook, setDatesNotToBook] = useState([]);
+  const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
+  const [isBookableContent, setIsBookableContent] = useState(true);
 
   const getFirstDayOfWeek = (date: any) => {
     const firstDayOfWeek = new Date(date);
@@ -181,11 +182,54 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       });
   };
 
-  const showSelection = (e, startTime, endTime) => {
+  const showSelection = (e, startTime, endTime, formattedDate) => {
     setSelectedDate(formatDateLong(startTime));
     setSelectedTime(formatTime12hr(startTime));
     console.log(formatDateLong(startTime));
     console.log(formatTime12hr(startTime));
+
+    if (isBookableDate(formattedDate)) {
+      setIsBookableContent(true);
+    } else {
+      setIsBookableContent(false);
+    }
+  };
+
+  ///// bookable logic /////
+  const isBookableDate = (date: any) => {
+    const currentDate = new Date(); // get current date
+    currentDate.setHours(0, 0, 0, 0);
+    // 2 business days including today
+    const nextWorkingDay: any = nextWorkingDayInDaysTime(
+      formatDateYYYYMMDD(currentDate),
+      1
+    );
+
+    // if slot date is bigger than next working date then allow booking online
+    return new Date(date) > new Date(nextWorkingDay);
+  };
+
+  const isWorkingDay = (inputDateString: any) => {
+    const inputDate: any = new Date(inputDateString);
+    // Not Sun, Sat or a public holiday
+    return !(
+      inputDate.getDay() === 0 ||
+      inputDate.getDay() === 6 ||
+      datesNotToBook.indexOf(inputDateString) > -1
+    );
+  };
+
+  const nextWorkingDayInDaysTime = (inputDateString: any, days: any) => {
+    let loopDate = new Date(inputDateString);
+    let loopDayCount = days;
+    while (loopDayCount > 0) {
+      const newDate = loopDate.setDate(loopDate.getDate() + 1);
+      loopDate = new Date(newDate);
+      if (isWorkingDay(formatDateYYYYMMDD(loopDate))) {
+        loopDayCount--;
+      }
+    }
+    return loopDate;
   };
 
   useEffect(() => {
@@ -202,6 +246,15 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
 
     setDates(getDates(firstDay, lastDay));
 
+    if (props.holidays !== null && props.holidays !== undefined) {
+      const holidaysUKData = props.holidays
+        .map((item: any) => item.Values)
+        .map((item: any) => item.ISODate);
+      // console.log('holidaysUKData', holidaysUKData);
+      setDatesNotToBook(holidaysUKData);
+    } else {
+      setDatesNotToBook([]);
+    }
     // eslint-disable-next-line
 }, []);
 
@@ -263,62 +316,62 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         </div>
       </div>
 
-      
-        <div className={styles['slots-main']}>
-          {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
-          {!loadingSlots && noSlots && (
-            <div className={styles['no-slots']}>
-              <p>No slots</p>
-            </div>
-          )}
-          {!loadingSlots && days.length > 0 && (
-            <div className={styles['weekdays']}>
-              {daysOfWeek.map((day, index) => (
-                <div key={index} className={styles['weekdays-item']}>
-                  {days.map((date: any, dateIndex) => {
-                    const getFormattedDate = (fristAppointmentDate: any) => {
-                      const date = new Date(fristAppointmentDate);
+      <div className={styles['slots-main']}>
+        {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
+        {!loadingSlots && noSlots && (
+          <div className={styles['no-slots']}>
+            <p>No slots</p>
+          </div>
+        )}
+        {!loadingSlots && days.length > 0 && (
+          <div className={styles['weekdays']}>
+            {daysOfWeek.map((day, index) => (
+              <div key={index} className={styles['weekdays-item']}>
+                {days.map((date: any, dateIndex) => {
+                  const getFormattedDate = (fristAppointmentDate: any) => {
+                    const date = new Date(fristAppointmentDate);
 
-                      const options: object = {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      };
-
-                      const formattedDate = date.toLocaleDateString('en-US', {
-                        ...options,
-                        timeZone: 'UTC',
-                      });
-
-                      return formattedDate;
+                    const options: object = {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
                     };
 
-                    const newDate = getFormattedDate(date.date);
+                    const formattedDate = date.toLocaleDateString('en-US', {
+                      ...options,
+                      timeZone: 'UTC',
+                    });
 
-                    const formattedDate = `${dates[index]}, ${year}`;
+                    return formattedDate;
+                  };
 
-                    if (newDate === formattedDate) {
-                      return (
-                        <div key={dateIndex} className={`${styles['time']}`}>
-                          {date.slots.map(
-                            (slot: any, slotIndex: any) =>
-                              !slot.isBlocked && (
-                                <button
-                                  key={slotIndex}
-                                  // className={`time ${
-                                  //   !isBookableDate(formattedDate)
-                                  //     ? 'time--not-bookable'
-                                  //     : ''
-                                  // }`}
-                                  onClick={(e) =>
-                                    showSelection(
-                                      e,
-                                      slot.startTime,
-                                      slot.endTime
-                                    )
-                                  }
-                                >
-                                  {/* {!isBookableDate(formattedDate) && (
+                  const newDate = getFormattedDate(date.date);
+
+                  const formattedDate = `${dates[index]}, ${year}`;
+
+                  if (newDate === formattedDate) {
+                    return (
+                      <div key={dateIndex} className={`${styles['time']}`}>
+                        {date.slots.map(
+                          (slot: any, slotIndex: any) =>
+                            !slot.isBlocked && (
+                              <button
+                                key={slotIndex}
+                                className={`${
+                                  !isBookableDate(formattedDate)
+                                    ? 'short-appointment'
+                                    : ''
+                                }`}
+                                onClick={(e) =>
+                                  showSelection(
+                                    e,
+                                    slot.startTime,
+                                    slot.endTime,
+                                    formattedDate
+                                  )
+                                }
+                              >
+                                {/* {!isBookableDate(formattedDate) && (
                               <span
                                 className="time--not-bookable-icon"
                                 aria-hidden="true"
@@ -350,29 +403,26 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                                 </svg>
                               </span>
                             )} */}
-                                  <Text
-                                    tag="span"
-                                    variation="body-medium-large"
-                                  >
-                                    {removeSeconds(
-                                      new Date(
-                                        slot.startTime
-                                      ).toLocaleTimeString()
-                                    )}
-                                  </Text>
-                                </button>
-                              )
-                          )}
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+                                <Text tag="span" variation="body-medium-large">
+                                  {removeSeconds(
+                                    new Date(
+                                      slot.startTime
+                                    ).toLocaleTimeString()
+                                  )}
+                                </Text>
+                              </button>
+                            )
+                        )}
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
