@@ -57,13 +57,22 @@ type FindAConsultantCTAProps = {
 
 const FindAConsultantCTADefaultComponent = (
   props: FindAConsultantCTAProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">FindAConsultantCTA no datasource</span>
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Find a consultant CTA. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
