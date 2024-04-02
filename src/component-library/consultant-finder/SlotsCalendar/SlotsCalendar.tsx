@@ -116,7 +116,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setSelectedTime('');
     setIsBookableContent(true);
 
-    const slotsURL = `https:/api/C2/GetLDBConsultantSlots?dateFrom=${firstDay}&dateTo=${lastDay}&isFollowOnAppointment=${selectedTypeOfAppointment}&consultantGUID=${consultantGUID}&locationGUID=${locationGUID}`;
+    const slotsURL = `${props.API_C2_GetConsultantSlots_BaseURL}dateFrom=${firstDay}&dateTo=${lastDay}&isFollowOnAppointment=${selectedTypeOfAppointment}&consultantGUID=${consultantGUID}&locationGUID=${locationGUID}`;
     axios
       .get(slotsURL)
       .then((res) => {
@@ -277,7 +277,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     <div className={styles.slots}>
       <div className={styles.top}>
         <Text tag="h1" variation="heading-1">
-          Please select a slot
+          {props.titleText}
         </Text>
         <div className={styles.location}>
           <Text tag="h2" variation="body-medium-extra-large">
@@ -291,7 +291,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                   target="_blank"
                 >
                   <Icons iconName="iconPin" />
-                  <span>View location on Google Maps</span>
+                  <span>{props.viewMapText}</span>
                 </a>
               </TextLink>
             </div>
@@ -352,7 +352,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
         {!loadingSlots && noSlots && (
           <div className={styles['no-slots']}>
-            <p>No slots</p>
+            <Text tag="p" variation="body-medium-small">
+              {props.API_C2_GetConsultantSlots_NoResultsMsg}
+            </Text>
           </div>
         )}
         {!loadingSlots && days.length > 0 && (
@@ -426,6 +428,20 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
             ))}
           </div>
         )}
+      </div>
+      <div className={styles.legend}>
+        <div className={styles.col}>
+          <div className={styles.dot}></div>
+          <Text tag="h2" variation="body-medium-small">
+            {props.keyBookOnlineText}
+          </Text>
+        </div>
+        <div className={styles.col}>
+          <div className={`${styles.dot} ${styles['dot-green']}`}></div>
+          <Text tag="h2" variation="body-medium-small">
+            {props.keyShortNoticeText}
+          </Text>
+        </div>
       </div>
     </div>
   );

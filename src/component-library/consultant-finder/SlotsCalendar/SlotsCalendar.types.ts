@@ -4,4 +4,11 @@ import { ReactNode } from 'react';
 export interface SlotsCalendarProps {
   children?: ReactNode | JSX.Element;
   holidays: any;
+  titleText: string;
+  keyShortNoticeText: string;
+  keyBookOnlineText: string;
+  API_C2_GetConsultantSlots_LoadingMsg: string;
+  API_C2_GetConsultantSlots_BaseURL: string;
+  API_C2_GetConsultantSlots_NoResultsMsg: string;
+  viewMapText: string;
 }

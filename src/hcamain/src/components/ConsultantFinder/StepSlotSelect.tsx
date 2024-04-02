@@ -32,11 +32,19 @@ interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
   Steps: any;
-  TitleText: Field<string>;
   CardImage: ImageField;
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  TitleText: Field<string>;
+  KeyShortNoticeText: Field<string>;
+  KeyBookOnlineText: Field<string>;
+  AppointmentSelectedText: Field<string>;
+  API_C2_GetConsultantSlots_LoadingMsg: Field<string>;
+  API_C2_GetConsultantSlots_Header: Field<string>;
+  API_C2_GetConsultantSlots_BaseURL: Field<string>;
+  API_C2_GetConsultantSlots_NoResultsMsg: Field<string>;
+  ViewMapText: Field<string>;
 }
 
 type StepProps = {
@@ -139,7 +147,31 @@ export const Default = (props: StepProps): JSX.Element => {
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            <SlotsCalendar holidays={holidaysUK} />
+            <SlotsCalendar
+              holidays={holidaysUK}
+              titleText={
+                props?.fields?.TitleText?.value || 'Please select a slot'
+              }
+              keyShortNoticeText={
+                props?.fields?.KeyShortNoticeText?.value || ''
+              }
+              keyBookOnlineText={props?.fields?.KeyBookOnlineText?.value || ''}
+              API_C2_GetConsultantSlots_LoadingMsg={
+                props?.fields?.API_C2_GetConsultantSlots_LoadingMsg?.value || ''
+              }
+              API_C2_GetConsultantSlots_BaseURL={
+                props?.fields?.API_C2_GetConsultantSlots_BaseURL?.value ||
+                'https:/api/C2/GetLDBConsultantSlots?'
+              }
+              API_C2_GetConsultantSlots_NoResultsMsg={
+                props?.fields?.API_C2_GetConsultantSlots_NoResultsMsg?.value ||
+                'No slots found'
+              }
+              viewMapText={
+                props?.fields?.ViewMapText?.value ||
+                'View location on Google Maps'
+              }
+            />
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
@@ -154,7 +186,10 @@ export const Default = (props: StepProps): JSX.Element => {
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
                   {isBookableContent &&
-                    `Appointment selected on ${selectedDate} at ${selectedTime}`}
+                    `${
+                      props?.fields?.AppointmentSelectedText?.value ||
+                      'Appointment selected on'
+                    } ${selectedDate} at ${selectedTime}`}
                   {!isBookableContent && `Call to book`}
                 </Text>
               )}
@@ -168,16 +203,11 @@ export const Default = (props: StepProps): JSX.Element => {
                           : false
                       }
                       onClick={() =>
-                        router.push(
-                          `${
-                            props?.fields?.NextLink?.value?.href ||
-                            '/Finder/Step-Slot-Select'
-                          }?slug=${slug}&gmcNumber=${gmcNumber}`
-                        )
+                        router.push(`${props?.fields?.NextLink?.value?.href}`)
                       }
                     >
                       <span>
-                        {props?.fields?.NextLink?.value?.text || 'Next'}
+                        {props?.fields?.NextLink?.value?.text || 'Book Slot'}
                       </span>
                     </button>
                   </Button>

@@ -149,4 +149,42 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: $spacing-7 $spacing-14;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+
+    .col {
+      display: flex;
+      align-items: center;
+
+      &:last-of-type {
+        margin-left: 0;
+
+        @include media(screen-m) {
+          margin-left: $spacing-4;
+        }
+      }
+
+      .dot {
+        border-radius: 50%;
+        width: px-to-rem(14);
+        height: px-to-rem(14);
+        background-color: $white;
+        margin-right: $spacing-2;
+        border: 1px solid $navy-blue-30;
+
+        &.dot-green {
+          background-color: $teal-20;
+          border: 1px solid $teal-20;
+        }
+      }
+    }
+  }
 }
