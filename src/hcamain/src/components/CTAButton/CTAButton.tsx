@@ -1,5 +1,10 @@
 import React from 'react';
-import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  LinkField,
+  RichText,
+  Link as JssLink,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import {
@@ -16,13 +21,13 @@ type CTAIconFields = {
 };
 
 interface Fields {
-  CTAIcon?: CTAIconFields;
-  CTALink?: LinkField;
+  CTAIcon: CTAIconFields;
+  CTALink: LinkField;
 }
 
 type CTAProps = {
   params?: Params;
-  fields?: Fields;
+  fields: Fields;
   size?: ButtonProps['size'];
   contentVariation?: ButtonProps['contentVariation'];
 };
@@ -47,29 +52,39 @@ const CTADefaultComponent = (props: CTAProps): JSX.Element => {
 interface IntegratedButtonProps extends CTAProps {
   variation: ButtonVariationUnionTypes;
 }
-const IntegratedButton = (props: IntegratedButtonProps) => (
-  <Button
-    variation={props.variation}
-    size={props.size || 'large'}
-    contentVariation={props.contentVariation}
-  >
-    <a href={props.fields?.CTALink?.value?.href}>
-      {props.fields?.CTAIcon?.fields?.SvgMarkup && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
-          }}
-        />
-      )}
-      <RichText
-        tag="span"
-        field={{
-          value: props.fields?.CTALink?.value?.text,
-        }}
-      />
-    </a>
-  </Button>
-);
+const IntegratedButton = (props: IntegratedButtonProps) => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  return (
+    <Button
+      variation={props.variation}
+      size={props.size || 'large'}
+      contentVariation={props.contentVariation}
+    >
+      <JssLink field={props.fields.CTALink}>
+        {!isExperienceEditor && (
+          <>
+            {props?.fields?.CTAIcon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                }}
+              />
+            )}
+            {props?.fields?.CTALink?.value?.text && (
+              <RichText
+                tag="span"
+                field={{
+                  value: props.fields?.CTALink?.value?.text,
+                }}
+              />
+            )}
+          </>
+        )}
+      </JssLink>
+    </Button>
+  );
+};
 
 export const Full = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
@@ -79,20 +94,19 @@ export const Full = (props: CTAProps): JSX.Element => {
 };
 
 export const Outline = (props: CTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CTADefaultComponent {...props} />;
+  }
   return <IntegratedButton {...props} variation="outline" />;
 };
 
 export const TextButton = (props: CTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CTADefaultComponent {...props} />;
+  }
   return (
     <TextButtonComponent>
-      <a href={props.fields?.CTALink?.value?.href}>
-        <RichText
-          tag="span"
-          field={{
-            value: props.fields?.CTALink?.value?.text,
-          }}
-        />
-      </a>
+      <JssLink field={props.fields.CTALink}></JssLink>
     </TextButtonComponent>
   );
 };
