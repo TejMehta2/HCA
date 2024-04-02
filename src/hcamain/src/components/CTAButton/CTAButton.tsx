@@ -7,6 +7,7 @@ import {
   ButtonVariationUnionTypes,
 } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type CTAIconFields = {
   fields?: {
@@ -26,13 +27,22 @@ type CTAProps = {
   contentVariation?: ButtonProps['contentVariation'];
 };
 
-const CTADefaultComponent = (props: CTAProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
+const CTADefaultComponent = (props: CTAProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          CTA. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 interface IntegratedButtonProps extends CTAProps {
   variation: ButtonVariationUnionTypes;
