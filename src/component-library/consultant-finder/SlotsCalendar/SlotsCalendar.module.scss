@@ -17,10 +17,6 @@
     align-items: center;
     margin: $spacing-5 0 0;
 
-    h2 {
-      font-size: px-to-rem(12);
-    }
-
     @include media(screen-m) {
       display: none;
     }
@@ -42,14 +38,10 @@
     margin: $spacing-6 0 $spacing-5 0;
   }
 
-  // .weekdays {
-  //   margin: 0 px-to-rem(24);
-  // }
-
   .weekdays-item,
   .week-header-item {
     text-align: center;
-    width: 14.285714285714285714285714285714%;
+    width: 14.2857%;
   }
 
   .arrow {
@@ -62,7 +54,6 @@
     }
 
     button {
-      -moz-appearance: none;
       appearance: none;
       border: none;
       outline: none;
@@ -79,9 +70,7 @@
     flex-direction: column;
 
     button {
-      -moz-appearance: none;
       appearance: none;
-      border: none;
       outline: none;
       display: flex;
       justify-content: center;
@@ -120,6 +109,16 @@
 
   .day {
     color: $navy-blue-70;
+  }
+
+  .date {
+    h3 {
+      font-size: px-to-rem(12);
+
+      @include media(screen-m) {
+        font-size: inherit;
+      }
+    }
   }
 
   .top {

@@ -10,8 +10,6 @@ import {
   useComponentProps,
   ComponentRendering,
   Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,

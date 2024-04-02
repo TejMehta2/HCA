@@ -35,7 +35,7 @@
 
   .divider {
     width: px-to-rem(20);
-    height: 1px;
+    height: px-to-rem(1);
     background-color: $navy-blue-100;
     margin: 0 $spacing-3;
   }

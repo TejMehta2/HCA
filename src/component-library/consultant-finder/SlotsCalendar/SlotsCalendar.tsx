@@ -30,7 +30,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
-  // eslint-disable-next-line
   const [lastDayOfWeek, setLastDayOfWeek] = useState<any>(null);
   const [dates, setDates] = useState([]);
   const [year, setYear] = useState(null);
@@ -140,6 +139,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         }));
 
         console.log('formatted slots api', days);
+        console.log(lastDayOfWeek);
 
         // enable next/ prev after slots call was completed
         // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
@@ -192,7 +192,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setSelectedTime(formatTime12hr(startTime));
     console.log(formatDateLong(startTime));
     console.log(formatTime12hr(startTime));
-
+    console.log(endTime);
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
 
     if (buttons.length > 0) {
@@ -332,7 +332,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
                     {day}
                   </Text>
                 </div>
-                <div className="date">
+                <div className={styles.date}>
                   <Text tag="h3" variation="body-medium-large">
                     {dates[index]}
                   </Text>
@@ -359,7 +359,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
         )}
         {!loadingSlots && days.length > 0 && (
           <div className={styles['weekdays']}>
-            {daysOfWeek.map((day, index) => (
+            {daysOfWeek.map((_day, index) => (
               <div key={index} className={styles['weekdays-item']}>
                 {days.map((date: any, dateIndex) => {
                   const getFormattedDate = (fristAppointmentDate: any) => {

@@ -467,9 +467,6 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     setLoading(true);
-    const defaultParams =
-      props?.fields?.API_DoctifySearch_DefaultParams?.value ||
-      `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=700`;
     const URLprams = searchParams.toString();
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
