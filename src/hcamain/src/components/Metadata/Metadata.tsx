@@ -1,23 +1,26 @@
 import React from 'react';
-import { Field, ImageField,useSitecoreContext, } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  ImageField,
+  useSitecoreContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Head from 'next/head';
 
 type PageRouteMetadata = {
-  fields?:
-  {
-  AbstractTitle?: { value?: Field<string> };
-  AbstractText?: { value?: Field<string> };
-  AbstractImage?: { value?: ImageField };
-  title?: { value?: Field<string> };
-  text?: { value?: Field<string> };
-  image?: { value?: ImageField };
-  metaTitle?: { value?: Field<string> };
-  metaDescription?: { value?: Field<string> };
-  metaImage?: { value?: ImageField };
-  noIndex?: { value?: Field<string> };
-  noFollow?: { value?: Field<string> };
-}
+  fields?: {
+    AbstractTitle?: { value?: Field<string> };
+    AbstractText?: { value?: Field<string> };
+    AbstractImage?: { value?: ImageField };
+    Title?: { value?: Field<string> };
+    Text?: { value?: Field<string> };
+    Image?: { value?: ImageField };
+    MetaTitle?: { value?: Field<string> };
+    MetaDescription?: { value?: Field<string> };
+    MetaImage?: { value?: ImageField };
+    NoIndex?: { value?: Field<string> };
+    NoFollow?: { value?: Field<string> };
+  };
   itemId?: string;
 };
 
@@ -35,13 +38,14 @@ type MetadataProps = {
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
-  const route= useSitecoreContext().sitecoreContext?.route as PageRouteMetadata;
+  const route = useSitecoreContext().sitecoreContext
+    ?.route as PageRouteMetadata;
   if (!props.fields) {
     return <MetadataDefaultComponent />;
   }
   return (
     <Head>
-     <meta name="pageId" content={route.itemId}></meta>
-  </Head>
+      <meta name="pageId" content={route.itemId}></meta>
+    </Head>
   );
 };
