@@ -34,6 +34,8 @@ interface ConsultantFinderContextType {
   setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
   selectedLocationName: string;
   setSelectedLocationName: React.Dispatch<React.SetStateAction<string>>;
+  isBookableContent: boolean;
+  setIsBookableContent: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ConsultantFinderContext =
@@ -73,6 +75,8 @@ export const ConsultantFinderContext =
     setSelectedTime: () => {},
     selectedLocationName: '',
     setSelectedLocationName: () => {},
+    isBookableContent: true,
+    setIsBookableContent: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -99,6 +103,7 @@ export const ConsultantFinderContextProvider = ({
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [selectedLocationName, setSelectedLocationName] = useState<string>('');
+  const [isBookableContent, setIsBookableContent] = useState(true);
 
   return (
     <ConsultantFinderContext.Provider
@@ -137,6 +142,8 @@ export const ConsultantFinderContextProvider = ({
         setSelectedTime,
         selectedLocationName,
         setSelectedLocationName,
+        isBookableContent,
+        setIsBookableContent,
       }}
     >
       {children}

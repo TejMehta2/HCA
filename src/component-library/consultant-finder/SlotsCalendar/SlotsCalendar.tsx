@@ -16,7 +16,6 @@ import axios from 'axios';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
-  const { children } = props;
   const {
     selectedLocationName,
     locationGUID,
@@ -27,6 +26,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     lon,
     setSelectedDate,
     setSelectedTime,
+    setIsBookableContent,
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
@@ -40,7 +40,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
   const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
-  const [isBookableContent, setIsBookableContent] = useState(true);
 
   const getFirstDayOfWeek = (date: any) => {
     const firstDayOfWeek = new Date(date);
@@ -115,6 +114,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setDisableNext(true);
     setSelectedDate('');
     setSelectedTime('');
+    setIsBookableContent(true);
 
     const slotsURL = `https:/api/C2/GetLDBConsultantSlots?dateFrom=${firstDay}&dateTo=${lastDay}&isFollowOnAppointment=${selectedTypeOfAppointment}&consultantGUID=${consultantGUID}&locationGUID=${locationGUID}`;
     axios

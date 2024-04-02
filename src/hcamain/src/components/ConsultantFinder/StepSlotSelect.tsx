@@ -88,11 +88,12 @@ export const Default = (props: StepProps): JSX.Element => {
 
   console.log('steps slot', props.fields);
   const {
-    selectedLocation,
-    setSelectedTypeOfAppointment,
-    setConsultantGUID,
+    // selectedLocation,
+    // setSelectedTypeOfAppointment,
+    // setConsultantGUID,
     selectedDate,
     selectedTime,
+    isBookableContent,
   } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
@@ -152,30 +153,51 @@ export const Default = (props: StepProps): JSX.Element => {
               </div>
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
-                  {`Appointment selected on ${selectedDate} at ${selectedTime}`}
+                  {isBookableContent &&
+                    `Appointment selected on ${selectedDate} at ${selectedTime}`}
+                  {!isBookableContent && `Call to book`}
                 </Text>
               )}
-              <Container>
-                <Button size={'small'} variation={'full-dark'}>
-                  <button
-                    disabled={
-                      selectedDate === '' && selectedTime === '' ? true : false
-                    }
-                    onClick={() =>
-                      router.push(
-                        `${
-                          props?.fields?.NextLinks?.value?.href ||
-                          '/Finder/Step-Slot-Select'
-                        }?slug=${slug}&gmcNumber=${gmcNumber}`
-                      )
-                    }
-                  >
-                    <span>
-                      {props?.fields?.NextLink?.value?.text || 'Next'}
-                    </span>
-                  </button>
-                </Button>
-              </Container>
+              {isBookableContent && (
+                <Container>
+                  <Button size={'small'} variation={'full-dark'}>
+                    <button
+                      disabled={
+                        selectedDate === '' && selectedTime === ''
+                          ? true
+                          : false
+                      }
+                      onClick={() =>
+                        router.push(
+                          `${
+                            props?.fields?.NextLink?.value?.href ||
+                            '/Finder/Step-Slot-Select'
+                          }?slug=${slug}&gmcNumber=${gmcNumber}`
+                        )
+                      }
+                    >
+                      <span>
+                        {props?.fields?.NextLink?.value?.text || 'Next'}
+                      </span>
+                    </button>
+                  </Button>
+                </Container>
+              )}
+              {!isBookableContent && (
+                <Container>
+                  <Button size={'small'} variation={'full-dark'}>
+                    <button
+                      disabled={
+                        selectedDate === '' && selectedTime === ''
+                          ? true
+                          : false
+                      }
+                    >
+                      <span>number</span>
+                    </button>
+                  </Button>
+                </Container>
+              )}
             </Navigation>
           </>
         )}
