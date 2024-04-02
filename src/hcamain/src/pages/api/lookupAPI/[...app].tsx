@@ -96,6 +96,8 @@ export default async function handler(
   let dictionary: string = '';
   let optionals: string = '';
 
+  console.log(datasourceType, optionals);
+
   let error: string = '';
   if (frags) {
     if (frags.length > 0) {
