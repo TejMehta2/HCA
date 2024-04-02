@@ -19,6 +19,8 @@ interface IHCAConfig {
   aPI_HCA_All_Consultants_NoResultsMsg: string;
   aPI_HCA_All_Consultants_LoadingMsg: string;
   aPI_HCA_All_Consultants_UtilizesLegacy: boolean;
+  aPI_HCA_All_Consultants_MockConsultants: boolean;
+  aPI_HCA_All_Consultants_MockSlugsList: string;
 
   //HCA API - Holidays
   aPI_HCA_Holidays_BaseURL: string;
@@ -50,6 +52,8 @@ export async function getHCAConfig(): Promise<IHCAConfig> {
     aPI_HCA_All_Consultants_NoResultsMsg: '',
     aPI_HCA_All_Consultants_LoadingMsg: '',
     aPI_HCA_All_Consultants_UtilizesLegacy: true,
+    aPI_HCA_All_Consultants_MockSlugsList: '',
+    aPI_HCA_All_Consultants_MockConsultants: false,
 
     //HCA API - Holidays
     aPI_HCA_Holidays_BaseURL: '',
