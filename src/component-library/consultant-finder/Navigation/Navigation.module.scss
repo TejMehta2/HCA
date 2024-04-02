@@ -29,6 +29,7 @@
       @include media(screen-m) {
         display: inline-block;
         color: $navy-blue-100;
+        margin: 0 $spacing-3;
       }
     }
   }

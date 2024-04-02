@@ -25,6 +25,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import { getHolidays } from '../../lib/consultant-finder/API_HCA';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 interface Fields {
   HCALogo: ImageField;
@@ -43,6 +44,8 @@ interface Fields {
   API_C2_GetConsultantSlots_BaseURL: Field<string>;
   API_C2_GetConsultantSlots_NoResultsMsg: Field<string>;
   ViewMapText: Field<string>;
+  PhoneNumberToBook: Field<string>;
+  PhoneNumberIcon: any;
 }
 
 type StepProps = {
@@ -200,7 +203,8 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.AppointmentSelectedText?.value ||
                         'Appointment selected on'
                       } ${selectedDate} at ${selectedTime}`}
-                    {!isBookableContent && `Call to book`}
+                    {!isBookableContent &&
+                      props?.fields?.KeyShortNoticeText?.value}
                   </Text>
                 )}
                 {isBookableContent && (
@@ -224,17 +228,22 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Container>
                 )}
                 {!isBookableContent && (
-                  <Container>
+                  <Container customBtn={true}>
                     <Button size={'small'} variation={'full-dark'}>
-                      <button
-                        disabled={
-                          selectedDate === '' && selectedTime === ''
-                            ? true
-                            : false
-                        }
+                      <a
+                        href={`tel:${props?.fields?.PhoneNumberToBook?.value.replace(
+                          /\s/g,
+                          ''
+                        )}`}
                       >
-                        <span>number</span>
-                      </button>
+                        <SitecoreSvg>
+                          {
+                            props?.fields?.PhoneNumberIcon?.fields?.SvgMarkup
+                              ?.value
+                          }
+                        </SitecoreSvg>
+                        <span>{props?.fields?.PhoneNumberToBook?.value}</span>
+                      </a>
                     </Button>
                   </Container>
                 )}
