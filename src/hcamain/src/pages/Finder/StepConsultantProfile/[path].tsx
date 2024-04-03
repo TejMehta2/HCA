@@ -98,6 +98,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       // mock from Sitecore / SSG slows down the build, only use real on prod
       console.log('getStaticPaths loading mock consultant slugs');
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
+      slugs = slugs.filter((slug) => slug && slug.length > 0);
       console.log('slugs', slugs);
     } else {
       // real from legacy sitemap or doctify
@@ -168,7 +169,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-    revalidate: 5, // In seconds
+    revalidate: 300, // In seconds
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
 };
