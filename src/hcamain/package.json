@@ -78,7 +78,7 @@
     "react-intersection-observer": "^9.5.2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "~4.9.4",
+    "typescript": "^5.3",
     "yaml-loader": "^0.8.0"
   },
   "scripts": {
