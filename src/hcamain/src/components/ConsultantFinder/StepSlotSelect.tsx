@@ -1,34 +1,84 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
+  GetStaticComponentProps,
+  useComponentProps,
+  ComponentRendering,
   Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
+import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import SlotsCalendar from '@component-library/consultant-finder/SlotsCalendar/SlotsCalendar';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Container from '@component-library/foundation/Containers/Container';
+import { getHolidays } from '../../lib/consultant-finder/API_HCA';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
-  TitleText: Field<string>;
+  HCALogo: ImageField;
+  CurrentStep: any;
+  Steps: any;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  TitleText: Field<string>;
+  KeyShortNoticeText: Field<string>;
+  KeyBookOnlineText: Field<string>;
+  AppointmentSelectedText: Field<string>;
+  API_C2_GetConsultantSlots_LoadingMsg: Field<string>;
+  API_C2_GetConsultantSlots_Header: Field<string>;
+  API_C2_GetConsultantSlots_BaseURL: Field<string>;
+  API_C2_GetConsultantSlots_NoResultsMsg: Field<string>;
+  ViewMapText: Field<string>;
+  PhoneNumberToBook: Field<string>;
+  PhoneNumberIcon: any;
+  ChooseTimeHeading: Field<string>;
+  BookByPhoneIcon: any;
 }
 
 type StepProps = {
+  rendering: ComponentRendering;
   params: { [key: string]: string };
   fields: Fields;
+};
+
+interface ServerSideProps {
+  Holidays: any;
+}
+
+/**
+ * Will be called during SSG
+ * @param {ComponentRendering} _rendering
+ * @param {LayoutServiceData} _layoutData
+ * @param {GetStaticPropsContext} _context
+ */
+export const getStaticProps: GetStaticComponentProps = async (
+  _rendering,
+  _layoutData,
+  _context
+) => {
+  const holidaysJson = await getHolidays();
+  console.log('ss holidays', holidaysJson);
+
+  const returnProps: ServerSideProps = {
+    Holidays: holidaysJson,
+  };
+
+  return returnProps;
 };
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
@@ -40,48 +90,176 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  const serverSideData = useComponentProps<ServerSideProps>(
+    props.rendering.uid
+  );
+  console.log('holidays', serverSideData);
+
+  const holidaysUK = serverSideData?.Holidays;
+
+  console.log('steps slot', props.fields);
+  const {
+    selectedLocation,
+    selectedTypeOfAppointment,
+    // setConsultantGUID,
+    selectedDate,
+    selectedTime,
+    isBookableContent,
+  } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    // get slug from URL
+    const slug = router?.query?.slug || '';
+    setSlug(slug.toString());
+
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+
+    // if selected location and appointment type is missing then redirect to appointment type
+    if (selectedLocation === '' && selectedTypeOfAppointment === '') {
+      router.push(
+        `/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}`
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   if (props.fields) {
     return (
       <div
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
-        </div>
+        {router.isReady &&
+          selectedLocation !== '' &&
+          selectedTypeOfAppointment !== '' && (
+            <>
+              <HeaderLDB
+                logo={<JssImage field={props?.fields?.HCALogo} />}
+                progress={
+                  <ProgressBar
+                    currentPage={props?.fields?.CurrentStep?.value}
+                    steps={props?.fields?.Steps}
+                    slug={slug}
+                    gmcNumber={gmcNumber}
+                  ></ProgressBar>
+                }
+              ></HeaderLDB>
+              <SlotsCalendar
+                holidays={holidaysUK}
+                titleText={
+                  props?.fields?.TitleText?.value || 'Please select a slot'
+                }
+                keyShortNoticeText={
+                  props?.fields?.KeyShortNoticeText?.value || ''
+                }
+                keyBookOnlineText={
+                  props?.fields?.KeyBookOnlineText?.value || ''
+                }
+                API_C2_GetConsultantSlots_LoadingMsg={
+                  props?.fields?.API_C2_GetConsultantSlots_LoadingMsg?.value ||
+                  ''
+                }
+                API_C2_GetConsultantSlots_BaseURL={
+                  props?.fields?.API_C2_GetConsultantSlots_BaseURL?.value ||
+                  'https:/api/C2/GetLDBConsultantSlots?'
+                }
+                API_C2_GetConsultantSlots_NoResultsMsg={
+                  props?.fields?.API_C2_GetConsultantSlots_NoResultsMsg
+                    ?.value || 'No slots found'
+                }
+                viewMapText={
+                  props?.fields?.ViewMapText?.value ||
+                  'View location on Google Maps'
+                }
+                chooseTimeHeading={
+                  props?.fields?.ChooseTimeHeading?.value || 'Choose time'
+                }
+                shortNoticeIcon={
+                  <SitecoreSvg>
+                    {props?.fields?.BookByPhoneIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                }
+              />
+              <Navigation hideTextMobile={true}>
+                <div>
+                  <TextButton>
+                    <Link
+                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    >
+                      <Icons iconName="iconArrowSmallLeft" />
+                      <span>{props.fields.BackLink.value.text || 'Back'}</span>
+                    </Link>
+                  </TextButton>
+                </div>
+                {selectedDate !== '' && selectedTime !== '' && (
+                  <Text tag="p" variation="body-medium-extra-large">
+                    {isBookableContent &&
+                      `${
+                        props?.fields?.AppointmentSelectedText?.value ||
+                        'Appointment selected on'
+                      } ${selectedDate} at ${selectedTime}`}
+                    {!isBookableContent &&
+                      props?.fields?.KeyShortNoticeText?.value}
+                  </Text>
+                )}
+                {isBookableContent && (
+                  <Container>
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button
+                        disabled={
+                          selectedDate === '' && selectedTime === ''
+                            ? true
+                            : false
+                        }
+                        onClick={() =>
+                          router.push(`${props?.fields?.NextLink?.value?.href}`)
+                        }
+                      >
+                        <span>
+                          {props?.fields?.NextLink?.value?.text || 'Book Slot'}
+                        </span>
+                      </button>
+                    </Button>
+                  </Container>
+                )}
+                {!isBookableContent && (
+                  <Container customBtn={true}>
+                    <Button size={'small'} variation={'full-dark'}>
+                      <a
+                        href={`tel:${props?.fields?.PhoneNumberToBook?.value.replace(
+                          /\s/g,
+                          ''
+                        )}`}
+                      >
+                        <SitecoreSvg>
+                          {
+                            props?.fields?.PhoneNumberIcon?.fields?.SvgMarkup
+                              ?.value
+                          }
+                        </SitecoreSvg>
+                        <span>{props?.fields?.PhoneNumberToBook?.value}</span>
+                      </a>
+                    </Button>
+                  </Container>
+                )}
+              </Navigation>
+            </>
+          )}
       </div>
     );
   }

@@ -467,14 +467,11 @@ export const Default = (props: StepProps): JSX.Element => {
     }
 
     setLoading(true);
-    const defaultParams =
-      props?.fields?.API_DoctifySearch_DefaultParams?.value ||
-      `sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=700`;
     const URLprams = searchParams.toString();
     const baseURL =
       props?.fields?.API_DoctifySearch_BaseURL?.value ||
       `https://api.doctify.com/api/hca/search`;
-    const requestURL: string = `${baseURL}?${defaultParams}`;
+    const requestURL: string = `${baseURL}?${URLprams}`;
 
     if (URLprams.length === 0) {
       setLoading(false);
@@ -977,6 +974,11 @@ export const Default = (props: StepProps): JSX.Element => {
                       callToBookButtonIcon={
                         props?.fields?.CallToBookIcon?.fields?.SvgMarkup
                           ?.value || null
+                      }
+                      gmcNumber={
+                        consultant?.registrationBodies?.filter(
+                          (item: any) => item.name === 'General Medical Council'
+                        )[0]?.registrationNumber || ''
                       }
                     />
                   ))}

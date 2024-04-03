@@ -19,14 +19,21 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    //console.log('patient reviews', props);
+    const patientURL =
+      props.doctifyReviewsURL
+        ?.replace('{slug}', props.slug)
+        .replace('{limit}', props.doctifyReviewsLimit?.toString())
+        .replace('{offset}', offset.toString())
+        .replace('{order}', selectValue) ||
+      `https://api.doctify.com/api/hca/specialists/${props.slug}/reviews?limit=2&offset=${offset}&order=${selectValue}`;
+    //console.log('patient patientURL', patientURL);
     axios
-      .get(
-        `https://api.doctify.com/api/hca/specialists/${props.slug}/reviews?limit=2&offset=${offset}&order=${selectValue}`
-      )
+      .get(patientURL)
       .then((resp) => {
         // console.log(resp);
         setIsLoading(false);
-        console.log('reviews', resp.data);
+        //console.log('reviews', resp.data);
         setReviews((reviews: any) => [...reviews, ...resp.data.rows]);
         setTotal(resp.data.total);
       })
@@ -69,8 +76,8 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                 ]}
                 onChange={(event) => {
                   const target = event.target as HTMLInputElement;
-                  console.log('value', target.value);
-                  console.log(target.checked);
+                  //console.log('value', target.value);
+                  //console.log(target.checked);
                   setReviews([]);
                   setSelectValue(target.value);
                   setOffset(0);
@@ -81,8 +88,8 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
 
           <div className={styles['review-wrapper']}>
             {reviews.length > 0 &&
-              reviews.map((review: any) => (
-                <div key={review.id} className={styles.review}>
+              reviews.map((review: any, key: React.Key | null | undefined) => (
+                <div key={key} className={styles.review}>
                   <div className={styles.rating}>
                     <div>
                       <Text tag="p" variation="body-extra-large">
@@ -129,9 +136,9 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                       <Text tag="p" variation="body-medium">
                         {props.verifyByDoctifyText}
                       </Text>
-                      {props.docitfyLogo && (
+                      {props.doctifyLogo && (
                         <img
-                          src={props.docitfyLogo}
+                          src={props.doctifyLogo}
                           alt="doctify logo"
                           width="83"
                           height="21"

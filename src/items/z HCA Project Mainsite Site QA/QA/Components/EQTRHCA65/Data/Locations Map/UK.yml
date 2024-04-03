@@ -13,19 +13,19 @@ Languages:
       Value: 20240202T090254Z
     - ID: "2756feac-eccf-49fd-ba14-a13c1cfe5f8a"
       Hint: Title
-      Value: UK
+      Value: Locations across the UK
     - ID: "40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e"
       Hint: PinPositionY
-      Value: 61
+      Value: 0.614
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f6d0e765-269b-4096-b11e-fc11f04b63cb"
+      Value: "fc7f9e51-ba3d-4375-a5ba-8e00cdbfc0b0"
     - ID: "a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3"
       Hint: Theme
       Value: "{80BB723B-AE6D-4841-8B1F-09343026B5A8}"
     - ID: "a8a330a5-a593-415e-9d5e-ce864b2bf010"
       Hint: PinPositionX
-      Value: 58
+      Value: 0.587
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -34,6 +34,9 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "bc189b1e-2b88-43ed-8b4b-35e04b48f66f"
+      Hint: Icon
+      Value: "{F940A8AD-D316-4D03-893A-01169C3E95D2}"
     - ID: "c7b99527-05ed-44a3-9666-da41ecb28403"
       Hint: Number
       Value: 72
@@ -42,7 +45,7 @@ Languages:
       Value: 0.5
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240329T123756Z
+      Value: 20240402T160924Z
     - ID: "f94333db-fc15-460d-99aa-e2b335335ef8"
       Hint: Text
-      Value: Locations across UK
+      Value: Scroll down to explore
