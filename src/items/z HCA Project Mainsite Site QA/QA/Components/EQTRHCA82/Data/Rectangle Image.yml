@@ -1,0 +1,38 @@
+﻿---
+ID: "07206880-1016-44b3-95e9-67e3bbbc5240"
+Parent: "a23a85d2-3467-478b-8b3c-f128233db96f"
+Template: "8ec9dd60-9e3f-4885-b222-d43d6acfa62e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA82/Data/Rectangle Image"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240329T205236Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fb54dc53-b595-4145-98e2-a481e57bf827"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240329T205551Z
+    - ID: "fb20c52b-7356-4409-8299-a77febc5597b"
+      Hint: Image
+      Value: |
+        <image height="5464" dam-content-type="Image" alt="The Birth Company_Sept 23_021.jpg" width="5464" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/219908/thumbnail" dam-id="KUpBnPZKSCiRO_uo_20HGw" src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/394e9fcc0a7f4abb814ca725cfc8c9f6?v=027e3a4d" />

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
-
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
   Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -11,21 +12,32 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-
+import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
+import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Container from '@component-library/foundation/Containers/Container';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import SelectAppointmentType from '@component-library/consultant-finder/SelectAppointmentType/SelectAppointmentType';
+import Headline from '@component-library/consultant-finder/Headline/Headline';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
+  HCALogo: ImageField;
+  CurrentStep: any;
+  Steps: any;
   InitialAppointmentLink: LinkField;
+  InitialAppointmentIcon: any;
+  InitialAppointmentBodyText: Field<string>;
   FollowOnAppointmentLink: LinkField;
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
+  FollowUpAppointmentIcon: any;
+  FollowUpAppointmentBodyText: Field<string>;
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  BodyText: Field<string>;
 }
 
 type StepProps = {
@@ -42,67 +54,132 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  console.log('appointment type', props.fields);
   const id = props.params.RenderingIdentifier;
+  const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
+    useContext(ConsultantFinderContext);
+
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    // get slug from URL
+    const slug = router?.query?.slug || '';
+    setSlug(slug.toString());
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+    // get type of selected appointment if present in URL
+    const typeOfAppointment = router?.query?.isFollowOnAppointment || null;
+    if (typeOfAppointment) {
+      setSelectedTypeOfAppointment(typeOfAppointment.toString());
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   if (props.fields) {
     return (
       <div
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
+        {router.isReady && (
+          <div className="component-content">
+            <HeaderLDB
+              logo={<JssImage field={props?.fields?.HCALogo} />}
+              progress={
+                <ProgressBar
+                  currentPage={props?.fields?.CurrentStep?.value}
+                  steps={props?.fields?.Steps}
+                  slug={slug}
+                ></ProgressBar>
+              }
+            ></HeaderLDB>
+            <Headline>
+              <Text tag="h1" variation="heading-1">
+                {props?.fields?.BodyText?.value ||
+                  'Please choose a type of appointment'}
+              </Text>
+            </Headline>
+            <SelectAppointmentType
+              iconCard1={
+                <SitecoreSvg>
+                  {
+                    props?.fields?.InitialAppointmentIcon?.fields?.SvgMarkup
+                      ?.value
+                  }
+                </SitecoreSvg>
+              }
+              iconCard2={
+                <SitecoreSvg>
+                  {
+                    props?.fields?.FollowUpAppointmentIcon?.fields?.SvgMarkup
+                      ?.value
+                  }
+                </SitecoreSvg>
+              }
+              titleCard1={
+                props?.fields?.InitialAppointmentLink?.value?.text ||
+                'Initial appointment'
+              }
+              titleCard2={
+                props?.fields?.FollowOnAppointmentLink?.value?.text ||
+                'Follow up appointment'
+              }
+              textCard1={
+                <JssRichText
+                  field={props?.fields?.InitialAppointmentBodyText}
+                />
+              }
+              textCard2={
+                <JssRichText
+                  field={props?.fields?.FollowUpAppointmentBodyText}
+                />
+              }
+            />
+            <Navigation hideTextMobile={true}>
+              <div>
+                <TextButton>
+                  <Link
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                  >
+                    <Icons iconName="iconArrowSmallLeft" />
+                    <span>
+                      {props?.fields?.BackLink?.value?.text || 'Back'}
+                    </span>
+                  </Link>
+                </TextButton>
               </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the specifc component template</h2>
-              <h3>
-                These point to the same page as the next link, but also broken
-                out here just in case
-              </h3>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.InitialAppointmentLink}
-                  title={props.fields.InitialAppointmentLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.FollowOnAppointmentLink}
-                  title={props.fields.FollowOnAppointmentLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
+              <Container>
+                <Button size={'small'} variation={'full-dark'}>
+                  <button
+                    disabled={selectedTypeOfAppointment === '' ? true : false}
+                    onClick={() =>
+                      router.push(
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                      )
+                    }
+                  >
+                    <span>
+                      {props?.fields?.NextLink?.value?.text || 'Next'}
+                    </span>
+                  </button>
+                </Button>
+              </Container>
+            </Navigation>
           </div>
-        </div>
+        )}
       </div>
     );
   }

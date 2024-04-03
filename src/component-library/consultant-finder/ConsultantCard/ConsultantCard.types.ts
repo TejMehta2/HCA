@@ -5,6 +5,7 @@ export interface ConsultantCardProps {
   children?: ReactNode | JSX.Element;
   name: string;
   slug: string;
+  gmcNumber: string;
   profilePhoto?: string;
   keywords: any;
   hospitals: string[];

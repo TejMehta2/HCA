@@ -9,4 +9,5 @@ export default interface ConatinerProps {
   displayFlex?: string;
   width?: string;
   withButtons?: boolean;
+  customBtn?: boolean;
 }

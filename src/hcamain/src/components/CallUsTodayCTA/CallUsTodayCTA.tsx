@@ -11,6 +11,7 @@ import { Contact } from '@component-library/components/ModalCallUs/ModalCallUs.t
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import Params from 'src/types/params';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -38,10 +39,17 @@ type CallUsTodayCTAProps = {
 const CallUsTodayCTADefaultComponent = (
   props: CallUsTodayCTAProps
 ): JSX.Element => {
-  return (
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
     <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
-        <span className="is-empty-hint">CallUsTodayCTA no datasource</span>
+        <span className="is-empty-hint">
+          Call Us Component. Please click to select datasource.
+        </span>
       </div>
     </div>
   );
@@ -91,10 +99,7 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
                 ></span>
               )}
               <JssRichText
-                field={{
-                  value:
-                    props.fields?.data?.item?.cTAText?.jsonValue?.value || '',
-                }}
+                field={props.fields?.data?.item?.cTAText?.jsonValue}
               />
             </>
           )}
