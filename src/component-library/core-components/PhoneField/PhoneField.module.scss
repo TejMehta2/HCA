@@ -29,22 +29,13 @@
     margin-top: $spacing-1;
   }
 
-  div[class*='iti__selected-flag'] {
-    padding: 0 0 0 $spacing-6;
-
-    &[aria-expanded='true'] {
-      div[class*='iti__arrow'] {
-        transform: rotate(180deg);
-      }
-    }
-  }
-
   ul[class*='iti__country-list'] {
     overflow-y: auto;
     @include scrollbar($navy-blue-40);
 
     li {
       @include apply-body-medium-large;
+
       padding: px-to-rem(11) px-to-rem(24);
 
       &:hover,
@@ -75,6 +66,16 @@
       flex-shrink: 0;
       position: absolute;
       left: 0;
+    }
+  }
+
+  div[class*='iti__selected-flag'] {
+    padding: 0 0 0 $spacing-6;
+
+    &[aria-expanded='true'] {
+      div[class*='iti__arrow'] {
+        transform: rotate(180deg);
+      }
     }
   }
 }
