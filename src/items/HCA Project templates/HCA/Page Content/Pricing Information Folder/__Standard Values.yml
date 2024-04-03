@@ -1,16 +1,14 @@
 ﻿---
-ID: "91fbe056-c4a4-4e32-85b0-cdb79f3edc75"
-Parent: "d78ff265-1712-44a6-9c24-e9827c0930e4"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: /sitecore/templates/Branches/Project/HCA/Page Content/Available Headless Page Content Renderings/$name
+ID: "4f57e15e-fc51-423e-9183-d7703a66bdf8"
+Parent: "43fe69dd-81b8-421a-8fcf-e21c3a709cec"
+Template: "43fe69dd-81b8-421a-8fcf-e21c3a709cec"
+Path: /sitecore/templates/Project/HCA/Page Content/Pricing Information Folder/__Standard Values
 SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
   Value: |
-    {D52950C6-8721-4AC2-BABD-CC9BF7C54332}
-    {80F45169-A326-47F2-856B-C4AAB6025128}
-    {06CC8589-3696-4E7D-BBDC-E1CC77354ECC}
-    {4FB50128-73EE-4AEC-A1D0-A6F9F2D4C460}
+    {90C8570E-403E-41D9-86D9-5F3155266DE5}
+    {43FE69DD-81B8-421A-8FCF-E21C3A709CEC}
 Languages:
 - Language: en
   Versions:
@@ -18,14 +16,14 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20171113T104335Z
+      Value: 20120621T071605Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6e8b8bc7-b264-424a-a41c-1cc4567b0f2d"
+      Value: "1b4ee2c5-4a78-4507-905f-492b5607d375"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
