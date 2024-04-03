@@ -187,8 +187,27 @@
   }
 }
 
-.children div:not(:first-of-type) {
-  margin-top: $spacing-5;
+.pricing {
+  .image {
+    @include responsive-grid-span($breakpoint-l: 5);
+  }
+
+  .content {
+    @include responsive-grid-span($breakpoint-l: 6);
+    @include responsive-grid-start($breakpoint-l: 7);
+  }
+
+  .children {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+  }
 }
 
 .hide-on-mobile {

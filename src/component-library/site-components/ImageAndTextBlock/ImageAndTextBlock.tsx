@@ -16,6 +16,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     ratings,
     iconList,
     hideImageOnMobile,
+    contentVariation,
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
           className={[
             styles['wrapper'],
             iconList ? styles['icon-list-wrapper'] : '',
+            contentVariation ? styles[contentVariation] : '',
           ].join(' ')}
         >
           <div

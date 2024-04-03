@@ -371,6 +371,7 @@ export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
     theme: 'A-HCA-White',
     imageAlignment: 'left',
     length: 'long',
+    contentVariation: 'pricing',
     image: (
       <Image
         src="/placeholders/children-playing.jpg"
@@ -407,7 +408,7 @@ export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
           <Text tag="p" variation="subheading-2">
             indicative consultant fee from
           </Text>
-          <Text tag="p" variation="display-2">
+          <Text tag="p" variation="display-5">
             £1,400
           </Text>
         </div>
@@ -415,7 +416,7 @@ export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
           <Text tag="p" variation="subheading-2">
             Expected length of stay
           </Text>
-          <Text tag="p" variation="display-2">
+          <Text tag="p" variation="display-5">
             3 nights
           </Text>
         </div>
