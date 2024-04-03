@@ -24,10 +24,14 @@ export type CQSStatusFields = Item & {
     };
   };
 };
-
+type ReportLink =
+  | {
+      url: string;
+    }
+  | LinkField;
 export interface Fields {
   Status?: CQSStatusFields;
-  ReportLink: { fields?: LinkField; url: string };
+  ReportLink: ReportLink;
   Text?: Field<string>;
   Title?: Field<string>;
 }
