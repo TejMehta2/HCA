@@ -57,6 +57,7 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
           nationalMode: false,
           initialCountry: 'gb',
           countrySearch: false,
+          strictMode: true,
           utilsScript:
             'https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.0/build/js/utils.js',
         }}

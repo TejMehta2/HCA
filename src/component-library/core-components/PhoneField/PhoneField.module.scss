@@ -11,7 +11,7 @@
   div[class*='iti__flag-container'] {
     &:hover {
       & > div {
-        background-color: $white !important;
+        background-color: var(--background) !important;
         border-radius: $radius-large;
       }
     }
