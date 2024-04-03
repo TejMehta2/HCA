@@ -1,12 +1,12 @@
 import React, { useId, useState } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
-// eslint-disable-next-line
-// @ts-ignore
-import IntlTelInput from 'intl-tel-input/react/build/IntlTelInput.esm';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
+// eslint-disable-next-line
+// @ts-ignore
+import IntlTelInput from 'intl-tel-input/react/build/IntlTelInput.esm';
 
 const PhoneField = (props: PhoneFieldProps): JSX.Element => {
   const { label, required = false, helpText } = props;
@@ -56,18 +56,11 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
         initOptions={{
           nationalMode: false,
           initialCountry: 'gb',
+          countrySearch: false,
           utilsScript:
             'https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.0/build/js/utils.js',
         }}
       />
-
-      {helpText && (
-        <div className={styles['help-text']}>
-          <Text tag="small" variation="body-large">
-            {helpText}
-          </Text>
-        </div>
-      )}
 
       <div
         className={[styles['error-message'], notice ? '' : styles.hidden].join(
@@ -77,6 +70,14 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
         <Icons iconName="iconWarning" />
         <Text variation="body-medium-medium">{notice}</Text>
       </div>
+
+      {helpText && (
+        <div className={styles['help-text']}>
+          <Text tag="small" variation="body-large">
+            {helpText}
+          </Text>
+        </div>
+      )}
     </div>
   );
 };

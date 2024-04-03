@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+// eslint-disable-next-line
+// @ts-ignore
 import PhoneField from './PhoneField';
 import { PhoneFieldProps } from './PhoneField.types';
 

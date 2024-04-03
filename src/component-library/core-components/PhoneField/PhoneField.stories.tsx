@@ -9,8 +9,17 @@ const meta: Meta<typeof PhoneField> = {
   component: PhoneField,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '2rem' }}>
+        <Themes theme="A-HCA-White">
+          <Story />
+        </Themes>
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -28,11 +37,4 @@ export const Required: StoryObj<typeof PhoneField> = {
     helpText: 'Helper text',
     required: true,
   },
-  decorators: [
-    (Story) => (
-      <Themes theme="A-HCA-White">
-        <Story />
-      </Themes>
-    ),
-  ],
 };
