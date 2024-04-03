@@ -80,7 +80,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: any = [];
   let slugs: string[] = [];
 
-  console.log('IN StepConsultantProfile GetStaticPaths');
+  //console.log('IN StepConsultantProfile GetStaticPaths');
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
   if (
@@ -96,13 +96,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const HCAAPIConfig = await getHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
-      console.log('getStaticPaths loading mock consultant slugs');
+      //console.log('getStaticPaths loading mock consultant slugs');
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
       slugs = slugs.filter((slug) => slug && slug.length > 0);
-      console.log('slugs', slugs);
     } else {
       // real from legacy sitemap or doctify
-      console.log('getStaticPaths loading real consultant slugs');
+      //console.log('getStaticPaths loading real consultant slugs');
       slugs = await getActiveConsultantSlugs();
     }
   } catch (error) {
@@ -112,15 +111,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     );
   }
 
-  paths = slugs.map((slug) => ({
-    params: { path: slug },
-  }));
+  console.log('StepConsultantProfile slugs to pre-render', slugs);
+  if (slugs) {
+    paths = slugs.map((slug) => ({
+      params: { path: slug },
+    }));
+  } else {
+    paths = [];
+  }
   fallback = 'blocking';
 
-  console.log('paths:', paths);
-  console.log('fallback:', fallback);
+  //console.log('paths:', paths);
+  //console.log('fallback:', fallback);
+  //console.log('OUT StepConsultantProfile GetStaticPaths');
 
-  console.log('OUT StepConsultantProfile GetStaticPaths');
   return {
     paths,
     fallback,
@@ -134,7 +138,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
-    console.log('StepConsultantProfile path:', context?.params?.path);
+    //console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
     context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
   }
@@ -172,6 +176,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     revalidate: 300, // In seconds
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
+
+  // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+  try {
+    const props = await sitecorePagePropsFactory.create(context);
+    return {
+      props,
+      revalidate: 5, // In seconds
+      notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default SitecorePage;

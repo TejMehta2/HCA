@@ -87,8 +87,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN Finder subpage GetStaticProps');
-  console.log('context.params', context.params);
+  //console.log('IN Finder subpage GetStaticProps');
+  //console.log('context.params', context.params);
 
   if (context.params) {
     // e.g. context.params { path: [ 'Step-Locationss' ] }
@@ -96,16 +96,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
     context.params.path = [`Finder/${context.params.path}/`];
   }
   const props = await sitecorePagePropsFactory.create(context);
-  console.log('props:', props);
+  //console.log('props:', props);
 
   return {
     props,
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-    revalidate: 5, // In seconds
+    revalidate: 300, // In seconds
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
+
+  // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+  try {
+    const props = await sitecorePagePropsFactory.create(context);
+    return {
+      props,
+      revalidate: 5, // In seconds
+      notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default SitecorePage;
