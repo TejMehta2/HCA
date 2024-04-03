@@ -152,7 +152,9 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               size="large"
               contentVariation="full-width"
             >
-              <Link href="/test">
+              <Link
+                href={`/Finder/Step-Terms-And-Conditions?slug=${props.slug}&gmcNumber=${props.gmcNumber}`}
+              >
                 <span>{props.bookNowCTAText}</span>
               </Link>
             </Button>
