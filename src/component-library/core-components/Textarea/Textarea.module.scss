@@ -29,7 +29,8 @@
     }
   }
 
-  .count, .limit-counter {
+  .count,
+  .limit-counter {
     @include apply-body-medium-medium;
 
     position: absolute;

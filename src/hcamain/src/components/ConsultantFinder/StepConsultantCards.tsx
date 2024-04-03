@@ -599,283 +599,290 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                   />
                 </ConsultantListHeaderSearch>
-                <ConsultantListHeaderFilters>
-                  <Filters
-                    filters={[
-                      {
-                        title:
-                          props?.fields?.LocationFilterTitle?.value ||
-                          'Locations',
-                        contentVariation: 'filters',
-                        children: (
-                          <div>
-                            {props?.fields?.LocationFilterOptions &&
-                              props?.fields?.LocationFilterOptions.length > 0 &&
-                              props?.fields?.LocationFilterOptions.map(
-                                (hospital: any, index: number) => (
-                                  <Checkbox
-                                    key={index}
-                                    id={hospital?.fields?.slug?.value}
-                                    value={hospital?.fields?.slug?.value}
-                                    name={hospital?.fields?.doctifyName?.value}
-                                    label={hospital?.fields?.doctifyName?.value}
-                                    checked={checkedPractices.includes(
-                                      hospital?.fields?.slug?.value
-                                    )}
-                                    onChange={handleCheckboxChange}
-                                  ></Checkbox>
-                                )
-                              )}
-                          </div>
-                        ),
-                      },
-                      {
-                        title:
-                          props?.fields?.VideoConsultationFilterTitle?.value ||
-                          'Video Consultation',
-                        contentVariation: 'filters',
-                        children: (
-                          <div>
-                            <Checkbox
-                              key={'video'}
-                              id={'video'}
-                              value={'video_consultation'}
-                              name={'video'}
-                              label={
-                                props?.fields
-                                  ?.VideoConsultationFilterOptionYesLabel
-                                  ?.value || 'Yes'
-                              }
-                              checked={isChecked}
-                              onChange={(
-                                e: React.ChangeEvent<HTMLInputElement>
-                              ) => {
-                                const target = e.target;
-                                setIsChecked(target.checked);
-
-                                const queryParams = { ...router.query };
-                                if (target.checked) {
-                                  queryParams.videoConsultation = 'true';
-                                  queryParams.offset = '0';
-                                } else {
-                                  delete queryParams.videoConsultation;
-                                  delete queryParams.offset;
-                                }
-                                router.push(
-                                  {
-                                    pathname: router.pathname,
-                                    query: queryParams,
-                                  },
-                                  undefined,
-                                  { shallow: true }
-                                );
-                              }}
-                            ></Checkbox>
-                          </div>
-                        ),
-                      },
-                      {
-                        title:
-                          props?.fields?.GenderFilterTitle?.value || 'Gender',
-                        contentVariation: 'filters',
-                        children: (
-                          <div>
-                            {props?.fields?.GenderFilterOptions && (
-                              <RadioButtons>
-                                {props?.fields?.GenderFilterOptions?.length >
+                <Themes theme="A-HCA-White">
+                  <ConsultantListHeaderFilters>
+                    <Filters
+                      filters={[
+                        {
+                          title:
+                            props?.fields?.LocationFilterTitle?.value ||
+                            'Locations',
+                          contentVariation: 'filters',
+                          children: (
+                            <div>
+                              {props?.fields?.LocationFilterOptions &&
+                                props?.fields?.LocationFilterOptions.length >
                                   0 &&
-                                  props?.fields?.GenderFilterOptions.map(
-                                    (genderOption: any, index) => (
+                                props?.fields?.LocationFilterOptions.map(
+                                  (hospital: any, index: number) => (
+                                    <Checkbox
+                                      key={index}
+                                      id={hospital?.fields?.slug?.value}
+                                      value={hospital?.fields?.slug?.value}
+                                      name={
+                                        hospital?.fields?.doctifyName?.value
+                                      }
+                                      label={
+                                        hospital?.fields?.doctifyName?.value
+                                      }
+                                      checked={checkedPractices.includes(
+                                        hospital?.fields?.slug?.value
+                                      )}
+                                      onChange={handleCheckboxChange}
+                                    ></Checkbox>
+                                  )
+                                )}
+                            </div>
+                          ),
+                        },
+                        {
+                          title:
+                            props?.fields?.VideoConsultationFilterTitle
+                              ?.value || 'Video Consultation',
+                          contentVariation: 'filters',
+                          children: (
+                            <div>
+                              <Checkbox
+                                key={'video'}
+                                id={'video'}
+                                value={'video_consultation'}
+                                name={'video'}
+                                label={
+                                  props?.fields
+                                    ?.VideoConsultationFilterOptionYesLabel
+                                    ?.value || 'Yes'
+                                }
+                                checked={isChecked}
+                                onChange={(
+                                  e: React.ChangeEvent<HTMLInputElement>
+                                ) => {
+                                  const target = e.target;
+                                  setIsChecked(target.checked);
+
+                                  const queryParams = { ...router.query };
+                                  if (target.checked) {
+                                    queryParams.videoConsultation = 'true';
+                                    queryParams.offset = '0';
+                                  } else {
+                                    delete queryParams.videoConsultation;
+                                    delete queryParams.offset;
+                                  }
+                                  router.push(
+                                    {
+                                      pathname: router.pathname,
+                                      query: queryParams,
+                                    },
+                                    undefined,
+                                    { shallow: true }
+                                  );
+                                }}
+                              ></Checkbox>
+                            </div>
+                          ),
+                        },
+                        {
+                          title:
+                            props?.fields?.GenderFilterTitle?.value || 'Gender',
+                          contentVariation: 'filters',
+                          children: (
+                            <div>
+                              {props?.fields?.GenderFilterOptions && (
+                                <RadioButtons>
+                                  {props?.fields?.GenderFilterOptions?.length >
+                                    0 &&
+                                    props?.fields?.GenderFilterOptions.map(
+                                      (genderOption: any, index) => (
+                                        <RadioButton
+                                          key={index}
+                                          label={genderOption?.name}
+                                          name="gender"
+                                          value={
+                                            genderOption?.fields?.Value?.value
+                                          }
+                                          onChange={(
+                                            e: React.ChangeEvent<HTMLInputElement>
+                                          ) =>
+                                            handleGenderOptions(e.target.value)
+                                          }
+                                          checked={
+                                            checkedOptionGender ===
+                                            genderOption?.fields?.Value?.value
+                                          }
+                                        />
+                                      )
+                                    )}
+                                </RadioButtons>
+                              )}
+                            </div>
+                          ),
+                        },
+                        {
+                          title:
+                            props?.fields?.CoverForTreatmentFilterTitle
+                              ?.value || 'Cover for treatment or procedure',
+                          contentVariation: 'filters',
+                          children: (
+                            <div>
+                              <RadioButtons>
+                                <RadioButton
+                                  key="self-pay"
+                                  label={
+                                    props?.fields
+                                      ?.CoverForTreatmentFilterOptionSelfPayLabel
+                                      ?.value || 'I am paying by myself'
+                                  }
+                                  name="insurer"
+                                  value="0"
+                                  onChange={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                  ) =>
+                                    handleRadioButtonChange(
+                                      Number(e.target.value)
+                                    )
+                                  }
+                                  checked={selectedInsurer === 0}
+                                />
+                              </RadioButtons>
+                              <Container
+                                marginTop="spacing-2"
+                                marginBottom="spacing-2"
+                              >
+                                <Text
+                                  tag="h3"
+                                  variation="body-bold-extra-large"
+                                >
+                                  {props?.fields?.InsurersFilterTitle?.value ||
+                                    'Insurers available'}
+                                </Text>
+                              </Container>
+                              {insurersDoctify && (
+                                <RadioButtons>
+                                  {insurersDoctify?.length > 0 &&
+                                    insurersDoctify.map((insurer: any) => (
                                       <RadioButton
-                                        key={index}
-                                        label={genderOption?.name}
-                                        mode="light"
-                                        name="gender"
-                                        value={
-                                          genderOption?.fields?.Value?.value
-                                        }
+                                        key={insurer.id}
+                                        label={capitalizeFirstLetter(
+                                          insurer.name
+                                        )}
+                                        name="insurer"
+                                        value={insurer.id}
                                         onChange={(
                                           e: React.ChangeEvent<HTMLInputElement>
                                         ) =>
-                                          handleGenderOptions(e.target.value)
+                                          handleRadioButtonChange(
+                                            Number(e.target.value)
+                                          )
                                         }
-                                        checked={
-                                          checkedOptionGender ===
-                                          genderOption?.fields?.Value?.value
-                                        }
+                                        checked={selectedInsurer === insurer.id}
                                       />
-                                    )
-                                  )}
-                              </RadioButtons>
-                            )}
-                          </div>
-                        ),
-                      },
-                      {
-                        title:
-                          props?.fields?.CoverForTreatmentFilterTitle?.value ||
-                          'Cover for treatment or procedure',
-                        contentVariation: 'filters',
-                        children: (
-                          <div>
-                            <RadioButtons>
-                              <RadioButton
-                                key="self-pay"
-                                label={
-                                  props?.fields
-                                    ?.CoverForTreatmentFilterOptionSelfPayLabel
-                                    ?.value || 'I am paying by myself'
-                                }
-                                mode="light"
-                                name="insurer"
-                                value="0"
-                                onChange={(
-                                  e: React.ChangeEvent<HTMLInputElement>
-                                ) =>
-                                  handleRadioButtonChange(
-                                    Number(e.target.value)
-                                  )
-                                }
-                                checked={selectedInsurer === 0}
-                              />
-                            </RadioButtons>
-                            <Container
-                              marginTop="spacing-2"
-                              marginBottom="spacing-2"
-                            >
-                              <Text tag="h3" variation="body-bold-extra-large">
-                                {props?.fields?.InsurersFilterTitle?.value ||
-                                  'Insurers available'}
-                              </Text>
-                            </Container>
-                            {insurersDoctify && (
-                              <RadioButtons>
-                                {insurersDoctify?.length > 0 &&
-                                  insurersDoctify.map((insurer: any) => (
-                                    <RadioButton
-                                      key={insurer.id}
-                                      label={capitalizeFirstLetter(
-                                        insurer.name
-                                      )}
-                                      mode="light"
-                                      name="insurer"
-                                      value={insurer.id}
-                                      onChange={(
-                                        e: React.ChangeEvent<HTMLInputElement>
-                                      ) =>
-                                        handleRadioButtonChange(
-                                          Number(e.target.value)
-                                        )
-                                      }
-                                      checked={selectedInsurer === insurer.id}
-                                    />
-                                  ))}
-                              </RadioButtons>
-                            )}
-                          </div>
-                        ),
-                      },
-                      {
-                        title:
-                          props?.fields?.LanguagesFilterOptionTitle?.value ||
-                          'Languages',
-                        contentVariation: 'filters',
-                        children: (
-                          <div>
-                            {props?.fields?.LanguageFilterOptions &&
-                              props?.fields?.LanguageFilterOptions?.length >
-                                0 && (
-                                <select
-                                  name="language"
-                                  value={selectedLanguage}
-                                  onChange={handleLanguageChange}
-                                >
-                                  <option value="">
-                                    {props?.fields
-                                      ?.LanguagesFilterOptionPleaseSelectText
-                                      ?.value || 'Please select language'}
-                                  </option>
-                                  {props.fields.LanguageFilterOptions.map(
-                                    (language: any) => (
-                                      <option
-                                        key={language?.fields?.id?.value}
-                                        value={language?.fields?.id?.value}
-                                      >
-                                        {language?.fields?.Value?.value}
-                                      </option>
-                                    )
-                                  )}
-                                </select>
+                                    ))}
+                                </RadioButtons>
                               )}
-                          </div>
-                        ),
-                      },
-                    ]}
-                    resultsCount={total}
-                  ></Filters>
-                  <Sorting
-                    options={[
-                      {
-                        id: 'relevance',
-                        defaultChecked: router.query.sortType === 'relevance',
-                        labelText:
-                          props?.fields?.SortByMostRelevantOptionText?.value ||
-                          'Most relevant',
-                        value: 'relevance',
-                      },
-                      {
-                        id: 'rating',
-                        defaultChecked: router.query.sortType === 'rating',
-                        labelText:
-                          props?.fields?.SortByHigestRatedOptionText?.value ||
-                          'Highest rated by patients',
-                        value: 'rating',
-                      },
-                      {
-                        id: 'nearest',
-                        defaultChecked: router.query.sortType === 'nearest',
-                        labelText:
-                          props?.fields?.SortByMostNearestOptionText?.value ||
-                          'Nearest',
-                        value: 'nearest',
-                      },
-                    ]}
-                    onChange={(e) => {
-                      const target = e.target as HTMLInputElement;
+                            </div>
+                          ),
+                        },
+                        {
+                          title:
+                            props?.fields?.LanguagesFilterOptionTitle?.value ||
+                            'Languages',
+                          contentVariation: 'filters',
+                          children: (
+                            <div>
+                              {props?.fields?.LanguageFilterOptions &&
+                                props?.fields?.LanguageFilterOptions?.length >
+                                  0 && (
+                                  <select
+                                    name="language"
+                                    value={selectedLanguage}
+                                    onChange={handleLanguageChange}
+                                  >
+                                    <option value="">
+                                      {props?.fields
+                                        ?.LanguagesFilterOptionPleaseSelectText
+                                        ?.value || 'Please select language'}
+                                    </option>
+                                    {props.fields.LanguageFilterOptions.map(
+                                      (language: any) => (
+                                        <option
+                                          key={language?.fields?.id?.value}
+                                          value={language?.fields?.id?.value}
+                                        >
+                                          {language?.fields?.Value?.value}
+                                        </option>
+                                      )
+                                    )}
+                                  </select>
+                                )}
+                            </div>
+                          ),
+                        },
+                      ]}
+                      resultsCount={total}
+                    ></Filters>
+                    <Sorting
+                      options={[
+                        {
+                          id: 'relevance',
+                          defaultChecked: router.query.sortType === 'relevance',
+                          labelText:
+                            props?.fields?.SortByMostRelevantOptionText
+                              ?.value || 'Most relevant',
+                          value: 'relevance',
+                        },
+                        {
+                          id: 'rating',
+                          defaultChecked: router.query.sortType === 'rating',
+                          labelText:
+                            props?.fields?.SortByHigestRatedOptionText?.value ||
+                            'Highest rated by patients',
+                          value: 'rating',
+                        },
+                        {
+                          id: 'nearest',
+                          defaultChecked: router.query.sortType === 'nearest',
+                          labelText:
+                            props?.fields?.SortByMostNearestOptionText?.value ||
+                            'Nearest',
+                          value: 'nearest',
+                        },
+                      ]}
+                      onChange={(e) => {
+                        const target = e.target as HTMLInputElement;
 
-                      if (target.checked) {
-                        const queryParams = {
-                          ...router.query,
-                          sortType: target.value,
-                          offset: 0,
-                        };
-                        if ('requestPath' in queryParams) {
-                          delete queryParams.requestPath;
+                        if (target.checked) {
+                          const queryParams = {
+                            ...router.query,
+                            sortType: target.value,
+                            offset: 0,
+                          };
+                          if ('requestPath' in queryParams) {
+                            delete queryParams.requestPath;
+                          }
+                          router.push(
+                            {
+                              pathname: router.pathname,
+                              query: queryParams,
+                            },
+                            undefined,
+                            { shallow: true }
+                          );
                         }
-                        router.push(
-                          {
-                            pathname: router.pathname,
-                            query: queryParams,
-                          },
-                          undefined,
-                          { shallow: true }
-                        );
-                      }
-                    }}
-                  />
-                  <TextButton theme="dark">
-                    <button onClick={handleResetFilters}>
-                      {props?.fields?.ResetAllText?.value || 'Reset all'}
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            props?.fields?.ResetAllIcon?.fields?.SvgMarkup
-                              ?.value || '',
-                        }}
-                      />
-                    </button>
-                  </TextButton>
-                </ConsultantListHeaderFilters>
+                      }}
+                    />
+                    <TextButton theme="dark">
+                      <button onClick={handleResetFilters}>
+                        {props?.fields?.ResetAllText?.value || 'Reset all'}
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              props?.fields?.ResetAllIcon?.fields?.SvgMarkup
+                                ?.value || '',
+                          }}
+                        />
+                      </button>
+                    </TextButton>
+                  </ConsultantListHeaderFilters>
+                </Themes>
               </ConsultantListHeader>
               <ConsultantListHeaderTtitle>
                 <Text tag="h5" variation="display-5">
