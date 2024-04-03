@@ -60,11 +60,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
         }}
         children={
           <Text variation={props.params?.HeadingSize || 'display-5'}>
-            <span
-              dangerouslySetInnerHTML={{
-                __html: props.fields?.Quote?.value || '',
-              }}
-            ></span>
+            <JssText field={props.fields?.Quote} />
           </Text>
         }
       />

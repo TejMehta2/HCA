@@ -63,7 +63,7 @@
     white-space: nowrap;
     outline: solid #{px-to-rem(2)} transparent;
     color: var(--tab-text);
-    padding: px-to-rem(16) $spacing-4;
+    padding: px-to-rem(8) $spacing-4;
     @include media(screen-l) {
       padding: $spacing-4 $spacing-6;
 

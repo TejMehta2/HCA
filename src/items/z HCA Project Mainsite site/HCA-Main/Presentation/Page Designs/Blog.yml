@@ -1,0 +1,39 @@
+﻿---
+ID: "38be252e-ad2c-4bb6-91a0-06f4f84b091a"
+Parent: "fcb81a9f-ff29-43ba-99bc-d02195957234"
+Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Page Designs/Blog"
+SharedFields:
+- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
+  Hint: PartialDesigns
+  Value: "{5BE50603-48D5-4B3C-8FB0-F6431DFB8108}|{8BD7AB54-7231-4AFB-BE2F-ECE7FF8F996F}|{E33E8F33-124A-41F7-A0BF-BD27ED8C23BF}|{86FB2621-C2AA-445D-9E0F-AE9678D5335E}"
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{1B528289-BDA5-4AF9-97F2-DA443055D7E0}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240328T151330Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b1f9f64f-da6c-48f9-b9e2-ada54d589656"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240328T161214Z

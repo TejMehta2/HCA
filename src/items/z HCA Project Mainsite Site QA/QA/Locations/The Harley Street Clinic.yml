@@ -29,9 +29,12 @@ Languages:
     - ID: "64765ef6-ea35-4e9e-8007-effd7c669ee6"
       Hint: City
       Value: London
+    - ID: "6572a61e-d3d4-46a0-acde-3b5b374d4ac3"
+      Hint: DoctifyPractice
+      Value: "the-harley-street-clinic-3"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c793cf2a-0493-4ce0-b7d1-2f4d99db30bd"
+      Value: "f7d4cb1c-bef7-4fc5-8c4e-745f8ef32111"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -39,10 +42,10 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
       Hint: Street
       Value: 35 Weymouth Street
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102741Z
+      Value: 20240402T165204Z
