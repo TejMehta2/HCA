@@ -12,6 +12,7 @@ import HeaderWithImage from '@component-library/site-components/HeaderWithImage/
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface Fields {
   data?: {
@@ -32,10 +33,17 @@ type HeaderWithImageProps = {
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
-  return (
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
     <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
-        <span className="is-empty-hint">Header with image no datasource</span>
+        <span className="is-empty-hint">
+          Header With Image. Please click to select datasource.
+        </span>
       </div>
     </div>
   );
