@@ -80,7 +80,6 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       <PlaceHolderWrapper>
         <Placeholder name={phKey} rendering={props.rendering} />
       </PlaceHolderWrapper>
-
     </div>
   );
 };
