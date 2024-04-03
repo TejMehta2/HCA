@@ -87,8 +87,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  //console.log('IN Finder subpage GetStaticProps');
-  //console.log('context.params', context.params);
+  console.log('IN Finder subpage GetStaticProps');
+  console.log('context.params', context.params);
 
   if (context.params) {
     // e.g. context.params { path: [ 'Step-Locationss' ] }
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     context.params.path = [`Finder/${context.params.path}/`];
   }
   const props = await sitecorePagePropsFactory.create(context);
-  //console.log('props:', props);
+  console.log('props:', props);
 
   return {
     props,
