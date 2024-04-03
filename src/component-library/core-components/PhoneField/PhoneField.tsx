@@ -1,6 +1,8 @@
 import React, { useId, useState } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
+// eslint-disable-next-line
+// @ts-ignore
 import IntlTelInput from 'intl-tel-input/react/build/IntlTelInput.esm';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import Icons from '../../foundation/Icons/Icons';
