@@ -98,6 +98,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       // mock from Sitecore / SSG slows down the build, only use real on prod
       console.log('getStaticPaths loading mock consultant slugs');
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
+      console.log('slugs', slugs);
     } else {
       // real from legacy sitemap or doctify
       console.log('getStaticPaths loading real consultant slugs');
@@ -115,10 +116,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
   fallback = 'blocking';
 
-  //console.log('paths:', paths);
-  //console.log('fallback:', fallback);
+  console.log('paths:', paths);
+  console.log('fallback:', fallback);
 
-  console.log('OUT StepConsultantProfile GetStaticPaths ');
+  console.log('OUT StepConsultantProfile GetStaticPaths');
   return {
     paths,
     fallback,
