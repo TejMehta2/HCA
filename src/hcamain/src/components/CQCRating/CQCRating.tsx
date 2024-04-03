@@ -28,6 +28,12 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
       : props.fields?.Status?.fields?.displayName
   ) as CQCBlockProps['rating'];
 
+  const ratingLink = props.fields?.ReportLink?.url ? (
+    <a href={props.fields?.ReportLink?.url}></a>
+  ) : (
+    props.fields?.ReportLink && <JssLink field={props.fields?.ReportLink} />
+  );
+
   const lightLogo = props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo
     .fields
     ? props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo.fields
@@ -43,11 +49,7 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
       <CQCBlock
         title={props.fields?.Title?.value}
         text={props.fields?.Text?.value}
-        link={
-          props.fields?.ReportLink && (
-            <JssLink field={props.fields?.ReportLink} />
-          )
-        }
+        link={ratingLink}
         length={length}
         rating={hideRating ? undefined : defaultRating}
         icon={<Icons iconName="iconCheckCircle"></Icons>}
