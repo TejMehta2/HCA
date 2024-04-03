@@ -4,25 +4,26 @@ import {
   Link as JssLink,
   useSitecoreContext,
   useComponentProps,
+  GetStaticComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-
 import CardDoctorLayout from '@component-library/site-components/CardDoctorLayout/CardDoctorLayout';
 import CardDoctor from '@component-library/site-components/CardDoctor/CardDoctor';
 import Text from '@component-library/foundation/Text/Text';
-import {
-  // ComponentRenderingDocCards,
-  Doctor,
-  DoctorCardsProps,
-  DoctorRow,
-} from './DoctorCards.types';
+import { DoctorCardsProps, StaticProps } from './DoctorCards.types';
 import getSubheadingTag from 'lib/subheading-tag-getter';
-// import { GetStaticComponentProps } from '@sitecore-jss/sitecore-jss-nextjs';
-// import { fetchDoctorCard } from './DoctorCardData';
+import {
+  FindResponse,
+  SearchResponse,
+  ConsultantExtract as Consultant,
+} from './response.types';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/consultants`;
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
+      <span className="is-empty-hint">DoctorCardsDefaultComponent</span>
     </div>
   </div>
 );
@@ -30,46 +31,34 @@ const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
 export const Default = (props: DoctorCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
-  const apiData = useComponentProps<Doctor>(props.rendering?.uid);
-  if (!props.fields) {
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
+  const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
+  const ctaQuery = data?.ctaQuery;
+
+  if (!props.fields || !consultants?.length) {
     return <DoctorCardsDefaultComponent {...props} />;
   }
 
-  const cta =
-    props.fields?.data?.item?.cTALink &&
-    (isExperienceEditor ? (
-      <JssLink field={props.fields?.data?.item?.cTALink}></JssLink>
-    ) : (
-      <JssLink field={props.fields?.data?.item?.cTALink}>
-        {props.fields?.data?.item?.cTALink.jsonValue?.value && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.data?.item?.cTALink.jsonValue.value,
-            }}
-          ></span>
-        )}
-      </JssLink>
-    ));
+  const cta = props.fields?.data?.item?.cTALink?.jsonValue && (
+    <JssLink
+      field={props.fields?.data?.item?.cTALink?.jsonValue}
+      href={`${props.fields?.data?.item?.cTALink?.jsonValue.value.href}${ctaQuery}`}
+    >
+      {!isExperienceEditor && (
+        <>
+          <SitecoreSvg>
+            {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+          </SitecoreSvg>
+          <SitecoreSvg>
+            {props.fields?.data?.item?.cTALink.jsonValue.value.text}
+          </SitecoreSvg>
+        </>
+      )}
+    </JssLink>
+  );
 
-  const ctaCard =
-    props.fields?.data?.item?.cTACard &&
-    (isExperienceEditor ? (
-      <JssLink field={props.fields?.data?.item?.cTACard}></JssLink>
-    ) : (
-      <JssLink field={props.fields?.data?.item?.cTACard}>
-        {props.fields?.data?.item?.cTACard.jsonValue?.value && (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.data?.item?.cTACard.jsonValue?.value,
-            }}
-          ></span>
-        )}
-      </JssLink>
-    ));
-
-  const doctors = apiData && apiData.rows;
-
-  const getSpeciality = (doctor: DoctorRow) => {
+  const getSpeciality = (doctor: Consultant) => {
     const keywords = doctor.keywords;
 
     const topSpecialty = keywords?.filter(
@@ -92,51 +81,159 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
       cta={cta || <></>}
       theme={props.params?.Theme || 'D-HCA-Teal'}
     >
-      {doctors &&
-        doctors.map((doctor: DoctorRow, index: number) => (
-          <CardDoctor
-            key={index}
-            image={
-              <img
-                src={doctor?.images?.logo}
-                alt={`${doctor.title} ${doctor.firstName} ${doctor.lastName}`}
-                width="91"
-                height="91"
-              />
-            }
-            title={
-              <Text
-                variation="display-5"
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+      {consultants.map((consultant, index: number) => (
+        <CardDoctor
+          key={index}
+          image={
+            <img
+              src={consultant?.images?.logo}
+              alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
+              width="91"
+              height="91"
+            />
+          }
+          title={
+            <Text
+              variation="display-5"
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+            >
+              <span>
+                {consultant.title} {consultant.firstName} {consultant.lastName}
+              </span>
+            </Text>
+          }
+          department={<span>{getSpeciality(consultant)}</span>}
+          cta={
+            props.fields?.data?.item?.cTACard?.jsonValue?.value && (
+              <JssLink
+                field={props.fields?.data?.item?.cTACard?.jsonValue}
+                href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${consultant.slug}`}
               >
-                <span>
-                  {doctor.title} {doctor.firstName} {doctor.lastName}
-                </span>
-              </Text>
-            }
-            department={<span>{getSpeciality(doctor)}</span>}
-            cta={ctaCard || <></>}
-          />
-        ))}
+                {!isExperienceEditor && (
+                  <SitecoreSvg>
+                    {props.fields?.data?.item?.cTACard.jsonValue.value.text}
+                  </SitecoreSvg>
+                )}
+              </JssLink>
+            )
+          }
+        />
+      ))}
     </CardDoctorLayout>
   );
 };
 
-// export const getStaticProps: GetStaticComponentProps = async (rendering) => {
-//   return await fetchDoctorCard(rendering as ComponentRenderingDocCards);
-// };
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async (
+  rendering: DoctorCardsProps
+) => {
+  const fields = rendering.fields?.data?.item;
 
-export const Updated = (props: DoctorCardsProps): JSX.Element => {
-  if (!props.fields) {
-    return <DoctorCardsDefaultComponent {...props} />;
+  // Format props into entries, then query params
+  const consultants =
+    fields?.consultants?.ConsultantsList.map((item) => [
+      'slug',
+      item.doctifySlug?.value,
+    ]) || [];
+
+  const customFilters =
+    fields?.customFilters?.CustomFiltersList.map((item) => [
+      item.filter?.value,
+      item.filterValueString?.value,
+    ]) || [];
+
+  const contextSearchParams = Object.entries(
+    rendering.fields?.data?.contextItemSearchParams || {}
+  ).map(([key, nestedValue]) => [key, nestedValue?.value]);
+
+  const contextSearchIdParams = Object.entries(
+    rendering.fields?.data?.contextItemSearchIdParams || {}
+  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/, '').toLowerCase()]); // clean up bad ID characters
+
+  const isFind = !!consultants?.length; // can be a '/find' or a '/search'
+
+  const params = [
+    ...(isFind ? consultants : customFilters),
+    ...contextSearchParams,
+    ...contextSearchIdParams,
+  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+
+  const query = `?${params.join('&')}`;
+
+  const ctaParams = [
+    ...customFilters,
+    ...contextSearchParams,
+    ...contextSearchIdParams,
+  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const ctaQuery = `?${ctaParams.join('&')}`;
+
+  try {
+    if (isFind) {
+      const url = new URL(query, `${BASE_URL}/find`);
+      const response = await fetch(url.href);
+      if (response.ok) {
+        const consultants: FindResponse = await response.json();
+        const selectedConsultants = consultants.map(
+          ({ images, title, firstName, lastName, slug, keywords }) => ({
+            images,
+            title,
+            firstName,
+            lastName,
+            slug,
+            keywords,
+          })
+        ); // Select only necessary fields to reduce bundle size
+        return {
+          consultants: selectedConsultants,
+          ctaQuery,
+          apiUrl: url.href,
+        };
+      } else {
+        throw {
+          url,
+          statusText: response.statusText,
+        };
+      }
+    } else {
+      const url = new URL(query, `${BASE_URL}/search`);
+      const response = await fetch(url.href);
+      if (response.ok) {
+        type JsonSerialized<T> = string & {
+          __json_seralized: T;
+        };
+        const serializedData: JsonSerialized<SearchResponse> =
+          await response.json();
+        const parsedData: SearchResponse = JSON.parse(serializedData);
+        const selectedData = parsedData.rows.map(
+          ({ images, title, firstName, lastName, slug, keywords }) => ({
+            images,
+            title,
+            firstName,
+            lastName,
+            slug,
+            keywords,
+          })
+        ); // Select only necessary fields to reduce bundle size
+        return {
+          consultants: selectedData,
+          ctaQuery,
+          apiUrl: url.href,
+        };
+      } else {
+        throw {
+          url,
+          statusText: response.statusText,
+        };
+      }
+    }
+  } catch (error) {
+    console.error(
+      {
+        message: 'DoctorCards server-side data fetching error',
+        error: error,
+      },
+      error
+    );
+    return { consultants: [], ctaQuery };
   }
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <br />
-      <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.numberOfCards?.jsonValue} />
-      <br />
-    </div>
-  );
 };

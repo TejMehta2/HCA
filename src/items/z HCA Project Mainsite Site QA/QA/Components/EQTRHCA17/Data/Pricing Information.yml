@@ -1,0 +1,53 @@
+﻿---
+ID: "8d284291-e35d-4f7e-8bdb-53eb0ae0b918"
+Parent: "b95d4de1-33e9-4110-aea5-59624f8e6993"
+Template: "90c8570e-403e-41d9-86d9-5f3155266de5"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA17/Data/Pricing Information"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14480d61-12dc-46cb-ba84-7a8f49331c50"
+      Hint: PriceFrom
+      Value: £13,500
+    - ID: "18d864de-57a4-4e68-bf82-66085670115f"
+      Hint: Image
+      Value: |
+        <image mediaid="{F9C3E0D2-71C0-41C5-B8BD-1EEDDE618072}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240402T124554Z
+    - ID: "36af04c4-cb10-48a6-b215-aba7df840abe"
+      Hint: Heading
+      Value: Pricing information
+    - ID: "4ae26fbf-6187-4a38-841a-f045e43239e1"
+      Hint: LengthOfStay
+      Value: 3 nights
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6a6d174e-7b11-4aff-9817-d7afd4dab053"
+      Hint: Title
+      Value: Hospital stay & procedure
+    - ID: "831b2373-7a3e-40ff-b7e8-b3ffe5a38369"
+      Hint: Text
+      Value: subject to the specifics of your treatment as recommended by your consultant.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d0f9a43f-9635-4063-b380-75194738f64e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "c36dd486-41e0-4f75-b232-fe5f8a38351d"
+      Hint: ConsultantFee
+      Value: £1,400
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240402T170533Z

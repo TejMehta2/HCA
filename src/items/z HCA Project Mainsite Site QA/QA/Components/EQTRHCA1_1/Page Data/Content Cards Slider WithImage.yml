@@ -1,36 +1,25 @@
 ﻿---
 ID: "106380de-5ba8-4063-81e8-f25659c56197"
 Parent: "b84afa51-0505-4500-a747-a608cee01db6"
-Template: "a790183f-6621-463a-a43c-695d1435328e"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA1_1/Page Data/Content Cards Slider WithImage"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
-    - ID: "0120cb1f-140d-43eb-8ed4-aac38f98dcf0"
-      Hint: CTACardText
-      Value: Learn <b>more</b>
-    - ID: "17be2717-992a-4d65-918b-07bb26210837"
-      Hint: Title
-      Value: Peace of mind with our GP services
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231206T092351Z
-    - ID: "2ffa16c6-9052-4ce3-9a81-95694b145328"
+    - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
       Hint: Heading
       Value: GP & Urgent care services
-    - ID: "8c120705-ad32-4f5e-a87e-84b01b1f2d83"
-      Hint: Pages
-      Value: |
-        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
-        {471F79FD-281B-435A-90B8-6FB3B3F15886}
-        {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
-        {45179635-2018-4AA4-B7EF-C235A71D4350}
-        {6668CC07-8717-41CB-A194-ABB44BFB2081}
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: Peace of mind with our GP services
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "13d450a3-91b2-477b-9576-2536c519e180"
+      Value: "e8bef9e9-009c-4a5a-84c4-8a5a4a289432"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -38,10 +27,21 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: Learn <b>more</b>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102614Z
+      Value: 20240401T152409Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{F4945743-B276-4CBE-A758-2EB4F6FCA25F}"
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
+        {471F79FD-281B-435A-90B8-6FB3B3F15886}
+        {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
+        {45179635-2018-4AA4-B7EF-C235A71D4350}
+        {6668CC07-8717-41CB-A194-ABB44BFB2081}
