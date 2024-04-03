@@ -1,0 +1,53 @@
+﻿---
+ID: "7879d1af-0c47-4221-9a80-6301aa576783"
+Parent: "90c8570e-403e-41d9-86d9-5f3155266de5"
+Template: "90c8570e-403e-41d9-86d9-5f3155266de5"
+Path: /sitecore/templates/Project/HCA/Page Content/Pricing Information/__Standard Values
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14480d61-12dc-46cb-ba84-7a8f49331c50"
+      Hint: PriceFrom
+      Value: 
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240402T165525Z
+    - ID: "36af04c4-cb10-48a6-b215-aba7df840abe"
+      Hint: Heading
+      Value: 
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6a6d174e-7b11-4aff-9817-d7afd4dab053"
+      Hint: Title
+      Value: 
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "20904676-c0f1-45a6-9517-d825c0b934db"
+    - ID: "b7a0f454-385f-4490-b5d7-f25ff0aa6c59"
+      Hint: ConsultantFeeText
+      Value: Indicative consultant fee from
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240402T170007Z
+    - ID: "f3257541-de54-4c26-9193-59dc0af81134"
+      Hint: PriceFromText
+      Value: Prices from
+    - ID: "f5d60867-78dd-41c4-a888-a21f913c7abf"
+      Hint: LengthOfStayText
+      Value: Expected length of stay
