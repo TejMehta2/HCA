@@ -67,6 +67,10 @@
       margin-bottom: 0;
     }
   }
+
+  .children div:not(:first-of-type) {
+    margin-top: $spacing-5;
+  }
 }
 
 .long {
