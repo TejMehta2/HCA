@@ -381,7 +381,7 @@ export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
       />
     ),
     subheader: (
-      <Text tag="h3" variation="subheading-1">
+      <Text tag="p" variation="subheading-1">
         payment plans
       </Text>
     ),
