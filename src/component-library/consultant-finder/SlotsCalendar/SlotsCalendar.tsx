@@ -80,7 +80,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   };
 
   const showNextWeek = () => {
-    console.log('next');
     setLoadingSlots(true);
     const nextWeek = new Date(firstDayOfWeek);
     nextWeek.setDate(nextWeek.getDate() + 7);
@@ -94,7 +93,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   };
 
   const showPrevWeek = () => {
-    console.log('prev');
     setLoadingSlots(true);
     const prevWeek = new Date(firstDayOfWeek);
     prevWeek.setDate(prevWeek.getDate() - 7);
@@ -120,7 +118,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       .get(slotsURL)
       .then((res) => {
         setLoadingSlots(false);
-        console.log('slots', res);
 
         const uniqueDates = [
           ...new Set(
@@ -138,9 +135,6 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
             })),
         }));
 
-        console.log('formatted slots api', days);
-        console.log(lastDayOfWeek);
-
         // enable next/ prev after slots call was completed
         // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
         setDisableNext(false);
@@ -155,9 +149,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
             parsedFirstDayOfWeek.getTime() - 24 * 60 * 60 * 1000
           );
 
-          console.log('first day of the week', firstDayOfWeek);
-          console.log('current date', currentDate);
-          console.log('lastDayOfPrevWeek', lastDayOfPrevWeek);
+          // console.log('first day of the week', firstDayOfWeek);
+          // console.log('current date', currentDate);
+          // console.log('lastDayOfPrevWeek', lastDayOfPrevWeek);
 
           if (currentDate > lastDayOfPrevWeek) {
             setDisablePrev(true);
@@ -190,9 +184,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   ) => {
     setSelectedDate(formatDateLong(startTime));
     setSelectedTime(formatTime12hr(startTime));
-    console.log(formatDateLong(startTime));
-    console.log(formatTime12hr(startTime));
-    console.log(endTime);
+    // console.log(formatDateLong(startTime));
+    // console.log(formatTime12hr(startTime));
+    // console.log(endTime);
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
 
     if (buttons.length > 0) {
@@ -253,9 +247,9 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setFirstDayOfWeek(firstDay);
     const lastDay: any = getLastDayOfWeek(firstDay);
     setLastDayOfWeek(lastDay);
-    console.log('fristAppointmentDate', fristAppointmentDate);
-    console.log('firstDay', formatDateYYYYMMDD(firstDay));
-    console.log('lastDay', formatDateYYYYMMDD(lastDay));
+    // console.log('fristAppointmentDate', fristAppointmentDate);
+    // console.log('firstDay', formatDateYYYYMMDD(firstDay));
+    // console.log('lastDay', formatDateYYYYMMDD(lastDay));
 
     getSlots(formatDateYYYYMMDD(firstDay), formatDateYYYYMMDD(lastDay));
 
