@@ -65,7 +65,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  console.log(props.fields);
+  //console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);

@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   _context
 ) => {
   const holidaysJson = await getHolidays();
-  console.log('ss holidays', holidaysJson);
+  //console.log('ss holidays', holidaysJson);
 
   const returnProps: ServerSideProps = {
     Holidays: holidaysJson,
@@ -93,11 +93,11 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  console.log('holidays', serverSideData);
+  //console.log('holidays', serverSideData);
 
   const holidaysUK = serverSideData?.Holidays;
 
-  console.log('steps slot', props.fields);
+  //console.log('steps slot', props.fields);
   const {
     selectedLocation,
     selectedTypeOfAppointment,

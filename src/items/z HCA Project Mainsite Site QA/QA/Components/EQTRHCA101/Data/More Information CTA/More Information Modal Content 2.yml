@@ -1,0 +1,45 @@
+﻿---
+ID: "98d69539-236b-4306-b55a-d027b24f9f42"
+Parent: "9b765289-180d-40b3-9d7e-1ceadd367c79"
+Template: "55bd5994-10e6-4b77-913f-683cc39fccb2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA101/Data/More Information CTA/More Information Modal Content 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04683221-90f3-4e36-9e78-8da47d1f810c"
+      Hint: Title
+      Value: Not included
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240403T143119Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c9ea9b8e-4629-41e5-b596-703d82ac6502"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d8ea3a22-5874-4a00-82b8-eeede17fda11"
+      Hint: Text
+      Value: |
+        <ul>
+            <li>Any additional nights in hospital not described in the above</li>
+            <li>Specialist nursing above and beyond required level of care</li>
+            <li>Any post-operative treatments/consultations which may be required</li>
+            <li>Any readmission due to complications will result in additional charges in line with our standard prices</li>
+            <li>Personal costs including visitors&rsquo; meals and drinks as well as newspapers</li>
+            <li>Any costs not specified as included</li>
+        </ul>
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240403T143229Z
