@@ -62,7 +62,7 @@ export const Default = (props: StepProps): JSX.Element => {
     ConsultantFinderContext
   );
 
-  console.log('how can we help', props);
+  //console.log('how can we help', props);
 
   const handleClickQuickSearch = () => {
     const baseURLResults =

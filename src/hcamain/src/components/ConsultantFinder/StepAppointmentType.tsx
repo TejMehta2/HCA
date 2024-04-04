@@ -54,7 +54,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('appointment type', props.fields);
+  //console.log('appointment type', props.fields);
   const id = props.params.RenderingIdentifier;
   const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
     useContext(ConsultantFinderContext);
