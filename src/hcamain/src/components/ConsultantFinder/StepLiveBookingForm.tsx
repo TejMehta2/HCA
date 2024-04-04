@@ -63,8 +63,24 @@ export const Default = (props: StepProps): JSX.Element => {
     getValues,
     setValue,
   } = form;
-  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
-  console.log(isDirty, isValid);
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitSuccessful,
+  } = formState;
+
+  console.log(
+    'isDirty:',
+    isDirty,
+    'isSubmitting:',
+    isSubmitting,
+    'isSubmitSuccessful:',
+    isSubmitSuccessful
+  );
   // console.log(errors);
 
   const onSubmit = (data: any) => {
@@ -143,7 +159,7 @@ export const Default = (props: StepProps): JSX.Element => {
             {/* Display error message */}
             <br></br>
             <button disabled={!isDirty || !isValid} type="submit">
-              Submit
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         </div>
