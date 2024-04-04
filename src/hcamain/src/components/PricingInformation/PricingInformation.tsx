@@ -66,12 +66,15 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       contentVariation="pricing"
       image={<JssImage field={props.fields?.Image} />}
       subheader={
-        <Text tag="p" variation="subheading-1">
+        <Text variation="subheading-1">
           <JssText field={props.fields?.Heading} />
         </Text>
       }
       header={
-        <Text tag="h2" variation="display-2">
+        <Text
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-2'}
+        >
           <JssText field={props.fields?.Title} />
         </Text>
       }
@@ -84,8 +87,8 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
             <Text tag="p" variation="display-2">
               <JssText field={props.fields?.PriceFrom} />
             </Text>
-            <Text tag="p" variation="body-large">
-              <RichText tag="span" field={props.fields?.Text} />
+            <Text variation="body-large">
+              <RichText field={props.fields?.Text} />
             </Text>
           </div>
           <div>
