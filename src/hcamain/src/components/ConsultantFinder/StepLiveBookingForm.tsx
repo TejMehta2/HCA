@@ -11,8 +11,13 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
+import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 
 interface Fields {
+  HCALogo: ImageField | ImageFieldValue | undefined;
+  CurrentStep: any;
+  Steps: any;
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
 
   // add specific fields defined in the data template here...
@@ -41,12 +46,24 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+  console.log('step booking form', props.fields);
   if (props.fields) {
     return (
       <div
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
+        <HeaderLDB
+          logo={<JssImage field={props?.fields?.HCALogo} />}
+          progress={
+            <ProgressBar
+              currentPage={props?.fields?.CurrentStep?.value}
+              steps={props?.fields?.Steps}
+              slug={''}
+              gmcNumber={0}
+            ></ProgressBar>
+          }
+        ></HeaderLDB>
         <div className="component-content">
           <div className="field-promoicon">
             <JssImage field={props.fields.CardImage} />
