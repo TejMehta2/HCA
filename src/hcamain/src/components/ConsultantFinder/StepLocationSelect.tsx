@@ -60,7 +60,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const { selectedLocation, setSelectedTypeOfAppointment, setConsultantGUID } =
     useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
-  console.log('step location', props.fields);
+  //console.log('step location', props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
@@ -97,12 +97,12 @@ export const Default = (props: StepProps): JSX.Element => {
 
     const requestURL_C2 = `${baseURL_C2}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${isFollowUpAppointment}`;
 
-    console.log('locations DoctifyURL', requestURL_C2);
+    //console.log('locations DoctifyURL', requestURL_C2);
 
     axios
       .get(requestURL_C2)
       .then((res) => {
-        console.log('locations results', res);
+        //console.log('locations results', res);
         seLoading(false);
         setError(false);
         setLocations(res?.data?.availability || []);

@@ -4,7 +4,7 @@
 .slots {
   background-color: $teal-5;
   padding: $spacing-6 $spacing-1;
-  height: 100vh;
+  min-height: 100vh;
   color: $navy-blue-100;
 
   @include media(screen-m) {
@@ -24,6 +24,14 @@
 
   .header {
     display: flex;
+  }
+
+  .weekdays {
+    padding: 0;
+
+    @include media(screen-m) {
+      padding: 0 px-to-rem(24);
+    }
   }
 
   .header-container,
