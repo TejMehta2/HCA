@@ -58,8 +58,6 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     return <PricingInformationDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   return (
     <ImageAndTextBlock
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -117,32 +115,4 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       }
     />
   );
-
-  /* return (
-    <div className={`component ${props.params?.styles}`}>
-      <JssText field={props.fields?.Heading} />
-      <br />
-      <JssText field={props.fields?.Title} />
-      <br />
-      <JssText field={props.fields?.PriceFrom} />
-      <br />
-      <JssImage field={props.fields?.Image} />
-      <br />
-      <RichText tag="span" field={props.fields?.Description} />
-      <br />
-      <JssText field={props.fields?.ConsultantFee} />
-      <br />
-      <JssText field={props.fields?.LengthOfStay} />
-      <br />
-      <JssText field={props.fields?.PriceFromText} />
-      <br />
-      <JssText field={props.fields?.ConsultantFeeText} />
-      <br />
-      <JssText field={props.fields?.LengthOfStayText} />
-
-      <PlaceHolderWrapper>
-        <Placeholder name={phKey} rendering={props.rendering} />
-      </PlaceHolderWrapper>
-    </div>
-  ); */
 };
