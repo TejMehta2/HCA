@@ -87,7 +87,7 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
             <Text tag="p" variation="display-2">
               <JssText field={props.fields?.PriceFrom} />
             </Text>
-            <Text variation="body-large">
+            <Text tag="div" variation="body-large">
               <RichText field={props.fields?.Text} />
             </Text>
           </div>
