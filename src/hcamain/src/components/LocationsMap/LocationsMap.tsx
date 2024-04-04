@@ -67,8 +67,6 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     return <LocationsMapDefaultComponent {...props} />;
   }
 
-  console.log(props);
-
   const headerProps = {
     subtitle: (
       <Text tag="p" variation="subheading-1">
