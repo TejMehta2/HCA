@@ -47,12 +47,19 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   console.log('step booking form', props.fields);
+
+  const schema = z.object({
+    username: z.string().trim().min(1, { message: 'Required' }),
+    email: z.string().email('Email format is not valid'),
+  });
+
   const form = useForm({
     // you can also submit default values
     defaultValues: {
       username: 'Alina test',
       email: '',
     },
+    resolver: zodResolver(schema),
   });
   const {
     register,
@@ -157,12 +164,13 @@ export const Default = (props: StepProps): JSX.Element => {
             <label htmlFor="email">Email</label>
             <input type="email" id="email" {...register('email')} />
             {/* Display error message */}
+            <p>{errors.email?.message}</p>
             <br></br>
             <button
               disabled={!isDirty || !isValid || isSubmitting}
               type="submit"
             >
-              Submit
+              {isSubmitting ? 'Submitting' : 'Submit'}
             </button>
           </form>
         </div>
