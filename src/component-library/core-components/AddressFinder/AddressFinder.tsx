@@ -1,18 +1,19 @@
-import React, { useState, ChangeEvent, useRef } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { AddressFinderProps } from './AddressFinder.types';
 import styles from './AddressFinder.module.scss';
-import TextButton from '../../TextButton/TextButton';
-import Icons from '../../../foundation/Icons/Icons';
-import Loader from '../../../foundation/Loader/Loader';
-import Text from '../../../foundation/Text/Text';
-import TextField from '../../TextField/TextField';
+import TextButton from '../TextButton/TextButton';
+import Icons from '../../foundation/Icons/Icons';
+import Loader from '../../foundation/Loader/Loader';
+import Text from '../../foundation/Text/Text';
+import TextField from '../TextField/TextField';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const { helpText } = props;
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const mockTestAddress = {
     line1: '123 Test Street',
+    line2: '',
     city: 'London',
     country: 'United Kingdom',
     postcode: 'SE1 1AB',
@@ -47,8 +48,8 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState({});
+  const [searchTerm, setSearchTerm] = useState('.');
   const [selectedAddress, setSelectedAddress] = useState(mockTestAddress);
   const [showSelectedAddress, setShowSelectedAddress] = useState(false);
 
@@ -62,7 +63,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       line2: '',
       city: '',
       country: '',
-      postCode: '',
+      postcode: '',
     });
     setShowSelectedAddress(false);
   };
@@ -86,25 +87,14 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     setShowSelectedAddress(true);
   };
 
-  const clearInput = () => {
-    if (!inputRef.current) return;
-    inputRef.current.value = '';
-  };
-
   return (
     <div className={styles.wrapper}>
-      <div className={styles['search-wrapper']}>
-        <input
-          type="text"
-          className={styles.search}
-          placeholder="Start typing your address..."
-          onChange={handleTextChange}
-          ref={inputRef}
-        />
-        <span className={styles.cross} onClick={clearInput}>
-          <Icons iconName="iconCross" />
-        </span>
-      </div>
+      <SearchBar
+        placeholder="Start typing your address..."
+        handleInputChange={handleTextChange}
+        searchValue={searchTerm}
+      />
+
       <div className={styles['manual-button']}>
         <TextButton theme="dark">
           <button onClick={showManualFields} type="button">

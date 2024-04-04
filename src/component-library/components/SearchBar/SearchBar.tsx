@@ -50,6 +50,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
   const hideSuggestions =
     defaultValue === '' || suggestions.includes(defaultValue); // defaultValue will change to match current value after user picks a suggestion
 
+  console.log(searchValue);
   return (
     <div className={styles.wrapper}>
       <label htmlFor={inputId} className={styles['search-bar']}>
@@ -66,18 +67,19 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
           autoComplete={'off'}
         />
         {locationCta}
-        {defaultValue && (
-          <button
-            className={styles.clear}
-            type="button"
-            onClick={() => {
-              setValue('');
-            }}
-          >
-            <Icons iconName={'iconCross'} />
-            <span className={'sr-only'}>Clear search</span>
-          </button>
-        )}
+        {defaultValue ||
+          (searchValue && (
+            <button
+              className={styles.clear}
+              type="button"
+              onClick={() => {
+                setValue('');
+              }}
+            >
+              <Icons iconName={'iconCross'} />
+              <span className={'sr-only'}>Clear search</span>
+            </button>
+          ))}
         {!hideSuggestions && (
           <div className={styles.suggestions}>
             <SearchSuggestions
