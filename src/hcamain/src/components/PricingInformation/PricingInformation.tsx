@@ -11,13 +11,15 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
+import Text from '@component-library/foundation/Text/Text';
 
 interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
   Image?: ImageFieldValue;
   PriceFrom?: Field<string>;
-  Description?: Field<string>;
+  Text?: Field<string>;
   ConsultantFee?: Field<string>;
   LengthOfStay?: Field<string>;
   PriceFromText?: Field<string>;
@@ -55,7 +57,68 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
   if (!props.fields) {
     return <PricingInformationDefaultComponent {...props} />;
   }
+
+  console.log(props);
+
   return (
+    <ImageAndTextBlock
+      theme={props.params?.Theme || 'A-HCA-White'}
+      length="long"
+      imageAlignment="left"
+      contentVariation="pricing"
+      image={<JssImage field={props.fields?.Image} />}
+      subheader={
+        <Text tag="p" variation="subheading-1">
+          <JssText field={props.fields?.Heading} />
+        </Text>
+      }
+      header={
+        <Text tag="h2" variation="display-2">
+          <JssText field={props.fields?.Title} />
+        </Text>
+      }
+      children={
+        <>
+          <div>
+            <Text tag="p" variation="subheading-2">
+              <JssText field={props.fields?.PriceFromText} />
+            </Text>
+            <Text tag="p" variation="display-2">
+              <JssText field={props.fields?.PriceFrom} />
+            </Text>
+            <Text tag="p" variation="body-large">
+              <RichText tag="span" field={props.fields?.Text} />
+            </Text>
+          </div>
+          <div>
+            <Text tag="p" variation="subheading-2">
+              <JssText field={props.fields?.ConsultantFeeText} />
+            </Text>
+            <Text tag="p" variation="display-5">
+              <JssText field={props.fields?.ConsultantFee} />
+            </Text>
+          </div>
+          <div>
+            <Text tag="p" variation="subheading-2">
+              <JssText field={props.fields?.LengthOfStayText} />
+            </Text>
+            <Text tag="p" variation="display-5">
+              <JssText field={props.fields?.LengthOfStay} />
+            </Text>
+          </div>
+        </>
+      }
+      ctas={
+        props.rendering && (
+          <PlaceHolderWrapper>
+            <Placeholder name={phKey} rendering={props.rendering} />
+          </PlaceHolderWrapper>
+        )
+      }
+    />
+  );
+
+  /* return (
     <div className={`component ${props.params?.styles}`}>
       <JssText field={props.fields?.Heading} />
       <br />
@@ -81,5 +144,5 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
         <Placeholder name={phKey} rendering={props.rendering} />
       </PlaceHolderWrapper>
     </div>
-  );
+  ); */
 };
