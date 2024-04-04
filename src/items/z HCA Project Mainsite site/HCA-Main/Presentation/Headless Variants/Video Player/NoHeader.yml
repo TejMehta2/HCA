@@ -1,14 +1,8 @@
 ﻿---
-ID: "00b3f18e-0190-41ff-acab-0376d2d60001"
-Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Settings/Video Providers"
-SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: |
-    {CE1E735E-88AA-417A-BFFE-9E80A1245E7B}
-    {A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
+ID: "a2fc3433-8ebe-4a84-a5b3-5e2a16b1cbfe"
+Parent: "549bfe08-6b4c-4676-a69b-7fc730f6dcfa"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Headless Variants/Video Player/NoHeader"
 Languages:
 - Language: en
   Versions:
@@ -16,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240225T220525Z
+      Value: 20240403T144719Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -27,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0023da09-9675-4401-ab5a-25539865de71"
+      Value: "0b4eacef-34af-480b-b955-0ae9a5f24512"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240403T151702Z
+      Value: 20240403T144719Z

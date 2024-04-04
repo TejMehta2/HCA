@@ -1,8 +1,8 @@
 ﻿---
-ID: "989c70f5-4ee7-47b0-8e66-c913c1c1ddd2"
-Parent: "4e8b791c-c7be-4193-a6d6-f079a1e76b1c"
+ID: "6d5966fe-17cf-4c6e-8f88-6627cf981d30"
+Parent: "c4f2dfd1-07b6-43fa-9c72-1c5d491f3a4e"
 Template: "46bf57e7-393b-4cb0-9353-05a2b5c5b0dc"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA89/Data/Video Player"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA89_1/Data/Video Player"
 Languages:
 - Language: en
   Versions:
@@ -32,11 +32,11 @@ Languages:
       Value: Headache and Facial Pain Service
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6ff1842c-117a-4f09-ac91-d2c0e2183454"
+      Value: "bcbb2ba8-c29e-4807-afd4-c354d3bfe0fa"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240403T151803Z
+      Value: 20240403T151756Z

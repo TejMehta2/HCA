@@ -1,14 +1,15 @@
 ﻿---
-ID: "00b3f18e-0190-41ff-acab-0376d2d60001"
-Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Settings/Video Providers"
+ID: "04683221-90f3-4e36-9e78-8da47d1f810c"
+Parent: "8237fb80-2f89-4621-819f-a61b46cff99b"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Foundation/More Information Modal Content/Data/Title
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: |
-    {CE1E735E-88AA-417A-BFFE-9E80A1245E7B}
-    {A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -16,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240225T220525Z
+      Value: 20240403T114844Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -27,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0023da09-9675-4401-ab5a-25539865de71"
+      Value: "b1114f68-03ea-4011-bc76-20a869ff2c7c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240403T151702Z
+      Value: 20240403T115030Z
