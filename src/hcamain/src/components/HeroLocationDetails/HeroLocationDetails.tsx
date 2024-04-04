@@ -21,16 +21,11 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 
-type ReportLink =
-  | {
-      url: string;
-    }
-  | LinkField;
 interface CQCFields {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
-    ReportLink?: ReportLink;
+    ReportLink?: LinkField | { url: string };
     Status?: CQSStatusFields;
   };
 }

@@ -28,11 +28,12 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
       : props.fields?.Status?.fields?.displayName
   ) as CQCBlockProps['rating'];
 
-  const ratingLink = props.fields?.ReportLink?.url ? (
-    <a href={props.fields?.ReportLink?.url}></a>
-  ) : (
-    props.fields?.ReportLink && <JssLink field={props.fields?.ReportLink} />
-  );
+  const ratingLink =
+    props.fields?.ReportLink && 'url' in props.fields?.ReportLink ? (
+      <a href={props.fields?.ReportLink?.url}></a>
+    ) : (
+      props.fields?.ReportLink && <JssLink field={props.fields?.ReportLink} />
+    );
 
   const lightLogo = props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo
     .fields
