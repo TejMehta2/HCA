@@ -158,8 +158,11 @@ export const Default = (props: StepProps): JSX.Element => {
             <input type="email" id="email" {...register('email')} />
             {/* Display error message */}
             <br></br>
-            <button disabled={!isDirty || !isValid} type="submit">
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+            <button
+              disabled={!isDirty || !isValid || isSubmitting}
+              type="submit"
+            >
+              Submit
             </button>
           </form>
         </div>
