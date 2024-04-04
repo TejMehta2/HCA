@@ -12,12 +12,14 @@ const performCopy = () => {
   const foldersToCopy = [
     'components',
     'core-components',
+    'yext',
     'site-components',
     'foundation',
     'globals',
     'assets',
     'hooks',
     'utilities',
+    'utility-functions',
   ];
 
   try {

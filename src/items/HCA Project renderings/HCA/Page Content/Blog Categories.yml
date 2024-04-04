@@ -28,11 +28,17 @@ SharedFields:
                 filter {
                   value
                 }
-                filterValue {
-                  jsonValue
+                filterValueString {
+                  value
+                }
+                filterValueGuid {
+                  value
                 }
               }
             }
+          }
+          blogUrl  {
+            jsonValue
           }
         }
       }
@@ -106,14 +112,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "67cc0336-f14f-4fb1-a1b6-b058ed746cc2"
+      Value: "fb46ef45-7254-4039-bee8-23b1dac708c1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240221T092049Z
+      Value: 20240326T080514Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

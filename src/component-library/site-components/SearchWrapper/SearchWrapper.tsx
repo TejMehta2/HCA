@@ -6,7 +6,6 @@ import React, {
 } from 'react';
 import { SearchWrapperProps } from './SearchWrapper.types';
 import styles from './SearchWrapper.module.scss';
-import Themes from '../../foundation/Themes/Themes';
 import Tabs from '../../core-components/Tabs/Tabs';
 import { Tab } from '../../core-components/Tabs/Tabs.types';
 
@@ -14,14 +13,7 @@ const SearchWrapper = (
   props: SearchWrapperProps,
   ref: MutableRefObject<HTMLDivElement | null>
 ): JSX.Element => {
-  const {
-    header,
-    children,
-    searchDetail,
-    showing,
-    theme = 'A-HCA-White',
-    tabbedResults,
-  } = props;
+  const { children, searchDetail, showing, tabbedResults } = props;
 
   const [active, setActive] = useState<number>(0);
   const [tabContent, setTabContent] = useState(
@@ -33,7 +25,7 @@ const SearchWrapper = (
     tabs.push(item.tab);
   });
 
-  const tabChangeHandler = (newLabel: string) => {
+  const tabChangeHandler = ({ label: newLabel }: { label: string }) => {
     const newIndex = tabbedResults?.findIndex(
       (tabContent) => tabContent.tab.label === newLabel
     );
@@ -48,26 +40,20 @@ const SearchWrapper = (
   }, [active, tabbedResults]);
 
   return (
-    <Themes theme={theme}>
-      <div className={styles.wrapper}>
-        {header}
-        <Themes theme={theme}>
-          <div className={styles['results-header']}>
-            <div className={styles['search-detail']} ref={ref}>
-              {searchDetail && searchDetail}
-              {showing && <div>{showing}</div>}
-            </div>
-            {tabbedResults && (
-              <Tabs tabs={tabs} callback={tabChangeHandler}></Tabs>
-            )}
+    <div className={styles.wrapper}>
+      <div className={styles.inner}>
+        <div className={styles['results-header']}>
+          <div className={styles['search-detail']} ref={ref}>
+            {searchDetail && searchDetail}
+            {showing && <div>{showing}</div>}
           </div>
-        </Themes>
-
-        {tabbedResults
-          ? tabContent
-          : children && <div className={styles.children}>{children}</div>}
+          {tabbedResults && (
+            <Tabs tabs={tabs} callback={tabChangeHandler}></Tabs>
+          )}
+        </div>
+        {tabbedResults ? tabContent : children}
       </div>
-    </Themes>
+    </div>
   );
 };
 

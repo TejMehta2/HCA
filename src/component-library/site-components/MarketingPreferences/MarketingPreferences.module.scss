@@ -2,8 +2,8 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: var(--text);
-  background-color: var(--background);
+  color: $navy-blue-100;
+  background-color: $fern-10;
   padding: $spacing-6;
 }
 
@@ -11,6 +11,6 @@
   padding: $spacing-4 0;
 
   a {
-    color: var(--text);
+    color: $navy-blue-100;
   }
 }

@@ -1,15 +1,22 @@
 import React from 'react';
-import { Field, LinkField, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  LinkField,
+  RichText,
+  Link as JssLink,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import TextButtonComponent from '@component-library/core-components/TextButton/TextButton';
 import {
   ButtonProps,
   ButtonVariationUnionTypes,
 } from '@component-library/core-components/Button/Button.types';
+import Params from 'src/types/params';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type CTAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
+  fields?: {
+    SvgMarkup?: Field<string>;
   };
 };
 
@@ -19,46 +26,65 @@ interface Fields {
 }
 
 type CTAProps = {
-  params: { [key: string]: string };
+  params?: Params;
   fields: Fields;
-  size: ButtonProps['size'];
-  contentVariation: ButtonProps['contentVariation'];
+  size?: ButtonProps['size'];
+  contentVariation?: ButtonProps['contentVariation'];
 };
 
-const CTADefaultComponent = (props: CTAProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
+const CTADefaultComponent = (props: CTAProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          CTA. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 interface IntegratedButtonProps extends CTAProps {
   variation: ButtonVariationUnionTypes;
 }
-const IntegratedButton = (props: IntegratedButtonProps) => (
-  <Button
-    variation={props.variation}
-    size={props.size || 'large'}
-    contentVariation={props.contentVariation}
-  >
-    <a href={props.fields?.CTALink.value.href}>
-      {props?.fields?.CTAIcon?.fields.SvgMarkup && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields?.CTAIcon.fields.SvgMarkup.value,
-          }}
-        />
-      )}
-      <RichText
-        tag="span"
-        field={{
-          value: props.fields?.CTALink.value.text,
-        }}
-      />
-    </a>
-  </Button>
-);
+const IntegratedButton = (props: IntegratedButtonProps) => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  return (
+    <Button
+      variation={props.variation}
+      size={props.size || 'large'}
+      contentVariation={props.contentVariation}
+    >
+      <JssLink field={props.fields.CTALink}>
+        {!isExperienceEditor && (
+          <>
+            {props?.fields?.CTAIcon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                }}
+              />
+            )}
+            {props?.fields?.CTALink?.value?.text && (
+              <RichText
+                tag="span"
+                field={{
+                  value: props.fields?.CTALink?.value?.text,
+                }}
+              />
+            )}
+          </>
+        )}
+      </JssLink>
+    </Button>
+  );
+};
 
 export const Full = (props: CTAProps): JSX.Element => {
   if (!props.fields) {
@@ -68,20 +94,19 @@ export const Full = (props: CTAProps): JSX.Element => {
 };
 
 export const Outline = (props: CTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CTADefaultComponent {...props} />;
+  }
   return <IntegratedButton {...props} variation="outline" />;
 };
 
 export const TextButton = (props: CTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CTADefaultComponent {...props} />;
+  }
   return (
     <TextButtonComponent>
-      <a href={props.fields?.CTALink.value.href}>
-        <RichText
-          tag="span"
-          field={{
-            value: props.fields?.CTALink.value.text,
-          }}
-        />
-      </a>
+      <JssLink field={props.fields.CTALink}></JssLink>
     </TextButtonComponent>
   );
 };

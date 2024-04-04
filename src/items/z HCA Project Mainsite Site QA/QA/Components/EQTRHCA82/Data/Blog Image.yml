@@ -1,0 +1,35 @@
+﻿---
+ID: "663bd00b-90b6-410e-b579-835cb359f243"
+Parent: "a23a85d2-3467-478b-8b3c-f128233db96f"
+Template: "8ec9dd60-9e3f-4885-b222-d43d6acfa62e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA82/Data/Blog Image"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240207T212032Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8c41019f-d65a-49f5-89e8-50c72682e024"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240207T212536Z
+    - ID: "fb20c52b-7356-4409-8299-a77febc5597b"
+      Hint: Image
+      Value: |
+        <image mediaid="{1AA8EA4D-BBB7-4AD6-989C-D87BB8D69FDE}" />

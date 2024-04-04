@@ -57,13 +57,20 @@
     align-items: center;
     gap: $spacing-2;
     border-radius: $radius-large;
-    padding: $spacing-4 $spacing-5;
     text-decoration: none;
     user-select: none;
     cursor: pointer;
     white-space: nowrap;
     outline: solid #{px-to-rem(2)} transparent;
     color: var(--tab-text);
+    padding: px-to-rem(8) $spacing-4;
+    @include media(screen-l) {
+      padding: $spacing-4 $spacing-6;
+
+      &:has(svg) {
+        padding: $spacing-4 $spacing-5; // less horizontal padding to accommodate icons
+      }
+    }
 
     // Hover
     &:hover {
@@ -87,6 +94,12 @@
 
     &:checked + label {
       color: var(--tab-active-text);
+    }
+  }
+
+  &.scroll-max-large {
+    @include media(screen-l, max) {
+      overflow-x: auto;
     }
   }
 }

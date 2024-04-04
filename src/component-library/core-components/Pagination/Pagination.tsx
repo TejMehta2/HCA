@@ -134,33 +134,31 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   }, [page, pageCount, paginationHandler]);
 
   return (
-    <div className={styles.wrapper}>
-      <div
-        className={styles.buttons}
-        ref={containerRef}
-        style={{
-          // consumed in the CSS to animate the background element
-          ['--current-page-offset-left' as string]: `${offsetLeft}px`,
-        }}
+    <div
+      className={styles.buttons}
+      ref={containerRef}
+      style={{
+        // consumed in the CSS to animate the background element
+        ['--current-page-offset-left' as string]: `${offsetLeft}px`,
+      }}
+    >
+      <button
+        type="button"
+        className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
+        onClick={() => pageChangeHandler(page - 1)}
       >
-        <button
-          type="button"
-          className={`${styles['arrow']} ${page === 1 ? styles['hide'] : ''}`}
-          onClick={() => pageChangeHandler(page - 1)}
-        >
-          <Icons iconName="iconArrowSmallLeft" />
-        </button>
-        {pageButtons}
-        <button
-          type="button"
-          className={`${styles['arrow']} ${
-            page === pageCount ? styles['hide'] : ''
-          }`}
-          onClick={() => pageChangeHandler(page + 1)}
-        >
-          <Icons iconName="iconArrowSmallRight" />
-        </button>
-      </div>
+        <Icons iconName="iconArrowSmallLeft" />
+      </button>
+      {pageButtons}
+      <button
+        type="button"
+        className={`${styles['arrow']} ${
+          page === pageCount ? styles['hide'] : ''
+        }`}
+        onClick={() => pageChangeHandler(page + 1)}
+      >
+        <Icons iconName="iconArrowSmallRight" />
+      </button>
     </div>
   );
 };

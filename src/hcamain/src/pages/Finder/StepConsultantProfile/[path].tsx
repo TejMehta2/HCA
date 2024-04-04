@@ -5,18 +5,23 @@
 
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
 import Layout from 'src/Layout';
 import {
   RenderingType,
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
-  StaticPath,
+  // StaticPath,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
+//import { sitemapFetcher } from 'lib/sitemap-fetcher';
+import NotFound from 'src/NotFound';
+import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
+import { getHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 
 const SitecorePage = ({
   notFound,
@@ -29,17 +34,18 @@ const SitecorePage = ({
     handleEditorFastRefresh();
   }, []);
 
-  if (notFound || !layoutData?.sitecore?.route) {
+  if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
-    return <div>NOT FOUND FROM THE SUB-PAGE</div>;
+    return <NotFound />;
   }
 
   const isEditing = layoutData.sitecore.context.pageEditing;
   const isComponentRendering =
     layoutData.sitecore.context.renderingType === RenderingType.Component;
+
   return (
     <div>
-      hello finder profile sub-page world
+      {/* hello finder profile sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}
@@ -54,7 +60,9 @@ const SitecorePage = ({
               rendering={layoutData.sitecore.route}
             />
           ) : (
-            <Layout layoutData={layoutData} headLinks={headLinks} />
+            <ConsultantFinderContextProvider>
+              <Layout layoutData={layoutData} headLinks={headLinks} />
+            </ConsultantFinderContextProvider>
           )}
         </SitecoreContext>
       </ComponentPropsContext>
@@ -62,65 +70,127 @@ const SitecorePage = ({
   );
 };
 
-// paths are not known example. https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
+// paths are known in advance
+// https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // TODO
-// replace with list of known slugs...
 // add to sitemap
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths: StaticPath[] = [];
   let fallback: boolean | 'blocking' = 'blocking';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let paths: any = [];
+  let slugs: string[] = [];
 
-  paths = [];
+  //console.log('IN StepConsultantProfile GetStaticPaths');
+  // note getStaticPaths runs on every request in dev mode,
+  // so only do this for all consultants if deployed
+  if (
+    process.env.NODE_ENV !== 'development' &&
+    !process.env.DISABLE_SSG_FETCH
+  ) {
+    fallback = process.env.EXPORT_MODE ? false : fallback;
+  }
+
+  try {
+    // Note: Next.js runs export in production mode
+    //paths = await sitemapFetcher.fetch(context);
+    const HCAAPIConfig = await getHCAConfig();
+    if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
+      // mock from Sitecore / SSG slows down the build, only use real on prod
+      //console.log('getStaticPaths loading mock consultant slugs');
+      slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
+      slugs = slugs.filter((slug) => slug && slug.length > 0);
+    } else {
+      // real from legacy sitemap or doctify
+      //console.log('getStaticPaths loading real consultant slugs');
+      slugs = await getActiveConsultantSlugs();
+    }
+  } catch (error) {
+    console.warn(
+      'Error occurred in StepConsultantProfile getStaticPaths',
+      error
+    );
+  }
+
+  console.log('StepConsultantProfile slugs to pre-render', slugs);
+  if (slugs) {
+    paths = slugs.map((slug) => ({
+      params: { path: slug },
+    }));
+  } else {
+    paths = [];
+  }
   fallback = 'blocking';
 
-  console.log('IN Finder profile subpage GetStaticPaths');
-  console.log('paths:', paths);
-  console.log('fallback:', fallback);
+  //console.log('paths:', paths);
+  //console.log('fallback:', fallback);
+  //console.log('OUT StepConsultantProfile GetStaticPaths');
+
   return {
     paths,
     fallback,
   };
 };
 
-// TODO
-// call Doctify API to get profile data for slug
+// data load can be done here and/or at the component level too with get component props.
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('IN Finder profile subpage GetStaticProps');
-  console.log('context.params', context.params);
+  //console.log('IN StepConsultantProfile GetStaticProps');
+  //console.log('context.params', context.params);
 
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
+    //console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
     context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
   }
   const props = await sitecorePagePropsFactory.create(context);
-  console.log('props:', props);
+  //console.log('props:', props);
 
-  let slugPath = '';
+  // if needed here, we can get our slug from the url path like this...
+  /*
+  let slug = '';
   const path = context?.params?.requestPath;
   if (path !== undefined) {
     if (typeof path !== 'string') {
-      slugPath = path.pop() ?? '';
+      slug = path.pop() ?? '';
     } else {
-      slugPath = path;
+      slug = path;
     }
   }
-  console.log(slugPath);
+  */
+  //we can call out to services server side here..
+  //console.log("slug: ",slug);
+  //const isLDBConsultant = await checkIfLiveBookingIsAvailable(slug);
+  //console.log("isLDBConsultant: ",isLDBConsultant);
+  //const consultantProfileJson = await getSpecialistProfileData(slug);
+  //console.log("consultantProfileJson: ", consultantProfileJson);
+  // props.data = 'profile data';
 
-  // Assumes we have a service that calls CH GraphQL to get the data
-  // based on the blog name
-  //const blogData = await externalDataFactory.get(blogPath);
-  //props.blogData = blogData;
+  // but also at the component level using component props...
 
-  // props.slugData = 'andy profile data';
+  //console.log('OUT StepConsultantProfile GetStaticProps');
   return {
     props,
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-    revalidate: 5, // In seconds
+    revalidate: 300, // In seconds
     notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
+
+  // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+  try {
+    const props = await sitecorePagePropsFactory.create(context);
+    return {
+      props,
+      revalidate: 5, // In seconds
+      notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default SitecorePage;

@@ -1,0 +1,71 @@
+﻿---
+ID: "0814a0b6-d8c8-4064-8a42-4861b8a8af6d"
+Parent: "19791d4a-82d6-48a7-a79d-6b2a15cef417"
+Template: "08f2036c-ac23-444a-afe7-6fd691d01d9e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA76_1/Data/Treatments Search"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "05ef89c0-fe59-45b4-81da-001d21f4332a"
+      Hint: Title
+      Value: All treatments
+    - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
+      Hint: SearchResultsText
+      Value: treatments
+    - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
+      Hint: FilterOptionsIcon
+      Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240130T071653Z
+    - ID: "3b5deddf-c424-405c-8de6-18c4c1aa0fc7"
+      Hint: SearchBy
+      Value: "{D4667332-3F33-47B9-A6D6-4C6CC51C8683}"
+    - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
+      Hint: FilterOptions
+      Value: |
+        {655C5323-B313-4DAB-9C32-D37FB7447539}
+        {74B661F5-1A80-46D7-A41A-CEE3D7A55E26}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7a298203-0924-4526-8276-f59df39e9e07"
+      Hint: SearchPlaceholder
+      Value: Search for a service or treatments
+    - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
+      Hint: FilterBy
+      Value: "{241CD548-4CA7-4A65-9702-F4855D549661}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a849fadc-e514-47e4-954d-9af8eb6d39dd"
+    - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
+      Hint: SortOptions
+      Value: |
+        {B6B5F55F-0965-4996-BE5A-70F6B3581C95}
+        {60468383-EF7B-4714-9B6B-CBEEABF06C94}
+    - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
+      Hint: ResultsPerPage
+      Value: 3
+    - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
+      Hint: FilterOptionsText
+      Value: Filter by
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d24cbb38-fc72-42d9-a404-f1412bf128eb"
+      Hint: SortOptionsIcon
+      Value: "{F940A8AD-D316-4D03-893A-01169C3E95D2}"
+    - ID: "d8e43b76-ac40-4d8d-ac11-6e5df0bfe778"
+      Hint: SortOptionsText
+      Value: Sort by
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240320T141110Z

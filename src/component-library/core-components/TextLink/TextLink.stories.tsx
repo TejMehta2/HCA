@@ -9,7 +9,7 @@ const meta: Meta<typeof TextLink> = {
   component: TextLink,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -23,6 +23,98 @@ export const Default: StoryObj<typeof TextLink> = {
     children: (
       <button onClick={exampleClick}>
         <span>TextLink</span> <Icons iconName="iconCross" />
+      </button>
+    ),
+  },
+};
+
+export const SideBySide: StoryObj<typeof TextLink> = {
+  args: {
+    children: (
+      <button onClick={exampleClick}>
+        <span>TextLink</span>
+        <Icons iconName="iconCross" />
+      </button>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Story />
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const SideBySideWithWrapping: StoryObj<typeof TextLink> = {
+  args: {
+    children: (
+      <button onClick={exampleClick}>
+        <span>Text Link Text Link Text Link Text Link Text Link Text Link</span>{' '}
+      </button>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Story />
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const SideBySideWithWrappingWithIcons: StoryObj<typeof TextLink> = {
+  args: {
+    children: (
+      <button onClick={exampleClick}>
+        <span>Text Link Text Link Text Link Text Link Text Link Text Link</span>{' '}
+        <Icons iconName="iconCross" />
+      </button>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Story />
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Wrapping: StoryObj<typeof TextLink> = {
+  args: {
+    children: (
+      <button onClick={exampleClick}>
+        <span>
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link
+        </span>
+      </button>
+    ),
+  },
+};
+
+export const WrappingWithIcon: StoryObj<typeof TextLink> = {
+  args: {
+    children: (
+      <button onClick={exampleClick}>
+        <span>
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link Text Link Text Link Text Link Text Link
+          Text Link Text Link Text Link
+        </span>
+        <span>
+          <Icons iconName="iconCross" />
+        </span>
       </button>
     ),
   },

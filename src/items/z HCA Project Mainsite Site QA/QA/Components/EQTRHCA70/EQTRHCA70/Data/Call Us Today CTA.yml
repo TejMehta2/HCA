@@ -1,0 +1,28 @@
+﻿---
+ID: "933008ed-9f85-4025-bf54-aafeadab2ca2"
+Parent: "418861af-2d70-48dc-9858-a29561c35b78"
+Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA70/EQTRHCA70/Data/Call Us Today CTA"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240211T201113Z
+    - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
+      Hint: ContactUnit
+      Value: |
+        {44F3F91A-6517-4748-B0B3-DE08D210B2A7}
+        {DCF60739-46BA-41D4-A590-D17D719932D7}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "730e4b2f-db40-48f8-8ece-964647d06565"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240320T110158Z

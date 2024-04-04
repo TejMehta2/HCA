@@ -4,36 +4,37 @@ import {
   Item,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
 
 export type logoField = {
-  Logo: ImageField;
+  Logo: { fields?: ImageField; value?: string };
 };
 
 export type CQSStatusFields = Item & {
   displayName?: string;
-  fields: {
-    Title: Field<string>;
-    Icon: Field<string>;
-    Logo: ImageField;
-    CQCLogoLight: {
-      fields: logoField;
+  fields?: {
+    Title?: Field<string>;
+    Icon?: Field<string>;
+    Logo?: ImageField;
+    CQCLogoLight?: {
+      fields?: logoField;
     };
-    CQCLogoDark: {
-      fields: logoField;
+    CQCLogoDark?: {
+      fields?: logoField;
     };
   };
 };
 
 export interface Fields {
-  Status: CQSStatusFields;
-  ReportLink: LinkField;
+  Status?: CQSStatusFields;
+  ReportLink?: LinkField;
   Text?: Field<string>;
   Title?: Field<string>;
 }
 
 export type CQCRatingProps = {
-  params?: { [key: string]: string };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
   hideRating?: boolean;
   length?: 'long' | 'short';
 };

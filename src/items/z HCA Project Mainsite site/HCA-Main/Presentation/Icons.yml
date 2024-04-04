@@ -1,0 +1,23 @@
+﻿---
+ID: "df22d821-536e-49cc-8a7e-bf1abdc94e9b"
+Parent: "3a96a972-1f1a-4fd7-8704-b3934dff1274"
+Template: "f6f00a46-5ffa-4141-952a-d4eaccb6b45a"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Icons"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231109T142812Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5c5ef697-cfbc-4c97-8ad4-367a949c5cf9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231109T142812Z

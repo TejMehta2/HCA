@@ -85,9 +85,7 @@ $max-options: 5; // Increase max if more "sort by" options are required
     border: solid 1px var(--text);
     border-radius: $radius-large;
     width: px-to-rem(356);
-    min-height: px-to-rem(274);
     position: absolute;
-    top: px-to-rem(4);
     background-color: var(--card-background);
     color: var(--text);
     max-height: px-to-rem(300);
@@ -107,14 +105,22 @@ $max-options: 5; // Increase max if more "sort by" options are required
 .desktop {
   display: none;
   position: relative;
+  height: 100%;
 }
 
 .button {
+  // border-bottom: px-to-rem(4) solid transparent;
+  &,
+  > * {
+    height: 100%;
+  }
+
   button {
     width: 100%;
     justify-content: center;
 
-    @include media(screen-m) {
+    @include media(screen-l) {
+      height: 100%;
       width: max-content;
       justify-content: unset;
     }

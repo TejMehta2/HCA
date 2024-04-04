@@ -35,7 +35,11 @@ export const Default: StoryObj<typeof ModalAppointment> = {
     ),
     cta1: (
       <>
-        <Button size={'large'} variation={'full'}>
+        <Button
+          size={'large'}
+          variation={'full'}
+          contentVariation={'full-width'}
+        >
           <a href="#">
             <Icons iconName={'iconStethoscope'} />
             <span>
@@ -58,7 +62,11 @@ export const Default: StoryObj<typeof ModalAppointment> = {
     ),
     cta2: (
       <>
-        <Button size={'large'} variation={'full'}>
+        <Button
+          size={'large'}
+          variation={'full'}
+          contentVariation={'full-width'}
+        >
           <a href="#">
             <Icons iconName={'iconMobile'} />
             <span>
@@ -66,7 +74,11 @@ export const Default: StoryObj<typeof ModalAppointment> = {
             </span>
           </a>
         </Button>
-        <Button size={'large'} variation={'outline'}>
+        <Button
+          size={'large'}
+          variation={'outline'}
+          contentVariation={'full-width'}
+        >
           <a href="#">
             <span>
               View all <strong>GP services</strong>
@@ -94,7 +106,11 @@ export const Optional: StoryObj<typeof ModalAppointment> = {
     ),
     cta1: (
       <>
-        <Button size={'large'} variation={'full'}>
+        <Button
+          size={'large'}
+          variation={'full'}
+          contentVariation={'full-width'}
+        >
           <a href="#">
             <Icons iconName={'iconMobile'} />
             <span>

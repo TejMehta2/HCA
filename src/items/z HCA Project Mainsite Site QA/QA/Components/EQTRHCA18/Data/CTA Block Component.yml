@@ -1,0 +1,40 @@
+﻿---
+ID: "d0c3de29-0777-4e60-8dcf-79f169531f66"
+Parent: "c3d74f74-59ea-4b0f-a847-e09d5ca4c5df"
+Template: "add26115-d42f-45bb-b2d4-b13211aac2cc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA18/Data/CTA Block Component"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0e7dc7c3-75ae-4895-8f37-53beef0051cf"
+      Hint: Text
+      Value: Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T143113Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "6b6db542-a329-44cd-a350-0ba0f386640e"
+      Hint: Title
+      Value: "Call-to-action block"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "cef11c07-11f4-4d77-b402-00fb3b832c3d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240212T133207Z
+    - ID: "f79f7278-290d-4268-a48b-e6eedda56618"
+      Hint: Heading
+      Value: Meta title

@@ -5,42 +5,37 @@ import {
   Text as JSSText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDetails/HeaderBlogDetails';
-import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Tags from '@component-library/core-components/Tags/Tags';
 import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
 type ArticleTypeFields = {
-  title: { value: string };
+  title?: { value?: string };
 };
 
 interface Fields {
-  data: {
-    contextItem: {
-      title: { jsonValue: Field<string> };
-      text: { jsonValue: Field<string> };
-      date: { jsonValue: Field<string> };
-      articleType: { targetItem: ArticleTypeFields };
+  data?: {
+    contextItem?: {
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+      date?: { jsonValue?: Field<string> };
+      articleType?: { targetItem?: ArticleTypeFields };
     };
   };
 }
 
 type BlogDetailsHeaderProps = {
-  params: {
-    [key: string]: string;
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const BlogDetailsHeaderDefaultComponent = (
   props: BlogDetailsHeaderProps
 ): JSX.Element => {
   return (
-    <div className={`component ${props.params.styles}`}>
+    <div className={`component ${props.params?.styles}`}>
       <div className="component-content">
         <span className="is-empty-hint">Header with text</span>
       </div>
@@ -55,32 +50,37 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
 
   return (
     <HeaderBlogDetails
-      theme={props.params.Theme}
+      theme={props.params?.Theme || 'A-HCA-White'}
       tag={
-        <>
+        props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
           <Tags contentVariation="quote">
             <Link href={{ pathname: '/' }}>
               <JSSText
                 field={
-                  props.fields.data.contextItem.articleType.targetItem.title
+                  props.fields?.data?.contextItem?.articleType?.targetItem
+                    ?.title
                 }
               />
             </Link>
           </Tags>
-        </>
+        ) : (
+          <></>
+        )
       }
-      date={<JssDate field={props.fields.data.contextItem.date.jsonValue} />}
+      date={
+        <JssDate field={props.fields?.data?.contextItem?.date?.jsonValue} />
+      }
       title={
         <Text
-          tag={props.params.HeadingTag || 'h1'}
-          variation={props.params.HeadingSize || 'display-1'}
+          tag={props.params?.HeadingTag || 'h1'}
+          variation={props.params?.HeadingSize || 'display-1'}
         >
-          <JSSText field={props.fields.data.contextItem.title.jsonValue} />
+          <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
       bodyCopy={
         <Text tag="div" variation="body-large">
-          <RichText field={props.fields.data.contextItem.text.jsonValue} />
+          <RichText field={props.fields?.data?.contextItem?.text?.jsonValue} />
         </Text>
       }
     />

@@ -2,12 +2,26 @@ import React from 'react';
 import styles from './Navigation.module.scss';
 import NavigationProps from './Navigation.types';
 
-const Search = (props: NavigationProps): JSX.Element => {
-  return (
-    <div className={styles['consultant-finder-navigation']}>
-      {props.children}
-    </div>
-  );
+const Navigation = (props: NavigationProps): JSX.Element => {
+  const { showOnMobile, hasCustomBtnMobile, hideTextMobile } = props;
+  const classNames = [styles['consultant-finder-navigation']];
+
+  // Conditionally add the class if showOnMobile is true
+  if (showOnMobile) {
+    classNames.push(styles['show-on-mobile']);
+  }
+
+  // hide text on mobile
+  if (hideTextMobile) {
+    classNames.push(styles['hide-text-on-mobile']);
+  }
+
+  // add custom button style to fit on sm when needed
+  if (hasCustomBtnMobile) {
+    classNames.push(styles['custom-btns-sm']);
+  }
+
+  return <div className={classNames.join(' ')}>{props.children}</div>;
 };
 
-export default Search;
+export default Navigation;

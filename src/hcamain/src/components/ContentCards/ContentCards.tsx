@@ -11,73 +11,82 @@ import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
-import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import Params from 'src/types/params';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface PagesFields {
-  title: Field<string>;
-  text: Field<string>;
-  image: ImageField;
-  url: { path: string };
+  title?: Field<string>;
+  text?: Field<string>;
+  image?: ImageField;
+  url?: { path?: string };
 }
 
 interface Fields {
-  data: {
+  data?: {
     item?: {
-      title: { jsonValue: Field<string> };
-      cTACardText: { jsonValue: Field<string> };
-      pages: {
-        PagesList: PagesFields[];
+      title?: { jsonValue?: Field<string> };
+      cTACardText?: { jsonValue?: Field<string> };
+      pages?: {
+        PagesList?: PagesFields[];
       };
     };
   };
 }
 
 type ContentCardsProps = {
-  params: {
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-    Columns: string;
-    styles: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const ContentCardsDefaultComponent = (
   props: ContentCardsProps
-): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Content Cards no datasource</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
 
-export const Default = (props: ContentCardsProps): JSX.Element => {
-  if (!props.fields.data.item) {
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Content Cards. Please click to select datasource.
+        </span>
+      </div>
+    </div>
+  );
+};
+
+interface WithImageProps extends ContentCardsProps {
+  showImage: boolean;
+}
+
+export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { showImage = true } = props;
+  if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
 
   const columns: CardBlockProps['variation'] =
-    +props.params.Columns === 4 ? '4-columns' : '3-columns';
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
 
   return (
     <CardBlock
       variation={columns}
       gapSize={'small'}
-      theme={props.params.Theme}
+      theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
           paddingSize="small"
           title={
             <Text
-              variation={props.params.HeadingSize}
-              tag={props.params.HeadingTag}
+              variation={props.params?.HeadingSize || 'heading-1'}
+              tag={props.params?.HeadingTag || 'h2'}
             >
               <JssText
                 tag={'span'}
-                field={props.fields.data.item.title.jsonValue}
+                field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>
           }
@@ -85,13 +94,13 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       }
     >
       <>
-        {props.fields.data.item.pages.PagesList.map((card, index) => (
+        {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
           <CardContent
             key={index}
-            image={<JssImage field={card.image} />}
+            image={showImage ? <JssImage field={card.image} /> : undefined}
             title={
               <Text
-                tag={getSubheadingTag(props.params.HeadingTag, 'h2')}
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
                 variation="heading-1"
               >
                 <JssText field={card.title} />
@@ -103,9 +112,9 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
               </Text>
             }
             link={
-              <a href={card.url.path}>
+              <a href={card?.url?.path}>
                 <span>
-                  {props.fields.data.item?.cTACardText.jsonValue.value}
+                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
                 </span>
               </a>
             }
@@ -114,4 +123,12 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       </>
     </CardBlock>
   );
+};
+
+export const WithoutImage = (props: ContentCardsProps): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <ContentCardsDefaultComponent {...props} />;
+  }
+
+  return <WithImage {...props} showImage={false} />;
 };

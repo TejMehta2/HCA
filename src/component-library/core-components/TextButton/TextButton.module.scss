@@ -3,6 +3,7 @@
 
 .text-button {
   width: max-content;
+  max-width: 100%;
 
   a {
     text-decoration: none;
@@ -10,7 +11,7 @@
 
   button,
   a {
-    display: flex;
+    display: inline-flex;
     column-gap: px-to-rem(4);
     cursor: pointer;
     background: 0;
@@ -18,6 +19,7 @@
     padding: 0 0 px-to-rem(8);
     position: relative;
     color: var(--cta-text);
+    word-break: break-all;
 
     @include apply-body-medium-large;
 
@@ -67,6 +69,10 @@
       &::after {
         display: none;
       }
+    }
+
+    svg {
+      flex-shrink: 0;
     }
   }
 }

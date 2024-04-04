@@ -18,6 +18,7 @@ import Pagination from '../../core-components/Pagination/Pagination';
 import LocationMap from '../../components/LocationMap/LocationMap';
 import { Default as locationMapProps } from '../../components/LocationMap/LocationMap.stories';
 import { LocationMapProps } from '../../components/LocationMap/LocationMap.types';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof SearchWrapper> = {
@@ -34,24 +35,6 @@ export default meta;
 
 export const Default: StoryObj<typeof SearchWrapper> = {
   args: {
-    header: (
-      <HeaderPlain
-        subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
-        heading={
-          <Text variation={'display-2'}>News & articles about healthcare </Text>
-        }
-        search={<SearchBar placeholder="" />}
-        theme={'A-HCA-White'}
-      >
-        <Text variation="body-large">
-          Quis laboris proident sint amet id cillum do dolor in tempor est.
-          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-          dolore.
-        </Text>
-      </HeaderPlain>
-    ),
-
     searchDetail: (
       <Text tag="h2" variation="heading-1">
         45 articles including ‘Cardiac care’
@@ -64,9 +47,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {BLOG_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{BLOG_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={BLOG_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -74,83 +55,69 @@ export const Default: StoryObj<typeof SearchWrapper> = {
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <Themes theme={'A-HCA-White'}>
+        <HeaderPlain
+          subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
+          heading={
+            <Text variation={'display-2'}>
+              News & articles about healthcare{' '}
+            </Text>
+          }
+          description={
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+              dolore.
+            </Text>
+          }
+        >
+          <SearchBar placeholder="Search services, treatments, conditions...">
+            <Filters
+              resultsCount={40}
+              filters={[
+                {
+                  contentVariation: 'filters',
+                  title: 'Locations',
+                  children: (
+                    <Checkboxes>
+                      <Checkbox
+                        id="1"
+                        value="Christie"
+                        name="locations"
+                        label="Christie Hospital"
+                      ></Checkbox>
+                      <Checkbox
+                        id="2"
+                        value="london-bridge"
+                        name="locations"
+                        label="London Bridge Hospital"
+                      ></Checkbox>
+                    </Checkboxes>
+                  ),
+                },
+              ]}
+            />
+          </SearchBar>
+        </HeaderPlain>
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const ServiceLines: StoryObj<typeof SearchWrapper> = {
   args: {
-    header: (
-      <HeaderPlain
-        heading={<Text variation={'display-2'}>All Service Lines</Text>}
-        search={<SearchBar placeholder="" />}
-        theme={'I-HCA-Goldenrod'}
-        filters={
-          <Filters
-            resultsCount={40}
-            filters={[
-              {
-                contentVariation: 'filters',
-                title: 'Locations',
-                children: (
-                  <Checkboxes>
-                    <Checkbox
-                      id="1"
-                      value="Christie"
-                      name="locations"
-                      label="Christie Hospital"
-                    ></Checkbox>
-                    <Checkbox
-                      id="2"
-                      value="london-bridge"
-                      name="locations"
-                      label="London Bridge Hospital"
-                    ></Checkbox>
-                  </Checkboxes>
-                ),
-              },
-            ]}
-          ></Filters>
-        }
-        sort={
-          <Sorting
-            options={[
-              {
-                id: 'option-a',
-                defaultChecked: true,
-                labelText: 'Alphabetically (A to Z)',
-              },
-              {
-                id: 'option-b',
-                labelText: 'Alphabetically (Z to A)',
-              },
-              { id: 'option-c', labelText: 'Price (Low to High)' },
-              {
-                id: 'option-d',
-                labelText: 'Price (High to Low)',
-              },
-            ]}
-            onChange={(event) => {
-              const target = event.target as HTMLInputElement;
-              console.log(target.value);
-              console.log(target.checked);
-            }}
-          />
-        }
-      ></HeaderPlain>
-    ),
-
-    theme: 'I-HCA-Goldenrod',
-
     searchDetail: (
       <Text tag="h2" variation="heading-1">
         64 service lines
       </Text>
     ),
-
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{SERVICE_LINES_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -158,81 +125,71 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <Themes theme={'I-HCA-Goldenrod'}>
+        <HeaderPlain
+          heading={<Text variation={'display-2'}>All Service Lines</Text>}
+        >
+          <SearchBar placeholder="">
+            <Filters
+              resultsCount={40}
+              filters={[
+                {
+                  contentVariation: 'filters',
+                  title: 'Locations',
+                  children: (
+                    <Checkboxes>
+                      <Checkbox
+                        id="1"
+                        value="Christie"
+                        name="locations"
+                        label="Christie Hospital"
+                      ></Checkbox>
+                      <Checkbox
+                        id="2"
+                        value="london-bridge"
+                        name="locations"
+                        label="London Bridge Hospital"
+                      ></Checkbox>
+                    </Checkboxes>
+                  ),
+                },
+              ]}
+            />
+            <Sorting
+              options={[
+                {
+                  id: 'option-a',
+                  defaultChecked: true,
+                  labelText: 'Alphabetically (A to Z)',
+                },
+                {
+                  id: 'option-b',
+                  labelText: 'Alphabetically (Z to A)',
+                },
+                { id: 'option-c', labelText: 'Price (Low to High)' },
+                {
+                  id: 'option-d',
+                  labelText: 'Price (High to Low)',
+                },
+              ]}
+              onChange={(event) => {
+                const target = event.target as HTMLInputElement;
+                console.log(target.value);
+                console.log(target.checked);
+              }}
+            />
+          </SearchBar>
+        </HeaderPlain>
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
   args: {
-    header: (
-      <HeaderPlain
-        heading={
-          <Text variation={'display-2'}>All orthopaedic treatments</Text>
-        }
-        search={<SearchBar placeholder="" />}
-        theme={'A-HCA-White'}
-        filters={
-          <Filters
-            resultsCount={40}
-            filters={[
-              {
-                contentVariation: 'filters',
-                title: 'Locations',
-                children: (
-                  <Checkboxes>
-                    <Checkbox
-                      id="1"
-                      value="Christie"
-                      name="locations"
-                      label="Christie Hospital"
-                    ></Checkbox>
-                    <Checkbox
-                      id="2"
-                      value="london-bridge"
-                      name="locations"
-                      label="London Bridge Hospital"
-                    ></Checkbox>
-                  </Checkboxes>
-                ),
-              },
-            ]}
-          ></Filters>
-        }
-        sort={
-          <Sorting
-            options={[
-              {
-                id: 'option-a',
-                defaultChecked: true,
-                labelText: 'Alphabetically (A to Z)',
-              },
-              {
-                id: 'option-b',
-                labelText: 'Alphabetically (Z to A)',
-              },
-              { id: 'option-c', labelText: 'Price (Low to High)' },
-              {
-                id: 'option-d',
-                labelText: 'Price (High to Low)',
-              },
-            ]}
-            onChange={(event) => {
-              const target = event.target as HTMLInputElement;
-              console.log(target.value);
-              console.log(target.checked);
-            }}
-          />
-        }
-      >
-        <Text variation="body-large">
-          Quis laboris proident sint amet id cillum do dolor in tempor est.
-          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-          dolore.
-        </Text>
-      </HeaderPlain>
-    ),
-
-    theme: 'A-HCA-White',
-
     searchDetail: (
       <Text tag="h2" variation="heading-1">
         64 service lines
@@ -245,9 +202,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
     ),
     children: (
       <>
-        <CardGrid theme="A-HCA-White">
-          {SERVICE_LINES_MOCK_VALUES.firstPageContent}
-        </CardGrid>
+        <CardGrid>{SERVICE_LINES_MOCK_VALUES.firstPageContent}</CardGrid>
         <Pagination
           pageCount={SERVICE_LINES_MOCK_VALUES.pageCount}
           callback={console.log}
@@ -255,79 +210,85 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <>
+        <Themes theme={'A-HCA-White'}>
+          <HeaderPlain
+            heading={
+              <Text variation={'display-2'}>All orthopaedic treatments</Text>
+            }
+            description={
+              <Text variation="body-large">
+                Quis laboris proident sint amet id cillum do dolor in tempor
+                est. Exercitation aute sint tempor eu ut aliquip commodo enim
+                nulla et laborum et culpa minim. Commodo ex laboris pariatur
+                labore nostrud dolore.
+              </Text>
+            }
+          >
+            <SearchBar placeholder="">
+              <Filters
+                resultsCount={40}
+                filters={[
+                  {
+                    contentVariation: 'filters',
+                    title: 'Locations',
+                    children: (
+                      <Checkboxes>
+                        <Checkbox
+                          id="1"
+                          value="Christie"
+                          name="locations"
+                          label="Christie Hospital"
+                        ></Checkbox>
+                        <Checkbox
+                          id="2"
+                          value="london-bridge"
+                          name="locations"
+                          label="London Bridge Hospital"
+                        ></Checkbox>
+                      </Checkboxes>
+                    ),
+                  },
+                ]}
+              ></Filters>
+              <Sorting
+                options={[
+                  {
+                    id: 'option-a',
+                    defaultChecked: true,
+                    labelText: 'Alphabetically (A to Z)',
+                  },
+                  {
+                    id: 'option-b',
+                    labelText: 'Alphabetically (Z to A)',
+                  },
+                  { id: 'option-c', labelText: 'Price (Low to High)' },
+                  {
+                    id: 'option-d',
+                    labelText: 'Price (High to Low)',
+                  },
+                ]}
+                onChange={(event) => {
+                  const target = event.target as HTMLInputElement;
+                  console.log(target.value);
+                  console.log(target.checked);
+                }}
+              />
+            </SearchBar>
+          </HeaderPlain>
+        </Themes>
+        <Themes theme={'A-HCA-White'}>
+          <Story />
+        </Themes>
+      </>
+    ),
+  ],
 };
 
 export const LocationsList: StoryObj<typeof SearchWrapper> = {
   args: {
-    header: (
-      <HeaderPlain
-        heading={<Text variation={'display-2'}>Find a location</Text>}
-        search={<SearchBar placeholder="" />}
-        theme={'H-HCA-Tangerine'}
-        filters={
-          <Filters
-            resultsCount={40}
-            filters={[
-              {
-                contentVariation: 'filters',
-                title: 'Locations',
-                children: (
-                  <Checkboxes>
-                    <Checkbox
-                      id="1"
-                      value="Christie"
-                      name="locations"
-                      label="Christie Hospital"
-                    ></Checkbox>
-                    <Checkbox
-                      id="2"
-                      value="london-bridge"
-                      name="locations"
-                      label="London Bridge Hospital"
-                    ></Checkbox>
-                  </Checkboxes>
-                ),
-              },
-            ]}
-          ></Filters>
-        }
-        sort={
-          <Sorting
-            options={[
-              {
-                id: 'option-a',
-                defaultChecked: true,
-                labelText: 'Alphabetically (A to Z)',
-              },
-              {
-                id: 'option-b',
-                labelText: 'Alphabetically (Z to A)',
-              },
-              { id: 'option-c', labelText: 'Price (Low to High)' },
-              {
-                id: 'option-d',
-                labelText: 'Price (High to Low)',
-              },
-            ]}
-            onChange={(event) => {
-              const target = event.target as HTMLInputElement;
-              console.log(target.value);
-              console.log(target.checked);
-            }}
-          />
-        }
-      >
-        <Text variation="body-large">
-          Quis laboris proident sint amet id cillum do dolor in tempor est.
-          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-          dolore.
-        </Text>
-      </HeaderPlain>
-    ),
-
-    theme: 'A-HCA-White',
-
     searchDetail: (
       <Text tag="h2" variation="heading-1">
         64 service lines
@@ -343,9 +304,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
         tab: { icon: 'iconGrid', label: 'Grid view' },
         tabContent: (
           <>
-            <CardGrid theme="A-HCA-White">
-              {LOCATIONS_MOCK_VALUES.firstPageContent}
-            </CardGrid>
+            <CardGrid>{LOCATIONS_MOCK_VALUES.firstPageContent}</CardGrid>
             <Pagination
               pageCount={LOCATIONS_MOCK_VALUES.pageCount}
               callback={console.log}
@@ -361,4 +320,73 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
       },
     ],
   },
+  decorators: [
+    (Story) => (
+      <Themes theme="H-HCA-Tangerine">
+        <HeaderPlain
+          heading={<Text variation={'display-2'}>Find a location</Text>}
+          description={
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+              dolore.
+            </Text>
+          }
+        >
+          <SearchBar placeholder="">
+            <Filters
+              resultsCount={40}
+              filters={[
+                {
+                  contentVariation: 'filters',
+                  title: 'Locations',
+                  children: (
+                    <Checkboxes>
+                      <Checkbox
+                        id="1"
+                        value="Christie"
+                        name="locations"
+                        label="Christie Hospital"
+                      ></Checkbox>
+                      <Checkbox
+                        id="2"
+                        value="london-bridge"
+                        name="locations"
+                        label="London Bridge Hospital"
+                      ></Checkbox>
+                    </Checkboxes>
+                  ),
+                },
+              ]}
+            />
+            <Sorting
+              options={[
+                {
+                  id: 'option-a',
+                  defaultChecked: true,
+                  labelText: 'Alphabetically (A to Z)',
+                },
+                {
+                  id: 'option-b',
+                  labelText: 'Alphabetically (Z to A)',
+                },
+                { id: 'option-c', labelText: 'Price (Low to High)' },
+                {
+                  id: 'option-d',
+                  labelText: 'Price (High to Low)',
+                },
+              ]}
+              onChange={(event) => {
+                const target = event.target as HTMLInputElement;
+                console.log(target.value);
+                console.log(target.checked);
+              }}
+            />
+          </SearchBar>
+        </HeaderPlain>
+        <Story />
+      </Themes>
+    ),
+  ],
 };

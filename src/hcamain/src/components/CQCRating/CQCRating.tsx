@@ -21,32 +21,39 @@ export const Default = (props: CQCRatingProps): JSX.Element => {
     return <CQCRatingDefaultComponent {...props} />;
   }
   const { hideRating = false, length = 'long' } = props;
-  const defaultRating = props.fields.Status
-    ?.displayName as CQCBlockProps['rating'];
+
+  const defaultRating = (
+    props.fields?.Status?.displayName
+      ? props.fields?.Status?.displayName
+      : props.fields?.Status?.fields?.displayName
+  ) as CQCBlockProps['rating'];
+
+  const lightLogo = props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo
+    .fields
+    ? props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo.fields
+    : props.fields?.Status?.fields?.CQCLogoLight?.fields?.Logo;
+
+  const darkLogo = props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo
+    .fields
+    ? props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo.fields
+    : props.fields?.Status?.fields?.CQCLogoDark?.fields?.Logo;
+
   return (
     <div className={`component ${props.params?.styles}`} component-name="cqc">
       <CQCBlock
-        title={props.fields.Title?.value}
-        text={props.fields.Text?.value}
-        link={<JssLink field={props.fields.ReportLink} />}
+        title={props.fields?.Title?.value}
+        text={props.fields?.Text?.value}
+        link={
+          props.fields?.ReportLink && (
+            <JssLink field={props.fields?.ReportLink} />
+          )
+        }
         length={length}
         rating={hideRating ? undefined : defaultRating}
         icon={<Icons iconName="iconCheckCircle"></Icons>}
         logo={{
-          dark: (
-            <JssImage
-              field={props.fields.Status?.fields.CQCLogoLight.fields.Logo}
-              width="120"
-              height="37"
-            />
-          ),
-          light: (
-            <JssImage
-              field={props.fields.Status?.fields.CQCLogoDark.fields.Logo}
-              width="120"
-              height="37"
-            />
-          ),
+          dark: <JssImage field={lightLogo} width="120" height="37" />,
+          light: <JssImage field={darkLogo} width="120" height="37" />,
         }}
       ></CQCBlock>
     </div>

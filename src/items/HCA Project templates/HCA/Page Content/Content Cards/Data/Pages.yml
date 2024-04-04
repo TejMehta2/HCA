@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/Content Cards/Data/Pages
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: DataSource=/sitecore/content/HCA/HCA Main&IncludeTemplatesForSelection=Blog Page,Location Page,Patient Story Page,Specialty Page, Page Proxy
+  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Content Page,Blog Page,Location Page,Patient Story Page,Specialty Page, Page Proxy"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Treelist
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c0b04f3d-f448-4404-93bf-f847512ed65e"
+      Value: "6fdf41f7-d288-4cc6-bd12-d4bf4b31d3c7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240214T182820Z
+      Value: 20240313T202459Z

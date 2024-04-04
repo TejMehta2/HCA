@@ -5,43 +5,13 @@
     "includes": [
       {
         "name": "z HCA Project Mainsite site",
-        "path": "/sitecore/content/HCA/HCA Main",
-        "rules": [
-          {
-            "path": "/home/QA",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
-          },
-          {
-            "path": "/home",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
+        "path": "/sitecore/content/HCA/HCA-Main",
+        "rules": [         
           {
             "path": "/Media",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
           },
-          {
-            "path": "/Data/CQC",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Doctify Reviews",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Tags/BlogTags",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Data/Authors",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },		  
           {
             "path": "/Data",
             "scope": "ItemAndChildren",
@@ -90,7 +60,7 @@
           {
             "path": "/Settings/Search",
             "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
+            "allowedPushOperations": "CreateUpdateAndDelete"
           },
           {
             "path": "/Settings",
@@ -100,6 +70,21 @@
           {
             "path": "/*",
             "scope": "Ignored"
+          }
+        ]
+      },
+      {
+        "name": "z HCA Project Mainsite Media Library",
+        "path": "/sitecore/media library/Project/HCA/HCA Main",
+        "rules": [
+          {
+            "path": "/Template Thumbnails",
+            "scope": "ItemAndDescendants",
+            "allowedPushOperations": "CreateUpdateAndDelete"
+          },
+          {
+            "path": "/*",
+            "scope": "Ignored" 
           }
         ]
       }

@@ -9,15 +9,24 @@
   padding: $spacing-6;
   text-align: center;
   position: static;
+  display: block;
+  margin: auto;
 
   @include media(screen-l) {
-    position: fixed;
+    position: sticky;
     top: 0;
-    right: 0;
-    z-index: 2000;
+    z-index: 1;
   }
 
   button {
     margin-bottom: $spacing-2;
+  }
+
+  &-mobile {
+    display: block;
+
+    @include media(screen-l) {
+      display: none;
+    }
   }
 }

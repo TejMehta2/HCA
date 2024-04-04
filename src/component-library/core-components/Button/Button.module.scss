@@ -56,7 +56,8 @@
   }
 
   a,
-  button {
+  button,
+  label {
     border-radius: $radius-large;
     cursor: pointer;
     display: flex;
@@ -88,7 +89,7 @@
     }
 
     svg {
-      min-width: min-content;
+      flex-shrink: 0;
     }
   }
 
@@ -105,7 +106,8 @@
     }
 
     button,
-    a {
+    a,
+    label {
       width: initial;
 
       & > * {
@@ -118,21 +120,56 @@
 /* stylelint-disable no-descending-specificity */
 .large {
   a,
-  button {
+  button,
+  label {
     padding: px-to-rem(16) $spacing-8;
+    min-height: $spacing-9;
   }
 }
 
 .small {
   a,
-  button {
+  button,
+  label {
     padding: px-to-rem(16) $spacing-7;
+    min-height: $spacing-8;
+  }
+}
+
+.filter {
+  a,
+  button,
+  label {
+    color: var(--text);
+    background-color: var(--filter-button-1);
+    overflow: hidden;
+
+    &:hover,
+    &:active {
+      background-color: var(--filter-button-2);
+
+      svg {
+        color: var(--filter-button-3);
+      }
+    }
+
+    &:focus-visible {
+      border-color: var(--text);
+      @include apply-focus-outline(currentColor);
+
+      span:has(svg) {
+        outline: solid px-to-rem(2) currentcolor;
+        border-radius: $radius-medium;
+        outline-offset: px-to-rem(-2);
+      }
+    }
   }
 }
 
 .full {
   a,
-  button {
+  button,
+  label {
     border: 0;
   }
 
@@ -141,18 +178,25 @@
   &-light,
   &-light-blue {
     a,
-    button {
+    button,
+    label {
       color: var(--cta-full-text);
       border: 1px solid var(--cta-full-border);
 
-      @include apply-hover-transition(
-        var(--cta-full-background),
-        var(--background)
-      );
+      @media (hover: hover) and (pointer: fine) {
+        @include apply-hover-transition(
+          var(--cta-full-background),
+          var(--background)
+        );
 
-      &:hover {
-        color: var(--cta-full-hover-text);
-        border-color: var(--cta-full-hover-border);
+        &:hover {
+          color: var(--cta-full-hover-text);
+          border-color: var(--cta-full-hover-border);
+        }
+      }
+
+      @media (pointer: coarse) {
+        background-color: var(--cta-full-background);
       }
 
       &:active {
@@ -197,18 +241,22 @@
   &-dark,
   &-light {
     a,
-    button {
+    button,
+    label {
       color: var(--cta-outline-text);
       border: 1px solid var(--cta-outline-border);
       background-color: transparent;
-      @include apply-hover-transition(
-        transparent,
-        var(--cta-outline-hover-background)
-      );
 
-      &:hover {
-        color: var(--cta-outline-hover-text);
-        border-color: var(--cta-outline-hover-border);
+      @media (hover: hover) and (pointer: fine) {
+        @include apply-hover-transition(
+          transparent,
+          var(--cta-outline-hover-background)
+        );
+
+        &:hover {
+          color: var(--cta-outline-hover-text);
+          border-color: var(--cta-outline-hover-border);
+        }
       }
 
       &:active {
@@ -247,7 +295,8 @@
 
     &.small {
       a,
-      button {
+      button,
+      label {
         padding: px-to-rem(12) px-to-rem(24);
       }
     }
@@ -257,7 +306,8 @@
     }
 
     a,
-    button {
+    button,
+    label {
       background-color: transparent;
       color: var(--cta-social-text);
       border: 1px solid var(--cta-social-border);
@@ -349,7 +399,8 @@
 
 .square-outline {
   button,
-  a {
+  a,
+  label {
     border: 1px solid $navy-blue-10;
     border-radius: $radius-small;
     padding: $spacing-5 $spacing-7;
@@ -380,7 +431,8 @@
 
 .play {
   button,
-  a {
+  a,
+  label {
     height: px-to-rem(101);
     width: px-to-rem(101);
     position: relative;
@@ -408,8 +460,43 @@
 
 .full-width {
   a,
-  button {
+  button,
+  label {
     width: 100%;
     justify-content: center;
+  }
+}
+
+.card {
+  &.full {
+    &,
+    &-dark,
+    &-light,
+    &-light-blue {
+      a,
+      button,
+      label {
+        @media (hover: hover) and (pointer: fine) {
+          @include apply-hover-transition(
+            var(--cta-full-background),
+            var(--card-background)
+          );
+        }
+
+        @media (pointer: coarse) {
+          background-color: var(--cta-full-background);
+        }
+      }
+    }
+  }
+}
+
+.search {
+  height: 100%;
+
+  button,
+  a,
+  label {
+    height: 100%;
   }
 }

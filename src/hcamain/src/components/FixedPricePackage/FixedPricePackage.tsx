@@ -10,7 +10,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
-import { HeadingSize, HeadingTag, Theme } from 'src/types/params';
+import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 interface Fields {
@@ -21,21 +21,15 @@ interface Fields {
 }
 
 type FixedPricePackageProps = {
-  params: {
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-    DynamicPlaceholderId: string;
-    styles: string;
-  };
-  fields: Fields;
-  rendering: ComponentRendering;
+  params?: Params;
+  fields?: Fields;
+  rendering?: ComponentRendering;
 };
 
 const FixedPricePackageDefaultComponent = (
   props: FixedPricePackageProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">Fixed Price Package no datasource</span>
     </div>
@@ -51,35 +45,37 @@ const IntegratedFixedPricedPackage = (
   if (!props.fields) {
     return <FixedPricePackageDefaultComponent {...props} />;
   }
-  const phKey = `fixed-price-package-${props.params.DynamicPlaceholderId}`;
+  const phKey = `fixed-price-package-${props.params?.DynamicPlaceholderId}`;
   return (
     <>
       <ImageAndTextBlock
-        theme={props.params.Theme}
+        theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={props.imageAlignment}
         length="short"
         subheader={
           <Text tag="p" variation="subheading-1">
-            <JssText field={props.fields.Heading} />
+            <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           <Text
-            tag={props.params.HeadingTag || 'h2'}
-            variation={props.params.HeadingSize || 'display-2'}
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-2'}
           >
-            <JssText field={props.fields.Title} />
+            <JssText field={props.fields?.Title} />
           </Text>
         }
-        image={<JssImage field={props.fields.Image} />}
+        image={<JssImage field={props.fields?.Image} />}
         ctas={
-          <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
-          </PlaceHolderWrapper>
+          props.rendering && (
+            <PlaceHolderWrapper>
+              <Placeholder name={phKey} rendering={props.rendering} />
+            </PlaceHolderWrapper>
+          )
         }
       >
         <Text tag="div" variation="body-large">
-          <JssRichText field={props.fields.Text} />
+          <JssRichText field={props.fields?.Text} />
         </Text>
       </ImageAndTextBlock>
     </>

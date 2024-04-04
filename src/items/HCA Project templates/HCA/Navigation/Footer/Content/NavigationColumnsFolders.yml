@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Navigation/Footer/Content/NavigationColumn
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "DataSource=query:./*[@@templateid='{A39B1B99-6608-4E03-94B2-F68F682AEA02}']&IncludeTemplatesForSelection=Navigation Links List&IncludeTemplatesForDisplay=Navigation Links List"
+  Value: "query:./*[@@templateid='{A39B1B99-6608-4E03-94B2-F68F682AEA02}']"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multiroot Treelist
+  Value: Multilist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 500
@@ -38,11 +38,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "690b45a1-0e8c-40e4-a6e8-11ef3ddca6b6"
+      Value: "ce96de07-a49d-416d-a5b1-9f5415a96240"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240108T174714Z
+      Value: 20240313T101127Z

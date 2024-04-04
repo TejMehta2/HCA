@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/HeadingPar
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: /sitecore/content/HCA/HCA Main/Presentation/Heading Size
+  Value: "/sitecore/content/HCA/HCA-Main/Presentation/Heading Size"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplist
@@ -35,11 +35,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3dd2f324-e8a6-4cc1-ab5b-768af3ea8d49"
+      Value: "49f52d6a-e1df-4af8-97ff-419cae27aca1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\5dv29vxgiA
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240222T104808Z
+      Value: 20240314T102618Z

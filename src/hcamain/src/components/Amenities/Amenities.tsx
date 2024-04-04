@@ -11,40 +11,35 @@ import {
   iconList,
   imageAlignmentTypes,
 } from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
-import { Theme, HeadingTag, HeadingSize } from 'src/types/params';
+import Params from 'src/types/params';
 
 type HCAIconFields = {
-  fields: {
-    SvgMarkup: Field<string>;
+  fields?: {
+    SvgMarkup?: Field<string>;
   };
 };
 
 type AmenitiesFields = {
-  fields: {
-    Title: Field<string>;
-    Icon: HCAIconFields;
+  fields?: {
+    Title?: Field<string>;
+    Icon?: HCAIconFields;
   };
 };
 
 interface Fields {
-  Title: Field<string>;
-  Text: Field<string>;
-  Image: ImageField;
-  AmenitiesList: AmenitiesFields[];
+  Title?: Field<string>;
+  Text?: Field<string>;
+  Image?: ImageField;
+  AmenitiesList?: AmenitiesFields[];
 }
 
 type AmenitiesProps = {
-  params: {
-    [key: string]: string;
-    Theme: Theme;
-    HeadingTag: HeadingTag;
-    HeadingSize: HeadingSize;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const AmenitiesDefaultComponent = (props: AmenitiesProps): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">
         Homepage Service Cards - no datasource
@@ -56,13 +51,13 @@ const AmenitiesDefaultComponent = (props: AmenitiesProps): JSX.Element => (
 const outputAmenitiesList = (props: AmenitiesProps) => {
   const amenitiesList: iconList = [];
 
-  props.fields.AmenitiesList.map((item) => {
+  props?.fields?.AmenitiesList?.map((item?: AmenitiesFields) => {
     amenitiesList.push({
-      text: item.fields.Title.value,
+      text: item?.fields?.Title?.value || '',
       icon: (
         <span
           dangerouslySetInnerHTML={{
-            __html: item.fields.Icon.fields.SvgMarkup.value,
+            __html: item?.fields?.Icon?.fields?.SvgMarkup?.value || '',
           }}
         ></span>
       ),
@@ -78,22 +73,22 @@ const outputImageAndTextBlock = (
 ) => {
   return (
     <ImageAndTextBlock
-      theme={props.params.Theme || 'B-HCA-Navy-Blue'}
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       imageAlignment={alignment}
       length="short"
       header={
         <Text
-          tag={props.params.HeadingTag}
-          variation={props.params.HeadingSize || 'display-2'}
+          tag={props.params?.HeadingTag}
+          variation={props.params?.HeadingSize || 'display-2'}
         >
-          <JssText field={props.fields.Title} />
+          <JssText field={props.fields?.Title} />
         </Text>
       }
       iconList={outputAmenitiesList(props)}
-      image={<JssImage field={props.fields.Image} />}
+      image={<JssImage field={props.fields?.Image} />}
     >
       <Text tag="p" variation="body-large">
-        <JssText field={props.fields.Text}></JssText>
+        <JssText field={props.fields?.Text}></JssText>
       </Text>
     </ImageAndTextBlock>
   );

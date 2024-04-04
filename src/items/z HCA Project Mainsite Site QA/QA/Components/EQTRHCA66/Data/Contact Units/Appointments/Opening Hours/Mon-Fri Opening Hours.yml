@@ -1,0 +1,45 @@
+﻿---
+ID: "e7aa5f43-7429-4546-920d-bad0d3772b2b"
+Parent: "ca67071f-623e-4d9e-aa3f-56265dd6cfca"
+Template: "91f54bea-23d3-4b5c-94be-225249f59c63"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66/Data/Contact Units/Appointments/Opening Hours/Mon-Fri Opening Hours"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T154417Z
+    - ID: "47e5be15-97eb-4c5e-acfb-da68de36152f"
+      Hint: DayOfWeek
+      Value: |
+        {FC4DD560-9D82-4991-BE84-EB9988B72B65}
+        {8ADEA6E6-6A4C-41CE-8898-39F99D76643E}
+        {148EC6A8-5CB0-4616-BB2F-8A131486FC55}
+        {2DAEB628-E136-4D92-A5E5-AF27DA18CCFE}
+        {B921A21D-E3B3-4A5C-A150-6EEA8690D682}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a622aae4-5bb7-4e87-97f7-239e49d0bcbb"
+    - ID: "9b888acf-cbdb-429a-8470-57c9e188c065"
+      Hint: Closes
+      Value: "16:00"
+    - ID: "b87da11a-58d6-4e00-9eae-7fda27668110"
+      Hint: Opens
+      Value: "08:00"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240123T184235Z

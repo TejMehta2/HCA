@@ -7,7 +7,7 @@ import * as TextFieldStories from './TextField.stories';
 
 ## Description
 
-The TextField component is one of the form fields which can be used on a page. The default type is 'text', but can also be set to 'email'. There is also the option to add a label, tooltip, and validation
+The TextField component is one of the form fields which can be used on a page. The default type is 'text', but can also be set to 'email'. There is also the option to add a label, helper text, and validation
 
 It is intended to be used in the payment form
 
@@ -17,8 +17,8 @@ It can be composed like this:
 <TextField
   id="input1"
   label="Field label"
+  helpText="Helper text"
   required={true}
-  pattern="^[a-zA-Z0-9- ,.:!*#~&/()+%'`@-]{1,50}$"
   errorMessage="Error message"
 />
 ```

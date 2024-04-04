@@ -4,7 +4,8 @@ export interface InfoBoxProps {
   icon?: ReactNode | JSX.Element;
   isShortInfo: boolean;
   shortText?: ReactNode | JSX.Element | string;
-  longTextTitle: string;
+  longTextTitle?: string;
   longText?: ReactNode | JSX.Element | string;
-  backgroundColour: 'green' | 'orange' | 'turquoise';
+  paddingLarge?: boolean;
+  backgroundColour: 'green' | 'orange' | 'turquoise' | 'beige';
 }

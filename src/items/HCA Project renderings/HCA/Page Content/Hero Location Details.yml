@@ -19,7 +19,7 @@ SharedFields:
     query GetHeroLocationDetails($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
         ... on LocationPage {
-          title {
+          title: field(name: "Title") {
             jsonValue
           }
           image {
@@ -53,7 +53,9 @@ SharedFields:
                   ...DoctifyLogoFields
                 }
                 Link: field(name: "Link") {
-                  value
+                 ... on LinkField {
+                    url
+                  }
                 }
               }
             }
@@ -94,12 +96,7 @@ SharedFields:
             value
           }
           Logo: field(name: "Logo") {
-            ... on ImageField {
-              src
-              alt
-              height
-              width
-            }
+            fields: jsonValue
           }
         }
       }
@@ -129,12 +126,7 @@ SharedFields:
       fields: targetItem {
         ... on CQCSettings {
           Logo: field(name: "Logo") {
-            ... on ImageField {
-              src
-              alt
-              height
-              width
-            }
+            fields: jsonValue
           }
         }
       }
@@ -270,14 +262,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "003aab7b-44f1-446c-845c-6ed3b08d06d1"
+      Value: "577715da-5a65-4d40-ad42-b82f04d4d42d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T082857Z
+      Value: 20240329T074732Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

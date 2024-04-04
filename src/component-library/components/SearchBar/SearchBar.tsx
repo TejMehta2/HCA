@@ -1,34 +1,96 @@
-import React from 'react';
+import React, { useId, useRef } from 'react';
 import { SearchBarProps } from './SearchBar.types';
 import styles from './SearchBar.module.scss';
+import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
+import Icons from '../../foundation/Icons/Icons';
 
 const SearchBar = (props: SearchBarProps): JSX.Element => {
-  const { searchValue, handleInputChange, placeholder, name, defaultValue } =
-    props;
+  const {
+    searchValue,
+    handleInputChange,
+    placeholder,
+    name,
+    defaultValue = '',
+    suggestions = [],
+    locationCta,
+    children,
+    submitOnSelection,
+  } = props;
+  const inputId = useId();
+  const suggestionsId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const comboboxAttributes = {
+    list: suggestionsId,
+    role: 'combobox',
+    'aria-controls': suggestionsId,
+    'aria-expanded': suggestions.length,
+  };
+  const suggestionAttributes = suggestions.length ? comboboxAttributes : {};
 
-  if (searchValue && handleInputChange) {
-    return (
-      <div className={styles['search-wrapper']}>
+  const controlAttributes =
+    searchValue && handleInputChange
+      ? {
+          value: searchValue,
+          onChange: handleInputChange,
+        }
+      : { defaultValue };
+
+  const setValue = (newValue?: string) => {
+    if (!inputRef.current) return;
+    // Use native setter to allow for dispatch propagation (native form change event)
+    const nativeInputValueSetter = Object?.getOwnPropertyDescriptor(
+      window?.HTMLInputElement.prototype,
+      'value'
+    )?.set;
+    nativeInputValueSetter?.call(inputRef.current, newValue);
+    const event = new Event('change', { bubbles: true });
+    inputRef.current.dispatchEvent(event);
+  };
+
+  const hideSuggestions =
+    defaultValue === '' || suggestions.includes(defaultValue); // defaultValue will change to match current value after user picks a suggestion
+
+  return (
+    <div className={styles.wrapper}>
+      <label htmlFor={inputId} className={styles['search-bar']}>
+        <Icons iconName={'iconSearch'} />
         <input
-          className={styles.search}
-          type="search"
+          id={inputId}
+          ref={inputRef}
+          className={styles.input}
+          type="text"
           name={name}
           placeholder={placeholder}
-          value={searchValue}
-          onChange={handleInputChange}
+          {...suggestionAttributes}
+          {...controlAttributes}
+          autoComplete={'off'}
         />
-      </div>
-    );
-  }
-  return (
-    <div className={styles['search-wrapper']}>
-      <input
-        className={styles.search}
-        type="search"
-        name={name}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-      />
+        {locationCta}
+        {defaultValue && (
+          <button
+            className={styles.clear}
+            type="button"
+            onClick={() => {
+              setValue('');
+            }}
+          >
+            <Icons iconName={'iconCross'} />
+            <span className={'sr-only'}>Clear search</span>
+          </button>
+        )}
+        {!hideSuggestions && (
+          <div className={styles.suggestions}>
+            <SearchSuggestions
+              submitOnSelection={submitOnSelection}
+              currentValue={defaultValue}
+              suggestions={suggestions}
+              setValue={setValue}
+            />
+          </div>
+        )}
+      </label>
+
+      {children}
     </div>
   );
 };

@@ -1,0 +1,35 @@
+﻿---
+ID: "69bec60f-438c-4bd7-af72-e9a6ff7447f0"
+Parent: "418fb1a9-e579-4d19-a330-ee737af32cf2"
+Template: "2a3fe3a4-0196-4fb6-9b6e-5faeb3815ab9"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Navigation Settings/Content Block Variants/Double"
+SharedFields:
+- ID: "7e4ec787-c4e7-49bf-872c-fdf54a101de5"
+  Hint: Value
+  Value: double
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240207T235713Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f5323b6e-15d3-4bf2-91cb-cef7fab9de1a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240208T003844Z

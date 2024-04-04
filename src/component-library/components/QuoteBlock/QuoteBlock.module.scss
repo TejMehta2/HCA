@@ -9,10 +9,6 @@
   color: var(--text);
 }
 
-.quote {
-  @include apply-display-5;
-}
-
 .author {
   display: flex;
   gap: 0 px-to-rem(24);

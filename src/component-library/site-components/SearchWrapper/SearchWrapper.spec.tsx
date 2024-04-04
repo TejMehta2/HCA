@@ -7,7 +7,6 @@ import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 import Tags from '../../core-components/Tags/Tags';
 import CardBlog from '../../components/CardBlog/CardBlog';
-import HeaderPlain from '../HeaderPlain/HeaderPlain';
 import CardGrid from '../CardGrid/CardGrid';
 import Pagination from '../../core-components/Pagination/Pagination';
 
@@ -49,24 +48,6 @@ const getPageContent = (page: number) => {
 };
 
 const mockProps: SearchWrapperProps = {
-  header: (
-    <HeaderPlain
-      subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
-      heading={
-        <Text variation={'display-2'}>News & articles about healthcare </Text>
-      }
-      //search={<input type="text" />}
-      theme={'A-HCA-White'}
-    >
-      <Text variation="body-large">
-        Quis laboris proident sint amet id cillum do dolor in tempor est.
-        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-        dolore.
-      </Text>
-    </HeaderPlain>
-  ),
-
   searchDetail: (
     <Text tag="h2" variation="heading-1">
       45 articles including ‘Cardiac care’
@@ -79,7 +60,7 @@ const mockProps: SearchWrapperProps = {
   ),
   children: (
     <>
-      <CardGrid theme="A-HCA-White">{getPageContent(1)}</CardGrid>
+      <CardGrid>{getPageContent(1)}</CardGrid>
       <Pagination pageCount={pageCount} callback={console.log} />
     </>
   ),
@@ -88,6 +69,6 @@ const mockProps: SearchWrapperProps = {
 describe('SearchWrapper', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<SearchWrapper {...mockProps} />);
-    expect(getByText('our HCA blog')).toBeVisible();
+    expect(getByText('Showing 1-12')).toBeVisible();
   });
 });

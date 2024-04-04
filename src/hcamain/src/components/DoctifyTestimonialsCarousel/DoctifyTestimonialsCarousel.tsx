@@ -8,46 +8,43 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
-import { Theme } from 'src/types/params';
+import Params from 'src/types/params';
 
 interface TestimonialsFields {
-  fields: {
-    Text: Field<string>;
+  fields?: {
+    Text?: Field<string>;
   };
 }
 
 interface DoctifyLogoFields {
-  fields: {
-    Text: Field<string>;
-    Logo: ImageField;
+  fields?: {
+    Text?: Field<string>;
+    Logo?: ImageField;
   };
 }
 
 interface DoctifyReviewsFields {
-  fields: {
-    Stars: Field<string>;
-    Reviews: Field<string>;
-    DoctifyLogo: DoctifyLogoFields;
+  fields?: {
+    Stars?: Field<string>;
+    Reviews?: Field<string>;
+    DoctifyLogo?: DoctifyLogoFields;
   };
 }
 
 interface Fields {
-  Reviews: DoctifyReviewsFields;
-  Testimonials: TestimonialsFields[];
+  Reviews?: DoctifyReviewsFields;
+  Testimonials?: TestimonialsFields[];
 }
 
 type DoctifyTestimonialsCarouselProps = {
-  params: {
-    Theme: Theme; // TODO - check CMS should only allow 'A-HCA-White' | 'L-HCA-Teal-5'
-    styles: string;
-  };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const DoctifyTestimonialsCarouselDefaultComponent = (
   props: DoctifyTestimonialsCarouselProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <h1>Doctify Testimonials Carousel no datasorce</h1>
   </div>
 );
@@ -59,24 +56,22 @@ export const Default = (
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
 
-  const themeName: Theme = props.params.Theme;
-
-  const ratingAsNumber = Number(props.fields.Reviews.fields.Stars.value);
+  const ratingAsNumber = Number(props.fields?.Reviews?.fields?.Stars?.value);
 
   return (
     <CarouselReviews
       rating={ratingAsNumber}
       reviewCount={
         <>
-          <JssText field={props.fields.Reviews.fields.Reviews} /> Reviews
+          <JssText field={props.fields?.Reviews?.fields?.Reviews} /> Reviews
         </>
       }
-      theme={themeName}
+      theme={props.params?.Theme || 'A-HCA-White'}
     >
-      {props.fields.Testimonials.map((testimonial, index) => (
+      {props.fields?.Testimonials?.map((testimonial, index) => (
         <React.Fragment key={index}>
           <Text tag="div" variation="body-extra-large">
-            <RichText tag="p" field={testimonial.fields.Text} />
+            <RichText tag="p" field={testimonial?.fields?.Text} />
           </Text>
         </React.Fragment>
       ))}

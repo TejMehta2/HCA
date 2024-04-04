@@ -17,7 +17,10 @@
 .intro {
   @include responsive-grid;
 
+  gap: px-to-rem(8) px-to-rem(16);
+
   & > * {
+    @include responsive-grid-start(1);
     @include responsive-grid-span(
       $default: 6,
       $breakpoint-m: 3,
@@ -40,6 +43,7 @@
 .slick-wrapper {
   & div[class*='slick-track'] {
     display: flex;
+    cursor: default;
   }
 
   & div[class*='slick-slide'] {
@@ -82,4 +86,8 @@
       transform: translateY(-100%);
     }
   }
+}
+
+.copy {
+  padding-top: $spacing-5;
 }

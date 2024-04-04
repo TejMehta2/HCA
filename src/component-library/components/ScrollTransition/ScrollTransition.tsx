@@ -17,8 +17,9 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
 
   useEffect(() => {
     const ref = wrapperRef;
-    const targetSections =
-      wrapperRef?.current?.querySelectorAll(':scope > div');
+    const targetSections = wrapperRef?.current?.querySelectorAll(
+      ':scope > div:not([data-content="diamond"])'
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -40,6 +41,17 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
             animateSections.forEach((section) => {
               section.setAttribute('data-animate-active', 'true');
             });
+
+            /* Also animate diamond line if it's the next sibling */
+            if (
+              entry.target.nextElementSibling instanceof HTMLElement &&
+              entry.target.nextElementSibling?.getAttribute('data-content') ===
+                'diamond'
+            ) {
+              const diamondElement =
+                entry.target.nextElementSibling.querySelector('[data-animate]');
+              diamondElement?.setAttribute('data-animate-active', 'true');
+            }
           }
         });
       },

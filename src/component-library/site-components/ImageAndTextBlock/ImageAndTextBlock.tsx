@@ -15,6 +15,8 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     theme,
     ratings,
     iconList,
+    hideImageOnMobile,
+    contentVariation,
   } = props;
 
   return (
@@ -24,6 +26,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
           className={[
             styles['wrapper'],
             iconList ? styles['icon-list-wrapper'] : '',
+            contentVariation ? styles[contentVariation] : '',
           ].join(' ')}
         >
           <div
@@ -33,7 +36,11 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
             ].join(' ')}
           >
             <div
-              className={[styles['image'], styles[length]].join(' ')}
+              className={[
+                styles['image'],
+                styles[length],
+                hideImageOnMobile ? styles['hide-on-mobile'] : '',
+              ].join(' ')}
               data-animate="s"
             >
               {image}
@@ -43,7 +50,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                 <div className={styles['subheader']}>{subheader}</div>
               )}
               <div className={styles['header']}>{header}</div>
-              {children && <div>{children}</div>}
+              {children && <div className={styles.children}>{children}</div>}
 
               {ctas && <div className={styles['ctas']}>{ctas}</div>}
 

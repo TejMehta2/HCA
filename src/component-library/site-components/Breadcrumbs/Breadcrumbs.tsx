@@ -7,8 +7,8 @@ import Link from 'next/link';
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
   const { children } = props;
 
-  const firstBreadcrumbLink = children && children[0].props.href;
-  const firstBreadcrumbText = children && children[0].props.children;
+  const firstBreadcrumbLink = children && children[0]?.props?.href;
+  const firstBreadcrumbText = children && children[0]?.props?.children;
 
   return (
     <div className={styles.wrapper}>
@@ -20,12 +20,17 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
           {children}
         </span>
 
-        <Link href={firstBreadcrumbLink} className={styles['breadcrumb-back']}>
-          <Icons iconName="iconArrowLeft"></Icons>
-          <div>
-            <span>Back to</span> {firstBreadcrumbText}
-          </div>
-        </Link>
+        {firstBreadcrumbLink && (
+          <Link
+            href={firstBreadcrumbLink}
+            className={styles['breadcrumb-back']}
+          >
+            <Icons iconName="iconArrowLeft"></Icons>
+            <div>
+              <span>Back to</span> {firstBreadcrumbText}
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );

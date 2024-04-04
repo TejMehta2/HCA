@@ -1,0 +1,45 @@
+﻿---
+ID: "2130ab17-86e7-413a-a9b7-ef39abacf5fe"
+Parent: "4aa32829-e7e3-4673-9d9d-93ca976800eb"
+Template: "9069a668-fc8d-4fcf-902c-55c18743aa88"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Diagnosis Pages/Diagnosis Page 5"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{851D5644-3B96-4B5A-8D31-ABBAD4DE1A2D}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240318T131112Z
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: MRIs
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b89c628c-139e-431e-aed0-1e1897bb0c77"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240318T152143Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Diagnosis Page 5
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{7E19577C-EF62-4B3B-9F60-7526589809E5}" />

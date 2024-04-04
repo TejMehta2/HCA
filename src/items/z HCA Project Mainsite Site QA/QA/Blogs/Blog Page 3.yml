@@ -1,0 +1,62 @@
+﻿---
+ID: "cd58e2cc-a116-48e7-9cda-56d62c48c80a"
+Parent: "766da7e9-2efe-4132-a387-6b257a08fdc8"
+Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Blogs/Blog Page 3"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{13153DA4-D4AF-4430-8697-EAEC615F74E8}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T091016Z
+    - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
+      Hint: ArticleType
+      Value: "{20A7DE39-3A1F-4738-BBC2-2DF8C07C3989}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: The Harley Street Clinic
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: Sed euismod congue vehicula. Quisque a eros ac est varius consectetur at eu mauris. Maecenas fermentum vel ex eu euismod. Aenean iaculis magna et lacus tincidunt vestibulum. Mauris ac dui venenatis erat tempor pellentesque. Duis ullamcorper rhoncus ullamcorper. Donec bibendum dictum mauris eu laoreet. Aenean feugiat mi sed lorem cursus molestie
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6eaed2eb-fc6c-4ef9-a245-974b1a2b707b"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{2F8B4D7D-5BCD-4E93-8BD8-66B2C7DE8A18}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240315T111824Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: The Harley Street Clinic retain CQC 'Outstanding' rating
+    - ID: "e1b9a21b-a32e-429b-bbe5-047b323fd263"
+      Hint: Date
+      Value: 20231107T124200Z
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />

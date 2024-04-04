@@ -52,6 +52,8 @@
     "vercel": "^32.5.3"
   },
   "dependencies": {
-    "use-debounce": "^10.0.0"
+    "node-html-parser": "^6.1.12",
+    "use-debounce": "^10.0.0",
+    "xlsx": "^0.18.5"
   }
 }

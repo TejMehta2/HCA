@@ -2,40 +2,48 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Image as JSSImage,
+  LinkField,
   RichText,
   Item,
-  ImageFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+
+type HCAIconFields = {
+  fields?: {
+    SvgMarkup?: Field<string>;
+  };
+};
 
 type CardsFields = {
-  fields: {
-    Number: Field<string>;
-    Text: Field<string>;
-    Theme: Item;
-    ForegroundImageDesktop: ImageFieldValue;
-    ForegroundImageMobile: ImageFieldValue;
-    MapStyles: Field<string>;
-    CardStyles: Field<string>;
+  fields?: {
+    Title?: Field<string>;
+    Text?: Field<string>;
+    Number?: Field<string>;
+    Theme?: Item;
+    PinPositionX: Field<string>;
+    PinPositionY: Field<string>;
+    MapScale?: Field<string>;
+    CTAIcon?: HCAIconFields;
+    CTALink?: LinkField;
   };
 };
 
 interface Fields {
-  Heading: Field<string>;
-  Title: Field<string>;
-  Text: Field<string>;
-  Cards: CardsFields[];
+  Heading?: Field<string>;
+  Title?: Field<string>;
+  Text?: Field<string>;
+  Cards?: CardsFields[];
 }
 
 type LocationsMapProps = {
-  params: { [key: string]: string };
-  fields: Fields;
+  params?: Params;
+  fields?: Fields;
 };
 
 const LocationsMapDefaultComponent = (
   props: LocationsMapProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">LocationsMap no datasource</span>
     </div>
@@ -47,30 +55,30 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     return <LocationsMapDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props.fields.Heading} />
+    <div className={`component ${props.params?.styles}`}>
+      <JssText field={props.fields?.Heading} />
       <br />
-      <JssText field={props.fields.Title} />
+      <JssText field={props.fields?.Title} />
       <br />
-      <RichText tag="span" field={props.fields.Text} />
+      <RichText tag="span" field={props.fields?.Text} />
       <br />
       <ul>
-        {props.fields.Cards.map((card, index) => (
+        {props.fields?.Cards?.map((card, index) => (
           <li key={index}>
             <br />
-            <JssText field={card.fields.Number} />
+            <JssText field={card?.fields?.Title} />
             <br />
-            <JssText field={card.fields.Text} />
+            <JssText field={card?.fields?.Text} />
             <br />
-            <span>{card.fields.Theme.name?.toString()}</span>
+            <JssText field={card?.fields?.Number} />
             <br />
-            <JSSImage field={card.fields.ForegroundImageDesktop} />
+            <span>{card?.fields?.Theme?.name?.toString()}</span>
             <br />
-            <JSSImage field={card.fields.ForegroundImageMobile} />
+            <JssText field={card?.fields?.PinPositionX} />
             <br />
-            <JssText field={card.fields.MapStyles} />
+            <JssText field={card?.fields?.PinPositionY} />
             <br />
-            <JssText field={card.fields.CardStyles} />
+            <JssText field={card?.fields?.MapScale} />
             <br />
           </li>
         ))}

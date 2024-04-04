@@ -1,0 +1,199 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
+import Link from 'next/link';
+import { ConsultantCardProps } from './ConsultantCard.types';
+import styles from './ConsultantCard.module.scss';
+import Text from '../../foundation/Text/Text';
+import Reviews from '../Reviews/Reviews';
+import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
+import TextButton from '../../core-components/TextButton/TextButton';
+import TextLink from '../../core-components/TextLink/TextLink';
+import InfoBox from '../InfoBox/InfoBox';
+import ReadMore from '../ReadMore/ReadMore';
+import { formatDateShort } from '../../utility-functions';
+
+const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
+  // get specialties
+  const specialties = props.keywords.filter(
+    (item: any) => item.keywordType === 'specialty'
+  );
+  const specialtiesNames = specialties.map((item: any) => item.name).join(', ');
+
+  // top specialty
+  const topSpecialty = specialties.filter(
+    (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+  );
+
+  return (
+    <div className={styles['consultant-card']}>
+      <div className={styles['main-content']}>
+        <div className={styles.header}>
+          <div className={styles.photo}>
+            <img
+              src={props.profilePhoto}
+              alt="consultant profile photo"
+              width="105"
+              height="105"
+            />
+          </div>
+          <div className={styles['title-subspecialty']}>
+            <TextLink>
+              <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+                <Text tag="h2" variation="heading-2">
+                  {props.name}
+                </Text>
+              </Link>
+            </TextLink>
+
+            {topSpecialty && topSpecialty[0]?.name && (
+              <Text tag="h3" variation="subheading-2">
+                {topSpecialty[0]?.name}
+              </Text>
+            )}
+          </div>
+        </div>
+        <div className={styles.reviews}>
+          <Reviews
+            reviewsTotal={5}
+            reviewsCount={props.reviewsCount}
+            isConsultantProfileReviews={false}
+            hasTooltip={false}
+            tooltipContent={'tooltip'}
+            doctifyText={'Reviewd By'}
+            doctifyLogo={props.doctifyLogo}
+            hasDoctifyBranding={true}
+          />
+        </div>
+        {props.hospitals && props.hospitals.length > 0 && (
+          <div className={styles['list']}>
+            <div className={styles['list-title']}>
+              <Text tag="h3" variation="body-medium-small">
+                {props.practicesTitle}
+              </Text>
+            </div>
+            <div className={styles['list-content']}>
+              <ReadMore
+                showMoreText={props.showMoreText}
+                showLessText={props.showLessText}
+                iconShowLess={props.iconShowLess}
+                iconShowMore={props.iconShowMore}
+                tag="p"
+                maxContent={3}
+              >
+                {props.hospitals.map(
+                  (practice: any) =>
+                    practice.slug !== 'video-consultation' && (
+                      <Text key={practice.id} tag="p" variation="body-small">
+                        {practice.name}
+                      </Text>
+                    )
+                )}
+              </ReadMore>
+            </div>
+          </div>
+        )}
+        {specialtiesNames && specialtiesNames.length > 0 && (
+          <div className={styles['list']}>
+            <div className={styles['list-title']}>
+              <Text tag="h3" variation="body-medium-small">
+                {props.treatmentsTitle}
+              </Text>
+            </div>
+            <div className={styles['list-content']}>
+              <Text tag="p" variation="body-small">
+                {specialtiesNames}
+              </Text>
+            </div>
+          </div>
+        )}
+      </div>
+      {props.isLiveDiaryConsultant &&
+        props.firstAppointment &&
+        props.firstAppointment?.refreshedText != 'unavailable' && (
+          <div className={styles.appointment}>
+            <InfoBox
+              backgroundColour="green"
+              icon={null}
+              isShortInfo={true}
+              shortText={`${
+                props.nextAppointmentTitle || 'Next appointment on'
+              } ${formatDateShort(
+                props?.firstAppointment?.follow_appointment
+              )}`}
+            />
+            <div className={styles.info}>
+              <Text tag="p" variation="body-small">
+                {props.lastUpdatedText} &nbsp;
+                {props.loadingNextAppointmentText}
+                {props.firstAppointment?.refreshedText}
+              </Text>
+            </div>
+          </div>
+        )}
+      <div className={styles.buttons}>
+        {!props.hideAppointmentRequest && !props.isLiveDiaryConsultant && (
+          <div className={styles.button}>
+            <Button
+              variation="full-dark"
+              size="large"
+              contentVariation="full-width"
+            >
+              <Link href="/test">
+                <span>{props.enquireNowCTAText}</span>
+              </Link>
+            </Button>
+          </div>
+        )}
+        {props.isLiveDiaryConsultant && (
+          <div className={styles.button}>
+            <Button
+              variation="full-dark"
+              size="large"
+              contentVariation="full-width"
+            >
+              <Link
+                href={`/Finder/Step-Terms-And-Conditions?slug=${props.slug}&gmcNumber=${props.gmcNumber}`}
+              >
+                <span>{props.bookNowCTAText}</span>
+              </Link>
+            </Button>
+          </div>
+        )}
+        <div className={styles.button}>
+          <Button
+            variation="outline"
+            size="small"
+            contentVariation="full-width"
+          >
+            <a href={`tel:${props.phoneNumberHref}`}>
+              {props.callToBookButtonIcon && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.callToBookButtonIcon,
+                  }}
+                ></span>
+              )}
+              {!props.callToBookButtonIcon && (
+                <span>
+                  <Icons iconName="iconPhone" />
+                </span>
+              )}
+              <span>{props.callToBookButtonText}</span>
+            </a>
+          </Button>
+        </div>
+        <div className={styles['button-profile']}>
+          <TextButton>
+            <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+              {props.viewProfileCTAText}
+              <Icons iconName="iconArrowSmallRight" />
+            </Link>
+          </TextButton>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ConsultantCard;

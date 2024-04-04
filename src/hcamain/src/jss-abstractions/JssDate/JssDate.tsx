@@ -8,11 +8,13 @@ const JssDate = (props: JssDateProps) => {
 
   return (
     <DateField
-      tag={'time'}
+      tag={'div'}
       field={field}
       render={(date) =>
         date ? (
-          <time dateTime={date.toLocaleDateString()}>{formatter(date)}</time>
+          <time dateTime={date.toLocaleDateString('en-GB')}>
+            {formatter(date)}
+          </time>
         ) : (
           <></>
         )

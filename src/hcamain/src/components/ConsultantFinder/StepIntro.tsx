@@ -62,11 +62,14 @@ export const Default = (props: StepProps): JSX.Element => {
     ConsultantFinderContext
   );
 
-  console.log('how can we help', props);
+  //console.log('how can we help', props);
 
   const handleClickQuickSearch = () => {
+    const baseURLResults =
+      props?.fields?.QuickSearchLink?.value?.href ||
+      '/Finder/Step-Consultant-Cards';
     router.push(
-      props.fields.QuickSearchLink.value.href || '/Finder/Step-Consultant-Cards'
+      `${baseURLResults}?search=${searchString}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`
     );
   };
 
@@ -84,6 +87,7 @@ export const Default = (props: StepProps): JSX.Element => {
           theme="A-HCA-White"
           imageAlignment="left"
           length="short"
+          hideImageOnMobile={true}
           subheader={
             <Text tag="h3" variation="subheading-1">
               <JssRichText field={props.fields.HeadingText} />

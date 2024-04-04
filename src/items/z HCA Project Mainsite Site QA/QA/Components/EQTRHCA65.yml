@@ -1,0 +1,52 @@
+﻿---
+ID: "c50ba834-3177-49fd-8130-8d03c7e3fc14"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA65"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{40065921-DDD2-4F5D-8D86-E3BCE0190C01}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{7945032E-1230-4A15-AA0F-027D41EEFBAC}"
+          s:ds="local:/Data/Locations Map"
+          s:id="{EC90DF59-84B1-4F6D-A9C7-127E1C89CB03}"
+          s:par="HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=A-HCA-Main-Turquoise&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240202T085728Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d7ca8a42-f81f-4457-9e6c-cdc0cfad22d3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240226T103638Z

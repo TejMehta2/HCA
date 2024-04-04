@@ -11,6 +11,8 @@
   width: 100%;
   gap: px-to-rem(12) 0;
   aspect-ratio: 358/397;
+  overflow-wrap: break-word;
+  min-width: 0;
 
   @include media(screen-m) {
     aspect-ratio: 377/397;

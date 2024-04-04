@@ -65,6 +65,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
             </span>
           </a>
         }
+        contentVariation="mixed"
       />,
       <CardPatientStories
         key={1}
@@ -94,6 +95,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
             </span>
           </a>
         }
+        contentVariation="mixed"
       />,
       <CardPatientStories
         key={2}
@@ -123,6 +125,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
             </span>
           </a>
         }
+        contentVariation="mixed"
       />,
       <CardPatientStories
         key={3}
@@ -152,6 +155,7 @@ export const Default: StoryObj<typeof SideScrollingCards> = {
             </span>
           </a>
         }
+        contentVariation="mixed"
       />,
     ],
   },
