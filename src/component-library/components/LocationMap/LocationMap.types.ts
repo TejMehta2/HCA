@@ -6,7 +6,7 @@ export interface Location {
 }
 
 export interface LocationMapProps {
-  center: LatLngLiteral;
+  center?: LatLngLiteral;
   locations: Location[];
   apiKey: string;
 }

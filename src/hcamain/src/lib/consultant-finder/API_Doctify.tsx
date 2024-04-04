@@ -8,7 +8,8 @@ import { checkIfLiveBookingIsAvailable } from './API_HCA';
 //const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
 export async function getSpecialistProfileData(
   slug: string,
-  serviceURL?: string
+  serviceURL?: string,
+  loadFirstAppointmentData: boolean = false
 ): Promise<any> {
   const config = !serviceURL ? await getDoctifyConfig() : null;
   //console.log(DoctifyConfig);
@@ -55,14 +56,15 @@ export async function getSpecialistProfileData(
           );
         }
 
-        if (docitfyData.isLiveDiaryConsultant) {
+        // gmcNumber
+        const gmcNumber = docitfyData?.registrationBodies.filter(
+          (item: any) => item.name === 'General Medical Council'
+        )[0]?.registrationNumber;
+        docitfyData.gmcNumber = gmcNumber;
+
+        if (loadFirstAppointmentData && docitfyData.isLiveDiaryConsultant) {
           try {
-            // gmcNumber
-            const gmcNumber = docitfyData?.registrationBodies.filter(
-              (item: any) => item.name === 'General Medical Council'
-            )[0]?.registrationNumber;
             const res = await getLDBFirstAppointmentData(gmcNumber); // e.g. "4113571"
-            docitfyData.gmcNumber = gmcNumber;
             docitfyData.firstAppointment = res;
             //console.log("first apt:", res);
           } catch (e) {

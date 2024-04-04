@@ -1,0 +1,4 @@
+# GenericSearch documentation
+
+## Additional information
+

@@ -155,7 +155,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
           />
         </HeaderPlain>
       </Themes>
-      <Themes theme="A-HCA-White">
+      <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         <SearchContainer ref={searchWrapperRef}>
           <Text tag="h3" variation="heading-1">
             <span>

@@ -9,6 +9,16 @@
   align-items: center;
   min-height: 100%;
 
+  .contact svg {
+    // Accommodate responsive font size to center the icon vertically
+    @include media(screen-l) {
+      transform: translateY(px-to-rem(1));
+    }
+    @include media(screen-xl) {
+      transform: translateY(px-to-rem(2));
+    }
+  }
+
   .link {
     a {
       color: inherit;
@@ -69,18 +79,29 @@
   @include responsive-container;
 
   margin-top: auto;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: $spacing-7;
   padding-bottom: $spacing-7;
   gap: px-to-rem(60) $spacing-7;
+  flex-direction: column;
 
   hr {
     display: none;
   }
+
   @include media(screen-l) {
-    grid-template-columns: 1fr auto 1fr auto 1fr;
+    flex-flow: row wrap;
+
+    .contact {
+      flex: 1 0 25%;
+    }
 
     hr {
+      height: px-to-rem(128);
+      flex: 0 0 px-to-rem(1);
+      margin: 0;
       border: none;
       border-left: solid 1px $navy-blue-10;
 
@@ -93,6 +114,8 @@
 
   .contact {
     gap: $spacing-2;
+    max-width: px-to-rem(362);
+    width: 100%;
   }
 
   .availability {

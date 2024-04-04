@@ -13,17 +13,17 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
   const [consultantSlug, setConsultantSlug] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log('iframe', window.location.search);
+    //console.log('iframe', window.location.search);
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
-    console.log('iframe slug', slug);
+    //console.log('iframe slug', slug);
     if (slug) {
       setConsultantSlug(slug);
     }
   }, []);
 
   const handleTabChange = (label: any) => {
-    console.log(label);
+    //console.log(label);
     if (label.label === 'Patient Reviews') {
       setTypeOfReviews('patient');
     } else if (label.label === 'Peer Reviews') {
@@ -81,7 +81,9 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
           {typeOfReviews === 'patient' && (
             <PatientsReviews
               slug={consultantSlug}
-              docitfyLogo={props.DoctifyReviewsImage}
+              doctifyLogo={props.DoctifyReviewsImage}
+              doctifyReviewsURL={props.DoctifyPatientReviewsURL}
+              doctifyReviewsLimit={props.DoctifyPatientReviewsLimit}
               reviewsFromPatientsTitleText={props.ReviewsFromPatientsTitleText}
               verifyByDoctifyText={props.VerifyByDoctifyText}
               noReviewsText={props.NoReviewsText}
@@ -90,7 +92,9 @@ const ReviewsSection = (props: ReviewsSectionProps): JSX.Element => {
           {typeOfReviews === 'peer' && (
             <PeerReviews
               slug={consultantSlug}
-              docitfyLogo={props.DoctifyReviewsImage}
+              doctifyLogo={props.DoctifyReviewsImage}
+              doctifyReviewsURL={props.DoctifyPeerReviewsURL}
+              doctifyReviewsLimit={props.DoctifyPeerReviewsLimit}
               reviewsFromPeersTitleText={props.ReviewsFromPeersTitleText}
               verifyByDoctifyText={props.VerifyByDoctifyText}
               noReviewsText={props.NoReviewsText}

@@ -15,20 +15,9 @@ export interface HeaderLocationProps {
   title: JSX.Element;
   open?: open;
   address: address;
-  ctas: JSX.Element;
+  ctas?: JSX.Element;
   image: JSX.Element;
-  theme: Extract<
-    Theme,
-    | 'A-HCA-White'
-    | 'B-HCA-Navy-Blue'
-    | 'C-HCA-Denim'
-    | 'D-HCA-Teal'
-    | 'E-HCA-Cerulean'
-    | 'F-HCA-Fern'
-    | 'G-HCA-Orange'
-    | 'H-HCA-Tangerine'
-    | 'I-HCA-Goldenrod'
-  >;
+  theme: Theme;
   cqc?: JSX.Element;
   doctify?: JSX.Element;
 }

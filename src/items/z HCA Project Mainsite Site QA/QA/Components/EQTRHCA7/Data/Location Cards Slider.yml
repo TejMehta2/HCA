@@ -10,12 +10,7 @@ Languages:
     Fields:
     - ID: "11de4251-0ada-4f47-a75c-27a4a7b9a442"
       Hint: FilterOptions
-      Value: |
-        {BF199CE6-1A69-47EE-8580-8DD517EA0E5C}
-        {136C4723-50DD-4583-B2D7-BF1628EE428D}
-        {E8B7BA01-3B89-4116-B966-01E3707C97F2}
-        {17076077-07FE-4A6F-BC9C-166DF461FC19}
-        {0E7EDF6E-E7BA-4BDB-914B-58B281647E64}
+      Value: 
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240228T212004Z
@@ -33,7 +28,11 @@ Languages:
       Value: Get directions
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "90624940-5f12-4981-bae5-fb76cf000eab"
+      Value: "8791d121-694c-415e-ab8e-e0cf75ccaa5b"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View all" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4DE3BB9F-9B36-4B44-9DB2-15283C093353}" />
     - ID: "b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012"
       Hint: CTAText
       Value: Learn more
@@ -46,4 +45,4 @@ Languages:
       Value: Locations
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T092830Z
+      Value: 20240326T091433Z

@@ -3,6 +3,7 @@ import {
   GetStaticComponentProps,
   Text as JssText,
   RichText,
+  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
   Autocomplete,
@@ -20,7 +21,6 @@ import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Themes from '@component-library/foundation/Themes/Themes';
-import CardContent from '@component-library/components/CardContent/CardContent';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
 import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
@@ -29,10 +29,15 @@ import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
 import Filters from '@component-library/site-components/Filters/Filters';
 import getBaselineParams from 'lib/getBaselineParams';
-import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import Button from '@component-library/core-components/Button/Button';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import { ApiSearchProps } from 'src/types/searchProps';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}`;
+const SEARCH_PATH = '/locations/sort';
+const AUTOCOMPLETE_PATH =
+  '/locationApi/suggestLocation?provider=1&searchType=1';
 
 const LocationsSearchDefaultComponent = (
   props: LocationsSearchProps
@@ -45,11 +50,11 @@ const LocationsSearchDefaultComponent = (
 );
 
 export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fallbackData, fields, params } = props;
-
+  const { fields, params } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
+  const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -62,8 +67,16 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
     baseUrl: BASE_URL,
-    baselineParams: [...baselineParams, ['verticalKey', 'locations']],
-    fallbackData: fallbackData,
+    baselineParams: [['location', ''], ...baselineParams],
+    searchPath: SEARCH_PATH,
+    autocompletePath: AUTOCOMPLETE_PATH,
+    autoCompleteSearchParamName: 'searchTerm',
+    baselineAutocompleteParams: [
+      ['provider', '1'],
+      ['searchType', '1'],
+    ],
+    searchFieldName: 'location',
+    fallbackData,
   });
 
   if (!fields || error || autocompleteError) {
@@ -75,7 +88,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   const offset = Number(searchParams.get('offset')) || defaultOffset;
 
   // Computed properties
-  const resultsCount = data?.response.resultsCount || 0;
+  const resultsCount = data?.response?.locations.length || 0;
   const rangeStart = offset + 1;
   const rangeEnd = Math.min(offset + limit, resultsCount);
   const resultsRange = `${rangeStart}-${rangeEnd}`;
@@ -115,11 +128,11 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('input') || undefined}
-              name={'input'}
+              defaultValue={searchParams.get('location') || undefined}
+              name={'location'}
               placeholder={fields?.SearchPlaceholder?.value}
-              suggestions={autocompleteData?.response.results?.map(
-                (result) => `${result.value}`
+              suggestions={autocompleteData?.map(
+                (result) => `${result.LocationName}`
               )}
             >
               <Filters
@@ -182,7 +195,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
           </>
         </HeaderPlain>
       </Themes>
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         <SearchWrapper
           ref={searchWrapperRef}
           searchDetail={
@@ -213,19 +226,25 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               tabContent: (
                 <>
                   <CardGrid>
-                    {data?.response.results?.map((item) => {
-                      const { data } = item;
-                      const { id, title, name, description, imageUrl, url } =
-                        data;
+                    {data?.response?.locations?.map((item) => {
+                      const {
+                        id,
+                        title,
+                        name,
+                        description,
+                        imageUrl,
+                        url,
+                        directions,
+                      } = item;
                       return (
-                        <CardContent
+                        <CardMap
                           key={id}
                           title={
                             <Text variation="heading-1" tag="h4">
                               {title || name}
                             </Text>
                           }
-                          bodyCopy={
+                          address={
                             description ? (
                               <Text variation="body-large">{description}</Text>
                             ) : undefined
@@ -240,15 +259,30 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                               />
                             ) : undefined
                           }
-                          link={
-                            url ? (
-                              <a href={url}>
-                                <span>
-                                  Learn <strong>more</strong>
-                                </span>
-                              </a>
-                            ) : undefined
-                          }
+                          ctas={{
+                            button1: url ? (
+                              <Button size={'large'} variation={'full'}>
+                                <a href={url}>
+                                  <span>
+                                    Learn <strong>more</strong>
+                                  </span>
+                                </a>
+                              </Button>
+                            ) : undefined,
+                            button2: directions ? (
+                              <TextButton>
+                                <a
+                                  href={directions}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <span>
+                                    Learn <strong>more</strong>
+                                  </span>
+                                </a>
+                              </TextButton>
+                            ) : undefined,
+                          }}
                         />
                       );
                     })}
@@ -278,26 +312,22 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               tabContent: (
                 <LocationMap
                   apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
-                  center={{
-                    lat: 51.5072,
-                    lng: 0.1276,
-                  }}
                   locations={
-                    data?.response.results.map(({ data }) => ({
+                    data?.response?.locations.map((item) => ({
                       center: {
-                        lat: 51.52036,
-                        lng: -0.14797,
+                        lat: Number(item.lat) || 0,
+                        lng: Number(item.lng) || 0,
                       },
                       card: (hideCard) => (
                         <CardMap
                           title={
                             <Text tag="h3" variation="heading-2">
-                              {data.title}
+                              {item.title}
                             </Text>
                           }
                           address={
                             <Text tag="p" variation="body-large">
-                              {data.description}
+                              {item.description}
                             </Text>
                           }
                           ctas={{
@@ -309,7 +339,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                               </a>
                             ),
                             button2: (
-                              <a href="#">
+                              <a href={item.directions}>
                                 <span>
                                   Get <strong>directions</strong>
                                 </span>
@@ -342,20 +372,26 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_URL); // compose API url
+  const query = `?${params.join('&')}&location=`;
+  const url = new URL(query, `${BASE_URL}${SEARCH_PATH}`); // compose API url
 
   try {
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as ApiResponse;
-      return rendering;
+      return fallbackData;
     } else {
       throw response.statusText;
     }
   } catch (error) {
     console.error(error);
-    return rendering;
+    return { locations: [] };
   }
+};
+
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+  return <div className={`component ${props.params?.styles}`}></div>;
 };

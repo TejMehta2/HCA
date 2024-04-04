@@ -13,6 +13,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     displayFlex,
     width,
     withButtons,
+    customBtn,
   } = props;
 
   const containerClasses = classNames(styles.container, {
@@ -23,6 +24,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     [styles['display-flex']]: displayFlex,
     [styles[`width-${width}`]]: width,
     [styles['with-buttons']]: withButtons,
+    [styles['custom-btn']]: customBtn,
   });
 
   return <div className={containerClasses}>{children}</div>;

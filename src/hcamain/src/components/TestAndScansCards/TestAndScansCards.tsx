@@ -86,7 +86,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   }
 
   const columns: CardBlockProps['variation'] =
-    props.params?.Columns === 4 ? '4-columns' : '3-columns';
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
 
   const queryParam = props.fields.data?.contextItem?.id
     ? '?conditionId=' + props.fields.data?.contextItem?.id

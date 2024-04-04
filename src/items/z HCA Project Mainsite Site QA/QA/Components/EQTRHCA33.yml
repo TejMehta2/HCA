@@ -6,8 +6,7 @@ Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{78474FC2-11A8-4367-B85F-9190408114B7}" />
+  Value: 
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -40,17 +39,39 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{A376BE42-9E45-4883-89BB-3A55FC633E9A}"
+              uid="{8591953A-0B0B-432E-B8C0-723EF40D4D23}"
               p:before="*"
-              s:ds="{6200980E-D275-494E-90D5-3076ED71E0BF}"
+              s:ds="local:/Data/Find a consultant"
+              s:id="{3715741B-A7EF-4B60-BE1E-72239704EC9D}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B98EC1CF4-A4A4-43CE-947B-86039A30AA53%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{A376BE42-9E45-4883-89BB-3A55FC633E9A}"
+              p:after="r[@uid='{8591953A-0B0B-432E-B8C0-723EF40D4D23}']"
+              s:ds="local:/Data/Header With Image/CTA Button 2"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{6631EAD8-9757-462B-A168-8876B3B0A968}"
               p:after="r[@uid='{A376BE42-9E45-4883-89BB-3A55FC633E9A}']"
+              s:ds="local:/Data/Header With Image/CTA Button 2"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{9BEE5D4E-BB84-47D6-98BA-AB5D1E7622A4}"
+              p:after="r[@uid='{6631EAD8-9757-462B-A168-8876B3B0A968}']"
+              s:ds="local:/Data/Header With Image/CTA Button 2"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{A13D3E8C-AC8D-4679-8F4C-CC2B6335986E}"
+              p:after="r[@uid='{9BEE5D4E-BB84-47D6-98BA-AB5D1E7622A4}']"
+              s:ds="local:/Data/Call Us today"
+              s:id="{E2ACB40C-B73B-4BE1-8B5C-4498D9920248}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BEA48E2B2-C94A-44A0-AEBF-6CB1232508B8%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
               s:ph="/headless-main/cta-buttons-1" />
           </d>
         </r>
@@ -67,21 +88,21 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
-      Value: This is a text description
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7c7e9fa4-52bb-4ba6-b74f-bc3ba95a5f0f"
+      Value: "29686bdd-b6b0-4c75-8657-091cd410c58c"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
-        <image mediaid="{C785147A-B62E-4EAF-9B79-FA85910301B2}" />
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/1fb49e1027e147afbd8d5ea5fb1dba88?v=016452a2" dam-id="CaCScBNmKkK7nMb9J1tPrA" width="2500" height="1667" alt="2636" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/156693/thumbnail" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T103927Z
+      Value: 20240402T165054Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA33

@@ -95,3 +95,10 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     ></VideoBlock>
   );
 };
+
+export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
+  if (!props.fields) {
+    return <VideoPlayerDefaultComponent {...props} />;
+  }
+  return <div className={`component ${props.params?.styles}`}></div>;
+};
