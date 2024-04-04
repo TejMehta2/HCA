@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
+import React, { useEffect } from 'react';
+import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { DevTool } from '@hookform/devtools';
 
 import {
   Image as JssImage,
@@ -45,6 +47,57 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   console.log('step booking form', props.fields);
+  const form = useForm({
+    // you can also submit default values
+    defaultValues: {
+      username: 'Alina test',
+      email: '',
+    },
+  });
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue,
+  } = form;
+  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
+  console.log(isDirty, isValid);
+  // console.log(errors);
+
+  const onSubmit = (data: any) => {
+    console.log('data', data);
+  };
+
+  const onError = (errors: FieldErrors) => {
+    console.log('errors on submit', errors);
+  };
+
+  const handleGetValues = () => {
+    console.log('get Values', getValues());
+  };
+
+  const habdleSetFieldValue = () => {
+    // setValue('username', '', {
+    //   shouldValidate: false,
+    // });
+
+    setValue('username', '');
+  };
+
+  const watchFormChanges = watch();
+  // // using watch fallback to create side effects
+  // useEffect(() => {
+  //   const subscription = watch((value) => {
+  //     // we will get updated values of forms elements
+  //     console.log('value from watch', value);
+  //   });
+  //   return () => subscription.unsubscribe();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [watchFormChanges]);
+
   if (props.fields) {
     return (
       <div
@@ -63,39 +116,36 @@ export const Default = (props: StepProps): JSX.Element => {
           }
         ></HeaderLDB>
         <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
+          {/* debugger for form */}
+          {/* https://www.npmjs.com/package/@hookform/devtools */}
+          <DevTool control={control} placement="top-right" />
+          <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+            <button type="button" onClick={handleGetValues}>
+              Get values
+            </button>
+            <button type="button" onClick={habdleSetFieldValue}>
+              Change field value
+            </button>
+            <br></br>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              {...register('username', {
+                required: { value: true, message: 'Username is required' },
+              })}
+            />
+            <p>{errors.username?.message}</p>
+            <br></br>
+            {/* Display error message */}
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" {...register('email')} />
+            {/* Display error message */}
+            <br></br>
+            <button disabled={!isDirty || !isValid} type="submit">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     );
