@@ -35,15 +35,11 @@ interface CountersFields {
   };
 }
 
-interface url {
-  url: string;
-}
-
 interface CQCFields {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
-    ReportLink?: LinkField | url;
+    ReportLink?: LinkField | { url: string };
     Status?: CQSStatusFields;
   };
 }
