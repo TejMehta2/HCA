@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
 import React from 'react';
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+
 import {
   Image as JssImage,
   Link as JssLink,
@@ -18,14 +22,8 @@ interface Fields {
   HCALogo: ImageField | ImageFieldValue | undefined;
   CurrentStep: any;
   Steps: any;
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
