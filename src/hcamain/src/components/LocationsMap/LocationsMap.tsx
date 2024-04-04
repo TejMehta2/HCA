@@ -9,7 +9,6 @@ import Params from 'src/types/params';
 import OurLocations from '@component-library/site-components/OurLocations/OurLocations';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
-import Icons from '@component-library/foundation/Icons/Icons';
 import CardLocation from '@component-library/components/CardLocation/CardLocation';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
@@ -35,6 +34,7 @@ type CardsFields = {
     MapScale?: Field<string>;
     CTAIcon?: HCAIconFields;
     CTALink?: LinkField;
+    Icon: HCAIconFields;
   };
 };
 
@@ -67,9 +67,11 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     return <LocationsMapDefaultComponent {...props} />;
   }
 
+  console.log(props);
+
   const headerProps = {
     subtitle: (
-      <Text tag="h3" variation="subheading-1">
+      <Text tag="p" variation="subheading-1">
         <JssText field={props.fields?.Heading} />
       </Text>
     ),
@@ -108,7 +110,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
   };
 
   const locationCards: Location[] = [];
-  props.fields?.Cards?.map((card, index) => {
+  props.fields?.Cards?.map((card) => {
     const location = {
       mapX: Number(card?.fields?.PinPositionX?.value) || 0.66,
       mapY: Number(card?.fields?.PinPositionY?.value) || 0.85,
@@ -123,15 +125,19 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
           }
           title={
             <Text tag="p" variation="heading-2">
-              <JssRichText tag="span" field={card?.fields?.Text} />
+              <JssRichText tag="span" field={card?.fields?.Title} />
             </Text>
           }
           subtitle={
             <Text tag="p" variation={'subheading-2'}>
-              {index === 0 ? 'Scroll down to explore' : undefined}
+              <JssText field={card?.fields?.Text} />
             </Text>
           }
-          icon={index === 0 ? <Icons iconName={'iconArrowDown'} /> : undefined}
+          icon={
+            <SitecoreSvg>
+              {card?.fields?.Icon?.fields?.SvgMarkup?.value}
+            </SitecoreSvg>
+          }
           cta={
             card.fields?.CTALink?.value ? (
               <a href={card.fields?.CTALink?.value.href}>
