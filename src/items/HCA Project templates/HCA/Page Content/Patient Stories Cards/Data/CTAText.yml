@@ -1,26 +1,27 @@
 ﻿---
-ID: "a028bacb-1e44-4266-8d99-9859c416810b"
-Parent: "7d511e55-c747-4d08-b6b2-fc6de84c6c6e"
+ID: "8686ffe5-371d-4d4b-831c-65a8c0cb4194"
+Parent: "9c07767a-7161-4721-bb4a-da841172c22c"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories/Data/Stories
+Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards/Data/CTAText
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{2F2BEC59-B5A2-4100-A359-A22D0628503D}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 300
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: CTA Text
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231117T090137Z
+      Value: 20240404T203051Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +32,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7c85c0da-b31e-4359-8abe-a629e033f396"
+      Value: "53befd9a-868c-4c7a-9c35-5f52cbbd9552"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240404T214940Z
+      Value: 20240405T063325Z
