@@ -170,8 +170,6 @@ export async function getHolidays(): Promise<string[]> {
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
   //console.log('holiday url', holidayURL);
   //console.log('config', HCAAPIConfig);
-  // using current/legacy live diary consultants list for now
-  // replace once we have a backend that can query for a list of live diary consultant slugs
   if (holidayURL && holidayURL.length > 0) {
     try {
       // need to cache these requests so we don't make hundreds of them
@@ -199,4 +197,42 @@ export async function getHolidays(): Promise<string[]> {
   }
 
   return holidays;
+}
+
+// get all the CMAs
+// e.g. /api/lookupAPI/finder/default/findbydictionary/CMA
+export async function getCMAs(): Promise<string[]> {
+  let cmas;
+  const HCAAPIConfig = await getHCAConfig();
+  const cmaURL = HCAAPIConfig?.aPI_HCA_CMAs_BaseURL;
+
+  //console.log('config', HCAAPIConfig);
+  console.log('cmaURL', cmaURL);
+  if (cmaURL && cmaURL.length > 0) {
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(cmaURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        cmas = await res.json();
+        if (cmas.length == 0) {
+          console.warn(`Warning CMAs empty on getCMAs() call`);
+        }
+      } else {
+        // couldn't get the cmas
+        console.warn(
+          `Could not load CMAs list for pre-render from ${cmaURL} result:${res}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load CMAs for pre-render from ${cmaURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return cmas;
 }

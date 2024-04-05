@@ -27,6 +27,12 @@ interface IHCAConfig {
   aPI_HCA_Holidays_NoResultsMsg: string;
   aPI_HCA_Holidays_LoadingMsg: string;
   aPI_HCA_Holidays_UtilizesLegacy: boolean;
+
+  //HCA API - CMAs
+  aPI_HCA_CMAs_BaseURL: string;
+  aPI_HCA_CMAs_NoResultsMsg: string;
+  aPI_HCA_CMAs_LoadingMsg: string;
+  aPI_HCA_CMAs_UtilizesLegacy: boolean;
 }
 
 export async function getHCAConfig(): Promise<IHCAConfig> {
@@ -60,6 +66,12 @@ export async function getHCAConfig(): Promise<IHCAConfig> {
     aPI_HCA_Holidays_NoResultsMsg: '',
     aPI_HCA_Holidays_LoadingMsg: '',
     aPI_HCA_Holidays_UtilizesLegacy: true,
+
+    //HCA API - CMAs
+    aPI_HCA_CMAs_BaseURL: '',
+    aPI_HCA_CMAs_NoResultsMsg: '',
+    aPI_HCA_CMAs_LoadingMsg: '',
+    aPI_HCA_CMAs_UtilizesLegacy: false,
   };
   HCAConfig = await getItemFromGraphQL(
     HCAAPISettingsItemId,

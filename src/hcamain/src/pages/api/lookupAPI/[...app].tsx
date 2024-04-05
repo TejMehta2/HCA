@@ -155,6 +155,7 @@ export default async function handler(
             }
           );
           //console.log('loaded xl');
+          //console.log('mediaFileName',`${mediaURLBase}${project}${mediaFileName}`);
           const res = (await readExcel(await xlData.blob(), dictionary)) as [];
           //Type Key Value Order
           /* eg
@@ -169,7 +170,8 @@ export default async function handler(
             !(res as any).errorCode &&
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             !(res as any).errorText &&
-            res?.length
+            res?.length &&
+            res?.map
           ) {
             // should be an array, with heading
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
