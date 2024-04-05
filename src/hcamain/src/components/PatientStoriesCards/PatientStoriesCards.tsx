@@ -78,7 +78,7 @@ const PatientStoriesCardsDefaultComponent = (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
           <span className="is-empty-hint">
-          Patient Stories Cards please click to select datasource
+            Patient Stories Cards please click to select datasource
           </span>
         </div>
       </div>
@@ -91,7 +91,5 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
-  return (
-    <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-  );
+  return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
 };
