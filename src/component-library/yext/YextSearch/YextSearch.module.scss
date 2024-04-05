@@ -1,5 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../core-components/Checkbox/Checkbox.module.scss' as *;
 
 .wrapper {
   background-color: var(--background);
@@ -26,4 +27,75 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: $spacing-4;
+}
+
+.filters {
+  label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    padding-left: px-to-rem(32);
+    margin-right: 0;
+    margin-left: 0;
+
+    @include apply-body-large;
+
+    &::before {
+      left: 0;
+      position: absolute;
+      content: '';
+      border: px-to-rem(2) solid $navy-blue-10;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      border-radius: $radius-small;
+    }
+
+    .text {
+      display: flex;
+      padding-left: px-to-rem(32);
+    }
+
+    a {
+      color: var(--text);
+      font-weight: 500;
+    }
+  }
+
+  input[type='checkbox'] {
+    appearance: none;
+    display: none;
+    margin: 0;
+
+    &:checked + label {
+      @include apply-body-medium-large;
+
+      &::before {
+        background: $orange-100;
+        border: 2px solid $orange-100;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='%23112F34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        height: px-to-rem(24);
+        width: px-to-rem(24);
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      & + label {
+        &::before {
+          outline: px-to-rem(2) solid #{$navy-blue-100};
+          outline-offset: px-to-rem(2);
+        }
+      }
+    }
+  }
 }
