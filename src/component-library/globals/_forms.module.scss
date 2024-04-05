@@ -6,6 +6,7 @@
 @use '../core-components/Checkbox/Checkbox.module.scss';
 @use '../core-components/Textarea/Textarea.module.scss';
 @use '../core-components/SelectField/SelectField.module.scss';
+@use '../core-components/PhoneField/PhoneField.module.scss';
 
 /* stylelint-disable selector-class-pattern, no-descending-specificity */
 
@@ -45,6 +46,10 @@ byoc-sitecore-form,
     margin-top: $spacing-3;
 
     @include apply-body-large;
+  }
+
+  .fail-popup {
+    display: none;
   }
 
   /* Input fields */
@@ -182,6 +187,37 @@ byoc-sitecore-form,
       width: px-to-rem(24);
       height: px-to-rem(24);
     }
+  }
+
+  /* Phone number */
+  .phone_input-component {
+    .iti {
+      width: 100%;
+    }
+
+    input {
+      padding-left: px-to-rem(90) !important;
+    }
+
+    .iti__flag-container {
+      width: 100%;
+    }
+
+    .iti__selected-flag {
+      width: fit-content;
+    }
+
+    ul[class*='iti__country-list'] {
+      width: 100%;
+      border-radius: $radius-large;
+      padding: $spacing-6 0;
+      margin-top: $spacing-1;
+      max-height: px-to-rem(250);
+      box-shadow: none;
+      border: 1px solid $navy-blue-60;
+    }
+
+    @extend %phone-field-iti;
   }
 
   /* Buttons */
