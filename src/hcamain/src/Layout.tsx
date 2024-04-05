@@ -1,7 +1,7 @@
 /**
  * This Layout is needed for Starter Kit.
  */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Head from 'next/head';
 import {
   Placeholder,
@@ -40,6 +40,30 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
   const isHomepage = layoutData?.sitecore.context.itemPath === '/';
+
+  const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Options for the observer (which mutations to observe)
+    const config = { childList: true, subtree: true };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(() => {
+      const form = document.querySelectorAll('byoc-sitecore-form style');
+      if (form) {
+        [...form].forEach((stylesheet) => {
+          stylesheet.remove();
+        });
+      }
+    });
+
+    // Start observing the target node for configured mutations
+    observer.observe(mainRef.current as Node, config);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   //  On the homepage get the theme of the first component to set the initial theme of the ScrollTransition component
 
@@ -91,7 +115,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
             )}
           </div>
         </header>
-        <main>
+        <main ref={mainRef}>
           <div id="content">
             {isHomepage ? (
               <ScrollTransition initialTheme={firstComponentTheme}>
