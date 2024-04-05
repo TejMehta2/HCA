@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -48,28 +48,28 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   // console.log('step booking form', props.fields);
 
-  const schema = z
-    .object({
-      username: z.optional(z.string()),
-      email: z.string().email('Email format is not valid'),
-      user: z.string().trim().min(1, { message: 'Required' }),
-      test: z.string(),
-    })
-    .refine(
-      (data) => {
-        if (data.user === 'insurer') {
-          return true;
-        }
-        if (data.user === 'patient') {
-          return false;
-        }
-        return false;
-      },
-      {
-        message: 'required',
-        path: ['test'],
-      }
-    );
+  // const schema = z
+  //   .object({
+  //     username: z.optional(z.string()),
+  //     email: z.string().email('Email format is not valid'),
+  //     user: z.string().trim().min(1, { message: 'Required' }),
+  //     test: z.string(),
+  //   })
+  //   .refine(
+  //     (data) => {
+  //       if (data.user === 'insurer') {
+  //         return true;
+  //       }
+  //       if (data.user === 'patient') {
+  //         return false;
+  //       }
+  //       return false;
+  //     },
+  //     {
+  //       message: 'required',
+  //       path: ['test'],
+  //     }
+  //   );
 
   const form = useForm({
     // you can also submit default values
@@ -79,40 +79,34 @@ export const Default = (props: StepProps): JSX.Element => {
       user: '',
       test: '',
     },
-    resolver: zodResolver(schema),
+    // resolver: zodResolver(schema),
   });
   const {
     register,
     control,
     handleSubmit,
-    formState,
+    formState: {
+      errors,
+      touchedFields,
+      dirtyFields,
+      isDirty,
+      isValid,
+      isSubmitting,
+      isSubmitSuccessful,
+    },
     watch,
     getValues,
     setValue,
     setError,
   } = form;
-  const {
-    errors,
-    touchedFields,
-    dirtyFields,
-    isDirty,
-    isValid,
-    isSubmitting,
-    isSubmitSuccessful,
-  } = formState;
-
-  // console.log(
-  //   'isDirty:',
-  //   isDirty,
-  //   'isSubmitting:',
-  //   isSubmitting,
-  //   'isSubmitSuccessful:',
-  //   isSubmitSuccessful
-  // );
-  // console.log(errors);
+  console.log('isSubmitting', isSubmitting);
 
   const onSubmit = (data: any) => {
     console.log('data', data);
+
+    return new Promise<void>((resolve) => {
+      setTimeout(() => resolve(), 1000);
+    });
   };
 
   const onError = (errors: FieldErrors) => {
@@ -164,6 +158,9 @@ export const Default = (props: StepProps): JSX.Element => {
           {/* https://www.npmjs.com/package/@hookform/devtools */}
           <DevTool control={control} placement="top-right" />
           <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+            <div>
+              <h1>Is submitting: {isSubmitting ? 'yes' : 'no'}</h1>
+            </div>
             <button type="button" onClick={handleGetValues}>
               Get values
             </button>
