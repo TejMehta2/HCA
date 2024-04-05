@@ -100,5 +100,17 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
-  return <div className={`component ${props.params?.styles}`}></div>;
+
+  if (!props.fields?.VideoUrl?.value) {
+    return <></>;
+  }
+
+  return (
+    <figure>
+      <VideoPlayer
+        videoUrl={props.fields?.VideoUrl?.value}
+        overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+      />
+    </figure>
+  );
 };

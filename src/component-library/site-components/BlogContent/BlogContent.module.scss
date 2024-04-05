@@ -67,15 +67,18 @@
   }
 
   figure {
-    border-radius: $radius-medium;
     overflow: hidden;
     margin: 0;
-    aspect-ratio: 1120/523;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      &:first-child {
+        aspect-ratio: 1120/523;
+        border-radius: $radius-medium;
+      }
     }
   }
 }
