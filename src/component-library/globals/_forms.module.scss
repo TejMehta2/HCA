@@ -1,0 +1,232 @@
+@use '../foundation/index.module' as *;
+@use '../utilities/index.module' as *;
+@use '../core-components/Button/Button.module.scss';
+@use '../core-components/TextField/TextField.module.scss';
+@use '../core-components/RadioButton/RadioButton.module.scss';
+@use '../core-components/Checkbox/Checkbox.module.scss';
+@use '../core-components/Textarea/Textarea.module.scss';
+@use '../core-components/SelectField/SelectField.module.scss';
+@use '../core-components/PhoneField/PhoneField.module.scss';
+
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
+
+byoc-sitecore-form,
+[data-byoc-sitecore-form] {
+  background: var(--background);
+  color: var(--text);
+  margin-top: $spacing-13;
+  margin-bottom: $spacing-13;
+
+  @include responsive-grid;
+  @include responsive-container;
+
+  .main-form-wrapper {
+    width: 100%;
+
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+
+  .component:not(:first-of-type, .button-component) {
+    margin-top: $spacing-5;
+  }
+
+  /* Generic Labels & Text fields */
+  .text-component {
+    @include apply-body-medium-extra-large;
+  }
+
+  .form-field-label {
+    display: block;
+    margin-bottom: $spacing-3;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .form-input-description {
+    margin-top: $spacing-3;
+
+    @include apply-body-large;
+  }
+
+  .fail-popup {
+    display: none;
+  }
+
+  /* Input fields */
+
+  .form-input-element:not(
+      .form-input-radio-element,
+      .form-input-checkbox-element,
+      textarea
+    ) {
+    @extend %input-field;
+  }
+
+  input + .limit-counter {
+    display: none;
+  }
+
+  /* Textarea */
+  .longtext_input-component {
+    .form-input-wrapper-div {
+      @extend %input-textarea;
+    }
+  }
+
+  /* Controls */
+  .radio-group-container,
+  .checkbox-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+
+  .checkbox-component {
+    user-select: none;
+
+    label {
+      display: flex;
+      gap: 0;
+      align-items: center;
+    }
+
+    .form-field-label {
+      margin: 0;
+      padding-left: $spacing-7;
+
+      @extend %label-checkbox;
+    }
+
+    .form-input-wrapper-div {
+      @extend %input-checkbox;
+    }
+
+    .checkbox-check-marker {
+      display: none !important;
+    }
+  }
+
+  .radio-wrapper {
+    label {
+      display: flex;
+      gap: 0 $spacing-4;
+      align-items: center;
+
+      .form-input-wrapper-div {
+        display: flex;
+      }
+    }
+
+    .form-field-label {
+      margin: 0;
+
+      @include apply-body-extra-large;
+    }
+
+    .form-input-radio-element {
+      @extend %input-radio;
+    }
+  }
+
+  /* Select dropdown */
+  .singleselect_input-component,
+  .multiselect_input-component {
+    label {
+      position: relative;
+    }
+
+    .lp-flex-1 {
+      position: relative;
+
+      &::after {
+        @extend %select-icon;
+      }
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    .form-select-option-container {
+      @include apply-body-medium-large;
+
+      @extend %select-options;
+    }
+
+    .selected-indicator,
+    .mdi-menu-down {
+      display: none;
+    }
+  }
+
+  /* Validation */
+  .component:has(.form-input-error-message) {
+    .form-field-label {
+      color: var(--field-error-colour);
+    }
+
+    input {
+      border-color: var(--field-error-colour);
+    }
+  }
+
+  .form-input-error-message {
+    color: var(--field-error-colour);
+    margin-top: $spacing-2;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-medium;
+
+    &::before {
+      content: '';
+      display: block;
+      mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Warning'%3E%3Cpath id='Vector' d='M12 7V13M12 17.01L12.01 16.999M12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22Z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E%0A");
+      background-color: var(--field-error-colour);
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+    }
+  }
+
+  /* Phone number */
+  .phone_input-component {
+    .iti {
+      width: 100%;
+    }
+
+    input {
+      padding-left: px-to-rem(90) !important;
+    }
+
+    .iti__flag-container {
+      width: 100%;
+    }
+
+    .iti__selected-flag {
+      width: fit-content;
+    }
+
+    ul[class*='iti__country-list'] {
+      width: 100%;
+      border-radius: $radius-large;
+      padding: $spacing-6 0;
+      margin-top: $spacing-1;
+      max-height: px-to-rem(250);
+      box-shadow: none;
+      border: 1px solid $navy-blue-60;
+    }
+
+    @extend %phone-field-iti;
+  }
+
+  /* Buttons */
+  .button-component {
+    margin-top: $spacing-8;
+
+    @extend %button;
+    @extend %large;
+    @extend %full;
+  }
+}

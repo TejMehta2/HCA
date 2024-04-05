@@ -3,20 +3,12 @@ import { RadioButtonProps } from './RadioButton.types';
 import styles from './RadioButton.module.scss';
 
 const RadioButton = (props: RadioButtonProps): JSX.Element => {
-  const {
-    label,
-    name,
-    value,
-    mode = 'light',
-    disabled,
-    onChange,
-    checked,
-  } = props;
+  const { label, name, value, disabled, onChange, checked } = props;
 
   const id = useId();
 
   return (
-    <label htmlFor={id} className={[styles.wrapper, styles[mode]].join(' ')}>
+    <label htmlFor={id} className={styles.wrapper}>
       <input
         type="radio"
         id={id}
