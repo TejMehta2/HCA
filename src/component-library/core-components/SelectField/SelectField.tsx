@@ -76,9 +76,6 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
         >
           {activeValue}
         </button>
-        {/* <span className={styles.arrow}>
-          <Icons iconName="iconArrowDropdown" />
-        </span> */}
       </span>
       <ModalDropdown ref={dialogRef}>
         <div role="listbox" id="select-dropdown" className={styles.options}>
