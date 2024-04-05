@@ -89,13 +89,11 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     ctas: (
       <Button size="large" variation="full">
         <a href={props.fields?.CTALink?.value.href}>
-          {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value && (
-            <span>
-              <SitecoreSvg>
-                {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
-              </SitecoreSvg>
-            </span>
-          )}
+          <span>
+            <SitecoreSvg>
+              {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+            </SitecoreSvg>
+          </span>
 
           <span
             dangerouslySetInnerHTML={{
