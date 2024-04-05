@@ -43,11 +43,12 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
 
   const mainRef = useRef<HTMLElement>(null);
 
+  /* Remove built in form styles if they exist */
   useEffect(() => {
     // Options for the observer (which mutations to observe)
     const config = { childList: true, subtree: true };
 
-    // Create an observer instance linked to the callback function
+    // Checks for changes in the DOM and runs when it sees a change in the childList or subtree
     const observer = new MutationObserver(() => {
       const form = document.querySelectorAll('byoc-sitecore-form style');
       if (form) {
@@ -57,7 +58,6 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       }
     });
 
-    // Start observing the target node for configured mutations
     observer.observe(mainRef.current as Node, config);
 
     return () => {
