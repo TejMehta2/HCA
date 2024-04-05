@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
+import React, { useEffect, useState } from 'react';
+import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { DevTool } from '@hookform/devtools';
 
 import {
   Image as JssImage,
@@ -44,7 +46,96 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  console.log('step booking form', props.fields);
+  // console.log('step booking form', props.fields);
+
+  // const schema = z
+  //   .object({
+  //     username: z.optional(z.string()),
+  //     email: z.string().email('Email format is not valid'),
+  //     user: z.string().trim().min(1, { message: 'Required' }),
+  //     test: z.string(),
+  //   })
+  //   .refine(
+  //     (data) => {
+  //       if (data.user === 'insurer') {
+  //         return true;
+  //       }
+  //       if (data.user === 'patient') {
+  //         return false;
+  //       }
+  //       return false;
+  //     },
+  //     {
+  //       message: 'required',
+  //       path: ['test'],
+  //     }
+  //   );
+
+  const form = useForm({
+    // you can also submit default values
+    defaultValues: {
+      username: 'Alina test',
+      email: '',
+      user: '',
+      test: '',
+    },
+    // resolver: zodResolver(schema),
+  });
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: {
+      errors,
+      touchedFields,
+      dirtyFields,
+      isDirty,
+      isValid,
+      isSubmitting,
+      isSubmitSuccessful,
+    },
+    watch,
+    getValues,
+    setValue,
+    setError,
+  } = form;
+  console.log('isSubmitting', isSubmitting);
+
+  const onSubmit = (data: any) => {
+    console.log('data', data);
+
+    return new Promise<void>((resolve) => {
+      setTimeout(() => resolve(), 1000);
+    });
+  };
+
+  const onError = (errors: FieldErrors) => {
+    console.log('errors on submit', errors);
+  };
+
+  const handleGetValues = () => {
+    console.log('get Values', getValues());
+  };
+
+  const habdleSetFieldValue = () => {
+    // setValue('username', '', {
+    //   shouldValidate: false,
+    // });
+
+    setValue('username', '');
+  };
+
+  const watchFormChanges = watch();
+  // // using watch fallback to create side effects
+  // useEffect(() => {
+  //   const subscription = watch((value) => {
+  //     // we will get updated values of forms elements
+  //     console.log('value from watch', value);
+  //   });
+  //   return () => subscription.unsubscribe();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [watchFormChanges]);
+
   if (props.fields) {
     return (
       <div
@@ -63,39 +154,83 @@ export const Default = (props: StepProps): JSX.Element => {
           }
         ></HeaderLDB>
         <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
+          {/* debugger for form */}
+          {/* https://www.npmjs.com/package/@hookform/devtools */}
+          <DevTool control={control} placement="top-right" />
+          <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
             <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
+              <h1>Is submitting: {isSubmitting ? 'yes' : 'no'}</h1>
+            </div>
+            <button type="button" onClick={handleGetValues}>
+              Get values
+            </button>
+            <button type="button" onClick={habdleSetFieldValue}>
+              Change field value
+            </button>
+            <br></br>
+            <br></br>
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" {...register('username')} />
+            <br></br>
+            <p>{errors.username?.message}</p>
+            <br></br>
+            <br></br>
+            <label htmlFor="patient">Patient</label>
+            <input
+              type="radio"
+              id="patient"
+              value="patient"
+              {...register('user')}
+            />
+            <br></br>
+            <label htmlFor="insurer">Insurer</label>
+            <input
+              type="radio"
+              id="insurer"
+              value="insurer"
+              {...register('user')}
+            />
+            <br></br>
+            <p>{errors.user?.message}</p>
+            <br></br>
+            <br></br>
+            {/* <label htmlFor="test">Enter something</label>
+            <input
+              type="text"
+              id="test"
+              {...(register('test'), { disabled: watch('user') === 'insurer' })}
+            /> */}
+
+            {watchFormChanges.user === 'patient' && (
+              <div>
+                {/* Your div content */}
+                <p>Patient</p>
+                <br></br>
+                <label htmlFor="test">Enter something</label>
+                <input type="text" id="test" {...register('test')} />
+                <p>{errors.test?.message}</p>
+                <br></br>
+                <br></br>
               </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
+            )}
+            {/* <input
+              type="text"
+              id="name"
+              {...register('username', {
+                required: { value: true, message: 'Username is required' },
+              })}
+            /> */}
+
+            {/* Display error message */}
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" {...register('email')} />
+            {/* Display error message */}
+            <p>{errors.email?.message}</p>
+            <br></br>
+            <button disabled={!isDirty || isSubmitting} type="submit">
+              {isSubmitting ? 'Submitting' : 'Submit'}
+            </button>
+          </form>
         </div>
       </div>
     );
