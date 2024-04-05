@@ -1,0 +1,29 @@
+﻿---
+ID: "142b367c-7d59-4663-a9f2-e414d12b67a2"
+Parent: "b95d4de1-33e9-4110-aea5-59624f8e6993"
+Template: "932d4b95-ee85-466a-91e5-c8b0af7639ad"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA17/Data/Share CTA"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240404T144944Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3eb90ee8-4a0e-48cb-a5db-e8bfe7836e01"
+    - ID: "a7692fd9-daf8-4ae2-a0ff-fe8bc58597a5"
+      Hint: Text
+      Value: Share <b>cost information</b>
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: 
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240404T145216Z
