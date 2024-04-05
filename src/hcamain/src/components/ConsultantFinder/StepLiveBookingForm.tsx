@@ -47,29 +47,32 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   // console.log('step booking form', props.fields);
+  const [count, setCount] = useState(0);
 
-  // const schema = z
-  //   .object({
-  //     username: z.optional(z.string()),
-  //     email: z.string().email('Email format is not valid'),
-  //     user: z.string().trim().min(1, { message: 'Required' }),
-  //     test: z.string(),
-  //   })
-  //   .refine(
-  //     (data) => {
-  //       if (data.user === 'insurer') {
-  //         return true;
-  //       }
-  //       if (data.user === 'patient') {
-  //         return false;
-  //       }
-  //       return false;
-  //     },
-  //     {
-  //       message: 'required',
-  //       path: ['test'],
-  //     }
-  //   );
+  const schema = z
+    .object({
+      username: z.optional(z.string()),
+      email: z.string().email('Email format is not valid'),
+      user: z.string().trim().min(1, { message: 'Required' }),
+      test: z.string(),
+      question: z.string().trim().min(1, { message: 'Required' }),
+    })
+    .refine(
+      (data) => {
+        if (data.user === 'patient') {
+          if (data.test !== '') {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      },
+      {
+        message: 'required',
+        path: ['test'],
+      }
+    );
 
   const form = useForm({
     // you can also submit default values
@@ -78,8 +81,9 @@ export const Default = (props: StepProps): JSX.Element => {
       email: '',
       user: '',
       test: '',
+      question: '',
     },
-    // resolver: zodResolver(schema),
+    resolver: zodResolver(schema),
   });
   const {
     register,
@@ -126,15 +130,16 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const watchFormChanges = watch();
-  // // using watch fallback to create side effects
-  // useEffect(() => {
-  //   const subscription = watch((value) => {
-  //     // we will get updated values of forms elements
-  //     console.log('value from watch', value);
-  //   });
-  //   return () => subscription.unsubscribe();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [watchFormChanges]);
+
+  const userValue = watch('user');
+  // remove value from hidden field
+  useEffect(() => {
+    console.log('user', userValue);
+    if (userValue === 'insurer') {
+      setValue('test', '');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userValue]);
 
   if (props.fields) {
     return (
@@ -227,6 +232,23 @@ export const Default = (props: StepProps): JSX.Element => {
             {/* Display error message */}
             <p>{errors.email?.message}</p>
             <br></br>
+
+            <textarea
+              id={id}
+              {...register('question', {
+                onChange: (e) => {
+                  setCount(e.target.value.length);
+                },
+              })}
+              maxLength={300}
+            />
+            <span>
+              {count} / {300}
+            </span>
+            <p>{errors.question?.message}</p>
+            <br></br>
+            <br></br>
+
             <button disabled={!isDirty || isSubmitting} type="submit">
               {isSubmitting ? 'Submitting' : 'Submit'}
             </button>
