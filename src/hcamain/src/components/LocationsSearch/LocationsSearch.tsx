@@ -55,6 +55,8 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
   const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
+  console.log(props);
+  console.log(baselineParams);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -366,6 +368,15 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   );
 };
 
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+  //console.log(props);
+  //return <div className={`component ${props.params?.styles}`}>test</div>;
+  return <Default {...props} />;
+};
+
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: ApiSearchProps
@@ -394,11 +405,4 @@ export const getStaticProps: GetStaticComponentProps = async (
     );
     return { locations: [] };
   }
-};
-
-export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
-  if (!props.fields) {
-    return <LocationsSearchDefaultComponent {...props} />;
-  }
-  return <div className={`component ${props.params?.styles}`}></div>;
 };
