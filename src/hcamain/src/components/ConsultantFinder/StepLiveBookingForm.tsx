@@ -46,18 +46,38 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  console.log('step booking form', props.fields);
+  // console.log('step booking form', props.fields);
 
-  const schema = z.object({
-    username: z.string().trim().min(1, { message: 'Required' }),
-    email: z.string().email('Email format is not valid'),
-  });
+  const schema = z
+    .object({
+      username: z.optional(z.string()),
+      email: z.string().email('Email format is not valid'),
+      user: z.string().trim().min(1, { message: 'Required' }),
+      test: z.string(),
+    })
+    .refine(
+      (data) => {
+        if (data.user === 'insurer') {
+          return true;
+        }
+        if (data.user === 'patient') {
+          return false;
+        }
+        return false;
+      },
+      {
+        message: 'required',
+        path: ['test'],
+      }
+    );
 
   const form = useForm({
     // you can also submit default values
     defaultValues: {
       username: 'Alina test',
       email: '',
+      user: '',
+      test: '',
     },
     resolver: zodResolver(schema),
   });
@@ -69,6 +89,7 @@ export const Default = (props: StepProps): JSX.Element => {
     watch,
     getValues,
     setValue,
+    setError,
   } = form;
   const {
     errors,
@@ -80,14 +101,14 @@ export const Default = (props: StepProps): JSX.Element => {
     isSubmitSuccessful,
   } = formState;
 
-  console.log(
-    'isDirty:',
-    isDirty,
-    'isSubmitting:',
-    isSubmitting,
-    'isSubmitSuccessful:',
-    isSubmitSuccessful
-  );
+  // console.log(
+  //   'isDirty:',
+  //   isDirty,
+  //   'isSubmitting:',
+  //   isSubmitting,
+  //   'isSubmitSuccessful:',
+  //   isSubmitSuccessful
+  // );
   // console.log(errors);
 
   const onSubmit = (data: any) => {
@@ -150,26 +171,66 @@ export const Default = (props: StepProps): JSX.Element => {
               Change field value
             </button>
             <br></br>
+            <br></br>
             <label htmlFor="name">Name</label>
+            <input type="text" id="name" {...register('username')} />
+            <br></br>
+            <p>{errors.username?.message}</p>
+            <br></br>
+            <br></br>
+            <label htmlFor="patient">Patient</label>
             <input
+              type="radio"
+              id="patient"
+              value="patient"
+              {...register('user')}
+            />
+            <br></br>
+            <label htmlFor="insurer">Insurer</label>
+            <input
+              type="radio"
+              id="insurer"
+              value="insurer"
+              {...register('user')}
+            />
+            <br></br>
+            <p>{errors.user?.message}</p>
+            <br></br>
+            <br></br>
+            {/* <label htmlFor="test">Enter something</label>
+            <input
+              type="text"
+              id="test"
+              {...(register('test'), { disabled: watch('user') === 'insurer' })}
+            /> */}
+
+            {watchFormChanges.user === 'patient' && (
+              <div>
+                {/* Your div content */}
+                <p>Patient</p>
+                <br></br>
+                <label htmlFor="test">Enter something</label>
+                <input type="text" id="test" {...register('test')} />
+                <p>{errors.test?.message}</p>
+                <br></br>
+                <br></br>
+              </div>
+            )}
+            {/* <input
               type="text"
               id="name"
               {...register('username', {
                 required: { value: true, message: 'Username is required' },
               })}
-            />
-            <p>{errors.username?.message}</p>
-            <br></br>
+            /> */}
+
             {/* Display error message */}
             <label htmlFor="email">Email</label>
             <input type="email" id="email" {...register('email')} />
             {/* Display error message */}
             <p>{errors.email?.message}</p>
             <br></br>
-            <button
-              disabled={!isDirty || !isValid || isSubmitting}
-              type="submit"
-            >
+            <button disabled={!isDirty || isSubmitting} type="submit">
               {isSubmitting ? 'Submitting' : 'Submit'}
             </button>
           </form>
