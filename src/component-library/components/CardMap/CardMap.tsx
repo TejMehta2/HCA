@@ -20,7 +20,7 @@ const CardMap = (props: CardMapProps): JSX.Element => {
         {distance && <div>{distance}</div>}
         <div>{title}</div>
         <div className={styles['address']}>{address}</div>
-        {ctas && (
+        {ctas && (ctas.button1 || ctas.button2) && (
           <div className={styles['ctas']}>
             {ctas.button1 && (
               <Button size="small" variation="full" contentVariation="card">

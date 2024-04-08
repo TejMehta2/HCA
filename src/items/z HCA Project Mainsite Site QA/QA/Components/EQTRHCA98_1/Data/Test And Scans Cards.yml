@@ -16,17 +16,21 @@ Languages:
       Value: 6
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7d7ac62a-76ff-41e3-ac58-e0e46f49ec2d"
+      Value: "a25a4e34-8afd-4423-ab4d-9603b60dea4a"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="View all &lt;b&gt;{{EntityName}} tests &amp; scans&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: Key tests & scans
+      Value: "{{EntityName}} tests & scans"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T125202Z
+      Value: 20240405T114955Z
     - ID: "e5e0f48b-6019-4c9b-83b0-1a3dced02373"
       Hint: CTACardText
       Value: Learn more

@@ -1,0 +1,65 @@
+﻿---
+ID: "bd2c8a33-ee18-4b9b-ad29-d9c3e676da20"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "9b38cf34-6e17-48b6-b487-81931a90aa8a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA7_2"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{C5DCEC9D-DCEA-454E-9166-F83E85105499}" />
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{96E5F4BA-A2CF-4A4C-A4E7-64DA88226362}">
+        <r
+          ds="local:/Data/Location Cards Grid"
+          id="{64921D39-EDF4-4ECD-972F-4C52496EE812}"
+          par="Columns&amp;HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B08A63FFA-8F3B-472E-A2D9-96D2B637DBD4%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          ph="headless-main"
+          uid="{15883D84-1E04-402C-9E58-28F0CB1A5D8B}"
+          ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240228T211913Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: Hip pain scan
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b7c8f443-59a7-4e07-946a-35b79e0b0a5d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240405T092145Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: EQTRHCA7_1
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />
