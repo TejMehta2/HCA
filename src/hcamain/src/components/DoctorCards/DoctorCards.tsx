@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const contextSearchIdParams = Object.entries(
     rendering.fields?.data?.contextItemSearchIdParams || {}
-  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/, '').toLowerCase()]); // clean up bad ID characters
+  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/g, '').toLowerCase()]); // clean up bad ID characters
 
   const isFind = !!consultants?.length; // can be a '/find' or a '/search'
 

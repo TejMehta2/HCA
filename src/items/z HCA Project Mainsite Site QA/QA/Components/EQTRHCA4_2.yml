@@ -43,9 +43,12 @@ Languages:
     - ID: "86550f75-4b5d-4f03-bd83-759a0bb3489b"
       Hint: DoctifyKeywordId
       Value: 1140
+    - ID: "87272aa0-841f-4d72-a4df-7fb452932fea"
+      Hint: EntityName
+      Value: Hip pain
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "36f9dbff-6f95-4fcd-90bf-28103a1861ec"
+      Value: "0b53d598-4432-4839-b07c-ed2d6aadd106"
     - ID: "b8f42732-9cb8-478d-ae95-07e25345fb0f"
       Hint: __Hide version
       Value: 1
@@ -55,4 +58,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240404T121444Z
+      Value: 20240405T145438Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Hip pain
