@@ -1,0 +1,91 @@
+import {
+  Field,
+  LinkField,
+  ImageField,
+  Item,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+import { ApiSearchProps } from 'src/types/searchProps';
+
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
+
+type FilterOptionsFields = {
+  displayName?: { value?: string };
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { jsonValue?: Item };
+};
+
+type PatientStoriesFields = {
+  abstractTitle?: Field<string>;
+  abstractText?: Field<string>;
+  abstractImage?: { jsonValue?: ImageField };
+  title?: Field<string>;
+  text?: Field<string>;
+  image?: { jsonValue?: ImageField };
+  url?: { path?: string };
+};
+
+export type FiltersFields = {
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
+};
+
+interface Fields {
+  data?: {
+    item?: {
+      heading?: { jsonValue?: Field<string> };
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
+      patientStories?: {
+        PatientStoriesList?: PatientStoriesFields[];
+      };
+      numberOfCards?: { jsonValue?: Field<string> };
+      cTAText?: { jsonValue?: Field<string> };
+      searchOptions?: {
+        SearchOptionsList?: FilterOptionsFields[];
+      };
+      customFilters?: {
+        CustomFiltersList: FiltersFields[];
+      };
+    };
+    contextItemSearchParams: {
+      [key: string]: { value?: string };
+    };
+    contextItemSearchIdParams: {
+      [key: string]: string;
+    };
+  };
+}
+
+export type PatientStoriesCardsProps = ApiSearchProps & {
+  params?: Params;
+  fields?: Fields;
+  rendering?: {
+    uid?: string;
+  };
+};
+
+export type patientStoriesResult = {
+  data: patientStories[];
+};
+
+export type patientStories = {
+  id: number;
+  title: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+};
+
+export type StaticProps = {
+  ctaQuery: string;
+  patientStories: patientStories[];
+};
