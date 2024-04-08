@@ -18,6 +18,7 @@ import CardPatientStories from '@component-library/components/CardPatientStories
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
 
@@ -66,7 +67,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
         <CardPatientStories
           key={index}
           title={
-            <Text tag="h3" variation="display-4">
+            <Text
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+              variation="display-4"
+            >
               <JssText field={title} />
             </Text>
           }
@@ -95,7 +99,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             <CardPatientStories
               key={id}
               title={
-                <Text tag="h3" variation="display-4">
+                <Text
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                  variation="display-4"
+                >
                   {title || name}
                 </Text>
               }
