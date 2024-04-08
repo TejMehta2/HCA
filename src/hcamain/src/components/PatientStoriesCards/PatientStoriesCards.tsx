@@ -71,7 +71,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             </Text>
           }
           bodyCopy={
-            <Text variation="body-large">
+            <Text tag="span" variation="body-large">
               <JssRichText field={text} />
             </Text>
           }
@@ -100,7 +100,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
                 </Text>
               }
               bodyCopy={
-                <Text variation="body-large">
+                <Text tag="span" variation="body-large">
                   <span
                     dangerouslySetInnerHTML={{
                       __html: description,
