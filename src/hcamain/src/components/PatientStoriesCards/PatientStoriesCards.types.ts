@@ -2,7 +2,6 @@ import {
   Field,
   LinkFieldValue,
   ImageField,
-  Item,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import { ApiSearchProps } from 'src/types/searchProps';
