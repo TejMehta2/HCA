@@ -1,6 +1,6 @@
 import {
   Field,
-  LinkField,
+  LinkFieldValue,
   ImageField,
   Item,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -42,7 +42,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink?: { jsonValue?: { value: LinkFieldValue } };
       patientStories?: {
         PatientStoriesList?: PatientStoriesFields[];
       };

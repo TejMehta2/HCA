@@ -3,6 +3,7 @@ import {
   Text as JssText,
   Image as JssImage,
   RichText as JssRichText,
+  Link as JssLink,
   useSitecoreContext,
   GetStaticComponentProps,
   useComponentProps,
@@ -47,6 +48,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const patientStories = data?.patientStories?.slice(0, Number(quantity) || 3);
   const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
 
   let cards;
 
@@ -74,7 +77,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           }
           image={<JssImage field={image?.jsonValue} />}
           link={
-            <a href={`${url?.path}${ctaQuery}`}>
+            <a href={`${url?.path}`}>
               <span>
                 <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
               </span>
@@ -141,6 +144,31 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             </Text>
           }
         />
+      }
+      cta={
+        !isExperienceEditor ? (
+          <a
+            href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
+          >
+            {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+              <>
+                <JssRichText
+                  field={{
+                    value:
+                      props.fields?.data?.item?.cTALink?.jsonValue?.value
+                        ?.text || '',
+                  }}
+                />
+              </>
+            )}
+          </a>
+        ) : (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            ></JssLink>
+          )
+        )
       }
     >
       <>{cards}</>
