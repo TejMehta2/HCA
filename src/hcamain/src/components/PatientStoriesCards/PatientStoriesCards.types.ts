@@ -15,7 +15,7 @@ type FilterOptionsFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
   filterValueString?: { value?: string };
-  filterValueGuid?: { jsonValue?: Item };
+  filterValueGuid?: { targetItem: { id: string } };
 };
 
 type PatientStoriesFields = {

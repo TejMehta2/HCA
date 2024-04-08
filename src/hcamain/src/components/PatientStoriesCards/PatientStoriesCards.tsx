@@ -194,14 +194,18 @@ export const getStaticProps: GetStaticComponentProps = async (
     (fields?.filterOptions?.filterOptionsList &&
       fields?.filterOptions?.filterOptionsList.map((item) => [
         item.filter?.value,
-        item.filterValueString?.value,
+        item.filterValueGuid?.targetItem?.id,
       ])) ||
     [];
 
   const contextSearchParams = customFilters.length
     ? ''
     : Object.entries(rendering.fields?.data?.contextItemSearchParams || {}).map(
-        ([key, nestedValue]) => [key, nestedValue?.value]
+        ([key, nestedValue]) => [
+          key,
+          nestedValue?.value &&
+            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]
       );
 
   const contextSearchIdParams = customFilters.length
@@ -210,7 +214,7 @@ export const getStaticProps: GetStaticComponentProps = async (
         rendering.fields?.data?.contextItemSearchIdParams || {}
       ).map(([key, value]) => [
         key,
-        value.replaceAll(/[{\-}]/g, '').toLowerCase(),
+        value.replaceAll(/[{},\-]/g, '').toLowerCase(),
       ]); // clean up bad ID characters
 
   const params = [
