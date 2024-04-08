@@ -45,7 +45,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const patientStories = data?.patientStories?.slice(0, Number(quantity) || 4);
+  const patientStories = data?.patientStories?.slice(0, Number(quantity) || 3);
   const ctaQuery = data?.ctaQuery;
 
   let cards;
