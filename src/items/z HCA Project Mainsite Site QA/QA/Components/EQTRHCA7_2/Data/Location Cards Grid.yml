@@ -28,11 +28,11 @@ Languages:
       Value: Get directions
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5194be27-ba9e-4e81-90c8-56e225803cd2"
+      Value: "ab599cba-0391-49f4-95e5-3c0742a2c102"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="View all" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4DE3BB9F-9B36-4B44-9DB2-15283C093353}" />
+        <link text="View all {{EntityName}}" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4DE3BB9F-9B36-4B44-9DB2-15283C093353}" />
     - ID: "b2dc6ad1-1549-4a2f-a0e5-a8b2c5099012"
       Hint: CTAText
       Value: Learn more
@@ -42,10 +42,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: Locations
+      Value: "{{EntityName}}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240326T091455Z
+      Value: 20240405T143912Z
     - ID: "ec60c2d1-b6a4-4eae-a88d-ccb016b6b677"
       Hint: NumberOfCards
       Value: 3
