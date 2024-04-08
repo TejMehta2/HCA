@@ -203,7 +203,7 @@ export const getStaticProps: GetStaticComponentProps = async (
         rendering.fields?.data?.contextItemSearchIdParams || {}
       ).map(([key, value]) => [
         key,
-        value.replaceAll(/[{\-}]/, '').toLowerCase(),
+        value.replaceAll(/[{\-}]/g, '').toLowerCase(),
       ]); // clean up bad ID characters
 
   const params = [
