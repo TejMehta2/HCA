@@ -7,9 +7,10 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { getCMAs } from 'lib/consultant-finder/API_HCA';
+import { getCMA, getCMAs } from 'lib/consultant-finder/API_HCA';
+import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -23,7 +24,7 @@ type StepProps = {
 };
 
 interface ServerSideProps {
-  cmaHTMLs: any[];
+  cmaHTML: string;
 }
 
 /**
@@ -35,63 +36,79 @@ interface ServerSideProps {
 export const getStaticProps: GetStaticComponentProps = async (
   _rendering,
   _layoutData,
-  _context
+  context
 ) => {
-  const CMAs = await getCMAs();
-  const returnProps: ServerSideProps = {
-    cmaHTMLs: CMAs,
-  };
-  // returned stuff from the server side
-  return returnProps;
-};
+  // based on https://github.com/vercel/next.js/discussions/38061
 
-const CMADisclosureComponent = (props: StepProps): JSX.Element => (
-  <div className={`component promo ${props.params.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CMA Disclosure</span>
-    </div>
-  </div>
-);
+  let id: string | undefined = '';
+  const path = context?.params?.path;
+  if (path !== undefined) {
+    if (path && typeof path !== 'string' && path.length) {
+      id = path.pop();
+    }
+  }
+
+  if (id) {
+    const rec = await getCMA(id);
+
+    if (rec) {
+      const returnProps: ServerSideProps = {
+        cmaHTML: rec.Value, // HTML
+      };
+      // returned stuff from the server side
+      return returnProps;
+    }
+  }
+  return {
+    notFound: true, // This will result in a 404 page being rendered
+  };
+};
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-
-  const [cmaData, setCMAData] = useState<string>('');
   const router = useRouter();
-
+  const pathname = usePathname();
+  //console.log('serverSideData?.cmaHTML', serverSideData?.cmaHTML);
   useEffect(() => {
     if (!router.isReady) {
       return;
     }
     // grab the GUID from the query parmeters
     const id = router?.query?.CmaContentId || null;
-    if (id && serverSideData?.cmaHTMLs) {
-      // find our record from the server-side data
-      const record = serverSideData?.cmaHTMLs.filter(
-        (rec: { Key: string | unknown[] }) => rec.Key === id
-      );
-      if (record) {
-        setCMAData(record[0].Value);
-      }
+    if (id) {
+      const url = `${pathname
+        ?.toLowerCase()
+        .replace('disclosure', 'disclosures')}/${id}`;
+      // redirect old format to new format (Next format) url
+      router.replace(url, undefined, { shallow: false });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
-  if (props.fields) {
-    return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div className="component-content">
-          <div dangerouslySetInnerHTML={{ __html: cmaData }} />
-        </div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [serverSideData?.cmaHTML]);
 
-  return <CMADisclosureComponent {...props} />;
+  return (
+    <div
+      className={`component promo ${props.params.styles}`}
+      id={id ? id : undefined}
+    >
+      <div className="component-content">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: serverSideData
+              ? serverSideData.cmaHTML
+              : 'No CMA record found',
+          }}
+        />
+      </div>
+    </div>
+  );
 };

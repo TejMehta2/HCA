@@ -201,13 +201,13 @@ export async function getHolidays(): Promise<string[]> {
 
 // get all the CMAs
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA
-export async function getCMAs(): Promise<string[]> {
+export async function getCMAs(): Promise<any[]> {
   let cmas;
   const HCAAPIConfig = await getHCAConfig();
   const cmaURL = HCAAPIConfig?.aPI_HCA_CMAs_BaseURL;
 
   //console.log('config', HCAAPIConfig);
-  console.log('cmaURL', cmaURL);
+  //console.log('cmaURL', cmaURL);
   if (cmaURL && cmaURL.length > 0) {
     try {
       // need to cache these requests so we don't make hundreds of them
@@ -235,4 +235,48 @@ export async function getCMAs(): Promise<string[]> {
   }
 
   return cmas;
+}
+
+// get single CMA
+// e.g. /api/lookupAPI/finder/default/findbydictionary/CMA?key=5251DC52-E57D-47EA-8552-98BFEFF89E72
+export async function getCMA(id: string): Promise<any> {
+  let cma;
+  const HCAAPIConfig = await getHCAConfig();
+
+  if (
+    HCAAPIConfig?.aPI_HCA_CMAs_BaseURL &&
+    HCAAPIConfig.aPI_HCA_CMAs_BaseURL.length > 0
+  ) {
+    const cmaURL = `${HCAAPIConfig.aPI_HCA_CMAs_BaseURL}?key=${id}`;
+
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(cmaURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        cma = await res.json();
+        if (cma && cma.length > 0) {
+          // returned stuff from the server side
+          return cma[0];
+        }
+        if (cma.length == 0) {
+          console.warn(`Warning CMA empty on getCMA() call`);
+        }
+      } else {
+        // couldn't get the cmas
+        console.warn(
+          `Could not load CMAs list for pre-render from ${cmaURL} result:${res}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load CMAs for pre-render from ${cmaURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return cma;
 }
