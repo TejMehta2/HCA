@@ -10,7 +10,7 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
     <div className={styles.wrapper}>
       <div
         className={`${styles.inner} ${
-          contentVariation === 'padding-small' ? styles[contentVariation] : ''
+          contentVariation ? styles[contentVariation] : ''
         } `}
       >
         <div className={styles.grid}>
