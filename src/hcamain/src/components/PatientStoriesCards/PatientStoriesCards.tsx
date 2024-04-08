@@ -184,18 +184,27 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   // Format props into entries, then query params
   const customFilters =
-    fields?.customFilters?.CustomFiltersList.map((item) => [
-      item.filter?.value,
-      item.filterValueString?.value,
-    ]) || [];
+    (fields?.filterOptions?.filterOptionsList &&
+      fields?.filterOptions?.filterOptionsList.map((item) => [
+        item.filter?.value,
+        item.filterValueString?.value,
+      ])) ||
+    [];
 
-  const contextSearchParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchParams || {}
-  ).map(([key, nestedValue]) => [key, nestedValue?.value]);
+  const contextSearchParams = customFilters.length
+    ? ''
+    : Object.entries(rendering.fields?.data?.contextItemSearchParams || {}).map(
+        ([key, nestedValue]) => [key, nestedValue?.value]
+      );
 
-  const contextSearchIdParams = Object.entries(
-    rendering.fields?.data?.contextItemSearchIdParams || {}
-  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/, '').toLowerCase()]); // clean up bad ID characters
+  const contextSearchIdParams = customFilters.length
+    ? ''
+    : Object.entries(
+        rendering.fields?.data?.contextItemSearchIdParams || {}
+      ).map(([key, value]) => [
+        key,
+        value.replaceAll(/[{\-}]/, '').toLowerCase(),
+      ]); // clean up bad ID characters
 
   const params = [
     ['verticalKey', 'patientstories'],

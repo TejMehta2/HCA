@@ -51,8 +51,8 @@ interface Fields {
       searchOptions?: {
         SearchOptionsList?: FilterOptionsFields[];
       };
-      customFilters?: {
-        CustomFiltersList: FiltersFields[];
+      filterOptions?: {
+        filterOptionsList?: FilterOptionsFields[];
       };
     };
     contextItemSearchParams: {
