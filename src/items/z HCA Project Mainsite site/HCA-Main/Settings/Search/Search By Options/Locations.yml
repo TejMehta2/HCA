@@ -16,17 +16,17 @@ Languages:
       Value: Locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7db164fb-ab6c-4617-88ef-6919b7e88a78"
+      Value: "b1a3d81c-5ad4-4e6a-8e05-4593203df5cc"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T120150Z
+      Value: 20240404T204745Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
       Value: verticalKey
     - ID: "ec8bd82c-1674-4cdc-884d-ee2d3e0b8935"
       Hint: FilterValueString
-      Value: locations
+      Value: healthcare_facilities

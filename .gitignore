@@ -82,3 +82,5 @@ packages/
 /node_modules
 src/component-library/node_modules
 *.tsbuildinfo
+
+src/z.HCA.HCAMain.z.site.qa.module.json

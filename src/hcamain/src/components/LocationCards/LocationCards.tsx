@@ -23,6 +23,60 @@ import {
   SearchResponse,
 } from './LocationCardsTypes';
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
+// type CTAIconFields = {
+//   svgMarkup?: Field<string>;
+// };
+
+// type FilterOptionFields = {
+//   displayName?: { value?: string };
+//   filter?: { value?: string };
+//   filterValueString?: { value?: string };
+//   filterValueGuid?: { jsonValue?: Item };
+// };
+
+// type LocationsFields = {
+//   title?: { value?: string };
+//   image?: { jsonValue?: ImageField };
+//   city?: { value?: string };
+//   street?: { value?: string };
+//   postCode?: { value?: string };
+//   getDirections?: { value?: string };
+//   url: { path?: string };
+// };
+
+// interface Fields {
+//   data?: {
+//     item?: {
+//       heading?: { jsonValue?: Field<string> };
+//       title?: { jsonValue?: Field<string> };
+//       text?: { jsonValue?: Field<string> };
+//       cTAIcon?: {
+//         Icon?: CTAIconFields;
+//       };
+//       cTALink?: { jsonValue?: LinkField };
+//       locations?: {
+//         LocationsList?: LocationsFields[];
+//       };
+//       filterOptions?: {
+//         filterOptionsList?: FilterOptionFields[];
+//       };
+//       cTAText?: { jsonValue?: Field<string> };
+//       getDirectionsText?: { jsonValue?: Field<string> };
+//       numberOfCards?: { jsonValue?: Field<string> };
+//     };
+//     contextItemSearchIdParams?: {
+//       treatmentId?: string;
+//       serviceLineId?: string;
+//       scanId?: string;
+//       conditionId?: string;
+//     };
+//   };
+// }
+
+type LocationCardsProps = {
+  params?: Params;
+  fields?: Fields;
+};
 
 const LocationCardsDefaultComponent = (
   props: LocationCardsProps

@@ -46,13 +46,19 @@ Languages:
         {C91EF73F-FA0B-47CA-A3C5-1398576C0C97}
         {ACEB3F10-B270-4E04-A88C-5D5FB5205E8F}
         {4D3BAB9F-8E74-42C0-A5E8-E0622E25AE26}
+    - ID: "87272aa0-841f-4d72-a4df-7fb452932fea"
+      Hint: EntityName
+      Value: Hip pain
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "96f46a59-0c10-4efd-9ec8-dead424463f0"
+      Value: "0426ab09-74c9-4bcc-92c8-eb3caf25f211"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240320T124814Z
+      Value: 20240405T143433Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Hip pain

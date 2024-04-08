@@ -1,0 +1,19 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.appointment-type-card {
+  border-radius: $radius-medium;
+  border: 1px solid $navy-blue-60;
+  padding: $spacing-5;
+  color: $navy-blue-100;
+  cursor: pointer;
+
+  &.selected {
+    background-color: $navy-blue-100;
+    color: $white;
+  }
+
+  .title {
+    margin: $spacing-3 0;
+  }
+}

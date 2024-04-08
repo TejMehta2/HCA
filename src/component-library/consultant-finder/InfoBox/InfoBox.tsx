@@ -12,12 +12,13 @@ const InfoBox = (props: InfoBoxProps): JSX.Element => {
     shortText,
     longText,
     longTextTitle,
+    paddingLarge,
   } = props;
   return (
     <div
       className={`${styles['info-box']} ${
         styles[`info-box-${backgroundColour}`]
-      }`}
+      } ${paddingLarge ? styles['padding-l'] : ''}`}
     >
       {isShortInfo && (
         <div className={`${styles['info-box-short']}`}>

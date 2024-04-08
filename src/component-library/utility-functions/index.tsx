@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // capitalise frist letter of all words in a string
 export const capitalizeFirstLetter = (string: string) => {
   if (!string) {
@@ -66,6 +67,15 @@ export const formatDate = (dateToFormat: string) => {
   return date;
 };
 
+// Helper function to format a date as "YYYY-MM-DD"
+export const formatDateYYYYMMDD = (dateToCheck: any) => {
+  const date = new Date(dateToCheck);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 // format time to GB fomat: Day of the Week, Short Month: Wed, Mar 27
 export const formatDateShort = (dateString: string | undefined) => {
   // Check if dateString is undefined or null
@@ -84,4 +94,45 @@ export const formatDateShort = (dateString: string | undefined) => {
   const formattedDate = date.toLocaleDateString('en-US', options);
 
   return formattedDate;
+};
+
+// format time to GB fomat: Day of the Week, number of date Month Year
+export const formatDateLong = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const options: object = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  };
+
+  const formattedDate = date.toLocaleDateString('en-GB', options);
+
+  return formattedDate;
+};
+
+// format time 00:00, remove seconds
+export const removeSeconds = (time: string) => {
+  return time.split(':').slice(0, 2).join(':');
+};
+
+// format time based on 12hr format am/pm
+export const formatTime12hr = (dateString: any) => {
+  const date = new Date(dateString);
+
+  const options: object = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+
+  let formattedTime = date.toLocaleTimeString('en-GB', options);
+
+  const hour = date.getHours();
+  if (hour === 0 || hour === 12) {
+    formattedTime = formattedTime.replace(/^0(?=:)/, '12');
+  }
+
+  return formattedTime;
 };

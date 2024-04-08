@@ -12,7 +12,7 @@ SharedFields:
   Value: Page Content
 - ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
   Hint: Template
-  Value: "{4BDDADFC-01AF-40F3-8A95-F20AEF02F85D}"
+  Value: "{D78FF265-1712-44A6-9C24-E9827C0930E4}"
 Languages:
 - Language: en
   Versions:
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ac13cd7b-9656-4e16-9024-efe8dd114ad5"
+      Value: "9815bc14-700f-4335-bcc7-bf798d4229c3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T110550Z
+      Value: 20240325T153813Z

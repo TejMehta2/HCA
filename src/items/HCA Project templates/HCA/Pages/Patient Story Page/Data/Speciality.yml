@@ -15,10 +15,6 @@ SharedFields:
   Value: 400
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: __Standard Values
   Versions:
   - Version: 1
     Fields:
@@ -35,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "abc868ca-f6ba-4888-b4e9-45b8a2f05f41"
+      Value: "7b731544-c884-4876-9554-3654fc6dc112"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T115501Z
+      Value: 20240404T215615Z

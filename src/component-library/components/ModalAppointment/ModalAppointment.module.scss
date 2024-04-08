@@ -85,12 +85,18 @@
   .panel1:only-child {
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 12);
 
-    max-width: px-to-rem(457);
-    margin: auto;
+    @include media(screen-m) {
+      max-width: px-to-rem(457);
+      margin: auto;
+    }
 
     .cta {
       gap: px-to-rem(24);
       justify-items: center;
+
+      [class*='Button_full-width'] {
+        justify-self: stretch; // If this occurs in multiple places, consider a new contentVariation for buttons
+      }
     }
   }
 }

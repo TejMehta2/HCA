@@ -57,10 +57,12 @@
   }
 
   .reviews {
-    padding: $spacing-6;
     display: grid;
     gap: $spacing-4;
+    margin-top: $spacing-4;
     @include media(screen-m) {
+      margin-top: 0;
+      padding: $spacing-6;
       display: flex;
       flex-direction: row;
       align-items: flex-end;

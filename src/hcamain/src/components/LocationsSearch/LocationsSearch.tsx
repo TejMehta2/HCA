@@ -3,6 +3,7 @@ import {
   GetStaticComponentProps,
   Text as JssText,
   RichText,
+  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
   Autocomplete,
@@ -28,12 +29,15 @@ import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
 import Filters from '@component-library/site-components/Filters/Filters';
 import getBaselineParams from 'lib/getBaselineParams';
-import { ApiResponse, ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
+import { ApiSearchProps } from 'src/types/searchProps';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}`;
+const SEARCH_PATH = '/locations/search';
+const AUTOCOMPLETE_PATH =
+  '/locationApi/suggestLocation?provider=1&searchType=1';
 
 const LocationsSearchDefaultComponent = (
   props: LocationsSearchProps
@@ -46,11 +50,11 @@ const LocationsSearchDefaultComponent = (
 );
 
 export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fallbackData, fields, params } = props;
-
+  const { fields, params } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
+  const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -63,11 +67,19 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
     baseUrl: BASE_URL,
-    baselineParams: [...baselineParams, ['verticalKey', 'locations']],
-    fallbackData: fallbackData,
+    searchPath: SEARCH_PATH,
+    baselineParams: baselineParams,
+    autocompletePath: AUTOCOMPLETE_PATH,
+    autoCompleteSearchParamName: 'searchTerm',
+    baselineAutocompleteParams: [
+      ['provider', '1'],
+      ['searchType', '1'],
+    ],
+    fallbackData,
   });
 
   if (!fields || error || autocompleteError) {
+    console.error(error);
     return <LocationsSearchDefaultComponent {...props} />;
   }
 
@@ -76,7 +88,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   const offset = Number(searchParams.get('offset')) || defaultOffset;
 
   // Computed properties
-  const resultsCount = data?.response.resultsCount || 0;
+  const resultsCount = data?.response?.resultsCount || 0;
   const rangeStart = offset + 1;
   const rangeEnd = Math.min(offset + limit, resultsCount);
   const resultsRange = `${rangeStart}-${rangeEnd}`;
@@ -119,8 +131,8 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               defaultValue={searchParams.get('input') || undefined}
               name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
-              suggestions={autocompleteData?.response.results?.map(
-                (result) => `${result.value}`
+              suggestions={autocompleteData?.map(
+                (result) => `${result.LocationName}`
               )}
             >
               <Filters
@@ -214,8 +226,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               tabContent: (
                 <>
                   <CardGrid>
-                    {data?.response.results?.map((item) => {
-                      const { data } = item;
+                    {data?.response?.results?.map(({ data }) => {
                       const {
                         id,
                         title,
@@ -302,10 +313,10 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                 <LocationMap
                   apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
                   locations={
-                    data?.response.results.map(({ data }) => ({
+                    data?.response?.results.map(({ data }) => ({
                       center: {
-                        lat: Number(data.lat),
-                        lng: Number(data.lng),
+                        lat: Number(data.lat) || 0,
+                        lng: Number(data.lng) || 0,
                       },
                       card: (hideCard) => (
                         <CardMap
@@ -362,19 +373,32 @@ export const getStaticProps: GetStaticComponentProps = async (
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_URL); // compose API url
+  const url = new URL(query, `${BASE_URL}${SEARCH_PATH}`); // compose API url
 
   try {
     const response = await fetch(url.href);
     if (response.ok) {
       const fallbackData = await response.json();
-      rendering.fallbackData = fallbackData as ApiResponse;
-      return rendering;
+      return fallbackData;
     } else {
       throw response.statusText;
     }
   } catch (error) {
-    console.error(error);
-    return rendering;
+    console.error(
+      {
+        message: 'LocationSearch server-side data fetching error',
+        error: error,
+        requestUrl: url.href,
+      },
+      error
+    );
+    return { locations: [] };
   }
+};
+
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+  return <div className={`component ${props.params?.styles}`}></div>;
 };
