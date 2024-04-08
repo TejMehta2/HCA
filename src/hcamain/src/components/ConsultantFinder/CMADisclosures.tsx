@@ -7,7 +7,7 @@ import {
   useComponentProps,
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import { getCMA, getCMAs } from 'lib/consultant-finder/API_HCA';
+import { getCMA } from 'lib/consultant-finder/API_HCA';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -76,12 +76,12 @@ export const Default = (props: StepProps): JSX.Element => {
     if (!router.isReady) {
       return;
     }
-    // grab the GUID from the query parmeters
+    // grab the GUID from the query parmeters - legacy style - redirect
     const id = router?.query?.CmaContentId || null;
     if (id) {
       const url = `${pathname
         ?.toLowerCase()
-        .replace('disclosure', 'disclosures')}/${id}`;
+        .replace('cma-disclosure', 'cma-disclosures')}/${id}`;
       // redirect old format to new format (Next format) url
       router.replace(url, undefined, { shallow: false });
     }
