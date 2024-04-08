@@ -45,6 +45,7 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
   if (!props.fields) {
     return <MoreInformationCTADefaultComponent {...props} />;
   }
+  console.log(props);
   return (
     <div className={`component ${props.params?.styles}`}>
       <ul>

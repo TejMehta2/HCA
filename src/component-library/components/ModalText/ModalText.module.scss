@@ -1,0 +1,27 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+  display: flex;
+}
+
+.grid {
+  @include responsive-grid;
+
+  .panel1 {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 1);
+  }
+
+  .panel2 {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 7);
+  }
+
+  .panel1,
+  .panel2 {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+  }
+}
