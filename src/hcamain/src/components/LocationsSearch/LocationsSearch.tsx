@@ -49,14 +49,16 @@ const LocationsSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fields, params } = props;
+interface WithHeaderProps extends LocationsSearchProps {
+  contentVariation: 'padding-small';
+}
+
+export const Default = (props: WithHeaderProps): JSX.Element => {
+  const { fields, params, contentVariation } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
   const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
-  console.log(props);
-  console.log(baselineParams);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -121,6 +123,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
         <HeaderPlain
+          contentVariation={contentVariation}
           heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
           description={
             <Text tag="div" variation="body-large">
@@ -372,9 +375,8 @@ export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
   if (!props.fields) {
     return <LocationsSearchDefaultComponent {...props} />;
   }
-  //console.log(props);
-  //return <div className={`component ${props.params?.styles}`}>test</div>;
-  return <Default {...props} />;
+
+  return <Default {...props} contentVariation="padding-small" />;
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
