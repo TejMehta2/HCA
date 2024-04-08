@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Text as JssText,
   Image as JssImage,
+  RichText as JssRichText,
   useSitecoreContext,
   GetStaticComponentProps,
   useComponentProps,
@@ -68,7 +69,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           }
           bodyCopy={
             <Text tag="p" variation="body-large">
-              <JssText field={text} />
+              <JssRichText field={text} />
             </Text>
           }
           image={<JssImage field={image?.jsonValue} />}
@@ -97,7 +98,11 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
               }
               bodyCopy={
                 <Text tag="p" variation="body-large">
-                  {description}
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: description,
+                    }}
+                  ></span>
                 </Text>
               }
               image={<img src={imageUrl} alt={title} />}
