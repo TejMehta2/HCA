@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -154,7 +155,9 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
               tag={props.params?.HeadingTag || 'h3'}
               variation={props.params?.HeadingSize || 'display-5'}
             >
-              {props.fields?.data?.item?.title?.jsonValue?.value}
+              <JssTextWithEntityName
+                field={props.fields?.data?.item?.title?.jsonValue}
+              />
             </Text>
           }
           body={
@@ -169,11 +172,13 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       cta={
         props.fields?.data?.item?.cTALink?.jsonValue?.value && (
           <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
-            <JssRichText
-              tag="span"
+            <JssTextWithEntityName
               field={{
-                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+                value:
+                  props.fields?.data?.item?.cTALink?.jsonValue?.value.text ||
+                  '',
               }}
+              isRichText={true}
             />
           </JssLink>
         )
@@ -197,7 +202,9 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h3'}
           variation={props.params?.HeadingSize || 'display-5'}
         >
-          {props.fields?.data?.item?.title?.jsonValue?.value}
+          <JssTextWithEntityName
+            field={props.fields?.data?.item?.title?.jsonValue}
+          />
         </Text>
       }
       bodyCopy={
@@ -208,11 +215,13 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       link={
         props.fields?.data?.item?.cTALink?.jsonValue?.value && (
           <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue?.value}>
-            <JssRichText
-              tag="span"
+            <JssTextWithEntityName
               field={{
-                value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
+                value:
+                  props.fields?.data?.item?.cTALink?.jsonValue?.value.text ||
+                  '',
               }}
+              isRichText={true}
             />
           </JssLink>
         )

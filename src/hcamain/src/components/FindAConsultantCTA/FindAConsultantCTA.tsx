@@ -2,12 +2,12 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  RichText as JssRichText,
   Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Button from '@component-library/core-components/Button/Button';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -128,7 +128,8 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
                   }}
                 ></span>
               )}
-              <JssRichText
+              <JssTextWithEntityName
+                isRichText={true}
                 field={{
                   value:
                     props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
