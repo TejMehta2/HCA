@@ -43,9 +43,12 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "87272aa0-841f-4d72-a4df-7fb452932fea"
+      Hint: EntityName
+      Value: Locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b7c8f443-59a7-4e07-946a-35b79e0b0a5d"
+      Value: "42526ec4-5209-49f3-a6c5-3750fd3c8c0a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -55,10 +58,10 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T092145Z
+      Value: 20240405T143829Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: EQTRHCA7_1
+      Value: Locations
     - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
       Hint: AbstractImage
       Value: |
