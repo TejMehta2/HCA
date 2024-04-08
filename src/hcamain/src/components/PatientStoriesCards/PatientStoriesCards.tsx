@@ -100,7 +100,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
                 </Text>
               }
               bodyCopy={
-                <Text tag="p" variation="body-large">
+                <Text variation="body-large">
                   <span
                     dangerouslySetInnerHTML={{
                       __html: description,
