@@ -49,8 +49,12 @@ const LocationsSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fields, params } = props;
+interface WithHeaderProps extends LocationsSearchProps {
+  contentVariation: 'padding-small';
+}
+
+export const Default = (props: WithHeaderProps): JSX.Element => {
+  const { fields, params, contentVariation } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
@@ -119,6 +123,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
         <HeaderPlain
+          contentVariation={contentVariation}
           heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
           description={
             <Text tag="div" variation="body-large">
@@ -366,6 +371,14 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   );
 };
 
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} contentVariation="padding-small" />;
+};
+
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: ApiSearchProps
@@ -394,11 +407,4 @@ export const getStaticProps: GetStaticComponentProps = async (
     );
     return { locations: [] };
   }
-};
-
-export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
-  if (!props.fields) {
-    return <LocationsSearchDefaultComponent {...props} />;
-  }
-  return <div className={`component ${props.params?.styles}`}></div>;
 };
