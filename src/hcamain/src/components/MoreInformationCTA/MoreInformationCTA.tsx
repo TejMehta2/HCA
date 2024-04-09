@@ -10,6 +10,7 @@ import Params from 'src/types/params';
 import Button from '@component-library/core-components/Button/Button';
 import ModalText from '@component-library/components/ModalText/ModalText';
 import Text from '@component-library/foundation/Text/Text';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 type HCAIconFields = {
   fields?: {
@@ -33,6 +34,7 @@ interface Fields {
 type MoreInformationCTAProps = {
   params?: Params;
   fields?: Fields;
+  parentHeadingTag: Params['HeadingTag'];
 };
 
 const MoreInformationCTADefaultComponent = (
@@ -89,25 +91,31 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
         ref={dialogRef}
         title1={
           <Text
-            tag={props.params?.HeadingTag || 'h4'}
+            tag={
+              props.params?.HeadingTag ||
+              getSubheadingTag(props.parentHeadingTag, 'h3')
+            }
             variation={props.params?.HeadingSize || 'display-4'}
           >
-            <JssText field={props.fields?.ModalContent[0].fields?.Title} />
+            <JssText field={props.fields?.ModalContent[0]?.fields?.Title} />
           </Text>
         }
         copy1={
-          <JssRichText field={props.fields?.ModalContent[0].fields?.Text} />
+          <JssRichText field={props.fields?.ModalContent[0]?.fields?.Text} />
         }
         title2={
           <Text
-            tag={props.params?.HeadingTag || 'h4'}
+            tag={
+              props.params?.HeadingTag ||
+              getSubheadingTag(props.parentHeadingTag, 'h3')
+            }
             variation={props.params?.HeadingSize || 'display-4'}
           >
-            <JssText field={props.fields?.ModalContent[1].fields?.Title} />
+            <JssText field={props.fields?.ModalContent[1]?.fields?.Title} />
           </Text>
         }
         copy2={
-          <JssRichText field={props.fields?.ModalContent[1].fields?.Text} />
+          <JssRichText field={props.fields?.ModalContent[1]?.fields?.Text} />
         }
       />
     </>
