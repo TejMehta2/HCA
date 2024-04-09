@@ -24,13 +24,22 @@ const Textarea = (props: TextareaProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       {label && (
-        <label htmlFor={id}>
+        <label
+          htmlFor={id}
+          className={isError ? `${styles['label-error']}` : 'styles.textarea'}
+        >
           {label}
           {!required && ' (Optional)'}
         </label>
       )}
 
-      <div className={styles.textarea}>
+      <div
+        className={
+          isError
+            ? `${styles.textarea} ${styles['textarea-error']}`
+            : styles.textarea
+        }
+      >
         <textarea
           id={id}
           {...register(`${name}`, {
@@ -40,7 +49,11 @@ const Textarea = (props: TextareaProps): JSX.Element => {
           })}
           maxLength={maxCharacters}
         />
-        <span className={styles.count}>
+        <span
+          className={
+            isError ? `${styles.count} ${styles['count-error']}` : styles.count
+          }
+        >
           {count} / {maxCharacters}
         </span>
       </div>

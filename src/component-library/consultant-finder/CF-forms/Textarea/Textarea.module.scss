@@ -12,8 +12,11 @@
     align-items: center;
     gap: $spacing-2;
     margin-bottom: $spacing-3;
-
     @include apply-body-medium-extra-large;
+
+    &.label-error {
+      color: var(--field-error-colour);
+    }
   }
 
   textarea {
@@ -51,32 +54,26 @@
       bottom: px-to-rem(18);
       right: px-to-rem(23);
       background-color: $white;
+
+      &.count-error {
+        color: var(--field-error-colour);
+      }
     }
 
     &:focus-within {
       outline: 1px solid $navy-blue-100;
     }
 
-    &:has(textarea:not(:focus):user-invalid) {
-      color: var(--field-error-colour);
-      border-color: var(--field-error-colour);
+    &.textarea-error {
+      border: 1px solid var(--field-error-colour);
+
+      &:focus-within {
+        outline: 1px solid var(--field-error-colour);
+      }
     }
   }
 
   .helper {
     margin-top: $spacing-2;
   }
-
-
-  // &:has(textarea:not(:focus):user-invalid) {
-  //   color: var(--field-error-colour);
-
-  //   .error-message {
-  //     display: flex;
-  //   }
-
-  //   .helper {
-  //     color: $navy-blue-100;
-  //   }
-  // }
 }
