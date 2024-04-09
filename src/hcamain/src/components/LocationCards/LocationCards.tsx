@@ -188,8 +188,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
               variation={props.params?.HeadingSize || 'heading-1'}
               tag={props.params?.HeadingTag || 'h2'}
             >
-              <JssText
-                tag={'span'}
+              <JssTextWithEntityName
                 field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>
@@ -198,19 +197,20 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          <a href={ctaLink}>
+          <>
             {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-              <>
-                <JssRichText
+              <a href={ctaLink}>
+                <JssTextWithEntityName
                   field={{
                     value:
                       props.fields?.data?.item?.cTALink?.jsonValue?.value
-                        ?.text || '',
+                        .text || '',
                   }}
+                  isRichText={true}
                 />
-              </>
+              </a>
             )}
-          </a>
+          </>
         ) : (
           props.fields?.data?.item?.cTALink?.jsonValue?.value && (
             <JssLink
@@ -264,17 +264,14 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       link={
         !isExperienceEditor ? (
           <a href={ctaLink}>
-            {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-              <>
-                <JssRichText
-                  field={{
-                    value:
-                      props.fields?.data?.item?.cTALink?.jsonValue?.value
-                        ?.text || '',
-                  }}
-                />
-              </>
-            )}
+            <JssTextWithEntityName
+              field={{
+                value:
+                  props.fields?.data?.item?.cTALink?.jsonValue?.value.text ||
+                  '',
+              }}
+              isRichText={true}
+            />
           </a>
         ) : (
           props.fields?.data?.item?.cTALink?.jsonValue?.value && (
