@@ -44,26 +44,13 @@ const LocationCardsDefaultComponent = (
   return <></>;
 };
 
-export const Grid = (props: LocationCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
-
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
-  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const locations = data?.Locations?.slice(0, Number(quantity) || 3);
-  const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-
+const returnCards = (props: LocationCardsProps, data: StaticProps) => {
+  let cards;
   const linkText = props?.fields?.data?.item?.cTAText?.jsonValue;
   const getDirectionsText =
     props?.fields?.data?.item?.getDirectionsText?.jsonValue;
-
-  let cards;
-
-  if (!props.fields) {
-    return <LocationCardsDefaultComponent {...props} />;
-  }
+  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
+  const locations = data?.Locations?.slice(0, Number(quantity) || 3);
 
   if (
     props?.fields?.data?.item?.locations?.PagesList &&
@@ -163,6 +150,25 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       );
   }
+
+  return cards;
+};
+
+export const Grid = (props: LocationCardsProps): JSX.Element => {
+  const columns: CardBlockProps['variation'] =
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
+  if (!props.fields) {
+    return <LocationCardsDefaultComponent {...props} />;
+  }
+
+  const locationsCards = data && returnCards(props, data);
 
   return (
     <CardBlock
@@ -211,126 +217,22 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      <>{cards}</>
+      <>{locationsCards}</>
     </CardBlock>
   );
 };
 
 export const Slider = (props: LocationCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
-  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const locations = data?.Locations?.slice(0, Number(quantity) || 3);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
-
-  let cards;
-  const linkText = props?.fields?.data?.item?.cTAText?.jsonValue;
-  const getDirectionsText =
-    props?.fields?.data?.item?.getDirectionsText?.jsonValue;
 
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
-  if (
-    props?.fields?.data?.item?.locations?.PagesList &&
-    props?.fields?.data?.item?.locations?.PagesList.length
-  ) {
-    cards = props?.fields?.data?.item?.locations?.PagesList.map(
-      ({ title, street, postCode, city, image, url, getDirections }, index) => (
-        <CardMap
-          key={index}
-          title={
-            <Text
-              variation="heading-1"
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
-            >
-              <JssText field={title} />
-            </Text>
-          }
-          address={
-            <>
-              {street?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={street} />
-                  &nbsp;
-                </Text>
-              )}
-              {postCode?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={postCode} />
-                  &nbsp;
-                </Text>
-              )}
-              {city?.value && (
-                <Text variation={'body-large'} tag="span">
-                  <JssText field={city} />
-                </Text>
-              )}
-            </>
-          }
-          image={<JssImage field={image?.value} />}
-          ctas={{
-            button1: (
-              <a href={url.path}>
-                <JssRichText field={linkText} />
-              </a>
-            ),
-            button2: (
-              <a href={getDirections?.value}>
-                <span>
-                  <JssText field={getDirectionsText} />
-                </span>
-              </a>
-            ),
-          }}
-        />
-      )
-    );
-  } else {
-    cards =
-      locations &&
-      locations.map(
-        ({ id, title, name, description, imageUrl, url, directions }) => (
-          <CardMap
-            key={id}
-            title={
-              <Text
-                variation="heading-1"
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
-              >
-                {title || name}
-              </Text>
-            }
-            address={
-              <>
-                {
-                  <Text variation={'body-large'} tag="span">
-                    {description}
-                  </Text>
-                }
-              </>
-            }
-            image={imageUrl ? <img src={imageUrl} alt={title} /> : undefined}
-            ctas={{
-              button1: (
-                <a href={url}>
-                  <JssRichText field={linkText} tag="span" />
-                </a>
-              ),
-              button2: (
-                <a href={directions}>
-                  <span>
-                    <JssText field={getDirectionsText} />
-                  </span>
-                </a>
-              ),
-            }}
-          />
-        )
-      );
-  }
+  const locationsCards = data && returnCards(props, data);
 
   return (
     <CarouselCards
@@ -376,7 +278,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
     >
-      {cards}
+      {locationsCards}
     </CarouselCards>
   );
 };
