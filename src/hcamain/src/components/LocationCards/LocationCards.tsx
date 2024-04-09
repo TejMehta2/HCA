@@ -169,6 +169,11 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   }
 
   const locationsCards = data && returnCards(props, data);
+  const ctaLink =
+    props?.fields?.data?.item?.locations?.PagesList &&
+    props?.fields?.data?.item?.locations?.PagesList.length
+      ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+      : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   return (
     <CardBlock
@@ -193,9 +198,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          <a
-            href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-          >
+          <a href={ctaLink}>
             {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
               <>
                 <JssRichText
@@ -234,6 +237,12 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
 
   const locationsCards = data && returnCards(props, data);
 
+  const ctaLink =
+    props?.fields?.data?.item?.locations?.PagesList &&
+    props?.fields?.data?.item?.locations?.PagesList.length
+      ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+      : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
   return (
     <CarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -254,9 +263,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          <a
-            href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-          >
+          <a href={ctaLink}>
             {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
               <>
                 <JssRichText
