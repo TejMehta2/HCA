@@ -1,8 +1,8 @@
 ﻿---
-ID: "922b88df-dc99-46da-b617-3161d0d34893"
-Parent: "ceb0677e-2e26-4c73-9b4c-5f2657dd5384"
+ID: "f8af6704-e512-4a0a-a679-0a9af9887c89"
+Parent: "f50dac46-298a-4270-a2e0-69efbb9d9e98"
 Template: "1196a43b-003d-4cc8-b120-2014de3b73f5"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59/Page Data/PatientStory Default"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59_6/Page Data/PatientStory Default"
 Languages:
 - Language: en
   Versions:
