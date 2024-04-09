@@ -24,13 +24,13 @@ export const Default: StoryObj<typeof ModalText> = {
         Included
       </Text>
     ),
-    body1: (
+    copy1: (
       <div>
-        <p>Before Admission</p>
+        <h4>Before Admission</h4>
         <ul>
           <li>Pre-assessment</li>
         </ul>
-        <p>During your hospital stay</p>
+        <h4>During your hospital stay</h4>
         <ul>
           <li>Accommodation in a standard room as quoted above</li>
           <li>Routine admission tests</li>
@@ -54,7 +54,7 @@ export const Default: StoryObj<typeof ModalText> = {
         Not included
       </Text>
     ),
-    body2: (
+    copy2: (
       <ul>
         <li>Any additional nights in hospital not described in the above</li>
         <li>Specialist nursing above and beyond required level of care</li>
