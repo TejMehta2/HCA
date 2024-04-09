@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text as JssText,
   Link as JssLink,
   useSitecoreContext,
   useComponentProps,
@@ -17,6 +16,7 @@ import {
   ConsultantExtract as Consultant,
 } from './response.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/consultants`;
 
@@ -50,9 +50,14 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           <SitecoreSvg>
             {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
           </SitecoreSvg>
-          <SitecoreSvg>
-            {props.fields?.data?.item?.cTALink.jsonValue.value.text}
-          </SitecoreSvg>
+
+          <JssTextWithEntityName
+            field={{
+              value:
+                props.fields?.data?.item?.cTALink.jsonValue.value.text || '',
+            }}
+            isRichText={true}
+          />
         </>
       )}
     </JssLink>
@@ -75,7 +80,9 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-3'}
         >
-          <JssText field={props.fields?.data?.item?.title?.jsonValue}></JssText>
+          <JssTextWithEntityName
+            field={props.fields?.data?.item?.title?.jsonValue}
+          />
         </Text>
       }
       cta={cta || <></>}

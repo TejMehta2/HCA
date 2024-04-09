@@ -16,6 +16,7 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -101,11 +102,11 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
         }
       >
-        <JssRichText
-          tag="span"
+        <JssTextWithEntityName
           field={{
             value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
           }}
+          isRichText={true}
         />
       </JssLink>
     ) : (
@@ -177,8 +178,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               variation={props.params?.HeadingSize || 'heading-1'}
               tag={props.params?.HeadingTag || 'h2'}
             >
-              <JssText
-                tag={'span'}
+              <JssTextWithEntityName
                 field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>

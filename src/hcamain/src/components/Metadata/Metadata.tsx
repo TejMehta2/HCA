@@ -9,7 +9,7 @@ import {
 import Params from 'src/types/params';
 import Head from 'next/head';
 
-interface PageRouteMetadata {
+export interface PageRouteMetadata {
   fields?: {
     Title: Field<string>;
     MetaDescription?: Field<string>;
@@ -22,6 +22,7 @@ interface PageRouteMetadata {
     AbstractImage?: ImageField;
     Image?: ImageField;
     Text?: Field<string>;
+    EntityName?: Field<string>;
   };
   itemId?: string;
 }
