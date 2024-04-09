@@ -22,6 +22,8 @@ import ProgressBar from '@component-library/consultant-finder/ProgressBar/Progre
 import LiveBookingForm from '@component-library/consultant-finder/LiveBookingForm/LiveBookingForm';
 import AppointmentSummary from '@component-library/consultant-finder/AppointmentSummary/AppointmentSummary';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
+import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
 
 interface Fields {
   HCALogo: ImageField | ImageFieldValue | undefined;
@@ -49,9 +51,10 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  const { selectedLocationName } = useContext(ConsultantFinderContext);
+  const { selectedLocationName, selectedDate, selectedTime } = useContext(
+    ConsultantFinderContext
+  );
   // console.log('step booking form', props.fields);
-  const [count, setCount] = useState(0);
 
   const schema = z
     .object({
@@ -278,7 +281,10 @@ export const Default = (props: StepProps): JSX.Element => {
                       {...register('payment')}
                     />
                     <br></br>
-                    <p>{errors.payment?.message}</p>
+                    {errors?.payment && (
+                      <ErrorMessage errorMessage={errors?.payment?.message} />
+                    )}
+                    {/* <p>{errors.payment?.message}</p> */}
                     <br></br>
                     <br></br>
                     <br></br>
@@ -324,23 +330,15 @@ export const Default = (props: StepProps): JSX.Element => {
                 )}
 
                 {/* Reason for appointment */}
-                <label htmlFor="reasonForAppointment">
-                  What is the reason for this appointment?
-                </label>
-                <br></br>
-                <textarea
+                <Textarea
                   id={'reasonForAppointment'}
-                  {...register('reasonForAppointment', {
-                    onChange: (e) => {
-                      setCount(e.target.value.length);
-                    },
-                  })}
-                  maxLength={300}
-                />
-                <span>
-                  {count} / {300}
-                </span>
-                <p>{errors.reasonForAppointment?.message}</p>
+                  name={'reasonForAppointment'}
+                  label={'What is the reason for this appointment?'}
+                  required={true}
+                  register={register}
+                  isError={errors?.reasonForAppointment ? true : false}
+                  errorMessage={errors?.reasonForAppointment?.message}
+                ></Textarea>
                 <br></br>
                 <br></br>
 
@@ -420,7 +418,7 @@ export const Default = (props: StepProps): JSX.Element => {
             locationTitle={'Location'}
             locationText={selectedLocationName}
             dateTitle={'Date & time'}
-            dateText={'text'}
+            dateText={`${selectedDate} at ${selectedTime}`}
           />
         </LiveBookingForm>
       </div>

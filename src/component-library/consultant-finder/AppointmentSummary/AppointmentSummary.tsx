@@ -50,7 +50,7 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
         </div>
         <div className={styles['item-title']}>
           <Text tag="p" variation="body-small">
-            {props.consultantText}
+            {props.dateText}
           </Text>
         </div>
       </div>
