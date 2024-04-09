@@ -95,8 +95,8 @@ export default async function handler(
   let operation: string = '';
   let dictionary: string = '';
   let optionals: string = '';
-
-  console.log(datasourceType, optionals);
+  const queryValues_Key = req?.query?.key;
+  //console.log('key', queryValues_Key);
 
   let error: string = '';
   if (frags) {
@@ -128,10 +128,11 @@ export default async function handler(
     if (frags.length > 4) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       optionals = frags[4];
+      console.log(datasourceType, optionals);
     }
   }
 
-  let output: unknown;
+  let output: unknown[];
   if (error === '') {
     switch (operation) {
       case 'findbydictionary':
@@ -155,6 +156,7 @@ export default async function handler(
             }
           );
           //console.log('loaded xl');
+          //console.log('mediaFileName',`${mediaURLBase}${project}${mediaFileName}`);
           const res = (await readExcel(await xlData.blob(), dictionary)) as [];
           //Type Key Value Order
           /* eg
@@ -172,8 +174,19 @@ export default async function handler(
             res?.length
           ) {
             // should be an array, with heading
+            if (queryValues_Key && queryValues_Key.length > 0) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              output = res?.filter(
+                (rec: { Key: string | unknown[] }) =>
+                  rec.Key === queryValues_Key
+              );
+
+              //console.log('output', output, 'key', queryValues_Key);
+            } else {
+              output = res;
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            output = res?.map((item: any) => {
+            output = output?.map((item: any) => {
               let UniqueKey = '';
               if (item.Type) {
                 UniqueKey += item.Type + '.';
@@ -197,8 +210,7 @@ export default async function handler(
                 //console.log(`${key}: ${value}`);
                 if (
                   key != 'Key' &&
-                  key != 'Type' &&
-                  key != 'Key' // &&
+                  key != 'Type' // &&
                   //key != 'Value' &&
                   //key != 'Order'
                 ) {
