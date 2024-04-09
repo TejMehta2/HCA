@@ -227,7 +227,9 @@ export const Default = (props: StepProps): JSX.Element => {
                             : false
                         }
                         onClick={() =>
-                          router.push(`${props?.fields?.NextLink?.value?.href}`)
+                          router.push(
+                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`
+                          )
                         }
                       >
                         <span>

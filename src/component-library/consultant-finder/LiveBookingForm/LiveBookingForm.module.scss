@@ -1,0 +1,9 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cf-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: $spacing-8 $spacing-14;
+}

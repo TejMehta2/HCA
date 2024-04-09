@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +19,9 @@ import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import LiveBookingForm from '@component-library/consultant-finder/LiveBookingForm/LiveBookingForm';
+import AppointmentSummary from '@component-library/consultant-finder/AppointmentSummary/AppointmentSummary';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 interface Fields {
   HCALogo: ImageField | ImageFieldValue | undefined;
@@ -46,21 +49,29 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+  const { selectedLocationName } = useContext(ConsultantFinderContext);
   // console.log('step booking form', props.fields);
   const [count, setCount] = useState(0);
 
   const schema = z
     .object({
-      username: z.optional(z.string()),
-      email: z.string().email('Email format is not valid'),
       user: z.string().trim().min(1, { message: 'Required' }),
-      test: z.string(),
-      question: z.string().trim().min(1, { message: 'Required' }),
+      payment: z.string(),
+      insuranceProvider: z.string(),
+      insurancePolicyNumber: z.string(),
+      insuranceAuthorisationCode: z.string().optional(),
+      reasonForAppointment: z.string().trim().min(1, { message: 'Required' }),
+      gpreferral: z.string().min(1, { message: 'Required' }),
+      previouslyBeenWithHCA: z.string().min(1, { message: 'Required' }),
+      patientCode: z.string().optional(),
     })
     .refine(
+      // refine helps to do more complex logic to validation like conditional validation
+      // it can return false which then will go into the required field from refine
+      // true will be valid so wont get there
       (data) => {
         if (data.user === 'patient') {
-          if (data.test !== '') {
+          if (data.payment !== '') {
             return true;
           } else {
             return false;
@@ -69,19 +80,55 @@ export const Default = (props: StepProps): JSX.Element => {
         return true;
       },
       {
-        message: 'required',
-        path: ['test'],
+        message: 'required refine',
+        path: ['payment'],
+      }
+    )
+    .refine(
+      (data) => {
+        if (data.user === 'insurer' || data.payment === 'insurance') {
+          if (data.insuranceProvider !== '') {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      },
+      {
+        message: 'insurance required',
+        path: ['insuranceProvider'],
+      }
+    )
+    .refine(
+      (data) => {
+        if (data.user === 'insurer' || data.payment === 'insurance') {
+          if (data.insurancePolicyNumber !== '') {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      },
+      {
+        message: 'insurance required',
+        path: ['insurancePolicyNumber'],
       }
     );
 
   const form = useForm({
     // you can also submit default values
     defaultValues: {
-      username: 'Alina test',
-      email: '',
       user: '',
-      test: '',
-      question: '',
+      payment: '',
+      insuranceProvider: '',
+      insurancePolicyNumber: '',
+      insuranceAuthorisationCode: '',
+      reasonForAppointment: '',
+      gpreferral: '',
+      previouslyBeenWithHCA: '',
+      patientCode: '',
     },
     resolver: zodResolver(schema),
   });
@@ -125,21 +172,32 @@ export const Default = (props: StepProps): JSX.Element => {
     // setValue('username', '', {
     //   shouldValidate: false,
     // });
-
-    setValue('username', '');
+    // setValue('username', '');
   };
 
   const watchFormChanges = watch();
 
-  const userValue = watch('user');
-  // remove value from hidden field
   useEffect(() => {
-    console.log('user', userValue);
-    if (userValue === 'insurer') {
-      setValue('test', '');
+    console.log('user', watchFormChanges.user);
+    console.log('payment', watchFormChanges.payment);
+    // remove values from hidden fields if not used anymore
+    if (watchFormChanges.user === 'insurer') {
+      setValue('payment', '');
+    }
+    if (watchFormChanges.payment === 'self-pay') {
+      setValue('insuranceProvider', '');
+      setValue('insurancePolicyNumber', '');
+      setValue('insuranceAuthorisationCode', '');
+    }
+    if (watchFormChanges.previouslyBeenWithHCA === 'no') {
+      setValue('patientCode', '');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userValue]);
+  }, [
+    watchFormChanges.user,
+    watchFormChanges.payment,
+    watchFormChanges.previouslyBeenWithHCA,
+  ]);
 
   if (props.fields) {
     return (
@@ -158,28 +216,22 @@ export const Default = (props: StepProps): JSX.Element => {
             ></ProgressBar>
           }
         ></HeaderLDB>
-        <div className="component-content">
+
+        <LiveBookingForm>
           {/* debugger for form */}
           {/* https://www.npmjs.com/package/@hookform/devtools */}
           <DevTool control={control} placement="top-right" />
           <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
-            <div>
-              <h1>Is submitting: {isSubmitting ? 'yes' : 'no'}</h1>
-            </div>
-            <button type="button" onClick={handleGetValues}>
-              Get values
-            </button>
-            <button type="button" onClick={habdleSetFieldValue}>
-              Change field value
-            </button>
-            <br></br>
-            <br></br>
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" {...register('username')} />
-            <br></br>
-            <p>{errors.username?.message}</p>
-            <br></br>
-            <br></br>
+            <Text tag="h1" variation="display-4">
+              Your details
+            </Text>
+            <Text tag="p" variation="body-medium-large">
+              All fields are required unless specified as optional.
+            </Text>
+            {/* About you */}
+            <Text tag="h2" variation="heading-1">
+              About you
+            </Text>
             <label htmlFor="patient">Patient</label>
             <input
               type="radio"
@@ -199,61 +251,178 @@ export const Default = (props: StepProps): JSX.Element => {
             <p>{errors.user?.message}</p>
             <br></br>
             <br></br>
-            {/* <label htmlFor="test">Enter something</label>
-            <input
-              type="text"
-              id="test"
-              {...(register('test'), { disabled: watch('user') === 'insurer' })}
-            /> */}
 
-            {watchFormChanges.user === 'patient' && (
+            {watchFormChanges.user !== '' && (
               <div>
-                {/* Your div content */}
-                <p>Patient</p>
+                {/* About appointment */}
+                <Text tag="h2" variation="heading-1">
+                  About the appointment
+                </Text>
+                {/* Show payment option radio if user is patient */}
+                {/* Payment */}
+                {watchFormChanges.user === 'patient' && (
+                  <>
+                    <label htmlFor="self-pay">Self-paying</label>
+                    <input
+                      type="radio"
+                      id="self-pay"
+                      value="self-pay"
+                      {...register('payment')}
+                    />
+                    <br></br>
+                    <label htmlFor="insurance">Paying through insurance</label>
+                    <input
+                      type="radio"
+                      id="insurance"
+                      value="insurance"
+                      {...register('payment')}
+                    />
+                    <br></br>
+                    <p>{errors.payment?.message}</p>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                  </>
+                )}
+
+                {/* Payment fields mandatory/visible if payment is insurance or user is insurer */}
+                {(watchFormChanges.user === 'insurer' ||
+                  watchFormChanges.payment === 'insurance') && (
+                  <>
+                    <select
+                      id="insuranceProvider"
+                      {...register('insuranceProvider')}
+                    >
+                      <option value="">Please select insurer</option>
+                      <option value="Axa">Axa</option>
+                    </select>
+                    <br></br>
+                    <p>{errors.insuranceProvider?.message}</p>
+                    <br></br>
+                    <label htmlFor="insurancePolicyNumber">Policy number</label>
+                    <br></br>
+                    <input
+                      type="text"
+                      id="insurancePolicyNumber"
+                      {...register('insurancePolicyNumber')}
+                    />
+                    <br></br>
+                    <p>{errors.insurancePolicyNumber?.message}</p>
+                    <br></br>
+                    <label htmlFor="insuranceAuthorisationCode">
+                      Patient authorisation code (Optional)
+                    </label>
+                    <br></br>
+                    <input
+                      type="text"
+                      id="insuranceAuthorisationCode"
+                      {...register('insuranceAuthorisationCode')}
+                    />
+                    <br></br>
+                    <p>{errors.insuranceAuthorisationCode?.message}</p>
+                  </>
+                )}
+
+                {/* Reason for appointment */}
+                <label htmlFor="reasonForAppointment">
+                  What is the reason for this appointment?
+                </label>
                 <br></br>
-                <label htmlFor="test">Enter something</label>
-                <input type="text" id="test" {...register('test')} />
-                <p>{errors.test?.message}</p>
+                <textarea
+                  id={'reasonForAppointment'}
+                  {...register('reasonForAppointment', {
+                    onChange: (e) => {
+                      setCount(e.target.value.length);
+                    },
+                  })}
+                  maxLength={300}
+                />
+                <span>
+                  {count} / {300}
+                </span>
+                <p>{errors.reasonForAppointment?.message}</p>
                 <br></br>
                 <br></br>
+
+                <Text tag="h2" variation="body-medium-large">
+                  Has the patient received a referral from their GP?
+                </Text>
+                <label htmlFor="gpreferral-yes">Yes</label>
+                <input
+                  type="radio"
+                  id="gpreferral-yes"
+                  value="yes"
+                  {...register('gpreferral')}
+                />
+                <br></br>
+                <label htmlFor="gpreferral-no">No</label>
+                <input
+                  type="radio"
+                  id="gpreferral-no"
+                  value="no"
+                  {...register('gpreferral')}
+                />
+                <br></br>
+                <p>{errors.gpreferral?.message}</p>
+                <br></br>
+                <br></br>
+                {/* About the patient */}
+                <Text tag="h2" variation="heading-1">
+                  About the patient
+                </Text>
+                <br></br>
+                <label htmlFor="previouslyBeenWithHCA">
+                  Has the Patient previously been with HCA?
+                </label>
+                <br></br>
+                <select
+                  id="previouslyBeenWithHCA"
+                  {...register('previouslyBeenWithHCA')}
+                >
+                  <option value="">Please select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <br></br>
+                <p>{errors.previouslyBeenWithHCA?.message}</p>
+                <br></br>
+                {watchFormChanges.previouslyBeenWithHCA === 'yes' && (
+                  <>
+                    <br></br>
+                    <Text tag="h2" variation="body-medium-large">
+                      Do you have the Patient's X-number?
+                    </Text>
+                    <label htmlFor="patientCode">X number (Optional)</label>
+                    <br></br>
+                    <input
+                      type="text"
+                      id="patientCode"
+                      {...register('patientCode')}
+                    />
+                    <br></br>
+                    <p>{errors.patientCode?.message}</p>
+                    <br></br>
+                  </>
+                )}
+                <br></br>
+                <Button size={'small'} variation={'full-dark'}>
+                  <button disabled={!isDirty || isSubmitting} type="submit">
+                    {isSubmitting ? 'Submitting' : 'Submit'}
+                  </button>
+                </Button>
               </div>
             )}
-            {/* <input
-              type="text"
-              id="name"
-              {...register('username', {
-                required: { value: true, message: 'Username is required' },
-              })}
-            /> */}
-
-            {/* Display error message */}
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" {...register('email')} />
-            {/* Display error message */}
-            <p>{errors.email?.message}</p>
-            <br></br>
-
-            <textarea
-              id={id}
-              {...register('question', {
-                onChange: (e) => {
-                  setCount(e.target.value.length);
-                },
-              })}
-              maxLength={300}
-            />
-            <span>
-              {count} / {300}
-            </span>
-            <p>{errors.question?.message}</p>
-            <br></br>
-            <br></br>
-
-            <button disabled={!isDirty || isSubmitting} type="submit">
-              {isSubmitting ? 'Submitting' : 'Submit'}
-            </button>
           </form>
-        </div>
+          <AppointmentSummary
+            title={'Appointment summary'}
+            consultantTitle={'Consultant'}
+            consultantText={'Name'}
+            locationTitle={'Location'}
+            locationText={selectedLocationName}
+            dateTitle={'Date & time'}
+            dateText={'text'}
+          />
+        </LiveBookingForm>
       </div>
     );
   }
