@@ -63,8 +63,6 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
 
   if (!props.fields?.ModalContent) return <></>;
 
-  console.log(props);
-
   return (
     <>
       <Button size="large" variation="full">
