@@ -90,7 +90,10 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
       <ModalText
         ref={dialogRef}
         title1={
-          <Text tag="h4" variation="display-4">
+          <Text
+            tag={props.params?.HeadingTag || 'h4'}
+            variation={props.params?.HeadingSize || 'display-4'}
+          >
             <JssText field={props.fields?.ModalContent[0].fields?.Title} />
           </Text>
         }
@@ -98,7 +101,10 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
           <JssRichText field={props.fields?.ModalContent[0].fields?.Text} />
         }
         title2={
-          <Text tag="h4" variation="display-4">
+          <Text
+            tag={props.params?.HeadingTag || 'h4'}
+            variation={props.params?.HeadingSize || 'display-4'}
+          >
             <JssText field={props.fields?.ModalContent[1].fields?.Title} />
           </Text>
         }
