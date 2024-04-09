@@ -95,13 +95,22 @@ const FaqSchema = (props: FAQSchema): JSX.Element => {
   );
 };
 
-const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">FAQ Questions</span>
+const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          FAQ Block. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -117,22 +126,28 @@ export const Default = (props: FAQProps): JSX.Element => {
       <AccordionsBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
-          <Text tag="p" variation="subheading-1">
-            <JssText field={props.fields?.Heading} />
-          </Text>
+          (props.fields.Heading?.value || isExperienceEditor) && (
+            <Text tag="p" variation="subheading-1">
+              <JssText field={props.fields?.Heading} />
+            </Text>
+          )
         }
         header={
-          <Text
-            tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
-          >
-            <JssText field={props.fields?.Title} />
-          </Text>
+          (props.fields.Title?.value || isExperienceEditor) && (
+            <Text
+              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-2'}
+            >
+              <JssText field={props.fields?.Title} />
+            </Text>
+          )
         }
         body={
-          <Text tag="p" variation="body-large">
-            <JssText field={props.fields?.Text} />
-          </Text>
+          (props.fields.Text?.value || isExperienceEditor) && (
+            <Text tag="div" variation="body-large">
+              <RichText field={props.fields?.Text} />
+            </Text>
+          )
         }
         accordions={accordions.accordions}
         ctas={
@@ -178,22 +193,28 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
       <AccordionsBlockSideBySide
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
-          <Text tag="p" variation="body-large">
-            <JssText field={props.fields?.Text} />
-          </Text>
+          (props.fields.Text?.value || isExperienceEditor) && (
+            <Text tag="div" variation="body-large">
+              <RichText field={props.fields?.Text} />
+            </Text>
+          )
         }
         header={
-          <Text
-            tag={props.params?.HeadingTag}
-            variation={props.params?.HeadingSize}
-          >
-            <JssText field={props.fields?.Title} />
-          </Text>
+          (props.fields.Title?.value || isExperienceEditor) && (
+            <Text
+              tag={props.params?.HeadingTag}
+              variation={props.params?.HeadingSize}
+            >
+              <JssText field={props.fields?.Title} />
+            </Text>
+          )
         }
         subtitle={
-          <Text tag="p" variation="subheading-1">
-            <JssText field={props.fields?.Heading} />
-          </Text>
+          (props.fields.Heading?.value || isExperienceEditor) && (
+            <Text tag="p" variation="subheading-1">
+              <JssText field={props.fields?.Heading} />
+            </Text>
+          )
         }
         accordions={accordions.accordions}
         ctas={
