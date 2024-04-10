@@ -1,8 +1,8 @@
 ﻿---
-ID: "4676c3dd-9cbe-40a2-a8a5-bcd7add2c6a6"
-Parent: "9b765289-180d-40b3-9d7e-1ceadd367c79"
+ID: "eb2bbb97-a3db-49c4-b47b-a49f7ad6a944"
+Parent: "571a14f0-df44-4a93-8d61-23469422b8a1"
 Template: "55bd5994-10e6-4b77-913f-683cc39fccb2"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA101/Data/More Information CTA/More Information Modal Content 1"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA17/Data/More Information CTA/More Information Modal Content 1"
 Languages:
 - Language: en
   Versions:
@@ -24,7 +24,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3c0239f1-4e0e-4610-ab78-0ff7747cc80e"
+      Value: "f1d47c61-3e2b-4dc0-ae6c-2bb407ee7b91"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -50,4 +50,4 @@ Languages:
         <p>For self-pay patients, please ask your consultant for information on our fixed price self-pay hip replacement packages.&nbsp; For peace of mind on your hospital and surgery costs, you may be eligible for one of the fixed price packages that are available.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240409T121239Z
+      Value: 20240409T120548Z

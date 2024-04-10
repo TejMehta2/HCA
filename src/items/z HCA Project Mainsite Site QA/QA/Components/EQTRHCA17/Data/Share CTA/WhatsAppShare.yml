@@ -1,16 +1,19 @@
 ﻿---
-ID: "515dcb5d-51ba-4c09-9f82-e2870157a6f7"
-Parent: "88fadb66-7db4-49b3-bed2-ce257d1e3e4e"
-Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHC99/Data"
+ID: "b4216063-fd3d-4486-b587-457247ce415c"
+Parent: "99183968-cbc1-4195-9c2f-bedd55e028fa"
+Template: "7190abcc-0c09-4320-9eac-9e78efc0c662"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA17/Data/Share CTA/WhatsAppShare"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
+    - ID: "1c2c7ab9-e534-4c88-b3ba-13b01e0b2431"
+      Hint: CTAText
+      Value: WhatsApp
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240304T120253Z
+      Value: 20240217T215649Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +24,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b54ccf49-24a7-4f99-9869-56481c0ff24f"
+      Value: "0fbaf01c-3759-40d2-92d5-dd6db43bcee1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240304T120253Z
+      Value: 20240219T151813Z
