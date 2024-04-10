@@ -69,20 +69,21 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <ServiceCards
       title={
-        <Text
-          variation={props.params?.HeadingSize || 'display-2'}
-          tag={props.params?.HeadingTag || 'h2'}
-        >
-          <JssText field={props.fields?.Title} />
-        </Text>
+        (props.fields.Title?.value || isExperienceEditor) && (
+          <Text
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-2'}
+          >
+            <JssText field={props.fields?.Title} />
+          </Text>
+        )
       }
       subtitle={
-        <Text
-          variation="subheading-1"
-          tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-        >
-          <JssText field={props.fields?.Heading} />
-        </Text>
+        (props.fields.Heading?.value || isExperienceEditor) && (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        )
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
