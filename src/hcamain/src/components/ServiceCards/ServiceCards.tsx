@@ -50,13 +50,22 @@ type ServiceCardsProps = {
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Homepage Service Cards</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Service Cards. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -71,7 +80,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       title={
         (props.fields.Title?.value || isExperienceEditor) && (
           <Text
-            tag={props.params?.HeadingTag || 'h2'}
+            tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
             variation={props.params?.HeadingSize || 'display-2'}
           >
             <JssText field={props.fields?.Title} />
