@@ -1,8 +1,8 @@
 ﻿---
-ID: "e56288b8-fcff-4fa7-bb5d-8efa4ce49f20"
+ID: "0b19b8c1-a53d-4010-8738-7bc8a0ec807a"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "8475fa0b-1d8b-4363-a26d-30e9afdc63e3"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59_6"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
@@ -38,6 +38,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "0d9279cd-371f-4bad-a998-a2c132f90309"
+      Hint: Facility
+      Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231205T095943Z
@@ -51,11 +54,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "65cb5ae1-2a92-498a-973d-83492e466342"
+      Value: "c0897975-c79e-444e-8be6-84460ade06f3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240409T095015Z
+      Value: 20240409T095034Z

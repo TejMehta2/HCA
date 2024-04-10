@@ -14,10 +14,6 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-7;
-
-  &.padding-small {
-    padding-bottom: var(--spacing-7);
-  }
 }
 
 .grid {
@@ -54,4 +50,16 @@
   grid-row-start: 3;
 
   @include apply-body-large;
+}
+
+.padding-small {
+  padding-bottom: var(--spacing-7);
+
+  .heading {
+    margin: 0;
+
+    & > * {
+      @include apply-display-4;
+    }
+  }
 }

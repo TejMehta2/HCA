@@ -8,11 +8,15 @@ import TextLink from '../../core-components/TextLink/TextLink';
 const CardMap = (props: CardMapProps): JSX.Element => {
   const { image, title, address, distance, ctas } = props;
   return (
-    <div className={`${styles['wrapper']} ${ctas.close && styles['on-map']}`}>
+    <div
+      className={`${styles['wrapper']} ${
+        ctas && ctas.close && styles['on-map']
+      }`}
+    >
       {image && <div className={styles['image']}>{image}</div>}
 
       <div className={styles['text-content']}>
-        {ctas.close && (
+        {ctas && ctas.close && (
           <div className={styles['close']}>
             <TextLink>{ctas.close}</TextLink>
           </div>
