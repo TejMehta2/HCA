@@ -1,8 +1,8 @@
 ﻿---
-ID: "88fadb66-7db4-49b3-bed2-ce257d1e3e4e"
+ID: "f23873b0-0b5d-4c90-9d55-a26f0311f76c"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHC99"
+Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59_5"
 Languages:
 - Language: en
   Versions:
@@ -19,17 +19,16 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{3F32A42E-5FCF-4A4E-B878-80F00470026F}"
-              p:after="*[1=2]"
-              s:ds="local:/Data/Locations Search"
-              s:id="{971135DB-DA50-48D8-B221-74EFF876048D}"
-              s:par="CardTheme=A-HCA-White&amp;HeadingTag=h1&amp;HeadingSize=display-1&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BA0C3735E-86D7-4D37-9D5D-6F59F8BF3457%7D&amp;Styles&amp;Theme=G-HCA-Orange&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              uid="{CD06035D-FF95-4CAC-B014-63EE414651F0}"
+              s:ds="local:/Data/Patient Stories Cards"
+              s:id="{89DE6A21-463A-4BA5-A58B-76D9189662F2}"
+              s:par="HeadingTag=h3&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B889E5D6F-D680-41F2-BE02-A943A024650F%7D&amp;Styles&amp;Theme=J-HCA-Tangerine-20&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240304T120243Z
+      Value: 20240405T060447Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -40,11 +39,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6b0c6466-3fed-4dbf-ad04-daf2faa2d61d"
+      Value: "6a16c5fc-6340-4ccf-9c3b-3f565fb394c7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240401T123441Z
+      Value: 20240405T074536Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: EQTRHCA59_5

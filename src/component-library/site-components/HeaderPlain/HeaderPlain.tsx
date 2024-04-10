@@ -3,11 +3,16 @@ import { HeaderPlainProps } from './HeaderPlain.types';
 import styles from './HeaderPlain.module.scss';
 
 const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
-  const { heading, subheading, description, children } = props;
+  const { heading, subheading, description, children, contentVariation } =
+    props;
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.inner}>
+      <div
+        className={`${styles.inner} ${
+          contentVariation ? styles[contentVariation] : ''
+        } `}
+      >
         <div className={styles.grid}>
           <div className={styles.half}>
             {subheading && (

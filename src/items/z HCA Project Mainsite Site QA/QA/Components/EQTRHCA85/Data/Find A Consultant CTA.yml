@@ -13,11 +13,11 @@ Languages:
       Value: 20240305T211931Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "261bf523-6142-443a-b2c2-25c9ffc16893"
+      Value: "e1cc1b32-4df4-406a-a0bf-76a65dfda121"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Find a &lt;b&gt;hip replacement consultant&lt;/b&gt;" linktype="external" url="https://www.hcahealthcare.co.uk/finder/search" anchor="" target="" />
+        <link text="Find a &lt;b&gt;{{EntityName}} consultant&lt;/b&gt;" linktype="external" url="https://www.hcahealthcare.co.uk/finder/search" anchor="" target="" />
     - ID: "ab11cab9-17e6-42ac-98ca-aec3d7127a85"
       Hint: CustomFilters
       Value: |
@@ -35,7 +35,7 @@ Languages:
       Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T103802Z
+      Value: 20240405T145027Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"

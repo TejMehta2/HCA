@@ -45,7 +45,7 @@
   outline-offset: px-to-rem(-4);
 }
 
-.button {
+%button {
   a {
     text-decoration: none;
   }
@@ -117,14 +117,22 @@
   }
 }
 
+.button {
+  @extend %button;
+}
+
 /* stylelint-disable no-descending-specificity */
-.large {
+%large {
   a,
   button,
   label {
     padding: px-to-rem(16) $spacing-8;
     min-height: $spacing-9;
   }
+}
+
+.large {
+  @extend %large;
 }
 
 .small {
@@ -166,7 +174,7 @@
   }
 }
 
-.full {
+%full {
   a,
   button,
   label {
@@ -234,6 +242,10 @@
   &-light {
     @include apply-cta-full-light;
   }
+}
+
+.full {
+  @extend %full;
 }
 
 .outline {

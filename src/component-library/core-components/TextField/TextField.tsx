@@ -30,7 +30,13 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         </label>
       )}
       <span className={styles.input}>
-        <input id={id} ref={inputRef} type={type} required={required} />
+        <input
+          id={id}
+          ref={inputRef}
+          type={type}
+          required={required}
+          className={styles['input-field']}
+        />
 
         <span className={styles.cross} onClick={clearInput}>
           <Icons iconName="iconCross" />

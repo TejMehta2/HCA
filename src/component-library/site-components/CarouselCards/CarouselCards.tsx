@@ -81,7 +81,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
 
           {link && (
             <Themes theme={theme}>
-              <Button size="large" variation="full-dark">
+              <Button size="large" variation="full">
                 {link}
               </Button>
             </Themes>

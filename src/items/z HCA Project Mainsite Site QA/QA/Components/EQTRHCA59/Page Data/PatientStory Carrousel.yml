@@ -1,7 +1,7 @@
 ﻿---
 ID: "dcd51d93-5559-467b-9209-521a7e64cb45"
 Parent: "ceb0677e-2e26-4c73-9b4c-5f2657dd5384"
-Template: "3ba463ce-c246-403c-998e-cda9c0aaefc3"
+Template: "1196a43b-003d-4cc8-b120-2014de3b73f5"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59/Page Data/PatientStory Carrousel"
 Languages:
 - Language: en
@@ -11,21 +11,15 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231205T100753Z
-    - ID: "3e825f07-23e5-4788-ad4f-f8c021369847"
-      Hint: CardCTAText
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim.&nbsp;
+    - ID: "8686ffe5-371d-4d4b-831c-65a8c0cb4194"
+      Hint: CTAText
       Value: Read the <b>story</b>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2e1a0b63-a473-401b-b32b-9f1e0dc54da9"
-    - ID: "943f4079-f82e-4226-b595-2796b2aa1545"
-      Hint: Title
-      Value: Stories from our patients
-    - ID: "a028bacb-1e44-4266-8d99-9859c416810b"
-      Hint: Stories
-      Value: |
-        {9BD9EEF6-9471-4D4B-92EC-F9545F740B4A}
-        {45179635-2018-4AA4-B7EF-C235A71D4350}
-        {CE7E7EE8-F170-428E-AFC3-149439994639}
+      Value: "ac36948e-9c01-48cd-8631-9e4f50bed9a3"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -33,10 +27,20 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d114a478-69e1-491f-8d51-d2f851d99690"
+      Hint: PatientStories
+      Value: |
+        {373D2B03-2B34-4DF8-B642-8FD9DAD4DA96}
+        {84286EAF-821B-4DC7-841E-D1BD8EBF0407}
+        {BAE138C9-C7D1-4A4A-A9CF-4FA1AAFE35A3}
+        {AE144D45-DE6E-4B88-B946-B664A64884CE}
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Stories from our patients
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102613Z
-    - ID: "f0f7eafa-09d8-4f07-b552-f72923f55cc6"
-      Hint: Text
-      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim.&nbsp;
+      Value: 20240409T093914Z
+    - ID: "f36b34ea-5278-41d5-a812-ab42ac4ab3eb"
+      Hint: NumberOfCards
+      Value: 

@@ -2029,9 +2029,11 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Navigation {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs
     */
     export type Breadcrumbs =  {
         fields?: { 
@@ -2044,7 +2046,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs
     */
     export type BreadcrumbsJson =  {
         
@@ -2058,10 +2060,10 @@ export namespace PageContent {
 
     }
 }
-export namespace PageContent.RenderingParameters {
+export namespace Navigation.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Breadcrumbs
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Breadcrumbs
     */
     export type Breadcrumbs =  {
         fields?: {         }
@@ -2069,17 +2071,17 @@ export namespace PageContent.RenderingParameters {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Breadcrumbs
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Breadcrumbs
     */
     export type BreadcrumbsJson =  {
         
 
     }
 }
-export namespace PageContent {
+export namespace Navigation {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs Folder
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs Folder
     */
     export type BreadcrumbsFolder =  {
         fields?: {         }
@@ -2087,7 +2089,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs Folder
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs Folder
     */
     export type BreadcrumbsFolderJson =  {
         
@@ -2662,7 +2664,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Condition Page
     */
     export type ConditionPage = Foundation.HcabasePage & 
-Business.Condition &  {
+Business.Condition & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -2671,7 +2674,8 @@ Business.Condition &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Condition Page
     */
     export type ConditionPageJson = Foundation.HcabasePageJson & 
-Business.ConditionJson &  {
+Business.ConditionJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -3169,6 +3173,11 @@ export namespace PageContent {
             CTACardText?: Field<string>;
 
             /**
+            * Represents the Heading field (286fc562-90df-4163-8ba8-eb6e21b04c7e).
+            */
+            Heading?: Field<string>;
+
+            /**
             * Represents the Pages field (e6568c06-70ff-4b88-b5ed-44a0bd98df50).
             */
             Pages?: Item[];
@@ -3190,6 +3199,13 @@ export namespace PageContent {
             * Represents the CTA Card Text field (cddfe7c4-c61f-48a4-8719-85e660642a13).
             */
             cTACardText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Heading field (286fc562-90df-4163-8ba8-eb6e21b04c7e).
+            */
+            heading?: {
                 jsonValue: Field<string>
             };
 
@@ -3264,88 +3280,6 @@ export namespace Foundation.ContentCard {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Cards Folder
     */
     export type ContentCardsFolderJson =  {
-        
-
-    }
-}
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider
-    */
-    export type ContentCardsSlider = Foundation.Ctabase &  {
-        fields?: { 
-            /**
-            * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
-            */
-            CTACardText?: Field<string>;
-
-            /**
-            * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
-            */
-            Heading?: Field<string>;
-
-            /**
-            * Represents the Pages field (8c120705-ad32-4f5e-a87e-84b01b1f2d83).
-            */
-            Pages?: Item[];
-
-            /**
-            * Represents the Title field (17be2717-992a-4d65-918b-07bb26210837).
-            */
-            Title?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider
-    */
-    export type ContentCardsSliderJson = Foundation.CtabaseJson &  {
-        
-            /**
-            * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
-            */
-            cTACardText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
-            */
-            heading?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Pages field (8c120705-ad32-4f5e-a87e-84b01b1f2d83).
-            */
-            pages?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Title field (17be2717-992a-4d65-918b-07bb26210837).
-            */
-            title?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder
-    */
-    export type ContentCardsSliderFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder
-    */
-    export type ContentCardsSliderFolderJson =  {
         
 
     }
@@ -3622,7 +3556,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Diagnosis Page
     */
     export type DiagnosisPage = Foundation.HcabasePage & 
-Business.Diagnosis &  {
+Business.Diagnosis & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -3631,7 +3566,8 @@ Business.Diagnosis &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Diagnosis Page
     */
     export type DiagnosisPageJson = Foundation.HcabasePageJson & 
-Business.DiagnosisJson &  {
+Business.DiagnosisJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -10368,6 +10304,11 @@ export namespace Foundation {
     export type MapCard = Foundation.Ctabase &  {
         fields?: { 
             /**
+            * Represents the Icon field (bc189b1e-2b88-43ed-8b4b-35e04b48f66f).
+            */
+            Icon?: Item;
+
+            /**
             * Represents the Map Scale (1 is default scale, e.g. 0.5, 1.5) field (ca2e7233-45b8-40b4-93b1-9da72806a476).
             */
             MapScale?: Field<number>;
@@ -10410,6 +10351,13 @@ export namespace Foundation {
     */
     export type MapCardJson = Foundation.CtabaseJson &  {
         
+            /**
+            * Represents the Icon field (bc189b1e-2b88-43ed-8b4b-35e04b48f66f).
+            */
+            icon?: {
+                jsonValue: Item
+            };
+
             /**
             * Represents the Map Scale (1 is default scale, e.g. 0.5, 1.5) field (ca2e7233-45b8-40b4-93b1-9da72806a476).
             */
@@ -10763,6 +10711,112 @@ export namespace PageContent {
     */
     export type ModalContentFolderJson =  {
         
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/More Information CTA
+    */
+    export type MoreInformationCta = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the Modal Content field (d13c5304-78a3-417a-8644-fbddbba7f7b8).
+            */
+            ModalContent?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/More Information CTA
+    */
+    export type MoreInformationCtaJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the Modal Content field (d13c5304-78a3-417a-8644-fbddbba7f7b8).
+            */
+            modalContent?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/More Information CTA
+    */
+    export type MoreInformationCta =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/More Information CTA
+    */
+    export type MoreInformationCtaJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/More Information CTA Folder
+    */
+    export type MoreInformationCtaFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/More Information CTA Folder
+    */
+    export type MoreInformationCtaFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
+    */
+    export type MoreInformationModalContent =  {
+        fields?: { 
+            /**
+            * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (04683221-90f3-4e36-9e78-8da47d1f810c).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
+    */
+    export type MoreInformationModalContentJson =  {
+        
+            /**
+            * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (04683221-90f3-4e36-9e78-8da47d1f810c).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }
@@ -11359,6 +11413,122 @@ Foundation.RenderingParameters.ThemesParametersJson &  {
 export namespace PageContent {
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards
+    */
+    export type PatientStoriesCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Text field (8686ffe5-371d-4d4b-831c-65a8c0cb4194).
+            */
+            CTAText?: Field<string>;
+
+            /**
+            * Represents the Filter Options field (bf8fc4c7-d0e9-495c-8be6-ad25a12399ee).
+            */
+            FilterOptions?: Item[];
+
+            /**
+            * Represents the Number Of Cards field (f36b34ea-5278-41d5-a812-ab42ac4ab3eb).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Patient Stories field (d114a478-69e1-491f-8d51-d2f851d99690).
+            */
+            PatientStories?: Item[];
+
+            /**
+            * Represents the Search Options field (18c213cb-ed01-4c9c-8c60-07f67127fd87).
+            */
+            SearchOptions?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards
+    */
+    export type PatientStoriesCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Text field (8686ffe5-371d-4d4b-831c-65a8c0cb4194).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Filter Options field (bf8fc4c7-d0e9-495c-8be6-ad25a12399ee).
+            */
+            filterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Number Of Cards field (f36b34ea-5278-41d5-a812-ab42ac4ab3eb).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Patient Stories field (d114a478-69e1-491f-8d51-d2f851d99690).
+            */
+            patientStories?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Search Options field (18c213cb-ed01-4c9c-8c60-07f67127fd87).
+            */
+            searchOptions?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards Folder
+    */
+    export type PatientStoriesCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards Folder
+    */
+    export type PatientStoriesCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Cards Params
+    */
+    export type PatientStoriesCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Cards Params
+    */
+    export type PatientStoriesCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Folder
     */
     export type PatientStoriesFolder =  {
@@ -11443,7 +11613,12 @@ export namespace Pages {
             Date?: Field<string>;
 
             /**
-            * Represents the __Standard Values field (079438d8-dea6-45e4-b65a-f009672644ee).
+            * Represents the Facility field (0d9279cd-371f-4bad-a998-a2c132f90309).
+            */
+            Facility?: Item[];
+
+            /**
+            * Represents the Speciality field (079438d8-dea6-45e4-b65a-f009672644ee).
             */
             Speciality?: Item[];
         }
@@ -11463,7 +11638,14 @@ export namespace Pages {
             };
 
             /**
-            * Represents the __Standard Values field (079438d8-dea6-45e4-b65a-f009672644ee).
+            * Represents the Facility field (0d9279cd-371f-4bad-a998-a2c132f90309).
+            */
+            facility?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Speciality field (079438d8-dea6-45e4-b65a-f009672644ee).
             */
             speciality?: {
                 jsonValue: Item[]
@@ -11534,6 +11716,182 @@ Foundation.RenderingParameters.ThemesParameters &  {
     */
     export type PlainHeaderParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
 Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Pricing Information
+    */
+    export type PricingInformation =  {
+        fields?: { 
+            /**
+            * Represents the Consultant Fee field (c36dd486-41e0-4f75-b232-fe5f8a38351d).
+            */
+            ConsultantFee?: Field<string>;
+
+            /**
+            * Represents the Consultant Fee Text field (b7a0f454-385f-4490-b5d7-f25ff0aa6c59).
+            */
+            ConsultantFeeText?: Field<string>;
+
+            /**
+            * Represents the Heading field (36af04c4-cb10-48a6-b215-aba7df840abe).
+            */
+            Heading?: Field<string>;
+
+            /**
+            * Represents the Image field (18d864de-57a4-4e68-bf82-66085670115f).
+            */
+            Image?: ImageField;
+
+            /**
+            * Represents the Length Of Stay field (4ae26fbf-6187-4a38-841a-f045e43239e1).
+            */
+            LengthOfStay?: Field<string>;
+
+            /**
+            * Represents the Length Of Stay Text field (f5d60867-78dd-41c4-a888-a21f913c7abf).
+            */
+            LengthOfStayText?: Field<string>;
+
+            /**
+            * Represents the Price From field (14480d61-12dc-46cb-ba84-7a8f49331c50).
+            */
+            PriceFrom?: Field<string>;
+
+            /**
+            * Represents the Price From Text field (f3257541-de54-4c26-9193-59dc0af81134).
+            */
+            PriceFromText?: Field<string>;
+
+            /**
+            * Represents the Text field (831b2373-7a3e-40ff-b7e8-b3ffe5a38369).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (6a6d174e-7b11-4aff-9817-d7afd4dab053).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Pricing Information
+    */
+    export type PricingInformationJson =  {
+        
+            /**
+            * Represents the Consultant Fee field (c36dd486-41e0-4f75-b232-fe5f8a38351d).
+            */
+            consultantFee?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Consultant Fee Text field (b7a0f454-385f-4490-b5d7-f25ff0aa6c59).
+            */
+            consultantFeeText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Heading field (36af04c4-cb10-48a6-b215-aba7df840abe).
+            */
+            heading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Image field (18d864de-57a4-4e68-bf82-66085670115f).
+            */
+            image?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Length Of Stay field (4ae26fbf-6187-4a38-841a-f045e43239e1).
+            */
+            lengthOfStay?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Length Of Stay Text field (f5d60867-78dd-41c4-a888-a21f913c7abf).
+            */
+            lengthOfStayText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Price From field (14480d61-12dc-46cb-ba84-7a8f49331c50).
+            */
+            priceFrom?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Price From Text field (f3257541-de54-4c26-9193-59dc0af81134).
+            */
+            priceFromText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Text field (831b2373-7a3e-40ff-b7e8-b3ffe5a38369).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (6a6d174e-7b11-4aff-9817-d7afd4dab053).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Pricing Information
+    */
+    export type PricingInformation = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Pricing Information
+    */
+    export type PricingInformationJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Pricing Information Folder
+    */
+    export type PricingInformationFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Pricing Information Folder
+    */
+    export type PricingInformationFolderJson =  {
         
 
     }
@@ -12192,7 +12550,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Specialty Page
     */
     export type SpecialtyPage = Foundation.HcabasePage & 
-Business.Specialty &  {
+Business.Specialty & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -12201,7 +12560,8 @@ Business.Specialty &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Specialty Page
     */
     export type SpecialtyPageJson = Foundation.HcabasePageJson & 
-Business.SpecialtyJson &  {
+Business.SpecialtyJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -15460,7 +15820,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Subspecialty Page
     */
     export type SubspecialtyPage = Foundation.HcabasePage & 
-Business.Subspecialty &  {
+Business.Subspecialty & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -15469,7 +15830,8 @@ Business.Subspecialty &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Subspecialty Page
     */
     export type SubspecialtyPageJson = Foundation.HcabasePageJson & 
-Business.SubspecialtyJson &  {
+Business.SubspecialtyJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -15510,7 +15872,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/SupportService Page
     */
     export type SupportServicePage = Foundation.HcabasePage & 
-Business.SupportService &  {
+Business.SupportService & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -15519,7 +15882,8 @@ Business.SupportService &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/SupportService Page
     */
     export type SupportServicePageJson = Foundation.HcabasePageJson & 
-Business.SupportServiceJson &  {
+Business.SupportServiceJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -16078,7 +16442,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Treatment Page
     */
     export type TreatmentPage = Foundation.HcabasePage & 
-Business.Treatment &  {
+Business.Treatment & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -16087,7 +16452,8 @@ Business.Treatment &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Treatment Page
     */
     export type TreatmentPageJson = Foundation.HcabasePageJson & 
-Business.TreatmentJson &  {
+Business.TreatmentJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -16865,6 +17231,34 @@ export namespace Foundation.Doctify.Base {
     }
 }
 export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/_EntityBase
+    */
+    export type EntityBase =  {
+        fields?: { 
+            /**
+            * Represents the EntityName field (87272aa0-841f-4d72-a4df-7fb452932fea).
+            */
+            EntityName?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/_EntityBase
+    */
+    export type EntityBaseJson =  {
+        
+            /**
+            * Represents the EntityName field (87272aa0-841f-4d72-a4df-7fb452932fea).
+            */
+            entityName?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/_HCABasePage

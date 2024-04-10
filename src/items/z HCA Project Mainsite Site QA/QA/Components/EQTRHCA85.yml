@@ -33,15 +33,21 @@ Languages:
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "86550f75-4b5d-4f03-bd83-759a0bb3489b"
-      Hint: Doctify KeywordId
+      Hint: DoctifyKeywordId
       Value: 1140
+    - ID: "87272aa0-841f-4d72-a4df-7fb452932fea"
+      Hint: EntityName
+      Value: Hip replacement
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8e04c2c6-b9cb-4dd6-818f-fbdc37c6c04a"
+      Value: "4fda189a-1b2a-4851-886b-c9377cedd9fd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240306T083205Z
+      Value: 20240405T144745Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Hip replacement

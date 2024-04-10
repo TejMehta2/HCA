@@ -18,7 +18,7 @@ export interface DoctifyReviewsFields {
     Reviews?: Field<string>;
     DoctifyLogoLight?: DoctifyLogoFields;
     DoctifyLogoDark?: DoctifyLogoFields;
-    Link?: LinkField;
+    Link?: { fields?: LinkField; url: string };
   };
 }
 

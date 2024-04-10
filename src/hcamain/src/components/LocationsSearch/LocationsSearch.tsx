@@ -35,7 +35,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import { ApiSearchProps } from 'src/types/searchProps';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}`;
-const SEARCH_PATH = '/locations/sort';
+const SEARCH_PATH = '/locations/search';
 const AUTOCOMPLETE_PATH =
   '/locationApi/suggestLocation?provider=1&searchType=1';
 
@@ -49,8 +49,12 @@ const LocationsSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fields, params } = props;
+interface WithHeaderProps extends LocationsSearchProps {
+  contentVariation: 'padding-small';
+}
+
+export const Default = (props: WithHeaderProps): JSX.Element => {
+  const { fields, params, contentVariation } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
@@ -67,19 +71,19 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
     baseUrl: BASE_URL,
-    baselineParams: [['location', ''], ...baselineParams],
     searchPath: SEARCH_PATH,
+    baselineParams: baselineParams,
     autocompletePath: AUTOCOMPLETE_PATH,
     autoCompleteSearchParamName: 'searchTerm',
     baselineAutocompleteParams: [
       ['provider', '1'],
       ['searchType', '1'],
     ],
-    searchFieldName: 'location',
     fallbackData,
   });
 
   if (!fields || error || autocompleteError) {
+    console.error(error);
     return <LocationsSearchDefaultComponent {...props} />;
   }
 
@@ -88,7 +92,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   const offset = Number(searchParams.get('offset')) || defaultOffset;
 
   // Computed properties
-  const resultsCount = data?.response?.locations.length || 0;
+  const resultsCount = data?.response?.resultsCount || 0;
   const rangeStart = offset + 1;
   const rangeEnd = Math.min(offset + limit, resultsCount);
   const resultsRange = `${rangeStart}-${rangeEnd}`;
@@ -119,7 +123,13 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
         <HeaderPlain
-          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          contentVariation={contentVariation}
+          heading={
+            <JssText
+              tag={params?.HeadingTag || 'h1'}
+              field={props?.fields?.Title}
+            />
+          }
           description={
             <Text tag="div" variation="body-large">
               <RichText tag="span" field={props?.fields?.Text} />
@@ -128,8 +138,8 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('location') || undefined}
-              name={'location'}
+              defaultValue={searchParams.get('input') || undefined}
+              name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
               suggestions={autocompleteData?.map(
                 (result) => `${result.LocationName}`
@@ -226,7 +236,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
               tabContent: (
                 <>
                   <CardGrid>
-                    {data?.response?.locations?.map((item) => {
+                    {data?.response?.results?.map(({ data }) => {
                       const {
                         id,
                         title,
@@ -235,7 +245,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                         imageUrl,
                         url,
                         directions,
-                      } = item;
+                      } = data;
                       return (
                         <CardMap
                           key={id}
@@ -313,21 +323,21 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                 <LocationMap
                   apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
                   locations={
-                    data?.response?.locations.map((item) => ({
+                    data?.response?.results.map(({ data }) => ({
                       center: {
-                        lat: Number(item.lat) || 0,
-                        lng: Number(item.lng) || 0,
+                        lat: Number(data.lat) || 0,
+                        lng: Number(data.lng) || 0,
                       },
                       card: (hideCard) => (
                         <CardMap
                           title={
                             <Text tag="h3" variation="heading-2">
-                              {item.title}
+                              {data.title}
                             </Text>
                           }
                           address={
                             <Text tag="p" variation="body-large">
-                              {item.description}
+                              {data.description}
                             </Text>
                           }
                           ctas={{
@@ -339,7 +349,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
                               </a>
                             ),
                             button2: (
-                              <a href={item.directions}>
+                              <a href={data.directions}>
                                 <span>
                                   Get <strong>directions</strong>
                                 </span>
@@ -366,13 +376,21 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   );
 };
 
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} contentVariation="padding-small" />;
+};
+
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: ApiSearchProps
 ) => {
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const query = `?${params.join('&')}&location=`;
+  const query = `?${params.join('&')}`;
   const url = new URL(query, `${BASE_URL}${SEARCH_PATH}`); // compose API url
 
   try {
@@ -384,14 +402,14 @@ export const getStaticProps: GetStaticComponentProps = async (
       throw response.statusText;
     }
   } catch (error) {
-    console.error(error);
+    console.error(
+      {
+        message: 'LocationSearch server-side data fetching error',
+        error: error,
+        requestUrl: url.href,
+      },
+      error
+    );
     return { locations: [] };
   }
-};
-
-export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
-  if (!props.fields) {
-    return <LocationsSearchDefaultComponent {...props} />;
-  }
-  return <div className={`component ${props.params?.styles}`}></div>;
 };
