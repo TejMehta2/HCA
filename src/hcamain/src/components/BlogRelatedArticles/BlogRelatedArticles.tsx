@@ -118,7 +118,6 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       )
     );
   }
-  console.log(props);
   return (
     <CarouselCards
       title={
