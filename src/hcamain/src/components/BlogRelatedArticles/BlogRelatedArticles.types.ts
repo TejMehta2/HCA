@@ -63,10 +63,6 @@ export interface Fields {
       numberOfCards?: { jsonValue?: Field<string> };
       blogUrl?: { jsonValue?: LinkField };
     };
-    contextItemSearchParams?: {
-      serviceLineId?: string;
-      locationId?: string;
-    };
     contextItemSearchParams: {
       [key: string]: { value?: string };
     };
