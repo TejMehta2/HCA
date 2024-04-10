@@ -15,6 +15,7 @@ import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import {
   BlogRelatedArticlesProps,
   BlogRelatedArticlesResult,
@@ -22,8 +23,7 @@ import {
 } from './BlogRelatedArticles.types';
 import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-
-import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
@@ -64,7 +64,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           <JssImage field={card.abstractImage?.jsonValue} />
           <JssDate field={card.date?.jsonValue} />
           {card.abstractTitle && (
-            <Text tag="h3" variation="heading-2">
+            <Text
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+              variation="heading-2"
+            >
               <a href={card.url?.path}>
                 <JssText field={card.abstractTitle} />
               </a>
@@ -95,7 +98,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           <Image src={imageUrl} alt={name} width="643" height="605" />
           <time>{formatDate(new Date(date))}</time>
           {title && (
-            <Text tag="h3" variation="heading-2">
+            <Text
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+              variation="heading-2"
+            >
               <a href={`${url}`}>{title}</a>
             </Text>
           )}
