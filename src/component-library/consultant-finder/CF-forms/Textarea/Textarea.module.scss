@@ -21,7 +21,6 @@
 
   textarea {
     @include apply-body-medium-large;
-
     color: inherit;
     width: 100%;
     padding: px-to-rem(24) $spacing-6 0 $spacing-6;
@@ -46,6 +45,7 @@
     border-radius: $radius-large;
     padding-bottom: px-to-rem(42);
     background-color: $white;
+    margin-bottom: $spacing-2;
 
     .count {
       @include apply-body-medium-medium;

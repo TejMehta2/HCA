@@ -24,9 +24,10 @@ import AppointmentSummary from '@component-library/consultant-finder/Appointment
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
+import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 
 interface Fields {
-  HCALogo: ImageField | ImageFieldValue | undefined;
+  HCALogo: ImageField | undefined;
   CurrentStep: any;
   Steps: any;
   TitleText: Field<string>;
@@ -34,6 +35,7 @@ interface Fields {
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  LiveBookingFormUserOptions: object[];
 }
 
 type StepProps = {
@@ -54,7 +56,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const { selectedLocationName, selectedDate, selectedTime } = useContext(
     ConsultantFinderContext
   );
-  // console.log('step booking form', props.fields);
+  console.log('step booking form', props.fields);
 
   const schema = z
     .object({
@@ -235,23 +237,33 @@ export const Default = (props: StepProps): JSX.Element => {
             <Text tag="h2" variation="heading-1">
               About you
             </Text>
-            <label htmlFor="patient">Patient</label>
-            <input
-              type="radio"
-              id="patient"
-              value="patient"
-              {...register('user')}
+            {props?.fields?.LiveBookingFormUserOptions &&
+              props?.fields?.LiveBookingFormUserOptions.map((item: any) => (
+                <RadioButton
+                  key={item.id}
+                  label={item?.fields?.Label?.value || ''}
+                  name={'user'}
+                  // name={item?.name}
+                  value={item?.fields?.Value?.value}
+                  register={register}
+                />
+              ))}
+            {/* <RadioButton
+              label={'I am the patient or their representative'}
+              name={'user'}
+              value={'patient'}
+              register={register}
             />
+            <RadioButton
+              label={'I am an insurance company representative'}
+              name={'user'}
+              value={'insurer'}
+              register={register}
+            /> */}
             <br></br>
-            <label htmlFor="insurer">Insurer</label>
-            <input
-              type="radio"
-              id="insurer"
-              value="insurer"
-              {...register('user')}
-            />
-            <br></br>
-            <p>{errors.user?.message}</p>
+            {errors?.user && (
+              <ErrorMessage errorMessage={errors?.user?.message} />
+            )}
             <br></br>
             <br></br>
 
@@ -265,29 +277,21 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* Payment */}
                 {watchFormChanges.user === 'patient' && (
                   <>
-                    <label htmlFor="self-pay">Self-paying</label>
-                    <input
-                      type="radio"
-                      id="self-pay"
-                      value="self-pay"
-                      {...register('payment')}
+                    <RadioButton
+                      label={'Self-paying'}
+                      name={'payment'}
+                      value={'self-pay'}
+                      register={register}
                     />
-                    <br></br>
-                    <label htmlFor="insurance">Paying through insurance</label>
-                    <input
-                      type="radio"
-                      id="insurance"
-                      value="insurance"
-                      {...register('payment')}
+                    <RadioButton
+                      label={'Paying through insurance'}
+                      name={'payment'}
+                      value={'insurance'}
+                      register={register}
                     />
-                    <br></br>
                     {errors?.payment && (
                       <ErrorMessage errorMessage={errors?.payment?.message} />
                     )}
-                    {/* <p>{errors.payment?.message}</p> */}
-                    <br></br>
-                    <br></br>
-                    <br></br>
                   </>
                 )}
 
