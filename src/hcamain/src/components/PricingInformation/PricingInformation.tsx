@@ -112,7 +112,11 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
+            <Placeholder
+              name={phKey}
+              rendering={props.rendering}
+              parentHeadingTag={props.params?.HeadingTag}
+            />
           </PlaceHolderWrapper>
         )
       }

@@ -44,7 +44,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
 
   const serviceLineId =
-    props.fields?.data?.contextItem?.category?.category[0].id || '';
+    props.fields?.data?.contextItemSearchParams?.serviceLineId || '';
 
   const { data } = useSearchForm<BlogResponse, Autocomplete>({
     baseUrl: BASE_API_URL,
@@ -159,7 +159,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
   const serviceLineId =
-    rendering.fields?.data?.contextItem?.category?.category[0].id || '';
+    rendering.fields?.data?.contextItemSearchParams?.serviceLineId || '';
 
   const { baselineParams } = getBaselineParams(rendering);
   const params = [
