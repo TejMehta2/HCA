@@ -25,6 +25,7 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
+import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -36,6 +37,11 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   LiveBookingFormUserOptions: object[];
+  LiveBookingFormAboutAppointmentOptions: object[];
+  LiveBookingFormPreviouslyBeenWithHCAOptions: object[];
+  LiveBookingFormGpreferralOptions: object[];
+  LiveBookingFormGpreferralSubHeadline: Field<string>;
+  LiveBookingFormPatientAuthorisationCodeLabel: Field<string>;
 }
 
 type StepProps = {
@@ -243,24 +249,10 @@ export const Default = (props: StepProps): JSX.Element => {
                   key={item.id}
                   label={item?.fields?.Label?.value || ''}
                   name={'user'}
-                  // name={item?.name}
                   value={item?.fields?.Value?.value}
                   register={register}
                 />
               ))}
-            {/* <RadioButton
-              label={'I am the patient or their representative'}
-              name={'user'}
-              value={'patient'}
-              register={register}
-            />
-            <RadioButton
-              label={'I am an insurance company representative'}
-              name={'user'}
-              value={'insurer'}
-              register={register}
-            /> */}
-            <br></br>
             {errors?.user && (
               <ErrorMessage errorMessage={errors?.user?.message} />
             )}
@@ -277,18 +269,18 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* Payment */}
                 {watchFormChanges.user === 'patient' && (
                   <>
-                    <RadioButton
-                      label={'Self-paying'}
-                      name={'payment'}
-                      value={'self-pay'}
-                      register={register}
-                    />
-                    <RadioButton
-                      label={'Paying through insurance'}
-                      name={'payment'}
-                      value={'insurance'}
-                      register={register}
-                    />
+                    {props?.fields?.LiveBookingFormAboutAppointmentOptions &&
+                      props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
+                        (item: any) => (
+                          <RadioButton
+                            key={item.id}
+                            label={item?.fields?.Label?.value || ''}
+                            name={'payment'}
+                            value={item?.fields?.Value?.value}
+                            register={register}
+                          />
+                        )
+                      )}
                     {errors?.payment && (
                       <ErrorMessage errorMessage={errors?.payment?.message} />
                     )}
@@ -319,17 +311,22 @@ export const Default = (props: StepProps): JSX.Element => {
                     <br></br>
                     <p>{errors.insurancePolicyNumber?.message}</p>
                     <br></br>
-                    <label htmlFor="insuranceAuthorisationCode">
-                      Patient authorisation code (Optional)
-                    </label>
-                    <br></br>
-                    <input
-                      type="text"
-                      id="insuranceAuthorisationCode"
-                      {...register('insuranceAuthorisationCode')}
+                    <TextField
+                      id={'insuranceAuthorisationCode'}
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormPatientAuthorisationCodeLabel
+                          ?.value || ''
+                      }
+                      name={'insuranceAuthorisationCode'}
+                      required={false}
+                      register={register}
+                      setValue={setValue}
+                      isError={
+                        errors?.insuranceAuthorisationCode ? true : false
+                      }
+                      errorMessage={errors?.insuranceAuthorisationCode?.message}
                     />
-                    <br></br>
-                    <p>{errors.insuranceAuthorisationCode?.message}</p>
                   </>
                 )}
 
@@ -347,25 +344,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 <br></br>
 
                 <Text tag="h2" variation="body-medium-large">
-                  Has the patient received a referral from their GP?
+                  {props?.fields?.LiveBookingFormGpreferralSubHeadline?.value ||
+                    'Has the patient received a referral from their GP ?'}
                 </Text>
-                <label htmlFor="gpreferral-yes">Yes</label>
-                <input
-                  type="radio"
-                  id="gpreferral-yes"
-                  value="yes"
-                  {...register('gpreferral')}
-                />
-                <br></br>
-                <label htmlFor="gpreferral-no">No</label>
-                <input
-                  type="radio"
-                  id="gpreferral-no"
-                  value="no"
-                  {...register('gpreferral')}
-                />
-                <br></br>
-                <p>{errors.gpreferral?.message}</p>
+                {props?.fields?.LiveBookingFormGpreferralOptions &&
+                  props?.fields?.LiveBookingFormGpreferralOptions.map(
+                    (item: any) => (
+                      <RadioButton
+                        key={item.id}
+                        label={item?.fields?.Label?.value || ''}
+                        name={'gpreferral'}
+                        value={item?.fields?.Value?.value}
+                        register={register}
+                      />
+                    )
+                  )}
+                {errors?.gpreferral && (
+                  <ErrorMessage errorMessage={errors?.gpreferral?.message} />
+                )}
                 <br></br>
                 <br></br>
                 {/* About the patient */}
@@ -381,14 +377,22 @@ export const Default = (props: StepProps): JSX.Element => {
                   id="previouslyBeenWithHCA"
                   {...register('previouslyBeenWithHCA')}
                 >
-                  <option value="">Please select</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  {props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions &&
+                    props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions.map(
+                      (item: any) => (
+                        <option
+                          key={item.id}
+                          value={item?.fields?.Value?.value}
+                        >
+                          {item?.fields?.Label?.value || ''}
+                        </option>
+                      )
+                    )}
                 </select>
                 <br></br>
                 <p>{errors.previouslyBeenWithHCA?.message}</p>
                 <br></br>
-                {watchFormChanges.previouslyBeenWithHCA === 'yes' && (
+                {watchFormChanges.previouslyBeenWithHCA === 'Yes' && (
                   <>
                     <br></br>
                     <Text tag="h2" variation="body-medium-large">
