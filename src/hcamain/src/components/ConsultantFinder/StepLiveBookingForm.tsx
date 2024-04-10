@@ -43,6 +43,10 @@ interface Fields {
   LiveBookingFormGpreferralSubHeadline: Field<string>;
   LiveBookingFormPatientAuthorisationCodeLabel: Field<string>;
   LiveBookingFormInsuranceNumberLabel: Field<string>;
+  LiveBookingFormHeadline: Field<string>;
+  LiveBookingFormSubHeadline: Field<string>;
+  LiveBookingFormXNumberHeadline: Field<string>;
+  LiveBookingFormXNumberLabel: Field<string>;
 }
 
 type StepProps = {
@@ -92,7 +96,7 @@ export const Default = (props: StepProps): JSX.Element => {
         return true;
       },
       {
-        message: 'required refine',
+        message: 'Required',
         path: ['payment'],
       }
     )
@@ -108,7 +112,7 @@ export const Default = (props: StepProps): JSX.Element => {
         return true;
       },
       {
-        message: 'insurance required',
+        message: 'Required',
         path: ['insuranceProvider'],
       }
     )
@@ -124,7 +128,7 @@ export const Default = (props: StepProps): JSX.Element => {
         return true;
       },
       {
-        message: 'insurance required',
+        message: 'Required',
         path: ['insurancePolicyNumber'],
       }
     );
@@ -235,10 +239,11 @@ export const Default = (props: StepProps): JSX.Element => {
           <DevTool control={control} placement="top-right" />
           <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
             <Text tag="h1" variation="display-4">
-              Your details
+              {props?.fields?.LiveBookingFormHeadline?.value || 'Your details'}
             </Text>
             <Text tag="p" variation="body-medium-large">
-              All fields are required unless specified as optional.
+              {props?.fields?.LiveBookingFormSubHeadline?.value ||
+                'All fields are required unless specified as optional.'}
             </Text>
             {/* About you */}
             <Text tag="h2" variation="heading-1">
@@ -401,18 +406,22 @@ export const Default = (props: StepProps): JSX.Element => {
                   <>
                     <br></br>
                     <Text tag="h2" variation="body-medium-large">
-                      Do you have the Patient's X-number?
+                      {props?.fields?.LiveBookingFormXNumberHeadline?.value ||
+                        'Do you have the Patients X-number?'}
                     </Text>
-                    <label htmlFor="patientCode">X number (Optional)</label>
-                    <br></br>
-                    <input
-                      type="text"
-                      id="patientCode"
-                      {...register('patientCode')}
+                    <TextField
+                      id={'patientCode'}
+                      label={
+                        props?.fields?.LiveBookingFormXNumberLabel?.value ||
+                        'What is the reason for this appointment?'
+                      }
+                      name={'patientCode'}
+                      required={false}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.patientCode ? true : false}
+                      errorMessage={errors?.patientCode?.message}
                     />
-                    <br></br>
-                    <p>{errors.patientCode?.message}</p>
-                    <br></br>
                   </>
                 )}
                 <br></br>
