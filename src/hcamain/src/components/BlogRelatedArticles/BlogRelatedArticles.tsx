@@ -155,31 +155,117 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+// export const getStaticProps: GetStaticComponentProps = async (
+//   rendering: BlogRelatedArticlesProps
+// ) => {
+//   const serviceLineId =
+//     rendering.fields?.data?.contextItem?.category?.category[0].id || '';
+
+//   const { baselineParams } = getBaselineParams(rendering);
+//   const params = [
+//     ...baselineParams,
+//     ['verticalKey', 'articles'],
+//     [queryString, serviceLineId],
+//   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+//   const query = `?${params.join('&')}`;
+//   const url = new URL(query, BASE_API_URL + '/search'); // compose API url
+
+//   try {
+//     const response = await fetch(url.href);
+//     if (response.ok) {
+//       const fallbackData = await response.json();
+//       return fallbackData;
+//     } else {
+//       throw response.statusText;
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return rendering;
+//   }
+// };
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
-  const serviceLineId =
-    rendering.fields?.data?.contextItem?.category?.category[0].id || '';
+  const fields = rendering.fields?.data?.item;
 
-  const { baselineParams } = getBaselineParams(rendering);
+  // Format props into entries, then query params
+  const customFilters =
+    (fields?.filterOptions?.filterOptionsList &&
+      fields?.filterOptions?.filterOptionsList.map((item) => [
+        item.filter?.value,
+        item.filterValueGuid?.targetItem?.id,
+      ])) ||
+    [];
+
+  const contextSearchParams = customFilters.length
+    ? ''
+    : Object.entries(rendering.fields?.data?.contextItemSearchParams || {}).map(
+        ([key, nestedValue]) => [
+          key,
+          nestedValue?.value &&
+            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]
+      );
+
+  const contextSearchIdParams = customFilters.length
+    ? ''
+    : Object.entries(
+        rendering.fields?.data?.contextItemSearchIdParams || {}
+      ).map(([key, value]) => [
+        key,
+        value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+      ]); // clean up bad ID characters
+
   const params = [
-    ...baselineParams,
-    ['verticalKey', 'articles'],
-    [queryString, serviceLineId],
+    ['verticalKey', 'patientstories'],
+    ...customFilters,
+    ...contextSearchParams,
+    ...contextSearchIdParams,
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_API_URL + '/search'); // compose API url
+
+  const ctaParams = [
+    ...customFilters,
+    ...contextSearchParams,
+    ...contextSearchIdParams,
+  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
+    const url = new URL(query, `${BASE_URL}/search`);
+
     const response = await fetch(url.href);
     if (response.ok) {
-      const fallbackData = await response.json();
-      return fallbackData;
+      const data = await response.json();
+
+      const selectedData = data.response.results.map(
+        (result: patientStoriesResult) => {
+          return result.data;
+        }
+      );
+
+      return {
+        patientStories: selectedData,
+        ctaQuery,
+        apiUrl: url.href,
+      };
     } else {
-      throw response.statusText;
+      throw {
+        url,
+        statusText: response.statusText,
+      };
     }
   } catch (error) {
-    console.error(error);
-    return rendering;
+    console.error(
+      {
+        message: 'Patient Stories server-side data fetching error',
+        error: error,
+      },
+      error
+    );
+    return { patientStories: [], ctaQuery };
   }
 };
