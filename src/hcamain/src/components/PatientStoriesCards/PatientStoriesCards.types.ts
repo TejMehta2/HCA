@@ -41,7 +41,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: { value: LinkFieldValue } };
+      cTALink: { jsonValue: { value: LinkFieldValue } };
       patientStories?: {
         PatientStoriesList?: PatientStoriesFields[];
       };
