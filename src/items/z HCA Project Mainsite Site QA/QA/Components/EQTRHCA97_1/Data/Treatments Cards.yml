@@ -16,21 +16,21 @@ Languages:
       Value: 3
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4553a45d-9804-46a6-93cd-22ac2e112007"
+      Value: "752efe8b-7ace-4344-8365-561160e93c39"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="View all &lt;b&gt;hip pain tests &amp; scans&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{A40C792E-42F6-4549-82C1-BD82242BA0B7}" />
+        <link text="View all &lt;b&gt;{{EntityName}} tests &amp; scans&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{A40C792E-42F6-4549-82C1-BD82242BA0B7}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: Hip pain tests & scans
+      Value: "{{EntityName}} tests & scans"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240320T123924Z
+      Value: 20240405T142717Z
     - ID: "ded86b0c-c734-4019-89c3-6c6a34a1cc8d"
       Hint: CTACardText
       Value: Learn more

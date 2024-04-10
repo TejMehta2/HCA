@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/FAQ Block/Data/Questions
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "query:./*[@@templateid='{CD6A159D-8577-4DBE-8C30-689449A15E5E}']|query:$site/*[@@name='Data']/*[@@name='FAQ Questions']"
+  Value: "query:$site/*[@@name='Data']/*[@@name='FAQ Questions']|query:self::"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Multiroot Treelist
@@ -31,11 +31,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fffe0ca7-189e-4b2f-881e-ceadb137001e"
+      Value: "65349185-3b04-4808-8782-6c6618d337c9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T160747Z
+      Value: 20240408T185424Z

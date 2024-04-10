@@ -14,6 +14,28 @@ interface ConsultantFinderContextType {
   setSearchStringPayment: React.Dispatch<React.SetStateAction<string>>;
   isSelfPayment: boolean;
   setIsSelfPayment: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedTypeOfAppointment: string;
+  setSelectedTypeOfAppointment: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocation: string;
+  setSelectedLocation: React.Dispatch<React.SetStateAction<string>>;
+  fristAppointmentDate: string;
+  setFirstAppointmentDate: React.Dispatch<React.SetStateAction<string>>;
+  consultantGUID: string;
+  setConsultantGUID: React.Dispatch<React.SetStateAction<string>>;
+  locationGUID: string;
+  setLocationGUID: React.Dispatch<React.SetStateAction<string>>;
+  lat: string;
+  setLat: React.Dispatch<React.SetStateAction<string>>;
+  lon: string;
+  setLon: React.Dispatch<React.SetStateAction<string>>;
+  selectedDate: string;
+  setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
+  selectedTime: string;
+  setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocationName: string;
+  setSelectedLocationName: React.Dispatch<React.SetStateAction<string>>;
+  isBookableContent: boolean;
+  setIsBookableContent: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ConsultantFinderContext =
@@ -33,6 +55,28 @@ export const ConsultantFinderContext =
     setSearchStringPayment: () => {},
     isSelfPayment: false,
     setIsSelfPayment: () => {},
+    selectedTypeOfAppointment: '',
+    setSelectedTypeOfAppointment: () => {},
+    selectedLocation: '',
+    setSelectedLocation: () => {},
+    fristAppointmentDate: '',
+    setFirstAppointmentDate: () => {},
+    consultantGUID: '',
+    setConsultantGUID: () => {},
+    locationGUID: '',
+    setLocationGUID: () => {},
+    lon: '',
+    setLon: () => {},
+    lat: '',
+    setLat: () => {},
+    selectedDate: '',
+    setSelectedDate: () => {},
+    selectedTime: '',
+    setSelectedTime: () => {},
+    selectedLocationName: '',
+    setSelectedLocationName: () => {},
+    isBookableContent: true,
+    setIsBookableContent: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -48,6 +92,18 @@ export const ConsultantFinderContextProvider = ({
   const [consultantSlug, setConsultantSlug] = useState<string>('');
   const [keywordId, setKeywordId] = useState<number>(0);
   const [isSelfPayment, setIsSelfPayment] = useState<boolean>(false);
+  const [selectedLocation, setSelectedLocation] = useState<string>('');
+  const [selectedTypeOfAppointment, setSelectedTypeOfAppointment] =
+    useState<string>('');
+  const [consultantGUID, setConsultantGUID] = useState<string>('');
+  const [locationGUID, setLocationGUID] = useState<string>('');
+  const [fristAppointmentDate, setFirstAppointmentDate] = useState<string>('');
+  const [lat, setLat] = useState<string>('');
+  const [lon, setLon] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedTime, setSelectedTime] = useState<string>('');
+  const [selectedLocationName, setSelectedLocationName] = useState<string>('');
+  const [isBookableContent, setIsBookableContent] = useState(true);
 
   return (
     <ConsultantFinderContext.Provider
@@ -66,6 +122,28 @@ export const ConsultantFinderContextProvider = ({
         setSearchStringPayment,
         isSelfPayment,
         setIsSelfPayment,
+        selectedTypeOfAppointment,
+        setSelectedTypeOfAppointment,
+        selectedLocation,
+        setSelectedLocation,
+        consultantGUID,
+        setConsultantGUID,
+        locationGUID,
+        setLocationGUID,
+        fristAppointmentDate,
+        setFirstAppointmentDate,
+        lat,
+        setLat,
+        lon,
+        setLon,
+        selectedDate,
+        setSelectedDate,
+        selectedTime,
+        setSelectedTime,
+        selectedLocationName,
+        setSelectedLocationName,
+        isBookableContent,
+        setIsBookableContent,
       }}
     >
       {children}

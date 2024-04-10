@@ -1,0 +1,27 @@
+﻿---
+ID: "0e597d21-8b44-43a3-bdce-b9ec2374e7bd"
+Parent: "12afaca2-442f-4ab2-b34b-749c4763e8ac"
+Template: "12afaca2-442f-4ab2-b34b-749c4763e8ac"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Generic Search/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "24378681-20d7-421a-b9ba-0e39a50c549b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240329T095308Z

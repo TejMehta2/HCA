@@ -346,6 +346,16 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_Insurance_Limit field (86fbdfcf-ecab-496a-89d8-322d5ee36fba).
             */
             API_Insurance_Limit?: Field<number>;
+
+            /**
+            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
+            */
+            API_Insurance_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
+            */
+            API_Insurance_NoResultsMsg?: Field<string>;
         }
 
     }
@@ -367,6 +377,148 @@ export namespace ConsultantFinder.Apicalls {
             */
             aPI_Insurance_Limit?: {
                 jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the API_Insurance_LoadingMsg field (059eaa4a-c317-4880-9fa1-418c234016a5).
+            */
+            aPI_Insurance_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_Insurance_NoResultsMsg field (680e05e4-8319-4635-b6f3-c8ad0ca0dd06).
+            */
+            aPI_Insurance_NoResultsMsg?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyPatientReviews
+    */
+    export type ApiDetailsDoctifyPatientReviews =  {
+        fields?: { 
+            /**
+            * Represents the API_DoctifyPatientReviews_BaseURL field (f1e76f7b-780c-49df-9cf3-cfe7f225b107).
+            */
+            API_DoctifyPatientReviews_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_DoctifyPatientReviews_Limit field (6992a26a-d03d-48c1-9b1e-608f8f902059).
+            */
+            API_DoctifyPatientReviews_Limit?: Field<number>;
+
+            /**
+            * Represents the API_DoctifyPatientReviews_LoadingMsg field (bdff49f9-c985-4a1f-a034-893829fad35e).
+            */
+            API_DoctifyPatientReviews_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_DoctifyPatientReviews_NoResultsMsg field (435e5224-e7c4-4ba2-bc9d-80a8a5bcf5ff).
+            */
+            API_DoctifyPatientReviews_NoResultsMsg?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyPatientReviews
+    */
+    export type ApiDetailsDoctifyPatientReviewsJson =  {
+        
+            /**
+            * Represents the API_DoctifyPatientReviews_BaseURL field (f1e76f7b-780c-49df-9cf3-cfe7f225b107).
+            */
+            aPI_DoctifyPatientReviews_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_DoctifyPatientReviews_Limit field (6992a26a-d03d-48c1-9b1e-608f8f902059).
+            */
+            aPI_DoctifyPatientReviews_Limit?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the API_DoctifyPatientReviews_LoadingMsg field (bdff49f9-c985-4a1f-a034-893829fad35e).
+            */
+            aPI_DoctifyPatientReviews_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_DoctifyPatientReviews_NoResultsMsg field (435e5224-e7c4-4ba2-bc9d-80a8a5bcf5ff).
+            */
+            aPI_DoctifyPatientReviews_NoResultsMsg?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyPeerReviews
+    */
+    export type ApiDetailsDoctifyPeerReviews =  {
+        fields?: { 
+            /**
+            * Represents the API_DoctifyPeerReviews_BaseURL field (99cb63bc-e8d5-4fb1-bff0-7de7b46d720f).
+            */
+            API_DoctifyPeerReviews_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_DoctifyPeerReviews_Limit field (e7b799ff-cd45-4867-96d6-51ba91440ab5).
+            */
+            API_DoctifyPeerReviews_Limit?: Field<number>;
+
+            /**
+            * Represents the API_DoctifyPeerReviews_LoadingMsg field (1a3f5ec3-6659-40bf-847b-f7f9383afe39).
+            */
+            API_DoctifyPeerReviews_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_DoctifyPeerReviews_NoResultsMsg field (d559e5f0-2974-4a6f-a9d2-c851e28cb7d3).
+            */
+            API_DoctifyPeerReviews_NoResultsMsg?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyPeerReviews
+    */
+    export type ApiDetailsDoctifyPeerReviewsJson =  {
+        
+            /**
+            * Represents the API_DoctifyPeerReviews_BaseURL field (99cb63bc-e8d5-4fb1-bff0-7de7b46d720f).
+            */
+            aPI_DoctifyPeerReviews_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_DoctifyPeerReviews_Limit field (e7b799ff-cd45-4867-96d6-51ba91440ab5).
+            */
+            aPI_DoctifyPeerReviews_Limit?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the API_DoctifyPeerReviews_LoadingMsg field (1a3f5ec3-6659-40bf-847b-f7f9383afe39).
+            */
+            aPI_DoctifyPeerReviews_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_DoctifyPeerReviews_NoResultsMsg field (d559e5f0-2974-4a6f-a9d2-c851e28cb7d3).
+            */
+            aPI_DoctifyPeerReviews_NoResultsMsg?: {
+                jsonValue: Field<string>
             };
 
 
@@ -634,6 +786,70 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_HCA_DoctifyToFacilities_UtilizesLegacy field (464b2884-891a-44bc-a5b9-62c89e42fc1a).
             */
             aPI_HCA_DoctifyToFacilities_UtilizesLegacy?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_Holidays
+    */
+    export type ApiHcaHolidays =  {
+        fields?: { 
+            /**
+            * Represents the API_HCA_Holidays_BaseURL field (998d27de-77af-49e1-a12d-53c2897dd5d2).
+            */
+            API_HCA_Holidays_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Holidays_LoadingMsg field (ee235687-abf2-4ebf-88df-7cf17956f7ad).
+            */
+            API_HCA_Holidays_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Holidays_NoResultsMsg field (697c21ff-47df-4f90-8f8e-de8186aab800).
+            */
+            API_HCA_Holidays_NoResultsMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Holidays_UtilizesLegacy field (f9f31e6d-f123-42f3-b158-2362d1c45683).
+            */
+            API_HCA_Holidays_UtilizesLegacy?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_Holidays
+    */
+    export type ApiHcaHolidaysJson =  {
+        
+            /**
+            * Represents the API_HCA_Holidays_BaseURL field (998d27de-77af-49e1-a12d-53c2897dd5d2).
+            */
+            aPI_HCA_Holidays_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Holidays_LoadingMsg field (ee235687-abf2-4ebf-88df-7cf17956f7ad).
+            */
+            aPI_HCA_Holidays_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Holidays_NoResultsMsg field (697c21ff-47df-4f90-8f8e-de8186aab800).
+            */
+            aPI_HCA_Holidays_NoResultsMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Holidays_UtilizesLegacy field (f9f31e6d-f123-42f3-b158-2362d1c45683).
+            */
+            aPI_HCA_Holidays_UtilizesLegacy?: {
                 jsonValue: Field<boolean>
             };
 
@@ -1813,9 +2029,11 @@ export namespace PageContent {
         
 
     }
+}
+export namespace Navigation {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs
     */
     export type Breadcrumbs =  {
         fields?: { 
@@ -1828,7 +2046,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs
     */
     export type BreadcrumbsJson =  {
         
@@ -1842,10 +2060,10 @@ export namespace PageContent {
 
     }
 }
-export namespace PageContent.RenderingParameters {
+export namespace Navigation.RenderingParameters {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Breadcrumbs
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Breadcrumbs
     */
     export type Breadcrumbs =  {
         fields?: {         }
@@ -1853,17 +2071,17 @@ export namespace PageContent.RenderingParameters {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Breadcrumbs
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Breadcrumbs
     */
     export type BreadcrumbsJson =  {
         
 
     }
 }
-export namespace PageContent {
+export namespace Navigation {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs Folder
+    * Represents the template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs Folder
     */
     export type BreadcrumbsFolder =  {
         fields?: {         }
@@ -1871,7 +2089,7 @@ export namespace PageContent {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Breadcrumbs Folder
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Navigation/Breadcrumbs Folder
     */
     export type BreadcrumbsFolderJson =  {
         
@@ -2446,7 +2664,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Condition Page
     */
     export type ConditionPage = Foundation.HcabasePage & 
-Business.Condition &  {
+Business.Condition & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -2455,7 +2674,8 @@ Business.Condition &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Condition Page
     */
     export type ConditionPageJson = Foundation.HcabasePageJson & 
-Business.ConditionJson &  {
+Business.ConditionJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -2953,6 +3173,11 @@ export namespace PageContent {
             CTACardText?: Field<string>;
 
             /**
+            * Represents the Heading field (286fc562-90df-4163-8ba8-eb6e21b04c7e).
+            */
+            Heading?: Field<string>;
+
+            /**
             * Represents the Pages field (e6568c06-70ff-4b88-b5ed-44a0bd98df50).
             */
             Pages?: Item[];
@@ -2974,6 +3199,13 @@ export namespace PageContent {
             * Represents the CTA Card Text field (cddfe7c4-c61f-48a4-8719-85e660642a13).
             */
             cTACardText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Heading field (286fc562-90df-4163-8ba8-eb6e21b04c7e).
+            */
+            heading?: {
                 jsonValue: Field<string>
             };
 
@@ -3048,88 +3280,6 @@ export namespace Foundation.ContentCard {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Content Card/Content Cards Folder
     */
     export type ContentCardsFolderJson =  {
-        
-
-    }
-}
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider
-    */
-    export type ContentCardsSlider = Foundation.Ctabase &  {
-        fields?: { 
-            /**
-            * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
-            */
-            CTACardText?: Field<string>;
-
-            /**
-            * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
-            */
-            Heading?: Field<string>;
-
-            /**
-            * Represents the Pages field (8c120705-ad32-4f5e-a87e-84b01b1f2d83).
-            */
-            Pages?: Item[];
-
-            /**
-            * Represents the Title field (17be2717-992a-4d65-918b-07bb26210837).
-            */
-            Title?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider
-    */
-    export type ContentCardsSliderJson = Foundation.CtabaseJson &  {
-        
-            /**
-            * Represents the CTA Card Text field (0120cb1f-140d-43eb-8ed4-aac38f98dcf0).
-            */
-            cTACardText?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Heading field (2ffa16c6-9052-4ce3-9a81-95694b145328).
-            */
-            heading?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Pages field (8c120705-ad32-4f5e-a87e-84b01b1f2d83).
-            */
-            pages?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the Title field (17be2717-992a-4d65-918b-07bb26210837).
-            */
-            title?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder
-    */
-    export type ContentCardsSliderFolder =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Content Cards Slider Folder
-    */
-    export type ContentCardsSliderFolderJson =  {
         
 
     }
@@ -3406,7 +3556,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Diagnosis Page
     */
     export type DiagnosisPage = Foundation.HcabasePage & 
-Business.Diagnosis &  {
+Business.Diagnosis & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -3415,7 +3566,8 @@ Business.Diagnosis &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Diagnosis Page
     */
     export type DiagnosisPageJson = Foundation.HcabasePageJson & 
-Business.DiagnosisJson &  {
+Business.DiagnosisJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -7957,7 +8109,9 @@ export namespace ConsultantFinder.Frames {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews
     */
-    export type FrameReviews = ConsultantFinder.Branding.DoctifyLogoDetails &  {
+    export type FrameReviews = ConsultantFinder.Branding.DoctifyLogoDetails & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyPatientReviews & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyPeerReviews &  {
         fields?: { 
             /**
             * Represents the DoctifyReviewsImage field (43a1aa55-0f95-4230-9dc2-6951304ab200).
@@ -8005,7 +8159,9 @@ export namespace ConsultantFinder.Frames {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews
     */
-    export type FrameReviewsJson = ConsultantFinder.Branding.DoctifyLogoDetailsJson &  {
+    export type FrameReviewsJson = ConsultantFinder.Branding.DoctifyLogoDetailsJson & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyPatientReviewsJson & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyPeerReviewsJson &  {
         
             /**
             * Represents the DoctifyReviewsImage field (43a1aa55-0f95-4230-9dc2-6951304ab200).
@@ -8120,6 +8276,60 @@ export namespace ConsultantFinder.Data {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Generic Search
+    */
+    export type GenericSearch =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Generic Search
+    */
+    export type GenericSearchJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Generic Search
+    */
+    export type GenericSearch =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Generic Search
+    */
+    export type GenericSearchJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Generic Search Folder
+    */
+    export type GenericSearchFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Generic Search Folder
+    */
+    export type GenericSearchFolderJson =  {
+        
+
+    }
+}
 export namespace Foundation.Settings {
 
     /**
@@ -8215,7 +8425,8 @@ export namespace ConsultantFinder.Settings {
     */
     export type HcaApiSettings = ConsultantFinder.Apicalls.ApiHcaDoctifyToFacilities & 
 ConsultantFinder.Apicalls.ApiHcaLdbConsultants & 
-ConsultantFinder.Apicalls.ApiHcaAllConsultants &  {
+ConsultantFinder.Apicalls.ApiHcaAllConsultants & 
+ConsultantFinder.Apicalls.ApiHcaHolidays &  {
         fields?: {         }
 
     }
@@ -8225,7 +8436,8 @@ ConsultantFinder.Apicalls.ApiHcaAllConsultants &  {
     */
     export type HcaApiSettingsJson = ConsultantFinder.Apicalls.ApiHcaDoctifyToFacilitiesJson & 
 ConsultantFinder.Apicalls.ApiHcaLdbConsultantsJson & 
-ConsultantFinder.Apicalls.ApiHcaAllConsultantsJson &  {
+ConsultantFinder.Apicalls.ApiHcaAllConsultantsJson & 
+ConsultantFinder.Apicalls.ApiHcaHolidaysJson &  {
         
 
     }
@@ -9554,11 +9766,6 @@ export namespace PageContent {
     export type LocationsMap = Foundation.Ctabase &  {
         fields?: { 
             /**
-            * Represents the Background Image field (c5d29658-12d9-4dc2-b36f-d90ce71e53a6).
-            */
-            BackgroundImage?: ImageField;
-
-            /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
             Cards?: Item[];
@@ -9567,11 +9774,6 @@ export namespace PageContent {
             * Represents the Heading field (53e1bf97-8923-4d23-8f1f-78a53a0b0c94).
             */
             Heading?: Field<string>;
-
-            /**
-            * Represents the Pin Image field (bc81486e-594e-455d-9e76-3e171d945a48).
-            */
-            PinImage?: ImageField;
 
             /**
             * Represents the Text field (a9ada15f-0a53-4831-b67c-c2e5d8aee6aa).
@@ -9592,13 +9794,6 @@ export namespace PageContent {
     export type LocationsMapJson = Foundation.CtabaseJson &  {
         
             /**
-            * Represents the Background Image field (c5d29658-12d9-4dc2-b36f-d90ce71e53a6).
-            */
-            backgroundImage?: {
-                jsonValue: ImageField
-            };
-
-            /**
             * Represents the Cards field (0558a871-33a4-4598-ba3d-48c3c8c960e7).
             */
             cards?: {
@@ -9610,13 +9805,6 @@ export namespace PageContent {
             */
             heading?: {
                 jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Pin Image field (bc81486e-594e-455d-9e76-3e171d945a48).
-            */
-            pinImage?: {
-                jsonValue: ImageField
             };
 
             /**
@@ -10116,14 +10304,14 @@ export namespace Foundation {
     export type MapCard = Foundation.Ctabase &  {
         fields?: { 
             /**
-            * Represents the Pin Position field (09288575-7091-48ef-bdd9-f527623b3052).
+            * Represents the Icon field (bc189b1e-2b88-43ed-8b4b-35e04b48f66f).
             */
-            CardStyles?: Field<string>;
+            Icon?: Item;
 
             /**
-            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            * Represents the Map Scale (1 is default scale, e.g. 0.5, 1.5) field (ca2e7233-45b8-40b4-93b1-9da72806a476).
             */
-            MapStyles?: Field<string>;
+            MapScale?: Field<number>;
 
             /**
             * Represents the Number field (c7b99527-05ed-44a3-9666-da41ecb28403).
@@ -10131,9 +10319,14 @@ export namespace Foundation {
             Number?: Field<string>;
 
             /**
-            * Represents the PinPosition field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
+            * Represents the Pin Position X (value between  0 and 1, with max 3 decimals) field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
             */
-            PinPosition?: Field<string>;
+            PinPositionX?: Field<number>;
+
+            /**
+            * Represents the Pin Position Y (value between 0 and 1, with max 3 decimals) field (40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e).
+            */
+            PinPositionY?: Field<number>;
 
             /**
             * Represents the Text field (f94333db-fc15-460d-99aa-e2b335335ef8).
@@ -10144,6 +10337,11 @@ export namespace Foundation {
             * Represents the Theme field (a5aca649-4c43-4cb3-a49a-d2e6d03b0bd3).
             */
             Theme?: Item;
+
+            /**
+            * Represents the Title field (2756feac-eccf-49fd-ba14-a13c1cfe5f8a).
+            */
+            Title?: Field<string>;
         }
 
     }
@@ -10154,17 +10352,17 @@ export namespace Foundation {
     export type MapCardJson = Foundation.CtabaseJson &  {
         
             /**
-            * Represents the Pin Position field (09288575-7091-48ef-bdd9-f527623b3052).
+            * Represents the Icon field (bc189b1e-2b88-43ed-8b4b-35e04b48f66f).
             */
-            cardStyles?: {
-                jsonValue: Field<string>
+            icon?: {
+                jsonValue: Item
             };
 
             /**
-            * Represents the MapStyles field (64f64b91-a724-4592-b254-1074e323f51f).
+            * Represents the Map Scale (1 is default scale, e.g. 0.5, 1.5) field (ca2e7233-45b8-40b4-93b1-9da72806a476).
             */
-            mapStyles?: {
-                jsonValue: Field<string>
+            mapScale?: {
+                jsonValue: Field<number>
             };
 
             /**
@@ -10175,10 +10373,17 @@ export namespace Foundation {
             };
 
             /**
-            * Represents the PinPosition field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
+            * Represents the Pin Position X (value between  0 and 1, with max 3 decimals) field (a8a330a5-a593-415e-9d5e-ce864b2bf010).
             */
-            pinPosition?: {
-                jsonValue: Field<string>
+            pinPositionX?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Pin Position Y (value between 0 and 1, with max 3 decimals) field (40c0d2ad-cbcf-4ba2-9a9c-8bb6398d125e).
+            */
+            pinPositionY?: {
+                jsonValue: Field<number>
             };
 
             /**
@@ -10193,6 +10398,13 @@ export namespace Foundation {
             */
             theme?: {
                 jsonValue: Item
+            };
+
+            /**
+            * Represents the Title field (2756feac-eccf-49fd-ba14-a13c1cfe5f8a).
+            */
+            title?: {
+                jsonValue: Field<string>
             };
 
 
@@ -10219,90 +10431,70 @@ export namespace Foundation.Share {
 export namespace PageContent {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Metadata
     */
-    export type ModalContent =  {
+    export type Metadata =  {
         fields?: { 
             /**
-            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            * Represents the Default Meta Image field (6cc39fb1-06da-4fcb-a236-53524df59a4c).
             */
-            PrimaryCTA?: LinkField;
+            DefaultMetaImage?: ImageField;
 
             /**
-            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            * Represents the Page Title Sufix field (3c2f41c9-21ed-4ec9-a882-55a9f09e7840).
             */
-            PrimaryCTAIcon?: Item;
+            PageTitleSufix?: Field<string>;
 
             /**
-            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            * Represents the Twitter Card field (705043de-52a5-4d01-95d8-18fe9892cfff).
             */
-            SecondaryCTA?: LinkField;
-
-            /**
-            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
-            */
-            SecondaryCTAIcon?: Item;
-
-            /**
-            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
-            */
-            Text?: Field<string>;
-
-            /**
-            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
-            */
-            Title?: Field<string>;
+            TwitterCard?: Field<string>;
         }
 
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Metadata
     */
-    export type ModalContentJson =  {
+    export type MetadataJson =  {
         
             /**
-            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            * Represents the Default Meta Image field (6cc39fb1-06da-4fcb-a236-53524df59a4c).
             */
-            primaryCTA?: {
-                jsonValue: LinkField
+            defaultMetaImage?: {
+                jsonValue: ImageField
             };
 
             /**
-            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            * Represents the Page Title Sufix field (3c2f41c9-21ed-4ec9-a882-55a9f09e7840).
             */
-            primaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
-            */
-            secondaryCTA?: {
-                jsonValue: LinkField
-            };
-
-            /**
-            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
-            */
-            secondaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
-            */
-            text?: {
+            pageTitleSufix?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            * Represents the Twitter Card field (705043de-52a5-4d01-95d8-18fe9892cfff).
             */
-            title?: {
+            twitterCard?: {
                 jsonValue: Field<string>
             };
 
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Metadata Folder
+    */
+    export type MetadataFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Metadata Folder
+    */
+    export type MetadataFolderJson =  {
+        
 
     }
 }
@@ -10396,6 +10588,96 @@ export namespace Foundation {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContent =  {
+        fields?: { 
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            PrimaryCTA?: LinkField;
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            PrimaryCTAIcon?: Item;
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            SecondaryCTA?: LinkField;
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            SecondaryCTAIcon?: Item;
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Modal Content
+    */
+    export type ModalContentJson =  {
+        
+            /**
+            * Represents the PrimaryCTA field (872960fa-91ae-4c72-9df2-ea6cc530f183).
+            */
+            primaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the PrimaryCTAIcon field (7649f056-4f79-402f-aac9-bc812d7934de).
+            */
+            primaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the SecondaryCTA field (b127ef4d-194e-4c08-b936-9e111d2a260e).
+            */
+            secondaryCTA?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the SecondaryCTAIcon field (1832429f-ff7f-49c2-b955-649db94314b3).
+            */
+            secondaryCTAIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the Text field (bbfd5812-b426-4455-9f7c-6b5fb5523763).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (05db6403-e163-4b0d-8aa3-e29c8adb2345).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
 export namespace PageContent.RenderingParameters {
 
     /**
@@ -10429,6 +10711,112 @@ export namespace PageContent {
     */
     export type ModalContentFolderJson =  {
         
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/More Information CTA
+    */
+    export type MoreInformationCta = Foundation.Ctabase &  {
+        fields?: { 
+            /**
+            * Represents the Modal Content field (d13c5304-78a3-417a-8644-fbddbba7f7b8).
+            */
+            ModalContent?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/More Information CTA
+    */
+    export type MoreInformationCtaJson = Foundation.CtabaseJson &  {
+        
+            /**
+            * Represents the Modal Content field (d13c5304-78a3-417a-8644-fbddbba7f7b8).
+            */
+            modalContent?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/More Information CTA
+    */
+    export type MoreInformationCta =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/More Information CTA
+    */
+    export type MoreInformationCtaJson =  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/More Information CTA Folder
+    */
+    export type MoreInformationCtaFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/More Information CTA Folder
+    */
+    export type MoreInformationCtaFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
+    */
+    export type MoreInformationModalContent =  {
+        fields?: { 
+            /**
+            * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (04683221-90f3-4e36-9e78-8da47d1f810c).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
+    */
+    export type MoreInformationModalContentJson =  {
+        
+            /**
+            * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (04683221-90f3-4e36-9e78-8da47d1f810c).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }
@@ -10824,36 +11212,6 @@ export namespace HCA.Project.HCA {
 
     }
 }
-export namespace PageContent {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Page Content/Page Proxy
-    */
-    export type PageProxy = Foundation.HcabasePageData &  {
-        fields?: { 
-            /**
-            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
-            */
-            Link?: LinkField;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Page Proxy
-    */
-    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
-        
-            /**
-            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
-            */
-            link?: {
-                jsonValue: LinkField
-            };
-
-
-    }
-}
 export namespace Foundation {
 
     /**
@@ -10876,6 +11234,36 @@ export namespace Foundation {
         
             /**
             * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            link?: {
+                jsonValue: LinkField
+            };
+
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Page Proxy
+    */
+    export type PageProxy = Foundation.HcabasePageData &  {
+        fields?: { 
+            /**
+            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
+            */
+            Link?: LinkField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Page Proxy
+    */
+    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
+        
+            /**
+            * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
             */
             link?: {
                 jsonValue: LinkField
@@ -11025,6 +11413,122 @@ Foundation.RenderingParameters.ThemesParametersJson &  {
 export namespace PageContent {
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards
+    */
+    export type PatientStoriesCards = Foundation.Ctabase & 
+Foundation.ComponentBase &  {
+        fields?: { 
+            /**
+            * Represents the CTA Text field (8686ffe5-371d-4d4b-831c-65a8c0cb4194).
+            */
+            CTAText?: Field<string>;
+
+            /**
+            * Represents the Filter Options field (bf8fc4c7-d0e9-495c-8be6-ad25a12399ee).
+            */
+            FilterOptions?: Item[];
+
+            /**
+            * Represents the Number Of Cards field (f36b34ea-5278-41d5-a812-ab42ac4ab3eb).
+            */
+            NumberOfCards?: Field<number>;
+
+            /**
+            * Represents the Patient Stories field (d114a478-69e1-491f-8d51-d2f851d99690).
+            */
+            PatientStories?: Item[];
+
+            /**
+            * Represents the Search Options field (18c213cb-ed01-4c9c-8c60-07f67127fd87).
+            */
+            SearchOptions?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards
+    */
+    export type PatientStoriesCardsJson = Foundation.CtabaseJson & 
+Foundation.ComponentBaseJson &  {
+        
+            /**
+            * Represents the CTA Text field (8686ffe5-371d-4d4b-831c-65a8c0cb4194).
+            */
+            cTAText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Filter Options field (bf8fc4c7-d0e9-495c-8be6-ad25a12399ee).
+            */
+            filterOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Number Of Cards field (f36b34ea-5278-41d5-a812-ab42ac4ab3eb).
+            */
+            numberOfCards?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Patient Stories field (d114a478-69e1-491f-8d51-d2f851d99690).
+            */
+            patientStories?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Search Options field (18c213cb-ed01-4c9c-8c60-07f67127fd87).
+            */
+            searchOptions?: {
+                jsonValue: Item[]
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards Folder
+    */
+    export type PatientStoriesCardsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards Folder
+    */
+    export type PatientStoriesCardsFolderJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Cards Params
+    */
+    export type PatientStoriesCardsParams = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Patient Stories Cards Params
+    */
+    export type PatientStoriesCardsParamsJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Patient Stories Folder
     */
     export type PatientStoriesFolder =  {
@@ -11109,7 +11613,12 @@ export namespace Pages {
             Date?: Field<string>;
 
             /**
-            * Represents the __Standard Values field (079438d8-dea6-45e4-b65a-f009672644ee).
+            * Represents the Facility field (0d9279cd-371f-4bad-a998-a2c132f90309).
+            */
+            Facility?: Item[];
+
+            /**
+            * Represents the Speciality field (079438d8-dea6-45e4-b65a-f009672644ee).
             */
             Speciality?: Item[];
         }
@@ -11129,7 +11638,14 @@ export namespace Pages {
             };
 
             /**
-            * Represents the __Standard Values field (079438d8-dea6-45e4-b65a-f009672644ee).
+            * Represents the Facility field (0d9279cd-371f-4bad-a998-a2c132f90309).
+            */
+            facility?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the Speciality field (079438d8-dea6-45e4-b65a-f009672644ee).
             */
             speciality?: {
                 jsonValue: Item[]
@@ -11204,6 +11720,182 @@ Foundation.RenderingParameters.ThemesParametersJson &  {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Pricing Information
+    */
+    export type PricingInformation =  {
+        fields?: { 
+            /**
+            * Represents the Consultant Fee field (c36dd486-41e0-4f75-b232-fe5f8a38351d).
+            */
+            ConsultantFee?: Field<string>;
+
+            /**
+            * Represents the Consultant Fee Text field (b7a0f454-385f-4490-b5d7-f25ff0aa6c59).
+            */
+            ConsultantFeeText?: Field<string>;
+
+            /**
+            * Represents the Heading field (36af04c4-cb10-48a6-b215-aba7df840abe).
+            */
+            Heading?: Field<string>;
+
+            /**
+            * Represents the Image field (18d864de-57a4-4e68-bf82-66085670115f).
+            */
+            Image?: ImageField;
+
+            /**
+            * Represents the Length Of Stay field (4ae26fbf-6187-4a38-841a-f045e43239e1).
+            */
+            LengthOfStay?: Field<string>;
+
+            /**
+            * Represents the Length Of Stay Text field (f5d60867-78dd-41c4-a888-a21f913c7abf).
+            */
+            LengthOfStayText?: Field<string>;
+
+            /**
+            * Represents the Price From field (14480d61-12dc-46cb-ba84-7a8f49331c50).
+            */
+            PriceFrom?: Field<string>;
+
+            /**
+            * Represents the Price From Text field (f3257541-de54-4c26-9193-59dc0af81134).
+            */
+            PriceFromText?: Field<string>;
+
+            /**
+            * Represents the Text field (831b2373-7a3e-40ff-b7e8-b3ffe5a38369).
+            */
+            Text?: Field<string>;
+
+            /**
+            * Represents the Title field (6a6d174e-7b11-4aff-9817-d7afd4dab053).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Pricing Information
+    */
+    export type PricingInformationJson =  {
+        
+            /**
+            * Represents the Consultant Fee field (c36dd486-41e0-4f75-b232-fe5f8a38351d).
+            */
+            consultantFee?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Consultant Fee Text field (b7a0f454-385f-4490-b5d7-f25ff0aa6c59).
+            */
+            consultantFeeText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Heading field (36af04c4-cb10-48a6-b215-aba7df840abe).
+            */
+            heading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Image field (18d864de-57a4-4e68-bf82-66085670115f).
+            */
+            image?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Length Of Stay field (4ae26fbf-6187-4a38-841a-f045e43239e1).
+            */
+            lengthOfStay?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Length Of Stay Text field (f5d60867-78dd-41c4-a888-a21f913c7abf).
+            */
+            lengthOfStayText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Price From field (14480d61-12dc-46cb-ba84-7a8f49331c50).
+            */
+            priceFrom?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Price From Text field (f3257541-de54-4c26-9193-59dc0af81134).
+            */
+            priceFromText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Text field (831b2373-7a3e-40ff-b7e8-b3ffe5a38369).
+            */
+            text?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (6a6d174e-7b11-4aff-9817-d7afd4dab053).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Pricing Information
+    */
+    export type PricingInformation = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Pricing Information
+    */
+    export type PricingInformationJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Pricing Information Folder
+    */
+    export type PricingInformationFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Pricing Information Folder
+    */
+    export type PricingInformationFolderJson =  {
+        
+
+    }
+}
 export namespace ConsultantFinder.Data {
 
     /**
@@ -11253,6 +11945,60 @@ export namespace ConsultantFinder.Data {
             */
             type?: {
                 jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace ConsultantFinder.ProgressBar {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/ProgressBar/ProgressBar
+    */
+    export type ProgressBar =  {
+        fields?: { 
+            /**
+            * Represents the CurrentStep field (b61dba63-67de-40db-909b-d530fa7a33d1).
+            */
+            CurrentStep?: Field<number>;
+
+            /**
+            * Represents the HCALogo field (663dcbd3-519b-4ed6-ad86-a04644f5c62b).
+            */
+            HCALogo?: ImageField;
+
+            /**
+            * Represents the Steps field (fbd59fd2-958b-4b3a-9b58-3db568c4c725).
+            */
+            Steps?: Item[];
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/ProgressBar/ProgressBar
+    */
+    export type ProgressBarJson =  {
+        
+            /**
+            * Represents the CurrentStep field (b61dba63-67de-40db-909b-d530fa7a33d1).
+            */
+            currentStep?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the HCALogo field (663dcbd3-519b-4ed6-ad86-a04644f5c62b).
+            */
+            hCALogo?: {
+                jsonValue: ImageField
+            };
+
+            /**
+            * Represents the Steps field (fbd59fd2-958b-4b3a-9b58-3db568c4c725).
+            */
+            steps?: {
+                jsonValue: Item[]
             };
 
 
@@ -11804,7 +12550,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Specialty Page
     */
     export type SpecialtyPage = Foundation.HcabasePage & 
-Business.Specialty &  {
+Business.Specialty & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -11813,7 +12560,8 @@ Business.Specialty &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Specialty Page
     */
     export type SpecialtyPageJson = Foundation.HcabasePageJson & 
-Business.SpecialtyJson &  {
+Business.SpecialtyJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -11841,7 +12589,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepAppointmentType
     */
-    export type StepAppointmentType = ConsultantFinder.Steps.StepCommon &  {
+    export type StepAppointmentType = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar &  {
         fields?: { 
             /**
             * Represents the FollowOnAppointmentLink field (4f04820f-2826-4a10-a2e6-a55a15b39076).
@@ -11849,9 +12598,39 @@ export namespace ConsultantFinder.Steps {
             FollowOnAppointmentLink?: LinkField;
 
             /**
+            * Represents the FollowUpAppointmentBodyText field (a1385852-50fe-460f-ac52-8c082decf152).
+            */
+            FollowUpAppointmentBodyText?: Field<string>;
+
+            /**
+            * Represents the FollowUpAppointmentIcon field (e74f4518-17f7-4e93-ba65-dd1571a4c0a2).
+            */
+            FollowUpAppointmentIcon?: Item;
+
+            /**
+            * Represents the FollowUpAppointmentTitle field (beb64945-502a-4b2a-91b1-0a8e2d054bdb).
+            */
+            FollowUpAppointmentTitle?: Field<string>;
+
+            /**
+            * Represents the InitialAppointmentBodyText field (e8e590ff-72dd-4be2-8da6-a1b361c40e3b).
+            */
+            InitialAppointmentBodyText?: Field<string>;
+
+            /**
+            * Represents the InitialAppointmentIcon field (0e9b5729-441d-4f61-be92-ed17b10eb1de).
+            */
+            InitialAppointmentIcon?: Item;
+
+            /**
             * Represents the InitialAppointmentLink field (f42d34fc-5a95-44ec-afce-b1f70b83422b).
             */
             InitialAppointmentLink?: LinkField;
+
+            /**
+            * Represents the InitialAppointmentTitle field (48f6ce68-9d7d-456c-8ff4-277258eeb58b).
+            */
+            InitialAppointmentTitle?: Field<string>;
         }
 
     }
@@ -11859,7 +12638,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepAppointmentType
     */
-    export type StepAppointmentTypeJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepAppointmentTypeJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson &  {
         
             /**
             * Represents the FollowOnAppointmentLink field (4f04820f-2826-4a10-a2e6-a55a15b39076).
@@ -11869,10 +12649,52 @@ export namespace ConsultantFinder.Steps {
             };
 
             /**
+            * Represents the FollowUpAppointmentBodyText field (a1385852-50fe-460f-ac52-8c082decf152).
+            */
+            followUpAppointmentBodyText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the FollowUpAppointmentIcon field (e74f4518-17f7-4e93-ba65-dd1571a4c0a2).
+            */
+            followUpAppointmentIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the FollowUpAppointmentTitle field (beb64945-502a-4b2a-91b1-0a8e2d054bdb).
+            */
+            followUpAppointmentTitle?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the InitialAppointmentBodyText field (e8e590ff-72dd-4be2-8da6-a1b361c40e3b).
+            */
+            initialAppointmentBodyText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the InitialAppointmentIcon field (0e9b5729-441d-4f61-be92-ed17b10eb1de).
+            */
+            initialAppointmentIcon?: {
+                jsonValue: Item
+            };
+
+            /**
             * Represents the InitialAppointmentLink field (f42d34fc-5a95-44ec-afce-b1f70b83422b).
             */
             initialAppointmentLink?: {
                 jsonValue: LinkField
+            };
+
+            /**
+            * Represents the InitialAppointmentTitle field (48f6ce68-9d7d-456c-8ff4-277258eeb58b).
+            */
+            initialAppointmentTitle?: {
+                jsonValue: Field<string>
             };
 
 
@@ -13826,6 +14648,72 @@ ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson &  {
 
     }
 }
+export namespace ConsultantFinder.Data {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Data/StepItem
+    */
+    export type StepItem =  {
+        fields?: { 
+            /**
+            * Represents the Link field (9abf2a5d-2689-46d4-b509-273c67068aef).
+            */
+            Link?: LinkField;
+
+            /**
+            * Represents the Order field (e2c8b95e-752d-4a36-83f3-5cb13976480d).
+            */
+            Order?: Field<number>;
+
+            /**
+            * Represents the Selected field (93dc47f0-c7e4-4132-a6a6-9bee06840d62).
+            */
+            Selected?: Field<boolean>;
+
+            /**
+            * Represents the StepText field (f0986ce5-e272-485c-90b0-3417b2d8677e).
+            */
+            StepText?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Data/StepItem
+    */
+    export type StepItemJson =  {
+        
+            /**
+            * Represents the Link field (9abf2a5d-2689-46d4-b509-273c67068aef).
+            */
+            link?: {
+                jsonValue: LinkField
+            };
+
+            /**
+            * Represents the Order field (e2c8b95e-752d-4a36-83f3-5cb13976480d).
+            */
+            order?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Selected field (93dc47f0-c7e4-4132-a6a6-9bee06840d62).
+            */
+            selected?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the StepText field (f0986ce5-e272-485c-90b0-3417b2d8677e).
+            */
+            stepText?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
 export namespace ConsultantFinder.RenderingParameters {
 
     /**
@@ -13849,7 +14737,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingConfirmation
     */
-    export type StepLiveBookingConfirmation = ConsultantFinder.Steps.StepCommon &  {
+    export type StepLiveBookingConfirmation = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar &  {
         fields?: {         }
 
     }
@@ -13857,7 +14746,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingConfirmation
     */
-    export type StepLiveBookingConfirmationJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepLiveBookingConfirmationJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson &  {
         
 
     }
@@ -13902,7 +14792,9 @@ export namespace ConsultantFinder.Steps {
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingForm
     */
     export type StepLiveBookingForm = ConsultantFinder.Forms.LiveBookingForm.LiveBookingForm & 
-ConsultantFinder.Steps.StepCommon &  {
+ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar & 
+ConsultantFinder.Apicalls.ApiC2ReserveConsultantSlot &  {
         fields?: {         }
 
     }
@@ -13911,7 +14803,9 @@ ConsultantFinder.Steps.StepCommon &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingForm
     */
     export type StepLiveBookingFormJson = ConsultantFinder.Forms.LiveBookingForm.LiveBookingFormJson & 
-ConsultantFinder.Steps.StepCommonJson &  {
+ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson & 
+ConsultantFinder.Apicalls.ApiC2ReserveConsultantSlotJson &  {
         
 
     }
@@ -13955,7 +14849,9 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLocationSelect
     */
-    export type StepLocationSelect = ConsultantFinder.Steps.StepCommon &  {
+    export type StepLocationSelect = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar & 
+ConsultantFinder.Apicalls.ApiC2GetConsultantDetails &  {
         fields?: { 
             /**
             * Represents the CantFindBannerIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
@@ -13966,6 +14862,11 @@ export namespace ConsultantFinder.Steps {
             * Represents the CantFindBannerText field (3b1fe756-7bfc-41b2-8b37-368194540b57).
             */
             CantFindBannerText?: Field<string>;
+
+            /**
+            * Represents the CantFindPhoneNumber field (c63bb75e-f1f0-48e3-b4ae-6859c11a3e6b).
+            */
+            CantFindPhoneNumber?: Field<string>;
 
             /**
             * Represents the CardTimeIcon field (9bf19ca3-157a-4338-a347-53dccf9ced45).
@@ -13983,7 +14884,9 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLocationSelect
     */
-    export type StepLocationSelectJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepLocationSelectJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson & 
+ConsultantFinder.Apicalls.ApiC2GetConsultantDetailsJson &  {
         
             /**
             * Represents the CantFindBannerIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
@@ -13996,6 +14899,13 @@ export namespace ConsultantFinder.Steps {
             * Represents the CantFindBannerText field (3b1fe756-7bfc-41b2-8b37-368194540b57).
             */
             cantFindBannerText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the CantFindPhoneNumber field (c63bb75e-f1f0-48e3-b4ae-6859c11a3e6b).
+            */
+            cantFindPhoneNumber?: {
                 jsonValue: Field<string>
             };
 
@@ -14517,7 +15427,9 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSlotSelect
     */
-    export type StepSlotSelect = ConsultantFinder.Steps.StepCommon &  {
+    export type StepSlotSelect = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar & 
+ConsultantFinder.Apicalls.ApiC2GetConsultantSlots &  {
         fields?: { 
             /**
             * Represents the AppointmentSelectedText field (562fdf3d-919e-4384-917c-e84aff8402ae).
@@ -14565,7 +15477,9 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSlotSelect
     */
-    export type StepSlotSelectJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepSlotSelectJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson & 
+ConsultantFinder.Apicalls.ApiC2GetConsultantSlotsJson &  {
         
             /**
             * Represents the AppointmentSelectedText field (562fdf3d-919e-4384-917c-e84aff8402ae).
@@ -14665,7 +15579,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepTermsAndConditions
     */
-    export type StepTermsAndConditions = ConsultantFinder.Steps.StepCommon &  {
+    export type StepTermsAndConditions = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.ProgressBar.ProgressBar &  {
         fields?: { 
             /**
             * Represents the AcceptButtonText field (cbbe0f9a-40a2-4f34-890c-fc1b088eb691).
@@ -14743,7 +15658,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepTermsAndConditions
     */
-    export type StepTermsAndConditionsJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepTermsAndConditionsJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.ProgressBar.ProgressBarJson &  {
         
             /**
             * Represents the AcceptButtonText field (cbbe0f9a-40a2-4f34-890c-fc1b088eb691).
@@ -14904,7 +15820,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Subspecialty Page
     */
     export type SubspecialtyPage = Foundation.HcabasePage & 
-Business.Subspecialty &  {
+Business.Subspecialty & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -14913,7 +15830,8 @@ Business.Subspecialty &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Subspecialty Page
     */
     export type SubspecialtyPageJson = Foundation.HcabasePageJson & 
-Business.SubspecialtyJson &  {
+Business.SubspecialtyJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -14954,7 +15872,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/SupportService Page
     */
     export type SupportServicePage = Foundation.HcabasePage & 
-Business.SupportService &  {
+Business.SupportService & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -14963,7 +15882,8 @@ Business.SupportService &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/SupportService Page
     */
     export type SupportServicePageJson = Foundation.HcabasePageJson & 
-Business.SupportServiceJson &  {
+Business.SupportServiceJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -15377,6 +16297,84 @@ export namespace PageContent {
         
 
     }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Text Block Heading
+    */
+    export type TextBlockHeading =  {
+        fields?: { 
+            /**
+            * Represents the Heading field (66e796f8-7239-492f-ae58-473916272614).
+            */
+            Heading?: Field<string>;
+
+            /**
+            * Represents the Title field (8f0c0278-8513-4395-8e0e-5b1509476fb2).
+            */
+            Title?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Text Block Heading
+    */
+    export type TextBlockHeadingJson =  {
+        
+            /**
+            * Represents the Heading field (66e796f8-7239-492f-ae58-473916272614).
+            */
+            heading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Title field (8f0c0278-8513-4395-8e0e-5b1509476fb2).
+            */
+            title?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Heading
+    */
+    export type TextBlockHeading = Foundation.RenderingParameters.HeadingParameters & 
+Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Heading
+    */
+    export type TextBlockHeadingJson = Foundation.RenderingParameters.HeadingParametersJson & 
+Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Text Block Heading Folder
+    */
+    export type TextBlockHeadingFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Text Block Heading Folder
+    */
+    export type TextBlockHeadingFolderJson =  {
+        
+
+    }
 }
 export namespace Foundation.RenderingParameters {
 
@@ -15444,7 +16442,8 @@ export namespace Pages {
     * Represents the template /sitecore/templates/Project/HCA/Pages/Treatment Page
     */
     export type TreatmentPage = Foundation.HcabasePage & 
-Business.Treatment &  {
+Business.Treatment & 
+Foundation.EntityBase &  {
         fields?: {         }
 
     }
@@ -15453,7 +16452,8 @@ Business.Treatment &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Pages/Treatment Page
     */
     export type TreatmentPageJson = Foundation.HcabasePageJson & 
-Business.TreatmentJson &  {
+Business.TreatmentJson & 
+Foundation.EntityBaseJson &  {
         
 
     }
@@ -16154,7 +17154,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify KeywordId field (86550f75-4b5d-4f03-bd83-759a0bb3489b).
             */
-            "Doctify KeywordId"?: Field<string>;
+            DoctifyKeywordId?: Field<string>;
         }
 
     }
@@ -16167,7 +17167,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify KeywordId field (86550f75-4b5d-4f03-bd83-759a0bb3489b).
             */
-            "Doctify KeywordId"?: {
+            doctifyKeywordId?: {
                 jsonValue: Field<string>
             };
 
@@ -16182,7 +17182,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify Practice field (6572a61e-d3d4-46a0-acde-3b5b374d4ac3).
             */
-            "Doctify Practice"?: Field<string>;
+            DoctifyPractice?: Field<string>;
         }
 
     }
@@ -16195,7 +17195,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify Practice field (6572a61e-d3d4-46a0-acde-3b5b374d4ac3).
             */
-            "Doctify Practice"?: {
+            doctifyPractice?: {
                 jsonValue: Field<string>
             };
 
@@ -16210,7 +17210,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify Slug field (54cdb024-17aa-421d-b306-fd86e4fcd420).
             */
-            "Doctify Slug"?: Field<string>;
+            DoctifySlug?: Field<string>;
         }
 
     }
@@ -16223,7 +17223,7 @@ export namespace Foundation.Doctify.Base {
             /**
             * Represents the Doctify Slug field (54cdb024-17aa-421d-b306-fd86e4fcd420).
             */
-            "Doctify Slug"?: {
+            doctifySlug?: {
                 jsonValue: Field<string>
             };
 
@@ -16231,6 +17231,34 @@ export namespace Foundation.Doctify.Base {
     }
 }
 export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/_EntityBase
+    */
+    export type EntityBase =  {
+        fields?: { 
+            /**
+            * Represents the EntityName field (87272aa0-841f-4d72-a4df-7fb452932fea).
+            */
+            EntityName?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/_EntityBase
+    */
+    export type EntityBaseJson =  {
+        
+            /**
+            * Represents the EntityName field (87272aa0-841f-4d72-a4df-7fb452932fea).
+            */
+            entityName?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/_HCABasePage
@@ -16257,7 +17285,7 @@ Foundation.HcabasePageData &  {
             /**
             * Represents the No Folow field (ad7a5fc4-9b79-4112-8eb3-3223f3f477c2).
             */
-            NoFolow?: Field<boolean>;
+            NoFollow?: Field<boolean>;
 
             /**
             * Represents the No Index field (a63d5fc4-e518-4324-9833-72a74a812fa4).
@@ -16298,7 +17326,7 @@ Foundation.HcabasePageDataJson &  {
             /**
             * Represents the No Folow field (ad7a5fc4-9b79-4112-8eb3-3223f3f477c2).
             */
-            noFolow?: {
+            noFollow?: {
                 jsonValue: Field<boolean>
             };
 

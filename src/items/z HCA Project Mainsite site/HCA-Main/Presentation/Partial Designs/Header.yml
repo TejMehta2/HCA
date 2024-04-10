@@ -11,7 +11,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{AB8F99DE-52A9-4084-A8BB-D2C64602030C}" />
+    <image mediaid="{608E2FFD-7245-4E15-8135-E99C5C78B9CE}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -21,11 +21,18 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{9612C83D-AB0D-4789-A59F-295998AAF845}"
+          p:before="*"
           s:ds="{D623D293-8E69-48DD-AFD4-8D45681630D8}"
           s:id="{512EE550-05F4-428D-B0F9-D65CCE94F387}"
           s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-header"
           s:ccb="Clear on publish" />
+        <r
+          uid="{B77AF8D5-9758-463F-AC36-E549ECE07C4E}"
+          p:after="*[1=2]"
+          s:id="{D6E768C1-E2D2-4FCB-8A7B-403686F042DF}"
+          s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:ph="headless-header" />
       </d>
     </r>
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
@@ -52,11 +59,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "877a2ab9-b46e-484d-8fcb-6e51f6a9c820"
+      Value: "6e143910-2e89-475e-9685-070110952686"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T100640Z
+      Value: 20240401T155605Z

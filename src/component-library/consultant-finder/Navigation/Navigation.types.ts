@@ -4,4 +4,5 @@ export default interface NavigationProps {
   children: ReactNode | JSX.Element;
   showOnMobile?: boolean;
   hasCustomBtnMobile?: boolean;
+  hideTextMobile?: boolean;
 }

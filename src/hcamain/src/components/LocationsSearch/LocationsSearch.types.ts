@@ -16,7 +16,7 @@ export interface Response {
   businessId: number;
   queryId: string;
   resultsCount: number;
-  locations: Data[];
+  results: { data: Data }[];
   appliedQueryFilters: unknown[];
   facets: unknown[];
   source: string;
@@ -30,7 +30,7 @@ export interface Data {
   title: string;
   description: string;
   name: string;
-  imageUrl: null;
+  imageUrl: string;
   url: string;
   uid: number;
   lat: string;

@@ -51,3 +51,15 @@
 
   @include apply-body-large;
 }
+
+.padding-small {
+  padding-bottom: var(--spacing-7);
+
+  .heading {
+    margin: 0;
+
+    & > * {
+      @include apply-display-4;
+    }
+  }
+}

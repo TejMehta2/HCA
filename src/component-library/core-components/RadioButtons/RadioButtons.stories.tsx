@@ -1,6 +1,7 @@
 import React from 'react';
 import RadioButtons from './RadioButtons';
 import type { Meta, StoryObj } from '@storybook/react';
+import Themes from '../../foundation/Themes/Themes';
 
 import RadioButton from '../RadioButton/RadioButton';
 
@@ -20,25 +21,17 @@ export const Default: StoryObj<typeof RadioButtons> = {
   args: {
     children: (
       <>
-        <RadioButton
-          label="example A"
-          mode="light"
-          value="example-a"
-          name="test"
-        />
-        <RadioButton
-          label="example B"
-          mode="light"
-          value="example-b"
-          name="test"
-        />
-        <RadioButton
-          label="example C"
-          mode="light"
-          value="example-c"
-          name="test"
-        />
+        <RadioButton label="example A" value="example-a" name="test" />
+        <RadioButton label="example B" value="example-b" name="test" />
+        <RadioButton label="example C" value="example-c" name="test" />
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
 };

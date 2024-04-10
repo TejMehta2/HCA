@@ -27,7 +27,7 @@ export type CQSStatusFields = Item & {
 
 export interface Fields {
   Status?: CQSStatusFields;
-  ReportLink?: LinkField;
+  ReportLink?: LinkField | { url: string };
   Text?: Field<string>;
   Title?: Field<string>;
 }

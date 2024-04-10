@@ -1,27 +1,16 @@
-import React, {
-  useId,
-  useLayoutEffect,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useId, useEffect, useRef, useState } from 'react';
 import { Dimensions, TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
-import useWindowWidth from '../../hooks/useWindowWidth';
-
-// avoid useLayoutEffect when SSR pages https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-export const useBrowserLayoutEffect =
-  typeof window === 'undefined' ? useLayoutEffect : () => {};
+import useBreakpoints from '../../hooks/useBreakpoints';
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
   const { callback, tabs, contentVariation } = props;
 
-  const isXl = useWindowWidth(1440);
-
   // Hooks
+  const breakpoint = useBreakpoints(); // useBreakpoints instead of useWindowWidth, so that tabDimensions is recalculated at all breakpoints
   const id = useId(); // Generate a unique ID for the form elements
   const [tabDimensions, setTabDimensions] = useState<Dimensions[]>([
     {
@@ -44,7 +33,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
   const refs = useRef<HTMLLabelElement[]>([]); // Keep track of tab labels, in order to store their dimensions
 
   useEffect(() => {
-    // Store the dimensions from label elements on load
+    // Store the dimensions from label elements on load and re-size
     const dimensions = refs?.current?.map((labelElement) => {
       return {
         offsetWidth: labelElement?.offsetWidth,
@@ -52,7 +41,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
       };
     });
     setTabDimensions(dimensions);
-  }, [refs, isXl]);
+  }, [refs, breakpoint]);
 
   return (
     <div
