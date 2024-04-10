@@ -26,13 +26,21 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       {label && (
-        <label htmlFor={id}>
+        <label
+          htmlFor={id}
+          className={isError ? `${styles['label-error']}` : ''}
+        >
           {label}
           {!required && ' (Optional)'}
         </label>
       )}
       <span className={styles.input}>
-        <input id={id} type={type} {...register(`${name}`)} />
+        <input
+          id={id}
+          type={type}
+          {...register(`${name}`)}
+          className={isError ? `${styles['input-error']}` : ''}
+        />
 
         <span className={styles.cross} onClick={clearInput}>
           <Icons iconName="iconCross" />

@@ -42,6 +42,7 @@ interface Fields {
   LiveBookingFormGpreferralOptions: object[];
   LiveBookingFormGpreferralSubHeadline: Field<string>;
   LiveBookingFormPatientAuthorisationCodeLabel: Field<string>;
+  LiveBookingFormInsuranceNumberLabel: Field<string>;
 }
 
 type StepProps = {
@@ -301,15 +302,19 @@ export const Default = (props: StepProps): JSX.Element => {
                     <br></br>
                     <p>{errors.insuranceProvider?.message}</p>
                     <br></br>
-                    <label htmlFor="insurancePolicyNumber">Policy number</label>
-                    <br></br>
-                    <input
-                      type="text"
-                      id="insurancePolicyNumber"
-                      {...register('insurancePolicyNumber')}
+                    <TextField
+                      id={'insurancePolicyNumber'}
+                      label={
+                        props?.fields?.LiveBookingFormInsuranceNumberLabel
+                          ?.value || ''
+                      }
+                      name={'insurancePolicyNumber'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.insurancePolicyNumber ? true : false}
+                      errorMessage={errors?.insurancePolicyNumber?.message}
                     />
-                    <br></br>
-                    <p>{errors.insurancePolicyNumber?.message}</p>
                     <br></br>
                     <TextField
                       id={'insuranceAuthorisationCode'}

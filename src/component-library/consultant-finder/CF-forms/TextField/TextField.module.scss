@@ -15,6 +15,10 @@
     gap: $spacing-2;
 
     @include apply-body-medium-extra-large;
+
+    &.label-error {
+      color: var(--field-error-colour);
+    }
   }
 
   .input {
@@ -29,6 +33,10 @@
       border-radius: $radius-large;
 
       @include apply-body-medium-large;
+
+      &.input-error {
+        border-color: var(--field-error-colour);
+      }
     }
 
     .cross {
@@ -42,27 +50,9 @@
     }
   }
 
-  .error-message {
-    display: none;
-    align-items: center;
-    gap: $spacing-2;
-  }
-
   &:has(input:focus) {
     .cross {
       opacity: 1;
-    }
-  }
-
-  &:has(input:not(:focus):user-invalid) {
-    color: var(--field-error-colour);
-
-    input {
-      border-color: var(--field-error-colour);
-    }
-
-    .error-message {
-      display: flex;
     }
   }
 }
