@@ -13,7 +13,8 @@ import Icons from '@component-library/foundation/Icons/Icons';
 type CategoriesFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
-  filterValue?: { jsonValue?: Item };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { jsonValue?: Item };
 };
 
 interface Fields {

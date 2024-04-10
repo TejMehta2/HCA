@@ -2,10 +2,12 @@ import React from 'react';
 import {
   Field,
   LinkField,
-  RichText as JssRichText,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Button from '@component-library/core-components/Button/Button';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -30,7 +32,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
       practice?: {
         PracticeList?: PracticeFields[];
       };
@@ -55,15 +57,27 @@ type FindAConsultantCTAProps = {
 
 const FindAConsultantCTADefaultComponent = (
   props: FindAConsultantCTAProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">FindAConsultantCTA no datasource</span>
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Find a consultant CTA. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <FindAConsultantCTADefaultComponent {...props} />;
   }
@@ -91,37 +105,45 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
     }
   }
 
-  const filterParams = filterList ? '?' + filterList.join('&') : '';
+  const filterParams =
+    filterList && filterList.length > 0 ? '?' + filterList.join('&') : '';
 
   return (
     <Button size="large" variation="full">
-      <a
-        href={
-          props.fields?.data?.item?.cTALink?.jsonValue?.value.href +
-          filterParams
-        }
-      >
-        {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-          <>
-            {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html:
-                    props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
+      {!isExperienceEditor ? (
+        <a
+          href={
+            props.fields?.data?.item?.cTALink?.jsonValue?.value.href +
+            filterParams
+          }
+        >
+          {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+            <>
+              {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup
+                        ?.value || '',
+                  }}
+                ></span>
+              )}
+              <JssTextWithEntityName
+                isRichText={true}
+                field={{
+                  value:
+                    props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
                     '',
                 }}
-              ></span>
-            )}
-            <JssRichText
-              field={{
-                value:
-                  props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ||
-                  '',
-              }}
-            />
-          </>
-        )}
-      </a>
+              />
+            </>
+          )}
+        </a>
+      ) : (
+        props?.fields?.data?.item && (
+          <JssLink field={props.fields.data.item.cTALink.jsonValue}></JssLink>
+        )
+      )}
     </Button>
   );
 };

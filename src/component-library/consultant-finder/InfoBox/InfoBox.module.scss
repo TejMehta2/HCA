@@ -8,6 +8,11 @@
   padding: $spacing-2 $spacing-4;
   margin-bottom: $spacing-1;
   text-align: left;
+  color: $navy-blue-100;
+
+  &.padding-l {
+    padding: $spacing-5;
+  }
 
   &-icon {
     display: flex;

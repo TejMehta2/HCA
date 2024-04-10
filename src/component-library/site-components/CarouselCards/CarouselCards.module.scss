@@ -17,6 +17,8 @@
 .intro {
   @include responsive-grid;
 
+  gap: px-to-rem(8) px-to-rem(16);
+
   & > * {
     @include responsive-grid-start(1);
     @include responsive-grid-span(

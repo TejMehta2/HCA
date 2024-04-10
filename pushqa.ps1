@@ -1,0 +1,1 @@
+dotnet sitecore ser push --include z-HCA-Project-Main-Site-QA -n "dev"

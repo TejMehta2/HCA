@@ -95,3 +95,22 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     ></VideoBlock>
   );
 };
+
+export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
+  if (!props.fields) {
+    return <VideoPlayerDefaultComponent {...props} />;
+  }
+
+  if (!props.fields?.VideoUrl?.value) {
+    return <></>;
+  }
+
+  return (
+    <figure>
+      <VideoPlayer
+        videoUrl={props.fields?.VideoUrl?.value}
+        overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+      />
+    </figure>
+  );
+};

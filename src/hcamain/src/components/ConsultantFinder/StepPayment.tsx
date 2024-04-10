@@ -67,7 +67,7 @@ export const Default = (props: StepProps): JSX.Element => {
     setIsSelfPayment,
     isSelfPayment,
   } = useContext(ConsultantFinderContext);
-  console.log('payment', props);
+  //console.log('payment', props);
 
   // tbc
   // useEffect(() => {

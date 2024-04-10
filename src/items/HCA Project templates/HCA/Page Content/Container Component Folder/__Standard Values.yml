@@ -1,0 +1,33 @@
+﻿---
+ID: "193e8d37-520a-4e0d-91a5-de27a0387826"
+Parent: "188119fd-d3ea-4e97-b6db-8be8a1429ce7"
+Template: "188119fd-d3ea-4e97-b6db-8be8a1429ce7"
+Path: /sitecore/templates/Project/HCA/Page Content/Container Component Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {B2DCA218-3A2C-4DCE-BEB9-BC3940A25629}
+    {188119FD-D3EA-4E97-B6DB-8BE8A1429CE7}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bbd25c91-1afa-4de8-8273-cf5da64be50b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240408T054502Z

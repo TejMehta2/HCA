@@ -29,12 +29,15 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240210T090654Z
     - ID: "2fa63bb5-b5b6-4ce7-85ef-36b6b3352524"
       Hint: ArticleType
-      Value: 
+      Value: "{D86035E4-019C-4C53-9445-ACEA05A1C536}"
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -46,17 +49,18 @@ Languages:
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
       Value: |
-        London Bridge Hospital, part of HCA Healthcare UK, has once again been rated as "Outstanding" by the Care Quality Commission (CQC), following a recent inspection. London Bridge Hospital has held its Outstanding rating since 2016.
+        <p>London Bridge Hospital, part of HCA Healthcare UK, has once again been rated as "Outstanding" by the Care Quality Commission (CQC), following a recent inspection. London Bridge Hospital has held its Outstanding rating since 2016.</p>
+        <p>London Bridge Hospital, part of HCA Healthcare UK, has once again been rated as "Outstanding" by the Care Quality Commission (CQC), following a recent inspection. London Bridge Hospital has held its Outstanding rating since 2016.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "069b07d0-4b53-4e4e-8aa0-7dd2bfc7d02f"
+      Value: "fe406670-b419-421c-a4a0-12c35a4878fc"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\alina.antemir@hcahealthcare.co.uk
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240305T173444Z
+      Value: 20240329T204851Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retains CQC Outstanding rating

@@ -8,7 +8,7 @@ import Params from 'src/types/params';
 export interface DoctifyLogoFields {
   fields?: {
     Text?: Field<string>;
-    Logo?: ImageField;
+    Logo: { fields?: ImageField; value?: string };
   };
 }
 
@@ -18,7 +18,7 @@ export interface DoctifyReviewsFields {
     Reviews?: Field<string>;
     DoctifyLogoLight?: DoctifyLogoFields;
     DoctifyLogoDark?: DoctifyLogoFields;
-    Link?: LinkField;
+    Link?: { fields?: LinkField; url: string };
   };
 }
 

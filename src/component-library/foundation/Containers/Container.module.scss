@@ -26,6 +26,18 @@
     }
   }
 
+  &.custom-btn {
+    a {
+      padding: px-to-rem(14) $spacing-4;
+    }
+
+    @include media(screen-m) {
+      a {
+        padding: px-to-rem(16) $spacing-7;
+      }
+    }
+  }
+
   &.with-buttons {
     div {
       width: 100%;

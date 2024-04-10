@@ -1,0 +1,53 @@
+﻿---
+ID: "4676c3dd-9cbe-40a2-a8a5-bcd7add2c6a6"
+Parent: "9b765289-180d-40b3-9d7e-1ceadd367c79"
+Template: "55bd5994-10e6-4b77-913f-683cc39fccb2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA101/Data/More Information CTA/More Information Modal Content 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04683221-90f3-4e36-9e78-8da47d1f810c"
+      Hint: Title
+      Value: Included
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240403T142225Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3c0239f1-4e0e-4610-ab78-0ff7747cc80e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d8ea3a22-5874-4a00-82b8-eeede17fda11"
+      Hint: Text
+      Value: |
+        <h4>Before Admission</h4>
+        <ul>
+            <li>Pre-assessment</li>
+        </ul>
+        <p>During your hospital stay</p>
+        <ul>
+            <li>Accommodation in a standard room as quoted above</li>
+            <li>Routine admission tests</li>
+            <li>Patient meals are included but not transferable</li>
+            <li>Nursing care and facilities</li>
+            <li>Theatre fees, drugs and dressings</li>
+            <li>Removal of stitches, dressing and plaster as required</li>
+            <li>Take home medication&nbsp;</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>For self-pay patients, please ask your consultant for information on our fixed price self-pay hip replacement packages.&nbsp; For peace of mind on your hospital and surgery costs, you may be eligible for one of the fixed price packages that are available.</p>
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240409T121239Z

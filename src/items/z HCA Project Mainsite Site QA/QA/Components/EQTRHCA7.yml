@@ -10,24 +10,26 @@ SharedFields:
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
-    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
       <d
-        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
-        l="{96E5F4BA-A2CF-4A4C-A4E7-64DA88226362}">
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
-          ds="local:/Data/Location Cards"
-          id="{64921D39-EDF4-4ECD-972F-4C52496EE812}"
-          par="Columns=3&amp;HeadingTag=h1&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B4082CE2C-115F-4DDF-B5CA-23C2D95A28A7%7D&amp;Styles&amp;Theme=K-HCA-Fern-20&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-          ph="headless-main"
           uid="{752BE390-4166-4EA8-B2B2-13654C8375F6}"
-          ccb="Clear on publish" />
+          p:before="*"
+          s:ds="local:/Data/Location Cards Slider"
+          s:id="{64921D39-EDF4-4ECD-972F-4C52496EE812}"
+          s:par="Columns=3&amp;HeadingTag=h1&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B4082CE2C-115F-4DDF-B5CA-23C2D95A28A7%7D&amp;Styles&amp;Theme=K-HCA-Fern-20&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
         <r
-          ds="local:/Data/Location Cards Grid"
-          id="{64921D39-EDF4-4ECD-972F-4C52496EE812}"
-          par="Columns&amp;HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B08A63FFA-8F3B-472E-A2D9-96D2B637DBD4%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-          ph="headless-main"
           uid="{15883D84-1E04-402C-9E58-28F0CB1A5D8B}"
-          ccb="Clear on publish" />
+          p:after="*[1=2]"
+          s:ds="local:/Data/Location Cards Grid"
+          s:id="{64921D39-EDF4-4ECD-972F-4C52496EE812}"
+          s:par="Columns&amp;HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7B08A63FFA-8F3B-472E-A2D9-96D2B637DBD4%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
       </d>
     </r>
 Languages:
@@ -51,7 +53,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a1807314-4814-46f1-bbc3-d3ef4bedc525"
+      Value: "22c544aa-5fdd-4712-97a9-f2b74d78e1ca"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -61,4 +63,8 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T124321Z
+      Value: 20240405T092237Z
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />

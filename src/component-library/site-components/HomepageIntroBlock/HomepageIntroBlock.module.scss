@@ -57,10 +57,12 @@
   }
 
   .reviews {
-    padding: $spacing-6;
     display: grid;
     gap: $spacing-4;
+    margin-top: $spacing-4;
     @include media(screen-m) {
+      margin-top: 0;
+      padding: $spacing-6;
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -83,7 +85,7 @@
     list-style: none;
     padding: 0;
     margin: 0 0 $spacing-7;
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-5;
@@ -93,6 +95,8 @@
 
     li {
       flex: 0 1 auto;
+      word-wrap: break-word;
+      overflow: hidden;
     }
 
     .stat {

@@ -22,6 +22,18 @@
     }
   }
 
+  &.hide-text-on-mobile {
+    p {
+      display: none;
+
+      @include media(screen-m) {
+        display: inline-block;
+        color: $navy-blue-100;
+        margin: 0 $spacing-3;
+      }
+    }
+  }
+
   &.custom-btns-sm {
     a {
       padding: px-to-rem(16) $spacing-4;

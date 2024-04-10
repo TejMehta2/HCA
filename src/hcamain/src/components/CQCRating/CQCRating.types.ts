@@ -7,7 +7,7 @@ import {
 import Params from 'src/types/params';
 
 export type logoField = {
-  Logo?: ImageField;
+  Logo: { fields?: ImageField; value?: string };
 };
 
 export type CQSStatusFields = Item & {
@@ -27,7 +27,7 @@ export type CQSStatusFields = Item & {
 
 export interface Fields {
   Status?: CQSStatusFields;
-  ReportLink?: LinkField;
+  ReportLink?: LinkField | { url: string };
   Text?: Field<string>;
   Title?: Field<string>;
 }

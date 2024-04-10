@@ -14,7 +14,7 @@ SharedFields:
           <condition
             id="{5DE6D53E-EA62-4D17-8BDD-FEBCD80AC07B}"
             uid="26311A6087094C01B26F7F7860665BF2"
-            templateid="{A790183F-6621-463A-A43C-695D1435328E}" />
+            templateid="{7F21CD7F-5EAC-4C96-9675-74BC7A599A25}" />
         </conditions>
         <actions>
           <action
@@ -42,11 +42,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5376552f-2bc5-4f00-970b-7d6b59ce4588"
+      Value: "a3f12588-4369-4293-ba10-5dc39daf023b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T182024Z
+      Value: 20240401T154259Z
