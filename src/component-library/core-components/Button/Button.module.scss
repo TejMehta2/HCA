@@ -360,7 +360,7 @@
       border: 1px solid var(--cta-carousel-border);
 
       &:hover {
-        background-color: var(--cta-carousel-hover-background);
+        background-color: transparent;
         color: var(--cta-carousel-hover-text);
       }
 
