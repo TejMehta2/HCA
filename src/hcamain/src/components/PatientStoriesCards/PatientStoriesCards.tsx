@@ -183,6 +183,22 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
+export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
+  console.log('CARDS');
+  if (!props.fields) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+  return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
+};
+
+export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+  //console.log(props);
+  if (!props.fields) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+  return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
+};
+
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: PatientStoriesCardsProps
