@@ -11,7 +11,7 @@
   "plugins": ["@typescript-eslint", "prettier", "yaml"],
   "ignorePatterns": [
     ".generated/**/*",
-    "**/.Generated*/**",
+    ".Generated/**/*",
     "**/*.d.ts",
     "**/*.js",
     "*.targets",
