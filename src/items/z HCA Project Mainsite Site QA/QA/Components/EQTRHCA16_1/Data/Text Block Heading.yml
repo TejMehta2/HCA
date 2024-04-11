@@ -1,15 +1,8 @@
 ﻿---
-ID: "72be3cc6-e161-42bd-b2d4-2bc78f34ce79"
-Parent: "0f9200c3-7246-468b-b8a8-11b187c7fad8"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/Containerized/Container/Containerized
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Checkbox
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "7f32c718-91bf-44bf-ba92-839ac057d219"
+Parent: "2c3f4485-8093-40ac-9b0d-e0d55402858f"
+Template: "d9dc0134-ff91-4367-83f6-12b841b7e183"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16_1/Data/Text Block Heading"
 Languages:
 - Language: en
   Versions:
@@ -17,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240408T054937Z
+      Value: 20240329T122029Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -26,13 +19,19 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "66e796f8-7239-492f-ae58-473916272614"
+      Hint: Heading
+      Value: Payment plans
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e6a8840a-a7cd-4945-a28f-1df831a1e051"
+      Value: "7b7b00ba-1678-4bb7-b63a-055d2e19f8d2"
+    - ID: "8f0c0278-8513-4395-8e0e-5b1509476fb2"
+      Hint: Title
+      Value: "New to private healthcare?"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240408T054937Z
+      Value: 20240329T122247Z
