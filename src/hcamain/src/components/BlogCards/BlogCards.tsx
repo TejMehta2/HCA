@@ -111,7 +111,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             <Text tag={'p'} variation={'body-large'}>
               <JssRichText tag="span" field={card.fields.Description} />
             </Text>
-            {!!card.fields.ArticleType && (
+            {!!card.fields?.ArticleType?.fields.id && (
               <Tags>
                 <a
                   href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}

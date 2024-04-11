@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards/Data/Pa
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "{2F2BEC59-B5A2-4100-A359-A22D0628503D}"
+  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Patient Story Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: TreelistEx
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e46b584a-89c5-4625-9a69-c01a906b3dc7"
+      Value: "a2f8c3f9-ce95-448e-9313-0fac596c0d65"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T063325Z
+      Value: 20240410T183207Z
