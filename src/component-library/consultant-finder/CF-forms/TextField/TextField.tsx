@@ -41,7 +41,6 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           {...register(`${name}`)}
           className={isError ? `${styles['input-error']}` : ''}
         />
-
         <span className={styles.cross} onClick={clearInput}>
           <Icons iconName="iconCross" />
         </span>

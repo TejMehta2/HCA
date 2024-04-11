@@ -2,18 +2,22 @@
 // Template finder component
 
 import React, { useEffect, useState, useContext } from 'react';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
 
 import {
+  GetStaticComponentProps,
   Image as JssImage,
   Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
+  useComponentProps,
+  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
@@ -26,6 +30,11 @@ import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMes
 import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
+import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
+import {
+  getSpecialistProfileData,
+  isErrorWithProfileData,
+} from 'lib/consultant-finder/API_Doctify';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -38,6 +47,7 @@ interface Fields {
   BackLink: LinkField;
   LiveBookingFormUserOptions: object[];
   LiveBookingFormAboutAppointmentOptions: object[];
+  LiveBookingFormPreviouslyBeenWithHCALabel: Field<string>;
   LiveBookingFormPreviouslyBeenWithHCAOptions: object[];
   LiveBookingFormGpreferralOptions: object[];
   LiveBookingFormGpreferralSubHeadline: Field<string>;
@@ -47,12 +57,40 @@ interface Fields {
   LiveBookingFormSubHeadline: Field<string>;
   LiveBookingFormXNumberHeadline: Field<string>;
   LiveBookingFormXNumberLabel: Field<string>;
+  LiveBookingFormDetailsHeadline: Field<string>;
+  LiveBookingFormFirstNameLabel: Field<string>;
+  LiveBookingFormLastNameLabel: Field<string>;
+  LiveBookingFormEmailLabel: Field<string>;
+  LiveBookingFormTitleLabel: Field<string>;
+  LiveBookingFormTitleOptions: object[];
+  LiveBookingFormGenderLabel: Field<string>;
+  LiveBookingFormGenderOptions: object[];
+  LiveBookingFormDateOfBirthLabel: Field<string>;
+  LiveBookingFormAddressHeadline: Field<string>;
+  LiveBookingFormPhoneLabel: Field<string>;
+  LiveBookingFormAddress1Label: Field<string>;
+  LiveBookingFormAddress1Placeholder: Field<string>;
+  LiveBookingFormAddress2Label: Field<string>;
+  LiveBookingFormAddress2Placeholder: Field<string>;
+  LiveBookingFormPostcodeLabel: Field<string>;
+  LiveBookingFormTowncityLabel: Field<string>;
+  LiveBookingFormTowncityPlaceholder: Field<string>;
+  LiveBookingFormCountryLabel: Field<string>;
+  LiveBookingFormCountryPlaceholder: Field<string>;
+  LiveBookingFormInsuranceLabel: Field<string>;
 }
 
 type StepProps = {
+  rendering: ComponentRendering;
   params: { [key: string]: string };
   fields: Fields;
 };
+
+interface ServerSideProps {
+  Slug: string;
+  ProfileJson: any;
+  ErrorWithProfileData: boolean;
+}
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
@@ -80,6 +118,21 @@ export const Default = (props: StepProps): JSX.Element => {
       gpreferral: z.string().min(1, { message: 'Required' }),
       previouslyBeenWithHCA: z.string().min(1, { message: 'Required' }),
       patientCode: z.string().optional(),
+      title: z.string().trim().min(1, { message: 'Required' }),
+      firstName: z.string().trim().min(1, { message: 'Required' }),
+      lastName: z.string().trim().min(1, { message: 'Required' }),
+      email: z
+        .string()
+        .min(1, { message: 'Required' })
+        .email('This is not a valid email.'),
+      phone: z.string().trim().min(1, { message: 'Required' }),
+      gender: z.string().trim().min(1, { message: 'Required' }),
+      dateOfBirth: z.string().trim().min(1, { message: 'Required' }),
+      address1: z.string().trim().min(1, { message: 'Required' }),
+      address2: z.string().optional(),
+      postcode: z.string().trim().min(1, { message: 'Required' }),
+      towncity: z.string().trim().min(1, { message: 'Required' }),
+      country: z.string().trim().min(1, { message: 'Required' }),
     })
     .refine(
       // refine helps to do more complex logic to validation like conditional validation
@@ -145,6 +198,18 @@ export const Default = (props: StepProps): JSX.Element => {
       gpreferral: '',
       previouslyBeenWithHCA: '',
       patientCode: '',
+      title: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      gender: '',
+      dateOfBirth: '',
+      address1: '',
+      address2: '',
+      postcode: '',
+      towncity: '',
+      country: '',
     },
     resolver: zodResolver(schema),
   });
@@ -262,8 +327,6 @@ export const Default = (props: StepProps): JSX.Element => {
             {errors?.user && (
               <ErrorMessage errorMessage={errors?.user?.message} />
             )}
-            <br></br>
-            <br></br>
 
             {watchFormChanges.user !== '' && (
               <div>
@@ -297,7 +360,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 {(watchFormChanges.user === 'insurer' ||
                   watchFormChanges.payment === 'insurance') && (
                   <>
-                    <select
+                    {insurersLDB.length > 0 && (
+                      <SelectField
+                        id={'insuranceProvider'}
+                        name={'insuranceProvider'}
+                        label={
+                          props?.fields?.LiveBookingFormInsuranceLabel?.value ||
+                          'Insurance company'
+                        }
+                        addDefaultValue={true}
+                        defaultValueLabel={'Please select'}
+                        required={true}
+                        isError={errors?.insuranceProvider ? true : false}
+                        errorMessage={errors?.insuranceProvider?.message}
+                        options={insurersLDB}
+                        register={register}
+                      />
+                    )}
+                    {/* <select
                       id="insuranceProvider"
                       {...register('insuranceProvider')}
                     >
@@ -306,7 +386,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     </select>
                     <br></br>
                     <p>{errors.insuranceProvider?.message}</p>
-                    <br></br>
+                    <br></br> */}
                     <TextField
                       id={'insurancePolicyNumber'}
                       label={
@@ -378,30 +458,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 <Text tag="h2" variation="heading-1">
                   About the patient
                 </Text>
-                <br></br>
-                <label htmlFor="previouslyBeenWithHCA">
-                  Has the Patient previously been with HCA?
-                </label>
-                <br></br>
-                <select
-                  id="previouslyBeenWithHCA"
-                  {...register('previouslyBeenWithHCA')}
-                >
-                  {props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions &&
-                    props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions.map(
-                      (item: any) => (
-                        <option
-                          key={item.id}
-                          value={item?.fields?.Value?.value}
-                        >
-                          {item?.fields?.Label?.value || ''}
-                        </option>
-                      )
-                    )}
-                </select>
-                <br></br>
-                <p>{errors.previouslyBeenWithHCA?.message}</p>
-                <br></br>
+                {props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions && (
+                  <SelectField
+                    id={'previouslyBeenWithHCA'}
+                    name={'previouslyBeenWithHCA'}
+                    label={
+                      props?.fields?.LiveBookingFormPreviouslyBeenWithHCALabel
+                        ?.value || 'Has the Patient previously been with HCA?'
+                    }
+                    required={true}
+                    isError={errors?.previouslyBeenWithHCA ? true : false}
+                    errorMessage={errors?.previouslyBeenWithHCA?.message}
+                    options={
+                      props?.fields
+                        ?.LiveBookingFormPreviouslyBeenWithHCAOptions || []
+                    }
+                    register={register}
+                  />
+                )}
                 {watchFormChanges.previouslyBeenWithHCA === 'Yes' && (
                   <>
                     <br></br>
@@ -425,6 +499,147 @@ export const Default = (props: StepProps): JSX.Element => {
                   </>
                 )}
                 <br></br>
+                {/* Patient details */}
+                <Text tag="h2" variation="heading-1">
+                  {props?.fields?.LiveBookingFormDetailsHeadline?.value ||
+                    'Patients details'}
+                </Text>
+                {/* select title */}
+                <TextField
+                  id={'firstName'}
+                  label={
+                    props?.fields?.LiveBookingFormFirstNameLabel?.value ||
+                    'First Name'
+                  }
+                  name={'firstName'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.firstName ? true : false}
+                  errorMessage={errors?.firstName?.message}
+                />
+                <TextField
+                  id={'lastName'}
+                  label={
+                    props?.fields?.LiveBookingFormLastNameLabel?.value ||
+                    'Last Name'
+                  }
+                  name={'lastName'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.lastName ? true : false}
+                  errorMessage={errors?.lastName?.message}
+                />
+                <TextField
+                  id={'email'}
+                  label={
+                    props?.fields?.LiveBookingFormEmailLabel?.value || 'email'
+                  }
+                  name={'email'}
+                  type={'email'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.email ? true : false}
+                  errorMessage={errors?.email?.message}
+                />
+                <TextField
+                  id={'phone'}
+                  label={
+                    props?.fields?.LiveBookingFormPhoneLabel?.value || 'phone'
+                  }
+                  name={'phone'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.phone ? true : false}
+                  errorMessage={errors?.phone?.message}
+                />
+                <TextField
+                  id={'dateOfBirth'}
+                  label={
+                    props?.fields?.LiveBookingFormDateOfBirthLabel?.value ||
+                    'date of birth'
+                  }
+                  name={'dateOfBirth'}
+                  type={'date'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.dateOfBirth ? true : false}
+                  errorMessage={errors?.dateOfBirth?.message}
+                />
+                {/* Patient address */}
+                <Text tag="h2" variation="heading-1">
+                  {props?.fields?.LiveBookingFormAddressHeadline?.value ||
+                    'Patients address'}
+                </Text>
+                <TextField
+                  id={'address1'}
+                  label={
+                    props?.fields?.LiveBookingFormAddress1Label?.value ||
+                    'Address Line 1'
+                  }
+                  name={'address1'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.address1 ? true : false}
+                  errorMessage={errors?.address1?.message}
+                />
+                <TextField
+                  id={'address2'}
+                  label={
+                    props?.fields?.LiveBookingFormAddress2Label?.value ||
+                    'Address Line 2'
+                  }
+                  name={'address2'}
+                  required={false}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.address2 ? true : false}
+                  errorMessage={errors?.address2?.message}
+                />
+                <TextField
+                  id={'postcode'}
+                  label={
+                    props?.fields?.LiveBookingFormPostcodeLabel?.value ||
+                    'Postcode'
+                  }
+                  name={'postcode'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.postcode ? true : false}
+                  errorMessage={errors?.postcode?.message}
+                />
+                <TextField
+                  id={'towncity'}
+                  label={
+                    props?.fields?.LiveBookingFormTowncityLabel?.value ||
+                    'Town / City'
+                  }
+                  name={'towncity'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.towncity ? true : false}
+                  errorMessage={errors?.towncity?.message}
+                />
+                <TextField
+                  id={'country'}
+                  label={
+                    props?.fields?.LiveBookingFormCountryLabel?.value ||
+                    'Country'
+                  }
+                  name={'country'}
+                  required={true}
+                  register={register}
+                  setValue={setValue}
+                  isError={errors?.country ? true : false}
+                  errorMessage={errors?.country?.message}
+                />
                 <Button size={'small'} variation={'full-dark'}>
                   <button disabled={!isDirty || isSubmitting} type="submit">
                     {isSubmitting ? 'Submitting' : 'Submit'}
