@@ -17,11 +17,11 @@ Languages:
         <link text="View &lt;b&gt;profile&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5278D590-3D57-47AD-BAA2-51A4D0C83C9A}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7bf03058-9cb4-48f2-bd34-2d6d14c4ece7"
+      Value: "d8c79638-be6b-4e1e-9b7f-0a2d9f519c33"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="View all &lt;b&gt;hip pain doctors&lt;/b&gt;" linktype="external" url="https://www.hcahealthcare.co.uk/finder/search" anchor="" target="" />
+        <link text="View all &lt;b&gt;{{EntityName}} doctors&lt;/b&gt;" linktype="external" url="https://www.hcahealthcare.co.uk/finder/search" anchor="" target="" />
     - ID: "ab11cab9-17e6-42ac-98ca-aec3d7127a85"
       Hint: CustomFilters
       Value: |
@@ -48,7 +48,7 @@ Languages:
       Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240404T065656Z
+      Value: 20240405T145408Z
     - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
       Hint: Service
       Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
@@ -57,4 +57,4 @@ Languages:
       Value: 4
     - ID: "fd86c684-2a05-4705-8d10-4eb1bc9156f5"
       Hint: Title
-      Value: Hip pain consultants
+      Value: "{{EntityName}} consultants"

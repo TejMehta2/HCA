@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as FormBuilderStories from './FormBuilder.stories';
+
+<Meta of={FormBuilderStories} />
+
+# FormBuilder
+
+## Description
+
+The FormBuilder component is an example component for showing how the sitecore forms will display. There is no functionality here, it is purely static
+
+The form styles are applied in a global `_forms.module.scss` file and the majority of styles are inherited from the individual react components using the `@extend` directive
+
+Sitecore forms all being with `<byoc-sitecore-form>` so all the form styles are wrapped within that tag.
+`[data-byoc-sitecore-form]` is also checked, but this is only because the storybook example file doesn't allow custom html tags
+
+It can be composed like this:
+
+```scss
+[data-byoc-sitecore-form],
+byoc-sitecore-form {
+  color: var(--text);
+  margin-top: $spacing-13;
+  margin-bottom: $spacing-13;
+
+  @include responsive-grid;
+  @include responsive-container;
+
+  /* Textarea */
+  .longtext_input-component {
+    .form-input-wrapper-div {
+      @extend %input-textarea;
+    }
+  }
+}
+```
+
+## Example
+
+<Canvas of={FormBuilderStories.Default} />
+<Controls of={FormBuilderStories.Default} />

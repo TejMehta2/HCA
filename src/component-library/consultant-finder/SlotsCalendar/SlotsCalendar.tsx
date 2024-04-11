@@ -271,7 +271,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
       setDatesNotToBook([]);
     }
     // eslint-disable-next-line
-}, []);
+  }, []);
 
   return (
     <div className={styles.slots}>

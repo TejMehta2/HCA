@@ -14,6 +14,7 @@ import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -91,13 +92,12 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const link = (
     <a href={allUrl}>
-      {props.fields.data?.item?.cTALink?.jsonValue?.value?.text && (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: props.fields.data?.item?.cTALink?.jsonValue?.value?.text,
-          }}
-        ></span>
-      )}
+      <JssTextWithEntityName
+        field={{
+          value: props.fields.data?.item?.cTALink?.jsonValue?.value?.text || '',
+        }}
+        isRichText={true}
+      />
     </a>
   );
 
@@ -120,8 +120,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               variation={props.params?.HeadingSize || 'heading-1'}
               tag={props.params?.HeadingTag || 'h2'}
             >
-              <JssText
-                tag={'span'}
+              <JssTextWithEntityName
                 field={props?.fields?.data?.item?.title?.jsonValue}
               />
             </Text>

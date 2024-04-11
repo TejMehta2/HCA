@@ -19,6 +19,13 @@ export type SortOptionsFields = {
   filterValueGuid?: { jsonValue?: Item };
 };
 
+type FilterOptionsFields = {
+  displayName?: { value?: string };
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { targetItem: { id: string } };
+};
+
 export type BlogPageFields = {
   abstractTitle?: Field<string>;
   abstractText?: Field<string>;
@@ -49,14 +56,18 @@ export interface Fields {
       searchBy?: {
         SearchByList?: SortOptionsFields[];
       };
+
       filterOptions?: {
-        FilterByList?: SortOptionsFields[];
+        filterOptionsList?: FilterOptionsFields[];
       };
       numberOfCards?: { jsonValue?: Field<string> };
       blogUrl?: { jsonValue?: LinkField };
     };
-    contextItem?: {
-      category?: { category: { id: string }[] };
+    contextItemSearchParams: {
+      [key: string]: { value?: string };
+    };
+    contextItemSearchIdParams: {
+      [key: string]: string;
     };
   };
 }
@@ -67,4 +78,25 @@ export type BlogRelatedArticlesProps = ApiSearchProps & {
   rendering?: {
     uid?: string;
   };
+};
+
+export type BlogRelatedArticlesResult = {
+  data: BlogRelatedArticles[];
+};
+
+export type BlogRelatedArticles = {
+  id: number;
+  title: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+  date: string;
+  typeName: string;
+  typeId: string;
+};
+
+export type StaticProps = {
+  ctaQuery: string;
+  BlogRelatedArticles: BlogRelatedArticles[];
 };

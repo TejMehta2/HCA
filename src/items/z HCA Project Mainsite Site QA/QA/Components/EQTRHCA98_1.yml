@@ -41,19 +41,22 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "87272aa0-841f-4d72-a4df-7fb452932fea"
+      Hint: EntityName
+      Value: Hip pain
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "46c4ec7f-a04c-4889-a33e-35e395426bcb"
+      Value: "382cfe1b-9ac1-46f7-9cc2-c0d8a19d362c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T163017Z
+      Value: 20240405T114754Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: EQTRHCA98_1
+      Value: Hip pain
     - ID: "ea6ad3a6-765a-4d15-939f-b257b76b7787"
       Hint: Diagnosis
       Value: |

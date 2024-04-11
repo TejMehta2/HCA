@@ -19,7 +19,29 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
+              uid="{730A1D78-E8F3-474E-90FE-F48BF99E074A}"
+              p:before="*"
+              s:ds="local:/Data/More Information CTA"
+              s:id="{803BDD47-FD30-4D14-8A1E-B433395827F1}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B1414C637-6ABD-40E3-B876-5768DC24DE63%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{176C7744-5832-413E-8666-9E0B9F6F9E3B}"
+              p:after="r[@uid='{730A1D78-E8F3-474E-90FE-F48BF99E074A}']"
+              s:ds="local:/Data/Share CTA"
+              s:id="{F095BEE5-AF27-4678-96E7-FC13DE83F630}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BFBEF802C-1006-40C5-B5F3-BE7B915E35AE%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{41FDF267-1064-40FA-BC83-1EBA78F52BC7}"
+              p:after="r[@uid='{176C7744-5832-413E-8666-9E0B9F6F9E3B}']"
+              s:ds="local:/Data/More Information CTA"
+              s:id="{803BDD47-FD30-4D14-8A1E-B433395827F1}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B1414C637-6ABD-40E3-B876-5768DC24DE63%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="/headless-main/cta-buttons-1" />
+            <r
               uid="{5A8C657C-B0E6-419C-AAE2-CEC63A3D3A10}"
+              p:after="*[1=2]"
               s:ds="local:/Data/Pricing Information"
               s:id="{4FB50128-73EE-4AEC-A1D0-A6F9F2D4C460}"
               s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B52290CDB-9F47-4382-BBF7-7BAD8D00F801%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
@@ -39,14 +61,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d37f1477-51f5-460d-8cdc-b0795cb5f71a"
+      Value: "5fc3b924-da2e-48af-9889-c15958df38ae"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T124556Z
+      Value: 20240409T144703Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA17

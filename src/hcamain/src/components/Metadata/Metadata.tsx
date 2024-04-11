@@ -1,28 +1,31 @@
 import React from 'react';
 import {
   Field,
+  GetStaticComponentProps,
   ImageField,
+  useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Head from 'next/head';
 
-type PageRouteMetadata = {
+export interface PageRouteMetadata {
   fields?: {
-    AbstractTitle?: { value?: Field<string> };
-    AbstractText?: { value?: Field<string> };
-    AbstractImage?: { value?: ImageField };
-    Title?: { value?: Field<string> };
-    Text?: { value?: Field<string> };
-    Image?: { value?: ImageField };
-    MetaTitle?: { value?: Field<string> };
-    MetaDescription?: { value?: Field<string> };
-    MetaImage?: { value?: ImageField };
-    NoIndex?: { value?: Field<string> };
-    NoFollow?: { value?: Field<string> };
+    Title: Field<string>;
+    MetaDescription?: Field<string>;
+    MetaImage?: ImageField;
+    MetaTitle?: Field<string>;
+    NoFollow?: Field<boolean>;
+    NoIndex?: Field<boolean>;
+    AbstractTitle?: Field<string>;
+    AbstractText?: Field<string>;
+    AbstractImage?: ImageField;
+    Image?: ImageField;
+    Text?: Field<string>;
+    EntityName?: Field<string>;
   };
   itemId?: string;
-};
+}
 
 interface Fields {
   DefaultMetaImage?: { value?: ImageField };
@@ -33,19 +36,79 @@ interface Fields {
 type MetadataProps = {
   params?: Params;
   fields?: Fields;
+  rendering?: {
+    uid?: string;
+  };
 };
 
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
-  const route = useSitecoreContext().sitecoreContext
-    ?.route as PageRouteMetadata;
-  if (!props.fields) {
-    return <MetadataDefaultComponent />;
-  }
+  // hooks
+  const context = useSitecoreContext();
+  const url = useComponentProps<string>(props.rendering?.uid);
+
+  const route = context.sitecoreContext?.route as PageRouteMetadata;
+  const { fields } = route;
+
+  if (!fields || !props?.fields) return <MetadataDefaultComponent />;
+
+  // prop values
+  const { DefaultMetaImage, PageTitleSufix, TwitterCard } = props?.fields;
+
+  // route values
+  const {
+    Title,
+    MetaDescription,
+    MetaImage,
+    MetaTitle,
+    NoFollow,
+    NoIndex,
+    AbstractText,
+    AbstractTitle,
+    AbstractImage,
+    Image,
+    Text,
+  } = fields;
+  const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
+
+  // computed values
+  const title = `${MetaTitle?.value || Title?.value} ${
+    PageTitleSufix?.value?.value || ''
+  }`;
+  const description = MetaDescription?.value || Text?.value;
+  const image =
+    MetaImage?.value?.src ||
+    Image?.value?.src ||
+    DefaultMetaImage?.value?.value?.src;
+  const follow = NoFollow?.value ? 'nofollow' : 'follow';
+  const index = NoIndex?.value ? 'noindex' : 'index';
+
   return (
     <Head>
-      <meta name="pageId" content={route.itemId}></meta>
+      <meta name="twitter:card" content={TwitterCard?.value?.value} />
+      <meta property="og:title" content={title} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content={image} />
+      <link rel="canonical" href={url} />
+      <meta name="description" content={description} />
+      <meta name="robots" content={`${follow}, ${index}`} />
+      <meta name="title" content={title} />
+      <meta name="pageId" content={PageId} />
+      <meta name="abstractTitle" content={AbstractTitle?.value} />
+      <meta name="abstractText" content={AbstractText?.value} />
+      <meta name="abstractImage" content={AbstractImage?.value?.src} />
+      <meta name="image" content={image} />
     </Head>
   );
+};
+
+export const getStaticProps: GetStaticComponentProps = async (
+  _: MetadataProps,
+  layoutData
+) => {
+  const path = layoutData?.sitecore?.context?.itemPath;
+  const url = `${process.env.BASE_URL}${path}`; // Todo check with BE if we can get the domain or full URL from Sitecore data
+  return url;
 };

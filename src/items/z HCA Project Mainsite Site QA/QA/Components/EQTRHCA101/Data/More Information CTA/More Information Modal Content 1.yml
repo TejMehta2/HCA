@@ -24,7 +24,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4fc07942-6f5c-45db-bb3b-774a5028ff82"
+      Value: "3c0239f1-4e0e-4610-ab78-0ff7747cc80e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -32,7 +32,7 @@ Languages:
     - ID: "d8ea3a22-5874-4a00-82b8-eeede17fda11"
       Hint: Text
       Value: |
-        <p>Before Admission</p>
+        <h4>Before Admission</h4>
         <ul>
             <li>Pre-assessment</li>
         </ul>
@@ -50,4 +50,4 @@ Languages:
         <p>For self-pay patients, please ask your consultant for information on our fixed price self-pay hip replacement packages.&nbsp; For peace of mind on your hospital and surgery costs, you may be eligible for one of the fixed price packages that are available.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240403T143112Z
+      Value: 20240409T121239Z

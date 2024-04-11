@@ -2,6 +2,7 @@ import React from 'react';
 import Checkboxes from './Checkboxes';
 import type { Meta, StoryObj } from '@storybook/react';
 import Checkbox from '../Checkbox/Checkbox';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Checkboxes> = {
@@ -25,4 +26,11 @@ export const Default: StoryObj<typeof Checkboxes> = {
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
 };

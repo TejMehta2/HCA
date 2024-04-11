@@ -19,7 +19,7 @@ function App({
     // Use suspense to squash pre-render errors in production environments
     <Suspense fallback={<></>}>
       <I18nProvider lngDict={dictionary} locale={pageProps.locale}>
-        <Themes theme={'L-HCA-Teal-5'}>
+        <Themes theme={'A-HCA-White'}>
           <Component {...rest} />
         </Themes>
       </I18nProvider>

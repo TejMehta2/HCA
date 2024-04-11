@@ -6,6 +6,7 @@ import {
   RichText as JssRichText,
   Image as JssImage,
   useComponentProps,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 //import { ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
@@ -14,15 +15,17 @@ import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
-import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
-import { Autocomplete, BlogResponse } from '../BlogSearch/BlogSearch.types';
-import { BlogRelatedArticlesProps } from './BlogRelatedArticles.types';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import {
+  BlogRelatedArticlesProps,
+  BlogRelatedArticlesResult,
+  StaticProps,
+} from './BlogRelatedArticles.types';
 import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
-import getBaselineParams from 'lib/getBaselineParams';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
-const BASE_API_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
-const queryString = 'serviceLineId';
+const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -36,25 +39,17 @@ const BlogRelatedArticlesDefaultComponent = (
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { fields } = props;
-
-  const { baselineParams } = getBaselineParams(props);
-
-  const fallbackData = useComponentProps<BlogResponse>(props.rendering?.uid);
-
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
+  const blogRelatedArticles = data?.BlogRelatedArticles?.slice(
+    0,
+    Number(quantity) || 3
+  );
+  const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
-
-  const serviceLineId =
-    props.fields?.data?.contextItem?.category?.category[0].id || '';
-
-  const { data } = useSearchForm<BlogResponse, Autocomplete>({
-    baseUrl: BASE_API_URL,
-    baselineParams: [
-      ...baselineParams,
-      ['verticalKey', 'articles'],
-      [queryString, serviceLineId],
-    ],
-    fallbackData: fallbackData,
-  });
+  const queryString = 'serviceLineId';
 
   if (!fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
@@ -69,7 +64,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           <JssImage field={card.abstractImage?.jsonValue} />
           <JssDate field={card.date?.jsonValue} />
           {card.abstractTitle && (
-            <Text tag="h3" variation="heading-2">
+            <Text
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+              variation="heading-2"
+            >
               <a href={card.url?.path}>
                 <JssText field={card.abstractTitle} />
               </a>
@@ -90,35 +88,36 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         </CardBlog>
       )
     );
-  } else if (data?.response?.results) {
-    cardsList = data.response.results.map((card, index) => (
-      <CardBlog key={index}>
-        <Image
-          src={card.data.imageUrl}
-          alt={card.data.name}
-          width="643"
-          height="605"
-        />
-        <time>{formatDate(new Date(card.data.date))}</time>
-        {card.data.title && (
-          <Text tag="h3" variation="heading-2">
-            <a href={card.data.url}>{card.data.title}</a>
+  } else if (blogRelatedArticles) {
+    cardsList = blogRelatedArticles.map(
+      (
+        { imageUrl, name, date, url, title, description, typeName, typeId },
+        index
+      ) => (
+        <CardBlog key={index}>
+          <Image src={imageUrl} alt={name} width="643" height="605" />
+          <time>{formatDate(new Date(date))}</time>
+          {title && (
+            <Text
+              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+              variation="heading-2"
+            >
+              <a href={`${url}`}>{title}</a>
+            </Text>
+          )}
+          <Text tag="span" variation="body-large">
+            {description}
           </Text>
-        )}
-        <Text tag="span" variation="body-large">
-          {card.data.description}
-        </Text>
-        {!!card.data.typeName && (
-          <Tags>
-            <a href={`${baseBlogUrl}?${queryString}=${card.data.typeId}`}>
-              {card.data.typeName}
-            </a>
-          </Tags>
-        )}
-      </CardBlog>
-    ));
-  }
 
+          {typeId && typeName && (
+            <Tags>
+              <a href={`${baseBlogUrl}?${queryString}=${typeId}`}>{typeName}</a>
+            </Tags>
+          )}
+        </CardBlog>
+      )
+    );
+  }
   return (
     <CarouselCards
       title={
@@ -126,25 +125,36 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-5'}
         >
-          <JssText field={props?.fields?.data?.item?.title?.jsonValue} />
+          <JssTextWithEntityName
+            field={props?.fields?.data?.item?.title?.jsonValue}
+          />
         </Text>
       }
       link={
-        props.fields?.data?.item?.blogUrl?.jsonValue?.value && (
+        !isExperienceEditor ? (
           <Button size={'large'} variation={'full'}>
-            <JssLink
-              field={props.fields?.data?.item?.blogUrl?.jsonValue?.value}
+            <a
+              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
             >
               {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
-                  }}
-                ></span>
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
               )}
-            </JssLink>
+            </a>
           </Button>
+        ) : (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            ></JssLink>
+          )
         )
       }
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -158,28 +168,84 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 export const getStaticProps: GetStaticComponentProps = async (
   rendering: BlogRelatedArticlesProps
 ) => {
-  const serviceLineId =
-    rendering.fields?.data?.contextItem?.category?.category[0].id || '';
+  const fields = rendering.fields?.data?.item;
 
-  const { baselineParams } = getBaselineParams(rendering);
+  // Format props into entries, then query params
+  const customFilters =
+    (fields?.filterOptions?.filterOptionsList &&
+      fields?.filterOptions?.filterOptionsList.map((item) => [
+        item.filter?.value,
+        item.filterValueGuid?.targetItem?.id,
+      ])) ||
+    [];
+
+  const contextSearchParams = customFilters.length
+    ? ''
+    : Object.entries(rendering.fields?.data?.contextItemSearchParams || {})
+        .filter(([, nestedValue]) => nestedValue.value !== '')
+        .map(([key, nestedValue]) => [
+          key,
+          nestedValue?.value &&
+            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]);
+
+  const contextSearchIdParams = customFilters.length
+    ? ''
+    : Object.entries(rendering.fields?.data?.contextItemSearchIdParams || {})
+        .filter(([, value]) => value !== '')
+        .map(([key, value]) => [
+          key,
+          value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+        ]); // clean up bad ID characters
+
   const params = [
-    ...baselineParams,
-    ['verticalKey', 'articles'],
-    [queryString, serviceLineId],
+    ['verticalKey', 'patientstories'],
+    ...customFilters,
+    ...contextSearchParams,
+    ...contextSearchIdParams,
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_API_URL + '/search'); // compose API url
+
+  const ctaParams = [
+    ...customFilters,
+    ...contextSearchParams,
+    ...contextSearchIdParams,
+  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
+    const url = new URL(query, `${BASE_URL}/search`);
+
     const response = await fetch(url.href);
     if (response.ok) {
-      const fallbackData = await response.json();
-      return fallbackData;
+      const data = await response.json();
+
+      const selectedData = data.response.results.map(
+        (result: BlogRelatedArticlesResult) => {
+          return result.data;
+        }
+      );
+
+      return {
+        BlogRelatedArticles: selectedData,
+        ctaQuery,
+        apiUrl: url.href,
+      };
     } else {
-      throw response.statusText;
+      throw {
+        url,
+        statusText: response.statusText,
+      };
     }
   } catch (error) {
-    console.error(error);
-    return rendering;
+    console.error(
+      {
+        message: 'Blog Related Articles server-side data fetching error',
+        error: error,
+      },
+      error
+    );
+    return { BlogRelatedArticles: [], ctaQuery };
   }
 };

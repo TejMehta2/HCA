@@ -16,7 +16,7 @@ export interface Response {
   businessId: number;
   queryId: string;
   resultsCount: number;
-  locations: Data[];
+  results: { data: Data }[];
   appliedQueryFilters: unknown[];
   facets: unknown[];
   source: string;
