@@ -1,0 +1,26 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as TextBlockHeaderStories from './TextBlockHeader.stories'
+
+<Meta of={TextBlockHeaderStories} />
+
+# TextBlockHeader
+
+## Description
+
+The TextBlockHeader component is a simple title and description component.
+
+It is intended to be used in the Sitecore RichText components and so should be wrapped in [ContainerComponent](?path=/docs/site-components-textblockcontainer--docs) to provide padding.
+
+It can be composed like this:
+
+``` tsx
+<TextBlockHeader>
+  <Text variation={'subheading-1'}>Payment plans</Text>
+  <Text variation={'display-2'}>New to private healthcare?</Text>
+</TextBlockHeader>
+```
+
+## Example 
+
+<Canvas of={TextBlockHeaderStories.Default} />
+<Controls of={TextBlockHeaderStories.Default} />

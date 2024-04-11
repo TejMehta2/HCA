@@ -1,0 +1,104 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as RichTextStories from './RichText.stories'
+
+<Meta of={RichTextStories} />
+
+# RichText
+
+## Description
+
+The RichText component is a simple wrapper component to apply RTE styles.
+
+It is intended to wrap HTML and apply styles to the HTML tags within.
+
+It isn't padded, and should be nested into a padded component, like [TextBlockContainer](?path=/docs/site-components-textblockcontainer--docs)
+It can be composed like this:
+
+``` tsx
+<RichText>
+  <p>
+    <b>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+      adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+      reprehenderit. Aliquip laboris duis ex labore veniam labore do
+      nostrud minim labore eiusmod voluptate sit commodo officia. Commodo
+      tempor tempor magna deserunt sunt dolore dolore.
+    </b>
+  </p>
+
+  <p>
+    <i>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+      adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+      reprehenderit. Aliquip laboris duis ex labore veniam labore do
+      nostrud minim labore eiusmod voluptate sit commodo officia. Commodo
+      tempor tempor magna deserunt sunt dolore dolore.
+    </i>
+  </p>
+
+  <p>
+    <u>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+      adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+      reprehenderit. Aliquip laboris duis ex labore veniam labore do
+      nostrud minim labore eiusmod voluptate sit commodo officia. Commodo
+      tempor tempor magna deserunt sunt dolore dolore.
+    </u>
+  </p>
+
+  <p>
+    Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+    cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+    adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+    reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud
+    minim labore eiusmod voluptate sit commodo officia. Commodo tempor
+    tempor magna deserunt sunt dolore dolore.
+  </p>
+  <hr />
+  <p>
+    <small>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse. Sunt culpa
+      adipisicing eiusmod ullamco eu esse laborum deserunt et officia
+      reprehenderit. Aliquip laboris duis ex labore veniam labore do
+      nostrud minim labore eiusmod voluptate sit commodo officia. Commodo
+      tempor tempor magna deserunt sunt dolore dolore.
+    </small>
+  </p>
+  <ul>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse.&nbsp;
+    </li>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor.
+    </li>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse.&nbsp;
+    </li>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor.
+    </li>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor in ad non consequat esse.&nbsp;
+    </li>
+    <li>
+      Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non
+      cillum mollit officia tempor.
+    </li>
+  </ul>
+  <a href="#">Lorem ipsum</a>
+</RichText>
+```
+
+## Example 
+
+<Canvas of={RichTextStories.Default} />
+<Controls of={RichTextStories.Default} />
