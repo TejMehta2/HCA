@@ -30,7 +30,9 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/treatments`;
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/treatments`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/treatments`;
+const SEARCH_PATH = '/search';
 
 const TreatmentsSearchDefaultComponent = (
   props: ApiSearchProps
@@ -59,7 +61,8 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<ApiResponse, Autocomplete>({
-    baseUrl: BASE_URL,
+    baseUrl: CLIENT_API_PATH,
+    searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
   });
@@ -257,7 +260,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_URL); // compose API url
+  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
   console.log(baselineParams);
 

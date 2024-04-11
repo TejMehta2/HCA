@@ -34,10 +34,10 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { ApiSearchProps } from 'src/types/searchProps';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}`;
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
-const AUTOCOMPLETE_PATH =
-  '/locationApi/suggestLocation?provider=1&searchType=1';
+const AUTOCOMPLETE_PATH = '/locationApi/suggestLocation';
 
 const LocationsSearchDefaultComponent = (
   props: LocationsSearchProps
@@ -70,7 +70,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
-    baseUrl: BASE_URL,
+    baseUrl: CLIENT_API_PATH,
     searchPath: SEARCH_PATH,
     baselineParams: baselineParams,
     autocompletePath: AUTOCOMPLETE_PATH,
@@ -391,10 +391,10 @@ export const getStaticProps: GetStaticComponentProps = async (
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, `${BASE_URL}${SEARCH_PATH}`); // compose API url
+  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
   try {
-    const response = await fetch(url.href);
+    const response = await fetch(url);
     if (response.ok) {
       const fallbackData = await response.json();
       return fallbackData;

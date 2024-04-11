@@ -25,7 +25,8 @@ import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
+const SEARCH_PATH = '/search';
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -215,7 +216,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
-    const url = new URL(query, `${BASE_URL}/search`);
+    const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
 
     const response = await fetch(url.href);
     if (response.ok) {
