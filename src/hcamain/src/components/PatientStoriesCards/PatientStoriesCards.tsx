@@ -9,6 +9,7 @@ import {
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
+  patientStories,
   PatientStoriesCardsProps,
   patientStoriesResult,
   StaticProps,
@@ -42,22 +43,14 @@ const PatientStoriesCardsDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
-
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+const returnCards = (
+  props: PatientStoriesCardsProps,
+  data: StaticProps,
+  isSlider: boolean
+) => {
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const patientStories = data?.patientStories?.slice(0, Number(quantity) || 3);
-  const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-
   let cards;
-
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
 
   if (
     props?.fields?.data?.item?.patientStories?.PatientStoriesList &&
@@ -88,6 +81,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
               </span>
             </a>
           }
+          contentVariation={isSlider ? 'mixed' : undefined}
         />
       )
     );
@@ -130,6 +124,23 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           )
         );
     }
+  }
+  return cards;
+};
+
+export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
+  const columns: CardBlockProps['variation'] =
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
+  const patientStoriesCards = data && returnCards(props, data, false);
+
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
   return (
@@ -208,7 +219,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
         )
       }
     >
-      <>{cards}</>
+      <>{patientStoriesCards}</>
     </CardBlock>
   );
 };
@@ -223,74 +234,58 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
 };
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
-  //console.log(props);
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const patientStoriesCards = data && returnCards(props, data, true);
+
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
-  return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
 
-  <SideScrollingCards
-    title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
-    link={
-      props.fields?.data?.item?.cTALink?.jsonValue ? (
-        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
-          {props?.fields?.data?.item?.cTAIcon?.Icon && (
-            <span
-              dangerouslySetInnerHTML={{
-                __html:
-                  props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
-                  '',
-              }}
-            />
-          )}
-          {!isExperienceEditor ? (
-            <RichText
-              tag="span"
-              field={{
-                value:
-                  props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
-              }}
-            />
-          ) : (
-            <></>
-          )}
-        </JssLink>
-      ) : (
-        <></>
-      )
-    }
-    bodyCopy={
-      <RichText tag="span" field={props.fields?.data?.item?.text?.jsonValue} />
-    }
-  >
-    {props.fields?.data?.item?.stories?.StoriesList?.map((story, index) => (
-      <CardPatientStories
-        key={index}
-        title={
-          <Text tag="h3" variation="display-4">
-            <JssText field={story.title} />
-          </Text>
-        }
-        link={
-          <a href={story?.url?.url}>
-            <RichText
-              tag="span"
-              field={{
-                value: props.fields?.data?.item?.cardCTAText?.jsonValue?.value,
-              }}
-            />
-          </a>
-        }
-        bodyCopy={
-          <Text tag="div" variation="body-large">
-            <RichText tag="span" field={story?.text} />
-          </Text>
-        }
-        image={<JssImage field={story?.image?.jsonValue} />}
-        contentVariation="mixed"
-      ></CardPatientStories>
-    ))}
-  </SideScrollingCards>;
+  console.log(props);
+  return (
+    <SideScrollingCards
+      title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
+      link={
+        props.fields?.data?.item?.cTALink?.jsonValue ? (
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+            {props?.fields?.data?.item?.cTAIcon?.Icon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html:
+                    props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
+                    '',
+                }}
+              />
+            )}
+            {!isExperienceEditor ? (
+              <JssRichText
+                tag="span"
+                field={{
+                  value:
+                    props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+                }}
+              />
+            ) : (
+              <></>
+            )}
+          </JssLink>
+        ) : (
+          <></>
+        )
+      }
+      bodyCopy={
+        <JssRichText
+          tag="span"
+          field={props.fields?.data?.item?.text?.jsonValue}
+        />
+      }
+    >
+      {patientStoriesCards}
+    </SideScrollingCards>
+  );
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
