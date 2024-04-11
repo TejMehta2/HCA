@@ -9,6 +9,7 @@ import BlogContent from '@component-library/site-components/BlogContent/BlogCont
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 interface AuthorFields {
   fields?: {
@@ -43,27 +44,59 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
+  const isContainerized = props?.params?.Containerized === '1';
+  if (isContainerized) {
+    return (
+      <RichText additionalStyles={props?.params?.styles}>
+        <figure>
+          <QuoteBlock
+            author={{
+              name: props.fields?.Author?.[0].fields?.Name?.value,
+              image: (
+                <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
+              ),
+              tag: (
+                <span>
+                  <JssText
+                    field={props.fields?.Author?.[0]?.fields?.Position}
+                  />
+                </span>
+              ),
+            }}
+            children={
+              <Text variation={props.params?.HeadingSize || 'display-5'}>
+                <JssText field={props.fields?.Quote} />
+              </Text>
+            }
+          />
+        </figure>
+      </RichText>
+    );
+  }
+
   return (
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
     >
-      <QuoteBlock
-        author={{
-          name: props.fields?.Author?.[0].fields?.Name?.value,
-          image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
-          tag: (
-            <span>
-              <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
-            </span>
-          ),
-        }}
-        children={
-          <Text variation={props.params?.HeadingSize || 'display-5'}>
-            <JssText field={props.fields?.Quote} />
-          </Text>
-        }
-      />
+      <RichText>
+        <QuoteBlock
+          author={{
+            name: props.fields?.Author?.[0].fields?.Name?.value,
+            image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
+            tag: (
+              <span>
+                <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
+              </span>
+            ),
+          }}
+          children={
+            <Text variation={props.params?.HeadingSize || 'display-5'}>
+              <JssText field={props.fields?.Quote} />
+            </Text>
+          }
+        />
+      </RichText>
     </BlogContent>
   );
 };

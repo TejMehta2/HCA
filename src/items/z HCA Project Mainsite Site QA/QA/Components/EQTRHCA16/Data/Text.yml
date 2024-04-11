@@ -1,0 +1,41 @@
+﻿---
+ID: "97e18861-e7fa-4311-ace0-c98343aa1d68"
+Parent: "50abd894-bf59-4ac4-b113-7764db66e757"
+Template: "21ad2248-bde1-498a-92e7-4df78c9e5dd1"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16/Data/Text"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240410T121144Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6e67b4e2-5b5a-472d-8ffe-0278ed969e13"
+      Hint: Text
+      Value: |
+        <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
+        <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
+        <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
+        <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "06d94373-415c-4e4d-9eb7-d1e4b5047c48"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240410T121211Z

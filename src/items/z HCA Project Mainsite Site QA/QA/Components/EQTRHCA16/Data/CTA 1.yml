@@ -1,0 +1,30 @@
+﻿---
+ID: "5fb3fab8-8b36-42b8-a398-daaa0bc9dc35"
+Parent: "50abd894-bf59-4ac4-b113-7764db66e757"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16/Data/CTA 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240410T123958Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "41e1b0c6-578d-4125-a737-514e6eafc474"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Learn more about &lt;b&gt;self-pay&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240410T124420Z

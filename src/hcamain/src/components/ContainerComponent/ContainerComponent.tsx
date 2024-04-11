@@ -4,7 +4,9 @@ import {
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Themes from '@component-library/foundation/Themes/Themes';
+import TextBlockContainer from '@component-library/site-components/TextBlockContainer/TextBlockContainer';
+import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 
 interface Fields {}
 
@@ -16,9 +18,14 @@ type ContainerComponentProps = {
 
 export const Default = (props: ContainerComponentProps): JSX.Element => {
   const phKey = `container-component-${props.params?.DynamicPlaceholderId}`;
+
   return (
-    <PlaceHolderWrapper>
-      <Placeholder name={phKey} rendering={props.rendering} />
-    </PlaceHolderWrapper>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <TextBlockContainer>
+        <RichTextElement additionalStyles={'grid'}>
+          <Placeholder name={phKey} rendering={props.rendering} />
+        </RichTextElement>
+      </TextBlockContainer>
+    </Themes>
   );
 };

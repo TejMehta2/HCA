@@ -200,7 +200,7 @@ export const getStaticProps: GetStaticComponentProps = async (
         ]); // clean up bad ID characters
 
   const params = [
-    ['verticalKey', 'patientstories'],
+    ['verticalKey', 'articles'],
     ...customFilters,
     ...contextSearchParams,
     ...contextSearchIdParams,

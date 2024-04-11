@@ -8,9 +8,6 @@ Languages:
   Versions:
   - Version: 1
     Fields:
-    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
-      Hint: __Lock
-      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240410T121144Z
@@ -31,11 +28,11 @@ Languages:
         <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "015f19c8-2ad0-40d1-a582-10cadbc47aeb"
+      Value: "06d94373-415c-4e4d-9eb7-d1e4b5047c48"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240411T130222Z
+      Value: 20240410T121211Z
