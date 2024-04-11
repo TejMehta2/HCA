@@ -32,7 +32,7 @@ const PatientStoriesCardsDefaultComponent = (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
           <span className="is-empty-hint">
-            Patient Stories Cards please click to select datasource
+            Patient Stories. Please click to select datasource
           </span>
         </div>
       </div>
@@ -54,7 +54,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
   let cards;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
@@ -75,7 +75,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             </Text>
           }
           bodyCopy={
-            <Text tag="span" variation="body-large">
+            <Text tag="div" variation="body-large">
               <JssRichText field={text} />
             </Text>
           }
@@ -140,41 +140,70 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           title={
-            <Text
-              variation={props.params?.HeadingSize || 'heading-1'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssText
-                tag={'span'}
-                field={props.fields?.data?.item?.title?.jsonValue}
-              />
-            </Text>
+            (props.fields?.data?.item?.title?.jsonValue ||
+              isExperienceEditor) && (
+              <Text
+                variation={props.params?.HeadingSize || 'heading-1'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText
+                  tag={'span'}
+                  field={props.fields?.data?.item?.title?.jsonValue}
+                />
+              </Text>
+            )
+          }
+          subtitle={
+            (props.fields?.data?.item?.heading?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="span" variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields?.data?.item?.text?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            )
           }
         />
       }
       cta={
         !isExperienceEditor ? (
-          <a
-            href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-          >
-            {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-              <>
-                <JssRichText
-                  field={{
-                    value:
-                      props.fields?.data?.item?.cTALink?.jsonValue?.value
-                        ?.text || '',
+          props.fields?.data?.item?.cTALink?.jsonValue && (
+            <a
+              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
+            >
+              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
                   }}
-                />
-              </>
-            )}
-          </a>
-        ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
-            <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-            ></JssLink>
+                ></span>
+              )}
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
+              )}
+            </a>
           )
+        ) : (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+          ></JssLink>
         )
       }
     >
