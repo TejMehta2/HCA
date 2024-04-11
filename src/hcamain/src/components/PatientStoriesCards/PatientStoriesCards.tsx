@@ -9,7 +9,6 @@ import {
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
-  patientStories,
   PatientStoriesCardsProps,
   patientStoriesResult,
   StaticProps,
@@ -17,6 +16,7 @@ import {
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
@@ -77,9 +77,9 @@ const returnCards = (
           image={<JssImage field={image?.jsonValue} />}
           link={
             <a href={`${url?.path}`}>
-              <span>
-                <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
-              </span>
+              <JssRichText
+                field={props.fields?.data?.item?.cTAText?.jsonValue}
+              />
             </a>
           }
           contentVariation={isSlider ? 'mixed' : undefined}
@@ -188,7 +188,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue && (
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
             <a
               href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
             >
@@ -226,12 +226,65 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 };
 
 export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
-  console.log('CARDS');
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const patientStoriesCards = data && returnCards(props, data, false);
+
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
-  //return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
-  return 'CARDS';
+  return (
+    <CarouselCards
+      theme={props.params?.Theme || 'A-HCA-White'}
+      title={
+        <Text
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-3'}
+        >
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      link={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+            <a
+              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
+            >
+              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
+                  }}
+                ></span>
+              )}
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
+              )}
+            </a>
+          )
+        ) : props.fields?.data?.item?.cTALink?.jsonValue?.value ? (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+          ></JssLink>
+        ) : (
+          <></>
+        )
+      }
+    >
+      {patientStoriesCards}
+    </CarouselCards>
+  );
 };
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
@@ -245,34 +298,42 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
-  console.log(props);
   return (
     <SideScrollingCards
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
-        props.fields?.data?.item?.cTALink?.jsonValue ? (
-          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
-            {props?.fields?.data?.item?.cTAIcon?.Icon && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html:
-                    props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
-                    '',
-                }}
-              />
-            )}
-            {!isExperienceEditor ? (
-              <JssRichText
-                tag="span"
-                field={{
-                  value:
-                    props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
-                }}
-              />
-            ) : (
-              <></>
-            )}
-          </JssLink>
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.cTALink?.jsonValue.value ? (
+            <a
+              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
+            >
+              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
+                  }}
+                ></span>
+              )}
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
+              )}
+            </a>
+          ) : (
+            <></>
+          )
+        ) : props.fields?.data?.item?.cTALink?.jsonValue.value ? (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+          ></JssLink>
         ) : (
           <></>
         )
