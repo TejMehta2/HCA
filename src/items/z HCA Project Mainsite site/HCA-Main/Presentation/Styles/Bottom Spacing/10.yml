@@ -1,25 +1,24 @@
 ﻿---
-ID: "0510d32a-babd-4163-8814-fe0cb9d0054e"
-Parent: "92473275-ca97-45f9-9ab2-88608dd10cdb"
+ID: "d3e70016-2b3f-46cf-9a5a-653c6f7af6ff"
+Parent: "76af933d-6c57-49b9-b1b8-fc77dd2e89d0"
 Template: "6b8aabef-d650-46e0-97d0-c0b04f7f016b"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation/Styles/Spacing/Indent side"
-BranchID: "75653e9d-3c5c-45d4-823d-1bb04474400b"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Styles/Bottom Spacing/10"
 SharedFields:
 - ID: "09147fb2-ebfb-4949-8c8e-26a424409d5e"
   Hint: Value
-  Value: indent
+  Value: "spacing-10"
 - ID: "39816442-74d9-4ce2-beb3-128b204efd40"
   Hint: Icon
-  Value: "add-spacing-sides"
-- ID: "95579875-484e-41f0-b9c2-804eafaf3ccc"
-  Hint: IsVerifiedStyle
-  Value: 1
+  Value: "add-spacing-bottom"
+- ID: "69bb49f3-da64-4b0e-abd6-184b832ff6ab"
+  Hint: Allowed Renderings
+  Value: |
+    {15CABDFF-FFD9-48F4-826D-A4C3D7868D3A}
+    {7A1D9A21-B8D7-42F9-9B0B-92ABF8D1974F}
+    {5F6BF7C9-C80C-4BBD-AD78-8DA749B35206}
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 3600
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{526478CF-EF58-4B11-A4CA-B4F692F35722}"
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -27,7 +26,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161634Z
+      Value: 20240411T123744Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -38,11 +37,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1b05157e-4466-4872-b291-4b94acc17288"
+      Value: "ebf34e77-d857-4486-81f5-45760cc7093c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161634Z
+      Value: 20240411T124238Z
