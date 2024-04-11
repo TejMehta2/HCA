@@ -29,7 +29,9 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
+const SEARCH_PATH = '/search';
 
 const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -56,7 +58,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<BlogResponse, Autocomplete>({
-    baseUrl: BASE_URL,
+    baseUrl: CLIENT_API_PATH,
+    searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
   });
@@ -223,7 +226,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_URL); // compose API url
+  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
   try {
     const response = await fetch(url.href);

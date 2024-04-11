@@ -23,7 +23,8 @@ import CardMap from '@component-library/components/CardMap/CardMap';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/locations`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+const SEARCH_PATH = '/locations/search';
 
 const LocationCardsDefaultComponent = (
   props: LocationCardsProps
@@ -338,7 +339,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
-    const url = new URL(query, `${BASE_URL}/search`);
+    const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
 
     const response = await fetch(url.href);
     if (response.ok) {

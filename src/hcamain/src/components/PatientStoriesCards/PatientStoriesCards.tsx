@@ -20,7 +20,8 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
+const SEARCH_PATH = '/search';
 
 const PatientStoriesCardsDefaultComponent = (
   props: PatientStoriesCardsProps
@@ -263,7 +264,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
-    const url = new URL(query, `${BASE_URL}/search`);
+    const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
 
     const response = await fetch(url.href);
     if (response.ok) {
