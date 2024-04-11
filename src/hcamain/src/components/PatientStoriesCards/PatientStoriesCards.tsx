@@ -15,6 +15,7 @@ import {
 } from './PatientStoriesCards.types';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
+import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
@@ -188,7 +189,8 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
-  return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
+  //return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
+  return 'CARDS';
 };
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
@@ -197,6 +199,69 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
   return <JssText field={props.fields?.data?.item?.title?.jsonValue} />;
+
+  <SideScrollingCards
+    title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
+    link={
+      props.fields?.data?.item?.cTALink?.jsonValue ? (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+          {props?.fields?.data?.item?.cTAIcon?.Icon && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html:
+                  props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value ||
+                  '',
+              }}
+            />
+          )}
+          {!isExperienceEditor ? (
+            <RichText
+              tag="span"
+              field={{
+                value:
+                  props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+              }}
+            />
+          ) : (
+            <></>
+          )}
+        </JssLink>
+      ) : (
+        <></>
+      )
+    }
+    bodyCopy={
+      <RichText tag="span" field={props.fields?.data?.item?.text?.jsonValue} />
+    }
+  >
+    {props.fields?.data?.item?.stories?.StoriesList?.map((story, index) => (
+      <CardPatientStories
+        key={index}
+        title={
+          <Text tag="h3" variation="display-4">
+            <JssText field={story.title} />
+          </Text>
+        }
+        link={
+          <a href={story?.url?.url}>
+            <RichText
+              tag="span"
+              field={{
+                value: props.fields?.data?.item?.cardCTAText?.jsonValue?.value,
+              }}
+            />
+          </a>
+        }
+        bodyCopy={
+          <Text tag="div" variation="body-large">
+            <RichText tag="span" field={story?.text} />
+          </Text>
+        }
+        image={<JssImage field={story?.image?.jsonValue} />}
+        contentVariation="mixed"
+      ></CardPatientStories>
+    ))}
+  </SideScrollingCards>;
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
