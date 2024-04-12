@@ -246,6 +246,18 @@
 
 .full {
   @extend %full;
+
+  &-dark {
+    @extend %full-dark;
+  }
+
+  &-light {
+    @extend %full-light;
+  }
+
+  &-light-blue {
+    @extend %full-light-blue;
+  }
 }
 
 .outline {
