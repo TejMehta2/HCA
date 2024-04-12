@@ -3,6 +3,8 @@
 
 .wrapper {
   @include responsive-grid;
+  background: var(--background);
+  color: var(--text);
 }
 
 .error {
