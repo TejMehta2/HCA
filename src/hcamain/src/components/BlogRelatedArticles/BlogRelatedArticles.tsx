@@ -59,34 +59,39 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
-      (card, index) => (
-        <CardBlog key={index}>
-          <JssImage field={card.abstractImage?.jsonValue} />
-          <JssDate field={card.date?.jsonValue} />
-          {card.abstractTitle && (
-            <Text
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              variation="heading-2"
-            >
-              <a href={card.url?.path}>
-                <JssText field={card.abstractTitle} />
-              </a>
-            </Text>
-          )}
-          <Text tag="span" variation="body-large">
-            <JssRichText field={card.abstractText} />
-          </Text>
-          {!!card.articleType && (
-            <Tags>
-              <a
-                href={`${baseBlogUrl}?${queryString}=${card.articleType?.targetItem?.id}`}
+      (card, index) => {
+        const formattedArticleId =
+          card.articleType?.targetItem?.id &&
+          card.articleType?.targetItem?.id
+            .replaceAll(/[{},\-]/g, '')
+            .toLowerCase();
+        return (
+          <CardBlog key={index}>
+            <JssImage field={card.abstractImage?.jsonValue} />
+            <JssDate field={card.date?.jsonValue} />
+            {card.abstractTitle && (
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                variation="heading-2"
               >
-                <JssText field={card.articleType?.targetItem?.title} />
-              </a>
-            </Tags>
-          )}
-        </CardBlog>
-      )
+                <a href={card.url?.path}>
+                  <JssText field={card.abstractTitle} />
+                </a>
+              </Text>
+            )}
+            <Text tag="span" variation="body-large">
+              <JssRichText field={card.abstractText} />
+            </Text>
+            {!!card.articleType && (
+              <Tags>
+                <a href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}>
+                  <JssText field={card.articleType?.targetItem?.title} />
+                </a>
+              </Tags>
+            )}
+          </CardBlog>
+        );
+      }
     );
   } else if (blogRelatedArticles) {
     cardsList = blogRelatedArticles.map(
@@ -172,8 +177,8 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   // Format props into entries, then query params
   const customFilters =
-    (fields?.filterOptions?.filterOptionsList &&
-      fields?.filterOptions?.filterOptionsList.map((item) => [
+    (fields?.filterBy?.FilterByList &&
+      fields?.filterBy?.FilterByList.map((item) => [
         item.filter?.value,
         item.filterValueGuid?.targetItem?.id,
       ])) ||
@@ -212,7 +217,10 @@ export const getStaticProps: GetStaticComponentProps = async (
     ...contextSearchParams,
     ...contextSearchIdParams,
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const ctaQuery = `?${ctaParams.join('&')}`;
+  const ctaQuery = `?${ctaParams
+    .join('&')
+    .replaceAll(/[{},\-]/g, '')
+    .toLowerCase()}`;
 
   try {
     const url = new URL(query, `${BASE_URL}/search`);

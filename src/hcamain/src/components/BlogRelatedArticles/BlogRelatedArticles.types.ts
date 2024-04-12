@@ -57,8 +57,8 @@ export interface Fields {
         SearchByList?: SortOptionsFields[];
       };
 
-      filterOptions?: {
-        filterOptionsList?: FilterOptionsFields[];
+      filterBy?: {
+        FilterByList?: FilterOptionsFields[];
       };
       numberOfCards?: { jsonValue?: Field<string> };
       blogUrl?: { jsonValue?: LinkField };
