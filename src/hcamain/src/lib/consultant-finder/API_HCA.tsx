@@ -2,6 +2,7 @@
 import { parse } from 'node-html-parser';
 import { getHCAConfig } from './getHCAConfig';
 import { getDoctifyConfig } from './getDoctifyConfig';
+import { getSpecialistProfileData } from './API_Doctify';
 
 export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
   const doctifyConfig = await getDoctifyConfig();
@@ -279,4 +280,135 @@ export async function getCMA(id: string): Promise<any> {
   }
 
   return cma;
+}
+
+// get structured data for the given slug
+//
+export async function getPhysicianStructuredData(slug: string): Promise<any> {
+  const specialistProfileData = await getSpecialistProfileData(slug);
+  let ret: any = null;
+
+  if (specialistProfileData && specialistProfileData.slug) {
+    try {
+      ret = {
+        '@context': 'https://schema.org',
+        '@type': 'MedicalWebPage',
+        mainEntity: {
+          '@context': 'https://schema.org',
+          '@type': 'Physician',
+          name: '',
+          description: '',
+          url: '',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: '',
+            addressRegion: '',
+            postalCode: '',
+            streetAddress: '',
+          },
+          telephone: '',
+          image: '',
+          medicalSpecialty: {
+            '@type': 'MedicalSpecialty',
+            name: '',
+            url: '',
+          },
+          hasCredential: [
+            {
+              '@type': 'EducationalOccupationalCredential',
+              id: '',
+              name: '',
+            },
+            {
+              '@type': 'EducationalOccupationalCredential',
+              id: '',
+              name: '',
+            },
+          ],
+          award: [],
+          hospitalAffiliation: [],
+        },
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              item: {
+                '@id': 'https://www.hcahealthcare.co.uk',
+                name: 'Home',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@id': 'https://www.hcahealthcare.co.uk/Finder',
+                name: 'Finder',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              item: {
+                '@id':
+                  'https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile',
+                name: 'StepConsultantProfile',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              item: {
+                '@id': `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}`,
+                name: `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName} ${specialistProfileData.suffix}`,
+              },
+            },
+          ],
+        },
+      };
+
+      //console.log('in specialistProfileData');
+      // top specialty
+      const topSpecialty = specialistProfileData?.keywords?.filter(
+        (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+      );
+      // locations
+      const locations = specialistProfileData?.practices;
+      ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
+      ret.mainEntity.description = `${specialistProfileData.about}`;
+      ret.mainEntity.url = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}`;
+      //TODO get from content
+      ret.mainEntity.address.addressLocality = 'London';
+      ret.mainEntity.address.addressRegion = 'London';
+      ret.mainEntity.address.postalCode = 'W1G 0PU';
+      ret.mainEntity.address.streetAddress =
+        'HCA Healthcare, 2 Cavendish Square';
+      ret.mainEntity.telephone = '+442045711724';
+      ret.mainEntity.image = specialistProfileData.images?.logo ?? '';
+      ret.mainEntity.medicalSpecialty.name = topSpecialty
+        ? topSpecialty[0].name
+        : 'MD';
+      ret.mainEntity.medicalSpecialty.url = `https://www.hcahealthcare.co.uk/search-results?query=${ret.mainEntity.medicalSpecialty.name}`;
+      ret.mainEntity.hasCredential[0].name = `${specialistProfileData.suffix}`;
+      ret.mainEntity.hasCredential[0].id = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}#Bio`;
+      ret.mainEntity.hasCredential[1].name = `GMC Registration: ${specialistProfileData.gmcNumber}`;
+      ret.mainEntity.hasCredential[1].id = `https://www.gmc-uk.org/doctors/${specialistProfileData.gmcNumber}`;
+      locations?.forEach((loc: any, idx: number) => {
+        ret.mainEntity.hospitalAffiliation[idx] = {
+          '@type': 'Hospital',
+          name: loc.name,
+          address: `${loc.address?.street1},${loc.address?.street2},${loc.address?.city},${loc.address?.county},${loc.address?.postcode},${loc.address?.country}`,
+          telephone: `${loc.phone}`,
+          image: `${loc.images?.logo}`,
+        };
+      });
+    } catch (e) {
+      console.warn(
+        `Could not load PhysicianStructuredData failed with exception ${e}`
+      );
+    }
+  }
+
+  return ret;
 }

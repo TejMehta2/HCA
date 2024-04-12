@@ -21,7 +21,10 @@ import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
-import { checkIfLiveBookingIsAvailable } from 'lib/consultant-finder/API_HCA';
+import {
+  checkIfLiveBookingIsAvailable,
+  getPhysicianStructuredData,
+} from 'lib/consultant-finder/API_HCA';
 import {
   getSpecialistProfileData,
   isErrorWithProfileData,
@@ -51,6 +54,7 @@ import {
   formatDateShort,
 } from '@component-library/utility-functions/index';
 import axios, { CancelTokenSource } from 'axios';
+import Head from 'next/head';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -110,6 +114,7 @@ interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
   ProfileJson: any;
+  PhysicianStructuredDataJson: any;
   ErrorWithProfileData: boolean;
 }
 
@@ -135,6 +140,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   }
 
   const consultantProfileJson = await getSpecialistProfileData(slug);
+  const physicianStructuredDataJson = await getPhysicianStructuredData(slug);
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
@@ -143,6 +149,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
     ProfileJson: consultantProfileJson,
+    PhysicianStructuredDataJson: physicianStructuredDataJson,
   };
 
   // returned stuff from the server side
@@ -290,11 +297,51 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
+  const title = `${serverSideData?.ProfileJson?.title} ${serverSideData
+    ?.ProfileJson?.firstName} ${serverSideData?.ProfileJson
+    ?.lastName} ${serverSideData?.ProfileJson?.suffix} - ${
+    topSpecialty[0]?.name || ''
+  } at HCA Healthcare UK`;
+
+  const description = serverSideData?.ProfileJson?.about
+    ?.substring(0, serverSideData?.ProfileJson?.about?.indexOf('.'))
+    .replaceAll('<p>', '')
+    .replaceAll('</p>', '')
+    .replaceAll('<strong>', '')
+    .replaceAll('</strong>', '');
+
+  const keywords = serverSideData?.ProfileJson?.medicalProcedures
+    ?.replaceAll('<ul>', '')
+    .replaceAll('</ul>', '')
+    .replaceAll('<li>', '')
+    .replaceAll('</li>', ', ');
+
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
           <div>
+            <Head>
+              <title>{title}</title>
+              <link
+                rel="canonical"
+                href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${serverSideData?.ProfileJson?.slug}`}
+              />
+              <meta name="description" content={description} />
+              <meta name="keywords" content={keywords} />
+              <meta name="robots" content="index,follow" />
+
+              {/* // see https://validator.schema.org/ and https://search.google.com/test/rich-results */}
+              <script
+                id="consultant-profile-data"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: `${JSON.stringify(
+                    serverSideData?.PhysicianStructuredDataJson
+                  )}`,
+                }}
+              ></script>
+            </Head>
             {/* top section */}
             <div>
               <Breadcrumbs>
