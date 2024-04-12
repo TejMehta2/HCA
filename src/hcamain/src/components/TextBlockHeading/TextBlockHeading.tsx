@@ -5,6 +5,8 @@ import {
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
+import Text from '@component-library/foundation/Text/Text';
 
 interface Fields {
   Heading?: Field<string>;
@@ -40,11 +42,13 @@ export const Default = (props: TextBlockHeadingProps): JSX.Element => {
     return <TextBlockHeadingDefaultComponent {...props} />;
   }
   return (
-    <div className={`component ${props.params?.styles}`}>
-      <JssText field={props.fields?.Heading} />
-      <br />
-      <JssText field={props.fields?.Title} />
-      <br />
-    </div>
+    <TextBlockHeader>
+      <Text variation={'subheading-1'}>
+        <JssText field={props.fields?.Heading} />
+      </Text>
+      <Text variation={'display-2'}>
+        <JssText field={props.fields?.Title} />
+      </Text>
+    </TextBlockHeader>
   );
 };

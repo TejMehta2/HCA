@@ -4,6 +4,7 @@ import {
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { RichTextElement } from '@component-library/core-components/RichText/RichText';
 
 interface ComponentProps {
   rendering: ComponentRendering & { params: ComponentParams };
@@ -11,9 +12,6 @@ interface ComponentProps {
 }
 
 export const Default = (props: ComponentProps): JSX.Element => {
-  const styles = `${props.params.GridParameters ?? ''} ${
-    props.params.Styles ?? ''
-  }`.trimEnd();
   const columnWidths = [
     props.params.ColumnWidth1,
     props.params.ColumnWidth2,
@@ -24,6 +22,7 @@ export const Default = (props: ComponentProps): JSX.Element => {
     props.params.ColumnWidth7,
     props.params.ColumnWidth8,
   ];
+
   const columnStyles = [
     props.params.Styles1,
     props.params.Styles2,
@@ -34,13 +33,18 @@ export const Default = (props: ComponentProps): JSX.Element => {
     props.params.Styles7,
     props.params.Styles8,
   ];
+
   const enabledPlaceholders = props.params.EnabledPlaceholders.split(',');
   const id = props.params.RenderingIdentifier;
 
   return (
-    <div
-      className={`row component column-splitter ${styles}`}
+    <RichTextElement
       id={id ? id : undefined}
+      additionalStyles={[
+        'grid',
+        props.params.GridParameters,
+        props.params.Styles,
+      ]}
     >
       {enabledPlaceholders.map((ph, index) => {
         const phKey = `column-${ph}-{*}`;
@@ -49,17 +53,11 @@ export const Default = (props: ComponentProps): JSX.Element => {
         }`.trimEnd();
 
         return (
-          <div key={index} className={phStyles}>
-            <div key={index} className="row">
-              <Placeholder
-                key={index}
-                name={phKey}
-                rendering={props.rendering}
-              />
-            </div>
-          </div>
+          <RichTextElement key={index} additionalStyles={phStyles}>
+            <Placeholder key={index} name={phKey} rendering={props.rendering} />
+          </RichTextElement>
         );
       })}
-    </div>
+    </RichTextElement>
   );
 };
