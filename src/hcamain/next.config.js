@@ -58,9 +58,14 @@ const nextConfig = {
         source: '/webhooks/sitecore/:path*',
         destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
       },
+      // rewrite forms
+      {
+        source: '/api/sitecore/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+      },
       // rewrite integration layer
       {
-        source: '/api/:path*',
+        source: '/api-layer/:path*',
         destination: `${process.env.INTEGRATION_LAYER_URL}/:path*`,
       },
     ];
