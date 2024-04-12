@@ -9,15 +9,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
 
 import {
-  GetStaticComponentProps,
   Image as JssImage,
   Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
-  useComponentProps,
-  ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
@@ -31,10 +28,6 @@ import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Tex
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
-import {
-  getSpecialistProfileData,
-  isErrorWithProfileData,
-} from 'lib/consultant-finder/API_Doctify';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -81,16 +74,9 @@ interface Fields {
 }
 
 type StepProps = {
-  rendering: ComponentRendering;
   params: { [key: string]: string };
   fields: Fields;
 };
-
-interface ServerSideProps {
-  Slug: string;
-  ProfileJson: any;
-  ErrorWithProfileData: boolean;
-}
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
