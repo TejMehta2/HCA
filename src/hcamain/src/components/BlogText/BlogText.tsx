@@ -1,7 +1,11 @@
 import React from 'react';
-import { Field, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Field,
+  RichText as JssRichText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 interface Fields {
   Text?: Field<string>;
@@ -27,9 +31,21 @@ export const Default = (props: BlogTextProps): JSX.Element => {
     return <BlogTextDefaultComponent {...props} />;
   }
 
+  const isContainerized = props?.params?.Containerized === '1';
+
+  if (isContainerized) {
+    return (
+      <RichText additionalStyles={props?.params?.styles}>
+        <JssRichText field={props.fields?.Text} />
+      </RichText>
+    );
+  }
+
   return (
     <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
-      <RichText field={props.fields?.Text} />
+      <RichText>
+        <JssRichText field={props.fields?.Text} />
+      </RichText>
     </BlogContent>
   );
 };
