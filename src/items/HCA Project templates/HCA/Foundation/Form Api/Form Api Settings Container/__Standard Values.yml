@@ -1,15 +1,12 @@
 ﻿---
-ID: "0c5b3388-064a-4396-aafc-524f57a73ad8"
-Parent: "beabb39e-0e85-4aa2-839b-82bdc50be8a6"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Foundation/Location Api/LocationApiSettings
+ID: "7e164246-ab4b-4da7-8b03-09d67ec373d1"
+Parent: "09a6ef0e-4adc-44b1-9627-4b384c6a29c2"
+Template: "09a6ef0e-4adc-44b1-9627-4b384c6a29c2"
+Path: /sitecore/templates/Project/HCA/Foundation/Form Api/Form Api Settings Container/__Standard Values
 SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Applications/32x32/clipboard.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{5BEB8D87-AFA3-4FEE-9E69-39BACB5D1D53}"
 Languages:
 - Language: en
   Versions:
@@ -17,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240313T122405Z
+      Value: 20240412T104659Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +25,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d61bea85-13e9-4bf3-b9e8-e72a66b3a616"
+      Value: "bbc3aa4c-8176-40bb-b990-f2e6241eda06"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240412T104816Z
+      Value: 20240412T104733Z
