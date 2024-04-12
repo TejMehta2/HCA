@@ -34,11 +34,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
       <div className={styles['select-wrapper']}>
         <select id={name} {...register(`${name}`)}>
           {addDefaultValue && <option value={''}>{defaultValueLabel}</option>}
-          {options.map((option: any) => (
-            <option key={option.id} value={option?.fields?.Value?.value}>
-              {option?.fields?.Label?.value}
-            </option>
-          ))}
+          {options}
         </select>
         <span className={styles.arrow}>
           <Icons iconName="iconChevronDown" />

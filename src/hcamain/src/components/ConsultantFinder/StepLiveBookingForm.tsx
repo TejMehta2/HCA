@@ -28,6 +28,7 @@ import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Tex
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
+import axios from 'axios';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -244,6 +245,51 @@ export const Default = (props: StepProps): JSX.Element => {
 
   const watchFormChanges = watch();
 
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
+  const [errorData, setErrorData] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
+
+  const getConsultantData = (slug: string) => {
+    axios
+      .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
+      .then((resp) => {
+        console.log(resp?.data?.insurers);
+        setErrorData(false);
+        setLoadingData(false);
+        setInsurersLDB(resp?.data?.insurers || []);
+      })
+      .catch((error) => {
+        setErrorData(true);
+        setLoadingData(false);
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    // get slug from URL
+    const slugURL = router?.query?.slug || null;
+    if (slugURL) {
+      setSlug(slugURL.toString());
+      getConsultantData(slugURL.toString());
+    }
+    // get gmc number from URL
+    const gmcNumber = router?.query?.gmcNumber || null;
+    setGmcNumber(Number(gmcNumber));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   useEffect(() => {
     console.log('user', watchFormChanges.user);
     console.log('payment', watchFormChanges.payment);
@@ -272,378 +318,407 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <HeaderLDB
-          logo={<JssImage field={props?.fields?.HCALogo} />}
-          progress={
-            <ProgressBar
-              currentPage={props?.fields?.CurrentStep?.value}
-              steps={props?.fields?.Steps}
-              slug={''}
-              gmcNumber={0}
-            ></ProgressBar>
-          }
-        ></HeaderLDB>
-
-        <LiveBookingForm>
-          {/* debugger for form */}
-          {/* https://www.npmjs.com/package/@hookform/devtools */}
-          <DevTool control={control} placement="top-right" />
-          <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
-            <Text tag="h1" variation="display-4">
-              {props?.fields?.LiveBookingFormHeadline?.value || 'Your details'}
-            </Text>
-            <Text tag="p" variation="body-medium-large">
-              {props?.fields?.LiveBookingFormSubHeadline?.value ||
-                'All fields are required unless specified as optional.'}
-            </Text>
-            {/* About you */}
-            <Text tag="h2" variation="heading-1">
-              About you
-            </Text>
-            {props?.fields?.LiveBookingFormUserOptions &&
-              props?.fields?.LiveBookingFormUserOptions.map((item: any) => (
-                <RadioButton
-                  key={item.id}
-                  label={item?.fields?.Label?.value || ''}
-                  name={'user'}
-                  value={item?.fields?.Value?.value}
-                  register={register}
-                />
-              ))}
-            {errors?.user && (
-              <ErrorMessage errorMessage={errors?.user?.message} />
-            )}
-
-            {watchFormChanges.user !== '' && (
-              <div>
-                {/* About appointment */}
-                <Text tag="h2" variation="heading-1">
-                  About the appointment
+        {router.isReady && (
+          <>
+            <HeaderLDB
+              logo={<JssImage field={props?.fields?.HCALogo} />}
+              progress={
+                <ProgressBar
+                  currentPage={props?.fields?.CurrentStep?.value}
+                  steps={props?.fields?.Steps}
+                  slug={''}
+                  gmcNumber={0}
+                ></ProgressBar>
+              }
+            ></HeaderLDB>
+            <LiveBookingForm>
+              {/* debugger for form */}
+              {/* https://www.npmjs.com/package/@hookform/devtools */}
+              <DevTool control={control} placement="top-right" />
+              <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+                <Text tag="h1" variation="display-4">
+                  {props?.fields?.LiveBookingFormHeadline?.value ||
+                    'Your details'}
                 </Text>
-                {/* Show payment option radio if user is patient */}
-                {/* Payment */}
-                {watchFormChanges.user === 'patient' && (
-                  <>
-                    {props?.fields?.LiveBookingFormAboutAppointmentOptions &&
-                      props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
+                <Text tag="p" variation="body-medium-large">
+                  {props?.fields?.LiveBookingFormSubHeadline?.value ||
+                    'All fields are required unless specified as optional.'}
+                </Text>
+                {/* About you */}
+                <Text tag="h2" variation="heading-1">
+                  About you
+                </Text>
+                {props?.fields?.LiveBookingFormUserOptions &&
+                  props?.fields?.LiveBookingFormUserOptions.map((item: any) => (
+                    <RadioButton
+                      key={item.id}
+                      label={item?.fields?.Label?.value || ''}
+                      name={'user'}
+                      value={item?.fields?.Value?.value}
+                      register={register}
+                    />
+                  ))}
+                {errors?.user && (
+                  <ErrorMessage errorMessage={errors?.user?.message} />
+                )}
+
+                {watchFormChanges.user !== '' && (
+                  <div>
+                    {/* About appointment */}
+                    <Text tag="h2" variation="heading-1">
+                      About the appointment
+                    </Text>
+                    {/* Show payment option radio if user is patient */}
+                    {/* Payment */}
+                    {watchFormChanges.user === 'patient' && (
+                      <>
+                        {props?.fields
+                          ?.LiveBookingFormAboutAppointmentOptions &&
+                          props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
+                            (item: any) => (
+                              <RadioButton
+                                key={item.id}
+                                label={item?.fields?.Label?.value || ''}
+                                name={'payment'}
+                                value={item?.fields?.Value?.value}
+                                register={register}
+                              />
+                            )
+                          )}
+                        {errors?.payment && (
+                          <ErrorMessage
+                            errorMessage={errors?.payment?.message}
+                          />
+                        )}
+                      </>
+                    )}
+
+                    {/* Payment fields mandatory/visible if payment is insurance or user is insurer */}
+                    {(watchFormChanges.user === 'insurer' ||
+                      watchFormChanges.payment === 'insurance') && (
+                      <>
+                        {!loadingData &&
+                          !errorData &&
+                          insurersLDB.length > 0 && (
+                            <SelectField
+                              id={'insuranceProvider'}
+                              name={'insuranceProvider'}
+                              label={
+                                props?.fields?.LiveBookingFormInsuranceLabel
+                                  ?.value || 'Insurance company'
+                              }
+                              addDefaultValue={true}
+                              defaultValueLabel={'Please select'}
+                              required={true}
+                              isError={errors?.insuranceProvider ? true : false}
+                              errorMessage={errors?.insuranceProvider?.message}
+                              options={insurersLDB.map((insurer: any) => (
+                                <option key={insurer.id} value={insurer.name}>
+                                  {insurer.name}
+                                </option>
+                              ))}
+                              register={register}
+                            />
+                          )}
+                        {/* <select
+                          id="insuranceProvider"
+                          {...register('insuranceProvider')}
+                        >
+                          <option value="">Please select insurer</option>
+                          <option value="Axa">Axa</option>
+                        </select>
+                        <br></br>
+                        <p>{errors.insuranceProvider?.message}</p>
+                        <br></br> */}
+                        <TextField
+                          id={'insurancePolicyNumber'}
+                          label={
+                            props?.fields?.LiveBookingFormInsuranceNumberLabel
+                              ?.value || ''
+                          }
+                          name={'insurancePolicyNumber'}
+                          required={true}
+                          register={register}
+                          setValue={setValue}
+                          isError={errors?.insurancePolicyNumber ? true : false}
+                          errorMessage={errors?.insurancePolicyNumber?.message}
+                        />
+                        <br></br>
+                        <TextField
+                          id={'insuranceAuthorisationCode'}
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormPatientAuthorisationCodeLabel
+                              ?.value || ''
+                          }
+                          name={'insuranceAuthorisationCode'}
+                          required={false}
+                          register={register}
+                          setValue={setValue}
+                          isError={
+                            errors?.insuranceAuthorisationCode ? true : false
+                          }
+                          errorMessage={
+                            errors?.insuranceAuthorisationCode?.message
+                          }
+                        />
+                      </>
+                    )}
+
+                    {/* Reason for appointment */}
+                    <Textarea
+                      id={'reasonForAppointment'}
+                      name={'reasonForAppointment'}
+                      label={'What is the reason for this appointment?'}
+                      required={true}
+                      register={register}
+                      isError={errors?.reasonForAppointment ? true : false}
+                      errorMessage={errors?.reasonForAppointment?.message}
+                    ></Textarea>
+                    <br></br>
+                    <br></br>
+
+                    <Text tag="h2" variation="body-medium-large">
+                      {props?.fields?.LiveBookingFormGpreferralSubHeadline
+                        ?.value ||
+                        'Has the patient received a referral from their GP ?'}
+                    </Text>
+                    {props?.fields?.LiveBookingFormGpreferralOptions &&
+                      props?.fields?.LiveBookingFormGpreferralOptions.map(
                         (item: any) => (
                           <RadioButton
                             key={item.id}
                             label={item?.fields?.Label?.value || ''}
-                            name={'payment'}
+                            name={'gpreferral'}
                             value={item?.fields?.Value?.value}
                             register={register}
                           />
                         )
                       )}
-                    {errors?.payment && (
-                      <ErrorMessage errorMessage={errors?.payment?.message} />
+                    {errors?.gpreferral && (
+                      <ErrorMessage
+                        errorMessage={errors?.gpreferral?.message}
+                      />
                     )}
-                  </>
-                )}
-
-                {/* Payment fields mandatory/visible if payment is insurance or user is insurer */}
-                {(watchFormChanges.user === 'insurer' ||
-                  watchFormChanges.payment === 'insurance') && (
-                  <>
-                    {insurersLDB.length > 0 && (
+                    <br></br>
+                    <br></br>
+                    {/* About the patient */}
+                    <Text tag="h2" variation="heading-1">
+                      About the patient
+                    </Text>
+                    {props?.fields
+                      ?.LiveBookingFormPreviouslyBeenWithHCAOptions && (
                       <SelectField
-                        id={'insuranceProvider'}
-                        name={'insuranceProvider'}
+                        id={'previouslyBeenWithHCA'}
+                        name={'previouslyBeenWithHCA'}
                         label={
-                          props?.fields?.LiveBookingFormInsuranceLabel?.value ||
-                          'Insurance company'
+                          props?.fields
+                            ?.LiveBookingFormPreviouslyBeenWithHCALabel
+                            ?.value ||
+                          'Has the Patient previously been with HCA?'
                         }
-                        addDefaultValue={true}
-                        defaultValueLabel={'Please select'}
                         required={true}
-                        isError={errors?.insuranceProvider ? true : false}
-                        errorMessage={errors?.insuranceProvider?.message}
-                        options={insurersLDB}
+                        isError={errors?.previouslyBeenWithHCA ? true : false}
+                        errorMessage={errors?.previouslyBeenWithHCA?.message}
+                        options={props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions.map(
+                          (option: any) => (
+                            <option
+                              key={option.id}
+                              value={option?.fields?.Value?.value}
+                            >
+                              {option?.fields?.Label?.value}
+                            </option>
+                          )
+                        )}
                         register={register}
                       />
                     )}
-                    {/* <select
-                      id="insuranceProvider"
-                      {...register('insuranceProvider')}
-                    >
-                      <option value="">Please select insurer</option>
-                      <option value="Axa">Axa</option>
-                    </select>
+                    {watchFormChanges.previouslyBeenWithHCA === 'Yes' && (
+                      <>
+                        <br></br>
+                        <Text tag="h2" variation="body-medium-large">
+                          {props?.fields?.LiveBookingFormXNumberHeadline
+                            ?.value || 'Do you have the Patients X-number?'}
+                        </Text>
+                        <TextField
+                          id={'patientCode'}
+                          label={
+                            props?.fields?.LiveBookingFormXNumberLabel?.value ||
+                            'What is the reason for this appointment?'
+                          }
+                          name={'patientCode'}
+                          required={false}
+                          register={register}
+                          setValue={setValue}
+                          isError={errors?.patientCode ? true : false}
+                          errorMessage={errors?.patientCode?.message}
+                        />
+                      </>
+                    )}
                     <br></br>
-                    <p>{errors.insuranceProvider?.message}</p>
-                    <br></br> */}
+                    {/* Patient details */}
+                    <Text tag="h2" variation="heading-1">
+                      {props?.fields?.LiveBookingFormDetailsHeadline?.value ||
+                        'Patients details'}
+                    </Text>
+                    {/* select title */}
                     <TextField
-                      id={'insurancePolicyNumber'}
+                      id={'firstName'}
                       label={
-                        props?.fields?.LiveBookingFormInsuranceNumberLabel
-                          ?.value || ''
+                        props?.fields?.LiveBookingFormFirstNameLabel?.value ||
+                        'First Name'
                       }
-                      name={'insurancePolicyNumber'}
+                      name={'firstName'}
                       required={true}
                       register={register}
                       setValue={setValue}
-                      isError={errors?.insurancePolicyNumber ? true : false}
-                      errorMessage={errors?.insurancePolicyNumber?.message}
+                      isError={errors?.firstName ? true : false}
+                      errorMessage={errors?.firstName?.message}
                     />
-                    <br></br>
                     <TextField
-                      id={'insuranceAuthorisationCode'}
+                      id={'lastName'}
                       label={
-                        props?.fields
-                          ?.LiveBookingFormPatientAuthorisationCodeLabel
-                          ?.value || ''
+                        props?.fields?.LiveBookingFormLastNameLabel?.value ||
+                        'Last Name'
                       }
-                      name={'insuranceAuthorisationCode'}
-                      required={false}
+                      name={'lastName'}
+                      required={true}
                       register={register}
                       setValue={setValue}
-                      isError={
-                        errors?.insuranceAuthorisationCode ? true : false
-                      }
-                      errorMessage={errors?.insuranceAuthorisationCode?.message}
+                      isError={errors?.lastName ? true : false}
+                      errorMessage={errors?.lastName?.message}
                     />
-                  </>
-                )}
-
-                {/* Reason for appointment */}
-                <Textarea
-                  id={'reasonForAppointment'}
-                  name={'reasonForAppointment'}
-                  label={'What is the reason for this appointment?'}
-                  required={true}
-                  register={register}
-                  isError={errors?.reasonForAppointment ? true : false}
-                  errorMessage={errors?.reasonForAppointment?.message}
-                ></Textarea>
-                <br></br>
-                <br></br>
-
-                <Text tag="h2" variation="body-medium-large">
-                  {props?.fields?.LiveBookingFormGpreferralSubHeadline?.value ||
-                    'Has the patient received a referral from their GP ?'}
-                </Text>
-                {props?.fields?.LiveBookingFormGpreferralOptions &&
-                  props?.fields?.LiveBookingFormGpreferralOptions.map(
-                    (item: any) => (
-                      <RadioButton
-                        key={item.id}
-                        label={item?.fields?.Label?.value || ''}
-                        name={'gpreferral'}
-                        value={item?.fields?.Value?.value}
-                        register={register}
-                      />
-                    )
-                  )}
-                {errors?.gpreferral && (
-                  <ErrorMessage errorMessage={errors?.gpreferral?.message} />
-                )}
-                <br></br>
-                <br></br>
-                {/* About the patient */}
-                <Text tag="h2" variation="heading-1">
-                  About the patient
-                </Text>
-                {props?.fields?.LiveBookingFormPreviouslyBeenWithHCAOptions && (
-                  <SelectField
-                    id={'previouslyBeenWithHCA'}
-                    name={'previouslyBeenWithHCA'}
-                    label={
-                      props?.fields?.LiveBookingFormPreviouslyBeenWithHCALabel
-                        ?.value || 'Has the Patient previously been with HCA?'
-                    }
-                    required={true}
-                    isError={errors?.previouslyBeenWithHCA ? true : false}
-                    errorMessage={errors?.previouslyBeenWithHCA?.message}
-                    options={
-                      props?.fields
-                        ?.LiveBookingFormPreviouslyBeenWithHCAOptions || []
-                    }
-                    register={register}
-                  />
-                )}
-                {watchFormChanges.previouslyBeenWithHCA === 'Yes' && (
-                  <>
-                    <br></br>
-                    <Text tag="h2" variation="body-medium-large">
-                      {props?.fields?.LiveBookingFormXNumberHeadline?.value ||
-                        'Do you have the Patients X-number?'}
+                    <TextField
+                      id={'email'}
+                      label={
+                        props?.fields?.LiveBookingFormEmailLabel?.value ||
+                        'email'
+                      }
+                      name={'email'}
+                      type={'email'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.email ? true : false}
+                      errorMessage={errors?.email?.message}
+                    />
+                    <TextField
+                      id={'phone'}
+                      label={
+                        props?.fields?.LiveBookingFormPhoneLabel?.value ||
+                        'phone'
+                      }
+                      name={'phone'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.phone ? true : false}
+                      errorMessage={errors?.phone?.message}
+                    />
+                    <TextField
+                      id={'dateOfBirth'}
+                      label={
+                        props?.fields?.LiveBookingFormDateOfBirthLabel?.value ||
+                        'date of birth'
+                      }
+                      name={'dateOfBirth'}
+                      type={'date'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.dateOfBirth ? true : false}
+                      errorMessage={errors?.dateOfBirth?.message}
+                    />
+                    {/* Patient address */}
+                    <Text tag="h2" variation="heading-1">
+                      {props?.fields?.LiveBookingFormAddressHeadline?.value ||
+                        'Patients address'}
                     </Text>
                     <TextField
-                      id={'patientCode'}
+                      id={'address1'}
                       label={
-                        props?.fields?.LiveBookingFormXNumberLabel?.value ||
-                        'What is the reason for this appointment?'
+                        props?.fields?.LiveBookingFormAddress1Label?.value ||
+                        'Address Line 1'
                       }
-                      name={'patientCode'}
+                      name={'address1'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.address1 ? true : false}
+                      errorMessage={errors?.address1?.message}
+                    />
+                    <TextField
+                      id={'address2'}
+                      label={
+                        props?.fields?.LiveBookingFormAddress2Label?.value ||
+                        'Address Line 2'
+                      }
+                      name={'address2'}
                       required={false}
                       register={register}
                       setValue={setValue}
-                      isError={errors?.patientCode ? true : false}
-                      errorMessage={errors?.patientCode?.message}
+                      isError={errors?.address2 ? true : false}
+                      errorMessage={errors?.address2?.message}
                     />
-                  </>
+                    <TextField
+                      id={'postcode'}
+                      label={
+                        props?.fields?.LiveBookingFormPostcodeLabel?.value ||
+                        'Postcode'
+                      }
+                      name={'postcode'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.postcode ? true : false}
+                      errorMessage={errors?.postcode?.message}
+                    />
+                    <TextField
+                      id={'towncity'}
+                      label={
+                        props?.fields?.LiveBookingFormTowncityLabel?.value ||
+                        'Town / City'
+                      }
+                      name={'towncity'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.towncity ? true : false}
+                      errorMessage={errors?.towncity?.message}
+                    />
+                    <TextField
+                      id={'country'}
+                      label={
+                        props?.fields?.LiveBookingFormCountryLabel?.value ||
+                        'Country'
+                      }
+                      name={'country'}
+                      required={true}
+                      register={register}
+                      setValue={setValue}
+                      isError={errors?.country ? true : false}
+                      errorMessage={errors?.country?.message}
+                    />
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button disabled={!isDirty || isSubmitting} type="submit">
+                        {isSubmitting ? 'Submitting' : 'Submit'}
+                      </button>
+                    </Button>
+                  </div>
                 )}
-                <br></br>
-                {/* Patient details */}
-                <Text tag="h2" variation="heading-1">
-                  {props?.fields?.LiveBookingFormDetailsHeadline?.value ||
-                    'Patients details'}
-                </Text>
-                {/* select title */}
-                <TextField
-                  id={'firstName'}
-                  label={
-                    props?.fields?.LiveBookingFormFirstNameLabel?.value ||
-                    'First Name'
-                  }
-                  name={'firstName'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.firstName ? true : false}
-                  errorMessage={errors?.firstName?.message}
-                />
-                <TextField
-                  id={'lastName'}
-                  label={
-                    props?.fields?.LiveBookingFormLastNameLabel?.value ||
-                    'Last Name'
-                  }
-                  name={'lastName'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.lastName ? true : false}
-                  errorMessage={errors?.lastName?.message}
-                />
-                <TextField
-                  id={'email'}
-                  label={
-                    props?.fields?.LiveBookingFormEmailLabel?.value || 'email'
-                  }
-                  name={'email'}
-                  type={'email'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.email ? true : false}
-                  errorMessage={errors?.email?.message}
-                />
-                <TextField
-                  id={'phone'}
-                  label={
-                    props?.fields?.LiveBookingFormPhoneLabel?.value || 'phone'
-                  }
-                  name={'phone'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.phone ? true : false}
-                  errorMessage={errors?.phone?.message}
-                />
-                <TextField
-                  id={'dateOfBirth'}
-                  label={
-                    props?.fields?.LiveBookingFormDateOfBirthLabel?.value ||
-                    'date of birth'
-                  }
-                  name={'dateOfBirth'}
-                  type={'date'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.dateOfBirth ? true : false}
-                  errorMessage={errors?.dateOfBirth?.message}
-                />
-                {/* Patient address */}
-                <Text tag="h2" variation="heading-1">
-                  {props?.fields?.LiveBookingFormAddressHeadline?.value ||
-                    'Patients address'}
-                </Text>
-                <TextField
-                  id={'address1'}
-                  label={
-                    props?.fields?.LiveBookingFormAddress1Label?.value ||
-                    'Address Line 1'
-                  }
-                  name={'address1'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.address1 ? true : false}
-                  errorMessage={errors?.address1?.message}
-                />
-                <TextField
-                  id={'address2'}
-                  label={
-                    props?.fields?.LiveBookingFormAddress2Label?.value ||
-                    'Address Line 2'
-                  }
-                  name={'address2'}
-                  required={false}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.address2 ? true : false}
-                  errorMessage={errors?.address2?.message}
-                />
-                <TextField
-                  id={'postcode'}
-                  label={
-                    props?.fields?.LiveBookingFormPostcodeLabel?.value ||
-                    'Postcode'
-                  }
-                  name={'postcode'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.postcode ? true : false}
-                  errorMessage={errors?.postcode?.message}
-                />
-                <TextField
-                  id={'towncity'}
-                  label={
-                    props?.fields?.LiveBookingFormTowncityLabel?.value ||
-                    'Town / City'
-                  }
-                  name={'towncity'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.towncity ? true : false}
-                  errorMessage={errors?.towncity?.message}
-                />
-                <TextField
-                  id={'country'}
-                  label={
-                    props?.fields?.LiveBookingFormCountryLabel?.value ||
-                    'Country'
-                  }
-                  name={'country'}
-                  required={true}
-                  register={register}
-                  setValue={setValue}
-                  isError={errors?.country ? true : false}
-                  errorMessage={errors?.country?.message}
-                />
-                <Button size={'small'} variation={'full-dark'}>
-                  <button disabled={!isDirty || isSubmitting} type="submit">
-                    {isSubmitting ? 'Submitting' : 'Submit'}
-                  </button>
-                </Button>
-              </div>
-            )}
-          </form>
-          <AppointmentSummary
-            title={'Appointment summary'}
-            consultantTitle={'Consultant'}
-            consultantText={'Name'}
-            locationTitle={'Location'}
-            locationText={selectedLocationName}
-            dateTitle={'Date & time'}
-            dateText={`${selectedDate} at ${selectedTime}`}
-          />
-        </LiveBookingForm>
+              </form>
+              <AppointmentSummary
+                title={'Appointment summary'}
+                consultantTitle={'Consultant'}
+                consultantText={'Name'}
+                locationTitle={'Location'}
+                locationText={selectedLocationName}
+                dateTitle={'Date & time'}
+                dateText={`${selectedDate} at ${selectedTime}`}
+              />
+            </LiveBookingForm>
+          </>
+        )}
       </div>
     );
   }
