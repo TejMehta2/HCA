@@ -152,7 +152,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ? (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value?.href ? (
             <Button size={'large'} variation={'full'}>
               <a href={viewAllCta}>
                 <>
