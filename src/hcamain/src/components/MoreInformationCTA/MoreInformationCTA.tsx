@@ -125,89 +125,77 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
         cta1={
           !isExperienceEditor
             ? props?.fields?.ModalContent[0]?.fields?.CTALink && (
-                <Button variation="full" size="large">
-                  <a
-                    href={
-                      props?.fields?.ModalContent[0]?.fields?.CTALink.value.href
-                    }
-                  >
-                    {props?.fields?.ModalContent[0]?.fields?.CTAIcon?.fields
-                      ?.SvgMarkup?.value && (
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            props?.fields?.ModalContent[0]?.fields?.CTAIcon
-                              ?.fields?.SvgMarkup.value,
+                <a
+                  href={
+                    props?.fields?.ModalContent[0]?.fields?.CTALink.value.href
+                  }
+                >
+                  {props?.fields?.ModalContent[0]?.fields?.CTAIcon?.fields
+                    ?.SvgMarkup?.value && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          props?.fields?.ModalContent[0]?.fields?.CTAIcon
+                            ?.fields?.SvgMarkup.value,
+                      }}
+                    ></span>
+                  )}
+                  {props?.fields?.ModalContent[0]?.fields?.CTALink.value
+                    ?.text && (
+                    <>
+                      <JssRichText
+                        field={{
+                          value:
+                            props?.fields?.ModalContent[0]?.fields?.CTALink
+                              .value?.text || '',
                         }}
-                      ></span>
-                    )}
-                    {props?.fields?.ModalContent[0]?.fields?.CTALink.value
-                      ?.text && (
-                      <>
-                        <JssRichText
-                          field={{
-                            value:
-                              props?.fields?.ModalContent[0]?.fields?.CTALink
-                                .value?.text || '',
-                          }}
-                        />
-                      </>
-                    )}
-                  </a>
-                </Button>
+                      />
+                    </>
+                  )}
+                </a>
               )
             : props?.fields?.ModalContent[0]?.fields?.CTALink?.value && (
-                <Button variation="full" size="large">
-                  <JssLink
-                    field={
-                      props?.fields?.ModalContent[0]?.fields?.CTALink?.value
-                    }
-                  ></JssLink>
-                </Button>
+                <JssLink
+                  field={props?.fields?.ModalContent[0]?.fields?.CTALink?.value}
+                ></JssLink>
               )
         }
         cta2={
           !isExperienceEditor
             ? props?.fields?.ModalContent[1]?.fields?.CTALink?.value?.href && (
-                <Button variation="full" size="large">
-                  <a
-                    href={
-                      props?.fields?.ModalContent[1]?.fields?.CTALink.value.href
-                    }
-                  >
-                    {props?.fields?.ModalContent[1]?.fields?.CTAIcon?.fields
-                      ?.SvgMarkup?.value && (
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            props?.fields?.ModalContent[1]?.fields?.CTAIcon
-                              ?.fields?.SvgMarkup.value,
+                <a
+                  href={
+                    props?.fields?.ModalContent[1]?.fields?.CTALink.value.href
+                  }
+                >
+                  {props?.fields?.ModalContent[1]?.fields?.CTAIcon?.fields
+                    ?.SvgMarkup?.value && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          props?.fields?.ModalContent[1]?.fields?.CTAIcon
+                            ?.fields?.SvgMarkup.value,
+                      }}
+                    ></span>
+                  )}
+                  {props?.fields?.ModalContent[1]?.fields?.CTALink.value
+                    ?.text && (
+                    <>
+                      <JssRichText
+                        field={{
+                          value:
+                            props?.fields?.ModalContent[1]?.fields?.CTALink
+                              .value?.text || '',
                         }}
-                      ></span>
-                    )}
-                    {props?.fields?.ModalContent[1]?.fields?.CTALink.value
-                      ?.text && (
-                      <>
-                        <JssRichText
-                          field={{
-                            value:
-                              props?.fields?.ModalContent[1]?.fields?.CTALink
-                                .value?.text || '',
-                          }}
-                        />
-                      </>
-                    )}
-                  </a>
-                </Button>
+                      />
+                    </>
+                  )}
+                </a>
               )
             : props?.fields?.ModalContent[1]?.fields?.CTALink?.value && (
-                <Button variation="full" size="large">
-                  <JssLink
-                    field={
-                      props?.fields?.ModalContent[1]?.fields?.CTALink?.value
-                    }
-                  ></JssLink>
-                </Button>
+                <JssLink
+                  field={props?.fields?.ModalContent[1]?.fields?.CTALink?.value}
+                ></JssLink>
               )
         }
       />

@@ -3,6 +3,7 @@ import { ModalTextProps } from './ModalText.types';
 import styles from './ModalText.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Modals from '../Modals/Modals';
+import Button from '../../core-components/Button/Button';
 
 const ModalText = (
   props: ModalTextProps,
@@ -26,12 +27,24 @@ const ModalText = (
             <div className={styles.panel1}>
               <div className={styles.title}>{title1}</div>
               <div className={styles.copy}>{copy1}</div>
-              {cta1 && <div className={styles.cta1}>{cta1}</div>}
+              {cta1 && (
+                <div className={styles.cta1}>
+                  <Button variation="full" size="large">
+                    {cta1}
+                  </Button>
+                </div>
+              )}
             </div>
             <div className={styles.panel2}>
               <div className={styles.title}>{title2}</div>
               <div className={styles.copy}>{copy2}</div>
-              {cta2 && <div className={styles.cta2}>{cta2}</div>}
+              {cta2 && (
+                <div className={styles.cta2}>
+                  <Button variation="full" size="large">
+                    {cta2}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>

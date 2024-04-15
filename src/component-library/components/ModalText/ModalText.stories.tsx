@@ -75,20 +75,16 @@ export const Default: StoryObj<typeof ModalText> = {
       </ul>
     ),
     cta1: (
-      <Button variation="full" size="large">
-        <a href="#">
-          <Icons iconName="iconPlus" />
-          More Information
-        </a>
-      </Button>
+      <a href="#">
+        <Icons iconName="iconPlus" />
+        More Information
+      </a>
     ),
     cta2: (
-      <Button variation="full" size="large">
-        <a href="#">
-          <Icons iconName="iconPlus" />
-          More Information
-        </a>
-      </Button>
+      <a href="#">
+        <Icons iconName="iconPlus" />
+        More Information
+      </a>
     ),
   },
 };
