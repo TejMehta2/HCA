@@ -63,11 +63,6 @@ const nextConfig = {
         source: '/api/sitecore/:path*',
         destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
       },
-      // rewrite integration layer
-      {
-        source: '/api-layer/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/:path*`,
-      },
     ];
   },
   webpack(config) {
