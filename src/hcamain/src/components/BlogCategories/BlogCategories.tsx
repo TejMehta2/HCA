@@ -66,7 +66,8 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
             href={
               props.fields?.data?.item?.blogUrl?.jsonValue?.value.href +
               '?' +
-              category.filter?.value + '=' +
+              category.filter?.value +
+              '=' +
               category.filterValueGuid?.targetItem?.id
             }
             key={index}
