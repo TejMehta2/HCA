@@ -22,6 +22,8 @@ type ModalContentFields = {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
+    CTAIcon?: HCAIconFields;
+    CTALink?: { value: LinkFieldValue };
   };
 };
 

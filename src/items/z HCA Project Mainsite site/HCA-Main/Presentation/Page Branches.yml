@@ -5,6 +5,42 @@ Template: "fbc802e5-4b9e-480f-93da-3f2a80cae5cb"
 Path: "/sitecore/content/HCA/HCA-Main/Presentation/Page Branches"
 BranchID: "aa6c7b9e-a399-47ae-82b8-0d88c695249b"
 SharedFields:
+- ID: "bb3391dd-f8be-4b2e-ae9f-47bb63c166ce"
+  Hint: Rule
+  Value: |
+    <ruleset>
+      <rule
+        uid="{7EE3CEE5-98D5-4E9D-BC9F-378B0ACB26DB}">
+        <conditions>
+          <condition
+            id="{D0810F9D-734C-452D-BBB6-4730368D68F1}"
+            uid="A1E1F87FFC9B4207BC4711B961CCFAD8"
+            templateid="{5F5254C2-11C3-49E1-A197-3034D6784FE6}" />
+        </conditions>
+        <actions>
+          <action
+            id="{D46EC8E5-7B46-47DE-B44A-4C5C30EF48D1}"
+            uid="250CE28AE34645288A30171F879467E1"
+            PageBranchId="{8EBE7D59-5785-466B-AF6E-EC487D09333C}" />
+          <action
+            id="{D46EC8E5-7B46-47DE-B44A-4C5C30EF48D1}"
+            uid="A0F8AD615DF04C49A9865DD168EDFAFE"
+            PageBranchId="{9B30BE9A-359A-4312-8291-5085E0AE9B66}" />
+          <action
+            id="{D46EC8E5-7B46-47DE-B44A-4C5C30EF48D1}"
+            uid="66E7C10C18BE4D2098B45D1D2D88F8A0"
+            PageBranchId="{4B593A98-1791-41A7-9922-EABE10F78A29}" />
+          <action
+            id="{D46EC8E5-7B46-47DE-B44A-4C5C30EF48D1}"
+            uid="792D018D2EFE48CC844972858C4CD030"
+            PageBranchId="{C9FCD18D-278F-41E0-9664-512D52072BFF}" />
+          <action
+            id="{D46EC8E5-7B46-47DE-B44A-4C5C30EF48D1}"
+            uid="64C2A4C872A246EBAA67D2A3B179FDD5"
+            PageBranchId="{903EE9B4-B4FE-4EA6-831A-8DD7CA374559}" />
+        </actions>
+      </rule>
+    </ruleset>
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: "{63D0F6B2-D72F-4C31-BBA2-1709C4B68B7B}"
@@ -26,11 +62,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "103307d1-f989-4253-9569-71ac104b1dc8"
+      Value: "f934e4c6-cc36-4b69-99bd-5e33bb484957"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161641Z
+      Value: 20240413T165454Z

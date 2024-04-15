@@ -17,7 +17,8 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import { ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
+const SEARCH_PATH = '/search';
 
 const BlogPageHeaderDefaultComponent = (
   props: BlogPageHeaderProps
@@ -46,12 +47,13 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
-    baseUrl: BASE_URL,
+    baseUrl: CLIENT_API_PATH,
+    searchPath: SEARCH_PATH,
     baselineParams: [...baselineParams, ['verticalKey', 'articles']],
     redirectUrl: fields?.BlogUrl?.value.href || '',
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields || error) {
     return <BlogPageHeaderDefaultComponent {...props} />;
   }
   // Computed properties
@@ -95,9 +97,13 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}
-            suggestions={autocompleteData?.response.results?.map(
-              (result) => `${result.value}`
-            )}
+            suggestions={
+              autocompleteError
+                ? []
+                : autocompleteData?.response.results?.map(
+                    (result) => `${result.value}`
+                  )
+            }
           >
             <Filters
               submitOnClose={true}

@@ -15,12 +15,15 @@ import {
 } from './PatientStoriesCards.types';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
+import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/patientstories`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
+const SEARCH_PATH = '/search';
 
 const PatientStoriesCardsDefaultComponent = (
   props: PatientStoriesCardsProps
@@ -41,22 +44,14 @@ const PatientStoriesCardsDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
-
-  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+const returnCards = (
+  props: PatientStoriesCardsProps,
+  data: StaticProps,
+  isSlider: boolean
+) => {
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const patientStories = data?.patientStories?.slice(0, Number(quantity) || 3);
-  const ctaQuery = data?.ctaQuery;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext?.pageEditing;
-
   let cards;
-
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
 
   if (
     props?.fields?.data?.item?.patientStories?.PatientStoriesList &&
@@ -82,11 +77,12 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           image={<JssImage field={image?.jsonValue} />}
           link={
             <a href={`${url?.path}`}>
-              <span>
-                <JssText field={props.fields?.data?.item?.cTAText?.jsonValue} />
-              </span>
+              <JssRichText
+                field={props.fields?.data?.item?.cTAText?.jsonValue}
+              />
             </a>
           }
+          contentVariation={isSlider ? 'mixed' : undefined}
         />
       )
     );
@@ -129,6 +125,27 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           )
         );
     }
+  }
+  return cards;
+};
+
+export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
+  const columns: CardBlockProps['variation'] =
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
+  const patientStoriesCards = data && returnCards(props, data, false);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
   return (
@@ -175,10 +192,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue && (
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+            <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -207,8 +222,137 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
         )
       }
     >
-      <>{cards}</>
+      <>{patientStoriesCards}</>
     </CardBlock>
+  );
+};
+
+export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const patientStoriesCards = data && returnCards(props, data, false);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
+  if (!props.fields) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+  return (
+    <CarouselCards
+      theme={props.params?.Theme || 'A-HCA-White'}
+      title={
+        <Text
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-3'}
+        >
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      link={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+            <a href={viewAllCta}>
+              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
+                  }}
+                ></span>
+              )}
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
+              )}
+            </a>
+          )
+        ) : props.fields?.data?.item?.cTALink?.jsonValue?.value ? (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+          ></JssLink>
+        ) : (
+          <></>
+        )
+      }
+    >
+      {patientStoriesCards}
+    </CarouselCards>
+  );
+};
+
+export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+  const data = useComponentProps<StaticProps>(props.rendering?.uid);
+  const ctaQuery = data?.ctaQuery;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const patientStoriesCards = data && returnCards(props, data, true);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
+  if (!props.fields) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+
+  return (
+    <SideScrollingCards
+      title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
+      link={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.cTALink?.jsonValue.value ? (
+            <a href={viewAllCta}>
+              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
+                  }}
+                ></span>
+              )}
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                <>
+                  <JssRichText
+                    field={{
+                      value:
+                        props.fields?.data?.item?.cTALink?.jsonValue?.value
+                          ?.text || '',
+                    }}
+                  />
+                </>
+              )}
+            </a>
+          ) : (
+            <></>
+          )
+        ) : props.fields?.data?.item?.cTALink?.jsonValue.value ? (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+          ></JssLink>
+        ) : (
+          <></>
+        )
+      }
+      bodyCopy={
+        <JssRichText
+          tag="span"
+          field={props.fields?.data?.item?.text?.jsonValue}
+        />
+      }
+    >
+      {patientStoriesCards}
+    </SideScrollingCards>
   );
 };
 
@@ -223,7 +367,10 @@ export const getStaticProps: GetStaticComponentProps = async (
     (fields?.filterOptions?.filterOptionsList &&
       fields?.filterOptions?.filterOptionsList.map((item) => [
         item.filter?.value,
-        item.filterValueGuid?.targetItem?.id,
+        item.filterValueGuid?.targetItem?.id
+          .replaceAll(/[{},\-]/g, '')
+          .toLowerCase(),
+        ,
       ])) ||
     [];
 
@@ -263,7 +410,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
-    const url = new URL(query, `${BASE_URL}/search`);
+    const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
 
     const response = await fetch(url.href);
     if (response.ok) {

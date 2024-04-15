@@ -19,7 +19,7 @@ type FilterOptionFields = {
 
 type LocationsFields = {
   title?: { value?: string };
-  image?: { value?: ImageField };
+  image?: { jsonValue?: ImageField };
   city?: { value?: string };
   street?: { value?: string };
   postCode?: { value?: string };
