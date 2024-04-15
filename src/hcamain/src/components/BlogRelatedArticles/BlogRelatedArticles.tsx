@@ -41,14 +41,8 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
-  const quantity = Number(
-    props?.fields?.data?.item?.numberOfCards?.jsonValue?.value
-  );
-
-  const blogRelatedArticles = data?.BlogRelatedArticles?.slice(
-    0,
-    quantity + 1 || 4
-  );
+  const quantity =
+    Number(props?.fields?.data?.item?.numberOfCards?.jsonValue?.value) || 3;
 
   const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
@@ -58,22 +52,14 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const formattedCurrentArticleId =
     currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
 
-  const filteredBlogRelatedArticles = blogRelatedArticles?.filter((article) => {
-    if (article.pageId) {
-      const articleId = article.pageId;
-      return articleId !== formattedCurrentArticleId;
-    } else {
-      return article;
-    }
-  });
-
-  const relatedArticlesDisplayed =
-    filteredBlogRelatedArticles &&
-    filteredBlogRelatedArticles?.length > (quantity || 3)
-      ? filteredBlogRelatedArticles?.splice(
-          filteredBlogRelatedArticles.length - 1
-        )
-      : filteredBlogRelatedArticles;
+  const relatedArticlesDisplayed = data?.BlogRelatedArticles?.reduce(
+    (acc, curr) => {
+      if (acc?.length >= quantity || curr?.pageId === formattedCurrentArticleId)
+        return acc;
+      return [...acc, curr];
+    },
+    []
+  );
 
   if (!fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
