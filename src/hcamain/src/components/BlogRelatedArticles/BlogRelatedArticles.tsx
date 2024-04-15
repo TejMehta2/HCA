@@ -21,7 +21,6 @@ import {
   BlogRelatedArticlesResult,
   StaticProps,
 } from './BlogRelatedArticles.types';
-import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
@@ -43,14 +42,39 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
-  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
+  const quantity = Number(
+    props?.fields?.data?.item?.numberOfCards?.jsonValue?.value
+  );
+
   const blogRelatedArticles = data?.BlogRelatedArticles?.slice(
     0,
-    Number(quantity) || 3
+    quantity + 1 || 4
   );
+
   const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
   const queryString = 'serviceLineId';
+  const context = useSitecoreContext();
+  const currentArticleId = context.sitecoreContext?.route?.itemId?.toString();
+  const formattedCurrentArticleId =
+    currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
+
+  const filteredBlogRelatedArticles = blogRelatedArticles?.filter((article) => {
+    if (article.pageId) {
+      const articleId = article.pageId;
+      return articleId !== formattedCurrentArticleId;
+    } else {
+      return article;
+    }
+  });
+
+  const relatedArticlesDisplayed =
+    filteredBlogRelatedArticles &&
+    filteredBlogRelatedArticles?.length > (quantity || 3)
+      ? filteredBlogRelatedArticles?.splice(
+          filteredBlogRelatedArticles.length - 1
+        )
+      : filteredBlogRelatedArticles;
 
   if (!fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
@@ -94,14 +118,14 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         );
       }
     );
-  } else if (blogRelatedArticles) {
-    cardsList = blogRelatedArticles.map(
+  } else if (relatedArticlesDisplayed) {
+    cardsList = relatedArticlesDisplayed.map(
       (
         { imageUrl, name, date, url, title, description, typeName, typeId },
         index
       ) => (
         <CardBlog key={index}>
-          <Image src={imageUrl} alt={name} width="643" height="605" />
+          <img src={imageUrl} alt={name} width="643" height="605" />
           <time>{formatDate(new Date(date))}</time>
           {title && (
             <Text
