@@ -14,7 +14,7 @@ type CategoriesFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
   filterValueString?: { value?: string };
-  filterValueGuid?: { jsonValue?: Item };
+  filterValueGuid?: { targetItem: { id: string } };
 };
 
 interface Fields {
@@ -66,7 +66,8 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
             href={
               props.fields?.data?.item?.blogUrl?.jsonValue?.value.href +
               '?' +
-              category.filter?.value
+              category.filter?.value + '=' +
+              category.filterValueGuid?.targetItem?.id
             }
             key={index}
           >

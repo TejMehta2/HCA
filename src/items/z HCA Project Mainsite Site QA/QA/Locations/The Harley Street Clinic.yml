@@ -34,7 +34,7 @@ Languages:
       Value: "the-harley-street-clinic-3"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f7d4cb1c-bef7-4fc5-8c4e-745f8ef32111"
+      Value: "4329c014-6e40-4655-9c24-ee5abfc867fc"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -42,10 +42,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
       Hint: Street
       Value: 35 Weymouth Street
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T165204Z
+      Value: 20240413T105636Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: The Harley Street Clinic

@@ -1,0 +1,39 @@
+﻿---
+ID: "1154172d-ba62-4923-9baa-7760050b8af2"
+Parent: "fe87897d-01e3-4abd-874a-f617c86813b3"
+Template: "21ad2248-bde1-498a-92e7-4df78c9e5dd1"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Page Branches/Treatment Page Starterkit/$name/Page Data/Page Note"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240413T120228Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6e67b4e2-5b5a-472d-8ffe-0278ed969e13"
+      Hint: Text
+      Value: |
+        <hr />
+        This content is intended for general information only and does not replace the need for personal advice from a qualified health
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b4fc160b-e596-4c11-9322-ef7d7dee1ba3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240413T134633Z

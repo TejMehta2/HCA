@@ -16,16 +16,16 @@ SharedFields:
     query GetDetailsHeader($contextItem: String!, $language: String!) {
       contextItem: item(path: $contextItem, language: $language) {
         name
-        ... on BlogPage {
-          title {
+          title: field(name: "Title") {
             jsonValue
           }
-          text {
+          text: field(name: "Text") {
             jsonValue
           }
-          date {
+          date: field(name: "Date") {
             jsonValue
           }
+        ... on BlogPage{
           articleType {
              targetItem {
               ... on Tag {
@@ -53,7 +53,7 @@ SharedFields:
   Value: "{4B945D57-85D7-4143-B252-D7025A6935E2}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Blog Details Header Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Blog Details Header Folder']"
+  Value: 
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -107,14 +107,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "913e8ce7-caff-4424-b18d-96b15c847cce"
+      Value: "a20ae282-762c-4142-b107-1df982f3ebdf"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240223T160215Z
+      Value: 20240413T101533Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
