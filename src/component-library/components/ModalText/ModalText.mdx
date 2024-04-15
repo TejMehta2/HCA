@@ -7,7 +7,7 @@ import * as ModalTextStories from './ModalText.stories';
 
 ## Description
 
-The ModalText component is a modal which recieves two sets of titles and rich text. These are displayed side by side on larger screens and stacked on mobile
+The ModalText component is a modal which recieves two sets of titles, rich text, and optional ctas. These are displayed side by side on larger screens and stacked on mobile
 
 It is intended to be used primarily in the PricingInformation variation of the ImageAndText component, but can be used anywhere on a page
 
@@ -45,6 +45,12 @@ It can be composed like this:
         fixed price packages that are available.
       </p>
     </div>
+  }
+  cta1={
+    <a href="#">
+      <Icons iconName="iconPlus" />
+      More Information
+    </a>
   }
   title2={
     <Text tag="h4" variation="display-4">
