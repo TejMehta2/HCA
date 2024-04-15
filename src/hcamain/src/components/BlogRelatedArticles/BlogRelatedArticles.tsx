@@ -123,11 +123,9 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     );
   }
 
-  const viewAllCta =
-    props.fields?.data?.item?.articles?.ArticlesList &&
-    props.fields?.data?.item?.articles?.ArticlesList?.length
-      ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
-      : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+  const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   return (
     <CarouselCards
