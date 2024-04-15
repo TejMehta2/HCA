@@ -152,9 +152,9 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          <Button size={'large'} variation={'full'}>
-            <a href={viewAllCta}>
-              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value?.text ? (
+            <Button size={'large'} variation={'full'}>
+              <a href={viewAllCta}>
                 <>
                   <JssRichText
                     field={{
@@ -164,9 +164,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                     }}
                   />
                 </>
-              )}
-            </a>
-          </Button>
+              </a>
+            </Button>
+          ) : (
+            <></>
+          )
         ) : (
           props.fields?.data?.item?.cTALink?.jsonValue?.value && (
             <JssLink
