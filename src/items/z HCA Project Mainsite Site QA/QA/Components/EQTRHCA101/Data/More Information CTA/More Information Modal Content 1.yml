@@ -24,7 +24,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3c0239f1-4e0e-4610-ab78-0ff7747cc80e"
+      Value: "ac9e0717-b281-47e0-8c7f-e0525d5a783e"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="More about &lt;strong&gt;treatment costs&lt;/strong&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -50,4 +54,7 @@ Languages:
         <p>For self-pay patients, please ask your consultant for information on our fixed price self-pay hip replacement packages.&nbsp; For peace of mind on your hospital and surgery costs, you may be eligible for one of the fixed price packages that are available.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240409T121239Z
+      Value: 20240413T100708Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{651ED938-03E5-46A7-A21F-DD9A829038E3}"
