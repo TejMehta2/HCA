@@ -53,7 +53,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     redirectUrl: fields?.BlogUrl?.value.href || '',
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields || error) {
     return <BlogPageHeaderDefaultComponent {...props} />;
   }
   // Computed properties
@@ -97,9 +97,13 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}
-            suggestions={autocompleteData?.response.results?.map(
-              (result) => `${result.value}`
-            )}
+            suggestions={
+              autocompleteError
+                ? []
+                : autocompleteData?.response.results?.map(
+                    (result) => `${result.value}`
+                  )
+            }
           >
             <Filters
               submitOnClose={true}

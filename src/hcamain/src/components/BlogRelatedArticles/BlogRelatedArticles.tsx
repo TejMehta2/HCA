@@ -181,7 +181,9 @@ export const getStaticProps: GetStaticComponentProps = async (
     (fields?.filterBy?.FilterByList &&
       fields?.filterBy?.FilterByList.map((item) => [
         item.filter?.value,
-        item.filterValueGuid?.targetItem?.id,
+        item.filterValueGuid?.targetItem?.id
+          .replaceAll(/[{},\-]/g, '')
+          .toLowerCase(),
       ])) ||
     [];
 
@@ -218,10 +220,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     ...contextSearchParams,
     ...contextSearchIdParams,
   ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const ctaQuery = `?${ctaParams
-    .join('&')
-    .replaceAll(/[{},\-]/g, '')
-    .toLowerCase()}`;
+  const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
     const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);

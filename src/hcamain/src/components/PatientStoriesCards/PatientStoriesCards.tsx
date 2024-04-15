@@ -361,7 +361,10 @@ export const getStaticProps: GetStaticComponentProps = async (
     (fields?.filterOptions?.filterOptionsList &&
       fields?.filterOptions?.filterOptionsList.map((item) => [
         item.filter?.value,
-        item.filterValueGuid?.targetItem?.id,
+        item.filterValueGuid?.targetItem?.id
+          .replaceAll(/[{},\-]/g, '')
+          .toLowerCase(),
+        ,
       ])) ||
     [];
 

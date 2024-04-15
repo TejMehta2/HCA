@@ -3,10 +3,18 @@ import { ErrorMessageProps } from './ErrorMessage.types';
 import styles from './ErrorMessage.module.scss';
 
 const ErrorMessage = (props: ErrorMessageProps): JSX.Element => {
-  const { children } = props;
+  const { children, contentVariation } = props;
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.error}>{children}</div>
+      <div
+        className={[
+          styles.error,
+          contentVariation && styles[contentVariation],
+        ].join(' ')}
+      >
+        {children}
+      </div>
     </div>
   );
 };

@@ -14,7 +14,9 @@
   gap: $spacing-4;
   padding: $spacing-13 0;
 
-  @include responsive-container;
+  &:not(.no-container) {
+    @include responsive-container;
+  }
 
   @include responsive-grid-span(
     $default: 6,

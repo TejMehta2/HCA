@@ -28,6 +28,7 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -66,7 +67,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     fallbackData: fallbackData,
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields) {
     return <PatientStoriesSearchDefaultComponent {...props} />;
   }
 
@@ -134,9 +135,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               defaultValue={searchParams.get('input') || undefined}
               name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
-              suggestions={autocompleteData?.response.results?.map(
-                (result) => `${result.value}`
-              )}
+              suggestions={
+                autocompleteError
+                  ? []
+                  : autocompleteData?.response.results?.map(
+                      (result) => `${result.value}`
+                    )
+              }
             >
               <Filters
                 buttonText={<JssText field={fields?.FilterOptionsText} />}
@@ -200,60 +205,70 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
       </Themes>
 
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        <SearchWrapper
-          ref={searchWrapperRef}
-          searchDetail={
-            <Text tag="h3" variation="heading-1">
-              <span>
-                <span>{resultsCount} </span>
-                <JssText field={fields?.SearchResultsText} />
-              </span>
+        {error ? (
+          <ErrorMessage>
+            <Text tag="h2" variation="display-4">
+              No patient stories results found.
             </Text>
-          }
-          showing={
-            !!rangeEnd && (
-              <Text variation="body-medium">
-                <span>Showing {resultsRange}</span>
+            <Text tag="p" variation="body-extra-large">
+              Please try another search
+            </Text>
+          </ErrorMessage>
+        ) : (
+          <SearchWrapper
+            ref={searchWrapperRef}
+            searchDetail={
+              <Text tag="h3" variation="heading-1">
+                <span>
+                  <span>{resultsCount} </span>
+                  <JssText field={fields?.SearchResultsText} />
+                </span>
               </Text>
-            )
-          }
-        >
-          <CardGrid>
-            {data?.response.results?.map((item, index) => {
-              const { data } = item;
-              const { title, description, imageUrl, url, name } = data;
-              return (
-                <CardContent
-                  key={index}
-                  title={
-                    <Text variation="heading-1" tag="h4">
-                      {title || name}
-                    </Text>
-                  }
-                  bodyCopy={<Text variation="body-large">{description}</Text>}
-                  image={
-                    imageUrl ? (
-                      <Image src={imageUrl} alt="" width="363" height="243" />
-                    ) : undefined
-                  }
-                  link={
-                    <a href={url}>
-                      <span>
-                        Learn <strong>more</strong>
-                      </span>
-                    </a>
-                  }
-                />
-              );
-            })}
-          </CardGrid>
-          <SearchFormPagination
-            offset={offset}
-            limit={limit}
-            resultsCount={resultsCount}
-            scrollToRef={searchWrapperRef}
-          />
-          {/* <SearchFormLoadMore
+            }
+            showing={
+              !!rangeEnd && (
+                <Text variation="body-medium">
+                  <span>Showing {resultsRange}</span>
+                </Text>
+              )
+            }
+          >
+            <CardGrid>
+              {data?.response.results?.map((item, index) => {
+                const { data } = item;
+                const { title, description, imageUrl, url, name } = data;
+                return (
+                  <CardContent
+                    key={index}
+                    title={
+                      <Text variation="heading-1" tag="h4">
+                        {title || name}
+                      </Text>
+                    }
+                    bodyCopy={<Text variation="body-large">{description}</Text>}
+                    image={
+                      imageUrl ? (
+                        <Image src={imageUrl} alt="" width="363" height="243" />
+                      ) : undefined
+                    }
+                    link={
+                      <a href={url}>
+                        <span>
+                          Learn <strong>more</strong>
+                        </span>
+                      </a>
+                    }
+                  />
+                );
+              })}
+            </CardGrid>
+            <SearchFormPagination
+              offset={offset}
+              limit={limit}
+              resultsCount={resultsCount}
+              scrollToRef={searchWrapperRef}
+            />
+            {/* <SearchFormLoadMore
             limit={limit}
             resultsCount={resultsCount}
             defaultLimit={defaultLimit}
@@ -263,7 +278,8 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             </span>
             <span>Show more</span>
           </SearchFormLoadMore> */}
-        </SearchWrapper>
+          </SearchWrapper>
+        )}
       </Themes>
     </form>
   );
