@@ -8,14 +8,13 @@ import {
   useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-//import { ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
-import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import JssTextWithEntityName from '../../jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import {
   BlogRelatedArticlesProps,
   BlogRelatedArticlesResult,
@@ -148,6 +147,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       )
     );
   }
+
+  const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
   return (
     <CarouselCards
       title={
@@ -163,9 +167,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       link={
         !isExperienceEditor ? (
           <Button size={'large'} variation={'full'}>
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+            <a href={viewAllCta}>
               {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <>
                   <JssRichText

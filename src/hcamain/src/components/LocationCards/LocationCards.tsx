@@ -90,7 +90,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               )}
             </>
           }
-          image={<JssImage field={image?.value} />}
+          image={<JssImage field={image?.jsonValue} />}
           ctas={{
             button1: (
               <a href={url.path}>

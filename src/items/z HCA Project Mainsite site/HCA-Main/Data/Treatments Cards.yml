@@ -1,17 +1,8 @@
 ﻿---
-ID: "55bd5994-10e6-4b77-913f-683cc39fccb2"
-Parent: "a3532dc4-ab01-4987-8b42-5b4deb5bc81f"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
-SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: apps/32x32/window.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {AAE4E009-0F80-46F2-A8BF-AF389624B0DA}
+ID: "f787da12-a133-43a4-a04d-4cbc218faacc"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "8fa9696c-7d8d-436d-a439-5c1725cb0ec5"
+Path: "/sitecore/content/HCA/HCA-Main/Data/Treatments Cards"
 Languages:
 - Language: en
   Versions:
@@ -19,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240403T114616Z
+      Value: 20240414T095913Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -30,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a97618b3-6331-4343-9156-878bf314a26f"
+      Value: "75cb192c-7474-4ba2-a455-64028b9b7834"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240413T100106Z
+      Value: 20240414T095913Z

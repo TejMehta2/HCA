@@ -11259,7 +11259,7 @@ export namespace Foundation {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContent =  {
+    export type MoreInformationModalContent = Foundation.Ctabase &  {
         fields?: { 
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
@@ -11277,7 +11277,7 @@ export namespace Foundation {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContentJson =  {
+    export type MoreInformationModalContentJson = Foundation.CtabaseJson &  {
         
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
