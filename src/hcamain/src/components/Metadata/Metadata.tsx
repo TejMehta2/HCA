@@ -25,6 +25,7 @@ export interface PageRouteMetadata {
     EntityName?: Field<string>;
   };
   itemId?: string;
+  templateId?: string;
 }
 
 interface Fields {
@@ -71,6 +72,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
     Text,
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
+  const TempateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
 
   // computed values
   const title = `${MetaTitle?.value || Title?.value} ${
@@ -96,6 +98,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
       <meta name="robots" content={`${follow}, ${index}`} />
       <meta name="title" content={title} />
       <meta name="pageId" content={PageId} />
+      <meta name="templateId" content={TempateId} />
       <meta name="abstractTitle" content={AbstractTitle?.value} />
       <meta name="abstractText" content={AbstractText?.value} />
       <meta name="abstractImage" content={AbstractImage?.value?.src} />
