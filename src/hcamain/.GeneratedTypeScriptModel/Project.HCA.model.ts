@@ -1475,7 +1475,7 @@ export namespace PageContent.RenderingParameters {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Image
     */
-    export type BlogImage =  {
+    export type BlogImage = Foundation.RenderingParameters.ContainerizedParameters &  {
         fields?: {         }
 
     }
@@ -1483,7 +1483,7 @@ export namespace PageContent.RenderingParameters {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Image
     */
-    export type BlogImageJson =  {
+    export type BlogImageJson = Foundation.RenderingParameters.ContainerizedParametersJson &  {
         
 
     }
@@ -1527,6 +1527,11 @@ export namespace Pages {
             * Represents the Date field (e1b9a21b-a32e-429b-bbe5-047b323fd263).
             */
             Date?: Field<string>;
+
+            /**
+            * Represents the Facility field (9c55a6c5-8a74-47f7-8987-c21c447fafe1).
+            */
+            Facility?: Item[];
         }
 
     }
@@ -1555,6 +1560,13 @@ export namespace Pages {
             */
             date?: {
                 jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Facility field (9c55a6c5-8a74-47f7-8987-c21c447fafe1).
+            */
+            facility?: {
+                jsonValue: Item[]
             };
 
 
@@ -1673,7 +1685,8 @@ export namespace PageContent.RenderingParameters {
     */
     export type BlogQuote = Foundation.RenderingParameters.HeadingParameters & 
 Foundation.RenderingParameters.ThemesParameters & 
-Foundation.RenderingParameters.QuoteParameters &  {
+Foundation.RenderingParameters.QuoteParameters & 
+Foundation.RenderingParameters.ContainerizedParameters &  {
         fields?: {         }
 
     }
@@ -1683,7 +1696,8 @@ Foundation.RenderingParameters.QuoteParameters &  {
     */
     export type BlogQuoteJson = Foundation.RenderingParameters.HeadingParametersJson & 
 Foundation.RenderingParameters.ThemesParametersJson & 
-Foundation.RenderingParameters.QuoteParametersJson &  {
+Foundation.RenderingParameters.QuoteParametersJson & 
+Foundation.RenderingParameters.ContainerizedParametersJson &  {
         
 
     }
@@ -1911,7 +1925,7 @@ export namespace PageContent.RenderingParameters {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Text
     */
-    export type BlogText =  {
+    export type BlogText = Foundation.RenderingParameters.ContainerizedParameters &  {
         fields?: {         }
 
     }
@@ -1919,7 +1933,7 @@ export namespace PageContent.RenderingParameters {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Text
     */
-    export type BlogTextJson =  {
+    export type BlogTextJson = Foundation.RenderingParameters.ContainerizedParametersJson &  {
         
 
     }
@@ -3103,6 +3117,90 @@ export namespace Business {
     */
     export type ContactUnitsFolderJson =  {
         
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Container Component
+    */
+    export type ContainerComponent =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Container Component
+    */
+    export type ContainerComponentJson =  {
+        
+
+    }
+}
+export namespace PageContent.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Container Component
+    */
+    export type ContainerComponent = Foundation.RenderingParameters.ThemesParameters &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Container Component
+    */
+    export type ContainerComponentJson = Foundation.RenderingParameters.ThemesParametersJson &  {
+        
+
+    }
+}
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/Container Component Folder
+    */
+    export type ContainerComponentFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Container Component Folder
+    */
+    export type ContainerComponentFolderJson =  {
+        
+
+    }
+}
+export namespace Foundation.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/ContainerizedParameters
+    */
+    export type ContainerizedParameters =  {
+        fields?: { 
+            /**
+            * Represents the Containerized field (72be3cc6-e161-42bd-b2d4-2bc78f34ce79).
+            */
+            Containerized?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/ContainerizedParameters
+    */
+    export type ContainerizedParametersJson =  {
+        
+            /**
+            * Represents the Containerized field (72be3cc6-e161-42bd-b2d4-2bc78f34ce79).
+            */
+            containerized?: {
+                jsonValue: Field<boolean>
+            };
+
 
     }
 }
@@ -4402,6 +4500,24 @@ export namespace Foundation.FaqQuestion {
 
     }
 }
+export namespace PageContent {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Page Content/FAQ Questions Folder
+    */
+    export type FaqQuestionsFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/FAQ Questions Folder
+    */
+    export type FaqQuestionsFolderJson =  {
+        
+
+    }
+}
 export namespace Foundation.Share {
 
     /**
@@ -5067,6 +5183,1098 @@ export namespace Navigation {
     */
     export type FooterFolderJson =  {
         
+
+    }
+}
+export namespace Foundation.FormApi {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Form Api/Form Api Settings Container
+    */
+    export type FormApiSettingsContainer =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Form Api/Form Api Settings Container
+    */
+    export type FormApiSettingsContainerJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Forms.EnquireForm {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Forms/Enquire Form/Form Fields
+    */
+    export type FormFields =  {
+        fields?: { 
+            /**
+            * Represents the EnquireFormBreadcrumbsCurrentPage field (8c6885af-0de1-415d-94e7-4589d42948c4).
+            */
+            EnquireFormBreadcrumbsCurrentPage?: Field<string>;
+
+            /**
+            * Represents the EnquireFormBreadcrumbsHome field (f5b011c5-cc03-4471-8573-af4a2dc5b207).
+            */
+            EnquireFormBreadcrumbsHome?: Field<string>;
+
+            /**
+            * Represents the EnquireFormBtnsClear field (907dcdf0-caaf-4932-8ed4-3a34bc266a92).
+            */
+            EnquireFormBtnsClear?: Field<string>;
+
+            /**
+            * Represents the EnquireFormBtnsSubmit field (3adbad5c-8e21-4467-bfbf-81e571186d5e).
+            */
+            EnquireFormBtnsSubmit?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxHeadline field (661c6c89-2504-49b9-8407-79946801e3bd).
+            */
+            EnquireFormContactBoxHeadline?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursDays field (83d358af-556b-4b94-a5c7-a6a4153d34dd).
+            */
+            EnquireFormContactBoxOpeningHoursDays?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursLabel field (b60d9d55-4c00-433f-ba2e-5e6443c0a532).
+            */
+            EnquireFormContactBoxOpeningHoursLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursTime field (808a1289-0b6a-45b2-bd0b-15d90458dbcf).
+            */
+            EnquireFormContactBoxOpeningHoursTime?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxPhone0Label field (418f15cc-f287-4ccc-8fd4-045a02b41349).
+            */
+            EnquireFormContactBoxPhone0Label?: Field<string>;
+
+            /**
+            * Represents the EnquireFormContactBoxPhone0Phone field (3e099a23-a022-4158-b490-1f213ff9f024).
+            */
+            EnquireFormContactBoxPhone0Phone?: Field<string>;
+
+            /**
+            * Represents the EnquireFormDateErrors field (d14d938b-d908-47fb-80da-979dc077f3b6).
+            */
+            EnquireFormDateErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormDateIsRequired field (e7388a64-724b-44e1-8a1b-72b0dac0be1a).
+            */
+            EnquireFormDateIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormDateLabel field (c5ae0711-cf68-49a8-b76f-a1969c59c7d6).
+            */
+            EnquireFormDateLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormDateOfBirthErrors field (1273d142-6ca4-43d3-b7cf-6c4f7c7490f7).
+            */
+            EnquireFormDateOfBirthErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormDateOfBirthLabel field (ea53b801-4e3d-4dba-940f-7f45919efa8f).
+            */
+            EnquireFormDateOfBirthLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormDateOfBirthPlaceholder field (17dbf8e7-33a8-4fe1-9ff4-7d814427c8c4).
+            */
+            EnquireFormDateOfBirthPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormDateOptions field (cc242b97-e850-4193-b8b6-46861b9d3861).
+            */
+            EnquireFormDateOptions?: Item[];
+
+            /**
+            * Represents the EnquireFormDatePlaceholder field (2a4fcd95-a663-43be-87fe-b356c4c54881).
+            */
+            EnquireFormDatePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormEmailErrors field (76c7df47-4c91-480a-826c-d61443d684e5).
+            */
+            EnquireFormEmailErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormEmailIsRequired field (b1607149-8d34-4295-b4c2-1bffc8435af5).
+            */
+            EnquireFormEmailIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormEmailLabel field (a24cb9c9-3215-4042-8f78-2b153e35f721).
+            */
+            EnquireFormEmailLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormEmailPlaceholder field (64971da4-dbde-4e4d-b4aa-6dbcc6ec8dce).
+            */
+            EnquireFormEmailPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormErrorSubmitMsg field (132c9da9-a072-4d96-9bcb-828758b76b69).
+            */
+            EnquireFormErrorSubmitMsg?: Field<string>;
+
+            /**
+            * Represents the EnquireFormFirstNameErrors field (d38b3688-27d1-4660-aa1f-a317170c3fe8).
+            */
+            EnquireFormFirstNameErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormFirstNameIsRequired field (96354e1f-a774-47d2-bb28-65ccb2066534).
+            */
+            EnquireFormFirstNameIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormFirstNameLabel field (9d46f7c2-9149-421c-a9d3-55a0bd30d2da).
+            */
+            EnquireFormFirstNameLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormFirstNamePlaceholder field (b9aa3186-49e0-4dab-ae7c-a5716d113b0a).
+            */
+            EnquireFormFirstNamePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormGenderErrors field (941eda13-ac94-48b9-bdb6-f0a8f63ed4c1).
+            */
+            EnquireFormGenderErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormGenderIsRequired field (b5280ff8-dde8-448e-8bfc-70ab2a06bc44).
+            */
+            EnquireFormGenderIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormGenderLabel field (914ced72-1ca9-4a3a-b5fe-72229b4770de).
+            */
+            EnquireFormGenderLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormGenderOptions field (cf750807-8aba-434b-8f5b-8c68a3756ae1).
+            */
+            EnquireFormGenderOptions?: Item[];
+
+            /**
+            * Represents the EnquireFormGenderPlaceholder field (50c20002-2972-4dca-8d8b-6fc0567e7e69).
+            */
+            EnquireFormGenderPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormHeadline field (0cd74c82-e723-40d1-87e6-01dc46836dcd).
+            */
+            EnquireFormHeadline?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInfoTextPayment field (bfa82f24-c92a-49aa-b6f9-da3b45176835).
+            */
+            EnquireFormInfoTextPayment?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInfoTextSubmit field (5e675c78-aef0-449c-abfb-74cb3e53f9be).
+            */
+            EnquireFormInfoTextSubmit?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInsuranceErrors field (088df16a-8c28-4a10-b222-0292450a77c0).
+            */
+            EnquireFormInsuranceErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormInsuranceIsRequired field (291d0894-e5b7-4034-b3fd-601a3d7684fb).
+            */
+            EnquireFormInsuranceIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormInsuranceLabel field (a80c4d2d-a863-407d-9aa2-2382623e45e8).
+            */
+            EnquireFormInsuranceLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInsuranceNumberErrors field (e507a06c-e294-4339-9148-efebf9b5a0f6).
+            */
+            EnquireFormInsuranceNumberErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormInsuranceNumberIsRequired field (e48156f9-c5d2-4a93-b095-e06003cf402f).
+            */
+            EnquireFormInsuranceNumberIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormInsuranceNumberLabel field (4d7ea05c-7d0e-4a8b-9ffe-4f09398c13c8).
+            */
+            EnquireFormInsuranceNumberLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInsuranceNumberPlaceholder field (93ce2873-050c-46d4-ba62-79810126d3e4).
+            */
+            EnquireFormInsuranceNumberPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInsurancePlaceholder field (ef9d9b85-d143-4df2-a751-9be06eea4c20).
+            */
+            EnquireFormInsurancePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormInsuranceSelfPayOption field (44635157-dd11-4767-ae7a-8fd790984975).
+            */
+            EnquireFormInsuranceSelfPayOption?: Field<string>;
+
+            /**
+            * Represents the EnquireFormLastNameErrors field (a689b1f0-2732-41b6-802e-a3501e8b3cd7).
+            */
+            EnquireFormLastNameErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormLastNameIsRequired field (a7ed9f41-0f4b-4f17-a0b6-a8f652fa0c38).
+            */
+            EnquireFormLastNameIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormLastNameLabel field (170d27ca-f45d-4257-aa27-9427e7080f59).
+            */
+            EnquireFormLastNameLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormLastNamePlaceholder field (a9a1d5e4-38da-43f2-b4d0-b68163c779ff).
+            */
+            EnquireFormLastNamePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormMarketingPreferencesHeadline field (a9c67e94-8b21-4c40-914e-e651e0dd5cb9).
+            */
+            EnquireFormMarketingPreferencesHeadline?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPhoneErrors field (48e68aec-533a-45dd-83fc-139b54f78b49).
+            */
+            EnquireFormPhoneErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormPhoneIsRequired field (ccf2d8f6-852e-49fa-9643-01aeb16f5b6a).
+            */
+            EnquireFormPhoneIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormPhoneLabel field (95954086-f0a6-41ac-9e9b-0fadd37f1bdc).
+            */
+            EnquireFormPhoneLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPhonePlaceholder field (bb59793a-5de2-4090-bd6b-a44bc6a19173).
+            */
+            EnquireFormPhonePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPracticeErrors field (2d45f2c0-fc71-4392-b33f-1e42c0557e56).
+            */
+            EnquireFormPracticeErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormPracticeIsRequired field (870322ee-d6b3-417b-875a-6357a2808bbf).
+            */
+            EnquireFormPracticeIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormPracticeLabel field (96464740-6a39-4a70-aaa6-895023e9dbe4).
+            */
+            EnquireFormPracticeLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPracticePlaceholder field (adde5a2e-dc97-4477-a718-548b6a2cabbd).
+            */
+            EnquireFormPracticePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPrevClientErrors field (dcd976a2-2f30-450c-a3de-a9d36cd523bd).
+            */
+            EnquireFormPrevClientErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormPrevClientIsRequired field (74ade7f7-8633-4ad3-bcaa-23379978723a).
+            */
+            EnquireFormPrevClientIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormPrevClientLabel field (781d074a-0bf6-422a-9625-32e39a20b98f).
+            */
+            EnquireFormPrevClientLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormPrevClientOptions field (5d0f3456-fe63-4668-b8fc-225d9ba6d430).
+            */
+            EnquireFormPrevClientOptions?: Item[];
+
+            /**
+            * Represents the EnquireFormPrevClientPlaceholder field (78caa2c1-9a81-4de5-be97-712717fc2cf2).
+            */
+            EnquireFormPrevClientPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormReasonVisitErrors field (2f0fe36e-7493-4f84-b660-5d092eca21eb).
+            */
+            EnquireFormReasonVisitErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormReasonVisitIsRequired field (d912cfbd-f3dd-4b78-8737-7e753d8099f0).
+            */
+            EnquireFormReasonVisitIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormReasonVisitLabel field (bad17a95-1152-443c-b2ee-8c5c8c295d91).
+            */
+            EnquireFormReasonVisitLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormReasonVisitPlaceholder field (d6065e3c-cee5-45ca-8bfa-739065fe08eb).
+            */
+            EnquireFormReasonVisitPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesAppointment field (04c834bb-a6d3-4c21-a856-ffb06457afca).
+            */
+            EnquireFormSectionsHeadlinesAppointment?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesContactDetails field (8efa7d38-96f1-406c-b274-02186a5a6329).
+            */
+            EnquireFormSectionsHeadlinesContactDetails?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesFurtherInfo field (8cbd5846-1b05-496b-806b-15f768229c9e).
+            */
+            EnquireFormSectionsHeadlinesFurtherInfo?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPatientDetails field (b69844a3-f4a2-46f2-ac10-74cefdb4bc09).
+            */
+            EnquireFormSectionsHeadlinesPatientDetails?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPayment field (93e3bc48-1c39-417f-8686-2dcaf9d358cd).
+            */
+            EnquireFormSectionsHeadlinesPayment?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPractice field (89d25c93-bba1-4659-beb5-a427afa2200c).
+            */
+            EnquireFormSectionsHeadlinesPractice?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPrevPatient field (826545b9-bab7-44d8-aa63-cf66547ed671).
+            */
+            EnquireFormSectionsHeadlinesPrevPatient?: Field<string>;
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesReasonVisit field (847cb427-e77f-4bb3-9197-97e99b078f02).
+            */
+            EnquireFormSectionsHeadlinesReasonVisit?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTermsErrors field (73df05a2-ccc5-4e6f-96aa-2f372b524649).
+            */
+            EnquireFormTermsErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormTermsIsRequired field (dcb8d290-e355-4dec-a801-8bf0b24b613a).
+            */
+            EnquireFormTermsIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormTermsLabel field (486bc61f-cceb-4066-a284-c06d7e0ad79b).
+            */
+            EnquireFormTermsLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTermsPlaceholder field (bc811f5d-ea50-44f3-805e-6de6becebcb3).
+            */
+            EnquireFormTermsPlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTimeErrors field (d0caef17-4207-4496-914a-8e20f5663cfe).
+            */
+            EnquireFormTimeErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormTimeIsRequired field (f635b45d-2d83-48aa-8ae9-8a33640516f4).
+            */
+            EnquireFormTimeIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormTimeLabel field (417b94ac-2e72-4d72-b6af-732a8c241cee).
+            */
+            EnquireFormTimeLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTimeOptions field (248b089b-d141-441a-ab5c-77cae6b902c6).
+            */
+            EnquireFormTimeOptions?: Item[];
+
+            /**
+            * Represents the EnquireFormTimePlaceholder field (e8f720b9-dc8e-4f32-afab-85ff028f0da0).
+            */
+            EnquireFormTimePlaceholder?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTitleErrors field (7e081293-1278-4004-98c5-e10040928b51).
+            */
+            EnquireFormTitleErrors?: Item[];
+
+            /**
+            * Represents the EnquireFormTitleIsRequired field (0deed21d-b0b9-462c-a7b7-01a4f6d50bce).
+            */
+            EnquireFormTitleIsRequired?: Field<boolean>;
+
+            /**
+            * Represents the EnquireFormTitleLabel field (82fe20f8-9c7e-4743-8d60-9c4e882e6d41).
+            */
+            EnquireFormTitleLabel?: Field<string>;
+
+            /**
+            * Represents the EnquireFormTitleOptions field (65cd60d3-d88a-419a-b677-bfb17069f6b9).
+            */
+            EnquireFormTitleOptions?: Item[];
+
+            /**
+            * Represents the EnquireFormTitlePlaceholder field (e973eafa-f5c3-4950-93d7-37ccffb5e1cd).
+            */
+            EnquireFormTitlePlaceholder?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Forms/Enquire Form/Form Fields
+    */
+    export type FormFieldsJson =  {
+        
+            /**
+            * Represents the EnquireFormBreadcrumbsCurrentPage field (8c6885af-0de1-415d-94e7-4589d42948c4).
+            */
+            enquireFormBreadcrumbsCurrentPage?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormBreadcrumbsHome field (f5b011c5-cc03-4471-8573-af4a2dc5b207).
+            */
+            enquireFormBreadcrumbsHome?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormBtnsClear field (907dcdf0-caaf-4932-8ed4-3a34bc266a92).
+            */
+            enquireFormBtnsClear?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormBtnsSubmit field (3adbad5c-8e21-4467-bfbf-81e571186d5e).
+            */
+            enquireFormBtnsSubmit?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxHeadline field (661c6c89-2504-49b9-8407-79946801e3bd).
+            */
+            enquireFormContactBoxHeadline?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursDays field (83d358af-556b-4b94-a5c7-a6a4153d34dd).
+            */
+            enquireFormContactBoxOpeningHoursDays?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursLabel field (b60d9d55-4c00-433f-ba2e-5e6443c0a532).
+            */
+            enquireFormContactBoxOpeningHoursLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxOpeningHoursTime field (808a1289-0b6a-45b2-bd0b-15d90458dbcf).
+            */
+            enquireFormContactBoxOpeningHoursTime?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxPhone0Label field (418f15cc-f287-4ccc-8fd4-045a02b41349).
+            */
+            enquireFormContactBoxPhone0Label?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormContactBoxPhone0Phone field (3e099a23-a022-4158-b490-1f213ff9f024).
+            */
+            enquireFormContactBoxPhone0Phone?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormDateErrors field (d14d938b-d908-47fb-80da-979dc077f3b6).
+            */
+            enquireFormDateErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormDateIsRequired field (e7388a64-724b-44e1-8a1b-72b0dac0be1a).
+            */
+            enquireFormDateIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormDateLabel field (c5ae0711-cf68-49a8-b76f-a1969c59c7d6).
+            */
+            enquireFormDateLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormDateOfBirthErrors field (1273d142-6ca4-43d3-b7cf-6c4f7c7490f7).
+            */
+            enquireFormDateOfBirthErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormDateOfBirthLabel field (ea53b801-4e3d-4dba-940f-7f45919efa8f).
+            */
+            enquireFormDateOfBirthLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormDateOfBirthPlaceholder field (17dbf8e7-33a8-4fe1-9ff4-7d814427c8c4).
+            */
+            enquireFormDateOfBirthPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormDateOptions field (cc242b97-e850-4193-b8b6-46861b9d3861).
+            */
+            enquireFormDateOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormDatePlaceholder field (2a4fcd95-a663-43be-87fe-b356c4c54881).
+            */
+            enquireFormDatePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormEmailErrors field (76c7df47-4c91-480a-826c-d61443d684e5).
+            */
+            enquireFormEmailErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormEmailIsRequired field (b1607149-8d34-4295-b4c2-1bffc8435af5).
+            */
+            enquireFormEmailIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormEmailLabel field (a24cb9c9-3215-4042-8f78-2b153e35f721).
+            */
+            enquireFormEmailLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormEmailPlaceholder field (64971da4-dbde-4e4d-b4aa-6dbcc6ec8dce).
+            */
+            enquireFormEmailPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormErrorSubmitMsg field (132c9da9-a072-4d96-9bcb-828758b76b69).
+            */
+            enquireFormErrorSubmitMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormFirstNameErrors field (d38b3688-27d1-4660-aa1f-a317170c3fe8).
+            */
+            enquireFormFirstNameErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormFirstNameIsRequired field (96354e1f-a774-47d2-bb28-65ccb2066534).
+            */
+            enquireFormFirstNameIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormFirstNameLabel field (9d46f7c2-9149-421c-a9d3-55a0bd30d2da).
+            */
+            enquireFormFirstNameLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormFirstNamePlaceholder field (b9aa3186-49e0-4dab-ae7c-a5716d113b0a).
+            */
+            enquireFormFirstNamePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormGenderErrors field (941eda13-ac94-48b9-bdb6-f0a8f63ed4c1).
+            */
+            enquireFormGenderErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormGenderIsRequired field (b5280ff8-dde8-448e-8bfc-70ab2a06bc44).
+            */
+            enquireFormGenderIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormGenderLabel field (914ced72-1ca9-4a3a-b5fe-72229b4770de).
+            */
+            enquireFormGenderLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormGenderOptions field (cf750807-8aba-434b-8f5b-8c68a3756ae1).
+            */
+            enquireFormGenderOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormGenderPlaceholder field (50c20002-2972-4dca-8d8b-6fc0567e7e69).
+            */
+            enquireFormGenderPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormHeadline field (0cd74c82-e723-40d1-87e6-01dc46836dcd).
+            */
+            enquireFormHeadline?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInfoTextPayment field (bfa82f24-c92a-49aa-b6f9-da3b45176835).
+            */
+            enquireFormInfoTextPayment?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInfoTextSubmit field (5e675c78-aef0-449c-abfb-74cb3e53f9be).
+            */
+            enquireFormInfoTextSubmit?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceErrors field (088df16a-8c28-4a10-b222-0292450a77c0).
+            */
+            enquireFormInsuranceErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceIsRequired field (291d0894-e5b7-4034-b3fd-601a3d7684fb).
+            */
+            enquireFormInsuranceIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceLabel field (a80c4d2d-a863-407d-9aa2-2382623e45e8).
+            */
+            enquireFormInsuranceLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceNumberErrors field (e507a06c-e294-4339-9148-efebf9b5a0f6).
+            */
+            enquireFormInsuranceNumberErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceNumberIsRequired field (e48156f9-c5d2-4a93-b095-e06003cf402f).
+            */
+            enquireFormInsuranceNumberIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceNumberLabel field (4d7ea05c-7d0e-4a8b-9ffe-4f09398c13c8).
+            */
+            enquireFormInsuranceNumberLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceNumberPlaceholder field (93ce2873-050c-46d4-ba62-79810126d3e4).
+            */
+            enquireFormInsuranceNumberPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInsurancePlaceholder field (ef9d9b85-d143-4df2-a751-9be06eea4c20).
+            */
+            enquireFormInsurancePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormInsuranceSelfPayOption field (44635157-dd11-4767-ae7a-8fd790984975).
+            */
+            enquireFormInsuranceSelfPayOption?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormLastNameErrors field (a689b1f0-2732-41b6-802e-a3501e8b3cd7).
+            */
+            enquireFormLastNameErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormLastNameIsRequired field (a7ed9f41-0f4b-4f17-a0b6-a8f652fa0c38).
+            */
+            enquireFormLastNameIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormLastNameLabel field (170d27ca-f45d-4257-aa27-9427e7080f59).
+            */
+            enquireFormLastNameLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormLastNamePlaceholder field (a9a1d5e4-38da-43f2-b4d0-b68163c779ff).
+            */
+            enquireFormLastNamePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormMarketingPreferencesHeadline field (a9c67e94-8b21-4c40-914e-e651e0dd5cb9).
+            */
+            enquireFormMarketingPreferencesHeadline?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPhoneErrors field (48e68aec-533a-45dd-83fc-139b54f78b49).
+            */
+            enquireFormPhoneErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormPhoneIsRequired field (ccf2d8f6-852e-49fa-9643-01aeb16f5b6a).
+            */
+            enquireFormPhoneIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormPhoneLabel field (95954086-f0a6-41ac-9e9b-0fadd37f1bdc).
+            */
+            enquireFormPhoneLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPhonePlaceholder field (bb59793a-5de2-4090-bd6b-a44bc6a19173).
+            */
+            enquireFormPhonePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPracticeErrors field (2d45f2c0-fc71-4392-b33f-1e42c0557e56).
+            */
+            enquireFormPracticeErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormPracticeIsRequired field (870322ee-d6b3-417b-875a-6357a2808bbf).
+            */
+            enquireFormPracticeIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormPracticeLabel field (96464740-6a39-4a70-aaa6-895023e9dbe4).
+            */
+            enquireFormPracticeLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPracticePlaceholder field (adde5a2e-dc97-4477-a718-548b6a2cabbd).
+            */
+            enquireFormPracticePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPrevClientErrors field (dcd976a2-2f30-450c-a3de-a9d36cd523bd).
+            */
+            enquireFormPrevClientErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormPrevClientIsRequired field (74ade7f7-8633-4ad3-bcaa-23379978723a).
+            */
+            enquireFormPrevClientIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormPrevClientLabel field (781d074a-0bf6-422a-9625-32e39a20b98f).
+            */
+            enquireFormPrevClientLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormPrevClientOptions field (5d0f3456-fe63-4668-b8fc-225d9ba6d430).
+            */
+            enquireFormPrevClientOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormPrevClientPlaceholder field (78caa2c1-9a81-4de5-be97-712717fc2cf2).
+            */
+            enquireFormPrevClientPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormReasonVisitErrors field (2f0fe36e-7493-4f84-b660-5d092eca21eb).
+            */
+            enquireFormReasonVisitErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormReasonVisitIsRequired field (d912cfbd-f3dd-4b78-8737-7e753d8099f0).
+            */
+            enquireFormReasonVisitIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormReasonVisitLabel field (bad17a95-1152-443c-b2ee-8c5c8c295d91).
+            */
+            enquireFormReasonVisitLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormReasonVisitPlaceholder field (d6065e3c-cee5-45ca-8bfa-739065fe08eb).
+            */
+            enquireFormReasonVisitPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesAppointment field (04c834bb-a6d3-4c21-a856-ffb06457afca).
+            */
+            enquireFormSectionsHeadlinesAppointment?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesContactDetails field (8efa7d38-96f1-406c-b274-02186a5a6329).
+            */
+            enquireFormSectionsHeadlinesContactDetails?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesFurtherInfo field (8cbd5846-1b05-496b-806b-15f768229c9e).
+            */
+            enquireFormSectionsHeadlinesFurtherInfo?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPatientDetails field (b69844a3-f4a2-46f2-ac10-74cefdb4bc09).
+            */
+            enquireFormSectionsHeadlinesPatientDetails?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPayment field (93e3bc48-1c39-417f-8686-2dcaf9d358cd).
+            */
+            enquireFormSectionsHeadlinesPayment?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPractice field (89d25c93-bba1-4659-beb5-a427afa2200c).
+            */
+            enquireFormSectionsHeadlinesPractice?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesPrevPatient field (826545b9-bab7-44d8-aa63-cf66547ed671).
+            */
+            enquireFormSectionsHeadlinesPrevPatient?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormSectionsHeadlinesReasonVisit field (847cb427-e77f-4bb3-9197-97e99b078f02).
+            */
+            enquireFormSectionsHeadlinesReasonVisit?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTermsErrors field (73df05a2-ccc5-4e6f-96aa-2f372b524649).
+            */
+            enquireFormTermsErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormTermsIsRequired field (dcb8d290-e355-4dec-a801-8bf0b24b613a).
+            */
+            enquireFormTermsIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormTermsLabel field (486bc61f-cceb-4066-a284-c06d7e0ad79b).
+            */
+            enquireFormTermsLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTermsPlaceholder field (bc811f5d-ea50-44f3-805e-6de6becebcb3).
+            */
+            enquireFormTermsPlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTimeErrors field (d0caef17-4207-4496-914a-8e20f5663cfe).
+            */
+            enquireFormTimeErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormTimeIsRequired field (f635b45d-2d83-48aa-8ae9-8a33640516f4).
+            */
+            enquireFormTimeIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormTimeLabel field (417b94ac-2e72-4d72-b6af-732a8c241cee).
+            */
+            enquireFormTimeLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTimeOptions field (248b089b-d141-441a-ab5c-77cae6b902c6).
+            */
+            enquireFormTimeOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormTimePlaceholder field (e8f720b9-dc8e-4f32-afab-85ff028f0da0).
+            */
+            enquireFormTimePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTitleErrors field (7e081293-1278-4004-98c5-e10040928b51).
+            */
+            enquireFormTitleErrors?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormTitleIsRequired field (0deed21d-b0b9-462c-a7b7-01a4f6d50bce).
+            */
+            enquireFormTitleIsRequired?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the EnquireFormTitleLabel field (82fe20f8-9c7e-4743-8d60-9c4e882e6d41).
+            */
+            enquireFormTitleLabel?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the EnquireFormTitleOptions field (65cd60d3-d88a-419a-b677-bfb17069f6b9).
+            */
+            enquireFormTitleOptions?: {
+                jsonValue: Item[]
+            };
+
+            /**
+            * Represents the EnquireFormTitlePlaceholder field (e973eafa-f5c3-4950-93d7-37ccffb5e1cd).
+            */
+            enquireFormTitlePlaceholder?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 }
@@ -6900,1075 +8108,343 @@ export namespace ConsultantFinder.Forms.LiveBookingForm {
 
     }
 }
-export namespace ConsultantFinder.Forms.EnquireForm {
+export namespace Foundation.FormApi {
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Forms/Enquire Form/Form Fields
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings
     */
-    export type FormFields =  {
+    export type FormApiSettings =  {
         fields?: { 
             /**
-            * Represents the EnquireFormBreadcrumbsCurrentPage field (8c6885af-0de1-415d-94e7-4589d42948c4).
+            * Represents the Bcc field (d4a86b79-c215-4bbe-a63e-e9ed0a7aaf9c).
             */
-            EnquireFormBreadcrumbsCurrentPage?: Field<string>;
+            Bcc?: Field<string>;
 
             /**
-            * Represents the EnquireFormBreadcrumbsHome field (f5b011c5-cc03-4471-8573-af4a2dc5b207).
+            * Represents the Cc field (e4369b71-77b9-45cb-afed-6f1b8908a923).
             */
-            EnquireFormBreadcrumbsHome?: Field<string>;
+            Cc?: Field<string>;
 
             /**
-            * Represents the EnquireFormBtnsClear field (907dcdf0-caaf-4932-8ed4-3a34bc266a92).
+            * Represents the Client pre-authorisation max requests in window field (d595e21e-2ca5-4fa6-a258-67d4eb42318e).
             */
-            EnquireFormBtnsClear?: Field<string>;
+            "Client pre-authorisation max requests in window"?: Field<number>;
 
             /**
-            * Represents the EnquireFormBtnsSubmit field (3adbad5c-8e21-4467-bfbf-81e571186d5e).
+            * Represents the Client pre-authorisation token window seconds field (4f712c9f-9e74-4666-87a4-b30d5ba3c4fb).
             */
-            EnquireFormBtnsSubmit?: Field<string>;
+            "Client pre-authorisation token window seconds"?: Field<number>;
 
             /**
-            * Represents the EnquireFormContactBoxHeadline field (661c6c89-2504-49b9-8407-79946801e3bd).
+            * Represents the Enable response data log field (19458d85-f925-4e4e-8b07-4b9bb1af42fa).
             */
-            EnquireFormContactBoxHeadline?: Field<string>;
+            "Enable response data log"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormContactBoxOpeningHoursDays field (83d358af-556b-4b94-a5c7-a6a4153d34dd).
+            * Represents the Enable trace log field (a8e3ee36-f8cf-4f9c-b814-e39b496bf246).
             */
-            EnquireFormContactBoxOpeningHoursDays?: Field<string>;
+            "Enable trace log"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormContactBoxOpeningHoursLabel field (b60d9d55-4c00-433f-ba2e-5e6443c0a532).
+            * Represents the Enforce client pre-authorisation token field (112c008a-d620-4790-8a72-5889378d3047).
             */
-            EnquireFormContactBoxOpeningHoursLabel?: Field<string>;
+            "Enforce client pre-authorisation token"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormContactBoxOpeningHoursTime field (808a1289-0b6a-45b2-bd0b-15d90458dbcf).
+            * Represents the Enforce service max post request window field (55e86ab9-24d2-43c9-a41e-553e3020ba32).
             */
-            EnquireFormContactBoxOpeningHoursTime?: Field<string>;
+            "Enforce service max post request window"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormContactBoxPhone0Label field (418f15cc-f287-4ccc-8fd4-045a02b41349).
+            * Represents the From field (fc6b5ad4-190c-41a2-8afb-1190b04cfb3a).
             */
-            EnquireFormContactBoxPhone0Label?: Field<string>;
+            From?: Field<string>;
 
             /**
-            * Represents the EnquireFormContactBoxPhone0Phone field (3e099a23-a022-4158-b490-1f213ff9f024).
+            * Represents the Happy path return html field (0f5f4a07-9283-433b-bb2e-510bb2770d50).
             */
-            EnquireFormContactBoxPhone0Phone?: Field<string>;
+            "Happy path return html"?: Field<string>;
 
             /**
-            * Represents the EnquireFormDateErrors field (d14d938b-d908-47fb-80da-979dc077f3b6).
+            * Represents the Log to forms database field (82327bb6-820b-4c39-8b5a-aa36a1ef0b29).
             */
-            EnquireFormDateErrors?: Item[];
+            "Log to forms database"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormDateIsRequired field (e7388a64-724b-44e1-8a1b-72b0dac0be1a).
+            * Represents the Log to forms database asynchronously field (7eca4a62-13b8-4e09-8169-da2985bfbd1c).
             */
-            EnquireFormDateIsRequired?: Field<boolean>;
+            "Log to forms database asynchronously"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormDateLabel field (c5ae0711-cf68-49a8-b76f-a1969c59c7d6).
+            * Represents the Message RichText field (6f1ecac1-3e3a-4de3-9ed7-3bf481bba769).
             */
-            EnquireFormDateLabel?: Field<string>;
+            "Message RichText"?: Field<string>;
 
             /**
-            * Represents the EnquireFormDateOfBirthErrors field (1273d142-6ca4-43d3-b7cf-6c4f7c7490f7).
+            * Represents the Message Text field (61f29268-6d8a-4a7f-91a3-a0ee46e10df9).
             */
-            EnquireFormDateOfBirthErrors?: Item[];
+            "Message Text"?: Field<string>;
 
             /**
-            * Represents the EnquireFormDateOfBirthLabel field (ea53b801-4e3d-4dba-940f-7f45919efa8f).
+            * Represents the Only accept posts with an existing ASP Session field (9914d604-b368-488c-8d3f-35908b400a4f).
             */
-            EnquireFormDateOfBirthLabel?: Field<string>;
+            "Only accept posts with an existing ASP Session"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormDateOfBirthPlaceholder field (17dbf8e7-33a8-4fe1-9ff4-7d814427c8c4).
+            * Represents the Private Recaptcha key field (285b683c-ab9b-4df2-921f-33164dab428e).
             */
-            EnquireFormDateOfBirthPlaceholder?: Field<string>;
+            "Private Recaptcha key"?: Field<string>;
 
             /**
-            * Represents the EnquireFormDateOptions field (cc242b97-e850-4193-b8b6-46861b9d3861).
+            * Represents the Public Recaptch key field (684884f1-88fb-435a-9bcb-55c35bcec2c9).
             */
-            EnquireFormDateOptions?: Item[];
+            "Public Recaptch key"?: Field<string>;
 
             /**
-            * Represents the EnquireFormDatePlaceholder field (2a4fcd95-a663-43be-87fe-b356c4c54881).
+            * Represents the Recaptcha validation endpoint field (49416446-45c3-4c27-a367-e515e3def779).
             */
-            EnquireFormDatePlaceholder?: Field<string>;
+            "Recaptcha validation endpoint"?: Field<string>;
 
             /**
-            * Represents the EnquireFormEmailErrors field (76c7df47-4c91-480a-826c-d61443d684e5).
+            * Represents the Return HTML field (402d2d6a-bb61-48ac-ad46-db27d8c3326b).
             */
-            EnquireFormEmailErrors?: Item[];
+            "Return HTML"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormEmailIsRequired field (b1607149-8d34-4295-b4c2-1bffc8435af5).
+            * Represents the Sad path return html field (7bfadbd8-ae2c-4d50-b524-34824635737b).
             */
-            EnquireFormEmailIsRequired?: Field<boolean>;
+            "Sad path return html"?: Field<string>;
 
             /**
-            * Represents the EnquireFormEmailLabel field (a24cb9c9-3215-4042-8f78-2b153e35f721).
+            * Represents the Send email field (6746f5ff-5d17-4612-9b80-a8697c1b3ee4).
             */
-            EnquireFormEmailLabel?: Field<string>;
+            "Send email"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormEmailPlaceholder field (64971da4-dbde-4e4d-b4aa-6dbcc6ec8dce).
+            * Represents the Send email asynchronously field (75ed9843-9f4a-4b60-88ba-22e72fa9947c).
             */
-            EnquireFormEmailPlaceholder?: Field<string>;
+            "Send email asynchronously"?: Field<boolean>;
 
             /**
-            * Represents the EnquireFormErrorSubmitMsg field (132c9da9-a072-4d96-9bcb-828758b76b69).
+            * Represents the Service max post requests in window field (87ca975f-c8d8-493a-80db-ac9586c4a236).
             */
-            EnquireFormErrorSubmitMsg?: Field<string>;
+            "Service max post requests in window"?: Field<number>;
 
             /**
-            * Represents the EnquireFormFirstNameErrors field (d38b3688-27d1-4660-aa1f-a317170c3fe8).
+            * Represents the Service max post requests window seconds field (43537a1c-2c5d-45b2-9142-80f22f783b43).
             */
-            EnquireFormFirstNameErrors?: Item[];
+            "Service max post requests window seconds"?: Field<number>;
 
             /**
-            * Represents the EnquireFormFirstNameIsRequired field (96354e1f-a774-47d2-bb28-65ccb2066534).
+            * Represents the Subject field (9e1dc96d-fdda-4d5c-af33-62646aeb4892).
             */
-            EnquireFormFirstNameIsRequired?: Field<boolean>;
+            Subject?: Field<string>;
 
             /**
-            * Represents the EnquireFormFirstNameLabel field (9d46f7c2-9149-421c-a9d3-55a0bd30d2da).
+            * Represents the To field (fc210a67-7ca8-4222-9941-bd4c8f146588).
             */
-            EnquireFormFirstNameLabel?: Field<string>;
+            To?: Field<string>;
 
             /**
-            * Represents the EnquireFormFirstNamePlaceholder field (b9aa3186-49e0-4dab-ae7c-a5716d113b0a).
+            * Represents the Validate Recaptcha field (2483cc9f-13da-49cd-a96b-a7de847febaf).
             */
-            EnquireFormFirstNamePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormGenderErrors field (941eda13-ac94-48b9-bdb6-f0a8f63ed4c1).
-            */
-            EnquireFormGenderErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormGenderIsRequired field (b5280ff8-dde8-448e-8bfc-70ab2a06bc44).
-            */
-            EnquireFormGenderIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormGenderLabel field (914ced72-1ca9-4a3a-b5fe-72229b4770de).
-            */
-            EnquireFormGenderLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormGenderOptions field (cf750807-8aba-434b-8f5b-8c68a3756ae1).
-            */
-            EnquireFormGenderOptions?: Item[];
-
-            /**
-            * Represents the EnquireFormGenderPlaceholder field (50c20002-2972-4dca-8d8b-6fc0567e7e69).
-            */
-            EnquireFormGenderPlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormHeadline field (0cd74c82-e723-40d1-87e6-01dc46836dcd).
-            */
-            EnquireFormHeadline?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInfoTextPayment field (bfa82f24-c92a-49aa-b6f9-da3b45176835).
-            */
-            EnquireFormInfoTextPayment?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInfoTextSubmit field (5e675c78-aef0-449c-abfb-74cb3e53f9be).
-            */
-            EnquireFormInfoTextSubmit?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInsuranceErrors field (088df16a-8c28-4a10-b222-0292450a77c0).
-            */
-            EnquireFormInsuranceErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormInsuranceIsRequired field (291d0894-e5b7-4034-b3fd-601a3d7684fb).
-            */
-            EnquireFormInsuranceIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormInsuranceLabel field (a80c4d2d-a863-407d-9aa2-2382623e45e8).
-            */
-            EnquireFormInsuranceLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInsuranceNumberErrors field (e507a06c-e294-4339-9148-efebf9b5a0f6).
-            */
-            EnquireFormInsuranceNumberErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormInsuranceNumberIsRequired field (e48156f9-c5d2-4a93-b095-e06003cf402f).
-            */
-            EnquireFormInsuranceNumberIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormInsuranceNumberLabel field (4d7ea05c-7d0e-4a8b-9ffe-4f09398c13c8).
-            */
-            EnquireFormInsuranceNumberLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInsuranceNumberPlaceholder field (93ce2873-050c-46d4-ba62-79810126d3e4).
-            */
-            EnquireFormInsuranceNumberPlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInsurancePlaceholder field (ef9d9b85-d143-4df2-a751-9be06eea4c20).
-            */
-            EnquireFormInsurancePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormInsuranceSelfPayOption field (44635157-dd11-4767-ae7a-8fd790984975).
-            */
-            EnquireFormInsuranceSelfPayOption?: Field<string>;
-
-            /**
-            * Represents the EnquireFormLastNameErrors field (a689b1f0-2732-41b6-802e-a3501e8b3cd7).
-            */
-            EnquireFormLastNameErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormLastNameIsRequired field (a7ed9f41-0f4b-4f17-a0b6-a8f652fa0c38).
-            */
-            EnquireFormLastNameIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormLastNameLabel field (170d27ca-f45d-4257-aa27-9427e7080f59).
-            */
-            EnquireFormLastNameLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormLastNamePlaceholder field (a9a1d5e4-38da-43f2-b4d0-b68163c779ff).
-            */
-            EnquireFormLastNamePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormMarketingPreferencesHeadline field (a9c67e94-8b21-4c40-914e-e651e0dd5cb9).
-            */
-            EnquireFormMarketingPreferencesHeadline?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPhoneErrors field (48e68aec-533a-45dd-83fc-139b54f78b49).
-            */
-            EnquireFormPhoneErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormPhoneIsRequired field (ccf2d8f6-852e-49fa-9643-01aeb16f5b6a).
-            */
-            EnquireFormPhoneIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormPhoneLabel field (95954086-f0a6-41ac-9e9b-0fadd37f1bdc).
-            */
-            EnquireFormPhoneLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPhonePlaceholder field (bb59793a-5de2-4090-bd6b-a44bc6a19173).
-            */
-            EnquireFormPhonePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPracticeErrors field (2d45f2c0-fc71-4392-b33f-1e42c0557e56).
-            */
-            EnquireFormPracticeErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormPracticeIsRequired field (870322ee-d6b3-417b-875a-6357a2808bbf).
-            */
-            EnquireFormPracticeIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormPracticeLabel field (96464740-6a39-4a70-aaa6-895023e9dbe4).
-            */
-            EnquireFormPracticeLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPracticePlaceholder field (adde5a2e-dc97-4477-a718-548b6a2cabbd).
-            */
-            EnquireFormPracticePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPrevClientErrors field (dcd976a2-2f30-450c-a3de-a9d36cd523bd).
-            */
-            EnquireFormPrevClientErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormPrevClientIsRequired field (74ade7f7-8633-4ad3-bcaa-23379978723a).
-            */
-            EnquireFormPrevClientIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormPrevClientLabel field (781d074a-0bf6-422a-9625-32e39a20b98f).
-            */
-            EnquireFormPrevClientLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormPrevClientOptions field (5d0f3456-fe63-4668-b8fc-225d9ba6d430).
-            */
-            EnquireFormPrevClientOptions?: Item[];
-
-            /**
-            * Represents the EnquireFormPrevClientPlaceholder field (78caa2c1-9a81-4de5-be97-712717fc2cf2).
-            */
-            EnquireFormPrevClientPlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormReasonVisitErrors field (2f0fe36e-7493-4f84-b660-5d092eca21eb).
-            */
-            EnquireFormReasonVisitErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormReasonVisitIsRequired field (d912cfbd-f3dd-4b78-8737-7e753d8099f0).
-            */
-            EnquireFormReasonVisitIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormReasonVisitLabel field (bad17a95-1152-443c-b2ee-8c5c8c295d91).
-            */
-            EnquireFormReasonVisitLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormReasonVisitPlaceholder field (d6065e3c-cee5-45ca-8bfa-739065fe08eb).
-            */
-            EnquireFormReasonVisitPlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesAppointment field (04c834bb-a6d3-4c21-a856-ffb06457afca).
-            */
-            EnquireFormSectionsHeadlinesAppointment?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesContactDetails field (8efa7d38-96f1-406c-b274-02186a5a6329).
-            */
-            EnquireFormSectionsHeadlinesContactDetails?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesFurtherInfo field (8cbd5846-1b05-496b-806b-15f768229c9e).
-            */
-            EnquireFormSectionsHeadlinesFurtherInfo?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPatientDetails field (b69844a3-f4a2-46f2-ac10-74cefdb4bc09).
-            */
-            EnquireFormSectionsHeadlinesPatientDetails?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPayment field (93e3bc48-1c39-417f-8686-2dcaf9d358cd).
-            */
-            EnquireFormSectionsHeadlinesPayment?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPractice field (89d25c93-bba1-4659-beb5-a427afa2200c).
-            */
-            EnquireFormSectionsHeadlinesPractice?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPrevPatient field (826545b9-bab7-44d8-aa63-cf66547ed671).
-            */
-            EnquireFormSectionsHeadlinesPrevPatient?: Field<string>;
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesReasonVisit field (847cb427-e77f-4bb3-9197-97e99b078f02).
-            */
-            EnquireFormSectionsHeadlinesReasonVisit?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTermsErrors field (73df05a2-ccc5-4e6f-96aa-2f372b524649).
-            */
-            EnquireFormTermsErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormTermsIsRequired field (dcb8d290-e355-4dec-a801-8bf0b24b613a).
-            */
-            EnquireFormTermsIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormTermsLabel field (486bc61f-cceb-4066-a284-c06d7e0ad79b).
-            */
-            EnquireFormTermsLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTermsPlaceholder field (bc811f5d-ea50-44f3-805e-6de6becebcb3).
-            */
-            EnquireFormTermsPlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTimeErrors field (d0caef17-4207-4496-914a-8e20f5663cfe).
-            */
-            EnquireFormTimeErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormTimeIsRequired field (f635b45d-2d83-48aa-8ae9-8a33640516f4).
-            */
-            EnquireFormTimeIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormTimeLabel field (417b94ac-2e72-4d72-b6af-732a8c241cee).
-            */
-            EnquireFormTimeLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTimeOptions field (248b089b-d141-441a-ab5c-77cae6b902c6).
-            */
-            EnquireFormTimeOptions?: Item[];
-
-            /**
-            * Represents the EnquireFormTimePlaceholder field (e8f720b9-dc8e-4f32-afab-85ff028f0da0).
-            */
-            EnquireFormTimePlaceholder?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTitleErrors field (7e081293-1278-4004-98c5-e10040928b51).
-            */
-            EnquireFormTitleErrors?: Item[];
-
-            /**
-            * Represents the EnquireFormTitleIsRequired field (0deed21d-b0b9-462c-a7b7-01a4f6d50bce).
-            */
-            EnquireFormTitleIsRequired?: Field<boolean>;
-
-            /**
-            * Represents the EnquireFormTitleLabel field (82fe20f8-9c7e-4743-8d60-9c4e882e6d41).
-            */
-            EnquireFormTitleLabel?: Field<string>;
-
-            /**
-            * Represents the EnquireFormTitleOptions field (65cd60d3-d88a-419a-b677-bfb17069f6b9).
-            */
-            EnquireFormTitleOptions?: Item[];
-
-            /**
-            * Represents the EnquireFormTitlePlaceholder field (e973eafa-f5c3-4950-93d7-37ccffb5e1cd).
-            */
-            EnquireFormTitlePlaceholder?: Field<string>;
+            "Validate Recaptcha"?: Field<boolean>;
         }
 
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Forms/Enquire Form/Form Fields
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings
     */
-    export type FormFieldsJson =  {
+    export type FormApiSettingsJson =  {
         
             /**
-            * Represents the EnquireFormBreadcrumbsCurrentPage field (8c6885af-0de1-415d-94e7-4589d42948c4).
+            * Represents the Bcc field (d4a86b79-c215-4bbe-a63e-e9ed0a7aaf9c).
             */
-            enquireFormBreadcrumbsCurrentPage?: {
+            bcc?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormBreadcrumbsHome field (f5b011c5-cc03-4471-8573-af4a2dc5b207).
+            * Represents the Cc field (e4369b71-77b9-45cb-afed-6f1b8908a923).
             */
-            enquireFormBreadcrumbsHome?: {
+            cc?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormBtnsClear field (907dcdf0-caaf-4932-8ed4-3a34bc266a92).
+            * Represents the Client pre-authorisation max requests in window field (d595e21e-2ca5-4fa6-a258-67d4eb42318e).
             */
-            enquireFormBtnsClear?: {
-                jsonValue: Field<string>
+            "Client pre-authorisation max requests in window"?: {
+                jsonValue: Field<number>
             };
 
             /**
-            * Represents the EnquireFormBtnsSubmit field (3adbad5c-8e21-4467-bfbf-81e571186d5e).
+            * Represents the Client pre-authorisation token window seconds field (4f712c9f-9e74-4666-87a4-b30d5ba3c4fb).
             */
-            enquireFormBtnsSubmit?: {
-                jsonValue: Field<string>
+            "Client pre-authorisation token window seconds"?: {
+                jsonValue: Field<number>
             };
 
             /**
-            * Represents the EnquireFormContactBoxHeadline field (661c6c89-2504-49b9-8407-79946801e3bd).
+            * Represents the Enable response data log field (19458d85-f925-4e4e-8b07-4b9bb1af42fa).
             */
-            enquireFormContactBoxHeadline?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormContactBoxOpeningHoursDays field (83d358af-556b-4b94-a5c7-a6a4153d34dd).
-            */
-            enquireFormContactBoxOpeningHoursDays?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormContactBoxOpeningHoursLabel field (b60d9d55-4c00-433f-ba2e-5e6443c0a532).
-            */
-            enquireFormContactBoxOpeningHoursLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormContactBoxOpeningHoursTime field (808a1289-0b6a-45b2-bd0b-15d90458dbcf).
-            */
-            enquireFormContactBoxOpeningHoursTime?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormContactBoxPhone0Label field (418f15cc-f287-4ccc-8fd4-045a02b41349).
-            */
-            enquireFormContactBoxPhone0Label?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormContactBoxPhone0Phone field (3e099a23-a022-4158-b490-1f213ff9f024).
-            */
-            enquireFormContactBoxPhone0Phone?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormDateErrors field (d14d938b-d908-47fb-80da-979dc077f3b6).
-            */
-            enquireFormDateErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormDateIsRequired field (e7388a64-724b-44e1-8a1b-72b0dac0be1a).
-            */
-            enquireFormDateIsRequired?: {
+            "Enable response data log"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormDateLabel field (c5ae0711-cf68-49a8-b76f-a1969c59c7d6).
+            * Represents the Enable trace log field (a8e3ee36-f8cf-4f9c-b814-e39b496bf246).
             */
-            enquireFormDateLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormDateOfBirthErrors field (1273d142-6ca4-43d3-b7cf-6c4f7c7490f7).
-            */
-            enquireFormDateOfBirthErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormDateOfBirthLabel field (ea53b801-4e3d-4dba-940f-7f45919efa8f).
-            */
-            enquireFormDateOfBirthLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormDateOfBirthPlaceholder field (17dbf8e7-33a8-4fe1-9ff4-7d814427c8c4).
-            */
-            enquireFormDateOfBirthPlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormDateOptions field (cc242b97-e850-4193-b8b6-46861b9d3861).
-            */
-            enquireFormDateOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormDatePlaceholder field (2a4fcd95-a663-43be-87fe-b356c4c54881).
-            */
-            enquireFormDatePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormEmailErrors field (76c7df47-4c91-480a-826c-d61443d684e5).
-            */
-            enquireFormEmailErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormEmailIsRequired field (b1607149-8d34-4295-b4c2-1bffc8435af5).
-            */
-            enquireFormEmailIsRequired?: {
+            "Enable trace log"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormEmailLabel field (a24cb9c9-3215-4042-8f78-2b153e35f721).
+            * Represents the Enforce client pre-authorisation token field (112c008a-d620-4790-8a72-5889378d3047).
             */
-            enquireFormEmailLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormEmailPlaceholder field (64971da4-dbde-4e4d-b4aa-6dbcc6ec8dce).
-            */
-            enquireFormEmailPlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormErrorSubmitMsg field (132c9da9-a072-4d96-9bcb-828758b76b69).
-            */
-            enquireFormErrorSubmitMsg?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormFirstNameErrors field (d38b3688-27d1-4660-aa1f-a317170c3fe8).
-            */
-            enquireFormFirstNameErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormFirstNameIsRequired field (96354e1f-a774-47d2-bb28-65ccb2066534).
-            */
-            enquireFormFirstNameIsRequired?: {
+            "Enforce client pre-authorisation token"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormFirstNameLabel field (9d46f7c2-9149-421c-a9d3-55a0bd30d2da).
+            * Represents the Enforce service max post request window field (55e86ab9-24d2-43c9-a41e-553e3020ba32).
             */
-            enquireFormFirstNameLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormFirstNamePlaceholder field (b9aa3186-49e0-4dab-ae7c-a5716d113b0a).
-            */
-            enquireFormFirstNamePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormGenderErrors field (941eda13-ac94-48b9-bdb6-f0a8f63ed4c1).
-            */
-            enquireFormGenderErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormGenderIsRequired field (b5280ff8-dde8-448e-8bfc-70ab2a06bc44).
-            */
-            enquireFormGenderIsRequired?: {
+            "Enforce service max post request window"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormGenderLabel field (914ced72-1ca9-4a3a-b5fe-72229b4770de).
+            * Represents the From field (fc6b5ad4-190c-41a2-8afb-1190b04cfb3a).
             */
-            enquireFormGenderLabel?: {
+            from?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormGenderOptions field (cf750807-8aba-434b-8f5b-8c68a3756ae1).
+            * Represents the Happy path return html field (0f5f4a07-9283-433b-bb2e-510bb2770d50).
             */
-            enquireFormGenderOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormGenderPlaceholder field (50c20002-2972-4dca-8d8b-6fc0567e7e69).
-            */
-            enquireFormGenderPlaceholder?: {
+            "Happy path return html"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormHeadline field (0cd74c82-e723-40d1-87e6-01dc46836dcd).
+            * Represents the Log to forms database field (82327bb6-820b-4c39-8b5a-aa36a1ef0b29).
             */
-            enquireFormHeadline?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormInfoTextPayment field (bfa82f24-c92a-49aa-b6f9-da3b45176835).
-            */
-            enquireFormInfoTextPayment?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormInfoTextSubmit field (5e675c78-aef0-449c-abfb-74cb3e53f9be).
-            */
-            enquireFormInfoTextSubmit?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormInsuranceErrors field (088df16a-8c28-4a10-b222-0292450a77c0).
-            */
-            enquireFormInsuranceErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormInsuranceIsRequired field (291d0894-e5b7-4034-b3fd-601a3d7684fb).
-            */
-            enquireFormInsuranceIsRequired?: {
+            "Log to forms database"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormInsuranceLabel field (a80c4d2d-a863-407d-9aa2-2382623e45e8).
+            * Represents the Log to forms database asynchronously field (7eca4a62-13b8-4e09-8169-da2985bfbd1c).
             */
-            enquireFormInsuranceLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormInsuranceNumberErrors field (e507a06c-e294-4339-9148-efebf9b5a0f6).
-            */
-            enquireFormInsuranceNumberErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormInsuranceNumberIsRequired field (e48156f9-c5d2-4a93-b095-e06003cf402f).
-            */
-            enquireFormInsuranceNumberIsRequired?: {
+            "Log to forms database asynchronously"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormInsuranceNumberLabel field (4d7ea05c-7d0e-4a8b-9ffe-4f09398c13c8).
+            * Represents the Message RichText field (6f1ecac1-3e3a-4de3-9ed7-3bf481bba769).
             */
-            enquireFormInsuranceNumberLabel?: {
+            "Message RichText"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormInsuranceNumberPlaceholder field (93ce2873-050c-46d4-ba62-79810126d3e4).
+            * Represents the Message Text field (61f29268-6d8a-4a7f-91a3-a0ee46e10df9).
             */
-            enquireFormInsuranceNumberPlaceholder?: {
+            "Message Text"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormInsurancePlaceholder field (ef9d9b85-d143-4df2-a751-9be06eea4c20).
+            * Represents the Only accept posts with an existing ASP Session field (9914d604-b368-488c-8d3f-35908b400a4f).
             */
-            enquireFormInsurancePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormInsuranceSelfPayOption field (44635157-dd11-4767-ae7a-8fd790984975).
-            */
-            enquireFormInsuranceSelfPayOption?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormLastNameErrors field (a689b1f0-2732-41b6-802e-a3501e8b3cd7).
-            */
-            enquireFormLastNameErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormLastNameIsRequired field (a7ed9f41-0f4b-4f17-a0b6-a8f652fa0c38).
-            */
-            enquireFormLastNameIsRequired?: {
+            "Only accept posts with an existing ASP Session"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormLastNameLabel field (170d27ca-f45d-4257-aa27-9427e7080f59).
+            * Represents the Private Recaptcha key field (285b683c-ab9b-4df2-921f-33164dab428e).
             */
-            enquireFormLastNameLabel?: {
+            "Private Recaptcha key"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormLastNamePlaceholder field (a9a1d5e4-38da-43f2-b4d0-b68163c779ff).
+            * Represents the Public Recaptch key field (684884f1-88fb-435a-9bcb-55c35bcec2c9).
             */
-            enquireFormLastNamePlaceholder?: {
+            "Public Recaptch key"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormMarketingPreferencesHeadline field (a9c67e94-8b21-4c40-914e-e651e0dd5cb9).
+            * Represents the Recaptcha validation endpoint field (49416446-45c3-4c27-a367-e515e3def779).
             */
-            enquireFormMarketingPreferencesHeadline?: {
+            "Recaptcha validation endpoint"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormPhoneErrors field (48e68aec-533a-45dd-83fc-139b54f78b49).
+            * Represents the Return HTML field (402d2d6a-bb61-48ac-ad46-db27d8c3326b).
             */
-            enquireFormPhoneErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormPhoneIsRequired field (ccf2d8f6-852e-49fa-9643-01aeb16f5b6a).
-            */
-            enquireFormPhoneIsRequired?: {
+            "Return HTML"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormPhoneLabel field (95954086-f0a6-41ac-9e9b-0fadd37f1bdc).
+            * Represents the Sad path return html field (7bfadbd8-ae2c-4d50-b524-34824635737b).
             */
-            enquireFormPhoneLabel?: {
+            "Sad path return html"?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormPhonePlaceholder field (bb59793a-5de2-4090-bd6b-a44bc6a19173).
+            * Represents the Send email field (6746f5ff-5d17-4612-9b80-a8697c1b3ee4).
             */
-            enquireFormPhonePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormPracticeErrors field (2d45f2c0-fc71-4392-b33f-1e42c0557e56).
-            */
-            enquireFormPracticeErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormPracticeIsRequired field (870322ee-d6b3-417b-875a-6357a2808bbf).
-            */
-            enquireFormPracticeIsRequired?: {
+            "Send email"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormPracticeLabel field (96464740-6a39-4a70-aaa6-895023e9dbe4).
+            * Represents the Send email asynchronously field (75ed9843-9f4a-4b60-88ba-22e72fa9947c).
             */
-            enquireFormPracticeLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormPracticePlaceholder field (adde5a2e-dc97-4477-a718-548b6a2cabbd).
-            */
-            enquireFormPracticePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormPrevClientErrors field (dcd976a2-2f30-450c-a3de-a9d36cd523bd).
-            */
-            enquireFormPrevClientErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormPrevClientIsRequired field (74ade7f7-8633-4ad3-bcaa-23379978723a).
-            */
-            enquireFormPrevClientIsRequired?: {
+            "Send email asynchronously"?: {
                 jsonValue: Field<boolean>
             };
 
             /**
-            * Represents the EnquireFormPrevClientLabel field (781d074a-0bf6-422a-9625-32e39a20b98f).
+            * Represents the Service max post requests in window field (87ca975f-c8d8-493a-80db-ac9586c4a236).
             */
-            enquireFormPrevClientLabel?: {
+            "Service max post requests in window"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Service max post requests window seconds field (43537a1c-2c5d-45b2-9142-80f22f783b43).
+            */
+            "Service max post requests window seconds"?: {
+                jsonValue: Field<number>
+            };
+
+            /**
+            * Represents the Subject field (9e1dc96d-fdda-4d5c-af33-62646aeb4892).
+            */
+            subject?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormPrevClientOptions field (5d0f3456-fe63-4668-b8fc-225d9ba6d430).
+            * Represents the To field (fc210a67-7ca8-4222-9941-bd4c8f146588).
             */
-            enquireFormPrevClientOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormPrevClientPlaceholder field (78caa2c1-9a81-4de5-be97-712717fc2cf2).
-            */
-            enquireFormPrevClientPlaceholder?: {
+            to?: {
                 jsonValue: Field<string>
             };
 
             /**
-            * Represents the EnquireFormReasonVisitErrors field (2f0fe36e-7493-4f84-b660-5d092eca21eb).
+            * Represents the Validate Recaptcha field (2483cc9f-13da-49cd-a96b-a7de847febaf).
             */
-            enquireFormReasonVisitErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormReasonVisitIsRequired field (d912cfbd-f3dd-4b78-8737-7e753d8099f0).
-            */
-            enquireFormReasonVisitIsRequired?: {
+            "Validate Recaptcha"?: {
                 jsonValue: Field<boolean>
-            };
-
-            /**
-            * Represents the EnquireFormReasonVisitLabel field (bad17a95-1152-443c-b2ee-8c5c8c295d91).
-            */
-            enquireFormReasonVisitLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormReasonVisitPlaceholder field (d6065e3c-cee5-45ca-8bfa-739065fe08eb).
-            */
-            enquireFormReasonVisitPlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesAppointment field (04c834bb-a6d3-4c21-a856-ffb06457afca).
-            */
-            enquireFormSectionsHeadlinesAppointment?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesContactDetails field (8efa7d38-96f1-406c-b274-02186a5a6329).
-            */
-            enquireFormSectionsHeadlinesContactDetails?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesFurtherInfo field (8cbd5846-1b05-496b-806b-15f768229c9e).
-            */
-            enquireFormSectionsHeadlinesFurtherInfo?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPatientDetails field (b69844a3-f4a2-46f2-ac10-74cefdb4bc09).
-            */
-            enquireFormSectionsHeadlinesPatientDetails?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPayment field (93e3bc48-1c39-417f-8686-2dcaf9d358cd).
-            */
-            enquireFormSectionsHeadlinesPayment?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPractice field (89d25c93-bba1-4659-beb5-a427afa2200c).
-            */
-            enquireFormSectionsHeadlinesPractice?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesPrevPatient field (826545b9-bab7-44d8-aa63-cf66547ed671).
-            */
-            enquireFormSectionsHeadlinesPrevPatient?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormSectionsHeadlinesReasonVisit field (847cb427-e77f-4bb3-9197-97e99b078f02).
-            */
-            enquireFormSectionsHeadlinesReasonVisit?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTermsErrors field (73df05a2-ccc5-4e6f-96aa-2f372b524649).
-            */
-            enquireFormTermsErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormTermsIsRequired field (dcb8d290-e355-4dec-a801-8bf0b24b613a).
-            */
-            enquireFormTermsIsRequired?: {
-                jsonValue: Field<boolean>
-            };
-
-            /**
-            * Represents the EnquireFormTermsLabel field (486bc61f-cceb-4066-a284-c06d7e0ad79b).
-            */
-            enquireFormTermsLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTermsPlaceholder field (bc811f5d-ea50-44f3-805e-6de6becebcb3).
-            */
-            enquireFormTermsPlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTimeErrors field (d0caef17-4207-4496-914a-8e20f5663cfe).
-            */
-            enquireFormTimeErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormTimeIsRequired field (f635b45d-2d83-48aa-8ae9-8a33640516f4).
-            */
-            enquireFormTimeIsRequired?: {
-                jsonValue: Field<boolean>
-            };
-
-            /**
-            * Represents the EnquireFormTimeLabel field (417b94ac-2e72-4d72-b6af-732a8c241cee).
-            */
-            enquireFormTimeLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTimeOptions field (248b089b-d141-441a-ab5c-77cae6b902c6).
-            */
-            enquireFormTimeOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormTimePlaceholder field (e8f720b9-dc8e-4f32-afab-85ff028f0da0).
-            */
-            enquireFormTimePlaceholder?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTitleErrors field (7e081293-1278-4004-98c5-e10040928b51).
-            */
-            enquireFormTitleErrors?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormTitleIsRequired field (0deed21d-b0b9-462c-a7b7-01a4f6d50bce).
-            */
-            enquireFormTitleIsRequired?: {
-                jsonValue: Field<boolean>
-            };
-
-            /**
-            * Represents the EnquireFormTitleLabel field (82fe20f8-9c7e-4743-8d60-9c4e882e6d41).
-            */
-            enquireFormTitleLabel?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the EnquireFormTitleOptions field (65cd60d3-d88a-419a-b677-bfb17069f6b9).
-            */
-            enquireFormTitleOptions?: {
-                jsonValue: Item[]
-            };
-
-            /**
-            * Represents the EnquireFormTitlePlaceholder field (e973eafa-f5c3-4950-93d7-37ccffb5e1cd).
-            */
-            enquireFormTitlePlaceholder?: {
-                jsonValue: Field<string>
             };
 
 
@@ -10783,7 +11259,7 @@ export namespace Foundation {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContent =  {
+    export type MoreInformationModalContent = Foundation.Ctabase &  {
         fields?: { 
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
@@ -10801,7 +11277,7 @@ export namespace Foundation {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContentJson =  {
+    export type MoreInformationModalContentJson = Foundation.CtabaseJson &  {
         
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
@@ -16344,7 +16820,7 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Heading
     */
     export type TextBlockHeading = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ContainerizedParameters &  {
         fields?: {         }
 
     }
@@ -16353,7 +16829,7 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Heading
     */
     export type TextBlockHeadingJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ContainerizedParametersJson &  {
         
 
     }
@@ -16842,7 +17318,8 @@ export namespace PageContent.RenderingParameters {
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Video Player
     */
     export type VideoPlayer = Foundation.RenderingParameters.HeadingParameters & 
-Foundation.RenderingParameters.ThemesParameters &  {
+Foundation.RenderingParameters.ThemesParameters & 
+Foundation.RenderingParameters.ContainerizedParameters &  {
         fields?: {         }
 
     }
@@ -16851,7 +17328,8 @@ Foundation.RenderingParameters.ThemesParameters &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Video Player
     */
     export type VideoPlayerJson = Foundation.RenderingParameters.HeadingParametersJson & 
-Foundation.RenderingParameters.ThemesParametersJson &  {
+Foundation.RenderingParameters.ThemesParametersJson & 
+Foundation.RenderingParameters.ContainerizedParametersJson &  {
         
 
     }

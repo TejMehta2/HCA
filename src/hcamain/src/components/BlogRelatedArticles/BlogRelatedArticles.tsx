@@ -8,24 +8,23 @@ import {
   useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-//import { ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Tags from '@component-library/core-components/Tags/Tags';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
-import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import JssTextWithEntityName from '../../jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import {
   BlogRelatedArticlesProps,
   BlogRelatedArticlesResult,
   StaticProps,
 } from './BlogRelatedArticles.types';
-import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/articles`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
+const SEARCH_PATH = '/search';
 
 const BlogRelatedArticlesDefaultComponent = (
   props: BlogRelatedArticlesProps
@@ -59,34 +58,39 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
-      (card, index) => (
-        <CardBlog key={index}>
-          <JssImage field={card.abstractImage?.jsonValue} />
-          <JssDate field={card.date?.jsonValue} />
-          {card.abstractTitle && (
-            <Text
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              variation="heading-2"
-            >
-              <a href={card.url?.path}>
-                <JssText field={card.abstractTitle} />
-              </a>
-            </Text>
-          )}
-          <Text tag="span" variation="body-large">
-            <JssRichText field={card.abstractText} />
-          </Text>
-          {!!card.articleType && (
-            <Tags>
-              <a
-                href={`${baseBlogUrl}?${queryString}=${card.articleType?.targetItem?.id}`}
+      (card, index) => {
+        const formattedArticleId =
+          card.articleType?.targetItem?.id &&
+          card.articleType?.targetItem?.id
+            .replaceAll(/[{},\-]/g, '')
+            .toLowerCase();
+        return (
+          <CardBlog key={index}>
+            <JssImage field={card.abstractImage?.jsonValue} />
+            <JssDate field={card.date?.jsonValue} />
+            {card.abstractTitle && (
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                variation="heading-2"
               >
-                <JssText field={card.articleType?.targetItem?.title} />
-              </a>
-            </Tags>
-          )}
-        </CardBlog>
-      )
+                <a href={card.url?.path}>
+                  <JssText field={card.abstractTitle} />
+                </a>
+              </Text>
+            )}
+            <Text tag="span" variation="body-large">
+              <JssRichText field={card.abstractText} />
+            </Text>
+            {!!card.articleType && (
+              <Tags>
+                <a href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}>
+                  <JssText field={card.articleType?.targetItem?.title} />
+                </a>
+              </Tags>
+            )}
+          </CardBlog>
+        );
+      }
     );
   } else if (blogRelatedArticles) {
     cardsList = blogRelatedArticles.map(
@@ -95,7 +99,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         index
       ) => (
         <CardBlog key={index}>
-          <Image src={imageUrl} alt={name} width="643" height="605" />
+          <img src={imageUrl} alt={name} width="643" height="605" />
           <time>{formatDate(new Date(date))}</time>
           {title && (
             <Text
@@ -118,6 +122,11 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       )
     );
   }
+
+  const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
+
   return (
     <CarouselCards
       title={
@@ -133,9 +142,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       link={
         !isExperienceEditor ? (
           <Button size={'large'} variation={'full'}>
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+            <a href={viewAllCta}>
               {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <>
                   <JssRichText
@@ -172,10 +179,12 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   // Format props into entries, then query params
   const customFilters =
-    (fields?.filterOptions?.filterOptionsList &&
-      fields?.filterOptions?.filterOptionsList.map((item) => [
+    (fields?.filterBy?.FilterByList &&
+      fields?.filterBy?.FilterByList.map((item) => [
         item.filter?.value,
-        item.filterValueGuid?.targetItem?.id,
+        item.filterValueGuid?.targetItem?.id
+          .replaceAll(/[{},\-]/g, '')
+          .toLowerCase(),
       ])) ||
     [];
 
@@ -199,7 +208,7 @@ export const getStaticProps: GetStaticComponentProps = async (
         ]); // clean up bad ID characters
 
   const params = [
-    ['verticalKey', 'patientstories'],
+    ['verticalKey', 'articles'],
     ...customFilters,
     ...contextSearchParams,
     ...contextSearchIdParams,
@@ -215,7 +224,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   const ctaQuery = `?${ctaParams.join('&')}`;
 
   try {
-    const url = new URL(query, `${BASE_URL}/search`);
+    const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`);
 
     const response = await fetch(url.href);
     if (response.ok) {
