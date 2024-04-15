@@ -1,0 +1,33 @@
+﻿---
+ID: "5822f008-be1b-4e95-b6a5-bd76e9c8e0a0"
+Parent: "d441fb3b-416e-48d5-8ff7-d02ab9e6e4f6"
+Template: "d441fb3b-416e-48d5-8ff7-d02ab9e6e4f6"
+Path: /sitecore/templates/Project/HCA/Page Content/Patient Stories Cards Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {1196A43B-003D-4CC8-B120-2014DE3B73F5}
+    {D441FB3B-416E-48D5-8FF7-D02AB9E6E4F6}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "895c2850-a89e-4d9e-8b65-d1494e6a150d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240404T202747Z

@@ -96,7 +96,11 @@ export const Default = (props: ModalContentProps): JSX.Element => {
         cta1={
           <>
             {props.fields?.PrimaryCTA?.value?.text && (
-              <Button size={'large'} variation={'full'}>
+              <Button
+                size={'large'}
+                contentVariation={'full-width'}
+                variation={'full'}
+              >
                 <JssLink field={props.fields?.PrimaryCTA}>
                   <span
                     dangerouslySetInnerHTML={{

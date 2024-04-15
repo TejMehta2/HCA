@@ -98,7 +98,8 @@
   .sticky-track {
     position: absolute;
     top: $spacing-10;
-    height: px-to-rem(3000);
+    height: 100%;
+    padding-bottom: $spacing-10;
   }
 
   .sticky {

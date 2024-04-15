@@ -7,6 +7,7 @@ import Text from '../../foundation/Text/Text';
 const LoaderCF = (props: LoaderCFProps): JSX.Element => {
   return (
     <div className={styles.loader}>
+      <Loader theme={'dark'} />
       {props.loadingMsg && (
         <div className={styles.text}>
           <Text tag="p" variation="body-medium-medium">
@@ -14,7 +15,6 @@ const LoaderCF = (props: LoaderCFProps): JSX.Element => {
           </Text>
         </div>
       )}
-      <Loader theme={'dark'} />
     </div>
   );
 };

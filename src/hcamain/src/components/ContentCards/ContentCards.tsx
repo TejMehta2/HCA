@@ -13,6 +13,7 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
+import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface PagesFields {
   title?: Field<string>;
@@ -40,13 +41,22 @@ type ContentCardsProps = {
 
 const ContentCardsDefaultComponent = (
   props: ContentCardsProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Content Cards no datasource</span>
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Content Cards. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 interface WithImageProps extends ContentCardsProps {
   showImage: boolean;
@@ -59,7 +69,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   }
 
   const columns: CardBlockProps['variation'] =
-    props.params?.Columns === 4 ? '4-columns' : '3-columns';
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
 
   return (
     <CardBlock

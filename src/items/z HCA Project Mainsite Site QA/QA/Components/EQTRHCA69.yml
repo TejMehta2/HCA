@@ -50,7 +50,11 @@ Languages:
       Value: Description of Treatment Page
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cf6a89e4-7118-4b59-be6c-cef986d53ea8"
+      Value: "727f41cd-c1bf-4020-a814-602591452ecb"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{1AD30377-BAF6-4FB0-8687-9B14B5285DD4}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -60,7 +64,11 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T124211Z
+      Value: 20240321T102246Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA69
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{1AD30377-BAF6-4FB0-8687-9B14B5285DD4}" />

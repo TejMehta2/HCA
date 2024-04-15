@@ -40,7 +40,7 @@ const HeaderLocation = (props: HeaderLocationProps): JSX.Element => {
             </div>
 
             <div className={styles['cta-wrapper']}>
-              <div className={styles.ctas}>{ctas}</div>
+              {ctas && <div className={styles.ctas}>{ctas}</div>}
               {cqc && <div className={styles.cqc}>{cqc}</div>}
             </div>
           </div>

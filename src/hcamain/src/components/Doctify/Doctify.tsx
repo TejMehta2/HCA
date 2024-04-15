@@ -19,9 +19,29 @@ const DoctifyDefaultComponent = (props: DoctifyProps): JSX.Element => (
 export const Default = (props: DoctifyProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <DoctifyDefaultComponent {...props} />;
   }
+
+  const doctifyLink = props.fields?.Reviews?.fields?.Link?.url ? (
+    <a href={props.fields?.Reviews?.fields?.Link.url}></a>
+  ) : (
+    props.fields?.Reviews?.fields?.Link && (
+      <JssLink field={props.fields?.Reviews?.fields?.Link}></JssLink>
+    )
+  );
+
+  const lightLogo = props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields
+    ?.Logo.fields
+    ? props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo.fields
+    : props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo;
+
+  const darkLogo = props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo
+    .fields
+    ? props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo.fields
+    : props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo;
+
   return (
     <div
       className={`component ${props.params?.styles}`}
@@ -29,11 +49,7 @@ export const Default = (props: DoctifyProps): JSX.Element => {
     >
       <Doctify
         alignment={props.alignment}
-        link={
-          props.fields?.Reviews?.fields?.Link && (
-            <JssLink field={props.fields?.Reviews?.fields?.Link}></JssLink>
-          )
-        }
+        link={doctifyLink}
         rating={
           isExperienceEditor ? (
             <JssText field={props.fields?.Reviews?.fields?.Stars} />
@@ -43,24 +59,8 @@ export const Default = (props: DoctifyProps): JSX.Element => {
         }
         reviews={<JssText field={props.fields?.Reviews?.fields?.Reviews} />}
         logo={{
-          dark: (
-            <JssImage
-              field={
-                props.fields?.Reviews?.fields?.DoctifyLogoDark?.fields?.Logo
-              }
-              width="83"
-              height="21"
-            />
-          ),
-          light: (
-            <JssImage
-              field={
-                props.fields?.Reviews?.fields?.DoctifyLogoLight?.fields?.Logo
-              }
-              width="83"
-              height="21"
-            />
-          ),
+          dark: <JssImage field={darkLogo} width="83" height="21" />,
+          light: <JssImage field={lightLogo} width="83" height="21" />,
         }}
       ></Doctify>
     </div>

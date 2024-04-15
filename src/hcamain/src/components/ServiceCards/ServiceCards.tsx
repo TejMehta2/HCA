@@ -50,13 +50,22 @@ type ServiceCardsProps = {
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Homepage Service Cards</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Service Cards. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -69,20 +78,21 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <ServiceCards
       title={
-        <Text
-          variation={props.params?.HeadingSize || 'display-2'}
-          tag={props.params?.HeadingTag || 'h2'}
-        >
-          <JssText field={props.fields?.Title} />
-        </Text>
+        (props.fields.Title?.value || isExperienceEditor) && (
+          <Text
+            tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+            variation={props.params?.HeadingSize || 'display-2'}
+          >
+            <JssText field={props.fields?.Title} />
+          </Text>
+        )
       }
       subtitle={
-        <Text
-          variation="subheading-1"
-          tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-        >
-          <JssText field={props.fields?.Heading} />
-        </Text>
+        (props.fields.Heading?.value || isExperienceEditor) && (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        )
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={

@@ -6,11 +6,16 @@
 }
 
 .toggle {
+  &,
+  > * {
+    height: 100%;
+  }
+
   button {
     width: 100%;
     justify-content: center;
 
-    @include media(screen-m) {
+    @include media(screen-l) {
       width: max-content;
       justify-content: unset;
     }

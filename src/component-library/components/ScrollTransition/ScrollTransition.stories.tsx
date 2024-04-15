@@ -361,7 +361,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
             </CardBlog>,
           ]}
         ></CarouselCards>
-        <DiamondLine side="left" theme="H-HCA-Tangerine" />
+        <DiamondLine side="left" theme="C-HCA-Denim" />
         <ImageAndTextBlock
           theme="F-HCA-Fern"
           imageAlignment="left"

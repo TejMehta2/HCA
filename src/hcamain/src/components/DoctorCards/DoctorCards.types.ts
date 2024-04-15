@@ -1,107 +1,10 @@
 import {
-  ComponentRendering,
-  ComponentFields,
   Field,
   ImageField,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-
-export type Doctor = {
-  total?: number;
-  rows?: DoctorRow[];
-};
-
-export type DoctorRow = {
-  id?: number;
-  firstName?: string;
-  lastName?: string;
-  slug?: string;
-  images?: {
-    images?: string[];
-    original?: string;
-    logo?: string;
-  };
-  about?: string;
-  title?: string;
-  suffix?: string;
-  education?: string;
-  gender?: string;
-  videoConsultation?: boolean;
-  medicalProcedures?: string;
-  specialInterests?: string;
-  languages?: Language[];
-  registrationBodies?: RegistrationBody[];
-  keywords?: Keyword[];
-  practices?: Practice[];
-  peerRecommendationsCount?: number;
-  reviewsTotal?: number;
-  overallExperience?: number;
-  explanation?: number;
-  bedsideManner?: number;
-  averageRating?: number;
-  customFields?: {
-    about?: string;
-    rating?: number;
-    searchEnabled?: boolean;
-  };
-  yearsAsSpecialist?: string;
-  yearsOfExperience?: string;
-  distance?: number;
-  hideAppointmentRequest?: boolean;
-  patientsChildren?: boolean;
-};
-
-type Language = {
-  isoCode?: string;
-  name?: string;
-  id?: number;
-};
-
-type RegistrationBody = {
-  id?: number;
-  name?: string;
-  registrationNumber?: string;
-};
-
-type Keyword = {
-  id?: number;
-  keywordType?: string;
-  name?: string;
-  parentId?: number;
-  parentName?: string;
-  directLink?: boolean;
-};
-
-type Practice = {
-  id?: number;
-  name?: string;
-  slug?: string;
-  images?: {
-    cover?: string;
-    images?: string[];
-    logo?: string;
-  };
-  address?: {
-    id?: number;
-    geolocation?: {
-      lon?: number;
-      lat?: number;
-    };
-    googlePlaceId?: string;
-    primary?: boolean;
-    postcode?: string;
-    street1?: string;
-    street2?: string;
-    city?: string;
-    country?: string;
-    county?: string;
-  };
-  isPublicSystem?: boolean;
-  phone?: string[];
-  hasEmail?: boolean;
-  slots?: [];
-};
+import { ConsultantExtract as Consultant } from './response.types';
 
 export type FilterField = {
   displayName?: string;
@@ -115,59 +18,65 @@ export type FilterField = {
   };
 };
 
-export type ComponentFieldsDocCards = ComponentFields & {
-  NumberOfCards?: {
-    value?: string;
-  };
-  apiData?: Field<Doctor>;
-  CustomFilters?: FilterField[];
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
 };
 
-export type ComponentRenderingDocCards = ComponentRendering & {
-  componentName?: string;
-  fields?: ComponentFieldsDocCards;
-};
-
-export type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
+export type ConsultantsFields = {
+  displayName?: string;
+  doctifySlug?: { value?: string };
+  onlineBooking?: { value?: string };
 };
 
 export type PracticeFields = {
-  fields?: {
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Image?: ImageField;
-    DoctifyPractice?: Field<string>;
-  };
+  title?: { value?: string };
+  description?: { value?: string };
+  image?: { jsonValue: ImageField };
+  doctifyPractice?: { value?: string };
 };
 
 export type ServiceFields = {
-  fields?: {
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Image?: ImageField;
-    DoctifyKeywordId?: Field<string>;
-  };
+  title?: { value?: string };
+  description?: { value?: string };
+  image?: { jsonValue: ImageField };
+  doctifyKeywordId?: { value?: string };
 };
 
 export type FiltersFields = {
-  fields?: {
-    Filter?: Field<string>;
-    FilterValueString?: Field<string>;
-  };
+  filter?: { value?: string };
+  filterValueString?: { value?: string };
 };
 
 export interface Fields {
-  Title?: Field<string>;
-  NumberOfCards?: Field<string>;
-  CTACard?: LinkField;
-  CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
-  Practice?: PracticeFields[];
-  Service?: ServiceFields[];
-  CustomFilters?: FiltersFields[];
+  data?: {
+    item?: {
+      title?: { jsonValue?: Field<string> };
+      numberOfCards?: { jsonValue?: Field<string> };
+      cTACard?: { jsonValue?: LinkField };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
+      consultants?: {
+        ConsultantsList: ConsultantsFields[];
+      };
+      practice?: {
+        PracticeList: PracticeFields[];
+      };
+      service?: {
+        ServicesList: ServiceFields[];
+      };
+      customFilters?: {
+        CustomFiltersList: FiltersFields[];
+      };
+    };
+    contextItemSearchParams: {
+      [key: string]: { value?: string };
+    };
+    contextItemSearchIdParams: {
+      [key: string]: string;
+    };
+  };
 }
 
 export type DoctorCardsProps = {
@@ -176,4 +85,9 @@ export type DoctorCardsProps = {
   rendering?: {
     uid?: string;
   };
+};
+
+export type StaticProps = {
+  ctaQuery: string;
+  consultants: Consultant[];
 };
