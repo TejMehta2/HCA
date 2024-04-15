@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Item,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
