@@ -2,6 +2,8 @@ import React from 'react';
 import ModalText from './ModalText';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
+import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ModalText> = {
@@ -71,6 +73,22 @@ export const Default: StoryObj<typeof ModalText> = {
         </li>
         <li>Any costs not specified as included</li>
       </ul>
+    ),
+    cta1: (
+      <Button variation="full" size="large">
+        <a href="#">
+          <Icons iconName="iconPlus" />
+          More Information
+        </a>
+      </Button>
+    ),
+    cta2: (
+      <Button variation="full" size="large">
+        <a href="#">
+          <Icons iconName="iconPlus" />
+          More Information
+        </a>
+      </Button>
     ),
   },
 };

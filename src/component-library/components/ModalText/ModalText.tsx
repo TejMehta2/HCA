@@ -15,6 +15,8 @@ const ModalText = (
     title2,
     copy2,
     defaultOpen = false,
+    cta1,
+    cta2,
   } = props;
   return (
     <Themes theme={theme}>
@@ -24,10 +26,12 @@ const ModalText = (
             <div className={styles.panel1}>
               <div className={styles.title}>{title1}</div>
               <div className={styles.copy}>{copy1}</div>
+              {cta1 && <div className={styles.cta1}>{cta1}</div>}
             </div>
             <div className={styles.panel2}>
               <div className={styles.title}>{title2}</div>
               <div className={styles.copy}>{copy2}</div>
+              {cta2 && <div className={styles.cta2}>{cta2}</div>}
             </div>
           </div>
         </div>
