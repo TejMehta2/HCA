@@ -19,7 +19,6 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
-const SEARCH_PATH = '/search';
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -177,7 +176,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   try {
     if (isFind) {
-      const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}/find`);
+      const url = new URL(query, `${SERVER_API_URL}/find`);
       const response = await fetch(url.href);
       if (response.ok) {
         const consultants: FindResponse = await response.json();
@@ -203,7 +202,7 @@ export const getStaticProps: GetStaticComponentProps = async (
         };
       }
     } else {
-      const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}/search`);
+      const url = new URL(query, `${SERVER_API_URL}/search`);
       const response = await fetch(url.href);
       if (response.ok) {
         type JsonSerialized<T> = string & {
