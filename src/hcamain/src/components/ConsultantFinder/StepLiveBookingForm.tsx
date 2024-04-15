@@ -28,6 +28,7 @@ import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Tex
 import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
+import Checkbox from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
 import axios from 'axios';
 
 interface Fields {
@@ -72,6 +73,12 @@ interface Fields {
   LiveBookingFormCountryLabel: Field<string>;
   LiveBookingFormCountryPlaceholder: Field<string>;
   LiveBookingFormInsuranceLabel: Field<string>;
+  LiveBookingFormRepresentativeHeadline: Field<string>;
+  LiveBookingFormMarketingPreferencesFieldsEmailLabel: Field<string>;
+  LiveBookingFormMarketingPreferencesFieldsPhoneLabel: Field<string>;
+  LiveBookingFormMarketingPreferencesFieldsPostLabel: Field<string>;
+  LiveBookingFormMarketingPreferencesFieldsSmsLabel: Field<string>;
+  LiveBookingFormRepresentativeContactDetailsLabel: Field<string>;
 }
 
 type StepProps = {
@@ -120,6 +127,11 @@ export const Default = (props: StepProps): JSX.Element => {
       postcode: z.string().trim().min(1, { message: 'Required' }),
       towncity: z.string().trim().min(1, { message: 'Required' }),
       country: z.string().trim().min(1, { message: 'Required' }),
+      contactDetails: z.string().optional(),
+      marketingPreferenceEmail: z.string().optional(),
+      marketingPreferencePhone: z.string().optional(),
+      marketingPreferenceSMS: z.string().optional(),
+      marketingPreferencePost: z.string().optional(),
     })
     .refine(
       // refine helps to do more complex logic to validation like conditional validation
@@ -197,6 +209,11 @@ export const Default = (props: StepProps): JSX.Element => {
       postcode: '',
       towncity: '',
       country: '',
+      contactDetails: 'false',
+      marketingPreferenceEmail: 'false',
+      marketingPreferencePhone: 'false',
+      marketingPreferenceSMS: 'false',
+      marketingPreferencePost: 'false',
     },
     resolver: zodResolver(schema),
   });
@@ -698,6 +715,73 @@ export const Default = (props: StepProps): JSX.Element => {
                       setValue={setValue}
                       isError={errors?.country ? true : false}
                       errorMessage={errors?.country?.message}
+                    />
+                    {/* Additional details */}
+                    <Text tag="h2" variation="heading-1">
+                      {props?.fields?.LiveBookingFormRepresentativeHeadline
+                        ?.value || 'Additional details'}
+                    </Text>
+                    <Checkbox
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormRepresentativeContactDetailsLabel
+                          ?.value || ''
+                      }
+                      name={'contactDetails'}
+                      id={'contactDetails'}
+                      value={'true'}
+                      register={register}
+                    />
+                    {watchFormChanges.contactDetails && <div>Yes</div>}
+
+                    {/* Marketing preferences */}
+                    <Checkbox
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                          ?.value || ''
+                      }
+                      name={'marketingPreferenceEmail'}
+                      id={'marketingPreferenceEmail'}
+                      value={'true'}
+                      register={register}
+                      setValue={setValue}
+                    />
+                    <Checkbox
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                          ?.value || ''
+                      }
+                      name={'marketingPreferencePhone'}
+                      id={'marketingPreferencePhone'}
+                      value={'true'}
+                      register={register}
+                      setValue={setValue}
+                    />
+                    <Checkbox
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                          ?.value || ''
+                      }
+                      name={'marketingPreferenceSMS'}
+                      id={'marketingPreferenceSMS'}
+                      value={'true'}
+                      register={register}
+                      setValue={setValue}
+                    />
+                    <Checkbox
+                      label={
+                        props?.fields
+                          ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                          ?.value || ''
+                      }
+                      name={'marketingPreferencePost'}
+                      id={'marketingPreferencePost'}
+                      value={'true'}
+                      register={register}
+                      setValue={setValue}
                     />
                     <Button size={'small'} variation={'full-dark'}>
                       <button disabled={!isDirty || isSubmitting} type="submit">
