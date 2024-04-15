@@ -8,7 +8,6 @@ import {
   useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-//import { ApiSearchProps } from 'src/types/searchProps';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
@@ -21,7 +20,6 @@ import {
   BlogRelatedArticlesResult,
   StaticProps,
 } from './BlogRelatedArticles.types';
-import Image from 'next/image';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 
@@ -101,7 +99,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         index
       ) => (
         <CardBlog key={index}>
-          <Image src={imageUrl} alt={name} width="643" height="605" />
+          <img src={imageUrl} alt={name} width="643" height="605" />
           <time>{formatDate(new Date(date))}</time>
           {title && (
             <Text
