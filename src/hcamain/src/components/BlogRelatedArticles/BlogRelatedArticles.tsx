@@ -41,14 +41,25 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
-  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const blogRelatedArticles = data?.BlogRelatedArticles?.slice(
-    0,
-    Number(quantity) || 3
-  );
+  const quantity =
+    Number(props?.fields?.data?.item?.numberOfCards?.jsonValue?.value) || 3;
+
   const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
   const queryString = 'serviceLineId';
+  const context = useSitecoreContext();
+  const currentArticleId = context.sitecoreContext?.route?.itemId?.toString();
+  const formattedCurrentArticleId =
+    currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
+
+  const relatedArticlesDisplayed = data?.BlogRelatedArticles?.reduce(
+    (acc, curr) => {
+      if (acc?.length >= quantity || curr?.pageId === formattedCurrentArticleId)
+        return acc;
+      return [...acc, curr];
+    },
+    []
+  );
 
   if (!fields) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
@@ -92,8 +103,8 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         );
       }
     );
-  } else if (blogRelatedArticles) {
-    cardsList = blogRelatedArticles.map(
+  } else if (relatedArticlesDisplayed) {
+    cardsList = relatedArticlesDisplayed.map(
       (
         { imageUrl, name, date, url, title, description, typeName, typeId },
         index
