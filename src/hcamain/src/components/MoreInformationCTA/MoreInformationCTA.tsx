@@ -123,9 +123,9 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
           <JssRichText field={props.fields?.ModalContent[1]?.fields?.Text} />
         }
         cta1={
-          <Button variation="full" size="large">
-            {!isExperienceEditor
-              ? props?.fields?.ModalContent[0]?.fields?.CTALink && (
+          !isExperienceEditor
+            ? props?.fields?.ModalContent[0]?.fields?.CTALink && (
+                <Button variation="full" size="large">
                   <a
                     href={
                       props?.fields?.ModalContent[0]?.fields?.CTALink.value.href
@@ -154,21 +154,22 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
                       </>
                     )}
                   </a>
-                )
-              : props?.fields?.ModalContent[0]?.fields?.CTALink?.value && (
+                </Button>
+              )
+            : props?.fields?.ModalContent[0]?.fields?.CTALink?.value && (
+                <Button variation="full" size="large">
                   <JssLink
                     field={
                       props?.fields?.ModalContent[0]?.fields?.CTALink?.value
                     }
                   ></JssLink>
-                )}
-          </Button>
+                </Button>
+              )
         }
         cta2={
-          <Button variation="full" size="large">
-            {!isExperienceEditor
-              ? props?.fields?.ModalContent[1]?.fields?.CTALink?.value
-                  ?.href && (
+          !isExperienceEditor
+            ? props?.fields?.ModalContent[1]?.fields?.CTALink?.value?.href && (
+                <Button variation="full" size="large">
                   <a
                     href={
                       props?.fields?.ModalContent[1]?.fields?.CTALink.value.href
@@ -197,15 +198,17 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
                       </>
                     )}
                   </a>
-                )
-              : props?.fields?.ModalContent[1]?.fields?.CTALink?.value && (
+                </Button>
+              )
+            : props?.fields?.ModalContent[1]?.fields?.CTALink?.value && (
+                <Button variation="full" size="large">
                   <JssLink
                     field={
                       props?.fields?.ModalContent[1]?.fields?.CTALink?.value
                     }
                   ></JssLink>
-                )}
-          </Button>
+                </Button>
+              )
         }
       />
     </>
