@@ -139,6 +139,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   const isExperienceEditor = sitecoreContext?.pageEditing;
 
   const patientStoriesCards = data && returnCards(props, data, false);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -189,9 +193,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       cta={
         !isExperienceEditor ? (
           props.fields?.data?.item?.cTALink?.jsonValue.value && (
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+            <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -231,6 +233,10 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const patientStoriesCards = data && returnCards(props, data, false);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -249,9 +255,7 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
       link={
         !isExperienceEditor ? (
           props.fields?.data?.item?.cTALink?.jsonValue.value && (
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+            <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -293,6 +297,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const patientStoriesCards = data && returnCards(props, data, true);
+  const viewAllCta = props?.fields?.data?.item?.patientStories
+    ?.PatientStoriesList?.length
+    ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
+    : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   if (!props.fields) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
@@ -304,9 +312,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       link={
         !isExperienceEditor ? (
           props.fields?.data?.item?.cTALink?.jsonValue.value ? (
-            <a
-              href={`${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`}
-            >
+            <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
                   dangerouslySetInnerHTML={{
