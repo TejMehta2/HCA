@@ -284,7 +284,7 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
   return (
@@ -360,7 +360,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
