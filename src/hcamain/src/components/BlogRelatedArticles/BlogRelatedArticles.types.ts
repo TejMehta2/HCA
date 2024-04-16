@@ -49,7 +49,7 @@ export interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
       articles?: {
         ArticlesList?: BlogPageFields[];
       };

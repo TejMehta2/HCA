@@ -192,7 +192,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+          { viewAllCta } && (
             <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
@@ -217,7 +217,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           )
         ) : (
           <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            field={props.fields?.data?.item?.cTALink?.jsonValue}
           ></JssLink>
         )
       }
