@@ -18,6 +18,7 @@ import { Default as Doctify } from '../Doctify/Doctify';
 import { Default as CQCRating } from '../CQCRating/CQCRating';
 import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
 import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
   fields?: {
@@ -85,11 +86,16 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       {isExperienceEditor ? (
         <></>
       ) : (
-        <RichText
-          field={{
-            value: props.fields?.CTALink?.value?.text,
-          }}
-        />
+        <>
+          <SitecoreSvg>
+            {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+          </SitecoreSvg>
+          <RichText
+            field={{
+              value: props.fields?.CTALink?.value?.text,
+            }}
+          />
+        </>
       )}
     </JSSLink>
   );
