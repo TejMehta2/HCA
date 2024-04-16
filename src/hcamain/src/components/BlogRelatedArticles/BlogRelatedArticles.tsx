@@ -37,7 +37,6 @@ const BlogRelatedArticlesDefaultComponent = (
 );
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
-  const { fields } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
@@ -61,7 +60,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     []
   );
 
-  if (!fields) {
+  if (!props.fields?.data?.item) {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
@@ -152,7 +151,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value?.href ? (
+          viewAllCta ? (
             <Button size={'large'} variation={'full'}>
               <a href={viewAllCta}>
                 <>
@@ -170,11 +169,9 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             <></>
           )
         ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
-            <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-            ></JssLink>
-          )
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue}
+          ></JssLink>
         )
       }
       theme={props.params?.Theme || 'A-HCA-White'}
