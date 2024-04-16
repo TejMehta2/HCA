@@ -193,7 +193,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             (props.fields?.data?.item?.title?.jsonValue ||
               isExperienceEditor) && (
               <Text
-                variation={props.params?.HeadingSize || 'heading-1'}
+                variation={props.params?.HeadingSize || 'display-1'}
                 tag={props.params?.HeadingTag || 'h2'}
               >
                 <JssText
