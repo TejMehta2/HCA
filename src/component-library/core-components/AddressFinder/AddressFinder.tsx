@@ -13,6 +13,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<addressResult[]>([]);
+  const [showResults, setShowResults] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedAddress, setSelectedAddress] = useState({
     line1: '',
@@ -26,8 +27,9 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   useEffect(() => {
     if (addressResults) {
       setResults(addressResults);
+      setShowResults(true);
     }
-  }, [searchTerm]);
+  }, [searchTerm, addressResults]);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const clearInput = () => {
@@ -64,8 +66,10 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       country: country,
       postcode: postcode,
     });
-
     setShowSelectedAddress(true);
+    setShowResults(false);
+    if (!inputRef.current) return;
+    inputRef.current.value = `${line1}, ${line2}, ${city}, ${country}, ${postcode}`;
   };
 
   return (
@@ -96,7 +100,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         </TextButton>
       </div>
       {helpText && <div>{helpText}</div>}
-      {!!results?.length && (
+      {!!results?.length && showResults && (
         <div className={styles.results}>
           <ul>
             {results.map((result, index) => {
