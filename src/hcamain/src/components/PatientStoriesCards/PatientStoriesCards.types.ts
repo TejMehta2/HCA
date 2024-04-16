@@ -82,6 +82,7 @@ export type patientStories = {
   description: string;
   imageUrl: string;
   url: string;
+  pageId: string;
 };
 
 export type StaticProps = {

@@ -9,6 +9,7 @@ import {
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
+  patientStories as PatientStory,
   PatientStoriesCardsProps,
   patientStoriesResult,
   StaticProps,
@@ -46,11 +47,9 @@ const PatientStoriesCardsDefaultComponent = (
 
 const returnCards = (
   props: PatientStoriesCardsProps,
-  data: StaticProps,
+  patientStories: PatientStory[],
   isSlider: boolean
 ) => {
-  const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
-  const patientStories = data?.patientStories?.slice(0, Number(quantity) || 3);
   let cards;
 
   if (
@@ -129,6 +128,28 @@ const returnCards = (
   return cards;
 };
 
+//  remove the current story
+const returnFilteredCards = (
+  props: PatientStoriesCardsProps,
+  data?: StaticProps,
+  currentStoryId?: string
+) => {
+  const quantity = Number(
+    props?.fields?.data?.item?.numberOfCards?.jsonValue?.value
+  );
+
+  const formattedCurrentStoryId =
+    currentStoryId && currentStoryId.replace(/[-{}]/g, '').toLowerCase();
+
+  const patientStoriesDisplayed = data?.patientStories?.reduce((acc, curr) => {
+    if (acc?.length >= quantity || curr?.pageId === formattedCurrentStoryId)
+      return acc;
+    return [...acc, curr];
+  }, []);
+
+  return patientStoriesDisplayed;
+};
+
 export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === '4' ? '4-columns' : '3-columns';
@@ -138,7 +159,19 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
 
-  const patientStoriesCards = data && returnCards(props, data, false);
+  const context = useSitecoreContext();
+  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+
+  const patientStoriesCardsFiltered = returnFilteredCards(
+    props,
+    data,
+    currentStoryId
+  );
+
+  const patientStoriesCards =
+    patientStoriesCardsFiltered &&
+    returnCards(props, patientStoriesCardsFiltered, false);
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
@@ -232,7 +265,20 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
-  const patientStoriesCards = data && returnCards(props, data, false);
+
+  const context = useSitecoreContext();
+  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+
+  const patientStoriesCardsFiltered = returnFilteredCards(
+    props,
+    data,
+    currentStoryId
+  );
+
+  const patientStoriesCards =
+    patientStoriesCardsFiltered &&
+    returnCards(props, patientStoriesCardsFiltered, false);
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
@@ -296,7 +342,19 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
-  const patientStoriesCards = data && returnCards(props, data, true);
+
+  const context = useSitecoreContext();
+  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  const patientStoriesCardsFiltered = returnFilteredCards(
+    props,
+    data,
+    currentStoryId
+  );
+
+  const patientStoriesCards =
+    patientStoriesCardsFiltered &&
+    returnCards(props, patientStoriesCardsFiltered, true);
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
