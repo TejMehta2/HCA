@@ -88,7 +88,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   return (
     <Head>
-<meta name="twitter:card" content={TwitterCard?.value?.value} />
+      <meta name="twitter:card" content={TwitterCard?.value?.value} />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
@@ -97,7 +97,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
       <meta name="description" content={description} />
       <meta name="robots" content={`${follow}, ${index}`} />
       <meta name="title" content={title} />
-      <meta name="pageTitle" content={Title?.value} />      
+      <meta name="pageTitle" content={Title?.value} />
       <meta name="pageText" content={Text?.value} />
       <meta name="pageImage" content={Image?.value?.src} />
       <meta name="pageId" content={PageId} />
