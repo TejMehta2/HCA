@@ -1,5 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../core-components/TextField/TextField.module.scss';
 
 .wrapper {
   position: relative;
@@ -97,6 +98,7 @@
 
 .selected-address {
   margin-top: px-to-rem(57);
+  color: var(--text);
 }
 
 .selected-controls {
@@ -107,9 +109,16 @@
 
 .selected-fields {
   margin-top: $spacing-4;
+
   @include apply-body-medium-large;
 }
 
 .manual-fields {
   margin-top: px-to-rem(100);
+  display: grid;
+  gap: $spacing-5 0;
+
+  input {
+    @extend %input-field;
+  }
 }

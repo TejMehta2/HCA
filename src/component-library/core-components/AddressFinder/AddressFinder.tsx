@@ -1,57 +1,39 @@
-import React, { useState, ChangeEvent } from 'react';
-import { AddressFinderProps } from './AddressFinder.types';
+import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
+import { AddressFinderProps, addressResult } from './AddressFinder.types';
 import styles from './AddressFinder.module.scss';
 import TextButton from '../TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import Text from '../../foundation/Text/Text';
-import TextField from '../TextField/TextField';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
-  const { helpText } = props;
-
-  const mockTestAddress = {
-    line1: '123 Test Street',
-    line2: '',
-    city: 'London',
-    country: 'United Kingdom',
-    postcode: 'SE1 1AB',
-  };
-
-  const mockResults = [
-    {
-      line1: '1 Test Street',
-      line2: 'Somewhere',
-      city: 'London',
-      country: 'UK',
-      postcode: 'SE1 1AB',
-      id: '1',
-    },
-    {
-      line1: '2 Test Street',
-      line2: 'Somewhere',
-      city: 'London',
-      country: 'UK',
-      postcode: 'SE1 1AB',
-      id: '2',
-    },
-    {
-      line1: '3 Test Street',
-      line2: '',
-      city: 'London',
-      country: 'UK',
-      postcode: 'SE1 1AB',
-      id: '3',
-    },
-  ];
+  const { helpText, addressResults } = props;
 
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState({});
-  const [searchTerm, setSearchTerm] = useState('.');
-  const [selectedAddress, setSelectedAddress] = useState(mockTestAddress);
+  const [results, setResults] = useState<addressResult[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState({
+    line1: '',
+    line2: '',
+    city: '',
+    postcode: '',
+    country: '',
+  });
   const [showSelectedAddress, setShowSelectedAddress] = useState(false);
+
+  useEffect(() => {
+    if (addressResults) {
+      setResults(addressResults);
+    }
+  }, [searchTerm]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const clearInput = () => {
+    if (!inputRef.current) return;
+    inputRef.current.value = '';
+  };
 
   const showManualFields = () => {
     setManualFieldsVisible(true);
@@ -69,12 +51,11 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setResults(mockResults);
-
     setSearchTerm(e.target.value);
+    setResults(results);
   };
 
-  const selectResult = (result) => {
+  const selectResult = (result: addressResult) => {
     const { line1, line2, city, country, postcode } = result;
     setSelectedAddress({
       line1: line1,
@@ -89,11 +70,23 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <SearchBar
+      <div className={styles['search-wrapper']}>
+        <input
+          type="text"
+          className={styles.search}
+          placeholder="Start typing your address..."
+          onChange={handleTextChange}
+          ref={inputRef}
+        />
+        <span className={styles.cross} onClick={clearInput}>
+          <Icons iconName="iconCross" />
+        </span>
+      </div>
+      {/* <SearchBar
         placeholder="Start typing your address..."
         handleInputChange={handleTextChange}
         searchValue={searchTerm}
-      />
+      /> */}
 
       <div className={styles['manual-button']}>
         <TextButton theme="dark">
@@ -103,13 +96,13 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         </TextButton>
       </div>
       {helpText && <div>{helpText}</div>}
-      {results && results.length && (
+      {!!results?.length && (
         <div className={styles.results}>
           <ul>
-            {results.map((result) => {
+            {results.map((result, index) => {
               const { line1, line2, city, country, postcode } = result;
               return (
-                <li key={result.id}>
+                <li key={index}>
                   <button onClick={() => selectResult(result)}>
                     <Icons iconName="iconPin"></Icons>
                     {line1}, {line2 && `${line2},`} {city}, {country},{' '}
@@ -131,7 +124,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
         </div>
       )}
 
-      {showSelectedAddress && (
+      {showSelectedAddress && selectedAddress && (
         <div className={styles['selected-address']}>
           <Text variation="body-medium-extra-large">Your Address</Text>
 
@@ -157,30 +150,60 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
       {manualFieldsVisible && (
         <div className={styles['manual-fields']}>
-          <TextField
+          <label htmlFor="address-1">Address Line 1</label>
+          <input
             id="address-1"
-            label="Address Line 1"
             required={true}
-            errorMessage="Please fill in the first line of your address"
+            onChange={(e) =>
+              setSelectedAddress({ ...selectedAddress, line1: e.target.value })
+            }
+            value={selectedAddress.line1}
           />
-          <TextField id="address-2" label="Address Line 2" />
-          <TextField
+
+          <label htmlFor="line2">Address Line 2</label>
+          <input
+            id="line2"
+            required={true}
+            onChange={(e) =>
+              setSelectedAddress({ ...selectedAddress, line2: e.target.value })
+            }
+            value={selectedAddress.line2}
+          />
+
+          <label htmlFor="city">City</label>
+          <input
             id="city"
-            label="City"
             required={true}
-            errorMessage="Please fill in the city"
+            onChange={(e) =>
+              setSelectedAddress({ ...selectedAddress, city: e.target.value })
+            }
+            value={selectedAddress.city}
           />
-          <TextField
+
+          <label htmlFor="postcode">Postcode</label>
+          <input
             id="postcode"
-            label="Postcode"
             required={true}
-            errorMessage="Please fill in the postcode"
+            onChange={(e) =>
+              setSelectedAddress({
+                ...selectedAddress,
+                postcode: e.target.value,
+              })
+            }
+            value={selectedAddress.postcode}
           />
-          <TextField
+
+          <label htmlFor="country">Country</label>
+          <input
             id="country"
-            label="Country"
             required={true}
-            errorMessage="Please fill in the country"
+            onChange={(e) =>
+              setSelectedAddress({
+                ...selectedAddress,
+                country: e.target.value,
+              })
+            }
+            value={selectedAddress.country}
           />
         </div>
       )}
