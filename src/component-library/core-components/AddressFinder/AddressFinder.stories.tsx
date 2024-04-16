@@ -26,14 +26,6 @@ const meta: Meta<typeof AddressFinder> = {
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-const mockTestAddress = {
-  line1: '123 Test Street',
-  line2: '',
-  city: 'London',
-  country: 'United Kingdom',
-  postcode: 'SE1 1AB',
-};
-
 const mockResults = [
   {
     line1: '1 Test Street',
