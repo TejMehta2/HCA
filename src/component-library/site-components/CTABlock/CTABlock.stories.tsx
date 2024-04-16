@@ -67,3 +67,35 @@ export const Default: StoryObj<typeof CTABlock> = {
     ),
   },
 };
+
+export const Wrapping: StoryObj<typeof CTABlock> = {
+  args: {
+    ...Default.args,
+    ctas: (
+      <>
+        <Button size="large" variation="full">
+          <a href="#">
+            <span>
+              Click <strong>me</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" variation="outline">
+          <a href="#">
+            <span>
+              Click{' '}
+              <strong>me me me me me me me me me me me me me me me me</strong>
+            </span>
+          </a>
+        </Button>
+        <TextButton>
+          <a href="#">
+            <span>
+              Text <strong>button</strong>
+            </span>
+          </a>
+        </TextButton>
+      </>
+    ),
+  },
+};
