@@ -260,7 +260,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
+export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
@@ -337,7 +337,9 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+export const SliderWithLeftText = (
+  props: PatientStoriesCardsProps
+): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
