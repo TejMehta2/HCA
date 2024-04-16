@@ -9,6 +9,7 @@
 .container {
   @include responsive-container;
 
+  align-items: center;
   padding: $spacing-9 0;
   display: flex;
   flex-direction: column;
@@ -26,11 +27,20 @@
   .body-text {
     margin-top: $spacing-6;
   }
+  @include media(screen-l) {
+    .text-column {
+      flex: 0 1 min(56%, px-to-rem(734));
+    }
+
+    .ctas {
+      flex: 1 0 px-to-rem(498);
+      justify-content: flex-end;
+    }
+  }
 
   .ctas {
-    flex-shrink: 0;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     gap: $spacing-5;
 
     @include media(screen-m) {
@@ -47,16 +57,6 @@
 
       @include media(screen-l) {
         width: fit-content;
-      }
-    }
-
-    /* Second button has slightly different gap compared to others */
-    & > div:nth-child(2) {
-      margin-top: calc(px-to-rem(16) * -1);
-
-      @include media(screen-m) {
-        margin-top: 0;
-        margin-left: calc(px-to-rem(16) * -1);
       }
     }
   }

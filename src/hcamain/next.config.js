@@ -58,6 +58,16 @@ const nextConfig = {
         source: '/webhooks/sitecore/:path*',
         destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
       },
+      // rewrite forms
+      {
+        source: '/api/sitecore/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+      },
+      // rewrite mail
+      {
+        source: '/referrer/mail/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+      },
     ];
   },
   webpack(config) {

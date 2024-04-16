@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text as JssText,
   Link as JssLink,
   useSitecoreContext,
   useComponentProps,
@@ -17,8 +16,9 @@ import {
   ConsultantExtract as Consultant,
 } from './response.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/consultants`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
 
 const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -50,9 +50,14 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           <SitecoreSvg>
             {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
           </SitecoreSvg>
-          <SitecoreSvg>
-            {props.fields?.data?.item?.cTALink.jsonValue.value.text}
-          </SitecoreSvg>
+
+          <JssTextWithEntityName
+            field={{
+              value:
+                props.fields?.data?.item?.cTALink.jsonValue.value.text || '',
+            }}
+            isRichText={true}
+          />
         </>
       )}
     </JssLink>
@@ -75,7 +80,9 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-3'}
         >
-          <JssText field={props.fields?.data?.item?.title?.jsonValue}></JssText>
+          <JssTextWithEntityName
+            field={props.fields?.data?.item?.title?.jsonValue}
+          />
         </Text>
       }
       cta={cta || <></>}
@@ -142,34 +149,38 @@ export const getStaticProps: GetStaticComponentProps = async (
       item.filterValueString?.value,
     ]) || [];
 
+  const practiceList =
+    fields?.practice?.PracticeList.map((item) => [
+      'practice',
+      item.doctifyPractice?.value,
+    ]) || [];
+
+  const serviceList =
+    fields?.service?.ServicesList.map((item) => [
+      'practice',
+      item.doctifyKeywordId?.value,
+    ]) || [];
+
   const contextSearchParams = Object.entries(
     rendering.fields?.data?.contextItemSearchParams || {}
   ).map(([key, nestedValue]) => [key, nestedValue?.value]);
 
   const contextSearchIdParams = Object.entries(
     rendering.fields?.data?.contextItemSearchIdParams || {}
-  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/, '').toLowerCase()]); // clean up bad ID characters
+  ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/g, '').toLowerCase()]); // clean up bad ID characters
 
-  const isFind = !!consultants?.length; // can be a '/find' or a '/search'
-
-  const params = [
-    ...(isFind ? consultants : customFilters),
-    ...contextSearchParams,
-    ...contextSearchIdParams,
-  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-
-  const query = `?${params.join('&')}`;
-
-  const ctaParams = [
-    ...customFilters,
-    ...contextSearchParams,
-    ...contextSearchIdParams,
-  ].map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+  const ctaParams = customFilters.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const ctaQuery = `?${ctaParams.join('&')}`;
 
+  // Three cases to decide how to apply params to API call and "view all" CTA
+  const hasConsultants = !!consultants?.length; // use the '/find' API with consultant slugs, only add customFilters to the CTA
+  const hasPracticeAndService = practiceList.length || serviceList.length; // add practiceList and/ore serviceList and customFilters to the API and to CTA
+  // Else use contextSearchIdParams and contextSearchParams, customFilters for the API and CTA
   try {
-    if (isFind) {
-      const url = new URL(query, `${BASE_URL}/find`);
+    if (hasConsultants) {
+      const params = consultants.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
+      const query = `?${params.join('&')}`;
+      const url = new URL(query, `${SERVER_API_URL}/find`);
       const response = await fetch(url.href);
       if (response.ok) {
         const consultants: FindResponse = await response.json();
@@ -195,16 +206,19 @@ export const getStaticProps: GetStaticComponentProps = async (
         };
       }
     } else {
-      const url = new URL(query, `${BASE_URL}/search`);
+      const paramSource = hasPracticeAndService
+        ? [...practiceList, ...serviceList]
+        : [...contextSearchParams, ...contextSearchIdParams];
+      const params = [...customFilters, ...paramSource].map(
+        (entry) => `${entry[0]}=${entry[1]}`
+      );
+      const query = `?${params.join('&')}`;
+      const url = new URL(query, `${SERVER_API_URL}/search`);
+
       const response = await fetch(url.href);
       if (response.ok) {
-        type JsonSerialized<T> = string & {
-          __json_seralized: T;
-        };
-        const serializedData: JsonSerialized<SearchResponse> =
-          await response.json();
-        const parsedData: SearchResponse = JSON.parse(serializedData);
-        const selectedData = parsedData.rows.map(
+        const data: SearchResponse = await response.json();
+        const selectedData = data.rows.map(
           ({ images, title, firstName, lastName, slug, keywords }) => ({
             images,
             title,

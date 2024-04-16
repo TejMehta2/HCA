@@ -79,6 +79,7 @@
 }
 
 .map-inner {
+  pointer-events: none;
   transition: inherit;
   position: absolute;
   top: 50%;

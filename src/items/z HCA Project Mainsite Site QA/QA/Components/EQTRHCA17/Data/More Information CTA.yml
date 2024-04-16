@@ -1,0 +1,35 @@
+﻿---
+ID: "571a14f0-df44-4a93-8d61-23469422b8a1"
+Parent: "b95d4de1-33e9-4110-aea5-59624f8e6993"
+Template: "25f98ecd-65a9-4e4d-80b5-d59f9a7c092d"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA17/Data/More Information CTA"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240403T141833Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3bb7ac90-c1d1-415b-a0aa-bbab2b842b8c"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="More &lt;b&gt;information&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d13c5304-78a3-417a-8644-fbddbba7f7b8"
+      Hint: ModalContent
+      Value: |
+        {EB2BBB97-A3DB-49C4-B47B-A49F7AD6A944}
+        {8B2CC218-9AF8-4B24-AFEB-ED03C7943885}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240409T144907Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{651ED938-03E5-46A7-A21F-DD9A829038E3}"

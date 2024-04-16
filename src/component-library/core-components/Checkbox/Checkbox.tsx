@@ -8,7 +8,6 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     name,
     id,
     value,
-    mode = 'light',
     disabled,
     indeterminate = false,
     defaultChecked,
@@ -29,18 +28,20 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <input
-        type="checkbox"
-        id={id}
-        name={name}
-        value={value}
-        disabled={disabled}
-        ref={(el) => el && (el.indeterminate = indeterminate)}
-        defaultChecked={defaultChecked}
-        onChange={onChange}
-        checked={checked}
-      />
-      <label htmlFor={id} className={[styles.label, styles[mode]].join(' ')}>
+      <div className={styles['input-wrapper']}>
+        <input
+          type="checkbox"
+          id={id}
+          name={name}
+          value={value}
+          disabled={disabled}
+          ref={(el) => el && (el.indeterminate = indeterminate)}
+          defaultChecked={defaultChecked}
+          onChange={onChange}
+          checked={checked}
+        />
+      </div>
+      <label htmlFor={id} className={styles.label}>
         <span className={styles.text}>{label}</span>
       </label>
     </div>

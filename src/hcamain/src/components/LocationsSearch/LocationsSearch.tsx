@@ -33,11 +33,12 @@ import unpackFilterOption from 'lib/unpackFilterOption';
 import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { ApiSearchProps } from 'src/types/searchProps';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}`;
-const SEARCH_PATH = '/locations/sort';
-const AUTOCOMPLETE_PATH =
-  '/locationApi/suggestLocation?provider=1&searchType=1';
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+const SEARCH_PATH = '/locations/search';
+const AUTOCOMPLETE_PATH = '/locationApi/suggestLocation';
 
 const LocationsSearchDefaultComponent = (
   props: LocationsSearchProps
@@ -49,8 +50,12 @@ const LocationsSearchDefaultComponent = (
   </div>
 );
 
-export const Default = (props: LocationsSearchProps): JSX.Element => {
-  const { fields, params } = props;
+interface WithHeaderProps extends LocationsSearchProps {
+  contentVariation: 'padding-small';
+}
+
+export const Default = (props: WithHeaderProps): JSX.Element => {
+  const { fields, params, contentVariation } = props;
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
@@ -66,20 +71,19 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<SearchResponse, Autocomplete>({
-    baseUrl: BASE_URL,
-    baselineParams: [['location', ''], ...baselineParams],
+    baseUrl: CLIENT_API_PATH,
     searchPath: SEARCH_PATH,
+    baselineParams: baselineParams,
     autocompletePath: AUTOCOMPLETE_PATH,
     autoCompleteSearchParamName: 'searchTerm',
     baselineAutocompleteParams: [
       ['provider', '1'],
       ['searchType', '1'],
     ],
-    searchFieldName: 'location',
     fallbackData,
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields) {
     return <LocationsSearchDefaultComponent {...props} />;
   }
 
@@ -88,7 +92,7 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
   const offset = Number(searchParams.get('offset')) || defaultOffset;
 
   // Computed properties
-  const resultsCount = data?.response?.locations.length || 0;
+  const resultsCount = data?.response?.resultsCount || 0;
   const rangeStart = offset + 1;
   const rangeEnd = Math.min(offset + limit, resultsCount);
   const resultsRange = `${rangeStart}-${rangeEnd}`;
@@ -119,7 +123,13 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
         <HeaderPlain
-          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          contentVariation={contentVariation}
+          heading={
+            <JssText
+              tag={params?.HeadingTag || 'h1'}
+              field={props?.fields?.Title}
+            />
+          }
           description={
             <Text tag="div" variation="body-large">
               <RichText tag="span" field={props?.fields?.Text} />
@@ -128,12 +138,14 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('location') || undefined}
-              name={'location'}
+              defaultValue={searchParams.get('input') || undefined}
+              name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
-              suggestions={autocompleteData?.map(
-                (result) => `${result.LocationName}`
-              )}
+              suggestions={
+                autocompleteError
+                  ? []
+                  : autocompleteData?.map((result) => `${result.LocationName}`)
+              }
             >
               <Filters
                 buttonText={<JssText field={fields?.FilterOptionsText} />}
@@ -196,174 +208,195 @@ export const Default = (props: LocationsSearchProps): JSX.Element => {
         </HeaderPlain>
       </Themes>
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        <SearchWrapper
-          ref={searchWrapperRef}
-          searchDetail={
-            <Text tag="h3" variation="heading-1">
-              <span>
-                <span>{resultsCount} </span>
-                <JssText field={fields?.SearchResultsText} />
-              </span>
+        {error ? (
+          <ErrorMessage>
+            <Text tag="h2" variation="display-4">
+              No location results found.
             </Text>
-          }
-          showing={
-            !!rangeEnd && (
-              <Text variation="body-medium">
-                <span>Showing {resultsRange}</span>
+            <Text tag="p" variation="body-extra-large">
+              Please try another search
+            </Text>
+          </ErrorMessage>
+        ) : (
+          <SearchWrapper
+            ref={searchWrapperRef}
+            searchDetail={
+              <Text tag="h3" variation="heading-1">
+                <span>
+                  <span>{resultsCount} </span>
+                  <JssText field={fields?.SearchResultsText} />
+                </span>
               </Text>
-            )
-          }
-          tabbedResults={[
-            {
-              tab: {
-                icon: (
-                  <SitecoreSvg>
-                    {props?.fields?.GridViewIcon?.fields?.SvgMarkup?.value}
-                  </SitecoreSvg>
+            }
+            showing={
+              !!rangeEnd && (
+                <Text variation="body-medium">
+                  <span>Showing {resultsRange}</span>
+                </Text>
+              )
+            }
+            tabbedResults={[
+              {
+                tab: {
+                  icon: (
+                    <SitecoreSvg>
+                      {props?.fields?.GridViewIcon?.fields?.SvgMarkup?.value}
+                    </SitecoreSvg>
+                  ),
+                  label: props?.fields?.GridViewText?.value,
+                },
+                tabContent: (
+                  <>
+                    <CardGrid>
+                      {data?.response?.results?.map(({ data }) => {
+                        const {
+                          id,
+                          title,
+                          name,
+                          description,
+                          imageUrl,
+                          url,
+                          directions,
+                        } = data;
+                        return (
+                          <CardMap
+                            key={id}
+                            title={
+                              <Text variation="heading-1" tag="h4">
+                                {title || name}
+                              </Text>
+                            }
+                            address={
+                              description ? (
+                                <Text variation="body-large">
+                                  {description}
+                                </Text>
+                              ) : undefined
+                            }
+                            image={
+                              imageUrl ? (
+                                <Image
+                                  src={imageUrl}
+                                  alt=""
+                                  width="363"
+                                  height="243"
+                                />
+                              ) : undefined
+                            }
+                            ctas={{
+                              button1: url ? (
+                                <Button size={'large'} variation={'full'}>
+                                  <a href={url}>
+                                    <span>
+                                      Learn <strong>more</strong>
+                                    </span>
+                                  </a>
+                                </Button>
+                              ) : undefined,
+                              button2: directions ? (
+                                <TextButton>
+                                  <a
+                                    href={directions}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <span>
+                                      Learn <strong>more</strong>
+                                    </span>
+                                  </a>
+                                </TextButton>
+                              ) : undefined,
+                            }}
+                          />
+                        );
+                      })}
+                    </CardGrid>
+                    <SearchFormLoadMore
+                      limit={limit}
+                      resultsCount={resultsCount}
+                      defaultLimit={defaultLimit}
+                    >
+                      <span>
+                        <Icons iconName={'iconPlus'} />
+                      </span>
+                      <span>Show more</span>
+                    </SearchFormLoadMore>
+                  </>
                 ),
-                label: props?.fields?.GridViewText?.value,
               },
-              tabContent: (
-                <>
-                  <CardGrid>
-                    {data?.response?.locations?.map((item) => {
-                      const {
-                        id,
-                        title,
-                        name,
-                        description,
-                        imageUrl,
-                        url,
-                        directions,
-                      } = item;
-                      return (
-                        <CardMap
-                          key={id}
-                          title={
-                            <Text variation="heading-1" tag="h4">
-                              {title || name}
-                            </Text>
-                          }
-                          address={
-                            description ? (
-                              <Text variation="body-large">{description}</Text>
-                            ) : undefined
-                          }
-                          image={
-                            imageUrl ? (
-                              <Image
-                                src={imageUrl}
-                                alt=""
-                                width="363"
-                                height="243"
-                              />
-                            ) : undefined
-                          }
-                          ctas={{
-                            button1: url ? (
-                              <Button size={'large'} variation={'full'}>
-                                <a href={url}>
+              {
+                tab: {
+                  icon: (
+                    <SitecoreSvg>
+                      {props?.fields?.MapViewIcon?.fields?.SvgMarkup?.value}
+                    </SitecoreSvg>
+                  ),
+                  label: props?.fields?.MapViewText?.value,
+                },
+                tabContent: (
+                  <LocationMap
+                    apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
+                    locations={
+                      data?.response?.results.map(({ data }) => ({
+                        center: {
+                          lat: Number(data.lat) || 0,
+                          lng: Number(data.lng) || 0,
+                        },
+                        card: (hideCard) => (
+                          <CardMap
+                            title={
+                              <Text tag="h3" variation="heading-2">
+                                {data.title}
+                              </Text>
+                            }
+                            address={
+                              <Text tag="p" variation="body-large">
+                                {data.description}
+                              </Text>
+                            }
+                            ctas={{
+                              button1: (
+                                <a href="#">
                                   <span>
                                     Learn <strong>more</strong>
                                   </span>
                                 </a>
-                              </Button>
-                            ) : undefined,
-                            button2: directions ? (
-                              <TextButton>
-                                <a
-                                  href={directions}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
+                              ),
+                              button2: (
+                                <a href={data.directions}>
                                   <span>
-                                    Learn <strong>more</strong>
+                                    Get <strong>directions</strong>
                                   </span>
                                 </a>
-                              </TextButton>
-                            ) : undefined,
-                          }}
-                        />
-                      );
-                    })}
-                  </CardGrid>
-                  <SearchFormLoadMore
-                    limit={limit}
-                    resultsCount={resultsCount}
-                    defaultLimit={defaultLimit}
-                  >
-                    <span>
-                      <Icons iconName={'iconPlus'} />
-                    </span>
-                    <span>Show more</span>
-                  </SearchFormLoadMore>
-                </>
-              ),
-            },
-            {
-              tab: {
-                icon: (
-                  <SitecoreSvg>
-                    {props?.fields?.MapViewIcon?.fields?.SvgMarkup?.value}
-                  </SitecoreSvg>
+                              ),
+                              close: (
+                                <button onClick={hideCard}>
+                                  <span>Close</span>
+                                  <Icons iconName="iconCross" />
+                                </button>
+                              ),
+                            }}
+                          />
+                        ),
+                      })) || []
+                    }
+                  />
                 ),
-                label: props?.fields?.MapViewText?.value,
               },
-              tabContent: (
-                <LocationMap
-                  apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
-                  locations={
-                    data?.response?.locations.map((item) => ({
-                      center: {
-                        lat: Number(item.lat) || 0,
-                        lng: Number(item.lng) || 0,
-                      },
-                      card: (hideCard) => (
-                        <CardMap
-                          title={
-                            <Text tag="h3" variation="heading-2">
-                              {item.title}
-                            </Text>
-                          }
-                          address={
-                            <Text tag="p" variation="body-large">
-                              {item.description}
-                            </Text>
-                          }
-                          ctas={{
-                            button1: (
-                              <a href="#">
-                                <span>
-                                  Learn <strong>more</strong>
-                                </span>
-                              </a>
-                            ),
-                            button2: (
-                              <a href={item.directions}>
-                                <span>
-                                  Get <strong>directions</strong>
-                                </span>
-                              </a>
-                            ),
-                            close: (
-                              <button onClick={hideCard}>
-                                <span>Close</span>
-                                <Icons iconName="iconCross" />
-                              </button>
-                            ),
-                          }}
-                        />
-                      ),
-                    })) || []
-                  }
-                />
-              ),
-            },
-          ]}
-        />
+            ]}
+          />
+        )}
       </Themes>
     </form>
   );
+};
+
+export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
+  if (!props.fields) {
+    return <LocationsSearchDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} contentVariation="padding-small" />;
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
@@ -372,11 +405,11 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const query = `?${params.join('&')}&location=`;
-  const url = new URL(query, `${BASE_URL}${SEARCH_PATH}`); // compose API url
+  const query = `?${params.join('&')}`;
+  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
   try {
-    const response = await fetch(url.href);
+    const response = await fetch(url);
     if (response.ok) {
       const fallbackData = await response.json();
       return fallbackData;
@@ -384,14 +417,14 @@ export const getStaticProps: GetStaticComponentProps = async (
       throw response.statusText;
     }
   } catch (error) {
-    console.error(error);
+    console.error(
+      {
+        message: 'LocationSearch server-side data fetching error',
+        error: error,
+        requestUrl: url.href,
+      },
+      error
+    );
     return { locations: [] };
   }
-};
-
-export const WithHeader = (props: LocationsSearchProps): JSX.Element => {
-  if (!props.fields) {
-    return <LocationsSearchDefaultComponent {...props} />;
-  }
-  return <div className={`component ${props.params?.styles}`}></div>;
 };

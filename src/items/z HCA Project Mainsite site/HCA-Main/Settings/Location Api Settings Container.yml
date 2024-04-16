@@ -1,0 +1,31 @@
+﻿---
+ID: "625f6d8c-617e-496f-93e2-2a5fe6ea5de9"
+Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
+Template: "149ef9b6-6e9d-4211-a0be-b1feb4b6a38e"
+Path: "/sitecore/content/HCA/HCA-Main/Settings/Location Api Settings Container"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240321T104141Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4a1fa450-d0d0-4778-adb6-15303a31eee7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240321T104141Z

@@ -17,6 +17,7 @@ import {
   ApiResponse,
   ApiSearchProps,
 } from '../../types/searchProps';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
@@ -30,7 +31,9 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_DATALAYER_URL}/treatments`;
+const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/treatments`;
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/treatments`;
+const SEARCH_PATH = '/search';
 
 const TreatmentsSearchDefaultComponent = (
   props: ApiSearchProps
@@ -59,12 +62,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     autocompleteData,
     autocompleteError,
   } = useSearchForm<ApiResponse, Autocomplete>({
-    baseUrl: BASE_URL,
+    baseUrl: CLIENT_API_PATH,
+    searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields) {
     return <TreatmentsSearchDefaultComponent {...props} />;
   }
 
@@ -126,9 +130,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}
-            suggestions={autocompleteData?.response.results?.map(
-              (result) => `${result.value}`
-            )}
+            suggestions={
+              autocompleteError
+                ? []
+                : autocompleteData?.response.results?.map(
+                    (result) => `${result.value}`
+                  )
+            }
           >
             <Filters
               buttonText={<JssText field={fields?.FilterOptionsText} />}
@@ -199,51 +207,71 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               <span>Showing {resultsRange}</span>
             </Text>
           )}
-          <CardGrid>
-            {data?.response.results?.map((item, index) => {
-              const { data } = item;
-              const { title, description, imageUrl, url } = data;
-              return (
-                <CardContent
-                  key={index}
-                  title={
-                    <Text variation="heading-1" tag="h4">
-                      {title}
-                    </Text>
-                  }
-                  bodyCopy={<Text variation="body-large">{description}</Text>}
-                  image={
-                    imageUrl ? (
-                      <Image src={imageUrl} alt="" width="363" height="243" />
-                    ) : undefined
-                  }
-                  link={
-                    <a href={url}>
-                      <span>
-                        Learn <strong>more</strong>
-                      </span>
-                    </a>
-                  }
-                />
-              );
-            })}
-          </CardGrid>
-          {/* <SearchFormPagination
+          {error ? (
+            <ErrorMessage contentVariation={'no-container'}>
+              <Text tag="h2" variation="display-4">
+                No treatments results found.
+              </Text>
+              <Text tag="p" variation="body-extra-large">
+                Please try another search
+              </Text>
+            </ErrorMessage>
+          ) : (
+            <>
+              <CardGrid>
+                {data?.response.results?.map((item, index) => {
+                  const { data } = item;
+                  const { title, description, imageUrl, url } = data;
+                  return (
+                    <CardContent
+                      key={index}
+                      title={
+                        <Text variation="heading-1" tag="h4">
+                          {title}
+                        </Text>
+                      }
+                      bodyCopy={
+                        <Text variation="body-large">{description}</Text>
+                      }
+                      image={
+                        imageUrl ? (
+                          <Image
+                            src={imageUrl}
+                            alt=""
+                            width="363"
+                            height="243"
+                          />
+                        ) : undefined
+                      }
+                      link={
+                        <a href={url}>
+                          <span>
+                            Learn <strong>more</strong>
+                          </span>
+                        </a>
+                      }
+                    />
+                  );
+                })}
+              </CardGrid>
+              {/* <SearchFormPagination
             offset={offset}
             limit={limit}
             resultsCount={resultsCount}
             scrollToRef={searchWrapperRef}
           /> */}
-          <SearchFormLoadMore
-            limit={limit}
-            resultsCount={resultsCount}
-            defaultLimit={defaultLimit}
-          >
-            <span>
-              <Icons iconName={'iconPlus'} />
-            </span>
-            <span>Show more</span>
-          </SearchFormLoadMore>
+              <SearchFormLoadMore
+                limit={limit}
+                resultsCount={resultsCount}
+                defaultLimit={defaultLimit}
+              >
+                <span>
+                  <Icons iconName={'iconPlus'} />
+                </span>
+                <span>Show more</span>
+              </SearchFormLoadMore>
+            </>
+          )}
         </SearchContainer>
       </form>
     </Themes>
@@ -257,23 +285,27 @@ export const getStaticProps: GetStaticComponentProps = async (
   const { baselineParams } = getBaselineParams(rendering);
   const params = baselineParams.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
   const query = `?${params.join('&')}`;
-  const url = new URL(query, BASE_URL); // compose API url
-
-  console.log(baselineParams);
+  const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
   try {
     const response = await fetch(url.href);
 
     if (response.ok) {
       const fallbackData = await response.json();
-      console.log(fallbackData);
       rendering.fallbackData = fallbackData as ApiResponse;
       return rendering;
     } else {
       throw response.statusText;
     }
   } catch (error) {
-    console.error(error);
-    return rendering;
+    console.error(
+      {
+        message: 'TreatmentsSearch server-side data fetching error',
+        error: error,
+        requestUrl: url.href,
+      },
+      error
+    );
+    return { treatments: [] };
   }
 };

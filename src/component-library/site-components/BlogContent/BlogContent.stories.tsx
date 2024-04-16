@@ -3,6 +3,7 @@ import BlogContent from './BlogContent';
 import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import QuoteBlock from '../../components/QuoteBlock/QuoteBlock';
+import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BlogContent> = {
@@ -84,6 +85,27 @@ export const BlogImage: StoryObj<typeof BlogContent> = {
           width="1120"
           height="523"
         />
+      </figure>
+    ),
+  },
+};
+
+export const BlogVideo: StoryObj<typeof BlogContent> = {
+  args: {
+    theme: 'A-HCA-White',
+    children: (
+      <figure>
+        <VideoPlayer
+          videoUrl="https://www.youtube.com/embed/M7lc1UVf-VE"
+          overlayImage={
+            <Image
+              src="/placeholders/london.jpg"
+              alt="london skyline"
+              width="1120"
+              height="631"
+            />
+          }
+        ></VideoPlayer>
       </figure>
     ),
   },

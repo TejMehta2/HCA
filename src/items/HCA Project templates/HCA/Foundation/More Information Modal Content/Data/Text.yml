@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Foundation/More Information Modal Content/
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: /sitecore/system/Settings/Html Editor Profiles/Rich Text Medium
+  Value: /sitecore/system/Settings/Html Editor Profiles/Rich Text Full
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Rich Text
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0507a3f1-43dc-44dc-a2d7-39fcc1d28cff"
+      Value: "a5216408-e9fc-43f8-be0b-a163f37bf694"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240403T142802Z
+      Value: 20240408T154920Z

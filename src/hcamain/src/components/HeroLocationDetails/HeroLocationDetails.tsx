@@ -25,7 +25,7 @@ interface CQCFields {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
-    ReportLink?: LinkField;
+    ReportLink?: LinkField | { url: string };
     Status?: CQSStatusFields;
   };
 }
