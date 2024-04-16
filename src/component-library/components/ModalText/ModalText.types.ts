@@ -8,4 +8,6 @@ export interface ModalTextProps {
   title2: ReactNode | JSX.Element;
   copy2: ReactNode | JSX.Element;
   defaultOpen?: boolean;
+  cta1?: ReactNode | JSX.Element;
+  cta2?: ReactNode | JSX.Element;
 }
