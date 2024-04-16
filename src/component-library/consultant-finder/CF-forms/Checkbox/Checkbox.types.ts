@@ -5,7 +5,7 @@ export interface CheckboxProps {
   label: string | JSX.Element;
   name: string;
   id: string;
-  value: string | number | boolean;
+  value?: string | number | boolean;
   disabled?: boolean;
   indeterminate?: boolean;
   defaultChecked?: boolean;

@@ -79,6 +79,7 @@ interface Fields {
   LiveBookingFormMarketingPreferencesFieldsPostLabel: Field<string>;
   LiveBookingFormMarketingPreferencesFieldsSmsLabel: Field<string>;
   LiveBookingFormRepresentativeContactDetailsLabel: Field<string>;
+  LiveBookingFormRepresentativeRelationToPatientLabel: Field<string>;
 }
 
 type StepProps = {
@@ -127,11 +128,12 @@ export const Default = (props: StepProps): JSX.Element => {
       postcode: z.string().trim().min(1, { message: 'Required' }),
       towncity: z.string().trim().min(1, { message: 'Required' }),
       country: z.string().trim().min(1, { message: 'Required' }),
-      contactDetails: z.string().optional(),
-      marketingPreferenceEmail: z.string().optional(),
-      marketingPreferencePhone: z.string().optional(),
-      marketingPreferenceSMS: z.string().optional(),
-      marketingPreferencePost: z.string().optional(),
+      contactDetails: z.boolean().optional(),
+      marketingPreferenceEmail: z.boolean().optional(),
+      marketingPreferencePhone: z.boolean().optional(),
+      marketingPreferenceSMS: z.boolean().optional(),
+      marketingPreferencePost: z.boolean().optional(),
+      representativeRelationToPatient: z.string(),
     })
     .refine(
       // refine helps to do more complex logic to validation like conditional validation
@@ -183,6 +185,22 @@ export const Default = (props: StepProps): JSX.Element => {
         message: 'Required',
         path: ['insurancePolicyNumber'],
       }
+    )
+    .refine(
+      (data) => {
+        if (data.contactDetails === true) {
+          if (data.representativeRelationToPatient !== '') {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        return true;
+      },
+      {
+        message: 'Required',
+        path: ['representativeRelationToPatient'],
+      }
     );
 
   const form = useForm({
@@ -209,11 +227,12 @@ export const Default = (props: StepProps): JSX.Element => {
       postcode: '',
       towncity: '',
       country: '',
-      contactDetails: 'false',
-      marketingPreferenceEmail: 'false',
-      marketingPreferencePhone: 'false',
-      marketingPreferenceSMS: 'false',
-      marketingPreferencePost: 'false',
+      contactDetails: false,
+      marketingPreferenceEmail: false,
+      marketingPreferencePhone: false,
+      marketingPreferenceSMS: false,
+      marketingPreferencePost: false,
+      representativeRelationToPatient: '',
     },
     resolver: zodResolver(schema),
   });
@@ -579,6 +598,28 @@ export const Default = (props: StepProps): JSX.Element => {
                         'Patients details'}
                     </Text>
                     {/* select title */}
+                    <SelectField
+                      id={'title'}
+                      name={'title'}
+                      label={
+                        props?.fields?.LiveBookingFormTitleLabel?.value ||
+                        'Title'
+                      }
+                      required={true}
+                      isError={errors?.title ? true : false}
+                      errorMessage={errors?.title?.message}
+                      options={props?.fields?.LiveBookingFormTitleOptions.map(
+                        (option: any) => (
+                          <option
+                            key={option.id}
+                            value={option?.fields?.Value?.value}
+                          >
+                            {option?.fields?.Label?.value}
+                          </option>
+                        )
+                      )}
+                      register={register}
+                    />
                     <TextField
                       id={'firstName'}
                       label={
@@ -631,6 +672,29 @@ export const Default = (props: StepProps): JSX.Element => {
                       setValue={setValue}
                       isError={errors?.phone ? true : false}
                       errorMessage={errors?.phone?.message}
+                    />
+                    {/* select gender */}
+                    <SelectField
+                      id={'gender'}
+                      name={'gender'}
+                      label={
+                        props?.fields?.LiveBookingFormGenderLabel?.value ||
+                        'Gender'
+                      }
+                      required={true}
+                      isError={errors?.gender ? true : false}
+                      errorMessage={errors?.gender?.message}
+                      options={props?.fields?.LiveBookingFormGenderOptions.map(
+                        (option: any) => (
+                          <option
+                            key={option.id}
+                            value={option?.fields?.Value?.value}
+                          >
+                            {option?.fields?.Label?.value}
+                          </option>
+                        )
+                      )}
+                      register={register}
                     />
                     <TextField
                       id={'dateOfBirth'}
@@ -732,7 +796,30 @@ export const Default = (props: StepProps): JSX.Element => {
                       value={'true'}
                       register={register}
                     />
-                    {watchFormChanges.contactDetails && <div>Yes</div>}
+                    {watchFormChanges.contactDetails && (
+                      <>
+                        <TextField
+                          id={'representativeRelationToPatient'}
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormRepresentativeRelationToPatientLabel
+                              ?.value || 'Relation to the patient'
+                          }
+                          name={'representativeRelationToPatient'}
+                          required={true}
+                          register={register}
+                          setValue={setValue}
+                          isError={
+                            errors?.representativeRelationToPatient
+                              ? true
+                              : false
+                          }
+                          errorMessage={
+                            errors?.representativeRelationToPatient?.message
+                          }
+                        />
+                      </>
+                    )}
 
                     {/* Marketing preferences */}
                     <Checkbox
@@ -743,9 +830,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       name={'marketingPreferenceEmail'}
                       id={'marketingPreferenceEmail'}
-                      value={'true'}
                       register={register}
-                      setValue={setValue}
                     />
                     <Checkbox
                       label={
@@ -755,9 +840,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       name={'marketingPreferencePhone'}
                       id={'marketingPreferencePhone'}
-                      value={'true'}
                       register={register}
-                      setValue={setValue}
                     />
                     <Checkbox
                       label={
@@ -767,9 +850,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       name={'marketingPreferenceSMS'}
                       id={'marketingPreferenceSMS'}
-                      value={'true'}
                       register={register}
-                      setValue={setValue}
                     />
                     <Checkbox
                       label={
@@ -779,9 +860,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       name={'marketingPreferencePost'}
                       id={'marketingPreferencePost'}
-                      value={'true'}
                       register={register}
-                      setValue={setValue}
                     />
                     <Button size={'small'} variation={'full-dark'}>
                       <button disabled={!isDirty || isSubmitting} type="submit">
