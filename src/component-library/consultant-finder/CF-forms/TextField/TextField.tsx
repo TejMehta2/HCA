@@ -17,6 +17,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     register,
     setValue,
     name,
+    placeholder,
   } = props;
 
   const clearInput = () => {
@@ -38,6 +39,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         <input
           id={id}
           type={type}
+          placeholder={placeholder}
           {...register(`${name}`)}
           className={isError ? `${styles['input-error']}` : ''}
         />

@@ -80,6 +80,7 @@ interface Fields {
   LiveBookingFormMarketingPreferencesFieldsSmsLabel: Field<string>;
   LiveBookingFormRepresentativeContactDetailsLabel: Field<string>;
   LiveBookingFormRepresentativeRelationToPatientLabel: Field<string>;
+  LiveBookingFormRepresentativeRelationToPatientPlaceholder: Field<string>;
 }
 
 type StepProps = {
@@ -253,6 +254,7 @@ export const Default = (props: StepProps): JSX.Element => {
     getValues,
     setValue,
     setError,
+    clearErrors,
   } = form;
   console.log('isSubmitting', isSubmitting);
 
@@ -332,6 +334,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // remove values from hidden fields if not used anymore
     if (watchFormChanges.user === 'insurer') {
       setValue('payment', '');
+      setValue('contactDetails', false);
+      if (errors?.representativeRelationToPatient) {
+        clearErrors('representativeRelationToPatient');
+      }
     }
     if (watchFormChanges.payment === 'self-pay') {
       setValue('insuranceProvider', '');
@@ -341,11 +347,15 @@ export const Default = (props: StepProps): JSX.Element => {
     if (watchFormChanges.previouslyBeenWithHCA === 'no') {
       setValue('patientCode', '');
     }
+    if (watchFormChanges.contactDetails === false) {
+      setValue('representativeRelationToPatient', '');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     watchFormChanges.user,
     watchFormChanges.payment,
     watchFormChanges.previouslyBeenWithHCA,
+    watchFormChanges.contactDetails,
   ]);
 
   if (props.fields) {
@@ -785,18 +795,21 @@ export const Default = (props: StepProps): JSX.Element => {
                       {props?.fields?.LiveBookingFormRepresentativeHeadline
                         ?.value || 'Additional details'}
                     </Text>
-                    <Checkbox
-                      label={
-                        props?.fields
-                          ?.LiveBookingFormRepresentativeContactDetailsLabel
-                          ?.value || ''
-                      }
-                      name={'contactDetails'}
-                      id={'contactDetails'}
-                      value={'true'}
-                      register={register}
-                    />
-                    {watchFormChanges.contactDetails && (
+                    {watchFormChanges.user !== 'insurer' && (
+                      <Checkbox
+                        label={
+                          props?.fields
+                            ?.LiveBookingFormRepresentativeContactDetailsLabel
+                            ?.value || ''
+                        }
+                        name={'contactDetails'}
+                        id={'contactDetails'}
+                        // value={'true'}
+                        register={register}
+                      />
+                    )}
+                    {(watchFormChanges.contactDetails ||
+                      watchFormChanges.user === 'insurer') && (
                       <>
                         <TextField
                           id={'representativeRelationToPatient'}
@@ -806,7 +819,14 @@ export const Default = (props: StepProps): JSX.Element => {
                               ?.value || 'Relation to the patient'
                           }
                           name={'representativeRelationToPatient'}
-                          required={true}
+                          placeholder={
+                            props?.fields
+                              ?.LiveBookingFormRepresentativeRelationToPatientPlaceholder
+                              ?.value || ''
+                          }
+                          required={
+                            watchFormChanges.user === 'insurer' ? false : true
+                          }
                           register={register}
                           setValue={setValue}
                           isError={

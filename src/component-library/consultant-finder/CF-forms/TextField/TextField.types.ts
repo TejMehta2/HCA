@@ -4,6 +4,7 @@ export interface TextFieldProps {
   type?: 'text' | 'email' | 'date';
   label?: string;
   name?: string;
+  placeholder?: string;
   helpText?: string;
   required?: boolean;
   errorMessage?: string;
