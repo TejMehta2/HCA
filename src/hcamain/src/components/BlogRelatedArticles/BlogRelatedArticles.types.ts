@@ -94,6 +94,7 @@ export type BlogRelatedArticles = {
   date: string;
   typeName: string;
   typeId: string;
+  pageId: string;
 };
 
 export type StaticProps = {
