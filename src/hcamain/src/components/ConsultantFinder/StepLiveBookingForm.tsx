@@ -430,13 +430,15 @@ export const Default = (props: StepProps): JSX.Element => {
     const URL = props?.fields?.API_C2_ReserveConsultantSlot_BaseURL?.value;
     console.log('form data', JSON.stringify(dataToPost, null, 2));
 
+    const dataToSent: any = JSON.stringify(dataToPost);
+
     const config = {
       method: 'post',
       url: URL,
       headers: {
         'Content-Type': 'application/json',
       },
-      data: data,
+      data: dataToSent,
     };
 
 
