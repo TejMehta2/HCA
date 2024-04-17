@@ -140,7 +140,10 @@ export const getStaticProps: GetStaticComponentProps = async (
   }
 
   const consultantProfileJson = await getSpecialistProfileData(slug);
-  const physicianStructuredDataJson = await getPhysicianStructuredData(slug);
+  const physicianStructuredDataJson = await getPhysicianStructuredData(
+    slug,
+    consultantProfileJson
+  );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
@@ -303,6 +306,13 @@ export const Default = (props: StepProps): JSX.Element => {
     topSpecialty[0]?.name || ''
   } at HCA Healthcare UK`;
 
+  const profileImage =
+    serverSideData?.ProfileJson?.images?.logo ||
+    props?.fields?.ProfileImagePlaceholderImage?.value.src ||
+    null;
+
+  const canonicalURL = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${serverSideData?.ProfileJson?.slug}`;
+
   const description = serverSideData?.ProfileJson?.about
     ?.substring(0, serverSideData?.ProfileJson?.about?.indexOf('.'))
     .replaceAll('<p>', '')
@@ -322,15 +332,16 @@ export const Default = (props: StepProps): JSX.Element => {
         {serverSideData && (
           <div>
             <Head>
+              <meta name="robots" content="index,follow" />
               <title>{title}</title>
-              <link
-                rel="canonical"
-                href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${serverSideData?.ProfileJson?.slug}`}
-              />
+              <link rel="canonical" href={canonicalURL} />
               <meta name="description" content={description} />
               <meta name="keywords" content={keywords} />
-              <meta name="robots" content="index,follow" />
-
+              {/*Open Graph tags*/}
+              <meta property="og:title" content={title} />
+              <meta property="og:description" content={description} />
+              <meta property="og:image" content={profileImage} />
+              <meta property="og:url" content={canonicalURL} />
               {/* // see https://validator.schema.org/ and https://search.google.com/test/rich-results */}
               <script
                 id="consultant-profile-data"
@@ -398,11 +409,7 @@ export const Default = (props: StepProps): JSX.Element => {
             <ConsultantFinderProfileWrapper>
               <MainWrapper>
                 <ProfilePageHeader
-                  image={
-                    serverSideData?.ProfileJson?.images?.logo ||
-                    props?.fields?.ProfileImagePlaceholderImage?.value.src ||
-                    null
-                  }
+                  image={profileImage}
                   name={`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}
                   topSpecialty={topSpecialty[0]?.name || ''}
                   infoBoxText={'some text'}
