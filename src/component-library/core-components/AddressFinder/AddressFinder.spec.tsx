@@ -3,13 +3,43 @@ import { render } from '@testing-library/react';
 import AddressFinder from './AddressFinder';
 import { AddressFinderProps } from './AddressFinder.types';
 
+const mockResults = [
+  {
+    line1: '1 Test Street',
+    line2: 'Somewhere',
+    city: 'London',
+    country: 'UK',
+    postcode: 'SE1 1AB',
+    id: '1',
+  },
+  {
+    line1: '2 Test Street',
+    line2: 'Somewhere',
+    city: 'London',
+    country: 'UK',
+    postcode: 'SE1 1AB',
+    id: '2',
+  },
+  {
+    line1: '3 Test Street',
+    line2: '',
+    city: 'London',
+    country: 'UK',
+    postcode: 'SE1 1AB',
+    id: '3',
+  },
+];
+
 const mockProps: AddressFinderProps = {
-  children: <p>Hello world</p>,
+  addressResults: mockResults,
+  searchAddress: (term) => {
+    console.log(term);
+  },
 };
 
 describe('AddressFinder', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<AddressFinder {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Enter your address manually')).toBeVisible();
   });
 });

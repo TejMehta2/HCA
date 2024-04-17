@@ -34,10 +34,10 @@
 }
 
 .results {
-  padding: px-to-rem(24) px-to-rem(32);
   border: 1px solid $navy-blue-100;
   border-radius: $radius-large;
   margin-top: $spacing-1;
+  padding: calc($spacing-6 - px-to-rem(11)) 0;
 
   ul {
     list-style-type: none;
@@ -45,7 +45,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px 0;
+    overflow: auto;
 
     li {
       width: 100%;
@@ -58,6 +58,13 @@
         background: transparent;
         border: 0;
         width: inherit;
+        padding: px-to-rem(11) $spacing-6;
+
+        &:hover,
+        &.active {
+          background-color: $orange-40;
+          cursor: pointer;
+        }
       }
     }
   }

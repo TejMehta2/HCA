@@ -8,7 +8,7 @@ export interface addressResult {
 export interface AddressFinderProps {
   helpText?: string;
   addressResults?: addressResult[];
-  isLoading: boolean;
+  isLoading?: boolean;
   searchAddress: (term: string) => void;
-  chosenAddress: (address: addressResult) => void;
+  chosenAddress?: (address: addressResult) => void;
 }
