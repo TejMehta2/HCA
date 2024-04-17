@@ -7,6 +7,7 @@ import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import {
   Image as JssImage,
@@ -92,6 +93,7 @@ interface Fields {
   LiveBookingFormRepresentativeEmailLabel: Field<string>;
   LiveBookingFormRepresentativeEmailPlaceholder: Field<string>;
   API_C2_ReserveConsultantSlot_BaseURL: Field<string>;
+  API_C2_ReserveConsultantSlot_RecapchaKey: Field<string>;
 }
 
 type StepProps = {
@@ -151,6 +153,7 @@ export const Default = (props: StepProps): JSX.Element => {
       representativeLastName: z.string(),
       representativeEmail: z.string().max(0).or(z.string().email()),
       representativePhone: z.string(),
+      recaptcha: z.string().min(1, { message: 'Required' }),
     })
     .refine(
       // refine helps to do more complex logic to validation like conditional validation
@@ -335,6 +338,7 @@ export const Default = (props: StepProps): JSX.Element => {
       representativeLastName: '',
       representativeEmail: '',
       representativePhone: '',
+      recaptcha: '',
     },
     resolver: zodResolver(schema),
   });
@@ -440,7 +444,6 @@ export const Default = (props: StepProps): JSX.Element => {
       },
       data: dataToSent,
     };
-
 
     axios(config)
       .then(function (response) {
@@ -1179,6 +1182,23 @@ export const Default = (props: StepProps): JSX.Element => {
                       id={'marketingPreferencePost'}
                       register={register}
                     />
+                    <ReCAPTCHA
+                      sitekey={
+                        props?.fields?.API_C2_ReserveConsultantSlot_RecapchaKey
+                          ?.value || ''
+                      }
+                      onChange={(value) => {
+                        setValue('recaptcha', value || '');
+                        if (errors?.recaptcha) {
+                          clearErrors('recaptcha');
+                        }
+                      }}
+                    />
+                    <input name="recaptcha" type="hidden" />
+                    {errors?.recaptcha && (
+                      <ErrorMessage errorMessage={errors?.recaptcha?.message} />
+                    )}
+
                     <Button size={'small'} variation={'full-dark'}>
                       <button disabled={!isDirty || isSubmitting} type="submit">
                         {isSubmitting ? 'Submitting' : 'Submit'}
