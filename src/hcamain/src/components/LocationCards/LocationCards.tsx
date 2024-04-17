@@ -186,7 +186,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
           paddingSize="small"
           title={
             <Text
-              variation={props.params?.HeadingSize || 'display-1'}
+              variation={props.params?.HeadingSize || 'display-5'}
               tag={props.params?.HeadingTag || 'h2'}
             >
               <JssTextWithEntityName
