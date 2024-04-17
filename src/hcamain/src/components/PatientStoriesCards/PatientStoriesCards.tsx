@@ -193,7 +193,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             (props.fields?.data?.item?.title?.jsonValue ||
               isExperienceEditor) && (
               <Text
-                variation={props.params?.HeadingSize || 'heading-1'}
+                variation={props.params?.HeadingSize || 'display-1'}
                 tag={props.params?.HeadingTag || 'h2'}
               >
                 <JssText
@@ -260,7 +260,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
+export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
@@ -284,7 +284,7 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
   return (
@@ -337,7 +337,9 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+export const SliderWithLeftText = (
+  props: PatientStoriesCardsProps
+): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
@@ -360,7 +362,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
