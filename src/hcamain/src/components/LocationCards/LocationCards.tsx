@@ -109,9 +109,9 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           image={
             abstractImage?.jsonValue?.value?.src ? (
-              <JssImage field={abstractImage?.jsonValue} />
+              <JssImage field={abstractImage?.jsonValue} editable={false} />
             ) : (
-              <JssImage field={image?.jsonValue} />
+              <JssImage field={image?.jsonValue} editable={false} />
             )
           }
           ctas={{

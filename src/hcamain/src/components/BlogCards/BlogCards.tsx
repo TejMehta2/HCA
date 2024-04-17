@@ -105,9 +105,9 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         return (
           <CardBlog key={card.id}>
             {card.fields?.AbstractImage?.value ? (
-              <JssImage field={card.fields.AbstractImage} />
+              <JssImage field={card.fields.AbstractImage} editable={false} />
             ) : (
-              <JssImage field={card.fields.Image} />
+              <JssImage field={card.fields.Image} editable={false} />
             )}
             <JssDate field={card.fields?.Date} />
             <Text tag={'h3'} variation={'heading-2'}>
@@ -186,9 +186,11 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               variation={isFeature ? 'feature' : 'default'}
             >
               {isFeature && card.fields?.AbstractImage?.value ? (
-                <JssImage field={card.fields.AbstractImage} />
+                <JssImage field={card.fields.AbstractImage} editable={false} />
               ) : (
-                isFeature && <JssImage field={card.fields.Image} />
+                isFeature && (
+                  <JssImage field={card.fields.Image} editable={false} />
+                )
               )}
               <JssDate field={card.fields?.Date} />
               <Text

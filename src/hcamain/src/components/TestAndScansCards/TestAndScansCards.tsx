@@ -133,9 +133,12 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             image={
               showImage ? (
                 card.abstractImage?.jsonValue?.value?.src ? (
-                  <JssImage field={card.abstractImage.jsonValue} />
+                  <JssImage
+                    field={card.abstractImage.jsonValue}
+                    editable={false}
+                  />
                 ) : (
-                  <JssImage field={card.image?.jsonValue} />
+                  <JssImage field={card.image?.jsonValue} editable={false} />
                 )
               ) : undefined
             }

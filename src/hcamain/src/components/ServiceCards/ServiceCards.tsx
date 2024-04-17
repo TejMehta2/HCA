@@ -133,9 +133,12 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             key={index}
           >
             {service.fields?.AbstractImage?.value?.src ? (
-              <JssImage field={service?.fields?.AbstractImage} />
+              <JssImage
+                field={service?.fields?.AbstractImage}
+                editable={false}
+              />
             ) : (
-              <JssImage field={service?.fields?.Image} />
+              <JssImage field={service?.fields?.Image} editable={false} />
             )}
             <Text tag="div" variation="display-6">
               {service.fields?.AbstractTitle?.value ? (

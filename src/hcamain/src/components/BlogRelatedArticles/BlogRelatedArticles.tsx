@@ -77,9 +77,12 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         return (
           <CardBlog key={index}>
             {card.abstractImage?.jsonValue?.value?.src ? (
-              <JssImage field={card.abstractImage?.jsonValue} />
+              <JssImage
+                field={card.abstractImage?.jsonValue}
+                editable={false}
+              />
             ) : (
-              <JssImage field={card.image?.jsonValue} />
+              <JssImage field={card.image?.jsonValue} editable={false} />
             )}
 
             <JssDate field={card.date?.jsonValue} />
