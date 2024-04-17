@@ -109,6 +109,7 @@ export interface Fields {
   SortOptionsText?: Field<string>;
   SortOptions?: FilterOption[];
   SearchResultsText?: Field<string>;
+  SearchResultsTextWithInput?: Field<string>;
   ResultsPerPage?: Field<number>;
   SearchBy?: FilterOption[];
   FilterBy?: FilterOption[];
