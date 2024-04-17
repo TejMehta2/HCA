@@ -66,7 +66,7 @@ export async function getLDBFirstAppointmentDatas(
       method: 'post',
       body: body,
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
@@ -124,7 +124,7 @@ export async function getLDBFirstAppointmentData(
       method: 'post',
       body: body,
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
@@ -208,7 +208,7 @@ export async function getLDBConsultantDetails(
     const res = await fetch(requestURL, {
       method: 'get',
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
@@ -281,7 +281,7 @@ export async function getLDBConsultantSlots(
     const res = await fetch(requestURL, {
       method: 'get',
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
@@ -400,12 +400,11 @@ export async function LDBMakeBooking(
   //console.log('booking json:', body);
 
   try {
-    // very light cache on these requests they contain time sensitive data
     const res = await fetch(requestURL, {
       method: 'post',
       body: body,
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
       cache: 'no-cache',

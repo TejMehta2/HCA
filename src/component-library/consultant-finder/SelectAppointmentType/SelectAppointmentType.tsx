@@ -16,7 +16,7 @@ const SelectAppointmentType = (
     ) as HTMLDivElement;
     if (targetParent) {
       const value = targetParent?.dataset?.isFollowUpAppointment;
-      console.log('value', value);
+      //console.log('value', value);
       if (value) {
         setSelectedTypeOfAppointment(value);
       }

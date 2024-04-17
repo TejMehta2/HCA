@@ -72,8 +72,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   _context
 ) => {
   const holidaysJson = await getHolidays();
-  //console.log('ss holidays', holidaysJson);
-
   const returnProps: ServerSideProps = {
     Holidays: holidaysJson,
   };
