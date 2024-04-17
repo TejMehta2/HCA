@@ -220,7 +220,8 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
 
   const isWorkingDay = (inputDateString: any) => {
     const inputDate: any = new Date(inputDateString);
-    // Not Sun, Sat or a public holiday
+    // Not Sat Sun or a public holiday
+    // TODO - Andy works Saturday mornings - do we need to factor this?
     return !(
       inputDate.getDay() === 0 ||
       inputDate.getDay() === 6 ||

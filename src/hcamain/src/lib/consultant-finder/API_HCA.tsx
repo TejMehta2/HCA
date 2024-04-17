@@ -49,7 +49,8 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
   const HCAAPIConfig = await getHCAConfig();
 
   if (HCAAPIConfig.aPI_HCA_All_Consultants_UtilizesLegacy) {
-    const consultantSlugsURL = HCAAPIConfig?.aPI_HCA_All_Consultants_BaseURL;
+    const consultantSlugsURL =
+      HCAAPIConfig?.aPI_HCA_All_Consultants_LegacyBaseURL;
 
     //console.log("in get active slugs", consultantSlugsURL);
     if (consultantSlugsURL && consultantSlugsURL.length > 0) {
@@ -103,9 +104,11 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
 export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
   const HCAAPIConfig = await getHCAConfig();
-  const ldbConsultantSlugsURL = HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
-  // using current/legacy live diary consultants list for now
-  // replace once we have a backend that can query for a list of live diary consultant slugs
+  const ldbConsultantSlugsURL =
+    HCAAPIConfig?.aPI_HCA_LDB_Consultants_UtilizesLegacy
+      ? HCAAPIConfig?.aPI_HCA_LDB_Consultants_LegacyBaseURL
+      : HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
+
   if (ldbConsultantSlugsURL && ldbConsultantSlugsURL.length > 0) {
     try {
       // need to cache these requests so we don't make hundreds of them
@@ -118,9 +121,9 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
         const consultantsOnLDB = await res.json();
         //console.log('consultantsOnLDB', consultantsOnLDB);
         consultantsOnLDB.forEach(
-          (consultant: { UniqueKey: any; Value: string }) => {
+          (consultant: { UniqueKey: any; Value: string | boolean }) => {
             const slug = consultant.UniqueKey;
-            if (consultant.Value === 'True') {
+            if (consultant.Value === 'True' || consultant.Value === true) {
               ldbSlugs = ldbSlugs.concat(slug);
             }
           }
@@ -168,7 +171,9 @@ export async function checkIfLiveBookingsIsAvailable(
 export async function getHolidays(): Promise<string[]> {
   let holidays;
   const HCAAPIConfig = await getHCAConfig();
-  const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
+  const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_UtilizesLegacy
+    ? HCAAPIConfig?.aPI_HCA_Holidays_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
   //console.log('holiday url', holidayURL);
   //console.log('config', HCAAPIConfig);
   if (holidayURL && holidayURL.length > 0) {
@@ -283,9 +288,13 @@ export async function getCMA(id: string): Promise<any> {
 }
 
 // get structured data for the given slug
-//
-export async function getPhysicianStructuredData(slug: string): Promise<any> {
-  const specialistProfileData = await getSpecialistProfileData(slug);
+export async function getPhysicianStructuredData(
+  slug: string,
+  specialistProfileData?: any // can be passed in to save a second call
+): Promise<any> {
+  if (!specialistProfileData) {
+    specialistProfileData = await getSpecialistProfileData(slug);
+  }
   let ret: any = null;
 
   if (specialistProfileData && specialistProfileData.slug) {
@@ -411,4 +420,222 @@ export async function getPhysicianStructuredData(slug: string): Promise<any> {
   }
 
   return ret;
+}
+
+// suggest a location
+export async function suggestLocation(
+  provider: string, //e.g.:Google
+  method: string, // e.g. Default
+  units: string, //e.g. Kilometers
+  order: string, // e.g. Default
+  origin: string, // e.g. TN23%201DR
+  originType: string, // e.g. Postcode
+  destinations: string, //e.g.WD6%203BS%2C%20TN23%203DS
+  destinationType: string // e.g.Postcode
+): Promise<any> {
+  let cma;
+  //const HCAAPIConfig = await getHCAConfig();
+  console.log(
+    provider,
+    method,
+    units,
+    order,
+    origin,
+    originType,
+    destinations,
+    destinationType
+  );
+  /*
+  if (
+    HCAAPIConfig?.aPI_HCA_CMAs_BaseURL &&
+    HCAAPIConfig.aPI_HCA_CMAs_BaseURL.length > 0
+  ) {
+    const cmaURL = `${HCAAPIConfig.aPI_HCA_CMAs_BaseURL}?key=${id}`;
+
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(cmaURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        cma = await res.json();
+        if (cma && cma.length > 0) {
+          // returned stuff from the server side
+          return cma[0];
+        }
+        if (cma.length == 0) {
+          console.warn(`Warning CMA empty on getCMA() call`);
+        }
+      } else {
+        // couldn't get the cmas
+        console.warn(
+          `Could not load CMAs list for pre-render from ${cmaURL} result:${res}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load CMAs for pre-render from ${cmaURL} failed with exception ${e}`
+      );
+    }
+  }*/
+
+  return cma;
+}
+
+export interface IGetDistancesFields {
+  provider: string; //e.g.:Google
+  method: string; // e.g. Default
+  units: string; //e.g. Kilometers
+  order: string; // e.g. Default
+  origin: string; // e.g. TN23%201DR
+  originType: string; // e.g. Postcode
+  destinations: string; //e.g.WD6%203BS%2C%20TN23%203DS
+  destinationType: string; // e.g.Postcode
+}
+
+// get multiple distances
+export async function getDistances(fields: IGetDistancesFields): Promise<any> {
+  console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await getHCAConfig();
+
+  const baseURL = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy
+    ? HCAAPIConfig?.aPI_HCA_Locations_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_Locations_BaseURL;
+
+  if (baseURL) {
+    //const requestURL = `${baseURL}`;
+    try {
+      // can cache these requests
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(baseURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        returnData = await res.json();
+        /*
+        if (loc && loc.length > 0) {
+          // returned stuff from the server side
+          return loc[0];
+        }
+        if (loc.length == 0) {
+          console.warn(`Warning distances empty on getDistances() call`);
+        }*/
+      } else {
+        // couldn't get the cmas
+        console.warn(
+          `Could not load distances list for pre-render from ${baseURL} result:${res}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load distances for pre-render from ${baseURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return returnData;
+}
+
+export interface IEnquiryFormFields {
+  practice: string; //e.g. Golders Green Outpatients and Diagnostics Centre
+  dateAppointment: string; // e.g. Within 1 week
+  timeAppointment: string; // e.g. Morning
+  previousPatient: string; // e.g. Yes
+  title: string; // e.g. Mr
+  firstName: string; // e.g. ZZZTESTFIRSTNAME
+  lastName: string; // e.g. ZZZTESTLASTNAME
+  gender: string; // e.g. Male
+  date: string; // e.g. 2000-01-01
+  userPhone: string; // e.g. 07788999000
+  userEmail: string; // e.g. test@ignore.domain
+  insurance: string; // e.g. CS Healthcare
+  insuranceNumber: string; // e.g. INS0987654321
+  reasonVisit: string; // e.g. TESTING THE FORM PLEASE IGNORE
+  reCAPTCHA: string; // e.g. 03AFcWeA48YI466Mx0YoBsmqYBcE-b5Hodyn-VyHqt1HYbKeXbCxhtba1HxDH2TF9LnizAxxMc0_WheDYb8gODux5A0e7naWbh_UDu3HDq1Y9u-h_MP2PHvN9d8x_lvFE68jywnpd71mf8bCUooOjxnvTOWNhd3h634PFLsZqNCFAXjhEMwloTGiwYSCspK-r7ecxTKU8SXj0HG2oBBKIOvOCeVJlKFRORvoEAPBTM_IPiw87YjVKCPyc8NfPLyM8KCdhAtjvEy8NRv7Bgs0c2n9adLKbpSjvGoXP7mD28Fv9E3EN0-fYipSFXgPgqDETBuAYbZyw4L8G_kfzFeL5PJ5dWzw4O5HrdS9cb5AyiPaG6rJVWwHKQCG0eROo2yMXSTWPLIWGFdAvL5quxH7pZ7vRoP700XUwusZsP1VCtmYA45EgWOx4zRgWcj1PaExyp6dNuH6U-T98uQ5QbYrsZwN1jP-ddQd2Q3G_Rs5gtGKzQ_xJnuH6w4w1kxxFFauJwzZtnQBNysSXl6ChvYLy2Fqw6nLcN2PTWEgBVkmrupfzEVAzXMMraVMG7swZuv5J9p9DB9diSWncGRoyBxOkfqdSEANeRmNxPJ42denWxzzHoaJ6sHPsc7nD8ypXZfToKE4-LXhfRy4EBcKDyoSTP88Z6NSjXyo83tSlkhz-YykiW7Kln9MygtCs
+  email: boolean; // e.g. true
+  sms: boolean; // e.g. true
+  phone: boolean; // e.g. true
+  post: boolean; // e.g. true
+  dateOfBirthFormatted: string; // e.g. 01-01-2000
+  consultantName: string; // e.g. Rohit Shetty
+  consultantTopSpecialty: string; // e.g. Orthopaedic Surgery
+  hiddenFormInstance: string; // e.g. 37bf88-ce54-dfa8-572c-5315bd5a8b58
+}
+
+/*
+This endpoint will create a send a booking enquiry request to the contact centre via the email and enquiry database.  
+The Team members will pick up the request and once processed will contact the patient
+*/
+export async function submitBookingEnquiry(
+  fields: IEnquiryFormFields | any
+): Promise<any> {
+  let returnData: any = '';
+  const HCAAPIConfig = await getHCAConfig();
+
+  const isLegacy: boolean =
+    HCAAPIConfig?.aPI_HCA_EnquireBookingForm_UtilizesLegacy;
+
+  const formURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_EnquireBookingForm_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_EnquireBookingForm_BaseURL;
+
+  if (formURL) {
+    const body = [];
+    let headers: HeadersInit;
+    let bodyStr: string = '';
+    if (isLegacy) {
+      //  // convert from JSON to uri form encoding for SC9.3 form style
+      for (const property in fields) {
+        const encodedKey = encodeURIComponent(property);
+        const encodedValue = encodeURIComponent(fields[property]);
+        body.push(encodedKey + '=' + encodedValue);
+      }
+      bodyStr = body.join('&');
+      //console.log('bodyStr', bodyStr);
+      headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+    } else {
+      bodyStr = JSON.stringify(fields);
+      //console.log('bodyStr', bodyStr);
+      headers = {
+        'Content-Type': 'application/json',
+      };
+    }
+
+    try {
+      const res = await fetch(formURL, {
+        method: 'post',
+        body: bodyStr,
+        headers: headers,
+        cache: 'no-cache',
+      });
+
+      if (res.ok) {
+        returnData = JSON.parse(await res.text());
+      } else {
+        //makeBookingEnquiry call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`makeBookingEnquiry failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //makeBookingEnquiry call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting makeBookingEnquiry, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`makeBookingEnquiry failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
 }

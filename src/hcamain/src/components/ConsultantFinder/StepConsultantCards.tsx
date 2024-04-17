@@ -125,7 +125,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 ) => {
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
-
+  //console.log("consultantsSlugsLD", consultantsSlugsLD);
   const returnProps: ServerSideProps = {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
@@ -151,7 +151,7 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  console.log('consultant cards', props);
+  //console.log('consultant cards', props);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
@@ -214,7 +214,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
-    console.log('next apt useEffect', doctifyLoaded);
+    //console.log('next apt useEffect', doctifyLoaded);
     // Check if we made a request
     if (nextAptRequestToken) {
       // Cancel the previous request before making a new request
@@ -526,7 +526,7 @@ export const Default = (props: StepProps): JSX.Element => {
         setError(true);
       })
       .finally(() => {
-        console.log('set doctify loaded true');
+        //console.log('set doctify loaded true');
         setDoctifyLoaded(true);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps

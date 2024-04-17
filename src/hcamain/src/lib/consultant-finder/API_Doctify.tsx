@@ -37,6 +37,7 @@ export async function getSpecialistProfileData(
               docitfyData?.practices[practice]?.slug
             );
             docitfyData.practices[practice]['facilityURL'] = facilityURL;
+            //console.log('facilityURL', facilityURL);
           } catch (e) {
             //HCA practice call threw
             console.warn(
@@ -106,9 +107,11 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 export async function getFacilitiesData(serviceURL?: string): Promise<any> {
   const HCAAPIConfig = !serviceURL ? await getHCAConfig() : null;
 
-  const requestURL = `${
-    serviceURL ?? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_BaseURL
-  }`;
+  const facilitiesURL = HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_UtilizesLegacy
+    ? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_BaseURL;
+  const requestURL = `${serviceURL ?? facilitiesURL}`;
+
   let facilitiesData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them
