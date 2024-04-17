@@ -1,21 +1,9 @@
-import React, { FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import AddressFinder from './AddressFinder';
-import type { Meta, StoryObj } from '@storybook/react';
-import Themes from '../../foundation/Themes/Themes';
 import Button from '../Button/Button';
-
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof AddressFinder> = {
-  title: 'core-components/AddressFinder',
-  component: AddressFinder,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'fullscreen',
-  },
-};
-
-export default meta;
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+import Themes from '../../foundation/Themes/Themes';
+import { addressResult } from './AddressFinder.types';
 
 const mockResults = [
   {
@@ -44,63 +32,58 @@ const mockResults = [
   },
 ];
 
-export const Default: StoryObj<typeof AddressFinder> = {
-  args: {
-    addressResults: mockResults,
-    searchAddress: (term) => {
-      console.log(term);
-    },
-    chosenAddress: (address) => {
-      console.log(address);
-    },
-  },
-  decorators: [
-    (Story) => (
-      <Themes theme="A-HCA-White">
-        <div style={{ width: 700, margin: 'auto', padding: '2rem' }}>
-          <Story />
-        </div>
-      </Themes>
-    ),
-  ],
+const meta: Meta<typeof AddressFinder> = {
+  component: AddressFinder,
 };
 
-let submittedAddress = '';
+export default meta;
+type Story = StoryObj<typeof AddressFinder>;
 
-const dummySubmit = (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  if (submittedAddress.length) {
-    alert(submittedAddress);
-  } else {
-    alert('error');
-  }
-};
+const AddressFinderWithHooks = () => {
+  const [results, setResults] = useState<addressResult[]>([]);
+  const [showAddressErrors, setShowAddressErrors] = useState(false);
 
-export const WithForm: StoryObj<typeof AddressFinder> = {
-  args: {
-    addressResults: mockResults,
-    searchAddress: (term) => {
-      console.log(term);
-    },
-    chosenAddress: (address) => {
-      const { line1 } = address;
-      submittedAddress = `${line1}`;
-    },
-  },
-  decorators: [
-    (Story) => (
+  let submittedAddress = '';
+
+  const dummySubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (submittedAddress.length) {
+      alert(submittedAddress);
+    } else {
+      setShowAddressErrors(true);
+    }
+  };
+
+  return (
+    <>
       <Themes theme="A-HCA-White">
         <form
           onSubmit={dummySubmit}
           style={{ width: 700, margin: 'auto', padding: '2rem' }}
         >
-          <Story />
-          <br></br>
-          <Button variation="full" size="large">
-            <button type="submit">Submit</button>
-          </Button>
+          <AddressFinder
+            addressResults={results}
+            searchAddress={(term) => {
+              console.log(term);
+              setResults(mockResults);
+            }}
+            chosenAddress={(address) => {
+              const { line1 } = address;
+              submittedAddress = `${line1}`;
+            }}
+            displayErrors={showAddressErrors}
+          />
+          <div style={{ paddingTop: '2rem' }}>
+            <Button variation="full" size="large">
+              <button type="submit">Submit</button>
+            </Button>
+          </div>
         </form>
       </Themes>
-    ),
-  ],
+    </>
+  );
+};
+
+export const Default: Story = {
+  render: () => <AddressFinderWithHooks />,
 };

@@ -8,8 +8,14 @@ import Text from '../../foundation/Text/Text';
 import { useDebouncedCallback } from 'use-debounce';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
-  const { helpText, searchAddress, addressResults, isLoading, chosenAddress } =
-    props;
+  const {
+    searchAddress,
+    chosenAddress,
+    addressResults,
+    isLoading,
+    displayErrors,
+    helpText,
+  } = props;
 
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -35,11 +41,17 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
   useEffect(() => {
     if (addressResults) {
-      console.log('results');
       setResults(addressResults);
       setShowResults(true);
     }
   }, [addressResults]);
+
+  useEffect(() => {
+    if (displayErrors) {
+      setManualFieldsVisible(true);
+      setShowAutoSearch(false);
+    }
+  }, [displayErrors]);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const clearInput = () => {
@@ -176,70 +188,101 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
       {manualFieldsVisible && (
         <div className={styles['manual-fields']}>
-          <label htmlFor="address-1">Address Line 1</label>
-          <input
-            id="address-1"
-            required={true}
-            onChange={(e) =>
-              setSelectedAddress({
-                ...selectedAddress,
-                line1: e.target.value,
-              })
-            }
-            value={selectedAddress.line1}
-            pattern="^[a-zA-Z0-9- ']{1,60}$"
-          />
+          <div className={styles['manual-field-wrapper']}>
+            <label htmlFor="address-1">Address Line 1</label>
+            <input
+              id="address-1"
+              required={true}
+              onChange={(e) =>
+                setSelectedAddress({
+                  ...selectedAddress,
+                  line1: e.target.value,
+                })
+              }
+              value={selectedAddress.line1}
+              pattern="^[a-zA-Z0-9- ']{1,60}$"
+            />
+            <div className={styles['error-message']}>
+              <Icons iconName="iconWarning" />
+              <Text variation="body-medium-medium">
+                Please enter the first line of your address
+              </Text>
+            </div>
+          </div>
 
-          <label htmlFor="line2">Address Line 2</label>
-          <input
-            id="line2"
-            onChange={(e) =>
-              setSelectedAddress({
-                ...selectedAddress,
-                line2: e.target.value,
-              })
-            }
-            value={selectedAddress.line2}
-            pattern="^[a-zA-Z0-9- ']{1,60}$"
-          />
+          <div className={styles['manual-field-wrapper']}>
+            <label htmlFor="line2">Address Line 2</label>
+            <input
+              id="line2"
+              onChange={(e) =>
+                setSelectedAddress({
+                  ...selectedAddress,
+                  line2: e.target.value,
+                })
+              }
+              value={selectedAddress.line2}
+              pattern="^[a-zA-Z0-9- ']{1,60}$"
+            />
 
-          <label htmlFor="city">City</label>
-          <input
-            id="city"
-            required={true}
-            onChange={(e) =>
-              setSelectedAddress({ ...selectedAddress, city: e.target.value })
-            }
-            value={selectedAddress.city}
-            pattern="^[a-zA-Z0-9- ']{1,60}$"
-          />
+            <label htmlFor="city">City</label>
+            <input
+              id="city"
+              required={true}
+              onChange={(e) =>
+                setSelectedAddress({ ...selectedAddress, city: e.target.value })
+              }
+              value={selectedAddress.city}
+              pattern="^[a-zA-Z0-9- ']{1,60}$"
+            />
+            <div className={styles['error-message']}>
+              <Icons iconName="iconWarning" />
+              <Text variation="body-medium-medium">
+                Please enter town or city name
+              </Text>
+            </div>
+          </div>
 
-          <label htmlFor="postcode">Postcode</label>
-          <input
-            id="postcode"
-            required={true}
-            onChange={(e) =>
-              setSelectedAddress({
-                ...selectedAddress,
-                postcode: e.target.value,
-              })
-            }
-            value={selectedAddress.postcode}
-            pattern="^[a-zA-Z0-9- ']{1,60}$"
-          />
+          <div className={styles['manual-field-wrapper']}>
+            <label htmlFor="postcode">Postcode</label>
+            <input
+              id="postcode"
+              required={true}
+              onChange={(e) =>
+                setSelectedAddress({
+                  ...selectedAddress,
+                  postcode: e.target.value,
+                })
+              }
+              value={selectedAddress.postcode}
+              pattern="^[a-zA-Z0-9- ']{1,60}$"
+            />
+            <div className={styles['error-message']}>
+              <Icons iconName="iconWarning" />
+              <Text variation="body-medium-medium">
+                Please enter a valid postcode
+              </Text>
+            </div>
+          </div>
 
-          <label htmlFor="country">Country</label>
-          <input
-            id="country"
-            required={true}
-            onChange={(e) =>
-              setSelectedAddress({
-                ...selectedAddress,
-                country: e.target.value,
-              })
-            }
-            value={selectedAddress.country}
-          />
+          <div className={styles['manual-field-wrapper']}>
+            <label htmlFor="country">Country</label>
+            <input
+              id="country"
+              required={true}
+              onChange={(e) =>
+                setSelectedAddress({
+                  ...selectedAddress,
+                  country: e.target.value,
+                })
+              }
+              value={selectedAddress.country}
+            />
+            <div className={styles['error-message']}>
+              <Icons iconName="iconWarning" />
+              <Text variation="body-medium-medium">Please enter a country</Text>
+            </div>
+          </div>
+
           <div className={styles['new-search']}>
             <TextButton theme="dark">
               <button onClick={clearAddress} type="button">
