@@ -85,7 +85,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               <JssImage field={card.image?.jsonValue} editable={false} />
             )}
 
-            <JssDate field={card.date?.jsonValue} />
+            <JssDate field={card.date?.jsonValue} editable={false} />
             {(card.abstractTitle?.value || card.title?.value) && (
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}

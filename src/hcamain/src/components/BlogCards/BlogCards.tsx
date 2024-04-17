@@ -109,7 +109,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
             ) : (
               <JssImage field={card.fields.Image} editable={false} />
             )}
-            <JssDate field={card.fields?.Date} />
+            <JssDate field={card.fields?.Date} editable={false} />
             <Text tag={'h3'} variation={'heading-2'}>
               <a href={card.url}>
                 {card.fields?.AbstractTitle?.value ? (
@@ -192,7 +192,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   <JssImage field={card.fields.Image} editable={false} />
                 )
               )}
-              <JssDate field={card.fields?.Date} />
+              <JssDate field={card.fields?.Date} editable={false} />
               <Text
                 tag={'h3'}
                 variation={isFeature ? 'display-5' : 'heading-2'}
