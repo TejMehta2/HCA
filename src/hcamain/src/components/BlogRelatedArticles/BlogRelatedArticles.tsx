@@ -83,7 +83,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             )}
 
             <JssDate field={card.date?.jsonValue} />
-            {(card.abstractTitle ?.value|| card.title?.value) && (
+            {(card.abstractTitle?.value || card.title?.value) && (
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                 variation="heading-2"
