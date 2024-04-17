@@ -58,7 +58,20 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
     props?.fields?.data?.item?.locations?.PagesList.length
   ) {
     cards = props?.fields?.data?.item?.locations?.PagesList.map(
-      ({ title, street, postCode, city, image, url, getDirections }, index) => (
+      (
+        {
+          abstractTitle,
+          title,
+          street,
+          postCode,
+          city,
+          abstractImage,
+          image,
+          url,
+          getDirections,
+        },
+        index
+      ) => (
         <CardMap
           key={index}
           title={
@@ -66,7 +79,11 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               variation="heading-1"
               tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
             >
-              <JssText field={title} />
+              {abstractTitle?.value ? (
+                <JssText field={abstractTitle} />
+              ) : (
+                <JssText field={title} />
+              )}
             </Text>
           }
           address={
@@ -90,7 +107,13 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               )}
             </>
           }
-          image={<JssImage field={image?.jsonValue} />}
+          image={
+            abstractImage?.jsonValue?.value?.src ? (
+              <JssImage field={abstractImage?.jsonValue} />
+            ) : (
+              <JssImage field={image?.jsonValue} />
+            )
+          }
           ctas={{
             button1: (
               <a href={url.path}>

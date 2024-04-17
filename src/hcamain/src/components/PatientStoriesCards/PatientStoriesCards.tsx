@@ -57,7 +57,10 @@ const returnCards = (
     props?.fields?.data?.item?.patientStories?.PatientStoriesList.length
   ) {
     cards = props?.fields?.data?.item?.patientStories?.PatientStoriesList.map(
-      ({ title, text, image, url }, index) => (
+      (
+        { abstractTitle, title, abstractText, text, abstractImage, image, url },
+        index
+      ) => (
         <CardPatientStories
           key={index}
           title={
@@ -65,15 +68,29 @@ const returnCards = (
               tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
               variation="display-4"
             >
-              <JssText field={title} />
+              {abstractTitle?.value ? (
+                <JssText field={abstractTitle} />
+              ) : (
+                <JssText field={title} />
+              )}
             </Text>
           }
           bodyCopy={
             <Text tag="div" variation="body-large">
-              <JssRichText field={text} />
+              {abstractText?.value ? (
+                <JssRichText field={abstractText} />
+              ) : (
+                <JssRichText field={text} />
+              )}
             </Text>
           }
-          image={<JssImage field={image?.jsonValue} />}
+          image={
+            abstractImage?.jsonValue?.value?.src ? (
+              <JssImage field={abstractImage?.jsonValue} />
+            ) : (
+              <JssImage field={image?.jsonValue} />
+            )
+          }
           link={
             <a href={`${url?.path}`}>
               <JssRichText
@@ -260,7 +277,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
+export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
@@ -337,7 +354,9 @@ export const Cards = (props: PatientStoriesCardsProps): JSX.Element => {
   );
 };
 
-export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+export const SliderWithLeftText = (
+  props: PatientStoriesCardsProps
+): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();

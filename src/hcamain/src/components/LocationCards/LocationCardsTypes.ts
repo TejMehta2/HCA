@@ -18,6 +18,8 @@ type FilterOptionFields = {
 };
 
 type LocationsFields = {
+  abstractTitle?: { value?: string };
+  abstractImage?: { jsonValue?: ImageField };
   title?: { value?: string };
   image?: { jsonValue?: ImageField };
   city?: { value?: string };

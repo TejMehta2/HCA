@@ -16,9 +16,12 @@ import { CardBlockProps } from '@component-library/site-components/CardBlock/Car
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface PagesFields {
-  title?: Field<string>;
-  text?: Field<string>;
-  image?: ImageField;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
   url?: { path?: string };
 }
 
@@ -97,18 +100,34 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
           <CardContent
             key={index}
-            image={showImage ? <JssImage field={card.image} /> : undefined}
+            image={
+              showImage ? (
+                card.abstractImage?.jsonValue.value?.src ? (
+                  <JssImage field={card.abstractImage.jsonValue} />
+                ) : (
+                  <JssImage field={card.image?.jsonValue} />
+                )
+              ) : undefined
+            }
             title={
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
                 variation="heading-1"
               >
-                <JssText field={card.title} />
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
+                ) : (
+                  <JssText field={card.title} />
+                )}
               </Text>
             }
             bodyCopy={
               <Text tag="p" variation="body-medium">
-                <JssRichText tag="span" field={card.text} />
+                {card.abstractText?.value ? (
+                  <JssRichText tag="span" field={card.abstractText} />
+                ) : (
+                  <JssRichText tag="span" field={card.text} />
+                )}
               </Text>
             }
             link={

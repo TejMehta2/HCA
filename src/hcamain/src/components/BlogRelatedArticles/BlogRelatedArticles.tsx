@@ -76,20 +76,33 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             .toLowerCase();
         return (
           <CardBlog key={index}>
-            <JssImage field={card.abstractImage?.jsonValue} />
+            {card.abstractImage?.jsonValue?.value?.src ? (
+              <JssImage field={card.abstractImage?.jsonValue} />
+            ) : (
+              <JssImage field={card.image?.jsonValue} />
+            )}
+
             <JssDate field={card.date?.jsonValue} />
-            {card.abstractTitle && (
+            {(card.abstractTitle ?.value|| card.title?.value) && (
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                 variation="heading-2"
               >
                 <a href={card.url?.path}>
-                  <JssText field={card.abstractTitle} />
+                  {card.abstractTitle?.value ? (
+                    <JssText field={card.abstractTitle} />
+                  ) : (
+                    <JssText field={card.title} />
+                  )}
                 </a>
               </Text>
             )}
             <Text tag="span" variation="body-large">
-              <JssRichText field={card.abstractText} />
+              {card.abstractText?.value ? (
+                <JssRichText field={card.abstractText} />
+              ) : (
+                <JssRichText field={card.text} />
+              )}
             </Text>
             {!!card.articleType && (
               <Tags>

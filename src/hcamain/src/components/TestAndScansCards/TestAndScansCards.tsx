@@ -23,11 +23,11 @@ type CTAIconFields = {
 };
 
 type DiagnosisFields = {
-  abstractTitle?: Field<string>;
-  abstractText?: Field<string>;
-  abstractImage?: { jsonValue?: ImageField };
-  title?: { value?: Field<string> };
-  text?: { value?: Field<string> };
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
   image?: { jsonValue?: ImageField };
   url?: { path?: string };
 };
@@ -132,7 +132,11 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             key={index}
             image={
               showImage ? (
-                <JssImage field={card.abstractImage?.jsonValue} />
+                card.abstractImage?.jsonValue?.value?.src ? (
+                  <JssImage field={card.abstractImage.jsonValue} />
+                ) : (
+                  <JssImage field={card.image?.jsonValue} />
+                )
               ) : undefined
             }
             title={
@@ -140,12 +144,20 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
                 variation="heading-1"
               >
-                <JssText field={card.abstractTitle} />
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
+                ) : (
+                  <JssText field={card.title} />
+                )}
               </Text>
             }
             bodyCopy={
               <Text tag="p" variation="body-medium">
-                <JssRichText tag="span" field={card.abstractText} />
+                {card.abstractText?.value ? (
+                  <JssRichText tag="span" field={card.abstractText} />
+                ) : (
+                  <JssRichText tag="span" field={card.text} />
+                )}
               </Text>
             }
             link={
