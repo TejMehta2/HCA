@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface addressResult {
   line1: string;
   line2: string;
@@ -8,7 +6,9 @@ export interface addressResult {
   country: string;
 }
 export interface AddressFinderProps {
-  children?: ReactNode | JSX.Element;
   helpText?: string;
   addressResults?: addressResult[];
+  isLoading: boolean;
+  searchAddress: (term: string) => void;
+  chosenAddress: (address: addressResult) => void;
 }

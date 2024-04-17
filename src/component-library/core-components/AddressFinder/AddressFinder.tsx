@@ -5,16 +5,17 @@ import TextButton from '../TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import Text from '../../foundation/Text/Text';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import { useDebouncedCallback } from 'use-debounce';
 
 const AddressFinder = (props: AddressFinderProps): JSX.Element => {
-  const { helpText, addressResults } = props;
+  const { helpText, searchAddress, addressResults, isLoading, chosenAddress } =
+    props;
 
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<addressResult[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [showAutoSearch, setShowAutoSearch] = useState(true);
   const [selectedAddress, setSelectedAddress] = useState({
     line1: '',
     line2: '',
@@ -25,20 +26,32 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   const [showSelectedAddress, setShowSelectedAddress] = useState(false);
 
   useEffect(() => {
+    if (isLoading) {
+      setLoading(isLoading);
+    }
+
+    chosenAddress(selectedAddress);
+  }, [isLoading, selectedAddress, chosenAddress]);
+
+  useEffect(() => {
     if (addressResults) {
+      console.log('results');
       setResults(addressResults);
       setShowResults(true);
     }
-  }, [searchTerm, addressResults]);
+  }, [addressResults]);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const clearInput = () => {
     if (!inputRef.current) return;
     inputRef.current.value = '';
+    setResults([]);
   };
 
   const showManualFields = () => {
     setManualFieldsVisible(true);
+    setShowSelectedAddress(false);
+    setShowAutoSearch(false);
   };
 
   const clearAddress = () => {
@@ -50,56 +63,65 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       postcode: '',
     });
     setShowSelectedAddress(false);
+    setShowAutoSearch(true);
+    setManualFieldsVisible(false);
   };
 
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-    setResults(results);
-  };
+  const handleTextChange = useDebouncedCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      searchAddress(e.target.value);
+      setResults(results);
+    },
+    1000
+  );
 
   const selectResult = (result: addressResult) => {
     const { line1, line2, city, country, postcode } = result;
-    setSelectedAddress({
+    const address = {
       line1: line1,
       line2: line2,
       city: city,
       country: country,
       postcode: postcode,
-    });
+    };
+    setSelectedAddress(address);
     setShowSelectedAddress(true);
+    setResults([]);
     setShowResults(false);
+    setShowAutoSearch(false);
     if (!inputRef.current) return;
     inputRef.current.value = `${line1}, ${line2}, ${city}, ${country}, ${postcode}`;
   };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles['search-wrapper']}>
-        <input
-          type="text"
-          className={styles.search}
-          placeholder="Start typing your address..."
-          onChange={handleTextChange}
-          ref={inputRef}
-        />
-        <span className={styles.cross} onClick={clearInput}>
-          <Icons iconName="iconCross" />
-        </span>
-      </div>
-      {/* <SearchBar
-        placeholder="Start typing your address..."
-        handleInputChange={handleTextChange}
-        searchValue={searchTerm}
-      /> */}
+      {showAutoSearch && (
+        <>
+          <div className={styles['search-wrapper']}>
+            <Icons iconName={'iconSearch'} />
+            <input
+              type="text"
+              className={styles.search}
+              placeholder="Start typing your address..."
+              onChange={handleTextChange}
+              ref={inputRef}
+            />
+            <span className={styles.cross} onClick={clearInput}>
+              <Icons iconName="iconCross" />
+            </span>
+          </div>
 
-      <div className={styles['manual-button']}>
-        <TextButton theme="dark">
-          <button onClick={showManualFields} type="button">
-            Enter your address manually
-          </button>
-        </TextButton>
-      </div>
-      {helpText && <div>{helpText}</div>}
+          <div className={styles['manual-button']}>
+            <TextButton theme="dark">
+              <button onClick={showManualFields} type="button">
+                Enter your address manually
+              </button>
+            </TextButton>
+          </div>
+          {helpText && <div>{helpText}</div>}
+        </>
+      )}
+
       {!!results?.length && showResults && (
         <div className={styles.results}>
           <ul>
@@ -159,19 +181,26 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
             id="address-1"
             required={true}
             onChange={(e) =>
-              setSelectedAddress({ ...selectedAddress, line1: e.target.value })
+              setSelectedAddress({
+                ...selectedAddress,
+                line1: e.target.value,
+              })
             }
             value={selectedAddress.line1}
+            pattern="^[a-zA-Z0-9- ']{1,60}$"
           />
 
           <label htmlFor="line2">Address Line 2</label>
           <input
             id="line2"
-            required={true}
             onChange={(e) =>
-              setSelectedAddress({ ...selectedAddress, line2: e.target.value })
+              setSelectedAddress({
+                ...selectedAddress,
+                line2: e.target.value,
+              })
             }
             value={selectedAddress.line2}
+            pattern="^[a-zA-Z0-9- ']{1,60}$"
           />
 
           <label htmlFor="city">City</label>
@@ -182,6 +211,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               setSelectedAddress({ ...selectedAddress, city: e.target.value })
             }
             value={selectedAddress.city}
+            pattern="^[a-zA-Z0-9- ']{1,60}$"
           />
 
           <label htmlFor="postcode">Postcode</label>
@@ -195,6 +225,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               })
             }
             value={selectedAddress.postcode}
+            pattern="^[a-zA-Z0-9- ']{1,60}$"
           />
 
           <label htmlFor="country">Country</label>
@@ -209,6 +240,13 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
             }
             value={selectedAddress.country}
           />
+          <div className={styles['new-search']}>
+            <TextButton theme="dark">
+              <button onClick={clearAddress} type="button">
+                New search
+              </button>
+            </TextButton>
+          </div>
         </div>
       )}
     </div>
