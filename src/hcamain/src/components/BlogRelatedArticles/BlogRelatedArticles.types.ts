@@ -27,9 +27,12 @@ type FilterOptionsFields = {
 };
 
 export type BlogPageFields = {
-  abstractTitle?: Field<string>;
-  abstractText?: Field<string>;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
   abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
   date?: { jsonValue: Field<string> };
   articleType?: { targetItem?: ArticleTypeFields };
   url?: { path: string };
