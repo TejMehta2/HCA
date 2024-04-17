@@ -81,7 +81,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           paddingSize="small"
           title={
             <Text
-              variation={props.params?.HeadingSize || 'heading-1'}
+              variation={props.params?.HeadingSize || 'display-3'}
               tag={props.params?.HeadingTag || 'h2'}
             >
               <JssText
