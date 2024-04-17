@@ -16,15 +16,19 @@
     opacity: 0;
   }
 
-  &:has(input:focus) {
-    .cross {
-      opacity: 1;
-    }
+  .manual-button {
+    margin-top: $spacing-3;
   }
 
   &:has(.results) {
     .manual-button {
       display: none;
+    }
+  }
+
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
     }
   }
 }
@@ -51,9 +55,10 @@
       width: 100%;
 
       button {
+        @include apply-body-medium-large;
+
         display: flex;
         gap: $spacing-3;
-        @include apply-body-medium-large;
         color: $navy-blue-100;
         background: transparent;
         border: 0;
@@ -68,10 +73,6 @@
       }
     }
   }
-}
-
-.manual-button {
-  margin-top: $spacing-3;
 }
 
 .selected-address {

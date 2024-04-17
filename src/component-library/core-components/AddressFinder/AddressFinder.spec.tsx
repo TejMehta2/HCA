@@ -30,10 +30,17 @@ const mockResults = [
   },
 ];
 
+let submittedAddress = '';
+console.log(submittedAddress);
+
 const mockProps: AddressFinderProps = {
   addressResults: mockResults,
   searchAddress: (term) => {
     console.log(term);
+  },
+  chosenAddress: (address) => {
+    const { line1 } = address;
+    submittedAddress = `${line1}`;
   },
 };
 
