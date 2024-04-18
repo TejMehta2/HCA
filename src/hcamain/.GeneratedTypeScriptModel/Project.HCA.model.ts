@@ -17885,6 +17885,11 @@ Foundation.HcabasePageDataJson &  {
             SearchResultsText?: Field<string>;
 
             /**
+            * Represents the Search Results Text With Input field (874520c1-dbc1-41cf-a141-d4383d64d0bd).
+            */
+            SearchResultsTextWithInput?: Field<string>;
+
+            /**
             * Represents the Sort Options field (94e928c6-4dfd-49c7-b02f-755e5d8f20c7).
             */
             SortOptions?: Item[];
@@ -17977,6 +17982,13 @@ Foundation.HcabasePageDataJson &  {
             * Represents the Search Results Text field (16809488-0f7d-4b5e-9ab5-ed6805194fa7).
             */
             searchResultsText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Search Results Text With Input field (874520c1-dbc1-41cf-a141-d4383d64d0bd).
+            */
+            searchResultsTextWithInput?: {
                 jsonValue: Field<string>
             };
 
