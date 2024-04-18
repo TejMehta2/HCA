@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
 import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
 
 import {
   Image as JssImage,
@@ -30,7 +31,7 @@ import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButt
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
 import Checkbox from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
-import axios from 'axios';
+import Container from '@component-library/foundation/Containers/Container';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -583,34 +584,40 @@ export const Default = (props: StepProps): JSX.Element => {
               {/* https://www.npmjs.com/package/@hookform/devtools */}
               <DevTool control={control} placement="top-right" />
               <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
-                <Text tag="h1" variation="display-4">
-                  {props?.fields?.LiveBookingFormHeadline?.value ||
-                    'Your details'}
-                </Text>
-                <Text tag="p" variation="body-medium-large">
-                  {props?.fields?.LiveBookingFormSubHeadline?.value ||
-                    'All fields are required unless specified as optional.'}
-                </Text>
+                <Container marginBottom="spacing-6" marginTop="spacing-4">
+                  <Text tag="h1" variation="display-4">
+                    {props?.fields?.LiveBookingFormHeadline?.value ||
+                      'Your details'}
+                  </Text>
+                  <Text tag="p" variation="body-medium-large">
+                    {props?.fields?.LiveBookingFormSubHeadline?.value ||
+                      'All fields are required unless specified as optional.'}
+                  </Text>
+                </Container>
                 {/* About you */}
                 <Text tag="h2" variation="heading-1">
                   About you
                 </Text>
-                {props?.fields?.LiveBookingFormUserOptions &&
-                  props?.fields?.LiveBookingFormUserOptions.map((item: any) => (
-                    <RadioButton
-                      key={item.id}
-                      label={item?.fields?.Label?.value || ''}
-                      name={'user'}
-                      value={item?.fields?.Value?.value}
-                      register={register}
-                    />
-                  ))}
-                {errors?.user && (
-                  <ErrorMessage errorMessage={errors?.user?.message} />
-                )}
+                <Container marginBottom="spacing-6" marginTop="spacing-4">
+                  {props?.fields?.LiveBookingFormUserOptions &&
+                    props?.fields?.LiveBookingFormUserOptions.map(
+                      (item: any) => (
+                        <RadioButton
+                          key={item.id}
+                          label={item?.fields?.Label?.value || ''}
+                          name={'user'}
+                          value={item?.fields?.Value?.value}
+                          register={register}
+                        />
+                      )
+                    )}
+                  {errors?.user && (
+                    <ErrorMessage errorMessage={errors?.user?.message} />
+                  )}
+                </Container>
 
                 {watchFormChanges.user !== '' && (
-                  <div>
+                  <>
                     {/* About appointment */}
                     <Text tag="h2" variation="heading-1">
                       About the appointment
@@ -618,7 +625,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     {/* Show payment option radio if user is patient */}
                     {/* Payment */}
                     {watchFormChanges.user === 'patient' && (
-                      <>
+                      <Container marginBottom="spacing-6" marginTop="spacing-2">
                         {props?.fields
                           ?.LiveBookingFormAboutAppointmentOptions &&
                           props?.fields?.LiveBookingFormAboutAppointmentOptions.map(
@@ -637,7 +644,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             errorMessage={errors?.payment?.message}
                           />
                         )}
-                      </>
+                      </Container>
                     )}
 
                     {/* Payment fields mandatory/visible if payment is insurance or user is insurer */}
@@ -711,28 +718,30 @@ export const Default = (props: StepProps): JSX.Element => {
                       isError={errors?.reasonForAppointment ? true : false}
                       errorMessage={errors?.reasonForAppointment?.message}
                     ></Textarea>
-                    <Text tag="h2" variation="body-medium-large">
-                      {props?.fields?.LiveBookingFormGpreferralSubHeadline
-                        ?.value ||
-                        'Has the patient received a referral from their GP ?'}
-                    </Text>
-                    {props?.fields?.LiveBookingFormGpreferralOptions &&
-                      props?.fields?.LiveBookingFormGpreferralOptions.map(
-                        (item: any) => (
-                          <RadioButton
-                            key={item.id}
-                            label={item?.fields?.Label?.value || ''}
-                            name={'gpreferral'}
-                            value={item?.fields?.Value?.value}
-                            register={register}
-                          />
-                        )
+                    <Container marginBottom="spacing-6" marginTop="spacing-4">
+                      <Text tag="h2" variation="body-medium-extra-large">
+                        {props?.fields?.LiveBookingFormGpreferralSubHeadline
+                          ?.value ||
+                          'Has the patient received a referral from their GP ?'}
+                      </Text>
+                      {props?.fields?.LiveBookingFormGpreferralOptions &&
+                        props?.fields?.LiveBookingFormGpreferralOptions.map(
+                          (item: any) => (
+                            <RadioButton
+                              key={item.id}
+                              label={item?.fields?.Label?.value || ''}
+                              name={'gpreferral'}
+                              value={item?.fields?.Value?.value}
+                              register={register}
+                            />
+                          )
+                        )}
+                      {errors?.gpreferral && (
+                        <ErrorMessage
+                          errorMessage={errors?.gpreferral?.message}
+                        />
                       )}
-                    {errors?.gpreferral && (
-                      <ErrorMessage
-                        errorMessage={errors?.gpreferral?.message}
-                      />
-                    )}
+                    </Container>
                     {/* About the patient */}
                     <Text tag="h2" variation="heading-1">
                       About the patient
@@ -1194,7 +1203,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         }
                       }}
                     />
-                    <input name="recaptcha" type="hidden" />
+                    <input {...register('recaptcha')} type="hidden" />
                     {errors?.recaptcha && (
                       <ErrorMessage errorMessage={errors?.recaptcha?.message} />
                     )}
@@ -1204,7 +1213,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         {isSubmitting ? 'Submitting' : 'Submit'}
                       </button>
                     </Button>
-                  </div>
+                  </>
                 )}
               </form>
               <AppointmentSummary
