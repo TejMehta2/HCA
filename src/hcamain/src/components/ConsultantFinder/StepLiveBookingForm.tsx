@@ -112,9 +112,14 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  const { selectedLocationName, selectedDate, selectedTime } = useContext(
-    ConsultantFinderContext
-  );
+  const {
+    selectedLocationName,
+    selectedDate,
+    selectedTime,
+    consultantGUID,
+    locationGUID,
+    selectedTypeOfAppointment,
+  } = useContext(ConsultantFinderContext);
   console.log('step booking form', props.fields);
 
   const schema = z
@@ -391,13 +396,15 @@ export const Default = (props: StepProps): JSX.Element => {
   const postData = (data: any) => {
     const dataToPost = {
       dateFrom: '2023-08-29T10:30:00',
-      isFollowOnAppointment: 'true',
-      HCAConsultantId: '4113571',
-      FacilityId: 'COCWB',
+      isFollowOnAppointment: selectedTypeOfAppointment,
+      HCAConsultantId: gmcNumber,
+      // ConsultantGUID: consultantGUID,
+      FacilityId: locationGUID,
       selectedSpeciality: 'Hip Replacement',
-      reasonForAppointment: 'tests',
+      reasonForAppointment: data.reasonForAppointment,
       demographics: {
-        previouslyBeenWithHCA: true, // true
+        previouslyBeenWithHCA:
+          data.previouslyBeenWithHCA === 'Yes' ? true : false,
         patientCode: data.patientCode,
         title: data.title,
         firstName: data.firstName,
@@ -411,24 +418,23 @@ export const Default = (props: StepProps): JSX.Element => {
         towncity: data.towncity,
         postcode: data.postcode,
         country: data.country,
-        marketingPreferenceEmail: false,
-        marketingPreferencePhone: false,
-        marketingPreferenceSMS: false,
-        marketingPreferencePost: false,
-        selectedSpeciality: 'Hip Replacement',
-        datesCannotDo: '',
-        representativeTitle: 'Ms',
-        representativeFirstName: 'ZZZTestFirstRep',
-        representativeLastName: 'ZZZTestLastRep',
-        representativeRelation: 'Sister',
-        representativeEmail: 'joan@krs.com',
-        representativePhone: '07765777666',
-        bookingBy: 'Insurance Company',
-        paidBy: 'Joe James II',
-        insuranceProvider: 'AXA',
-        insurancePolicyNumber: '234234',
-        insuranceAuthorisationCode: '23432',
-        gpreferral: true, //true
+        marketingPreferenceEmail: data.marketingPreferenceEmail,
+        marketingPreferencePhone: data.marketingPreferencePhone,
+        marketingPreferenceSMS: data.marketingPreferenceSMS,
+        marketingPreferencePost: data.marketingPreferencePost,
+        datesCannotDo: data.datesCannotDo,
+        representativeTitle: data.representativeTitle,
+        representativeFirstName: data.representativeFirstName,
+        representativeLastName: data.representativeLastName,
+        representativeRelation: data.representativeRelation,
+        representativeEmail: data.representativeEmail,
+        representativePhone: data.representativePhone,
+        bookingBy: data.user,
+        paidBy: data.payment,
+        insuranceProvider: data.insuranceProvider,
+        insurancePolicyNumber: data.insurancePolicyNumber,
+        insuranceAuthorisationCode: data.insuranceAuthorisationCode,
+        gpreferral: data.gpreferral === 'yes' ? true : false,
       },
     };
 
@@ -452,8 +458,9 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log(response);
         console.log(JSON.stringify(response.data));
         console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
-        // disable modal with confirmed appointment in case user navigates back to avoid conflict
         // go to thank you page
+        // /Finder/Step-Live-Booking-Confirmation
+        router.push(`/Finder/Step-Live-Booking-Confirmation`);
       })
       .catch(function (error) {
         // handle error with status code other than 200
@@ -546,7 +553,7 @@ export const Default = (props: StepProps): JSX.Element => {
       setValue('insurancePolicyNumber', '');
       setValue('insuranceAuthorisationCode', '');
     }
-    if (watchFormChanges.previouslyBeenWithHCA === 'no') {
+    if (watchFormChanges.previouslyBeenWithHCA === 'No') {
       setValue('patientCode', '');
     }
     if (watchFormChanges.contactDetails === false) {
