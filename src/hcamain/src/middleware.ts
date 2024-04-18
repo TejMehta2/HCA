@@ -1,8 +1,16 @@
-import type { NextRequest, NextFetchEvent } from 'next/server';
+import { NextRequest, NextFetchEvent, NextResponse } from 'next/server';
 import middleware from 'lib/middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
+  const { nextUrl: url, geo } = req;
+
+  if (!url.searchParams.has('location') && geo?.city) {
+    const city = geo?.city || 'London';
+    url.searchParams.set('location', `${city}`);
+    return NextResponse.redirect(url);
+  }
+
   return middleware(req, ev);
 }
 
