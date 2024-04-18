@@ -60,6 +60,7 @@ const AddressFinderWithHooks = () => {
         <form
           onSubmit={dummySubmit}
           style={{ width: 700, margin: 'auto', padding: '2rem' }}
+          noValidate={true}
         >
           <AddressFinder
             addressResults={results}
