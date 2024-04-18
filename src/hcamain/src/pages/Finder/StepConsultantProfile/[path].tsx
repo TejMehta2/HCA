@@ -20,8 +20,10 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 //import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import NotFound from 'src/NotFound';
-import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
-import { getHCAConfig } from 'lib/consultant-finder/getHCAConfig';
+import {
+  // checkIfLiveBookingIsAvailable,
+  getActiveConsultantSlugs,
+} from '../../../lib/consultant-finder/API_HCA';
 
 const SitecorePage = ({
   notFound,
@@ -80,6 +82,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: any = [];
   let slugs: string[] = [];
 
+  // TODO control the loading of real / test slugs from sitecore settings
+
   //console.log('IN StepConsultantProfile GetStaticPaths');
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
@@ -87,44 +91,33 @@ export const getStaticPaths: GetStaticPaths = async () => {
     process.env.NODE_ENV !== 'development' &&
     !process.env.DISABLE_SSG_FETCH
   ) {
-    fallback = process.env.EXPORT_MODE ? false : fallback;
-  }
-
-  try {
-    // Note: Next.js runs export in production mode
-    //paths = await sitemapFetcher.fetch(context);
-    const HCAAPIConfig = await getHCAConfig();
-    if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
-      // mock from Sitecore / SSG slows down the build, only use real on prod
-      //console.log('getStaticPaths loading mock consultant slugs');
-      slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
-      slugs = slugs.filter((slug) => slug && slug.length > 0);
-    } else {
-      // real from legacy sitemap or doctify
-      //console.log('getStaticPaths loading real consultant slugs');
+    try {
+      // Note: Next.js runs export in production mode
+      //paths = await sitemapFetcher.fetch(context);
       slugs = await getActiveConsultantSlugs();
+    } catch (error) {
+      console.warn(
+        'Error occurred in StepConsultantProfile getStaticPaths',
+        error
+      );
     }
-  } catch (error) {
-    console.warn(
-      'Error occurred in StepConsultantProfile getStaticPaths',
-      error
-    );
+
+    fallback = process.env.EXPORT_MODE ? false : fallback;
+  } else {
+    //mock the real call with just a few consultants to pre-fetch if in dev.
+    //slugs = ['mr-andrew-goldberg', 'mr-sam-singh', 'mr-christian-brown'];
   }
 
-  console.log('StepConsultantProfile slugs to pre-render', slugs);
-  if (slugs) {
-    paths = slugs.map((slug) => ({
-      params: { path: slug },
-    }));
-  } else {
-    paths = [];
-  }
+  slugs = [];
+  paths = slugs.map((slug) => ({
+    params: { path: slug },
+  }));
   fallback = 'blocking';
 
   //console.log('paths:', paths);
   //console.log('fallback:', fallback);
-  //console.log('OUT StepConsultantProfile GetStaticPaths');
 
+  console.log('OUT StepConsultantProfile GetStaticPaths');
   return {
     paths,
     fallback,
@@ -138,12 +131,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
-    //console.log('StepConsultantProfile path:', context?.params?.path);
+    console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
     context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
   }
-  const props = await sitecorePagePropsFactory.create(context);
-  //console.log('props:', props);
 
   // if needed here, we can get our slug from the url path like this...
   /*
@@ -168,28 +159,34 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // but also at the component level using component props...
 
   //console.log('OUT StepConsultantProfile GetStaticProps');
-  return {
-    props,
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 5 seconds
-    revalidate: 300, // In seconds
-    notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
-  };
-
-  // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-  try {
+  // Allow pre-render errors to pass through in development, for debugging
+  if (process.env.NODE_ENV === 'development') {
     const props = await sitecorePagePropsFactory.create(context);
+    //console.log('props:', props);
     return {
       props,
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every 5 seconds
       revalidate: 5, // In seconds
       notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
     };
-  } catch (error) {
-    console.error(error);
-    return {
-      notFound: true,
-    };
+  } else {
+    try {
+      // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+      const props = await sitecorePagePropsFactory.create(context);
+      //console.log('props:', props);
+      return {
+        props,
+        revalidate: 300, // In seconds
+        notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        notFound: true,
+      };
+    }
   }
 };
 
