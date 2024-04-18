@@ -93,6 +93,7 @@
 .manual-fields {
   display: grid;
   gap: $spacing-5 0;
+  color: var(--text);
 
   label {
     display: flex;
