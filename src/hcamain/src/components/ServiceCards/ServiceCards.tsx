@@ -4,7 +4,7 @@ import {
   LinkField,
   RichText as JssRichText,
   Text as JssText,
-  ImageFieldValue,
+  ImageField,
   Image as JssImage,
   Link as JssLink,
   useSitecoreContext,
@@ -24,9 +24,12 @@ type HCAIconFields = {
 
 type ServiceFields = {
   fields?: {
+    AbstractTitle?: Field<string>;
+    AbstractText?: Field<string>;
+    AbstractImage?: ImageField;
     Title?: Field<string>;
     Description?: Field<string>;
-    Image?: ImageFieldValue;
+    Image?: ImageField;
   };
 
   url?: string;
@@ -129,9 +132,20 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
             key={index}
           >
-            <JssImage field={service?.fields?.Image} editable={false} />
+            {service.fields?.AbstractImage?.value?.src ? (
+              <JssImage
+                field={service?.fields?.AbstractImage}
+                editable={false}
+              />
+            ) : (
+              <JssImage field={service?.fields?.Image} editable={false} />
+            )}
             <Text tag="div" variation="display-6">
-              <JssText field={service?.fields?.Title} editable={false} />
+              {service.fields?.AbstractTitle?.value ? (
+                <JssText field={service?.fields?.AbstractTitle} />
+              ) : (
+                <JssText field={service?.fields?.Title} />
+              )}
             </Text>
           </CardService>
         ))}

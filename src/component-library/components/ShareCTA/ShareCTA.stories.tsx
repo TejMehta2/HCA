@@ -36,7 +36,11 @@ export const Default: StoryObj<typeof ShareCTA> = {
         Share <strong>cost information</strong>
       </span>
     ),
-
+    shareCtaIcon: (
+      <span>
+        <Icons iconName="iconShare" />
+      </span>
+    ),
     children: (
       <>
         <Button size="large" variation="square-outline">

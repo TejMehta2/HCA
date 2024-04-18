@@ -1,5 +1,5 @@
 ﻿---
-ID: "a995cac1-5b75-408e-8f33-e72394ea03b6"
+ID: "e038bd46-ccac-4fd7-8153-ad832283c24d"
 Parent: "9e60c77a-ec91-4a52-9fbc-195cea817c89"
 Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
 Path: "/sitecore/content/HCA/HCA-Main/Presentation/Headless Variants/Patient Stories Cards/Slider"
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240409T083948Z
+      Value: 20240409T083936Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0166950b-26a4-4301-9fb3-7dab4348b4e0"
+      Value: "14b6cd60-f28b-43ef-aaf0-93d27820e052"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240409T083948Z
+      Value: 20240416T135245Z
