@@ -44,11 +44,11 @@ const AddressFinderWithHooks = () => {
   const [results, setResults] = useState<addressResult[]>([]);
   const [showAddressErrors, setShowAddressErrors] = useState(false);
   const [term, setTerm] = useState('');
-
-  let submittedAddress = '';
+  const [submittedAddress, setSubmittedAddress] = useState('');
 
   const dummySubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setShowAddressErrors(false);
     if (submittedAddress.length) {
       alert(submittedAddress);
     } else {
@@ -62,6 +62,12 @@ const AddressFinderWithHooks = () => {
     }
   }, [term]);
 
+  useEffect(() => {
+    if (submittedAddress.length) {
+      setShowAddressErrors(false);
+    }
+  }, [submittedAddress]);
+
   return (
     <>
       <Themes theme="A-HCA-White">
@@ -73,15 +79,17 @@ const AddressFinderWithHooks = () => {
           <AddressFinder
             addressResults={results}
             searchAddress={(term) => {
-              console.log(term);
               setTerm(term);
               setResults([]);
             }}
             chosenAddress={(address) => {
               const { line1 } = address;
-              submittedAddress = `${line1}`;
+              setSubmittedAddress(`${line1}`);
             }}
             displayErrors={showAddressErrors}
+            errors={(error) => {
+              setShowAddressErrors(error);
+            }}
           />
           <div style={{ paddingTop: '2rem' }}>
             <Button variation="full" size="large">

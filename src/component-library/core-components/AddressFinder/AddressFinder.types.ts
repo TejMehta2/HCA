@@ -11,5 +11,6 @@ export interface AddressFinderProps {
   isLoading?: boolean;
   searchAddress: (term: string) => void;
   chosenAddress: (address: addressResult) => void;
+  errors: (errors: boolean) => void;
   displayErrors?: boolean;
 }

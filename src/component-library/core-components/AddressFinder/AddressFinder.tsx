@@ -15,6 +15,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     isLoading,
     displayErrors,
     helpText,
+    errors,
   } = props;
 
   const [manualFieldsVisible, setManualFieldsVisible] = useState(false);
@@ -40,7 +41,6 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   }, [isLoading, selectedAddress, chosenAddress]);
 
   useEffect(() => {
-    console.log(addressResults);
     if (addressResults) {
       setResults(addressResults);
       setShowResults(true);
@@ -79,6 +79,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     setShowSelectedAddress(false);
     setShowAutoSearch(true);
     setManualFieldsVisible(false);
+    errors(false);
   };
 
   const handleTextChange = useDebouncedCallback(

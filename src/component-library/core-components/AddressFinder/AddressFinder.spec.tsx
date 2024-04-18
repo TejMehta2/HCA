@@ -42,6 +42,9 @@ const mockProps: AddressFinderProps = {
     const { line1 } = address;
     submittedAddress = `${line1}`;
   },
+  errors: (error) => {
+    console.log(error);
+  },
 };
 
 describe('AddressFinder', () => {
