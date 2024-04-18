@@ -57,8 +57,14 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const { selectedLocation, setSelectedTypeOfAppointment, setConsultantGUID } =
-    useContext(ConsultantFinderContext);
+  const {
+    selectedLocation,
+    setSelectedTypeOfAppointment,
+    setConsultantGUID,
+    setHcaConsultantID,
+    setConsultantName,
+    setConsultantMainSpecialty,
+  } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
   //console.log('step location', props.fields);
   const router = useRouter();
@@ -107,6 +113,9 @@ export const Default = (props: StepProps): JSX.Element => {
         setError(false);
         setLocations(res?.data?.availability || []);
         setConsultantGUID(res?.data?.CRMID || '');
+        setHcaConsultantID(res?.data?.professionalRegistrationNumber || '');
+        setConsultantName(`${res?.data?.firstName} ${res?.data?.lastName}`);
+        setConsultantMainSpecialty(res?.data?.providerMainSpecialty || '');
       })
       .catch((error) => {
         setError(true);

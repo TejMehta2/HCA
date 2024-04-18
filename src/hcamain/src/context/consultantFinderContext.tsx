@@ -22,6 +22,10 @@ interface ConsultantFinderContextType {
   setFirstAppointmentDate: React.Dispatch<React.SetStateAction<string>>;
   consultantGUID: string;
   setConsultantGUID: React.Dispatch<React.SetStateAction<string>>;
+  hcaConsultantID: string;
+  setHcaConsultantID: React.Dispatch<React.SetStateAction<string>>;
+  locationID: string;
+  setLocationID: React.Dispatch<React.SetStateAction<string>>;
   locationGUID: string;
   setLocationGUID: React.Dispatch<React.SetStateAction<string>>;
   lat: string;
@@ -36,6 +40,12 @@ interface ConsultantFinderContextType {
   setSelectedLocationName: React.Dispatch<React.SetStateAction<string>>;
   isBookableContent: boolean;
   setIsBookableContent: React.Dispatch<React.SetStateAction<boolean>>;
+  startTime: string;
+  setStartTime: React.Dispatch<React.SetStateAction<string>>;
+  consultantName: string;
+  setConsultantName: React.Dispatch<React.SetStateAction<string>>;
+  consultantMainSpecialty: string;
+  setConsultantMainSpecialty: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -77,6 +87,16 @@ export const ConsultantFinderContext =
     setSelectedLocationName: () => {},
     isBookableContent: true,
     setIsBookableContent: () => {},
+    hcaConsultantID: '',
+    setHcaConsultantID: () => {},
+    locationID: '',
+    setLocationID: () => {},
+    startTime: '',
+    setStartTime: () => {},
+    consultantName: '',
+    setConsultantName: () => {},
+    consultantMainSpecialty: '',
+    setConsultantMainSpecialty: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -104,6 +124,12 @@ export const ConsultantFinderContextProvider = ({
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [selectedLocationName, setSelectedLocationName] = useState<string>('');
   const [isBookableContent, setIsBookableContent] = useState(true);
+  const [hcaConsultantID, setHcaConsultantID] = useState<string>('');
+  const [locationID, setLocationID] = useState<string>('');
+  const [startTime, setStartTime] = useState<string>('');
+  const [consultantName, setConsultantName] = useState<string>('');
+  const [consultantMainSpecialty, setConsultantMainSpecialty] =
+    useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -144,6 +170,16 @@ export const ConsultantFinderContextProvider = ({
         setSelectedLocationName,
         isBookableContent,
         setIsBookableContent,
+        hcaConsultantID,
+        setHcaConsultantID,
+        locationID,
+        setLocationID,
+        startTime,
+        setStartTime,
+        consultantName,
+        setConsultantName,
+        consultantMainSpecialty,
+        setConsultantMainSpecialty,
       }}
     >
       {children}

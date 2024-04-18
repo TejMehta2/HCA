@@ -26,6 +26,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     lon,
     setSelectedDate,
     setSelectedTime,
+    setStartTime,
     setIsBookableContent,
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -184,6 +185,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   ) => {
     setSelectedDate(formatDateLong(startTime));
     setSelectedTime(formatTime12hr(startTime));
+    setStartTime(startTime);
     // console.log(formatDateLong(startTime));
     // console.log(formatTime12hr(startTime));
     // console.log(endTime);

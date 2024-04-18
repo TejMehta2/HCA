@@ -116,9 +116,12 @@ export const Default = (props: StepProps): JSX.Element => {
     selectedLocationName,
     selectedDate,
     selectedTime,
-    consultantGUID,
-    locationGUID,
+    hcaConsultantID,
+    locationID,
     selectedTypeOfAppointment,
+    startTime,
+    consultantMainSpecialty,
+    consultantName,
   } = useContext(ConsultantFinderContext);
   console.log('step booking form', props.fields);
 
@@ -369,38 +372,13 @@ export const Default = (props: StepProps): JSX.Element => {
   } = form;
   console.log('isSubmitting', isSubmitting);
 
-  const onSubmit = (data: any) => {
-    console.log('data', data);
-    postData(data);
-
-    return new Promise<void>((resolve) => {
-      setTimeout(() => resolve(), 1000);
-    });
-  };
-
-  const onError = (errors: FieldErrors) => {
-    console.log('errors on submit', errors);
-  };
-
-  const handleGetValues = () => {
-    console.log('get Values', getValues());
-  };
-
-  const habdleSetFieldValue = () => {
-    // setValue('username', '', {
-    //   shouldValidate: false,
-    // });
-    // setValue('username', '');
-  };
-
   const postData = (data: any) => {
     const dataToPost = {
-      dateFrom: '2023-08-29T10:30:00',
+      dateFrom: startTime, // '2023-08-29T10:30:00' for local test error
       isFollowOnAppointment: selectedTypeOfAppointment,
-      HCAConsultantId: gmcNumber,
-      // ConsultantGUID: consultantGUID,
-      FacilityId: locationGUID,
-      selectedSpeciality: 'Hip Replacement',
+      HCAConsultantId: hcaConsultantID,
+      FacilityId: locationID,
+      selectedSpeciality: consultantMainSpecialty,
       reasonForAppointment: data.reasonForAppointment,
       demographics: {
         previouslyBeenWithHCA:
@@ -473,6 +451,30 @@ export const Default = (props: StepProps): JSX.Element => {
           console.log('error.message', error.message);
         }
       });
+  };
+
+  const onSubmit = (data: any) => {
+    console.log('data', data);
+    postData(data);
+
+    return new Promise<void>((resolve) => {
+      setTimeout(() => resolve(), 1000);
+    });
+  };
+
+  const onError = (errors: FieldErrors) => {
+    console.log('errors on submit', errors);
+  };
+
+  const handleGetValues = () => {
+    console.log('get Values', getValues());
+  };
+
+  const habdleSetFieldValue = () => {
+    // setValue('username', '', {
+    //   shouldValidate: false,
+    // });
+    // setValue('username', '');
   };
 
   const watchFormChanges = watch();
@@ -1226,7 +1228,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <AppointmentSummary
                 title={'Appointment summary'}
                 consultantTitle={'Consultant'}
-                consultantText={'Name'}
+                consultantText={consultantName}
                 locationTitle={'Location'}
                 locationText={selectedLocationName}
                 dateTitle={'Date & time'}
