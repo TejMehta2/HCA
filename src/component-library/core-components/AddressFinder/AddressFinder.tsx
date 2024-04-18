@@ -40,6 +40,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   }, [isLoading, selectedAddress, chosenAddress]);
 
   useEffect(() => {
+    console.log(addressResults);
     if (addressResults) {
       setResults(addressResults);
       setShowResults(true);

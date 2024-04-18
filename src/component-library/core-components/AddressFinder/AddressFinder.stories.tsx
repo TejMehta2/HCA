@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import AddressFinder from './AddressFinder';
 import Button from '../Button/Button';
@@ -33,6 +33,7 @@ const mockResults = [
 ];
 
 const meta: Meta<typeof AddressFinder> = {
+  title: 'core-components/AddressFinder',
   component: AddressFinder,
 };
 
@@ -42,6 +43,7 @@ type Story = StoryObj<typeof AddressFinder>;
 const AddressFinderWithHooks = () => {
   const [results, setResults] = useState<addressResult[]>([]);
   const [showAddressErrors, setShowAddressErrors] = useState(false);
+  const [term, setTerm] = useState('');
 
   let submittedAddress = '';
 
@@ -53,6 +55,12 @@ const AddressFinderWithHooks = () => {
       setShowAddressErrors(true);
     }
   };
+
+  useEffect(() => {
+    if (term) {
+      setResults(mockResults);
+    }
+  }, [term]);
 
   return (
     <>
@@ -66,7 +74,8 @@ const AddressFinderWithHooks = () => {
             addressResults={results}
             searchAddress={(term) => {
               console.log(term);
-              setResults(mockResults);
+              setTerm(term);
+              setResults([]);
             }}
             chosenAddress={(address) => {
               const { line1 } = address;
