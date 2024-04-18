@@ -12,8 +12,8 @@ const SearchFormLoadMore = (props: SearchFormLoadMoreProps): JSX.Element => {
         name="limit"
         defaultValue={limit}
         ref={limitRef}
-        max={resultsCount}
-        min={defaultLimit}
+        max={Math.max(defaultLimit, resultsCount)}
+        min={Math.min(defaultLimit, resultsCount)}
         aria-hidden="true"
       />
       <Button size={'large'} variation={'full'}>

@@ -81,6 +81,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
       ['searchType', '1'],
     ],
     fallbackData,
+    isInputValid: (input, autocompleteData) =>
+      input === '' ||
+      autocompleteData?.some((data) => data.LocationName === input) ||
+      false,
   });
 
   if (!fields) {
