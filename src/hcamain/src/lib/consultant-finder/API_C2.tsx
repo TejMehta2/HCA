@@ -420,8 +420,8 @@ export async function LDBMakeBooking(
       } finally {
       }
       returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+      console.warn(`LDBMakeBooking failed with error ${returnData}`);
       returnData = JSON.parse(returnData);
-      console.error(`LDBMakeBooking failed with error ${returnData}`);
     }
   } catch (e) {
     //C2 call threw
