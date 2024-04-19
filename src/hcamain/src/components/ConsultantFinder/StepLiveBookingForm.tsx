@@ -32,6 +32,8 @@ import SelectField from '@component-library/consultant-finder/CF-forms/SelectFie
 import Checkbox from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
 import Container from '@component-library/foundation/Containers/Container';
 import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -97,6 +99,15 @@ interface Fields {
   API_C2_ReserveConsultantSlot_RecapchaKey: Field<string>;
   LiveBookingFormMarketingPreferencesHeadline: Field<string>;
   LiveBookingFormMarketingPreferencesText: Field<string>;
+  LiveBookingFormAboutAppointmentHeadline: Field<string>;
+  LiveBookingFormAboutYouHeadline: Field<string>;
+  LiveBookingFormUserLabel: Field<string>;
+  LiveBookingFormContactBoxHeadline: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursDays: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursLabel: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursTime: Field<string>;
+  LiveBookingFormContactBoxPhone0Label: Field<string>;
+  LiveBookingFormContactBoxPhone0Phone: Field<string>;
 }
 
 type StepProps = {
@@ -587,8 +598,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
-                  slug={''}
-                  gmcNumber={0}
+                  slug={slug}
+                  gmcNumber={gmcNumber}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -609,7 +620,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 </Container>
                 {/* About you */}
                 <Text tag="h2" variation="heading-1">
-                  About you
+                  {props?.fields?.LiveBookingFormUserLabel?.value ||
+                    'About you'}
                 </Text>
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   {props?.fields?.LiveBookingFormUserOptions &&
@@ -633,7 +645,8 @@ export const Default = (props: StepProps): JSX.Element => {
                   <>
                     {/* About appointment */}
                     <Text tag="h2" variation="heading-1">
-                      About the appointment
+                      {props?.fields?.LiveBookingFormAboutAppointmentHeadline
+                        ?.value || 'About appointment'}
                     </Text>
                     {/* Show payment option radio if user is patient */}
                     {/* Payment */}
@@ -757,7 +770,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     </Container>
                     {/* About the patient */}
                     <Text tag="h2" variation="heading-1">
-                      About the patient
+                      {props?.fields?.LiveBookingFormAboutYouHeadline?.value ||
+                        'About the patient'}
                     </Text>
                     {props?.fields
                       ?.LiveBookingFormPreviouslyBeenWithHCAOptions && (
@@ -1243,15 +1257,43 @@ export const Default = (props: StepProps): JSX.Element => {
                   </>
                 )}
               </form>
-              <AppointmentSummary
-                title={'Appointment summary'}
-                consultantTitle={'Consultant'}
-                consultantText={consultantName}
-                locationTitle={'Location'}
-                locationText={selectedLocationName}
-                dateTitle={'Date & time'}
-                dateText={`${selectedDate} at ${selectedTime}`}
-              />
+              <CFAside>
+                <AppointmentSummary
+                  title={'Appointment summary'}
+                  consultantTitle={'Consultant'}
+                  consultantText={consultantName}
+                  locationTitle={'Location'}
+                  locationText={selectedLocationName}
+                  dateTitle={'Date & time'}
+                  dateText={`${selectedDate} at ${selectedTime}`}
+                />
+                <NeedHelp
+                  headline={
+                    props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
+                    ''
+                  }
+                  subheadline={
+                    props?.fields?.LiveBookingFormContactBoxPhone0Label
+                      ?.value || ''
+                  }
+                  workingHoursHeadline={
+                    props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel
+                      ?.value || ''
+                  }
+                  workingHours={
+                    props?.fields?.LiveBookingFormContactBoxOpeningHoursDays
+                      ?.value || ''
+                  }
+                  workingHoursTime={
+                    props?.fields?.LiveBookingFormContactBoxOpeningHoursTime
+                      ?.value || ''
+                  }
+                  phoneNumber={
+                    props?.fields?.LiveBookingFormContactBoxPhone0Phone
+                      ?.value || ''
+                  }
+                />
+              </CFAside>
             </LiveBookingForm>
           </>
         )}
