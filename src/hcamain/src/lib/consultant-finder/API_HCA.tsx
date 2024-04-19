@@ -496,45 +496,79 @@ export interface IGetDistancesFields {
 }
 
 // get multiple distances
-export async function getDistances(fields: IGetDistancesFields): Promise<any> {
-  console.log('fields', fields);
+// e.g. /locationApi/getDistances/default/default/miles/default/Ashford%20TN23,%20UK/default/B15%202GW,W1G%208BJ,SW1W%208RH,SE1%202PR,W1W%205AH,W1U%205NY,NW8%209LE,SK9%201NY,M20%204BX,NW1%202BU,W1G%206AF,EC2N%201HT,EC2N%201AR,NW11%209PY,W4%204HS,SE1%209BS,W1T%207HA,WD6%203BS/postcode
+// or   /locationapi/GetDistances?provider=Google&method=Default&units=Kilometers&order=Default&origin=TN23%201DR&originType=Postcode&destinations=WD6%203BS%2C%20TN23%203DS&destinationType=Postcode
+export async function getDistances(
+  fields: IGetDistancesFields | any
+): Promise<any> {
+  //console.log('fields', fields);
 
   let returnData: any = '';
   const HCAAPIConfig = await getHCAConfig();
 
-  const baseURL = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
+
+  let locationsURL = isLegacy
     ? HCAAPIConfig?.aPI_HCA_Locations_LegacyBaseURL
     : HCAAPIConfig?.aPI_HCA_Locations_BaseURL;
 
-  if (baseURL) {
-    //const requestURL = `${baseURL}`;
+  if (locationsURL) {
+    let headers: HeadersInit = {
+      'Content-Type': 'application/json',
+    };
+    let urlParamsStr: string = JSON.stringify(fields);
+    console.log('bodyStr', urlParamsStr);
+    console.log('locationsURL', locationsURL);
+
+    console.log('isLegacy', isLegacy);
+    if (isLegacy) {
+      // convert params to path frags locationApi/getDistances/default/default/miles/default/
+      locationsURL = `{locationsURL}/locationApi/getDistances/${fields['provider']}/${fields['method']}/${fields['units']}/${fields['order']}/${fields['origin']}/${fields['originType']}/${fields['destinations']}/${fields['destinationType']}`;
+      console.log('locationsURL', locationsURL);
+      headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+    } else {
+      // convert from JSON to uri form encoding for SC9.3 form style
+      const paramsArray = [];
+      for (const property in fields) {
+        const encodedKey = encodeURIComponent(property);
+        const encodedValue = encodeURIComponent(fields[property]);
+        paramsArray.push(encodedKey + '=' + encodedValue);
+      }
+      urlParamsStr = JSON.stringify(fields);
+      urlParamsStr = paramsArray.join('&');
+      console.log('urlParamsStr', urlParamsStr);
+      locationsURL += '/GetDistances?' + urlParamsStr;
+      //console.log('bodyStr', bodyStr);
+    }
+
     try {
-      // can cache these requests
-      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
-      const res = await fetch(baseURL, {
-        cache: 'force-cache',
-        next: { revalidate: 3600 },
+      const res = await fetch(locationsURL, {
+        method: 'get',
+        //body: urlParamsStr,
+        headers: headers,
+        cache: 'no-cache',
       });
+
       if (res.ok) {
         returnData = await res.json();
-        /*
-        if (loc && loc.length > 0) {
-          // returned stuff from the server side
-          return loc[0];
-        }
-        if (loc.length == 0) {
-          console.warn(`Warning distances empty on getDistances() call`);
-        }*/
       } else {
-        // couldn't get the cmas
-        console.warn(
-          `Could not load distances list for pre-render from ${baseURL} result:${res}`
-        );
+        //getDistances call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.json();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`getDistances failed with error ${returnData}`);
       }
     } catch (e) {
-      console.warn(
-        `Could not load distances for pre-render from ${baseURL} failed with exception ${e}`
-      );
+      //makeBookingEnquiry call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting getDistances, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`getDistances failed with exception ${e}`);
     }
   }
 
@@ -568,7 +602,7 @@ export interface IEnquiryFormFields {
 }
 
 /*
-This endpoint will create a send a booking enquiry request to the contact centre via the email and enquiry database.  
+This endpoint will create and send a booking enquiry request to the contact centre via the email and enquiry database.  
 The Team members will pick up the request and once processed will contact the patient
 */
 export async function submitBookingEnquiry(

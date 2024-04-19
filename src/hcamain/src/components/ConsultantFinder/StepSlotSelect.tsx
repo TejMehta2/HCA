@@ -13,6 +13,7 @@ import {
   ImageField,
   Field,
   LinkField,
+  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
@@ -26,6 +27,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import { getHolidays } from '../../lib/consultant-finder/API_HCA';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import { GetServerSidePropsContext } from 'next';
 
 interface Fields {
   HCALogo: ImageField;
@@ -61,23 +63,29 @@ interface ServerSideProps {
 }
 
 /**
- * Will be called during SSG
+ * if exported, will be called if/during SSG
  * @param {ComponentRendering} _rendering
  * @param {LayoutServiceData} _layoutData
  * @param {GetStaticPropsContext} _context
  */
-export const getStaticProps: GetStaticComponentProps = async (
-  _rendering,
-  _layoutData,
-  _context
-) => {
+/*export*/ const getStaticProps: GetStaticComponentProps = async () => {
   const holidaysJson = await getHolidays();
   const returnProps: ServerSideProps = {
     Holidays: holidaysJson,
   };
-
+  //console.log('holidaysJson', holidaysJson);
   return returnProps;
 };
+
+// will be called if not SSG
+export async function getServerSideProps(
+  rendering: ComponentRendering,
+  layoutData: LayoutServiceData,
+  context: GetServerSidePropsContext
+) {
+  // proxy to GetStaticComponentProps
+  return await getStaticProps(rendering, layoutData, context);
+}
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
@@ -91,7 +99,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
-  //console.log('holidays', serverSideData);
+  //console.log('serverSideData', serverSideData);
 
   const holidaysUK = serverSideData?.Holidays;
 

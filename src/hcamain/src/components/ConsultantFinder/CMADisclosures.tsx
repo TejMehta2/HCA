@@ -6,8 +6,10 @@ import {
   GetStaticComponentProps,
   useComponentProps,
   ComponentRendering,
+  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { getCMA } from 'lib/consultant-finder/API_HCA';
+import { GetServerSidePropsContext } from 'next';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -28,12 +30,12 @@ interface ServerSideProps {
 }
 
 /**
- * Will be called during SSG
+ * If exported, will be called during SSG
  * @param {ComponentRendering} _rendering
  * @param {LayoutServiceData} _layoutData
  * @param {GetStaticPropsContext} _context
  */
-export const getStaticProps: GetStaticComponentProps = async (
+/*export*/ const getStaticProps: GetStaticComponentProps = async (
   _rendering,
   _layoutData,
   context
@@ -63,6 +65,16 @@ export const getStaticProps: GetStaticComponentProps = async (
     notFound: true, // This will result in a 404 page being rendered
   };
 };
+
+// will be called if not SSG
+export async function getServerSideProps(
+  rendering: ComponentRendering,
+  layoutData: LayoutServiceData,
+  context: GetServerSidePropsContext
+) {
+  // proxy to GetStaticComponentProps
+  return await getStaticProps(rendering, layoutData, context);
+}
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;

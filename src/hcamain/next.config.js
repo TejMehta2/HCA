@@ -68,6 +68,11 @@ const nextConfig = {
         source: '/api/formAPI/:app*',
         destination: '/api/formAPI/:app*',
       },
+      //don't rewrite location proxy api to the integration layer
+      {
+        source: '/api/locationAPI/:app*',
+        destination: '/api/locationAPI/:app*',
+      },
       // rewrite integration layer
       {
         source: '/api/:path*',
