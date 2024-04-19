@@ -12,6 +12,7 @@ import {
   imageAlignmentTypes,
 } from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
 import Params from 'src/types/params';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
   fields?: {
@@ -53,13 +54,11 @@ const outputAmenitiesList = (props: AmenitiesProps) => {
 
   props?.fields?.AmenitiesList?.map((item?: AmenitiesFields) => {
     amenitiesList.push({
-      text: item?.fields?.Title?.value || '',
+      text: <JssText field={item?.fields?.Title} />,
       icon: (
-        <span
-          dangerouslySetInnerHTML={{
-            __html: item?.fields?.Icon?.fields?.SvgMarkup?.value || '',
-          }}
-        ></span>
+        <SitecoreSvg>
+          {item?.fields?.Icon?.fields?.SvgMarkup?.value}
+        </SitecoreSvg>
       ),
     });
   });

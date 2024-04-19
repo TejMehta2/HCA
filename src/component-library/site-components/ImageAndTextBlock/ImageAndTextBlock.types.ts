@@ -5,7 +5,7 @@ export type imageAlignmentTypes = 'right' | 'left';
 type lengthTypes = 'short' | 'long';
 export type iconList = {
   icon: ReactNode | JSX.Element;
-  text: string;
+  text: JSX.Element | string;
 }[];
 
 export interface ImageAndTextBlockProps {
@@ -20,4 +20,5 @@ export interface ImageAndTextBlockProps {
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
   iconList?: iconList;
   hideImageOnMobile?: boolean;
+  contentVariation?: 'pricing';
 }

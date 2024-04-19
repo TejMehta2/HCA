@@ -26,12 +26,16 @@ type HCAIconFields = {
 
 type ArticleTypeFields = Item & {
   fields?: {
+    id?: string;
     Title?: Field<string>;
   };
 };
 
 type BlogFields = Item & {
   fields?: {
+    AbstractTitle?: Field<string>;
+    AbstractText?: Field<string>;
+    AbstractImage?: ImageField;
     Title?: Field<string>;
     Description?: Field<string>;
     Date?: Field<string>;
@@ -100,22 +104,34 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       {props.fields?.Cards?.map((card) => {
         return (
           <CardBlog key={card.id}>
-            <JssImage field={card.fields.Image} />
-            <JssDate field={card.fields?.Date} />
+            {card.fields?.AbstractImage?.value ? (
+              <JssImage field={card.fields.AbstractImage} editable={false} />
+            ) : (
+              <JssImage field={card.fields.Image} editable={false} />
+            )}
+            <JssDate field={card.fields?.Date} editable={false} />
             <Text tag={'h3'} variation={'heading-2'}>
               <a href={card.url}>
-                <JssText field={card.fields.Title} />
+                {card.fields?.AbstractTitle?.value ? (
+                  <JssText field={card.fields?.AbstractTitle} />
+                ) : (
+                  <JssText field={card.fields?.Title} />
+                )}
               </a>
             </Text>
             <Text tag={'p'} variation={'body-large'}>
-              <JssRichText tag="span" field={card.fields.Description} />
+              {card.fields?.AbstractText?.value ? (
+                <JssRichText tag="span" field={card.fields.AbstractText} />
+              ) : (
+                <JssRichText tag="span" field={card.fields.Description} />
+              )}
             </Text>
-            {!!card.fields.ArticleType && (
+            {!!card.fields?.ArticleType?.fields.id && (
               <Tags>
                 <a
                   href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
                 >
-                  {card.fields?.ArticleType.fields.Title?.value}
+                  {card.fields?.ArticleType.fields.id}
                 </a>
               </Tags>
             )}
@@ -169,19 +185,33 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               key={card.id}
               variation={isFeature ? 'feature' : 'default'}
             >
-              {isFeature && <JssImage field={card.fields.Image} />}
-              <JssDate field={card.fields?.Date} />
+              {isFeature && card.fields?.AbstractImage?.value ? (
+                <JssImage field={card.fields.AbstractImage} editable={false} />
+              ) : (
+                isFeature && (
+                  <JssImage field={card.fields.Image} editable={false} />
+                )
+              )}
+              <JssDate field={card.fields?.Date} editable={false} />
               <Text
                 tag={'h3'}
                 variation={isFeature ? 'display-5' : 'heading-2'}
               >
                 <a href={card.url}>
-                  <JssText field={card.fields.Title} />
+                  {card.fields?.AbstractTitle?.value ? (
+                    <JssText field={card.fields?.AbstractTitle} />
+                  ) : (
+                    <JssText field={card.fields?.Title} />
+                  )}
                 </a>
               </Text>
               {isFeature && (
                 <Text tag={'p'} variation={'body-large'}>
-                  <JssRichText tag="span" field={card.fields.Description} />
+                  {card.fields?.AbstractText?.value ? (
+                    <JssRichText tag="span" field={card.fields.AbstractText} />
+                  ) : (
+                    <JssRichText tag="span" field={card.fields.Description} />
+                  )}
                 </Text>
               )}
               {card.fields.ArticleType && (

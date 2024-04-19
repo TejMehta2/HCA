@@ -16,7 +16,7 @@ Languages:
       Value: "{E6D4BA6C-BC0A-43BB-9EF5-45225F261EB0}"
     - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
       Hint: SearchResultsText
-      Value: locations
+      Value: "{{quantity}} locations"
     - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
       Hint: FilterOptionsIcon
       Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
@@ -25,7 +25,7 @@ Languages:
       Value: 20240130T081849Z
     - ID: "3b5deddf-c424-405c-8de6-18c4c1aa0fc7"
       Hint: SearchBy
-      Value: 
+      Value: "{D4815271-A228-4B34-9C3C-AF1ACA9E592C}"
     - ID: "4f6c6765-00b6-42ff-b817-3609cc730145"
       Hint: FilterOptions
       Value: "{655C5323-B313-4DAB-9C32-D37FB7447539}"
@@ -46,12 +46,15 @@ Languages:
     - ID: "8412c5bf-99ea-4872-bdc1-820be9a3bd13"
       Hint: GridViewIcon
       Value: "{E6819DCC-60C1-423E-A79A-430F56347B05}"
+    - ID: "874520c1-dbc1-41cf-a141-d4383d64d0bd"
+      Hint: SearchResultsTextWithInput
+      Value: "{{quantity}} locations including {{input}}"
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5b0fcccd-c421-4cc9-bb67-32ffb1841bf1"
+      Value: "739debb9-cde8-4f0e-88ad-d2baf7a3d746"
     - ID: "90875e3c-58b9-40d7-b491-b56f4a462018"
       Hint: MapViewText
       Value: Map view
@@ -62,7 +65,7 @@ Languages:
         {60468383-EF7B-4714-9B6B-CBEEABF06C94}
     - ID: "97368152-ecf3-40f0-affb-f9a3c57b6d05"
       Hint: ResultsPerPage
-      Value: 12
+      Value: 3
     - ID: "aed33a70-e7a0-4f69-80d2-919af9efc66e"
       Hint: FilterOptionsText
       Value: Filter by
@@ -78,7 +81,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240319T160835Z
+      Value: 20240417T204144Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

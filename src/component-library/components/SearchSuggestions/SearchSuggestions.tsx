@@ -14,15 +14,21 @@ const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
       aria-label="suggestions"
     >
       {suggestions.map((suggestion, index) => (
-        <li
-          className={styles.suggestion}
-          onClick={() => setValue(suggestion)}
-          role={'option'}
-          aria-selected={currentValue === suggestion}
-          key={index}
-        >
-          <Icons iconName={'iconSearch'} />
-          <span>{capitalizeFirstLetter(suggestion)}</span>
+        <li key={`${suggestion}${index}`}>
+          <button
+            className={styles.suggestion}
+            role={'option'}
+            onClick={(event) => {
+              const target = event.target as HTMLButtonElement;
+              target.blur();
+              setValue(suggestion);
+            }}
+            type={'submit'}
+            aria-selected={currentValue === suggestion}
+          >
+            <Icons iconName={'iconSearch'} />
+            <span>{capitalizeFirstLetter(suggestion)}</span>
+          </button>
         </li>
       ))}
     </ul>

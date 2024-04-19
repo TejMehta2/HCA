@@ -7,7 +7,7 @@ import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from './CustomArrows';
 
 const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
-  const { theme, title, link, children, bodyCopy } = props;
+  const { theme, title, link, children, bodyCopy, subtitle } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -65,6 +65,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
         <div className={styles['container']}>
           {title && (
             <div className={styles['intro']} data-animate="s">
+              {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
               {title}
               {bodyCopy && <div className={styles['copy']}>{bodyCopy}</div>}
             </div>
@@ -80,7 +81,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
 
           {link && (
             <Themes theme={theme}>
-              <Button size="large" variation="full-dark">
+              <Button size="large" variation="full">
                 {link}
               </Button>
             </Themes>

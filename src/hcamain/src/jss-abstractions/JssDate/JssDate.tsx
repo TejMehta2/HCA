@@ -3,16 +3,19 @@ import formatDate from './formatDate';
 import { JssDateProps } from './JssDate.types';
 
 const JssDate = (props: JssDateProps) => {
-  const { field, formatter = formatDate } = props;
+  const { field, formatter = formatDate, editable = true } = props;
   if (!field) return <></>;
 
   return (
     <DateField
-      tag={'time'}
+      tag={'div'}
       field={field}
+      editable={editable}
       render={(date) =>
         date ? (
-          <time dateTime={date.toLocaleDateString()}>{formatter(date)}</time>
+          <time dateTime={date.toLocaleDateString('en-GB')}>
+            {formatter(date)}
+          </time>
         ) : (
           <></>
         )

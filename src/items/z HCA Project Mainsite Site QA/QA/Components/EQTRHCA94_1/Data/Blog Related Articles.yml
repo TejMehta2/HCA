@@ -19,7 +19,7 @@ Languages:
       Value: "{576F23ED-76D7-43ED-9CF0-5F4E0BC7468B}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ebadd460-f5d7-4e07-b383-3a37ac85552b"
+      Value: "5be62646-27eb-423f-b72d-35ed1e1740f0"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -37,10 +37,10 @@ Languages:
     - ID: "d52673ae-9c87-46bb-b783-e1108e663511"
       Hint: BlogUrl
       Value: |
-        <link class="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" querystring="?serviceLineId=" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blog Search" />
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: Related article
+      Value: Related articles
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T114747Z
+      Value: 20240326T090116Z

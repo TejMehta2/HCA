@@ -30,9 +30,11 @@ export type HeadingSize =
 interface Params {
   styles?: string;
   Theme?: Theme;
+  CardTheme?: Theme; // Appears only on search components
   HeadingTag?: HeadingTag;
   HeadingSize?: HeadingSize;
   DynamicPlaceholderId?: string;
-  Columns?: number;
+  Columns?: string;
+  Containerized?: '1' | '0'; // Appears only on RichText related components
 }
 export default Params;

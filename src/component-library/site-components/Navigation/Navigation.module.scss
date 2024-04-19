@@ -4,7 +4,7 @@
 // Target header tag as sticky parent, to allow for nesting etc.
 header {
   &:has(.sticky) {
-    z-index: 2;
+    z-index: 1000;
     position: sticky;
     top: 0;
     transition: transform 0.2s ease;

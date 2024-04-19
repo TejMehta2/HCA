@@ -34,26 +34,23 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         }
       : { defaultValue };
 
-  const setValue = (newValue?: string) => {
+  const setValue = (newValue: string = '') => {
     if (!inputRef.current) return;
     // Use native setter to allow for dispatch propagation (native form change event)
-    const nativeInputValueSetter = Object?.getOwnPropertyDescriptor(
-      window?.HTMLInputElement.prototype,
-      'value'
-    )?.set;
-    nativeInputValueSetter?.call(inputRef.current, newValue);
-    const event = new Event('change', { bubbles: true });
-    inputRef.current.dispatchEvent(event);
+    inputRef.current.value = newValue;
   };
-
-  const hideSuggestions =
-    defaultValue === '' || suggestions.includes(defaultValue); // defaultValue will change to match current value after user picks a suggestion
 
   return (
     <div className={styles.wrapper}>
       <label htmlFor={inputId} className={styles['search-bar']}>
         <Icons iconName={'iconSearch'} />
         <input
+          onKeyUp={(event) => {
+            if (event.key === 'Enter') {
+              const target = event.target as HTMLInputElement;
+              target.blur();
+            }
+          }}
           id={inputId}
           ref={inputRef}
           className={styles.input}
@@ -62,12 +59,21 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
           placeholder={placeholder}
           {...suggestionAttributes}
           {...controlAttributes}
+          autoComplete={'off'}
         />
         {locationCta}
+
+        <div className={styles.suggestions}>
+          <SearchSuggestions
+            currentValue={defaultValue}
+            suggestions={suggestions}
+            setValue={setValue}
+          />
+        </div>
         {defaultValue && (
           <button
             className={styles.clear}
-            type="button"
+            type="submit"
             onClick={() => {
               setValue('');
             }}
@@ -75,15 +81,6 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
             <Icons iconName={'iconCross'} />
             <span className={'sr-only'}>Clear search</span>
           </button>
-        )}
-        {!hideSuggestions && (
-          <div className={styles.suggestions}>
-            <SearchSuggestions
-              currentValue={defaultValue}
-              suggestions={suggestions}
-              setValue={setValue}
-            />
-          </div>
         )}
       </label>
 

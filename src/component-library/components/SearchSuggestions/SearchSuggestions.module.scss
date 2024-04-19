@@ -16,6 +16,8 @@
 }
 
 %suggestion {
+  width: 100%;
+  border: none;
   cursor: pointer;
   padding: 0;
   padding: px-to-rem(8) px-to-rem(32);
@@ -24,12 +26,21 @@
   display: flex;
   align-items: center;
   gap: $spacing-4;
+  color: var(--text);
+
+  svg {
+    min-width: px-to-rem(24);
+  }
 
   * {
     padding: 0;
+    text-align: start;
   }
 
-  &:hover {
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
     color: var(--tag-text);
     background-color: var(--tag-background);
   }

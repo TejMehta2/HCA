@@ -6,9 +6,9 @@ import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Modals from '../../components/Modals/Modals';
 import Text from '../../foundation/Text/Text';
+import TextButton from '../../core-components/TextButton/TextButton';
 import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../../components/Accordions/Accordions';
-import FiltersFooter from '../../components/FiltersFooter/FiltersFooter';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const {
@@ -24,10 +24,23 @@ const Filters = (props: FiltersProps): JSX.Element => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  const clearFields = () => {
+    // Clear all the checked input fields
+    if (!dialogRef?.current) return;
+    const fields = dialogRef.current.querySelectorAll('input:checked');
+    fields?.forEach((field: HTMLInputElement, index) => {
+      if (index === fields.length - 1) {
+        field.click(); // interact with last field to trigger a form change event
+      } else {
+        field.checked = false; // update other fields without triggering form change event
+      }
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
-        <Button variation="full-dark" size="large" contentVariation="search">
+        <Button variation="full-dark" size="large">
           <button onClick={() => dialogRef.current?.showModal()} type="button">
             {buttonIcon}
             {buttonText}
@@ -56,10 +69,18 @@ const Filters = (props: FiltersProps): JSX.Element => {
             </div>
           )}
 
-          <FiltersFooter
-            resultsCount={resultsCount}
-            dialogRef={dialogRef}
-          ></FiltersFooter>
+          <div className={styles.footer}>
+            <TextButton theme="dark">
+              <button type="button" onClick={clearFields}>
+                Clear All
+              </button>
+            </TextButton>
+            <Button variation="full-dark" size="small">
+              <button onClick={() => dialogRef?.current?.close()} type="button">
+                See {resultsCount} Results
+              </button>
+            </Button>
+          </div>
         </Modals>
       </Themes>
     </div>

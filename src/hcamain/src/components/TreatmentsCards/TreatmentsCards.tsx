@@ -4,21 +4,30 @@ import {
   LinkField,
   ImageField,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
+  Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import Text from '@component-library/foundation/Text/Text';
+import getSubheadingTag from 'lib/subheading-tag-getter';
+import Params from 'src/types/params';
+import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
 };
 
 type TreatmentsFields = {
-  abstractTitle?: { value?: Field<string> };
-  abstractText?: { value?: Field<string> };
-  abstractImage?: { jsonValue?: ImageField };
-  title?: { value?: Field<string> };
-  text?: { value?: Field<string> };
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
   image?: { jsonValue?: ImageField };
-  url?: string;
+  url?: { path?: string };
 };
 
 interface Fields {
@@ -48,68 +57,126 @@ interface Fields {
 }
 
 type TreatmentsCardsProps = {
-  params: { [key: string]: string };
+  params?: Params;
   fields: Fields;
 };
 
 const TreatmentsCardsDefaultComponent = (
   props: TreatmentsCardsProps
 ): JSX.Element => (
-  <div className={`component ${props.params.styles}`}>
+  <div className={`component ${props.params?.styles}`}>
     <div className="component-content">
       <span className="is-empty-hint">TreatmentsCards no datasource</span>
     </div>
   </div>
 );
 
-export const WithImage = (props: TreatmentsCardsProps): JSX.Element => {
+interface WithImageProps extends TreatmentsCardsProps {
+  showImage: boolean;
+}
+
+export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { showImage = true } = props;
+
   if (!props.fields) {
     return <TreatmentsCardsDefaultComponent {...props} />;
   }
+
+  const columns: CardBlockProps['variation'] =
+    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  //  check for conditionId and append if it exists
+  const allUrl = props.fields?.data?.contextItem?.id
+    ? `${props.fields.data?.item?.cTALink?.jsonValue?.value.href}?conditionId=${props.fields?.data?.contextItem?.id}`
+    : props.fields.data?.item?.cTALink?.jsonValue?.value.href;
+
+  const link = (
+    <a href={allUrl}>
+      <JssTextWithEntityName
+        field={{
+          value: props.fields.data?.item?.cTALink?.jsonValue?.value?.text || '',
+        }}
+        isRichText={true}
+      />
+    </a>
+  );
+
+  //  treatments can be set via item or contextItem
+  const cards = props.fields?.data?.item?.treatments?.TreatmentsList?.length
+    ? props.fields?.data?.item?.treatments?.TreatmentsList
+    : props.fields?.data?.contextItem?.treatments?.TreatmentsList;
+
   return (
-    <div className={`component ${props.params.styles}`}>
-      <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
-      <br />
-      <JssText field={props?.fields?.data?.item?.title?.jsonValue} />
-      <br />
-      <RichText tag="span" field={props?.fields?.data?.item?.text?.jsonValue} />
-      <br />
-      <span></span>
-      <br />
-      <ul>
-        {props.fields?.data?.item?.treatments?.TreatmentsList?.map(
-          (treatment, index) => (
-            <li key={index}>
-              <JssText field={treatment?.abstractTitle?.value} />
-              <br />
-              <JssText field={treatment.title?.value} />
-              <br />
-              <JssText field={treatment.abstractText?.value} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <ul>
-        {props.fields?.data?.contextItem?.treatments?.TreatmentsList?.map(
-          (treatment, index) => (
-            <li key={index}>
-              <JssText field={treatment.abstractTitle?.value} />
-              <br />
-              <JssText field={treatment.abstractTitle?.value} />
-              <br />
-              <JssText field={treatment.abstractText?.value} />
-              <br />
-            </li>
-          )
-        )}
-      </ul>
-      <br />
-      <JssText field={props.fields?.data?.item?.numberOfCards?.jsonValue} />
-      <br />
-      <JssText field={props.fields?.data?.item?.cTACardText?.jsonValue} />
-    </div>
+    <CardBlock
+      variation={columns}
+      gapSize={'small'}
+      theme={props.params?.Theme || 'A-HCA-White'}
+      cta={link}
+      header={
+        <AdvancedBlockHeader
+          paddingSize="small"
+          title={
+            <Text
+              variation={props.params?.HeadingSize || 'display-3'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssTextWithEntityName
+                field={props?.fields?.data?.item?.title?.jsonValue}
+              />
+            </Text>
+          }
+        />
+      }
+    >
+      <>
+        {cards?.map((card, index) => (
+          <CardContent
+            key={index}
+            image={
+              showImage ? (
+                card.abstractImage?.jsonValue?.value?.src ? (
+                  <JssImage
+                    field={card.abstractImage.jsonValue}
+                    editable={false}
+                  />
+                ) : (
+                  <JssImage field={card.image?.jsonValue} editable={false} />
+                )
+              ) : undefined
+            }
+            title={
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+                variation="heading-1"
+              >
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
+                ) : (
+                  <JssText field={card.title} />
+                )}
+              </Text>
+            }
+            bodyCopy={
+              <Text tag="p" variation="body-medium">
+                {card.abstractText?.value ? (
+                  <JssRichText tag="span" field={card.abstractText} />
+                ) : (
+                  <JssRichText tag="span" field={card.text} />
+                )}
+              </Text>
+            }
+            link={
+              <a href={card?.url?.path}>
+                <JssText
+                  tag="span"
+                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                />
+              </a>
+            }
+          />
+        ))}
+      </>
+    </CardBlock>
   );
 };
 
@@ -118,5 +185,5 @@ export const WithoutImage = (props: TreatmentsCardsProps): JSX.Element => {
     return <TreatmentsCardsDefaultComponent {...props} />;
   }
 
-  return <WithImage {...props} />;
+  return <WithImage {...props} showImage={false} />;
 };

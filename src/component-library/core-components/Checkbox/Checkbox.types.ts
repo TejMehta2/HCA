@@ -1,13 +1,10 @@
 import { ChangeEventHandler } from 'react';
 
-import { NumberRangeValue } from '@yext/search-headless-react';
-
 export interface CheckboxProps {
   label: string | JSX.Element;
   name: string;
-  id: string | number | boolean | NumberRangeValue;
-  value: string | number | boolean | NumberRangeValue;
-  mode?: 'light' | 'dark' | 'medium';
+  id: string;
+  value: string | number;
   disabled?: boolean;
   indeterminate?: boolean;
   defaultChecked?: boolean;

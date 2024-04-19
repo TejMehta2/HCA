@@ -4,7 +4,7 @@ import {
   LinkField,
   RichText as JssRichText,
   Text as JssText,
-  ImageFieldValue,
+  ImageField,
   Image as JssImage,
   Link as JssLink,
   useSitecoreContext,
@@ -24,9 +24,12 @@ type HCAIconFields = {
 
 type ServiceFields = {
   fields?: {
+    AbstractTitle?: Field<string>;
+    AbstractText?: Field<string>;
+    AbstractImage?: ImageField;
     Title?: Field<string>;
     Description?: Field<string>;
-    Image?: ImageFieldValue;
+    Image?: ImageField;
   };
 
   url?: string;
@@ -50,13 +53,22 @@ type ServiceCardsProps = {
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Homepage Service Cards</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Service Cards. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -69,20 +81,21 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <ServiceCards
       title={
-        <Text
-          variation={props.params?.HeadingSize || 'display-2'}
-          tag={props.params?.HeadingTag || 'h2'}
-        >
-          <JssText field={props.fields?.Title} />
-        </Text>
+        (props.fields.Title?.value || isExperienceEditor) && (
+          <Text
+            tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+            variation={props.params?.HeadingSize || 'display-2'}
+          >
+            <JssText field={props.fields?.Title} />
+          </Text>
+        )
       }
       subtitle={
-        <Text
-          variation="subheading-1"
-          tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-        >
-          <JssText field={props.fields?.Heading} />
-        </Text>
+        (props.fields.Heading?.value || isExperienceEditor) && (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        )
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
@@ -119,9 +132,20 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
             key={index}
           >
-            <JssImage field={service?.fields?.Image} editable={false} />
+            {service.fields?.AbstractImage?.value?.src ? (
+              <JssImage
+                field={service?.fields?.AbstractImage}
+                editable={false}
+              />
+            ) : (
+              <JssImage field={service?.fields?.Image} editable={false} />
+            )}
             <Text tag="div" variation="display-6">
-              <JssText field={service?.fields?.Title} editable={false} />
+              {service.fields?.AbstractTitle?.value ? (
+                <JssText field={service?.fields?.AbstractTitle} />
+              ) : (
+                <JssText field={service?.fields?.Title} />
+              )}
             </Text>
           </CardService>
         ))}

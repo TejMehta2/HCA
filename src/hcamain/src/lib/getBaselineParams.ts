@@ -1,12 +1,9 @@
 import { FilterOption, ApiSearchProps } from '../types/searchProps';
+import unpackFilterOption from './unpackFilterOption';
 
-export const splitOptionToEntry = ({
-  fields,
-}: FilterOption): [string, string] => {
-  return [
-    fields.Filter?.value || '',
-    fields.FilterValueGuid?.id || fields.FilterValueString.value || '',
-  ];
+export const splitOptionToEntry = (option: FilterOption): [string, string] => {
+  const { key, value } = unpackFilterOption(option);
+  return [key, value];
 };
 
 const getBaselineParams = (props: ApiSearchProps) => {

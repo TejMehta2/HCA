@@ -34,7 +34,7 @@ export interface Data {
   title: string;
   description: string;
   name: string;
-  imageUrl: null;
+  imageUrl: string;
   url: string;
   uid: number;
 }
@@ -109,6 +109,7 @@ export interface Fields {
   SortOptionsText?: Field<string>;
   SortOptions?: FilterOption[];
   SearchResultsText?: Field<string>;
+  SearchResultsTextWithInput?: Field<string>;
   ResultsPerPage?: Field<number>;
   SearchBy?: FilterOption[];
   FilterBy?: FilterOption[];

@@ -6,12 +6,7 @@
       {
         "name": "z HCA Project Mainsite site",
         "path": "/sitecore/content/HCA/HCA-Main",
-        "rules": [
-          {
-            "path": "/home",
-            "scope": "SingleItem",
-            "allowedPushOperations": "CreateOnly"
-          },
+        "rules": [         
           {
             "path": "/Media",
             "scope": "ItemAndChildren",
@@ -26,12 +21,34 @@
             "path": "/Dictionary",
             "scope": "ItemAndChildren",
             "allowedPushOperations": "CreateOnly"
+          },         
+          {
+            "path": "/Presentation/Page Designs",
+            "scope": "Ignored"            
           },
           {
-            "path": "/Presentation",
+            "path": "/Presentation/Partial Designs",
+            "scope": "Ignored"            
+          },
+          {
+            "path": "/Presentation/Page Branches",
+            "scope": "Ignored"            
+          },
+          {
+            "path": "/Presentation/Icons",
+            "scope": "SingleItem",
+            "allowedPushOperations": "CreateOnly"
+          },
+          {
+            "path": "/Presentation/*",
             "scope": "ItemAndDescendants",
             "allowedPushOperations": "CreateAndUpdate"
-          },
+          },   
+          {
+            "path": "/Presentation",
+            "scope": "SingleItem",
+            "allowedPushOperations": "CreateOnly"
+          },      
           {
             "path": "/Settings/Site Grouping",
             "scope": "ItemAndChildren",

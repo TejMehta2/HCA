@@ -17,7 +17,7 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{F8AF868B-171C-4D00-BEE3-7CA8DFA3E818}"
-          s:ds="{089B58BF-63E8-4CFD-9F53-3F959A78AECA}"
+          s:ds="local:/Data/Blog Page Header"
           s:id="{B1AC933A-6420-423A-822F-367CC48C419F}"
           s:par="HeadingTag&amp;HeadingSize=display-1&amp;GridParameters&amp;FieldNames=%7B9644129D-C5EC-447E-A733-182ADF1B61EB%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
@@ -42,11 +42,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2332f2bb-6f16-474e-b2ab-2b717462806d"
+      Value: "3304e998-2b7a-4a4e-95ba-17d0b5bc4145"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T103619Z
+      Value: 20240321T083923Z

@@ -53,6 +53,21 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
+      // rewrite webhooks
+      {
+        source: '/webhooks/sitecore/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
+      },
+      // rewrite forms
+      {
+        source: '/api/sitecore/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+      },
+      // rewrite mail
+      {
+        source: '/referrer/mail/:path*',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+      },
     ];
   },
   webpack(config) {
@@ -85,11 +100,14 @@ const nextConfig = {
   transpilePackages: ['@hca/component-library/*'],
   swcMinify: false,
   images: {
-    domains: ['upload.wikimedia.org'],
+    domains: ['upload.wikimedia.org', 'a.mktgcdn.com'],
   },
 };
 
 module.exports = () => {
   // Run the base config through any configured plugins
-  return Object.values(plugins).reduce((acc, plugin) => plugin(acc), nextConfig);
+  return Object.values(plugins).reduce(
+    (acc, plugin) => plugin(acc),
+    nextConfig
+  );
 };

@@ -1,0 +1,47 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useContext } from 'react';
+import { SelectLocationProps } from './SelectLocation.types';
+import LocationCard from '../LocationCard/LocationCard';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import styles from './SelectLocation.module.scss';
+
+const SelectLocation = (props: SelectLocationProps): JSX.Element => {
+  const {
+    setSelectedLocation,
+    setSelectedLocationName,
+    setLocationGUID,
+    setFirstAppointmentDate,
+    setLat,
+    setLon,
+  } = useContext(ConsultantFinderContext);
+
+  return (
+    <div className={styles['select-location']}>
+      {props.locations.length &&
+        props.locations.length > 0 &&
+        props.locations.map((item: any, index: any) => (
+          <LocationCard
+            key={index}
+            facilityCRMID={item?.facilityCRMID}
+            icon={props.icon}
+            title={item?.facilityFullName}
+            text={item?.facilityAddress}
+            time={item?.firstAppointmentSlotDateTime}
+            handleClick={() => {
+              setSelectedLocation(item?.facilityCRMID || '');
+              setSelectedLocationName(item?.facilityFullName || '');
+              setLocationGUID(item?.facilityCRMID || '');
+              setFirstAppointmentDate(item?.firstAppointmentSlotDateTime || '');
+              setLat(item?.latitude || '');
+              setLon(item?.longitude || '');
+            }}
+          />
+        ))}
+      {!props.locations.length && props.locations.length === 0 && (
+        <div>No results</div>
+      )}
+    </div>
+  );
+};
+
+export default SelectLocation;

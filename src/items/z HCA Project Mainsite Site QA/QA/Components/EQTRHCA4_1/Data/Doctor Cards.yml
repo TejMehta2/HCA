@@ -14,10 +14,10 @@ Languages:
     - ID: "5a674cd7-c9eb-4be4-8577-5c3d6d72c70c"
       Hint: CTACard
       Value: |
-        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View &lt;b&gt;profile&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+        <link text="View &lt;b&gt;profile&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{5278D590-3D57-47AD-BAA2-51A4D0C83C9A}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d739760b-4116-4f9c-b64c-778b69c58f32"
+      Value: "188d5398-f297-41f9-8065-832e9ace4f10"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -42,7 +42,7 @@ Languages:
       Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T103718Z
+      Value: 20240404T065646Z
     - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
       Hint: Service
       Value: 

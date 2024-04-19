@@ -365,3 +365,82 @@ export const hideImageOnMobile: StoryObj<typeof ImageAndTextBlock> = {
     hideImageOnMobile: true,
   },
 };
+
+export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    theme: 'A-HCA-White',
+    imageAlignment: 'left',
+    length: 'long',
+    contentVariation: 'pricing',
+    image: (
+      <Image
+        src="/placeholders/children-playing.jpg"
+        alt="two children playing"
+        width="643"
+        height="605"
+      />
+    ),
+    subheader: (
+      <Text tag="p" variation="subheading-1">
+        payment plans
+      </Text>
+    ),
+    header: (
+      <Text tag="h2" variation="display-2">
+        Hospital stay & procedure
+      </Text>
+    ),
+    children: (
+      <>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            prices from
+          </Text>
+          <Text tag="p" variation="display-2">
+            £13,500
+          </Text>
+          <Text tag="p" variation="body-large">
+            subject to the specifics of your treatment as recommended by your
+            consultant.
+          </Text>
+        </div>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            indicative consultant fee from
+          </Text>
+          <Text tag="p" variation="display-5">
+            £1,400
+          </Text>
+        </div>
+        <div>
+          <Text tag="p" variation="subheading-2">
+            Expected length of stay
+          </Text>
+          <Text tag="p" variation="display-5">
+            3 nights
+          </Text>
+        </div>
+      </>
+    ),
+    ctas: (
+      <>
+        <Button size="large" variation="full">
+          <a href="#">
+            <Icons iconName={'iconPlus'} />
+            <span>
+              More <strong>information</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" variation="outline">
+          <a href="#">
+            <Icons iconName={'iconShare'} />
+            <span>
+              Share <strong>cost information</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
+  },
+};

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Item,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -13,7 +12,8 @@ import Icons from '@component-library/foundation/Icons/Icons';
 type CategoriesFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
-  filterValue?: { jsonValue?: Item };
+  filterValueString?: { value?: string };
+  filterValueGuid?: { targetItem: { id: string } };
 };
 
 interface Fields {
@@ -65,7 +65,9 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
             href={
               props.fields?.data?.item?.blogUrl?.jsonValue?.value.href +
               '?' +
-              category.filter?.value
+              category.filter?.value +
+              '=' +
+              category.filterValueGuid?.targetItem?.id
             }
             key={index}
           >

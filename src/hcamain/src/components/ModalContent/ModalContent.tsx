@@ -85,18 +85,17 @@ export const Default = (props: ModalContentProps): JSX.Element => {
         }
         copy1={
           <Text variation={'body-large'}>
-            <RichText
-              tag="span"
-              field={{
-                value: props.fields?.PrimaryCTA?.value?.text,
-              }}
-            />
+            <RichText tag="span" field={props.fields?.Text} />
           </Text>
         }
         cta1={
           <>
             {props.fields?.PrimaryCTA?.value?.text && (
-              <Button size={'large'} variation={'full'}>
+              <Button
+                size={'large'}
+                contentVariation={'full-width'}
+                variation={'full'}
+              >
                 <JssLink field={props.fields?.PrimaryCTA}>
                   <span
                     dangerouslySetInnerHTML={{

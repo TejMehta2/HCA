@@ -14,11 +14,15 @@
 
     > :nth-child(1n + 2) {
       flex-grow: 1;
+
+      button {
+        width: 100%;
+      }
     }
   }
 }
 
-.search-bar {
+%searchbar {
   background-color: var(--field-background);
   display: flex;
   align-items: center;
@@ -57,13 +61,27 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    color: inherit;
   }
 }
 
+.search-bar {
+  @extend %searchbar;
+}
+
 .suggestions {
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 2;
+  @include sr-only;
+
+  // Only show suggestions if input is focus, or suggestions are focus
+  &:focus,
+  &:focus-within,
+  .input:focus ~ & {
+    @include not-sr-only;
+
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+  }
 }

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import {
-  Facets,
   ResultsCount,
   UniversalResults,
   VerticalResults,
@@ -79,7 +78,7 @@ const YextSearch = (): JSX.Element => {
             <ResultsCount />
             <div className={styles.filters}>
               <YextFiltersAdaptor />
-              <Facets />
+              {/* <Facets /> */}
             </div>
           </div>
           <UniversalResults

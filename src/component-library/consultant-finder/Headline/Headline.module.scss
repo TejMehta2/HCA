@@ -1,0 +1,8 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.headline {
+  display: flex;
+  justify-content: center;
+  margin: $spacing-7 $spacing-14 0;
+}

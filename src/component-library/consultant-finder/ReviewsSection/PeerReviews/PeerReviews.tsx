@@ -17,14 +17,17 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
   const [next, setNext] = useState(reviewPerRow);
 
   useEffect(() => {
+    //console.log('peer review', props);
+    const peerURL =
+      props.doctifyReviewsURL?.replace('{slug}', props.slug) ||
+      `https://api.doctify.com/api/hca/specialists/${props.slug}/peerRecommendations`;
+
     axios
-      .get(
-        `https://api.doctify.com/api/hca/specialists/${props.slug}/peerRecommendations`
-      )
+      .get(peerURL)
       .then((resp) => {
         // console.log(resp);
         setIsLoading(false);
-        console.log('reviews', resp.data);
+        //console.log('reviews', resp.data);
         setReviews(resp.data.rows);
         setTotal(resp.data.total);
       })
@@ -54,72 +57,75 @@ const PeerReviews = (props: PeerReviewsProps): JSX.Element => {
 
           <div className={styles['review-wrapper']}>
             {reviews.length > 0 &&
-              reviews?.slice(0, next)?.map((review) => (
-                <div key={review.id} className={styles.review}>
-                  <div className={styles.rating}>
-                    <div className={styles.image}>
-                      <img
-                        src={review.recommender.image}
-                        alt="peer image"
-                        width="76"
-                        height="76"
-                      />
-                    </div>
-                    <div className={styles.text}>
-                      <Text tag="p" variation="body-bold-extra-large">
-                        {review.recommender.title}{' '}
-                        {review.recommender.firstName}{' '}
-                        {review.recommender.lastName}
-                      </Text>
-                      {review.keywords.length > 0 && (
-                        <Text tag="p" variation="body-small">
-                          {review.keywords
-                            .filter(
-                              (keyword: any) => keyword.type === 'specialty'
-                            )
-                            .map((keyword: any) => keyword.name)
-                            .join(', ')}
-                        </Text>
-                      )}
-                    </div>
-                  </div>
-                  {review.connection !== null &&
-                    review.connection.length > 0 && (
-                      <div className={styles.connection}>
-                        <Text tag="p" variation="body-medium">
-                          {review.connection}
-                        </Text>
-                      </div>
-                    )}
-                  <div>
-                    <Text tag="p" variation="body-large">
-                      {review.recommendation}
-                    </Text>
-                  </div>
-                  <div className={styles['date-branding-wrapper']}>
-                    {review?.createdAt !== null && review?.createdAt !== '' && (
-                      <div className={styles.date}>
-                        <Text tag="p" variation="body-medium">
-                          {formatDate(review?.createdAt)}
-                        </Text>
-                      </div>
-                    )}
-                    <div className={styles.branding}>
-                      <Text tag="p" variation="body-medium">
-                        {props.verifyByDoctifyText}
-                      </Text>
-                      {props.docitfyLogo && (
+              reviews
+                ?.slice(0, next)
+                ?.map((review, key: React.Key | null | undefined) => (
+                  <div key={key} className={styles.review}>
+                    <div className={styles.rating}>
+                      <div className={styles.image}>
                         <img
-                          src={props.docitfyLogo}
-                          alt="doctify logo"
-                          width="83"
-                          height="21"
+                          src={review.recommender.image}
+                          alt="peer image"
+                          width="76"
+                          height="76"
                         />
+                      </div>
+                      <div className={styles.text}>
+                        <Text tag="p" variation="body-bold-extra-large">
+                          {review.recommender.title}{' '}
+                          {review.recommender.firstName}{' '}
+                          {review.recommender.lastName}
+                        </Text>
+                        {review.keywords.length > 0 && (
+                          <Text tag="p" variation="body-small">
+                            {review.keywords
+                              .filter(
+                                (keyword: any) => keyword.type === 'specialty'
+                              )
+                              .map((keyword: any) => keyword.name)
+                              .join(', ')}
+                          </Text>
+                        )}
+                      </div>
+                    </div>
+                    {review.connection !== null &&
+                      review.connection.length > 0 && (
+                        <div className={styles.connection}>
+                          <Text tag="p" variation="body-medium">
+                            {review.connection}
+                          </Text>
+                        </div>
                       )}
+                    <div>
+                      <Text tag="p" variation="body-large">
+                        {review.recommendation}
+                      </Text>
+                    </div>
+                    <div className={styles['date-branding-wrapper']}>
+                      {review?.createdAt !== null &&
+                        review?.createdAt !== '' && (
+                          <div className={styles.date}>
+                            <Text tag="p" variation="body-medium">
+                              {formatDate(review?.createdAt)}
+                            </Text>
+                          </div>
+                        )}
+                      <div className={styles.branding}>
+                        <Text tag="p" variation="body-medium">
+                          {props.verifyByDoctifyText}
+                        </Text>
+                        {props.doctifyLogo && (
+                          <img
+                            src={props.doctifyLogo}
+                            alt="doctify logo"
+                            width="83"
+                            height="21"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             {!isLoading && next < reviews?.length && (
               <div>
                 <TextButton theme="dark">
