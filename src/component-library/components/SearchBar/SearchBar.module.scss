@@ -22,7 +22,7 @@
   }
 }
 
-.search-bar {
+%searchbar {
   background-color: var(--field-background);
   display: flex;
   align-items: center;
@@ -63,6 +63,10 @@
     cursor: pointer;
     color: inherit;
   }
+}
+
+.search-bar {
+  @extend %searchbar;
 }
 
 .suggestions {

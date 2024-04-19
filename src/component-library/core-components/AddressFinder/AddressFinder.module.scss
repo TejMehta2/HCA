@@ -1,0 +1,147 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../components/SearchBar/SearchBar.module.scss';
+
+.wrapper {
+  position: relative;
+  flex-direction: column;
+
+  .cross {
+    display: flex;
+    position: absolute;
+    right: $spacing-6;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  .manual-button {
+    margin-top: $spacing-3;
+  }
+
+  &:has(.results) {
+    .manual-button {
+      display: none;
+    }
+  }
+
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
+    }
+  }
+}
+
+.search-wrapper {
+  @extend %searchbar;
+}
+
+.results {
+  border: 1px solid $navy-blue-100;
+  border-radius: $radius-large;
+  margin-top: $spacing-1;
+  padding: calc($spacing-6 - px-to-rem(11)) 0;
+  overflow: auto;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      width: 100%;
+
+      button {
+        @include apply-body-medium-large;
+
+        display: flex;
+        gap: $spacing-3;
+        color: $navy-blue-100;
+        background: transparent;
+        border: 0;
+        width: inherit;
+        padding: px-to-rem(11) $spacing-6;
+
+        &:hover,
+        &.active {
+          background-color: $orange-40;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.selected-address {
+  color: var(--text);
+}
+
+.selected-controls {
+  display: flex;
+  margin-top: $spacing-4;
+  gap: 0 $spacing-5;
+}
+
+.selected-fields {
+  margin-top: $spacing-4;
+
+  @include apply-body-medium-large;
+}
+
+.manual-fields {
+  display: grid;
+  gap: $spacing-5 0;
+  color: var(--text);
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  input {
+    color: inherit;
+    width: 100%;
+    padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
+    height: $spacing-9;
+    border: 1px solid $navy-blue-60;
+    border-radius: $radius-large;
+
+    @include apply-body-medium-large;
+  }
+}
+
+.address-1,
+.postcode,
+.city,
+.country {
+  .error-message {
+    display: none;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &:has(input:not(:focus):user-invalid) {
+    label {
+      color: var(--field-error-colour);
+    }
+
+    input {
+      border-color: var(--field-error-colour);
+    }
+
+    .error-message {
+      color: var(--field-error-colour);
+      display: flex;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
