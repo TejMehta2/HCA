@@ -121,6 +121,7 @@
 .wrapper {
   display: flex;
   user-select: none;
+  margin-bottom: $spacing-2;
 
   .label {
     @extend %label-checkbox;
