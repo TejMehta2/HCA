@@ -78,7 +78,6 @@ const YextSearch = (): JSX.Element => {
             <ResultsCount />
             <div className={styles.filters}>
               <YextFiltersAdaptor />
-              {/* <Facets /> */}
             </div>
           </div>
           <UniversalResults
