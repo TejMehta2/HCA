@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface CF-formsProps {
+export interface CFformsProps {
   children?: ReactNode | JSX.Element;
 }

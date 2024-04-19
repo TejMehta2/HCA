@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useState } from 'react';
 import { SlotsCalendarProps } from './SlotsCalendar.types';
@@ -40,6 +41,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
   const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
+  console.log(lastDayOfWeek);
 
   const getFirstDayOfWeek = (date: any) => {
     const firstDayOfWeek = new Date(date);
@@ -188,7 +190,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setStartTime(startTime);
     // console.log(formatDateLong(startTime));
     // console.log(formatTime12hr(startTime));
-    // console.log(endTime);
+    console.log(endTime);
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
 
     if (buttons.length > 0) {

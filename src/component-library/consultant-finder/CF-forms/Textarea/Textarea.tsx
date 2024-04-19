@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { TextareaProps } from './Textarea.types';
 import styles from './Textarea.module.scss';
-import Icons from '../../../foundation/Icons/Icons';
 import Text from '../../../foundation/Text/Text';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 

@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form';
+import { useForm, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
@@ -12,8 +12,6 @@ import axios from 'axios';
 
 import {
   Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
@@ -357,17 +355,17 @@ export const Default = (props: StepProps): JSX.Element => {
     handleSubmit,
     formState: {
       errors,
-      touchedFields,
-      dirtyFields,
+      // touchedFields,
+      // dirtyFields,
       isDirty,
-      isValid,
+      // isValid,
       isSubmitting,
-      isSubmitSuccessful,
+      // isSubmitSuccessful,
     },
     watch,
-    getValues,
+    // getValues,
     setValue,
-    setError,
+    // setError,
     clearErrors,
   } = form;
   console.log('isSubmitting', isSubmitting);
@@ -466,16 +464,16 @@ export const Default = (props: StepProps): JSX.Element => {
     console.log('errors on submit', errors);
   };
 
-  const handleGetValues = () => {
-    console.log('get Values', getValues());
-  };
+  // const handleGetValues = () => {
+  //   console.log('get Values', getValues());
+  // };
 
-  const habdleSetFieldValue = () => {
-    // setValue('username', '', {
-    //   shouldValidate: false,
-    // });
-    // setValue('username', '');
-  };
+  // const habdleSetFieldValue = () => {
+  //   // setValue('username', '', {
+  //   //   shouldValidate: false,
+  //   // });
+  //   // setValue('username', '');
+  // };
 
   const watchFormChanges = watch();
 
@@ -485,6 +483,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
   const [errorData, setErrorData] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
+
+  console.log(slug, gmcNumber);
 
   const getConsultantData = (slug: string) => {
     axios

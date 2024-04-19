@@ -21,6 +21,7 @@
 
   textarea {
     @include apply-body-medium-large;
+
     color: inherit;
     width: 100%;
     padding: px-to-rem(24) $spacing-6 0 $spacing-6;
