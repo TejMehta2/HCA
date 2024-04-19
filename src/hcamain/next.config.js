@@ -58,15 +58,30 @@ const nextConfig = {
         source: '/webhooks/sitecore/:path*',
         destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
       },
+      //don't rewrite lookup api to the integration layer
+      {
+        source: '/api/lookupAPI/:app*',
+        destination: '/api/lookupAPI/:app*',
+      },
+      //don't rewrite forms proxy api to the integration layer
+      {
+        source: '/api/formAPI/:app*',
+        destination: '/api/formAPI/:app*',
+      },
+      //don't rewrite location proxy api to the integration layer
+      {
+        source: '/api/locationAPI/:app*',
+        destination: '/api/locationAPI/:app*',
+      },
       // rewrite forms
       {
-        source: '/api/sitecore/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+          source: '/api/sitecore/:path*',
+          destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
       },
       // rewrite mail
       {
-        source: '/referrer/mail/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+          source: '/referrer/mail/:path*',
+          destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
       },
     ];
   },
