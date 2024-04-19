@@ -72,17 +72,17 @@ const nextConfig = {
       {
         source: '/api/locationAPI/:app*',
         destination: '/api/locationAPI/:app*',
-        },
-        // rewrite forms
-        {
-            source: '/api/sitecore/:path*',
-            destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
-        },
-        // rewrite mail
-        {
-            source: '/referrer/mail/:path*',
-            destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
-        },
+      },
+      // rewrite forms
+      {
+          source: '/api/sitecore/:path*',
+          destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+      },
+      // rewrite mail
+      {
+          source: '/referrer/mail/:path*',
+          destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+      },
     ];
   },
   webpack(config) {
