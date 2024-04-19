@@ -21,11 +21,11 @@ type CTAIconFields = {
 };
 
 type TreatmentsFields = {
-  abstractTitle?: Field<string>;
-  abstractText?: Field<string>;
-  abstractImage?: { jsonValue?: ImageField };
-  title?: { value?: Field<string> };
-  text?: { value?: Field<string> };
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
   image?: { jsonValue?: ImageField };
   url?: { path?: string };
 };
@@ -117,7 +117,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           paddingSize="small"
           title={
             <Text
-              variation={props.params?.HeadingSize || 'heading-1'}
+              variation={props.params?.HeadingSize || 'display-3'}
               tag={props.params?.HeadingTag || 'h2'}
             >
               <JssTextWithEntityName
@@ -134,7 +134,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             key={index}
             image={
               showImage ? (
-                <JssImage field={card.abstractImage?.jsonValue} />
+                card.abstractImage?.jsonValue?.value?.src ? (
+                  <JssImage
+                    field={card.abstractImage.jsonValue}
+                    editable={false}
+                  />
+                ) : (
+                  <JssImage field={card.image?.jsonValue} editable={false} />
+                )
               ) : undefined
             }
             title={
@@ -142,12 +149,20 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
                 variation="heading-1"
               >
-                <JssText field={card.abstractTitle} />
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
+                ) : (
+                  <JssText field={card.title} />
+                )}
               </Text>
             }
             bodyCopy={
               <Text tag="p" variation="body-medium">
-                <JssRichText tag="span" field={card.abstractText} />
+                {card.abstractText?.value ? (
+                  <JssRichText tag="span" field={card.abstractText} />
+                ) : (
+                  <JssRichText tag="span" field={card.text} />
+                )}
               </Text>
             }
             link={

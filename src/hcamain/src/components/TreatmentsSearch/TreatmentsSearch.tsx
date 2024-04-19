@@ -17,6 +17,7 @@ import {
   ApiResponse,
   ApiSearchProps,
 } from '../../types/searchProps';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
 // import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
@@ -67,7 +68,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     fallbackData: fallbackData,
   });
 
-  if (!fields || error || autocompleteError) {
+  if (!fields) {
     return <TreatmentsSearchDefaultComponent {...props} />;
   }
 
@@ -129,9 +130,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}
-            suggestions={autocompleteData?.response.results?.map(
-              (result) => `${result.value}`
-            )}
+            suggestions={
+              autocompleteError
+                ? []
+                : autocompleteData?.response.results?.map(
+                    (result) => `${result.value}`
+                  )
+            }
           >
             <Filters
               buttonText={<JssText field={fields?.FilterOptionsText} />}
@@ -202,51 +207,71 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               <span>Showing {resultsRange}</span>
             </Text>
           )}
-          <CardGrid>
-            {data?.response.results?.map((item, index) => {
-              const { data } = item;
-              const { title, description, imageUrl, url } = data;
-              return (
-                <CardContent
-                  key={index}
-                  title={
-                    <Text variation="heading-1" tag="h4">
-                      {title}
-                    </Text>
-                  }
-                  bodyCopy={<Text variation="body-large">{description}</Text>}
-                  image={
-                    imageUrl ? (
-                      <Image src={imageUrl} alt="" width="363" height="243" />
-                    ) : undefined
-                  }
-                  link={
-                    <a href={url}>
-                      <span>
-                        Learn <strong>more</strong>
-                      </span>
-                    </a>
-                  }
-                />
-              );
-            })}
-          </CardGrid>
-          {/* <SearchFormPagination
+          {error ? (
+            <ErrorMessage contentVariation={'no-container'}>
+              <Text tag="h2" variation="display-4">
+                No treatments results found.
+              </Text>
+              <Text tag="p" variation="body-extra-large">
+                Please try another search
+              </Text>
+            </ErrorMessage>
+          ) : (
+            <>
+              <CardGrid>
+                {data?.response.results?.map((item, index) => {
+                  const { data } = item;
+                  const { title, description, imageUrl, url } = data;
+                  return (
+                    <CardContent
+                      key={index}
+                      title={
+                        <Text variation="heading-1" tag="h4">
+                          {title}
+                        </Text>
+                      }
+                      bodyCopy={
+                        <Text variation="body-large">{description}</Text>
+                      }
+                      image={
+                        imageUrl ? (
+                          <Image
+                            src={imageUrl}
+                            alt=""
+                            width="363"
+                            height="243"
+                          />
+                        ) : undefined
+                      }
+                      link={
+                        <a href={url}>
+                          <span>
+                            Learn <strong>more</strong>
+                          </span>
+                        </a>
+                      }
+                    />
+                  );
+                })}
+              </CardGrid>
+              {/* <SearchFormPagination
             offset={offset}
             limit={limit}
             resultsCount={resultsCount}
             scrollToRef={searchWrapperRef}
           /> */}
-          <SearchFormLoadMore
-            limit={limit}
-            resultsCount={resultsCount}
-            defaultLimit={defaultLimit}
-          >
-            <span>
-              <Icons iconName={'iconPlus'} />
-            </span>
-            <span>Show more</span>
-          </SearchFormLoadMore>
+              <SearchFormLoadMore
+                limit={limit}
+                resultsCount={resultsCount}
+                defaultLimit={defaultLimit}
+              >
+                <span>
+                  <Icons iconName={'iconPlus'} />
+                </span>
+                <span>Show more</span>
+              </SearchFormLoadMore>
+            </>
+          )}
         </SearchContainer>
       </form>
     </Themes>
@@ -262,21 +287,25 @@ export const getStaticProps: GetStaticComponentProps = async (
   const query = `?${params.join('&')}`;
   const url = new URL(query, `${SERVER_API_URL}${SEARCH_PATH}`); // compose API url
 
-  console.log(baselineParams);
-
   try {
     const response = await fetch(url.href);
 
     if (response.ok) {
       const fallbackData = await response.json();
-      console.log(fallbackData);
       rendering.fallbackData = fallbackData as ApiResponse;
       return rendering;
     } else {
       throw response.statusText;
     }
   } catch (error) {
-    console.error(error);
-    return rendering;
+    console.error(
+      {
+        message: 'TreatmentsSearch server-side data fetching error',
+        error: error,
+        requestUrl: url.href,
+      },
+      error
+    );
+    return { treatments: [] };
   }
 };

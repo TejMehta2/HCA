@@ -18,11 +18,11 @@ type FilterOptionsFields = {
 };
 
 type PatientStoriesFields = {
-  abstractTitle?: Field<string>;
-  abstractText?: Field<string>;
-  abstractImage?: { jsonValue?: ImageField };
-  title?: Field<string>;
-  text?: Field<string>;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
   image?: { jsonValue?: ImageField };
   url?: { path?: string };
 };
@@ -82,6 +82,7 @@ export type patientStories = {
   description: string;
   imageUrl: string;
   url: string;
+  pageId: string;
 };
 
 export type StaticProps = {

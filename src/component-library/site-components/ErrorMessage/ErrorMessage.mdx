@@ -1,0 +1,28 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ErrorMessageStories from './ErrorMessage.stories';
+
+<Meta of={ErrorMessageStories} />
+
+# ErrorMessage
+
+## Description
+
+The ErrorMessage component is intended to be used to display a styled error message when there are failed server requests in components with dynamic content. It accepts children as a prop and the expectation is that these are text.
+
+It can be composed like this:
+
+```tsx
+<ErrorMessage>
+  <Text tag="h2" variation="display-4">
+    No location results found.
+  </Text>
+  <Text tag="p" variation="body-extra-large">
+    Please try another search
+  </Text>
+</ErrorMessage>
+```
+
+## Example
+
+<Canvas of={ErrorMessageStories.Default} />
+<Controls of={ErrorMessageStories.Default} />

@@ -4,6 +4,7 @@ import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcru
 import Link from 'next/link';
 import Params from 'src/types/params';
 import Head from 'next/head';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -87,9 +88,9 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
       });
 
       return (
-        <Link href={ancestor?.url?.url || ''} key={index}>
-          {title}
-        </Link>
+        <TextLink key={index}>
+          <Link href={ancestor?.url?.url || ''}>{title}</Link>
+        </TextLink>
       );
     }
   );

@@ -10973,98 +10973,6 @@ export namespace PageContent {
         
 
     }
-}
-export namespace Foundation {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Modal Content
-    */
-    export type ModalContent =  {
-        fields?: { 
-            /**
-            * Represents the Primary CTA field (eebd3076-badf-4340-b1da-735d54239c77).
-            */
-            PrimaryCTA?: LinkField;
-
-            /**
-            * Represents the Primary CTA Icon field (39de5b4b-939b-41ec-8f16-3a6f92032608).
-            */
-            PrimaryCTAIcon?: Item;
-
-            /**
-            * Represents the Secondary CTA field (40124139-ae1f-40e2-9472-d3251f5cbfdf).
-            */
-            SecondaryCTA?: LinkField;
-
-            /**
-            * Represents the Secondary CTA Icon field (71340edf-a535-4119-8cc3-2036bae2e824).
-            */
-            SecondaryCTAIcon?: Item;
-
-            /**
-            * Represents the Text field (fdad35a7-2d56-4054-999f-3d35fbb308cd).
-            */
-            Text?: Field<string>;
-
-            /**
-            * Represents the Title field (8bdcda68-7ca6-4187-bd0b-0eac908580c5).
-            */
-            Title?: Field<string>;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Modal Content
-    */
-    export type ModalContentJson =  {
-        
-            /**
-            * Represents the Primary CTA field (eebd3076-badf-4340-b1da-735d54239c77).
-            */
-            primaryCTA?: {
-                jsonValue: LinkField
-            };
-
-            /**
-            * Represents the Primary CTA Icon field (39de5b4b-939b-41ec-8f16-3a6f92032608).
-            */
-            primaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the Secondary CTA field (40124139-ae1f-40e2-9472-d3251f5cbfdf).
-            */
-            secondaryCTA?: {
-                jsonValue: LinkField
-            };
-
-            /**
-            * Represents the Secondary CTA Icon field (71340edf-a535-4119-8cc3-2036bae2e824).
-            */
-            secondaryCTAIcon?: {
-                jsonValue: Item
-            };
-
-            /**
-            * Represents the Text field (fdad35a7-2d56-4054-999f-3d35fbb308cd).
-            */
-            text?: {
-                jsonValue: Field<string>
-            };
-
-            /**
-            * Represents the Title field (8bdcda68-7ca6-4187-bd0b-0eac908580c5).
-            */
-            title?: {
-                jsonValue: Field<string>
-            };
-
-
-    }
-}
-export namespace PageContent {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Page Content/Modal Content
@@ -11259,7 +11167,7 @@ export namespace Foundation {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContent =  {
+    export type MoreInformationModalContent = Foundation.Ctabase &  {
         fields?: { 
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
@@ -11277,7 +11185,7 @@ export namespace Foundation {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/More Information Modal Content
     */
-    export type MoreInformationModalContentJson =  {
+    export type MoreInformationModalContentJson = Foundation.CtabaseJson &  {
         
             /**
             * Represents the Text field (d8ea3a22-5874-4a00-82b8-eeede17fda11).
@@ -17977,6 +17885,11 @@ Foundation.HcabasePageDataJson &  {
             SearchResultsText?: Field<string>;
 
             /**
+            * Represents the Search Results Text With Input field (874520c1-dbc1-41cf-a141-d4383d64d0bd).
+            */
+            SearchResultsTextWithInput?: Field<string>;
+
+            /**
             * Represents the Sort Options field (94e928c6-4dfd-49c7-b02f-755e5d8f20c7).
             */
             SortOptions?: Item[];
@@ -18069,6 +17982,13 @@ Foundation.HcabasePageDataJson &  {
             * Represents the Search Results Text field (16809488-0f7d-4b5e-9ab5-ed6805194fa7).
             */
             searchResultsText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the Search Results Text With Input field (874520c1-dbc1-41cf-a141-d4383d64d0bd).
+            */
+            searchResultsTextWithInput?: {
                 jsonValue: Field<string>
             };
 

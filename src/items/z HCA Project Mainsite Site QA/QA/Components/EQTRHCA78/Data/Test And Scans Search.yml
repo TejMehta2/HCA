@@ -13,7 +13,7 @@ Languages:
       Value: All tests & scans
     - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
       Hint: SearchResultsText
-      Value: tests & scans
+      Value: "{{quantity}} tests & scans"
     - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
       Hint: FilterOptionsIcon
       Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
@@ -39,12 +39,15 @@ Languages:
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
       Value: Search for a service or treatments
+    - ID: "874520c1-dbc1-41cf-a141-d4383d64d0bd"
+      Hint: SearchResultsTextWithInput
+      Value: "{{quantity}} tests & scans including {{input}}"
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1f0e6b2b-1248-419d-9faf-1b325c5f132d"
+      Value: "de67f98c-6eef-464e-a7cb-1a71df42a1f8"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -68,4 +71,4 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240320T140849Z
+      Value: 20240417T203936Z

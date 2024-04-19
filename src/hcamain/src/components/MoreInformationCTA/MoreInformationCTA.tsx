@@ -4,6 +4,7 @@ import {
   Text as JssText,
   useSitecoreContext,
   RichText as JssRichText,
+  Link as JssLink,
   LinkFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -22,6 +23,8 @@ type ModalContentFields = {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
+    CTAIcon?: HCAIconFields;
+    CTALink?: { value: LinkFieldValue };
   };
 };
 
@@ -58,6 +61,8 @@ const MoreInformationCTADefaultComponent = (
 
 export const Default = (props: MoreInformationCTAProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
 
   if (!props.fields) {
     return <MoreInformationCTADefaultComponent {...props} />;
@@ -116,6 +121,82 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
         }
         copy2={
           <JssRichText field={props.fields?.ModalContent[1]?.fields?.Text} />
+        }
+        cta1={
+          !isExperienceEditor
+            ? props?.fields?.ModalContent[0]?.fields?.CTALink && (
+                <a
+                  href={
+                    props?.fields?.ModalContent[0]?.fields?.CTALink.value.href
+                  }
+                >
+                  {props?.fields?.ModalContent[0]?.fields?.CTAIcon?.fields
+                    ?.SvgMarkup?.value && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          props?.fields?.ModalContent[0]?.fields?.CTAIcon
+                            ?.fields?.SvgMarkup.value,
+                      }}
+                    ></span>
+                  )}
+                  {props?.fields?.ModalContent[0]?.fields?.CTALink.value
+                    ?.text && (
+                    <>
+                      <JssRichText
+                        field={{
+                          value:
+                            props?.fields?.ModalContent[0]?.fields?.CTALink
+                              .value?.text || '',
+                        }}
+                      />
+                    </>
+                  )}
+                </a>
+              )
+            : props?.fields?.ModalContent[0]?.fields?.CTALink?.value && (
+                <JssLink
+                  field={props?.fields?.ModalContent[0]?.fields?.CTALink?.value}
+                ></JssLink>
+              )
+        }
+        cta2={
+          !isExperienceEditor
+            ? props?.fields?.ModalContent[1]?.fields?.CTALink?.value?.href && (
+                <a
+                  href={
+                    props?.fields?.ModalContent[1]?.fields?.CTALink.value.href
+                  }
+                >
+                  {props?.fields?.ModalContent[1]?.fields?.CTAIcon?.fields
+                    ?.SvgMarkup?.value && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          props?.fields?.ModalContent[1]?.fields?.CTAIcon
+                            ?.fields?.SvgMarkup.value,
+                      }}
+                    ></span>
+                  )}
+                  {props?.fields?.ModalContent[1]?.fields?.CTALink.value
+                    ?.text && (
+                    <>
+                      <JssRichText
+                        field={{
+                          value:
+                            props?.fields?.ModalContent[1]?.fields?.CTALink
+                              .value?.text || '',
+                        }}
+                      />
+                    </>
+                  )}
+                </a>
+              )
+            : props?.fields?.ModalContent[1]?.fields?.CTALink?.value && (
+                <JssLink
+                  field={props?.fields?.ModalContent[1]?.fields?.CTALink?.value}
+                ></JssLink>
+              )
         }
       />
     </>

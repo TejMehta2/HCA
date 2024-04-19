@@ -72,12 +72,17 @@ const nextConfig = {
       {
         source: '/api/locationAPI/:app*',
         destination: '/api/locationAPI/:app*',
-      },
-      // rewrite integration layer
-      {
-        source: '/api/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/:path*`,
-      },
+        },
+        // rewrite forms
+        {
+            source: '/api/sitecore/:path*',
+            destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+        },
+        // rewrite mail
+        {
+            source: '/referrer/mail/:path*',
+            destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+        },
     ];
   },
   webpack(config) {
