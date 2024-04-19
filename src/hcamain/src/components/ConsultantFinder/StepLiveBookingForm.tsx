@@ -12,6 +12,7 @@ import axios from 'axios';
 
 import {
   Image as JssImage,
+  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
@@ -30,6 +31,7 @@ import TextField from '@component-library/consultant-finder/CF-forms/TextField/T
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
 import Checkbox from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
 import Container from '@component-library/foundation/Containers/Container';
+import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -93,6 +95,8 @@ interface Fields {
   LiveBookingFormRepresentativeEmailPlaceholder: Field<string>;
   API_C2_ReserveConsultantSlot_BaseURL: Field<string>;
   API_C2_ReserveConsultantSlot_RecapchaKey: Field<string>;
+  LiveBookingFormMarketingPreferencesHeadline: Field<string>;
+  LiveBookingFormMarketingPreferencesText: Field<string>;
 }
 
 type StepProps = {
@@ -1160,46 +1164,60 @@ export const Default = (props: StepProps): JSX.Element => {
                     )}
 
                     {/* Marketing preferences */}
-                    <Checkbox
-                      label={
+                    <MarketingPreferences
+                      headline={
                         props?.fields
-                          ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
-                          ?.value || ''
+                          ?.LiveBookingFormMarketingPreferencesHeadline?.value
                       }
-                      name={'marketingPreferenceEmail'}
-                      id={'marketingPreferenceEmail'}
-                      register={register}
-                    />
-                    <Checkbox
-                      label={
-                        props?.fields
-                          ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
-                          ?.value || ''
+                      text={
+                        <JssRichText
+                          field={
+                            props.fields.LiveBookingFormMarketingPreferencesText
+                          }
+                        />
                       }
-                      name={'marketingPreferencePhone'}
-                      id={'marketingPreferencePhone'}
-                      register={register}
-                    />
-                    <Checkbox
-                      label={
-                        props?.fields
-                          ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
-                          ?.value || ''
-                      }
-                      name={'marketingPreferenceSMS'}
-                      id={'marketingPreferenceSMS'}
-                      register={register}
-                    />
-                    <Checkbox
-                      label={
-                        props?.fields
-                          ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
-                          ?.value || ''
-                      }
-                      name={'marketingPreferencePost'}
-                      id={'marketingPreferencePost'}
-                      register={register}
-                    />
+                    >
+                      <Checkbox
+                        label={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                            ?.value || ''
+                        }
+                        name={'marketingPreferenceEmail'}
+                        id={'marketingPreferenceEmail'}
+                        register={register}
+                      />
+                      <Checkbox
+                        label={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                            ?.value || ''
+                        }
+                        name={'marketingPreferencePhone'}
+                        id={'marketingPreferencePhone'}
+                        register={register}
+                      />
+                      <Checkbox
+                        label={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                            ?.value || ''
+                        }
+                        name={'marketingPreferenceSMS'}
+                        id={'marketingPreferenceSMS'}
+                        register={register}
+                      />
+                      <Checkbox
+                        label={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                            ?.value || ''
+                        }
+                        name={'marketingPreferencePost'}
+                        id={'marketingPreferencePost'}
+                        register={register}
+                      />
+                    </MarketingPreferences>
                     <ReCAPTCHA
                       sitekey={
                         props?.fields?.API_C2_ReserveConsultantSlot_RecapchaKey
