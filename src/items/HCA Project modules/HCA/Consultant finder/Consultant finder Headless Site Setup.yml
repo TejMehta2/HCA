@@ -3,10 +3,6 @@ ID: "9e7c460c-76ea-4704-b3b3-e0ea221fd083"
 Parent: "25ba9645-83d3-4bb9-ac3d-be908e74ff3a"
 Template: "bed31d6f-d968-45a9-b54e-12d7f977d861"
 Path: /sitecore/system/Settings/Project/HCA/Consultant finder/Consultant finder Headless Site Setup
-SharedFields:
-- ID: "40deee2f-7595-40bd-b2c9-51f9e2346100"
-  Hint: Dependencies
-  Value: "{24EC97FA-F22A-404E-BC39-9B0673D46271}"
 Languages:
 - Language: en
   Versions:
@@ -25,14 +21,14 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7496bcda-4930-4cb6-b4e7-5a59dc86974e"
+      Value: "eb53aa3e-3380-4218-9b38-f87e669916e0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "c202067e-7fab-4606-afb4-e76df2185ddc"
       Hint: Name
       Value: Consultant finder
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240325T173314Z
+      Value: 20240115T113616Z
