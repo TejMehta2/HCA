@@ -10,6 +10,8 @@ import {
 import Checkbox from '../../core-components/Checkbox/Checkbox';
 import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 
+//  integration based on https://hitchhikers.yext.com/guides/search-react-custom-facets/
+
 const YextFiltersAdaptor = (): JSX.Element | JSX.Element[] => {
   const facets = useSearchState((state) => state.filters.facets);
 
