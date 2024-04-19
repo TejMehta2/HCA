@@ -422,66 +422,88 @@ export async function getPhysicianStructuredData(
   return ret;
 }
 
+// suggest a location interface
+export interface ISuggestLocationFields {
+  provider: string; //e.g.:Google
+  searchTerm: string; //e.g.buckingham palace
+  searchType: string; //e.g.Default
+}
+
 // suggest a location
 export async function suggestLocation(
-  provider: string, //e.g.:Google
-  method: string, // e.g. Default
-  units: string, //e.g. Kilometers
-  order: string, // e.g. Default
-  origin: string, // e.g. TN23%201DR
-  originType: string, // e.g. Postcode
-  destinations: string, //e.g.WD6%203BS%2C%20TN23%203DS
-  destinationType: string // e.g.Postcode
+  fields: ISuggestLocationFields | any
 ): Promise<any> {
-  let cma;
-  //const HCAAPIConfig = await getHCAConfig();
-  console.log(
-    provider,
-    method,
-    units,
-    order,
-    origin,
-    originType,
-    destinations,
-    destinationType
-  );
-  /*
-  if (
-    HCAAPIConfig?.aPI_HCA_CMAs_BaseURL &&
-    HCAAPIConfig.aPI_HCA_CMAs_BaseURL.length > 0
-  ) {
-    const cmaURL = `${HCAAPIConfig.aPI_HCA_CMAs_BaseURL}?key=${id}`;
+  console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await getHCAConfig();
+
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
+
+  let locationsURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_Locations_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_Locations_BaseURL;
+
+  if (locationsURL) {
+    let headers: HeadersInit = {
+      'Content-Type': 'application/json',
+    };
+    let urlParamsStr: string = JSON.stringify(fields);
+    console.log('bodyStr', urlParamsStr);
+    console.log('locationsURL', locationsURL);
+
+    console.log('isLegacy', isLegacy);
+    if (isLegacy) {
+      // convert params to path frags locationApi/suggestLocation/default/default/miles/default/
+      locationsURL = `${locationsURL}/suggestLocation/${fields['provider']}/${fields['searchTerm']}/${fields['searchType']}`;
+      console.log('locationsURL', locationsURL);
+      headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+    } else {
+      // convert from JSON to uri encoding
+      const paramsArray = [];
+      for (const property in fields) {
+        const encodedKey = encodeURIComponent(property);
+        const encodedValue = encodeURIComponent(fields[property]);
+        paramsArray.push(encodedKey + '=' + encodedValue);
+      }
+      urlParamsStr = paramsArray.join('&');
+      //console.log('urlParamsStr', urlParamsStr);
+      locationsURL = `${locationsURL}/SuggestLocation?${urlParamsStr}`;
+      console.log('locationsURL', locationsURL);
+    }
 
     try {
-      // need to cache these requests so we don't make hundreds of them
-      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
-      const res = await fetch(cmaURL, {
-        cache: 'force-cache',
-        next: { revalidate: 3600 },
+      const res = await fetch(locationsURL, {
+        method: 'get',
+        //body: urlParamsStr,
+        headers: headers,
+        cache: 'no-cache',
       });
+
       if (res.ok) {
-        cma = await res.json();
-        if (cma && cma.length > 0) {
-          // returned stuff from the server side
-          return cma[0];
-        }
-        if (cma.length == 0) {
-          console.warn(`Warning CMA empty on getCMA() call`);
-        }
+        returnData = await res.json();
       } else {
-        // couldn't get the cmas
-        console.warn(
-          `Could not load CMAs list for pre-render from ${cmaURL} result:${res}`
-        );
+        //SuggestLocation call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.json();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`SuggestLocation failed with error ${returnData}`);
       }
     } catch (e) {
-      console.warn(
-        `Could not load CMAs for pre-render from ${cmaURL} failed with exception ${e}`
-      );
+      //SuggestLocation call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting SuggestLocation, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`SuggestLocation failed with exception ${e}`);
     }
-  }*/
+  }
 
-  return cma;
+  return returnData;
 }
 
 export interface IGetDistancesFields {
@@ -507,7 +529,7 @@ export async function getDistances(
   const HCAAPIConfig = await getHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
-
+  console.log('isLegacy', isLegacy);
   let locationsURL = isLegacy
     ? HCAAPIConfig?.aPI_HCA_Locations_LegacyBaseURL
     : HCAAPIConfig?.aPI_HCA_Locations_BaseURL;
@@ -520,27 +542,25 @@ export async function getDistances(
     console.log('bodyStr', urlParamsStr);
     console.log('locationsURL', locationsURL);
 
-    console.log('isLegacy', isLegacy);
     if (isLegacy) {
       // convert params to path frags locationApi/getDistances/default/default/miles/default/
-      locationsURL = `{locationsURL}/locationApi/getDistances/${fields['provider']}/${fields['method']}/${fields['units']}/${fields['order']}/${fields['origin']}/${fields['originType']}/${fields['destinations']}/${fields['destinationType']}`;
+      locationsURL = `${locationsURL}/getDistances/${fields['provider']}/${fields['method']}/${fields['units']}/${fields['order']}/${fields['origin']}/${fields['originType']}/${fields['destinations']}/${fields['destinationType']}`;
       console.log('locationsURL', locationsURL);
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
       };
     } else {
-      // convert from JSON to uri form encoding for SC9.3 form style
+      // convert from JSON to uri encoding
       const paramsArray = [];
       for (const property in fields) {
         const encodedKey = encodeURIComponent(property);
         const encodedValue = encodeURIComponent(fields[property]);
         paramsArray.push(encodedKey + '=' + encodedValue);
       }
-      urlParamsStr = JSON.stringify(fields);
       urlParamsStr = paramsArray.join('&');
-      console.log('urlParamsStr', urlParamsStr);
-      locationsURL += '/GetDistances?' + urlParamsStr;
-      //console.log('bodyStr', bodyStr);
+      //console.log('urlParamsStr', urlParamsStr);
+      locationsURL = `${locationsURL}/GetDistances?${urlParamsStr}`;
+      console.log('locationsURL', locationsURL);
     }
 
     try {
