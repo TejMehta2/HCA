@@ -2,5 +2,10 @@
 @use '../../utilities/index.module' as *;
 
 .cf-aside {
-  min-width: px-to-rem(300);
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
+    min-width: px-to-rem(300);
+  }
 }
