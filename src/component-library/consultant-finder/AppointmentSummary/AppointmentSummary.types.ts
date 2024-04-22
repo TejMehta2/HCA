@@ -9,4 +9,7 @@ export interface AppointmentSummaryProps {
   locationText: string;
   dateTitle: string;
   dateText: string;
+  slug: string;
+  gmcNumber: string | number | null;
+  isFollowUpAppointment: string;
 }

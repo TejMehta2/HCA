@@ -2,6 +2,10 @@
 @use '../../utilities/index.module' as *;
 
 .help {
+  // display: none;
+
+  // @include media(screen-l) {
+  //   display: block;
   margin: $spacing-2 0;
   border-radius: $radius-small;
   background-color: $navy-blue-100;

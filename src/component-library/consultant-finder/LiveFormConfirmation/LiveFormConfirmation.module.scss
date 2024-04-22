@@ -1,6 +1,7 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.cf-aside {
-  min-width: px-to-rem(300);
+.confirmation-page {
+  display: flex;
+  margin: $spacing-7 $spacing-14;
 }

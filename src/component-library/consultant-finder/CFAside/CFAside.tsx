@@ -4,7 +4,7 @@ import styles from './CFAside.module.scss';
 
 const CFAside = (props: CFAsideProps): JSX.Element => {
   const { children } = props;
-  return <div className={styles.bold}>{children}</div>;
+  return <div className={styles['cf-aside']}>{children}</div>;
 };
 
 export default CFAside;

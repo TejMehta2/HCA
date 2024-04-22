@@ -125,6 +125,14 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
+  const router = useRouter();
+  const [slug, setSlug] = useState<string>('');
+  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
+  const [errorData, setErrorData] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
+
+  console.log(slug, gmcNumber);
   const {
     selectedLocationName,
     selectedDate,
@@ -135,6 +143,7 @@ export const Default = (props: StepProps): JSX.Element => {
     startTime,
     consultantMainSpecialty,
     consultantName,
+    setPatientName,
   } = useContext(ConsultantFinderContext);
   console.log('step booking form', props.fields);
 
@@ -384,6 +393,7 @@ export const Default = (props: StepProps): JSX.Element => {
     clearErrors,
   } = form;
   console.log('isSubmitting', isSubmitting);
+  const watchFormChanges = watch();
 
   const postData = (data: any) => {
     const dataToPost = {
@@ -451,7 +461,9 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
         // go to thank you page
         // /Finder/Step-Live-Booking-Confirmation
-        router.push(`/Finder/Step-Live-Booking-Confirmation`);
+        router.push(
+          `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
+        );
       })
       .catch(function (error) {
         // handle error with status code other than 200
@@ -469,6 +481,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const onSubmit = (data: any) => {
     console.log('data', data);
     postData(data);
+    setPatientName(`${data.firstName} ${data.lastName}`);
+    // router.push(`/Finder/Step-Live-Booking-Confirmation`);
 
     return new Promise<void>((resolve) => {
       setTimeout(() => resolve(), 1000);
@@ -489,17 +503,6 @@ export const Default = (props: StepProps): JSX.Element => {
   //   // });
   //   // setValue('username', '');
   // };
-
-  const watchFormChanges = watch();
-
-  const router = useRouter();
-  const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
-  const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
-  const [errorData, setErrorData] = useState(false);
-  const [loadingData, setLoadingData] = useState(true);
-
-  console.log(slug, gmcNumber);
 
   const getConsultantData = (slug: string) => {
     axios
@@ -1266,6 +1269,9 @@ export const Default = (props: StepProps): JSX.Element => {
                   locationText={selectedLocationName}
                   dateTitle={'Date & time'}
                   dateText={`${selectedDate} at ${selectedTime}`}
+                  slug={slug}
+                  gmcNumber={gmcNumber}
+                  isFollowUpAppointment={selectedTypeOfAppointment}
                 />
                 <NeedHelp
                   headline={

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { AppointmentSummaryProps } from './AppointmentSummary.types';
 import styles from './AppointmentSummary.module.scss';
 import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
 
 const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
+  const router = useRouter();
   return (
     <div className={styles.summary}>
       <div className={styles.title}>
@@ -29,7 +31,14 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
           <Text tag="p" variation="body-medium-small">
             {props.locationTitle}
           </Text>
-          <button className={styles.button}>
+          <button
+            className={styles.button}
+            onClick={() =>
+              router.push(
+                `/Finder/Step-Location-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
+              )
+            }
+          >
             <Icons iconName="iconEdit" />
           </button>
         </div>
@@ -44,7 +53,14 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
           <Text tag="p" variation="body-medium-small">
             {props.dateTitle}
           </Text>
-          <button className={styles.button}>
+          <button
+            className={styles.button}
+            onClick={() =>
+              router.push(
+                `/Finder/Step-Slot-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
+              )
+            }
+          >
             <Icons iconName="iconEdit" />
           </button>
         </div>
