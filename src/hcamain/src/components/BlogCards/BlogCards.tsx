@@ -82,7 +82,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         </Text>
       }
       link={
-        props.fields?.CTALink && (
+        props.fields.BlogUrl?.value?.href &&
+        props?.fields?.CTALink?.value?.text ? (
           <Button size={'large'} variation={'full'}>
             <JssLink
               href={props.fields.BlogUrl?.value.href}
@@ -97,6 +98,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
               )}
             </JssLink>
           </Button>
+        ) : (
+          <></>
         )
       }
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -159,7 +162,8 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
           </Text>
         }
         cta={
-          props.fields?.CTALink && (
+          props.fields.BlogUrl?.value.href &&
+          props.fields?.CTALink?.value.text ? (
             <Button size={'large'} variation={'full'}>
               <JssLink
                 href={props.fields.BlogUrl?.value.href}
@@ -174,6 +178,8 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                 )}
               </JssLink>
             </Button>
+          ) : (
+            <></>
           )
         }
         theme={props.params?.Theme || 'A-HCA-White'}
