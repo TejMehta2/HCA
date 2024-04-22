@@ -6,6 +6,7 @@ import {
   Image as JssImage,
   Placeholder,
   ComponentRendering,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import VideoBlock from '@component-library/site-components/VideoBlock/VideoBlock';
@@ -33,13 +34,22 @@ type VideoPlayerProps = {
   fields?: Fields;
 };
 
-const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">VideoPlayer no datasource</span>
-    </div>
-  </div>
-);
+const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Video Player please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 export const Default = (props: VideoPlayerProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
@@ -49,9 +59,6 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
-  if (!props.fields?.VideoUrl?.value) {
-    return <></>;
-  }
   return (
     <VideoBlock
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -87,10 +94,14 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
         />
       }
       video={
-        <VideoPlayer
-          videoUrl={props.fields?.VideoUrl?.value}
-          overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
-        />
+        props.fields?.VideoUrl?.value ? (
+          <VideoPlayer
+            videoUrl={props.fields?.VideoUrl.value}
+            overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+          />
+        ) : (
+          <></>
+        )
       }
     ></VideoBlock>
   );
@@ -101,16 +112,16 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
-  if (!props.fields?.VideoUrl?.value) {
-    return <></>;
-  }
-
   return (
     <figure>
-      <VideoPlayer
-        videoUrl={props.fields?.VideoUrl?.value}
-        overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
-      />
+      {props.fields?.VideoUrl?.value ? (
+        <VideoPlayer
+          videoUrl={props.fields?.VideoUrl?.value}
+          overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+        />
+      ) : (
+        <></>
+      )}
     </figure>
   );
 };

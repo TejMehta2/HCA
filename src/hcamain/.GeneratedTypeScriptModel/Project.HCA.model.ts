@@ -228,6 +228,11 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_C2_ReserveConsultantSlot_NoResultsMsg field (40d869fc-80f7-4b0e-824b-f681b8f7c7ce).
             */
             API_C2_ReserveConsultantSlot_NoResultsMsg?: Field<string>;
+
+            /**
+            * Represents the API_C2_ReserveConsultantSlot_RecapchaKey field (4d2c3985-109e-48ae-a286-7542d9d2f310).
+            */
+            API_C2_ReserveConsultantSlot_RecapchaKey?: Field<string>;
         }
 
     }
@@ -265,13 +270,20 @@ export namespace ConsultantFinder.Apicalls {
                 jsonValue: Field<string>
             };
 
+            /**
+            * Represents the API_C2_ReserveConsultantSlot_RecapchaKey field (4d2c3985-109e-48ae-a286-7542d9d2f310).
+            */
+            aPI_C2_ReserveConsultantSlot_RecapchaKey?: {
+                jsonValue: Field<string>
+            };
+
 
     }
 
     /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_AutoCompleteSearch
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyAutoCompleteSearch
     */
-    export type ApiDetailsAutoCompleteSearch =  {
+    export type ApiDetailsDoctifyAutoCompleteSearch =  {
         fields?: { 
             /**
             * Represents the API_Autocomplete_BaseURL field (e33ad346-ef94-4ded-ba77-93e4f67f8aa4).
@@ -297,9 +309,9 @@ export namespace ConsultantFinder.Apicalls {
     }
 
     /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_AutoCompleteSearch
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyAutoCompleteSearch
     */
-    export type ApiDetailsAutoCompleteSearchJson =  {
+    export type ApiDetailsDoctifyAutoCompleteSearchJson =  {
         
             /**
             * Represents the API_Autocomplete_BaseURL field (e33ad346-ef94-4ded-ba77-93e4f67f8aa4).
@@ -675,9 +687,24 @@ export namespace ConsultantFinder.Apicalls {
             API_HCA_All_Consultants_BaseURL?: Field<string>;
 
             /**
+            * Represents the API_HCA_All_Consultants_LegacyBaseURL field (c7d0aeaa-08c0-4d09-98ea-fd6249f93872).
+            */
+            API_HCA_All_Consultants_LegacyBaseURL?: Field<string>;
+
+            /**
             * Represents the API_HCA_All_Consultants_LoadingMsg field (913dfd08-51d3-4b0e-b4b2-3664058d968c).
             */
             API_HCA_All_Consultants_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_All_Consultants_MockConsultants field (db08e0f7-7aa0-4c0c-97d7-c7c7d30a8430).
+            */
+            API_HCA_All_Consultants_MockConsultants?: Field<boolean>;
+
+            /**
+            * Represents the API_HCA_All_Consultants_MockSlugsList field (31960ac6-29e9-4b37-98f9-2a0c9905a7a3).
+            */
+            API_HCA_All_Consultants_MockSlugsList?: Field<string>;
 
             /**
             * Represents the API_HCA_All_Consultants_NoResultsMsg field (e25e3ac7-5fc1-42ae-a829-6d05b7f33c94).
@@ -705,9 +732,30 @@ export namespace ConsultantFinder.Apicalls {
             };
 
             /**
+            * Represents the API_HCA_All_Consultants_LegacyBaseURL field (c7d0aeaa-08c0-4d09-98ea-fd6249f93872).
+            */
+            aPI_HCA_All_Consultants_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the API_HCA_All_Consultants_LoadingMsg field (913dfd08-51d3-4b0e-b4b2-3664058d968c).
             */
             aPI_HCA_All_Consultants_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_All_Consultants_MockConsultants field (db08e0f7-7aa0-4c0c-97d7-c7c7d30a8430).
+            */
+            aPI_HCA_All_Consultants_MockConsultants?: {
+                jsonValue: Field<boolean>
+            };
+
+            /**
+            * Represents the API_HCA_All_Consultants_MockSlugsList field (31960ac6-29e9-4b37-98f9-2a0c9905a7a3).
+            */
+            aPI_HCA_All_Consultants_MockSlugsList?: {
                 jsonValue: Field<string>
             };
 
@@ -729,6 +777,58 @@ export namespace ConsultantFinder.Apicalls {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_CMAs
+    */
+    export type ApiHcaCmas =  {
+        fields?: { 
+            /**
+            * Represents the API_HCA_CMAs_BaseURL field (bb2cd6f3-d10d-4c15-840d-adf2263f463a).
+            */
+            API_HCA_CMAs_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_CMAs_LoadingMsg field (029235c0-54e9-4cd2-a8a2-152ca1954d93).
+            */
+            API_HCA_CMAs_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_CMAs_NoResultsMsg field (93589ad0-4feb-437a-bdb3-af877dba1e9c).
+            */
+            API_HCA_CMAs_NoResultsMsg?: Field<string>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_CMAs
+    */
+    export type ApiHcaCmasJson =  {
+        
+            /**
+            * Represents the API_HCA_CMAs_BaseURL field (bb2cd6f3-d10d-4c15-840d-adf2263f463a).
+            */
+            aPI_HCA_CMAs_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_CMAs_LoadingMsg field (029235c0-54e9-4cd2-a8a2-152ca1954d93).
+            */
+            aPI_HCA_CMAs_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_CMAs_NoResultsMsg field (93589ad0-4feb-437a-bdb3-af877dba1e9c).
+            */
+            aPI_HCA_CMAs_NoResultsMsg?: {
+                jsonValue: Field<string>
+            };
+
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_DoctifyToFacilities
     */
     export type ApiHcaDoctifyToFacilities =  {
@@ -737,6 +837,11 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_HCA_DoctifyToFacilities_BaseURL field (8933aedb-b43d-4ded-94c9-d8d0f6ae2faa).
             */
             API_HCA_DoctifyToFacilities_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_DoctifyToFacilities_LegacyBaseURL field (b2f8222e-5b1f-4dbf-aff8-cf2e05fe0e8c).
+            */
+            API_HCA_DoctifyToFacilities_LegacyBaseURL?: Field<string>;
 
             /**
             * Represents the API_HCA_DoctifyToFacilities_LoadingMsg field (8768be66-7b25-48b1-a1dd-d4332b3adc9e).
@@ -769,6 +874,13 @@ export namespace ConsultantFinder.Apicalls {
             };
 
             /**
+            * Represents the API_HCA_DoctifyToFacilities_LegacyBaseURL field (b2f8222e-5b1f-4dbf-aff8-cf2e05fe0e8c).
+            */
+            aPI_HCA_DoctifyToFacilities_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the API_HCA_DoctifyToFacilities_LoadingMsg field (8768be66-7b25-48b1-a1dd-d4332b3adc9e).
             */
             aPI_HCA_DoctifyToFacilities_LoadingMsg?: {
@@ -793,6 +905,106 @@ export namespace ConsultantFinder.Apicalls {
     }
 
     /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_EnquireBookingForm
+    */
+    export type ApiHcaEnquireBookingForm =  {
+        fields?: { 
+            /**
+            * Represents the API_HCA_EnquireBookingForm_BaseURL field (7d6fceb3-7e30-4aba-a2ec-f816fa3cd5c8).
+            */
+            API_HCA_EnquireBookingForm_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_ErrorSubmittingText field (ef23bb1e-e262-473e-8005-c398607d652a).
+            */
+            API_HCA_EnquireBookingForm_ErrorSubmittingText?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_Header field (e6ab77b6-cb15-4ff3-856e-dee04e813726).
+            */
+            API_HCA_EnquireBookingForm_Header?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_LegacyBaseURL field (584d54f7-dd16-47d0-b6f6-ad72d0432532).
+            */
+            API_HCA_EnquireBookingForm_LegacyBaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_LoadingMsg field (9e00bb3f-c9ab-4d97-be63-5c385f93b2ae).
+            */
+            API_HCA_EnquireBookingForm_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_RecapchaKey field (6c8a3f74-93e4-4a8c-b464-2745042fcb9c).
+            */
+            API_HCA_EnquireBookingForm_RecapchaKey?: Field<string>;
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_UtilizesLegacy field (068fbd4e-d991-4532-9496-78a09aa3260a).
+            */
+            API_HCA_EnquireBookingForm_UtilizesLegacy?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_EnquireBookingForm
+    */
+    export type ApiHcaEnquireBookingFormJson =  {
+        
+            /**
+            * Represents the API_HCA_EnquireBookingForm_BaseURL field (7d6fceb3-7e30-4aba-a2ec-f816fa3cd5c8).
+            */
+            aPI_HCA_EnquireBookingForm_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_ErrorSubmittingText field (ef23bb1e-e262-473e-8005-c398607d652a).
+            */
+            aPI_HCA_EnquireBookingForm_ErrorSubmittingText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_Header field (e6ab77b6-cb15-4ff3-856e-dee04e813726).
+            */
+            aPI_HCA_EnquireBookingForm_Header?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_LegacyBaseURL field (584d54f7-dd16-47d0-b6f6-ad72d0432532).
+            */
+            aPI_HCA_EnquireBookingForm_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_LoadingMsg field (9e00bb3f-c9ab-4d97-be63-5c385f93b2ae).
+            */
+            aPI_HCA_EnquireBookingForm_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_RecapchaKey field (6c8a3f74-93e4-4a8c-b464-2745042fcb9c).
+            */
+            aPI_HCA_EnquireBookingForm_RecapchaKey?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_EnquireBookingForm_UtilizesLegacy field (068fbd4e-d991-4532-9496-78a09aa3260a).
+            */
+            aPI_HCA_EnquireBookingForm_UtilizesLegacy?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+
+    /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_Holidays
     */
     export type ApiHcaHolidays =  {
@@ -801,6 +1013,11 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_HCA_Holidays_BaseURL field (998d27de-77af-49e1-a12d-53c2897dd5d2).
             */
             API_HCA_Holidays_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Holidays_LegacyBaseURL field (eba80865-e9ae-4882-9db0-5a50d3ba3b19).
+            */
+            API_HCA_Holidays_LegacyBaseURL?: Field<string>;
 
             /**
             * Represents the API_HCA_Holidays_LoadingMsg field (ee235687-abf2-4ebf-88df-7cf17956f7ad).
@@ -829,6 +1046,13 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_HCA_Holidays_BaseURL field (998d27de-77af-49e1-a12d-53c2897dd5d2).
             */
             aPI_HCA_Holidays_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Holidays_LegacyBaseURL field (eba80865-e9ae-4882-9db0-5a50d3ba3b19).
+            */
+            aPI_HCA_Holidays_LegacyBaseURL?: {
                 jsonValue: Field<string>
             };
 
@@ -867,6 +1091,11 @@ export namespace ConsultantFinder.Apicalls {
             API_HCA_LDB_Consultants_BaseURL?: Field<string>;
 
             /**
+            * Represents the API_HCA_LDB_Consultants_LegacyBaseURL field (5cb1a913-ae7e-4484-b9c1-89b5489a1c2a).
+            */
+            API_HCA_LDB_Consultants_LegacyBaseURL?: Field<string>;
+
+            /**
             * Represents the API_HCA_LDB_Consultants_LoadingMsg field (f5c9d548-8914-4719-bfcb-9e0653c45ad6).
             */
             API_HCA_LDB_Consultants_LoadingMsg?: Field<string>;
@@ -897,6 +1126,13 @@ export namespace ConsultantFinder.Apicalls {
             };
 
             /**
+            * Represents the API_HCA_LDB_Consultants_LegacyBaseURL field (5cb1a913-ae7e-4484-b9c1-89b5489a1c2a).
+            */
+            aPI_HCA_LDB_Consultants_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the API_HCA_LDB_Consultants_LoadingMsg field (f5c9d548-8914-4719-bfcb-9e0653c45ad6).
             */
             aPI_HCA_LDB_Consultants_LoadingMsg?: {
@@ -914,6 +1150,134 @@ export namespace ConsultantFinder.Apicalls {
             * Represents the API_HCA_LDB_Consultants_UtilizesLegacy field (8111dc54-7a70-4ace-94db-792e8db48981).
             */
             aPI_HCA_LDB_Consultants_UtilizesLegacy?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_Locations
+    */
+    export type ApiHcaLocations =  {
+        fields?: { 
+            /**
+            * Represents the API_HCA_Locations_BaseURL field (23835980-1935-4c19-a9db-4adc73c23145).
+            */
+            API_HCA_Locations_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Locations_LegacyBaseURL field (28fb34bc-e57a-4a40-b648-fbd5ee6beaf5).
+            */
+            API_HCA_Locations_LegacyBaseURL?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Locations_LoadingMsg field (ff5e4a5b-5077-42eb-bc30-0f6f552c9801).
+            */
+            API_HCA_Locations_LoadingMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Locations_NoResultsMsg field (e6c3eac2-e612-4e5d-b75b-cc87ebf1b0c4).
+            */
+            API_HCA_Locations_NoResultsMsg?: Field<string>;
+
+            /**
+            * Represents the API_HCA_Locations_UtilizesLegacy field (8ced83f4-90ca-4b84-a617-29fcc30b5361).
+            */
+            API_HCA_Locations_UtilizesLegacy?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_HCA_Locations
+    */
+    export type ApiHcaLocationsJson =  {
+        
+            /**
+            * Represents the API_HCA_Locations_BaseURL field (23835980-1935-4c19-a9db-4adc73c23145).
+            */
+            aPI_HCA_Locations_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Locations_LegacyBaseURL field (28fb34bc-e57a-4a40-b648-fbd5ee6beaf5).
+            */
+            aPI_HCA_Locations_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Locations_LoadingMsg field (ff5e4a5b-5077-42eb-bc30-0f6f552c9801).
+            */
+            aPI_HCA_Locations_LoadingMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Locations_NoResultsMsg field (e6c3eac2-e612-4e5d-b75b-cc87ebf1b0c4).
+            */
+            aPI_HCA_Locations_NoResultsMsg?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_HCA_Locations_UtilizesLegacy field (8ced83f4-90ca-4b84-a617-29fcc30b5361).
+            */
+            aPI_HCA_Locations_UtilizesLegacy?: {
+                jsonValue: Field<boolean>
+            };
+
+
+    }
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Lookup_API_Media
+    */
+    export type ApiLookupApiMedia =  {
+        fields?: { 
+            /**
+            * Represents the API_Lookup_API_Media_BaseURL field (2257e975-e5d2-45e9-ad7a-dbe7b52eb933).
+            */
+            API_Lookup_API_Media_BaseURL?: Field<string>;
+
+            /**
+            * Represents the API_Lookup_API_Media_LegacyBaseURL field (0d6dc8a9-c211-4ab7-9ad5-fd82191b84ab).
+            */
+            API_Lookup_API_Media_LegacyBaseURL?: Field<string>;
+
+            /**
+            * Represents the API_Lookup_API_Media_UtilizesLegacy field (edec90bb-da53-4271-bd43-0fbdf5a1a3ef).
+            */
+            API_Lookup_API_Media_UtilizesLegacy?: Field<boolean>;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Lookup_API_Media
+    */
+    export type ApiLookupApiMediaJson =  {
+        
+            /**
+            * Represents the API_Lookup_API_Media_BaseURL field (2257e975-e5d2-45e9-ad7a-dbe7b52eb933).
+            */
+            aPI_Lookup_API_Media_BaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_Lookup_API_Media_LegacyBaseURL field (0d6dc8a9-c211-4ab7-9ad5-fd82191b84ab).
+            */
+            aPI_Lookup_API_Media_LegacyBaseURL?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the API_Lookup_API_Media_UtilizesLegacy field (edec90bb-da53-4271-bd43-0fbdf5a1a3ef).
+            */
+            aPI_Lookup_API_Media_UtilizesLegacy?: {
                 jsonValue: Field<boolean>
             };
 
@@ -2130,6 +2494,60 @@ ConsultantFinder.Apicalls.ApiC2ReserveConsultantSlot &  {
 ConsultantFinder.Apicalls.ApiC2GetConsultantDetailsJson & 
 ConsultantFinder.Apicalls.ApiC2GetConsultantSlotsJson & 
 ConsultantFinder.Apicalls.ApiC2ReserveConsultantSlotJson &  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Frames {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/CMA Disclosures Folder
+    */
+    export type CmaDisclosuresFolder =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Frames/CMA Disclosures Folder
+    */
+    export type CmaDisclosuresFolderJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/CMADisclosures
+    */
+    export type Cmadisclosures =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/CMADisclosures
+    */
+    export type CmadisclosuresJson =  {
+        
+
+    }
+}
+export namespace ConsultantFinder.Frames {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/CMADisclosures
+    */
+    export type Cmadisclosures =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Frames/CMADisclosures
+    */
+    export type CmadisclosuresJson =  {
         
 
     }
@@ -4195,7 +4613,7 @@ export namespace ConsultantFinder.Settings {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Settings/Doctify_API_Settings
     */
-    export type DoctifyApiSettings = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch & 
+    export type DoctifyApiSettings = ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearch & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearch & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurers & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialists &  {
@@ -4206,7 +4624,7 @@ ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialists &  {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Settings/Doctify_API_Settings
     */
-    export type DoctifyApiSettingsJson = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson & 
+    export type DoctifyApiSettingsJson = ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearchJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearchJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifyInsurersJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySpecialistsJson &  {
@@ -8580,6 +8998,24 @@ export namespace ConsultantFinder.Forms {
 
     }
 }
+export namespace ConsultantFinder.RenderingParameters {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviews =  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
+    */
+    export type FrameReviewsJson =  {
+        
+
+    }
+}
 export namespace ConsultantFinder.Frames {
 
     /**
@@ -8697,26 +9133,6 @@ ConsultantFinder.Apicalls.ApiDetailsDoctifyPeerReviewsJson &  {
 
 
     }
-}
-export namespace ConsultantFinder.RenderingParameters {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviews =  {
-        fields?: {         }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Rendering Parameters/FrameReviews
-    */
-    export type FrameReviewsJson =  {
-        
-
-    }
-}
-export namespace ConsultantFinder.Frames {
 
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Frames/FrameReviews Folder
@@ -8902,7 +9318,10 @@ export namespace ConsultantFinder.Settings {
     export type HcaApiSettings = ConsultantFinder.Apicalls.ApiHcaDoctifyToFacilities & 
 ConsultantFinder.Apicalls.ApiHcaLdbConsultants & 
 ConsultantFinder.Apicalls.ApiHcaAllConsultants & 
-ConsultantFinder.Apicalls.ApiHcaHolidays &  {
+ConsultantFinder.Apicalls.ApiHcaHolidays & 
+ConsultantFinder.Apicalls.ApiHcaCmas & 
+ConsultantFinder.Apicalls.ApiHcaLocations & 
+ConsultantFinder.Apicalls.ApiHcaEnquireBookingForm &  {
         fields?: {         }
 
     }
@@ -8913,7 +9332,10 @@ ConsultantFinder.Apicalls.ApiHcaHolidays &  {
     export type HcaApiSettingsJson = ConsultantFinder.Apicalls.ApiHcaDoctifyToFacilitiesJson & 
 ConsultantFinder.Apicalls.ApiHcaLdbConsultantsJson & 
 ConsultantFinder.Apicalls.ApiHcaAllConsultantsJson & 
-ConsultantFinder.Apicalls.ApiHcaHolidaysJson &  {
+ConsultantFinder.Apicalls.ApiHcaHolidaysJson & 
+ConsultantFinder.Apicalls.ApiHcaCmasJson & 
+ConsultantFinder.Apicalls.ApiHcaLocationsJson & 
+ConsultantFinder.Apicalls.ApiHcaEnquireBookingFormJson &  {
         
 
     }
@@ -10606,6 +11028,24 @@ export namespace Foundation.Logos {
 
     }
 }
+export namespace ConsultantFinder.Settings {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Settings/Lookup_API_Settings
+    */
+    export type LookupApiSettings = ConsultantFinder.Apicalls.ApiLookupApiMedia &  {
+        fields?: {         }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Settings/Lookup_API_Settings
+    */
+    export type LookupApiSettingsJson = ConsultantFinder.Apicalls.ApiLookupApiMediaJson &  {
+        
+
+    }
+}
 export namespace Navigation {
 
     /**
@@ -11596,36 +12036,6 @@ export namespace HCA.Project.HCA {
 
     }
 }
-export namespace Foundation {
-
-    /**
-    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxy = Foundation.HcabasePageData &  {
-        fields?: { 
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            Link?: LinkField;
-        }
-
-    }
-
-    /**
-    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
-    */
-    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
-        
-            /**
-            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
-            */
-            link?: {
-                jsonValue: LinkField
-            };
-
-
-    }
-}
 export namespace PageContent {
 
     /**
@@ -11648,6 +12058,36 @@ export namespace PageContent {
         
             /**
             * Represents the Link field (1b699dd6-99de-4058-a91d-f3fd23b47e41).
+            */
+            link?: {
+                jsonValue: LinkField
+            };
+
+
+    }
+}
+export namespace Foundation {
+
+    /**
+    * Represents the template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxy = Foundation.HcabasePageData &  {
+        fields?: { 
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
+            */
+            Link?: LinkField;
+        }
+
+    }
+
+    /**
+    * Represents the GraphQL template /sitecore/templates/Project/HCA/Foundation/Page Proxy
+    */
+    export type PageProxyJson = Foundation.HcabasePageDataJson &  {
+        
+            /**
+            * Represents the Link field (3317a6f6-dbe7-4cbb-a826-605fef277ad5).
             */
             link?: {
                 jsonValue: LinkField
@@ -13260,7 +13700,7 @@ export namespace ConsultantFinder.Steps {
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards
     */
     export type StepConsultantCards = ConsultantFinder.Steps.StepCommon & 
-ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearch & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearch & 
 ConsultantFinder.Apicalls.ApiC2FirstAppointment &  {
         fields?: { 
@@ -13511,7 +13951,7 @@ ConsultantFinder.Apicalls.ApiC2FirstAppointment &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepConsultantCards
     */
     export type StepConsultantCardsJson = ConsultantFinder.Steps.StepCommonJson & 
-ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson & 
+ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearchJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearchJson & 
 ConsultantFinder.Apicalls.ApiC2FirstAppointmentJson &  {
         
@@ -14704,7 +15144,8 @@ export namespace ConsultantFinder.Steps {
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepEnquireForm
     */
     export type StepEnquireForm = ConsultantFinder.Steps.StepCommon & 
-ConsultantFinder.Forms.EnquireForm.EnquireBookingForm &  {
+ConsultantFinder.Forms.EnquireForm.EnquireBookingForm & 
+ConsultantFinder.Apicalls.ApiHcaEnquireBookingForm &  {
         fields?: { 
             /**
             * Represents the BackFromAdvSearchLink field (8bafec43-6588-4475-baf1-bdf50e713bf4).
@@ -14723,7 +15164,8 @@ ConsultantFinder.Forms.EnquireForm.EnquireBookingForm &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepEnquireForm
     */
     export type StepEnquireFormJson = ConsultantFinder.Steps.StepCommonJson & 
-ConsultantFinder.Forms.EnquireForm.EnquireBookingFormJson &  {
+ConsultantFinder.Forms.EnquireForm.EnquireBookingFormJson & 
+ConsultantFinder.Apicalls.ApiHcaEnquireBookingFormJson &  {
         
             /**
             * Represents the BackFromAdvSearchLink field (8bafec43-6588-4475-baf1-bdf50e713bf4).
@@ -14834,7 +15276,7 @@ export namespace ConsultantFinder.Steps {
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepIntro
     */
     export type StepIntro = ConsultantFinder.Steps.StepCommon & 
-ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch &  {
+ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearch &  {
         fields?: { 
             /**
             * Represents the AdvancedSearchLink field (8db17c3e-e7bb-45bf-badc-83b6fc1b12ef).
@@ -14913,7 +15355,7 @@ ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch &  {
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepIntro
     */
     export type StepIntroJson = ConsultantFinder.Steps.StepCommonJson & 
-ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson &  {
+ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearchJson &  {
         
             /**
             * Represents the AdvancedSearchLink field (8db17c3e-e7bb-45bf-badc-83b6fc1b12ef).
@@ -15238,14 +15680,14 @@ ConsultantFinder.ProgressBar.ProgressBar &
 ConsultantFinder.Apicalls.ApiC2GetConsultantDetails &  {
         fields?: { 
             /**
-            * Represents the CantFindBannerIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
-            */
-            CantFindBannerIcon?: Item;
-
-            /**
             * Represents the CantFindBannerText field (3b1fe756-7bfc-41b2-8b37-368194540b57).
             */
             CantFindBannerText?: Field<string>;
+
+            /**
+            * Represents the CantFindIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
+            */
+            CantFindIcon?: Item;
 
             /**
             * Represents the CantFindPhoneNumber field (c63bb75e-f1f0-48e3-b4ae-6859c11a3e6b).
@@ -15273,17 +15715,17 @@ ConsultantFinder.ProgressBar.ProgressBarJson &
 ConsultantFinder.Apicalls.ApiC2GetConsultantDetailsJson &  {
         
             /**
-            * Represents the CantFindBannerIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
-            */
-            cantFindBannerIcon?: {
-                jsonValue: Item
-            };
-
-            /**
             * Represents the CantFindBannerText field (3b1fe756-7bfc-41b2-8b37-368194540b57).
             */
             cantFindBannerText?: {
                 jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the CantFindIcon field (33f40f0c-6c5f-49fe-aadf-a80574cb6eb2).
+            */
+            cantFindIcon?: {
+                jsonValue: Item
             };
 
             /**
@@ -15349,7 +15791,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLocations
     */
-    export type StepLocations = ConsultantFinder.Steps.StepCommon &  {
+    export type StepLocations = ConsultantFinder.Steps.StepCommon & 
+ConsultantFinder.Apicalls.ApiHcaLocations &  {
         fields?: { 
             /**
             * Represents the CardItemCountText field (547456b5-a5ff-42f6-b698-a51fa3d2399d).
@@ -15412,7 +15855,8 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLocations
     */
-    export type StepLocationsJson = ConsultantFinder.Steps.StepCommonJson &  {
+    export type StepLocationsJson = ConsultantFinder.Steps.StepCommonJson & 
+ConsultantFinder.Apicalls.ApiHcaLocationsJson &  {
         
             /**
             * Represents the CardItemCountText field (547456b5-a5ff-42f6-b698-a51fa3d2399d).
@@ -15659,7 +16103,7 @@ export namespace ConsultantFinder.Steps {
     /**
     * Represents the template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSearchConsultant
     */
-    export type StepSearchConsultant = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearch & 
+    export type StepSearchConsultant = ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearch & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearch & 
 ConsultantFinder.Steps.StepCommon &  {
         fields?: { 
@@ -15709,7 +16153,7 @@ ConsultantFinder.Steps.StepCommon &  {
     /**
     * Represents the GraphQL template /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSearchConsultant
     */
-    export type StepSearchConsultantJson = ConsultantFinder.Apicalls.ApiDetailsAutoCompleteSearchJson & 
+    export type StepSearchConsultantJson = ConsultantFinder.Apicalls.ApiDetailsDoctifyAutoCompleteSearchJson & 
 ConsultantFinder.Apicalls.ApiDetailsDoctifySearchJson & 
 ConsultantFinder.Steps.StepCommonJson &  {
         
@@ -15821,6 +16265,11 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlots &  {
             AppointmentSelectedText?: Field<string>;
 
             /**
+            * Represents the BookByPhoneIcon field (5d2626bf-d5f2-4ad2-bfa5-c0f321a5a3fe).
+            */
+            BookByPhoneIcon?: Item;
+
+            /**
             * Represents the BookSlotButtonText field (216b44e4-5036-40bd-8f1c-de6c8165e87c).
             */
             BookSlotButtonText?: Field<string>;
@@ -15836,6 +16285,11 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlots &  {
             CancelLinkText?: Field<string>;
 
             /**
+            * Represents the ChooseTimeHeading field (1f9f9bdd-ff66-422a-8967-b61584b6d8d8).
+            */
+            ChooseTimeHeading?: Field<string>;
+
+            /**
             * Represents the KeyBookOnlineText field (15bf4f15-6ba7-4cce-9202-5512193496cb).
             */
             KeyBookOnlineText?: Field<string>;
@@ -15844,6 +16298,16 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlots &  {
             * Represents the KeyShortNoticeText field (c6665641-9fb8-4bc6-8296-090c9d7a19ed).
             */
             KeyShortNoticeText?: Field<string>;
+
+            /**
+            * Represents the PhoneNumberIcon field (29714e96-4b62-44a0-a9c5-c9c78e018160).
+            */
+            PhoneNumberIcon?: Item;
+
+            /**
+            * Represents the PhoneNumberToBook field (a3c79943-ea07-4f6e-818b-10aef4c7ffec).
+            */
+            PhoneNumberToBook?: Field<string>;
 
             /**
             * Represents the ViewMapIcon field (2f278631-43de-44fb-890b-b408a0cd3719).
@@ -15873,6 +16337,13 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlotsJson &  {
             };
 
             /**
+            * Represents the BookByPhoneIcon field (5d2626bf-d5f2-4ad2-bfa5-c0f321a5a3fe).
+            */
+            bookByPhoneIcon?: {
+                jsonValue: Item
+            };
+
+            /**
             * Represents the BookSlotButtonText field (216b44e4-5036-40bd-8f1c-de6c8165e87c).
             */
             bookSlotButtonText?: {
@@ -15894,6 +16365,13 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlotsJson &  {
             };
 
             /**
+            * Represents the ChooseTimeHeading field (1f9f9bdd-ff66-422a-8967-b61584b6d8d8).
+            */
+            chooseTimeHeading?: {
+                jsonValue: Field<string>
+            };
+
+            /**
             * Represents the KeyBookOnlineText field (15bf4f15-6ba7-4cce-9202-5512193496cb).
             */
             keyBookOnlineText?: {
@@ -15904,6 +16382,20 @@ ConsultantFinder.Apicalls.ApiC2GetConsultantSlotsJson &  {
             * Represents the KeyShortNoticeText field (c6665641-9fb8-4bc6-8296-090c9d7a19ed).
             */
             keyShortNoticeText?: {
+                jsonValue: Field<string>
+            };
+
+            /**
+            * Represents the PhoneNumberIcon field (29714e96-4b62-44a0-a9c5-c9c78e018160).
+            */
+            phoneNumberIcon?: {
+                jsonValue: Item
+            };
+
+            /**
+            * Represents the PhoneNumberToBook field (a3c79943-ea07-4f6e-818b-10aef4c7ffec).
+            */
+            phoneNumberToBook?: {
                 jsonValue: Field<string>
             };
 
