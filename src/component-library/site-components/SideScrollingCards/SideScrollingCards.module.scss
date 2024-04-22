@@ -73,6 +73,7 @@
   /* Individual Card */
   & > div {
     min-height: px-to-rem(608);
+    height: auto;
 
     @include media(screen-l) {
       width: px-to-rem(456);
