@@ -124,7 +124,7 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
         }
         cta1={
           !isExperienceEditor
-            ? props?.fields?.ModalContent[0]?.fields?.CTALink && (
+            ? props?.fields?.ModalContent[0]?.fields?.CTALink?.value?.href && (
                 <a
                   href={
                     props?.fields?.ModalContent[0]?.fields?.CTALink.value.href
