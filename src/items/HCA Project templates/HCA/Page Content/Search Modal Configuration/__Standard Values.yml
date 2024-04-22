@@ -1,8 +1,12 @@
 ﻿---
-ID: "4059acd2-b338-49f9-a83f-99651eaaf67f"
-Parent: "a1f6469d-16e1-4a5f-9e49-1aad869a5d11"
-Template: "85adbf5b-e836-4932-a333-fe0f9fa1ed1e"
-Path: /sitecore/templates/Branches/Project/HCA
+ID: "dc8bb413-4131-4c64-9f6a-0e7f67800a34"
+Parent: "baa0d92f-d72a-4146-8988-a767bbd2e04c"
+Template: "baa0d92f-d72a-4146-8988-a767bbd2e04c"
+Path: /sitecore/templates/Project/HCA/Page Content/Search Modal Configuration/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{7F1D310B-A8F1-4763-AC29-75BDDE316335}"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +14,10 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231114T122040Z
+      Value: 20240418T072552Z
+    - ID: "2e92f1fb-5cf4-4f36-882d-d8c07879de57"
+      Hint: Icon
+      Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +28,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c44911ed-f5b6-4087-88e7-b98ba3f58ee5"
+      Value: "f8acfcf4-2b6f-440d-a98d-8f3f6962806f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T122040Z
+      Value: 20240418T091159Z

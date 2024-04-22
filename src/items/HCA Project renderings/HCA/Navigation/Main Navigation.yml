@@ -70,6 +70,19 @@ SharedFields:
               }
             }
           }
+          searchModalConfigurationFolder{
+            targetItem{
+              ... on SearchSuggestionTemplate{
+                text{
+                  value 
+                  jsonValue
+                }
+                icon_612e35f92c594aa38a0fcb132fc6376b{
+                  jsonValue
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -177,7 +190,7 @@ SharedFields:
   Value: 0
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
-  Value: 0
+  Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{3D859427-8649-4BF5-AA73-03BC140FDEF4}"
@@ -233,14 +246,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5ff7c272-fc3f-4be1-8c19-4d8a11de309f"
+      Value: "d39a1b12-c201-4971-9c77-ecf784ed095f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240220T095113Z
+      Value: 20240418T142020Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
