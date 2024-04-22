@@ -16,7 +16,6 @@ export default async function handler(
       url.replace('/api/api-layer', ''),
       process.env.INTEGRATION_LAYER_URL
     );
-    console.log(body);
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : body,
