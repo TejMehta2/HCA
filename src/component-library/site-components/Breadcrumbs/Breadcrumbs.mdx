@@ -17,6 +17,12 @@ It can be composed like this:
 
 ```tsx
 <Breadcrumbs>
+  <TextLink key={0}>
+    <a href="#">
+      <Icons iconName="iconHome"></Icons>
+      <span className="sr-only">Home</span>
+    </a>
+  </TextLink>
   <TextLink>
     <a href="#">Services & Treatments</a>
   </TextLink>

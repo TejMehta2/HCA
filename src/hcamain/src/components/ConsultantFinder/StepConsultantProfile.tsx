@@ -55,6 +55,7 @@ import {
 } from '@component-library/utility-functions/index';
 import axios, { CancelTokenSource } from 'axios';
 import Head from 'next/head';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -355,20 +356,35 @@ export const Default = (props: StepProps): JSX.Element => {
             </Head>
             {/* top section */}
             <div>
-              <Breadcrumbs>
-                <Link href="/Finder/Step-Intro">
-                  {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
-                </Link>
-                {topSpecialty[0]?.name && (
-                  <Link
-                    href={`/Finder/Step-Consultant-Cards?search=${
-                      topSpecialty[0]?.name || ''
-                    }&keywordId=${
-                      topSpecialty[0]?.id || ''
-                    }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`}
-                  >
-                    {topSpecialty[0]?.name}
+              <Breadcrumbs
+                backCta={{
+                  text: 'Consultant Finder',
+                  link: '/Finder/Step-Intro',
+                }}
+              >
+                <TextLink>
+                  <a href="/">
+                    <Icons iconName="iconHome"></Icons>
+                    <span className="sr-only">Home</span>
+                  </a>
+                </TextLink>
+                <TextLink>
+                  <Link href="/Finder/Step-Intro">
+                    {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
                   </Link>
+                </TextLink>
+                {topSpecialty[0]?.name && (
+                  <TextLink>
+                    <Link
+                      href={`/Finder/Step-Consultant-Cards?search=${
+                        topSpecialty[0]?.name || ''
+                      }&keywordId=${
+                        topSpecialty[0]?.id || ''
+                      }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`}
+                    >
+                      {topSpecialty[0]?.name}
+                    </Link>
+                  </TextLink>
                 )}
                 <span>{`${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`}</span>
               </Breadcrumbs>
