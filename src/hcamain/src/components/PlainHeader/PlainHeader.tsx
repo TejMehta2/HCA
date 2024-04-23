@@ -11,10 +11,8 @@ import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   data?: {
-    currentItem?: {
-      heading?: { jsonValue?: Field<string> };
-    };
     contextItem?: {
+      heading?: { jsonValue?: Field<string> };
       title?: { jsonValue?: Field<string> };
       text?: { jsonValue?: Field<string> };
     };
@@ -47,7 +45,7 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
         subheading={
           <Text variation="subheading-1">
             <JssText
-              field={props.fields?.data?.currentItem?.heading?.jsonValue}
+              field={props.fields?.data?.contextItem?.heading?.jsonValue}
             />
           </Text>
         }
