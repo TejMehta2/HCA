@@ -1,0 +1,44 @@
+﻿---
+ID: "9a20b84b-35a9-4249-bf4b-cedddc560752"
+Parent: "de57724a-c391-41cd-ac44-688425b03e2d"
+Template: "9121d435-48b8-4649-9d13-03d680474fad"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Patient details/title"
+SharedFields:
+- ID: "5be76442-950f-4c1f-a797-bebd71101abb"
+  Hint: Datasource
+  Value: "{17EE8F4F-75CC-4D89-A15C-9189D0F5FF5E}"
+- ID: "8a43af61-0812-4b37-a343-96cde3f12bb1"
+  Hint: Required
+  Value: 1
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T120005Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        HCA\BGlomski@hca.uk.net
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        HCA\BGlomski@hca.uk.net
+    - ID: "71ffd7b2-8b09-4f7b-8a66-1e4cef653e8d"
+      Hint: Title
+      Value: Title
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "78131fd8-bb8f-404a-ac8a-fa65d7da0a7d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T211427Z

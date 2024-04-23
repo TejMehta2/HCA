@@ -1,15 +1,12 @@
 ﻿---
-ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
+ID: "3fbc8137-0dc9-42cf-86c6-6c369d19d764"
+Parent: "ca1fba59-9c3e-416a-9418-699bd8fa47f5"
+Template: "99248bb8-0336-481e-9bec-654a2e4801f8"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Invoice amount/Invoice amount"
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: "{0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 150
+  Value: "-100"
 Languages:
 - Language: en
   Versions:
@@ -17,22 +14,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231205T095911Z
+      Value: 20240422T214910Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "212bbce2-e80d-4536-8c36-caf9f76f526f"
+      Value: "b489913f-c843-449e-97ac-de60772ecc52"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T230334Z
+      Value: 20240422T215253Z

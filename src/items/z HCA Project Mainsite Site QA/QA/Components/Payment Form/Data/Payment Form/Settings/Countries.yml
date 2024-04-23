@@ -1,38 +1,42 @@
 ﻿---
-ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
+ID: "370bc098-270b-4c11-8cba-512e70502aba"
+Parent: "9b5c7c84-d910-4e43-816f-f777da63129b"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Settings/Countries"
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: "{0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}"
+- ID: "6fd695e7-7f6d-4ca5-8b49-a829e5950ae9"
+  Hint: __Subitems Sorting
+  Value: "{44D1A0D2-E17B-4DAA-ADDF-53F2E8F58525}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 150
+  Value: "-50"
 Languages:
 - Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Countries ISO 3166-1-alpha-2 "
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231205T095911Z
+      Value: 20220303T164151Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartekglomski
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartekglomski
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "212bbce2-e80d-4536-8c36-caf9f76f526f"
+      Value: "e374ca2e-5093-4ab5-b314-aa6bdb429f8c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T230334Z
+      Value: 20240422T232506Z

@@ -1,15 +1,8 @@
 ﻿---
-ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
+ID: "75da0162-ebc3-4e66-96d9-742b405935e3"
+Parent: "617aed36-858b-4569-a78c-d28a97910b11"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
-SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: "{0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 150
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Communication preferences/comms/Settings/Datasource"
 Languages:
 - Language: en
   Versions:
@@ -17,22 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231205T095911Z
+      Value: 20240422T125204Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        HCA\BGlomski@hca.uk.net
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        HCA\BGlomski@hca.uk.net
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "212bbce2-e80d-4536-8c36-caf9f76f526f"
+      Value: "de6f8d51-c481-47fd-8189-b2de4b52fb25"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        HCA\BGlomski@hca.uk.net
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T230334Z
+      Value: 20240422T125204Z

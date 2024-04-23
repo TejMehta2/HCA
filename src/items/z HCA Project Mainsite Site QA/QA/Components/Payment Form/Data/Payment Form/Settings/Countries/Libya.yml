@@ -1,15 +1,15 @@
 ﻿---
-ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
+ID: "6a55cac9-1834-4bfd-9daa-b4a6e29b09e4"
+Parent: "370bc098-270b-4c11-8cba-512e70502aba"
+Template: "fe82b4d6-7b24-4bc0-9bb3-12a9187acef1"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Settings/Countries/Libya"
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: "{0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}"
+- ID: "7b0b1182-2da4-4ee4-ac86-6ea3f729f20c"
+  Hint: Key
+  Value: LY
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 150
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -17,22 +17,25 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231205T095911Z
+      Value: 20220317T142047Z
+    - ID: "416ed02d-01c0-4898-bb76-86c82a979559"
+      Hint: Value
+      Value: Libya
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartekglomski
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartekglomski
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "212bbce2-e80d-4536-8c36-caf9f76f526f"
+      Value: "f89bfa9f-e7fb-42d9-8c9a-4b4af3c03a1d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\bartekglomski
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T230334Z
+      Value: 20220317T142141Z

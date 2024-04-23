@@ -1,0 +1,327 @@
+﻿---
+ID: "3039876c-2745-4e4e-872a-f49b7cdd58c2"
+Parent: "3029223e-885b-497b-937a-69ba35c7936d"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: /sitecore/layout/Renderings/Project/HCA/Forms/Payment Form
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: componentName
+  Value: PaymentForm
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: office/32x32/credit_card2.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetForm($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on TailoredForm {
+          children(includeTemplateIDs: ["AA65679FA6FD485F8579B40D2CF506DE"]) {
+            results {
+              name
+              children {
+                results {
+                  name
+                  ...ValidatorFragment
+                  ...ListItemFragment
+                  ...KeyValuePairFragment
+                }
+              }
+            }
+          }
+          pages: children(
+            includeTemplateIDs: ["CFEE7B51850545CEB8439358F827DF87"]
+          ) {
+            results {
+              name
+              template {
+                name
+              }
+              children {
+                results {
+                  name
+                  template {
+                    name
+                  }
+                  ...SectionFragment
+                  ...FieldFragment
+                  ...LabelSettingsFragment
+                  ...ValidationFragment
+                  ...TextFragment
+                  ...InputFragment
+                  ...ListFragment
+                  ...EmailConfirmationFragment
+                  validation: children(
+                    includeTemplateIDs: ["0A1A6DCE078A4ECE9FCE71CADE57C7B8"]
+                  ) {
+                    results {
+                      name
+                      ...ValidatorFragment
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    fragment SectionFragment on Section {
+      children {
+        results {
+          name
+          template {
+            name
+          }
+          ...FieldFragment
+          ...LabelSettingsFragment
+          ...ValidationFragment
+          ...TextFragment
+          ...InputFragment
+          ...ListFragment
+          ...EmailConfirmationFragment
+          validation: children(
+            includeTemplateIDs: ["0A1A6DCE078A4ECE9FCE71CADE57C7B8"]
+          ) {
+            results {
+              name
+              ...ValidatorFragment
+            }
+          }
+        }
+      }
+    }
+    
+    fragment TextFragment on Text_fc18f915eac6460a87776e1376a9ea09 {
+      text {
+        value
+      }
+    }
+    
+    fragment InputFragment on Input {
+      placeholderText {
+        value
+      }
+      minLength {
+        value
+      }
+      maxLength {
+        value
+      }
+      defaultValue {
+        value
+      }
+    }
+    
+    fragment EmailConfirmationFragment on EmailConfirmation {
+      confirmEmailLabel {
+        value
+      }
+      confirmEmailPlaceholder {
+        value
+      }
+    }
+    
+    fragment ValidationFragment on ValidationSettings {
+      required {
+        boolValue
+        value
+      }
+    }
+    
+    fragment ValidatorFragment on Validation {
+      type {
+        value
+      }
+      message {
+        value
+      }
+      parameters {
+        value
+      }
+    }
+    
+    fragment FieldFragment on Field {
+      cssClass {
+        value
+      }
+    }
+    
+    fragment LabelSettingsFragment on LabelSettings {
+      labelCssClass {
+        value
+      }
+      title {
+        value
+      }
+    }
+    
+    fragment ListFragment on List {
+      displayFieldName {
+        value
+      }
+      valueFieldName {
+        value
+      }
+      defaultSelection {
+        value
+      }
+      datasource {
+        targetItem {
+          children {
+            results {
+              ...ListItemFragment
+              ...KeyValuePairFragment
+            }
+          }
+        }
+      }
+    }
+    
+    fragment ListItemFragment on ExtendedListItem {
+      value {
+        value
+      }
+      displayName
+    }
+    
+    fragment KeyValuePairFragment on KeyValueTranslatedPair {
+      key {
+        value
+      }
+      value {
+        value
+      }
+    }
+    
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: /sitecore/templates/Project/HCA/Forms/Tailored Form
+- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+  Hint: Open Properties after Add
+  Value: 0
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Value: 0
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: Parameters Template
+  Value: "{8F7FB7E7-BFB8-4E6A-A756-F431FDB72B51}"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Tailored Form Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Failored Form Folder']"
+- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
+  Hint: AddFieldEditorButton
+  Value: 
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: OtherProperties
+  Value: IsRenderingsWithDynamicPlaceholders=true
+Languages:
+- Language: "de-DE"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Promo
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T095000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a7a3529b-382b-4941-882a-eefd8d09853e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T095000Z
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120931Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a8e7ed48-0b87-4adf-9868-bb5da5b84ab1"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T225944Z
+- Language: "ja-JP"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: プロモ
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T095000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a7a3529b-382b-4941-882a-eefd8d09853e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T095000Z
+- Language: "zh-CN"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 促销
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T095000Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a7a3529b-382b-4941-882a-eefd8d09853e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T095000Z

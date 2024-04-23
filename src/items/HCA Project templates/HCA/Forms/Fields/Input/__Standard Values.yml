@@ -1,15 +1,18 @@
 ﻿---
-ID: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
-Parent: "4000d9a4-c2f4-47c2-92d7-44607ea67fe2"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components"
+ID: "eb802e92-9120-447c-91d2-de8c763a3831"
+Parent: "0908030b-4564-42ea-a6fa-c7a5a2d921a8"
+Template: "0908030b-4564-42ea-a6fa-c7a5a2d921a8"
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Input/__Standard Values
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{0B18DB9E-ACEC-4F9E-99C0-61A20535AF37}"
+  Value: "{0A1A6DCE-078A-4ECE-9FCE-71CADE57C7B8}"
+- ID: "71061c01-a495-4bf3-a52c-d378346bfae2"
+  Hint: Max Length
+  Value: 255
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 150
+  Value: 400
 Languages:
 - Language: en
   Versions:
@@ -17,22 +20,25 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231205T095911Z
+      Value: 20160919T131742Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\Admin
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\Admin
+    - ID: "71ffd7b2-8b09-4f7b-8a66-1e4cef653e8d"
+      Hint: Title
+      Value: Label
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "212bbce2-e80d-4536-8c36-caf9f76f526f"
+      Value: "c5ddb748-d0b4-4d35-b145-3948e20c4544"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T230334Z
+      Value: 20240422T213650Z
