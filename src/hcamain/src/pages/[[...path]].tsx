@@ -15,12 +15,10 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
 
-const SitecorePage = ({
-  notFound,
-  componentProps,
-  layoutData,
-  headLinks,
-}: SitecorePageProps): JSX.Element => {
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+
+const SitecorePage = (props: SitecorePageProps): JSX.Element => {
+  const { notFound, componentProps, layoutData, headLinks } = props;
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
@@ -94,6 +92,38 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
+  // Custom redirect if response from API is valid and has a destination
+  const params = context?.params?.path as string[];
+
+  const path = params?.slice(1).join('/');
+
+  const url = new URL(`${SERVER_API_URL}/redirects/find?source=/${path}`);
+
+  try {
+    const response = await fetch(url);
+
+    if (response.ok) {
+      try {
+        const data = await response.json();
+        if (data.destination) {
+          return {
+            redirect: {
+              destination: data.destination,
+              permanent: false,
+            },
+          };
+        }
+      } catch {}
+    } else {
+      throw response.statusText;
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true,
+    };
+  }
+
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {
     const props = await sitecorePagePropsFactory.create(context);
