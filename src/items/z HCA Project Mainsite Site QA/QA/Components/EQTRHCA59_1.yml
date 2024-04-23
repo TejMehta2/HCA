@@ -20,9 +20,17 @@ Languages:
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
               uid="{CD06035D-FF95-4CAC-B014-63EE414651F0}"
+              p:before="*"
               s:ds="local:/Data/Patient Stories Cards"
               s:id="{89DE6A21-463A-4BA5-A58B-76D9189662F2}"
               s:par="HeadingTag=h3&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B889E5D6F-D680-41F2-BE02-A943A024650F%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+            <r
+              uid="{5992206D-7D6B-45EC-8184-9E921A1470B7}"
+              p:after="*[1=2]"
+              s:ds="local:/Data/Patient Stories Cards - Keep Aspect Ratio"
+              s:id="{89DE6A21-463A-4BA5-A58B-76D9189662F2}"
+              s:par="HeadingTag=h3&amp;KeepAspectRatio=1&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B889E5D6F-D680-41F2-BE02-A943A024650F%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="headless-main" />
           </d>
         </r>
@@ -39,14 +47,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1cd0949d-0bbb-40b3-9d77-157d2dce69b3"
+      Value: "f36e3214-4800-4840-ac2f-2943e55b6f1e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T074332Z
+      Value: 20240423T205348Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA59_1

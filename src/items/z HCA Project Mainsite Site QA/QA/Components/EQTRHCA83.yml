@@ -7,22 +7,6 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: 
-- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
-  Hint: __Renderings
-  Value: |
-    <r xmlns:p="p" xmlns:s="s"
-      p:p="1">
-      <d
-        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
-        <r
-          uid="{5B9959FE-CC00-41A7-BD79-5431FC876408}"
-          s:ds="{C9B14309-1C56-477B-B621-23BC3043DCDC}"
-          s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
-          s:par="HeadingTag=h1&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-          s:ph="headless-main"
-          s:ccb="Clear on publish" />
-      </d>
-    </r>
 Languages:
 - Language: en
   Versions:
@@ -39,26 +23,15 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{5B9959FE-CC00-41A7-BD79-5431FC876408}">
-              <p:d />
-            </r>
-            <r
-              uid="{EA4CEB35-F051-4F62-B474-94B53DD07037}"
-              p:before="*"
-              s:ds="local:/Data/Plain Header Component"
+              uid="{23DCD00E-0AB4-461E-AE9F-099B5B62E898}"
               s:id="{0C726BE9-CA4E-415C-B3D0-9640C37E7947}"
-              s:par="HeadingTag&amp;HeadingSize=display-1&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B67509E6C-E151-4827-849C-300F34FBBA6C%7D&amp;Styles&amp;Theme=B-HCA-Green&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-              s:ph="headless-main"
-              s:ccb="Clear on publish" />
-            <r
-              uid="{D7C2B598-E52C-46CE-9EC7-E3D964A20652}"
-              p:after="*[1=2]"
-              s:ds="local:/Data/Simple Plain Header Component"
-              s:id="{0C726BE9-CA4E-415C-B3D0-9640C37E7947}"
-              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B67509E6C-E151-4827-849C-300F34FBBA6C%7D&amp;Styles&amp;Theme&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B67509E6C-E151-4827-849C-300F34FBBA6C%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
           </d>
         </r>
+    - ID: "25ad52f7-bae0-4ad4-9032-edc7050e981c"
+      Hint: Heading
+      Value: Healthcare for business
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231206T075828Z
@@ -78,7 +51,7 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "578bdaf4-5cff-4819-9745-7948aa53e786"
+      Value: "543709ae-4215-4c97-86f3-012e7e30a996"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -92,7 +65,7 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240321T102420Z
+      Value: 20240423T203115Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA83

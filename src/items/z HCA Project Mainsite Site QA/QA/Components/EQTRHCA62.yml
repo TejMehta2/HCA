@@ -49,8 +49,22 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{5E86DD5B-37A6-49FF-9090-A0343282C3DF}"
+              uid="{8BE526AC-8FDB-4333-A903-8CBCA66EE2CF}"
               p:before="*"
+              s:ds="local:/Page Data/Image Short Text Image Right/CTA Button 1"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=9"
+              s:ph="/headless-main/image-short-text-8" />
+            <r
+              uid="{E2463D39-3148-4563-A222-752386C29E55}"
+              p:after="r[@uid='{8BE526AC-8FDB-4333-A903-8CBCA66EE2CF}']"
+              s:ds="local:/Page Data/Image Short Text Image Right/CTA Button 2"
+              s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=10"
+              s:ph="/headless-main/image-short-text-8" />
+            <r
+              uid="{5E86DD5B-37A6-49FF-9090-A0343282C3DF}"
+              p:after="r[@uid='{E2463D39-3148-4563-A222-752386C29E55}']"
               s:ds="local:/Page Data/Text 1"
               s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
@@ -83,6 +97,13 @@ Languages:
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
               s:ph="/headless-main/image-short-text-1" />
+            <r
+              uid="{4CE5449D-121B-40BE-964C-E4D67F464C7E}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Image Short Text - Keep Aspect Ratio"
+              s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
+              s:par="HeadingTag&amp;KeepAspectRatio=1&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -98,11 +119,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4c2bf244-c699-482a-b461-9be311fc7bcf"
+      Value: "ca2b4be8-a13e-47a1-8a2d-d59bb224db16"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T001901Z
+      Value: 20240423T205036Z

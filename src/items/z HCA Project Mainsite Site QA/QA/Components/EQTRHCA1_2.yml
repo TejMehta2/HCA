@@ -80,6 +80,13 @@ Languages:
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
               s:ph="headless-main" />
             <r
+              uid="{7BC2BEA4-7095-492A-90C0-C56F0ACFCA97}"
+              p:after="r[@uid='{C18BA240-1E8A-4A78-88D6-BC01B823F32B}']"
+              s:ds="local:/Page Data/Content Cards - Keep Aspect Ratio"
+              s:id="{48202108-8993-4112-BB48-EA8210D338FE}"
+              s:par="Columns&amp;HeadingTag=h1&amp;KeepAspectRatio=1&amp;HeadingSize=display-4&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B161AE91B-AB51-4856-9B3F-564D84419F7F%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
+              s:ph="headless-main" />
+            <r
               uid="{20DABCA4-2A0D-40C0-8977-A66F37ACA665}"
               s:par="Columns=4&amp;HeadingTag=h1&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B2326DD21-F15F-487E-822A-0C877A75AF46%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5" />
           </d>
@@ -97,11 +104,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eab5bd07-59c8-4559-8136-8540b57f950c"
+      Value: "f4cdafe8-1038-4208-8e0c-c0abfd3f5983"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240320T132240Z
+      Value: 20240423T210520Z

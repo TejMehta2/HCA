@@ -1,0 +1,48 @@
+﻿---
+ID: "cc66638a-d2fa-42f2-ab92-3f0114814d6b"
+Parent: "2098fe5e-363e-4289-8190-8def61368475"
+Template: "714f5ce9-8158-4564-b41d-fd85de57d810"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA94/Data/Blog Related Articles - Keep Aspect Ratio"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0a6246a8-9677-43e5-9c7e-c6bd70bea67a"
+      Hint: FilterBy
+      Value: "{A436035E-F5C9-4CF8-99F6-10F98987E112}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240309T222049Z
+    - ID: "517bb4e6-d83b-4040-8955-e7cb7eae1be6"
+      Hint: SearchBy
+      Value: "{576F23ED-76D7-43ED-9CF0-5F4E0BC7468B}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "32a12304-55b3-4a8b-b742-c169bd813c92"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: 
+    - ID: "ba790b8f-68f7-4ce5-9e69-21fe2a71b86e"
+      Hint: Articles
+      Value: |
+        {471F79FD-281B-435A-90B8-6FB3B3F15886}
+        {9D0A0D9E-B398-4004-9342-F3F589F2345E}
+        {CD58E2CC-A116-48E7-9CDA-56D62C48C80A}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "c3dbc99d-eecb-4c17-ad80-e7ee0b9669f4"
+      Hint: NumberOfCards
+      Value: 12
+    - ID: "d52673ae-9c87-46bb-b783-e1108e663511"
+      Hint: BlogUrl
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Related articles
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240416T125147Z

@@ -1,8 +1,12 @@
 ﻿---
-ID: "4c87659d-3500-4759-a61d-b650a1e296b9"
-Parent: "759f577c-e1d5-415b-b66a-3e5a42c038ec"
+ID: "3413555e-f4f5-4d76-8bc6-280e66547982"
+Parent: "5f5254c2-11c3-49e1-a197-3034d6784fe6"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Page Content/Plain Header/Data
+Path: /sitecore/templates/Project/HCA/Foundation/_HCABasePage/Data
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
 Languages:
 - Language: en
   Versions:
@@ -10,22 +14,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240125T124901Z
+      Value: 20240423T062633Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "58d0f843-95fb-4669-877f-8e1965c1caa5"
+      Value: "5e7a3335-fbaa-4c01-bea3-66af663ea29d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240125T124901Z
+      Value: 20240423T062633Z

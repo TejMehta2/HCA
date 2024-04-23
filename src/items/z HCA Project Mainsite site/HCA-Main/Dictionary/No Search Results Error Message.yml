@@ -1,24 +1,24 @@
 ﻿---
-ID: "9069a668-fc8d-4fcf-902c-55c18743aa88"
-Parent: "24a178f9-4398-49b9-8d19-b57adca98f2a"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Pages/Diagnosis Page
+ID: "8c7306db-dea4-40fc-815d-6e59349dbce4"
+Parent: "4ca68be3-17da-488a-8b66-58aa0c80d4ae"
+Template: "6d1cd897-1936-4a3a-a511-289a94c2a7b1"
+Path: "/sitecore/content/HCA/HCA-Main/Dictionary/No Search Results Error Message"
 SharedFields:
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: |
-    {5F5254C2-11C3-49E1-A197-3034D6784FE6}
-    {83B9F82D-E7A4-46EC-80FC-FAEE6CEE355D}
-    {0912707B-537D-4A6E-93AE-AE5EFB389306}
-    {83C4307F-AD18-4092-8135-13A27B57A928}
+- ID: "580c75a8-c01a-4580-83cb-987776ceb3af"
+  Hint: Key
+  Value: "no-search-results-error-message"
 Languages:
 - Language: en
+  Fields:
+  - ID: "2ba3454a-9a9c-4cdf-a9f8-107fd484eb6e"
+    Hint: Phrase
+    Value: No results found.
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240225T232224Z
+      Value: 20240423T063501Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -29,11 +29,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3f940c5c-4bd9-4f80-932a-283e8eede32e"
+      Value: "ed66b042-fc88-4326-a4f9-3f74fa2fe10a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T063200Z
+      Value: 20240423T063547Z
