@@ -9,7 +9,6 @@
   background-color: var(--card-background);
   color: var(--text);
   border-radius: $radius-medium;
-  overflow: hidden;
 
   img {
     transition: 0.6s ease;
@@ -28,6 +27,7 @@
 .image {
   height: px-to-rem(268);
   overflow: hidden;
+  border-radius: $radius-medium $radius-medium 0 0;
 
   @include media(screen-l) {
     max-height: 50%;
