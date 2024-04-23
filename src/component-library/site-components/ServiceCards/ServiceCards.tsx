@@ -26,13 +26,15 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
               <div className={styles.text} data-animate="s">
                 <div className={styles['sticky-track']}>
                   <div className={styles.sticky}>
-                    {subtitle}
-                    <div className={styles.title}>{title}</div>
-                    <div className={styles['body-text']}>{bodyText}</div>
-                    <div className={styles.cta}>
-                      <Button size="large" variation="outline-dark">
-                        {cta}
-                      </Button>
+                    <div>
+                      {subtitle}
+                      <div className={styles.title}>{title}</div>
+                      <div className={styles['body-text']}>{bodyText}</div>
+                      <div className={styles.cta}>
+                        <Button size="large" variation="outline-dark">
+                          {cta}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>

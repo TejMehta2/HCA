@@ -9,7 +9,7 @@ const assetsFolderName = 'assets-src';
 const assetsDistFolderName = 'assets-dist';
 const assetsDirectory = path.join(__dirname, assetsFolderName);
 const splitter = /\W/;
-const defaultStrokeFill = '#0c2141';
+const colorRegex = /"(#[a-zA-Z0-9]{3}|#[a-zA-Z0-9]{6}|black|white)"/gm;
 
 // Helpers
 const toPascalCase = (text: string) =>
@@ -70,8 +70,8 @@ export default iconMap
         console.error(err);
       }
       const hydratedTemplate = fileContent.replaceAll(
-        defaultStrokeFill,
-        'currentColor'
+        colorRegex,
+        '"currentColor"'
       );
       fs.writeFileSync(
         path.join(__dirname, 'assets-dist', fileName),

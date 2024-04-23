@@ -1,0 +1,44 @@
+﻿---
+ID: "442b7ec9-aac3-436a-81e0-a5c476a8bdab"
+Parent: "d4f20409-34ea-41b0-b6c9-8337bb3c9c6c"
+Template: "d4f20409-34ea-41b0-b6c9-8337bb3c9c6c"
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Email Confirmation/__Standard Values
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190420T132444Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "71ffd7b2-8b09-4f7b-8a66-1e4cef653e8d"
+      Hint: Title
+      Value: Email
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "77b5c2da-9197-4cf0-9855-b13162d02218"
+    - ID: "a611de7e-e097-41ba-befe-233570c33ccf"
+      Hint: Confirm Email Label
+      Value: Confirm Email
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190422T060946Z

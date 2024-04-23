@@ -41,6 +41,8 @@ import RadioButton from '@component-library/core-components/RadioButton/RadioBut
 import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import { GetServerSidePropsContext } from 'next';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -557,7 +559,18 @@ export const Default = (props: StepProps): JSX.Element => {
       <div id={id ? id : undefined}>
         {router.isReady && !pageNotFound && (
           <>
-            <Breadcrumbs>
+            <Breadcrumbs
+              backCta={{
+                text: 'Consultant Finder',
+                link: '/Finder/Step-Intro',
+              }}
+            >
+              <TextLink>
+                <a href="/">
+                  <Icons iconName="iconHome"></Icons>
+                  <span className="sr-only">Home</span>
+                </a>
+              </TextLink>
               <Link href="/Finder/Step-Intro">
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}

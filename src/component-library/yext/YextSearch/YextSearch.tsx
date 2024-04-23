@@ -12,6 +12,7 @@ import YextResultCardArticlesAdaptor from '../YextResultCardArticles/YextResultC
 import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLinks.adaptor';
 import YextResultCardFAQsAdaptor from '../YextResultCardFAQs/YextResultCardFAQs.adaptor';
 import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
+import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
 import YextResultSectionLocationsAdaptor from '../YextResultSectionLocations/YextResultSectionLocations.adaptor';
 import { useSearchState } from '@yext/search-headless-react';
 import YextResultCardAskAQuestionAdaptor from '../YextResultCardAskAQuestion/YextResultCardAskAQuestion.adaptor';
@@ -71,8 +72,14 @@ const YextSearch = (): JSX.Element => {
           <div className={styles.tabs}>
             <YextTabs />
           </div>
+
           <div ref={resultsCountRef}></div>
-          <ResultsCount />
+          <div className={styles.header}>
+            <ResultsCount />
+            <div className={styles.filters}>
+              <YextFiltersAdaptor />
+            </div>
+          </div>
           <UniversalResults
             verticalConfigMap={{
               healthcare_facilities: {

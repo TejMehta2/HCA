@@ -1,0 +1,38 @@
+﻿---
+ID: "9bd8cc27-b2eb-4a08-bf4b-ad271fd9acc8"
+Parent: "cfac1c9c-276b-4067-89a2-31dd8dcec9ee"
+Template: "0a1a6dce-078a-4ece-9fce-71cade57c7b8"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Invoice amount/billing_lastname/required"
+SharedFields:
+- ID: "0cfa025b-c124-41de-9dc5-2cd5841553fe"
+  Hint: Type
+  Value: required
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T214248Z
+    - ID: "2ce7436e-2b14-47e8-9103-7d2ea2f31159"
+      Hint: Message
+      Value: Please enter last name
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "468fcbbe-6462-4fb8-99de-22f0565384a6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T214257Z

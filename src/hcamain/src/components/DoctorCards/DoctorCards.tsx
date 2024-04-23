@@ -20,13 +20,7 @@ import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/Js
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
 
-const DoctorCardsDefaultComponent = (props: DoctorCardsProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">DoctorCardsDefaultComponent</span>
-    </div>
-  </div>
-);
+const DoctorCardsDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: DoctorCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -36,8 +30,8 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
   const ctaQuery = data?.ctaQuery;
 
-  if (!props.fields || !consultants?.length) {
-    return <DoctorCardsDefaultComponent {...props} />;
+  if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
+    return <DoctorCardsDefaultComponent />;
   }
 
   const cta = props.fields?.data?.item?.cTALink?.jsonValue && (
@@ -73,6 +67,27 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     return topSpecialty?.[0]?.name;
   };
 
+  const showFallbackCard = !consultants?.length && isExperienceEditor;
+  const fallbackCard = (
+    <CardDoctor
+      image={<></>}
+      title={
+        <Text
+          variation="display-5"
+          tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+        >
+          <span>Doctor card</span>
+        </Text>
+      }
+      department={<span>Speciality</span>}
+      cta={
+        props.fields?.data?.item?.cTACard?.jsonValue?.value && (
+          <JssLink field={props.fields?.data?.item?.cTACard?.jsonValue} />
+        )
+      }
+    />
+  );
+
   return (
     <CardDoctorLayout
       title={
@@ -88,44 +103,47 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
       cta={cta || <></>}
       theme={props.params?.Theme || 'D-HCA-Teal'}
     >
-      {consultants.map((consultant, index: number) => (
-        <CardDoctor
-          key={index}
-          image={
-            <img
-              src={consultant?.images?.logo}
-              alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
-              width="91"
-              height="91"
+      {showFallbackCard
+        ? fallbackCard
+        : consultants?.map((consultant, index: number) => (
+            <CardDoctor
+              key={index}
+              image={
+                <img
+                  src={consultant?.images?.logo}
+                  alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
+                  width="91"
+                  height="91"
+                />
+              }
+              title={
+                <Text
+                  variation="display-5"
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                >
+                  <span>
+                    {consultant.title} {consultant.firstName}{' '}
+                    {consultant.lastName}
+                  </span>
+                </Text>
+              }
+              department={<span>{getSpeciality(consultant)}</span>}
+              cta={
+                props.fields?.data?.item?.cTACard?.jsonValue?.value && (
+                  <JssLink
+                    field={props.fields?.data?.item?.cTACard?.jsonValue}
+                    href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${consultant.slug}`}
+                  >
+                    {!isExperienceEditor && (
+                      <SitecoreSvg>
+                        {props.fields?.data?.item?.cTACard.jsonValue.value.text}
+                      </SitecoreSvg>
+                    )}
+                  </JssLink>
+                )
+              }
             />
-          }
-          title={
-            <Text
-              variation="display-5"
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-            >
-              <span>
-                {consultant.title} {consultant.firstName} {consultant.lastName}
-              </span>
-            </Text>
-          }
-          department={<span>{getSpeciality(consultant)}</span>}
-          cta={
-            props.fields?.data?.item?.cTACard?.jsonValue?.value && (
-              <JssLink
-                field={props.fields?.data?.item?.cTACard?.jsonValue}
-                href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${consultant.slug}`}
-              >
-                {!isExperienceEditor && (
-                  <SitecoreSvg>
-                    {props.fields?.data?.item?.cTACard.jsonValue.value.text}
-                  </SitecoreSvg>
-                )}
-              </JssLink>
-            )
-          }
-        />
-      ))}
+          ))}
     </CardDoctorLayout>
   );
 };

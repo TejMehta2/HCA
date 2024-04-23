@@ -19,6 +19,12 @@
     margin-top: auto;
     margin-bottom: auto;
     width: 100%;
+
+    @include media(screen-m, max) {
+      padding-bottom: px-to-rem(
+        180
+      ); // Extra mobile padding will usually be offscreen via scroll. We add this to offset IOS/Safari height issues.
+    }
   }
 
   .panel1 {

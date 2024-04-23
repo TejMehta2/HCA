@@ -45,8 +45,9 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
       <label htmlFor={inputId} className={styles['search-bar']}>
         <Icons iconName={'iconSearch'} />
         <input
-          onKeyUp={(event) => {
+          onKeyDown={(event) => {
             if (event.key === 'Enter') {
+              event.preventDefault(); // avoid auto selecting suggestions
               const target = event.target as HTMLInputElement;
               target.blur();
             }
