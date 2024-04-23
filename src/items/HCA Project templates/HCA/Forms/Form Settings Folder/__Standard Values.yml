@@ -1,0 +1,37 @@
+﻿---
+ID: "bfe036b3-5aff-407a-95ed-81ce48c429c7"
+Parent: "aa65679f-a6fd-485f-8579-b40d2cf506de"
+Template: "aa65679f-a6fd-485f-8579-b40d2cf506de"
+Path: /sitecore/templates/Project/HCA/Forms/Form Settings Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {B3BDFE59-6667-4432-B261-05D0E3F7FDF6}
+    {0A1A6DCE-078A-4ECE-9FCE-71CADE57C7B8}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T220535Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "aae8e858-820f-45ae-81d3-250e39608854"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T222918Z

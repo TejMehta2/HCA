@@ -1,0 +1,39 @@
+﻿---
+ID: "4f485284-4119-4c52-b3db-0fcc755cfc9f"
+Parent: "52fec879-7d8d-46d3-bbb2-131293957709"
+Template: "52fec879-7d8d-46d3-bbb2-131293957709"
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Password Confirmation/__Standard Values
+SharedFields:
+- ID: "71061c01-a495-4bf3-a52c-d378346bfae2"
+  Hint: Max Length
+  Value: 255
+- ID: "8a43af61-0812-4b37-a343-96cde3f12bb1"
+  Hint: Required
+  Value: 1
+- ID: "9f7da002-7b86-436b-8dda-7efe5837b88e"
+  Hint: Min Length
+  Value: 6
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20161128T140203Z
+    - ID: "49c676d7-aeed-4f95-9cff-cfa9c55c7718"
+      Hint: Confirm Password Label
+      Value: Confirm password
+    - ID: "71ffd7b2-8b09-4f7b-8a66-1e4cef653e8d"
+      Hint: Title
+      Value: Password
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "952e993a-0734-4c11-9f00-32a1870dfef7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20170602T103338Z

@@ -1,0 +1,30 @@
+﻿---
+ID: "66b8b42d-e097-4169-bc7c-a78bed62f3d3"
+Parent: "e8d5a5a3-6430-4701-baad-1db1947616cc"
+Template: "e8d5a5a3-6430-4701-baad-1db1947616cc"
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Number/__Standard Values
+SharedFields:
+- ID: "71061c01-a495-4bf3-a52c-d378346bfae2"
+  Hint: Max Length
+  Value: 
+- ID: "9f7da002-7b86-436b-8dda-7efe5837b88e"
+  Hint: Min Length
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170516T075339Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a45191f2-adb6-4bad-a9a1-d8fe4e386cca"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20170516T121012Z
