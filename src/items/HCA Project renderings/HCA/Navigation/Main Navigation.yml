@@ -72,18 +72,22 @@ SharedFields:
           }
           searchModalConfigurationFolder{
             targetItem{
-              ... on SearchSuggestionTemplate{
-                text{
-                  value 
-                  jsonValue
-                }
-                icon_612e35f92c594aa38a0fcb132fc6376b{
-                  jsonValue
+              ... on SearchModalConfiguration{
+                popularSearches{
+                  targetItems{
+                    ... on SearchSuggestionTemplate{
+                      text{value jsonValue}
+                      icon_612e35f92c594aa38a0fcb132fc6376b{value jsonValue}
+                    }
+                  }
                 }
               }
             }
           }
+          
+    
         }
+        
       }
     }
     
@@ -246,14 +250,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d39a1b12-c201-4971-9c77-ecf784ed095f"
+      Value: "e2e682a6-2f08-4c27-9ba2-a76124bd3fd7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240418T142020Z
+      Value: 20240423T100102Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
