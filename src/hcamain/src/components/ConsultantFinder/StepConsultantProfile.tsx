@@ -324,7 +324,11 @@ export const Default = (props: StepProps): JSX.Element => {
     ?.replaceAll('<ul>', '')
     .replaceAll('</ul>', '')
     .replaceAll('<li>', '')
-    .replaceAll('</li>', ', ');
+    .replaceAll('</li>', ', ')
+    .replaceAll('<p>', '')
+    .replaceAll('</p>', '');
+
+  console.log(keywords);
 
   if (props.fields) {
     return (
