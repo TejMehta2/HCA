@@ -177,7 +177,7 @@ export const Default = (props: StepProps): JSX.Element => {
     console.log('data', data);
     // postData(data);
     // setPatientName(`${data.firstName} ${data.lastName}`);
-    // router.push(`/Finder/Step-Live-Booking-Confirmation`);
+    router.push(`/Finder/Step-Enquire-Form-Confirmation`);
 
     return new Promise<void>((resolve) => {
       setTimeout(() => resolve(), 1000);

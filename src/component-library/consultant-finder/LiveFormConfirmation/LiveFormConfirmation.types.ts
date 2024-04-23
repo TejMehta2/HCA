@@ -8,4 +8,5 @@ export interface LiveFormConfirmationProps {
   nextStepsContent?: ReactNode | JSX.Element | string;
   amendBookingTitle?: ReactNode | JSX.Element | string;
   amendBookingContent?: ReactNode | JSX.Element | string;
+  isEnquireForm?: boolean;
 }

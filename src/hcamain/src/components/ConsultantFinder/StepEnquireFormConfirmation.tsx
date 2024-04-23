@@ -9,8 +9,17 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useRouter } from 'next/router';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import Link from 'next/link';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
+import ConfirmationSummary from '@component-library/consultant-finder/ConfirmationSummary/ConfirmationSummary';
+import Container from 'temp/component-library/foundation/Containers/Container';
 
 interface Fields {
   // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
@@ -40,49 +49,75 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
+  console.log('enquire thank you', props.fields);
+  const router = useRouter();
+
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
+      <>
+        <Breadcrumbs>
+          <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
+          <span>Thank you</span>
+        </Breadcrumbs>
+        <LiveFormConfirmation>
+          <LiveFormConfirmationMain
+            headline={
+              <>
+                <Text tag="h1" variation="display-4">
+                  {props?.fields?.TitleText?.value || ''}
                 </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
+              </>
+            }
+            isEnquireForm={true}
+          >
+            <Text tag="p" variation="body-extra-large">
+              {props?.fields?.IntroText?.value ||
+                'A member of our team will get in touch to complete your appointment.'}
+            </Text>
+            <Text tag="p" variation="body-extra-large">
+              {props?.fields?.IntroText?.value ||
+                'If you are looking to explore further, you can return to our homepage.'}
+            </Text>
+            <Container marginBottom="spacing-6" marginTop="spacing-6">
+              <Button size={'large'} variation={'full-dark'}>
+                <button onClick={() => router.push(`/Finder/Step-Intro`)}>
+                  <span>
+                    {props?.fields?.NextLink?.value?.text || 'Go to Homepage'}
+                  </span>
+                </button>
               </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Container>
+          </LiveFormConfirmationMain>
+          <CFAside>
+            <NeedHelp
+              headline={
+                props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
+                'Need help?'
+              }
+              subheadline={
+                props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
+                'General enquiries'
+              }
+              workingHoursHeadline={
+                props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel
+                  ?.value || 'Opening hours'
+              }
+              workingHours={
+                props?.fields?.LiveBookingFormContactBoxOpeningHoursDays
+                  ?.value || 'Mon – Fri'
+              }
+              workingHoursTime={
+                props?.fields?.LiveBookingFormContactBoxOpeningHoursTime
+                  ?.value || '8am – 6pm'
+              }
+              phoneNumber={
+                props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
+                '020 3797 7236'
+              }
+            />
+          </CFAside>
+        </LiveFormConfirmation>
+      </>
     );
   }
 
