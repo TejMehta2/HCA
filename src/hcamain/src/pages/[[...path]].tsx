@@ -112,9 +112,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     } else {
       throw response.statusText;
     }
-  } catch (error) {
-    console.error(error);
-  }
+  } catch {}
 
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {
