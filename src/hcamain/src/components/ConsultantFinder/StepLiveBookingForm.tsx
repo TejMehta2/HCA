@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
@@ -34,6 +34,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import Modals from '@component-library/components/Modals/Modals';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -108,6 +109,8 @@ interface Fields {
   LiveBookingFormContactBoxOpeningHoursTime: Field<string>;
   LiveBookingFormContactBoxPhone0Label: Field<string>;
   LiveBookingFormContactBoxPhone0Phone: Field<string>;
+  LiveBookingFormErrorSubmitMsg: Field<string>;
+  LiveBookingFormErrorSubmitBtnLabel: Field<string>;
 }
 
 type StepProps = {
@@ -124,6 +127,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  console.log('step booking form', props.fields);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
@@ -131,8 +135,9 @@ export const Default = (props: StepProps): JSX.Element => {
   const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
   const [errorData, setErrorData] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  console.log(slug, gmcNumber);
   const {
     selectedLocationName,
     selectedDate,
@@ -145,7 +150,6 @@ export const Default = (props: StepProps): JSX.Element => {
     consultantName,
     setPatientName,
   } = useContext(ConsultantFinderContext);
-  console.log('step booking form', props.fields);
 
   const schema = z
     .object({
@@ -208,7 +212,7 @@ export const Default = (props: StepProps): JSX.Element => {
     .refine(
       (data) => {
         if (data.user === 'insurer' || data.payment === 'insurance') {
-          if (data.insuranceProvider !== '') {
+          if (data.insuranceProvider !== '' || insurersLDB.length === 0) {
             return true;
           } else {
             return false;
@@ -383,7 +387,7 @@ export const Default = (props: StepProps): JSX.Element => {
       // dirtyFields,
       isDirty,
       // isValid,
-      isSubmitting,
+      // isSubmitting,
       // isSubmitSuccessful,
     },
     watch,
@@ -392,12 +396,15 @@ export const Default = (props: StepProps): JSX.Element => {
     // setError,
     clearErrors,
   } = form;
-  console.log('isSubmitting', isSubmitting);
+  // console.log('isSubmitting', isSubmitting);
   const watchFormChanges = watch();
 
   const postData = (data: any) => {
+    setIsSubmitting(true);
     const dataToPost = {
-      dateFrom: startTime, // '2023-08-29T10:30:00' for local test error
+      // for local test error
+      // dateFrom: '2023-08-29T10:30:00',
+      dateFrom: startTime,
       isFollowOnAppointment: selectedTypeOfAppointment,
       HCAConsultantId: hcaConsultantID,
       FacilityId: locationID,
@@ -458,14 +465,22 @@ export const Default = (props: StepProps): JSX.Element => {
         // handle successful response with status code 200
         console.log(response);
         console.log(JSON.stringify(response.data));
-        console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
-        // go to thank you page
-        // /Finder/Step-Live-Booking-Confirmation
-        router.push(
-          `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
-        );
+        // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
+        // go to thank you page if no error on booking or show error modal otherwise
+        setIsSubmitting(false);
+        if (response.data.errorCode) {
+          console.log('errorrrrrrr');
+          dialogRef?.current?.showModal();
+        } else {
+          router.push(
+            `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
+          );
+        }
       })
       .catch(function (error) {
+        setIsSubmitting(false);
+        // show modal error
+        dialogRef?.current?.showModal();
         // handle error with status code other than 200
         console.log(error);
         // The if statement checks whether the error object has a response property, which indicates that an HTTP response was received
@@ -480,7 +495,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   const onSubmit = (data: any) => {
     console.log('data', data);
-    // postData(data);
+    postData(data);
     setPatientName(`${data.firstName} ${data.lastName}`);
     // skip post just go to conf page for dev
     // router.push(`/Finder/Step-Live-Booking-Confirmation`);
@@ -498,7 +513,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
       .then((resp) => {
-        console.log(resp?.data?.insurers);
+        // console.log(resp?.data?.insurers);
         setErrorData(false);
         setLoadingData(false);
         setInsurersLDB(resp?.data?.insurers || []);
@@ -533,8 +548,8 @@ export const Default = (props: StepProps): JSX.Element => {
   }, [router.isReady]);
 
   useEffect(() => {
-    console.log('user', watchFormChanges.user);
-    console.log('payment', watchFormChanges.payment);
+    // console.log('user', watchFormChanges.user);
+    // console.log('payment', watchFormChanges.payment);
     // remove values from hidden fields if not used anymore
     if (watchFormChanges.user === 'insurer') {
       setValue('payment', '');
@@ -601,6 +616,33 @@ export const Default = (props: StepProps): JSX.Element => {
               }
             ></HeaderLDB>
             <LiveBookingForm>
+              <Modals ref={dialogRef}>
+                <Container
+                  marginBottom="spacing-8"
+                  marginTop="spacing-8"
+                  marginLeft="spacing-4"
+                  marginRight="spacing-4"
+                >
+                  <Text tag="p" variation="heading-1">
+                    {props?.fields?.LiveBookingFormErrorSubmitMsg?.value ||
+                      'There was an error, please choose a different appointment'}
+                  </Text>
+                  <Container marginBottom="spacing-8" marginTop="spacing-8">
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button
+                        onClick={() =>
+                          router.push(
+                            `/Finder/Step-Slot-Select?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                          )
+                        }
+                      >
+                        {props?.fields?.LiveBookingFormErrorSubmitBtnLabel
+                          ?.value || 'Back to booking'}
+                      </button>
+                    </Button>
+                  </Container>
+                </Container>
+              </Modals>
               {/* debugger for form */}
               {/* https://www.npmjs.com/package/@hookform/devtools */}
               <DevTool control={control} placement="top-right" />
