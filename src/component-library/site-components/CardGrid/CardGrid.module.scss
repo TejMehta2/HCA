@@ -4,6 +4,8 @@
 .wrapper {
   @include responsive-grid;
 
+  grid-template-rows: min-content;
+
   > div {
     img {
       max-height: px-to-rem(243);
