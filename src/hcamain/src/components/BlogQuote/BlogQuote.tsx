@@ -29,19 +29,13 @@ type BlogQuoteProps = {
   fields?: Fields;
 };
 
-const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <div className="component-content">
-        <span className="is-empty-hint">Header with image no datasource</span>
-      </div>
-    </div>
-  );
+const BlogQuoteDefaultComponent = (): JSX.Element => {
+  return <></>;
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
   if (!props.fields) {
-    return <BlogQuoteDefaultComponent {...props} />;
+    return <BlogQuoteDefaultComponent />;
   }
 
   const isContainerized = props?.params?.Containerized === '1';
@@ -51,7 +45,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
         <figure>
           <QuoteBlock
             author={{
-              name: props.fields?.Author?.[0].fields?.Name?.value,
+              name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
               image: (
                 <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
               ),
@@ -82,7 +76,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       <RichText>
         <QuoteBlock
           author={{
-            name: props.fields?.Author?.[0].fields?.Name?.value,
+            name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
             image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
             tag: (
               <span>
