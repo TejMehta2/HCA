@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
   fields?: {
@@ -104,14 +105,9 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
         ) : (
           props.fields?.CTALink && (
             <JssLink field={props.fields?.CTALink.value}>
-              {props?.fields?.CTAIcon && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                  }}
-                />
-              )}
+              <SitecoreSvg>
+                {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+              </SitecoreSvg>
               {props?.fields?.CTALink?.value?.text && (
                 <span
                   dangerouslySetInnerHTML={{
