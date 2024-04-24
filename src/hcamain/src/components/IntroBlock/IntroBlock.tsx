@@ -153,5 +153,3 @@ export const ImageRight = (props: IntroBlockProps): JSX.Element => {
   }
   return <ImageLeft {...props} imageAlignment="right" />;
 };
-  return <ImageLeft {...props} imageAlignment="right" />;
-};

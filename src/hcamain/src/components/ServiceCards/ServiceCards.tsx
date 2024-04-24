@@ -148,7 +148,3 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
     </ServiceCards>
   );
 };
-        ))}
-    </ServiceCards>
-  );
-};
