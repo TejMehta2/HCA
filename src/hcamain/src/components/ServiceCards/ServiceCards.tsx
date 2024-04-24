@@ -99,31 +99,27 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
-        props.fields?.CTALink && (
+        props.fields?.CTALink &&
+        (isExperienceEditor ? (
+          <JssLink field={props.fields?.CTALink?.value}></JssLink>
+        ) : (
           <JssLink field={props.fields?.CTALink}>
-            {isExperienceEditor ? (
-              <></>
-            ) : (
-              <>
-                {props?.fields?.CTAIcon && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                    }}
-                  />
-                )}
-                {props?.fields?.CTALink?.value?.text && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTALink?.value?.text,
-                    }}
-                  ></span>
-                )}
-              </>
+            {props?.fields?.CTAIcon && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                }}
+              />
+            )}
+            {props?.fields?.CTALink?.value?.text && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields?.CTALink?.value?.text,
+                }}
+              ></span>
             )}
           </JssLink>
-        )
+        ))
       }
     >
       {props.fields?.Services &&
@@ -148,6 +144,10 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
               )}
             </Text>
           </CardService>
+        ))}
+    </ServiceCards>
+  );
+};
         ))}
     </ServiceCards>
   );
