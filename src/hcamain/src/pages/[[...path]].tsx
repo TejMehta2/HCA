@@ -92,36 +92,28 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  // Custom redirect if response from API is valid and has a destination
-  const params = context?.params?.path as string[];
-
-  const path = params?.slice(1).join('/');
-
-  const url = new URL(`${SERVER_API_URL}/redirects/find?source=/${path}`);
-
   try {
+    // Custom redirect if response from API is valid and has a destination
+    const params = context?.params?.path as string[];
+    const path = params?.slice(1).join('/');
+    const url = new URL(`${SERVER_API_URL}/redirects/find?source=/${path}`);
     const response = await fetch(url);
 
     if (response.ok) {
-      try {
-        const data = await response.json();
-        if (data.destination) {
-          return {
-            redirect: {
-              destination: data.destination,
-              permanent: false,
-            },
-          };
-        }
-      } catch {}
+      const data = await response.json();
+      if (data.destination) {
+        return {
+          redirect: {
+            destination: data.destination,
+            statusCode: data.statusCode,
+          },
+        };
+      }
     } else {
       throw response.statusText;
     }
   } catch (error) {
     console.error(error);
-    return {
-      notFound: true,
-    };
   }
 
   // Allow pre-render errors to pass through in development, for debugging
