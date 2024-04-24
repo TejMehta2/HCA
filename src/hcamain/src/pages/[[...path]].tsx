@@ -14,6 +14,7 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -92,27 +93,29 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // It may be called again, on a serverless function, if
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
-  try {
-    // Custom redirect if response from API is valid and has a destination
-    const params = context?.params?.path as string[];
-    const path = params?.slice(1).join('/');
-    const url = new URL(`${SERVER_API_URL}/redirects/find?source=/${path}`);
-    const response = await fetch(url);
+  if (process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+    try {
+      // Custom redirect if response from API is valid and has a destination
+      const params = context?.params?.path as string[];
+      const path = params?.slice(1).join('/');
+      const url = new URL(`${SERVER_API_URL}/redirects/find?source=/${path}`);
+      const response = await fetch(url);
 
-    if (response.ok) {
-      const data = await response.json();
-      if (data.destination) {
-        return {
-          redirect: {
-            destination: data.destination,
-            statusCode: data.statusCode,
-          },
-        };
+      if (response.ok) {
+        const data = await response.json();
+        if (data.destination) {
+          return {
+            redirect: {
+              destination: data.destination,
+              statusCode: data.statusCode,
+            },
+          };
+        }
+      } else {
+        throw response.statusText;
       }
-    } else {
-      throw response.statusText;
-    }
-  } catch {}
+    } catch {}
+  }
 
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {
