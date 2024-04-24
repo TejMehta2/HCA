@@ -407,6 +407,8 @@ export const Default = (props: StepProps): JSX.Element => {
       recaptcha: '',
     },
     resolver: zodResolver(schema),
+    // validation will be triggered before submit, on change
+    mode: 'onChange',
   });
   const {
     register,
@@ -422,7 +424,6 @@ export const Default = (props: StepProps): JSX.Element => {
       // isSubmitSuccessful,
     },
     watch,
-    resetField,
     // getValues,
     setValue,
     // setError,
