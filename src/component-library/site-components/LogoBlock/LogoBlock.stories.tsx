@@ -61,6 +61,18 @@ export const Default: StoryObj<typeof LogoBlock> = {
   },
 };
 
+export const OptionalProps: StoryObj<typeof LogoBlock> = {
+  args: {
+    header: (
+      <AdvancedBlockHeader
+        subtitle={<Text variation={'subheading-1'}>Sub title</Text>}
+        title={<Text variation={'display-2'}>Logo Block</Text>}
+      />
+    ),
+    logos: Default.args?.logos,
+  },
+};
+
 export const ThreeColumnStandard: StoryObj<typeof LogoBlock> = {
   args: {
     ...Default.args,
