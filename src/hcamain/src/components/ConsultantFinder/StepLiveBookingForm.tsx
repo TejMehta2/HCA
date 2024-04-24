@@ -35,6 +35,7 @@ import MarketingPreferences from '@component-library/consultant-finder/Marketing
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import Modals from '@component-library/components/Modals/Modals';
+import { formatDateYYYYMMDD } from '@component-library/utility-functions/index';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -169,9 +170,39 @@ export const Default = (props: StepProps): JSX.Element => {
         .string()
         .min(1, { message: 'Required' })
         .email('This is not a valid email.'),
-      phone: z.string().trim().min(1, { message: 'Required' }),
+      phone: z
+        .string()
+        .trim()
+        .min(1, { message: 'Required' })
+        .refine((val) => /^\d+$/.test(val), {
+          message: 'Invalid phone number',
+        }),
       gender: z.string().trim().min(1, { message: 'Required' }),
-      dateOfBirth: z.string().trim().min(1, { message: 'Required' }),
+      dateOfBirth: z
+        .string()
+        .min(1, { message: 'Required' })
+        .refine(
+          (val) => {
+            // min age
+            // Convert the date strings to Date objects for comparison
+            const dateOfBirth = new Date(val);
+            const gpAppointmentDate = new Date(formatDateYYYYMMDD(startTime)); // GP appointment date
+            // const testTime = '2023-08-29T10:30:00';
+            // const gpAppointmentDate = new Date(formatDateYYYYMMDD(testTime));
+            // Calculate the minimum date of birth for 18 years old at the appointment date
+            const minDateOfBirth = new Date(gpAppointmentDate);
+            console.log('minDateOfBirth', minDateOfBirth);
+            console.log('dateOfBirth', dateOfBirth);
+            console.log('gpAppointmentDate', gpAppointmentDate);
+            minDateOfBirth.setFullYear(gpAppointmentDate.getFullYear() - 18);
+
+            // check dob and min date
+            return dateOfBirth <= minDateOfBirth;
+          },
+          {
+            message: 'You must be at least 18 years old.',
+          }
+        ),
       address1: z.string().trim().min(1, { message: 'Required' }),
       address2: z.string().optional(),
       postcode: z.string().trim().min(1, { message: 'Required' }),
@@ -391,6 +422,7 @@ export const Default = (props: StepProps): JSX.Element => {
       // isSubmitSuccessful,
     },
     watch,
+    resetField,
     // getValues,
     setValue,
     // setError,
@@ -467,15 +499,15 @@ export const Default = (props: StepProps): JSX.Element => {
         console.log(JSON.stringify(response.data));
         // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
         // go to thank you page if no error on booking or show error modal otherwise
-        setIsSubmitting(false);
         if (response.data.errorCode) {
-          console.log('errorrrrrrr');
+          console.log('error booking');
           dialogRef?.current?.showModal();
         } else {
           router.push(
             `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
           );
         }
+        setIsSubmitting(false);
       })
       .catch(function (error) {
         setIsSubmitting(false);
