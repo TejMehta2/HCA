@@ -480,8 +480,9 @@ export const Default = (props: StepProps): JSX.Element => {
 
   const onSubmit = (data: any) => {
     console.log('data', data);
-    postData(data);
+    // postData(data);
     setPatientName(`${data.firstName} ${data.lastName}`);
+    // skip post just go to conf page for dev
     // router.push(`/Finder/Step-Live-Booking-Confirmation`);
 
     return new Promise<void>((resolve) => {
@@ -492,17 +493,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const onError = (errors: FieldErrors) => {
     console.log('errors on submit', errors);
   };
-
-  // const handleGetValues = () => {
-  //   console.log('get Values', getValues());
-  // };
-
-  // const habdleSetFieldValue = () => {
-  //   // setValue('username', '', {
-  //   //   shouldValidate: false,
-  //   // });
-  //   // setValue('username', '');
-  // };
 
   const getConsultantData = (slug: string) => {
     axios
@@ -549,6 +539,10 @@ export const Default = (props: StepProps): JSX.Element => {
     if (watchFormChanges.user === 'insurer') {
       setValue('payment', '');
       setValue('contactDetails', false);
+      setValue('marketingPreferenceEmail', false);
+      setValue('marketingPreferencePhone', false);
+      setValue('marketingPreferenceSMS', false);
+      setValue('marketingPreferencePost', false);
       if (errors?.representativeRelationToPatient) {
         clearErrors('representativeRelationToPatient');
       }
@@ -620,6 +614,21 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields?.LiveBookingFormSubHeadline?.value ||
                       'All fields are required unless specified as optional.'}
                   </Text>
+                </Container>
+                <Container marginBottom="spacing-6">
+                  <AppointmentSummary
+                    title={'Appointment summary'}
+                    consultantTitle={'Consultant'}
+                    consultantText={consultantName}
+                    locationTitle={'Location'}
+                    locationText={selectedLocationName}
+                    dateTitle={'Date & time'}
+                    dateText={`${selectedDate} at ${selectedTime}`}
+                    slug={slug}
+                    gmcNumber={gmcNumber}
+                    isFollowUpAppointment={selectedTypeOfAppointment}
+                    isMobile={true}
+                  />
                 </Container>
                 {/* About you */}
                 <Text tag="h2" variation="heading-1">
@@ -1193,61 +1202,64 @@ export const Default = (props: StepProps): JSX.Element => {
                       )}
                     </Container>
                     {/* Marketing preferences */}
-                    {/* sa ascund daca e insurer */}
-                    <MarketingPreferences
-                      headline={
-                        props?.fields
-                          ?.LiveBookingFormMarketingPreferencesHeadline?.value
-                      }
-                      text={
-                        <JssRichText
-                          field={
-                            props.fields.LiveBookingFormMarketingPreferencesText
+                    {/* hide if insurer */}
+                    {watchFormChanges.user === 'patient' && (
+                      <MarketingPreferences
+                        headline={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesHeadline?.value
+                        }
+                        text={
+                          <JssRichText
+                            field={
+                              props.fields
+                                .LiveBookingFormMarketingPreferencesText
+                            }
+                          />
+                        }
+                      >
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                              ?.value || ''
                           }
+                          name={'marketingPreferenceEmail'}
+                          id={'marketingPreferenceEmail'}
+                          register={register}
                         />
-                      }
-                    >
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferenceEmail'}
-                        id={'marketingPreferenceEmail'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferencePhone'}
-                        id={'marketingPreferencePhone'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferenceSMS'}
-                        id={'marketingPreferenceSMS'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferencePost'}
-                        id={'marketingPreferencePost'}
-                        register={register}
-                      />
-                    </MarketingPreferences>
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferencePhone'}
+                          id={'marketingPreferencePhone'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferenceSMS'}
+                          id={'marketingPreferenceSMS'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferencePost'}
+                          id={'marketingPreferencePost'}
+                          register={register}
+                        />
+                      </MarketingPreferences>
+                    )}
                     <Container marginBottom="spacing-6">
                       <ReCAPTCHA
                         sitekey={

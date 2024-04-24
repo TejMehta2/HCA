@@ -22,14 +22,15 @@ import ConfirmationSummary from '@component-library/consultant-finder/Confirmati
 import Container from 'temp/component-library/foundation/Containers/Container';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
+  IntroText: any;
+  LiveBookingFormContactBoxHeadline: Field<string>;
+  LiveBookingFormContactBoxPhone0Label: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursLabel: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursDays: Field<string>;
+  LiveBookingFormContactBoxOpeningHoursTime: Field<string>;
+  LiveBookingFormContactBoxPhone0Phone: Field<string>;
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
