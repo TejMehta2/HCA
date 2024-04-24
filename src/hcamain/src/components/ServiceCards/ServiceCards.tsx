@@ -41,7 +41,7 @@ interface Fields {
   Title?: Field<string>;
   Description?: Field<string>;
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTALink: LinkField;
   CTACardText?: Field<string>;
   Services?: ServiceFields[];
 }
@@ -99,27 +99,29 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
-        props.fields?.CTALink &&
-        (isExperienceEditor ? (
-          <JssLink field={props.fields?.CTALink?.value}></JssLink>
+        isExperienceEditor ? (
+          <JssLink field={props.fields?.CTALink}></JssLink>
         ) : (
-          <JssLink field={props.fields?.CTALink}>
-            {props?.fields?.CTAIcon && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                }}
-              />
-            )}
-            {props?.fields?.CTALink?.value?.text && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: props.fields?.CTALink?.value?.text,
-                }}
-              ></span>
-            )}
-          </JssLink>
-        ))
+          props.fields?.CTALink && (
+            <JssLink field={props.fields?.CTALink.value}>
+              {props?.fields?.CTAIcon && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                  }}
+                />
+              )}
+              {props?.fields?.CTALink?.value?.text && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.fields?.CTALink?.value?.text,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+          )
+        )
       }
     >
       {props.fields?.Services &&
