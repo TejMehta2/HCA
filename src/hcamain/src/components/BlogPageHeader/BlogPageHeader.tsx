@@ -20,16 +20,8 @@ import unpackFilterOption from 'lib/unpackFilterOption';
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SEARCH_PATH = '/search';
 
-const BlogPageHeaderDefaultComponent = (
-  props: BlogPageHeaderProps
-): JSX.Element => {
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <div className="component-content">
-        <span className="is-empty-hint">Header with image no datasource</span>
-      </div>
-    </div>
-  );
+const BlogPageHeaderDefaultComponent = (): JSX.Element => {
+  return <></>;
 };
 
 export const Default = (props: BlogPageHeaderProps): JSX.Element => {
@@ -41,7 +33,6 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
   // Hooks
   const {
     data,
-    error,
     formHandlers,
     searchParams,
     autocompleteData,
@@ -53,11 +44,11 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     redirectUrl: fields?.BlogUrl?.value.href || '',
   });
 
-  if (!fields || error) {
-    return <BlogPageHeaderDefaultComponent {...props} />;
+  if (!fields) {
+    return <BlogPageHeaderDefaultComponent />;
   }
   // Computed properties
-  const resultsCount = data?.response.resultsCount || 0;
+  const resultsCount = data?.response?.resultsCount || 0;
 
   // Parse filter options to be used in multiple components
   const filterCategories = props.fields?.FilterOptions?.map((category) => ({
@@ -99,7 +90,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
             suggestions={
               autocompleteError
                 ? []
-                : autocompleteData?.response.results?.map(
+                : autocompleteData?.response?.results?.map(
                     (result) => `${result.value}`
                   )
             }
