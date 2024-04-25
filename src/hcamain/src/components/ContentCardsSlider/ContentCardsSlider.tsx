@@ -14,6 +14,7 @@ import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -75,6 +76,9 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
       <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+        <SitecoreSvg>
+          {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+        </SitecoreSvg>
         <RichText
           tag="span"
           field={{
