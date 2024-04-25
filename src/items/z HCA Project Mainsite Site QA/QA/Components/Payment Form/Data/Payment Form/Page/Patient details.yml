@@ -3,6 +3,10 @@ ID: "de57724a-c391-41cd-ac44-688425b03e2d"
 Parent: "7d913fdf-86cf-4709-8b20-6add6a1bf6d2"
 Template: "8cddb194-f456-4a75-89b7-346f8f39f95c"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Patient details"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -21,11 +25,11 @@ Languages:
         HCA\BGlomski@hca.uk.net
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "76fffc4f-ac41-42de-be4b-8f1ce7c3b71a"
+      Value: "5448fb1d-e695-41df-8a65-d838573771b0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        HCA\BGlomski@hca.uk.net
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T125409Z
+      Value: 20240425T114319Z
