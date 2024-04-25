@@ -4,6 +4,7 @@ import {
   Image,
   ImageField,
   Text as JssText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
@@ -29,13 +30,26 @@ type BlogQuoteProps = {
   fields?: Fields;
 };
 
-const BlogQuoteDefaultComponent = (): JSX.Element => {
+const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  if (isExperienceEditor)
+    return (
+      <>
+        <JssText field={props.fields?.Author?.[0].fields?.Name} />
+        <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
+        <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
+        <JssText field={props.fields?.Quote} />
+      </>
+    );
+
   return <></>;
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
-  if (!props.fields) {
-    return <BlogQuoteDefaultComponent />;
+  if (!props.fields || !props.fields.Author?.length) {
+    return <BlogQuoteDefaultComponent {...props} />;
   }
 
   const isContainerized = props?.params?.Containerized === '1';
