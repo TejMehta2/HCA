@@ -1,7 +1,7 @@
 import { getItemFromGraphQL } from './getItemFromGraphQL';
 
 //HCA APIs
-interface IHCAConfig {
+export interface IHCAConfig {
   //HCA API - Doctify To Facilities Lookup
   aPI_HCA_DoctifyToFacilities_BaseURL: string;
   aPI_HCA_DoctifyToFacilities_LegacyBaseURL: string;
