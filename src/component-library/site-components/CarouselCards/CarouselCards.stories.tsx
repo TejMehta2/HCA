@@ -130,10 +130,16 @@ export const PatientStoryCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         bodyCopy={
-          <Text tag="p" variation="body-large">
-            Quis laboris proident sint amet id cillum do dolor in tempor est
-            exercitation aute sint tempor eu ut.
-          </Text>
+          <>
+            <Text tag="p" variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut.
+            </Text>
+            <Text tag="p" variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est
+              exercitation aute sint tempor eu ut.
+            </Text>
+          </>
         }
         image={
           <Image
@@ -266,6 +272,10 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
             <a href="#">
               The Harley Street Clinic retain CQC &apos;Outstanding&apos; rating
             </a>
+          </Text>
+          <Text variation="body-large">
+            There are over 1400 at The Portland, each year. Hear new mums
+            sharing theirs
           </Text>
           <Text variation="body-large">
             There are over 1400 at The Portland, each year. Hear new mums

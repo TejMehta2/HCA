@@ -16,7 +16,7 @@ Languages:
       Value: "{E6D4BA6C-BC0A-43BB-9EF5-45225F261EB0}"
     - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
       Hint: SearchResultsText
-      Value: locations
+      Value: "{{quantity}} locations"
     - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
       Hint: FilterOptionsIcon
       Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
@@ -46,12 +46,15 @@ Languages:
     - ID: "8412c5bf-99ea-4872-bdc1-820be9a3bd13"
       Hint: GridViewIcon
       Value: "{E6819DCC-60C1-423E-A79A-430F56347B05}"
+    - ID: "874520c1-dbc1-41cf-a141-d4383d64d0bd"
+      Hint: SearchResultsTextWithInput
+      Value: "{{quantity}} locations including {{input}}"
     - ID: "8c843399-baed-4ba8-a58a-08e16d580077"
       Hint: FilterBy
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9e08fc47-6680-4f97-aa18-86372dc1fe3d"
+      Value: "b9e7198e-a3f8-4e77-ba1f-a72788cf5d55"
     - ID: "90875e3c-58b9-40d7-b491-b56f4a462018"
       Hint: MapViewText
       Value: Map view
@@ -78,7 +81,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240408T144339Z
+      Value: 20240417T203534Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: 

@@ -113,7 +113,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
           }
         >
           <SearchBar
-            submitOnSelection={true}
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}

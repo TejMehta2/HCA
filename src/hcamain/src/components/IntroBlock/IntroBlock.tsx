@@ -5,7 +5,7 @@ import {
   Text as JSSText,
   RichText,
   Image as JSSImage,
-  Link as JSSLink,
+  Link as JssLink,
   ImageField,
   ImageFieldValue,
   useSitecoreContext,
@@ -50,7 +50,7 @@ interface Fields {
   Text?: Field<string>;
   Image?: ImageFieldValue;
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTALink: LinkField;
   Counters?: CountersFields[];
   CQCStatus?: CQCFields;
   DoctifyReviews?: DoctifyReviewsFields;
@@ -81,23 +81,21 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     return <IntroBlockDefaultComponent {...props} />;
   }
 
-  const cta = props.fields?.CTALink && (
-    <JSSLink field={props.fields?.CTALink}>
-      {isExperienceEditor ? (
-        <></>
-      ) : (
-        <>
-          <SitecoreSvg>
-            {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
-          </SitecoreSvg>
-          <RichText
-            field={{
-              value: props.fields?.CTALink?.value?.text,
-            }}
-          />
-        </>
-      )}
-    </JSSLink>
+  const cta = isExperienceEditor ? (
+    <JssLink field={props.fields?.CTALink?.value}></JssLink>
+  ) : (
+    props.fields?.CTALink && (
+      <JssLink field={props.fields?.CTALink}>
+        <SitecoreSvg>
+          {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+        </SitecoreSvg>
+        <RichText
+          field={{
+            value: props.fields?.CTALink?.value?.text,
+          }}
+        />
+      </JssLink>
+    )
   );
   const stats = props.fields?.Counters?.map((counters) => ({
     value: <JSSText field={counters.fields?.Number} />,

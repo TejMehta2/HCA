@@ -19,7 +19,9 @@ Languages:
       Value: "b7edf2f8-f473-4261-a9a7-d3f1d646cc99"
     - ID: "8e509528-fe72-46e1-a5c8-7e0869ec3785"
       Hint: ContactUnits
-      Value: "{72A93805-4D8F-415D-A5B4-47D21E82755C}|{37BF7F00-42FE-4DAC-8CB2-1612B9AC865D}"
+      Value: |
+        {72A93805-4D8F-415D-A5B4-47D21E82755C}
+        {37BF7F00-42FE-4DAC-8CB2-1612B9AC865D}
     - ID: "a90f7a4d-b2d9-4ebb-8f56-4827d6654d69"
       Hint: Image
       Value: |

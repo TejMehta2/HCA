@@ -81,6 +81,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
       ['searchType', '1'],
     ],
     fallbackData,
+    searchOnChange: false,
   });
 
   if (!fields) {

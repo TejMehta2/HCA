@@ -3,9 +3,8 @@
     <location path="sitecore">
         <system.webServer>
             <httpProtocol>
-                <customHeaders>
-	            <!--DO NOT USE THIS CONTENT SECURITY POLICY EXAMPLE IN YOUR SOLUTION-->
-                    <add name="Content-Security-Policy" value="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://apps.sitecore.net; img-src 'self' data: https://hcil-q-001.sitecorecontenthub.cloud/ https://s.gravatar.com https://*.wp.com/cdn.auth0.com/avatars; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' 'unsafe-inline' https://fonts.gstatic.com; block-all-mixed-content; child-src 'self' https://hcil-q-001.sitecorecontenthub.cloud/; connect-src 'self' https://hcil-q-001.sitecorecontenthub.cloud/; media-src https://hcil-q-001.sitecorecontenthub.cloud/" xdt:Transform="Replace" xdt:Locator="Match(name)"/> 
+                <customHeaders>	            
+                    <add name="Content-Security-Policy" value="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://apps.sitecore.net; img-src 'self' data: *.sitecorecontenthub.cloud https://s.gravatar.com https://*.wp.com/cdn.auth0.com/avatars; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' 'unsafe-inline' https://fonts.gstatic.com; block-all-mixed-content; child-src 'self' *.sitecorecontenthub.cloud; connect-src 'self' *.sitecorecontenthub.cloud; media-src *.sitecorecontenthub.cloud" xdt:Transform="Replace" xdt:Locator="Match(name)"/> 
                 </customHeaders>
             </httpProtocol>
         </system.webServer>

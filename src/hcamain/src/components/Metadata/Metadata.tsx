@@ -23,6 +23,7 @@ export interface PageRouteMetadata {
     Image?: ImageField;
     Text?: Field<string>;
     EntityName?: Field<string>;
+    HideFromWebsiteSearch?: Field<boolean>;
   };
   itemId?: string;
   templateId?: string;
@@ -70,9 +71,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
     AbstractImage,
     Image,
     Text,
+    HideFromWebsiteSearch,
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
-  const TempateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
+  const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
 
   // computed values
   const title = `${MetaTitle?.value || Title?.value} ${
@@ -97,12 +99,18 @@ export const Default = (props: MetadataProps): JSX.Element => {
       <meta name="description" content={description} />
       <meta name="robots" content={`${follow}, ${index}`} />
       <meta name="title" content={title} />
+      <meta name="pageTitle" content={Title?.value} />
+      <meta name="pageText" content={Text?.value} />
+      <meta name="pageImage" content={Image?.value?.src} />
       <meta name="pageId" content={PageId} />
-      <meta name="templateId" content={TempateId} />
+      <meta name="templateId" content={TemplateId} />
+      <meta
+        name="hideFromWebsiteSearch"
+        content={HideFromWebsiteSearch?.value.valueOf().toString()}
+      />
       <meta name="abstractTitle" content={AbstractTitle?.value} />
       <meta name="abstractText" content={AbstractText?.value} />
       <meta name="abstractImage" content={AbstractImage?.value?.src} />
-      <meta name="image" content={image} />
     </Head>
   );
 };

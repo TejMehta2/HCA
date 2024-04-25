@@ -10,10 +10,9 @@ const SearchFormLoadMore = (props: SearchFormLoadMoreProps): JSX.Element => {
         type={'number'}
         className="sr-only"
         name="limit"
-        defaultValue={limit}
+        value={limit}
+        onChange={() => {}}
         ref={limitRef}
-        max={resultsCount}
-        min={defaultLimit}
         aria-hidden="true"
       />
       <Button size={'large'} variation={'full'}>
@@ -23,7 +22,7 @@ const SearchFormLoadMore = (props: SearchFormLoadMoreProps): JSX.Element => {
             const limitField = limitRef.current as HTMLInputElement;
             if (!limitField) return;
             limitField.stepUp(defaultLimit);
-            const event = new Event('change', { bubbles: true });
+            const event = new Event('submit', { bubbles: true });
             limitField.dispatchEvent(event);
           }}
         >

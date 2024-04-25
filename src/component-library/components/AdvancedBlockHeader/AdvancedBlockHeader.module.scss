@@ -38,12 +38,12 @@
   margin-bottom: px-to-rem(8);
 }
 
-.title {
-  margin-bottom: $spacing-6;
-}
-
 .body {
-  margin-bottom: $spacing-7;
+  margin-top: $spacing-6;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .ctas {
@@ -52,6 +52,10 @@
   flex-wrap: wrap;
   gap: $spacing-6;
   margin-top: $spacing-7;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .children {

@@ -22,7 +22,7 @@
   }
 }
 
-.search-bar {
+%searchbar {
   background-color: var(--field-background);
   display: flex;
   align-items: center;
@@ -65,10 +65,23 @@
   }
 }
 
+.search-bar {
+  @extend %searchbar;
+}
+
 .suggestions {
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 2;
+  @include sr-only;
+
+  // Only show suggestions if input is focus, or suggestions are focus
+  &:focus,
+  &:focus-within,
+  .input:focus ~ & {
+    @include not-sr-only;
+
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+  }
 }

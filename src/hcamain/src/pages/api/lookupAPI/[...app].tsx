@@ -33,6 +33,7 @@ export async function readExcel(
 //Config
 interface ILookupAPIConfig {
   aPI_Lookup_API_Media_BaseURL: string;
+  aPI_Lookup_API_Media_LegacyBaseURL: string;
   aPI_Lookup_API_Media_UtilizesLegacy: boolean;
 }
 
@@ -43,6 +44,7 @@ export async function getLookupAPIConfig(): Promise<ILookupAPIConfig> {
 
   let LookupAPIConfig: ILookupAPIConfig = {
     aPI_Lookup_API_Media_BaseURL: '',
+    aPI_Lookup_API_Media_LegacyBaseURL: '',
     aPI_Lookup_API_Media_UtilizesLegacy: false,
   };
   LookupAPIConfig = await getItemFromGraphQL(
@@ -95,8 +97,9 @@ export default async function handler(
   let operation: string = '';
   let dictionary: string = '';
   let optionals: string = '';
+  const queryValues_Key = req?.query?.key;
 
-  console.log(datasourceType, optionals);
+  //console.log('key', queryValues_Key);
 
   let error: string = '';
   if (frags) {
@@ -128,34 +131,49 @@ export default async function handler(
     if (frags.length > 4) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       optionals = frags[4];
+      console.log(datasourceType, optionals);
     }
   }
 
-  let output: unknown;
+  //console.log(project, datasourceType, operation, dictionary, optionals);
+  let output: unknown[] = [];
   if (error === '') {
     switch (operation) {
       case 'findbydictionary':
         {
-          const config = getLookupAPIConfig();
-          //console.log('loading xl');
-          const mediaURLBase =
-            (await config).aPI_Lookup_API_Media_BaseURL ||
-            'https://hcahealthcare.co.uk/-/media/Lookup%20API/';
-          const mediaFileName = (await config)
-            .aPI_Lookup_API_Media_UtilizesLegacy
+          const config = await getLookupAPIConfig();
+
+          const mediaURLBase = config.aPI_Lookup_API_Media_UtilizesLegacy
+            ? config.aPI_Lookup_API_Media_LegacyBaseURL
+            : config.aPI_Lookup_API_Media_BaseURL;
+
+          //e.g. Finder---Lookup-API-Data.xlsx
+          const mediaFileName = config.aPI_Lookup_API_Media_UtilizesLegacy
             ? '%20-%20Lookup%20API%20Data'
             : '---Lookup-API-Data.xlsx';
-          const xlData = await fetch(
+
+          let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
+            //      https://edge.sitecorecloud.io/hcainternat0fd8-hcadigital-uat-34f6/media/Project/HCA/HCA-Main/Lookup-API/Finder---Lookup-API-Data.xlsx
             //e.g. 'https://hcahealthcare.co.uk/-/media/Lookup%20API/Finder%20-%20Lookup%20API%20Data',
-            `${mediaURLBase}${project}${mediaFileName}`,
+            `${mediaURLBase}/${project}${mediaFileName}`,
             {
+              redirect: 'manual',
               cache: 'force-cache',
               next: { revalidate: 3600 },
             }
           );
-          //console.log('loaded xl');
-          const res = (await readExcel(await xlData.blob(), dictionary)) as [];
+          //console.log('loaded xl', xlData);
+          //console.log('redirected', xlData.redirected, xlData.url);
+          if (xlData.redirected) {
+            xlData = await fetch(xlData.url, {
+              cache: 'force-cache',
+              next: { revalidate: 3600 },
+            });
+          }
+          const blob = await xlData.blob();
+          //console.log('mediaFileName',`${mediaURLBase}${project}${mediaFileName}`);
+          const res = (await readExcel(blob, dictionary)) as [];
           //Type Key Value Order
           /* eg
           "Type": "UKPublicHoliday",
@@ -164,16 +182,21 @@ export default async function handler(
           "Order": 31,
           */
           //console.log('res', res);
-          if (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            !(res as any).errorCode &&
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            !(res as any).errorText &&
-            res?.length
-          ) {
+          if (res.map != undefined) {
             // should be an array, with heading
+            if (queryValues_Key && queryValues_Key.length > 0) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              output = res?.filter(
+                (rec: { Key: string | unknown[] }) =>
+                  rec.Key === queryValues_Key
+              );
+
+              //console.log('output', output, 'key', queryValues_Key);
+            } else {
+              output = res;
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            output = res?.map((item: any) => {
+            output = output?.map((item: any) => {
               let UniqueKey = '';
               if (item.Type) {
                 UniqueKey += item.Type + '.';
@@ -197,8 +220,7 @@ export default async function handler(
                 //console.log(`${key}: ${value}`);
                 if (
                   key != 'Key' &&
-                  key != 'Type' &&
-                  key != 'Key' // &&
+                  key != 'Type' // &&
                   //key != 'Value' &&
                   //key != 'Order'
                 ) {
@@ -207,6 +229,11 @@ export default async function handler(
               }
               return ret;
             });
+          } else {
+            console.warn(
+              `error processing xl file ${mediaURLBase}/${project}${mediaFileName}`,
+              res
+            );
           }
         }
         break;

@@ -13,64 +13,82 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetContentCards( $datasource: String!, $language: String!) 
-    {
-        item(path: $datasource, language: $language) {
-        ...on ContentCards {
-              title {
+    query GetContentCards($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on ContentCards {
+          title {
+            jsonValue
+          }
+          heading {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          cTACardText {
+            jsonValue
+          }
+          pages {
+            PagesList: targetItems {
+              abstractTitle: field(name: "AbstractTitle") {
+                value
+              }
+              abstractText: field(name: "AbstractText") {
+                value
+              }
+              abstractImage: field(name: "AbstractImage") {
                 jsonValue
-              },
-              heading {jsonValue},
-              cTAIcon {
-                Icon: targetItem {
-                  ... on HCAIcon {
-                    svgMarkup {
-                      value
-                    }
+              }
+              title: field(name: "Title") {
+                value
+              }
+              text: field(name: "Text") {
+                value
+              }
+              image: field(name: "Image") {
+                jsonValue
+              }
+              ... on LocationPage {
+                url {
+                  path
+                }
+              }
+              ... on BlogPage {
+                url {
+                  path
+                }
+              }
+              ... on PatientStoryPage {
+                url {
+                  path
+                }
+              }
+              ... on SpecialtyPage {
+                url {
+                  path
+                }
+              }
+              ... on PageProxy {
+                url: field(name: "Link") {
+                  ... on LinkField {
+                    path: url
                   }
                 }
               }
-              cTALink {
-                jsonValue
-              }
-              cTACardText {
-                        jsonValue
-              },
-              pages
-                {
-                   PagesList: targetItems
-                    {
-                      title : field(name:"Title"){value},
-                      text: field(name:"Text"){value},
-                      image : field(name:"Image"){...on ImageField{src, alt, height, width}},
-                      ... on LocationPage
-                      {
-                        url { path },
-                      }
-                      ... on BlogPage
-                      {
-                        url { path },
-                      }
-                      ... on PatientStoryPage
-                      {
-                        url { path },
-                      }
-                      ... on SpecialtyPage
-                      {
-                        url { path },
-                      }
-                      ... on PageProxy
-                      {
-              	        url : field(name:"Link"){
-                          ...on LinkField { path : url }
-                        }
-                      }
-                    }
-                }
-         }
+            }
+          }
+        }
       }
     }
-    
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
@@ -143,14 +161,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "68627152-98f8-4abe-bac1-9f2ee7a45d36"
+      Value: "8cbc7c8d-4e60-4b1c-a2e7-db2e62a4308a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240401T160128Z
+      Value: 20240416T211010Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

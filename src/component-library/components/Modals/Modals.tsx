@@ -4,6 +4,7 @@ import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
+import isIosDevice from '../../utility-functions/isIosDevice';
 
 // A toggle-able React Modal using the native HTML5 dialog element
 // The modal has an animated drag and swipe behavior to mimic the typical mobile app draws that it resembles visually
@@ -91,7 +92,14 @@ const Modals = (
     setTouchStart(0);
   };
 
-  // THINK - should this swipe logic be a re-usable hook or component
+  const touchHandlers = {
+    onTouchStart: touchStartHandler,
+    onTouchMove: touchMoveHandler,
+    onTouchEnd: touchEndHandler,
+  };
+
+  const spreadProps = isIosDevice() ? {} : touchHandlers;
+
   return (
     <dialog
       data-testid="dialog"
@@ -114,9 +122,7 @@ const Modals = (
             touchPosition - touchStart
           )}px`,
         }}
-        onTouchStart={touchStartHandler}
-        onTouchMove={touchMoveHandler}
-        onTouchEnd={touchEndHandler}
+        {...spreadProps}
       >
         <div className={modal}>
           <div className={handle}>

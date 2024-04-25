@@ -19,11 +19,10 @@ Languages:
       Value: "{576F23ED-76D7-43ED-9CF0-5F4E0BC7468B}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e6adfec9-9ae3-4905-b915-c4aa970af0ce"
+      Value: "32a12304-55b3-4a8b-b742-c169bd813c92"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
-      Value: |
-        <link text="View &lt;b&gt;all&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{766DA7E9-2EFE-4132-A387-6B257A08FDC8}" />
+      Value: 
     - ID: "ba790b8f-68f7-4ce5-9e69-21fe2a71b86e"
       Hint: Articles
       Value: |
@@ -46,4 +45,4 @@ Languages:
       Value: Related articles
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240326T090128Z
+      Value: 20240416T125147Z

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, MouseEvent, useId } from 'react';
+import React, { useRef, useState, useEffect, useId } from 'react';
 import { TooltipsProps } from './Tooltips.types';
 import styles from './Tooltips.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -39,25 +39,6 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
         setOffsetLeft(offsetLeft < tooltipContentWidth);
       }
     }
-
-    const handleClickOutside = (e: MouseEvent | TouchEvent): void => {
-      e.preventDefault();
-
-      if (e.target !== tooltipTrigger?.current) {
-        if (isActive === true) {
-          setIsActive(!isActive);
-        }
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside as EventListener);
-
-    return () => {
-      document.removeEventListener(
-        'mousedown',
-        handleClickOutside as EventListener
-      );
-    };
   }, [isActive]);
 
   const clickHandler = () => {
@@ -79,6 +60,15 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
         offsetRight ? styles.right : '',
       ].join(' ')}
     >
+      {isActive && (
+        <div
+          aria-hidden={true}
+          className={styles.backdrop}
+          onClick={() => {
+            setIsActive(false);
+          }}
+        />
+      )}
       <button
         className={styles.button}
         onClick={clickHandler}
@@ -89,6 +79,7 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
         <span className={styles.icon}>
           <Icons iconName="iconInfo"></Icons>
         </span>
+        <span className="sr-only">{isActive ? 'open' : 'close'} tooltip</span>
       </button>
       <div
         className={[styles.content, styles[isActive ? 'active' : '']].join(' ')}

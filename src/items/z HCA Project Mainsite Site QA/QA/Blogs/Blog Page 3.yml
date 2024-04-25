@@ -25,7 +25,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
       Hint: AbstractTitle
-      Value: The Harley Street Clinic
+      Value: 
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -35,7 +35,7 @@ Languages:
       Value: Sed euismod congue vehicula. Quisque a eros ac est varius consectetur at eu mauris. Maecenas fermentum vel ex eu euismod. Aenean iaculis magna et lacus tincidunt vestibulum. Mauris ac dui venenatis erat tempor pellentesque. Duis ullamcorper rhoncus ullamcorper. Donec bibendum dictum mauris eu laoreet. Aenean feugiat mi sed lorem cursus molestie
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6eaed2eb-fc6c-4ef9-a245-974b1a2b707b"
+      Value: "9a34c404-2d16-4c59-9a4e-2319b7dd6f7c"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -46,10 +46,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
-      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
+      Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T111824Z
+      Value: 20240417T064606Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retain CQC 'Outstanding' rating
@@ -58,5 +58,4 @@ Languages:
       Value: 20231107T124200Z
     - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
       Hint: AbstractImage
-      Value: |
-        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />
+      Value: 

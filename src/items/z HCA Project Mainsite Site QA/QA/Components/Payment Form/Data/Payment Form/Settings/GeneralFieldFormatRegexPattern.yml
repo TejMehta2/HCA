@@ -1,0 +1,45 @@
+﻿---
+ID: "61b05d2f-aa3a-491c-9941-3a7c41ad64de"
+Parent: "9b5c7c84-d910-4e43-816f-f777da63129b"
+Template: "0a1a6dce-078a-4ece-9fce-71cade57c7b8"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Settings/GeneralFieldFormatRegexPattern"
+SharedFields:
+- ID: "0c58c584-7d0c-42e8-a6b9-17d9cfa74299"
+  Hint: Parameters
+  Value: |
+    ^[a-zA-Z0-9- ,.:!*#~&/()+%'`@\-]{1,50}$
+- ID: "0cfa025b-c124-41de-9dc5-2cd5841553fe"
+  Hint: Type
+  Value: regex
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240422T223211Z
+    - ID: "2ce7436e-2b14-47e8-9103-7d2ea2f31159"
+      Hint: Message
+      Value: Please enter value without special characters, maximum 50 characters long
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4ea4309c-08dd-4c79-8257-f9fbd625a698"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240422T223413Z

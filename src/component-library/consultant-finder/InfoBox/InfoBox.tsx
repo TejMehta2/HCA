@@ -26,7 +26,7 @@ const InfoBox = (props: InfoBoxProps): JSX.Element => {
             {!icon && <Icons iconName="iconClock" />}
             {icon && icon}
           </span>
-          <Text tag="p" variation="body-medium-small">
+          <Text tag="div" variation="body-medium-small">
             {shortText}
           </Text>
         </div>
@@ -43,7 +43,7 @@ const InfoBox = (props: InfoBoxProps): JSX.Element => {
             </Text>
           </div>
           <div className={`${styles['info-box-long-text']}`}>
-            <Text tag="p" variation="body-medium">
+            <Text tag="div" variation="body-medium">
               {longText}
             </Text>
           </div>

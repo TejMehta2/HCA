@@ -96,16 +96,16 @@
 
 @include media(screen-l) {
   .sticky-track {
-    position: absolute;
-    top: $spacing-10;
     height: 100%;
-    padding-bottom: $spacing-10;
   }
 
   .sticky {
     position: sticky;
 
     //  use calc to account for header
-    top: calc($spacing-10 + px-to-rem(118));
+    top: $spacing-10;
+    min-height: calc(100vh - 2 * $spacing-10);
+    display: flex;
+    align-items: center;
   }
 }
