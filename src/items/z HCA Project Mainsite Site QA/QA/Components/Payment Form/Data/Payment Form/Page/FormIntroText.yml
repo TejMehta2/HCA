@@ -2,11 +2,11 @@
 ID: "6d47c99b-6447-41f3-ada2-9ce00c098c66"
 Parent: "7d913fdf-86cf-4709-8b20-6add6a1bf6d2"
 Template: "fc18f915-eac6-460a-8777-6e1376a9ea09"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/Text"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Form/Data/Payment Form/Page/FormIntroText"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 0
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -25,16 +25,14 @@ Languages:
         HCA\BGlomski@hca.uk.net
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "303cd4ed-0b99-4826-8e70-6e1f086f97ea"
+      Value: "35022f3f-182d-48b2-8529-bfd89438696b"
     - ID: "9666782b-21bb-40ce-b38f-8f6c53fa5070"
       Hint: Text
-      Value: |
-        <h2>Your details</h2>
-        <p>Please fill in your details below, and progress to the next page to make a secure online payment with a credit or debit card.</p>
+      Value: <p>Please fill in your details below, and progress to the next page to make a secure online payment with a credit or debit card.</p>
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        HCA\BGlomski@hca.uk.net
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T125409Z
+      Value: 20240425T124629Z
