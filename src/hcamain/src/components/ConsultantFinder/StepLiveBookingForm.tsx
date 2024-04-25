@@ -112,6 +112,7 @@ interface Fields {
   LiveBookingFormContactBoxPhone0Phone: Field<string>;
   LiveBookingFormErrorSubmitMsg: Field<string>;
   LiveBookingFormErrorSubmitBtnLabel: Field<string>;
+  LiveBookingFormDateOfBirthErrors: any;
 }
 
 type StepProps = {
@@ -138,6 +139,11 @@ export const Default = (props: StepProps): JSX.Element => {
   const [loadingData, setLoadingData] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  console.log(
+    props.fields.LiveBookingFormDateOfBirthErrors[0].fields.Required.value ||
+      'test'
+  );
 
   const {
     selectedLocationName,
@@ -200,7 +206,11 @@ export const Default = (props: StepProps): JSX.Element => {
             return dateOfBirth <= minDateOfBirth;
           },
           {
-            message: 'You must be at least 18 years old.',
+            message: `${
+              props?.fields?.LiveBookingFormDateOfBirthErrors[0]?.fields?.Msg
+                ?.value ||
+              'Our online live diary booking service is not available for bookings for patients under the age of 18 years old or if you require an oncology specialist. For this please call us on 020 3993 4232'
+            }`,
           }
         ),
       address1: z.string().trim().min(1, { message: 'Required' }),
