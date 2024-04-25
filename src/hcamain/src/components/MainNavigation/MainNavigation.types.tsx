@@ -74,7 +74,6 @@ export interface Fields {
           title?: Field<string>;
         };
       };
-      copyright: Field<string>;
     };
   };
 }

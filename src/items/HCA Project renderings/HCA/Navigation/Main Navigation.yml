@@ -41,11 +41,6 @@ SharedFields:
             }
           }
     
-          copyright {
-            value
-            jsonValue
-          }
-    
           navigationTabs {
             targetItems {
               ... on NavigationTab {
@@ -314,14 +309,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ab7058d5-eb5b-45ee-a2e7-417e29471b0c"
+      Value: "e456c68f-1dc6-41cc-afa0-178f430112ba"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240425T081859Z
+      Value: 20240425T121031Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
