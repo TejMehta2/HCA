@@ -229,4 +229,9 @@ byoc-sitecore-form,
     @extend %large;
     @extend %full;
   }
+
+  // Hide the hidden input field. It receives a dynamic UID from Layout.tsx
+  .component:has([name='HiddenFormInstanceUID']) {
+    display: none;
+  }
 }

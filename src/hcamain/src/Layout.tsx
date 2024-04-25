@@ -51,6 +51,13 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     // Checks for changes in the DOM and runs when it sees a change in the childList or subtree
     const observer = new MutationObserver(() => {
       const form = document.querySelectorAll('byoc-sitecore-form style');
+
+      // Add a random UID to this hidden field
+      // We hide it via CSS in globals/forms.module.scss
+      const hiddenInput = document.querySelector(
+        '[name="HiddenFormInstanceUID"]'
+      );
+      hiddenInput?.setAttribute?.('value', crypto?.randomUUID?.());
       if (form) {
         [...form].forEach((stylesheet) => {
           stylesheet.remove();
