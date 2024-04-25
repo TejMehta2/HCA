@@ -17,95 +17,64 @@ SharedFields:
   Hint: ComponentQuery
   Value: |
     query GetMainNavigation($datasource: String!, $language: String!) {
-    
       item(path: $datasource, language: $language) {
-    
         ... on MainNavigation {
-    
           logo {
-    
             value
-    
             jsonValue
-    
           }
     
           darkLogo {
-    
             value
-    
             jsonValue
-    
           }
     
           primaryComplementaryLinksFolder {
-    
             targetItem {
-    
               ...NavigationLinksListFragment
-    
             }
-    
           }
     
           secondaryComplementaryLinksFolder {
-    
             targetItem {
-    
               ...NavigationLinksListFragment
-    
             }
+          }
     
+          copyright {
+            value
+            jsonValue
           }
     
           navigationTabs {
-    
             targetItems {
-    
               ... on NavigationTab {
-    
                 tabTitle {
-    
                   value
-    
                   jsonValue
-    
                 }
     
                 tabTitle {
-    
                   value
-    
                   jsonValue
-    
                 }
     
                 tabCta {
-    
                   value
-    
                   jsonValue
-    
                 }
     
                 mobileTabCta {
-    
                   value
-    
                   jsonValue
-    
                 }
     
                 hasChildren
     
                 children {
-    
                   results {
-    
                     template {
-    
                       name
-    
                     }
     
                     ...NavigationContentBlockFragment
@@ -113,291 +82,172 @@ SharedFields:
                     ...NavigationBlogPostCardFragment
     
                     ...MainNavigationLinksListFragment
-    
                   }
-    
                 }
-    
               }
-    
             }
-    
           }
     
           searchModalConfigurationFolder {
-    
             targetItem {
-    
               ... on SearchModalConfiguration {
-    
-                searchPlaceholder{ 
-    
+                searchPlaceholder {
                   value
-    
                   jsonValue
-    
                 }
     
-                icon: icon_2e92f1fb5cf44f36882dd8c07879de57
-    
-                { 
-    
+                icon: icon_2e92f1fb5cf44f36882dd8c07879de57 {
                   value
-    
                   jsonValue
-    
                 }
     
-                popularSearchesLabel{ 
-    
+                popularSearchesLabel {
                   value
-    
                   jsonValue
-    
-                }
-    
-                popularSearches{ 
-    
-                  value
-    
-                  jsonValue
-    
-                }
-    
-                baseUrl{ 
-    
-                  value
-    
-                  jsonValue
-    
                 }
     
                 popularSearches {
+                  value
+                  jsonValue
+                }
     
+                baseUrl {
+                  value
+                  jsonValue
+                }
+    
+                popularSearches {
                   PopularSearch: targetItems {
-    
                     ... on SearchSuggestionTemplate {
-    
                       text {
-    
                         value
-    
                         jsonValue
-    
                       }
     
                       icon: icon_612e35f92c594aa38a0fcb132fc6376b {
-    
                         Icon: targetItem {
-    
                           ... on HCAIcon {
-    
                             svgMarkup {
-    
                               value
-    
                             }
-    
                           }
-    
                         }
-    
                       }
-    
                     }
-    
                   }
-    
                 }
-    
               }
-    
             }
-    
           }
-    
         }
-    
       }
-    
     }
-     
+    
     fragment MainNavigationLinksListFragment on MainNavigationLinksList {
-    
       title {
-    
         value
-    
         jsonValue
-    
       }
     
       cta {
-    
         value
-    
         jsonValue
-    
       }
     
       mobileCtaText {
-    
         value
-    
         jsonValue
-    
       }
     
       variant {
-    
         targetItem {
-    
           ...GenericSettingVariant
-    
         }
-    
       }
     
       children {
-    
         results {
-    
           ... on NavigationLink {
-    
             ...NavigationLinkFragment
-    
           }
-    
         }
-    
       }
-    
     }
-     
+    
     fragment NavigationBlogPostCardFragment on NavigationBlogPostCard {
-    
       title {
-    
         value
-    
         jsonValue
-    
       }
     
       description {
-    
         value
-    
         jsonValue
-    
       }
     
       cta {
-    
         value
-    
         jsonValue
-    
       }
     
       date {
-    
         jsonValue
-    
         value
-    
       }
     
       tag {
-    
         value
-    
         jsonValue
-    
       }
-    
     }
-     
+    
     fragment NavigationContentBlockFragment on NavigationContentBlock {
-    
       title {
-    
         value
-    
         jsonValue
-    
       }
     
       description {
-    
         value
-    
         jsonValue
-    
       }
     
       cta {
-    
         value
-    
         jsonValue
-    
       }
     
       variant {
-    
         targetItem {
-    
           ...GenericSettingVariant
-    
         }
-    
       }
-    
     }
-     
+    
     fragment GenericSettingVariant on GenericSetting {
-    
       value {
-    
         value
-    
       }
-    
     }
-     
+    
     fragment NavigationLinksListFragment on NavigationLinksList {
-    
       title {
-    
         value
-    
         jsonValue
-    
       }
     
       links {
-    
         targetItems {
-    
           ...NavigationLinkFragment
-    
         }
-    
       }
-    
     }
-     
+    
     fragment NavigationLinkFragment on NavigationLink {
-    
       link {
-    
         value
-    
         jsonValue
-    
       }
-    
     }
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
@@ -464,14 +314,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b1e9196d-4da8-49ba-91fb-dbdb2ae15e6c"
+      Value: "ab7058d5-eb5b-45ee-a2e7-417e29471b0c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T122730Z
+      Value: 20240425T081859Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
