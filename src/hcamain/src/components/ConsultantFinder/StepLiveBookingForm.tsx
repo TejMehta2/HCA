@@ -113,6 +113,7 @@ interface Fields {
   LiveBookingFormErrorSubmitMsg: Field<string>;
   LiveBookingFormErrorSubmitBtnLabel: Field<string>;
   LiveBookingFormDateOfBirthErrors: any;
+  LiveBookingFormErrorNoSlotSelected: Field<string>;
 }
 
 type StepProps = {
@@ -645,7 +646,41 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {router.isReady && (
+        {selectedTime === '' && (
+          <>
+            <Container
+              marginBottom="spacing-8"
+              marginTop="spacing-8"
+              marginLeft="spacing-6"
+              marginRight="spacing-6"
+            >
+              <Text tag="p" variation="body-medium-large">
+                {props?.fields?.LiveBookingFormErrorNoSlotSelected?.value ||
+                  'There is no slot selected.'}
+              </Text>
+            </Container>
+            <Container
+              marginBottom="spacing-8"
+              marginTop="spacing-8"
+              marginLeft="spacing-6"
+              marginRight="spacing-6"
+            >
+              <Button size={'small'} variation={'full-dark'}>
+                <button
+                  onClick={() =>
+                    router.push(
+                      `/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}`
+                    )
+                  }
+                >
+                  {props?.fields?.LiveBookingFormErrorSubmitBtnLabel?.value ||
+                    'Back to booking'}
+                </button>
+              </Button>
+            </Container>
+          </>
+        )}
+        {router.isReady && selectedTime !== '' && (
           <>
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}

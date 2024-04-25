@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useId } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useForm, FieldErrors } from 'react-hook-form';
@@ -100,31 +100,57 @@ export const Default = (props: StepProps): JSX.Element => {
   const [loadingData, setLoadingData] = useState(true);
   const [consultantName, setConsulantName] = useState('');
   const [practices, setPractices] = useState<object[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formId = self.crypto.randomUUID();
 
-  const schema = z.object({
-    practice: z.string().trim().min(1, { message: 'Required' }),
-    dateAppointment: z.string().trim().min(1, { message: 'Required' }),
-    timeAppointment: z.string().trim().min(1, { message: 'Required' }),
-    previousPatient: z.string().trim().min(1, { message: 'Required' }),
-    title: z.string().trim().min(1, { message: 'Required' }),
-    firstName: z.string().trim().min(1, { message: 'Required' }),
-    lastName: z.string().trim().min(1, { message: 'Required' }),
-    gender: z.string().trim().min(1, { message: 'Required' }),
-    date: z.string().trim().min(1, { message: 'Required' }),
-    userEmail: z
-      .string()
-      .min(1, { message: 'Required' })
-      .email('This is not a valid email.'),
-    userPhone: z.string().trim().min(1, { message: 'Required' }),
-    insurance: z.string().trim().min(1, { message: 'Required' }),
-    insuranceNumber: z.string().optional(),
-    reasonVisit: z.string().trim().min(1, { message: 'Required' }),
-    email: z.boolean().optional(),
-    sms: z.boolean().optional(),
-    phone: z.boolean().optional(),
-    post: z.boolean().optional(),
-    recaptcha: z.string().min(1, { message: 'Required' }),
-  });
+  const schema = z
+    .object({
+      practice: z.string(),
+      dateAppointment: z.string().trim().min(1, { message: 'Required' }),
+      timeAppointment: z.string().trim().min(1, { message: 'Required' }),
+      previousPatient: z.string().trim().min(1, { message: 'Required' }),
+      title: z.string().trim().min(1, { message: 'Required' }),
+      firstName: z.string().trim().min(1, { message: 'Required' }),
+      lastName: z.string().trim().min(1, { message: 'Required' }),
+      gender: z.string().trim().min(1, { message: 'Required' }),
+      date: z.string().trim().min(1, { message: 'Required' }),
+      userEmail: z
+        .string()
+        .min(1, { message: 'Required' })
+        .email('This is not a valid email.'),
+      userPhone: z
+        .string()
+        .trim()
+        .min(1, { message: 'Required' })
+        .refine((val) => /^\d+$/.test(val), {
+          message: 'Invalid phone number',
+        }),
+      insurance: z.string().trim().min(1, { message: 'Required' }),
+      insuranceNumber: z.string().optional(),
+      reasonVisit: z.string().trim().min(1, { message: 'Required' }),
+      email: z.boolean().optional(),
+      sms: z.boolean().optional(),
+      phone: z.boolean().optional(),
+      post: z.boolean().optional(),
+      recaptcha: z.string().min(1, { message: 'Required' }),
+    })
+    .refine(
+      (data) => {
+        if (practices.length === 0) {
+          return true;
+        } else {
+          if (data.practice !== '') {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      },
+      {
+        message: 'Required',
+        path: ['practice'],
+      }
+    );
 
   const form = useForm({
     // you can also submit default values
@@ -140,7 +166,7 @@ export const Default = (props: StepProps): JSX.Element => {
       date: '',
       userEmail: '',
       userPhone: '',
-      insurance: '',
+      insurance: 'I pay for myself',
       insuranceNumber: '',
       reasonVisit: '',
       email: false,
@@ -150,7 +176,9 @@ export const Default = (props: StepProps): JSX.Element => {
       recaptcha: '',
     },
     resolver: zodResolver(schema),
+    mode: 'onChange',
   });
+
   const {
     register,
     control,
@@ -161,23 +189,61 @@ export const Default = (props: StepProps): JSX.Element => {
       // dirtyFields,
       isDirty,
       // isValid,
-      isSubmitting,
+      // isSubmitting,
       // isSubmitSuccessful,
     },
-    watch,
+    // watch,
     // getValues,
     setValue,
     // setError,
     clearErrors,
   } = form;
   console.log('isSubmitting', isSubmitting);
-  const watchFormChanges = watch();
+
+  const postData = (data: any) => {
+    setIsSubmitting(true);
+    const dataToSend = { ...data };
+    dataToSend.dateOfBirthFormatted = data.date;
+    dataToSend.consultantName = 'Andy Goldberg';
+    dataToSend.consultantTopSpecialty = 'Hip Surgery';
+    dataToSend.hiddenFormInstance = formId;
+
+    console.log(JSON.stringify(dataToSend, null, 2));
+    const URL = 'https:/api/PostMakeBookingEnquiry';
+
+    const config: any = {
+      method: 'post',
+      url: URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: dataToSend,
+    };
+
+    axios
+      .post(config)
+      .then((resp) => {
+        console.log(resp);
+        setIsSubmitting(false);
+        // setErrorSubmit(false);
+        // console.log("done ok");
+        // if from was submitted then redirect to thank you page
+        // navigate('/enquireform/thank-you');
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsSubmitting(true);
+        // setErrorSubmit(true);
+        // console.log("NOT done!");
+      });
+  };
 
   const onSubmit = (data: any) => {
     console.log('data', data);
+    postData(data);
     // postData(data);
     // setPatientName(`${data.firstName} ${data.lastName}`);
-    router.push(`/Finder/Step-Enquire-Form-Confirmation`);
+    // router.push(`/Finder/Step-Enquire-Form-Confirmation`);
 
     return new Promise<void>((resolve) => {
       setTimeout(() => resolve(), 1000);
@@ -255,11 +321,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     {`${props?.fields?.EnquireFormHeadline?.value} ${consultantName}`}
                   </Text>
                 </Container>
-                {/* About you */}
-                {/* <Text tag="h2" variation="heading-1">
-      {props?.fields?.EnquireFormPracticeLabel?.value ||
-        'Select a practice'}
-    </Text> */}
                 {practices.length > 0 && (
                   <Container marginBottom="spacing-6" marginTop="spacing-4">
                     <SelectField
@@ -506,7 +567,11 @@ export const Default = (props: StepProps): JSX.Element => {
                         addDefaultValue={true}
                         defaultValueLabel={
                           props.fields.EnquireFormInsuranceSelfPayOption
-                            .value || 'Please select'
+                            .value || 'I pay for myself'
+                        }
+                        defaultValue={
+                          props.fields.EnquireFormInsuranceSelfPayOption
+                            .value || 'I pay for myself'
                         }
                         required={true}
                         isError={errors?.insurance ? true : false}
@@ -612,7 +677,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <ReCAPTCHA
                     sitekey={
                       props?.fields?.API_HCA_EnquireBookingForm_RecapchaKey
-                        ?.value || ''
+                        ?.value || '6Lcbh1IiAAAAAPIprpy5uCDJj3gtCGmOU5AVNhzM'
                     }
                     onChange={(value) => {
                       setValue('recaptcha', value || '');
