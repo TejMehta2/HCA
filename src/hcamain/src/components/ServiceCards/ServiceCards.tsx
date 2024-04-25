@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
   fields?: {
@@ -41,7 +42,7 @@ interface Fields {
   Title?: Field<string>;
   Description?: Field<string>;
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTALink: LinkField;
   CTACardText?: Field<string>;
   Services?: ServiceFields[];
 }
@@ -99,30 +100,23 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
-        props.fields?.CTALink && (
-          <JssLink field={props.fields?.CTALink}>
-            {isExperienceEditor ? (
-              <></>
-            ) : (
-              <>
-                {props?.fields?.CTAIcon && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                    }}
-                  />
-                )}
-                {props?.fields?.CTALink?.value?.text && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTALink?.value?.text,
-                    }}
-                  ></span>
-                )}
-              </>
-            )}
-          </JssLink>
+        isExperienceEditor ? (
+          <JssLink field={props.fields?.CTALink}></JssLink>
+        ) : (
+          props.fields?.CTALink && (
+            <JssLink field={props.fields?.CTALink.value}>
+              <SitecoreSvg>
+                {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+              </SitecoreSvg>
+              {props?.fields?.CTALink?.value?.text && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.fields?.CTALink?.value?.text,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+          )
         )
       }
     >
