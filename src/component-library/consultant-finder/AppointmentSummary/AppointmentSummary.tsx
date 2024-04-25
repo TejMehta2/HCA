@@ -8,7 +8,11 @@ import Icons from '../../foundation/Icons/Icons';
 const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
   const router = useRouter();
   return (
-    <div className={styles.summary}>
+    <div
+      className={
+        props.isMobile ? `${styles.summary} ${styles.mobile}` : styles.summary
+      }
+    >
       <div className={styles.title}>
         <Text tag="p" variation="body-medium-large">
           {props.title}

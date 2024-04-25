@@ -12,4 +12,5 @@ export interface AppointmentSummaryProps {
   slug: string;
   gmcNumber: string | number | null;
   isFollowUpAppointment: string;
+  isMobile?: boolean;
 }

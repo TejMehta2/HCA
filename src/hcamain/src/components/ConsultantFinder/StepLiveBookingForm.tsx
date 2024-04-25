@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
@@ -34,6 +34,8 @@ import Container from '@component-library/foundation/Containers/Container';
 import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import Modals from '@component-library/components/Modals/Modals';
+import { formatDateYYYYMMDD } from '@component-library/utility-functions/index';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -108,6 +110,9 @@ interface Fields {
   LiveBookingFormContactBoxOpeningHoursTime: Field<string>;
   LiveBookingFormContactBoxPhone0Label: Field<string>;
   LiveBookingFormContactBoxPhone0Phone: Field<string>;
+  LiveBookingFormErrorSubmitMsg: Field<string>;
+  LiveBookingFormErrorSubmitBtnLabel: Field<string>;
+  LiveBookingFormDateOfBirthErrors: any;
 }
 
 type StepProps = {
@@ -124,6 +129,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  console.log('step booking form', props.fields);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
@@ -131,8 +137,14 @@ export const Default = (props: StepProps): JSX.Element => {
   const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
   const [errorData, setErrorData] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  console.log(slug, gmcNumber);
+  console.log(
+    props.fields.LiveBookingFormDateOfBirthErrors[0].fields.Required.value ||
+      'test'
+  );
+
   const {
     selectedLocationName,
     selectedDate,
@@ -145,7 +157,6 @@ export const Default = (props: StepProps): JSX.Element => {
     consultantName,
     setPatientName,
   } = useContext(ConsultantFinderContext);
-  console.log('step booking form', props.fields);
 
   const schema = z
     .object({
@@ -165,9 +176,43 @@ export const Default = (props: StepProps): JSX.Element => {
         .string()
         .min(1, { message: 'Required' })
         .email('This is not a valid email.'),
-      phone: z.string().trim().min(1, { message: 'Required' }),
+      phone: z
+        .string()
+        .trim()
+        .min(1, { message: 'Required' })
+        .refine((val) => /^\d+$/.test(val), {
+          message: 'Invalid phone number',
+        }),
       gender: z.string().trim().min(1, { message: 'Required' }),
-      dateOfBirth: z.string().trim().min(1, { message: 'Required' }),
+      dateOfBirth: z
+        .string()
+        .min(1, { message: 'Required' })
+        .refine(
+          (val) => {
+            // min age
+            // Convert the date strings to Date objects for comparison
+            const dateOfBirth = new Date(val);
+            const gpAppointmentDate = new Date(formatDateYYYYMMDD(startTime)); // GP appointment date
+            // const testTime = '2023-08-29T10:30:00';
+            // const gpAppointmentDate = new Date(formatDateYYYYMMDD(testTime));
+            // Calculate the minimum date of birth for 18 years old at the appointment date
+            const minDateOfBirth = new Date(gpAppointmentDate);
+            console.log('minDateOfBirth', minDateOfBirth);
+            console.log('dateOfBirth', dateOfBirth);
+            console.log('gpAppointmentDate', gpAppointmentDate);
+            minDateOfBirth.setFullYear(gpAppointmentDate.getFullYear() - 18);
+
+            // check dob and min date
+            return dateOfBirth <= minDateOfBirth;
+          },
+          {
+            message: `${
+              props?.fields?.LiveBookingFormDateOfBirthErrors[0]?.fields?.Msg
+                ?.value ||
+              'Our online live diary booking service is not available for bookings for patients under the age of 18 years old or if you require an oncology specialist. For this please call us on 020 3993 4232'
+            }`,
+          }
+        ),
       address1: z.string().trim().min(1, { message: 'Required' }),
       address2: z.string().optional(),
       postcode: z.string().trim().min(1, { message: 'Required' }),
@@ -208,7 +253,7 @@ export const Default = (props: StepProps): JSX.Element => {
     .refine(
       (data) => {
         if (data.user === 'insurer' || data.payment === 'insurance') {
-          if (data.insuranceProvider !== '') {
+          if (data.insuranceProvider !== '' || insurersLDB.length === 0) {
             return true;
           } else {
             return false;
@@ -372,6 +417,8 @@ export const Default = (props: StepProps): JSX.Element => {
       recaptcha: '',
     },
     resolver: zodResolver(schema),
+    // validation will be triggered before submit, on change
+    mode: 'onChange',
   });
   const {
     register,
@@ -383,7 +430,7 @@ export const Default = (props: StepProps): JSX.Element => {
       // dirtyFields,
       isDirty,
       // isValid,
-      isSubmitting,
+      // isSubmitting,
       // isSubmitSuccessful,
     },
     watch,
@@ -392,12 +439,15 @@ export const Default = (props: StepProps): JSX.Element => {
     // setError,
     clearErrors,
   } = form;
-  console.log('isSubmitting', isSubmitting);
+  // console.log('isSubmitting', isSubmitting);
   const watchFormChanges = watch();
 
   const postData = (data: any) => {
+    setIsSubmitting(true);
     const dataToPost = {
-      dateFrom: startTime, // '2023-08-29T10:30:00' for local test error
+      // for local test error
+      // dateFrom: '2023-08-29T10:30:00',
+      dateFrom: startTime,
       isFollowOnAppointment: selectedTypeOfAppointment,
       HCAConsultantId: hcaConsultantID,
       FacilityId: locationID,
@@ -458,14 +508,22 @@ export const Default = (props: StepProps): JSX.Element => {
         // handle successful response with status code 200
         console.log(response);
         console.log(JSON.stringify(response.data));
-        console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
-        // go to thank you page
-        // /Finder/Step-Live-Booking-Confirmation
-        router.push(
-          `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
-        );
+        // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
+        // go to thank you page if no error on booking or show error modal otherwise
+        if (response.data.errorCode) {
+          console.log('error booking');
+          dialogRef?.current?.showModal();
+        } else {
+          router.push(
+            `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
+          );
+        }
+        setIsSubmitting(false);
       })
       .catch(function (error) {
+        setIsSubmitting(false);
+        // show modal error
+        dialogRef?.current?.showModal();
         // handle error with status code other than 200
         console.log(error);
         // The if statement checks whether the error object has a response property, which indicates that an HTTP response was received
@@ -482,6 +540,7 @@ export const Default = (props: StepProps): JSX.Element => {
     console.log('data', data);
     postData(data);
     setPatientName(`${data.firstName} ${data.lastName}`);
+    // skip post just go to conf page for dev
     // router.push(`/Finder/Step-Live-Booking-Confirmation`);
 
     return new Promise<void>((resolve) => {
@@ -493,22 +552,11 @@ export const Default = (props: StepProps): JSX.Element => {
     console.log('errors on submit', errors);
   };
 
-  // const handleGetValues = () => {
-  //   console.log('get Values', getValues());
-  // };
-
-  // const habdleSetFieldValue = () => {
-  //   // setValue('username', '', {
-  //   //   shouldValidate: false,
-  //   // });
-  //   // setValue('username', '');
-  // };
-
   const getConsultantData = (slug: string) => {
     axios
       .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
       .then((resp) => {
-        console.log(resp?.data?.insurers);
+        // console.log(resp?.data?.insurers);
         setErrorData(false);
         setLoadingData(false);
         setInsurersLDB(resp?.data?.insurers || []);
@@ -543,12 +591,16 @@ export const Default = (props: StepProps): JSX.Element => {
   }, [router.isReady]);
 
   useEffect(() => {
-    console.log('user', watchFormChanges.user);
-    console.log('payment', watchFormChanges.payment);
+    // console.log('user', watchFormChanges.user);
+    // console.log('payment', watchFormChanges.payment);
     // remove values from hidden fields if not used anymore
     if (watchFormChanges.user === 'insurer') {
       setValue('payment', '');
       setValue('contactDetails', false);
+      setValue('marketingPreferenceEmail', false);
+      setValue('marketingPreferencePhone', false);
+      setValue('marketingPreferenceSMS', false);
+      setValue('marketingPreferencePost', false);
       if (errors?.representativeRelationToPatient) {
         clearErrors('representativeRelationToPatient');
       }
@@ -607,6 +659,33 @@ export const Default = (props: StepProps): JSX.Element => {
               }
             ></HeaderLDB>
             <LiveBookingForm>
+              <Modals ref={dialogRef}>
+                <Container
+                  marginBottom="spacing-8"
+                  marginTop="spacing-8"
+                  marginLeft="spacing-4"
+                  marginRight="spacing-4"
+                >
+                  <Text tag="p" variation="heading-1">
+                    {props?.fields?.LiveBookingFormErrorSubmitMsg?.value ||
+                      'There was an error, please choose a different appointment'}
+                  </Text>
+                  <Container marginBottom="spacing-8" marginTop="spacing-8">
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button
+                        onClick={() =>
+                          router.push(
+                            `/Finder/Step-Slot-Select?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                          )
+                        }
+                      >
+                        {props?.fields?.LiveBookingFormErrorSubmitBtnLabel
+                          ?.value || 'Back to booking'}
+                      </button>
+                    </Button>
+                  </Container>
+                </Container>
+              </Modals>
               {/* debugger for form */}
               {/* https://www.npmjs.com/package/@hookform/devtools */}
               <DevTool control={control} placement="top-right" />
@@ -620,6 +699,21 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields?.LiveBookingFormSubHeadline?.value ||
                       'All fields are required unless specified as optional.'}
                   </Text>
+                </Container>
+                <Container marginBottom="spacing-6">
+                  <AppointmentSummary
+                    title={'Appointment summary'}
+                    consultantTitle={'Consultant'}
+                    consultantText={consultantName}
+                    locationTitle={'Location'}
+                    locationText={selectedLocationName}
+                    dateTitle={'Date & time'}
+                    dateText={`${selectedDate} at ${selectedTime}`}
+                    slug={slug}
+                    gmcNumber={gmcNumber}
+                    isFollowUpAppointment={selectedTypeOfAppointment}
+                    isMobile={true}
+                  />
                 </Container>
                 {/* About you */}
                 <Text tag="h2" variation="heading-1">
@@ -1193,61 +1287,64 @@ export const Default = (props: StepProps): JSX.Element => {
                       )}
                     </Container>
                     {/* Marketing preferences */}
-                    {/* sa ascund daca e insurer */}
-                    <MarketingPreferences
-                      headline={
-                        props?.fields
-                          ?.LiveBookingFormMarketingPreferencesHeadline?.value
-                      }
-                      text={
-                        <JssRichText
-                          field={
-                            props.fields.LiveBookingFormMarketingPreferencesText
+                    {/* hide if insurer */}
+                    {watchFormChanges.user === 'patient' && (
+                      <MarketingPreferences
+                        headline={
+                          props?.fields
+                            ?.LiveBookingFormMarketingPreferencesHeadline?.value
+                        }
+                        text={
+                          <JssRichText
+                            field={
+                              props.fields
+                                .LiveBookingFormMarketingPreferencesText
+                            }
+                          />
+                        }
+                      >
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                              ?.value || ''
                           }
+                          name={'marketingPreferenceEmail'}
+                          id={'marketingPreferenceEmail'}
+                          register={register}
                         />
-                      }
-                    >
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferenceEmail'}
-                        id={'marketingPreferenceEmail'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferencePhone'}
-                        id={'marketingPreferencePhone'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferenceSMS'}
-                        id={'marketingPreferenceSMS'}
-                        register={register}
-                      />
-                      <Checkbox
-                        label={
-                          props?.fields
-                            ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
-                            ?.value || ''
-                        }
-                        name={'marketingPreferencePost'}
-                        id={'marketingPreferencePost'}
-                        register={register}
-                      />
-                    </MarketingPreferences>
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferencePhone'}
+                          id={'marketingPreferencePhone'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferenceSMS'}
+                          id={'marketingPreferenceSMS'}
+                          register={register}
+                        />
+                        <Checkbox
+                          label={
+                            props?.fields
+                              ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                              ?.value || ''
+                          }
+                          name={'marketingPreferencePost'}
+                          id={'marketingPreferencePost'}
+                          register={register}
+                        />
+                      </MarketingPreferences>
+                    )}
                     <Container marginBottom="spacing-6">
                       <ReCAPTCHA
                         sitekey={
