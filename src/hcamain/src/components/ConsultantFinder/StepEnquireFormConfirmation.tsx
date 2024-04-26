@@ -17,7 +17,7 @@ import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
-import Container from 'temp/component-library/foundation/Containers/Container';
+import Container from '@component-library/foundation/Containers/Container';
 
 interface Fields {
   Text: any;
