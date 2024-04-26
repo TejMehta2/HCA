@@ -55,9 +55,16 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <Breadcrumbs>
-          <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
-          <span>Thank you</span>
+        <Breadcrumbs
+          backCta={{
+            text: 'Consultant Finder',
+            link: '/Finder/Step-Intro',
+          }}
+        >
+          <span>
+            {props?.fields?.EnquireFormBreadcrumbsCurrentPage?.value ||
+              'Thank you'}
+          </span>
         </Breadcrumbs>
         <LiveFormConfirmation>
           <LiveFormConfirmationMain
