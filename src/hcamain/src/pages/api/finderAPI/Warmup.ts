@@ -5,7 +5,7 @@ import { parse } from 'node-html-parser';
 
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
