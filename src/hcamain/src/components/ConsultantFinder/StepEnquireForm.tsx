@@ -31,7 +31,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
-import Breadcrumbs from 'temp/component-library/site-components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
 import Modals from '@component-library/components/Modals/Modals';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
