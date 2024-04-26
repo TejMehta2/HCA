@@ -325,7 +325,11 @@ export const Default = (props: StepProps): JSX.Element => {
     ?.replaceAll('<ul>', '')
     .replaceAll('</ul>', '')
     .replaceAll('<li>', '')
-    .replaceAll('</li>', ', ');
+    .replaceAll('</li>', ', ')
+    .replaceAll('<p>', '')
+    .replaceAll('</p>', '');
+
+  console.log(keywords);
 
   if (props.fields) {
     return (
@@ -800,7 +804,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             contentVariation="full-width"
                           >
                             <Link
-                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
+                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
                             >
                               <span>
                                 {props?.fields?.EnquireNowButtonLink?.value

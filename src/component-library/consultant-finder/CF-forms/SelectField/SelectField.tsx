@@ -19,6 +19,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
     isError,
     addDefaultValue,
     defaultValueLabel,
+    defaultValue,
   } = props;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,9 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
       )}
       <div className={styles['select-wrapper']}>
         <select id={name} {...register(`${name}`)}>
-          {addDefaultValue && <option value={''}>{defaultValueLabel}</option>}
+          {addDefaultValue && (
+            <option value={defaultValue || ''}>{defaultValueLabel}</option>
+          )}
           {options}
         </select>
         <span className={styles.arrow}>

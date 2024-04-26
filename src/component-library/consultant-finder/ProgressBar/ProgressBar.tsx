@@ -38,13 +38,15 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
             </div>
             <div className={styles['step-text']}>
               {(!step?.fields?.Selected?.value ||
-                currentPage === step?.fields?.Order?.value) && (
+                currentPage === step?.fields?.Order?.value ||
+                currentPage === steps.length) && (
                 <Text tag="p" variation="body-medium-small">
                   {step?.fields?.StepText?.value}
                 </Text>
               )}
               {step?.fields?.Selected?.value &&
-                currentPage !== step?.fields?.Order?.value && (
+                currentPage !== step?.fields?.Order?.value &&
+                currentPage !== steps.length && (
                   <TextLink>
                     <Link
                       href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`}

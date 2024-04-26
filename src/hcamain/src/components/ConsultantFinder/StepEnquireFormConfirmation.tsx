@@ -1,26 +1,39 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
 import React from 'react';
 import {
-  Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useRouter } from 'next/router';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
+import Container from '@component-library/foundation/Containers/Container';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Link from 'next/link';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
+  EnquireFormConfirmationBreadcrumbsHomePage: Field<string>;
+  EnquireFormConfirmationBreadcrumbsCurrentPage: Field<string>;
+  EnquireFormConfirmationContactBoxHeadline: Field<string>;
+  EnquireFormConfirmationContactBoxPhone0Label: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursLabel: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursDays: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursTime: Field<string>;
+  EnquireFormConfirmationContactBoxPhone0Phone: Field<string>;
+  Text: Field<string>;
   TitleText: Field<string>;
+  SubHeadline: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
@@ -40,49 +53,95 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
+  console.log('enquire thank you', props.fields);
+  const router = useRouter();
+
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
+      <>
+        <Breadcrumbs
+          backCta={{
+            text: 'Consultant Finder',
+            link: '/Finder/Step-Intro',
+          }}
+        >
+          <TextLink>
+            <a href="/">
+              <Icons iconName="iconHome"></Icons>
+              <span className="sr-only">Home</span>
+            </a>
+          </TextLink>
+          <TextLink>
+            <Link href="/Finder/Step-Intro">
+              {props?.fields?.EnquireFormConfirmationBreadcrumbsHomePage
+                ?.value || 'Consultant Finder'}
+            </Link>
+          </TextLink>
+          <span>
+            {props?.fields?.EnquireFormConfirmationBreadcrumbsCurrentPage
+              ?.value || 'Thank you'}
+          </span>
+        </Breadcrumbs>
+        <LiveFormConfirmation>
+          <LiveFormConfirmationMain
+            headline={
+              <>
+                <Text tag="h1" variation="display-4">
+                  {props?.fields?.TitleText?.value ||
+                    'Enquire form confirmation'}
                 </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
+                <Text tag="h2" variation="body-medium-extra-large">
+                  {props?.fields?.SubHeadline?.value ||
+                    'Thank you for taking the time to complete the form.'}
+                </Text>
+              </>
+            }
+            isEnquireForm={true}
+          >
+            <Text tag="div" variation="body-extra-large">
+              <JssRichText field={props?.fields?.Text} />
+            </Text>
+            <Container marginBottom="spacing-6" marginTop="spacing-6">
+              <Button size={'large'} variation={'full-dark'}>
+                <button onClick={() => router.push(`/Finder/Step-Intro`)}>
+                  <span>
+                    {props?.fields?.NextLink?.value?.text || 'Go to Homepage'}
+                  </span>
+                </button>
               </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Container>
+          </LiveFormConfirmationMain>
+          <CFAside>
+            <NeedHelp
+              headline={
+                props?.fields?.EnquireFormConfirmationContactBoxHeadline
+                  ?.value || 'Need help?'
+              }
+              subheadline={
+                props?.fields?.EnquireFormConfirmationContactBoxPhone0Label
+                  ?.value || 'General enquiries'
+              }
+              workingHoursHeadline={
+                props?.fields
+                  ?.EnquireFormConfirmationContactBoxOpeningHoursLabel?.value ||
+                'Opening hours'
+              }
+              workingHours={
+                props?.fields?.EnquireFormConfirmationContactBoxOpeningHoursDays
+                  ?.value || 'Mon – Fri'
+              }
+              workingHoursTime={
+                props?.fields?.EnquireFormConfirmationContactBoxOpeningHoursTime
+                  ?.value || '8am – 6pm'
+              }
+              phoneNumber={
+                props?.fields?.EnquireFormConfirmationContactBoxPhone0Phone
+                  ?.value || '020 3797 7236'
+              }
+            />
+          </CFAside>
+        </LiveFormConfirmation>
+      </>
     );
   }
 
