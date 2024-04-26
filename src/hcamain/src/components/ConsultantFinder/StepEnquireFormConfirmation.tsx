@@ -12,23 +12,27 @@ import { useRouter } from 'next/router';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
-import Link from 'next/link';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
 import Container from '@component-library/foundation/Containers/Container';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Link from 'next/link';
 
 interface Fields {
-  Text: any;
-  IntroText: any;
-  EnquireFormContactBoxHeadline: Field<string>;
-  EnquireFormContactBoxPhone0Label: Field<string>;
-  EnquireFormContactBoxOpeningHoursLabel: Field<string>;
-  EnquireFormContactBoxOpeningHoursDays: Field<string>;
-  EnquireFormContactBoxOpeningHoursTime: Field<string>;
-  EnquireFormContactBoxPhone0Phone: Field<string>;
+  EnquireFormConfirmationBreadcrumbsHomePage: Field<string>;
+  EnquireFormConfirmationBreadcrumbsCurrentPage: Field<string>;
+  EnquireFormConfirmationContactBoxHeadline: Field<string>;
+  EnquireFormConfirmationContactBoxPhone0Label: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursLabel: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursDays: Field<string>;
+  EnquireFormConfirmationContactBoxOpeningHoursTime: Field<string>;
+  EnquireFormConfirmationContactBoxPhone0Phone: Field<string>;
+  Text: Field<string>;
   TitleText: Field<string>;
+  SubHeadline: Field<string>;
   CardImage: ImageField;
   StartLink: LinkField;
   NextLink: LinkField;
@@ -61,9 +65,21 @@ export const Default = (props: StepProps): JSX.Element => {
             link: '/Finder/Step-Intro',
           }}
         >
+          <TextLink>
+            <a href="/">
+              <Icons iconName="iconHome"></Icons>
+              <span className="sr-only">Home</span>
+            </a>
+          </TextLink>
+          <TextLink>
+            <Link href="/Finder/Step-Intro">
+              {props?.fields?.EnquireFormConfirmationBreadcrumbsHomePage
+                ?.value || 'Consultant Finder'}
+            </Link>
+          </TextLink>
           <span>
-            {props?.fields?.EnquireFormBreadcrumbsCurrentPage?.value ||
-              'Thank you'}
+            {props?.fields?.EnquireFormConfirmationBreadcrumbsCurrentPage
+              ?.value || 'Thank you'}
           </span>
         </Breadcrumbs>
         <LiveFormConfirmation>
@@ -71,7 +87,12 @@ export const Default = (props: StepProps): JSX.Element => {
             headline={
               <>
                 <Text tag="h1" variation="display-4">
-                  {props?.fields?.TitleText?.value || ''}
+                  {props?.fields?.TitleText?.value ||
+                    'Enquire form confirmation'}
+                </Text>
+                <Text tag="h2" variation="body-medium-extra-large">
+                  {props?.fields?.SubHeadline?.value ||
+                    'Thank you for taking the time to complete the form.'}
                 </Text>
               </>
             }
@@ -93,28 +114,29 @@ export const Default = (props: StepProps): JSX.Element => {
           <CFAside>
             <NeedHelp
               headline={
-                props?.fields?.EnquireFormContactBoxHeadline?.value ||
-                'Need help?'
+                props?.fields?.EnquireFormConfirmationContactBoxHeadline
+                  ?.value || 'Need help?'
               }
               subheadline={
-                props?.fields?.EnquireFormContactBoxPhone0Label?.value ||
-                'General enquiries'
+                props?.fields?.EnquireFormConfirmationContactBoxPhone0Label
+                  ?.value || 'General enquiries'
               }
               workingHoursHeadline={
-                props?.fields?.EnquireFormContactBoxOpeningHoursLabel?.value ||
+                props?.fields
+                  ?.EnquireFormConfirmationContactBoxOpeningHoursLabel?.value ||
                 'Opening hours'
               }
               workingHours={
-                props?.fields?.EnquireFormContactBoxOpeningHoursDays?.value ||
-                'Mon – Fri'
+                props?.fields?.EnquireFormConfirmationContactBoxOpeningHoursDays
+                  ?.value || 'Mon – Fri'
               }
               workingHoursTime={
-                props?.fields?.EnquireFormContactBoxOpeningHoursTime?.value ||
-                '8am – 6pm'
+                props?.fields?.EnquireFormConfirmationContactBoxOpeningHoursTime
+                  ?.value || '8am – 6pm'
               }
               phoneNumber={
-                props?.fields?.EnquireFormContactBoxPhone0Phone?.value ||
-                '020 3797 7236'
+                props?.fields?.EnquireFormConfirmationContactBoxPhone0Phone
+                  ?.value || '020 3797 7236'
               }
             />
           </CFAside>
