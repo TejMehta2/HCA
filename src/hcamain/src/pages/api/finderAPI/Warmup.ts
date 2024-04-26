@@ -5,7 +5,7 @@ import { parse } from 'node-html-parser';
 
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
@@ -43,7 +43,7 @@ const longRunning = async (notify: Notify) => {
     //console.log('consultants', consultants);
     const root = parse(consultants);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    root.getElementsByTagName('loc').forEach((urlEle: any, idx: number) => {
+    root.getElementsByTagName('loc').forEach((urlEle: any, _idx: number) => {
       const slug = urlEle.text.split('/').pop();
       //if (idx < 5) { // limit to x for testing
       slugs = slugs.concat(slug);
@@ -63,7 +63,7 @@ const longRunning = async (notify: Notify) => {
         const profileResult = await fetch(pageURL, {
           cache: 'no-store',
         });
-        const profile = await profileResult.text();
+        // const profile = await profileResult.text();
         const timeEnd = new Date().getTime();
         if (profileResult && profileResult.ok) {
           notify.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);

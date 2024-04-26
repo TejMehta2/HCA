@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState, useContext, useId } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useForm, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
+import { formatDateDMY } from '@component-library/utility-functions/index';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 
 import {
-  Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -22,14 +21,9 @@ import {
 
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
 import LiveBookingForm from '@component-library/consultant-finder/LiveBookingForm/LiveBookingForm';
-import AppointmentSummary from '@component-library/consultant-finder/AppointmentSummary/AppointmentSummary';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 import Textarea from '@component-library/consultant-finder/CF-forms/Textarea/Textarea';
-import RadioButton from '@component-library/consultant-finder/CF-forms/RadioButton/RadioButton';
 import TextField from '@component-library/consultant-finder/CF-forms/TextField/TextField';
 import SelectField from '@component-library/consultant-finder/CF-forms/SelectField/SelectField';
 import Checkbox from '@component-library/consultant-finder/CF-forms/Checkbox/Checkbox';
@@ -37,9 +31,22 @@ import Container from '@component-library/foundation/Containers/Container';
 import MarketingPreferences from '@component-library/consultant-finder/MarketingPreferences/MarketingPreferences';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
-import Breadcrumbs from 'temp/component-library/site-components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
+import Modals from '@component-library/components/Modals/Modals';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 interface Fields {
+  EnquireFormMarketingPreferencesFieldsEmailLabel: Field<string>;
+  EnquireFormMarketingPreferencesFieldsPhoneLabel: Field<string>;
+  EnquireFormMarketingPreferencesFieldsSmsLabel: Field<string>;
+  EnquireFormMarketingPreferencesFieldsPostLabel: Field<string>;
+  EnquireFormContactBoxHeadline: Field<string>;
+  EnquireFormContactBoxPhone0Label: Field<string>;
+  EnquireFormContactBoxOpeningHoursLabel: Field<string>;
+  EnquireFormContactBoxOpeningHoursDays: Field<string>;
+  EnquireFormContactBoxOpeningHoursTime: Field<string>;
+  EnquireFormContactBoxPhone0Phone: Field<string>;
   BackFromAdvSearchLink: LinkField;
   BackFromFindByConsultantLink: LinkField;
   TitleText: Field<string>;
@@ -75,6 +82,13 @@ interface Fields {
   EnquireFormSectionsHeadlinesReasonVisit: Field<string>;
   EnquireFormReasonVisitPlaceholder: Field<string>;
   EnquireFormMarketingPreferencesHeadline: Field<string>;
+  API_HCA_EnquireBookingForm_BaseURL: Field<string>;
+  API_HCA_EnquireBookingForm_ErrorSubmittingText: Field<string>;
+  EnquireFormBreadcrumbsCurrentPage: Field<string>;
+  EnquireFormInfoTextSubmit: Field<string>;
+  EnquireFormBtnsSubmit: Field<string>;
+  API_HCA_EnquireBookingForm_LoadingMsg: Field<string>;
+  EnquireFormMarketingPreferencesText: Field<string>;
 }
 
 type StepProps = {
@@ -94,14 +108,15 @@ export const Default = (props: StepProps): JSX.Element => {
   console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
   const [insurers, setInsurers] = useState<object[]>([]);
-  const [errorData, setErrorData] = useState(false);
-  const [loadingData, setLoadingData] = useState(true);
+  const [errorData, setErrorData] = useState<boolean>(false);
+  const [loadingData, setLoadingData] = useState<boolean>(true);
   const [consultantName, setConsulantName] = useState('');
   const [practices, setPractices] = useState<object[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const formId = self.crypto.randomUUID();
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [specialty, setTopSpecialty] = useState<string>('');
+  const formId = self?.crypto?.randomUUID() || Date.now().toString();
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const schema = z
     .object({
@@ -183,19 +198,8 @@ export const Default = (props: StepProps): JSX.Element => {
     register,
     control,
     handleSubmit,
-    formState: {
-      errors,
-      // touchedFields,
-      // dirtyFields,
-      isDirty,
-      // isValid,
-      // isSubmitting,
-      // isSubmitSuccessful,
-    },
-    // watch,
-    // getValues,
+    formState: { errors, isDirty },
     setValue,
-    // setError,
     clearErrors,
   } = form;
   console.log('isSubmitting', isSubmitting);
@@ -203,37 +207,29 @@ export const Default = (props: StepProps): JSX.Element => {
   const postData = (data: any) => {
     setIsSubmitting(true);
     const dataToSend = { ...data };
-    dataToSend.dateOfBirthFormatted = data.date;
-    dataToSend.consultantName = 'Andy Goldberg';
-    dataToSend.consultantTopSpecialty = 'Hip Surgery';
+    dataToSend.dateOfBirthFormatted = formatDateDMY(data.date);
+    dataToSend.consultantName = consultantName;
+    dataToSend.consultantTopSpecialty = specialty;
     dataToSend.hiddenFormInstance = formId;
 
     console.log(JSON.stringify(dataToSend, null, 2));
-    const URL = 'https:/api/PostMakeBookingEnquiry';
-
-    const config: any = {
-      method: 'post',
-      url: URL,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: dataToSend,
-    };
+    const URL =
+      props?.fields?.API_HCA_EnquireBookingForm_BaseURL?.value ||
+      'https:/api/formAPI/PostMakeBookingEnquiry';
 
     axios
-      .post(config)
+      .post(URL, dataToSend)
       .then((resp) => {
         console.log(resp);
         setIsSubmitting(false);
-        // setErrorSubmit(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
-        // navigate('/enquireform/thank-you');
+        router.push(`/Finder/Step-Enquire-Form-Confirmation`);
       })
       .catch((error) => {
         console.log(error);
-        setIsSubmitting(true);
-        // setErrorSubmit(true);
+        setIsSubmitting(false);
+        dialogRef?.current?.showModal();
         // console.log("NOT done!");
       });
   };
@@ -241,13 +237,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const onSubmit = (data: any) => {
     console.log('data', data);
     postData(data);
-    // postData(data);
-    // setPatientName(`${data.firstName} ${data.lastName}`);
-    // router.push(`/Finder/Step-Enquire-Form-Confirmation`);
-
-    return new Promise<void>((resolve) => {
-      setTimeout(() => resolve(), 1000);
-    });
   };
 
   const onError = (errors: FieldErrors) => {
@@ -258,7 +247,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
       .then((resp) => {
-        console.log(resp?.data.insurers);
+        console.log(resp?.data);
         setErrorData(false);
         setLoadingData(false);
         setInsurers(resp?.data?.insurers || []);
@@ -266,6 +255,11 @@ export const Default = (props: StepProps): JSX.Element => {
         setConsulantName(
           `${resp?.data?.title} ${resp?.data?.firstName} ${resp?.data?.lastName}`
         );
+        // top specialty
+        const topSpecialty = resp?.data?.keywords?.filter(
+          (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+        );
+        setTopSpecialty(topSpecialty[0]?.name || '');
       })
       .catch((error) => {
         setErrorData(true);
@@ -290,25 +284,59 @@ export const Default = (props: StepProps): JSX.Element => {
       setSlug(slugURL.toString());
       getConsultantData(slugURL.toString());
     }
-    // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || null;
-    setGmcNumber(Number(gmcNumber));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
   if (props.fields) {
     return (
       <>
-        {router.isReady && !loadingData && (
+        {errorData && (
+          <Text tag="p" variation="display-4">
+            {'There was an error, please try again later.'}
+          </Text>
+        )}
+        {router.isReady && !loadingData && !errorData && (
           <>
-            <Breadcrumbs>
-              <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
-              <Link href={`/Finder/StepConsultantProfile/${slug}`}>
-                {consultantName}
-              </Link>
-              <span>Enquire Now</span>
+            <Breadcrumbs
+              backCta={{
+                text: 'Consultant Finder',
+                link: '/Finder/Step-Intro',
+              }}
+            >
+              <TextLink>
+                <a href="/">
+                  <Icons iconName="iconHome"></Icons>
+                  <span className="sr-only">Home</span>
+                </a>
+              </TextLink>
+              <TextLink>
+                <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
+              </TextLink>
+              <TextLink>
+                <Link href={`/Finder/StepConsultantProfile/${slug}`}>
+                  {consultantName}
+                </Link>
+              </TextLink>
+              <span>
+                {props?.fields?.EnquireFormBreadcrumbsCurrentPage?.value ||
+                  'Enquire Now'}
+              </span>
             </Breadcrumbs>
             <LiveBookingForm>
+              <Modals ref={dialogRef}>
+                <Container
+                  marginBottom="spacing-8"
+                  marginTop="spacing-8"
+                  marginLeft="spacing-4"
+                  marginRight="spacing-4"
+                >
+                  <Text tag="p" variation="heading-1">
+                    {props?.fields
+                      ?.API_HCA_EnquireBookingForm_ErrorSubmittingText?.value ||
+                      'Error submitting the form, please retry later'}
+                  </Text>
+                </Container>
+              </Modals>
               {/* debugger for form */}
               {/* https://www.npmjs.com/package/@hookform/devtools */}
               <DevTool control={control} placement="top-right" />
@@ -625,16 +653,15 @@ export const Default = (props: StepProps): JSX.Element => {
                       ?.value
                   }
                   text={
-                    ''
-                    // <JssRichText
-                    //   field={props.fields.LiveBookingFormMarketingPreferencesText}
-                    // />
+                    <JssRichText
+                      field={props?.fields?.EnquireFormMarketingPreferencesText}
+                    />
                   }
                 >
                   <Checkbox
                     label={
                       props?.fields
-                        ?.LiveBookingFormMarketingPreferencesFieldsEmailLabel
+                        ?.EnquireFormMarketingPreferencesFieldsEmailLabel
                         ?.value || 'Email'
                     }
                     name={'email'}
@@ -644,7 +671,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Checkbox
                     label={
                       props?.fields
-                        ?.LiveBookingFormMarketingPreferencesFieldsPhoneLabel
+                        ?.EnquireFormMarketingPreferencesFieldsPhoneLabel
                         ?.value || 'Phone'
                     }
                     name={'phone'}
@@ -654,7 +681,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Checkbox
                     label={
                       props?.fields
-                        ?.LiveBookingFormMarketingPreferencesFieldsSmsLabel
+                        ?.EnquireFormMarketingPreferencesFieldsSmsLabel
                         ?.value || 'SMS'
                     }
                     name={'sms'}
@@ -664,7 +691,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Checkbox
                     label={
                       props?.fields
-                        ?.LiveBookingFormMarketingPreferencesFieldsPostLabel
+                        ?.EnquireFormMarketingPreferencesFieldsPostLabel
                         ?.value || 'Post'
                     }
                     name={'post'}
@@ -694,35 +721,52 @@ export const Default = (props: StepProps): JSX.Element => {
 
                 <Button size={'small'} variation={'full-dark'}>
                   <button disabled={!isDirty || isSubmitting} type="submit">
-                    {isSubmitting ? 'Submitting' : 'Submit'}
+                    {isSubmitting
+                      ? `${
+                          props?.fields?.API_HCA_EnquireBookingForm_LoadingMsg
+                            ?.value || 'Submitting'
+                        }`
+                      : `${
+                          props?.fields?.EnquireFormBtnsSubmit?.value ||
+                          'Submit'
+                        }`}
                   </button>
                 </Button>
+
+                <Container marginBottom="spacing-8" marginTop="spacing-8">
+                  <Text tag="p" variation="body-medium-extra-large">
+                    {`${
+                      props?.fields?.EnquireFormInfoTextSubmit?.value ||
+                      'Once you have submitted your enquiry, you will receive a reply within 1 working day.'
+                    }`}
+                  </Text>
+                </Container>
               </form>
               <CFAside>
                 <NeedHelp
                   headline={
-                    props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
+                    props?.fields?.EnquireFormContactBoxHeadline?.value ||
                     'Need help?'
                   }
                   subheadline={
-                    props?.fields?.LiveBookingFormContactBoxPhone0Label
-                      ?.value || 'General enquiries'
+                    props?.fields?.EnquireFormContactBoxPhone0Label?.value ||
+                    'General enquiries'
                   }
                   workingHoursHeadline={
-                    props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel
+                    props?.fields?.EnquireFormContactBoxOpeningHoursLabel
                       ?.value || 'Opening hours'
                   }
                   workingHours={
-                    props?.fields?.LiveBookingFormContactBoxOpeningHoursDays
+                    props?.fields?.EnquireFormContactBoxOpeningHoursDays
                       ?.value || 'Mon – Fri'
                   }
                   workingHoursTime={
-                    props?.fields?.LiveBookingFormContactBoxOpeningHoursTime
+                    props?.fields?.EnquireFormContactBoxOpeningHoursTime
                       ?.value || '8am – 6pm'
                   }
                   phoneNumber={
-                    props?.fields?.LiveBookingFormContactBoxPhone0Phone
-                      ?.value || '020 3797 7236'
+                    props?.fields?.EnquireFormContactBoxPhone0Phone?.value ||
+                    '020 3797 7236'
                   }
                 />
               </CFAside>

@@ -5,8 +5,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import {
   Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,

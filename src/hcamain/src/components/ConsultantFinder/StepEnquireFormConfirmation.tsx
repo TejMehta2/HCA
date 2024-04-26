@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
 import React from 'react';
 import {
-  Image as JssImage,
-  Link as JssLink,
   RichText as JssRichText,
   ImageField,
   Field,
@@ -18,17 +17,17 @@ import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import LiveFormConfirmationMain from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmationMain';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import LiveFormConfirmation from '@component-library/consultant-finder/LiveFormConfirmation/LiveFormConfirmation';
-import ConfirmationSummary from '@component-library/consultant-finder/ConfirmationSummary/ConfirmationSummary';
-import Container from 'temp/component-library/foundation/Containers/Container';
+import Container from '@component-library/foundation/Containers/Container';
 
 interface Fields {
+  Text: any;
   IntroText: any;
-  LiveBookingFormContactBoxHeadline: Field<string>;
-  LiveBookingFormContactBoxPhone0Label: Field<string>;
-  LiveBookingFormContactBoxOpeningHoursLabel: Field<string>;
-  LiveBookingFormContactBoxOpeningHoursDays: Field<string>;
-  LiveBookingFormContactBoxOpeningHoursTime: Field<string>;
-  LiveBookingFormContactBoxPhone0Phone: Field<string>;
+  EnquireFormContactBoxHeadline: Field<string>;
+  EnquireFormContactBoxPhone0Label: Field<string>;
+  EnquireFormContactBoxOpeningHoursLabel: Field<string>;
+  EnquireFormContactBoxOpeningHoursDays: Field<string>;
+  EnquireFormContactBoxOpeningHoursTime: Field<string>;
+  EnquireFormContactBoxPhone0Phone: Field<string>;
   TitleText: Field<string>;
   CardImage: ImageField;
   StartLink: LinkField;
@@ -71,13 +70,8 @@ export const Default = (props: StepProps): JSX.Element => {
             }
             isEnquireForm={true}
           >
-            <Text tag="p" variation="body-extra-large">
-              {props?.fields?.IntroText?.value ||
-                'A member of our team will get in touch to complete your appointment.'}
-            </Text>
-            <Text tag="p" variation="body-extra-large">
-              {props?.fields?.IntroText?.value ||
-                'If you are looking to explore further, you can return to our homepage.'}
+            <Text tag="div" variation="body-extra-large">
+              <JssRichText field={props?.fields?.Text} />
             </Text>
             <Container marginBottom="spacing-6" marginTop="spacing-6">
               <Button size={'large'} variation={'full-dark'}>
@@ -92,27 +86,27 @@ export const Default = (props: StepProps): JSX.Element => {
           <CFAside>
             <NeedHelp
               headline={
-                props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
+                props?.fields?.EnquireFormContactBoxHeadline?.value ||
                 'Need help?'
               }
               subheadline={
-                props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
+                props?.fields?.EnquireFormContactBoxPhone0Label?.value ||
                 'General enquiries'
               }
               workingHoursHeadline={
-                props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel
-                  ?.value || 'Opening hours'
+                props?.fields?.EnquireFormContactBoxOpeningHoursLabel?.value ||
+                'Opening hours'
               }
               workingHours={
-                props?.fields?.LiveBookingFormContactBoxOpeningHoursDays
-                  ?.value || 'Mon – Fri'
+                props?.fields?.EnquireFormContactBoxOpeningHoursDays?.value ||
+                'Mon – Fri'
               }
               workingHoursTime={
-                props?.fields?.LiveBookingFormContactBoxOpeningHoursTime
-                  ?.value || '8am – 6pm'
+                props?.fields?.EnquireFormContactBoxOpeningHoursTime?.value ||
+                '8am – 6pm'
               }
               phoneNumber={
-                props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
+                props?.fields?.EnquireFormContactBoxPhone0Phone?.value ||
                 '020 3797 7236'
               }
             />
