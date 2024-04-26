@@ -53,7 +53,7 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
-      //don't rewrite lookup api to the integration layer
+/*    MH Add back if IL wildcard is added   //don't rewrite lookup api to the integration layer
       {
         source: '/api/lookupAPI/:app*',
         destination: '/api/lookupAPI/:app*',
@@ -67,7 +67,7 @@ const nextConfig = {
       {
         source: '/api/locationAPI/:app*',
         destination: '/api/locationAPI/:app*',
-      },
+      }, */
       // rewrite webhooks to integration layer proxy API route
       {
         source: '/webhooks/sitecore/:path*',

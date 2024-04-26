@@ -33,6 +33,7 @@ export interface IHCAConfig {
   aPI_HCA_Holidays_UtilizesLegacy: boolean;
 
   //HCA API - CMAs
+  aPI_HCA_CMAs_UseDoctifyData: boolean;
   aPI_HCA_CMAs_BaseURL: string;
   aPI_HCA_CMAs_NoResultsMsg: string;
   aPI_HCA_CMAs_LoadingMsg: string;
@@ -90,6 +91,7 @@ export async function getHCAConfig(): Promise<IHCAConfig> {
     aPI_HCA_Holidays_UtilizesLegacy: true,
 
     //HCA API - CMAs
+    aPI_HCA_CMAs_UseDoctifyData: false,
     aPI_HCA_CMAs_BaseURL: '',
     aPI_HCA_CMAs_NoResultsMsg: '',
     aPI_HCA_CMAs_LoadingMsg: '',

@@ -9,7 +9,7 @@ const GetCMAData = async (
   const {
     query: { cmaId: cmaId },
   } = req;
-  console.log('cmaId', cmaId);
+  //console.log('cmaId', cmaId);
   const ret = await getCMA(cmaId as string);
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(ret);

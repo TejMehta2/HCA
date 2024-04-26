@@ -255,6 +255,7 @@ export async function getCMA(id: string): Promise<any> {
   ) {
     const cmaURL = `${HCAAPIConfig.aPI_HCA_CMAs_BaseURL}?key=${id}`;
 
+    //console.log('cmaURL', cmaURL);
     try {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
