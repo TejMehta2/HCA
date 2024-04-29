@@ -79,7 +79,7 @@
 }
 
 .right {
-  @include media(screen-m) {
+  @include media(screen-l) {
     transform: translate(100%, 0);
 
     & > div:first-child {
