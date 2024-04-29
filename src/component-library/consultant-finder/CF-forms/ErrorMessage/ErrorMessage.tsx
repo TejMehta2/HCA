@@ -9,8 +9,12 @@ const ErrorMessage = (props: ErrorMessageProps): JSX.Element => {
 
   return (
     <div className={styles['error-message']}>
-      <Icons iconName="iconWarning" />
-      <Text variation="body-medium-medium">{errorMessage}</Text>
+      <div>
+        <Icons iconName="iconWarning" />
+      </div>
+      <div>
+        <Text variation="body-medium-medium">{errorMessage}</Text>
+      </div>
     </div>
   );
 };

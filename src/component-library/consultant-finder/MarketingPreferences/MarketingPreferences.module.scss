@@ -1,3 +1,18 @@
-.bold {
-  font-weight: bold;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cf-marketing-preferences {
+  color: $navy-blue-100;
+  border-radius: $radius-medium;
+  padding: $spacing-6;
+  background-color: $fern-10;
+  margin: $spacing-6 0;
+
+  a {
+    color: $navy-blue-100;
+  }
+
+  .text {
+    margin: $spacing-4 0;
+  }
 }

@@ -1,0 +1,29 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.confirmation-page-main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 0;
+
+  @include media(screen-l) {
+    margin-right: $spacing-13;
+  }
+
+  .headline {
+    margin-bottom: $spacing-8;
+
+    h1 {
+      margin-bottom: $spacing-4;
+    }
+  }
+
+  .info {
+    margin-bottom: $spacing-8;
+  }
+
+  .info-title {
+    margin-bottom: $spacing-2;
+  }
+}

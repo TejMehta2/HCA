@@ -46,6 +46,8 @@ interface ConsultantFinderContextType {
   setConsultantName: React.Dispatch<React.SetStateAction<string>>;
   consultantMainSpecialty: string;
   setConsultantMainSpecialty: React.Dispatch<React.SetStateAction<string>>;
+  patientName: string;
+  setPatientName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -97,6 +99,8 @@ export const ConsultantFinderContext =
     setConsultantName: () => {},
     consultantMainSpecialty: '',
     setConsultantMainSpecialty: () => {},
+    patientName: '',
+    setPatientName: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -130,6 +134,7 @@ export const ConsultantFinderContextProvider = ({
   const [consultantName, setConsultantName] = useState<string>('');
   const [consultantMainSpecialty, setConsultantMainSpecialty] =
     useState<string>('');
+  const [patientName, setPatientName] = useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -180,6 +185,8 @@ export const ConsultantFinderContextProvider = ({
         setConsultantName,
         consultantMainSpecialty,
         setConsultantMainSpecialty,
+        patientName,
+        setPatientName,
       }}
     >
       {children}

@@ -139,7 +139,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               size="large"
               contentVariation="full-width"
             >
-              <Link href="/test">
+              <Link href={`/Finder/Step-Enquire-Form?slug=${props.slug}`}>
                 <span>{props.enquireNowCTAText}</span>
               </Link>
             </Button>
