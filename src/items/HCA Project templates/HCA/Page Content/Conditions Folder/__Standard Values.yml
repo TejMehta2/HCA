@@ -1,0 +1,33 @@
+﻿---
+ID: "820cbe4a-b9cc-4ed4-bdf4-829412950d2d"
+Parent: "2a37c482-e853-42b9-a5ee-5d17b1acc788"
+Template: "2a37c482-e853-42b9-a5ee-5d17b1acc788"
+Path: /sitecore/templates/Project/HCA/Page Content/Conditions Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {8D12AF24-0A73-4D45-90DE-A8E470E3C3F5}
+    {2A37C482-E853-42B9-A5EE-5D17B1ACC788}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8efdf650-0a16-4df4-9530-a5b1a88bcb06"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240425T200918Z
