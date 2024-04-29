@@ -1,3 +1,4 @@
+'use server';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -24,7 +25,7 @@ async function asyncForEach(
   }
 }
 
-const longRunning = async (notify: Notify) => {
+const longRunning = async (incommingHost: string, notify: Notify) => {
   // note we are running at the edge with no access to Sitecore GraphQL for config
 
   notify.log('Reading sitemap for active consultant slugs...');
@@ -45,14 +46,15 @@ const longRunning = async (notify: Notify) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root.getElementsByTagName('loc').forEach((urlEle: any, _idx: number) => {
       const slug = urlEle.text.split('/').pop();
-      //if (idx < 5) { // limit to x for testing
+      //if (idx < 5) {
+      // limit to x for testing
       slugs = slugs.concat(slug);
       //}
     });
     notify.log(`Got ${slugs.length} active consultant slugs...`);
 
     await asyncForEach(slugs, async (slug, idx) => {
-      const pageURL = `https://hca-digital-dev-hca-main.vercel.app/Finder/StepConsultantProfile/${slug}`;
+      const pageURL = `https://${incommingHost}/Finder/StepConsultantProfile/${slug}`;
       notify.log(
         `loading ${slug} page ${pageURL}, Done ${Math.trunc(
           (idx / slugs.length) * 100
@@ -93,7 +95,7 @@ const longRunning = async (notify: Notify) => {
 
 // warm up by loading each consultant profile page
 export default async function Warmup(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   _res: NextApiResponse
 ) {
   const responseStream = new TransformStream();
@@ -101,8 +103,21 @@ export default async function Warmup(
   const encoder = new TextEncoder();
   let closed = false;
 
+  // for some reason not getting access directly from req.headers - seems like a known issue in Next13
+  const flatHeaders = Object.fromEntries(
+    req.headers as unknown as Iterable<readonly [PropertyKey, any]>
+  );
+  let requestingHost = flatHeaders
+    ? flatHeaders['x-forwarded-host'] ?? flatHeaders['host']
+    : 'hcahealthcare.co.uk';
+  if (requestingHost == 'www.hcacloud.localhost') {
+    // can't introspect on local as running in Docker
+    requestingHost = 'hca-digital-dev-hca-main.vercel.app'; // use dev instead
+  }
+  console.log('host', requestingHost);
+
   // Invoke long running process
-  longRunning({
+  longRunning(requestingHost, {
     log: (msg: string) => writer.write(encoder.encode('data: ' + msg + '\n\n')),
     complete: (obj: unknown) => {
       writer.write(encoder.encode('data: ' + JSON.stringify(obj) + '\n\n'));
