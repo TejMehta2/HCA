@@ -5,6 +5,8 @@ import {
   RichText as JssRichText,
   Text as JssText,
   Image as JssImage,
+  Link as JssLink,
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -16,11 +18,18 @@ import { CardBlockProps } from '@component-library/site-components/CardBlock/Car
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 interface PagesFields {
-  title?: Field<string>;
-  text?: Field<string>;
-  image?: ImageField;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
   url?: { path?: string };
 }
+
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
 
 interface Fields {
   data?: {
@@ -30,6 +39,10 @@ interface Fields {
       pages?: {
         PagesList?: PagesFields[];
       };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
     };
   };
 }
@@ -63,6 +76,8 @@ interface WithImageProps extends ContentCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
@@ -70,6 +85,23 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const link =
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+      !isExperienceEditor ? (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+          <JssRichText
+            tag="span"
+            field={{
+              value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+            }}
+          />
+        </JssLink>
+      ) : (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
+      )
+    ) : undefined;
 
   return (
     <CardBlock
@@ -81,7 +113,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           paddingSize="small"
           title={
             <Text
-              variation={props.params?.HeadingSize || 'heading-1'}
+              variation={props.params?.HeadingSize || 'display-3'}
               tag={props.params?.HeadingTag || 'h2'}
             >
               <JssText
@@ -92,23 +124,43 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           }
         />
       }
+      cta={link}
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
           <CardContent
             key={index}
-            image={showImage ? <JssImage field={card.image} /> : undefined}
+            image={
+              showImage ? (
+                card.abstractImage?.jsonValue.value?.src ? (
+                  <JssImage
+                    field={card.abstractImage.jsonValue}
+                    editable={false}
+                  />
+                ) : (
+                  <JssImage field={card.image?.jsonValue} editable={false} />
+                )
+              ) : undefined
+            }
             title={
               <Text
                 tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
                 variation="heading-1"
               >
-                <JssText field={card.title} />
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
+                ) : (
+                  <JssText field={card.title} />
+                )}
               </Text>
             }
             bodyCopy={
               <Text tag="p" variation="body-medium">
-                <JssRichText tag="span" field={card.text} />
+                {card.abstractText?.value ? (
+                  <JssRichText tag="span" field={card.abstractText} />
+                ) : (
+                  <JssRichText tag="span" field={card.text} />
+                )}
               </Text>
             }
             link={

@@ -1,0 +1,11 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cf-aside {
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
+    min-width: px-to-rem(300);
+  }
+}

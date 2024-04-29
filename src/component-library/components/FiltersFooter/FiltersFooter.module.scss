@@ -1,0 +1,13 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-3 $spacing-5;
+  border-top: 1px solid $navy-blue-9;
+  position: sticky;
+  bottom: $spacing-3;
+  background-color: $white;
+}

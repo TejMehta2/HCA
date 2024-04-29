@@ -9,6 +9,7 @@
   @include responsive-grid;
   @include responsive-container;
 
+  row-gap: 0;
   padding-bottom: $spacing-13;
 
   .side-by-side & {

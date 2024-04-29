@@ -4,15 +4,15 @@ import { useDebouncedCallback } from 'use-debounce';
 type Breakpoint = 'screen-s' | 'screen-m' | 'screen-l' | 'screen-xl';
 
 const defaultBreakpoints = new Map<Breakpoint, number>([
-  ['screen-s', 0],
-  ['screen-m', 600],
-  ['screen-l', 1135],
   ['screen-xl', 1440],
+  ['screen-l', 1135],
+  ['screen-m', 600],
+  ['screen-s', 0],
 ]);
 
 const useBreakpoints = (breakpoints = defaultBreakpoints) => {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>('screen-s');
-  const entries = Array.from(breakpoints.entries()).toReversed();
+  const entries = Array.from(breakpoints.entries());
 
   const handleResize = useDebouncedCallback(() => {
     const newBreakpoint = entries?.find(([, value]) => {

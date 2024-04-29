@@ -1,0 +1,34 @@
+﻿---
+ID: "fa8beebd-b4fd-40f7-9829-0476a39079f0"
+Parent: "7f1d310b-a8f1-4763-ac29-75bdde316335"
+Template: "7f1d310b-a8f1-4763-ac29-75bdde316335"
+Path: /sitecore/templates/Project/HCA/Page Content/Search Suggestion Template/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240418T071339Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "612e35f9-2c59-4aa3-8a0f-cb132fc6376b"
+      Hint: Icon
+      Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "50acf955-5baa-4623-aea9-bf908ec9fc40"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240418T093822Z

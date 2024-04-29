@@ -95,7 +95,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       header={
         <Text
           tag={props.params?.HeadingTag || 'h4'}
-          variation={props.params?.HeadingSize || 'subheading-2'}
+          variation={props.params?.HeadingSize || 'display-2'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>

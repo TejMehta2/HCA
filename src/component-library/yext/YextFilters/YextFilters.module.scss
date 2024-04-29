@@ -1,0 +1,67 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.label {
+  display: flex;
+  color: var(--text);
+
+  @include apply-body-bold-extra-large;
+
+  @include media(screen-l) {
+    @include apply-body-medium-extra-large;
+  }
+}
+
+.filters {
+  fieldset {
+    display: flex;
+  }
+}
+
+.mobile {
+  display: none;
+
+  @include media(screen-l, max) {
+    display: flex;
+  }
+
+  .label {
+    display: flex;
+    justify-content: center;
+    padding: px-to-rem(23) 0;
+    border-bottom: $navy-blue-30 1px solid;
+    margin-bottom: px-to-rem(40);
+  }
+
+  .filters {
+    padding: 0 px-to-rem(16);
+    height: calc(100% - px-to-rem(83));
+    overflow: auto;
+    @include scrollbar;
+  }
+
+  fieldset {
+    flex-direction: column;
+    gap: px-to-rem(12) 0;
+    padding: $spacing-6 0;
+  }
+}
+
+.desktop {
+  display: none;
+
+  @include media(screen-l) {
+    display: flex;
+  }
+
+  align-items: center;
+  gap: 0 $spacing-6;
+
+  fieldset {
+    gap: $spacing-6;
+  }
+}
+
+.filters-title {
+  @include apply-body-bold-extra-large;
+}

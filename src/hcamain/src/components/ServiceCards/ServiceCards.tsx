@@ -4,7 +4,7 @@ import {
   LinkField,
   RichText as JssRichText,
   Text as JssText,
-  ImageFieldValue,
+  ImageField,
   Image as JssImage,
   Link as JssLink,
   useSitecoreContext,
@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
   fields?: {
@@ -24,9 +25,12 @@ type HCAIconFields = {
 
 type ServiceFields = {
   fields?: {
+    AbstractTitle?: Field<string>;
+    AbstractText?: Field<string>;
+    AbstractImage?: ImageField;
     Title?: Field<string>;
     Description?: Field<string>;
-    Image?: ImageFieldValue;
+    Image?: ImageField;
   };
 
   url?: string;
@@ -38,7 +42,7 @@ interface Fields {
   Title?: Field<string>;
   Description?: Field<string>;
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTALink: LinkField;
   CTACardText?: Field<string>;
   Services?: ServiceFields[];
 }
@@ -96,30 +100,23 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       bodyText={<JssRichText field={props.fields?.Description} />}
       cta={
-        props.fields?.CTALink && (
-          <JssLink field={props.fields?.CTALink}>
-            {isExperienceEditor ? (
-              <></>
-            ) : (
-              <>
-                {props?.fields?.CTAIcon && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                    }}
-                  />
-                )}
-                {props?.fields?.CTALink?.value?.text && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTALink?.value?.text,
-                    }}
-                  ></span>
-                )}
-              </>
-            )}
-          </JssLink>
+        isExperienceEditor ? (
+          <JssLink field={props.fields?.CTALink}></JssLink>
+        ) : (
+          props.fields?.CTALink && (
+            <JssLink field={props.fields?.CTALink.value}>
+              <SitecoreSvg>
+                {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+              </SitecoreSvg>
+              {props?.fields?.CTALink?.value?.text && (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.fields?.CTALink?.value?.text,
+                  }}
+                ></span>
+              )}
+            </JssLink>
+          )
         )
       }
     >
@@ -129,9 +126,20 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
             key={index}
           >
-            <JssImage field={service?.fields?.Image} editable={false} />
+            {service.fields?.AbstractImage?.value?.src ? (
+              <JssImage
+                field={service?.fields?.AbstractImage}
+                editable={false}
+              />
+            ) : (
+              <JssImage field={service?.fields?.Image} editable={false} />
+            )}
             <Text tag="div" variation="display-6">
-              <JssText field={service?.fields?.Title} editable={false} />
+              {service.fields?.AbstractTitle?.value ? (
+                <JssText field={service?.fields?.AbstractTitle} />
+              ) : (
+                <JssText field={service?.fields?.Title} />
+              )}
             </Text>
           </CardService>
         ))}

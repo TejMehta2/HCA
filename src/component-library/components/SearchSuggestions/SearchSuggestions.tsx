@@ -5,7 +5,7 @@ import Icons from '../../foundation/Icons/Icons';
 import { capitalizeFirstLetter } from '../../utility-functions';
 
 const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
-  const { suggestions, currentValue, setValue, submitOnSelection } = props;
+  const { suggestions, currentValue, setValue } = props;
   if (!suggestions?.length) return <></>;
   return (
     <ul
@@ -14,12 +14,16 @@ const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
       aria-label="suggestions"
     >
       {suggestions.map((suggestion, index) => (
-        <li key={index}>
+        <li key={`${suggestion}${index}`}>
           <button
             className={styles.suggestion}
             role={'option'}
-            onClick={() => setValue(suggestion)}
-            type={submitOnSelection ? 'submit' : 'button'}
+            onClick={(event) => {
+              const target = event.target as HTMLButtonElement;
+              target.blur();
+              setValue(suggestion);
+            }}
+            type={'submit'}
             aria-selected={currentValue === suggestion}
           >
             <Icons iconName={'iconSearch'} />

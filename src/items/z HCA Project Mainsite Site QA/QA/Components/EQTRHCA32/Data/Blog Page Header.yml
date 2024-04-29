@@ -14,6 +14,9 @@ Languages:
     - ID: "16514838-f543-4c64-8da2-3a99f94fb5bf"
       Hint: Heading
       Value: Our HCA blog
+    - ID: "16809488-0f7d-4b5e-9ab5-ed6805194fa7"
+      Hint: SearchResultsText
+      Value: "{{quantity}} articles"
     - ID: "259ad86c-22e0-48ca-b39d-bd11e184fe5c"
       Hint: FilterOptionsIcon
       Value: "{8E17A122-A9C9-4864-93D2-F9AB31B2D532}"
@@ -37,9 +40,12 @@ Languages:
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
       Value: Search services, treatments, conditions...
+    - ID: "874520c1-dbc1-41cf-a141-d4383d64d0bd"
+      Hint: SearchResultsTextWithInput
+      Value: "{{quantity}} articles including {{input}}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c2cf8d9b-eb56-4b46-aa1c-5591bfa3a086"
+      Value: "9df7959a-8f63-4d32-bd55-290039e61531"
     - ID: "94e928c6-4dfd-49c7-b02f-755e5d8f20c7"
       Hint: SortOptions
       Value: |
@@ -67,7 +73,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240326T090316Z
+      Value: 20240419T133729Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

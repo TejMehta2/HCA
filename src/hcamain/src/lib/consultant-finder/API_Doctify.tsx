@@ -37,6 +37,7 @@ export async function getSpecialistProfileData(
               docitfyData?.practices[practice]?.slug
             );
             docitfyData.practices[practice]['facilityURL'] = facilityURL;
+            //console.log('facilityURL', facilityURL);
           } catch (e) {
             //HCA practice call threw
             console.warn(
@@ -74,6 +75,32 @@ export async function getSpecialistProfileData(
             );
           }
         }
+
+        // custom fields
+        if (docitfyData.customFields) {
+          if (docitfyData.customFields.cmaHtml) {
+            const hcaConfig = await getHCAConfig();
+            // are we going to change the CMA link to use the Doctify CMA profile (aPI_HCA_CMAs_UseDoctifyData)
+            // or keep the legacy Sitecore GUID url?
+            // legacy  requires CMA look up stored in Excel in the Media library
+            if (hcaConfig.aPI_HCA_CMAs_UseDoctifyData) {
+              const replaceCMA = `/Finder/CMADisclosures/${slug}?CmaContentId=`;
+              if (docitfyData.about) {
+                // insert the slug as a frag in the CMA link - NextJS style
+                docitfyData.about = (docitfyData.about as string).replace(
+                  '/cma-disclosure?CmaContentId=',
+                  replaceCMA
+                );
+              }
+              if (docitfyData.customFields.about) {
+                // insert the slug as a frag in the CMA link - NextJS style
+                docitfyData.customFields.about = (
+                  docitfyData.customFields.about as string
+                ).replace('/cma-disclosure?CmaContentId=', replaceCMA);
+              }
+            }
+          }
+        }
       }
     } else {
       //docitfy call failed
@@ -106,9 +133,11 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 export async function getFacilitiesData(serviceURL?: string): Promise<any> {
   const HCAAPIConfig = !serviceURL ? await getHCAConfig() : null;
 
-  const requestURL = `${
-    serviceURL ?? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_BaseURL
-  }`;
+  const facilitiesURL = HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_UtilizesLegacy
+    ? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_BaseURL;
+  const requestURL = `${serviceURL ?? facilitiesURL}`;
+
   let facilitiesData: any = '';
   try {
     // need to cache these requests so we don't make hundreds of them

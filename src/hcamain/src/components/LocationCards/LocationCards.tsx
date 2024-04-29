@@ -58,7 +58,21 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
     props?.fields?.data?.item?.locations?.PagesList.length
   ) {
     cards = props?.fields?.data?.item?.locations?.PagesList.map(
-      ({ title, street, postCode, city, image, url, getDirections }, index) => (
+      (
+        {
+          abstractTitle,
+          title,
+          addressLine1,
+          addressLine2,
+          postCode,
+          city,
+          abstractImage,
+          image,
+          url,
+          getDirections,
+        },
+        index
+      ) => (
         <CardMap
           key={index}
           title={
@@ -66,14 +80,24 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               variation="heading-1"
               tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
             >
-              <JssText field={title} />
+              {abstractTitle?.value ? (
+                <JssText field={abstractTitle} />
+              ) : (
+                <JssText field={title} />
+              )}
             </Text>
           }
           address={
             <>
-              {street?.value && (
+              {addressLine1?.value && (
                 <Text variation={'body-large'} tag="span">
-                  <JssText field={street} />
+                  <JssText field={addressLine1} />
+                  &nbsp;
+                </Text>
+              )}
+              {addressLine2?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={addressLine2} />
                   &nbsp;
                 </Text>
               )}
@@ -90,7 +114,13 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
               )}
             </>
           }
-          image={<JssImage field={image?.jsonValue} />}
+          image={
+            abstractImage?.jsonValue?.value?.src ? (
+              <JssImage field={abstractImage?.jsonValue} editable={false} />
+            ) : (
+              <JssImage field={image?.jsonValue} editable={false} />
+            )
+          }
           ctas={{
             button1: (
               <a href={url.path}>
@@ -186,7 +216,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
           paddingSize="small"
           title={
             <Text
-              variation={props.params?.HeadingSize || 'heading-1'}
+              variation={props.params?.HeadingSize || 'display-5'}
               tag={props.params?.HeadingTag || 'h2'}
             >
               <JssTextWithEntityName

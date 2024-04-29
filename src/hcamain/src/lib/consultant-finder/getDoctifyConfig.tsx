@@ -1,7 +1,7 @@
 import { getItemFromGraphQL } from './getItemFromGraphQL';
 
 //Doctify APIs
-interface IDoctifyConfig {
+export interface IDoctifyConfig {
   //Autocomplete
   aPI_Autocomplete_BaseURL: string;
   aPI_Autocomplete_Limit: string;

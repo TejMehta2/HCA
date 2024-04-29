@@ -1,18 +1,20 @@
 import { useSearchParams, usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
-import { FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useRef } from 'react';
 import useSWR from 'swr';
+import { useDebouncedCallback } from 'use-debounce';
 
-interface useSearchFormArgs<T> {
+interface useSearchFormArgs<ResponseT> {
   baseUrl: string;
   baselineParams?: [string, string][];
-  fallbackData?: T;
+  fallbackData?: ResponseT;
   searchPath?: string;
   autocompletePath?: string;
   baselineAutocompleteParams?: [string, string][];
   autoCompleteSearchParamName?: string;
   redirectUrl?: string;
-  searchFieldName?: string;
+  inputFieldName?: string;
+  searchOnChange?: boolean;
 }
 const useSearchForm = <ResponseT, AutocompleteResponseT>(
   args: useSearchFormArgs<ResponseT>
@@ -26,44 +28,33 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     autocompletePath = '/autocomplete',
     baselineAutocompleteParams = [],
     autoCompleteSearchParamName = 'input',
-    searchFieldName = 'input',
+    inputFieldName = 'input',
+    searchOnChange = true,
   } = args;
+  const ref = useRef<HTMLFormElement>(null);
   const searchParams = useSearchParams(); // dynamic reference to page URL query params
   const router = useRouter();
   const pathname = usePathname();
+
   const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
-  const paramsMap = new Map(combinedParams); // Express as Map to make keys unique
-  const params = [...paramsMap.entries()].map(
-    (entry) => `${entry[0]}=${entry[1]}`
-  ); // Compute as query strings
-  const query = `?${params.join('&')}`;
-  const url = `${baseUrl}${searchPath}${query}`; // compose API url
 
   const options = {
     keepPreviousData: true, // Never show nothing
     revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
   };
 
-  const { data, error, isLoading } = useSWR<ResponseT>(
-    url,
-    (url: string) => fetch(url).then((res) => res.json()),
-    {
-      ...options,
-      fallbackData,
-      keepPreviousData: true,
-    }
-  );
-
-  const input = searchParams.get(searchFieldName) || '';
+  const input = searchParams.get(inputFieldName) || '';
+  const autoComplete = searchParams.get('autocomplete') || '';
   const autoCompleteCombinedParams: [string, string][] = [
     ...baselineAutocompleteParams,
-    [autoCompleteSearchParamName, input],
+    [autoCompleteSearchParamName, autoComplete || input],
   ];
   const autoCompleteParamsMap = new Map(autoCompleteCombinedParams); // Express as Map to make keys unique
   const autoCompleteParams = [...autoCompleteParamsMap.entries()].map(
-    (entry) => `${entry[0]}=${entry[1]}`
+    (entry) => `${entry[0]}=${encodeURIComponent(entry[1])}`
   );
   const autoCompleteQuery = `?${autoCompleteParams.join('&')}`;
+
   const autocompleteUrl = `${baseUrl}${autocompletePath}${autoCompleteQuery}`;
 
   const {
@@ -76,18 +67,75 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     options
   );
 
+  const paramsMap = new Map(combinedParams); // Express as Map to make keys unique
+  paramsMap.delete('autocomplete');
+  const params = [...paramsMap.entries()].map(
+    (entry) => `${entry[0]}=${encodeURIComponent(entry[1])}` // encode to accommodate query breaking symbols e.g. &, = in values
+  ); // Compute as query strings
+  const query = `?${params.join('&')}`;
+  const url = `${baseUrl}${searchPath}${query}`; // compose API url
+
+  const { data, error, isLoading } = useSWR<ResponseT>(
+    url,
+    (url: string) => fetch(url).then((res) => res.json()),
+    {
+      ...options,
+      fallbackData,
+      keepPreviousData: true,
+    }
+  );
+
   // Update existing query params, to be read by useSwr hook
-  const handleChangeEvent = (event: FormEvent<HTMLFormElement>) => {
-    const data = new FormData(event.currentTarget);
+  const sendFormDataToPageQuery = (
+    paramsCallback?: (params: URLSearchParams) => URLSearchParams
+  ) => {
+    if (!ref.current) return;
+    const data = new FormData(ref.current);
     const params = new URLSearchParams([...data.entries()] as string[][]);
-    const url = `${pathname}?${params}`;
+
+    // Reset limit/offset, if results length likely to change e.g. via input change
+    const newInput = params.get(inputFieldName);
+    if (newInput !== input) {
+      const defaultOffset = new Map(baselineParams).get('offset') as string;
+      params.set('offset', defaultOffset);
+      const defaultLimit = new Map(baselineParams).get('limit') as string;
+      params.set('limit', defaultLimit);
+    }
+
+    const updatedParams = paramsCallback?.(params) || params;
+    const url = `${pathname}?${updatedParams}`;
     router.replace(url, undefined, { shallow: true });
   };
+  const handleChange = useDebouncedCallback(sendFormDataToPageQuery, 500);
+
   // Handlers to spread into a form element e.g. <form {...formhandlers} />
   const formHandlers = {
-    onChange: (event: FormEvent<HTMLFormElement>) => {
+    onChange: (event: ChangeEvent<HTMLFormElement>) => {
       if (isLoading) return;
-      handleChangeEvent(event);
+      if (searchOnChange) {
+        handleChange();
+      } else {
+        // filter out input and pass it to autocomplete instead
+        const target = event.target as unknown as HTMLInputElement;
+        const name = target.name;
+        if (name === inputFieldName) {
+          handleChange((params) => {
+            params.set('autocomplete', params.get(inputFieldName) || '');
+            params.delete('input');
+
+            const defaultOffset = new Map(baselineParams).get(
+              'offset'
+            ) as string;
+            params.set('offset', defaultOffset);
+            const defaultLimit = new Map(baselineParams).get('limit') as string;
+            params.set('limit', defaultLimit);
+
+            return params;
+          });
+        } else {
+          handleChange();
+        }
+      }
     },
     onReset: (event: FormEvent<HTMLFormElement>) => {
       console.log(event);
@@ -95,10 +143,13 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     onSubmit: (event: FormEvent<HTMLFormElement>) => {
       if (!redirectUrl) {
         event.preventDefault(); // prevent page refresh if user submits via "enter" key
-        handleChangeEvent(event);
+        handleChange((params) => {
+          return params;
+        });
       }
     },
     action: `${redirectUrl}${query}`,
+    ref: ref,
   };
 
   return {

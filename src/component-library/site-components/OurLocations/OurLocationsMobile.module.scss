@@ -15,21 +15,39 @@
 }
 
 .header {
+  padding-top: var(--theme-collapse-padding-top, $spacing-8);
   padding-bottom: $spacing-8;
   position: relative;
   transition: var(--transition);
+  background-color: var(--background);
 
   > * {
     @include responsive-container;
+
+    transition: var(--transition);
   }
 
+  z-index: 1;
+
   &.above {
-    transform: translateY(-20%);
+    > * {
+      transform: translateY(-20%);
+    }
+
     opacity: 0;
   }
+
+  mask-image: linear-gradient(
+    180deg,
+    black 0%,
+    black 5%,
+    black calc(100% - #{$spacing-6}),
+    transparent 100%
+  );
 }
 
 .location {
+  z-index: 0;
   height: 100vh;
   position: relative;
   overflow: hidden;

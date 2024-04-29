@@ -53,20 +53,35 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
-      // rewrite webhooks
+/*    MH Add back if IL wildcard is added   //don't rewrite lookup api to the integration layer
+      {
+        source: '/api/lookupAPI/:app*',
+        destination: '/api/lookupAPI/:app*',
+      },
+      //don't rewrite forms proxy api to the integration layer
+      {
+        source: '/api/formAPI/:app*',
+        destination: '/api/formAPI/:app*',
+      },
+      //don't rewrite location proxy api to the integration layer
+      {
+        source: '/api/locationAPI/:app*',
+        destination: '/api/locationAPI/:app*',
+      }, */
+      // rewrite webhooks to integration layer proxy API route
       {
         source: '/webhooks/sitecore/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/webhooks/sitecore/:path*`,
+        destination: `/api/api-layer/webhooks/sitecore/:path*`,
       },
-      // rewrite forms
+      // rewrite forms to integration layer proxy API route
       {
         source: '/api/sitecore/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/api/sitecore/:path*`,
+        destination: `/api/api-layer/api/sitecore/:path*`,
       },
-      // rewrite mail
+      // rewrite mail to integration layer proxy API route
       {
         source: '/referrer/mail/:path*',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/referrer/mail/:path*`,
+        destination: `/api/api-layer/referrer/mail/:path*`,
       },
     ];
   },

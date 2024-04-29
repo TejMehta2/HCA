@@ -4,9 +4,12 @@ Parent: "d8b5af3e-9485-4537-a142-cbbd2e229867"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Project/HCA/Business/Base/_treatmentsSelector/Services/Treatments
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Treatment Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: TreelistEx
+  Value: Multilist with Search
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -28,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fe490957-6c5d-4c59-acac-1cbd43204036"
+      Value: "765799be-4887-4a60-b55c-156112a54184"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240118T220812Z
+      Value: 20240422T121843Z

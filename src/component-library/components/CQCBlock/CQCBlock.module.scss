@@ -101,6 +101,10 @@
   display: flex;
   align-items: center;
 
+  &.wrapper {
+    justify-content: center;
+  }
+
   .icon {
     padding-left: px-to-rem(8);
   }

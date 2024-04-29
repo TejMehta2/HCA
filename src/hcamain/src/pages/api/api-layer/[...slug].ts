@@ -11,17 +11,21 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const requestUrl = req.url as string;
+    const { method = 'GET', url = '', body } = req;
     const remoteRequestUrl = new URL(
-      requestUrl.split('api-layer')[1],
+      url.replace('/api/api-layer', ''),
       process.env.INTEGRATION_LAYER_URL
     );
-    const response = await fetch(remoteRequestUrl.href); // fetch from CMS server
+    const response = await fetch(remoteRequestUrl.href, {
+      method,
+      body: method === 'GET' ? undefined : JSON.stringify(body),
+    }); // fetch from CMS server
+
     if (!response.ok || !response.body)
       throw `unexpected response ${response.statusText} at ${remoteRequestUrl} (${req.url})`;
     await pipeline(response.body, res);
   } catch (err) {
     console.log(err); // log to server
-    return res.status(500).send('File unavailable, please try again later.');
+    return res.status(500).send(err);
   }
 }

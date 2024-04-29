@@ -5,7 +5,7 @@ import {
   Field,
   Link as JssLink,
   LinkField,
-  ImageFieldValue,
+  ImageField,
   RichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -14,15 +14,19 @@ import Text from '@component-library/foundation/Text/Text';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
 };
 
 interface PagesFields {
-  title?: Field<string>;
-  text?: Field<string>;
-  image?: ImageFieldValue;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
   url?: { path?: string };
 }
 
@@ -72,6 +76,9 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
       <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+        <SitecoreSvg>
+          {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+        </SitecoreSvg>
         <RichText
           tag="span"
           field={{
@@ -109,8 +116,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         <CardContent
           key={index}
           image={
-            cards?.image?.src && showImage ? (
-              <JssImage field={cards?.image} />
+            showImage ? (
+              cards.abstractImage?.jsonValue.value?.src ? (
+                <JssImage
+                  field={cards.abstractImage.jsonValue}
+                  editable={false}
+                />
+              ) : (
+                <JssImage field={cards.image?.jsonValue} editable={false} />
+              )
             ) : undefined
           }
           title={
@@ -118,13 +132,21 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
               variation="heading-1"
             >
-              {cards?.title?.value}
+              {cards.abstractTitle?.value ? (
+                <JssText field={cards.abstractTitle} />
+              ) : (
+                <JssText field={cards.title} />
+              )}
             </Text>
           }
           bodyCopy={
             cards?.text ? (
               <Text tag="p" variation="body-large">
-                <RichText tag="span" field={cards?.text} />
+                {cards.abstractText?.value ? (
+                  <RichText tag="span" field={cards.abstractText} />
+                ) : (
+                  <RichText tag="span" field={cards.text} />
+                )}
               </Text>
             ) : undefined
           }

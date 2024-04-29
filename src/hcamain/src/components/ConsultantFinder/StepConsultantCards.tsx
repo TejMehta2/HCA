@@ -14,6 +14,7 @@ import {
   LinkField,
   useComponentProps,
   ComponentRendering,
+  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import ConsultantCard from '@component-library/consultant-finder/ConsultantCard/ConsultantCard';
@@ -39,6 +40,9 @@ import RadioButtons from '@component-library/core-components/RadioButtons/RadioB
 import RadioButton from '@component-library/core-components/RadioButton/RadioButton';
 import { capitalizeFirstLetter } from '@component-library/utility-functions/index';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import { GetServerSidePropsContext } from 'next';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 interface Fields {
   API_C2_FirstAppointment_LoadingMsg: Field<string>;
@@ -113,19 +117,19 @@ interface ServerSideProps {
 }
 
 /**
- * Will be called during SSG
+ * If exported, will be called during SSG
  * @param {ComponentRendering} _rendering
  * @param {LayoutServiceData} _layoutData
  * @param {GetStaticPropsContext} _context
  */
-export const getStaticProps: GetStaticComponentProps = async (
+/*export*/ const getStaticProps: GetStaticComponentProps = async (
   _rendering,
   _layoutData,
   _context
 ) => {
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
-
+  //console.log("consultantsSlugsLD", consultantsSlugsLD);
   const returnProps: ServerSideProps = {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
@@ -133,6 +137,16 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   return returnProps;
 };
+
+// will be called if not SSG
+export async function getServerSideProps(
+  rendering: ComponentRendering,
+  layoutData: LayoutServiceData,
+  context: GetServerSidePropsContext
+) {
+  // proxy to GetStaticComponentProps
+  return await getStaticProps(rendering, layoutData, context);
+}
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
@@ -151,7 +165,7 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  console.log('consultant cards', props);
+  //console.log('consultant cards', props);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
@@ -214,7 +228,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   useEffect(() => {
-    console.log('next apt useEffect', doctifyLoaded);
+    //console.log('next apt useEffect', doctifyLoaded);
     // Check if we made a request
     if (nextAptRequestToken) {
       // Cancel the previous request before making a new request
@@ -526,7 +540,7 @@ export const Default = (props: StepProps): JSX.Element => {
         setError(true);
       })
       .finally(() => {
-        console.log('set doctify loaded true');
+        //console.log('set doctify loaded true');
         setDoctifyLoaded(true);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -545,7 +559,18 @@ export const Default = (props: StepProps): JSX.Element => {
       <div id={id ? id : undefined}>
         {router.isReady && !pageNotFound && (
           <>
-            <Breadcrumbs>
+            <Breadcrumbs
+              backCta={{
+                text: 'Consultant Finder',
+                link: '/Finder/Step-Intro',
+              }}
+            >
+              <TextLink>
+                <a href="/">
+                  <Icons iconName="iconHome"></Icons>
+                  <span className="sr-only">Home</span>
+                </a>
+              </TextLink>
               <Link href="/Finder/Step-Intro">
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}

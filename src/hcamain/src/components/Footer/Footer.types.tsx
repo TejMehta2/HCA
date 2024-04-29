@@ -52,6 +52,7 @@ export type Fields = Navigation.Footer['fields'] & {
   SocialMediaProfilesGroup?: SocialMediaProfilesGroup;
   DoctifyReviews?: DoctifyReviewsFields;
   CqcStatus?: { fields?: CQCFields };
+  Copyright?: TextField;
 };
 
 export type FooterProps = Navigation.Footer & {

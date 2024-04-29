@@ -18,10 +18,13 @@ type FilterOptionFields = {
 };
 
 type LocationsFields = {
+  abstractTitle?: { value?: string };
+  abstractImage?: { jsonValue?: ImageField };
   title?: { value?: string };
   image?: { jsonValue?: ImageField };
   city?: { value?: string };
-  street?: { value?: string };
+  addressLine1?: { value?: string };
+  addressLine2?: { value?: string };
   postCode?: { value?: string };
   getDirections?: { value?: string };
   url: { path?: string };

@@ -117,3 +117,10 @@
     pointer-events: inherit;
   }
 }
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  border: none;
+}

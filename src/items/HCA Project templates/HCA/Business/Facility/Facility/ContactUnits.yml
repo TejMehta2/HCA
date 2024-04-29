@@ -9,7 +9,7 @@ SharedFields:
   Value: "query:./*[@@templatename='Page Data']/*[@@templatename='Contact Units Folder']"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multiroot Treelist
+  Value: TreelistEx
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 300
@@ -31,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fd89e999-5e89-4fa5-92d7-281bff3fa590"
+      Value: "ab14ad2a-d439-4f4c-a806-2fba9d490449"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240226T105136Z
+      Value: 20240423T143821Z

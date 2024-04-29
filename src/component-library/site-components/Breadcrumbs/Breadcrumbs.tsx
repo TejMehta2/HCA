@@ -5,29 +5,16 @@ import Icons from '../../foundation/Icons/Icons';
 import Link from 'next/link';
 
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
-  const { children } = props;
-
-  const firstBreadcrumbLink = children && children[0]?.props?.href;
-  const firstBreadcrumbText = children && children[0]?.props?.children;
-
+  const { backCta, children } = props;
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <span className={styles['breadcrumbs-list']}>
-          <Link href="/">
-            <Icons iconName="iconHome"></Icons>
-          </Link>
-          {children}
-        </span>
-
-        {firstBreadcrumbLink && (
-          <Link
-            href={firstBreadcrumbLink}
-            className={styles['breadcrumb-back']}
-          >
+        <span className={styles['breadcrumbs-list']}>{children}</span>
+        {backCta?.link && (
+          <Link href={backCta.link || ''} className={styles['breadcrumb-back']}>
             <Icons iconName="iconArrowLeft"></Icons>
             <div>
-              <span>Back to</span> {firstBreadcrumbText}
+              <span>Back to</span> {backCta.text}
             </div>
           </Link>
         )}

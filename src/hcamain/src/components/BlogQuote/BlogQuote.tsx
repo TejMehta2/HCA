@@ -4,6 +4,7 @@ import {
   Image,
   ImageField,
   Text as JssText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
@@ -30,17 +31,24 @@ type BlogQuoteProps = {
 };
 
 const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <div className="component-content">
-        <span className="is-empty-hint">Header with image no datasource</span>
-      </div>
-    </div>
-  );
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  if (isExperienceEditor)
+    return (
+      <>
+        <JssText field={props.fields?.Author?.[0].fields?.Name} />
+        <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
+        <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
+        <JssText field={props.fields?.Quote} />
+      </>
+    );
+
+  return <></>;
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
-  if (!props.fields) {
+  if (!props.fields || !props.fields.Author?.length) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
@@ -51,7 +59,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
         <figure>
           <QuoteBlock
             author={{
-              name: props.fields?.Author?.[0].fields?.Name?.value,
+              name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
               image: (
                 <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
               ),
@@ -82,7 +90,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       <RichText>
         <QuoteBlock
           author={{
-            name: props.fields?.Author?.[0].fields?.Name?.value,
+            name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
             image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
             tag: (
               <span>

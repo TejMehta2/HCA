@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Params from 'src/types/params';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 type HCAIconFields = {
   svgMarkup?: Field<string>;
@@ -58,56 +59,51 @@ const BreadcrumbsDefaultComponent = (props: BreadcrumbsProps): JSX.Element => {
 };
 
 export const Default = (props: BreadcrumbsProps): JSX.Element => {
-  if (!props.fields) {
+  if (!props.fields || !props?.fields?.data?.contextItem?.ancestors?.length) {
     return <BreadcrumbsDefaultComponent {...props} />;
   }
 
-  const getTitle = (data?: AncestorsFields) => {
-    if (data?.navigationTitle?.value) {
-      return data?.navigationTitle?.value;
-    } else if (data?.abstractTitle) {
-      return data?.abstractTitle?.value;
-    } else if (data?.displayName) {
-      return data?.displayName;
-    } else {
-      return data?.name;
-    }
+  const breadcrumbSchemaItem: BreadcrumbSchema = [];
+  const ancestors =
+    props.fields?.data?.contextItem?.ancestors?.toReversed() || [];
+  const thisPage: AncestorsFields = {
+    name: props.fields?.data?.contextItem?.name,
   };
 
-  const breadcrumbSchemaItem: BreadcrumbSchema = [];
+  const combinedList = [...ancestors, thisPage];
+  const breadcrumbList = combinedList.map((item, index) => {
+    const title =
+      item?.navigationTitle?.value ||
+      item?.abstractTitle?.value ||
+      item?.displayName ||
+      item?.name;
 
-  const breadcrumbList = props.fields?.data?.contextItem?.ancestors?.map(
-    (ancestor, index) => {
-      const title = getTitle(ancestor);
-
+    if (item?.url?.url) {
       breadcrumbSchemaItem.push({
         '@type': 'ListItem',
         position: index + 1,
         name: title,
-        item: ancestor?.url?.url,
+        item: item?.url?.url,
       });
-
       return (
         <TextLink key={index}>
-          <Link href={ancestor?.url?.url || ''}>{title}</Link>
+          {index === 0 ? (
+            <Link href={item?.url?.url}>
+              <Icons iconName="iconHome"></Icons>
+              <span className="sr-only">Home</span>
+            </Link>
+          ) : (
+            <Link href={item?.url?.url || ''}>{title}</Link>
+          )}
         </TextLink>
       );
     }
-  );
-
-  //  remove home which should be the last item in ancestors
-  breadcrumbList?.pop();
-  const title = getTitle(props.fields?.data?.contextItem);
-  breadcrumbList?.push(<span key={breadcrumbList?.length}>{title}</span>);
-
-  if (!props?.fields?.data?.contextItem?.ancestors?.length) {
-    return <></>;
-  }
-
-  breadcrumbSchemaItem.push({
-    '@type': 'ListItem',
-    position: breadcrumbSchemaItem.length + 1,
-    name: title,
+    breadcrumbSchemaItem.push({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: title,
+    });
+    return <span key={index}>{title}</span>;
   });
 
   const breadcrumbSchema = {
@@ -124,7 +120,14 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </Head>
-      <Breadcrumbs children={breadcrumbList} />
+      <Breadcrumbs
+        backCta={{
+          link: combinedList[1].url?.url,
+          text: combinedList[1].displayName,
+        }}
+      >
+        <>{breadcrumbList}</>
+      </Breadcrumbs>
     </>
   );
 };

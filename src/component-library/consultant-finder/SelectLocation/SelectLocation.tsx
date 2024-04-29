@@ -13,6 +13,7 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
     setFirstAppointmentDate,
     setLat,
     setLon,
+    setLocationID,
   } = useContext(ConsultantFinderContext);
 
   return (
@@ -34,6 +35,7 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
               setFirstAppointmentDate(item?.firstAppointmentSlotDateTime || '');
               setLat(item?.latitude || '');
               setLon(item?.longitude || '');
+              setLocationID(item?.facilityLocation || '');
             }}
           />
         ))}
