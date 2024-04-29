@@ -36,7 +36,8 @@ interface Fields {
       title?: { jsonValue?: Field<string> };
       image?: { jsonValue?: ImageField };
       city?: { jsonValue?: Field<string> };
-      street?: { jsonValue?: Field<string> };
+      addressLine1?: { jsonValue?: Field<string> };
+      addressLine2?: { jsonValue?: Field<string> };
       postCode?: { jsonValue?: Field<string> };
       getDirections?: { jsonValue?: Field<string> };
       doctifyReviews?: DoctifyReviewsFields;
@@ -99,7 +100,11 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
             <JssText field={props.fields?.data?.contextItem?.city?.jsonValue} />
             <br />
             <JssText
-              field={props.fields?.data?.contextItem?.street?.jsonValue}
+              field={props.fields?.data?.contextItem?.addressLine1?.jsonValue}
+            />
+            <br />
+            <JssText
+              field={props.fields?.data?.contextItem?.addressLine2?.jsonValue}
             />
             <br />
             <JssText
