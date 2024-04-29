@@ -4,7 +4,7 @@
 .wrapper {
   @include responsive-grid;
 
-  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
 
   > div {
     img {
