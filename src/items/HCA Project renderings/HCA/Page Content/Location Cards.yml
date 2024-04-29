@@ -55,7 +55,10 @@ SharedFields:
                 city {
                   value
                 }
-                street {
+                addressLine1 {
+                  value
+                }
+                addressLine2 {
                   value
                 }
                 postCode {
@@ -191,7 +194,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240417T062440Z
+      Value: 20240429T062440Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

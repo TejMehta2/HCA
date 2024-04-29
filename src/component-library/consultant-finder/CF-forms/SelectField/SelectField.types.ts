@@ -13,4 +13,5 @@ export interface SelectFieldProps {
   register: any;
   addDefaultValue?: boolean;
   defaultValueLabel?: string;
+  defaultValue?: string;
 }

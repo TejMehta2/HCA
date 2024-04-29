@@ -10,9 +10,7 @@
   @include responsive-container;
 
   row-gap: 0;
-
-  --theme-collapse-padding-top: $spacing-12;
-
+  padding-top: var(--theme-collapse-padding-top, $spacing-12);
   padding-bottom: $spacing-12;
 
   & > div {

@@ -75,6 +75,32 @@ export async function getSpecialistProfileData(
             );
           }
         }
+
+        // custom fields
+        if (docitfyData.customFields) {
+          if (docitfyData.customFields.cmaHtml) {
+            const hcaConfig = await getHCAConfig();
+            // are we going to change the CMA link to use the Doctify CMA profile (aPI_HCA_CMAs_UseDoctifyData)
+            // or keep the legacy Sitecore GUID url?
+            // legacy  requires CMA look up stored in Excel in the Media library
+            if (hcaConfig.aPI_HCA_CMAs_UseDoctifyData) {
+              const replaceCMA = `/Finder/CMADisclosures/${slug}?CmaContentId=`;
+              if (docitfyData.about) {
+                // insert the slug as a frag in the CMA link - NextJS style
+                docitfyData.about = (docitfyData.about as string).replace(
+                  '/cma-disclosure?CmaContentId=',
+                  replaceCMA
+                );
+              }
+              if (docitfyData.customFields.about) {
+                // insert the slug as a frag in the CMA link - NextJS style
+                docitfyData.customFields.about = (
+                  docitfyData.customFields.about as string
+                ).replace('/cma-disclosure?CmaContentId=', replaceCMA);
+              }
+            }
+          }
+        }
       }
     } else {
       //docitfy call failed

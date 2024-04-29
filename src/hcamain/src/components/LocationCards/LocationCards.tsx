@@ -62,7 +62,8 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
         {
           abstractTitle,
           title,
-          street,
+          addressLine1,
+          addressLine2,
           postCode,
           city,
           abstractImage,
@@ -88,9 +89,15 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           address={
             <>
-              {street?.value && (
+              {addressLine1?.value && (
                 <Text variation={'body-large'} tag="span">
-                  <JssText field={street} />
+                  <JssText field={addressLine1} />
+                  &nbsp;
+                </Text>
+              )}
+              {addressLine2?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={addressLine2} />
                   &nbsp;
                 </Text>
               )}

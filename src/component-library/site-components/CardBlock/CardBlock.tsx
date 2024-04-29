@@ -27,11 +27,13 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
             <div className={styles.header}>{header}</div>
             {children}
           </div>
-          <div className={styles.cta}>
-            <Button variation="full" size="large">
-              {cta}
-            </Button>
-          </div>
+          {cta && (
+            <div className={styles.cta}>
+              <Button variation="full" size="large">
+                {cta}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </Themes>

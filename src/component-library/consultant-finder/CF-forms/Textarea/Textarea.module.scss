@@ -46,7 +46,7 @@
     border-radius: $radius-large;
     padding-bottom: px-to-rem(42);
     background-color: $white;
-    margin-bottom: $spacing-2;
+    margin-bottom: $spacing-5;
 
     .count {
       @include apply-body-medium-medium;
