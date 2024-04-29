@@ -5,6 +5,8 @@ import {
   RichText as JssRichText,
   Text as JssText,
   Image as JssImage,
+  Link as JssLink,
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -25,6 +27,10 @@ interface PagesFields {
   url?: { path?: string };
 }
 
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
+
 interface Fields {
   data?: {
     item?: {
@@ -33,6 +39,10 @@ interface Fields {
       pages?: {
         PagesList?: PagesFields[];
       };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
     };
   };
 }
@@ -66,6 +76,8 @@ interface WithImageProps extends ContentCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
@@ -73,6 +85,23 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const columns: CardBlockProps['variation'] =
     props.params?.Columns === '4' ? '4-columns' : '3-columns';
+
+  const link =
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+      !isExperienceEditor ? (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+          <JssRichText
+            tag="span"
+            field={{
+              value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+            }}
+          />
+        </JssLink>
+      ) : (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
+      )
+    ) : undefined;
 
   return (
     <CardBlock
@@ -95,6 +124,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           }
         />
       }
+      cta={link}
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
