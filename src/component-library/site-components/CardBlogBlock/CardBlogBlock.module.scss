@@ -19,6 +19,8 @@
 .grid {
   @include responsive-grid;
 
+  grid-auto-rows: min-content;
+
   > * {
     @include responsive-grid-span(6, 3, 3, 3);
   }
