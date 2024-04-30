@@ -4,6 +4,7 @@ import {
   Text as JssText,
   Image as JssImage,
   ImageField,
+  RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -109,6 +110,9 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       }
       image={<JssImage field={props.fields?.data?.item?.image?.jsonValue} />}
     >
+      <Text tag="div" variation="body-large">
+        <RichText field={props.fields?.data?.item?.text?.jsonValue} />
+      </Text>
       <ContactList items={contactListItems} />
     </ImageAndTextBlock>
   );
