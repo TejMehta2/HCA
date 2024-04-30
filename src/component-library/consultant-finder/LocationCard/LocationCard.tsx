@@ -1,40 +1,130 @@
-import React, { useContext } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState, useContext, useEffect } from 'react';
 import { LocationCardProps } from './LocationCard.types';
-import Text from '../../foundation/Text/Text';
-import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import styles from './LocationCard.module.scss';
-import { formatDateLong } from '../../utility-functions/index';
+import Text from '../../foundation/Text/Text';
+import Icons from '../../foundation/Icons/Icons';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import axios from 'axios';
 
-const LocationCard = (props: LocationCardProps): JSX.Element => {
-  const { selectedLocation } = useContext(ConsultantFinderContext);
+const LocationCard = (props: LocationCardProps): JSX.Element | null => {
+  const { setSelectedLocations, selectedLocations } = useContext(
+    ConsultantFinderContext
+  );
+  const [totalConsultants, setTotalConsultants] = useState(null);
+
+  const arrayWithSelectedSlugs: string[] = selectedLocations;
+
+  const [isSelected, setSelected] = useState<boolean>(false);
+
+  useEffect(() => {
+    setSelected(arrayWithSelectedSlugs.includes(props.slug));
+    console.log('render', arrayWithSelectedSlugs);
+  }, [selectedLocations]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.doctify.com/api/hca/search?search=${'Orthopaedics'}&keywordId=${'2865'}&sortType=${'relevance'}&insurer=${''}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
+          props.slug
+        }&offset=0`
+      )
+      .then((resp: any) => {
+        setTotalConsultants(resp.data.total);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+    // eslint-disable-next-line
+}, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const target = e.target as HTMLButtonElement;
+    const targetParent = target.closest(
+      '[data-parent="parent"]'
+    ) as HTMLButtonElement;
+    console.log(targetParent);
+    console.log('slug', props.slug);
+
+    const newArray: string[] = selectedLocations;
+    // Check if the slug already exists in the array
+    const slugIndex = newArray.indexOf(props.slug);
+    if (slugIndex !== -1) {
+      // If it exists, remove it from the array
+      newArray.splice(slugIndex, 1);
+    } else {
+      // If it doesn't exist, add it to the array
+      newArray.push(props.slug);
+    }
+
+    const isSelectedSlug = newArray.includes(props.slug);
+    // const newArray = [props.slug];
+    setSelected(isSelectedSlug);
+    console.log('newArray', newArray);
+    props.setArray(props.slug);
+    setSelectedLocations(newArray);
+  };
+
+  // If totalConsultants is 0, return null to prevent card from being displayed
+  if (totalConsultants === 0) {
+    return null;
+  }
+
   return (
     <div
-      className={`${styles['location-card']} ${
-        selectedLocation === props.facilityCRMID ? styles['selected'] : ''
-      }`}
-      onClick={(e) => props.handleClick(e)}
+      className={
+        !isSelected
+          ? styles['location-card']
+          : `${styles['location-card']} ${styles['location-card-selected']}`
+      }
       data-parent="parent"
     >
-      <div className={styles.main}>
-        <div className={styles.title}>
-          <Text tag="h3" variation="body-medium-large">
-            {props.title}
+      <div className={styles.content}>
+        <div className={styles.distance}>
+          <Icons iconName="iconPin" />
+          <Text tag="p" variation="body-medium-small">
+            2.2 miles
           </Text>
         </div>
-        <div className={styles.description}>
+        <div>
+          <Text tag="p" variation="body-medium-large">
+            {props.name}
+          </Text>
+        </div>
+        <div className={styles.address}>
           <Text tag="p" variation="body-medium-small">
-            {props.text}
+            {props.addressLine1} {props.city}
+          </Text>
+          <Text tag="p" variation="body-medium-small">
+            {props.postcode}
+          </Text>
+        </div>
+        <div className={styles.consultants}>
+          <div className={styles.number}>
+            <Text tag="p" variation="body-medium-small">
+              {totalConsultants}
+            </Text>
+          </div>
+          <Text tag="p" variation="body-medium-small">
+            consultants
           </Text>
         </div>
       </div>
-      {props.time && (
-        <div className={styles.time}>
-          <div className={styles.icon}>{props.icon}</div>
-          <Text tag="p" variation="body-medium-small">
-            {formatDateLong(props.time)}
+      <div className={styles.select}>
+        <button
+          className={
+            !isSelected
+              ? styles['btn']
+              : `${styles['btn']} ${styles['btn-selected']}`
+          }
+          onClick={handleClick}
+        >
+          <Icons iconName="iconPlus" />
+          <Text tag="span" variation="body-medium-large">
+            {!isSelected ? 'Select' : 'Remove'}
           </Text>
-        </div>
-      )}
+        </button>
+      </div>
     </div>
   );
 };

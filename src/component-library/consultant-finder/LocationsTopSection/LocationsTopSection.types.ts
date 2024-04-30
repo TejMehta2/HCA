@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
-export interface LocationCardProps {
+export interface LocationsTopSectionProps {
   children?: ReactNode | JSX.Element;
-  name: string;
-  addressLine1: string;
-  city: string;
-  postcode: string;
-  slug: string;
   array: any;
   setArray: any;
+  slugs: any;
 }

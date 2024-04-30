@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { useRouter } from 'next/router';
 import {
   Image as JssImage,
   Link as JssLink,
@@ -11,19 +13,22 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-
+import LocationCardsWrapper from '@component-library/consultant-finder/LocationCardsWrapper/LocationCardsWrapper';
+import LocationCard from '@component-library/consultant-finder/LocationCard/LocationCard';
+import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
+import router from 'next/router';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Icons from '@component-library/foundation/Icons/Icons';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
+import useActiveElement from 'temp/component-library/hooks/useActiveElement';
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   CardImage: ImageField;
-
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  Hospitals: object[];
 }
 
 type StepProps = {
@@ -40,50 +45,60 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
   console.log('location', props.fields);
+  const { selectedLocations } = useContext(ConsultantFinderContext);
+  const [array, setArray] = useState([]);
+  // const array: string[] = [];
+  console.log('selectedLocations', selectedLocations);
+  console.log('array', array);
+  const slugs = props?.fields?.Hospitals.map(
+    (item: any) => item.fields.slug.value
+  );
+  console.log('slugs', slugs);
+
   if (props.fields) {
     return (
-      <div
-        className={`component promo ${props.params.styles}`}
-        id={id ? id : undefined}
-      >
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.CardImage} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <Text tag="div">
-                  <JssRichText field={props.fields.TitleText} />
-                </Text>
-              </div>
-            </div>
-            <div className="field-promolink">
-              <h2>Links from the base template</h2>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.NextLink}
-                  title={props.fields.NextLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.BackLink}
-                  title={props.fields.BackLink.value.text}
-                ></JssLink>
-              </Button>
-              <Button size={'small'} variation={'outline'}>
-                <JssLink
-                  field={props.fields.StartLink}
-                  title={props.fields.StartLink.value.text}
-                ></JssLink>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <>
+        <LocationsTopSection array={array} setArray={setArray} slugs={slugs} />
+        {/* <h1>Array: {array}</h1> */}
+        <LocationCardsWrapper>
+          {props?.fields?.Hospitals &&
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            props?.fields?.Hospitals.map((hospital: any) => (
+              <LocationCard
+                key={hospital.id}
+                name={hospital?.fields?.HCAName?.value || ''}
+                addressLine1={hospital?.fields?.addressLine1?.value || ''}
+                city={hospital?.fields?.cityOrCounty?.value || ''}
+                postcode={hospital?.fields?.postCode?.value || ''}
+                slug={hospital?.fields?.slug?.value || ''}
+                array={array}
+                setArray={setArray}
+              />
+            ))}
+        </LocationCardsWrapper>
+        <Navigation>
+          <TextButton>
+            <JssLink field={props.fields.BackLink}>
+              <Icons iconName="iconArrowSmallLeft" />
+              {props.fields.BackLink.value.text}
+            </JssLink>
+          </TextButton>
+
+          <Button size={'small'} variation={'full-dark'}>
+            <button
+              disabled={false}
+              onClick={() =>
+                router.push(
+                  props.fields.NextLink.value.href || '/Finder/Step-Locations'
+                )
+              }
+            >
+              <span>{props.fields.NextLink.value.text}</span>
+            </button>
+          </Button>
+        </Navigation>
+      </>
     );
   }
 

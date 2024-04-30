@@ -163,7 +163,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   </Link>
                 </TextButton>
               </div>
-              <Text tag="p" variation="body-medium-extra-large">
+              <Text tag="div" variation="body-medium-extra-large">
                 <JssRichText field={props?.fields?.AcceptInstructionsText} />
               </Text>
               <Container customBtn={true}>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useState, ReactNode } from 'react';
 interface ConsultantFinderContextType {
   message: string;
@@ -48,6 +49,8 @@ interface ConsultantFinderContextType {
   setConsultantMainSpecialty: React.Dispatch<React.SetStateAction<string>>;
   patientName: string;
   setPatientName: React.Dispatch<React.SetStateAction<string>>;
+  selectedLocations: [];
+  setSelectedLocations: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const ConsultantFinderContext =
@@ -101,6 +104,8 @@ export const ConsultantFinderContext =
     setConsultantMainSpecialty: () => {},
     patientName: '',
     setPatientName: () => {},
+    selectedLocations: [],
+    setSelectedLocations: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -135,6 +140,7 @@ export const ConsultantFinderContextProvider = ({
   const [consultantMainSpecialty, setConsultantMainSpecialty] =
     useState<string>('');
   const [patientName, setPatientName] = useState<string>('');
+  const [selectedLocations, setSelectedLocations] = useState([]);
 
   return (
     <ConsultantFinderContext.Provider
@@ -187,6 +193,8 @@ export const ConsultantFinderContextProvider = ({
         setConsultantMainSpecialty,
         patientName,
         setPatientName,
+        selectedLocations,
+        setSelectedLocations,
       }}
     >
       {children}
