@@ -92,6 +92,13 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"
+      subheader={
+        !!props.fields?.data?.item?.heading?.jsonValue?.value && (
+          <Text tag="p" variation="subheading-1">
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        )
+      }
       header={
         <Text
           tag={props.params?.HeadingTag || 'h4'}

@@ -37,7 +37,13 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
   const setValue = (newValue: string = '') => {
     if (!inputRef.current) return;
     // Use native setter to allow for dispatch propagation (native form change event)
-    inputRef.current.value = newValue;
+    const nativeInputValueSetter = Object?.getOwnPropertyDescriptor(
+      window?.HTMLInputElement.prototype,
+      'value'
+    )?.set;
+    nativeInputValueSetter?.call(inputRef.current, newValue);
+    const event = new Event('change', { bubbles: true });
+    inputRef.current.dispatchEvent(event);
   };
 
   return (
