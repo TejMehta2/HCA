@@ -76,7 +76,14 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
         <HeaderPlain
-          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          heading={
+            <Text
+              tag={props.params?.HeadingTag || 'h1'}
+              variation={props.params?.HeadingSize || 'display-1'}
+            >
+              <JssText field={props?.fields?.Title} />
+            </Text>
+          }
           subheading={
             !!fields?.Heading?.value && (
               <Text variation={'subheading-1'}>
