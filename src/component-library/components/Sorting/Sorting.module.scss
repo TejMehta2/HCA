@@ -128,19 +128,19 @@ $max-options: 5; // Increase max if more "sort by" options are required
 }
 
 // style "selected" state for button which opens dialog
-.desktop,
-.mobile {
-  &:hover,
-  &:has(dialog[open]) {
-    .button {
-      button,
-      a {
-        &::after {
-          background-color: var(--background);
-        }
+@include media(screen-l) {
+  .desktop {
+    &:has(dialog[open]) {
+      .button {
+        button,
+        a {
+          &::after {
+            background-color: var(--background);
+          }
 
-        border-color: var(--text);
-        color: var(--text);
+          border-color: var(--text);
+          color: var(--text);
+        }
       }
     }
   }
