@@ -53,7 +53,7 @@ const nextConfig = {
         source: '/sitecore/service/:path*',
         destination: `${jssConfig.sitecoreApiHost}/sitecore/service/:path*`,
       },
-/*    MH Add back if IL wildcard is added   //don't rewrite lookup api to the integration layer
+      /*    MH Add back if IL wildcard is added   //don't rewrite lookup api to the integration layer
       {
         source: '/api/lookupAPI/:app*',
         destination: '/api/lookupAPI/:app*',
@@ -82,6 +82,11 @@ const nextConfig = {
       {
         source: '/referrer/mail/:path*',
         destination: `/api/api-layer/referrer/mail/:path*`,
+      },
+      // consultant finder sitemap
+      {
+        source: '/sitemap.hca.consultant-finder.xml',
+        destination: `${process.env.INTEGRATION_LAYER_URL}/sitemap/consultants`,
       },
     ];
   },

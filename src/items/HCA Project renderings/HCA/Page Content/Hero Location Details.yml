@@ -256,6 +256,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "1b58d065-fe74-43e3-ba20-54c9588b3011"
+      Hint: AllowedOnTemplates
+      Value: "{CE35B67F-8AFB-461A-8ED3-1B9DA4167731}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20211012T120931Z
@@ -265,14 +268,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "577715da-5a65-4d40-ad42-b82f04d4d42d"
+      Value: "4755b06d-6e93-4b14-8985-f13cccd78504"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240429T074732Z
+      Value: 20240429T161643Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

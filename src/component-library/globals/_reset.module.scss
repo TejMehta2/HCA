@@ -26,4 +26,8 @@ strong {
 body {
   word-wrap: break-word;
   word-break: break-word;
+
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
