@@ -302,7 +302,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                     rel="noopener noreferrer"
                                   >
                                     <span>
-                                      Learn <strong>more</strong>
+                                      <JssText
+                                        field={fields.GetDirectionsText}
+                                      />
                                     </span>
                                   </a>
                                 </TextButton>
@@ -366,7 +368,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               button2: (
                                 <a href={data.directions}>
                                   <span>
-                                    Get <strong>directions</strong>
+                                    <JssText field={fields.GetDirectionsText} />
                                   </span>
                                 </a>
                               ),

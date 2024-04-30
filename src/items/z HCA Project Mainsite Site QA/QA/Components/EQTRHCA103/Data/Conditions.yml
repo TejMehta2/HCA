@@ -11,6 +11,9 @@ Languages:
     - ID: "2117a6e0-0d01-48fd-8887-257f3d2a47ef"
       Hint: NumberOfCards
       Value: 3
+    - ID: "250a1734-a9d1-45ba-9535-1f9db2a85ce7"
+      Hint: Department
+      Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240429T073005Z
@@ -19,7 +22,7 @@ Languages:
       Value: Learn more
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "73c6a316-573c-45d2-bc6a-555b92c6a04d"
+      Value: "68cada11-d9ef-4f1c-b568-be649b6bb324"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -30,4 +33,4 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240429T083207Z
+      Value: 20240430T071723Z

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Field,
+  ImageField,
   Text as JssText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -8,13 +9,32 @@ import Params from 'src/types/params';
 import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 
-type CTAIconFields = {
+type HCAIcon = {
   svgMarkup?: Field<string>;
 };
 
-type DepartmentFields = {
-  svgMarkup?: Field<string>;
-};
+interface DepartmentFields {
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
+  url?: { path?: string };
+  children: {
+    results: PagesFields[];
+  };
+}
+
+interface PagesFields {
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
+  url?: { path?: string };
+}
 
 interface Fields {
   data?: {
@@ -23,7 +43,7 @@ interface Fields {
       title?: { jsonValue?: Field<string> };
       text?: { jsonValue?: Field<string> };
       cTAIcon?: {
-        Icon?: CTAIconFields;
+        Icon?: HCAIcon;
       };
 
       department?: {
@@ -34,8 +54,9 @@ interface Fields {
       cTAText?: { jsonValue?: Field<string> };
     };
     contextItem?: {
-      doctifyKeywordId?: { value?: string };
-      doctifyPractice?: { value?: string };
+      conditions?: {
+        ConditionsList?: PagesFields[];
+      };
     };
   };
 }
@@ -69,10 +90,10 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
   return (
     <TextBlockHeader>
       <Text variation={'subheading-1'}>
-        <JssText field={props.fields?.Heading} />
+        <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
       </Text>
       <Text variation={'display-2'}>
-        <JssText field={props.fields?.Title} />
+        <JssText field={props.fields?.data?.item?.title?.jsonValue} />
       </Text>
     </TextBlockHeader>
   );
@@ -85,10 +106,10 @@ export const WithoutImage = (props: ConditionsProps): JSX.Element => {
   return (
     <TextBlockHeader>
       <Text variation={'subheading-1'}>
-        <JssText field={props.fields?.Heading} />
+        <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
       </Text>
       <Text variation={'display-2'}>
-        <JssText field={props.fields?.Title} />
+        <JssText field={props.fields?.data?.item?.title?.jsonValue} />
       </Text>
     </TextBlockHeader>
   );

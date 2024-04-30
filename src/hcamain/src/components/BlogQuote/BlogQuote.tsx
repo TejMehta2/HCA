@@ -37,7 +37,7 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
   if (isExperienceEditor)
     return (
       <>
-        <JssText field={props.fields?.Author?.[0].fields?.Name} />
+        <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
         <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
         <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
         <JssText field={props.fields?.Quote} />

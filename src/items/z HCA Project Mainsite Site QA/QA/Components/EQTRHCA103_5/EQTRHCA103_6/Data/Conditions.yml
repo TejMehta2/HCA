@@ -19,7 +19,7 @@ Languages:
       Value: Learn more
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "73c6a316-573c-45d2-bc6a-555b92c6a04d"
+      Value: "8027899c-a6c7-4311-a3bd-72f7a37337d7"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -28,6 +28,9 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: "{EntityName} Conditions"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240429T083207Z
+      Value: 20240430T073651Z

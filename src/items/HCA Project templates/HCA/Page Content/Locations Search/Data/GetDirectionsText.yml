@@ -1,26 +1,27 @@
 ﻿---
-ID: "250a1734-a9d1-45ba-9535-1f9db2a85ce7"
-Parent: "5d54edcf-69f4-4f90-8f92-dccf98eb7150"
+ID: "63958787-afa0-46ed-a0f3-497a74c19b65"
+Parent: "8945f172-ccfb-4465-9f36-32ba57029bf3"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Conditions/Data/Department
+Path: /sitecore/templates/Project/HCA/Page Content/Locations Search/Data/GetDirectionsText
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Specialty Page||_templatename:Subspecialty Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multilist with Search
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 500
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Get Directions Text
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240425T201103Z
+      Value: 20240430T093032Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +32,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8bb92cdc-9d4e-4979-874b-1da9b1569f33"
+      Value: "7bdf2ea6-7870-4418-8eb6-1d3af7bbcb7b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240430T062757Z
+      Value: 20240430T093106Z
