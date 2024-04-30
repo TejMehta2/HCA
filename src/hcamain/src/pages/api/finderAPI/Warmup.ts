@@ -16,11 +16,16 @@ interface Notify {
 }
 
 //see https://codeburst.io/javascript-async-await-with-foreach-b6ba62bbf404
+let gStreamClosed = false;
 async function asyncForEach(
   array: string | any[],
   callback: (arg0: any, arg1: number, arg2: any) => any
 ) {
   for (let index = 0; index < array.length; index++) {
+    if (gStreamClosed) {
+      console.log('Exiting long running process as client is disconnected');
+      break;
+    }
     await callback(array[index], index, array);
   }
 }
@@ -46,16 +51,16 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root.getElementsByTagName('loc').forEach((urlEle: any, _idx: number) => {
       const slug = urlEle.text.split('/').pop();
-      //if (idx < 5) {
+      //if (idx < 100) {
       // limit to x for testing
       slugs = slugs.concat(slug);
       //}
     });
-    notify.log(`Got ${slugs.length} active consultant slugs...`);
+    notify?.log(`Got ${slugs.length} active consultant slugs...`);
 
     await asyncForEach(slugs, async (slug, idx) => {
       const pageURL = `https://${incommingHost}/Finder/StepConsultantProfile/${slug}`;
-      notify.log(
+      notify?.log(
         `loading ${slug} page ${pageURL}, Done ${Math.trunc(
           (idx / slugs.length) * 100
         )}%`
@@ -65,10 +70,10 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
         const profileResult = await fetch(pageURL, {
           cache: 'no-store',
         });
-        // const profile = await profileResult.text();
+        const _profile = await profileResult.text(); // force the data to load - but disguraded
         const timeEnd = new Date().getTime();
         if (profileResult && profileResult.ok) {
-          notify.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
+          notify?.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
         } else {
           notify.error(
             `Failed to load ${slug}, ${profileResult.status} ${profileResult.statusText}`
@@ -101,8 +106,7 @@ export default async function Warmup(
   const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
-  let closed = false;
-
+  gStreamClosed = false;
   // for some reason not getting access directly from req.headers - seems like a known issue in Next13
   const flatHeaders = Object.fromEntries(
     req.headers as unknown as Iterable<readonly [PropertyKey, any]>
@@ -114,41 +118,56 @@ export default async function Warmup(
     // can't introspect on local as running in Docker
     requestingHost = 'hca-digital-dev-hca-main.vercel.app'; // use dev instead
   }
-  console.log('host', requestingHost);
+  //console.log('host', requestingHost);
 
   // Invoke long running process
   longRunning(requestingHost, {
-    log: (msg: string) => writer.write(encoder.encode('data: ' + msg + '\n\n')),
+    log: (msg: string) => {
+      writer.ready
+        .then(
+          () => writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
+        )
+        .catch((err) => {
+          gStreamClosed = true;
+          return console.error(
+            'Error, client disconnected from log stream',
+            err
+          );
+        });
+      return null;
+    },
     complete: (obj: unknown) => {
-      writer.write(encoder.encode('data: ' + JSON.stringify(obj) + '\n\n'));
-      if (!closed) {
+      writer.write(
+        encoder.encode(
+          `${Date().toString()}: complete: ${JSON.stringify(obj)}\n`
+        )
+      );
+      if (!gStreamClosed) {
         writer.close();
-        closed = true;
+        gStreamClosed = true;
       }
     },
     error: (err: Error | unknown) => {
-      writer.write(encoder.encode('data: ' + JSON.stringify(err) + '\n\n'));
-      if (!closed) {
+      writer.write(encoder.encode(`${Date().toString()}: error: ${err}\n`));
+      if (!gStreamClosed) {
         writer.close();
-        closed = true;
+        gStreamClosed = true;
       }
     },
     close: () => {
-      if (!closed) {
+      if (!gStreamClosed) {
         writer.close();
-        closed = true;
+        gStreamClosed = true;
       }
     },
   })
     .then(() => {
-      console.info('Done');
-      if (!closed) {
+      if (!gStreamClosed) {
         writer.close();
       }
     })
-    .catch((e) => {
-      console.error('Failed', e);
-      if (!closed) {
+    .catch((_e) => {
+      if (!gStreamClosed) {
         writer.close();
       }
     });
