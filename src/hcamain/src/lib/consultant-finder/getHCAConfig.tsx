@@ -52,6 +52,9 @@ export interface IHCAConfig {
   aPI_HCA_EnquireBookingForm_LoadingMsg: string;
   aPI_HCA_EnquireBookingForm_Header: string;
   aPI_HCA_EnquireBookingForm_UtilizesLegacy: boolean;
+
+  // General
+  nextJSRevalidationProfilePageSeconds: string;
 }
 
 export async function getHCAConfig(): Promise<IHCAConfig> {
@@ -110,6 +113,9 @@ export async function getHCAConfig(): Promise<IHCAConfig> {
     aPI_HCA_EnquireBookingForm_LoadingMsg: '',
     aPI_HCA_EnquireBookingForm_Header: '',
     aPI_HCA_EnquireBookingForm_UtilizesLegacy: false,
+
+    // General
+    nextJSRevalidationProfilePageSeconds: 300,
   };
 
   HCAConfig = await getItemFromGraphQL(

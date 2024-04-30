@@ -1,12 +1,15 @@
 ﻿---
-ID: "8b50e706-2568-483e-ae0a-359b94c6f75b"
-Parent: "a7f670f8-482c-4d28-8fb5-bb582e3afffa"
-Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingConfirmation/Controls
+ID: "b8ad3b04-1855-4844-b9cb-b1de94b0ac17"
+Parent: "f0c43b34-900e-456f-9065-d0527d14370c"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Data/HospitalDataItem/Properties/phone
 SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 500
+  Value: 1000
 Languages:
 - Language: en
   Versions:
@@ -14,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240423T160936Z
+      Value: 20240430T124634Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -25,11 +28,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29b9ec8e-f770-4ded-8c10-541f1a74aa3f"
+      Value: "60cc373c-7d96-4c70-890f-e57d49b3cc53"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T161449Z
+      Value: 20240430T124634Z
