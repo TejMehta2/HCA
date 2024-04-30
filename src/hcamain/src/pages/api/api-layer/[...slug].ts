@@ -11,11 +11,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { method = 'GET', url = '', body } = req;
-    const remoteRequestUrl = new URL(
-      url.replace('/api/api-layer', ''),
-      process.env.INTEGRATION_LAYER_URL
-    );
+    const { method = 'GET', body, query } = req;
+    const slug = query.slug as string[] | string;
+    const path = typeof slug === 'string' ? slug : slug?.join('/');
+    const remoteRequestUrl = new URL(path, process.env.INTEGRATION_LAYER_URL);
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : JSON.stringify(body),
