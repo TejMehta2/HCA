@@ -4,12 +4,10 @@ import styles from './Footer.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Logo from '../../foundation/BrandAssets/Logo white.svg';
-import LogoMark from '../../foundation/BrandAssets/Logo mark white.svg';
 
 const Footer = (props: FooterProps): JSX.Element => {
-  const { columns, legals, buttons } = props;
+  const { columns, legals, buttons, copyright } = props;
   const LogoIcon = Logo as () => JSX.Element;
-  const LogoMarkIcon = LogoMark as () => JSX.Element;
 
   return (
     <Themes theme={'B-HCA-Navy-Blue'}>
@@ -55,9 +53,6 @@ const Footer = (props: FooterProps): JSX.Element => {
           </div>
           {legals && (
             <div className={styles['bottom-row']}>
-              <div className={styles.icon}>
-                <LogoMarkIcon />
-              </div>
               <ul className={styles.legals}>
                 {legals.map((legal, index) => (
                   <React.Fragment key={index}>
@@ -71,6 +66,12 @@ const Footer = (props: FooterProps): JSX.Element => {
                 ))}
               </ul>
             </div>
+          )}
+          {!!copyright && (
+            <>
+              <hr className={styles.hr} />
+              {copyright}
+            </>
           )}
         </div>
       </footer>
