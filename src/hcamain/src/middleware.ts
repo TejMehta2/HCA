@@ -4,8 +4,8 @@ import geolocationMiddleware from 'lib/geolocation-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  geolocationMiddleware(req);
-
+  const response = geolocationMiddleware(req);
+  if (response) return response;
   return middleware(req, ev);
 }
 
