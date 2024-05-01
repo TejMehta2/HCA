@@ -12,16 +12,27 @@ export default async function handler(
 ) {
   try {
     const { method = 'GET', body, query } = req;
+
+    // Construct remote request URL
     const slug = query.slug as string[] | string;
     const path = typeof slug === 'string' ? slug : slug?.join('/');
     const remoteRequestUrl = new URL(path, process.env.INTEGRATION_LAYER_URL);
+
+    // Forward original URL query to remote request URL
+    const params = new URLSearchParams(query as Record<string, string>);
+    params.delete('slug');
+    remoteRequestUrl.search = params.toString() || '';
+
+    // fetch from remote integration layer server
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : JSON.stringify(body),
-    }); // fetch from CMS server
+    });
 
-    if (!response.ok || !response.body)
+    if (!response.ok || !response.body) {
       throw `unexpected response ${response.statusText} at ${remoteRequestUrl} (${req.url})`;
+    }
+
     await pipeline(response.body, res);
   } catch (err) {
     console.log(err); // log to server
