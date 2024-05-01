@@ -6,4 +6,5 @@ export interface LocationsTopSectionProps {
   array: any;
   setArray: any;
   slugs: any;
+  locationAPI: string;
 }

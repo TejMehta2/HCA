@@ -4,6 +4,7 @@ import styles from './LocationsTopSection.module.scss';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import LocationsSearch from '../LocationsSearch/LocationsSearch';
 
 const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
   const { children } = props;
@@ -26,6 +27,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
 
   return (
     <div className={styles.bold}>
+      <LocationsSearch placeholder={''} doctifyBaseURL={''} limit={0} noResultsMsg={''} searchIcon={undefined} loadingText={''} />
       <Button size={'small'} variation={'outline-dark'}>
         <button
           disabled={selectedLocations.length === props.slugs.length}

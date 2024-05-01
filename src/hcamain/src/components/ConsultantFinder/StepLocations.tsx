@@ -21,7 +21,8 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
-import useActiveElement from 'temp/component-library/hooks/useActiveElement';
+
+
 interface Fields {
   TitleText: Field<string>;
   CardImage: ImageField;
@@ -29,6 +30,7 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   Hospitals: object[];
+  API_HCA_Locations_BaseURL: Field<string>;
 }
 
 type StepProps = {
@@ -59,7 +61,7 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <LocationsTopSection array={array} setArray={setArray} slugs={slugs} />
+        <LocationsTopSection locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value} array={array} setArray={setArray} slugs={slugs} />
         {/* <h1>Array: {array}</h1> */}
         <LocationCardsWrapper>
           {props?.fields?.Hospitals &&

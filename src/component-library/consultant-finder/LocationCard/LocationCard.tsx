@@ -19,7 +19,6 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
 
   useEffect(() => {
     setSelected(arrayWithSelectedSlugs.includes(props.slug));
-    console.log('render', arrayWithSelectedSlugs);
   }, [selectedLocations]);
 
   useEffect(() => {
