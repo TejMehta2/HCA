@@ -6,6 +6,7 @@ import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
 import Doctify from '../../components/Doctify/Doctify';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof YextResultCardConsultants> = {
@@ -70,14 +71,14 @@ export const Default: StoryObj<typeof YextResultCardConsultants> = {
         Hospital....
       </Text>
     ),
-    phone: {
-      icon: <Icons iconName="iconPhone"></Icons>,
-      text: (
-        <Text variation="body-large" tag="span">
-          020 3993 1861
-        </Text>
-      ),
-    },
+    phone: (
+      <TextLink variation={'body-large'}>
+        <a href={`tel:020 3993 1861`}>
+          <Icons iconName="iconPhone"></Icons>
+          <span>020 3993 1861</span>
+        </a>
+      </TextLink>
+    ),
     specialties: {
       icon: <Icons iconName="iconStethoscope"></Icons>,
       text: (

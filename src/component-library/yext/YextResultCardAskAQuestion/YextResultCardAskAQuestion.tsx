@@ -25,10 +25,11 @@ const YextResultCardAskAQuestion = (
           )}
         </div>
       }
-      children={children}
       onShow={handleShow}
       isActive={active}
-    />
+    >
+      <div className={styles.children}>{children}</div>
+    </Accordion>
   );
 };
 

@@ -74,7 +74,7 @@
       justify-content: center;
     }
 
-    @include apply-body-large;
+    @include apply-body-medium-large;
 
     &:focus {
       outline: 0;

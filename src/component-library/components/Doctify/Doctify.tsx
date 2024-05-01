@@ -9,7 +9,7 @@ const Doctify = (props: DoctifyProps): JSX.Element => {
   const stars = [];
   const inactiveStars = [];
   const maxRating = 5;
-  const ratingNumber = Number(rating);
+  const ratingNumber = Math.round(Number(rating));
   const inactiveStarCount = maxRating - ratingNumber;
 
   for (let i = 0; i < ratingNumber; i++) {

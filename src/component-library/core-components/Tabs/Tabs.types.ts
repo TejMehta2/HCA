@@ -19,6 +19,7 @@ export interface TabsProps {
   tabs: Tab[];
   callback: (args: Args) => void;
   contentVariation?: 'scroll-max-large';
+  overrideTabIndex?: number;
 }
 
 export type Dimensions = {

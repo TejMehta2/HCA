@@ -4,6 +4,7 @@
 .wrapper {
   position: relative;
   display: flex;
+  color: var(--text);
   gap: $spacing-2;
   @include media(screen-l, max) {
     flex-wrap: wrap;

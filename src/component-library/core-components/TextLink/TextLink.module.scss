@@ -77,6 +77,14 @@
     }
   }
 
+  &.body-extra-large {
+    a,
+    button,
+    label {
+      @include apply-body-extra-large;
+    }
+  }
+
   &.full {
     width: 100%;
 

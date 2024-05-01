@@ -20,7 +20,7 @@ const YextResultCardLocations = (
   } = props;
   return (
     <div className={[styles.wrapper, styles[variation]].join(' ')}>
-      {image && <div className={styles.image}>{image}</div>}
+      <div className={styles.image}>{image && image}</div>
       <div className={styles.content}>
         <div className={styles.heading}>
           {number && <div className={styles.number}>{number}</div>}
@@ -28,26 +28,28 @@ const YextResultCardLocations = (
           {distance && <div className={styles.distance}>{distance}</div>}
         </div>
         <div className={styles.inner}>
-          <div className={styles.contacts}>
-            <div className={styles.address}>
-              <span>{address.icon}</span>
-              <span>{address.text}</span>
-            </div>
-            <div className={styles.column}>
+          <div className={styles.address}>
+            <span>{address.icon}</span>
+            <span>{address.text}</span>
+          </div>
+          <div className={styles.column}>
+            {phone && (
               <div className={styles.phone}>
                 <span>{phone.icon}</span>
                 <span>{phone.text}</span>
               </div>
+            )}
+            {openingHours && (
               <div className={styles.opening}>
                 <span>{openingHours.icon}</span>
                 <span>{openingHours.text}</span>
               </div>
-            </div>
+            )}
           </div>
           {ctas && (
             <div className={styles.ctas}>
               {ctas.button && (
-                <Button variation="full" size="large" contentVariation="card">
+                <Button variation="full" size="small" contentVariation="card">
                   {ctas.button}
                 </Button>
               )}

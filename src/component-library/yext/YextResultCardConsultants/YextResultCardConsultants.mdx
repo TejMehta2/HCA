@@ -62,12 +62,12 @@ The visual card element can be re-used for other purposes as shown:
       </Text>
     }
     phone={
-      icon: <Icons iconName="iconPhone"></Icons>,
-      text: (
-        <Text variation="body-large" tag="span">
-          020 3993 1861
-        </Text>
-      ),
+      <TextLink variation={'body-large'}>
+        <a href={`tel:020 3993 1861`}>
+          <Icons iconName="iconPhone"></Icons>
+          <span>020 3993 1861</span>
+        </a>
+      </TextLink>
     }
     specialties={
       icon: <Icons iconName="iconStethoscope"></Icons>,
@@ -75,7 +75,7 @@ The visual card element can be re-used for other purposes as shown:
         <Text variation="body-large" tag="span">
           General Urology, Urology, Urological Oncology
         </Text>
-      ),
+      )
     }
     cta={<a href="#">View profile</a>}
  />

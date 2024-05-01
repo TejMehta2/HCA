@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckboxProps } from './Checkbox.types';
 import styles from './Checkbox.module.scss';
+import Icons from '../../foundation/Icons/Icons';
+import Text from '../../foundation/Text/Text';
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   const {
@@ -13,6 +15,8 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     defaultChecked,
     onChange,
     checked,
+    required,
+    errorMessage,
   } = props;
 
   const [indeterminateState, setIndeterminateState] = useState(false);
@@ -27,24 +31,33 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles['input-wrapper']}>
-        <input
-          type="checkbox"
-          id={id}
-          name={name}
-          value={value}
-          disabled={disabled}
-          ref={(el) => el && (el.indeterminate = indeterminate)}
-          defaultChecked={defaultChecked}
-          onChange={onChange}
-          checked={checked}
-        />
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.inner}>
+          <div className={styles['input-wrapper']}>
+            <input
+              type="checkbox"
+              id={id}
+              name={name}
+              value={value}
+              disabled={disabled}
+              ref={(el) => el && (el.indeterminate = indeterminate)}
+              defaultChecked={defaultChecked}
+              onChange={onChange}
+              checked={checked}
+              required={required}
+            />
+          </div>
+          <label htmlFor={id} className={styles.label}>
+            <span className={styles.text}>{label}</span>
+          </label>
+        </div>
+        <div className={styles['error-message']}>
+          <Icons iconName="iconWarning" />
+          <Text variation="body-medium-medium">{errorMessage}</Text>
+        </div>
       </div>
-      <label htmlFor={id} className={styles.label}>
-        <span className={styles.text}>{label}</span>
-      </label>
-    </div>
+    </>
   );
 };
 

@@ -22,5 +22,6 @@ export const Default: StoryObj<typeof SearchButton> = {
         How can we <b>help you?</b>
       </span>
     ),
+    onClick: () => {},
   },
 };

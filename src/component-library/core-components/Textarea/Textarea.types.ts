@@ -5,4 +5,6 @@ export interface TextareaProps {
   errorMessage?: string;
   maxCharacters?: number;
   helperText?: string;
+  name?: string;
+  defaultValue?: string;
 }

@@ -7,7 +7,7 @@ import useBreakpoints from '../../hooks/useBreakpoints';
 
 // The Tabs component is designed to act as the controls for other components with conditionally visible content
 const Tabs = (props: TabsProps): JSX.Element => {
-  const { callback, tabs, contentVariation } = props;
+  const { callback, tabs, contentVariation, overrideTabIndex } = props;
 
   // Hooks
   const breakpoint = useBreakpoints(); // useBreakpoints instead of useWindowWidth, so that tabDimensions is recalculated at all breakpoints
@@ -18,7 +18,10 @@ const Tabs = (props: TabsProps): JSX.Element => {
       offsetLeft: 0,
     },
   ]); // Store dimensions for each tab
-  const [currentTabIndex, setCurrentTabIndex] = useState(0); // Track the currently selected tab, for styling purposes only
+  const hasExternalTabState = typeof overrideTabIndex === 'number';
+  const defaultTab: number = hasExternalTabState ? overrideTabIndex : 0;
+  const [currentTabIndex, setCurrentTabIndex] = useState(defaultTab); // Track the currently selected tab, for styling purposes only
+  const tabToShow = hasExternalTabState ? overrideTabIndex : currentTabIndex;
 
   const handleChange = (args: {
     name: string;
@@ -53,8 +56,8 @@ const Tabs = (props: TabsProps): JSX.Element => {
       <fieldset
         style={{
           // consumed in the CSS to animate the background element
-          ['--current-tab-offset-width' as string]: `${tabDimensions?.[currentTabIndex]?.offsetWidth}px`,
-          ['--current-tab-offset-left' as string]: `${tabDimensions?.[currentTabIndex]?.offsetLeft}px`,
+          ['--current-tab-offset-width' as string]: `${tabDimensions?.[tabToShow]?.offsetWidth}px`,
+          ['--current-tab-offset-left' as string]: `${tabDimensions?.[tabToShow]?.offsetLeft}px`,
         }}
       >
         {tabs.map((tab, index) => {
@@ -71,7 +74,7 @@ const Tabs = (props: TabsProps): JSX.Element => {
               <input
                 aria-controls={ariaControls}
                 aria-label={label}
-                defaultChecked={index === 0}
+                checked={index === tabToShow}
                 id={composedChildId}
                 name={name}
                 onChange={() =>

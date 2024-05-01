@@ -5,7 +5,7 @@ export interface TextLinkProps {
   children: ReactNode | JSX.Element;
   variation?: Extract<
     TextVariationUnionTypes,
-    'body-medium' | 'body-medium-large' | 'body-large'
+    'body-medium' | 'body-medium-large' | 'body-large' | 'body-extra-large'
   >;
   full?: boolean;
 }
