@@ -322,6 +322,7 @@
       button,
       label {
         padding: px-to-rem(12) px-to-rem(24);
+        min-height: auto;
       }
     }
 

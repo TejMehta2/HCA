@@ -19,7 +19,6 @@
 
   display: flex;
   flex-direction: column;
-  gap: $spacing-9;
 }
 
 .columns {
@@ -147,26 +146,26 @@
 }
 
 .hr {
-  margin: 0;
   border-color: $navy-blue-60;
   border-style: solid;
+  margin: $spacing-9 0;
+
+  .bottom-row + & {
+    margin: $spacing-6 0;
+  }
 }
 
 .bottom-row {
+  margin-top: $spacing-9;
   display: flex;
   flex-flow: column wrap;
   gap: px-to-rem(40);
   @include media(screen-m) {
+    margin-top: px-to-rem(185);
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
-}
-
-.icon {
-  width: px-to-rem(66);
-  height: px-to-rem(66);
-  flex-shrink: 0;
 }
 
 .legals {
