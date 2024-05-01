@@ -7,4 +7,5 @@ export interface LocationsTopSectionProps {
   setArray: any;
   slugs: any;
   locationAPI: string;
+  postcodesFacilities: string;
 }

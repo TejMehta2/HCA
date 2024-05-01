@@ -7,6 +7,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import { capitalizeFirstLetter } from '../../utility-functions/index';
+import axios from 'axios';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
   const { setIsSelfPayment } = useContext(ConsultantFinderContext);
@@ -20,12 +21,16 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
   // };
 
   const handleClick = (name: string) => {
-    props.setIsComponentVisible(false);
-    setIsSelfPayment(false);
+    const URL = `http://localhost:3000/api/locationAPI/GetDistances?provider=Default&method=Default&units=Kilometers&order=Default&origin=${name}&originType=Postcode&destinations=${props.postcodesFacilities}&destinationType=Postcode`;
 
-    if (props.setSearchStringPayment) {
-      props.setSearchStringPayment(name);
-    }
+    axios
+      .get(URL)
+      .then((resp) => {
+        console.log('results', resp);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -58,7 +63,7 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
                   <li
                     key={item.LocationKey}
                     aria-label="option"
-                    onClick={() => handleClick(item.name)}
+                    onClick={() => handleClick(item.LocationName)}
                   >
                     <span
                       className={

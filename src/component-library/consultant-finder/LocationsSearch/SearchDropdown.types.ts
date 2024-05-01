@@ -19,4 +19,5 @@ export default interface SearchDropdownProps {
   insuranceProvidersFilterHeaderText?: string;
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
+  postcodesFacilities: string;
 }

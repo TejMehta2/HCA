@@ -8,7 +8,6 @@ import SearchProps from './Search.types';
 let cancelToken: any;
 import SearchDdropdown from './SearchDropwdown';
 import TextLink from '../../core-components/TextLink/TextLink';
-import { transformFields } from '../../utility-functions/index';
 
 const LocationsSearch = (props: SearchProps): JSX.Element => {
   
@@ -65,15 +64,12 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
       });
   };
 
-
   const handleClose = () => {
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment('');
       setIsComponentVisible(false);
     }
   };
-
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('value input', e.target.value);
@@ -113,6 +109,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
               props.insuranceProvidersFilterHeaderText
             }
             loadingText={props.loadingText}
+            postcodesFacilities={props.postcodesFacilities}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

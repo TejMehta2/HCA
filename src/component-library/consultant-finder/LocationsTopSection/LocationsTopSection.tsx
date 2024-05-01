@@ -27,7 +27,16 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
 
   return (
     <div className={styles.bold}>
-      <LocationsSearch locationsAPI={props.locationAPI} placeholder={''} doctifyBaseURL={''} limit={0} noResultsMsg={''} searchIcon={undefined} loadingText={''} />
+      <LocationsSearch 
+        locationsAPI={props.locationAPI} 
+        placeholder={''} 
+        doctifyBaseURL={''} 
+        limit={0} 
+        noResultsMsg={''} 
+        searchIcon={undefined} 
+        loadingText={''} 
+        postcodesFacilities={props.postcodesFacilities} 
+      />
       <Button size={'small'} variation={'outline-dark'}>
         <button
           disabled={selectedLocations.length === props.slugs.length}

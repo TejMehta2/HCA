@@ -24,4 +24,5 @@ export default interface SearchProps {
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
   locationsAPI: string;
+  postcodesFacilities: string;
 }

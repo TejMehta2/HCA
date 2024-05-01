@@ -56,12 +56,16 @@ export const Default = (props: StepProps): JSX.Element => {
   const slugs = props?.fields?.Hospitals.map(
     (item: any) => item.fields.slug.value
   );
+  const postcodes = props?.fields?.Hospitals.map(
+    (item: any) => item.fields.postCode.value
+  ).join(',');
   console.log('slugs', slugs);
+  console.log('postcodes', postcodes);
 
   if (props.fields) {
     return (
       <>
-        <LocationsTopSection locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.valueTest || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
+        <LocationsTopSection postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.valueTest || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
         {/* <h1>Array: {array}</h1> */}
         <LocationCardsWrapper>
           {props?.fields?.Hospitals &&
