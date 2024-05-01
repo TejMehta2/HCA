@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from '../../utility-functions';
 
 const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
   const { suggestions, currentValue, setValue } = props;
-  if (!suggestions?.length) return <></>;
+  if (!suggestions?.length || suggestions.includes(currentValue)) return <></>;
   return (
     <ul
       className={styles.suggestions}
@@ -23,7 +23,7 @@ const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
               target.blur();
               setValue(suggestion);
             }}
-            type={'submit'}
+            type={'button'}
             aria-selected={currentValue === suggestion}
           >
             <Icons iconName={'iconSearch'} />
