@@ -1,8 +1,11 @@
-import type { NextRequest, NextFetchEvent } from 'next/server';
+import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
+import geolocationMiddleware from 'lib/geolocation-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
+  geolocationMiddleware(req);
+
   return middleware(req, ev);
 }
 
