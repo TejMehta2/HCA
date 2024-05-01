@@ -12,9 +12,16 @@
   padding-bottom: $spacing-11;
 }
 
+.search {
+  margin-bottom: px-to-rem(32);
+}
+
+.subheading {
+  margin-bottom: $spacing-4;
+}
+
 .suggestions {
-  margin-top: px-to-rem(32);
   display: flex;
-  gap: px-to-rem(8);
   flex-wrap: wrap;
+  gap: px-to-rem(8);
 }

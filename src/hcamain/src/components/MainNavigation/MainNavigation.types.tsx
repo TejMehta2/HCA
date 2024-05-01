@@ -6,6 +6,20 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
+type ExtendedText = Field & {
+  jsonValue?: LinkField;
+};
+type ExtendedSvg = Field & {
+  jsonValue?: {
+    id?: string;
+    url?: string;
+    name?: string;
+    displayName?: string;
+    fields?: {
+      SvgMarkup?: Field<string>;
+    };
+  };
+};
 type ExtendedLink = LinkField & {
   jsonValue?: LinkField;
 };
@@ -47,6 +61,29 @@ export interface MainNavigationTab {
   tabTitle?: Field<string>;
 }
 
+export interface PopularSearches {
+  value?: string;
+  jsonValue?: {
+    id?: string;
+    url?: string;
+    name?: string;
+    displayName?: string;
+    fields?: {
+      Text?: Field<string>;
+    };
+  }[];
+  PopularSearch?: PopularSearch[];
+}
+
+export interface PopularSearch {
+  text?: Field<string>;
+  icon?: {
+    Icon?: {
+      svgMarkup?: Field<string>;
+    };
+  };
+}
+
 export interface Fields {
   data?: {
     item?: {
@@ -72,6 +109,15 @@ export interface Fields {
             }[];
           };
           title?: Field<string>;
+        };
+      };
+      searchModalConfigurationFolder?: {
+        targetItem: {
+          searchPlaceholder?: Field<string>;
+          icon?: ExtendedSvg;
+          popularSearchesLabel?: ExtendedText;
+          popularSearches?: PopularSearches;
+          baseUrl?: ExtendedLink;
         };
       };
     };

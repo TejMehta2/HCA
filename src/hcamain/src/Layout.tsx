@@ -15,6 +15,7 @@ import Scripts from 'src/Scripts';
 import ScrollTransition from '@component-library/components/ScrollTransition/ScrollTransition';
 import Params from 'src/types/params';
 import ErrorBoundary from 'lib/ErrorBoundary';
+import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -103,72 +104,78 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
       </Head>
 
       {/* root placeholder for the app, which we add components to using route data */}
-      <div className={mainClassPageEditing}>
-        {route && (
-          <Placeholder
-            name="headless-head"
-            rendering={route}
-            renderEach={RenderWithErrorBoundary}
-          />
-        )}
-        <header>
-          <div id="header">
+      {/* eslint-disable-next-line */}
+      {/* @ts-ignore */}
+      <YextProvider>
+        <>
+          <div className={mainClassPageEditing}>
             {route && (
               <Placeholder
-                name="headless-header"
+                name="headless-head"
                 rendering={route}
                 renderEach={RenderWithErrorBoundary}
               />
             )}
-          </div>
-        </header>
-        <main ref={mainRef}>
-          <div id="content">
-            {isHomepage ? (
-              <ScrollTransition initialTheme={firstComponentTheme}>
+            <header>
+              <div id="header">
                 {route && (
                   <Placeholder
-                    name="headless-main"
+                    name="headless-header"
                     rendering={route}
                     renderEach={RenderWithErrorBoundary}
                   />
                 )}
-              </ScrollTransition>
-            ) : (
-              route && (
-                <Placeholder
-                  name="headless-main"
-                  rendering={route}
-                  renderEach={RenderWithErrorBoundary}
-                />
-              )
-            )}
-          </div>
-        </main>
-        <footer>
-          <div id="footer">
-            {isHomepage ? (
-              <ScrollTransition transitionBackground={false}>
-                {route && (
-                  <Placeholder
-                    name="headless-footer"
-                    rendering={route}
-                    renderEach={RenderWithErrorBoundary}
-                  />
+              </div>
+            </header>
+            <main ref={mainRef}>
+              <div id="content">
+                {isHomepage ? (
+                  <ScrollTransition initialTheme={firstComponentTheme}>
+                    {route && (
+                      <Placeholder
+                        name="headless-main"
+                        rendering={route}
+                        renderEach={RenderWithErrorBoundary}
+                      />
+                    )}
+                  </ScrollTransition>
+                ) : (
+                  route && (
+                    <Placeholder
+                      name="headless-main"
+                      rendering={route}
+                      renderEach={RenderWithErrorBoundary}
+                    />
+                  )
                 )}
-              </ScrollTransition>
-            ) : (
-              route && (
-                <Placeholder
-                  name="headless-footer"
-                  rendering={route}
-                  renderEach={RenderWithErrorBoundary}
-                />
-              )
-            )}
+              </div>
+            </main>
+            <footer>
+              <div id="footer">
+                {isHomepage ? (
+                  <ScrollTransition transitionBackground={false}>
+                    {route && (
+                      <Placeholder
+                        name="headless-footer"
+                        rendering={route}
+                        renderEach={RenderWithErrorBoundary}
+                      />
+                    )}
+                  </ScrollTransition>
+                ) : (
+                  route && (
+                    <Placeholder
+                      name="headless-footer"
+                      rendering={route}
+                      renderEach={RenderWithErrorBoundary}
+                    />
+                  )
+                )}
+              </div>
+            </footer>
           </div>
-        </footer>
-      </div>
+        </>
+      </YextProvider>
     </>
   );
 };

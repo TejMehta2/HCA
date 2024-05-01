@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import styles from './YextCustomPagination.module.scss';
 import { YextCustomPaginationProps } from './YextCustomPagination.types';
 import Pagination from '../../core-components/Pagination/Pagination';
 import { useSearchActions, useSearchState } from '@yext/search-headless-react';
@@ -43,11 +44,13 @@ const YextCustomPagination = (
   }
 
   return (
-    <Pagination
-      pageCount={maxPageCount}
-      currentPage={currentPageNumber}
-      callback={navigateToPage}
-    />
+    <div className={styles.wrapper}>
+      <Pagination
+        pageCount={maxPageCount}
+        currentPage={currentPageNumber}
+        callback={navigateToPage}
+      />
+    </div>
   );
 };
 

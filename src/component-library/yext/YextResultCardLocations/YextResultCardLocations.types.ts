@@ -13,11 +13,11 @@ export interface YextResultCardLocationsProps {
     icon: JSX.Element;
     text: JSX.Element;
   };
-  phone: {
+  phone?: {
     icon: JSX.Element;
     text: JSX.Element;
   };
-  openingHours: {
+  openingHours?: {
     icon: JSX.Element;
     text: JSX.Element;
   };

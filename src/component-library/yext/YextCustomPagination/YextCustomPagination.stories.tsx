@@ -3,7 +3,6 @@ import YextCustomPagination from './YextCustomPagination';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useSearchActions } from '@yext/search-headless-react';
 import Themes from '../../foundation/Themes/Themes';
-import YextProvider from '../YextProvider/YextProvider';
 import { VerticalResults } from '@yext/search-ui-react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -34,11 +33,9 @@ export const Default: StoryObj<typeof YextCustomPagination> = {
 
       return (
         <Themes theme={'A-HCA-White'}>
-          <YextProvider>
-            <Story />
-            <MockSearchWrapper />
-            <VerticalResults CardComponent={() => <></>} />
-          </YextProvider>
+          <Story />
+          <MockSearchWrapper />
+          <VerticalResults CardComponent={() => <></>} />
         </Themes>
       );
     },

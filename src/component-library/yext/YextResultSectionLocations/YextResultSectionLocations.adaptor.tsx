@@ -5,116 +5,143 @@ import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 import YextResultSectionLocations from './YextResultSectionLocations';
 import YextResultCardLocations from '../YextResultCardLocations/YextResultCardLocations';
+import HealthcareFacility, {
+  Hours,
+  DayHour,
+} from '../../types/yext/healthcare_facilities';
+import { Result } from '@yext/search-headless-react';
 
 interface YextSectionLocationsProps {
   variation?: 'stacked' | 'side-by-side';
-  results?: unknown[];
+  results?: Result<HealthcareFacility>[];
 }
+type weekdayType = keyof Hours;
+const weekday: weekdayType[] = [
+  'sunday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+];
+
 const YextResultSectionLocationsAdaptor = (
   props: YextSectionLocationsProps
 ): JSX.Element => {
-  const { variation = 'stacked' } = props;
-  // TODO - unpack props to replace these static values once Yext type generation is available
-  const cardPropsExample = {
-    number: <Numbers number={<span>1</span>} />,
-    image: (
-      <Image
-        src="/placeholders/couple-on-bench.jpeg"
-        alt="couple on bench"
-        width="140"
-        height="140"
-      />
-    ),
-    title: (
-      <Text variation="heading-1">
-        Golders Green Outpatients and Diagnostics Centre
-      </Text>
-    ),
-    distance: <Text variation={'body-large'}>546.0 km</Text>,
-    ctas: {
-      button: <button>Learn more</button>,
-      textButton: (
-        <button>
-          <Icons iconName="iconEmail"></Icons>Email us
-        </button>
-      ),
-    },
-    address: {
-      icon: <Icons iconName={'iconPin'}></Icons>,
-      text: (
-        <Text variation="body-large" tag="span">
-          Roman House, 296 Golders Green Road London NW11 9PY
+  const { variation = 'stacked', results } = props;
+  const newLocations = results?.map((result, index) => {
+    const {
+      address,
+      name,
+      mainPhone,
+      yextDisplayCoordinate,
+      closed,
+      hours,
+      c_heroImage,
+    } = result.rawData;
+    const id = (index + 1).toString();
+
+    const currentDay = new Date().getDay();
+
+    let hoursText = '';
+    if (hours) {
+      const openingClosingTimes = hours[weekday[currentDay]] as DayHour;
+      if (closed) {
+        hoursText = 'Opens at ' + openingClosingTimes.openIntervals![0].start;
+      } else if (openingClosingTimes.openIntervals![0].end) {
+        hoursText = 'Closes at ' + openingClosingTimes.openIntervals![0].end;
+      } else {
+        hoursText = 'Open 24h';
+      }
+    }
+    const coordinates =
+      result.rawData.geocodedCoordinate || result.rawData.displayCoordinate;
+    const cardProps = {
+      number: <Numbers number={<span>{id}</span>} />,
+      image: c_heroImage ? (
+        <Image
+          src={c_heroImage.url}
+          alt={c_heroImage.alternateText || ''}
+          width={c_heroImage.width}
+          height={c_heroImage.height}
+        />
+      ) : undefined,
+      title: <Text variation="heading-1">{name}</Text>,
+      distance: (
+        <Text variation={'body-large'}>
+          {Math.round(Number(result.distance) / 100) / 10}km
         </Text>
       ),
-    },
-    phone: {
-      icon: <Icons iconName="iconPhone"></Icons>,
-      text: (
-        <Text variation="body-large" tag="span">
-          020 3993 1861
-        </Text>
-      ),
-    },
-    openingHours: {
-      icon: <Icons iconName="iconClock"></Icons>,
-      text: (
-        <Text variation="body-large" tag="span">
-          <strong>Open Now.</strong> Closes at 20:00
-        </Text>
-      ),
-    },
-  };
-  const locations = [
-    {
-      id: '1',
+      ctas: {
+        button: (
+          <a href={'tel:' + mainPhone}>
+            <Icons iconName="iconPhone" />
+            Call
+          </a>
+        ),
+        textButton: coordinates ? (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://maps.google.com/?q=${result.rawData.geocodedCoordinate?.latitude},${result.rawData.geocodedCoordinate?.longitude}`}
+          >
+            <Icons iconName="iconRedo" />
+            Get directions
+          </a>
+        ) : undefined,
+      },
+      address: {
+        icon: <Icons iconName={'iconPin'}></Icons>,
+        text: (
+          <Text variation="body-large" tag="span">
+            {address.line1}, {address.line2} {address.city} {address.postalCode}
+          </Text>
+        ),
+      },
+      phone: mainPhone
+        ? {
+            icon: <Icons iconName="iconPhone"></Icons>,
+            text: (
+              <Text variation="body-large" tag="span">
+                {mainPhone}
+              </Text>
+            ),
+          }
+        : undefined,
+      openingHours: {
+        icon: <Icons iconName="iconClock"></Icons>,
+        text: (
+          <Text variation="body-large" tag="span">
+            <strong>{closed ? 'Closed.' : 'Open Now.'}</strong> {hoursText}
+          </Text>
+        ),
+      },
+    };
+
+    return {
+      id: id,
       card: (
         <YextResultCardLocations
-          {...cardPropsExample}
-          number={<Numbers number={<span>1</span>} />}
+          {...cardProps}
+          number={<Numbers number={<span>{id}</span>} />}
           variation={variation}
         />
       ),
       center: {
-        lat: 51.52036,
-        lng: -0.14797,
+        lat: yextDisplayCoordinate?.latitude || 51.5072,
+        lng: yextDisplayCoordinate?.longitude || 0.1276,
       },
-    },
-    {
-      id: '2',
-      card: (
-        <YextResultCardLocations
-          {...cardPropsExample}
-          number={<Numbers number={<span>2</span>} />}
-          variation={variation}
-        />
-      ),
-      center: {
-        lat: 51.506359,
-        lng: -0.08786,
-      },
-    },
-    {
-      id: '3',
-      card: (
-        <YextResultCardLocations
-          {...cardPropsExample}
-          number={<Numbers number={<span>3</span>} />}
-          variation={variation}
-        />
-      ),
-      center: {
-        lat: 51.53204,
-        lng: -0.16985,
-      },
-    },
-  ];
+    };
+  });
+
   const args = {
     apiKey: 'AIzaSyCJu0aTsRYKOQVPsETLeTvI84jxDZjRGAg',
     center: {
       lat: 51.5072,
       lng: 0.1276,
     },
-    locations,
+    locations: newLocations,
     title: 'Locations',
   };
   return <YextResultSectionLocations {...args} variation={variation} />;
