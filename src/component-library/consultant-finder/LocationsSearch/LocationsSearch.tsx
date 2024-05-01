@@ -22,7 +22,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
 
   // we are using search specialists api from Doctify when we have id for specialty
   const getAddress = (userInput: string) => {
-    const URL = `http://localhost:3000/api/locationAPI/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(userInput)}&searchType=Default`
+    const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(userInput)}&searchType=Default`
     
     if (typeof cancelToken != typeof undefined) {
       cancelToken.cancel('Operation canceled due to new request.');

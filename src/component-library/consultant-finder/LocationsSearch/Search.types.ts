@@ -23,4 +23,5 @@ export default interface SearchProps {
   insurersList?: any;
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
+  locationsAPI: string;
 }
