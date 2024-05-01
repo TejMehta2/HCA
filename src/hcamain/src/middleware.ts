@@ -7,7 +7,7 @@ export default async function (req: NextRequest, ev: NextFetchEvent) {
 
   if (!url.searchParams.has('location') && geo?.city) {
     const city = geo?.city || 'London';
-    url.searchParams.set('location', `${city}`);
+    url.searchParams.set('near', `${city}`);
     return NextResponse.redirect(url);
   }
 
