@@ -4,7 +4,7 @@ const geolocationMiddleware = (req: NextRequest) => {
   try {
     const { nextUrl: url, geo } = req;
 
-    if (!url.searchParams.has('location') && geo?.city) {
+    if (!url.searchParams.has('near') && geo?.city) {
       const city = geo?.city || 'London';
       url.searchParams.set('near', `${city}`);
       return NextResponse.redirect(url);
