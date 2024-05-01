@@ -105,12 +105,11 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
             resultsIcon={props.searchIcon}
             searchStringPayment={props.searchStringPayment}
             setSearchStringPayment={props.setSearchStringPayment}
-            insuranceProvidersFilterHeaderText={
-              props.insuranceProvidersFilterHeaderText
-            }
+            insuranceProvidersFilterHeaderText={props.insuranceProvidersFilterHeaderText}
             loadingText={props.loadingText}
-            postcodesFacilities={props.postcodesFacilities}
-          />
+            postcodesFacilities={props.postcodesFacilities} 
+            hospitals={props.hospitals} 
+            setHospitals={props.setHospitals}          />
         )}
         <span className={styles['consultant-finder-search-icon']}>
           {props.searchIcon && (

@@ -25,4 +25,6 @@ export default interface SearchProps {
   loadingText: string;
   locationsAPI: string;
   postcodesFacilities: string;
+  hospitals: any;
+  setHospitals: any;
 }

@@ -10,7 +10,8 @@ import { capitalizeFirstLetter } from '../../utility-functions/index';
 import axios from 'axios';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  const { setIsSelfPayment } = useContext(ConsultantFinderContext);
+  const { setSelectedLocations } = useContext(ConsultantFinderContext);
+  console.log('hospitals', props.hospitals);
 
   // const capitalizeFirstLetter = (string: string) => {
   //   if (!string) {
@@ -27,10 +28,20 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
       .get(URL)
       .then((resp) => {
         console.log('results', resp);
+
+        let hospitalDistances = resp.data.map((item: { Distance: any; }) => item.Distance);
+        let roundedDistances = hospitalDistances.map((item: number) => Math.round(item * 10) / 10);
+        let hospitalsWithDistance = props?.hospitals?.map((item: any, index: string | number) => ({ ...item, distance: roundedDistances[index] }));
+        console.log('hospitalsWithDistance', hospitalsWithDistance);
+        let sortByDistanceHospitals = hospitalsWithDistance.sort((a: { distance: number; }, b: { distance: number; }) => a.distance - b.distance);
+        props.setHospitals(sortByDistanceHospitals);
+        setSelectedLocations([]);
       })
       .catch((error) => {
         console.log(error);
       });
+
+      props.setIsComponentVisible(false);
   };
 
   return (

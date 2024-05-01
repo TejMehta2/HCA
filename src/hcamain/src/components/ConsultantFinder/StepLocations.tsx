@@ -50,6 +50,7 @@ export const Default = (props: StepProps): JSX.Element => {
   console.log('location', props.fields);
   const { selectedLocations } = useContext(ConsultantFinderContext);
   const [array, setArray] = useState([]);
+  const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
   // const array: string[] = [];
   console.log('selectedLocations', selectedLocations);
   console.log('array', array);
@@ -65,12 +66,12 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <LocationsTopSection postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.valueTest || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
+        <LocationsTopSection hospitals={hospitals} setHospitals={setHospitals} postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.valueTest || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
         {/* <h1>Array: {array}</h1> */}
         <LocationCardsWrapper>
-          {props?.fields?.Hospitals &&
+          {hospitals.length > 0 &&
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            props?.fields?.Hospitals.map((hospital: any) => (
+            hospitals.map((hospital: any) => (
               <LocationCard
                 key={hospital.id}
                 name={hospital?.fields?.HCAName?.value || ''}
@@ -80,6 +81,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 slug={hospital?.fields?.slug?.value || ''}
                 array={array}
                 setArray={setArray}
+                distance={hospital?.distance || null}
               />
             ))}
         </LocationCardsWrapper>
@@ -96,7 +98,9 @@ export const Default = (props: StepProps): JSX.Element => {
               disabled={false}
               onClick={() =>
                 router.push(
-                  props.fields.NextLink.value.href || '/Finder/Step-Locations'
+                  // sa iau practice si altele din passi urmatori si insurer
+                  // props.fields.NextLink.value.href || 
+                  `/Finder/Step-Consultant-Cards?search=Orthopaedics&keywordId=2865&sortType=relevance${selectedLocations.length > 0 ? `&practice=${selectedLocations.join(',')}&` : '&'}lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`
                 )
               }
             >

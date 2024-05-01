@@ -34,8 +34,10 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
         limit={0} 
         noResultsMsg={''} 
         searchIcon={undefined} 
-        loadingText={''} 
+        loadingText={'Loading results'} 
         postcodesFacilities={props.postcodesFacilities} 
+        hospitals={props.hospitals}
+        setHospitals={props.setHospitals}
       />
       <Button size={'small'} variation={'outline-dark'}>
         <button

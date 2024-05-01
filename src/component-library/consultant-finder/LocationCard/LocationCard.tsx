@@ -79,12 +79,15 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
       data-parent="parent"
     >
       <div className={styles.content}>
-        <div className={styles.distance}>
-          <Icons iconName="iconPin" />
-          <Text tag="p" variation="body-medium-small">
-            2.2 miles
-          </Text>
-        </div>
+        {
+          props.distance && 
+          <div className={styles.distance}>
+            <Icons iconName="iconPin" />
+            <Text tag="p" variation="body-medium-small">
+              {props.distance} miles
+            </Text>
+          </div>
+        }
         <div>
           <Text tag="p" variation="body-medium-large">
             {props.name}

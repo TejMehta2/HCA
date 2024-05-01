@@ -8,4 +8,6 @@ export interface LocationsTopSectionProps {
   slugs: any;
   locationAPI: string;
   postcodesFacilities: string;
+  hospitals: any;
+  setHospitals: any;
 }

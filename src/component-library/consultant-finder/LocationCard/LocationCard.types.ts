@@ -10,4 +10,5 @@ export interface LocationCardProps {
   slug: string;
   array: any;
   setArray: any;
+  distance: any;
 }

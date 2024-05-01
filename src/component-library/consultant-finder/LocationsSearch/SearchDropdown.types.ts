@@ -20,4 +20,6 @@ export default interface SearchDropdownProps {
   searchConsultantsResultsHeaderText?: string;
   loadingText: string;
   postcodesFacilities: string;
+  hospitals: any;
+  setHospitals: any;
 }
