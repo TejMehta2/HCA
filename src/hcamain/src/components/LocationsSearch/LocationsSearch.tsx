@@ -126,10 +126,12 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         <HeaderPlain
           contentVariation={contentVariation}
           heading={
-            <JssText
-              tag={params?.HeadingTag || 'h1'}
-              field={props?.fields?.Title}
-            />
+            <Text
+              tag={props.params?.HeadingTag || 'h1'}
+              variation={props.params?.HeadingSize || 'display-1'}
+            >
+              <JssText field={props?.fields?.Title} />
+            </Text>
           }
           description={
             <Text tag="div" variation="body-large">
