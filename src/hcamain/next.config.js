@@ -86,7 +86,7 @@ const nextConfig = {
       // consultant finder sitemap
       {
         source: '/sitemap.hca.consultant-finder.xml',
-        destination: `${process.env.INTEGRATION_LAYER_URL}/sitemap/consultants`,
+        destination: `/api/api-layer/sitemap/consultants`,
       },
     ];
   },
