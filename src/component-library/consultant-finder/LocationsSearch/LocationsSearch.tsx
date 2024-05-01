@@ -125,7 +125,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
           {props.searchStringPayment !== '' && (
             <TextLink>
               <button onClick={handleClose}>
-                <Icons iconName="iconCross" />
+                <Icons iconName="iconLocation" />
               </button>
             </TextLink>
           )}

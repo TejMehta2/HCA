@@ -9,7 +9,7 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 import { capitalizeFirstLetter } from '../../utility-functions/index';
 import axios from 'axios';
 
-const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
+const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSelectedLocations } = useContext(ConsultantFinderContext);
   console.log('hospitals', props.hospitals);
 
@@ -104,4 +104,4 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
   );
 };
 
-export default SearchDdropdownPayment;
+export default SearchDdropdown;
