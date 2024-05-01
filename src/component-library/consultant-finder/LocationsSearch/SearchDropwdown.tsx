@@ -52,16 +52,11 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
               styles['consultant-finder-search-dropdown-col--full-width']
             }
           >
-            <div className={styles['consultant-finder-search-dropdown-header']}>
-              <Text tag="h2" variation="subheading-2">
-                {props.insuranceProvidersFilterHeaderText || 'INSURERS'}
-              </Text>
-            </div>
             <ul>
               {props.data.length > 0 &&
                 props.data.map((item: any) => (
                   <li
-                    key={item.id}
+                    key={item.LocationKey}
                     aria-label="option"
                     onClick={() => handleClick(item.name)}
                   >
@@ -70,17 +65,18 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
                         styles['consultant-finder-search-dropdown-icon']
                       }
                     >
-                      {props.resultsIcon && (
+                      {/* {props.resultsIcon && (
                         <span
                           dangerouslySetInnerHTML={{
                             __html: props.resultsIcon,
                           }}
                         ></span>
-                      )}
-                      {!props.resultsIcon && <Icons iconName="iconSearch" />}
+                      )} */}
+                      {/* {!props.resultsIcon && <Icons iconName="iconPin" />} */}
+                      <Icons iconName="iconPin" />
                     </span>
                     <Text tag="p" variation="body-medium">
-                      {capitalizeFirstLetter(item.name)}
+                      {capitalizeFirstLetter(item.LocationName)}
                     </Text>
                   </li>
                 ))}
