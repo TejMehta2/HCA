@@ -115,6 +115,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [practices, setPractices] = useState<object[]>([]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [specialty, setTopSpecialty] = useState<string>('');
+  const [additionalErrorText, setAdditionalErrorText] = useState<string>('');
   const formId = self?.crypto?.randomUUID() || Date.now().toString();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -224,7 +225,15 @@ export const Default = (props: StepProps): JSX.Element => {
         setIsSubmitting(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
-        router.push(`/Finder/Step-Enquire-Form-Confirmation`);
+        console.log('submit resp', resp);
+        if (resp?.data?.errorCode > 0) {
+          setAdditionalErrorText(
+            `error code: ${resp?.data?.errorCode} ${resp?.data?.errorText}`
+          );
+          dialogRef?.current?.showModal();
+        } else {
+          router.push(`/Finder/Step-Enquire-Form-Confirmation`);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -334,6 +343,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields
                       ?.API_HCA_EnquireBookingForm_ErrorSubmittingText?.value ||
                       'Error submitting the form, please retry later'}
+                  </Text>
+                  <Text tag="p" variation="display-4">
+                    {additionalErrorText}
                   </Text>
                 </Container>
               </Modals>

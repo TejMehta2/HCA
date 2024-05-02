@@ -103,7 +103,14 @@ export const Default = (props: StepProps): JSX.Element => {
             </Text>
             <Container marginBottom="spacing-6" marginTop="spacing-6">
               <Button size={'large'} variation={'full-dark'}>
-                <button onClick={() => router.push(`/Finder/Step-Intro`)}>
+                <button
+                  onClick={() =>
+                    router.push(
+                      props?.fields?.NextLink?.value.href ||
+                        `/Finder/Step-Intro`
+                    )
+                  }
+                >
                   <span>
                     {props?.fields?.NextLink?.value?.text || 'Go to Homepage'}
                   </span>
