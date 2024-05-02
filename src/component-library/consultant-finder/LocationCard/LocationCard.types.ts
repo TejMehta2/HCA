@@ -11,4 +11,6 @@ export interface LocationCardProps {
   array: any;
   setArray: any;
   distance: any;
+  selectCardText: string;
+  removeCardText: string;
 }

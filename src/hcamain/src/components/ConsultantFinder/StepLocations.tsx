@@ -31,6 +31,12 @@ interface Fields {
   BackLink: LinkField;
   Hospitals: object[];
   API_HCA_Locations_BaseURL: Field<string>;
+  BodyText: Field<string>;
+  HeadingText: Field<string>;
+  SelectCardText: Field<string>;
+  RemoveCardText: Field<string>;
+  RemoveAllLocationsButtonText: Field<string>;
+  SelectAllLocationsButtonText: Field<string>;
 }
 
 type StepProps = {
@@ -51,7 +57,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const { selectedLocations } = useContext(ConsultantFinderContext);
   const [array, setArray] = useState([]);
   const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
-  // const array: string[] = [];
   console.log('selectedLocations', selectedLocations);
   console.log('array', array);
   const slugs = props?.fields?.Hospitals.map(
@@ -66,8 +71,20 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <LocationsTopSection hospitals={hospitals} setHospitals={setHospitals} postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
-        {/* <h1>Array: {array}</h1> */}
+        <LocationsTopSection 
+          hospitals={hospitals} 
+          setHospitals={setHospitals} 
+          postcodesFacilities={postcodes} 
+          locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value || 'http://localhost:3000/api/locationAPI/'} 
+          array={array} 
+          setArray={setArray} 
+          slugs={slugs} 
+          subheadline={props?.fields?.HeadingText?.value || 'facilities & hospitals'} 
+          title={props?.fields?.TitleText?.value ||'Preferred locations'} 
+          text={props?.fields?.BodyText?.value || 'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'}
+          removeAllLocationsButtonText={props?.fields?.RemoveAllLocationsButtonText?.value || 'Remove all locations'}
+          selectAllLocationsButtonText={props?.fields?.SelectAllLocationsButtonText?.value || 'Add all locations'}
+        />
         <LocationCardsWrapper>
           {hospitals.length > 0 &&
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,7 +98,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 slug={hospital?.fields?.slug?.value || ''}
                 array={array}
                 setArray={setArray}
-                distance={hospital?.distance || null}
+                distance={hospital?.distance || null} 
+                selectCardText={props?.fields?.SelectCardText?.value || 'Select'} 
+                removeCardText={props?.fields?.RemoveCardText?.value || 'Remove'}
               />
             ))}
         </LocationCardsWrapper>
