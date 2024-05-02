@@ -81,7 +81,9 @@ export const Default = (props: StepProps): JSX.Element => {
           slugs={slugs} 
           subheadline={props?.fields?.HeadingText?.value || 'facilities & hospitals'} 
           title={props?.fields?.TitleText?.value ||'Preferred locations'} 
-          text={props?.fields?.BodyText?.value || 'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'} 
+          text={props?.fields?.BodyText?.value || 'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'}
+          removeAllLocationsButtonText={props?.fields?.RemoveAllLocationsButtonText?.value || 'Remove all locations'}
+          selectAllLocationsButtonText={props?.fields?.SelectAllLocationsButtonText?.value || 'Add all locations'}
         />
         <LocationCardsWrapper>
           {hospitals.length > 0 &&

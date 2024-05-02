@@ -39,36 +39,42 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
           {props.text}
         </Text>
       </div>
-      <LocationsSearch 
-        locationsAPI={props.locationAPI} 
-        placeholder={''} 
-        doctifyBaseURL={''} 
-        limit={0} 
-        noResultsMsg={''} 
-        searchIcon={undefined} 
-        loadingText={'Loading results'} 
-        postcodesFacilities={props.postcodesFacilities} 
-        hospitals={props.hospitals}
-        setHospitals={props.setHospitals}
-      />
-      <Button size={'small'} variation={'outline-dark'}>
-        <button
-          disabled={selectedLocations.length === props.slugs.length}
-          onClick={selectAllLocations}
-        >
-          <Icons iconName="iconPlus" />
-          <span>{props.selectAllLocationsButtonText}</span>
-        </button>
-      </Button>
-      <Button size={'small'} variation={'outline-dark'}>
-        <button
-          disabled={selectedLocations.length === 0}
-          onClick={removeAllLocations}
-        >
-          <Icons iconName="iconCross" />
-          <span>{props.removeAllLocationsButtonText}</span>
-        </button>
-      </Button>
+      <div className={styles.controls}>
+        <div className={styles['locations-search']}>
+          <LocationsSearch 
+            locationsAPI={props.locationAPI} 
+            placeholder={''} 
+            doctifyBaseURL={''} 
+            limit={0} 
+            noResultsMsg={''} 
+            searchIcon={undefined} 
+            loadingText={'Loading results'} 
+            postcodesFacilities={props.postcodesFacilities} 
+            hospitals={props.hospitals}
+            setHospitals={props.setHospitals}
+          />
+        </div>
+        <div className={styles.buttons}>
+          <Button size={'small'} variation={'outline-dark'}>
+            <button
+              disabled={selectedLocations.length === props.slugs.length}
+              onClick={selectAllLocations}
+            >
+              <Icons iconName="iconPlus" />
+              <span>{props.selectAllLocationsButtonText}</span>
+            </button>
+          </Button>
+          <Button size={'small'} variation={'outline-dark'}>
+            <button
+              disabled={selectedLocations.length === 0}
+              onClick={removeAllLocations}
+            >
+              <Icons iconName="iconCross" />
+              <span>{props.removeAllLocationsButtonText}</span>
+            </button>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
