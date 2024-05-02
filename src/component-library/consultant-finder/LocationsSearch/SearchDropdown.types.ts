@@ -11,7 +11,7 @@ export default interface SearchDropdownProps {
   resultsIcon: any;
   specialtyLabel?: string;
   conditionsProceduresLabel?: string;
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
   searchStringConsultantName?: string;
   setSearchStringConsultantName?: React.Dispatch<React.SetStateAction<string>>;
   searchStringPayment?: string;
