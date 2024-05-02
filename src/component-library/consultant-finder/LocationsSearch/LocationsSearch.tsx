@@ -10,7 +10,7 @@ import SearchDdropdown from './SearchDropwdown';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 const LocationsSearch = (props: SearchProps): JSX.Element => {
-  const { ref, isComponentVisible, setIsComponentVisible, searchStringQuery } =
+  const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   const [resultsAddress, setResultsAddress] = useState([]);
   const [loading, setLoading] = useState(true);
