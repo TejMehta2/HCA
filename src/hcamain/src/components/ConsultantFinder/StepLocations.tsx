@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   Image as JssImage,
@@ -21,7 +21,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
-
+import Link from 'next/link';
 
 interface Fields {
   TitleText: Field<string>;
@@ -57,6 +57,9 @@ export const Default = (props: StepProps): JSX.Element => {
   const { selectedLocations } = useContext(ConsultantFinderContext);
   const [array, setArray] = useState([]);
   const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
+  const [search, setSearch] = useState('');
+  const [keywordId, setKewordId] = useState('');
+  const [insurer, seInsurer] = useState('');
   console.log('selectedLocations', selectedLocations);
   console.log('array', array);
   const slugs = props?.fields?.Hospitals.map(
@@ -68,9 +71,37 @@ export const Default = (props: StepProps): JSX.Element => {
   console.log('slugs', slugs);
   console.log('postcodes', postcodes);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    // get keywordID from URL
+    const keywordIdQuery = router?.query?.keywordId || '';
+    setKewordId(keywordIdQuery.toString());
+    
+
+    // get searchString from URL
+    const searchStringQuery = router?.query?.searchString || '';
+    setSearch(searchStringQuery.toString());
+
+    // get payment option from URL
+    const paymentOption = router?.query?.insurer || '';
+    seInsurer(paymentOption.toString());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   if (props.fields) {
     return (
       <>
+      {
+        router.isReady && 
+        <>
         <LocationsTopSection 
           hospitals={hospitals} 
           setHospitals={setHospitals} 
@@ -106,10 +137,15 @@ export const Default = (props: StepProps): JSX.Element => {
         </LocationCardsWrapper>
         <Navigation>
           <TextButton>
-            <JssLink field={props.fields.BackLink}>
+            {/* <JssLink field={props.fields.BackLink}>
               <Icons iconName="iconArrowSmallLeft" />
               {props.fields.BackLink.value.text}
-            </JssLink>
+            </JssLink> */}
+
+            <Link href={`${props.fields.BackLink.value.href}?keywordId=${keywordId}&searchString=${search}`}>
+                <Icons iconName="iconArrowSmallLeft" />
+                {props.fields.BackLink.value.text}
+              </Link>
           </TextButton>
 
           <Button size={'small'} variation={'full-dark'}>
@@ -119,7 +155,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 router.push(
                   // sa iau practice si altele din passi urmatori si insurer
                   // props.fields.NextLink.value.href || 
-                  `/Finder/Step-Consultant-Cards?search=Orthopaedics&keywordId=2865&sortType=relevance${selectedLocations.length > 0 ? `&practice=${selectedLocations.join(',')}&` : '&'}lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`
+                  `/Finder/Step-Consultant-Cards?search=${search}&keywordId=${keywordId}&sortType=relevance${selectedLocations.length > 0 ? `&practice=${selectedLocations.join(',')}&` : '&'}lat=51.507217&lon=-0.1275862&distance=700&limit=12${insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'}&offset=0`
                 )
               }
             >
@@ -127,6 +163,8 @@ export const Default = (props: StepProps): JSX.Element => {
             </button>
           </Button>
         </Navigation>
+        </>
+      }
       </>
     );
   }

@@ -51,6 +51,8 @@ interface ConsultantFinderContextType {
   setPatientName: React.Dispatch<React.SetStateAction<string>>;
   selectedLocations: [];
   setSelectedLocations: React.Dispatch<React.SetStateAction<any>>;
+  selectedInsurerPaymentStep: null;
+  setSelectedInsurerPaymentStep: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const ConsultantFinderContext =
@@ -106,6 +108,8 @@ export const ConsultantFinderContext =
     setPatientName: () => {},
     selectedLocations: [],
     setSelectedLocations: () => {},
+    selectedInsurerPaymentStep: null,
+    setSelectedInsurerPaymentStep: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -140,7 +144,8 @@ export const ConsultantFinderContextProvider = ({
   const [consultantMainSpecialty, setConsultantMainSpecialty] =
     useState<string>('');
   const [patientName, setPatientName] = useState<string>('');
-  const [selectedLocations, setSelectedLocations] = useState([]);
+  const [selectedLocations, setSelectedLocations] = useState<any>([]);
+  const [selectedInsurerPaymentStep, setSelectedInsurerPaymentStep] = useState(null);
 
   return (
     <ConsultantFinderContext.Provider
@@ -195,6 +200,8 @@ export const ConsultantFinderContextProvider = ({
         setPatientName,
         selectedLocations,
         setSelectedLocations,
+        selectedInsurerPaymentStep, 
+        setSelectedInsurerPaymentStep
       }}
     >
       {children}
