@@ -63,53 +63,48 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
       });
   };
 
-  const handleClose = () => {
-    if (props.setSearchStringPayment) {
-      props.setSearchStringPayment('');
-      setIsComponentVisible(false);
-    }
-  };
-
   const success = (position) => {
+    
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     // update lat and lon for URL
     // setLat(latitude);
     // setLon(longitude);
     console.log('geolocation lat', latitude, 'geolocation lon', longitude);
-    // axios.get(`${urlHost}/locationApi/suggestLocation/default/${latitude},${longitude}/georesolve`)
-    //     .then(resp => {
-    //         // console.log(resp);
-    //         setResults(resp.data);
-    //         setIsComponentVisible(true);
-    //         setNoResults(false);
-    //         setError(false);
-    //         setLoading(false);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //         setLoading(false);
-    //     });
-};
+    const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${`${latitude},${longitude}`}&searchType=geoResolve`
+    axios.get(URL)
+        .then(resp => {
+            console.log(resp);
+            setResultsAddress(resp.data);
+            setIsComponentVisible(true);
+            setLoading(false);
+            // setNoResults(false);
+            // setError(false);
+        })
+        .catch(error => {
+            console.log(error);
+            // setLoading(false);
+        });
+  };
 
 const errorGeolocation = () => {
   console.log('Unable to retrieve your location');
-  // setLoading(false);
-  // setIsComponentVisible(true);
+  setLoading(false);
+  setIsComponentVisible(true);
   // setIsGeolocation(false);
 };
 
 
   const getGeolocation = () => {
-    // setLoading(true);
+    setLoading(true);
     // setInputValue('');
-    // setIsComponentVisible(false);
+    setIsComponentVisible(false);
 
     if (!navigator.geolocation) {
         // no browser support
         console.log('no browser support for geolocation');
-        // setLoading(false);
-        // setIsComponentVisible(true);
+        setLoading(false);
+        setIsComponentVisible(true);
         // setIsGeolocation(false);
     } else {
         // setIsGeolocation(true);
@@ -156,7 +151,8 @@ const errorGeolocation = () => {
             loadingText={props.loadingText}
             postcodesFacilities={props.postcodesFacilities} 
             hospitals={props.hospitals} 
-            setHospitals={props.setHospitals}          />
+            setHospitals={props.setHospitals}
+            />
         )}
         <span className={styles['consultant-finder-search-icon']}>
           {props.searchIcon && (
