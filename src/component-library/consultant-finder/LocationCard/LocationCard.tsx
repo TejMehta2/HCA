@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { LocationCardProps } from './LocationCard.types';
 import styles from './LocationCard.module.scss';
 import Text from '../../foundation/Text/Text';
@@ -14,6 +15,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   const [totalConsultants, setTotalConsultants] = useState(null);
   const arrayWithSelectedSlugs: string[] = selectedLocations;
   const [isSelected, setSelected] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     setSelected(arrayWithSelectedSlugs.includes(props.slug));
@@ -21,12 +23,19 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   }, [selectedLocations]);
 
   useEffect(() => {
+
+    const keywordIdQuery = router?.query?.keywordId || '';
+    // get searchString from URL
+    const searchStringQuery = router?.query?.searchString || '';
+    // get payment option from URL
+    const paymentOption = router?.query?.insurer || '';
+    
     axios
       .get(
         `https://api.doctify.com/api/hca/search?search=${
-          props.search
-        }&keywordId=${props.keywordId}&sortType=${'relevance'}&insurer=${`${
-          props.insurance !== 'selfPay' ? props.insurance : ''
+          searchStringQuery
+        }&keywordId=${keywordIdQuery}&sortType=${'relevance'}&insurer=${`${
+          paymentOption !== 'selfPay' ? paymentOption : ''
         }`}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
           props.slug
         }&offset=0`
@@ -38,7 +47,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
         console.log(error);
       });
     // eslint-disable-next-line
-}, []);
+}, [router.isReady]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
