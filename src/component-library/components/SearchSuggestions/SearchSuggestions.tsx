@@ -18,9 +18,8 @@ const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
           <button
             className={styles.suggestion}
             role={'option'}
-            onClick={(event) => {
-              const target = event.target as HTMLButtonElement;
-              target.blur();
+            onMouseDown={() => {
+              // onMouseDown instead of onClick, because it fires in MacOS and IOS more consistently
               setValue(suggestion);
             }}
             type={'button'}

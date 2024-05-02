@@ -55,7 +55,9 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         Submit
       </button>
       <label htmlFor={inputId} className={styles['search-bar']}>
-        <Icons iconName={'iconSearch'} />
+        <div className={styles['search-icon']}>
+          <Icons iconName={'iconSearch'} />
+        </div>
         <input
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
@@ -87,7 +89,8 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
           <button
             className={styles.clear}
             type="button"
-            onClick={() => {
+            onMouseDown={() => {
+              // onMouseDown instead of onClick, because it fires in MacOS and IOS more consistently
               setValue('');
             }}
           >
