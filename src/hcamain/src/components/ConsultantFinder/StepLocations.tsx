@@ -66,7 +66,7 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <LocationsTopSection hospitals={hospitals} setHospitals={setHospitals} postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.valueTest || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
+        <LocationsTopSection hospitals={hospitals} setHospitals={setHospitals} postcodesFacilities={postcodes} locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value || 'http://localhost:3000/api/locationAPI/'} array={array} setArray={setArray} slugs={slugs} />
         {/* <h1>Array: {array}</h1> */}
         <LocationCardsWrapper>
           {hospitals.length > 0 &&

@@ -152,6 +152,7 @@ const errorGeolocation = () => {
             postcodesFacilities={props.postcodesFacilities} 
             hospitals={props.hospitals} 
             setHospitals={props.setHospitals}
+            locationsAPI={props.locationsAPI}
             />
         )}
         <span className={styles['consultant-finder-search-icon']}>

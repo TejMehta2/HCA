@@ -22,4 +22,5 @@ export default interface SearchDropdownProps {
   postcodesFacilities: string;
   hospitals: any;
   setHospitals: any;
+  locationsAPI: any;
 }

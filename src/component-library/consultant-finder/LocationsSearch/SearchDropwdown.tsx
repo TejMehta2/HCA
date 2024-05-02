@@ -13,16 +13,8 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSelectedLocations } = useContext(ConsultantFinderContext);
   console.log('hospitals', props.hospitals);
 
-  // const capitalizeFirstLetter = (string: string) => {
-  //   if (!string) {
-  //     return '';
-  //   } else {
-  //     return string.charAt(0).toUpperCase() + string.slice(1);
-  //   }
-  // };
-
   const handleClick = (name: string) => {
-    const URL = `http://localhost:3000/api/locationAPI/GetDistances?provider=Default&method=Default&units=Kilometers&order=Default&origin=${name}&originType=Postcode&destinations=${props.postcodesFacilities}&destinationType=Postcode`;
+    const URL = `${props.locationsAPI}/GetDistances?provider=Default&method=Default&units=Kilometers&order=Default&origin=${name}&originType=Postcode&destinations=${props.postcodesFacilities}&destinationType=Postcode`;
 
     axios
       .get(URL)
