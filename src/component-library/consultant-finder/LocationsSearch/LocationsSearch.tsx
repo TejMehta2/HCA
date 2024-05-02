@@ -20,6 +20,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const searchId = useId();
 
   const getAddress = (userInput: string) => {
+    setLoading(true);
     const URL = `${
       props.locationsAPI
     }/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(
@@ -57,8 +58,10 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
           console.log(error.message);
           // Don't show error message for canceled requests
           setError(false);
+          setLoading(true);
         } else {
           console.log(error.message);
+          setLoading(false);
           // Show error for other types of errors
           setError(true);
         }
@@ -68,6 +71,8 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const success = (position: any) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+    setLoading(true);
+    setIsComponentVisible(true);
     // update lat and lon for URL
     // setLat(latitude);
     // setLon(longitude);
@@ -101,7 +106,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const getGeolocation = () => {
     setLoading(true);
     setInputValue('');
-    setIsComponentVisible(false);
+    setIsComponentVisible(true);
 
     if (!navigator.geolocation) {
       // no browser support
@@ -118,11 +123,15 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('value input', e.target.value);
     setLoading(true);
+    setInputValue(e.target.value);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
 
     if (e.target.value.trim().length > 0) {
       getAddress(userInput);
+    } else {
+      setIsComponentVisible(false);
+      setResultsAddress([]);
     }
   };
 
@@ -158,6 +167,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
             setHospitals={props.setHospitals}
             locationsAPI={props.locationsAPI}
             setInputValue={setInputValue}
+            setCalculate={props.setCalculate}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

@@ -27,4 +27,5 @@ export default interface SearchProps {
   postcodesFacilities: string;
   hospitals: any;
   setHospitals: any;
+  setCalculate: any;
 }

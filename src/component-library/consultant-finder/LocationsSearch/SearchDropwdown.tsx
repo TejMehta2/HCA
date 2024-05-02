@@ -14,6 +14,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   console.log('hospitals', props.hospitals);
 
   const handleClick = (name: string) => {
+    props.setCalculate(true);
     const URL = `${props.locationsAPI}/GetDistances?provider=Default&method=Default&units=Kilometers&order=Default&origin=${name}&originType=Postcode&destinations=${props.postcodesFacilities}&destinationType=Postcode`;
     props.setInputValue(name);
 
@@ -39,11 +40,13 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
           (a: { distance: number }, b: { distance: number }) =>
             a.distance - b.distance
         );
+        props.setCalculate(false);
         props.setHospitals(sortByDistanceHospitals);
         setSelectedLocations([]);
       })
       .catch((error) => {
         console.log(error);
+        props.setCalculate(false);
       });
 
     props.setIsComponentVisible(false);

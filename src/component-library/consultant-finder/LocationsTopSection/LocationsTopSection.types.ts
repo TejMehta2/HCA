@@ -15,4 +15,5 @@ export interface LocationsTopSectionProps {
   text: string | ReactNode | JSX.Element;
   removeAllLocationsButtonText: string;
   selectAllLocationsButtonText: string;
+  setCalculate:any;
 }

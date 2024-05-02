@@ -51,6 +51,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
             postcodesFacilities={props.postcodesFacilities}
             hospitals={props.hospitals}
             setHospitals={props.setHospitals}
+            setCalculate={props.setCalculate}
           />
         </div>
         <div className={styles.buttons}>

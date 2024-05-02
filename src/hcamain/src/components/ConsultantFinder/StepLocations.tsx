@@ -16,6 +16,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import Link from 'next/link';
 
 interface Fields {
@@ -55,6 +56,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [search, setSearch] = useState('');
   const [keywordId, setKewordId] = useState('');
   const [insurer, seInsurer] = useState('');
+  const [calculate, setCalculate] = useState(false);
   const router = useRouter();
   console.log('selectedLocations', selectedLocations);
   console.log('array', array);
@@ -123,7 +125,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 props?.fields?.SelectAllLocationsButtonText?.value ||
                 'Add all locations'
               }
+              setCalculate={setCalculate}
             />
+            {
+              calculate &&
+              <LoaderCF loadingMsg='Calculating distances...'/>
+            }
             <LocationCardsWrapper>
               {hospitals.length > 0 &&
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -23,4 +23,5 @@ export default interface SearchDropdownProps {
   hospitals: any;
   setHospitals: any;
   locationsAPI: any;
+  setCalculate: any;
 }
