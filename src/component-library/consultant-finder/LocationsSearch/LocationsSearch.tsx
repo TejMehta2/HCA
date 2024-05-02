@@ -19,7 +19,6 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
 
-  // we are using search specialists api from Doctify when we have id for specialty
   const getAddress = (userInput: string) => {
     const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(userInput)}&searchType=Default`
     
@@ -70,6 +69,54 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
       setIsComponentVisible(false);
     }
   };
+
+  const success = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    // update lat and lon for URL
+    // setLat(latitude);
+    // setLon(longitude);
+    console.log('geolocation lat', latitude, 'geolocation lon', longitude);
+    // axios.get(`${urlHost}/locationApi/suggestLocation/default/${latitude},${longitude}/georesolve`)
+    //     .then(resp => {
+    //         // console.log(resp);
+    //         setResults(resp.data);
+    //         setIsComponentVisible(true);
+    //         setNoResults(false);
+    //         setError(false);
+    //         setLoading(false);
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //         setLoading(false);
+    //     });
+};
+
+const errorGeolocation = () => {
+  console.log('Unable to retrieve your location');
+  // setLoading(false);
+  // setIsComponentVisible(true);
+  // setIsGeolocation(false);
+};
+
+
+  const getGeolocation = () => {
+    // setLoading(true);
+    // setInputValue('');
+    // setIsComponentVisible(false);
+
+    if (!navigator.geolocation) {
+        // no browser support
+        console.log('no browser support for geolocation');
+        // setLoading(false);
+        // setIsComponentVisible(true);
+        // setIsGeolocation(false);
+    } else {
+        // setIsGeolocation(true);
+        navigator.geolocation.getCurrentPosition(success, errorGeolocation);
+    }
+}
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('value input', e.target.value);
@@ -124,7 +171,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
         <div className={styles['consultant-finder-search-close-btn']}>
           {props.searchStringPayment !== '' && (
             <TextLink>
-              <button onClick={handleClose}>
+              <button onClick={getGeolocation}>
                 <Icons iconName="iconLocation" />
               </button>
             </TextLink>
