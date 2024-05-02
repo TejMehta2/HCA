@@ -4,7 +4,6 @@ import {
   TemplateProps,
   GetHeadConfig,
   HeadConfig,
-  Template,
   TemplateRenderProps,
   // eslint-disable-next-line
   // @ts-ignore
@@ -33,7 +32,7 @@ export const getHeadConfig: GetHeadConfig<
   };
 };
 
-const headlessConfig: HeadlessConfig = {
+export const headlessConfig: HeadlessConfig = {
   apiKey: '4a8383e85bab30d0436cf4d1d859520d',
   experienceKey: 'hca-search',
   locale: 'en_GB',
@@ -45,7 +44,7 @@ const searcher = provideHeadless(headlessConfig);
 interface SearchProps {
   children: JSX.Element;
 }
-const YextProvider: Template<TemplateRenderProps> = (props: SearchProps) => {
+const YextProvider = (props: SearchProps) => {
   const { children } = props;
   return (
     <SearchHeadlessProvider searcher={searcher}>

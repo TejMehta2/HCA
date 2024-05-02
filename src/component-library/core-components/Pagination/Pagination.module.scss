@@ -76,6 +76,10 @@
   &:focus-visible {
     outline: px-to-rem(4) solid var(--pagination-arrow-hover);
   }
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 .number {

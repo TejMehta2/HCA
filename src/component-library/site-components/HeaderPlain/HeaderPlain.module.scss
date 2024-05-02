@@ -31,19 +31,14 @@
   grid-row-start: 2;
   margin-bottom: $spacing-5;
 
-  & > h1,
-  h2 {
-    @include apply-display-1;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 .subheading {
   grid-row-start: 1;
   margin-bottom: $spacing-3;
-
-  & > * {
-    @include apply-subheading-1;
-  }
 }
 
 .body-copy {
@@ -54,12 +49,4 @@
 
 .padding-small {
   padding-bottom: var(--spacing-7);
-
-  .heading {
-    margin: 0;
-
-    & > * {
-      @include apply-display-4;
-    }
-  }
 }

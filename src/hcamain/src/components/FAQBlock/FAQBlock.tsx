@@ -60,8 +60,8 @@ const getAccordions = (questions: QuestionFields[]) => {
 
   for (const accordion of questions) {
     accordions.push({
-      title: accordion.fields?.Question?.value,
-      children: <p>{accordion.fields?.Answer?.value}</p>,
+      title: <JssText field={accordion.fields?.Question} />,
+      children: <RichText field={accordion.fields?.Answer}></RichText>,
     });
 
     questionSchema.push({
@@ -151,27 +151,29 @@ export const Default = (props: FAQProps): JSX.Element => {
         }
         accordions={accordions.accordions}
         ctas={
-          <Button variation="full" size="large">
-            {isExperienceEditor ? (
-              <JssLink field={props.fields?.CTALink}></JssLink>
-            ) : (
-              <JssLink field={props.fields?.CTALink}>
-                {props?.fields?.CTAIcon?.fields?.SvgMarkup && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+          isExperienceEditor ? (
+            <JssLink field={props.fields?.CTALink}></JssLink>
+          ) : (
+            !!props.fields?.CTALink?.value?.href && (
+              <Button variation="full" size="large">
+                <JssLink field={props.fields?.CTALink}>
+                  {props?.fields?.CTAIcon?.fields?.SvgMarkup && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+                      }}
+                    ></span>
+                  )}
+                  <RichText
+                    tag="span"
+                    field={{
+                      value: props.fields?.CTALink.value.text,
                     }}
-                  ></span>
-                )}
-                <RichText
-                  tag="span"
-                  field={{
-                    value: props.fields?.CTALink.value.text,
-                  }}
-                />
-              </JssLink>
-            )}
-          </Button>
+                  />
+                </JssLink>
+              </Button>
+            )
+          )
         }
       />
     </>

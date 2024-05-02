@@ -28,10 +28,18 @@
   }
 }
 
-form {
+.children {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4 0;
+    padding-top: $spacing-4;
+    color: $navy-blue-100;
+  }
+}
+
+.error {
   display: flex;
-  flex-direction: column;
-  gap: $spacing-4 0;
-  padding-top: $spacing-4;
-  color: $navy-blue-100;
+  gap: $spacing-2;
+  color: $red-100;
 }

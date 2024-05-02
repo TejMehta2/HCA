@@ -48,8 +48,8 @@ export const Default: StoryObj<typeof QuoteBlock> = {
   args: {
     children: (
       <Text variation="display-5">
-        &quot;The personal savings allowance enables most people to earn
-        interest tax-free across various savings options.&quot;
+        “The personal savings allowance enables most people to earn interest
+        tax-free across various savings options.”
       </Text>
     ),
     author: {
@@ -84,4 +84,11 @@ export const Default: StoryObj<typeof QuoteBlock> = {
       </div>
     ),
   ],
+};
+
+export const NoAuthor = {
+  args: {
+    children: Default.args?.children,
+  },
+  decorators: Default.decorators,
 };

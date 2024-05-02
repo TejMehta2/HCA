@@ -62,6 +62,7 @@ export default interface Ce_testTreatment {
   c_answersPrimaryCallToAction?: C_answersPrimaryCallToAction;
   c_answersSecondaryCallToAction?: C_answersSecondaryCallToAction;
   c_body?: string;
+  s_snippet?: string;
   c_linkedFacilitiesTestField?: string[];
   c_linkedLocationPageServicesSection?: EntityReference[];
   c_linkedLocationSpecialtiesAndTestTreatments?: EntityReference[];

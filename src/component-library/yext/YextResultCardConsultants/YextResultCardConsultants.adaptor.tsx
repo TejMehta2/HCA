@@ -5,62 +5,75 @@ import YextResultCardConsultants from './YextResultCardConsultants';
 import { CardProps } from '@yext/search-ui-react';
 import Doctify from '../../components/Doctify/Doctify';
 import Icons from '../../foundation/Icons/Icons';
-
-// TODO - replace these props with Yext type generated interfaced
-// https://hitchhikers.yext.com/docs/search/search-result-typing/?target=using-generated-types-in-your-project
-interface YextConsultantCardProps {}
+import HealthcareProfessional from '../../types/yext/healthcare_professionals';
+import DoctifyLogoDark from '../../assets/images/doctify-dark.png';
+import DoctifyLogoLight from '../../assets/images/doctify-light.png';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 const YextResultCardConsultantsAdaptor = (
-  props: CardProps<YextConsultantCardProps>
+  props: CardProps<HealthcareProfessional>
 ): JSX.Element => {
-  const {} = props;
-  // TODO - unpack props to replace these static values once Yext type generation is available
-  const title = 'Christian Brown';
-  const copy =
-    "Mr Christian Brown is a Consultant Urological Surgeon and a member of the prostate robotic and laparoscopic teams at King's College Hospital....";
-  const image = {
-    alt: 'doctor headshot',
-    src: '/placeholders/doctor-portrait-circle.png',
-    width: 140,
-    height: 140,
-  };
+  const { result } = props;
+  const { rawData } = result;
+  const {
+    c_overallExperience,
+    c_totalReviews,
+    c_body,
+    c_specialty,
+    mainPhone,
+    headshot,
+    name,
+    websiteUrl,
+  } = rawData;
+
   const cta = {
-    url: '#',
+    url: websiteUrl?.url,
     label: 'View profile',
   };
-  const doctifyRating = 4;
-  const doctifyReviews = '13,500 +';
-  const phoneNumber = '020 3993 1861';
-  const specialties = 'General Urology, Urology, Urological Oncology';
+
+  const specialties = Array.prototype.map
+    .call(c_specialty, (item) => {
+      return item.keywordName;
+    })
+    .join(', ');
 
   return (
     <YextResultCardConsultants
       image={
-        <>
-          <Image {...image} />
-        </>
+        headshot?.url ? (
+          <>
+            <Image
+              alt={'headshot of ' + name}
+              src={headshot?.url}
+              width={headshot?.width}
+              height={headshot?.height}
+            />
+          </>
+        ) : undefined
       }
       title={
         <Text tag="h3" variation={'heading-1'}>
-          {title}
+          {name}
         </Text>
       }
       copy={
-        <Text tag="div" variation={'body-large'}>
-          {copy}
-        </Text>
+        c_body ? (
+          <Text tag="div" variation={'body-large'}>
+            <span dangerouslySetInnerHTML={{ __html: c_body }} />
+          </Text>
+        ) : undefined
       }
       cta={<a href={cta.url}>{cta.label}</a>}
       doctify={
         <Doctify
           alignment="left"
           link={<a href="#"></a>}
-          rating={doctifyRating}
-          reviews={doctifyReviews}
+          rating={c_overallExperience!}
+          reviews={c_totalReviews}
           logo={{
             dark: (
               <Image
-                src="/doctify-dark.png"
+                src={DoctifyLogoDark}
                 alt="doctify logo"
                 width="83"
                 height="21"
@@ -68,7 +81,7 @@ const YextResultCardConsultantsAdaptor = (
             ),
             light: (
               <Image
-                src="/doctify-light.png"
+                src={DoctifyLogoLight}
                 alt="doctify logo"
                 width="83"
                 height="21"
@@ -77,14 +90,16 @@ const YextResultCardConsultantsAdaptor = (
           }}
         />
       }
-      phone={{
-        icon: <Icons iconName="iconPhone"></Icons>,
-        text: (
-          <Text variation="body-large" tag="span">
-            {phoneNumber}
-          </Text>
-        ),
-      }}
+      phone={
+        mainPhone ? (
+          <TextLink variation={'body-large'}>
+            <a href={`tel:${mainPhone}`}>
+              <Icons iconName="iconPhone"></Icons>
+              <span>{mainPhone as string}</span>
+            </a>
+          </TextLink>
+        ) : undefined
+      }
       specialties={{
         icon: <Icons iconName="iconStethoscope"></Icons>,
         text: (

@@ -663,6 +663,7 @@ export default interface HealthcareProfessional {
   rankTrackingSites?: RankTrackingSites[];
   reservationUrl?: ReservationUrl;
   routableCoordinate?: Coordinate;
+  s_snippet: string;
   serviceArea?: ServiceArea;
   services?: string[];
   shortName35?: string;

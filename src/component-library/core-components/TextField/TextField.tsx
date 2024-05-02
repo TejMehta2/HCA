@@ -7,6 +7,7 @@ import Text from '../../foundation/Text/Text';
 const TextField = (props: TextFieldProps): JSX.Element => {
   const {
     id,
+    name,
     label,
     helpText,
     type = 'text',
@@ -31,6 +32,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
       )}
       <span className={styles.input}>
         <input
+          name={name}
           id={id}
           ref={inputRef}
           type={type}

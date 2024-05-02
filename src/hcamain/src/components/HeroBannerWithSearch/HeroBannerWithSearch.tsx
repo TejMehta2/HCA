@@ -13,12 +13,7 @@ import SearchButton from '@component-library/components/SearchButton/SearchButto
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
-
-type HCAIconFields = {
-  fields?: {
-    svgMarkup?: Field<string>;
-  };
-};
+import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
 
 interface Fields {
   data?: {
@@ -28,7 +23,9 @@ interface Fields {
     };
     item?: {
       searchIcon?: {
-        Icon?: HCAIconFields;
+        Icon?: {
+          svgMarkup?: Field<string>;
+        };
       };
       searchPlaceholder?: { jsonValue?: Field<string> };
       cTAHeading?: { jsonValue?: Field<string> };
@@ -61,6 +58,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
   if (!props.fields) {
     return <HeroBannerWithSearchDefaultComponent {...props} />;
   }
+
   return (
     <HomepageHero
       theme={props.params?.Theme || 'H-HCA-Tangerine'}
@@ -73,7 +71,14 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
         </Text>
       }
       search={
-        <SearchButton>
+        <SearchButton
+          onClick={() => {
+            const dialog = document.getElementById(
+              SEARCH_SUGGESTIONS_MODAL_ID
+            ) as HTMLDialogElement;
+            dialog?.showModal();
+          }}
+        >
           <JssText
             field={props.fields?.data?.item?.searchPlaceholder?.jsonValue}
           />

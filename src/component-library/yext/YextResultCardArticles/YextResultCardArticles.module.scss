@@ -13,7 +13,15 @@
 
   @include media(screen-l) {
     display: grid;
-    grid: auto / px-to-rem(140) auto auto;
+
+    &.has-image {
+      grid: auto / px-to-rem(140) auto auto;
+    }
+
+    &.no-image {
+      grid: auto / auto auto;
+    }
+
     gap: 0 $spacing-6;
     padding: $spacing-7;
   }
@@ -46,14 +54,26 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
 
-  div {
+  > * {
     width: 100%;
+    max-width: px-to-rem(500);
+  }
+
+  a,
+  button {
+    max-width: 100%;
   }
 
   @include media(screen-l) {
     flex-direction: row;
+    justify-content: flex-end;
     gap: 0 $spacing-5;
+
+    div {
+      width: auto;
+    }
   }
 }
 
@@ -61,4 +81,11 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-4 0;
+}
+
+.copy {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

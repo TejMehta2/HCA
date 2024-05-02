@@ -6,6 +6,9 @@ import {
 import styles from './YextResultSectionLocations.module.scss';
 import YextCustomMap from '../YextCustomMap/YextCustomMap';
 import Text from '../../foundation/Text/Text';
+import TextButton from '../../core-components/TextButton/TextButton';
+import Icons from '../../foundation/Icons/Icons';
+import useSetVertical from '../helpers/useSetVertical';
 
 const YextResultSectionLocations = (
   props: YextResultSectionLocationsProps
@@ -17,7 +20,7 @@ const YextResultSectionLocations = (
     variation = 'stacked',
     title,
   } = props;
-
+  const setVertical = useSetVertical();
   const cardsRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<string>();
 
@@ -62,7 +65,7 @@ const YextResultSectionLocations = (
 
   return (
     <div className={[styles.wrapper, styles[variation]].join(' ')}>
-      {title && (
+      {title && variation === 'stacked' && (
         <Text tag={'h2'} variation={'heading-1'}>
           {title}
         </Text>
@@ -85,6 +88,22 @@ const YextResultSectionLocations = (
           <div className={styles.map}>{yextCustomMapMemo}</div>
         </div>
       </div>
+      {variation === 'stacked' && (
+        <TextButton>
+          <button
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              });
+              setVertical('healthcare_facilities');
+            }}
+          >
+            <span>View all</span>
+            <Icons iconName={'iconArrowRight'} />
+          </button>
+        </TextButton>
+      )}
     </div>
   );
 };

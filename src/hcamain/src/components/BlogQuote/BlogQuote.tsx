@@ -37,7 +37,7 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
   if (isExperienceEditor)
     return (
       <>
-        <JssText field={props.fields?.Author?.[0].fields?.Name} />
+        <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
         <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
         <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
         <JssText field={props.fields?.Quote} />
@@ -48,18 +48,16 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
-  if (!props.fields || !props.fields.Author?.length) {
+  if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
-  const isContainerized = props?.params?.Containerized === '1';
-  if (isContainerized) {
-    return (
-      <RichText additionalStyles={props?.params?.styles}>
-        <figure>
-          <QuoteBlock
-            author={{
-              name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
+  const quoteBlock = (
+    <QuoteBlock
+      author={
+        props.fields?.Author?.length
+          ? {
+              name: <JssText field={props.fields?.Author?.[0]?.fields?.Name} />,
               image: (
                 <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
               ),
@@ -70,14 +68,22 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
                   />
                 </span>
               ),
-            }}
-            children={
-              <Text variation={props.params?.HeadingSize || 'display-5'}>
-                <JssText field={props.fields?.Quote} />
-              </Text>
             }
-          />
-        </figure>
+          : undefined
+      }
+      children={
+        <Text variation={props.params?.HeadingSize || 'display-5'}>
+          “<JssText field={props.fields?.Quote} />”
+        </Text>
+      }
+    />
+  );
+
+  const isContainerized = props?.params?.Containerized === '1';
+  if (isContainerized) {
+    return (
+      <RichText additionalStyles={props?.params?.styles}>
+        <figure>{quoteBlock}</figure>
       </RichText>
     );
   }
@@ -87,24 +93,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
     >
-      <RichText>
-        <QuoteBlock
-          author={{
-            name: <JssText field={props.fields?.Author?.[0].fields?.Name} />,
-            image: <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />,
-            tag: (
-              <span>
-                <JssText field={props.fields?.Author?.[0]?.fields?.Position} />
-              </span>
-            ),
-          }}
-          children={
-            <Text variation={props.params?.HeadingSize || 'display-5'}>
-              <JssText field={props.fields?.Quote} />
-            </Text>
-          }
-        />
-      </RichText>
+      <RichText>{quoteBlock}</RichText>
     </BlogContent>
   );
 };

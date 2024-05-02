@@ -13,17 +13,17 @@ Languages:
       Value: 20240123T162954Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d866d3a4-71c8-407a-9ef5-67ee82587ce6"
+      Value: "b3711ee8-558d-4a59-b8db-fccd47d1b3e5"
     - ID: "970e5839-53a1-405c-8ada-3e7c4da4fc4d"
       Hint: TelephoneNumber
-      Value: "{E58B8BA8-5275-4A3C-8059-8C83EC3F0C10}"
+      Value: 
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240212T090242Z
+      Value: 20240429T142856Z
     - ID: "f11e7b8e-2e89-424c-807b-af08ce4f29db"
       Hint: ContactUnitName
       Value: Internation team (agencies & insurers)

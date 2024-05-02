@@ -7,11 +7,13 @@ import Text from '../../foundation/Text/Text';
 const Textarea = (props: TextareaProps): JSX.Element => {
   const {
     id,
+    name,
     label,
     required = false,
     errorMessage,
     maxCharacters = 300,
     helperText,
+    defaultValue,
   } = props;
 
   const [count, setCount] = useState(0);
@@ -28,9 +30,11 @@ const Textarea = (props: TextareaProps): JSX.Element => {
       <div className={styles.textarea}>
         <textarea
           id={id}
+          name={name}
           required={required}
           onChange={(e) => setCount(e.target.value.length)}
           maxLength={maxCharacters}
+          defaultValue={defaultValue}
         />
         <span className={styles.count}>
           {count} / {maxCharacters}

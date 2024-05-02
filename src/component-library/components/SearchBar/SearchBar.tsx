@@ -18,6 +18,8 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
   const inputId = useId();
   const suggestionsId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
+  const submitRef = useRef<HTMLButtonElement>(null);
+
   const comboboxAttributes = {
     list: suggestionsId,
     role: 'combobox',
@@ -36,14 +38,26 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
 
   const setValue = (newValue: string = '') => {
     if (!inputRef.current) return;
-    // Use native setter to allow for dispatch propagation (native form change event)
     inputRef.current.value = newValue;
+
+    if (!submitRef.current) return;
+    submitRef.current.click();
   };
 
   return (
     <div className={styles.wrapper}>
+      <button
+        ref={submitRef}
+        aria-hidden={true}
+        className={'sr-only'}
+        type={'submit'}
+      >
+        Submit
+      </button>
       <label htmlFor={inputId} className={styles['search-bar']}>
-        <Icons iconName={'iconSearch'} />
+        <div className={styles['search-icon']}>
+          <Icons iconName={'iconSearch'} />
+        </div>
         <input
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
@@ -74,8 +88,9 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         {defaultValue && (
           <button
             className={styles.clear}
-            type="submit"
-            onClick={() => {
+            type="button"
+            onMouseDown={() => {
+              // onMouseDown instead of onClick, because it fires in MacOS and IOS more consistently
               setValue('');
             }}
           >

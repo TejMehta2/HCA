@@ -31,7 +31,7 @@ const YextFiltersAdaptor = (): JSX.Element | JSX.Element[] => {
 
   const filters: JSX.Element[] = (facets ?? [])
     .map((facet) => {
-      if (facet.options[0].matcher === '$eq') {
+      if (facet.options[0]?.matcher === '$eq') {
         return (
           <YextFilters
             filtersTitle={facet?.displayName}

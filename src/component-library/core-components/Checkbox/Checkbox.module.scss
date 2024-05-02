@@ -118,7 +118,7 @@
   }
 }
 
-.wrapper {
+.inner {
   display: flex;
   user-select: none;
 
@@ -138,5 +138,26 @@
 
   .input-wrapper {
     @extend %input-checkbox;
+  }
+}
+
+.wrapper {
+  .error-message {
+    display: none;
+    align-items: center;
+    gap: $spacing-2;
+    margin-top: $spacing-2;
+  }
+
+  &:has(input:not(:focus):user-invalid) {
+    color: var(--field-error-colour);
+
+    .error-message {
+      display: flex;
+    }
+
+    .helper {
+      color: $navy-blue-100;
+    }
   }
 }
