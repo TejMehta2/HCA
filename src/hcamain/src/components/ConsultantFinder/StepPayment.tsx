@@ -23,11 +23,6 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Container from '@component-library/foundation/Containers/Container';
 
 interface Fields {
-  // from the Specific component data template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepSPECIFIC
-
-  // add specific fields defined in the data template here...
-
-  // from the StepCommon template e.g. /sitecore/templates/Project/HCA/Consultant finder/StepCommon
   TitleText: Field<string>;
   HeadingText: Field<string>;
   CardImage: ImageField;
@@ -85,12 +80,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // get keywordID from URL
     const keywordIdQuery = router?.query?.keywordId || '';
     setKewordId(keywordIdQuery.toString());
-    
 
     // get searchString from URL
     const searchStringQuery = router?.query?.searchString || '';
     setSearch(searchStringQuery.toString());
-
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
@@ -98,62 +91,83 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-      {router.isReady && 
-      <>
-      <ImageAndTextBlock
-            theme="A-HCA-White"
-            imageAlignment="left"
-            length="short"
-            hideImageOnMobile={true}
-            subheader={<Text tag="h3" variation="subheading-1">
-              <JssRichText field={props.fields.HeadingText} />
-            </Text>}
-            header={<Text tag="h2" variation="display-2">
-              <JssRichText field={props.fields.TitleText} />
-            </Text>}
-            image={<JssImage field={props.fields.CardImage} />}
-          >
-            <Text tag="div" variation="body-large">
-              <JssRichText field={props.fields.BodyText} />
-            </Text>
-            <form autoComplete="off">
-              <SearchPayment
-                placeholder={props?.fields?.SearchPlaceholderText?.value ||
-                  'Type in your insurance provider'}
-                doctifyBaseURL={props?.fields?.API_Insurance_BaseURL?.value ||
-                  'https://api.doctify.com/api/hca/listing/insurers'}
-                limit={Number(props?.fields?.API_Insurance_Limit?.value) || 20}
-                noResultsMsg={props?.fields?.API_Insurance_NoResultsMsg?.value ||
-                  'No matches found, please try typing something else.'}
-                searchIcon={props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null}
-                searchStringPayment={searchStringPayment}
-                setSearchStringPayment={setSearchStringPayment}
-                insuranceProvidersFilterHeaderText={props?.fields?.InsuranceProvidersFilterHeaderText?.value ||
-                  'INSURERS'}
-                insurersList={props?.fields?.InsurersList || []}
-                loadingText={props?.fields?.API_Insurance_LoadingMsg?.value || 'Loading...'} />
-
-              <Container marginTop="spacing-8" marginBottom="spacing-4">
-                <Text tag="h2" variation="heading-2">
-                  {props.fields.TitleText.value}
+        {router.isReady && (
+          <>
+            <ImageAndTextBlock
+              theme="A-HCA-White"
+              imageAlignment="left"
+              length="short"
+              hideImageOnMobile={true}
+              subheader={
+                <Text tag="h3" variation="subheading-1">
+                  <JssRichText field={props.fields.HeadingText} />
                 </Text>
-              </Container>
-
-              <Checkbox
-                id="1"
-                label={props.fields.SelfPayCheckBoxText.value}
-                name="selfpayment"
-                value="selfpayment"
-                checked={isSelfPayment}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.checked) {
-                    setSearchStringPayment('');
+              }
+              header={
+                <Text tag="h2" variation="display-2">
+                  <JssRichText field={props.fields.TitleText} />
+                </Text>
+              }
+              image={<JssImage field={props.fields.CardImage} />}
+            >
+              <Text tag="div" variation="body-large">
+                <JssRichText field={props.fields.BodyText} />
+              </Text>
+              <form autoComplete="off">
+                <SearchPayment
+                  placeholder={
+                    props?.fields?.SearchPlaceholderText?.value ||
+                    'Type in your insurance provider'
                   }
-                  setIsSelfPayment(e.target.checked);
-                } }
-              ></Checkbox>
-            </form>
-          </ImageAndTextBlock><Navigation>
+                  doctifyBaseURL={
+                    props?.fields?.API_Insurance_BaseURL?.value ||
+                    'https://api.doctify.com/api/hca/listing/insurers'
+                  }
+                  limit={
+                    Number(props?.fields?.API_Insurance_Limit?.value) || 20
+                  }
+                  noResultsMsg={
+                    props?.fields?.API_Insurance_NoResultsMsg?.value ||
+                    'No matches found, please try typing something else.'
+                  }
+                  searchIcon={
+                    props?.fields?.SearchIcon?.fields?.SvgMarkup?.value || null
+                  }
+                  searchStringPayment={searchStringPayment}
+                  setSearchStringPayment={setSearchStringPayment}
+                  insuranceProvidersFilterHeaderText={
+                    props?.fields?.InsuranceProvidersFilterHeaderText?.value ||
+                    'INSURERS'
+                  }
+                  insurersList={props?.fields?.InsurersList || []}
+                  loadingText={
+                    props?.fields?.API_Insurance_LoadingMsg?.value ||
+                    'Loading...'
+                  }
+                />
+
+                <Container marginTop="spacing-8" marginBottom="spacing-4">
+                  <Text tag="h2" variation="heading-2">
+                    {props.fields.TitleText.value}
+                  </Text>
+                </Container>
+
+                <Checkbox
+                  id="1"
+                  label={props.fields.SelfPayCheckBoxText.value}
+                  name="selfpayment"
+                  value="selfpayment"
+                  checked={isSelfPayment}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    if (e.target.checked) {
+                      setSearchStringPayment('');
+                    }
+                    setIsSelfPayment(e.target.checked);
+                  }}
+                ></Checkbox>
+              </form>
+            </ImageAndTextBlock>
+            <Navigation>
               <TextButton>
                 <JssLink field={props.fields.BackLink}>
                   <Icons iconName="iconArrowSmallLeft" />
@@ -163,16 +177,28 @@ export const Default = (props: StepProps): JSX.Element => {
 
               <Button size={'small'} variation={'full-dark'}>
                 <button
-                  disabled={searchStringPayment === '' && !isSelfPayment ? true : false}
-                  onClick={() => router.push(
-                    `${props.fields.NextLink.value.href || '/Finder/Step-Locations'}?keywordId=${keywordId}&searchString=${search}${isSelfPayment ? `&insurer=${'selfPay'}` : `&insurer=${selectedInsurerPaymentStep}`}`
-                  )}
+                  disabled={
+                    searchStringPayment === '' && !isSelfPayment ? true : false
+                  }
+                  onClick={() =>
+                    router.push(
+                      `${
+                        props.fields.NextLink.value.href ||
+                        '/Finder/Step-Locations'
+                      }?keywordId=${keywordId}&searchString=${search}${
+                        isSelfPayment
+                          ? `&insurer=${'selfPay'}`
+                          : `&insurer=${selectedInsurerPaymentStep}`
+                      }`
+                    )
+                  }
                 >
                   <span>{props.fields.NextLink.value.text}</span>
                 </button>
               </Button>
-            </Navigation></>
-      }
+            </Navigation>
+          </>
+        )}
       </>
     );
   }

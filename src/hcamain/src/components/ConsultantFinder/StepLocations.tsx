@@ -4,19 +4,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
-  Image as JssImage,
-  Link as JssLink,
-  RichText as JssRichText,
   ImageField,
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
-import Text from '@component-library/foundation/Text/Text';
 import LocationCardsWrapper from '@component-library/consultant-finder/LocationCardsWrapper/LocationCardsWrapper';
 import LocationCard from '@component-library/consultant-finder/LocationCard/LocationCard';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
-import router from 'next/router';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
@@ -60,6 +55,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [search, setSearch] = useState('');
   const [keywordId, setKewordId] = useState('');
   const [insurer, seInsurer] = useState('');
+  const router = useRouter();
   console.log('selectedLocations', selectedLocations);
   console.log('array', array);
   const slugs = props?.fields?.Hospitals.map(
@@ -84,7 +80,6 @@ export const Default = (props: StepProps): JSX.Element => {
     // get keywordID from URL
     const keywordIdQuery = router?.query?.keywordId || '';
     setKewordId(keywordIdQuery.toString());
-    
 
     // get searchString from URL
     const searchStringQuery = router?.query?.searchString || '';
@@ -99,72 +94,91 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-      {
-        router.isReady && 
-        <>
-        <LocationsTopSection 
-          hospitals={hospitals} 
-          setHospitals={setHospitals} 
-          postcodesFacilities={postcodes} 
-          locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value || 'http://localhost:3000/api/locationAPI/'} 
-          array={array} 
-          setArray={setArray} 
-          slugs={slugs} 
-          subheadline={props?.fields?.HeadingText?.value || 'facilities & hospitals'} 
-          title={props?.fields?.TitleText?.value ||'Preferred locations'} 
-          text={props?.fields?.BodyText?.value || 'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'}
-          removeAllLocationsButtonText={props?.fields?.RemoveAllLocationsButtonText?.value || 'Remove all locations'}
-          selectAllLocationsButtonText={props?.fields?.SelectAllLocationsButtonText?.value || 'Add all locations'}
-        />
-        <LocationCardsWrapper>
-          {hospitals.length > 0 &&
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            hospitals.map((hospital: any) => (
-              <LocationCard
-                key={hospital.id}
-                name={hospital?.fields?.HCAName?.value || ''}
-                addressLine1={hospital?.fields?.addressLine1?.value || ''}
-                city={hospital?.fields?.cityOrCounty?.value || ''}
-                postcode={hospital?.fields?.postCode?.value || ''}
-                slug={hospital?.fields?.slug?.value || ''}
-                array={array}
-                setArray={setArray}
-                distance={hospital?.distance || null} 
-                selectCardText={props?.fields?.SelectCardText?.value || 'Select'} 
-                removeCardText={props?.fields?.RemoveCardText?.value || 'Remove'}
-              />
-            ))}
-        </LocationCardsWrapper>
-        <Navigation>
-          <TextButton>
-            {/* <JssLink field={props.fields.BackLink}>
-              <Icons iconName="iconArrowSmallLeft" />
-              {props.fields.BackLink.value.text}
-            </JssLink> */}
-
-            <Link href={`${props.fields.BackLink.value.href}?keywordId=${keywordId}&searchString=${search}`}>
-                <Icons iconName="iconArrowSmallLeft" />
-                {props.fields.BackLink.value.text}
-              </Link>
-          </TextButton>
-
-          <Button size={'small'} variation={'full-dark'}>
-            <button
-              disabled={false}
-              onClick={() =>
-                router.push(
-                  // sa iau practice si altele din passi urmatori si insurer
-                  // props.fields.NextLink.value.href || 
-                  `/Finder/Step-Consultant-Cards?search=${search}&keywordId=${keywordId}&sortType=relevance${selectedLocations.length > 0 ? `&practice=${selectedLocations.join(',')}&` : '&'}lat=51.507217&lon=-0.1275862&distance=700&limit=12${insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'}&offset=0`
-                )
+        {router.isReady && (
+          <>
+            <LocationsTopSection
+              hospitals={hospitals}
+              setHospitals={setHospitals}
+              postcodesFacilities={postcodes}
+              locationAPI={
+                props?.fields?.API_HCA_Locations_BaseURL?.value ||
+                'http://localhost:3000/api/locationAPI/'
               }
-            >
-              <span>{props.fields.NextLink.value.text}</span>
-            </button>
-          </Button>
-        </Navigation>
-        </>
-      }
+              array={array}
+              setArray={setArray}
+              slugs={slugs}
+              subheadline={
+                props?.fields?.HeadingText?.value || 'facilities & hospitals'
+              }
+              title={props?.fields?.TitleText?.value || 'Preferred locations'}
+              text={
+                props?.fields?.BodyText?.value ||
+                'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'
+              }
+              removeAllLocationsButtonText={
+                props?.fields?.RemoveAllLocationsButtonText?.value ||
+                'Remove all locations'
+              }
+              selectAllLocationsButtonText={
+                props?.fields?.SelectAllLocationsButtonText?.value ||
+                'Add all locations'
+              }
+            />
+            <LocationCardsWrapper>
+              {hospitals.length > 0 &&
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                hospitals.map((hospital: any) => (
+                  <LocationCard
+                    key={hospital.id}
+                    name={hospital?.fields?.HCAName?.value || ''}
+                    addressLine1={hospital?.fields?.addressLine1?.value || ''}
+                    city={hospital?.fields?.cityOrCounty?.value || ''}
+                    postcode={hospital?.fields?.postCode?.value || ''}
+                    slug={hospital?.fields?.slug?.value || ''}
+                    array={array}
+                    setArray={setArray}
+                    distance={hospital?.distance || null}
+                    selectCardText={
+                      props?.fields?.SelectCardText?.value || 'Select'
+                    }
+                    removeCardText={
+                      props?.fields?.RemoveCardText?.value || 'Remove'
+                    }
+                  />
+                ))}
+            </LocationCardsWrapper>
+            <Navigation>
+              <TextButton>
+                <Link
+                  href={`${props.fields.BackLink.value.href}?keywordId=${keywordId}&searchString=${search}`}
+                >
+                  <Icons iconName="iconArrowSmallLeft" />
+                  {props.fields.BackLink.value.text}
+                </Link>
+              </TextButton>
+
+              <Button size={'small'} variation={'full-dark'}>
+                <button
+                  disabled={false}
+                  onClick={() =>
+                    router.push(
+                      // props.fields.NextLink.value.href ||
+                      `/Finder/Step-Consultant-Cards?search=${search}&keywordId=${keywordId}&sortType=relevance${
+                        selectedLocations.length > 0
+                          ? `&practice=${selectedLocations.join(',')}&`
+                          : '&'
+                      }lat=51.507217&lon=-0.1275862&distance=700&limit=12${
+                        insurer !== 'selfPay' ? `&insurer=${insurer}&` : '&'
+                      }&offset=0`
+                    )
+                  }
+                >
+                  <span>{props.fields.NextLink.value.text}</span>
+                </button>
+              </Button>
+            </Navigation>
+          </>
+        )}
       </>
     );
   }

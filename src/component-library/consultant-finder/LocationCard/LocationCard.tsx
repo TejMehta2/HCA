@@ -19,6 +19,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
 
   useEffect(() => {
     setSelected(arrayWithSelectedSlugs.includes(props.slug));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLocations]);
 
   useEffect(() => {
@@ -79,15 +80,14 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
       data-parent="parent"
     >
       <div className={styles.content}>
-        {
-          props.distance && 
+        {props.distance && (
           <div className={styles.distance}>
             <Icons iconName="iconPin" />
             <Text tag="p" variation="body-medium-small">
               {props.distance} miles
             </Text>
           </div>
-        }
+        )}
         <div>
           <Text tag="p" variation="body-medium-large">
             {props.name}
@@ -121,7 +121,11 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
           }
           onClick={handleClick}
         >
-          {!isSelected ? <Icons iconName="iconPlus" /> : <Icons iconName="iconCross" />}
+          {!isSelected ? (
+            <Icons iconName="iconPlus" />
+          ) : (
+            <Icons iconName="iconCross" />
+          )}
           <Text tag="span" variation="body-medium-large">
             {!isSelected ? props.selectCardText : props.removeCardText}
           </Text>
