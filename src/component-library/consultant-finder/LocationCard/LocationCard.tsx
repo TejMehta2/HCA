@@ -121,9 +121,9 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
           }
           onClick={handleClick}
         >
-          <Icons iconName="iconPlus" />
+          {!isSelected ? <Icons iconName="iconPlus" /> : <Icons iconName="iconCross" />}
           <Text tag="span" variation="body-medium-large">
-            {!isSelected ? 'Select' : 'Remove'}
+            {!isSelected ? props.selectCardText : props.removeCardText}
           </Text>
         </button>
       </div>

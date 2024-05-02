@@ -10,4 +10,9 @@ export interface LocationsTopSectionProps {
   postcodesFacilities: string;
   hospitals: any;
   setHospitals: any;
+  subheadline: string;
+  title: string;
+  text: string | ReactNode | JSX.Element;
+  removeAllLocationsButtonText: string;
+  selectAllLocationsButtonText: string;
 }

@@ -1,3 +1,10 @@
-.bold {
-  font-weight: bold;
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.locations-top {
+  margin: $spacing-6 $spacing-14;
+
+  h1 {
+    margin: $spacing-2 0 $spacing-3 0;
+  }
 }

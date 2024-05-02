@@ -5,6 +5,7 @@ import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import LocationsSearch from '../LocationsSearch/LocationsSearch';
+import Text from '../../foundation/Text/Text';
 
 const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
   const { children } = props;
@@ -26,7 +27,18 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
   };
 
   return (
-    <div className={styles.bold}>
+    <div className={styles['locations-top']}>
+      <div className={styles.header}>
+        <Text tag="h2" variation="subheading-2">
+          {props.subheadline}
+        </Text>
+        <Text tag="h1" variation="display-5">
+          {props.title}
+        </Text>
+        <Text tag="p" variation="body-large">
+          {props.text}
+        </Text>
+      </div>
       <LocationsSearch 
         locationsAPI={props.locationAPI} 
         placeholder={''} 
@@ -45,7 +57,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
           onClick={selectAllLocations}
         >
           <Icons iconName="iconPlus" />
-          <span>Select all locations</span>
+          <span>{props.selectAllLocationsButtonText}</span>
         </button>
       </Button>
       <Button size={'small'} variation={'outline-dark'}>
@@ -53,8 +65,8 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
           disabled={selectedLocations.length === 0}
           onClick={removeAllLocations}
         >
-          <Icons iconName="iconMinus" />
-          <span>Remove all locations</span>
+          <Icons iconName="iconCross" />
+          <span>{props.removeAllLocationsButtonText}</span>
         </button>
       </Button>
     </div>
