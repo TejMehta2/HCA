@@ -1,33 +1,21 @@
 ﻿---
-ID: "41deaad3-a6a4-4d3f-b57f-94fad1fa3281"
-Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
+ID: "2a37c482-e853-42b9-a5ee-5d17b1acc788"
+Parent: "65741739-6429-49ca-8d69-a3c2e7d3ca8b"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Service Cards
+Path: /sitecore/templates/Project/HCA/Page Content/Conditions Folder
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: sxa/16x16/promo.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: |
-    {4247AAD4-EBDE-4994-998F-E067A51B1FE4}
-    {5C74E985-E055-43FF-B28C-DB6C6A6450A2}
-    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
-    {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
-    {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
-    {3CB863CA-B547-479F-9099-AE0B8ED26ABC}
-- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
-  Hint: __Read Only
-  Value: 
+  Value: Office/32x32/folder_window.png
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{E8A46815-CDE1-4AE5-9338-9A357AC9095B}"
+  Value: "{820CBE4A-B9CC-4ED4-BDF4-829412950D2D}"
 Languages:
 - Language: "de-DE"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Promo
+    Value: Promo Ordner
   Versions:
   - Version: 1
     Fields:
@@ -58,26 +46,26 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120926Z
+      Value: 20120620T144015Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\JssImport
+        sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "10af6a01-6457-48e8-9f74-ada836b6e4c7"
+      Value: "21e5ef5f-b92a-454d-9334-7e8dda3fa7e5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240429T160606Z
+      Value: 20240425T200917Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ
+    Value: プロモ フォルダー
   Versions:
   - Version: 1
     Fields:
@@ -106,7 +94,7 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销
+    Value: 促销文件夹
   Versions:
   - Version: 1
     Fields:

@@ -40,6 +40,9 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "63958787-afa0-46ed-a0f3-497a74c19b65"
+      Hint: GetDirectionsText
+      Value: Get directions
     - ID: "7a298203-0924-4526-8276-f59df39e9e07"
       Hint: SearchPlaceholder
       Value: Enter a place or postcode
@@ -54,7 +57,7 @@ Languages:
       Value: 
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "739debb9-cde8-4f0e-88ad-d2baf7a3d746"
+      Value: "dec8baa2-ac80-473b-b388-b84229a95d65"
     - ID: "90875e3c-58b9-40d7-b491-b56f4a462018"
       Hint: MapViewText
       Value: Map view
@@ -81,7 +84,7 @@ Languages:
       Value: Sort by
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240417T204144Z
+      Value: 20240430T094956Z
     - ID: "f6bc67ae-5bdc-4f15-942d-4d9762b4eb81"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.

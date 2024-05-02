@@ -1,8 +1,8 @@
 ﻿---
-ID: "41deaad3-a6a4-4d3f-b57f-94fad1fa3281"
+ID: "f4a4b29f-b53a-4878-be89-3d16e2a61037"
 Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Service Cards
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Conditions Params
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
@@ -15,13 +15,13 @@ SharedFields:
     {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
     {3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}
     {E464CB24-55CB-4C88-A252-FBB5E5E0168A}
-    {3CB863CA-B547-479F-9099-AE0B8ED26ABC}
+    {39263096-45D2-439E-83BB-194F4DA3C828}
 - ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
   Hint: __Read Only
   Value: 
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{E8A46815-CDE1-4AE5-9338-9A357AC9095B}"
+  Value: "{CFBD4F8C-C1C8-41E7-AFA7-9C222B8C5356}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -65,14 +65,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "10af6a01-6457-48e8-9f74-ada836b6e4c7"
+      Value: "b6319c90-1470-47ec-9592-fe4a7c36d48c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240429T160606Z
+      Value: 20240425T202530Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
