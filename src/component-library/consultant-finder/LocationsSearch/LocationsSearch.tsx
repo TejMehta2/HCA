@@ -123,7 +123,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
 
     if (e.target.value.trim().length > 0) {
       getAddress(userInput);
-    } 
+    }
   };
 
   return (
