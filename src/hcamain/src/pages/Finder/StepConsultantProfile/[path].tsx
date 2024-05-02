@@ -145,7 +145,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const HCAAPIConfig = await getHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
-          HCAAPIConfig?.nextJSRevalidationProfilePageSeconds,
+          String(HCAAPIConfig?.nextJSRevalidationProfilePageSeconds),
           10
         ) ?? 300;
       console.log('CF page revalidationSeconds: ', revalidationSeconds);
