@@ -13,22 +13,10 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
+    # Write your query or mutation here
     query GetForm($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on TailoredForm {
-          children(includeTemplateIDs: ["AA65679FA6FD485F8579B40D2CF506DE"]) {
-            results {
-              name
-              children {
-                results {
-                  name
-                  ...ValidatorFragment
-                  ...ListItemFragment
-                  ...KeyValuePairFragment
-                }
-              }
-            }
-          }
           pages: children(
             includeTemplateIDs: ["CFEE7B51850545CEB8439358F827DF87"]
           ) {
@@ -52,14 +40,23 @@ SharedFields:
                   ...InputFragment
                   ...ListFragment
                   ...EmailConfirmationFragment
-                  validation: children(
-                    includeTemplateIDs: ["0A1A6DCE078A4ECE9FCE71CADE57C7B8"]
-                  ) {
-                    results {
-                      name
-                      ...ValidatorFragment
-                    }
-                  }
+                }
+              }
+            }
+          }
+          settings: children(
+            includeTemplateIDs: ["AA65679FA6FD485F8579B40D2CF506DE"]
+          ) {
+            results {
+              children(
+                includeTemplateIDs: [
+                  "0A1A6DCE078A4ECE9FCE71CADE57C7B8"
+                  "B3BDFE5966674432B26105D0E3F7FDF6"
+                ]
+              ) {
+                results {
+                  ...ListItemFragment
+                  ...ValidationRuleFragment
                 }
               }
             }
@@ -83,14 +80,6 @@ SharedFields:
           ...InputFragment
           ...ListFragment
           ...EmailConfirmationFragment
-          validation: children(
-            includeTemplateIDs: ["0A1A6DCE078A4ECE9FCE71CADE57C7B8"]
-          ) {
-            results {
-              name
-              ...ValidatorFragment
-            }
-          }
         }
       }
     }
@@ -138,18 +127,6 @@ SharedFields:
       }
     }
     
-    fragment ValidatorFragment on Validation {
-      type {
-        value
-      }
-      message {
-        value
-      }
-      parameters {
-        value
-      }
-    }
-    
     fragment FieldFragment on Field {
       cssClass {
         value
@@ -192,6 +169,7 @@ SharedFields:
         value
       }
       displayName
+      name
     }
     
     fragment KeyValuePairFragment on KeyValueTranslatedPair {
@@ -199,6 +177,19 @@ SharedFields:
         value
       }
       value {
+        value
+      }
+    }
+    
+    fragment ValidationRuleFragment on Validation {
+      name
+      type {
+        value
+      }
+      message {
+        value
+      }
+      parameters {
         value
       }
     }
@@ -267,14 +258,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1b786b8b-ac59-4dcf-89df-dffbfc5e9cfe"
+      Value: "77d7c504-3e73-46e1-970c-fd3eaf3293d9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240425T115700Z
+      Value: 20240502T094752Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

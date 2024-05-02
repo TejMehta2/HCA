@@ -141,7 +141,11 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('input') || undefined}
+              defaultValue={
+                searchParams.get('input') ||
+                searchParams.get('autocomplete') ||
+                undefined
+              }
               name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
               suggestions={
