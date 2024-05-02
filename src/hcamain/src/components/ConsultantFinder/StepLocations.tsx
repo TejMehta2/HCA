@@ -127,10 +127,7 @@ export const Default = (props: StepProps): JSX.Element => {
               }
               setCalculate={setCalculate}
             />
-            {
-              calculate &&
-              <LoaderCF loadingMsg='Calculating distances...'/>
-            }
+            {calculate && <LoaderCF loadingMsg="Calculating distances..." />}
             <LocationCardsWrapper>
               {hospitals.length > 0 &&
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
