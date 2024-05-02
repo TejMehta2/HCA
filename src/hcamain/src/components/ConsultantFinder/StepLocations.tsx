@@ -144,6 +144,9 @@ export const Default = (props: StepProps): JSX.Element => {
                     removeCardText={
                       props?.fields?.RemoveCardText?.value || 'Remove'
                     }
+                    search={search}
+                    keywordId={keywordId}
+                    insurance={insurer}
                   />
                 ))}
             </LocationCardsWrapper>

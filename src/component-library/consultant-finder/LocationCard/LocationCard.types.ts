@@ -13,4 +13,7 @@ export interface LocationCardProps {
   distance: any;
   selectCardText: string;
   removeCardText: string;
+  search: string;
+  keywordId: string;
+  insurance: string;
 }

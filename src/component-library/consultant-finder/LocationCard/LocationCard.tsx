@@ -12,9 +12,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
     ConsultantFinderContext
   );
   const [totalConsultants, setTotalConsultants] = useState(null);
-
   const arrayWithSelectedSlugs: string[] = selectedLocations;
-
   const [isSelected, setSelected] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,7 +23,11 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   useEffect(() => {
     axios
       .get(
-        `https://api.doctify.com/api/hca/search?search=${'Orthopaedics'}&keywordId=${'2865'}&sortType=${'relevance'}&insurer=${''}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
+        `https://api.doctify.com/api/hca/search?search=${
+          props.search
+        }&keywordId=${props.keywordId}&sortType=${'relevance'}&insurer=${`${
+          props.insurance !== 'selfPay' ? props.insurance : ''
+        }`}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
           props.slug
         }&offset=0`
       )
