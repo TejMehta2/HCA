@@ -16,6 +16,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const searchId = useId();
 
   const getAddress = (userInput: string) => {
@@ -99,7 +100,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
 
   const getGeolocation = () => {
     setLoading(true);
-    // setInputValue('');
+    setInputValue('');
     setIsComponentVisible(false);
 
     if (!navigator.geolocation) {
@@ -134,7 +135,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
             type="text"
             placeholder={props.placeholder}
             onChange={handleChange}
-            value={props.searchStringPayment}
+            value={inputValue}
           />
         </label>
         {isComponentVisible && (
@@ -156,6 +157,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
             hospitals={props.hospitals}
             setHospitals={props.setHospitals}
             locationsAPI={props.locationsAPI}
+            setInputValue={setInputValue}
           />
         )}
         <span className={styles['consultant-finder-search-icon']}>

@@ -15,6 +15,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
 
   const handleClick = (name: string) => {
     const URL = `${props.locationsAPI}/GetDistances?provider=Default&method=Default&units=Kilometers&order=Default&origin=${name}&originType=Postcode&destinations=${props.postcodesFacilities}&destinationType=Postcode`;
+    props.setInputValue(name);
 
     axios
       .get(URL)
