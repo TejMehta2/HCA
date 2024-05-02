@@ -145,7 +145,8 @@ export const ConsultantFinderContextProvider = ({
     useState<string>('');
   const [patientName, setPatientName] = useState<string>('');
   const [selectedLocations, setSelectedLocations] = useState<any>([]);
-  const [selectedInsurerPaymentStep, setSelectedInsurerPaymentStep] = useState(null);
+  const [selectedInsurerPaymentStep, setSelectedInsurerPaymentStep] =
+    useState(null);
 
   return (
     <ConsultantFinderContext.Provider
@@ -200,8 +201,8 @@ export const ConsultantFinderContextProvider = ({
         setPatientName,
         selectedLocations,
         setSelectedLocations,
-        selectedInsurerPaymentStep, 
-        setSelectedInsurerPaymentStep
+        selectedInsurerPaymentStep,
+        setSelectedInsurerPaymentStep,
       }}
     >
       {children}

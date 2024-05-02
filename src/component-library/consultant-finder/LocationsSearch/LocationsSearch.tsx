@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { MouseEventHandler, useId, useState } from 'react';
+import React, { useId, useState } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -10,7 +10,6 @@ import SearchDdropdown from './SearchDropwdown';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 const LocationsSearch = (props: SearchProps): JSX.Element => {
-  
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
   const [resultsAddress, setResultsAddress] = useState([]);
@@ -20,8 +19,12 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const searchId = useId();
 
   const getAddress = (userInput: string) => {
-    const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(userInput)}&searchType=Default`
-    
+    const URL = `${
+      props.locationsAPI
+    }/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(
+      userInput
+    )}&searchType=Default`;
+
     if (typeof cancelToken != typeof undefined) {
       cancelToken.cancel('Operation canceled due to new request.');
     }
@@ -32,11 +35,9 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
     axios
       .get(URL, { cancelToken: cancelToken.token })
       .then((resp) => {
-        
-
         console.log('results address', resp);
 
-        if(resp.data.length > 0) {
+        if (resp.data.length > 0) {
           setResultsAddress(resp.data);
           setNoResults(false);
         } else {
@@ -63,37 +64,38 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
       });
   };
 
-  const success = (position) => {
-    
+  const success = (position: any) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     // update lat and lon for URL
     // setLat(latitude);
     // setLon(longitude);
     console.log('geolocation lat', latitude, 'geolocation lon', longitude);
-    const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${`${latitude},${longitude}`}&searchType=geoResolve`
-    axios.get(URL)
-        .then(resp => {
-            console.log(resp);
-            setResultsAddress(resp.data);
-            setIsComponentVisible(true);
-            setLoading(false);
-            // setNoResults(false);
-            // setError(false);
-        })
-        .catch(error => {
-            console.log(error);
-            // setLoading(false);
-        });
+    const URL = `${
+      props.locationsAPI
+    }/SuggestLocation?provider=Default&searchTerm=${`${latitude},${longitude}`}&searchType=geoResolve`;
+    axios
+      .get(URL)
+      .then((resp) => {
+        console.log(resp);
+        setResultsAddress(resp.data);
+        setIsComponentVisible(true);
+        setLoading(false);
+        // setNoResults(false);
+        // setError(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        // setLoading(false);
+      });
   };
 
-const errorGeolocation = () => {
-  console.log('Unable to retrieve your location');
-  setLoading(false);
-  setIsComponentVisible(true);
-  // setIsGeolocation(false);
-};
-
+  const errorGeolocation = () => {
+    console.log('Unable to retrieve your location');
+    setLoading(false);
+    setIsComponentVisible(true);
+    // setIsGeolocation(false);
+  };
 
   const getGeolocation = () => {
     setLoading(true);
@@ -101,17 +103,16 @@ const errorGeolocation = () => {
     setIsComponentVisible(false);
 
     if (!navigator.geolocation) {
-        // no browser support
-        console.log('no browser support for geolocation');
-        setLoading(false);
-        setIsComponentVisible(true);
-        // setIsGeolocation(false);
+      // no browser support
+      console.log('no browser support for geolocation');
+      setLoading(false);
+      setIsComponentVisible(true);
+      // setIsGeolocation(false);
     } else {
-        // setIsGeolocation(true);
-        navigator.geolocation.getCurrentPosition(success, errorGeolocation);
+      // setIsGeolocation(true);
+      navigator.geolocation.getCurrentPosition(success, errorGeolocation);
     }
-}
-
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('value input', e.target.value);
@@ -147,13 +148,15 @@ const errorGeolocation = () => {
             resultsIcon={props.searchIcon}
             searchStringPayment={props.searchStringPayment}
             setSearchStringPayment={props.setSearchStringPayment}
-            insuranceProvidersFilterHeaderText={props.insuranceProvidersFilterHeaderText}
+            insuranceProvidersFilterHeaderText={
+              props.insuranceProvidersFilterHeaderText
+            }
             loadingText={props.loadingText}
-            postcodesFacilities={props.postcodesFacilities} 
-            hospitals={props.hospitals} 
+            postcodesFacilities={props.postcodesFacilities}
+            hospitals={props.hospitals}
             setHospitals={props.setHospitals}
             locationsAPI={props.locationsAPI}
-            />
+          />
         )}
         <span className={styles['consultant-finder-search-icon']}>
           {props.searchIcon && (

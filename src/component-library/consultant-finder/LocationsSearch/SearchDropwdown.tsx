@@ -21,11 +21,23 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
       .then((resp) => {
         console.log('results', resp);
 
-        let hospitalDistances = resp.data.map((item: { Distance: any; }) => item.Distance);
-        let roundedDistances = hospitalDistances.map((item: number) => Math.round(item * 10) / 10);
-        let hospitalsWithDistance = props?.hospitals?.map((item: any, index: string | number) => ({ ...item, distance: roundedDistances[index] }));
+        const hospitalDistances = resp.data.map(
+          (item: { Distance: any }) => item.Distance
+        );
+        const roundedDistances = hospitalDistances.map(
+          (item: number) => Math.round(item * 10) / 10
+        );
+        const hospitalsWithDistance = props?.hospitals?.map(
+          (item: any, index: string | number) => ({
+            ...item,
+            distance: roundedDistances[index],
+          })
+        );
         console.log('hospitalsWithDistance', hospitalsWithDistance);
-        let sortByDistanceHospitals = hospitalsWithDistance.sort((a: { distance: number; }, b: { distance: number; }) => a.distance - b.distance);
+        const sortByDistanceHospitals = hospitalsWithDistance.sort(
+          (a: { distance: number }, b: { distance: number }) =>
+            a.distance - b.distance
+        );
         props.setHospitals(sortByDistanceHospitals);
         setSelectedLocations([]);
       })
@@ -33,7 +45,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
         console.log(error);
       });
 
-      props.setIsComponentVisible(false);
+    props.setIsComponentVisible(false);
   };
 
   return (

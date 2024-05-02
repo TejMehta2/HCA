@@ -8,7 +8,6 @@ import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import Text from '../../foundation/Text/Text';
 
 const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
-  const { children } = props;
   const { selectedLocations, setSelectedLocations } = useContext(
     ConsultantFinderContext
   );
@@ -41,15 +40,15 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
       </div>
       <div className={styles.controls}>
         <div className={styles['locations-search']}>
-          <LocationsSearch 
-            locationsAPI={props.locationAPI} 
-            placeholder={''} 
-            doctifyBaseURL={''} 
-            limit={0} 
-            noResultsMsg={''} 
-            searchIcon={undefined} 
-            loadingText={'Loading results'} 
-            postcodesFacilities={props.postcodesFacilities} 
+          <LocationsSearch
+            locationsAPI={props.locationAPI}
+            placeholder={''}
+            doctifyBaseURL={''}
+            limit={0}
+            noResultsMsg={''}
+            searchIcon={undefined}
+            loadingText={'Loading results'}
+            postcodesFacilities={props.postcodesFacilities}
             hospitals={props.hospitals}
             setHospitals={props.setHospitals}
           />

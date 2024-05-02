@@ -54,7 +54,7 @@ export interface IHCAConfig {
   aPI_HCA_EnquireBookingForm_UtilizesLegacy: boolean;
 
   // General
-  nextJSRevalidationProfilePageSeconds: string;
+  nextJSRevalidationProfilePageSeconds: number;
 }
 
 export async function getHCAConfig(): Promise<IHCAConfig> {

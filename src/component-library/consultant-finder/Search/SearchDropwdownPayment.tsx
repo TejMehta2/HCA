@@ -9,7 +9,9 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 import { capitalizeFirstLetter } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(ConsultantFinderContext);
+  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
+    ConsultantFinderContext
+  );
 
   const handleClick = (name: string, id: number) => {
     props.setIsComponentVisible(false);

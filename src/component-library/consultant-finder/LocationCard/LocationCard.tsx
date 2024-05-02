@@ -23,18 +23,15 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
   }, [selectedLocations]);
 
   useEffect(() => {
-
     const keywordIdQuery = router?.query?.keywordId || '';
     // get searchString from URL
     const searchStringQuery = router?.query?.searchString || '';
     // get payment option from URL
     const paymentOption = router?.query?.insurer || '';
-    
+
     axios
       .get(
-        `https://api.doctify.com/api/hca/search?search=${
-          searchStringQuery
-        }&keywordId=${keywordIdQuery}&sortType=${'relevance'}&insurer=${`${
+        `https://api.doctify.com/api/hca/search?search=${searchStringQuery}&keywordId=${keywordIdQuery}&sortType=${'relevance'}&insurer=${`${
           paymentOption !== 'selfPay' ? paymentOption : ''
         }`}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
           props.slug

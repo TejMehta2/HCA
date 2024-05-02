@@ -70,7 +70,7 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
         const profileResult = await fetch(pageURL, {
           cache: 'no-store',
         });
-        const _profile = await profileResult.text(); // force the data to load - but disguraded
+        // const _profile = await profileResult.text(); // force the data to load - but disguraded
         const timeEnd = new Date().getTime();
         if (profileResult && profileResult.ok) {
           notify?.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
