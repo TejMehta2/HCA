@@ -14,15 +14,13 @@ type HCAIcon = {
 };
 
 interface DepartmentFields {
-  abstractTitle?: { value?: string };
-  abstractText?: { value?: string };
-  abstractImage?: { jsonValue: ImageField };
-  title?: { value?: string };
-  text?: { value?: string };
-  image?: { jsonValue: ImageField };
-  url?: { path?: string };
+  conditions?: {
+    ConditionsList?: PagesFields[];
+  };
   children: {
-    results: PagesFields[];
+    results: {
+      ConditionsList?: PagesFields[];
+    };
   };
 }
 
@@ -56,6 +54,11 @@ interface Fields {
     contextItem?: {
       conditions?: {
         ConditionsList?: PagesFields[];
+      };
+      children: {
+        results: {
+          ConditionsList?: PagesFields[];
+        };
       };
     };
   };

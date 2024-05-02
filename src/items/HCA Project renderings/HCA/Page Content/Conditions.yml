@@ -45,37 +45,28 @@ SharedFields:
           }
           department {
             DepartmentList: targetItems {
-              abstractTitle: field(name: "AbstractTitle") {
-                value
-              }
-              abstractText: field(name: "AbstractText") {
-                value
-              }
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              url {
-                path
-              }
-              children {
-                results {
-                  abstractTitle: field(name: "AbstractTitle") {
-                    value
+              ... on SpecialtyPage {
+                conditions {
+                  ConditionList: targetItems {
+                    ...SpecialityPage
                   }
-                  abstractText: field(name: "AbstractText") {
-                    value
+                }
+                children(includeTemplateIDs: "{8D06F1CE-8E64-491C-B9FE-449437B0880E}") {
+                  results {
+                    ... on SubspecialtyPage {
+                      conditions {
+                        ConditionList: targetItems {
+                          ...SubSpecialityPage
+                        }
+                      }
+                    }
                   }
-                  title: field(name: "Title") {
-                    value
-                  }
-                  text: field(name: "Text") {
-                    value
-                  }
-                  url {
-                    path
+                }
+              }
+              ... on SubspecialtyPage {
+                conditions {
+                  ConditionList: targetItems {
+                    ...SubSpecialityPage
                   }
                 }
               }
@@ -87,20 +78,17 @@ SharedFields:
         ... on SpecialtyPage {
           conditions {
             ConditionList: targetItems {
-              abstractTitle: field(name: "AbstractTitle") {
-                value
-              }
-              abstractText: field(name: "AbstractText") {
-                value
-              }
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              url {
-                path
+              ...SpecialityPage
+            }
+          }
+          children(includeTemplateIDs: "{8D06F1CE-8E64-491C-B9FE-449437B0880E}") {
+            results {
+              ... on SubspecialtyPage {
+                conditions {
+                  ConditionList: targetItems {
+                    ...SubSpecialityPage
+                  }
+                }
               }
             }
           }
@@ -108,30 +96,58 @@ SharedFields:
         ... on SubspecialtyPage {
           conditions {
             ConditionList: targetItems {
-              abstractTitle: field(name: "AbstractTitle") {
-                value
-              }
-              abstractText: field(name: "AbstractText") {
-                value
-              }
-              abstractImage: field(name: "AbstractImage") {
-                jsonValue
-              }
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              image: field(name: "Image") {
-                jsonValue
-              }
-              url {
-                path
-              }
+              ...SubSpecialityPage
             }
           }
         }
+      }
+    }
+    
+    fragment SpecialityPage on ConditionPage {
+      abstractTitle {
+        value
+      }
+      abstractText {
+        value
+      }
+      abstractImage {
+        jsonValue
+      }
+      title {
+        value
+      }
+      text {
+        value
+      }
+      image {
+        jsonValue
+      }
+      url {
+        path
+      }
+    }
+    
+    fragment SubSpecialityPage on ConditionPage {
+      abstractTitle {
+        value
+      }
+      abstractText {
+        value
+      }
+      abstractImage {
+        jsonValue
+      }
+      title {
+        value
+      }
+      text {
+        value
+      }
+      image {
+        jsonValue
+      }
+      url {
+        path
       }
     }
     
@@ -203,14 +219,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bef82d01-5298-4cb9-b65b-fa63d35d1b01"
+      Value: "3768c258-9c9b-4034-8a45-ad245ab7d45e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240430T110205Z
+      Value: 20240502T080924Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

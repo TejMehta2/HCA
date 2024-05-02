@@ -4,6 +4,10 @@ Parent: "5d54edcf-69f4-4f90-8f92-dccf98eb7150"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Project/HCA/Page Content/Conditions/Data/Department
 SharedFields:
+- ID: "074f44ca-359a-4c13-b3aa-4a6be2a675b1"
+  Hint: Validation
+  Value: |
+    ^({[^}]+}\|?){0,1}$
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
   Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Specialty Page||_templatename:Subspecialty Page"
@@ -15,6 +19,10 @@ SharedFields:
   Value: 100
 Languages:
 - Language: en
+  Fields:
+  - ID: "b12e4906-b96b-495e-b343-cd2e92dc6347"
+    Hint: ValidationText
+    Value: "You can select just one department!"
   Versions:
   - Version: 1
     Fields:
@@ -31,11 +39,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8bb92cdc-9d4e-4979-874b-1da9b1569f33"
+      Value: "01a35287-350e-48ac-af0a-163a55be6646"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240430T062757Z
+      Value: 20240502T082537Z
