@@ -9,8 +9,8 @@ import {
   // @ts-ignore
 } from '@yext/pages';
 
-// import '@yext/search-ui-react/bundle.css';
-import './styles/bundle.css'; // TODO - switch out for node_modules version as above, work around workspaces limitation
+import '@yext/search-ui-react/bundle.css';
+//import './styles/bundle.css'; // TODO - switch out for node_modules version as above, work around workspaces limitation
 import {
   SearchHeadlessProvider,
   provideHeadless,
