@@ -1,11 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export interface LocationCardProps {
   children?: ReactNode | JSX.Element;
-  icon: ReactNode | JSX.Element;
-  title: ReactNode | JSX.Element | string;
-  text: ReactNode | JSX.Element | string;
-  time: string;
-  facilityCRMID: string;
-  handleClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  name: string;
+  addressLine1: string;
+  city: string;
+  postcode: string;
+  slug: string;
+  array: any;
+  setArray: any;
+  distance: any;
+  selectCardText: string;
+  removeCardText: string;
+  search: string;
+  keywordId: string;
+  insurance: string;
 }
