@@ -1,8 +1,8 @@
 ﻿---
-ID: "4baf7b04-b320-4afb-952b-e12c1283a6a2"
+ID: "9c2eb552-df15-48ab-902d-cfed0c004a3d"
 Parent: "0aa57fc9-b5dc-4743-a1b1-f77a6028d3db"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Blog Page Header
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Text Block Component
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
@@ -21,7 +21,7 @@ SharedFields:
   Value: 
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{9DDD9E81-5C34-4333-806B-A997B94D51F6}"
+  Value: "{D8BDB971-233C-4CD3-A7FB-98354AB4A8FD}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -65,14 +65,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "aa422ff0-ce63-472b-9435-91e940e3c262"
+      Value: "08266b9c-7bb8-4bcf-b293-b4322c054ebe"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240502T173556Z
+      Value: 20240502T171502Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

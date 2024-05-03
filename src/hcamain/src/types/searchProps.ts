@@ -113,6 +113,7 @@ export interface Fields {
   ResultsPerPage?: Field<number>;
   SearchBy?: FilterOption[];
   FilterBy?: FilterOption[];
+  CTACardText?: Field<string>;
 }
 
 export type ApiSearchProps = {
