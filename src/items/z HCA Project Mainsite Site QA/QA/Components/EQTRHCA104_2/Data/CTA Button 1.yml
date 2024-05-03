@@ -1,0 +1,27 @@
+﻿---
+ID: "aadb7eaa-3dd4-44e3-bc01-7c9fe1475c7a"
+Parent: "95368764-db8a-4ff8-9451-f0ec43d2965a"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA104_2/Data/CTA Button 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240503T085433Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c274b737-fd56-45ae-bb5f-f2742ca47ee4"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link linktype="internal" text="Learn more about &lt;strong&gt;self-pay&lt;/strong&gt;" querystring="" target="" id="{E060C043-FED2-4C46-86BF-E5AD624283FD}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240503T085532Z
