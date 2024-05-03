@@ -221,15 +221,18 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .post(URL, dataToSend)
       .then((resp) => {
-        console.log(resp);
+        //console.log(resp);
         setIsSubmitting(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
-        console.log('submit resp', resp);
         if (resp?.data?.errorCode > 0) {
           setAdditionalErrorText(
             `error code: ${resp?.data?.errorCode} ${resp?.data?.errorText}`
           );
+          dialogRef?.current?.showModal();
+        } else if (resp?.data?.success == false) {
+          // structured response from underlying service
+          setAdditionalErrorText(`${resp?.data?.html}`);
           dialogRef?.current?.showModal();
         } else {
           router.push(`/Finder/Step-Enquire-Form-Confirmation`);

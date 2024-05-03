@@ -450,8 +450,8 @@ export async function suggestLocation(
       'Content-Type': 'application/json',
     };
     let urlParamsStr: string = JSON.stringify(fields);
-    console.log('bodyStr', urlParamsStr);
-    console.log('locationsURL', locationsURL);
+    //console.log('bodyStr', urlParamsStr);
+    //console.log('locationsURL', locationsURL);
 
     //console.log('isLegacy', isLegacy);
     if (isLegacy) {
@@ -540,8 +540,8 @@ export async function getDistances(
       'Content-Type': 'application/json',
     };
     let urlParamsStr: string = JSON.stringify(fields);
-    console.log('bodyStr', urlParamsStr);
-    console.log('locationsURL', locationsURL);
+    //console.log('bodyStr', urlParamsStr);
+    //console.log('locationsURL', locationsURL);
 
     if (isLegacy) {
       // convert params to path frags locationApi/getDistances/default/default/miles/default/
@@ -664,7 +664,7 @@ export async function submitBookingEnquiry(
     }
 
     try {
-      console.log('submit form to', formURL);
+      //console.log('submit form to', formURL);
       const res = await fetch(formURL, {
         method: 'post',
         body: bodyStr,
@@ -672,8 +672,17 @@ export async function submitBookingEnquiry(
         cache: 'no-cache',
       });
 
+      //console.log('res', res);
       if (res.ok) {
-        returnData = JSON.parse(await res.text());
+        if (isLegacy) {
+          //console.log('res.ok legacy');
+          const retData = await res.text();
+          //console.log('res.ok booking json', retData);
+          returnData = JSON.parse(retData);
+        } else {
+          const data = await res.json();
+          returnData = JSON.parse(data); // this is double encoded!
+        }
       } else {
         //makeBookingEnquiry call failed
         let errorDetails = '';
