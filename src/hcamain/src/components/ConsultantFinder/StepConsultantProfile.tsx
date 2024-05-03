@@ -218,7 +218,7 @@ export const Default = (props: StepProps): JSX.Element => {
           //console.log('first apt', firstAppointmentResponse?.data);
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -329,7 +329,7 @@ export const Default = (props: StepProps): JSX.Element => {
     .replaceAll('<p>', '')
     .replaceAll('</p>', '');
 
-  console.log(keywords);
+  //console.log(keywords);
 
   if (props.fields) {
     return (
