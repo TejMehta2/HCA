@@ -16,6 +16,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -165,9 +166,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             }
             link={
               <a href={card?.url?.path}>
-                <span>
-                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
-                </span>
+                {props.fields?.data?.item?.cTAIcon?.Icon && (
+                  <SitecoreSvg>
+                    {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+                  </SitecoreSvg>
+                )}
+                <JssRichText
+                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                />
               </a>
             }
           />
