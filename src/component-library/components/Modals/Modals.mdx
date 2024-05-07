@@ -25,6 +25,8 @@ The Modals component forwards a ref to the HTML5 `dialog` element inside. This a
 
 By typing the ref as `HTMLDialogElement`, we get intellisense on the API (`showModal` and `close`) when accessing the `ref.current`:
 
+You can also query the `dialog` element by providing an ID prop to use as a query selector. This enables you to control the modal state from other parts of the applications without context or prop drilling a ref.
+
 ``` tsx dark
 import React, { useRef } from 'react'
 import Modals from '@hca/component-library/components/Modals/Modals'

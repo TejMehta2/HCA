@@ -37,10 +37,15 @@ export const Default: StoryObj<typeof YextResultCardLocations> = {
     ),
     distance: <Text variation={'body-large'}>546.0 km</Text>,
     ctas: {
-      button: <button>Learn more</button>,
+      button: (
+        <button>
+          <Icons iconName="iconPhone"></Icons>
+          Call
+        </button>
+      ),
       textButton: (
         <button>
-          <Icons iconName="iconEmail"></Icons>Email us
+          <Icons iconName="iconRedo"></Icons>Get directions
         </button>
       ),
     },
@@ -61,7 +66,7 @@ export const Default: StoryObj<typeof YextResultCardLocations> = {
       ),
     },
     openingHours: {
-      icon: <Icons iconName="iconPhone"></Icons>,
+      icon: <Icons iconName="iconClock"></Icons>,
       text: (
         <>
           <Text variation="body-medium-large" tag="span">

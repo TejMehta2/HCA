@@ -5,7 +5,7 @@ import { SearchSuggestionsProps } from './SearchSuggestions.types';
 
 const mockProps: SearchSuggestionsProps = {
   suggestions: ['Suggestion A', 'Suggestion B'],
-  currentValue: 'Suggestion A',
+  currentValue: '',
   setValue: (newValue: string) => console.log(newValue),
 };
 

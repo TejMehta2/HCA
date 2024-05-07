@@ -10,7 +10,7 @@ const QuoteBlock = (props: QuoteBlockProps): JSX.Element => {
       {children}
       {author && (
         <div className={styles.author}>
-          {author.image && author.image}
+          {author.image}
           <div className={styles['author-details']}>
             {author.name && <span className={styles.name}>{author.name}</span>}
             {author.tag && <Tags contentVariation="quote">{author.tag}</Tags>}

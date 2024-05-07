@@ -555,6 +555,7 @@ export default interface HealthcareFacility {
   associations?: string[];
   brands?: string[];
   description?: string;
+  distance?: string;
   hours?: Hours;
   logo?: ComplexImage;
   name: string;
@@ -649,7 +650,7 @@ export default interface HealthcareFacility {
   languages?: string[];
   localPhone?: unknown;
   locationType?: LocationType;
-  mainPhone?: unknown;
+  mainPhone?: string;
   menuUrl?: MenuUrl;
   mobilePhone?: unknown;
   npi?: string;

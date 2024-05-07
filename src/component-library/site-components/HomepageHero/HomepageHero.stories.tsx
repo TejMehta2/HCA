@@ -28,7 +28,7 @@ export const Default: StoryObj<typeof HomepageHero> = {
       </Text>
     ),
     search: (
-      <SearchButton>
+      <SearchButton onClick={() => {}}>
         <span>
           How can we <b>help you?</b>
         </span>

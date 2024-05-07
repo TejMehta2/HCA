@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import "../globals/index.scss";
-
+import React from "react";
+import YextProvider from '../yext/YextProvider/YextProvider'
 
 const customViewports = {
   small: {
@@ -34,6 +35,9 @@ const customViewports = {
 };
 
 const preview: Preview = {
+  decorators: [
+    (Story) => <YextProvider><Story/></YextProvider>
+  ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -46,8 +50,7 @@ const preview: Preview = {
       storySort: { order: ["Foundation", "Core Components", "Components"] },
     },
     viewport: { viewports: customViewports },
-
-  },
+  },  
 };
 
 export default preview;

@@ -72,15 +72,12 @@ const SitecorePage = ({
 
 // paths are known in advance
 // https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
-// TODO
-// add to sitemap
 export const getStaticPaths: GetStaticPaths = async () => {
   let fallback: boolean | 'blocking' = 'blocking';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let paths: any = [];
   let slugs: string[] = [];
 
-  //console.log('IN StepConsultantProfile GetStaticPaths');
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
   if (
@@ -92,16 +89,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
-    //paths = await sitemapFetcher.fetch(context);
     const HCAAPIConfig = await getHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
-      //console.log('getStaticPaths loading mock consultant slugs');
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
       slugs = slugs.filter((slug) => slug && slug.length > 0);
     } else {
-      // real from legacy sitemap or doctify
-      //console.log('getStaticPaths loading real consultant slugs');
       slugs = await getActiveConsultantSlugs();
     }
   } catch (error) {
@@ -120,11 +113,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths = [];
   }
   fallback = 'blocking';
-
-  //console.log('paths:', paths);
-  //console.log('fallback:', fallback);
-  //console.log('OUT StepConsultantProfile GetStaticPaths');
-
   return {
     paths,
     fallback,
@@ -133,58 +121,38 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // data load can be done here and/or at the component level too with get component props.
 export const getStaticProps: GetStaticProps = async (context) => {
-  //console.log('IN StepConsultantProfile GetStaticProps');
-  //console.log('context.params', context.params);
-
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
     //console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
     context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
   }
-  // if needed here, we can get our slug from the url path like this...
-  /*
-  let slug = '';
-  const path = context?.params?.requestPath;
-  if (path !== undefined) {
-    if (typeof path !== 'string') {
-      slug = path.pop() ?? '';
-    } else {
-      slug = path;
-    }
-  }
-  */
-  //we can call out to services server side here..
-  //console.log("slug: ",slug);
-  //const isLDBConsultant = await checkIfLiveBookingIsAvailable(slug);
-  //console.log("isLDBConsultant: ",isLDBConsultant);
-  //const consultantProfileJson = await getSpecialistProfileData(slug);
-  //console.log("consultantProfileJson: ", consultantProfileJson);
-  // props.data = 'profile data';
-
-  // but also at the component level using component props...
-
-  //console.log('OUT StepConsultantProfile GetStaticProps');
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {
+    const revalidationSeconds = 5;
     const props = await sitecorePagePropsFactory.create(context);
-    //console.log('props:', props);
     return {
       props,
       // Next.js will attempt to re-generate the page:
       // - When a request comes in
       // - At most once every 5 seconds
-      revalidate: 5, // In seconds
+      revalidate: revalidationSeconds, //5, // In seconds
       notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
     };
   } else {
-    // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-    const props = await sitecorePagePropsFactory.create(context);
-    //console.log('props:', props);
     try {
+      // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+      const HCAAPIConfig = await getHCAConfig();
+      const revalidationSeconds =
+        Number.parseInt(
+          String(HCAAPIConfig?.nextJSRevalidationProfilePageSeconds),
+          10
+        ) ?? 300;
+      console.log('CF page revalidationSeconds: ', revalidationSeconds);
+      const props = await sitecorePagePropsFactory.create(context);
       return {
         props,
-        revalidate: 300, // In seconds
+        revalidate: revalidationSeconds, // In seconds
         notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
       };
     } catch (error) {

@@ -9,17 +9,12 @@ const YextResultCardConsultants = (
   const { title, doctify, copy, phone, specialties, cta, image } = props;
   return (
     <div className={styles.wrapper}>
-      {image && <div className={styles.image}>{image}</div>}
+      {<div className={styles.image}>{image}</div>}
       <div className={styles.text}>
         {title && title}
         {doctify && doctify}
         {copy && <div className={styles.copy}>{copy}</div>}
-        {phone && (
-          <div className={styles.inline}>
-            <span>{phone.icon}</span>
-            <span>{phone.text}</span>
-          </div>
-        )}
+        {phone && <div className={styles.inline}>{phone}</div>}
         {specialties && (
           <div className={styles.inline}>
             <span>{specialties.icon}</span>

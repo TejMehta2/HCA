@@ -7,6 +7,8 @@ import CQCBlock from '../../components/CQCBlock/CQCBlock';
 import Image from 'next/image';
 import Button from '../../core-components/Button/Button';
 import Doctify from '../../components/Doctify/Doctify';
+import Text from '../../foundation/Text/Text';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Footer> = {
   title: 'site-components/Footer',
@@ -21,6 +23,13 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof Footer> = {
   args: {
+    copyright: (
+      <Text variation={'body-small'}>
+        HCA International Limited. Registered number: 03020522. A Company
+        Registered in England and Wales. Registered office: 2 Cavendish Square,
+        London, W1G 0PU  ©Copyright 2024 - HCA Healthcare UK
+      </Text>
+    ),
     buttons: (
       <>
         <Button size={'small'} variation={'outline'}>

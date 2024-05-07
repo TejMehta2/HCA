@@ -1,6 +1,5 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
-@use '../../core-components/Checkbox/Checkbox.module.scss' as *;
 
 .wrapper {
   background-color: var(--background);
@@ -8,25 +7,28 @@
 }
 
 .inner {
-  padding-top: $spacing-13;
+  padding-top: $spacing-7;
+  padding-bottom: $spacing-13;
   @include responsive-container;
-}
-
-.vertical {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-2;
-}
-
-.tabs {
-  padding: $spacing-5 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-4;
+  margin: $spacing-5 0;
+
+  &:has(.results:empty):has(.filters:empty) {
+    display: none;
+  }
+}
+
+.results {
+  color: var(--text);
+  @include apply-body-medium-extra-large;
+
+  padding: 0;
+  margin: 0;
 }
 
 .filters {
@@ -97,4 +99,27 @@
       }
     }
   }
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  margin-bottom: $spacing-5;
+}
+
+.tabs {
+  margin: $spacing-5 0;
+  scroll-margin-top: px-to-rem(30);
+}
+
+.results-count {
+  color: var(--text);
+}
+
+.heading {
+  margin-top: $spacing-11;
+  margin-bottom: $spacing-5;
+
+  @include apply-heading-1;
 }

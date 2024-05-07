@@ -126,10 +126,17 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         <HeaderPlain
           contentVariation={contentVariation}
           heading={
-            <JssText
-              tag={params?.HeadingTag || 'h1'}
-              field={props?.fields?.Title}
-            />
+            <Text
+              variation={props.params?.HeadingSize || 'display-1'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssText field={props?.fields?.Title} />
+            </Text>
+          }
+          subheading={
+            <Text variation="subheading-1">
+              <JssText field={props.fields?.Heading} />
+            </Text>
           }
           description={
             <Text tag="div" variation="body-large">
@@ -139,7 +146,11 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('input') || undefined}
+              defaultValue={
+                searchParams.get('input') ||
+                searchParams.get('autocomplete') ||
+                undefined
+              }
               name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
               suggestions={
@@ -302,7 +313,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                     rel="noopener noreferrer"
                                   >
                                     <span>
-                                      Learn <strong>more</strong>
+                                      <JssText
+                                        field={fields.GetDirectionsText}
+                                      />
                                     </span>
                                   </a>
                                 </TextButton>
@@ -366,7 +379,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               button2: (
                                 <a href={data.directions}>
                                   <span>
-                                    Get <strong>directions</strong>
+                                    <JssText field={fields.GetDirectionsText} />
                                   </span>
                                 </a>
                               ),

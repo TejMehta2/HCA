@@ -76,6 +76,7 @@
 
     .column {
       max-width: px-to-rem(180);
+      margin-top: $spacing-4;
 
       .phone {
         display: flex;
@@ -90,13 +91,13 @@
     }
 
     .address {
-      max-width: px-to-rem(180);
+      max-width: px-to-rem(212);
       display: flex;
       gap: px-to-rem(8);
     }
     @include media(screen-l, max) {
       .column {
-        margin-top: $spacing-4;
+        margin-top: 0;
         max-width: initial;
       }
 
@@ -114,20 +115,21 @@
       flex-grow: 0;
       display: flex;
       gap: $spacing-4 $spacing-5;
-      align-items: start;
+      align-items: flex-start;
       justify-content: flex-start;
       flex-direction: column;
       margin-top: $spacing-5;
+
+      @include media(screen-l) {
+        flex-direction: row;
+        align-items: center;
+      }
 
       .stacked & {
         @include media(screen-l) {
           flex-direction: row;
           align-items: center;
           margin-top: 0;
-
-          div {
-            width: 100%;
-          }
         }
       }
     }

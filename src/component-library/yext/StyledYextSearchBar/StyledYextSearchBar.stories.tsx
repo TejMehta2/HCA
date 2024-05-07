@@ -1,7 +1,6 @@
 import React from 'react';
 import StyledYextSearchBar from './StyledYextSearchBar';
 import type { Meta, StoryObj } from '@storybook/react';
-import YextProvider from '../YextProvider/YextProvider';
 import Themes from '../../foundation/Themes/Themes';
 import styles from '../YextSearch/YextSearch.module.scss';
 
@@ -25,9 +24,7 @@ export const Default: StoryObj<typeof StyledYextSearchBar> = {
     (Story) => (
       <Themes theme={'J-HCA-Tangerine-20'}>
         <div className={styles.inner}>
-          <YextProvider>
-            <Story />
-          </YextProvider>
+          <Story />
         </div>
       </Themes>
     ),

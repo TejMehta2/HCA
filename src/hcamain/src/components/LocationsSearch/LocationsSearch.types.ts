@@ -108,6 +108,7 @@ export interface Fields {
   GridViewText?: Field<string>;
   MapViewIcon?: HCAIconFields;
   MapViewText?: Field<string>;
+  GetDirectionsText?: Field<string>;
 }
 
 export type LocationsSearchProps = ApiSearchProps & {

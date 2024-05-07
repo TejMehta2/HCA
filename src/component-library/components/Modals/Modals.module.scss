@@ -58,7 +58,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 100svh;
   pointer-events: none;
   transform: translateY(100%);
   transition: transform 0.3s ease-out;
@@ -79,7 +79,7 @@
 }
 
 .right {
-  @include media(screen-m) {
+  @include media(screen-l) {
     transform: translate(100%, 0);
 
     & > div:first-child {

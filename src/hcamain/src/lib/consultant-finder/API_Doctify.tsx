@@ -4,6 +4,19 @@ import { getDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
 import { checkIfLiveBookingIsAvailable } from './API_HCA';
 
+function getMostFrequent(arr: any[]) {
+  const hashmap = arr.reduce(
+    (acc: { [x: string]: any }, val: string | number) => {
+      acc[val] = (acc[val] || 0) + 1;
+      return acc;
+    },
+    {}
+  );
+  return Object.keys(hashmap).reduce((a, b) =>
+    hashmap[a] > hashmap[b] ? a : b
+  );
+}
+
 // get profile data from Doctify for consultant based on slug
 //const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
 export async function getSpecialistProfileData(
@@ -29,14 +42,17 @@ export async function getSpecialistProfileData(
       docitfyData = await res.json();
 
       // patch in HCA facilities on doctify practice entries
+      // also figure main city - could be used for nearest city functionality
       if (docitfyData) {
         let practice: any;
+        const cities: string[] = [];
         for (practice in docitfyData?.practices) {
           try {
             const facilityURL = await facilityURLFromDoctifySlug(
               docitfyData?.practices[practice]?.slug
             );
             docitfyData.practices[practice]['facilityURL'] = facilityURL;
+            cities.push(docitfyData.practices[practice].address?.city);
             //console.log('facilityURL', facilityURL);
           } catch (e) {
             //HCA practice call threw
@@ -45,7 +61,11 @@ export async function getSpecialistProfileData(
             );
           }
         }
-
+        // figure main city - default to London
+        docitfyData.mainCity = 'London';
+        if (cities && cities.length > 0) {
+          docitfyData.mainCity = getMostFrequent(cities);
+        }
         docitfyData.isLiveDiaryConsultant = false;
         try {
           const isLiveDiaryConsultant =

@@ -1,0 +1,38 @@
+﻿---
+ID: "73bb52fd-cc51-4639-95d9-81574af10556"
+Parent: "1ecc563a-dee4-4f33-bb94-0a2841d403bc"
+Template: "1ecc563a-dee4-4f33-bb94-0a2841d403bc"
+Path: /sitecore/templates/Project/HCA/Foundation/_SearchBase/__Standard Values
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240503T074357Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e77cbbc4-e673-41ed-8022-b828c4c5a498"
+    - ID: "9fd73243-153b-423a-8328-91a8f7c59609"
+      Hint: CTACardText
+      Value: Learn more
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240503T074455Z

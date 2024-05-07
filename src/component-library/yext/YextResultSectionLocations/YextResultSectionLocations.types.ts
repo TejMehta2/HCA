@@ -6,7 +6,7 @@ export interface Location {
 export interface YextResultSectionLocationsProps {
   title?: string;
   center: google.maps.LatLngLiteral;
-  locations: Location[];
+  locations?: Location[];
   apiKey: string;
   variation: 'side-by-side' | 'stacked';
 }

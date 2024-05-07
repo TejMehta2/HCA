@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import YextSearch from '@component-library/yext/YextSearch/YextSearch';
 
 interface Fields {}
 
@@ -32,5 +33,6 @@ export const Default = (props: GenericSearchProps): JSX.Element => {
   if (!props.fields) {
     return <GenericSearchDefaultComponent {...props} />;
   }
-  return <div className={`component ${props.params?.styles}`}></div>;
+
+  return <YextSearch />;
 };

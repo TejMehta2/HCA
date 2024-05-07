@@ -1,36 +1,132 @@
 import React, { useRef } from 'react';
 import {
-  ResultsCount,
   UniversalResults,
+  VerticalConfigMap,
   VerticalResults,
 } from '@yext/search-ui-react';
 import styles from './YextSearch.module.scss';
 import YextTabs from '../YextTabs/YextTabs';
-import YextProvider from '../YextProvider/YextProvider';
 import StyledYextSearchBar from '../StyledYextSearchBar/StyledYextSearchBar';
 import YextResultCardArticlesAdaptor from '../YextResultCardArticles/YextResultCardArticles.adaptor';
 import YextResultCardLinksAdaptor from '../YextResultCardLinks/YextResultCardLinks.adaptor';
 import YextResultCardFAQsAdaptor from '../YextResultCardFAQs/YextResultCardFAQs.adaptor';
 import YextCustomPagination from '../YextCustomPagination/YextCustomPagination';
-import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
 import YextResultSectionLocationsAdaptor from '../YextResultSectionLocations/YextResultSectionLocations.adaptor';
-import { useSearchState } from '@yext/search-headless-react';
+import { Result, useSearchState } from '@yext/search-headless-react';
 import YextResultCardAskAQuestionAdaptor from '../YextResultCardAskAQuestion/YextResultCardAskAQuestion.adaptor';
 import YextResultCardConsultantsAdaptor from '../YextResultCardConsultants/YextResultCardConsultants.adaptor';
+import HealthcareFacility from '../../types/yext/healthcare_facilities';
+import YextResultCardDepartmentsAdaptor from '../YextResultCardDepartments/YextResultCardDepartments.adaptor';
+import YextResultCardTestsAndTreatmentsAdaptor from '../YextResultCardTestsAndTreatments/YextResultCardTestsAndTreatments.adaptor';
+import YextUniversalSection from '../YextUniversalSection/YextUniversalSection';
+import { VerticalKey } from './YextSearch.types';
+import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCustomAlternativeVerticals';
+import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
+import { ResultsCount } from '../YextCustomResultsCount/YextCustomResultsCount';
+import { verticalMap } from '../helpers/useSetVertical';
+import Themes from '../../foundation/Themes/Themes';
 
 const YextSearch = (): JSX.Element => {
   const resultsCountRef = useRef<HTMLDivElement>(null);
+  const searchState = useSearchState((state) => state);
+  const verticalKey = searchState.vertical.verticalKey as VerticalKey;
+
+  const verticalConfigMap: VerticalConfigMap<{
+    healthcare_facilities: unknown;
+    articles: unknown;
+    tests_and_treatments: unknown;
+    specialties: unknown;
+    healthcare_professionals: unknown;
+    faqs: unknown;
+    links: unknown;
+  }> = {
+    healthcare_facilities: {
+      label: 'Locations',
+      SectionComponent: (props) => (
+        <YextResultSectionLocationsAdaptor
+          results={props.results as Result<HealthcareFacility>[]}
+          variation="stacked"
+        />
+      ),
+    },
+    articles: {
+      label: 'Articles',
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardArticlesAdaptor}
+          title="Articles"
+          verticalKey="articles"
+        />
+      ),
+    },
+    tests_and_treatments: {
+      label: 'Tests & Treatments',
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
+          title="Tests & Treatments"
+          verticalKey="tests_and_treatments"
+        />
+      ),
+    },
+    specialties: {
+      label: 'Departments',
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardDepartmentsAdaptor}
+          title="Departments"
+          verticalKey="specialties"
+        />
+      ),
+    },
+    healthcare_professionals: {
+      label: 'Consultants',
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardConsultantsAdaptor}
+          title="Consultants"
+          verticalKey="healthcare_professionals"
+        />
+      ),
+    },
+    faqs: {
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardFAQsAdaptor}
+          title="FAQs"
+          verticalKey="faqs"
+        />
+      ),
+    },
+    links: {
+      SectionComponent: (props) => (
+        <YextUniversalSection
+          results={props.results}
+          CardComponent={YextResultCardLinksAdaptor}
+          title="Links"
+        />
+      ),
+    },
+  };
 
   const Verticals = () => {
     const searchState = useSearchState((state) => state);
-    const verticalKey = searchState.vertical.verticalKey;
+    const verticalKey = searchState.vertical.verticalKey as
+      | VerticalKey
+      | 'links';
     const results = searchState.vertical.results;
+
     switch (verticalKey) {
       case 'healthcare_facilities':
         return (
           <YextResultSectionLocationsAdaptor
-            results={results || []}
-            variation={'stacked'}
+            results={(results as unknown as Result<HealthcareFacility>[]) || []}
+            variation={'side-by-side'}
           />
         );
 
@@ -51,79 +147,72 @@ const YextSearch = (): JSX.Element => {
             <YextResultCardAskAQuestionAdaptor />
           </>
         );
-      case 'articles':
       case 'tests_and_treatments':
-      case 'specialties':
-      default:
+        return (
+          <>
+            <VerticalResults
+              CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
+              customCssClasses={{ verticalResultsContainer: styles.vertical }}
+            />
+          </>
+        );
+
+      case 'articles':
         return (
           <VerticalResults
             CardComponent={YextResultCardArticlesAdaptor}
             customCssClasses={{ verticalResultsContainer: styles.vertical }}
           />
         );
+      case 'specialties':
+        return (
+          <VerticalResults
+            CardComponent={YextResultCardDepartmentsAdaptor}
+            customCssClasses={{ verticalResultsContainer: styles.vertical }}
+          />
+        );
+      case 'links':
+        return (
+          <VerticalResults
+            CardComponent={YextResultCardLinksAdaptor}
+            customCssClasses={{ verticalResultsContainer: styles.vertical }}
+          />
+        );
+      default:
+        return <></>;
     }
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
-        <YextProvider>
-          <StyledYextSearchBar />
-          <div className={styles.tabs}>
-            <YextTabs />
-          </div>
-
-          <div ref={resultsCountRef}></div>
-          <div className={styles.header}>
-            <ResultsCount />
-            <div className={styles.filters}>
-              <YextFiltersAdaptor />
-            </div>
-          </div>
-          <UniversalResults
-            verticalConfigMap={{
-              healthcare_facilities: {
-                label: 'Locations',
-                SectionComponent: (props) => (
-                  <YextResultSectionLocationsAdaptor
-                    results={props.results}
-                    variation={'side-by-side'}
-                  />
-                ),
-              },
-              articles: {
-                label: 'Articles',
-                CardComponent: YextResultCardArticlesAdaptor,
-              },
-              tests_and_treatments: {
-                label: 'Tests & Treatments',
-                CardComponent: YextResultCardLinksAdaptor,
-              },
-              specialties: {
-                label: 'Service Lines',
-                CardComponent: YextResultCardArticlesAdaptor,
-              },
-              healthcare_professionals: {
-                label: 'Consultants',
-                CardComponent: YextResultCardConsultantsAdaptor,
-              },
-              faqs: {
-                CardComponent: YextResultCardFAQsAdaptor,
-              },
-              links: {
-                CardComponent: YextResultCardLinksAdaptor,
-              },
-            }}
+        <StyledYextSearchBar />
+        <div ref={resultsCountRef} className={styles.tabs}>
+          <YextTabs />
+        </div>
+        <div className={styles.header}>
+          <ResultsCount
+            customCssClasses={{ resultsCountContainer: styles.results }}
           />
-          <Verticals />
-          <YextCustomPagination
-            callback={() => {
-              resultsCountRef?.current?.scrollIntoView({
-                behavior: 'smooth',
-              });
-            }}
+          <div className={styles.filters}>
+            <YextFiltersAdaptor />
+          </div>
+        </div>
+        <UniversalResults verticalConfigMap={verticalConfigMap} />
+        <Themes theme={'O-HCA-Teal-20'}>
+          <AlternativeVerticals
+            currentVerticalLabel={verticalMap.get(verticalKey) || 'Links'}
+            verticalConfigMap={verticalConfigMap}
           />
-        </YextProvider>
+        </Themes>
+        <Verticals />
+        <YextCustomPagination
+          callback={() => {
+            resultsCountRef?.current?.scrollIntoView({
+              behavior: 'smooth',
+            });
+          }}
+        />
       </div>
     </div>
   );

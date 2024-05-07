@@ -453,7 +453,7 @@ export async function suggestLocation(
     console.log('bodyStr', urlParamsStr);
     console.log('locationsURL', locationsURL);
 
-    console.log('isLegacy', isLegacy);
+    //console.log('isLegacy', isLegacy);
     if (isLegacy) {
       // convert params to path frags locationApi/suggestLocation/default/default/miles/default/
       locationsURL = `${locationsURL}/suggestLocation/${fields['provider']}/${fields['searchTerm']}/${fields['searchType']}`;
@@ -530,7 +530,7 @@ export async function getDistances(
   const HCAAPIConfig = await getHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
-  console.log('isLegacy', isLegacy);
+  //console.log('isLegacy', isLegacy);
   let locationsURL = isLegacy
     ? HCAAPIConfig?.aPI_HCA_Locations_LegacyBaseURL
     : HCAAPIConfig?.aPI_HCA_Locations_BaseURL;
@@ -664,6 +664,7 @@ export async function submitBookingEnquiry(
     }
 
     try {
+      console.log('submit form to', formURL);
       const res = await fetch(formURL, {
         method: 'post',
         body: bodyStr,

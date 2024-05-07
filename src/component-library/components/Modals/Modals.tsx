@@ -17,6 +17,7 @@ const Modals = (
     defaultOpen = false,
     variation = 'full',
     contentVariation,
+    id,
   } = props;
   const {
     draggable,
@@ -102,6 +103,7 @@ const Modals = (
 
   return (
     <dialog
+      id={id}
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}

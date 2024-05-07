@@ -79,7 +79,9 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
     contacts.push({
       title: <JssText field={title} />,
       phone: phone?.[0],
-      availability: <span>{availabilityString}</span>,
+      availability: availabilityString ? (
+        <span>{availabilityString}</span>
+      ) : undefined,
     });
   });
 
