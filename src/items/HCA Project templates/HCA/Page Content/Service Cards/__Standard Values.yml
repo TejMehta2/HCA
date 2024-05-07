@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/Service Cards/__Standard Valu
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{0FA4D928-DDAC-482D-8F33-DB87255F9863}"
+  Value: "{A1D640E8-B025-43B5-80DB-C45C2F82227B}"
 Languages:
 - Language: en
   Versions:
@@ -25,11 +25,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2565dfac-52e9-4ebe-849d-301bd184c4f3"
+      Value: "d72e372e-a3fe-47f2-a9af-c9619dc76347"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231124T125354Z
+      Value: 20240505T181352Z

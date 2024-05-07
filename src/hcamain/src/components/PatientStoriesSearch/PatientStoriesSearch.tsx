@@ -253,9 +253,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                     }
                     link={
                       <a href={url}>
-                        <span>
-                          Learn <strong>more</strong>
-                        </span>
+                        <RichText field={props.fields?.CTACardText} />
                       </a>
                     }
                   />
