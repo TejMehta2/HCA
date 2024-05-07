@@ -20,10 +20,12 @@ const getBaselineParams = (props: ApiSearchProps) => {
     ['offset', `${defaultOffset}`],
   ];
 
+  const baselineAutocompleteParams: [string, string][] = [...SearchByList];
   return {
     defaultLimit,
     defaultOffset,
     baselineParams,
+    baselineAutocompleteParams,
   };
 };
 

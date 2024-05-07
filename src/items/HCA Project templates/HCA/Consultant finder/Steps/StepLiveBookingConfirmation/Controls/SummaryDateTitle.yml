@@ -1,15 +1,18 @@
 ﻿---
-ID: "1b699dd6-99de-4058-a91d-f3fd23b47e41"
-Parent: "7ba50ed1-cbc5-4f93-8bb0-2b8f5c4c8697"
+ID: "771bbf28-e2ad-4d18-8547-9dbc261d7455"
+Parent: "8b50e706-2568-483e-ae0a-359b94c6f75b"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Page Proxy/Data/Link
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingConfirmation/Controls/SummaryDateTitle
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: General Link
+  Value: "Single-Line Text"
+- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
+  Hint: Default value
+  Value: Date
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 4
 Languages:
 - Language: en
   Versions:
@@ -17,22 +20,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231116T104531Z
+      Value: 20240423T155653Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1fcc411e-b134-4009-ae06-5ec7579d1cf6"
+      Value: "f97e536c-94c9-4a6c-9f68-c012a66dad9d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231116T104737Z
+      Value: 20240423T161449Z

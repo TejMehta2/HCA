@@ -48,8 +48,12 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
-  const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
+  const {
+    defaultLimit,
+    defaultOffset,
+    baselineParams,
+    baselineAutocompleteParams,
+  } = getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -65,6 +69,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
+    baselineAutocompleteParams,
   });
 
   if (!fields) {
@@ -253,9 +258,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                     }
                     link={
                       <a href={url}>
-                        <span>
-                          Learn <strong>more</strong>
-                        </span>
+                        <RichText field={props.fields?.CTACardText} />
                       </a>
                     }
                   />

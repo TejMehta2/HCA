@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import { SelectLocationProps } from './SelectLocation.types';
-import LocationCard from '../LocationCard/LocationCard';
+import LocationCard from '../LocationCardSlots/LocationCard';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 import styles from './SelectLocation.module.scss';
 

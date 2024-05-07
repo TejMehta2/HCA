@@ -46,9 +46,12 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
 
   // Set up default baseline parameters from CMS
-  const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
-
+  const {
+    defaultLimit,
+    defaultOffset,
+    baselineParams,
+    baselineAutocompleteParams,
+  } = getBaselineParams(props);
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const {
@@ -63,6 +66,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
+    baselineAutocompleteParams,
   });
 
   if (!fields) {

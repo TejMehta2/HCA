@@ -9,20 +9,15 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 import { capitalizeFirstLetter } from '../../utility-functions/index';
 
 const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
-  const { setIsSelfPayment } = useContext(ConsultantFinderContext);
+  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
+    ConsultantFinderContext
+  );
 
-  // const capitalizeFirstLetter = (string: string) => {
-  //   if (!string) {
-  //     return '';
-  //   } else {
-  //     return string.charAt(0).toUpperCase() + string.slice(1);
-  //   }
-  // };
-
-  const handleClick = (name: string) => {
+  const handleClick = (name: string, id: number) => {
     props.setIsComponentVisible(false);
+    setSelectedInsurerPaymentStep(id);
     setIsSelfPayment(false);
-
+    console.log('id', id);
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
     }
@@ -63,7 +58,7 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
                   <li
                     key={item.id}
                     aria-label="option"
-                    onClick={() => handleClick(item.name)}
+                    onClick={() => handleClick(item.name, item.id)}
                   >
                     <span
                       className={
