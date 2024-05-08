@@ -466,7 +466,9 @@ export async function suggestLocation(
       const paramsArray = [];
       for (const property in fields) {
         const encodedKey = encodeURIComponent(property);
-        const encodedValue = encodeURIComponent(fields[property]);
+        const encodedValue = encodeURIComponent(
+          fields[property] == 'geoResolve' ? 'GeoResolve' : fields[property]
+        );
         paramsArray.push(encodedKey + '=' + encodedValue);
       }
       urlParamsStr = paramsArray.join('&');
