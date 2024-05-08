@@ -160,6 +160,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               }
             >
               <Filters
+                submitOnClose={true}
                 buttonText={<JssText field={fields?.FilterOptionsText} />}
                 buttonIcon={
                   <SitecoreSvg>
