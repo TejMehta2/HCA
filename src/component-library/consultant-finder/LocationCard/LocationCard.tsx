@@ -44,7 +44,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
         console.log(error);
       });
     // eslint-disable-next-line
-}, [router.isReady]);
+  }, [router.isReady]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
