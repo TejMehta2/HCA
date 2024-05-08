@@ -29,6 +29,7 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/scans`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/scans`;
@@ -46,6 +47,7 @@ const TestAndScansSearchDefaultComponent = (
 
 export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
   const {
@@ -250,9 +252,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                       }
                       link={
                         <a href={url}>
-                          <span>
-                            Learn <strong>more</strong>
-                          </span>
+                          <span>{props.fields?.CTACardText?.value}</span>
                         </a>
                       }
                     />
@@ -273,7 +273,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                 <span>
                   <Icons iconName={'iconPlus'} />
                 </span>
-                <span>Show more</span>
+                <span>{t('show-more')}</span>
               </SearchFormLoadMore>
             </>
           )}

@@ -34,6 +34,7 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { ApiSearchProps } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -56,6 +57,8 @@ interface WithHeaderProps extends LocationsSearchProps {
 
 export const Default = (props: WithHeaderProps): JSX.Element => {
   const { fields, params, contentVariation } = props;
+  const { t } = useI18n();
+
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
@@ -300,7 +303,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                 <Button size={'large'} variation={'full'}>
                                   <a href={url}>
                                     <span>
-                                      Learn <strong>more</strong>
+                                      {props.fields?.CTACardText?.value}
                                     </span>
                                   </a>
                                 </Button>
@@ -333,7 +336,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       <span>
                         <Icons iconName={'iconPlus'} />
                       </span>
-                      <span>Show more</span>
+                      <span>{t('show-more')}</span>
                     </SearchFormLoadMore>
                   </>
                 ),
@@ -370,10 +373,8 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             }
                             ctas={{
                               button1: (
-                                <a href="#">
-                                  <span>
-                                    Learn <strong>more</strong>
-                                  </span>
+                                <a href={data.url}>
+                                  {props.fields?.CTACardText?.value}
                                 </a>
                               ),
                               button2: (
