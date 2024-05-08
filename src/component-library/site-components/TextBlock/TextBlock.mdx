@@ -1,0 +1,45 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as TextBlockStories from './TextBlock.stories'
+
+<Meta of={TextBlockStories} />
+
+# TextBlock
+
+## Description
+
+The TextBlock component is a simple text based component, designed to be used in the main site content.
+
+It has a narrower container than most site components.
+
+``` tsx
+<TextBlock
+  title={
+    <Text variation={'display-2'}>What does a CT scan show?</Text>
+  }
+  subheading={
+    <Text variation={'subheading-1'}>Subheading</Text>
+  }
+  text={
+    <Text variation={'body-large'}>
+      CT scans show detailed images of the many structures that make up our
+      body. This includes images of bones, blood vessels and our internal
+      organs.
+    </Text>
+  }
+  ctas={
+    <>
+      <Button size={'large'} variation={'full'}>
+        <a href="#">Learn more</a>
+      </Button>
+      <Button size={'large'} variation={'outline'}>
+        <a href="#">Learn even more</a>
+      </Button>
+    </>
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={TextBlockStories.Default} />
+<Controls of={TextBlockStories.Default} />

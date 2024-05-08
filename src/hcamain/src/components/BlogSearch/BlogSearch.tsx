@@ -143,7 +143,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             }
           >
             <Filters
-              submitOnClose={true}
               buttonText={<JssText field={fields?.FilterOptionsText} />}
               buttonIcon={
                 <SitecoreSvg>

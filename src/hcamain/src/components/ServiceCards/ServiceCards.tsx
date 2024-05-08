@@ -14,7 +14,6 @@ import CardService from '@component-library/components/CardService/CardService';
 import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
-import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
@@ -79,12 +78,13 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
     return <ServiceCardsDefaultComponent {...props} />;
   }
 
+  const headingTag = props.params?.HeadingTag || 'h2';
   return (
     <ServiceCards
       title={
         (props.fields.Title?.value || isExperienceEditor) && (
           <Text
-            tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+            tag={props.fields.Heading?.value ? 'p' : headingTag}
             variation={props.params?.HeadingSize || 'display-2'}
           >
             <JssText field={props.fields?.Title} />
@@ -93,7 +93,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
       subtitle={
         (props.fields.Heading?.value || isExperienceEditor) && (
-          <Text tag="p" variation="subheading-1">
+          <Text tag={headingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         )
