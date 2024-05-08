@@ -98,6 +98,7 @@ export interface FilterCategory {
 }
 
 export interface Fields {
+  CTACardText?: Field<string>;
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
@@ -30,6 +30,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/treatments`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/treatments`;
@@ -47,6 +48,7 @@ const TreatmentsSearchDefaultComponent = (
 
 export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
   const {
@@ -128,7 +130,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           )}
           {fields?.Text?.value && (
             <Text variation="body-large" tag="div">
-              <RichText tag="div" field={fields?.Text} />
+              <JssRichText tag="div" field={fields?.Text} />
             </Text>
           )}
           <SearchBar
@@ -250,9 +252,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                       }
                       link={
                         <a href={url}>
-                          <span>
-                            Learn <strong>more</strong>
-                          </span>
+                          <JssRichText field={props.fields?.CTACardText} />
                         </a>
                       }
                     />
@@ -273,7 +273,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                 <span>
                   <Icons iconName={'iconPlus'} />
                 </span>
-                <span>Show more</span>
+                <span>{t('show-more')}</span>
               </SearchFormLoadMore>
             </>
           )}
