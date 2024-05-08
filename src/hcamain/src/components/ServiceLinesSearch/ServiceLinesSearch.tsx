@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
@@ -129,7 +129,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           )}
           {fields?.Text?.value && (
             <Text variation="body-large" tag="div">
-              <RichText tag="div" field={fields?.Text} />
+              <JssRichText tag="div" field={fields?.Text} />
             </Text>
           )}
           <SearchBar
@@ -251,7 +251,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                       }
                       link={
                         <a href={url}>
-                          <span>{props.fields?.CTACardText?.value}</span>
+                          <JssRichText field={props.fields?.CTACardText} />
                         </a>
                       }
                     />

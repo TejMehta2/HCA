@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
@@ -143,7 +143,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           }
           description={
             <Text tag="div" variation="body-large">
-              <RichText tag="span" field={props?.fields?.Text} />
+              <JssRichText tag="span" field={props?.fields?.Text} />
             </Text>
           }
         >
@@ -303,9 +303,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               button1: url ? (
                                 <Button size={'large'} variation={'full'}>
                                   <a href={url}>
-                                    <span>
-                                      {props.fields?.CTACardText?.value}
-                                    </span>
+                                    <JssRichText
+                                      field={props.fields?.CTACardText}
+                                    />
                                   </a>
                                 </Button>
                               ) : undefined,
@@ -375,7 +375,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             ctas={{
                               button1: (
                                 <a href={data.url}>
-                                  {props.fields?.CTACardText?.value}
+                                  <JssRichText
+                                    field={props.fields?.CTACardText}
+                                  />
                                 </a>
                               ),
                               button2: (
