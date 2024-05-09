@@ -62,7 +62,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
             <JssDate field={child?.date?.jsonValue} />
           ) : undefined,
           tag: <JssText field={child?.tag} />,
-          links: child?.children?.results?.map((result, index) => (
+          links: child?.links?.targetItems?.map((result, index) => (
             <TextLink key={index} variation={'body-large'}>
               {result?.link?.jsonValue && (
                 <JssLink field={result?.link?.jsonValue} />
