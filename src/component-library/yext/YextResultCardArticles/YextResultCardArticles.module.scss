@@ -66,14 +66,17 @@
     max-width: 100%;
   }
 
-  @include media(screen-l) {
+  @include media(screen-m) {
     flex-direction: row;
-    justify-content: flex-end;
-    gap: 0 $spacing-5;
+    gap: 0 $spacing-2;
 
     div {
       width: auto;
     }
+  }
+
+  @include media(screen-l) {
+    justify-content: flex-end;
   }
 }
 
