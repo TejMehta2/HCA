@@ -6,9 +6,6 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 
-type ExtendedText = Field & {
-  jsonValue?: LinkField;
-};
 type ExtendedSvg = Field & {
   jsonValue?: {
     id?: string;
@@ -115,7 +112,7 @@ export interface Fields {
         targetItem: {
           searchPlaceholder?: Field<string>;
           icon?: ExtendedSvg;
-          popularSearchesLabel?: ExtendedText;
+          popularSearchesLabel?: Field<string>;
           popularSearches?: PopularSearches;
           baseUrl?: ExtendedLink;
         };

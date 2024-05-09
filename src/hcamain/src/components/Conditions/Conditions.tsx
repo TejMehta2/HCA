@@ -2,28 +2,25 @@ import React from 'react';
 import {
   Field,
   ImageField,
+  Image as JssImage,
   Text as JssText,
+  LinkField,
+  Link as JssLink,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
+import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
+import CardContent from '@component-library/components/CardContent/CardContent';
+import Link from 'next/link';
+import getSubheadingTag from 'lib/subheading-tag-getter';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIcon = {
   svgMarkup?: Field<string>;
 };
-
-interface DepartmentFields {
-  conditions?: {
-    ConditionsList?: PagesFields[];
-  };
-  children: {
-    results: {
-      ConditionsList?: PagesFields[];
-    };
-  };
-}
-
 interface PagesFields {
   abstractTitle?: { value?: string };
   abstractText?: { value?: string };
@@ -43,22 +40,37 @@ interface Fields {
       cTAIcon?: {
         Icon?: HCAIcon;
       };
-
-      department?: {
-        DepartmentList?: DepartmentFields[];
+      cTALink?: {
+        jsonValue: LinkField;
       };
-      numberOfCards?: { jsonValue?: Field<string> };
-      displayAllCards?: { jsonValue?: Field<string> };
+      department?: {
+        DepartmentList?: {
+          conditions?: {
+            ConditionList?: PagesFields[];
+          };
+          children?: {
+            results?: {
+              conditions?: {
+                ConditionList?: PagesFields[];
+              };
+            }[];
+          };
+        }[];
+      };
+      numberOfCards?: { jsonValue?: Field<3 | 4> };
+      displayAllCards?: { jsonValue?: Field<boolean> };
       cTAText?: { jsonValue?: Field<string> };
     };
     contextItem?: {
       conditions?: {
-        ConditionsList?: PagesFields[];
+        ConditionList?: PagesFields[];
       };
-      children: {
-        results: {
-          ConditionsList?: PagesFields[];
-        };
+      children?: {
+        results?: {
+          conditions: {
+            ConditionList?: PagesFields[];
+          };
+        }[];
       };
     };
   };
@@ -67,6 +79,7 @@ interface Fields {
 type ConditionsProps = {
   params?: Params;
   fields?: Fields;
+  withImage?: boolean;
 };
 
 const ConditionsDefaultComponent = (props: ConditionsProps): JSX.Element => {
@@ -87,33 +100,130 @@ const ConditionsDefaultComponent = (props: ConditionsProps): JSX.Element => {
 };
 
 export const WithImage = (props: ConditionsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <ConditionsDefaultComponent {...props} />;
   }
+  const { withImage = true } = props;
+  const item = props.fields?.data?.item;
+  const contextItem = props.fields?.data?.contextItem;
+
+  // Order of cardData: conditions from Specialty Page and then conditions from all Subspecialty Pages
+  let cardData: PagesFields[] = [];
+
+  // Unpack deeply nested card data for Specialty and sub-Specialty pages
+  item?.department?.DepartmentList?.forEach((department) => {
+    cardData = cardData.concat(department.conditions?.ConditionList || []);
+    department?.children?.results?.forEach((child) => {
+      cardData = cardData.concat(child?.conditions?.ConditionList || []);
+    });
+  });
+
+  // Unpack card data for content pages, and sub-pages from context
+  const conditionList = contextItem?.conditions?.ConditionList || [];
+  cardData = cardData.concat(conditionList);
+  contextItem?.children?.results?.forEach((child) => {
+    cardData = cardData.concat(child.conditions?.ConditionList || []);
+  });
+
+  const displayAllCards = item?.displayAllCards?.jsonValue?.value;
+  const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;
+  const limit = displayAllCards ? 999 : numberOfCards;
+
+  const getCta = () => {
+    const ctaField = props.fields?.data?.item?.cTALink?.jsonValue?.value;
+    if (!ctaField) return undefined;
+    if (isExperienceEditor) return <JssLink field={ctaField} />;
+    if (displayAllCards) return undefined;
+    if (!ctaField.href || !ctaField.text) return undefined;
+    return (
+      <a href={ctaField.href}>
+        <SitecoreSvg>
+          {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+        </SitecoreSvg>
+        <JssTextWithEntityName
+          field={{
+            value: ctaField.text || '',
+          }}
+          isRichText={true}
+        />
+      </a>
+    );
+  };
+
   return (
-    <TextBlockHeader>
-      <Text variation={'subheading-1'}>
-        <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
-      </Text>
-      <Text variation={'display-2'}>
-        <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      </Text>
-    </TextBlockHeader>
+    <CardBlock
+      variation={`${numberOfCards}-columns`}
+      gapSize={'small'}
+      theme={props.params?.Theme || 'A-HCA-White'}
+      header={
+        <AdvancedBlockHeader
+          paddingSize="small"
+          subtitle={
+            props.fields.data?.item?.heading?.jsonValue?.value && (
+              <Text variation={'subheading-1'}>
+                {props.fields.data?.item?.heading?.jsonValue?.value}
+              </Text>
+            )
+          }
+          title={
+            props.fields?.data?.item?.title?.jsonValue?.value && (
+              <Text
+                variation={props.params?.HeadingSize || 'display-5'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssTextWithEntityName
+                  field={props.fields?.data?.item?.title?.jsonValue}
+                />
+              </Text>
+            )
+          }
+        />
+      }
+      cta={getCta()}
+    >
+      <>
+        {cardData.slice(0, limit).map((item, index) => {
+          const imageField = item.image?.jsonValue.value?.src
+            ? item.image?.jsonValue
+            : item.abstractImage?.jsonValue;
+
+          return (
+            <CardContent
+              key={index}
+              image={withImage ? <JssImage field={imageField} /> : undefined}
+              title={
+                <Text
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                  variation="display-4"
+                >
+                  <JssText field={item?.title || item?.abstractTitle} />
+                </Text>
+              }
+              bodyCopy={
+                <Text tag="p" variation="body-large">
+                  <JssText field={item?.text || item?.abstractText} />
+                </Text>
+              }
+              link={
+                item.url?.path ? (
+                  <Link href={item.url?.path}>
+                    <JssText
+                      field={props.fields?.data?.item?.cTAText?.jsonValue}
+                    />
+                  </Link>
+                ) : undefined
+              }
+            />
+          );
+        })}
+      </>
+    </CardBlock>
   );
 };
 
 export const WithoutImage = (props: ConditionsProps): JSX.Element => {
-  if (!props.fields) {
-    return <ConditionsDefaultComponent {...props} />;
-  }
-  return (
-    <TextBlockHeader>
-      <Text variation={'subheading-1'}>
-        <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
-      </Text>
-      <Text variation={'display-2'}>
-        <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      </Text>
-    </TextBlockHeader>
-  );
+  return <WithImage {...props} withImage={false} />;
 };

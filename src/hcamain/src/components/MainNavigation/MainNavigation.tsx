@@ -151,9 +151,11 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           ref={dialogRef}
           placeholder={searchModalConfig?.searchPlaceholder?.value || ''}
           subheading={
-            <Text variation={'subheading-1'}>
-              <JssText field={searchModalConfig?.searchPlaceholder} />
-            </Text>
+            searchModalConfig?.popularSearchesLabel ? (
+              <Text variation={'subheading-1'}>
+                <JssText field={searchModalConfig?.popularSearchesLabel} />
+              </Text>
+            ) : undefined
           }
           redirectUrl={searchModalConfig?.baseUrl?.jsonValue?.value.href}
           suggestions={
