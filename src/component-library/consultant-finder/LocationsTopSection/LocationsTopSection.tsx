@@ -11,6 +11,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
   const { selectedLocations, setSelectedLocations } = useContext(
     ConsultantFinderContext
   );
+  console.log('props LocationsTopSection', props);
   console.log('selectedLocations', selectedLocations);
   console.log('selectedLocations length', selectedLocations.length);
 
@@ -42,7 +43,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
         <div className={styles['locations-search']}>
           <LocationsSearch
             locationsAPI={props.locationAPI}
-            placeholder={''}
+            placeholder={props.searchPlaceholderText}
             doctifyBaseURL={''}
             limit={0}
             noResultsMsg={''}

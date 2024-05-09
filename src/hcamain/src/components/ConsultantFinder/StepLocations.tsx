@@ -29,6 +29,7 @@ interface Fields {
   API_HCA_Locations_BaseURL: Field<string>;
   BodyText: Field<string>;
   HeadingText: Field<string>;
+  SearchPlaceholderText: Field<string>;
   SelectCardText: Field<string>;
   RemoveCardText: Field<string>;
   RemoveAllLocationsButtonText: Field<string>;
@@ -116,6 +117,10 @@ export const Default = (props: StepProps): JSX.Element => {
               text={
                 props?.fields?.BodyText?.value ||
                 'Enter your postcode to see the locations closest to you. Please select any facilities you wish to visit, or continue to see consultants across all of our facilities.'
+              }
+              searchPlaceholderText={
+                props?.fields?.SearchPlaceholderText?.value ||
+                'Enter postcode or place name'
               }
               removeAllLocationsButtonText={
                 props?.fields?.RemoveAllLocationsButtonText?.value ||
