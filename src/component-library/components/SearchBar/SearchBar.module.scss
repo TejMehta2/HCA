@@ -24,13 +24,13 @@
 }
 
 %searchbar {
-  background-color: var(--field-background);
+  background-color: $white;
   display: flex;
   align-items: center;
   gap: $spacing-4;
   position: relative;
   flex: 1 1 auto;
-  color: var(--text);
+  color: $navy-blue-100;
   border-radius: $radius-large;
   border: solid px-to-rem(1) currentcolor;
   padding: px-to-rem(18) px-to-rem(32);
