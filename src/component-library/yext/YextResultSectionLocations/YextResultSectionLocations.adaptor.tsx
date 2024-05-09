@@ -45,16 +45,20 @@ const YextResultSectionLocationsAdaptor = (
     const currentDay = new Date().getDay();
 
     let hoursText = '';
+
     if (hours) {
-      const openingClosingTimes = hours[weekday[currentDay]] as DayHour;
-      if (closed) {
-        hoursText = 'Opens at ' + openingClosingTimes.openIntervals![0].start;
-      } else if (openingClosingTimes.openIntervals![0].end) {
-        hoursText = 'Closes at ' + openingClosingTimes.openIntervals![0].end;
-      } else {
-        hoursText = 'Open 24h';
-      }
+      try {
+        const openingClosingTimes = hours[weekday[currentDay]] as DayHour;
+        if (closed) {
+          hoursText = 'Opens at ' + openingClosingTimes.openIntervals![0].start;
+        } else if (openingClosingTimes.openIntervals![0].end) {
+          hoursText = 'Closes at ' + openingClosingTimes.openIntervals![0].end;
+        } else {
+          hoursText = 'Open 24h';
+        }
+      } catch {}
     }
+
     const coordinates =
       result.rawData.geocodedCoordinate || result.rawData.displayCoordinate;
     const cardProps = {
@@ -109,14 +113,16 @@ const YextResultSectionLocationsAdaptor = (
             ),
           }
         : undefined,
-      openingHours: {
-        icon: <Icons iconName="iconClock"></Icons>,
-        text: (
-          <Text variation="body-large" tag="span">
-            <strong>{closed ? 'Closed.' : 'Open Now.'}</strong> {hoursText}
-          </Text>
-        ),
-      },
+      openingHours: hoursText?.length
+        ? {
+            icon: <Icons iconName="iconClock"></Icons>,
+            text: (
+              <Text variation="body-large" tag="span">
+                <strong>{closed ? 'Closed.' : 'Open Now.'}</strong> {hoursText}
+              </Text>
+            ),
+          }
+        : undefined,
     };
 
     return {
