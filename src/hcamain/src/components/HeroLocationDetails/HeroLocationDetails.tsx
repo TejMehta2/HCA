@@ -20,6 +20,7 @@ import Text from '@component-library/foundation/Text/Text';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 interface CQCFields {
   fields?: {
@@ -81,7 +82,10 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   return (
     <HeaderLocation
       title={
-        <Text variation="display-1" tag="h2">
+        <Text
+          variation={props.params?.HeadingSize || 'display-1'}
+          tag={getSubheadingTag(props.params?.HeadingTag, 'h1')}
+        >
           <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
