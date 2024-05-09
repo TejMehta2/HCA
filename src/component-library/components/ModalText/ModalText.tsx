@@ -27,6 +27,12 @@ const ModalText = (
             <div className={styles.panel1}>
               <div className={styles.title}>{title1}</div>
               <div className={styles.copy}>{copy1}</div>
+            </div>
+            <div className={styles.panel2}>
+              <div className={styles.title}>{title2}</div>
+              <div className={styles.copy}>{copy2}</div>
+            </div>
+            <div className={styles.ctas}>
               {cta1 && (
                 <div className={styles.cta1}>
                   <Button variation="full" size="large">
@@ -34,10 +40,6 @@ const ModalText = (
                   </Button>
                 </div>
               )}
-            </div>
-            <div className={styles.panel2}>
-              <div className={styles.title}>{title2}</div>
-              <div className={styles.copy}>{copy2}</div>
               {cta2 && (
                 <div className={styles.cta2}>
                   <Button variation="full" size="large">
