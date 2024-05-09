@@ -44,8 +44,8 @@ export interface MainNavigationTabChild {
   };
   date?: ExtendedDate;
   tag?: Field<string>;
-  children?: {
-    results?: {
+  links?: {
+    targetItems?: {
       link?: ExtendedLink;
     }[];
   };

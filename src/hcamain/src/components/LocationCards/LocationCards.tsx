@@ -36,7 +36,7 @@ const LocationCardsDefaultComponent = (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
           <span className="is-empty-hint">
-            Patient Stories Cards please click to select datasource
+            Location Cards please click to select datasource
           </span>
         </div>
       </div>
