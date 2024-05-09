@@ -12,6 +12,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   Heading?: Field<string>;
@@ -51,7 +52,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   }
 
   return (
-    <>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
           props.fields?.Heading?.value && (
@@ -83,6 +84,6 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
           </PlaceHolderWrapper>
         }
       />
-    </>
+    </Themes>
   );
 };
