@@ -31,6 +31,20 @@
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
   }
 
+  .ctas {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 1);
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+
+    margin-top: $spacing-7;
+    display: flex;
+    flex-flow: column wrap;
+    gap: $spacing-2;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+  }
+
   .title {
     margin-bottom: $spacing-7;
   }
@@ -77,9 +91,4 @@
       }
     }
   }
-}
-
-.cta1,
-.cta2 {
-  margin-top: $spacing-7;
 }

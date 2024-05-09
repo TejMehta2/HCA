@@ -8,7 +8,7 @@
   padding: px-to-rem(24) 0;
   list-style: none;
   overflow: hidden;
-  background-color: var(--field-background);
+  background-color: $white;
 }
 
 .suggestions {
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   gap: $spacing-4;
-  color: var(--text);
+  color: $navy-blue-100;
 
   svg {
     min-width: px-to-rem(24);

@@ -10,6 +10,9 @@ import {
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
+import Text from '@component-library/foundation/Text/Text';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   Heading?: Field<string>;
@@ -49,18 +52,38 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   }
 
   return (
-    <div>
-      <JssText field={props.fields?.Heading} />
-      <br />
-      <JssText field={props.fields?.Title} />
-      <br />
-      <RichText>
-        <JssRichText field={props.fields?.Text} />
-      </RichText>
-      <br />
-      <PlaceHolderWrapper>
-        <Placeholder name={phKey} rendering={props.rendering} />
-      </PlaceHolderWrapper>
-    </div>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <TextBlock
+        subheading={
+          props.fields?.Heading?.value && (
+            <Text variation={'subheading-1'}>
+              <JssText field={props.fields?.Heading} />
+            </Text>
+          )
+        }
+        title={
+          props.fields?.Title?.value && (
+            <Text
+              variation={props.params?.HeadingSize || 'display-2'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssText field={props.fields?.Title} />
+            </Text>
+          )
+        }
+        text={
+          props.fields?.Text?.value && (
+            <RichText>
+              <JssRichText field={props.fields?.Text} />
+            </RichText>
+          )
+        }
+        ctas={
+          <PlaceHolderWrapper>
+            <Placeholder name={phKey} rendering={props.rendering} />
+          </PlaceHolderWrapper>
+        }
+      />
+    </Themes>
   );
 };
