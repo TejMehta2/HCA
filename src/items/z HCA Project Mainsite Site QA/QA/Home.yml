@@ -43,14 +43,6 @@ SharedFields:
           s:ph="headless-main"
           s:ccb="Clear on publish" />
         <r
-          uid="{239C1A02-B307-4F5A-B243-06BDF9852696}"
-          p:after="r[@uid='{C0CA0A4D-E049-482A-BBEA-F341984C48DC}']"
-          s:ds="local:/Data/Patient stories"
-          s:id="{CD8E122B-EEF0-4172-9020-DE23AE20CDC5}"
-          s:par="GridParameters&amp;FieldNames=%7B442459D1-E007-4F26-B6BB-A1289883689B%7D&amp;Styles&amp;RenderingIdentifier=EQTRHCA59&amp;CSSStyles&amp;DynamicPlaceholderId=1"
-          s:ph="headless-main"
-          s:ccb="Clear on publish" />
-        <r
           uid="{EE9955D2-EC8E-4CDC-9152-3076B5B636F0}"
           p:after="*[1=2]"
           s:ds="local:/Data/Doctor cards"
@@ -78,11 +70,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7c6b3fb3-7a18-4e09-bc5c-1f8264283bae"
+      Value: "f1d1763b-7dc8-4c71-88db-317dc976fbe6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231221T093251Z
+      Value: 20240509T130813Z
