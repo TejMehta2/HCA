@@ -246,10 +246,19 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                         </Text>
                       }
                       bodyCopy={
-                        <Text variation="body-large">{abstractText ? abstractText : description}</Text>
+                        <Text variation="body-large">
+                          {abstractText ? abstractText : description}
+                        </Text>
                       }
                       image={
-                        imageUrl ? (
+                        abstractImageUrl ? (
+                          <Image
+                            src={abstractImageUrl}
+                            alt=""
+                            width="363"
+                            height="243"
+                          />
+                        ) : imageUrl ? (
                           <Image
                             src={imageUrl}
                             alt=""
