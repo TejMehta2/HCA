@@ -208,6 +208,9 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                 {data?.response.results?.map((item, index) => {
                   const { data } = item;
                   const {
+                    abstractTitle,
+                    abstractText,
+                    abstractImageUrl,
                     title,
                     description,
                     imageUrl,
@@ -219,15 +222,24 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 
                   return (
                     <CardBlog key={index}>
-                      {imageUrl ? (
+                      {abstractImageUrl ? (
+                        <Image
+                          src={abstractImageUrl}
+                          alt=""
+                          width="363"
+                          height="243"
+                        />
+                      ) : imageUrl ? (
                         <Image src={imageUrl} alt="" width="363" height="243" />
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
-                        <a href={url}>{title}</a>
+                        <a href={url}>
+                          {abstractTitle ? abstractTitle : title}
+                        </a>
                       </Text>
                       <Text tag={'p'} variation={'body-large'}>
-                        {description}
+                        {abstractText ? abstractText : description}
                       </Text>
                       {!!typeName && (
                         <Tags>

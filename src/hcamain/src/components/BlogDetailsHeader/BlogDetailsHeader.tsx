@@ -12,6 +12,7 @@ import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 
 type ArticleTypeFields = {
+  id?: string;
   title?: { value?: string };
 };
 

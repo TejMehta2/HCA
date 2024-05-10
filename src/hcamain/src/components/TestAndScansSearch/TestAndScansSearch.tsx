@@ -228,17 +228,25 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
               <CardGrid>
                 {data?.response.results?.map((item, index) => {
                   const { data } = item;
-                  const { title, description, imageUrl, url } = data;
+                  const {
+                    abstractTitle,
+                    abstractText,
+                    abstractImageUrl,
+                    title,
+                    description,
+                    imageUrl,
+                    url,
+                  } = data;
                   return (
                     <CardContent
                       key={index}
                       title={
                         <Text variation="heading-1" tag="h4">
-                          {title}
+                          {abstractTitle ? abstractTitle : title}
                         </Text>
                       }
                       bodyCopy={
-                        <Text variation="body-large">{description}</Text>
+                        <Text variation="body-large">{abstractText ? abstractText : description}</Text>
                       }
                       image={
                         imageUrl ? (
