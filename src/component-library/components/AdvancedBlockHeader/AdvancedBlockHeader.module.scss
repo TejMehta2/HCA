@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  padding-top: $spacing-13;
+  padding-top: var(--theme-collapse-padding-top, $spacing-13);
   color: var(--text);
 
   > *:first-child {
@@ -31,6 +31,10 @@
     @include media(screen-l) {
       width: 50%;
     }
+  }
+
+  &:empty {
+    padding-bottom: 0;
   }
 }
 

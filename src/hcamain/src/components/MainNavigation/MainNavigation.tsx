@@ -62,7 +62,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
             <JssDate field={child?.date?.jsonValue} />
           ) : undefined,
           tag: <JssText field={child?.tag} />,
-          links: child?.children?.results?.map((result, index) => (
+          links: child?.links?.targetItems?.map((result, index) => (
             <TextLink key={index} variation={'body-large'}>
               {result?.link?.jsonValue && (
                 <JssLink field={result?.link?.jsonValue} />
@@ -151,9 +151,11 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           ref={dialogRef}
           placeholder={searchModalConfig?.searchPlaceholder?.value || ''}
           subheading={
-            <Text variation={'subheading-1'}>
-              <JssText field={searchModalConfig?.searchPlaceholder} />
-            </Text>
+            searchModalConfig?.popularSearchesLabel ? (
+              <Text variation={'subheading-1'}>
+                <JssText field={searchModalConfig?.popularSearchesLabel} />
+              </Text>
+            ) : undefined
           }
           redirectUrl={searchModalConfig?.baseUrl?.jsonValue?.value.href}
           suggestions={
