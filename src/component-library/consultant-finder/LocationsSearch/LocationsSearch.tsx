@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useId, useState } from 'react';
+import React, { useContext, useId, useState } from 'react';
 import axios from 'axios';
 import styles from './Search.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -8,6 +8,7 @@ import SearchProps from './Search.types';
 let cancelToken: any;
 import SearchDdropdown from './SearchDropwdown';
 import TextLink from '../../core-components/TextLink/TextLink';
+import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 
 const LocationsSearch = (props: SearchProps): JSX.Element => {
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -18,6 +19,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const searchId = useId();
+  const { setSelectedLocations } = useContext(ConsultantFinderContext);
 
   const getAddress = (userInput: string) => {
     setLoading(true);
@@ -120,6 +122,18 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
     }
   };
 
+  const clearLocationSearch = () => {
+    setInputValue(''); // clear out search term
+    // reset hospitals to default sort order
+    props.hospitals.sort((h1: any, h2: any) => {
+      if (h1?.fields?.Order?.value > h2?.fields?.Order?.value) return 1;
+      if (h1?.fields?.Order?.value < h2?.fields?.Order?.value) return -1;
+      return 0;
+    });
+    props.setHospitals(props.hospitals);
+    setSelectedLocations([]);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('value input', e.target.value);
     setLoading(true);
@@ -183,9 +197,16 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
         <div className={styles['consultant-finder-search-close-btn']}>
           {props.searchStringPayment !== '' && (
             <TextLink>
-              <button onClick={getGeolocation}>
-                <Icons iconName="iconLocation" />
-              </button>
+              {inputValue.length == 0 && (
+                <button title="my location" onClick={getGeolocation}>
+                  <Icons iconName="iconLocation" />
+                </button>
+              )}
+              {inputValue.length > 0 && (
+                <button title="reset" onClick={clearLocationSearch}>
+                  <Icons iconName="iconCross" />
+                </button>
+              )}
             </TextLink>
           )}
         </div>
