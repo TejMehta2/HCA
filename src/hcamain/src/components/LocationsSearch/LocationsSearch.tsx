@@ -267,8 +267,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       {data?.response?.results?.map(({ data }) => {
                         const {
                           id,
+                          abstractTitle,
+                          abstractImageUrl,
                           title,
-                          name,
                           description,
                           imageUrl,
                           url,
@@ -279,7 +280,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             key={id}
                             title={
                               <Text variation="heading-1" tag="h4">
-                                {title || name}
+                                {abstractTitle ? abstractTitle : title}
                               </Text>
                             }
                             address={
@@ -290,7 +291,14 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ) : undefined
                             }
                             image={
-                              imageUrl ? (
+                              abstractImageUrl ? (
+                                <Image
+                                  src={abstractImageUrl}
+                                  alt=""
+                                  width="363"
+                                  height="243"
+                                />
+                              ) : imageUrl ? (
                                 <Image
                                   src={imageUrl}
                                   alt=""

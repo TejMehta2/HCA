@@ -241,18 +241,37 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             <CardGrid>
               {data?.response.results?.map((item, index) => {
                 const { data } = item;
-                const { title, description, imageUrl, url, name } = data;
+                const {
+                  abstractTitle,
+                  abstractText,
+                  abstractImageUrl,
+                  title,
+                  description,
+                  imageUrl,
+                  url,
+                } = data;
                 return (
                   <CardContent
                     key={index}
                     title={
                       <Text variation="heading-1" tag="h4">
-                        {title || name}
+                        {abstractTitle ? abstractTitle : title}
                       </Text>
                     }
-                    bodyCopy={<Text variation="body-large">{description}</Text>}
+                    bodyCopy={
+                      <Text variation="body-large">
+                        {abstractText ? abstractText : description}
+                      </Text>
+                    }
                     image={
-                      imageUrl ? (
+                      abstractImageUrl ? (
+                        <Image
+                          src={abstractImageUrl}
+                          alt=""
+                          width="363"
+                          height="243"
+                        />
+                      ) : imageUrl ? (
                         <Image src={imageUrl} alt="" width="363" height="243" />
                       ) : undefined
                     }
