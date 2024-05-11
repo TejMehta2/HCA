@@ -1,0 +1,30 @@
+﻿---
+ID: "07effcc3-0cd5-4ab0-9301-bbedc197b072"
+Parent: "21e4b307-153b-4c2c-aec9-96b76be4eb93"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33_1/Data/Header With Image/CTA Button 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240104T225614Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "754fbe09-57c7-4cf6-aba7-1b9d8bcd2bff"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Go to home" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240314T154857Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"
