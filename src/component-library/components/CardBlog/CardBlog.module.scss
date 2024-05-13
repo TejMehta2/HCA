@@ -34,6 +34,7 @@
     max-height: px-to-rem(268);
     margin: calc(-1 * #{$spacing-7}) calc(-1 * #{$spacing-6}) px-to-rem(40 - 16);
     width: calc(100% + 2 * #{$spacing-6});
+    max-width: unset;
     object-fit: cover;
     transition: 0.6s ease;
   }
