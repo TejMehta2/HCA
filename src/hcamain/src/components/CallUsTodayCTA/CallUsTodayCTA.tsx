@@ -73,7 +73,6 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
         };
       }
     );
-    //console.log(contactUnit);
 
     const availabilityString = OpeningHours(contactUnit);
 
