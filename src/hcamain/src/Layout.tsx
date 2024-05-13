@@ -16,6 +16,7 @@ import ScrollTransition from '@component-library/components/ScrollTransition/Scr
 import Params from 'src/types/params';
 import ErrorBoundary from 'lib/ErrorBoundary';
 import YextProvider from '@component-library/yext/YextProvider/YextProvider';
+import Schema from './Schema';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -101,6 +102,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         {headLinks.map((headLink) => (
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
+        <Schema layoutData={layoutData} />
       </Head>
 
       {/* root placeholder for the app, which we add components to using route data */}

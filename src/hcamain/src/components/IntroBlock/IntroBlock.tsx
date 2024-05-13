@@ -56,7 +56,7 @@ interface Fields {
   DoctifyReviews?: DoctifyReviewsFields;
 }
 
-type IntroBlockProps = {
+export type IntroBlockProps = {
   params?: Params;
   fields?: Fields;
 };

@@ -50,7 +50,7 @@ interface Fields {
   };
 }
 
-type HeroLocationDetailsProps = {
+export type HeroLocationDetailsProps = {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
