@@ -47,7 +47,11 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       : sitecoreContext?.route?.fields?.Image
   ) as ImageField;
 
+  console.log(props);
+
   const isContainerized = props?.params?.Containerized === '1';
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   if (isContainerized) {
     return (
       <RichText additionalStyles={props?.params?.styles}>
@@ -60,7 +64,10 @@ export const Default = (props: BlogImageProps): JSX.Element => {
 
   return (
     <>
-      <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+      <BlogContent
+        theme={props.params?.Theme || 'A-HCA-White'}
+        contentVariation={keepAspectRatio ? 'keep-aspect-ratio' : undefined}
+      >
         <figure>
           <Image field={image} />
         </figure>

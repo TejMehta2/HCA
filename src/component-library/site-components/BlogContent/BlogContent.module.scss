@@ -33,4 +33,10 @@
       }
     }
   }
+
+  &.keep-aspect-ratio-block {
+    img:first-child {
+      aspect-ratio: unset;
+    }
+  }
 }
