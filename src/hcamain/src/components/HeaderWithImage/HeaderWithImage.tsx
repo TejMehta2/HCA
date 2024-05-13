@@ -24,7 +24,7 @@ interface Fields {
   };
 }
 
-type HeaderWithImageProps = {
+export type HeaderWithImageProps = {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
