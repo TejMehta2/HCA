@@ -47,6 +47,8 @@ const TextBlockComponentDefaultComponent = (
 
 export const Default = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
   }
@@ -55,28 +57,28 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
-          props.fields?.Heading?.value && (
-            <Text variation={'subheading-1'}>
-              <JssText field={props.fields?.Heading} />
-            </Text>
-          )
+          (props.fields?.Heading?.value || isExperienceEditor) && (
+              <Text variation={'subheading-1'}>
+                <JssText field={props.fields?.Heading} />
+              </Text>
+            )
         }
         title={
-          props.fields?.Title?.value && (
-            <Text
-              variation={props.params?.HeadingSize || 'display-2'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssText field={props.fields?.Title} />
-            </Text>
-          )
+          (props.fields?.Title?.value || isExperienceEditor) && (
+              <Text
+                variation={props.params?.HeadingSize || 'display-2'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText field={props.fields?.Title} />
+              </Text>
+            )
         }
         text={
-          props.fields?.Text?.value && (
-            <RichText>
-              <JssRichText field={props.fields?.Text} />
-            </RichText>
-          )
+          (props.fields?.Text?.value || isExperienceEditor) && (
+              <RichText>
+                <JssRichText field={props.fields?.Text} />
+              </RichText>
+            )
         }
         ctas={
           <PlaceHolderWrapper>
