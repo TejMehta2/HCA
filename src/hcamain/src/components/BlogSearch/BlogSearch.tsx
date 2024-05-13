@@ -241,11 +241,13 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                       <Text tag={'p'} variation={'body-large'}>
                         {abstractText ? abstractText : description}
                       </Text>
-                      {!!typeName && (
-                        <Tags>
-                          <a href={'?articleTypeId=' + typeId}>{typeName}</a>
-                        </Tags>
-                      )}
+                      <div>
+                        {!!typeName && (
+                          <Tags>
+                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                          </Tags>
+                        )}
+                      </div>
                     </CardBlog>
                   );
                 })}
