@@ -38,6 +38,15 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
 
   const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
 
+  // Apply near param from geolocation middleware cookie
+  if (typeof window !== undefined) {
+    const regex = new RegExp(/near=([\w\s]+)(?=;|$)/gm);
+    const near = regex.exec(document?.cookie)?.[1];
+    if (near?.length) {
+      combinedParams.push(['near', near]);
+    }
+  }
+
   const options = {
     keepPreviousData: true, // Never show nothing
     revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
