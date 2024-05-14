@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const geolocationMiddleware = (req: NextRequest) => {
   try {
-    const { nextUrl: url, geo } = req;
-
-    if (!url.searchParams.has('near') && geo?.city) {
+    const { geo } = req;
+    if (!req.cookies.has('near')) {
       const city = geo?.city || 'London';
-      url.searchParams.set('near', `${city}`);
-      return NextResponse.redirect(url);
+      const response = NextResponse.next();
+      response.cookies.set('near', city, {
+        httpOnly: false,
+      });
+      return response;
     }
   } catch (error) {
     console.log(error);

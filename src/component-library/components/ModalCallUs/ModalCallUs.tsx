@@ -72,10 +72,10 @@ const ModalCallUs = (
             <div className={styles.background}>
               <div className={styles.additional}>
                 {contacts.slice(1).map((contact, index) => (
-                  <>
+                  <React.Fragment key={index}>
                     <hr />
-                    <Contact key={index} contact={contact} />
-                  </>
+                    <Contact contact={contact} />
+                  </React.Fragment>
                 ))}
               </div>
             </div>

@@ -83,8 +83,10 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
     fallback = process.env.EXPORT_MODE ? false : fallback;
   }
 
+  const limit = process.env.STATIC_BUILD_LIMIT as unknown as number;
+
   return {
-    paths,
+    paths: limit ? paths.slice(0, limit) : paths,
     fallback,
   };
 };

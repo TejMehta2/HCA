@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Field,
   RichText as JssRichText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
@@ -17,13 +18,20 @@ type BlogTextProps = {
 };
 
 const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
-  return (
-    <div className={`component ${props.params?.styles}`}>
-      <div className="component-content">
-        <span className="is-empty-hint">Header with image no datasource</span>
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Blog Text please click to select datasource
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return <></>;
 };
 
 export const Default = (props: BlogTextProps): JSX.Element => {
