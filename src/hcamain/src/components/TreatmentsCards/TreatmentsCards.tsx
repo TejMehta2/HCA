@@ -13,7 +13,6 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
@@ -82,8 +81,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <TreatmentsCardsDefaultComponent {...props} />;
   }
 
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   //  check for conditionId and append if it exists
   const allUrl = props.fields?.data?.contextItem?.id
@@ -108,7 +106,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       cta={link}
