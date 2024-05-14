@@ -57,9 +57,6 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   }
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-  //const keepAspectRatio = true;
-
-  console.log(props);
 
   return (
     <>
