@@ -14,7 +14,6 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
@@ -84,8 +83,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <ContentCardsDefaultComponent {...props} />;
   }
 
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const link =
     props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
@@ -106,7 +104,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
