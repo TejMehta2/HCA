@@ -499,6 +499,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     titleText={
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
+                    reviewsRef={reviewsRef}
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&
@@ -795,6 +796,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     titleText={
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
+                    reviewsRef={reviewsRef}
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&
