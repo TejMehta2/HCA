@@ -715,7 +715,64 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* iframe with patient and peer reviews */}
               </MainWrapper>
               <SideWrapper>
-                <SidePanel isSticky={true}>
+                <SidePanel 
+                isSticky={true} 
+                buttons={
+                  <>
+                  {/* if consultant has live diaries then show 'book online' */}
+                  {serverSideData?.IsLiveDiaryConsultant && (
+                      <Button
+                        variation="full-dark"
+                        size="small"
+                      >
+                        <Link
+                          href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                        >
+                          <span>
+                            {props.fields.BookOnlineButtonLink.value.text ||
+                              'Book online'}
+                          </span>
+                        </Link>
+                      </Button>
+                  )}
+                  {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+                  {!serverSideData?.IsLiveDiaryConsultant &&
+                    !serverSideData?.ProfileJson?.hideAppointmentRequest && (
+                        <Button
+                          variation="full-dark"
+                          size="small"
+                        >
+                          <Link
+                            href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                          >
+                            <span>
+                              {props?.fields?.EnquireNowButtonLink?.value
+                                ?.title || 'Enquire now'}
+                            </span>
+                          </Link>
+                        </Button>
+                    )}
+                  <Button
+                    variation="outline"
+                    size="small"
+                  >
+                    <a
+                      href={`tel:${
+                        props?.fields?.PhoneNumberHref?.value ||
+                        '+442045711724'
+                      }`}
+                    >
+                      <span>
+                        <Icons iconName="iconPhone" />
+                      </span>
+                      <span>
+                        {props?.fields?.CallToBookButtonText?.value ||
+                          'Call to book'}
+                      </span>
+                    </a>
+                  </Button>
+                </>
+                }>
                   <Reviews
                     doctifyLogo={
                       <JssImage field={props?.fields?.DoctifyLogoImage} />
@@ -774,67 +831,6 @@ export const Default = (props: StepProps): JSX.Element => {
                         </Text>
                       </>
                     )}
-                  <Container marginTop="spacing-5">
-                    {/* if consultant has live diaries then show 'book online' */}
-                    {serverSideData?.IsLiveDiaryConsultant && (
-                      <Container marginBottom="spacing-4">
-                        <Button
-                          variation="full-dark"
-                          size="small"
-                          contentVariation="full-width"
-                        >
-                          <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
-                          >
-                            <span>
-                              {props.fields.BookOnlineButtonLink.value.text ||
-                                'Book online'}
-                            </span>
-                          </Link>
-                        </Button>
-                      </Container>
-                    )}
-                    {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-                    {!serverSideData?.IsLiveDiaryConsultant &&
-                      !serverSideData?.ProfileJson?.hideAppointmentRequest && (
-                        <Container marginBottom="spacing-4">
-                          <Button
-                            variation="full-dark"
-                            size="small"
-                            contentVariation="full-width"
-                          >
-                            <Link
-                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
-                            >
-                              <span>
-                                {props?.fields?.EnquireNowButtonLink?.value
-                                  ?.title || 'Enquire now'}
-                              </span>
-                            </Link>
-                          </Button>
-                        </Container>
-                      )}
-                    <Button
-                      variation="outline"
-                      size="small"
-                      contentVariation="full-width"
-                    >
-                      <a
-                        href={`tel:${
-                          props?.fields?.PhoneNumberHref?.value ||
-                          '+442045711724'
-                        }`}
-                      >
-                        <span>
-                          <Icons iconName="iconPhone" />
-                        </span>
-                        <span>
-                          {props?.fields?.CallToBookButtonText?.value ||
-                            'Call to book'}
-                        </span>
-                      </a>
-                    </Button>
-                  </Container>
                 </SidePanel>
               </SideWrapper>
             </ConsultantFinderProfileWrapper>

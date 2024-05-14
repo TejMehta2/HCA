@@ -3,7 +3,7 @@ import { SidePanelProps } from './SidePanel.types';
 import styles from './SidePanel.module.scss';
 
 const SidePanel = (props: SidePanelProps): JSX.Element => {
-  const { children, isSticky, isMobile } = props;
+  const { children, isSticky, isMobile, buttons } = props;
   const [headerHeight, setHeaderHeight] = useState(0);
 
   useEffect(() => {
@@ -35,6 +35,12 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
   return (
     <div className={className} style={{ top: marginTop }}>
       {children}
+      {
+        buttons && 
+        <div className={styles.btns}>
+          {buttons}
+        </div>
+      }
     </div>
   );
 };

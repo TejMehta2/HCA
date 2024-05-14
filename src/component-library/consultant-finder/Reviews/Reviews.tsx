@@ -50,7 +50,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
             {props.titleText}
           </Text>
           {props.reviewsTotal > 0 && (
-            <Text tag="h3" variation="display-1">
+            <Text tag="h3" variation="display-5">
               {props.reviewsCount}
             </Text>
           )}

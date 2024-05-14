@@ -38,6 +38,12 @@
     }
   }
 
+  &.custom-btn-desktop {
+    a {
+      padding: px-to-rem(14) $spacing-4;
+    }
+  }
+
   &.with-buttons {
     div {
       width: 100%;
