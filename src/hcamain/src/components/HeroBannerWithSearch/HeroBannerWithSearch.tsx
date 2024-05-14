@@ -33,7 +33,7 @@ interface Fields {
   };
 }
 
-type HeroBannerWithSearchProps = {
+export type HeroBannerWithSearchProps = {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;

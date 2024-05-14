@@ -107,13 +107,17 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
                 <JssRichText field={card.text} />
               )}
             </Text>
-            {!!card.articleType && (
-              <Tags>
-                <a href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}>
-                  <JssText field={card.articleType?.targetItem?.title} />
-                </a>
-              </Tags>
-            )}
+            <div>
+              {!!card.articleType && (
+                <Tags>
+                  <a
+                    href={`${baseBlogUrl}?${queryString}=${formattedArticleId}`}
+                  >
+                    <JssText field={card.articleType?.targetItem?.title} />
+                  </a>
+                </Tags>
+              )}
+            </div>
           </CardBlog>
         );
       }
@@ -139,11 +143,15 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
             {description}
           </Text>
 
-          {typeId && typeName && (
-            <Tags>
-              <a href={`${baseBlogUrl}?${queryString}=${typeId}`}>{typeName}</a>
-            </Tags>
-          )}
+          <div>
+            {typeId && typeName && (
+              <Tags>
+                <a href={`${baseBlogUrl}?${queryString}=${typeId}`}>
+                  {typeName}
+                </a>
+              </Tags>
+            )}
+          </div>
         </CardBlog>
       )
     );

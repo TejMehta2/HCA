@@ -129,15 +129,17 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
                 <JssRichText tag="span" field={card.fields.Description} />
               )}
             </Text>
-            {!!card.fields?.ArticleType?.fields.id && (
-              <Tags>
-                <a
-                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                >
-                  {card.fields?.ArticleType.fields.id}
-                </a>
-              </Tags>
-            )}
+            <div>
+              {!!card.fields?.ArticleType?.fields.id && (
+                <Tags>
+                  <a
+                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                  >
+                    {card.fields?.ArticleType.fields.id}
+                  </a>
+                </Tags>
+              )}
+            </div>
           </CardBlog>
         );
       })}
@@ -220,15 +222,17 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   )}
                 </Text>
               )}
-              {card.fields.ArticleType && (
-                <Tags>
-                  <a
-                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                  >
-                    {card.fields?.ArticleType.fields.Title?.value}
-                  </a>
-                </Tags>
-              )}
+              <div>
+                {card.fields.ArticleType && (
+                  <Tags>
+                    <a
+                      href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                    >
+                      {card.fields?.ArticleType.fields.Title?.value}
+                    </a>
+                  </Tags>
+                )}
+              </div>
             </CardBlog>
           );
         })}

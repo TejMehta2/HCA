@@ -4,6 +4,7 @@
 .intro-block {
   background-color: var(--background);
   color: var(--text);
+  overflow: hidden;
 
   .grid {
     padding-top: $spacing-13;
