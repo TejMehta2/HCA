@@ -34,7 +34,7 @@ interface Params {
   HeadingTag?: HeadingTag;
   HeadingSize?: HeadingSize;
   DynamicPlaceholderId?: string;
-  Columns?: string;
+  Columns?: '2' | '3' | '4';
   Containerized?: '1' | '0'; // Appears only on RichText related components
 }
 export default Params;

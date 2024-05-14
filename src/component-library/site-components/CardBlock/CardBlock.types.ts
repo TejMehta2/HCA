@@ -4,7 +4,7 @@ export interface CardBlockProps {
   header?: JSX.Element;
   children?: JSX.Element;
   theme: Theme;
-  variation: 'side-by-side' | '3-columns' | '4-columns';
+  variation: 'side-by-side' | '2-columns' | '3-columns' | '4-columns';
   gapSize?: 'small' | 'large';
   cta?: JSX.Element;
 }

@@ -14,8 +14,6 @@ import {
   StaticProps,
 } from './LocationCardsTypes';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
-
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
@@ -186,8 +184,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
 };
 
 export const Grid = (props: LocationCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
 
@@ -208,7 +205,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
