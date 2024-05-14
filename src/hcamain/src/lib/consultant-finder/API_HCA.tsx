@@ -706,3 +706,131 @@ export async function submitBookingEnquiry(
 
   return returnData;
 }
+
+// find an address from a postcode interface
+export interface IFindAddressFields {
+  postcode: string; //e.g. TN23 or TN23 3DS
+}
+
+// find an address from a postcode
+export async function findAddress(
+  fields: IFindAddressFields | any
+): Promise<any> {
+  //console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await getHCAConfig();
+
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
+
+  let addressLookupURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_PostcodeLookup_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_PostcodeLookup_BaseURL;
+
+  if (addressLookupURL) {
+    // multi-part form post
+    const formData = new FormData();
+    addressLookupURL = `${addressLookupURL}/FindAddress`;
+    //console.log('addressLookupURL', addressLookupURL);
+    for (const property in fields) {
+      formData.append(property, fields[property]);
+    }
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(addressLookupURL, {
+        method: 'post',
+        body: formData,
+        cache: 'no-cache',
+      });
+
+      //console.log('res', res);
+      if (res.ok) {
+        const retData = await res.text();
+        //console.log('res.ok json', retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //findAddress call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`findAddress failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //findAddress call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting findAddress, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`findAddress failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}
+
+// find an address from a postcode interface
+export interface ISplitAddressFields {
+  monikerField: string; //e.g. code returned by find address
+}
+
+// find an address from a postcode
+export async function splitAddress(
+  fields: ISplitAddressFields | any
+): Promise<any> {
+  //console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await getHCAConfig();
+
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
+
+  let splitAddressURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_PostcodeLookup_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_PostcodeLookup_BaseURL;
+
+  if (splitAddressURL) {
+    // multi-part form post
+    const formData = new FormData();
+    splitAddressURL = `${splitAddressURL}/SplitAddress`;
+    //console.log('splitAddressURL', splitAddressURL);
+    for (const property in fields) {
+      formData.append(property, fields[property]);
+    }
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(splitAddressURL, {
+        method: 'post',
+        body: formData,
+        cache: 'no-cache',
+      });
+
+      //console.log('res', res);
+      if (res.ok) {
+        const retData = await res.text();
+        //console.log('res.ok json', retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //findAddress call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`splitAddress failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //findAddress call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting splitAddress, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`splitAddress failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}
