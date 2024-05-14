@@ -3,7 +3,7 @@
 @use './Slick.module.scss' as *;
 
 .wrapper {
-  overflow-x: hidden;
+  overflow: hidden;
   background: var(--background);
   color: var(--text);
 }
