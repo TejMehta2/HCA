@@ -186,9 +186,9 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     >
       <>
         {cardData.slice(0, limit).map((item, index) => {
-          const imageField = item.image?.jsonValue.value?.src
-            ? item.image?.jsonValue
-            : item.abstractImage?.jsonValue;
+          const imageField = item.abstractImage?.jsonValue.value?.src
+            ? item.abstractImage?.jsonValue
+            : item.image?.jsonValue;
 
           return (
             <CardContent
@@ -199,12 +199,12 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
                   tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                   variation="display-4"
                 >
-                  <JssText field={item?.title || item?.abstractTitle} />
+                  <JssText field={item?.abstractTitle || item?.title} />
                 </Text>
               }
               bodyCopy={
                 <Text tag="p" variation="body-large">
-                  <JssText field={item?.text || item?.abstractText} />
+                  <JssText field={item?.abstractText || item?.text} />
                 </Text>
               }
               link={

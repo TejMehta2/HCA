@@ -84,7 +84,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       title={
         <Text
           variation={props.params?.HeadingSize || 'display-1'}
-          tag={getSubheadingTag(props.params?.HeadingTag, 'h1')}
+          tag={props.params?.HeadingTag || 'h1'}
         >
           <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>

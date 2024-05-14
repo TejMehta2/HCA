@@ -99,10 +99,17 @@ Languages:
               s:ph="/headless-main/image-short-text-1" />
             <r
               uid="{4CE5449D-121B-40BE-964C-E4D67F464C7E}"
-              p:after="*[1=2]"
+              p:after="r[@uid='{A6C5B8A6-1247-4C57-AA20-1D671641C19C}']"
               s:ds="local:/Page Data/Image Short Text - Keep Aspect Ratio"
               s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
               s:par="HeadingTag&amp;KeepAspectRatio=1&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="headless-main" />
+            <r
+              uid="{E390AEB4-3F61-418B-8642-E9E9451C9A80}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Image Short Text - Keep Aspect Ratio 1"
+              s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
+              s:par="HeadingTag&amp;KeepAspectRatio&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=11"
               s:ph="headless-main" />
           </d>
         </r>
@@ -119,11 +126,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ca2b4be8-a13e-47a1-8a2d-d59bb224db16"
+      Value: "6d7fc808-3ab0-4445-93fc-0c0caa8d5ef0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T205036Z
+      Value: 20240513T115615Z
