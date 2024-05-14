@@ -10,9 +10,9 @@ import {
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
-import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Params from 'src/types/params';
 
 interface Fields {
   Heading?: Field<string>;
@@ -22,13 +22,7 @@ interface Fields {
 }
 
 export type ImageShortTextProps = {
-  params?: {
-    Theme?: Theme;
-    HeadingTag?: HeadingTag;
-    HeadingSize?: HeadingSize;
-    DynamicPlaceholderId?: string;
-    styles?: string;
-  };
+  params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
 };
@@ -62,11 +56,14 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     return <ImageShortTextDefaultComponent {...props} />;
   }
 
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   return (
     <>
       <ImageAndTextBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
+        imageKeepAspectRatio={keepAspectRatio}
         length="short"
         subheader={
           <Text tag="p" variation="subheading-1">

@@ -4,5 +4,6 @@ import { Theme } from '../../foundation/Themes/Themes.types';
 export interface BlogContentProps {
   theme: Theme;
   children?: ReactNode | JSX.Element;
+  imageKeepAspectRatio?: boolean;
   contentVariation?: 'quote' | 'image';
 }

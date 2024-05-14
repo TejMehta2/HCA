@@ -48,9 +48,14 @@ export const Default = (props: BlogImageProps): JSX.Element => {
   ) as ImageField;
 
   const isContainerized = props?.params?.Containerized === '1';
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText
+        additionalStyles={props?.params?.styles}
+        imageKeepAspectRatio={keepAspectRatio}
+      >
         <figure>
           <Image field={image} />
         </figure>
@@ -63,6 +68,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       <BlogContent
         theme={props.params?.Theme || 'A-HCA-White'}
         contentVariation="image"
+        imageKeepAspectRatio={keepAspectRatio}
       >
         <figure>
           <Image field={image} />
