@@ -585,34 +585,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     data={languagesString}
                   ></DataComponentSimple>
                 </ProfilePageSection>
-                {/* No fees check */}
-                <ProfilePageSection ref={feesRef}>
-                  <ConsultantFees
-                    title={
-                      props?.fields?.ConsultationFeesHeadingText?.value ||
-                      'Consultation Fees'
-                    }
-                    newAppointmentFees={
-                      serverSideData?.ProfileJson?.consultationFees?.new || null
-                    }
-                    newAppointmentFeesLabel={
-                      props?.fields?.NewAppointmentText?.value ||
-                      'New appointment'
-                    }
-                    followUpAppointmentFees={
-                      serverSideData?.ProfileJson?.consultationFees?.followUp ||
-                      null
-                    }
-                    followUpAppointmentFeesLabel={
-                      props?.fields?.NewAppointmentText?.value ||
-                      'Follow-up appointment'
-                    }
-                    noFeesInfo={
-                      props.fields.NoFeesInfo.value ||
-                      "This consultant doesn't have any consultation fees information at the moment."
-                    }
-                  ></ConsultantFees>
-                </ProfilePageSection>
                 <ProfilePageSection>
                   <DataComponentSimple
                     title={
@@ -670,6 +642,33 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.DisplayNumber?.value || '0204 5711 724'
                     }
                   ></Locations>
+                </ProfilePageSection>
+                <ProfilePageSection ref={feesRef}>
+                  <ConsultantFees
+                    title={
+                      props?.fields?.ConsultationFeesHeadingText?.value ||
+                      'Consultation Fees'
+                    }
+                    newAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.new || null
+                    }
+                    newAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'New appointment'
+                    }
+                    followUpAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.followUp ||
+                      null
+                    }
+                    followUpAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'Follow-up appointment'
+                    }
+                    noFeesInfo={
+                      props.fields.NoFeesInfo.value ||
+                      "This consultant doesn't have any consultation fees information at the moment."
+                    }
+                  ></ConsultantFees>
                 </ProfilePageSection>
                 <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
                   <OverallRating
