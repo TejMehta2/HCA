@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { unstable_cache } from 'next/cache';
 import { parse } from 'node-html-parser';
 import { getHCAConfig } from './getHCAConfig';
 import { getDoctifyConfig } from './getDoctifyConfig';
@@ -99,9 +100,20 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
   return slugs;
 }
 
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+// TODO - allow admin to invalidate the cache in order to allow add new live diary consultants intra-day
+export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
+    return await _getActiveLiveDiaryConsultantSlugs();
+  }
+);
+
 // get all the active live diary consultants
 //const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
-export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
+async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
   const HCAAPIConfig = await getHCAConfig();
   const ldbConsultantSlugsURL =
