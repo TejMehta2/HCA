@@ -1,20 +1,17 @@
 ﻿---
-ID: "a4cab551-05c5-4f83-936c-3405109b04f4"
+ID: "2a59bd57-6bd9-47dc-b7d1-54f5ea0282e0"
 Parent: "03509096-abda-4482-84ab-1bfdf2cb781f"
 Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA62/Page Data/Image Short Text - Keep Aspect Ratio"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA62/Page Data/Image Short Text - Keep Aspect Ratio 1"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
-    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
-      Hint: __Lock
-      Value: 
     - ID: "0999ccb0-f298-4b06-8cc7-1c9c4584ed1a"
       Hint: Image
       Value: |
-        <image mediaid="{04C83B7F-7E09-463A-ABDC-01355B8ECF5E}" />
+        <image mediaid="{D7654A9B-EB77-4DE9-86D8-0BFBB07E4FD3}" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240423T204446Z
@@ -31,7 +28,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5726335e-00e7-4957-83e1-a6d5fc835a09"
+      Value: "1f368ee9-02e8-4b35-95f6-9c7ffbc831d6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -44,4 +41,4 @@ Languages:
       Value: "New to private healthcare?"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240513T114515Z
+      Value: 20240513T115533Z
