@@ -20,7 +20,6 @@ import Text from '@component-library/foundation/Text/Text';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
-import getSubheadingTag from 'lib/subheading-tag-getter';
 
 interface CQCFields {
   fields?: {
