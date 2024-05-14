@@ -67,6 +67,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
     <>
       <BlogContent
         theme={props.params?.Theme || 'A-HCA-White'}
+        contentVariation="image"
         imageKeepAspectRatio={keepAspectRatio}
       >
         <figure>
