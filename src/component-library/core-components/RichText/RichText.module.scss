@@ -73,6 +73,12 @@
     }
   }
 
+  &.keep-aspect-ratio {
+    figure {
+      aspect-ratio: unset;
+    }
+  }
+
   hr {
     border-top: solid px-to-rem(1) currentcolor;
   }

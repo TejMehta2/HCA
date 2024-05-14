@@ -34,7 +34,7 @@
     }
   }
 
-  &.keep-aspect-ratio-block {
+  &.keep-aspect-ratio {
     img:first-child {
       aspect-ratio: unset;
     }
