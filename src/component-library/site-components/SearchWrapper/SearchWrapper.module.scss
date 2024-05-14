@@ -20,6 +20,7 @@
 .wrapper {
   padding: var(--theme-collapse-padding-top, #{$spacing-9}) 0 $spacing-13 0;
   color: var(--text);
+  background: var(--background);
 }
 
 .inner {
