@@ -60,7 +60,10 @@ export const Default = (props: BlogImageProps): JSX.Element => {
 
   return (
     <>
-      <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+      <BlogContent
+        theme={props.params?.Theme || 'A-HCA-White'}
+        contentVariation="image"
+      >
         <figure>
           <Image field={image} />
         </figure>

@@ -10,10 +10,10 @@ const BlogContent = (props: BlogContentProps): JSX.Element => {
       <div className={styles.wrapper}>
         <div
           className={`${styles.container} ${
-            contentVariation === 'quote' ? styles['quote-block'] : ''
+            contentVariation ? styles[contentVariation + '-block'] : ''
           }`}
         >
-          {children}
+          <div className={styles.grid}>{children}</div>
         </div>
       </div>
     </Themes>
