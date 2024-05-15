@@ -247,7 +247,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             showing={
               !!rangeEnd && (
                 <Text variation="body-medium">
-                  <span>Showing {resultsRange}</span>
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
                 </Text>
               )
             }
@@ -345,7 +347,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       <span>
                         <Icons iconName={'iconPlus'} />
                       </span>
-                      <span>{t('show-more')}</span>
+                      <span>{t('show-more') || 'Show more'}</span>
                     </SearchFormLoadMore>
                   </>
                 ),
@@ -397,7 +399,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ),
                               close: (
                                 <button onClick={hideCard}>
-                                  <span>Close</span>
+                                  <span>{t('close') || 'Close'}</span>
                                   <Icons iconName="iconCross" />
                                 </button>
                               ),

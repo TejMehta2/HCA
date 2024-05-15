@@ -29,6 +29,7 @@ import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPl
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -46,6 +47,7 @@ const PatientStoriesSearchDefaultComponent = (
 
 export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
   const {
@@ -233,7 +235,9 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             showing={
               !!rangeEnd && (
                 <Text variation="body-medium">
-                  <span>Showing {resultsRange}</span>
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
                 </Text>
               )
             }
@@ -298,7 +302,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             <span>
               <Icons iconName={'iconPlus'} />
             </span>
-            <span>Show more</span>
+            <span>{t('show-more') || 'Show more'}</span>
           </SearchFormLoadMore> */}
           </SearchWrapper>
         )}

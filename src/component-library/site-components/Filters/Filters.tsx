@@ -9,6 +9,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../../components/Accordions/Accordions';
+import { useI18n } from 'next-localization';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const {
@@ -22,6 +23,8 @@ const Filters = (props: FiltersProps): JSX.Element => {
     resultsCount,
     submitOnClose,
   } = props;
+
+  const { t } = useI18n();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -73,7 +76,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
           <div className={styles.footer}>
             <TextButton theme="dark">
               <button type="button" onClick={clearFields}>
-                Clear All
+                {t('clear-all') || 'Clear all'}
               </button>
             </TextButton>
             <Button variation="full-dark" size="small">
