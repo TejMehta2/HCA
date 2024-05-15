@@ -7,14 +7,16 @@ const PaymentSummary = (props: PaymentSummaryProps): JSX.Element => {
   const { heading, bodyText, summary, cta } = props;
   return (
     <Themes theme="A-HCA-White">
-      <div className={styles.wrapper}>
-        <div className={styles.header}>
-          {heading}
-          {bodyText}
-        </div>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            {heading}
+            {bodyText}
+          </div>
 
-        <div className={styles.summary}>{summary}</div>
-        <div className={styles.cta}>{cta}</div>
+          <div className={styles.summary}>{summary}</div>
+          <div className={styles.cta}>{cta}</div>
+        </div>
       </div>
     </Themes>
   );

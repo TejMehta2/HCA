@@ -1,11 +1,17 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+}
+
 .wrapper {
   color: var(--text);
   padding: $spacing-8 0;
 
-  @include responsive-container;
+  @include responsive-grid-start($breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-l: 8);
 }
 
 .header {
