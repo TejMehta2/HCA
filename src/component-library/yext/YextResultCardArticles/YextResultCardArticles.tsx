@@ -2,27 +2,36 @@ import React from 'react';
 import { YextResultCardArticlesProps } from './YextResultCardArticles.types';
 import styles from './YextResultCardArticles.module.scss';
 import Button from '../../core-components/Button/Button';
-import TextButton from '../../core-components/TextButton/TextButton';
 
 const YextResultCardArticles = (
   props: YextResultCardArticlesProps
 ): JSX.Element => {
   const { image, title, copy, ctas } = props;
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={[
+        styles.wrapper,
+        styles[image ? 'has-image' : 'no-image'],
+      ].join(' ')}
+    >
       {image && <div className={styles.image}>{image}</div>}
       <div className={styles.text}>
         {title && title}
-        {copy && copy}
+        {copy && <div className={styles.copy}>{copy}</div>}
       </div>
       {ctas && (
         <div className={styles.ctas}>
           {ctas.button && (
-            <Button variation="full" size="large" contentVariation="card">
+            <Button variation="full" size="small" contentVariation="card">
               {ctas.button}
             </Button>
           )}
-          {ctas.textButton && <TextButton>{ctas.textButton}</TextButton>}
+          {ctas.textButton && (
+            <Button variation="outline" size="small">
+              {ctas.textButton}
+            </Button>
+          )}
         </div>
       )}
     </div>

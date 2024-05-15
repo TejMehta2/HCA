@@ -5,4 +5,5 @@ export interface TextFieldProps {
   helpText?: string;
   required?: boolean;
   errorMessage?: string;
+  name?: string;
 }

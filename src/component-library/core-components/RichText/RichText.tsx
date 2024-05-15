@@ -40,11 +40,16 @@ export const RichTextElement = (props: RichTextProps) => {
 };
 
 const RichText = (props: RichTextProps): JSX.Element => {
-  const { additionalStyles = '', children } = props;
+  const {
+    additionalStyles = '',
+    imageKeepAspectRatio = false,
+    children,
+  } = props;
   return (
     <div
       className={[
         styles['rich-text'],
+        imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
         applyCssModules(additionalStyles, styles),
       ].join(' ')}
     >

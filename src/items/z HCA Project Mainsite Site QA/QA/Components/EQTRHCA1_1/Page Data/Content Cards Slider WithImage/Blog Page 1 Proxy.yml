@@ -25,17 +25,21 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
-      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu imperdiet ipsum. Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus.</p>
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu imperdiet ipsum. Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus.Page Proxy</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b4066b3e-e961-4810-a1ea-26499f25b65a"
+      Value: "11aa34ad-8764-4621-b897-4a48800a6464"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102617Z
+      Value: 20240505T203639Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Blog Page 1 Proxy

@@ -29,6 +29,7 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -44,11 +45,15 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
 
 export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
-  const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
-
+  const {
+    defaultLimit,
+    defaultOffset,
+    baselineParams,
+    baselineAutocompleteParams,
+  } = getBaselineParams(props);
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const {
@@ -63,6 +68,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
+    baselineAutocompleteParams,
   });
 
   if (!fields) {
@@ -105,7 +111,21 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
         <HeaderPlain
-          heading={<JssText tag={'h1'} field={props?.fields?.Title} />}
+          heading={
+            <Text
+              tag={props.params?.HeadingTag || 'h1'}
+              variation={props.params?.HeadingSize || 'display-1'}
+            >
+              <JssText field={props?.fields?.Title} />
+            </Text>
+          }
+          subheading={
+            !!fields?.Heading?.value && (
+              <Text variation={'subheading-1'}>
+                <JssText field={fields?.Heading} />
+              </Text>
+            )
+          }
           description={
             <Text tag="div" variation="body-large">
               <RichText tag="span" field={props?.fields?.Text} />
@@ -125,7 +145,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
             }
           >
             <Filters
-              submitOnClose={true}
               buttonText={<JssText field={fields?.FilterOptionsText} />}
               buttonIcon={
                 <SitecoreSvg>
@@ -173,7 +192,9 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">
-              <span>Showing {resultsRange}</span>
+              <span>
+                {t('showing') || 'Showing'} {resultsRange}
+              </span>
             </Text>
           )}
           {error ? (
@@ -191,6 +212,9 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                 {data?.response.results?.map((item, index) => {
                   const { data } = item;
                   const {
+                    abstractTitle,
+                    abstractText,
+                    abstractImageUrl,
                     title,
                     description,
                     imageUrl,
@@ -202,21 +226,32 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 
                   return (
                     <CardBlog key={index}>
-                      {imageUrl ? (
+                      {abstractImageUrl ? (
+                        <Image
+                          src={abstractImageUrl}
+                          alt=""
+                          width="363"
+                          height="243"
+                        />
+                      ) : imageUrl ? (
                         <Image src={imageUrl} alt="" width="363" height="243" />
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
-                        <a href={url}>{title}</a>
+                        <a href={url}>
+                          {abstractTitle ? abstractTitle : title}
+                        </a>
                       </Text>
                       <Text tag={'p'} variation={'body-large'}>
-                        {description}
+                        {abstractText ? abstractText : description}
                       </Text>
-                      {!!typeName && (
-                        <Tags>
-                          <a href={'?articleTypeId=' + typeId}>{typeName}</a>
-                        </Tags>
-                      )}
+                      <div>
+                        {!!typeName && (
+                          <Tags>
+                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                          </Tags>
+                        )}
+                      </div>
                     </CardBlog>
                   );
                 })}

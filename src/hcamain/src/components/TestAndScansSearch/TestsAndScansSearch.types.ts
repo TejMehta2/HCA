@@ -31,6 +31,9 @@ export interface Result {
 export interface Data {
   id: string;
   type: string;
+  abstractTitle: string;
+  abstractText: string;
+  abstractImageUrl: string;
   title: string;
   description: string;
   name: string;
@@ -98,6 +101,7 @@ export interface FilterCategory {
 }
 
 export interface Fields {
+  CTACardText?: Field<string>;
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;

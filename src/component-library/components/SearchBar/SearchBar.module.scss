@@ -4,6 +4,7 @@
 .wrapper {
   position: relative;
   display: flex;
+  color: var(--text);
   gap: $spacing-2;
   @include media(screen-l, max) {
     flex-wrap: wrap;
@@ -23,17 +24,19 @@
 }
 
 %searchbar {
-  background-color: var(--field-background);
+  background-color: $white;
   display: flex;
   align-items: center;
   gap: $spacing-4;
   position: relative;
   flex: 1 1 auto;
-  color: var(--text);
+  color: $navy-blue-100;
   border-radius: $radius-large;
   border: solid px-to-rem(1) currentcolor;
   padding: px-to-rem(18) px-to-rem(32);
   @include apply-body-medium-large;
+
+  max-width: 100%;
 
   &:focus-within,
   &:focus {
@@ -41,27 +44,41 @@
     outline-offset: px-to-rem(-5);
   }
 
-  // padding-left: calc( px-to-rem(24 + 32) + #{$spacing-4}) ;
   input {
     background-color: inherit;
-    flex: 1;
+    flex: 1 1 auto;
     padding: 0;
     border: none;
     outline: none;
     color: inherit;
     @include apply-body-medium-large;
 
+    min-width: px-to-rem(64); // override mobile value which breaks container
     &::placeholder {
       color: inherit;
     }
   }
 
+  .search-icon {
+    flex: 0 0 px-to-rem(24);
+    height: px-to-rem(24);
+  }
+
   .clear {
+    flex: 0 0 px-to-rem(24);
     height: px-to-rem(24);
     border: none;
     background-color: transparent;
     cursor: pointer;
     color: inherit;
+
+    // Hide unless input is in focus
+    display: none;
+  }
+
+  input:focus ~ .clear,
+  .clear:focus {
+    display: block;
   }
 }
 
@@ -70,18 +87,16 @@
 }
 
 .suggestions {
-  @include sr-only;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  z-index: 2;
 
-  // Only show suggestions if input is focus, or suggestions are focus
   &:focus,
   &:focus-within,
   .input:focus ~ & {
-    @include not-sr-only;
-
-    width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 2;
+    display: block;
   }
 }

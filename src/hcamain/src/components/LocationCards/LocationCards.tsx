@@ -14,8 +14,6 @@ import {
   StaticProps,
 } from './LocationCardsTypes';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
-
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
@@ -36,7 +34,7 @@ const LocationCardsDefaultComponent = (
       <div className={`component promo ${props.params?.styles}`}>
         <div className="component-content">
           <span className="is-empty-hint">
-            Patient Stories Cards please click to select datasource
+            Location Cards please click to select datasource
           </span>
         </div>
       </div>
@@ -62,7 +60,8 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
         {
           abstractTitle,
           title,
-          street,
+          addressLine1,
+          addressLine2,
           postCode,
           city,
           abstractImage,
@@ -88,9 +87,15 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           address={
             <>
-              {street?.value && (
+              {addressLine1?.value && (
                 <Text variation={'body-large'} tag="span">
-                  <JssText field={street} />
+                  <JssText field={addressLine1} />
+                  &nbsp;
+                </Text>
+              )}
+              {addressLine2?.value && (
+                <Text variation={'body-large'} tag="span">
+                  <JssText field={addressLine2} />
                   &nbsp;
                 </Text>
               )}
@@ -179,8 +184,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
 };
 
 export const Grid = (props: LocationCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
 
@@ -201,7 +205,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={

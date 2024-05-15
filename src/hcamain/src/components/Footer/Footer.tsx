@@ -1,11 +1,14 @@
 import React from 'react';
-import { Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  Placeholder,
+  Text as JssText,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import Footer from '@component-library/site-components/Footer/Footer';
 import { FooterProps, Profile } from './Footer.types';
 import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
-
 import { Default as Doctify } from '../Doctify/Doctify';
 import { Default as CQCRating } from '../CQCRating/CQCRating';
+import Text from '@component-library/foundation/Text/Text';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -56,6 +59,13 @@ export const Default = (props: FooterProps): JSX.Element => {
   );
   return (
     <Footer
+      copyright={
+        props.fields?.Copyright?.value ? (
+          <Text variation={'body-small'}>
+            <JssText field={props.fields?.Copyright} />
+          </Text>
+        ) : undefined
+      }
       buttons={
         props.rendering ? (
           <Placeholder

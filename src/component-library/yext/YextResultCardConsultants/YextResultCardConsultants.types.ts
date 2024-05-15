@@ -9,7 +9,7 @@ export interface YextResultCardConsultantsProps {
   image?: ReactNode | JSX.Element;
   title?: ReactNode | JSX.Element;
   doctify?: JSX.Element;
-  phone?: IconText;
+  phone?: JSX.Element;
   specialties?: IconText;
   copy?: ReactNode | JSX.Element;
   cta?: ReactNode | JSX.Element;

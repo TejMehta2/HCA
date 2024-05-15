@@ -18,13 +18,14 @@ interface Fields {
   data?: {
     contextItem?: {
       title?: { jsonValue?: Field<string> };
+      subHeading?: { jsonValue?: Field<string> };
       text?: { jsonValue?: Field<string> };
       image?: { jsonValue?: ImageField };
     };
   };
 }
 
-type HeaderWithImageProps = {
+export type HeaderWithImageProps = {
   params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;

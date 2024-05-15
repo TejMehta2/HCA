@@ -38,6 +38,15 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
 
   const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
 
+  // Apply near param from geolocation middleware cookie
+  if (typeof window !== undefined) {
+    const regex = new RegExp(/near=([\w\s]+)(?=;|$)/gm);
+    const near = regex.exec(document?.cookie)?.[1];
+    if (near?.length) {
+      combinedParams.push(['near', near]);
+    }
+  }
+
   const options = {
     keepPreviousData: true, // Never show nothing
     revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
@@ -92,50 +101,44 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
     if (!ref.current) return;
     const data = new FormData(ref.current);
     const params = new URLSearchParams([...data.entries()] as string[][]);
-
-    // Reset limit/offset, if results length likely to change e.g. via input change
-    const newInput = params.get(inputFieldName);
-    if (newInput !== input) {
-      const defaultOffset = new Map(baselineParams).get('offset') as string;
-      params.set('offset', defaultOffset);
-      const defaultLimit = new Map(baselineParams).get('limit') as string;
-      params.set('limit', defaultLimit);
-    }
-
     const updatedParams = paramsCallback?.(params) || params;
     const url = `${pathname}?${updatedParams}`;
     router.replace(url, undefined, { shallow: true });
   };
   const handleChange = useDebouncedCallback(sendFormDataToPageQuery, 500);
 
+  // Params helpers
+  const resetPagination = (name: string, params: URLSearchParams) => {
+    // Reset pagination params from URL, whenever something else changes i.e. input, filters, sorting
+    if (!['offset', 'limit'].includes(name)) {
+      const defaultOffset = new Map(baselineParams).get('offset') as string;
+      params.set('offset', defaultOffset);
+      const defaultLimit = new Map(baselineParams).get('limit') as string;
+      params.set('limit', defaultLimit);
+    }
+    return params;
+  };
+  const setInputAsAutocomplete = (name: string, params: URLSearchParams) => {
+    // Trigger a suggestions API call instead of a search API call, by changing param name
+    if (!searchOnChange && name === inputFieldName) {
+      params.set('autocomplete', params.get(inputFieldName) || '');
+      params.delete('input');
+    }
+    return params;
+  };
+
   // Handlers to spread into a form element e.g. <form {...formhandlers} />
   const formHandlers = {
     onChange: (event: ChangeEvent<HTMLFormElement>) => {
       if (isLoading) return;
-      if (searchOnChange) {
-        handleChange();
-      } else {
-        // filter out input and pass it to autocomplete instead
-        const target = event.target as unknown as HTMLInputElement;
-        const name = target.name;
-        if (name === inputFieldName) {
-          handleChange((params) => {
-            params.set('autocomplete', params.get(inputFieldName) || '');
-            params.delete('input');
+      const target = event.target as unknown as HTMLInputElement;
+      const name = target.name;
 
-            const defaultOffset = new Map(baselineParams).get(
-              'offset'
-            ) as string;
-            params.set('offset', defaultOffset);
-            const defaultLimit = new Map(baselineParams).get('limit') as string;
-            params.set('limit', defaultLimit);
-
-            return params;
-          });
-        } else {
-          handleChange();
-        }
-      }
+      handleChange((params) => {
+        setInputAsAutocomplete(name, params);
+        resetPagination(name, params);
+        return params;
+      });
     },
     onReset: (event: FormEvent<HTMLFormElement>) => {
       console.log(event);

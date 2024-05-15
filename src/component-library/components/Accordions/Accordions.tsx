@@ -17,7 +17,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
   };
 
   return (
-    <div className={styles.accordions}>
+    <div className={styles.accordions} data-navigation-type="accordionClick">
       {accordions.map(({ title, children, contentVariation }, index) => (
         <Accordion
           key={index}

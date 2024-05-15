@@ -1,0 +1,38 @@
+﻿---
+ID: "733dae47-5c14-4271-b14d-a56fbb195699"
+Parent: "0211c1e8-8ed0-4986-92bd-9a3f01a37e2a"
+Template: "8d06f1ce-8e64-491c-b9fe-449437b0880e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Private Orthopaedic Care/Subspecialty Page 2"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{1F442AA7-484D-45B3-929B-9566661DE369}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240430T071740Z
+    - ID: "5d8115a3-1009-4cf5-b69f-2a93a728380b"
+      Hint: Conditions
+      Value: "{BD2C8A33-EE18-4B9B-AD29-D9C3E676DA20}"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2ca2dec5-0e0f-4134-8db1-259c29331f75"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240502T071643Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Subspecialty Page 2

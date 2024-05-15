@@ -60,6 +60,14 @@ const mockProps: ModalTextProps = {
   ),
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('ModalText', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<ModalText {...mockProps} />);

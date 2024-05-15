@@ -40,19 +40,34 @@ export const Default: StoryObj<typeof Sorting> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'B-HCA-Navy-Blue'}>
-        <div
-          style={{
-            background: 'var(--background)',
-            padding: '1rem',
-            display: 'flex',
-            justifyContent: 'end',
-            border: 'solid 2px red',
-          }}
-        >
-          <Story />
-        </div>
-      </Themes>
+      <>
+        <Themes theme={'A-HCA-White'}>
+          <div
+            style={{
+              background: 'var(--background)',
+              padding: '1rem',
+              display: 'flex',
+              justifyContent: 'end',
+              border: 'solid 2px red',
+            }}
+          >
+            <Story />
+          </div>
+        </Themes>
+        <Themes theme={'B-HCA-Navy-Blue'}>
+          <div
+            style={{
+              background: 'var(--background)',
+              padding: '1rem',
+              display: 'flex',
+              justifyContent: 'end',
+              border: 'solid 2px red',
+            }}
+          >
+            <Story />
+          </div>
+        </Themes>
+      </>
     ),
   ],
 };

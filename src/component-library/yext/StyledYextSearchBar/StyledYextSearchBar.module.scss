@@ -27,6 +27,7 @@
 
   .search-bar-container {
     color: var(--text);
+    height: auto;
 
     // Wrapper of bar and suggestions
     > :first-child {

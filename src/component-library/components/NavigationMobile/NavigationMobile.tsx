@@ -50,10 +50,10 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -77,10 +77,16 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
   const toggleButton = (
     <TextLink>
       <button
+        data-navigation-type={isOpen ? 'mobileNavigationOpen' : null}
         onClick={isOpen ? closeNavigation : openNavigation}
         aria-expanded={isOpen}
       >
-        <Icons iconName={isOpen ? 'iconCross' : 'icon3Lines'} />
+        <span className={isOpen ? '' : 'sr-only'}>
+          <Icons iconName={'iconCross'} />
+        </span>
+        <span className={isOpen ? 'sr-only' : ''}>
+          <Icons iconName={'icon3Lines'} />
+        </span>
         <span className={'sr-only'}>
           {isOpen ? 'Close navigation' : 'Open navigation'}
         </span>
@@ -91,6 +97,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
   return (
     <Themes theme={isOpen ? themeOpen : themeClosed}>
       <div
+        data-event="mobileNavigationClick"
         className={[styles.wrapper, isOpen ? styles.open : styles.closed].join(
           ' '
         )}
@@ -158,6 +165,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                         >
                           <TextLink full={true}>
                             <button
+                              data-navigation-type="mobileNavClick"
                               onClick={() => {
                                 setPrimaryChoice(primaryIndex);
                                 if (primary.content.length <= 1) {
@@ -191,6 +199,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                     >
                                       <TextLink full={true}>
                                         <button
+                                          data-navigation-type="mobileSubNavClick"
                                           onClick={() =>
                                             setSecondaryChoice(secondaryIndex)
                                           }
@@ -214,6 +223,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                         {secondary.links?.map(
                                           (tertiary, index) => (
                                             <li
+                                              data-navigation-type="navigationLinkClickMobile"
                                               key={index}
                                               className={
                                                 primaryChoice ===
@@ -231,6 +241,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                       </ul>
                                     </li>
                                     <li
+                                      data-navigation-type="NavigationTextCTAMobile"
                                       className={[
                                         styles.bottom,
                                         primaryChoice === primaryIndex &&
@@ -254,6 +265,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                         </li>
                         {primary.mobileTabCta && (
                           <li
+                            data-navigation-type="navigationCTAMobile"
                             className={[
                               styles.bottom,
                               primaryChoice === primaryIndex &&
@@ -288,7 +300,11 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
             </div>
             {primaryChoice === null && (
               <div className={styles.eyebrow}>
-                <div className={styles['eyebrow-inner']}>
+                <div
+                  className={styles['eyebrow-inner']}
+                  data-event="mobileNavigationClick"
+                  data-navigation-type="headerNavigationMobile"
+                >
                   {eyebrow?.left}
                   {eyebrow?.right}
                 </div>

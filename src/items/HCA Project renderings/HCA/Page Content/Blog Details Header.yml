@@ -29,6 +29,7 @@ SharedFields:
           articleType {
              targetItem {
               ... on Tag {
+                id
                 title {
                   value
                 }
@@ -98,6 +99,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "1b58d065-fe74-43e3-ba20-54c9588b3011"
+      Hint: AllowedOnTemplates
+      Value: "{A8381A60-0F5C-4A6C-B267-AC53C2E85070}"
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20211012T120931Z
@@ -107,14 +111,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a20ae282-762c-4142-b107-1df982f3ebdf"
+      Value: "8b6e33c4-2d1a-4528-9903-d822eb8f7670"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240413T101533Z
+      Value: 20240508T162014Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

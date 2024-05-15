@@ -15,11 +15,13 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
 const SitecorePage = (props: SitecorePageProps): JSX.Element => {
   const { notFound, componentProps, layoutData, headLinks } = props;
+  useCustomTracking();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
@@ -83,8 +85,10 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
     fallback = process.env.EXPORT_MODE ? false : fallback;
   }
 
+  const limit = process.env.STATIC_BUILD_LIMIT as unknown as number;
+
   return {
-    paths,
+    paths: limit ? paths.slice(0, limit) : paths,
     fallback,
   };
 };

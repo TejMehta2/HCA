@@ -1,0 +1,72 @@
+﻿---
+ID: "b0a731cf-f420-4ed1-bac2-a48931fb877d"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "b63580c4-4e8a-49e4-a7c8-0e09552fcfbc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA83_1"
+SharedFields:
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: 
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{23DCD00E-0AB4-461E-AE9F-099B5B62E898}"
+              s:id="{0C726BE9-CA4E-415C-B3D0-9640C37E7947}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B67509E6C-E151-4827-849C-300F34FBBA6C%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "25ad52f7-bae0-4ad4-9032-edc7050e981c"
+      Hint: Heading
+      Value: Healthcare for business
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T075828Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: Private GP services
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d1204294-d0c6-408d-81e2-893522aa306e"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{E87A405D-8498-41B8-B0DF-40200678D574}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240511T134858Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Private GP services
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image mediaid="{E87A405D-8498-41B8-B0DF-40200678D574}" />

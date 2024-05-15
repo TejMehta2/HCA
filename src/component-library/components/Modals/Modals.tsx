@@ -5,6 +5,7 @@ import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
 import isIosDevice from '../../utility-functions/isIosDevice';
+import { useI18n } from 'next-localization';
 
 // A toggle-able React Modal using the native HTML5 dialog element
 // The modal has an animated drag and swipe behavior to mimic the typical mobile app draws that it resembles visually
@@ -17,6 +18,7 @@ const Modals = (
     defaultOpen = false,
     variation = 'full',
     contentVariation,
+    id,
   } = props;
   const {
     draggable,
@@ -28,6 +30,8 @@ const Modals = (
     content,
     handle,
   } = styles;
+
+  const { t } = useI18n();
 
   const Overlay = () => (
     <>
@@ -45,7 +49,7 @@ const Modals = (
     <div className={close}>
       <TextLink>
         <button type="button" onClick={() => ref?.current?.close()}>
-          <span>Close</span>
+          <span>{t('close') || 'Close'}</span>
           <Icons iconName="iconCross" />
         </button>
       </TextLink>
@@ -102,6 +106,7 @@ const Modals = (
 
   return (
     <dialog
+      id={id}
       data-testid="dialog"
       ref={ref}
       open={defaultOpen}

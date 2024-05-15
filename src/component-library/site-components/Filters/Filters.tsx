@@ -9,6 +9,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Themes from '../../foundation/Themes/Themes';
 import Accordions from '../../components/Accordions/Accordions';
+import { useI18n } from 'next-localization';
 
 const Filters = (props: FiltersProps): JSX.Element => {
   const {
@@ -20,7 +21,10 @@ const Filters = (props: FiltersProps): JSX.Element => {
     buttonIcon = <Icons iconName="iconFilterCircle" />,
     filters,
     resultsCount,
+    submitOnClose,
   } = props;
+
+  const { t } = useI18n();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -40,7 +44,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.toggle}>
-        <Button variation="full-dark" size="large">
+        <Button variation="full" size="large">
           <button onClick={() => dialogRef.current?.showModal()} type="button">
             {buttonIcon}
             {buttonText}
@@ -72,11 +76,14 @@ const Filters = (props: FiltersProps): JSX.Element => {
           <div className={styles.footer}>
             <TextButton theme="dark">
               <button type="button" onClick={clearFields}>
-                Clear All
+                {t('clear-all') || 'Clear all'}
               </button>
             </TextButton>
             <Button variation="full-dark" size="small">
-              <button onClick={() => dialogRef?.current?.close()} type="button">
+              <button
+                onClick={() => dialogRef?.current?.close()}
+                type={submitOnClose ? 'submit' : 'button'}
+              >
                 See {resultsCount} Results
               </button>
             </Button>

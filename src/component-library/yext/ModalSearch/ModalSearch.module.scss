@@ -1,0 +1,27 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include responsive-container;
+
+  padding-top: px-to-rem(41 - 18);
+  @include media(screen-l) {
+    padding-top: px-to-rem(87);
+  }
+
+  padding-bottom: $spacing-11;
+}
+
+.search {
+  margin-bottom: px-to-rem(32);
+}
+
+.subheading {
+  margin-bottom: $spacing-4;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: px-to-rem(8);
+}

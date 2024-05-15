@@ -5,6 +5,8 @@ import {
   RichText as JssRichText,
   Text as JssText,
   Image as JssImage,
+  Link as JssLink,
+  LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -12,8 +14,8 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -25,6 +27,10 @@ interface PagesFields {
   url?: { path?: string };
 }
 
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
+};
+
 interface Fields {
   data?: {
     item?: {
@@ -33,6 +39,10 @@ interface Fields {
       pages?: {
         PagesList?: PagesFields[];
       };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink?: { jsonValue?: LinkField };
     };
   };
 }
@@ -66,17 +76,35 @@ interface WithImageProps extends ContentCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
   if (!props.fields?.data?.item) {
     return <ContentCardsDefaultComponent {...props} />;
   }
 
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
+
+  const link =
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+      !isExperienceEditor ? (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+          <JssRichText
+            tag="span"
+            field={{
+              value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+            }}
+          />
+        </JssLink>
+      ) : (
+        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
+      )
+    ) : undefined;
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
@@ -95,6 +123,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           }
         />
       }
+      cta={link}
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
@@ -135,9 +164,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             }
             link={
               <a href={card?.url?.path}>
-                <span>
-                  {props.fields?.data?.item?.cTACardText?.jsonValue?.value}
-                </span>
+                {props.fields?.data?.item?.cTAIcon?.Icon && (
+                  <SitecoreSvg>
+                    {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+                  </SitecoreSvg>
+                )}
+                <JssRichText
+                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                />
               </a>
             }
           />

@@ -7,11 +7,12 @@ import {
   Image as JssImage,
   ComponentRendering,
   Placeholder,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
-import { Theme, HeadingSize, HeadingTag } from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Params from 'src/types/params';
 
 interface Fields {
   Heading?: Field<string>;
@@ -21,26 +22,29 @@ interface Fields {
 }
 
 export type ImageShortTextProps = {
-  params?: {
-    Theme?: Theme;
-    HeadingTag?: HeadingTag;
-    HeadingSize?: HeadingSize;
-    DynamicPlaceholderId?: string;
-    styles?: string;
-  };
+  params?: Params;
   rendering?: ComponentRendering;
   fields?: Fields;
 };
 
 const ImageShortTextDefaultComponent = (
   props: ImageShortTextProps
-): JSX.Element => (
-  <div className={`component promo ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">ImageShortText no datasource</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Image Short Text please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 interface ImageLeftProps extends ImageShortTextProps {
   imageAlignment: 'left' | 'right';
@@ -52,11 +56,14 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     return <ImageShortTextDefaultComponent {...props} />;
   }
 
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   return (
     <>
       <ImageAndTextBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
+        imageKeepAspectRatio={keepAspectRatio}
         length="short"
         subheader={
           <Text tag="p" variation="subheading-1">

@@ -7,14 +7,21 @@ import * as SearchButtonStories from './SearchButton.stories';
 
 ## Description
 
-The SearchButton component is a button which looks like a search bar and triggers a modal to open. The contents of the modal can be set via the `modalContent` prop.
+The SearchButton component is a button which looks like a search bar and triggers a click event.
 
-It is intended to be used in the HomepageHero component.
+It is intended to be used in the HomepageHero component to trigger the SearchModal in the MainNavigation.
 
 It can be composed like this:
 
 ```tsx
-<SearchButton modalContent={<p>content</p>}>
+<SearchButton 
+  onClick={() => {
+    const dialog = document.getElementById(
+      SEARCH_SUGGESTIONS_MODAL_ID
+    ) as HTMLDialogElement;
+    dialog?.showModal();
+  }}
+  >
   <span>
     How can we <b>help you?</b>
   </span>

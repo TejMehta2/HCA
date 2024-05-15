@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
   useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
@@ -34,6 +34,7 @@ import Button from '@component-library/core-components/Button/Button';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { ApiSearchProps } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -56,6 +57,8 @@ interface WithHeaderProps extends LocationsSearchProps {
 
 export const Default = (props: WithHeaderProps): JSX.Element => {
   const { fields, params, contentVariation } = props;
+  const { t } = useI18n();
+
   // Set up default baseline parameters from CMS
   const { defaultLimit, defaultOffset, baselineParams } =
     getBaselineParams(props);
@@ -126,20 +129,31 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         <HeaderPlain
           contentVariation={contentVariation}
           heading={
-            <JssText
-              tag={params?.HeadingTag || 'h1'}
-              field={props?.fields?.Title}
-            />
+            <Text
+              variation={props.params?.HeadingSize || 'display-1'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssText field={props?.fields?.Title} />
+            </Text>
+          }
+          subheading={
+            <Text variation="subheading-1">
+              <JssText field={props.fields?.Heading} />
+            </Text>
           }
           description={
             <Text tag="div" variation="body-large">
-              <RichText tag="span" field={props?.fields?.Text} />
+              <JssRichText tag="span" field={props?.fields?.Text} />
             </Text>
           }
         >
           <>
             <SearchBar
-              defaultValue={searchParams.get('input') || undefined}
+              defaultValue={
+                searchParams.get('input') ||
+                searchParams.get('autocomplete') ||
+                undefined
+              }
               name={'input'}
               placeholder={fields?.SearchPlaceholder?.value}
               suggestions={
@@ -149,6 +163,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               }
             >
               <Filters
+                submitOnClose={true}
                 buttonText={<JssText field={fields?.FilterOptionsText} />}
                 buttonIcon={
                   <SitecoreSvg>
@@ -232,7 +247,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             showing={
               !!rangeEnd && (
                 <Text variation="body-medium">
-                  <span>Showing {resultsRange}</span>
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
                 </Text>
               )
             }
@@ -252,8 +269,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       {data?.response?.results?.map(({ data }) => {
                         const {
                           id,
+                          abstractTitle,
+                          abstractImageUrl,
                           title,
-                          name,
                           description,
                           imageUrl,
                           url,
@@ -264,7 +282,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             key={id}
                             title={
                               <Text variation="heading-1" tag="h4">
-                                {title || name}
+                                {abstractTitle ? abstractTitle : title}
                               </Text>
                             }
                             address={
@@ -275,7 +293,14 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ) : undefined
                             }
                             image={
-                              imageUrl ? (
+                              abstractImageUrl ? (
+                                <Image
+                                  src={abstractImageUrl}
+                                  alt=""
+                                  width="363"
+                                  height="243"
+                                />
+                              ) : imageUrl ? (
                                 <Image
                                   src={imageUrl}
                                   alt=""
@@ -288,9 +313,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               button1: url ? (
                                 <Button size={'large'} variation={'full'}>
                                   <a href={url}>
-                                    <span>
-                                      Learn <strong>more</strong>
-                                    </span>
+                                    <JssRichText
+                                      field={props.fields?.CTACardText}
+                                    />
                                   </a>
                                 </Button>
                               ) : undefined,
@@ -302,7 +327,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                     rel="noopener noreferrer"
                                   >
                                     <span>
-                                      Learn <strong>more</strong>
+                                      <JssText
+                                        field={fields.GetDirectionsText}
+                                      />
                                     </span>
                                   </a>
                                 </TextButton>
@@ -320,7 +347,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       <span>
                         <Icons iconName={'iconPlus'} />
                       </span>
-                      <span>Show more</span>
+                      <span>{t('show-more') || 'Show more'}</span>
                     </SearchFormLoadMore>
                   </>
                 ),
@@ -357,22 +384,22 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             }
                             ctas={{
                               button1: (
-                                <a href="#">
-                                  <span>
-                                    Learn <strong>more</strong>
-                                  </span>
+                                <a href={data.url}>
+                                  <JssRichText
+                                    field={props.fields?.CTACardText}
+                                  />
                                 </a>
                               ),
                               button2: (
                                 <a href={data.directions}>
                                   <span>
-                                    Get <strong>directions</strong>
+                                    <JssText field={fields.GetDirectionsText} />
                                   </span>
                                 </a>
                               ),
                               close: (
                                 <button onClick={hideCard}>
-                                  <span>Close</span>
+                                  <span>{t('close') || 'Close'}</span>
                                   <Icons iconName="iconCross" />
                                 </button>
                               ),

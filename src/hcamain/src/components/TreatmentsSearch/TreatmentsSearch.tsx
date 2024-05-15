@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Text from '@component-library/foundation/Text/Text';
@@ -30,6 +30,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/treatments`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/treatments`;
@@ -47,10 +48,15 @@ const TreatmentsSearchDefaultComponent = (
 
 export const Default = (props: ApiSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
-  const { defaultLimit, defaultOffset, baselineParams } =
-    getBaselineParams(props);
+  const {
+    defaultLimit,
+    defaultOffset,
+    baselineParams,
+    baselineAutocompleteParams,
+  } = getBaselineParams(props);
 
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -66,6 +72,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     searchPath: SEARCH_PATH,
     baselineParams,
     fallbackData: fallbackData,
+    baselineAutocompleteParams,
   });
 
   if (!fields) {
@@ -123,7 +130,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           )}
           {fields?.Text?.value && (
             <Text variation="body-large" tag="div">
-              <RichText tag="div" field={fields?.Text} />
+              <JssRichText tag="div" field={fields?.Text} />
             </Text>
           )}
           <SearchBar
@@ -204,7 +211,9 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">
-              <span>Showing {resultsRange}</span>
+              <span>
+                {t('showing') || 'Showing'} {resultsRange}
+              </span>
             </Text>
           )}
           {error ? (
@@ -221,20 +230,37 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
               <CardGrid>
                 {data?.response.results?.map((item, index) => {
                   const { data } = item;
-                  const { title, description, imageUrl, url } = data;
+                  const {
+                    abstractTitle,
+                    abstractText,
+                    abstractImageUrl,
+                    title,
+                    description,
+                    imageUrl,
+                    url,
+                  } = data;
                   return (
                     <CardContent
                       key={index}
                       title={
                         <Text variation="heading-1" tag="h4">
-                          {title}
+                          {abstractTitle ? abstractTitle : title}
                         </Text>
                       }
                       bodyCopy={
-                        <Text variation="body-large">{description}</Text>
+                        <Text variation="body-large">
+                          {abstractText ? abstractText : description}
+                        </Text>
                       }
                       image={
-                        imageUrl ? (
+                        abstractImageUrl ? (
+                          <Image
+                            src={abstractImageUrl}
+                            alt=""
+                            width="363"
+                            height="243"
+                          />
+                        ) : imageUrl ? (
                           <Image
                             src={imageUrl}
                             alt=""
@@ -245,9 +271,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                       }
                       link={
                         <a href={url}>
-                          <span>
-                            Learn <strong>more</strong>
-                          </span>
+                          <JssRichText field={props.fields?.CTACardText} />
                         </a>
                       }
                     />
@@ -268,7 +292,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                 <span>
                   <Icons iconName={'iconPlus'} />
                 </span>
-                <span>Show more</span>
+                <span>{t('show-more') || 'Show more'}</span>
               </SearchFormLoadMore>
             </>
           )}

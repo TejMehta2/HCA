@@ -6,7 +6,7 @@ Path: /sitecore/templates/Project/HCA/Page Content/Call Us Today CTA
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/window_dialog.png
+  Value: office/32x32/phone_speech_bubble.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: "{44A022DB-56D3-419A-B43B-E27E4D8E9C41}"
@@ -63,14 +63,14 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "18eac9f9-3d1e-48a1-b17f-5a6dd2a24d79"
+      Value: "16c712eb-0032-4e4f-b368-7cbd77046d40"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T161048Z
+      Value: 20240429T150301Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
