@@ -21,7 +21,7 @@ import { componentBuilder } from 'temp/componentBuilder';
 //import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import NotFound from 'src/NotFound';
 import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
-import { getHCAConfig } from 'lib/consultant-finder/getHCAConfig';
+import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 
 const SitecorePage = ({
   notFound,
@@ -89,7 +89,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
-    const HCAAPIConfig = await getHCAConfig();
+    const HCAAPIConfig = await GetHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
@@ -142,7 +142,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-      const HCAAPIConfig = await getHCAConfig();
+      const HCAAPIConfig = await GetHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
           String(HCAAPIConfig?.nextJSRevalidationProfilePageSeconds),
