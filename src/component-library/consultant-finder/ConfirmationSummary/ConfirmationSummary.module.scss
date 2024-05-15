@@ -20,6 +20,7 @@
     padding: $spacing-5 0;
     justify-content: space-between;
     border-bottom: 1px solid $teal-20;
+    color: var(--text);
 
     &:last-child {
       border-bottom: none;

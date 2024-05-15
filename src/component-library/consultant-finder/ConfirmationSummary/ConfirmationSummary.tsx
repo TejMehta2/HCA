@@ -16,55 +16,82 @@ const ConfirmationSummary = (props: ConfirmationSummaryProps): JSX.Element => {
     consultantName,
     facilityTitle,
     facilityName,
+    optionalItems,
   } = props;
   return (
     <div className={styles['confirmation-summary']}>
-      <div className={styles.title}>
-        <Text tag="h2" variation="body-medium-extra-large">
-          {title}
-        </Text>
-      </div>
+      {title && (
+        <div className={styles.title}>
+          <Text tag="h2" variation="body-medium-extra-large">
+            {title}
+          </Text>
+        </div>
+      )}
+
       <div className={styles.summary}>
-        <div className={styles.item}>
-          <Text tag="h4" variation="body-medium-large">
-            {patientTitle}
-          </Text>
-          <Text tag="p" variation="body-large">
-            {patientName}
-          </Text>
-        </div>
-        <div className={styles.item}>
-          <Text tag="h4" variation="body-medium-large">
-            {dateTitle}
-          </Text>
-          <Text tag="p" variation="body-large">
-            {date}
-          </Text>
-        </div>
-        <div className={styles.item}>
-          <Text tag="h4" variation="body-medium-large">
-            {timeTitle}
-          </Text>
-          <Text tag="p" variation="body-large">
-            {time}
-          </Text>
-        </div>
-        <div className={styles.item}>
-          <Text tag="h4" variation="body-medium-large">
-            {consultantTitle}
-          </Text>
-          <Text tag="p" variation="body-large">
-            {consultantName}
-          </Text>
-        </div>
-        <div className={styles.item}>
-          <Text tag="h4" variation="body-medium-large">
-            {facilityTitle}
-          </Text>
-          <Text tag="p" variation="body-large">
-            {facilityName}
-          </Text>
-        </div>
+        {patientTitle && patientName && (
+          <div className={styles.item}>
+            <Text tag="h4" variation="body-medium-large">
+              {patientTitle}
+            </Text>
+            <Text tag="p" variation="body-large">
+              {patientName}
+            </Text>
+          </div>
+        )}
+        {dateTitle && date && (
+          <div className={styles.item}>
+            <Text tag="h4" variation="body-medium-large">
+              {dateTitle}
+            </Text>
+            <Text tag="p" variation="body-large">
+              {date}
+            </Text>
+          </div>
+        )}
+        {timeTitle && time && (
+          <div className={styles.item}>
+            <Text tag="h4" variation="body-medium-large">
+              {timeTitle}
+            </Text>
+            <Text tag="p" variation="body-large">
+              {time}
+            </Text>
+          </div>
+        )}
+        {consultantTitle && consultantName && (
+          <div className={styles.item}>
+            <Text tag="h4" variation="body-medium-large">
+              {consultantTitle}
+            </Text>
+            <Text tag="p" variation="body-large">
+              {consultantName}
+            </Text>
+          </div>
+        )}
+        {facilityTitle && facilityName && (
+          <div className={styles.item}>
+            <Text tag="h4" variation="body-medium-large">
+              {facilityTitle}
+            </Text>
+            <Text tag="p" variation="body-large">
+              {facilityName}
+            </Text>
+          </div>
+        )}
+        {optionalItems &&
+          optionalItems.map((item, index) => {
+            return (
+              <div className={styles.item} key={index}>
+                <Text tag="h4" variation="body-medium-large">
+                  {item.title}
+                </Text>
+                <Text tag="p" variation="body-large">
+                  {item.text}
+                </Text>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

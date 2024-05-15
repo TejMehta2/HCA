@@ -1,0 +1,16 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  padding: $spacing-8 0;
+
+  @include responsive-container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4 0;
+  margin-bottom: $spacing-8;
+}
