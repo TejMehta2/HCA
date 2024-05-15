@@ -8,6 +8,8 @@ import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from '../CarouselCards/CustomArrows';
 import Slider from '@ant-design/react-slick';
 import DoctifyLogo from '../../assets/images/doctify-dark.png';
+import StarEmpty from '../../assets/shapes/StarEmpty.svg';
+import StarHalf from '../../assets/shapes/StarHalf.svg';
 
 const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
   const { theme, rating, reviewCount, children } = props;
@@ -32,12 +34,12 @@ const CarouselReviews = (props: CarouselReviewsProps): JSX.Element => {
 
   /* If there is a decimal, show a half star */
   if (!Number.isInteger(rating)) {
-    stars.push(<Icons iconName="iconStarHalf" />);
+    stars.push(<StarHalf />);
   }
 
   /* Round up to nearest whole number and take away from 5 (max rating) to get empty stars */
   for (let i = 0; i < 5 - Math.ceil(rating); i++) {
-    stars.push(<Icons iconName="iconStarEmpty" />);
+    stars.push(<StarEmpty />);
   }
 
   return (
