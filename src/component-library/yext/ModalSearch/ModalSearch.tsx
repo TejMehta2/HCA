@@ -23,8 +23,10 @@ const ModalSearch = (
   const router = useRouter();
 
   const triggerSearch = (query: string) => {
-    ref?.current?.close();
+    searchActions.setQuery(query);
+    if (!query.length) return;
     searchActions.executeUniversalQuery();
+    ref?.current?.close();
     router.replace(`${redirectUrl}?input=${query}`);
   };
 
@@ -47,7 +49,6 @@ const ModalSearch = (
                 <Button key={index} size={'small'} variation={'filter'}>
                   <button
                     onClick={() => {
-                      searchActions.setQuery(query);
                       triggerSearch(query);
                     }}
                   >
