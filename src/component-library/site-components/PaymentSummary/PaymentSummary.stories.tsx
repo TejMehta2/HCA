@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
-import ConfirmationSummary from '../../consultant-finder/ConfirmationSummary/ConfirmationSummary';
+import ConfirmationSummary from '../../components/ConfirmationSummary/ConfirmationSummary';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PaymentSummary> = {

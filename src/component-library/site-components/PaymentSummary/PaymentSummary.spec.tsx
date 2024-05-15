@@ -4,7 +4,7 @@ import PaymentSummary from './PaymentSummary';
 import { PaymentSummaryProps } from './PaymentSummary.types';
 import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
-import ConfirmationSummary from '../../consultant-finder/ConfirmationSummary/ConfirmationSummary';
+import ConfirmationSummary from '../../components/ConfirmationSummary/ConfirmationSummary';
 import Icons from '../../foundation/Icons/Icons';
 
 const mockProps: PaymentSummaryProps = {
