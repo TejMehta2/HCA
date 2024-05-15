@@ -153,7 +153,7 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
 export const getFacilitiesData = unstable_cache(
-  async (): Promise<string[]> => {
+  async (): Promise<any> => {
     console.log('refreshing _getFacilitiesData from source..');
     return await _getFacilitiesData();
   },
