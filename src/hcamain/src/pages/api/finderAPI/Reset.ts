@@ -1,3 +1,4 @@
+import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
 import {
   getActiveConsultantSlugs,
   getActiveLiveDiaryConsultantSlugs,
@@ -11,11 +12,16 @@ const Reset = async (
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
   console.log('getting cacheable data');
-
+  console.log('getting getActiveConsultantSlugs');
   await getActiveConsultantSlugs();
+  console.log('getting getActiveLiveDiaryConsultantSlugs');
   await getActiveLiveDiaryConsultantSlugs();
+  console.log('getting getHolidays');
   await getHolidays();
-  console.log('reset cache');
+  console.log('getting getFacilitiesData');
+  await getFacilitiesData();
+
+  console.log('resetting cache');
 
   try {
     revalidateTag('cacheGetActiveConsultantSlugs');
@@ -38,6 +44,22 @@ const Reset = async (
   } catch (error) {
     console.warn(`exception purging cacheGetHolidays cache: ${error}`);
   }
+
+  try {
+    revalidateTag('cacheGetFacilitiesData');
+  } catch (error) {
+    console.warn(`exception purging cacheGetFacilitiesData cache: ${error}`);
+  }
+
+  console.log('re-reading cacheable data');
+  console.log('getting getActiveConsultantSlugs');
+  await getActiveConsultantSlugs();
+  console.log('getting getActiveLiveDiaryConsultantSlugs');
+  await getActiveLiveDiaryConsultantSlugs();
+  console.log('getting getHolidays');
+  await getHolidays();
+  console.log('getting getFacilitiesData');
+  await getFacilitiesData();
 
   const ret = '<div>done</div>';
   res.setHeader('Content-Type', 'text/html');
