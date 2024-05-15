@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const jssConfig = require('./src/temp/config');
 const plugins = require('./src/temp/next-config-plugins') || {};
 
