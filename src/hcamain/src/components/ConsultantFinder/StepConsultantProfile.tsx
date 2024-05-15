@@ -29,7 +29,6 @@ import {
   getSpecialistProfileData,
   isErrorWithProfileData,
 } from 'lib/consultant-finder/API_Doctify';
-import Container from '@component-library/foundation/Containers/Container';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
@@ -715,64 +714,57 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* iframe with patient and peer reviews */}
               </MainWrapper>
               <SideWrapper>
-                <SidePanel 
-                isSticky={true} 
-                buttons={
-                  <>
-                  {/* if consultant has live diaries then show 'book online' */}
-                  {serverSideData?.IsLiveDiaryConsultant && (
-                      <Button
-                        variation="full-dark"
-                        size="small"
-                      >
-                        <Link
-                          href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
-                        >
-                          <span>
-                            {props.fields.BookOnlineButtonLink.value.text ||
-                              'Book online'}
-                          </span>
-                        </Link>
-                      </Button>
-                  )}
-                  {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-                  {!serverSideData?.IsLiveDiaryConsultant &&
-                    !serverSideData?.ProfileJson?.hideAppointmentRequest && (
-                        <Button
-                          variation="full-dark"
-                          size="small"
-                        >
+                <SidePanel
+                  isSticky={true}
+                  buttons={
+                    <>
+                      {/* if consultant has live diaries then show 'book online' */}
+                      {serverSideData?.IsLiveDiaryConsultant && (
+                        <Button variation="full-dark" size="small">
                           <Link
-                            href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
                           >
                             <span>
-                              {props?.fields?.EnquireNowButtonLink?.value
-                                ?.title || 'Enquire now'}
+                              {props.fields.BookOnlineButtonLink.value.text ||
+                                'Book online'}
                             </span>
                           </Link>
                         </Button>
-                    )}
-                  <Button
-                    variation="outline"
-                    size="small"
-                  >
-                    <a
-                      href={`tel:${
-                        props?.fields?.PhoneNumberHref?.value ||
-                        '+442045711724'
-                      }`}
-                    >
-                      <span>
-                        <Icons iconName="iconPhone" />
-                      </span>
-                      <span>
-                        {props?.fields?.CallToBookButtonText?.value ||
-                          'Call to book'}
-                      </span>
-                    </a>
-                  </Button>
-                </>
-                }>
+                      )}
+                      {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+                      {!serverSideData?.IsLiveDiaryConsultant &&
+                        !serverSideData?.ProfileJson
+                          ?.hideAppointmentRequest && (
+                          <Button variation="full-dark" size="small">
+                            <Link
+                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                            >
+                              <span>
+                                {props?.fields?.EnquireNowButtonLink?.value
+                                  ?.title || 'Enquire now'}
+                              </span>
+                            </Link>
+                          </Button>
+                        )}
+                      <Button variation="outline" size="small">
+                        <a
+                          href={`tel:${
+                            props?.fields?.PhoneNumberHref?.value ||
+                            '+442045711724'
+                          }`}
+                        >
+                          <span>
+                            <Icons iconName="iconPhone" />
+                          </span>
+                          <span>
+                            {props?.fields?.CallToBookButtonText?.value ||
+                              'Call to book'}
+                          </span>
+                        </a>
+                      </Button>
+                    </>
+                  }
+                >
                   <Reviews
                     doctifyLogo={
                       <JssImage field={props?.fields?.DoctifyLogoImage} />

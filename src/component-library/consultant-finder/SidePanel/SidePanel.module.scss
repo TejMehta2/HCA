@@ -31,9 +31,9 @@
       display: flex;
       justify-content: center;
       flex-grow: 1;
-      margin-right: 10px;
+      margin-right: px-to-rem(10);
     }
-    
+
     div:last-child {
       margin-right: 0;
     }

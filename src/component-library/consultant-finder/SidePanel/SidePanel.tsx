@@ -35,12 +35,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
   return (
     <div className={className} style={{ top: marginTop }}>
       {children}
-      {
-        buttons && 
-        <div className={styles.btns}>
-          {buttons}
-        </div>
-      }
+      {buttons && <div className={styles.btns}>{buttons}</div>}
     </div>
   );
 };

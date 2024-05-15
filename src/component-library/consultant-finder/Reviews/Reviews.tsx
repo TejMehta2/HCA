@@ -41,7 +41,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
 
   const goToReviews = () => {
     console.log('reviews');
-    let ref = props.reviewsRef;
+    const ref = props.reviewsRef;
 
     // Scroll to the section if ref exists
     if (ref && ref.current) {
@@ -51,7 +51,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
     } else {
       console.log('Ref not found or not initialized'); // Debugging check
     }
-  }
+  };
 
   return (
     <div className={styles.reviews} data-testid="reviews-component">
@@ -102,11 +102,13 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
       {props.isConsultantProfileReviews && props.reviewsTotal > 0 && (
         <div className={styles['reviews-total']}>
           <TextLink>
-          <button onClick={goToReviews}>
-          <Icons iconName="iconComment" />
-            <span>{props.reviewsTotal} {props.reviewsText}</span>
-          </button>
-        </TextLink>
+            <button onClick={goToReviews}>
+              <Icons iconName="iconComment" />
+              <span>
+                {props.reviewsTotal} {props.reviewsText}
+              </span>
+            </button>
+          </TextLink>
         </div>
       )}
 

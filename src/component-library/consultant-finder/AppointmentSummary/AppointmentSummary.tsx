@@ -41,9 +41,8 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
               e.preventDefault();
               router.push(
                 `/Finder/Step-Location-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
-              )
-            }
-            }
+              );
+            }}
           >
             <Icons iconName="iconEdit" />
           </button>
@@ -65,9 +64,8 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
               e.preventDefault();
               router.push(
                 `/Finder/Step-Slot-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
-              )
-            }
-            }
+              );
+            }}
           >
             <Icons iconName="iconEdit" />
           </button>
