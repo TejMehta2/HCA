@@ -196,6 +196,7 @@ export const Default = (props: StepProps): JSX.Element => {
   });
 
   const {
+    reset,
     register,
     control,
     handleSubmit,
@@ -747,6 +748,11 @@ export const Default = (props: StepProps): JSX.Element => {
                         }`}
                   </button>
                 </Button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  reset();
+                  clearErrors();
+                }}>Clear all</button>
 
                 <Container marginBottom="spacing-8" marginTop="spacing-8">
                   <Text tag="p" variation="body-medium-extra-large">
