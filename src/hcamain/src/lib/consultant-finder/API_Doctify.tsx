@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getHCAConfig } from './getHCAConfig';
-import { getDoctifyConfig } from './getDoctifyConfig';
+import { GetDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
 import { checkIfLiveBookingIsAvailable } from './API_HCA';
 import { unstable_cache } from 'next/cache';
@@ -25,7 +25,7 @@ export async function getSpecialistProfileData(
   serviceURL?: string,
   loadFirstAppointmentData: boolean = false
 ): Promise<any> {
-  const config = !serviceURL ? await getDoctifyConfig() : null;
+  const config = !serviceURL ? await GetDoctifyConfig() : null;
   //console.log(DoctifyConfig);
   const Doctify_Specialists_URL =
     serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
@@ -232,7 +232,7 @@ export async function facilityURLFromDoctifySlug(
 // get insurance data from Doctify
 //const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
 export async function getInsuranceData(serviceURL?: string): Promise<any> {
-  const config = !serviceURL ? await getDoctifyConfig() : null;
+  const config = !serviceURL ? await GetDoctifyConfig() : null;
   //console.log(DoctifyConfig);
   const Doctify_Insurance_URL = serviceURL ?? config?.aPI_Insurance_BaseURL;
 
@@ -263,7 +263,7 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
 }
 
 export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
-  const doctifyConfig = await getDoctifyConfig();
+  const doctifyConfig = await GetDoctifyConfig();
   const baseURL =
     doctifyConfig?.aPI_DoctifySearch_BaseURL ||
     'https://api.doctify.com/api/hca/search';

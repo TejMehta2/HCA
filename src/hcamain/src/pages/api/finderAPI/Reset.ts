@@ -4,14 +4,28 @@ import {
   getActiveLiveDiaryConsultantSlugs,
   getHolidays,
 } from 'lib/consultant-finder/API_HCA';
+import { GetC2Config } from 'lib/consultant-finder/getC2Config';
+import { GetDoctifyConfig } from 'lib/consultant-finder/getDoctifyConfig';
+import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { revalidateTag } from 'next/cache';
+
+// we don't want to cache the reset function
+export const dynamic = 'force-dynamic';
+
 // admin function to purge the data cache
 const Reset = async (
   _req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
   console.log('getting cacheable data');
+
+  console.log('getting GetHCAConfig');
+  await GetHCAConfig();
+  console.log('getting GetC2Config');
+  await GetC2Config();
+  console.log('getting GetDoctifyConfig');
+  await GetDoctifyConfig();
   console.log('getting getActiveConsultantSlugs');
   await getActiveConsultantSlugs();
   console.log('getting getActiveLiveDiaryConsultantSlugs');
@@ -22,6 +36,24 @@ const Reset = async (
   await getFacilitiesData();
 
   console.log('resetting cache');
+
+  try {
+    revalidateTag('cacheGetHCAConfig');
+  } catch (error) {
+    console.warn(`exception purging cacheGetHCAConfig cache: ${error}`);
+  }
+
+  try {
+    revalidateTag('cacheGetC2Config');
+  } catch (error) {
+    console.warn(`exception purging cacheGetC2Config cache: ${error}`);
+  }
+
+  try {
+    revalidateTag('cacheGetDoctifyConfig');
+  } catch (error) {
+    console.warn(`exception purging cacheGetDoctifyConfig cache: ${error}`);
+  }
 
   try {
     revalidateTag('cacheGetActiveConsultantSlugs');
@@ -52,6 +84,12 @@ const Reset = async (
   }
 
   console.log('re-reading cacheable data');
+  console.log('getting GetHCAConfig');
+  await GetHCAConfig();
+  console.log('getting GetC2Config');
+  await GetC2Config();
+  console.log('getting GetDoctifyConfig');
+  await GetDoctifyConfig();
   console.log('getting getActiveConsultantSlugs');
   await getActiveConsultantSlugs();
   console.log('getting getActiveLiveDiaryConsultantSlugs');

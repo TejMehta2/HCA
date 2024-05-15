@@ -1,3 +1,4 @@
+import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
 
 //HCA APIs
@@ -64,7 +65,22 @@ export interface IHCAConfig {
   nextJSRevalidationProfilePageSeconds: number;
 }
 
-export async function getHCAConfig(): Promise<IHCAConfig> {
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const GetHCAConfig = unstable_cache(
+  async (): Promise<IHCAConfig> => {
+    console.log('refreshing _getHCAConfig from source..');
+    return await _getHCAConfig();
+  },
+  ['cacheGetHCAConfig'],
+  {
+    tags: ['cacheGetHCAConfig'],
+    revalidate: 604800,
+  }
+);
+
+export async function _getHCAConfig(): Promise<IHCAConfig> {
   // Sitecore item
   const HCAAPISettingsItemId = '{AF16E5CB-FE0D-4412-A299-96BEF3F5E363}';
   const HCAAPISettingsTemplateName = 'HCA_API_Settings';
