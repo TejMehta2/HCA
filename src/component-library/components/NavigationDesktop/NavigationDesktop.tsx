@@ -42,9 +42,12 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
         switch (variation) {
           case 'single-narrow':
             return (
-              <div className={styles[`span-${2}`]}>
+              <div
+                data-navigation-type={'NavigationTextCTADesktop'}
+                className={styles[`span-${2}`]}
+              >
                 <Text variation={'body-bold-extra-large'}>{heading}</Text>
-                <ul>
+                <ul data-navigation-type={'navigationLinkClick'}>
                   {links?.map((link, index) => <li key={index}>{link}</li>)}
                 </ul>
                 <TextButton>{cta}</TextButton>
@@ -52,9 +55,12 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             );
           case 'single-wide':
             return (
-              <div className={styles[`span-${3}`]}>
+              <div
+                data-navigation-type={'NavigationCTADesktop'}
+                className={styles[`span-${3}`]}
+              >
                 <Text variation={'body-bold-extra-large'}>{heading}</Text>
-                <ul>
+                <ul data-navigation-type={'navigationLinkClick'}>
                   {links?.map((link, index) => <li key={index}>{link}</li>)}
                 </ul>
                 <Button size={'large'} variation={'full'}>
@@ -64,9 +70,15 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             );
           case 'double':
             return (
-              <div className={styles[`span-${6}`]}>
+              <div
+                data-navigation-type={'NavigationTextCTADesktop'}
+                className={styles[`span-${6}`]}
+              >
                 <Text variation={'body-bold-extra-large'}>{heading}</Text>
-                <ul className={styles.double}>
+                <ul
+                  data-navigation-type={'navigationLinkClick'}
+                  className={styles.double}
+                >
                   {links?.map((link, index) => <li key={index}>{link}</li>)}
                 </ul>
                 <Button size={'large'} variation={'full'}>
@@ -82,7 +94,10 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           case 'double':
             return (
               <>
-                <div className={styles[`span-${4}`]}>
+                <div
+                  data-navigation-type={'NavigationCTADesktop'}
+                  className={styles[`span-${4}`]}
+                >
                   <AdvancedBlockHeader
                     paddingSize="none"
                     title={
@@ -103,7 +118,10 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             );
           case 'single':
             return (
-              <div className={styles[`span-${3}`]}>
+              <div
+                data-navigation-type={'NavigationCTADesktop'}
+                className={styles[`span-${3}`]}
+              >
                 <CardNavigation
                   title={
                     <Text tag="h3" variation={'heading-2'}>
@@ -126,7 +144,10 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
         }
       case 'Navigation Blog Post Card':
         return (
-          <div className={styles[`span-${3}`]}>
+          <div
+            data-navigation-type={'navigationLinkClick'}
+            className={styles[`span-${3}`]}
+          >
             <CardNavigation
               title={
                 <Text tag="h3" variation={'heading-2'}>
@@ -149,6 +170,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   return (
     <Themes theme={isOpen ? themeOpen : themeClosed}>
       <div
+        data-event="navigationClick"
         className={[styles.wrapper, isOpen ? styles.open : styles.closed].join(
           ' '
         )}
@@ -156,7 +178,10 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
       >
         <div className={[styles.navigation].join(' ')}>
           {eyebrow && (
-            <div className={styles.eyebrow}>
+            <div
+              className={styles.eyebrow}
+              data-navigation-type="headerNavigation"
+            >
               <div className={styles['eyebrow-inner']}>
                 {eyebrow.left && (
                   <div className={styles['eyebrow-left']}>{eyebrow.left}</div>
@@ -168,7 +193,11 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             </div>
           )}
           <div className={styles.main}>
-            <a className={styles.logo} href="/">
+            <a
+              className={styles.logo}
+              href="/"
+              data-navigation-type="logoNavigation"
+            >
               <span className="sr-only">Home</span>
               {isOpen ? <LogoWhite /> : <LogoBlue />}
             </a>
@@ -178,6 +207,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   return (
                     <React.Fragment key={tabIndex}>
                       <li
+                        data-navigation-type="navigationOpen"
                         onMouseEnter={tabHandler(tabIndex)}
                         className={[
                           styles.control,
@@ -214,7 +244,11 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                     </React.Fragment>
                   );
                 return (
-                  <li key={tabIndex} className={styles.control}>
+                  <li
+                    key={tabIndex}
+                    className={styles.control}
+                    data-navigation-type="navigationOpen"
+                  >
                     <TextLink variation="body-medium">{tab.tabCta}</TextLink>
                   </li>
                 );
