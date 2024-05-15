@@ -245,3 +245,40 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
   }
   return docitfyData;
 }
+
+export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
+  const doctifyConfig = await getDoctifyConfig();
+  const baseURL =
+    doctifyConfig?.aPI_DoctifySearch_BaseURL ||
+    'https://api.doctify.com/api/hca/search';
+  let consIdx = 0;
+  let maxConsultants = 5000;
+  const pageSize = 100;
+  const stop = false;
+  let slugs: string[] = [];
+
+  for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
+    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=1000&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(consultantProfilesURL, {
+        cache: 'force-cache',
+        next: { revalidate: 3600 },
+      });
+      if (res.ok) {
+        const consultantJSON = await res.json();
+        maxConsultants = consultantJSON.total;
+        consultantJSON.rows.forEach((entry: any) => {
+          slugs = slugs.concat(entry.slug);
+        });
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load consultant profiles list for pre-render from ${consultantProfilesURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return slugs;
+}

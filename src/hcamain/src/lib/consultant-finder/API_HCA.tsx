@@ -1,50 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { unstable_cache } from 'next/cache';
 import { parse } from 'node-html-parser';
 import { getHCAConfig } from './getHCAConfig';
-import { getDoctifyConfig } from './getDoctifyConfig';
-import { getSpecialistProfileData } from './API_Doctify';
+import {
+  getSpecialistProfileData,
+  doctifyGetAllConsultantSlugs,
+} from './API_Doctify';
 
-export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
-  const doctifyConfig = await getDoctifyConfig();
-  const baseURL =
-    doctifyConfig?.aPI_DoctifySearch_BaseURL ||
-    'https://api.doctify.com/api/hca/search';
-  let consIdx = 0;
-  let maxConsultants = 5000;
-  const pageSize = 100;
-  const stop = false;
-  let slugs: string[] = [];
-
-  for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
-    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=1000&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
-    try {
-      // need to cache these requests so we don't make hundreds of them
-      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
-      const res = await fetch(consultantProfilesURL, {
-        cache: 'force-cache',
-        next: { revalidate: 3600 },
-      });
-      if (res.ok) {
-        const consultantJSON = await res.json();
-        maxConsultants = consultantJSON.total;
-        consultantJSON.rows.forEach((entry: any) => {
-          slugs = slugs.concat(entry.slug);
-        });
-      }
-    } catch (e) {
-      console.warn(
-        `Could not load consultant profiles list for pre-render from ${consultantProfilesURL} failed with exception ${e}`
-      );
-    }
+// front our fairly expensive server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getActiveConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveConsultantSlugs from source..');
+    return await _getActiveConsultantSlugs();
+  },
+  ['getActiveConsultantSlugs'],
+  {
+    revalidate: 3600,
   }
-
-  return slugs;
-}
+);
 
 // get all the active hca consultants on consultant finder
 //const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
-
-export async function getActiveConsultantSlugs(): Promise<string[]> {
+async function _getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
   const HCAAPIConfig = await getHCAConfig();
 
@@ -99,9 +78,23 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
   return slugs;
 }
 
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
+    return await _getActiveLiveDiaryConsultantSlugs();
+  },
+  ['getActiveLiveDiaryConsultantSlugs'],
+  {
+    revalidate: 3600,
+  }
+);
+
 // get all the active live diary consultants
 //const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
-export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
+async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
   const HCAAPIConfig = await getHCAConfig();
   const ldbConsultantSlugsURL =
@@ -166,9 +159,24 @@ export async function checkIfLiveBookingsIsAvailable(
   return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }
 
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+// TODO - allow admin to invalidate the cache in order to allow add new live diary consultants intra-day
+export const getHolidays = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getHolidays from source..');
+    return await _getHolidays();
+  },
+  ['getHolidays'],
+  {
+    revalidate: 604800,
+  }
+);
+
 // get all the holidays
 // e.g. https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/holidays
-export async function getHolidays(): Promise<string[]> {
+async function _getHolidays(): Promise<string[]> {
   let holidays;
   const HCAAPIConfig = await getHCAConfig();
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_UtilizesLegacy
@@ -182,7 +190,7 @@ export async function getHolidays(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: 604800 },
       });
       if (res.ok) {
         holidays = await res.json();
