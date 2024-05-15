@@ -37,10 +37,12 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
           </Text>
           <button
             className={styles.button}
-            onClick={() =>
+            onClick={(e) => {
+              e.preventDefault();
               router.push(
                 `/Finder/Step-Location-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
               )
+            }
             }
           >
             <Icons iconName="iconEdit" />
@@ -59,10 +61,12 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
           </Text>
           <button
             className={styles.button}
-            onClick={() =>
+            onClick={(e) => {
+              e.preventDefault();
               router.push(
                 `/Finder/Step-Slot-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
               )
+            }
             }
           >
             <Icons iconName="iconEdit" />
