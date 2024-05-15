@@ -96,7 +96,9 @@ const YextResultSectionLocations = (
                 top: 0,
                 behavior: 'smooth',
               });
-              setVertical('healthcare_facilities');
+              setTimeout(() => {
+                setVertical('healthcare_facilities');
+              }, 1000);
             }}
           >
             <span>View all</span>
