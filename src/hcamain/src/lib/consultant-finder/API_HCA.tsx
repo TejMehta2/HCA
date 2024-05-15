@@ -15,8 +15,9 @@ export const getActiveConsultantSlugs = unstable_cache(
     console.log('refreshing _getActiveConsultantSlugs from source..');
     return await _getActiveConsultantSlugs();
   },
-  ['getActiveConsultantSlugs'],
+  ['cacheGetActiveConsultantSlugs'],
   {
+    tags: ['cacheGetActiveConsultantSlugs'],
     revalidate: 3600,
   }
 );
@@ -86,8 +87,9 @@ export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
     console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
     return await _getActiveLiveDiaryConsultantSlugs();
   },
-  ['getActiveLiveDiaryConsultantSlugs'],
+  ['cacheGetActiveLiveDiaryConsultantSlugs'],
   {
+    tags: ['cacheGetActiveLiveDiaryConsultantSlugs'],
     revalidate: 3600,
   }
 );
@@ -168,8 +170,9 @@ export const getHolidays = unstable_cache(
     console.log('refreshing _getHolidays from source..');
     return await _getHolidays();
   },
-  ['getHolidays'],
+  ['cacheGetHolidays'],
   {
+    tags: ['cacheGetHolidays'],
     revalidate: 604800,
   }
 );
