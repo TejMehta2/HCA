@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { unstable_cache } from 'next/cache';
 import { parse } from 'node-html-parser';
-import { getHCAConfig } from './getHCAConfig';
+import { GetHCAConfig } from './getHCAConfig';
 import {
   getSpecialistProfileData,
   doctifyGetAllConsultantSlugs,
@@ -26,7 +26,7 @@ export const getActiveConsultantSlugs = unstable_cache(
 //const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
 async function _getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   if (HCAAPIConfig.aPI_HCA_All_Consultants_UtilizesLegacy) {
     const consultantSlugsURL =
@@ -98,7 +98,7 @@ export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
 //const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
 async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const ldbConsultantSlugsURL =
     HCAAPIConfig?.aPI_HCA_LDB_Consultants_UtilizesLegacy
       ? HCAAPIConfig?.aPI_HCA_LDB_Consultants_LegacyBaseURL
@@ -164,7 +164,6 @@ export async function checkIfLiveBookingsIsAvailable(
 // front our fairly expensive and frequently called server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-// TODO - allow admin to invalidate the cache in order to allow add new live diary consultants intra-day
 export const getHolidays = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getHolidays from source..');
@@ -181,7 +180,7 @@ export const getHolidays = unstable_cache(
 // e.g. https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/holidays
 async function _getHolidays(): Promise<string[]> {
   let holidays;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_UtilizesLegacy
     ? HCAAPIConfig?.aPI_HCA_Holidays_LegacyBaseURL
     : HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
@@ -220,7 +219,7 @@ async function _getHolidays(): Promise<string[]> {
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA
 export async function getCMAs(): Promise<any[]> {
   let cmas;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const cmaURL = HCAAPIConfig?.aPI_HCA_CMAs_BaseURL;
 
   //console.log('config', HCAAPIConfig);
@@ -258,7 +257,7 @@ export async function getCMAs(): Promise<any[]> {
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA?key=5251DC52-E57D-47EA-8552-98BFEFF89E72
 export async function getCMA(id: string): Promise<any> {
   let cma;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   if (
     HCAAPIConfig?.aPI_HCA_CMAs_BaseURL &&
@@ -448,7 +447,7 @@ export async function suggestLocation(
   console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
 
@@ -540,7 +539,7 @@ export async function getDistances(
   //console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
   //console.log('isLegacy', isLegacy);
@@ -643,7 +642,7 @@ export async function submitBookingEnquiry(
   fields: IEnquiryFormFields | any
 ): Promise<any> {
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean =
     HCAAPIConfig?.aPI_HCA_EnquireBookingForm_UtilizesLegacy;
@@ -730,7 +729,7 @@ export async function findAddress(
   //console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
 
@@ -794,7 +793,7 @@ export async function splitAddress(
   //console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
 

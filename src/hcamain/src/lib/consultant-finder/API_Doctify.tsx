@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getHCAConfig } from './getHCAConfig';
+import { GetHCAConfig } from './getHCAConfig';
 import { GetDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
 import { checkIfLiveBookingIsAvailable } from './API_HCA';
@@ -100,7 +100,7 @@ export async function getSpecialistProfileData(
         // custom fields
         if (docitfyData.customFields) {
           if (docitfyData.customFields.cmaHtml) {
-            const hcaConfig = await getHCAConfig();
+            const hcaConfig = await GetHCAConfig();
             // are we going to change the CMA link to use the Doctify CMA profile (aPI_HCA_CMAs_UseDoctifyData)
             // or keep the legacy Sitecore GUID url?
             // legacy  requires CMA look up stored in Excel in the Media library
@@ -167,7 +167,7 @@ export const getFacilitiesData = unstable_cache(
 // get HCA facilities data
 //const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
 async function _getFacilitiesData(serviceURL?: string): Promise<any> {
-  const HCAAPIConfig = !serviceURL ? await getHCAConfig() : null;
+  const HCAAPIConfig = !serviceURL ? await GetHCAConfig() : null;
 
   const facilitiesURL = HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_UtilizesLegacy
     ? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_LegacyBaseURL
