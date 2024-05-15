@@ -210,7 +210,9 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">
-              <span>Showing {resultsRange}</span>
+              <span>
+                {t('showing') || 'Showing'} {resultsRange}
+              </span>
             </Text>
           )}
 
@@ -290,7 +292,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                 <span>
                   <Icons iconName={'iconPlus'} />
                 </span>
-                <span>{t('show-more')}</span>
+                <span>{t('show-more') || 'Show more'}</span>
               </SearchFormLoadMore>
             </>
           )}
