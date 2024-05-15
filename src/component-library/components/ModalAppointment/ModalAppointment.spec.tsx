@@ -63,6 +63,14 @@ export const mockProps: ModalAppointmentProps = {
   ),
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('ModalAppointment', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<ModalAppointment {...mockProps} />);
