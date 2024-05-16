@@ -1,16 +1,15 @@
 ﻿---
-ID: "83a3005a-c95d-4d62-83cd-c3547a06d0d7"
+ID: "f3331b8c-0c96-4a66-b5dc-37541be3f104"
 Parent: "12f34b20-353a-41b8-8f89-433b844f5395"
 Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Service Page 2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Service Page 6"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 400
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{6095C178-8A19-49C7-BF0B-A5B0C8ACB853}" />
+  Value: 
 Languages:
 - Language: en
   Versions:
@@ -19,16 +18,19 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231204T124958Z
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: GP Services
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "980e9400-be3b-45ed-a628-dbf1d130b185"
+      Value: "8d353343-d0a4-4397-bda2-4dc7a0705293"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
-        <image mediaid="{991F1C7F-7F02-4C1B-A5E9-90B1ED156837}" />
+        <image mediaid="{5222E81D-92D2-4A4C-8BEE-B31B07E1B45E}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -38,7 +40,7 @@ Languages:
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240516T055014Z
+      Value: 20240516T054926Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: Cancer Care
+      Value: GP Services

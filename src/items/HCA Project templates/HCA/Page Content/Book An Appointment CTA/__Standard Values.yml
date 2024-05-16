@@ -15,13 +15,16 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240202T175352Z
+    - ID: "81a6f998-135f-435b-8db0-ae62c669ca22"
+      Hint: CTAText
+      Value: Book an <b>appointment</b>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "90672a4b-7fcc-4000-a5a6-47ae47f84d13"
+      Value: "d86ec5ec-a8dc-41db-b26e-e914f080627a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240322T072159Z
+      Value: 20240515T191644Z

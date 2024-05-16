@@ -6,7 +6,9 @@ Path: /sitecore/templates/Project/HCA/Foundation/CQC/CQC Folder/__Standard Value
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{64B4984E-9B3E-40B9-9CB3-97F74DA3E25E}"
+  Value: |
+    {64B4984E-9B3E-40B9-9CB3-97F74DA3E25E}
+    {4A338FB3-B112-4735-A3AA-AB4D9190A508}
 Languages:
 - Language: en
   Versions:
@@ -25,11 +27,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ddd2c584-fa80-493e-8cff-ae582e7b390a"
+      Value: "6e3d0cc0-5a84-4beb-9822-ef86f4aff20e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T091312Z
+      Value: 20240515T111053Z

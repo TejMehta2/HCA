@@ -82,7 +82,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   }
 
   const cta = isExperienceEditor ? (
-    <JssLink field={props.fields?.CTALink?.value}></JssLink>
+    <JssLink field={props.fields?.CTALink}></JssLink>
   ) : (
     props.fields?.CTALink && (
       <JssLink field={props.fields?.CTALink}>
