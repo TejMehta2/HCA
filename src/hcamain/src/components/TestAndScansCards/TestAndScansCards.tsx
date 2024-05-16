@@ -15,7 +15,6 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 
 type CTAIconFields = {
@@ -86,8 +85,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <TestAndScansCardsDefaultComponent {...props} />;
   }
 
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const queryParam = props.fields.data?.contextItem?.id
     ? '?conditionId=' + props.fields.data?.contextItem?.id
@@ -96,19 +94,22 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const link =
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
-      <JssLink
-        field={props.fields?.data?.item?.cTALink?.jsonValue}
-        href={
-          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
-        }
-      >
-        <JssTextWithEntityName
-          field={{
-            value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
-          }}
-          isRichText={true}
-        />
-      </JssLink>
+      props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+      props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+        <JssLink
+          field={props.fields?.data?.item?.cTALink?.jsonValue}
+          href={
+            props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+          }
+        >
+          <JssTextWithEntityName
+            field={{
+              value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
+            }}
+            isRichText={true}
+          />
+        </JssLink>
+      ) : undefined
     ) : (
       <JssLink
         field={props.fields?.data?.item?.cTALink?.jsonValue}
@@ -182,7 +183,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={

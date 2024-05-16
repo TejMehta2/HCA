@@ -10,4 +10,5 @@ export default interface ConatinerProps {
   width?: string;
   withButtons?: boolean;
   customBtn?: boolean;
+  customBtnDesktop?: boolean;
 }

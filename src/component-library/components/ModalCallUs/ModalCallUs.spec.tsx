@@ -29,6 +29,14 @@ const mockProps: ModalCallUsProps = {
   ],
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('ModalCallUs', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<ModalCallUs {...mockProps} />);

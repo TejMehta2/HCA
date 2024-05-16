@@ -35,10 +35,12 @@
       background-color: var(--field-background);
       box-shadow: none;
       justify-content: flex-start;
+      overflow: visible;
     }
 
     // wrapper of bar + buttons
     > :first-child > :first-child {
+      transform: translateZ(0);
       border-radius: $radius-large;
       border: solid px-to-rem(1) currentcolor;
       padding: px-to-rem(24) px-to-rem(32);

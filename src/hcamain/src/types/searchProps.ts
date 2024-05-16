@@ -31,6 +31,9 @@ export interface Result {
 export interface Data {
   id: string;
   type: string;
+  abstractTitle: string;
+  abstractText: string;
+  abstractImageUrl: string;
   title: string;
   description: string;
   name: string;

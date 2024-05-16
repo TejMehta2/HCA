@@ -13,6 +13,7 @@ export interface LocationsTopSectionProps {
   subheadline: string;
   title: string;
   text: string | ReactNode | JSX.Element;
+  searchPlaceholderText: string;
   removeAllLocationsButtonText: string;
   selectAllLocationsButtonText: string;
   setCalculate: any;

@@ -11,9 +11,13 @@ const Footer = (props: FooterProps): JSX.Element => {
 
   return (
     <Themes theme={'B-HCA-Navy-Blue'}>
-      <footer className={styles.footer}>
+      <footer className={styles.footer} data-event="navigationClick">
         <div className={styles.inner}>
-          <div className={styles['top-row']} data-animate="xs">
+          <div
+            data-navigation-type="footerNavigationButton"
+            className={styles['top-row']}
+            data-animate="xs"
+          >
             <a className={styles.logo} href="/">
               <span className="sr-only">Home</span>
               <LogoIcon />
@@ -28,7 +32,10 @@ const Footer = (props: FooterProps): JSX.Element => {
                   <div className={styles.subheading}>{column.title}</div>
                 )}
                 {column.links && (
-                  <ul className={styles.links}>
+                  <ul
+                    data-navigation-type="footerNavigationText"
+                    className={styles.links}
+                  >
                     {column?.links?.map((link, index) => (
                       <li key={index}>
                         <TextLink>{link}</TextLink>

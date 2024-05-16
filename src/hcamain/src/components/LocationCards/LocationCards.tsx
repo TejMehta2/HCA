@@ -14,8 +14,6 @@ import {
   StaticProps,
 } from './LocationCardsTypes';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
-
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
@@ -186,8 +184,7 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
 };
 
 export const Grid = (props: LocationCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
 
@@ -208,7 +205,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
@@ -243,9 +240,9 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
             )}
           </>
         ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          props.fields?.data?.item?.cTALink && (
             <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+              field={props.fields?.data?.item?.cTALink.jsonValue}
             ></JssLink>
           )
         )
@@ -294,20 +291,24 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          <a href={ctaLink}>
-            <JssTextWithEntityName
-              field={{
-                value:
-                  props.fields?.data?.item?.cTALink?.jsonValue?.value.text ||
-                  '',
-              }}
-              isRichText={true}
-            />
-          </a>
+          <>
+            {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+              <a href={ctaLink}>
+                <JssTextWithEntityName
+                  field={{
+                    value:
+                      props.fields?.data?.item?.cTALink?.jsonValue?.value
+                        .text || '',
+                  }}
+                  isRichText={true}
+                />
+              </a>
+            )}
+          </>
         ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          props.fields?.data?.item?.cTALink && (
             <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+              field={props.fields?.data?.item?.cTALink?.jsonValue}
             ></JssLink>
           )
         )

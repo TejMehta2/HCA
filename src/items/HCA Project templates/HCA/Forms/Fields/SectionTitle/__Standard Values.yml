@@ -1,0 +1,31 @@
+﻿---
+ID: "6e367ed0-0d79-4890-9ab3-b32a3243b985"
+Parent: "99248bb8-0336-481e-9bec-654a2e4801f8"
+Template: "99248bb8-0336-481e-9bec-654a2e4801f8"
+Path: /sitecore/templates/Project/HCA/Forms/Fields/SectionTitle/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210426T094315Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartekglomski
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartekglomski
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "266b200f-1afa-4a18-90fe-53f30dc0c2f8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartekglomski
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210426T110713Z

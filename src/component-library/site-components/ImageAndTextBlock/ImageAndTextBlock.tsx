@@ -11,6 +11,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     subheader,
     ctas,
     imageAlignment = 'left',
+    imageKeepAspectRatio = false,
     length = 'short',
     theme,
     ratings,
@@ -40,6 +41,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
                 styles['image'],
                 styles[length],
                 hideImageOnMobile ? styles['hide-on-mobile'] : '',
+                imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
               ].join(' ')}
               data-animate="s"
             >

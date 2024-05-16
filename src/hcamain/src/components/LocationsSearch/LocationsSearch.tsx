@@ -247,7 +247,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             showing={
               !!rangeEnd && (
                 <Text variation="body-medium">
-                  <span>Showing {resultsRange}</span>
+                  <span>
+                    {t('showing') || 'Showing'} {resultsRange}
+                  </span>
                 </Text>
               )
             }
@@ -267,8 +269,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       {data?.response?.results?.map(({ data }) => {
                         const {
                           id,
+                          abstractTitle,
+                          abstractImageUrl,
                           title,
-                          name,
                           description,
                           imageUrl,
                           url,
@@ -279,7 +282,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                             key={id}
                             title={
                               <Text variation="heading-1" tag="h4">
-                                {title || name}
+                                {abstractTitle ? abstractTitle : title}
                               </Text>
                             }
                             address={
@@ -290,7 +293,14 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ) : undefined
                             }
                             image={
-                              imageUrl ? (
+                              abstractImageUrl ? (
+                                <Image
+                                  src={abstractImageUrl}
+                                  alt=""
+                                  width="363"
+                                  height="243"
+                                />
+                              ) : imageUrl ? (
                                 <Image
                                   src={imageUrl}
                                   alt=""
@@ -337,7 +347,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                       <span>
                         <Icons iconName={'iconPlus'} />
                       </span>
-                      <span>{t('show-more')}</span>
+                      <span>{t('show-more') || 'Show more'}</span>
                     </SearchFormLoadMore>
                   </>
                 ),
@@ -389,7 +399,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ),
                               close: (
                                 <button onClick={hideCard}>
-                                  <span>Close</span>
+                                  <span>{t('close') || 'Close'}</span>
                                   <Icons iconName="iconCross" />
                                 </button>
                               ),

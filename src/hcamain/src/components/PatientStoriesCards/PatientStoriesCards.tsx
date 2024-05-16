@@ -18,7 +18,6 @@ import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { CardBlockProps } from '@component-library/site-components/CardBlock/CardBlock.types';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
@@ -168,8 +167,7 @@ const returnFilteredCards = (
 };
 
 export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
-  const columns: CardBlockProps['variation'] =
-    props.params?.Columns === '4' ? '4-columns' : '3-columns';
+  const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
@@ -200,7 +198,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
   return (
     <CardBlock
-      variation={columns}
+      variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={

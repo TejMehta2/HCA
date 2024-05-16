@@ -4,8 +4,8 @@ import {
   ImageField,
   Image as JssImage,
   Text as JssText,
-  LinkField,
   Link as JssLink,
+  LinkField,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
@@ -40,9 +40,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: HCAIcon;
       };
-      cTALink?: {
-        jsonValue: LinkField;
-      };
+      cTALink: { jsonValue: LinkField };
       department?: {
         DepartmentList?: {
           conditions?: {
@@ -133,19 +131,20 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
   const limit = displayAllCards ? 999 : numberOfCards;
 
   const getCta = () => {
-    const ctaField = props.fields?.data?.item?.cTALink?.jsonValue?.value;
+    const ctaField = props.fields?.data?.item?.cTALink;
     if (!ctaField) return undefined;
-    if (isExperienceEditor) return <JssLink field={ctaField} />;
+    if (isExperienceEditor) return <JssLink field={ctaField.jsonValue} />;
     if (displayAllCards) return undefined;
-    if (!ctaField.href || !ctaField.text) return undefined;
+    if (!ctaField.jsonValue.value.href || !ctaField.jsonValue.value.text)
+      return undefined;
     return (
-      <a href={ctaField.href}>
+      <a href={ctaField.jsonValue.value.href}>
         <SitecoreSvg>
           {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
         </SitecoreSvg>
         <JssTextWithEntityName
           field={{
-            value: ctaField.text || '',
+            value: ctaField.jsonValue.value.text || '',
           }}
           isRichText={true}
         />
@@ -162,14 +161,35 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           subtitle={
-            props.fields.data?.item?.heading?.jsonValue?.value && (
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text variation={'subheading-1'}>
+                  {props.fields.data?.item?.heading?.jsonValue?.value}
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
               <Text variation={'subheading-1'}>
-                {props.fields.data?.item?.heading?.jsonValue?.value}
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
               </Text>
             )
           }
           title={
-            props.fields?.data?.item?.title?.jsonValue?.value && (
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.title?.jsonValue?.value ? (
+                <Text
+                  variation={props.params?.HeadingSize || 'display-5'}
+                  tag={props.params?.HeadingTag || 'h2'}
+                >
+                  <JssTextWithEntityName
+                    field={props.fields?.data?.item?.title?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
               <Text
                 variation={props.params?.HeadingSize || 'display-5'}
                 tag={props.params?.HeadingTag || 'h2'}
@@ -186,9 +206,9 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     >
       <>
         {cardData.slice(0, limit).map((item, index) => {
-          const imageField = item.image?.jsonValue.value?.src
-            ? item.image?.jsonValue
-            : item.abstractImage?.jsonValue;
+          const imageField = item.abstractImage?.jsonValue.value?.src
+            ? item.abstractImage?.jsonValue
+            : item.image?.jsonValue;
 
           return (
             <CardContent
@@ -199,12 +219,12 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
                   tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                   variation="display-4"
                 >
-                  <JssText field={item?.title || item?.abstractTitle} />
+                  <JssText field={item?.abstractTitle || item?.title} />
                 </Text>
               }
               bodyCopy={
                 <Text tag="p" variation="body-large">
-                  <JssText field={item?.text || item?.abstractText} />
+                  <JssText field={item?.abstractText || item?.text} />
                 </Text>
               }
               link={

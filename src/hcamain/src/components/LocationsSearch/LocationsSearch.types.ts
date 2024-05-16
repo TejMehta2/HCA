@@ -27,6 +27,8 @@ export interface Response {
 export interface Data {
   id: string;
   type: string;
+  abstractTitle: string;
+  abstractImageUrl: string;
   title: string;
   description: string;
   name: string;

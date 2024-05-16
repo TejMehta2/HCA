@@ -34,7 +34,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
     axios
       .get(doctifyURL)
       .then((resp) => {
-        console.log('resp', resp.data);
+        // console.log('resp', resp.data);
 
         if (resp.data.rows.length > 0) {
           setData(resp.data.rows);
@@ -73,7 +73,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
     axios
       .get(URL, { cancelToken: cancelToken.token })
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
 
         if (resp.data.specialists.length > 0) {
           setData(resp.data.specialists);
@@ -112,7 +112,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
 
     setData(popularDataSitecore);
 
-    console.log('popular data sitecore', popularDataSitecore);
+    // console.log('popular data sitecore', popularDataSitecore);
   };
 
   const handleClose = () => {
@@ -150,7 +150,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);

@@ -19,12 +19,15 @@ Languages:
     - ID: "2a6cef4b-c5d4-4812-9996-bcbed7bbaae1"
       Hint: Date
       Value: 20231204T101200Z
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: "Every new birth tells its own story-Abstract"
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2c9dadde-e119-4be5-ad70-7bfaba3775e2"
+      Value: "c1801c7b-4002-4560-a80c-3326f78d43f3"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -33,9 +36,12 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs. Abstract
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231204T101927Z
+      Value: 20240510T062827Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Every new birth tells its own story

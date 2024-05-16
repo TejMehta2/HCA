@@ -14,7 +14,7 @@ Languages:
     - ID: "0999ccb0-f298-4b06-8cc7-1c9c4584ed1a"
       Hint: Image
       Value: |
-        <image mediaid="{429BEE88-19D0-4EEF-B58A-259F177DB65C}" />
+        <image mediaid="{04C83B7F-7E09-463A-ABDC-01355B8ECF5E}" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240423T204446Z
@@ -31,7 +31,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "82281930-95eb-4331-9250-8bcbb637e3de"
+      Value: "5726335e-00e7-4957-83e1-a6d5fc835a09"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -44,4 +44,4 @@ Languages:
       Value: "New to private healthcare?"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T204812Z
+      Value: 20240513T114515Z

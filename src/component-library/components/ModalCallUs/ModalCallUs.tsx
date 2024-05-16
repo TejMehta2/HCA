@@ -26,7 +26,7 @@ const ModalCallUs = (
         <Text variation={'subheading-1'}>{contact?.title}</Text>
       </div>
 
-      <div className={styles.mobile}>
+      <div className={styles.mobile} data-navigation-type="phoneCTAClick">
         {isMain ? (
           <Button size={'small'} variation={'full'}>
             <a href={`tel:${contact?.phone?.number}`}>
@@ -72,10 +72,10 @@ const ModalCallUs = (
             <div className={styles.background}>
               <div className={styles.additional}>
                 {contacts.slice(1).map((contact, index) => (
-                  <>
+                  <React.Fragment key={index}>
                     <hr />
-                    <Contact key={index} contact={contact} />
-                  </>
+                    <Contact contact={contact} />
+                  </React.Fragment>
                 ))}
               </div>
             </div>

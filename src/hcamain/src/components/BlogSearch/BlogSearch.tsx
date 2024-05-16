@@ -29,6 +29,7 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import { useI18n } from 'next-localization';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -44,6 +45,7 @@ const BlogSearchDefaultComponent = (props: BlogSearchProps): JSX.Element => (
 
 export const Default = (props: BlogSearchProps): JSX.Element => {
   const { fallbackData, fields, params } = props;
+  const { t } = useI18n();
 
   // Set up default baseline parameters from CMS
   const {
@@ -190,7 +192,9 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">
-              <span>Showing {resultsRange}</span>
+              <span>
+                {t('showing') || 'Showing'} {resultsRange}
+              </span>
             </Text>
           )}
           {error ? (
@@ -208,6 +212,9 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                 {data?.response.results?.map((item, index) => {
                   const { data } = item;
                   const {
+                    abstractTitle,
+                    abstractText,
+                    abstractImageUrl,
                     title,
                     description,
                     imageUrl,
@@ -219,21 +226,32 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
 
                   return (
                     <CardBlog key={index}>
-                      {imageUrl ? (
+                      {abstractImageUrl ? (
+                        <Image
+                          src={abstractImageUrl}
+                          alt=""
+                          width="363"
+                          height="243"
+                        />
+                      ) : imageUrl ? (
                         <Image src={imageUrl} alt="" width="363" height="243" />
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
-                        <a href={url}>{title}</a>
+                        <a href={url}>
+                          {abstractTitle ? abstractTitle : title}
+                        </a>
                       </Text>
                       <Text tag={'p'} variation={'body-large'}>
-                        {description}
+                        {abstractText ? abstractText : description}
                       </Text>
-                      {!!typeName && (
-                        <Tags>
-                          <a href={'?articleTypeId=' + typeId}>{typeName}</a>
-                        </Tags>
-                      )}
+                      <div>
+                        {!!typeName && (
+                          <Tags>
+                            <a href={'?articleTypeId=' + typeId}>{typeName}</a>
+                          </Tags>
+                        )}
+                      </div>
                     </CardBlog>
                   );
                 })}

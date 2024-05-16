@@ -8,6 +8,14 @@ const mockProps: ModalsProps = {
   children: <p>{dummyText}</p>,
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('Modals', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<Modals {...mockProps} defaultOpen={true} />);

@@ -8,14 +8,20 @@
 
 .container {
   @include responsive-container;
+  @include responsive-grid;
 
   row-gap: 0;
   padding-top: var(--theme-collapse-padding-top, $spacing-12);
   padding-bottom: $spacing-12;
 
-  & > div {
-    max-width: px-to-rem(742);
-    margin: auto;
+  .grid {
+    @include responsive-grid-span(6, 6, 8, 8);
+    @include responsive-grid-start($breakpoint-l: 3);
+  }
+
+  &.image-block .grid {
+    @include responsive-grid-span(6, 6, 12, 12);
+    @include responsive-grid-start($breakpoint-l: 1);
   }
 
   figure {
@@ -31,6 +37,12 @@
         aspect-ratio: 1120/523;
         border-radius: $radius-medium;
       }
+    }
+  }
+
+  &.keep-aspect-ratio {
+    img:first-child {
+      aspect-ratio: unset;
     }
   }
 }

@@ -35,6 +35,8 @@ import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcru
 import Modals from '@component-library/components/Modals/Modals';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
+import EnquireNowBtns from '@component-library/consultant-finder/EnquireNowBtns/EnquireNowBtns';
 
 interface Fields {
   EnquireFormMarketingPreferencesFieldsEmailLabel: Field<string>;
@@ -89,6 +91,7 @@ interface Fields {
   EnquireFormBtnsSubmit: Field<string>;
   API_HCA_EnquireBookingForm_LoadingMsg: Field<string>;
   EnquireFormMarketingPreferencesText: Field<string>;
+  EnquireFormBtnsClear: Field<string>;
 }
 
 type StepProps = {
@@ -196,6 +199,7 @@ export const Default = (props: StepProps): JSX.Element => {
   });
 
   const {
+    reset,
     register,
     control,
     handleSubmit,
@@ -221,15 +225,18 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .post(URL, dataToSend)
       .then((resp) => {
-        console.log(resp);
+        //console.log(resp);
         setIsSubmitting(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
-        console.log('submit resp', resp);
         if (resp?.data?.errorCode > 0) {
           setAdditionalErrorText(
             `error code: ${resp?.data?.errorCode} ${resp?.data?.errorText}`
           );
+          dialogRef?.current?.showModal();
+        } else if (resp?.data?.success == false) {
+          // structured response from underlying service
+          setAdditionalErrorText(`${resp?.data?.html}`);
           dialogRef?.current?.showModal();
         } else {
           router.push(`/Finder/Step-Enquire-Form-Confirmation`);
@@ -457,7 +464,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     register={register}
                   />
                 </Container>
-
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   <Text tag="h2" variation="heading-1">
                     {props?.fields?.EnquireFormSectionsHeadlinesPatientDetails
@@ -511,7 +517,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     errorMessage={errors?.lastName?.message}
                   />
                 </Container>
-
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   <Text tag="h2" variation="heading-1">
                     {props?.fields?.EnquireFormSectionsHeadlinesFurtherInfo
@@ -553,7 +558,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     errorMessage={errors?.date?.message}
                   />
                 </Container>
-
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   <Text tag="h2" variation="heading-1">
                     {props?.fields?.EnquireFormSectionsHeadlinesContactDetails
@@ -585,7 +589,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     errorMessage={errors?.userPhone?.message}
                   />
                 </Container>
-
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   <Text tag="h2" variation="heading-1">
                     {props?.fields?.EnquireFormSectionsHeadlinesPayment
@@ -639,7 +642,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     </Container>
                   )}
                 </Container>
-
                 <Container marginBottom="spacing-6" marginTop="spacing-4">
                   <Text tag="h2" variation="heading-1">
                     {props?.fields?.EnquireFormSectionsHeadlinesReasonVisit
@@ -658,7 +660,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     errorMessage={errors?.reasonVisit?.message}
                   ></Textarea>
                 </Container>
-
                 <MarketingPreferences
                   headline={
                     props?.fields?.EnquireFormMarketingPreferencesHeadline
@@ -711,7 +712,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     register={register}
                   />
                 </MarketingPreferences>
-
                 <Container marginBottom="spacing-6">
                   <ReCAPTCHA
                     sitekey={
@@ -730,21 +730,35 @@ export const Default = (props: StepProps): JSX.Element => {
                     <ErrorMessage errorMessage={errors?.recaptcha?.message} />
                   )}
                 </Container>
-
-                <Button size={'small'} variation={'full-dark'}>
-                  <button disabled={!isDirty || isSubmitting} type="submit">
-                    {isSubmitting
-                      ? `${
-                          props?.fields?.API_HCA_EnquireBookingForm_LoadingMsg
-                            ?.value || 'Submitting'
-                        }`
-                      : `${
-                          props?.fields?.EnquireFormBtnsSubmit?.value ||
-                          'Submit'
-                        }`}
-                  </button>
-                </Button>
-
+                <EnquireNowBtns>
+                  <Container marginRight="spacing-6">
+                    <Button size={'small'} variation={'full-dark'}>
+                      <button disabled={!isDirty || isSubmitting} type="submit">
+                        {isSubmitting
+                          ? `${
+                              props?.fields
+                                ?.API_HCA_EnquireBookingForm_LoadingMsg
+                                ?.value || 'Submitting'
+                            }`
+                          : `${
+                              props?.fields?.EnquireFormBtnsSubmit?.value ||
+                              'Submit'
+                            }`}
+                      </button>
+                    </Button>
+                  </Container>
+                  <TextButton theme="dark">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        reset();
+                        clearErrors();
+                      }}
+                    >
+                      {props?.fields?.EnquireFormBtnsClear?.value || 'Clear'}
+                    </button>
+                  </TextButton>
+                </EnquireNowBtns>
                 <Container marginBottom="spacing-8" marginTop="spacing-8">
                   <Text tag="p" variation="body-medium-extra-large">
                     {`${
