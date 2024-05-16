@@ -4,6 +4,7 @@ import { GetDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
 import { checkIfLiveBookingIsAvailable } from './API_HCA';
 import { unstable_cache } from 'next/cache';
+import { revalidate } from './revalidateNow';
 
 function getMostFrequent(arr: any[]) {
   const hashmap = arr.reduce(
@@ -37,7 +38,7 @@ export async function getSpecialistProfileData(
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 3600 },
+      next: { revalidate: revalidate.now() ? 0 : 3600 },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -180,7 +181,7 @@ async function _getFacilitiesData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 604800 },
+      next: { revalidate: revalidate.now() ? 0 : 604800 },
     });
 
     /* if running client side, CORS
@@ -243,7 +244,7 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 3600 },
+      next: { revalidate: revalidate.now() ? 0 : 3600 },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -280,7 +281,7 @@ export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(consultantProfilesURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         const consultantJSON = await res.json();

@@ -2,11 +2,13 @@ import { getFacilitiesData } from 'lib/consultant-finder/API_Doctify';
 import {
   getActiveConsultantSlugs,
   getActiveLiveDiaryConsultantSlugs,
+  getCMAs,
   getHolidays,
 } from 'lib/consultant-finder/API_HCA';
 import { GetC2Config } from 'lib/consultant-finder/getC2Config';
 import { GetDoctifyConfig } from 'lib/consultant-finder/getDoctifyConfig';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { revalidateTag } from 'next/cache';
 
@@ -18,8 +20,11 @@ const Reset = async (
   _req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
+  revalidate.setRevalidateNow(true);
   console.log('getting cacheable data');
 
+  console.log('getting getCMAs');
+  getCMAs();
   console.log('getting GetHCAConfig');
   await GetHCAConfig();
   console.log('getting GetC2Config');
@@ -84,6 +89,8 @@ const Reset = async (
   }
 
   console.log('re-reading cacheable data');
+  console.log('getting getCMAs');
+  getCMAs();
   console.log('getting GetHCAConfig');
   await GetHCAConfig();
   console.log('getting GetC2Config');
@@ -99,6 +106,7 @@ const Reset = async (
   console.log('getting getFacilitiesData');
   await getFacilitiesData();
 
+  revalidate.setRevalidateNow(true);
   const ret = '<div>done</div>';
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(ret);

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetC2Config } from './getC2Config';
+import { revalidate } from './revalidateNow';
 
 // first appointment
 // post in GMC number/s
@@ -70,7 +71,7 @@ export async function getLDBFirstAppointmentDatas(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       const result = await res.json();
@@ -128,7 +129,7 @@ export async function getLDBFirstAppointmentData(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       const result = await res.json();
@@ -212,7 +213,7 @@ export async function getLDBConsultantDetails(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -285,7 +286,7 @@ export async function getLDBConsultantSlots(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       returnData = await res.json();

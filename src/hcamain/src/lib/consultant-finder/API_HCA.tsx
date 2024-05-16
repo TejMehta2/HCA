@@ -6,6 +6,7 @@ import {
   getSpecialistProfileData,
   doctifyGetAllConsultantSlugs,
 } from './API_Doctify';
+import { revalidate } from './revalidateNow';
 
 // front our fairly expensive server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
@@ -18,7 +19,7 @@ export const getActiveConsultantSlugs = unstable_cache(
   ['cacheGetActiveConsultantSlugs'],
   {
     tags: ['cacheGetActiveConsultantSlugs'],
-    revalidate: 3600,
+    revalidate: revalidate.now() ? 0 : 3600,
   }
 );
 
@@ -41,7 +42,7 @@ async function _getActiveConsultantSlugs(): Promise<string[]> {
         // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
         const res = await fetch(consultantSlugsURL, {
           cache: 'force-cache',
-          next: { revalidate: 3600 },
+          next: { revalidate: revalidate.now() ? 0 : 3600 },
         });
         if (res.ok) {
           const consultantsXML = await res.text();
@@ -90,7 +91,7 @@ export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
   ['cacheGetActiveLiveDiaryConsultantSlugs'],
   {
     tags: ['cacheGetActiveLiveDiaryConsultantSlugs'],
-    revalidate: 3600,
+    revalidate: revalidate.now() ? 0 : 3600,
   }
 );
 
@@ -110,7 +111,7 @@ async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         const consultantsOnLDB = await res.json();
@@ -172,7 +173,7 @@ export const getHolidays = unstable_cache(
   ['cacheGetHolidays'],
   {
     tags: ['cacheGetHolidays'],
-    revalidate: 604800,
+    revalidate: revalidate.now() ? 0 : 604800,
   }
 );
 
@@ -192,7 +193,7 @@ async function _getHolidays(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
-        next: { revalidate: 604800 },
+        next: { revalidate: revalidate.now() ? 0 : 604800 },
       });
       if (res.ok) {
         holidays = await res.json();
@@ -230,7 +231,7 @@ export async function getCMAs(): Promise<any[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         cmas = await res.json();
@@ -271,7 +272,7 @@ export async function getCMA(id: string): Promise<any> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         cma = await res.json();

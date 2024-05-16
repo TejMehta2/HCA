@@ -1,4 +1,5 @@
 'use server';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -39,7 +40,7 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
 
   const res = await fetch(`${baseURL}/sitemap.hca.consultant-finder.xml`, {
     cache: 'force-cache',
-    next: { revalidate: 3600 },
+    next: { revalidate: revalidate.now() ? 0 : 3600 },
   });
 
   let slugs: string[] = [];

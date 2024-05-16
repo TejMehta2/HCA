@@ -22,6 +22,7 @@ import { componentBuilder } from 'temp/componentBuilder';
 import NotFound from 'src/NotFound';
 import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 
 const SitecorePage = ({
   notFound,
@@ -152,7 +153,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const props = await sitecorePagePropsFactory.create(context);
       return {
         props,
-        revalidate: revalidationSeconds, // In seconds
+        revalidate: revalidate.now() ? 0 : revalidationSeconds, // In seconds
         notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
       };
     } catch (error) {

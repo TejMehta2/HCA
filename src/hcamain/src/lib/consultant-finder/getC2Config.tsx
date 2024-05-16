@@ -1,5 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { revalidate } from './revalidateNow';
 
 //C2 APIs
 interface Ic2Config {
@@ -36,7 +37,7 @@ export const GetC2Config = unstable_cache(
   ['cacheGetC2Config'],
   {
     tags: ['cacheGetC2Config'],
-    revalidate: 604800,
+    revalidate: revalidate.now() ? 0 : 604800,
   }
 );
 

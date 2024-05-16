@@ -1,5 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { revalidate } from './revalidateNow';
 
 //Doctify APIs
 export interface IDoctifyConfig {
@@ -36,7 +37,7 @@ export const GetDoctifyConfig = unstable_cache(
   ['cacheGetDoctifyConfig'],
   {
     tags: ['cacheGetDoctifyConfig'],
-    revalidate: 604800,
+    revalidate: revalidate.now() ? 0 : 604800,
   }
 );
 
