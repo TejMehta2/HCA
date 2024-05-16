@@ -46,14 +46,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
     // eslint-disable-next-line
   }, [router.isReady]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const target = e.target as HTMLButtonElement;
-    const targetParent = target.closest(
-      '[data-parent="parent"]'
-    ) as HTMLButtonElement;
-    // console.log(targetParent);
-    // console.log('slug', props.slug);
-
+  const handleClick = () => {
     const newArray: string[] = selectedLocations;
     // Check if the slug already exists in the array
     const slugIndex = newArray.indexOf(props.slug);
