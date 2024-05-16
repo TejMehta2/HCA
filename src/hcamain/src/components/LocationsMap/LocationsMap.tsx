@@ -3,7 +3,9 @@ import {
   Field,
   Text as JssText,
   LinkField,
+  Link as JssLink,
   RichText as JssRichText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import OurLocations from '@component-library/site-components/OurLocations/OurLocations';
@@ -63,6 +65,8 @@ const LocationsMapDefaultComponent = (
 );
 
 export const Default = (props: LocationsMapProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
     return <LocationsMapDefaultComponent {...props} />;
   }
@@ -86,22 +90,32 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
         <JssRichText tag="span" field={props.fields?.Text} />
       </Text>
     ),
-    ctas: (
-      <Button size="large" variation="full">
-        <a href={props.fields?.CTALink?.value.href}>
-          <span>
-            <SitecoreSvg>
-              {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
-            </SitecoreSvg>
-          </span>
+    ctas: !isExperienceEditor ? (
+      <>
+        {props.fields?.CTALink?.value?.text && (
+          <Button size="large" variation="full">
+            <a href={props.fields?.CTALink?.value.href}>
+              <span>
+                <SitecoreSvg>
+                  {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+                </SitecoreSvg>
+              </span>
 
-          <span
-            dangerouslySetInnerHTML={{
-              __html: props.fields?.CTALink?.value.text || '',
-            }}
-          ></span>
-        </a>
-      </Button>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: props.fields?.CTALink?.value.text || '',
+                }}
+              ></span>
+            </a>
+          </Button>
+        )}
+      </>
+    ) : (
+      props.fields?.CTALink && (
+        <Button size="large" variation="full">
+          <JssLink field={props.fields?.CTALink}></JssLink>
+        </Button>
+      )
     ),
   };
 

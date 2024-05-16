@@ -240,9 +240,9 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
             )}
           </>
         ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          props.fields?.data?.item?.cTALink && (
             <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+              field={props.fields?.data?.item?.cTALink.jsonValue}
             ></JssLink>
           )
         )
@@ -291,20 +291,24 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          <a href={ctaLink}>
-            <JssTextWithEntityName
-              field={{
-                value:
-                  props.fields?.data?.item?.cTALink?.jsonValue?.value.text ||
-                  '',
-              }}
-              isRichText={true}
-            />
-          </a>
+          <>
+            {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+              <a href={ctaLink}>
+                <JssTextWithEntityName
+                  field={{
+                    value:
+                      props.fields?.data?.item?.cTALink?.jsonValue?.value
+                        .text || '',
+                  }}
+                  isRichText={true}
+                />
+              </a>
+            )}
+          </>
         ) : (
-          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+          props.fields?.data?.item?.cTALink && (
             <JssLink
-              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+              field={props.fields?.data?.item?.cTALink?.jsonValue}
             ></JssLink>
           )
         )
