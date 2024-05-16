@@ -124,9 +124,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           image={
             showImage ? (
               cards.abstractImage?.jsonValue.value?.src &&
-              !cards.abstractImage?.jsonValue.value?.class?.includes(
-                'scEmptyImage'
-              ) ? (
+              cards.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
                 <JssImage
                   field={cards.abstractImage.jsonValue}
                   editable={false}
