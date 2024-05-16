@@ -17,7 +17,6 @@ const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
     props.setIsComponentVisible(false);
     setSelectedInsurerPaymentStep(id);
     setIsSelfPayment(false);
-    console.log('id', id);
     if (props.setSearchStringPayment) {
       props.setSearchStringPayment(name);
     }

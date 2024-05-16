@@ -51,8 +51,8 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
     const targetParent = target.closest(
       '[data-parent="parent"]'
     ) as HTMLButtonElement;
-    console.log(targetParent);
-    console.log('slug', props.slug);
+    // console.log(targetParent);
+    // console.log('slug', props.slug);
 
     const newArray: string[] = selectedLocations;
     // Check if the slug already exists in the array
@@ -68,7 +68,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
     const isSelectedSlug = newArray.includes(props.slug);
     // const newArray = [props.slug];
     setSelected(isSelectedSlug);
-    console.log('newArray', newArray);
+    // console.log('newArray', newArray);
     props.setArray(props.slug);
     setSelectedLocations(newArray);
   };

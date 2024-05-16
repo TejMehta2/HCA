@@ -9,17 +9,14 @@ import { ConsultantFinderContext } from '../../../hcamain/src/context/consultant
 
 const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSearchStringConsultantName } = useContext(ConsultantFinderContext);
-  console.log('Dropdown props', props);
-  console.log('loading', props.loading);
   const specialties =
     props?.data?.filter((item: any) => item.type === 'specialty') || [];
-  console.log('specialties', specialties);
+  // console.log('specialties', specialties);
   const conditionsProcedures =
     props?.data?.filter((item: any) => item.type !== 'specialty') || [];
-  console.log('conditionsProcedures', conditionsProcedures);
+  // console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
-    console.log('id', id);
     if (props.setSearchString) {
       props.setSearchString(name);
     }

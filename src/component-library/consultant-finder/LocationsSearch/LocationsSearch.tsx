@@ -39,7 +39,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
     axios
       .get(URL, { cancelToken: cancelToken.token })
       .then((resp) => {
-        console.log('results address', resp);
+        // console.log('results address', resp);
 
         if (resp.data.length > 0) {
           setResultsAddress(resp.data);
@@ -78,14 +78,14 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
     // update lat and lon for URL
     // setLat(latitude);
     // setLon(longitude);
-    console.log('geolocation lat', latitude, 'geolocation lon', longitude);
+    // console.log('geolocation lat', latitude, 'geolocation lon', longitude);
     const URL = `${
       props.locationsAPI
     }/SuggestLocation?provider=Default&searchTerm=${`${latitude},${longitude}`}&searchType=geoResolve`;
     axios
       .get(URL)
       .then((resp) => {
-        console.log(resp);
+        // console.log(resp);
         setResultsAddress(resp.data);
         setIsComponentVisible(true);
         setLoading(false);
@@ -135,7 +135,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('value input', e.target.value);
+    // console.log('value input', e.target.value);
     setLoading(true);
     setInputValue(e.target.value);
     setIsComponentVisible(true);

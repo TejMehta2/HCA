@@ -11,7 +11,7 @@ import axios from 'axios';
 
 const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSelectedLocations } = useContext(ConsultantFinderContext);
-  console.log('hospitals', props.hospitals);
+  // console.log('hospitals', props.hospitals);
 
   const handleClick = (name: string) => {
     props.setCalculate(true);
@@ -21,7 +21,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
     axios
       .get(URL)
       .then((resp) => {
-        console.log('results', resp);
+        // console.log('results', resp);
 
         const hospitalDistances = resp.data.map(
           (item: { Distance: any }) => item.Distance
@@ -35,7 +35,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
             distance: roundedDistances[index],
           })
         );
-        console.log('hospitalsWithDistance', hospitalsWithDistance);
+        // console.log('hospitalsWithDistance', hospitalsWithDistance);
         const sortByDistanceHospitals = hospitalsWithDistance.sort(
           (a: { distance: number }, b: { distance: number }) =>
             a.distance - b.distance
