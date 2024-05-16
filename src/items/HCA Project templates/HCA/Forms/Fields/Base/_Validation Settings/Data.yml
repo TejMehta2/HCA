@@ -2,7 +2,7 @@
 ID: "05ddf18f-444b-44d2-889e-c68b17d77285"
 Parent: "923f0e49-35c0-46e6-9d0b-ce33f968ea1a"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/Validation Settings/Data
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/_Validation Settings/Data
 Languages:
 - Language: en
   Versions:
