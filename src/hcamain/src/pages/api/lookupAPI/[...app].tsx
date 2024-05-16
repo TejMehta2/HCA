@@ -1,4 +1,5 @@
 import { getItemFromGraphQL } from 'lib/consultant-finder/getItemFromGraphQL';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as XLSX from 'xlsx';
 
@@ -160,7 +161,7 @@ export default async function handler(
             {
               redirect: 'manual',
               cache: 'force-cache',
-              next: { revalidate: 3600 },
+              next: { revalidate: revalidate.now() ? 0 : 3600 },
             }
           );
           //console.log('loaded xl', xlData);
@@ -168,7 +169,7 @@ export default async function handler(
           if (xlData.redirected) {
             xlData = await fetch(xlData.url, {
               cache: 'force-cache',
-              next: { revalidate: 3600 },
+              next: { revalidate: revalidate.now() ? 0 : 3600 },
             });
           }
           const blob = await xlData.blob();

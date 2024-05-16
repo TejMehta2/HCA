@@ -22,6 +22,27 @@
     margin-bottom: $spacing-2;
   }
 
+  .btns {
+    margin-top: $spacing-2;
+    display: flex;
+    justify-content: center;
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      margin-right: px-to-rem(10);
+    }
+
+    div:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      padding: px-to-rem(14) $spacing-5;
+    }
+  }
+
   &-mobile {
     display: block;
 

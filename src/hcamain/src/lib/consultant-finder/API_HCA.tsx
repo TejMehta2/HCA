@@ -1,52 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { unstable_cache } from 'next/cache';
 import { parse } from 'node-html-parser';
-import { getHCAConfig } from './getHCAConfig';
-import { getDoctifyConfig } from './getDoctifyConfig';
-import { getSpecialistProfileData } from './API_Doctify';
+import { GetHCAConfig } from './getHCAConfig';
+import {
+  getSpecialistProfileData,
+  doctifyGetAllConsultantSlugs,
+} from './API_Doctify';
+import { revalidate } from './revalidateNow';
 
-export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
-  const doctifyConfig = await getDoctifyConfig();
-  const baseURL =
-    doctifyConfig?.aPI_DoctifySearch_BaseURL ||
-    'https://api.doctify.com/api/hca/search';
-  let consIdx = 0;
-  let maxConsultants = 5000;
-  const pageSize = 100;
-  const stop = false;
-  let slugs: string[] = [];
-
-  for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
-    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=1000&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
-    try {
-      // need to cache these requests so we don't make hundreds of them
-      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
-      const res = await fetch(consultantProfilesURL, {
-        cache: 'force-cache',
-        next: { revalidate: 3600 },
-      });
-      if (res.ok) {
-        const consultantJSON = await res.json();
-        maxConsultants = consultantJSON.total;
-        consultantJSON.rows.forEach((entry: any) => {
-          slugs = slugs.concat(entry.slug);
-        });
-      }
-    } catch (e) {
-      console.warn(
-        `Could not load consultant profiles list for pre-render from ${consultantProfilesURL} failed with exception ${e}`
-      );
-    }
+// front our fairly expensive server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getActiveConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveConsultantSlugs from source..');
+    return await _getActiveConsultantSlugs();
+  },
+  ['cacheGetActiveConsultantSlugs'],
+  {
+    tags: ['cacheGetActiveConsultantSlugs'],
+    revalidate: revalidate.now() ? 0 : 3600,
   }
-
-  return slugs;
-}
+);
 
 // get all the active hca consultants on consultant finder
 //const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
-
-export async function getActiveConsultantSlugs(): Promise<string[]> {
+async function _getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   if (HCAAPIConfig.aPI_HCA_All_Consultants_UtilizesLegacy) {
     const consultantSlugsURL =
@@ -61,7 +42,7 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
         // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
         const res = await fetch(consultantSlugsURL, {
           cache: 'force-cache',
-          next: { revalidate: 3600 },
+          next: { revalidate: revalidate.now() ? 0 : 3600 },
         });
         if (res.ok) {
           const consultantsXML = await res.text();
@@ -99,11 +80,26 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
   return slugs;
 }
 
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
+    return await _getActiveLiveDiaryConsultantSlugs();
+  },
+  ['cacheGetActiveLiveDiaryConsultantSlugs'],
+  {
+    tags: ['cacheGetActiveLiveDiaryConsultantSlugs'],
+    revalidate: revalidate.now() ? 0 : 3600,
+  }
+);
+
 // get all the active live diary consultants
 //const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
-export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
+async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const ldbConsultantSlugsURL =
     HCAAPIConfig?.aPI_HCA_LDB_Consultants_UtilizesLegacy
       ? HCAAPIConfig?.aPI_HCA_LDB_Consultants_LegacyBaseURL
@@ -115,7 +111,7 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         const consultantsOnLDB = await res.json();
@@ -166,11 +162,26 @@ export async function checkIfLiveBookingsIsAvailable(
   return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }
 
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getHolidays = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getHolidays from source..');
+    return await _getHolidays();
+  },
+  ['cacheGetHolidays'],
+  {
+    tags: ['cacheGetHolidays'],
+    revalidate: revalidate.now() ? 0 : 604800,
+  }
+);
+
 // get all the holidays
 // e.g. https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/holidays
-export async function getHolidays(): Promise<string[]> {
+async function _getHolidays(): Promise<string[]> {
   let holidays;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_UtilizesLegacy
     ? HCAAPIConfig?.aPI_HCA_Holidays_LegacyBaseURL
     : HCAAPIConfig?.aPI_HCA_Holidays_BaseURL;
@@ -182,7 +193,7 @@ export async function getHolidays(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 604800 },
       });
       if (res.ok) {
         holidays = await res.json();
@@ -209,7 +220,7 @@ export async function getHolidays(): Promise<string[]> {
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA
 export async function getCMAs(): Promise<any[]> {
   let cmas;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
   const cmaURL = HCAAPIConfig?.aPI_HCA_CMAs_BaseURL;
 
   //console.log('config', HCAAPIConfig);
@@ -220,7 +231,7 @@ export async function getCMAs(): Promise<any[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         cmas = await res.json();
@@ -247,7 +258,7 @@ export async function getCMAs(): Promise<any[]> {
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA?key=5251DC52-E57D-47EA-8552-98BFEFF89E72
 export async function getCMA(id: string): Promise<any> {
   let cma;
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   if (
     HCAAPIConfig?.aPI_HCA_CMAs_BaseURL &&
@@ -261,7 +272,7 @@ export async function getCMA(id: string): Promise<any> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: 3600 },
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
       });
       if (res.ok) {
         cma = await res.json();
@@ -437,7 +448,7 @@ export async function suggestLocation(
   console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
 
@@ -450,8 +461,8 @@ export async function suggestLocation(
       'Content-Type': 'application/json',
     };
     let urlParamsStr: string = JSON.stringify(fields);
-    console.log('bodyStr', urlParamsStr);
-    console.log('locationsURL', locationsURL);
+    //console.log('bodyStr', urlParamsStr);
+    //console.log('locationsURL', locationsURL);
 
     //console.log('isLegacy', isLegacy);
     if (isLegacy) {
@@ -466,7 +477,9 @@ export async function suggestLocation(
       const paramsArray = [];
       for (const property in fields) {
         const encodedKey = encodeURIComponent(property);
-        const encodedValue = encodeURIComponent(fields[property]);
+        const encodedValue = encodeURIComponent(
+          fields[property] == 'geoResolve' ? 'GeoResolve' : fields[property]
+        );
         paramsArray.push(encodedKey + '=' + encodedValue);
       }
       urlParamsStr = paramsArray.join('&');
@@ -527,7 +540,7 @@ export async function getDistances(
   //console.log('fields', fields);
 
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_Locations_UtilizesLegacy;
   //console.log('isLegacy', isLegacy);
@@ -540,8 +553,8 @@ export async function getDistances(
       'Content-Type': 'application/json',
     };
     let urlParamsStr: string = JSON.stringify(fields);
-    console.log('bodyStr', urlParamsStr);
-    console.log('locationsURL', locationsURL);
+    //console.log('bodyStr', urlParamsStr);
+    //console.log('locationsURL', locationsURL);
 
     if (isLegacy) {
       // convert params to path frags locationApi/getDistances/default/default/miles/default/
@@ -630,7 +643,7 @@ export async function submitBookingEnquiry(
   fields: IEnquiryFormFields | any
 ): Promise<any> {
   let returnData: any = '';
-  const HCAAPIConfig = await getHCAConfig();
+  const HCAAPIConfig = await GetHCAConfig();
 
   const isLegacy: boolean =
     HCAAPIConfig?.aPI_HCA_EnquireBookingForm_UtilizesLegacy;
@@ -664,7 +677,7 @@ export async function submitBookingEnquiry(
     }
 
     try {
-      console.log('submit form to', formURL);
+      //console.log('submit form to', formURL);
       const res = await fetch(formURL, {
         method: 'post',
         body: bodyStr,
@@ -672,8 +685,17 @@ export async function submitBookingEnquiry(
         cache: 'no-cache',
       });
 
+      //console.log('res', res);
       if (res.ok) {
-        returnData = JSON.parse(await res.text());
+        if (isLegacy) {
+          //console.log('res.ok legacy');
+          const retData = await res.text();
+          //console.log('res.ok booking json', retData);
+          returnData = JSON.parse(retData);
+        } else {
+          const data = await res.json();
+          returnData = JSON.parse(data); // this is double encoded!
+        }
       } else {
         //makeBookingEnquiry call failed
         let errorDetails = '';
@@ -690,6 +712,134 @@ export async function submitBookingEnquiry(
       returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting makeBookingEnquiry, please retry"}`;
       returnData = JSON.parse(returnData);
       console.error(`makeBookingEnquiry failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}
+
+// find an address from a postcode interface
+export interface IFindAddressFields {
+  postcode: string; //e.g. TN23 or TN23 3DS
+}
+
+// find an address from a postcode
+export async function findAddress(
+  fields: IFindAddressFields | any
+): Promise<any> {
+  //console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await GetHCAConfig();
+
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
+
+  let addressLookupURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_PostcodeLookup_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_PostcodeLookup_BaseURL;
+
+  if (addressLookupURL) {
+    // multi-part form post
+    const formData = new FormData();
+    addressLookupURL = `${addressLookupURL}/FindAddress`;
+    //console.log('addressLookupURL', addressLookupURL);
+    for (const property in fields) {
+      formData.append(property, fields[property]);
+    }
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(addressLookupURL, {
+        method: 'post',
+        body: formData,
+        cache: 'no-cache',
+      });
+
+      //console.log('res', res);
+      if (res.ok) {
+        const retData = await res.text();
+        //console.log('res.ok json', retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //findAddress call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`findAddress failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //findAddress call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting findAddress, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`findAddress failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}
+
+// find an address from a postcode interface
+export interface ISplitAddressFields {
+  monikerField: string; //e.g. code returned by find address
+}
+
+// find an address from a postcode
+export async function splitAddress(
+  fields: ISplitAddressFields | any
+): Promise<any> {
+  //console.log('fields', fields);
+
+  let returnData: any = '';
+  const HCAAPIConfig = await GetHCAConfig();
+
+  const isLegacy: boolean = HCAAPIConfig?.aPI_HCA_PostcodeLookup_UtilizesLegacy;
+
+  let splitAddressURL = isLegacy
+    ? HCAAPIConfig?.aPI_HCA_PostcodeLookup_LegacyBaseURL
+    : HCAAPIConfig?.aPI_HCA_PostcodeLookup_BaseURL;
+
+  if (splitAddressURL) {
+    // multi-part form post
+    const formData = new FormData();
+    splitAddressURL = `${splitAddressURL}/SplitAddress`;
+    //console.log('splitAddressURL', splitAddressURL);
+    for (const property in fields) {
+      formData.append(property, fields[property]);
+    }
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(splitAddressURL, {
+        method: 'post',
+        body: formData,
+        cache: 'no-cache',
+      });
+
+      //console.log('res', res);
+      if (res.ok) {
+        const retData = await res.text();
+        //console.log('res.ok json', retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //findAddress call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`splitAddress failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //findAddress call threw
+      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting splitAddress, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`splitAddress failed with exception ${e}`);
     }
   }
 

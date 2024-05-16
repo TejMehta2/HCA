@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getHCAConfig } from './getHCAConfig';
-import { getDoctifyConfig } from './getDoctifyConfig';
+import { GetHCAConfig } from './getHCAConfig';
+import { GetDoctifyConfig } from './getDoctifyConfig';
 import { getLDBFirstAppointmentData } from './API_C2';
 import { checkIfLiveBookingIsAvailable } from './API_HCA';
+import { unstable_cache } from 'next/cache';
+import { revalidate } from './revalidateNow';
 
 function getMostFrequent(arr: any[]) {
   const hashmap = arr.reduce(
@@ -24,7 +26,7 @@ export async function getSpecialistProfileData(
   serviceURL?: string,
   loadFirstAppointmentData: boolean = false
 ): Promise<any> {
-  const config = !serviceURL ? await getDoctifyConfig() : null;
+  const config = !serviceURL ? await GetDoctifyConfig() : null;
   //console.log(DoctifyConfig);
   const Doctify_Specialists_URL =
     serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
@@ -36,7 +38,7 @@ export async function getSpecialistProfileData(
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 3600 },
+      next: { revalidate: revalidate.now() ? 0 : 3600 },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -99,7 +101,7 @@ export async function getSpecialistProfileData(
         // custom fields
         if (docitfyData.customFields) {
           if (docitfyData.customFields.cmaHtml) {
-            const hcaConfig = await getHCAConfig();
+            const hcaConfig = await GetHCAConfig();
             // are we going to change the CMA link to use the Doctify CMA profile (aPI_HCA_CMAs_UseDoctifyData)
             // or keep the legacy Sitecore GUID url?
             // legacy  requires CMA look up stored in Excel in the Media library
@@ -148,10 +150,25 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
   return isError;
 }
 
+// front our fairly expensive server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const getFacilitiesData = unstable_cache(
+  async (): Promise<any> => {
+    console.log('refreshing _getFacilitiesData from source..');
+    return await _getFacilitiesData();
+  },
+  ['cacheGetFacilitiesData'],
+  {
+    tags: ['cacheGetFacilitiesData'],
+    revalidate: 604800,
+  }
+);
+
 // get HCA facilities data
 //const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
-export async function getFacilitiesData(serviceURL?: string): Promise<any> {
-  const HCAAPIConfig = !serviceURL ? await getHCAConfig() : null;
+async function _getFacilitiesData(serviceURL?: string): Promise<any> {
+  const HCAAPIConfig = !serviceURL ? await GetHCAConfig() : null;
 
   const facilitiesURL = HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_UtilizesLegacy
     ? HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_LegacyBaseURL
@@ -164,7 +181,7 @@ export async function getFacilitiesData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 3600 },
+      next: { revalidate: revalidate.now() ? 0 : 604800 },
     });
 
     /* if running client side, CORS
@@ -216,7 +233,7 @@ export async function facilityURLFromDoctifySlug(
 // get insurance data from Doctify
 //const Doctify_Specialists_URL = 'https://api.doctify.com/api/hca/specialists';
 export async function getInsuranceData(serviceURL?: string): Promise<any> {
-  const config = !serviceURL ? await getDoctifyConfig() : null;
+  const config = !serviceURL ? await GetDoctifyConfig() : null;
   //console.log(DoctifyConfig);
   const Doctify_Insurance_URL = serviceURL ?? config?.aPI_Insurance_BaseURL;
 
@@ -227,7 +244,7 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: 3600 },
+      next: { revalidate: revalidate.now() ? 0 : 3600 },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -244,4 +261,41 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     console.warn(`getInsuranceData failed with exception ${e}`);
   }
   return docitfyData;
+}
+
+export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
+  const doctifyConfig = await GetDoctifyConfig();
+  const baseURL =
+    doctifyConfig?.aPI_DoctifySearch_BaseURL ||
+    'https://api.doctify.com/api/hca/search';
+  let consIdx = 0;
+  let maxConsultants = 5000;
+  const pageSize = 100;
+  const stop = false;
+  let slugs: string[] = [];
+
+  for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
+    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=1000&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(consultantProfilesURL, {
+        cache: 'force-cache',
+        next: { revalidate: revalidate.now() ? 0 : 3600 },
+      });
+      if (res.ok) {
+        const consultantJSON = await res.json();
+        maxConsultants = consultantJSON.total;
+        consultantJSON.rows.forEach((entry: any) => {
+          slugs = slugs.concat(entry.slug);
+        });
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load consultant profiles list for pre-render from ${consultantProfilesURL} failed with exception ${e}`
+      );
+    }
+  }
+
+  return slugs;
 }

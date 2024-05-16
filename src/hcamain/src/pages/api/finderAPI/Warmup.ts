@@ -1,4 +1,5 @@
 'use server';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -6,7 +7,7 @@ import { parse } from 'node-html-parser';
 
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
 
-// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
@@ -30,7 +31,11 @@ async function asyncForEach(
   }
 }
 
-const longRunning = async (incommingHost: string, notify: Notify) => {
+const longRunning = async (
+  incommingHost: string,
+  start: number,
+  notify: Notify
+) => {
   // note we are running at the edge with no access to Sitecore GraphQL for config
 
   notify.log('Reading sitemap for active consultant slugs...');
@@ -39,7 +44,7 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
 
   const res = await fetch(`${baseURL}/sitemap.hca.consultant-finder.xml`, {
     cache: 'force-cache',
-    next: { revalidate: 3600 },
+    next: { revalidate: revalidate.now() ? 0 : 3600 },
   });
 
   let slugs: string[] = [];
@@ -59,28 +64,34 @@ const longRunning = async (incommingHost: string, notify: Notify) => {
     notify?.log(`Got ${slugs.length} active consultant slugs...`);
 
     await asyncForEach(slugs, async (slug, idx) => {
-      const pageURL = `https://${incommingHost}/Finder/StepConsultantProfile/${slug}`;
-      notify?.log(
-        `loading ${slug} page ${pageURL}, Done ${Math.trunc(
-          (idx / slugs.length) * 100
-        )}%`
-      );
-      try {
-        const timeStart = new Date().getTime();
-        const profileResult = await fetch(pageURL, {
-          cache: 'no-store',
-        });
-        // const _profile = await profileResult.text(); // force the data to load - but disguraded
-        const timeEnd = new Date().getTime();
-        if (profileResult && profileResult.ok) {
-          notify?.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
-        } else {
-          notify.error(
-            `Failed to load ${slug}, ${profileResult.status} ${profileResult.statusText}`
-          );
+      if (idx >= start) {
+        const pageURL = `https://${incommingHost}/Finder/StepConsultantProfile/${slug}`;
+        notify?.log(
+          `loading ${slug} page ${pageURL}, Done ${Math.trunc(
+            (idx / slugs.length) * 100
+          )}% (${idx + 1} of ${slugs.length})`
+        );
+        try {
+          const timeStart = new Date().getTime();
+          const profileResult = await fetch(pageURL, {
+            cache: 'no-store',
+          });
+          // const _profile = await profileResult.text(); // force the data to load - but disguraded
+          const timeEnd = new Date().getTime();
+          if (profileResult && profileResult.ok) {
+            notify?.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
+          } else {
+            notify.log(
+              `Warn: Failed to load ${slug}, ${profileResult.status} ${profileResult.statusText}`
+            );
+            notify.log(`Pausing for 10 seconds...`);
+            await delay(10000);
+          }
+        } catch (e) {
+          notify.log(`Warn: Failed to load ${slug}, ${e}`);
+          notify.log(`Pausing for 10 seconds...`);
+          await delay(10000);
         }
-      } catch (e) {
-        notify.error(`Failed to load ${slug}, ${e}`);
       }
     });
     notify.log(`Completed!`);
@@ -118,10 +129,12 @@ export default async function Warmup(
     // can't introspect on local as running in Docker
     requestingHost = 'hca-digital-dev-hca-main.vercel.app'; // use dev instead
   }
-  //console.log('host', requestingHost);
+
+  const start = (req as any).nextUrl?.searchParams?.get('start') ?? 0;
+  console.log(`Starting at index: ${start}`);
 
   // Invoke long running process
-  longRunning(requestingHost, {
+  longRunning(requestingHost, start, {
     log: (msg: string) => {
       writer.ready
         .then(

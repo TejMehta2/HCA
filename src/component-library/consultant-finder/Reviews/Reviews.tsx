@@ -6,6 +6,7 @@ import Tooltips from '../../components/Tooltips/Tooltips';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
 import DoctifyLogo from '../../assets/images/doctify-dark.png';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 const Reviews = (props: ReviewsProps): JSX.Element => {
   const stars = [];
@@ -38,6 +39,20 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
     stars.push(<Icons iconName="iconCfstarfull0" />);
   }
 
+  const goToReviews = () => {
+    console.log('reviews');
+    const ref = props.reviewsRef;
+
+    // Scroll to the section if ref exists
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    } else {
+      console.log('Ref not found or not initialized'); // Debugging check
+    }
+  };
+
   return (
     <div className={styles.reviews} data-testid="reviews-component">
       {props.isConsultantProfileReviews && (
@@ -50,7 +65,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
             {props.titleText}
           </Text>
           {props.reviewsTotal > 0 && (
-            <Text tag="h3" variation="display-1">
+            <Text tag="h3" variation="display-5">
               {props.reviewsCount}
             </Text>
           )}
@@ -86,10 +101,14 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
 
       {props.isConsultantProfileReviews && props.reviewsTotal > 0 && (
         <div className={styles['reviews-total']}>
-          <Icons iconName="iconComment" />
-          <Text tag="p" variation="body-medium-large">
-            {props.reviewsTotal} {props.reviewsText}
-          </Text>
+          <TextLink>
+            <button onClick={goToReviews}>
+              <Icons iconName="iconComment" />
+              <span>
+                {props.reviewsTotal} {props.reviewsText}
+              </span>
+            </button>
+          </TextLink>
         </div>
       )}
 

@@ -29,7 +29,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
           defaultChecked={defaultChecked}
           {...register(`${name}`, {
             onChange: (e: { target: { value: string | any[] } }) => {
-              console.log(e.target.value);
+              // console.log(e.target.value);
               setValue && setValue(`${name}`, e.target.value);
             },
           })}

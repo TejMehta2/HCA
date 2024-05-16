@@ -78,7 +78,7 @@ const Search = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
@@ -133,7 +133,6 @@ const Search = (props: SearchProps): JSX.Element => {
           }
         });
     } else if (e.target.value.trim().length === 0) {
-      console.log('popular search');
       handlePopularSearch();
     }
   };
