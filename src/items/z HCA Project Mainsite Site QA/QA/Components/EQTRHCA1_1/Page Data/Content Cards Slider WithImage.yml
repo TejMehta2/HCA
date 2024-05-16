@@ -19,7 +19,7 @@ Languages:
       Value: Peace of mind with our GP services
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e8bef9e9-009c-4a5a-84c4-8a5a4a289432"
+      Value: "8fee5841-af63-449a-a032-7754d6450cf5"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -27,21 +27,21 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
       Hint: CTACardText
       Value: Learn <b>more</b>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240401T152409Z
+      Value: 20240516T055047Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{F4945743-B276-4CBE-A758-2EB4F6FCA25F}"
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
-        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
-        {471F79FD-281B-435A-90B8-6FB3B3F15886}
-        {E97D3617-3DB3-484C-B2BF-ECC7DE6B708E}
-        {45179635-2018-4AA4-B7EF-C235A71D4350}
-        {6668CC07-8717-41CB-A194-ABB44BFB2081}
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
+        {243D187A-D33E-4842-BECF-F9B0EF556411}
+        {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}
+        {F3331B8C-0C96-4A66-B5DC-37541BE3F104}

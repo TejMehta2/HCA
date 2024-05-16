@@ -165,7 +165,7 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  console.log('consultant cards', props);
+  //console.log('consultant cards', props);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );

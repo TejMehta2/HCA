@@ -152,7 +152,7 @@ const Search = (props: SearchProps): JSX.Element => {
           }
         });
     } else if (e.target.value.trim().length === 0) {
-      console.log('popular search');
+      // console.log('popular search');
       handlePopularSearch();
       removeSearchKeywordIdQueries();
     }

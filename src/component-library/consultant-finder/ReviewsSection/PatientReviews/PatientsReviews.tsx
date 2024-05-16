@@ -66,18 +66,19 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                     id: 'option-a',
                     defaultChecked: true,
                     labelText: 'Newest',
-                    value: 'asc',
+                    value: 'desc',
                   },
                   {
                     id: 'option-b',
                     labelText: 'Oldest',
-                    value: 'desc',
+                    value: 'asc',
                   },
                 ]}
                 onChange={(event) => {
                   const target = event.target as HTMLInputElement;
-                  //console.log('value', target.value);
+                  // console.log('value', target.value);
                   //console.log(target.checked);
+                  setIsLoading(true);
                   setReviews([]);
                   setSelectValue(target.value);
                   setOffset(0);

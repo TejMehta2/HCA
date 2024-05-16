@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getC2Config } from './getC2Config';
+import { GetC2Config } from './getC2Config';
+import { revalidate } from './revalidateNow';
 
 // first appointment
 // post in GMC number/s
@@ -42,7 +43,7 @@ export async function getLDBFirstAppointmentDatas(
   headerKey?: string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
   const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
 
@@ -70,7 +71,7 @@ export async function getLDBFirstAppointmentDatas(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       const result = await res.json();
@@ -112,7 +113,7 @@ export async function getLDBFirstAppointmentData(
   headerKey?: string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   const requestURL = `${serviceURL ?? config?.aPI_C2_FirstAppointment_BaseURL}`;
   const header = `${headerKey ?? config?.aPI_C2_FirstAppointment_Header}`;
 
@@ -128,7 +129,7 @@ export async function getLDBFirstAppointmentData(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       const result = await res.json();
@@ -192,7 +193,7 @@ export async function getLDBConsultantDetails(
   headerKey?: string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   const followOnFrag = isFollowOnAppointment
     ? `followonappointment=yes`
     : `initialappointment=yes`;
@@ -212,7 +213,7 @@ export async function getLDBConsultantDetails(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -259,7 +260,7 @@ export async function getLDBConsultantSlots(
   headerKey?: string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   const followOnFrag = isFollowOnAppointment
     ? `followonappointment=yes`
     : `initialappointment=yes`;
@@ -285,7 +286,7 @@ export async function getLDBConsultantSlots(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: 60 },
+      next: { revalidate: revalidate.now() ? 0 : 60 },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -361,7 +362,7 @@ export async function LDBMakeBooking(
   headerKey?: string
 ): Promise<any> {
   // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await getC2Config() : null;
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   const fragFollowOn = isFollowOnAppointment
     ? `"initialappointment": null, "followonappointment": "yes"`
     : `"initialappointment": "yes", "followonappointment": null`;

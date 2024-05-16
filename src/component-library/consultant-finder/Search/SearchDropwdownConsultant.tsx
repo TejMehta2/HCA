@@ -8,9 +8,7 @@ import Loader from '../../foundation/Loader/Loader';
 import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
 
 const SearchDdropdownConsultant = (props: SearchDropdownProps): JSX.Element => {
-  console.log('Dropdown props', props);
   const { setConsultantSlug } = useContext(ConsultantFinderContext);
-  console.log('data consultants', props.data);
 
   const handleClick = (name: string, lastName: string, slug: string) => {
     props.setIsComponentVisible(false);
@@ -19,7 +17,6 @@ const SearchDdropdownConsultant = (props: SearchDropdownProps): JSX.Element => {
     if (props.setSearchStringConsultantName) {
       props.setSearchStringConsultantName(`${name} ${lastName}`);
     }
-    console.log(name, lastName);
   };
 
   return (

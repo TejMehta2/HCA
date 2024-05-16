@@ -41,7 +41,9 @@ const YextUniversalSection = <T,>({
                 top: 0,
                 behavior: 'smooth',
               });
-              setVertical(verticalKey);
+              setTimeout(() => {
+                setVertical(verticalKey);
+              }, 1000);
             }}
           >
             <span>View all</span>

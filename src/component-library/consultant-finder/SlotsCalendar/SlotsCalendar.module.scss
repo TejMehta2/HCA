@@ -86,7 +86,7 @@
       background-color: $white;
       border: 1px solid $navy-blue-30;
       border-radius: px-to-rem(14);
-      padding: $spacing-2 $spacing-4;
+      padding: $spacing-2 $spacing-1;
       margin-bottom: $spacing-2;
       cursor: pointer;
 
@@ -117,7 +117,7 @@
 
   .btn-txt {
     span {
-      font-size: px-to-rem(14);
+      font-size: px-to-rem(11);
 
       @include media(screen-m) {
         font-size: px-to-rem(18);
@@ -169,7 +169,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: $spacing-7 $spacing-14;
+    margin: $spacing-7 $spacing-14 px-to-rem(100) $spacing-14;
 
     @include media(screen-m) {
       flex-direction: row;

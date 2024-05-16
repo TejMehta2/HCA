@@ -8,6 +8,7 @@ import {
   RichText as JssRichText,
   Image as JssImage,
   Item,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardBlogBlock from '@component-library/site-components/CardBlogBlock/CardBlogBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -48,7 +49,7 @@ type BlogFields = Item & {
 interface Fields {
   Title?: Field<string>;
   CTAIcon?: HCAIconFields;
-  CTALink?: LinkField;
+  CTALink: LinkField;
   Cards?: BlogFields[];
   BlogUrl?: LinkField;
 }
@@ -67,6 +68,8 @@ const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => (
 );
 
 export const Carousel = (props: BlogCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <BlogCardsDefaultComponent {...props} />;
   }
@@ -82,8 +85,9 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         </Text>
       }
       link={
-        props.fields.BlogUrl?.value?.href &&
-        props?.fields?.CTALink?.value?.text ? (
+        isExperienceEditor ? (
+          <JssLink field={props.fields?.CTALink}></JssLink>
+        ) : props.fields.BlogUrl?.value.href && props.fields?.CTALink ? (
           <Button size={'large'} variation={'full'}>
             <JssLink
               href={props.fields.BlogUrl?.value.href}
@@ -129,15 +133,17 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
                 <JssRichText tag="span" field={card.fields.Description} />
               )}
             </Text>
-            {!!card.fields?.ArticleType?.fields.id && (
-              <Tags>
-                <a
-                  href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                >
-                  {card.fields?.ArticleType.fields.id}
-                </a>
-              </Tags>
-            )}
+            <div>
+              {!!card.fields?.ArticleType?.fields.id && (
+                <Tags>
+                  <a
+                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                  >
+                    {card.fields?.ArticleType.fields.id}
+                  </a>
+                </Tags>
+              )}
+            </div>
           </CardBlog>
         );
       })}
@@ -146,6 +152,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 };
 
 export const Standard = (props: BlogCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <BlogCardsDefaultComponent {...props} />;
   }
@@ -162,8 +170,10 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
           </Text>
         }
         cta={
-          props.fields.BlogUrl?.value.href &&
-          props.fields?.CTALink?.value.text ? (
+          isExperienceEditor ? (
+            <JssLink field={props.fields?.CTALink}></JssLink>
+          ) : props.fields.BlogUrl?.value.href &&
+            props.fields?.CTALink?.value.text ? (
             <Button size={'large'} variation={'full'}>
               <JssLink
                 href={props.fields.BlogUrl?.value.href}
@@ -220,15 +230,17 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   )}
                 </Text>
               )}
-              {card.fields.ArticleType && (
-                <Tags>
-                  <a
-                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                  >
-                    {card.fields?.ArticleType.fields.Title?.value}
-                  </a>
-                </Tags>
-              )}
+              <div>
+                {card.fields.ArticleType && (
+                  <Tags>
+                    <a
+                      href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
+                    >
+                      {card.fields?.ArticleType.fields.Title?.value}
+                    </a>
+                  </Tags>
+                )}
+              </div>
             </CardBlog>
           );
         })}

@@ -18,10 +18,10 @@ SharedFields:
           title: field(name:"Title") {
             jsonValue
           }
-          text: field(name:"Text") {
+          subHeading: field(name:"Heading") {
             jsonValue
           }
-          heading: field(name:"Heading"){
+          text: field(name:"Text") {
             jsonValue
           }
       }
@@ -95,14 +95,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "98263430-bec3-4084-bf30-d32a8ebc552e"
+      Value: "88e0b552-2704-483e-86fe-1fd479b095a2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T141430Z
+      Value: 20240511T140811Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

@@ -29,7 +29,6 @@ import {
   getSpecialistProfileData,
   isErrorWithProfileData,
 } from 'lib/consultant-finder/API_Doctify';
-import Container from '@component-library/foundation/Containers/Container';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
@@ -218,7 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
           //console.log('first apt', firstAppointmentResponse?.data);
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -329,7 +328,7 @@ export const Default = (props: StepProps): JSX.Element => {
     .replaceAll('<p>', '')
     .replaceAll('</p>', '');
 
-  console.log(keywords);
+  //console.log(keywords);
 
   if (props.fields) {
     return (
@@ -499,6 +498,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     titleText={
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
+                    reviewsRef={reviewsRef}
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&
@@ -584,34 +584,6 @@ export const Default = (props: StepProps): JSX.Element => {
                     data={languagesString}
                   ></DataComponentSimple>
                 </ProfilePageSection>
-                {/* No fees check */}
-                <ProfilePageSection ref={feesRef}>
-                  <ConsultantFees
-                    title={
-                      props?.fields?.ConsultationFeesHeadingText?.value ||
-                      'Consultation Fees'
-                    }
-                    newAppointmentFees={
-                      serverSideData?.ProfileJson?.consultationFees?.new || null
-                    }
-                    newAppointmentFeesLabel={
-                      props?.fields?.NewAppointmentText?.value ||
-                      'New appointment'
-                    }
-                    followUpAppointmentFees={
-                      serverSideData?.ProfileJson?.consultationFees?.followUp ||
-                      null
-                    }
-                    followUpAppointmentFeesLabel={
-                      props?.fields?.NewAppointmentText?.value ||
-                      'Follow-up appointment'
-                    }
-                    noFeesInfo={
-                      props.fields.NoFeesInfo.value ||
-                      "This consultant doesn't have any consultation fees information at the moment."
-                    }
-                  ></ConsultantFees>
-                </ProfilePageSection>
                 <ProfilePageSection>
                   <DataComponentSimple
                     title={
@@ -670,6 +642,33 @@ export const Default = (props: StepProps): JSX.Element => {
                     }
                   ></Locations>
                 </ProfilePageSection>
+                <ProfilePageSection ref={feesRef}>
+                  <ConsultantFees
+                    title={
+                      props?.fields?.ConsultationFeesHeadingText?.value ||
+                      'Consultation Fees'
+                    }
+                    newAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.new || null
+                    }
+                    newAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'New appointment'
+                    }
+                    followUpAppointmentFees={
+                      serverSideData?.ProfileJson?.consultationFees?.followUp ||
+                      null
+                    }
+                    followUpAppointmentFeesLabel={
+                      props?.fields?.NewAppointmentText?.value ||
+                      'Follow-up appointment'
+                    }
+                    noFeesInfo={
+                      props.fields.NoFeesInfo.value ||
+                      "This consultant doesn't have any consultation fees information at the moment."
+                    }
+                  ></ConsultantFees>
+                </ProfilePageSection>
                 <ProfilePageSection ref={reviewsRef} noBottomBorder={true}>
                   <OverallRating
                     title={
@@ -715,7 +714,57 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* iframe with patient and peer reviews */}
               </MainWrapper>
               <SideWrapper>
-                <SidePanel isSticky={true}>
+                <SidePanel
+                  isSticky={true}
+                  buttons={
+                    <>
+                      {/* if consultant has live diaries then show 'book online' */}
+                      {serverSideData?.IsLiveDiaryConsultant && (
+                        <Button variation="full-dark" size="small">
+                          <Link
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                          >
+                            <span>
+                              {props.fields.BookOnlineButtonLink.value.text ||
+                                'Book online'}
+                            </span>
+                          </Link>
+                        </Button>
+                      )}
+                      {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
+                      {!serverSideData?.IsLiveDiaryConsultant &&
+                        !serverSideData?.ProfileJson
+                          ?.hideAppointmentRequest && (
+                          <Button variation="full-dark" size="small">
+                            <Link
+                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                            >
+                              <span>
+                                {props?.fields?.EnquireNowButtonLink?.value
+                                  ?.title || 'Enquire now'}
+                              </span>
+                            </Link>
+                          </Button>
+                        )}
+                      <Button variation="outline" size="small">
+                        <a
+                          href={`tel:${
+                            props?.fields?.PhoneNumberHref?.value ||
+                            '+442045711724'
+                          }`}
+                        >
+                          <span>
+                            <Icons iconName="iconPhone" />
+                          </span>
+                          <span>
+                            {props?.fields?.CallToBookButtonText?.value ||
+                              'Call to book'}
+                          </span>
+                        </a>
+                      </Button>
+                    </>
+                  }
+                >
                   <Reviews
                     doctifyLogo={
                       <JssImage field={props?.fields?.DoctifyLogoImage} />
@@ -738,6 +787,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     titleText={
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
+                    reviewsRef={reviewsRef}
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&
@@ -774,67 +824,6 @@ export const Default = (props: StepProps): JSX.Element => {
                         </Text>
                       </>
                     )}
-                  <Container marginTop="spacing-5">
-                    {/* if consultant has live diaries then show 'book online' */}
-                    {serverSideData?.IsLiveDiaryConsultant && (
-                      <Container marginBottom="spacing-4">
-                        <Button
-                          variation="full-dark"
-                          size="small"
-                          contentVariation="full-width"
-                        >
-                          <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
-                          >
-                            <span>
-                              {props.fields.BookOnlineButtonLink.value.text ||
-                                'Book online'}
-                            </span>
-                          </Link>
-                        </Button>
-                      </Container>
-                    )}
-                    {/* if consultant doesn't have live diaries and in doctify data hideAppointmentRequest : false - show enqire button */}
-                    {!serverSideData?.IsLiveDiaryConsultant &&
-                      !serverSideData?.ProfileJson?.hideAppointmentRequest && (
-                        <Container marginBottom="spacing-4">
-                          <Button
-                            variation="full-dark"
-                            size="small"
-                            contentVariation="full-width"
-                          >
-                            <Link
-                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
-                            >
-                              <span>
-                                {props?.fields?.EnquireNowButtonLink?.value
-                                  ?.title || 'Enquire now'}
-                              </span>
-                            </Link>
-                          </Button>
-                        </Container>
-                      )}
-                    <Button
-                      variation="outline"
-                      size="small"
-                      contentVariation="full-width"
-                    >
-                      <a
-                        href={`tel:${
-                          props?.fields?.PhoneNumberHref?.value ||
-                          '+442045711724'
-                        }`}
-                      >
-                        <span>
-                          <Icons iconName="iconPhone" />
-                        </span>
-                        <span>
-                          {props?.fields?.CallToBookButtonText?.value ||
-                            'Call to book'}
-                        </span>
-                      </a>
-                    </Button>
-                  </Container>
                 </SidePanel>
               </SideWrapper>
             </ConsultantFinderProfileWrapper>

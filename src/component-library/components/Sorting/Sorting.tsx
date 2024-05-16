@@ -6,6 +6,7 @@ import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import ModalDropdown from '../ModalDropdown/ModalDropdown';
+import Themes from '../../foundation/Themes/Themes';
 
 const SortingInput = (props: SortingOptionProps) => {
   const {
@@ -128,16 +129,18 @@ const Sorting = (props: SortingProps): JSX.Element => {
             </button>
           </Button>
         </div>
-        <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>
-          <div className={styles.fieldset}>
-            <div className={styles.legend}>
-              <Text variation={'body-bold-extra-large'}>
-                <span id={labelId}>Sort by:</span>
-              </Text>
+        <Themes theme={'A-HCA-White'}>
+          <Modals ref={mobileDialogRef} defaultOpen={defaultOpen}>
+            <div className={styles.fieldset}>
+              <div className={styles.legend}>
+                <Text variation={'body-bold-extra-large'}>
+                  <span id={labelId}>Sort by:</span>
+                </Text>
+              </div>
+              <div className={styles.fields}>{labels}</div>
             </div>
-            <div className={styles.fields}>{labels}</div>
-          </div>
-        </Modals>
+          </Modals>
+        </Themes>
       </div>
       {/* Share inputs between desktop and mobile modal labels, in case of e.g. portrait/landscape swap past breakpoint */}
       {inputs}

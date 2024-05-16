@@ -3,6 +3,7 @@
 
 .background {
   background: var(--background);
+  overflow: hidden;
 }
 
 .wrapper {
@@ -46,6 +47,16 @@
     @include media(screen-xl) {
       aspect-ratio: 643/605;
     }
+  }
+}
+
+.keep-aspect-ratio {
+  align-items: center;
+
+  img {
+    object-fit: contain;
+    aspect-ratio: unset;
+    height: max-content;
   }
 }
 

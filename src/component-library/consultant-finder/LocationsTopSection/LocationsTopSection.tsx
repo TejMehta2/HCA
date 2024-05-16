@@ -11,18 +11,16 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
   const { selectedLocations, setSelectedLocations } = useContext(
     ConsultantFinderContext
   );
-  console.log('selectedLocations', selectedLocations);
-  console.log('selectedLocations length', selectedLocations.length);
+  // console.log('props LocationsTopSection', props);
+  // console.log('selectedLocations', selectedLocations);
+  // console.log('selectedLocations length', selectedLocations.length);
 
   const selectAllLocations = () => {
-    console.log('select all');
     setSelectedLocations(props.slugs);
   };
 
   const removeAllLocations = () => {
-    console.log('remove all');
     setSelectedLocations([]);
-    // props.setArray([]);
   };
 
   return (
@@ -42,7 +40,7 @@ const LocationsTopSection = (props: LocationsTopSectionProps): JSX.Element => {
         <div className={styles['locations-search']}>
           <LocationsSearch
             locationsAPI={props.locationAPI}
-            placeholder={''}
+            placeholder={props.searchPlaceholderText}
             doctifyBaseURL={''}
             limit={0}
             noResultsMsg={''}

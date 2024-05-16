@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export interface ReviewsProps {
@@ -12,4 +13,5 @@ export interface ReviewsProps {
   doctifyText?: string;
   doctifyLogo?: ReactNode | JSX.Element;
   hasDoctifyBranding?: boolean;
+  reviewsRef?: any;
 }

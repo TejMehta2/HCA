@@ -17,6 +17,16 @@
 }
 
 /* stylelint-disable no-descending-specificity */
+.variation-2-columns {
+  > * {
+    @include responsive-grid-span(6, 3, 6, 6);
+  }
+
+  > *:first-child {
+    @include responsive-grid-span(6, 6, 12, 12);
+  }
+}
+
 .variation-3-columns {
   > * {
     @include responsive-grid-span(6, 3, 4, 4);

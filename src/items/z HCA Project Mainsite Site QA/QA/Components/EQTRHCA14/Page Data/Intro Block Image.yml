@@ -28,10 +28,10 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4e65a6a2-0c0a-40d2-b738-bbe7c6cda7cd"
+      Value: "14164cc8-3dc7-452d-acc4-05bae9cac7f7"
     - ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
       Hint: CQCStatus
-      Value: "{8C94A4C4-DCCB-42EF-89A7-51C869753A8F}"
+      Value: "{FF92C63E-73C3-4BEF-B709-3E16A890459A}"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -42,7 +42,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
       Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
@@ -54,7 +54,7 @@ Languages:
         {B95C2B26-44A7-4F37-8B4C-45F0DFA93813}
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102615Z
+      Value: 20240515T115818Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"
