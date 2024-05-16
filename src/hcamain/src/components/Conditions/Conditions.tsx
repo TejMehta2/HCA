@@ -162,14 +162,35 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           subtitle={
-            props.fields.data?.item?.heading?.jsonValue?.value && (
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text variation={'subheading-1'}>
+                  {props.fields.data?.item?.heading?.jsonValue?.value}
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
               <Text variation={'subheading-1'}>
-                {props.fields.data?.item?.heading?.jsonValue?.value}
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
               </Text>
             )
           }
           title={
-            props.fields?.data?.item?.title?.jsonValue?.value && (
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.title?.jsonValue?.value ? (
+                <Text
+                  variation={props.params?.HeadingSize || 'display-5'}
+                  tag={props.params?.HeadingTag || 'h2'}
+                >
+                  <JssTextWithEntityName
+                    field={props.fields?.data?.item?.title?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
               <Text
                 variation={props.params?.HeadingSize || 'display-5'}
                 tag={props.params?.HeadingTag || 'h2'}

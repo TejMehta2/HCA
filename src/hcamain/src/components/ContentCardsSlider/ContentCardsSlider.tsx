@@ -38,7 +38,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
       cTACardText?: { jsonValue?: Field<string> };
       pages?: {
         PagesList?: PagesFields[];
@@ -72,9 +72,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
 
-  const link =
-    props.fields?.data?.item?.cTALink?.jsonValue &&
-    (!isExperienceEditor ? (
+  const link = isExperienceEditor ? (
+    <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
+  ) : (
+    props.fields?.data?.item?.cTALink?.jsonValue.value.href && (
       <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
         <SitecoreSvg>
           {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
@@ -86,9 +87,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           }}
         />
       </JssLink>
-    ) : (
-      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
-    ));
+    )
+  );
 
   return (
     <CarouselCards
@@ -98,26 +98,33 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-4'}
         >
-          {props.fields?.data?.item?.title?.jsonValue?.value}
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
       }
       subtitle={
-        props.fields?.data?.item?.heading?.jsonValue?.value ? (
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            <Text tag="span" variation={'subheading-1'}>
+              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+            </Text>
+          ) : (
+            <></>
+          )
+        ) : (
           <Text tag="span" variation={'subheading-1'}>
             <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
-        ) : (
-          <></>
         )
       }
-      link={link}
+      link={link || <></>}
     >
       {props.fields?.data?.item?.pages?.PagesList?.map((cards, index) => (
         <CardContent
           key={index}
           image={
             showImage ? (
-              cards.abstractImage?.jsonValue.value?.src ? (
+              cards.abstractImage?.jsonValue.value?.src &&
+              !cards.abstractImage?.jsonValue.value?.src.search('default') ? (
                 <JssImage
                   field={cards.abstractImage.jsonValue}
                   editable={false}

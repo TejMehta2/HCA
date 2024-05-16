@@ -42,7 +42,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
     };
   };
 }
@@ -85,22 +85,22 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const numberOfCards = props.params?.Columns || '3';
 
-  const link =
-    props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
-    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
-      !isExperienceEditor ? (
-        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
-          <JssRichText
-            tag="span"
-            field={{
-              value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
-            }}
-          />
-        </JssLink>
-      ) : (
-        <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
-      )
-    ) : undefined;
+  const link = isExperienceEditor ? (
+    <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
+  ) : (
+    props.fields?.data?.item?.cTALink?.jsonValue?.value?.href && (
+      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+        <SitecoreSvg>
+          {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+        </SitecoreSvg>
+        <JssRichText
+          field={{
+            value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+          }}
+        />
+      </JssLink>
+    )
+  );
 
   return (
     <CardBlock
@@ -123,7 +123,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           }
         />
       }
-      cta={link}
+      cta={link || <></>}
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
@@ -131,7 +131,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             key={index}
             image={
               showImage ? (
-                card.abstractImage?.jsonValue.value?.src ? (
+                card.abstractImage?.jsonValue.value?.src &&
+                !card.abstractImage?.jsonValue.value?.src.search('default') ? (
                   <JssImage
                     field={card.abstractImage.jsonValue}
                     editable={false}
