@@ -21,6 +21,7 @@ const Reset = async (
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
   revalidate.setRevalidateNow(true);
+  console.log('revalidate: ' + revalidate.now());
   console.log('getting cacheable data');
 
   console.log('getting getCMAs');
@@ -107,7 +108,7 @@ const Reset = async (
   await getFacilitiesData();
 
   revalidate.setRevalidateNow(true);
-  const ret = '<div>done</div>';
+  const ret = `<div>done</div>${new Date().toISOString()}`;
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(ret);
 };
