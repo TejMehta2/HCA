@@ -129,7 +129,11 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
                 )}
               </div>
             </header>
-            <main ref={mainRef}>
+            <main
+              ref={mainRef}
+              data-event={'buttonClick'}
+              data-navigation-type={'buttonClick'}
+            >
               <div id="content">
                 {isHomepage ? (
                   <ScrollTransition initialTheme={firstComponentTheme}>

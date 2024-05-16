@@ -26,7 +26,7 @@ const ModalCallUs = (
         <Text variation={'subheading-1'}>{contact?.title}</Text>
       </div>
 
-      <div className={styles.mobile}>
+      <div className={styles.mobile} data-navigation-type="phoneCTAClick">
         {isMain ? (
           <Button size={'small'} variation={'full'}>
             <a href={`tel:${contact?.phone?.number}`}>

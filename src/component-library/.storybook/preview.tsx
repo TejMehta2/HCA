@@ -2,6 +2,7 @@ import type { Preview } from "@storybook/react";
 import "../globals/index.scss";
 import React from "react";
 import YextProvider from '../yext/YextProvider/YextProvider'
+import { I18nProvider } from 'next-localization';
 
 const customViewports = {
   small: {
@@ -36,7 +37,7 @@ const customViewports = {
 
 const preview: Preview = {
   decorators: [
-    (Story) => <YextProvider><Story/></YextProvider>
+    (Story) => <I18nProvider locale={"en-GB"}><YextProvider><Story/></YextProvider></I18nProvider>
   ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },

@@ -7,11 +7,19 @@ import Link from 'next/link';
 const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
   const { backCta, children } = props;
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      data-event="navigationClick"
+      data-navigation-type="breadcrumbDesktop"
+    >
       <div className={styles.container}>
         <span className={styles['breadcrumbs-list']}>{children}</span>
         {backCta?.link && (
-          <Link href={backCta.link || ''} className={styles['breadcrumb-back']}>
+          <Link
+            href={backCta.link || ''}
+            className={styles['breadcrumb-back']}
+            data-navigation-type="breadcrumbMobile"
+          >
             <Icons iconName="iconArrowLeft"></Icons>
             <div>
               <span>Back to</span> {backCta.text}

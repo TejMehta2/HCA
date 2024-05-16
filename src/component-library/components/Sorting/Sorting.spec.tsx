@@ -23,6 +23,14 @@ const mockProps: SortingProps = {
   onChange: () => {},
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('Sorting', () => {
   it('Applies defaultChecked from prop', async () => {
     const { getAllByRole } = render(<Sorting {...mockProps} />);

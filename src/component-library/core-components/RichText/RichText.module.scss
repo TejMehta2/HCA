@@ -1,5 +1,6 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
+@use '../../core-components/TextButton/TextButton.module.scss';
 
 %rte-content {
   @include apply-body-large;
@@ -20,6 +21,10 @@
 
     p {
       margin: $spacing-5 auto;
+    }
+
+    a {
+      @extend %text-button-a;
     }
 
     ul,

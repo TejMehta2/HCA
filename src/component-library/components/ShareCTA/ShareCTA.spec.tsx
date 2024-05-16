@@ -46,6 +46,14 @@ const mockProps: ShareCTAProps = {
   ),
 };
 
+jest.mock('next-localization', () => ({
+  useI18n: () => {
+    return {
+      t: (str: string) => str,
+    };
+  },
+}));
+
 describe('ShareCTA', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<ShareCTA {...mockProps} />);
