@@ -2,11 +2,11 @@
 ID: "bb9e4b77-e3e1-4c4b-bbb8-b1b2b77e69f5"
 Parent: "5cd380b6-bd27-45c0-bceb-47cbbd5360e0"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/_Label Settings/Data
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/Label Settings/Data
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 0
 Languages:
 - Language: en
   Versions:
@@ -21,11 +21,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "60220ab9-9af3-4d9e-a519-bba8392f2cd8"
+      Value: "697c16a6-1026-4497-8d69-56f971cdcd21"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240516T124358Z
+      Value: 20170601T124956Z
