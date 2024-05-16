@@ -1,45 +1,44 @@
 ﻿---
-ID: "90c4f94c-ec2c-4ee4-b4c8-f3e29cbe630e"
-Parent: "5399e985-c5fc-4e10-8ca5-bd5b9b6c5852"
+ID: "80906d58-fa9e-4179-b485-3b13b05cc083"
+Parent: "05ddf18f-444b-44d2-889e-c68b17d77285"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Forms/Save Settings/Data/Allow Save
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/Validation Settings/Data/Validators
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "query:./self::|query:./ancestor-or-self::*[@@templateid='{6ABEE1F2-4AB4-47F0-AD8B-BDB36F37F64C}']/*[@@templateid='{2E688109-6736-486C-8F76-BC4876052099}']"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Checkbox
+  Value: Multiroot Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 410
 - ID: "be351a73-fcb0-4213-93fa-c302d8ab4f51"
   Hint: Shared
   Value: 1
 Languages:
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Allow Save
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170602T071919Z
+      Value: 20240512T234851Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "93781112-4b17-4434-95be-9ddd9849556b"
+      Value: "2c2d741d-1992-4035-913e-264e561b6310"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\Admin
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20181213T063648Z
+      Value: 20240515T120918Z

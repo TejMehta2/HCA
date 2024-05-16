@@ -13,7 +13,6 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    # Write your query or mutation here
     query GetForm($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on TailoredForm {
@@ -125,6 +124,16 @@ SharedFields:
         boolValue
         value
       }
+      validators {
+        targetItems {
+          ...ValidationRuleFragment
+        }
+      }
+      conditionalValidators{
+         targetItems {
+          ...ValidationRuleFragment
+        }
+      }
     }
     
     fragment FieldFragment on Field {
@@ -191,9 +200,8 @@ SharedFields:
       }
       parameters {
         value
-      }
+      } 
     }
-    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Forms/Tailored Form
@@ -258,14 +266,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "77d7c504-3e73-46e1-970c-fd3eaf3293d9"
+      Value: "2c600493-81f3-4f35-bef3-223496c148db"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240502T094752Z
+      Value: 20240515T222413Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
