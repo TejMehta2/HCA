@@ -2,7 +2,7 @@
 ID: "8a43af61-0812-4b37-a343-96cde3f12bb1"
 Parent: "05ddf18f-444b-44d2-889e-c68b17d77285"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/Validation Settings/Data/Required
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/_Validation Settings/Data/Required
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type

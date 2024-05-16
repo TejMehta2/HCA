@@ -2,7 +2,7 @@
 ID: "5cd380b6-bd27-45c0-bceb-47cbbd5360e0"
 Parent: "577f647c-9c02-4d5f-b977-2b8412645ae4"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/Label Settings
+Path: /sitecore/templates/Project/HCA/Forms/Fields/Base/_Label Settings
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
