@@ -46,6 +46,7 @@
     border-radius: $radius-medium;
     width: 100%;
     height: auto;
+    object-fit: cover;
     aspect-ratio: 359/257;
 
     @include media(screen-m) {
