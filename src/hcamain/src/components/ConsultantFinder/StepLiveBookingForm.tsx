@@ -478,7 +478,7 @@ export const Default = (props: StepProps): JSX.Element => {
         representativeTitle: data.representativeTitle,
         representativeFirstName: data.representativeFirstName,
         representativeLastName: data.representativeLastName,
-        representativeRelation: data.representativeRelation,
+        representativeRelation: data.representativeRelationToPatient,
         representativeEmail: data.representativeEmail,
         representativePhone: data.representativePhone,
         bookingBy: data.user,

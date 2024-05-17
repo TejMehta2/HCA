@@ -1,4 +1,6 @@
+import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { revalidate } from './revalidateNow';
 
 //C2 APIs
 interface Ic2Config {
@@ -24,7 +26,22 @@ interface Ic2Config {
   aPI_C2_ReserveConsultantSlot_Header: string;
 }
 
-export async function getC2Config(): Promise<Ic2Config> {
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const GetC2Config = unstable_cache(
+  async (): Promise<Ic2Config> => {
+    console.log('refreshing _getC2Config from source..');
+    return await _getC2Config();
+  },
+  ['cacheGetC2Config'],
+  {
+    tags: ['cacheGetC2Config'],
+    revalidate: revalidate.now() ? 0 : 604800,
+  }
+);
+
+async function _getC2Config(): Promise<Ic2Config> {
   // Sitecore item
   const C2APISettingsItemId = '{13DC9C82-D428-4DDB-845F-2712590E133E}';
   const C2APISettingsTemplateName = 'C2_API_Settings';

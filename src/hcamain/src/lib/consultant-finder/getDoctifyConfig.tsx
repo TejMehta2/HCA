@@ -1,4 +1,6 @@
+import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { revalidate } from './revalidateNow';
 
 //Doctify APIs
 export interface IDoctifyConfig {
@@ -24,7 +26,22 @@ export interface IDoctifyConfig {
   aPI_DoctifySpecialists_LoadingMsg: string;
 }
 
-export async function getDoctifyConfig(): Promise<IDoctifyConfig> {
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const GetDoctifyConfig = unstable_cache(
+  async (): Promise<IDoctifyConfig> => {
+    console.log('refreshing _getDoctifyConfig from source..');
+    return await _getDoctifyConfig();
+  },
+  ['cacheGetDoctifyConfig'],
+  {
+    tags: ['cacheGetDoctifyConfig'],
+    revalidate: revalidate.now() ? 0 : 604800,
+  }
+);
+
+async function _getDoctifyConfig(): Promise<IDoctifyConfig> {
   // Sitecore item
   const DoctifyAPISettingsItemId = '{D5945397-53E1-46FD-B36A-3C95AC3AEB81}';
   const DoctifyAPISettingsTemplateName = 'Doctify_API_Settings';

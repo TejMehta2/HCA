@@ -39,7 +39,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
       locations?: {
         PagesList?: LocationsFields[];
       };

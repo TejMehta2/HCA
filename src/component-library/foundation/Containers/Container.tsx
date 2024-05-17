@@ -14,6 +14,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     width,
     withButtons,
     customBtn,
+    customBtnDesktop,
   } = props;
 
   const containerClasses = classNames(styles.container, {
@@ -25,6 +26,7 @@ const Container = (props: ContainerProps): JSX.Element => {
     [styles[`width-${width}`]]: width,
     [styles['with-buttons']]: withButtons,
     [styles['custom-btn']]: customBtn,
+    [styles['custom-btn-desktop']]: customBtnDesktop,
   });
 
   return <div className={containerClasses}>{children}</div>;

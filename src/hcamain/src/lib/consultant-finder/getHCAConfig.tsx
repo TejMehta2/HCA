@@ -1,4 +1,6 @@
+import { unstable_cache } from 'next/cache';
 import { getItemFromGraphQL } from './getItemFromGraphQL';
+import { revalidate } from './revalidateNow';
 
 //HCA APIs
 export interface IHCAConfig {
@@ -53,11 +55,33 @@ export interface IHCAConfig {
   aPI_HCA_EnquireBookingForm_Header: string;
   aPI_HCA_EnquireBookingForm_UtilizesLegacy: boolean;
 
+  //Postcode lookup
+  aPI_HCA_PostcodeLookup_BaseURL: string;
+  aPI_HCA_PostcodeLookup_LegacyBaseURL: string;
+  aPI_HCA_PostcodeLookup_NoResultsMsg: string;
+  aPI_HCA_PostcodeLookup_LoadingMsg: string;
+  aPI_HCA_PostcodeLookup_UtilizesLegacy: boolean;
+
   // General
   nextJSRevalidationProfilePageSeconds: number;
 }
 
-export async function getHCAConfig(): Promise<IHCAConfig> {
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+export const GetHCAConfig = unstable_cache(
+  async (): Promise<IHCAConfig> => {
+    console.log('refreshing _getHCAConfig from source..');
+    return await _getHCAConfig();
+  },
+  ['cacheGetHCAConfig'],
+  {
+    tags: ['cacheGetHCAConfig'],
+    revalidate: revalidate.now() ? 0 : 604800,
+  }
+);
+
+export async function _getHCAConfig(): Promise<IHCAConfig> {
   // Sitecore item
   const HCAAPISettingsItemId = '{AF16E5CB-FE0D-4412-A299-96BEF3F5E363}';
   const HCAAPISettingsTemplateName = 'HCA_API_Settings';
@@ -113,6 +137,13 @@ export async function getHCAConfig(): Promise<IHCAConfig> {
     aPI_HCA_EnquireBookingForm_LoadingMsg: '',
     aPI_HCA_EnquireBookingForm_Header: '',
     aPI_HCA_EnquireBookingForm_UtilizesLegacy: false,
+
+    //Postcode lookup
+    aPI_HCA_PostcodeLookup_BaseURL: '',
+    aPI_HCA_PostcodeLookup_LegacyBaseURL: '',
+    aPI_HCA_PostcodeLookup_NoResultsMsg: '',
+    aPI_HCA_PostcodeLookup_LoadingMsg: '',
+    aPI_HCA_PostcodeLookup_UtilizesLegacy: false,
 
     // General
     nextJSRevalidationProfilePageSeconds: 300,

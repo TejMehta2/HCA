@@ -94,19 +94,22 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const link =
     props.fields?.data?.item?.cTALink?.jsonValue &&
     (!isExperienceEditor ? (
-      <JssLink
-        field={props.fields?.data?.item?.cTALink?.jsonValue}
-        href={
-          props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
-        }
-      >
-        <JssTextWithEntityName
-          field={{
-            value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
-          }}
-          isRichText={true}
-        />
-      </JssLink>
+      props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+      props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+        <JssLink
+          field={props.fields?.data?.item?.cTALink?.jsonValue}
+          href={
+            props.fields?.data?.item?.cTALink?.jsonValue.value.href + queryParam
+          }
+        >
+          <JssTextWithEntityName
+            field={{
+              value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
+            }}
+            isRichText={true}
+          />
+        </JssLink>
+      ) : undefined
     ) : (
       <JssLink
         field={props.fields?.data?.item?.cTALink?.jsonValue}
