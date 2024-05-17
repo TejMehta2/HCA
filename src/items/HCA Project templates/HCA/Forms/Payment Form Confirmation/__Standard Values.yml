@@ -1,0 +1,84 @@
+﻿---
+ID: "73eee032-0f9b-4e51-8197-c17871ca0f4d"
+Parent: "d1898f14-cf39-454a-9b08-896d98a39055"
+Template: "d1898f14-cf39-454a-9b08-896d98a39055"
+Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/__Standard Values
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0805b680-ca0c-4581-a103-50ab6d0b41a6"
+      Hint: StatusText
+      Value: Status
+    - ID: "14dee338-43bb-45da-a16f-cb12285a9b6d"
+      Hint: TransactionIDText
+      Value: Transaction ID
+    - ID: "24f5a2c3-1727-4329-9c98-9f0c9681f576"
+      Hint: ErrorCTAIcon
+      Value: "{38E631BA-16DA-444C-821B-8EA6A89595D5}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240517T073112Z
+    - ID: "3621f0ba-ca34-4a20-b1b2-c32776a0f704"
+      Hint: CTAText
+      Value: Print confirmation
+    - ID: "3cb01174-d5f6-4fe1-b394-a520eaccadc8"
+      Hint: SummaryTitle
+      Value: Payment summary
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "58390524-410b-46cc-85e7-786de24fff50"
+      Hint: ErrorText
+      Value: While processing the payment an unexpected issue occurred. Please try the payment again, or contact 03332 221334 for further assistance.
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "65b1d39d-376a-4c46-a88e-7885484ca88f"
+      Hint: AmountPaidText
+      Value: Amount paid
+    - ID: "7477555d-1a95-40e5-89e7-1e59d0831216"
+      Hint: Title
+      Value: Your payment is complete
+    - ID: "7eb26a64-68bd-4611-b799-a8fb89f52f6f"
+      Hint: CTAIcon
+      Value: "{87DF6D6E-1554-4A5F-BB5B-92F618CE0F95}"
+    - ID: "803e73dc-1dfb-4179-9462-6196cee21723"
+      Hint: ErrorTitle
+      Value: Payment failed
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "00a78a93-8deb-412e-b1c9-f8c1414e5ce3"
+    - ID: "9a7dc6d7-3bc1-415c-b995-c6790a46fe03"
+      Hint: ErrorCTALink
+      Value: |
+        <link text="Back to payment form" anchor="" linktype="internal" class="" title=""  querystring="" id="{0919062C-A1FE-4225-8624-2BAC54C5A759}" />
+    - ID: "b031cd59-3958-4d06-abfe-cbb93ad9e0cc"
+      Hint: ErrorMessage
+      Value: An error has occurred
+    - ID: "b51cee71-3d56-49e8-98b6-ba45cf2d6b70"
+      Hint: PaymentTypeText
+      Value: Payment type
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240517T084453Z
+    - ID: "e3e43735-9b81-4c1a-b62e-a99f5ab68ab4"
+      Hint: PaymentDateText
+      Value: Payment date
+    - ID: "f3e766bd-96cc-49dc-8a71-d5712aac2711"
+      Hint: InvoiceReferenceText
+      Value: Invoice reference
+    - ID: "fba9c3f4-257a-4bcd-b6ba-c4d236f94c2f"
+      Hint: Text
+      Value: Thank you, your invoice payment has been successful.
