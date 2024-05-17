@@ -1,14 +1,8 @@
 ﻿---
-ID: "7358f190-9169-4944-93f9-92c76d2453f0"
-Parent: "89f256b2-ff4a-4459-a9f0-56a82881e218"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation/Available Renderings/Forms"
-SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
-  Value: |
-    {3039876C-2745-4E4E-872A-F49B7CDD58C2}
-    {98069BB4-4A8B-49ED-BDA3-9EDBA9374634}
+ID: "be1447ff-ec3c-488a-b812-b6e7ded0cc51"
+Parent: "d1898f14-cf39-454a-9b08-896d98a39055"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/Success Message
 Languages:
 - Language: en
   Versions:
@@ -16,22 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240422T232746Z
+      Value: 20240517T062856Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0f146839-930a-4d80-8623-d8dc130aa8de"
+      Value: "6a84c32b-e815-4a64-88d9-fbac7b7985db"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240516T195752Z
+      Value: 20240517T072202Z
