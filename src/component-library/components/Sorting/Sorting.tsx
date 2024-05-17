@@ -101,11 +101,9 @@ const Sorting = (props: SortingProps): JSX.Element => {
         className={styles.desktop}
         onMouseLeave={() => {
           desktopDialogRef?.current?.close();
-          document.querySelector('html')!.style.removeProperty('overflow-y');
         }}
         onMouseEnter={() => {
           desktopDialogRef?.current?.show();
-          document.querySelector('html')!.style.overflowY = 'auto';
         }}
       >
         <div className={styles.button}>

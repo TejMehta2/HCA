@@ -1,3 +1,9 @@
+body {
+  &:has(.wrapper[open]) {
+    overflow: visible;
+  }
+}
+
 .wrapper {
   all: unset;
 
@@ -24,6 +30,7 @@
     opacity: 1;
     pointer-events: all;
     transition-delay: 0s;
+    background-color: red;
   }
 
   &::backdrop {
