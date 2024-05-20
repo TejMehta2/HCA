@@ -1,8 +1,12 @@
 ﻿---
-ID: "be1447ff-ec3c-488a-b812-b6e7ded0cc51"
+ID: "77b9244c-f7c1-486b-8b66-fa0f499dc08c"
 Parent: "d1898f14-cf39-454a-9b08-896d98a39055"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/Success Message
+Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/Data
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
 Languages:
 - Language: en
   Versions:
@@ -10,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240517T062856Z
+      Value: 20240520T095240Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +25,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6a84c32b-e815-4a64-88d9-fbac7b7985db"
+      Value: "d2c8f6cc-64c0-4992-97e6-1ed2edae52a0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240517T072202Z
+      Value: 20240520T143332Z

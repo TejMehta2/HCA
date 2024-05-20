@@ -1,0 +1,27 @@
+﻿---
+ID: "3bb1b29a-1206-4fa4-9b1b-1291cb459f8a"
+Parent: "9314c11a-27d6-4fd5-a53c-ee5188271aab"
+Template: "9314c11a-27d6-4fd5-a53c-ee5188271aab"
+Path: /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Landing Page Header/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1906a2cb-6e24-4348-a388-3619c59ecd78"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240520T063831Z
