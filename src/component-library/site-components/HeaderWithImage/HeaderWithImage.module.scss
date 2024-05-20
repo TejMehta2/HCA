@@ -8,6 +8,8 @@
   color: var(--text);
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
 
   @include media(screen-l, max) {
     border-radius: 0 0 $radius-large 0;
@@ -35,6 +37,11 @@
   @include responsive-grid;
 
   min-height: calc(100vh - px-to-rem(170));
+
+  @include media(screen-l) {
+    padding-top: px-to-rem(32);
+    padding-bottom: px-to-rem(32);
+  }
 }
 
 .content {
