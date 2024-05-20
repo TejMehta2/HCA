@@ -14,6 +14,13 @@ const meta: Meta<typeof HeaderWithImage> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ paddingTop: '110px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     title: {
       control: false,
