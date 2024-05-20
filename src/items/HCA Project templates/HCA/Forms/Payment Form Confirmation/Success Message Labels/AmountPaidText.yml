@@ -1,23 +1,27 @@
 ﻿---
-ID: "7477555d-1a95-40e5-89e7-1e59d0831216"
+ID: "65b1d39d-376a-4c46-a88e-7885484ca88f"
 Parent: "be1447ff-ec3c-488a-b812-b6e7ded0cc51"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/Success Message/Title
+Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation/Success Message Labels/AmountPaidText
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 400
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Amount Paid Text
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240517T062856Z
+      Value: 20240517T062857Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,7 +32,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "18464af7-6202-4834-8381-be8b047a36ff"
+      Value: "1093871e-4af4-46e8-ab64-42c7d2282adb"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
