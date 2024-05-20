@@ -22,7 +22,9 @@ type LandingPageHeaderProps = {
   fields?: Fields;
 };
 
-const LandingPageHeaderDefaultComponent = (props: LandingPageHeaderProps): JSX.Element => {
+const LandingPageHeaderDefaultComponent = (
+  props: LandingPageHeaderProps
+): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (isExperienceEditor) {
@@ -56,7 +58,6 @@ export const Default = (props: LandingPageHeaderProps): JSX.Element => {
       <Text>
         <JssText field={props.fields?.AnyQuestionsText} />
       </Text>
-     
     </>
   );
 };
