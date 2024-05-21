@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface HeaderPlainProps {
   children?: ReactNode | JSX.Element;
   heading: ReactNode | JSX.Element;
-  subheading?: ReactNode | JSX.Element;
+  metatitle?: ReactNode | JSX.Element;
   description?: ReactNode | JSX.Element;
   contentVariation?: 'padding-small';
   subtitle?: ReactNode | JSX.Element;

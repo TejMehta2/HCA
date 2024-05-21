@@ -5,7 +5,7 @@ import styles from './HeaderPlain.module.scss';
 const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
   const {
     heading,
-    subheading,
+    metatitle,
     description,
     children,
     contentVariation,
@@ -21,9 +21,7 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
       >
         <div className={styles.grid}>
           <div className={styles.half}>
-            {subheading && (
-              <div className={styles.subheading}>{subheading}</div>
-            )}
+            {metatitle && <div className={styles.metatitle}>{metatitle}</div>}
             <div className={styles.heading}>{heading}</div>
             {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             {description && (

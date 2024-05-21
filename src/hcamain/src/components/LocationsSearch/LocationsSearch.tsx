@@ -136,7 +136,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               <JssText field={props?.fields?.Title} />
             </Text>
           }
-          subheading={
+          metatitle={
             <Text variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>

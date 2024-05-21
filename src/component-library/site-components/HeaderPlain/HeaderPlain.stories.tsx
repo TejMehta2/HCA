@@ -30,7 +30,7 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof HeaderPlain> = {
   args: {
-    subheading: (
+    metatitle: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
       </Text>
@@ -53,14 +53,14 @@ export const Default: StoryObj<typeof HeaderPlain> = {
 
 export const WithSubtitle: StoryObj<typeof HeaderPlain> = {
   args: {
+    subtitle: (
+      <Text tag="h3" variation="subheading-1">
+        Optional meta title
+      </Text>
+    ),
     heading: (
       <Text tag="h1" variation="display-1">
         News & articles about healthcare
-      </Text>
-    ),
-    subtitle: (
-      <Text tag="h2" variation="subheading-1">
-        Optional subtitle
       </Text>
     ),
     description: (
@@ -76,7 +76,7 @@ export const WithSubtitle: StoryObj<typeof HeaderPlain> = {
 
 export const DefaultWithSearch: StoryObj<typeof HeaderPlain> = {
   args: {
-    subheading: (
+    metatitle: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
       </Text>
@@ -100,7 +100,7 @@ export const DefaultWithSearch: StoryObj<typeof HeaderPlain> = {
 
 export const DefaultWithSearchAndFilters: StoryObj<typeof HeaderPlain> = {
   args: {
-    subheading: (
+    metatitle: (
       <Text tag="h3" variation="subheading-1">
         Optional meta title
       </Text>

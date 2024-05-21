@@ -59,7 +59,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
     (Story) => (
       <Themes theme={'A-HCA-White'}>
         <HeaderPlain
-          subheading={<Text variation={'subheading-1'}>our HCA blog</Text>}
+          metatitle={<Text variation={'subheading-1'}>our HCA blog</Text>}
           heading={
             <Text variation={'display-2'}>
               News & articles about healthcare{' '}
