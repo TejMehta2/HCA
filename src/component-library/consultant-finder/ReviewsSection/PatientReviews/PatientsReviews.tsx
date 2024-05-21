@@ -15,7 +15,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any>([]);
   const [total, setTotal] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [selectValue, setSelectValue] = useState<string>('asc');
+  const [selectValue, setSelectValue] = useState<string>('desc');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
