@@ -70,7 +70,9 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
         // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
         const res = await fetch(consultantSlugsURL, {
           cache: 'force-cache',
-          next: { revalidate: revalidate.now() ? 0 : 3600 },
+          next: {
+            revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+          },
         });
         if (res.ok) {
           const consultantsXML = await res.text();
@@ -111,7 +113,10 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
 export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   // revalidateTag('cacheGetActiveLiveDiaryConsultantSlugs'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getActiveLiveDiaryConsultantSlugs();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetActiveLiveDiaryConsultantSlugs cache revalidate flag:${revalidate.now()}`
     );
@@ -164,7 +169,9 @@ async function __getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         const consultantsOnLDB = await res.json();
@@ -274,7 +281,9 @@ async function __getHolidays(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 604800 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+        },
       });
       if (res.ok) {
         holidays = await res.json();
@@ -356,7 +365,9 @@ async function __getCMAs(): Promise<any[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         cmas = await res.json();
@@ -397,7 +408,9 @@ export async function getCMA(id: string): Promise<any> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         cma = await res.json();

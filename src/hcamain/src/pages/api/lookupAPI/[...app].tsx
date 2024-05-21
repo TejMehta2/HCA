@@ -161,7 +161,10 @@ export default async function handler(
             {
               redirect: 'manual',
               cache: 'force-cache',
-              next: { revalidate: revalidate.now() ? 0 : 3600 },
+              next: {
+                revalidate:
+                  revalidate.now() || revalidate.noCache() ? false : 3600,
+              },
             }
           );
           //console.log('loaded xl', xlData);
@@ -169,7 +172,10 @@ export default async function handler(
           if (xlData.redirected) {
             xlData = await fetch(xlData.url, {
               cache: 'force-cache',
-              next: { revalidate: revalidate.now() ? 0 : 3600 },
+              next: {
+                revalidate:
+                  revalidate.now() || revalidate.noCache() ? false : 3600,
+              },
             });
           }
           const blob = await xlData.blob();

@@ -97,9 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
       slugs = slugs.filter((slug) => slug && slug.length > 0);
     } else {
-      if (revalidate.now()) {
-        slugs = await getActiveConsultantSlugs();
-      }
+      slugs = await getActiveConsultantSlugs();
     }
   } catch (error) {
     console.warn(
@@ -159,7 +157,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const props = await sitecorePagePropsFactory.create(context);
       return {
         props,
-        revalidate: revalidate.now() ? 0 : revalidationSeconds, // In seconds
+        revalidate: revalidationSeconds, // In seconds
         notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
       };
     } catch (error) {

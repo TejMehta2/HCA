@@ -38,7 +38,9 @@ export async function getSpecialistProfileData(
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 3600 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+      },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -208,7 +210,9 @@ async function __getFacilitiesData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 604800 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+      },
     });
 
     /* if running client side, CORS
@@ -271,7 +275,9 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 3600 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+      },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -308,7 +314,9 @@ export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(consultantProfilesURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         const consultantJSON = await res.json();
