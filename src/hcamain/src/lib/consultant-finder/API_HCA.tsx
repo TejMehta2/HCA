@@ -8,10 +8,15 @@ import {
 } from './API_Doctify';
 import { revalidate } from './revalidateNow';
 
-export async function getActiveConsultantSlugs(): Promise<string[]> {
-  // revalidateTag('cacheGetActiveConsultantSlugs'); should work - but throws - as requires Next 14 / use server
-  // workaround for clearing the cache
-  if (revalidate.now()) {
+export async function getActiveConsultantSlugs(
+  noCache: boolean = false // set true for calls from getStaticPaths
+): Promise<string[]> {
+  if (noCache) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getActiveConsultantSlugs();
+  } else if (revalidate.now()) {
+    // revalidateTag('cacheGetActiveConsultantSlugs'); should work - but throws - as requires Next 14 / use server
+    // workaround for clearing the cache
     console.log(
       `purging cacheGetActiveConsultantSlugs cache revalidate flag:${revalidate.now()}`
     );

@@ -90,7 +90,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
-    const HCAAPIConfig = await GetHCAConfig();
+    const HCAAPIConfig = await GetHCAConfig(true);
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
