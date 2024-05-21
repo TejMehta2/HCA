@@ -90,6 +90,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
+    revalidate.setNoCache(true); // we can't use the unstable_cache from here
     const HCAAPIConfig = await GetHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
@@ -103,6 +104,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       'Error occurred in StepConsultantProfile getStaticPaths',
       error
     );
+  } finally {
+    revalidate.setNoCache(false); // reset default use of unstable_cache
   }
 
   console.log('StepConsultantProfile slugs to pre-render', slugs);
@@ -143,6 +146,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+      revalidate.setNoCache(true); // we can't use the unstable_cache from here
       const HCAAPIConfig = await GetHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
@@ -153,7 +157,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const props = await sitecorePagePropsFactory.create(context);
       return {
         props,
-        revalidate: revalidate.now() ? 0 : revalidationSeconds, // In seconds
+        revalidate: revalidationSeconds, // In seconds
         notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
       };
     } catch (error) {
@@ -161,6 +165,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return {
         notFound: true,
       };
+    } finally {
+      revalidate.setNoCache(false); // reset default use of unstable_cache
     }
   }
 };

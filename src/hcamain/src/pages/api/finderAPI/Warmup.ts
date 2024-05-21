@@ -44,7 +44,9 @@ const longRunning = async (
 
   const res = await fetch(`${baseURL}/sitemap.hca.consultant-finder.xml`, {
     cache: 'force-cache',
-    next: { revalidate: revalidate.now() ? 0 : 3600 },
+    next: {
+      revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+    },
   });
 
   let slugs: string[] = [];
