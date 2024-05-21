@@ -8,10 +8,8 @@ import {
 } from './API_Doctify';
 import { revalidate } from './revalidateNow';
 
-export async function getActiveConsultantSlugs(
-  noCache: boolean = false // set true for calls from getStaticPaths
-): Promise<string[]> {
-  if (noCache) {
+export async function getActiveConsultantSlugs(): Promise<string[]> {
+  if (revalidate.noCache()) {
     // unstable_cache not supported from getStaticPaths
     return await __getActiveConsultantSlugs();
   } else if (revalidate.now()) {
@@ -220,7 +218,10 @@ export async function checkIfLiveBookingsIsAvailable(
 export async function getHolidays(): Promise<string[]> {
   // revalidateTag('cacheGetHolidays'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getHolidays();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetHolidays cache revalidate flag:${revalidate.now()}`
     );
@@ -299,7 +300,10 @@ async function __getHolidays(): Promise<string[]> {
 export async function getCMAs(): Promise<any[]> {
   // revalidateTag('cacheGetCMAs'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getCMAs();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetCMAs cache revalidate flag:${revalidate.now()}`
     );

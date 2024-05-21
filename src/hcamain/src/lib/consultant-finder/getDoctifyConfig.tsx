@@ -29,7 +29,10 @@ export interface IDoctifyConfig {
 export async function GetDoctifyConfig(): Promise<IDoctifyConfig> {
   // revalidateTag('cacheGetDoctifyConfig'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await _getDoctifyConfig();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetDoctifyConfig cache revalidate flag:${revalidate.now()}`
     );

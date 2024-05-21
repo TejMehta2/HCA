@@ -153,7 +153,10 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
 export async function getFacilitiesData(): Promise<any> {
   // revalidateTag('cacheGetFacilitiesData'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getFacilitiesData();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetFacilitiesData cache revalidate flag:${revalidate.now()}`
     );

@@ -90,19 +90,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
-    const HCAAPIConfig = await GetHCAConfig(true);
+    revalidate.setNoCache(true); // we can't use the unstable_cache from here
+    const HCAAPIConfig = await GetHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
       slugs = slugs.filter((slug) => slug && slug.length > 0);
     } else {
-      slugs = await getActiveConsultantSlugs(true);
+      if (revalidate.now()) {
+        slugs = await getActiveConsultantSlugs();
+      }
     }
   } catch (error) {
     console.warn(
       'Error occurred in StepConsultantProfile getStaticPaths',
       error
     );
+  } finally {
+    revalidate.setNoCache(false); // reset default use of unstable_cache
   }
 
   console.log('StepConsultantProfile slugs to pre-render', slugs);

@@ -29,7 +29,10 @@ interface Ic2Config {
 export async function GetC2Config(): Promise<Ic2Config> {
   // revalidateTag('cacheGetC2Config'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (revalidate.now()) {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await _getC2Config();
+  } else if (revalidate.now()) {
     console.log(
       `purging cacheGetC2Config cache revalidate flag:${revalidate.now()}`
     );
