@@ -96,7 +96,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       slugs = HCAAPIConfig.aPI_HCA_All_Consultants_MockSlugsList.split('\r\n');
       slugs = slugs.filter((slug) => slug && slug.length > 0);
     } else {
-      slugs = await getActiveConsultantSlugs();
+      slugs = await getActiveConsultantSlugs(true);
     }
   } catch (error) {
     console.warn(

@@ -71,7 +71,8 @@ export async function GetHCAConfig(
 ): Promise<IHCAConfig> {
   // revalidateTag('cacheGetHCAConfig'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
-  if (noCache) { // unstable_cache not supported from getStaticPaths
+  if (noCache) {
+    // unstable_cache not supported from getStaticPaths
     return await _getHCAConfig();
   } else if (revalidate.now()) {
     console.log(
