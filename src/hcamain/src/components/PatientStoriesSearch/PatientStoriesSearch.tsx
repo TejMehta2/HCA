@@ -114,7 +114,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
         <HeaderPlain
-          subheading={
+          metatitle={
             fields?.Heading?.value && (
               <Text variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />

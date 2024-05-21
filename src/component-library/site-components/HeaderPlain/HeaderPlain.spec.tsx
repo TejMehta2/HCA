@@ -5,7 +5,7 @@ import { HeaderPlainProps } from './HeaderPlain.types';
 import Text from '../../foundation/Text/Text';
 
 const mockProps: HeaderPlainProps = {
-  subheading: <Text tag="h3">Optional meta title</Text>,
+  metatitle: <Text tag="h3">Optional meta title</Text>,
   heading: <Text tag="h1">News & articles about healthcare</Text>,
   description: (
     <p>
