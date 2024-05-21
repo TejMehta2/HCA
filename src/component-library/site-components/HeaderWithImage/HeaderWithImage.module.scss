@@ -4,7 +4,6 @@
 
 .hero-with-image {
   background-color: var(--background);
-  min-height: px-to-rem(560);
   color: var(--text);
   overflow: hidden;
   position: relative;
@@ -36,8 +35,6 @@
   padding-bottom: $spacing-10;
   @include responsive-grid;
 
-  min-height: calc(100vh - px-to-rem(170));
-
   @include media(screen-l) {
     padding-top: px-to-rem(32);
     padding-bottom: px-to-rem(32);
@@ -50,19 +47,18 @@
   align-self: center;
 }
 
-.shape {
-  position: absolute;
-  width: px-to-rem(500);
-  height: px-to-rem(500);
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 99;
-}
-
 .image {
   @include diamond-image-mask;
 
+  min-height: px-to-rem(560);
+  min-width: px-to-rem(560);
+  top: 50%;
+  transform: translate(0, -50%);
+
+  @include media(screen-xl) {
+    min-height: px-to-rem(680);
+    min-width: px-to-rem(680);
+  }
   max-height: 100vh;
 }
 
