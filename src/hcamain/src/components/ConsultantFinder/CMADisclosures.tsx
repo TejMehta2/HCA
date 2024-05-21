@@ -11,6 +11,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import axios from 'axios';
 import { getSpecialistProfileData } from 'lib/consultant-finder/API_Doctify';
+import CmaDisclosure from '@component-library/consultant-finder/CmaDisclosure/CmaDisclosure';
 
 interface Fields {}
 
@@ -122,13 +123,13 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        <div className="component-content">
+        <CmaDisclosure>
           <div
             dangerouslySetInnerHTML={{
               __html: cmaHTML ? cmaHTML : 'No CMA record found',
             }}
-          />
-        </div>
+          ></div>
+        </CmaDisclosure>
       </div>
     );
   }
