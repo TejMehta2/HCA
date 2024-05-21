@@ -29,7 +29,6 @@
 .heading {
   display: flex;
   grid-row-start: 2;
-  margin-bottom: $spacing-5;
 
   &:last-child {
     margin-bottom: 0;
@@ -41,7 +40,12 @@
   margin-bottom: $spacing-3;
 }
 
+.subtitle {
+  margin-top: $spacing-3;
+}
+
 .body-copy {
+  margin-top: $spacing-5;
   grid-row-start: 3;
 
   @include apply-body-large;

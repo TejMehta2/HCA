@@ -51,6 +51,29 @@ export const Default: StoryObj<typeof HeaderPlain> = {
   },
 };
 
+export const WithSubtitle: StoryObj<typeof HeaderPlain> = {
+  args: {
+    heading: (
+      <Text tag="h1" variation="display-1">
+        News & articles about healthcare
+      </Text>
+    ),
+    subtitle: (
+      <Text tag="h2" variation="subheading-1">
+        Optional subtitle
+      </Text>
+    ),
+    description: (
+      <p>
+        Quis laboris proident sint amet id cillum do dolor in tempor est.
+        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+        dolore.
+      </p>
+    ),
+  },
+};
+
 export const DefaultWithSearch: StoryObj<typeof HeaderPlain> = {
   args: {
     subheading: (
