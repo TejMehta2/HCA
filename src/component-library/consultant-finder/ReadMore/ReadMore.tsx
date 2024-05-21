@@ -63,7 +63,7 @@ const ReadMore = (props: ReadMoreProps): JSX.Element => {
     <div className={styles['read-more']}>
       <div ref={containerRef}>{children}</div>
       {paragraphs && paragraphs.length > maxContent && (
-        <div>
+        <div className={styles['read-more-buttons']}>
           {!isExpanded && (
             <TextLink>
               <button onClick={toggleExpansion}>
