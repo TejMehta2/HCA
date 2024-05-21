@@ -148,6 +148,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
+      revalidate.setNoCache(true); // we can't use the unstable_cache from here
       const HCAAPIConfig = await GetHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
@@ -166,6 +167,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return {
         notFound: true,
       };
+    } finally {
+      revalidate.setNoCache(false); // reset default use of unstable_cache
     }
   }
 };
