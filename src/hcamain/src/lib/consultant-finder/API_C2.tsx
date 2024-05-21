@@ -71,7 +71,9 @@ export async function getLDBFirstAppointmentDatas(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 60 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+      },
     });
     if (res.ok) {
       const result = await res.json();
@@ -129,7 +131,9 @@ export async function getLDBFirstAppointmentData(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 60 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+      },
     });
     if (res.ok) {
       const result = await res.json();
@@ -213,7 +217,9 @@ export async function getLDBConsultantDetails(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 60 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+      },
     });
     if (res.ok) {
       returnData = await res.json();
@@ -286,7 +292,9 @@ export async function getLDBConsultantSlots(
         securitytoken: `"${header}"`,
       },
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 60 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+      },
     });
     if (res.ok) {
       returnData = await res.json();
