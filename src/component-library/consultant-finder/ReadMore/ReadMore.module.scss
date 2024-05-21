@@ -2,5 +2,14 @@
 @use '../../utilities/index.module' as *;
 
 .read-more {
-  font-weight: bold;
+  button {
+    span {
+      font-size: px-to-rem(14);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
