@@ -23,7 +23,6 @@ import NotFound from 'src/NotFound';
 import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
-import { unstable_cache } from 'next/cache';
 
 const SitecorePage = ({
   notFound,
