@@ -1,12 +1,8 @@
 ﻿---
-ID: "2effb258-e64b-4ac4-8352-d1e6d38a947b"
-Parent: "64501c77-9428-4d19-88d9-17dc7905e510"
-Template: "64501c77-9428-4d19-88d9-17dc7905e510"
-Path: /sitecore/templates/Project/HCA/Foundation/Settings/Generic Settings Folder/__Standard Values
-SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: "{2A3FE3A4-0196-4FB6-9B6E-5FAEB3815AB9}"
+ID: "cce4fc34-dc0f-4c9e-9a20-7b0afbd9f0a4"
+Parent: "35149405-5894-4266-99ff-62b15cc0692f"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Project/HCA/Settings
 Languages:
 - Language: en
   Versions:
@@ -14,22 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240110T092438Z
+      Value: 20240521T152933Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2eee085b-581b-4c19-b429-379f7f39c1de"
+      Value: "ebb5253d-34d6-4eea-80a5-e6a0109c1f02"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240207T235401Z
+      Value: 20240521T152933Z
