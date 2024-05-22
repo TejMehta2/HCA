@@ -5,6 +5,7 @@
 .wrapper {
   position: relative;
   flex-direction: column;
+  color: var(--text);
 
   .cross {
     display: flex;
@@ -26,15 +27,36 @@
     }
   }
 
+  .search-wrapper {
+    @extend %searchbar;
+
+    height: var(--spacing-9);
+  }
+
+  &:has(.error-message) {
+    color: var(--field-error-colour);
+
+    .search-wrapper {
+      color: var(--field-error-colour);
+    }
+
+    input {
+      border-color: var(--field-error-colour);
+    }
+  }
+
   &:has(input:focus) {
     .cross {
       opacity: 1;
     }
   }
-}
 
-.search-wrapper {
-  @extend %searchbar;
+  .error-message {
+    scroll-margin-top: px-to-rem(300);
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
 }
 
 .results {
@@ -53,6 +75,13 @@
 
     li {
       width: 100%;
+
+      .loader {
+        padding: px-to-rem(11) $spacing-6;
+        display: flex;
+        justify-content: center;
+        gap: $spacing-2;
+      }
 
       button {
         @include apply-body-medium-large;
@@ -95,53 +124,12 @@
   display: grid;
   gap: $spacing-5 0;
   color: var(--text);
-
-  label {
-    display: flex;
-    align-items: center;
-    gap: $spacing-2;
-
-    @include apply-body-medium-extra-large;
-  }
-
-  input {
-    color: inherit;
-    width: 100%;
-    padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
-    height: $spacing-9;
-    border: 1px solid $navy-blue-60;
-    border-radius: $radius-large;
-
-    @include apply-body-medium-large;
-  }
-}
-
-.address-1,
-.postcode,
-.city,
-.country {
-  .error-message {
-    display: none;
-    align-items: center;
-    gap: $spacing-2;
-  }
-
-  &:has(input:not(:focus):user-invalid) {
-    label {
-      color: var(--field-error-colour);
-    }
-
-    input {
-      border-color: var(--field-error-colour);
-    }
-
-    .error-message {
-      color: var(--field-error-colour);
-      display: flex;
-    }
-  }
 }
 
 .hidden {
   display: none;
+}
+
+.field-label {
+  @include apply-body-medium-extra-large;
 }

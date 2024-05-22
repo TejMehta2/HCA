@@ -4,9 +4,7 @@ import styles from './PhoneField.module.scss';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
-// eslint-disable-next-line
-// @ts-ignore
-import IntlTelInput from 'intl-tel-input/react/build/IntlTelInput.esm';
+import IntlTelInput from 'intl-tel-input/react';
 
 const PhoneField = (props: PhoneFieldProps): JSX.Element => {
   const { label, required = false, helpText } = props;
@@ -50,12 +48,16 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
           required: required,
           onBlur: handleSubmit,
         }}
+        // eslint-disable-next-line
+        // @ts-ignore
         onChangeNumber={setNumber}
         onChangeValidity={setIsValid}
         onChangeErrorCode={setErrorCode}
         initOptions={{
           nationalMode: false,
           initialCountry: 'gb',
+          // eslint-disable-next-line
+          // @ts-ignore
           countrySearch: false,
           strictMode: true,
           utilsScript:
