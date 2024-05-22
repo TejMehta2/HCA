@@ -134,6 +134,8 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
       const target = event.target as unknown as HTMLInputElement;
       const name = target.name;
 
+      if (target.form === null) return;
+
       handleChange((params) => {
         setInputAsAutocomplete(name, params);
         resetPagination(name, params);
