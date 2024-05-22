@@ -108,7 +108,7 @@ export const Default: StoryObj<typeof SearchWrapper> = {
   ],
 };
 
-export const ServiceLines: StoryObj<typeof SearchWrapper> = {
+export const Departments: StoryObj<typeof SearchWrapper> = {
   args: {
     searchDetail: (
       <Text tag="h2" variation="heading-1">
