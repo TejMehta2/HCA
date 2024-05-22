@@ -147,8 +147,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-      console.log('is unstable cache available?: ', unstable_cache);
-      //revalidate.setNoCache(true); // we can't use the unstable_cache from here in the build process
+      console.log(
+        'is unstable cache available?: ',
+        revalidate.isCacheAvailable
+      );
+      if (!revalidate.isCacheAvailable) {
+        revalidate.setNoCache(true); // we can't use the unstable_cache from here in the build process
+      }
       const HCAAPIConfig = await GetHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
