@@ -93,8 +93,9 @@ const Schema = (props: SchemaProps) => {
 
     const pageType = getPageType(path);
 
-    const { fields: reviewFields } =
-      (reviewComponent as IntroBlockProps) || (footer as FooterProps);
+    const reviewFields =
+      (reviewComponent as IntroBlockProps)?.fields ||
+      (footer as FooterProps)?.fields;
     const heroFields = heroComponent?.fields;
     const locationHeroFields = locationHeroComponent?.fields?.data?.contextItem;
     const name =

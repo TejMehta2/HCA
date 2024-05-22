@@ -1,45 +1,26 @@
 import React from 'react';
 import {
-  Field,
   Text as JssText,
-  LinkField,
   Link as JssLink,
-  RichText,
+  RichText as JssRichText,
   useSitecoreContext,
+  useComponentProps,
+  GetServerSideComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
-import Params from 'src/types/params';
+import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
+import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
+import Icons from '@component-library/foundation/Icons/Icons';
+import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
+import RichText from '@component-library/core-components/RichText/RichText';
+import {
+  PaymentFormConfirmationProps,
+  TransactionStatusResponse,
+} from './Payment.types';
+import Header from 'components/PaymentForm/helpers/Header';
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
-};
-
-interface Fields {
-  Title?: Field<string>;
-  Text?: Field<string>;
-  SummaryTitle?: Field<string>;
-  AmountPaidText?: Field<string>;
-  InvoiceReferenceText?: Field<string>;
-  PaymentDateText?: Field<string>;
-  PaymentTypeText?: Field<string>;
-  StatusText?: Field<string>;
-  TransactionIDText?: Field<string>;
-  CTAIcon?: HCAIconFields;
-  CTAText?: Field<string>;
-  ErrorTitle?: Field<string>;
-  ErrorMessage?: Field<string>;
-  ErrorText?: Field<string>;
-  ErrorCTAIcon?: HCAIconFields;
-  ErrorCTALink: LinkField;
-}
-
-type PaymentFormConfirmationProps = {
-  params?: Params;
-  fields?: Fields;
-};
+const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
 const PaymentFormConfirmationDefaultComponent = (
   props: PaymentFormConfirmationProps
@@ -62,87 +43,158 @@ const PaymentFormConfirmationDefaultComponent = (
 
 export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  const transactionStatus = useComponentProps<TransactionStatusResponse>(
+    props.rendering?.uid
+  );
+
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <PaymentFormConfirmationDefaultComponent {...props} />;
   }
 
+  if (transactionStatus?.status !== 'Successful') {
+    return (
+      <HeaderText
+        fullHeight={false}
+        title={
+          <Text
+            variation={props.params?.HeadingSize || 'display-4'}
+            tag={props.params?.HeadingTag || 'h2'}
+          >
+            <JssText field={props.fields?.ErrorTitle} />
+          </Text>
+        }
+        error={<JssText field={props.fields?.ErrorMessage} />}
+        description={
+          <RichText>
+            <JssRichText field={props.fields?.ErrorText} />
+          </RichText>
+        }
+        cta={
+          isExperienceEditor ? (
+            <JssLink field={props.fields?.ErrorCTALink}></JssLink>
+          ) : props.fields.ErrorCTALink?.value.href &&
+            props.fields?.ErrorCTALink ? (
+            <Button size={'large'} variation={'full'}>
+              <JssLink
+                href={props.fields.ErrorCTALink?.value.href}
+                field={props.fields?.ErrorCTALink}
+              >
+                {props?.fields?.ErrorCTAIcon && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value ||
+                        '',
+                    }}
+                  />
+                )}
+                {props?.fields?.ErrorCTALink?.value?.text && (
+                  <JssRichText
+                    field={{
+                      value: props.fields?.ErrorCTALink?.value?.text,
+                    }}
+                  />
+                )}
+              </JssLink>
+            </Button>
+          ) : (
+            <></>
+          )
+        }
+      />
+    );
+  }
+
+  const {
+    amount,
+    referenceNumber,
+    paymentDate,
+    paymentType,
+    status,
+    // lastUpdateDate,
+    transactionId,
+  } = transactionStatus;
+
   return (
     <>
-      <span>Success Message</span>
-      <Text
-        variation={props.params?.HeadingSize || 'display-4'}
-        tag={props.params?.HeadingTag || 'h2'}
-      >
-        <JssText field={props.fields?.Title} />
-      </Text>
-      <Text variation={'body-large'}>
-        <RichText tag="span" field={props.fields?.Text} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.SummaryTitle} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.AmountPaidText} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.InvoiceReferenceText} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.PaymentDateText} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.PaymentTypeText} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.StatusText} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.TransactionIDText} />
-      </Text>
-      <span>Error Message</span>
-      <Text
-        variation={props.params?.HeadingSize || 'display-4'}
-        tag={props.params?.HeadingTag || 'h2'}
-      >
-        <JssText field={props.fields?.ErrorTitle} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.ErrorMessage} />
-      </Text>
-      <Text variation={'body-large'}>
-        <RichText tag="span" field={props.fields?.ErrorText} />
-      </Text>
-      {isExperienceEditor ? (
-        <JssLink field={props.fields?.ErrorCTALink}></JssLink>
-      ) : props.fields.ErrorCTALink?.value.href &&
-        props.fields?.ErrorCTALink ? (
-        <Button size={'large'} variation={'full'}>
-          <JssLink
-            href={props.fields.ErrorCTALink?.value.href}
-            field={props.fields?.ErrorCTALink}
+      <Header stage={'Confirmation'} />
+      <PaymentSummary
+        heading={
+          <Text
+            variation={props.params?.HeadingSize || 'display-4'}
+            tag={props.params?.HeadingTag || 'h2'}
           >
-            {props?.fields?.ErrorCTAIcon && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html:
-                    props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value || '',
-                }}
-              />
-            )}
-            {props?.fields?.ErrorCTALink?.value?.text && (
-              <RichText
-                tag="span"
-                field={{
-                  value: props.fields?.ErrorCTALink?.value?.text,
-                }}
-              />
-            )}
-          </JssLink>
-        </Button>
-      ) : (
-        <></>
-      )}
+            <JssText field={props.fields?.Title} />
+          </Text>
+        }
+        bodyText={
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
+        }
+        summary={
+          <ConfirmationSummary
+            title={<JssText field={props.fields?.SummaryTitle} />}
+            optionalItems={[
+              {
+                title: <JssText field={props.fields?.AmountPaidText} />,
+                text: amount,
+              },
+              {
+                title: <JssText field={props.fields?.InvoiceReferenceText} />,
+                text: referenceNumber,
+              },
+              {
+                title: <JssText field={props.fields?.PaymentDateText} />,
+                text: paymentDate,
+              },
+              {
+                title: <JssText field={props.fields?.PaymentTypeText} />,
+                text: paymentType,
+              },
+              {
+                title: <JssText field={props.fields?.StatusText} />,
+                text: status,
+              },
+              {
+                title: <JssText field={props.fields?.TransactionIDText} />,
+                text: transactionId,
+              },
+            ]}
+          />
+        }
+        cta={
+          <Button variation="full-dark" size="large">
+            <button
+              onClick={() => {
+                window.print();
+              }}
+            >
+              <Icons iconName="iconPrint" />
+              Print confirmation
+            </button>
+          </Button>
+        }
+      />
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideComponentProps = async (
+  _,
+  __,
+  context
+) => {
+  const { query } = context;
+  try {
+    const transactionId = query['transaction_id'];
+    const response = await fetch(
+      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?transactionId=${transactionId}`
+    );
+    const transactionStatus = await response.json();
+    return transactionStatus?.response;
+  } catch {
+    return;
+  }
 };

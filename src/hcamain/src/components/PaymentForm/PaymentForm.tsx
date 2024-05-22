@@ -1,11 +1,6 @@
 import React, { useState, useRef, FormEvent } from 'react';
-
-import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
-import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
-import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Themes from '@component-library/foundation/Themes/Themes';
-import FormProgressBar from '@component-library/site-components/FormProgressBar/FormProgressBar';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
@@ -31,6 +26,7 @@ import MarketingPreferences from '@component-library/site-components/MarketingPr
 import { RichText as JssRichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from './helpers/DynamicTextField';
+import Header from './helpers/Header';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
   // Hooks
@@ -117,58 +113,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
   return (
     <>
-      <PaymentFormHeader
-        paymentsText="Secure Online Payments"
-        contactText="Any questions?"
-        phoneNumber={{
-          icon: <Icons iconName="iconPhone" />,
-          text: '03332 223 133',
-          number: '03332223133',
-        }}
-        openingHours={{
-          icon: <Icons iconName="iconClock" />,
-          text: 'Mon-Fri 9am - 5:30pm',
-        }}
-        close={
-          <TextLink>
-            <a href="/">
-              <span>Close</span>
-              <Icons iconName="iconCross" />
-            </a>
-          </TextLink>
-        }
-      />
-      <FormProgressBar
-        pages={[
-          {
-            pageControl: (
-              <div>
-                <Icons iconName="iconInfo" />
-                <Text variation="body-medium-extra-large">Patient Details</Text>
-              </div>
-            ),
-            stage: 'active',
-          },
-          {
-            pageControl: (
-              <div>
-                <Icons iconName="iconCreditCard" />
-                <Text variation="body-bold-extra-large">Payment</Text>
-              </div>
-            ),
-            stage: 'inactive',
-          },
-          {
-            pageControl: (
-              <div>
-                <Icons iconName="iconCheckCircle" />
-                <Text variation="body-medium-extra-large">Confirmation</Text>
-              </div>
-            ),
-            stage: 'inactive',
-          },
-        ]}
-      />
+      <Header />
 
       <Themes theme="A-HCA-White">
         <form
