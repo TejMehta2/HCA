@@ -90,7 +90,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     // Note: Next.js runs export in production mode
-    revalidate.setNoCache(true); // we can't use the unstable_cache from here
+    if (!revalidate.isCacheAvailable()) {
+      revalidate.setNoCache(true); // we can't use the unstable_cache from here in the build process
+    }
     const HCAAPIConfig = await GetHCAConfig();
     if (HCAAPIConfig.aPI_HCA_All_Consultants_MockConsultants) {
       // mock from Sitecore / SSG slows down the build, only use real on prod
@@ -146,11 +148,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-      console.log(
-        'is unstable cache available?: ',
-        revalidate.isCacheAvailable
-      );
-      if (!revalidate.isCacheAvailable) {
+      if (!revalidate.isCacheAvailable()) {
         revalidate.setNoCache(true); // we can't use the unstable_cache from here in the build process
       }
       const HCAAPIConfig = await GetHCAConfig();

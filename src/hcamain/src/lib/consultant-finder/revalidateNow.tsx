@@ -39,15 +39,15 @@ class RevalidationMashall {
       this.testCachedAvailable()
         .then(() => {
           this._isCacheAvailable = true;
-          console.log('unstable_cache is available');
+          //console.log('unstable_cache is available');
         })
         .catch(() => {
-          console.log('unstable_cache is not available 1');
+          //console.log('unstable_cache is not available 1');
           this._isCacheAvailable = false;
         });
     } catch {
       this._isCacheAvailable = false;
-      console.log('unstable_cache is not available 2');
+      //console.log('unstable_cache is not available 2');
     }
   }
 
