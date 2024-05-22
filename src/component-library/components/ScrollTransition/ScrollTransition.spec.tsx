@@ -121,7 +121,7 @@ const mockProps: ScrollTransitionProps = {
         title={
           <Text variation="display-2">Exceptional care you can trust</Text>
         }
-        subtitle={<Text variation="subheading-1">our service lines</Text>}
+        subtitle={<Text variation="subheading-1">our departments</Text>}
         bodyText={
           <Text>
             Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -132,7 +132,7 @@ const mockProps: ScrollTransitionProps = {
         }
         cta={
           <a href="#">
-            <Icons iconName="iconSearch"></Icons> Search all service lines
+            <Icons iconName="iconSearch"></Icons> Search all departments
           </a>
         }
       >

@@ -17,7 +17,7 @@ const HomepageHeroOverlap = (props: HomepageHeroOverlapProps): JSX.Element => {
       <HeaderWithImage
         title={
           <Text variation={'display-1'} tag="h2">
-            Services lines
+            Departments
           </Text>
         }
         copy={

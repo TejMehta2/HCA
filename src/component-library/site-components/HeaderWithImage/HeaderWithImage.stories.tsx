@@ -55,7 +55,7 @@ export const Default: StoryObj<typeof HeaderWithImage> = {
   args: {
     title: (
       <Text variation="display-1" tag="h2">
-        Services lines
+        Departments
       </Text>
     ),
     copy: (
@@ -102,12 +102,12 @@ export const WithSubtitle: StoryObj<typeof HeaderWithImage> = {
   args: {
     title: (
       <Text variation="display-1" tag="h1">
-        Services lines
+        Departments
       </Text>
     ),
     subtitle: (
       <Text variation="subheading-1" tag="h2">
-        Services lines
+        Departments
       </Text>
     ),
     copy: (
