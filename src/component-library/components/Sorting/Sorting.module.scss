@@ -51,11 +51,6 @@ $max-options: 5; // Increase max if more "sort by" options are required
       display: block;
     }
   }
-  .wrapper:has(input:nth-of-type(#{$i}):focus) .option:nth-of-type(#{$i}) {
-    .label {
-      text-decoration: underline;
-    }
-  }
 }
 
 .fieldset {
