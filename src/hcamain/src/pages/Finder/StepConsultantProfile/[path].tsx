@@ -23,6 +23,7 @@ import NotFound from 'src/NotFound';
 import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
+import { unstable_cache } from 'next/cache';
 
 const SitecorePage = ({
   notFound,
@@ -146,7 +147,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     try {
       // Squash pre-render errors in production which occur outside of suspense, re-direct to 404s
-      revalidate.setNoCache(true); // we can't use the unstable_cache from here
+      console.log('is unstable cache available?: ', unstable_cache);
+      //revalidate.setNoCache(true); // we can't use the unstable_cache from here in the build process
       const HCAAPIConfig = await GetHCAConfig();
       const revalidationSeconds =
         Number.parseInt(
