@@ -23,7 +23,7 @@ class RevalidationMashall {
   }
 
   public isCacheAvailable(): boolean {
-    return this._noCache;
+    return this._isCacheAvailable;
   }
 
   private cacheFunc = (ms: number) =>
