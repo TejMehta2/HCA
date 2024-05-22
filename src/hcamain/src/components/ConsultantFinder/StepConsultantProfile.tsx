@@ -854,7 +854,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     contentVariation="full-width"
                   >
                     <Link
-                      href={`${props?.fields?.EnquireNowButtonLink?.value?.href}/${serverSideData?.ProfileJson.slug}`}
+                      href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
                     >
                       <span>
                         {props?.fields?.EnquireNowButtonLink?.value?.title ||
