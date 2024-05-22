@@ -61,7 +61,7 @@ const mockProps: ServiceCardsProps = {
     </React.Fragment>,
   ],
   title: <Text variation="display-2">Exceptional care you can trust</Text>,
-  subtitle: <Text variation="subheading-1">our service lines</Text>,
+  subtitle: <Text variation="subheading-1">our departments</Text>,
   bodyText: (
     <Text>
       Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -81,6 +81,6 @@ describe('ServiceCards', () => {
 describe('ServiceCards', () => {
   it('Renders subtitle from props', async () => {
     const { getByText } = render(<ServiceCards {...mockProps} />);
-    expect(getByText('our service lines')).toBeVisible();
+    expect(getByText('our departments')).toBeVisible();
   });
 });

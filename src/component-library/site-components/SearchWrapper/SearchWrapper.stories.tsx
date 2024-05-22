@@ -112,7 +112,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
   args: {
     searchDetail: (
       <Text tag="h2" variation="heading-1">
-        64 service lines
+        64 departments
       </Text>
     ),
     children: (
@@ -129,7 +129,7 @@ export const ServiceLines: StoryObj<typeof SearchWrapper> = {
     (Story) => (
       <Themes theme={'I-HCA-Goldenrod'}>
         <HeaderPlain
-          heading={<Text variation={'display-2'}>All Service Lines</Text>}
+          heading={<Text variation={'display-2'}>All Departments</Text>}
         >
           <SearchBar placeholder="">
             <Filters
@@ -192,7 +192,7 @@ export const OrthopaedicTreatments: StoryObj<typeof SearchWrapper> = {
   args: {
     searchDetail: (
       <Text tag="h2" variation="heading-1">
-        64 service lines
+        64 Departments
       </Text>
     ),
     showing: (
@@ -291,7 +291,7 @@ export const LocationsList: StoryObj<typeof SearchWrapper> = {
   args: {
     searchDetail: (
       <Text tag="h2" variation="heading-1">
-        64 service lines
+        64 Departments
       </Text>
     ),
     showing: (

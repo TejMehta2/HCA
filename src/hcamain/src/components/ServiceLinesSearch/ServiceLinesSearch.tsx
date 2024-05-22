@@ -218,7 +218,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           {error ? (
             <ErrorMessage contentVariation="no-container">
               <Text tag="h2" variation="display-4">
-                No service lines results found.
+                No departments results found.
               </Text>
               <Text tag="p" variation="body-extra-large">
                 Please try another search
