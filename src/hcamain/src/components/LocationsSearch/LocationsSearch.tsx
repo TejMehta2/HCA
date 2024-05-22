@@ -35,6 +35,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import { ApiSearchProps } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
+import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -238,10 +239,18 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
             ref={searchWrapperRef}
             searchDetail={
               <Text tag="h3" variation="heading-1">
-                <span>
-                  <span>{resultsCount} </span>
-                  <JssText field={fields?.SearchResultsText} />
-                </span>
+                <SearchDetail
+                  searchResultsTextWithInput={
+                    fields?.SearchResultsTextWithInput?.value
+                  }
+                  searchResultsText={fields?.SearchResultsText?.value}
+                  resultsCount={resultsCount}
+                  input={
+                    searchParams.get('input') ||
+                    searchParams.get('autocomplete') ||
+                    undefined
+                  }
+                />
               </Text>
             }
             showing={
