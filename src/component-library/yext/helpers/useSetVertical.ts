@@ -6,7 +6,7 @@ export const verticalMap = new Map<VerticalKey, VerticalLabel>([
   ['healthcare_facilities', 'Locations'],
   ['tests_and_treatments', 'Tests & Treatments'],
   ['healthcare_professionals', 'Consultants'],
-  ['specialties', 'Service Lines'],
+  ['specialties', 'Departments'],
   ['articles', 'Articles'],
   ['faqs', 'FAQs'],
 ]);

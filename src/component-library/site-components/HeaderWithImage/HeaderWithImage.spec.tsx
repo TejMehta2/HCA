@@ -10,7 +10,7 @@ import Image from 'next/image';
 const mockProps: HeaderWithImageProps = {
   title: (
     <Text variation="display-1" tag="h2">
-      Services lines
+      Departments
     </Text>
   ),
   copy: (
@@ -54,6 +54,6 @@ const mockProps: HeaderWithImageProps = {
 describe('HeaderWithImage', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<HeaderWithImage {...mockProps} />);
-    expect(getByText('Services lines')).toBeVisible();
+    expect(getByText('Departments')).toBeVisible();
   });
 });

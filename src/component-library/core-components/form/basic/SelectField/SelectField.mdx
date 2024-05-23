@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SelectFieldStories from './SelectField.stories';
+
+<Meta of={SelectFieldStories} />
+
+# SelectField
+
+## Description
+
+The SelectField component is a custom dropdown which uses a Modal to display the list of options.
+It has a hidden input field which contains the selected item, this is what the validation is ran against. There is also the option to add a label, help text, error message, and placeholder
+
+It is intended to be used in the payment form
+
+It can be composed like this:
+
+```tsx
+<SelectField
+  id="select1"
+  label="Select field label"
+  placeholder="Please select"
+  required={true}
+  errorMessage="Error message"
+  options={[
+    {
+      text: 'Option 1',
+    },
+    {
+      text: 'Option 2',
+    },
+    {
+      text: 'Option 3',
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={SelectFieldStories.Default} />
+<Controls of={SelectFieldStories.Default} />

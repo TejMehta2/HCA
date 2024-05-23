@@ -1,0 +1,17 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cma-disclosure {
+  margin: $spacing-6 0 $spacing-11 0;
+  @include responsive-container;
+
+  color: $navy-blue-100;
+
+  h1 {
+    @include apply-heading-1;
+  }
+
+  p {
+    @include apply-body-medium;
+  }
+}

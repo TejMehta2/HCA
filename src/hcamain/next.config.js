@@ -90,6 +90,11 @@ const nextConfig = {
         source: '/sitemap.hca.consultant-finder.xml',
         destination: `/api/api-layer/sitemap/consultants`,
       },
+      {
+        source: '/paymentForm/:path*',
+        destination: '/api/api-layer/api/paymentForm/:path*',
+        
+      },
     ];
   },
   webpack(config) {

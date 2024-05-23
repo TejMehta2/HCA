@@ -1,36 +1,9 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import AddressFinder from './AddressFinder';
-import Button from '../Button/Button';
 import Themes from '../../foundation/Themes/Themes';
-import { addressResult } from './AddressFinder.types';
 
-const mockResults = [
-  {
-    line1: '1 Test Street',
-    line2: 'Somewhere',
-    city: 'London',
-    country: 'UK',
-    postcode: 'SE1 1AB',
-    id: '1',
-  },
-  {
-    line1: '2 Test Street',
-    line2: 'Somewhere',
-    city: 'London',
-    country: 'UK',
-    postcode: 'SE1 1AB',
-    id: '2',
-  },
-  {
-    line1: '3 Test Street',
-    line2: '',
-    city: 'London',
-    country: 'UK',
-    postcode: 'SE1 1AB',
-    id: '3',
-  },
-];
+import TextField from '../form/basic/TextField/TextField';
 
 const meta: Meta<typeof AddressFinder> = {
   title: 'core-components/AddressFinder',
@@ -40,68 +13,95 @@ const meta: Meta<typeof AddressFinder> = {
 export default meta;
 type Story = StoryObj<typeof AddressFinder>;
 
-const AddressFinderWithHooks = () => {
-  const [results, setResults] = useState<addressResult[]>([]);
-  const [showAddressErrors, setShowAddressErrors] = useState(false);
-  const [term, setTerm] = useState('');
-  const [submittedAddress, setSubmittedAddress] = useState('');
-
-  const dummySubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setShowAddressErrors(false);
-    if (submittedAddress.length) {
-      alert(submittedAddress);
-    } else {
-      setShowAddressErrors(true);
-    }
-  };
-
-  useEffect(() => {
-    if (term) {
-      setResults(mockResults);
-    }
-  }, [term]);
-
-  useEffect(() => {
-    if (submittedAddress.length) {
-      setShowAddressErrors(false);
-    }
-  }, [submittedAddress]);
-
-  return (
-    <>
+export const Default: Story = {
+  render: () => (
+    <AddressFinder
+      render={(splitAddressResponse) => {
+        if (!splitAddressResponse) return <></>;
+        const { address1, address2, postcode, town } = splitAddressResponse;
+        return (
+          <>
+            <TextField
+              label={'Line 1'}
+              name={'line1'}
+              type="text"
+              defaultValue={address1 || ''}
+            />
+            <TextField
+              label={'Line 2'}
+              name={'line2'}
+              type="text"
+              defaultValue={address2 || ''}
+            />
+            <TextField
+              label={'Postcode'}
+              name={'postcode'}
+              type="text"
+              defaultValue={postcode || ''}
+            />
+            <TextField
+              label={'Town'}
+              name={'town'}
+              type="text"
+              defaultValue={town || ''}
+            />
+          </>
+        );
+      }}
+    />
+  ),
+  decorators: [
+    (Story) => (
       <Themes theme="A-HCA-White">
-        <form
-          onSubmit={dummySubmit}
-          style={{ width: 700, margin: 'auto', padding: '2rem' }}
-          noValidate={true}
-        >
-          <AddressFinder
-            addressResults={results}
-            searchAddress={(term) => {
-              setTerm(term);
-              setResults([]);
-            }}
-            chosenAddress={(address) => {
-              const { line1 } = address;
-              setSubmittedAddress(`${line1}`);
-            }}
-            displayErrors={showAddressErrors}
-            errors={(error) => {
-              setShowAddressErrors(error);
-            }}
-          />
-          <div style={{ paddingTop: '2rem' }}>
-            <Button variation="full" size="large">
-              <button type="submit">Submit</button>
-            </Button>
-          </div>
-        </form>
+        <Story />
       </Themes>
-    </>
-  );
+    ),
+  ],
 };
 
-export const Default: Story = {
-  render: () => <AddressFinderWithHooks />,
+export const WithError: Story = {
+  render: () => (
+    <AddressFinder
+      error={'Error message'}
+      render={(splitAddressResponse) => {
+        if (!splitAddressResponse) return <></>;
+        const { address1, address2, postcode, town } = splitAddressResponse;
+        return (
+          <>
+            <TextField
+              label={'Line 1'}
+              name={'line1'}
+              type="text"
+              defaultValue={address1 || ''}
+            />
+            <TextField
+              label={'Line 2'}
+              name={'line2'}
+              type="text"
+              defaultValue={address2 || ''}
+            />
+            <TextField
+              label={'Postcode'}
+              name={'postcode'}
+              type="text"
+              defaultValue={postcode || ''}
+            />
+            <TextField
+              label={'Town'}
+              name={'town'}
+              type="text"
+              defaultValue={town || ''}
+            />
+          </>
+        );
+      }}
+    />
+  ),
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
 };

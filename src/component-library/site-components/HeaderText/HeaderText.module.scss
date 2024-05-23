@@ -9,11 +9,15 @@
 .grid {
   @include responsive-container;
 
-  padding: $spacing-13 0;
   @include responsive-grid;
 
-  min-height: 100vh;
-  align-content: center;
+  padding: $spacing-8 0;
+
+  &.full-height {
+    padding: $spacing-13 0;
+    min-height: 100vh;
+    align-content: center;
+  }
 }
 
 .inner {
@@ -31,4 +35,12 @@
 
 .cta {
   margin-top: $spacing-7;
+}
+
+.error {
+  color: var(--field-error-colour);
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
 }

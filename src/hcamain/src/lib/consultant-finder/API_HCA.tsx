@@ -8,24 +8,52 @@ import {
 } from './API_Doctify';
 import { revalidate } from './revalidateNow';
 
+export async function getActiveConsultantSlugs(): Promise<string[]> {
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getActiveConsultantSlugs();
+  } else if (revalidate.now()) {
+    // revalidateTag('cacheGetActiveConsultantSlugs'); should work - but throws - as requires Next 14 / use server
+    // workaround for clearing the cache
+    console.log(
+      `purging cacheGetActiveConsultantSlugs cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCActiveConsultantSlugs();
+  } else {
+    return await _getActiveConsultantSlugs();
+  }
+}
+
+const _getActiveConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveConsultantSlugs from source..');
+    return await __getActiveConsultantSlugs();
+  },
+  undefined,
+  {
+    tags: ['cacheGetActiveConsultantSlugs'],
+    revalidate: 3600,
+  }
+);
+
 // front our fairly expensive server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-export const getActiveConsultantSlugs = unstable_cache(
+const _getNCActiveConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getActiveConsultantSlugs from source..');
-    return await _getActiveConsultantSlugs();
+    return await __getActiveConsultantSlugs();
   },
-  ['cacheGetActiveConsultantSlugs'],
+  undefined,
   {
     tags: ['cacheGetActiveConsultantSlugs'],
-    revalidate: revalidate.now() ? 0 : 3600,
+    revalidate: 1,
   }
 );
 
 // get all the active hca consultants on consultant finder
 //const consultantSlugsURL = `https://www.hcahealthcare.co.uk/sitemap.hca.consultant-finder.xml`;
-async function _getActiveConsultantSlugs(): Promise<string[]> {
+async function __getActiveConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
   const HCAAPIConfig = await GetHCAConfig();
 
@@ -42,7 +70,9 @@ async function _getActiveConsultantSlugs(): Promise<string[]> {
         // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
         const res = await fetch(consultantSlugsURL, {
           cache: 'force-cache',
-          next: { revalidate: revalidate.now() ? 0 : 3600 },
+          next: {
+            revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+          },
         });
         if (res.ok) {
           const consultantsXML = await res.text();
@@ -80,24 +110,52 @@ async function _getActiveConsultantSlugs(): Promise<string[]> {
   return slugs;
 }
 
+export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
+  // revalidateTag('cacheGetActiveLiveDiaryConsultantSlugs'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getActiveLiveDiaryConsultantSlugs();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetActiveLiveDiaryConsultantSlugs cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCActiveLiveDiaryConsultantSlugs();
+  } else {
+    return await _getActiveLiveDiaryConsultantSlugs();
+  }
+}
+
 // front our fairly expensive and frequently called server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-export const getActiveLiveDiaryConsultantSlugs = unstable_cache(
+const _getActiveLiveDiaryConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
-    return await _getActiveLiveDiaryConsultantSlugs();
+    return await __getActiveLiveDiaryConsultantSlugs();
   },
-  ['cacheGetActiveLiveDiaryConsultantSlugs'],
+  undefined,
   {
     tags: ['cacheGetActiveLiveDiaryConsultantSlugs'],
-    revalidate: revalidate.now() ? 0 : 3600,
+    revalidate: 3600,
+  }
+);
+
+const _getNCActiveLiveDiaryConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
+    return await __getActiveLiveDiaryConsultantSlugs();
+  },
+  undefined,
+  {
+    tags: ['cacheGetActiveLiveDiaryConsultantSlugs'],
+    revalidate: 1,
   }
 );
 
 // get all the active live diary consultants
 //const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
-async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
+async function __getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
   const HCAAPIConfig = await GetHCAConfig();
   const ldbConsultantSlugsURL =
@@ -111,7 +169,9 @@ async function _getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         const consultantsOnLDB = await res.json();
@@ -162,24 +222,52 @@ export async function checkIfLiveBookingsIsAvailable(
   return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }
 
+export async function getHolidays(): Promise<string[]> {
+  // revalidateTag('cacheGetHolidays'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getHolidays();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetHolidays cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCHolidays();
+  } else {
+    return await _getHolidays();
+  }
+}
+
 // front our fairly expensive and frequently called server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-export const getHolidays = unstable_cache(
+const _getHolidays = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getHolidays from source..');
-    return await _getHolidays();
+    return await __getHolidays();
   },
-  ['cacheGetHolidays'],
+  undefined,
   {
     tags: ['cacheGetHolidays'],
-    revalidate: revalidate.now() ? 0 : 604800,
+    revalidate: 604800,
+  }
+);
+
+const _getNCHolidays = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getHolidays from source..');
+    return await __getHolidays();
+  },
+  undefined,
+  {
+    tags: ['cacheGetHolidays'],
+    revalidate: 1,
   }
 );
 
 // get all the holidays
 // e.g. https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/holidays
-async function _getHolidays(): Promise<string[]> {
+async function __getHolidays(): Promise<string[]> {
   let holidays;
   const HCAAPIConfig = await GetHCAConfig();
   const holidayURL = HCAAPIConfig?.aPI_HCA_Holidays_UtilizesLegacy
@@ -193,7 +281,9 @@ async function _getHolidays(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 604800 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+        },
       });
       if (res.ok) {
         holidays = await res.json();
@@ -216,9 +306,53 @@ async function _getHolidays(): Promise<string[]> {
   return holidays;
 }
 
+export async function getCMAs(): Promise<any[]> {
+  // revalidateTag('cacheGetCMAs'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getCMAs();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetCMAs cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCCMAs();
+  } else {
+    return await _getCMAs();
+  }
+}
+
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+const _getCMAs = unstable_cache(
+  async (): Promise<any[]> => {
+    console.log('refreshing _getCMAs from source..');
+    return await __getCMAs();
+  },
+  undefined,
+  {
+    tags: ['cacheGetCMAs'],
+    revalidate: 604800,
+  }
+);
+// this has the same effect as revalidateTag('cacheGetCMAs');
+// which should work - but throws - as requires Next 14 / use server
+const _getNCCMAs = unstable_cache(
+  async (): Promise<any[]> => {
+    console.log('refreshing _getCMAs from source..');
+    return await __getCMAs();
+  },
+  undefined,
+  {
+    tags: ['cacheGetCMAs'],
+    revalidate: 1,
+  }
+);
+
 // get all the CMAs
 // e.g. /api/lookupAPI/finder/default/findbydictionary/CMA
-export async function getCMAs(): Promise<any[]> {
+async function __getCMAs(): Promise<any[]> {
   let cmas;
   const HCAAPIConfig = await GetHCAConfig();
   const cmaURL = HCAAPIConfig?.aPI_HCA_CMAs_BaseURL;
@@ -231,7 +365,9 @@ export async function getCMAs(): Promise<any[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         cmas = await res.json();
@@ -272,7 +408,9 @@ export async function getCMA(id: string): Promise<any> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         cma = await res.json();

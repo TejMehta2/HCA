@@ -84,6 +84,22 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
 
   const filterList = [];
 
+  if (props.fields?.data?.contextItem?.doctifyPractice) {
+    filterList.push(
+      'doctifyPractice' +
+        '=' +
+        props.fields?.data?.contextItem?.doctifyPractice?.value
+    );
+  }
+
+  if (props.fields?.data?.contextItem?.doctifyKeywordId) {
+    filterList.push(
+      'doctifyKeywordId' +
+        '=' +
+        props.fields?.data?.contextItem?.doctifyKeywordId?.value
+    );
+  }
+
   if (props.fields?.data?.item?.customFilters?.CustomFiltersList) {
     for (const filter of props.fields.data.item.customFilters
       .CustomFiltersList) {

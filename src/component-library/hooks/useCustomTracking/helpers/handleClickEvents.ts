@@ -14,7 +14,6 @@ const handleClickEvents = (clickEvent: MouseEvent) => {
       event: findClosestAttribute('data-event', target),
       navigationType: findClosestAttribute('data-navigation-type', target),
     };
-
     // escape when not a valid event
     if (!data.event || !data.navigationType) return;
     window.dataLayer.push(data);

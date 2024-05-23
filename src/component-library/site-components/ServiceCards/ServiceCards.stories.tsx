@@ -22,7 +22,7 @@ export default meta;
 export const Default: StoryObj<typeof ServiceCards> = {
   args: {
     title: <Text variation="display-2">Exceptional care you can trust</Text>,
-    subtitle: <Text variation="subheading-1">our service lines</Text>,
+    subtitle: <Text variation="subheading-1">our departments</Text>,
     bodyText: (
       <Text>
         Quis laboris proident sint amet id cillum do dolor in tempor est.
@@ -35,7 +35,7 @@ export const Default: StoryObj<typeof ServiceCards> = {
       <a href="#">
         <Icons iconName="iconSearch"></Icons>{' '}
         <span>
-          Search all <strong>service lines</strong>
+          Search all <strong>departments</strong>
         </span>
       </a>
     ),

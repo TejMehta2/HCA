@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import handleClickEvents from './helpers/handleClickEvents';
 
 // Custom tracking hook
@@ -14,15 +14,13 @@ declare global {
 }
 
 const useCustomTracking = () => {
-  const [active, setActive] = useState(false);
   useEffect(() => {
-    if (typeof window === 'undefined' || active) return;
-    setActive(true);
+    if (typeof window === 'undefined') return;
     document.addEventListener('click', handleClickEvents);
     return () => {
       document.removeEventListener('click', handleClickEvents);
     };
-  }, [active]);
+  }, []);
 };
 
 export default useCustomTracking;

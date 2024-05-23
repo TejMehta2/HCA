@@ -24,7 +24,13 @@
     }
 
     a {
-      @extend %text-button-a;
+      text-decoration: underline;
+      font-weight: $bold-font-weight;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
     }
 
     ul,

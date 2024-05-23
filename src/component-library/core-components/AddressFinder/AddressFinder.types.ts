@@ -1,16 +1,31 @@
-export interface addressResult {
-  line1: string;
-  line2: string;
-  city: string;
+export interface FindAddressData {
+  address: string;
   postcode: string;
-  country: string;
+  id: string;
 }
+
+export interface FindAddressResponse {
+  category: 'postcode';
+  data: FindAddressData[];
+}
+
+export interface SpiltAddressResponse {
+  address1: string;
+  address2: string;
+  county: string;
+  postcode: string;
+  town: string;
+}
+
+export interface FormField {
+  name: string;
+  label: string;
+}
+
 export interface AddressFinderProps {
-  helpText?: string;
-  addressResults?: addressResult[];
-  isLoading?: boolean;
-  searchAddress: (term: string) => void;
-  chosenAddress: (address: addressResult) => void;
-  errors: (errors: boolean) => void;
-  displayErrors?: boolean;
+  defaultStep?: 'manual' | 'automatic';
+  error?: string;
+  render: (spiltAddressResponse?: SpiltAddressResponse) => JSX.Element;
+  findAddressEndpoint?: string;
+  splitAddressEndpoint?: string;
 }

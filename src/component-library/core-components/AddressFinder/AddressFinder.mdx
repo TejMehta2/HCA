@@ -20,18 +20,45 @@ The story for AddressFinder has some mock results but the intention is for a req
 
 It is intended to be used on the payment form.
 
+The render prop allows you to show manual editting fields by unpacking the response from the SplitAddress endpoint.
+
 It can be composed like this:
 
 ```tsx
 <AddressFinder
-    addressResults: results, // address results from response
-    searchAddress: (term) => {
-      //  use the term to make request
-    },
-    chosenAddress: (address) => {
-      //  address that has been set using the finder
-    },
-></AddressFinder>
+  render={(splitAddressResponse) => {
+    if (!splitAddressResponse) return <></>;
+    const { address1, address2, postcode, town } = splitAddressResponse;
+    return (
+      <>
+        <TextField
+          label={'Line 1'}
+          name={'line1'}
+          type="text"
+          defaultValue={address1 || ''}
+        />
+        <TextField
+          label={'Line 2'}
+          name={'line2'}
+          type="text"
+          defaultValue={address2 || ''}
+        />
+        <TextField
+          label={'Postcode'}
+          name={'postcode'}
+          type="text"
+          defaultValue={postcode || ''}
+        />
+        <TextField
+          label={'Town'}
+          name={'town'}
+          type="text"
+          defaultValue={town || ''}
+        />
+      </>
+    );
+  }}
+/>
 ```
 
 ## Example

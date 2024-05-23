@@ -66,22 +66,51 @@ export interface IHCAConfig {
   nextJSRevalidationProfilePageSeconds: number;
 }
 
+export async function GetHCAConfig(): Promise<IHCAConfig> {
+  // revalidateTag('cacheGetHCAConfig'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await _getHCAConfig();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetHCAConfig cache revalidate flag:${revalidate.now()}`
+    );
+    return await _GetNCHCAConfig();
+  } else {
+    return await _GetHCAConfig();
+  }
+}
+
 // front our fairly expensive and frequently called server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-export const GetHCAConfig = unstable_cache(
+const _GetHCAConfig = unstable_cache(
   async (): Promise<IHCAConfig> => {
     console.log('refreshing _getHCAConfig from source..');
     return await _getHCAConfig();
   },
-  ['cacheGetHCAConfig'],
+  undefined,
   {
     tags: ['cacheGetHCAConfig'],
-    revalidate: revalidate.now() ? 0 : 604800,
+    revalidate: 604800,
+  }
+);
+// this has the same effect as revalidateTag('cacheGetHCAConfig');
+// which should work - but throws - as requires Next 14 / use server
+const _GetNCHCAConfig = unstable_cache(
+  async (): Promise<IHCAConfig> => {
+    console.log('refreshing _getHCAConfig from source..');
+    return await _getHCAConfig();
+  },
+  undefined,
+  {
+    tags: ['cacheGetHCAConfig'],
+    revalidate: 1,
   }
 );
 
-export async function _getHCAConfig(): Promise<IHCAConfig> {
+async function _getHCAConfig(): Promise<IHCAConfig> {
   // Sitecore item
   const HCAAPISettingsItemId = '{AF16E5CB-FE0D-4412-A299-96BEF3F5E363}';
   const HCAAPISettingsTemplateName = 'HCA_API_Settings';

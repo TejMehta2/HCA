@@ -3,8 +3,14 @@ import { HeaderPlainProps } from './HeaderPlain.types';
 import styles from './HeaderPlain.module.scss';
 
 const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
-  const { heading, subheading, description, children, contentVariation } =
-    props;
+  const {
+    heading,
+    metatitle,
+    description,
+    children,
+    contentVariation,
+    subtitle,
+  } = props;
 
   return (
     <div className={styles.wrapper}>
@@ -15,10 +21,9 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
       >
         <div className={styles.grid}>
           <div className={styles.half}>
-            {subheading && (
-              <div className={styles.subheading}>{subheading}</div>
-            )}
+            {metatitle && <div className={styles.metatitle}>{metatitle}</div>}
             <div className={styles.heading}>{heading}</div>
+            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             {description && (
               <div className={styles['body-copy']}>{description}</div>
             )}

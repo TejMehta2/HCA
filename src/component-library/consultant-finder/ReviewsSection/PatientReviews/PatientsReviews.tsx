@@ -15,7 +15,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
   const [reviews, setReviews] = useState<any>([]);
   const [total, setTotal] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [selectValue, setSelectValue] = useState<string>('asc');
+  const [selectValue, setSelectValue] = useState<string>('desc');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
         .replace('{offset}', offset.toString())
         .replace('{order}', selectValue) ||
       `https://api.doctify.com/api/hca/specialists/${props.slug}/reviews?limit=2&offset=${offset}&order=${selectValue}`;
-    //console.log('patient patientURL', patientURL);
+    // console.log('patient patientURL', patientURL);
     axios
       .get(patientURL)
       .then((resp) => {
@@ -64,12 +64,13 @@ const PatientsReviews = (props: PatientsReviewsProps): JSX.Element => {
                 options={[
                   {
                     id: 'option-a',
-                    defaultChecked: true,
+                    defaultChecked: selectValue === 'desc',
                     labelText: 'Newest',
                     value: 'desc',
                   },
                   {
                     id: 'option-b',
+                    defaultChecked: selectValue === 'asc',
                     labelText: 'Oldest',
                     value: 'asc',
                   },
