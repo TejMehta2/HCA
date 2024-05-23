@@ -2,7 +2,6 @@ import React from 'react';
 import PaymentFormHeader from './PaymentFormHeader';
 import type { Meta, StoryObj } from '@storybook/react';
 import Icons from '../../foundation/Icons/Icons';
-import TextLink from '../../core-components/TextLink/TextLink';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PaymentFormHeader> = {
