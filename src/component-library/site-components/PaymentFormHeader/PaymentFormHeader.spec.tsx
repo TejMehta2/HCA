@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import PaymentFormHeader from './PaymentFormHeader';
 import { PaymentFormHeaderProps } from './PaymentFormHeader.types';
-import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
 
 const mockProps: PaymentFormHeaderProps = {
@@ -17,14 +16,6 @@ const mockProps: PaymentFormHeaderProps = {
     icon: <Icons iconName="iconClock" />,
     text: 'Mon-Fri 9am - 5:30pm',
   },
-  close: (
-    <TextLink>
-      <a href="/">
-        <span>Close</span>
-        <Icons iconName="iconCross" />
-      </a>
-    </TextLink>
-  ),
 };
 
 describe('PaymentFormHeader', () => {

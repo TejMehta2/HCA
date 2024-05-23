@@ -1,4 +1,3 @@
-import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
 import FormProgressBar from '@component-library/site-components/FormProgressBar/FormProgressBar';
@@ -20,16 +19,8 @@ const Header = ({
       }}
       openingHours={{
         icon: <Icons iconName="iconClock" />,
-        text: 'Mon-Fri 9am - 5:30pm',
+        text: 'Mon-Fri 9am-5:30pm; Sat-Sun 9am-2pm',
       }}
-      close={
-        <TextLink>
-          <a href="/">
-            <span>Close</span>
-            <Icons iconName="iconCross" />
-          </a>
-        </TextLink>
-      }
     />
     <FormProgressBar
       pages={[

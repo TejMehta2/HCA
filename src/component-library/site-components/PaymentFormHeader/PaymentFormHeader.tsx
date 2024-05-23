@@ -4,7 +4,7 @@ import styles from './PaymentFormHeader.module.scss';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
 
 const PaymentFormHeader = (props: PaymentFormHeaderProps): JSX.Element => {
-  const { paymentsText, contactText, phoneNumber, openingHours, close } = props;
+  const { paymentsText, contactText, phoneNumber, openingHours } = props;
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -32,8 +32,6 @@ const PaymentFormHeader = (props: PaymentFormHeaderProps): JSX.Element => {
             )}
           </div>
         )}
-
-        {close && close}
       </div>
     </header>
   );
