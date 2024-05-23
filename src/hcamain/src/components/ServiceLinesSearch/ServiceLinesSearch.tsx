@@ -30,6 +30,7 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
+import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/servicelines`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/servicelines`;
@@ -202,11 +203,18 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             }}
           />
           <Text tag="h3" variation="heading-1">
-            <span>
-              <span>{resultsCount} </span>
-              <JssText field={fields?.SearchResultsText} />
-              <span></span>{' '}
-            </span>
+            <SearchDetail
+              searchResultsTextWithInput={
+                fields?.SearchResultsTextWithInput?.value
+              }
+              searchResultsText={fields?.SearchResultsText?.value}
+              resultsCount={resultsCount}
+              input={
+                searchParams.get('input') ||
+                searchParams.get('autocomplete') ||
+                undefined
+              }
+            />
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">
@@ -218,7 +226,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           {error ? (
             <ErrorMessage contentVariation="no-container">
               <Text tag="h2" variation="display-4">
-                No service lines results found.
+                No departments results found.
               </Text>
               <Text tag="p" variation="body-extra-large">
                 Please try another search

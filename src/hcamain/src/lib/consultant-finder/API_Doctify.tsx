@@ -38,7 +38,9 @@ export async function getSpecialistProfileData(
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 3600 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+      },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -108,13 +110,22 @@ export async function getSpecialistProfileData(
             if (hcaConfig.aPI_HCA_CMAs_UseDoctifyData) {
               const replaceCMA = `/Finder/CMADisclosures/${slug}?CmaContentId=`;
               if (docitfyData.about) {
+                docitfyData.about = (docitfyData.about as string).replace(
+                  `https://www.hcahealthcare.co.uk/`,
+                  'https:/'
+                );
                 // insert the slug as a frag in the CMA link - NextJS style
                 docitfyData.about = (docitfyData.about as string).replace(
                   '/cma-disclosure?CmaContentId=',
                   replaceCMA
                 );
               }
+              // second about field in the Doctify data
               if (docitfyData.customFields.about) {
+                docitfyData.about = (docitfyData.about as string).replace(
+                  `https://www.hcahealthcare.co.uk/`,
+                  'https:/'
+                );
                 // insert the slug as a frag in the CMA link - NextJS style
                 docitfyData.customFields.about = (
                   docitfyData.customFields.about as string
@@ -150,24 +161,51 @@ export function isErrorWithProfileData(consultantProfileJson: string): boolean {
   return isError;
 }
 
+export async function getFacilitiesData(): Promise<any> {
+  // revalidateTag('cacheGetFacilitiesData'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getFacilitiesData();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetFacilitiesData cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCFacilitiesData();
+  } else {
+    return await _getFacilitiesData();
+  }
+}
+
 // front our fairly expensive server-side API call with the unstable cache
 // as the Next fetch API cache only works with the React graph and we are not within that at this point
 // based on https://blog.logrocket.com/caching-next-js-unstable-cache/
-export const getFacilitiesData = unstable_cache(
+const _getFacilitiesData = unstable_cache(
   async (): Promise<any> => {
     console.log('refreshing _getFacilitiesData from source..');
-    return await _getFacilitiesData();
+    return await __getFacilitiesData();
   },
-  ['cacheGetFacilitiesData'],
+  undefined,
   {
     tags: ['cacheGetFacilitiesData'],
     revalidate: 604800,
   }
 );
 
+const _getNCFacilitiesData = unstable_cache(
+  async (): Promise<any> => {
+    console.log('refreshing _getFacilitiesData from source..');
+    return await __getFacilitiesData();
+  },
+  undefined,
+  {
+    tags: ['cacheGetFacilitiesData'],
+    revalidate: 1,
+  }
+);
 // get HCA facilities data
 //const Doctify_To_HCA_Facilities_URL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/doctifyFacilities`;
-async function _getFacilitiesData(serviceURL?: string): Promise<any> {
+async function __getFacilitiesData(serviceURL?: string): Promise<any> {
   const HCAAPIConfig = !serviceURL ? await GetHCAConfig() : null;
 
   const facilitiesURL = HCAAPIConfig?.aPI_HCA_DoctifyToFacilities_UtilizesLegacy
@@ -181,7 +219,9 @@ async function _getFacilitiesData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 604800 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+      },
     });
 
     /* if running client side, CORS
@@ -244,7 +284,9 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
       cache: 'force-cache',
-      next: { revalidate: revalidate.now() ? 0 : 3600 },
+      next: {
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+      },
     });
     if (res.ok) {
       docitfyData = await res.json();
@@ -281,7 +323,9 @@ export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(consultantProfilesURL, {
         cache: 'force-cache',
-        next: { revalidate: revalidate.now() ? 0 : 3600 },
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
       });
       if (res.ok) {
         const consultantJSON = await res.json();

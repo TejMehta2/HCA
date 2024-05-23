@@ -153,7 +153,7 @@ export const Default: StoryObj<typeof Navigation> = {
           {
             template: 'Main Navigation Links List',
             variation: 'single-narrow',
-            heading: <>Services lines</>,
+            heading: <>Departments</>,
             links: [
               <TextLink variation={'body-large'}>
                 <a href="#">Cancer Care</a>
@@ -181,7 +181,7 @@ export const Default: StoryObj<typeof Navigation> = {
             mobileCta: (
               <a href="#">
                 <span>
-                  View all <strong>Services lines</strong>
+                  View all <strong>Departments</strong>
                 </span>
               </a>
             ),

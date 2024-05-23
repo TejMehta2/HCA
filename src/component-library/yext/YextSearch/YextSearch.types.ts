@@ -18,7 +18,7 @@ export type VerticalLabel =
   | 'Locations'
   | 'Tests & Treatments'
   | 'Consultants'
-  | 'Service Lines'
+  | 'Departments'
   | 'Articles'
   | 'FAQs';
 

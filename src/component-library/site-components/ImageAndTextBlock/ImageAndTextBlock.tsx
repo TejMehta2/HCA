@@ -18,11 +18,12 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     iconList,
     hideImageOnMobile,
     contentVariation,
+    noOverflownHidden,
   } = props;
 
   return (
     <Themes theme={theme}>
-      <div className={styles.background}>
+      <div className={noOverflownHidden ? '' : styles.background}>
         <div
           className={[
             styles['wrapper'],

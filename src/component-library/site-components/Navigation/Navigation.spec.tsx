@@ -103,7 +103,7 @@ const mockProps: NavigationProps = {
         {
           template: 'Main Navigation Links List',
           variation: 'single-narrow',
-          heading: <>Services lines</>,
+          heading: <>Departments</>,
           links: [
             <TextLink variation={'body-large'}>
               <a href="#">Cancer Care</a>
@@ -131,7 +131,7 @@ const mockProps: NavigationProps = {
           mobileCta: (
             <a href="#">
               <span>
-                View all <strong>Services lines</strong>
+                View all <strong>Departments</strong>
               </span>
             </a>
           ),

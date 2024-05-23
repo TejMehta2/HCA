@@ -31,6 +31,7 @@ import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import { useI18n } from 'next-localization';
+import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/treatments`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/treatments`;
@@ -203,11 +204,18 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             }}
           />
           <Text tag="h3" variation="heading-1">
-            <span>
-              <span>{resultsCount} </span>
-              <JssText field={fields?.SearchResultsText} />
-              <span></span>{' '}
-            </span>
+            <SearchDetail
+              searchResultsTextWithInput={
+                fields?.SearchResultsTextWithInput?.value
+              }
+              searchResultsText={fields?.SearchResultsText?.value}
+              resultsCount={resultsCount}
+              input={
+                searchParams.get('input') ||
+                searchParams.get('autocomplete') ||
+                undefined
+              }
+            />
           </Text>
           {!!rangeEnd && (
             <Text variation="body-medium">

@@ -1,6 +1,12 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+body {
+  &:has(.wrapper[open]) {
+    overflow: hidden;
+  }
+}
+
 .wrapper {
   // Resets
   display: block;

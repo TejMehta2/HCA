@@ -1,0 +1,33 @@
+﻿---
+ID: "234baf89-3afa-4503-92f8-a2ae3c103ba6"
+Parent: "4be22656-04a9-41d3-a829-48a6969456a9"
+Template: "4be22656-04a9-41d3-a829-48a6969456a9"
+Path: /sitecore/templates/Project/HCA/Forms/Payment Form Confirmation Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {D1898F14-CF39-454A-9B08-896D98A39055}
+    {4BE22656-04A9-41D3-A829-48A6969456A9}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6a633234-f334-4dd4-811b-17ac681115f9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240516T195444Z

@@ -2,7 +2,8 @@ import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/
 
 import { ContactUnitFields } from './OpeningHours.types';
 
-export const OpeningHours = (contactUnit: ContactUnitFields) => {
+export const OpeningHours = (contactUnit?: ContactUnitFields) => {
+  if (!contactUnit) return undefined;
   try {
     const availability: string[] = [];
 

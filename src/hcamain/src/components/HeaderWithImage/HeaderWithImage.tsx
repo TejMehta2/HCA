@@ -13,6 +13,7 @@ import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import getSubheadingTag from 'lib/subheading-tag-getter';
 
 interface Fields {
   data?: {
@@ -66,6 +67,18 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
         >
           <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
+      }
+      subtitle={
+        props.fields?.data?.contextItem?.subHeading?.jsonValue?.value ? (
+          <Text
+            variation="subheading-1"
+            tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+          >
+            <JSSText
+              field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
+            />
+          </Text>
+        ) : undefined
       }
       copy={
         <Text variation="body-large" tag="div">

@@ -94,6 +94,7 @@ export const Default = (props: StepProps): JSX.Element => {
         {router.isReady && (
           <>
             <ImageAndTextBlock
+              noOverflownHidden={true}
               theme="A-HCA-White"
               imageAlignment="left"
               length="short"

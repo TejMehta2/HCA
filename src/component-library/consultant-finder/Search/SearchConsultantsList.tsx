@@ -97,6 +97,7 @@ const Search = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('test');
     console.log(e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
@@ -114,7 +115,7 @@ const Search = (props: SearchProps): JSX.Element => {
     setConsultantSlug('');
 
     if (props.setSearchString) {
-      props.setSearchString(e.target.value.trim());
+      props.setSearchString(e.target.value);
     }
 
     if (props.setKeywordId) {
@@ -125,7 +126,7 @@ const Search = (props: SearchProps): JSX.Element => {
       axios
         .get(URL, { cancelToken: cancelToken.token })
         .then((resp) => {
-          // console.log(resp.data);
+          console.log(resp.data);
 
           if (resp.data.keywords.length > 0) {
             // console.log(resp.data.keywords);

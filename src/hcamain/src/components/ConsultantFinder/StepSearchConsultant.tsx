@@ -66,22 +66,13 @@ export const Default = (props: StepProps): JSX.Element => {
     consultantSlug,
   } = useContext(ConsultantFinderContext);
   const id = props.params.RenderingIdentifier;
-  //console.log('search consultant by name', props);
-
-  // useEffect(() => {
-  //   // Check if the 'test' query parameter is empty or not present
-  //   const isTestParamEmpty = !router.query.keywordId;
-
-  //   // If 'test' query parameter is empty, redirect to '/Finder/Step-Intro'
-  //   if (isTestParamEmpty) {
-  //     router.push('/Finder/Step-Intro');
-  //   }
-  // }, [router.query.keywordId]);
+  // console.log('search consultant by name', props);
 
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
+          noOverflownHidden={true}
           theme="A-HCA-White"
           imageAlignment="left"
           length="short"
@@ -157,7 +148,10 @@ export const Default = (props: StepProps): JSX.Element => {
               disabled={consultantSlug === '' ? true : false}
               onClick={() =>
                 router.push(
-                  `/Finder/StepConsultantProfile/${consultantSlug}` || ''
+                  `${
+                    props?.fields?.NextLink?.value?.href &&
+                    props?.fields?.NextLink?.value?.href.replace(/,-w-,/g, '')
+                  }${consultantSlug}` || ''
                 )
               }
             >

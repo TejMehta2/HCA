@@ -2,15 +2,16 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: $navy-blue-100;
-  background-color: $fern-10;
+  color: var(--text);
+  background-color: var(--background);
   padding: $spacing-6;
+  border-radius: $radius-medium;
 }
 
 .copy {
   padding: $spacing-4 0;
 
   a {
-    color: $navy-blue-100;
+    color: var(--text);
   }
 }
