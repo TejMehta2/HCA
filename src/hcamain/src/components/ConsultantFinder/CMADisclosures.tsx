@@ -1,7 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// CMA Disclosure component works in 2 modes, client side and server side depending on Doctify mode in the config and
-// if the wildcard page is used or the legacy static page in the root.
+// CMA Disclosure component works in 2 modes,
+// client side and server side depending on if the Doctify mode in the config checkbox is checked
+// if API_HCA_CMAs_UseDoctifyData is checked, then the links in the profile are set to point to the new Doctify format links
+// and to get the data from Doctify.
+// otherwise they will use the legacy format and our look up data.
+// if the wildcard page is rendered or if the legacy static page in the root is rendered.
+//
+// legacy compatible mode - CMA Id format, data will be looked up client side from the id and rendered.
+// https://www.hcacloud.localhost/cma-disclosure?CmaContentId=5251DC52-E57D-47EA-8552-98BFEFF89E72
+//
+// new mode - doctify slug format, data will come from the Doctify record and is based on the slug
+// https://www.hcacloud.localhost/Finder/CMADisclosures/miss-joanna-franks
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
@@ -52,7 +62,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   };
 
   //console.log('returnProps', returnProps);
-
   // returned stuff from the server side
   return returnProps;
 };
