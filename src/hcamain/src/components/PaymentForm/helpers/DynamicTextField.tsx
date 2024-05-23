@@ -20,9 +20,9 @@ const DynamicTextField = ({
     error={formErrors?.get(name)}
     type={type}
     defaultValue={
-      defaultValue || getField<InputTemplate>(name).defaultValue.value || ''
+      defaultValue || getField<InputTemplate>(name)?.defaultValue?.value || ''
     }
-    placeholder={getField<InputTemplate>(name).placeholderText?.value}
+    placeholder={getField<InputTemplate>(name)?.placeholderText?.value}
   />
 );
 

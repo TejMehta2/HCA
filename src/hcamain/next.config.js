@@ -91,8 +91,9 @@ const nextConfig = {
         destination: `/api/api-layer/sitemap/consultants`,
       },
       {
-        source: '/PaymentForm/:path*',
-        destination: '/api/api-layer/api/PaymentForm/:path*',
+        source: '/paymentForm/:path*',
+        destination: '/api/api-layer/api/paymentForm/:path*',
+        
       },
     ];
   },

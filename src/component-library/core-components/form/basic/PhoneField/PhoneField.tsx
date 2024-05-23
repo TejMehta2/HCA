@@ -1,4 +1,4 @@
-import React, { useId, useState } from 'react';
+import React, { FormEvent, useId, useState } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
 import 'intl-tel-input/build/css/intlTelInput.css';
@@ -11,24 +11,26 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
   const randomId = useId();
   const inputId = name || randomId;
   const [value, setValue] = useState('');
-  const SetCleanValue = (value: string) => {
-    setValue(value?.replaceAll(' ', ''));
-  };
   return (
     <div className={[styles.container, error ? styles.error : ''].join(' ')}>
       {label && <label htmlFor={inputId}>{label}</label>}
-      <input name={name} value={value} type="hidden" />
       <IntlTelInput
         inputProps={{
+          name,
+          defaultValue: value,
           id: inputId,
           className: styles.input,
+          onBlur: (event: FormEvent<HTMLInputElement>) => {
+            const target = event.target as HTMLInputElement;
+            setValue(target.value?.replace(' ', '') || '');
+          },
         }}
-        onChangeNumber={SetCleanValue}
         initOptions={{
           nationalMode: false,
           initialCountry: 'gb',
           utilsScript:
             'https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.0/build/js/utils.js',
+          validationNumberType: null,
         }}
       />
 

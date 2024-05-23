@@ -27,10 +27,12 @@ import { RichText as JssRichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from './helpers/DynamicTextField';
 import Header from './helpers/Header';
+import { useRouter } from 'next/router';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
   // Hooks
   const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   // State
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
@@ -49,13 +51,14 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     });
   });
 
-  const schemaObj = createSchema(fields, false);
-  const conditionalSchemaObject = createSchema(fields, true);
-  const additionalSchemaObj = hideBillingFields ? {} : conditionalSchemaObject;
-  const schema = z.object({
-    ...schemaObj,
-    resident: z.string().min(1, 'Please select'),
-    ...additionalSchemaObj,
+  const partialSchemaObj = createSchema(fields, false); // All except billing fields
+  const partialSchema = z.object(partialSchemaObj);
+  const conditionalSchemaObject = createSchema(fields, true); // Just billing fields
+
+  // All fields
+  const allSchema = z.object({
+    ...partialSchemaObj,
+    ...conditionalSchemaObject,
   });
 
   const validateFormData = (name?: string) => {
@@ -63,7 +66,12 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     const formData = new FormData(formRef.current);
     const data = Object.fromEntries(formData);
     try {
-      schema.parse(data);
+      if (formData.get('sameAsPatientDetail') === 'true') {
+        partialSchema.parse(data);
+      } else {
+        allSchema.parse(data);
+      }
+
       setFormErrors(new Map());
       return true;
     } catch (error) {
@@ -79,13 +87,16 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           return map;
         }, reducerInitialMap);
         errorMap && setFormErrors(errorMap);
+        console.log(errorMap);
       }
     }
     return false;
   };
 
   //  by default billing address fields are hidden and values assumed to be the same as prior address fields
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const isValid = validateFormData();
     if (!isValid) {
       setTimeout(() => {
@@ -95,10 +106,44 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           behavior: 'smooth',
         });
       }, 500);
-      event.preventDefault();
+      return;
     }
-    return isValid;
+
+    try {
+      if (!formRef?.current) return;
+      const action =
+        settings?.find((item) => item.name === 'SubmitAction')?.value.value ||
+        '';
+
+      const formData = new FormData(formRef?.current);
+
+      // Remove values rejected by API
+      formData.delete('resident');
+
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+      });
+
+      interface PaymentAPIResponse {
+        response: {
+          success: boolean;
+          redirectUrl: string;
+          messages: string[];
+        };
+      }
+      const result: PaymentAPIResponse = await response.json();
+
+      if (result.response.success) {
+        router.replace(result.response.redirectUrl);
+      }
+    } catch (err) {
+      process.env.NODE_ENV === 'development' && console.log(err);
+    }
+
+    return;
   };
+
   const onBlur = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const target = event.target as HTMLInputElement;
@@ -118,10 +163,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
       <Themes theme="A-HCA-White">
         <form
           noValidate
-          action={
-            settings?.find((item) => item.name === 'SubmitAction')?.value
-              .value || ''
-          }
           ref={formRef}
           method={'GET'}
           onBlur={onBlur}
@@ -296,14 +337,16 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               <DynamicTextField
                 getField={getField}
                 formErrors={formErrors}
-                name="invoiceTotal"
+                name="totalInvoice"
               />
 
               <Checkbox
-                label="Billing address is same as patient's address"
-                name="billingDetailsSameAsPatientDetails"
-                value="same"
-                id="billingDetailsSameAsPatientDetails"
+                label={
+                  getField<InputTemplate>('sameAsPatientDetail')?.title?.value
+                }
+                name="sameAsPatientDetail"
+                value="true"
+                id="sameAsPatientDetail"
                 checked={hideBillingFields}
                 onChange={(event) => {
                   setHideBillingFields(event.target.checked);

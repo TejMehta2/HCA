@@ -95,6 +95,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
                     closeModal();
                   }
                 }}
+                defaultChecked={defaultValue?.text === option.text}
               />
               <label
                 htmlFor={`${name}-${option.value || option.text}`}
