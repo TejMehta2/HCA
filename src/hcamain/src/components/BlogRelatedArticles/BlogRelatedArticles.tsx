@@ -45,7 +45,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   const ctaQuery = data?.ctaQuery;
   const baseBlogUrl = props.fields?.data?.item?.blogUrl?.jsonValue?.value.href;
-  const queryString = 'serviceLineId';
+  const queryString = 'articleTypeId';
   const context = useSitecoreContext();
   const currentArticleId = context.sitecoreContext?.route?.itemId?.toString();
   const formattedCurrentArticleId =

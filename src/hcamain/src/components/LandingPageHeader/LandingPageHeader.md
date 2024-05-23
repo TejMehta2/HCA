@@ -1,3 +1,3 @@
-# FormHeader documentation
+# LandingPageHeader documentation
 
 ## Additional information
