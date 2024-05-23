@@ -149,12 +149,8 @@ export const Default = (props: StepProps): JSX.Element => {
               onClick={() =>
                 router.push(
                   `${
-                    (props?.fields?.NextLink?.value?.href &&
-                      props?.fields?.NextLink?.value?.href.replace(
-                        /,-w-,/g,
-                        ''
-                      )) ||
-                    '/Finder/StepConsultantProfile/'
+                    props?.fields?.NextLink?.value?.href &&
+                    props?.fields?.NextLink?.value?.href.replace(/,-w-,/g, '')
                   }${consultantSlug}` || ''
                 )
               }

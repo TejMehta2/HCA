@@ -157,7 +157,12 @@ export const Default = (props: StepProps): JSX.Element => {
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
-                  <Link href={`/Finder/StepConsultantProfile/${slug}`}>
+                  <Link
+                    href={`${
+                      props?.fields?.BackLink?.value?.href &&
+                      props?.fields?.BackLink?.value?.href.replace(/,-w-,/g, '')
+                    }${slug}`}
+                  >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
