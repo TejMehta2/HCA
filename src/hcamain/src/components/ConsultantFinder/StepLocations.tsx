@@ -50,7 +50,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('location', props.fields);
+  // console.log('location', props.fields);
   const { selectedLocations } = useContext(ConsultantFinderContext);
   const [array, setArray] = useState([]);
   const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
@@ -59,16 +59,16 @@ export const Default = (props: StepProps): JSX.Element => {
   const [insurer, seInsurer] = useState('');
   const [calculate, setCalculate] = useState(false);
   const router = useRouter();
-  console.log('selectedLocations', selectedLocations);
-  console.log('array', array);
+  // console.log('selectedLocations', selectedLocations);
+  // console.log('array', array);
   const slugs = props?.fields?.Hospitals.map(
     (item: any) => item.fields.slug.value
   );
   const postcodes = props?.fields?.Hospitals.map(
     (item: any) => item.fields.postCode.value
   ).join(',');
-  console.log('slugs', slugs);
-  console.log('postcodes', postcodes);
+  // console.log('slugs', slugs);
+  // console.log('postcodes', postcodes);
 
   useEffect(() => {
     window.scrollTo({
@@ -174,8 +174,8 @@ export const Default = (props: StepProps): JSX.Element => {
                   disabled={false}
                   onClick={() =>
                     router.push(
-                      // props.fields.NextLink.value.href ||
-                      `/Finder/Step-Consultant-Cards?search=${search}&keywordId=${keywordId}&sortType=relevance${
+                      `${props?.fields?.NextLink?.value
+                        ?.href}?search=${search}&keywordId=${keywordId}&sortType=relevance${
                         selectedLocations.length > 0
                           ? `&practice=${selectedLocations.join(',')}&`
                           : '&'
