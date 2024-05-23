@@ -1021,7 +1021,7 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
 
               {!error && !loading && totalPgaes > 1 && results.length > 0 && (
-                <Container marginBottom="spacing-8" marginTop="spacing-8">
+                <Container marginBottom="spacing-8">
                   <Themes theme={'A-HCA-White'}>
                     <Pagination
                       pageCount={totalPgaes}

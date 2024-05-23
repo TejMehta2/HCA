@@ -4,6 +4,7 @@
 .results {
   @include responsive-container;
   @include responsive-grid;
+  margin-bottom: $spacing-8;
 
   > div {
     @include responsive-grid-span(
