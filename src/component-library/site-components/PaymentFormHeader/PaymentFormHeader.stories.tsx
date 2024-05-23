@@ -27,15 +27,7 @@ export const Default: StoryObj<typeof PaymentFormHeader> = {
     },
     openingHours: {
       icon: <Icons iconName="iconClock" />,
-      text: 'Mon-Fri 9am - 5:30pm',
+      text: 'Mon-Fri 9am-5:30pm; Sat-Sun 9am-2pm',
     },
-    close: (
-      <TextLink>
-        <a href="/">
-          <span>Close</span>
-          <Icons iconName="iconCross" />
-        </a>
-      </TextLink>
-    ),
   },
 };

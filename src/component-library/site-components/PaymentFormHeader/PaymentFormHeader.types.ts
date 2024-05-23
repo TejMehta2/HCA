@@ -16,5 +16,4 @@ export interface PaymentFormHeaderProps {
   contactText?: string;
   phoneNumber?: PhoneNumber;
   openingHours?: OpeningHours;
-  close?: JSX.Element | ReactNode;
 }

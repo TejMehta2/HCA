@@ -17,14 +17,6 @@ const mockProps: PaymentFormHeaderProps = {
     icon: <Icons iconName="iconClock" />,
     text: 'Mon-Fri 9am - 5:30pm',
   },
-  close: (
-    <TextLink>
-      <a href="/">
-        <span>Close</span>
-        <Icons iconName="iconCross" />
-      </a>
-    </TextLink>
-  ),
 };
 
 describe('PaymentFormHeader', () => {
