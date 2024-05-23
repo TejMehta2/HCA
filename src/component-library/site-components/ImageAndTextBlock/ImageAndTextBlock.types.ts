@@ -22,4 +22,5 @@ export interface ImageAndTextBlockProps {
   iconList?: iconList;
   hideImageOnMobile?: boolean;
   contentVariation?: 'pricing';
+  noOverflownHidden?: boolean;
 }
