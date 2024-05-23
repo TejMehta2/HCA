@@ -109,6 +109,7 @@ interface Fields {
   PanelTitle: Field<string>;
   ExperienceText: Field<string>;
   EnquireNowButtonLink: LinkField;
+  ResultsLink: LinkField;
 }
 interface ServerSideProps {
   Slug: string;
@@ -179,7 +180,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
 
-  //console.log('consultant profile data', props.fields);
+  console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -379,7 +380,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 {topSpecialty[0]?.name && (
                   <TextLink>
                     <Link
-                      href={`/Finder/Step-Consultant-Cards?search=${
+                      href={`${props?.fields?.ResultsLink?.value
+                        ?.href}?search=${
                         topSpecialty[0]?.name || ''
                       }&keywordId=${
                         topSpecialty[0]?.id || ''
