@@ -14,6 +14,11 @@
   z-index: 5;
 
   @include scrollbar;
+
+  &::-webkit-scrollbar-track {
+    margin-top: px-to-rem(32);
+    margin-bottom: px-to-rem(32);
+  }
 }
 
 .option {
