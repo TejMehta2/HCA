@@ -32,13 +32,13 @@ export default async function handler(
 
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : JSON.stringify(body),
+      body: method === 'GET' ? undefined : body,
       headers: forwardedHeaders,
     });
+
     if (!response.ok || !response.body) {
       throw `unexpected response ${response.statusText} at ${remoteRequestUrl} (${req.url})`;
     }
-
     await pipeline(response.body, res);
   } catch (err) {
     console.log(err); // log to server

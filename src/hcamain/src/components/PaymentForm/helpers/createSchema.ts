@@ -17,7 +17,7 @@ const createSchema = (
         let fieldSchema = z.string(); // Start with a base string schema
         validators?.forEach((validator) => {
           if (
-            validator.type.value === 'required' &&
+            validator.type.value === 'required' ||
             field.required.boolValue === true
           ) {
             fieldSchema = fieldSchema.min(

@@ -74,6 +74,10 @@
 
       @include apply-body-large;
 
+      span {
+        display: inline-block;
+      }
+
       &::after {
         @extend %select-icon;
       }

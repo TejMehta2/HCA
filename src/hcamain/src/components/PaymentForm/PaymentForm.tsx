@@ -7,7 +7,7 @@ import Button from '@component-library/core-components/Button/Button';
 
 import {
   ButtonTemplate,
-  DropDownListTemplate,
+  DropDownListOption,
   FieldTemplate,
   InputTemplate,
   ListTemplate,
@@ -18,18 +18,25 @@ import {
 } from './PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
-import SelectField from '@component-library/core-components/form/basic/SelectField/SelectField';
 import createSchema from './helpers/createSchema';
 import Checkbox from '@component-library/core-components/form/basic/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import MarketingPreferences from '@component-library/site-components/MarketingPreferences/MarketingPreferences';
-import { RichText as JssRichText } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  RichText as JssRichText,
+  useSitecoreContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from './helpers/DynamicTextField';
 import Header from './helpers/Header';
 import { useRouter } from 'next/router';
+import DynamicSelectField from './helpers/DynamicSelectField';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
+  const context = useSitecoreContext().sitecoreContext;
+  const siteName = context?.site?.name;
+  const itemPath = context?.itemPath;
+
   // Hooks
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
@@ -87,7 +94,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           return map;
         }, reducerInitialMap);
         errorMap && setFormErrors(errorMap);
-        console.log(errorMap);
       }
     }
     return false;
@@ -116,14 +122,13 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         '';
 
       const formData = new FormData(formRef?.current);
-
-      // Remove values rejected by API
-      formData.delete('resident');
-
-      const response = await fetch(action, {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        `${action}?siteName=${siteName}&itemPath=${itemPath}`,
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
 
       interface PaymentAPIResponse {
         response: {
@@ -206,22 +211,11 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 formErrors={formErrors}
                 name="invoiceNumber"
               />
-
-              <SelectField
-                key={'title'}
-                name={'title'}
-                id={'title'}
-                label={getField<DropDownListTemplate>('title').title.value}
-                options={getField<DropDownListTemplate>(
-                  'title'
-                ).datasource.targetItem.children.results.map((result) => ({
-                  text: result.displayName,
-                  value: result.name,
-                }))}
-                error={formErrors?.get('title')}
-                placeholder={'Please select'}
+              <DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="title"
               />
-
               <DynamicTextField
                 getField={getField}
                 formErrors={formErrors}
@@ -232,16 +226,11 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 formErrors={formErrors}
                 name="lastName"
               />
-
-              <SelectField
-                name="resident"
-                id="resident"
-                label="UK Resident"
-                options={[{ text: 'Yes' }, { text: 'No' }]}
-                error={formErrors?.get('resident')}
-                placeholder="please select"
+              <DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="isUKResident"
                 onChange={(option) => setUkResident(option.text === 'Yes')}
-                defaultValue={{ text: 'Yes' }}
               />
 
               <AddressFinder
@@ -286,24 +275,14 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       name={'postcode'}
                       defaultValue={splitAddressResponse?.postcode || ''}
                     />
-                    <SelectField
-                      name={'country'}
-                      id={'country'}
-                      label={
-                        getField<DropDownListTemplate>('country').title.value
-                      }
-                      options={getField<DropDownListTemplate>(
-                        'country'
-                      ).datasource.targetItem.children.results.map(
-                        (result) => ({
-                          text: result.value.value,
-                          value: result.key.value,
-                        })
-                      )}
-                      error={formErrors?.get(
-                        getField<DropDownListTemplate>('country').name
-                      )}
-                      placeholder={'Please select'}
+                    <DynamicSelectField
+                      getField={getField}
+                      formErrors={formErrors}
+                      name="country"
+                      optionMapper={(result: DropDownListOption) => ({
+                        text: result.value.value,
+                        value: result.key.value,
+                      })}
                     />
                   </>
                 )}
@@ -355,23 +334,10 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
               {hideBillingFields || (
                 <>
-                  <SelectField
-                    key={'billingTitle'}
-                    name={'billingTitle'}
-                    id={'billingTitle'}
-                    label={
-                      getField<DropDownListTemplate>('billingTitle').title.value
-                    }
-                    options={getField<DropDownListTemplate>(
-                      'billingTitle'
-                    ).datasource.targetItem.children.results.map((result) => ({
-                      text: result.displayName,
-                      value: result.name,
-                    }))}
-                    error={formErrors?.get(
-                      getField<DropDownListTemplate>('billingTitle').name
-                    )}
-                    placeholder={'Please select'}
+                  <DynamicSelectField
+                    getField={getField}
+                    formErrors={formErrors}
+                    name="billingTitle"
                   />
                   <DynamicTextField
                     getField={getField}
@@ -427,27 +393,14 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                           name={'billingPostcode'}
                           defaultValue={splitAddressResponse?.postcode || ''}
                         />
-
-                        <SelectField
-                          name={'billingCountry'}
-                          id={'billingCountry'}
-                          label={
-                            getField<DropDownListTemplate>('billingCountry')
-                              .title.value
-                          }
-                          options={getField<DropDownListTemplate>(
-                            'billingCountry'
-                          ).datasource.targetItem.children.results.map(
-                            (result) => ({
-                              text: result.value.value,
-                              value: result.key.value,
-                            })
-                          )}
-                          error={formErrors?.get(
-                            getField<DropDownListTemplate>('billingCountry')
-                              .name
-                          )}
-                          placeholder={'Please select'}
+                        <DynamicSelectField
+                          getField={getField}
+                          formErrors={formErrors}
+                          name="billingCountry"
+                          optionMapper={(result: DropDownListOption) => ({
+                            text: result.value.value,
+                            value: result.key.value,
+                          })}
                         />
                       </>
                     )}

@@ -65,7 +65,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
           aria-controls="select-dropdown"
           onClick={toggleModal}
         >
-          {activeValue?.text || placeholder}
+          <span>{activeValue?.text || placeholder}</span>
         </button>
       </span>
       <ModalDropdown ref={dialogRef}>
@@ -95,7 +95,10 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
                     closeModal();
                   }
                 }}
-                defaultChecked={defaultValue?.text === option.text}
+                defaultChecked={
+                  defaultValue?.text === option.text ||
+                  defaultValue?.value === option.value
+                }
               />
               <label
                 htmlFor={`${name}-${option.value || option.text}`}

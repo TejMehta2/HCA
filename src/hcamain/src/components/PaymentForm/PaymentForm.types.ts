@@ -114,6 +114,14 @@ export interface EmailTemplate {
     value: string;
   };
 }
+export interface DropDownListOption {
+  value: {
+    value: string;
+  };
+  displayName: string;
+  key: { value: string };
+  name: string;
+}
 export interface DropDownListTemplate {
   name: string;
   template: {
@@ -141,14 +149,7 @@ export interface DropDownListTemplate {
   datasource: {
     targetItem: {
       children: {
-        results: {
-          value: {
-            value: string;
-          };
-          displayName: string;
-          key: { value: string };
-          name: string;
-        }[];
+        results: DropDownListOption[];
       };
     };
   };
