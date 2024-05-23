@@ -6,7 +6,10 @@ Path: /sitecore/templates/Branches/Project/HCA/Forms/Available Headless Forms Re
 SharedFields:
 - ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
   Hint: Renderings
-  Value: "{3039876C-2745-4E4E-872A-F49B7CDD58C2}"
+  Value: |
+    {3039876C-2745-4E4E-872A-F49B7CDD58C2}
+    {98069BB4-4A8B-49ED-BDA3-9EDBA9374634}
+    {B22F93DB-CD0B-4BE8-B92E-41B1A135D367}
 Languages:
 - Language: en
   Versions:
@@ -21,11 +24,11 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "af461096-8ebd-4788-9d47-93756bc68293"
+      Value: "83fd1d3a-5fd2-4a60-b383-d301f74b5f35"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240422T162348Z
+      Value: 20240520T063600Z

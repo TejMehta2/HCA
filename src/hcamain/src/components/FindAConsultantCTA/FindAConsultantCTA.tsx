@@ -84,24 +84,44 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
 
   const filterList = [];
 
+  if (props.fields?.data?.contextItem?.doctifyPractice?.value) {
+    filterList.push(
+      'practice' + '=' + props.fields?.data?.contextItem?.doctifyPractice?.value
+    );
+  }
+
+  if (props.fields?.data?.contextItem?.doctifyKeywordId?.value) {
+    filterList.push(
+      'keywordId' +
+        '=' +
+        props.fields?.data?.contextItem?.doctifyKeywordId?.value
+    );
+  }
+
   if (props.fields?.data?.item?.customFilters?.CustomFiltersList) {
     for (const filter of props.fields.data.item.customFilters
       .CustomFiltersList) {
-      filterList.push(
-        filter.filter?.value + '=' + filter.filterValueString?.value
-      );
+      if (filter.filter?.value && filter.filterValueString?.value) {
+        filterList.push(
+          filter.filter?.value + '=' + filter.filterValueString?.value
+        );
+      }
     }
   }
 
   if (props.fields?.data?.item?.practice?.PracticeList) {
     for (const filter of props.fields?.data?.item?.practice?.PracticeList) {
-      filterList.push('practice=' + filter.doctifyPractice?.value);
+      if (filter.doctifyPractice?.value) {
+        filterList.push('practice=' + filter.doctifyPractice?.value);
+      }
     }
   }
 
   if (props.fields?.data?.item?.service?.ServicesList) {
     for (const filter of props.fields?.data?.item?.service?.ServicesList) {
-      filterList.push('service=' + filter.doctifyKeywordId?.value);
+      if (filter.doctifyKeywordId?.value) {
+        filterList.push('keywordId=' + filter.doctifyKeywordId?.value);
+      }
     }
   }
 

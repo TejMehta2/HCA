@@ -17,6 +17,13 @@ const meta: Meta<typeof HeaderLocation> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ paddingTop: '110px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -24,7 +31,7 @@ export default meta;
 export const Default: StoryObj<typeof HeaderLocation> = {
   args: {
     title: (
-      <Text variation="display-1" tag="h2">
+      <Text variation="display-2" tag="h2">
         The Wellington Hospital
       </Text>
     ),

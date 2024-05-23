@@ -19,14 +19,14 @@ Languages:
       Value: "{20A7DE39-3A1F-4738-BBC2-2DF8C07C3989}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7dc9dd71-c65a-4b0c-98cf-b42d739f97f7"
+      Value: "0de15563-902d-4864-ae41-7d2c3e39998c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240315T115937Z
+      Value: 20240522T210702Z
     - ID: "eb2f85a0-e72f-4048-aadf-c719635b6efd"
       Hint: Filter
-      Value: articleTypeId
+      Value: serviceLineId

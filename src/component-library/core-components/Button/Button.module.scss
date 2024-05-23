@@ -389,6 +389,7 @@
       &:hover {
         background-color: transparent;
         color: var(--cta-carousel-hover-text);
+        border-color: var(--cta-carousel-hover-text);
       }
 
       &:active {
@@ -411,14 +412,6 @@
         @include apply-focus-outline(var(--cta-carousel-focus-outline));
       }
     }
-  }
-
-  &-dark {
-    @include apply-cta-carousel-dark;
-  }
-
-  &-light {
-    @include apply-cta-carousel-light;
   }
 }
 

@@ -10,7 +10,7 @@ import { GetDoctifyConfig } from 'lib/consultant-finder/getDoctifyConfig';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { revalidateTag } from 'next/cache';
+//import { revalidateTag } from 'next/cache';
 
 // we don't want to cache the reset function
 export const dynamic = 'force-dynamic';
@@ -20,80 +20,35 @@ const Reset = async (
   _req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
+  // first set the flag
   revalidate.setRevalidateNow(true);
-  console.log('revalidate: ' + revalidate.now());
-  console.log('getting cacheable data');
+  console.log('revalidate flag: ' + revalidate.now());
 
-  console.log('getting getCMAs');
-  getCMAs();
+  console.log('re-validate cacheable data');
+
   console.log('getting GetHCAConfig');
-  await GetHCAConfig();
+  await GetHCAConfig(); //
+  console.log('getting getCMAs');
+  await getCMAs();
   console.log('getting GetC2Config');
-  await GetC2Config();
+  await GetC2Config(); //
   console.log('getting GetDoctifyConfig');
-  await GetDoctifyConfig();
+  await GetDoctifyConfig(); //
   console.log('getting getActiveConsultantSlugs');
-  await getActiveConsultantSlugs();
+  await getActiveConsultantSlugs(); //
   console.log('getting getActiveLiveDiaryConsultantSlugs');
-  await getActiveLiveDiaryConsultantSlugs();
+  await getActiveLiveDiaryConsultantSlugs(); //
   console.log('getting getHolidays');
-  await getHolidays();
+  await getHolidays(); //
   console.log('getting getFacilitiesData');
-  await getFacilitiesData();
+  await getFacilitiesData(); //
 
-  console.log('resetting cache');
-
-  try {
-    revalidateTag('cacheGetHCAConfig');
-  } catch (error) {
-    console.warn(`exception purging cacheGetHCAConfig cache: ${error}`);
-  }
-
-  try {
-    revalidateTag('cacheGetC2Config');
-  } catch (error) {
-    console.warn(`exception purging cacheGetC2Config cache: ${error}`);
-  }
-
-  try {
-    revalidateTag('cacheGetDoctifyConfig');
-  } catch (error) {
-    console.warn(`exception purging cacheGetDoctifyConfig cache: ${error}`);
-  }
-
-  try {
-    revalidateTag('cacheGetActiveConsultantSlugs');
-  } catch (error) {
-    console.warn(
-      `exception purging cacheGetActiveConsultantSlugs cache: ${error}`
-    );
-  }
-
-  try {
-    revalidateTag('cacheGetActiveLiveDiaryConsultantSlugs');
-  } catch (error) {
-    console.warn(
-      `exception purging cacheGetActiveLiveDiaryConsultantSlugs cache: ${error}`
-    );
-  }
-
-  try {
-    revalidateTag('cacheGetHolidays');
-  } catch (error) {
-    console.warn(`exception purging cacheGetHolidays cache: ${error}`);
-  }
-
-  try {
-    revalidateTag('cacheGetFacilitiesData');
-  } catch (error) {
-    console.warn(`exception purging cacheGetFacilitiesData cache: ${error}`);
-  }
-
+  revalidate.setRevalidateNow(false);
   console.log('re-reading cacheable data');
-  console.log('getting getCMAs');
-  getCMAs();
   console.log('getting GetHCAConfig');
   await GetHCAConfig();
+  console.log('getting getCMAs');
+  await getCMAs();
   console.log('getting GetC2Config');
   await GetC2Config();
   console.log('getting GetDoctifyConfig');
@@ -107,7 +62,6 @@ const Reset = async (
   console.log('getting getFacilitiesData');
   await getFacilitiesData();
 
-  revalidate.setRevalidateNow(true);
   const ret = `<div>done</div>${new Date().toISOString()}`;
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(ret);

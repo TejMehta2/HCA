@@ -4,13 +4,14 @@ import styles from './HeaderWithImage.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
-  const { title, copy, ctas, theme = 'D-HCA-Teal', image } = props;
+  const { title, copy, ctas, theme = 'D-HCA-Teal', image, subtitle } = props;
   return (
     <Themes theme={theme}>
       <div className={styles['hero-with-image']}>
         <div className={styles.inner}>
           <div className={styles.content}>
             <div className={styles.title}>{title}</div>
+            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             <div className={styles.copy}>{copy}</div>
             <div className={styles.ctas}>{ctas}</div>
           </div>

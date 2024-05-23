@@ -99,8 +99,12 @@ const Sorting = (props: SortingProps): JSX.Element => {
     >
       <div
         className={styles.desktop}
-        onMouseLeave={() => desktopDialogRef?.current?.close()}
-        onMouseEnter={() => desktopDialogRef?.current?.show()}
+        onMouseLeave={() => {
+          desktopDialogRef?.current?.close();
+        }}
+        onMouseEnter={() => {
+          desktopDialogRef?.current?.show();
+        }}
       >
         <div className={styles.button}>
           <Button size={'large'} variation={'full'}>

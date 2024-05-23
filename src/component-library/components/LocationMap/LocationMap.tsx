@@ -3,6 +3,7 @@ import { LocationMapProps, LatLngLiteral } from './LocationMap.types';
 import styles from './LocationMap.module.scss';
 import GoogleMapsEmbed from '../../core-components/GoogleMapsEmbed/GoogleMapsEmbed';
 import mapStyles from '../../components/LocationMap/googleMapsStyles';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 const LocationMap = (props: LocationMapProps): JSX.Element => {
   const { center, locations, apiKey } = props;
@@ -10,7 +11,9 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
 
   const generateMarkers = useCallback(
     (map: google.maps.Map) => {
-      const setMarker = (latLng: LatLngLiteral, index: number) => {
+      const bounds = new google.maps.LatLngBounds();
+
+      const getMarker = (latLng: LatLngLiteral, index: number) => {
         const marker = new window.google.maps.Marker({
           position: latLng,
           map,
@@ -19,16 +22,15 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
         marker.addListener('click', () => {
           setCurrentCard(index);
         });
-
-        return latLng;
+        bounds?.extend(marker.getPosition() as google.maps.LatLng);
+        return marker;
       };
-      const markerPositions = locations.map((location, index) =>
-        setMarker(location.center, index)
+
+      const markers = locations.map((location, index) =>
+        getMarker(location.center, index)
       );
-      const bounds = new google.maps.LatLngBounds();
-      markerPositions.forEach(
-        (markerPosition) => bounds?.extend(markerPosition)
-      );
+
+      new MarkerClusterer({ map, markers });
       map.fitBounds(bounds);
     },
     [locations]

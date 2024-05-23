@@ -1,0 +1,8 @@
+﻿---
+Role: |
+  sitecore\HCA Approver
+MemberOf:
+  Role: |
+    sitecore\HCA Author
+  Role: |
+    sitecore\Sitecore Client Publishing

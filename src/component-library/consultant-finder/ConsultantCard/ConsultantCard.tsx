@@ -39,7 +39,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           </div>
           <div className={styles['title-subspecialty']}>
             <TextLink>
-              <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+              <Link href={`${props.viewProfileLink}${props.slug}`}>
                 <Text tag="h2" variation="heading-2">
                   {props.name}
                 </Text>
@@ -139,7 +139,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               size="large"
               contentVariation="full-width"
             >
-              <Link href={`/Finder/Step-Enquire-Form?slug=${props.slug}`}>
+              <Link href={`${props.enquireNowLink}?slug=${props.slug}`}>
                 <span>{props.enquireNowCTAText}</span>
               </Link>
             </Button>
@@ -153,7 +153,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`/Finder/Step-Terms-And-Conditions?slug=${props.slug}&gmcNumber=${props.gmcNumber}`}
+                href={`${props.bookOnlineLink}?slug=${props.slug}&gmcNumber=${props.gmcNumber}`}
               >
                 <span>{props.bookNowCTAText}</span>
               </Link>
@@ -185,7 +185,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
         </div>
         <div className={styles['button-profile']}>
           <TextButton>
-            <Link href={`/Finder/StepConsultantProfile/${props.slug}`}>
+            <Link href={`${props.viewProfileLink}${props.slug}`}>
               {props.viewProfileCTAText}
               <Icons iconName="iconArrowSmallRight" />
             </Link>

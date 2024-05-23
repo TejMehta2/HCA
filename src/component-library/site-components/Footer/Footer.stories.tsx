@@ -137,7 +137,7 @@ export const Default: StoryObj<typeof Footer> = {
         ],
       },
       {
-        title: 'Service lines',
+        title: 'Departments',
         links: [
           <a href="#">Cancer Care</a>,
           <a href="#">Cardiac Care</a>,

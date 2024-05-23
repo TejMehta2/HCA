@@ -76,6 +76,11 @@ SharedFields:
             value
           }
         }
+        ... on ConditionPage {
+          doctifyKeywordId {
+            value
+          }
+        }
       }
     }
     
@@ -147,14 +152,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "67dc8da0-7d35-4345-a848-28a2d997bc09"
+      Value: "1ef8c10c-6d40-4d13-a34e-9d80c5ad6198"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T172757Z
+      Value: 20240523T085442Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

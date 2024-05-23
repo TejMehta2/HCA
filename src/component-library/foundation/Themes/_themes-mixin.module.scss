@@ -20,6 +20,7 @@
   @include apply-cqc-dark;
   @include apply-text-buttons-light;
   @include apply-text-link-light;
+  @include apply-cta-carousel-light;
 }
 
 @mixin apply-shared-theme-light {
@@ -40,6 +41,7 @@
   @include apply-cqc-light;
   @include apply-text-buttons-dark;
   @include apply-text-link-dark;
+  @include apply-cta-carousel-dark;
 }
 
 @mixin apply-theme-a-white {

@@ -112,7 +112,7 @@ const SearchPayment = (props: SearchProps): JSX.Element => {
     const userInput = encodeURIComponent(e.target.value);
 
     if (props.setSearchStringPayment) {
-      props.setSearchStringPayment(e.target.value.trim());
+      props.setSearchStringPayment(e.target.value);
     }
 
     if (e.target.value.trim().length > 0) {

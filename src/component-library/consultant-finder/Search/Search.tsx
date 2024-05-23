@@ -95,7 +95,7 @@ const Search = (props: SearchProps): JSX.Element => {
     setConsultantSlug('');
 
     if (props.setSearchString) {
-      props.setSearchString(e.target.value.trim());
+      props.setSearchString(e.target.value);
     }
 
     if (props.setKeywordId) {
