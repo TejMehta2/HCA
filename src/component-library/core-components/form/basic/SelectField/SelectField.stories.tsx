@@ -31,7 +31,19 @@ export const Default: StoryObj<typeof SelectField> = {
         text: 'Option 2',
       },
       {
-        text: 'Option 3',
+        text: 'Option 4',
+      },
+      {
+        text: 'Option 5',
+      },
+      {
+        text: 'Option 6',
+      },
+      {
+        text: 'Option 7',
+      },
+      {
+        text: 'Option 8',
       },
     ],
   },
