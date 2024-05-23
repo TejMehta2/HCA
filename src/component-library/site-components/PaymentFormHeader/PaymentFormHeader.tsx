@@ -4,14 +4,20 @@ import styles from './PaymentFormHeader.module.scss';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
 
 const PaymentFormHeader = (props: PaymentFormHeaderProps): JSX.Element => {
-  const { paymentsText, contactText, phoneNumber, openingHours } = props;
+  const {
+    paymentsText,
+    contactText,
+    phoneNumber,
+    openingHours,
+    logo = <LogoBlue />,
+  } = props;
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles['logo-section']}>
           <a className={styles.logo} href="/">
             <span className="sr-only">Home</span>
-            <LogoBlue />
+            {logo}
           </a>
           <div className={styles['payments-text']}>{paymentsText}</div>
         </div>

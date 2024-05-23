@@ -1,26 +1,13 @@
 import React from 'react';
 import {
-  Field,
-  ImageField,
   Text as JssText,
   Image as JssImage,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import Text from '@component-library/foundation/Text/Text';
-import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
-import Params from 'src/types/params';
-
-interface Fields {
-  Logo?: ImageField;
-  Text?: Field<string>;
-  AnyQuestionsText?: Field<string>;
-  ContactUnit?: ContactUnitFields;
-}
-
-type LandingPageHeaderProps = {
-  params?: Params;
-  fields?: Fields;
-};
+import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
+import Icons from '@component-library/foundation/Icons/Icons';
+import { LandingPageHeaderProps } from './LandingPageHeader.types';
+import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 
 const LandingPageHeaderDefaultComponent = (
   props: LandingPageHeaderProps
@@ -45,19 +32,42 @@ export const Default = (props: LandingPageHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <LandingPageHeaderDefaultComponent {...props} />;
   }
+  const fields = props?.fields?.data?.item;
+  const contactUnit = fields?.contactUnit?.contactUnitList;
+  const phoneNumber =
+    contactUnit?.telephoneNumber?.telephoneNumberList[0]?.phoneNumber?.value;
+
+  const availabilityString = OpeningHours(contactUnit);
 
   return (
     <>
-      <JssImage field={props.fields?.Logo} />
-      <Text
-        variation={props.params?.HeadingSize || 'display-4'}
-        tag={props.params?.HeadingTag || 'h2'}
-      >
-        <JssText field={props.fields?.Text} />
-      </Text>
-      <Text>
-        <JssText field={props.fields?.AnyQuestionsText} />
-      </Text>
+      <PaymentFormHeader
+        logo={<JssImage field={fields?.logo?.jsonValue} />}
+        paymentsText={
+          <JssText
+            tag={props.params?.HeadingTag || 'h1'}
+            field={fields?.text?.jsonValue}
+          />
+        }
+        contactText={<JssText field={fields?.anyQuestionsText?.jsonValue} />}
+        phoneNumber={
+          phoneNumber
+            ? {
+                icon: <Icons iconName="iconPhone" />,
+                text: phoneNumber,
+                number: phoneNumber,
+              }
+            : undefined
+        }
+        openingHours={
+          availabilityString
+            ? {
+                icon: <Icons iconName="iconClock" />,
+                text: availabilityString,
+              }
+            : undefined
+        }
+      />
     </>
   );
 };

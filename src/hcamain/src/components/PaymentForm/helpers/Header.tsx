@@ -1,7 +1,6 @@
 import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
 import FormProgressBar from '@component-library/site-components/FormProgressBar/FormProgressBar';
-import PaymentFormHeader from '@component-library/site-components/PaymentFormHeader/PaymentFormHeader';
 
 const Header = ({
   stage = 'Patient Details',
@@ -9,19 +8,6 @@ const Header = ({
   stage?: 'Patient Details' | 'Confirmation' | 'Payment';
 }) => (
   <>
-    <PaymentFormHeader
-      paymentsText="Secure Online Payments"
-      contactText="Any questions?"
-      phoneNumber={{
-        icon: <Icons iconName="iconPhone" />,
-        text: '03332 223 133',
-        number: '03332223133',
-      }}
-      openingHours={{
-        icon: <Icons iconName="iconClock" />,
-        text: 'Mon-Fri 9am-5:30pm; Sat-Sun 9am-2pm',
-      }}
-    />
     <FormProgressBar
       pages={[
         {

@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 
 interface PhoneNumber {
   icon: JSX.Element | ReactNode;
-  text: string;
-  number: string;
+  text: string | JSX.Element;
+  number: string | JSX.Element;
 }
 
 interface OpeningHours {
@@ -12,8 +12,9 @@ interface OpeningHours {
 }
 
 export interface PaymentFormHeaderProps {
-  paymentsText?: string;
-  contactText?: string;
+  paymentsText?: string | JSX.Element;
+  contactText?: string | JSX.Element;
   phoneNumber?: PhoneNumber;
   openingHours?: OpeningHours;
+  logo?: JSX.Element;
 }
