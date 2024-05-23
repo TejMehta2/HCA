@@ -3,6 +3,7 @@ import {
   Field,
   ImageField,
   Text as JssText,
+  RichText,
   Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
@@ -87,7 +88,7 @@ const outputImageAndTextBlock = (
       image={<JssImage field={props.fields?.Image} />}
     >
       <Text tag="p" variation="body-large">
-        <JssText field={props.fields?.Text}></JssText>
+        <RichText field={props.fields?.Text}></RichText>
       </Text>
     </ImageAndTextBlock>
   );

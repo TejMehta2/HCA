@@ -2,7 +2,7 @@
 ID: "9314c11a-27d6-4fd5-a53c-ee5188271aab"
 Parent: "cc3b7d99-bd00-44b2-8142-dc644c50b6e2"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Landing Page Header
+Path: /sitecore/templates/Project/HCA/Navigation/Rendering Parameters/Landing Page Header Parameters
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
