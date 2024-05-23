@@ -228,7 +228,6 @@ export const Default = (props: StepProps): JSX.Element => {
       .post(URL, dataToSend)
       .then((resp) => {
         //console.log(resp);
-        setIsSubmitting(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
         if (resp?.data?.errorCode > 0) {
@@ -248,6 +247,7 @@ export const Default = (props: StepProps): JSX.Element => {
             }`
           );
         }
+        setIsSubmitting(false);
       })
       .catch((error) => {
         console.log(error);
