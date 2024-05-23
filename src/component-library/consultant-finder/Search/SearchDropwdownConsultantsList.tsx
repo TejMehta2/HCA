@@ -19,8 +19,8 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   // console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
-    console.log('name', name);
-    console.log('id', id);
+    // console.log('name', name);
+    // console.log('id', id);
     if (props.setSearchString) {
       props.setSearchString(name);
     }

@@ -109,6 +109,7 @@ interface Fields {
   PanelTitle: Field<string>;
   ExperienceText: Field<string>;
   EnquireNowButtonLink: LinkField;
+  ResultsLink: LinkField;
 }
 interface ServerSideProps {
   Slug: string;
@@ -379,7 +380,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 {topSpecialty[0]?.name && (
                   <TextLink>
                     <Link
-                      href={`/Finder/Step-Consultant-Cards?search=${
+                      href={`${props?.fields?.ResultsLink?.value
+                        ?.href}?search=${
                         topSpecialty[0]?.name || ''
                       }&keywordId=${
                         topSpecialty[0]?.id || ''
