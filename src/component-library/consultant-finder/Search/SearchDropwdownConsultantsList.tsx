@@ -19,6 +19,8 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   // console.log('conditionsProcedures', conditionsProcedures);
 
   const handleClick = (name: string, id: number) => {
+    console.log('name', name);
+    console.log('id', id);
     if (props.setSearchString) {
       props.setSearchString(name);
     }
@@ -28,6 +30,15 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
 
     setSearchStringConsultantName('');
     // Update the URL with the search value and keyword ID
+
+    if (router?.query?.search) {
+      delete router.query.search;
+    }
+
+    if (router?.query?.keywordId) {
+      delete router.query.keywordId;
+    }
+
     router.push(
       {
         pathname: router.pathname,

@@ -157,7 +157,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
     const URL = `${props.doctifyBaseURL}=${userInput}&limit=${props.limit}`;
 
     if (props.setSearchStringConsultantName) {
-      props.setSearchStringConsultantName(e.target.value.trim());
+      props.setSearchStringConsultantName(e.target.value);
     }
 
     setConsultantSlug('');
