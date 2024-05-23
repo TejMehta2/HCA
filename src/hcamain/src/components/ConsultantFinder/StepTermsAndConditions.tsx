@@ -48,6 +48,7 @@ interface Fields {
   Card4Icon: any;
   Card4HeadingText: Field<string>;
   Card4BodyText: Field<string>;
+  AcceptButtonText: Field<string>;
 }
 
 type StepProps = {
@@ -175,9 +176,14 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container customBtn={true}>
                 <Button variation="full-dark" size="large">
                   <Link
-                    href={`/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    href={`${
+                      props?.fields?.NextLink?.value?.href ||
+                      '/Finder/Step-Appointment-Type'
+                    }?slug=${slug}&gmcNumber=${gmcNumber}`}
                   >
-                    <span>{'Accept'}</span>
+                    <span>
+                      {props?.fields?.AcceptButtonText?.value || 'Accept'}
+                    </span>
                   </Link>
                 </Button>
               </Container>

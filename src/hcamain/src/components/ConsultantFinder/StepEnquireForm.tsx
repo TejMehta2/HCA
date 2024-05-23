@@ -110,7 +110,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  // console.log(props.fields);
+  console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [insurers, setInsurers] = useState<object[]>([]);
@@ -241,7 +241,12 @@ export const Default = (props: StepProps): JSX.Element => {
           setAdditionalErrorText(`${resp?.data?.html}`);
           dialogRef?.current?.showModal();
         } else {
-          router.push(`/Finder/Step-Enquire-Form-Confirmation`);
+          router.push(
+            `${
+              props?.fields?.NextLink?.value?.href ||
+              '/Finder/Step-Enquire-Form-Confirmation'
+            }`
+          );
         }
       })
       .catch((error) => {
@@ -341,7 +346,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       /,-w-,/g,
                       ''
                     )
-                  }/${slug}`}
+                  }${slug}`}
                 >
                   {consultantName}
                 </Link>
