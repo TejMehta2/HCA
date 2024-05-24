@@ -130,7 +130,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('step booking form', props.fields);
+  // console.log('step booking form', props.fields);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
@@ -140,11 +140,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const [loadingData, setLoadingData] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  console.log(
-    props.fields.LiveBookingFormDateOfBirthErrors[0].fields.Required.value ||
-      'test'
-  );
 
   const {
     selectedLocationName,
@@ -198,9 +193,9 @@ export const Default = (props: StepProps): JSX.Element => {
             // const gpAppointmentDate = new Date(formatDateYYYYMMDD(testTime));
             // Calculate the minimum date of birth for 18 years old at the appointment date
             const minDateOfBirth = new Date(gpAppointmentDate);
-            console.log('minDateOfBirth', minDateOfBirth);
-            console.log('dateOfBirth', dateOfBirth);
-            console.log('gpAppointmentDate', gpAppointmentDate);
+            // console.log('minDateOfBirth', minDateOfBirth);
+            // console.log('dateOfBirth', dateOfBirth);
+            // console.log('gpAppointmentDate', gpAppointmentDate);
             minDateOfBirth.setFullYear(gpAppointmentDate.getFullYear() - 18);
 
             // check dob and min date
@@ -491,7 +486,7 @@ export const Default = (props: StepProps): JSX.Element => {
     };
 
     const URL = props?.fields?.API_C2_ReserveConsultantSlot_BaseURL?.value;
-    console.log('form data', JSON.stringify(dataToPost, null, 2));
+    // console.log('form data', JSON.stringify(dataToPost, null, 2));
 
     const dataToSent: any = JSON.stringify(dataToPost);
 
@@ -507,8 +502,8 @@ export const Default = (props: StepProps): JSX.Element => {
     axios(config)
       .then(function (response) {
         // handle successful response with status code 200
-        console.log(response);
-        console.log(JSON.stringify(response.data));
+        // console.log(response);
+        // console.log(JSON.stringify(response.data));
         // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
         // go to thank you page if no error on booking or show error modal otherwise
         if (response.data.errorCode) {
@@ -538,7 +533,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const onSubmit = (data: any) => {
-    console.log('data', data);
+    // console.log('data', data);
     postData(data);
     setPatientName(`${data.firstName} ${data.lastName}`);
     // skip post just go to conf page for dev
