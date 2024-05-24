@@ -32,11 +32,21 @@ export const getHeadConfig: GetHeadConfig<
   };
 };
 
+// export const headlessConfig: HeadlessConfig = {
+//   apiKey: '4a8383e85bab30d0436cf4d1d859520d',
+//   experienceKey: 'hca-search',
+//   locale: 'en_GB',
+//   environment: Environment.PROD,
+// };
+
+const environment = process.env
+  .NEXT_PUBLIC_YEXT_ENVIRONMENT! as keyof typeof Environment;
+
 export const headlessConfig: HeadlessConfig = {
-  apiKey: '4a8383e85bab30d0436cf4d1d859520d',
-  experienceKey: 'hca-search',
+  apiKey: process.env.NEXT_PUBLIC_YEXT_API_KEY!,
+  experienceKey: process.env.NEXT_PUBLIC_YEXT_EXPERIENCE_KEY!,
   locale: 'en_GB',
-  environment: Environment.PROD,
+  environment: Environment[environment],
 };
 
 const searcher = provideHeadless(headlessConfig);
