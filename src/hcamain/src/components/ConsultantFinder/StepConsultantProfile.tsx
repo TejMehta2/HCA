@@ -140,10 +140,12 @@ export const getStaticProps: GetStaticComponentProps = async (
     };
   }
 
+  const path = (context?.params?.path?.toString() ?? '').replace(',-w-,', '');
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const physicianStructuredDataJson = await getPhysicianStructuredData(
     slug,
-    consultantProfileJson
+    consultantProfileJson,
+    path
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
