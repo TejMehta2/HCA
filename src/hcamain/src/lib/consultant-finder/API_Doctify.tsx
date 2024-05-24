@@ -27,7 +27,7 @@ export async function getSpecialistProfileData(
   loadFirstAppointmentData: boolean = false
 ): Promise<any> {
   const config = !serviceURL ? await GetDoctifyConfig() : null;
-  //console.log(DoctifyConfig);
+  //console.log('config', config);
   const Doctify_Specialists_URL =
     serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
 
@@ -110,13 +110,22 @@ export async function getSpecialistProfileData(
             if (hcaConfig.aPI_HCA_CMAs_UseDoctifyData) {
               const replaceCMA = `/Finder/CMADisclosures/${slug}?CmaContentId=`;
               if (docitfyData.about) {
+                docitfyData.about = (docitfyData.about as string).replace(
+                  `https://www.hcahealthcare.co.uk/`,
+                  'https:/'
+                );
                 // insert the slug as a frag in the CMA link - NextJS style
                 docitfyData.about = (docitfyData.about as string).replace(
                   '/cma-disclosure?CmaContentId=',
                   replaceCMA
                 );
               }
+              // second about field in the Doctify data
               if (docitfyData.customFields.about) {
+                docitfyData.about = (docitfyData.about as string).replace(
+                  `https://www.hcahealthcare.co.uk/`,
+                  'https:/'
+                );
                 // insert the slug as a frag in the CMA link - NextJS style
                 docitfyData.customFields.about = (
                   docitfyData.customFields.about as string
