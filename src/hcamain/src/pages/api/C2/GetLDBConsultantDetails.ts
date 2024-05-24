@@ -14,6 +14,9 @@ const GetLDBConsultantDetails = async (
     gmcNumber as string,
     isFollowOnAppointment?.toString() === 'true' ? true : false
   ); // e.g. "4113571", "true"
+  res.appendHeader('Cache-Control', 'max-age=600');
+  res.appendHeader('CDN-Cache-Control', 'max-age=3000');
+  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=6000');
   return res.status(200).json(response);
 };
 

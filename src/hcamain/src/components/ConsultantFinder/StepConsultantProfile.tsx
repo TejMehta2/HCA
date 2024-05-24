@@ -140,10 +140,12 @@ export const getStaticProps: GetStaticComponentProps = async (
     };
   }
 
+  const path = (context?.params?.path?.toString() ?? '').replace(',-w-,', '');
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const physicianStructuredDataJson = await getPhysicianStructuredData(
     slug,
-    consultantProfileJson
+    consultantProfileJson,
+    path
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
@@ -180,7 +182,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
 
-  console.log('consultant profile data', props.fields);
+  //console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -351,6 +353,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <script
                 id="consultant-profile-data"
                 type="application/ld+json"
+                key="schema"
                 dangerouslySetInnerHTML={{
                   __html: `${JSON.stringify(
                     serverSideData?.PhysicianStructuredDataJson
