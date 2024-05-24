@@ -180,7 +180,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
 
-  console.log('consultant profile data', props.fields);
+  //console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
