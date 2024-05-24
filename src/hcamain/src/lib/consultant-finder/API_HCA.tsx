@@ -7,6 +7,7 @@ import {
   doctifyGetAllConsultantSlugs,
 } from './API_Doctify';
 import { revalidate } from './revalidateNow';
+import { BASE_URL } from 'lib/constants';
 
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   if (revalidate.noCache()) {
@@ -442,7 +443,7 @@ export async function getPhysicianStructuredData(
   slug: string,
   specialistProfileData?: any, // can be passed in to save a second call
   path?: string,
-  site: string = 'https://www.hcahealthcare.co.uk'
+  site: string = `${BASE_URL}`
 ): Promise<any> {
   if (!specialistProfileData) {
     specialistProfileData = await getSpecialistProfileData(slug);

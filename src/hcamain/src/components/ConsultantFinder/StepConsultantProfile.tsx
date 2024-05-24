@@ -353,6 +353,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <script
                 id="consultant-profile-data"
                 type="application/ld+json"
+                key="schema"
                 dangerouslySetInnerHTML={{
                   __html: `${JSON.stringify(
                     serverSideData?.PhysicianStructuredDataJson
