@@ -99,21 +99,11 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
-            {/* <div>
-              {isRouteChanging ? (
-                <p>Route is changing...</p>
-              ) : (
-                <p>Route has changed!</p>
-              )}
-            </div> */}
             <LocationsTopSection
               hospitals={hospitals}
               setHospitals={setHospitals}
               postcodesFacilities={postcodes}
-              locationAPI={
-                props?.fields?.API_HCA_Locations_BaseURL?.value ||
-                'http://localhost:3000/api/locationAPI/'
-              }
+              locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value}
               array={array}
               setArray={setArray}
               slugs={slugs}
