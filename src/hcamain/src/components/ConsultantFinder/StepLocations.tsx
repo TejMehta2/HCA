@@ -18,8 +18,6 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import Link from 'next/link';
-// import useRouteChange from '@component-library/hooks/useRouteChange';
-// import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
 
 interface Fields {
   TitleText: Field<string>;
@@ -54,7 +52,6 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   // console.log('location', props.fields);
   const { selectedLocations } = useContext(ConsultantFinderContext);
-  const { isRouteChanging } = useRouteChange();
   const [array, setArray] = useState([]);
   const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
   const [search, setSearch] = useState('');
