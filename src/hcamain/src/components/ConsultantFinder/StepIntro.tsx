@@ -65,9 +65,7 @@ export const Default = (props: StepProps): JSX.Element => {
   //console.log('how can we help', props);
 
   const handleClickQuickSearch = () => {
-    const baseURLResults =
-      props?.fields?.QuickSearchLink?.value?.href ||
-      '/Finder/Step-Consultant-Cards';
+    const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
     router.push(
       `${baseURLResults}?search=${searchString}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`
     );

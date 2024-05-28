@@ -30,4 +30,7 @@ export interface ConsultantCardProps {
   phoneNumberHref: string;
   callToBookButtonText: string;
   callToBookButtonIcon: string;
+  viewProfileLink: any;
+  bookOnlineLink: any;
+  enquireNowLink: any;
 }

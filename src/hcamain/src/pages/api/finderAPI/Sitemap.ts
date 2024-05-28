@@ -30,6 +30,9 @@ const GetFinderSitemap = async (
   </urlset>`;
 
   res.setHeader('Content-Type', 'text/xml');
+  res.appendHeader('Cache-Control', 'max-age=600');
+  res.appendHeader('CDN-Cache-Control', 'max-age=3000');
+  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=6000');
   return res.status(200).send(ret);
 };
 

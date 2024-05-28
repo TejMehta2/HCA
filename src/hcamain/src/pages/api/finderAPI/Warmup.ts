@@ -7,7 +7,7 @@ import { parse } from 'node-html-parser';
 
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+//const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
@@ -83,16 +83,12 @@ const longRunning = async (
           if (profileResult && profileResult.ok) {
             notify?.log(`loaded ${slug}, load time ${timeEnd - timeStart}ms`);
           } else {
-            notify.log(
+            notify.error(
               `Warn: Failed to load ${slug}, ${profileResult.status} ${profileResult.statusText}`
             );
-            notify.log(`Pausing for 10 seconds...`);
-            await delay(10000);
           }
         } catch (e) {
-          notify.log(`Warn: Failed to load ${slug}, ${e}`);
-          notify.log(`Pausing for 10 seconds...`);
-          await delay(10000);
+          notify.error(`Warn: Failed to load ${slug}, ${e}`);
         }
       }
     });

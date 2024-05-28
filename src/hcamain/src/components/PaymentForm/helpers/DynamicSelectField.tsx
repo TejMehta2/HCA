@@ -36,6 +36,7 @@ const DynamicSelectField = ({
         value: field?.defaultSelection?.value,
       }}
       onChange={onChange}
+      helpText={field?.helperText?.value}
     />
   );
 };

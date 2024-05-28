@@ -2,7 +2,6 @@
 // Specific page to partner with the consultant profile page
 // Based on https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // See getStaticPaths/Props below for comment and differences between this and the main pages
-
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
@@ -12,7 +11,6 @@ import {
   SitecoreContext,
   ComponentPropsContext,
   EditingComponentPlaceholder,
-  // StaticPath,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 import { SitecorePageProps } from 'lib/page-props';
@@ -20,7 +18,7 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 //import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import NotFound from 'src/NotFound';
-import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
+//import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 
@@ -77,7 +75,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let fallback: boolean | 'blocking' = 'blocking';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let paths: any = [];
-  let slugs: string[] = [];
+  const slugs: string[] = [];
 
   // note getStaticPaths runs on every request in dev mode,
   // so only do this for all consultants if deployed
@@ -88,6 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback = process.env.EXPORT_MODE ? false : fallback;
   }
 
+  /*
   try {
     // Note: Next.js runs export in production mode
     if (!revalidate.isCacheAvailable()) {
@@ -102,15 +101,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
       slugs = await getActiveConsultantSlugs();
     }
   } catch (error) {
-    console.warn(
-      'Error occurred in StepConsultantProfile getStaticPaths',
-      error
-    );
+    console.warn('Error occurred in specialists getStaticPaths', error);
   } finally {
     revalidate.setNoCache(false); // reset default use of unstable_cache
   }
-
-  console.log('StepConsultantProfile slugs to pre-render', slugs);
+  */
+  //console.log('specialists slugs to pre-render', slugs);
   if (slugs) {
     paths = slugs.map((slug) => ({
       params: { path: slug },
@@ -129,9 +125,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   if (context.params) {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
-    //console.log('StepConsultantProfile path:', context?.params?.path);
+    //console.log('specialists path:', context?.params?.path);
     context.params.requestPath = context.params.path;
-    context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
+    context.params.path = [`Finder/specialists/,-w-,`];
   }
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {

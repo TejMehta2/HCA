@@ -87,6 +87,8 @@ interface Fields {
   API_HCA_EnquireBookingForm_BaseURL: Field<string>;
   API_HCA_EnquireBookingForm_ErrorSubmittingText: Field<string>;
   EnquireFormBreadcrumbsCurrentPage: Field<string>;
+  EnquireFormBreadcrumbsHome: Field<string>;
+  EnquireFormBreadcrumbsProfilePageLink: any;
   EnquireFormInfoTextSubmit: Field<string>;
   EnquireFormBtnsSubmit: Field<string>;
   API_HCA_EnquireBookingForm_LoadingMsg: Field<string>;
@@ -207,7 +209,7 @@ export const Default = (props: StepProps): JSX.Element => {
     setValue,
     clearErrors,
   } = form;
-  console.log('isSubmitting', isSubmitting);
+  // console.log('isSubmitting', isSubmitting);
 
   const postData = (data: any) => {
     setIsSubmitting(true);
@@ -217,7 +219,7 @@ export const Default = (props: StepProps): JSX.Element => {
     dataToSend.consultantTopSpecialty = specialty;
     dataToSend.hiddenFormInstance = formId;
 
-    console.log(JSON.stringify(dataToSend, null, 2));
+    // console.log(JSON.stringify(dataToSend, null, 2));
     const URL =
       props?.fields?.API_HCA_EnquireBookingForm_BaseURL?.value ||
       'https:/api/formAPI/PostMakeBookingEnquiry';
@@ -226,7 +228,6 @@ export const Default = (props: StepProps): JSX.Element => {
       .post(URL, dataToSend)
       .then((resp) => {
         //console.log(resp);
-        setIsSubmitting(false);
         // console.log("done ok");
         // if from was submitted then redirect to thank you page
         if (resp?.data?.errorCode > 0) {
@@ -239,8 +240,14 @@ export const Default = (props: StepProps): JSX.Element => {
           setAdditionalErrorText(`${resp?.data?.html}`);
           dialogRef?.current?.showModal();
         } else {
-          router.push(`/Finder/Step-Enquire-Form-Confirmation`);
+          router.push(
+            `${
+              props?.fields?.NextLink?.value?.href ||
+              '/Finder/Step-Enquire-Form-Confirmation'
+            }`
+          );
         }
+        setIsSubmitting(false);
       })
       .catch((error) => {
         console.log(error);
@@ -251,7 +258,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const onSubmit = (data: any) => {
-    console.log('data', data);
+    // console.log('data', data);
     postData(data);
   };
 
@@ -263,7 +270,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(`https://api.doctify.com/api/hca/specialists/${slug}`)
       .then((resp) => {
-        console.log(resp?.data);
+        // console.log(resp?.data);
         setErrorData(false);
         setLoadingData(false);
         setInsurers(resp?.data?.insurers || []);
@@ -322,14 +329,25 @@ export const Default = (props: StepProps): JSX.Element => {
               <TextLink>
                 <a href="/">
                   <Icons iconName="iconHome"></Icons>
-                  <span className="sr-only">Home</span>
+                  <span className="sr-only">
+                    {props?.fields?.EnquireFormBreadcrumbsHome?.value || 'Home'}
+                  </span>
                 </a>
               </TextLink>
               <TextLink>
                 <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
               </TextLink>
               <TextLink>
-                <Link href={`/Finder/StepConsultantProfile/${slug}`}>
+                <Link
+                  href={`${
+                    props?.fields?.EnquireFormBreadcrumbsProfilePageLink?.value
+                      ?.href &&
+                    props?.fields?.EnquireFormBreadcrumbsProfilePageLink?.value?.href.replace(
+                      /,-w-,/g,
+                      ''
+                    )
+                  }${slug}`}
+                >
                   {consultantName}
                 </Link>
               </TextLink>

@@ -165,7 +165,7 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  //console.log('consultant cards', props);
+  // console.log('consultant cards', props);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
@@ -500,7 +500,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(requestURL)
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
         setTotal(resp?.data?.total || 0);
 
         if (resp.data.rows.length > 0) {
@@ -969,6 +969,19 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.ViewProfileLink?.value?.text ||
                         'View profile'
                       }
+                      viewProfileLink={
+                        props?.fields?.ViewProfileLink?.value?.href &&
+                        props?.fields?.ViewProfileLink?.value?.href.replace(
+                          /,-w-,/g,
+                          ''
+                        )
+                      }
+                      bookOnlineLink={
+                        props?.fields?.BookOnlineLink?.value?.href
+                      }
+                      enquireNowLink={
+                        props?.fields?.EnquireNowLink?.value?.href
+                      }
                       nextAppointmentTitle={
                         props?.fields?.NextAppointmentOnText?.value ||
                         'Next appointment on'
@@ -1021,7 +1034,7 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
 
               {!error && !loading && totalPgaes > 1 && results.length > 0 && (
-                <Container marginBottom="spacing-8" marginTop="spacing-8">
+                <Container marginBottom="spacing-8">
                   <Themes theme={'A-HCA-White'}>
                     <Pagination
                       pageCount={totalPgaes}

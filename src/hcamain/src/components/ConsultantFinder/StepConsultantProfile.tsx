@@ -109,6 +109,7 @@ interface Fields {
   PanelTitle: Field<string>;
   ExperienceText: Field<string>;
   EnquireNowButtonLink: LinkField;
+  ResultsLink: LinkField;
 }
 interface ServerSideProps {
   Slug: string;
@@ -139,10 +140,12 @@ export const getStaticProps: GetStaticComponentProps = async (
     };
   }
 
+  const path = (context?.params?.path?.toString() ?? '').replace(',-w-,', '');
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const physicianStructuredDataJson = await getPhysicianStructuredData(
     slug,
-    consultantProfileJson
+    consultantProfileJson,
+    path
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
@@ -350,6 +353,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <script
                 id="consultant-profile-data"
                 type="application/ld+json"
+                key="schema"
                 dangerouslySetInnerHTML={{
                   __html: `${JSON.stringify(
                     serverSideData?.PhysicianStructuredDataJson
@@ -379,7 +383,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 {topSpecialty[0]?.name && (
                   <TextLink>
                     <Link
-                      href={`/Finder/Step-Consultant-Cards?search=${
+                      href={`${props?.fields?.ResultsLink?.value
+                        ?.href}?search=${
                         topSpecialty[0]?.name || ''
                       }&keywordId=${
                         topSpecialty[0]?.id || ''

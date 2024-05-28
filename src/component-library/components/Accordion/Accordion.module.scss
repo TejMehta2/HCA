@@ -41,6 +41,10 @@
   color: var(--card-body-text);
 
   @include apply-body-large;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
 }
 /* stylelint-disable no-descending-specificity */
 .toggle {
