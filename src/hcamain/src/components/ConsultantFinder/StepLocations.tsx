@@ -18,7 +18,6 @@ import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsTopSection from '@component-library/consultant-finder/LocationsTopSection/LocationsTopSection';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import Link from 'next/link';
-import useRouteChange from '@component-library/hooks/useRouteChange';
 
 interface Fields {
   TitleText: Field<string>;
