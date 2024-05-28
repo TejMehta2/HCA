@@ -14,6 +14,7 @@ const useRouteChange = () => {
         } shallow routing`
       );
       setIsRouteChanging(true);
+      document.body.style.overflow = 'hidden';
     };
 
     const handleRouteChangeComplete = (url: any, { shallow }: any) => {
@@ -23,6 +24,7 @@ const useRouteChange = () => {
         } shallow routing`
       );
       setIsRouteChanging(false);
+      document.body.style.overflow = '';
     };
 
     router.events.on('routeChangeStart', handleRouteChangeStart);
