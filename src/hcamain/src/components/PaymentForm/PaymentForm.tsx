@@ -123,7 +123,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
       const formData = new FormData(formRef?.current);
       const response = await fetch(
-        `${action}?siteName=${siteName}&itemPath=${itemPath}`,
+        `${action}?site=${siteName}&itemPath=${itemPath}`,
         {
           method: 'POST',
           body: formData,
