@@ -53,7 +53,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 export const Default = (props: StepProps): JSX.Element => {
   // console.log('location', props.fields);
   const { selectedLocations } = useContext(ConsultantFinderContext);
-  const { isRouteChanging } = useRouteChange();
+  //const { isRouteChanging } = useRouteChange();
   const [array, setArray] = useState([]);
   const [hospitals, setHospitals] = useState(props?.fields?.Hospitals || []);
   const [search, setSearch] = useState('');
