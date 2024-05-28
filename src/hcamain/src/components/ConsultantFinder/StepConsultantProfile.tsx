@@ -55,6 +55,7 @@ import {
 import axios, { CancelTokenSource } from 'axios';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Script from 'next/script';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -303,11 +304,8 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
-  const title = `${serverSideData?.ProfileJson?.title} ${serverSideData
-    ?.ProfileJson?.firstName} ${serverSideData?.ProfileJson
-    ?.lastName} ${serverSideData?.ProfileJson?.suffix} - ${
-    topSpecialty[0]?.name || ''
-  } at HCA Healthcare UK`;
+  const name = `${serverSideData?.ProfileJson?.title} ${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName} ${serverSideData?.ProfileJson?.suffix}`;
+  const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   const profileImage =
     serverSideData?.ProfileJson?.images?.logo ||
@@ -361,6 +359,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
+            {
+              /* HWPD-3463 - data layer */
+              <Script
+                id="cf-gtm-info"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                'event': 'consultantFinder',
+                'consultantName': '${name}',
+                'consultantSpecialty': '${topSpecialty[0]?.name || ''}',
+                'consultantReviews': '${
+                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                }'
+                });`,
+                }}
+              ></Script>
+            }
             {/* top section */}
             <div>
               <Breadcrumbs
