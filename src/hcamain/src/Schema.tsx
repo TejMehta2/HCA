@@ -114,6 +114,7 @@ const Schema = (props: SchemaProps) => {
     };
 
     // Adjust schema based on page type
+    let noSchema: boolean = false;
     switch (pageType) {
       case 'Homepage':
         schema = {
@@ -190,11 +191,20 @@ const Schema = (props: SchemaProps) => {
           aggregateRating,
         };
         break;
+      default:
+        noSchema = true;
+        break;
+    }
+
+    // don't render if there's no schema - schema data can be set in the component e.g. consultant finder profiles
+    if (noSchema) {
+      return <></>;
     }
 
     return (
       <script
         type="application/ld+json"
+        key="schema"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(schema),
         }}
