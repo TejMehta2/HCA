@@ -23,6 +23,8 @@ import NotFound from 'src/NotFound';
 import { getActiveConsultantSlugs } from '../../../lib/consultant-finder/API_HCA';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
+import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
+import useRouteChange from '@component-library/hooks/useRouteChange';
 
 const SitecorePage = ({
   notFound,
@@ -30,6 +32,7 @@ const SitecorePage = ({
   layoutData,
   headLinks,
 }: SitecorePageProps): JSX.Element => {
+  const { isRouteChanging } = useRouteChange();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
@@ -62,6 +65,7 @@ const SitecorePage = ({
             />
           ) : (
             <ConsultantFinderContextProvider>
+              {isRouteChanging && <RedirectOverlay></RedirectOverlay>}
               <Layout layoutData={layoutData} headLinks={headLinks} />
             </ConsultantFinderContextProvider>
           )}

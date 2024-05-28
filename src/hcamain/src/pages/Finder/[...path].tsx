@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
 import Layout from 'src/Layout';
+import useRouteChange from '@component-library/hooks/useRouteChange';
+import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
 import {
   RenderingType,
   SitecoreContext,
@@ -26,6 +28,7 @@ const SitecorePage = ({
   layoutData,
   headLinks,
 }: SitecorePageProps): JSX.Element => {
+  const { isRouteChanging } = useRouteChange();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
@@ -57,6 +60,8 @@ const SitecorePage = ({
             />
           ) : (
             <ConsultantFinderContextProvider>
+              {isRouteChanging && <RedirectOverlay></RedirectOverlay>}
+
               <Layout layoutData={layoutData} headLinks={headLinks} />
             </ConsultantFinderContextProvider>
           )}

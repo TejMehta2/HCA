@@ -103,10 +103,7 @@ export const Default = (props: StepProps): JSX.Element => {
               hospitals={hospitals}
               setHospitals={setHospitals}
               postcodesFacilities={postcodes}
-              locationAPI={
-                props?.fields?.API_HCA_Locations_BaseURL?.value ||
-                'http://localhost:3000/api/locationAPI/'
-              }
+              locationAPI={props?.fields?.API_HCA_Locations_BaseURL?.value}
               array={array}
               setArray={setArray}
               slugs={slugs}

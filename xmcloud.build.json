@@ -21,6 +21,11 @@
               "/sitecore/client/Applications/Launchpad"
             ]
           },
+          "scsModules": {
+            "modules": [
+              "src/HCA.roles.module.json"
+              ]
+          },
           "populateSchema": {
             "indexNames": []
           },
