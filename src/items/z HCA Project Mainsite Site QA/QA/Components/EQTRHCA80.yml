@@ -42,6 +42,9 @@ Languages:
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: 
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -53,14 +56,17 @@ Languages:
         <p>London Bridge Hospital, part of HCA Healthcare UK, has once again been rated as "Outstanding" by the Care Quality Commission (CQC), following a recent inspection. London Bridge Hospital has held its Outstanding rating since 2016.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fe406670-b419-421c-a4a0-12c35a4878fc"
+      Value: "470e2b49-1996-44f4-92a4-83af07f6a0db"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240329T204851Z
+      Value: 20240526T222650Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retains CQC Outstanding rating

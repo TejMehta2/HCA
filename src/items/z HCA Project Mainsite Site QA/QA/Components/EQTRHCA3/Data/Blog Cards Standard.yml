@@ -26,15 +26,15 @@ Languages:
         <link class="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" querystring="?articleTypeId=" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blog Search" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "704d9482-846e-46dc-ae4b-9640ef3f7074"
+      Value: "5c590356-1c9b-45c5-8f74-84c948850d52"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{969326B0-3955-48CF-8362-4120323DEC38}" />
+        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102617Z
+      Value: 20240526T212854Z
