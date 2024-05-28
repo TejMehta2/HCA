@@ -101,13 +101,13 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
-            <div>
+            {/* <div>
               {isRouteChanging ? (
                 <p>Route is changing...</p>
               ) : (
                 <p>Route has changed!</p>
               )}
-            </div>
+            </div> */}
             <LocationsTopSection
               hospitals={hospitals}
               setHospitals={setHospitals}
