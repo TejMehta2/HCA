@@ -6,7 +6,9 @@ Path: /sitecore/templates/Project/HCA/Foundation/Doctify/Doctify Reviews Folder/
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: "{85734D28-E226-4BF4-9A00-3F878E3C8235}"
+  Value: |
+    {85734D28-E226-4BF4-9A00-3F878E3C8235}
+    {7A96F90E-4D10-4FCF-A97B-BB6E79063A41}
 Languages:
 - Language: en
   Versions:
@@ -25,11 +27,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5dce23a5-fbbf-46f5-a908-d303fd69bdc8"
+      Value: "f082a1a8-7a2f-43c2-877b-400e24ebe6e1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231128T081001Z
+      Value: 20240517T091720Z

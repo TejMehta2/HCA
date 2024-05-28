@@ -87,7 +87,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
               <JssText field={props?.fields?.Title} />
             </Text>
           }
-          subheading={
+          metatitle={
             !!fields?.Heading?.value && (
               <Text variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />

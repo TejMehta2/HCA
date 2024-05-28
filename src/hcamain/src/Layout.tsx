@@ -41,7 +41,11 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const isPageEditing = layoutData.sitecore.context.pageEditing;
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
-  const isHomepage = layoutData?.sitecore.context.itemPath === '/';
+  const currentPagePath = layoutData?.sitecore.context.itemPath as
+    | string[]
+    | string;
+  const isHomepage = currentPagePath === '/';
+  const noHeader = currentPagePath.includes('/Payment-Form');
 
   const mainRef = useRef<HTMLElement>(null);
 
@@ -118,17 +122,19 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
                 renderEach={RenderWithErrorBoundary}
               />
             )}
-            <header>
-              <div id="header">
-                {route && (
-                  <Placeholder
-                    name="headless-header"
-                    rendering={route}
-                    renderEach={RenderWithErrorBoundary}
-                  />
-                )}
-              </div>
-            </header>
+            {!noHeader && (
+              <header>
+                <div id="header">
+                  {route && (
+                    <Placeholder
+                      name="headless-header"
+                      rendering={route}
+                      renderEach={RenderWithErrorBoundary}
+                    />
+                  )}
+                </div>
+              </header>
+            )}
             <main
               ref={mainRef}
               data-event={'buttonClick'}

@@ -1,0 +1,34 @@
+﻿---
+ID: "977ef795-4869-4565-874e-a5206234e8e6"
+Parent: "c70f79cc-4ac2-4f51-a800-cbd7ce84260f"
+Template: "d1898f14-cf39-454a-9b08-896d98a39055"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Payment Confirmation/Page Data/Payment Confirmation Component"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240517T071731Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7eb26a64-68bd-4611-b799-a8fb89f52f6f"
+      Hint: CTAIcon
+      Value: "{87DF6D6E-1554-4A5F-BB5B-92F618CE0F95}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "43c40f99-dc37-4b60-b0b1-53339d026d63"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240517T081025Z

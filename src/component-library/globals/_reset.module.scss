@@ -1,3 +1,5 @@
+@use '../foundation/Colours/colours.module' as *;
+
 *,
 *::before,
 *::after {
@@ -26,8 +28,9 @@ strong {
 body {
   word-wrap: break-word;
   word-break: break-word;
+  color: $navy-blue-100;
+}
 
-  &:has(dialog[open]) {
-    overflow: hidden;
-  }
+svg {
+  flex-shrink: 0;
 }

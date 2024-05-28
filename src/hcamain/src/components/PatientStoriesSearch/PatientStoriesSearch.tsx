@@ -30,6 +30,7 @@ import SearchWrapper from '@component-library/site-components/SearchWrapper/Sear
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
+import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -114,7 +115,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
         <HeaderPlain
-          subheading={
+          metatitle={
             fields?.Heading?.value && (
               <Text variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
@@ -226,10 +227,18 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             ref={searchWrapperRef}
             searchDetail={
               <Text tag="h3" variation="heading-1">
-                <span>
-                  <span>{resultsCount} </span>
-                  <JssText field={fields?.SearchResultsText} />
-                </span>
+                <SearchDetail
+                  searchResultsTextWithInput={
+                    fields?.SearchResultsTextWithInput?.value
+                  }
+                  searchResultsText={fields?.SearchResultsText?.value}
+                  resultsCount={resultsCount}
+                  input={
+                    searchParams.get('input') ||
+                    searchParams.get('autocomplete') ||
+                    undefined
+                  }
+                />
               </Text>
             }
             showing={

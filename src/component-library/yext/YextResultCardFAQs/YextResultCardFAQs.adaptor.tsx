@@ -2,9 +2,11 @@ import React from 'react';
 import { CardProps } from '@yext/search-ui-react';
 import YextResultCardFAQs from './YextResultCardFAQs';
 import Faq from '../../types/yext/faqs';
+import Button from '../../core-components/Button/Button';
 
 const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
   const { result } = props;
+  console.log(result);
   const {
     // source,
     // index,
@@ -32,7 +34,7 @@ const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
     // logo,
     // name: rawData_name,
     // c_activeInSearch,
-    // c_answersPrimaryCallToAction,
+    c_answersPrimaryCallToAction,
     // c_answersSecondaryCallToAction,
     // c_linkedLocationFAQSection,
     // c_micrositeBrand,
@@ -43,7 +45,20 @@ const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
   } = rawData;
 
   return (
-    <YextResultCardFAQs title={question}>{answer || ''}</YextResultCardFAQs>
+    <YextResultCardFAQs title={question}>
+      <>
+        {answer || ''}
+        {c_answersPrimaryCallToAction ? (
+          <Button size={'large'} variation={'full'}>
+            <a href={c_answersPrimaryCallToAction?.link}>
+              <span>{c_answersPrimaryCallToAction?.label}</span>
+            </a>
+          </Button>
+        ) : (
+          <></>
+        )}
+      </>
+    </YextResultCardFAQs>
   );
 };
 

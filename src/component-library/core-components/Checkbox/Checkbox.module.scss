@@ -147,6 +147,11 @@
     align-items: center;
     gap: $spacing-2;
     margin-top: $spacing-2;
+
+    svg {
+      display: flex;
+      flex-shrink: 0;
+    }
   }
 
   &:has(input:not(:focus):user-invalid) {

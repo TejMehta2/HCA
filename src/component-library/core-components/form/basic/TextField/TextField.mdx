@@ -1,0 +1,29 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as TextFieldStories from './TextField.stories';
+
+<Meta of={TextFieldStories} />
+
+# TextField
+
+## Description
+
+The TextField component is one of the form fields which can be used on a page. The default type is 'text', but can also be set to 'email'. There is also the option to add a label, helper text, and validation
+
+It is intended to be used in the payment form
+
+It can be composed like this:
+
+```tsx
+<TextField
+  id="input1"
+  label="Field label"
+  helpText="Helper text"
+  required={true}
+  errorMessage="Error message"
+/>
+```
+
+## Example
+
+<Canvas of={TextFieldStories.Default} />
+<Controls of={TextFieldStories.Default} />

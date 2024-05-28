@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Page Content/Test And Scans Cards/Data/Tes
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "DataSource=/sitecore/content/HCA/HCA-Main&IncludeTemplatesForSelection=Diagnosis Page"
+  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Diagnosis Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: Multilist with Search
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -35,11 +35,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fae752da-0ddd-4c9f-a295-694a5e74d090"
+      Value: "c008d0f5-441c-46e9-9ec2-cd07154fc154"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T160454Z
+      Value: 20240523T071451Z

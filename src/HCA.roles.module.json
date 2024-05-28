@@ -1,0 +1,14 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "HCA Roles",
+  "roles": [
+	  {
+		"domain": "sitecore",
+		"pattern": "HCA Approver"
+	  },
+	  {
+		"domain": "sitecore",
+		"pattern": "HCA Author"
+	  }
+  ]
+}

@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { method = 'GET', body, query } = req;
+    const { method = 'GET', body, query, headers } = req;
 
     // Construct remote request URL
     const slug = query.slug as string[] | string;
@@ -22,17 +22,23 @@ export default async function handler(
     const params = new URLSearchParams(query as Record<string, string>);
     params.delete('slug');
     remoteRequestUrl.search = params.toString() || '';
-
     // fetch from remote integration layer server
+
+    const forwardedHeaders = headers['content-type']
+      ? {
+          'content-type': headers['content-type'],
+        }
+      : undefined;
+
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : JSON.stringify(body),
+      body: method === 'GET' ? undefined : body,
+      headers: forwardedHeaders,
     });
 
     if (!response.ok || !response.body) {
       throw `unexpected response ${response.statusText} at ${remoteRequestUrl} (${req.url})`;
     }
-
     await pipeline(response.body, res);
   } catch (err) {
     console.log(err); // log to server

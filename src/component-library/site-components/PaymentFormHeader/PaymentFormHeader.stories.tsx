@@ -2,7 +2,6 @@ import React from 'react';
 import PaymentFormHeader from './PaymentFormHeader';
 import type { Meta, StoryObj } from '@storybook/react';
 import Icons from '../../foundation/Icons/Icons';
-import TextLink from '../../core-components/TextLink/TextLink';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PaymentFormHeader> = {
@@ -27,15 +26,7 @@ export const Default: StoryObj<typeof PaymentFormHeader> = {
     },
     openingHours: {
       icon: <Icons iconName="iconClock" />,
-      text: 'Mon-Fri 9am - 5:30pm',
+      text: 'Mon-Fri 9am-5:30pm; Sat-Sun 9am-2pm',
     },
-    close: (
-      <TextLink>
-        <a href="/">
-          <span>Close</span>
-          <Icons iconName="iconCross" />
-        </a>
-      </TextLink>
-    ),
   },
 };

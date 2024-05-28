@@ -1,0 +1,47 @@
+﻿---
+ID: "bf5ed866-88f8-48ad-96d3-2f083ab06f99"
+Parent: "7a776244-9afc-4af0-be66-2829dfb317b2"
+Template: "91f54bea-23d3-4b5c-94be-225249f59c63"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Lister Hospital/Contact Units/The Lister Hospital/Opening Hours/Mon-Sun Opening Hours"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T154417Z
+    - ID: "47e5be15-97eb-4c5e-acfb-da68de36152f"
+      Hint: DayOfWeek
+      Value: |
+        {FC4DD560-9D82-4991-BE84-EB9988B72B65}
+        {8ADEA6E6-6A4C-41CE-8898-39F99D76643E}
+        {148EC6A8-5CB0-4616-BB2F-8A131486FC55}
+        {2DAEB628-E136-4D92-A5E5-AF27DA18CCFE}
+        {B921A21D-E3B3-4A5C-A150-6EEA8690D682}
+        {76B345A4-6979-4230-A089-140A7BCDED13}
+        {6883386F-B364-47E1-884F-51899E68248D}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3fc74894-d044-4393-9ad4-5a4d1bfddc7d"
+    - ID: "9b888acf-cbdb-429a-8470-57c9e188c065"
+      Hint: Closes
+      Value: "23:59"
+    - ID: "b87da11a-58d6-4e00-9eae-7fda27668110"
+      Hint: Opens
+      Value: "00:00"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240521T071253Z

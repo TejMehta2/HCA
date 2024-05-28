@@ -17,6 +17,7 @@ SharedFields:
       item(path: $datasource, language: $language) {
         ... on TailoredForm {
           pages: children(
+            first: 50
             includeTemplateIDs: ["CFEE7B51850545CEB8439358F827DF87"]
           ) {
             results {
@@ -24,7 +25,7 @@ SharedFields:
               template {
                 name
               }
-              children {
+              children(first: 50) {
                 results {
                   name
                   template {
@@ -39,6 +40,7 @@ SharedFields:
                   ...InputFragment
                   ...ListFragment
                   ...EmailConfirmationFragment
+                  ...HelperTextFragment
                 }
               }
             }
@@ -65,7 +67,7 @@ SharedFields:
     }
     
     fragment SectionFragment on Section {
-      children {
+      children(first: 50) {
         results {
           name
           template {
@@ -79,6 +81,7 @@ SharedFields:
           ...InputFragment
           ...ListFragment
           ...EmailConfirmationFragment
+          ...HelperTextFragment
         }
       }
     }
@@ -129,8 +132,8 @@ SharedFields:
           ...ValidationRuleFragment
         }
       }
-      conditionalValidators{
-         targetItems {
+      conditionalValidators {
+        targetItems {
           ...ValidationRuleFragment
         }
       }
@@ -152,6 +155,11 @@ SharedFields:
     }
     
     fragment ListFragment on List {
+      ... on DropdownList {
+        placeholderText {
+          value
+        }
+      }
       displayFieldName {
         value
       }
@@ -163,7 +171,7 @@ SharedFields:
       }
       datasource {
         targetItem {
-          children {
+          children(first: 500) {
             results {
               ...ListItemFragment
               ...KeyValuePairFragment
@@ -200,8 +208,15 @@ SharedFields:
       }
       parameters {
         value
-      } 
+      }
     }
+    
+    fragment HelperTextFragment on HelperText {
+      helperText {
+        value
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Forms/Tailored Form
@@ -266,14 +281,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2c600493-81f3-4f35-bef3-223496c148db"
+      Value: "e602d153-40a0-4b3f-ae5b-7559d13b2bc7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240515T222413Z
+      Value: 20240523T122207Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
