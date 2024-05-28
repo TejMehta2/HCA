@@ -60,9 +60,7 @@ const SitecorePage = ({
             />
           ) : (
             <ConsultantFinderContextProvider>
-              {isRouteChanging && (
-                <RedirectOverlay>Redirecting</RedirectOverlay>
-              )}
+              {isRouteChanging && <RedirectOverlay></RedirectOverlay>}
 
               <Layout layoutData={layoutData} headLinks={headLinks} />
             </ConsultantFinderContextProvider>
