@@ -24,6 +24,7 @@ const DynamicTextField = ({
       type={type}
       defaultValue={defaultValue || field?.defaultValue?.value}
       placeholder={field?.placeholderText?.value}
+      helpText={field?.helperText?.value}
     />
   );
 };
