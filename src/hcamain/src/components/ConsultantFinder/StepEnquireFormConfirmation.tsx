@@ -82,7 +82,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 'consultantName': '${consultantName}',
                 'consultantSpecialty': '${consultantMainSpecialty}',
                 'consultantReviews': '${consultantReviews}',
-                'finderFormPayor', '${finderFormPayor}',
+                'finderFormPayor': '${finderFormPayor}',
                 'finderFormPrevious': '${finderFormPrevious}',
                 'finderFormPractice': '${selectedLocationName}',
                 'completedFormId': '${completedFormId}'
