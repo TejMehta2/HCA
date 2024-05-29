@@ -105,6 +105,7 @@ const OurLocationsDesktop = (props: OurLocationsProps): JSX.Element => {
                       className={[
                         styles.pin,
                         index === step ? styles.active : '',
+                        step > 0 && index !== step ? styles.hide : '',
                       ].join(' ')}
                     >
                       <MapPin />
