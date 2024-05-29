@@ -1,15 +1,12 @@
 ﻿---
-ID: "e4369b71-77b9-45cb-afed-6f1b8908a923"
-Parent: "f986f9fe-b256-4de7-9274-e2a5d8b9e161"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: "/sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings/E-mail Setup/Cc"
+ID: "f21afe5d-680c-4dec-8b4b-932022bf3521"
+Parent: "5beb8d87-afa3-4fee-9e69-39bacb5d1d53"
+Template: "5beb8d87-afa3-4fee-9e69-39bacb5d1d53"
+Path: /sitecore/templates/Project/HCA/Foundation/Form Api/FormApiSettings/__Standard Values
 SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 400
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{6EE6C18A-EAE2-4A2E-87ED-52869BD8DF06}"
 Languages:
 - Language: en
   Versions:
@@ -17,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240321T120538Z
+      Value: 20240523T083914Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +25,11 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "802cc9b4-d8a8-4a56-bea5-136c0744be6f"
+      Value: "fbc99a80-9ac6-458b-9a9a-f8a1c964d82e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\naoum.zilas@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240321T120538Z
+      Value: 20240523T083956Z
