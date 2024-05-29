@@ -19,6 +19,7 @@ import ConfirmationSummary from '@component-library/components/ConfirmationSumma
 import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import Script from 'next/script';
 
 interface Fields {
   TitleText: Field<string>;
@@ -62,17 +63,22 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log(props.fields);
+  //console.log(props.fields);
   const {
     selectedLocationName,
     selectedDate,
     selectedTime,
     consultantName,
+    consultantMainSpecialty,
+    finderFormPayor,
+    finderFormPrevious,
+    completedFormId,
     patientName,
   } = useContext(ConsultantFinderContext);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -92,6 +98,9 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -100,6 +109,25 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
+            <Script /* HWPD-3463 - data layer */
+              id="cf-gtm-liveBooking"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                'event': 'consultantFinder',
+                'formType': 'live',
+                'goalType': 'formComplete',
+                'consultantName': '${consultantName}',
+                'consultantSpecialty': '${consultantMainSpecialty}',
+                'consultantReviews': '${reviewsTotal}',
+                'finderFormPayor', '${finderFormPayor}',
+                'finderFormPrevious': '${finderFormPrevious}',
+                'finderFormPractice': '${selectedLocationName}',
+                'completedFormId': '${completedFormId}'
+                });`,
+              }}
+            ></Script>
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}
               progress={
@@ -108,6 +136,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   steps={props?.fields?.Steps}
                   slug={slug}
                   gmcNumber={gmcNumber}
+                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>

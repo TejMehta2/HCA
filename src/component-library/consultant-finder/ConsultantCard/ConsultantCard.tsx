@@ -139,7 +139,9 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               size="large"
               contentVariation="full-width"
             >
-              <Link href={`${props.enquireNowLink}?slug=${props.slug}`}>
+              <Link
+                href={`${props.enquireNowLink}?slug=${props.slug}&reviewsTotal=${props.reviewsTotal}`}
+              >
                 <span>{props.enquireNowCTAText}</span>
               </Link>
             </Button>
@@ -153,7 +155,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
               contentVariation="full-width"
             >
               <Link
-                href={`${props.bookOnlineLink}?slug=${props.slug}&gmcNumber=${props.gmcNumber}`}
+                href={`${props.bookOnlineLink}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&reviewsTotal=${props.reviewsTotal}`}
               >
                 <span>{props.bookNowCTAText}</span>
               </Link>
