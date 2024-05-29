@@ -66,10 +66,11 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 
 export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
-  console.log(props.fields);
+  //console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -87,6 +88,9 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
@@ -102,6 +106,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
+                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -179,7 +184,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     href={`${
                       props?.fields?.NextLink?.value?.href ||
                       '/Finder/Step-Appointment-Type'
-                    }?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                   >
                     <span>
                       {props?.fields?.AcceptButtonText?.value || 'Accept'}

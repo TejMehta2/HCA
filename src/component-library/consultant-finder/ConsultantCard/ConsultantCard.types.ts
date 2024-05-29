@@ -10,6 +10,7 @@ export interface ConsultantCardProps {
   keywords: any;
   hospitals: string[];
   reviewsCount: number;
+  reviewsTotal: number;
   hideAppointmentRequest: boolean;
   consultantsSlugs: string[];
   doctifyLogo: ReactNode | JSX.Element;

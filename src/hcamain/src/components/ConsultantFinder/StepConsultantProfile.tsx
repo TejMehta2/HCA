@@ -743,7 +743,12 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData
+                              ?.ProfileJson
+                              .slug}&gmcNumber=${gmcNumber}&reviewsTotal=${
+                              serverSideData?.ProfileJson?.review
+                                ?.reviewsTotal || 0
+                            }`}
                           >
                             <span>
                               {props.fields.BookOnlineButtonLink.value.text ||
@@ -758,7 +763,12 @@ export const Default = (props: StepProps): JSX.Element => {
                           ?.hideAppointmentRequest && (
                           <Button variation="full-dark" size="small">
                             <Link
-                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                              href={`${props?.fields?.EnquireNowButtonLink
+                                ?.value?.href}?slug=${serverSideData
+                                ?.ProfileJson.slug}&reviewsTotal=${
+                                serverSideData?.ProfileJson?.review
+                                  ?.reviewsTotal || 0
+                              }`}
                             >
                               <span>
                                 {props?.fields?.EnquireNowButtonLink?.value

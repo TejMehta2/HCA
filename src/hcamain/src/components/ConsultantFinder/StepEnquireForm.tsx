@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useForm, FieldErrors } from 'react-hook-form';
@@ -37,6 +37,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import EnquireNowBtns from '@component-library/consultant-finder/EnquireNowBtns/EnquireNowBtns';
+import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 
 interface Fields {
   EnquireFormMarketingPreferencesFieldsEmailLabel: Field<string>;
@@ -110,9 +111,10 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log(props.fields);
+  //console.log(props.fields);
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const [insurers, setInsurers] = useState<object[]>([]);
   const [errorData, setErrorData] = useState<boolean>(false);
   const [loadingData, setLoadingData] = useState<boolean>(true);
@@ -123,6 +125,16 @@ export const Default = (props: StepProps): JSX.Element => {
   const [additionalErrorText, setAdditionalErrorText] = useState<string>('');
   const formId = self?.crypto?.randomUUID() || Date.now().toString();
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const {
+    setSelectedLocationName,
+    setConsultantMainSpecialty,
+    setConsultantName,
+    setConsultantReviews,
+    setFinderFormPayor,
+    setFinderFormPrevious,
+    setCompletedFormId,
+  } = useContext(ConsultantFinderContext);
 
   const schema = z
     .object({
@@ -224,6 +236,7 @@ export const Default = (props: StepProps): JSX.Element => {
       props?.fields?.API_HCA_EnquireBookingForm_BaseURL?.value ||
       'https:/api/formAPI/PostMakeBookingEnquiry';
 
+    console.log('dataToSend', dataToSend);
     axios
       .post(URL, dataToSend)
       .then((resp) => {
@@ -240,6 +253,14 @@ export const Default = (props: StepProps): JSX.Element => {
           setAdditionalErrorText(`${resp?.data?.html}`);
           dialogRef?.current?.showModal();
         } else {
+          // for HWPD-3463 gtm
+          setConsultantReviews(reviewsTotal ? reviewsTotal.toString() : '0');
+          setSelectedLocationName(data.practice);
+          setConsultantMainSpecialty(specialty);
+          setConsultantName(consultantName);
+          setFinderFormPayor(dataToSend.insurance);
+          setCompletedFormId(dataToSend.hiddenFormInstance);
+          setFinderFormPrevious(data.previousPatient);
           router.push(
             `${
               props?.fields?.NextLink?.value?.href ||
@@ -307,6 +328,10 @@ export const Default = (props: StepProps): JSX.Element => {
       setSlug(slugURL.toString());
       getConsultantData(slugURL.toString());
     }
+
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 

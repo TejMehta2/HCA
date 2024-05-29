@@ -7,6 +7,7 @@ import Icons from '../../foundation/Icons/Icons';
 
 const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
   const router = useRouter();
+
   return (
     <div
       className={
@@ -40,7 +41,7 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
             onClick={(e) => {
               e.preventDefault();
               router.push(
-                `/Finder/Step-Location-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
+                `/Finder/Step-Location-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}&reviewsTotal=${props.reviewsTotal}`
               );
             }}
           >
@@ -63,7 +64,7 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
             onClick={(e) => {
               e.preventDefault();
               router.push(
-                `/Finder/Step-Slot-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}`
+                `/Finder/Step-Slot-Select?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${props.isFollowUpAppointment}&reviewsTotal=${props.reviewsTotal}`
               );
             }}
           >

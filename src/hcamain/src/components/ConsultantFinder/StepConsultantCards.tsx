@@ -554,6 +554,7 @@ export const Default = (props: StepProps): JSX.Element => {
   //   return <div>Data is missing, please retry later</div>;
   // }
 
+  //console.log('consultants:', results);
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
@@ -947,6 +948,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       keywords={consultant?.keywords || null}
                       hospitals={consultant?.practices || null}
                       reviewsCount={consultant?.overallExperience || 0}
+                      reviewsTotal={consultant?.reviewsTotal || 0}
                       doctifyLogo={
                         <JssImage field={props.fields.DoctifyLogoImage} />
                       }
