@@ -236,7 +236,7 @@ export const Default = (props: StepProps): JSX.Element => {
       props?.fields?.API_HCA_EnquireBookingForm_BaseURL?.value ||
       'https:/api/formAPI/PostMakeBookingEnquiry';
 
-    console.log('dataToSend', dataToSend);
+    // console.log('dataToSend', dataToSend);
     axios
       .post(URL, dataToSend)
       .then((resp) => {
