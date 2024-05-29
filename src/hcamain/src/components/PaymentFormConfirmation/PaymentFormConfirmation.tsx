@@ -183,18 +183,25 @@ export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
 
 export const getServerSideProps: GetServerSideComponentProps = async (
   _,
-  __,
+  layoutData,
   context
 ) => {
   const { query } = context;
+  console.log(layoutData);
+  let response;
+  const transactionId = `transactionId=${query['transaction_id']}`;
+  const site = `site=${layoutData.sitecore.context.site?.name}`;
+  const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
+
   try {
-    const transactionId = query['transaction_id'];
-    const response = await fetch(
-      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?transactionId=${transactionId}`
+    response = await fetch(
+      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
     );
     const transactionStatus = await response.json();
     return transactionStatus?.response;
-  } catch {
+  } catch (error) {
+    process.env.NODE_ENV === 'development' &&
+      console.log(await response.text());
     return;
   }
 };
