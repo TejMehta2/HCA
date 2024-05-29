@@ -435,8 +435,10 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       <Checkbox
                         key={option.name}
                         label={option.displayName}
-                        name={option.name}
-                        value={option.value.value}
+                        name={`${
+                          getField<ListTemplate>('communicationMode').name
+                        }`}
+                        value={option.name}
                         id={option.name}
                         required={false}
                       />
