@@ -30,6 +30,11 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     checkboxRef.current.indeterminate = indeterminateState;
   }
 
+  const stateProps =
+    typeof defaultChecked === 'boolean'
+      ? { defaultChecked }
+      : { onChange, checked };
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -42,10 +47,8 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
               value={value}
               disabled={disabled}
               ref={(el) => el && (el.indeterminate = indeterminate)}
-              defaultChecked={defaultChecked}
-              onChange={onChange}
-              checked={checked}
               required={required}
+              {...stateProps}
             />
           </div>
           <label htmlFor={id} className={styles.label}>
