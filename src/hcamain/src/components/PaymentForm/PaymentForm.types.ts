@@ -82,6 +82,9 @@ export interface InputTemplate {
   defaultValue: {
     value: string;
   };
+  helperText?: {
+    value: string;
+  };
 }
 export interface EmailTemplate {
   name: string;
@@ -152,6 +155,9 @@ export interface DropDownListTemplate {
         results: DropDownListOption[];
       };
     };
+  };
+  helperText?: {
+    value: string;
   };
 }
 export interface ButtonTemplate {

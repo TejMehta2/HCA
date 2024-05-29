@@ -247,5 +247,8 @@ export default async function handler(
     }
   }
 
+  res.appendHeader('Cache-Control', 'max-age=60');
+  res.appendHeader('CDN-Cache-Control', 'max-age=300');
+  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=600');
   return res.status(200).json(output);
 }

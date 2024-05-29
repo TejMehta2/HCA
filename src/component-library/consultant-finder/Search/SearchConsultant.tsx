@@ -166,7 +166,6 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
       // // get data depending if there is an keyword id or not
       getDoctifyDataWithoutId(URL);
     } else if (e.target.value.trim().length === 0) {
-      console.log('popular search');
       handlePopularSearch();
     }
   };

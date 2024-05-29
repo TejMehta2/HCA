@@ -7,6 +7,7 @@ import {
   doctifyGetAllConsultantSlugs,
 } from './API_Doctify';
 import { revalidate } from './revalidateNow';
+import { BASE_URL } from 'lib/constants';
 
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   if (revalidate.noCache()) {
@@ -440,12 +441,57 @@ export async function getCMA(id: string): Promise<any> {
 // get structured data for the given slug
 export async function getPhysicianStructuredData(
   slug: string,
-  specialistProfileData?: any // can be passed in to save a second call
+  specialistProfileData?: any, // can be passed in to save a second call
+  path?: string,
+  site: string = `${BASE_URL}`
 ): Promise<any> {
   if (!specialistProfileData) {
     specialistProfileData = await getSpecialistProfileData(slug);
   }
   let ret: any = null;
+
+  // build the breadcrumbs dynamically
+  const pathSegments = path?.split('/', 10);
+  const breadcrumbList: any[] = [];
+  breadcrumbList.push({
+    '@type': 'ListItem',
+    position: 1,
+    item: {
+      '@id': `${site}`,
+      name: `Home`,
+    },
+  });
+
+  let segmentTracker = site;
+  pathSegments?.forEach((segment, idx) => {
+    segmentTracker += '/' + segment;
+    switch (idx) {
+      case pathSegments.length - 1:
+        {
+          breadcrumbList.push({
+            '@type': 'ListItem',
+            position: `${idx + 2}`,
+            item: {
+              '@id': `${segmentTracker}${specialistProfileData.slug}`,
+              name: `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName} ${specialistProfileData.suffix}`,
+            },
+          });
+        }
+        break;
+      default:
+        {
+          breadcrumbList.push({
+            '@type': 'ListItem',
+            position: `${idx + 2}`,
+            item: {
+              '@id': `${segmentTracker}`,
+              name: `${segment}`,
+            },
+          });
+        }
+        break;
+    }
+  });
 
   if (specialistProfileData && specialistProfileData.slug) {
     try {
@@ -489,41 +535,7 @@ export async function getPhysicianStructuredData(
         },
         breadcrumb: {
           '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@id': 'https://www.hcahealthcare.co.uk',
-                name: 'Home',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              item: {
-                '@id': 'https://www.hcahealthcare.co.uk/Finder',
-                name: 'Finder',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              item: {
-                '@id':
-                  'https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile',
-                name: 'StepConsultantProfile',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 4,
-              item: {
-                '@id': `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}`,
-                name: `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName} ${specialistProfileData.suffix}`,
-              },
-            },
-          ],
+          itemListElement: breadcrumbList,
         },
       };
 
@@ -536,7 +548,7 @@ export async function getPhysicianStructuredData(
       const locations = specialistProfileData?.practices;
       ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
       ret.mainEntity.description = `${specialistProfileData.about}`;
-      ret.mainEntity.url = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}`;
+      ret.mainEntity.url = `${segmentTracker}${specialistProfileData.slug}`;
       //TODO get from content
       ret.mainEntity.address.addressLocality = 'London';
       ret.mainEntity.address.addressRegion = 'London';
@@ -548,9 +560,9 @@ export async function getPhysicianStructuredData(
       ret.mainEntity.medicalSpecialty.name = topSpecialty
         ? topSpecialty[0].name
         : 'MD';
-      ret.mainEntity.medicalSpecialty.url = `https://www.hcahealthcare.co.uk/search-results?query=${ret.mainEntity.medicalSpecialty.name}`;
+      ret.mainEntity.medicalSpecialty.url = `${site}/search-results?query=${ret.mainEntity.medicalSpecialty.name}`;
       ret.mainEntity.hasCredential[0].name = `${specialistProfileData.suffix}`;
-      ret.mainEntity.hasCredential[0].id = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${specialistProfileData.slug}#Bio`;
+      ret.mainEntity.hasCredential[0].id = `${segmentTracker}${specialistProfileData.slug}#Bio`;
       ret.mainEntity.hasCredential[1].name = `GMC Registration: ${specialistProfileData.gmcNumber}`;
       ret.mainEntity.hasCredential[1].id = `https://www.gmc-uk.org/doctors/${specialistProfileData.gmcNumber}`;
       locations?.forEach((loc: any, idx: number) => {

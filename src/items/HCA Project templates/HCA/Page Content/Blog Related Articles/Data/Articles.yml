@@ -6,10 +6,10 @@ Path: /sitecore/templates/Project/HCA/Page Content/Blog Related Articles/Data/Ar
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Blog Page"
+  Value: "StartSearchLocation=query:ancestor-or-self::*[@@templatename->'Headless Site']/Home&Filter=_templatename:Blog Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: TreelistEx
+  Value: Multilist with Search
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -31,11 +31,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f4356fda-5132-4a55-b6a7-d49659009fc5"
+      Value: "9e8f5963-4e65-4279-8034-650739018a02"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240415T150856Z
+      Value: 20240527T093403Z

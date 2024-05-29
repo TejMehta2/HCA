@@ -385,6 +385,9 @@
       background-color: var(--cta-carousel-background);
       color: var(--cta-carousel-text);
       border: 1px solid var(--cta-carousel-border);
+      min-width: $spacing-8;
+      display: flex;
+      justify-content: center;
 
       &:hover {
         background-color: transparent;

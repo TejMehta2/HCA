@@ -16,6 +16,9 @@ const SplitAddress = async (
   console.log('SplitAddressFields params...', params);
   const response = await splitAddress(params);
   res.setHeader('Content-Type', 'application/json');
+  res.appendHeader('Cache-Control', 'max-age=600');
+  res.appendHeader('CDN-Cache-Control', 'max-age=3000');
+  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=6000');
   return res.status(200).json(response);
 };
 

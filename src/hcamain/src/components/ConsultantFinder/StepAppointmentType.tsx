@@ -62,6 +62,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -79,6 +80,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
+
     // get type of selected appointment if present in URL
     const typeOfAppointment = router?.query?.isFollowOnAppointment || null;
     if (typeOfAppointment) {
@@ -103,6 +108,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
                   slug={slug}
+                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -152,7 +158,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>
@@ -167,7 +173,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     disabled={selectedTypeOfAppointment === '' ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
                       )
                     }
                   >

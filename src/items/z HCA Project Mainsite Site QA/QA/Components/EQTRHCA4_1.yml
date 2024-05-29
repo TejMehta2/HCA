@@ -19,7 +19,7 @@ SharedFields:
           uid="{8E6447C4-19FC-4C6E-8540-33D0EF32C52C}"
           s:ds="local:/Data/Doctor Cards"
           s:id="{C02783CF-B67E-4849-88ED-8B324CA0089A}"
-          s:par="HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7BA25B0FC1-5D1F-45E5-8861-6863E390B8F5%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="HeadingTag=h2&amp;HeadingSize=display-5&amp;GridParameters&amp;FieldNames=%7BA25B0FC1-5D1F-45E5-8861-6863E390B8F5%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -45,7 +45,7 @@ Languages:
       Value: "the-lister-hospital"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5f38a3ed-18ca-43a3-bcf5-eade3fd0f57f"
+      Value: "0241ba0a-d7cc-4072-8774-eaffbd366981"
     - ID: "b8f42732-9cb8-478d-ae95-07e25345fb0f"
       Hint: __Hide version
       Value: 
@@ -55,4 +55,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240415T124058Z
+      Value: 20240527T210515Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: EQTRHCA4_1

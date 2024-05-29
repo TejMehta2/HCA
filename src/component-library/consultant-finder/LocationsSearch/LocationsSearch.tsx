@@ -132,6 +132,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
     });
     props.setHospitals(props.hospitals);
     setSelectedLocations([]);
+    setIsComponentVisible(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

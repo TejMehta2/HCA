@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type HCAIconFields = {
   fields?: {
@@ -98,7 +99,11 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
           </Text>
         )
       }
-      bodyText={<JssRichText field={props.fields?.Description} />}
+      bodyText={
+        <RichText>
+          <JssRichText field={props.fields?.Description} />
+        </RichText>
+      }
       cta={
         isExperienceEditor ? (
           <JssLink field={props.fields?.CTALink}></JssLink>

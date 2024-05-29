@@ -3,7 +3,7 @@ import {
   Field,
   ImageField,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
   Image as JssImage,
   ComponentRendering,
   Placeholder,
@@ -13,6 +13,7 @@ import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBl
 import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import Params from 'src/types/params';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 interface Fields {
   Heading?: Field<string>;
@@ -88,7 +89,9 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         }
       >
         <Text tag="div" variation="body-large">
-          <RichText field={props.fields?.Text} />
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
         </Text>
       </ImageAndTextBlock>
     </>

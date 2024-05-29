@@ -55,6 +55,7 @@ import {
 import axios, { CancelTokenSource } from 'axios';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
+import Script from 'next/script';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -140,10 +141,12 @@ export const getStaticProps: GetStaticComponentProps = async (
     };
   }
 
+  const path = (context?.params?.path?.toString() ?? '').replace(',-w-,', '');
   const consultantProfileJson = await getSpecialistProfileData(slug);
   const physicianStructuredDataJson = await getPhysicianStructuredData(
     slug,
-    consultantProfileJson
+    consultantProfileJson,
+    path
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
@@ -180,7 +183,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const [nextAptRequestToken, setNextAptRequestToken] =
     useState<CancelTokenSource | null>(null);
 
-  console.log('consultant profile data', props.fields);
+  //console.log('consultant profile data', props.fields);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -301,11 +304,8 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
-  const title = `${serverSideData?.ProfileJson?.title} ${serverSideData
-    ?.ProfileJson?.firstName} ${serverSideData?.ProfileJson
-    ?.lastName} ${serverSideData?.ProfileJson?.suffix} - ${
-    topSpecialty[0]?.name || ''
-  } at HCA Healthcare UK`;
+  const name = `${serverSideData?.ProfileJson?.title} ${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName} ${serverSideData?.ProfileJson?.suffix}`;
+  const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   const profileImage =
     serverSideData?.ProfileJson?.images?.logo ||
@@ -351,6 +351,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <script
                 id="consultant-profile-data"
                 type="application/ld+json"
+                key="schema"
                 dangerouslySetInnerHTML={{
                   __html: `${JSON.stringify(
                     serverSideData?.PhysicianStructuredDataJson
@@ -358,6 +359,24 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
+            {
+              /* HWPD-3463 - data layer */
+              <Script
+                id="cf-gtm-info"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                'event': 'consultantFinder',
+                'consultantName': '${name}',
+                'consultantSpecialty': '${topSpecialty[0]?.name || ''}',
+                'consultantReviews': '${
+                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
+                }'
+                });`,
+                }}
+              ></Script>
+            }
             {/* top section */}
             <div>
               <Breadcrumbs
@@ -724,7 +743,12 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData
+                              ?.ProfileJson
+                              .slug}&gmcNumber=${gmcNumber}&reviewsTotal=${
+                              serverSideData?.ProfileJson?.review
+                                ?.reviewsTotal || 0
+                            }`}
                           >
                             <span>
                               {props.fields.BookOnlineButtonLink.value.text ||
@@ -739,7 +763,12 @@ export const Default = (props: StepProps): JSX.Element => {
                           ?.hideAppointmentRequest && (
                           <Button variation="full-dark" size="small">
                             <Link
-                              href={`${props?.fields?.EnquireNowButtonLink?.value?.href}?slug=${serverSideData?.ProfileJson.slug}`}
+                              href={`${props?.fields?.EnquireNowButtonLink
+                                ?.value?.href}?slug=${serverSideData
+                                ?.ProfileJson.slug}&reviewsTotal=${
+                                serverSideData?.ProfileJson?.review
+                                  ?.reviewsTotal || 0
+                              }`}
                             >
                               <span>
                                 {props?.fields?.EnquireNowButtonLink?.value

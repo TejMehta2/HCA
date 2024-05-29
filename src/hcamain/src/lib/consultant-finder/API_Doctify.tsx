@@ -27,7 +27,7 @@ export async function getSpecialistProfileData(
   loadFirstAppointmentData: boolean = false
 ): Promise<any> {
   const config = !serviceURL ? await GetDoctifyConfig() : null;
-  //console.log(DoctifyConfig);
+  //console.log('config', config);
   const Doctify_Specialists_URL =
     serviceURL ?? config?.aPI_DoctifySpecialists_BaseURL;
 

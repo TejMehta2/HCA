@@ -70,6 +70,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const baseURL_C2 =
     props?.fields?.API_C2_GetConsultantDetails_BaseURL?.value ||
     'https:/api/C2/GetLDBConsultantDetails?';
@@ -95,6 +96,10 @@ export const Default = (props: StepProps): JSX.Element => {
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
 
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
+
     // get isFollowup from URL
     const isFollowUpAppointment = router?.query?.isFollowOnAppointment || null;
     if (isFollowUpAppointment) {
@@ -108,7 +113,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(requestURL_C2)
       .then((res) => {
-        console.log('locations results', res);
+        //console.log('locations results', res);
         seLoading(false);
         setError(false);
         setLocations(res?.data?.availability || []);
@@ -140,6 +145,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   steps={props?.fields?.Steps}
                   slug={slug}
                   gmcNumber={gmcNumber}
+                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -191,7 +197,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -207,7 +213,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         `${
                           props?.fields?.NextLink?.value?.href ||
                           '/Finder/Step-Slot-Select'
-                        }?slug=${slug}&gmcNumber=${gmcNumber}`
+                        }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                       )
                     }
                   >

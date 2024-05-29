@@ -12,6 +12,7 @@ import Text from '@component-library/foundation/Text/Text';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 interface Fields {
   Heading?: Field<string>;
@@ -75,7 +76,9 @@ const IntegratedFixedPricedPackage = (
         }
       >
         <Text tag="div" variation="body-large">
-          <JssRichText field={props.fields?.Text} />
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
         </Text>
       </ImageAndTextBlock>
     </>

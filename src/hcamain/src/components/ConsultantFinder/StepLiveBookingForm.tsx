@@ -130,21 +130,17 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('step booking form', props.fields);
+  // console.log('step booking form', props.fields);
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
   const [errorData, setErrorData] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  console.log(
-    props.fields.LiveBookingFormDateOfBirthErrors[0].fields.Required.value ||
-      'test'
-  );
 
   const {
     selectedLocationName,
@@ -157,6 +153,9 @@ export const Default = (props: StepProps): JSX.Element => {
     consultantMainSpecialty,
     consultantName,
     setPatientName,
+    setFinderFormPayor,
+    setFinderFormPrevious,
+    setCompletedFormId,
   } = useContext(ConsultantFinderContext);
 
   const schema = z
@@ -198,9 +197,9 @@ export const Default = (props: StepProps): JSX.Element => {
             // const gpAppointmentDate = new Date(formatDateYYYYMMDD(testTime));
             // Calculate the minimum date of birth for 18 years old at the appointment date
             const minDateOfBirth = new Date(gpAppointmentDate);
-            console.log('minDateOfBirth', minDateOfBirth);
-            console.log('dateOfBirth', dateOfBirth);
-            console.log('gpAppointmentDate', gpAppointmentDate);
+            // console.log('minDateOfBirth', minDateOfBirth);
+            // console.log('dateOfBirth', dateOfBirth);
+            // console.log('gpAppointmentDate', gpAppointmentDate);
             minDateOfBirth.setFullYear(gpAppointmentDate.getFullYear() - 18);
 
             // check dob and min date
@@ -491,7 +490,7 @@ export const Default = (props: StepProps): JSX.Element => {
     };
 
     const URL = props?.fields?.API_C2_ReserveConsultantSlot_BaseURL?.value;
-    console.log('form data', JSON.stringify(dataToPost, null, 2));
+    // console.log('form data', JSON.stringify(dataToPost, null, 2));
 
     const dataToSent: any = JSON.stringify(dataToPost);
 
@@ -507,16 +506,22 @@ export const Default = (props: StepProps): JSX.Element => {
     axios(config)
       .then(function (response) {
         // handle successful response with status code 200
-        console.log(response);
-        console.log(JSON.stringify(response.data));
+        // console.log(response);
+        // console.log(JSON.stringify(response.data));
         // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
         // go to thank you page if no error on booking or show error modal otherwise
         if (response.data.errorCode) {
           console.log('error booking');
           dialogRef?.current?.showModal();
         } else {
+          // for HWPD-3463 gtm
+          setFinderFormPayor(data.payment);
+          setCompletedFormId(response?.data?.HCAReservationId);
+          setFinderFormPrevious(data.previouslyBeenWithHCA);
+          setReviewsTotal(reviewsTotal);
+
           router.push(
-            `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}`
+            `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
           );
         }
         setIsSubmitting(false);
@@ -538,7 +543,7 @@ export const Default = (props: StepProps): JSX.Element => {
   };
 
   const onSubmit = (data: any) => {
-    console.log('data', data);
+    // console.log('data', data);
     postData(data);
     setPatientName(`${data.firstName} ${data.lastName}`);
     // skip post just go to conf page for dev
@@ -588,6 +593,10 @@ export const Default = (props: StepProps): JSX.Element => {
     // get gmc number from URL
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
+
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
@@ -669,7 +678,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <button
                   onClick={() =>
                     router.push(
-                      `/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}`
+                      `/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                     )
                   }
                 >
@@ -690,6 +699,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   steps={props?.fields?.Steps}
                   slug={slug}
                   gmcNumber={gmcNumber}
+                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -710,7 +720,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       <button
                         onClick={() =>
                           router.push(
-                            `/Finder/Step-Slot-Select?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`
+                            `/Finder/Step-Slot-Select?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
                           )
                         }
                       >
@@ -746,6 +756,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     dateText={`${selectedDate} at ${selectedTime}`}
                     slug={slug}
                     gmcNumber={gmcNumber}
+                    reviewsTotal={reviewsTotal}
                     isFollowUpAppointment={selectedTypeOfAppointment}
                     isMobile={true}
                   />
@@ -1421,6 +1432,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   dateText={`${selectedDate} at ${selectedTime}`}
                   slug={slug}
                   gmcNumber={gmcNumber}
+                  reviewsTotal={reviewsTotal}
                   isFollowUpAppointment={selectedTypeOfAppointment}
                 />
                 <NeedHelp

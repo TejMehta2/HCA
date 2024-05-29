@@ -3,6 +3,7 @@ export interface Location {
   center: google.maps.LatLngLiteral;
   card: JSX.Element; // YextResultCardLocations
 }
+
 export interface YextResultSectionLocationsProps {
   title?: string;
   center: google.maps.LatLngLiteral;
@@ -12,7 +13,6 @@ export interface YextResultSectionLocationsProps {
 }
 
 export interface MarkerSet {
-  inactive: google.maps.Marker;
-  active: google.maps.Marker;
+  marker: google.maps.Marker;
+  center: google.maps.LatLngLiteral;
 }
-export type MarkerMap = Map<string, MarkerSet>;

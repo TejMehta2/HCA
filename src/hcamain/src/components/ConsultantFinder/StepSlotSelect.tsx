@@ -116,6 +116,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
   const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -135,10 +136,14 @@ export const Default = (props: StepProps): JSX.Element => {
     const gmcNumber = router?.query?.gmcNumber || null;
     setGmcNumber(Number(gmcNumber));
 
+    // get reviews total number from URL
+    const reviewsTotal = router?.query?.reviewsTotal || null;
+    setReviewsTotal(Number(reviewsTotal));
+
     // if selected location and appointment type is missing then redirect to appointment type
     if (selectedLocation === '' && selectedTypeOfAppointment === '') {
       router.push(
-        `/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}`
+        `/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -162,6 +167,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     steps={props?.fields?.Steps}
                     slug={slug}
                     gmcNumber={gmcNumber}
+                    reviewsTotal={reviewsTotal}
                   ></ProgressBar>
                 }
               ></HeaderLDB>
@@ -205,7 +211,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 <div>
                   <TextButton>
                     <Link
-                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`}
+                      href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                     >
                       <Icons iconName="iconArrowSmallLeft" />
                       <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -234,7 +240,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         }
                         onClick={() =>
                           router.push(
-                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}`
+                            `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                           )
                         }
                       >

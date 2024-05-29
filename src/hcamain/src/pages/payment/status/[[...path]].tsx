@@ -53,7 +53,7 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (context.params) {
-    context.params.path = ['/payment/confirmation'];
+    context.params.path = ['/payment/status'];
   }
   try {
     const props = await sitecorePagePropsFactory.create(context);
@@ -61,7 +61,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props,
     };
   } catch (error) {
-    console.error(error);
     return {
       notFound: true,
     };
