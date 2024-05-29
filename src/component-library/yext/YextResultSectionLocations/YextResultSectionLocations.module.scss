@@ -14,6 +14,10 @@
   gap: $spacing-2;
 }
 
+.card {
+  scroll-margin-top: px-to-rem(140);
+}
+
 .grid {
   @include responsive-grid;
 

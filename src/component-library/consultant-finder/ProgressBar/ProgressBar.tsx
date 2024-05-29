@@ -49,7 +49,7 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
                 currentPage !== steps.length && (
                   <TextLink>
                     <Link
-                      href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}`}
+                      href={`${step?.fields?.Link?.value?.href}?slug=${props.slug}&gmcNumber=${props.gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${props.reviewsTotal}`}
                     >
                       <Text tag="span" variation="body-medium-small">
                         {step?.fields?.StepText?.value}

@@ -19,6 +19,7 @@ const DynamicSelectField = ({
   optionMapper?: (result: unknown) => Option;
 }) => {
   const field = getField<DropDownListTemplate>(name);
+  const options = field?.datasource?.targetItem?.children?.results;
   if (!field) return <></>;
   return (
     <SelectField
@@ -26,16 +27,18 @@ const DynamicSelectField = ({
       name={name}
       id={name}
       label={field?.title?.value}
-      options={getField<DropDownListTemplate>(
-        name
-      )?.datasource?.targetItem?.children?.results?.map(optionMapper)}
+      options={options?.map(optionMapper)}
       error={formErrors?.get(name)}
       placeholder={field?.placeholderText?.value}
       defaultValue={{
-        text: field?.defaultSelection?.value,
+        text:
+          options.find(
+            (option) => option?.key?.value === field?.defaultSelection?.value
+          )?.value.value || field?.defaultSelection?.value,
         value: field?.defaultSelection?.value,
       }}
       onChange={onChange}
+      helpText={field?.helperText?.value}
     />
   );
 };

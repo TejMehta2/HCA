@@ -15,7 +15,7 @@ const CardLocation = (props: CardLocationProps): JSX.Element => {
       {icon && <div className={styles.icon}>{icon}</div>}
       {cta && (
         <div className={styles.cta}>
-          <Button size={'large'} variation={'outline'}>
+          <Button size={'small'} variation={'outline'}>
             {cta}
           </Button>
         </div>

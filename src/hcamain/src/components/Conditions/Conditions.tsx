@@ -219,12 +219,24 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
                   tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                   variation="display-4"
                 >
-                  <JssText field={item?.abstractTitle || item?.title} />
+                  <JssText
+                    field={
+                      item?.abstractTitle?.value
+                        ? item?.abstractTitle
+                        : item?.title
+                    }
+                  />
                 </Text>
               }
               bodyCopy={
                 <Text tag="p" variation="body-large">
-                  <JssText field={item?.abstractText || item?.text} />
+                  <JssText
+                    field={
+                      item?.abstractText?.value
+                        ? item?.abstractText
+                        : item?.text
+                    }
+                  />
                 </Text>
               }
               link={

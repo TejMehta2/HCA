@@ -22,6 +22,7 @@ import {
 } from './BlogRelatedArticles.types';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -173,11 +174,27 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           />
         </Text>
       }
+      bodyCopy={
+        props?.fields?.data?.item?.text?.jsonValue?.value ? (
+          <JssRichText field={props?.fields?.data?.item?.text?.jsonValue} />
+        ) : undefined
+      }
+      subtitle={
+        props?.fields?.data?.item?.heading?.jsonValue?.value ? (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        ) : undefined
+      }
       link={
         !isExperienceEditor ? (
           viewAllCta ? (
             <Button size={'large'} variation={'full'}>
               <a href={viewAllCta}>
+                <SitecoreSvg>
+                  {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+                </SitecoreSvg>
+
                 <>
                   <JssRichText
                     field={{

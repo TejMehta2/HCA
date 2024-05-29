@@ -1,5 +1,5 @@
 import React from 'react';
-import YextResultSectionLocations from './YextResultSectionLocations';
+import YextResultSectionLocations from './YextResultSectionLocationsVertical';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Location } from './YextResultSectionLocations.types';
 import { Default as CardDefault } from '../YextResultCardLocations/YextResultCardLocations.stories';

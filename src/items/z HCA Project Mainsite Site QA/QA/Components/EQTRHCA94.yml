@@ -60,7 +60,7 @@ Languages:
       Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "675b20e6-01a2-49fb-8307-661579574301"
+      Value: "ffb5fc47-73fd-40c0-a7c8-b949740af15d"
     - ID: "9c55a6c5-8a74-47f7-8987-c21c447fafe1"
       Hint: Facility
       Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
@@ -70,4 +70,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240423T205938Z
+      Value: 20240526T225619Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: EQTRHCA94

@@ -34,21 +34,27 @@ Languages:
       Value: London
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ca01dd26-855f-443b-b650-09a97f9b5b74"
+      Value: "2a922eaa-d0e5-4adf-96ba-2501c51e34ed"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
         <image mediaid="{9F050C48-9D23-4281-8195-8F146AFFCBCC}" />
+    - ID: "9ec4f5bd-c392-40ab-babd-34135bc9a1fa"
+      Hint: Longitude
+      Value: "-0.08786"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "c4f65bc2-c900-456b-9636-fd83d11b3179"
+      Hint: Latitude
+      Value: 51.506359
     - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
-      Hint: Street
+      Hint: AddressLine1
       Value: 35 Weymouth Street
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240301T102851Z
+      Value: 20240524T141342Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: London Bridge Hospital

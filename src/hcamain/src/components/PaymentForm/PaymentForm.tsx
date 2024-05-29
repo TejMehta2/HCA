@@ -123,7 +123,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
       const formData = new FormData(formRef?.current);
       const response = await fetch(
-        `${action}?siteName=${siteName}&itemPath=${itemPath}`,
+        `${action}?site=${siteName}&itemPath=${itemPath}`,
         {
           method: 'POST',
           body: formData,
@@ -303,6 +303,9 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 label={getField<InputTemplate>('telephone').title.value}
                 name="telephone"
                 error={formErrors.get('telephone')}
+                helpText={
+                  getField<InputTemplate>('telephone')?.helperText?.value
+                }
               />
             </div>
 
@@ -432,8 +435,10 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       <Checkbox
                         key={option.name}
                         label={option.displayName}
-                        name={option.name}
-                        value={option.value.value}
+                        name={`${
+                          getField<ListTemplate>('communicationMode').name
+                        }`}
+                        value={option.name}
                         id={option.name}
                         required={false}
                       />

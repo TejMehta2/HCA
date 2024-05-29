@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   RichText as JssRichText,
   ImageField,
@@ -20,6 +20,8 @@ import Container from '@component-library/foundation/Containers/Container';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Link from 'next/link';
+import Script from 'next/script';
+import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
 
 interface Fields {
   EnquireFormConfirmationBreadcrumbsHomePage: Field<string>;
@@ -53,12 +55,40 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  console.log('enquire thank you', props.fields);
+  //console.log('enquire thank you', props.fields);
+  const {
+    consultantReviews,
+    selectedLocationName,
+    consultantName,
+    consultantMainSpecialty,
+    finderFormPayor,
+    finderFormPrevious,
+    completedFormId,
+  } = useContext(ConsultantFinderContext);
   const router = useRouter();
 
   if (props.fields) {
     return (
       <>
+        <Script /* HWPD-3463 - data layer */
+          id="cf-gtm-enquiryBooking"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                'event': 'consultantFinder',
+                'goalType': 'formComplete',
+                'formType': 'enquiry',
+                'consultantName': '${consultantName}',
+                'consultantSpecialty': '${consultantMainSpecialty}',
+                'consultantReviews': '${consultantReviews}',
+                'finderFormPayor': '${finderFormPayor}',
+                'finderFormPrevious': '${finderFormPrevious}',
+                'finderFormPractice': '${selectedLocationName}',
+                'completedFormId': '${completedFormId}'
+                });`,
+          }}
+        ></Script>
         <Breadcrumbs
           backCta={{
             text: 'Consultant Finder',

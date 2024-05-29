@@ -80,17 +80,20 @@
 
 .control {
   cursor: pointer;
+  padding-left: px-to-rem(11);
+  padding-right: px-to-rem(11);
+  position: relative;
+  display: flex;
+  align-items: center;
 
   &,
   & * {
     text-decoration: none !important;
   }
 
-  padding-left: px-to-rem(11);
-  padding-right: px-to-rem(11);
-  position: relative;
-  display: flex;
-  align-items: center;
+  &:has([disabled]) {
+    cursor: default;
+  }
 
   &.active::after,
   &:hover:has(a)::after {

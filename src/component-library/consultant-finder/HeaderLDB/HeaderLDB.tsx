@@ -5,7 +5,9 @@ import styles from './HeaderLDB.module.scss';
 const HeaderLDB = (props: HeaderLDBProps): JSX.Element => {
   return (
     <div className={styles['header-ldb']}>
-      <div className={styles['logo']}>{props.logo}</div>
+      <div className={styles['logo']}>
+        <a href={'/'}>{props.logo}</a>
+      </div>
       <div className={styles['progress']}>{props.progress}</div>
     </div>
   );

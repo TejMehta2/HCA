@@ -28,14 +28,18 @@ Languages:
       Value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu imperdiet ipsum. Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "74400288-16e0-45f7-9e53-0e3e4bc5f31e"
+      Value: "27e9b23a-8ef7-4c6d-84e1-051fc3761ad1"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240520T114625Z
+      Value: 20240524T103813Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: Blog Page 1 Proxy
+      Value: Women’s Health
