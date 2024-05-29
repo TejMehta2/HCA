@@ -3,7 +3,7 @@ import {
   Field,
   ImageField,
   Text as JssText,
-  RichText,
+  RichText as JssRichText,
   Image as JssImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
@@ -14,6 +14,7 @@ import {
 } from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock.types';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type HCAIconFields = {
   fields?: {
@@ -87,8 +88,10 @@ const outputImageAndTextBlock = (
       iconList={outputAmenitiesList(props)}
       image={<JssImage field={props.fields?.Image} />}
     >
-      <Text tag="p" variation="body-large">
-        <RichText field={props.fields?.Text}></RichText>
+      <Text tag="div" variation="body-large">
+        <RichText>
+          <JssRichText field={props.fields?.Text}></JssRichText>
+        </RichText>
       </Text>
     </ImageAndTextBlock>
   );
