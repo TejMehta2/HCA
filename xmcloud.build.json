@@ -23,7 +23,7 @@
           },
           "scsModules": {
             "modules": [
-              "src/HCA.roles.module.json"
+              "HCA Roles"
               ]
           },
           "populateSchema": {

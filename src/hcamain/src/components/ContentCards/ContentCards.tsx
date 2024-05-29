@@ -166,11 +166,6 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             }
             link={
               <a href={card?.url?.path}>
-                {props.fields?.data?.item?.cTAIcon?.Icon && (
-                  <SitecoreSvg>
-                    {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
-                  </SitecoreSvg>
-                )}
                 <JssRichText
                   field={props.fields?.data?.item?.cTACardText?.jsonValue}
                 />

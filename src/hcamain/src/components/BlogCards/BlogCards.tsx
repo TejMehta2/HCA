@@ -111,7 +111,8 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       {props.fields?.Cards?.map((card) => {
         return (
           <CardBlog key={card.id}>
-            {card.fields?.AbstractImage?.value ? (
+            {card.fields?.AbstractImage?.value?.src &&
+            card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
               <JssImage field={card.fields.AbstractImage} editable={false} />
             ) : (
               <JssImage field={card.fields.Image} editable={false} />
@@ -201,7 +202,9 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               key={card.id}
               variation={isFeature ? 'feature' : 'default'}
             >
-              {isFeature && card.fields?.AbstractImage?.value ? (
+              {isFeature &&
+              card.fields?.AbstractImage?.value?.src &&
+              card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
                 <JssImage field={card.fields.AbstractImage} editable={false} />
               ) : (
                 isFeature && (
