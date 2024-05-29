@@ -13,6 +13,7 @@ export interface ConsultantCardProps {
   hideAppointmentRequest: boolean;
   consultantsSlugs: string[];
   doctifyLogo: ReactNode | JSX.Element;
+  doctifyText: string;
   isLiveDiaryConsultant: boolean;
   firstAppointment: any;
   nextAppointmentTitle: string;

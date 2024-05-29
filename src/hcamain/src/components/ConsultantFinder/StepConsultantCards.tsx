@@ -62,6 +62,7 @@ interface Fields {
   GenderFilterOptions: object[];
   ProfileImagePlaceholderImage: any;
   DoctifyLogoImage: ImageField;
+  DoctifyText: Field<string>;
   ConditionsTreatmentsList: object[];
   SpecialitiesList: object[];
   SearchIcon: any;
@@ -949,6 +950,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       reviewsCount={consultant?.overallExperience || 0}
                       doctifyLogo={
                         <JssImage field={props.fields.DoctifyLogoImage} />
+                      }
+                      doctifyText={
+                        props?.fields?.DoctifyText?.value || 'Reviewed By'
                       }
                       hideAppointmentRequest={
                         consultant?.hideAppointmentRequest

@@ -60,7 +60,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             isConsultantProfileReviews={false}
             hasTooltip={false}
             tooltipContent={'tooltip'}
-            doctifyText={'Reviewd By'}
+            doctifyText={props.doctifyText}
             doctifyLogo={props.doctifyLogo}
             hasDoctifyBranding={true}
           />
