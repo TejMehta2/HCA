@@ -7,4 +7,5 @@ export interface ProgressBarProps {
   steps: any;
   slug?: string;
   gmcNumber?: number | null;
+  reviewsTotal?: number | null;
 }

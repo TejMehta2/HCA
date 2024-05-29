@@ -97,8 +97,7 @@ const Search = (props: SearchProps): JSX.Element => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('test');
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setLoading(true);
     setIsComponentVisible(true);
     const userInput = encodeURIComponent(e.target.value);
@@ -126,7 +125,7 @@ const Search = (props: SearchProps): JSX.Element => {
       axios
         .get(URL, { cancelToken: cancelToken.token })
         .then((resp) => {
-          console.log(resp.data);
+          // console.log(resp.data);
 
           if (resp.data.keywords.length > 0) {
             // console.log(resp.data.keywords);

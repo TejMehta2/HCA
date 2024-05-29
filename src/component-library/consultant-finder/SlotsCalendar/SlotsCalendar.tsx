@@ -32,7 +32,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   } = useContext(ConsultantFinderContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
-  const [lastDayOfWeek, setLastDayOfWeek] = useState<any>(null);
+  const [, setLastDayOfWeek] = useState<any>(null);
   const [dates, setDates] = useState([]);
   const [year, setYear] = useState(null);
   const [days, setDays] = useState([]);
@@ -41,7 +41,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
   const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
-  console.log(lastDayOfWeek);
+  //console.log(lastDayOfWeek);
 
   const getFirstDayOfWeek = (date: any) => {
     const firstDayOfWeek = new Date(date);
@@ -182,7 +182,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
   const showSelection = (
     e: any,
     startTime: string,
-    endTime: string,
+    _endTime: string,
     formattedDate: string
   ) => {
     setSelectedDate(formatDateLong(startTime));
@@ -190,7 +190,7 @@ const SlotsCalendar = (props: SlotsCalendarProps): JSX.Element => {
     setStartTime(startTime);
     // console.log(formatDateLong(startTime));
     // console.log(formatTime12hr(startTime));
-    console.log(endTime);
+    // console.log(endTime);
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
 
     if (buttons.length > 0) {

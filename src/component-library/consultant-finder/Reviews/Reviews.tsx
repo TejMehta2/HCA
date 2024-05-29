@@ -40,7 +40,6 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
   }
 
   const goToReviews = () => {
-    console.log('reviews');
     const ref = props.reviewsRef;
 
     // Scroll to the section if ref exists

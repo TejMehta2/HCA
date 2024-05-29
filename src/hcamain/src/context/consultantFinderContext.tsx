@@ -53,6 +53,14 @@ interface ConsultantFinderContextType {
   setSelectedLocations: React.Dispatch<React.SetStateAction<any>>;
   selectedInsurerPaymentStep: null;
   setSelectedInsurerPaymentStep: React.Dispatch<React.SetStateAction<any>>;
+  consultantReviews: string;
+  setConsultantReviews: React.Dispatch<React.SetStateAction<string>>;
+  finderFormPayor: string;
+  setFinderFormPayor: React.Dispatch<React.SetStateAction<string>>;
+  finderFormPrevious: string;
+  setFinderFormPrevious: React.Dispatch<React.SetStateAction<string>>;
+  completedFormId: string;
+  setCompletedFormId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ConsultantFinderContext =
@@ -110,6 +118,14 @@ export const ConsultantFinderContext =
     setSelectedLocations: () => {},
     selectedInsurerPaymentStep: null,
     setSelectedInsurerPaymentStep: () => {},
+    consultantReviews: '',
+    setConsultantReviews: () => {},
+    finderFormPayor: '',
+    setFinderFormPayor: () => {},
+    finderFormPrevious: '',
+    setFinderFormPrevious: () => {},
+    completedFormId: '',
+    setCompletedFormId: () => {},
   });
 
 export const ConsultantFinderContextProvider = ({
@@ -147,6 +163,10 @@ export const ConsultantFinderContextProvider = ({
   const [selectedLocations, setSelectedLocations] = useState<any>([]);
   const [selectedInsurerPaymentStep, setSelectedInsurerPaymentStep] =
     useState(null);
+  const [consultantReviews, setConsultantReviews] = useState<string>('');
+  const [finderFormPayor, setFinderFormPayor] = useState<string>('');
+  const [finderFormPrevious, setFinderFormPrevious] = useState<string>('');
+  const [completedFormId, setCompletedFormId] = useState<string>('');
 
   return (
     <ConsultantFinderContext.Provider
@@ -203,6 +223,14 @@ export const ConsultantFinderContextProvider = ({
         setSelectedLocations,
         selectedInsurerPaymentStep,
         setSelectedInsurerPaymentStep,
+        consultantReviews,
+        setConsultantReviews,
+        finderFormPayor,
+        setFinderFormPayor,
+        finderFormPrevious,
+        setFinderFormPrevious,
+        completedFormId,
+        setCompletedFormId,
       }}
     >
       {children}

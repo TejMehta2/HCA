@@ -11,6 +11,7 @@ export interface AppointmentSummaryProps {
   dateText: string;
   slug: string;
   gmcNumber: string | number | null;
+  reviewsTotal: number | null;
   isFollowUpAppointment: string;
   isMobile?: boolean;
 }
