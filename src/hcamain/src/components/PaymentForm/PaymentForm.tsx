@@ -140,7 +140,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
       const result: PaymentAPIResponse = await response.json();
 
       if (result.response.success) {
-        // router.replace(result.response.redirectUrl);
+        router.replace(result.response.redirectUrl);
       }
     } catch (err) {
       process.env.NODE_ENV === 'development' && console.log(err);
