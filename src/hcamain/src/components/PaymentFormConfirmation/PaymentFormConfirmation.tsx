@@ -201,7 +201,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
     return transactionStatus?.response;
   } catch (error) {
     process.env.NODE_ENV === 'development' &&
-      console.log(await response.text());
+      console.log(await response?.text?.());
     return;
   }
 };
