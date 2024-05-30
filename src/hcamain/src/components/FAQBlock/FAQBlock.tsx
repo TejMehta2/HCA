@@ -5,7 +5,7 @@ import {
   Link as JssLink,
   Text as JssText,
   Item,
-  RichText,
+  RichText as JssRichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import AccordionsBlock from '@component-library/site-components/AccordionsBlock/AccordionsBlock';
@@ -15,6 +15,7 @@ import Params from 'src/types/params';
 import { Accordions } from '@component-library/components/Accordions/Accordions.types';
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import Head from 'next/head';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type CTAIconFields = {
   fields?: {
@@ -61,7 +62,11 @@ const getAccordions = (questions: QuestionFields[]) => {
   for (const accordion of questions) {
     accordions.push({
       title: <JssText field={accordion.fields?.Question} />,
-      children: <RichText field={accordion.fields?.Answer}></RichText>,
+      children: (
+        <RichText>
+          <JssRichText field={accordion.fields?.Answer}></JssRichText>
+        </RichText>
+      ),
     });
 
     questionSchema.push({
@@ -145,7 +150,9 @@ export const Default = (props: FAQProps): JSX.Element => {
         body={
           (props.fields.Text?.value || isExperienceEditor) && (
             <Text tag="div" variation="body-large">
-              <RichText field={props.fields?.Text} />
+              <RichText>
+                <JssRichText field={props.fields?.Text} />
+              </RichText>
             </Text>
           )
         }
@@ -164,7 +171,7 @@ export const Default = (props: FAQProps): JSX.Element => {
                       }}
                     ></span>
                   )}
-                  <RichText
+                  <JssRichText
                     tag="span"
                     field={{
                       value: props.fields?.CTALink.value.text,
@@ -197,7 +204,9 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         body={
           (props.fields.Text?.value || isExperienceEditor) && (
             <Text tag="div" variation="body-large">
-              <RichText field={props.fields?.Text} />
+              <RichText>
+                <JssRichText field={props.fields?.Text} />
+              </RichText>
             </Text>
           )
         }
@@ -232,7 +241,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
                     }}
                   ></span>
                 )}
-                <RichText
+                <JssRichText
                   tag="span"
                   field={{
                     value: props.fields?.CTALink?.value.text,

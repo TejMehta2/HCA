@@ -3,7 +3,8 @@ import Numbers from '../../components/Numbers/Numbers';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import Image from 'next/image';
-import YextResultSectionLocations from './YextResultSectionLocations';
+import YextResultSectionLocationsVertical from './YextResultSectionLocationsVertical';
+import YextResultSectionLocationsUniversal from './YextResultSectionLocationsUniversal';
 import YextResultCardLocations from '../YextResultCardLocations/YextResultCardLocations';
 import HealthcareFacility, {
   Hours,
@@ -150,7 +151,13 @@ const YextResultSectionLocationsAdaptor = (
     locations: newLocations,
     title: 'Locations',
   };
-  return <YextResultSectionLocations {...args} variation={variation} />;
+  if (variation === 'side-by-side')
+    return (
+      <YextResultSectionLocationsVertical {...args} variation={variation} />
+    );
+  return (
+    <YextResultSectionLocationsUniversal {...args} variation={variation} />
+  );
 };
 
 export default YextResultSectionLocationsAdaptor;
