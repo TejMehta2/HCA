@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Field,
   RichText,
+  LinkField,
   Text as JSSText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderBlogDetails from '@component-library/site-components/HeaderBlogDetails/HeaderBlogDetails';
@@ -24,6 +25,9 @@ interface Fields {
       date?: { jsonValue?: Field<string> };
       articleType?: { targetItem?: ArticleTypeFields };
     };
+    settings?: {
+      blogSearchResultsBaseUrl?: { jsonValue?: LinkField };
+    }
   };
 }
 
@@ -45,6 +49,9 @@ const BlogDetailsHeaderDefaultComponent = (
 };
 
 export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
+  const queryString = 'articleTypeId';
+  const currentArticleId = props.fields?.data?.contextItem?.articleType?.targetItem?.id?.toString();
+  const formattedCurrentArticleId = currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
@@ -55,7 +62,13 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
       tag={
         props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
           <Tags contentVariation="quote">
-            <Link href={{ pathname: '/' }}>
+            <Link href={
+              props.fields?.data?.settings?.blogSearchResultsBaseUrl?.jsonValue?.value.href +
+              '?' +
+              queryString +
+              '=' +
+              formattedCurrentArticleId
+            } >
               <JSSText
                 field={
                   props.fields?.data?.contextItem?.articleType?.targetItem
