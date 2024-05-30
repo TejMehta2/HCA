@@ -1,11 +1,14 @@
 import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
 import geolocationMiddleware from 'lib/geolocation-middleware';
+import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  const response = geolocationMiddleware(req);
-  if (response) return response;
+  const geolocationResponse = geolocationMiddleware(req);
+  if (geolocationResponse) return geolocationResponse;
+  const redirectResponse = redirectMiddleware(req);
+  if (redirectResponse) return redirectResponse;
   return middleware(req, ev);
 }
 
