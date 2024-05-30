@@ -27,7 +27,7 @@ interface Fields {
     };
     settings?: {
       blogSearchResultsBaseUrl?: { jsonValue?: LinkField };
-    }
+    };
   };
 }
 
@@ -50,8 +50,10 @@ const BlogDetailsHeaderDefaultComponent = (
 
 export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
   const queryString = 'articleTypeId';
-  const currentArticleId = props.fields?.data?.contextItem?.articleType?.targetItem?.id?.toString();
-  const formattedCurrentArticleId = currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
+  const currentArticleId =
+    props.fields?.data?.contextItem?.articleType?.targetItem?.id?.toString();
+  const formattedCurrentArticleId =
+    currentArticleId && currentArticleId.replace(/[-{}]/g, '').toLowerCase();
   if (!props.fields) {
     return <BlogDetailsHeaderDefaultComponent {...props} />;
   }
@@ -62,13 +64,16 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
       tag={
         props.fields?.data?.contextItem?.articleType?.targetItem?.title ? (
           <Tags contentVariation="quote">
-            <Link href={
-              props.fields?.data?.settings?.blogSearchResultsBaseUrl?.jsonValue?.value.href +
-              '?' +
-              queryString +
-              '=' +
-              formattedCurrentArticleId
-            } >
+            <Link
+              href={
+                props.fields?.data?.settings?.blogSearchResultsBaseUrl
+                  ?.jsonValue?.value.href +
+                '?' +
+                queryString +
+                '=' +
+                formattedCurrentArticleId
+              }
+            >
               <JSSText
                 field={
                   props.fields?.data?.contextItem?.articleType?.targetItem
