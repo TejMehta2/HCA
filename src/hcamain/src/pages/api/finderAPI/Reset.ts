@@ -26,41 +26,120 @@ const Reset = async (
 
   console.log('re-validate cacheable data');
 
-  console.log('getting GetHCAConfig');
-  await GetHCAConfig(); //
-  console.log('getting getCMAs');
-  await getCMAs();
-  console.log('getting GetC2Config');
-  await GetC2Config(); //
-  console.log('getting GetDoctifyConfig');
-  await GetDoctifyConfig(); //
-  console.log('getting getActiveConsultantSlugs');
-  await getActiveConsultantSlugs(); //
-  console.log('getting getActiveLiveDiaryConsultantSlugs');
-  await getActiveLiveDiaryConsultantSlugs(); //
-  console.log('getting getHolidays');
-  await getHolidays(); //
-  console.log('getting getFacilitiesData');
-  await getFacilitiesData(); //
+  try {
+    console.log('getting GetHCAConfig');
+    await GetHCAConfig(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting GetC2Config');
+    await GetC2Config(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting GetDoctifyConfig');
+    await GetDoctifyConfig(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getActiveConsultantSlugs');
+    await getActiveConsultantSlugs(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getActiveLiveDiaryConsultantSlugs');
+    await getActiveLiveDiaryConsultantSlugs(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getHolidays');
+    await getHolidays(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getFacilitiesData');
+    await getFacilitiesData(); //
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getCMAs');
+    await getCMAs();
+  } catch (e) {
+    console.log('exception ', e);
+  }
 
   revalidate.setRevalidateNow(false);
   console.log('re-reading cacheable data');
-  console.log('getting GetHCAConfig');
-  await GetHCAConfig();
-  console.log('getting getCMAs');
-  await getCMAs();
-  console.log('getting GetC2Config');
-  await GetC2Config();
-  console.log('getting GetDoctifyConfig');
-  await GetDoctifyConfig();
-  console.log('getting getActiveConsultantSlugs');
-  await getActiveConsultantSlugs();
-  console.log('getting getActiveLiveDiaryConsultantSlugs');
-  await getActiveLiveDiaryConsultantSlugs();
-  console.log('getting getHolidays');
-  await getHolidays();
-  console.log('getting getFacilitiesData');
-  await getFacilitiesData();
+
+  try {
+    console.log('getting GetHCAConfig');
+    await GetHCAConfig();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting GetC2Config');
+    await GetC2Config();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting GetDoctifyConfig');
+    await GetDoctifyConfig();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getActiveConsultantSlugs');
+    await getActiveConsultantSlugs();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getActiveLiveDiaryConsultantSlugs');
+    await getActiveLiveDiaryConsultantSlugs();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getHolidays');
+    await getHolidays();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getFacilitiesData');
+    await getFacilitiesData();
+  } catch (e) {
+    console.log('exception ', e);
+  }
+
+  try {
+    console.log('getting getCMAs');
+    await getCMAs();
+  } catch (e) {
+    console.log('exception ', e);
+  }
 
   const ret = `<div>done</div>${new Date().toISOString()}`;
   res.setHeader('Content-Type', 'text/html');
