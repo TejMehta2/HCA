@@ -304,6 +304,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
+  const shortName = `${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`;
   const name = `${serverSideData?.ProfileJson?.title} ${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName} ${serverSideData?.ProfileJson?.suffix}`;
   const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
@@ -329,7 +330,18 @@ export const Default = (props: StepProps): JSX.Element => {
     .replaceAll('<p>', '')
     .replaceAll('</p>', '');
 
-  //console.log(keywords);
+  // Callback function to handle datalayer phone reveal tracking
+  function callRevealTrack(): void {
+    /* HWPD-3463 - data layer */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'consultantFinder',
+      goalType: 'callReveal',
+      consultantName: shortName,
+      consultantSpecialty: topSpecialty[0]?.name || '',
+      consultantReviews: serverSideData?.ProfileJson?.review?.reviewsTotal || 0,
+    });
+  }
 
   if (props.fields) {
     return (
@@ -783,6 +795,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             props?.fields?.PhoneNumberHref?.value ||
                             '+442045711724'
                           }`}
+                          onClick={callRevealTrack}
                         >
                           <span>
                             <Icons iconName="iconPhone" />
@@ -903,6 +916,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   href={`tel:${
                     props?.fields?.PhoneNumberHref?.value || '+442045711724'
                   }`}
+                  onClick={callRevealTrack}
                 >
                   <span>
                     {props?.fields?.CallToBookButtonText?.value ||

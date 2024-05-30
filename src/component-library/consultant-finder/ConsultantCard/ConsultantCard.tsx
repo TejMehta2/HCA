@@ -25,6 +25,19 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
   );
 
+  // Callback function to handle datalayer phone reveal tracking
+  function callRevealTrack(): void {
+    /* HWPD-3463 - data layer */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'consultantFinder',
+      goalType: 'callReveal',
+      consultantName: props.name,
+      consultantSpecialty: topSpecialty[0]?.name || '',
+      consultantReviews: props.reviewsTotal || 0,
+    });
+  }
+
   return (
     <div className={styles['consultant-card']}>
       <div className={styles['main-content']}>
@@ -168,7 +181,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             size="small"
             contentVariation="full-width"
           >
-            <a href={`tel:${props.phoneNumberHref}`}>
+            <a href={`tel:${props.phoneNumberHref}`} onClick={callRevealTrack}>
               {props.callToBookButtonIcon && (
                 <span
                   dangerouslySetInnerHTML={{
