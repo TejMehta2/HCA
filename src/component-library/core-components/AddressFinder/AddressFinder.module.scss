@@ -120,7 +120,8 @@
 }
 
 .manual-fields {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: $spacing-5 0;
   color: var(--text);
 }
