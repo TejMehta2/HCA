@@ -16,10 +16,13 @@ SharedFields:
     query GetConditions($datasource: String!, $contextItem: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on Conditions {
+          heading {
+            jsonValue
+          }
           title {
             jsonValue
           }
-          heading {
+          text {
             jsonValue
           }
           cTAIcon {
@@ -219,14 +222,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3768c258-9c9b-4034-8a45-ad245ab7d45e"
+      Value: "c645bb47-cd07-42d0-99a5-f22fd3f8e99f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240502T080924Z
+      Value: 20240531T172233Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
