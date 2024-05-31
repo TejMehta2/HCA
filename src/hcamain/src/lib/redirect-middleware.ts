@@ -9,14 +9,13 @@ const redirectMiddleware = async (req: NextRequest) => {
       const { pathname, search } = new URL(url);
 
       const apiUrl = new URL(
-        `${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=/${pathname}`
+        `${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
       );
-      const response = await fetch(apiUrl);
-
+      const response = await fetch(apiUrl.href);
       if (response.ok) {
         const data = await response.json();
         if (data.destination) {
-          const redirectUrl = new URL(data.destination);
+          const redirectUrl = new URL(data.destination, req.url);
           redirectUrl.search = search;
           return NextResponse.redirect(redirectUrl);
         }
