@@ -94,7 +94,116 @@ const nextConfig = {
         source: '/paymentForm/:path*',
         destination: '/api/api-layer/api/paymentForm/:path*',
         
-      },
+      },{
+        //About-hca-uk redirect
+        source: '/about-hca-uk/staff-stories', 
+          destination: '/careers/staff-stories',
+          permanent: true
+        },
+  
+  
+        {
+        //our-services/conditions
+         source: '/our-services/conditions/:path*', 
+          destination: '/conditions/:path*',
+          permanent: true
+        },
+  
+        {
+          //our-services/specialties
+           source: '/our-services/specialties/:path*', 
+            destination: '/services/departments/:path*',
+            permanent: true
+          },
+  
+          {
+            //our-services/cancer-care
+             source: '/our-services/specialties/cancer-care-network/:path*', 
+              destination: '/services/departments/cancer-care/:path*',
+              permanent: true
+            },
+  
+            {
+              ///our-services/specialties/cardiac-care
+               source: '/our-services/specialties/cardiac-care/:path*', 
+                destination: '/services/departments/cardiac/:path*',
+                permanent: true
+              },
+  
+              {
+                ////our-services/specialties/maternity-care
+                 source: '/our-services/specialties/maternity-care/:path*', 
+                  destination: '/services/departments/maternity-and-obstetrics/:path*',
+                  permanent: true
+                },
+  
+  
+                {
+                  ///our-services/specialties/orthopaedic-care
+                   source: '/our-services/specialties/orthopaedic-care/:path*', 
+                    destination: '/services/departments/orthopaedics/:path*',
+                    permanent: true
+                  },
+  
+                  {
+                    ///our-services/therapies
+                     source: '/our-services/supportive-services/:path*', 
+                      destination: '/services/gp-and-urgent-care/gp-services/physiotherapy/:path*',
+                      permanent: true
+                    },
+  
+                    {
+                      ///our-services/tests
+                       source: '/our-services/tests/:path*', 
+                        destination: '/tests-and-scans/:path*',
+                        permanent: true
+                      },
+  
+                      
+                      {
+                        ///our-services/treatments/
+                         source: '/our-services/tests/:path*', 
+                          destination: '/treatments/:path*',
+                          permanent: true
+                        },
+  
+  
+                        {
+                          ///blogs
+                           source: '/blogs/:path*', 
+                            destination: '/blog/:path*',
+                            permanent: true
+                          },
+                          {
+                            ///finder
+                             source: '/finder/:path*', 
+                              destination: '/find-a-doctor/:path*',
+                              permanent: true
+                            },
+                            {
+                              ////finder/enquireform
+                               source: '/finder/enquireform/:path*', 
+                                destination: '/find-a-doctor/:path*',
+                                permanent: true
+                              },
+                              {
+                                ////finder/specialists
+                                 source: '/finder/specialists/:path*', 
+                                  destination: '/find-a-doctor/:path*',
+                                  permanent: true
+                                },
+                                {
+                                  ////finder/livebooking
+                                   source: '/finder/livebooking/:path*', 
+                                    destination: '/find-a-doctor/:path*',
+                                    permanent: true
+                                  },
+                                  {
+                                    ////for-patients-and-visitors/patient-stories
+                                     source: '/for-patients-and-visitors/patient-stories/:path*', 
+                                      destination: '/patient-and-visitor-information/patient-information/patient-stories/:path*',
+                                      permanent: true
+                                    },
     ];
   },
   webpack(config) {
