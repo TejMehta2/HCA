@@ -60,7 +60,7 @@ const OurLocationsDesktop = (props: OurLocationsProps): JSX.Element => {
     >
       <div ref={containerRef} className={styles.container}>
         <div className={styles.header}>
-          <AdvancedBlockHeader {...headerProps} />
+          <AdvancedBlockHeader {...headerProps} paddingSize="none" />
         </div>
         <div className={styles.cards}>
           {locations.map((location, index) => (

@@ -63,7 +63,7 @@ export const Default: StoryObj<typeof OurLocations> = {
       {
         mapX: 1763 / 3000,
         mapY: 2115 / 3444,
-        mapScale: 0.5,
+        mapScale: 0.3,
         theme: 'B-HCA-Navy-Blue',
         card: (
           <CardLocation

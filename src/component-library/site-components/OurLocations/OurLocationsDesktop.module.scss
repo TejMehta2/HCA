@@ -30,7 +30,7 @@
   }
 
   position: sticky;
-  top: 0;
+  top: px-to-rem(70);
   flex-direction: row;
 }
 
@@ -45,7 +45,7 @@
   position: static;
   padding: 0;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - px-to-rem(70));
   transition: none;
 }
 
