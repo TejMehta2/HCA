@@ -21,12 +21,6 @@
     margin-top: $spacing-3;
   }
 
-  &:has(.results) {
-    .manual-button {
-      display: none;
-    }
-  }
-
   .search-wrapper {
     @extend %searchbar;
 

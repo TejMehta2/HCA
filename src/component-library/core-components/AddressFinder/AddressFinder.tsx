@@ -103,18 +103,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               <Text variation="body-medium-medium">{error}</Text>
             </div>
           )}
-          <div className={styles['manual-button']}>
-            <TextButton theme="dark">
-              <button
-                onClick={() => {
-                  setStep('manual');
-                }}
-                type="button"
-              >
-                Enter your address manually
-              </button>
-            </TextButton>
-          </div>
+
           <div className={styles.results}>
             {!findAddressIsLoading &&
               !findAddressNoResults &&
@@ -162,6 +151,18 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
                 </li>
               </ul>
             )}
+          </div>
+          <div className={styles['manual-button']}>
+            <TextButton theme="dark">
+              <button
+                onClick={() => {
+                  setStep('manual');
+                }}
+                type="button"
+              >
+                Enter your address manually
+              </button>
+            </TextButton>
           </div>
         </>
       )}
