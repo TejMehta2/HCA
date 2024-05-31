@@ -65,7 +65,7 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 4, 4);
+  @include responsive-grid-span(6, 5, 5, 4);
 
   max-width: px-to-rem(535);
 }
