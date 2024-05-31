@@ -42,6 +42,10 @@
   @include responsive-container;
   @include responsive-grid;
 
+  @include media(screen-l) {
+    width: 100%;
+  }
+
   .title,
   .cta-section {
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
