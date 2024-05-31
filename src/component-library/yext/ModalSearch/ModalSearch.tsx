@@ -24,7 +24,13 @@ const ModalSearch = (
 
   const triggerSearch = (query: string) => {
     searchActions.setQuery(query);
-    if (!query.length) return;
+    if (!query.length) {
+      const inputElement = ref?.current?.querySelector(
+        '[class*="StyledYextSearchBar_input-element"]'
+      ) as HTMLInputElement;
+      inputElement?.focus?.();
+      return;
+    }
     searchActions.executeUniversalQuery();
     ref?.current?.close();
     router.replace(`${redirectUrl}?input=${query}`);
