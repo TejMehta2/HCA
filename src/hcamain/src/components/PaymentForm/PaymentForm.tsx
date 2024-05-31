@@ -152,7 +152,16 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const onBlur = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const target = event.target as HTMLInputElement;
-    if (target?.name) {
+
+    if (target?.name && !['radio', 'checkbox'].includes(target.type)) {
+      validateFormData(target?.name);
+    }
+  };
+
+  const onChange = (event: FormEvent<HTMLFormElement>) => {
+    const target = event.target as HTMLInputElement;
+
+    if (['radio', 'checkbox'].includes(target.type)) {
       validateFormData(target?.name);
     }
   };
@@ -171,6 +180,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           ref={formRef}
           method={'GET'}
           onBlur={onBlur}
+          onChange={onChange}
           onSubmit={onSubmit}
         >
           <FormContainer
