@@ -47,10 +47,11 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
           }).then((res) => res.json())
       : () => ({ category: 'postcode', data: [] }),
     {
-      keepPreviousData: true, // Never show nothing
+      keepPreviousData: false,
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
     }
   );
+  const findAddressNoResults = findAddressData?.data?.[0]?.id === 'noresult';
 
   const [foundAddress, setFoundAddress] = useState<FindAddressData>();
 
@@ -70,6 +71,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
     }
   );
+
   return (
     <div className={styles.wrapper}>
       {step !== 'manual' && (
@@ -113,57 +115,54 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               </button>
             </TextButton>
           </div>
-
-          {!!findAddressData?.data?.length && (
-            <div className={styles.results}>
-              <ul>
-                {findAddressData?.data.map((result) => {
-                  return (
-                    <li key={result.id}>
-                      <button
-                        onClick={() => {
-                          setFoundAddress(result);
-                          setInput('');
-                          setStep('manual');
-                        }}
-                        type="button"
-                      >
-                        <Icons iconName="iconPin"></Icons>
-                        {result.address}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              {findAddressIsLoading && (
+          <div className={styles.results}>
+            {!findAddressIsLoading &&
+              !findAddressNoResults &&
+              !!findAddressData?.data?.length && (
                 <ul>
-                  <li>
-                    <div className={styles.loader}>
-                      <Loader theme="light" />
-                      <Text tag="p" variation="body-small">
-                        Loading...
-                      </Text>
-                    </div>
-                  </li>
+                  {findAddressData?.data.map((result) => {
+                    return (
+                      <li key={result.id}>
+                        <button
+                          onClick={() => {
+                            setFoundAddress(result);
+                            setInput('');
+                            setStep('manual');
+                          }}
+                          type="button"
+                        >
+                          <Icons iconName="iconPin"></Icons>
+                          {result.address}
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
-            </div>
-          )}
-          {!!input?.length &&
-            (!findAddressData?.data?.length || findAddressError) && (
-              <div className={styles.results}>
-                <ul>
-                  <li>
-                    <div className={styles.loader}>
-                      <Text tag="p" variation="body-small">
-                        No results found
-                      </Text>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            {findAddressIsLoading && (
+              <ul>
+                <li>
+                  <div className={styles.loader}>
+                    <Loader theme="light" />
+                    <Text tag="p" variation="body-small">
+                      Loading...
+                    </Text>
+                  </div>
+                </li>
+              </ul>
             )}
+            {(findAddressNoResults || findAddressError) && (
+              <ul>
+                <li>
+                  <div className={styles.loader}>
+                    <Text tag="p" variation="body-medium-small">
+                      No results found
+                    </Text>
+                  </div>
+                </li>
+              </ul>
+            )}
+          </div>
         </>
       )}
 

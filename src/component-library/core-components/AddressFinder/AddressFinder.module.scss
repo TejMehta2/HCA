@@ -103,6 +103,10 @@
       }
     }
   }
+
+  &:empty {
+    display: none;
+  }
 }
 
 .selected-address {
