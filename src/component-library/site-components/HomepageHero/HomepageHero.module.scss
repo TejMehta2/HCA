@@ -26,14 +26,14 @@
     display: flex;
     align-items: center;
     min-height: calc(100vh - px-to-rem(110)); //  calc to account for site nav
-    margin-bottom: px-to-rem(57);
+    margin-bottom: px-to-rem(150);
   }
 
   @include media(screen-xl) {
     --image-size: #{px-to-rem(1460)};
 
-    padding: px-to-rem(158) 0;
-    margin-bottom: px-to-rem(86);
+    padding: px-to-rem(32) 0;
+    margin-bottom: px-to-rem(250);
   }
 }
 
