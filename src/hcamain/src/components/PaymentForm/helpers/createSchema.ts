@@ -25,10 +25,22 @@ const createSchema = (
             validator.type.value === 'regex' &&
             validator.parameters?.value
           ) {
-            fieldSchema = fieldSchema.regex(
-              new RegExp(validator.parameters.value),
-              validator.message?.value || 'Invalid format'
-            );
+            const regex = new RegExp(validator.parameters.value);
+            if (validators.length === 1) {
+              // It's the only item, so we need to use string method and make it optional
+              // eslint-disable-next-line
+              // @ts-ignore
+              fieldSchema = z
+                .string()
+                .regex(regex, validator.message?.value || 'Invalid format')
+                .optional();
+            } else {
+              // Chain to the existing required validation
+              fieldSchema = fieldSchema.regex(
+                regex,
+                validator.message?.value || 'Invalid format'
+              );
+            }
           }
         });
         schemaObj[field.name] = fieldSchema;
