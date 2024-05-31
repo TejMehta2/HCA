@@ -99,6 +99,7 @@ export interface FilterOption {
 export interface FilterCategory {
   displayName: string;
   fields: {
+    Header?: Field<string>;
     Filters: FilterOption[];
   };
 }
