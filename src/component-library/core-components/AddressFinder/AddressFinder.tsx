@@ -55,6 +55,23 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
 
   const [foundAddress, setFoundAddress] = useState<FindAddressData>();
 
+  const splitAddressFetcher = (url: string) => {
+    if (!foundAddress?.id) {
+      return new Promise((resolve) =>
+        resolve({
+          address1: '',
+          address2: '',
+          county: '',
+          postcode: '',
+          town: '',
+        })
+      );
+    }
+    return fetch(url, {
+      method: 'POST',
+    }).then((res) => res.json());
+  };
+
   // Split address
   const {
     data: splitAddressData,
@@ -62,10 +79,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     // isLoading: splitAddressIsloading,
   } = useSWR<SpiltAddressResponse>(
     `${splitAddressEndpoint}?monikerField=${foundAddress?.id}`,
-    (url: string) =>
-      fetch(url, {
-        method: 'POST',
-      }).then((res) => res.json()),
+    splitAddressFetcher,
     {
       keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
