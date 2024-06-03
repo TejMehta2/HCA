@@ -106,17 +106,7 @@ const returnCards = (
       cards =
         patientStories &&
         patientStories.map(
-          ({
-            id,
-            title,
-            name,
-            description,
-            imageUrl,
-            url,
-            abstractImageUrl,
-            abstractTitle,
-            abstractText,
-          }) => (
+          ({ id, title, name, description, imageUrl, url }) => (
             <CardPatientStories
               key={id}
               title={
@@ -124,24 +114,19 @@ const returnCards = (
                   tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
                   variation="display-4"
                 >
-                  {abstractTitle || title || name}
+                  {title || name}
                 </Text>
               }
               bodyCopy={
                 <Text tag="span" variation="body-large">
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: abstractText || description,
+                      __html: description,
                     }}
                   ></span>
                 </Text>
               }
-              image={
-                <img
-                  src={abstractImageUrl || imageUrl}
-                  alt={abstractTitle || title}
-                />
-              }
+              image={<img src={imageUrl} alt={title} />}
               link={
                 <a href={url}>
                   <span>
