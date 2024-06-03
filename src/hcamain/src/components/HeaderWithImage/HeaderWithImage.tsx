@@ -103,7 +103,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
                 (props.fields?.data?.contextItem?.image?.jsonValue?.value
                   ?.alt as string) || ''
               }
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </>
         )
