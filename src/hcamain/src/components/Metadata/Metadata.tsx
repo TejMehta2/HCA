@@ -92,7 +92,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
       const urlSearchParams = new URLSearchParams(imageUrl.search);
       urlSearchParams.set('t', 'cardthumbnail');
       imageUrl.search = urlSearchParams.toString();
-      console.log(imageUrl.href);
       image = imageUrl.href;
     }
   } catch (err) {
