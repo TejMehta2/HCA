@@ -178,27 +178,27 @@ const nextConfig = {
       },
       {
         ///finder
-        source: '/finder/:path*',
-        destination: '/find-a-doctor/:path*',
-        permanent: true,
+        // source: '/finder/:path*',
+        // destination: '/find-a-doctor/:path*',
+        // permanent: true,
       },
       {
         ////finder/enquireform
-        source: '/finder/enquireform/:path*',
-        destination: '/find-a-doctor/:path*',
-        permanent: true,
+        // source: '/finder/enquireform/:path*',
+        // destination: '/find-a-doctor/:path*',
+        // permanent: true,
       },
       {
         ////finder/specialists
-        source: '/finder/specialists/:path*',
-        destination: '/find-a-doctor/:path*',
-        permanent: true,
+        // source: '/finder/specialists/:path*',
+        // destination: '/find-a-doctor/:path*',
+        // permanent: true,
       },
       {
         ////finder/livebooking
-        source: '/finder/livebooking/:path*',
-        destination: '/find-a-doctor/:path*',
-        permanent: true,
+        // source: '/finder/livebooking/:path*',
+        // destination: '/find-a-doctor/:path*',
+        // permanent: true,
       },
       {
         ////for-patients-and-visitors/patient-stories
