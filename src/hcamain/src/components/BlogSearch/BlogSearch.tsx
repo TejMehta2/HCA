@@ -250,7 +250,7 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                           {abstractTitle ? abstractTitle : title}
                         </a>
                       </Text>
-                      <Text tag={'p'} variation={'body-large'}>
+                      <Text tag={'p'} variation={'body-large'} isHtml={true}>
                         {abstractText ? abstractText : description}
                       </Text>
                       <div>

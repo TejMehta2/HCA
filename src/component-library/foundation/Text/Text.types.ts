@@ -28,4 +28,5 @@ export interface TextProps {
   tag?: keyof JSX.IntrinsicElements;
   variation?: TextVariationUnionTypes;
   children: string | JSX.Element | ReactNode;
+  isHtml?: boolean; // When children is HTML string
 }
