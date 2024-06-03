@@ -85,6 +85,21 @@ export const Default = (props: MetadataProps): JSX.Element => {
     MetaImage?.value?.src ||
     Image?.value?.src ||
     DefaultMetaImage?.value?.value?.src;
+
+  const addThumbnailParameter = (image?: string) => {
+    try {
+      if (!image) return image;
+      const imageUrl = new URL(image);
+      const urlSearchParams = new URLSearchParams(imageUrl.search);
+      urlSearchParams.set('t', 'cardthumbnail');
+      imageUrl.search = urlSearchParams.toString();
+      return imageUrl.href;
+    } catch (err) {
+      process.env.NODE_ENV === 'development' && console.error(err);
+      return image;
+    }
+  };
+
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
@@ -101,7 +116,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
       <meta name="title" content={title} />
       <meta name="pageTitle" content={Title?.value} />
       <meta name="pageText" content={Text?.value} />
-      <meta name="pageImage" content={Image?.value?.src} />
+      <meta
+        name="pageImage"
+        content={addThumbnailParameter(Image?.value?.src)}
+      />
       <meta name="pageId" content={PageId} />
       <meta name="templateId" content={TemplateId} />
       <meta
@@ -110,7 +128,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
       />
       <meta name="abstractTitle" content={AbstractTitle?.value} />
       <meta name="abstractText" content={AbstractText?.value} />
-      <meta name="abstractImage" content={AbstractImage?.value?.src} />
+      <meta
+        name="abstractImage"
+        content={addThumbnailParameter(AbstractImage?.value?.src)}
+      />
     </Head>
   );
 };
