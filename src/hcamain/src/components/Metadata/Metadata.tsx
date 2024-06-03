@@ -81,10 +81,24 @@ export const Default = (props: MetadataProps): JSX.Element => {
     PageTitleSufix?.value?.value || ''
   }`;
   const description = MetaDescription?.value || Text?.value;
-  const image =
+  let image =
     MetaImage?.value?.src ||
     Image?.value?.src ||
     DefaultMetaImage?.value?.value?.src;
+
+  try {
+    if (image) {
+      const imageUrl = new URL(image);
+      const urlSearchParams = new URLSearchParams(imageUrl.search);
+      urlSearchParams.set('t', 'cardthumbnail');
+      imageUrl.search = urlSearchParams.toString();
+      console.log(imageUrl.href);
+      image = imageUrl.href;
+    }
+  } catch (err) {
+    process.env.NODE_ENV === 'development' && console.error(err);
+  }
+
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
