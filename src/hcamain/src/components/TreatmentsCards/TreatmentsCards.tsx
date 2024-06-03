@@ -6,6 +6,7 @@ import {
   Text as JssText,
   RichText as JssRichText,
   Image as JssImage,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardContent from '@component-library/components/CardContent/CardContent';
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
@@ -75,6 +76,9 @@ interface WithImageProps extends TreatmentsCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
   const { showImage = true } = props;
 
   if (!props.fields) {
@@ -103,6 +107,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const cards = props.fields?.data?.item?.treatments?.TreatmentsList?.length
     ? props.fields?.data?.item?.treatments?.TreatmentsList
     : props.fields?.data?.contextItem?.treatments?.TreatmentsList;
+
+  if (!cards?.length && !isExperienceEditor) {
+    return <></>;
+  }
 
   return (
     <CardBlock
