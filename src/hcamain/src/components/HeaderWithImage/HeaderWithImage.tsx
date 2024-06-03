@@ -14,6 +14,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import Image from 'next/image';
 
 interface Fields {
   data?: {
@@ -53,6 +54,8 @@ const HeaderWithImageDefaultComponent = (
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
@@ -86,7 +89,24 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
         </Text>
       }
       image={
-        <JSSImage field={props.fields?.data?.contextItem?.image?.jsonValue} />
+        isExperienceEditor ? (
+          <JSSImage field={props.fields?.data?.contextItem?.image?.jsonValue} />
+        ) : (
+          <>
+            <Image
+              fill
+              src={
+                props.fields?.data?.contextItem?.image?.jsonValue?.value?.src ||
+                ''
+              }
+              alt={
+                (props.fields?.data?.contextItem?.image?.jsonValue?.value
+                  ?.alt as string) || ''
+              }
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
+          </>
+        )
       }
       ctas={
         props.rendering ? (
