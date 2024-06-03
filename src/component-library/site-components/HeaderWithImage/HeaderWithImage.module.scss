@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   min-height: calc(100vh - px-to-rem(70 + 40));
-  
+
   @include media(screen-l, max) {
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
