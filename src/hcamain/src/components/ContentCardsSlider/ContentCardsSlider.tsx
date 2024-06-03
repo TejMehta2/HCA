@@ -72,6 +72,12 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <ContentCardsSliderDefaultComponent {...props} />;
   }
 
+  if (
+    !props.fields?.data?.item?.pages?.PagesList?.length &&
+    !isExperienceEditor
+  ) {
+    return <></>;
+  }
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
   ) : (

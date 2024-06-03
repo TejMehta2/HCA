@@ -177,9 +177,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     );
   };
 
-  const cards = props.fields?.data?.contextItem?.diagnosis?.DiagnosisList
-    ? getCards(props.fields?.data?.contextItem?.diagnosis?.DiagnosisList)
-    : getCards(props.fields?.data?.item?.testAndScans?.TestAndScansList);
+  const cardSource =
+    props.fields?.data?.contextItem?.diagnosis?.DiagnosisList ||
+    props.fields?.data?.item?.testAndScans?.TestAndScansList;
+
+  const cards = getCards(cardSource);
+
+  if (!cardSource?.length && !isExperienceEditor) {
+    return <></>;
+  }
 
   return (
     <CardBlock
