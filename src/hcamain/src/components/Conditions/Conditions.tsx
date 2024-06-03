@@ -175,6 +175,25 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
               </Text>
             )
           }
+          body={
+            isExperienceEditor ? (
+              props.fields?.data?.item?.title?.jsonValue?.value ? (
+                <Text variation={'body-large'}>
+                  <JssTextWithEntityName
+                    field={props.fields?.data?.item?.text?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : props.fields?.data?.item?.text?.jsonValue?.value ? (
+              <Text variation={'body-large'}>
+                <JssTextWithEntityName
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            ) : undefined
+          }
           title={
             !isExperienceEditor ? (
               props.fields?.data?.item?.title?.jsonValue?.value ? (
