@@ -116,6 +116,7 @@ export default async function Warmup(
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
   gStreamClosed = false;
+
   // for some reason not getting access directly from req.headers - seems like a known issue in Next13
   const flatHeaders = Object.fromEntries(
     req.headers as unknown as Iterable<readonly [PropertyKey, any]>
@@ -128,61 +129,77 @@ export default async function Warmup(
     requestingHost = 'hca-digital-dev-hca-main.vercel.app'; // use dev instead
   }
 
-  const start = (req as any).nextUrl?.searchParams?.get('start') ?? 0;
-  console.log(`Starting at index: ${start}`);
+  const protectionParamsKey =
+    (req as any).nextUrl?.searchParams?.get('key') ?? '';
+  console.log('req.query', req);
+  if (protectionParamsKey != process.env.ADMIN_PROTECTION_KEY!) {
+    console.warn(
+      'error, CF admin - Warmup called with incorrect or missing admin key'
+    );
+    writer.write(
+      encoder.encode(
+        `${Date().toString()}: error missing or invalid admin protection\n`
+      )
+    );
+    writer.close();
+    gStreamClosed = true;
+  } else {
+    const start = (req as any).nextUrl?.searchParams?.get('start') ?? 0;
+    console.log(`Starting at index: ${start}`);
 
-  // Invoke long running process
-  longRunning(requestingHost, start, {
-    log: (msg: string) => {
-      writer.ready
-        .then(
-          () => writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
-        )
-        .catch((err) => {
+    // Invoke long running process
+    longRunning(requestingHost, start, {
+      log: (msg: string) => {
+        writer.ready
+          .then(
+            () =>
+              writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
+          )
+          .catch((err) => {
+            gStreamClosed = true;
+            return console.error(
+              'Error, client disconnected from log stream',
+              err
+            );
+          });
+        return null;
+      },
+      complete: (obj: unknown) => {
+        writer.write(
+          encoder.encode(
+            `${Date().toString()}: complete: ${JSON.stringify(obj)}\n`
+          )
+        );
+        if (!gStreamClosed) {
+          writer.close();
           gStreamClosed = true;
-          return console.error(
-            'Error, client disconnected from log stream',
-            err
-          );
-        });
-      return null;
-    },
-    complete: (obj: unknown) => {
-      writer.write(
-        encoder.encode(
-          `${Date().toString()}: complete: ${JSON.stringify(obj)}\n`
-        )
-      );
-      if (!gStreamClosed) {
-        writer.close();
-        gStreamClosed = true;
-      }
-    },
-    error: (err: Error | unknown) => {
-      writer.write(encoder.encode(`${Date().toString()}: error: ${err}\n`));
-      if (!gStreamClosed) {
-        writer.close();
-        gStreamClosed = true;
-      }
-    },
-    close: () => {
-      if (!gStreamClosed) {
-        writer.close();
-        gStreamClosed = true;
-      }
-    },
-  })
-    .then(() => {
-      if (!gStreamClosed) {
-        writer.close();
-      }
+        }
+      },
+      error: (err: Error | unknown) => {
+        writer.write(encoder.encode(`${Date().toString()}: error: ${err}\n`));
+        if (!gStreamClosed) {
+          writer.close();
+          gStreamClosed = true;
+        }
+      },
+      close: () => {
+        if (!gStreamClosed) {
+          writer.close();
+          gStreamClosed = true;
+        }
+      },
     })
-    .catch((_e) => {
-      if (!gStreamClosed) {
-        writer.close();
-      }
-    });
-
+      .then(() => {
+        if (!gStreamClosed) {
+          writer.close();
+        }
+      })
+      .catch((_e) => {
+        if (!gStreamClosed) {
+          writer.close();
+        }
+      });
+  }
   // Return response connected to readable
   return new Response(responseStream.readable, {
     headers: {
