@@ -103,8 +103,8 @@
     position: sticky;
 
     //  use calc to account for header
-    top: $spacing-10;
-    min-height: calc(100vh - 2 * $spacing-10);
+    top: px-to-rem(70);
+    min-height: calc(100vh - px-to-rem(70));
     display: flex;
     align-items: center;
   }

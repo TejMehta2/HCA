@@ -59,9 +59,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
             <div className={styles.image}>{image}</div>
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>
-              <div className={styles.mobile}>
-                <Themes theme={'D-HCA-Teal'}>{doctify}</Themes>
-              </div>
+              <div className={styles.mobile}>{doctify}</div>
               <div className={styles.tablet}>
                 <Themes theme={'B-HCA-Navy-Blue'}>{doctify}</Themes>
               </div>

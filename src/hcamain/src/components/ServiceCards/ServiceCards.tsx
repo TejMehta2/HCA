@@ -78,7 +78,9 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   if (!props.fields) {
     return <ServiceCardsDefaultComponent {...props} />;
   }
-
+  if (!props?.fields?.Services?.length && !isExperienceEditor) {
+    return <></>;
+  }
   const headingTag = props.params?.HeadingTag || 'h2';
   return (
     <ServiceCards
@@ -125,29 +127,25 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
         )
       }
     >
-      {props.fields?.Services &&
-        props.fields?.Services.map((service, index) => (
-          <CardService
-            link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
-            key={index}
-          >
-            {service.fields?.AbstractImage?.value?.src ? (
-              <JssImage
-                field={service?.fields?.AbstractImage}
-                editable={false}
-              />
+      {props?.fields?.Services?.map((service, index) => (
+        <CardService
+          link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
+          key={index}
+        >
+          {service.fields?.AbstractImage?.value?.src ? (
+            <JssImage field={service?.fields?.AbstractImage} editable={false} />
+          ) : (
+            <JssImage field={service?.fields?.Image} editable={false} />
+          )}
+          <Text tag="div" variation="display-6">
+            {service.fields?.AbstractTitle?.value ? (
+              <JssText field={service?.fields?.AbstractTitle} />
             ) : (
-              <JssImage field={service?.fields?.Image} editable={false} />
+              <JssText field={service?.fields?.Title} />
             )}
-            <Text tag="div" variation="display-6">
-              {service.fields?.AbstractTitle?.value ? (
-                <JssText field={service?.fields?.AbstractTitle} />
-              ) : (
-                <JssText field={service?.fields?.Title} />
-              )}
-            </Text>
-          </CardService>
-        ))}
+          </Text>
+        </CardService>
+      ))}
     </ServiceCards>
   );
 };

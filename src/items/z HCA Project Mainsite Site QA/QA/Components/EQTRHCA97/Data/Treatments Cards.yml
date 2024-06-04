@@ -16,11 +16,11 @@ Languages:
       Value: 3
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9c74cbf4-6079-4180-a5ee-ea5bc9e54f39"
+      Value: "55b95297-caff-45b9-9091-9df2acd18879"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="View all &lt;b&gt;hip pain tests &amp; scans&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{A40C792E-42F6-4549-82C1-BD82242BA0B7}" />
+        <link text="View all &lt;b&gt;hip pain treatments&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{A40C792E-42F6-4549-82C1-BD82242BA0B7}" />
     - ID: "a964b3b4-4ad5-4918-831c-36f91c9dc8f8"
       Hint: Treatments
       Value: |
@@ -33,10 +33,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: Hip pain tests & scans
+      Value: Hip pain treatments
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T124429Z
+      Value: 20240603T052307Z
     - ID: "ded86b0c-c734-4019-89c3-6c6a34a1cc8d"
       Hint: CTACardText
       Value: Learn more

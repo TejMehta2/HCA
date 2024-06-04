@@ -152,6 +152,11 @@ byoc-sitecore-form,
       @include apply-body-medium-large;
 
       @extend %select-options;
+
+      &::-webkit-scrollbar-track {
+        margin-top: px-to-rem(32);
+        margin-bottom: px-to-rem(32);
+      }
     }
 
     .selected-indicator,

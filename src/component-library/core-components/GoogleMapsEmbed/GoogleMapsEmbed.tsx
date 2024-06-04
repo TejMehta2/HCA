@@ -20,9 +20,13 @@ const MapElement = (
       ...props,
     });
     window.google.maps.importLibrary('geometry');
-    if (mapRef) {
-      mapRef.current = map;
-    }
+    map.addListener('bounds_changed', function () {
+      const zoom = map.getZoom();
+      if (typeof zoom !== 'number') return;
+      if (zoom <= 15) return;
+      map.setZoom(15);
+    });
+    mapRef.current = map;
 
     props.callback?.(map);
   }, [mapRef, props, ref]);

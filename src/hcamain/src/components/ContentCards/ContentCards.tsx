@@ -85,6 +85,12 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const numberOfCards = props.params?.Columns || '3';
 
+  if (
+    !props.fields?.data?.item?.pages?.PagesList?.length &&
+    !isExperienceEditor
+  ) {
+    return <></>;
+  }
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
   ) : (

@@ -92,7 +92,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
 
   // Parse filter options to be used in multiple components
   const filterCategories = props.fields?.FilterOptions?.map((category) => ({
-    title: category?.displayName || '',
+    title: category?.fields.Header?.value || category?.displayName || '',
     fields: category.fields?.Filters?.map((option) => {
       const { id, key, value, displayName } = unpackFilterOption(option);
       return {
@@ -256,7 +256,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                         </Text>
                       }
                       bodyCopy={
-                        <Text variation="body-large">
+                        <Text variation="body-large" isHtml={true}>
                           {abstractText ? abstractText : description}
                         </Text>
                       }

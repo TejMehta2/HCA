@@ -32,37 +32,30 @@ Languages:
             <r
               uid="{27969B43-E1B5-428F-AC03-27C810BC824F}"
               p:after="r[@uid='{4F4CBE94-88D4-4A0A-80BF-BDEF89C194D7}']"
-              s:ds="{51BB46DF-CB43-4228-975E-F45FA647CD4B}"
+              s:ds="local:/Data/CTA Button 1"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2&amp;CacheClearingBehavior=Clear%20on%20publish"
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}"
               p:after="r[@uid='{27969B43-E1B5-428F-AC03-27C810BC824F}']"
-              s:ds="{0F2C6E0F-D4A1-4373-9956-80CA247DF3C3}"
+              s:ds="local:/Data/CTA Button 2"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B991E4A8A-314B-4B71-8165-390CE006AB19%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3&amp;CacheClearingBehavior=Clear%20on%20publish"
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{1802139F-4454-4465-AD44-0F08F645F571}"
               p:after="r[@uid='{B6A9FD18-6DB8-4FDE-97B1-782AF9CDC8C8}']"
-              s:ds="{7397515C-BCA6-49CD-BCAF-BCC64622C6DA}"
+              s:ds="local:/Data/CTA Button 3"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
-              s:ph="/headless-main/cta-buttons-1" />
-            <r
-              uid="{B7BAC6B7-D291-4816-A744-066DE2DCE272}"
-              p:after="r[@uid='{1802139F-4454-4465-AD44-0F08F645F571}']"
-              s:ds="local:/Data/Book an appointment"
-              s:id="{DA8BBECE-7AE8-4E3A-ACCD-511225BFB247}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4D3BD9AD-F895-4F4E-BC41-E5D3BA4F38A4%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B6F268521-B216-4A2C-ABC4-702B692C8D1E%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4&amp;CacheClearingBehavior=Clear%20on%20publish"
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{EFF3E93C-0B95-4337-9354-9526FE09333E}"
               p:after="*[1=2]"
               s:ds="local:/Data/CTA Block Component"
               s:id="{C81703EF-34C2-41A3-BC78-7258389E59D2}"
-              s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B08F75B35-E42A-453F-967E-205FDEDAA2CD%7D&amp;Styles&amp;Theme=A-HCA-Main-Turquoise&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:par="HeadingTag&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B08F75B35-E42A-453F-967E-205FDEDAA2CD%7D&amp;Styles&amp;Theme=D-HCA-Teal&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main"
               s:ccb="Clear on publish" />
           </d>
@@ -80,14 +73,14 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "47567530-88a1-4bde-ad95-8fda11af35a8"
+      Value: "86c1ce71-fb0f-427e-8c50-9d77f182fd39"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240527T205805Z
+      Value: 20240601T214635Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA18

@@ -44,7 +44,7 @@ const LocationCardsDefaultComponent = (
 };
 
 const returnCards = (props: LocationCardsProps, data: StaticProps) => {
-  let cards;
+  let cards = [];
   const linkText = props?.fields?.data?.item?.cTAText?.jsonValue;
   const getDirectionsText =
     props?.fields?.data?.item?.getDirectionsText?.jsonValue;
@@ -197,6 +197,11 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   }
 
   const locationsCards = data && returnCards(props, data);
+
+  if (!locationsCards?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
     props?.fields?.data?.item?.locations?.PagesList.length

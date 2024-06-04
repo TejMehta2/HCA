@@ -3,30 +3,17 @@
 
 .wrapper {
   background-color: var(--cqc-background);
-  color: var(--text);
   border-radius: $radius-small;
   padding: px-to-rem(16);
-  display: grid;
-  gap: px-to-rem(8) 0;
   position: relative;
-  border: 1px solid var(--cqc-outline);
-  grid-template: auto auto auto / 1fr max-content;
-  grid-template-areas:
-    'logo logo'
-    'title icon'
-    'text icon';
-
-  @include media(screen-m) {
-    width: fit-content;
-    grid-template: auto auto auto / minmax(auto, px-to-rem(235)) max-content;
-    grid-template-areas:
-      'logo logo'
-      'title icon'
-      'text icon';
-  }
 }
 
 .link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+
   a {
     position: absolute;
     height: 100%;
@@ -55,20 +42,16 @@
 }
 
 .title {
-  grid-area: title;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: px-to-rem(8);
 }
 
 .icon {
-  grid-area: icon;
   color: $teal-100;
   display: flex;
 }
 
 .logo {
-  grid-area: logo;
   display: flex;
 }
 
@@ -81,6 +64,10 @@
     .dark-logo {
       display: block;
     }
+
+    .wrapper {
+      color: $white;
+    }
   }
   @if $mode == dark {
     .light-logo {
@@ -90,11 +77,11 @@
     .dark-logo {
       display: none;
     }
-  }
-}
 
-.text {
-  grid-area: text;
+    .wrapper {
+      color: $navy-blue-80;
+    }
+  }
 }
 
 .rating {
@@ -142,24 +129,31 @@
 }
 
 .long {
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(8) px-to-rem(23);
   @include media(screen-m) {
-    grid-template: auto auto / min-content max-content;
-    grid-template-areas:
-      'logo title'
-      'logo text';
-    gap: 0;
-    align-items: center;
+    max-width: px-to-rem(490);
+  }
 
-    .title {
-      justify-content: unset;
-      gap: px-to-rem(8);
-    }
+  .title {
+    align-items: center;
   }
 }
 
-.rating,
-.long {
-  .logo {
-    padding: 0 px-to-rem(23) 0 0;
+.short {
+  .title {
+    justify-content: space-between;
+  }
+
+  &,
+  .content {
+    display: flex;
+    gap: px-to-rem(8) px-to-rem(23);
+    flex-direction: column;
+  }
+
+  @include media(screen-m) {
+    max-width: px-to-rem(314);
   }
 }
