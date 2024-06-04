@@ -47,12 +47,30 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
           }).then((res) => res.json())
       : () => ({ category: 'postcode', data: [] }),
     {
-      keepPreviousData: true, // Never show nothing
+      keepPreviousData: false,
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
     }
   );
+  const findAddressNoResults = findAddressData?.data?.[0]?.id === 'noresult';
 
   const [foundAddress, setFoundAddress] = useState<FindAddressData>();
+
+  const splitAddressFetcher = (url: string) => {
+    if (!foundAddress?.id) {
+      return new Promise((resolve) =>
+        resolve({
+          address1: '',
+          address2: '',
+          county: '',
+          postcode: '',
+          town: '',
+        })
+      );
+    }
+    return fetch(url, {
+      method: 'POST',
+    }).then((res) => res.json());
+  };
 
   // Split address
   const {
@@ -61,15 +79,13 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
     // isLoading: splitAddressIsloading,
   } = useSWR<SpiltAddressResponse>(
     `${splitAddressEndpoint}?monikerField=${foundAddress?.id}`,
-    (url: string) =>
-      fetch(url, {
-        method: 'POST',
-      }).then((res) => res.json()),
+    splitAddressFetcher,
     {
       keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window - important for google maps embeds
     }
   );
+
   return (
     <div className={styles.wrapper}>
       {step !== 'manual' && (
@@ -101,6 +117,55 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               <Text variation="body-medium-medium">{error}</Text>
             </div>
           )}
+
+          <div className={styles.results}>
+            {!findAddressIsLoading &&
+              !findAddressNoResults &&
+              !!findAddressData?.data?.length && (
+                <ul>
+                  {findAddressData?.data.map((result) => {
+                    return (
+                      <li key={result.id}>
+                        <button
+                          onClick={() => {
+                            setFoundAddress(result);
+                            setInput('');
+                            setStep('manual');
+                          }}
+                          type="button"
+                        >
+                          <Icons iconName="iconPin"></Icons>
+                          {result.address}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            {findAddressIsLoading && (
+              <ul>
+                <li>
+                  <div className={styles.loader}>
+                    <Loader theme="light" />
+                    <Text tag="p" variation="body-small">
+                      Loading...
+                    </Text>
+                  </div>
+                </li>
+              </ul>
+            )}
+            {(findAddressNoResults || findAddressError) && (
+              <ul>
+                <li>
+                  <div className={styles.loader}>
+                    <Text tag="p" variation="body-medium-small">
+                      No results found
+                    </Text>
+                  </div>
+                </li>
+              </ul>
+            )}
+          </div>
           <div className={styles['manual-button']}>
             <TextButton theme="dark">
               <button
@@ -113,57 +178,6 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
               </button>
             </TextButton>
           </div>
-
-          {!!findAddressData?.data?.length && (
-            <div className={styles.results}>
-              <ul>
-                {findAddressData?.data.map((result) => {
-                  return (
-                    <li key={result.id}>
-                      <button
-                        onClick={() => {
-                          setFoundAddress(result);
-                          setInput('');
-                          setStep('manual');
-                        }}
-                        type="button"
-                      >
-                        <Icons iconName="iconPin"></Icons>
-                        {result.address}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              {findAddressIsLoading && (
-                <ul>
-                  <li>
-                    <div className={styles.loader}>
-                      <Loader theme="light" />
-                      <Text tag="p" variation="body-small">
-                        Loading...
-                      </Text>
-                    </div>
-                  </li>
-                </ul>
-              )}
-            </div>
-          )}
-          {!!input?.length &&
-            (!findAddressData?.data?.length || findAddressError) && (
-              <div className={styles.results}>
-                <ul>
-                  <li>
-                    <div className={styles.loader}>
-                      <Text tag="p" variation="body-small">
-                        No results found
-                      </Text>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            )}
         </>
       )}
 

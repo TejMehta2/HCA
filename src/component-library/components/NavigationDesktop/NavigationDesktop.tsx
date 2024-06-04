@@ -101,7 +101,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   <AdvancedBlockHeader
                     paddingSize="none"
                     title={
-                      <Text tag="h3" variation={'display-4'}>
+                      <Text tag="p" variation={'display-4'}>
                         {heading}
                       </Text>
                     }
@@ -124,7 +124,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
               >
                 <CardNavigation
                   title={
-                    <Text tag="h3" variation={'heading-2'}>
+                    <Text tag="p" variation={'heading-2'}>
                       {heading}
                     </Text>
                   }
@@ -150,7 +150,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           >
             <CardNavigation
               title={
-                <Text tag="h3" variation={'heading-2'}>
+                <Text tag="p" variation={'heading-2'}>
                   {heading}
                 </Text>
               }

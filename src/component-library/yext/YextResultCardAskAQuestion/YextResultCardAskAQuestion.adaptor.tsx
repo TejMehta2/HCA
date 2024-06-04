@@ -55,7 +55,7 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
             const form = formRef.current;
             if (!form) return;
             if (loading) return;
-            setLoading;
+            setLoading(true);
             const { method, action } = form;
             const formData = new FormData(form);
             const response = await fetch(action, {

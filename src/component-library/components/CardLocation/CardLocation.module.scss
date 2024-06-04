@@ -15,6 +15,9 @@
     max-width: px-to-rem(300);
     min-height: px-to-rem(358);
   }
+  @include media(screen-xl) {
+    max-width: px-to-rem(330);
+  }
 }
 
 .header {

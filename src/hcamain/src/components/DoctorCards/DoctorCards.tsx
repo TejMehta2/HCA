@@ -88,6 +88,9 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     />
   );
 
+  if (!consultants?.length && !isExperienceEditor) {
+    return <></>;
+  }
   return (
     <CardDoctorLayout
       title={

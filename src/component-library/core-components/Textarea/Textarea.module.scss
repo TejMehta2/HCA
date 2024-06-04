@@ -78,7 +78,7 @@
     gap: $spacing-2;
   }
 
-  &:has(textarea:not(:focus):user-invalid) {
+  &:has(textarea:user-invalid) {
     color: var(--field-error-colour);
 
     .error-message {

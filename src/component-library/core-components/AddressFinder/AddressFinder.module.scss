@@ -21,12 +21,6 @@
     margin-top: $spacing-3;
   }
 
-  &:has(.results) {
-    .manual-button {
-      display: none;
-    }
-  }
-
   .search-wrapper {
     @extend %searchbar;
 
@@ -103,6 +97,10 @@
       }
     }
   }
+
+  &:empty {
+    display: none;
+  }
 }
 
 .selected-address {
@@ -122,7 +120,8 @@
 }
 
 .manual-fields {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: $spacing-5 0;
   color: var(--text);
 }

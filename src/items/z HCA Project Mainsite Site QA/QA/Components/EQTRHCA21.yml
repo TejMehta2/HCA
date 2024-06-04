@@ -86,13 +86,13 @@ Languages:
               s:ccb="Clear on publish" />
             <r
               uid="{4FE0F450-BA40-4E22-9069-1CA3760E93D1}"
-              s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
+              s:par="Columns=3&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
             <r
               uid="{536CDB04-0F5B-477A-97C4-41228A6C95FE}"
-              s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4" />
+              s:par="Columns=4&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B5158F259-35EA-4012-A531-98A55F9B52F1%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4" />
             <r
               uid="{D3810C51-196C-4BAB-BB9F-AE967FDD07A9}"
-              s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=F-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3" />
+              s:par="Columns=2&amp;HeadingTag&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BCEC0357E-2F49-4139-A541-5F1F9CAE9827%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -108,14 +108,14 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e0ecbbfa-00b1-4075-9dcb-9285d9c36662"
+      Value: "f6520bf5-e82d-46fa-b13e-7e4df3f7407c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240527T205756Z
+      Value: 20240601T223007Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA21

@@ -65,7 +65,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
-  let cardsList;
+  let cardsList: JSX.Element[] = [];
 
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
@@ -158,6 +158,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     );
   }
 
+  if (!cardsList?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
@@ -239,24 +243,24 @@ export const getStaticProps: GetStaticComponentProps = async (
       ])) ||
     [];
 
-  const contextSearchParams = customFilters.length
-    ? ''
-    : Object.entries(rendering.fields?.data?.contextItemSearchParams || {})
-        .filter(([, nestedValue]) => nestedValue.value !== '')
-        .map(([key, nestedValue]) => [
-          key,
-          nestedValue?.value &&
-            nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-        ]);
+  const contextSearchParams = Object.entries(
+    rendering.fields?.data?.contextItemSearchParams || {}
+  )
+    .filter(([, nestedValue]) => nestedValue.value !== '')
+    .map(([key, nestedValue]) => [
+      key,
+      nestedValue?.value &&
+        nestedValue?.value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+    ]);
 
-  const contextSearchIdParams = customFilters.length
-    ? ''
-    : Object.entries(rendering.fields?.data?.contextItemSearchIdParams || {})
-        .filter(([, value]) => value !== '')
-        .map(([key, value]) => [
-          key,
-          value.replaceAll(/[{},\-]/g, '').toLowerCase(),
-        ]); // clean up bad ID characters
+  const contextSearchIdParams = Object.entries(
+    rendering.fields?.data?.contextItemSearchIdParams || {}
+  )
+    .filter(([, value]) => value !== '')
+    .map(([key, value]) => [
+      key,
+      value.replaceAll(/[{},\-]/g, '').toLowerCase(),
+    ]); // clean up bad ID characters
 
   const params = [
     ['verticalKey', 'articles'],

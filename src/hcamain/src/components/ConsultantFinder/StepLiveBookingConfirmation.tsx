@@ -117,7 +117,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 window.dataLayer.push({
                 'event': 'consultantFinder',
                 'formType': 'live',
-                'goalType': 'formComplete',
+                'goalType': 'finderBookingSubmit',
                 'consultantName': '${consultantName}',
                 'consultantSpecialty': '${consultantMainSpecialty}',
                 'consultantReviews': '${reviewsTotal}',
