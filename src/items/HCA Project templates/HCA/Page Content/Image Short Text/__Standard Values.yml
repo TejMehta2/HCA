@@ -1,13 +1,18 @@
 ﻿---
-ID: "6af7bb98-2d16-4b5f-ab7f-06f4e8565e16"
-Parent: "7ff74119-335e-4011-91a2-c313a2ae4a2d"
-Template: "c71d8566-35c8-49b7-a84d-9d176e9cbd05"
-Path: "/sitecore/content/HCA/HCA-Main/Settings/Sitemap"
-BranchID: "adb13058-5c08-4827-8f30-a269342a2e9e"
+ID: "f5c43b84-b4e8-40ec-bc40-4afc5de68cff"
+Parent: "ca5950cb-fc53-4f90-8c56-df8224683e27"
+Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
+Path: /sitecore/templates/Project/HCA/Page Content/Image Short Text/__Standard Values
 SharedFields:
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{39E85A50-1AC7-4A65-A7F5-C726259BEC26}"
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {812F0F0D-0D34-4C27-8F0C-13AFC4147492}
+    {6D1ACE35-819D-4515-A86D-89AB96696F61}
+    {12CE8C87-4A69-4653-96E4-9AC4BFFDDD76}
+    {4D8873CB-38EF-40C2-939B-879D5E9699DE}
+    {25F98ECD-65A9-4E4D-80B5-D59F9A7C092D}
+    {932D4B95-EE85-466A-91E5-C8B0AF7639AD}
 Languages:
 - Language: en
   Versions:
@@ -15,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161627Z
+      Value: 20240604T093634Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -26,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1c0b7fd1-a53d-462c-9015-6e0d1b9c07fd"
+      Value: "34e1c021-b91f-4ac6-af57-4a3bae0ea9b4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161627Z
+      Value: 20240604T093755Z

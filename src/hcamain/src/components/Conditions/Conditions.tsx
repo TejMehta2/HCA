@@ -126,6 +126,10 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     cardData = cardData.concat(child.conditions?.ConditionList || []);
   });
 
+  if (!cardData?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
   const displayAllCards = item?.displayAllCards?.jsonValue?.value;
   const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;
   const limit = displayAllCards ? 999 : numberOfCards;

@@ -13,6 +13,9 @@ SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{F5C43B84-B4E8-40EC-BC40-4AFC5DE68CFF}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -60,14 +63,14 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "584deea0-dfb2-44e2-b33d-3e0d614ecaee"
+      Value: "6d516c4e-54d1-471e-af3c-0b4c31b5ad11"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231114T130634Z
+      Value: 20240604T093634Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

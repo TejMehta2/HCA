@@ -48,47 +48,7 @@
             "path": "/Presentation",
             "scope": "SingleItem",
             "allowedPushOperations": "CreateOnly"
-          },      
-          {
-            "path": "/Settings/Site Grouping",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateOnly"
-          },
-          {
-            "path": "/Settings/Custom Settings",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Settings/Navigation Settings",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Settings/Days of Week",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Settings/CQC Statuses",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Settings/DoctifyFilters",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateAndUpdate"
-          },
-          {
-            "path": "/Settings/Search",
-            "scope": "ItemAndDescendants",
-            "allowedPushOperations": "CreateUpdateAndDelete"
-          },
-          {
-            "path": "/Settings",
-            "scope": "ItemAndChildren",
-            "allowedPushOperations": "CreateOnly"
-          },
+          },          
           {
             "path": "/*",
             "scope": "Ignored"

@@ -65,7 +65,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <BlogRelatedArticlesDefaultComponent {...props} />;
   }
 
-  let cardsList;
+  let cardsList: JSX.Element[] = [];
 
   if (props.fields?.data?.item?.articles?.ArticlesList?.length) {
     cardsList = props.fields.data.item.articles.ArticlesList.map(
@@ -156,6 +156,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         </CardBlog>
       )
     );
+  }
+
+  if (!cardsList?.length && !isExperienceEditor) {
+    return <></>;
   }
 
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length

@@ -5,6 +5,7 @@ import {
   Text as JssText,
   RichText as JssRichText,
   Image as JssImage,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
 import Text from '@component-library/foundation/Text/Text';
@@ -36,9 +37,16 @@ const ContentCarouselDefaultComponent = (
 );
 
 export const Default = (props: ContentCarouselProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
     return <ContentCarouselDefaultComponent {...props} />;
   }
+
+  if (!props.fields?.Cards?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
   return (
     <>
       <CarouselContent

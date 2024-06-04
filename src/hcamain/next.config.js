@@ -240,7 +240,11 @@ const nextConfig = {
   transpilePackages: ['@hca/component-library/*'],
   swcMinify: false,
   images: {
-    domains: ['upload.wikimedia.org', 'a.mktgcdn.com'],
+    domains: [
+      'upload.wikimedia.org',
+      'a.mktgcdn.com',
+      'hcil-q-001.sitecorecontenthub.cloud',
+    ],
   },
 };
 
