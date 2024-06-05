@@ -12,6 +12,7 @@ const PostLDBMakeBooking = async (
     req.body?.isFollowOnAppointment?.toString() === 'true' ? true : false; // true if follow up false if initial
   const demographics = req.body?.demographics as ILDBDemographics; //demographics as ILDBDemographics, // demographics of the patient
   const reasonForAppointment = req.body?.reasonForAppointment as string; // free format reason for the appointment
+  const recaptcha = req.body?.recaptcha as string; // recaptcha result to server side verify
   const selectedSpeciality = req.body?.selectedSpeciality as string; // e.g. orthopaedics
   const ConsultantGUID = req.body?.ConsultantGUID as string; // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   const LocationGUID = req.body?.LocationGUID as string; // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
@@ -24,6 +25,7 @@ const PostLDBMakeBooking = async (
     isFollowOnAppointment,
     demographics,
     reasonForAppointment,
+    recaptcha,
     selectedSpeciality,
     ConsultantGUID,
     LocationGUID,
@@ -38,6 +40,7 @@ const PostLDBMakeBooking = async (
     isFollowOnAppointment != undefined &&
     demographics != undefined &&
     reasonForAppointment != undefined &&
+    recaptcha != undefined &&
     selectedSpeciality != undefined &&
     (ConsultantGUID != undefined || HCAConsultantId != undefined) &&
     (LocationGUID != undefined || FacilityId != undefined)
@@ -47,6 +50,7 @@ const PostLDBMakeBooking = async (
       isFollowOnAppointment,
       demographics,
       reasonForAppointment,
+      recaptcha,
       selectedSpeciality,
       ConsultantGUID,
       LocationGUID,

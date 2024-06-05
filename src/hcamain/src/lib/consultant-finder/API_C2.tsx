@@ -361,6 +361,7 @@ export async function LDBMakeBooking(
   isFollowOnAppointment: boolean, // true if follow up false if initial
   demographics: ILDBDemographics, // demographics of the patient
   reasonForAppointment: string, // free format reason for the appointment
+  recaptcha: string,
   selectedSpeciality: string, // e.g. "Orthopaedic Surgery" from the page
   ConsultantGUID?: string, // or HCAConsultantId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
   LocationGUID?: string, // or LocationId e.g. dc5e4e01-6f55-ee11-be6f-6045bdd2c129
@@ -369,74 +370,129 @@ export async function LDBMakeBooking(
   serviceURL?: string,
   headerKey?: string
 ): Promise<any> {
-  // preference is passed params, otherwise get from settings
-  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
-  const fragFollowOn = isFollowOnAppointment
-    ? `"initialappointment": null, "followonappointment": "yes"`
-    : `"initialappointment": "yes", "followonappointment": null`;
-  const fragConsultant = ConsultantGUID
-    ? `"ConsultantGUID": "${ConsultantGUID}"`
-    : `"HCAConsultantId": "${HCAConsultantId}"`;
-  const fragLocation = LocationGUID
-    ? `"LocationGUID": "${LocationGUID}"`
-    : `"FacilityId": "${FacilityId}"`;
-  const requestURL = `${
-    serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
-  }`;
-  const header = `${headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header}`;
-
   let returnData: string = '';
+  let okayToSend: boolean = true;
 
-  let demographicsString = JSON.stringify(demographics).substring(1);
-  demographicsString =
-    '{' + demographicsString.substring(0, demographicsString.length - 1) + '}';
-
-  const body = `{
-    ${fragConsultant},
-    ${fragLocation},
-    "dateFrom": "${dateFrom}",
-    ${fragFollowOn},
-    "patientCode": "${
-      demographics?.patientCode ? demographics?.patientCode : ''
-    }",
-    "demographics": ${demographicsString},
-    "visitReasonDetails": {
-        "selectedSpeciality": "${selectedSpeciality}",
-        "reasonForAppointment": "${reasonForAppointment}"
-    }
-  }`;
-
-  //console.log('booking json:', body);
-
+  // first, validate reCapture
   try {
-    const res = await fetch(requestURL, {
-      method: 'post',
-      body: body,
-      headers: {
-        'Content-Type': 'application/json',
-        securitytoken: `"${header}"`,
-      },
-      cache: 'no-cache',
-    });
-
-    if (res.ok) {
-      returnData = await res.json();
-    } else {
-      //C2 call failed
-      let errorDetails = '';
-      try {
-        errorDetails = await res.text();
-      } finally {
+    let captchaValidation = null;
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      // if the private key is set then validate server side
+      // Ping the google recaptcha verify API to verify the captcha code you received
+      //console.log(
+      //  'validate url',
+      //  `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`
+      //);
+      const response = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+          },
+          method: 'POST',
+        }
+      );
+      captchaValidation = await response.json();
+      /**
+     * The structure of response from the veirfy API is
+     * {
+     *  "success": true|false,
+     *  "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+     *  "hostname": string,         // the hostname of the site where the reCAPTCHA was solved
+     *  "error-codes": [...]        // optional
       }
-      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
-      console.warn(`LDBMakeBooking failed with error ${returnData}`);
-      returnData = JSON.parse(returnData);
+     */
+      if (!captchaValidation.success) {
+        okayToSend = false;
+      }
     }
-  } catch (e) {
-    //C2 call threw
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+
+    if (okayToSend) {
+      // preference is passed params, otherwise get from settings
+      const config = !serviceURL && !headerKey ? await GetC2Config() : null;
+      const fragFollowOn = isFollowOnAppointment
+        ? `"initialappointment": null, "followonappointment": "yes"`
+        : `"initialappointment": "yes", "followonappointment": null`;
+      const fragConsultant = ConsultantGUID
+        ? `"ConsultantGUID": "${ConsultantGUID}"`
+        : `"HCAConsultantId": "${HCAConsultantId}"`;
+      const fragLocation = LocationGUID
+        ? `"LocationGUID": "${LocationGUID}"`
+        : `"FacilityId": "${FacilityId}"`;
+      const requestURL = `${
+        serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
+      }`;
+      const header = `${
+        headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
+      }`;
+
+      let demographicsString = JSON.stringify(demographics).substring(1);
+      demographicsString =
+        '{' +
+        demographicsString.substring(0, demographicsString.length - 1) +
+        '}';
+
+      const body = `{
+        ${fragConsultant},
+        ${fragLocation},
+        "dateFrom": "${dateFrom}",
+        ${fragFollowOn},
+        "patientCode": "${
+          demographics?.patientCode ? demographics?.patientCode : ''
+        }",
+        "demographics": ${demographicsString},
+        "visitReasonDetails": {
+            "selectedSpeciality": "${selectedSpeciality}",
+            "reasonForAppointment": "${reasonForAppointment}"
+        }
+      }`;
+      //console.log('booking json:', body);
+      try {
+        const res = await fetch(requestURL, {
+          method: 'post',
+          body: body,
+          headers: {
+            'Content-Type': 'application/json',
+            securitytoken: `"${header}"`,
+          },
+          cache: 'no-cache',
+        });
+
+        if (res.ok) {
+          returnData = await res.json();
+        } else {
+          //C2 call failed
+          let errorDetails = '';
+          try {
+            errorDetails = await res.text();
+          } finally {
+          }
+          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          console.warn(`LDBMakeBooking failed with error ${returnData}`);
+          returnData = JSON.parse(returnData);
+        }
+      } catch (e) {
+        //C2 call threw
+        returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`LDBMakeBooking failed with exception ${e}`);
+      }
+    } else {
+      //recaptcha invalid
+      returnData = `{"errorCode": 997, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+      returnData = JSON.parse(returnData);
+      console.error(
+        `LDBMakeBooking failed with recaptcha error ${JSON.stringify(
+          captchaValidation
+        )}`
+      );
+    }
+  } catch (error) {
+    //recaptcha invalid exception error
+    returnData = `{"errorCode": 998, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
     returnData = JSON.parse(returnData);
-    console.error(`LDBMakeBooking failed with exception ${e}`);
+    console.error(`LDBMakeBooking failed with recaptcha exception ${error}`);
+    console.log(error);
   }
 
   return returnData;
