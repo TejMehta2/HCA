@@ -245,6 +245,7 @@ const nextConfig = {
       'a.mktgcdn.com',
       'hcil-q-001.sitecorecontenthub.cloud',
       'hcil-p-001.sitecorecontenthub.cloud',
+      'edge.sitecorecloud.io',
     ],
   },
 };
