@@ -48,7 +48,14 @@ export async function GetC2Config(): Promise<Ic2Config> {
 const _GetC2Config = unstable_cache(
   async (): Promise<Ic2Config> => {
     console.log('refreshing _getC2Config from source..');
-    return await _getC2Config();
+    const ret = await _getC2Config();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_C2_GetConsultantSlots_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetC2Config`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -61,7 +68,14 @@ const _GetC2Config = unstable_cache(
 const _GetNCC2Config = unstable_cache(
   async (): Promise<Ic2Config> => {
     console.log('refreshing _getC2Config from source..');
-    return await _getC2Config();
+    const ret = await _getC2Config();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_C2_GetConsultantSlots_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetNCC2Config`
+      );
+    }
+    return ret;
   },
   undefined,
   {
