@@ -56,6 +56,7 @@ import axios, { CancelTokenSource } from 'axios';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Script from 'next/script';
+import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -313,7 +314,7 @@ export const Default = (props: StepProps): JSX.Element => {
     props?.fields?.ProfileImagePlaceholderImage?.value.src ||
     null;
 
-  const canonicalURL = `https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${serverSideData?.ProfileJson?.slug}`;
+  const canonicalURL = `${FINDER_PROFILE_CANONICAL_BASE_URL}/${serverSideData?.ProfileJson?.slug}`;
 
   const description = serverSideData?.ProfileJson?.about
     ?.substring(0, serverSideData?.ProfileJson?.about?.indexOf('.'))
