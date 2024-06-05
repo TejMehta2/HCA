@@ -14,8 +14,8 @@ byoc-sitecore-form,
 [data-byoc-sitecore-form] {
   background: var(--background);
   color: var(--text);
-  margin-top: $spacing-13;
-  margin-bottom: $spacing-13;
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-8;
 
   @include responsive-grid;
   @include responsive-container;
@@ -28,6 +28,10 @@ byoc-sitecore-form,
   }
 
   .component:not(:first-of-type, .button-component) {
+    margin-top: $spacing-5;
+  }
+
+  .landing-page-row:not(:first-of-type) {
     margin-top: $spacing-5;
   }
 
