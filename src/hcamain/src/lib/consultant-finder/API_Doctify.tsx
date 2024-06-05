@@ -183,7 +183,14 @@ export async function getFacilitiesData(): Promise<any> {
 const _getFacilitiesData = unstable_cache(
   async (): Promise<any> => {
     console.log('refreshing _getFacilitiesData from source..');
-    return await __getFacilitiesData();
+    const ret = await __getFacilitiesData();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getFacilitiesData`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -195,7 +202,14 @@ const _getFacilitiesData = unstable_cache(
 const _getNCFacilitiesData = unstable_cache(
   async (): Promise<any> => {
     console.log('refreshing _getFacilitiesData from source..');
-    return await __getFacilitiesData();
+    const ret = await __getFacilitiesData();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getNCFacilitiesData`
+      );
+    }
+    return ret;
   },
   undefined,
   {

@@ -48,7 +48,14 @@ export async function GetDoctifyConfig(): Promise<IDoctifyConfig> {
 const _GetDoctifyConfig = unstable_cache(
   async (): Promise<IDoctifyConfig> => {
     console.log('refreshing _getDoctifyConfig from source..');
-    return await _getDoctifyConfig();
+    const ret = await _getDoctifyConfig();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_DoctifySearch_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetDoctifyConfig`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -60,7 +67,14 @@ const _GetDoctifyConfig = unstable_cache(
 const _GetNCDoctifyConfig = unstable_cache(
   async (): Promise<IDoctifyConfig> => {
     console.log('refreshing _getDoctifyConfig from source..');
-    return await _getDoctifyConfig();
+    const ret = await _getDoctifyConfig();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_DoctifySearch_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetNCDoctifyConfig`
+      );
+    }
+    return ret;
   },
   undefined,
   {

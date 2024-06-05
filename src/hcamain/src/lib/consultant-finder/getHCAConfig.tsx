@@ -88,7 +88,14 @@ export async function GetHCAConfig(): Promise<IHCAConfig> {
 const _GetHCAConfig = unstable_cache(
   async (): Promise<IHCAConfig> => {
     console.log('refreshing _getHCAConfig from source..');
-    return await _getHCAConfig();
+    const ret = await _getHCAConfig();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_HCA_All_Consultants_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetHCAConfig`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -101,7 +108,14 @@ const _GetHCAConfig = unstable_cache(
 const _GetNCHCAConfig = unstable_cache(
   async (): Promise<IHCAConfig> => {
     console.log('refreshing _getHCAConfig from source..');
-    return await _getHCAConfig();
+    const ret = await _getHCAConfig();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.aPI_HCA_All_Consultants_BaseURL?.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _GetNCHCAConfig`
+      );
+    }
+    return ret;
   },
   undefined,
   {

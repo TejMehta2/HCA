@@ -44,16 +44,20 @@ export async function getItemFromGraphQL(
     }
     `;
 
-    //console.log("GQLQuery: ", GQLQuery);
+    //console.log('GQLQuery: ', GQLQuery);
     const GQLResult = await graphQLClient.request<any>(GQLQuery);
-    //console.log("GraphQL itemToFetch result:", JSON.stringify(itemToFetch));
+    //console.log('GraphQL itemToFetch result:', JSON.stringify(itemToFetch));
     //map the result back to the requesting object
     if (GQLResult) {
       Object.keys(itemToFetch).forEach(
         (key) => (itemToFetch[key] = GQLResult.item[key].value)
       );
     }
+    //console.log('GraphQL itemToFetch result:', JSON.stringify(GQLResult));
   } catch (e) {
+    console.log(
+      `Could not getItemFromGraphQL itemId:${itemId} templateName:${templateName} - failed with exception ${e}`
+    );
     console.error(
       `Could not getItemFromGraphQL itemId:${itemId} templateName:${templateName} - failed with exception ${e}`
     );

@@ -12,7 +12,7 @@ import { EditingDataMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/editing
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '5mb',
+      sizeLimit: '10mb',
     },
     responseLimit: false,
   },
