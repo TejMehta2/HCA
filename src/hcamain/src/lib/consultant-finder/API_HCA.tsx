@@ -28,7 +28,14 @@ export async function getActiveConsultantSlugs(): Promise<string[]> {
 const _getActiveConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getActiveConsultantSlugs from source..');
-    return await __getActiveConsultantSlugs();
+    const ret = await __getActiveConsultantSlugs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getActiveConsultantSlugs`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -43,7 +50,14 @@ const _getActiveConsultantSlugs = unstable_cache(
 const _getNCActiveConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getActiveConsultantSlugs from source..');
-    return await __getActiveConsultantSlugs();
+    const ret = await __getActiveConsultantSlugs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getNCActiveConsultantSlugs`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -133,7 +147,14 @@ export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
 const _getActiveLiveDiaryConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
-    return await __getActiveLiveDiaryConsultantSlugs();
+    const ret = await __getActiveLiveDiaryConsultantSlugs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getActiveLiveDiaryConsultantSlugs`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -144,8 +165,14 @@ const _getActiveLiveDiaryConsultantSlugs = unstable_cache(
 
 const _getNCActiveLiveDiaryConsultantSlugs = unstable_cache(
   async (): Promise<string[]> => {
-    console.log('refreshing _getActiveLiveDiaryConsultantSlugs from source..');
-    return await __getActiveLiveDiaryConsultantSlugs();
+    const ret = await __getActiveLiveDiaryConsultantSlugs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getNCActiveLiveDiaryConsultantSlugs`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -245,7 +272,14 @@ export async function getHolidays(): Promise<string[]> {
 const _getHolidays = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getHolidays from source..');
-    return await __getHolidays();
+    const ret = await __getHolidays();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getHolidays`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -257,7 +291,14 @@ const _getHolidays = unstable_cache(
 const _getNCHolidays = unstable_cache(
   async (): Promise<string[]> => {
     console.log('refreshing _getHolidays from source..');
-    return await __getHolidays();
+    const ret = await __getHolidays();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getNCHolidays`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -329,7 +370,14 @@ export async function getCMAs(): Promise<any[]> {
 const _getCMAs = unstable_cache(
   async (): Promise<any[]> => {
     console.log('refreshing _getCMAs from source..');
-    return await __getCMAs();
+    const ret = await __getCMAs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getCMAs`
+      );
+    }
+    return ret;
   },
   undefined,
   {
@@ -343,7 +391,14 @@ const _getCMAs = unstable_cache(
 const _getNCCMAs = unstable_cache(
   async (): Promise<any[]> => {
     console.log('refreshing _getCMAs from source..');
-    return await __getCMAs();
+    const ret = await __getCMAs();
+    // test possible return and throw to avoid caching bad results!
+    if (ret.length == 0) {
+      throw new Error(
+        `Error attempting to cache data, zero records or invalid data in _getNCCMAs`
+      );
+    }
+    return ret;
   },
   undefined,
   {

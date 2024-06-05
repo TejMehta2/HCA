@@ -10,16 +10,26 @@ import { GetDoctifyConfig } from 'lib/consultant-finder/getDoctifyConfig';
 import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
-//import { revalidateTag } from 'next/cache';
+import { IKeyProtection } from './IKeyProtection';
 
 // we don't want to cache the reset function
 export const dynamic = 'force-dynamic';
 
 // admin function to purge the data cache
 const Reset = async (
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
+  const protectionParams: IKeyProtection | unknown = req.query;
+  if (
+    (protectionParams as IKeyProtection).key !=
+    process.env.ADMIN_PROTECTION_KEY!
+  ) {
+    console.warn(
+      'error, CF admin - Reset called with incorrect or missing admin key'
+    );
+    return res.status(500).send('error missing or invalid admin protection');
+  }
   // first set the flag
   revalidate.setRevalidateNow(true);
   console.log('revalidate flag: ' + revalidate.now());
