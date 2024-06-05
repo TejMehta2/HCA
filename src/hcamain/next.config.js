@@ -244,6 +244,7 @@ const nextConfig = {
       'upload.wikimedia.org',
       'a.mktgcdn.com',
       'hcil-q-001.sitecorecontenthub.cloud',
+      'hcil-p-001.sitecorecontenthub.cloud',
     ],
   },
 };
