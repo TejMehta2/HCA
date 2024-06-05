@@ -134,6 +134,7 @@ byoc-sitecore-form,
   .multiselect_input-component {
     label {
       position: relative;
+      display: grid; // Needed to prevent children collapsing to 0px on Safari.
     }
 
     .lp-flex-1 {
