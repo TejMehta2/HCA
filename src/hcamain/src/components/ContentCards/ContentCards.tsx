@@ -4,7 +4,6 @@ import {
   ImageField,
   RichText as JssRichText,
   Text as JssText,
-  Image as JssImage,
   Link as JssLink,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -16,6 +15,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Image from 'next/image';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -140,12 +140,21 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 card.abstractImage?.jsonValue.value?.src &&
                 card.abstractImage?.jsonValue.value?.class !==
                   'scEmptyImage' ? (
-                  <JssImage
-                    field={card.abstractImage.jsonValue}
-                    editable={false}
+                  <Image
+                    src={card.abstractImage.jsonValue?.value?.src || ''}
+                    alt={
+                      (card.abstractImage.jsonValue?.value?.alt as string) || ''
+                    }
+                    width="363"
+                    height="243"
                   />
                 ) : (
-                  <JssImage field={card.image?.jsonValue} editable={false} />
+                  <Image
+                    src={card.image?.jsonValue?.value?.src || ''}
+                    alt={(card.image?.jsonValue?.value?.alt as string) || ''}
+                    width="363"
+                    height="243"
+                  />
                 )
               ) : undefined
             }

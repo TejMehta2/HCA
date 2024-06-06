@@ -18,12 +18,13 @@ body {
   transition: opacity;
   transition-delay: 0.3s;
   background: transparent;
-  z-index: 2;
+  z-index: -999; // Needed to prevent Safari from randomly tabbing to this dialog in forms
 
   &[open] {
     opacity: 1;
     pointer-events: all;
     transition-delay: 0s;
+    z-index: 2;
   }
 
   width: 100%;

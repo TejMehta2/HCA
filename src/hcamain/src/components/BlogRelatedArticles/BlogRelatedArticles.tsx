@@ -4,7 +4,6 @@ import {
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  Image as JssImage,
   useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -23,6 +22,7 @@ import {
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -78,12 +78,25 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         return (
           <CardBlog key={index}>
             {card.abstractImage?.jsonValue?.value?.src ? (
-              <JssImage
-                field={card.abstractImage?.jsonValue}
+              <NextJssImage
+                field={card.abstractImage?.jsonValue.value}
                 editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
               />
             ) : (
-              <JssImage field={card.image?.jsonValue} editable={false} />
+              <NextJssImage
+                field={card.image?.jsonValue?.value}
+                editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
+              />
             )}
 
             <JssDate field={card.date?.jsonValue} editable={false} />

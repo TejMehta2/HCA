@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Text as JssText,
-  Image as JssImage,
   RichText as JssRichText,
   Link as JssLink,
   useSitecoreContext,
@@ -21,6 +20,7 @@ import CarouselCards from '@component-library/site-components/CarouselCards/Caro
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -85,9 +85,25 @@ const returnCards = (
           }
           image={
             abstractImage?.jsonValue?.value?.src ? (
-              <JssImage field={abstractImage?.jsonValue} editable={false} />
+              <NextJssImage
+                field={abstractImage.jsonValue.value}
+                editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
+              />
             ) : (
-              <JssImage field={image?.jsonValue} editable={false} />
+              <NextJssImage
+                field={image?.jsonValue?.value}
+                editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
+              />
             )
           }
           link={

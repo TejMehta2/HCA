@@ -453,6 +453,7 @@ export const Default = (props: StepProps): JSX.Element => {
       FacilityId: locationID,
       selectedSpeciality: consultantMainSpecialty,
       reasonForAppointment: data.reasonForAppointment,
+      recaptcha: data.recaptcha,
       demographics: {
         previouslyBeenWithHCA:
           data.previouslyBeenWithHCA === 'Yes' ? true : false,
@@ -493,6 +494,7 @@ export const Default = (props: StepProps): JSX.Element => {
     // console.log('form data', JSON.stringify(dataToPost, null, 2));
 
     const dataToSent: any = JSON.stringify(dataToPost);
+    //console.log('form data', dataToSent);
 
     const config = {
       method: 'post',

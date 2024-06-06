@@ -17,6 +17,8 @@ import {
 } from './response.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
+import Image from 'next/image';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
 
@@ -112,8 +114,8 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
             <CardDoctor
               key={index}
               image={
-                <img
-                  src={consultant?.images?.logo}
+                <Image
+                  src={consultant?.images?.logo || ''}
                   alt={`${consultant.title} ${consultant.firstName} ${consultant.lastName}`}
                   width="91"
                   height="91"
@@ -135,7 +137,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
                 props.fields?.data?.item?.cTACard?.jsonValue?.value && (
                   <JssLink
                     field={props.fields?.data?.item?.cTACard?.jsonValue}
-                    href={`https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${consultant.slug}`}
+                    href={`${FINDER_PROFILE_CANONICAL_BASE_URL}/${consultant.slug}`}
                   >
                     {!isExperienceEditor && (
                       <SitecoreSvg>

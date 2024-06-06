@@ -3,8 +3,7 @@ import {
   Field,
   Text as JssText,
   RichText as JssRichText,
-  Image as JssImage,
-  ImageFieldValue,
+  ImageField,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -13,12 +12,13 @@ import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBl
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import RichText from '@component-library/core-components/RichText/RichText';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
   Text?: Field<string>;
-  Image?: ImageFieldValue;
+  Image?: ImageField;
 }
 
 type FixedPricePackageProps = {
@@ -66,7 +66,16 @@ const IntegratedFixedPricedPackage = (
             <JssText field={props.fields?.Title} />
           </Text>
         }
-        image={<JssImage field={props.fields?.Image} />}
+        image={
+          <NextJssImage
+            field={props.fields?.Image?.value}
+            next={{
+              width: 1000,
+              height: 1000,
+              sizes: '(max-width: 768px) 100vw, 50vw',
+            }}
+          />
+        }
         ctas={
           props.rendering && (
             <PlaceHolderWrapper>

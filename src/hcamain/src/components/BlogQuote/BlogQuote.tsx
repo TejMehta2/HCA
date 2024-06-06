@@ -11,6 +11,7 @@ import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface AuthorFields {
   fields?: {
@@ -59,7 +60,13 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
           ? {
               name: <JssText field={props.fields?.Author?.[0]?.fields?.Name} />,
               image: (
-                <Image field={props.fields?.Author?.[0]?.fields?.Avatar} />
+                <NextJssImage
+                  field={props.fields?.Author?.[0]?.fields?.Avatar?.value}
+                  next={{
+                    width: '70',
+                    height: '70',
+                  }}
+                />
               ),
               tag: (
                 <span>

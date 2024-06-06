@@ -241,6 +241,8 @@ const nextConfig = {
       'hcil-q-001.sitecorecontenthub.cloud',
       'hcil-p-001.sitecorecontenthub.cloud',
       'edge.sitecorecloud.io',
+      'www.doctify.com',
+      'doctify.com',
     ],
   },
 };

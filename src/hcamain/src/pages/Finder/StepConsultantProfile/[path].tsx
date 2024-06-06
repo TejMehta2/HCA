@@ -25,6 +25,7 @@ import { GetHCAConfig } from 'lib/consultant-finder/getHCAConfig';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
 import useRouteChange from '@component-library/hooks/useRouteChange';
+import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
 
 const SitecorePage = ({
   notFound,
@@ -135,7 +136,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
     //console.log('StepConsultantProfile path:', context?.params?.path);
     context.params.requestPath = context.params.path;
-    context.params.path = [`Finder/StepConsultantProfile/,-w-,`];
+    context.params.path = [`${FINDER_PROFILE_ROOT_PATH}/,-w-,`];
   }
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {
