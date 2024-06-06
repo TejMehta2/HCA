@@ -95,6 +95,7 @@ interface Fields {
   API_HCA_EnquireBookingForm_LoadingMsg: Field<string>;
   EnquireFormMarketingPreferencesText: Field<string>;
   EnquireFormBtnsClear: Field<string>;
+  BreadcrumbHomePage: LinkField;
 }
 
 type StepProps = {
@@ -348,7 +349,10 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: '/Finder/Step-Intro',
+                link: `${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                  '/Finder/Step-Intro'
+                }`,
               }}
             >
               <TextLink>
@@ -360,7 +364,14 @@ export const Default = (props: StepProps): JSX.Element => {
                 </a>
               </TextLink>
               <TextLink>
-                <Link href="/Finder/Step-Intro">{'Consultant Finder'}</Link>
+                <Link
+                  href={`${
+                    props?.fields?.BreadcrumbHomePage?.value?.href ||
+                    '/Finder/Step-Intro'
+                  }`}
+                >
+                  {'Consultant Finder'}
+                </Link>
               </TextLink>
               <TextLink>
                 <Link

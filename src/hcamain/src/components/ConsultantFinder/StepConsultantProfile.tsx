@@ -112,6 +112,7 @@ interface Fields {
   ExperienceText: Field<string>;
   EnquireNowButtonLink: LinkField;
   ResultsLink: LinkField;
+  BreadcrumbHomePage: LinkField;
 }
 interface ServerSideProps {
   Slug: string;
@@ -395,7 +396,10 @@ export const Default = (props: StepProps): JSX.Element => {
               <Breadcrumbs
                 backCta={{
                   text: 'Consultant Finder',
-                  link: '/Finder/Step-Intro',
+                  link: `${
+                    props?.fields?.BreadcrumbHomePage?.value?.href ||
+                    '/Finder/Step-Intro'
+                  }`,
                 }}
               >
                 <TextLink>
@@ -405,7 +409,12 @@ export const Default = (props: StepProps): JSX.Element => {
                   </a>
                 </TextLink>
                 <TextLink>
-                  <Link href="/Finder/Step-Intro">
+                  <Link
+                    href={`${
+                      props?.fields?.BreadcrumbHomePage?.value?.href ||
+                      '/Finder/Step-Intro'
+                    }`}
+                  >
                     {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
                   </Link>
                 </TextLink>
