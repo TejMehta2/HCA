@@ -4,7 +4,7 @@ import styles from './Modals.module.scss';
 import SvgHandle from './assets/Handle.svg';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Icons from '../../foundation/Icons/Icons';
-import isIosDevice from '../../utility-functions/isIosDevice';
+import isAndroidDevice from '../../utility-functions/isAndroidDevice';
 import { useI18n } from 'next-localization';
 
 // A toggle-able React Modal using the native HTML5 dialog element
@@ -102,7 +102,7 @@ const Modals = (
     onTouchEnd: touchEndHandler,
   };
 
-  const spreadProps = isIosDevice() ? {} : touchHandlers;
+  const spreadProps = isAndroidDevice() ? touchHandlers : {};
 
   return (
     <dialog
