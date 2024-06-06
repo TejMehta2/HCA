@@ -1,3 +1,4 @@
+import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import { getActiveConsultantSlugs } from 'lib/consultant-finder/API_HCA';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -23,7 +24,7 @@ const GetFinderSitemap = async (
   slugs.map((slug) => {
     ret += `
     <url>
-        <loc>https://www.hcahealthcare.co.uk/Finder/StepConsultantProfile/${slug}</loc>
+        <loc>${FINDER_PROFILE_CANONICAL_BASE_URL}/${slug}</loc>
     </url>`;
   });
   ret += `
