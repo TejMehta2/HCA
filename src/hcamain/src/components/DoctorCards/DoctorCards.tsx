@@ -180,7 +180,7 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const serviceList =
     fields?.service?.ServicesList.map((item) => [
-      'practice',
+      'service',
       item.doctifyKeywordId?.value,
     ]) || [];
 
@@ -197,8 +197,12 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   // Three cases to decide how to apply params to API call and "view all" CTA
   const hasConsultants = !!consultants?.length; // use the '/find' API with consultant slugs, only add customFilters to the CTA
-  const hasPracticeAndService = practiceList.length || serviceList.length; // add practiceList and/ore serviceList and customFilters to the API and to CTA
+  const hasPracticeAndService = !!(practiceList.length || serviceList.length); // add practiceList and/ore serviceList and customFilters to the API and to CTA
   // Else use contextSearchIdParams and contextSearchParams, customFilters for the API and CTA
+
+  const hasContextSearchParams =
+    contextSearchParams.filter((item) => item[1]?.length).length > 0;
+
   try {
     if (hasConsultants) {
       const params = consultants.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
@@ -229,15 +233,21 @@ export const getStaticProps: GetStaticComponentProps = async (
         };
       }
     } else {
+      if (!hasPracticeAndService && !hasContextSearchParams) {
+        return {
+          consultants: [],
+        };
+      }
+
       const paramSource = hasPracticeAndService
         ? [...practiceList, ...serviceList]
         : [...contextSearchParams, ...contextSearchIdParams];
+
       const params = [...customFilters, ...paramSource].map(
         (entry) => `${entry[0]}=${entry[1]}`
       );
       const query = `?${params.join('&')}`;
       const url = new URL(query, `${SERVER_API_URL}/search`);
-
       const response = await fetch(url.href);
       if (response.ok) {
         const data: SearchResponse = await response.json();
