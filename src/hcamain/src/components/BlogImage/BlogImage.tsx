@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   ImageField,
-  Image,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   Image?: ImageField;
@@ -57,7 +57,15 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         imageKeepAspectRatio={keepAspectRatio}
       >
         <figure>
-          <Image field={image} />
+          <NextJssImage
+            field={image?.value}
+            editable={false}
+            next={{
+              width: 2000,
+              height: 3000,
+              sizes: '(max-width: 768px) 100vw, 90vw',
+            }}
+          />
         </figure>
       </RichText>
     );
@@ -71,7 +79,15 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         imageKeepAspectRatio={keepAspectRatio}
       >
         <figure>
-          <Image field={image} />
+          <NextJssImage
+            field={image?.value}
+            editable={false}
+            next={{
+              width: 2000,
+              height: 3000,
+              sizes: '(max-width: 768px) 100vw, 90vw',
+            }}
+          />
         </figure>
       </BlogContent>
     </>

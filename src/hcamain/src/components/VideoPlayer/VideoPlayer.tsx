@@ -1,9 +1,8 @@
 import React from 'react';
 import {
   Field,
-  ImageFieldValue,
+  ImageField,
   Text as JssText,
-  Image as JssImage,
   Placeholder,
   ComponentRendering,
   useSitecoreContext,
@@ -14,6 +13,7 @@ import VideoPlayer from '@component-library/components/VideoPlayer/VideoPlayer';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type VideoProvidersFields = {
   name?: string;
@@ -25,7 +25,7 @@ interface Fields {
   Text?: Field<string>;
   Platform?: VideoProvidersFields;
   VideoUrl?: Field<string>;
-  VideoThumbnail?: ImageFieldValue;
+  VideoThumbnail?: ImageField;
 }
 
 type VideoPlayerProps = {
@@ -97,7 +97,16 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
         props.fields?.VideoUrl?.value ? (
           <VideoPlayer
             videoUrl={props.fields?.VideoUrl.value}
-            overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+            overlayImage={
+              <NextJssImage
+                field={props.fields?.VideoThumbnail?.value}
+                next={{
+                  width: 2000,
+                  height: 2000,
+                  sizes: '(max-width: 768px) 100vw, 90vw',
+                }}
+              />
+            }
           />
         ) : (
           <></>
@@ -117,7 +126,16 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
       {props.fields?.VideoUrl?.value ? (
         <VideoPlayer
           videoUrl={props.fields?.VideoUrl?.value}
-          overlayImage={<JssImage field={props.fields?.VideoThumbnail} />}
+          overlayImage={
+            <NextJssImage
+              field={props.fields?.VideoThumbnail?.value}
+              next={{
+                width: 2000,
+                height: 2000,
+                sizes: '(max-width: 768px) 100vw, 90vw',
+              }}
+            />
+          }
         />
       ) : (
         <></>

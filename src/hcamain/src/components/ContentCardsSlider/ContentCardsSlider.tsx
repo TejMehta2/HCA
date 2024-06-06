@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image as JssImage,
   Text as JssText,
   Field,
   Link as JssLink,
@@ -15,6 +14,7 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -131,12 +131,25 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             showImage ? (
               cards.abstractImage?.jsonValue.value?.src &&
               cards.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
-                <JssImage
-                  field={cards.abstractImage.jsonValue}
+                <NextJssImage
+                  field={cards.abstractImage.jsonValue.value}
                   editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
                 />
               ) : (
-                <JssImage field={cards.image?.jsonValue} editable={false} />
+                <NextJssImage
+                  field={cards.image?.jsonValue.value}
+                  editable={false}
+                  next={{
+                    width: 500,
+                    height: 400,
+                    sizes: '(max-width: 768px) 100vw, 30vw',
+                  }}
+                />
               )
             ) : undefined
           }

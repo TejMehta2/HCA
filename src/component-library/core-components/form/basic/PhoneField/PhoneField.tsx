@@ -1,4 +1,4 @@
-import React, { FormEvent, useId, useState } from 'react';
+import React, { useId, useState } from 'react';
 import { PhoneFieldProps } from './PhoneField.types';
 import styles from './PhoneField.module.scss';
 import 'intl-tel-input/build/css/intlTelInput.css';
@@ -16,21 +16,21 @@ const PhoneField = (props: PhoneFieldProps): JSX.Element => {
       {label && <label htmlFor={inputId}>{label}</label>}
       <IntlTelInput
         inputProps={{
-          name,
-          defaultValue: value,
+          value: value,
           id: inputId,
           className: styles.input,
-          onBlur: (event: FormEvent<HTMLInputElement>) => {
-            const target = event.target as HTMLInputElement;
-            setValue(target.value?.replace(' ', '') || '');
-          },
         }}
+        onChangeNumber={setValue}
         initOptions={{
-          nationalMode: false,
+          hiddenInput: () => ({
+            phone: 'telephone',
+          }),
+          nationalMode: true,
           initialCountry: 'gb',
-          utilsScript:
-            'https://cdn.jsdelivr.net/npm/intl-tel-input@21.0.0/build/js/utils.js',
+          countryOrder: ['gb'],
           validationNumberType: null,
+          utilsScript:
+            'https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/js/utils.js',
         }}
       />
 

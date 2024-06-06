@@ -2,22 +2,22 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Image as JssImage,
   RichText,
-  ImageFieldValue,
   Placeholder,
   ComponentRendering,
   useSitecoreContext,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   Heading?: Field<string>;
   Title?: Field<string>;
-  Image?: ImageFieldValue;
+  Image?: ImageField;
   PriceFrom?: Field<string>;
   Text?: Field<string>;
   ConsultantFee?: Field<string>;
@@ -64,7 +64,16 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
       length="long"
       imageAlignment="left"
       contentVariation="pricing"
-      image={<JssImage field={props.fields?.Image} />}
+      image={
+        <NextJssImage
+          field={props.fields?.Image?.value}
+          next={{
+            width: 1000,
+            height: 1000,
+            sizes: '(max-width: 768px) 100vw, 50vw',
+          }}
+        />
+      }
       subheader={
         <Text variation="subheading-1">
           <JssText field={props.fields?.Heading} />

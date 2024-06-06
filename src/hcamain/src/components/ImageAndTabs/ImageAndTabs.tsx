@@ -4,13 +4,13 @@ import {
   Item,
   Text as JssText,
   RichText as JssRichText,
-  Image as JssImage,
-  ImageFieldValue,
+  ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import TabsBlock from '@component-library/site-components/TabsBlock/TabsBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type HCAIconFields = {
   fields?: {
@@ -24,7 +24,7 @@ type TabsFields = Item & {
     TabTitle?: Field<string>;
     Text?: Field<string>;
     Title?: Field<string>;
-    Image?: ImageFieldValue;
+    Image?: ImageField;
   };
 };
 
@@ -76,7 +76,17 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
           ),
           label: tab?.fields?.TabTitle?.value,
         },
-        image: <JssImage field={tab?.fields?.Image} />,
+        image: (
+          <NextJssImage
+            field={tab?.fields?.Image?.value}
+            editable={false}
+            next={{
+              width: 1000,
+              height: 800,
+              sizes: '(max-width: 768px) 100vw, 50vw',
+            }}
+          />
+        ),
         title: (
           <Text
             tag={getSubheadingTag(props.params?.HeadingTag, 'p')}

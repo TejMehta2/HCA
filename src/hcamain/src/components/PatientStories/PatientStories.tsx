@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image as JssImage,
   Link as JssLink,
   Field,
   Text as JssText,
@@ -15,6 +14,7 @@ import Text from '@component-library/foundation/Text/Text';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -143,7 +143,17 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
               <RichText tag="span" field={story.text} />
             </Text>
           }
-          image={<JssImage field={story?.image?.jsonValue} />}
+          image={
+            <NextJssImage
+              field={story?.image?.jsonValue?.value}
+              editable={false}
+              next={{
+                width: 500,
+                height: 400,
+                sizes: '(max-width: 768px) 100vw, 30vw',
+              }}
+            />
+          }
           contentVariation="mixed"
         ></CardPatientStories>
       ))}
@@ -219,7 +229,17 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
               <RichText tag="span" field={story?.text} />
             </Text>
           }
-          image={<JssImage field={story?.image?.jsonValue} />}
+          image={
+            <NextJssImage
+              field={story?.image?.jsonValue?.value}
+              editable={false}
+              next={{
+                width: 500,
+                height: 400,
+                sizes: '(max-width: 768px) 100vw, 30vw',
+              }}
+            />
+          }
           contentVariation="mixed"
         ></CardPatientStories>
       ))}

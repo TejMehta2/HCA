@@ -4,12 +4,12 @@ import {
   ImageField,
   Text as JssText,
   RichText as JssRichText,
-  Image as JssImage,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselContent from '@component-library/site-components/CarouselContent/CarouselContent';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface CardFields {
   fields?: {
@@ -66,7 +66,17 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
                 <JssRichText tag={'span'} field={cards?.fields?.Text} />
               </Text>
             ),
-            image: <JssImage field={cards?.fields?.Image} />,
+            image: (
+              <NextJssImage
+                field={cards?.fields?.Image?.value}
+                editable={false}
+                next={{
+                  width: 500,
+                  height: 400,
+                  sizes: '(max-width: 768px) 100vw, 30vw',
+                }}
+              />
+            ),
           })) || []
         }
       />

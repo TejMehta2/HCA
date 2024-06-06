@@ -1,4 +1,5 @@
 'use server';
+import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -67,7 +68,7 @@ const longRunning = async (
 
     await asyncForEach(slugs, async (slug, idx) => {
       if (idx >= start) {
-        const pageURL = `https://${incommingHost}/Finder/StepConsultantProfile/${slug}`;
+        const pageURL = `https://${incommingHost}/${FINDER_PROFILE_ROOT_PATH}/${slug}`;
         notify?.log(
           `loading ${slug} page ${pageURL}, Done ${Math.trunc(
             (idx / slugs.length) * 100

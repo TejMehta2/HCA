@@ -4,7 +4,6 @@ import {
   ImageField,
   LinkField,
   Text as JssText,
-  Image as JssImage,
   ComponentRendering,
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -20,6 +19,7 @@ import Text from '@component-library/foundation/Text/Text';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface CQCFields {
   fields?: {
@@ -148,7 +148,13 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         )
       }
       image={
-        <JssImage field={props.fields?.data?.contextItem?.image?.jsonValue} />
+        <NextJssImage
+          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
+          next={{
+            fill: true,
+            sizes: '100vw',
+          }}
+        />
       }
       theme={props.params?.Theme || 'A-HCA-White'}
       cqc={

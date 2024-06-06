@@ -5,7 +5,6 @@ import {
   ImageField,
   Text as JssText,
   RichText as JssRichText,
-  Image as JssImage,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardContent from '@component-library/components/CardContent/CardContent';
@@ -15,6 +14,7 @@ import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -141,12 +141,25 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             image={
               showImage ? (
                 card.abstractImage?.jsonValue?.value?.src ? (
-                  <JssImage
-                    field={card.abstractImage.jsonValue}
+                  <NextJssImage
+                    field={card.abstractImage.jsonValue.value}
                     editable={false}
+                    next={{
+                      width: 500,
+                      height: 400,
+                      sizes: '(max-width: 768px) 100vw, 30vw',
+                    }}
                   />
                 ) : (
-                  <JssImage field={card.image?.jsonValue} editable={false} />
+                  <NextJssImage
+                    field={card.image?.jsonValue?.value}
+                    editable={false}
+                    next={{
+                      width: 500,
+                      height: 400,
+                      sizes: '(max-width: 768px) 100vw, 30vw',
+                    }}
+                  />
                 )
               ) : undefined
             }

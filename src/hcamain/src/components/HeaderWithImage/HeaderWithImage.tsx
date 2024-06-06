@@ -6,7 +6,6 @@ import {
   ImageField,
   RichText,
   Text as JSSText,
-  Image as JSSImage,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderWithImage from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
@@ -14,7 +13,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import getSubheadingTag from 'lib/subheading-tag-getter';
-import Image from 'next/image';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   data?: {
@@ -54,8 +53,6 @@ const HeaderWithImageDefaultComponent = (
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
@@ -89,24 +86,13 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
         </Text>
       }
       image={
-        isExperienceEditor ? (
-          <JSSImage field={props.fields?.data?.contextItem?.image?.jsonValue} />
-        ) : (
-          <>
-            <Image
-              fill
-              src={
-                props.fields?.data?.contextItem?.image?.jsonValue?.value?.src ||
-                ''
-              }
-              alt={
-                (props.fields?.data?.contextItem?.image?.jsonValue?.value
-                  ?.alt as string) || ''
-              }
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </>
-        )
+        <NextJssImage
+          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
+          next={{
+            fill: true,
+            sizes: '100vw',
+          }}
+        />
       }
       ctas={
         props.rendering ? (

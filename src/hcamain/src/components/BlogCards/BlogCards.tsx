@@ -6,7 +6,6 @@ import {
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  Image as JssImage,
   Item,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -18,6 +17,7 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import Button from '@component-library/core-components/Button/Button';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import Image from 'next/image';
 
 type HCAIconFields = {
   fields?: {
@@ -113,9 +113,19 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
           <CardBlog key={card.id}>
             {card.fields?.AbstractImage?.value?.src &&
             card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
-              <JssImage field={card.fields.AbstractImage} editable={false} />
+              <Image
+                src={card.fields.AbstractImage?.value?.src || ''}
+                alt={(card.fields.AbstractImage?.value?.alt as string) || ''}
+                width="409"
+                height="268"
+              />
             ) : (
-              <JssImage field={card.fields.Image} editable={false} />
+              <Image
+                src={card.fields.Image?.value?.src || ''}
+                alt={(card.fields.Image?.value?.alt as string) || ''}
+                width="409"
+                height="268"
+              />
             )}
             <JssDate field={card.fields?.Date} editable={false} />
             <Text tag={'h3'} variation={'heading-2'}>
@@ -205,10 +215,20 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               {isFeature &&
               card.fields?.AbstractImage?.value?.src &&
               card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
-                <JssImage field={card.fields.AbstractImage} editable={false} />
+                <Image
+                  src={card.fields.AbstractImage?.value?.src || ''}
+                  alt={(card.fields.AbstractImage?.value?.alt as string) || ''}
+                  width="644"
+                  height="268"
+                />
               ) : (
                 isFeature && (
-                  <JssImage field={card.fields.Image} editable={false} />
+                  <Image
+                    src={card.fields.Image?.value?.src || ''}
+                    alt={(card.fields.Image?.value?.alt as string) || ''}
+                    width="644"
+                    height="268"
+                  />
                 )
               )}
               <JssDate field={card.fields?.Date} editable={false} />

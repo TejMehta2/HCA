@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextProps } from './Text.types';
 import styles from './Text.module.scss';
+import RichText from '../../core-components/RichText/RichText';
 
 const Text = (props: TextProps): JSX.Element => {
   const {
@@ -11,9 +12,11 @@ const Text = (props: TextProps): JSX.Element => {
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
   if (isHtml) {
-    <CustomTag className={styles[variation]}>
-      <span dangerouslySetInnerHTML={{ __html: children as string }} />
-    </CustomTag>;
+    return (
+      <RichText>
+        <div dangerouslySetInnerHTML={{ __html: children as string }} />
+      </RichText>
+    );
   }
   return <CustomTag className={styles[variation]}>{children}</CustomTag>;
 };

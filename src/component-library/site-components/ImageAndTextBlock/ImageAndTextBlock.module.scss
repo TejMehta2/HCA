@@ -23,6 +23,7 @@
   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
 
   display: flex;
+  position: relative;
   padding: 0 0 $spacing-13 0;
 
   @include media(screen-l) {
@@ -31,22 +32,8 @@
 
   img {
     width: 100%;
-    aspect-ratio: 358/373;
-    object-fit: cover;
-    height: unset;
+    height: auto;
     border-radius: $radius-medium;
-
-    @include media(screen-m) {
-      aspect-ratio: 770/485;
-    }
-
-    @include media(screen-l) {
-      aspect-ratio: 552/523;
-    }
-
-    @include media(screen-xl) {
-      aspect-ratio: 643/605;
-    }
   }
 }
 

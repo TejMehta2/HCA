@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Image as JssImage,
   Text as JssText,
   ComponentRendering,
   Placeholder,
@@ -14,6 +13,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   data?: {
@@ -104,7 +104,13 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
         )
       }
       image={
-        <JssImage field={props.fields?.data?.contextItem?.image?.jsonValue} />
+        <NextJssImage
+          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
+          next={{
+            fill: true,
+            sizes: '100vw',
+          }}
+        />
       }
     />
   );

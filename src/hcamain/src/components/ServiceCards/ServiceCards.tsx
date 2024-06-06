@@ -5,7 +5,6 @@ import {
   RichText as JssRichText,
   Text as JssText,
   ImageField,
-  Image as JssImage,
   Link as JssLink,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -16,6 +15,7 @@ import ServiceCards from '@component-library/site-components/ServiceCards/Servic
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
+import Image from 'next/image';
 
 type HCAIconFields = {
   fields?: {
@@ -133,9 +133,19 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
           key={index}
         >
           {service.fields?.AbstractImage?.value?.src ? (
-            <JssImage field={service?.fields?.AbstractImage} editable={false} />
+            <Image
+              src={service?.fields?.AbstractImage?.value?.src || ''}
+              alt={(service?.fields?.AbstractImage?.value?.alt as string) || ''}
+              width="313"
+              height="317"
+            />
           ) : (
-            <JssImage field={service?.fields?.Image} editable={false} />
+            <Image
+              src={service?.fields?.Image?.value?.src || ''}
+              alt={(service?.fields?.Image?.value?.alt as string) || ''}
+              width="313"
+              height="317"
+            />
           )}
           <Text tag="div" variation="display-6">
             {service.fields?.AbstractTitle?.value ? (
