@@ -256,7 +256,7 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
                         </Text>
                       }
                       bodyCopy={
-                        <Text variation="body-large" isHtml={true}>
+                        <Text tag={'div'} variation="body-large" isHtml={true}>
                           {abstractText ? abstractText : description}
                         </Text>
                       }
