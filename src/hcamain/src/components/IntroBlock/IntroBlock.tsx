@@ -4,10 +4,8 @@ import {
   LinkField,
   Text as JSSText,
   RichText,
-  Image as JSSImage,
   Link as JssLink,
   ImageField,
-  ImageFieldValue,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
@@ -19,6 +17,7 @@ import { Default as CQCRating } from '../CQCRating/CQCRating';
 import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
 import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type HCAIconFields = {
   fields?: {
@@ -48,7 +47,7 @@ interface CQCFields {
 interface Fields {
   Title?: Field<string>;
   Text?: Field<string>;
-  Image?: ImageFieldValue;
+  Image?: ImageField;
   CTAIcon?: HCAIconFields;
   CTALink: LinkField;
   Counters?: CountersFields[];
@@ -119,7 +118,17 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       }
       stats={stats || []}
       cta={cta || <></>}
-      image={<JSSImage field={props.fields?.Image} />}
+      image={
+        <NextJssImage
+          field={props.fields?.Image?.value}
+          editable={false}
+          next={{
+            width: 800,
+            height: 1000,
+            sizes: '(max-width: 768px) 100vw, 50vw',
+          }}
+        />
+      }
       cqc={
         props.fields?.CQCStatus ? (
           <CQCRating

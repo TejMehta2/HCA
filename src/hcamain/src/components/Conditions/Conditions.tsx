@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  Image as JssImage,
   Text as JssText,
   Link as JssLink,
   LinkField,
@@ -17,6 +16,7 @@ import CardContent from '@component-library/components/CardContent/CardContent';
 import Link from 'next/link';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 type HCAIcon = {
   svgMarkup?: Field<string>;
@@ -236,7 +236,19 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
           return (
             <CardContent
               key={index}
-              image={withImage ? <JssImage field={imageField} /> : undefined}
+              image={
+                withImage ? (
+                  <NextJssImage
+                    field={imageField?.value}
+                    editable={false}
+                    next={{
+                      width: 500,
+                      height: 400,
+                      sizes: '(max-width: 768px) 100vw, 30vw',
+                    }}
+                  />
+                ) : undefined
+              }
               title={
                 <Text
                   tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}

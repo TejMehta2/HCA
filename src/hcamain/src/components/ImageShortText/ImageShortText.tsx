@@ -4,7 +4,6 @@ import {
   ImageField,
   Text as JssText,
   RichText as JssRichText,
-  Image as JssImage,
   ComponentRendering,
   Placeholder,
   useSitecoreContext,
@@ -14,6 +13,7 @@ import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -79,7 +79,16 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
             <JssText field={props.fields?.Title} />
           </Text>
         }
-        image={<JssImage field={props.fields?.Image} />}
+        image={
+          <NextJssImage
+            field={props.fields?.Image?.value}
+            next={{
+              width: 1000,
+              height: 1000,
+              sizes: '(max-width: 768px) 100vw, 50vw',
+            }}
+          />
+        }
         ctas={
           props.rendering && (
             <PlaceHolderWrapper>

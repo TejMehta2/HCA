@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   Text as JssText,
-  Image as JssImage,
   ImageField,
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -14,6 +13,7 @@ import Params from 'src/types/params';
 import { ContactItem } from '@component-library/components/ContactList/ContactList.types';
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
   data?: {
@@ -108,7 +108,16 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
       }
-      image={<JssImage field={props.fields?.data?.item?.image?.jsonValue} />}
+      image={
+        <NextJssImage
+          field={props.fields?.data?.item?.image?.jsonValue?.value}
+          next={{
+            width: 1000,
+            height: 1000,
+            sizes: '(max-width: 768px) 100vw, 50vw',
+          }}
+        />
+      }
     >
       <Text tag="div" variation="body-large">
         <RichText field={props.fields?.data?.item?.text?.jsonValue} />

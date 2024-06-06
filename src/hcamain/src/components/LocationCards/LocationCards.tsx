@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Text as JssText,
-  Image as JssImage,
   RichText as JssRichText,
   Link as JssLink,
   useSitecoreContext,
@@ -20,6 +19,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
+import Image from 'next/image';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -114,9 +114,19 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           }
           image={
             abstractImage?.jsonValue?.value?.src ? (
-              <JssImage field={abstractImage?.jsonValue} editable={false} />
+              <Image
+                src={abstractImage?.jsonValue?.value?.src || ''}
+                alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
+                width="363"
+                height="176"
+              />
             ) : (
-              <JssImage field={image?.jsonValue} editable={false} />
+              <Image
+                src={image?.jsonValue?.value?.src || ''}
+                alt={(image?.jsonValue?.value?.alt as string) || ''}
+                width="363"
+                height="176"
+              />
             )
           }
           ctas={{
