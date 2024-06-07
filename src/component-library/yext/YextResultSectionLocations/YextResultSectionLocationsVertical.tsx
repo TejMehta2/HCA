@@ -191,10 +191,12 @@ const YextResultSectionLocations = (
   const initMap = useCallback(
     (map: google.maps.Map) => {
       map.addListener('dragend', onMapMovement);
-      map.addListener('zoom_changed', onMapMovement);
+      if (!searchOnMove) {
+        map.addListener('zoom_changed', onMapMovement);
+      }
     },
 
-    [onMapMovement]
+    [onMapMovement, searchOnMove]
   );
 
   return (
