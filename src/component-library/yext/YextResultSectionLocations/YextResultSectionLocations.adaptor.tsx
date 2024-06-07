@@ -98,7 +98,7 @@ const YextResultSectionLocationsAdaptor = (
       },
       address: {
         icon: <Icons iconName={'iconPin'}></Icons>,
-        text: (
+        text: address && (
           <Text variation="body-large" tag="span">
             {address.line1}, {address.line2} {address.city} {address.postalCode}
           </Text>

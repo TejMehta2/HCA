@@ -57,7 +57,7 @@ const Sorting = (props: SortingProps): JSX.Element => {
   const desktopDialogRef = useRef<HTMLDialogElement>(null);
 
   const openMobileModal = () => {
-    mobileDialogRef?.current?.show();
+    mobileDialogRef?.current?.showModal();
     mobileDialogRef?.current?.querySelector('label')?.focus();
   };
   const openDesktopModal = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export interface AppointmentSummaryProps {
@@ -14,4 +15,6 @@ export interface AppointmentSummaryProps {
   reviewsTotal: number | null;
   isFollowUpAppointment: string;
   isMobile?: boolean;
+  liveBookingFormStepSlotSelect: any;
+  liveBookingFormStepLocationSelect: any;
 }

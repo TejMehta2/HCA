@@ -14,6 +14,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     suggestions = [],
     locationCta,
     children,
+    searchOnEnter = false,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -60,7 +61,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         </div>
         <input
           onKeyDown={(event) => {
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' && !searchOnEnter) {
               event.preventDefault(); // avoid auto selecting suggestions
               const target = event.target as HTMLInputElement;
               target.blur();

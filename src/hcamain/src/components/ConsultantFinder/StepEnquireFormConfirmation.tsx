@@ -39,6 +39,7 @@ interface Fields {
   StartLink: LinkField;
   NextLink: LinkField;
   BackLink: LinkField;
+  BreadcrumbHomePage: LinkField;
 }
 
 type StepProps = {
@@ -92,7 +93,10 @@ export const Default = (props: StepProps): JSX.Element => {
         <Breadcrumbs
           backCta={{
             text: 'Consultant Finder',
-            link: '/Finder/Step-Intro',
+            link: `${
+              props?.fields?.BreadcrumbHomePage?.value?.href ||
+              '/Finder/Step-Intro'
+            }`,
           }}
         >
           <TextLink>
@@ -102,7 +106,12 @@ export const Default = (props: StepProps): JSX.Element => {
             </a>
           </TextLink>
           <TextLink>
-            <Link href="/Finder/Step-Intro">
+            <Link
+              href={`${
+                props?.fields?.BreadcrumbHomePage?.value?.href ||
+                '/Finder/Step-Intro'
+              }`}
+            >
               {props?.fields?.EnquireFormConfirmationBreadcrumbsHomePage
                 ?.value || 'Consultant Finder'}
             </Link>
