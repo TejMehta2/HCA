@@ -26,7 +26,9 @@ const MapElement = (
       if (zoom <= 15) return;
       map.setZoom(15);
     });
-    mapRef.current = map;
+    if (mapRef) {
+      mapRef.current = map;
+    }
 
     props.callback?.(map);
   }, [mapRef, props, ref]);

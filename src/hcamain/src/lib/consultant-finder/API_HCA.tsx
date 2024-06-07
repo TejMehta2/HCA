@@ -915,7 +915,10 @@ export async function submitBookingEnquiry(
       }
     } catch (e) {
       //makeBookingEnquiry call threw
-      returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting makeBookingEnquiry, please retry"}`;
+      const errorText =
+        HCAAPIConfig?.aPI_HCA_EnquireBookingForm_ErrorSubmittingText ||
+        'An unexpected error occured posting makeBookingEnquiry, please retry';
+      returnData = `{"errorCode": 999, "errorText": "${errorText}"}`;
       returnData = JSON.parse(returnData);
       console.error(`makeBookingEnquiry failed with exception ${e}`);
     }

@@ -114,6 +114,13 @@ interface Fields {
   LiveBookingFormErrorSubmitBtnLabel: Field<string>;
   LiveBookingFormDateOfBirthErrors: any;
   LiveBookingFormErrorNoSlotSelected: Field<string>;
+  LiveBookingFormStepAppointment: LinkField;
+  LiveBookingFormStepSlotSelect: LinkField;
+  LiveBookingFormStepLocationSelect: LinkField;
+  LiveBookingFormSummaryTitle: Field<string>;
+  LiveBookingFormSummaryConsultant: Field<string>;
+  LiveBookingFormSummaryLocation: Field<string>;
+  LiveBookingFormSummaryDate: Field<string>;
 }
 
 type StepProps = {
@@ -523,7 +530,10 @@ export const Default = (props: StepProps): JSX.Element => {
           setReviewsTotal(reviewsTotal);
 
           router.push(
-            `/Finder/Step-Live-Booking-Confirmation?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+            `${
+              props?.fields?.NextLink?.value?.href ||
+              '/Finder/Step-Live-Booking-Confirmation'
+            }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
           );
         }
         setIsSubmitting(false);
@@ -680,7 +690,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 <button
                   onClick={() =>
                     router.push(
-                      `/Finder/Step-Appointment-Type?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+                      `${
+                        props?.fields?.LiveBookingFormStepAppointment?.value
+                          ?.href || '/Finder/Step-Appointment-Type'
+                      }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                     )
                   }
                 >
@@ -722,7 +735,10 @@ export const Default = (props: StepProps): JSX.Element => {
                       <button
                         onClick={() =>
                           router.push(
-                            `/Finder/Step-Slot-Select?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
+                            `${
+                              props?.fields?.LiveBookingFormStepSlotSelect
+                                ?.value?.href || '/Finder/Step-Slot-Select'
+                            }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
                           )
                         }
                       >
@@ -749,18 +765,38 @@ export const Default = (props: StepProps): JSX.Element => {
                 </Container>
                 <Container marginBottom="spacing-6">
                   <AppointmentSummary
-                    title={'Appointment summary'}
-                    consultantTitle={'Consultant'}
+                    title={
+                      props?.fields?.LiveBookingFormSummaryTitle?.value ||
+                      'Appointment summary'
+                    }
+                    consultantTitle={
+                      props?.fields?.LiveBookingFormSummaryConsultant?.value ||
+                      'Consultant'
+                    }
                     consultantText={consultantName}
-                    locationTitle={'Location'}
+                    locationTitle={
+                      props?.fields?.LiveBookingFormSummaryLocation?.value ||
+                      'Location'
+                    }
                     locationText={selectedLocationName}
-                    dateTitle={'Date & time'}
+                    dateTitle={
+                      props?.fields?.LiveBookingFormSummaryDate?.value ||
+                      'Date & time'
+                    }
                     dateText={`${selectedDate} at ${selectedTime}`}
                     slug={slug}
                     gmcNumber={gmcNumber}
                     reviewsTotal={reviewsTotal}
                     isFollowUpAppointment={selectedTypeOfAppointment}
                     isMobile={true}
+                    liveBookingFormStepLocationSelect={
+                      props?.fields?.LiveBookingFormStepLocationSelect?.value
+                        ?.href || '/Finder/Step-Location-Select'
+                    }
+                    liveBookingFormStepSlotSelect={
+                      props?.fields?.LiveBookingFormStepSlotSelect?.value
+                        ?.href || '/Finder/Step-Slot-Select'
+                    }
                   />
                 </Container>
                 {/* About you */}
@@ -1425,17 +1461,37 @@ export const Default = (props: StepProps): JSX.Element => {
               </form>
               <CFAside>
                 <AppointmentSummary
-                  title={'Appointment summary'}
-                  consultantTitle={'Consultant'}
+                  title={
+                    props?.fields?.LiveBookingFormSummaryTitle?.value ||
+                    'Appointment summary'
+                  }
+                  consultantTitle={
+                    props?.fields?.LiveBookingFormSummaryConsultant?.value ||
+                    'Consultant'
+                  }
                   consultantText={consultantName}
-                  locationTitle={'Location'}
+                  locationTitle={
+                    props?.fields?.LiveBookingFormSummaryLocation?.value ||
+                    'Location'
+                  }
                   locationText={selectedLocationName}
-                  dateTitle={'Date & time'}
+                  dateTitle={
+                    props?.fields?.LiveBookingFormSummaryDate?.value ||
+                    'Date & time'
+                  }
                   dateText={`${selectedDate} at ${selectedTime}`}
                   slug={slug}
                   gmcNumber={gmcNumber}
                   reviewsTotal={reviewsTotal}
                   isFollowUpAppointment={selectedTypeOfAppointment}
+                  liveBookingFormStepLocationSelect={
+                    props?.fields?.LiveBookingFormStepLocationSelect?.value
+                      ?.href || '/Finder/Step-Location-Select'
+                  }
+                  liveBookingFormStepSlotSelect={
+                    props?.fields?.LiveBookingFormStepSlotSelect?.value?.href ||
+                    '/Finder/Step-Slot-Select'
+                  }
                 />
                 <NeedHelp
                   headline={

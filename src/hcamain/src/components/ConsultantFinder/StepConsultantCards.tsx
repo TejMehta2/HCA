@@ -105,6 +105,7 @@ interface Fields {
   PhoneNumberHref: Field<string>;
   CallToBookButtonText: Field<string>;
   CallToBookIcon: any;
+  BreadcrumbHomePage: LinkField;
 }
 
 type StepProps = {
@@ -158,6 +159,7 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  // console.log('consultant cards', props);
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
@@ -166,7 +168,6 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
-  // console.log('consultant cards', props);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
@@ -564,7 +565,10 @@ export const Default = (props: StepProps): JSX.Element => {
             <Breadcrumbs
               backCta={{
                 text: 'Consultant Finder',
-                link: '/Finder/Step-Intro',
+                link: `${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                  '/Finder/Step-Intro'
+                }`,
               }}
             >
               <TextLink>
@@ -573,7 +577,12 @@ export const Default = (props: StepProps): JSX.Element => {
                   <span className="sr-only">Home</span>
                 </a>
               </TextLink>
-              <Link href="/Finder/Step-Intro">
+              <Link
+                href={`${
+                  props?.fields?.BreadcrumbHomePage?.value?.href ||
+                  '/Finder/Step-Intro'
+                }`}
+              >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
                   'Consultant Finder'}
               </Link>

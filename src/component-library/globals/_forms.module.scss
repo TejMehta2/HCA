@@ -171,12 +171,17 @@ byoc-sitecore-form,
   }
 
   /* Validation */
-  .component:has(.form-input-error-message) {
+  .component.form-input-error-field {
     .form-field-label {
       color: var(--field-error-colour);
     }
 
     input {
+      border-color: var(--field-error-colour);
+    }
+
+    .form-input-wrapper-div {
+      color: var(--field-error-colour);
       border-color: var(--field-error-colour);
     }
   }

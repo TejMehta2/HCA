@@ -101,6 +101,7 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
           }
         >
           <SearchBar
+            searchOnEnter={true}
             defaultValue={searchParams.get('input') || undefined}
             name={'input'}
             placeholder={fields?.SearchPlaceholder?.value}

@@ -100,7 +100,10 @@ export async function getLDBFirstAppointmentDatas(
     }
   } catch (e) {
     //C2 call threw
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    const errorText =
+      config?.aPI_C2_FirstAppointment_NoResultsMsg ||
+      'An unexpected error occured fetching getLDBFirstAppointmentData, please retry';
+    returnData = `{"errorCode": 994, "errorText": "${errorText}"}`;
     returnData = JSON.parse(returnData);
     console.error(`getLDBFirstAppointmentData failed with exception ${e}`);
   }
@@ -152,7 +155,10 @@ export async function getLDBFirstAppointmentData(
     }
   } catch (e) {
     //C2 call threw
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBFirstAppointmentData, please retry"}`;
+    const errorText =
+      config?.aPI_C2_FirstAppointment_NoResultsMsg ||
+      'An unexpected error occured fetching getLDBFirstAppointmentData, please retry';
+    returnData = `{"errorCode": 996, "errorText": "${errorText}"}`;
     returnData = JSON.parse(returnData);
     console.error(`getLDBFirstAppointmentData failed with exception ${e}`);
   }
@@ -243,7 +249,10 @@ export async function getLDBConsultantDetails(
   } catch (e) {
     //C2 call threw
     console.error(`getLDBConsultantDetails failed with exception ${e}`);
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantDetails, please retry"}`;
+    const errorText =
+      config?.aPI_C2_GetConsultantDetails_NoResultsMsg ||
+      'An unexpected error occured fetching getLDBConsultantDetails, please retry';
+    returnData = `{"errorCode": 995, "errorText": "${errorText}"}`;
     returnData = JSON.parse(returnData);
   }
 
@@ -306,7 +315,10 @@ export async function getLDBConsultantSlots(
     }
   } catch (e) {
     //C2 call threw
-    returnData = `{"errorCode": 999, "errorText": "An unexpected error occured fetching getLDBConsultantSlots, please retry"}`;
+    const errorText =
+      config?.aPI_C2_GetConsultantSlots_NoResultsMsg ||
+      'An unexpected error occured fetching getLDBConsultantSlots, please retry';
+    returnData = `{"errorCode": 990, "errorText": "${errorText}"}`;
     returnData = JSON.parse(returnData);
     console.error(`getLDBConsultantSlots failed with exception ${e}`);
   }
@@ -373,6 +385,7 @@ export async function LDBMakeBooking(
   let returnData: string = '';
   let okayToSend: boolean = true;
 
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
   // first, validate reCapture
   try {
     let captchaValidation = null;
@@ -409,7 +422,6 @@ export async function LDBMakeBooking(
 
     if (okayToSend) {
       // preference is passed params, otherwise get from settings
-      const config = !serviceURL && !headerKey ? await GetC2Config() : null;
       const fragFollowOn = isFollowOnAppointment
         ? `"initialappointment": null, "followonappointment": "yes"`
         : `"initialappointment": "yes", "followonappointment": null`;
@@ -473,13 +485,19 @@ export async function LDBMakeBooking(
         }
       } catch (e) {
         //C2 call threw
-        returnData = `{"errorCode": 999, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+        const errorText =
+          config?.aPI_C2_ReserveConsultantSlot_NoResultsMsg ||
+          'An unexpected error occured fetching LDBMakeBooking, please retry';
+        returnData = `{"errorCode": 991, "errorText": "${errorText}"}`;
         returnData = JSON.parse(returnData);
         console.error(`LDBMakeBooking failed with exception ${e}`);
       }
     } else {
       //recaptcha invalid
-      returnData = `{"errorCode": 997, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+      const errorText =
+        config?.aPI_C2_ReserveConsultantSlot_NoResultsMsg ||
+        'An unexpected error occured fetching LDBMakeBooking, please retry';
+      returnData = `{"errorCode": 992, "errorText": "${errorText}"}`;
       returnData = JSON.parse(returnData);
       console.error(
         `LDBMakeBooking failed with recaptcha error ${JSON.stringify(
@@ -489,7 +507,10 @@ export async function LDBMakeBooking(
     }
   } catch (error) {
     //recaptcha invalid exception error
-    returnData = `{"errorCode": 998, "errorText": "An unexpected error occured posting LDBMakeBooking, please retry"}`;
+    const errorText =
+      config?.aPI_C2_ReserveConsultantSlot_NoResultsMsg ||
+      'An unexpected error occured fetching LDBMakeBooking, please retry';
+    returnData = `{"errorCode": 993, "errorText": "${errorText}"}`;
     returnData = JSON.parse(returnData);
     console.error(`LDBMakeBooking failed with recaptcha exception ${error}`);
     console.log(error);

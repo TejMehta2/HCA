@@ -176,25 +176,25 @@ const nextConfig = {
         destination: '/blog/:path*',
         permanent: true,
       },
-      
-       {
-         //finder/enquireform
-          source: '/finder/enquireform/:path*',
-          destination: '/stepconsultantprofile/:path*',
-          permanent: true,
-       },
-       {
-         //finder/specialists
-          source: '/finder/specialists/:path*',
-          destination: '/stepconsultantprofile/:path*',
-          permanent: true,
-       },
-       {
-         //finder/livebooking
-          source: '/finder/livebooking/:path*',
-          destination: '/stepconsultantprofile/:path*',
-          permanent: true,
-       },
+
+      {
+        //finder/enquireform
+        source: '/finder/enquireform/:path*',
+        destination: '/stepconsultantprofile/:path*',
+        permanent: true,
+      },
+      {
+        //finder/specialists
+        source: '/finder/specialists/:path*',
+        destination: '/stepconsultantprofile/:path*',
+        permanent: true,
+      },
+      {
+        //finder/livebooking
+        source: '/finder/livebooking/:path*',
+        destination: '/stepconsultantprofile/:path*',
+        permanent: true,
+      },
       {
         ////for-patients-and-visitors/patient-stories
         source: '/for-patients-and-visitors/patient-stories/:path*',
@@ -244,6 +244,7 @@ const nextConfig = {
       'www.doctify.com',
       'doctify.com',
     ],
+    // unoptimized: true,
   },
 };
 
