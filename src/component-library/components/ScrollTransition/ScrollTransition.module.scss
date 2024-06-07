@@ -34,4 +34,13 @@
   [data-animate-active] {
     transform: translateY(0);
   }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  [data-content='diamond'] {
+    z-index: 0;
+  }
 }
