@@ -1,0 +1,42 @@
+﻿---
+ID: "197dec84-cce2-4a87-8d4d-5dab903ce26a"
+Parent: "4e4edb35-074b-4d61-bf16-2eda68348b77"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Links/Links/Links Steps/Link_StepLiveBookingConfirmation
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: General Link
+- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
+  Hint: Default value
+  Value: |
+    <link text="Live Booking Confirmation" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{B10289F8-D79B-4FA5-B43C-7E34B26E8F99}" />
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1000
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240606T115227Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5dfb4efa-a593-449c-a7ce-989af2bb0a0c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240606T124506Z
