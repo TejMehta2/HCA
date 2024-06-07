@@ -33,7 +33,7 @@ const ModalSearch = (
     }
     searchActions.executeUniversalQuery();
     ref?.current?.close();
-    router.replace(`${redirectUrl}?input=${query}`);
+    router.replace(redirectUrl);
   };
 
   return (
