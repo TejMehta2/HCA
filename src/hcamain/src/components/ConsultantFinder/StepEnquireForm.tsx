@@ -405,7 +405,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       ?.API_HCA_EnquireBookingForm_ErrorSubmittingText?.value ||
                       'Error submitting the form, please retry later'}
                   </Text>
-                  <Text tag="p" variation="display-4">
+                  <Text tag="p" variation="body-medium-extra-large">
                     {additionalErrorText}
                   </Text>
                 </Container>
