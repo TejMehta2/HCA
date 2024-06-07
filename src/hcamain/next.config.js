@@ -235,16 +235,16 @@ const nextConfig = {
   transpilePackages: ['@hca/component-library/*'],
   swcMinify: false,
   images: {
-    // domains: [
-    //   'upload.wikimedia.org',
-    //   'a.mktgcdn.com',
-    //   'hcil-q-001.sitecorecontenthub.cloud',
-    //   'hcil-p-001.sitecorecontenthub.cloud',
-    //   'edge.sitecorecloud.io',
-    //   'www.doctify.com',
-    //   'doctify.com',
-    // ],
-    unoptimized: true,
+    domains: [
+      'upload.wikimedia.org',
+      'a.mktgcdn.com',
+      'hcil-q-001.sitecorecontenthub.cloud',
+      'hcil-p-001.sitecorecontenthub.cloud',
+      'edge.sitecorecloud.io',
+      'www.doctify.com',
+      'doctify.com',
+    ],
+    // unoptimized: true,
   },
 };
 
