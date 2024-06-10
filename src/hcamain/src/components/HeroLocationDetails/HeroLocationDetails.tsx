@@ -6,6 +6,7 @@ import {
   Text as JssText,
   ComponentRendering,
   Placeholder,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
@@ -66,6 +67,9 @@ const HeroLocationDetailsDefaultComponent = (
 );
 
 export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <HeroLocationDetailsDefaultComponent {...props} />;
@@ -100,19 +104,48 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         icon: <Icons iconName="iconPin"></Icons>,
         text: (
           <Text variation="body-large" tag="span">
-            <JssText field={props.fields?.data?.contextItem?.city?.jsonValue} />
-            <br />
-            <JssText
-              field={props.fields?.data?.contextItem?.addressLine1?.jsonValue}
-            />
-            <br />
-            <JssText
-              field={props.fields?.data?.contextItem?.addressLine2?.jsonValue}
-            />
-            <br />
-            <JssText
-              field={props.fields?.data?.contextItem?.postCode?.jsonValue}
-            />
+            {(props.fields?.data?.contextItem?.addressLine1?.jsonValue?.value ||
+              isExperienceEditor) && (
+              <>
+                <JssText
+                  field={
+                    props.fields?.data?.contextItem?.addressLine1?.jsonValue
+                  }
+                />
+                <br />
+              </>
+            )}
+
+            {(props.fields?.data?.contextItem?.addressLine2?.jsonValue?.value ||
+              isExperienceEditor) && (
+              <>
+                <JssText
+                  field={
+                    props.fields?.data?.contextItem?.addressLine2?.jsonValue
+                  }
+                />
+                <br />
+              </>
+            )}
+
+            {(props.fields?.data?.contextItem?.city?.jsonValue?.value ||
+              isExperienceEditor) && (
+              <>
+                <JssText
+                  field={props.fields?.data?.contextItem?.city?.jsonValue}
+                />
+                <br />
+              </>
+            )}
+
+            {(props.fields?.data?.contextItem?.postCode?.jsonValue?.value ||
+              isExperienceEditor) && (
+              <>
+                <JssText
+                  field={props.fields?.data?.contextItem?.postCode?.jsonValue}
+                />
+              </>
+            )}
           </Text>
         ),
 
@@ -146,15 +179,6 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
             <Placeholder name={phKey} rendering={props.rendering} />
           </PlaceHolderWrapper>
         )
-      }
-      image={
-        <NextJssImage
-          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
-          next={{
-            fill: true,
-            sizes: '100vw',
-          }}
-        />
       }
       theme={props.params?.Theme || 'A-HCA-White'}
       cqc={
