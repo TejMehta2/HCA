@@ -284,7 +284,7 @@ const _getHolidays = unstable_cache(
   undefined,
   {
     tags: ['cacheGetHolidays'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 
@@ -324,7 +324,7 @@ async function __getHolidays(): Promise<string[]> {
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
         next: {
-          revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
       });
       if (res.ok) {
@@ -382,7 +382,7 @@ const _getCMAs = unstable_cache(
   undefined,
   {
     tags: ['cacheGetCMAs'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 

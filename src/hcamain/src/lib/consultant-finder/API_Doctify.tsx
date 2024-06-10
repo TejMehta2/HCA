@@ -195,7 +195,7 @@ const _getFacilitiesData = unstable_cache(
   undefined,
   {
     tags: ['cacheGetFacilitiesData'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 
@@ -234,7 +234,7 @@ async function __getFacilitiesData(serviceURL?: string): Promise<any> {
     const res = await fetch(requestURL, {
       cache: 'force-cache',
       next: {
-        revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+        revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
       },
     });
 

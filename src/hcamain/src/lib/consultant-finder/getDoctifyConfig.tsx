@@ -60,7 +60,7 @@ const _GetDoctifyConfig = unstable_cache(
   undefined,
   {
     tags: ['cacheGetDoctifyConfig'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 

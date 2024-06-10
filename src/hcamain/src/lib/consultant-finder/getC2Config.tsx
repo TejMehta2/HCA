@@ -60,7 +60,7 @@ const _GetC2Config = unstable_cache(
   undefined,
   {
     tags: ['cacheGetC2Config'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 // this has the same effect as revalidateTag('cacheGetHCAConfig');
