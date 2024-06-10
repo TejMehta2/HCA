@@ -180,6 +180,15 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           </PlaceHolderWrapper>
         )
       }
+      image={
+        <NextJssImage
+          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
+          next={{
+            fill: true,
+            sizes: '100vw',
+          }}
+        />
+      }
       theme={props.params?.Theme || 'A-HCA-White'}
       cqc={
         <CQCRating
