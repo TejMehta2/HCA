@@ -170,7 +170,17 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
                 }
               </>
             }
-            image={imageUrl ? <img src={imageUrl} alt={title} /> : undefined}
+            image={
+              imageUrl ? (
+                <Image
+                  width={500}
+                  height={400}
+                  sizes={'(max-width: 768px) 100vw, 30vw'}
+                  src={imageUrl}
+                  alt={title}
+                />
+              ) : undefined
+            }
             ctas={{
               button1: (
                 <a href={url}>

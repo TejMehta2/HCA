@@ -23,6 +23,7 @@ import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import Image from 'next/image';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -143,7 +144,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
         index
       ) => (
         <CardBlog key={index}>
-          <img src={imageUrl} alt={name} width="643" height="605" />
+          <Image src={imageUrl} alt={name} width="643" height="605" />
           <time>{formatDate(new Date(date))}</time>
           {title && (
             <Text

@@ -21,6 +21,7 @@ import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const DynamicCarouselCards = dynamic(
   () =>
@@ -160,7 +161,10 @@ const returnCards = (
                 </Text>
               }
               image={
-                <img
+                <Image
+                  width={500}
+                  height={400}
+                  sizes={'(max-width: 768px) 100vw, 30vw'}
                   src={abstractImageUrl || imageUrl}
                   alt={abstractTitle || title}
                 />
