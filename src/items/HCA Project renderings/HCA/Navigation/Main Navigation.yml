@@ -20,12 +20,10 @@ SharedFields:
       item(path: $datasource, language: $language) {
         ... on MainNavigation {
           logo {
-            value
             jsonValue
           }
     
           darkLogo {
-            value
             jsonValue
           }
     
@@ -46,21 +44,13 @@ SharedFields:
               ... on NavigationTab {
                 tabTitle {
                   value
-                  jsonValue
-                }
-    
-                tabTitle {
-                  value
-                  jsonValue
                 }
     
                 tabCta {
-                  value
                   jsonValue
                 }
     
                 mobileTabCta {
-                  value
                   jsonValue
                 }
     
@@ -88,26 +78,22 @@ SharedFields:
               ... on SearchModalConfiguration {
                 searchPlaceholder {
                   value
-                  jsonValue
                 }
     
                 icon: icon_2e92f1fb5cf44f36882dd8c07879de57 {
-                  value
                   jsonValue
                 }
     
                 popularSearchesLabel {
                   value
-                  jsonValue
                 }
     
                 popularSearches {
-                  value
                   jsonValue
+                  value
                 }
     
                 baseUrl {
-                  value
                   jsonValue
                 }
     
@@ -116,7 +102,6 @@ SharedFields:
                     ... on SearchSuggestionTemplate {
                       text {
                         value
-                        jsonValue
                       }
     
                       icon: icon_612e35f92c594aa38a0fcb132fc6376b {
@@ -141,16 +126,13 @@ SharedFields:
     fragment MainNavigationLinksListFragment on MainNavigationLinksList {
       title {
         value
-        jsonValue
       }
     
       cta {
-        value
         jsonValue
       }
     
       mobileCtaText {
-        value
         jsonValue
       }
     
@@ -170,43 +152,35 @@ SharedFields:
     fragment NavigationBlogPostCardFragment on NavigationBlogPostCard {
       title {
         value
-        jsonValue
       }
     
       description {
         value
-        jsonValue
       }
     
       cta {
-        value
         jsonValue
       }
     
       date {
         jsonValue
-        value
       }
     
       tag {
         value
-        jsonValue
       }
     }
     
     fragment NavigationContentBlockFragment on NavigationContentBlock {
       title {
         value
-        jsonValue
       }
     
       description {
         value
-        jsonValue
       }
     
       cta {
-        value
         jsonValue
       }
     
@@ -226,7 +200,6 @@ SharedFields:
     fragment NavigationLinksListFragment on NavigationLinksList {
       title {
         value
-        jsonValue
       }
     
       links {
@@ -238,7 +211,6 @@ SharedFields:
     
     fragment NavigationLinkFragment on NavigationLink {
       link {
-        value
         jsonValue
       }
     }
@@ -307,14 +279,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "80ac1286-b015-45a9-b8c2-632f9ce9f9c6"
+      Value: "b086558f-ca2b-4011-b71b-6dc0a99e11c0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240508T121423Z
+      Value: 20240610T170928Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
