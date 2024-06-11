@@ -51,9 +51,9 @@ const Footer = (props: FooterProps): JSX.Element => {
                   </ul>
                 )}
                 {column.reviews && (
-                  <ul className={styles.reviews} aria-label="Reviews">
+                  <div className={styles.reviews} aria-label="Reviews">
                     {column.reviews}
-                  </ul>
+                  </div>
                 )}
               </div>
             ))}

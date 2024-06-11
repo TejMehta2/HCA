@@ -102,7 +102,7 @@
     @include sr-only;
   }
 
-  height: calc(100% - #{px-to-rem(78)});
+  height: calc(100svh - #{px-to-rem(78)});
   overflow-y: auto;
 }
 

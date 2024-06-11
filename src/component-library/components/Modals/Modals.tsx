@@ -40,8 +40,9 @@ const Modals = (
         type="button"
         onClick={() => ref?.current?.close()}
         className={overlay}
-        aria-hidden={true}
-      />
+      >
+        <span className="sr-only">Close</span>
+      </button>
     </>
   );
 
