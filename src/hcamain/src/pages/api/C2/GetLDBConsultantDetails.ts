@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getLDBConsultantDetails } from 'lib/consultant-finder/API_C2';
+import { revalidate } from 'lib/consultant-finder/revalidateNow';
 
 // wrapper for C2 Get Consultant Details API ability to call from the client side (internally without passing secrets)
 const GetLDBConsultantDetails = async (
@@ -14,9 +15,16 @@ const GetLDBConsultantDetails = async (
     gmcNumber as string,
     isFollowOnAppointment?.toString() === 'true' ? true : false
   ); // e.g. "4113571", "true"
-  res.appendHeader('Cache-Control', 'max-age=600');
-  res.appendHeader('CDN-Cache-Control', 'max-age=3000');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=6000');
+  if (revalidate.now() || revalidate.noCache()) {
+    res.appendHeader('Cache-Control', 'no-cache');
+    res.appendHeader('CDN-Cache-Control', 'no-cache');
+    res.appendHeader('Vercel-CDN-Cache-Control', 'no-cache');
+  } else {
+    res.appendHeader('Cache-Control', 'max-age=600');
+    res.appendHeader('CDN-Cache-Control', 'max-age=1800');
+    res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
+  }
+
   return res.status(200).json(response);
 };
 

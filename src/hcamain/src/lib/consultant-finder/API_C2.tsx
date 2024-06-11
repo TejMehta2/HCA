@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetC2Config } from './getC2Config';
-import { revalidate } from './revalidateNow';
 
 // first appointment
 // post in GMC number/s
@@ -72,7 +71,7 @@ export async function getLDBFirstAppointmentDatas(
       },
       cache: 'force-cache',
       next: {
-        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+        revalidate: 60,
       },
     });
     if (res.ok) {
@@ -135,7 +134,7 @@ export async function getLDBFirstAppointmentData(
       },
       cache: 'force-cache',
       next: {
-        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+        revalidate: 60,
       },
     });
     if (res.ok) {
@@ -224,7 +223,7 @@ export async function getLDBConsultantDetails(
       },
       cache: 'force-cache',
       next: {
-        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+        revalidate: 60,
       },
     });
     if (res.ok) {
@@ -302,7 +301,7 @@ export async function getLDBConsultantSlots(
       },
       cache: 'force-cache',
       next: {
-        revalidate: revalidate.now() || revalidate.noCache() ? false : 60,
+        revalidate: 60,
       },
     });
     if (res.ok) {
