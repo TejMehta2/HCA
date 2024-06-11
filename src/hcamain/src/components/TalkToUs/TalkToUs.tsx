@@ -110,7 +110,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       }
       image={
         <NextJssImage
-          field={props.fields?.data?.item?.image?.jsonValue?.value}
+          field={props.fields?.data?.item?.image?.jsonValue}
           next={{
             width: 1000,
             height: 1000,

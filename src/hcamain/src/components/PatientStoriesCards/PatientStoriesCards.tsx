@@ -93,7 +93,7 @@ const returnCards = (
           image={
             abstractImage?.jsonValue?.value?.src ? (
               <NextJssImage
-                field={abstractImage.jsonValue.value}
+                field={abstractImage.jsonValue}
                 editable={false}
                 next={{
                   width: 500,
@@ -103,7 +103,7 @@ const returnCards = (
               />
             ) : (
               <NextJssImage
-                field={image?.jsonValue?.value}
+                field={image?.jsonValue}
                 editable={false}
                 next={{
                   width: 500,

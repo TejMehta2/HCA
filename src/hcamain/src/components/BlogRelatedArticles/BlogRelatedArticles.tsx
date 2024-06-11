@@ -79,7 +79,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           <CardBlog key={index}>
             {card.abstractImage?.jsonValue?.value?.src ? (
               <NextJssImage
-                field={card.abstractImage?.jsonValue.value}
+                field={card.abstractImage?.jsonValue}
                 editable={false}
                 next={{
                   width: 500,
@@ -89,7 +89,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
               />
             ) : (
               <NextJssImage
-                field={card.image?.jsonValue?.value}
+                field={card.image?.jsonValue}
                 editable={false}
                 next={{
                   width: 500,

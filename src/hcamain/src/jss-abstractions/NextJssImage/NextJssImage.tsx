@@ -1,31 +1,26 @@
 import {
-  ImageFieldValue,
+  ImageField,
   Image as JssImage,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from 'next/image';
 
 interface NextJssImageProps {
-  field?: ImageFieldValue;
+  field?: ImageField;
   editable?: boolean;
   next: typeof Image.arguments;
 }
 
 const NextJssImage = (props: NextJssImageProps) => {
-  const { editable = true, next, field } = props;
+  const { editable = undefined, next, field } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
-  if (!field) return <></>;
-  if (!editable || !isExperienceEditor)
-    return <Image {...next} src={field.src} alt={field.alt} />;
-  return (
-    <JssImage
-      field={{
-        value: field,
-        editable: editable,
-      }}
-    />
-  );
+  if (isExperienceEditor) {
+    const editableProp = typeof editable === 'boolean' ? { editable } : {};
+    return <JssImage field={field} {...editableProp} />;
+  }
+  if (!field?.value?.src) return <></>;
+  return <Image {...next} src={field.value.src} alt={field.value.alt || ''} />;
 };
 
 export default NextJssImage;

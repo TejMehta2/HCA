@@ -132,7 +132,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               cards.abstractImage?.jsonValue.value?.src &&
               cards.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
                 <NextJssImage
-                  field={cards.abstractImage.jsonValue.value}
+                  field={cards.abstractImage.jsonValue}
                   editable={false}
                   next={{
                     width: 500,
@@ -142,7 +142,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 />
               ) : (
                 <NextJssImage
-                  field={cards.image?.jsonValue.value}
+                  field={cards.image?.jsonValue}
                   editable={false}
                   next={{
                     width: 500,

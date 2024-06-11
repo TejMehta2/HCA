@@ -105,7 +105,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       }
       image={
         <NextJssImage
-          field={props.fields?.data?.contextItem?.image?.jsonValue?.value}
+          field={props.fields?.data?.contextItem?.image?.jsonValue}
           next={{
             fill: true,
             sizes: '100vw',

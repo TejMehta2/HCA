@@ -130,7 +130,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       cta={cta || <></>}
       image={
         <NextJssImage
-          field={props.fields?.Image?.value}
+          field={props.fields?.Image}
           editable={false}
           next={{
             width: 800,
