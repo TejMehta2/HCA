@@ -238,16 +238,6 @@ async function __getFacilitiesData(serviceURL?: string): Promise<any> {
       },
     });
 
-    /* if running client side, CORS
-    const res = await fetch(requestURL, {
-      headers:
-      {
-        "Content-Type": "application/json",
-        'mode':'no-cors'
-      },
-      cache: 'force-cache',
-      next: { revalidate: 3600 },
-    });*/
     if (res.ok) {
       facilitiesData = await res.json();
     } else {
