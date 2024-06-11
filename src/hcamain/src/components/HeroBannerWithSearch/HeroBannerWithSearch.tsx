@@ -109,6 +109,8 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           next={{
             fill: true,
             sizes: '100vw',
+            loading: 'eager',
+            priority: true,
           }}
         />
       }

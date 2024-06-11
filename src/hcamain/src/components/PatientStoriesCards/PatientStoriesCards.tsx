@@ -16,12 +16,19 @@ import {
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
-import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
 
+const DynamicCarouselCards = dynamic(
+  () =>
+    import('@component-library/site-components/CarouselCards/CarouselCards'),
+  {
+    ssr: false,
+  }
+);
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
@@ -338,7 +345,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
   return (
-    <CarouselCards
+    <DynamicCarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -383,7 +390,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       }
     >
       {patientStoriesCards}
-    </CarouselCards>
+    </DynamicCarouselCards>
   );
 };
 

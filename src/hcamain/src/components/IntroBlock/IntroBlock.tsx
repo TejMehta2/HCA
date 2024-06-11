@@ -8,7 +8,6 @@ import {
   ImageField,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import HomepageIntroBlock from '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 
@@ -18,6 +17,17 @@ import { CQSStatusFields } from 'components/CQCRating/CQCRating.types';
 import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
+
+const DynamicHomepageIntroBlock = dynamic(
+  () =>
+    import(
+      '@component-library/site-components/HomepageIntroBlock/HomepageIntroBlock'
+    ),
+  {
+    ssr: true,
+  }
+);
 
 type HCAIconFields = {
   fields?: {
@@ -101,7 +111,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     label: <JSSText field={counters.fields?.Text} />,
   }));
   return (
-    <HomepageIntroBlock
+    <DynamicHomepageIntroBlock
       imageAlignment={imageAlignment}
       title={
         <Text

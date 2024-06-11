@@ -8,12 +8,19 @@ import {
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import OurLocations from '@component-library/site-components/OurLocations/OurLocations';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import CardLocation from '@component-library/components/CardLocation/CardLocation';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
+import dynamic from 'next/dynamic';
+
+const DynamicOurLocations = dynamic(
+  () => import('@component-library/site-components/OurLocations/OurLocations'),
+  {
+    ssr: false,
+  }
+);
 
 type HCAIconFields = {
   fields?: {
@@ -168,7 +175,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
   });
 
   return (
-    <OurLocations
+    <DynamicOurLocations
       mapAspectRatio={3000 / 3444}
       headerProps={headerProps}
       locations={locationCards}
