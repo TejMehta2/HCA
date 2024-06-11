@@ -12,7 +12,97 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: 
+  Value: |
+    query GetServiceCards($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on ServiceCards {
+          title {
+            jsonValue
+          }
+          heading {
+            jsonValue
+          }
+          description {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          cTACardText {
+            jsonValue
+          }
+          services {
+            servicesList: targetItems {
+              abstractTitle: field(name: "AbstractTitle") {
+                value
+              }
+              abstractText: field(name: "AbstractText") {
+                value
+              }
+              abstractImage: field(name: "AbstractImage") {
+                jsonValue
+              }
+              title: field(name: "Title") {
+                value
+              }
+              text: field(name: "Text") {
+                value
+              }
+              image: field(name: "Image") {
+                jsonValue
+              }
+              ... on ContentPage {
+                url {
+                  path
+                }
+              }
+              ... on LocationPage {
+                url {
+                  path
+                }
+              }
+              ... on BlogPage {
+                url {
+                  path
+                }
+              }
+              ... on PatientStoryPage {
+                url {
+                  path
+                }
+              }
+              ... on SpecialtyPage {
+                url {
+                  path
+                }
+              }
+              ... on ConditionPage {
+                url {
+                  path
+                }
+              }
+              ... on PageProxy {
+                url: field(name: "Link") {
+                  ... on LinkField {
+                    path: url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Service Cards
@@ -84,14 +174,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f310f2cb-bdf2-44cb-9dae-cabf093296ea"
+      Value: "b75a799d-3f73-4688-b3a7-212a508aa4a6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240313T170404Z
+      Value: 20240611T152916Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
