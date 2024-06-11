@@ -893,15 +893,8 @@ export async function submitBookingEnquiry(
 
       //console.log('res', res);
       if (res.ok) {
-        if (isLegacy) {
-          //console.log('res.ok legacy');
-          const retData = await res.text();
-          //console.log('res.ok booking json', retData);
-          returnData = JSON.parse(retData);
-        } else {
-          const data = await res.json();
-          returnData = JSON.parse(data); // this is double encoded!
-        }
+        const retData = await res.text();
+        returnData = JSON.parse(retData);
       } else {
         //makeBookingEnquiry call failed
         let errorDetails = '';
