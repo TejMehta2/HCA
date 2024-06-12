@@ -68,7 +68,7 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
             ),
             image: (
               <NextJssImage
-                field={cards?.fields?.Image?.value}
+                field={cards?.fields?.Image}
                 editable={false}
                 next={{
                   width: 500,

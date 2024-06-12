@@ -17,34 +17,36 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Image from 'next/image';
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
 };
 
-type ServiceFields = {
-  fields?: {
-    AbstractTitle?: Field<string>;
-    AbstractText?: Field<string>;
-    AbstractImage?: ImageField;
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Image?: ImageField;
-  };
-
-  url?: string;
-  name?: string;
-};
+interface ServiceFields {
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  image?: { jsonValue: ImageField };
+  url?: { path?: string };
+}
 
 interface Fields {
-  Heading?: Field<string>;
-  Title?: Field<string>;
-  Description?: Field<string>;
-  CTAIcon?: HCAIconFields;
-  CTALink: LinkField;
-  CTACardText?: Field<string>;
-  Services?: ServiceFields[];
+  data?: {
+    item?: {
+      title?: { jsonValue?: Field<string> };
+      description?: { jsonValue?: Field<string> };
+      heading?: { jsonValue?: Field<string> };
+      cTACardText?: { jsonValue?: Field<string> };
+      services?: {
+        servicesList?: ServiceFields[];
+      };
+      cTAIcon?: {
+        Icon?: CTAIconFields;
+      };
+      cTALink: { jsonValue: LinkField };
+    };
+  };
 }
 
 type ServiceCardsProps = {
@@ -75,50 +77,61 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <ServiceCardsDefaultComponent {...props} />;
   }
-  if (!props?.fields?.Services?.length && !isExperienceEditor) {
+  if (
+    !props.fields?.data?.item?.services?.servicesList?.length &&
+    !isExperienceEditor
+  ) {
     return <></>;
   }
   const headingTag = props.params?.HeadingTag || 'h2';
   return (
     <ServiceCards
       title={
-        (props.fields.Title?.value || isExperienceEditor) && (
+        (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text
-            tag={props.fields.Heading?.value ? 'p' : headingTag}
+            tag={
+              props.fields?.data?.item?.heading?.jsonValue ? 'p' : headingTag
+            }
             variation={props.params?.HeadingSize || 'display-2'}
           >
-            <JssText field={props.fields?.Title} />
+            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>
         )
       }
       subtitle={
-        (props.fields.Heading?.value || isExperienceEditor) && (
+        (props.fields?.data?.item?.heading?.jsonValue ||
+          isExperienceEditor) && (
           <Text tag={headingTag} variation="subheading-1">
-            <JssText field={props.fields?.Heading} />
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         )
       }
       bodyText={
         <RichText>
-          <JssRichText field={props.fields?.Description} />
+          <JssRichText
+            field={props.fields?.data?.item?.description?.jsonValue}
+          />
         </RichText>
       }
       cta={
         isExperienceEditor ? (
-          <JssLink field={props.fields?.CTALink}></JssLink>
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue}
+          ></JssLink>
         ) : (
-          props.fields?.CTALink && (
-            <JssLink field={props.fields?.CTALink.value}>
+          props.fields?.data?.item?.cTALink && (
+            <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
               <SitecoreSvg>
-                {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+                {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
               </SitecoreSvg>
-              {props?.fields?.CTALink?.value?.text && (
+              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: props.fields?.CTALink?.value?.text,
+                    __html:
+                      props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
                   }}
                 ></span>
               )}
@@ -127,35 +140,46 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
         )
       }
     >
-      {props?.fields?.Services?.map((service, index) => (
-        <CardService
-          link={<a href={service.url}>{props?.fields?.CTACardText?.value}</a>}
-          key={index}
-        >
-          {service.fields?.AbstractImage?.value?.src ? (
-            <Image
-              src={service?.fields?.AbstractImage?.value?.src || ''}
-              alt={(service?.fields?.AbstractImage?.value?.alt as string) || ''}
-              width="313"
-              height="317"
-            />
-          ) : (
-            <Image
-              src={service?.fields?.Image?.value?.src || ''}
-              alt={(service?.fields?.Image?.value?.alt as string) || ''}
-              width="313"
-              height="317"
-            />
-          )}
-          <Text tag="div" variation="display-6">
-            {service.fields?.AbstractTitle?.value ? (
-              <JssText field={service?.fields?.AbstractTitle} />
+      {props.fields?.data?.item?.services?.servicesList?.map(
+        (service, index) => (
+          <CardService
+            link={
+              <a href={service?.url?.path}>
+                <JssRichText
+                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                />
+              </a>
+            }
+            key={index}
+          >
+            {service.abstractImage?.jsonValue.value?.src &&
+            service.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
+              <Image
+                src={service?.abstractImage.jsonValue?.value?.src || ''}
+                alt={
+                  (service?.abstractImage.jsonValue?.value?.alt as string) || ''
+                }
+                width="313"
+                height="317"
+              />
             ) : (
-              <JssText field={service?.fields?.Title} />
+              <Image
+                src={service?.image?.jsonValue?.value?.src || ''}
+                alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
+                width="313"
+                height="317"
+              />
             )}
-          </Text>
-        </CardService>
-      ))}
+            <Text tag="div" variation="display-6">
+              {service.abstractTitle?.value ? (
+                <JssText field={service.abstractTitle} />
+              ) : (
+                <JssText field={service.title} />
+              )}
+            </Text>
+          </CardService>
+        )
+      )}
     </ServiceCards>
   );
 };

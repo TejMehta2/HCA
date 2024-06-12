@@ -16,12 +16,20 @@ import {
 import CardBlock from '@component-library/site-components/CardBlock/CardBlock';
 import CardPatientStories from '@component-library/components/CardPatientStories/CardPatientStories';
 import SideScrollingCards from '@component-library/site-components/SideScrollingCards/SideScrollingCards';
-import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
+const DynamicCarouselCards = dynamic(
+  () =>
+    import('@component-library/site-components/CarouselCards/CarouselCards'),
+  {
+    ssr: false,
+  }
+);
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
@@ -86,7 +94,7 @@ const returnCards = (
           image={
             abstractImage?.jsonValue?.value?.src ? (
               <NextJssImage
-                field={abstractImage.jsonValue.value}
+                field={abstractImage.jsonValue}
                 editable={false}
                 next={{
                   width: 500,
@@ -96,7 +104,7 @@ const returnCards = (
               />
             ) : (
               <NextJssImage
-                field={image?.jsonValue?.value}
+                field={image?.jsonValue}
                 editable={false}
                 next={{
                   width: 500,
@@ -153,7 +161,10 @@ const returnCards = (
                 </Text>
               }
               image={
-                <img
+                <Image
+                  width={500}
+                  height={400}
+                  sizes={'(max-width: 768px) 100vw, 30vw'}
                   src={abstractImageUrl || imageUrl}
                   alt={abstractTitle || title}
                 />
@@ -338,7 +349,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
   return (
-    <CarouselCards
+    <DynamicCarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -383,7 +394,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       }
     >
       {patientStoriesCards}
-    </CarouselCards>
+    </DynamicCarouselCards>
   );
 };
 

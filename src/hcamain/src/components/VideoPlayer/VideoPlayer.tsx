@@ -99,7 +99,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
             videoUrl={props.fields?.VideoUrl.value}
             overlayImage={
               <NextJssImage
-                field={props.fields?.VideoThumbnail?.value}
+                field={props.fields?.VideoThumbnail}
                 next={{
                   width: 2000,
                   height: 2000,
@@ -128,7 +128,7 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
           videoUrl={props.fields?.VideoUrl?.value}
           overlayImage={
             <NextJssImage
-              field={props.fields?.VideoThumbnail?.value}
+              field={props.fields?.VideoThumbnail}
               next={{
                 width: 2000,
                 height: 2000,

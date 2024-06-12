@@ -7,37 +7,50 @@ export const formatDaysText = (
   opens: string,
   closes: string
 ) => {
-  const includesAll = (arr: string[], values: string[]) =>
-    values.every((v: string) => arr.includes(v));
+  try {
+    // Check if days provided are an uninterrupted sequence, then form string
+    // Double the weekdays to account for sequences which cross the weekend
+    const weekString = JSON.stringify([
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ]);
+    const daysSubstring = JSON.stringify(days)
+      .replace('[', '')
+      .replace(']', '');
+    const isSequence = days?.length > 1 && weekString.includes(daysSubstring);
+    const availabilityDays = isSequence
+      ? `${days[0]} to ${days[days.length - 1]}`
+      : days.join(', ');
+    const openParsed = parse(opens, 'HH:mm', new Date());
+    const closesParsed = parse(closes, 'HH:mm', new Date());
 
-  let availabilityDays;
+    const opensFormatted =
+      openParsed.getMinutes() > 0
+        ? format(openParsed, 'h:mmaaa')
+        : format(openParsed, 'haaa');
 
-  //  Check if all weekdays are included, or if it's both weekend days or if neither output the days available.
-  //  Trying to account for a case where opening days could be Mon-Wed for example
-  if (
-    includesAll(days, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'])
-  ) {
-    availabilityDays = 'Monday to Friday';
-  } else if (includesAll(days, ['Saturday', 'Sunday'])) {
-    availabilityDays = 'Saturday and Sunday';
-  } else {
-    availabilityDays = days.join(', ');
+    const closesFormatted =
+      closesParsed.getMinutes() > 0
+        ? format(closesParsed, 'h:mmaaa')
+        : format(closesParsed, 'haaa');
+
+    const openingHoursText = `${availabilityDays} ${opensFormatted} - ${closesFormatted}`;
+
+    return openingHoursText;
+  } catch (err) {
+    process.env.NODE_ENV === 'development' && console.error(err);
+    return '';
   }
-
-  const openParsed = parse(opens, 'HH:mm', new Date());
-  const closesParsed = parse(closes, 'HH:mm', new Date());
-
-  const opensFormatted =
-    openParsed.getMinutes() > 0
-      ? format(openParsed, 'h:mmaaa')
-      : format(openParsed, 'haaa');
-
-  const closesFormatted =
-    closesParsed.getMinutes() > 0
-      ? format(closesParsed, 'h:mmaaa')
-      : format(closesParsed, 'haaa');
-
-  const openingHoursText = `${availabilityDays} ${opensFormatted} - ${closesFormatted}`;
-
-  return openingHoursText;
 };

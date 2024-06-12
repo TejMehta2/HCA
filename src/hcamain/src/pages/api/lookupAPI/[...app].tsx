@@ -246,9 +246,14 @@ export default async function handler(
         break;
     }
   }
-
-  res.appendHeader('Cache-Control', 'max-age=60');
-  res.appendHeader('CDN-Cache-Control', 'max-age=300');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=600');
+  if (revalidate.now() || revalidate.noCache()) {
+    res.appendHeader('Cache-Control', 'no-cache');
+    res.appendHeader('CDN-Cache-Control', 'no-cache');
+    res.appendHeader('Vercel-CDN-Cache-Control', 'no-cache');
+  } else {
+    res.appendHeader('Cache-Control', 'max-age=600');
+    res.appendHeader('CDN-Cache-Control', 'max-age=1800');
+    res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
+  }
   return res.status(200).json(output);
 }

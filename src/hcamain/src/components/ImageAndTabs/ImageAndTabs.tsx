@@ -78,7 +78,7 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
         },
         image: (
           <NextJssImage
-            field={tab?.fields?.Image?.value}
+            field={tab?.fields?.Image}
             editable={false}
             next={{
               width: 1000,

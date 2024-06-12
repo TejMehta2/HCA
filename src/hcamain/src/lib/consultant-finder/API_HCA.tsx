@@ -284,7 +284,7 @@ const _getHolidays = unstable_cache(
   undefined,
   {
     tags: ['cacheGetHolidays'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 
@@ -324,7 +324,7 @@ async function __getHolidays(): Promise<string[]> {
       const res = await fetch(holidayURL, {
         cache: 'force-cache',
         next: {
-          revalidate: revalidate.now() || revalidate.noCache() ? false : 604800,
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
       });
       if (res.ok) {
@@ -382,7 +382,7 @@ const _getCMAs = unstable_cache(
   undefined,
   {
     tags: ['cacheGetCMAs'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 
@@ -893,15 +893,8 @@ export async function submitBookingEnquiry(
 
       //console.log('res', res);
       if (res.ok) {
-        if (isLegacy) {
-          //console.log('res.ok legacy');
-          const retData = await res.text();
-          //console.log('res.ok booking json', retData);
-          returnData = JSON.parse(retData);
-        } else {
-          const data = await res.json();
-          returnData = JSON.parse(data); // this is double encoded!
-        }
+        const retData = await res.text();
+        returnData = JSON.parse(retData);
       } else {
         //makeBookingEnquiry call failed
         let errorDetails = '';

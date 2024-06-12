@@ -12,8 +12,8 @@ const GetCMAData = async (
   //console.log('cmaId', cmaId);
   const ret = await getCMA(cmaId as string);
   res.appendHeader('Cache-Control', 'max-age=600');
-  res.appendHeader('CDN-Cache-Control', 'max-age=3000');
-  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=6000');
+  res.appendHeader('CDN-Cache-Control', 'max-age=1800');
+  res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(ret);
 };

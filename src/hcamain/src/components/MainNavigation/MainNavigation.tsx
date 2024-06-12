@@ -12,6 +12,7 @@ import {
 import {
   Link as JssLink,
   Text as JssText,
+  useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
@@ -25,20 +26,29 @@ import { useRouter } from 'next/router';
 
 const MainNavigationDefaultComponent = (
   props: MainNavigationProps
-): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Empty Nav</span>
-    </div>
-  </div>
-);
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Nain Navigation. Please click to select datasource.
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
 
 const TabChildHeading = (props: MainNavigationTabChild) => {
   const { cta, title, template } = props;
   if (template?.name === 'Navigation Blog Post Card' && cta?.jsonValue) {
     // Combine heading and CTA for blog cards to have a link as heading
     return (
-      <JssLink field={cta?.jsonValue}>
+      <JssLink field={cta?.jsonValue} editable={false}>
         <JssText field={title} />
       </JssLink>
     );
@@ -59,36 +69,36 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           variation: child?.variant?.targetItem?.value?.value,
           template: child?.template?.name || 'Main Navigation Links List',
           heading: <TabChildHeading {...child} />,
-          description: <JssText field={child?.description} />,
+          description: <JssText field={child?.description} editable={false} />,
           date: child?.date?.jsonValue ? (
-            <JssDate field={child?.date?.jsonValue} />
+            <JssDate field={child?.date?.jsonValue} editable={false} />
           ) : undefined,
-          tag: <JssText field={child?.tag} />,
+          tag: <JssText field={child?.tag} editable={false} />,
           links: child?.links?.targetItems?.map((result, index) => (
             <TextLink key={index} variation={'body-large'}>
               {result?.link?.jsonValue && (
-                <JssLink field={result?.link?.jsonValue} />
+                <JssLink field={result?.link?.jsonValue} editable={false} />
               )}
             </TextLink>
           )),
           cta: child?.cta?.jsonValue ? (
-            <JssLink field={child?.cta?.jsonValue} />
+            <JssLink field={child?.cta?.jsonValue} editable={false} />
           ) : (
             <></>
           ),
           mobileCta:
             child?.cta?.jsonValue?.value?.href && child?.mobileCtaText ? (
-              <JssLink field={child?.cta?.jsonValue}>
-                <JssText field={child?.mobileCtaText} />
+              <JssLink field={child?.cta?.jsonValue} editable={false}>
+                <JssText field={child?.mobileCtaText} editable={false} />
               </JssLink>
             ) : undefined,
         })) || [],
       mobileTabCta: tab?.mobileTabCta?.jsonValue?.value?.href ? (
-        <JssLink field={tab?.mobileTabCta?.jsonValue} />
+        <JssLink field={tab?.mobileTabCta?.jsonValue} editable={false} />
       ) : undefined,
       tabCta: tab?.tabCta?.jsonValue?.value?.href ? (
-        <JssLink field={tab?.tabCta?.jsonValue}>
-          <JssText field={tab?.tabTitle} />
+        <JssLink field={tab?.tabCta?.jsonValue} editable={false}>
+          <JssText field={tab?.tabTitle} editable={false} />
         </JssLink>
       ) : undefined,
 
@@ -102,7 +112,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           (link, index) => (
             <TextLink key={index} variation={'body-medium'}>
               {link?.link?.jsonValue && (
-                <JssLink field={link?.link?.jsonValue} />
+                <JssLink field={link?.link?.jsonValue} editable={false} />
               )}
             </TextLink>
           )
@@ -115,7 +125,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           (link, index) => (
             <TextLink key={index} variation={'body-medium'}>
               {link?.link?.jsonValue && (
-                <JssLink field={link?.link?.jsonValue} />
+                <JssLink field={link?.link?.jsonValue} editable={false} />
               )}
             </TextLink>
           )
@@ -159,7 +169,10 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           subheading={
             searchModalConfig?.popularSearchesLabel ? (
               <Text variation={'subheading-1'}>
-                <JssText field={searchModalConfig?.popularSearchesLabel} />
+                <JssText
+                  field={searchModalConfig?.popularSearchesLabel}
+                  editable={false}
+                />
               </Text>
             ) : undefined
           }
@@ -172,7 +185,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
                     {search?.icon?.Icon?.svgMarkup?.value}
                   </SitecoreSvg>
                 ),
-                text: <JssText field={search.text} />,
+                text: <JssText field={search.text} editable={false} />,
                 query: search?.text?.value,
               })
             ) || []
