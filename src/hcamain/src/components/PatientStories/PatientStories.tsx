@@ -145,7 +145,7 @@ export const Carousel = (props: PatientStoriesProps): JSX.Element => {
           }
           image={
             <NextJssImage
-              field={story?.image?.jsonValue?.value}
+              field={story?.image?.jsonValue}
               editable={false}
               next={{
                 width: 500,
@@ -231,7 +231,7 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
           }
           image={
             <NextJssImage
-              field={story?.image?.jsonValue?.value}
+              field={story?.image?.jsonValue}
               editable={false}
               next={{
                 width: 500,

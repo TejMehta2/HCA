@@ -88,7 +88,7 @@ const outputImageAndTextBlock = (
       iconList={outputAmenitiesList(props)}
       image={
         <NextJssImage
-          field={props.fields?.Image?.value}
+          field={props.fields?.Image}
           next={{
             width: 1000,
             height: 1000,

@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, Suspense } from 'react';
+import React, { Component, ErrorInfo, ReactNode, Suspense } from 'react';
 
 // Catches errors during server-side pre-render via suspense
 // Catches error during client side rendering in production
@@ -24,9 +24,11 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   // TODO - report error on client-side monitoring once available
-  // public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-  //   console.error('Uncaught error:', error, errorInfo);
-  // }
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Uncaught error:', error, errorInfo);
+    }
+  }
 
   public render() {
     if (this.state.hasError) {

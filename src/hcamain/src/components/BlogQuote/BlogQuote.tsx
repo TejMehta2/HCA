@@ -61,7 +61,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
               name: <JssText field={props.fields?.Author?.[0]?.fields?.Name} />,
               image: (
                 <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar?.value}
+                  field={props.fields?.Author?.[0]?.fields?.Avatar}
                   next={{
                     width: '70',
                     height: '70',

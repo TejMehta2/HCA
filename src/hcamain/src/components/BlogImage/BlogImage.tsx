@@ -58,7 +58,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       >
         <figure>
           <NextJssImage
-            field={image?.value}
+            field={image}
             editable={false}
             next={{
               width: 2000,
@@ -80,7 +80,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       >
         <figure>
           <NextJssImage
-            field={image?.value}
+            field={image}
             editable={false}
             next={{
               width: 2000,

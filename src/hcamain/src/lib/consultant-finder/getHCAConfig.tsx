@@ -100,7 +100,7 @@ const _GetHCAConfig = unstable_cache(
   undefined,
   {
     tags: ['cacheGetHCAConfig'],
-    revalidate: 604800,
+    revalidate: 3600,
   }
 );
 // this has the same effect as revalidateTag('cacheGetHCAConfig');

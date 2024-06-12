@@ -74,6 +74,10 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
     try {
       // Note: Next.js runs export in production mode
       paths = await sitemapFetcher.fetch(context);
+      // Sort paths array by length ascending, so we statically build home page and landing pages first.
+      try {
+        paths.sort((a, b) => a.params.path.length - b.params.path.length);
+      } catch (_) {}
     } catch (error) {
       console.log('Error occurred while fetching static paths');
       console.log(error);

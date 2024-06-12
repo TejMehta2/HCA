@@ -239,7 +239,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
               image={
                 withImage ? (
                   <NextJssImage
-                    field={imageField?.value}
+                    field={imageField}
                     editable={false}
                     next={{
                       width: 500,
