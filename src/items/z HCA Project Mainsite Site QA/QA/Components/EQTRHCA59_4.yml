@@ -3,6 +3,10 @@ ID: "a73f0ffd-bf63-4a98-9947-c2c6ee4382c5"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA59_4"
+SharedFields:
+- ID: "24171bf1-c0e1-480e-be76-4c0a1876f916"
+  Hint: Page Design
+  Value: "{1627A290-CB00-4F15-990C-9204530C7FCA}"
 Languages:
 - Language: en
   Versions:
@@ -19,7 +23,15 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
+              uid="{D125EA37-87FC-4AB6-ACFA-24372125F054}"
+              p:before="*"
+              s:ds="local:/Data/hero"
+              s:id="{48EA1434-F118-4CE2-9417-3D42054DF8BB}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B359EB1FC-FA8E-46DA-9B3D-138F2C33DD6F%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="headless-main" />
+            <r
               uid="{CD06035D-FF95-4CAC-B014-63EE414651F0}"
+              p:after="*[1=2]"
               s:ds="local:/Data/Patient Stories Cards"
               s:id="{89DE6A21-463A-4BA5-A58B-76D9189662F2}"
               s:par="HeadingTag=h3&amp;HeadingSize=display-3&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B889E5D6F-D680-41F2-BE02-A943A024650F%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
@@ -48,20 +60,20 @@ Languages:
       Value: London
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5f127f69-7813-4ea7-92b7-4e8a14e849b6"
+      Value: "79e6b8cf-b20f-437d-a636-71441497f00c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "ca93c552-f857-493e-a649-387ff80f0649"
       Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
     - ID: "cf229dd3-d932-42d2-bc6a-a814fa24e67c"
-      Hint: Street
+      Hint: AddressLine1
       Value: Wellington Place St John's Wood
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T074506Z
+      Value: 20240610T173328Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA59_4

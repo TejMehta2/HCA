@@ -48,13 +48,6 @@ Languages:
               s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="headless-main" />
-            <r
-              uid="{4623E356-91BC-4396-B7E5-97D14580693B}"
-              p:after="*[1=2]"
-              s:ds="local:/Page Data/Service Cards - Keep Aspect Ratio"
-              s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
-              s:par="HeadingTag=h1&amp;KeepAspectRatio=1&amp;HeadingSize=display-2&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BA00684C4-9494-45B4-A3E8-36C72CA36988%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -70,14 +63,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7fa572dd-e3cc-4f86-8626-990e9ecc159e"
+      Value: "e0b311f7-e70e-423e-92da-2227a1404c0f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240523T142600Z
+      Value: 20240611T163231Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA1

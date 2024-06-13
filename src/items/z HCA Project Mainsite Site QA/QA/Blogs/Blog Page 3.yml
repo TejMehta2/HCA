@@ -35,21 +35,21 @@ Languages:
       Value: Sed euismod congue vehicula. Quisque a eros ac est varius consectetur at eu mauris. Maecenas fermentum vel ex eu euismod. Aenean iaculis magna et lacus tincidunt vestibulum. Mauris ac dui venenatis erat tempor pellentesque. Duis ullamcorper rhoncus ullamcorper. Donec bibendum dictum mauris eu laoreet. Aenean feugiat mi sed lorem cursus molestie
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "aba6d95c-a197-4374-ad1e-d040c36cfd64"
+      Value: "0ede7bb3-deac-4ee6-83f7-d1d5fc6bee9d"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
-        <image mediaid="{2F8B4D7D-5BCD-4E93-8BD8-66B2C7DE8A18}" />
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/7e20388ed43742328489518083bc40c3?v=79022e5d" dam-id="UqIo8jZmQK-p5zM5yTzysQ" width="1000" height="1250" alt="New born baby1090396236.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231925/thumbnail" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240523T102501Z
+      Value: 20240613T135725Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Harley Street Clinic retain CQC 'Outstanding' rating
