@@ -14,7 +14,6 @@ import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 
 const YextFiltersAdaptor = (): JSX.Element | JSX.Element[] => {
   const facets = useSearchState((state) => state.filters.facets);
-  console.log(facets);
   const resultCount = useSearchState((state) => state.vertical.resultsCount);
 
   const searchActions = useSearchActions();
@@ -33,7 +32,7 @@ const YextFiltersAdaptor = (): JSX.Element | JSX.Element[] => {
     .map((facet) => {
       if (
         facet.options[0]?.matcher === '$eq' &&
-        facet.fieldId === 'address.city'
+        ['c_locationCity', 'address.city'].includes(facet.fieldId)
       ) {
         return (
           <YextFilters
