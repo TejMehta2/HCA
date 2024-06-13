@@ -131,6 +131,33 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               />
             </Text>
           }
+          subtitle={
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text tag="span" variation={'subheading-1'}>
+                  <JssText
+                    field={props.fields?.data?.item?.heading?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
+              <Text tag="span" variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields?.data?.item?.text?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            )
+          }
         />
       }
     >
