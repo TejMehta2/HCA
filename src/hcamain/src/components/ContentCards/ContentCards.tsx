@@ -34,7 +34,9 @@ type CTAIconFields = {
 interface Fields {
   data?: {
     item?: {
+      heading?: { jsonValue?: Field<string> };
       title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
       cTACardText?: { jsonValue?: Field<string> };
       pages?: {
         PagesList?: PagesFields[];
@@ -91,6 +93,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   ) {
     return <></>;
   }
+
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
   ) : (
@@ -126,6 +129,33 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>
+          }
+          subtitle={
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text tag="span" variation={'subheading-1'}>
+                  <JssText
+                    field={props.fields?.data?.item?.heading?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
+              <Text tag="span" variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields?.data?.item?.text?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            )
           }
         />
       }
