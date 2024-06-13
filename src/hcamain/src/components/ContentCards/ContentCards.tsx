@@ -180,11 +180,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               </Text>
             }
             link={
-              <a href={card?.url?.path}>
-                <JssRichText
-                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                />
-              </a>
+              card?.url?.path ? (
+                <a href={card?.url?.path}>
+                  <JssRichText
+                    field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                  />
+                </a>
+              ) : (
+                <></>
+              )
             }
           />
         ))}
