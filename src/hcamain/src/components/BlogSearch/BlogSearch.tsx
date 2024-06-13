@@ -205,15 +205,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
               </span>
             </Text>
           )}
-          {error ? (
-            <ErrorMessage contentVariation="no-container">
-              <Text tag="h2" variation="display-4">
-                No news & articles results found.
-              </Text>
-              <Text tag="p" variation="body-extra-large">
-                Please try another search
-              </Text>
-            </ErrorMessage>
+          {error || !resultsCount ? (
+            <ErrorMessage contentVariation="no-container" />
           ) : (
             <>
               <CardGrid>
