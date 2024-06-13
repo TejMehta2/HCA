@@ -16,10 +16,13 @@ SharedFields:
     query GetContentCards($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on ContentCards {
+          heading {
+            jsonValue
+          }
           title {
             jsonValue
           }
-          heading {
+          text {
             jsonValue
           }
           cTAIcon {
@@ -171,14 +174,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1f26022a-d5e2-4311-a306-31f15391b733"
+      Value: "57e24a34-9459-4fef-89f1-9a7d4d7d7656"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240508T155316Z
+      Value: 20240613T173105Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

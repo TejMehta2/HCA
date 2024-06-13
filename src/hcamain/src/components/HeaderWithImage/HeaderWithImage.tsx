@@ -91,6 +91,8 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           next={{
             fill: true,
             sizes: '100vw',
+            loading: 'eager',
+            priority: true,
           }}
         />
       }

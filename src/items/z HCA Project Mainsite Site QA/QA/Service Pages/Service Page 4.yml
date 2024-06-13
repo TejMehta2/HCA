@@ -23,21 +23,21 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2903750a-fbd1-42fb-83b6-dad206f208de"
+      Value: "ed99288d-4451-4838-9375-d6fcbbb6904b"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
-        <image mediaid="{B16FA499-DC05-40F7-9A2F-1B9C51D85FE0}" />
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/494b4614c9c24310860cd1b8ca08297b?v=090cb609" dam-id="3fqhIR94RG2hNfjplsMb8w" width="3503" height="4379" alt="Woman entering menopause having counseling 1207514066.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231852/thumbnail" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240516T054956Z
+      Value: 20240611T164439Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Neuroscience

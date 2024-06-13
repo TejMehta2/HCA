@@ -225,15 +225,8 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
         </HeaderPlain>
       </Themes>
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
-        {error ? (
-          <ErrorMessage>
-            <Text tag="h2" variation="display-4">
-              No location results found.
-            </Text>
-            <Text tag="p" variation="body-extra-large">
-              Please try another search
-            </Text>
-          </ErrorMessage>
+        {error || !resultsCount ? (
+          <ErrorMessage />
         ) : (
           <SearchWrapper
             ref={searchWrapperRef}

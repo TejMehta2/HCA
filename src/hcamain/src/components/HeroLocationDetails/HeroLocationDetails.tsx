@@ -186,6 +186,8 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           next={{
             fill: true,
             sizes: '100vw',
+            loading: 'eager',
+            priority: true,
           }}
         />
       }

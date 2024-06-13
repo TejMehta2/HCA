@@ -249,4 +249,20 @@ byoc-sitecore-form,
   .component:has([name='HiddenFormInstanceUID']) {
     display: none;
   }
+
+  // Hide/show asterisk for required fields (copied from Sitecore formbuilder inline styles)
+  .shared-input-field label .form-field-label .form-field-required,
+  .checkbox-field .form-field-label .form-field-required,
+  .checkbox-group-field .form-field-label .form-field-required,
+  .single-select-field .form-field-label .form-field-required,
+  .multi-select-field .form-field-label .form-field-required,
+  .radio-group-field .form-field-label .form-field-required,
+  .file-upload-field .form-field-required {
+    display: none;
+  }
+
+  .required-component label .form-field-label .form-field-required,
+  .file-upload-field.required-component .form-field-required {
+    display: initial;
+  }
 }

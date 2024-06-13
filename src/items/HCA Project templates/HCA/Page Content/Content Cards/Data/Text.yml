@@ -1,18 +1,15 @@
 ﻿---
-ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+ID: "a6c561c5-93b4-4722-b42e-4dff83785d8a"
 Parent: "efeb57c6-09bd-4889-afe4-5a83ee96a3e7"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Content Cards/Data/Pages
+Path: /sitecore/templates/Project/HCA/Page Content/Content Cards/Data/Text
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "DataSource=query:./ancestor-or-self::*[@@templateid='{C95057A2-9A53-49A7-900F-7FF699B64E80}']/Home&IncludeTemplatesForSelection=Content Page,Blog Page,Location Page,Patient Story Page,Specialty Page,Page Proxy,Condition Page,Treatment Page"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: TreelistEx
+  Value: Rich Text
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 150
 Languages:
 - Language: en
   Versions:
@@ -20,22 +17,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231218T070448Z
+      Value: 20240613T173535Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e5dd9bb6-f028-4d5f-907b-56fb44e77588"
+      Value: "3409ae8d-7c27-4794-a2d7-df9d7c9322c4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240613T143228Z
+      Value: 20240613T173545Z

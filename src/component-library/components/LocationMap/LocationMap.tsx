@@ -4,6 +4,7 @@ import styles from './LocationMap.module.scss';
 import GoogleMapsEmbed from '../../core-components/GoogleMapsEmbed/GoogleMapsEmbed';
 import mapStyles from '../../components/LocationMap/googleMapsStyles';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
+import Themes from '../../foundation/Themes/Themes';
 
 const LocationMap = (props: LocationMapProps): JSX.Element => {
   const { center, locations, apiKey } = props;
@@ -62,9 +63,9 @@ const LocationMap = (props: LocationMapProps): JSX.Element => {
         {mapMemo}
         <div className={styles.children}>
           {locations.map((location, index) => (
-            <div key={index}>
+            <Themes theme={'J-HCA-Tangerine-20'} key={index}>
               {index === currentCard && location.card(hideCard)}
-            </div>
+            </Themes>
           ))}
         </div>
       </div>

@@ -224,15 +224,8 @@ export const Default = (props: TestsAndScansSearchProps): JSX.Element => {
             </Text>
           )}
 
-          {error ? (
-            <ErrorMessage contentVariation="no-container">
-              <Text tag="h2" variation="display-4">
-                No tests &amp; scans results found.
-              </Text>
-              <Text tag="p" variation="body-extra-large">
-                Please try another search
-              </Text>
-            </ErrorMessage>
+          {error || !resultsCount ? (
+            <ErrorMessage contentVariation="no-container" />
           ) : (
             <>
               <CardGrid>
