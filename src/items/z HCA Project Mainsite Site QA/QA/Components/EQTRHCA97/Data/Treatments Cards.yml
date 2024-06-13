@@ -8,15 +8,24 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: heading
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240318T092909Z
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: test test test testtesttest
     - ID: "60c1cb24-bd52-49e7-9756-e686b25b1b9f"
       Hint: NumberOfCards
       Value: 3
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "55b95297-caff-45b9-9091-9df2acd18879"
+      Value: "0ea0b085-6d11-450a-a6c7-3930a3cd4841"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -30,13 +39,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
       Value: Hip pain treatments
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240603T052307Z
+      Value: 20240613T164255Z
     - ID: "ded86b0c-c734-4019-89c3-6c6a34a1cc8d"
       Hint: CTACardText
       Value: Learn more

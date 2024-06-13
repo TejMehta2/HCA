@@ -23,18 +23,18 @@ Languages:
     - ID: "7e5ae1ed-f9e1-4159-944f-61c9ec66e767"
       Hint: BlogUrl
       Value: |
-        <link class="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" querystring="?articleTypeId=" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blog Search" />
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?articleTypeId=" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6b93db20-e32c-47cd-8a6f-a5a92a323b80"
+      Value: "65a9275a-bc6e-4069-9e1d-3eea0282e9a4"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240526T212833Z
+      Value: 20240613T141928Z

@@ -2,12 +2,11 @@ import React from 'react';
 import {
   Field,
   ImageField,
-  LinkField,
   Text as JssText,
   Link as JssLink,
   RichText as JssRichText,
-  Item,
   useSitecoreContext,
+  LinkFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CardBlogBlock from '@component-library/site-components/CardBlogBlock/CardBlogBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -27,39 +26,42 @@ const DynamicCarouselCards = dynamic(
   }
 );
 
-type HCAIconFields = {
-  fields?: {
-    SvgMarkup?: Field<string>;
-  };
+type CTAIconFields = {
+  svgMarkup?: Field<string>;
 };
 
-type ArticleTypeFields = Item & {
-  fields?: {
-    id?: string;
-    Title?: Field<string>;
-  };
+type ArticleTypeFields = {
+  id?: string;
+  title?: { value?: string };
 };
 
-type BlogFields = Item & {
-  fields?: {
-    AbstractTitle?: Field<string>;
-    AbstractText?: Field<string>;
-    AbstractImage?: ImageField;
-    Title?: Field<string>;
-    Description?: Field<string>;
-    Date?: Field<string>;
-    Image?: ImageField;
-    ArticleType?: ArticleTypeFields;
-  };
-  url?: string;
+type BlogFields = {
+  id?: string;
+  abstractTitle?: { value?: string };
+  abstractText?: { value?: string };
+  abstractImage?: { jsonValue: ImageField };
+  title?: { value?: string };
+  text?: { value?: string };
+  date?: { jsonValue?: Field<string> };
+  image?: { jsonValue?: ImageField };
+  url?: { path?: string };
+  articleType?: { targetItem?: ArticleTypeFields };
 };
 
 interface Fields {
-  Title?: Field<string>;
-  CTAIcon?: HCAIconFields;
-  CTALink: LinkField;
-  Cards?: BlogFields[];
-  BlogUrl?: LinkField;
+  data?: {
+    item?: {
+      title?: { jsonValue?: Field<string> };
+      cTAIcon?: {
+        targetItem?: CTAIconFields;
+      };
+      cTALink: { jsonValue: { value: LinkFieldValue } };
+      blogUrl: { jsonValue: { value: LinkFieldValue } };
+      cards?: {
+        targetItems?: BlogFields[];
+      };
+    };
+  };
 }
 
 type BlogCardsProps = {
@@ -67,18 +69,27 @@ type BlogCardsProps = {
   fields?: Fields;
 };
 
-const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">CTA</span>
+const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Blog Cards. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Carousel = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
@@ -89,22 +100,22 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-5'}
         >
-          <JssText field={props.fields?.Title} />
+          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
       }
       link={
         isExperienceEditor ? (
-          <JssLink field={props.fields?.CTALink}></JssLink>
-        ) : props.fields.BlogUrl?.value.href && props.fields?.CTALink ? (
+          <JssLink
+            field={props.fields?.data?.item?.cTALink?.jsonValue}
+          ></JssLink>
+        ) : props.fields?.data?.item?.cTALink ? (
           <Button size={'large'} variation={'full'}>
-            <JssLink
-              href={props.fields.BlogUrl?.value.href}
-              field={props.fields?.CTALink}
-            >
-              {props?.fields?.CTALink.value.text && (
+            <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+              {props.fields?.data?.item?.cTALink.jsonValue.value.text && (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: props.fields?.CTALink.value.text,
+                    __html:
+                      props.fields?.data?.item?.cTALink.jsonValue.value.text,
                   }}
                 ></span>
               )}
@@ -116,50 +127,56 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'A-HCA-White'}
     >
-      {props.fields?.Cards?.map((card) => {
+      {props.fields?.data?.item?.cards?.targetItems?.map((card) => {
         return (
           <CardBlog key={card.id}>
-            {card.fields?.AbstractImage?.value?.src &&
-            card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
+            {card.abstractImage?.jsonValue.value?.src &&
+            card.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
               <Image
-                src={card.fields.AbstractImage?.value?.src || ''}
-                alt={(card.fields.AbstractImage?.value?.alt as string) || ''}
+                src={card.abstractImage?.jsonValue?.value?.src || ''}
+                alt={
+                  (card.abstractImage?.jsonValue?.value?.alt as string) || ''
+                }
                 width="409"
                 height="268"
               />
             ) : (
               <Image
-                src={card.fields.Image?.value?.src || ''}
-                alt={(card.fields.Image?.value?.alt as string) || ''}
+                src={card.image?.jsonValue?.value?.src || ''}
+                alt={(card.image?.jsonValue?.value?.alt as string) || ''}
                 width="409"
                 height="268"
               />
             )}
-            <JssDate field={card.fields?.Date} editable={false} />
+            <JssDate field={card.date?.jsonValue} editable={false} />
             <Text tag={'h3'} variation={'heading-2'}>
-              <a href={card.url}>
-                {card.fields?.AbstractTitle?.value ? (
-                  <JssText field={card.fields?.AbstractTitle} />
+              <a href={card.url?.path}>
+                {card.abstractTitle?.value ? (
+                  <JssText field={card.abstractTitle} />
                 ) : (
-                  <JssText field={card.fields?.Title} />
+                  <JssText field={card.title} />
                 )}
               </a>
             </Text>
             <Text tag={'p'} variation={'body-large'}>
-              {card.fields?.AbstractText?.value ? (
-                <JssRichText tag="span" field={card.fields.AbstractText} />
+              {card.abstractText?.value ? (
+                <JssRichText tag="span" field={card.abstractText} />
               ) : (
-                <JssRichText tag="span" field={card.fields.Description} />
+                <JssRichText tag="span" field={card.text} />
               )}
             </Text>
             <div>
-              {!!card.fields?.ArticleType?.fields.id && (
+              {card.articleType?.targetItem?.id && (
                 <Tags>
-                  <a
-                    href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                  >
-                    {card.fields?.ArticleType.fields.id}
-                  </a>
+                  {props.fields?.data?.item?.blogUrl?.jsonValue.value.href ? (
+                    <a
+                      href={`${props.fields?.data?.item?.blogUrl?.jsonValue.value.href}${props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring}${card.articleType?.targetItem.id}`}
+                    >
+                      {card.articleType.targetItem.title?.value}
+                    </a>
+                  ) : (
+                    <> {card.articleType.targetItem.title?.value}</>
+                  )}
                 </Tags>
               )}
             </div>
@@ -173,7 +190,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 export const Standard = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
@@ -185,23 +202,23 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
             tag={props.params?.HeadingTag || 'h2'}
             variation={props.params?.HeadingSize || 'display-5'}
           >
-            <JssText field={props.fields?.Title} />
+            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>
         }
         cta={
           isExperienceEditor ? (
-            <JssLink field={props.fields?.CTALink}></JssLink>
-          ) : props.fields.BlogUrl?.value.href &&
-            props.fields?.CTALink?.value.text ? (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink.jsonValue}
+            ></JssLink>
+          ) : props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+            props.fields?.data?.item.cTALink?.jsonValue?.value.text ? (
             <Button size={'large'} variation={'full'}>
-              <JssLink
-                href={props.fields.BlogUrl?.value.href}
-                field={props.fields?.CTALink}
-              >
-                {props?.fields?.CTALink.value.text && (
+              <JssLink field={props.fields?.data?.item.cTALink?.jsonValue}>
+                {props.fields?.data?.item.cTALink?.jsonValue?.value.text && (
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTALink.value.text,
+                      __html:
+                        props.fields?.data?.item.cTALink?.jsonValue?.value.text,
                     }}
                   ></span>
                 )}
@@ -213,7 +230,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         }
         theme={props.params?.Theme || 'A-HCA-White'}
       >
-        {props.fields?.Cards?.map((card, index) => {
+        {props.fields?.data?.item.cards?.targetItems?.map((card, index) => {
           const isFeature = index % 10 === 0 || index % 10 === 7; // scaling logic to accommodate more than 5 cards
           return (
             <CardBlog
@@ -221,54 +238,60 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
               variation={isFeature ? 'feature' : 'default'}
             >
               {isFeature &&
-              card.fields?.AbstractImage?.value?.src &&
-              card.fields?.AbstractImage?.value?.class !== 'scEmptyImage' ? (
+              card.abstractImage?.jsonValue?.value?.src &&
+              card.abstractImage?.jsonValue?.value?.class !== 'scEmptyImage' ? (
                 <Image
-                  src={card.fields.AbstractImage?.value?.src || ''}
-                  alt={(card.fields.AbstractImage?.value?.alt as string) || ''}
+                  src={card.abstractImage?.jsonValue?.value?.src || ''}
+                  alt={
+                    (card.abstractImage?.jsonValue?.value?.alt as string) || ''
+                  }
                   width="644"
                   height="268"
                 />
               ) : (
                 isFeature && (
                   <Image
-                    src={card.fields.Image?.value?.src || ''}
-                    alt={(card.fields.Image?.value?.alt as string) || ''}
+                    src={card.image?.jsonValue?.value?.src || ''}
+                    alt={(card.image?.jsonValue?.value?.alt as string) || ''}
                     width="644"
                     height="268"
                   />
                 )
               )}
-              <JssDate field={card.fields?.Date} editable={false} />
+              <JssDate field={card.date?.jsonValue} editable={false} />
               <Text
                 tag={'h3'}
                 variation={isFeature ? 'display-5' : 'heading-2'}
               >
-                <a href={card.url}>
-                  {card.fields?.AbstractTitle?.value ? (
-                    <JssText field={card.fields?.AbstractTitle} />
+                <a href={card.url?.path}>
+                  {card.abstractTitle?.value ? (
+                    <JssText field={card.abstractTitle} />
                   ) : (
-                    <JssText field={card.fields?.Title} />
+                    <JssText field={card.title} />
                   )}
                 </a>
               </Text>
               {isFeature && (
                 <Text tag={'p'} variation={'body-large'}>
-                  {card.fields?.AbstractText?.value ? (
-                    <JssRichText tag="span" field={card.fields.AbstractText} />
+                  {card.abstractText?.value ? (
+                    <JssRichText tag="span" field={card.abstractText} />
                   ) : (
-                    <JssRichText tag="span" field={card.fields.Description} />
+                    <JssRichText tag="span" field={card.text} />
                   )}
                 </Text>
               )}
               <div>
-                {card.fields.ArticleType && (
+                {card.articleType?.targetItem && (
                   <Tags>
-                    <a
-                      href={`${props.fields?.BlogUrl?.value.href}${props.fields?.BlogUrl?.value.querystring}${card.fields.ArticleType?.id}`}
-                    >
-                      {card.fields?.ArticleType.fields.Title?.value}
-                    </a>
+                    {props.fields?.data?.item?.blogUrl?.jsonValue.value.href ? (
+                      <a
+                        href={`${props.fields?.data?.item?.blogUrl?.jsonValue.value.href}${props.fields?.data?.item?.blogUrl?.jsonValue?.value.querystring}${card.articleType?.targetItem.id}`}
+                      >
+                        {card.articleType.targetItem.title?.value}
+                      </a>
+                    ) : (
+                      <> {card.articleType.targetItem.title?.value}</>
+                    )}
                   </Tags>
                 )}
               </div>
