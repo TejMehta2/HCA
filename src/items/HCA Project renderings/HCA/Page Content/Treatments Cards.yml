@@ -56,7 +56,7 @@ SharedFields:
                   jsonValue
                 }
               }
-              ... on _HCABasePage {
+              ... on _HCABasePageData{
                 title {
                   value
                 }
@@ -183,14 +183,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "36d9f15a-db67-4db8-9e1d-f7066074e5f1"
+      Value: "6dbe5644-2e56-4b90-abe0-71ede0b054f2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240614T183356Z
+      Value: 20240614T193128Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
