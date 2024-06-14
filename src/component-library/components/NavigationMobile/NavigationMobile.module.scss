@@ -76,6 +76,10 @@
     display: flex;
     gap: px-to-rem(19);
     align-items: center;
+
+    .search-wrapper {
+      display: flex;
+    }
   }
 }
 
