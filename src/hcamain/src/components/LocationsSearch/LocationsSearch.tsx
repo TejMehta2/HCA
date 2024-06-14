@@ -36,6 +36,7 @@ import { ApiSearchProps } from 'src/types/searchProps';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
+import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -162,6 +163,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                   ? []
                   : autocompleteData?.map((result) => `${result.LocationName}`)
               }
+              locationCta={<GeolocationPermissionsCta />}
             >
               <Filters
                 submitOnClose={true}
