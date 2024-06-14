@@ -59,7 +59,10 @@ const TabsBlock = (props: TabsBlockProps): JSX.Element => {
 
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper}>
+      <div
+        className={styles.wrapper}
+        data-navigation-type="inpageNavigationClick"
+      >
         <div className={styles.container}>
           <div className={styles.heading}>
             {title && <span className={styles.title}>{title}</span>}

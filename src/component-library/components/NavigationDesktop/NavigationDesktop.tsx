@@ -207,7 +207,6 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   return (
                     <React.Fragment key={tabIndex}>
                       <li
-                        data-navigation-type="navigationOpen"
                         onMouseEnter={tabHandler(tabIndex)}
                         className={[
                           styles.control,
@@ -247,13 +246,15 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   <li
                     key={tabIndex}
                     className={styles.control}
-                    data-navigation-type="navigationOpen"
+                    data-navigation-type="navigationLinkClick"
                   >
                     <TextLink variation="body-medium">{tab.tabCta}</TextLink>
                   </li>
                 );
               })}
-              <li className={styles.control}>{search}</li>
+              <li className={styles.control} data-navigation-type="searchOpen">
+                {search}
+              </li>
             </ul>
           </div>
         </div>
