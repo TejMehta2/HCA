@@ -42,60 +42,37 @@ SharedFields:
           }
           pages {
             PagesList: targetItems {
-              abstractTitle: field(name: "AbstractTitle") {
-                value
-              }
-              abstractText: field(name: "AbstractText") {
-                value
-              }
-              abstractImage: field(name: "AbstractImage") {
-                jsonValue
-              }
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              image: field(name: "Image") {
-                jsonValue
-              }
-              ... on ContentPage {
-                url {
-                  path
+              ... on _Abstracts {
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
                 }
               }
-              ... on LocationPage {
-                url {
-                  path
+              ... on _HCABasePage {
+                title {
+                  value
                 }
-              }
-              ... on BlogPage {
-                url {
-                  path
+                text {
+                  value
                 }
-              }
-              ... on PatientStoryPage {
-                url {
-                  path
-                }
-              }
-              ... on SpecialtyPage {
-                url {
-                  path
-                }
-              }
-              ... on ConditionPage {
-                url {
-                  path
+                image {
+                  jsonValue
                 }
               }
               ... on PageProxy {
-                url: field(name: "Link") {
+                url: link {
                   ... on LinkField {
                     path: url
                   }
                 }
+              }
+              url {
+                path
               }
             }
           }
@@ -174,14 +151,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "57e24a34-9459-4fef-89f1-9a7d4d7d7656"
+      Value: "0110c442-781c-4040-96e5-8f8e15d22e78"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240613T173105Z
+      Value: 20240614T181338Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

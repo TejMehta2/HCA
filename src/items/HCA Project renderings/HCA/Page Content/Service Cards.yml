@@ -16,10 +16,10 @@ SharedFields:
     query GetServiceCards($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on ServiceCards {
-          title {
+          heading {
             jsonValue
           }
-          heading {
+          title {
             jsonValue
           }
           description {
@@ -42,60 +42,37 @@ SharedFields:
           }
           services {
             servicesList: targetItems {
-              abstractTitle: field(name: "AbstractTitle") {
-                value
-              }
-              abstractText: field(name: "AbstractText") {
-                value
-              }
-              abstractImage: field(name: "AbstractImage") {
-                jsonValue
-              }
-              title: field(name: "Title") {
-                value
-              }
-              text: field(name: "Text") {
-                value
-              }
-              image: field(name: "Image") {
-                jsonValue
-              }
-              ... on ContentPage {
-                url {
-                  path
+              ... on _Abstracts {
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
                 }
               }
-              ... on LocationPage {
-                url {
-                  path
+              ... on _HCABasePage {
+                title {
+                  value
                 }
-              }
-              ... on BlogPage {
-                url {
-                  path
+                text {
+                  value
                 }
-              }
-              ... on PatientStoryPage {
-                url {
-                  path
-                }
-              }
-              ... on SpecialtyPage {
-                url {
-                  path
-                }
-              }
-              ... on ConditionPage {
-                url {
-                  path
+                image {
+                  jsonValue
                 }
               }
               ... on PageProxy {
-                url: field(name: "Link") {
+                url: link {
                   ... on LinkField {
                     path: url
                   }
                 }
+              }
+              url {
+                path
               }
             }
           }
@@ -174,14 +151,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b75a799d-3f73-4688-b3a7-212a508aa4a6"
+      Value: "4180f94a-3072-45a0-9479-9a69c2eb7943"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240611T152916Z
+      Value: 20240614T181821Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
