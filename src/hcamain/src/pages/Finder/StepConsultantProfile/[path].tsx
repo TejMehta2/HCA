@@ -26,6 +26,7 @@ import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
 import useRouteChange from '@component-library/hooks/useRouteChange';
 import { FINDER_PROFILE_ROOT_PATH } from 'lib/constants';
+import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 
 const SitecorePage = ({
   notFound,
@@ -34,6 +35,7 @@ const SitecorePage = ({
   headLinks,
 }: SitecorePageProps): JSX.Element => {
   const { isRouteChanging } = useRouteChange();
+  useCustomTracking();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
