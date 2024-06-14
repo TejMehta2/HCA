@@ -51,10 +51,11 @@
 .image {
   @include diamond-image-mask;
 
+  height: calc(100% + #{px-to-rem(1)});
   min-height: px-to-rem(560);
   min-width: px-to-rem(560);
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, calc(-50% - #{px-to-rem(1)}));
 
   @include media(screen-xl) {
     min-height: px-to-rem(680);

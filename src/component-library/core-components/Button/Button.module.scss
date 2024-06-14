@@ -126,7 +126,12 @@
   a,
   button,
   label {
-    padding: px-to-rem(16) $spacing-8;
+    padding: px-to-rem(16) $spacing-6;
+
+    @include media(screen-m) {
+      padding: px-to-rem(16) $spacing-8;
+    }
+
     min-height: $spacing-9;
   }
 }

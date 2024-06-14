@@ -32,7 +32,7 @@ Languages:
       Value: 2865
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b926e9de-a278-45c8-b3ab-b25cc46a19da"
+      Value: "558944a7-47d2-44d3-9056-2accd9fab0a4"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -40,18 +40,18 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
       Value: |
         <span style="background-color: #fef8f5; letter-spacing: -0.48px; color: #4b596f;">There are over 1400 at The Portland, each year. Hear new mums sharing theirs</span>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240523T143224Z
+      Value: 20240611T163914Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Cardiac Care
     - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
       Hint: AbstractImage
       Value: |
-        <image mediaid="{1AD30377-BAF6-4FB0-8687-9B14B5285DD4}" />
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/0afd042eac494245b903cef28c7abd5b?v=799f5045" dam-id="0Z6ev-kASQ6POen9oGrRfA" width="5472" height="3648" alt="Rise of running injuries sports exercise medicine 1203028774.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/230135/thumbnail" />

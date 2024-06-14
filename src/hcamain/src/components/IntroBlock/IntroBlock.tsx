@@ -70,13 +70,22 @@ export type IntroBlockProps = {
   fields?: Fields;
 };
 
-const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => (
-  <div className={`component ${props.params?.styles}`}>
-    <div className="component-content">
-      <span className="is-empty-hint">Intro Block no datasource</span>
+const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  return !isExperienceEditor ? (
+    <></>
+  ) : (
+    <div className={`component ${props.params?.styles}`}>
+      <div className="component-content">
+        <span className="is-empty-hint">
+          Intro Block. Please click to select datasource.
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 interface ImageLeftProps extends IntroBlockProps {
   imageAlignment: 'left' | 'right';

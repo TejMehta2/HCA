@@ -10,6 +10,76 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query GetBlogCards($datasource: String!, $language: String!) {
+      item(path: $datasource, language: $language) {
+        ... on BlogCards {
+          title {
+            jsonValue
+          }
+    
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          blogUrl {
+            jsonValue
+          }
+          cards {
+            targetItems {
+              ... on BlogPage {
+                id
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
+                }
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                image {
+                  jsonValue
+                }
+                date {
+                  jsonValue
+                }
+                articleType {
+                  targetItem {
+                    ... on Tag {
+                      id
+                      title {
+                        value
+                      }
+                    }
+                  }
+                }
+                url {
+                  path
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Blog Cards
@@ -78,14 +148,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5cb6a92b-b93e-4590-8db1-840db02cc689"
+      Value: "24d6c45a-4e8a-4adc-ba6b-6efce8ffe7b2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240118T085025Z
+      Value: 20240613T150801Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
