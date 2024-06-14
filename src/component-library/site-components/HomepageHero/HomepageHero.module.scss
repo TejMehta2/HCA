@@ -85,21 +85,30 @@
   z-index: -1;
 
   @include media(screen-m) {
-    right: calc(var(--image-size) * -0.36);
-    bottom: calc(var(--image-size) * -0.25);
+    right: 0;
+    bottom: px-to-rem(-150);
+    width: 70vw;
+    height: 120vw;
+    max-width: px-to-rem(500);
+    max-height: px-to-rem(900);
     left: unset;
     transform: none;
+    mask-size: cover;
+    mask-position: left center;
   }
 
   @include media(screen-l) {
-    top: -46%;
-    right: calc(var(--image-size) * -0.5);
-    bottom: unset;
+    right: 0;
+    bottom: px-to-rem(-300);
+    height: calc(100vh + 2 * px-to-rem(300));
+    width: 45vw;
+    left: unset;
+    max-width: initial;
+    max-height: initial;
   }
 
   @include media(screen-xl) {
-    top: -42%;
-    right: calc(var(--image-size) * -0.4);
+    width: 55vw;
   }
 
   img {
@@ -107,9 +116,5 @@
     height: 100%;
     object-position: center;
     object-fit: cover;
-
-    @include media(screen-m) {
-      object-position: right;
-    }
   }
 }
