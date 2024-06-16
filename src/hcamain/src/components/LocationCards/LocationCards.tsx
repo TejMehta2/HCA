@@ -353,7 +353,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       }
       bodyCopy={
         <Text variation={'body-large'}>
-          <JssText field={props.fields?.data?.item?.text?.jsonValue} />
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
       link={
