@@ -52,14 +52,14 @@ SharedFields:
           }
           practice {
             PracticeList: targetItems {
-              doctifyPractice: field(name: "Doctify Practice") {
+              practice: field(name: "Doctify Practice") {
                 value
               }
             }
           }
           service {
             ServicesList: targetItems {
-              doctifyKeywordId: field(name: "Doctify KeywordId") {
+              keywordId: field(name: "Doctify KeywordId") {
                 value
               }
             }
@@ -170,14 +170,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "081ead6b-d89f-4c46-affe-577fff8cb29a"
+      Value: "fe8e9fe1-cf4d-4625-b584-c7a594e11be2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240328T134559Z
+      Value: 20240617T140447Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
