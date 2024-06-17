@@ -13,7 +13,11 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetTestAndScansCards($datasource: String!, $contextItem: String!, $language: String!) {
+    query GetTestAndScansCards(
+      $datasource: String!
+      $contextItem: String!
+      $language: String!
+    ) {
       item(path: $datasource, language: $language) {
         ... on TestAndScansCards {
           heading {
@@ -45,6 +49,47 @@ SharedFields:
           }
           testAndScans {
             TestAndScansList: targetItems {
+              ... on _Abstracts {
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
+                }
+              }
+              ... on _HCABasePageData{
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                image {
+                  jsonValue
+                }
+              }
+              ... on PageProxy {
+                url: link {
+                  ... on LinkField {
+                    path: url
+                  }
+                }
+              }
+              url {
+                path
+              }
+            }
+          }
+        }
+      }
+      contextItem: item(path: $contextItem, language: $language) {
+        id
+        ... on _diagnosisSelector {
+          diagnosis {
+            DiagnosisList: targetItems {
               ... on DiagnosisPage {
                 abstractTitle {
                   value
@@ -66,35 +111,6 @@ SharedFields:
                 }
                 url {
                   path
-                }
-              }
-            }
-          }
-        }
-      }
-      contextItem: item(path: $contextItem, language: $language) {
-        ... on ConditionPage {
-          id
-          diagnosis {
-            DiagnosisList: targetItems {
-              ... on DiagnosisPage {
-                abstractTitle {
-                  value
-                }
-                abstractText {
-                  value
-                }
-                abstractImage {
-                  jsonValue
-                }
-                title {
-                  value
-                }
-                text {
-                  value
-                }
-                image {
-                  jsonValue
                 }
               }
             }
@@ -171,14 +187,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6d3f0c5b-1b36-45e9-962a-1c1567463bff"
+      Value: "6bb2074d-3922-4657-b936-cf928f0960c8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T162043Z
+      Value: 20240614T193117Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

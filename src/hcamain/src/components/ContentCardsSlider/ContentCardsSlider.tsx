@@ -35,6 +35,7 @@ interface Fields {
     item?: {
       heading?: { jsonValue?: Field<string> };
       title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
@@ -121,6 +122,11 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         )
+      }
+      bodyCopy={
+        <Text variation={'body-large'}>
+          <RichText field={props.fields?.data?.item?.text?.jsonValue} />
+        </Text>
       }
       link={link || <></>}
     >
