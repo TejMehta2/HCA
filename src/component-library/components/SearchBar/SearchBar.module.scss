@@ -15,10 +15,6 @@
 
     > :nth-child(1n + 2) {
       flex-grow: 1;
-
-      button {
-        width: 100%;
-      }
     }
   }
 }

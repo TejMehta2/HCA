@@ -246,6 +246,33 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
               />
             </Text>
           }
+          subtitle={
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text tag="span" variation={'subheading-1'}>
+                  <JssText
+                    field={props.fields?.data?.item?.heading?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
+              <Text tag="span" variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields?.data?.item?.text?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            )
+          }
         />
       }
       cta={
@@ -309,9 +336,24 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
           />
         </Text>
       }
+      subtitle={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            <Text tag="span" variation={'subheading-1'}>
+              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+            </Text>
+          ) : (
+            <></>
+          )
+        ) : (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        )
+      }
       bodyCopy={
         <Text variation={'body-large'}>
-          <JssText field={props.fields?.data?.item?.text?.jsonValue} />
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
       link={

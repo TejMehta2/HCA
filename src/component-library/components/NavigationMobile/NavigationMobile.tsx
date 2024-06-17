@@ -109,7 +109,12 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
               {isOpen ? <LogoWhite /> : <LogoBlue />}
             </a>
             <div className={styles.ctas}>
-              {search}
+              <div
+                className={styles['search-wrapper']}
+                data-navigation-type="searchOpen"
+              >
+                {search}
+              </div>
               {toggleButton}
             </div>
           </div>

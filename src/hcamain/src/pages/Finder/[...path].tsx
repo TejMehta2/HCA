@@ -21,6 +21,7 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import NotFound from 'src/NotFound';
+import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 
 const SitecorePage = ({
   notFound,
@@ -29,6 +30,7 @@ const SitecorePage = ({
   headLinks,
 }: SitecorePageProps): JSX.Element => {
   const { isRouteChanging } = useRouteChange();
+  useCustomTracking();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();

@@ -104,7 +104,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         >
           <JssTextWithEntityName
             field={{
-              value: props.fields?.data?.item?.cTACardText?.jsonValue?.value,
+              value: props.fields?.data?.item?.cTALink?.jsonValue?.value.text,
             }}
             isRichText={true}
           />
@@ -217,6 +217,33 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                 field={props.fields?.data?.item?.title?.jsonValue}
               />
             </Text>
+          }
+          subtitle={
+            !isExperienceEditor ? (
+              props.fields?.data?.item?.heading?.jsonValue?.value ? (
+                <Text tag="span" variation={'subheading-1'}>
+                  <JssText
+                    field={props.fields?.data?.item?.heading?.jsonValue}
+                  />
+                </Text>
+              ) : (
+                <></>
+              )
+            ) : (
+              <Text tag="span" variation={'subheading-1'}>
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            )
+          }
+          body={
+            (props.fields?.data?.item?.text?.jsonValue ||
+              isExperienceEditor) && (
+              <Text tag="div" variation="body-large">
+                <JssRichText
+                  field={props.fields?.data?.item?.text?.jsonValue}
+                />
+              </Text>
+            )
           }
         />
       }

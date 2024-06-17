@@ -39,7 +39,10 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
   const combinedParams = [...baselineParams, ...(searchParams.entries() || [])]; // Collect defaults and dynamic params from query
 
   // Apply near param from geolocation middleware cookie
-  if (typeof window !== 'undefined') {
+  if (
+    typeof window !== 'undefined' &&
+    !combinedParams.some(([key]) => key === 'near')
+  ) {
     const regex = new RegExp(/near=([\w\s]+)(?=;|$)/gm);
     const near = regex.exec(document?.cookie)?.[1];
     if (near?.length) {
