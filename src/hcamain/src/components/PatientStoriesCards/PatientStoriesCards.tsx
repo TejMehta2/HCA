@@ -359,6 +359,26 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
       }
+      subtitle={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            <Text tag="span" variation={'subheading-1'}>
+              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+            </Text>
+          ) : (
+            <></>
+          )
+        ) : (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        )
+      }
+      bodyCopy={
+        <Text variation={'body-large'}>
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
+        </Text>
+      }
       link={
         !isExperienceEditor ? (
           props.fields?.data?.item?.cTALink?.jsonValue.value && (
@@ -467,7 +487,7 @@ export const SliderWithLeftText = (
       }
       bodyCopy={
         <JssRichText
-          tag="span"
+          tag="div"
           field={props.fields?.data?.item?.text?.jsonValue}
         />
       }
