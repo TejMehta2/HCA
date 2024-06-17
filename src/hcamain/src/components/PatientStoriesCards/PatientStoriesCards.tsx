@@ -20,16 +20,10 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-const DynamicCarouselCards = dynamic(
-  () =>
-    import('@component-library/site-components/CarouselCards/CarouselCards'),
-  {
-    ssr: false,
-  }
-);
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
@@ -161,13 +155,15 @@ const returnCards = (
                 </Text>
               }
               image={
-                <Image
-                  width={500}
-                  height={400}
-                  sizes={'(max-width: 768px) 100vw, 30vw'}
-                  src={abstractImageUrl || imageUrl}
-                  alt={abstractTitle || title}
-                />
+                abstractImageUrl || imageUrl ? (
+                  <Image
+                    width={500}
+                    height={400}
+                    sizes={'(max-width: 768px) 100vw, 30vw'}
+                    src={abstractImageUrl || imageUrl}
+                    alt={abstractTitle || title}
+                  />
+                ) : undefined
               }
               link={
                 <a href={url}>
@@ -348,8 +344,9 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
+
   return (
-    <DynamicCarouselCards
+    <CarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -394,6 +391,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
               {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <>
                   <JssRichText
+                    tag="div"
                     field={{
                       value:
                         props.fields?.data?.item?.cTALink?.jsonValue?.value
@@ -414,7 +412,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       }
     >
       {patientStoriesCards}
-    </DynamicCarouselCards>
+    </CarouselCards>
   );
 };
 
