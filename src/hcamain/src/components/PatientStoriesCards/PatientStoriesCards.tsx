@@ -20,18 +20,10 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
-const DynamicCarouselCards = dynamic(
-  () =>
-    import('@component-library/site-components/CarouselCards/CarouselCards'),
-  {
-    ssr: false,
-  }
-);
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
