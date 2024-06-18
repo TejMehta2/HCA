@@ -31,6 +31,7 @@ import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/servicelines`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/servicelines`;
@@ -234,11 +235,19 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                     abstractTitle,
                     abstractText,
                     abstractImageUrl,
+                    primaryImageUrl,
                     title,
                     description,
                     imageUrl,
                     url,
                   } = data;
+
+                  const cardImageSrc = ImageUrl(
+                    abstractImageUrl,
+                    primaryImageUrl,
+                    imageUrl
+                  );
+
                   return (
                     <CardContent
                       key={index}
@@ -253,16 +262,9 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                         </Text>
                       }
                       image={
-                        abstractImageUrl ? (
+                        cardImageSrc !== undefined ? (
                           <Image
-                            src={abstractImageUrl}
-                            alt=""
-                            width="363"
-                            height="243"
-                          />
-                        ) : imageUrl ? (
-                          <Image
-                            src={imageUrl}
+                            src={cardImageSrc}
                             alt=""
                             width="363"
                             height="243"

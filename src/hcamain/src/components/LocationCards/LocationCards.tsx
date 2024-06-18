@@ -20,6 +20,7 @@ import CardMap from '@component-library/components/CardMap/CardMap';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import Image from 'next/image';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -150,53 +151,71 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
     cards =
       locations &&
       locations.map(
-        ({ id, title, name, description, imageUrl, url, directions }) => (
-          <CardMap
-            key={id}
-            title={
-              <Text
-                variation="heading-1"
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
-              >
-                {title || name}
-              </Text>
-            }
-            address={
-              <>
-                {
-                  <Text variation={'body-large'} tag="span">
-                    {description}
-                  </Text>
-                }
-              </>
-            }
-            image={
-              imageUrl ? (
-                <Image
-                  width={500}
-                  height={400}
-                  sizes={'(max-width: 768px) 100vw, 30vw'}
-                  src={imageUrl}
-                  alt={title}
-                />
-              ) : undefined
-            }
-            ctas={{
-              button1: (
-                <a href={url}>
-                  <JssRichText field={linkText} tag="span" />
-                </a>
-              ),
-              button2: (
-                <a href={directions}>
-                  <span>
-                    <JssText field={getDirectionsText} />
-                  </span>
-                </a>
-              ),
-            }}
-          />
-        )
+        ({
+          id,
+          title,
+          name,
+          description,
+          imageUrl,
+          url,
+          abstractImageUrl,
+          primaryImageUrl,
+          directions,
+        }) => {
+          const cardImageSrc = ImageUrl(
+            abstractImageUrl,
+            primaryImageUrl,
+            imageUrl
+          );
+
+          return (
+            <CardMap
+              key={id}
+              title={
+                <Text
+                  variation="heading-1"
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h4')}
+                >
+                  {title || name}
+                </Text>
+              }
+              address={
+                <>
+                  {
+                    <Text variation={'body-large'} tag="span">
+                      {description}
+                    </Text>
+                  }
+                </>
+              }
+              image={
+                cardImageSrc !== undefined ? (
+                  <Image
+                    src={cardImageSrc}
+                    alt={title}
+                    width="500"
+                    height="400"
+                    sizes={'(max-width: 768px) 100vw, 30vw'}
+                  />
+                ) : undefined
+              }
+              ctas={{
+                button1: (
+                  <a href={url}>
+                    <JssRichText field={linkText} tag="span" />
+                  </a>
+                ),
+                button2: (
+                  <a href={directions}>
+                    <span>
+                      <JssText field={getDirectionsText} />
+                    </span>
+                  </a>
+                ),
+              }}
+            />
+          );
+        }
       );
   }
 

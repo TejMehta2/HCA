@@ -31,6 +31,7 @@ import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -219,23 +220,28 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                     title,
                     description,
                     imageUrl,
+                    primaryImageUrl,
                     url,
                     date,
                     typeId,
                     typeName,
                   } = data;
 
+                  const cardImageSrc = ImageUrl(
+                    abstractImageUrl,
+                    primaryImageUrl,
+                    imageUrl
+                  );
+
                   return (
                     <CardBlog key={index}>
-                      {abstractImageUrl ? (
+                      {cardImageSrc !== undefined ? (
                         <Image
-                          src={abstractImageUrl}
+                          src={cardImageSrc}
                           alt=""
                           width="363"
                           height="243"
                         />
-                      ) : imageUrl ? (
-                        <Image src={imageUrl} alt="" width="363" height="243" />
                       ) : undefined}
                       <time>{formatDate(new Date(date))}</time>
                       <Text tag={'h3'} variation={'heading-2'}>
