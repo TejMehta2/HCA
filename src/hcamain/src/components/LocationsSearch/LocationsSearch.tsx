@@ -37,6 +37,7 @@ import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorM
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import GeolocationPermissionsCta from './GeolocationPermissionsCta';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -275,12 +276,20 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                           id,
                           abstractTitle,
                           abstractImageUrl,
+                          primaryImageUrl,
                           title,
                           description,
                           imageUrl,
                           url,
                           directions,
                         } = data;
+
+                        const cardImageSrc = ImageUrl(
+                          abstractImageUrl,
+                          primaryImageUrl,
+                          imageUrl
+                        );
+
                         return (
                           <CardMap
                             key={id}
@@ -297,16 +306,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                               ) : undefined
                             }
                             image={
-                              abstractImageUrl ? (
+                              cardImageSrc !== undefined ? (
                                 <Image
-                                  src={abstractImageUrl}
-                                  alt=""
-                                  width="363"
-                                  height="243"
-                                />
-                              ) : imageUrl ? (
-                                <Image
-                                  src={imageUrl}
+                                  src={cardImageSrc}
                                   alt=""
                                   width="363"
                                   height="243"
