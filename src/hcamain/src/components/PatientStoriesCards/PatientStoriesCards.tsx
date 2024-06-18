@@ -21,6 +21,7 @@ import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
@@ -132,50 +133,59 @@ const returnCards = (
             imageUrl,
             url,
             abstractImageUrl,
+            primaryImageUrl,
             abstractTitle,
             abstractText,
-          }) => (
-            <CardPatientStories
-              key={id}
-              title={
-                <Text
-                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-                  variation="display-4"
-                >
-                  {abstractTitle || title || name}
-                </Text>
-              }
-              bodyCopy={
-                <Text tag="span" variation="body-large">
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: abstractText || description,
-                    }}
-                  ></span>
-                </Text>
-              }
-              image={
-                abstractImageUrl || imageUrl ? (
-                  <Image
-                    width={500}
-                    height={400}
-                    sizes={'(max-width: 768px) 100vw, 30vw'}
-                    src={abstractImageUrl || imageUrl}
-                    alt={abstractTitle || title}
-                  />
-                ) : undefined
-              }
-              link={
-                <a href={url}>
-                  <span>
-                    <JssText
-                      field={props.fields?.data?.item?.cTAText?.jsonValue}
+          }) => {
+            const cardImageSrc = ImageUrl(
+              abstractImageUrl,
+              primaryImageUrl,
+              imageUrl
+            );
+
+            return (
+              <CardPatientStories
+                key={id}
+                title={
+                  <Text
+                    tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                    variation="display-4"
+                  >
+                    {abstractTitle || title || name}
+                  </Text>
+                }
+                bodyCopy={
+                  <Text tag="span" variation="body-large">
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: abstractText || description,
+                      }}
+                    ></span>
+                  </Text>
+                }
+                image={
+                  cardImageSrc !== undefined ? (
+                    <Image
+                      width={500}
+                      height={400}
+                      sizes={'(max-width: 768px) 100vw, 30vw'}
+                      src={cardImageSrc}
+                      alt={abstractTitle || title}
                     />
-                  </span>
-                </a>
-              }
-            />
-          )
+                  ) : undefined
+                }
+                link={
+                  <a href={url}>
+                    <span>
+                      <JssText
+                        field={props.fields?.data?.item?.cTAText?.jsonValue}
+                      />
+                    </span>
+                  </a>
+                }
+              />
+            );
+          }
         );
     }
   }
