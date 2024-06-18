@@ -52,14 +52,14 @@ SharedFields:
           }
           practice {
             PracticeList: targetItems {
-              practice: field(name: "Doctify Practice") {
+              practice: field(name: "DoctifyPractice") {
                 value
               }
             }
           }
           service {
             ServicesList: targetItems {
-              keywordId: field(name: "Doctify KeywordId") {
+              keywordId: field(name: "DoctifyKeywordId") {
                 value
               }
             }
@@ -80,28 +80,27 @@ SharedFields:
       }
       contextItemSearchParams: item(path: $contextItem, language: $language) {
         ... on SpecialtyPage {
-          doctifyKeywordId {
-            value
-          }
+           keywordId: field(name: "DoctifyKeywordId") {
+                value
+              }
         }
         ... on LocationPage {
-          doctifyPractice {
-            value
-          }
+          practice: field(name: "DoctifyPractice") {
+                value
+              }
         }
         ... on DiagnosisPage {
-          doctifyKeywordId {
-            value
-          }
+          keywordId: field(name: "DoctifyKeywordId") {
+                value
+              }
         }
         ... on TreatmentPage {
-          doctifyKeywordId {
-            value
-          }
+          keywordId: field(name: "DoctifyKeywordId") {
+                value
+              }
         }
       }
     }
-    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
@@ -170,14 +169,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fe8e9fe1-cf4d-4625-b584-c7a594e11be2"
+      Value: "dd003a21-7267-4f61-b64b-93d2f82e4757"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240617T140447Z
+      Value: 20240618T085326Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
