@@ -93,6 +93,8 @@ export type BlogRelatedArticles = {
   name: string;
   description: string;
   imageUrl: string;
+  primaryImageUrl: string;
+  abstractImageUrl: string;
   url: string;
   date: string;
   typeName: string;

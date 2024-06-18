@@ -24,6 +24,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -140,35 +141,56 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   } else if (relatedArticlesDisplayed) {
     cardsList = relatedArticlesDisplayed.map(
       (
-        { imageUrl, name, date, url, title, description, typeName, typeId },
+        {
+          imageUrl,
+          name,
+          date,
+          url,
+          title,
+          description,
+          typeName,
+          typeId,
+          abstractImageUrl,
+          primaryImageUrl,
+        },
         index
-      ) => (
-        <CardBlog key={index}>
-          <Image src={imageUrl} alt={name} width="643" height="605" />
-          <time>{formatDate(new Date(date))}</time>
-          {title && (
-            <Text
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              variation="heading-2"
-            >
-              <a href={`${url}`}>{title}</a>
-            </Text>
-          )}
-          <Text tag="span" variation="body-large">
-            {description}
-          </Text>
+      ) => {
+        const cardImageSrc = ImageUrl(
+          abstractImageUrl,
+          primaryImageUrl,
+          imageUrl
+        );
+        return (
+          <CardBlog key={index}>
+            {cardImageSrc !== undefined ? (
+              <Image src={cardImageSrc} alt={name} width="643" height="605" />
+            ) : undefined}
 
-          <div>
-            {typeId && typeName && (
-              <Tags>
-                <a href={`${baseBlogUrl}?${queryString}=${typeId}`}>
-                  {typeName}
-                </a>
-              </Tags>
+            <time>{formatDate(new Date(date))}</time>
+            {title && (
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                variation="heading-2"
+              >
+                <a href={`${url}`}>{title}</a>
+              </Text>
             )}
-          </div>
-        </CardBlog>
-      )
+            <Text tag="span" variation="body-large">
+              {description}
+            </Text>
+
+            <div>
+              {typeId && typeName && (
+                <Tags>
+                  <a href={`${baseBlogUrl}?${queryString}=${typeId}`}>
+                    {typeName}
+                  </a>
+                </Tags>
+              )}
+            </div>
+          </CardBlog>
+        );
+      }
     );
   }
 
