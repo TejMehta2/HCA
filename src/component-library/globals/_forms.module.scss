@@ -11,7 +11,7 @@ byoc-sitecore-form,
     line-height: 120% !important;
     font-weight: $base-font-weight !important;
 
-    &:not(.submit-button, .global-input-error-message) {
+    &:not(.submit-button, .global-input-error-message, .iti__arrow) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
@@ -32,5 +32,9 @@ byoc-sitecore-form,
 
   .iti__selected-country {
     background-color: transparent !important;
+  }
+
+  .iti__arrow {
+    color: var(--text) !important;
   }
 }
