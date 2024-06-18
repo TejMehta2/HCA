@@ -32,6 +32,8 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
   const ctaQuery = data?.ctaQuery;
 
+  //console.log(props);
+
   if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
     return <DoctorCardsDefaultComponent />;
   }
@@ -175,13 +177,15 @@ export const getStaticProps: GetStaticComponentProps = async (
   const practiceList =
     fields?.practice?.PracticeList.map((item) => [
       'practice',
-      item.doctifyPractice?.value,
+      //item.doctifyPractice?.value,
+      item.practice?.value,
     ]) || [];
 
   const serviceList =
     fields?.service?.ServicesList.map((item) => [
       'service',
-      item.doctifyKeywordId?.value,
+      //item.doctifyKeywordId?.value,
+      item.keywordId?.value,
     ]) || [];
 
   const contextSearchParams = Object.entries(
