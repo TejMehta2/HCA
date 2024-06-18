@@ -35,4 +35,7 @@ byoc-sitecore-form,
     @include responsive-grid-span($breakpoint-l: 8);
   }
 
+  .iti__selected-country {
+    background-color: transparent !important;
+  }
 }
