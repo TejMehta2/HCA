@@ -1,12 +1,5 @@
 @use '../foundation/index.module' as *;
 @use '../utilities/index.module' as *;
-@use '../core-components/Button/Button.module.scss';
-@use '../core-components/TextField/TextField.module.scss';
-@use '../core-components/RadioButton/RadioButton.module.scss';
-@use '../core-components/Checkbox/Checkbox.module.scss';
-@use '../core-components/Textarea/Textarea.module.scss';
-@use '../core-components/SelectField/SelectField.module.scss';
-@use '../core-components/PhoneField/PhoneField.module.scss';
 
 /* stylelint-disable selector-class-pattern, no-descending-specificity */
 
@@ -17,11 +10,13 @@ byoc-sitecore-form,
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
     font-weight: $base-font-weight !important;
+
+    &:not(.submit-button, .global-input-error-message) {
+      color: var(--text) !important;
+      border-color: currentcolor !important;
+    }
   }
-  *:not(.submit-button):not(.global-input-error-message) {
-    color: var(--text) !important;
-    border-color: currentColor !important;
-  }
+
   margin-top: $spacing-8;
   margin-bottom: $spacing-8;
 
