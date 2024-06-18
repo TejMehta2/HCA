@@ -32,8 +32,6 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
   const ctaQuery = data?.ctaQuery;
 
-  //console.log(props);
-
   if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
     return <DoctorCardsDefaultComponent />;
   }
@@ -177,14 +175,12 @@ export const getStaticProps: GetStaticComponentProps = async (
   const practiceList =
     fields?.practice?.PracticeList.map((item) => [
       'practice',
-      //item.doctifyPractice?.value,
       item.practice?.value,
     ]) || [];
 
   const serviceList =
     fields?.service?.ServicesList.map((item) => [
       'service',
-      //item.doctifyKeywordId?.value,
       item.keywordId?.value,
     ]) || [];
 
@@ -197,7 +193,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   ).map(([key, value]) => [key, value.replaceAll(/[{\-}]/g, '').toLowerCase()]); // clean up bad ID characters
 
   const ctaParams = customFilters.map((entry) => `${entry[0]}=${entry[1]}`); // Compute as query strings
-  const ctaQuery = `?${ctaParams.join('&')}`;
 
   // Three cases to decide how to apply params to API call and "view all" CTA
   const hasConsultants = !!consultants?.length; // use the '/find' API with consultant slugs, only add customFilters to the CTA
@@ -206,6 +201,24 @@ export const getStaticProps: GetStaticComponentProps = async (
 
   const hasContextSearchParams =
     contextSearchParams.filter((item) => item[1]?.length).length > 0;
+
+  let ctaQuery;
+  if (hasConsultants) {
+    //  if consultants manually added then only add custom filters
+    ctaQuery = `?${ctaParams.join('&')}`;
+  } else {
+    const paramSource = [
+      ...practiceList,
+      ...serviceList,
+      ...contextSearchParams,
+      ...contextSearchIdParams,
+    ];
+
+    const params = [...customFilters, ...paramSource].map(
+      (entry) => `${entry[0]}=${entry[1]}`
+    );
+    ctaQuery = `?${params.join('&')}`;
+  }
 
   try {
     if (hasConsultants) {
