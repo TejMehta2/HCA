@@ -24,6 +24,7 @@ export interface PageRouteMetadata {
     Text?: Field<string>;
     EntityName?: Field<string>;
     HideFromWebsiteSearch?: Field<boolean>;
+    JsonLdSchema?: Field<string>;
   };
   itemId?: string;
   templateId?: string;
