@@ -52,19 +52,19 @@ const YextResultCardTestsAndTreatments = (
         ) : undefined
       }
       ctas={{
-        button: (
+        button: landingPageUrl ? (
           <a href={landingPageUrl}>
             Learn <b>more</b>
           </a>
-        ),
-        textButton: (
+        ) : undefined,
+        textButton: c_answersPrimaryCallToAction?.link ? (
           <a href={c_answersPrimaryCallToAction?.link}>
             <Icons iconName={'iconStethoscope'} />
             <span>
               Find a <b>consultant</b>
             </span>
           </a>
-        ),
+        ) : undefined,
       }}
     />
   );
