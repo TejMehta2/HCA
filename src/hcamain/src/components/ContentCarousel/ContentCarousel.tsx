@@ -10,6 +10,7 @@ import CarouselContent from '@component-library/site-components/CarouselContent/
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 interface CardFields {
   fields?: {
@@ -63,7 +64,9 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
             ),
             body: (
               <Text tag="p" variation="body-large">
-                <JssRichText tag={'span'} field={cards?.fields?.Text} />
+                <RichText>
+                  <JssRichText tag={'span'} field={cards?.fields?.Text} />
+                </RichText>
               </Text>
             ),
             image: (
