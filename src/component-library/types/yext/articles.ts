@@ -56,6 +56,7 @@ export interface Image {
 
 export interface Ce_patientStory {
   landingPageUrl?: string;
+  c_uRL?: string;
   description?: string;
   name: string;
   c_activeInSearch?: boolean;
@@ -112,4 +113,5 @@ export interface Ce_blogPost {
   c_contentGenTest?: string;
   keywords?: string[];
   id: string;
+  c_uRL: string;
 }

@@ -33,6 +33,7 @@ export interface Data {
   description: string;
   name: string;
   imageUrl: string;
+  primaryImageUrl: string;
   url: string;
   uid: number;
   lat: string;

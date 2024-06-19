@@ -53,6 +53,7 @@ export default interface Faq {
   answer?: string;
   answerV2?: unknown;
   landingPageUrl?: string;
+  c_uRL?: string;
   nudgeEnabled?: boolean;
   primaryConversationContact?: unknown;
   question: string;
