@@ -82,6 +82,8 @@ export type Location = {
   imageUrl: string;
   url: string;
   directions: string;
+  primaryImageUrl: string;
+  abstractImageUrl: string;
 };
 
 export type StaticProps = {

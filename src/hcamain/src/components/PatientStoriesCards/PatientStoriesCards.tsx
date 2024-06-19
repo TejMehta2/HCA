@@ -20,16 +20,11 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import Text from '@component-library/foundation/Text/Text';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
-const DynamicCarouselCards = dynamic(
-  () =>
-    import('@component-library/site-components/CarouselCards/CarouselCards'),
-  {
-    ssr: false,
-  }
-);
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
 
@@ -138,48 +133,59 @@ const returnCards = (
             imageUrl,
             url,
             abstractImageUrl,
+            primaryImageUrl,
             abstractTitle,
             abstractText,
-          }) => (
-            <CardPatientStories
-              key={id}
-              title={
-                <Text
-                  tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-                  variation="display-4"
-                >
-                  {abstractTitle || title || name}
-                </Text>
-              }
-              bodyCopy={
-                <Text tag="span" variation="body-large">
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: abstractText || description,
-                    }}
-                  ></span>
-                </Text>
-              }
-              image={
-                <Image
-                  width={500}
-                  height={400}
-                  sizes={'(max-width: 768px) 100vw, 30vw'}
-                  src={abstractImageUrl || imageUrl}
-                  alt={abstractTitle || title}
-                />
-              }
-              link={
-                <a href={url}>
-                  <span>
-                    <JssText
-                      field={props.fields?.data?.item?.cTAText?.jsonValue}
+          }) => {
+            const cardImageSrc = ImageUrl(
+              abstractImageUrl,
+              primaryImageUrl,
+              imageUrl
+            );
+
+            return (
+              <CardPatientStories
+                key={id}
+                title={
+                  <Text
+                    tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                    variation="display-4"
+                  >
+                    {abstractTitle || title || name}
+                  </Text>
+                }
+                bodyCopy={
+                  <Text tag="span" variation="body-large">
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: abstractText || description,
+                      }}
+                    ></span>
+                  </Text>
+                }
+                image={
+                  cardImageSrc !== undefined ? (
+                    <Image
+                      width={500}
+                      height={400}
+                      sizes={'(max-width: 768px) 100vw, 30vw'}
+                      src={cardImageSrc}
+                      alt={abstractTitle || title}
                     />
-                  </span>
-                </a>
-              }
-            />
-          )
+                  ) : undefined
+                }
+                link={
+                  <a href={url}>
+                    <span>
+                      <JssText
+                        field={props.fields?.data?.item?.cTAText?.jsonValue}
+                      />
+                    </span>
+                  </a>
+                }
+              />
+            );
+          }
         );
     }
   }
@@ -348,8 +354,9 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
+
   return (
-    <DynamicCarouselCards
+    <CarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -357,6 +364,26 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
           variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      subtitle={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            <Text tag="span" variation={'subheading-1'}>
+              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+            </Text>
+          ) : (
+            <></>
+          )
+        ) : (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        )
+      }
+      bodyCopy={
+        <Text variation={'body-large'}>
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
       link={
@@ -374,6 +401,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
               {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
                 <>
                   <JssRichText
+                    tag="div"
                     field={{
                       value:
                         props.fields?.data?.item?.cTALink?.jsonValue?.value
@@ -394,7 +422,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       }
     >
       {patientStoriesCards}
-    </DynamicCarouselCards>
+    </CarouselCards>
   );
 };
 
@@ -467,7 +495,7 @@ export const SliderWithLeftText = (
       }
       bodyCopy={
         <JssRichText
-          tag="span"
+          tag="div"
           field={props.fields?.data?.item?.text?.jsonValue}
         />
       }

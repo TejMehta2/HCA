@@ -19,6 +19,12 @@ SharedFields:
           title {
             jsonValue
           }
+          heading {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
     
           cTAIcon {
             Icon: targetItem {
@@ -148,14 +154,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "24d6c45a-4e8a-4adc-ba6b-6efce8ffe7b2"
+      Value: "c307bb6a-5485-403a-8e10-074a32755fa0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240613T150801Z
+      Value: 20240616T174355Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

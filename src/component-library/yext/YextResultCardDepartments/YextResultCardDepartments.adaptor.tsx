@@ -3,13 +3,15 @@ import Text from '../../foundation/Text/Text';
 import YextResultCardArticles from '../YextResultCardArticles/YextResultCardArticles';
 import { CardProps } from '@yext/search-ui-react';
 import { Ce_patientStory } from '../../types/yext/articles';
+import Icons from '../../foundation/Icons/Icons';
 
 const YextResultCardDepartmentsAdaptor = (
   props: CardProps<Ce_patientStory>
 ): JSX.Element => {
   const { result } = props;
   const { name, rawData } = result;
-  const { c_body, landingPageUrl } = rawData;
+
+  const { c_body, c_uRL, c_answersPrimaryCallToAction } = rawData;
 
   return (
     <YextResultCardArticles
@@ -27,7 +29,19 @@ const YextResultCardDepartmentsAdaptor = (
         ) : undefined
       }
       ctas={{
-        button: <a href={landingPageUrl}>Read more</a>,
+        button: c_uRL ? (
+          <a href={c_uRL}>
+            Learn <b>more</b>
+          </a>
+        ) : undefined,
+        textButton: c_answersPrimaryCallToAction?.link ? (
+          <a href={c_answersPrimaryCallToAction?.link}>
+            <Icons iconName={'iconStethoscope'} />
+            <span>
+              Find a <b>consultant</b>
+            </span>
+          </a>
+        ) : undefined,
       }}
     />
   );

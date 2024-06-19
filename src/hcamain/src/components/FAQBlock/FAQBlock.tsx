@@ -159,9 +159,11 @@ export const Default = (props: FAQProps): JSX.Element => {
         accordions={accordions.accordions}
         ctas={
           isExperienceEditor ? (
-            <JssLink field={props.fields?.CTALink}></JssLink>
+            <Button variation="full" size="large">
+              <JssLink field={props.fields?.CTALink}></JssLink>
+            </Button>
           ) : (
-            !!props.fields?.CTALink?.value?.href && (
+            props.fields?.CTALink?.value?.href && (
               <Button variation="full" size="large">
                 <JssLink field={props.fields?.CTALink}>
                   {props?.fields?.CTAIcon?.fields?.SvgMarkup && (
@@ -229,27 +231,31 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         }
         accordions={accordions.accordions}
         ctas={
-          <Button variation="full" size="large">
-            {isExperienceEditor ? (
+          isExperienceEditor ? (
+            <Button variation="full" size="large">
               <JssLink field={props.fields?.CTALink}></JssLink>
-            ) : (
-              <JssLink field={props.fields?.CTALink}>
-                {props?.fields?.CTAIcon?.fields?.SvgMarkup && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+            </Button>
+          ) : (
+            props.fields?.CTALink?.value?.href && (
+              <Button variation="full" size="large">
+                <JssLink field={props.fields?.CTALink}>
+                  {props?.fields?.CTAIcon?.fields?.SvgMarkup && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: props.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+                      }}
+                    ></span>
+                  )}
+                  <JssRichText
+                    tag="span"
+                    field={{
+                      value: props.fields?.CTALink?.value.text,
                     }}
-                  ></span>
-                )}
-                <JssRichText
-                  tag="span"
-                  field={{
-                    value: props.fields?.CTALink?.value.text,
-                  }}
-                />
-              </JssLink>
-            )}
-          </Button>
+                  />
+                </JssLink>
+              </Button>
+            )
+          )
         }
       />
     </>

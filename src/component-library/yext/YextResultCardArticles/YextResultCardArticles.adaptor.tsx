@@ -4,6 +4,7 @@ import Image from 'next/image';
 import YextResultCardArticles from './YextResultCardArticles';
 import { CardProps } from '@yext/search-ui-react';
 import { Ce_patientStory } from '../../types/yext/articles';
+import Icons from '../../foundation/Icons/Icons';
 
 const YextResultCardArticlesAdaptor = (
   props: CardProps<Ce_patientStory>
@@ -29,6 +30,7 @@ const YextResultCardArticlesAdaptor = (
     c_primaryImage,
     // id: rawData_id,
     // landingPageUrl,
+    c_uRL,
     name,
     // type,
     // uid,
@@ -66,11 +68,19 @@ const YextResultCardArticlesAdaptor = (
         ) : undefined
       }
       ctas={{
-        button: (
-          <a href={c_answersPrimaryCallToAction?.link}>
-            {c_answersPrimaryCallToAction?.label}
+        button: c_uRL ? (
+          <a href={c_uRL}>
+            Learn <b>more</b>
           </a>
-        ),
+        ) : undefined,
+        textButton: c_answersPrimaryCallToAction?.link ? (
+          <a href={c_answersPrimaryCallToAction?.link}>
+            <Icons iconName={'iconStethoscope'} />
+            <span>
+              Find a <b>consultant</b>
+            </span>
+          </a>
+        ) : undefined,
       }}
     />
   );

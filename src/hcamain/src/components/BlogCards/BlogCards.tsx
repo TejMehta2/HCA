@@ -16,15 +16,7 @@ import Tags from '@component-library/core-components/Tags/Tags';
 import Button from '@component-library/core-components/Button/Button';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
-
-const DynamicCarouselCards = dynamic(
-  () =>
-    import('@component-library/site-components/CarouselCards/CarouselCards'),
-  {
-    ssr: false,
-  }
-);
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -51,7 +43,9 @@ type BlogFields = {
 interface Fields {
   data?: {
     item?: {
+      heading?: { jsonValue?: Field<string> };
       title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
       cTAIcon?: {
         targetItem?: CTAIconFields;
       };
@@ -94,13 +88,33 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
   }
 
   return (
-    <DynamicCarouselCards
+    <CarouselCards
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
           variation={props.params?.HeadingSize || 'display-5'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+        </Text>
+      }
+      subtitle={
+        !isExperienceEditor ? (
+          props.fields?.data?.item?.heading?.jsonValue?.value ? (
+            <Text tag="span" variation={'subheading-1'}>
+              <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+            </Text>
+          ) : (
+            <></>
+          )
+        ) : (
+          <Text tag="span" variation={'subheading-1'}>
+            <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+          </Text>
+        )
+      }
+      bodyCopy={
+        <Text variation={'body-large'}>
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
       link={
@@ -183,7 +197,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
           </CardBlog>
         );
       })}
-    </DynamicCarouselCards>
+    </CarouselCards>
   );
 };
 

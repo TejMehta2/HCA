@@ -84,8 +84,9 @@ export type patientStories = {
   url: string;
   pageId: string;
   abstractTitle?: string;
-  abstractImageUrl?: string;
+  abstractImageUrl: string;
   abstractText?: string;
+  primaryImageUrl: string;
 };
 
 export type StaticProps = {

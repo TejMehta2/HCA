@@ -8,11 +8,7 @@ import { linkReducer, columnMapper, SocialMediaCta } from './Footer.utilities';
 import { Default as Doctify } from '../Doctify/Doctify';
 import { Default as CQCRating } from '../CQCRating/CQCRating';
 import Text from '@component-library/foundation/Text/Text';
-import dynamic from 'next/dynamic';
-
-const DynamicFooter = dynamic(
-  () => import('@component-library/site-components/Footer/Footer')
-);
+import Footer from '@component-library/site-components/Footer/Footer';
 
 const FooterDefaultComponent = (props: FooterProps): JSX.Element => (
   <div className={`component ${props.params?.styles}`}>
@@ -62,7 +58,7 @@ export const Default = (props: FooterProps): JSX.Element => {
     []
   );
   return (
-    <DynamicFooter
+    <Footer
       copyright={
         props.fields?.Copyright?.value ? (
           <Text variation={'body-small'}>
