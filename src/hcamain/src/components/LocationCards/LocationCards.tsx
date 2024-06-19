@@ -58,7 +58,6 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
     props?.fields?.data?.item?.locations?.PagesList &&
     props?.fields?.data?.item?.locations?.PagesList.length
   ) {
-    console.log(props?.fields?.data?.item?.locations?.PagesList);
     cards = props?.fields?.data?.item?.locations?.PagesList.map(
       (
         {

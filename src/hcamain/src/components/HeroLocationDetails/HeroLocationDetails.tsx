@@ -82,8 +82,6 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
     }
   );
 
-  console.log(props);
-
   return (
     <HeaderLocation
       title={
