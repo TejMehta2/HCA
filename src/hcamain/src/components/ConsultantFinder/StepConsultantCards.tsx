@@ -918,7 +918,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 </Themes>
               </ConsultantListHeader>
               <ConsultantListHeaderTtitle>
-                <Text tag="h5" variation="display-5">
+                <Text tag="h1" variation="display-5">
                   {props?.fields?.TitleText?.value ||
                     `Let's get you to the right specialist`}
                 </Text>

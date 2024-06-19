@@ -18,10 +18,6 @@
     z-index: 1;
   }
 
-  button {
-    margin-bottom: $spacing-2;
-  }
-
   .btns {
     margin-top: $spacing-2;
     display: flex;
@@ -38,7 +34,7 @@
       margin-right: 0;
     }
 
-    a {
+    a, button {
       padding: px-to-rem(14) $spacing-5;
     }
   }

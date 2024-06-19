@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import { ConsultantCardProps } from './ConsultantCard.types';
 import styles from './ConsultantCard.module.scss';
@@ -11,9 +11,11 @@ import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
 import InfoBox from '../InfoBox/InfoBox';
 import ReadMore from '../ReadMore/ReadMore';
+import ModalCallUs from '../../components/ModalCallUs/ModalCallUs';
 import { formatDateShort } from '../../utility-functions';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
   // get specialties
   const specialties = props.keywords.filter(
     (item: any) => item.keywordType === 'specialty'
@@ -27,6 +29,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
 
   // Callback function to handle datalayer phone reveal tracking
   function callRevealTrack(): void {
+    dialogRef?.current?.showModal();
     /* HWPD-3463 - data layer */
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -38,8 +41,19 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     });
   }
 
+  const phone = [{ text: '020 7079 4344', number: '02070794344' }];
+
+  const contacts: any[] = [];
+  contacts.push({
+    title: 'Call to book',
+    phone: phone?.[0],
+    availability: undefined,
+  });
+  console.log(contacts);
+
   return (
     <div className={styles['consultant-card']}>
+      <ModalCallUs ref={dialogRef} contacts={contacts} />
       <div className={styles['main-content']}>
         <div className={styles.header}>
           <div className={styles.photo}>
@@ -181,7 +195,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
             size="small"
             contentVariation="full-width"
           >
-            <a href={`tel:${props.phoneNumberHref}`} onClick={callRevealTrack}>
+            <button onClick={callRevealTrack}>
               {props.callToBookButtonIcon && (
                 <span
                   dangerouslySetInnerHTML={{
@@ -195,7 +209,7 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
                 </span>
               )}
               <span>{props.callToBookButtonText}</span>
-            </a>
+            </button>
           </Button>
         </div>
         <div className={styles['button-profile']}>
