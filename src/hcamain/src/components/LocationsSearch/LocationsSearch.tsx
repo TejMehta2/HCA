@@ -7,7 +7,6 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
   Autocomplete,
-  Coordinate,
   LocationsSearchProps,
   SearchResponse,
 } from './LocationsSearch.types';
