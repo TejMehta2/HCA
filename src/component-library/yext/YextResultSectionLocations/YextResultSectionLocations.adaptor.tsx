@@ -40,7 +40,9 @@ const YextResultSectionLocationsAdaptor = (
       closed,
       hours,
       c_heroImage,
+      googlePlaceId,
     } = result.rawData;
+
     const id = (index + 1).toString();
 
     const currentDay = new Date().getDay();
@@ -85,16 +87,28 @@ const YextResultSectionLocationsAdaptor = (
             Call
           </a>
         ),
-        textButton: coordinates ? (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://maps.google.com/?q=${result.rawData.geocodedCoordinate?.latitude},${result.rawData.geocodedCoordinate?.longitude}`}
-          >
-            <Icons iconName="iconRedo" />
-            Get directions
-          </a>
-        ) : undefined,
+        textButton:
+          coordinates || googlePlaceId ? (
+            googlePlaceId ? (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://maps.google.com/?q=place_id:${googlePlaceId}`}
+              >
+                <Icons iconName="iconRedo" />
+                Get directions
+              </a>
+            ) : (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://maps.google.com/?q=${result.rawData.geocodedCoordinate?.latitude},${result.rawData.geocodedCoordinate?.longitude}`}
+              >
+                <Icons iconName="iconRedo" />
+                Get directions
+              </a>
+            )
+          ) : undefined,
       },
       address: {
         icon: <Icons iconName={'iconPin'}></Icons>,

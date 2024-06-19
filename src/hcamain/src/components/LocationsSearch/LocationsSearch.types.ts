@@ -24,6 +24,11 @@ export interface Response {
   locationBias: null;
 }
 
+export interface Coordinate {
+  latitude?: number;
+  longitude?: number;
+}
+
 export interface Data {
   id: string;
   type: string;
@@ -39,6 +44,8 @@ export interface Data {
   lat: string;
   lng: string;
   directions: string;
+  googlePlaceId: string;
+  geocodedCoordinate: Coordinate;
 }
 
 export interface HighlightedFields {

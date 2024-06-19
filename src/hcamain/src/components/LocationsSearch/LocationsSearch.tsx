@@ -7,6 +7,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import {
   Autocomplete,
+  Coordinate,
   LocationsSearchProps,
   SearchResponse,
 } from './LocationsSearch.types';
@@ -38,6 +39,7 @@ import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -282,12 +284,20 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                           imageUrl,
                           url,
                           directions,
+                          googlePlaceId,
+                          geocodedCoordinate,
                         } = data;
 
                         const cardImageSrc = ImageUrl(
                           abstractImageUrl,
                           primaryImageUrl,
                           imageUrl
+                        );
+
+                        const directionsLink = returnDirections(
+                          googlePlaceId,
+                          directions,
+                          geocodedCoordinate
                         );
 
                         return (
@@ -325,10 +335,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                   </a>
                                 </Button>
                               ) : undefined,
-                              button2: directions ? (
+                              button2: directionsLink ? (
                                 <TextButton>
                                   <a
-                                    href={directions}
+                                    href={directionsLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                   >
@@ -396,13 +406,23 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                                   />
                                 </a>
                               ),
-                              button2: (
-                                <a href={data.directions}>
+                              button2: returnDirections(
+                                data.googlePlaceId,
+                                data.directions,
+                                data.geocodedCoordinate
+                              ) ? (
+                                <a
+                                  href={returnDirections(
+                                    data.googlePlaceId,
+                                    data.directions,
+                                    data.geocodedCoordinate
+                                  )}
+                                >
                                   <span>
                                     <JssText field={fields.GetDirectionsText} />
                                   </span>
                                 </a>
-                              ),
+                              ) : undefined,
                               close: (
                                 <button onClick={hideCard}>
                                   <span>{t('close') || 'Close'}</span>
