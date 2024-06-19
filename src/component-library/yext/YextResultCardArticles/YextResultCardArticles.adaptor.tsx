@@ -29,7 +29,8 @@ const YextResultCardArticlesAdaptor = (
     c_nameRichText,
     c_primaryImage,
     // id: rawData_id,
-    landingPageUrl,
+    // landingPageUrl,
+    c_uRL,
     name,
     // type,
     // uid,
@@ -67,8 +68,8 @@ const YextResultCardArticlesAdaptor = (
         ) : undefined
       }
       ctas={{
-        button: landingPageUrl ? (
-          <a href={landingPageUrl}>
+        button: c_uRL ? (
+          <a href={c_uRL}>
             Learn <b>more</b>
           </a>
         ) : undefined,

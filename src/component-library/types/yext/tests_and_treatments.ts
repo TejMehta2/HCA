@@ -56,6 +56,7 @@ export enum C_testAndTreatmentCategory {
 
 export default interface Ce_testTreatment {
   landingPageUrl?: string;
+  c_uRL?: string;
   description?: string;
   name: string;
   c_activeInSearch?: boolean;

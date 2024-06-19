@@ -50,6 +50,7 @@ export interface Image {
 
 export default interface Ce_specialty {
   landingPageUrl?: string;
+  c_uRL?: string;
   description?: string;
   name: string;
   c_activeInSearch?: boolean;

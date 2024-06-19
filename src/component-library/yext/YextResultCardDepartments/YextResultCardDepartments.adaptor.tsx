@@ -10,7 +10,8 @@ const YextResultCardDepartmentsAdaptor = (
 ): JSX.Element => {
   const { result } = props;
   const { name, rawData } = result;
-  const { c_body, landingPageUrl, c_answersPrimaryCallToAction } = rawData;
+
+  const { c_body, c_uRL, c_answersPrimaryCallToAction } = rawData;
 
   return (
     <YextResultCardArticles
@@ -28,8 +29,8 @@ const YextResultCardDepartmentsAdaptor = (
         ) : undefined
       }
       ctas={{
-        button: landingPageUrl ? (
-          <a href={landingPageUrl}>
+        button: c_uRL ? (
+          <a href={c_uRL}>
             Learn <b>more</b>
           </a>
         ) : undefined,

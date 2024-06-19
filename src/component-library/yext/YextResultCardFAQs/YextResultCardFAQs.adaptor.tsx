@@ -6,7 +6,7 @@ import Button from '../../core-components/Button/Button';
 
 const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
   const { result } = props;
-  console.log(result);
+
   const {
     // source,
     // index,
@@ -35,6 +35,7 @@ const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
     // name: rawData_name,
     // c_activeInSearch,
     c_answersPrimaryCallToAction,
+    c_uRL,
     // c_answersSecondaryCallToAction,
     // c_linkedLocationFAQSection,
     // c_micrositeBrand,
@@ -48,9 +49,9 @@ const YextResultCardFAQsAdaptor = (props: CardProps<Faq>): JSX.Element => {
     <YextResultCardFAQs title={question}>
       <>
         {answer || ''}
-        {c_answersPrimaryCallToAction ? (
+        {c_uRL ? (
           <Button size={'large'} variation={'full'}>
-            <a href={c_answersPrimaryCallToAction?.link}>
+            <a href={c_uRL}>
               <span>{c_answersPrimaryCallToAction?.label}</span>
             </a>
           </Button>
