@@ -57,6 +57,7 @@ export default interface Job {
   hiringOrganization?: string;
   jobLocation?: EntityReference;
   landingPageUrl?: string;
+  c_uRL?: string;
   location?: Location;
   nudgeEnabled?: boolean;
   primaryConversationContact?: unknown;

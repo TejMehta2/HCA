@@ -532,6 +532,7 @@ export default interface HealthcareProfessional {
   holidayHoursConversationEnabled?: boolean;
   impressum?: string;
   landingPageUrl?: string;
+  c_uRL?: string;
   linkedInUrl?: string;
   neighborhood?: string;
   nudgeEnabled?: boolean;

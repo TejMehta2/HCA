@@ -11,12 +11,13 @@ const YextResultCardTestsAndTreatments = (
 ): JSX.Element => {
   const { result } = props;
   const { rawData } = result;
+
   const {
     c_answersPrimaryCallToAction,
     c_body,
     c_nameRichText,
     c_primaryImage,
-    landingPageUrl,
+    c_uRL,
     name,
   } = rawData;
 
@@ -52,8 +53,8 @@ const YextResultCardTestsAndTreatments = (
         ) : undefined
       }
       ctas={{
-        button: landingPageUrl ? (
-          <a href={landingPageUrl}>
+        button: c_uRL ? (
+          <a href={c_uRL}>
             Learn <b>more</b>
           </a>
         ) : undefined,
