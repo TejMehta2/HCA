@@ -33,6 +33,7 @@ export type PracticeFields = {
   description?: { value?: string };
   image?: { jsonValue: ImageField };
   doctifyPractice?: { value?: string };
+  practice?: { value?: string };
 };
 
 export type ServiceFields = {
@@ -40,6 +41,7 @@ export type ServiceFields = {
   description?: { value?: string };
   image?: { jsonValue: ImageField };
   doctifyKeywordId?: { value?: string };
+  keywordId?: { value?: string };
 };
 
 export type FiltersFields = {
