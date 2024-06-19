@@ -209,12 +209,14 @@ const Schema = (props: SchemaProps) => {
     const ldJsonScripts = curatedJsonLdSchema?.value
       ? parse(curatedJsonLdSchema.value).getElementsByTagName('script')
       : [];
-
-    ldJsonScripts.map((i, x) => {
-      console.log('x', x);
-      console.log('ldJsonScripts.type:', i.getAttribute('type'));
-      console.log('ldJsonScripts:', i.innerHTML);
-    });
+    // console.log('ldJsonScripts', ldJsonScripts.length);
+    // console.log('curatedJsonLdSchema', curatedJsonLdSchema);
+    // ldJsonScripts.map((i, x) => {
+    //   console.log('x', x);
+    //   console.log('ldJsonScripts.type:', i.getAttribute('type'));
+    //   //console.log('ldJsonScripts:', i.innerHTML);
+    // });
+    // console.log('schema', schema.length);
 
     return (
       <>
@@ -230,13 +232,12 @@ const Schema = (props: SchemaProps) => {
 
         {ldJsonScripts.map((i, x) => (
           <script
-            id={x.toString()}
-            key={x}
+            id={`ldjson-${x}`}
+            key={`ldjson-${x}`}
             type={i.getAttribute('type')}
-            dangerouslySetInnerHTML={{
-              __html: i.innerHTML,
-            }}
-          />
+          >
+            {JSON.parse(JSON.stringify(i.innerHTML))}
+          </script>
         ))}
       </>
     );
@@ -244,6 +245,7 @@ const Schema = (props: SchemaProps) => {
     if (process.env.NODE_ENV === 'development') {
       console.log(err);
     }
+
     return <></>;
   }
 };
