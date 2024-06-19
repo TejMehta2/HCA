@@ -30,11 +30,31 @@ byoc-sitecore-form,
     @include responsive-grid-span($breakpoint-l: 8);
   }
 
+  //  phone field overrides
   .iti__selected-country {
     background-color: transparent !important;
   }
 
   .iti__arrow {
     color: var(--text) !important;
+  }
+
+  // override for character limit shown on short fields
+
+  input + .limit-counter {
+    display: none;
+  }
+
+  // Hide/show asterisk for required fields (copied from Sitecore formbuilder inline styles)
+  .shared-input-field label .form-field-label .form-field-required,
+  .checkbox-field .form-field-label .form-field-required,
+  .checkbox-group-field .form-field-label .form-field-required,
+  .single-select-field .form-field-label .form-field-required,
+  .multi-select-field .form-field-label .form-field-required,
+  .radio-group-field .form-field-label .form-field-required,
+  .file-upload-field .form-field-required,
+  .required-component label .form-field-label .form-field-required,
+  .file-upload-field.required-component .form-field-required {
+    display: none;
   }
 }
