@@ -106,6 +106,8 @@ interface Fields {
   CallToBookButtonText: Field<string>;
   CallToBookIcon: any;
   BreadcrumbHomePage: LinkField;
+  CallToBookModalTitle: Field<string>;
+  DisplayNumber: Field<string>;
 }
 
 type StepProps = {
@@ -1025,7 +1027,10 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.TreatmentsTitle?.value || 'Treatments'
                       }
                       phoneNumberHref={
-                        props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                        props?.fields?.PhoneNumberHref?.value || '02070794344'
+                      }
+                      phoneNumberDisplay={
+                        props?.fields?.DisplayNumber?.value || '020 7079 4344'
                       }
                       callToBookButtonText={
                         props?.fields?.CallToBookButtonText?.value ||
@@ -1039,6 +1044,10 @@ export const Default = (props: StepProps): JSX.Element => {
                         consultant?.registrationBodies?.filter(
                           (item: any) => item.name === 'General Medical Council'
                         )[0]?.registrationNumber || ''
+                      }
+                      callToBookModalTitle={
+                        props?.fields?.CallToBookModalTitle?.value ||
+                        'Call to book'
                       }
                     />
                   ))}

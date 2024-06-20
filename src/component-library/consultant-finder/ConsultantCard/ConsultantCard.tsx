@@ -41,11 +41,16 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     });
   }
 
-  const phone = [{ text: '020 7079 4344', number: '02070794344' }];
+  const phone = [
+    {
+      text: props.phoneNumberDisplay,
+      number: props.phoneNumberHref,
+    },
+  ];
 
   const contacts: any[] = [];
   contacts.push({
-    title: 'Call to book',
+    title: props.callToBookModalTitle,
     phone: phone?.[0],
     availability: undefined,
   });

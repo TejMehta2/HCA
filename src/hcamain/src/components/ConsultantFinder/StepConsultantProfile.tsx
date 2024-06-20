@@ -114,6 +114,7 @@ interface Fields {
   EnquireNowButtonLink: LinkField;
   ResultsLink: LinkField;
   BreadcrumbHomePage: LinkField;
+  CallToBookModalTitle: Field<string>;
 }
 interface ServerSideProps {
   Slug: string;
@@ -348,11 +349,16 @@ export const Default = (props: StepProps): JSX.Element => {
     });
   }
 
-  const phone = [{ text: '020 7079 4344', number: '02070794344' }];
+  const phone = [
+    {
+      text: props?.fields?.DisplayNumber?.value || '020 7079 4344',
+      number: props?.fields?.PhoneNumberHref?.value || '02070794344',
+    },
+  ];
 
   const contacts: any[] = [];
   contacts.push({
-    title: 'Call to book',
+    title: props?.fields?.CallToBookModalTitle?.value || 'Call to book',
     phone: phone?.[0],
     availability: undefined,
   });
