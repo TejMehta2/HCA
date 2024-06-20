@@ -72,6 +72,27 @@ const getAccordions = (questions: QuestionFields[]) => {
   return { accordions };
 };
 
+const getSchema = (questions: QuestionFields[]) => {
+  const questionSchema: FAQSchema = [];
+  for (const accordion of questions) {
+    questionSchema.push({
+      '@type': 'Question',
+      name: accordion.fields?.Question?.value,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: accordion.fields?.Answer?.value,
+      },
+    });
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questionSchema,
+  };
+  return faqSchema;
+};
+
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
@@ -97,23 +118,7 @@ export const Default = (props: FAQProps): JSX.Element => {
   }
   const accordions = getAccordions(props.fields?.Questions);
 
-  const questionSchema: FAQSchema = [];
-  for (const accordion of props.fields?.Questions) {
-    questionSchema.push({
-      '@type': 'Question',
-      name: accordion.fields?.Question?.value,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: accordion.fields?.Answer?.value,
-      },
-    });
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questionSchema,
-  };
+  const faqSchema = getSchema(props.fields?.Questions);
 
   return (
     <>
@@ -195,23 +200,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions);
 
-  const questionSchema: FAQSchema = [];
-  for (const accordion of props.fields?.Questions) {
-    questionSchema.push({
-      '@type': 'Question',
-      name: accordion.fields?.Question?.value,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: accordion.fields?.Answer?.value,
-      },
-    });
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questionSchema,
-  };
+  const faqSchema = getSchema(props.fields?.Questions);
 
   return (
     <>
