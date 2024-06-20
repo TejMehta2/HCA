@@ -49,7 +49,6 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     phone: phone?.[0],
     availability: undefined,
   });
-  console.log(contacts);
 
   return (
     <div className={styles['consultant-card']}>

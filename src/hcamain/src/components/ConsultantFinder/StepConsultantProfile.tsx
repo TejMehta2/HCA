@@ -352,25 +352,6 @@ export const Default = (props: StepProps): JSX.Element => {
     });
   }
 
-  // function callRevealTrack(
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ): void {
-  //   event.preventDefault();
-
-  //   // Update state to show phone number
-  //   setShowPhoneNumber(true);
-
-  //   /* HWPD-3463 - data layer */
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     event: 'consultantFinder',
-  //     goalType: 'callReveal',
-  //     consultantName: shortName,
-  //     consultantSpecialty: topSpecialty[0]?.name || '',
-  //     consultantReviews: serverSideData?.ProfileJson?.review?.reviewsTotal || 0,
-  //   });
-  // }
-
   const phone = [{ text: '020 7079 4344', number: '02070794344' }];
 
   const contacts: any[] = [];
@@ -379,7 +360,6 @@ export const Default = (props: StepProps): JSX.Element => {
     phone: phone?.[0],
     availability: undefined,
   });
-  console.log(contacts);
 
   if (props.fields) {
     return (
