@@ -16,7 +16,6 @@ import {
   LinkField,
   useComponentProps,
   ComponentRendering,
-  Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel';
@@ -48,8 +47,6 @@ import Locations from '@component-library/consultant-finder/Locations/Locations'
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import Themes from '@component-library/foundation/Themes/Themes';
 import MobileTabs from '@component-library/consultant-finder/MobileTabs/MobileTabs';
-import Modals from '@component-library/components/Modals/Modals';
-import TextButton from '@component-library/core-components/TextButton/TextButton';
 import {
   capitalizeFirstLetter,
   yearsExperience,
@@ -60,7 +57,6 @@ import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
-import Container from '@component-library/foundation/Containers/Container';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 
 interface Fields {
