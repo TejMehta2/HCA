@@ -48,6 +48,7 @@
     "intl-tel-input": "^23.0.7",
     "next": "^13.4.16",
     "next-localization": "^0.12.0",
+    "node-html-parser": "^6.1.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.52.3",

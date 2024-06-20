@@ -71,7 +71,7 @@ export const Default = (
       {props.fields?.Testimonials?.map((testimonial, index) => (
         <React.Fragment key={index}>
           <Text tag="div" variation="body-extra-large">
-            <RichText tag="p" field={testimonial?.fields?.Text} />
+            <RichText tag="div" field={testimonial?.fields?.Text} />
           </Text>
         </React.Fragment>
       ))}

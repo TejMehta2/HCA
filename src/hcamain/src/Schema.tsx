@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import {
   ComponentRendering,
   LayoutServiceData,
@@ -9,6 +10,7 @@ import { HeroLocationDetailsProps } from 'components/HeroLocationDetails/HeroLoc
 import { IntroBlockProps } from 'components/IntroBlock/IntroBlock';
 import { PageRouteMetadata } from 'components/Metadata/Metadata';
 import { BASE_URL } from 'lib/constants';
+import { parse } from 'node-html-parser';
 
 // This component should be nested inside the NextJS <Head> in the layout, so it can consume layoutData
 // It renders a script tag containing SEO data in the ld/json schema format
@@ -114,6 +116,8 @@ const Schema = (props: SchemaProps) => {
       url: url,
     };
 
+    const curatedJsonLdSchema = meta?.JsonLdSchema;
+
     // Adjust schema based on page type
     let noSchema: boolean = false;
     switch (pageType) {
@@ -197,24 +201,46 @@ const Schema = (props: SchemaProps) => {
         break;
     }
 
-    // don't render if there's no schema - schema data can be set in the component e.g. consultant finder profiles
-    if (noSchema) {
-      return <></>;
-    }
+    // //don't render if there's no schema - schema data can be set in the component e.g. consultant finder profiles
+    // if (noSchema && !curatedJsonLdSchema) {
+    //   return <></>;
+    // }
+
+    // Pass the JSON LD Schema field from the CMS to the parse function
+    const curatedLdJsonScripts = curatedJsonLdSchema?.value
+      ? parse(curatedJsonLdSchema.value).getElementsByTagName('script')
+      : [];
 
     return (
-      <script
-        type="application/ld+json"
-        key="schema"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema),
-        }}
-      />
+      <Head>
+        {!noSchema && (
+          <script
+            type="application/ld+json"
+            key="schema"
+            data-test="schema-schema"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema),
+            }}
+          />
+        )}
+
+        {curatedLdJsonScripts.map((i, x) => (
+          <script
+            id={`ldjson-${x}`}
+            key={`ldjson-${x}`}
+            type={i.getAttribute('type')}
+            dangerouslySetInnerHTML={{
+              __html: i.innerHTML,
+            }}
+          />
+        ))}
+      </Head>
     );
   } catch (err) {
     if (process.env.NODE_ENV === 'development') {
       console.log(err);
     }
+
     return <></>;
   }
 };
