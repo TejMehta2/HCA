@@ -63,7 +63,7 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
               </Text>
             ),
             body: (
-              <Text tag="p" variation="body-large">
+              <Text tag="div" variation="body-large">
                 <RichText>
                   <JssRichText tag={'span'} field={cards?.fields?.Text} />
                 </RichText>

@@ -114,21 +114,24 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
             </>
           }
           image={
-            abstractImage?.jsonValue?.value?.src ? (
-              <Image
-                src={abstractImage?.jsonValue?.value?.src || ''}
-                alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
-                width="363"
-                height="176"
-              />
-            ) : (
-              <Image
-                src={image?.jsonValue?.value?.src || ''}
-                alt={(image?.jsonValue?.value?.alt as string) || ''}
-                width="363"
-                height="176"
-              />
-            )
+            abstractImage?.jsonValue?.value?.src ||
+            image?.jsonValue?.value?.src ? (
+              abstractImage?.jsonValue?.value?.src ? (
+                <Image
+                  src={abstractImage?.jsonValue?.value?.src || ''}
+                  alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
+                  width="363"
+                  height="176"
+                />
+              ) : (
+                <Image
+                  src={image?.jsonValue?.value?.src || ''}
+                  alt={(image?.jsonValue?.value?.alt as string) || ''}
+                  width="363"
+                  height="176"
+                />
+              )
+            ) : undefined
           }
           ctas={{
             button1: (
