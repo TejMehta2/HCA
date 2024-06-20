@@ -108,13 +108,12 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         <SitecoreSvg>
           {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
         </SitecoreSvg>
-        <RichText>
-          <JssRichText
-            field={{
-              value: props.fields?.CTALink?.value?.text,
-            }}
-          />
-        </RichText>
+
+        <JssRichText
+          field={{
+            value: props.fields?.CTALink?.value?.text,
+          }}
+        />
       </JssLink>
     )
   );
