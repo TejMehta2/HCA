@@ -195,9 +195,33 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions);
 
+  const questionSchema: FAQSchema = [];
+  for (const accordion of props.fields?.Questions) {
+    questionSchema.push({
+      '@type': 'Question',
+      name: accordion.fields?.Question?.value,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: accordion.fields?.Answer?.value,
+      },
+    });
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questionSchema,
+  };
+
   return (
     <>
-      <FaqSchema {...accordions.questionSchema} />
+      <Head>
+        <script
+          key="faqs"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </Head>
       <AccordionsBlockSideBySide
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
