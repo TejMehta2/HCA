@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import {
   ComponentRendering,
   LayoutServiceData,
@@ -206,40 +207,34 @@ const Schema = (props: SchemaProps) => {
     // }
 
     // Pass the JSON LD Schema field from the CMS to the parse function
-    const ldJsonScripts = curatedJsonLdSchema?.value
+    const curatedLdJsonScripts = curatedJsonLdSchema?.value
       ? parse(curatedJsonLdSchema.value).getElementsByTagName('script')
       : [];
-    // console.log('ldJsonScripts', ldJsonScripts.length);
-    // console.log('curatedJsonLdSchema', curatedJsonLdSchema);
-    // ldJsonScripts.map((i, x) => {
-    //   console.log('x', x);
-    //   console.log('ldJsonScripts.type:', i.getAttribute('type'));
-    //   //console.log('ldJsonScripts:', i.innerHTML);
-    // });
-    // console.log('schema', schema.length);
 
     return (
-      <>
+      <Head>
         {!noSchema && (
           <script
             type="application/ld+json"
             key="schema"
+            data-test="schema-schema"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(schema),
             }}
           />
         )}
 
-        {ldJsonScripts.map((i, x) => (
+        {curatedLdJsonScripts.map((i, x) => (
           <script
             id={`ldjson-${x}`}
             key={`ldjson-${x}`}
             type={i.getAttribute('type')}
-          >
-            {JSON.parse(JSON.stringify(i.innerHTML))}
-          </script>
+            dangerouslySetInnerHTML={{
+              __html: i.innerHTML,
+            }}
+          />
         ))}
-      </>
+      </Head>
     );
   } catch (err) {
     if (process.env.NODE_ENV === 'development') {
