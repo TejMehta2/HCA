@@ -367,30 +367,6 @@ export const Default = (props: StepProps): JSX.Element => {
         {serverSideData && (
           <div>
             <ModalCallUs ref={dialogRef} contacts={contacts} />
-            {/* <Modals ref={dialogRef}>
-              <Container
-                marginBottom="spacing-8"
-                marginTop="spacing-8"
-                marginLeft="spacing-4"
-                marginRight="spacing-4"
-              >
-                <TextButton>
-                  <a
-                    href={`tel:${
-                      props?.fields?.PhoneNumberHref?.value || '+442045711724'
-                    }`}
-                    onClick={callRevealTrack}
-                  >
-                    <span>
-                      <Icons iconName="iconPhone" />
-                    </span>
-                    <span>
-                      {props?.fields?.PhoneNumberHref?.value || '+442045711724'}
-                    </span>
-                  </a>
-                </TextButton>
-              </Container>
-            </Modals> */}
             <Head>
               <meta name="robots" content="index,follow" />
               <title>{title}</title>
