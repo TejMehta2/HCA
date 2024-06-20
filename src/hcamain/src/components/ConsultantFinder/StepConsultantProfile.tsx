@@ -57,6 +57,7 @@ import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
+import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -113,6 +114,7 @@ interface Fields {
   EnquireNowButtonLink: LinkField;
   ResultsLink: LinkField;
   BreadcrumbHomePage: LinkField;
+  CallToBookModalTitle: Field<string>;
 }
 interface ServerSideProps {
   Slug: string;
@@ -195,6 +197,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const locationsRef = useRef<HTMLDivElement>(null);
   const feesRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   //console.log('bef next apt useEffect', doctifyLoaded);
   useEffect(() => {
     //console.log('next apt useEffect', doctifyLoaded);
@@ -334,6 +337,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   // Callback function to handle datalayer phone reveal tracking
   function callRevealTrack(): void {
+    dialogRef?.current?.showModal();
     /* HWPD-3463 - data layer */
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -345,11 +349,26 @@ export const Default = (props: StepProps): JSX.Element => {
     });
   }
 
+  const phone = [
+    {
+      text: props?.fields?.DisplayNumber?.value || '020 7079 4344',
+      number: props?.fields?.PhoneNumberHref?.value || '02070794344',
+    },
+  ];
+
+  const contacts: any[] = [];
+  contacts.push({
+    title: props?.fields?.CallToBookModalTitle?.value || 'Call to book',
+    phone: phone?.[0],
+    availability: undefined,
+  });
+
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
           <div>
+            <ModalCallUs ref={dialogRef} contacts={contacts} />
             <Head>
               <meta name="robots" content="index,follow" />
               <title>{title}</title>
@@ -800,13 +819,7 @@ export const Default = (props: StepProps): JSX.Element => {
                           </Button>
                         )}
                       <Button variation="outline" size="small">
-                        <a
-                          href={`tel:${
-                            props?.fields?.PhoneNumberHref?.value ||
-                            '+442045711724'
-                          }`}
-                          onClick={callRevealTrack}
-                        >
+                        <button onClick={callRevealTrack}>
                           <span>
                             <Icons iconName="iconPhone" />
                           </span>
@@ -814,7 +827,7 @@ export const Default = (props: StepProps): JSX.Element => {
                             {props?.fields?.CallToBookButtonText?.value ||
                               'Call to book'}
                           </span>
-                        </a>
+                        </button>
                       </Button>
                     </>
                   }
@@ -922,17 +935,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 size="small"
                 contentVariation="full-width"
               >
-                <a
-                  href={`tel:${
-                    props?.fields?.PhoneNumberHref?.value || '+442045711724'
-                  }`}
-                  onClick={callRevealTrack}
-                >
+                <button onClick={callRevealTrack}>
                   <span>
                     {props?.fields?.CallToBookButtonText?.value ||
                       'Call to book'}
                   </span>
-                </a>
+                </button>
               </Button>
             </Navigation>
           </div>
