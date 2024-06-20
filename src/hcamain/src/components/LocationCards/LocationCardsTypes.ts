@@ -5,6 +5,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ApiSearchProps } from 'src/types/searchProps';
 import Params from 'src/types/params';
+import { Coordinate } from 'components/LocationsSearch/LocationsSearch.types';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -84,6 +85,8 @@ export type Location = {
   directions: string;
   primaryImageUrl: string;
   abstractImageUrl: string;
+  geocodedCoordinate: Coordinate;
+  googlePlaceId: string;
 };
 
 export type StaticProps = {

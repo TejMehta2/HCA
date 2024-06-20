@@ -152,7 +152,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         link: (
           <TextButton>
             {props.fields?.data?.contextItem?.getDirections?.jsonValue
-              ?.value && (
+              ?.value ? (
               <a
                 href={
                   props.fields?.data?.contextItem?.getDirections?.jsonValue
@@ -161,7 +161,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
               >
                 Get Directions
               </a>
-            )}
+            ) : undefined}
           </TextButton>
         ),
       }}
