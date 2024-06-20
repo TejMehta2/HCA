@@ -57,7 +57,6 @@ type FAQSchema = {
 
 const getAccordions = (questions: QuestionFields[]) => {
   const accordions: Accordions = [];
-  const questionSchema: FAQSchema = [];
 
   for (const accordion of questions) {
     accordions.push({
@@ -68,36 +67,9 @@ const getAccordions = (questions: QuestionFields[]) => {
         </RichText>
       ),
     });
-
-    questionSchema.push({
-      '@type': 'Question',
-      name: accordion.fields?.Question?.value,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: accordion.fields?.Answer?.value,
-      },
-    });
   }
 
-  return { accordions, questionSchema };
-};
-
-const FaqSchema = (props: FAQSchema): JSX.Element => {
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [props],
-  };
-
-  return (
-    <Head>
-      <script
-        key="faqs"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-    </Head>
-  );
+  return { accordions };
 };
 
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
@@ -125,9 +97,34 @@ export const Default = (props: FAQProps): JSX.Element => {
   }
   const accordions = getAccordions(props.fields?.Questions);
 
+  const questionSchema: FAQSchema = [];
+  for (const accordion of props.fields?.Questions) {
+    questionSchema.push({
+      '@type': 'Question',
+      name: accordion.fields?.Question?.value,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: accordion.fields?.Answer?.value,
+      },
+    });
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questionSchema,
+  };
+
   return (
     <>
-      <FaqSchema {...accordions.questionSchema} />
+      <Head>
+        <script
+          key="faqs"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </Head>
+
       <AccordionsBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
