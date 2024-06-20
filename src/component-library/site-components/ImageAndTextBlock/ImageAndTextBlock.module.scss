@@ -117,16 +117,9 @@
 }
 
 .image-right {
-  & > div:first-of-type {
-    grid-row: 2;
-    padding: $spacing-13 0 0;
-  }
-
-  & > div:last-of-type {
-    grid-row: 1;
-  }
-
   @include media(screen-l) {
+    grid-row: 2;
+
     & > div:first-of-type {
       @include responsive-grid-start($default: 1, $breakpoint-l: 7);
 

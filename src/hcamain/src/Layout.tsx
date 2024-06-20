@@ -125,8 +125,8 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         {headLinks.map((headLink) => (
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}
-        <Schema layoutData={layoutData} />
       </Head>
+      <Schema layoutData={layoutData} />
 
       {/* root placeholder for the app, which we add components to using route data */}
       {/* eslint-disable-next-line */}

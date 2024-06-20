@@ -21,6 +21,8 @@ import CarouselCards from '@component-library/site-components/CarouselCards/Caro
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -114,21 +116,24 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
             </>
           }
           image={
-            abstractImage?.jsonValue?.value?.src ? (
-              <Image
-                src={abstractImage?.jsonValue?.value?.src || ''}
-                alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
-                width="363"
-                height="176"
-              />
-            ) : (
-              <Image
-                src={image?.jsonValue?.value?.src || ''}
-                alt={(image?.jsonValue?.value?.alt as string) || ''}
-                width="363"
-                height="176"
-              />
-            )
+            abstractImage?.jsonValue?.value?.src ||
+            image?.jsonValue?.value?.src ? (
+              abstractImage?.jsonValue?.value?.src ? (
+                <Image
+                  src={abstractImage?.jsonValue?.value?.src || ''}
+                  alt={(abstractImage?.jsonValue?.value?.alt as string) || ''}
+                  width="363"
+                  height="176"
+                />
+              ) : (
+                <Image
+                  src={image?.jsonValue?.value?.src || ''}
+                  alt={(image?.jsonValue?.value?.alt as string) || ''}
+                  width="363"
+                  height="176"
+                />
+              )
+            ) : undefined
           }
           ctas={{
             button1: (
@@ -161,11 +166,19 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
           abstractImageUrl,
           primaryImageUrl,
           directions,
+          googlePlaceId,
+          geocodedCoordinate,
         }) => {
           const cardImageSrc = ImageUrl(
             abstractImageUrl,
             primaryImageUrl,
             imageUrl
+          );
+
+          const getDirections = returnDirections(
+            googlePlaceId,
+            directions,
+            geocodedCoordinate
           );
 
           return (
@@ -205,13 +218,13 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
                     <JssRichText field={linkText} tag="span" />
                   </a>
                 ),
-                button2: (
-                  <a href={directions}>
+                button2: getDirections ? (
+                  <a href={getDirections}>
                     <span>
                       <JssText field={getDirectionsText} />
                     </span>
                   </a>
-                ),
+                ) : undefined,
               }}
             />
           );
@@ -286,9 +299,11 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
             (props.fields?.data?.item?.text?.jsonValue ||
               isExperienceEditor) && (
               <Text tag="div" variation="body-large">
-                <JssRichText
-                  field={props.fields?.data?.item?.text?.jsonValue}
-                />
+                <RichText>
+                  <JssRichText
+                    field={props.fields?.data?.item?.text?.jsonValue}
+                  />
+                </RichText>
               </Text>
             )
           }
@@ -371,8 +386,10 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
         )
       }
       bodyCopy={
-        <Text variation={'body-large'}>
-          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
+        <Text variation={'body-large'} tag="div">
+          <RichText>
+            <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
+          </RichText>
         </Text>
       }
       link={

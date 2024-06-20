@@ -3,7 +3,7 @@ import {
   Field,
   LinkField,
   Text as JSSText,
-  RichText,
+  RichText as JssRichText,
   Link as JssLink,
   ImageField,
   useSitecoreContext,
@@ -18,6 +18,7 @@ import { DoctifyReviewsFields } from 'components/Doctify/Doctify.types';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -107,11 +108,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         <SitecoreSvg>
           {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
         </SitecoreSvg>
-        <RichText
-          field={{
-            value: props.fields?.CTALink?.value?.text,
-          }}
-        />
+        <RichText>
+          <JssRichText
+            field={{
+              value: props.fields?.CTALink?.value?.text,
+            }}
+          />
+        </RichText>
       </JssLink>
     )
   );
@@ -132,7 +135,9 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       }
       copy={
         <Text tag="div" variation="body-large">
-          <RichText field={props.fields?.Text} />
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
         </Text>
       }
       stats={stats || []}
