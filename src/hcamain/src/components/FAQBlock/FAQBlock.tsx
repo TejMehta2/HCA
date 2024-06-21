@@ -57,7 +57,6 @@ type FAQSchema = {
 
 const getAccordions = (questions: QuestionFields[]) => {
   const accordions: Accordions = [];
-  const questionSchema: FAQSchema = [];
 
   for (const accordion of questions) {
     accordions.push({
@@ -68,7 +67,14 @@ const getAccordions = (questions: QuestionFields[]) => {
         </RichText>
       ),
     });
+  }
 
+  return { accordions };
+};
+
+const getSchema = (questions: QuestionFields[]) => {
+  const questionSchema: FAQSchema = [];
+  for (const accordion of questions) {
     questionSchema.push({
       '@type': 'Question',
       name: accordion.fields?.Question?.value,
@@ -79,25 +85,12 @@ const getAccordions = (questions: QuestionFields[]) => {
     });
   }
 
-  return { accordions, questionSchema };
-};
-
-const FaqSchema = (props: FAQSchema): JSX.Element => {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [props],
+    mainEntity: questionSchema,
   };
-
-  return (
-    <Head>
-      <script
-        key="faqs"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-    </Head>
-  );
+  return faqSchema;
 };
 
 const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
@@ -125,9 +118,18 @@ export const Default = (props: FAQProps): JSX.Element => {
   }
   const accordions = getAccordions(props.fields?.Questions);
 
+  const faqSchema = getSchema(props.fields?.Questions);
+
   return (
     <>
-      <FaqSchema {...accordions.questionSchema} />
+      <Head>
+        <script
+          key="faqs"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </Head>
+
       <AccordionsBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
@@ -198,9 +200,17 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
 
   const accordions = getAccordions(props.fields?.Questions);
 
+  const faqSchema = getSchema(props.fields?.Questions);
+
   return (
     <>
-      <FaqSchema {...accordions.questionSchema} />
+      <Head>
+        <script
+          key="faqs"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </Head>
       <AccordionsBlockSideBySide
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
