@@ -5,7 +5,7 @@ import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  const redirectResponse = redirectMiddleware(req);
+  const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
   const geolocationResponse = geolocationMiddleware(req);
   if (geolocationResponse) return geolocationResponse;
