@@ -113,7 +113,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         )
       }
       bodyCopy={
-        <Text variation={'body-large'}>
+        <Text variation={'body-large'} tag="div">
           <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
@@ -246,6 +246,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
       >
         {props.fields?.data?.item.cards?.targetItems?.map((card, index) => {
           const isFeature = index % 10 === 0 || index % 10 === 7; // scaling logic to accommodate more than 5 cards
+
           return (
             <CardBlog
               key={card.id}
@@ -263,7 +264,8 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
                   height="268"
                 />
               ) : (
-                isFeature && (
+                isFeature &&
+                card.image?.jsonValue?.value?.src && (
                   <Image
                     src={card.image?.jsonValue?.value?.src || ''}
                     alt={(card.image?.jsonValue?.value?.alt as string) || ''}

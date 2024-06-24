@@ -39,6 +39,10 @@
   }
 
   &.custom-btn-desktop {
+    button {
+      padding: px-to-rem(14) $spacing-2;
+    }
+
     a {
       padding: px-to-rem(14) $spacing-4;
     }
