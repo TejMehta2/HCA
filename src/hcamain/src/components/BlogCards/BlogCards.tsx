@@ -113,7 +113,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
         )
       }
       bodyCopy={
-        <Text variation={'body-large'}>
+        <Text variation={'body-large'} tag="div">
           <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
