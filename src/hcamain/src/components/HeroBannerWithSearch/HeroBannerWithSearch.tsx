@@ -5,6 +5,7 @@ import {
   Text as JssText,
   ComponentRendering,
   Placeholder,
+  RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
@@ -67,7 +68,9 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
           tag={props.params?.HeadingTag || 'h1'}
           variation={props.params?.HeadingSize || 'display-1'}
         >
-          <JssText field={props.fields?.data?.contextItem?.title?.jsonValue} />
+          <JssRichText
+            field={props.fields?.data?.contextItem?.title?.jsonValue}
+          />
         </Text>
       }
       search={
