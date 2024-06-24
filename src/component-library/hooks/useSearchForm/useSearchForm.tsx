@@ -156,7 +156,7 @@ const useSearchForm = <ResponseT, AutocompleteResponseT>(
         });
       }
     },
-    action: `${redirectUrl}${query}`,
+    action: redirectUrl ? `${redirectUrl}${query}` : '',
     ref: ref,
   };
 
