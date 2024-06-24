@@ -55,7 +55,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
           }
         });
       },
-      { threshold: 0.51, rootMargin: '10%' }
+      { threshold: 0.2, rootMargin: '10%' }
     );
     targetSections?.forEach((section) => {
       observer.observe(section);

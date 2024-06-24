@@ -35,4 +35,6 @@ export interface ConsultantCardProps {
   viewProfileLink: any;
   bookOnlineLink: any;
   enquireNowLink: any;
+  callToBookModalTitle: string;
+  phoneNumberDisplay: string;
 }

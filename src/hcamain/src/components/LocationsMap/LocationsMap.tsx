@@ -10,6 +10,7 @@ import {
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
+import Themes from '@component-library/foundation/Themes/Themes';
 import CardLocation from '@component-library/components/CardLocation/CardLocation';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
@@ -100,21 +101,23 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     ctas: !isExperienceEditor ? (
       <>
         {props.fields?.CTALink?.value?.text && (
-          <Button size="large" variation="full">
-            <a href={props.fields?.CTALink?.value.href}>
-              <span>
-                <SitecoreSvg>
-                  {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              </span>
+          <Themes theme={props.params?.Theme || 'O-HCA-Teal-20'}>
+            <Button size="large" variation="full-dark">
+              <a href={props.fields?.CTALink?.value.href}>
+                <span>
+                  <SitecoreSvg>
+                    {props?.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+                  </SitecoreSvg>
+                </span>
 
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: props.fields?.CTALink?.value.text || '',
-                }}
-              ></span>
-            </a>
-          </Button>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: props.fields?.CTALink?.value.text || '',
+                  }}
+                ></span>
+              </a>
+            </Button>
+          </Themes>
         )}
       </>
     ) : (

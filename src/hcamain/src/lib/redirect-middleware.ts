@@ -23,7 +23,8 @@ const redirectMiddleware = async (req: NextRequest) => {
         throw response.statusText;
       }
     } catch (error) {
-      process.env.NODE_ENV === 'development' && console.error(error);
+      process.env.NODE_ENV === 'development' &&
+        console.error('Redirect Middleware : ', error);
     }
   }
   return;

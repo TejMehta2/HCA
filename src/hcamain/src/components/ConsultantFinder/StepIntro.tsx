@@ -146,6 +146,7 @@ export const Default = (props: StepProps): JSX.Element => {
             marginBottom="spacing-8"
             displayFlex="displayFlex"
             withButtons={true}
+            customBtnDesktop={true}
           >
             <Button
               size={'small'}
@@ -183,7 +184,6 @@ export const Default = (props: StepProps): JSX.Element => {
           </Container>
 
           <TextButton theme="dark">
-            {/* sa iau din data */}
             <button
               onClick={() =>
                 router.push({

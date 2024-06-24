@@ -4,9 +4,9 @@ export interface phone {
 }
 
 export interface Contact {
-  title?: JSX.Element;
+  title?: JSX.Element | string;
   phone?: phone;
-  availability?: JSX.Element;
+  availability?: JSX.Element | undefined;
 }
 
 export interface ModalCallUsProps {
