@@ -23,11 +23,7 @@ const LocationsSearch = (props: SearchProps): JSX.Element => {
 
   const getAddress = (userInput: string) => {
     setLoading(true);
-    const URL = `${
-      props.locationsAPI
-    }/SuggestLocation?provider=Default&searchTerm=${encodeURIComponent(
-      userInput
-    )}&searchType=Default`;
+    const URL = `${props.locationsAPI}/SuggestLocation?provider=Default&searchTerm=${userInput}&searchType=Default`;
 
     if (typeof cancelToken != typeof undefined) {
       cancelToken.cancel('Operation canceled due to new request.');
