@@ -43,7 +43,9 @@
       gap: var(--spacing-4);
       list-style-type: none;
       padding: 0;
+    }
 
+    ul {
       li {
         padding-left: px-to-rem(30);
         position: relative;
@@ -60,6 +62,11 @@
           height: px-to-rem(6);
         }
       }
+    }
+
+    ol {
+      list-style-type: decimal;
+      list-style-position: inside;
     }
 
     *:first-child {

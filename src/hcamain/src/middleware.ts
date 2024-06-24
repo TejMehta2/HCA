@@ -1,11 +1,14 @@
 import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
+import { smallcaseurlMiddleware } from 'lib/middleware/smallcase-url-Middleware';
 import geolocationMiddleware from 'lib/geolocation-middleware';
 import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  const redirectResponse = redirectMiddleware(req);
+  const lowercaseRespone = smallcaseurlMiddleware(req);
+  if (lowercaseRespone) return lowercaseRespone;
+  const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
   const geolocationResponse = geolocationMiddleware(req);
   if (geolocationResponse) return geolocationResponse;
@@ -25,6 +28,6 @@ export const config = {
   matcher: [
     '/',
     /*exclude Finder and sublevels as these are delegated to their own pages*/
-    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|Finder/|webhooks/sitecore/|api-layer/|referrer/|PaymentForm|payment/status|paymentform/).*)',
+    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|Finder/|webhooks/sitecore/|api-layer/|referrer/|PaymentForm|payment/status|paymentform/).*)',
   ],
 };

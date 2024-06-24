@@ -23,7 +23,8 @@ import SearchFilterList from '@component-library/components/SearchFilterList/Sea
 import Themes from '@component-library/foundation/Themes/Themes';
 import Icons from '@component-library/foundation/Icons/Icons';
 import CardGrid from '@component-library/site-components/CardGrid/CardGrid';
-import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
+//import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
+import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
 import Image from 'next/image';
 import CardMap from '@component-library/components/CardMap/CardMap';
 import LocationMap from '@component-library/components/LocationMap/LocationMap';
@@ -354,7 +355,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                         );
                       })}
                     </CardGrid>
-                    <SearchFormLoadMore
+                    {/* <SearchFormLoadMore
                       limit={limit}
                       resultsCount={resultsCount}
                       defaultLimit={defaultLimit}
@@ -363,7 +364,13 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                         <Icons iconName={'iconPlus'} />
                       </span>
                       <span>{t('show-more') || 'Show more'}</span>
-                    </SearchFormLoadMore>
+                    </SearchFormLoadMore> */}
+                    <SearchFormPagination
+                      offset={offset}
+                      limit={limit}
+                      resultsCount={resultsCount}
+                      scrollToRef={searchWrapperRef}
+                    />
                   </>
                 ),
               },

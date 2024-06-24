@@ -124,7 +124,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         )
       }
       bodyCopy={
-        <Text variation={'body-large'}>
+        <Text variation={'body-large'} tag="div">
           <RichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
