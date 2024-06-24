@@ -20,9 +20,9 @@ import {
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
 import useSearchForm from '@component-library/hooks/useSearchForm/useSearchForm';
-// import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
-import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
-import Icons from '@component-library/foundation/Icons/Icons';
+import SearchFormPagination from '@component-library/yext/SearchFormPagination/SearchFormPagination';
+//import SearchFormLoadMore from '@component-library/yext/SearchFormLoadMore/SearchFormLoadMore';
+//import Icons from '@component-library/foundation/Icons/Icons';
 import getBaselineParams from 'lib/getBaselineParams';
 import SearchContainer from '@component-library/site-components/SearchContainer/SearchContainer';
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -281,13 +281,13 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                   );
                 })}
               </CardGrid>
-              {/* <SearchFormPagination
-            offset={offset}
-            limit={limit}
-            resultsCount={resultsCount}
-            scrollToRef={searchWrapperRef}
-          /> */}
-              <SearchFormLoadMore
+              <SearchFormPagination
+                offset={offset}
+                limit={limit}
+                resultsCount={resultsCount}
+                scrollToRef={searchWrapperRef}
+              />
+              {/* <SearchFormLoadMore
                 limit={limit}
                 resultsCount={resultsCount}
                 defaultLimit={defaultLimit}
@@ -296,7 +296,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
                   <Icons iconName={'iconPlus'} />
                 </span>
                 <span>{t('show-more') || 'Show more'}</span>
-              </SearchFormLoadMore>
+              </SearchFormLoadMore> */}
             </>
           )}
         </SearchContainer>
