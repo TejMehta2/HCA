@@ -1,10 +1,13 @@
 import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
+import { smallcaseurlMiddleware } from 'lib/middleware/smallcase-url-Middleware';
 import geolocationMiddleware from 'lib/geolocation-middleware';
 import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
+  const lowercaseRespone = smallcaseurlMiddleware(req);
+  if (lowercaseRespone) return lowercaseRespone;
   const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
   const geolocationResponse = geolocationMiddleware(req);
