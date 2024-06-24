@@ -18,9 +18,9 @@ export function smallcaseurlMiddleware(req: NextRequest): NextResponse {
   // Redirect to the lowercase version of the pathname
   const lowercaseUrl = new URL(`${origin}${pathname.toLowerCase()}`);
   const response = NextResponse.redirect(lowercaseUrl, 308);
-  
+
   // Set custom header to indicate that a redirect has occurred
   response.headers.set('x-redirected', 'true');
-  
+
   return response;
 }
