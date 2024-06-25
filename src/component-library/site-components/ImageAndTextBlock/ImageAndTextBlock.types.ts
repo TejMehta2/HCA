@@ -21,6 +21,6 @@ export interface ImageAndTextBlockProps {
   ratings?: ReactNode | JSX.Element | ReactNode[] | JSX.Element[];
   iconList?: iconList;
   hideImageOnMobile?: boolean;
-  contentVariation?: 'pricing';
+  contentVariation?: 'pricing' | 'hero';
   noOverflownHidden?: boolean;
 }

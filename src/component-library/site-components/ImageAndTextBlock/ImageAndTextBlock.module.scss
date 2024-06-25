@@ -207,3 +207,9 @@
     display: none;
   }
 }
+
+.hero {
+  &.wrapper {
+    padding: $spacing-9 0;
+  }
+}
