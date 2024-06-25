@@ -444,3 +444,64 @@ export const PricingInformation: StoryObj<typeof ImageAndTextBlock> = {
     ),
   },
 };
+
+export const Hero: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    contentVariation: 'hero',
+    theme: 'D-HCA-Teal',
+    length: 'short',
+    image: (
+      <Image
+        src="/placeholders/children-playing.jpg"
+        alt="two children playing"
+        width="643"
+        height="605"
+      />
+    ),
+
+    header: (
+      <Text tag="h2" variation="display-2">
+        New to private healthcare?
+      </Text>
+    ),
+    children: (
+      <>
+        <Text tag="p" variation="body-large">
+          Quis laboris proident sint amet id cillum do dolor in tempor est.
+          Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+          laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+          dolore ad sit occaecat. Qui ipsum in minim. Nostrud duis cupidatat
+          sunt lorem ut.
+        </Text>
+      </>
+    ),
+
+    subheader: (
+      <Text tag="h3" variation="subheading-1">
+        payment plans
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size="large" variation="full">
+          <a href="#">
+            <span>
+              <Icons iconName={'icon3Lines'} />
+            </span>
+            <span>
+              Learn more about <strong>self-pay</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" variation="outline">
+          <a href="#">
+            <Icons iconName={'icon3Lines'} />
+            <span>
+              Access care with <strong>insurance</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
+  },
+};
