@@ -64,6 +64,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh;
   pointer-events: none;
   transform: translateY(100%);
   transition: transform 0.3s ease-out;

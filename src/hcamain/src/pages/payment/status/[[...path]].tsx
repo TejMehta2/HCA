@@ -61,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props,
     };
   } catch (error) {
+    console.log(error);
     return {
       notFound: true,
     };

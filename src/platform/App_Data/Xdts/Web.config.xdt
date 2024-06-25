@@ -9,4 +9,7 @@
             </httpProtocol>
         </system.webServer>
     </location>
+    <appSettings>
+        <add xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" key="customenvironment:define" value="DEV" />
+   </appSettings>
 </configuration>

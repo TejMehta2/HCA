@@ -82,6 +82,7 @@ export const Default = (props: StepProps): JSX.Element => {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
+          contentVariation={'hero'}
           noOverflownHidden={true}
           theme="A-HCA-White"
           imageAlignment="left"
