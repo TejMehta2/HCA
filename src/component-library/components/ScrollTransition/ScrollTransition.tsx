@@ -25,6 +25,7 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            console.log('intersecting');
             if (transitionBackground) {
               const intersectingTheme = entry.target.getAttribute(
                 'data-theme'
@@ -55,7 +56,11 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
           }
         });
       },
-      { threshold: 0.2, rootMargin: '10%' }
+      {
+        root: null, // Defaults to the viewport
+        rootMargin: '0px',
+        threshold: 0, // Trigger when 10% of the target is visible
+      }
     );
     targetSections?.forEach((section) => {
       observer.observe(section);
