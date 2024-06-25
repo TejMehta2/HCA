@@ -9,9 +9,13 @@ byoc-sitecore-form,
     font-family: $font-family !important;
     letter-spacing: -0.03em !important;
     line-height: 120% !important;
-    font-weight: $base-font-weight !important;
 
-    &:not(.submit-button, .global-input-error-message, .iti__arrow) {
+    &:not(
+        .submit-button,
+        .submit-button > *,
+        .global-input-error-message,
+        .iti__arrow
+      ) {
       color: var(--text) !important;
       border-color: currentcolor !important;
     }
@@ -22,6 +26,13 @@ byoc-sitecore-form,
 
   @include responsive-grid;
   @include responsive-container;
+
+  .checkbox-field,
+  .radio-field {
+    .form-field-label {
+      font-weight: $base-font-weight !important;
+    }
+  }
 
   .main-form-wrapper {
     width: 100%;
