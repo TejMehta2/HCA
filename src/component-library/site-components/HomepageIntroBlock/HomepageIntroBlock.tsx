@@ -28,25 +28,27 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
           <div className={styles['text-wrapper']} data-animate="l">
             <div className={styles.title}>{title}</div>
             <div className={styles.copy}>{copy}</div>
-            <ul className={styles.stats}>
-              {stats.map((stat, index) => (
-                <React.Fragment key={index}>
-                  <li>
-                    <p className={styles.stat}>
-                      <Text variation="display-2" tag="span">
-                        {stat.value}
-                      </Text>
-                      <Text variation="body-medium-large" tag="span">
-                        {stat.label}
-                      </Text>
-                    </p>
-                  </li>
-                  <li className={styles.hr} aria-hidden="true">
-                    <hr />
-                  </li>
-                </React.Fragment>
-              ))}
-            </ul>
+            {stats && stats.length > 0 && (
+              <ul className={styles.stats}>
+                {stats.map((stat, index) => (
+                  <React.Fragment key={index}>
+                    <li>
+                      <p className={styles.stat}>
+                        <Text variation="display-2" tag="span">
+                          {stat.value}
+                        </Text>
+                        <Text variation="body-medium-large" tag="span">
+                          {stat.label}
+                        </Text>
+                      </p>
+                    </li>
+                    <li className={styles.hr} aria-hidden="true">
+                      <hr />
+                    </li>
+                  </React.Fragment>
+                ))}
+              </ul>
+            )}
             <div className={styles.cta}>
               <Themes theme="A-HCA-White">
                 <Button size={'large'} variation={'full-dark'}>
