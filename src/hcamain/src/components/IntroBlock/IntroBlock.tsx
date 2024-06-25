@@ -102,21 +102,19 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
 
   const cta = isExperienceEditor ? (
     <JssLink field={props.fields?.CTALink}></JssLink>
-  ) : (
-    props.fields?.CTALink && (
-      <JssLink field={props.fields?.CTALink}>
-        <SitecoreSvg>
-          {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
-        </SitecoreSvg>
+  ) : props.fields?.CTALink && props.fields?.CTALink?.value?.text ? (
+    <JssLink field={props.fields?.CTALink}>
+      <SitecoreSvg>
+        {props.fields?.CTAIcon?.fields?.SvgMarkup?.value}
+      </SitecoreSvg>
 
-        <JssRichText
-          field={{
-            value: props.fields?.CTALink?.value?.text,
-          }}
-        />
-      </JssLink>
-    )
-  );
+      <JssRichText
+        field={{
+          value: props.fields?.CTALink?.value?.text,
+        }}
+      />
+    </JssLink>
+  ) : undefined;
   const stats = props.fields?.Counters?.map((counters) => ({
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
