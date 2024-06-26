@@ -16,7 +16,6 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(initialTheme);
 
   useEffect(() => {
-    const ref = wrapperRef;
     const targetSections = wrapperRef?.current?.querySelectorAll(
       ':scope > div:not([data-content="diamond"])'
     );
@@ -25,7 +24,6 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log('intersecting');
             if (transitionBackground) {
               const intersectingTheme = entry.target.getAttribute(
                 'data-theme'
@@ -57,9 +55,9 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
         });
       },
       {
-        root: null, // Defaults to the viewport
-        rootMargin: '0px',
-        threshold: 0, // Trigger when 10% of the target is visible
+        root: null,
+        rootMargin: '10%',
+        threshold: 0.2,
       }
     );
     targetSections?.forEach((section) => {
@@ -67,11 +65,11 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
     });
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      targetSections?.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
-  }, [transitionBackground]);
+  });
 
   const pageContent = (
     <div
