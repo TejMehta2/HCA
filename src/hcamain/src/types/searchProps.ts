@@ -4,6 +4,7 @@ import Params from 'src/types/params';
 export interface ApiResponse {
   meta: Meta;
   response: Response;
+  ip: string;
 }
 
 export interface Meta {

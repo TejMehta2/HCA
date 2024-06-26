@@ -92,7 +92,9 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     searchOnChange: false,
   });
 
-  console.log(fallbackData.ip);
+  if (fallbackData && fallbackData.ip) {
+    console.log(fallbackData.ip);
+  }
 
   if (!fields) {
     return <LocationsSearchDefaultComponent {...props} />;
