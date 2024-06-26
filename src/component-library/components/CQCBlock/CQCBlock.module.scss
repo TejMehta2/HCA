@@ -6,6 +6,7 @@
   border-radius: $radius-small;
   padding: px-to-rem(16);
   position: relative;
+  border: 1px solid var(--cqc-outline);
 }
 
 .link {
@@ -90,6 +91,10 @@
 
   &.wrapper {
     justify-content: center;
+
+    @include media(screen-m) {
+      width: fit-content;
+    }
   }
 
   .icon {
