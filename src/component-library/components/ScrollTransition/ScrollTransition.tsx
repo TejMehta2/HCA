@@ -16,7 +16,6 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
   const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(initialTheme);
 
   useEffect(() => {
-    const ref = wrapperRef;
     const targetSections = wrapperRef?.current?.querySelectorAll(
       ':scope > div:not([data-content="diamond"])'
     );
@@ -55,18 +54,22 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
           }
         });
       },
-      { threshold: 0.2, rootMargin: '10%' }
+      {
+        root: null,
+        rootMargin: '10%',
+        threshold: 0.2,
+      }
     );
     targetSections?.forEach((section) => {
       observer.observe(section);
     });
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      targetSections?.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
-  }, [transitionBackground]);
+  });
 
   const pageContent = (
     <div

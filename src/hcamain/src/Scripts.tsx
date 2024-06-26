@@ -4,7 +4,7 @@ import CdpPageView from 'components/CdpPageView';
 import Script from 'next/script';
 
 const Scripts = (): JSX.Element => {
-  const gtmKey = process.env.GTM_KEY;
+  const gtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
   return (
     <>
       <BYOC />
