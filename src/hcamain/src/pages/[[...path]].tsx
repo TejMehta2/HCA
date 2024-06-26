@@ -22,6 +22,14 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
+
+    async function ipCheck() {
+      const res = await fetch('https://api.ipify.org/?format=text');
+      const ip = await res.text();
+      console.log(ip);
+    }
+
+    ipCheck();
   }, []);
 
   if (notFound || !layoutData.sitecore.route) {
