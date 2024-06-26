@@ -55,7 +55,11 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               <div className={styles['header']}>{header}</div>
               {children && <div className={styles.children}>{children}</div>}
 
-              {ctas && <div className={styles['ctas']}>{ctas}</div>}
+              {ctas && (
+                <Themes theme={theme}>
+                  <div className={styles['ctas']}>{ctas}</div>
+                </Themes>
+              )}
 
               {ratings && <div className={styles.ratings}>{ratings}</div>}
               {iconList && (
