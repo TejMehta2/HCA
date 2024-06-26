@@ -76,6 +76,10 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
     baselineAutocompleteParams,
   });
 
+  if (fallbackData && fallbackData.ip) {
+    console.log(fallbackData.ip);
+  }
+
   if (!fields) {
     return <PatientStoriesSearchDefaultComponent {...props} />;
   }
@@ -335,6 +339,10 @@ export const getStaticProps: GetStaticComponentProps = async (
     if (response.ok) {
       const fallbackData = await response.json();
       rendering.fallbackData = fallbackData as ApiResponse;
+      const res = await fetch('https://api.ipify.org/?format=text');
+      const ip = await res.text();
+
+      fallbackData.ip = ip;
       return rendering;
     } else {
       throw response.statusText;

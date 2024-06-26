@@ -5,6 +5,7 @@ import { ApiSearchProps } from 'src/types/searchProps';
 export interface SearchResponse {
   meta: Meta;
   response: Response;
+  ip: string;
 }
 
 export interface Meta {
