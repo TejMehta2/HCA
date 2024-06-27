@@ -79,9 +79,11 @@
 
 .image {
   @include diamond-image-mask;
+
   img {
     object-position: unset;
   }
+
   width: 58%;
 }
 
