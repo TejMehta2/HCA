@@ -32,6 +32,13 @@
     color: var(--text);
   }
 
+  .error-message {
+    scroll-margin-top: px-to-rem(300);
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
   &:has(.error-message) {
     label,
     .help-text,
@@ -63,13 +70,6 @@
     .cross {
       opacity: 1;
     }
-  }
-
-  .error-message {
-    scroll-margin-top: px-to-rem(300);
-    display: flex;
-    align-items: center;
-    gap: $spacing-2;
   }
 }
 
