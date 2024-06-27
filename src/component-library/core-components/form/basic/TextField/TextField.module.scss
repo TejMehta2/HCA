@@ -59,7 +59,8 @@
 
   &:has(.error-message) {
     label,
-    .help-text {
+    .help-text,
+    svg {
       color: var(--field-error-colour);
     }
 
