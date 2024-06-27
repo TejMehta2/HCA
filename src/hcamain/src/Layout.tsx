@@ -95,8 +95,8 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
 
   return (
     <>
-      <Scripts />
       <Head>
+        <Scripts />
         <title>{titleStripped}</title>
 
         <link
