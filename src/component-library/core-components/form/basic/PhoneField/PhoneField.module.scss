@@ -87,6 +87,22 @@
   flex-direction: column;
   gap: $spacing-3;
 
+  .input {
+    padding-left: px-to-rem(90) !important;
+    height: $spacing-9;
+    border: 1px solid $navy-blue-60;
+    border-radius: $radius-large;
+    width: 100%;
+
+    @include apply-body-medium-large;
+
+    &::placeholder {
+      @include apply-body-large;
+
+      color: $navy-blue-70;
+    }
+  }
+
   label {
     display: flex;
     align-items: center;
@@ -97,6 +113,16 @@
 
   @extend %phone-field-iti;
 
+  .error {
+    label {
+      color: var(--field-error-colour);
+    }
+
+    .input {
+      border: 1px solid var(--field-error-colour);
+    }
+  }
+
   .error-message {
     display: flex;
     align-items: center;
@@ -106,7 +132,11 @@
   }
 
   &:has(.error-message) {
-    color: var(--field-error-colour);
+    label,
+    .help-text,
+    .error {
+      color: var(--field-error-colour);
+    }
 
     input {
       border-color: var(--field-error-colour);
@@ -114,32 +144,6 @@
   }
 }
 
-.input {
-  padding-left: px-to-rem(90) !important;
-  height: $spacing-9;
-  border: 1px solid $navy-blue-60;
-  border-radius: $radius-large;
-  width: 100%;
-
-  @include apply-body-medium-large;
-
-  &::placeholder {
-    @include apply-body-large;
-
-    color: $navy-blue-70;
-  }
-}
-
 .hidden {
   display: none;
-}
-
-.error {
-  label {
-    color: var(--field-error-colour);
-  }
-
-  .input {
-    border: 1px solid var(--field-error-colour);
-  }
 }
