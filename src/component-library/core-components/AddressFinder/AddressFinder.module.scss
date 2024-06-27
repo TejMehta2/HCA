@@ -28,15 +28,34 @@
     padding-left: $spacing-6;
   }
 
-  &:has(.error-message) {
-    color: var(--field-error-colour);
+  input {
+    color: var(--text);
+  }
 
-    .search-wrapper {
+  &:has(.error-message) {
+    label,
+    .help-text,
+    .error-message,
+    svg {
       color: var(--field-error-colour);
     }
 
-    input {
+    .search-wrapper {
       border-color: var(--field-error-colour);
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-within {
+        outline-color: var(--field-error-colour);
+      }
+    }
+
+    input {
+      &::placeholder {
+        color: var(--field-error-colour);
+      }
     }
   }
 

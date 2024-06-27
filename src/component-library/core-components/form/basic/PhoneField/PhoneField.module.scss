@@ -106,7 +106,11 @@
   }
 
   &:has(.error-message) {
-    color: var(--field-error-colour);
+    label,
+    .help-text,
+    .error {
+      color: var(--field-error-colour);
+    }
 
     input {
       border-color: var(--field-error-colour);
