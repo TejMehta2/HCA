@@ -32,8 +32,15 @@ const ModalSearch = (
       return;
     }
     searchActions.executeUniversalQuery();
-    ref?.current?.close();
-    router.replace(redirectUrl);
+
+    router
+      .replace(redirectUrl)
+      .then(() => {
+        ref?.current?.close();
+      })
+      .catch((error) => {
+        console.error('Failed to change route:', error);
+      });
   };
 
   return (
