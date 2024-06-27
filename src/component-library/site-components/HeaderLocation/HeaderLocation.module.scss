@@ -13,9 +13,6 @@
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
   }
-  @include media(screen-xl) {
-    aspect-ratio: 1280/709; // to maintain scaling on svg mask effect, ratio based on design dimensions
-  }
 
   .ctas {
     display: flex;
@@ -82,7 +79,9 @@
 
 .image {
   @include diamond-image-mask;
-
+  img {
+    object-position: unset;
+  }
   width: 58%;
 }
 
