@@ -11,7 +11,11 @@ const CardBlogBlock = (props: CardBlogBlockProps): JSX.Element => {
         <div className={styles.content}>
           {title && <div className={styles.title}>{title}</div>}
           <div className={styles.grid}>{children}</div>
-          {cta && <div className={styles.cta}>{cta}</div>}
+          {cta && (
+            <Themes theme={theme}>
+              <div className={styles.cta}>{cta}</div>
+            </Themes>
+          )}
         </div>
       </div>
     </Themes>
