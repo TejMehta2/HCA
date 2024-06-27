@@ -92,6 +92,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     searchOnChange: false,
   });
 
+  if (fallbackData && fallbackData.ip) {
+    console.log(fallbackData.ip);
+  }
+
   if (!fields) {
     return <LocationsSearchDefaultComponent {...props} />;
   }
@@ -472,6 +476,11 @@ export const getStaticProps: GetStaticComponentProps = async (
     const response = await fetch(url);
     if (response.ok) {
       const fallbackData = await response.json();
+
+      const res = await fetch('https://api.ipify.org/?format=text');
+      const ip = await res.text();
+
+      fallbackData.ip = ip;
       return fallbackData;
     } else {
       throw response.statusText;
