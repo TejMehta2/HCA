@@ -3,6 +3,7 @@ import {
   Field,
   ImageField,
   Text as JssText,
+  RichText as JssRichText,
   Placeholder,
   ComponentRendering,
   useSitecoreContext,
@@ -14,6 +15,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type VideoProvidersFields = {
   name?: string;
@@ -78,9 +80,9 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
             </Text>
           }
           body={
-            <Text variation={'body-large'}>
-              <JssText field={props.fields?.Text} />
-            </Text>
+            <RichText>
+              <JssRichText tag="div" field={props.fields?.Text}></JssRichText>
+            </RichText>
           }
           ctas={
             props.rendering && (
