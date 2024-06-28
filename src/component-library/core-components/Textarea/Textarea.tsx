@@ -16,7 +16,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
     defaultValue,
   } = props;
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(defaultValue?.length || 0);
 
   return (
     <div className={styles.wrapper}>
