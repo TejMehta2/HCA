@@ -87,6 +87,11 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
               setLoading(false);
               setSuccess(true);
             }
+
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
             // TODO handle BE validation errors / success
           }}
           action={`https://liveapi.yext.com/v2/accounts/me/createQuestion?v=20220511&api_key=${headlessConfig.apiKey}&sessionTrackingEnabled=false&jsLibVersion=v1.14.3`}
@@ -142,7 +147,8 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
               <Text key={index}>{error.message}</Text>
             ))}
           </div>
-          <Button variation="full" size="large">
+
+          <Button variation="full" size="large" contentVariation="card">
             <button disabled={loading} type="submit">
               Submit
             </button>
