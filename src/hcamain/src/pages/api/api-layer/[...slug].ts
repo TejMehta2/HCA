@@ -24,7 +24,7 @@ export default async function handler(
     remoteRequestUrl.search = params.toString() || '';
 
     // fetch from remote integration layer server
-    const forwardedHeaders: Record<string,string> = {};
+    const forwardedHeaders: Record<string, string> = {};
 
     Object.entries(headers).forEach(([key, value]) => {
       if (typeof value === 'string') {
@@ -33,7 +33,7 @@ export default async function handler(
         forwardedHeaders[key] = value.join(', ');
       }
     });
-    
+
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : body,
