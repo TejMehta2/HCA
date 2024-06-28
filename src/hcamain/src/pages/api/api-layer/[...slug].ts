@@ -24,10 +24,10 @@ export default async function handler(
     remoteRequestUrl.search = params.toString() || '';
 
     // fetch from remote integration layer server
-    const forwardedHeaders : Record <string,string> = {};
+    const forwardedHeaders: Record<string,string> = {};
 
-    Object.entries(headers).forEach(([key, value]) =>{
-      if(typeof value ==='string') {
+    Object.entries(headers).forEach(([key, value]) => {
+      if (typeof value === 'string') {
         forwardedHeaders[key] = value;
       } else if (Array.isArray(value)) {
         forwardedHeaders[key] = value.join(', ');
