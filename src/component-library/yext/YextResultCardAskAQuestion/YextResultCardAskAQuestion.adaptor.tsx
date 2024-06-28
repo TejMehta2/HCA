@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import YextResultCardAskAQuestion from './YextResultCardAskAQuestion';
 
@@ -16,8 +16,10 @@ interface YextResultCardAskAQuestion {}
 
 const YextResultCardArticlesAdaptor = (): JSX.Element => {
   const formRef = useRef<HTMLFormElement>(null);
+  const formTitleRef = useRef<HTMLElement>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [formFromTop, setFormFromTop] = useState(0);
 
   interface Error {
     code: number;
@@ -28,10 +30,21 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
     (state) => state.query.mostRecentSearch
   );
 
+  useEffect(() => {
+    if (formRef) {
+      const formRect = formTitleRef?.current?.getBoundingClientRect();
+
+      if (formRect) {
+        setFormFromTop(formRect.top);
+      }
+    }
+  }, [formTitleRef]);
+
   return (
     <YextResultCardAskAQuestion
       title={
         <>
+          <span ref={formTitleRef}></span>
           <Icons iconName="iconQuestion" />
           <Text variation="heading-2">Ask a question</Text>
         </>
@@ -88,10 +101,12 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
               setSuccess(true);
             }
 
-            window.scrollTo({
-              top: 0,
+            window.scroll({
+              top: formFromTop,
+              left: 0,
               behavior: 'smooth',
             });
+
             // TODO handle BE validation errors / success
           }}
           action={`https://liveapi.yext.com/v2/accounts/me/createQuestion?v=20220511&api_key=${headlessConfig.apiKey}&sessionTrackingEnabled=false&jsLibVersion=v1.14.3`}
