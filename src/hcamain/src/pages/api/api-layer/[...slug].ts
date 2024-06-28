@@ -27,8 +27,7 @@ export default async function handler(
     const forwardedHeaders = headers['content-type']
       ? {
           'content-type': headers['content-type'],
-          'Sitecore-Webhook':
-            '!lK%!EcbqR8HnE9bCZlt*E4WDWTRReBU#mI9bU3QRX^7LmH3eTaTAn1LSW!7dP8!ukP7espl$Rw735#oMP9HV&pCDBW',
+          'Sitecore-Webhook': headers['Sitecore-Webhook']
         }
       : undefined;
 
