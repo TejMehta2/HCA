@@ -24,16 +24,19 @@ export default async function handler(
     remoteRequestUrl.search = params.toString() || '';
     // fetch from remote integration layer server
 
-    const forwardedHeaders = headers['content-type']
-      ? {
-          'content-type': headers['content-type'],
-          'Sitecore-Webhook': headers['Sitecore-Webhook']
-        }
-      : undefined;
+    const forwardedHeaders : Record <string,string> = {};
 
+    Object.entries(req.headers).forEach(([key, value]) =>{
+      if(typeof value ==='string') {
+        forwardedHeaders[key] = value;
+      } else if (Array.isArray(value)) {
+        forwardedHeaders[key] = value.join(', ');
+      }
+    });
+    
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : JSON.stringify(body),
+      body: method === 'GET' ? undefined : body,
       headers: forwardedHeaders,
     });
 
