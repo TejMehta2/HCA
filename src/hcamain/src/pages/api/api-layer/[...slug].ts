@@ -27,12 +27,14 @@ export default async function handler(
     const forwardedHeaders = headers['content-type']
       ? {
           'content-type': headers['content-type'],
+          'Sitecore-Webhook':
+            '!lK%!EcbqR8HnE9bCZlt*E4WDWTRReBU#mI9bU3QRX^7LmH3eTaTAn1LSW!7dP8!ukP7espl$Rw735#oMP9HV&pCDBW',
         }
       : undefined;
 
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : body,
+      body: method === 'GET' ? undefined : JSON.stringify(body),
       headers: forwardedHeaders,
     });
 
