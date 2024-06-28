@@ -147,7 +147,8 @@ const YextResultCardArticlesAdaptor = (): JSX.Element => {
               <Text key={index}>{error.message}</Text>
             ))}
           </div>
-          <Button variation="full" size="large">
+
+          <Button variation="full" size="large" contentVariation="card">
             <button disabled={loading} type="submit">
               Submit
             </button>
