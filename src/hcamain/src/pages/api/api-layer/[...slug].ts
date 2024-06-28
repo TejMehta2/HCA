@@ -22,11 +22,11 @@ export default async function handler(
     const params = new URLSearchParams(query as Record<string, string>);
     params.delete('slug');
     remoteRequestUrl.search = params.toString() || '';
-    // fetch from remote integration layer server
 
+    // fetch from remote integration layer server
     const forwardedHeaders : Record <string,string> = {};
 
-    Object.entries(req.headers).forEach(([key, value]) =>{
+    Object.entries(headers).forEach(([key, value]) =>{
       if(typeof value ==='string') {
         forwardedHeaders[key] = value;
       } else if (Array.isArray(value)) {
