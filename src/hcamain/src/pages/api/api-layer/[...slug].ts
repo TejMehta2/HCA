@@ -22,18 +22,21 @@ export default async function handler(
     const params = new URLSearchParams(query as Record<string, string>);
     params.delete('slug');
     remoteRequestUrl.search = params.toString() || '';
-    // fetch from remote integration layer server
 
-    const forwardedHeaders = headers['content-type']
-      ? {
-          'content-type': headers['content-type'],
-          'Sitecore-Webhook': headers['Sitecore-Webhook']
-        }
-      : undefined;
+    // fetch from remote integration layer server
+    const forwardedHeaders: Record<string, string> = {};
+
+    Object.entries(headers).forEach(([key, value]) => {
+      if (typeof value === 'string') {
+        forwardedHeaders[key] = value;
+      } else if (Array.isArray(value)) {
+        forwardedHeaders[key] = value.join(', ');
+      }
+    });
 
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : JSON.stringify(body),
+      body: method === 'GET' ? undefined : body,
       headers: forwardedHeaders,
     });
 
