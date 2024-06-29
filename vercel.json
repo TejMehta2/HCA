@@ -1,7 +1,6 @@
 {
   "git": {
-    "deploymentEnabled": {
-	  "dev": false,
+    "deploymentEnabled": {	  
       "uat": false,
 	  "prod": false
     }
