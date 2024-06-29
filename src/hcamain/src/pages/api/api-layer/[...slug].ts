@@ -29,7 +29,7 @@ export default async function handler(
 
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : body,
+      body: method === 'GET' ? undefined : JSON.stringify(body),
       headers: headers as Record<string, string>,
     });
 
