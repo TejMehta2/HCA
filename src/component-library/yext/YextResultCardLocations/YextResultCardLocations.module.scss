@@ -97,7 +97,6 @@
     }
     @include media(screen-l, max) {
       .column {
-        margin-top: 0;
         max-width: initial;
       }
 

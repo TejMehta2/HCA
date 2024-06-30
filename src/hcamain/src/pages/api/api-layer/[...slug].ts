@@ -22,18 +22,15 @@ export default async function handler(
     const params = new URLSearchParams(query as Record<string, string>);
     params.delete('slug');
     remoteRequestUrl.search = params.toString() || '';
-    // fetch from remote integration layer server
 
-    const forwardedHeaders = headers['content-type']
-      ? {
-          'content-type': headers['content-type'],
-        }
-      : undefined;
+    // fetch from remote integration layer server
+    delete headers.host;
+    delete headers.referer;
 
     const response = await fetch(remoteRequestUrl.href, {
       method,
-      body: method === 'GET' ? undefined : body,
-      headers: forwardedHeaders,
+      body: method === 'GET' ? undefined : JSON.stringify(body),
+      headers: headers as Record<string, string>,
     });
 
     if (!response.ok || !response.body) {

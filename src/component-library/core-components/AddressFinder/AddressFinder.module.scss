@@ -28,22 +28,8 @@
     padding-left: $spacing-6;
   }
 
-  &:has(.error-message) {
-    color: var(--field-error-colour);
-
-    .search-wrapper {
-      color: var(--field-error-colour);
-    }
-
-    input {
-      border-color: var(--field-error-colour);
-    }
-  }
-
-  &:has(input:focus) {
-    .cross {
-      opacity: 1;
-    }
+  input {
+    color: var(--text);
   }
 
   .error-message {
@@ -51,6 +37,39 @@
     display: flex;
     align-items: center;
     gap: $spacing-2;
+  }
+
+  &:has(.error-message) {
+    label,
+    .help-text,
+    .error-message,
+    svg {
+      color: var(--field-error-colour);
+    }
+
+    .search-wrapper {
+      border-color: var(--field-error-colour);
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-within {
+        outline-color: var(--field-error-colour);
+      }
+    }
+
+    input {
+      &::placeholder {
+        color: var(--field-error-colour);
+      }
+    }
+  }
+
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
+    }
   }
 }
 

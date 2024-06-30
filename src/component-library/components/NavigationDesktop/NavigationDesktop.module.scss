@@ -89,6 +89,7 @@
   &,
   & * {
     text-decoration: none !important;
+    word-break: normal;
   }
 
   &:has([disabled]) {
