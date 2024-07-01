@@ -116,7 +116,7 @@ const nextConfig = {
       {
         ///our-services/treatments/
         source: '/our-services/treatments/:path*',
-        destination: '/treatments/:path*',
+        destination: '/services/treatments/:path*',
         permanent: true,
       },
 
