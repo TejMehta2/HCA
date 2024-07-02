@@ -19,6 +19,7 @@
   }
 
   @include media(screen-l) {
+    min-width: px-to-rem(227);
     aspect-ratio: 314/397;
   }
 

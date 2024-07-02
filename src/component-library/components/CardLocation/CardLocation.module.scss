@@ -39,14 +39,14 @@
   margin-bottom: $spacing-2;
 }
 
-.icon,
 .cta {
-  margin-top: auto;
+  margin-top: px-to-rem(18);
 }
 
 .icon {
   width: auto;
   height: px-to-rem(24);
+  margin-top: px-to-rem(48);
 }
 
 .quantity {
