@@ -82,12 +82,12 @@ $max-options: 5; // Increase max if more "sort by" options are required
 @include media(screen-m) {
   .fields {
     padding: px-to-rem(32);
-    border: solid 1px var(--text);
+    border: solid 1px $navy-blue-100;
     border-radius: $radius-large;
     width: px-to-rem(356);
     position: absolute;
-    background-color: var(--card-background);
-    color: var(--text);
+    background-color: $white;
+    color: $navy-blue-100;
     max-height: px-to-rem(300);
     overflow: auto;
     z-index: 2;
