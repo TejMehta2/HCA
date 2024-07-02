@@ -149,14 +149,18 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
             </Text>
           }
           subtitle={
-            <Text tag="p" variation={'subheading-2'}>
-              <JssText field={card?.fields?.Text} />
-            </Text>
+            card?.fields?.Text?.value ? (
+              <Text tag="p" variation={'subheading-2'}>
+                <JssText field={card?.fields?.Text} />
+              </Text>
+            ) : undefined
           }
           icon={
-            <SitecoreSvg>
-              {card?.fields?.Icon?.fields?.SvgMarkup?.value}
-            </SitecoreSvg>
+            card?.fields?.Icon?.fields?.SvgMarkup?.value ? (
+              <SitecoreSvg>
+                {card?.fields?.Icon?.fields?.SvgMarkup?.value}
+              </SitecoreSvg>
+            ) : undefined
           }
           cta={
             card.fields?.CTALink?.value ? (
