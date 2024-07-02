@@ -61,7 +61,7 @@ const ModalCallUs = (
 
   return (
     <Themes theme={'D-HCA-Teal'}>
-      <Modals ref={ref} defaultOpen={defaultOpen}>
+      <Modals ref={ref} defaultOpen={defaultOpen} contentVariation="call">
         <div className={styles['modal-contact-us']}>
           <div className={styles.main}>
             {contacts?.length > 0 && (
