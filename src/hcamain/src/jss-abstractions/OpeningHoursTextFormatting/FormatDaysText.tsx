@@ -33,20 +33,39 @@ export const formatDaysText = (
     const availabilityDays = isSequence
       ? `${days[0]} to ${days[days.length - 1]}`
       : days.join(', ');
-    const openParsed = parse(opens, 'HH:mm', new Date());
-    const closesParsed = parse(closes, 'HH:mm', new Date());
 
-    const opensFormatted =
-      openParsed.getMinutes() > 0
-        ? format(openParsed, 'h:mmaaa')
-        : format(openParsed, 'haaa');
+    let alwaysOpen = false;
+    if (opens === '00:00' && closes === '23:59') {
+      alwaysOpen = true;
+    }
 
-    const closesFormatted =
-      closesParsed.getMinutes() > 0
-        ? format(closesParsed, 'h:mmaaa')
-        : format(closesParsed, 'haaa');
+    let closed = false;
+    if (opens === '00:00' && closes === '00:00') {
+      closed = true;
+    }
 
-    const openingHoursText = `${availabilityDays} ${opensFormatted} - ${closesFormatted}`;
+    let openingHoursText;
+
+    if (!alwaysOpen && !closed) {
+      const openParsed = parse(opens, 'HH:mm', new Date());
+      const closesParsed = parse(closes, 'HH:mm', new Date());
+
+      const opensFormatted =
+        openParsed.getMinutes() > 0
+          ? format(openParsed, 'h:mmaaa')
+          : format(openParsed, 'haaa');
+
+      const closesFormatted =
+        closesParsed.getMinutes() > 0
+          ? format(closesParsed, 'h:mmaaa')
+          : format(closesParsed, 'haaa');
+
+      openingHoursText = `${availabilityDays}: ${opensFormatted} - ${closesFormatted}`;
+    } else if (alwaysOpen) {
+      openingHoursText = `${availabilityDays}: 24h`;
+    } else {
+      openingHoursText = `${availabilityDays}: Closed`;
+    }
 
     return openingHoursText;
   } catch (err) {
