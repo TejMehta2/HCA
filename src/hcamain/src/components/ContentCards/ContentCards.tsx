@@ -178,14 +178,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
                     width="363"
                     height="243"
                   />
-                ) : (
+                ) : card.image?.jsonValue?.value?.src ? (
                   <Image
                     src={card.image?.jsonValue?.value?.src || ''}
                     alt={(card.image?.jsonValue?.value?.alt as string) || ''}
                     width="363"
                     height="243"
                   />
-                )
+                ) : undefined
               ) : undefined
             }
             title={
