@@ -8,7 +8,6 @@ import {
   useSitecoreContext,
   LinkFieldValue,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import CardBlogBlock from '@component-library/site-components/CardBlogBlock/CardBlogBlock';
 import Text from '@component-library/foundation/Text/Text';
 import CardBlog from '@component-library/components/CardBlog/CardBlog';
 import Params from 'src/types/params';
@@ -17,6 +16,15 @@ import Button from '@component-library/core-components/Button/Button';
 import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import dynamic from 'next/dynamic';
+
+const DynamicCardBlogBlock = dynamic(
+  () =>
+    import('@component-library/site-components/CardBlogBlock/CardBlogBlock'),
+  {
+    ssr: true,
+  }
+);
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -210,7 +218,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
 
   return (
     <>
-      <CardBlogBlock
+      <DynamicCardBlogBlock
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}
@@ -314,7 +322,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
             </CardBlog>
           );
         })}
-      </CardBlogBlock>
+      </DynamicCardBlogBlock>
     </>
   );
 };

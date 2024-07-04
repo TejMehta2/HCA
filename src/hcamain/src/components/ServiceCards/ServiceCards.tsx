@@ -11,11 +11,18 @@ import {
 
 import CardService from '@component-library/components/CardService/CardService';
 import Text from '@component-library/foundation/Text/Text';
-import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const DynamicServiceCards = dynamic(
+  () => import('@component-library/site-components/ServiceCards/ServiceCards'),
+  {
+    ssr: true,
+  }
+);
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -88,7 +95,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   }
   const headingTag = props.params?.HeadingTag || 'h2';
   return (
-    <ServiceCards
+    <DynamicServiceCards
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text
@@ -180,6 +187,6 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
           </CardService>
         )
       )}
-    </ServiceCards>
+    </DynamicServiceCards>
   );
 };
