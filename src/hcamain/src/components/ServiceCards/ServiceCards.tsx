@@ -11,7 +11,6 @@ import {
 
 import CardService from '@component-library/components/CardService/CardService';
 import Text from '@component-library/foundation/Text/Text';
-//import ServiceCards from '@component-library/site-components/ServiceCards/ServiceCards';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
