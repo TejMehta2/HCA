@@ -153,6 +153,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
             link={
               <a href={service?.url?.path}>
                 <JssRichText
+                  tag="span"
                   field={props.fields?.data?.item?.cTACardText?.jsonValue}
                 />
               </a>
