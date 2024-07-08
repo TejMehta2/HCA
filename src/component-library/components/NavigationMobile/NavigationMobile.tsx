@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './NavigationMobile.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import LogoBlue from '../../foundation/BrandAssets/Logo blue.svg';
@@ -64,6 +65,18 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
     setSecondaryChoice(null);
   };
   const openNavigation = () => setIsOpen(true);
+
+  // close the nav when clicking a link within
+  const router = useRouter();
+  useEffect(() => {
+    router.events.on('routeChangeStart', closeNavigation);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', closeNavigation);
+    };
+  }, [router]);
 
   // Transform props to filter out desktop child components
   const mobileTabs: NavigationTab[] = tabs.map((tab) => ({
