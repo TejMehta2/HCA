@@ -92,7 +92,7 @@ const nextConfig = {
       },
       {
         source: '/paymentForm/:path*',
-        destination: '/api/api-layer/api/paymentForm/:path*',
+        destination: '/api/payment/api/paymentForm/:path*',
       },
     ];
   },
@@ -130,7 +130,8 @@ const nextConfig = {
       {
         ///patient-stories
         source: '/for-patients-and-visitors/patient-stories/:path*',
-        destination: '/patient-and-visitor-information/patient-information/patient-stories/:path*',
+        destination:
+          '/patient-and-visitor-information/patient-information/patient-stories/:path*',
         permanent: true,
       },
 

@@ -8,12 +8,22 @@ import {
   Placeholder,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import dynamic from 'next/dynamic';
+
+const DynamicImageAndTextBlock = dynamic(
+  () =>
+    import(
+      '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock'
+    ),
+  {
+    ssr: true,
+  }
+);
 
 interface Fields {
   Heading?: Field<string>;
@@ -61,7 +71,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
 
   return (
     <>
-      <ImageAndTextBlock
+      <DynamicImageAndTextBlock
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
         imageKeepAspectRatio={keepAspectRatio}
@@ -102,7 +112,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
             <JssRichText field={props.fields?.Text} />
           </RichText>
         </Text>
-      </ImageAndTextBlock>
+      </DynamicImageAndTextBlock>
     </>
   );
 };
