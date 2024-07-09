@@ -10,6 +10,7 @@ import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
+import { removeTags } from '@component-library/utility-functions';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -77,12 +78,17 @@ export const Default = (props: ShareCTAProps): JSX.Element => {
   const findCtaText = findSharePlatformCtaText(
     props.fields?.data.item.sharePlatforms.sharePlatformsList
   );
+
+  const shareText = props.fields?.data.contextItem?.text?.value
+    ? removeTags(props.fields?.data.contextItem?.text?.value)
+    : '';
   // Organize the re-usable share data
   const shareData = {
     url: props.fields?.data.contextItem?.url?.url || '',
     title: props.fields?.data.contextItem?.title?.value || '',
-    text: props.fields?.data.contextItem?.text?.value || '',
+    text: shareText,
   };
+
   return (
     <ShareCTA
       shareCtaText={

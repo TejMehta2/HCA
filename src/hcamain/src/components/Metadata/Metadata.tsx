@@ -8,6 +8,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Head from 'next/head';
+import { removeTags } from '@component-library/utility-functions';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -104,6 +105,8 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
+  const pageText = Text?.value ? removeTags(Text?.value) : '';
+
   return (
     <Head>
       <meta name="twitter:card" content={TwitterCard?.value?.value} />
@@ -116,7 +119,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
       <meta name="robots" content={`${follow}, ${index}`} />
       <meta name="title" content={title} />
       <meta name="pageTitle" content={Title?.value} />
-      <meta name="pageText" content={Text?.value} />
+      <meta name="pageText" content={pageText} />
       <meta
         name="pageImage"
         content={addThumbnailParameter(Image?.value?.src)}
