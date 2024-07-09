@@ -15,6 +15,7 @@ import { Result } from '@yext/search-headless-react';
 interface YextSectionLocationsProps {
   variation?: 'stacked' | 'side-by-side';
   results?: Result<HealthcareFacility>[];
+  c_uRL?: string;
 }
 type weekdayType = keyof Hours;
 const weekday: weekdayType[] = [
@@ -41,6 +42,7 @@ const YextResultSectionLocationsAdaptor = (
       hours,
       c_heroImage,
       googlePlaceId,
+      c_uRL,
     } = result.rawData;
 
     const id = (index + 1).toString();
@@ -74,7 +76,11 @@ const YextResultSectionLocationsAdaptor = (
           height={c_heroImage.height}
         />
       ) : undefined,
-      title: <Text variation="heading-1">{name}</Text>,
+      title: (
+        <Text variation="heading-1">
+          {c_uRL ? <a href={c_uRL}>{name}</a> : name}
+        </Text>
+      ),
       distance: (
         <Text variation={'body-large'}>
           {Math.round(Number(result.distance) / 100) / 10}km
