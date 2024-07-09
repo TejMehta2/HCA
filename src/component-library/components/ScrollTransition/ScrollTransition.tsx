@@ -20,44 +20,62 @@ const ScrollTransition = (props: ScrollTransitionProps): JSX.Element => {
       ':scope > div:not([data-content="diamond"])'
     );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (transitionBackground) {
-              const intersectingTheme = entry.target.getAttribute(
-                'data-theme'
-              ) as ThemeTypes;
-              if (intersectingTheme) {
-                setCurrentTheme(intersectingTheme);
-              }
-            }
+    const handleIntersection = () => {
+      let mostVisibleSection = targetSections?.[0];
+      let mostVisibleSectionHeight: number = 0;
 
-            /* Animate individual component sections */
-            const animateSections =
-              entry.target.querySelectorAll('[data-animate]');
-
-            animateSections.forEach((section) => {
-              section.setAttribute('data-animate-active', 'true');
-            });
-
-            /* Also animate diamond line if it's the next sibling */
-            if (
-              entry.target.nextElementSibling instanceof HTMLElement &&
-              entry.target.nextElementSibling?.getAttribute('data-content') ===
-                'diamond'
-            ) {
-              const diamondElement =
-                entry.target.nextElementSibling.querySelector('[data-animate]');
-              diamondElement?.setAttribute('data-animate-active', 'true');
-            }
+      targetSections?.forEach((section) => {
+        const { bottom, top } = section.getBoundingClientRect();
+        if (top > window.innerHeight || bottom < 0) return;
+        const visibleHeight =
+          Math.min(window.innerHeight, bottom) - Math.max(0, top);
+        if (visibleHeight > mostVisibleSectionHeight) {
+          mostVisibleSection = section;
+          mostVisibleSectionHeight = visibleHeight;
+        }
+      });
+      if (mostVisibleSection) {
+        // Transition background colors
+        if (transitionBackground) {
+          const intersectingTheme = mostVisibleSection?.getAttribute(
+            'data-theme'
+          ) as ThemeTypes;
+          if (intersectingTheme) {
+            setCurrentTheme(intersectingTheme);
           }
-        });
-      },
-      {
-        threshold: [0.1, 0.2, 0.3, 0.4, 0.8, 1],
+        }
+
+        // Animate individual component sections
+        if (
+          mostVisibleSection.getBoundingClientRect()?.top <=
+          window.innerHeight / 2
+        ) {
+          const animateSections =
+            mostVisibleSection.querySelectorAll('[data-animate]');
+          animateSections?.forEach((section) => {
+            section.setAttribute('data-animate-active', 'true');
+          });
+        }
+
+        // Also animate diamond line if it's the next sibling
+        if (
+          mostVisibleSection?.nextElementSibling instanceof HTMLElement &&
+          mostVisibleSection?.nextElementSibling?.getAttribute(
+            'data-content'
+          ) === 'diamond'
+        ) {
+          const diamondElement =
+            mostVisibleSection?.nextElementSibling.querySelector(
+              '[data-animate]'
+            );
+          diamondElement?.setAttribute('data-animate-active', 'true');
+        }
       }
-    );
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: [0.1, 0.2, 0.3, 0.4, 0.8, 1],
+    });
     targetSections?.forEach((section) => {
       observer.observe(section);
     });
