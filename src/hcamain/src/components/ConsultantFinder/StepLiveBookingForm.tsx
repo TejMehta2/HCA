@@ -141,7 +141,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
   const [insurersLDB, setInsurersLDB] = useState<object[]>([]);
   const [errorData, setErrorData] = useState(false);
@@ -603,8 +603,8 @@ export const Default = (props: StepProps): JSX.Element => {
       getConsultantData(slugURL.toString());
     }
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || null;
-    setGmcNumber(Number(gmcNumber));
+    const gmcNumber = router?.query?.gmcNumber || '';
+    setGmcNumber(gmcNumber.toString());
 
     // get reviews total number from URL
     const reviewsTotal = router?.query?.reviewsTotal || null;
