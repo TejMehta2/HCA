@@ -11,6 +11,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import RichText from '@component-library/core-components/RichText/RichText';
 
 type HCAIconFields = {
   fields?: {
@@ -97,7 +98,9 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
         ),
         bodyCopy: (
           <Text tag="div" variation="body-large">
-            <JssRichText tag="p" field={tab?.fields?.Text} />
+            <RichText>
+              <JssRichText tag="p" field={tab?.fields?.Text} />
+            </RichText>
           </Text>
         ),
       }))}
