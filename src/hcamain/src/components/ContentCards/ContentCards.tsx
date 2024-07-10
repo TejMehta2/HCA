@@ -103,6 +103,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
         </SitecoreSvg>
         <JssRichText
+          tag="div"
           field={{
             value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
           }}
@@ -152,6 +153,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               isExperienceEditor) && (
               <Text tag="div" variation="body-large">
                 <JssRichText
+                  tag="div"
                   field={props.fields?.data?.item?.text?.jsonValue}
                 />
               </Text>
@@ -203,9 +205,9 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             bodyCopy={
               <Text tag="div" variation="body-medium">
                 {card.abstractText?.value ? (
-                  <JssRichText tag="span" field={card.abstractText} />
+                  <JssRichText tag="div" field={card.abstractText} />
                 ) : (
-                  <JssRichText tag="span" field={card.text} />
+                  <JssRichText tag="div" field={card.text} />
                 )}
               </Text>
             }
@@ -213,6 +215,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               card?.url?.path ? (
                 <a href={card?.url?.path}>
                   <JssRichText
+                    tag="div"
                     field={props.fields?.data?.item?.cTACardText?.jsonValue}
                   />
                 </a>
