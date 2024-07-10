@@ -93,12 +93,16 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
         </Text>
       }
       doctify={
-        <Doctify
-          alignment="left"
-          params={props.params}
-          key={2}
-          fields={{ Reviews: props.fields?.data?.contextItem?.doctifyReviews }}
-        />
+        props.fields?.data?.contextItem?.doctifyReviews?.fields ? (
+          <Doctify
+            alignment="left"
+            params={props.params}
+            key={2}
+            fields={{
+              Reviews: props.fields?.data?.contextItem?.doctifyReviews,
+            }}
+          />
+        ) : undefined
       }
       address={{
         icon: <Icons iconName="iconPin"></Icons>,
@@ -165,14 +169,18 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
           </TextButton>
         ),
       }}
-      open={{
-        icon: <Icons iconName="iconClock"></Icons>,
-        text: (
-          <Text variation="body-large" tag="span">
-            {availabilityString}
-          </Text>
-        ),
-      }}
+      open={
+        availabilityString
+          ? {
+              icon: <Icons iconName="iconClock"></Icons>,
+              text: (
+                <Text variation="body-large" tag="span">
+                  {availabilityString}
+                </Text>
+              ),
+            }
+          : undefined
+      }
       ctas={
         props.rendering && (
           <PlaceHolderWrapper>
@@ -193,10 +201,12 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
       }
       theme={props.params?.Theme || 'A-HCA-White'}
       cqc={
-        <CQCRating
-          length="short"
-          {...props.fields?.data?.contextItem?.cQCRating}
-        />
+        props.fields?.data?.contextItem?.cQCRating?.fields ? (
+          <CQCRating
+            length="short"
+            {...props.fields?.data?.contextItem?.cQCRating}
+          />
+        ) : undefined
       }
     ></HeaderLocation>
   );
