@@ -36,28 +36,30 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
     return <DoctorCardsDefaultComponent />;
   }
 
-  const cta = props.fields?.data?.item?.cTALink?.jsonValue && (
-    <JssLink
-      field={props.fields?.data?.item?.cTALink?.jsonValue}
-      href={`${props.fields?.data?.item?.cTALink?.jsonValue.value.href}${ctaQuery}`}
-    >
-      {!isExperienceEditor && (
-        <>
-          <SitecoreSvg>
-            {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
-          </SitecoreSvg>
+  const cta =
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.href &&
+    props.fields?.data?.item?.cTALink?.jsonValue?.value.text ? (
+      <JssLink
+        field={props.fields?.data?.item?.cTALink?.jsonValue}
+        href={`${props.fields?.data?.item?.cTALink?.jsonValue.value.href}${ctaQuery}`}
+      >
+        {!isExperienceEditor && (
+          <>
+            <SitecoreSvg>
+              {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+            </SitecoreSvg>
 
-          <JssTextWithEntityName
-            field={{
-              value:
-                props.fields?.data?.item?.cTALink.jsonValue.value.text || '',
-            }}
-            isRichText={true}
-          />
-        </>
-      )}
-    </JssLink>
-  );
+            <JssTextWithEntityName
+              field={{
+                value:
+                  props.fields?.data?.item?.cTALink.jsonValue.value.text || '',
+              }}
+              isRichText={true}
+            />
+          </>
+        )}
+      </JssLink>
+    ) : undefined;
 
   const getSpeciality = (doctor: Consultant) => {
     const keywords = doctor.keywords;

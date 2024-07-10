@@ -53,6 +53,7 @@
     display: grid;
     gap: $spacing-4 $spacing-2;
     grid-template-columns: auto 1fr auto;
+    align-items: center;
 
     @include media(screen-m, max) {
       grid-template-columns: auto 1fr;
@@ -63,6 +64,10 @@
     }
 
     margin-bottom: $spacing-5;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   .inner {

@@ -149,3 +149,9 @@ export const formatDateDMY = (date: string) => {
 
   return [day, month, year].join('/');
 };
+
+// remove html tags from a string
+
+export function removeTags(str: string) {
+  return str.replace(/<\/?[^>]+(>|$)/g, '');
+}
