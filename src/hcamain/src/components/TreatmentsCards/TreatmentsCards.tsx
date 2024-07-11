@@ -203,11 +203,11 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               </Text>
             }
             bodyCopy={
-              <Text tag="p" variation="body-medium">
+              <Text tag="div" variation="body-medium">
                 {card.abstractText?.value ? (
-                  <JssRichText tag="span" field={card.abstractText} />
+                  <JssRichText tag="div" field={card.abstractText} />
                 ) : (
-                  <JssRichText tag="span" field={card.text} />
+                  <JssRichText tag="div" field={card.text} />
                 )}
               </Text>
             }

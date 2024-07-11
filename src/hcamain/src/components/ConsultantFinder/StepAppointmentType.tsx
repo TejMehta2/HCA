@@ -61,7 +61,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   const router = useRouter();
   const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<number | null>(null);
+  const [gmcNumber, setGmcNumber] = useState<string>('');
   const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
 
   useEffect(() => {
@@ -78,8 +78,8 @@ export const Default = (props: StepProps): JSX.Element => {
     const slug = router?.query?.slug || '';
     setSlug(slug.toString());
     // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || null;
-    setGmcNumber(Number(gmcNumber));
+    const gmcNumber = router?.query?.gmcNumber || '';
+    setGmcNumber(gmcNumber.toString());
     // get reviews total number from URL
     const reviewsTotal = router?.query?.reviewsTotal || null;
     setReviewsTotal(Number(reviewsTotal));

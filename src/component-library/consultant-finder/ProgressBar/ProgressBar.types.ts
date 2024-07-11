@@ -6,6 +6,6 @@ export interface ProgressBarProps {
   currentPage: null | string;
   steps: any;
   slug?: string;
-  gmcNumber?: number | null;
+  gmcNumber?: string;
   reviewsTotal?: number | null;
 }
