@@ -18,6 +18,7 @@ import YextResultCardConsultantsAdaptor from '../YextResultCardConsultants/YextR
 import HealthcareFacility from '../../types/yext/healthcare_facilities';
 import YextResultCardDepartmentsAdaptor from '../YextResultCardDepartments/YextResultCardDepartments.adaptor';
 import YextResultCardTestsAndTreatmentsAdaptor from '../YextResultCardTestsAndTreatments/YextResultCardTestsAndTreatments.adaptor';
+import YextResultCardSharedAdaptor from '../YextResultCardShared/YextResultCardShared.adaptor';
 import YextUniversalSection from '../YextUniversalSection/YextUniversalSection';
 import { VerticalKey } from './YextSearch.types';
 import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCustomAlternativeVerticals';
@@ -33,6 +34,11 @@ export const verticalConfigMap: VerticalConfigMap<{
   healthcare_professionals: unknown;
   faqs: unknown;
   links: unknown;
+  jobs: unknown;
+  scans: unknown;
+  patientstories: unknown;
+  treatments: unknown;
+  promotion: unknown;
 }> = {
   healthcare_facilities: {
     label: 'Locations',
@@ -62,6 +68,16 @@ export const verticalConfigMap: VerticalConfigMap<{
         CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
         title="Tests & Treatments"
         verticalKey="tests_and_treatments"
+      />
+    ),
+  },
+  treatments: {
+    label: 'Treatments',
+    SectionComponent: (props) => (
+      <YextUniversalSection
+        results={props.results}
+        CardComponent={YextResultCardTestsAndTreatmentsAdaptor}
+        title="Treatments"
       />
     ),
   },
@@ -105,6 +121,46 @@ export const verticalConfigMap: VerticalConfigMap<{
         results={props.results}
         CardComponent={YextResultCardLinksAdaptor}
         title="Links"
+      />
+    ),
+  },
+  jobs: {
+    label: 'Jobs',
+    SectionComponent: (props) => (
+      <YextUniversalSection
+        results={props.results}
+        CardComponent={YextResultCardSharedAdaptor}
+        title="Jobs"
+      />
+    ),
+  },
+  scans: {
+    label: 'Scans',
+    SectionComponent: (props) => (
+      <YextUniversalSection
+        results={props.results}
+        CardComponent={YextResultCardSharedAdaptor}
+        title="Scans"
+      />
+    ),
+  },
+  patientstories: {
+    label: 'Patient Stories',
+    SectionComponent: (props) => (
+      <YextUniversalSection
+        results={props.results}
+        CardComponent={YextResultCardSharedAdaptor}
+        title="Patient Stories"
+      />
+    ),
+  },
+  promotion: {
+    label: 'Promotion',
+    SectionComponent: (props) => (
+      <YextUniversalSection
+        results={props.results}
+        CardComponent={YextResultCardSharedAdaptor}
+        title="Promotion"
       />
     ),
   },
