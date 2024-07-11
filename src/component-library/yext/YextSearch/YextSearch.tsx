@@ -18,7 +18,6 @@ import YextResultCardConsultantsAdaptor from '../YextResultCardConsultants/YextR
 import HealthcareFacility from '../../types/yext/healthcare_facilities';
 import YextResultCardDepartmentsAdaptor from '../YextResultCardDepartments/YextResultCardDepartments.adaptor';
 import YextResultCardTestsAndTreatmentsAdaptor from '../YextResultCardTestsAndTreatments/YextResultCardTestsAndTreatments.adaptor';
-import YextResultCardJobsAdaptor from '../YextResultCardJobs/YextResultCardJobs.adaptor';
 import YextResultCardSharedAdaptor from '../YextResultCardShared/YextResultCardShared.adaptor';
 import YextUniversalSection from '../YextUniversalSection/YextUniversalSection';
 import { VerticalKey } from './YextSearch.types';
@@ -130,7 +129,7 @@ export const verticalConfigMap: VerticalConfigMap<{
     SectionComponent: (props) => (
       <YextUniversalSection
         results={props.results}
-        CardComponent={YextResultCardJobsAdaptor}
+        CardComponent={YextResultCardSharedAdaptor}
         title="Jobs"
       />
     ),
