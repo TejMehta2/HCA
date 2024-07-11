@@ -25,6 +25,7 @@ import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCust
 import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
 import { ResultsCount } from '../YextCustomResultsCount/YextCustomResultsCount';
 import Themes from '../../foundation/Themes/Themes';
+import useGlobalSearch from '../hooks/useGlobalSearch';
 
 export const verticalConfigMap: VerticalConfigMap<{
   healthcare_facilities: unknown;
@@ -170,6 +171,8 @@ const YextSearch = (): JSX.Element => {
   const resultsCountRef = useRef<HTMLDivElement>(null);
   const verticalKey = useSearchState((state) => state.vertical.verticalKey);
 
+  const { searchState, updateSearchQuery } = useGlobalSearch();
+
   const Verticals = () => {
     const searchState = useSearchState((state) => state);
     const verticalKey = searchState.vertical.verticalKey as
@@ -242,7 +245,11 @@ const YextSearch = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
-        <StyledYextSearchBar />
+        <StyledYextSearchBar
+        // onSearch={({ query = '' }) => {
+        //   triggerSearch(query);
+        // }}
+        />
         <div ref={resultsCountRef} className={styles.tabs}>
           <YextTabs />
         </div>
