@@ -28,7 +28,6 @@ const Schema = (props: SchemaProps) => {
       | 'Condition'
       | 'Treatment'
       | 'Test'
-      | 'Find a Doctor'
       | 'Hospital/Facility'
       | 'Generic';
 
@@ -56,47 +55,26 @@ const Schema = (props: SchemaProps) => {
       ({ componentName }) => ['HeroLocationDetails'].includes(componentName) // TODO - potentially extend to CQCRating etc.
     ) as HeroLocationDetailsProps;
 
-    // Keeping this here incase URL method doesn't work well
-    // const templateId = route?.templateId
-    //   ?.replaceAll(/[{\-}]/g, '')
-    //   .toLowerCase();
-    // const getPageType = (templateId?: string): SchemaPageType => {
-    //   switch (templateId) {
-    //     case '0b18db9eacec4f9e99c061a20535af37':
-    //       return 'Homepage';
-    //     case 'b63580c44e8a49e4a7c80e09552fcfbc':
-    //       return 'Treatment';
-    //     case '9069a668fc8d4fcf902c55c18743aa88':
-    //       return 'Test';
-    //     case '':
-    //       return 'Condition';
-    //     case '':
-    //       return 'Find a Doctor';
-    //     case 'ce35b67f8afb461a8ed31b9da4167731':
-    //       return 'Hospital/Facility';
-    //     default:
-    //       return 'Generic';
-    //   }
-    // };
-    // const pageType = getPageType(templateId);
-
-    const getPageType = (path?: string): SchemaPageType => {
-      if (!path) return 'Generic';
-      const pathname = path?.toLocaleLowerCase();
-      const includes = (substring: string) => pathname.includes(substring);
-      if (pathname === '/' || pathname === '') return 'Homepage';
-      if (includes('/services/treatments/')) return 'Treatment';
-      if (includes('/tests-and-scans/')) return 'Test';
-      if (includes('/conditions/')) return 'Condition';
-      if (includes('/find-a-doctor')) return 'Find a Doctor';
-      if (includes('/locations/hospitals/')) return 'Hospital/Facility';
-      if (includes('locations/outpatients/')) return 'Hospital/Facility';
-      if (includes('/locations/hca-gp-services/')) return 'Hospital/Facility';
-
-      return 'Generic';
+    const templateId = route?.templateId
+      ?.replaceAll(/[{\-}]/g, '')
+      .toLowerCase();
+    const getPageType = (templateId?: string): SchemaPageType => {
+      switch (templateId) {
+        case '0b18db9eacec4f9e99c061a20535af37':
+          return 'Homepage';
+        case 'b63580c44e8a49e4a7c80e09552fcfbc':
+          return 'Treatment';
+        case '9069a668fc8d4fcf902c55c18743aa88':
+          return 'Test';
+        case '9b38cf346e1748b6b48781931a90aa8a':
+          return 'Condition';
+        case 'ce35b67f8afb461a8ed31b9da4167731':
+          return 'Hospital/Facility';
+        default:
+          return 'Generic';
+      }
     };
-
-    const pageType = getPageType(path);
+    const pageType = getPageType(templateId);
 
     const reviewFields =
       (reviewComponent as IntroBlockProps)?.fields ||
@@ -204,14 +182,15 @@ const Schema = (props: SchemaProps) => {
 
         break;
       case 'Condition':
-        const medicalConditionSchema = {
-          ...schema,
-          name,
-          '@type': 'MedicalCondition',
-          conditionDescription,
-        };
+        // MedicalCondition schema to be added manually
+        // const medicalConditionSchema = {
+        //   ...schema,
+        //   name,
+        //   '@type': 'MedicalCondition',
+        //   conditionDescription,
+        // };
 
-        schemas.push(medicalConditionSchema, reviewsSchema);
+        schemas.push(reviewsSchema);
 
         break;
       case 'Treatment':
