@@ -112,7 +112,10 @@ const Schema = (props: SchemaProps) => {
     const conditionDescription = meta?.Text?.value;
 
     const reviewCount = reviewFields?.DoctifyReviews?.fields?.Reviews?.value
-      ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(/\+/g, '')
+      ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(
+          /[+,]/g,
+          ''
+        )
       : '';
     const aggregateRating = {
       '@type': 'AggregateRating',
