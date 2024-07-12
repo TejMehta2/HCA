@@ -26,6 +26,7 @@ export interface PageRouteMetadata {
     EntityName?: Field<string>;
     HideFromWebsiteSearch?: Field<boolean>;
     JsonLdSchema?: Field<string>;
+    Specialties?: Speciality[];
   };
   itemId?: string;
   templateId?: string;
@@ -35,6 +36,7 @@ interface Fields {
   DefaultMetaImage?: { value?: ImageField };
   PageTitleSufix?: { value?: Field<string> };
   TwitterCard?: { value?: Field<string> };
+  Image: ImageField;
 }
 
 type MetadataProps = {
@@ -44,6 +46,13 @@ type MetadataProps = {
     uid?: string;
   };
 };
+interface Speciality {
+  displayName: string;
+  fields?: Fields;
+  id: string;
+  name: string;
+  url: string;
+}
 
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
