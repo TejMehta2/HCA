@@ -8,6 +8,7 @@ import { HeaderWithImageProps } from 'components/HeaderWithImage/HeaderWithImage
 import { HeroBannerWithSearchProps } from 'components/HeroBannerWithSearch/HeroBannerWithSearch';
 import { HeroLocationDetailsProps } from 'components/HeroLocationDetails/HeroLocationDetails';
 import { IntroBlockProps } from 'components/IntroBlock/IntroBlock';
+import { ContentCardsProps } from 'components/ContentCards/ContentCards';
 import { PageRouteMetadata } from 'components/Metadata/Metadata';
 import { BASE_URL } from 'lib/constants';
 import { parse } from 'node-html-parser';
@@ -27,7 +28,6 @@ const Schema = (props: SchemaProps) => {
       | 'Condition'
       | 'Treatment'
       | 'Test'
-      | 'Find a Doctor'
       | 'Hospital/Facility'
       | 'Generic';
 
@@ -55,45 +55,26 @@ const Schema = (props: SchemaProps) => {
       ({ componentName }) => ['HeroLocationDetails'].includes(componentName) // TODO - potentially extend to CQCRating etc.
     ) as HeroLocationDetailsProps;
 
-    // Keeping this here incase URL method doesn't work well
-    // const templateId = route?.templateId
-    //   ?.replaceAll(/[{\-}]/g, '')
-    //   .toLowerCase();
-    // const getPageType = (templateId?: string): SchemaPageType => {
-    //   switch (templateId) {
-    //     case '0b18db9eacec4f9e99c061a20535af37':
-    //       return 'Homepage';
-    //     case 'b63580c44e8a49e4a7c80e09552fcfbc':
-    //       return 'Treatment';
-    //     case '9069a668fc8d4fcf902c55c18743aa88':
-    //       return 'Test';
-    //     case '':
-    //       return 'Condition';
-    //     case '':
-    //       return 'Find a Doctor';
-    //     case 'ce35b67f8afb461a8ed31b9da4167731':
-    //       return 'Hospital/Facility';
-    //     default:
-    //       return 'Generic';
-    //   }
-    // };
-    // const pageType = getPageType(templateId);
-
-    const getPageType = (path?: string): SchemaPageType => {
-      if (!path) return 'Generic';
-      const pathname = path?.toLocaleLowerCase();
-      const includes = (substring: string) => pathname.includes(substring);
-      if (pathname === '/' || pathname === '') return 'Homepage';
-      if (includes('/services-and-treatments/treatments/')) return 'Treatment';
-      if (includes('/tests-and-scans/')) return 'Test';
-      if (includes('/conditions/')) return 'Condition';
-      if (includes('/find-a-doctor')) return 'Find a Doctor';
-      if (includes('/facilities/')) return 'Hospital/Facility';
-
-      return 'Generic';
+    const templateId = route?.templateId
+      ?.replaceAll(/[{\-}]/g, '')
+      .toLowerCase();
+    const getPageType = (templateId?: string): SchemaPageType => {
+      switch (templateId) {
+        case '0b18db9eacec4f9e99c061a20535af37':
+          return 'Homepage';
+        case 'b63580c44e8a49e4a7c80e09552fcfbc':
+          return 'Treatment';
+        case '9069a668fc8d4fcf902c55c18743aa88':
+          return 'Test';
+        case '9b38cf346e1748b6b48781931a90aa8a':
+          return 'Condition';
+        case 'ce35b67f8afb461a8ed31b9da4167731':
+          return 'Hospital/Facility';
+        default:
+          return 'Generic';
+      }
     };
-
-    const pageType = getPageType(path);
+    const pageType = getPageType(templateId);
 
     const reviewFields =
       (reviewComponent as IntroBlockProps)?.fields ||
@@ -105,16 +86,84 @@ const Schema = (props: SchemaProps) => {
       meta?.MetaTitle?.value ||
       meta?.Title.value;
     const description = meta?.MetaDescription?.value || meta?.Text?.value;
+
+    const conditionDescription = meta?.Text?.value;
+
+    const reviewCount = reviewFields?.DoctifyReviews?.fields?.Reviews?.value
+      ? reviewFields?.DoctifyReviews?.fields?.Reviews?.value.replace(
+          /[+,]/g,
+          ''
+        )
+      : '';
     const aggregateRating = {
       '@type': 'AggregateRating',
       ratingValue: reviewFields?.DoctifyReviews?.fields?.Stars?.value || '',
-      reviewCount: reviewFields?.DoctifyReviews?.fields?.Reviews?.value || '',
+      reviewCount: reviewCount,
     };
 
-    let schema: { [key: string]: unknown } = {
+    //  Hospital details
+    let locationSpecialties;
+    let departmentSchema;
+    if (pageType === 'Hospital/Facility') {
+      const contentCards = components?.find(({ componentName }) =>
+        ['ContentCards'].includes(componentName)
+      ) as ContentCardsProps;
+
+      if (contentCards?.dataSource?.includes('services')) {
+        locationSpecialties =
+          contentCards?.fields?.data?.item?.pages?.PagesList;
+      }
+
+      //  try target specific page specialites or use specialties from meta
+
+      if (locationSpecialties) {
+        departmentSchema = locationSpecialties?.map((department) => ({
+          '@type': 'Organization',
+          name: department.title?.value,
+          url: department.url?.path,
+          image: department.image?.jsonValue?.value?.src,
+        }));
+      } else if (meta?.Specialties) {
+        departmentSchema = meta?.Specialties.map((department) => ({
+          '@type': 'Organization',
+          name: department.name,
+          url: department.url,
+          image: department?.fields?.Image?.value?.src,
+        }));
+      } else {
+        departmentSchema = '';
+      }
+    }
+
+    const hospitalTelephone =
+      locationHeroFields?.contactUnits?.contactUnitList?.[0]?.telephoneNumber
+        ?.telephoneNumberList?.[0]?.phoneNumber.value;
+
+    const locationInfo =
+      locationHeroFields?.contactUnits?.contactUnitList?.[0]?.children
+        ?.results?.[0]?.children?.results?.[0];
+
+    const days = locationInfo?.dayOfWeek.dayOfWeekList.map(
+      (day) => day.dayName.value
+    );
+    const openingTime = locationInfo?.opens?.value;
+    const closingTime = locationInfo?.closes?.value;
+    const openingHours = `${days}, ${openingTime} - ${closingTime}`;
+
+    const schema: { [key: string]: unknown } = {
       '@context': 'https://schema.org',
       url: url,
     };
+
+    //  Reviews
+    const reviewsSchema = {
+      ...schema,
+      '@type': 'MedicalOrganization',
+      name: name,
+      aggregateRating,
+    };
+
+    const schemas = [];
 
     const curatedJsonLdSchema = meta?.JsonLdSchema;
 
@@ -122,36 +171,51 @@ const Schema = (props: SchemaProps) => {
     let noSchema: boolean = false;
     switch (pageType) {
       case 'Homepage':
-        schema = {
+        const organizationSchema = {
           ...schema,
           name,
           '@type': 'Organization',
           aggregateRating,
         };
+
+        schemas.push(organizationSchema, reviewsSchema);
+
         break;
       case 'Condition':
-        // TODO - implement once schema available
+        // MedicalCondition schema to be added manually
+        // const medicalConditionSchema = {
+        //   ...schema,
+        //   name,
+        //   '@type': 'MedicalCondition',
+        //   conditionDescription,
+        // };
+
+        schemas.push(reviewsSchema);
+
         break;
       case 'Treatment':
-        schema = {
+        const MedicalTherapySchema = {
           ...schema,
           '@type': 'MedicalTherapy',
           name,
           description,
-          aggregateRating,
         };
+
+        schemas.push(MedicalTherapySchema, reviewsSchema);
+
         break;
       case 'Test':
-        schema = {
+        const MedicalTestSchema = {
           ...schema,
           '@type': 'MedicalTest',
           name,
-          description,
+          conditionDescription,
           aggregateRating,
         };
+        schemas.push(MedicalTestSchema, reviewsSchema);
         break;
       case 'Hospital/Facility':
-        schema = {
+        const facilitySchema = {
           ...schema,
           '@type': 'Hospital',
           name,
@@ -163,38 +227,16 @@ const Schema = (props: SchemaProps) => {
             postalCode: locationHeroFields?.postCode?.jsonValue?.value,
             addressCountry: 'United Kingdom',
           },
-          // telephone: '020 3733 5344', // TODO replace with value when available
+          openingHours: openingHours,
+          telephone: hospitalTelephone,
           image:
             meta?.AbstractImage?.value?.src ||
             meta?.MetaImage?.value?.src ||
             meta?.Image?.value?.src,
-          department: locationHeroFields?.contactUnits?.contactUnitList?.map(
-            (department) => ({
-              '@type': 'Organization',
-              name: department.contactUnitName.value,
-              telephone:
-                department.telephoneNumber.telephoneNumberList?.[0]?.phoneNumber
-                  .value ||
-                department.telephoneNumber.telephoneNumberList?.[0]
-                  ?.phoneNumberLabel.value ||
-                department.telephoneNumber.telephoneNumberList?.[0]
-                  ?.internationPhoneNumber.value ||
-                '',
-              openingHoursSpecification:
-                department.children.results?.[0].children.results.map(
-                  (openingHours) => ({
-                    '@type': 'OpeningHoursSpecification',
-                    dayOfWeek: openingHours.dayOfWeek.dayOfWeekList.map(
-                      (day) => day.dayName.value
-                    ),
-                    opens: openingHours.opens.value,
-                    closes: openingHours.closes.value,
-                  })
-                ),
-            })
-          ),
+          department: departmentSchema,
           aggregateRating,
         };
+        schemas.push(facilitySchema, reviewsSchema);
         break;
       default:
         noSchema = true;
@@ -213,16 +255,21 @@ const Schema = (props: SchemaProps) => {
 
     return (
       <Head>
-        {!noSchema && (
-          <script
-            type="application/ld+json"
-            key="schema"
-            data-test="schema-schema"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(schema),
-            }}
-          />
-        )}
+        {!noSchema &&
+          schemas.length &&
+          schemas.map((schema, index) => {
+            return (
+              <script
+                id={`ldjson-schema-${index}`}
+                type="application/ld+json"
+                key={`${index}-schema`}
+                //data-test="schema-schema"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(schema),
+                }}
+              />
+            );
+          })}
 
         {curatedLdJsonScripts.map((i, x) => (
           <script
