@@ -36,7 +36,7 @@ interface Fields {
   DefaultMetaImage?: { value?: ImageField };
   PageTitleSufix?: { value?: Field<string> };
   TwitterCard?: { value?: Field<string> };
-  Image: ImageField;
+  Image?: ImageField;
 }
 
 type MetadataProps = {
