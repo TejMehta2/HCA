@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   UniversalResults,
   VerticalConfigMap,
@@ -25,6 +25,7 @@ import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCust
 import YextFiltersAdaptor from '../YextFilters/YextFilters.adaptor';
 import { ResultsCount } from '../YextCustomResultsCount/YextCustomResultsCount';
 import Themes from '../../foundation/Themes/Themes';
+import { useRouter } from 'next/router';
 
 export const verticalConfigMap: VerticalConfigMap<{
   healthcare_facilities: unknown;
@@ -167,6 +168,20 @@ export const verticalConfigMap: VerticalConfigMap<{
 };
 
 const YextSearch = (): JSX.Element => {
+  const searchQuery = useSearchState((state) => state.query.input);
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, query: searchQuery },
+      },
+      undefined,
+      { shallow: true }
+    );
+  }, [searchQuery]);
+
   const resultsCountRef = useRef<HTMLDivElement>(null);
   const verticalKey = useSearchState((state) => state.vertical.verticalKey);
 
