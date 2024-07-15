@@ -75,6 +75,23 @@
     display: block;
   }
 
+  .logo-section {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+
+    @include media(screen-m) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .phone {
+    padding: $spacing-4 0;
+
+    @include media(screen-m) {
+      padding: 0;
+    }
+  }
+
   .logo {
     margin-bottom: calc(#{$spacing-6} - #{px-to-rem(8)});
 
@@ -82,7 +99,6 @@
       width: px-to-rem(195);
       height: px-to-rem(55);
     }
-    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
   }
 
   // Logic for if buttons should share row with logo, or wrap depending on quantity of buttons and breakpoint
