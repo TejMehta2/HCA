@@ -16,21 +16,28 @@ const YextNoResults = (props: YextNoResultsProps): JSX.Element => {
   const isShowingAllResults =
     displayAllOnNoResults && allResultsForVertical.length > 0;
 
+  const titleText =
+    currentVerticalLabel === ''
+      ? `No results found for ${query}.`
+      : `No results found in ${currentVerticalLabel} for ${query}.`;
+
   return (
     <div className={styles.wrapper}>
       <div>
         <div className={styles.title}>
           <Text tag="h2" variation="display-5">
-            No results found in {currentVerticalLabel} for {query}.
+            {titleText}
           </Text>
         </div>
+
         <div className={styles.subtitle}>
           <Text tag="p" variation="body-extra-large">
-            {isShowingAllResults && (
+            {isShowingAllResults ? (
               <span>
-                {' '}
                 Showing <strong>all {currentVerticalLabel}</strong> instead.
               </span>
+            ) : (
+              <span>Please try another search.</span>
             )}
           </Text>
         </div>

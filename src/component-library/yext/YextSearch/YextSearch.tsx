@@ -187,6 +187,12 @@ const YextSearch = (): JSX.Element => {
   const verticalKey = useSearchState((state) => state.vertical.verticalKey);
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);
 
+  const verticalResults = useSearchState((state) => state.universal?.verticals);
+
+  const verticalResultsLength = verticalResults
+    ? verticalResults && verticalResults?.length
+    : 0;
+
   const Verticals = () => {
     const searchState = useSearchState((state) => state);
     const verticalKey = searchState.vertical.verticalKey as
@@ -238,6 +244,9 @@ const YextSearch = (): JSX.Element => {
       case 'faqs':
         return (
           <>
+            {resultsCount > 0
+              ? ''
+              : !isLoading && <YextNoResults currentVerticalLabel="FAQs" />}
             <VerticalResults
               CardComponent={YextResultCardFAQsAdaptor}
               customCssClasses={{ verticalResultsContainer: styles.vertical }}
@@ -313,7 +322,19 @@ const YextSearch = (): JSX.Element => {
             <YextFiltersAdaptor />
           </div>
         </div>
-        <UniversalResults verticalConfigMap={verticalConfigMap} />
+
+        {verticalResultsLength > 0 && !isLoading ? (
+          <UniversalResults verticalConfigMap={verticalConfigMap} />
+        ) : (
+          searchQuery !== '' &&
+          !isLoading &&
+          !verticalKey && (
+            <YextNoResults
+              currentVerticalLabel=""
+              displayAllOnNoResults={false}
+            />
+          )
+        )}
         {verticalKey && verticalKey !== 'healthcare_facilities' && (
           <Themes theme={'O-HCA-Teal-20'}>
             <AlternativeVerticals
