@@ -35,6 +35,7 @@
     "react-intersection-observer": "^9.5.2",
     "sass": "^1.52.3",
     "sass-alias": "^1.0.5",
+    "sharp": "0.32.6",
     "zod": "^3.22.4"
   },
   "devDependencies": {

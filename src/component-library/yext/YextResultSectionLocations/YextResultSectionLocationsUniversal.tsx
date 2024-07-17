@@ -89,7 +89,7 @@ const YextResultSectionLocations = (
 
       // Generate markers
       const markers = getMarkers();
-      console.log(markers);
+
       const bounds = new google.maps.LatLngBounds();
       const positions = [...markers.values()].map((marker) =>
         marker.marker.getPosition()
