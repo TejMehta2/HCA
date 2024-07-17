@@ -17,6 +17,9 @@ import Params from 'src/types/params';
 import ErrorBoundary from 'lib/ErrorBoundary';
 import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 import Schema from './Schema';
+import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
+import Button from '@component-library/core-components/Button/Button';
+import Text from '@component-library/foundation/Text/Text';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -163,6 +166,19 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
               data-navigation-type={'buttonClick'}
             >
               <div id="content">
+                <StickyCTA
+                  cta={
+                    <Button size="large" variation="full">
+                      <button>
+                        Book an <strong>appointment</strong>
+                      </button>
+                    </Button>
+                  }
+                >
+                  <Text tag="div" variation="heading-1">
+                    <h2>Start your journey now...</h2>
+                  </Text>
+                </StickyCTA>
                 {isHomepage ? (
                   <ScrollTransition initialTheme={firstComponentTheme}>
                     {route && (
