@@ -721,7 +721,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       null
                     }
                     followUpAppointmentFeesLabel={
-                      props?.fields?.NewAppointmentText?.value ||
+                      props?.fields?.FollowUpAppointmentText?.value ||
                       'Follow-up appointment'
                     }
                     noFeesInfo={

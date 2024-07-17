@@ -49,9 +49,10 @@ interface Fields {
   };
 }
 
-type ContentCardsProps = {
+export type ContentCardsProps = {
   params?: Params;
   fields?: Fields;
+  dataSource: string;
 };
 
 const ContentCardsDefaultComponent = (
