@@ -174,17 +174,18 @@ const YextSearch = (): JSX.Element => {
 
   useEffect(() => {
     if (!searchQuery) return;
-
-    const searchParams = new URLSearchParams(location.search);
-    searchParams.set('query', searchQuery);
-    router.push(
-      {
-        pathname: location.pathname,
-        query: searchParams.toString(),
-      },
-      undefined,
-      { shallow: true }
-    );
+    if (router.isReady) {
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('query', searchQuery);
+      router.push(
+        {
+          pathname: location.pathname,
+          query: searchParams.toString(),
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
   }, [searchQuery, router.isReady]);
 
   const resultsCountRef = useRef<HTMLDivElement>(null);
