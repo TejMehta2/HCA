@@ -28,8 +28,8 @@ const Footer = (props: FooterProps): JSX.Element => {
               <div className={styles.phone}>
                 <Text tag="span" variation="body-extra-large">
                   General Enquiries:&nbsp;
-                  <a href="tel:+442039939231">
-                    <strong>020 3993 9231</strong>
+                  <a href="tel:02070794344">
+                    <strong>020 7079 4344</strong>
                   </a>
                 </Text>
               </div>
