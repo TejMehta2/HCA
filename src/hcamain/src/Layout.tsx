@@ -166,19 +166,6 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
               data-navigation-type={'buttonClick'}
             >
               <div id="content">
-                <StickyCTA
-                  cta={
-                    <Button size="large" variation="full">
-                      <button>
-                        Book an <strong>appointment</strong>
-                      </button>
-                    </Button>
-                  }
-                >
-                  <Text tag="div" variation="heading-1">
-                    <h2>Start your journey now...</h2>
-                  </Text>
-                </StickyCTA>
                 {isHomepage ? (
                   <ScrollTransition initialTheme={firstComponentTheme}>
                     {route && (
