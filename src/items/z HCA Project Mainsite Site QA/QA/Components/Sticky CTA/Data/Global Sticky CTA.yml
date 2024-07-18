@@ -1,0 +1,37 @@
+﻿---
+ID: "6a52d5a3-c075-4ec8-9c3b-5ab5d91eda0a"
+Parent: "f4020eb1-16f2-4680-a7d0-b300647b68f7"
+Template: "7ab76b0f-0e12-4696-92fd-3cc284f38793"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sticky CTA/Data/Global Sticky CTA"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "229c6111-05e1-472c-9c05-de48fe1ee861"
+      Hint: CTAText
+      Value: Book an <strong>appointment<strong>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240718T124251Z
+    - ID: "43be913c-7af1-42c6-a1f7-10ff9b4e129e"
+      Hint: CTAIcon
+      Value: "{58E74E44-2137-47FE-9F08-A3A4EC026FFB}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d936e4aa-d73b-4495-bf31-49b5c1508ae5"
+    - ID: "b80728cd-16ed-4699-9ccf-1d48aaa9474c"
+      Hint: DesktopCaption
+      Value: Start your journey now...
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c29bcd84-4622-489c-bcf4-25ee06451643"
+      Hint: ModalContent
+      Value: |
+        {20098890-3131-4364-80D5-30C0288CF892}
+        {5B529998-35B0-4172-A26D-8BEAFDDE217D}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240718T132417Z

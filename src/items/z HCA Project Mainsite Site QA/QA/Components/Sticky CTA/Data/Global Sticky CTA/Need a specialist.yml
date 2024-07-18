@@ -1,0 +1,51 @@
+﻿---
+ID: "20098890-3131-4364-80d5-30c0288cf892"
+Parent: "6a52d5a3-c075-4ec8-9c3b-5ab5d91eda0a"
+Template: "175e0d25-53c5-4c6b-b6e7-62521e02db68"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sticky CTA/Data/Global Sticky CTA/Need a specialist"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "05db6403-e163-4b0d-8aa3-e29c8adb2345"
+      Hint: Title
+      Value: "Need a specialist?"
+    - ID: "1832429f-ff7f-49c2-b955-649db94314b3"
+      Hint: SecondaryCTAIcon
+      Value: "{8B8CC93B-F778-4E08-954A-FA67D54E5B04}"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T205936Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7649f056-4f79-402f-aac9-bc812d7934de"
+      Hint: PrimaryCTAIcon
+      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+    - ID: "872960fa-91ae-4c72-9df2-ea6cc530f183"
+      Hint: PrimaryCTA
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Find a &lt;b&gt;consultant&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7ffd2dcc-5db9-45d1-8637-4b5e42837662"
+    - ID: "b127ef4d-194e-4c08-b936-9e111d2a260e"
+      Hint: SecondaryCTA
+      Value: |
+        <link text="Call to &lt;strong&gt;book&lt;/strong&gt;" linktype="external" url="http://tel:00000000000" anchor="" target="" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "bbfd5812-b426-4455-9f7c-6b5fb5523763"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo.
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240718T124843Z
