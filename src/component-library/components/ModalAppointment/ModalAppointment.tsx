@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import { ModalAppointmentProps } from './ModalAppointment.types';
 import styles from './ModalAppointment.module.scss';
 import Modals from '../Modals/Modals';
@@ -17,10 +17,26 @@ const ModalAppointment = (
     cta2,
     defaultOpen = false,
   } = props;
+
+  const modalContent = useRef<HTMLDivElement>(null);
+
+  //  find anchors with telephone numbers and remove http:// added by sitecore, there may be a way to get rid of this and use placeholders
+
+  useEffect(() => {
+    const anchors = document.querySelectorAll('a[href^="http://tel:"]');
+    console.log(anchors);
+    anchors.forEach((anchor) => {
+      anchor.setAttribute(
+        'href',
+        anchor.getAttribute('href')?.replace('http://', '') || ''
+      );
+    });
+  }, []);
+
   return (
     <Themes theme="A-HCA-White">
       <Modals ref={ref} defaultOpen={defaultOpen}>
-        <div className={styles['modal-appointment']}>
+        <div className={styles['modal-appointment']} ref={modalContent}>
           <div className={styles.grid}>
             <div className={styles.panel1}>
               <div className={styles.title}>{title1}</div>

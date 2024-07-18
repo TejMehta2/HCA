@@ -10,6 +10,7 @@ import Button from '@component-library/core-components/Button/Button';
 import ModalAppointment from '@component-library/components/ModalAppointment/ModalAppointment';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
+import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
 
 type HCAIconFields = {
   fields?: {
@@ -59,26 +60,36 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
 
   return (
     <>
-      <Button size="large" variation="full">
-        <button onClick={() => dialogRef?.current?.showModal()}>
-          {props?.fields?.CTAText?.value && (
-            <>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html:
-                    props?.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
-                }}
-              ></span>
-              <RichText
-                tag="span"
-                field={{
-                  value: props?.fields?.CTAText.value,
-                }}
-              />
-            </>
-          )}
-        </button>
-      </Button>
+      <StickyCTA
+        cta={
+          props?.fields?.CTAText?.value && (
+            <Button size="large" variation="full">
+              <button onClick={() => dialogRef?.current?.showModal()}>
+                <>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props?.fields?.CTAIcon?.fields?.SvgMarkup?.value || '',
+                    }}
+                  ></span>
+                  <RichText
+                    tag="span"
+                    field={{
+                      value: props?.fields?.CTAText.value,
+                    }}
+                  />
+                </>
+              </button>
+            </Button>
+          )
+        }
+      >
+        {props.fields.DesktopCaption?.value && (
+          <Text tag="h2" variation="heading-1">
+            {props.fields.DesktopCaption?.value}
+          </Text>
+        )}
+      </StickyCTA>
 
       <ModalAppointment
         ref={dialogRef}
