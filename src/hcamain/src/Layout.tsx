@@ -17,9 +17,6 @@ import Params from 'src/types/params';
 import ErrorBoundary from 'lib/ErrorBoundary';
 import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 import Schema from './Schema';
-import StickyCTA from '@component-library/site-components/StickyCTA/StickyCTA';
-import Button from '@component-library/core-components/Button/Button';
-import Text from '@component-library/foundation/Text/Text';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
