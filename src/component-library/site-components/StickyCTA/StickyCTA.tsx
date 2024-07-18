@@ -5,11 +5,24 @@ import Themes from '../../foundation/Themes/Themes';
 
 const StickyCTA = (props: StickyCTAProps): JSX.Element => {
   const { children, cta } = props;
-
   const [overlapping, setOverlapping] = useState(false);
+  const [showComponent, setShowComponent] = useState(false);
+
   const stickyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    //  Hide the component until the user has started scrolling
+    const handleScroll = () => {
+      if (window.scrollY >= window.innerHeight) {
+        setShowComponent(true);
+      } else {
+        setShowComponent(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    //  Hide the component if intersecting with the footer
     const footer = document.getElementById('footer');
 
     if (footer) {
@@ -34,10 +47,11 @@ const StickyCTA = (props: StickyCTAProps): JSX.Element => {
       );
       observer.observe(footer);
 
-      // Cleanup function to unobserve and disconnect the observer
+      // Cleanup
       return () => {
         observer.unobserve(footer);
         observer.disconnect();
+        window.removeEventListener('scroll', handleScroll);
       };
     }
 
@@ -47,7 +61,11 @@ const StickyCTA = (props: StickyCTAProps): JSX.Element => {
   return (
     <Themes theme="B-HCA-Navy-Blue">
       <div
-        className={[styles.wrapper, overlapping ? styles.hidden : ''].join(' ')}
+        className={[
+          styles.wrapper,
+
+          showComponent && !overlapping ? styles.visible : styles.hidden,
+        ].join(' ')}
         ref={stickyRef}
       >
         <div className={styles.content}>{children}</div>
