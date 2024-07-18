@@ -3,7 +3,6 @@ import { SearchSuggestionsProps } from './SearchSuggestions.types';
 import styles from './SearchSuggestions.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import { capitalizeFirstLetter } from '../../utility-functions';
-import { error } from 'console';
 
 const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
   const {
