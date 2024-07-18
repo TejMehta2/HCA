@@ -10,4 +10,5 @@ export interface SearchBarProps {
   locationCta?: JSX.Element;
   children?: JSX.Element | ReactNode;
   searchOnEnter?: boolean;
+  error?: string;
 }

@@ -5,7 +5,13 @@ import Icons from '../../foundation/Icons/Icons';
 import { capitalizeFirstLetter } from '../../utility-functions';
 
 const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
-  const { suggestions, currentValue, setValue } = props;
+  const {
+    suggestions,
+    currentValue,
+    setValue,
+    showError = false,
+    error,
+  } = props;
   if (!suggestions?.length || suggestions.includes(currentValue)) return <></>;
   return (
     <ul
@@ -13,6 +19,12 @@ const SearchSuggestions = (props: SearchSuggestionsProps): JSX.Element => {
       role={'listbox'}
       aria-label="suggestions"
     >
+      {showError && error && error?.length > 0 && (
+        <li className={styles['error-suggestion']}>
+          <Icons iconName={'iconWarning'} />
+          {error}
+        </li>
+      )}
       {suggestions.map((suggestion, index) => (
         <li key={`${suggestion}${index}`}>
           <button

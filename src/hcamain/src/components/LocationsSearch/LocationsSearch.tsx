@@ -171,6 +171,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                   : autocompleteData?.map((result) => `${result.LocationName}`)
               }
               locationCta={<GeolocationPermissionsCta />}
+              error={'Please select a location from the dropdown'}
             >
               <Filters
                 submitOnClose={true}
