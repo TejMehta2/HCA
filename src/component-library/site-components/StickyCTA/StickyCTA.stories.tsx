@@ -32,9 +32,7 @@ export const Default: StoryObj<typeof StickyCTA> = {
     ),
     cta: (
       <Button size="large" variation="full">
-        <button>
-          Book an <strong>appointment</strong>
-        </button>
+        <button>Book an appointment</button>
       </Button>
     ),
   },

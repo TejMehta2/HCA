@@ -1,5 +1,5 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks'
-import * as StickyCTAStories from './StickyCTA.stories'
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as StickyCTAStories from './StickyCTA.stories';
 
 <Meta of={StickyCTAStories} />
 
@@ -7,17 +7,27 @@ import * as StickyCTAStories from './StickyCTA.stories'
 
 ## Description
 
-The StickyCTA component is...
+The StickyCTA component contains some text and a call to action and aims to boost conversions. Once integrated button should open a modal encouraging users to either call or visit consultant finder.
 
-It is intended to be used in...
+It is intended to be used on most pages apart from the home page or consultant finder pages.
 
 It can be composed like this:
 
-``` tsx
-<StickyCTA></StickyCTA>
+```tsx
+<StickyCTA
+  cta={
+    <Button size="large" variation="full">
+      <button>Book an appointment</button>
+    </Button>
+  }
+>
+  <Text tag="div" variation="heading-1">
+    <h2>Start your journey now...</h2>
+  </Text>
+</StickyCTA>
 ```
 
-## Example 
+## Example
 
 <Canvas of={StickyCTAStories.Default} />
 <Controls of={StickyCTAStories.Default} />
