@@ -26,8 +26,8 @@ export default meta;
 export const Default: StoryObj<typeof StickyCTA> = {
   args: {
     children: (
-      <Text tag="div" variation="heading-1">
-        <h2>Start your journey now...</h2>
+      <Text tag="h2" variation="heading-1">
+        Start your journey now...
       </Text>
     ),
     cta: (
