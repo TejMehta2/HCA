@@ -1,4 +1,4 @@
-import React, { useId, useRef } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import { SearchBarProps } from './SearchBar.types';
 import styles from './SearchBar.module.scss';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
@@ -15,11 +15,13 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     locationCta,
     children,
     searchOnEnter = false,
+    error = '',
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const [showError, setShowError] = useState(false);
 
   const comboboxAttributes = {
     list: suggestionsId,
@@ -38,6 +40,8 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
       : { defaultValue };
 
   const setValue = (newValue: string = '') => {
+    setShowError(false);
+
     if (!inputRef.current) return;
     inputRef.current.value = newValue;
 
@@ -64,7 +68,12 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
             if (event.key === 'Enter' && !searchOnEnter) {
               event.preventDefault(); // avoid auto selecting suggestions
               const target = event.target as HTMLInputElement;
-              target.blur();
+
+              if (error && error.length > 0) {
+                setShowError(true);
+              } else {
+                target.blur();
+              }
             }
           }}
           id={inputId}
@@ -84,6 +93,8 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
             currentValue={defaultValue}
             suggestions={suggestions}
             setValue={setValue}
+            showError={showError}
+            error={error}
           />
         </div>
         {defaultValue && (
@@ -93,6 +104,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
             onMouseDown={() => {
               // onMouseDown instead of onClick, because it fires in MacOS and IOS more consistently
               setValue('');
+              setShowError(false);
             }}
           >
             <Icons iconName={'iconCross'} />
