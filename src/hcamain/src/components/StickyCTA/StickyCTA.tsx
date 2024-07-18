@@ -85,7 +85,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
         }
       >
         {props.fields.DesktopCaption?.value && (
-          <Text tag="h2" variation="heading-1">
+          <Text variation="heading-1">
             {props.fields.DesktopCaption?.value}
           </Text>
         )}

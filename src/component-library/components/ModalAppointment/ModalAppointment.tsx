@@ -24,7 +24,7 @@ const ModalAppointment = (
 
   useEffect(() => {
     const anchors = document.querySelectorAll('a[href^="http://tel:"]');
-    console.log(anchors);
+
     anchors.forEach((anchor) => {
       anchor.setAttribute(
         'href',
