@@ -11,4 +11,5 @@ export interface SearchBarProps {
   children?: JSX.Element | ReactNode;
   searchOnEnter?: boolean;
   error?: string;
+  scrollTrigger?: () => void;
 }

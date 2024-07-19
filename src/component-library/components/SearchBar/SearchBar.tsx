@@ -16,6 +16,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     children,
     searchOnEnter = false,
     error = '',
+    scrollTrigger,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -41,6 +42,8 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
 
   const setValue = (newValue: string = '') => {
     setShowError(false);
+
+    scrollTrigger && scrollTrigger();
 
     if (!inputRef.current) return;
     inputRef.current.value = newValue;
