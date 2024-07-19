@@ -69,7 +69,6 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     getBaselineParams(props);
   const fallbackData = useComponentProps<SearchResponse>(props?.rendering?.uid);
 
-  const resultsTop = useRef<HTMLDivElement>(null);
   // Hooks
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const {
@@ -133,13 +132,6 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
     ];
   }, []);
 
-  const scrollToResults = () => {
-    console.log('triggered');
-
-    resultsTop?.current &&
-      resultsTop?.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
@@ -180,7 +172,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               }
               locationCta={<GeolocationPermissionsCta />}
               error={'Please select a location from the dropdown'}
-              scrollTrigger={scrollToResults}
+              scrollRef={searchWrapperRef}
             >
               <Filters
                 submitOnClose={true}
@@ -462,8 +454,6 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           />
         )}
       </Themes>
-
-      <div ref={resultsTop}>test</div>
     </form>
   );
 };

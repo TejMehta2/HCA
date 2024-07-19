@@ -3,6 +3,7 @@ import { SearchBarProps } from './SearchBar.types';
 import styles from './SearchBar.module.scss';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
 import Icons from '../../foundation/Icons/Icons';
+import { scrollToRef } from '../../utility-functions';
 
 const SearchBar = (props: SearchBarProps): JSX.Element => {
   const {
@@ -16,7 +17,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     children,
     searchOnEnter = false,
     error = '',
-    scrollTrigger,
+    scrollRef,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -43,7 +44,11 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
   const setValue = (newValue: string = '') => {
     setShowError(false);
 
-    scrollTrigger && scrollTrigger();
+    if (newValue !== '') {
+      if (scrollRef) {
+        scrollToRef(scrollRef);
+      }
+    }
 
     if (!inputRef.current) return;
     inputRef.current.value = newValue;
