@@ -172,6 +172,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
               }
               locationCta={<GeolocationPermissionsCta />}
               error={'Please select a location from the dropdown'}
+              scrollRef={searchWrapperRef}
             >
               <Filters
                 submitOnClose={true}
@@ -234,6 +235,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           </>
         </HeaderPlain>
       </Themes>
+
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         {error || !resultsCount ? (
           <ErrorMessage />
