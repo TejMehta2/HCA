@@ -9,6 +9,10 @@
   list-style: none;
   overflow: hidden;
   background-color: $white;
+
+  &:has(.error-suggestion) {
+    padding: 0 0 px-to-rem(24) 0;
+  }
 }
 
 .suggestions {
@@ -48,4 +52,12 @@
 
 .suggestion {
   @extend %suggestion;
+}
+
+.error-suggestion {
+  display: flex;
+  gap: 0 px-to-rem(8);
+  background-color: $tangerine-20;
+  color: var(--field-error-colour);
+  padding: $spacing-4 $spacing-6;
 }

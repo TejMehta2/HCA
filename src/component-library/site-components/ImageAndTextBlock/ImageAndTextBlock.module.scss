@@ -71,6 +71,7 @@
 .long {
   img {
     aspect-ratio: 358/588;
+    object-fit: cover;
 
     @include media(screen-m) {
       aspect-ratio: 770/588;

@@ -136,7 +136,7 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
               }
               department={<span>{getSpeciality(consultant)}</span>}
               cta={
-                props.fields?.data?.item?.cTACard?.jsonValue?.value && (
+                props.fields?.data?.item?.cTACard?.jsonValue?.value.text ? (
                   <JssLink
                     field={props.fields?.data?.item?.cTACard?.jsonValue}
                     href={`${FINDER_PROFILE_CANONICAL_BASE_URL}/${consultant.slug}`}
@@ -147,6 +147,8 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
                       </SitecoreSvg>
                     )}
                   </JssLink>
+                ) : (
+                  <></>
                 )
               }
             />

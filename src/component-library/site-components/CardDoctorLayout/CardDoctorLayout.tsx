@@ -11,11 +11,13 @@ const CardDoctorLayout = (props: CardDoctorLayoutProps): JSX.Element => {
         <div className={styles.grid}>
           <div className={styles.title}>{title}</div>
           <div className={styles.children}>{children}</div>
-          <div className={styles.cta}>
-            <Button size={'large'} variation={'full'}>
-              {cta}
-            </Button>
-          </div>
+          {cta && (
+            <div className={styles.cta}>
+              <Button size={'large'} variation={'full'}>
+                {cta}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </Themes>

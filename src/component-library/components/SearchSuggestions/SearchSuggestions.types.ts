@@ -3,4 +3,6 @@ export interface SearchSuggestionsProps {
   currentValue: string;
   setValue: (newValue: string) => void;
   submitOnSelection?: boolean;
+  showError?: boolean;
+  error?: string;
 }
