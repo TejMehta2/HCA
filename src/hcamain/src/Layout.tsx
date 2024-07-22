@@ -122,7 +122,12 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
           href={`${publicUrl}/favicon/safari-pinned-tab.svg`}
           color="#ffffff"
         />
-        <meta name="msapplication-TileColor" content="#00aba9" />
+        <link
+          rel="mask-icon"
+          href={`${publicUrl}/favicon/safari-pinned-tab.svg`}
+          color="#00558c"
+        />
+        <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
 
         {headLinks.map((headLink) => (

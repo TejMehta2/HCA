@@ -4,6 +4,7 @@ import styles from './Footer.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import TextLink from '../../core-components/TextLink/TextLink';
 import Logo from '../../foundation/BrandAssets/Logo white.svg';
+import Text from '../../foundation/Text/Text';
 
 const Footer = (props: FooterProps): JSX.Element => {
   const { columns, legals, buttons, copyright } = props;
@@ -18,10 +19,21 @@ const Footer = (props: FooterProps): JSX.Element => {
             className={styles['top-row']}
             data-animate="xs"
           >
-            <a className={styles.logo} href="/">
-              <span className="sr-only">Home</span>
-              <LogoIcon />
-            </a>
+            <div className={styles['logo-section']}>
+              <a className={styles.logo} href="/">
+                <span className="sr-only">Home</span>
+                <LogoIcon />
+              </a>
+
+              <div className={styles.phone}>
+                <Text tag="span" variation="body-extra-large">
+                  General Enquiries:&nbsp;
+                  <a href="tel:02070794344">
+                    <strong>020 7079 4344</strong>
+                  </a>
+                </Text>
+              </div>
+            </div>
             {buttons}
           </div>
           <hr className={styles.hr} />

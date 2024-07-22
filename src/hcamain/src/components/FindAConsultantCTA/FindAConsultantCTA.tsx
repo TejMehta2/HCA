@@ -90,14 +90,6 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
     );
   }
 
-  if (props.fields?.data?.contextItem?.doctifyKeywordId?.value) {
-    filterList.push(
-      'keywordId' +
-        '=' +
-        props.fields?.data?.contextItem?.doctifyKeywordId?.value
-    );
-  }
-
   if (props.fields?.data?.item?.customFilters?.CustomFiltersList) {
     for (const filter of props.fields.data.item.customFilters
       .CustomFiltersList) {
@@ -121,8 +113,21 @@ export const Default = (props: FindAConsultantCTAProps): JSX.Element => {
     for (const filter of props.fields?.data?.item?.service?.ServicesList) {
       if (filter.doctifyKeywordId?.value) {
         filterList.push('keywordId=' + filter.doctifyKeywordId?.value);
+        break;
       }
     }
+  }
+
+  //append keywordId of contextItem only if keywordId was not already set by ServicesList in a datasource
+  if (
+    !filterList.some((str) => str.startsWith('keywordId=')) &&
+    props.fields?.data?.contextItem?.doctifyKeywordId?.value
+  ) {
+    filterList.push(
+      'keywordId' +
+        '=' +
+        props.fields?.data?.contextItem?.doctifyKeywordId?.value
+    );
   }
 
   const filterParams =

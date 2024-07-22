@@ -155,3 +155,14 @@ export const formatDateDMY = (date: string) => {
 export function removeTags(str: string) {
   return str.replace(/<\/?[^>]+(>|$)/g, '');
 }
+
+export const scrollToRef = (section: React.RefObject<HTMLElement>) => {
+  setTimeout(function () {
+    if (section?.current) {
+      const headerOffset = window.innerWidth > 1135 ? 110 : 78; //  accounting for site header
+      const elementPosition = section?.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  }, 500);
+};

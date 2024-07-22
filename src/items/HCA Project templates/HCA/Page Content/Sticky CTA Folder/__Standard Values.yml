@@ -1,0 +1,33 @@
+﻿---
+ID: "842a6231-33b2-486b-81d2-c49f6ad15aea"
+Parent: "9755b5fb-b912-46fd-9c86-45ea07ce8558"
+Template: "9755b5fb-b912-46fd-9c86-45ea07ce8558"
+Path: /sitecore/templates/Project/HCA/Page Content/Sticky CTA Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {7AB76B0F-0E12-4696-92FD-3CC284F38793}
+    {9755B5FB-B912-46FD-9C86-45EA07CE8558}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b0919854-87c4-42e1-a91d-75d22fb1a1d6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240718T120753Z

@@ -171,6 +171,8 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
                   : autocompleteData?.map((result) => `${result.LocationName}`)
               }
               locationCta={<GeolocationPermissionsCta />}
+              error={'Please select a location from the dropdown'}
+              scrollRef={searchWrapperRef}
             >
               <Filters
                 submitOnClose={true}
@@ -233,6 +235,7 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           </>
         </HeaderPlain>
       </Themes>
+
       <Themes theme={params?.CardTheme || 'A-HCA-White'}>
         {error || !resultsCount ? (
           <ErrorMessage />
