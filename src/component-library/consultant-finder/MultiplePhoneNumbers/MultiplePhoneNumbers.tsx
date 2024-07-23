@@ -13,13 +13,23 @@ const MultiplePhoneNumbers = (
   const filteredPractices = props.practices.filter(
     (practice: { slug: string }) => practice.slug !== 'video-consultation'
   );
-
   return (
-    <div className={styles.phones}>
+    <div
+      className={`${styles.phones} ${
+        filteredPractices.length > 2 ? styles['phones-multiple'] : ''
+      }  ${filteredPractices.length === 1 ? styles['phones-one-col'] : ''}`}
+    >
       {/* daca practice e mai mare de 0 atunci arata-le, daca e 0 atunci arata default */}
       {filteredPractices.length > 0 &&
         filteredPractices.map((practice: any, index: any) => (
-          <div className={styles.item} key={index}>
+          <div
+            className={`${styles.item} ${
+              filteredPractices.length === 2 ? styles['item-two'] : ''
+            }
+            ${filteredPractices.length === 1 ? styles['item-one'] : ''}
+            `}
+            key={index}
+          >
             <div className={styles.content}>
               <div className={styles.title}>
                 <Text tag="h3" variation="subheading-2">

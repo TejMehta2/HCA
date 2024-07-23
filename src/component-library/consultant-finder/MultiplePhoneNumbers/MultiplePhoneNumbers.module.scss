@@ -9,18 +9,83 @@
     @include responsive-container;
     @include responsive-grid;
 
-  > .item {
-    @include responsive-grid-span(
-      $default: 6,
-      $breakpoint-m: 3,
-      $breakpoint-l: 4
-    );
+    &-one-col {
+      display: flex;
+    }
+
+    > .item {
+      @include responsive-grid-span(
+        $default: 6,
+        $breakpoint-m: 3,
+        $breakpoint-l: 4
+      );
+    }
+  
+    > .item-two {
+      @include responsive-grid-span(
+        $default: 6,
+        $breakpoint-m: 6,
+        $breakpoint-l: 6
+      );
+    }
+
+    &.phones-multiple {
+      @include media(screen-m) {
+        .item:nth-child(2n)::after {
+          content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
+        }
+    
+        .item:nth-child(2n + 1)::after {
+          right: -5px; /* Place it just outside the item */
+        }
+    
+        .item:not(:nth-child(2n + 1))::after
+        {
+          left: 100%; /* Place it just outside the item */
+        }
+      }
+  
+      
+      @include media(screen-l) {
+        .item:nth-child(2n)::after {
+          content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 128px;
+        background: #ccc;
+        }
+    
+        .item:nth-child(2n + 1)::after {
+          right: inherit; /* Place it just outside the item */
+        }
+    
+        .item:not(:nth-child(2n + 1))::after
+        {
+          left: inherit; /* Place it just outside the item */
+        }
+  
+        .item:nth-child(3n)::after {
+          content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
+        }
+    
+        .item:nth-child(3n + 2)::after {
+          right: -5px; /* Place it just outside the item */
+        }
+    
+        .item:not(:nth-child(3n + 2))::after
+        {
+          left: 100%; /* Place it just outside the item */
+        }
+      }
+    }
+
+  > .item-one {
+    width: 100%;
   }
   
-    // .container {
-    //   display: flex;
-    //   flex-wrap: wrap; 
-    // }
     
     .item {
       padding: $spacing-7 $spacing-2;
@@ -66,55 +131,6 @@
       background: #ccc;
     }
 
-    @include media(screen-m) {
-      .item:nth-child(2n)::after {
-        content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
-      }
-  
-      .item:nth-child(2n + 1)::after {
-        right: -5px; /* Place it just outside the item */
-      }
-  
-      .item:not(:nth-child(2n + 1))::after
-      {
-        left: 100%; /* Place it just outside the item */
-      }
-    }
 
-    
-    @include media(screen-l) {
-      .item:nth-child(2n)::after {
-        content: "";
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 128px;
-      background: #ccc;
-      }
-  
-      .item:nth-child(2n + 1)::after {
-        right: inherit; /* Place it just outside the item */
-      }
-  
-      .item:not(:nth-child(2n + 1))::after
-      {
-        left: inherit; /* Place it just outside the item */
-      }
-
-      .item:nth-child(3n)::after {
-        content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
-      }
-  
-      .item:nth-child(3n + 2)::after {
-        right: -5px; /* Place it just outside the item */
-      }
-  
-      .item:not(:nth-child(3n + 2))::after
-      {
-        left: 100%; /* Place it just outside the item */
-      }
-    }
   
 }
