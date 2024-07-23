@@ -59,6 +59,9 @@ import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
 
+import Modals from '@component-library/components/Modals/Modals';
+import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
+
 interface Fields {
   EnquireNowLink: LinkField;
   BookOnlineLink: LinkField;
@@ -190,6 +193,8 @@ export const Default = (props: StepProps): JSX.Element => {
   const serverSideData = useComponentProps<ServerSideProps>(
     props.rendering.uid
   );
+
+  console.log('profile data', serverSideData?.ProfileJson);
 
   // Refs for each tab section
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -356,18 +361,78 @@ export const Default = (props: StepProps): JSX.Element => {
   ];
 
   const contacts: any[] = [];
-  contacts.push({
-    title: props?.fields?.CallToBookModalTitle?.value || 'Call to book',
-    phone: phone?.[0],
-    availability: undefined,
-  });
+  contacts.push(
+    {
+      title: 'Support',
+      phone: {
+        text: '020 7079 5678',
+        number: '02070795678',
+      },
+      availability: '9 AM - 5 PM',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+    {
+      title: 'Sales',
+      phone: {
+        text: '020 7079 9999',
+        number: '02070799999',
+      },
+      availability: '24/7',
+    },
+  );
 
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
           <div>
-            <ModalCallUs ref={dialogRef} contacts={contacts} />
+            {/* <ModalCallUs ref={dialogRef} contacts={contacts} /> */}
+
+            <Modals ref={dialogRef}>
+              <MultiplePhoneNumbers
+                practices={serverSideData?.ProfileJson?.practices || []}
+                title={'Appointments at'}
+              ></MultiplePhoneNumbers>
+            </Modals>
             <Head>
               <meta name="robots" content="index,follow" />
               <title>{title}</title>
