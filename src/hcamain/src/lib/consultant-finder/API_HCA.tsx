@@ -1077,7 +1077,7 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
     };
 
     try {
-      console.log('submit form to', formURL);
+      //console.log('submit form to', formURL);
       const res = await fetch(formURL, {
         method: 'post',
         body: bodyStr,
@@ -1085,17 +1085,17 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
         cache: 'no-cache',
       });
 
-      console.log('res status:', res?.status, res?.statusText);
+      //console.log('res status:', res?.status, res?.statusText);
       if (res.ok) {
         const retData = await res.text();
-        console.log('retData', retData);
+        //console.log('retData', retData);
         returnData = JSON.parse(retData);
       } else {
         //submitLogEmail call failed
         let errorDetails = '';
         try {
           errorDetails = await res.text();
-          console.log('errorDetails', errorDetails);
+          console.error('submitLogEmail errorDetails', errorDetails);
         } finally {
           returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
           returnData = JSON.parse(returnData);

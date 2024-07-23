@@ -13,15 +13,21 @@ import { siteResolver } from 'lib/site-resolver';
 import clientFactory from 'lib/graphql-client-factory';
 import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const Custom404 = (props: SitecorePageProps): JSX.Element => {
   const router = useRouter();
   //console.log(JSON.stringify(router));
-  postData(
-    `user landed on 404 page from ${router?.asPath} - query ${JSON.stringify(
-      router?.query
-    )}`
-  );
+
+  // post an email to notify HCA team that a 404 was hit, useEffect - only want a single email!
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+    postData(`user landed on 404 page from ${router?.asPath}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   if (!(props && props.layoutData)) {
     return <NotFound />;
   }
@@ -41,11 +47,9 @@ const postData = async (freeText: string) => {
     profileType: '404Report',
     freeText: freeText,
   };
-  //const URL = 'https:/api/formAPI/PostLogEmail';
-
-  console.log('postData dataToSend', dataToSend);
-  const res = await submitLogEmail(dataToSend);
-  console.log('postData res', res);
+  //console.log('postData dataToSend', dataToSend);
+  /*const res = */ await submitLogEmail(dataToSend);
+  //console.log('postData res', res);
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
