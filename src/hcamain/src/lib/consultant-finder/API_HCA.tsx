@@ -1062,8 +1062,16 @@ e.g. profileType would be 404Report to target LogEmail_404Report
 export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
   let returnData: any = '';
 
-  const formURL = `${process.env.INTEGRATION_LAYER_URL}/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
+  console.log(
+    'process.env.INTEGRATION_LAYER_URL',
+    process.env.INTEGRATION_LAYER_URL
+  );
+  const baseURL =
+    process.env.INTEGRATION_LAYER_URL ??
+    'https://digital-int-dev.hcahealthcareqa.co.uk/';
+  const formURL = `${baseURL}/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
 
+  console.log('formURL', formURL);
   if (formURL) {
     let bodyStr: string = '';
 
