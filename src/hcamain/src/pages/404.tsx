@@ -14,6 +14,7 @@ import clientFactory from 'lib/graphql-client-factory';
 import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const Custom404 = (props: SitecorePageProps): JSX.Element => {
   const router = useRouter();
@@ -47,6 +48,20 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
     </SitecoreContext>
   );
 };
+
+export function NavigationEvents() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const url = `${pathname}?${searchParams}`;
+    console.log('NavigationEvents', url);
+    // You can now use the current URL
+    // ...
+  }, [pathname, searchParams]);
+
+  return null;
+}
 
 const postData = async (freeText: string) => {
   const dataToSend: ILogEmailFields = {
