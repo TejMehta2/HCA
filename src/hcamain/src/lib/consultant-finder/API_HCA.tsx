@@ -1083,9 +1083,7 @@ Set the profileType in the ILogEmailFields.
 It should match the second part of the name of the profile of the email in the Sitecore Form Api Settings Container
 e.g. profileType would be 404Report to target LogEmail_404Report
 */
-export async function submitLogEmail(
-  fields: ILogEmailFields
-): Promise<any> {
+export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
   let returnData: any = '';
   //const HCAAPIConfig = await GetHCAConfig();
 
@@ -1094,12 +1092,11 @@ export async function submitLogEmail(
     `https:/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
 
   if (formURL) {
-    let headers: HeadersInit;
     let bodyStr: string = '';
 
     bodyStr = JSON.stringify(fields);
     //console.log('bodyStr', bodyStr);
-    headers = {
+    const headers: HeadersInit = {
       'Content-Type': 'application/json',
     };
 
@@ -1115,14 +1112,14 @@ export async function submitLogEmail(
       //console.log('res', res);
       if (res.ok) {
         const retData = await res.text();
-        console.log("retData", retData);
+        console.log('retData', retData);
         returnData = JSON.parse(retData);
       } else {
         //submitLogEmail call failed
         let errorDetails = '';
         try {
           errorDetails = await res.text();
-          console.log("retData", errorDetails);
+          console.log('retData', errorDetails);
         } finally {
         }
         returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;

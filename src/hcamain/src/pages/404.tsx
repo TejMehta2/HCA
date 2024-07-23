@@ -30,9 +30,9 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
 };
 
 const postData = async (freeText: string) => {
-  const dataToSend:ILogEmailFields = {
+  const dataToSend: ILogEmailFields = {
     profileType: '404Report',
-    freeText: freeText
+    freeText: freeText,
   };
   //const URL = 'https:/api/formAPI/PostLogEmail';
   console.log('dataToSend', dataToSend);
@@ -53,17 +53,6 @@ const onSubmit = (data: any) => {
   // console.log('data', data);
   postData(data);
 };*/
-
-
-
-
-
-
-
-
-
-
-
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const site = siteResolver.getByName(config.sitecoreSiteName);
