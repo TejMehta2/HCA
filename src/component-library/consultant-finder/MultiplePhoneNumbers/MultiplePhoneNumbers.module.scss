@@ -9,6 +9,21 @@
     @include responsive-container;
     @include responsive-grid;
 
+    .item:not(:last-child)::after {
+      content: none;
+      
+      @include media(screen-m) {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 128px;
+        background: #ccc;
+      }
+    }
+
     &-one-col {
       display: flex;
     }
@@ -27,6 +42,21 @@
         $breakpoint-m: 6,
         $breakpoint-l: 6
       );
+    }
+
+    .item-two:not(:last-child)::after {
+      content: none;
+      
+      @include media(screen-l) {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 128px;
+        background: #ccc;
+      }
     }
 
     &.phones-multiple {
@@ -120,17 +150,5 @@
       max-width: 80%;
     }
     
-    .item:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 128px;
-      background: #ccc;
-    }
-
-
-  
+    
 }
