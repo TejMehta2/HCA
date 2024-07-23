@@ -13,7 +13,7 @@ import { siteResolver } from 'lib/site-resolver';
 import clientFactory from 'lib/graphql-client-factory';
 import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Custom404 = (props: SitecorePageProps): JSX.Element => {
   const router = useRouter();
@@ -21,13 +21,10 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
   //console.log(JSON.stringify(router));
 
   // post an email to notify HCA team that a 404 was hit, useEffect - only want a single email!
-  useEffect(() => {
-    if (!postedData) {
-      postData(`user landed on 404 page from ${router?.asPath}`);
-      setPostedData(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postedData]);
+  if (!postedData) {
+    setPostedData(true);
+    postData(`user landed on 404 page from ${router?.asPath}`);
+  }
 
   if (!(props && props.layoutData)) {
     return <NotFound />;
