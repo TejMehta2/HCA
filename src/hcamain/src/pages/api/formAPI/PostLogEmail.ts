@@ -9,7 +9,7 @@ const PostLogEmail = async (
   const fields: ILogEmailFields = req.body as ILogEmailFields;
   const response = await submitLogEmail(fields);
   res.setHeader('Content-Type', 'application/json');
-  console.log('response from post booking enquiry:', response);
+  console.log('response from post log email:', response);
   return res.status(200).json(response);
 };
 
