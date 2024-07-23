@@ -5,4 +5,5 @@ export interface MultiplePhoneNumbersProps {
   children?: ReactNode | JSX.Element;
   practices: any;
   title: string;
+  defaultNumber: string;
 }

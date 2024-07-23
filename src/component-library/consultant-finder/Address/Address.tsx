@@ -3,6 +3,7 @@ import { AddressProps } from './Address.types';
 import Text from '../../foundation/Text/Text';
 import styles from './Address.module.scss';
 import { capitalizeFirstLetter } from '../../utility-functions';
+import Icons from '../../foundation/Icons/Icons';
 
 const Address = (props: AddressProps): JSX.Element => {
   const addressItems = [];
@@ -18,7 +19,8 @@ const Address = (props: AddressProps): JSX.Element => {
   const printAddress = address.toString().split(',').join(', ');
 
   return (
-    <div className={styles.bold}>
+    <div className={styles.address}>
+      <Icons iconName="iconPin" />
       <Text tag="h3" variation="body-medium-large">
         {printAddress}
       </Text>

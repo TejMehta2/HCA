@@ -6,6 +6,7 @@ import Text from '../../foundation/Text/Text';
 import styles from './MultiplePhoneNumbers.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 const MultiplePhoneNumbers = (
   props: MultiplePhoneNumbersProps
@@ -37,9 +38,18 @@ const MultiplePhoneNumbers = (
                 </Text>
               </div>
               <div className={styles.heading}>
-                <Text tag="h2" variation="heading-2">
-                  {practice?.name}
-                </Text>
+                {practice.facilityURL !== null &&
+                  practice.facilityURL !== '' && (
+                    <TextLink variation="heading-2">
+                      <a href={practice.facilityURL}>{practice.name}</a>
+                    </TextLink>
+                  )}
+                {(practice.facilityURL === null ||
+                  practice.facilityURL === '') && (
+                  <Text tag="h2" variation="heading-2">
+                    {practice.name}
+                  </Text>
+                )}
               </div>
               <div className={styles.address}>
                 <Address
@@ -52,26 +62,26 @@ const MultiplePhoneNumbers = (
             </div>
             {practice?.phone?.length > 0 &&
               practice.phone.map((phone: any, index: any) => (
-                <div key={index}>
+                <div key={index} className={styles['phone-btn']}>
                   <Button variation="full-dark" size="small">
-                    <button>
+                    <a href={`tel:${phone}`}>
                       <span>
                         <Icons iconName="iconPhone" />
                       </span>
                       <span>{phone}</span>
-                    </button>
+                    </a>
                   </Button>
                 </div>
               ))}
             {practice?.phone?.length === 0 && (
               <div className={styles['phone-btn']}>
                 <Button variation="full-dark" size="small">
-                  <button>
+                  <a href={`tel:${props.defaultNumber}`}>
                     <span>
                       <Icons iconName="iconPhone" />
                     </span>
-                    <span>Default phone</span>
-                  </button>
+                    <span>{props.defaultNumber}</span>
+                  </a>
                 </Button>
               </div>
             )}
@@ -80,12 +90,12 @@ const MultiplePhoneNumbers = (
       {filteredPractices.length === 0 && (
         <div className={styles['phone-btn']}>
           <Button variation="full-dark" size="small">
-            <button>
+            <a href={`tel:${props.defaultNumber}`}>
               <span>
                 <Icons iconName="iconPhone" />
               </span>
-              <span>Default phone</span>
-            </button>
+              <span>{props.defaultNumber}</span>
+            </a>
           </Button>
         </div>
       )}

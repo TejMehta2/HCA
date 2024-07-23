@@ -431,6 +431,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <MultiplePhoneNumbers
                 practices={serverSideData?.ProfileJson?.practices || []}
                 title={'Appointments at'}
+                defaultNumber={props?.fields?.PhoneNumberHref?.value}
               ></MultiplePhoneNumbers>
             </Modals>
             <Head>

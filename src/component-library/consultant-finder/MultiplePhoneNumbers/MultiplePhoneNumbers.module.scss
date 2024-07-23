@@ -4,7 +4,11 @@
 .phones {
     display: flex;
     flex-wrap: wrap;
-    padding: $spacing-8;
+    padding: $spacing-8 $spacing-2;
+
+    @include media(screen-l) {
+      padding: $spacing-8;
+    }
 
     @include responsive-container;
     @include responsive-grid;
@@ -147,7 +151,15 @@
     .heading,
     .address {
       text-align: center;
-      max-width: 80%;
+      max-width: 90%;
+
+      @include media(screen-l) {
+        max-width: 80%;
+      }
+    }
+
+    .phone-btn {
+      margin-top: $spacing-2;
     }
     
     
