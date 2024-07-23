@@ -1064,8 +1064,8 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
 
   const baseURL =
     process.env.INTEGRATION_LAYER_URL ??
-    'https://digital-int-dev.hcahealthcareqa.co.uk/';
-  const formURL = `${baseURL}/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
+    'https://digital-int-dev.hcahealthcareqa.co.uk';
+  const formURL = `${baseURL}/api/sitecore/LogEmail/${fields.profileType}/1/en`;
 
   //console.log('formURL', formURL);
   if (formURL) {
