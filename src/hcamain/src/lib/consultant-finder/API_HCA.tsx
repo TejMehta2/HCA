@@ -1047,3 +1047,97 @@ export async function splitAddress(
 
   return returnData;
 }
+
+export interface ILogEmailFields {
+  profileType: string;
+  freeText: string;
+  /*
+  practice: string; //e.g. Golders Green Outpatients and Diagnostics Centre
+  dateAppointment: string; // e.g. Within 1 week
+  timeAppointment: string; // e.g. Morning
+  previousPatient: string; // e.g. Yes
+  title: string; // e.g. Mr
+  firstName: string; // e.g. ZZZTESTFIRSTNAME
+  lastName: string; // e.g. ZZZTESTLASTNAME
+  gender: string; // e.g. Male
+  date: string; // e.g. 2000-01-01
+  userPhone: string; // e.g. 07788999000
+  userEmail: string; // e.g. test@ignore.domain
+  insurance: string; // e.g. CS Healthcare
+  insuranceNumber: string; // e.g. INS0987654321
+  reasonVisit: string; // e.g. TESTING THE FORM PLEASE IGNORE
+  reCAPTCHA: string; // e.g. 03AFcWeA48YI466Mx0YoBsmqYBcE-b5Hodyn-VyHqt1HYbKeXbCxhtba1HxDH2TF9LnizAxxMc0_WheDYb8gODux5A0e7naWbh_UDu3HDq1Y9u-h_MP2PHvN9d8x_lvFE68jywnpd71mf8bCUooOjxnvTOWNhd3h634PFLsZqNCFAXjhEMwloTGiwYSCspK-r7ecxTKU8SXj0HG2oBBKIOvOCeVJlKFRORvoEAPBTM_IPiw87YjVKCPyc8NfPLyM8KCdhAtjvEy8NRv7Bgs0c2n9adLKbpSjvGoXP7mD28Fv9E3EN0-fYipSFXgPgqDETBuAYbZyw4L8G_kfzFeL5PJ5dWzw4O5HrdS9cb5AyiPaG6rJVWwHKQCG0eROo2yMXSTWPLIWGFdAvL5quxH7pZ7vRoP700XUwusZsP1VCtmYA45EgWOx4zRgWcj1PaExyp6dNuH6U-T98uQ5QbYrsZwN1jP-ddQd2Q3G_Rs5gtGKzQ_xJnuH6w4w1kxxFFauJwzZtnQBNysSXl6ChvYLy2Fqw6nLcN2PTWEgBVkmrupfzEVAzXMMraVMG7swZuv5J9p9DB9diSWncGRoyBxOkfqdSEANeRmNxPJ42denWxzzHoaJ6sHPsc7nD8ypXZfToKE4-LXhfRy4EBcKDyoSTP88Z6NSjXyo83tSlkhz-YykiW7Kln9MygtCs
+  email: boolean; // e.g. true
+  sms: boolean; // e.g. true
+  phone: boolean; // e.g. true
+  post: boolean; // e.g. true
+  dateOfBirthFormatted: string; // e.g. 01-01-2000
+  consultantName: string; // e.g. Rohit Shetty
+  consultantTopSpecialty: string; // e.g. Orthopaedic Surgery
+  hiddenFormInstance: string; // e.g. 37bf88-ce54-dfa8-572c-5315bd5a8b58*/
+}
+
+/*
+This endpoint will create and send an email, can be used to alert to specific events  
+Set the profileType in the ILogEmailFields. 
+It should match the second part of the name of the profile of the email in the Sitecore Form Api Settings Container
+e.g. profileType would be 404Report to target LogEmail_404Report
+*/
+export async function submitLogEmail(
+  fields: ILogEmailFields
+): Promise<any> {
+  let returnData: any = '';
+  //const HCAAPIConfig = await GetHCAConfig();
+
+  const formURL =
+    //HCAAPIConfig?.aPI_HCA_LogEmail_BaseURL ??
+    `https:/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
+
+  if (formURL) {
+    let headers: HeadersInit;
+    let bodyStr: string = '';
+
+    bodyStr = JSON.stringify(fields);
+    //console.log('bodyStr', bodyStr);
+    headers = {
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(formURL, {
+        method: 'post',
+        body: bodyStr,
+        headers: headers,
+        cache: 'no-cache',
+      });
+
+      //console.log('res', res);
+      if (res.ok) {
+        const retData = await res.text();
+        console.log("retData", retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //submitLogEmail call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+          console.log("retData", errorDetails);
+        } finally {
+        }
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`submitLogEmail failed with error ${returnData}`);
+      }
+    } catch (e) {
+      //submitLogEmail call threw
+      const errorText =
+        'An unexpected error occured posting submitLogEmail, please retry';
+      returnData = `{"errorCode": 999, "errorText": "${errorText}"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`submitLogEmail failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}

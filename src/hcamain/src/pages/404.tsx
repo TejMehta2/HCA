@@ -11,8 +11,10 @@ import Layout from 'src/Layout';
 import { GetStaticProps } from 'next';
 import { siteResolver } from 'lib/site-resolver';
 import clientFactory from 'lib/graphql-client-factory';
+import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
 
 const Custom404 = (props: SitecorePageProps): JSX.Element => {
+  postData('landed on 404 page');
   if (!(props && props.layoutData)) {
     return <NotFound />;
   }
@@ -26,6 +28,42 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
     </SitecoreContext>
   );
 };
+
+const postData = async (freeText: string) => {
+  const dataToSend:ILogEmailFields = {
+    profileType: '404Report',
+    freeText: freeText
+  };
+  //const URL = 'https:/api/formAPI/PostLogEmail';
+  console.log('dataToSend', dataToSend);
+  await submitLogEmail(dataToSend);
+
+  /*
+  axios
+    .post(URL, dataToSend)
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+    });*/
+};
+/*
+const onSubmit = (data: any) => {
+  // console.log('data', data);
+  postData(data);
+};*/
+
+
+
+
+
+
+
+
+
+
+
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const site = siteResolver.getByName(config.sitecoreSiteName);
