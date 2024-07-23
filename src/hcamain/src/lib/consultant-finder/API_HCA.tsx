@@ -1062,16 +1062,12 @@ e.g. profileType would be 404Report to target LogEmail_404Report
 export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
   let returnData: any = '';
 
-  console.log(
-    'process.env.INTEGRATION_LAYER_URL',
-    process.env.INTEGRATION_LAYER_URL
-  );
   const baseURL =
     process.env.INTEGRATION_LAYER_URL ??
     'https://digital-int-dev.hcahealthcareqa.co.uk/';
   const formURL = `${baseURL}/api/formapi/LogEmail/${fields.profileType}/1/en/submitform`;
 
-  console.log('formURL', formURL);
+  //console.log('formURL', formURL);
   if (formURL) {
     let bodyStr: string = '';
 
@@ -1081,7 +1077,7 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
     };
 
     try {
-      //console.log('submit form to', formURL);
+      console.log('submit form to', formURL);
       const res = await fetch(formURL, {
         method: 'post',
         body: bodyStr,
@@ -1089,7 +1085,7 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
         cache: 'no-cache',
       });
 
-      //console.log('res', res);
+      console.log('res status:', res?.status, res?.statusText);
       if (res.ok) {
         const retData = await res.text();
         console.log('retData', retData);
@@ -1099,12 +1095,12 @@ export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
         let errorDetails = '';
         try {
           errorDetails = await res.text();
-          console.log('retData', errorDetails);
+          console.log('errorDetails', errorDetails);
         } finally {
+          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          returnData = JSON.parse(returnData);
+          console.error(`submitLogEmail failed with error ${returnData}`);
         }
-        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
-        returnData = JSON.parse(returnData);
-        console.error(`submitLogEmail failed with error ${returnData}`);
       }
     } catch (e) {
       //submitLogEmail call threw
