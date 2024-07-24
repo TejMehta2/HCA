@@ -53,8 +53,16 @@
   @include responsive-grid-start($default: 1, $breakpoint-l: 8);
 
   &.content-cf {
-    @include responsive-grid-span($default: 6, $breakpoint-l: 10, $breakpoint-xl: 5);
-    @include responsive-grid-start($default: 1, $breakpoint-l: 1, $breakpoint-xl: 8);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-l: 10,
+      $breakpoint-xl: 5
+    );
+    @include responsive-grid-start(
+      $default: 1,
+      $breakpoint-l: 1,
+      $breakpoint-xl: 8
+    );
   }
 
   color: var(--text);
@@ -216,7 +224,7 @@
 
 .hide-on-mobile-cf {
   display: none;
-  
+
   @include media(screen-xl) {
     display: block;
   }

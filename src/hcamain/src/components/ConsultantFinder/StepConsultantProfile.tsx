@@ -57,8 +57,6 @@ import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
-import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
-
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
 
