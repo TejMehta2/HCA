@@ -2,7 +2,8 @@
 @use '../../utilities/index.module' as *;
 
 .address {
-  h3, svg {
+  h3,
+  svg {
     display: inline;
   }
 
