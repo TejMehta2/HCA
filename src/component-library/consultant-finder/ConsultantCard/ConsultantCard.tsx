@@ -13,6 +13,8 @@ import InfoBox from '../InfoBox/InfoBox';
 import ReadMore from '../ReadMore/ReadMore';
 import ModalCallUs from '../../components/ModalCallUs/ModalCallUs';
 import { formatDateShort } from '../../utility-functions';
+import Modals from '../../components/Modals/Modals';
+import MultiplePhoneNumbers from '../MultiplePhoneNumbers/MultiplePhoneNumbers';
 
 const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -57,7 +59,14 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
 
   return (
     <div className={styles['consultant-card']}>
-      <ModalCallUs ref={dialogRef} contacts={contacts} />
+      {/* <ModalCallUs ref={dialogRef} contacts={contacts} /> */}
+      <Modals ref={dialogRef}>
+        <MultiplePhoneNumbers
+          practices={props.hospitals || []}
+          title={'Appointments at'}
+          defaultNumber={props.phoneNumberHref}
+        ></MultiplePhoneNumbers>
+      </Modals>
       <div className={styles['main-content']}>
         <div className={styles.header}>
           <div className={styles.photo}>

@@ -20,7 +20,6 @@ const MultiplePhoneNumbers = (
         filteredPractices.length > 2 ? styles['phones-multiple'] : ''
       }  ${filteredPractices.length === 1 ? styles['phones-one-col'] : ''}`}
     >
-      {/* daca practice e mai mare de 0 atunci arata-le, daca e 0 atunci arata default */}
       {filteredPractices.length > 0 &&
         filteredPractices.map((practice: any, index: any) => (
           <div
