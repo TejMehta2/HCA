@@ -11,33 +11,9 @@ import Layout from 'src/Layout';
 import { GetStaticProps } from 'next';
 import { siteResolver } from 'lib/site-resolver';
 import clientFactory from 'lib/graphql-client-factory';
-import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import Log404Email from 'components/EmailUtils/Log404Email';
 
-const Custom404 = async (props: SitecorePageProps): Promise<JSX.Element> => {
-  const router = useRouter();
-  const [postedData, setPostedData] = useState(false);
-  console.log('Custom404 router', JSON.stringify(router));
-  //router.isReady = true;
-  useEffect(() => {
-    console.log('in useeffect router.isReady', router.isReady);
-    if (!router.isReady) {
-      return;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // post an email to notify HCA team that a 404 was hit, useEffect - only want a single email!
-  if (!postedData) {
-    setPostedData(true);
-    console.log('in postedData', postedData);
-    console.log(JSON.stringify(router));
-    await postData(`user landed on 404 page from ${router?.asPath}`);
-  } else {
-    console.log('else postedData', postedData);
-  }
-
+const Custom404 = (props: SitecorePageProps): JSX.Element => {
   if (!(props && props.layoutData)) {
     return <NotFound />;
   }
@@ -47,19 +23,10 @@ const Custom404 = async (props: SitecorePageProps): Promise<JSX.Element> => {
       componentFactory={componentBuilder.getComponentFactory()}
       layoutData={props.layoutData}
     >
+      <Log404Email />
       <Layout layoutData={props.layoutData} headLinks={props.headLinks} />
     </SitecoreContext>
   );
-};
-
-const postData = async (freeText: string) => {
-  const dataToSend: ILogEmailFields = {
-    profileType: '404Report',
-    freeText: freeText,
-  };
-  //console.log('postData dataToSend', dataToSend);
-  /*const res = */ await submitLogEmail(dataToSend);
-  //console.log('postData res', res);
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
