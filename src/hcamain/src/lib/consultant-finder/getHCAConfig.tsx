@@ -64,6 +64,9 @@ export interface IHCAConfig {
 
   // General
   nextJSRevalidationProfilePageSeconds: number;
+
+  //HCA API - Log email
+  //aPI_HCA_LogEmail_BaseURL: string;
 }
 
 export async function GetHCAConfig(): Promise<IHCAConfig> {

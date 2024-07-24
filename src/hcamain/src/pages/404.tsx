@@ -11,6 +11,7 @@ import Layout from 'src/Layout';
 import { GetStaticProps } from 'next';
 import { siteResolver } from 'lib/site-resolver';
 import clientFactory from 'lib/graphql-client-factory';
+import Log404Email from 'components/EmailUtils/Log404Email';
 
 const Custom404 = (props: SitecorePageProps): JSX.Element => {
   if (!(props && props.layoutData)) {
@@ -22,6 +23,7 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
       componentFactory={componentBuilder.getComponentFactory()}
       layoutData={props.layoutData}
     >
+      <Log404Email />
       <Layout layoutData={props.layoutData} headLinks={props.headLinks} />
     </SitecoreContext>
   );
