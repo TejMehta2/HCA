@@ -20,7 +20,7 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
   const router = useRouter();
   const [postedData, setPostedData] = useState(false);
   //console.log(JSON.stringify(router));
-
+  //router.isReady = true;
   useEffect(() => {
     console.log('in useeffect router.isReady', router.isReady);
     if (!router.isReady) {
@@ -32,7 +32,10 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
   // post an email to notify HCA team that a 404 was hit, useEffect - only want a single email!
   if (!postedData) {
     setPostedData(true);
+    console.log('in postedData', postedData);
     postData(`user landed on 404 page from ${router?.asPath}`);
+  } else {
+    console.log('else postedData', postedData);
   }
 
   if (!(props && props.layoutData)) {
