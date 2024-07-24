@@ -26,7 +26,7 @@ const Custom404 = async (props: SitecorePageProps): Promise<JSX.Element> => {
       return;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, []);
 
   // post an email to notify HCA team that a 404 was hit, useEffect - only want a single email!
   if (!postedData) {
