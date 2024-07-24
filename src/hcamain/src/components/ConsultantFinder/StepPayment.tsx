@@ -95,6 +95,8 @@ export const Default = (props: StepProps): JSX.Element => {
           <>
             <ImageAndTextBlock
               noOverflownHidden={true}
+              contentVariation={'hero-cf'}
+              cfVariation={true}
               theme="A-HCA-White"
               imageAlignment="left"
               length="short"
@@ -147,7 +149,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   }
                 />
 
-                <Container marginTop="spacing-8" marginBottom="spacing-4">
+                <Container marginTop="spacing-4" marginBottom="spacing-4">
                   <Text tag="h2" variation="heading-2">
                     {props.fields.TitleText.value}
                   </Text>
