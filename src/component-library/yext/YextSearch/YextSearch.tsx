@@ -186,6 +186,7 @@ const YextSearch = (): JSX.Element => {
         { shallow: true }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, router.isReady]);
 
   const resultsCountRef = useRef<HTMLDivElement>(null);

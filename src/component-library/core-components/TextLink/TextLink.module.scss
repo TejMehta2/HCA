@@ -85,6 +85,14 @@
     }
   }
 
+  &.heading-2 {
+    a,
+    button,
+    label {
+      @include apply-heading-2;
+    }
+  }
+
   &.full {
     width: 100%;
 
