@@ -22,9 +22,9 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        width: 1px;
-        height: 128px;
-        background: #ccc;
+        width: px-to-rem(1);
+        height: px-to-rem(128);
+        background: #C8CFD0;
       }
     }
 
@@ -57,9 +57,9 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        width: 1px;
-        height: 128px;
-        background: #ccc;
+        width: px-to-rem(1);
+        height: px-to-rem(128);
+        background:#C8CFD0;
       }
     }
 
@@ -70,7 +70,7 @@
         }
     
         .item:nth-child(2n + 1)::after {
-          right: -5px; /* Place it just outside the item */
+          right: px-to-rem(-5); /* Place it just outside the item */
         }
     
         .item:not(:nth-child(2n + 1))::after
@@ -87,9 +87,9 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        width: 1px;
-        height: 128px;
-        background: #ccc;
+        width: px-to-rem(1);
+        height: px-to-rem(128);
+        background: #C8CFD0;
         }
     
         .item:nth-child(2n + 1)::after {

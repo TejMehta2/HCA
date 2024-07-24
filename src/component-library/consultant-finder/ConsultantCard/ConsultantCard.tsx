@@ -11,7 +11,6 @@ import TextButton from '../../core-components/TextButton/TextButton';
 import TextLink from '../../core-components/TextLink/TextLink';
 import InfoBox from '../InfoBox/InfoBox';
 import ReadMore from '../ReadMore/ReadMore';
-import ModalCallUs from '../../components/ModalCallUs/ModalCallUs';
 import { formatDateShort } from '../../utility-functions';
 import Modals from '../../components/Modals/Modals';
 import MultiplePhoneNumbers from '../MultiplePhoneNumbers/MultiplePhoneNumbers';
