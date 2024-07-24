@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
+import { ILogEmailFields } from 'lib/consultant-finder/API_HCA';
 import { useEffect } from 'react';
-import PostLogEmail from 'src/pages/api/formAPI/PostLogEmail';
 
 /**
  * Rendered in case we need to email for the 404
