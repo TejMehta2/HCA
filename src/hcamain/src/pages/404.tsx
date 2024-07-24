@@ -14,12 +14,11 @@ import clientFactory from 'lib/graphql-client-factory';
 import { ILogEmailFields, submitLogEmail } from 'lib/consultant-finder/API_HCA';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
 
-const Custom404 = (props: SitecorePageProps): JSX.Element => {
+const Custom404 = async (props: SitecorePageProps): Promise<JSX.Element> => {
   const router = useRouter();
   const [postedData, setPostedData] = useState(false);
-  //console.log(JSON.stringify(router));
+  console.log('Custom404 router', JSON.stringify(router));
   //router.isReady = true;
   useEffect(() => {
     console.log('in useeffect router.isReady', router.isReady);
@@ -33,7 +32,8 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
   if (!postedData) {
     setPostedData(true);
     console.log('in postedData', postedData);
-    postData(`user landed on 404 page from ${router?.asPath}`);
+    console.log(JSON.stringify(router));
+    await postData(`user landed on 404 page from ${router?.asPath}`);
   } else {
     console.log('else postedData', postedData);
   }
@@ -51,20 +51,6 @@ const Custom404 = (props: SitecorePageProps): JSX.Element => {
     </SitecoreContext>
   );
 };
-
-export function NavigationEvents() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const url = `${pathname}?${searchParams}`;
-    console.log('NavigationEvents', url);
-    // You can now use the current URL
-    // ...
-  }, [pathname, searchParams]);
-
-  return null;
-}
 
 const postData = async (freeText: string) => {
   const dataToSend: ILogEmailFields = {
