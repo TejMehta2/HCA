@@ -1047,7 +1047,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       callToBookModalTitle={
                         props?.fields?.CallToBookModalTitle?.value ||
-                        'Call to book'
+                        'Appointments at'
                       }
                     />
                   ))}

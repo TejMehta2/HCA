@@ -194,8 +194,6 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
-  console.log('profile data', serverSideData?.ProfileJson);
-
   // Refs for each tab section
   const aboutRef = useRef<HTMLDivElement>(null);
   const locationsRef = useRef<HTMLDivElement>(null);
@@ -353,84 +351,18 @@ export const Default = (props: StepProps): JSX.Element => {
     });
   }
 
-  const phone = [
-    {
-      text: props?.fields?.DisplayNumber?.value || '020 7079 4344',
-      number: props?.fields?.PhoneNumberHref?.value || '02070794344',
-    },
-  ];
-
-  const contacts: any[] = [];
-  contacts.push(
-    {
-      title: 'Support',
-      phone: {
-        text: '020 7079 5678',
-        number: '02070795678',
-      },
-      availability: '9 AM - 5 PM',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-    {
-      title: 'Sales',
-      phone: {
-        text: '020 7079 9999',
-        number: '02070799999',
-      },
-      availability: '24/7',
-    },
-  );
-
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
           <div>
-            {/* <ModalCallUs ref={dialogRef} contacts={contacts} /> */}
-
             <Modals ref={dialogRef}>
               <MultiplePhoneNumbers
                 practices={serverSideData?.ProfileJson?.practices || []}
-                title={'Appointments at'}
+                title={
+                  props?.fields?.CallToBookModalTitle?.value ||
+                  'Appointments at'
+                }
                 defaultNumber={props?.fields?.PhoneNumberHref?.value}
               ></MultiplePhoneNumbers>
             </Modals>

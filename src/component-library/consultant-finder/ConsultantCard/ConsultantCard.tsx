@@ -42,27 +42,12 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
     });
   }
 
-  const phone = [
-    {
-      text: props.phoneNumberDisplay,
-      number: props.phoneNumberHref,
-    },
-  ];
-
-  const contacts: any[] = [];
-  contacts.push({
-    title: props.callToBookModalTitle,
-    phone: phone?.[0],
-    availability: undefined,
-  });
-
   return (
     <div className={styles['consultant-card']}>
-      {/* <ModalCallUs ref={dialogRef} contacts={contacts} /> */}
       <Modals ref={dialogRef}>
         <MultiplePhoneNumbers
           practices={props.hospitals || []}
-          title={'Appointments at'}
+          title={props.callToBookModalTitle}
           defaultNumber={props.phoneNumberHref}
         ></MultiplePhoneNumbers>
       </Modals>
