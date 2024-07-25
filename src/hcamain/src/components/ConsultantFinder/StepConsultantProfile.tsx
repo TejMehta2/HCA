@@ -57,7 +57,8 @@ import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
-import ModalCallUs from '@component-library/components/ModalCallUs/ModalCallUs';
+import Modals from '@component-library/components/Modals/Modals';
+import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -348,26 +349,21 @@ export const Default = (props: StepProps): JSX.Element => {
     });
   }
 
-  const phone = [
-    {
-      text: props?.fields?.DisplayNumber?.value || '020 7079 4344',
-      number: props?.fields?.PhoneNumberHref?.value || '02070794344',
-    },
-  ];
-
-  const contacts: any[] = [];
-  contacts.push({
-    title: props?.fields?.CallToBookModalTitle?.value || 'Call to book',
-    phone: phone?.[0],
-    availability: undefined,
-  });
-
   if (props.fields) {
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
           <div>
-            <ModalCallUs ref={dialogRef} contacts={contacts} />
+            <Modals ref={dialogRef}>
+              <MultiplePhoneNumbers
+                practices={serverSideData?.ProfileJson?.practices || []}
+                title={
+                  props?.fields?.CallToBookModalTitle?.value ||
+                  'Appointments at'
+                }
+                defaultNumber={props?.fields?.PhoneNumberHref?.value}
+              ></MultiplePhoneNumbers>
+            </Modals>
             <Head>
               <meta name="robots" content="index,follow" />
               <title>{title}</title>

@@ -1047,3 +1047,70 @@ export async function splitAddress(
 
   return returnData;
 }
+
+export interface ILogEmailFields {
+  profileType: string; // e.g. 404Report
+  freeText: string;
+}
+
+/*
+This endpoint will create and send an email, can be used to alert to specific events  
+Set the profileType in the ILogEmailFields. 
+It should match the second part of the name of the profile of the email in the Sitecore Form Api Settings Container
+e.g. profileType would be 404Report to target LogEmail_404Report
+*/
+export async function submitLogEmail(fields: ILogEmailFields): Promise<any> {
+  let returnData: any = '';
+
+  const baseURL =
+    process.env.INTEGRATION_LAYER_URL ??
+    'https://digital-int-dev.hcahealthcareqa.co.uk';
+  const formURL = `${baseURL}/api/sitecore/LogEmail/${fields.profileType}/1/en`;
+
+  //console.log('formURL', formURL);
+  if (formURL) {
+    let bodyStr: string = '';
+
+    bodyStr = JSON.stringify(fields);
+    const headers: HeadersInit = {
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      //console.log('submit form to', formURL);
+      const res = await fetch(formURL, {
+        method: 'post',
+        body: bodyStr,
+        headers: headers,
+        cache: 'no-cache',
+      });
+
+      //console.log('res status:', res?.status, res?.statusText);
+      if (res.ok) {
+        const retData = await res.text();
+        //console.log('retData', retData);
+        returnData = JSON.parse(retData);
+      } else {
+        //submitLogEmail call failed
+        let errorDetails = '';
+        try {
+          errorDetails = await res.text();
+          console.error('submitLogEmail errorDetails', errorDetails);
+        } finally {
+          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          returnData = JSON.parse(returnData);
+          console.error(`submitLogEmail failed with error ${returnData}`);
+        }
+      }
+    } catch (e) {
+      //submitLogEmail call threw
+      const errorText =
+        'An unexpected error occured posting submitLogEmail, please retry';
+      returnData = `{"errorCode": 999, "errorText": "${errorText}"}`;
+      returnData = JSON.parse(returnData);
+      console.error(`submitLogEmail failed with exception ${e}`);
+    }
+  }
+
+  return returnData;
+}
