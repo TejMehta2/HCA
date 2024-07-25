@@ -82,11 +82,42 @@ export async function getSpecialistProfileData(
         }
 
         // gmcNumber
-        const gmcNumber = docitfyData?.registrationBodies.filter(
+        let gmcNumber = docitfyData?.registrationBodies.filter(
           (item: any) => item.name === 'General Medical Council'
         )[0]?.registrationNumber;
-        docitfyData.gmcNumber = gmcNumber;
 
+        // https://hcauk-digital.atlassian.net/browse/HED-1551
+        // fallback if consultant is not a GMC member, but they are online consultant booking
+        if (
+          docitfyData.isLiveDiaryConsultant &&
+          (gmcNumber?.length == 0 || !gmcNumber?.length) &&
+          docitfyData?.registrationBodies?.length > 0
+        ) {
+          // we pick off the first prof reg body as the identifier
+          // e.g. neala-rezai - PODIATRY -
+          /*
+            "registrationBodies": [
+            {
+              "id": 5,
+              "name": "Health Care and Professional Council",
+              "registrationNumber": "CH33283"
+            },
+            {
+              "id": 44,
+              "name": "Royal College of Podiatry",
+              "registrationNumber": "32608"
+            },
+            {
+              "id": 166,
+              "name": "HCPC - Health and care professions council",
+              "registrationNumber": "CH33283"
+            }
+          ],*/
+          // pick off CH33283 as the GMC from the first record
+          gmcNumber = docitfyData?.registrationBodies[0]?.registrationNumber;
+        }
+
+        docitfyData.gmcNumber = gmcNumber;
         if (loadFirstAppointmentData && docitfyData.isLiveDiaryConsultant) {
           try {
             const res = await getLDBFirstAppointmentData(gmcNumber); // e.g. "4113571"
