@@ -1,0 +1,159 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.phones {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-8 $spacing-2;
+
+  @include media(screen-l) {
+    padding: $spacing-8;
+  }
+
+  @include responsive-container;
+  @include responsive-grid;
+
+  .item:not(:last-child)::after {
+    content: none;
+
+    @include media(screen-m) {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: px-to-rem(1);
+      height: px-to-rem(128);
+      background: #c8cfd0;
+    }
+  }
+
+  &-one-col {
+    display: flex;
+  }
+
+  > .item {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 4
+    );
+  }
+
+  > .item-two {
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 6,
+      $breakpoint-l: 6
+    );
+  }
+
+  .item-two:not(:last-child)::after {
+    content: none;
+
+    @include media(screen-l) {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: px-to-rem(1);
+      height: px-to-rem(128);
+      background: #c8cfd0;
+    }
+  }
+
+  &.phones-multiple {
+    @include media(screen-m) {
+      .item:nth-child(2n)::after {
+        content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
+      }
+
+      .item:nth-child(2n + 1)::after {
+        right: px-to-rem(-5); /* Place it just outside the item */
+      }
+
+      .item:not(:nth-child(2n + 1))::after {
+        left: 100%; /* Place it just outside the item */
+      }
+    }
+
+    @include media(screen-l) {
+      .item:nth-child(2n)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: px-to-rem(1);
+        height: px-to-rem(128);
+        background: #c8cfd0;
+      }
+
+      .item:nth-child(2n + 1)::after {
+        right: inherit; /* Place it just outside the item */
+      }
+
+      .item:not(:nth-child(2n + 1))::after {
+        left: inherit; /* Place it just outside the item */
+      }
+
+      .item:nth-child(3n)::after {
+        content: none; /* Remove divider for every 3rd and 2nd element in respective layouts */
+      }
+
+      .item:nth-child(3n + 2)::after {
+        right: px-to-rem(-5); /* Place it just outside the item */
+      }
+
+      .item:not(:nth-child(3n + 2))::after {
+        left: 100%; /* Place it just outside the item */
+      }
+    }
+  }
+
+  > .item-one {
+    width: 100%;
+  }
+
+  .item {
+    padding: $spacing-7 $spacing-2;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    margin-bottom: $spacing-2;
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .heading,
+  .address {
+    margin-bottom: $spacing-4;
+  }
+
+  .title,
+  .heading,
+  .address {
+    text-align: center;
+    max-width: 90%;
+
+    @include media(screen-l) {
+      max-width: 80%;
+    }
+  }
+
+  .phone-btn {
+    margin-top: $spacing-2;
+  }
+}

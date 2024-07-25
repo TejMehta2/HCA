@@ -17,6 +17,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     ratings,
     iconList,
     hideImageOnMobile,
+    cfVariation,
     contentVariation,
     noOverflownHidden,
   } = props;
@@ -41,6 +42,7 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               className={[
                 styles['image'],
                 styles[length],
+                cfVariation ? styles['hide-on-mobile-cf'] : '',
                 hideImageOnMobile ? styles['hide-on-mobile'] : '',
                 imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
               ].join(' ')}
@@ -48,7 +50,13 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
             >
               {image}
             </div>
-            <div className={styles['content']} data-animate="l">
+            <div
+              className={[
+                styles['content'],
+                cfVariation ? styles['content-cf'] : '',
+              ].join(' ')}
+              data-animate="l"
+            >
               {subheader && (
                 <div className={styles['subheader']}>{subheader}</div>
               )}

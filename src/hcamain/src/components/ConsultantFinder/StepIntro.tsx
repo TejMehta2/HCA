@@ -82,12 +82,12 @@ export const Default = (props: StepProps): JSX.Element => {
     return (
       <div id={id ? id : undefined}>
         <ImageAndTextBlock
-          contentVariation={'hero'}
+          contentVariation={'hero-cf'}
           noOverflownHidden={true}
           theme="A-HCA-White"
           imageAlignment="left"
           length="short"
-          hideImageOnMobile={true}
+          cfVariation={true}
           subheader={
             <Text tag="h3" variation="subheading-1">
               <JssRichText field={props.fields.HeadingText} />
@@ -144,7 +144,7 @@ export const Default = (props: StepProps): JSX.Element => {
           </form>
 
           <Container
-            marginBottom="spacing-8"
+            marginBottom="spacing-4"
             displayFlex="displayFlex"
             withButtons={true}
             customBtnDesktop={true}
@@ -178,7 +178,7 @@ export const Default = (props: StepProps): JSX.Element => {
             </Button>
           </Container>
 
-          <Container marginBottom="spacing-4">
+          <Container marginBottom="spacing-2">
             <Text tag="h2" variation="heading-2">
               {props.fields.FindConsultantHeaderText.value}
             </Text>
