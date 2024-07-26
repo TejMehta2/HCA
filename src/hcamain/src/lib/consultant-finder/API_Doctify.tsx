@@ -90,7 +90,7 @@ export async function getSpecialistProfileData(
         // fallback if consultant is not a GMC member, but they are online consultant booking
         if (
           docitfyData.isLiveDiaryConsultant &&
-          (gmcNumber?.length == 0 || !gmcNumber?.length) &&
+          (!gmcNumber || gmcNumber.length === 0) &&
           docitfyData?.registrationBodies?.length > 0
         ) {
           // we pick off the first prof reg body as the identifier
