@@ -15,7 +15,7 @@ type FilterOptionFields = {
   displayName?: { value?: string };
   filter?: { value?: string };
   filterValueString?: { value?: string };
-  filterValueGuid?: { id: string };
+  filterValueGuid?: { targetItem: { id: string } };
 };
 
 type LocationsFields = {
