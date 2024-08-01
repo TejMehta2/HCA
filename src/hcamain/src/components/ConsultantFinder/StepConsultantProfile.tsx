@@ -284,9 +284,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const languagesString = languagesList.toString().split(',').join(', ');
 
   // gmcNumber
-  const gmcNumber = serverSideData?.ProfileJson?.registrationBodies?.filter(
-    (item: any) => item.name === 'General Medical Council'
-  )[0]?.registrationNumber;
+  const gmcNumber = serverSideData?.ProfileJson?.gmcNumber; // https://hcauk-digital.atlassian.net/browse/HED-1551 fix for non GMC practicioners who are on live diaries
 
   // subspecialties
   const subSpecialtiesData = serverSideData?.ProfileJson?.keywords
