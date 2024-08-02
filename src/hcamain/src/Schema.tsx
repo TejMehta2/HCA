@@ -257,7 +257,7 @@ const Schema = (props: SchemaProps) => {
 
     return (
       <Head>
-        {/* {!noSchema &&
+        {!noSchema &&
           schemas.length &&
           schemas.map((schema, index) => {
             return (
@@ -281,7 +281,7 @@ const Schema = (props: SchemaProps) => {
               __html: i.innerHTML,
             }}
           />
-        ))} */}
+        ))}
       </Head>
     );
   } catch (err) {
