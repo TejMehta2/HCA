@@ -331,11 +331,11 @@ const _getIgnoreReviewsConsultantSlugs = unstable_cache(
     console.log('refreshing _getIgnoreReviewsConsultantSlugs from source..');
     const ret = await __getIgnoreReviewsConsultantSlugs();
     // test possible return and throw to avoid caching bad results!
-    if (ret.length == 0) {
+    /*if (ret.length == 0) {
       throw new Error(
         `Error attempting to cache data, zero records or invalid data in _getIgnoreReviewsConsultantSlugs`
       );
-    }
+    }*/
     return ret;
   },
   undefined,
