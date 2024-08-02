@@ -95,11 +95,18 @@ const Schema = (props: SchemaProps) => {
           ''
         )
       : '';
-    const aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: reviewFields?.DoctifyReviews?.fields?.Stars?.value || '',
-      reviewCount: reviewCount,
-    };
+    const ratingValue =
+      reviewFields?.DoctifyReviews?.fields?.Stars?.value || '';
+
+    // Construct aggregateRating only if ratingValue or reviewCount is not empty
+    const aggregateRating =
+      ratingValue || reviewCount
+        ? {
+            '@type': 'AggregateRating',
+            ratingValue,
+            reviewCount,
+          }
+        : null;
 
     //  Hospital details
     let locationSpecialties;
@@ -160,7 +167,7 @@ const Schema = (props: SchemaProps) => {
       ...schema,
       '@type': 'MedicalOrganization',
       name: name,
-      aggregateRating,
+      ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
     };
 
     const schemas = [];
@@ -175,7 +182,7 @@ const Schema = (props: SchemaProps) => {
           ...schema,
           name,
           '@type': 'Organization',
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
 
         schemas.push(organizationSchema, reviewsSchema);
@@ -210,7 +217,7 @@ const Schema = (props: SchemaProps) => {
           '@type': 'MedicalTest',
           name,
           conditionDescription,
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
         schemas.push(MedicalTestSchema, reviewsSchema);
         break;
@@ -234,7 +241,7 @@ const Schema = (props: SchemaProps) => {
             meta?.MetaImage?.value?.src ||
             meta?.Image?.value?.src,
           department: departmentSchema,
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
         schemas.push(facilitySchema, reviewsSchema);
         break;
@@ -243,11 +250,6 @@ const Schema = (props: SchemaProps) => {
         break;
     }
 
-    // //don't render if there's no schema - schema data can be set in the component e.g. consultant finder profiles
-    // if (noSchema && !curatedJsonLdSchema) {
-    //   return <></>;
-    // }
-
     // Pass the JSON LD Schema field from the CMS to the parse function
     const curatedLdJsonScripts = curatedJsonLdSchema?.value
       ? parse(curatedJsonLdSchema.value).getElementsByTagName('script')
@@ -255,7 +257,7 @@ const Schema = (props: SchemaProps) => {
 
     return (
       <Head>
-        {!noSchema &&
+        {/* {!noSchema &&
           schemas.length &&
           schemas.map((schema, index) => {
             return (
@@ -263,7 +265,6 @@ const Schema = (props: SchemaProps) => {
                 id={`ldjson-schema-${index}`}
                 type="application/ld+json"
                 key={`${index}-schema`}
-                //data-test="schema-schema"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(schema),
                 }}
@@ -280,7 +281,7 @@ const Schema = (props: SchemaProps) => {
               __html: i.innerHTML,
             }}
           />
-        ))}
+        ))} */}
       </Head>
     );
   } catch (err) {
