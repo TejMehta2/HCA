@@ -22,6 +22,7 @@ import SidePanel from '@component-library/consultant-finder/SidePanel/SidePanel'
 import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 import {
+  checkIfConsultantIsNoReviews,
   checkIfLiveBookingIsAvailable,
   getPhysicianStructuredData,
 } from 'lib/consultant-finder/API_HCA';
@@ -120,6 +121,7 @@ interface Fields {
 interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
+  IgnoreReviewsConsultant: boolean;
   ProfileJson: any;
   PhysicianStructuredDataJson: any;
   ErrorWithProfileData: boolean;
@@ -154,12 +156,14 @@ export const getStaticProps: GetStaticComponentProps = async (
     path
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
+  const ignoreReviewConsultant = await checkIfConsultantIsNoReviews(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
   const returnProps: ServerSideProps = {
     Slug: slug,
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
+    IgnoreReviewsConsultant: ignoreReviewConsultant,
     ProfileJson: consultantProfileJson,
     PhysicianStructuredDataJson: physicianStructuredDataJson,
   };
@@ -348,6 +352,7 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
+    //console.log('serverSideData?.IgnoreReviewsConsultant',serverSideData?.IgnoreReviewsConsultant);
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
@@ -757,14 +762,16 @@ export const Default = (props: StepProps): JSX.Element => {
                   ></OverallRating>
                 </ProfilePageSection>
                 {/* iframe with patient and peer reviews */}
-                <iframe
-                  src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
-                  width="100%"
-                  height="700px"
-                  id="specialistReviews"
-                  name="specialistReviews"
-                  scrolling="no"
-                ></iframe>
+                {!serverSideData?.IgnoreReviewsConsultant && (
+                  <iframe
+                    src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+                    width="100%"
+                    height="700px"
+                    id="specialistReviews"
+                    name="specialistReviews"
+                    scrolling="no"
+                  ></iframe>
+                )}
                 {/* iframe with patient and peer reviews */}
               </MainWrapper>
               <SideWrapper>
