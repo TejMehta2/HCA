@@ -762,7 +762,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   ></OverallRating>
                 </ProfilePageSection>
                 {/* iframe with patient and peer reviews */}
-                {serverSideData?.ProfileJson?.isLiveDiaryConsultant && (
+                {!serverSideData?.IgnoreReviewsConsultant && (
                   <iframe
                     src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
                     width="100%"
