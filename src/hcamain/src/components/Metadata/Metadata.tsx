@@ -157,33 +157,53 @@ export const Default = (props: MetadataProps): JSX.Element => {
   } else {
     return (
       <Head>
-        <meta name="twitter:card" content={TwitterCard?.value?.value} />
-        <meta property="og:title" content={title} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={image} />
-        <link rel="canonical" href={url} />
-        <meta name="description" content={description} />
-        <meta name="robots" content={`${follow}, ${index}`} />
-        <meta name="title" content={title} />
-        <meta name="pageTitle" content={Title?.value} />
-        <meta name="pageText" content={pageText} />
-        <meta
-          name="pageImage"
-          content={addThumbnailParameter(Image?.value?.src)}
-        />
-        <meta name="pageId" content={PageId} />
-        <meta name="templateId" content={TemplateId} />
-        <meta
-          name="hideFromWebsiteSearch"
-          content={HideFromWebsiteSearch?.value.valueOf().toString()}
-        />
-        <meta name="abstractTitle" content={AbstractTitle?.value} />
-        <meta name="abstractText" content={AbstractText?.value} />
-        <meta
-          name="abstractImage"
-          content={addThumbnailParameter(AbstractImage?.value?.src)}
-        />
+        {TwitterCard?.value?.value && (
+          <meta name="twitters:card" content={TwitterCard?.value?.value} />
+        )}{' '}
+        &&
+        {title && <meta property="og:title" content={title} />} &&
+        {url && <meta property="og:url" content={url} />} &&
+        <meta property="og:type" content="website" /> &&
+        {image && <meta property="og:image" content={image} />} &&
+        {url && <link rel="canonical" href={url} />} &&
+        {description && <meta name="description" content={description} />} &&
+        {follow && index && (
+          <meta name="robots" content={`${follow}, ${index}`} />
+        )}{' '}
+        &&
+        {title && <meta name="title" content={title} />} &&
+        {Title?.value && <meta name="pageTitle" content={Title?.value} />} &&
+        {pageText && <meta name="pageText" content={pageText} />} &&
+        {Image?.value?.src && (
+          <meta
+            name="pageImage"
+            content={addThumbnailParameter(Image?.value?.src)}
+          />
+        )}{' '}
+        &&
+        {PageId && <meta name="pageId" content={PageId} />} &&
+        {TemplateId && <meta name="templateId" content={TemplateId} />} &&
+        {HideFromWebsiteSearch?.value?.valueOf().toString() && (
+          <meta
+            name="hideFromWebsiteSearch"
+            content={HideFromWebsiteSearch?.value?.valueOf().toString()}
+          />
+        )}{' '}
+        &&
+        {AbstractTitle?.value && (
+          <meta name="abstractTitle" content={AbstractTitle?.value} />
+        )}{' '}
+        &&
+        {AbstractText?.value && (
+          <meta name="abstractText" content={AbstractText?.value} />
+        )}{' '}
+        &&
+        {AbstractImage?.value?.src && (
+          <meta
+            name="abstractImage"
+            content={addThumbnailParameter(AbstractImage?.value?.src)}
+          />
+        )}
       </Head>
     );
   }
