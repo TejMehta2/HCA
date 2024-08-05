@@ -291,11 +291,15 @@ async function __getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
         const consultantsOnLDB = await res.json();
         //console.log('consultantsOnLDB', consultantsOnLDB);
         consultantsOnLDB.forEach(
-          (consultant: { UniqueKey: any; NoReviews: string | boolean }) => {
+          (consultant: {
+            Values: any;
+            UniqueKey: any;
+            NoReview: string | boolean;
+          }) => {
             const slug = consultant.UniqueKey;
             if (
-              consultant.NoReviews === 'True' ||
-              consultant.NoReviews === true
+              consultant.Values?.NoReview === 'True' ||
+              consultant.Values?.NoReview === true
             ) {
               noReviewSlugs = noReviewSlugs.concat(slug);
             }
@@ -306,7 +310,6 @@ async function __getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
             `Warning consultant slugs list for is empty from call __getIgnoreReviewsConsultantSlugs`
           );
         }
-        //console.log("CF LDB slugs:", ldbSlugs);
       } else {
         // couldn't get the ldb consultant slugs
         console.warn(
@@ -319,7 +322,7 @@ async function __getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
       );
     }
   }
-
+  //console.log('noReviewSlugs:', noReviewSlugs);
   return noReviewSlugs;
 }
 
@@ -773,7 +776,7 @@ export interface ISuggestLocationFields {
 export async function suggestLocation(
   fields: ISuggestLocationFields | any
 ): Promise<any> {
-  console.log('fields', fields);
+  //('fields', fields);
 
   let returnData: any = '';
   const HCAAPIConfig = await GetHCAConfig();
@@ -813,7 +816,7 @@ export async function suggestLocation(
       urlParamsStr = paramsArray.join('&');
       //console.log('urlParamsStr', urlParamsStr);
       locationsURL = `${locationsURL}/SuggestLocation?${urlParamsStr}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
     }
 
     try {
@@ -887,7 +890,7 @@ export async function getDistances(
     if (isLegacy) {
       // convert params to path frags locationApi/getDistances/default/default/miles/default/
       locationsURL = `${locationsURL}/getDistances/${fields['provider']}/${fields['method']}/${fields['units']}/${fields['order']}/${fields['origin']}/${fields['originType']}/${fields['destinations']}/${fields['destinationType']}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
       };
@@ -902,7 +905,7 @@ export async function getDistances(
       urlParamsStr = paramsArray.join('&');
       //console.log('urlParamsStr', urlParamsStr);
       locationsURL = `${locationsURL}/GetDistances?${urlParamsStr}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
     }
 
     try {
