@@ -363,7 +363,6 @@ export const Default = (props: StepProps): JSX.Element => {
               ></MultiplePhoneNumbers>
             </Modals>
             <Head>
-              <meta name="robots" content="index,follow" />
               <title>{title}</title>
               <link rel="canonical" href={canonicalURL} />
               <meta name="description" content={description} />
