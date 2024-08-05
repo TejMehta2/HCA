@@ -60,6 +60,7 @@ import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
+import { Console } from 'console';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -352,6 +353,7 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
+    console.log('serverSideData?.IgnoreReviewsConsultant',serverSideData?.IgnoreReviewsConsultant);
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
