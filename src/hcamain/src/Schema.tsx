@@ -31,7 +31,7 @@ const Schema = (props: SchemaProps) => {
       | 'Hospital/Facility'
       | 'Generic';
 
-    // Unpack values from layoutdata etc.
+    // Unpack values from layoutData etc.
     const path = layoutData?.sitecore?.context?.itemPath as string;
     const url = `${BASE_URL}${path}`;
     const components = layoutData?.sitecore.route?.placeholders?.[
@@ -44,15 +44,14 @@ const Schema = (props: SchemaProps) => {
     const route = layoutData?.sitecore?.route;
     const meta = route?.fields as PageRouteMetadata['fields'];
 
-    const reviewComponent = components?.find(
-      ({ componentName }) => ['IntroBlock'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const reviewComponent = components?.find(({ componentName }) =>
+      ['IntroBlock'].includes(componentName)
     );
-    const heroComponent = components?.find(
-      ({ componentName }) =>
-        ['HeaderWithImage', 'HeroBannerWithSearch'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const heroComponent = components?.find(({ componentName }) =>
+      ['HeaderWithImage', 'HeroBannerWithSearch'].includes(componentName)
     ) as HeaderWithImageProps | HeroBannerWithSearchProps;
-    const locationHeroComponent = components?.find(
-      ({ componentName }) => ['HeroLocationDetails'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const locationHeroComponent = components?.find(({ componentName }) =>
+      ['HeroLocationDetails'].includes(componentName)
     ) as HeroLocationDetailsProps;
 
     const templateId = route?.templateId
@@ -98,17 +97,14 @@ const Schema = (props: SchemaProps) => {
     const ratingValue =
       reviewFields?.DoctifyReviews?.fields?.Stars?.value || '';
 
-    // Construct aggregateRating only if ratingValue or reviewCount is not empty
-    const aggregateRating =
-      ratingValue || reviewCount
-        ? {
-            '@type': 'AggregateRating',
-            ratingValue,
-            reviewCount,
-          }
-        : null;
+    // Construct aggregateRating only if ratingValue or reviewCount has a value
+    const aggregateRating = (ratingValue || reviewCount) && {
+      '@type': 'AggregateRating',
+      ...(ratingValue && { ratingValue }), // Include ratingValue only if it's not empty
+      ...(reviewCount && { reviewCount }), // Include reviewCount only if it's not empty
+    };
 
-    //  Hospital details
+    // Hospital details
     let locationSpecialties;
     let departmentSchema;
     if (pageType === 'Hospital/Facility') {
@@ -121,8 +117,7 @@ const Schema = (props: SchemaProps) => {
           contentCards?.fields?.data?.item?.pages?.PagesList;
       }
 
-      //  try target specific page specialites or use specialties from meta
-
+      // Try target specific page specialties or use specialties from meta
       if (locationSpecialties) {
         departmentSchema = locationSpecialties?.map((department) => ({
           '@type': 'Organization',
@@ -162,7 +157,7 @@ const Schema = (props: SchemaProps) => {
       url: url,
     };
 
-    //  Reviews
+    // Reviews Schema
     const reviewsSchema = {
       ...schema,
       '@type': 'MedicalOrganization',
