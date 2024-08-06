@@ -31,7 +31,7 @@ const Schema = (props: SchemaProps) => {
       | 'Hospital/Facility'
       | 'Generic';
 
-    // Unpack values from layoutdata etc.
+    // Unpack values from layoutData etc.
     const path = layoutData?.sitecore?.context?.itemPath as string;
     const url = `${BASE_URL}${path}`;
     const components = layoutData?.sitecore.route?.placeholders?.[
@@ -44,15 +44,14 @@ const Schema = (props: SchemaProps) => {
     const route = layoutData?.sitecore?.route;
     const meta = route?.fields as PageRouteMetadata['fields'];
 
-    const reviewComponent = components?.find(
-      ({ componentName }) => ['IntroBlock'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const reviewComponent = components?.find(({ componentName }) =>
+      ['IntroBlock'].includes(componentName)
     );
-    const heroComponent = components?.find(
-      ({ componentName }) =>
-        ['HeaderWithImage', 'HeroBannerWithSearch'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const heroComponent = components?.find(({ componentName }) =>
+      ['HeaderWithImage', 'HeroBannerWithSearch'].includes(componentName)
     ) as HeaderWithImageProps | HeroBannerWithSearchProps;
-    const locationHeroComponent = components?.find(
-      ({ componentName }) => ['HeroLocationDetails'].includes(componentName) // TODO - potentially extend to CQCRating etc.
+    const locationHeroComponent = components?.find(({ componentName }) =>
+      ['HeroLocationDetails'].includes(componentName)
     ) as HeroLocationDetailsProps;
 
     const templateId = route?.templateId
@@ -95,13 +94,17 @@ const Schema = (props: SchemaProps) => {
           ''
         )
       : '';
-    const aggregateRating = {
+    const ratingValue =
+      reviewFields?.DoctifyReviews?.fields?.Stars?.value || '';
+
+    // Construct aggregateRating only if ratingValue or reviewCount has a value
+    const aggregateRating = (ratingValue || reviewCount) && {
       '@type': 'AggregateRating',
-      ratingValue: reviewFields?.DoctifyReviews?.fields?.Stars?.value || '',
-      reviewCount: reviewCount,
+      ...(ratingValue && { ratingValue }), // Include ratingValue only if it's not empty
+      ...(reviewCount && { reviewCount }), // Include reviewCount only if it's not empty
     };
 
-    //  Hospital details
+    // Hospital details
     let locationSpecialties;
     let departmentSchema;
     if (pageType === 'Hospital/Facility') {
@@ -114,8 +117,7 @@ const Schema = (props: SchemaProps) => {
           contentCards?.fields?.data?.item?.pages?.PagesList;
       }
 
-      //  try target specific page specialites or use specialties from meta
-
+      // Try target specific page specialties or use specialties from meta
       if (locationSpecialties) {
         departmentSchema = locationSpecialties?.map((department) => ({
           '@type': 'Organization',
@@ -155,12 +157,12 @@ const Schema = (props: SchemaProps) => {
       url: url,
     };
 
-    //  Reviews
+    // Reviews Schema
     const reviewsSchema = {
       ...schema,
       '@type': 'MedicalOrganization',
       name: name,
-      aggregateRating,
+      ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
     };
 
     const schemas = [];
@@ -175,7 +177,7 @@ const Schema = (props: SchemaProps) => {
           ...schema,
           name,
           '@type': 'Organization',
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
 
         schemas.push(organizationSchema, reviewsSchema);
@@ -210,7 +212,7 @@ const Schema = (props: SchemaProps) => {
           '@type': 'MedicalTest',
           name,
           conditionDescription,
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
         schemas.push(MedicalTestSchema, reviewsSchema);
         break;
@@ -234,7 +236,7 @@ const Schema = (props: SchemaProps) => {
             meta?.MetaImage?.value?.src ||
             meta?.Image?.value?.src,
           department: departmentSchema,
-          aggregateRating,
+          ...(aggregateRating && { aggregateRating }), // Only include aggregateRating if not null
         };
         schemas.push(facilitySchema, reviewsSchema);
         break;
@@ -242,11 +244,6 @@ const Schema = (props: SchemaProps) => {
         noSchema = true;
         break;
     }
-
-    // //don't render if there's no schema - schema data can be set in the component e.g. consultant finder profiles
-    // if (noSchema && !curatedJsonLdSchema) {
-    //   return <></>;
-    // }
 
     // Pass the JSON LD Schema field from the CMS to the parse function
     const curatedLdJsonScripts = curatedJsonLdSchema?.value
@@ -263,7 +260,6 @@ const Schema = (props: SchemaProps) => {
                 id={`ldjson-schema-${index}`}
                 type="application/ld+json"
                 key={`${index}-schema`}
-                //data-test="schema-schema"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(schema),
                 }}

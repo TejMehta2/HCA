@@ -9,6 +9,7 @@ import {
 import { revalidate } from './revalidateNow';
 import { BASE_URL } from 'lib/constants';
 
+/******All consultants********/
 export async function getActiveConsultantSlugs(): Promise<string[]> {
   if (revalidate.noCache()) {
     // unstable_cache not supported from getStaticPaths
@@ -125,6 +126,7 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
   return slugs;
 }
 
+/******OCB / live diaries********/
 export async function getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   // revalidateTag('cacheGetActiveLiveDiaryConsultantSlugs'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
@@ -182,7 +184,6 @@ const _getNCActiveLiveDiaryConsultantSlugs = unstable_cache(
 );
 
 // get all the active live diary consultants
-//const ldbConsultantSlugsURL = `https://www.hcahealthcare.co.uk/lookupApi/finder/default/findbydictionary/ldbConsultants`;
 async function __getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
   let ldbSlugs: string[] = [];
   const HCAAPIConfig = await GetHCAConfig();
@@ -250,6 +251,118 @@ export async function checkIfLiveBookingsIsAvailable(
   return slugs.map((slug: any) => ldbSlugs.indexOf(slug) > -1);
 }
 
+/******Reviews********/
+export async function getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
+  // revalidateTag('cacheGetIgnoreReviewsConsultantSlugs'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getIgnoreReviewsConsultantSlugs();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetIgnoreReviewsConsultantSlugs cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCIgnoreReviewsConsultantSlugs();
+  } else {
+    return await _getIgnoreReviewsConsultantSlugs();
+  }
+}
+
+// get all the ignore reviews consultants
+async function __getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
+  let noReviewSlugs: string[] = [];
+  const HCAAPIConfig = await GetHCAConfig();
+  const ldbConsultantSlugsURL =
+    HCAAPIConfig?.aPI_HCA_LDB_Consultants_UtilizesLegacy
+      ? HCAAPIConfig?.aPI_HCA_LDB_Consultants_LegacyBaseURL
+      : HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
+
+  if (ldbConsultantSlugsURL && ldbConsultantSlugsURL.length > 0) {
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(ldbConsultantSlugsURL, {
+        cache: 'force-cache',
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
+      });
+      if (res.ok) {
+        const consultantsOnLDB = await res.json();
+        //console.log('consultantsOnLDB', consultantsOnLDB);
+        consultantsOnLDB.forEach(
+          (consultant: {
+            Values: any;
+            UniqueKey: any;
+            NoReview: string | boolean;
+          }) => {
+            const slug = consultant.UniqueKey;
+            if (
+              consultant.Values?.NoReview === 'True' ||
+              consultant.Values?.NoReview === true
+            ) {
+              noReviewSlugs = noReviewSlugs.concat(slug);
+            }
+          }
+        );
+        if (noReviewSlugs.length == 0) {
+          console.warn(
+            `Warning consultant slugs list for is empty from call __getIgnoreReviewsConsultantSlugs`
+          );
+        }
+      } else {
+        // couldn't get the ldb consultant slugs
+        console.warn(
+          `Could not load consultant slugs list for pre-render from ${ldbConsultantSlugsURL}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load consultant slugs list for pre-render from ${ldbConsultantSlugsURL} failed with exception ${e}`
+      );
+    }
+  }
+  //console.log('noReviewSlugs:', noReviewSlugs);
+  return noReviewSlugs;
+}
+
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+const _getIgnoreReviewsConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log('refreshing _getIgnoreReviewsConsultantSlugs from source..');
+    const ret = await __getIgnoreReviewsConsultantSlugs();
+    return ret;
+  },
+  undefined,
+  {
+    tags: ['cacheGetIgnoreReviewsConsultantSlugs'],
+    revalidate: 3600,
+  }
+);
+
+const _getNCIgnoreReviewsConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    const ret = await __getIgnoreReviewsConsultantSlugs();
+    return ret;
+  },
+  undefined,
+  {
+    tags: ['cacheGetIgnoreReviewsConsultantSlugs'],
+    revalidate: 1,
+  }
+);
+
+// check live booking is availabe for consultant based on slug
+export async function checkIfConsultantIsNoReviews(
+  slug: string
+): Promise<boolean> {
+  const ldbSlugs = await getIgnoreReviewsConsultantSlugs();
+  return ldbSlugs.indexOf(slug) > -1;
+}
+
+/******Holidays********/
 export async function getHolidays(): Promise<string[]> {
   // revalidateTag('cacheGetHolidays'); should work - but throws - as requires Next 14 / use server
   // workaround for clearing the cache
@@ -651,7 +764,7 @@ export interface ISuggestLocationFields {
 export async function suggestLocation(
   fields: ISuggestLocationFields | any
 ): Promise<any> {
-  console.log('fields', fields);
+  //('fields', fields);
 
   let returnData: any = '';
   const HCAAPIConfig = await GetHCAConfig();
@@ -691,7 +804,7 @@ export async function suggestLocation(
       urlParamsStr = paramsArray.join('&');
       //console.log('urlParamsStr', urlParamsStr);
       locationsURL = `${locationsURL}/SuggestLocation?${urlParamsStr}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
     }
 
     try {
@@ -765,7 +878,7 @@ export async function getDistances(
     if (isLegacy) {
       // convert params to path frags locationApi/getDistances/default/default/miles/default/
       locationsURL = `${locationsURL}/getDistances/${fields['provider']}/${fields['method']}/${fields['units']}/${fields['order']}/${fields['origin']}/${fields['originType']}/${fields['destinations']}/${fields['destinationType']}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
       };
@@ -780,7 +893,7 @@ export async function getDistances(
       urlParamsStr = paramsArray.join('&');
       //console.log('urlParamsStr', urlParamsStr);
       locationsURL = `${locationsURL}/GetDistances?${urlParamsStr}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
     }
 
     try {
