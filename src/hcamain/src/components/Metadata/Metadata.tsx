@@ -116,37 +116,97 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   const pageText = Text?.value ? removeTags(Text?.value) : '';
 
-  return (
-    <Head>
-      <meta name="twitter:card" content={TwitterCard?.value?.value} />
-      <meta property="og:title" content={title} />
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content={image} />
-      <link rel="canonical" href={url} />
-      <meta name="description" content={description} />
-      <meta name="robots" content={`${follow}, ${index}`} />
-      <meta name="title" content={title} />
-      <meta name="pageTitle" content={Title?.value} />
-      <meta name="pageText" content={pageText} />
-      <meta
-        name="pageImage"
-        content={addThumbnailParameter(Image?.value?.src)}
-      />
-      <meta name="pageId" content={PageId} />
-      <meta name="templateId" content={TemplateId} />
-      <meta
-        name="hideFromWebsiteSearch"
-        content={HideFromWebsiteSearch?.value.valueOf().toString()}
-      />
-      <meta name="abstractTitle" content={AbstractTitle?.value} />
-      <meta name="abstractText" content={AbstractText?.value} />
-      <meta
-        name="abstractImage"
-        content={addThumbnailParameter(AbstractImage?.value?.src)}
-      />
-    </Head>
-  );
+  type SchemaPageType =
+    | 'Homepage'
+    | 'Condition'
+    | 'Treatment'
+    | 'Test'
+    | 'Hospital/Facility'
+    | 'Generic'
+    | 'CF'
+    | '404';
+
+  const getPageType = (templateId?: string): SchemaPageType => {
+    switch (templateId) {
+      case '0b18db9eacec4f9e99c061a20535af37':
+        return 'Homepage';
+      case 'b63580c44e8a49e4a7c80e09552fcfbc':
+        return 'Treatment';
+      case '9069a668fc8d4fcf902c55c18743aa88':
+        return 'Test';
+      case '9b38cf346e1748b6b48781931a90aa8a':
+        return 'Condition';
+      case 'ce35b67f8afb461a8ed31b9da4167731':
+        return 'Hospital/Facility';
+      case 'a32af27ae618403ab7859da2c68a0b66':
+        return 'CF';
+      default:
+        return 'Generic';
+    }
+  };
+
+  const cf: boolean = getPageType(TemplateId) === 'CF';
+  //console.log('cf', cf);
+
+  if (cf) {
+    return (
+      <Head>
+        <meta name="robots" content={`${follow}, ${index}`} />
+      </Head>
+    );
+  } else {
+    return (
+      <Head>
+        {TwitterCard?.value?.value && (
+          <meta name="twitters:card" content={TwitterCard?.value?.value} />
+        )}{' '}
+        &&
+        {title && <meta property="og:title" content={title} />} &&
+        {url && <meta property="og:url" content={url} />} &&
+        <meta property="og:type" content="website" /> &&
+        {image && <meta property="og:image" content={image} />} &&
+        {url && <link rel="canonical" href={url} />} &&
+        {description && <meta name="description" content={description} />} &&
+        {follow && index && (
+          <meta name="robots" content={`${follow}, ${index}`} />
+        )}{' '}
+        &&
+        {title && <meta name="title" content={title} />} &&
+        {Title?.value && <meta name="pageTitle" content={Title?.value} />} &&
+        {pageText && <meta name="pageText" content={pageText} />} &&
+        {Image?.value?.src && (
+          <meta
+            name="pageImage"
+            content={addThumbnailParameter(Image?.value?.src)}
+          />
+        )}{' '}
+        &&
+        {PageId && <meta name="pageId" content={PageId} />} &&
+        {TemplateId && <meta name="templateId" content={TemplateId} />} &&
+        {HideFromWebsiteSearch?.value?.valueOf().toString() && (
+          <meta
+            name="hideFromWebsiteSearch"
+            content={HideFromWebsiteSearch?.value?.valueOf().toString()}
+          />
+        )}{' '}
+        &&
+        {AbstractTitle?.value && (
+          <meta name="abstractTitle" content={AbstractTitle?.value} />
+        )}{' '}
+        &&
+        {AbstractText?.value && (
+          <meta name="abstractText" content={AbstractText?.value} />
+        )}{' '}
+        &&
+        {AbstractImage?.value?.src && (
+          <meta
+            name="abstractImage"
+            content={addThumbnailParameter(AbstractImage?.value?.src)}
+          />
+        )}
+      </Head>
+    );
+  }
 };
 
 export const getStaticProps: GetStaticComponentProps = async (
