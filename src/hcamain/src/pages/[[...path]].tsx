@@ -103,7 +103,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const revalidateTime = Number(process.env.REVALIDATE_TIME);
   const revalidate =
     !isNaN(revalidateTime) && revalidateTime > 0 ? revalidateTime : 1800;
-
+  console.log('revalidate', revalidate);
   if (process.env.NODE_ENV === 'development') {
     const props = await sitecorePagePropsFactory.create(context);
     return {
