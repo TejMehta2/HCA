@@ -99,6 +99,11 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
   // Allow pre-render errors to pass through in development, for debugging
+  // Check if REVALIDATE_TIME is defined and valid, otherwise fallback to 1800 seconds
+  const revalidateTime = Number(process.env.REVALIDATE_TIME);
+  const revalidate =
+    !isNaN(revalidateTime) && revalidateTime > 0 ? revalidateTime : 1800;
+
   if (process.env.NODE_ENV === 'development') {
     const props = await sitecorePagePropsFactory.create(context);
     return {
@@ -116,7 +121,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const props = await sitecorePagePropsFactory.create(context);
     return {
       props,
-      revalidate: 1800, // In seconds
+      revalidate: revalidate, // In seconds
       notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
     };
   } catch (error) {
