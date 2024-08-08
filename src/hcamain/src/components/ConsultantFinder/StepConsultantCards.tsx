@@ -569,7 +569,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 text: 'Consultant Finder',
                 link: `${
                   props?.fields?.BreadcrumbHomePage?.value?.href ||
-                  '/Finder/Step-Intro'
+                  '/finder/step-intro'
                 }`,
               }}
             >
@@ -582,7 +582,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <Link
                 href={`${
                   props?.fields?.BreadcrumbHomePage?.value?.href ||
-                  '/Finder/Step-Intro'
+                  '/finder/step-intro'
                 }`}
               >
                 {props?.fields?.ConsultantFinderNodeText?.value ||
