@@ -187,7 +187,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     router.push(
                       `${
                         props.fields.NextLink.value.href ||
-                        '/Finder/Step-Locations'
+                        '/finder/step-locations'
                       }?keywordId=${keywordId}&searchString=${search}${
                         isSelfPayment
                           ? `&insurer=${'selfPay'}`

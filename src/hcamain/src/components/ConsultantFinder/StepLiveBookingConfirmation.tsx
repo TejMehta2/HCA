@@ -195,7 +195,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 }
               >
                 <Button size={'large'} variation={'full-dark'}>
-                  <button onClick={() => router.push(`/Finder/Step-Intro`)}>
+                  <button onClick={() => router.push(`/finder/step-intro`)}>
                     <span>
                       {props?.fields?.NextLink?.value?.text || 'Go to Homepage'}
                     </span>

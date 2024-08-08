@@ -212,7 +212,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       router.push(
                         `${
                           props?.fields?.NextLink?.value?.href ||
-                          '/Finder/Step-Slot-Select'
+                          '/finder/step-slot-select'
                         }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                       )
                     }
