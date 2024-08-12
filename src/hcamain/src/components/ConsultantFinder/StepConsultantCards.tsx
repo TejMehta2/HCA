@@ -28,7 +28,10 @@ import Search from '@component-library/consultant-finder/Search/SearchConsultant
 import Sorting from '@component-library/components/Sorting/Sorting';
 import ConsultantFinderResults from '@component-library/consultant-finder/ConsultantFinderResults/ConsultantFinderResults';
 import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
-import { getActiveLiveDiaryConsultantSlugs } from 'lib/consultant-finder/API_HCA';
+import {
+  getActiveLiveDiaryConsultantSlugs,
+  getDoctifyPhoneNumberConsultantSlugs,
+} from 'lib/consultant-finder/API_HCA';
 import ConsultantListHeader from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeader';
 import ConsultantListHeaderFilters from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderFilters';
 import ConsultantListHeaderSearch from '@component-library/consultant-finder/ConsultantListHeader/ConsultantListHeaderSearch';
@@ -118,6 +121,7 @@ type StepProps = {
 interface ServerSideProps {
   Insurers: any;
   LiveDiaryConsultantsSlugs: string[];
+  DoctifyPhoneConsultantsSlugs: string[];
 }
 
 /**
@@ -133,10 +137,13 @@ interface ServerSideProps {
 ) => {
   const insurers = await getInsuranceData(); // was getData(insurersURL);
   const consultantsSlugsLD = await getActiveLiveDiaryConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
+  const consultantsSlugsDoctifyPhone =
+    await getDoctifyPhoneNumberConsultantSlugs(); // array of strings containing slugs no need to map was getData(liveDiariesSlugURL);
   //console.log("consultantsSlugsLD", consultantsSlugsLD);
   const returnProps: ServerSideProps = {
     Insurers: insurers,
     LiveDiaryConsultantsSlugs: consultantsSlugsLD,
+    DoctifyPhoneConsultantsSlugs: consultantsSlugsDoctifyPhone,
   };
 
   return returnProps;
@@ -170,6 +177,8 @@ export const Default = (props: StepProps): JSX.Element => {
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
+  const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
+  console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );

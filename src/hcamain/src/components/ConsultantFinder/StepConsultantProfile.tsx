@@ -23,6 +23,7 @@ import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 import {
   checkIfConsultantIsNoReviews,
+  checkIfConsultantIsDoctifyPhoneNumber,
   checkIfLiveBookingIsAvailable,
   getPhysicianStructuredData,
 } from 'lib/consultant-finder/API_HCA';
@@ -122,6 +123,7 @@ interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
   IgnoreReviewsConsultant: boolean;
+  DoctifyPhoneNumberConsultant: boolean;
   ProfileJson: any;
   PhysicianStructuredDataJson: any;
   ErrorWithProfileData: boolean;
@@ -157,6 +159,8 @@ export const getStaticProps: GetStaticComponentProps = async (
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const ignoreReviewConsultant = await checkIfConsultantIsNoReviews(slug);
+  const consultantIsDoctifyPhoneNumber =
+    await checkIfConsultantIsDoctifyPhoneNumber(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
   const returnProps: ServerSideProps = {
@@ -164,6 +168,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
     IgnoreReviewsConsultant: ignoreReviewConsultant,
+    DoctifyPhoneNumberConsultant: consultantIsDoctifyPhoneNumber,
     ProfileJson: consultantProfileJson,
     PhysicianStructuredDataJson: physicianStructuredDataJson,
   };
@@ -352,7 +357,14 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    //console.log('serverSideData?.IgnoreReviewsConsultant',serverSideData?.IgnoreReviewsConsultant);
+    console.log(
+      'serverSideData?.IgnoreReviewsConsultant',
+      serverSideData?.IgnoreReviewsConsultant
+    );
+    console.log(
+      'serverSideData?.DoctifyPhoneNumberConsultant',
+      serverSideData?.DoctifyPhoneNumberConsultant
+    );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
