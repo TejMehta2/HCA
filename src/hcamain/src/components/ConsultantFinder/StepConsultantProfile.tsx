@@ -311,8 +311,14 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
-  const shortName = `${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`;
-  const name = `${serverSideData?.ProfileJson?.title} ${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName} ${serverSideData?.ProfileJson?.suffix}`;
+  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${
+    serverSideData?.ProfileJson?.lastName || ''
+  }`;
+  const name = `${serverSideData?.ProfileJson?.title || ''} ${
+    serverSideData?.ProfileJson?.firstName || ''
+  } ${serverSideData?.ProfileJson?.lastName || ''} ${
+    serverSideData?.ProfileJson?.suffix || ''
+  }`;
   const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   const profileImage =
