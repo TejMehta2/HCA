@@ -95,7 +95,7 @@ export const Default = (props: StepProps): JSX.Element => {
             text: 'Consultant Finder',
             link: `${
               props?.fields?.BreadcrumbHomePage?.value?.href ||
-              '/Finder/Step-Intro'
+              '/finder/step-intro'
             }`,
           }}
         >
@@ -109,7 +109,7 @@ export const Default = (props: StepProps): JSX.Element => {
             <Link
               href={`${
                 props?.fields?.BreadcrumbHomePage?.value?.href ||
-                '/Finder/Step-Intro'
+                '/finder/step-intro'
               }`}
             >
               {props?.fields?.EnquireFormConfirmationBreadcrumbsHomePage
@@ -146,7 +146,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   onClick={() =>
                     router.push(
                       props?.fields?.NextLink?.value.href ||
-                        `/Finder/Step-Intro`
+                        `/finder/step-intro`
                     )
                   }
                 >

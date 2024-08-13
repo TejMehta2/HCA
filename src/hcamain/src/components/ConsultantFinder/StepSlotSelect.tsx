@@ -143,7 +143,7 @@ export const Default = (props: StepProps): JSX.Element => {
     // if selected location and appointment type is missing then redirect to appointment type
     if (selectedLocation === '' && selectedTypeOfAppointment === '') {
       router.push(
-        `/Finder/Step-Terms-And-Conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+        `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

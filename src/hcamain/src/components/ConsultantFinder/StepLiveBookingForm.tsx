@@ -532,7 +532,7 @@ export const Default = (props: StepProps): JSX.Element => {
           router.push(
             `${
               props?.fields?.NextLink?.value?.href ||
-              '/Finder/Step-Live-Booking-Confirmation'
+              '/finder/step-live-booking-confirmation'
             }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
           );
         }
@@ -692,7 +692,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     router.push(
                       `${
                         props?.fields?.LiveBookingFormStepAppointment?.value
-                          ?.href || '/Finder/Step-Appointment-Type'
+                          ?.href || '/finder/step-appointment-type'
                       }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
                     )
                   }
@@ -737,7 +737,7 @@ export const Default = (props: StepProps): JSX.Element => {
                           router.push(
                             `${
                               props?.fields?.LiveBookingFormStepSlotSelect
-                                ?.value?.href || '/Finder/Step-Slot-Select'
+                                ?.value?.href || '/finder/step-slot-select'
                             }?slug=${slug}&gmcNumber=${gmcNumber}&isFollowOnAppointment=${selectedTypeOfAppointment}&reviewsTotal=${reviewsTotal}`
                           )
                         }
@@ -791,11 +791,11 @@ export const Default = (props: StepProps): JSX.Element => {
                     isMobile={true}
                     liveBookingFormStepLocationSelect={
                       props?.fields?.LiveBookingFormStepLocationSelect?.value
-                        ?.href || '/Finder/Step-Location-Select'
+                        ?.href || '/finder/step-location-select'
                     }
                     liveBookingFormStepSlotSelect={
                       props?.fields?.LiveBookingFormStepSlotSelect?.value
-                        ?.href || '/Finder/Step-Slot-Select'
+                        ?.href || '/finder/step-slot-select'
                     }
                   />
                 </Container>
@@ -1486,11 +1486,11 @@ export const Default = (props: StepProps): JSX.Element => {
                   isFollowUpAppointment={selectedTypeOfAppointment}
                   liveBookingFormStepLocationSelect={
                     props?.fields?.LiveBookingFormStepLocationSelect?.value
-                      ?.href || '/Finder/Step-Location-Select'
+                      ?.href || '/finder/step-location-select'
                   }
                   liveBookingFormStepSlotSelect={
                     props?.fields?.LiveBookingFormStepSlotSelect?.value?.href ||
-                    '/Finder/Step-Slot-Select'
+                    '/finder/step-slot-select'
                   }
                 />
                 <NeedHelp

@@ -420,7 +420,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   text: 'Consultant Finder',
                   link: `${
                     props?.fields?.BreadcrumbHomePage?.value?.href ||
-                    '/Finder/Step-Intro'
+                    '/finder/step-intro'
                   }`,
                 }}
               >
@@ -434,7 +434,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Link
                     href={`${
                       props?.fields?.BreadcrumbHomePage?.value?.href ||
-                      '/Finder/Step-Intro'
+                      '/finder/step-intro'
                     }`}
                   >
                     {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
@@ -770,7 +770,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* iframe with patient and peer reviews */}
                 {!serverSideData?.IgnoreReviewsConsultant && (
                   <iframe
-                    src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+                    src={`/finder/frame-reviews?slug=${serverSideData?.Slug}`}
                     width="100%"
                     height="700px"
                     id="specialistReviews"
@@ -789,7 +789,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData
+                            href={`/finder/step-terms-and-conditions?slug=${serverSideData
                               ?.ProfileJson
                               .slug}&gmcNumber=${gmcNumber}&reviewsTotal=${
                               serverSideData?.ProfileJson?.review
@@ -908,7 +908,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   contentVariation="full-width"
                 >
                   <Link
-                    href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
                   >
                     <span>
                       {props.fields.BookOnlineButtonLink.value.text ||
