@@ -139,7 +139,7 @@ export async function getSpecialistProfileData(
             // or keep the legacy Sitecore GUID url?
             // legacy  requires CMA look up stored in Excel in the Media library
             if (hcaConfig.aPI_HCA_CMAs_UseDoctifyData) {
-              const replaceCMA = `/Finder/CMADisclosures/${slug}?CmaContentId=`;
+              const replaceCMA = `/finder/CMADisclosures/${slug}?CmaContentId=`;
               if (docitfyData.about) {
                 docitfyData.about = (docitfyData.about as string).replace(
                   `https://www.hcahealthcare.co.uk/`,
