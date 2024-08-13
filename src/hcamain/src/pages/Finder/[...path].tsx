@@ -80,7 +80,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (context.params) {
     // e.g. context.params { path: [ 'Step-Locationss' ] }
     context.params.requestPath = context.params.path;
-    context.params.path = [`Finder/${context.params.path}/`];
+    context.params.path = [`finder/${context.params.path}/`];
   }
 
   const props = await sitecorePagePropsFactory.create(context);
