@@ -33,6 +33,7 @@ import iconDiamondOutline from './assets-dist/Diamond Outline.svg';
 import iconDownload from './assets-dist/Download.svg';
 import iconEdit from './assets-dist/Edit.svg';
 import iconEmail from './assets-dist/Email.svg';
+import iconExternal from './assets-dist/External.svg';
 import iconFacebook from './assets-dist/Facebook.svg';
 import iconFilterCircle from './assets-dist/Filter Circle.svg';
 import iconFlexible from './assets-dist/Flexible.svg';
@@ -110,6 +111,7 @@ export type IconName =
   | 'iconDownload'
   | 'iconEdit'
   | 'iconEmail'
+  | 'iconExternal'
   | 'iconFacebook'
   | 'iconFilterCircle'
   | 'iconFlexible'
@@ -187,6 +189,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconDownload', iconDownload],
   ['iconEdit', iconEdit],
   ['iconEmail', iconEmail],
+  ['iconExternal', iconExternal],
   ['iconFacebook', iconFacebook],
   ['iconFilterCircle', iconFilterCircle],
   ['iconFlexible', iconFlexible],
