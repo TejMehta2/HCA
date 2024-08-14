@@ -1,0 +1,26 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background, #{$teal-100});
+  color: var(--text, #{$navy-blue-100});
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-12;
+}
+
+.heading {
+  margin-bottom: $spacing-7;
+}
+
+.grid {
+  @include responsive-grid;
+
+  > * {
+    @include responsive-grid-span(3, 2, 2, 2);
+  }
+}
