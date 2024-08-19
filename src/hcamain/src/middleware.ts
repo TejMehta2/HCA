@@ -12,7 +12,14 @@ export default async function (req: NextRequest, ev: NextFetchEvent) {
   if (redirectResponse) return redirectResponse;
   const geolocationResponse = geolocationMiddleware(req);
   if (geolocationResponse) return geolocationResponse;
-  return middleware(req, ev);
+
+  // test for exclusions e.g. finder and payments
+  const url = req.nextUrl.clone();
+  const pathname = url.pathname.toLowerCase();
+  //console.log('pathname', pathname);
+  if (pathname.startsWith('/finder') || pathname.startsWith('/payment'))
+    return undefined;
+  else return middleware(req, ev);
 }
 
 export const config = {
@@ -28,6 +35,6 @@ export const config = {
   matcher: [
     '/',
     /*exclude Finder and sublevels as these are delegated to their own pages*/
-    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|finder/|webhooks/sitecore/|api-layer/|referrer/|PaymentForm|payment/status|paymentform/).*)',
+    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|webhooks/sitecore/|api-layer/|referrer/).*)',
   ],
 };
