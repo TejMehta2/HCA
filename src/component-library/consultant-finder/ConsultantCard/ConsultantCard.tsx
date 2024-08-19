@@ -49,6 +49,8 @@ const ConsultantCard = (props: ConsultantCardProps): JSX.Element => {
           practices={props.hospitals || []}
           title={props.callToBookModalTitle}
           defaultNumber={props.phoneNumberHref}
+          doctifyPhoneSlugs={props.doctifyPhoneSlugs || []}
+          slug={props.slug}
         ></MultiplePhoneNumbers>
       </Modals>
       <div className={styles['main-content']}>

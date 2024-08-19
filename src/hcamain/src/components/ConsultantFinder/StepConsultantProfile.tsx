@@ -383,6 +383,10 @@ export const Default = (props: StepProps): JSX.Element => {
                   'Appointments at'
                 }
                 defaultNumber={props?.fields?.PhoneNumberHref?.value}
+                isDoctifyPhoneNumberConsultant={
+                  serverSideData?.DoctifyPhoneNumberConsultant || false
+                }
+                slug={serverSideData?.ProfileJson?.slug}
               ></MultiplePhoneNumbers>
             </Modals>
             <Head>
