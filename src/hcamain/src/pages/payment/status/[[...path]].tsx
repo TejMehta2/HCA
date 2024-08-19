@@ -32,27 +32,22 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
     layoutData.sitecore.context.renderingType === RenderingType.Component;
 
   return (
-    <div>
-      hello payment
-      <ComponentPropsContext value={componentProps}>
-        <SitecoreContext
-          componentFactory={componentBuilder.getComponentFactory({ isEditing })}
-          layoutData={layoutData}
-        >
-          {/*
+    <ComponentPropsContext value={componentProps}>
+      <SitecoreContext
+        componentFactory={componentBuilder.getComponentFactory({ isEditing })}
+        layoutData={layoutData}
+      >
+        {/*
           Sitecore Pages supports component rendering to avoid refreshing the entire page during component editing.
           If you are using Experience Editor only, this logic can be removed, Layout can be left.
         */}
-          {isComponentRendering ? (
-            <EditingComponentPlaceholder
-              rendering={layoutData.sitecore.route}
-            />
-          ) : (
-            <Layout layoutData={layoutData} headLinks={headLinks} />
-          )}
-        </SitecoreContext>
-      </ComponentPropsContext>
-    </div>
+        {isComponentRendering ? (
+          <EditingComponentPlaceholder rendering={layoutData.sitecore.route} />
+        ) : (
+          <Layout layoutData={layoutData} headLinks={headLinks} />
+        )}
+      </SitecoreContext>
+    </ComponentPropsContext>
   );
 };
 

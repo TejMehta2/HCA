@@ -6,21 +6,17 @@ import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
-  console.log('in middleware at top level');
   const lowercaseRespone = smallcaseurlMiddleware(req);
   if (lowercaseRespone) return lowercaseRespone;
-  console.log('in middleware at top level 1');
   const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
-  console.log('in middleware at top level 2');
   const geolocationResponse = geolocationMiddleware(req);
   if (geolocationResponse) return geolocationResponse;
-  console.log('in middleware at top level 3');
 
-  console.log('req.url', req.url);
+  // test for exclusions e.g. finder and payments
   const url = req.nextUrl.clone();
   const pathname = url.pathname.toLowerCase();
-  console.log('pathname', pathname);
+  //console.log('pathname', pathname);
   if (pathname.startsWith('/finder') || pathname.startsWith('/payment'))
     return undefined;
   else return middleware(req, ev);

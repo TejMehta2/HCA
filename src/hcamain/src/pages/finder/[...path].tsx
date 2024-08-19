@@ -46,7 +46,7 @@ const SitecorePage = ({
     layoutData.sitecore.context.renderingType === RenderingType.Component;
   return (
     <div>
-      hello finder level sub-page world
+      {/* hello finder level sub-page world */}
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}
