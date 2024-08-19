@@ -4,11 +4,5 @@
       "uat": false,
       "prod": false
     }
-  },
-  "crons": [
-    {
-      "path": "/api/finderAPI/Consultants",
-      "schedule": "*/15 * * * *"
-    }
-  ]
+  }
 }
