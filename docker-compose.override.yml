@@ -9,7 +9,9 @@ services:
         PARENT_IMAGE: ${NODEJS_PARENT_IMAGE}
         NODEJS_VERSION: ${NODEJS_VERSION}
     deploy:
-      replicas: 0
+      resources:
+        limits:
+          memory: 16384M
 
   rendering:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering:${VERSION:-latest}
@@ -19,6 +21,10 @@ services:
       args:
         PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
         PROJECT_PATH: ${PROJECT_PATH}
+    deploy:
+      resources:
+        limits:
+          memory: 16384M
     volumes:
       - .:${PROJECT_PATH}      
     environment:
@@ -96,6 +102,10 @@ services:
       args:
         PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
         TOOLS_IMAGE: ${TOOLS_IMAGE}
+    deploy:
+      resources:
+        limits:
+          memory: 16384M
     volumes:
       - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
       - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
