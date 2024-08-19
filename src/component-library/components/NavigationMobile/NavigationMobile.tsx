@@ -216,17 +216,21 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                       }
                                     >
                                       <TextLink full={true}>
-                                        <button
-                                          data-navigation-type="mobileSubNavClick"
-                                          onClick={() =>
-                                            setSecondaryChoice(secondaryIndex)
-                                          }
-                                        >
-                                          <span>{secondary.heading}</span>
-                                          <Icons
-                                            iconName={'iconChevronRight'}
-                                          />
-                                        </button>
+                                        {secondary.variation === 'simple' ? (
+                                          <>{secondary.mobileCta}</>
+                                        ) : (
+                                          <button
+                                            data-navigation-type="mobileSubNavClick"
+                                            onClick={() =>
+                                              setSecondaryChoice(secondaryIndex)
+                                            }
+                                          >
+                                            <span>{secondary.heading}</span>
+                                            <Icons
+                                              iconName={'iconChevronRight'}
+                                            />
+                                          </button>
+                                        )}
                                       </TextLink>
                                     </li>
                                     <li

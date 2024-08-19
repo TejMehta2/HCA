@@ -183,7 +183,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Link
                     href={`${
                       props?.fields?.NextLink?.value?.href ||
-                      '/Finder/Step-Appointment-Type'
+                      '/finder/step-appointment-type'
                     }?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
                   >
                     <span>

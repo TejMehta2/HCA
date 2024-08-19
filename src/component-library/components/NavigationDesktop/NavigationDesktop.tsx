@@ -15,6 +15,7 @@ import {
 import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Button from '../../core-components/Button/Button';
+import Container from '../../foundation/Containers/Container';
 
 const NavigationDesktop = (props: NavigationProps): JSX.Element => {
   const {
@@ -99,6 +100,43 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                 </Button>
               </div>
             );
+          case 'full':
+            return (
+              <div
+                data-navigation-type={'NavigationTextCTADesktop'}
+                className={styles[`span-${12}`]}
+              >
+                <Text variation={'body-bold-extra-large'}>{heading}</Text>
+                <ul
+                  className={styles.full}
+                  data-navigation-type={'navigationLinkClick'}
+                >
+                  {links?.map((link, index) => <li key={index}>{link}</li>)}
+                </ul>
+                <Button size={'large'} variation={'full'}>
+                  {cta}
+                </Button>
+              </div>
+            );
+          case 'simple':
+            return (
+              <>
+                <div
+                  data-navigation-type={'NavigationCTADesktop'}
+                  className={[styles[`span-${3}`], ''].join(' ')}
+                >
+                  <Text tag="p" variation={'body-medium-extra-large'}>
+                    {heading}
+                  </Text>
+                  <Container marginTop="spacing-4">
+                    <Text variation="body-large">{description}</Text>
+                  </Container>{' '}
+                  <Container marginTop="spacing-6">
+                    <TextButton>{cta}</TextButton>
+                  </Container>
+                </div>
+              </>
+            );
           default:
             return <></>;
         }
@@ -177,6 +215,8 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
             />
           </div>
         );
+      case 'Spacer':
+        return <div className={styles[`span-${1}`]} />;
     }
   };
 

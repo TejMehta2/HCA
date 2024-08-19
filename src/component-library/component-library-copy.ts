@@ -14,6 +14,7 @@ const performCopy = () => {
     'core-components',
     'yext',
     'site-components',
+    'careers',
     'foundation',
     'globals',
     'assets',

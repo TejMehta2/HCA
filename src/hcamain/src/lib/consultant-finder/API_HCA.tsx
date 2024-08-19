@@ -362,6 +362,122 @@ export async function checkIfConsultantIsNoReviews(
   return ldbSlugs.indexOf(slug) > -1;
 }
 
+/******DoctifyPhoneNumbers********/
+//TODO Refactor these calls use single data source
+export async function getDoctifyPhoneNumberConsultantSlugs(): Promise<
+  string[]
+> {
+  // revalidateTag('cacheGetDoctifyPhoneNumberConsultantSlugs'); should work - but throws - as requires Next 14 / use server
+  // workaround for clearing the cache
+  if (revalidate.noCache()) {
+    // unstable_cache not supported from getStaticPaths
+    return await __getDoctifyPhoneNumberConsultantSlugs();
+  } else if (revalidate.now()) {
+    console.log(
+      `purging cacheGetDoctifyPhoneNumberConsultantSlugs cache revalidate flag:${revalidate.now()}`
+    );
+    return await _getNCDoctifyPhoneNumberConsultantSlugs();
+  } else {
+    return await _getDoctifyPhoneNumberConsultantSlugs();
+  }
+}
+
+// get all the ignore reviews consultants
+async function __getDoctifyPhoneNumberConsultantSlugs(): Promise<string[]> {
+  let doctifyPhoneNumberSlugs: string[] = [];
+  const HCAAPIConfig = await GetHCAConfig();
+  const ldbConsultantSlugsURL =
+    HCAAPIConfig?.aPI_HCA_LDB_Consultants_UtilizesLegacy
+      ? HCAAPIConfig?.aPI_HCA_LDB_Consultants_LegacyBaseURL
+      : HCAAPIConfig?.aPI_HCA_LDB_Consultants_BaseURL;
+
+  if (ldbConsultantSlugsURL && ldbConsultantSlugsURL.length > 0) {
+    try {
+      // need to cache these requests so we don't make hundreds of them
+      // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
+      const res = await fetch(ldbConsultantSlugsURL, {
+        cache: 'force-cache',
+        next: {
+          revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
+        },
+      });
+      if (res.ok) {
+        const consultantsOnLDB = await res.json();
+        //console.log('consultantsOnLDB', consultantsOnLDB);
+        consultantsOnLDB.forEach(
+          (consultant: {
+            Values: any;
+            UniqueKey: any;
+            NoDoctifyPhoneNumber: string | boolean;
+          }) => {
+            const slug = consultant.UniqueKey;
+            if (
+              consultant.Values?.DoctifyPhone === 'True' ||
+              consultant.Values?.DoctifyPhone === true
+            ) {
+              doctifyPhoneNumberSlugs = doctifyPhoneNumberSlugs.concat(slug);
+            }
+          }
+        );
+        if (doctifyPhoneNumberSlugs.length == 0) {
+          console.warn(
+            `Warning consultant slugs list for is empty from call __getDoctifyPhoneNumberConsultantSlugs`
+          );
+        }
+      } else {
+        // couldn't get the ldb consultant slugs
+        console.warn(
+          `Could not load consultant slugs list for pre-render from ${ldbConsultantSlugsURL}`
+        );
+      }
+    } catch (e) {
+      console.warn(
+        `Could not load consultant slugs list for pre-render from ${ldbConsultantSlugsURL} failed with exception ${e}`
+      );
+    }
+  }
+  //console.log('doctifyPhoneNumberSlugs:', doctifyPhoneNumberSlugs);
+  return doctifyPhoneNumberSlugs;
+}
+
+// front our fairly expensive and frequently called server-side API call with the unstable cache
+// as the Next fetch API cache only works with the React graph and we are not within that at this point
+// based on https://blog.logrocket.com/caching-next-js-unstable-cache/
+const _getDoctifyPhoneNumberConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    console.log(
+      'refreshing _getDoctifyPhoneNumberConsultantSlugs from source..'
+    );
+    const ret = await __getDoctifyPhoneNumberConsultantSlugs();
+    return ret;
+  },
+  undefined,
+  {
+    tags: ['cacheGetDoctifyPhoneNumberConsultantSlugs'],
+    revalidate: 3600,
+  }
+);
+
+const _getNCDoctifyPhoneNumberConsultantSlugs = unstable_cache(
+  async (): Promise<string[]> => {
+    const ret = await __getDoctifyPhoneNumberConsultantSlugs();
+    return ret;
+  },
+  undefined,
+  {
+    tags: ['cacheGetDoctifyPhoneNumberConsultantSlugs'],
+    revalidate: 1,
+  }
+);
+
+// check live booking is availabe for consultant based on slug
+export async function checkIfConsultantIsDoctifyPhoneNumber(
+  slug: string
+): Promise<boolean> {
+  const ldbSlugs = await getDoctifyPhoneNumberConsultantSlugs();
+  return ldbSlugs.indexOf(slug) > -1;
+}
+
 /******Holidays********/
 export async function getHolidays(): Promise<string[]> {
   // revalidateTag('cacheGetHolidays'); should work - but throws - as requires Next 14 / use server

@@ -1,0 +1,43 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background, #{$navy-blue-90});
+  color: var(--text, #{$white});
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-12;
+}
+
+.grid {
+  @include responsive-grid;
+
+  > * {
+    @include responsive-grid-span(6, 6, 6, 6);
+  }
+
+  row-gap: $spacing-6;
+}
+
+.item {
+  display: grid;
+  gap: $spacing-6;
+  grid-template-columns: 1fr;
+  @include media(screen-m) {
+    grid-template-columns: px-to-rem(133) 1fr;
+  }
+}
+
+.logo {
+  max-width: px-to-rem(133);
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}

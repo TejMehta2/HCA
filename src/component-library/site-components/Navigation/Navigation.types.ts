@@ -6,11 +6,18 @@ export interface NavigationEyebrow {
 }
 
 export interface TabContent {
-  variation?: 'single-narrow' | 'single-wide' | 'double' | 'single';
+  variation?:
+    | 'single-narrow'
+    | 'single-wide'
+    | 'double'
+    | 'single'
+    | 'full'
+    | 'simple';
   template:
     | 'Navigation Content Block'
     | 'Main Navigation Links List'
-    | 'Navigation Blog Post Card';
+    | 'Navigation Blog Post Card'
+    | 'Spacer';
   heading?: JSX.Element;
   description?: JSX.Element;
   date?: JSX.Element;

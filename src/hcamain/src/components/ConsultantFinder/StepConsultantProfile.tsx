@@ -23,6 +23,7 @@ import Reviews from '@component-library/consultant-finder/Reviews/Reviews';
 import InfoBox from '@component-library/consultant-finder/InfoBox/InfoBox';
 import {
   checkIfConsultantIsNoReviews,
+  checkIfConsultantIsDoctifyPhoneNumber,
   checkIfLiveBookingIsAvailable,
   getPhysicianStructuredData,
 } from 'lib/consultant-finder/API_HCA';
@@ -122,6 +123,7 @@ interface ServerSideProps {
   Slug: string;
   IsLiveDiaryConsultant: boolean;
   IgnoreReviewsConsultant: boolean;
+  DoctifyPhoneNumberConsultant: boolean;
   ProfileJson: any;
   PhysicianStructuredDataJson: any;
   ErrorWithProfileData: boolean;
@@ -157,6 +159,8 @@ export const getStaticProps: GetStaticComponentProps = async (
   );
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const ignoreReviewConsultant = await checkIfConsultantIsNoReviews(slug);
+  const consultantIsDoctifyPhoneNumber =
+    await checkIfConsultantIsDoctifyPhoneNumber(slug);
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
   const returnProps: ServerSideProps = {
@@ -164,6 +168,7 @@ export const getStaticProps: GetStaticComponentProps = async (
     ErrorWithProfileData: errorWithProfileData,
     IsLiveDiaryConsultant: isLiveDiaryConsultant,
     IgnoreReviewsConsultant: ignoreReviewConsultant,
+    DoctifyPhoneNumberConsultant: consultantIsDoctifyPhoneNumber,
     ProfileJson: consultantProfileJson,
     PhysicianStructuredDataJson: physicianStructuredDataJson,
   };
@@ -311,8 +316,14 @@ export const Default = (props: StepProps): JSX.Element => {
   );
 
   const id = props.params.RenderingIdentifier;
-  const shortName = `${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName}`;
-  const name = `${serverSideData?.ProfileJson?.title} ${serverSideData?.ProfileJson?.firstName} ${serverSideData?.ProfileJson?.lastName} ${serverSideData?.ProfileJson?.suffix}`;
+  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${
+    serverSideData?.ProfileJson?.lastName || ''
+  }`;
+  const name = `${serverSideData?.ProfileJson?.title || ''} ${
+    serverSideData?.ProfileJson?.firstName || ''
+  } ${serverSideData?.ProfileJson?.lastName || ''} ${
+    serverSideData?.ProfileJson?.suffix || ''
+  }`;
   const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   const profileImage =
@@ -352,7 +363,14 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    //console.log('serverSideData?.IgnoreReviewsConsultant',serverSideData?.IgnoreReviewsConsultant);
+    console.log(
+      'serverSideData?.IgnoreReviewsConsultant',
+      serverSideData?.IgnoreReviewsConsultant
+    );
+    console.log(
+      'serverSideData?.DoctifyPhoneNumberConsultant',
+      serverSideData?.DoctifyPhoneNumberConsultant
+    );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
@@ -414,7 +432,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   text: 'Consultant Finder',
                   link: `${
                     props?.fields?.BreadcrumbHomePage?.value?.href ||
-                    '/Finder/Step-Intro'
+                    '/finder/step-intro'
                   }`,
                 }}
               >
@@ -428,7 +446,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   <Link
                     href={`${
                       props?.fields?.BreadcrumbHomePage?.value?.href ||
-                      '/Finder/Step-Intro'
+                      '/finder/step-intro'
                     }`}
                   >
                     {props?.fields?.Breadcrumb?.value || 'Consultant Finder'}
@@ -764,7 +782,7 @@ export const Default = (props: StepProps): JSX.Element => {
                 {/* iframe with patient and peer reviews */}
                 {!serverSideData?.IgnoreReviewsConsultant && (
                   <iframe
-                    src={`/Finder/Frame-Reviews?slug=${serverSideData?.Slug}`}
+                    src={`/finder/frame-reviews?slug=${serverSideData?.Slug}`}
                     width="100%"
                     height="700px"
                     id="specialistReviews"
@@ -783,7 +801,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData
+                            href={`/finder/step-terms-and-conditions?slug=${serverSideData
                               ?.ProfileJson
                               .slug}&gmcNumber=${gmcNumber}&reviewsTotal=${
                               serverSideData?.ProfileJson?.review
@@ -902,7 +920,7 @@ export const Default = (props: StepProps): JSX.Element => {
                   contentVariation="full-width"
                 >
                   <Link
-                    href={`/Finder/Step-Terms-And-Conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
+                    href={`/finder/step-terms-and-conditions?slug=${serverSideData?.ProfileJson.slug}&gmcNumber=${gmcNumber}`}
                   >
                     <span>
                       {props.fields.BookOnlineButtonLink.value.text ||

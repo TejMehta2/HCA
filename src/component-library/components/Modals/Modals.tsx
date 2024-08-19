@@ -31,7 +31,7 @@ const Modals = (
     handle,
   } = styles;
 
-  const { t } = useI18n();
+  const { t } = useI18n() || { t: (args: unknown) => args };
 
   const Overlay = () => (
     <>
