@@ -52,7 +52,7 @@ const SitecorePage = ({
 
   return (
     <div>
-      {/* hello finder profile sub-page world */}
+      hello finder profile sub-page world
       <ComponentPropsContext value={componentProps}>
         <SitecoreContext
           componentFactory={componentBuilder.getComponentFactory({ isEditing })}

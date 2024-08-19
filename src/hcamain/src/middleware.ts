@@ -6,13 +6,24 @@ import redirectMiddleware from 'lib/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
+  console.log('in middleware at top level');
   const lowercaseRespone = smallcaseurlMiddleware(req);
   if (lowercaseRespone) return lowercaseRespone;
+  console.log('in middleware at top level 1');
   const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
+  console.log('in middleware at top level 2');
   const geolocationResponse = geolocationMiddleware(req);
   if (geolocationResponse) return geolocationResponse;
-  return middleware(req, ev);
+  console.log('in middleware at top level 3');
+
+  console.log('req.url', req.url);
+  const url = req.nextUrl.clone();
+  const pathname = url.pathname.toLowerCase();
+  console.log('pathname', pathname);
+  if (pathname.startsWith('/finder') || pathname.startsWith('/payment'))
+    return undefined;
+  else return middleware(req, ev);
 }
 
 export const config = {
@@ -28,6 +39,6 @@ export const config = {
   matcher: [
     '/',
     /*exclude Finder and sublevels as these are delegated to their own pages*/
-    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|finder/|webhooks/sitecore/|api-layer/|referrer/|PaymentForm|payment/status|paymentform/).*)',
+    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|webhooks/sitecore/|api-layer/|referrer/).*)',
   ],
 };
