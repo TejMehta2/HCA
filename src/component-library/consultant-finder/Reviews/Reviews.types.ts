@@ -14,4 +14,5 @@ export interface ReviewsProps {
   doctifyLogo?: ReactNode | JSX.Element;
   hasDoctifyBranding?: boolean;
   reviewsRef?: any;
+  ignoreReviewsConsultant?: boolean;
 }

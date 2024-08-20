@@ -23,9 +23,9 @@ const MultiplePhoneNumbers = (
     shouldRenderPracticePhones = props.isDoctifyPhoneNumberConsultant;
   }
 
-  console.log('slug', props.slug);
-  console.log('shouldRenderPracticePhones', shouldRenderPracticePhones);
-  console.log('default number', props.defaultNumber);
+  // console.log('slug', props.slug);
+  // console.log('shouldRenderPracticePhones', shouldRenderPracticePhones);
+  // console.log('default number', props.defaultNumber);
 
   return (
     <div

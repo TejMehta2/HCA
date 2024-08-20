@@ -7,4 +7,6 @@ export interface OverallRatingProps {
   overallExperienceLabel: string;
   personalCareLabel: string;
   explanationLabel: string;
+  ignoreReviewsConsultant: boolean;
+  noReviewsMsg: string;
 }
