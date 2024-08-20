@@ -157,7 +157,7 @@ export default async function handler(
             ? `${mediaURLBase}/${project}${mediaFileName}`
             : `${mediaURLBase}/${project}${mediaFileName}`.toLowerCase();
 
-          console.log('mediaURL',mediaURL);
+          //console.log('mediaURL',mediaURL);
           let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
             //      https://edge.sitecorecloud.io/hcainternat0fd8-hcadigital-uat-34f6/media/Project/HCA/HCA-Main/Lookup-API/Finder---Lookup-API-Data.xlsx
