@@ -148,10 +148,10 @@ export default async function handler(
             ? config.aPI_Lookup_API_Media_LegacyBaseURL
             : config.aPI_Lookup_API_Media_BaseURL;
 
-          //e.g. Finder---Lookup-API-Data.xlsx
+          //e.g. Finder---lookup-api-data.xlsx
           const mediaFileName = config.aPI_Lookup_API_Media_UtilizesLegacy
             ? '%20-%20Lookup%20API%20Data'
-            : '---Lookup-API-Data.xlsx';
+            : '---lookup-api-data.xlsx'; // lower-cased by pipeline
 
           let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
