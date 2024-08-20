@@ -1,0 +1,33 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  color: var(--text);
+  background: var(--background);
+}
+
+.container {
+  @include responsive-grid;
+  @include responsive-container;
+
+  row-gap: px-to-rem(36);
+
+  & > * {
+    @include responsive-grid-start($breakpoint-l: 3);
+    @include responsive-grid-span($breakpoint-l: 8);
+  }
+}
+
+.bullets {
+  display: flex;
+  gap: $spacing-4 $spacing-5;
+  flex-wrap: wrap;
+
+  > * {
+    display: flex;
+    gap: px-to-rem(8);
+  }
+  @include media(screen-l) {
+    gap: $spacing-5;
+  }
+}
