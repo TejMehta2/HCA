@@ -2,7 +2,9 @@
 @use '../../utilities/index.module' as *;
 
 .button {
+  min-height: $spacing-9;
   display: flex;
+  align-items: center;
   gap: 0 px-to-rem(16);
   color: $navy-blue-100;
   background-color: $white;
@@ -15,6 +17,6 @@
   @include apply-body-medium-large;
 
   @include media(screen-m) {
-    padding: px-to-rem(24) px-to-rem(32);
+    padding: px-to-rem(16) px-to-rem(32);
   }
 }
