@@ -6,16 +6,16 @@ import Script from 'next/script';
 const Scripts = (): JSX.Element => {
   const gtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
   console.log('process.env', process.env.NODE_ENV);
-  console.log('DISABLE_COOKIES', process.env.DISABLE_COOKIES);
-  console.log('process.env.REVALIDATE_TIME', process.env.REVALIDATE_TIME);
+  console.log('DISABLE_COOKIES', process.env.NEXT_PUBLIC_DISABLE_COOKIES);
+
   return (
     <>
       <BYOC />
       <CdpPageView />
       {/* disable cookies for local, dev and uat */}
       {process.env.NODE_ENV !== 'development' &&
-        (!process.env.DISABLE_COOKIES ||
-          process.env.DISABLE_COOKIES === 'false') && (
+        (!process.env.NEXT_PUBLIC_DISABLE_COOKIES ||
+          process.env.NEXT_PUBLIC_DISABLE_COOKIES === 'false') && (
           <Script
             id="gtm-snippet"
             strategy="afterInteractive"
