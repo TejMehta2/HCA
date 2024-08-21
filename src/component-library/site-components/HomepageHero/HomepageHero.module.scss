@@ -1,6 +1,8 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+// Note: .wrapper and .image are re-used in careers/CareersHomepageHero/CareersHomepageHero.tsx
+
 .wrapper {
   --image-size: #{px-to-rem(566)};
 

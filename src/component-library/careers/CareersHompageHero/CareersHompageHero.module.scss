@@ -1,0 +1,40 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+/* Text content */
+.container {
+  @include responsive-container;
+  @include responsive-grid;
+
+  row-gap: px-to-rem(4);
+  @include media(screen-l) {
+    row-gap: px-to-rem(16);
+    width: 100%;
+  }
+
+  .title {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+  }
+
+  .search {
+    @include responsive-grid-span($breakpoint-l: 7);
+  }
+
+  .filters {
+    position: relative;
+    @include responsive-grid-span($breakpoint-l: 7);
+
+    display: grid;
+    @include media(screen-l) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    gap: px-to-rem(4) px-to-rem(8);
+  }
+
+  .cta {
+    display: block;
+    @include responsive-grid-span($breakpoint-l: 7);
+    @include responsive-grid-start(1);
+  }
+}

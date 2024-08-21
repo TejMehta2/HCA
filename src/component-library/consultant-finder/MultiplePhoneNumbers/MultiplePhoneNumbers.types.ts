@@ -6,4 +6,7 @@ export interface MultiplePhoneNumbersProps {
   practices: any;
   title: string;
   defaultNumber: string;
+  doctifyPhoneSlugs?: string[];
+  slug: string;
+  isDoctifyPhoneNumberConsultant?: boolean;
 }

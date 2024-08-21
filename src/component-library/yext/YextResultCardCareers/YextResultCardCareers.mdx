@@ -1,13 +1,13 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks';
-import * as YextResultCardArticlesStories from './YextResultCardArticles.stories';
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as YextResultCardCareersStories from './YextResultCardCareers.stories'
 
-<Meta of={YextResultCardArticlesStories} />
+<Meta of={YextResultCardCareersStories} />
 
-# YextResultCardArticles
+# YextResultCardCareers
 
 ## Description
 
-The YextResultCardArticles component is one of several custom results `CardComponent` used to display Yext search results.
+The YextResultCardCareers component is one of several custom results `CardComponent` used to display Yext search results.
 
 The main component is a display component, but the directory also contains an adaptor component, similar to the Sitecore integration components.
 
@@ -18,7 +18,7 @@ It should be wrapped in a theme.
 The visual card element can be re-used for other purposes as shown:
 
 ```tsx
-<YextResultCardArticles
+<YextResultCardCareers
   image={
     <Image
       src="/placeholders/couple-on-bench.jpeg"
@@ -48,7 +48,7 @@ The visual card element can be re-used for other purposes as shown:
         <Icons iconName="iconEmail"></Icons>Email us
       </button>
   }>
-</YextResultCardArticles>
+</YextResultCardCareers>
 ```
 
 ### Adaptor component
@@ -61,12 +61,12 @@ Its purpose is to integrate the Yext response data with our re-usable visual com
 <YextProvider>
   <UniversalResults
     verticalConfigMap={{
-      articles: {
-        label: 'Articles',
-        CardComponent: YextResultCardArticlesAdaptor,
+      careers: {
+        label: 'Careers',
+        CardComponent: YextResultCardCareersAdaptor,
       },
     }}
   />
-  <VerticalResults CardComponent={YextResultCardArticlesAdaptor} />
+  <VerticalResults CardComponent={YextResultCardCareersAdaptor} />
 </YextProvider>
 ```

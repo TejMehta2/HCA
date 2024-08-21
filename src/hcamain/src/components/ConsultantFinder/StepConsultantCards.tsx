@@ -1058,6 +1058,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         props?.fields?.CallToBookModalTitle?.value ||
                         'Appointments at'
                       }
+                      doctifyPhoneSlugs={doctifyPhoneSlugs}
                     />
                   ))}
               </ConsultantFinderResults>

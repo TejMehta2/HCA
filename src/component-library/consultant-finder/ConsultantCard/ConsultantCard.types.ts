@@ -37,4 +37,5 @@ export interface ConsultantCardProps {
   enquireNowLink: any;
   callToBookModalTitle: string;
   phoneNumberDisplay: string;
+  doctifyPhoneSlugs: string[];
 }

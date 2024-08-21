@@ -1,0 +1,91 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CareersHompageHeroStories from './CareersHompageHero.stories'
+
+<Meta of={CareersHompageHeroStories} />
+
+# CareersHompageHero
+
+## Description
+
+The CareersHompageHero component is a specialised version of the CareersHomepage component. The image and wrapper are identical, but the contents includes filters and a search submit button.
+
+It is intended to be used on the careers home page.
+
+The SearchButton is intended to open a Yext searchbar modal, which redirects to the search results page on submit.
+
+The filters are intended to apply to the global Yext search instance. They are styl
+
+The submit (or "Search roles") CTA will redirect to the search results page.
+
+Due to the way Yext works globally, the filters outside the modal will likely also apply to the searchbar in the modal.
+It can be composed like this:
+
+``` tsx
+<CareersHompageHero 
+  title={
+    <Text tag="h1" variation="display-1">
+      Exceptional people. Delivering exceptional care.
+    </Text>
+  }
+  search={
+    <SearchButton onClick={() => {}}>
+      <span>
+        Search for a <b>keyword or role</b>
+      </span>
+    </SearchButton>
+  }
+  filters={
+    <>
+      {/* Note: these are placeholders, and should be populated with Yext IDs and values */}
+      <YextStyledStaticFilters
+        fieldId={'location'}
+        filterOptions={[
+          { value: 'Option a' },
+          { value: 'Option b' },
+          { value: 'Option c' },
+          { value: 'Option d' },
+          { value: 'Option e' },
+          { value: 'Option f' },
+          { value: 'Option g' },
+          { value: 'Option h' },
+          { value: 'Option i' },
+        ]}
+        title={'Select a location'}
+      />
+      <YextStyledStaticFilters
+        fieldId={'area'}
+        filterOptions={[
+          { value: 'Option 1' },
+          { value: 'Option 2' },
+          { value: 'Option 3' },
+          { value: 'Option 4' },
+          { value: 'Option 5' },
+          { value: 'Option 6' },
+          { value: 'Option 7' },
+          { value: 'Option 8' },
+          { value: 'Option 9' },
+        ]}
+        title={'Select a job area'}
+      />
+    </>
+  }
+  cta={
+    <Button size={'large'} variation={'full'}>
+      <a href="#">Search roles</a>
+    </Button>
+  }
+  image={
+    <Image
+      src="/placeholders/couple-on-bench.jpeg"
+      alt="an old couple sitting on a bench having a nice time"
+      width={1460}
+      height={1460}
+    />
+  }
+/>
+```
+
+## Example 
+
+<Canvas of={CareersHompageHeroStories.Default} />
+<Controls of={CareersHompageHeroStories.Default} />
