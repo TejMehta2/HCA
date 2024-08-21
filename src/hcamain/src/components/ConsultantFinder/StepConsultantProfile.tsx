@@ -580,6 +580,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
                     reviewsRef={reviewsRef}
+                    ignoreReviewsConsultant={
+                      serverSideData?.IgnoreReviewsConsultant || false
+                    }
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&
@@ -781,6 +784,12 @@ export const Default = (props: StepProps): JSX.Element => {
                     explanation={
                       serverSideData?.ProfileJson?.review?.explanation || 0
                     }
+                    ignoreReviewsConsultant={
+                      serverSideData?.IgnoreReviewsConsultant || false
+                    }
+                    noReviewsMsg={
+                      'This consultant does not have any reviews at the moment.'
+                    }
                   ></OverallRating>
                 </ProfilePageSection>
                 {/* iframe with patient and peer reviews */}
@@ -876,6 +885,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       props?.fields?.PanelTitle?.value || 'PATIENTS REVIEWS'
                     }
                     reviewsRef={reviewsRef}
+                    ignoreReviewsConsultant={
+                      serverSideData?.IgnoreReviewsConsultant || false
+                    }
                   />
                   {serverSideData?.ProfileJson?.isLiveDiaryConsultant &&
                     firstAppointmentData?.initial_appointment &&

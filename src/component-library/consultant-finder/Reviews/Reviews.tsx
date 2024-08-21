@@ -119,7 +119,7 @@ const Reviews = (props: ReviewsProps): JSX.Element => {
         </div>
       )}
 
-      {props.hasDoctifyBranding && (
+      {props.hasDoctifyBranding && !props.ignoreReviewsConsultant && (
         <div className={styles['reviews-doctify']}>
           <Text tag="p" variation="body-medium-large">
             {props.doctifyText}
