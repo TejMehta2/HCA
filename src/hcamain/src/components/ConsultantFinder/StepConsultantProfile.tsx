@@ -363,14 +363,14 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    console.log(
-      'serverSideData?.IgnoreReviewsConsultant',
-      serverSideData?.IgnoreReviewsConsultant
-    );
-    console.log(
-      'serverSideData?.DoctifyPhoneNumberConsultant',
-      serverSideData?.DoctifyPhoneNumberConsultant
-    );
+    // console.log(
+    //   'serverSideData?.IgnoreReviewsConsultant',
+    //   serverSideData?.IgnoreReviewsConsultant
+    // );
+    // console.log(
+    //   'serverSideData?.DoctifyPhoneNumberConsultant',
+    //   serverSideData?.DoctifyPhoneNumberConsultant
+    // );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
