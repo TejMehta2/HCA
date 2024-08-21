@@ -5,8 +5,6 @@ import Script from 'next/script';
 
 const Scripts = (): JSX.Element => {
   const gtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
-  console.log('process.env', process.env.NODE_ENV);
-  console.log('DISABLE_COOKIES', process.env.NEXT_PUBLIC_DISABLE_COOKIES);
 
   return (
     <>
