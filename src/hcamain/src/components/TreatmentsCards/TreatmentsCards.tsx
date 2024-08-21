@@ -28,6 +28,7 @@ type TreatmentsFields = {
   text?: { value?: string };
   image?: { jsonValue?: ImageField };
   url?: { path?: string };
+  proxyurl?: { path?: string };
 };
 
 interface Fields {
@@ -162,65 +163,75 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       }
     >
       <>
-        {cards?.map((card, index) => (
-          <CardContent
-            key={index}
-            image={
-              showImage ? (
-                card.abstractImage?.jsonValue?.value?.src ? (
-                  <NextJssImage
-                    field={card.abstractImage.jsonValue}
-                    editable={false}
-                    next={{
-                      width: 500,
-                      height: 400,
-                      sizes: '(max-width: 768px) 100vw, 30vw',
-                    }}
-                  />
+        {cards?.map((card, index) => {
+          const cardCtaUrl = card?.proxyurl?.path
+            ? card?.proxyurl?.path
+            : card?.url?.path;
+
+          return (
+            <CardContent
+              key={index}
+              image={
+                showImage ? (
+                  card.abstractImage?.jsonValue?.value?.src ? (
+                    <NextJssImage
+                      field={card.abstractImage.jsonValue}
+                      editable={false}
+                      next={{
+                        width: 500,
+                        height: 400,
+                        sizes: '(max-width: 768px) 100vw, 30vw',
+                      }}
+                    />
+                  ) : (
+                    <NextJssImage
+                      field={card.image?.jsonValue}
+                      editable={false}
+                      next={{
+                        width: 500,
+                        height: 400,
+                        sizes: '(max-width: 768px) 100vw, 30vw',
+                      }}
+                    />
+                  )
+                ) : undefined
+              }
+              title={
+                <Text
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+                  variation="heading-1"
+                >
+                  {card.abstractTitle?.value ? (
+                    <JssText field={card.abstractTitle} />
+                  ) : (
+                    <JssText field={card.title} />
+                  )}
+                </Text>
+              }
+              bodyCopy={
+                <Text tag="div" variation="body-medium">
+                  {card.abstractText?.value ? (
+                    <JssRichText tag="div" field={card.abstractText} />
+                  ) : (
+                    <JssRichText tag="div" field={card.text} />
+                  )}
+                </Text>
+              }
+              link={
+                cardCtaUrl ? (
+                  <a href={cardCtaUrl}>
+                    <JssRichText
+                      tag="span"
+                      field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                    />
+                  </a>
                 ) : (
-                  <NextJssImage
-                    field={card.image?.jsonValue}
-                    editable={false}
-                    next={{
-                      width: 500,
-                      height: 400,
-                      sizes: '(max-width: 768px) 100vw, 30vw',
-                    }}
-                  />
+                  <></>
                 )
-              ) : undefined
-            }
-            title={
-              <Text
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
-                variation="heading-1"
-              >
-                {card.abstractTitle?.value ? (
-                  <JssText field={card.abstractTitle} />
-                ) : (
-                  <JssText field={card.title} />
-                )}
-              </Text>
-            }
-            bodyCopy={
-              <Text tag="div" variation="body-medium">
-                {card.abstractText?.value ? (
-                  <JssRichText tag="div" field={card.abstractText} />
-                ) : (
-                  <JssRichText tag="div" field={card.text} />
-                )}
-              </Text>
-            }
-            link={
-              <a href={card?.url?.path}>
-                <JssText
-                  tag="span"
-                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                />
-              </a>
-            }
-          />
-        ))}
+              }
+            />
+          );
+        })}
       </>
     </CardBlock>
   );

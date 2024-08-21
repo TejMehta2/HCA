@@ -36,6 +36,7 @@ interface ServiceFields {
   text?: { value?: string };
   image?: { jsonValue: ImageField };
   url?: { path?: string };
+  proxyurl?: { path?: string };
 }
 
 interface Fields {
@@ -148,45 +149,57 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
     >
       {props.fields?.data?.item?.services?.servicesList?.map(
-        (service, index) => (
-          <CardService
-            link={
-              <a href={service?.url?.path}>
-                <JssRichText
-                  tag="span"
-                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+        (service, index) => {
+          const cardCtaUrl = service?.proxyurl?.path
+            ? service?.proxyurl?.path
+            : service?.url?.path;
+
+          return (
+            <CardService
+              link={
+                cardCtaUrl ? (
+                  <a href={cardCtaUrl}>
+                    <JssRichText
+                      tag="span"
+                      field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                    />
+                  </a>
+                ) : (
+                  <></>
+                )
+              }
+              key={index}
+            >
+              {service.abstractImage?.jsonValue.value?.src &&
+              service.abstractImage?.jsonValue.value?.class !==
+                'scEmptyImage' ? (
+                <Image
+                  src={service?.abstractImage.jsonValue?.value?.src || ''}
+                  alt={
+                    (service?.abstractImage.jsonValue?.value?.alt as string) ||
+                    ''
+                  }
+                  width="313"
+                  height="317"
                 />
-              </a>
-            }
-            key={index}
-          >
-            {service.abstractImage?.jsonValue.value?.src &&
-            service.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
-              <Image
-                src={service?.abstractImage.jsonValue?.value?.src || ''}
-                alt={
-                  (service?.abstractImage.jsonValue?.value?.alt as string) || ''
-                }
-                width="313"
-                height="317"
-              />
-            ) : (
-              <Image
-                src={service?.image?.jsonValue?.value?.src || ''}
-                alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
-                width="313"
-                height="317"
-              />
-            )}
-            <Text tag="div" variation="display-6">
-              {service.abstractTitle?.value ? (
-                <JssText field={service.abstractTitle} />
               ) : (
-                <JssText field={service.title} />
+                <Image
+                  src={service?.image?.jsonValue?.value?.src || ''}
+                  alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
+                  width="313"
+                  height="317"
+                />
               )}
-            </Text>
-          </CardService>
-        )
+              <Text tag="div" variation="display-6">
+                {service.abstractTitle?.value ? (
+                  <JssText field={service.abstractTitle} />
+                ) : (
+                  <JssText field={service.title} />
+                )}
+              </Text>
+            </CardService>
+          );
+        }
       )}
     </DynamicServiceCards>
   );
