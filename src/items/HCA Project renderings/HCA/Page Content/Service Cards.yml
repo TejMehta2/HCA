@@ -71,8 +71,12 @@ SharedFields:
                   }
                 }
               }
-              url {
-                path
+             ... on _HCABasePage {
+                ... on Item {
+                  url {
+                    path
+                  }
+                }
               }
             }
           }
@@ -151,14 +155,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dcd36164-2185-44d7-8c68-b734bbaefa59"
+      Value: "86ed544e-da88-4e1a-bbb5-30aa377b1ad4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240821T101822Z
+      Value: 20240821T162040Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
