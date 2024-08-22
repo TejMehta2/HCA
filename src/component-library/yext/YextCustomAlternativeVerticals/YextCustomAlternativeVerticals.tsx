@@ -104,10 +104,6 @@ export function AlternativeVerticals({
       .filter((verticalSuggestion) => verticalSuggestion.resultsCount > 0);
   }
 
-  if (verticalSuggestions.length <= 0) {
-    return null;
-  }
-
   function processTranslation(args: {
     phrase: string;
     pluralForm?: string;
@@ -151,43 +147,49 @@ export function AlternativeVerticals({
               No results found in {currentVerticalLabel}.
             </Text>
           </div>
-          <div className={styles.subtitle}>
+          {isShowingAllResults && verticalSuggestions.length > 0 ? (
+            <>
+              <div className={styles.subtitle}>
+                <Text tag="p" variation="body-extra-large">
+                  <span>
+                    {' '}
+                    Showing <strong>all {currentVerticalLabel}</strong> instead.
+                  </span>
+                </Text>
+              </div>
+              <div className={styles.copy}>
+                <Text tag="p" variation="body-extra-large">
+                  {processTranslation({
+                    phrase: 'The following category yielded results for ',
+                    pluralForm: 'The following categories yielded results for ',
+                    count: verticalSuggestions.length,
+                  })}{' '}
+                  <strong>‘{query}’:</strong>
+                </Text>
+              </div>
+              <div className={styles.ctas}>
+                {verticalSuggestions.map((suggestion, index) => (
+                  <Suggestion key={index} suggestion={suggestion} />
+                ))}
+              </div>
+              <Text variation={'body-extra-large'}>
+                <TextLink variation={'body-extra-large'}>
+                  <button onClick={() => setVertical('all')}>
+                    <span>
+                      <span>Alternatively, you can </span>
+                      <strong>
+                        view results across all search categories.
+                      </strong>
+                    </span>
+                  </button>
+                </TextLink>
+              </Text>
+            </>
+          ) : (
             <Text tag="p" variation="body-extra-large">
-              {isShowingAllResults && (
-                <span>
-                  {' '}
-                  Showing <strong>all {currentVerticalLabel}</strong> instead.
-                </span>
-              )}
+              Please try another search.
             </Text>
-          </div>
-          <div className={styles.copy}>
-            <Text tag="p" variation="body-extra-large">
-              {processTranslation({
-                phrase: 'The following category yielded results for ',
-                pluralForm: 'The following categories yielded results for ',
-                count: verticalSuggestions.length,
-              })}{' '}
-              <strong>‘{query}’:</strong>
-            </Text>
-          </div>
-
-          <div className={styles.ctas}>
-            {verticalSuggestions.map((suggestion, index) => (
-              <Suggestion key={index} suggestion={suggestion} />
-            ))}
-          </div>
-
-          <Text variation={'body-extra-large'}>
-            <TextLink variation={'body-extra-large'}>
-              <button onClick={() => setVertical('all')}>
-                <span>
-                  <span>Alternatively, you can </span>
-                  <strong>view results across all search categories.</strong>
-                </span>
-              </button>
-            </TextLink>
-          </Text>
+          )}
         </div>
       )}
     </div>
