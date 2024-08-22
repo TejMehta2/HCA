@@ -1,0 +1,46 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as VacancyListStories from './VacancyList.stories'
+
+<Meta of={VacancyListStories} />
+
+# VacancyList
+
+## Description
+
+The VacancyList component is a layout component to wrap vacancy result cards, and their filters.
+
+It is intended to be used on the careers homepage, and other pages e.g. job role pages where a specific context (e.g. Nursing) will govern the filtering.
+
+It will likely be integrated similar to existing search components, e.g. blog search.
+
+It should be wrapped in a theme.
+
+It can be composed like this:
+
+``` tsx
+<VacancyList
+  title={
+    <Text variation={'display-3'}>Latest vacancies</Text>
+  }
+  filters={
+    <Filters />
+  }
+  cards={
+    <>
+      <YextResultCardCareers
+        title={<Text variation={'heading-1'}>Card title</Text>}
+      />
+      {/* ... more cards */}
+    </>
+  }
+  cta={
+    <Button variation="full" size="large">
+      <a href="#">
+        <span>
+          View <strong>all 251 vacancies</strong>
+        </span>
+      </a>
+    </Button>
+  }
+/>
+```

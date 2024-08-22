@@ -148,16 +148,21 @@ export default async function handler(
             ? config.aPI_Lookup_API_Media_LegacyBaseURL
             : config.aPI_Lookup_API_Media_BaseURL;
 
-          //e.g. Finder---Lookup-API-Data.xlsx
+          //e.g. Finder---lookup-api-data.xlsx
           const mediaFileName = config.aPI_Lookup_API_Media_UtilizesLegacy
             ? '%20-%20Lookup%20API%20Data'
-            : '---Lookup-API-Data.xlsx';
+            : '---lookup-api-data.xlsx'; // lower-cased by pipeline
 
+          const mediaURL = config.aPI_Lookup_API_Media_UtilizesLegacy
+            ? `${mediaURLBase}/${project}${mediaFileName}`
+            : `${mediaURLBase}/${project}${mediaFileName}`.toLowerCase();
+
+          //console.log('mediaURL',mediaURL);
           let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
             //      https://edge.sitecorecloud.io/hcainternat0fd8-hcadigital-uat-34f6/media/Project/HCA/HCA-Main/Lookup-API/Finder---Lookup-API-Data.xlsx
             //e.g. 'https://hcahealthcare.co.uk/-/media/Lookup%20API/Finder%20-%20Lookup%20API%20Data',
-            `${mediaURLBase}/${project}${mediaFileName}`,
+            mediaURL,
             {
               redirect: 'manual',
               cache: 'force-cache',

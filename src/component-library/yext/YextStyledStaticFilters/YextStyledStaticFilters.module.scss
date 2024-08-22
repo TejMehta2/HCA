@@ -1,0 +1,86 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.static-filters-container {
+  position: relative;
+
+  button {
+    cursor: pointer;
+    min-height: $spacing-9;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: px-to-rem(16) px-to-rem(24);
+    text-align: center;
+    display: flex;
+    gap: px-to-rem(8);
+    border: none;
+    background-color: $navy-blue-80;
+    color: $white;
+    border-radius: $radius-large;
+    overflow: hidden;
+    @include media(screen-m) {
+      padding: px-to-rem(16) px-to-rem(32);
+    }
+
+    svg {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      display: flex;
+      cursor: pointer;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24' viewBox='0 0 25 24' fill='none'%3E%3Cpath d='M17.25 8L12.25 3L7.25 8M17.25 16L12.25 21L7.25 16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-color: white;
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+    }
+  }
+}
+
+.title-label {
+  @include apply-body-large;
+}
+
+.options-container {
+  z-index: 10;
+  position: absolute;
+  top: calc($spacing-2 + 100%);
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: $radius-large;
+  overflow: scroll;
+  max-height: px-to-rem(300);
+  @include scrollbar($navy-blue-40);
+}
+
+.option {
+  color: $navy-blue-80;
+  @include apply-body-medium;
+
+  text-align: center;
+}
+
+.option-label {
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  display: block;
+  padding: $spacing-4;
+
+  :checked + & {
+    background-color: $orange-40;
+    @include apply-body-bold-medium;
+  }
+
+  &:first-child {
+    margin-top: $spacing-4;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

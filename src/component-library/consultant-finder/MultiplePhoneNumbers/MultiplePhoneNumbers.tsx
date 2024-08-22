@@ -14,6 +14,19 @@ const MultiplePhoneNumbers = (
   const filteredPractices = props.practices.filter(
     (practice: { slug: string }) => practice.slug !== 'video-consultation'
   );
+
+  let shouldRenderPracticePhones = false;
+
+  if (props?.doctifyPhoneSlugs) {
+    shouldRenderPracticePhones = props.doctifyPhoneSlugs.includes(props.slug);
+  } else if (props?.isDoctifyPhoneNumberConsultant) {
+    shouldRenderPracticePhones = props.isDoctifyPhoneNumberConsultant;
+  }
+
+  // console.log('slug', props.slug);
+  // console.log('shouldRenderPracticePhones', shouldRenderPracticePhones);
+  // console.log('default number', props.defaultNumber);
+
   return (
     <div
       className={`${styles.phones} ${
@@ -62,14 +75,26 @@ const MultiplePhoneNumbers = (
             {practice?.phone?.length > 0 &&
               practice.phone.map((phone: any, index: any) => (
                 <div key={index} className={styles['phone-btn']}>
-                  <Button variation="full-dark" size="small">
-                    <a href={`tel:${phone}`}>
-                      <span>
-                        <Icons iconName="iconPhone" />
-                      </span>
-                      <span>{phone}</span>
-                    </a>
-                  </Button>
+                  {shouldRenderPracticePhones && (
+                    <Button variation="full-dark" size="small">
+                      <a href={`tel:${phone}`}>
+                        <span>
+                          <Icons iconName="iconPhone" />
+                        </span>
+                        <span>{phone}</span>
+                      </a>
+                    </Button>
+                  )}
+                  {!shouldRenderPracticePhones && (
+                    <Button variation="full-dark" size="small">
+                      <a href={`tel:${props.defaultNumber}`}>
+                        <span>
+                          <Icons iconName="iconPhone" />
+                        </span>
+                        <span>{props.defaultNumber}</span>
+                      </a>
+                    </Button>
+                  )}
                 </div>
               ))}
             {practice?.phone?.length === 0 && (

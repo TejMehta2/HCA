@@ -127,7 +127,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // context.params { path: [ 'mr-andrew-goldberg' ] }
     //console.log('specialists path:', context?.params?.path);
     context.params.requestPath = context.params.path;
-    context.params.path = [`Finder/specialists/,-w-,`];
+    context.params.path = [`finder/specialists/,-w-,`];
   }
   // Allow pre-render errors to pass through in development, for debugging
   if (process.env.NODE_ENV === 'development') {

@@ -1,0 +1,197 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CareersNavigationStories from './CareersNavigation.stories'
+
+<Meta of={CareersNavigationStories} />
+
+# CareersNavigation
+
+## Description
+
+The CareersNavigation component is a demo of the existing Navigation component, which has been adapted to support a new layout
+
+It is intended to be used in the Careers pages of the site.
+
+It can be composed the same as the [main Navigation component](?path=/docs/site-components-navigation--docs)
+
+The new feature is two new variations for the existing `Main Navigation Links List` template:
+- `full` (12 columns wide)
+- `simple` (3 columns wide)
+
+Also a new template "spacer" which allows for a single grid column to be skipped.
+
+## Example prop structure
+```
+import { NavigationProps } from '../../site-components/Navigation/Navigation.types';
+
+const args: NavigationProps = {
+  ...NavigationDefault.args,
+  tabs: [
+    {
+      heading: 'Working at HCA',
+      mobileTabCta: (
+        <a href="#">
+          <span>
+            View all <strong>Working at HCA</strong>
+          </span>
+        </a>
+      ),
+      content: [
+        {
+          template: 'Navigation Content Block',
+          variation: 'double',
+          heading: <>Working at HCA</>,
+          description: (
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim.
+            </Text>
+          ),
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>Working at HCA</strong>
+              </span>
+            </a>
+          ),
+        },
+        {
+          template: 'Spacer',
+        },
+        {
+          template: 'Main Navigation Links List',
+          variation: 'simple',
+          heading: <>Diversity</>,
+          description: (
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim.
+            </Text>
+          ),
+          cta: (
+            <a href="#">
+              <span>
+                Learn <strong>more</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>Diversity</span>
+            </a>
+          ),
+        },
+        {
+          template: 'Main Navigation Links List',
+          variation: 'simple',
+          heading: <>Life at HCA</>,
+          description: (
+            <Text variation="body-large">
+              Quis laboris proident sint amet id cillum do dolor in tempor est.
+              Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+              laborum et culpa minim.
+            </Text>
+          ),
+          cta: (
+            <a href="#">
+              <span>
+                Learn <strong>more</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>Life at HCA</span>
+            </a>
+          ),
+        },
+      ],
+      hasChildren: true,
+    },
+    {
+      heading: 'Our roles',
+      content: [
+        {
+          template: 'Main Navigation Links List',
+          variation: 'full',
+          heading: <>Our roles</>,
+          links: [
+            <TextLink variation={'body-large'}>
+              <a href="#">Nursing & Front Line Clinical Services</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Theatres</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Midwives and Front Line Clinical Services</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Doctors – Hospitals and Outpatients</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">GP Services and Primary Care Medical</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Pharmacy and Allied Healthcare Professionals</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Laboratories and Scientists</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Laboratories and Scientists</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Information Technology Group</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Patient Support Services</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Hotel Services</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">EHR Transformation</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">The Harborne Hospital</a>
+            </TextLink>,
+            <TextLink variation={'body-large'}>
+              <a href="#">Search & Apply</a>
+            </TextLink>,
+          ],
+          cta: (
+            <a href="#">
+              <span>
+                View <strong>all</strong>
+              </span>
+            </a>
+          ),
+          mobileCta: (
+            <a href="#">
+              <span>
+                View all <strong>roles</strong>
+              </span>
+            </a>
+          ),
+        },
+      ],
+      mobileTabCta: (
+        <a href="#">
+          <span>
+            View all <strong>roles</strong>
+          </span>
+        </a>
+      ),
+      hasChildren: true,
+    },
+  ],
+};
+```

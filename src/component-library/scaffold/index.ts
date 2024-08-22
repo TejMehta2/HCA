@@ -92,6 +92,11 @@ const questions: PromptObject[] = [
         description: 'for components related to yext search',
         value: 'yext',
       },
+      {
+        title: 'careers',
+        description: 'for components which exist in careers subsection of site',
+        value: 'careers',
+      },
     ],
     initial: 0,
   },

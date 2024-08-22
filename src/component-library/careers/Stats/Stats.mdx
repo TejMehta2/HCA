@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as StatsStories from './Stats.stories'
+
+<Meta of={StatsStories} />
+
+# Stats
+
+## Description
+
+The Stats component is designed to indicate various stats on the Careers pages.
+
+It is intended to be wrapped in a theme, but has a fallback background and text color.
+
+It can be composed like this:
+
+``` tsx
+import Text from '../../foundation/Text/Text';
+
+<Stats 
+  heading={
+    <Text tag={'h2'} variation="display-2">
+      At a glance
+    </Text>
+  }
+>
+  <div>
+    <Text variation="display-4">6</Text>
+    <Text variation="body-medium-large">leading hospitals</Text>
+  </div>
+  {/* ...additional children for stats */}
+</Stats>
+```

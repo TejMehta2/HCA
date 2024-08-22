@@ -20,6 +20,8 @@ const config: StorybookConfig = {
     "../core-components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../components/**/*.mdx",
     "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../careers/**/*.mdx",
+    "../careers/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../site-components/**/*.mdx",
     "../site-components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../site-components/**/*.mdx",
