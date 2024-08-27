@@ -5,6 +5,18 @@ const plugins = require('./src/temp/next-config-plugins') || {};
 
 const publicUrl = jssConfig.publicUrl;
 
+const cspHeaderKey = process.env.NODE_ENV === 'development' ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
+const securityHeaders = [
+  {
+   key: cspHeaderKey,
+   value: `frame-ancestors 'self' *.sitecorecloud.io`              
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN',
+  },
+];
+
 /**
  * @type {import('next').NextConfig}
  */
@@ -203,6 +215,14 @@ const nextConfig = {
       'doctify.com',
     ],
     // unoptimized: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
   },
 };
 
