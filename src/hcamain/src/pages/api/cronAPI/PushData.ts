@@ -1,5 +1,6 @@
 'use server';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest } from 'next';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // read data from an endpoint via http get and post it to another endpoint using http post
 // schedule on a cron job for regular pushes
@@ -136,8 +137,8 @@ const longRunning = async (
  * @link https://github.com/vercel/next.js/issues/9965
  */
 export default async function PushData(
-  req: NextApiRequest,
-  _res: NextApiResponse
+  req: NextApiRequest //,
+  //_res: NextApiResponse
 ) {
   const responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
@@ -249,7 +250,7 @@ export default async function PushData(
           writer.close();
         }
       })
-      .catch((_e) => {
+      .catch(() => {
         if (!gStreamClosed) {
           writer.close();
         }
