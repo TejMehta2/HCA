@@ -7,7 +7,7 @@
   },
   "crons": [
     {
-      "path": "/api/cronAPI/PushData?key=HCA123!!&sourceUser=ISU_CR_029_OutbOund&sourcePass=Password@123&sourceURL=https://wd3-impl-services1.workday.com/ccx/service/customreport2/hcahealthcare5/ISU_CR_029_OutbOund/Workday_to_Career_Site_-_Job_Postings?format=json&destURL=https://6b31f67c-a8c6-431d-8fbe-18a2da2df781.mock.pstmn.io&destHeader=x-api-key:ABCDEFG",
+      "path": "/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND",
       "schedule": "*/5 * * * *"
     }
   ]
