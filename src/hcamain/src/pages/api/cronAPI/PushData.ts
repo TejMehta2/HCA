@@ -12,7 +12,7 @@ import type { NextApiRequest } from 'next';
 // http://localhost:3000/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
 
-//const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
@@ -131,7 +131,9 @@ const longRunning = async (
     notify.error(`Failed to run task ${e}`);
   }
 
-  //await delay(2000);
+  /* delay for status write, avoid error in the log Error, client disconnected from log stream TypeError: This ReadableStream is closed.*/
+  await delay(2000);
+  // mark complete
   notify.complete({ data: 'Completed!!' });
 };
 
