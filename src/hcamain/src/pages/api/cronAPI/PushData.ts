@@ -147,16 +147,17 @@ export default async function PushData(
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
   gStreamClosed = false;
-  console.log("req.query", req);
+  //console.log("req.query", req);
 
   const protectionParamsKey =
     (req as any).nextUrl?.searchParams?.get('key') ?? '';
-  console.log('protectionParamsKey', protectionParamsKey);
+  //console.log('protectionParamsKey', protectionParamsKey);
 
+  /*
   console.log(
     'process.env.ADMIN_PROTECTION_KEY!',
     process.env.ADMIN_PROTECTION_KEY!
-  );
+  );*/
 
   let searchParams = (req as any).nextUrl?.searchParams;
 
@@ -175,15 +176,12 @@ export default async function PushData(
   } else {
     // find the command line from an environment variable, allows for different command line in dev,uat,prod
     // e.g. http://localhost:3000/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND
-    const useEnvVarCommandLine: string = (
-      (req as any).nextUrl?.searchParams?.get('useEnvVarCommandLine') ?? ''
-    );
-    if(useEnvVarCommandLine.length > 0)
-    {
+    const useEnvVarCommandLine: string =
+      (req as any).nextUrl?.searchParams?.get('useEnvVarCommandLine') ?? '';
+    if (useEnvVarCommandLine.length > 0) {
       const cmdLine = process.env[useEnvVarCommandLine];
-      if(cmdLine && cmdLine?.length > 0)
-      {
-        console.log('cmdLine', cmdLine);
+      if (cmdLine && cmdLine?.length > 0) {
+        //console.log('cmdLine', cmdLine);
         // command line is via the specified environment variable, deconstruct the string
         searchParams = new URLSearchParams(cmdLine);
       }
@@ -201,18 +199,21 @@ export default async function PushData(
     const sourcePass: string = (
       searchParams?.get('sourcePass') ?? ''
     )?.replaceAll('|', '&');
-    const destURL: string = (
-      searchParams?.get('destURL') ?? ''
-    )?.replaceAll('|', '&');
+    const destURL: string = (searchParams?.get('destURL') ?? '')?.replaceAll(
+      '|',
+      '&'
+    );
     const destHeader: string = (
       searchParams?.get('destHeader') ?? ''
     )?.replaceAll('|', '&');
-    const destUser: string = (
-      searchParams?.get('destUser') ?? ''
-    )?.replaceAll('|', '&');
-    const destPass: string = (
-      searchParams?.get('destPass') ?? ''
-    )?.replaceAll('|', '&');
+    const destUser: string = (searchParams?.get('destUser') ?? '')?.replaceAll(
+      '|',
+      '&'
+    );
+    const destPass: string = (searchParams?.get('destPass') ?? '')?.replaceAll(
+      '|',
+      '&'
+    );
 
     // Invoke long running process
     longRunning(
