@@ -6,9 +6,13 @@ import type { NextApiRequest } from 'next';
 // schedule on a cron job for regular pushes
 // output is a 'console style' http stream back to the browser or curl,
 // can also see this status in Vercel
-
+// example calls
+// http://localhost:3000/api/cronAPI/PushData?key=HCA123!!&sourceUser=ISU_CR_029_OutbOund&sourcePass=Password@123&sourceURL=https://wd3-impl-services1.workday.com/ccx/service/customreport2/hcahealthcare5/ISU_CR_029_OutbOund/Workday_to_Career_Site_-_Job_Postings?format=json&destURL=https://6b31f67c-a8c6-431d-8fbe-18a2da2df781.mock.pstmn.io&destHeader=x-api-key:ABCDEFG
+// or indirection through environment var
+// http://localhost:3000/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND
 // based on https://medium.com/@ruslanfg/long-running-nextjs-requests-eff158e75c1d
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+//const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Notify {
   log: (message: string) => void;
@@ -17,7 +21,6 @@ interface Notify {
   close: () => void;
 }
 
-//see https://codeburst.io/javascript-async-await-with-foreach-b6ba62bbf404
 let gStreamClosed = false;
 
 const longRunning = async (
@@ -128,7 +131,7 @@ const longRunning = async (
     notify.error(`Failed to run task ${e}`);
   }
 
-  await delay(2000);
+  //await delay(2000);
   notify.complete({ data: 'Completed!!' });
 };
 
@@ -144,7 +147,7 @@ export default async function PushData(
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
   gStreamClosed = false;
-  //console.log("req.query", req);
+  console.log("req.query", req);
 
   const protectionParamsKey =
     (req as any).nextUrl?.searchParams?.get('key') ?? '';
@@ -154,6 +157,8 @@ export default async function PushData(
     'process.env.ADMIN_PROTECTION_KEY!',
     process.env.ADMIN_PROTECTION_KEY!
   );
+
+  let searchParams = (req as any).nextUrl?.searchParams;
 
   if (
     process.env.ADMIN_PROTECTION_KEY! != undefined &&
@@ -168,29 +173,45 @@ export default async function PushData(
     writer.close();
     gStreamClosed = true;
   } else {
+    // find the command line from an environment variable, allows for different command line in dev,uat,prod
+    // e.g. http://localhost:3000/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND
+    const useEnvVarCommandLine: string = (
+      (req as any).nextUrl?.searchParams?.get('useEnvVarCommandLine') ?? ''
+    );
+    if(useEnvVarCommandLine.length > 0)
+    {
+      const cmdLine = process.env[useEnvVarCommandLine];
+      if(cmdLine && cmdLine?.length > 0)
+      {
+        console.log('cmdLine', cmdLine);
+        // command line is via the specified environment variable, deconstruct the string
+        searchParams = new URLSearchParams(cmdLine);
+      }
+    }
+
     const sourceURL: string = (
-      (req as any).nextUrl?.searchParams?.get('sourceURL') ?? ''
+      searchParams?.get('sourceURL') ?? ''
     )?.replaceAll('|', '&');
     const sourceHeader: string = (
-      (req as any).nextUrl?.searchParams?.get('sourceHeader') ?? ''
+      searchParams?.get('sourceHeader') ?? ''
     )?.replaceAll('|', '&');
     const sourceUser: string = (
-      (req as any).nextUrl?.searchParams?.get('sourceUser') ?? ''
+      searchParams?.get('sourceUser') ?? ''
     )?.replaceAll('|', '&');
     const sourcePass: string = (
-      (req as any).nextUrl?.searchParams?.get('sourcePass') ?? ''
+      searchParams?.get('sourcePass') ?? ''
     )?.replaceAll('|', '&');
     const destURL: string = (
-      (req as any).nextUrl?.searchParams?.get('destURL') ?? ''
+      searchParams?.get('destURL') ?? ''
     )?.replaceAll('|', '&');
     const destHeader: string = (
-      (req as any).nextUrl?.searchParams?.get('destHeader') ?? ''
+      searchParams?.get('destHeader') ?? ''
     )?.replaceAll('|', '&');
     const destUser: string = (
-      (req as any).nextUrl?.searchParams?.get('destUser') ?? ''
+      searchParams?.get('destUser') ?? ''
     )?.replaceAll('|', '&');
     const destPass: string = (
-      (req as any).nextUrl?.searchParams?.get('destPass') ?? ''
+      searchParams?.get('destPass') ?? ''
     )?.replaceAll('|', '&');
 
     // Invoke long running process
