@@ -61,7 +61,7 @@ const SitecorePage = ({
     <div>
       <Head>
         <meta name="robots" content={`${follow}, ${index}`} key="robots2" />
-        {hideFromWebsiteSearch?.value?.valueOf().toString() && (
+        {hideFromWebsiteSearch?.value && (
           <meta
             name="hideFromWebsiteSearch"
             content={hideFromWebsiteSearch?.value?.valueOf().toString()}
