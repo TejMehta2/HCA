@@ -66,7 +66,7 @@ const SitecorePage = ({
             name="hideFromWebsiteSearch"
             content={hideFromWebsiteSearch?.value?.valueOf().toString()}
           />
-        )}{' '}
+        )}
       </Head>
       {/* hello finder level sub-page world */}
       <ComponentPropsContext value={componentProps}>
