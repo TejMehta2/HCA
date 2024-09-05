@@ -88,9 +88,8 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
 
   // computed values
-  const title = `${MetaTitle?.value || Title?.value} ${
-    PageTitleSufix?.value?.value || ''
-  }`;
+  const title = `${MetaTitle?.value || Title?.value} ${PageTitleSufix?.value?.value || ''
+    }`;
   const description = MetaDescription?.value || Text?.value;
   const image =
     MetaImage?.value?.src ||
@@ -151,7 +150,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   if (cf) {
     return (
       <Head>
-        <meta name="robots" content={`${follow}, ${index}`} />
+        <meta name="robots" content={`${follow}, ${index}`} key="robots" />
       </Head>
     );
   } else {
@@ -168,7 +167,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
         {url && <link rel="canonical" href={url} />} &&
         {description && <meta name="description" content={description} />} &&
         {follow && index && (
-          <meta name="robots" content={`${follow}, ${index}`} />
+          <meta name="robots" content={`${follow}, ${index}`} key="robots" />
         )}{' '}
         &&
         {title && <meta name="title" content={title} />} &&
