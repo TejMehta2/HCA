@@ -88,8 +88,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
 
   // computed values
-  const title = `${MetaTitle?.value || Title?.value} ${PageTitleSufix?.value?.value || ''
-    }`;
+  const title = `${MetaTitle?.value || Title?.value} ${
+    PageTitleSufix?.value?.value || ''
+  }`;
   const description = MetaDescription?.value || Text?.value;
   const image =
     MetaImage?.value?.src ||
