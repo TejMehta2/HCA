@@ -8,6 +8,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "0a599a32-7135-428b-bd08-39407bfddef7"
+      Hint: Heading
+      Value: this is heading
     - ID: "223f2ea2-1d66-4c63-a3e7-870f064728e2"
       Hint: Title
       Value: From the blog
@@ -24,9 +27,12 @@ Languages:
       Hint: BlogUrl
       Value: |
         <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?articleTypeId=" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+    - ID: "7f3de04e-6f94-43a6-a46a-fa13dcfeba7f"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "65a9275a-bc6e-4069-9e1d-3eea0282e9a4"
+      Value: "a0d8ac7f-b2b5-4b1a-b5e0-06893427a8b4"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -37,4 +43,4 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240613T141928Z
+      Value: 20240616T174515Z

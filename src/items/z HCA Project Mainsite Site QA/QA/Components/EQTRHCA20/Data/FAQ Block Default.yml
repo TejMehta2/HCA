@@ -8,6 +8,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240123T125038Z
@@ -27,11 +30,11 @@ Languages:
       Value: "{7AAE70CD-3394-45DB-87CD-FC81015480CF}|{B4138F1D-2055-4638-B313-73B753AA3C1A}|{D7C79023-2E3F-43A3-B271-67F55C798EDB}|{7BA9EA42-2F5F-4D8A-BDFF-F01DABB9F93C}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f68582bf-7513-4d91-ab77-1f6d3c5d47c9"
+      Value: "4ded71c1-124a-4cea-96c9-a7a485b91a82"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link class="" id="{6A6E307D-47ED-4FBE-9031-D23BFB6EE492}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;FAQs&lt;/b&gt;" url="/HCA/HCA-Main" />
+        <link linktype="internal" text="See the blogs" querystring="" target="" id="{94A3433B-CA08-435B-BB57-69EB41D94864}" />
     - ID: "ae4b03e7-ac89-4f52-8832-3c0cc5ef6e09"
       Hint: Heading
       Value: Lorem ipsum dolor sit amet
@@ -41,10 +44,10 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240408T183308Z
+      Value: 20240617T141559Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
-      Value: "{5DD8A5E0-07CC-40AF-8272-255D05AFEABC}"
+      Value: "{284DAB94-A5B4-47D9-98F0-2F9ACD13ED08}"
     - ID: "ed208587-49ec-48b5-81d0-2c4de0185875"
       Hint: Title
       Value: Frequently Asked Questions
