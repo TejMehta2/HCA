@@ -58,7 +58,8 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
       ...searchParams.entries(),
     ]
       .filter(([, value]) => value?.length)
-      .toString()}`,
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&')}`,
     (url: string) =>
       fetch(url)
         .then((res) => res.json())
