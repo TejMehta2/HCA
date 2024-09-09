@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { SelectFieldProps } from './SelectField.types';
 import styles from './SelectField.module.scss';
 import Icons from '../../foundation/Icons/Icons';
@@ -35,19 +35,6 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
     setActiveValue(selectedValue);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | TouchEvent): void => {
-      event.preventDefault();
-
-      if (wrapperRef?.current?.contains(event.target as HTMLDivElement)) return;
-
-      closeModal();
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       {label && (
@@ -59,8 +46,10 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
       <input
         type="text"
         value={activeValue === placeholder ? '' : activeValue}
+        onChange={() => {}}
         required={required}
         className={styles['hidden-input']}
+        name={activeValue === placeholder ? undefined : id}
       />
       <span className={styles.select}>
         <button
@@ -74,10 +63,14 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
           aria-controls="select-dropdown"
           onClick={toggleModal}
         >
-          {activeValue}
+          <span>{activeValue}</span>
+          <Icons iconName="iconArrowDropdown" />
         </button>
       </span>
       <ModalDropdown ref={dialogRef}>
+        <button className={styles.close} onClick={closeModal}>
+          Close
+        </button>
         <div role="listbox" id="select-dropdown" className={styles.options}>
           {options.map((option, index) => (
             <button
