@@ -93,7 +93,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                 placeholder={
                   props.fields?.data?.item?.selectAJobAreaLabel?.value
                 }
-                id={data?.facets[1].displayName || ''}
+                id={data?.facets[1].fieldId?.replace('c_', '') || ''}
                 options={
                   data?.facets[1].options.map((option) => ({
                     text: option.displayName,
@@ -104,7 +104,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                 placeholder={
                   props.fields?.data?.item?.selectALocationLabel?.value
                 }
-                id={data?.facets[0].displayName || ''}
+                id={data?.facets[0].fieldId?.replace('c_', '') || ''}
                 options={
                   data?.facets[0].options.map((option) => ({
                     text: option.displayName,
