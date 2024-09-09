@@ -5,6 +5,7 @@ import Button from '../../core-components/Button/Button';
 import Text from '../../foundation/Text/Text';
 import YextResultCardCareers from '../../yext/YextResultCardCareers/YextResultCardCareers';
 import Icons from '../../foundation/Icons/Icons';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CareersSearchResults> = {
@@ -14,6 +15,13 @@ const meta: Meta<typeof CareersSearchResults> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
 };
 
 export default meta;
