@@ -1,0 +1,47 @@
+﻿---
+ID: "58499bab-1158-4ddd-827d-08e56a59724a"
+Parent: "8dcff8a1-0652-4cfb-8923-d89555e0812a"
+Template: "2dfbdc13-353d-4f15-a9f5-0e7e8b6baa73"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/CareersLatestVacancies/Page Data/Careers Latest Vacancies datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0fddeaf7-6175-4b0f-80c9-fef981e6fdc3"
+      Hint: Title
+      Value: Latest vacancies
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T142602Z
+    - ID: "47b39aac-37a2-4f1e-a6af-e07cda729643"
+      Hint: ViewAllVacanciesCTA
+      Value: |
+        <link text="View &lt;strong&gt;all {jobsCount} vacancies&lt;/strong&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{60C95BFB-0B55-4897-91E2-C4CDAF4918DD}" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "630e3c89-b999-4b32-bfc8-1a5869299260"
+      Hint: ReadMoreCtaText
+      Value: Read More & Apply
+    - ID: "65f91abd-ebd9-4112-a329-c42a0831884c"
+      Hint: SelectALocationLabel
+      Value: Select a location
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "35fd28ea-e256-43c5-b61e-1277c9a28de6"
+    - ID: "930d140a-6b6f-4cd9-abab-5c2aabc53e90"
+      Hint: SelectAJobAreaLabel
+      Value: Select a job area
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240909T145226Z

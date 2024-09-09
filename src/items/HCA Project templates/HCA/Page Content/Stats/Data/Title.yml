@@ -1,23 +1,23 @@
 ﻿---
-ID: "9a3057a0-bac7-4b73-97cb-4ddee70fa5d3"
-Parent: "66038c46-e4e0-49be-8d37-5d8ea90ebd7b"
-Template: "66038c46-e4e0-49be-8d37-5d8ea90ebd7b"
-Path: /sitecore/templates/Project/HCA/Foundation/Scores/__Standard Values
+ID: "a7d381f3-5726-4cb3-895f-c66f5a1f8205"
+Parent: "d28a7732-6d77-47d3-9659-d31e71565478"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Page Content/Stats/Data/Title
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: 
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
-    - ID: "2496fb09-1929-4184-a62a-36c44eba0deb"
-      Hint: Text
-      Value: $name
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231128T122018Z
+      Value: 20231128T122413Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -28,11 +28,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cdd8605d-263a-4f38-abcb-71758798ef84"
+      Value: "4e736162-e70c-4b7b-9554-b8b7d6261dff"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T193547Z
+      Value: 20240909T190454Z
