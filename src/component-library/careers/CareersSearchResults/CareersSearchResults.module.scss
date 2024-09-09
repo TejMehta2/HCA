@@ -1,0 +1,34 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.background {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-9;
+  padding-bottom: $spacing-13;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
