@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  GetStaticComponentProps,
+  useComponentProps,
+  useSitecoreContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -20,6 +24,9 @@ interface Fields {
 type CareersSearchResultsProps = {
   params?: Params;
   fields?: Fields;
+  rendering?: {
+    uid?: string;
+  };
 };
 
 const CareersSearchResultsDefaultComponent = (
@@ -42,9 +49,12 @@ const CareersSearchResultsDefaultComponent = (
 };
 
 export const Default = (props: CareersSearchResultsProps): JSX.Element => {
+  const fallbackData = useComponentProps<JobsResponse['response']>(
+    props.rendering?.uid
+  );
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
   const [limit, setLimit] = useState(1);
-  const resultsPerPage = 3;
+  const resultsPerPage = 10;
   /* 
     New search on each searchParams change
     searchParams are either:
@@ -67,6 +77,7 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
     {
       keepPreviousData: true, // Never show nothing
       revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window
+      fallbackData,
     }
   );
 
@@ -89,7 +100,11 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
                 {response?.resultsCount} vacancies
               </Text>
               <Text variation="body-bold-medium">
-                Showing 1 - {limit * resultsPerPage}
+                Showing 1 -{' '}
+                {Math.min(
+                  Number(response?.resultsCount),
+                  limit * resultsPerPage
+                )}
               </Text>
             </>
           }
@@ -124,7 +139,16 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
           })}
           cta={
             <Button size={'large'} variation={'full'}>
-              <button onClick={() => setLimit((prev) => prev + 1)}>
+              <button
+                onClick={() => {
+                  if (limit * resultsPerPage < Number(response?.resultsCount)) {
+                    setLimit((prev) => prev + 1);
+                  }
+                }}
+                disabled={
+                  limit * resultsPerPage >= Number(response?.resultsCount)
+                }
+              >
                 <Icons iconName="iconPlus" />
                 <span>
                   Show <b>more</b>
@@ -136,4 +160,18 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
       )}
     </Themes>
   );
+};
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=false&limit=10`
+    );
+    const data = await response.json();
+    return JSON.parse(JSON.stringify(data.response));
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
 };
