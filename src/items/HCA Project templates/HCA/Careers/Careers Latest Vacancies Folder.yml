@@ -1,86 +1,21 @@
 ﻿---
-ID: "ae87c8f9-508e-46c8-84ce-0de9b82b02cf"
-Parent: "b9e738df-05f6-4abe-952c-59f3b8c6d41a"
-Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Careers/Careers Search Hero
+ID: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Parent: "d5ecfa50-790d-43c2-ab59-d2d23a8d6131"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Folder
 SharedFields:
-- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
-  Hint: componentName
-  Value: CareersSearchHero
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
-  Value: |
-    query GetCareersSearchHero(
-      $contextItem: String!
-      $datasource: String!
-      $language: String!
-    ) {
-      item(path: $datasource, language: $language) {
-        ... on CareersSearchHero {
-          searchPhrasePlaceholder {
-            value
-          }
-          selectAJobAreaLabel {
-            value
-          }
-          selectALocationLabel {
-            value
-          }
-          searchRolesCTA {
-            jsonValue
-          }
-        }
-      }
-      contextItem: item(path: $contextItem, language: $language) {
-        title: field(name: "Title") {
-          jsonValue
-        }
-        subHeading: field(name: "Heading") {
-          jsonValue
-        }
-        text: field(name: "Text") {
-          jsonValue
-        }
-        image: field(name: "Image") {
-          jsonValue
-        }
-      }
-    }
-    
-- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
-  Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
-- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
-  Hint: __Read Only
-  Value: 
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{35B9CBCA-0B70-4F7F-9FD9-340B51A3D079}"
-- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
-  Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
-  Value: |
-    <image mediaid="{92697E81-0AEB-43AB-8500-9B16A69255C1}" />
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsRenderingsWithDynamicPlaceholders=true
+  Value: Office/32x32/folder_window.png
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{F87534A7-621F-49DA-BC45-666400B5BEC3}"
 Languages:
 - Language: "de-DE"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Promo
+    Value: Promo Ordner
   Versions:
   - Version: 1
     Fields:
@@ -111,26 +46,26 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20120620T144015Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\JssImport
+        sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3ffa2c90-ce6b-48ab-aaa5-63324c6dbf50"
+      Value: "dbf1c0fd-31ad-4611-a95f-b62af24fc657"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T154316Z
+      Value: 20240909T134814Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ
+    Value: プロモ フォルダー
   Versions:
   - Version: 1
     Fields:
@@ -159,7 +94,7 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销
+    Value: 促销文件夹
   Versions:
   - Version: 1
     Fields:

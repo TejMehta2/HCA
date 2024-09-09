@@ -1,15 +1,14 @@
 ﻿---
-ID: "db655876-92fb-4e9b-bc66-eef347b91137"
-Parent: "6a2a763f-76c6-469d-b25b-bb23b59ab863"
-Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
-Path: /sitecore/templates/Branches/Project/HCA/Careers/Available Headless Careers Renderings/$name
+ID: "f87534a7-621f-49da-bc45-666400b5bec3"
+Parent: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Template: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Folder/__Standard Values
 SharedFields:
-- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
-  Hint: Renderings
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
   Value: |
-    {AE87C8F9-508E-46C8-84CE-0DE9B82B02CF}
-    {50592CC6-B488-4FA1-80B3-7711448AD855}
-    {C64321A5-D176-4D34-8A5A-7FED8406E0C8}
+    {2DFBDC13-353D-4F15-A9F5-0E7E8B6BAA73}
+    {CC13AD3C-E10E-4E1E-B5B3-B30D74C53DEF}
 Languages:
 - Language: en
   Versions:
@@ -17,14 +16,14 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20171113T104335Z
+      Value: 20120621T071605Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b9911134-66be-4063-ba89-264f91db4743"
+      Value: "dff35438-abad-42d8-8d8a-cc5b420568cd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

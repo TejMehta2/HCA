@@ -1,38 +1,42 @@
 ﻿---
-ID: "2baa43f4-7140-4514-97fc-6f9638b651e7"
-Parent: "35c82bd7-b0b0-4e62-a941-90bd7cd18b6b"
+ID: "630e3c89-b999-4b32-bfc8-1a5869299260"
+Parent: "70e6d12f-adb9-4313-8a2a-786f7b60f750"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Scores/Data/Number
+Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies/Content/ReadMoreCtaText
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 300
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Read More CTA Text
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231128T122015Z
+      Value: 20240909T144344Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5654f1de-0c45-4517-b42b-488e8bb095c2"
+      Value: "4e4301bd-b3ed-4015-bbd8-dd222270ab73"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T193424Z
+      Value: 20240909T145036Z
