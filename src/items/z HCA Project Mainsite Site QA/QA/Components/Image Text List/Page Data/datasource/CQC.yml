@@ -1,0 +1,39 @@
+﻿---
+ID: "77bd8c88-b11f-4256-a472-20093a8b0ca1"
+Parent: "2bb29f35-1c6e-48ac-816b-05d5f5a3627a"
+Template: "feaa953e-fedc-4191-a1c0-36992f53d08a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource/CQC"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T152605Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d80140b0-16f9-4263-8966-1185cd335ce5"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ce8136f4-2e0b-4236-af51-e522ee8ab699"
+      Hint: Text
+      Value: |
+        <p>HCA UK are delighted to receive the Best in Class Interactive Media Award in the "Recruiting" category for our careers website.</p>
+    - ID: "d8fecc64-a0b7-4e73-b436-929a62a044ee"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/170c2b50dbfe4ca499512d07472d094c?v=5b21660f" dam-id="D5Ulm9RZSLixjb1g-TH9qA" width="318" height="150" alt="cqc.png" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/233430/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240910T153332Z

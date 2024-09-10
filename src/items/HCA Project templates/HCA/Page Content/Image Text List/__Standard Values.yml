@@ -1,0 +1,27 @@
+﻿---
+ID: "a6574a80-6793-4a9c-aa1a-c84f71fcd978"
+Parent: "2a170ca3-cba3-4805-a0ec-e93548b61e82"
+Template: "2a170ca3-cba3-4805-a0ec-e93548b61e82"
+Path: /sitecore/templates/Project/HCA/Page Content/Image Text List/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{FEAA953E-FEDC-4191-A1C0-36992F53D08A}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T082925Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d6dd0980-80a6-4e73-ad2f-44733924e884"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240910T153500Z
