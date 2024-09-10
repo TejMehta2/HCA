@@ -1,16 +1,12 @@
 ﻿---
-ID: "3a96a972-1f1a-4fd7-8704-b3934dff1274"
-Parent: "6a6e307d-47ed-4fbe-9031-d23bfb6ee492"
-Template: "0a70fa73-8923-4a6e-abf3-4134f25f3221"
-Path: "/sitecore/content/HCA/HCA-Main/Presentation"
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+ID: "31e2d187-d89f-4e2b-9e92-89b431fe2fd8"
+Parent: "a8a00035-cad4-46e2-ad87-6ac603f9e911"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Foundation/Content Card/Content Card With Overlay/Overlay Content
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1600
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{1DB2D249-8FDB-4D9F-A357-841D6A51ABFA}"
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -18,7 +14,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231016T161625Z
+      Value: 20240910T160539Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -29,11 +25,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4d441eb0-be16-425a-88a5-d66ac2b5626c"
+      Value: "4877a747-180b-4196-b6eb-a3d0e7582dc9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20231016T161625Z
+      Value: 20240910T160539Z

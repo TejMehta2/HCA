@@ -31,14 +31,17 @@ Languages:
       Value: 20240905T223602Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a72c60d4-5b8a-46cb-9b5e-9c7db8e7f2c2"
+      Value: "ac922681-671c-47dd-8b0b-14d384463746"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240905T224530Z
+      Value: 20240910T154415Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: CareersSearchResults
+      Value: Careers Search Results
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: 
