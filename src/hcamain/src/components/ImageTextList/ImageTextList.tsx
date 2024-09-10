@@ -7,7 +7,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import Accreditations from 'temp/component-library/careers/Accreditations/Accreditations';
+import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 
 interface CardFields {
   fields?: {
