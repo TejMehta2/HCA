@@ -88,8 +88,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
           search={
             <SearchBar
               preventSubmitOnSuggestion={true}
-              name="query"
-              suggestions={['test 1']}
+              name="input"
               placeholder={
                 props.fields?.data?.item?.searchPhrasePlaceholder?.value
               }
@@ -228,8 +227,8 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
           <>
             <SearchBar
               preventSubmitOnSuggestion={false}
-              name="query"
-              defaultValue={searchParams.get('query') || ''}
+              name="input"
+              defaultValue={searchParams.get('input') || ''}
               placeholder={
                 props.fields?.data?.item?.searchPhrasePlaceholder?.value
               }

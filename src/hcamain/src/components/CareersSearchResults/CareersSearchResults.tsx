@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GetStaticComponentProps,
   useComponentProps,
@@ -54,6 +54,11 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
   );
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
   const [limit, setLimit] = useState(1);
+
+  useEffect(() => {
+    setLimit(1);
+  }, [searchParams]);
+
   const resultsPerPage = 10;
   /* 
     New search on each searchParams change
