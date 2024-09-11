@@ -35,7 +35,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <p>
         header images are mapped with corresponding jobFamily/area page. find
-        matching Job's jobFamily field value from the API response in dictionary
+        matching Job s jobFamily field value from the API response in dictionary
         below and use corresponding image{' '}
       </p>
       {props.fields?.data?.item?.headerImageMapping?.targetItems.map(
