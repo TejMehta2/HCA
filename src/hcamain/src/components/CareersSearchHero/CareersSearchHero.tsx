@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   RichText,
   Text as JssText,
@@ -18,6 +18,14 @@ import {
   CareersSearchHeroProps,
   JobsResponse,
 } from './CareersSearchHero.types';
+import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
+import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
+import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
+import Filters from '@component-library/site-components/Filters/Filters';
+import { usePathname, useSearchParams } from 'next/navigation';
+import Icons from '@component-library/foundation/Icons/Icons';
+import { useRouter } from 'next/router';
 
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
@@ -132,6 +140,137 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
             />
           }
         />
+      </form>
+    </Themes>
+  );
+};
+
+export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
+  const data = useComponentProps<JobsResponse['response']>(
+    props.rendering?.uid
+  );
+  const searchParams = useSearchParams();
+  const formRef = useRef<HTMLFormElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+  if (!props?.fields?.data?.item) {
+    return <CareersSearchHeroDefaultComponent {...props} />;
+  }
+
+  // Parse filter options to be used in multiple components
+  const filterCategories = data?.facets?.map((facet) => ({
+    title: facet.displayName,
+    fields: facet.options?.map((option) => {
+      return {
+        id: option.displayName,
+        value: option.displayName,
+        name: facet.displayName,
+        label: option.displayName,
+        checked: searchParams
+          .getAll(facet.displayName)
+          .includes(option.displayName),
+        onChange: () => {},
+      };
+    }),
+  }));
+
+  const activeFilters = filterCategories?.reduce((previous, { fields }) => {
+    return [...previous, ...fields.filter(({ checked }) => checked)];
+  }, []);
+
+  const handleChange = () => {
+    const form = formRef.current;
+    if (!form) return;
+    const formData = new FormData(form);
+    const entries = [...formData.entries()].filter(([, value]) => !!value);
+    const params = new URLSearchParams(entries as string[][]);
+    const url = `${pathname}?${params}`;
+    router.replace(url, undefined, { shallow: true });
+  };
+
+  return (
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
+      <form
+        ref={formRef}
+        onChange={handleChange}
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleChange();
+        }}
+        method="get"
+      >
+        <HeaderPlain
+          metatitle={
+            <Text variation={'subheading-1'}>
+              <JssText
+                field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
+              />
+            </Text>
+          }
+          heading={
+            <Text
+              variation={props.params?.HeadingSize || 'display-2'}
+              tag={props.params?.HeadingTag || 'h2'}
+            >
+              <JssText
+                field={props.fields?.data?.contextItem?.title?.jsonValue}
+              />
+            </Text>
+          }
+          description={
+            <Text tag="div" variation="body-large">
+              <RichText
+                field={props.fields?.data?.contextItem?.text?.jsonValue}
+              />
+            </Text>
+          }
+        >
+          <>
+            <SearchBar
+              preventSubmitOnSuggestion={false}
+              name="query"
+              defaultValue={searchParams.get('query') || ''}
+              placeholder={
+                props.fields?.data?.item?.searchPhrasePlaceholder?.value
+              }
+            >
+              <Filters
+                buttonText={
+                  <span>
+                    <b>Filter</b> by
+                  </span>
+                }
+                buttonIcon={<Icons iconName="iconFilterCircle" />}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+            </SearchBar>
+
+            <SearchFilterList
+              filters={activeFilters || []}
+              clearFilters={() => {
+                activeFilters?.forEach(({ id }, index) => {
+                  const field = document.getElementById(id) as HTMLInputElement;
+                  if (!field) return;
+                  if (index === activeFilters.length - 1) {
+                    field.click(); // interact with last field to trigger a form change event
+                  } else {
+                    field.checked = false; // update other fields without triggering form change event
+                  }
+                });
+              }}
+            />
+          </>
+        </HeaderPlain>
       </form>
     </Themes>
   );
