@@ -164,10 +164,10 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
       return {
         id: option.displayName,
         value: option.displayName,
-        name: facet.displayName,
+        name: facet.fieldId.replace('c_', ''),
         label: option.displayName,
         checked: searchParams
-          .getAll(facet.displayName)
+          .getAll(facet.fieldId.replace('c_', ''))
           .includes(option.displayName),
         onChange: () => {},
       };
