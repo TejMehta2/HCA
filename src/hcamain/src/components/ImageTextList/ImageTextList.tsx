@@ -8,6 +8,7 @@ import {
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface CardFields {
   fields?: {
@@ -57,7 +58,7 @@ export const Default = (props: ImageTextListProps): JSX.Element => {
   }
 
   return (
-    <>
+    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <Accreditations
         items={
           props.fields?.Cards?.map((cards) => ({
@@ -75,6 +76,6 @@ export const Default = (props: ImageTextListProps): JSX.Element => {
           })) || []
         }
       />
-    </>
+    </Themes>
   );
 };
