@@ -6,6 +6,7 @@ import {
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import { StatsProps } from './Stats.types';
+import Stats from '@component-library/careers/Stats/Stats';
 
 const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -30,23 +31,28 @@ export const Default = (props: StatsProps): JSX.Element => {
   }
 
   return (
-    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      <Text
-        tag={props.params?.HeadingTag || 'h1'}
-        variation={props.params?.HeadingSize || 'display-1'}
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
+      <Stats
+        heading={
+          <Text
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-2'}
+          >
+            <JssText field={props.fields.Title} />
+          </Text>
+        }
       >
-        <JssText field={props.fields.Title} />
-      </Text>
-
-      <p>Stats</p>
-      {props.fields?.Counters?.map((counters) => (
-        <>
-          <br />
-          <JssText field={counters.fields?.Number} />
-          :
-          <JssText field={counters.fields?.Text} />
-        </>
-      ))}
+        {props.fields?.Counters?.map((counters, index) => (
+          <div key={index}>
+            <Text variation="display-4">
+              <JssText field={counters.fields?.Number} />
+            </Text>
+            <Text variation="body-medium-large">
+              <JssText field={counters.fields?.Text} />
+            </Text>
+          </div>
+        ))}
+      </Stats>
     </Themes>
   );
 };
