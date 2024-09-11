@@ -15,7 +15,6 @@ body {
   padding: 0;
   pointer-events: none;
   opacity: 0;
-
   background: transparent;
   z-index: -999; // Needed to prevent Safari from randomly tabbing to this dialog in forms
 
