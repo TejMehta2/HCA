@@ -61,7 +61,7 @@ Languages:
         </r>
     - ID: "157522ca-ef62-4651-b3b2-4eb374879618"
       Hint: GetDirections
-      Value: "https://maps.app.goo.gl/57zseJHvzh9b8pyR9"
+      Value: 
     - ID: "1de31a1a-0b18-4473-9cd1-41efa2177819"
       Hint: ContactUnits
       Value: "{BBBB0B4C-9824-4923-9131-297A75FB7D61}"
@@ -84,7 +84,7 @@ Languages:
       Value: London
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "12c1428c-d6cb-48c7-8c9a-dbe4f2404f15"
+      Value: "40b2d02e-5619-4a96-9402-1fce6debd6bc"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -92,7 +92,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "ca93c552-f857-493e-a649-387ff80f0649"
       Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
@@ -101,7 +101,7 @@ Languages:
       Value: Wellington Place St John's Wood
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240601T225141Z
+      Value: 20240620T154926Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Wellington Hospital

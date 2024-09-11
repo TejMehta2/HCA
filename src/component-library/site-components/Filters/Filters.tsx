@@ -73,21 +73,23 @@ const Filters = (props: FiltersProps): JSX.Element => {
             </div>
           )}
 
-          <div className={styles.footer}>
-            <TextButton theme="dark">
-              <button type="button" onClick={clearFields}>
-                {t('clear-all') || 'Clear all'}
-              </button>
-            </TextButton>
-            <Button variation="full-dark" size="small">
-              <button
-                onClick={() => dialogRef?.current?.close()}
-                type={submitOnClose ? 'submit' : 'button'}
-              >
-                See {resultsCount} Results
-              </button>
-            </Button>
-          </div>
+          {resultsCount && (
+            <div className={styles.footer}>
+              <TextButton theme="dark">
+                <button type="button" onClick={clearFields}>
+                  {t('clear-all') || 'Clear all'}
+                </button>
+              </TextButton>
+              <Button variation="full-dark" size="small">
+                <button
+                  onClick={() => dialogRef?.current?.close()}
+                  type={submitOnClose ? 'submit' : 'button'}
+                >
+                  See {resultsCount} Results
+                </button>
+              </Button>
+            </div>
+          )}
         </Modals>
       </Themes>
     </div>

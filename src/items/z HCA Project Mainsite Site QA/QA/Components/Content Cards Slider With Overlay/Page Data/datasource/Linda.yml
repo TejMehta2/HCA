@@ -1,0 +1,61 @@
+﻿---
+ID: "4d8f126d-ebf1-4dad-bc1b-7209507d6296"
+Parent: "ce8f5479-3d37-47b0-8145-8425b18e6b8b"
+Template: "a8a00035-cad4-46e2-ad87-6ac603f9e911"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Slider With Overlay/Page Data/datasource/Linda"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0de45ab1-77e5-42da-8afe-f583623ae991"
+      Hint: Title
+      Value: Linda, Staff Nurse (Return to Practice)
+    - ID: "1a208089-080a-453e-8109-e522481d2088"
+      Hint: Text
+      Value: <p>&ldquo;This has been a brilliant place to refresh my skills because there&rsquo;s such a diverse range of advanced care. The high standards are inspiring &ndash; I want to improve each day.&rdquo;</p>
+    - ID: "216537f9-4338-4893-9099-8e97fad158e0"
+      Hint: OverlayHeading
+      Value: staff nurse (return to practice)
+    - ID: "2406b4a3-366d-40ba-8d70-b69709aa161f"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/e3d1422ee7b045c7b81ef70af62101b3?v=246c735d" dam-id="Ovz-4wd_R4CqbktWcrG8og" width="1000" height="667" alt="AAU Nurse with female patient 1217096099.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231756/thumbnail" />
+    - ID: "2580b05b-bc4a-47d3-8d0c-a5996a04404f"
+      Hint: OverlayTitle
+      Value: All about Linda
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T181006Z
+    - ID: "3abc5943-ffec-4bba-9d9b-71f7304ffd9e"
+      Hint: OverlayText
+      Value: |
+        <p>&ldquo;This has been a brilliant place to refresh my skills because there's such a diverse range of advanced care.</p>
+        <p>
+        The high standards are inspiring - every day, I want to improve.</p>
+        <p>
+        HCA UK aren't just employing me during the 'Return to Practice' programme, they're also covering the fees. As soon as I get my Nursing and Midwifery Council (NMC) PIN, I'll be able to start as a permanent staff nurse.</p>
+        <p>
+        The incredible support is the main reason I'd encourage people to apply.&rdquo;</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7648de46-d652-49d9-ad2e-e8bab1a91110"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d74b7376-c085-4614-a975-a48a2c311456"
+      Hint: OverlayImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/e3d1422ee7b045c7b81ef70af62101b3?v=246c735d" dam-id="Ovz-4wd_R4CqbktWcrG8og" width="1000" height="667" alt="AAU Nurse with female patient 1217096099.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231756/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240910T191554Z

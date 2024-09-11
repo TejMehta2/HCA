@@ -151,7 +151,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   if (cf) {
     return (
       <Head>
-        <meta name="robots" content={`${follow}, ${index}`} />
+        <meta name="robots" content={`${follow}, ${index}`} key="robots" />
       </Head>
     );
   } else {
@@ -168,7 +168,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
         {url && <link rel="canonical" href={url} />} &&
         {description && <meta name="description" content={description} />} &&
         {follow && index && (
-          <meta name="robots" content={`${follow}, ${index}`} />
+          <meta name="robots" content={`${follow}, ${index}`} key="robots" />
         )}{' '}
         &&
         {title && <meta name="title" content={title} />} &&

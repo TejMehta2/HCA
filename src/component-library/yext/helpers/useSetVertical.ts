@@ -9,6 +9,7 @@ export const verticalMap = new Map<VerticalKey, VerticalLabel>([
   ['specialties', 'Departments'],
   ['articles', 'Articles'],
   ['faqs', 'FAQs'],
+  ['jobs', 'Vacancies'],
 ]);
 
 const useSetVertical = () => {

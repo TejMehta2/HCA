@@ -12,4 +12,5 @@ export interface SearchBarProps {
   searchOnEnter?: boolean;
   error?: string;
   scrollRef?: React.RefObject<HTMLElement>;
+  preventSubmitOnSuggestion?: boolean;
 }

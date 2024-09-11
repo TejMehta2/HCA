@@ -1,0 +1,49 @@
+﻿---
+ID: "e1f2ae32-3b7b-4c3f-867c-cd2add0a16b0"
+Parent: "a74530b9-f2b0-4c93-a4d2-96d70e73bfc2"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Carrers/Page Data/Content Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T150502Z
+    - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
+      Hint: Heading
+      Value: Careers
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: List of components
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "95caa282-dfd2-4c4f-82a4-9c9128636024"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: See more
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240910T154042Z
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {7C47CF35-244B-4919-9081-36BB30C0F7B2}
+        {36F5A99C-17D4-4CAF-A096-A93B0ED599C5}
+        {4789C8E7-DD70-4828-BE38-170103F3AF77}
+        {60C95BFB-0B55-4897-91E2-C4CDAF4918DD}
+        {F0A8B3CF-557B-48CB-BD91-E255E140EC2F}
+        {6A66FD2A-DB03-41A7-95AC-694BFFF22092}

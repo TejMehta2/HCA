@@ -27,6 +27,7 @@ import { ResultsCount } from '../YextCustomResultsCount/YextCustomResultsCount';
 import Themes from '../../foundation/Themes/Themes';
 import { useRouter } from 'next/router';
 import YextNoResults from '../YextNoResults/YextNoResults';
+import YextResultCardCareersAdaptor from '../YextResultCardCareers/YextResultCardCareers.adaptor';
 
 export const verticalConfigMap: VerticalConfigMap<{
   healthcare_facilities: unknown;
@@ -127,12 +128,12 @@ export const verticalConfigMap: VerticalConfigMap<{
     ),
   },
   jobs: {
-    label: 'Jobs',
+    label: 'Vacancies',
     SectionComponent: (props) => (
       <YextUniversalSection
         results={props.results}
-        CardComponent={YextResultCardSharedAdaptor}
-        title="Jobs"
+        CardComponent={YextResultCardCareersAdaptor}
+        title="Vacancies"
       />
     ),
   },
@@ -301,6 +302,13 @@ const YextSearch = (): JSX.Element => {
             />
           </>
         );
+      case 'jobs':
+        return (
+          <VerticalResults
+            CardComponent={YextResultCardCareersAdaptor}
+            customCssClasses={{ verticalResultsContainer: styles.vertical }}
+          />
+        );
       case 'links':
         return (
           <VerticalResults
@@ -308,6 +316,7 @@ const YextSearch = (): JSX.Element => {
             customCssClasses={{ verticalResultsContainer: styles.vertical }}
           />
         );
+
       default:
         return <></>;
     }
