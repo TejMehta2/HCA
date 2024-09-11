@@ -33,11 +33,12 @@
 }
 
 .logo {
-  max-width: px-to-rem(133);
-
+  width: px-to-rem(133);
+  height: px-to-rem(88);;
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    object-position: top left;
   }
 }
