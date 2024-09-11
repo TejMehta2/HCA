@@ -1,0 +1,78 @@
+import { ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+
+export interface Fields {
+  data?: {
+    contextItem?: {
+      image?: { jsonValue?: ImageField };
+    };
+    item?: {
+      headerImageMapping?: { targetItems: MappingFields[] };
+    };
+  };
+}
+
+interface MappingFields {
+  jobFamily?: { value?: string };
+  image?: { jsonValue: ImageField };
+}
+
+export type JobDetailsHeaderProps = {
+  params?: Params;
+  fields?: Fields;
+  rendering?: {
+    uid?: string;
+  };
+};
+
+export interface JobsResponse {
+  meta: unknown;
+  response: {
+    businessId: number;
+    queryId: string;
+    resultsCount: number;
+    results: {
+      data: {
+        id: string;
+        type: string;
+        employmentType: string;
+        name: string;
+        uid: number;
+        jobLocation: string;
+        landingPageUrl: null;
+        applicationUrl: null;
+        body: string;
+        jobFunction: string;
+      };
+      highlightedFields: {
+        name: null;
+        description: null;
+        title: null;
+      };
+    }[];
+    appliedQueryFilters: unknown[];
+    facets: {
+      fieldId: string;
+      count: number;
+      displayName: string;
+      options: {
+        displayName: string;
+        count: 23;
+        selected: boolean;
+        filter: {
+          c_jobLocation: {
+            $eq: string;
+          };
+        };
+      }[];
+    }[];
+    source: string;
+    searchIntents: unknown[];
+    locationBias: {
+      latitude: number;
+      longitude: number;
+      locationDisplayName: string;
+      accuracy: string;
+    };
+  };
+}
