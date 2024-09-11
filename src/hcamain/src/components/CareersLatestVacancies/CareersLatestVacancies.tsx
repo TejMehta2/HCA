@@ -1,12 +1,25 @@
 import {
-  Text as JssText,
-  Link,
+  GetStaticComponentProps,
+  useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import { CareersLatestVacanciesProps } from './CareersLatestVacancies.types';
+import CareersSearchResults from '@component-library/careers/CareersSearchResults/CareersSearchResults';
+import Filters from '@component-library/site-components/Filters/Filters';
+import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
+import Icons from '@component-library/foundation/Icons/Icons';
+import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
+import { JobsResponse } from 'components/CareersSearchHero/CareersSearchHero.types';
+import { usePathname, useSearchParams } from 'next/navigation';
+import useSWR from 'swr';
+import Button from '@component-library/core-components/Button/Button';
+import YextResultCardCareers from '@component-library/yext/YextResultCardCareers/YextResultCardCareers';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 
 const CareersLatestVacanciesDefaultComponent = (
   props: CareersLatestVacanciesProps
@@ -28,34 +41,176 @@ const CareersLatestVacanciesDefaultComponent = (
 };
 
 export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
-  if (!props?.fields?.data?.item) {
+  const fallbackData = useComponentProps<JobsResponse['response']>(
+    props.rendering?.uid
+  );
+  const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
+  console.log(searchParams);
+  const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const limit = 1;
+  const resultsPerPage = 6;
+  /* 
+    New search on each searchParams change
+    searchParams are either:
+    - updated by search bar or filters Moo12on same page
+    - available on page load (redirect from e.g. careers home or user copy/paste)
+  */
+  const scope = `jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`;
+  const { data: response } = useSWR<JobsResponse['response']>(
+    `${
+      process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
+    }/careers/search?verticalKey=jobs&retrieveFacets=true&${scope}&limit=${
+      limit * resultsPerPage
+    }&${[...searchParams.entries()]
+      .filter(([, value]) => value?.length)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&')}`,
+    (url: string) =>
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => data.response),
+    {
+      keepPreviousData: true, // Never show nothing
+      revalidateOnFocus: false, // Prevent re-render components when user re-opens browser tab/window
+      fallbackData,
+    }
+  );
+
+  if (!props?.fields?.data?.contextItem) {
     return <CareersLatestVacanciesDefaultComponent {...props} />;
   }
 
+  const filterCategories = response?.facets?.map((facet) => ({
+    title: facet.displayName,
+    fields: facet.options?.map((option) => {
+      return {
+        id: option.displayName,
+        value: option.displayName,
+        name: facet.fieldId.replace('c_', ''),
+        label: option.displayName,
+        checked: searchParams
+          .getAll(facet.fieldId.replace('c_', ''))
+          .includes(option.displayName),
+        onChange: () => {},
+      };
+    }),
+  }));
+
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
-      <Text
-        tag={props.params?.HeadingTag || 'h1'}
-        variation={props.params?.HeadingSize || 'display-1'}
+      <form
+        ref={formRef}
+        onChange={() => {
+          if (!formRef?.current) return;
+          const formData = new FormData(formRef.current);
+          const params = new URLSearchParams([
+            ...formData.entries(),
+          ] as string[][]);
+          const url = `${pathname}?${params}`;
+          router.replace(url, undefined, { shallow: true });
+        }}
       >
-        <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-      </Text>
-
-      <p>Search Controls:</p>
-      <p>{props.fields?.data?.item?.selectAJobAreaLabel?.value}</p>
-      <p>{props.fields?.data?.item?.selectALocationLabel?.value}</p>
-      <p>{props.fields?.data?.item?.readMoreCtaText?.value}</p>
-      <p>
-        <Link
-          field={props.fields.data.item.viewAllVacanciesCTA.jsonValue}
-        ></Link>
-      </p>
-
-      <p>Context data:</p>
-      <p>
-        jobFamily, use it to scope search results to context job area page:{' '}
-        {props.fields?.data?.contextItem?.jobFamily?.value}
-      </p>
+        <CareersSearchResults
+          header={
+            <>
+              <Text
+                tag={props.params?.HeadingTag || 'h2'}
+                variation={props.params?.HeadingSize || 'display-3'}
+              >
+                Latest vacancies
+              </Text>
+              <Filters
+                buttonText={
+                  <span>
+                    <b>Filter</b> by
+                  </span>
+                }
+                buttonIcon={<Icons iconName="iconFilterCircle" />}
+                resultsCount={Number(response?.resultsCount)}
+                filters={filterCategories?.map((category) => ({
+                  title: category.title,
+                  contentVariation: 'filters',
+                  children: (
+                    <Checkboxes>
+                      {category.fields?.map((props) => {
+                        return <Checkbox {...props} key={props.id} />;
+                      })}
+                    </Checkboxes>
+                  ),
+                }))}
+              />
+            </>
+          }
+          results={
+            response?.resultsCount ? (
+              response?.results?.map((job) => {
+                return (
+                  <YextResultCardCareers
+                    key={job.data.id}
+                    location={job.data.jobLocation}
+                    clinical={job.data.jobFunction}
+                    timing={job.data.employmentType}
+                    title={<Text variation={'heading-1'}>{job.data.name}</Text>}
+                    cta={
+                      <Button
+                        contentVariation={'full-width'}
+                        variation={'full'}
+                        size={'small'}
+                      >
+                        <a
+                          href={
+                            job.data.applicationUrl ||
+                            job.data.landingPageUrl ||
+                            '#'
+                          }
+                        >
+                          {props.fields?.data?.item?.readMoreCtaText?.value ||
+                            'Read More & Apply'}
+                        </a>
+                      </Button>
+                    }
+                  />
+                );
+              })
+            ) : (
+              <ErrorMessage contentVariation={'no-container'} />
+            )
+          }
+          cta={
+            response?.resultsCount ? (
+              <Button size={'large'} variation={'full'}>
+                <a href="#">
+                  View all <b>{response?.resultsCount} vacancies</b>
+                </a>
+              </Button>
+            ) : (
+              <></>
+            )
+          }
+        />
+      </form>
     </Themes>
   );
+};
+
+// Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
+export const getStaticProps: GetStaticComponentProps = async (
+  props: CareersLatestVacanciesProps
+) => {
+  try {
+    const scope = props.fields?.data?.contextItem?.jobFamily?.value
+      ? `&jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`
+      : '';
+    const response = await fetch(
+      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6${scope}`
+    );
+    const data = await response.json();
+    return JSON.parse(JSON.stringify(data.response));
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
 };

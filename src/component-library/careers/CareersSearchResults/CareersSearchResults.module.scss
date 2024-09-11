@@ -19,6 +19,12 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  row-gap: $spacing-4;
+  @include media(screen-m) {
+    flex-direction: row;
+  }
+  
 }
 
 .count {
