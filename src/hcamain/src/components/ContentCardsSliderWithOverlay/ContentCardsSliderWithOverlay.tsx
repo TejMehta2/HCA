@@ -5,22 +5,20 @@ import {
   Link as JssLink,
   LinkField,
   ImageField,
-  RichText,
+  RichText as JssRichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import Text from '@component-library/foundation/Text/Text';
-import CardContent from '@component-library/components/CardContent/CardContent';
-import getSubheadingTag from 'lib/subheading-tag-getter';
-import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import CardWithModal from './CardWithModal';
+import Params from 'src/types/params';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
 };
 
-interface PagesFields {
+export interface PagesFields {
   title?: { value?: string };
   text?: { value?: string };
   image?: { jsonValue: ImageField };
@@ -72,14 +70,14 @@ const ContentCardsSliderWithOverlayDefaultComponent = (
   return <></>;
 };
 
-interface WithImageProps extends ContentCardsSliderWithOverlayProps {
+export interface WithImageProps extends ContentCardsSliderWithOverlayProps {
   showImage: boolean;
 }
 
 export const Default = (props: WithImageProps): JSX.Element => {
-  const { showImage = true } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+
   if (!props.fields?.data?.item) {
     return <ContentCardsSliderWithOverlayDefaultComponent {...props} />;
   }
@@ -98,7 +96,7 @@ export const Default = (props: WithImageProps): JSX.Element => {
         <SitecoreSvg>
           {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
         </SitecoreSvg>
-        <RichText
+        <JssRichText
           tag="span"
           field={{
             value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
@@ -136,78 +134,18 @@ export const Default = (props: WithImageProps): JSX.Element => {
       }
       bodyCopy={
         <Text variation={'body-large'} tag="div">
-          <RichText field={props.fields?.data?.item?.text?.jsonValue} />
+          <JssRichText field={props.fields?.data?.item?.text?.jsonValue} />
         </Text>
       }
       link={link || <></>}
     >
       {props.fields?.data?.item?.pages?.PagesList?.map((cards, index) => {
-        const cardCtaUrl = '#overlay';
-
-        return (
-          <CardContent
-            key={index}
-            image={
-              showImage ? (
-                <NextJssImage
-                  field={cards.image?.jsonValue}
-                  editable={false}
-                  next={{
-                    width: 500,
-                    height: 400,
-                    sizes: '(max-width: 768px) 100vw, 30vw',
-                  }}
-                />
-              ) : undefined
-            }
-            title={
-              <Text
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-                variation="heading-1"
-              >
-                <JssText field={cards.title} />
-              </Text>
-            }
-            bodyCopy={
-              cards?.text ? (
-                <Text tag="p" variation="body-large">
-                  <RichText tag="span" field={cards.text} />
-                  <p>
-                    OverlayTitle:
-                    <JssText tag={'span'} field={cards?.overlayTitle} />
-                  </p>
-                  <p>
-                    OverlayHeading:
-                    <JssText tag={'span'} field={cards?.overlayHeading} />
-                  </p>
-                  <div>
-                    OverlayText:
-                    <RichText tag={'div'} field={cards?.overlayText} />
-                  </div>
-                  <p>
-                    OverlayImage:{cards?.overlayImage?.jsonValue?.value?.src}
-                  </p>
-                </Text>
-              ) : undefined
-            }
-            link={
-              cardCtaUrl ? (
-                <a href={cardCtaUrl}>
-                  <RichText
-                    tag="div"
-                    field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                  />
-                </a>
-              ) : (
-                <></>
-              )
-            }
-          />
-        );
+        return <CardWithModal {...props} cards={cards} key={index} />;
       })}
     </CarouselCards>
   );
 };
+
 export const WithoutImage = (
   props: ContentCardsSliderWithOverlayProps
 ): JSX.Element => {
