@@ -25,7 +25,7 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
     handleEditorFastRefresh();
   }, []);
-  console.log(props);
+
   if (notFound || !layoutData.sitecore.route) {
     // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
     return <NotFound />;
@@ -68,8 +68,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const props = await sitecorePagePropsFactory.create(context);
-
-  // console.log(props.layoutData);
   return { props };
 }
 
