@@ -34,8 +34,10 @@
 
 .logo {
   width: px-to-rem(133);
-  height: px-to-rem(88);
-
+  max-height: px-to-rem(88);
+  @include media(screen-m) {
+    grid-template-columns: px-to-rem(133) 1fr;
+  }
   img {
     width: 100%;
     height: 100%;
