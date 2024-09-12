@@ -2,6 +2,7 @@ import {
   GetStaticComponentProps,
   useComponentProps,
   useSitecoreContext,
+  Link as JssLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -20,6 +21,7 @@ import YextResultCardCareers from '@component-library/yext/YextResultCardCareers
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 const CareersLatestVacanciesDefaultComponent = (
   props: CareersLatestVacanciesProps
@@ -45,7 +47,6 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     props.rendering?.uid
   );
   const searchParams = useSearchParams(); // dynamic reference to page URL query params (e.g. &input=job&jobLocation=London )
-  console.log(searchParams);
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -180,11 +181,21 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
             )
           }
           cta={
-            response?.resultsCount ? (
+            props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.href &&
+            props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.text ? (
               <Button size={'large'} variation={'full'}>
-                <a href="#">
-                  View all <b>{response?.resultsCount} vacancies</b>
-                </a>
+                <JssLink
+                  field={
+                    props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value
+                  }
+                >
+                  <SitecoreSvg>
+                    {props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.text?.replaceAll(
+                      /\s{jobsCount}/gm,
+                      response?.resultsCount ? ` ${response?.resultsCount}` : ''
+                    )}
+                  </SitecoreSvg>
+                </JssLink>
               </Button>
             ) : (
               <></>
