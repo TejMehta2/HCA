@@ -222,6 +222,7 @@
         color: var(--cta-full-disabled-text);
         border-color: var(--cta-full-disabled-border);
         background-color: var(--cta-full-disabled-background);
+
         &::after {
           background-color: var(--cta-full-disabled-background);
         }
