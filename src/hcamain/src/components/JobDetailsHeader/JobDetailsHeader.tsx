@@ -45,7 +45,11 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
         <VacancyHeader
-          title={<Text variation={'display-1'}>{data.jobProfile}</Text>}
+          title={
+            <Text variation={'display-1'} tag="h1">
+              {data.jobProfile}
+            </Text>
+          }
           location={<>{data.jobLocation}</>}
           clinical={<>{data.employmentType}</>}
           timing={<>{data.employmentType}</>}
