@@ -37,11 +37,11 @@ Languages:
       Value: Careers
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8c81d301-43c9-47c6-993a-61738427f235"
+      Value: "57a23475-f9f1-4ee6-84d7-c626875a7255"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link text="See all" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{D4B407BD-908E-41C6-B146-54270ADA5706}" />
+        <link class="" id="{D4B407BD-908E-41C6-B146-54270ADA5706}" querystring="" anchor="" target="" title="" linktype="internal" text="See all" url="/HCA/HCA-Main/Home/QA/Components/Careers" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -51,7 +51,7 @@ Languages:
       Value: <p>A great way to get a feel for what we do is to see what our people have to say about life at HCA UK.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240910T202003Z
+      Value: 20240911T152847Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{0F0D22EB-4F39-4517-93E9-9828F405DD2E}"
