@@ -50,6 +50,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
         required={required}
         className={styles['hidden-input']}
         name={activeValue === placeholder ? undefined : id}
+        aria-label={label || id}
       />
       <span className={styles.select}>
         <button

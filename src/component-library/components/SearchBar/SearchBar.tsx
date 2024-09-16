@@ -67,6 +67,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         aria-hidden={true}
         className={'sr-only'}
         type={'submit'}
+        tabIndex={-1}
       >
         Submit
       </button>

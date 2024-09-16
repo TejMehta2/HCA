@@ -26,53 +26,21 @@ export type JobDetailsHeaderProps = {
 };
 
 export interface JobsResponse {
-  meta: unknown;
-  response: {
-    businessId: number;
-    queryId: string;
-    resultsCount: number;
-    results: {
-      data: {
-        id: string;
-        type: string;
-        employmentType: string;
-        name: string;
-        uid: number;
-        jobLocation: string;
-        landingPageUrl: null;
-        applicationUrl: null;
-        body: string;
-        jobFunction: string;
-      };
-      highlightedFields: {
-        name: null;
-        description: null;
-        title: null;
-      };
-    }[];
-    appliedQueryFilters: unknown[];
-    facets: {
-      fieldId: string;
-      count: number;
-      displayName: string;
-      options: {
-        displayName: string;
-        count: 23;
-        selected: boolean;
-        filter: {
-          c_jobLocation: {
-            $eq: string;
-          };
-        };
-      }[];
-    }[];
-    source: string;
-    searchIntents: unknown[];
-    locationBias: {
-      latitude: number;
-      longitude: number;
-      locationDisplayName: string;
-      accuracy: string;
-    };
+  employmentType: string;
+  jobFamily: string;
+  jobFamilyGroup: string;
+  jobFamilyNameforJobProfile: string;
+  jobFunction: string;
+  jobLocation: string;
+  jobProfile: string;
+  richDescription: {
+    html: string;
   };
+  startDate: string;
+  workerSubType: string;
+  id: string;
+  name: string;
+  uid: number;
+  landingPageUrl: string;
+  applicationUrl: string;
 }
