@@ -41,4 +41,6 @@ export interface JobsResponse {
   id: string;
   name: string;
   uid: number;
+  landingPageUrl: string;
+  applicationUrl: string;
 }

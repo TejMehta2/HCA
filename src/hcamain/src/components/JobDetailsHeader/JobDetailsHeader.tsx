@@ -55,14 +55,14 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
               {data.jobProfile}
             </Text>
           }
-          location={<>{data.jobLocation}</>}
-          clinical={<>{data.employmentType}</>}
-          timing={<>{data.employmentType}</>}
-          vacancyCode={<>{data.id}</>}
+          location={data.jobLocation}
+          clinical={data.jobFunction}
+          timing={data.employmentType}
+          vacancyCode={data.id}
           cta={
             <>
               <Button variation={'full-light'} size="large">
-                <a href="#">
+                <a href={data.applicationUrl}>
                   <span>
                     Apply <strong>now</strong>
                   </span>

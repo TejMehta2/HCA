@@ -129,8 +129,8 @@ export const Default = (props: CareersSearchResultsProps): JSX.Element => {
                   >
                     <a
                       href={
-                        job.data.applicationUrl ||
                         job.data.landingPageUrl ||
+                        job.data.applicationUrl ||
                         '#'
                       }
                     >
