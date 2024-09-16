@@ -2,7 +2,7 @@
 ID: "e1f2ae32-3b7b-4c3f-867c-cd2add0a16b0"
 Parent: "a74530b9-f2b0-4c93-a4d2-96d70e73bfc2"
 Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Carrers/Page Data/Content Cards"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data/Content Cards"
 Languages:
 - Language: en
   Versions:
@@ -27,7 +27,7 @@ Languages:
       Value: List of components
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "95caa282-dfd2-4c4f-82a4-9c9128636024"
+      Value: "59e78283-0615-4cf8-8b43-f325942c2eb8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -37,7 +37,7 @@ Languages:
       Value: See more
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240910T154042Z
+      Value: 20240911T152911Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
@@ -47,3 +47,4 @@ Languages:
         {60C95BFB-0B55-4897-91E2-C4CDAF4918DD}
         {F0A8B3CF-557B-48CB-BD91-E255E140EC2F}
         {6A66FD2A-DB03-41A7-95AC-694BFFF22092}
+        {7A6B2F72-BC63-4D26-A047-3FCD58A7DE7F}

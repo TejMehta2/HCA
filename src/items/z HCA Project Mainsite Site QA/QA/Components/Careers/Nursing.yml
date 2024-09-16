@@ -1,13 +1,13 @@
 ﻿---
-ID: "d8744e30-657f-4ed7-b17b-82881868632c"
+ID: "b3385bc3-2e34-4f0d-8452-fb5da14e2129"
 Parent: "d4b407bd-908e-41c6-b146-54270ada5706"
 Template: "d0f1c465-a581-4b02-8449-c86227a4e472"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Carrers/Hotel Services"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Nursing"
 SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{36E3A68F-7A88-4470-89C1-F515BC84463E}" />
+    <image mediaid="{9C26AC45-2BC4-4B6E-96A6-B4767063BA39}" />
 Languages:
 - Language: en
   Versions:
@@ -32,21 +32,21 @@ Languages:
       Value: 20240909T141653Z
     - ID: "57e61daf-1b85-4436-a3c4-bedbf166b457"
       Hint: JobFamily
-      Value: Hotel Services
+      Value: Nursing
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "35816381-fb19-4395-a134-1a657cb017a6"
+      Value: "2af5c54a-2c47-483c-90ef-3bf4162b6af3"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
-        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/f535b2527f7b4d208b7b266fbffa40e5?v=5dce2a47" dam-id="aTzB-c4ZVkWeh-LGCrXg6g" width="2000" height="1334" alt="THSC_0823_224" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/168361/thumbnail" />
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/725cbf1eae684548957740689d811d8a?v=2eeac3a2" dam-id="Ovz-4wd_R4CqbktWcrG8og" width="2000" height="1333" alt="AAU Nurse with female patient 1217096099.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231756/thumbnail" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240911T104813Z
+      Value: 20240911T104639Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: Hotel Services Roles
+      Value: Nursing Roles

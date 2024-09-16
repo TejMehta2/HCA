@@ -1,8 +1,8 @@
 ﻿---
-ID: "8b04ef40-5b0f-45d8-9ee4-51f2a3ff3582"
-Parent: "5739bcbc-f5d8-4895-9e79-6f330eb57f72"
+ID: "97d363b0-6cd7-41cf-857a-2ae0f88c73d9"
+Parent: "deea71d3-ce68-44b5-9b40-f49c98960971"
 Template: "2dfbdc13-353d-4f15-a9f5-0e7e8b6baa73"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Carrers/Nursing/Page Data/Careers Latest Vacancies datasource"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Hotel Services/Page Data/Careers Latest Vacancies datasource"
 Languages:
 - Language: en
   Versions:
