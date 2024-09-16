@@ -2,11 +2,18 @@ import React from 'react';
 import {
   useSitecoreContext,
   GetStaticComponentProps,
+  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
-
-import { JobDetailsHeaderProps } from './JobDetailsHeader.types';
+import VacancyHeader from '@component-library/careers/VacancyHeader/VacancyHeader';
+import { JobDetailsHeaderProps, JobsResponse } from './JobDetailsHeader.types';
+import { GetServerSidePropsContext } from 'next';
+import Text from '@component-library/foundation/Text/Text';
+import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import Button from '@component-library/core-components/Button/Button';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -28,11 +35,43 @@ const JobDetailsHeaderDefaultComponent = (
 };
 
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
-  if (!props?.fields?.data?.item) {
+  const data = useComponentProps<JobsResponse>(props.rendering?.uid);
+
+  if (!props?.fields?.data?.item || !data) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
+
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+        <VacancyHeader
+          title={
+            <Text variation={'display-1'} tag="h1">
+              {data.jobProfile}
+            </Text>
+          }
+          location={<>{data.jobLocation}</>}
+          clinical={<>{data.employmentType}</>}
+          timing={<>{data.employmentType}</>}
+          vacancyCode={<>{data.id}</>}
+          cta={
+            <>
+              <Button variation={'full-light'} size="large">
+                <a href="#">
+                  <span>
+                    Apply <strong>now</strong>
+                  </span>
+                  <Icons iconName={'iconArrowRight'} />
+                </a>
+              </Button>
+            </>
+          }
+        />
+        <Text variation={'body-medium'}>
+          <SitecoreSvg>{data.richDescription.html}</SitecoreSvg>
+        </Text>
+      </BlogContent>
+      {/* V2
       <p>
         header images are mapped with corresponding jobFamily/area page. find
         matching Job s jobFamily field value from the API response in dictionary
@@ -49,19 +88,23 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
         }
       )}
       <p>if there is no match, use default header image:</p>
-      {props.fields?.data?.contextItem?.image?.jsonValue?.value?.src}
+      {props.fields?.data?.contextItem?.image?.jsonValue?.value?.src} */}
     </Themes>
   );
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.
-export const getStaticProps: GetStaticComponentProps = async () => {
+export const getServerSideProps: GetStaticComponentProps = async (
+  _,
+  __,
+  context: GetServerSidePropsContext
+) => {
   try {
     const response = await fetch(
-      `${process.env.INTEGRATION_LAYER_URL}/careers/job?name=`
+      `${process.env.INTEGRATION_LAYER_URL}/careers/job/${context.query.path}`
     );
     const data = await response.json();
-    return JSON.parse(JSON.stringify(data.response));
+    return await data.response;
   } catch (error) {
     console.error(error);
     return {};
