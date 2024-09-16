@@ -163,8 +163,8 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                       >
                         <a
                           href={
-                            job.data.applicationUrl ||
                             job.data.landingPageUrl ||
+                            job.data.applicationUrl ||
                             '#'
                           }
                         >

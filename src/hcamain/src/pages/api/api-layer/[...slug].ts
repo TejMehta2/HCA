@@ -42,7 +42,7 @@ export default async function handler(
     // fetch from remote integration layer server
     delete headers.host;
     delete headers.referer;
-
+    console.log(remoteRequestUrl.href)
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : JSON.stringify(body),
