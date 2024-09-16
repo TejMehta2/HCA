@@ -14,6 +14,7 @@ import BlogContent from '@component-library/site-components/BlogContent/BlogCont
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
+import Head from 'next/head';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -43,6 +44,10 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <Head>
+        <title>{data.jobProfile}</title>
+        <meta property="og:title" content={data.jobProfile} />
+      </Head>
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
         <VacancyHeader
           title={
