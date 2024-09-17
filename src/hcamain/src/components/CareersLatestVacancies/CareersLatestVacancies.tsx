@@ -59,11 +59,13 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     - updated by search bar or filters Moo12on same page
     - available on page load (redirect from e.g. careers home or user copy/paste)
   */
-  const scope = `jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`;
+  const scope = props.fields?.data?.contextItem?.jobFamily?.value
+    ? `&jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`
+    : '';
   const { data: response } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
-    }/careers/search?verticalKey=jobs&retrieveFacets=true&${scope}&limit=${
+    }/careers/search?verticalKey=jobs&retrieveFacets=true${scope}&limit=${
       limit * resultsPerPage
     }&${[...searchParams.entries()]
       .filter(([, value]) => value?.length)
