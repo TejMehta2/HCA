@@ -28,10 +28,10 @@ export default meta;
 export const Default: StoryObj<typeof VacancyHeader> = {
   args: {
     title: <Text variation={'display-1'}>Staff Nurse - Imaging</Text>,
-    location: <>Lister Hospital – London</>,
-    clinical: <>Clinical</>,
-    timing: <>Full time</>,
-    vacancyCode: <>0041819</>,
+    location: 'Lister Hospital – London',
+    clinical: 'Clinical',
+    timing: 'Full time',
+    vacancyCode: '0041819',
     cta: (
       <Button variation={'full-light'} size="large">
         <a href="#">
