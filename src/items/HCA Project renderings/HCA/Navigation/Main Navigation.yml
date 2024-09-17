@@ -161,6 +161,10 @@ SharedFields:
       cta {
         jsonValue
       }
+      
+      mobileCtaText {
+        jsonValue
+      }
     
       date {
         jsonValue
@@ -181,6 +185,10 @@ SharedFields:
       }
     
       cta {
+        jsonValue
+      }
+      
+      mobileCtaText {
         jsonValue
       }
     
@@ -279,14 +287,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b086558f-ca2b-4011-b71b-6dc0a99e11c0"
+      Value: "6570c664-e726-41c0-aee0-9cd29698e46a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240610T170928Z
+      Value: 20240917T145918Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

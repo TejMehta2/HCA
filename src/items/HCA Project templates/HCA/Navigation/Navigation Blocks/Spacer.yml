@@ -1,16 +1,15 @@
 ﻿---
-ID: "043d9a67-cc4e-4529-b8ce-7655fba8daeb"
-Parent: "4b79722c-f62f-4252-bb48-93b5f3233e5f"
-Template: "4b79722c-f62f-4252-bb48-93b5f3233e5f"
-Path: /sitecore/templates/Project/HCA/Navigation/Navigation Tab/__Standard Values
+ID: "dc05862a-3b4b-4657-8c6a-5d9b165ef5b5"
+Parent: "04ae4729-fc05-47b8-b68c-5bf8a2394bc4"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Navigation/Navigation Blocks/Spacer
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: |
-    {4C22AE2E-0A07-49C8-B62F-C60060DA2DBE}
-    {61985635-C618-49BC-A2DE-A081CAC1CB00}
-    {9ECA8F74-7849-4EF9-9939-58101C090F49}
-    {DC05862A-3B4B-4657-8C6A-5D9B165EF5B5}
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/navigate_minus.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
 Languages:
 - Language: en
   Versions:
@@ -18,7 +17,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240208T000303Z
+      Value: 20240916T182430Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -29,14 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fb5fe4c9-1924-438e-bb02-5914c7eb2eac"
-    - ID: "b4822256-10b6-453b-a125-f80091ad670e"
-      Hint: TabTitle
-      Value: $name
+      Value: "db4d7722-ee9d-488e-885d-c05c454e6d55"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240916T182746Z
+      Value: 20240916T182658Z

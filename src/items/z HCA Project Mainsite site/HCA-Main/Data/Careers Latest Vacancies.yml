@@ -1,8 +1,8 @@
 ﻿---
-ID: "deea71d3-ce68-44b5-9b40-f49c98960971"
-Parent: "d8744e30-657f-4ed7-b17b-82881868632c"
-Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Carrers/Hotel Services/Page Data"
+ID: "1720e951-6063-4a51-9853-1a300fe9595b"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Path: "/sitecore/content/HCA/HCA-Main/Data/Careers Latest Vacancies"
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240909T141658Z
+      Value: 20240911T141953Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c371b05b-ebe7-4526-a18a-6e216d05ce42"
+      Value: "13a7da8e-d946-405d-ad8e-2b915d489860"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T141658Z
+      Value: 20240911T141953Z
