@@ -26,6 +26,7 @@ import Filters from '@component-library/site-components/Filters/Filters';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { useRouter } from 'next/router';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
@@ -74,9 +75,9 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                 tag={props.params?.HeadingTag || 'h1'}
                 variation={props.params?.HeadingSize || 'display-2'}
               >
-                <JssText
-                  field={props.fields?.data?.contextItem?.title?.jsonValue}
-                />
+                <SitecoreSvg>
+                  {props.fields?.data?.contextItem?.title?.jsonValue?.value}
+                </SitecoreSvg>
               </Text>
               <Text tag={'div'} variation={'body-large'}>
                 <RichText
