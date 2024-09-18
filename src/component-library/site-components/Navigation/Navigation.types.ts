@@ -25,7 +25,7 @@ export interface TabContent {
   links?: JSX.Element[];
   cta?: JSX.Element;
   mobileCta?: JSX.Element;
-  showOnMobile?: boolean
+  showOnMobile?: boolean;
 }
 
 export interface NavigationTab {
