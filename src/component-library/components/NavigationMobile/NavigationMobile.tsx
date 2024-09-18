@@ -85,7 +85,8 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
       const isLinkList = item.template === 'Main Navigation Links List';
       const isSimpleContentBlock =
         item.template === 'Navigation Content Block' &&
-        ['simple', 'single'].includes(item.variation || '');
+        ['simple', 'single'].includes(item.variation || '') &&
+        item.showOnMobile;
       return isLinkList || isSimpleContentBlock;
     }),
   }));
