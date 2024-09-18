@@ -14,6 +14,8 @@
 
   .title {
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+
+    margin-bottom: calc(#{$spacing-7} - #{px-to-rem(4)});
   }
 
   .search {
