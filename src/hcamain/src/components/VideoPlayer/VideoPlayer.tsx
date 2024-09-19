@@ -145,3 +145,69 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     </figure>
   );
 };
+
+export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
+  const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
+
+  if (!props.fields) {
+    return <VideoPlayerDefaultComponent {...props} />;
+  }
+
+  return (
+    <VideoBlock
+      variation="side-by-side"
+      theme={props.params?.Theme || 'A-HCA-White'}
+      header={
+        <AdvancedBlockHeader
+          subtitle={
+            <Text variation={'subheading-1'}>
+              <JssText field={props.fields?.Heading} />
+            </Text>
+          }
+          title={
+            <Text
+              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-2'}
+            >
+              <JssText field={props.fields?.Title} />
+            </Text>
+          }
+          body={
+            <RichText>
+              <JssRichText tag="div" field={props.fields?.Text}></JssRichText>
+            </RichText>
+          }
+          ctas={
+            props.rendering && (
+              <Placeholder
+                name={phKey}
+                rendering={props.rendering}
+                size={buttonSize}
+              />
+            )
+          }
+        />
+      }
+      video={
+        props.fields?.VideoUrl?.value ? (
+          <VideoPlayer
+            videoUrl={props.fields?.VideoUrl.value}
+            overlayImage={
+              <NextJssImage
+                field={props.fields?.VideoThumbnail}
+                next={{
+                  width: 2000,
+                  height: 2000,
+                  sizes: '(max-width: 768px) 100vw, 90vw',
+                }}
+              />
+            }
+          />
+        ) : (
+          <></>
+        )
+      }
+    ></VideoBlock>
+  );
+};
