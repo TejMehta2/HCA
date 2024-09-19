@@ -95,6 +95,7 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
               )}
             </JssLink>
           ) : undefined,
+          showOnMobile: child?.showOnMobile?.boolValue || false,
         })) || [],
       mobileTabCta: tab?.mobileTabCta?.jsonValue?.value?.href ? (
         <JssLink field={tab?.mobileTabCta?.jsonValue} editable={false} />
