@@ -114,9 +114,11 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
           : undefined
       }
       children={
-        <Text variation={props.params?.HeadingSize || 'display-5'}>
-          “<JssText field={props.fields?.Quote} />”
-        </Text>
+        props.fields?.Quote ? ( // Check if the quote is not null or empty
+          <Text variation={props.params?.HeadingSize || 'display-5'}>
+            “<JssText field={props.fields?.Quote} />”
+          </Text>
+        ) : null // Render nothing if the quote is null or empty
       }
     />
   );
@@ -202,6 +204,13 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
               ),
             }
           : undefined
+      }
+      children={
+        props.fields?.Quote ? ( // Check if the text is not null or empty
+          <Text variation={props.params?.HeadingSize || 'display-5'}>
+            <JssText field={props.fields?.Quote} />
+          </Text>
+        ) : null // Render nothing if the quote is null or empty
       }
     />
   );
