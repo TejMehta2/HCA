@@ -25,6 +25,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  a {
+    text-decoration: none !important;
+  }
 }
 
 .name {

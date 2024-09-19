@@ -86,12 +86,16 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           ) : (
             <></>
           ),
-          mobileCta:
-            child?.cta?.jsonValue?.value?.href && child?.mobileCtaText ? (
-              <JssLink field={child?.cta?.jsonValue} editable={false}>
+          mobileCta: child?.cta?.jsonValue?.value?.href ? (
+            <JssLink field={child?.cta?.jsonValue} editable={false}>
+              {child?.mobileCtaText?.value ? (
                 <JssText field={child?.mobileCtaText} editable={false} />
-              </JssLink>
-            ) : undefined,
+              ) : (
+                <JssText field={child?.title} editable={false} />
+              )}
+            </JssLink>
+          ) : undefined,
+          showOnMobile: child?.showOnMobile?.boolValue || false,
         })) || [],
       mobileTabCta: tab?.mobileTabCta?.jsonValue?.value?.href ? (
         <JssLink field={tab?.mobileTabCta?.jsonValue} editable={false} />
