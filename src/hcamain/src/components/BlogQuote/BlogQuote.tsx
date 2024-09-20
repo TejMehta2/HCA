@@ -121,7 +121,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
           : undefined
       }
       children={
-        props.fields?.Quote ? ( // Check if the quote is not null or empty
+        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the quote is not null or empty
           <Text variation={props.params?.HeadingSize || 'display-5'}>
             “<JssText field={props.fields?.Quote} />”
           </Text>
@@ -219,7 +219,7 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
           : undefined
       }
       children={
-        props.fields?.Quote ? ( // Check if the text is not null or empty
+        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the text is not null or empty
           <Text variation={props.params?.HeadingSize || 'display-5'}>
             <JssText field={props.fields?.Quote} />
           </Text>
