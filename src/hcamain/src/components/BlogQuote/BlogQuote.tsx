@@ -36,6 +36,7 @@ type BlogQuoteProps = {
 const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+  console.log('BlogQuoteDefaultComponent', props);
 
   if (isExperienceEditor)
     return (
