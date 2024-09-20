@@ -51,7 +51,6 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
-  console.log('BlogQuoteDefaultComponent', props);
   if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
