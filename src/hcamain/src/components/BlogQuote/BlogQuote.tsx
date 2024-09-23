@@ -60,21 +60,34 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       author={
         props.fields?.Author?.length
           ? {
-              name: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+              name:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+                  </a>
+                ) : (
                   <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-              image: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                ),
+              image:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <NextJssImage
+                      field={props.fields?.Author?.[0]?.fields?.Avatar}
+                      next={{
+                        width: '70',
+                        height: '70',
+                      }}
+                    />
+                  </a>
+                ) : (
                   <NextJssImage
                     field={props.fields?.Author?.[0]?.fields?.Avatar}
                     next={{
@@ -82,39 +95,32 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
                       height: '70',
                     }}
                   />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-              tag: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                ),
+              tag:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <span>
+                      <JssText
+                        field={props.fields?.Author?.[0]?.fields?.Position}
+                      />
+                    </span>
+                  </a>
+                ) : (
                   <span>
                     <JssText
                       field={props.fields?.Author?.[0]?.fields?.Position}
                     />
                   </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
+                ),
             }
           : undefined
       }
       children={
-        props.fields?.Quote ? ( // Check if the quote is not null or empty
+        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the quote is not null or empty
           <Text variation={props.params?.HeadingSize || 'display-5'}>
             “<JssText field={props.fields?.Quote} />”
           </Text>
@@ -152,21 +158,34 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
       author={
         props.fields?.Author?.length
           ? {
-              name: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+              name:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+                  </a>
+                ) : (
                   <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-                </a>
-              ) : (
-                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
-              ),
-              image: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                ),
+              image:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <NextJssImage
+                      field={props.fields?.Author?.[0]?.fields?.Avatar}
+                      next={{
+                        width: '70',
+                        height: '70',
+                      }}
+                    />
+                  </a>
+                ) : (
                   <NextJssImage
                     field={props.fields?.Author?.[0]?.fields?.Avatar}
                     next={{
@@ -174,39 +193,32 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
                       height: '70',
                     }}
                   />
-                </a>
-              ) : (
-                <NextJssImage
-                  field={props.fields?.Author?.[0]?.fields?.Avatar}
-                  next={{
-                    width: '70',
-                    height: '70',
-                  }}
-                />
-              ),
-              tag: props.fields?.Author?.[0]?.fields?.Link ? (
-                <a
-                  href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
-                  target="_blank"
-                >
+                ),
+              tag:
+                props.fields?.Author?.[0]?.fields?.Link &&
+                props.fields?.Author?.[0]?.fields?.Link?.value?.href !== '' ? (
+                  <a
+                    href={props.fields?.Author?.[0]?.fields?.Link?.value?.href}
+                    target="_blank"
+                  >
+                    <span>
+                      <JssText
+                        field={props.fields?.Author?.[0]?.fields?.Position}
+                      />
+                    </span>
+                  </a>
+                ) : (
                   <span>
                     <JssText
                       field={props.fields?.Author?.[0]?.fields?.Position}
                     />
                   </span>
-                </a>
-              ) : (
-                <span>
-                  <JssText
-                    field={props.fields?.Author?.[0]?.fields?.Position}
-                  />
-                </span>
-              ),
+                ),
             }
           : undefined
       }
       children={
-        props.fields?.Quote ? ( // Check if the text is not null or empty
+        props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the text is not null or empty
           <Text variation={props.params?.HeadingSize || 'display-5'}>
             <JssText field={props.fields?.Quote} />
           </Text>
