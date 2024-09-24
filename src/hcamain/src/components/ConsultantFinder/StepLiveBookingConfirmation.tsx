@@ -109,25 +109,27 @@ export const Default = (props: StepProps): JSX.Element => {
       <>
         {router.isReady && (
           <>
-            <Script /* HWPD-3463 - data layer */
-              id="cf-gtm-liveBooking"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                'event': 'consultantFinder',
-                'formType': 'live',
-                'goalType': 'finderBookingSubmit',
-                'consultantName': '${consultantName}',
-                'consultantSpecialty': '${consultantMainSpecialty}',
-                'consultantReviews': '${reviewsTotal}',
-                'finderFormPayor': '${finderFormPayor}',
-                'finderFormPrevious': '${finderFormPrevious}',
-                'finderFormPractice': '${selectedLocationName}',
-                'completedFormId': '${completedFormId}'
-                });`,
-              }}
-            ></Script>
+            {completedFormId && completedFormId.length > 0 && (
+              <Script /* HWPD-3463 - data layer */
+                id="cf-gtm-liveBooking"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `window.dataLayer = window.dataLayer || [];
+                   window.dataLayer.push({
+                   'event': 'consultantFinder',
+                   'formType': 'live',
+                   'goalType': 'finderBookingSubmit',
+                   'consultantName': '${consultantName}',
+                   'consultantSpecialty': '${consultantMainSpecialty}',
+                   'consultantReviews': '${reviewsTotal}',
+                   'finderFormPayor': '${finderFormPayor}',
+                   'finderFormPrevious': '${finderFormPrevious}',
+                   'finderFormPractice': '${selectedLocationName}',
+                   'completedFormId': '${completedFormId}'
+                   });`,
+                }}
+              ></Script>
+            )}
             <HeaderLDB
               logo={<JssImage field={props?.fields?.HCALogo} />}
               progress={
