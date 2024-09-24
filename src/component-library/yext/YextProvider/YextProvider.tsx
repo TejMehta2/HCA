@@ -35,24 +35,11 @@ export const getHeadConfig: GetHeadConfig<
 const environment = process.env
   .NEXT_PUBLIC_YEXT_ENVIRONMENT! as keyof typeof Environment;
 
-const universalAutocomplete =
-  process.env.NEXT_PUBLIC_ENDPOINT_UNIVERSAL_AUTOCOMPLETE?.trim();
-const universalSearch =
-  process.env.NEXT_PUBLIC_ENDPOINT_UNIVERSAL_SEARCH?.trim();
-
 export const headlessConfig: HeadlessConfig = {
   apiKey: process.env.NEXT_PUBLIC_YEXT_API_KEY!,
   experienceKey: process.env.NEXT_PUBLIC_YEXT_EXPERIENCE_KEY!,
   locale: 'en_GB',
   environment: Environment[environment],
-  endpoints: {
-    ...(universalAutocomplete && {
-      universalAutocomplete: universalAutocomplete,
-    }),
-    ...(universalSearch && {
-      universalSearch: universalSearch,
-    }),
-  },
 };
 
 const searcher = provideHeadless(headlessConfig);
