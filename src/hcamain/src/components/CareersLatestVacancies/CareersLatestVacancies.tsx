@@ -59,9 +59,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     - updated by search bar or filters Moo12on same page
     - available on page load (redirect from e.g. careers home or user copy/paste)
   */
-  const scope = props.fields?.data?.contextItem?.jobFamily?.value
-    ? `&jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`
-    : '';
+  const scope = getJobFamiliesQueryString(props);
   const { data: response } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
@@ -82,7 +80,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     }
   );
 
-  if (!props?.fields?.data?.contextItem) {
+  if (!props?.fields?.data?.item) {
     return <CareersLatestVacanciesDefaultComponent {...props} />;
   }
 
@@ -170,7 +168,8 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                             '#'
                           }
                         >
-                          {props.fields?.data?.item?.readMoreCtaText?.value ||
+                          {props.fields?.data?.item?.searchConfiguration
+                            ?.targetItem?.readMoreCtaText?.value ||
                             'Read More & Apply'}
                         </a>
                       </Button>
@@ -183,16 +182,19 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
             )
           }
           cta={
-            props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.href &&
-            props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.text ? (
+            props.fields.data.item?.searchConfiguration?.targetItem
+              ?.viewAllVacanciesCTA.jsonValue.value.href &&
+            props.fields.data.item?.searchConfiguration?.targetItem
+              ?.viewAllVacanciesCTA.jsonValue.value.text ? (
               <Button size={'large'} variation={'full'}>
                 <JssLink
                   field={
-                    props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value
+                    props.fields.data.item?.searchConfiguration?.targetItem
+                      ?.viewAllVacanciesCTA.jsonValue.value
                   }
                 >
                   <SitecoreSvg>
-                    {props.fields.data.item?.viewAllVacanciesCTA.jsonValue.value.text?.replaceAll(
+                    {props.fields.data.item?.searchConfiguration?.targetItem?.viewAllVacanciesCTA.jsonValue.value.text?.replaceAll(
                       /\s{jobsCount}/gm,
                       response?.resultsCount ? ` ${response?.resultsCount}` : ''
                     )}
@@ -214,9 +216,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   props: CareersLatestVacanciesProps
 ) => {
   try {
-    const scope = props.fields?.data?.contextItem?.jobFamily?.value
-      ? `&jobFamily=${props.fields?.data?.contextItem?.jobFamily?.value}`
-      : '';
+    const scope = getJobFamiliesQueryString(props);
     const response = await fetch(
       `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6${scope}`
     );
@@ -226,4 +226,25 @@ export const getStaticProps: GetStaticComponentProps = async (
     console.error(error);
     return {};
   }
+};
+
+// Function to map jobFamilies to query string
+const getJobFamiliesQueryString = (
+  props: CareersLatestVacanciesProps
+): string => {
+  const jobFamilies = props.fields?.data?.item?.jobFamilies?.targetItems;
+
+  if (!jobFamilies || jobFamilies.length === 0) {
+    return '';
+  }
+
+  const queryString = jobFamilies
+    .map((family) => {
+      const keyValue = family.value?.value;
+      return keyValue ? `&jobFamily=${encodeURIComponent(keyValue)}` : '';
+    })
+    .filter(Boolean) // Remove empty values
+    .join('');
+
+  return queryString;
 };
