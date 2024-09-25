@@ -13,34 +13,38 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetCareersSearchHero(
-      $contextItem: String!
-      $datasource: String!
-      $language: String!
-    ) {
+    query GetLatestVacancies($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
         ... on CareersLatestVacancies {
-          selectAJobAreaLabel {
-            value
-          }
-          selectALocationLabel {
-            value
-          }
-          viewAllVacanciesCTA {
-            jsonValue
-          }
           title {
             jsonValue
           }
-          readMoreCtaText {
-            value
+          searchConfiguration {
+            targetItem {
+              ... on CareersLatestVacanciesConfiguration {
+                selectAJobAreaLabel {
+                  value
+                }
+                selectALocationLabel {
+                  value
+                }
+                viewAllVacanciesCTA {
+                  jsonValue
+                }
+                readMoreCtaText {
+                  value
+                }
+              }
+            }
           }
-        }
-      }
-      contextItem: item(path: $contextItem, language: $language) {
-        ... on CareersAreaPage {
-          jobFamily {
-            value
+          jobFamilies {
+            targetItems {
+              ... on GenericSetting {
+                value {
+                  value
+                }
+              }
+            }
           }
         }
       }
@@ -49,6 +53,9 @@ SharedFields:
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies
+- ID: "308e88f5-cd6e-4f8f-bafe-95a47dedefdc"
+  Hint: Editable
+  Value: 
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -71,6 +78,9 @@ SharedFields:
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "f172b787-7b88-4bd5-ae4d-6308e102ef11"
+  Hint: Enable Datasource Query
+  Value: 
 Languages:
 - Language: "de-DE"
   Fields:
@@ -114,14 +124,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b997f27c-e34e-4b92-9e5b-b46a35854347"
+      Value: "3dd5a585-118f-4075-8f09-948518362f00"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T154300Z
+      Value: 20240925T155904Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

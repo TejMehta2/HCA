@@ -2,7 +2,7 @@
 ID: "de51d703-60bc-4779-8f58-499bb9a9d427"
 Parent: "f3ce8386-0b63-44b5-a204-eae92c052aae"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Careers/Base/_careersJobTextSearchFilter/Content
+Path: /sitecore/templates/Project/HCA/Careers/Base/_careersJobTextSearchFilter/Search Configuration
 Languages:
 - Language: en
   Versions:
