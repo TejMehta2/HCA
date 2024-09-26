@@ -1,8 +1,8 @@
 ﻿---
-ID: "65f91abd-ebd9-4112-a329-c42a0831884c"
-Parent: "7e7dfa66-a043-4878-89c0-d76370bdb340"
+ID: "93f4e670-71c7-43bf-98e7-0f3bad482c1a"
+Parent: "de51d703-60bc-4779-8f58-499bb9a9d427"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Careers/Base/_careersJobLocationFilter/Content/SelectALocationLabel
+Path: /sitecore/templates/Project/HCA/Careers/Base/_careersJobTextSearchFilter/Search Configuration/SearchPhrasePlaceholder
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
@@ -15,16 +15,16 @@ SharedFields:
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 200
+  Value: 100
 Languages:
 - Language: "de-DE"
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: __Standard Werte
+    Value: Text
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: PromoIcon
+    Value: PromoText
   Versions:
   - Version: 1
     Fields:
@@ -53,23 +53,23 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Select a Location Label
+    Value: Search Phrase Placeholder
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20111213T133500Z
+      Value: 20111213T143500
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ad3063ef-c900-4b9f-9f01-24240f5fdcef"
+      Value: "2bc51d70-fb03-438a-bf48-ca7d6e4d1140"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240905T222054Z
+      Value: 20240905T222030Z
     - ID: "fa622538-0c13-4130-a001-45984241aa00"
       Hint: Enable Language Fallback
       Value: 1
@@ -77,10 +77,10 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: __標準値
+    Value: テキスト
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ アイコン
+    Value: プロモ テキスト
   Versions:
   - Version: 1
     Fields:
@@ -109,10 +109,10 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: __标准值
+    Value: 文本
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销图标
+    Value: 促销文字
   Versions:
   - Version: 1
     Fields:

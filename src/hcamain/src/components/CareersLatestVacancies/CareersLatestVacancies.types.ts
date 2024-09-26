@@ -3,17 +3,24 @@ import Params from 'src/types/params';
 
 export interface Fields {
   data?: {
-    contextItem?: {
-      jobFamily?: { value?: string };
-    };
     item?: {
       title?: { jsonValue?: Field<string> };
-      selectAJobAreaLabel?: { value?: string };
-      selectALocationLabel?: { value?: string };
-      readMoreCtaText?: { value?: string };
-      viewAllVacanciesCTA: { jsonValue: { value: LinkFieldValue } };
+      searchConfiguration?: { targetItem: CareersLatestVacanciesConfiguration };
+      jobFamilies?: { targetItems?: GeneralSetting[] };
     };
   };
+}
+
+export interface CareersLatestVacanciesConfiguration {
+  selectAJobAreaLabel?: { value?: string };
+  selectALocationLabel?: { value?: string };
+  readMoreCtaText?: { value?: string };
+  viewAllVacanciesCTA: { jsonValue: { value: LinkFieldValue } };
+}
+
+export interface GeneralSetting {
+  key?: { value?: string };
+  value?: { value?: string };
 }
 
 export type CareersLatestVacanciesProps = {
