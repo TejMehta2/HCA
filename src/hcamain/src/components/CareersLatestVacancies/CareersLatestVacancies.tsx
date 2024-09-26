@@ -3,6 +3,7 @@ import {
   useComponentProps,
   useSitecoreContext,
   Link as JssLink,
+  Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -121,7 +122,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                 tag={props.params?.HeadingTag || 'h2'}
                 variation={props.params?.HeadingSize || 'display-3'}
               >
-                Latest vacancies
+                <JssText field={props.fields.data.item?.title?.jsonValue} />
               </Text>
               <Filters
                 buttonText={
