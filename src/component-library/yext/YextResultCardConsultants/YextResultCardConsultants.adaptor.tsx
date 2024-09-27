@@ -31,11 +31,7 @@ const YextResultCardConsultantsAdaptor = (
     label: 'View profile',
   };
 
-  const specialties = Array.prototype.map
-    .call(c_specialty, (item) => {
-      return item.keywordName;
-    })
-    .join(', ');
+  const specialties = c_specialty?.map((item) => item.keywordName)?.join(', ');
 
   return (
     <YextResultCardConsultants
@@ -100,14 +96,18 @@ const YextResultCardConsultantsAdaptor = (
           </TextLink>
         ) : undefined
       }
-      specialties={{
-        icon: <Icons iconName="iconStethoscope"></Icons>,
-        text: (
-          <Text variation="body-large" tag="span">
-            {specialties}
-          </Text>
-        ),
-      }}
+      specialties={
+        specialties
+          ? {
+              icon: <Icons iconName="iconStethoscope"></Icons>,
+              text: (
+                <Text variation="body-large" tag="span">
+                  {specialties}
+                </Text>
+              ),
+            }
+          : undefined
+      }
     />
   );
 };
