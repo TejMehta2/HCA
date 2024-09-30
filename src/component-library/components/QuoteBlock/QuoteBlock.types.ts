@@ -7,4 +7,5 @@ export interface QuoteBlockProps {
     image?: ReactNode | JSX.Element;
     tag?: ReactNode | JSX.Element | string;
   };
+  title?: ReactNode | JSX.Element | string;
 }
