@@ -12,6 +12,7 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Text from '@component-library/foundation/Text/Text';
+import Container from '@component-library/foundation/Containers/Container';
 
 interface AuthorFields {
   fields?: {
@@ -115,9 +116,11 @@ export const Default = (props: AuthorsProps): JSX.Element => {
       contentVariation="quote"
     >
       {props?.fields?.Title && (
-        <Text tag="div" variation={'subheading-1'}>
-          <JssText field={props?.fields?.Title} />
-        </Text>
+        <Container marginBottom="spacing-2">
+          <Text tag="div" variation={'subheading-1'}>
+            <JssText field={props?.fields?.Title} />
+          </Text>
+        </Container>
       )}
       <RichText>{quoteBlocks}</RichText>
     </BlogContent>
