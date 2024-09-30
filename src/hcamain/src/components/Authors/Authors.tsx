@@ -11,6 +11,7 @@ import QuoteBlock from '@component-library/components/QuoteBlock/QuoteBlock';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import Text from '@component-library/foundation/Text/Text';
 
 interface AuthorFields {
   fields?: {
@@ -56,7 +57,6 @@ export const Default = (props: AuthorsProps): JSX.Element => {
   const quoteBlocks = props.fields.Authors.map((author, index) => (
     <QuoteBlock
       key={`author-${index}`}
-      title={<JssText field={props?.fields?.Title} />}
       author={
         author?.fields?.Link?.value?.href
           ? {
@@ -114,6 +114,11 @@ export const Default = (props: AuthorsProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
     >
+      {props?.fields?.Title && (
+        <Text tag="div" variation={'subheading-1'}>
+          <JssText field={props?.fields?.Title} />
+        </Text>
+      )}
       <RichText>{quoteBlocks}</RichText>
     </BlogContent>
   );
