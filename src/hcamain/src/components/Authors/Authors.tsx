@@ -23,7 +23,7 @@ interface AuthorFields {
 
 interface Fields {
   Title?: Field<string>;
-  Authors?: AuthorFields[][];
+  Authors?: AuthorFields[];
 }
 
 type AuthorsProps = {
@@ -53,54 +53,50 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     return <AuthorsDefaultComponent {...props} />;
   }
 
-  console.log('authors', props);
-
-  const quoteBlocks = props.fields?.Authors.flatMap((authorArray, index) =>
-    authorArray.map((author, authorIndex) => (
-      <QuoteBlock
-        key={`author-${index}-${authorIndex}`}
-        author={
-          author?.fields?.Link?.value?.href
-            ? {
-                name: (
-                  <a href={author?.fields?.Link?.value?.href} target="_blank">
-                    <JssText field={author?.fields?.Name} />
-                  </a>
-                ),
-                image: (
-                  <a href={author?.fields?.Link?.value?.href} target="_blank">
-                    <NextJssImage
-                      field={author?.fields?.Avatar}
-                      next={{ width: '70', height: '70' }}
-                    />
-                  </a>
-                ),
-                tag: (
-                  <a href={author?.fields?.Link?.value?.href} target="_blank">
-                    <span>
-                      <JssText field={author?.fields?.Position} />
-                    </span>
-                  </a>
-                ),
-              }
-            : {
-                name: <JssText field={author?.fields?.Name} />,
-                image: (
+  const quoteBlocks = props.fields.Authors.map((author, index) => (
+    <QuoteBlock
+      key={`author-${index}`}
+      author={
+        author?.fields?.Link?.value?.href
+          ? {
+              name: (
+                <a href={author?.fields?.Link?.value?.href} target="_blank">
+                  <JssText field={author?.fields?.Name} />
+                </a>
+              ),
+              image: (
+                <a href={author?.fields?.Link?.value?.href} target="_blank">
                   <NextJssImage
                     field={author?.fields?.Avatar}
                     next={{ width: '70', height: '70' }}
                   />
-                ),
-                tag: (
+                </a>
+              ),
+              tag: (
+                <a href={author?.fields?.Link?.value?.href} target="_blank">
                   <span>
                     <JssText field={author?.fields?.Position} />
                   </span>
-                ),
-              }
-        }
-      />
-    ))
-  );
+                </a>
+              ),
+            }
+          : {
+              name: <JssText field={author?.fields?.Name} />,
+              image: (
+                <NextJssImage
+                  field={author?.fields?.Avatar}
+                  next={{ width: '70', height: '70' }}
+                />
+              ),
+              tag: (
+                <span>
+                  <JssText field={author?.fields?.Position} />
+                </span>
+              ),
+            }
+      }
+    />
+  ));
 
   const isContainerized = props?.params?.Containerized === '1';
 
