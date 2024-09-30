@@ -116,7 +116,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
       contentVariation="quote"
     >
       {props?.fields?.Title && (
-        <Container marginBottom="spacing-2">
+        <Container marginBottom="spacing-4">
           <Text tag="div" variation={'subheading-1'}>
             <JssText field={props?.fields?.Title} />
           </Text>
