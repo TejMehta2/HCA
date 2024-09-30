@@ -56,6 +56,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
   const quoteBlocks = props.fields.Authors.map((author, index) => (
     <QuoteBlock
       key={`author-${index}`}
+      title={<JssText field={props?.fields?.Title} />}
       author={
         author?.fields?.Link?.value?.href
           ? {
