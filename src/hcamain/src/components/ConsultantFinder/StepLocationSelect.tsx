@@ -113,7 +113,7 @@ export const Default = (props: StepProps): JSX.Element => {
     axios
       .get(requestURL_C2)
       .then((res) => {
-        //console.log('locations results', res);
+        console.log('locations results', res);
         seLoading(false);
         setError(false);
         setLocations(res?.data?.availability || []);
@@ -163,6 +163,12 @@ export const Default = (props: StepProps): JSX.Element => {
                   <SitecoreSvg>
                     {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
                   </SitecoreSvg>
+                }
+                iconFilteredTime={
+                  <Icons iconName="iconPhone" />
+                  // <SitecoreSvg>
+                  //   {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
+                  // </SitecoreSvg>
                 }
               />
             )}

@@ -25,9 +25,11 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             key={index}
             facilityCRMID={item?.facilityCRMID}
             icon={props.icon}
+            iconFilteredTime={props.iconFilteredTime}
             title={item?.facilityFullName}
             text={item?.facilityAddress}
             time={item?.firstAppointmentSlotDateTime}
+            filteredTime={item?.firstAppointmentSlotDateTimeFiltered}
             handleClick={() => {
               setSelectedLocation(item?.facilityCRMID || '');
               setSelectedLocationName(item?.facilityFullName || '');

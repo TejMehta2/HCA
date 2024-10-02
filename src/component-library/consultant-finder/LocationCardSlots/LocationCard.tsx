@@ -27,6 +27,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
           </Text>
         </div>
       </div>
+      {/* to add logic, this is slot time, it can be the phone one */}
       {props.time && (
         <div className={styles.time}>
           <div className={styles.icon}>{props.icon}</div>
@@ -35,6 +36,15 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
           </Text>
         </div>
       )}
+      {/* to add logic, this is online booking time */}
+      {/* {props.filteredTime && ( */}
+      <div className={styles.time}>
+        <div className={styles.icon}>{props.iconFilteredTime}</div>
+        <Text tag="p" variation="body-medium-small">
+          {formatDateLong(props.time)}
+        </Text>
+      </div>
+      {/* )} */}
     </div>
   );
 };
