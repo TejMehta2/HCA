@@ -69,7 +69,7 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
         </button>
       </span>
       <ModalDropdown ref={dialogRef}>
-        <button className={styles.close} onClick={closeModal}>
+        <button className={styles.close} onClick={closeModal} type="button">
           Close
         </button>
         <div role="listbox" id="select-dropdown" className={styles.options}>
