@@ -125,6 +125,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                 <JssText field={props.fields.data.item?.title?.jsonValue} />
               </Text>
               <Filters
+                hideResultsCount={true}
                 buttonText={
                   <span>
                     <b>Filter</b> by

@@ -6,4 +6,5 @@ export interface FiltersProps {
   buttonIcon?: JSX.Element;
   buttonText?: JSX.Element;
   submitOnClose?: boolean;
+  hideResultsCount?: boolean;
 }
