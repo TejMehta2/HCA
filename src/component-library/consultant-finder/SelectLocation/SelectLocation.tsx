@@ -25,7 +25,7 @@ const SelectLocation = (props: SelectLocationProps): JSX.Element => {
             key={index}
             facilityCRMID={item?.facilityCRMID}
             icon={props.icon}
-            iconFilteredTime={props.iconFilteredTime}
+            iconPhone={props.iconPhone}
             title={item?.facilityFullName}
             text={item?.facilityAddress}
             time={item?.firstAppointmentSlotDateTime}

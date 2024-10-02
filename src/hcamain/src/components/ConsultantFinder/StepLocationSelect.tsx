@@ -164,7 +164,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
                   </SitecoreSvg>
                 }
-                iconFilteredTime={
+                iconPhone={
                   <Icons iconName="iconPhone" />
                   // <SitecoreSvg>
                   //   {props?.fields?.CardTimeIcon?.fields?.SvgMarkup?.value}
