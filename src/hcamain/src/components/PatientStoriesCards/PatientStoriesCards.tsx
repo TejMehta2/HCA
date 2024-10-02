@@ -346,6 +346,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     patientStoriesCardsFiltered &&
     returnCards(props, patientStoriesCardsFiltered, false);
 
+  if (!patientStoriesCards?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
