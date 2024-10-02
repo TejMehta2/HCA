@@ -54,7 +54,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
         </div>
       </div>
       {/* book online time */}
-      {props?.filteredTime && props.filteredTime !== '' && (
+      {filteredSlotDateTime !== '' && (
         <div className={styles.time}>
           <div className={styles.icon}>{props.icon}</div>
           <Text tag="p" variation="body-medium-small">
@@ -62,8 +62,9 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
           </Text>
         </div>
       )}
-      {/* slot time, which can be phone call bookings if not the same as filtered time then show it, we assume it is phone bookings */}
-      {props?.time && props?.time !== '' && !isSameDate && (
+      {/* slot time, which can be phone call bookings if not the same as filtered time 
+      then show it, we assume it is phone bookings */}
+      {slotDateTime !== '' && !isSameDate && (
         <div className={styles.time}>
           <div className={styles.icon}>{props.iconPhone}</div>
           <Text tag="p" variation="body-medium-small">
