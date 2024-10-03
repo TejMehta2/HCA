@@ -199,7 +199,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                   href={`${
                     props.fields.data.item.searchConfiguration.targetItem
                       .viewAllVacanciesCTA.jsonValue.value.href
-                  }?${['', ...query].join('&')}`}
+                  }?${[...query, scope].join('&')}`}
                   field={
                     props.fields.data.item?.searchConfiguration?.targetItem
                       ?.viewAllVacanciesCTA.jsonValue.value
