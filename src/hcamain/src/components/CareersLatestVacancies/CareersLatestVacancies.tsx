@@ -61,15 +61,16 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     - available on page load (redirect from e.g. careers home or user copy/paste)
   */
   const scope = getJobFamiliesQueryString(props);
+  const query = [...searchParams.entries()]
+    .filter(([, value]) => value?.length)
+    .map(([key, value]) => `${key}=${value}`);
+
   const { data: response } = useSWR<JobsResponse['response']>(
     `${
       process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
-    }/careers/search?verticalKey=jobs&retrieveFacets=true${scope}&limit=${
+    }/careers/search?verticalKey=jobs&retrieveFacets=true&${scope}&limit=${
       limit * resultsPerPage
-    }&${[...searchParams.entries()]
-      .filter(([, value]) => value?.length)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&')}`,
+    }&${query.join('&')}`,
     (url: string) =>
       fetch(url)
         .then((res) => res.json())
@@ -133,17 +134,22 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                 }
                 buttonIcon={<Icons iconName="iconFilterCircle" />}
                 resultsCount={Number(response?.resultsCount)}
-                filters={filterCategories?.map((category) => ({
-                  title: category.title,
-                  contentVariation: 'filters',
-                  children: (
-                    <Checkboxes>
-                      {category.fields?.map((props) => {
-                        return <Checkbox {...props} key={props.id} />;
-                      })}
-                    </Checkboxes>
-                  ),
-                }))}
+                filters={filterCategories
+                  ?.filter(
+                    (category) =>
+                      category.title !== 'Job Family' || !scope?.length
+                  )
+                  .map((category) => ({
+                    title: category.title,
+                    contentVariation: 'filters',
+                    children: (
+                      <Checkboxes>
+                        {category.fields?.map((props) => {
+                          return <Checkbox {...props} key={props.id} />;
+                        })}
+                      </Checkboxes>
+                    ),
+                  }))}
               />
             </>
           }
@@ -190,6 +196,10 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
               ?.viewAllVacanciesCTA.jsonValue.value.text ? (
               <Button size={'large'} variation={'full'}>
                 <JssLink
+                  href={`${
+                    props.fields.data.item.searchConfiguration.targetItem
+                      .viewAllVacanciesCTA.jsonValue.value.href
+                  }?${[...query, scope].join('&')}`}
                   field={
                     props.fields.data.item?.searchConfiguration?.targetItem
                       ?.viewAllVacanciesCTA.jsonValue.value
@@ -220,7 +230,7 @@ export const getStaticProps: GetStaticComponentProps = async (
   try {
     const scope = getJobFamiliesQueryString(props);
     const response = await fetch(
-      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6${scope}`
+      `${process.env.INTEGRATION_LAYER_URL}/careers/search?verticalKey=jobs&retrieveFacets=true&limit=6&${scope}`
     );
     const data = await response.json();
     return JSON.parse(JSON.stringify(data.response));
@@ -235,7 +245,6 @@ const getJobFamiliesQueryString = (
   props: CareersLatestVacanciesProps
 ): string => {
   const jobFamilies = props.fields?.data?.item?.jobFamilies?.targetItems;
-
   if (!jobFamilies || jobFamilies.length === 0) {
     return '';
   }
@@ -243,10 +252,10 @@ const getJobFamiliesQueryString = (
   const queryString = jobFamilies
     .map((family) => {
       const keyValue = family.value?.value;
-      return keyValue ? `&jobFamily=${encodeURIComponent(keyValue)}` : '';
+      return keyValue ? `jobFamily=${encodeURIComponent(keyValue)}` : '';
     })
     .filter(Boolean) // Remove empty values
-    .join('');
+    .join('&');
 
   return queryString;
 };

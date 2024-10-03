@@ -306,9 +306,14 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   </li>
                 );
               })}
-              <li className={styles.control} data-navigation-type="searchOpen">
-                {search}
-              </li>
+              {search && (
+                <li
+                  className={styles.control}
+                  data-navigation-type="searchOpen"
+                >
+                  {search}
+                </li>
+              )}
             </ul>
           </div>
         </div>
