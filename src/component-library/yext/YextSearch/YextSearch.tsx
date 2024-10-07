@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { UniversalResults } from '@yext/search-ui-react';
 import styles from './YextSearch.module.scss';
 import YextTabs from '../YextTabs/YextTabs';
@@ -19,11 +19,12 @@ import Verticals from './Verticals';
 
 const YextSearch = (): JSX.Element => {
   const searchQuery = useSearchState((state) => state.query.input);
+  const verticalKey = useSearchState((state) => state.vertical.verticalKey);
   const searchActions = useSearchActions();
+  const [hasLoaded, setHasLoaded] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-
     if (searchQuery) {
       if (router.isReady) {
         searchParams.set('query', searchQuery);
@@ -36,23 +37,24 @@ const YextSearch = (): JSX.Element => {
           { shallow: true }
         );
       }
-    } else {
+    } else if (!hasLoaded) {
       const query = searchParams.get('query');
       searchActions.setQuery(query || '');
-      searchActions.executeUniversalQuery();
+      verticalKey
+        ? searchActions.executeVerticalQuery()
+        : searchActions.executeUniversalQuery();
     }
-
+    setHasLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   const resultsCountRef = useRef<HTMLDivElement>(null);
-  const verticalKey = useSearchState((state) => state.vertical.verticalKey);
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);
 
   const universalResults = useSearchState((state) => state.universal.verticals);
   const universalResultsLength = universalResults?.length || 0;
   const verticalResultsLength =
-    useSearchState((state) => state.vertical.resultsCount) || 0;
+    useSearchState((state) => state.vertical?.resultsCount) || 0;
 
   return (
     <div className={styles.wrapper}>

@@ -11,6 +11,7 @@ import YextResultCardSharedAdaptor from '../YextResultCardShared/YextResultCardS
 import YextResultCardTestsAndTreatmentsAdaptor from '../YextResultCardTestsAndTreatments/YextResultCardTestsAndTreatments.adaptor';
 import YextResultSectionLocationsAdaptor from '../YextResultSectionLocations/YextResultSectionLocations.adaptor';
 import YextUniversalSection from '../YextUniversalSection/YextUniversalSection';
+import YextResultCardCareersAdaptor from '../YextResultCardCareers/YextResultCardCareers.adaptor';
 
 export const verticalConfigMap: VerticalConfigMap<{
   healthcare_facilities: unknown;
@@ -111,12 +112,12 @@ export const verticalConfigMap: VerticalConfigMap<{
     ),
   },
   jobs: {
-    label: 'Jobs',
+    label: 'Vacancies',
     SectionComponent: (props) => (
       <YextUniversalSection
         results={props.results}
-        CardComponent={YextResultCardSharedAdaptor}
-        title="Jobs"
+        CardComponent={YextResultCardCareersAdaptor}
+        title="Vacancies"
       />
     ),
   },

@@ -12,6 +12,7 @@ import { VerticalKey } from './YextSearch.types';
 import { VerticalResults } from '@yext/search-ui-react';
 import { Result, useSearchState } from '@yext/search-headless-react';
 import styles from './YextSearch.module.scss';
+import YextResultCardCareersAdaptor from '../YextResultCardCareers/YextResultCardCareers.adaptor';
 
 const Verticals = () => {
   const searchState = useSearchState((state) => state);
@@ -72,6 +73,13 @@ const Verticals = () => {
       return (
         <VerticalResults
           CardComponent={YextResultCardLinksAdaptor}
+          customCssClasses={{ verticalResultsContainer: styles.vertical }}
+        />
+      );
+    case 'jobs':
+      return (
+        <VerticalResults
+          CardComponent={YextResultCardCareersAdaptor}
           customCssClasses={{ verticalResultsContainer: styles.vertical }}
         />
       );

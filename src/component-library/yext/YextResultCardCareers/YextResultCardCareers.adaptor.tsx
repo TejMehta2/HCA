@@ -27,7 +27,6 @@ const YextResultCardCareersAdaptor = (props: CardProps<Job>): JSX.Element => {
       </a>
     </Button>
   );
-  console.log(rawData);
   return (
     <YextResultCardCareers
       location={c_jobLocation}
