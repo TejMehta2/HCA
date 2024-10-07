@@ -69,7 +69,6 @@ export async function getLDBFirstAppointmentDatas(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -132,7 +131,6 @@ export async function getLDBFirstAppointmentData(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -221,7 +219,6 @@ export async function getLDBConsultantDetails(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -299,7 +296,6 @@ export async function getLDBConsultantSlots(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
