@@ -475,7 +475,8 @@ export async function LDBMakeBooking(
           } finally {
           }
           returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
-          console.warn(`LDBMakeBooking failed with error ${returnData}`);
+          //enhance logging - https://hcauk-digital.atlassian.net/browse/HED-1601
+          console.warn(`LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} failed with error ${returnData}`);
           returnData = JSON.parse(returnData);
         }
       } catch (e) {
