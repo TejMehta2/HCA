@@ -67,7 +67,7 @@ export const Default = (props: StepProps): JSX.Element => {
   const handleClickQuickSearch = () => {
     const baseURLResults = props?.fields?.QuickSearchLink?.value?.href;
     router.push(
-      `${baseURLResults}?search=${searchString}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`
+      `${baseURLResults}?search=${searchString}&keywordId=${keywordId}&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`
     );
   };
 
