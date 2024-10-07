@@ -9,8 +9,10 @@ const CareersHompageHero = (props: CareersHompageHeroProps): JSX.Element => {
     <div className={homepageHeroStyles.wrapper}>
       <div className={styles.container}>
         <div className={styles.title}>{title}</div>
-        <div className={styles.search}>{search}</div>
-        <div className={styles.filters}>{filters}</div>
+        <div className={styles.search}>
+          {search}
+          <div className={styles.filters}>{filters}</div>
+        </div>
         <div className={styles.cta}>{cta}</div>
         <div className={homepageHeroStyles.image}>{image}</div>
       </div>

@@ -71,11 +71,12 @@ export const Default = (props: StepProps): JSX.Element => {
   if (props.fields) {
     return (
       <>
-        <Script /* HWPD-3463 - data layer */
-          id="cf-gtm-enquiryBooking"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
+        {completedFormId && completedFormId.length > 0 && (
+          <Script /* HWPD-3463 - data layer */
+            id="cf-gtm-enquiryBooking"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                 'event': 'consultantFinder',
                 'goalType': 'formComplete',
@@ -88,8 +89,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 'finderFormPractice': '${selectedLocationName}',
                 'completedFormId': '${completedFormId}'
                 });`,
-          }}
-        ></Script>
+            }}
+          ></Script>
+        )}
         <Breadcrumbs
           backCta={{
             text: 'Consultant Finder',

@@ -22,6 +22,7 @@ const Filters = (props: FiltersProps): JSX.Element => {
     filters,
     resultsCount,
     submitOnClose,
+    hideResultsCount = false,
   } = props;
 
   const { t } = useI18n();
@@ -72,7 +73,6 @@ const Filters = (props: FiltersProps): JSX.Element => {
               ></Accordions>
             </div>
           )}
-
           <div className={styles.footer}>
             <TextButton theme="dark">
               <button type="button" onClick={clearFields}>
@@ -84,7 +84,9 @@ const Filters = (props: FiltersProps): JSX.Element => {
                 onClick={() => dialogRef?.current?.close()}
                 type={submitOnClose ? 'submit' : 'button'}
               >
-                See {resultsCount} Results
+                {!resultsCount || hideResultsCount
+                  ? 'See Results'
+                  : `See ${resultsCount} Results`}
               </button>
             </Button>
           </div>

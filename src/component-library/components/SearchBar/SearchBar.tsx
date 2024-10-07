@@ -18,6 +18,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     searchOnEnter = false,
     error = '',
     scrollRef,
+    preventSubmitOnSuggestion = false,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -54,7 +55,9 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     inputRef.current.value = newValue;
 
     if (!submitRef.current) return;
-    submitRef.current.click();
+    if (!preventSubmitOnSuggestion) {
+      submitRef.current.click();
+    }
   };
 
   return (
@@ -64,6 +67,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         aria-hidden={true}
         className={'sr-only'}
         type={'submit'}
+        tabIndex={-1}
       >
         Submit
       </button>
