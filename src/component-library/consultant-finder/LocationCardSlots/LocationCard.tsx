@@ -20,18 +20,18 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
     date1.getMonth() === date2.getMonth() &&
     date1.getDate() === date2.getDate();
 
-  if (isSameDate) {
-    console.log('The dates are the same');
-  } else {
-    console.log('The dates are different');
-  }
+  // if (isSameDate) {
+  //   console.log('The dates are the same');
+  // } else {
+  //   console.log('The dates are different');
+  // }
 
-  // Compare the full datetime (date and time)
-  if (date1.getTime() === date2.getTime()) {
-    console.log('The date and time are the same');
-  } else {
-    console.log('The date and time are different');
-  }
+  // // Compare the full datetime (date and time)
+  // if (date1.getTime() === date2.getTime()) {
+  //   console.log('The date and time are the same');
+  // } else {
+  //   console.log('The date and time are different');
+  // }
 
   return (
     <div
