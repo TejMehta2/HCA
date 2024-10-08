@@ -476,7 +476,9 @@ export async function LDBMakeBooking(
           }
           returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
           //enhance logging - https://hcauk-digital.atlassian.net/browse/HED-1601
-          console.warn(`LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} failed with error ${returnData}`);
+          console.warn(
+            `LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} failed with error ${returnData}`
+          );
           returnData = JSON.parse(returnData);
         }
       } catch (e) {
