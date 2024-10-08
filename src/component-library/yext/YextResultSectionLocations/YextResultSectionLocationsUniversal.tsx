@@ -6,7 +6,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Icons from '../../foundation/Icons/Icons';
 import useSetVertical from '../helpers/useSetVertical';
-import { verticalConfigMap } from '../YextSearch/YextSearch';
+import { verticalConfigMap } from '../YextSearch/verticalConfigMap';
 import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCustomAlternativeVerticals';
 
 const YextResultSectionLocations = (
