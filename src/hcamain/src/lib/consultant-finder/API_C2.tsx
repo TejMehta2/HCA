@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetC2Config } from './getC2Config';
+import { sanitizeJSON } from './sanitizeJSON';
 
 // first appointment
 // post in GMC number/s
@@ -450,7 +451,7 @@ export async function LDBMakeBooking(
         "demographics": ${demographicsString},
         "visitReasonDetails": {
             "selectedSpeciality": "${selectedSpeciality}",
-            "reasonForAppointment": "${reasonForAppointment}"
+            "reasonForAppointment": "${sanitizeJSON(reasonForAppointment)}"
         }
       }`;
       //console.log('booking json:', body);
@@ -477,7 +478,9 @@ export async function LDBMakeBooking(
           returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
           //enhance logging - https://hcauk-digital.atlassian.net/browse/HED-1601
           console.warn(
-            `LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} failed with error ${returnData}`
+            `LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} r:${sanitizeJSON(
+              reasonForAppointment
+            )} failed with error ${returnData}`
           );
           returnData = JSON.parse(returnData);
         }

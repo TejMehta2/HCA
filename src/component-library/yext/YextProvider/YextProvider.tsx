@@ -35,9 +35,6 @@ export const getHeadConfig: GetHeadConfig<
 const environment = process.env
   .NEXT_PUBLIC_YEXT_ENVIRONMENT! as keyof typeof Environment;
 
-const businessId = process.env
-  .NEXT_PUBLIC_YEXT_BUSINESS_ID ! as keyof typeof Environment;
-
 export const headlessConfig: HeadlessConfig = {
   apiKey: process.env.NEXT_PUBLIC_YEXT_API_KEY!,
   experienceKey: process.env.NEXT_PUBLIC_YEXT_EXPERIENCE_KEY!,
@@ -51,8 +48,8 @@ const searcher = provideHeadless(headlessConfig);
 import { provideAnalytics } from '@yext/analytics';
 const analytics = provideAnalytics({
   experienceKey: process.env.NEXT_PUBLIC_YEXT_EXPERIENCE_KEY!, // example: answers-js-docs
-  businessId: parseInt(Environment[businessId]),// HCA 3806694, // '<your business id>'
-  experienceVersion: Environment[environment], //'PRODUCTION',
+  businessId: parseInt(process.env.NEXT_PUBLIC_YEXT_BUSINESS_ID!), // HCA 3806694, // '<your business id>'
+  experienceVersion: process.env.NEXT_PUBLIC_YEXT_ENVIRONMENT!, //'PRODUCTION',
 });
 
 interface SearchProps {
@@ -60,8 +57,7 @@ interface SearchProps {
 }
 const YextProvider = (props: SearchProps) => {
   const { children } = props;
-  //console.log('yext analytics');
-  console.log(JSON.stringify(analytics));
+  console.log('yext analytics', JSON.stringify(analytics));
   return (
     <SearchHeadlessProvider searcher={searcher}>
       {children}
