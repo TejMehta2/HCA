@@ -22,17 +22,23 @@ SharedFields:
           searchConfiguration {
             targetItem {
               ... on CareersLatestVacanciesConfiguration {
-                selectAJobAreaLabel {
-                  value
-                }
-                selectALocationLabel {
-                  value
-                }
                 viewAllVacanciesCTA {
                   jsonValue
                 }
                 readMoreCtaText {
                   value
+                }
+                filters {
+                  targetItems {
+                    ... on FilterOption {
+                      displayName: displayName_38dc31139c54437f8347c1b4a1acd73f {
+                        value
+                      }
+                      filter {
+                        value
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -124,14 +130,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3dd5a585-118f-4075-8f09-948518362f00"
+      Value: "8677226e-a655-49c2-b382-25b307921c58"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240925T155904Z
+      Value: 20241009T161054Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
