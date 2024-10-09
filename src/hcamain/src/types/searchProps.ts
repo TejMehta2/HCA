@@ -95,6 +95,21 @@ export interface FilterOption {
   };
 }
 
+export interface FilterOptionJson {
+  displayName?: {
+    value: Field<string>;
+  };
+  filter?: {
+    value: Field<string>;
+  };
+  filterValueGuid?: {
+    value: string;
+  };
+  filterValueString?: {
+    value: Field<string>;
+  };
+}
+
 export interface FilterCategory {
   displayName: string;
   fields: {
