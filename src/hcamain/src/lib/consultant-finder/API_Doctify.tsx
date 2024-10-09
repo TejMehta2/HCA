@@ -37,7 +37,6 @@ export async function getSpecialistProfileData(
     // need to cache these requests so we don't make hundreds of them
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
-      cache: 'force-cache',
       next: {
         revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
       },
@@ -263,7 +262,6 @@ async function __getFacilitiesData(serviceURL?: string): Promise<any> {
     // need to cache these requests so we don't make hundreds of them
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
-      cache: 'force-cache',
       next: {
         revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
       },
@@ -318,7 +316,6 @@ export async function getInsuranceData(serviceURL?: string): Promise<any> {
     // need to cache these requests so we don't make hundreds of them
     // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
     const res = await fetch(requestURL, {
-      cache: 'force-cache',
       next: {
         revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
       },
@@ -352,12 +349,11 @@ export async function doctifyGetAllConsultantSlugs(): Promise<string[]> {
   let slugs: string[] = [];
 
   for (consIdx = 0; consIdx < maxConsultants && !stop; consIdx += pageSize) {
-    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=1000&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
+    const consultantProfilesURL = `${baseURL}?sortType=nearest&distance=0&lat=51.5073509&lon=-0.1277583&limit=${pageSize}&offset=${consIdx}`;
     try {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(consultantProfilesURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },

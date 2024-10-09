@@ -9,7 +9,7 @@ SharedFields:
   Value: Name Value List
 - ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
   Hint: Default value
-  Value: "sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=700"
+  Value: "sortType=relevance&keywordId=2339&lat=51.5072178&lon=-0.1275862&limit=12&distance=0"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 500

@@ -33,7 +33,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element | null => {
       .get(
         `https://api.doctify.com/api/hca/search?search=${searchStringQuery}&keywordId=${keywordIdQuery}&sortType=${'relevance'}&insurer=${`${
           paymentOption !== 'selfPay' ? paymentOption : ''
-        }`}&distance=${'700'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
+        }`}&distance=${'0'}&lat=${'51.5072178'}&lon=${'-0.1275862'}&limit=${'12'}&practice=${
           props.slug
         }&offset=0`
       )
