@@ -95,6 +95,33 @@ export interface FilterOption {
   };
 }
 
+export interface FilterOptionJson {
+  displayName?: {
+    value: Field<string>;
+  };
+  filter?: {
+    value: Field<string>;
+  };
+  filterValueGuid?: {
+    value: string;
+  };
+  filterValueString?: {
+    value: Field<string>;
+  };
+}
+
+export interface YextFacetJson {
+  displayName?: {
+    value: Field<string>;
+  };
+  filter?: {
+    value: Field<string>;
+  };
+  yextFieldId?: {
+    value: string;
+  };
+}
+
 export interface FilterCategory {
   displayName: string;
   fields: {

@@ -1,0 +1,37 @@
+﻿---
+ID: "ef2ee82a-52a5-4ff8-be48-bd8ae608eb5b"
+Parent: "1cf8055b-37be-45b0-ad81-15d62e040736"
+Template: "1cf8055b-37be-45b0-ad81-15d62e040736"
+Path: /sitecore/templates/Project/HCA/Foundation/Search/Yext Facets Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {1CF8055B-37BE-45B0-AD81-15D62E040736}
+    {822412FC-53C9-4FB3-8D3A-C4A9FB8686BB}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240201T133406Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e9ebdcef-a9bd-491b-86d9-9fe9d234567e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241010T095450Z

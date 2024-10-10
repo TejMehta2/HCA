@@ -1,18 +1,18 @@
 ﻿---
-ID: "311b8821-567e-42bc-be45-bbdac4e4c52a"
-Parent: "d5ecfa50-790d-43c2-ab59-d2d23a8d6131"
+ID: "1cf8055b-37be-45b0-ad81-15d62e040736"
+Parent: "ba2bc02e-7c70-40c1-b414-a0176a28de4b"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Configuration
+Path: /sitecore/templates/Project/HCA/Foundation/Search/Yext Facets Folder
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: office/32x32/gearwheel.png
+  Value: core3/32x32/folder_open.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{20F7247B-8BD7-41FF-B988-9EC2121FA3C1}"
+  Value: "{EF2EE82A-52A5-4FF8-BE48-BD8AE608EB5B}"
 Languages:
 - Language: en
   Versions:
@@ -20,22 +20,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240925T153155Z
+      Value: 20240201T133401Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "aa4dd59d-37a3-48af-8731-9f15a3f6b7cb"
+      Value: "278d4d7e-5bd5-42fb-904c-86ce3123b362"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241009T154045Z
+      Value: 20241010T095410Z

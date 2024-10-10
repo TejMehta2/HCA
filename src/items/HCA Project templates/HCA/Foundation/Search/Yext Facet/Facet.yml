@@ -1,8 +1,8 @@
 ﻿---
-ID: "20f7247b-8bd7-41ff-b988-9ec2121fa3c1"
-Parent: "311b8821-567e-42bc-be45-bbdac4e4c52a"
-Template: "311b8821-567e-42bc-be45-bbdac4e4c52a"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Configuration/__Standard Values
+ID: "bb6bfc11-073c-4bef-822c-a96be2c6026b"
+Parent: "822412fc-53c9-4fb3-8d3a-c4a9fb8686bb"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Foundation/Search/Yext Facet/Facet
 Languages:
 - Language: en
   Versions:
@@ -10,25 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240925T154030Z
+      Value: 20240124T213118Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\carmen.popovici@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
-    - ID: "630e3c89-b999-4b32-bfc8-1a5869299260"
-      Hint: ReadMoreCtaText
-      Value: Read More & Apply
+        sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4db62f89-7177-4fd7-83f1-586808f64fb8"
+      Value: "02c55ea2-b6f0-438f-856e-78456185cdd8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241009T154045Z
+      Value: 20241010T095523Z
