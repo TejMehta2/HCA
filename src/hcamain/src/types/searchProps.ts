@@ -110,6 +110,18 @@ export interface FilterOptionJson {
   };
 }
 
+export interface YextFacetJson {
+  displayName?: {
+    value: Field<string>;
+  };
+  filter?: {
+    value: Field<string>;
+  };
+  yextFieldId?: {
+    value: string;
+  };
+}
+
 export interface FilterCategory {
   displayName: string;
   fields: {
