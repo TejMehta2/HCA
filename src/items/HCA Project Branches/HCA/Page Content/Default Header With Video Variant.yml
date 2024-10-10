@@ -1,31 +1,14 @@
 ﻿---
-ID: "fe97243f-b135-4f93-9b6e-390b863e11fc"
-Parent: "d5ecfa50-790d-43c2-ab59-d2d23a8d6131"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
-SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Office/32x32/window_dialog.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
-    {EEA6EF8C-0336-496C-B004-EC0B69AB6444}
-    {CD76C065-A161-464F-A9D7-C6C1DAB729B4}
-    {F3CE8386-0B63-44B5-A204-EAE92C052AAE}
-    {6ED96DA1-02CD-4377-B7AB-99E70C80C779}
-    {CAC0C6CD-C0AA-4932-8268-806C6FF57AE9}
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "d9e51143-53ab-43a7-af37-224b9cf1923d"
+Parent: "25bbaec2-0b7e-4030-a28f-a12b6250db01"
+Template: "35e75c72-4985-4e09-88c3-0eac6cd1e64f"
+Path: /sitecore/templates/Branches/Project/HCA/Page Content/Default Header With Video Variant
 Languages:
 - Language: "de-DE"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Promo
+    Value: Standard Headless Promovariante
   Versions:
   - Version: 1
     Fields:
@@ -51,35 +34,31 @@ Languages:
       Hint: __Updated
       Value: 20240904T144537Z
 - Language: en
-  Fields:
-  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
-    Hint: __Display name
-    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20111213T133000Z
+      Value: 20211020T135004Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\admin
+        sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8115f3d9-3a20-4ec7-89ea-fc0e97f41b05"
+      Value: "6ae2436c-6493-4dda-8660-001fe1158de3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225357Z
+      Value: 20240905T102852Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ
+    Value: デフォルトのヘッドレスプロモーションバリアント
   Versions:
   - Version: 1
     Fields:
@@ -108,7 +87,7 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销
+    Value: 默认 Headless 推广变量
   Versions:
   - Version: 1
     Fields:
