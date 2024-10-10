@@ -112,10 +112,10 @@ export interface FilterOptionJson {
 
 export interface YextFacetJson {
   displayName?: {
-    value: Field<string>;
+    value: string;
   };
   filter?: {
-    value: Field<string>;
+    value: string;
   };
   yextFieldId?: {
     value: string;
