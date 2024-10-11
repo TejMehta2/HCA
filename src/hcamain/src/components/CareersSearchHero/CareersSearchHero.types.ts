@@ -31,6 +31,7 @@ export type CareersSearchHeroProps = {
   rendering?: {
     uid?: string;
   };
+  facets: JobsResponse['response']['facets'];
 };
 
 export interface JobsResponse {
