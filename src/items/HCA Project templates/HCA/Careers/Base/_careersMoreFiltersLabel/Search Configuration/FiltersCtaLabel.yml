@@ -1,31 +1,30 @@
 ﻿---
-ID: "fe97243f-b135-4f93-9b6e-390b863e11fc"
-Parent: "d5ecfa50-790d-43c2-ab59-d2d23a8d6131"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
+ID: "b6586292-0279-423d-8a44-0adedb7f3e8b"
+Parent: "0f378c57-fdd5-4cbc-a20b-d108b2fdbdf3"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/Careers/Base/_careersMoreFiltersLabel/Search Configuration/FiltersCtaLabel
 SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Office/32x32/window_dialog.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
-    {EEA6EF8C-0336-496C-B004-EC0B69AB6444}
-    {CD76C065-A161-464F-A9D7-C6C1DAB729B4}
-    {F3CE8386-0B63-44B5-A204-EAE92C052AAE}
-    {6ED96DA1-02CD-4377-B7AB-99E70C80C779}
-    {CAC0C6CD-C0AA-4932-8268-806C6FF57AE9}
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: 
+- ID: "24cb32f0-e364-4f37-b400-0f2899097b5b"
+  Hint: Enable Shared Language Fallback
+  Value: 1
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
 Languages:
 - Language: "de-DE"
   Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Text
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Promo
+    Value: PromoText
   Versions:
   - Version: 1
     Fields:
@@ -52,34 +51,36 @@ Languages:
       Value: 20240904T144537Z
 - Language: en
   Fields:
-  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
-    Hint: __Display name
-    Value: 
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: Filters CTA Label
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20111213T133000Z
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\admin
+      Value: 20111213T143500
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8115f3d9-3a20-4ec7-89ea-fc0e97f41b05"
+      Value: "d5ba54fd-e64b-45bf-b761-41879c863590"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225357Z
+      Value: 20241010T222850Z
+    - ID: "fa622538-0c13-4130-a001-45984241aa00"
+      Hint: Enable Language Fallback
+      Value: 1
 - Language: "ja-JP"
   Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: テキスト
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ
+    Value: プロモ テキスト
   Versions:
   - Version: 1
     Fields:
@@ -106,9 +107,12 @@ Languages:
       Value: 20240904T144537Z
 - Language: "zh-CN"
   Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: 文本
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销
+    Value: 促销文字
   Versions:
   - Version: 1
     Fields:

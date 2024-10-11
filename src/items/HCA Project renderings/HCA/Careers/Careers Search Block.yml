@@ -1,25 +1,21 @@
 ﻿---
-ID: "ae87c8f9-508e-46c8-84ce-0de9b82b02cf"
+ID: "6ffbdcbb-7f78-4b03-8807-02919730d6f6"
 Parent: "b9e738df-05f6-4abe-952c-59f3b8c6d41a"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Careers/Careers Search Hero
+Path: /sitecore/layout/Renderings/Project/HCA/Careers/Careers Search Block
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: CareersSearchHero
+  Value: CareersSearchBlock
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetCareersSearchHero(
-      $contextItem: String!
-      $datasource: String!
-      $language: String!
-    ) {
+    query GetCareersSearchBlock($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
-        ... on CareersSearchHero {
+        ... on CareersSearchBlock {
           searchPhrasePlaceholder {
             value
           }
@@ -52,25 +48,11 @@ SharedFields:
           }
         }
       }
-      contextItem: item(path: $contextItem, language: $language) {
-        title: field(name: "Title") {
-          jsonValue
-        }
-        subHeading: field(name: "Heading") {
-          jsonValue
-        }
-        text: field(name: "Text") {
-          jsonValue
-        }
-        image: field(name: "Image") {
-          jsonValue
-        }
-      }
     }
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
+  Value: /sitecore/templates/Project/HCA/Careers/Careers Search Block
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -79,10 +61,10 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{35B9CBCA-0B70-4F7F-9FD9-340B51A3D079}"
+  Value: "{F0BBFE0D-E4DF-4D74-851F-A588C19009E6}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Search Block Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Search Block Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -136,14 +118,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eba2019c-e5e1-49d5-a588-236bb011c2c2"
+      Value: "c3f4201f-8947-4dd3-b068-3b21fa76701d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225828Z
+      Value: 20241010T223257Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

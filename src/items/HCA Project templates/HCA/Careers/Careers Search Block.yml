@@ -1,98 +1,25 @@
 ﻿---
-ID: "ae87c8f9-508e-46c8-84ce-0de9b82b02cf"
-Parent: "b9e738df-05f6-4abe-952c-59f3b8c6d41a"
-Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Careers/Careers Search Hero
+ID: "e1a1edc3-e088-4531-9e48-480972fab202"
+Parent: "d5ecfa50-790d-43c2-ab59-d2d23a8d6131"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/HCA/Careers/Careers Search Block
 SharedFields:
-- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
-  Hint: componentName
-  Value: CareersSearchHero
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
+  Value: Office/32x32/window_dialog.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
   Value: |
-    query GetCareersSearchHero(
-      $contextItem: String!
-      $datasource: String!
-      $language: String!
-    ) {
-      item(path: $datasource, language: $language) {
-        ... on CareersSearchHero {
-          searchPhrasePlaceholder {
-            value
-          }
-          selectAJobAreaLabel {
-            value
-          }
-          selectALocationLabel {
-            value
-          }
-          filtersCtaLabel {
-            value
-          }
-          searchRolesCTA {
-            jsonValue
-          }
-          filters {
-            targetItems {
-              ... on YextFacet {
-                displayName: displayName_3cca19db1dbc43219c440466b9c31bbd {
-                  value
-                }
-                filter {
-                  value
-                }
-                yextFieldId {
-                  value
-                }
-              }
-            }
-          }
-        }
-      }
-      contextItem: item(path: $contextItem, language: $language) {
-        title: field(name: "Title") {
-          jsonValue
-        }
-        subHeading: field(name: "Heading") {
-          jsonValue
-        }
-        text: field(name: "Text") {
-          jsonValue
-        }
-        image: field(name: "Image") {
-          jsonValue
-        }
-      }
-    }
-    
-- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
-  Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
-- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
-  Hint: __Read Only
-  Value: 
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{35B9CBCA-0B70-4F7F-9FD9-340B51A3D079}"
-- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
-  Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
-  Value: |
-    <image mediaid="{92697E81-0AEB-43AB-8500-9B16A69255C1}" />
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsRenderingsWithDynamicPlaceholders=true
+    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
+    {44A022DB-56D3-419A-B43B-E27E4D8E9C41}
+    {EEA6EF8C-0336-496C-B004-EC0B69AB6444}
+    {CD76C065-A161-464F-A9D7-C6C1DAB729B4}
+    {F3CE8386-0B63-44B5-A204-EAE92C052AAE}
+    {6ED96DA1-02CD-4377-B7AB-99E70C80C779}
+    {CAC0C6CD-C0AA-4932-8268-806C6FF57AE9}
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: "de-DE"
   Fields:
@@ -124,26 +51,30 @@ Languages:
       Hint: __Updated
       Value: 20240904T144537Z
 - Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20111213T133000Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\JssImport
+        sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eba2019c-e5e1-49d5-a588-236bb011c2c2"
+      Value: "ea1d9628-5a80-4c5e-ba8f-b6319e827f0a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225828Z
+      Value: 20241010T222729Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

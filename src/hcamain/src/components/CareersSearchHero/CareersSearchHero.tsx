@@ -57,7 +57,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <form
-        action={props.fields.data.item.searchRolesCTA.jsonValue.value.href}
+        action={props.fields.data.item.searchRolesCTA?.jsonValue?.value.href}
         method="get"
       >
         <CareersHomepageHero
@@ -124,7 +124,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
           cta={
             <Button size={'large'} variation={'full'}>
               <button type="submit">
-                {props.fields.data.item.searchRolesCTA.jsonValue.value.text}
+                {props.fields.data.item.searchRolesCTA?.jsonValue?.value.text}
               </button>
             </Button>
           }

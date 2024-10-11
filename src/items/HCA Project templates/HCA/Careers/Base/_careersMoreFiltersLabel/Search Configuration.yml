@@ -1,18 +1,8 @@
 ﻿---
-ID: "86d4a983-a5f3-46d2-be34-b6ebd835b063"
-Parent: "b85d890a-549c-4c6d-aa3c-9255b84a40a3"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Configuration/Search Configuration/Filters
-SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "{1B6D7F00-10E0-403F-821C-646498063C93}"
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Treelist
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 400
+ID: "0f378c57-fdd5-4cbc-a20b-d108b2fdbdf3"
+Parent: "6ed96da1-02cd-4377-b7ab-99e70c80c779"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Careers/Base/_careersMoreFiltersLabel/Search Configuration
 Languages:
 - Language: en
   Versions:
@@ -20,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20241009T154107Z
+      Value: 20240909T143758Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "acd8f09f-02f2-4e04-aa75-3298d2f31970"
+      Value: "58036c42-39d8-4c24-955b-eda5412af20d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241009T154107Z
+      Value: 20241010T222850Z

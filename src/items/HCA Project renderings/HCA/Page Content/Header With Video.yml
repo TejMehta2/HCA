@@ -1,55 +1,34 @@
 ﻿---
-ID: "ae87c8f9-508e-46c8-84ce-0de9b82b02cf"
-Parent: "b9e738df-05f6-4abe-952c-59f3b8c6d41a"
+ID: "155d45a8-83c5-49f8-9446-7b6d6691abb4"
+Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Careers/Careers Search Hero
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Header With Video
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: CareersSearchHero
+  Value: HeaderWithVideo
+- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
+  Hint: Placeholders
+  Value: "{88F33B66-D47F-43FC-B90B-002ED86E4F9E}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetCareersSearchHero(
+    query GetCareersSearchBlock(
       $contextItem: String!
       $datasource: String!
       $language: String!
     ) {
       item(path: $datasource, language: $language) {
-        ... on CareersSearchHero {
-          searchPhrasePlaceholder {
+        ... on HeaderWithVideo{
+          videoUrl {
             value
           }
-          selectAJobAreaLabel {
-            value
-          }
-          selectALocationLabel {
-            value
-          }
-          filtersCtaLabel {
-            value
-          }
-          searchRolesCTA {
+          videoThumbnail{
             jsonValue
-          }
-          filters {
-            targetItems {
-              ... on YextFacet {
-                displayName: displayName_3cca19db1dbc43219c440466b9c31bbd {
-                  value
-                }
-                filter {
-                  value
-                }
-                yextFieldId {
-                  value
-                }
-              }
-            }
-          }
+          }     
         }
       }
       contextItem: item(path: $contextItem, language: $language) {
@@ -70,7 +49,7 @@ SharedFields:
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Careers/Careers Search Hero
+  Value: /sitecore/templates/Project/HCA/Page Content/Header With Video
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -79,10 +58,10 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{35B9CBCA-0B70-4F7F-9FD9-340B51A3D079}"
+  Value: "{57A8453F-581D-42A6-B030-5F0EBFABB978}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Search Hero Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Header With Video Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Header With Video Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -129,21 +108,21 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20211012T120931Z
+      Value: 20241010T201200Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eba2019c-e5e1-49d5-a588-236bb011c2c2"
+      Value: "bc60d881-e9b0-4528-b598-f9f9780bdee5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225828Z
+      Value: 20241010T215514Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
