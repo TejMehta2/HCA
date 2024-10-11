@@ -1,12 +1,13 @@
 import React from 'react';
 import CareersHompageHero from './CareersHompageHero';
 import type { Meta, StoryObj } from '@storybook/react';
-import SearchButton from '../../components/SearchButton/SearchButton';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
-import YextStyledStaticFilters from '../../yext/YextStyledStaticFilters/YextStyledStaticFilters';
 import Button from '../../core-components/Button/Button';
+import { Default as CareersSearchDefault } from '../CareersSearch/CareersSearch.stories';
+import CareersSearch from '../CareersSearch/CareersSearch';
+import { CareersSearchProps } from '../CareersSearch/CareersSearch.types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CareersHompageHero> = {
@@ -27,46 +28,8 @@ export const Default: StoryObj<typeof CareersHompageHero> = {
         Exceptional people. Delivering exceptional care.
       </Text>
     ),
-    search: (
-      <SearchButton onClick={() => {}}>
-        <span>
-          Search for a <b>keyword or role</b>
-        </span>
-      </SearchButton>
-    ),
-    filters: (
-      <>
-        <YextStyledStaticFilters
-          fieldId={'location'}
-          filterOptions={[
-            { value: 'Option a' },
-            { value: 'Option b' },
-            { value: 'Option c' },
-            { value: 'Option d' },
-            { value: 'Option e' },
-            { value: 'Option f' },
-            { value: 'Option g' },
-            { value: 'Option h' },
-            { value: 'Option i' },
-          ]}
-          title={'Select a location'}
-        />
-        <YextStyledStaticFilters
-          fieldId={'area'}
-          filterOptions={[
-            { value: 'Option 1' },
-            { value: 'Option 2' },
-            { value: 'Option 3' },
-            { value: 'Option 4' },
-            { value: 'Option 5' },
-            { value: 'Option 6' },
-            { value: 'Option 7' },
-            { value: 'Option 8' },
-            { value: 'Option 9' },
-          ]}
-          title={'Select a job area'}
-        />
-      </>
+    children: (
+      <CareersSearch {...(CareersSearchDefault.args as CareersSearchProps)} />
     ),
     cta: (
       <Button size={'large'} variation={'full'}>

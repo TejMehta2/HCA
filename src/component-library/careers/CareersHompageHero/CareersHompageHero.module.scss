@@ -18,24 +18,16 @@
     margin-bottom: calc(#{$spacing-7} - #{px-to-rem(4)});
   }
 
+  .children {
+
+  }
+  
   .search {
     @include responsive-grid-span($breakpoint-l: 7);
-
-    display: flex;
-    flex-direction: column;
-    gap: inherit;
   }
 
   .filters {
-    position: relative;
     @include responsive-grid-span($breakpoint-l: 7);
-
-    display: grid;
-    @include media(screen-l) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    gap: px-to-rem(4) px-to-rem(8);
   }
 
   .cta {
