@@ -27,6 +27,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { useRouter } from 'next/router';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
 
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
@@ -86,47 +87,54 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
               </Text>
             </>
           }
-          search={
-            <SearchBar
-              preventSubmitOnSuggestion={true}
-              name="input"
-              placeholder={
-                props.fields?.data?.item?.searchPhrasePlaceholder?.value
+          children={
+            <CareersSearch
+              search={
+                <SearchBar
+                  preventSubmitOnSuggestion={true}
+                  name="input"
+                  placeholder={
+                    props.fields?.data?.item?.searchPhrasePlaceholder?.value
+                  }
+                />
+              }
+              filters={
+                <>
+                  <SelectField
+                    placeholder={
+                      props.fields?.data?.item?.selectAJobAreaLabel?.value
+                    }
+                    id={data?.facets?.[1]?.fieldId?.replace('c_', '') || ''}
+                    options={
+                      data?.facets?.[1]?.options.map((option) => ({
+                        text: option.displayName,
+                      })) || []
+                    }
+                  />
+                  <SelectField
+                    placeholder={
+                      props.fields?.data?.item?.selectALocationLabel?.value
+                    }
+                    id={data?.facets[0].fieldId?.replace('c_', '') || ''}
+                    options={
+                      data?.facets[0].options.map((option) => ({
+                        text: option.displayName,
+                      })) || []
+                    }
+                  />
+                </>
+              }
+              submit={
+                <Button size={'large'} variation={'full'}>
+                  <button type="submit">
+                    {
+                      props.fields.data.item.searchRolesCTA?.jsonValue?.value
+                        .text
+                    }
+                  </button>
+                </Button>
               }
             />
-          }
-          filters={
-            <>
-              <SelectField
-                placeholder={
-                  props.fields?.data?.item?.selectAJobAreaLabel?.value
-                }
-                id={data?.facets[1].fieldId?.replace('c_', '') || ''}
-                options={
-                  data?.facets[1].options.map((option) => ({
-                    text: option.displayName,
-                  })) || []
-                }
-              />
-              <SelectField
-                placeholder={
-                  props.fields?.data?.item?.selectALocationLabel?.value
-                }
-                id={data?.facets[0].fieldId?.replace('c_', '') || ''}
-                options={
-                  data?.facets[0].options.map((option) => ({
-                    text: option.displayName,
-                  })) || []
-                }
-              />
-            </>
-          }
-          cta={
-            <Button size={'large'} variation={'full'}>
-              <button type="submit">
-                {props.fields.data.item.searchRolesCTA?.jsonValue?.value.text}
-              </button>
-            </Button>
           }
           image={
             <NextJssImage

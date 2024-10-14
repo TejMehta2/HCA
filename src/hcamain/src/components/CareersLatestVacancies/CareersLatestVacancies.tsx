@@ -86,9 +86,11 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     return <CareersLatestVacanciesDefaultComponent {...props} />;
   }
 
-  const enabledFilters = props.fields?.data?.item?.filters?.targetItems;
+  const enabledFilters =
+    props.fields?.data?.item?.searchConfiguration?.targetItem?.filters
+      ?.targetItems;
   const enabledFilterNames =
-    props.fields?.data?.item?.filters?.targetItems?.map(
+    props.fields?.data?.item?.searchConfiguration?.targetItem?.filters?.targetItems?.map(
       (filter) => filter.yextFieldId?.value
     ) || [];
 

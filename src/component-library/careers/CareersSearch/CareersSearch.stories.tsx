@@ -3,6 +3,7 @@ import CareersSearch from './CareersSearch';
 import type { Meta, StoryObj } from '@storybook/react';
 import YextStyledStaticFilters from '../../yext/YextStyledStaticFilters/YextStyledStaticFilters';
 import SearchButton from '../../components/SearchButton/SearchButton';
+import Button from '../../core-components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CareersSearch> = {
@@ -58,6 +59,11 @@ export const Default: StoryObj<typeof CareersSearch> = {
           title={'Select a job area'}
         />
       </>
+    ),
+    submit: (
+      <Button variation="full" size="large">
+        <button type="submit">Search roles</button>
+      </Button>
     ),
   },
 };

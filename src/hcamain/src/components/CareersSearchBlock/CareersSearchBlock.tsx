@@ -11,7 +11,7 @@ import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SelectField from '@component-library/core-components/SelectField/SelectField';
 import { JobsResponse } from '../CareersSearchHero/CareersSearchHero.types';
 import { CareersSearchBlockProps } from './CareersSearchBlock.types';
-import { YextFacetJson } from 'src/types/searchProps';
+import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
 
 const CareersSearchBlockDefaultComponent = (
   props: CareersSearchBlockProps
@@ -47,52 +47,61 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
         action={props.fields.data.item.searchRolesCTA?.jsonValue?.value.href}
         method="get"
       >
-        <SearchBar
-          preventSubmitOnSuggestion={true}
-          name="input"
-          placeholder={props.fields?.data?.item?.searchPhrasePlaceholder?.value}
+        <CareersSearch
+          search={
+            <SearchBar
+              preventSubmitOnSuggestion={true}
+              name="input"
+              placeholder={
+                props.fields?.data?.item?.searchPhrasePlaceholder?.value
+              }
+            />
+          }
+          filters={
+            <>
+              {data?.facets?.[1] && (
+                <SelectField
+                  placeholder={
+                    props.fields?.data?.item?.selectAJobAreaLabel?.value
+                  }
+                  id={data?.facets?.[1]?.fieldId?.replace('c_', '') || ''}
+                  options={
+                    data?.facets?.[1]?.options.map((option) => ({
+                      text: option.displayName,
+                    })) || []
+                  }
+                />
+              )}
+              {data?.facets?.[0] && (
+                <SelectField
+                  placeholder={
+                    props.fields?.data?.item?.selectALocationLabel?.value
+                  }
+                  id={data?.facets[0].fieldId?.replace('c_', '') || ''}
+                  options={
+                    data?.facets[0].options.map((option) => ({
+                      text: option.displayName,
+                    })) || []
+                  }
+                />
+              )}
+              {/* <Button size={'large'} variation={'full'}>
+                <button type="button">
+                  {props.fields.data.item.filtersCtaLabel?.value}
+                </button>
+              </Button> */}
+            </>
+          }
+          submit={
+            <Button size={'large'} variation={'full'}>
+              <button type="submit">
+                {props.fields.data.item.searchRolesCTA?.jsonValue?.value.text}
+              </button>
+            </Button>
+          }
         />
 
-        <>
-          {data?.facets?.[1] && (
-            <SelectField
-              placeholder={props.fields?.data?.item?.selectAJobAreaLabel?.value}
-              id={data?.facets[1].fieldId?.replace('c_', '') || ''}
-              options={
-                data?.facets[1].options.map((option) => ({
-                  text: option.displayName,
-                })) || []
-              }
-            />
-          )}
-          {data?.facets?.[0] && (
-            <SelectField
-              placeholder={
-                props.fields?.data?.item?.selectALocationLabel?.value
-              }
-              id={data?.facets[0].fieldId?.replace('c_', '') || ''}
-              options={
-                data?.facets[0].options.map((option) => ({
-                  text: option.displayName,
-                })) || []
-              }
-            />
-          )}
-        </>
-
-        <Button size={'large'} variation={'full'}>
-          <button type="submit">
-            {props.fields.data.item.searchRolesCTA?.jsonValue?.value.text}
-          </button>
-        </Button>
-
-        <Button size={'large'} variation={'full'}>
-          <button type="button">
-            {props.fields.data.item.filtersCtaLabel?.value}
-          </button>
-        </Button>
-
-        {props.fields.data.item?.filters?.targetItems?.map((item, index) => {
+        {/* {props.fields.data.item?.filters?.targetItems?.map((item, index) => {
           const facet = item as YextFacetJson;
           return (
             <div key={index}>
@@ -102,7 +111,7 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
               <br />
             </div>
           );
-        })}
+        })} */}
       </form>
     </Themes>
   );

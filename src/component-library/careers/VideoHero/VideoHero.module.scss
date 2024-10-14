@@ -5,26 +5,15 @@
 .outer {
   background-color: var(--background);
   color: var(--text);
-  overflow: hidden;
   position: relative;
   display: flex;
+  gap: $spacing-2;
   align-items: center;
-  min-height: calc(100vh - px-to-rem(70 + 40));
+  min-height: calc(100svh - px-to-rem(70 + 40));
 
   @include media(screen-l, max) {
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
-  }
-
-  .children {
-    // nested for increased specificity of a/button tag overrides
-    > *:not(:last-child) {
-      margin-bottom: $spacing-2;
-    }
-    @include media(screen-m) {
-      width: max-content;
-      max-width: px-to-rem(500);
-    }
   }
 }
 
@@ -44,16 +33,28 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 5, 5);
+  @include responsive-grid-span(6, 5, 7, 7);
 
   align-self: center;
 }
 
-.video, .image {
+.video,
+.image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+.video {
+  opacity: 0;
+  transition: opacity 1.2s ease 1s;
+
+  &.playing,
+  &.paused {
+    opacity: 1;
+  }
 
   > * {
     position: absolute;
@@ -66,13 +67,12 @@
   }
 }
 
-.video {
-  opacity: 0;
-  transition: opacity 1.2s ease 1s;
-
-  &.playing, &.paused {
-    opacity: 1;
-  }
+.image > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .toggle {
@@ -91,7 +91,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(0 0 0 / 60%);
 }
 
 .subtitle {

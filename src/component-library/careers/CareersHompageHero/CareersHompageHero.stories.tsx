@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
-import Button from '../../core-components/Button/Button';
 import { Default as CareersSearchDefault } from '../CareersSearch/CareersSearch.stories';
 import CareersSearch from '../CareersSearch/CareersSearch';
 import { CareersSearchProps } from '../CareersSearch/CareersSearch.types';
@@ -30,11 +29,6 @@ export const Default: StoryObj<typeof CareersHompageHero> = {
     ),
     children: (
       <CareersSearch {...(CareersSearchDefault.args as CareersSearchProps)} />
-    ),
-    cta: (
-      <Button size={'large'} variation={'full'}>
-        <a href="#">Search roles</a>
-      </Button>
     ),
     image: (
       <Image

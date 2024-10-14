@@ -18,10 +18,6 @@
     margin-bottom: calc(#{$spacing-7} - #{px-to-rem(4)});
   }
 
-  .children {
-
-  }
-  
   .search {
     @include responsive-grid-span($breakpoint-l: 7);
   }

@@ -4,12 +4,15 @@ import VideoHero from './VideoHero';
 import { VideoHeroProps } from './VideoHero.types';
 
 const mockProps: VideoHeroProps = {
-  children: <p>Hello world</p>,
+  title: <p>Hello world 1</p>,
+  copy: <p>Hello world 2</p>,
+  image: <p>Hello world 3 </p>,
+  children: <p>Hello world 4</p>,
 };
 
 describe('VideoHero', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<VideoHero {...mockProps} />);
-    expect(getByText('Hello world')).toBeVisible();
+    expect(getByText('Hello world 1')).toBeVisible();
   });
 });

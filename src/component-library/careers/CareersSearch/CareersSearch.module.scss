@@ -5,8 +5,8 @@
   @include responsive-grid-span($breakpoint-l: 7);
 
   display: flex;
+  gap: $spacing-4;
   flex-direction: column;
-  gap: inherit;
 }
 
 .filters {

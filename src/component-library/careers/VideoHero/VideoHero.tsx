@@ -15,35 +15,37 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
   } = props;
   const [iframeState, setIframeState] = useState<'' | 'playing' | 'paused'>('');
 
-  const videoUrl = new URL(videoSrc);
-  videoUrl.searchParams.append('background', '1');
-  videoUrl.searchParams.append('muted', '1');
-  videoUrl.searchParams.append('api', '1');
+  const videoUrl = videoSrc ? new URL(videoSrc) : null;
+  videoUrl?.searchParams.append('background', '1');
+  videoUrl?.searchParams.append('muted', '1');
+  videoUrl?.searchParams.append('api', '1');
   const iframeRef = useRef(null);
 
   return (
-    <div className={styles.outer}>
-      <div className={styles.image}>{image}</div>
-      <div
-        className={[styles.video, styles[iframeState]].join(' ')}
-        style={{ ['--aspect-ratio' as string]: videoAspectRatio }}
-      >
-        <iframe
-          onLoad={() => setIframeState('playing')}
-          ref={iframeRef}
-          aria-hidden="true"
-          src={videoUrl.href}
-          allow="autoplay"
-          data-ready="true"
-        ></iframe>
-      </div>
+    <div
+      className={styles.outer}
+      style={{ ['--aspect-ratio' as string]: videoAspectRatio }}
+    >
+      {image && <div className={styles.image}>{image}</div>}
+      {videoUrl && (
+        <div className={[styles.video, styles[iframeState]].join(' ')}>
+          <iframe
+            onLoad={() => setIframeState('playing')}
+            ref={iframeRef}
+            aria-hidden="true"
+            src={videoUrl.href}
+            allow="autoplay"
+            data-ready="true"
+          ></iframe>
+        </div>
+      )}
       <div className={styles.overlay}></div>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <div className={styles.title}>{title}</div>
           {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
-          <div className={styles.copy}>{copy}</div>
-          <div className={styles.children}>{children}</div>
+          {title && <div className={styles.title}>{title}</div>}
+          {copy && <div className={styles.copy}>{copy}</div>}
+          {children && <div className={styles.children}>{children}</div>}
         </div>
       </div>
       <div className={styles.toggle}>
