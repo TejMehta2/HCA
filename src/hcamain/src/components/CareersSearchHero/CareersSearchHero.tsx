@@ -4,7 +4,6 @@ import {
   Text as JssText,
   useSitecoreContext,
   GetStaticComponentProps,
-  useComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 
@@ -14,10 +13,7 @@ import CareersHomepageHero from '@component-library/careers/CareersHompageHero/C
 import Button from '@component-library/core-components/Button/Button';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SelectField from '@component-library/core-components/SelectField/SelectField';
-import {
-  CareersSearchHeroProps,
-  JobsResponse,
-} from './CareersSearchHero.types';
+import { CareersSearchHeroProps } from './CareersSearchHero.types';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
@@ -49,9 +45,6 @@ const CareersSearchHeroDefaultComponent = (
 };
 
 export const Default = (props: CareersSearchHeroProps): JSX.Element => {
-  const data = useComponentProps<JobsResponse['response']>(
-    props.rendering?.uid
-  );
   if (!props?.fields?.data?.item) {
     return <CareersSearchHeroDefaultComponent {...props} />;
   }
@@ -104,9 +97,9 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                     placeholder={
                       props.fields?.data?.item?.selectAJobAreaLabel?.value
                     }
-                    id={data?.facets?.[1]?.fieldId?.replace('c_', '') || ''}
+                    id={props?.facets?.[1]?.fieldId?.replace('c_', '') || ''}
                     options={
-                      data?.facets?.[1]?.options.map((option) => ({
+                      props?.facets?.[1]?.options.map((option) => ({
                         text: option.displayName,
                       })) || []
                     }
@@ -115,9 +108,9 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                     placeholder={
                       props.fields?.data?.item?.selectALocationLabel?.value
                     }
-                    id={data?.facets[0].fieldId?.replace('c_', '') || ''}
+                    id={props?.facets[0].fieldId?.replace('c_', '') || ''}
                     options={
-                      data?.facets[0].options.map((option) => ({
+                      props?.facets[0].options.map((option) => ({
                         text: option.displayName,
                       })) || []
                     }
@@ -154,9 +147,6 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
 };
 
 export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
-  const data = useComponentProps<JobsResponse['response']>(
-    props.rendering?.uid
-  );
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
   const pathname = usePathname();
@@ -165,22 +155,40 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     return <CareersSearchHeroDefaultComponent {...props} />;
   }
 
+  const enabledFilters = props.fields?.data?.item?.filters?.targetItems;
+  const enabledFilterNames =
+    props.fields?.data?.item?.filters?.targetItems?.map(
+      (filter) => filter.yextFieldId?.value
+    ) || [];
+
   // Parse filter options to be used in multiple components
-  const filterCategories = data?.facets?.map((facet) => ({
-    title: facet.displayName,
-    fields: facet.options?.map((option) => {
+  const filterCategories = props?.facets
+    ?.filter(({ fieldId }) => enabledFilterNames.includes(fieldId))
+    // Uncomment this part when implementing separate filter dropdowns
+    // ?.filter(
+    //   ({ fieldId }) =>
+    //     enabledFilterNames.includes(fieldId) &&
+    //     !['c_jobCity', 'c_jobFamily'].includes(fieldId)
+    // )
+    ?.map((facet) => {
+      const contentFilter = enabledFilters?.find(
+        (filter) => filter.yextFieldId?.value === facet.fieldId
+      );
       return {
-        id: option.displayName,
-        value: option.displayName,
-        name: facet.fieldId.replace('c_', ''),
-        label: option.displayName,
-        checked: searchParams
-          .getAll(facet.fieldId.replace('c_', ''))
-          .includes(option.displayName),
-        onChange: () => {},
+        title: contentFilter?.displayName?.value,
+        fields: facet.options?.map((option) => {
+          const name = contentFilter?.filter?.value || '';
+          return {
+            id: option.displayName,
+            value: option.displayName,
+            name: name,
+            label: option.displayName,
+            checked: searchParams.getAll(name).includes(option.displayName),
+            onChange: () => {},
+          };
+        }),
       };
-    }),
-  }));
+    });
 
   const activeFilters = filterCategories?.reduce((previous, { fields }) => {
     return [...previous, ...fields.filter(({ checked }) => checked)];

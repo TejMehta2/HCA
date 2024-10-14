@@ -8,7 +8,7 @@ const CareersSearchResults = (
   const { header, count, results, cta } = props;
   return (
     <div className={styles.container}>
-      <div className={styles.header}>{header}</div>
+      {header && <div className={styles.header}>{header}</div>}
       <div className={styles.count}>{count}</div>
       <div className={styles.results}>{results}</div>
       <div className={styles.cta}>{cta}</div>
