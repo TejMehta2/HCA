@@ -15,10 +15,21 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
   } = props;
   const [iframeState, setIframeState] = useState<'' | 'playing' | 'paused'>('');
 
+  const isYoutube =
+    videoSrc?.includes('youtube') || videoSrc?.includes('youtu.be');
   const videoUrl = videoSrc ? new URL(videoSrc) : null;
-  videoUrl?.searchParams.append('background', '1');
-  videoUrl?.searchParams.append('muted', '1');
-  videoUrl?.searchParams.append('api', '1');
+
+  if (isYoutube) {
+    videoUrl?.searchParams.append('autoplay', '1');
+    videoUrl?.searchParams.append('loop', '1');
+    videoUrl?.searchParams.append('mute', '1');
+    videoUrl?.searchParams.append('showinfo', '0');
+  } else {
+    videoUrl?.searchParams.append('background', '1');
+    videoUrl?.searchParams.append('muted', '1');
+    videoUrl?.searchParams.append('api', '1');
+  }
+
   const iframeRef = useRef(null);
 
   return (
