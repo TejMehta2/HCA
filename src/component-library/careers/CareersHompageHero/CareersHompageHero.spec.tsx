@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import CareersHompageHero from './CareersHompageHero';
 import { CareersHompageHeroProps } from './CareersHompageHero.types';
-import Button from '../../core-components/Button/Button';
 import Image from 'next/image';
 import Text from '../../foundation/Text/Text';
 
@@ -13,11 +12,6 @@ const mockProps: CareersHompageHeroProps = {
     </Text>
   ),
   children: <p>Searchbar</p>,
-  cta: (
-    <Button size={'large'} variation={'full'}>
-      <a href="#">Search roles</a>
-    </Button>
-  ),
   image: (
     <Image
       src="/placeholders/couple-on-bench.jpeg"
