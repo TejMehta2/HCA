@@ -43,9 +43,6 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
 
   const iframeRef = useRef(null);
 
-  const playMethod = isYoutube ? 'playVideo' : 'play';
-  const pauseMethod = isYoutube ? 'pauseVideo' : 'pause';
-
   return (
     <div
       className={styles.outer}
@@ -81,16 +78,17 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
               onClick={() => {
                 const iframe = iframeRef?.current as HTMLIFrameElement | null;
                 if (!iframe) return;
-
+                const playMethod = isYoutube ? 'playVideo' : 'play';
+                const pauseMethod = isYoutube ? 'pauseVideo' : 'pause';
+                const method =
+                  iframeState === 'playing' ? pauseMethod : playMethod;
                 const packet = isYoutube
                   ? {
                       event: 'command',
-                      func:
-                        iframeState === 'playing' ? pauseMethod : playMethod,
+                      func: method,
                     }
                   : {
-                      method:
-                        iframeState === 'playing' ? pauseMethod : playMethod,
+                      method,
                     };
                 iframe.contentWindow?.postMessage(JSON.stringify(packet), '*');
                 setIframeState(
