@@ -5,5 +5,6 @@ export interface SelectLocationProps {
   children?: ReactNode | JSX.Element;
   locations: any;
   icon: ReactNode | JSX.Element;
+  iconPhone: ReactNode | JSX.Element;
   noLocationsMsg: string;
 }

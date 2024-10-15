@@ -44,7 +44,6 @@ const longRunning = async (
   const baseURL: string = 'https://www.hcahealthcare.co.uk';
 
   const res = await fetch(`${baseURL}/sitemap.hca.consultant-finder.xml`, {
-    cache: 'force-cache',
     next: {
       revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
     },

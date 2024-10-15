@@ -7,6 +7,32 @@ import { formatDateLong } from '../../utility-functions/index';
 
 const LocationCard = (props: LocationCardProps): JSX.Element => {
   const { selectedLocation } = useContext(ConsultantFinderContext);
+
+  const slotDateTime: string | null = props.time || '';
+  const filteredSlotDateTime: string | null = props.filteredTime || '';
+
+  const date1 = new Date(slotDateTime);
+  const date2 = new Date(filteredSlotDateTime);
+
+  // Compare the date portion only (year, month, day)
+  const isSameDate =
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate();
+
+  // if (isSameDate) {
+  //   console.log('The dates are the same');
+  // } else {
+  //   console.log('The dates are different');
+  // }
+
+  // // Compare the full datetime (date and time)
+  // if (date1.getTime() === date2.getTime()) {
+  //   console.log('The date and time are the same');
+  // } else {
+  //   console.log('The date and time are different');
+  // }
+
   return (
     <div
       className={`${styles['location-card']} ${
@@ -27,9 +53,20 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
           </Text>
         </div>
       </div>
-      {props.time && (
+      {/* book online time */}
+      {filteredSlotDateTime !== '' && (
         <div className={styles.time}>
           <div className={styles.icon}>{props.icon}</div>
+          <Text tag="p" variation="body-medium-small">
+            {formatDateLong(props.filteredTime)}
+          </Text>
+        </div>
+      )}
+      {/* slot time, which can be phone call bookings if not the same as filtered time 
+      then show it, we assume it is phone bookings */}
+      {slotDateTime !== '' && !isSameDate && (
+        <div className={styles.time}>
+          <div className={styles.icon}>{props.iconPhone}</div>
           <Text tag="p" variation="body-medium-small">
             {formatDateLong(props.time)}
           </Text>

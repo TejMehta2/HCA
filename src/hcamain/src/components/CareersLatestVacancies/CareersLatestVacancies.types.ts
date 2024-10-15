@@ -1,5 +1,6 @@
 import { Field, LinkFieldValue } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
+import { YextFacetJson } from 'src/types/searchProps';
 
 export interface Fields {
   data?: {
@@ -12,8 +13,7 @@ export interface Fields {
 }
 
 export interface CareersLatestVacanciesConfiguration {
-  selectAJobAreaLabel?: { value?: string };
-  selectALocationLabel?: { value?: string };
+  filters?: { targetItems?: YextFacetJson[] };
   readMoreCtaText?: { value?: string };
   viewAllVacanciesCTA: { jsonValue: { value: LinkFieldValue } };
 }

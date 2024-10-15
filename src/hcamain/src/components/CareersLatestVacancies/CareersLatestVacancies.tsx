@@ -86,21 +86,42 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
     return <CareersLatestVacanciesDefaultComponent {...props} />;
   }
 
-  const filterCategories = response?.facets?.map((facet) => ({
-    title: facet.displayName,
-    fields: facet.options?.map((option) => {
+  const enabledFilters =
+    props.fields?.data?.item?.searchConfiguration?.targetItem?.filters
+      ?.targetItems;
+  const enabledFilterNames =
+    props.fields?.data?.item?.searchConfiguration?.targetItem?.filters?.targetItems?.map(
+      (filter) => filter.yextFieldId?.value
+    ) || [];
+
+  // Parse filter options to be used in multiple components
+  const filterCategories = response?.facets
+    ?.filter(({ fieldId }) => enabledFilterNames.includes(fieldId))
+    // Uncomment this part when implementing separate filter dropdowns
+    // ?.filter(
+    //   ({ fieldId }) =>
+    //     enabledFilterNames.includes(fieldId) &&
+    //     !['c_jobCity', 'c_jobFamily'].includes(fieldId)
+    // )
+    ?.map((facet) => {
+      const contentFilter = enabledFilters?.find(
+        (filter) => filter.yextFieldId?.value === facet.fieldId
+      );
       return {
-        id: option.displayName,
-        value: option.displayName,
-        name: facet.fieldId.replace('c_', ''),
-        label: option.displayName,
-        checked: searchParams
-          .getAll(facet.fieldId.replace('c_', ''))
-          .includes(option.displayName),
-        onChange: () => {},
+        title: contentFilter?.displayName?.value,
+        fields: facet.options?.map((option) => {
+          const name = contentFilter?.filter?.value || '';
+          return {
+            id: option.displayName,
+            value: option.displayName,
+            name: name,
+            label: option.displayName,
+            checked: searchParams.getAll(name).includes(option.displayName),
+            onChange: () => {},
+          };
+        }),
       };
-    }),
-  }));
+    });
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>

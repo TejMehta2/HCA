@@ -20,7 +20,7 @@ const SearchConsultant = (props: SearchProps): JSX.Element => {
   const [error, setError] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const searchId = useId();
-  const doctifyURL = `${props.doctifySearchBaseURL}?sortType=relevance&keywordId=${keywordId}&distance=700&lat=51.5073509&lon=-0.1277583&limit=5&offset=0`;
+  const doctifyURL = `${props.doctifySearchBaseURL}?sortType=relevance&keywordId=${keywordId}&distance=0&lat=51.5073509&lon=-0.1277583&limit=5&offset=0`;
 
   // we are using search specialists api from Doctify when we have id for specialty
   const getDoctifyDataWithId = () => {

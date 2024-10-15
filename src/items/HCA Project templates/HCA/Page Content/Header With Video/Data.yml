@@ -1,30 +1,18 @@
 ﻿---
-ID: "70b09f2a-2155-4ff9-a4f9-08aee7fc23c0"
-Parent: "db66acc4-93ef-4ccf-9533-70b350111481"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Search Hero/Content/SearchRolesCTA
+ID: "4e9212b7-c31f-4ab3-a12e-a49b809ecc3c"
+Parent: "4e18b54a-b5f9-4f4a-9946-e5eab7121b56"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Page Content/Header With Video/Data
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "query:$linkableHomes"
-- ID: "24cb32f0-e364-4f37-b400-0f2899097b5b"
-  Hint: Enable Shared Language Fallback
-  Value: 1
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: General Link
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 600
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/window_dialog.png
 Languages:
 - Language: "de-DE"
   Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Bild 2
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: PromoIcon2
+    Value: Promo
   Versions:
   - Version: 1
     Fields:
@@ -50,41 +38,31 @@ Languages:
       Hint: __Updated
       Value: 20240904T144537Z
 - Language: en
-  Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: Search Roles CTA
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20141106T105010Z
+      Value: 20111213T143500
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\adamnaj
+        sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d080bd4d-4c88-42f8-bf33-5b5682ae2331"
+      Value: "5a5cad1b-e86f-4bd3-a092-16dd58a281d3"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240905T222128Z
-    - ID: "fa622538-0c13-4130-a001-45984241aa00"
-      Hint: Enable Language Fallback
-      Value: 1
+      Value: 20241010T200642Z
 - Language: "ja-JP"
   Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: 画像 2
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロモ アイコン2
+    Value: プロモ
   Versions:
   - Version: 1
     Fields:
@@ -111,12 +89,9 @@ Languages:
       Value: 20240904T144537Z
 - Language: "zh-CN"
   Fields:
-  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
-    Hint: Title
-    Value: 图片2
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 促销图标2
+    Value: 促销
   Versions:
   - Version: 1
     Fields:

@@ -27,7 +27,7 @@ Languages:
       Value: List of components
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29873b37-ecc7-4f52-8c54-af7c7ea596f4"
+      Value: "55629101-0f61-4bd8-8af5-058d1017ea3e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -37,7 +37,7 @@ Languages:
       Value: See more
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240925T160857Z
+      Value: 20241010T225127Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
@@ -49,3 +49,5 @@ Languages:
         {6A66FD2A-DB03-41A7-95AC-694BFFF22092}
         {7A6B2F72-BC63-4D26-A047-3FCD58A7DE7F}
         {87BB6F82-6E9C-4CA7-ADE9-50FB74BF2BA5}
+        {D69BF2A1-1CC9-4FA5-B101-8EF735802047}
+        {BAE5A657-6D34-4393-B3B7-F927E94B2B90}

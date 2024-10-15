@@ -165,7 +165,6 @@ export default async function handler(
             mediaURL,
             {
               redirect: 'manual',
-              cache: 'force-cache',
               next: {
                 revalidate:
                   revalidate.now() || revalidate.noCache() ? false : 3600,
@@ -176,7 +175,6 @@ export default async function handler(
           //console.log('redirected', xlData.redirected, xlData.url);
           if (xlData.redirected) {
             xlData = await fetch(xlData.url, {
-              cache: 'force-cache',
               next: {
                 revalidate:
                   revalidate.now() || revalidate.noCache() ? false : 3600,
