@@ -254,11 +254,6 @@ export const getStaticProps: GetStaticComponentProps = async (
         };
       }
     } else {
-      if (!hasPracticeAndService && !hasContextSearchParams) {
-        return {
-          consultants: [],
-        };
-      }
 
       const paramSource = hasPracticeAndService
         ? [...practiceList, ...serviceList]
