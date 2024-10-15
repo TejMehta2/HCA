@@ -13,24 +13,38 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
     videoSrc,
     videoAspectRatio = 16 / 9,
   } = props;
-  const [iframeState, setIframeState] = useState<'' | 'playing' | 'paused'>('');
 
   const isYoutube =
     videoSrc?.includes('youtube') || videoSrc?.includes('youtu.be');
+
+  const [iframeState, setIframeState] = useState<'' | 'playing' | 'paused'>(
+    isYoutube ? 'playing' : ''
+  );
+
   const videoUrl = videoSrc ? new URL(videoSrc) : null;
 
   if (isYoutube) {
     videoUrl?.searchParams.append('autoplay', '1');
-    videoUrl?.searchParams.append('loop', '1');
     videoUrl?.searchParams.append('mute', '1');
     videoUrl?.searchParams.append('showinfo', '0');
+    videoUrl?.searchParams.append('rel', '0');
+    videoUrl?.searchParams.append('enablejsapi', '1');
+
+    // Enable looping via playlist hack
+    videoUrl?.searchParams.append('loop', '1');
+    const youtubeId = videoSrc?.match(/embed\/([^?]+)/)?.[1] || '';
+    videoUrl?.searchParams.append('playlist', youtubeId);
   } else {
     videoUrl?.searchParams.append('background', '1');
     videoUrl?.searchParams.append('muted', '1');
     videoUrl?.searchParams.append('api', '1');
+    videoUrl?.searchParams.append('loop', '1');
   }
 
   const iframeRef = useRef(null);
+
+  const playMethod = isYoutube ? 'playVideo' : 'play';
+  const pauseMethod = isYoutube ? 'pauseVideo' : 'pause';
 
   return (
     <div
@@ -47,6 +61,7 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
             src={videoUrl.href}
             allow="autoplay"
             data-ready="true"
+            seamless
           ></iframe>
         </div>
       )}
@@ -66,12 +81,18 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
               onClick={() => {
                 const iframe = iframeRef?.current as HTMLIFrameElement | null;
                 if (!iframe) return;
-                iframe.contentWindow?.postMessage(
-                  JSON.stringify({
-                    method: iframeState === 'playing' ? 'pause' : 'play',
-                  }),
-                  '*'
-                );
+
+                const packet = isYoutube
+                  ? {
+                      event: 'command',
+                      func:
+                        iframeState === 'playing' ? pauseMethod : playMethod,
+                    }
+                  : {
+                      method:
+                        iframeState === 'playing' ? pauseMethod : playMethod,
+                    };
+                iframe.contentWindow?.postMessage(JSON.stringify(packet), '*');
                 setIframeState(
                   iframeState === 'playing' ? 'paused' : 'playing'
                 );
