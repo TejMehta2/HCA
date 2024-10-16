@@ -179,7 +179,7 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
         fields: facet.options?.map((option) => {
           const name = contentFilter?.filter?.value || '';
           return {
-            id: option.displayName,
+            id: `${name}-${option.displayName}`,
             value: option.displayName,
             name: name,
             label: option.displayName,
