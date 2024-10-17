@@ -27,6 +27,7 @@
   justify-content: space-between;
 }
 
-.name {
+.name,
+.title {
   @include apply-subheading-1;
 }
