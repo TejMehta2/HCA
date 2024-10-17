@@ -61,6 +61,7 @@ import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
+import router from 'next/router';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -241,12 +242,20 @@ export const Default = (props: StepProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serverSideData]); // only trigger fetch on serverside data update
 
+  // if (
+  //   !serverSideData ||
+  //   serverSideData.ErrorWithProfileData ||
+  //   !serverSideData.ProfileJson
+  // ) {
+  //   return <div>Profile is missing data, please retry later</div>;
+  // }
+
   if (
     !serverSideData ||
     serverSideData.ErrorWithProfileData ||
     !serverSideData.ProfileJson
   ) {
-    return <div>Profile is missing data, please retry later</div>;
+    router.push('/404-c');
   }
 
   // Callback function to handle tab clicks
