@@ -26,6 +26,7 @@ interface AuthorFields {
 interface Fields {
   Quote?: Field<string>;
   Author?: AuthorFields[];
+  Link?: LinkField;
 }
 
 type BlogQuoteProps = {
@@ -223,6 +224,82 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
             <JssText field={props.fields?.Quote} />
           </Text>
         ) : null // Render nothing if the quote is null or empty
+      }
+    />
+  );
+
+  const isContainerized = props?.params?.Containerized === '1';
+  if (isContainerized) {
+    return (
+      <RichText additionalStyles={props?.params?.styles}>
+        <figure>{quoteBlock}</figure>
+      </RichText>
+    );
+  }
+
+  return (
+    <BlogContent
+      theme={props.params?.Theme || 'A-HCA-White'}
+      contentVariation="quote"
+    >
+      <RichText>{quoteBlock}</RichText>
+    </BlogContent>
+  );
+};
+
+export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
+  if (!props.fields) {
+    return <BlogQuoteDefaultComponent {...props} />;
+  }
+
+  const quoteBlock = (
+    <QuoteBlock
+      author={
+        props.fields?.Author?.length
+          ? {
+              name: props?.fields?.Link ? (
+                <a href={props?.fields?.Link?.value?.href} target="_blank">
+                  <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+                </a>
+              ) : (
+                <JssText field={props.fields?.Author?.[0]?.fields?.Name} />
+              ),
+              image: props?.fields?.Link ? (
+                <a href={props?.fields?.Link?.value?.href} target="_blank">
+                  <NextJssImage
+                    field={props.fields?.Author?.[0]?.fields?.Avatar}
+                    next={{
+                      width: '70',
+                      height: '70',
+                    }}
+                  />
+                </a>
+              ) : (
+                <NextJssImage
+                  field={props.fields?.Author?.[0]?.fields?.Avatar}
+                  next={{
+                    width: '70',
+                    height: '70',
+                  }}
+                />
+              ),
+              tag: props?.fields?.Link ? (
+                <a href={props?.fields?.Link?.value?.href} target="_blank">
+                  <span>
+                    <JssText
+                      field={props.fields?.Author?.[0]?.fields?.Position}
+                    />
+                  </span>
+                </a>
+              ) : (
+                <span>
+                  <JssText
+                    field={props.fields?.Author?.[0]?.fields?.Position}
+                  />
+                </span>
+              ),
+            }
+          : undefined
       }
     />
   );
