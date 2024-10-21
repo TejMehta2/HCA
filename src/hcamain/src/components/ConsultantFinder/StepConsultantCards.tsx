@@ -503,6 +503,7 @@ export const Default = (props: StepProps): JSX.Element => {
     if (URLprams.length === 0) {
       setLoading(false);
       setPageNotFound(true);
+      router.push('/finder/step-intro');
       return;
     }
 
@@ -1093,11 +1094,6 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
             </div>
           </>
-        )}
-        {router.isReady && pageNotFound && (
-          <Container marginTop="spacing-5" marginBottom="spacing-5">
-            Page not found
-          </Container>
         )}
       </div>
     );
