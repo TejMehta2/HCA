@@ -60,8 +60,8 @@ const YextProvider = (props: SearchProps) => {
   const { children } = props;
 
   console.log(
-    'functioinal cookies allowed?',
-    eval("OnetrustActiveGroups?.includes('C0003')")
+    'functional cookies allowed?',
+    eval("'OnetrustActiveGroups' in window ? OnetrustActiveGroups?.includes('C0003') : true")
   );
   console.log('yext analytics', JSON.stringify(analytics));
 
