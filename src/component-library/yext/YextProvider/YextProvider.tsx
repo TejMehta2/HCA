@@ -50,6 +50,7 @@ const analytics = provideAnalytics({
   experienceKey: process.env.NEXT_PUBLIC_YEXT_EXPERIENCE_KEY!, // example: answers-js-docs
   businessId: parseInt(process.env.NEXT_PUBLIC_YEXT_BUSINESS_ID!), // HCA 3806694, // '<your business id>'
   experienceVersion: process.env.NEXT_PUBLIC_YEXT_ENVIRONMENT!, //'PRODUCTION',
+  region: 'EU',
 });
 
 interface SearchProps {
@@ -57,7 +58,13 @@ interface SearchProps {
 }
 const YextProvider = (props: SearchProps) => {
   const { children } = props;
+
+  console.log(
+    'functioinal cookies allowed?',
+    eval("OnetrustActiveGroups?.includes('C0003')")
+  );
   console.log('yext analytics', JSON.stringify(analytics));
+
   return (
     <SearchHeadlessProvider searcher={searcher}>
       {children}
