@@ -26,6 +26,7 @@ interface AuthorFields {
 interface Fields {
   Quote?: Field<string>;
   Author?: AuthorFields[];
+  Link?: LinkField;
 }
 
 type BlogQuoteProps = {
