@@ -14,6 +14,8 @@
 
   .title {
     @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+
+    margin-bottom: calc(#{$spacing-7} - #{px-to-rem(4)});
   }
 
   .search {
@@ -21,15 +23,7 @@
   }
 
   .filters {
-    position: relative;
     @include responsive-grid-span($breakpoint-l: 7);
-
-    display: grid;
-    @include media(screen-l) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    gap: px-to-rem(4) px-to-rem(8);
   }
 
   .cta {

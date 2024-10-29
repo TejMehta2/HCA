@@ -12,7 +12,7 @@ import {
   useSearchActions,
   useSearchState,
 } from '@yext/search-headless-react';
-import { verticalConfigMap } from '../YextSearch/YextSearch';
+import { verticalConfigMap } from '../YextSearch/verticalConfigMap';
 import { AlternativeVerticals } from '../YextCustomAlternativeVerticals/YextCustomAlternativeVerticals';
 import Checkbox from '../../core-components/form/basic/Checkbox/Checkbox';
 import getVisibleProximity from './getVisibleProximity';
@@ -118,9 +118,10 @@ const YextResultSectionLocations = (
     };
   }, [locations]);
 
+  // Show all current pins after the marker count changes
   useEffect(() => {
     const map = mapRef.current;
-    if (!map) return;
+    if (!map || !markers.length) return;
     const bounds = new google.maps.LatLngBounds();
     const positions = [...markers.values()].map((marker) =>
       marker.marker.getPosition()
@@ -220,10 +221,13 @@ const YextResultSectionLocations = (
             </div>
           ))}
           {locations.length === 0 && (
-            <AlternativeVerticals
-              currentVerticalLabel={'Locations'}
-              verticalConfigMap={verticalConfigMap}
-            />
+            <>
+              <AlternativeVerticals
+                currentVerticalLabel={'Locations'}
+                verticalConfigMap={verticalConfigMap}
+                displayAllOnNoResults={false}
+              />
+            </>
           )}
           {!!locations?.length && variation === 'side-by-side' && (
             <Checkbox

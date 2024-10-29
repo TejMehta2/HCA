@@ -4,6 +4,7 @@ import {
   LinkField,
   ImageField,
   Text as JssText,
+  Link as JssLink,
   RichText as JssRichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -41,7 +42,7 @@ interface Fields {
       cTAIcon?: {
         Icon?: CTAIconFields;
       };
-      cTALink?: { jsonValue?: LinkField };
+      cTALink: { jsonValue: LinkField };
       treatments?: {
         TreatmentsList?: TreatmentsFields[];
       };
@@ -82,7 +83,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
 
   const { showImage = true } = props;
 
-  if (!props.fields) {
+  if (!props.fields?.data?.item) {
     return <TreatmentsCardsDefaultComponent {...props} />;
   }
 
@@ -93,15 +94,20 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     ? `${props.fields.data?.item?.cTALink?.jsonValue?.value.href}?conditionId=${props.fields?.data?.contextItem?.id}`
     : props.fields.data?.item?.cTALink?.jsonValue?.value.href;
 
-  const link = (
-    <a href={allUrl}>
-      <JssTextWithEntityName
-        field={{
-          value: props.fields.data?.item?.cTALink?.jsonValue?.value?.text || '',
-        }}
-        isRichText={true}
-      />
-    </a>
+  const link = isExperienceEditor ? (
+    <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
+  ) : (
+    props.fields?.data?.item?.cTALink?.jsonValue?.value?.href && (
+      <a href={allUrl}>
+        <JssTextWithEntityName
+          field={{
+            value:
+              props.fields.data?.item?.cTALink?.jsonValue?.value?.text || '',
+          }}
+          isRichText={true}
+        />
+      </a>
+    )
   );
 
   //  treatments can be set via item or contextItem
@@ -118,7 +124,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
-      cta={link}
+      cta={link || <></>}
       header={
         <AdvancedBlockHeader
           paddingSize="small"

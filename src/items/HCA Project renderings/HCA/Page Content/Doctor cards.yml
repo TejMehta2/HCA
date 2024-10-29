@@ -13,7 +13,11 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query GetDoctorCards($datasource: String!, $contextItem: String!, $language: String!) {
+    query GetDoctorCards(
+      $datasource: String!
+      $contextItem: String!
+      $language: String!
+    ) {
       item(path: $datasource, language: $language) {
         ... on DoctorCards {
           title {
@@ -79,28 +83,19 @@ SharedFields:
         }
       }
       contextItemSearchParams: item(path: $contextItem, language: $language) {
-        ... on SpecialtyPage {
-           keywordId: field(name: "DoctifyKeywordId") {
-                value
-              }
+        ... on _DoctifyPracticeMapping {
+          practice: doctifyPractice {
+            value
+          }
         }
-        ... on LocationPage {
-          practice: field(name: "DoctifyPractice") {
-                value
-              }
-        }
-        ... on DiagnosisPage {
-          keywordId: field(name: "DoctifyKeywordId") {
-                value
-              }
-        }
-        ... on TreatmentPage {
-          keywordId: field(name: "DoctifyKeywordId") {
-                value
-              }
+        ... on _DoctifyKeywordIdMapping {
+          keywordId: doctifyKeywordId {
+            value
+          }
         }
       }
     }
+    
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: /sitecore/templates/Project/HCA/Page Content/Doctor Cards
@@ -169,14 +164,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dd003a21-7267-4f61-b64b-93d2f82e4757"
+      Value: "981cc5cb-047a-4acf-b63c-cbb2c8bacbb7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240618T085326Z
+      Value: 20241015T143524Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

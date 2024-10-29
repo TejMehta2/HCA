@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetC2Config } from './getC2Config';
+import { sanitizeJSON } from './sanitizeJSON';
 
 // first appointment
 // post in GMC number/s
@@ -69,7 +70,6 @@ export async function getLDBFirstAppointmentDatas(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -132,7 +132,6 @@ export async function getLDBFirstAppointmentData(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -221,7 +220,6 @@ export async function getLDBConsultantDetails(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -299,7 +297,6 @@ export async function getLDBConsultantSlots(
         'Content-Type': 'application/json',
         securitytoken: `"${header}"`,
       },
-      cache: 'force-cache',
       next: {
         revalidate: 60,
       },
@@ -454,7 +451,7 @@ export async function LDBMakeBooking(
         "demographics": ${demographicsString},
         "visitReasonDetails": {
             "selectedSpeciality": "${selectedSpeciality}",
-            "reasonForAppointment": "${reasonForAppointment}"
+            "reasonForAppointment": "${sanitizeJSON(reasonForAppointment)}"
         }
       }`;
       //console.log('booking json:', body);
@@ -479,7 +476,12 @@ export async function LDBMakeBooking(
           } finally {
           }
           returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
-          console.warn(`LDBMakeBooking failed with error ${returnData}`);
+          //enhance logging - https://hcauk-digital.atlassian.net/browse/HED-1601
+          console.warn(
+            `LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} r:${sanitizeJSON(
+              reasonForAppointment
+            )} failed with error ${returnData}`
+          );
           returnData = JSON.parse(returnData);
         }
       } catch (e) {

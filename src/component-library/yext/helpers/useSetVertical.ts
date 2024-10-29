@@ -1,7 +1,11 @@
 import { useSearchActions } from '@yext/search-headless-react';
 import { VerticalKey, VerticalLabel } from '../YextSearch/YextSearch.types';
 
-export const verticalMap = new Map<VerticalKey, VerticalLabel>([
+const enabledKeys =
+  process.env.NEXT_PUBLIC_YEXT_VERTICAL_KEYS?.split(',') ||
+  ([] as VerticalKey[]);
+
+const baseVerticals = [
   ['all', 'All'],
   ['healthcare_facilities', 'Locations'],
   ['tests_and_treatments', 'Tests & Treatments'],
@@ -9,7 +13,13 @@ export const verticalMap = new Map<VerticalKey, VerticalLabel>([
   ['specialties', 'Departments'],
   ['articles', 'Articles'],
   ['faqs', 'FAQs'],
-]);
+  ['jobs', 'Vacancies'],
+].filter(([verticalKey]) => enabledKeys.includes(verticalKey)) as [
+  VerticalKey,
+  VerticalLabel,
+][];
+
+export const verticalMap = new Map<VerticalKey, VerticalLabel>(baseVerticals);
 
 const useSetVertical = () => {
   const searchActions = useSearchActions();

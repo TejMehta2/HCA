@@ -18,15 +18,30 @@ export default async function handler(
     const path = typeof slug === 'string' ? slug : slug?.join('/');
     const remoteRequestUrl = new URL(path, process.env.INTEGRATION_LAYER_URL);
 
-    // Forward original URL query to remote request URL
-    const params = new URLSearchParams(query as Record<string, string>);
-    params.delete('slug');
-    remoteRequestUrl.search = params.toString() || '';
+    // eslint-disable-next-line
+    // @ts-ignore
+    delete query.slug;
 
+    // Forward original URL query to remote request URL
+    const params = [...Object.entries(query)];
+
+    // Format to avoid comma separated list for multiple params of same key
+    const search = params
+      .map(([key, value]) => {
+        if (typeof value === 'string') {
+          return `${key}=${encodeURIComponent(value)}`;
+        } else {
+          return value
+            ?.map((value) => `${key}=${encodeURIComponent(value)}`)
+            .join('&');
+        }
+      })
+      .join('&');
+
+    remoteRequestUrl.search = search;
     // fetch from remote integration layer server
     delete headers.host;
     delete headers.referer;
-
     const response = await fetch(remoteRequestUrl.href, {
       method,
       body: method === 'GET' ? undefined : JSON.stringify(body),

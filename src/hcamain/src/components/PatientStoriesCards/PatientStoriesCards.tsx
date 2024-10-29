@@ -292,7 +292,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          { viewAllCta } && (
+          viewAllCta ? (
             <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
@@ -314,11 +314,9 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
                 </>
               )}
             </a>
-          )
+          ) : undefined
         ) : (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue}
-          ></JssLink>
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
         )
       }
     >
@@ -345,6 +343,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const patientStoriesCards =
     patientStoriesCardsFiltered &&
     returnCards(props, patientStoriesCardsFiltered, false);
+
+  if (!patientStoriesCards?.length && !isExperienceEditor) {
+    return <></>;
+  }
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length

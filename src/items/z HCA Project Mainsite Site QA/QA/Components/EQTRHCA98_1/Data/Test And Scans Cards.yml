@@ -11,12 +11,17 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240318T100335Z
+    - ID: "694439b2-0b3a-4b7b-9df0-04a530b796eb"
+      Hint: TestAndScans
+      Value: |
+        {2130AB17-86E7-413A-A9B7-EF39ABACF5FE}
+        {EF759BB7-DC29-4C33-8A02-7919C84EA185}
     - ID: "838e0417-a20d-40ce-b8f3-51a29cf1ea3f"
       Hint: NumberOfCards
       Value: 6
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a25a4e34-8afd-4423-ab4d-9603b60dea4a"
+      Value: "df81e219-5d87-4045-9347-7f21394395ab"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -24,13 +29,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
       Value: "{{EntityName}} tests & scans"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T114955Z
+      Value: 20240614T182410Z
     - ID: "e5e0f48b-6019-4c9b-83b0-1a3dced02373"
       Hint: CTACardText
       Value: Learn more

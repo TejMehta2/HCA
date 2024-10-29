@@ -7,7 +7,7 @@ SharedFields:
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{851D5644-3B96-4B5A-8D31-ABBAD4DE1A2D}" />
+    <image mediaid="{B81A2557-62BA-438A-94C8-592B1F019059}" />
 Languages:
 - Language: en
   Versions:
@@ -25,21 +25,20 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e9f53a54-0b52-44e5-9341-1f0d6247ca1e"
+      Value: "fb4cd4a2-04d9-472e-bf68-2ae631786953"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
       Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240318T172450Z
+      Value: 20240616T161532Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: MRIs
     - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
       Hint: AbstractImage
-      Value: |
-        <image mediaid="{7E19577C-EF62-4B3B-9F60-7526589809E5}" />
+      Value: "https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/cd89ffff6a6f49c1adb99b38a8be80ac?v=36a57844"

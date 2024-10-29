@@ -81,9 +81,14 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
   // Transform props to filter out desktop child components
   const mobileTabs: NavigationTab[] = tabs.map((tab) => ({
     ...tab,
-    content: tab.content?.filter(
-      (item) => item.template === 'Main Navigation Links List'
-    ),
+    content: tab.content?.filter((item) => {
+      const isLinkList = item.template === 'Main Navigation Links List';
+      const isSimpleContentBlock =
+        item.template === 'Navigation Content Block' &&
+        ['simple', 'single'].includes(item.variation || '') &&
+        item.showOnMobile;
+      return isLinkList || isSimpleContentBlock;
+    }),
   }));
 
   // Sub-components
@@ -122,12 +127,14 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
               {isOpen ? <LogoWhite /> : <LogoBlue />}
             </a>
             <div className={styles.ctas}>
-              <div
-                className={styles['search-wrapper']}
-                data-navigation-type="searchOpen"
-              >
-                {search}
-              </div>
+              {search && (
+                <div
+                  className={styles['search-wrapper']}
+                  data-navigation-type="searchOpen"
+                >
+                  {search}
+                </div>
+              )}
               {toggleButton}
             </div>
           </div>
@@ -216,7 +223,9 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                                       }
                                     >
                                       <TextLink full={true}>
-                                        {secondary.variation === 'simple' ? (
+                                        {['simple', 'single'].includes(
+                                          secondary.variation || ''
+                                        ) ? (
                                           <>{secondary.mobileCta}</>
                                         ) : (
                                           <button
