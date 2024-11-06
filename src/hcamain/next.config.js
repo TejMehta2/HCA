@@ -230,7 +230,7 @@ const nextConfig = {
       'www.doctify.com',
       'doctify.com',
     ],
-    // unoptimized: true,
+    unoptimized: process.env.IMAGES_UNOPTIMIZED === 'true',
   },
   async headers() {
     return [
