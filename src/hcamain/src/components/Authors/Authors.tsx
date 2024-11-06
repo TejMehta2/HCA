@@ -20,6 +20,7 @@ interface AuthorFields {
     Position?: Field<string>;
     Avatar?: ImageField;
     Link?: LinkField;
+    PositionLink?: LinkField;
   };
 }
 
@@ -75,7 +76,14 @@ export const Default = (props: AuthorsProps): JSX.Element => {
                 </a>
               ),
               tag: (
-                <a href={author?.fields?.Link?.value?.href} target="_blank">
+                <a
+                  href={
+                    author?.fields?.PositionLink?.value?.href
+                      ? author.fields.PositionLink.value.href
+                      : author?.fields?.Link?.value?.href
+                  }
+                  target="_blank"
+                >
                   <span>
                     <JssText field={author?.fields?.Position} />
                   </span>
