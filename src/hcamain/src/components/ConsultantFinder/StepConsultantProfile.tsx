@@ -576,7 +576,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.overallExperience
+                      serverSideData?.ProfileJson?.review?.averageRating
                     }
                     reviewsText="Patients"
                     reviewsTotal={
@@ -881,7 +881,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.overallExperience
+                      serverSideData?.ProfileJson?.review?.averageRating
                     }
                     reviewsText="Patients"
                     reviewsTotal={
