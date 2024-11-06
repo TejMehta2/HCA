@@ -34,6 +34,9 @@ const securityHeaders = [
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  // Disable "X-Powered-By: Next.js" Response header
+  poweredByHeader: false,
+
   // Set assetPrefix to our public URL
   assetPrefix: publicUrl,
 
