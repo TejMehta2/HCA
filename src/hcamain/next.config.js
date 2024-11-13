@@ -5,8 +5,7 @@ const plugins = require('./src/temp/next-config-plugins') || {};
 
 const publicUrl = jssConfig.publicUrl;
 
-//const cspHeaderKey = process.env.NODE_ENV === 'development' ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
-const cspHeaderKey = 'Content-Security-Policy-Report-Only';
+const cspHeaderKey = process.env.CSP_Report_Only === 'true' ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
 const cspHeader = `
     object-src none;
     frame-ancestors 'self' *.sitecorecloud.io
