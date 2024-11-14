@@ -23,9 +23,25 @@ export async function getUntypedItemsFromGraphQL(
     // build a dynamic query
     let GQLQuery: string = `
     query {
-      item( path: "/sitecore/content/HCA/App/", language: "en" ) {
-        name,
-        hasChildren,
+      item( path: "${path}", language: "en" ) {
+        name
+        itemId
+        hasChildren
+        children(excludeTemplateIDs: "{00000000-0000-0000-0000-000000000000}") {
+          nodes {
+            name,
+            template {
+              templateId,
+              name
+            }
+            fields(ownFields: true, excludeStandardFields: true) {
+              nodes {
+                name,
+                value
+              }
+            }
+          }
+        }
       }
     }
     `;
