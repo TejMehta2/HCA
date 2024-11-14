@@ -13,11 +13,9 @@ export async function getItemsFromGraphQL(): Promise<ILookupAPIConfig> {
   // Sitecore item
   //const AppRootItemId = '{07C68866-C86C-4856-97A4-5C81A5FFB4E7}';
   //const AppTemplateName = 'App';
-  const appRootPath = '/sitecore/content/HCA/App/';
+  const appRootPath = '/sitecore/content/HCA/App/OneApp/Globals/';
 
-  const result = await getUntypedItemsFromGraphQL(
-    appRootPath   
-  );
+  const result = await getUntypedItemsFromGraphQL(appRootPath);
   return result;
 }
 

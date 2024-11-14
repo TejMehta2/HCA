@@ -8,9 +8,7 @@ import config from 'temp/config';
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
 //https://doc.sitecore.com/xmc/en/developers/xm-cloud/query-examples.html
 
-export async function getUntypedItemsFromGraphQL(
-  path: string
-): Promise<any> {
+export async function getUntypedItemsFromGraphQL(path: string): Promise<any> {
   try {
     /*console.log(
       `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
@@ -21,30 +19,91 @@ export async function getUntypedItemsFromGraphQL(
     });
 
     // build a dynamic query
-    let GQLQuery: string = `
-    query {
+    const GQLQuery: string = `
+        query {
       item( path: "${path}", language: "en" ) {
-        name
-        itemId
-        hasChildren
-        children(excludeTemplateIDs: "{00000000-0000-0000-0000-000000000000}") {
-          nodes {
+        id,
+        name,
+        displayName,
+        hasChildren,
+        children() {
+         results {
             name,
-            template {
-              templateId,
-              name
-            }
-            fields(ownFields: true, excludeStandardFields: true) {
-              nodes {
-                name,
+            #fields() {
+            #  name,
+            #  id,
+            #},
+            field(name: "Value") {
+              ... on TextField {
                 value
-              }
+              },
+              ... on LinkField {
+                value
+              },
+              ... on ImageField {
+                value
+              },
+              ... on CheckboxField {
+                value
+              },
+              ... on IntegerField {
+                value
+              },
+              ... on RichTextField {
+                value
+              },
+              #... on MattsField {
+              #  value
+              #},
             }
           }
         }
+        #fields() {
+        #  name,
+        #  id,
+        #}
       }
     }
+
     `;
+
+    /*
+    
+    
+    name,
+            id,
+            
+            hasChildren,
+                        language
+                {
+                name
+                },
+            children() {
+             results {
+                name
+              }
+            }*/
+
+
+
+    /*
+            children(excludeTemplateIDs: "{00000000-0000-0000-0000-000000000000}") {
+             # nodes {
+             #   name,
+             #   template {
+             #     templateId,
+             #     name
+             #   }
+             #   fields(ownFields: true, excludeStandardFields: true) {
+                  #nodes {
+                  #  name,
+                  #  value
+                  #}
+             #   }
+             # }
+            }
+    
+    */
 
     console.log('GQLQuery: ', GQLQuery);
     const GQLResult = await graphQLClient.request<any>(GQLQuery);
