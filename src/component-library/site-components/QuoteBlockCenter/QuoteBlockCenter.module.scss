@@ -10,9 +10,9 @@
   gap: px-to-rem(24) 0;
 
   @include responsive-container;
+
   padding-top: $spacing-13;
   padding-bottom: $spacing-13;
-
   display: flex;
   flex-direction: column;
   max-width: px-to-rem(930);
