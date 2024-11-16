@@ -8,11 +8,11 @@ import config from 'temp/config';
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
 //https://doc.sitecore.com/xmc/en/developers/xm-cloud/query-examples.html
 
-export async function getUntypedItemsFromGraphQL(path: string): Promise<any> {
+export async function recurseAppItemsFromGraphQL(path: string): Promise<any> {
   try {
     /*console.log(
-      `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
-    );*/
+        `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
+      );*/
 
     const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
       apiKey: config.sitecoreApiKey,
@@ -20,102 +20,94 @@ export async function getUntypedItemsFromGraphQL(path: string): Promise<any> {
 
     // build a dynamic query
     const GQLQuery: string = `
-        query {
-      item( path: "${path}", language: "en" ) {
-        id,
-        name,
-        displayName,
-        hasChildren,
-        children() {
-         results {
-            name,
-            #fields() {
-            #  name,
-            #  id,
-            #},
-            field(name: "Value") {
-              ... on TextField {
+          query {
+        item( path: "${path}", language: "en" ) {
+          id,
+          name,
+          displayName,
+          hasChildren,
+          ... on AppSimple {
+              value {
                 value
-              },
-              ... on LinkField {
+              }
+            },
+          ... on AppBool {
+              value {
                 value
-              },
-              ... on ImageField {
+              }
+            },
+          ... on AppImage {
+              value {
                 value
-              },
-              ... on CheckboxField {
+              }
+            },
+          ... on AppInteger {
+              value {
                 value
-              },
-              ... on IntegerField {
+              }
+            },
+          ... on AppLink {
+              value {
                 value
-              },
-              ... on RichTextField {
+              }
+            },
+          ... on AppRichText {
+              value {
                 value
-              },
-              #... on MattsField {
-              #  value
-              #},
+              }
+            },                                                                                       
+          ... on AppText {
+              androidValue {
+                value
+              }
+              value {
+                value
+              }
+              valueShort {
+                value
+              }
+              androidValueShort {
+                value
+              }
+              iOSValue {
+                value
+              }
+              iOSValueShort {
+                value
+              }
+              webValue {
+                value
+              }
+              webValueShort {
+                value
+              }
+          },
+          # find children for recursion
+          children() {
+           results {
+              name,
+              id,
             }
           }
         }
-        #fields() {
-        #  name,
-        #  id,
-        #}
       }
-    }
+      `;
 
-    `;
-
-    /*
-    
-    
-    name,
-            id,
-            
-            hasChildren,
-                        language
-                {
-                name
-                },
-            children() {
-             results {
-                name
-              }
-            }*/
-
-
-
-    /*
-            children(excludeTemplateIDs: "{00000000-0000-0000-0000-000000000000}") {
-             # nodes {
-             #   name,
-             #   template {
-             #     templateId,
-             #     name
-             #   }
-             #   fields(ownFields: true, excludeStandardFields: true) {
-                  #nodes {
-                  #  name,
-                  #  value
-                  #}
-             #   }
-             # }
-            }
-    
-    */
-
-    console.log('GQLQuery: ', GQLQuery);
+    //console.log('GQLQuery: ', GQLQuery);
     const GQLResult = await graphQLClient.request<any>(GQLQuery);
     console.log('GraphQL itemToFetch result:', JSON.stringify(GQLResult));
-    //map the result back to the requesting object
-    /*
-    if (GQLResult) {
-      Object.keys(itemToFetch).forEach(
-        (key) => (itemToFetch[key] = GQLResult.item[key].value)
+
+    if (GQLResult && GQLResult.item && GQLResult.item.hasChildren) {
+      const children = GQLResult.item.children?.results;
+      console.log('children', JSON.stringify(children));
+      interface sitecoreItemProp {
+        id: string;
+        name: string;
+      }
+      children.forEach((item: sitecoreItemProp) =>
+        recurseAppItemsFromGraphQL(`${path}/${item.name}`)
       );
     }
-    console.log('GraphQL itemToFetch result:', JSON.stringify(GQLResult));*/
   } catch (e) {
     console.log(
       `Could not getUntypedItemsFromGraphQL path:${path} - failed with exception ${e}`
@@ -126,4 +118,11 @@ export async function getUntypedItemsFromGraphQL(path: string): Promise<any> {
   }
 
   return null;
+}
+
+export async function getAppItemsFromGraphQL(path: string): Promise<any> {
+  const result = await recurseAppItemsFromGraphQL(path);
+
+  console.log('GraphQL itemToFetch result:', JSON.stringify(result));
+  return result;
 }

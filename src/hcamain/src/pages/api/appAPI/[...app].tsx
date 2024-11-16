@@ -1,4 +1,5 @@
-import { getUntypedItemsFromGraphQL } from 'lib/consultant-finder/getUntypedItemFromGraphQL';
+import { getItemFromGraphQL } from 'lib/consultant-finder/getItemFromGraphQL';
+import { getAppItemsFromGraphQL } from 'lib/consultant-finder/getUntypedItemFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -10,12 +11,43 @@ interface ILookupAPIConfig {
 }
 
 export async function getItemsFromGraphQL(): Promise<ILookupAPIConfig> {
+  
+  /*
+  interface IAppText {
+    value: string;
+    valueShort: string;
+    androidValue: string;
+    androidValueShort: string;
+    iOSValue: string;
+    iOSValueShort: string;
+    webValue: string;
+    webValueShort: string;
+  }
+
+  const AppText: IAppText = {
+    androidValue: '',
+    value: '',
+    valueShort: '',
+    androidValueShort: '',
+    iOSValue: '',
+    iOSValueShort: '',
+    webValue: '',
+    webValueShort: '',
+  };
+  const res1 = await getItemFromGraphQL(
+    '{21EDFABE-40A2-4C3C-8141-FACF11341AF6}',
+    'AppText',
+    AppText
+  );
+  console.log('res1', res1);
+*/
   // Sitecore item
   //const AppRootItemId = '{07C68866-C86C-4856-97A4-5C81A5FFB4E7}';
   //const AppTemplateName = 'App';
-  const appRootPath = '/sitecore/content/HCA/App/OneApp/Globals/';
 
-  const result = await getUntypedItemsFromGraphQL(appRootPath);
+  //const result = LookupAPIConfig;
+  const appRootPath = '/sitecore/content/HCA/App/OneApp';
+  const result = await getAppItemsFromGraphQL(appRootPath);
   return result;
 }
 
@@ -63,11 +95,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { app } = req.query;
-  let output: unknown[] = [];
-
+  const output: unknown[] = [];
 
   const frags = app as string[];
-  
+
   console.log('API');
   getItemsFromGraphQL();
   /*let project: string = '';
@@ -80,7 +111,7 @@ export default async function handler(
 
   //console.log('key', queryValues_Key);
 
-  let error: string = '';
+  const error: string = '';
   if (frags) {
     /*
     if (frags.length > 0) {
