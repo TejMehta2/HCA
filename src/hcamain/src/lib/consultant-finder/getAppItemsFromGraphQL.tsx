@@ -8,16 +8,17 @@ import config from 'temp/config';
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
 //https://doc.sitecore.com/xmc/en/developers/xm-cloud/query-examples.html
 
-export async function recurseAppItemsFromGraphQL(path: string): Promise<any> {
+interface sitecoreItemProp {
+  id: string;
+  name: string;
+}
+
+export async function recurseAppItemsFromGraphQL(
+  graphQLClient: GraphQLRequestClient,
+  path: string,
+  obj: any
+): Promise<any> {
   try {
-    /*console.log(
-        `GraphQL graphQLClient req itemId:${itemId} templateName:${templateName}`
-      );*/
-
-    const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
-      apiKey: config.sitecoreApiKey,
-    });
-
     // build a dynamic query
     const GQLQuery: string = `
           query {
@@ -32,7 +33,7 @@ export async function recurseAppItemsFromGraphQL(path: string): Promise<any> {
               }
             },
           ... on AppBool {
-              value {
+              bVal:value {
                 value
               }
             },
@@ -95,34 +96,59 @@ export async function recurseAppItemsFromGraphQL(path: string): Promise<any> {
 
     //console.log('GQLQuery: ', GQLQuery);
     const GQLResult = await graphQLClient.request<any>(GQLQuery);
-    console.log('GraphQL itemToFetch result:', JSON.stringify(GQLResult));
+    //console.log('result:', JSON.stringify(GQLResult));
+
+    // find the bottom of the object graph and create new nodes and assign values
+    console.log('path', path);
+    const pathSplit = path.replace('/sitecore/content/HCA/App/', '').split('/');
+    let findNode = obj;
+    let objDepth = 0;
+    for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
+      if (objDepth == pathSplit.length - 1) {
+        // console.log('GQLResult.item?.name', GQLResult.item?.name);
+        // console.log('GQLResult.item', JSON.stringify(GQLResult.item));
+        if (!findNode[GQLResult.item?.name]) {
+          if (!GQLResult.item?.value) {
+            findNode[GQLResult.item?.name] = {}; // folder/component/node place holder
+          } else {
+            findNode[GQLResult.item?.name] = GQLResult.item?.value; // value
+          }
+        }
+      }
+      findNode = findNode[pathSplit[objDepth]];
+    }
 
     if (GQLResult && GQLResult.item && GQLResult.item.hasChildren) {
       const children = GQLResult.item.children?.results;
-      console.log('children', JSON.stringify(children));
-      interface sitecoreItemProp {
-        id: string;
-        name: string;
+      //console.log('children', JSON.stringify(children));
+      for (let childCnt = 0; childCnt < children.length; childCnt++) {
+        const item: sitecoreItemProp = children[childCnt];
+        await recurseAppItemsFromGraphQL(
+          graphQLClient,
+          `${path}/${item.name}`,
+          obj
+        );
       }
-      children.forEach((item: sitecoreItemProp) =>
-        recurseAppItemsFromGraphQL(`${path}/${item.name}`)
-      );
     }
   } catch (e) {
     console.log(
-      `Could not getUntypedItemsFromGraphQL path:${path} - failed with exception ${e}`
+      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
     );
     console.error(
-      `Could not getUntypedItemsFromGraphQL path:${path} - failed with exception ${e}`
+      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
     );
   }
 
-  return null;
+  return obj;
 }
 
 export async function getAppItemsFromGraphQL(path: string): Promise<any> {
-  const result = await recurseAppItemsFromGraphQL(path);
+  const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
+    apiKey: config.sitecoreApiKey,
+  });
+  const obj: any = {};
+  const result = await recurseAppItemsFromGraphQL(graphQLClient, path, obj);
 
-  console.log('GraphQL itemToFetch result:', JSON.stringify(result));
+  console.log('Final itemToFetch result:', JSON.stringify(result));
   return result;
 }

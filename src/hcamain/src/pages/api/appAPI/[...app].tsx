@@ -1,51 +1,8 @@
-import { getItemFromGraphQL } from 'lib/consultant-finder/getItemFromGraphQL';
-import { getAppItemsFromGraphQL } from 'lib/consultant-finder/getUntypedItemFromGraphQL';
+import { getAppItemsFromGraphQL } from 'lib/consultant-finder/getAppItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-//Config
-interface ILookupAPIConfig {
-  aPI_Lookup_API_Media_BaseURL: string;
-  aPI_Lookup_API_Media_LegacyBaseURL: string;
-  aPI_Lookup_API_Media_UtilizesLegacy: boolean;
-}
-
-export async function getItemsFromGraphQL(): Promise<ILookupAPIConfig> {
-  
-  /*
-  interface IAppText {
-    value: string;
-    valueShort: string;
-    androidValue: string;
-    androidValueShort: string;
-    iOSValue: string;
-    iOSValueShort: string;
-    webValue: string;
-    webValueShort: string;
-  }
-
-  const AppText: IAppText = {
-    androidValue: '',
-    value: '',
-    valueShort: '',
-    androidValueShort: '',
-    iOSValue: '',
-    iOSValueShort: '',
-    webValue: '',
-    webValueShort: '',
-  };
-  const res1 = await getItemFromGraphQL(
-    '{21EDFABE-40A2-4C3C-8141-FACF11341AF6}',
-    'AppText',
-    AppText
-  );
-  console.log('res1', res1);
-*/
-  // Sitecore item
-  //const AppRootItemId = '{07C68866-C86C-4856-97A4-5C81A5FFB4E7}';
-  //const AppTemplateName = 'App';
-
-  //const result = LookupAPIConfig;
+export async function getItemsFromGraphQL(): Promise<unknown> {
   const appRootPath = '/sitecore/content/HCA/App/OneApp';
   const result = await getAppItemsFromGraphQL(appRootPath);
   return result;
@@ -90,17 +47,18 @@ original interface
   ResponseResult<string> FindByTypeAndKeys(string project, LookupAPIDatasourceType dsType, string dictionary, string type, string keys, OutputFormat outputFormat = OutputFormat.Standard, Dictionary<string, string> queryValues = null);
   ResponseResult<string> SearchKeys(string project, LookupAPIDatasourceType dsType,  string dictionary, string type, string key, Dictionary<string, string> queryValues = null);
 */
+// example http://localhost:3000/api/appAPI/OneApp?lang=en&platform=iOS
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { app } = req.query;
-  const output: unknown[] = [];
+  //const output: unknown[] = [];
 
   const frags = app as string[];
 
   console.log('API');
-  getItemsFromGraphQL();
+  const output = await getItemsFromGraphQL();
   /*let project: string = '';
   let datasourceType: string = '';
   let operation: string = '';
@@ -264,9 +222,9 @@ export default async function handler(
     res.appendHeader('CDN-Cache-Control', 'no-cache');
     res.appendHeader('Vercel-CDN-Cache-Control', 'no-cache');
   } else {
-    res.appendHeader('Cache-Control', 'max-age=600');
-    res.appendHeader('CDN-Cache-Control', 'max-age=1800');
-    res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=3600');
+    res.appendHeader('Cache-Control', 'max-age=60');
+    res.appendHeader('CDN-Cache-Control', 'max-age=100');
+    res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   }
 
   return res.status(200).json(output);
