@@ -969,7 +969,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       slug={consultant?.slug}
                       keywords={consultant?.keywords || null}
                       hospitals={consultant?.practices || null}
-                      reviewsCount={consultant?.overallExperience || 0}
+                      reviewsCount={consultant?.averageRating || 0}
                       reviewsTotal={consultant?.reviewsTotal || 0}
                       doctifyLogo={
                         <JssImage field={props.fields.DoctifyLogoImage} />
