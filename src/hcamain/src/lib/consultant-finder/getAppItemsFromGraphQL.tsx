@@ -2,7 +2,7 @@
 import { GraphQLRequestClient } from '@sitecore-jss/sitecore-jss-nextjs/graphql';
 import config from 'temp/config';
 
-// dynamic GraphQL query, works on flat object at the mo...
+// GraphQL query for App / Portal project objects
 // references
 //https://www.getfishtank.com/blog/useful-sitecore-graphql-queries
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
@@ -16,13 +16,15 @@ interface sitecoreItemProp {
 export async function recurseAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
+  lang: string,
+  platform: string,
   obj: any
 ): Promise<any> {
   try {
-    // build a dynamic query
+    // build a query for App/Portal objects
     const GQLQuery: string = `
           query {
-        item( path: "${path}", language: "en" ) {
+        item( path: "${path}", language: "${lang}" ) {
           id,
           name,
           displayName,
@@ -37,12 +39,12 @@ export async function recurseAppItemsFromGraphQL(
                 value
               }
             },
-          ... on AppImage {
-              value {
+          ... on AppInteger {
+              iVal:value {
                 value
               }
-            },
-          ... on AppInteger {
+            },            
+          ... on AppImage {
               value {
                 value
               }
@@ -107,12 +109,16 @@ export async function recurseAppItemsFromGraphQL(
       if (objDepth == pathSplit.length - 1) {
         // console.log('GQLResult.item?.name', GQLResult.item?.name);
         // console.log('GQLResult.item', JSON.stringify(GQLResult.item));
-        if (!findNode[GQLResult.item?.name]) {
-          if (!GQLResult.item?.value) {
-            findNode[GQLResult.item?.name] = {}; // folder/component/node place holder
-          } else {
-            findNode[GQLResult.item?.name] = GQLResult.item?.value; // value
-          }
+        if (GQLResult.item?.value) {
+          findNode[GQLResult.item?.name] = GQLResult.item?.value?.value; // value
+        } else if (GQLResult.item?.bVal) {
+          findNode[GQLResult.item?.name] =
+            GQLResult.item?.bVal?.value === '1' ? true : false; // boolean value
+        } else if (GQLResult.item?.iVal) {
+          console.log(' GQLResult.item?.iVal', GQLResult.item?.iVal?.value);
+          findNode[GQLResult.item?.name] = Number(GQLResult.item?.iVal?.value); // int value
+        } else {
+          findNode[GQLResult.item?.name] = {}; // folder/component/node place holder
         }
       }
       findNode = findNode[pathSplit[objDepth]];
@@ -126,6 +132,8 @@ export async function recurseAppItemsFromGraphQL(
         await recurseAppItemsFromGraphQL(
           graphQLClient,
           `${path}/${item.name}`,
+          lang,
+          platform,
           obj
         );
       }
@@ -142,12 +150,22 @@ export async function recurseAppItemsFromGraphQL(
   return obj;
 }
 
-export async function getAppItemsFromGraphQL(path: string): Promise<any> {
+export async function getAppItemsFromGraphQL(
+  path: string,
+  lang: string,
+  platform: string
+): Promise<any> {
   const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
     apiKey: config.sitecoreApiKey,
   });
   const obj: any = {};
-  const result = await recurseAppItemsFromGraphQL(graphQLClient, path, obj);
+  const result = await recurseAppItemsFromGraphQL(
+    graphQLClient,
+    path,
+    lang,
+    platform,
+    obj
+  );
 
   console.log('Final itemToFetch result:', JSON.stringify(result));
   return result;
