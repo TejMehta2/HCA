@@ -27,6 +27,7 @@ export interface PageRouteMetadata {
     HideFromWebsiteSearch?: Field<boolean>;
     JsonLdSchema?: Field<string>;
     Specialties?: Speciality[];
+    Date?: Field<string>;
   };
   itemId?: string;
   templateId?: string;
@@ -54,6 +55,16 @@ interface Speciality {
   url: string;
 }
 
+const isValidDate = (dateStr: string): boolean => {
+  const date = new Date(dateStr);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) return false;
+
+  // Check if the date is not the minimal date
+  return dateStr !== '0001-01-01T00:00:00Z';
+};
+
 const MetadataDefaultComponent = (): JSX.Element => <></>;
 
 export const Default = (props: MetadataProps): JSX.Element => {
@@ -65,6 +76,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const { fields } = route;
 
   if (!fields || !props?.fields) return <MetadataDefaultComponent />;
+
+  console.log('fields', fields);
+  console.log('props.fields', props.fields);
 
   // prop values
   const { DefaultMetaImage, PageTitleSufix, TwitterCard } = props?.fields;
@@ -83,13 +97,14 @@ export const Default = (props: MetadataProps): JSX.Element => {
     Image,
     Text,
     HideFromWebsiteSearch,
+    Date,
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
 
   // computed values
   const title = `${MetaTitle?.value || Title?.value} ${
-    PageTitleSufix?.value?.value || ''
+    PageTitleSufix?.value || ''
   }`;
   const description = MetaDescription?.value || Text?.value;
   const image =
@@ -115,6 +130,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const index = NoIndex?.value ? 'noindex' : 'index';
 
   const pageText = Text?.value ? removeTags(Text?.value) : '';
+  const pageTitle = AbstractTitle?.value || Title.value;
 
   type SchemaPageType =
     | 'Homepage'
@@ -162,6 +178,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
         )}{' '}
         &&
         {title && <meta property="og:title" content={title} />} &&
+        {Date?.value && isValidDate(Date.value) && (
+          <meta property="og:article:published_time" content={Date.value} />
+        )}{' '}
+        &&
         {url && <meta property="og:url" content={url} />} &&
         <meta property="og:type" content="website" /> &&
         {image && <meta property="og:image" content={image} />} &&
@@ -172,7 +192,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
         )}{' '}
         &&
         {title && <meta name="title" content={title} />} &&
-        {Title?.value && <meta name="pageTitle" content={Title?.value} />} &&
+        {pageTitle && <meta name="pageTitle" content={pageTitle} />} &&
         {pageText && <meta name="pageText" content={pageText} />} &&
         {Image?.value?.src && (
           <meta
