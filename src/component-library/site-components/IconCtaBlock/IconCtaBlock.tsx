@@ -8,10 +8,13 @@ import styles from './IconCtaBlock.module.scss';
 export const IconCtaBlockChild = (
   props: IconCtaBlockChildProps
 ): JSX.Element => {
-  const { icon, title, copy, ctas } = props;
+  const { iconMobile, iconDesktop, title, copy, ctas } = props;
   return (
     <div className={styles.child}>
-      <div className={styles.icon}>{icon}</div>
+      <div className={[styles.icon, styles.mobile].join(' ')}>{iconMobile}</div>
+      <div className={[styles.icon, styles.desktop].join(' ')}>
+        {iconDesktop}
+      </div>
       <div className={styles.title}>{title}</div>
       <div className={styles.copy}>{copy}</div>
       <div className={styles.ctas}>{ctas}</div>
