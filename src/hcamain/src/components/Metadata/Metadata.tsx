@@ -77,6 +77,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   if (!fields || !props?.fields) return <MetadataDefaultComponent />;
 
+  console.log('fields', fields);
+  console.log('props.fields', props.fields);
+
   // prop values
   const { DefaultMetaImage, PageTitleSufix, TwitterCard } = props?.fields;
 
@@ -101,7 +104,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   // computed values
   const title = `${MetaTitle?.value || Title?.value} ${
-    PageTitleSufix?.value?.value || ''
+    PageTitleSufix?.value || ''
   }`;
   const description = MetaDescription?.value || Text?.value;
   const image =
@@ -127,6 +130,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const index = NoIndex?.value ? 'noindex' : 'index';
 
   const pageText = Text?.value ? removeTags(Text?.value) : '';
+  const pageTitle = AbstractTitle?.value || Title.value;
 
   type SchemaPageType =
     | 'Homepage'
@@ -188,7 +192,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
         )}{' '}
         &&
         {title && <meta name="title" content={title} />} &&
-        {Title?.value && <meta name="pageTitle" content={Title?.value} />} &&
+        {pageTitle && <meta name="pageTitle" content={pageTitle} />} &&
         {pageText && <meta name="pageText" content={pageText} />} &&
         {Image?.value?.src && (
           <meta
