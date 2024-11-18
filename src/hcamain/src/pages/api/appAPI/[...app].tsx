@@ -19,11 +19,12 @@ export default async function handler(
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
     console.log(
-      'lang',
+      'app graphQL request',
+      'lang: ',
       lang,
-      'platform',
+      'platform: ',
       platform,
-      'requestedPath',
+      'requestedPath: ',
       requestedPath
     );
     output = await getAppItemsFromGraphQL(requestedPath, lang, platform);

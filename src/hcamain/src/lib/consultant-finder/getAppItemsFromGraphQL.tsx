@@ -60,28 +60,28 @@ export async function recurseAppItemsFromGraphQL(
               }
             },                                                                                       
           ... on AppText {
-              androidValue {
+              textValue:value {
                 value
               }
-              value {
+              textValueShort:valueShort {
                 value
               }
-              valueShort {
+              textAndroid:androidValue {
                 value
               }
-              androidValueShort {
+              textAndroidShort:androidValueShort {
                 value
               }
-              iOSValue {
+              textiOS:iOSValue {
                 value
               }
-              iOSValueShort {
+              textiOSShort:iOSValueShort {
                 value
               }
-              webValue {
+              textWeb:webValue {
                 value
               }
-              webValueShort {
+              textWebShort:webValueShort {
                 value
               }
           },
@@ -101,7 +101,7 @@ export async function recurseAppItemsFromGraphQL(
     //console.log('result:', JSON.stringify(GQLResult));
 
     // find the bottom of the object graph and create new nodes and assign values
-    console.log('path', path);
+    //console.log('path', path);
     const pathSplit = path.replace('/sitecore/content/HCA/App/', '').split('/');
     let findNode = obj;
     let objDepth = 0;
@@ -115,12 +115,43 @@ export async function recurseAppItemsFromGraphQL(
           findNode[GQLResult.item?.name] =
             GQLResult.item?.bVal?.value === '1' ? true : false; // boolean value
         } else if (GQLResult.item?.iVal) {
-          console.log(' GQLResult.item?.iVal', GQLResult.item?.iVal?.value);
           findNode[GQLResult.item?.name] = Number(GQLResult.item?.iVal?.value); // int value
+        } else if (GQLResult.item?.textValue) {
+          switch (platform) {
+            case 'ios':
+              findNode[GQLResult.item?.name] = {
+                longValue: `${GQLResult.item?.textiOS?.value}`, // long text value
+                shortValue: `${GQLResult.item?.textiOSShort?.value}`, // short text value
+              };
+              break;
+            case 'android':
+              findNode[GQLResult.item?.name] = {
+                longValue: `${GQLResult.item?.textAndroid?.value}`, // long text value
+                shortValue: `${GQLResult.item?.textAndroidShort?.value}`, // short text value
+              };
+              break;
+            case 'web':
+              findNode[GQLResult.item?.name] = {
+                longValue: `${GQLResult.item?.textWeb?.value}`, // long text value
+                shortValue: `${GQLResult.item?.textWebShort?.value}`, // short text value
+              };
+              break;
+            default:
+              findNode[GQLResult.item?.name] = {
+                longValue: `${GQLResult.item?.textValue?.value}`, // long text value
+                shortValue: `${GQLResult.item?.textValueShort?.value}`, // short text value
+              };
+              break;
+          }
         } else {
           findNode[GQLResult.item?.name] = {}; // folder/component/node place holder
         }
       }
+
+      if (!findNode[pathSplit[objDepth]]) {
+        findNode[pathSplit[objDepth]] = {}; // folder/component/node place holder
+      }
+
       findNode = findNode[pathSplit[objDepth]];
     }
 
@@ -159,14 +190,15 @@ export async function getAppItemsFromGraphQL(
     apiKey: config.sitecoreApiKey,
   });
   const obj: any = {};
+  //console.log('path', path);
   const result = await recurseAppItemsFromGraphQL(
     graphQLClient,
     path,
-    lang,
-    platform,
+    lang.toLowerCase(),
+    platform.toLowerCase(),
     obj
   );
 
-  console.log('Final itemToFetch result:', JSON.stringify(result));
+  //console.log('Final itemToFetch result:', JSON.stringify(result));
   return result;
 }
