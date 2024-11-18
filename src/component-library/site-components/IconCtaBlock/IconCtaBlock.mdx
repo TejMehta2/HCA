@@ -1,0 +1,40 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as IconCtaBlockStories from './IconCtaBlock.stories'
+
+<Meta of={IconCtaBlockStories} />
+
+# IconCtaBlock
+
+## Description
+
+The IconCtaBlock component shows three child items, which each have an icon, title, copy and ctas.
+
+It is intended to present common questions a user may ask, then to direct users to different contact channels or information pages via the CTAs.
+
+``` tsx
+<IconCtaBlock>
+  <IconCtaBlockChild
+    icon={<Icons iconName="iconBook" />}
+    title={
+      <Text variation="heading-2">
+        Worried about your heart, but not sure what to do?
+      </Text>
+    }
+    copy={
+      <Text variation="body-large">
+        Get in touch and book a same- or next-day GP appointment
+      </Text>
+    }
+    ctas={
+      <>
+        <Button variation="full" size="large">
+          <a href="#">
+            Book a <b>GP appointment</b>
+          </a>
+        </Button>
+      </>
+    }
+  />
+  {/* ...further IconCtaBlockChild components */}
+</IconCtaBlock>
+```
