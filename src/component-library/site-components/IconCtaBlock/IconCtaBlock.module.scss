@@ -28,7 +28,6 @@
     text-align: center;
     grid-template-rows: subgrid;
     grid-row: 1 / 5;
-
   }
 }
 
@@ -42,7 +41,6 @@
   border: solid px-to-rem(2) currentcolor;
   background-color: var(--background);
 
-  
   @include media(screen-l, max) {
     &.desktop {
       display: none;
@@ -50,13 +48,13 @@
   }
   @include media(screen-l) {
     grid-row: 1 / 1;
+
     &.mobile {
       display: none;
     }
+
     border-width: px-to-rem(1);
   }
-
-  
 }
 
 .title {
