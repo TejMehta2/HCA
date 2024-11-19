@@ -176,7 +176,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
         &&
         {title && <meta property="og:title" content={title} />} &&
         {Date?.value && isValidDate(Date.value) && (
-          <meta property="og:article:published_time" content={Date.value} />
+          <>
+            <meta property="og:article:published_time" content={Date.value} />
+            <meta name="publishedTime" content={Date.value} />
+          </>
         )}{' '}
         &&
         {url && <meta property="og:url" content={url} />} &&
