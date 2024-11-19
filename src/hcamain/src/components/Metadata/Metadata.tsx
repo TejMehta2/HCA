@@ -77,9 +77,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
 
   if (!fields || !props?.fields) return <MetadataDefaultComponent />;
 
-  console.log('fields', fields);
-  console.log('props.fields', props.fields);
-
   // prop values
   const { DefaultMetaImage, PageTitleSufix, TwitterCard } = props?.fields;
 
