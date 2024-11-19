@@ -8,18 +8,22 @@ const QuoteBlockCenter = (props: QuoteBlockCenterProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={[styles.container, styles[alignment]].join(' ')}>
-        {children}
-        {author && (
-          <div className={styles.author}>
-            {author.image}
-            <div className={styles['author-details']}>
-              {author.name && (
-                <span className={styles.name}>{author.name}</span>
-              )}
-              {author.tag && <Tags contentVariation="quote">{author.tag}</Tags>}
+        <div className={styles.inner}>
+          {children}
+          {author && (
+            <div className={styles.author}>
+              {author.image}
+              <div className={styles['author-details']}>
+                {author.name && (
+                  <span className={styles.name}>{author.name}</span>
+                )}
+                {author.tag && (
+                  <Tags contentVariation="quote">{author.tag}</Tags>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
