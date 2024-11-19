@@ -203,6 +203,12 @@
         outline-offset: px-to-rem(-2);
       }
     }
+
+    @include media(screen-m, max) {
+      text-align: left;
+      justify-content: flex-start;
+      width: 100%;
+    }
   }
 }
 
