@@ -51,6 +51,8 @@
 }
 
 .children {
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-2;

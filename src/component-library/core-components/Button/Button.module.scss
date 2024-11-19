@@ -179,6 +179,33 @@
   }
 }
 
+.jump-to {
+  a,
+  button,
+  label {
+    padding: $spacing-4 $spacing-5;
+    color: $navy-blue-100;
+    background-color: $tangerine-20;
+    overflow: hidden;
+
+    &:hover,
+    &:active {
+      background-color: $tangerine-30;
+    }
+
+    &:focus-visible {
+      border-color: currentColor;
+      @include apply-focus-outline(currentColor);
+
+      span:has(svg) {
+        outline: solid px-to-rem(2) currentcolor;
+        border-radius: $radius-medium;
+        outline-offset: px-to-rem(-2);
+      }
+    }
+  }
+}
+
 %full {
   a,
   button,
