@@ -11,7 +11,7 @@ import {
 import Text from '@component-library/foundation/Text/Text';
 import JumpToLinks, {
   JumpToLink,
-} from 'temp/component-library/site-components/JumpToLinks/JumpToLinks';
+} from '@component-library/site-components/JumpToLinks/JumpToLinks';
 
 const SubNavigationDefaultComponent = (
   props: SubNavigationProps
