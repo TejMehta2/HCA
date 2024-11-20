@@ -97,7 +97,7 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
                     placeholder={
                       props.fields?.data?.item?.selectAJobAreaLabel?.value
                     }
-                    id={props?.facets?.[1]?.fieldId?.replace('c_', '') || ''}
+                    id={'jobArea'}
                     options={
                       props?.facets?.[1]?.options.map((option) => ({
                         text: option.displayName,
