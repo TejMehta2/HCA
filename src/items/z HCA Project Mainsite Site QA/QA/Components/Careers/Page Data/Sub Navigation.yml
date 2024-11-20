@@ -1,0 +1,26 @@
+﻿---
+ID: "bfe917c9-3704-4038-af80-6b585db42490"
+Parent: "a74530b9-f2b0-4c93-a4d2-96d70e73bfc2"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data/Sub Navigation"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241114T173306Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "676974b7-0d3f-411b-ba61-00afe9788091"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{D4B407BD-908E-41C6-B146-54270ADA5706}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241114T173324Z
