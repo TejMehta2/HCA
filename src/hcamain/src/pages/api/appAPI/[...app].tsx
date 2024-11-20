@@ -1,4 +1,4 @@
-import { getAppItemsFromGraphQL } from 'lib/consultant-finder/getAppItemsFromGraphQL';
+import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseAppItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -27,7 +27,7 @@ export default async function handler(
       'requestedPath: ',
       requestedPath
     );
-    output = await getAppItemsFromGraphQL(requestedPath, lang, platform);
+    output = await getRecurseAppItemsFromGraphQL(requestedPath, lang, platform);
   }
 
   if (revalidate.now() || revalidate.noCache()) {
