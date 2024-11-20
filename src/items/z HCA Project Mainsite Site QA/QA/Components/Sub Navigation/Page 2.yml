@@ -1,0 +1,37 @@
+﻿---
+ID: "9df385e2-2bd2-4d5e-87c3-02883829db1c"
+Parent: "cc9b2e51-96da-46c6-92b6-0cfb14b46e00"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation/Page 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1de420ed-ff7f-4414-bd9b-bc68934bc0e0"
+      Hint: NavigationTitle
+      Value: Page Two
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241119T205720Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2e556e21-b071-4fb0-a634-e46b8306af34"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/494b4614c9c24310860cd1b8ca08297b?v=a985668b" dam-id="3fqhIR94RG2hNfjplsMb8w" width="3503" height="4379" alt="Woman entering menopause having counseling 1207514066.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231852/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241119T231333Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Page 2
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/5d8a594a0b1d468e9a053b2648a1d881?v=31f56ade" dam-id="hszntVyJRniJPYSpc57gcg" width="6379" height="4250" alt="Womens Health 1158247105.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231856/thumbnail" />
