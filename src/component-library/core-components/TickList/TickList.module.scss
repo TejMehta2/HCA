@@ -1,12 +1,11 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
-.wrapper {
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin: $spacing-4 0 0;
-  }
+// Also exported to globals/_rte-utilities
+%tick-list {
+  list-style: none;
+  padding-left: 0;
+  margin: $spacing-4 0 0;
 
   li {
     display: flex;
@@ -21,5 +20,12 @@
     &:first-child {
       margin-top: 0;
     }
+  }
+}
+
+// For CSS modules
+.wrapper {
+  ul {
+    @extend %tick-list;
   }
 }
