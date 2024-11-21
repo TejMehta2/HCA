@@ -25,8 +25,13 @@ SharedFields:
           defaultNavigationImage {
             jsonValue
           }
+          includeRootPage {
+           boolValue
+          }
           rootPage {
             targetItem {
+              ...navigableFragment
+              ...basePageFragment
               children(hasLayout: true, first: 1000) {
                 results {
                   ...navigableFragment

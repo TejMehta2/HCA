@@ -13,6 +13,7 @@ export interface Fields {
           };
         };
       };
+      includeRootPage?: { boolValue: boolean };
     };
   };
 }
