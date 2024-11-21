@@ -13,7 +13,7 @@
     gap: px-to-rem(8);
 
     &::before {
-      content: url("./tick.svg");
+      content: url('./tick.svg');
     }
 
     margin-top: $spacing-4;
