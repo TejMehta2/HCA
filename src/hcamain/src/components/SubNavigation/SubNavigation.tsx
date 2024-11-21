@@ -12,6 +12,7 @@ import Text from '@component-library/foundation/Text/Text';
 import JumpToLinks, {
   JumpToLink,
 } from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 const SubNavigationDefaultComponent = (
   props: SubNavigationProps
@@ -40,26 +41,28 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
     '';
 
   return (
-    <JumpToLinks
-      heading={
-        <Text variation="body-medium-medium">
-          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-        </Text>
-      }
-    >
-      {props.fields?.data?.item?.rootPage?.targetItem?.children?.results
-        ?.filter(
-          (item: NavigablePagesFields) => !item.hideInSubNavigation?.boolValue
-        )
-        .map((item, index) => (
-          <JumpToLink key={index}>
-            <a href={item.url?.path}>
-              <img src={getFirstNonEmptyImage(item, defaultImage)} alt="" />
-              <span>{getFirstNonEmptyTitle(item)}</span>
-            </a>
-          </JumpToLink>
-        ))}
-    </JumpToLinks>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <JumpToLinks
+        heading={
+          <Text variation="body-medium-medium">
+            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+          </Text>
+        }
+      >
+        {props.fields?.data?.item?.rootPage?.targetItem?.children?.results
+          ?.filter(
+            (item: NavigablePagesFields) => !item.hideInSubNavigation?.boolValue
+          )
+          .map((item, index) => (
+            <JumpToLink key={index}>
+              <a href={item.url?.path}>
+                <img src={getFirstNonEmptyImage(item, defaultImage)} alt="" />
+                <span>{getFirstNonEmptyTitle(item)}</span>
+              </a>
+            </JumpToLink>
+          ))}
+      </JumpToLinks>
+    </Themes>
   );
 };
 
