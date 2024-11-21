@@ -29,7 +29,7 @@ Languages:
               uid="{6303FFC5-90EC-4740-945C-535A9F4798C0}"
               s:ds="local:/Page Data/sub nav datasource"
               s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:par="Columns&amp;HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B984873A6-347F-427E-9BAD-22946A624679%7D&amp;Styles&amp;Theme=L-HCA-Teal-5&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
           </d>
         </r>
@@ -46,11 +46,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cc1eaebc-5593-4bc7-8e2a-75381876d5af"
+      Value: "b5e55bbe-871b-42c4-9d4a-da19c692cbf4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241119T233153Z
+      Value: 20241121T151545Z

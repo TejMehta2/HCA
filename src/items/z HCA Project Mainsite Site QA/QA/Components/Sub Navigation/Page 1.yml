@@ -8,6 +8,21 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{84AAEEED-A070-42AB-A4B0-8BE8FD33CFE1}"
+              s:ds="{8A0424DB-69D0-4941-95F7-F17D1DE82572}"
+              s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
+              s:par="IncludeRootPage=1&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=C-HCA-Denim&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
     - ID: "1de420ed-ff7f-4414-bd9b-bc68934bc0e0"
       Hint: NavigationTitle
       Value: Page One
@@ -16,14 +31,14 @@ Languages:
       Value: 20241119T205657Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a3d7baeb-7ebc-4d1e-b181-86974945f0d9"
+      Value: "8d3fb92e-18c6-45e2-bf7d-33f86ff5e4c4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241119T231249Z
+      Value: 20241121T161037Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Page 1

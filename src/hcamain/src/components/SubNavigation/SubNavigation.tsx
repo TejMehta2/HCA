@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   NavigablePagesFields,
+  PageRouteData,
   SubNavigationProps,
 } from './SubNavigation.types';
 import {
@@ -34,11 +35,36 @@ const SubNavigationDefaultComponent = (
 };
 
 export const Default = (props: SubNavigationProps): JSX.Element => {
-  if (!props.fields) return <SubNavigationDefaultComponent {...props} />;
+  const context = useSitecoreContext();
+
+  if (!props.fields?.data?.item)
+    return <SubNavigationDefaultComponent {...props} />;
+
+  const contextPage = context.sitecoreContext?.route as PageRouteData;
+  const datasource = props.fields.data.item;
+
+  let navigablePages = datasource.rootPage?.targetItem?.children?.results || [];
+
+  // Add root page If `includeRootPage` is true
+  if (
+    datasource.includeRootPage?.boolValue &&
+    datasource.rootPage?.targetItem
+  ) {
+    navigablePages = [datasource.rootPage.targetItem, ...navigablePages];
+  }
+
+  // Do not include current page and pages where hideInSubNavigation checkbox is checked
+  navigablePages = navigablePages.filter(
+    (item: NavigablePagesFields) =>
+      !item.hideInSubNavigation?.boolValue &&
+      item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
+        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+  );
+
+  if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;
 
   const defaultImage =
-    props.fields?.data?.item?.defaultNavigationImage?.jsonValue?.value?.src ||
-    '';
+    datasource.defaultNavigationImage?.jsonValue?.value?.src || '';
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
@@ -49,18 +75,14 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
           </Text>
         }
       >
-        {props.fields?.data?.item?.rootPage?.targetItem?.children?.results
-          ?.filter(
-            (item: NavigablePagesFields) => !item.hideInSubNavigation?.boolValue
-          )
-          .map((item, index) => (
-            <JumpToLink key={index}>
-              <a href={item.url?.path}>
-                <img src={getFirstNonEmptyImage(item, defaultImage)} alt="" />
-                <span>{getFirstNonEmptyTitle(item)}</span>
-              </a>
-            </JumpToLink>
-          ))}
+        {navigablePages.map((item, index) => (
+          <JumpToLink key={index}>
+            <a href={item.url?.path}>
+              <img src={getFirstNonEmptyImage(item, defaultImage)} alt="" />
+              <span>{getFirstNonEmptyTitle(item)}</span>
+            </a>
+          </JumpToLink>
+        ))}
       </JumpToLinks>
     </Themes>
   );
