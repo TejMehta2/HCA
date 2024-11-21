@@ -52,6 +52,9 @@ SharedFields:
                 value {
                   value
                 }
+                key {
+                  value
+                }
               }
             }
           }
@@ -133,14 +136,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6ddad80d-1a68-400c-b1d1-a7a84ff22c3f"
+      Value: "d76aa135-c819-4eb0-9f0f-329f9c24c06c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T103646Z
+      Value: 20241121T151154Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
