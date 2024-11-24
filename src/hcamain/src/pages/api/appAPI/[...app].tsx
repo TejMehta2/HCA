@@ -27,7 +27,9 @@ export default async function handler(
       'requestedPath: ',
       requestedPath
     );
+    //output = await getSearchAppItemsFromGraphQL(requestedPath, lang, platform);
     output = await getRecurseAppItemsFromGraphQL(requestedPath, lang, platform);
+    //output = await getAppItemsFromGraphQL(requestedPath, lang, platform);
   }
 
   if (revalidate.now() || revalidate.noCache()) {
