@@ -17,7 +17,7 @@ interface sitecoreItemProp {
 export async function searchAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
-  lang: string,
+  _lang: string,
   platform: string,
   obj: any
 ): Promise<any> {
