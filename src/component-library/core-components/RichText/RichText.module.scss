@@ -2,6 +2,8 @@
 @use '../../utilities/index.module' as *;
 @use '../../core-components/TextButton/TextButton.module.scss';
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
 %rte-content {
   @include apply-body-large;
 
