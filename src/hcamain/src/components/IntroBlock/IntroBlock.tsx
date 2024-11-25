@@ -60,7 +60,7 @@ interface CQCFields {
 
 interface Fields {
   Title?: Field<string>;
-  Subtitle?: Field<string>;
+  Headline?: Field<string>;
   Text?: Field<string>;
   Image?: ImageField;
   CTAIcon?: HCAIconFields;
@@ -138,9 +138,9 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         </Text>
       }
       subtitle={
-        props.fields?.Subtitle?.value ? (
+        props.fields?.Headline?.value ? (
           <Text tag="p" variation={'subheading-2'}>
-            <JSSText field={props.fields?.Subtitle} />
+            <JSSText field={props.fields?.Headline} />
           </Text>
         ) : undefined
       }
