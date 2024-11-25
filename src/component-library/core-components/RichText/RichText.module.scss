@@ -33,7 +33,7 @@
       }
     }
 
-    ul,
+    ul:not(:global(.tick)),
     ol {
       @include apply-body-large;
 
@@ -45,7 +45,7 @@
       padding: 0;
     }
 
-    ul {
+    ul:not(:global(.tick)) {
       li {
         padding-left: px-to-rem(30);
         position: relative;
