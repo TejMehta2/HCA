@@ -1,0 +1,43 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as QuoteBlockCenterStories from './QuoteBlockCenter.stories'
+
+<Meta of={QuoteBlockCenterStories} />
+
+# QuoteBlockCenter
+
+## Description
+
+The QuoteBlockCenter component is made up of a quote, an author image, an author name and a tag with the author's title.
+
+It is intended to be used as a page level component.
+
+The default alignment is center, but it has a left align option too.
+
+It can be composed like this:
+
+``` tsx
+<QuoteBlockCenter
+  name={
+    <Text variation="subheading-1">Dr Thomas frist sr</Text>
+  }
+  image={
+    <Image
+      src="/placeholders/quote-block-author.png"
+      alt="author of quote"
+      width="70"
+      height="70"
+    />
+  }
+  tag={
+    <a href="#">HCA Healthcare Co-Founder</a>
+  }
+  alignment={
+    'left'
+  }
+>
+  <Text variation="display-5">
+    “Above all else, we are committed to the care and improvement of human
+    life”
+  </Text>
+</QuoteBlockCenter>
+```
