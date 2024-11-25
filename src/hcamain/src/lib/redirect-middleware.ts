@@ -16,7 +16,7 @@ const redirectMiddleware = async (req: NextRequest) => {
         `${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
       );
 
-      console.log(`redirect 2: apiUrl ${apiUrl}`);
+      console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
       const response = await fetch(apiUrl.href, { next: { revalidate: 3600 } });
       console.log(`redirect 3: apiUrl ${JSON.stringify(response)}`);
 
