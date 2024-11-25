@@ -315,8 +315,8 @@ export async function getRecurseAppItemsFromGraphQL(
     flatNodes
   );
 
-  let expandedObj: any = [];
+  const expandedObj: any = [];
   const result = expandFlatNodes(flatNodes, expandedObj);
-
+  console.log('expandedObj', expandedObj);
   return result; //flatNodes;
 }
