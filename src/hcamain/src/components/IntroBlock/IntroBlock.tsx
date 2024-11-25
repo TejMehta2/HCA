@@ -7,6 +7,8 @@ import {
   Link as JssLink,
   ImageField,
   useSitecoreContext,
+  ComponentRendering,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
@@ -19,6 +21,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
 import RichText from '@component-library/core-components/RichText/RichText';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -57,6 +60,7 @@ interface CQCFields {
 
 interface Fields {
   Title?: Field<string>;
+  Headline?: Field<string>;
   Text?: Field<string>;
   Image?: ImageField;
   CTAIcon?: HCAIconFields;
@@ -69,6 +73,7 @@ interface Fields {
 export type IntroBlockProps = {
   params?: Params;
   fields?: Fields;
+  rendering?: ComponentRendering;
 };
 
 const IntroBlockDefaultComponent = (props: IntroBlockProps): JSX.Element => {
@@ -99,6 +104,8 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
+
+  const phKey = `intro-block-${props.params?.DynamicPlaceholderId}`;
 
   const cta = isExperienceEditor ? (
     <JssLink field={props.fields?.CTALink}></JssLink>
@@ -149,6 +156,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
             sizes: '(max-width: 768px) 100vw, 50vw',
           }}
         />
+      }
+      subcomponents={
+        props.rendering && (
+          <PlaceHolderWrapper>
+            <Placeholder name={phKey} rendering={props.rendering} />
+          </PlaceHolderWrapper>
+        )
       }
       cqc={
         props.fields?.CQCStatus ? (
