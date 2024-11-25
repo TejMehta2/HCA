@@ -8,15 +8,26 @@ const redirectMiddleware = async (req: NextRequest) => {
       const { url } = req;
       const { pathname, search } = new URL(url);
 
+      console.log(
+        `redirect 1: url ${url}, pathname: ${pathname}, search: ${search}`
+      );
+
       const apiUrl = new URL(
         `${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
       );
+
+      console.log(`redirect 2: apiUrl ${apiUrl}`);
       const response = await fetch(apiUrl.href, { next: { revalidate: 3600 } });
+      console.log(`redirect 3: apiUrl ${JSON.stringify(response)}`);
+
       if (response.ok) {
         const data = await response.json();
         if (data.destination) {
           const redirectUrl = new URL(data.destination, req.url);
           redirectUrl.search = search;
+          console.log(
+            `redirect 4: url ${url}, pathname: ${pathname}, search: ${search}`
+          );
           return NextResponse.redirect(redirectUrl);
         }
       } else {

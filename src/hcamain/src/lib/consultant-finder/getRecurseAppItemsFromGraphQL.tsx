@@ -19,23 +19,11 @@ export async function recurseAppItems(
   lang: string,
   platform: string,
   currentJSON: any,
-  findNode: any
+  flatNodes: any
 ): Promise<any> {
   try {
-    /*console.log('result:', JSON.stringify(GQLResult), '');
-    console.log(
-      'path:',
-      path,
-      'GQLResult',
-      GQLResult,
-      'GQLResult?.results',
-      GQLResult?.results,
-      'GQLResult?.results?.hasChildren',
-      GQLResult?.results?.hasChildren
-    );*/
-
     if (currentJSON && !currentJSON.results && currentJSON.hasChildren) {
-      // just a folder
+      // just a folder, have we got children to resolve?
       //console.log('folder1', path);
       const children = currentJSON.children?.results;
       //console.log('children', JSON.stringify(children));
@@ -47,7 +35,7 @@ export async function recurseAppItems(
           lang,
           platform,
           children[childCnt],
-          findNode
+          flatNodes
         );
       }
     } else if (
@@ -55,6 +43,7 @@ export async function recurseAppItems(
       currentJSON.results &&
       currentJSON.results.hasChildren
     ) {
+      // got children to resolve
       //console.log('folder2', path);
       const children = currentJSON.results.children?.results;
       //console.log('children', JSON.stringify(children));
@@ -66,112 +55,61 @@ export async function recurseAppItems(
           lang,
           platform,
           children[childCnt],
-          findNode
+          flatNodes
         );
       }
     } else {
+      // got a value to resolve
       const objPath = path
         .replace('/sitecore/content/HCA/App/', '')
-        .replaceAll('/', '.');
-      //const findNode: any = [];
-      const objPropName = objPath + '.' + currentJSON.name;
+        .replaceAll('/', '.')
+        .replaceAll(' ', '_');
+
+      const objPropName = objPath; // + '.' + currentJSON.name;
       if (currentJSON.value) {
-        findNode[objPropName] = currentJSON.value?.value; // value
+        flatNodes[objPropName] = currentJSON.value?.value; // value
       } else if (currentJSON.bVal) {
-        findNode[objPropName] = currentJSON.bVal?.value === '1' ? true : false; // boolean value
+        flatNodes[objPropName] = currentJSON.bVal?.value === '1' ? true : false; // boolean value
       } else if (currentJSON.iVal) {
-        findNode[objPropName] = Number(currentJSON.iVal?.value); // int value
+        flatNodes[objPropName] = Number(currentJSON.iVal?.value); // int value
       } else if (currentJSON.textValue) {
         switch (platform) {
           case 'ios':
-            findNode[objPropName] = {
+            flatNodes[objPropName] = {
               longValue: `${currentJSON.textiOS?.value}`, // long text value
               shortValue: `${currentJSON.textiOSShort?.value}`, // short text value
             };
             break;
           case 'android':
-            findNode[objPropName] = {
+            flatNodes[objPropName] = {
               longValue: `${currentJSON.textAndroid?.value}`, // long text value
               shortValue: `${currentJSON.textAndroidShort?.value}`, // short text value
             };
             break;
           case 'web':
-            findNode[objPropName] = {
+            flatNodes[objPropName] = {
               longValue: `${currentJSON.textWeb?.value}`, // long text value
               shortValue: `${currentJSON.textWebShort?.value}`, // short text value
             };
             break;
           default:
-            findNode[objPropName] = {
+            flatNodes[objPropName] = {
               longValue: `${currentJSON.textValue?.value}`, // long text value
               shortValue: `${currentJSON.textValueShort?.value}`, // short text value
             };
             break;
         }
       }
+
+      /*
       console.log(
-        'folder3',
+        'folder',
         path,
         currentJSON?.name,
         objPath,
         JSON.stringify(findNode)
-      );
+      );*/
     }
-    /*
-    // find the bottom of the object graph and create new nodes and assign values
-    //console.log('path', path);
-    const pathSplit = path.replace('/sitecore/content/HCA/App/', '').split('/');
-    let findNode = obj;
-    let objDepth = 0;
-    for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
-      if (objDepth == pathSplit.length - 1) {
-        // console.log('objPropName', objPropName);
-        // console.log('GQLResult.item', JSON.stringify(GQLResult.item));
-        if (CurrentJSON.value) {
-          findNode[objPropName] = CurrentJSON.value?.value; // value
-        } else if (CurrentJSON.bVal) {
-          findNode[objPropName] =
-            CurrentJSON.bVal?.value === '1' ? true : false; // boolean value
-        } else if (CurrentJSON.iVal) {
-          findNode[objPropName] = Number(CurrentJSON.iVal?.value); // int value
-        } else if (CurrentJSON.textValue) {
-          switch (platform) {
-            case 'ios':
-              findNode[objPropName] = {
-                longValue: `${CurrentJSON.textiOS?.value}`, // long text value
-                shortValue: `${CurrentJSON.textiOSShort?.value}`, // short text value
-              };
-              break;
-            case 'android':
-              findNode[objPropName] = {
-                longValue: `${CurrentJSON.textAndroid?.value}`, // long text value
-                shortValue: `${CurrentJSON.textAndroidShort?.value}`, // short text value
-              };
-              break;
-            case 'web':
-              findNode[objPropName] = {
-                longValue: `${CurrentJSON.textWeb?.value}`, // long text value
-                shortValue: `${CurrentJSON.textWebShort?.value}`, // short text value
-              };
-              break;
-            default:
-              findNode[objPropName] = {
-                longValue: `${CurrentJSON.textValue?.value}`, // long text value
-                shortValue: `${CurrentJSON.textValueShort?.value}`, // short text value
-              };
-              break;
-          }
-        } else {
-          findNode[objPropName] = {}; // folder/component/node place holder
-        }
-      }
-
-      if (!findNode[pathSplit[objDepth]]) {
-        findNode[pathSplit[objDepth]] = {}; // folder/component/node place holder
-      }
-
-      findNode = findNode[pathSplit[objDepth]];
-    }*/
   } catch (e) {
     console.log(
       `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
@@ -181,16 +119,45 @@ export async function recurseAppItems(
     );
   }
 
-  return currentJSON;
+  return flatNodes;
+}
+
+async function expandFlatNodes(flatNodes: any, expandedObj: any) {
+  //const expandedObj: any = [];
+  for (const path in flatNodes) {
+    //console.log(`${path}: ${flatNodes[path]}`);
+    const pathSplit = path.split('.');
+    let objDepth = 0;
+    let currentDepthObj = expandedObj;
+    for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
+      if (objDepth == pathSplit.length - 1) {
+        // the value of the node
+        currentDepthObj[pathSplit[objDepth]] = flatNodes[path];
+      } else if (!currentDepthObj[objDepth]) {
+        console.log('x');
+        currentDepthObj[pathSplit[objDepth]] = {}; // folder/component/node place holder
+        currentDepthObj = currentDepthObj[pathSplit[objDepth]];
+      }
+      console.log(
+        'objDepth',
+        objDepth,
+        'currentDepthObj',
+        JSON.stringify(currentDepthObj),
+        'expandedObj',
+        JSON.stringify(expandedObj)
+      );
+    }
+  }
+
+  return expandedObj;
 }
 
 export async function loadRecursedAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
-  lang: string,
-  platform: string,
-  obj: any
+  lang: string
 ): Promise<any> {
+  let result: any = [];
   try {
     // build a query for App/Portal objects
     const GQLQuery: string = `
@@ -308,10 +275,9 @@ query {
 }
     `;
 
-    console.log('GQLQuery: ', GQLQuery);
-    const GQLResult = await graphQLClient.request<any>(GQLQuery);
-    obj = GQLResult;
-    console.log('result:', JSON.stringify(GQLResult), '');
+    //console.log('GQLQuery: ', GQLQuery);
+    result = await graphQLClient.request<any>(GQLQuery);
+    //console.log('result:', JSON.stringify(GQLResult), '');
   } catch (e) {
     console.log(
       `Could not loadRecursedAppItemsFromGraphQL path:${path} - failed with exception ${e}`
@@ -321,7 +287,7 @@ query {
     );
   }
 
-  return obj;
+  return result;
 }
 
 export async function getRecurseAppItemsFromGraphQL(
@@ -332,34 +298,25 @@ export async function getRecurseAppItemsFromGraphQL(
   const graphQLClient = new GraphQLRequestClient(config.graphQLEndpoint, {
     apiKey: config.sitecoreApiKey,
   });
-  const obj: any = {};
+
   const resultRecursed = await loadRecursedAppItemsFromGraphQL(
     graphQLClient,
     path,
-    lang.toLowerCase(),
-    platform.toLowerCase(),
-    obj
+    lang.toLowerCase()
   );
-  const findNode: any = {};
-  const result = await recurseAppItems(
+
+  const flatNodes: any = {};
+  await recurseAppItems(
     graphQLClient,
     path,
     lang.toLowerCase(),
     platform.toLowerCase(),
     resultRecursed,
-    findNode
+    flatNodes
   );
-  //const result = obj;
-  /*
-  //console.log('path', path);
-  const result = await recurseAppItemsFromGraphQL(
-    graphQLClient,
-    path,
-    lang.toLowerCase(),
-    platform.toLowerCase(),
-    obj
-  );*/
 
-  //console.log('Final itemToFetch result:', JSON.stringify(result));
-  return result;
+  let expandedObj: any = [];
+  const result = expandFlatNodes(flatNodes, expandedObj);
+
+  return result; //flatNodes;
 }
