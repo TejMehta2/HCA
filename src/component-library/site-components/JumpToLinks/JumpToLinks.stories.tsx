@@ -1,8 +1,9 @@
 import React from 'react';
-import JumpToLinks, { JumpToLink } from './JumpToLinks';
+import JumpToLinks, { JumpToAnchor, JumpToLink } from './JumpToLinks';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof JumpToLinks> = {
@@ -16,7 +17,7 @@ const meta: Meta<typeof JumpToLinks> = {
 
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof JumpToLinks> = {
+export const Links: StoryObj<typeof JumpToLinks> = {
   args: {
     heading: <Text variation="body-medium-medium">Navigate to</Text>,
     children: (
@@ -63,6 +64,65 @@ export const Default: StoryObj<typeof JumpToLinks> = {
             <span>Wellbeing & Support</span>
           </a>
         </JumpToLink>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="A-HCA-White">
+        <Story />
+      </Themes>
+    ),
+  ],
+};
+
+export const Anchors: StoryObj<typeof JumpToLinks> = {
+  args: {
+    heading: <Text variation="body-bold-medium">On this page</Text>,
+    children: (
+      <>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>PCI at at HCA UK</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>Your patient journey</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>Facilities</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>Locations</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>Choose your consultant</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>FAQ</span>
+          </a>
+        </JumpToAnchor>
+        <JumpToAnchor>
+          <a href="#">
+            <Icons iconName="iconArrowSmallDown" />
+            <span>Patient Stories</span>
+          </a>
+        </JumpToAnchor>
       </>
     ),
   },
