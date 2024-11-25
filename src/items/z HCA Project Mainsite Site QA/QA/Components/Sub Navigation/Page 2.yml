@@ -1,0 +1,52 @@
+﻿---
+ID: "9df385e2-2bd2-4d5e-87c3-02883829db1c"
+Parent: "cc9b2e51-96da-46c6-92b6-0cfb14b46e00"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation/Page 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{35449E5A-387A-470A-B324-5BD7B36C141A}"
+              s:ds="{8A0424DB-69D0-4941-95F7-F17D1DE82572}"
+              s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
+              s:par="Columns&amp;HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "1de420ed-ff7f-4414-bd9b-bc68934bc0e0"
+      Hint: NavigationTitle
+      Value: Page Two
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241119T205720Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4de50fae-606b-43dc-8537-67e04aad97f2"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/494b4614c9c24310860cd1b8ca08297b?v=a985668b" dam-id="3fqhIR94RG2hNfjplsMb8w" width="3503" height="4379" alt="Woman entering menopause having counseling 1207514066.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231852/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241121T151814Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Page 2
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/5d8a594a0b1d468e9a053b2648a1d881?v=31f56ade" dam-id="hszntVyJRniJPYSpc57gcg" width="6379" height="4250" alt="Womens Health 1158247105.jpeg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231856/thumbnail" />

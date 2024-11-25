@@ -1,15 +1,8 @@
 ﻿---
-ID: "1de420ed-ff7f-4414-bd9b-bc68934bc0e0"
-Parent: "218d7bc2-c1f2-485d-9c13-6029e6359417"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/_Navigation/Navigation/Navigation Title
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: "Single-Line Text"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 100
+ID: "218d7bc2-c1f2-485d-9c13-6029e6359417"
+Parent: "87d6cc11-d03d-44cf-b2dd-8301264c5932"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/Navigation/Base/_PageNavigable/Navigation
 Languages:
 - Language: en
   Versions:
@@ -28,7 +21,7 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f33b3b7f-69cc-4fbf-98b0-382e85570360"
+      Value: "3e5bf502-45fd-4ada-968e-5e39f168c853"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

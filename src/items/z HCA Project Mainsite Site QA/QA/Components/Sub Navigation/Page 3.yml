@@ -1,0 +1,29 @@
+﻿---
+ID: "8f450437-49d9-4b29-89ca-14cdcedff5d2"
+Parent: "cc9b2e51-96da-46c6-92b6-0cfb14b46e00"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation/Page 3"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241119T205734Z
+    - ID: "2b68e965-d851-4c76-962b-335479957236"
+      Hint: HideInSubNavigation
+      Value: 1
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a39c0adf-25d3-4436-a8f8-d6871e9ee4cf"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241119T205739Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Page 3
