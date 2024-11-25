@@ -1,0 +1,88 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card {
+  display: flex;
+  color: white;
+  background-color: var(--card-background);
+  position: relative;
+  grid-column-end: span 6;
+  @include media(screen-m) {
+    grid-column-end: span var(--columns);
+  }
+  @include media(screen-l) {
+    grid-row-end: span var(--rows);
+  }
+
+  border-radius: $radius-medium;
+  overflow: hidden;
+  align-items: flex-end;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0%) 26.25%,
+      rgb(0 0 0 / 70%) 56.53%
+    );
+  }
+}
+
+.content {
+  padding: $spacing-7 $spacing-6 px-to-rem(40);
+  position: relative;
+  z-index: 10;
+}
+
+.copy {
+  margin-top: $spacing-3;
+  margin-bottom: $spacing-6;
+}
+
+.cta {
+  margin-top: px-to-rem(12);
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.wrapper {
+  background: var(--background, #{$navy-blue-90});
+  color: var(--text, #{$white});
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-11;
+  padding-bottom: $spacing-13;
+}
+
+.title {
+  margin-top: $spacing-2;
+}
+
+.children {
+  margin-top: $spacing-8;
+  @include responsive-grid;
+
+  grid-template-rows: px-to-rem(600) repeat(3, px-to-rem(380));
+
+  @include media(screen-l) {
+    grid-template-rows: repeat(2, px-to-rem(380));
+  }
+}

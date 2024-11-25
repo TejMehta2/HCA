@@ -1,6 +1,7 @@
 export interface HomepageIntroBlockProps {
   imageAlignment?: 'left' | 'right';
   title: JSX.Element;
+  subtitle?: JSX.Element;
   copy: JSX.Element;
   stats: { value: JSX.Element; label: JSX.Element }[];
   cta: JSX.Element;

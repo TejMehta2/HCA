@@ -9,6 +9,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
   const {
     imageAlignment = 'right',
     title,
+    subtitle,
     copy,
     stats,
     cta,
@@ -27,6 +28,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
       >
         <div className={styles.grid}>
           <div className={styles['text-wrapper']} data-animate="l">
+            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             <div className={styles.title}>{title}</div>
             <div className={styles.copy}>{copy}</div>
             {stats && stats.length > 0 && (
