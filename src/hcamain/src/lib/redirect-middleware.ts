@@ -26,7 +26,7 @@ const redirectMiddleware = async (req: NextRequest) => {
           const redirectUrl = new URL(data.destination, req.url);
           redirectUrl.search = search;
           console.log(
-            `redirect 4: url ${url}, pathname: ${pathname}, search: ${search}`
+            `redirect 4: url ${url}, pathname: ${pathname},  search: ${search}`
           );
           return NextResponse.redirect(redirectUrl);
         }
