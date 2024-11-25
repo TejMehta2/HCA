@@ -1,8 +1,8 @@
 ﻿---
-ID: "e0c983aa-bde6-448c-842e-86a51cde8fc4"
-Parent: "43a52220-f332-400f-a16c-2f07efa47467"
+ID: "bcb089ff-7106-4435-8d99-e946d18b5d9b"
+Parent: "4590ff80-a7c8-49f7-9c40-21b45d29e94e"
 Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Default/FAQ Question 2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions/Page Data/FAQ Block Default/FAQ Question 5"
 Languages:
 - Language: en
   Versions:
@@ -16,14 +16,14 @@ Languages:
       Value: 20240129T165237Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ada265c3-1c3c-4268-8371-c3e3442c1014"
+      Value: "ae68ca1f-c221-40b2-aa8c-30f6134b6f3c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\eilidh.chisholm@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240308T125608Z
+      Value: 20241125T213419Z
     - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
       Hint: Question
-      Value: "What are the payment options for hip pain treatment at HCA?"
+      Value: "What are the benefits of having a PCI heart treatment?"

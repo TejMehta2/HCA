@@ -1,0 +1,33 @@
+﻿---
+ID: "13b47c9f-42dd-4103-973a-ab2dc915903d"
+Parent: "38f04648-beb2-458c-9f7e-6d4309cc308c"
+Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions/Page Data/Image short text"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "0999ccb0-f298-4b06-8cc7-1c9c4584ed1a"
+      Hint: Image
+      Value: |
+        <image mediaid="{5FE5F242-8BA5-4053-9943-AD91D8128834}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241125T223610Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f7acea25-4153-4614-b8ce-086e72c8816d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d0cf786e-4622-4026-8bfb-ae4c5011f300"
+      Hint: Title
+      Value: Image Short Text
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241125T223946Z

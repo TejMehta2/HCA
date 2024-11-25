@@ -1,24 +1,18 @@
 ﻿---
-ID: "2db261b1-ad36-49de-8adc-ac29e96fe20e"
+ID: "3571feb2-d700-4a6f-b4e0-d3532445617c"
 Parent: "ef4fbd1d-a339-49d1-9f81-c21ca0c23d16"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Intro Block
+Path: /sitecore/layout/Renderings/Project/HCA/Page Content/Accordions
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: IntroBlock
-- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
-  Hint: Placeholders
-  Value: "{2F9AF5C1-BA13-45F6-BCD4-BE191377AB2A}"
+  Value: Accordions
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
-- ID: "17bb046a-a32a-41b3-8315-81217947611b"
-  Hint: ComponentQuery
-  Value: 
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Page Content/Intro Block
+  Value: /sitecore/templates/Project/HCA/Page Content/Accordions
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -27,20 +21,23 @@ SharedFields:
   Value: 
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{C15FB683-E7C6-4B2C-A4D6-C4BF68F74DDD}"
+  Value: "{15093E93-2D21-41B1-AA6D-F462B3686149}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Intro Block Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Intro Block Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Accordions Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Accordions Folder']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{59396AEC-9D86-4D58-98CA-703F757E4A02}" />
+    <image mediaid="{7B067C01-E58C-489A-A89D-044E01524263}" />
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "f6677a49-0a1d-4bad-b8ba-4f0f22bdee64"
+  Hint: Additional compatible templates
+  Value: "{85FA9ACD-38AC-4893-A6B9-1A94644A41CC}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -84,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "efe7b82b-cf79-4884-8071-28efc93b4d8e"
+      Value: "f3cfdef9-d35f-4310-8150-c319fa025631"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241125T205536Z
+      Value: 20241125T222822Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
