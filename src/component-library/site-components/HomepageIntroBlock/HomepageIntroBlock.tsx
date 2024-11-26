@@ -16,7 +16,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     image,
     cqc,
     doctify,
-    subcomponents,
+    children,
   } = props;
   return (
     <Themes theme="A-HCA-White">
@@ -52,9 +52,9 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
                 ))}
               </ul>
             )}
-            {subcomponents && (
-              <div className={styles['ctas']}>
-                <Themes theme="A-HCA-White">{subcomponents}</Themes>
+            {children && (
+              <div className={styles.children}>
+                <Themes theme="A-HCA-White">{children}</Themes>
               </div>
             )}
             {cta && (
