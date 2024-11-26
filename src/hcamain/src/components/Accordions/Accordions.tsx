@@ -7,11 +7,12 @@ import {
   RichText as JssRichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import AccordionsStandalone from '@component-library/site-components/AccordionsStandalone/AccordionsStandalone';
+import Accordions from '@component-library/components/Accordions/Accordions';
 import Params from 'src/types/params';
-import { Accordions } from '@component-library/components/Accordions/Accordions.types';
+import { AccordionsProps } from '@component-library/components/Accordions/Accordions.types';
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 type CTAIconFields = {
   fields?: {
@@ -47,7 +48,7 @@ type FAQSchema = {
 }[];
 
 const getAccordions = (questions: QuestionFields[]) => {
-  const accordions: Accordions = [];
+  const accordions: AccordionsProps['accordions'] = [];
 
   for (const accordion of questions) {
     accordions.push({
@@ -118,11 +119,9 @@ export const Default = (props: FAQProps): JSX.Element => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </Head>
-
-      <AccordionsStandalone
-        theme={props.params?.Theme || 'A-HCA-White'}
-        accordions={accordions.accordions}
-      />
+      <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+        <Accordions accordions={accordions.accordions} />
+      </Themes>
     </>
   );
 };
