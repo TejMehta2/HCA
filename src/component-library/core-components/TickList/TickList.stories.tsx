@@ -6,6 +6,7 @@ import Accordion from '../../components/Accordion/Accordion';
 import Button from '../Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
+import RichText from '../RichText/RichText';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof TickList> = {
@@ -95,6 +96,74 @@ export const InAccordion: StoryObj<typeof TickList> = {
               <a href="#">
                 <Icons iconName="iconStethoscope" />{' '}
                 <span>Find a PCI consultant</span>
+              </a>
+            </Button>
+          </Accordion>
+        </div>
+      </Themes>
+    ),
+  ],
+};
+
+export const AsRteClass: StoryObj<typeof TickList> = {
+  args: {
+    children: <></>,
+  },
+  decorators: [
+    () => (
+      <Themes theme="A-HCA-White">
+        <div style={{ maxWidth: '551px' }}>
+          <Accordion
+            title={'Global tick class example'}
+            onShow={() => {}}
+            isActive={true}
+          >
+            <RichText>
+              <p>Default:</p>
+              <ul>
+                <li>
+                  You’ll be given a local anaesthetic to numb your groin or
+                  wrist. You may also be given a sedative to help you relax.
+                </li>
+                <li>
+                  A small tube will be inserted into your artery. A catheter is
+                  then placed inside that tube.
+                </li>
+                <li>The balloon is inflated, which opens your artery.</li>
+                <li>
+                  A stent, made of wire mesh, will be inserted to keep the
+                  artery open.
+                </li>
+                <li>
+                  The balloon and catheter are then removed, leaving the stent
+                  in position.
+                </li>
+              </ul>
+              <p>Has CSS class .tick:</p>
+              <ul className="tick">
+                <li>
+                  You’ll be given a local anaesthetic to numb your groin or
+                  wrist. You may also be given a sedative to help you relax.
+                </li>
+                <li>
+                  A small tube will be inserted into your artery. A catheter is
+                  then placed inside that tube.
+                </li>
+                <li>The balloon is inflated, which opens your artery.</li>
+                <li>
+                  A stent, made of wire mesh, will be inserted to keep the
+                  artery open.
+                </li>
+                <li>
+                  The balloon and catheter are then removed, leaving the stent
+                  in position.
+                </li>
+              </ul>
+            </RichText>
+            <Button size="small" variation="full">
+              <a href="#">
+                <Icons iconName="iconStethoscope" />{' '}
+                <span>CTA to demonstrate spacing</span>
               </a>
             </Button>
           </Accordion>
