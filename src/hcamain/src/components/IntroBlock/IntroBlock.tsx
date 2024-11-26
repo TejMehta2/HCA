@@ -164,13 +164,6 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           }}
         />
       }
-      subcomponents={
-        props.rendering && (
-          <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
-          </PlaceHolderWrapper>
-        )
-      }
       cqc={
         props.fields?.CQCStatus ? (
           <CQCRating
@@ -194,7 +187,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           <></>
         )
       }
-    />
+    >
+      {props.rendering && (
+        <PlaceHolderWrapper>
+          <Placeholder name={phKey} rendering={props.rendering} />
+        </PlaceHolderWrapper>
+      )}
+    </DynamicHomepageIntroBlock>
   );
 };
 

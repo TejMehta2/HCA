@@ -8,5 +8,5 @@ export interface HomepageIntroBlockProps {
   image: JSX.Element;
   cqc: JSX.Element;
   doctify: JSX.Element;
-  subcomponents?: JSX.Element;
+  children?: JSX.Element;
 }
