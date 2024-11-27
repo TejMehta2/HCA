@@ -26,8 +26,12 @@ interface Fields {
   };
 }
 
+interface HeaderWithImageParams extends Params {
+  HeadingBeforeTitle?: '1' | '0';
+}
+
 export type HeaderWithImageProps = {
-  params?: Params;
+  params?: HeaderWithImageParams;
   rendering?: ComponentRendering;
   fields?: Fields;
 };
@@ -52,7 +56,9 @@ const HeaderWithImageDefaultComponent = (
 };
 
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
-  const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
+  const phKeyCtas = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
+  const phKeyRatings = `header-with-image-${props.params?.DynamicPlaceholderId}`;
+  console.log('props', props.rendering?.placeholders);
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
@@ -80,47 +86,12 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           </Text>
         ) : undefined
       }
+      subtitlePlacement={
+        props.params?.HeadingBeforeTitle === '1' ? 'before' : 'after'
+      }
       copy={
         <Text variation="body-large" tag="div">
           <RichText field={props.fields?.data?.contextItem?.text?.jsonValue} />
-          <ul className="tick">
-            <li>
-              You’ll be given a local anaesthetic to numb your groin or wrist.
-              You may also be given a sedative to help you relax.
-            </li>
-            <li>
-              A small tube will be inserted into your artery. A catheter is then
-              placed inside that tube.
-            </li>
-            <li>The balloon is inflated, which opens your artery.</li>
-            <li>
-              A stent, made of wire mesh, will be inserted to keep the artery
-              open.
-            </li>
-            <li>
-              The balloon and catheter are then removed, leaving the stent in
-              position.
-            </li>
-          </ul>
-          <ul>
-            <li>
-              You’ll be given a local anaesthetic to numb your groin or wrist.
-              You may also be given a sedative to help you relax.
-            </li>
-            <li>
-              A small tube will be inserted into your artery. A catheter is then
-              placed inside that tube.
-            </li>
-            <li>The balloon is inflated, which opens your artery.</li>
-            <li>
-              A stent, made of wire mesh, will be inserted to keep the artery
-              open.
-            </li>
-            <li>
-              The balloon and catheter are then removed, leaving the stent in
-              position.
-            </li>
-          </ul>
         </Text>
       }
       image={
@@ -134,10 +105,22 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           }}
         />
       }
+      ratings={
+        props.rendering ? (
+          <Placeholder
+            name={phKeyRatings}
+            rendering={props.rendering}
+            size={buttonSize}
+            contentVariation="full-width"
+          />
+        ) : (
+          <></>
+        )
+      }
       ctas={
         props.rendering ? (
           <Placeholder
-            name={phKey}
+            name={phKeyCtas}
             rendering={props.rendering}
             size={buttonSize}
             contentVariation="full-width"

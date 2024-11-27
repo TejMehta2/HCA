@@ -3,6 +3,10 @@ ID: "f0a8b3cf-557b-48cb-bd91-e255e140ec2f"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 10700
 Languages:
 - Language: en
   Versions:
@@ -31,7 +35,7 @@ Languages:
       Value: 20240909T162038Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8971dbf1-dfca-49c9-b8e3-5a77b26ced56"
+      Value: "14ad8b73-c116-4583-ae51-2c25c37e1736"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: 
@@ -41,7 +45,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240910T154337Z
+      Value: 20241127T161141Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Stats
