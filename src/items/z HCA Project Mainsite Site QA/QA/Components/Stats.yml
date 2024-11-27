@@ -24,9 +24,17 @@ Languages:
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
               uid="{C7E9F640-12E4-4AA5-8F35-3AB2FA9B9639}"
+              p:before="*"
               s:ds="local:/Page Data/Stats datasource"
               s:id="{7F4C762B-AAB2-407A-9435-F445372A6789}"
               s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+            <r
+              uid="{0A6A8A52-2423-41E6-850C-2B1BFE550B53}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Stats datasource"
+              s:id="{7F4C762B-AAB2-407A-9435-F445372A6789}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames=%7B052F2A94-35DA-448F-A36F-C343A754ED56%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="headless-main" />
           </d>
         </r>
@@ -35,7 +43,7 @@ Languages:
       Value: 20240909T162038Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "14ad8b73-c116-4583-ae51-2c25c37e1736"
+      Value: "b235106d-72d0-4124-a703-ea3bc43333f1"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: 
@@ -45,7 +53,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T161141Z
+      Value: 20241127T185754Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Stats
