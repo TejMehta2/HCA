@@ -1,0 +1,30 @@
+﻿---
+ID: "9bf38e0e-7e37-4ec3-88d1-dc360d855153"
+Parent: "50abd894-bf59-4ac4-b113-7764db66e757"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16/Data/subnav"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241127T161423Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "27e9dd32-7875-40a2-bb2d-1f2394d35103"
+    - ID: "a44708f4-261e-43ca-9b5e-33142fc6325b"
+      Hint: DefaultNavigationImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/98f9519e7de64626a8f0576e0d9a3d8a?v=962b997a" dam-id="Bo-LBK81IUemDK7VkM-WRA" width="100" height="100" alt="building_4_interior_da_vinci_robot_09_2017_Guys" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/216387/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{7D7A7081-1292-4BF1-BB86-A8347D54E831}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241127T164214Z

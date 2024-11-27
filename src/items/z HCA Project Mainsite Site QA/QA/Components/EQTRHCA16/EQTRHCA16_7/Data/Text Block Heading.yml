@@ -1,0 +1,37 @@
+﻿---
+ID: "e072f9e6-fbbe-4198-b6df-0400f911ec71"
+Parent: "d77cde88-22f5-4cb4-a641-cd22ef2185e6"
+Template: "d9dc0134-ff91-4367-83f6-12b841b7e183"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16/EQTRHCA16_7/Data/Text Block Heading"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240329T122029Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "66e796f8-7239-492f-ae58-473916272614"
+      Hint: Heading
+      Value: Payment plans
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b7b00ba-1678-4bb7-b63a-055d2e19f8d2"
+    - ID: "8f0c0278-8513-4395-8e0e-5b1509476fb2"
+      Hint: Title
+      Value: "New to private healthcare?"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240329T122247Z

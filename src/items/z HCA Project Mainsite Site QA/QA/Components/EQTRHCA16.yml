@@ -3,6 +3,10 @@ ID: "7d7a7081-1292-4bf1-bb86-a8347d54e831"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA16"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 2900
 Languages:
 - Language: en
   Versions:
@@ -19,8 +23,15 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{4E8C894A-3224-4002-AA84-09875FBE5ADE}"
+              uid="{B128F0C7-6CD9-422B-952A-53465FECB0BE}"
               p:before="*"
+              s:ds="local:/Data/subnav"
+              s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
+              s:par="GridParameters&amp;FieldNames&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="/headless-main" />
+            <r
+              uid="{4E8C894A-3224-4002-AA84-09875FBE5ADE}"
+              p:after="r[@uid='{B128F0C7-6CD9-422B-952A-53465FECB0BE}']"
               s:ds="local:/Data/CTA 1"
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
@@ -82,14 +93,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "40af157d-2ce9-458e-9b24-bcaf730cd101"
+      Value: "04283fb9-efdf-4c7b-9db2-43d3f8f910ce"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240411T075803Z
+      Value: 20241127T161440Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA16
