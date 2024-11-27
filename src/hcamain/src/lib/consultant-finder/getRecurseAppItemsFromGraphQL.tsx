@@ -122,34 +122,24 @@ export async function recurseAppItems(
   return flatNodes;
 }
 
-async function expandFlatNodes(flatNodes: any, expandedObj: any) {
-  //const expandedObj: any = [];
-  for (const path in flatNodes) {
-    //console.log(`${path}: ${flatNodes[path]}`);
-    const pathSplit = path.split('.');
-    let objDepth = 0;
-    let currentDepthObj = expandedObj;
-    for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
-      if (objDepth == pathSplit.length - 1) {
-        // the value of the node
-        currentDepthObj[pathSplit[objDepth]] = flatNodes[path];
-      } else if (!currentDepthObj[objDepth]) {
-        console.log('x');
-        currentDepthObj[pathSplit[objDepth]] = {}; // folder/component/node place holder
-        currentDepthObj = currentDepthObj[pathSplit[objDepth]];
-      }
-      console.log(
-        'objDepth',
-        objDepth,
-        'currentDepthObj',
-        JSON.stringify(currentDepthObj),
-        'expandedObj',
-        JSON.stringify(expandedObj)
-      );
+// https://stackoverflow.com/questions/19098797/fastest-way-to-flatten-un-flatten-nested-javascript-objects
+async function expandFlatNodes(flatNodes: { [x: string]: any }) {
+  if (Object(flatNodes) !== flatNodes || Array.isArray(flatNodes))
+    return flatNodes;
+  const regex = /\.?([^.\[\]]+)|\[(\d+)\]/g,
+    resultholder: any = {};
+  for (const p in flatNodes) {
+    // eslint-disable-next-line no-var
+    let cur: any = resultholder,
+      prop = '',
+      m;
+    while ((m = regex.exec(p))) {
+      cur = cur[prop] || (cur[prop] = m[2] ? [] : {});
+      prop = m[2] || m[1];
     }
+    cur[prop] = flatNodes[p];
   }
-
-  return expandedObj;
+  return resultholder[''] || resultholder;
 }
 
 export async function loadRecursedAppItemsFromGraphQL(
@@ -290,6 +280,9 @@ query {
   return result;
 }
 
+// load up items from Sitecore via GraphQL
+// flatten and simplify structure for use in the consuming app
+// then unflatten simplified object and return it
 export async function getRecurseAppItemsFromGraphQL(
   path: string,
   lang: string,
@@ -315,8 +308,58 @@ export async function getRecurseAppItemsFromGraphQL(
     flatNodes
   );
 
-  const expandedObj: any = [];
-  const result = expandFlatNodes(flatNodes, expandedObj);
-  console.log('expandedObj', expandedObj);
-  return result; //flatNodes;
+  const result = expandFlatNodes(flatNodes);
+
+  return result;
 }
+
+/*  Example flat data
+  const flatNodes: any = {
+    'MattsApp.0_1.Settings.NewSchema': false,
+    'MattsApp.0_1.UI.AppWide.AppSimple': 'test',
+    'MattsApp.0_1.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.0_1.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.0_1a.Settings.NewSchema': true,
+    'MattsApp.0_1a.UI.AppWide.AppSimple': 'test',
+    'MattsApp.0_1a.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.0_1a.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.0_1b.Settings.NewSchema': true,
+    'MattsApp.0_1b.UI.AppWide.AppSimple': 'test',
+    'MattsApp.0_1b.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.0_1b.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.11.Settings.NewSchema': true,
+    'MattsApp.11.UI.AppWide.AppSimple': 'test',
+    'MattsApp.11.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.11.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.12.Settings.NewSchema': true,
+    'MattsApp.12.UI.AppWide.AppSimple': 'test',
+    'MattsApp.12.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.12.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.13.Settings.NewSchema': true,
+    'MattsApp.13.UI.AppWide.AppSimple': 'test',
+    'MattsApp.13.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.13.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.14.Settings.NewSchema': true,
+    'MattsApp.14.UI.AppWide.AppSimple': 'test',
+    'MattsApp.14.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.14.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.15.Settings.NewSchema': true,
+    'MattsApp.15.UI.AppWide.AppSimple': 'test',
+    'MattsApp.15.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.15.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.Copy_of_0_1.Settings.NewSchema': true,
+    'MattsApp.Copy_of_0_1.UI.AppWide.AppSimple': 'test',
+    'MattsApp.Copy_of_0_1.UI.Home.Nav.TabHome.Link': '',
+    'MattsApp.Copy_of_0_1.UI.Home.Nav.TabHome.Text': 'Home',
+    'MattsApp.Globals.OnlineSettings.Heading': {
+      longValue: '',
+      shortValue: '',
+    },
+    'MattsApp.Globals.OnlineSettings.HELLO_WORLD': '',
+    'MattsApp.Globals.OnlineSettings.Message': 'We are back soon',
+    'MattsApp.Globals.OnlineSettings.Online': true,
+  };
+
+  console.log('flatnodes', JSON.stringify(flatNodes));
+
+  */
