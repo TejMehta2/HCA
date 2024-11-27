@@ -57,7 +57,7 @@ export const Default = (props: StatsProps): JSX.Element => {
   );
 };
 
-export const StatsThreeCol = (props: StatsProps): JSX.Element => {
+export const ThreeColumns = (props: StatsProps): JSX.Element => {
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
   }
