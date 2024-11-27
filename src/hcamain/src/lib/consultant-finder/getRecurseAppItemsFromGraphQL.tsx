@@ -13,136 +13,9 @@ interface sitecoreItemProp {
   name: string;
 }
 
-export async function recurseAppItems(
-  graphQLClient: GraphQLRequestClient,
-  path: string,
-  lang: string,
-  platform: string,
-  currentJSON: any,
-  flatNodes: any
-): Promise<any> {
-  try {
-    if (currentJSON && !currentJSON.results && currentJSON.hasChildren) {
-      // just a folder, have we got children to resolve?
-      //console.log('folder1', path);
-      const children = currentJSON.children?.results;
-      //console.log('children', JSON.stringify(children));
-      for (let childCnt = 0; childCnt < children.length; childCnt++) {
-        const item: sitecoreItemProp = children[childCnt];
-        await recurseAppItems(
-          graphQLClient,
-          `${path}/${item.name}`,
-          lang,
-          platform,
-          children[childCnt],
-          flatNodes
-        );
-      }
-    } else if (
-      currentJSON &&
-      currentJSON.results &&
-      currentJSON.results.hasChildren
-    ) {
-      // got children to resolve
-      //console.log('folder2', path);
-      const children = currentJSON.results.children?.results;
-      //console.log('children', JSON.stringify(children));
-      for (let childCnt = 0; childCnt < children.length; childCnt++) {
-        const item: sitecoreItemProp = children[childCnt];
-        await recurseAppItems(
-          graphQLClient,
-          `${path}/${item.name}`,
-          lang,
-          platform,
-          children[childCnt],
-          flatNodes
-        );
-      }
-    } else {
-      // got a value to resolve
-      const objPath = path
-        .replace('/sitecore/content/HCA/App/', '')
-        .replaceAll('/', '.')
-        .replaceAll(' ', '_');
+const gSitecoreAppPath = '/sitecore/content/HCA/App/';
 
-      const objPropName = objPath; // + '.' + currentJSON.name;
-      if (currentJSON.value) {
-        flatNodes[objPropName] = currentJSON.value?.value; // value
-      } else if (currentJSON.bVal) {
-        flatNodes[objPropName] = currentJSON.bVal?.value === '1' ? true : false; // boolean value
-      } else if (currentJSON.iVal) {
-        flatNodes[objPropName] = Number(currentJSON.iVal?.value); // int value
-      } else if (currentJSON.textValue) {
-        switch (platform) {
-          case 'ios':
-            flatNodes[objPropName] = {
-              longValue: `${currentJSON.textiOS?.value}`, // long text value
-              shortValue: `${currentJSON.textiOSShort?.value}`, // short text value
-            };
-            break;
-          case 'android':
-            flatNodes[objPropName] = {
-              longValue: `${currentJSON.textAndroid?.value}`, // long text value
-              shortValue: `${currentJSON.textAndroidShort?.value}`, // short text value
-            };
-            break;
-          case 'web':
-            flatNodes[objPropName] = {
-              longValue: `${currentJSON.textWeb?.value}`, // long text value
-              shortValue: `${currentJSON.textWebShort?.value}`, // short text value
-            };
-            break;
-          default:
-            flatNodes[objPropName] = {
-              longValue: `${currentJSON.textValue?.value}`, // long text value
-              shortValue: `${currentJSON.textValueShort?.value}`, // short text value
-            };
-            break;
-        }
-      }
-
-      /*
-      console.log(
-        'folder',
-        path,
-        currentJSON?.name,
-        objPath,
-        JSON.stringify(findNode)
-      );*/
-    }
-  } catch (e) {
-    console.log(
-      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
-    );
-    console.error(
-      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
-    );
-  }
-
-  return flatNodes;
-}
-
-// https://stackoverflow.com/questions/19098797/fastest-way-to-flatten-un-flatten-nested-javascript-objects
-async function expandFlatNodes(flatNodes: { [x: string]: any }) {
-  if (Object(flatNodes) !== flatNodes || Array.isArray(flatNodes))
-    return flatNodes;
-  const regex = /\.?([^.\[\]]+)|\[(\d+)\]/g,
-    resultholder: any = {};
-  for (const p in flatNodes) {
-    // eslint-disable-next-line no-var
-    let cur: any = resultholder,
-      prop = '',
-      m;
-    while ((m = regex.exec(p))) {
-      cur = cur[prop] || (cur[prop] = m[2] ? [] : {});
-      prop = m[2] || m[1];
-    }
-    cur[prop] = flatNodes[p];
-  }
-  return resultholder[''] || resultholder;
-}
-
-export async function loadRecursedAppItemsFromGraphQL(
+async function loadRecursedAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
   lang: string
@@ -280,6 +153,150 @@ query {
   return result;
 }
 
+export async function recurseAppItemsFlat(
+  graphQLClient: GraphQLRequestClient,
+  path: string,
+  lang: string,
+  platform: string,
+  currentJSON: any,
+  flatNodes: any
+): Promise<any> {
+  try {
+    if (currentJSON && !currentJSON.results && currentJSON.hasChildren) {
+      // just a folder, have we got children to resolve?
+      //console.log('folder1', path);
+      const children = currentJSON.children?.results;
+      //console.log('children', JSON.stringify(children));
+      for (let childCnt = 0; childCnt < children.length; childCnt++) {
+        const item: sitecoreItemProp = children[childCnt];
+        await recurseAppItemsFlat(
+          graphQLClient,
+          `${path}/${item.name}`,
+          lang,
+          platform,
+          children[childCnt],
+          flatNodes
+        );
+      }
+    } else if (
+      currentJSON &&
+      currentJSON.results &&
+      currentJSON.results.hasChildren
+    ) {
+      // got children to resolve
+      //console.log('folder2', path);
+      const children = currentJSON.results.children?.results;
+      //console.log('children', JSON.stringify(children));
+      for (let childCnt = 0; childCnt < children.length; childCnt++) {
+        const item: sitecoreItemProp = children[childCnt];
+        await recurseAppItemsFlat(
+          graphQLClient,
+          `${path}/${item.name}`,
+          lang,
+          platform,
+          children[childCnt],
+          flatNodes
+        );
+      }
+    } else {
+      // got a value to resolve
+      const objPath = path
+        .replace(gSitecoreAppPath, '')
+        .replaceAll('/', '.')
+        .replaceAll(' ', '_');
+
+      const objPropName = objPath; // + '.' + currentJSON.name;
+      if (currentJSON.value) {
+        flatNodes[objPropName] = currentJSON.value?.value; // value
+      } else if (currentJSON.bVal) {
+        flatNodes[objPropName] = currentJSON.bVal?.value === '1' ? true : false; // boolean value
+      } else if (currentJSON.iVal) {
+        flatNodes[objPropName] = Number(currentJSON.iVal?.value); // int value
+      } else if (currentJSON.textValue) {
+        switch (platform) {
+          case 'ios':
+            flatNodes[objPropName] = {
+              longValue: `${currentJSON.textiOS?.value}`, // long text value
+              shortValue: `${currentJSON.textiOSShort?.value}`, // short text value
+            };
+            break;
+          case 'android':
+            flatNodes[objPropName] = {
+              longValue: `${currentJSON.textAndroid?.value}`, // long text value
+              shortValue: `${currentJSON.textAndroidShort?.value}`, // short text value
+            };
+            break;
+          case 'web':
+            flatNodes[objPropName] = {
+              longValue: `${currentJSON.textWeb?.value}`, // long text value
+              shortValue: `${currentJSON.textWebShort?.value}`, // short text value
+            };
+            break;
+          default:
+            flatNodes[objPropName] = {
+              longValue: `${currentJSON.textValue?.value}`, // long text value
+              shortValue: `${currentJSON.textValueShort?.value}`, // short text value
+            };
+            break;
+        }
+      }
+
+      /*
+      console.log(
+        'folder',
+        path,
+        currentJSON?.name,
+        objPath,
+        JSON.stringify(findNode)
+      );*/
+    }
+  } catch (e) {
+    console.log(
+      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
+    );
+    console.error(
+      `Could not recurseAppItemsFromGraphQL path:${path} - failed with exception ${e}`
+    );
+  }
+
+  return flatNodes;
+}
+
+// https://stackoverflow.com/questions/19098797/fastest-way-to-flatten-un-flatten-nested-javascript-objects
+async function expandFlatNodes(flatNodes: { [x: string]: any }) {
+  if (Object(flatNodes) !== flatNodes || Array.isArray(flatNodes))
+    return flatNodes;
+  const regex = /\.?([^.\[\]]+)|\[(\d+)\]/g,
+    resultholder: any = {};
+  for (const p in flatNodes) {
+    // eslint-disable-next-line no-var
+    let cur: any = resultholder,
+      prop = '',
+      m;
+    while ((m = regex.exec(p))) {
+      cur = cur[prop] || (cur[prop] = m[2] ? [] : {});
+      prop = m[2] || m[1];
+    }
+    cur[prop] = flatNodes[p];
+  }
+  return resultholder[''] || resultholder;
+}
+
+async function shortenToRequestedPath(flatNodes: any, path: string) {
+  //console.log(JSON.stringify(flatNodes));
+  //console.log('path', path);
+  const truncPath = path.replace(gSitecoreAppPath, '').replaceAll('/', '.');
+  //console.log('truncPath', truncPath);
+  // map in desired keys (properties) to fetch
+  const newFlatNodes: any = {};
+  Object.keys(flatNodes).forEach((key) => {
+    const newKey = key.replaceAll(truncPath, '').substring(1);
+    newFlatNodes[newKey] = flatNodes[key];
+    //console.log('key to', newKey);
+  });
+  return newFlatNodes;
+}
+
 // load up items from Sitecore via GraphQL
 // flatten and simplify structure for use in the consuming app
 // then unflatten simplified object and return it
@@ -299,7 +316,7 @@ export async function getRecurseAppItemsFromGraphQL(
   );
 
   const flatNodes: any = {};
-  await recurseAppItems(
+  await recurseAppItemsFlat(
     graphQLClient,
     path,
     lang.toLowerCase(),
@@ -308,7 +325,9 @@ export async function getRecurseAppItemsFromGraphQL(
     flatNodes
   );
 
-  const result = expandFlatNodes(flatNodes);
+  const newFlatNodes: any = await shortenToRequestedPath(flatNodes, path);
+
+  const result = expandFlatNodes(newFlatNodes);
 
   return result;
 }
