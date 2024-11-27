@@ -35,6 +35,16 @@ It can be composed like this:
       team will be happy to help in any way they can.
     </Text>
   }
+  ctas={
+    <>
+      <TextLink>
+        <a href="#">
+          <span>See more</span>
+          <Icons iconName="iconArrowRight" />
+        </a>
+      </TextLink>
+    </>
+  }
 >
   <TimelineStep
     index={<Text variation="display-5">01</Text>}
@@ -47,6 +57,11 @@ It can be composed like this:
         they&apos;ll arrange any imaging or diagnostic tests – often on
         the same day.
       </Text>
+    }
+    link={
+      <a href="#">
+        <span>Read the story</span>
+      </a>
     }
   />
   {/* Additional timeline steps */}

@@ -12,9 +12,11 @@ export const TimelineStep = (props: TimelineStepProps): JSX.Element => {
         {heading && <div className={styles.heading}>{heading}</div>}
         {copy && <div className={styles.copy}>{copy}</div>}
         {link && (
-          <Button size="small" variation="full" contentVariation="card">
-            {link}
-          </Button>
+          <div className={styles.link}>
+            <Button size="small" variation="full">
+              {link}
+            </Button>
+          </div>
         )}
       </div>
     </div>
