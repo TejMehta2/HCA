@@ -14,6 +14,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Timeline, {
   TimelineStep,
 } from '@component-library/site-components/Timeline/Timeline';
+import TextLink from '@component-library/core-components/TextLink/TextLink';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -127,7 +128,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
             />
           </Text>
         }
-        ctas={link || <></>}
+        ctas={link ? <TextLink>{link}</TextLink> : undefined}
         copy={
           props.fields?.data?.item?.text?.jsonValue || isExperienceEditor ? (
             <Text tag="div" variation="body-large">
