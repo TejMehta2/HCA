@@ -3,6 +3,8 @@ import Timeline, { TimelineStep } from './Timeline';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Themes from '../../foundation/Themes/Themes';
+import Icons from '../../foundation/Icons/Icons';
+import TextLink from '../../core-components/TextLink/TextLink';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Timeline> = {
@@ -36,6 +38,14 @@ export const Default: StoryObj<typeof Timeline> = {
         team will be happy to help in any way they can.
       </Text>
     ),
+    ctas: (
+      <TextLink>
+        <a href="#">
+          <span>See more</span>
+          <Icons iconName="iconArrowRight" />
+        </a>
+      </TextLink>
+    ),
     children: (
       <>
         <TimelineStep
@@ -49,6 +59,11 @@ export const Default: StoryObj<typeof Timeline> = {
               they&apos;ll arrange any imaging or diagnostic tests – often on
               the same day.
             </Text>
+          }
+          link={
+            <a href="#">
+              <span>Read the story</span>
+            </a>
           }
         />
         <TimelineStep

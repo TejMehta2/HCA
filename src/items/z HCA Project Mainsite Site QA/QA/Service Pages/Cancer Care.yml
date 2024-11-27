@@ -2,7 +2,7 @@
 ID: "83a3005a-c95d-4d62-83cd-c3547a06d0d7"
 Parent: "12f34b20-353a-41b8-8f89-433b844f5395"
 Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Service Page 2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Cancer Care"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -24,7 +24,7 @@ Languages:
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b53aa006-b942-4988-8c7f-b0311d6aba2d"
+      Value: "6854498c-4804-4137-a0ea-2a0a963f3558"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -35,10 +35,10 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
-      Value: There are over 1400 at The Portland, each year. Hear new mums sharing theirs
+      Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240611T163937Z
+      Value: 20241126T213147Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Cancer Care
