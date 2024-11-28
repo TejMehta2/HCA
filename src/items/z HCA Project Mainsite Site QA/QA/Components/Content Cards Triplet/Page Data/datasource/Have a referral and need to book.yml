@@ -1,0 +1,52 @@
+﻿---
+ID: "c41a1113-c18c-4f92-aba5-e22cfaa1527a"
+Parent: "d51cda46-0061-42b2-b863-597711897f6c"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Triplet/Page Data/datasource/Have a referral and need to book"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: "Have a referral and need to book?"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241128T114155Z
+    - ID: "29e9202e-0a97-4b8d-b58d-5d3033ec6d7e"
+      Hint: PrimaryCTA
+      Value: |
+        <link text="See our &lt;strong&gt;heart tests &amp; scans&lt;/strong&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: <p>If you&rsquo;ve already got your referral letter, it couldn&rsquo;t be simpler. You can book a test, scan or treatment directly.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c84c7c02-235a-467d-ab02-327f9ad9d334"
+    - ID: "949e781a-a1f8-492e-8674-0bf9a1c80750"
+      Hint: SecondaryCTA
+      Value: |
+        <link text="See our &lt;strong&gt;heart treatments&lt;/strong&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{A8D7456D-4C16-4583-89CE-93F624C8D99F}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241128T122545Z

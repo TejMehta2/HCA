@@ -1,0 +1,33 @@
+﻿---
+ID: "55f257ec-7f1f-40da-b3d2-3f7a8bbc5e8f"
+Parent: "7b7a6809-95b9-460c-b008-a7f8924cd369"
+Template: "7b7a6809-95b9-460c-b008-a7f8924cd369"
+Path: /sitecore/templates/Project/HCA/Page Content/Content Cards Triplet Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {ABB73D94-91AC-4994-848D-CE9F0050CC15}
+    {7B7A6809-95B9-460C-B008-A7F8924CD369}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "91ba4e75-2802-4bc3-bb5c-ea128403ed26"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241128T112655Z
