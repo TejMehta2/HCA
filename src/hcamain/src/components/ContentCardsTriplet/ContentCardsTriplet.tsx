@@ -77,17 +77,7 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
           return (
             <IconCtaBlockChild
               key={index}
-              iconMobile={
-                card?.fields?.Icon && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        card?.fields?.Icon?.fields?.SvgMarkup?.value || '',
-                    }}
-                  />
-                )
-              }
-              iconDesktop={
+              icon={
                 card?.fields?.Icon && (
                   <span
                     dangerouslySetInnerHTML={{
