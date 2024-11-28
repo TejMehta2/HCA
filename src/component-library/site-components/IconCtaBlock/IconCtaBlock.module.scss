@@ -46,8 +46,19 @@
       display: none;
     }
   }
+
+  svg {
+    width: px-to-rem(24);
+    height: px-to-rem(24);
+  }
+
   @include media(screen-l) {
     grid-row: 1 / 1;
+
+    svg {
+      width: px-to-rem(48);
+      height: px-to-rem(48);
+    }
 
     &.mobile {
       display: none;
