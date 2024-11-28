@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Field,
   ImageField,
+  Text as JssText,
   RichText as JssRichText,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
@@ -46,9 +47,14 @@ const ImageTextListDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: ImageTextListProps): JSX.Element => {
+interface ImageTextListColumnsProps extends ImageTextListProps {
+  columns: 2 | 3;
+}
+
+export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  const { columns = 2 } = props;
   if (!props.fields) {
     return <ImageTextListDefaultComponent {...props} />;
   }
@@ -60,9 +66,11 @@ export const Default = (props: ImageTextListProps): JSX.Element => {
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <Accreditations
+        columns={columns}
         items={
           props.fields?.Cards?.map((cards) => ({
             text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
+            title: <JssText tag={'span'} field={cards.fields?.Title} />,
             logo: (
               <NextJssImage
                 field={cards?.fields?.Image}
@@ -78,4 +86,12 @@ export const Default = (props: ImageTextListProps): JSX.Element => {
       />
     </Themes>
   );
+};
+
+export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
+  if (!props.fields) {
+    return <ImageTextListDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} columns={3} />;
 };
