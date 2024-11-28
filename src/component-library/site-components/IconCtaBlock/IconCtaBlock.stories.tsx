@@ -23,6 +23,191 @@ export const Default: StoryObj<typeof IconCtaBlock> = {
     children: (
       <>
         <IconCtaBlockChild
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 30 30"
+              fill="none"
+            >
+              <path
+                d="M4.99023 23.6028V6.31705C4.99023 5.66212 5.2504 5.03402 5.7135 4.57092C6.1766 4.10782 6.8047 3.84766 7.45962 3.84766H24.0045C24.201 3.84766 24.3894 3.92571 24.5284 4.06464C24.6673 4.20357 24.7453 4.392 24.7453 4.58847V20.7803M7.45962 21.1334H24.7453M7.45962 26.0722H24.7453"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7.45962 26.0726C6.8047 26.0726 6.1766 25.8124 5.7135 25.3493C5.2504 24.8862 4.99023 24.2581 4.99023 23.6032C4.99023 22.9483 5.2504 22.3202 5.7135 21.8571C6.1766 21.394 6.8047 21.1338 7.45962 21.1338"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.1621 8.78613H18.5703"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          }
+          title={
+            <Text variation="heading-2">
+              Worried about your heart, but not sure what to do?
+            </Text>
+          }
+          copy={
+            <Text variation="body-large">
+              Get in touch and book a same- or next-day GP appointment
+            </Text>
+          }
+          ctas={
+            <>
+              <Button variation="full" size="small">
+                <a href="#">
+                  Book a <b>GP appointment</b>
+                </a>
+              </Button>
+            </>
+          }
+        />
+        <IconCtaBlockChild
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 30 31"
+              fill="none"
+            >
+              <path
+                d="M14.8566 14.6184V20.7898M14.8566 9.69354L14.869 9.67996M14.8566 27.5785C21.6736 27.5785 27.1996 22.0525 27.1996 15.2355C27.1996 8.41851 21.6736 2.89258 14.8566 2.89258C8.03961 2.89258 2.51367 8.41851 2.51367 15.2355C2.51367 22.0525 8.03961 27.5785 14.8566 27.5785Z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          }
+          title={
+            <Text variation="heading-2">Have a referral and need to book?</Text>
+          }
+          copy={
+            <Text variation="body-large">
+              If you’ve already got your referral letter, it couldn’t be
+              simpler. You can book a test, scan or treatment directly.
+            </Text>
+          }
+          ctas={
+            <>
+              <Button
+                variation="full"
+                size="small"
+                contentVariation="full-width"
+              >
+                <a href="#">
+                  See our <b>heart tests & scans</b>
+                </a>
+              </Button>
+              <Button
+                variation="outline"
+                size="small"
+                contentVariation="full-width"
+              >
+                <a href="#">
+                  See our <b>heart treatments</b>
+                </a>
+              </Button>
+            </>
+          }
+        />
+        <IconCtaBlockChild
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 30 31"
+              fill="none"
+            >
+              <path
+                d="M11.1504 22.906V22.906C11.1504 25.6328 13.3608 27.8432 16.0876 27.8432H17.939C21.6883 27.8432 24.7276 24.8039 24.7276 21.0546V19.8203"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M14.8547 6.86035H14.9108C16.9249 6.86035 18.5576 8.49307 18.5576 10.5071V15.5004C18.5576 19.5905 15.2419 22.9062 11.1519 22.9062V22.9062C7.06177 22.9062 3.74609 19.5905 3.74609 15.5004V10.5071C3.74609 8.49307 5.37881 6.86035 7.39287 6.86035H7.66077"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <line
+                x1="13.8555"
+                y1="9.5625"
+                x2="13.8555"
+                y2="4.15674"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <line
+                x1="7.68164"
+                y1="9.5625"
+                x2="7.68164"
+                y2="4.15674"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <circle
+                cx="24.7263"
+                cy="15.7351"
+                r="2.70288"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          }
+          title={
+            <Text variation="heading-2">
+              Unsure of a diagnosis and need some answers?
+            </Text>
+          }
+          copy={
+            <Text variation="body-large">
+              That’s no problem. Get in touch and one of our expert
+              cardiologists can talk you through everything you need to know.
+            </Text>
+          }
+          ctas={
+            <>
+              <Button variation="full" size="small">
+                <a href="#">
+                  <Icons iconName="iconStethoscope" />
+                  <span>
+                    Find a <b>heart failure consultant</b>
+                  </span>
+                </a>
+              </Button>
+            </>
+          }
+        />
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="B-HCA-Navy-Blue">
+        <Story />
+      </Themes>
+    ),
+  ],
+};
+
+export const ResponsiveIcons: StoryObj<typeof IconCtaBlock> = {
+  args: {
+    children: (
+      <>
+        <IconCtaBlockChild
           iconMobile={
             <svg
               xmlns="http://www.w3.org/2000/svg"
