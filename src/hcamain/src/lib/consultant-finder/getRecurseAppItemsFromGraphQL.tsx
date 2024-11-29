@@ -13,7 +13,7 @@ interface sitecoreItemProp {
   name: string;
 }
 
-const gSitecoreAppPath = '/sitecore/content/HCA/App/';
+const sitecoreAppPath = `${process.env.ADMIN_PROTECTION_KEY!}/`; // e.g. /sitecore/content/HCA/App/
 
 async function loadRecursedAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
@@ -201,7 +201,7 @@ export async function recurseAppItemsFlat(
     } else {
       // got a value to resolve
       const objPath = path
-        .replace(gSitecoreAppPath, '')
+        .replace(sitecoreAppPath, '')
         .replaceAll('/', '.')
         .replaceAll(' ', '_');
 
@@ -285,7 +285,7 @@ async function expandFlatNodes(flatNodes: { [x: string]: any }) {
 async function shortenToRequestedPath(flatNodes: any, path: string) {
   //console.log(JSON.stringify(flatNodes));
   //console.log('path', path);
-  const truncPath = path.replace(gSitecoreAppPath, '').replaceAll('/', '.');
+  const truncPath = path.replace(sitecoreAppPath, '').replaceAll('/', '.');
   //console.log('truncPath', truncPath);
   // map in desired keys (properties) to fetch
   const newFlatNodes: any = {};

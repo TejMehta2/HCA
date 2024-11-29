@@ -13,6 +13,8 @@ interface sitecoreItemProp {
   name: string;
 }
 
+const sitecoreAppPath = `${process.env.ADMIN_PROTECTION_KEY!}/`; // e.g. /sitecore/content/HCA/App/
+
 export async function recurseAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
@@ -102,7 +104,7 @@ export async function recurseAppItemsFromGraphQL(
 
     // find the bottom of the object graph and create new nodes and assign values
     //console.log('path', path);
-    const pathSplit = path.replace('/sitecore/content/HCA/App/', '').split('/');
+    const pathSplit = path.replace(sitecoreAppPath, '').split('/');
     let findNode = obj;
     let objDepth = 0;
     for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
