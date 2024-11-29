@@ -92,32 +92,32 @@ query {
     ...appFields,
     
     # find children for recursion
-    children() {
+    children( first: 200 ) {
     results {
         name,
         id,
         ...appFields,
-          children() {
+          children( first: 200) {
             results {
                 name,
                 id,
                 ...appFields,
-                children() {
+                children( first: 200) {
                 results {
                     name,
                     id,
                     ...appFields,
-                    children() {
+                    children( first: 200) {
                     results {
                         name,
                         id,
                         ...appFields,
-                        children() {
+                        children( first: 200) {
                         results {
                             name,
                             id,
                             ...appFields,
-                            children() {
+                            children( first: 200) {
                             results {
                                 name,
                                 id,
@@ -314,7 +314,7 @@ export async function getRecurseAppItemsFromGraphQL(
     path,
     lang.toLowerCase()
   );
-
+  //console.log('resultRecursed', JSON.stringify(resultRecursed));
   const flatNodes: any = {};
   await recurseAppItemsFlat(
     graphQLClient,
@@ -324,11 +324,10 @@ export async function getRecurseAppItemsFromGraphQL(
     resultRecursed,
     flatNodes
   );
-
   const newFlatNodes: any = await shortenToRequestedPath(flatNodes, path);
-
-  const result = expandFlatNodes(newFlatNodes);
-
+  //console.log('result', JSON.stringify(newFlatNodes));
+  const result = await expandFlatNodes(newFlatNodes);
+  //console.log('result', JSON.stringify(result));
   return result;
 }
 
