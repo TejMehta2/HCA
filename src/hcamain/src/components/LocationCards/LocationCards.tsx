@@ -23,6 +23,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -260,6 +261,11 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CardBlock
       variation={`${numberOfCards}-columns`}
@@ -269,14 +275,17 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           title={
-            <Text
-              variation={props.params?.HeadingSize || 'display-5'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssTextWithEntityName
-                field={props.fields?.data?.item?.title?.jsonValue}
-              />
-            </Text>
+            <>
+              <span id={componentAnchorId}></span>
+              <Text
+                variation={props.params?.HeadingSize || 'display-5'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssTextWithEntityName
+                  field={props.fields?.data?.item?.title?.jsonValue}
+                />
+              </Text>
+            </>
           }
           subtitle={
             !isExperienceEditor ? (
@@ -357,18 +366,26 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CarouselCards
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
-        <Text
-          tag={props.params?.HeadingTag || 'h3'}
-          variation={props.params?.HeadingSize || 'display-5'}
-        >
-          <JssTextWithEntityName
-            field={props.fields?.data?.item?.title?.jsonValue}
-          />
-        </Text>
+        <>
+          <span id={componentAnchorId}></span>
+          <Text
+            tag={props.params?.HeadingTag || 'h3'}
+            variation={props.params?.HeadingSize || 'display-5'}
+          >
+            <JssTextWithEntityName
+              field={props.fields?.data?.item?.title?.jsonValue}
+            />
+          </Text>
+        </>
       }
       subtitle={
         !isExperienceEditor ? (

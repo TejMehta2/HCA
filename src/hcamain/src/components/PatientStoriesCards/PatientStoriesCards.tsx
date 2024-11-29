@@ -24,6 +24,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -248,6 +249,11 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CardBlock
       variation={`${numberOfCards}-columns`}
@@ -259,15 +265,18 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           title={
             (props.fields?.data?.item?.title?.jsonValue ||
               isExperienceEditor) && (
-              <Text
-                variation={props.params?.HeadingSize || 'display-2'}
-                tag={props.params?.HeadingTag || 'h2'}
-              >
-                <JssText
-                  tag={'span'}
-                  field={props.fields?.data?.item?.title?.jsonValue}
-                />
-              </Text>
+              <>
+                <span id={componentAnchorId}></span>
+                <Text
+                  variation={props.params?.HeadingSize || 'display-2'}
+                  tag={props.params?.HeadingTag || 'h2'}
+                >
+                  <JssText
+                    tag={'span'}
+                    field={props.fields?.data?.item?.title?.jsonValue}
+                  />
+                </Text>
+              </>
             )
           }
           subtitle={
