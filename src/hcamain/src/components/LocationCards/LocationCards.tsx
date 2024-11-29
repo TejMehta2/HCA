@@ -268,6 +268,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -276,7 +277,6 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
           paddingSize="small"
           title={
             <>
-              <span id={componentAnchorId}></span>
               <Text
                 variation={props.params?.HeadingSize || 'display-5'}
                 tag={props.params?.HeadingTag || 'h2'}

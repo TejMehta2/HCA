@@ -78,6 +78,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   return (
     <>
       <DynamicImageAndTextBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
         imageKeepAspectRatio={keepAspectRatio}
@@ -89,7 +90,6 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         }
         header={
           <>
-            <span id={componentAnchorId}></span>
             <Text
               tag={props.params?.HeadingTag || 'h2'}
               variation={props.params?.HeadingSize || 'display-2'}

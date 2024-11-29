@@ -60,7 +60,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   );
 
   return (
-    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+    <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
@@ -72,7 +72,6 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
         title={
           (props.fields?.Title?.value || isExperienceEditor) && (
             <>
-              <span id={componentAnchorId}></span>
               <Text
                 variation={props.params?.HeadingSize || 'display-2'}
                 tag={props.params?.HeadingTag || 'h2'}
