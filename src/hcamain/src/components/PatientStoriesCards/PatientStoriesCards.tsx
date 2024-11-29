@@ -256,6 +256,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -266,7 +267,6 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
             (props.fields?.data?.item?.title?.jsonValue ||
               isExperienceEditor) && (
               <>
-                <span id={componentAnchorId}></span>
                 <Text
                   variation={props.params?.HeadingSize || 'display-2'}
                   tag={props.params?.HeadingTag || 'h2'}
