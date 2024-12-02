@@ -13,6 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 interface Fields {
   Heading?: Field<string>;
@@ -53,8 +54,13 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     return <TextBlockComponentDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.Title?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
-    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+    <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
@@ -65,12 +71,14 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
         }
         title={
           (props.fields?.Title?.value || isExperienceEditor) && (
-            <Text
-              variation={props.params?.HeadingSize || 'display-2'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssText field={props.fields?.Title} />
-            </Text>
+            <>
+              <Text
+                variation={props.params?.HeadingSize || 'display-2'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText field={props.fields?.Title} />
+              </Text>
+            </>
           )
         }
         text={

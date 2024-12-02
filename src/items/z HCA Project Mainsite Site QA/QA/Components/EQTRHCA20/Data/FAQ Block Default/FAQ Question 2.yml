@@ -1,6 +1,6 @@
 ﻿---
-ID: "b4138f1d-2055-4638-b313-73b753aa3c1a"
-Parent: "4590ff80-a7c8-49f7-9c40-21b45d29e94e"
+ID: "e0c983aa-bde6-448c-842e-86a51cde8fc4"
+Parent: "43a52220-f332-400f-a16c-2f07efa47467"
 Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Default/FAQ Question 2"
 Languages:
@@ -16,14 +16,14 @@ Languages:
       Value: 20240129T165237Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "238644e1-5b86-4186-b760-32e2a62fb4da"
+      Value: "ada265c3-1c3c-4268-8371-c3e3442c1014"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\eilidh.chisholm@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240129T165637Z
+      Value: 20240308T125608Z
     - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
       Hint: Question
       Value: "What are the payment options for hip pain treatment at HCA?"

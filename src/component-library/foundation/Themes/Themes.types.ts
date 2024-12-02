@@ -21,4 +21,5 @@ export interface ThemesProps {
   tag?: keyof JSX.IntrinsicElements;
   theme: Theme;
   topLevelTheme?: Theme;
+  id?: string;
 }

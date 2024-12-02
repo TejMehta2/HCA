@@ -7,17 +7,19 @@ export interface Fields {
       title?: { jsonValue?: Field<string> };
       defaultNavigationImage?: { jsonValue: ImageField };
       rootPage?: {
-        targetItem?: {
+        targetItem?: NavigablePagesFields & {
           children?: {
             results?: NavigablePagesFields[];
           };
         };
       };
+      includeRootPage?: { boolValue: boolean };
     };
   };
 }
 
 export interface NavigablePagesFields {
+  id: string;
   navigationTitle?: { value?: string };
   abstractTitle?: { value?: string };
   abstractImage?: { jsonValue: ImageField };
@@ -30,4 +32,8 @@ export interface NavigablePagesFields {
 export interface SubNavigationProps {
   params?: Params;
   fields?: Fields;
+}
+
+export interface PageRouteData {
+  itemId?: string;
 }

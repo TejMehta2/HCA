@@ -4,10 +4,13 @@ Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "8d06f1ce-8e64-491c-b9fe-449437b0880e"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA103_2"
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 2000
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{1D7141CC-08DC-4A63-A741-EBF0266C4085}" />
+    <image mediaid="{DEE1BBCA-88C0-4011-9E13-DBB2FA1055B1}" />
 Languages:
 - Language: en
   Versions:
@@ -47,14 +50,14 @@ Languages:
       Value: Orthopedics
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "59039191-6481-4431-809b-1197c93cf147"
+      Value: "d5dd9835-3d5b-4652-aed6-b118d31d576f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240430T073328Z
+      Value: 20241127T161135Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA103

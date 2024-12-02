@@ -273,7 +273,8 @@ const getJobFamiliesQueryString = (
   const queryString = jobFamilies
     .map((family) => {
       const keyValue = family.value?.value;
-      return keyValue ? `jobFamily=${encodeURIComponent(keyValue)}` : '';
+      const key = family.key?.value;
+      return keyValue ? `${key}=${encodeURIComponent(keyValue)}` : '';
     })
     .filter(Boolean) // Remove empty values
     .join('&');

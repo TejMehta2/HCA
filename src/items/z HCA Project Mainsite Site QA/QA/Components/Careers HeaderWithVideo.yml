@@ -3,6 +3,10 @@ ID: "d69bf2a1-1cc9-4fa5-b101-8ef735802047"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers HeaderWithVideo"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
 Languages:
 - Language: en
   Versions:
@@ -45,7 +49,7 @@ Languages:
       Value: <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "91bbf477-3fdc-4892-870c-66f3162fbf24"
+      Value: "2c8ba355-7410-41a7-ad2f-04b8e8707617"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -56,7 +60,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241010T225147Z
+      Value: 20241127T161134Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Header With Video + Careers Search

@@ -4,10 +4,13 @@ Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "9b38cf34-6e17-48b6-b487-81931a90aa8a"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA7_2"
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 6600
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
-    <image mediaid="{C5DCEC9D-DCEA-454E-9166-F83E85105499}" />
+    <image mediaid="{EFD5CA89-5E67-4D6D-AFF1-D17AB5EC1AE6}" />
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -48,17 +51,17 @@ Languages:
       Value: Locations
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "42526ec4-5209-49f3-a6c5-3750fd3c8c0a"
+      Value: "1a4679e2-1e70-449c-adfb-91b6260c26f4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
       Value: Quis laboris proident sint amet id cillum do dolor in tempor est exercitation aute sint tempor eu ut.
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240405T143829Z
+      Value: 20241127T161138Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Locations

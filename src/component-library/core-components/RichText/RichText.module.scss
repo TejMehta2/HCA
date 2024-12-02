@@ -2,6 +2,8 @@
 @use '../../utilities/index.module' as *;
 @use '../../core-components/TextButton/TextButton.module.scss';
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
 %rte-content {
   @include apply-body-large;
 
@@ -33,7 +35,7 @@
       }
     }
 
-    ul,
+    ul:not(:global(.tick)),
     ol {
       @include apply-body-large;
 
@@ -45,7 +47,7 @@
       padding: 0;
     }
 
-    ul {
+    ul:not(:global(.tick)) {
       li {
         padding-left: px-to-rem(30);
         position: relative;

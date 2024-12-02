@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   NavigablePagesFields,
+  PageRouteData,
   SubNavigationProps,
 } from './SubNavigation.types';
 import {
@@ -12,6 +13,7 @@ import Text from '@component-library/foundation/Text/Text';
 import JumpToLinks, {
   JumpToLink,
 } from '@component-library/site-components/JumpToLinks/JumpToLinks';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 const SubNavigationDefaultComponent = (
   props: SubNavigationProps
@@ -33,25 +35,47 @@ const SubNavigationDefaultComponent = (
 };
 
 export const Default = (props: SubNavigationProps): JSX.Element => {
-  if (!props.fields) return <SubNavigationDefaultComponent {...props} />;
+  const context = useSitecoreContext();
+
+  if (!props.fields?.data?.item)
+    return <SubNavigationDefaultComponent {...props} />;
+
+  const contextPage = context.sitecoreContext?.route as PageRouteData;
+  const datasource = props.fields.data.item;
+
+  let navigablePages = datasource.rootPage?.targetItem?.children?.results || [];
+
+  // Add root page If `includeRootPage` is true
+  if (
+    datasource.includeRootPage?.boolValue &&
+    datasource.rootPage?.targetItem
+  ) {
+    navigablePages = [datasource.rootPage.targetItem, ...navigablePages];
+  }
+
+  // Do not include current page and pages where hideInSubNavigation checkbox is checked
+  navigablePages = navigablePages.filter(
+    (item: NavigablePagesFields) =>
+      !item.hideInSubNavigation?.boolValue &&
+      item.id.replaceAll(/[{\-}]/g, '').toLowerCase() !==
+        contextPage.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase()
+  );
+
+  if (!navigablePages) return <SubNavigationDefaultComponent {...props} />;
 
   const defaultImage =
-    props.fields?.data?.item?.defaultNavigationImage?.jsonValue?.value?.src ||
-    '';
+    datasource.defaultNavigationImage?.jsonValue?.value?.src || '';
 
   return (
-    <JumpToLinks
-      heading={
-        <Text variation="body-medium-medium">
-          <JssText field={props.fields?.data?.item?.title?.jsonValue} />
-        </Text>
-      }
-    >
-      {props.fields?.data?.item?.rootPage?.targetItem?.children?.results
-        ?.filter(
-          (item: NavigablePagesFields) => !item.hideInSubNavigation?.boolValue
-        )
-        .map((item, index) => (
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <JumpToLinks
+        heading={
+          <Text variation="body-medium-medium">
+            <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+          </Text>
+        }
+      >
+        {navigablePages.map((item, index) => (
           <JumpToLink key={index}>
             <a href={item.url?.path}>
               <img src={getFirstNonEmptyImage(item, defaultImage)} alt="" />
@@ -59,7 +83,8 @@ export const Default = (props: SubNavigationProps): JSX.Element => {
             </a>
           </JumpToLink>
         ))}
-    </JumpToLinks>
+      </JumpToLinks>
+    </Themes>
   );
 };
 

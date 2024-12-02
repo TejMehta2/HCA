@@ -24,6 +24,11 @@
     @include responsive-grid-start($breakpoint-l: 1);
   }
 
+  &.quote-center-block .grid {
+    @include responsive-grid-span(6, 6, 10, 10);
+    @include responsive-grid-start($breakpoint-l: 2);
+  }
+
   figure {
     overflow: hidden;
     margin: 0;

@@ -32,6 +32,7 @@ interface Fields {
 type BlogQuoteProps = {
   params?: Params;
   fields?: Fields;
+  alignment?: 'center';
 };
 
 const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
@@ -52,12 +53,14 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
+  const { alignment } = props;
   if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
   const quoteBlock = (
     <QuoteBlock
+      alignment={alignment}
       author={
         props.fields?.Author?.length
           ? {
@@ -142,7 +145,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   return (
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
-      contentVariation="quote"
+      contentVariation={alignment ? `quote-${alignment}` : 'quote'}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
@@ -238,11 +241,12 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
   }
 
   return (
-    <BlogContent
-      theme={props.params?.Theme || 'A-HCA-White'}
-      contentVariation="quote"
-    >
+    <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
   );
 };
+
+export const Center = (props: BlogQuoteProps) => (
+  <Default {...props} alignment="center" />
+);

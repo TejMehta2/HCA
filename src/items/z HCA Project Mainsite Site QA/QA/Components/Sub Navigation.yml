@@ -3,6 +3,10 @@ ID: "cc9b2e51-96da-46c6-92b6-0cfb14b46e00"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 10900
 Languages:
 - Language: en
   Versions:
@@ -19,7 +23,7 @@ Languages:
               uid="{A8E0C6E8-AF83-432B-A775-BFBB76E58DD3}"
               s:ds="local:/Page Data/sub nav datasource"
               s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
-              s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:par="IncludeRootPage=1&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=D-HCA-Teal&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
           </d>
         </r>
@@ -28,14 +32,14 @@ Languages:
       Value: 20241119T204417Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c7ecc5d4-d23a-4ce2-a7c0-9f40a7ece6c6"
+      Value: "0c09cad0-427c-4c3d-903a-98aa5a4c0aad"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241119T205549Z
+      Value: 20241127T161141Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Sub Navigation
