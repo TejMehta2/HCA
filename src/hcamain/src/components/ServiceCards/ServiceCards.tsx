@@ -10,12 +10,15 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardService from '@component-library/components/CardService/CardService';
+import MasonryCards from '@component-library/site-components/MasonryCards/MasonryCards';
+import { MasonryCardProps } from '@component-library/site-components/MasonryCards/MasonryCards.types';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -61,6 +64,10 @@ type ServiceCardsProps = {
   params?: Params;
   fields?: Fields;
 };
+
+// type MasonryCardsProps<ServiceCardsProps>( params?: Params) => {
+//  params: typeof params;
+// }
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
@@ -202,5 +209,115 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
         }
       )}
     </DynamicServiceCards>
+  );
+};
+
+export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
+  console.log(props);
+  // const { sitecoreContext } = useSitecoreContext();
+  // const isExperienceEditor = sitecoreContext.pageEditing;
+
+  // if (!props.fields?.data?.item) {
+  //   return <>No data</>;
+  // }
+  // if (
+  //   !props.fields?.data?.item?.services?.servicesList?.length &&
+  //   !isExperienceEditor
+  // ) {
+  //   return <></>;
+  // }
+  return (
+    <MasonryCards>
+      <MasonryCard
+        columns={6}
+        rows={2}
+        image={
+          <Image
+            src="/placeholders/masonry-1.jpg"
+            alt=""
+            width={4096}
+            height={3072}
+          />
+        }
+        title={
+          <Text variation="display-3">Discover our world class facilities</Text>
+        }
+        copy={
+          <Text variation="body-large">
+            Your time with us is about more than expert treatment and
+            state-of-the-art facilities. From beautiful rooms to luxurious
+            bathrooms you’ll find spaces to relax and recuperate in your own
+            time and at your own pace.
+          </Text>
+        }
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Take a virtual tour</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={6}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-2.jpg"
+            alt=""
+            width={4096}
+            height={2160}
+          />
+        }
+        title={<Text variation="display-6">Pioneering treatments</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={3}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-3.jpg"
+            alt=""
+            width={4096}
+            height={2730}
+          />
+        }
+        title={<Text variation="display-6">Luxurious rooms</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={3}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-4.jpg"
+            alt=""
+            width={4096}
+            height={2731}
+          />
+        }
+        title={<Text variation="display-6">Seasonal menus</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+    </MasonryCards>
   );
 };

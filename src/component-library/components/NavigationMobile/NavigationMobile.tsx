@@ -122,7 +122,16 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
       >
         <nav className={[styles.navigation].join(' ')} role="navigation">
           <div className={styles.main}>
-            <a className={styles.logo} href="/">
+            <a
+              className={styles.logo}
+              href={
+                window.location.href.indexOf(
+                  process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+                ) === -1
+                  ? '/'
+                  : '/careers'
+              }
+            >
               <span className="sr-only">Home</span>
               {isOpen ? <LogoWhite /> : <LogoBlue />}
             </a>
