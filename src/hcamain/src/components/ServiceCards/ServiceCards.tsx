@@ -11,7 +11,7 @@ import {
 
 import CardService from '@component-library/components/CardService/CardService';
 import MasonryCards from '@component-library/site-components/MasonryCards/MasonryCards';
-import MasonryCardProps from '@component-library/site-components/MasonryCards/MasonryCards.types';
+import { MasonryCardProps } from '@component-library/site-components/MasonryCards/MasonryCards.types';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
@@ -64,6 +64,10 @@ type ServiceCardsProps = {
   params?: Params;
   fields?: Fields;
 };
+
+// type MasonryCardsProps<ServiceCardsProps>( params?: Params) => {
+//  params: typeof params;
+// }
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
@@ -209,18 +213,19 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
 };
 
 export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
-  const { sitecoreContext } = useSitecoreContext();
-  const isExperienceEditor = sitecoreContext.pageEditing;
+  console.log(props);
+  // const { sitecoreContext } = useSitecoreContext();
+  // const isExperienceEditor = sitecoreContext.pageEditing;
 
-  if (!props.fields?.data?.item) {
-    return <ServiceCardsDefaultComponent {...props} />;
-  }
-  if (
-    !props.fields?.data?.item?.services?.servicesList?.length &&
-    !isExperienceEditor
-  ) {
-    return <></>;
-  }
+  // if (!props.fields?.data?.item) {
+  //   return <>No data</>;
+  // }
+  // if (
+  //   !props.fields?.data?.item?.services?.servicesList?.length &&
+  //   !isExperienceEditor
+  // ) {
+  //   return <></>;
+  // }
   return (
     <MasonryCards>
       <MasonryCard
