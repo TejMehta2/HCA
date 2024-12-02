@@ -43,9 +43,9 @@ export const Default = (props: FooterProps): JSX.Element => {
         <></>
       ),
       props.fields?.DoctifyReviews?.fields &&
-        window.location.href.indexOf(
-          process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-        ) === -1 ? (
+      window.location.href.indexOf(
+        process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+      ) === -1 ? (
         <Doctify
           params={props.params}
           key={2}

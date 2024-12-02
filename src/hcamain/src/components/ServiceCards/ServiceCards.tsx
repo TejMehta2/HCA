@@ -178,7 +178,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
               key={index}
             >
               {service.abstractImage?.jsonValue.value?.src &&
-                service.abstractImage?.jsonValue.value?.class !==
+              service.abstractImage?.jsonValue.value?.class !==
                 'scEmptyImage' ? (
                 <Image
                   src={service?.abstractImage.jsonValue?.value?.src || ''}
