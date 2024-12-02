@@ -249,7 +249,13 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           <div className={styles.main}>
             <a
               className={styles.logo}
-              href="/"
+              href={
+                window.location.href.indexOf(
+                  process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+                ) === -1
+                  ? '/'
+                  : '/careers'
+              }
               data-navigation-type="logoNavigation"
             >
               <span className="sr-only">Home</span>

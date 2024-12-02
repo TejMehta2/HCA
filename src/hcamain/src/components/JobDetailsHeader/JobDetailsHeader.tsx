@@ -61,7 +61,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           vacancyCode={data.id}
           cta={
             <>
-              <Button variation={'full-light'} size="large">
+              <Button variation={'full-dark'} size="large">
                 <a href={data.applicationUrl}>
                   <span>
                     Apply <strong>now</strong>
@@ -73,7 +73,7 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           }
         />
         <Text variation={'body-medium'}>
-          <SitecoreSvg>{data.richDescription.html}</SitecoreSvg>
+          <SitecoreSvg>{data?.richDescription?.html}</SitecoreSvg>
         </Text>
       </BlogContent>
       {/* V2
