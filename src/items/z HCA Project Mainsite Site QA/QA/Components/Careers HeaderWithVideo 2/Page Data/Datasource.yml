@@ -1,0 +1,38 @@
+﻿---
+ID: "4ad80f9c-45ce-467e-ae54-aac0844545c7"
+Parent: "2d1d5868-aaaf-467d-9acd-8ac7aa42be96"
+Template: "4e18b54a-b5f9-4f4a-9946-e5eab7121b56"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers HeaderWithVideo 2/Page Data/Datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241010T212515Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "7431b15e-8b8d-4f76-802b-f2835b057203"
+      Hint: VideoUrl
+      Value: "https://www.youtube.com/embed/5qGbsoC_v8E?si=9rj61psKElKac1H1"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b119ca17-bce3-4fb2-a836-2d3f49fd43ff"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241010T225031Z
+    - ID: "eb15c8f6-528e-4311-8c9d-142489cf5f8f"
+      Hint: VideoThumbnail
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/4e7b5ed0dc44458196b89637a6e42d5d?v=50edca45" dam-id="-vygWrXNS1iYy-feSLdzkg" width="2000" height="1335" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />

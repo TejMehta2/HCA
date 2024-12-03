@@ -10,12 +10,15 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import CardService from '@component-library/components/CardService/CardService';
+import MasonryCards from '@component-library/site-components/MasonryCards/MasonryCards';
+import { MasonryCardProps } from '@component-library/site-components/MasonryCards/MasonryCards.types';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import TextButton from '@component-library/core-components/TextButton/TextButton';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -36,6 +39,7 @@ interface ServiceFields {
   text?: { value?: string };
   image?: { jsonValue: ImageField };
   url?: { path?: string };
+  proxyurl?: { path?: string };
 }
 
 interface Fields {
@@ -60,6 +64,10 @@ type ServiceCardsProps = {
   params?: Params;
   fields?: Fields;
 };
+
+// type MasonryCardsProps<ServiceCardsProps>( params?: Params) => {
+//  params: typeof params;
+// }
 
 const ServiceCardsDefaultComponent = (
   props: ServiceCardsProps
@@ -148,46 +156,168 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       }
     >
       {props.fields?.data?.item?.services?.servicesList?.map(
-        (service, index) => (
-          <CardService
-            link={
-              <a href={service?.url?.path}>
-                <JssRichText
-                  tag="span"
-                  field={props.fields?.data?.item?.cTACardText?.jsonValue}
+        (service, index) => {
+          const cardCtaUrl = service?.proxyurl?.path
+            ? service?.proxyurl?.path
+            : service?.url?.path;
+
+          return (
+            <CardService
+              link={
+                cardCtaUrl ? (
+                  <a href={cardCtaUrl}>
+                    <JssRichText
+                      tag="span"
+                      field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                    />
+                  </a>
+                ) : (
+                  <></>
+                )
+              }
+              key={index}
+            >
+              {service.abstractImage?.jsonValue.value?.src &&
+              service.abstractImage?.jsonValue.value?.class !==
+                'scEmptyImage' ? (
+                <Image
+                  src={service?.abstractImage.jsonValue?.value?.src || ''}
+                  alt={
+                    (service?.abstractImage.jsonValue?.value?.alt as string) ||
+                    ''
+                  }
+                  width="313"
+                  height="317"
                 />
-              </a>
-            }
-            key={index}
-          >
-            {service.abstractImage?.jsonValue.value?.src &&
-            service.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
-              <Image
-                src={service?.abstractImage.jsonValue?.value?.src || ''}
-                alt={
-                  (service?.abstractImage.jsonValue?.value?.alt as string) || ''
-                }
-                width="313"
-                height="317"
-              />
-            ) : (
-              <Image
-                src={service?.image?.jsonValue?.value?.src || ''}
-                alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
-                width="313"
-                height="317"
-              />
-            )}
-            <Text tag="div" variation="display-6">
-              {service.abstractTitle?.value ? (
-                <JssText field={service.abstractTitle} />
               ) : (
-                <JssText field={service.title} />
+                <Image
+                  src={service?.image?.jsonValue?.value?.src || ''}
+                  alt={(service?.image?.jsonValue?.value?.alt as string) || ''}
+                  width="313"
+                  height="317"
+                />
               )}
-            </Text>
-          </CardService>
-        )
+              <Text tag="div" variation="display-6">
+                {service.abstractTitle?.value ? (
+                  <JssText field={service.abstractTitle} />
+                ) : (
+                  <JssText field={service.title} />
+                )}
+              </Text>
+            </CardService>
+          );
+        }
       )}
     </DynamicServiceCards>
+  );
+};
+
+export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
+  console.log(props);
+  // const { sitecoreContext } = useSitecoreContext();
+  // const isExperienceEditor = sitecoreContext.pageEditing;
+
+  // if (!props.fields?.data?.item) {
+  //   return <>No data</>;
+  // }
+  // if (
+  //   !props.fields?.data?.item?.services?.servicesList?.length &&
+  //   !isExperienceEditor
+  // ) {
+  //   return <></>;
+  // }
+  return (
+    <MasonryCards>
+      <MasonryCard
+        columns={6}
+        rows={2}
+        image={
+          <Image
+            src="/placeholders/masonry-1.jpg"
+            alt=""
+            width={4096}
+            height={3072}
+          />
+        }
+        title={
+          <Text variation="display-3">Discover our world class facilities</Text>
+        }
+        copy={
+          <Text variation="body-large">
+            Your time with us is about more than expert treatment and
+            state-of-the-art facilities. From beautiful rooms to luxurious
+            bathrooms you’ll find spaces to relax and recuperate in your own
+            time and at your own pace.
+          </Text>
+        }
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Take a virtual tour</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={6}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-2.jpg"
+            alt=""
+            width={4096}
+            height={2160}
+          />
+        }
+        title={<Text variation="display-6">Pioneering treatments</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={3}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-3.jpg"
+            alt=""
+            width={4096}
+            height={2730}
+          />
+        }
+        title={<Text variation="display-6">Luxurious rooms</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+      <MasonryCard
+        columns={3}
+        rows={1}
+        image={
+          <Image
+            src="/placeholders/masonry-4.jpg"
+            alt=""
+            width={4096}
+            height={2731}
+          />
+        }
+        title={<Text variation="display-6">Seasonal menus</Text>}
+        cta={
+          <TextButton theme="light">
+            <a href="#">
+              <span>Learn more</span>
+            </a>
+          </TextButton>
+        }
+      />
+    </MasonryCards>
   );
 };

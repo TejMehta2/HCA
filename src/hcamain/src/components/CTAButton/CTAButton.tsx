@@ -101,12 +101,23 @@ export const Outline = (props: CTAProps): JSX.Element => {
 };
 
 export const TextButton = (props: CTAProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <CTADefaultComponent {...props} />;
   }
   return (
     <TextButtonComponent>
-      <JssLink field={props.fields.CTALink}></JssLink>
+      <JssLink field={props.fields.CTALink}>
+        {!isExperienceEditor && props.fields.CTALink?.value?.text && (
+          <RichText
+            tag="span"
+            field={{
+              value: props.fields.CTALink?.value?.text,
+            }}
+          />
+        )}
+      </JssLink>
     </TextButtonComponent>
   );
 };

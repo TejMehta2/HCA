@@ -8,13 +8,13 @@
 
 .container {
   @include responsive-grid;
-  @include responsive-container;
 
+  // @include responsive-container;
+  margin-bottom: $spacing-8;
   row-gap: px-to-rem(36);
 
   & > * {
-    @include responsive-grid-start($breakpoint-l: 3);
-    @include responsive-grid-span($breakpoint-l: 8);
+    @include responsive-grid-span(6, 6, 12, 12);
   }
 }
 

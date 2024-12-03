@@ -4,10 +4,11 @@ import Tags from '../../core-components/Tags/Tags';
 import styles from './QuoteBlock.module.scss';
 
 const QuoteBlock = (props: QuoteBlockProps): JSX.Element => {
-  const { children, author } = props;
+  const { children, author, title, alignment = 'left' } = props;
   return (
-    <div className={styles.wrapper}>
+    <div className={[styles.wrapper, styles[alignment]].join(' ')}>
       {children}
+      {title && <div className={styles.title}>{title}</div>}
       {author && (
         <div className={styles.author}>
           {author.image}

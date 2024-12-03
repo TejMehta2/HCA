@@ -1,0 +1,42 @@
+﻿---
+ID: "e80340a4-daab-4b74-a34f-e58dfe6acd06"
+Parent: "1e81ff4a-6119-4325-b402-191bc26f31f5"
+Template: "98fbb3de-2bca-438e-81e0-6bbf94fc13d9"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions/Page Data/Accordions/FAQ Question"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241125T222227Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "73e8de19-b04a-4ac9-ae27-1e2fd43b1547"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d4f42500-16c2-44d7-869b-f8e871000d69"
+      Hint: Question
+      Value: Question One
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241125T222320Z
+    - ID: "f4281f41-79b3-46eb-b8ab-c36a71f16a34"
+      Hint: Answer
+      Value: |
+        <p>We&rsquo;re the UK&rsquo;s leading private provider of PCI care, trusted by more patients than any other hospital group. That experience means our leading consultants are able to deliver better outcomes for patients, from diagnosis right through to treatment, whether simple or complex.
+        </p>
+        <p>With appointments confirmed within 24 hours, and test results within two working days, you&rsquo;ll have fast access to the full range of state-of-the-art cardiac care, from non-invasive treatments to complex surgery and aftercare.
+        </p>
+        <p>It&rsquo;s why 99% of our patients say they would recommend us.</p>

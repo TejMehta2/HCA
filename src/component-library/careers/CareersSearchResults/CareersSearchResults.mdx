@@ -1,0 +1,64 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as CareersSearchResultsStories from './CareersSearchResults.stories'
+
+<Meta of={CareersSearchResultsStories} />
+
+# CareersSearchResults
+
+## Description
+
+The CareersSearchResults component is a simple layout component designed to show Careers results.
+
+It is used both in the fully fledged careers results page, and for scoped results previews on other career related pages. E.g. for job family pages.
+
+``` tsx
+<CareerSearchResults
+  count={
+    <>
+      <Text variation="heading-1">
+        {response?.resultsCount} vacancies
+      </Text>
+      <Text variation="body-bold-medium">
+        Showing 1 - {limit * resultsPerPage}
+      </Text>
+    </>
+  }
+  results={response?.results?.map((job) => {
+    return (
+      <YextResultCardCareers
+        key={job.data.id}
+        location={job.data.jobLocation}
+        clinical={job.data.jobFunction}
+        timing={job.data.employmentType}
+        title={<Text variation={'heading-1'}>{job.data.name}</Text>}
+        cta={
+          <Button
+            contentVariation={'full-width'}
+            variation={'full'}
+            size={'small'}
+          >
+            <a
+              href={
+                job.data.applicationUrl || job.data.landingPageUrl || '#'
+              }
+            >
+              {props.fields?.ReadMoreCtaText?.value ||
+                'Read More & Apply'}
+            </a>
+          </Button>
+        }
+      />
+    );
+  })}
+  cta={
+    <Button size={'large'} variation={'full'}>
+      <button onClick={() => setLimit((prev) => prev + 1)}>
+        <Icons iconName="iconPlus" />
+        <span>
+          Show <b>more</b>
+        </span>
+      </button>
+    </Button>
+  }
+/>
+```

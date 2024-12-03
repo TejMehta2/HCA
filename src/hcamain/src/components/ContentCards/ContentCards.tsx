@@ -16,6 +16,7 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -25,6 +26,7 @@ interface PagesFields {
   text?: { value?: string };
   image?: { jsonValue: ImageField };
   url?: { path?: string };
+  proxyurl?: { path?: string };
 }
 
 type CTAIconFields = {
@@ -113,8 +115,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     )
   );
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -122,15 +130,17 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           title={
-            <Text
-              variation={props.params?.HeadingSize || 'display-3'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssText
-                tag={'span'}
-                field={props.fields?.data?.item?.title?.jsonValue}
-              />
-            </Text>
+            <>
+              <Text
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText
+                  tag={'span'}
+                  field={props.fields?.data?.item?.title?.jsonValue}
+                />
+              </Text>
+            </>
           }
           subtitle={
             !isExperienceEditor ? (
@@ -165,67 +175,74 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       cta={link || <></>}
     >
       <>
-        {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => (
-          <CardContent
-            key={index}
-            image={
-              showImage ? (
-                card.abstractImage?.jsonValue.value?.src &&
-                card.abstractImage?.jsonValue.value?.class !==
-                  'scEmptyImage' ? (
-                  <Image
-                    src={card.abstractImage.jsonValue?.value?.src || ''}
-                    alt={
-                      (card.abstractImage.jsonValue?.value?.alt as string) || ''
-                    }
-                    width="773"
-                    height="268"
-                  />
-                ) : card.image?.jsonValue?.value?.src ? (
-                  <Image
-                    src={card.image?.jsonValue?.value?.src || ''}
-                    alt={(card.image?.jsonValue?.value?.alt as string) || ''}
-                    width="773"
-                    height="268"
-                  />
+        {props.fields?.data?.item?.pages?.PagesList?.map((card, index) => {
+          const cardCtaUrl = card?.proxyurl?.path
+            ? card?.proxyurl?.path
+            : card?.url?.path;
+
+          return (
+            <CardContent
+              key={index}
+              image={
+                showImage ? (
+                  card.abstractImage?.jsonValue.value?.src &&
+                  card.abstractImage?.jsonValue.value?.class !==
+                    'scEmptyImage' ? (
+                    <Image
+                      src={card.abstractImage.jsonValue?.value?.src || ''}
+                      alt={
+                        (card.abstractImage.jsonValue?.value?.alt as string) ||
+                        ''
+                      }
+                      width="773"
+                      height="268"
+                    />
+                  ) : card.image?.jsonValue?.value?.src ? (
+                    <Image
+                      src={card.image?.jsonValue?.value?.src || ''}
+                      alt={(card.image?.jsonValue?.value?.alt as string) || ''}
+                      width="773"
+                      height="268"
+                    />
+                  ) : undefined
                 ) : undefined
-              ) : undefined
-            }
-            title={
-              <Text
-                tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
-                variation="heading-1"
-              >
-                {card.abstractTitle?.value ? (
-                  <JssText field={card.abstractTitle} />
+              }
+              title={
+                <Text
+                  tag={getSubheadingTag(props.params?.HeadingTag, 'h2')}
+                  variation="heading-1"
+                >
+                  {card.abstractTitle?.value ? (
+                    <JssText field={card.abstractTitle} />
+                  ) : (
+                    <JssText field={card.title} />
+                  )}
+                </Text>
+              }
+              bodyCopy={
+                <Text tag="div" variation="body-medium">
+                  {card.abstractText?.value ? (
+                    <JssRichText tag="div" field={card.abstractText} />
+                  ) : (
+                    <JssRichText tag="div" field={card.text} />
+                  )}
+                </Text>
+              }
+              link={
+                cardCtaUrl ? (
+                  <a href={cardCtaUrl}>
+                    <JssRichText
+                      tag="div"
+                      field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                    />
+                  </a>
                 ) : (
-                  <JssText field={card.title} />
-                )}
-              </Text>
-            }
-            bodyCopy={
-              <Text tag="div" variation="body-medium">
-                {card.abstractText?.value ? (
-                  <JssRichText tag="div" field={card.abstractText} />
-                ) : (
-                  <JssRichText tag="div" field={card.text} />
-                )}
-              </Text>
-            }
-            link={
-              card?.url?.path ? (
-                <a href={card?.url?.path}>
-                  <JssRichText
-                    tag="div"
-                    field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                  />
-                </a>
-              ) : (
-                <></>
-              )
-            }
-          />
-        ))}
+                  <></>
+                )
+              }
+            />
+          );
+        })}
       </>
     </CardBlock>
   );

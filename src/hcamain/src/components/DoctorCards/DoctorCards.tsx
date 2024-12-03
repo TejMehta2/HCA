@@ -203,9 +203,6 @@ export const getStaticProps: GetStaticComponentProps = async (
   const hasPracticeAndService = !!(practiceList.length || serviceList.length); // add practiceList and/ore serviceList and customFilters to the API and to CTA
   // Else use contextSearchIdParams and contextSearchParams, customFilters for the API and CTA
 
-  const hasContextSearchParams =
-    contextSearchParams.filter((item) => item[1]?.length).length > 0;
-
   let ctaQuery;
   if (hasConsultants) {
     //  if consultants manually added then only add custom filters
@@ -254,12 +251,6 @@ export const getStaticProps: GetStaticComponentProps = async (
         };
       }
     } else {
-      if (!hasPracticeAndService && !hasContextSearchParams) {
-        return {
-          consultants: [],
-        };
-      }
-
       const paramSource = hasPracticeAndService
         ? [...practiceList, ...serviceList]
         : [...contextSearchParams, ...contextSearchIdParams];

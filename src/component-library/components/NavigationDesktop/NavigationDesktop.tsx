@@ -118,25 +118,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                 </Button>
               </div>
             );
-          case 'simple':
-            return (
-              <>
-                <div
-                  data-navigation-type={'NavigationCTADesktop'}
-                  className={[styles[`span-${3}`], ''].join(' ')}
-                >
-                  <Text tag="p" variation={'body-medium-extra-large'}>
-                    {heading}
-                  </Text>
-                  <Container marginTop="spacing-4">
-                    <Text variation="body-large">{description}</Text>
-                  </Container>{' '}
-                  <Container marginTop="spacing-6">
-                    <TextButton>{cta}</TextButton>
-                  </Container>
-                </div>
-              </>
-            );
+
           default:
             return <></>;
         }
@@ -191,6 +173,25 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   }
                 />
               </div>
+            );
+          case 'simple':
+            return (
+              <>
+                <div
+                  data-navigation-type={'NavigationCTADesktop'}
+                  className={[styles[`span-${3}`], ''].join(' ')}
+                >
+                  <Text tag="p" variation={'body-medium-extra-large'}>
+                    {heading}
+                  </Text>
+                  <Container marginTop="spacing-4">
+                    <Text variation="body-large">{description}</Text>
+                  </Container>{' '}
+                  <Container marginTop="spacing-6">
+                    <TextButton>{cta}</TextButton>
+                  </Container>
+                </div>
+              </>
             );
         }
       case 'Navigation Blog Post Card':
@@ -248,7 +249,13 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           <div className={styles.main}>
             <a
               className={styles.logo}
-              href="/"
+              href={
+                window.location.href.indexOf(
+                  process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+                ) === -1
+                  ? '/'
+                  : '/careers'
+              }
               data-navigation-type="logoNavigation"
             >
               <span className="sr-only">Home</span>
@@ -305,9 +312,14 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                   </li>
                 );
               })}
-              <li className={styles.control} data-navigation-type="searchOpen">
-                {search}
-              </li>
+              {search && (
+                <li
+                  className={styles.control}
+                  data-navigation-type="searchOpen"
+                >
+                  {search}
+                </li>
+              )}
             </ul>
           </div>
         </div>

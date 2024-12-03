@@ -213,3 +213,14 @@ export const ImageAlignmentLeft: StoryObj<typeof HomepageIntroBlock> = {
     ),
   },
 };
+
+export const WithSubtitle: StoryObj<typeof HomepageIntroBlock> = {
+  args: {
+    ...Default.args,
+    subtitle: (
+      <Text tag="p" variation={'subheading-2'}>
+        Look at these stats
+      </Text>
+    ),
+  },
+};

@@ -1,0 +1,104 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../utilities/diamond-mask' as *;
+
+.outer {
+  background-color: var(--background);
+  color: var(--text);
+  position: relative;
+  display: flex;
+  gap: $spacing-2;
+  align-items: center;
+  min-height: calc(100svh - px-to-rem(70 + 40));
+
+  @include media(screen-l, max) {
+    border-radius: 0 0 $radius-large 0;
+    margin-bottom: px-to-rem(32);
+  }
+}
+
+.inner {
+  position: relative;
+  height: 100%;
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+  @include responsive-grid;
+
+  @include media(screen-l) {
+    padding-top: px-to-rem(32);
+    padding-bottom: px-to-rem(32);
+  }
+}
+
+.content {
+  @include responsive-grid-span(6, 5, 7, 7);
+
+  align-self: center;
+}
+
+.video,
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video {
+  opacity: 0;
+  transition: opacity 1.2s ease 1s;
+
+  &.playing,
+  &.paused {
+    opacity: 1;
+  }
+
+  > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    aspect-ratio: var(--aspect-ratio);
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.image > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.toggle {
+  position: absolute;
+  right: $spacing-14;
+  bottom: $spacing-7;
+
+  @include media(screen-l, max) {
+    left: $spacing-14;
+    right: auto;
+  }
+}
+
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 60%);
+}
+
+.subtitle {
+  margin-top: $spacing-3;
+}
+
+.copy {
+  margin-top: $spacing-5;
+  margin-bottom: $spacing-5;
+}

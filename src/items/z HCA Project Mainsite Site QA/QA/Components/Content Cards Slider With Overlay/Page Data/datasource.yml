@@ -1,0 +1,57 @@
+﻿---
+ID: "ce8f5479-3d37-47b0-8145-8425b18e6b8b"
+Parent: "59fa3feb-3b10-4ee5-aae2-7e71b869674b"
+Template: "47683389-714b-499d-b7f7-c95154920c8b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Slider With Overlay/Page Data/datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T191443Z
+    - ID: "3be9c463-cef9-4f9e-9c19-7dd0d1ec2c87"
+      Hint: Pages
+      Value: |
+        {4D8F126D-EBF1-4DAD-BC1B-7209507D6296}
+        {D2A39858-C7C0-43CF-ABE5-EC85D3B9EDD3}
+        {B32DF7D3-E0D4-4514-B67C-69D4C335F107}
+        {5483ECB6-94B8-4307-A82A-504F52728C6E}
+    - ID: "4eaefac6-6631-4f5a-adf5-53da2f70e3b4"
+      Hint: CTACardText
+      Value: Read more
+    - ID: "4fc94927-f8f4-43f0-9411-f25a29d185d6"
+      Hint: Title
+      Value: Meet the team
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "7ba5e78d-fe58-422b-98d8-75d653a8761f"
+      Hint: Heading
+      Value: Careers
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "57a23475-f9f1-4ee6-84d7-c626875a7255"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{D4B407BD-908E-41C6-B146-54270ADA5706}" querystring="" anchor="" target="" title="" linktype="internal" text="See all" url="/HCA/HCA-Main/Home/QA/Components/Careers" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d7266cc3-65c6-42d6-925e-25b835c1d94f"
+      Hint: Text
+      Value: <p>A great way to get a feel for what we do is to see what our people have to say about life at HCA UK.</p>
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240911T152847Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{0F0D22EB-4F39-4517-93E9-9828F405DD2E}"

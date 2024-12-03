@@ -162,11 +162,20 @@ SharedFields:
         jsonValue
       }
     
+      mobileCtaText {
+        jsonValue
+      }
+    
       date {
         jsonValue
       }
     
       tag {
+        value
+      }
+      
+       showOnMobile {
+        boolValue
         value
       }
     }
@@ -184,10 +193,19 @@ SharedFields:
         jsonValue
       }
     
+      mobileCtaText {
+        jsonValue
+      }
+    
       variant {
         targetItem {
           ...GenericSettingVariant
         }
+      }
+    
+      showOnMobile {
+        boolValue
+        value
       }
     }
     
@@ -279,14 +297,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b086558f-ca2b-4011-b71b-6dc0a99e11c0"
+      Value: "3bef022c-866d-4ab3-b045-cbfff49845f9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240610T170928Z
+      Value: 20240918T145153Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

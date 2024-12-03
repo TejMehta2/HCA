@@ -24,6 +24,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -248,8 +249,14 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -259,15 +266,17 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           title={
             (props.fields?.data?.item?.title?.jsonValue ||
               isExperienceEditor) && (
-              <Text
-                variation={props.params?.HeadingSize || 'display-2'}
-                tag={props.params?.HeadingTag || 'h2'}
-              >
-                <JssText
-                  tag={'span'}
-                  field={props.fields?.data?.item?.title?.jsonValue}
-                />
-              </Text>
+              <>
+                <Text
+                  variation={props.params?.HeadingSize || 'display-2'}
+                  tag={props.params?.HeadingTag || 'h2'}
+                >
+                  <JssText
+                    tag={'span'}
+                    field={props.fields?.data?.item?.title?.jsonValue}
+                  />
+                </Text>
+              </>
             )
           }
           subtitle={
@@ -292,7 +301,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       cta={
         !isExperienceEditor ? (
-          { viewAllCta } && (
+          viewAllCta ? (
             <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
@@ -314,11 +323,9 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
                 </>
               )}
             </a>
-          )
+          ) : undefined
         ) : (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue}
-          ></JssLink>
+          <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue} />
         )
       }
     >
@@ -345,6 +352,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const patientStoriesCards =
     patientStoriesCardsFiltered &&
     returnCards(props, patientStoriesCardsFiltered, false);
+
+  if (!patientStoriesCards?.length && !isExperienceEditor) {
+    return <></>;
+  }
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length

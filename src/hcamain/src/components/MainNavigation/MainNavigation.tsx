@@ -22,7 +22,6 @@ import { SEARCH_SUGGESTIONS_MODAL_ID } from 'lib/constants';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
-import { useRouter } from 'next/router';
 
 const MainNavigationDefaultComponent = (
   props: MainNavigationProps
@@ -58,7 +57,6 @@ const TabChildHeading = (props: MainNavigationTabChild) => {
 
 export const Default = (props: MainNavigationProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const router = useRouter();
 
   if (!props.fields) return <MainNavigationDefaultComponent {...props} />;
   const tabs: NavigationTab[] =
@@ -86,12 +84,16 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
           ) : (
             <></>
           ),
-          mobileCta:
-            child?.cta?.jsonValue?.value?.href && child?.mobileCtaText ? (
-              <JssLink field={child?.cta?.jsonValue} editable={false}>
+          mobileCta: child?.cta?.jsonValue?.value?.href ? (
+            <JssLink field={child?.cta?.jsonValue} editable={false}>
+              {child?.mobileCtaText?.value ? (
                 <JssText field={child?.mobileCtaText} editable={false} />
-              </JssLink>
-            ) : undefined,
+              ) : (
+                <JssText field={child?.title} editable={false} />
+              )}
+            </JssLink>
+          ) : undefined,
+          showOnMobile: child?.showOnMobile?.boolValue || false,
         })) || [],
       mobileTabCta: tab?.mobileTabCta?.jsonValue?.value?.href ? (
         <JssLink field={tab?.mobileTabCta?.jsonValue} editable={false} />
@@ -143,22 +145,21 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
         tabs={tabs}
         eyebrow={eyebrow}
         search={
-          <TextLink>
-            <button
-              disabled={router.asPath.includes(
-                searchModalConfig?.baseUrl?.jsonValue?.value.href || ''
-              )}
-              onClick={() => {
-                const dialog = document.getElementById(
-                  SEARCH_SUGGESTIONS_MODAL_ID
-                ) as HTMLDialogElement;
-                dialog?.showModal();
-              }}
-            >
-              <Icons iconName={'iconSearch'} />
-              <span className="sr-only">Search</span>
-            </button>
-          </TextLink>
+          searchModalConfig?.baseUrl?.jsonValue?.value?.href ? (
+            <TextLink>
+              <button
+                onClick={() => {
+                  const dialog = document.getElementById(
+                    SEARCH_SUGGESTIONS_MODAL_ID
+                  ) as HTMLDialogElement;
+                  dialog?.showModal();
+                }}
+              >
+                <Icons iconName={'iconSearch'} />
+                <span className="sr-only">Search</span>
+              </button>
+            </TextLink>
+          ) : undefined
         }
       />
       <Themes theme={'A-HCA-White'}>

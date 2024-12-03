@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as TickListStories from './TickList.stories'
+
+<Meta of={TickListStories} />
+
+# TickList
+
+## Description
+
+The TickList component is a simple wrapper for a set of ul and li elements in order to style them as a tick list.
+
+It is intended to be used to wrap a Sitecore placeholder element, or for the global ".tick" utility class, which can be applied by CMS RTE editors.
+
+It should be placed inside another themed layout component, e.g. accordions.
+
+It can be composed like this:
+
+``` tsx
+<TickList>
+  <ul>
+    <li>
+      You’ll be given a local anaesthetic to numb your groin or wrist. You
+      may also be given a sedative to help you relax.
+    </li>
+    <li>
+      A small tube will be inserted into your artery. A catheter is then
+      placed inside that tube.
+    </li>
+    <li>The balloon is inflated, which opens your artery.</li>
+    <li>
+      A stent, made of wire mesh, will be inserted to keep the artery open.
+    </li>
+    <li>
+      The balloon and catheter are then removed, leaving the stent in
+      position.
+    </li>
+  </ul>
+</TickList>
+```

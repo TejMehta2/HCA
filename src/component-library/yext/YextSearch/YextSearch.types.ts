@@ -11,7 +11,9 @@ export type VerticalKey =
   | 'healthcare_professionals'
   | 'specialties'
   | 'articles'
-  | 'faqs';
+  | 'faqs'
+  | 'jobs'
+  | 'links';
 
 export type VerticalLabel =
   | 'All'
@@ -20,7 +22,9 @@ export type VerticalLabel =
   | 'Consultants'
   | 'Departments'
   | 'Articles'
-  | 'FAQs';
+  | 'FAQs'
+  | 'Vacancies'
+  | 'Links';
 
 export type VerticalData = {
   key: VerticalKey;

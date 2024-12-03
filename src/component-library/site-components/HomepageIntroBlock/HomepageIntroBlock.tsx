@@ -9,12 +9,14 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
   const {
     imageAlignment = 'right',
     title,
+    subtitle,
     copy,
     stats,
     cta,
     image,
     cqc,
     doctify,
+    children,
   } = props;
   return (
     <Themes theme="A-HCA-White">
@@ -26,6 +28,7 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
       >
         <div className={styles.grid}>
           <div className={styles['text-wrapper']} data-animate="l">
+            {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             <div className={styles.title}>{title}</div>
             <div className={styles.copy}>{copy}</div>
             {stats && stats.length > 0 && (
@@ -48,6 +51,11 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
                   </React.Fragment>
                 ))}
               </ul>
+            )}
+            {children && (
+              <div className={styles.children}>
+                <Themes theme="A-HCA-White">{children}</Themes>
+              </div>
             )}
             {cta && (
               <div className={styles.cta}>

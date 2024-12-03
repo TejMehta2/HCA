@@ -2,6 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
+  flex: $spacing-9;
   position: relative;
   display: flex;
   color: var(--text);

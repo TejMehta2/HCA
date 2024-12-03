@@ -11,33 +11,69 @@
 
   padding-top: $spacing-12;
   padding-bottom: $spacing-12;
+
+  .columns-3 & {
+    padding-top: $spacing-10;
+    padding-bottom: $spacing-10;
+  }
 }
 
 .grid {
   @include responsive-grid;
 
-  > * {
-    @include responsive-grid-span(6, 6, 6, 6);
-  }
-
   row-gap: $spacing-6;
+
+  .columns-3 & {
+    row-gap: $spacing-8;
+  }
 }
 
 .item {
   display: grid;
   gap: $spacing-6;
+
+  .columns-2 & {
+    @include responsive-grid-span(6, 6, 6, 6);
+  }
+
   grid-template-columns: 1fr;
+
   @include media(screen-m) {
     grid-template-columns: px-to-rem(133) 1fr;
+  }
+
+  .columns-3 & {
+    gap: px-to-rem(16);
+    @include responsive-grid-span(6, 6, 4, 4);
+
+    grid-template-columns: px-to-rem(48) 1fr;
+  }
+}
+
+.title {
+  margin-bottom: px-to-rem(6);
+
+  .columns-3 & {
+    padding-right: $spacing-6;
   }
 }
 
 .logo {
-  max-width: px-to-rem(133);
+  width: px-to-rem(133);
+  max-height: px-to-rem(88);
+  @include media(screen-m) {
+    grid-template-columns: px-to-rem(133) 1fr;
+  }
+
+  .columns-3 & {
+    width: px-to-rem(48);
+    max-height: px-to-rem(48);
+  }
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    object-position: top left;
   }
 }

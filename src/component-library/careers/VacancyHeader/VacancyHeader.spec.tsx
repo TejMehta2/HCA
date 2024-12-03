@@ -8,10 +8,10 @@ import Icons from '../../foundation/Icons/Icons';
 
 const mockProps: VacancyHeaderProps = {
   title: <Text variation={'display-1'}>Staff Nurse - Imaging</Text>,
-  location: <>Lister Hospital – London</>,
-  clinical: <>Clinical</>,
-  timing: <>Full time</>,
-  vacancyCode: <>0041819</>,
+  location: 'Lister Hospital – London',
+  clinical: 'Clinical',
+  timing: 'Full time',
+  vacancyCode: '0041819',
   cta: (
     <Button variation={'full-light'} size="large">
       <a href="#">
