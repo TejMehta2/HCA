@@ -8,103 +8,134 @@ import config from 'temp/config';
 //https://www.linkedin.com/pulse/useful-example-graphql-query-sitecore-context-arvind-gehlot
 //https://doc.sitecore.com/xmc/en/developers/xm-cloud/query-examples.html
 
+/*
 interface sitecoreItemProp {
   id: string;
   name: string;
 }
-
-const sitecoreAppPath = `${process.env.ADMIN_PROTECTION_KEY!}/`; // e.g. /sitecore/content/HCA/App/
-
-export async function recurseAppItemsFromGraphQL(
+*/
+export async function searchAppItemsFromGraphQL(
   graphQLClient: GraphQLRequestClient,
   path: string,
-  lang: string,
+  _lang: string,
   platform: string,
   obj: any
 ): Promise<any> {
   try {
     // build a query for App/Portal objects
     const GQLQuery: string = `
-          query {
-        item( path: "${path}", language: "${lang}" ) {
-          id,
-          name,
-          displayName,
-          hasChildren,
-          ... on AppSimple {
-              value {
-                value
-              }
-            },
-          ... on AppBool {
-              bVal:value {
-                value
-              }
-            },
-          ... on AppInteger {
-              iVal:value {
-                value
-              }
-            },            
-          ... on AppImage {
-              value {
-                value
-              }
-            },
-          ... on AppLink {
-              value {
-                value
-              }
-            },
-          ... on AppRichText {
-              value {
-                value
-              }
-            },                                                                                       
-          ... on AppText {
-              textValue:value {
-                value
-              }
-              textValueShort:valueShort {
-                value
-              }
-              textAndroid:androidValue {
-                value
-              }
-              textAndroidShort:androidValueShort {
-                value
-              }
-              textiOS:iOSValue {
-                value
-              }
-              textiOSShort:iOSValueShort {
-                value
-              }
-              textWeb:webValue {
-                value
-              }
-              textWebShort:webValueShort {
-                value
-              }
-          },
-          # find children for recursion
-          children() {
-           results {
-              name,
-              id,
-            }
-          }
-        }
+fragment appFields on Item {
+	id,
+  name,
+  displayName,
+  hasChildren,
+  ... on AppSimple {
+      value {
+        value
       }
-      `;
+    },
+  ... on AppBool {
+      bVal:value {
+        value
+      }
+    },
+  ... on AppInteger {
+      iVal:value {
+        value
+      }
+    },            
+  ... on AppImage {
+      value {
+        value
+      }
+    },
+  ... on AppLink {
+      value {
+                    id
+            url
+            target
+            text
+            anchor
+      }
+    },
+  ... on AppRichText {
+      value {
+        value
+      }
+    },
+  ... on AppText {
+    textValue:value {
+      value
+    }
+    textValueShort:valueShort {
+      value
+    }
+    textAndroid:androidValue {
+      value
+    }
+    textAndroidShort:androidValueShort {
+      value
+    }
+    textiOS:iOSValue {
+      value
+    }
+    textiOSShort:iOSValueShort {
+      value
+    }
+    textWeb:webValue {
+      value
+    }
+    textWebShort:webValueShort {
+      value
+    }
+  }
+}
+
+query {
+  item(path: "/sitecore/content/HCA/App/MattsApp", language: "en") {
+    id
+  }
+  pageOne: search(
+     where: {
+       AND: [
+         {
+           #name: "_path"
+           #value: "3E311CE077724DCFB44C933D2CB10A27"
+           # operator: CONTAINS
+           #name: "_templates"
+           #value: "0929f436c3f3500a9f8bd1c57a67a192"
+           #operator: CONTAINS
+           name: "_path"
+           value: "3E311CE077724DCFB44C933D2CB10A27"
+           operator: CONTAINS
+         }
+       ]
+     }
+     # defaults to 10
+     first: 200
+   ) {
+     total
+     pageInfo {
+       endCursor
+       hasNext
+     }
+     results {
+      ...appFields
+       url {
+         path
+       }
+     }
+   }
+ }
+    `;
 
     //console.log('GQLQuery: ', GQLQuery);
     const GQLResult = await graphQLClient.request<any>(GQLQuery);
-    //console.log('result:', JSON.stringify(GQLResult));
+    console.log('result:', JSON.stringify(GQLResult), '');
 
     // find the bottom of the object graph and create new nodes and assign values
     //console.log('path', path);
-    const pathSplit = path.replace(sitecoreAppPath, '').split('/');
+    const pathSplit = path.replace('/sitecore/content/HCA/App/', '').split('/');
     let findNode = obj;
     let objDepth = 0;
     for (objDepth = 0; objDepth < pathSplit.length; objDepth++) {
@@ -161,14 +192,14 @@ export async function recurseAppItemsFromGraphQL(
       const children = GQLResult.item.children?.results;
       //console.log('children', JSON.stringify(children));
       for (let childCnt = 0; childCnt < children.length; childCnt++) {
-        const item: sitecoreItemProp = children[childCnt];
+        /* const item: sitecoreItemProp = children[childCnt];
         await recurseAppItemsFromGraphQL(
           graphQLClient,
           `${path}/${item.name}`,
           lang,
           platform,
           obj
-        );
+        );*/
       }
     }
   } catch (e) {
@@ -183,7 +214,7 @@ export async function recurseAppItemsFromGraphQL(
   return obj;
 }
 
-export async function getAppItemsFromGraphQL(
+export async function getSearchAppItemsFromGraphQL(
   path: string,
   lang: string,
   platform: string
@@ -193,7 +224,7 @@ export async function getAppItemsFromGraphQL(
   });
   const obj: any = {};
   //console.log('path', path);
-  const result = await recurseAppItemsFromGraphQL(
+  const result = await searchAppItemsFromGraphQL(
     graphQLClient,
     path,
     lang.toLowerCase(),
