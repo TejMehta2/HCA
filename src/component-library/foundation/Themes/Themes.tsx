@@ -9,6 +9,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
     tag = 'div',
     topLevelTheme,
     id,
+    collapse = true,
   } = props;
   const CustomTag = tag as keyof JSX.IntrinsicElements;
   return (
@@ -18,6 +19,7 @@ const Themes = (props: ThemesProps): JSX.Element => {
         styles.wrapper,
         styles[theme],
         styles[`master-${topLevelTheme}`],
+        collapse ? styles.collapse : styles['no-collapse'],
       ].join(' ')}
       data-theme={theme}
       data-theme-mode={styles?.[`mode-${theme}`]}
