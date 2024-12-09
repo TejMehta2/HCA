@@ -5,5 +5,5 @@ export interface BlogContentProps {
   theme: Theme;
   children?: ReactNode | JSX.Element;
   imageKeepAspectRatio?: boolean;
-  contentVariation?: 'quote' | 'image';
+  contentVariation?: 'quote-center' | 'quote' | 'image';
 }

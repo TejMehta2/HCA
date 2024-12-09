@@ -6,10 +6,7 @@ Path: /sitecore/templates/Project/HCA/Navigation/Sub Navigation/__Standard Value
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
-  Value: |
-    {5642CFFC-0223-4538-8300-411E04E222EC}
-    {EADF40FA-915B-4789-B1E3-44FFE5A1FF3B}
-    {D131FACB-FDEE-4EBB-A63E-DCF8294F1D61}
+  Value: 
 Languages:
 - Language: en
   Versions:
@@ -28,11 +25,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e2e756bc-36eb-434a-b44b-485e231a9fce"
+      Value: "5f21f08e-9616-4834-b858-9bf35d13839a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241114T153325Z
+      Value: 20241129T102649Z

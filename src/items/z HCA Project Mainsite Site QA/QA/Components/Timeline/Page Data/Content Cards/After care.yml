@@ -1,0 +1,44 @@
+﻿---
+ID: "ee38b9a3-a34c-40a5-8f16-3a9439d44d91"
+Parent: "02ff094d-bce6-485f-b8cb-427bf6928dad"
+Template: "a1d640e8-b025-43b5-80db-c45c2f82227b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Timeline/Page Data/Content Cards/After care"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241126T211926Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: |
+        <p>If you do stay overnight, you should be able to return home the next day. You won&rsquo;t be able to drive for at least a week, so you'll need to arrange for someone to help with your transport.</p>
+        <p>You can expect to have a bit of bruising or soreness where the catheter was inserted, but please get in touch if it gets worse, starts to swell or if you get a temperature.</p>
+        <p>We&rsquo;ll also prescribe medication to help with your recovery, including aspirin to reduce the risk of blood clots, and statins to lower your cholesterol.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "867d15e3-e179-428f-beaa-11d48421a89d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241126T211950Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: After care

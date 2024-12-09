@@ -1,0 +1,41 @@
+﻿---
+ID: "00281a5e-1fdc-4a56-926e-2f9104bb98e3"
+Parent: "b362573a-ad33-4324-a7fd-26e83ed671b5"
+Template: "feaa953e-fedc-4191-a1c0-36992f53d08a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource 2/State of the art diagnostics"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T152605Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "57f21df8-fa55-4267-8bb7-743b504d1ddd"
+      Hint: Title
+      Value: State of the art diagnostics
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9bb9d4b8-3d30-42a6-a099-f250ec2d6ed4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ce8136f4-2e0b-4236-af51-e522ee8ab699"
+      Hint: Text
+      Value: <p>With results in as little as 48 hours.</p>
+    - ID: "d8fecc64-a0b7-4e73-b436-929a62a044ee"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/e338cd1bebb14ec0ae8e6f66a8553e2d?v=0f1b7d0f" dam-id="Fc0SQZCkRqiaDSIyIxm83w" width="48" height="48" alt="Microscope.png" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/234051/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241128T000613Z

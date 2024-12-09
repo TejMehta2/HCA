@@ -7,6 +7,11 @@
   gap: px-to-rem(24) 0;
   margin: $spacing-8 0;
   color: var(--text);
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
 }
 
 .author {

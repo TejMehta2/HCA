@@ -1,0 +1,37 @@
+﻿---
+ID: "d51cda46-0061-42b2-b863-597711897f6c"
+Parent: "3ad1a589-74bc-409d-b00b-3fe0c69809e7"
+Template: "abb73d94-91ac-4994-848d-ce9f0050cc15"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Triplet/Page Data/datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241128T113252Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5c61ebcb-79f7-48e7-885a-b3b394a80088"
+      Hint: Cards
+      Value: |
+        {F9F87D49-5918-49B0-A0D5-C8E756BEACED}
+        {C41A1113-C18C-4F92-ABA5-E22CFAA1527A}
+        {301C68A6-E0F1-462C-BF7A-176A7B4017B1}
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5028cec7-09d4-4e7f-a08a-a97c38db7c26"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241128T122658Z

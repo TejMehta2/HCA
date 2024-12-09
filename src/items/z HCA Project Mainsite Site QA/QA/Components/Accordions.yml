@@ -1,0 +1,84 @@
+﻿---
+ID: "403c2d9f-ea7c-4cc5-8ce4-7047719816a2"
+Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{ED34E2A1-23C7-41B6-8996-EDB19301E6EA}"
+              p:before="*"
+              s:ds="local:/Page Data/FAQ Block Default"
+              s:id="{3571FEB2-D700-4A6F-B4E0-D3532445617C}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B2C3DE801-25BC-45B6-BD76-47600FCD0EB5%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=6"
+              s:ph="/headless-main/image-short-text-5" />
+            <r
+              uid="{D3E9FDE7-EEFF-4ABE-A9C6-6C8C72A030FB}"
+              p:after="r[@uid='{ED34E2A1-23C7-41B6-8996-EDB19301E6EA}']"
+              s:ds="local:/Page Data/Accordions"
+              s:id="{3571FEB2-D700-4A6F-B4E0-D3532445617C}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B2C3DE801-25BC-45B6-BD76-47600FCD0EB5%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="/headless-main/intro-block-3" />
+            <r
+              uid="{0FAFAFCF-0EEE-4F8B-B423-CBE46C65F9D6}"
+              p:after="r[@uid='{D3E9FDE7-EEFF-4ABE-A9C6-6C8C72A030FB}']"
+              s:ds="local:/Page Data/FAQ Block Default"
+              s:id="{3571FEB2-D700-4A6F-B4E0-D3532445617C}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="/headless-main/intro-block-1" />
+            <r
+              uid="{28F60F69-D4D5-4925-BCB4-E75C59442043}"
+              p:after="r[@uid='{0FAFAFCF-0EEE-4F8B-B423-CBE46C65F9D6}']"
+              s:ds="local:/Page Data/Intro Block Image"
+              s:id="{2DB261B1-AD36-49DE-8ADC-AC29E96FE20E}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B0DB88BD7-441A-482B-A59B-5FAC8396CD2B%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+            <r
+              uid="{DCEC18A2-A92B-465A-A163-DDCFB1845AD1}"
+              p:after="r[@uid='{28F60F69-D4D5-4925-BCB4-E75C59442043}']"
+              s:ds="local:/Page Data/Intro Block Image"
+              s:id="{2DB261B1-AD36-49DE-8ADC-AC29E96FE20E}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4A4F3B4F-F60C-458E-8744-F47455B728A9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:ph="headless-main" />
+            <r
+              uid="{CA3AB4D3-1436-43B8-87CF-82849C96638B}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Image short text"
+              s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
+              s:par="HeadingTag&amp;KeepAspectRatio&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241125T130809Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9426cd22-da4e-4e46-8006-2729906cb81c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241127T161134Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Accordions

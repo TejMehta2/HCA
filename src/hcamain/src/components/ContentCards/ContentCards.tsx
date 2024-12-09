@@ -16,6 +16,7 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -114,8 +115,14 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     )
   );
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.data?.item?.title?.jsonValue?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -123,15 +130,17 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize="small"
           title={
-            <Text
-              variation={props.params?.HeadingSize || 'display-3'}
-              tag={props.params?.HeadingTag || 'h2'}
-            >
-              <JssText
-                tag={'span'}
-                field={props.fields?.data?.item?.title?.jsonValue}
-              />
-            </Text>
+            <>
+              <Text
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText
+                  tag={'span'}
+                  field={props.fields?.data?.item?.title?.jsonValue}
+                />
+              </Text>
+            </>
           }
           subtitle={
             !isExperienceEditor ? (

@@ -5,6 +5,8 @@ import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Image from 'next/image';
+import Doctify from '../../components/Doctify/Doctify';
+import Themes from '../../foundation/Themes/Themes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HeaderWithImage> = {
@@ -147,5 +149,46 @@ export const WithSubtitle: StoryObj<typeof HeaderWithImage> = {
       />
     ),
     theme: 'F-HCA-Fern',
+  },
+};
+
+export const WithSubtitleBefore: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    ...WithSubtitle.args,
+    subtitlePlacement: 'before',
+  },
+};
+
+export const WithRatings: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    ...WithSubtitleBefore.args,
+    ratings: (
+      <Themes theme="B-HCA-Navy-Blue">
+        <Doctify
+          alignment="left"
+          link={<a href="#"></a>}
+          rating={4}
+          reviews="13,500 +"
+          logo={{
+            dark: (
+              <Image
+                src="/doctify-dark.png"
+                alt="doctify logo"
+                width="83"
+                height="21"
+              />
+            ),
+            light: (
+              <Image
+                src="/doctify-light.png"
+                alt="doctify logo"
+                width="83"
+                height="21"
+              />
+            ),
+          }}
+        />
+      </Themes>
+    ),
   },
 };

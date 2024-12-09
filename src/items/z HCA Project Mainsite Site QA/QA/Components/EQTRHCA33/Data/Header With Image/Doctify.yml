@@ -1,0 +1,34 @@
+﻿---
+ID: "147c47d8-5b35-4b90-b2e8-289cde322505"
+Parent: "fa22236c-8aa9-4195-a767-994a8ed45410"
+Template: "b5315a34-2322-4932-9f14-ceb3ad355308"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33/Data/Header With Image/Doctify"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240115T111102Z
+    - ID: "35d080dc-c6a0-4f8c-814e-b69ac26672dd"
+      Hint: Reviews
+      Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "599731f2-52da-4db8-a5c6-ce7bf9417676"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240115T111107Z

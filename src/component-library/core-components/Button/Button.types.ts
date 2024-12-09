@@ -18,7 +18,8 @@ export type ButtonVariationUnionTypes =
   | 'hover-carousel'
   | 'square-outline'
   | 'play'
-  | 'filter';
+  | 'filter'
+  | 'jump-to';
 
 export interface ButtonProps {
   size: ButtonSizeUnionTypes;
