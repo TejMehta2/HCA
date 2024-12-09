@@ -20,10 +20,11 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
     cfVariation,
     contentVariation,
     noOverflownHidden,
+    id,
   } = props;
 
   return (
-    <Themes theme={theme}>
+    <Themes id={id} theme={theme}>
       <div className={noOverflownHidden ? '' : styles.background}>
         <div
           className={[

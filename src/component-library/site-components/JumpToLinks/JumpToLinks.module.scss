@@ -51,7 +51,17 @@
 }
 
 .children {
+  list-style: none;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: $spacing-2;
+
+  @include media(screen-m) {
+    flex-flow: row wrap;
+  }
+
+  &:has(.link) {
+    align-items: flex-start;
+  }
 }

@@ -4,6 +4,9 @@ Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "a8381a60-0f5c-4a6c-b267-ac53c2e85070"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA94_1"
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 9500
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -60,17 +63,17 @@ Languages:
       Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f4adbda0-eb2e-40fd-b5f0-e6332e26ec7a"
+      Value: "5d108c62-e2dc-4e29-acb6-47083ae6fef5"
     - ID: "9c55a6c5-8a74-47f7-8987-c21c447fafe1"
       Hint: Facility
       Value: "{0B5F2BF5-203F-4368-854D-A79B5F4B5B0F}"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240526T225627Z
+      Value: 20241127T161141Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA94_1

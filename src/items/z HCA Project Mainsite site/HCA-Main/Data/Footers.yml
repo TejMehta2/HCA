@@ -3,6 +3,10 @@ ID: "87fe84ba-5017-4532-91db-b732361a7ae1"
 Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
 Template: "9af1a604-c8e4-429e-b796-ffd32098d094"
 Path: "/sitecore/content/HCA/HCA-Main/Data/Footers"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -21,11 +25,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dd2dbf52-3a55-4ab7-87f6-70d3330f9a0c"
+      Value: "fff5e967-d9e7-423e-8a04-24ac93bd182a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\anindita.bhattacharya@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240105T170619Z
+      Value: 20240508T165831Z

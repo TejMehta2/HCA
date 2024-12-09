@@ -1,4 +1,4 @@
-import { getAppItemsFromGraphQL } from 'lib/consultant-finder/getAppItemsFromGraphQL';
+import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseAppItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -18,7 +18,7 @@ export default async function handler(
     const lang = (req?.query?.lang as string) ?? 'en';
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
-    console.log(
+    /*console.log(
       'app graphQL request',
       'lang: ',
       lang,
@@ -26,8 +26,10 @@ export default async function handler(
       platform,
       'requestedPath: ',
       requestedPath
-    );
-    output = await getAppItemsFromGraphQL(requestedPath, lang, platform);
+    );*/
+    //output = await getSearchAppItemsFromGraphQL(requestedPath, lang, platform);
+    output = await getRecurseAppItemsFromGraphQL(requestedPath, lang, platform);
+    //output = await getAppItemsFromGraphQL(requestedPath, lang, platform);
   }
 
   if (revalidate.now() || revalidate.noCache()) {

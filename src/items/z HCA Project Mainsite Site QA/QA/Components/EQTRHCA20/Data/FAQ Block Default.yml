@@ -1,5 +1,5 @@
 ﻿---
-ID: "4590ff80-a7c8-49f7-9c40-21b45d29e94e"
+ID: "43a52220-f332-400f-a16c-2f07efa47467"
 Parent: "3db8700c-c704-48fe-843d-a65618aec717"
 Template: "85fa9acd-38ac-4893-a6b9-1a94644a41cc"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA20/Data/FAQ Block Default"
@@ -8,9 +8,6 @@ Languages:
   Versions:
   - Version: 1
     Fields:
-    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
-      Hint: __Lock
-      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240123T125038Z
@@ -27,10 +24,10 @@ Languages:
       Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum lacus et facilisis pellentesque. Cras placerat diam massa, sit amet lobortis lacus suscipit et. Mauris at tempor metus. Fusce semper ipsum non hendrerit mollis.</p>
     - ID: "7a4dfcc9-d784-4ba0-9b16-3845f8bda62a"
       Hint: Questions
-      Value: "{7AAE70CD-3394-45DB-87CD-FC81015480CF}|{B4138F1D-2055-4638-B313-73B753AA3C1A}|{D7C79023-2E3F-43A3-B271-67F55C798EDB}|{7BA9EA42-2F5F-4D8A-BDFF-F01DABB9F93C}"
+      Value: "{07A08513-EAC0-4F2A-A64F-9D171D5D7BD1}|{E0C983AA-BDE6-448C-842E-86A51CDE8FC4}|{12DB6C9C-4E9B-427E-A464-FF6ED0F53C18}|{BBF59E7C-480E-47CF-BD53-0E1A02998CC1}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "38065593-b8c8-4aaf-bd8e-022c205b6194"
+      Value: "e934ed0f-e093-4817-b55d-5639ab6dfc80"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -44,7 +41,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241118T195536Z
+      Value: 20241125T213845Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{284DAB94-A5B4-47D9-98F0-2F9ACD13ED08}"

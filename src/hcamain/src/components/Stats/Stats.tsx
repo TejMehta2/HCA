@@ -56,3 +56,36 @@ export const Default = (props: StatsProps): JSX.Element => {
     </Themes>
   );
 };
+
+export const ThreeColumns = (props: StatsProps): JSX.Element => {
+  if (!props?.fields) {
+    return <StatsDefaultComponent {...props} />;
+  }
+
+  return (
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
+      <Stats
+        variant={'threeCol'}
+        heading={
+          <Text
+            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-2'}
+          >
+            <JssText field={props.fields.Title} />
+          </Text>
+        }
+      >
+        {props.fields?.Counters?.map((counters, index) => (
+          <div key={index}>
+            <Text variation="display-4">
+              <JssText field={counters.fields?.Number} />
+            </Text>
+            <Text variation="body-medium-large">
+              <JssText field={counters.fields?.Text} />
+            </Text>
+          </div>
+        ))}
+      </Stats>
+    </Themes>
+  );
+};

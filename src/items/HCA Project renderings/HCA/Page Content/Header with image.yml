@@ -9,7 +9,9 @@ SharedFields:
   Value: HeaderWithImage
 - ID: "069a8361-b1cd-437c-8c32-a3be78941446"
   Hint: Placeholders
-  Value: "{88F33B66-D47F-43FC-B90B-002ED86E4F9E}"
+  Value: |
+    {88F33B66-D47F-43FC-B90B-002ED86E4F9E}
+    {E023D63C-5B5E-4B52-9305-17E43D5D553A}
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: SXA_MDI/16x16/Promo.png
@@ -100,14 +102,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8f8ff5f1-939f-435e-a6e9-40c4dc7e47cd"
+      Value: "e2299de3-dc4e-4b36-a790-84fb02757a1c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@tecss.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240530T092657Z
+      Value: 20241127T153159Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

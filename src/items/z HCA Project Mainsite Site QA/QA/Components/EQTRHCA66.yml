@@ -4,6 +4,9 @@ Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "ce35b67f-8afb-461a-8ed3-1b9da4167731"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA66"
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 6000
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: |
@@ -84,7 +87,7 @@ Languages:
       Value: London
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "40b2d02e-5619-4a96-9402-1fce6debd6bc"
+      Value: "678dfd44-217c-456e-9af0-0bf6eda5c9f5"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -101,7 +104,7 @@ Languages:
       Value: Wellington Place St John's Wood
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240620T154926Z
+      Value: 20241127T161138Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: The Wellington Hospital
