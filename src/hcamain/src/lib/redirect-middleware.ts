@@ -14,7 +14,7 @@ const redirectMiddleware = async (req: NextRequest) => {
 
       const apiUrl = new URL(
         //`${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
-        `https://www.hcahealthcare.co.uk/api/api-layer/redirects/find?source=${pathname}`
+        `https://www.hcahealthcare.co.uk/api/api-layer/redirects/find?source=${pathname.toLowerCase()}`
       );
 
       console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
