@@ -178,7 +178,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
-  console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
+  //console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
