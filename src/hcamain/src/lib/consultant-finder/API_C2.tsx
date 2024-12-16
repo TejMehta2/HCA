@@ -517,3 +517,147 @@ export async function LDBMakeBooking(
 
   return returnData;
 }
+
+export interface IFinderEnquiryFields {
+  practice: string; // "Golders Green Outpatients and Diagnostics Centre",
+  dateAppointment: string; // "Within 100 week",
+  timeAppointment: string; // "Afternoon",
+  previousPatient: string; // "Yes",
+  title: string; // "Mr",
+  firstName: string; // "ZZZTEST_MATT",
+  lastName: string; // "ZZZTEST_HOPKINS",
+  gender: string; // "Male",
+  date: string; // "2000-01-01",
+  userPhone: string; // "07788999000",
+  userEmail: string; // "test@ignore.domain",
+  insurance: string; // "CS Healthcare",
+  insuranceNumber: string; // "INS0987654321",
+  reasonVisit: string; // "TESTING THE FORM PLEASE IGNORE",
+  reCAPTCHA: string; // "Can ignore/don’t need to store format is long string e.g.03AFcWeA48YI466Mx0YoBsmqYBcE-b5Hodyn-VyHqt1HYbKeXbCxhtba1HxDH2TF9LnizAxxMc0_WheDYb8gODux5A0e7naWbh_UDu3HDq1Y9u-h_MP2PHvN9d8x_lvFE68jywnpd71mf8bCUooOjxnvTOWNhd3h634PFLsZqNCFAXjhEMwloTGiwYSCspK-r7ecxTKU8SXj0HG2oBBKIOvOCeVJlKFRORvoEAPBTM_IPiw87YjVKCPyc8NfPLyM8KCdhAtjvEy8NRv7Bgs0c2n9adLKbpSjvGoXP7mD28Fv9E3EN0-fYipSFXgPgqDETBuAYbZyw4L8G_kfzFeL5PJ5dWzw4O5HrdS9cb5AyiPaG6rJVWwHKQCG0eROo2yMXSTWPLIWGFdAvL5quxH7pZ7vRoP700XUwusZsP1VCtmYA45EgWOx4zRgWcj1PaExyp6dNuH6U-T98uQ5QbYrsZwN1jP-ddQd2Q3G_Rs5gtGKzQ_xJnuH6w4w1kxxFFauJwzZtnQBNysSXl6ChvYLy2Fqw6nLcN2PTWEgBVkmrupfzEVAzXMMraVMG7swZuv5J9p9DB9diSWncGRoyBxOkfqdSEANeRmNxPJ42denWxzzHoaJ6sHPsc7nD8ypXZfToKE4-LXhfRy4EBcKDyoSTP88Z6NSjXyo83tSlkhz-YykiW7Kln9MygtCs",
+  email: string; // true
+  sms: boolean; //true
+  phone: boolean; // true,
+  post: boolean; // false,
+  dateOfBirthFormatted: string; // "01-01-2000",
+  consultantName: string; //  "Andrew Goldberg",
+  consultantTopSpecialty: string; // "Orthopaedic Surgery",
+  hiddenFormInstance: string; // "37bf88-ce54-dfa8-572c-5315bd5a8b58"
+}
+
+/*
+This endpoint will create a diary enquiry in the CRM for the Consultant in a Pending state.  
+The diary enquirywill also be placed on the Booking Queue so it can be actioned by the team.  
+The Pending state reflects that the diary enquiry needs to be processed to Meditech by one of the team members.  
+The Team members will pick a diary enquiry off the Queue and once processed will 
+update the status to a relevant status e.g. Confirmed or Cancelled.  
+*/
+export async function FinderMakeEnquiry(
+  fields: IFinderEnquiryFields,
+  serviceURL?: string,
+  headerKey?: string
+): Promise<any> {
+  let returnData: string = '';
+  let okayToSend: boolean = true;
+
+  const config = !serviceURL && !headerKey ? await GetC2Config() : null;
+  console.log('config', JSON.stringify(config));
+  // first, validate reCapture
+  try {
+    let captchaValidation = null;
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      // if the private key is set then validate server side
+      // Ping the google recaptcha verify API to verify the captcha code you received
+      //console.log(
+      //  'validate url',
+      //  `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`
+      //);
+      const response = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${fields.reCAPTCHA}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+          },
+          method: 'POST',
+        }
+      );
+      captchaValidation = await response.json();
+      /**
+     * The structure of response from the veirfy API is
+     * {
+     *  "success": true|false,
+     *  "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+     *  "hostname": string,         // the hostname of the site where the reCAPTCHA was solved
+     *  "error-codes": [...]        // optional
+      }
+     */
+      if (!captchaValidation.success) {
+        okayToSend = false;
+      }
+    }
+
+    if (okayToSend) {
+      try {
+        const requestURL = `${
+          serviceURL ?? config?.aPI_C2_BookingEnquiry_BaseURL
+        }`;
+        console.log('requestURL', requestURL);
+        const header = `${headerKey ?? config?.aPI_C2_BookingEnquiry_Header}`;
+        console.log('header', header);
+        const res = await fetch(requestURL, {
+          method: 'post',
+          body: JSON.stringify(fields),
+          headers: {
+            'Content-Type': 'application/json',
+            securitytoken: `"${header}"`,
+          },
+          cache: 'no-cache',
+        });
+
+        if (res.ok) {
+          returnData = await res.text();
+        } else {
+          //C2 call failed
+          let errorDetails = '';
+          try {
+            errorDetails = await res.text();
+          } finally {
+          }
+          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          console.warn(`FinderMakeEnquiry failed with error ${returnData}`);
+          returnData = JSON.parse(returnData);
+        }
+      } catch (e) {
+        //C2 call threw
+        const errorText =
+          config?.aPI_C2_BookingEnquiry_NoResultsMsg ||
+          'An unexpected error occured fetching FinderMakeEnquiry, please retry';
+        returnData = `{"errorCode": 991, "errorText": "${errorText}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(`FinderMakeEnquiry failed with exception ${e}`);
+      }
+    } else {
+      //recaptcha invalid
+      const errorText =
+        config?.aPI_C2_BookingEnquiry_NoResultsMsg ||
+        'An unexpected error occured fetching FinderMakeEnquiry, please retry';
+      returnData = `{"errorCode": 992, "errorText": "${errorText}"}`;
+      returnData = JSON.parse(returnData);
+      console.error(
+        `FinderMakeEnquiry failed with recaptcha error ${JSON.stringify(
+          captchaValidation
+        )}`
+      );
+    }
+  } catch (error) {
+    //recaptcha invalid exception error
+    const errorText =
+      config?.aPI_C2_BookingEnquiry_NoResultsMsg ||
+      'An unexpected error occured fetching FinderMakeEnquiry, please retry';
+    returnData = `{"errorCode": 993, "errorText": "${errorText}"}`;
+    returnData = JSON.parse(returnData);
+    console.error(`FinderMakeEnquiry failed with recaptcha exception ${error}`);
+    console.log(error);
+  }
+
+  return returnData;
+}

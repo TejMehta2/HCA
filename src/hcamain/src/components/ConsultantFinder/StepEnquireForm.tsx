@@ -294,11 +294,12 @@ export const Default = (props: StepProps): JSX.Element => {
     dataToSend.consultantTopSpecialty = specialty;
     dataToSend.hiddenFormInstance = formId;
 
-    // console.log(JSON.stringify(dataToSend, null, 2));
-    const URL =
-      props?.fields?.API_HCA_EnquireBookingForm_BaseURL?.value ||
-      'https:/api/formAPI/PostMakeBookingEnquiry';
+    console.log(JSON.stringify(dataToSend, null, 2));
+    const c2_BookingEnquiry_BaseURL =
+      props?.fields?.API_C2_BookingEnquiry_BaseURL?.value;
+    console.log('c2_BookingEnquiry_BaseURL', c2_BookingEnquiry_BaseURL);
 
+    const URL = c2_BookingEnquiry_BaseURL;
     // console.log('dataToSend', dataToSend);
     axios
       .post(URL, dataToSend)
@@ -346,11 +347,11 @@ export const Default = (props: StepProps): JSX.Element => {
     //https://hcauk-digital.atlassian.net/browse/HED-1815
     const sendToCRM =
       props?.fields?.API_HCA_EnquireBookingForm_UtilizeCRM?.value;
-    const sendToDatabase =
-      props?.fields?.API_HCA_EnquireBookingForm_UtilizeDatabase?.value;
     if (sendToCRM) {
       postToCRM(data);
     }
+    const sendToDatabase =
+      props?.fields?.API_HCA_EnquireBookingForm_UtilizeDatabase?.value;
     if (sendToDatabase) {
       postData(data);
     }
