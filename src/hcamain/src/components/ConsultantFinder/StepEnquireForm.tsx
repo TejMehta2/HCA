@@ -294,10 +294,10 @@ export const Default = (props: StepProps): JSX.Element => {
     dataToSend.consultantTopSpecialty = specialty;
     dataToSend.hiddenFormInstance = formId;
 
-    console.log(JSON.stringify(dataToSend, null, 2));
+    //console.log(JSON.stringify(dataToSend, null, 2));
     const c2_BookingEnquiry_BaseURL =
       props?.fields?.API_C2_BookingEnquiry_BaseURL?.value;
-    console.log('c2_BookingEnquiry_BaseURL', c2_BookingEnquiry_BaseURL);
+    //console.log('c2_BookingEnquiry_BaseURL', c2_BookingEnquiry_BaseURL);
 
     const URL = c2_BookingEnquiry_BaseURL;
     // console.log('dataToSend', dataToSend);
@@ -410,18 +410,6 @@ export const Default = (props: StepProps): JSX.Element => {
   }, [router.isReady]);
 
   if (props.fields) {
-    const sendToCRM =
-      props?.fields?.API_HCA_EnquireBookingForm_UtilizeCRM?.value;
-    console.log('sendToCRM', sendToCRM);
-
-    const sendToDatabase =
-      props?.fields?.API_HCA_EnquireBookingForm_UtilizeDatabase?.value;
-    console.log('sendToDatabase', sendToDatabase);
-
-    const c2_BookingEnquiry_BaseURL =
-      props?.fields?.API_C2_BookingEnquiry_BaseURL?.value;
-    console.log('c2_BookingEnquiry_BaseURL', c2_BookingEnquiry_BaseURL);
-
     return (
       <>
         {errorData && (

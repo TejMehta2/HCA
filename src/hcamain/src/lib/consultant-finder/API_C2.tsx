@@ -533,7 +533,7 @@ export interface IFinderEnquiryFields {
   insurance: string; // "CS Healthcare",
   insuranceNumber: string; // "INS0987654321",
   reasonVisit: string; // "TESTING THE FORM PLEASE IGNORE",
-  reCAPTCHA: string; // "Can ignore/don’t need to store format is long string e.g.03AFcWeA48YI466Mx0YoBsmqYBcE-b5Hodyn-VyHqt1HYbKeXbCxhtba1HxDH2TF9LnizAxxMc0_WheDYb8gODux5A0e7naWbh_UDu3HDq1Y9u-h_MP2PHvN9d8x_lvFE68jywnpd71mf8bCUooOjxnvTOWNhd3h634PFLsZqNCFAXjhEMwloTGiwYSCspK-r7ecxTKU8SXj0HG2oBBKIOvOCeVJlKFRORvoEAPBTM_IPiw87YjVKCPyc8NfPLyM8KCdhAtjvEy8NRv7Bgs0c2n9adLKbpSjvGoXP7mD28Fv9E3EN0-fYipSFXgPgqDETBuAYbZyw4L8G_kfzFeL5PJ5dWzw4O5HrdS9cb5AyiPaG6rJVWwHKQCG0eROo2yMXSTWPLIWGFdAvL5quxH7pZ7vRoP700XUwusZsP1VCtmYA45EgWOx4zRgWcj1PaExyp6dNuH6U-T98uQ5QbYrsZwN1jP-ddQd2Q3G_Rs5gtGKzQ_xJnuH6w4w1kxxFFauJwzZtnQBNysSXl6ChvYLy2Fqw6nLcN2PTWEgBVkmrupfzEVAzXMMraVMG7swZuv5J9p9DB9diSWncGRoyBxOkfqdSEANeRmNxPJ42denWxzzHoaJ6sHPsc7nD8ypXZfToKE4-LXhfRy4EBcKDyoSTP88Z6NSjXyo83tSlkhz-YykiW7Kln9MygtCs",
+  recaptcha: string; // "Can ignore/don’t need to store format is long string e.g.03AFcWeA48YI466Mx0YoBsmqYBcE-b5Hodyn-VyHqt1HYbKeXbCxhtba1HxDH2TF9LnizAxxMc0_WheDYb8gODux5A0e7naWbh_UDu3HDq1Y9u-h_MP2PHvN9d8x_lvFE68jywnpd71mf8bCUooOjxnvTOWNhd3h634PFLsZqNCFAXjhEMwloTGiwYSCspK-r7ecxTKU8SXj0HG2oBBKIOvOCeVJlKFRORvoEAPBTM_IPiw87YjVKCPyc8NfPLyM8KCdhAtjvEy8NRv7Bgs0c2n9adLKbpSjvGoXP7mD28Fv9E3EN0-fYipSFXgPgqDETBuAYbZyw4L8G_kfzFeL5PJ5dWzw4O5HrdS9cb5AyiPaG6rJVWwHKQCG0eROo2yMXSTWPLIWGFdAvL5quxH7pZ7vRoP700XUwusZsP1VCtmYA45EgWOx4zRgWcj1PaExyp6dNuH6U-T98uQ5QbYrsZwN1jP-ddQd2Q3G_Rs5gtGKzQ_xJnuH6w4w1kxxFFauJwzZtnQBNysSXl6ChvYLy2Fqw6nLcN2PTWEgBVkmrupfzEVAzXMMraVMG7swZuv5J9p9DB9diSWncGRoyBxOkfqdSEANeRmNxPJ42denWxzzHoaJ6sHPsc7nD8ypXZfToKE4-LXhfRy4EBcKDyoSTP88Z6NSjXyo83tSlkhz-YykiW7Kln9MygtCs",
   email: string; // true
   sms: boolean; //true
   phone: boolean; // true,
@@ -560,10 +560,15 @@ export async function FinderMakeEnquiry(
   let okayToSend: boolean = true;
 
   const config = !serviceURL && !headerKey ? await GetC2Config() : null;
-  console.log('config', JSON.stringify(config));
+  //console.log('config', JSON.stringify(config));
   // first, validate reCapture
   try {
     let captchaValidation = null;
+    /*console.log(
+      'process.env.RECAPTCHA_SECRET_KEY',
+      process.env.RECAPTCHA_SECRET_KEY
+    );
+    console.log('fields.recaptcha', fields.recaptcha);*/
     if (process.env.RECAPTCHA_SECRET_KEY) {
       // if the private key is set then validate server side
       // Ping the google recaptcha verify API to verify the captcha code you received
@@ -572,7 +577,7 @@ export async function FinderMakeEnquiry(
       //  `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`
       //);
       const response = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${fields.reCAPTCHA}`,
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${fields.recaptcha}`,
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -600,9 +605,9 @@ export async function FinderMakeEnquiry(
         const requestURL = `${
           serviceURL ?? config?.aPI_C2_BookingEnquiry_BaseURL
         }`;
-        console.log('requestURL', requestURL);
+        //console.log('requestURL', requestURL);
         const header = `${headerKey ?? config?.aPI_C2_BookingEnquiry_Header}`;
-        console.log('header', header);
+        //console.log('header', header);
         const res = await fetch(requestURL, {
           method: 'post',
           body: JSON.stringify(fields),
