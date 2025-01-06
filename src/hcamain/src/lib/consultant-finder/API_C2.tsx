@@ -451,7 +451,7 @@ export async function LDBMakeBooking(
         "demographics": ${demographicsString},
         "visitReasonDetails": {
             "selectedSpeciality": "${selectedSpeciality}",
-            "reasonForAppointment": ${JSON.stringify(reasonForAppointment)}
+            "reasonForAppointment": "${sanitizeJSON(reasonForAppointment)}"
         }
       }`;
       //console.log('booking json:', body);
