@@ -109,7 +109,11 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 <>
                   {(card?.fields?.PrimaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button variation="full" size="small">
+                    <Button
+                      variation="full"
+                      size="small"
+                      contentVariation="full-width"
+                    >
                       <JssLink field={card.fields.PrimaryCTA}>
                         {!isExperienceEditor && (
                           <>
@@ -128,7 +132,11 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                   )}
                   {(card?.fields?.SecondaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button variation="outline" size="small">
+                    <Button
+                      variation="outline"
+                      size="small"
+                      contentVariation="full-width"
+                    >
                       <JssLink field={card.fields.SecondaryCTA}>
                         {!isExperienceEditor && (
                           <>

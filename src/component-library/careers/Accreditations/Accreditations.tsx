@@ -13,8 +13,14 @@ const Accreditations = (props: AccreditationsProps): JSX.Element => {
             <div className={styles.item} key={index}>
               <div className={styles.logo}>{logo}</div>
               <div>
-                {title && <div className={styles.title}>{title}</div>}
-                <Text variation="body-small">{text}</Text>
+                {title && (
+                  <div className={styles.title}>
+                    <Text variation="heading-2">{title}</Text>
+                  </div>
+                )}
+                <Text variation="body-large" tag="div">
+                  {text}
+                </Text>
               </div>
             </div>
           ))}
