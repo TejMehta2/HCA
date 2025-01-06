@@ -5,16 +5,15 @@ import styles from './Stats.module.scss';
 const Stats = (props: StatsProps): JSX.Element => {
   const { heading, variant, children } = props;
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={[
+        styles.wrapper,
+        variant === 'threeCol' ? styles['grid-3-col'] : styles['default'],
+      ].join(' ')}
+    >
       <div className={styles.container}>
-        <div className={styles.heading}>{heading}</div>
-        <div
-          className={
-            variant === 'threeCol' ? styles['grid-3-col'] : styles.grid
-          }
-        >
-          {children}
-        </div>
+        {heading && <div className={styles.heading}>{heading}</div>}
+        <div className={styles.grid}>{children}</div>
       </div>
     </div>
   );
