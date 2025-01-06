@@ -12,7 +12,7 @@ const PostMakeBookingEnquiry = async (
   const fields: IEnquiryFormFields = req.body as IEnquiryFormFields;
   const response = await submitBookingEnquiry(fields);
   res.setHeader('Content-Type', 'application/json');
-  console.log('response from post booking enquiry:', response);
+  //console.log('response from post booking enquiry:', response);
   return res.status(200).json(response);
 };
 
