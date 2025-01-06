@@ -5,7 +5,7 @@
 /* Styles a ul and li with tick icons */
 .tick {
   @extend %tick-list;
-  
+
   &-2-cols {
     grid-template-columns: 1fr 1fr;
   }
