@@ -4,7 +4,7 @@ import styles from './Tooltips.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 
 const Tooltips = (props: TooltipsProps): JSX.Element => {
-  const { children, theme } = props;
+  const { display = 'block', children, theme } = props;
 
   const tooltipRef = useRef<HTMLDivElement>(null);
   const tooltipTrigger = useRef<HTMLButtonElement>(null);
@@ -55,6 +55,7 @@ const Tooltips = (props: TooltipsProps): JSX.Element => {
     <div
       className={[
         styles.wrapper,
+        styles[display],
         themeOverride,
         offsetLeft ? styles.left : '',
         offsetRight ? styles.right : '',

@@ -1,0 +1,45 @@
+﻿---
+ID: "b4138f1d-2055-4638-b313-73b753aa3c1a"
+Parent: "4590ff80-a7c8-49f7-9c40-21b45d29e94e"
+Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions/Page Data/FAQ Block Default/FAQ Question 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1d63eaee-6a20-4bd9-894d-9902c8fdd2d0"
+      Hint: Answer
+      Value: |
+        <p>A PCI usually takes between one and two hours, although sometimes it can take longer. The typical PCI procedure steps are as follows:</p>
+        <ul class="tick">
+        <li>You’ll be given a local anaesthetic to numb your groin or wrist. You may also be given a sedative to help you relax.</li>
+        <li>A small tube will be inserted into your artery. A catheter is then placed inside that tube.</li>
+        <li>The catheter will have a small, deflated balloon attached to it. This is guided into place using an X-ray.</li>
+        <li>The balloon is inflated, which opens your artery.</li>
+        <li>A stent, made of wire mesh, will be inserted to keep the artery open.</li>
+        <li>The balloon and catheter are then removed, leaving the stent in position.</li>
+        </ul>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T165237Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6fb571ec-dcfc-4142-b939-0146ffcaef1a"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Find a &lt;strong&gt;PCI consultant&lt;/strong&gt;" linktype="external" url="https://www.hcahealthcare.co.uk/finder" anchor="" target="" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241125T213327Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+    - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
+      Hint: Question
+      Value: "What happens during a PCI?"

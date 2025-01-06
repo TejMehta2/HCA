@@ -14,6 +14,7 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -69,9 +70,15 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
+  const componentAnchorId = generateHtmlSafeId(
+    props?.fields?.Title?.value,
+    props?.params?.TableOfContentsLinkTitle
+  );
+
   return (
     <>
       <DynamicImageAndTextBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={imageAlignment}
         imageKeepAspectRatio={keepAspectRatio}
@@ -82,12 +89,14 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
           </Text>
         }
         header={
-          <Text
-            tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
-          >
-            <JssText field={props.fields?.Title} />
-          </Text>
+          <>
+            <Text
+              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-2'}
+            >
+              <JssText field={props.fields?.Title} />
+            </Text>
+          </>
         }
         image={
           <NextJssImage

@@ -28,6 +28,7 @@ interface PagesFields {
   text?: { value?: string };
   image?: { jsonValue: ImageField };
   url?: { path?: string };
+  proxyurl?: { path?: string };
 }
 
 interface Fields {
@@ -130,71 +131,79 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
       }
       link={link || <></>}
     >
-      {props.fields?.data?.item?.pages?.PagesList?.map((cards, index) => (
-        <CardContent
-          key={index}
-          image={
-            showImage ? (
-              cards.abstractImage?.jsonValue.value?.src &&
-              cards.abstractImage?.jsonValue.value?.class !== 'scEmptyImage' ? (
-                <NextJssImage
-                  field={cards.abstractImage.jsonValue}
-                  editable={false}
-                  next={{
-                    width: 500,
-                    height: 400,
-                    sizes: '(max-width: 768px) 100vw, 30vw',
-                  }}
-                />
-              ) : (
-                <NextJssImage
-                  field={cards.image?.jsonValue}
-                  editable={false}
-                  next={{
-                    width: 500,
-                    height: 400,
-                    sizes: '(max-width: 768px) 100vw, 30vw',
-                  }}
-                />
-              )
-            ) : undefined
-          }
-          title={
-            <Text
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-              variation="heading-1"
-            >
-              {cards.abstractTitle?.value ? (
-                <JssText field={cards.abstractTitle} />
-              ) : (
-                <JssText field={cards.title} />
-              )}
-            </Text>
-          }
-          bodyCopy={
-            cards?.text ? (
-              <Text tag="p" variation="body-large">
-                {cards.abstractText?.value ? (
-                  <RichText tag="span" field={cards.abstractText} />
+      {props.fields?.data?.item?.pages?.PagesList?.map((cards, index) => {
+        const cardCtaUrl = cards?.proxyurl?.path
+          ? cards?.proxyurl?.path
+          : cards?.url?.path;
+
+        return (
+          <CardContent
+            key={index}
+            image={
+              showImage ? (
+                cards.abstractImage?.jsonValue.value?.src &&
+                cards.abstractImage?.jsonValue.value?.class !==
+                  'scEmptyImage' ? (
+                  <NextJssImage
+                    field={cards.abstractImage.jsonValue}
+                    editable={false}
+                    next={{
+                      width: 500,
+                      height: 400,
+                      sizes: '(max-width: 768px) 100vw, 30vw',
+                    }}
+                  />
                 ) : (
-                  <RichText tag="span" field={cards.text} />
+                  <NextJssImage
+                    field={cards.image?.jsonValue}
+                    editable={false}
+                    next={{
+                      width: 500,
+                      height: 400,
+                      sizes: '(max-width: 768px) 100vw, 30vw',
+                    }}
+                  />
+                )
+              ) : undefined
+            }
+            title={
+              <Text
+                tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
+                variation="heading-1"
+              >
+                {cards.abstractTitle?.value ? (
+                  <JssText field={cards.abstractTitle} />
+                ) : (
+                  <JssText field={cards.title} />
                 )}
               </Text>
-            ) : undefined
-          }
-          link={
-            <a href={cards?.url?.path}>
-              <RichText
-                tag="span"
-                field={{
-                  value:
-                    props.fields?.data?.item?.cTACardText?.jsonValue?.value,
-                }}
-              />
-            </a>
-          }
-        />
-      ))}
+            }
+            bodyCopy={
+              cards?.text ? (
+                <Text tag="p" variation="body-large">
+                  {cards.abstractText?.value ? (
+                    <RichText tag="span" field={cards.abstractText} />
+                  ) : (
+                    <RichText tag="span" field={cards.text} />
+                  )}
+                </Text>
+              ) : undefined
+            }
+            link={
+              cardCtaUrl ? (
+                <a href={cardCtaUrl}>
+                  <RichText
+                    tag="div"
+                    field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                  />
+                </a>
+              ) : (
+                <></>
+              )
+            }
+          />
+        );
+      })}
     </CarouselCards>
   );
 };

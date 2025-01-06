@@ -178,7 +178,7 @@ export const Default = (props: StepProps): JSX.Element => {
   );
   const consultantsSlugs: any = serverSideData?.LiveDiaryConsultantsSlugs;
   const doctifyPhoneSlugs: any = serverSideData?.DoctifyPhoneConsultantsSlugs;
-  //console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
+  // console.log('doctifyPhoneSlugs', doctifyPhoneSlugs);
   const { searchString, setSearchString, setKeywordId } = useContext(
     ConsultantFinderContext
   );
@@ -503,6 +503,7 @@ export const Default = (props: StepProps): JSX.Element => {
     if (URLprams.length === 0) {
       setLoading(false);
       setPageNotFound(true);
+      router.push('/finder/step-intro');
       return;
     }
 
@@ -968,7 +969,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       slug={consultant?.slug}
                       keywords={consultant?.keywords || null}
                       hospitals={consultant?.practices || null}
-                      reviewsCount={consultant?.overallExperience || 0}
+                      reviewsCount={consultant?.averageRating || 0}
                       reviewsTotal={consultant?.reviewsTotal || 0}
                       doctifyLogo={
                         <JssImage field={props.fields.DoctifyLogoImage} />
@@ -1093,11 +1094,6 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
             </div>
           </>
-        )}
-        {router.isReady && pageNotFound && (
-          <Container marginTop="spacing-5" marginBottom="spacing-5">
-            Page not found
-          </Container>
         )}
       </div>
     );

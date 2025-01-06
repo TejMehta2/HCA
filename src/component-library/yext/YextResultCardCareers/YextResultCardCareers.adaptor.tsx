@@ -3,28 +3,35 @@ import Text from '../../foundation/Text/Text';
 import YextResultCardCareers from './YextResultCardCareers';
 // import { CardProps } from '@yext/search-ui-react';
 import Button from '../../core-components/Button/Button';
+import Job from '../../types/yext/jobs';
+import { CardProps } from '@yext/search-ui-react';
 
-const YextResultCardCareersAdaptor = () // props: CardProps<unknown>
-: JSX.Element => {
-  // const { result } = props;
-  // const { rawData } = result;
-  // const {} = rawData;
-  const location = 'Head office - London';
-  const clinical = 'Clinical';
-  const timing = 'Full time';
-  const title = (
-    <Text variation={'heading-1'}>EHR Registration Scheduling Change Lead</Text>
-  );
+const YextResultCardCareersAdaptor = (props: CardProps<Job>): JSX.Element => {
+  const { result } = props;
+  const { rawData } = result;
+  const {
+    landingPageUrl,
+    c_jobLocation,
+    c_employmentType,
+    name,
+    c_jobFunction,
+  } = rawData;
+  const title = <Text variation={'heading-1'}>{name}</Text>;
   const cta = (
     <Button contentVariation={'full-width'} variation={'full'} size={'small'}>
-      <a href="#">Read More & Apply</a>
+      <a href={landingPageUrl}>
+        <span>
+          <span>Read More & </span>
+          <strong>Apply</strong>
+        </span>
+      </a>
     </Button>
   );
   return (
     <YextResultCardCareers
-      location={location}
-      clinical={clinical}
-      timing={timing}
+      location={c_jobLocation}
+      clinical={c_jobFunction}
+      timing={c_employmentType}
       title={title}
       cta={cta}
     />

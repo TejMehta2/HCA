@@ -12,9 +12,10 @@ const CardBlock = (props: CardBlockProps): JSX.Element => {
     variation = '3-columns',
     gapSize = 'large',
     cta,
+    id,
   } = props;
   return (
-    <Themes theme={theme}>
+    <Themes id={id} theme={theme}>
       <div className={styles.wrapper}>
         <div className={styles.block}>
           <div

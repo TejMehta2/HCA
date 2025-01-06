@@ -1,0 +1,48 @@
+﻿---
+ID: "83a3005a-c95d-4d62-83cd-c3547a06d0d7"
+Parent: "12f34b20-353a-41b8-8f89-433b844f5395"
+Template: "44ec72d6-a82e-4f4b-848e-bc20a7361204"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Service Pages/Cancer Care"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{6095C178-8A19-49C7-BF0B-A5B0C8ACB853}" />
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231204T124958Z
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6854498c-4804-4137-a0ea-2a0a963f3558"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{FDC34E93-2513-4493-978B-F4FE3DBED33E}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: 
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241126T213147Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Cancer Care
+    - ID: "f75ec234-5a41-49cb-a275-fbb100b0c23b"
+      Hint: AbstractImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/cd89ffff6a6f49c1adb99b38a8be80ac?v=36a57844" dam-id="yl3T7bN2R3Ox2tggdbx2tw" width="4500" height="2250" alt="Sitting on beach-486858785.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231822/thumbnail" />

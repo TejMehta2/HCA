@@ -1,0 +1,8 @@
+@use '../core-components/TickList/TickList.module.scss' as *;
+
+/* Utility classes which RTE editors can manually add to HTML */
+
+/* Styles a ul and li with tick icons */
+.tick {
+  @extend %tick-list;
+}

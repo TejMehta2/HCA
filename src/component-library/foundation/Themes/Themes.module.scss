@@ -17,6 +17,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
   }
 }
 
+.wrapper {
+  scroll-margin-top: $spacing-11;
+}
+
 .A-HCA-White {
   @include apply-theme-a-white;
 }

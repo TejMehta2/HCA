@@ -1,0 +1,97 @@
+import React from 'react';
+import {
+  Field,
+  ImageField,
+  Text as JssText,
+  RichText as JssRichText,
+  useSitecoreContext,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import Accreditations from '@component-library/careers/Accreditations/Accreditations';
+import Themes from '@component-library/foundation/Themes/Themes';
+
+interface CardFields {
+  fields?: {
+    Title?: Field<string>;
+    Text?: Field<string>;
+    Image?: ImageField;
+  };
+}
+
+interface Fields {
+  Cards?: CardFields[];
+}
+
+type ImageTextListProps = {
+  params?: Params;
+  fields?: Fields;
+};
+
+const ImageTextListDefaultComponent = (
+  props: ImageTextListProps
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            ImageTextList. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
+
+interface ImageTextListColumnsProps extends ImageTextListProps {
+  columns: 2 | 3;
+}
+
+export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+  const { columns = 2 } = props;
+  if (!props.fields) {
+    return <ImageTextListDefaultComponent {...props} />;
+  }
+
+  if (!props.fields?.Cards?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
+  return (
+    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+      <Accreditations
+        columns={columns}
+        items={
+          props.fields?.Cards?.map((cards) => ({
+            text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
+            title: <JssText tag={'span'} field={cards.fields?.Title} />,
+            logo: (
+              <NextJssImage
+                field={cards?.fields?.Image}
+                editable={false}
+                next={{
+                  width: 643,
+                  height: 605,
+                }}
+              />
+            ),
+          })) || []
+        }
+      />
+    </Themes>
+  );
+};
+
+export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
+  if (!props.fields) {
+    return <ImageTextListDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} columns={3} />;
+};

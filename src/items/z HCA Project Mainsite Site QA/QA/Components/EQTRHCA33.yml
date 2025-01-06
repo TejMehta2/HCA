@@ -4,6 +4,9 @@ Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33"
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 4200
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: 
@@ -73,8 +76,21 @@ Languages:
               s:id="{E2ACB40C-B73B-4BE1-8B5C-4498D9920248}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BEA48E2B2-C94A-44A0-AEBF-6CB1232508B8%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
               s:ph="/headless-main/cta-buttons-1" />
+            <r
+              uid="{C46F5C59-CBBE-4AFA-B1DD-2236E3F625DA}"
+              s:par="HeadingBeforeTitle=1&amp;HeadingTag&amp;HeadingSize=display-1&amp;GridParameters&amp;FieldNames=%7BBEFE0627-542F-4DDA-A24D-AE90D457D820%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1&amp;HeadlineBeforeTitle=1" />
+            <r
+              uid="{BB7A8081-B8F4-4EF6-A863-0F55BA0CF104}"
+              p:after="*[1=2]"
+              s:ds="local:/Data/Header With Image/Doctify"
+              s:id="{81FB8D66-F173-45D5-B89B-0164FC6063AD}"
+              s:par="GridParameters&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=7"
+              s:ph="/headless-main/header-with-image-1" />
           </d>
         </r>
+    - ID: "25ad52f7-bae0-4ad4-9032-edc7050e981c"
+      Hint: Heading
+      Value: This is heading
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240101T085640Z
@@ -88,10 +104,15 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
       Hint: Text
-      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
+      Value: |
+        <ul class="tick">
+        <li>The UK’s No.1 for private cardiac care</li>
+        <li>More than 500 PCI procedures performed every year</li>
+        <li>99% of our patients would recommend us</li>
+        </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29686bdd-b6b0-4c75-8657-091cd410c58c"
+      Value: "dd1932a3-5e4b-4823-a39e-f3ba632732c7"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -100,9 +121,12 @@ Languages:
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
+    - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
+      Hint: AbstractText
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T165054Z
+      Value: 20241127T163818Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA33

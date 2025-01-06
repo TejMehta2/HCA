@@ -1,0 +1,62 @@
+﻿---
+ID: "02ff094d-bce6-485f-b8cb-427bf6928dad"
+Parent: "23482938-20f8-4cc0-b996-4c13826ac768"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Timeline/Page Data/Content Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T073045Z
+    - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
+      Hint: Heading
+      Value: your patient journey
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: "From consultation to aftercare: Your time with HCA Healthcare UK"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "46b7ef34-b25e-4e53-8aa0-6aac113c8d28"
+    - ID: "a6c561c5-93b4-4722-b42e-4dff83785d8a"
+      Hint: Text
+      Value: |
+        <p>From the moment you step through the door, until the time you&rsquo;re ready to leave, we want you to feel as comfortable as possible with us, every step of the way.</p>
+        <p>Along with state-of-the-art treatment and luxurious surroundings, one of the ways we can put you at ease is to prepare you for your visit and let you know what to expect at each stage.</p>
+        <p>If you have any questions that aren&rsquo;t answered here, or in the FAQ section below, please don&rsquo;t hesitate to get in touch. Our team will be happy to help in any way they can.</p>
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="See more" url="/HCA/HCA-Main/Home/QA/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: Read the story
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241126T213107Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {14BA6168-84C2-467E-A144-E3F007A6FACC}
+        {180D4DFA-29B1-486F-A98D-35869920BFB3}
+        {B299C24A-6C6B-4FC3-9424-B1FD65B34153}
+        {EE38B9A3-A34C-40A5-8F16-3A9439D44D91}
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}

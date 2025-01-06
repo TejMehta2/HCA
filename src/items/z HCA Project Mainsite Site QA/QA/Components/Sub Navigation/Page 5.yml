@@ -1,0 +1,41 @@
+﻿---
+ID: "c858db43-1c12-4734-b81b-d479ab6cfa9d"
+Parent: "cc9b2e51-96da-46c6-92b6-0cfb14b46e00"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation/Page 5"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{273A9DA4-1126-4892-BD3B-F9FA5274B78C}"
+              s:ds="{8A0424DB-69D0-4941-95F7-F17D1DE82572}"
+              s:id="{10D6FF17-34E1-43A6-8C2C-E83696D077ED}"
+              s:par="Columns&amp;HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241119T205749Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8218ed40-8f17-4d69-b257-97b6befa80e4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241121T151920Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Page 5

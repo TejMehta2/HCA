@@ -1,0 +1,36 @@
+﻿---
+ID: "8a0424db-69d0-4941-95f7-f17d1de82572"
+Parent: "5f797966-48d9-4ead-8d7f-26526963b39f"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Sub Navigation/Page Data/sub nav datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241119T205542Z
+    - ID: "38b7aa03-2cf6-46ef-acb1-47d5e5c6bc64"
+      Hint: IncludeRootPage
+      Value: 1
+    - ID: "5715c609-4770-4ed1-afc1-b477d428c22b"
+      Hint: Title
+      Value: Jump to
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "865e673c-d0ff-438d-9c63-15a1623059b6"
+    - ID: "a44708f4-261e-43ca-9b5e-33142fc6325b"
+      Hint: DefaultNavigationImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/4e7b5ed0dc44458196b89637a6e42d5d?v=2ee2de81" dam-id="-vygWrXNS1iYy-feSLdzkg" width="2000" height="1335" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{CC9B2E51-96DA-46C6-92B6-0CFB14B46E00}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241121T161925Z

@@ -1,0 +1,71 @@
+﻿---
+ID: "1d30e244-d715-46d2-b64e-dbbd8893e804"
+Parent: "38f04648-beb2-458c-9f7e-6d4309cc308c"
+Template: "58c7ade7-c0c4-4fdf-b844-fbe221c162bd"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Accordions/Page Data/Intro Block Image"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "235db187-da6f-4bb9-a6ad-a281cb8af961"
+      Hint: Image
+      Value: |
+        <image mediaid="{5FE5F242-8BA5-4053-9943-AD91D8128834}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231205T085440Z
+    - ID: "468df739-48d8-4d6b-851a-08e1fe55b9b9"
+      Hint: Headline
+      Value: PCI surgery at HCA UK
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "7b92fe8b-f992-41d1-bd78-93b8e82b81d1"
+      Hint: Text
+      Value: |
+        <p>We&rsquo;re the UK&rsquo;s leading private provider of PCI care, trusted by more patients than any other hospital group. That experience means our leading consultants are able to deliver better outcomes for patients, from diagnosis right through to treatment, whether simple or complex.
+        </p>
+        <p>With appointments confirmed within 24 hours, and test results within two working days, you&rsquo;ll have fast access to the full range of state-of-the-art cardiac care, from non-invasive treatments to complex surgery and aftercare.
+        </p>
+        <p>It&rsquo;s why 99% of our patients say they would recommend us.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3701d5b2-f8e0-453f-b6a9-c8cff1568f8d"
+    - ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
+      Hint: CQCStatus
+      Value: "{FF92C63E-73C3-4BEF-B709-3E16A890459A}"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="About &lt;b&gt;HCA Healthcare UK&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "b9bb0431-2236-460a-8136-154adf67e91c"
+      Hint: Title
+      Value: "Why choose us?"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
+      Hint: DoctifyReviews
+      Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
+    - ID: "d0db9d3f-ad94-4795-ae43-5c3ce95ea702"
+      Hint: Counters
+      Value: |
+        {E70FB9D4-C045-4520-BB9D-AF0F63BC0CEE}
+        {AAEBE549-63EC-4A69-AA34-4F39F673F77D}
+        {BE3B73D7-BC50-4AA0-A2C3-54A88A46C024}
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241125T214849Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"

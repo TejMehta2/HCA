@@ -46,6 +46,10 @@ export interface MainNavigationTabChild {
       link?: ExtendedLink;
     }[];
   };
+  showOnMobile: {
+    boolValue: boolean;
+    value: '1' | '0';
+  };
 }
 
 export interface MainNavigationTab {

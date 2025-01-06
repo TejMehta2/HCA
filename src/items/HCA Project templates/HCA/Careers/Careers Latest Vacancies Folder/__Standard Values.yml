@@ -1,0 +1,33 @@
+﻿---
+ID: "f87534a7-621f-49da-bc45-666400b5bec3"
+Parent: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Template: "cc13ad3c-e10e-4e1e-b5b3-b30d74c53def"
+Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {2DFBDC13-353D-4F15-A9F5-0E7E8B6BAA73}
+    {CC13AD3C-E10E-4E1E-B5B3-B30D74C53DEF}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "dff35438-abad-42d8-8d8a-cc5b420568cd"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240909T134814Z

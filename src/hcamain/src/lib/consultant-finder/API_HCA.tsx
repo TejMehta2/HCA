@@ -85,7 +85,6 @@ async function __getActiveConsultantSlugs(): Promise<string[]> {
         // need to cache these requests so we don't make hundreds of them
         // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
         const res = await fetch(consultantSlugsURL, {
-          cache: 'force-cache',
           next: {
             revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
           },
@@ -197,7 +196,6 @@ async function __getActiveLiveDiaryConsultantSlugs(): Promise<string[]> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
@@ -282,7 +280,6 @@ async function __getIgnoreReviewsConsultantSlugs(): Promise<string[]> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
@@ -396,7 +393,6 @@ async function __getDoctifyPhoneNumberConsultantSlugs(): Promise<string[]> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(ldbConsultantSlugsURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
@@ -551,7 +547,6 @@ async function __getHolidays(): Promise<string[]> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(holidayURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
@@ -650,7 +645,6 @@ async function __getCMAs(): Promise<any[]> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },
@@ -693,7 +687,6 @@ export async function getCMA(id: string): Promise<any> {
       // need to cache these requests so we don't make hundreds of them
       // ... https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch
       const res = await fetch(cmaURL, {
-        cache: 'force-cache',
         next: {
           revalidate: revalidate.now() || revalidate.noCache() ? false : 3600,
         },

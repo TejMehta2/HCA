@@ -4,5 +4,11 @@
       "uat": false,
       "prod": false
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cronAPI/PushData?key=HCA123!!&useEnvVarCommandLine=WORKDAY_PUSH_COMMAND",
+      "schedule": "*/5 * * * *"
+    }
+  ]
 }

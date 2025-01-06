@@ -7,6 +7,9 @@ SharedFields:
 - ID: "4a749557-242b-4372-8a20-b2db9d406301"
   Hint: __AutoThumbnails
   Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 9800
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
   Value: 
@@ -54,14 +57,14 @@ Languages:
       Value: Hip pain
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b7c4f2b7-1f1c-4ff4-a7f5-93d05d3506a9"
+      Value: "279c5325-907f-4438-be21-010c95b2dce1"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240513T201845Z
+      Value: 20241127T161141Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Hip pain

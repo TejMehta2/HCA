@@ -35,6 +35,6 @@ export const config = {
   matcher: [
     '/',
     /*exclude Finder and sublevels as these are delegated to their own pages*/
-    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|webhooks/sitecore/|api-layer/|referrer/).*)',
+    '/((?!api/|_next/|healthz|sitecore/api/|-/|favicon.ico|favicon|android-chrome-*|sc_logo.svg|webhooks/sitecore/|api-layer/|referrer/|careers/vacancy/).*)',
   ],
 };

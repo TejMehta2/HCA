@@ -215,10 +215,8 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                   const { data } = item;
                   const {
                     abstractTitle,
-                    abstractText,
                     abstractImageUrl,
                     title,
-                    description,
                     imageUrl,
                     primaryImageUrl,
                     url,
@@ -248,9 +246,6 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
                         <a href={url}>
                           {abstractTitle ? abstractTitle : title}
                         </a>
-                      </Text>
-                      <Text tag={'div'} variation={'body-large'} isHtml={true}>
-                        {abstractText ? abstractText : description}
                       </Text>
                       <div>
                         {!!typeName && (

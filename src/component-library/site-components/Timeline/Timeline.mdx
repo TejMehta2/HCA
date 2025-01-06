@@ -1,0 +1,69 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks'
+import * as TimelineStories from './Timeline.stories'
+
+<Meta of={TimelineStories} />
+
+# Timeline
+
+## Description
+
+The Timeline component displays a sticky (on desktop sizes) header block and a timeline.
+
+It is intended to be used in landing pages to convey a process which has multiple steps. E.g. the steps to get a knee replacement.
+
+It can be composed like this:
+
+``` tsx
+<Timeline
+  subheading={
+    <Text variation="subheading-1">your patient journey</Text>
+  }
+  heading={
+    <Text variation="display-3">
+      From consultation to aftercare: Your time with HCA Healthcare UK
+    </Text>
+  }
+  copy={
+    <Text variation="body-large">
+      From the moment you step through the door, until the time you&apos;re
+      ready to leave, we want you to feel as comfortable as possible with us,
+      every step of the way. Along with state-of-the-art treatment and
+      luxurious surroundings, one of the ways we can put you at ease is to
+      prepare you for your visit and let you know what to expect at each
+      stage. If you have any questions that aren&apos;t answered here, or in
+      the FAQ section below, please don&apos;t hesitate to get in touch. Our
+      team will be happy to help in any way they can.
+    </Text>
+  }
+  ctas={
+    <>
+      <TextLink>
+        <a href="#">
+          <span>See more</span>
+          <Icons iconName="iconArrowRight" />
+        </a>
+      </TextLink>
+    </>
+  }
+>
+  <TimelineStep
+    index={<Text variation="display-5">01</Text>}
+    heading={<Text variation="display-5">Initial consultation</Text>}
+    copy={
+      <Text variation="body-large">
+        If you&apos;re concerned about your heart, we can offer you a GP
+        appointment, often within 24 hours. You&apos;ll be able to discuss
+        your symptoms and medical history with the consultant, and
+        they&apos;ll arrange any imaging or diagnostic tests – often on
+        the same day.
+      </Text>
+    }
+    link={
+      <a href="#">
+        <span>Read the story</span>
+      </a>
+    }
+  />
+  {/* Additional timeline steps */}
+</Timeline>
+```

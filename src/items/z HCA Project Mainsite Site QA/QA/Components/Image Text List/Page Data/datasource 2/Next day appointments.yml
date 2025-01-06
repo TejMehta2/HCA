@@ -1,0 +1,41 @@
+﻿---
+ID: "1f55857c-221f-43e3-a437-2dbbae3067e0"
+Parent: "b362573a-ad33-4324-a7fd-26e83ed671b5"
+Template: "feaa953e-fedc-4191-a1c0-36992f53d08a"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource 2/Next day appointments"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T151326Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "57f21df8-fa55-4267-8bb7-743b504d1ddd"
+      Hint: Title
+      Value: Next day appointments
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b4c2b84d-fedc-4466-b468-839b3f1860f0"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ce8136f4-2e0b-4236-af51-e522ee8ab699"
+      Hint: Text
+      Value: <p>You’ll have access to to a cardiac consultant in as little as 24 hours.</p>
+    - ID: "d8fecc64-a0b7-4e73-b436-929a62a044ee"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/e0358ec9547d4dfa82b0e87d250c69d4?v=9ef814f0" dam-id="nwlQT38MT-arl_39DhtEfg" width="38" height="42" alt="Icon.png" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/234049/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241128T000545Z

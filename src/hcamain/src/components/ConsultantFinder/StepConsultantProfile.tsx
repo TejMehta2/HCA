@@ -61,6 +61,7 @@ import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
+import router from 'next/router';
 
 interface Fields {
   EnquireNowLink: LinkField;
@@ -241,12 +242,20 @@ export const Default = (props: StepProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serverSideData]); // only trigger fetch on serverside data update
 
+  // if (
+  //   !serverSideData ||
+  //   serverSideData.ErrorWithProfileData ||
+  //   !serverSideData.ProfileJson
+  // ) {
+  //   return <div>Profile is missing data, please retry later</div>;
+  // }
+
   if (
     !serverSideData ||
     serverSideData.ErrorWithProfileData ||
     !serverSideData.ProfileJson
   ) {
-    return <div>Profile is missing data, please retry later</div>;
+    router.push('/404-c');
   }
 
   // Callback function to handle tab clicks
@@ -363,14 +372,14 @@ export const Default = (props: StepProps): JSX.Element => {
   }
 
   if (props.fields) {
-    console.log(
-      'serverSideData?.IgnoreReviewsConsultant',
-      serverSideData?.IgnoreReviewsConsultant
-    );
-    console.log(
-      'serverSideData?.DoctifyPhoneNumberConsultant',
-      serverSideData?.DoctifyPhoneNumberConsultant
-    );
+    // console.log(
+    //   'serverSideData?.IgnoreReviewsConsultant',
+    //   serverSideData?.IgnoreReviewsConsultant
+    // );
+    // console.log(
+    //   'serverSideData?.DoctifyPhoneNumberConsultant',
+    //   serverSideData?.DoctifyPhoneNumberConsultant
+    // );
     return (
       <div id={id ? id : undefined}>
         {serverSideData && (
@@ -464,7 +473,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         topSpecialty[0]?.name || ''
                       }&keywordId=${
                         topSpecialty[0]?.id || ''
-                      }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=700&limit=12&offset=0`}
+                      }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`}
                     >
                       {topSpecialty[0]?.name}
                     </Link>
@@ -567,7 +576,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.overallExperience
+                      serverSideData?.ProfileJson?.review?.averageRating
                     }
                     reviewsText="Patients"
                     reviewsTotal={
@@ -872,7 +881,7 @@ export const Default = (props: StepProps): JSX.Element => {
                     hasDoctifyBranding={true}
                     isConsultantProfileReviews={true}
                     reviewsCount={
-                      serverSideData?.ProfileJson?.review?.overallExperience
+                      serverSideData?.ProfileJson?.review?.averageRating
                     }
                     reviewsText="Patients"
                     reviewsTotal={
