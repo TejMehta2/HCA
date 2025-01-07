@@ -38,12 +38,17 @@
   }
 }
 
+.title {
+  max-width: max(50%, #{px-to-rem(552)});
+}
+
 .subtitle {
   margin-bottom: px-to-rem(8);
 }
 
 .body {
   margin-top: $spacing-6;
+  max-width: max(50%, #{px-to-rem(552)});
 
   &:empty {
     display: none;
