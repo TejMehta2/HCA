@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   ImageField,
@@ -17,6 +17,8 @@ import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const DynamicCardBlogBlock = dynamic(
   () =>
@@ -90,6 +92,25 @@ const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => {
 
 export const Carousel = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  const { addComponent } = useInPageNavigationContext();
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents &&
+    props.fields?.data?.item !== undefined;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
@@ -97,6 +118,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 
   return (
     <CarouselCards
+      id={componentAnchorId}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -212,6 +234,27 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 export const Standard = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents &&
+    props.fields?.data?.item !== undefined;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
@@ -219,6 +262,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
   return (
     <>
       <DynamicCardBlogBlock
+        id={componentAnchorId}
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}

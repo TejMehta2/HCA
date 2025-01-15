@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   LinkField,
@@ -16,6 +16,8 @@ import { Accordions } from '@component-library/components/Accordions/Accordions.
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type CTAIconFields = {
   fields?: {
@@ -111,8 +113,28 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
 };
 
 export const Default = (props: FAQProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props?.fields?.Questions;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
   }
@@ -131,6 +153,7 @@ export const Default = (props: FAQProps): JSX.Element => {
       </Head>
 
       <AccordionsBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
@@ -192,6 +215,25 @@ export const Default = (props: FAQProps): JSX.Element => {
 };
 
 export const RightAligned = (props: FAQProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props?.fields?.Questions;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props?.fields?.Questions) {
@@ -212,6 +254,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
           (props.fields.Text?.value || isExperienceEditor) && (

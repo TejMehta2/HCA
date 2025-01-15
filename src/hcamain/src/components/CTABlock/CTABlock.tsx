@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   RichText,
@@ -10,6 +10,8 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface Fields {
   Heading?: Field<string>;
@@ -35,6 +37,24 @@ const CTABlockDefaultComponent = (props: CTABlockProps): JSX.Element => {
 };
 
 export const Default = (props: CTABlockProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && props.fields;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   if (!props.fields) {
     return <CTABlockDefaultComponent {...props} />;
@@ -43,6 +63,7 @@ export const Default = (props: CTABlockProps): JSX.Element => {
 
   return (
     <CTABlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       subheader={
         <Text tag="p" variation="subheading-1">

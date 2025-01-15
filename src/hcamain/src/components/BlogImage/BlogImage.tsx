@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ImageField,
   useSitecoreContext,
@@ -7,6 +7,8 @@ import BlogContent from '@component-library/site-components/BlogContent/BlogCont
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface Fields {
   Image?: ImageField;
@@ -36,8 +38,26 @@ const BlogImageDefaultComponent = (props: BlogImageProps): JSX.Element => {
 
 export const Default = (props: BlogImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  const { addComponent } = useInPageNavigationContext();
 
-  if (!props.fields && !sitecoreContext?.route?.fields?.Image) {
+  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
+  const hideEmptyComponent =
+    !props.fields && !sitecoreContext?.route?.fields?.Image;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
+  if (hideEmptyComponent) {
     return <BlogImageDefaultComponent {...props} />;
   }
 
@@ -55,6 +75,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       <RichText
         additionalStyles={props?.params?.styles}
         imageKeepAspectRatio={keepAspectRatio}
+        id={componentAnchorId}
       >
         <figure>
           <NextJssImage
@@ -77,6 +98,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         theme={props.params?.Theme || 'A-HCA-White'}
         contentVariation="image"
         imageKeepAspectRatio={keepAspectRatio}
+        id={componentAnchorId}
       >
         <figure>
           <NextJssImage

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Text as JssText,
@@ -8,6 +8,8 @@ import Params from 'src/types/params';
 import ArticleCategories from '@component-library/site-components/ArticleCategories/ArticleCategories';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type CategoriesFields = {
   displayName?: { value?: string };
@@ -44,12 +46,32 @@ const BlogCategoriesDefaultComponent = (
 );
 
 export const Default = (props: BlogCategoriesProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && props.fields !== undefined;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <BlogCategoriesDefaultComponent {...props} />;
   }
 
   return (
     <ArticleCategories
+      id={componentAnchorId}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text

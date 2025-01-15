@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   GetStaticComponentProps,
   Text as JssText,
@@ -25,6 +25,8 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -41,6 +43,25 @@ const BlogRelatedArticlesDefaultComponent = (
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields?.data?.item;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity =
@@ -195,6 +216,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   }
 
   if (!cardsList?.length && !isExperienceEditor) {
+    //TODO:remove from nav
     return <></>;
   }
 
@@ -204,6 +226,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
 
   return (
     <CarouselCards
+      id={componentAnchorId}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -249,10 +272,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           ) : (
             <></>
           )
+        ) : props.fields.data.item.cTALink?.jsonValue ? (
+          <JssLink field={props.fields.data.item.cTALink?.jsonValue}></JssLink>
         ) : (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue}
-          ></JssLink>
+          <></>
         )
       }
       theme={props.params?.Theme || 'A-HCA-White'}

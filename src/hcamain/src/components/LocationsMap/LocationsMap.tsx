@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Text as JssText,
@@ -15,6 +15,8 @@ import CardLocation from '@component-library/components/CardLocation/CardLocatio
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const DynamicOurLocations = dynamic(
   () => import('@component-library/site-components/OurLocations/OurLocations'),
@@ -73,6 +75,25 @@ const LocationsMapDefaultComponent = (
 );
 
 export const Default = (props: LocationsMapProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
@@ -183,6 +204,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
 
   return (
     <DynamicOurLocations
+      id={componentAnchorId}
       mapAspectRatio={3000 / 3444}
       headerProps={headerProps}
       locations={locationCards}

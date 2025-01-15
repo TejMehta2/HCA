@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   ImageField,
@@ -17,6 +17,8 @@ import Link from 'next/link';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type HCAIcon = {
   svgMarkup?: Field<string>;
@@ -98,10 +100,29 @@ const ConditionsDefaultComponent = (props: ConditionsProps): JSX.Element => {
 };
 
 export const WithImage = (props: ConditionsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
-  if (!props.fields) {
+  if (hideEmptyComponent) {
     return <ConditionsDefaultComponent {...props} />;
   }
   const { withImage = true } = props;
@@ -127,6 +148,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
   });
 
   if (!cardData?.length && !isExperienceEditor) {
+    //TODO: remove from nav
     return <></>;
   }
 
@@ -158,6 +180,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
 
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
@@ -25,6 +25,7 @@ import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -216,6 +217,26 @@ const returnFilteredCards = (
 };
 
 export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props?.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
@@ -237,6 +258,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     returnCards(props, patientStoriesCardsFiltered, false);
 
   if (!patientStoriesCards?.length && !isExperienceEditor) {
+    //TODO: Remove from nav
     return <></>;
   }
 
@@ -248,11 +270,6 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
   if (!props.fields?.data?.item) {
     return <PatientStoriesCardsDefaultComponent {...props} />;
   }
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
 
   return (
     <CardBlock
@@ -335,6 +352,26 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 };
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props?.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
@@ -354,6 +391,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     returnCards(props, patientStoriesCardsFiltered, false);
 
   if (!patientStoriesCards?.length && !isExperienceEditor) {
+    //TODO: Remove from nav
     return <></>;
   }
 
@@ -440,6 +478,25 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
 export const SliderWithLeftText = (
   props: PatientStoriesCardsProps
 ): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props?.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();

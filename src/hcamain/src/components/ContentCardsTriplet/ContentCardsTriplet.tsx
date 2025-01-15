@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Text as JssText,
@@ -14,6 +14,8 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import IconCtaBlock, {
   IconCtaBlockChild,
 } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type CTAIconFields = {
   fields?: {
@@ -60,6 +62,24 @@ const ContentCardsTripletDefaultComponent = (
 };
 
 export const Default = (props: ContentCardsTripletProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
@@ -71,7 +91,10 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
   }
 
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+    <Themes
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      id={componentAnchorId}
+    >
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
           return (

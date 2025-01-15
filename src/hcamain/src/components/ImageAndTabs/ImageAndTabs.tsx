@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Item,
@@ -12,6 +12,8 @@ import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type HCAIconFields = {
   fields?: {
@@ -52,11 +54,32 @@ const ImageAndTabsDefaultComponent = (
 };
 
 export const Default = (props: ImageAndTabsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <ImageAndTabsDefaultComponent {...props} />;
   }
+
   return (
     <TabsBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text

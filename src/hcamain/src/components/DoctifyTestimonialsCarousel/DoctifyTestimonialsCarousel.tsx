@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Field,
@@ -9,6 +9,8 @@ import {
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface TestimonialsFields {
   fields?: {
@@ -52,7 +54,25 @@ const DoctifyTestimonialsCarouselDefaultComponent = (
 export const Default = (
   props: DoctifyTestimonialsCarouselProps
 ): JSX.Element => {
-  if (!props.fields) {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
+  if (hideEmptyComponent) {
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
 
@@ -60,6 +80,7 @@ export const Default = (
 
   return (
     <CarouselReviews
+      id={componentAnchorId}
       rating={ratingAsNumber}
       reviewCount={
         <>

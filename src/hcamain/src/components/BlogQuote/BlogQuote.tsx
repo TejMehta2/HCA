@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Image,
@@ -13,6 +13,8 @@ import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface AuthorFields {
   fields?: {
@@ -53,8 +55,26 @@ const BlogQuoteDefaultComponent = (props: BlogQuoteProps): JSX.Element => {
 };
 
 export const Default = (props: BlogQuoteProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { alignment } = props;
-  if (!props.fields) {
+  if (hideEmptyComponent) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
@@ -136,7 +156,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlock}</figure>
       </RichText>
     );
@@ -146,6 +166,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={alignment ? `quote-${alignment}` : 'quote'}
+      id={componentAnchorId}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
@@ -153,7 +174,25 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
 };
 
 export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
-  if (!props.fields) {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
+  if (hideEmptyComponent) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
@@ -234,14 +273,17 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlock}</figure>
       </RichText>
     );
   }
 
   return (
-    <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+    <BlogContent
+      theme={props.params?.Theme || 'A-HCA-White'}
+      id={componentAnchorId}
+    >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
   );

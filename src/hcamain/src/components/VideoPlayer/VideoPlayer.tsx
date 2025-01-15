@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   ImageField,
@@ -16,6 +16,8 @@ import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type VideoProvidersFields = {
   name?: string;
@@ -54,6 +56,25 @@ const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const Default = (props: VideoPlayerProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
@@ -63,6 +84,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
 
   return (
     <VideoBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
@@ -120,12 +142,31 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
   return (
-    <figure>
+    <figure id={componentAnchorId}>
       {props.fields?.VideoUrl?.value ? (
         <VideoPlayer
           videoUrl={props.fields?.VideoUrl?.value}
@@ -148,6 +189,25 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
@@ -157,6 +217,7 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
 
   return (
     <VideoBlock
+      id={componentAnchorId}
       variation="side-by-side"
       theme={props.params?.Theme || 'A-HCA-White'}
       header={

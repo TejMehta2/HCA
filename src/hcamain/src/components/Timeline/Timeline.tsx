@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   ImageField,
@@ -15,6 +15,8 @@ import Timeline, {
   TimelineStep,
 } from '@component-library/site-components/Timeline/Timeline';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -75,6 +77,27 @@ const TimelineDefaultComponent = (props: TimelineProps): JSX.Element => {
 export const Default = (props: TimelineProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields?.data?.item) {
     return <TimelineDefaultComponent {...props} />;
   }
@@ -107,6 +130,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
   return (
     <>
       <Timeline
+        id={componentAnchorId}
         subheading={
           !isExperienceEditor ||
           props.fields?.data?.item?.heading?.jsonValue?.value ? (

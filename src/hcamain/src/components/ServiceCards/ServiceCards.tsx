@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   LinkField,
@@ -18,6 +18,8 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { MasonryCard } from '@component-library/site-components/MasonryCards/MasonryCards';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -84,6 +86,27 @@ const ServiceCardsDefaultComponent = (
 };
 
 export const Default = (props: ServiceCardsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent =
+    !props.fields?.data?.item?.services?.servicesList?.length;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
@@ -96,9 +119,12 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   ) {
     return <></>;
   }
+
   const headingTag = props.params?.HeadingTag || 'h2';
+
   return (
     <DynamicServiceCards
+      id={componentAnchorId}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text

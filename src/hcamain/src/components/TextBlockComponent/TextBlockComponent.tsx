@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   RichText as JssRichText,
@@ -14,6 +14,7 @@ import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface Fields {
   Heading?: Field<string>;
@@ -50,14 +51,28 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && props.fields;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
   }
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.Title?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
 
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>

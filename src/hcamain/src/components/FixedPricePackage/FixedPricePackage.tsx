@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   Text as JssText,
@@ -13,6 +13,8 @@ import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 interface Fields {
   Heading?: Field<string>;
@@ -43,13 +45,34 @@ interface IntegratedFixedPricedPackageProps extends FixedPricePackageProps {
 const IntegratedFixedPricedPackage = (
   props: IntegratedFixedPricedPackageProps
 ) => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <FixedPricePackageDefaultComponent {...props} />;
   }
   const phKey = `fixed-price-package-${props.params?.DynamicPlaceholderId}`;
+
   return (
     <>
       <ImageAndTextBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={props.imageAlignment}
         length="short"

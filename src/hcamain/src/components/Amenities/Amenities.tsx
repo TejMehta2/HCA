@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Field,
   ImageField,
@@ -15,6 +15,8 @@ import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 type HCAIconFields = {
   fields?: {
@@ -70,10 +72,12 @@ const outputAmenitiesList = (props: AmenitiesProps) => {
 
 const outputImageAndTextBlock = (
   props: AmenitiesProps,
-  alignment: imageAlignmentTypes
+  alignment: imageAlignmentTypes,
+  componentAnchorId: string | undefined
 ) => {
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       imageAlignment={alignment}
       length="short"
@@ -107,17 +111,54 @@ const outputImageAndTextBlock = (
 };
 
 export const ImageLeft = (props: AmenitiesProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents &&
+    props.fields !== undefined &&
+    tableOfContentsLinkTitle;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <AmenitiesDefaultComponent {...props} />;
   }
 
-  return outputImageAndTextBlock(props, 'left');
+  return outputImageAndTextBlock(props, 'left', componentAnchorId);
 };
 
 export const ImageRight = (props: AmenitiesProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && props.fields !== undefined;
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   if (!props.fields) {
     return <AmenitiesDefaultComponent {...props} />;
   }
 
-  return outputImageAndTextBlock(props, 'right');
+  return outputImageAndTextBlock(props, 'right', componentAnchorId);
 };

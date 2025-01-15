@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
@@ -24,6 +24,7 @@ import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -237,6 +238,26 @@ const returnCards = (props: LocationCardsProps, data: StaticProps) => {
 };
 
 export const Grid = (props: LocationCardsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props?.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
+
   const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
@@ -252,6 +273,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   const locationsCards = data && returnCards(props, data);
 
   if (!locationsCards?.length && !isExperienceEditor) {
+    //TODO:remove from the nav
     return <></>;
   }
 
@@ -260,11 +282,6 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
 
   return (
     <CardBlock
@@ -349,10 +366,30 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
 };
 
 export const Slider = (props: LocationCardsProps): JSX.Element => {
+  const { addComponent } = useInPageNavigationContext();
+
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+
+  const tableOfContentsLinkTitle =
+    props.params?.TableOfContentsLinkTitle ||
+    props?.fields?.data?.item?.title?.jsonValue?.value;
+  const hideEmptyComponent = !props.fields;
+  const includeInTableOfContents =
+    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
+
+  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
+
+  useEffect(() => {
+    if (includeInTableOfContents && tableOfContentsLinkTitle) {
+      addComponent({
+        Id: componentAnchorId,
+        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
+      });
+    }
+  }, [includeInTableOfContents]);
 
   if (!props.fields) {
     return <LocationCardsDefaultComponent {...props} />;
@@ -366,13 +403,9 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
-
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <>
