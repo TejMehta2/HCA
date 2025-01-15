@@ -36,8 +36,9 @@ interface Params {
   DynamicPlaceholderId?: string;
   Columns?: '2' | '3' | '4';
   Containerized?: '1' | '0'; // Appears only on RichText related components
-  KeepAspectRatio?: '1' | '0'; // Appears only on images in BlogImage and ImageAndTextBlock
+  KeepAspectRatio?: '1' | '0'; // Appears only on images in IntroBlock, BlogImage and ImageAndTextBlock
   ExcludeFromTableOfContents?: '1' | '0';
   TableOfContentsLinkTitle?: string;
+  DisableHeadersToggle?: '1' | '0'; // Appears only on images in IntroBlock and ImageAndTextBlock
 }
 export default Params;
