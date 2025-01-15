@@ -17,9 +17,10 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     cqc,
     doctify,
     children,
+    id,
   } = props;
   return (
-    <Themes theme="A-HCA-White">
+    <Themes theme="A-HCA-White" id={id}>
       <div
         className={[
           styles['intro-block'],

@@ -12,4 +12,5 @@ export interface AccordionsProps {
   accordions: Accordions;
   openIcon?: IconName;
   closeIcon?: IconName;
+  id?: string;
 }

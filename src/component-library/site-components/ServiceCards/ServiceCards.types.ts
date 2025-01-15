@@ -6,4 +6,5 @@ export interface ServiceCardsProps {
   subtitle: ReactNode | JSX.Element;
   bodyText: ReactNode | JSX.Element;
   cta?: ReactNode | JSX.Element;
+  id?: string;
 }

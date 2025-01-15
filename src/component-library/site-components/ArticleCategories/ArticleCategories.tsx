@@ -5,10 +5,10 @@ import Themes from '../../foundation/Themes/Themes';
 import Button from '../../core-components/Button/Button';
 
 const ArticleCategories = (props: ArticleCategoriesProps): JSX.Element => {
-  const { theme, title, categories } = props;
+  const { theme, title, categories, id } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} id={id}>
         <div className={styles.container}>
           {title}
           <div className={styles.categories}>
