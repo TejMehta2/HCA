@@ -216,7 +216,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   }
 
   if (!cardsList?.length && !isExperienceEditor) {
-    //TODO:remove from nav
+    //TODO: remove from nav
     return <></>;
   }
 

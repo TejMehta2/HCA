@@ -273,7 +273,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
   const locationsCards = data && returnCards(props, data);
 
   if (!locationsCards?.length && !isExperienceEditor) {
-    //TODO:remove from the nav
+    //TODO: remove from nav
     return <></>;
   }
 

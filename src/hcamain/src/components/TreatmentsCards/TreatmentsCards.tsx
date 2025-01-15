@@ -138,7 +138,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     : props.fields?.data?.contextItem?.treatments?.TreatmentsList;
 
   if (!cards?.length && !isExperienceEditor) {
-    //TODO:Remove from nav
+    //TODO: Remove from nav
     return <></>;
   }
 
