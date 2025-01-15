@@ -1,10 +1,6 @@
 /* eslint react/jsx-key: 0 */
 import React from 'react';
-import {
-  Component,
-  Result,
-  TableOfContentsProps,
-} from './TableOfContents.types';
+import { Component, Result } from './TableOfContents.types';
 import {
   PlaceholdersData,
   useSitecoreContext,
@@ -17,7 +13,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import Icons from '@component-library/foundation/Icons/Icons';
 import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
 
-export const Default = (props: TableOfContentsProps): JSX.Element => {
+export const Default = (): JSX.Element => {
   const context = useSitecoreContext();
 
   if (!context.sitecoreContext?.route?.placeholders) return <></>;
@@ -29,7 +25,7 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
   if (!navigableComponents) return <></>;
 
   return (
-    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+    <Themes theme={'A-HCA-White'} collapse={false}>
       <JumpToLinks
         heading={<Text variation="body-medium-medium">Jump to</Text>}
       >
