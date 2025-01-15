@@ -1,0 +1,56 @@
+﻿---
+ID: "587b6e3e-cb60-436f-b3b5-616502d6c18d"
+Parent: "204a849a-2e67-4de8-ba70-48d3b1d7d6f1"
+Template: "a8a00035-cad4-46e2-ad87-6ac603f9e911"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Content Cards Slider With Overlay/Heidi"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0de45ab1-77e5-42da-8afe-f583623ae991"
+      Hint: Title
+      Value: Heidi, Chief Nursing Officer, HCA UK at UCH
+    - ID: "1a208089-080a-453e-8109-e522481d2088"
+      Hint: Text
+      Value: <p>&ldquo;At HCA UK, you have everything you need to deliver brilliant patient care in an inspiring environment &ndash; and we&rsquo;re always looking for ways to push the boundaries.&rdquo;</p>
+    - ID: "216537f9-4338-4893-9099-8e97fad158e0"
+      Hint: OverlayHeading
+      Value: Maecenas interdum finibus
+    - ID: "2406b4a3-366d-40ba-8d70-b69709aa161f"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/4e7b5ed0dc44458196b89637a6e42d5d?v=f5f45845" dam-id="-vygWrXNS1iYy-feSLdzkg" width="2000" height="1335" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />
+    - ID: "2580b05b-bc4a-47d3-8d0c-a5996a04404f"
+      Hint: OverlayTitle
+      Value: Morbi nisl eros, malesuada at lectus ac
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T181447Z
+    - ID: "3abc5943-ffec-4bba-9d9b-71f7304ffd9e"
+      Hint: OverlayText
+      Value: |
+        <p>&ldquo;At HCA UK, you have everything you need to deliver brilliant patient care in an inspiring environment &ndash; and we&rsquo;re always looking for ways to push the boundaries.&rdquo;</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula efficitur neque eget convallis. Vestibulum elementum quis nisi quis maximus. Sed finibus convallis lorem, nec viverra mi viverra eu. Vestibulum volutpat, odio sit amet consectetur dapibus, massa libero malesuada tortor, et feugiat tellus orci a dui. Nam sed lacus eget purus volutpat sodales.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b2e3213-d692-4f99-a6b9-53467ff566a2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d74b7376-c085-4614-a975-a48a2c311456"
+      Hint: OverlayImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/4e7b5ed0dc44458196b89637a6e42d5d?v=f5f45845" dam-id="-vygWrXNS1iYy-feSLdzkg" width="2000" height="1335" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240910T191451Z
