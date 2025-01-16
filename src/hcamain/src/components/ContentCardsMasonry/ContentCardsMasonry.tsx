@@ -4,12 +4,14 @@ import {
   ImageField,
   RichText as JssRichText,
   Text as JssText,
+  Link as JssLink,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import Image from 'next/image';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import MasonryCards, {
   MasonryCard,
 } from '@component-library/site-components/MasonryCards/MasonryCards';
@@ -98,6 +100,24 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     props.fields?.data?.item?.pages?.PagesList?.length || 0
   );
 
+  const link = isExperienceEditor ? (
+    <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
+  ) : (
+    props.fields?.data?.item?.cTALink?.jsonValue?.value?.href && (
+      <JssLink field={props.fields?.data?.item?.cTALink?.jsonValue}>
+        <SitecoreSvg>
+          {props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value}
+        </SitecoreSvg>
+        <JssRichText
+          tag="div"
+          field={{
+            value: props.fields?.data?.item?.cTALink?.jsonValue?.value?.text,
+          }}
+        />
+      </JssLink>
+    )
+  );
+
   return (
     <MasonryCards
       title={
@@ -128,6 +148,19 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
           </Text>
         )
       }
+      body={
+        props.fields?.data?.item?.text?.jsonValue || isExperienceEditor ? (
+          <Text tag="div" variation="body-large">
+            <JssRichText
+              tag="div"
+              field={props.fields?.data?.item?.text?.jsonValue}
+            />
+          </Text>
+        ) : (
+          <></>
+        )
+      }
+      cta={link || <></>}
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.slice(0, 5).map(
