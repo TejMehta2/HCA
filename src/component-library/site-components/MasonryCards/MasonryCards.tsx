@@ -21,15 +21,16 @@ export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
 };
 
 const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
-  const { subtitle, title, children, cta } = props;
+  const { subtitle, title, children, id, cta, body } = props;
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id={id}>
       <div className={styles.container}>
         <AdvancedBlockHeader
           paddingSize="none"
           subtitle={subtitle}
           title={title}
           ctas={cta}
+          body={body}
         >
           {children && <div className={styles.children}>{children}</div>}
         </AdvancedBlockHeader>
