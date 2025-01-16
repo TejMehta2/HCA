@@ -21,7 +21,7 @@ export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
 };
 
 const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
-  const { subtitle, title, children, id, cta } = props;
+  const { subtitle, title, children, id, cta, body } = props;
   return (
     <div className={styles.wrapper} id={id}>
       <div className={styles.container}>
@@ -30,6 +30,7 @@ const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
           subtitle={subtitle}
           title={title}
           ctas={cta}
+          body={body}
         >
           {children && <div className={styles.children}>{children}</div>}
         </AdvancedBlockHeader>
