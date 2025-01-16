@@ -1116,6 +1116,7 @@ export async function submitBookingEnquiry(
       //console.log('res', res);
       if (res.ok) {
         const retData = await res.text();
+        //console.log('retData', retData);
         returnData = JSON.parse(retData);
       } else {
         //makeBookingEnquiry call failed
@@ -1124,9 +1125,11 @@ export async function submitBookingEnquiry(
           errorDetails = await res.text();
         } finally {
         }
-        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
-        returnData = JSON.parse(returnData);
+        returnData = `{"errorCode": ${res.status}, "errorText": "${
+          res.statusText
+        }", "errorDetail": "${JSON.stringify(errorDetails)}"}`;
         console.error(`makeBookingEnquiry failed with error ${returnData}`);
+        returnData = JSON.parse(returnData);
       }
     } catch (e) {
       //makeBookingEnquiry call threw
@@ -1135,7 +1138,9 @@ export async function submitBookingEnquiry(
         'An unexpected error occured posting makeBookingEnquiry, please retry';
       returnData = `{"errorCode": 999, "errorText": "${errorText}"}`;
       returnData = JSON.parse(returnData);
-      console.error(`makeBookingEnquiry failed with exception ${e}`);
+      console.error(
+        `makeBookingEnquiry failed with exception ${e}, bodystr ${bodyStr}`
+      );
     }
   }
 

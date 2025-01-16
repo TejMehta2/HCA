@@ -15,6 +15,72 @@ SharedFields:
   Value: |
     query GetContentCards($datasource: String!, $language: String!) {
       item(path: $datasource, language: $language) {
+        ... on Timeline {
+          heading {
+            jsonValue
+          }
+          title {
+            jsonValue
+          }
+          text {
+            jsonValue
+          }
+          cTAIcon {
+            Icon: targetItem {
+              ... on HCAIcon {
+                svgMarkup {
+                  value
+                }
+              }
+            }
+          }
+          cTALink {
+            jsonValue
+          }
+          cTACardText {
+            jsonValue
+          }
+          pages {
+            PagesList: targetItems {
+              ... on _Abstracts {
+                abstractTitle {
+                  value
+                }
+                abstractText {
+                  value
+                }
+                abstractImage {
+                  jsonValue
+                }
+              }
+              ... on _HCABasePageData {
+                title {
+                  value
+                }
+                text {
+                  value
+                }
+                image {
+                  jsonValue
+                }
+              }
+              ... on PageProxy {
+                proxyurl: link {
+                  ... on LinkField {
+                    path: url
+                  }
+                }
+              }
+              ... on _HCABasePage {
+                ... on Item {
+                  url {
+                    path
+                  }
+                }
+              }
+            }
+          }
+        }
         ... on ContentCards {
           heading {
             jsonValue
@@ -53,7 +119,7 @@ SharedFields:
                   jsonValue
                 }
               }
-              ... on _HCABasePageData{
+              ... on _HCABasePageData {
                 title {
                   value
                 }
@@ -114,6 +180,9 @@ SharedFields:
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "f6677a49-0a1d-4bad-b8ba-4f0f22bdee64"
+  Hint: Additional compatible templates
+  Value: "{7F21CD7F-5EAC-4C96-9675-74BC7A599A25}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -157,14 +226,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2f7f8611-9822-4626-8f11-6105e99e4289"
+      Value: "18ba55bb-7ce1-4aef-9179-cd2329e7a209"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241126T210635Z
+      Value: 20250107T154547Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

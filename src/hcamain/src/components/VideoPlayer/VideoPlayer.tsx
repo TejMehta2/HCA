@@ -66,6 +66,7 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
+          paddingSize={'none'}
           subtitle={
             <Text variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
@@ -160,6 +161,7 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
+          paddingSize={'none'}
           subtitle={
             <Text variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />

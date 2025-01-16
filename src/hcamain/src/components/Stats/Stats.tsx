@@ -44,7 +44,7 @@ export const Default = (props: StatsProps): JSX.Element => {
       >
         {props.fields?.Counters?.map((counters, index) => (
           <div key={index}>
-            <Text variation="display-4">
+            <Text variation="heading-2">
               <JssText field={counters.fields?.Number} />
             </Text>
             <Text variation="body-medium-large">
@@ -58,6 +58,9 @@ export const Default = (props: StatsProps): JSX.Element => {
 };
 
 export const ThreeColumns = (props: StatsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
   }
@@ -67,12 +70,14 @@ export const ThreeColumns = (props: StatsProps): JSX.Element => {
       <Stats
         variant={'threeCol'}
         heading={
-          <Text
-            tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
-          >
-            <JssText field={props.fields.Title} />
-          </Text>
+          props.fields.Title?.value || isExperienceEditor ? (
+            <Text
+              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-2'}
+            >
+              <JssText field={props.fields.Title} />
+            </Text>
+          ) : undefined
         }
       >
         {props.fields?.Counters?.map((counters, index) => (

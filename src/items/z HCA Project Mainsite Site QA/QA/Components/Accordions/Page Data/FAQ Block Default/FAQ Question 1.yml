@@ -16,14 +16,21 @@ Languages:
       Value: 20240129T165237Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ee0b16ba-98e2-400c-8f91-c6fd8aa732c5"
+      Value: "06883e96-2d1d-4544-8484-00faf08fa138"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Learn more" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241125T212759Z
+      Value: 20250115T182933Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{3CE76467-91B3-40A5-9C67-25380CBDF488}"
     - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
       Hint: Question
       Value: "What is a PCI?"
