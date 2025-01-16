@@ -5,6 +5,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Image from 'next/image';
 import Themes from '../../foundation/Themes/Themes';
+import Button from '../../core-components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof MasonryCards> = {
@@ -117,6 +118,24 @@ export const Default: StoryObj<typeof MasonryCards> = {
           }
         />
       </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme="L-HCA-Teal-5">
+        <Story />
+      </Themes>
+    ),
+  ],
+};
+
+export const WithCta: StoryObj<typeof MasonryCards> = {
+  args: {
+    ...Default.args,
+    cta: (
+      <Button variation="full" size="large">
+        <a href="#">Find out more</a>
+      </Button>
     ),
   },
   decorators: [

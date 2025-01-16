@@ -14,4 +14,5 @@ export interface MasonryCardsProps {
   title?: JSX.Element;
   children?: ReactNode | JSX.Element;
   id?: string;
+  cta?: ReactNode | JSX.Element;
 }
