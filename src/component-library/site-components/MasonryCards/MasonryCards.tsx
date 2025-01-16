@@ -20,9 +20,9 @@ export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
 };
 
 const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
-  const { subtitle, title, children } = props;
+  const { subtitle, title, children, id } = props;
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id={id}>
       <div className={styles.container}>
         {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
         {title && <div className={styles.title}>{title}</div>}
