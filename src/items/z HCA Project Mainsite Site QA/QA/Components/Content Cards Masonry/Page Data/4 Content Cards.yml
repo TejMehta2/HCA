@@ -19,11 +19,10 @@ Languages:
       Value: Your stay at HCA UK
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "73e75d69-f56f-4d4b-bab4-793a07e30cea"
+      Value: "1d134f69-a072-4c7a-a799-0d24eb232d0d"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
-      Value: |
-        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;GP services&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+      Value: 
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -33,10 +32,10 @@ Languages:
       Value: Learn <b>more</b>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250116T171932Z
+      Value: 20250116T180941Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
-      Value: "{F4945743-B276-4CBE-A758-2EB4F6FCA25F}"
+      Value: 
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
