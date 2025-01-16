@@ -25,7 +25,12 @@ const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <AdvancedBlockHeader paddingSize='none' subtitle={subtitle} title={title} ctas={cta}>
+        <AdvancedBlockHeader
+          paddingSize="none"
+          subtitle={subtitle}
+          title={title}
+          ctas={cta}
+        >
           {children && <div className={styles.children}>{children}</div>}
         </AdvancedBlockHeader>
       </div>
