@@ -1,0 +1,45 @@
+﻿---
+ID: "ce18bfdd-91a1-456b-b772-d0ba34727d8e"
+Parent: "3c49c213-f4bb-491b-907a-2faf205d5f39"
+Template: "a1d640e8-b025-43b5-80db-c45c2f82227b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Masonry/Page Data/3 Content Cards/Pioneering treatments"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240313T182327Z
+    - ID: "3317a6f6-dbe7-4cbb-a826-605fef277ad5"
+      Hint: Link
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="|Custom" querystring="" id="{1E96CC1B-B5A5-401B-8827-9C39275F8139}" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: 
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6ca5c293-9a4d-4683-bde4-db6e02af2e65"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/a9b8516ae9224e6fa23b59452111d34c?v=41cef96a" dam-id="LVOh99O7b0yDXKVdMDKQaA" width="1000" height="667" alt="chef_of_the_year_14_food_07_2017" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/145425/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250116T170526Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Pioneering treatments
