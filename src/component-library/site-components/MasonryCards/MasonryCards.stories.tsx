@@ -5,6 +5,7 @@ import Text from '../../foundation/Text/Text';
 import TextButton from '../../core-components/TextButton/TextButton';
 import Image from 'next/image';
 import Themes from '../../foundation/Themes/Themes';
+import Button from '../../core-components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof MasonryCards> = {
@@ -116,7 +117,104 @@ export const Default: StoryObj<typeof MasonryCards> = {
             </TextButton>
           }
         />
+        <MasonryCard
+          columns={6}
+          rows={2}
+          image={
+            <Image
+              src="/placeholders/masonry-1.jpg"
+              alt=""
+              width={4096}
+              height={3072}
+            />
+          }
+          title={
+            <Text variation="display-3">
+              Discover our world class facilities
+            </Text>
+          }
+          copy={
+            <Text variation="body-large">
+              Your time with us is about more than expert treatment and
+              state-of-the-art facilities. From beautiful rooms to luxurious
+              bathrooms you’ll find spaces to relax and recuperate in your own
+              time and at your own pace.
+            </Text>
+          }
+          cta={
+            <TextButton theme="light">
+              <a href="#">
+                <span>Take a virtual tour</span>
+              </a>
+            </TextButton>
+          }
+        />
+        <MasonryCard
+          columns={6}
+          rows={1}
+          image={
+            <Image
+              src="/placeholders/masonry-2.jpg"
+              alt=""
+              width={4096}
+              height={2160}
+            />
+          }
+          title={<Text variation="display-6">Pioneering treatments</Text>}
+          cta={
+            <TextButton theme="light">
+              <a href="#">
+                <span>Learn more</span>
+              </a>
+            </TextButton>
+          }
+        />
+        <MasonryCard
+          columns={3}
+          rows={1}
+          image={
+            <Image
+              src="/placeholders/masonry-3.jpg"
+              alt=""
+              width={4096}
+              height={2730}
+            />
+          }
+          title={<Text variation="display-6">Luxurious rooms</Text>}
+          cta={
+            <TextButton theme="light">
+              <a href="#">
+                <span>Learn more</span>
+              </a>
+            </TextButton>
+          }
+        />
+        <MasonryCard
+          columns={3}
+          rows={1}
+          image={
+            <Image
+              src="/placeholders/masonry-4.jpg"
+              alt=""
+              width={4096}
+              height={2731}
+            />
+          }
+          title={<Text variation="display-6">Seasonal menus</Text>}
+          cta={
+            <TextButton theme="light">
+              <a href="#">
+                <span>Learn more</span>
+              </a>
+            </TextButton>
+          }
+        />
       </>
+    ),
+    cta: (
+      <Button variation="full" size="large">
+        <a href="#">Find out more</a>
+      </Button>
     ),
   },
   decorators: [

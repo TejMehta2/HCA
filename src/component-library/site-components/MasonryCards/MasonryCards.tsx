@@ -1,6 +1,7 @@
 import React from 'react';
 import { MasonryCardProps, MasonryCardsProps } from './MasonryCards.types';
 import styles from './MasonryCards.module.scss';
+import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
   const { title, copy, cta, image, rows, columns } = props;
@@ -20,13 +21,13 @@ export const MasonryCard = (props: MasonryCardProps): JSX.Element => {
 };
 
 const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
-  const { subtitle, title, children } = props;
+  const { subtitle, title, children, cta } = props;
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
-        {title && <div className={styles.title}>{title}</div>}
-        {children && <div className={styles.children}>{children}</div>}
+        <AdvancedBlockHeader subtitle={subtitle} title={title} ctas={cta}>
+          {children && <div className={styles.children}>{children}</div>}
+        </AdvancedBlockHeader>
       </div>
     </div>
   );
