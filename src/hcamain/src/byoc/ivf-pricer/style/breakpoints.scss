@@ -1,0 +1,48 @@
+@mixin breakpoint($min: 0, $max: 0) {
+    $type: type-of($min);
+  
+    @if $type == string {
+      $brekpointQuery: "all" !default;
+
+      $xs: 320;
+      $sm: 576;
+      $md: 768;
+      $lg: 992;
+      $xl: 1200;
+      $ll: 1400;
+  
+      @if $min == "xs-above" {
+        $brekpointQuery: "all and (min-width: #{$xs}px)";
+      } @else if $min == "sm-above" {
+        $brekpointQuery: "all and (min-width: #{$sm}px)";
+      } @else if $min == "md-above" {
+        $brekpointQuery: "all and (min-width: #{$md}px)";
+      } @else if $min == "lg-above" {
+        $brekpointQuery: "all and (min-width: #{$lg}px)";
+      } @else if $min == "xl-above" {
+        $brekpointQuery: "all and (min-width: #{$xl}px)";
+      } @else if $min == "ll-above" {
+        $brekpointQuery: "all and (min-width: #{$ll}px)";
+      }
+  
+      @media #{$brekpointQuery} {
+        @content;
+      }
+    } @else if $type == number {
+      $query: "all" !default;
+  
+      @if $min != 0 and $max != 0 {
+        $query: "all and (min-width: #{$min}px) and (max-width: #{$max}px)";
+      } @else if $min != 0 and $max == 0 {
+        $query: "all and (min-width: #{$min}px)";
+      } @else if $min == 0 and $max != 0 {
+        $query: "all and (max-width: #{$max}px)";
+      }
+  
+      @media #{$query} {
+        @content;
+      }
+  
+    }
+  
+  }
