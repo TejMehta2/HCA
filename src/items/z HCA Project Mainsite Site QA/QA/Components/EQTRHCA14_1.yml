@@ -9,8 +9,7 @@ SharedFields:
   Value: 2700
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{C8B62DD5-E44E-4A7C-AD78-8EEB92291B4A}" />
+  Value: 
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -109,14 +108,14 @@ Languages:
               p:after="r[@uid='{B7D01E4E-691F-467E-B949-CC27164CEF42}']"
               s:ds="local:/Page Data/Image Short Text"
               s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
-              s:par="HeadingTag=h2&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
+              s:par="DisableHeadersToggle=1&amp;ExcludeFromTableOfContents&amp;HeadingTag=h3&amp;KeepAspectRatio&amp;HeadingSize&amp;TableOfContentsLinkTitle=Why%20choose%20primary%20care%20with%20HCA%201&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5"
               s:ph="headless-main" />
             <r
               uid="{949B09B6-5BD3-400E-A8A4-22B1075F16A2}"
               p:after="*[1=2]"
-              s:ds="local:/Page Data/Image Short Text"
+              s:ds="local:/Page Data/Image Short Text 2"
               s:id="{D52950C6-8721-4AC2-BABD-CC9BF7C54332}"
-              s:par="HeadingTag&amp;KeepAspectRatio=1&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=9"
+              s:par="DisableHeadersToggle&amp;ExcludeFromTableOfContents&amp;HeadingTag&amp;KeepAspectRatio=1&amp;HeadingSize&amp;TableOfContentsLinkTitle=Why%20choose%20primary%20care%20with%20HCA%202&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4416E881-92E8-4AB0-A137-1B113E6DB30D%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=9"
               s:ph="headless-main" />
           </d>
         </r>
@@ -133,14 +132,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29c38280-6c84-43be-9d51-95d8b83960f7"
+      Value: "2f901881-d314-451c-be6b-dab2cabab041"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T200020Z
+      Value: 20250115T202723Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA14_1

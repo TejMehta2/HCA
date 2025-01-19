@@ -29,8 +29,8 @@ type QuestionFields = Item & {
   fields?: {
     Question?: Field<string>;
     Answer?: Field<string>;
-    CTAIcon?: CTAIconFields;
-    CTALink?: LinkField;
+    CTAIcon: CTAIconFields;
+    CTALink: LinkField;
   };
 };
 
@@ -57,16 +57,48 @@ type FAQSchema = {
   };
 }[];
 
-const getAccordions = (questions: QuestionFields[]) => {
+const getAccordions = (
+  questions: QuestionFields[],
+  isExperienceEditor: boolean | undefined
+) => {
   const accordions: Accordions = [];
 
   for (const accordion of questions) {
     accordions.push({
       title: <JssText field={accordion.fields?.Question} />,
       children: (
-        <RichText>
-          <JssRichText field={accordion.fields?.Answer}></JssRichText>
-        </RichText>
+        <>
+          <RichText>
+            <JssRichText field={accordion.fields?.Answer}></JssRichText>
+          </RichText>
+
+          {isExperienceEditor ? (
+            <Button variation="full" size="large">
+              <JssLink field={accordion.fields?.CTALink}></JssLink>
+            </Button>
+          ) : (
+            accordion.fields?.CTALink?.value?.href && (
+              <Button variation="full" size="large">
+                <JssLink field={accordion.fields?.CTALink}>
+                  {accordion?.fields?.CTAIcon?.fields?.SvgMarkup && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          accordion.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+                      }}
+                    ></span>
+                  )}
+                  <JssRichText
+                    tag="span"
+                    field={{
+                      value: accordion.fields?.CTALink.value.text,
+                    }}
+                  />
+                </JssLink>
+              </Button>
+            )
+          )}
+        </>
       ),
     });
   }
@@ -138,7 +170,7 @@ export const Default = (props: FAQProps): JSX.Element => {
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
   }
-  const accordions = getAccordions(props.fields?.Questions);
+  const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
 
@@ -240,7 +272,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
     return <FAQBlockDefaultComponent {...props} />;
   }
 
-  const accordions = getAccordions(props.fields?.Questions);
+  const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
 
