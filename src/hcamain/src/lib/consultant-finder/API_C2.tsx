@@ -58,7 +58,9 @@ export async function getLDBFirstAppointmentDatas(
   }
 
   const gmcArrayBody = gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
-  const body = `{"consultants" : [${gmcArrayBody}] }`;
+  const body = config?.aPI_C2_UsingCSharpAPI
+    ? `{"consultants" : [${gmcArrayBody}] }`
+    : `{"consultants" : [${gmcArrayBody}] }`;
   //console.log("body", body);
 
   try {
@@ -110,6 +112,8 @@ export async function getLDBFirstAppointmentDatas(
     } else {
       //C2 call failed
       if (config?.aPI_C2_UsingCSharpAPI) {
+        console.log('body', JSON.stringify(body));
+        console.log('res', JSON.stringify(res));
         returnData = `{"errorCode": ${res.status}, "errorText": "${res.message}"}`;
         returnData = JSON.parse(returnData);
         console.error(
