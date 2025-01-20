@@ -1,0 +1,40 @@
+﻿---
+ID: "da7782f2-647c-4998-bd11-35edbfe6a045"
+Parent: "c645c8a9-22eb-43c8-b43d-e3691c2350b3"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource icons/Wide-reaching expertise across the UK"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: "Wide-reaching expertise across the UK"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T152511Z
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: <p>Visit any one of 15 dedicated diagnostic centres in London, Manchester and Birmingham.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a786ced2-b6c9-4e49-834b-5b54fa9a2dfd"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{E6D4BA6C-BC0A-43BB-9EF5-45225F261EB0}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250120T111416Z
