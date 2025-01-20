@@ -19,6 +19,7 @@ import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 type CTAIconFields = {
   fields?: {
     SvgMarkup?: Field<string>;
+    SvgMarkup48?: Field<string>;
   };
 };
 
