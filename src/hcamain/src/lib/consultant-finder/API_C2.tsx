@@ -62,18 +62,35 @@ export async function getLDBFirstAppointmentDatas(
   //console.log("body", body);
 
   try {
-    // very light cache on these requests they contain time sensitive data
-    const res = await fetch(requestURL, {
-      method: 'post',
-      body: body,
-      headers: {
-        'Content-Type': 'application/json',
-        securitytoken: `"${header}"`,
-      },
-      next: {
-        revalidate: 60,
-      },
-    });
+    let res: any = '';
+    if (config?.aPI_C2_UsingCSharpAPI) {
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'post',
+        body: body,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WebApi-Key': `"${header}"`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+    } else {
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'post',
+        body: body,
+        headers: {
+          'Content-Type': 'application/json',
+          securitytoken: `"${header}"`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+    }
+
     if (res.ok) {
       const result = await res.json();
       if (result && result.availability) {
@@ -91,11 +108,19 @@ export async function getLDBFirstAppointmentDatas(
       );
     } else {
       //C2 call failed
-      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
-      returnData = JSON.parse(returnData);
-      console.error(
-        `getLDBFirstAppointmentData failed with error ${returnData}`
-      );
+      if (config?.aPI_C2_UsingCSharpAPI) {
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.message}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(
+          `getLDBFirstAppointmentData failed with error ${returnData}`
+        );
+      } else {
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(
+          `getLDBFirstAppointmentData failed with error ${returnData}`
+        );
+      }
     }
   } catch (e) {
     //C2 call threw
