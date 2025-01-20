@@ -12,11 +12,17 @@ import Accreditations from '@component-library/careers/Accreditations/Accreditat
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
+type HCAIconFields = {
+  svgMarkup?: Field<string>;
+  svgMarkup48?: Field<string>;
+};
+
 interface CardFields {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
     Image?: ImageField;
+    Icon?: HCAIconFields;
   };
 }
 
