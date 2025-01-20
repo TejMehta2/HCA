@@ -17,6 +17,7 @@ import MasonryCards, {
 } from '@component-library/site-components/MasonryCards/MasonryCards';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Button from '@component-library/core-components/Button/Button';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type MasonryCard = {
   rows: 1 | 2;
@@ -97,6 +98,13 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const layoutPattern = getMasonryCardsLayoutPattern(
     props.fields?.data?.item?.pages?.PagesList?.length || 0
   );
@@ -121,6 +129,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
 
   return (
     <MasonryCards
+      id={componentAnchorId}
       title={
         <>
           <Text

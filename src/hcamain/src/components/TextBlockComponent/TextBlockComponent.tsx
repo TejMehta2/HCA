@@ -13,7 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -50,13 +50,15 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
   }
 
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.Title?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const componentTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
   );
 
   return (

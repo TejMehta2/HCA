@@ -7,6 +7,7 @@ import BlogContent from '@component-library/site-components/BlogContent/BlogCont
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Image?: ImageField;
@@ -41,6 +42,8 @@ export const Default = (props: BlogImageProps): JSX.Element => {
     return <BlogImageDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   const image = (
     props.fields?.Image
       ? props.fields.Image
@@ -55,6 +58,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
       <RichText
         additionalStyles={props?.params?.styles}
         imageKeepAspectRatio={keepAspectRatio}
+        id={componentAnchorId}
       >
         <figure>
           <NextJssImage
@@ -77,6 +81,7 @@ export const Default = (props: BlogImageProps): JSX.Element => {
         theme={props.params?.Theme || 'A-HCA-White'}
         contentVariation="image"
         imageKeepAspectRatio={keepAspectRatio}
+        id={componentAnchorId}
       >
         <figure>
           <NextJssImage

@@ -22,6 +22,7 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -101,9 +102,16 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const phKey = `intro-block-${props.params?.DynamicPlaceholderId}`;
 
@@ -126,8 +134,10 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
   }));
+
   return (
     <DynamicHomepageIntroBlock
+      id={componentAnchorId}
       imageAlignment={imageAlignment}
       title={
         <Text

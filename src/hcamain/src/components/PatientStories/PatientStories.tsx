@@ -15,6 +15,7 @@ import CarouselCards from '@component-library/site-components/CarouselCards/Caro
 import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -73,12 +74,21 @@ const PatientStoriesDefaultComponent = (
 export const Carousel = (props: PatientStoriesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -167,8 +177,17 @@ export const Default = (props: PatientStoriesProps): JSX.Element => {
   if (!props.fields) {
     return <PatientStoriesDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <SideScrollingCards
+      id={componentAnchorId}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         props.fields?.data?.item?.cTALink?.jsonValue ? (

@@ -5,4 +5,5 @@ export interface CarouselReviewsProps {
   reviewCount: JSX.Element;
   children?: JSX.Element[];
   theme: Theme;
+  id?: string;
 }

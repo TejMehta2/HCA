@@ -9,4 +9,5 @@ export interface AccordionsBlockSideBySideProps {
   body?: ReactNode | JSX.Element;
   accordions: Accordions;
   ctas?: ReactNode | JSX.Element;
+  id?: string;
 }

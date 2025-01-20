@@ -14,6 +14,7 @@ import { ContactItem } from '@component-library/components/ContactList/ContactLi
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   data?: {
@@ -48,9 +49,17 @@ const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
 
 export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
+
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const contactListItems: ContactItem[] = [];
 
@@ -90,6 +99,7 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
 
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"

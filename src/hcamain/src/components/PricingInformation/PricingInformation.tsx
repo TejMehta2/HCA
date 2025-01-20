@@ -13,6 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -58,8 +59,15 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     return <PricingInformationDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       length="long"
       imageAlignment="left"
