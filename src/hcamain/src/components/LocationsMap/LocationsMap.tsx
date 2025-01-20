@@ -15,6 +15,7 @@ import CardLocation from '@component-library/components/CardLocation/CardLocatio
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicOurLocations = dynamic(
   () => import('@component-library/site-components/OurLocations/OurLocations'),
@@ -78,6 +79,12 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
   if (!props.fields) {
     return <LocationsMapDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const headerProps = {
     subtitle: (
@@ -183,6 +190,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
 
   return (
     <DynamicOurLocations
+      id={componentAnchorId}
       mapAspectRatio={3000 / 3444}
       headerProps={headerProps}
       locations={locationCards}

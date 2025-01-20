@@ -14,10 +14,12 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import IconCtaBlock, {
   IconCtaBlockChild,
 } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   fields?: {
     SvgMarkup?: Field<string>;
+    SvgMarkup48?: Field<string>;
   };
 };
 
@@ -70,8 +72,13 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
     return <></>;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+    <Themes
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      id={componentAnchorId}
+    >
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
           return (

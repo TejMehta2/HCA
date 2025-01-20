@@ -58,7 +58,6 @@ const HeaderWithImageDefaultComponent = (
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
   const phKeyCtas = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const phKeyRatings = `header-with-image-${props.params?.DynamicPlaceholderId}`;
-  console.log('props', props.rendering?.placeholders);
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }

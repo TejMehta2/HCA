@@ -1,0 +1,40 @@
+﻿---
+ID: "905664c2-ed7a-4aeb-954b-d36cc106745e"
+Parent: "c645c8a9-22eb-43c8-b43d-e3691c2350b3"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource icons/State of the art diagnostics"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: State of the art diagnostics
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T152605Z
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: <p>With results in as little as 48 hours.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0934c65b-9f75-48a2-a7f0-660fd87d67fc"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{42193D50-44CA-40BF-B2FD-C52FC05B55AB}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250120T111336Z

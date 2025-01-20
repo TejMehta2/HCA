@@ -1,0 +1,29 @@
+﻿---
+ID: "dafe090d-6eab-4d3d-90a7-624d7e02520d"
+Parent: "3f6ba20d-6ce3-413b-ad60-598d2dc18b15"
+Template: "66038c46-e4e0-49be-8d37-5d8ea90ebd7b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Intro Block Image/Scores 3"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "2496fb09-1929-4184-a62a-36c44eba0deb"
+      Hint: Text
+      Value: inpatient beds
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231205T090852Z
+    - ID: "2baa43f4-7140-4514-97fc-6f9638b651e7"
+      Hint: Number
+      Value: 770
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6bebc9ba-5309-42e0-a86f-430cb04600d6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20231205T091025Z

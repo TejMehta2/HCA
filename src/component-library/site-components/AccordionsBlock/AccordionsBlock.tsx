@@ -6,10 +6,10 @@ import Themes from '../../foundation/Themes/Themes';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
 
 const AccordionsBlock = (props: AccordionsBlockProps): JSX.Element => {
-  const { theme, subtitle, header, body, accordions, ctas } = props;
+  const { theme, subtitle, header, body, accordions, ctas, id } = props;
 
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.content}>

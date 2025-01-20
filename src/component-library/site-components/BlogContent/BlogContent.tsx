@@ -9,10 +9,11 @@ const BlogContent = (props: BlogContentProps): JSX.Element => {
     children,
     imageKeepAspectRatio = false,
     contentVariation,
+    id,
   } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} id={id}>
         <div
           className={`${styles.container} ${
             contentVariation ? styles[contentVariation + '-block'] : ''

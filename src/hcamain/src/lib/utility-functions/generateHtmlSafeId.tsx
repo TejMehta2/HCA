@@ -4,14 +4,11 @@
  * @param args - A list of string parameters.
  * @returns A string that is safe to use as an HTML id attribute.
  */
-export const generateHtmlSafeId = (...args: (string | undefined)[]) => {
-  // Find the last non-empty, non-undefined parameter.
-  const source = args
-    .reverse()
-    .find((arg) => arg !== undefined && arg.trim() !== '');
+export const generateHtmlSafeId = (title: string | undefined) => {
+  const source = title?.trim();
 
   if (!source) {
-    return 'default'; // Fallback if no valid parameter is provided.
+    return ''; // Fallback if no valid parameter is provided.
   }
 
   // Replace spaces with hyphens, remove non-alphanumeric characters (except hyphens),
@@ -23,5 +20,5 @@ export const generateHtmlSafeId = (...args: (string | undefined)[]) => {
     .replace(/\s+/g, '-') // Replace spaces with hyphens.
     .replace(/^-+|-+$/g, ''); // Trim leading/trailing hyphens.
 
-  return safeId || 'default'; // Fallback if the result is empty.
+  return safeId || ''; // Fallback if the result is empty.
 };

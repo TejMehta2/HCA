@@ -1,0 +1,40 @@
+﻿---
+ID: "38254301-5203-42ae-aecf-8495131eab79"
+Parent: "c645c8a9-22eb-43c8-b43d-e3691c2350b3"
+Template: "cbd84ac0-b31c-4416-a0f5-b1acee778b50"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource icons/Next day appointments"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "06bb3273-3fad-4fbc-b703-8da7bb259d89"
+      Hint: Title
+      Value: Next day appointments
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T151326Z
+    - ID: "2cb6b44b-e73a-448e-9856-8af960a27ce6"
+      Hint: Text
+      Value: <p>You’ll have access to to a cardiac consultant in as little as 24 hours.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7c481923-e2d1-4a73-a448-0607f6658818"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c7e99764-f308-496b-870a-476b16512a28"
+      Hint: Icon
+      Value: "{07E30E5C-CF89-4B63-B2EB-39CEF76D497B}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250120T111227Z

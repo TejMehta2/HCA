@@ -17,6 +17,7 @@ import Link from 'next/link';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type HCAIcon = {
   svgMarkup?: Field<string>;
@@ -130,6 +131,13 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const displayAllCards = item?.displayAllCards?.jsonValue?.value;
   const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;
   const limit = displayAllCards ? 999 : numberOfCards;
@@ -158,6 +166,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
 
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}

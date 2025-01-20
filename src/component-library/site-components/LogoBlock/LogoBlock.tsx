@@ -10,9 +10,10 @@ const LogoBlock = (props: LogoBlockProps): JSX.Element => {
     theme = 'A-HCA-White',
     variation = 'standard',
     columns = 4,
+    id,
   } = props;
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} id={id}>
       <div
         className={[
           styles.wrapper,

@@ -11,4 +11,5 @@ export interface TimelineProps {
   copy?: JSX.Element;
   ctas?: JSX.Element;
   children?: JSX.Element;
+  id?: string;
 }

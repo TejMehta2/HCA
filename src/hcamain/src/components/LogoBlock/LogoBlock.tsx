@@ -16,6 +16,7 @@ import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface LogosFields {
   fields?: {
@@ -58,12 +59,19 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
     return <LogoBlockDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
 
   return (
     <LogoBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       columns={columns}
       variation={variation}

@@ -1,0 +1,50 @@
+﻿---
+ID: "a5f20266-48b2-4f6c-b740-557e4e5bc540"
+Parent: "5b50d5f6-876a-4b38-99a7-43dae0c355a7"
+Template: "d043ac13-964d-4351-9cfc-2ec430980925"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Service Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "164cae5b-071a-456a-be6b-7613241c9599"
+      Hint: Description
+      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T080000Z
+    - ID: "429ab872-c8f4-411f-ba93-a365b1e65954"
+      Hint: CTACardText
+      Value: Learn more
+    - ID: "7ee31b61-dda1-4893-8d00-3eaf1c608b7e"
+      Hint: Heading
+      Value: Our service lines
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b9f4ad55-85a4-4333-aadd-5bd52a9ecd01"
+    - ID: "8da1a961-cc60-4ab4-a214-19e099f6e302"
+      Hint: Services
+      Value: |
+        {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
+        {243D187A-D33E-4842-BECF-F9B0EF556411}
+        {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="Search all &lt;b&gt;service cards&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c105a5a2-141b-4090-808e-fa24176aaf31"
+      Hint: Title
+      Value: Exceptional care you can trust
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240611T164644Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{86BA06E1-93BC-4BAE-99C8-EC60EDF3FB5D}"
