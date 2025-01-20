@@ -55,30 +55,38 @@ export async function getLDBFirstAppointmentDatas(
 
   if (gmcNumbers) {
     gmcArray = gmcArray.concat(gmcNumbers?.split(','));
+    // new api doesn't allow empty gmcs
+    if (config?.aPI_C2_UsingCSharpAPI) {
+      gmcArray = gmcArray.filter(function (el) {
+        return el != null && el != '';
+      });
+    }
   }
 
   const gmcArrayBody = gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
-  const body = config?.aPI_C2_UsingCSharpAPI
-    ? `{"consultants" : [${gmcArrayBody}] }`
-    : `{"consultants" : [${gmcArrayBody}] }`;
+  const body = `{"consultants" : [${gmcArrayBody}] }`;
   //console.log("body", body);
 
   try {
     let res: any = '';
     if (config?.aPI_C2_UsingCSharpAPI) {
-      console.log('using C2 C# API');
+      //console.log('using C2 C# API');
+      //console.log('requestURL', requestURL);
+      //console.log('body', body);
+      //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
       // very light cache on these requests they contain time sensitive data
       res = await fetch(requestURL, {
         method: 'post',
         body: body,
         headers: {
           'Content-Type': 'application/json',
-          'X-WebApi-Key': `"${header}"`,
+          'X-WebApi-Key': `${header}`,
         },
         next: {
           revalidate: 60,
         },
       });
+      //console.log('done request');
     } else {
       // very light cache on these requests they contain time sensitive data
       res = await fetch(requestURL, {
@@ -96,6 +104,8 @@ export async function getLDBFirstAppointmentDatas(
 
     if (res.ok) {
       const result = await res.json();
+      //console.log('result', result);
+
       if (result && result.availability) {
         //console.log("result.availability", result.availability);
         result.availability.forEach(
@@ -112,9 +122,11 @@ export async function getLDBFirstAppointmentDatas(
     } else {
       //C2 call failed
       if (config?.aPI_C2_UsingCSharpAPI) {
-        console.log('body', JSON.stringify(body));
-        console.log('res', JSON.stringify(res));
-        returnData = `{"errorCode": ${res.status}, "errorText": "${res.message}"}`;
+        const errorResult = await res.json();
+        //console.log('requestURL', requestURL);
+        //console.log('body', body);
+        //console.log('res', errorResult);
+        returnData = `{"errorCode": ${res.status}, "errorText": "${errorResult?.message}"}`;
         returnData = JSON.parse(returnData);
         console.error(
           `getLDBFirstAppointmentData failed with error ${JSON.stringify(
@@ -211,9 +223,8 @@ function calcMinutesSinceUpdate(record: any) {
     } else if (minsSinceRefreshed == 0) {
       record.refreshedText = 'now';
     } else {
-      record.refreshedText = `${minsSinceRefreshed} ${
-        minsSinceRefreshed > 1 ? 'minutes' : 'minute'
-      } ago`;
+      record.refreshedText = `${minsSinceRefreshed} ${minsSinceRefreshed > 1 ? 'minutes' : 'minute'
+        } ago`;
     }
   } catch (e) {
     console.warn(
@@ -239,9 +250,8 @@ export async function getLDBConsultantDetails(
   const followOnFrag = isFollowOnAppointment
     ? `followonappointment=yes`
     : `initialappointment=yes`;
-  const requestURL = `${
-    serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
-  }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
+    }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
 
   let returnData: any = '';
@@ -316,9 +326,8 @@ export async function getLDBConsultantSlots(
   const fragLocation = LocationGUID
     ? `LocationGUID=${LocationGUID}`
     : `LocationId=${LocationId}`;
-  const requestURL = `${
-    serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
-  }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
+  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
+    }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantSlots_Header}`;
 
   let returnData: string = '';
@@ -461,12 +470,10 @@ export async function LDBMakeBooking(
       const fragLocation = LocationGUID
         ? `"LocationGUID": "${LocationGUID}"`
         : `"FacilityId": "${FacilityId}"`;
-      const requestURL = `${
-        serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
-      }`;
-      const header = `${
-        headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
-      }`;
+      const requestURL = `${serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
+        }`;
+      const header = `${headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
+        }`;
 
       let demographicsString = JSON.stringify(demographics).substring(1);
       demographicsString =
@@ -479,8 +486,7 @@ export async function LDBMakeBooking(
         ${fragLocation},
         "dateFrom": "${dateFrom}",
         ${fragFollowOn},
-        "patientCode": "${
-          demographics?.patientCode ? demographics?.patientCode : ''
+        "patientCode": "${demographics?.patientCode ? demographics?.patientCode : ''
         }",
         "demographics": ${demographicsString},
         "visitReasonDetails": {
