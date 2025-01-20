@@ -170,18 +170,40 @@ export async function getLDBFirstAppointmentData(
   let returnData: string = '';
   const body = `{"consultants" : ["${gmcNumber}"] }`;
   try {
-    // very light cache on these requests they contain time sensitive data
-    const res = await fetch(requestURL, {
-      method: 'post',
-      body: body,
-      headers: {
-        'Content-Type': 'application/json',
-        securitytoken: `"${header}"`,
-      },
-      next: {
-        revalidate: 60,
-      },
-    });
+    let res: any = '';
+    if (config?.aPI_C2_UsingCSharpAPI) {
+      //console.log('using C2 C# API');
+      //console.log('requestURL', requestURL);
+      //console.log('body', body);
+      //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'post',
+        body: body,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WebApi-Key': `${header}`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+      //console.log('done request');
+    } else {
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'post',
+        body: body,
+        headers: {
+          'Content-Type': 'application/json',
+          securitytoken: `"${header}"`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+    }
+
     if (res.ok) {
       const result = await res.json();
       if (result && result.availability && result.availability.length == 1) {
@@ -223,8 +245,9 @@ function calcMinutesSinceUpdate(record: any) {
     } else if (minsSinceRefreshed == 0) {
       record.refreshedText = 'now';
     } else {
-      record.refreshedText = `${minsSinceRefreshed} ${minsSinceRefreshed > 1 ? 'minutes' : 'minute'
-        } ago`;
+      record.refreshedText = `${minsSinceRefreshed} ${
+        minsSinceRefreshed > 1 ? 'minutes' : 'minute'
+      } ago`;
     }
   } catch (e) {
     console.warn(
@@ -250,24 +273,47 @@ export async function getLDBConsultantDetails(
   const followOnFrag = isFollowOnAppointment
     ? `followonappointment=yes`
     : `initialappointment=yes`;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
-    }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
+  const requestURL = `${
+    serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
+  }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
 
   let returnData: any = '';
 
   try {
-    // very light cache on these requests they contain time sensitive data
-    const res = await fetch(requestURL, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        securitytoken: `"${header}"`,
-      },
-      next: {
-        revalidate: 60,
-      },
-    });
+    let res: any = '';
+    if (config?.aPI_C2_UsingCSharpAPI) {
+      //console.log('using C2 C# API');
+      console.log('requestURL', requestURL);
+      //console.log('body', body);
+      //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WebApi-Key': `${header}`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+      console.log('res', JSON.stringify(res));
+      //console.log('done request');
+    } else {
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          securitytoken: `"${header}"`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+    }
+
     if (res.ok) {
       returnData = await res.json();
       // put spaces after commas in C2 facilities
@@ -283,9 +329,27 @@ export async function getLDBConsultantDetails(
       }
     } else {
       //C2 call failed
-      returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
-      returnData = JSON.parse(returnData);
-      console.error(`getLDBConsultantDetails failed with error ${returnData}`);
+      if (config?.aPI_C2_UsingCSharpAPI) {
+        const errorResult = await res.json();
+        //console.log('requestURL', requestURL);
+        //console.log('body', body);
+        //console.log('res', errorResult);
+        returnData = `{"errorCode": ${res.status}, "errorText": "${errorResult?.message}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(
+          `getLDBConsultantDetails failed with error ${JSON.stringify(
+            returnData
+          )}`
+        );
+      } else {
+        returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
+        returnData = JSON.parse(returnData);
+        console.error(
+          `getLDBConsultantDetails failed with error ${JSON.stringify(
+            returnData
+          )}`
+        );
+      }
     }
   } catch (e) {
     //C2 call threw
@@ -326,24 +390,46 @@ export async function getLDBConsultantSlots(
   const fragLocation = LocationGUID
     ? `LocationGUID=${LocationGUID}`
     : `LocationId=${LocationId}`;
-  const requestURL = `${serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
-    }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
+  const requestURL = `${
+    serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
+  }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantSlots_Header}`;
 
   let returnData: string = '';
 
   try {
-    // very light cache on these requests they contain time sensitive data
-    const res = await fetch(requestURL, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        securitytoken: `"${header}"`,
-      },
-      next: {
-        revalidate: 60,
-      },
-    });
+    let res: any = '';
+    if (config?.aPI_C2_UsingCSharpAPI) {
+      //console.log('using C2 C# API');
+      //console.log('requestURL', requestURL);
+      //console.log('body', body);
+      //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WebApi-Key': `${header}`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+      //console.log('done request');
+    } else {
+      // very light cache on these requests they contain time sensitive data
+      res = await fetch(requestURL, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          securitytoken: `"${header}"`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      });
+    }
+
     if (res.ok) {
       returnData = await res.json();
     } else {
@@ -470,10 +556,12 @@ export async function LDBMakeBooking(
       const fragLocation = LocationGUID
         ? `"LocationGUID": "${LocationGUID}"`
         : `"FacilityId": "${FacilityId}"`;
-      const requestURL = `${serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
-        }`;
-      const header = `${headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
-        }`;
+      const requestURL = `${
+        serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
+      }`;
+      const header = `${
+        headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
+      }`;
 
       let demographicsString = JSON.stringify(demographics).substring(1);
       demographicsString =
@@ -486,7 +574,8 @@ export async function LDBMakeBooking(
         ${fragLocation},
         "dateFrom": "${dateFrom}",
         ${fragFollowOn},
-        "patientCode": "${demographics?.patientCode ? demographics?.patientCode : ''
+        "patientCode": "${
+          demographics?.patientCode ? demographics?.patientCode : ''
         }",
         "demographics": ${demographicsString},
         "visitReasonDetails": {
@@ -496,15 +585,35 @@ export async function LDBMakeBooking(
       }`;
       //console.log('booking json:', body);
       try {
-        const res = await fetch(requestURL, {
-          method: 'post',
-          body: body,
-          headers: {
-            'Content-Type': 'application/json',
-            securitytoken: `"${header}"`,
-          },
-          cache: 'no-cache',
-        });
+        let res: any = '';
+        if (config?.aPI_C2_UsingCSharpAPI) {
+          //console.log('using C2 C# API');
+          //console.log('requestURL', requestURL);
+          //console.log('body', body);
+          //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
+          // very light cache on these requests they contain time sensitive data
+          res = await fetch(requestURL, {
+            method: 'post',
+            body: body,
+            headers: {
+              'Content-Type': 'application/json',
+              'X-WebApi-Key': `${header}`,
+            },
+            cache: 'no-cache',
+          });
+          //console.log('done request');
+        } else {
+          // very light cache on these requests they contain time sensitive data
+          res = await fetch(requestURL, {
+            method: 'post',
+            body: body,
+            headers: {
+              'Content-Type': 'application/json',
+              securitytoken: `"${header}"`,
+            },
+            cache: 'no-cache',
+          });
+        }
 
         if (res.ok) {
           returnData = await res.json();
