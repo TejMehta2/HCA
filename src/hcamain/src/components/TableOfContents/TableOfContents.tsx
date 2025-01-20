@@ -1,15 +1,38 @@
 /* eslint react/jsx-key: 0 */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Text from '@component-library/foundation/Text/Text';
 import JumpToLinks, {
   JumpToAnchor,
 } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { useInPageNavigationContext } from '../../context/InPageNavigationContext';
+import { NavigableComponent } from './TableOfContents.types';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 export const Default = (): JSX.Element => {
-  const { components } = useInPageNavigationContext();
+  const [components, setComponentsList] = useState<NavigableComponent[]>(
+    inPageNavGlobalStore.getList()
+  );
+
+  useEffect(() => {
+    const handleNavigableComponentsListUpdated = (
+      updatedList: NavigableComponent[]
+    ) => {
+      setComponentsList([...updatedList]);
+    };
+
+    inPageNavGlobalStore.on(
+      'navigableComponentsListUpdated',
+      handleNavigableComponentsListUpdated
+    );
+
+    return () => {
+      inPageNavGlobalStore.off(
+        'navigableComponentsListUpdated',
+        handleNavigableComponentsListUpdated
+      );
+    };
+  }, []);
 
   return (
     <Themes theme={'A-HCA-White'} collapse={false}>

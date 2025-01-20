@@ -15,7 +15,6 @@ import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import { sitemapFetcher } from 'lib/sitemap-fetcher';
 import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
-import { InPageNavigationProvider } from '../context/InPageNavigationContext';
 
 const SitecorePage = (props: SitecorePageProps): JSX.Element => {
   const { notFound, componentProps, layoutData, headLinks } = props;
@@ -40,19 +39,15 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
         componentFactory={componentBuilder.getComponentFactory({ isEditing })}
         layoutData={layoutData}
       >
-        <InPageNavigationProvider>
-          {/*
+        {/*
           Sitecore Pages supports component rendering to avoid refreshing the entire page during component editing.
           If you are using Experience Editor only, this logic can be removed, Layout can be left.
         */}
-          {isComponentRendering ? (
-            <EditingComponentPlaceholder
-              rendering={layoutData.sitecore.route}
-            />
-          ) : (
-            <Layout layoutData={layoutData} headLinks={headLinks} />
-          )}
-        </InPageNavigationProvider>
+        {isComponentRendering ? (
+          <EditingComponentPlaceholder rendering={layoutData.sitecore.route} />
+        ) : (
+          <Layout layoutData={layoutData} headLinks={headLinks} />
+        )}
       </SitecoreContext>
     </ComponentPropsContext>
   );
