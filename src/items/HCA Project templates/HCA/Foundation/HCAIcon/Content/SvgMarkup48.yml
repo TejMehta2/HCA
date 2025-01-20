@@ -1,41 +1,42 @@
 ﻿---
-ID: "b7e882c0-a75e-411f-9700-b63d066d7935"
-Parent: "1f910632-b726-4b49-ae8e-494a48159c1f"
+ID: "591bafc2-75cb-4100-bc2d-59e80cc15a2a"
+Parent: "3ea0f0e0-215d-4950-94ab-09bb061b4953"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Page Content/Image Text List/Data/Cards
+Path: /sitecore/templates/Project/HCA/Foundation/HCAIcon/Content/SvgMarkup48
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "query:$site/*[@@name='Data']/*[@@name='Content Cards with Icons']|query:$site/*[@@name='Data']/*[@@name='Content Cards']|query:self::"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Multiroot Treelist
+  Value: "Multi-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 100
+  Value: 200
 Languages:
 - Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: SVG Markup 48
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231219T082707Z
+      Value: 20250120T000649Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "898ccd85-b9ae-4369-8c20-b86d9b5ce682"
+      Value: "21da2a6a-dee5-43a0-ac82-db9be86557e4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250120T111010Z
+      Value: 20250120T103234Z
