@@ -16,6 +16,7 @@ import MasonryCards, {
   MasonryCard,
 } from '@component-library/site-components/MasonryCards/MasonryCards';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
+import Button from '@component-library/core-components/Button/Button';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type MasonryCard = {
@@ -169,7 +170,15 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
           <></>
         )
       }
-      cta={link || <></>}
+      cta={
+        link ? (
+          <Button variation="full" size="large">
+            {link}
+          </Button>
+        ) : (
+          <></>
+        )
+      }
     >
       <>
         {props.fields?.data?.item?.pages?.PagesList?.slice(0, 5).map(
