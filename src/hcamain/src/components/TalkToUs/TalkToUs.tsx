@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   Text as JssText,
@@ -14,8 +14,7 @@ import { ContactItem } from '@component-library/components/ContactList/ContactLi
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   data?: {
@@ -49,31 +48,18 @@ const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
 );
 
 export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { imageAlignment = 'left' } = props;
 
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const contactListItems: ContactItem[] = [];
 

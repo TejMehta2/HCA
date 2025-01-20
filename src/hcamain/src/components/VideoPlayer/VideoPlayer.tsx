@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -16,8 +16,7 @@ import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type VideoProvidersFields = {
   name?: string;
@@ -56,31 +55,18 @@ const VideoPlayerDefaultComponent = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const Default = (props: VideoPlayerProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <VideoBlock
@@ -142,28 +128,15 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <figure id={componentAnchorId}>
@@ -189,31 +162,18 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
 };
 
 export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   if (!props.fields) {
     return <VideoPlayerDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <VideoBlock

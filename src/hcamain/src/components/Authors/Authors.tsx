@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -13,8 +13,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Text from '@component-library/foundation/Text/Text';
 import Container from '@component-library/foundation/Containers/Container';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface AuthorFields {
   fields?: {
@@ -54,27 +53,6 @@ const AuthorsDefaultComponent = (props: AuthorsProps): JSX.Element => {
 };
 
 export const Default = (props: AuthorsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents &&
-    props.fields?.Authors &&
-    props.fields?.Authors.length;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   if (!props.fields?.Authors || !props.fields?.Authors.length) {
     return <AuthorsDefaultComponent {...props} />;
   }
@@ -131,11 +109,17 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     />
   ));
 
+  const componentTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
+  );
+
   const isContainerized = props?.params?.Containerized === '1';
 
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlocks}</figure>
       </RichText>
     );

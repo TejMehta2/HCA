@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -14,8 +14,7 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -63,31 +62,18 @@ interface ImageLeftProps extends ImageShortTextProps {
   imageAlignment: 'left' | 'right';
 }
 export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { imageAlignment = 'left' } = props;
   const phKey = `image-short-text-${props.params?.DynamicPlaceholderId}`;
 
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 

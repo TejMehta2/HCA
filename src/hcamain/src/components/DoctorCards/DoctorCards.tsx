@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Link as JssLink,
   useSitecoreContext,
@@ -19,8 +19,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Image from 'next/image';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/consultants`;
 
@@ -33,26 +32,6 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   const quantity = props?.fields?.data?.item?.numberOfCards?.jsonValue?.value;
   const consultants = data?.consultants?.slice(0, Number(quantity) || 4);
   const ctaQuery = data?.ctaQuery;
-
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields || !consultants?.length;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
 
   if (!props.fields || (!consultants?.length && !isExperienceEditor)) {
     return <DoctorCardsDefaultComponent />;
@@ -117,6 +96,13 @@ export const Default = (props: DoctorCardsProps): JSX.Element => {
   if (!consultants?.length && !isExperienceEditor) {
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <CardDoctorLayout

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -10,8 +10,7 @@ import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface CardFields {
   fields?: {
@@ -54,24 +53,6 @@ interface ImageTextListColumnsProps extends ImageTextListProps {
 }
 
 export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { columns = 2 } = props;
@@ -83,6 +64,8 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   if (!props.fields?.Cards?.length && !isExperienceEditor) {
     return <></>;
   }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   return (
     <Themes

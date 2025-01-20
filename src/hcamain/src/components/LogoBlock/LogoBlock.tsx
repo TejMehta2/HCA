@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   LinkField,
@@ -16,8 +16,7 @@ import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface LogosFields {
   fields?: {
@@ -53,31 +52,18 @@ interface LogoBlockExtendedProps extends LogoBlockProps {
   variation?: 'standard' | 'side-by-side';
 }
 export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const phKey = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const { variation = 'standard' } = props;
 
   if (!props.fields) {
     return <LogoBlockDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 

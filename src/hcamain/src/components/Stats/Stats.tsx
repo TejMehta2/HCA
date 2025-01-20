@@ -7,9 +7,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import { StatsProps } from './Stats.types';
 import Stats from '@component-library/careers/Stats/Stats';
-import { useEffect } from 'react';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -29,28 +27,15 @@ const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
 };
 
 export const Default = (props: StatsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>
@@ -80,30 +65,18 @@ export const Default = (props: StatsProps): JSX.Element => {
 };
 
 export const ThreeColumns = (props: StatsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle || props?.fields?.Title?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
   if (!props?.fields) {
     return <StatsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -16,8 +16,7 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -80,26 +79,6 @@ interface WithImageProps extends TestAndScansCardsProps {
 }
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { showImage = true } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
@@ -231,9 +210,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   const cards = getCards(cardSource);
 
   if (!cardSource?.length && !isExperienceEditor) {
-    //TODO: Remove from nav
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <CardBlock

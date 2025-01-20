@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Text as JssText,
   RichText as JssRichText,
@@ -24,8 +24,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -217,35 +216,18 @@ const returnFilteredCards = (
 };
 
 export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props?.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const numberOfCards = props.params?.Columns || '3';
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
+
   const { sitecoreContext } = useSitecoreContext();
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
   const isExperienceEditor = sitecoreContext?.pageEditing;
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
 
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
@@ -258,18 +240,20 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     returnCards(props, patientStoriesCardsFiltered, false);
 
   if (!patientStoriesCards?.length && !isExperienceEditor) {
-    //TODO: Remove from nav
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
 
   return (
     <CardBlock
@@ -352,33 +336,16 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 };
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props?.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
+
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
 
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
@@ -391,21 +358,24 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     returnCards(props, patientStoriesCardsFiltered, false);
 
   if (!patientStoriesCards?.length && !isExperienceEditor) {
-    //TODO: Remove from nav
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
-
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
@@ -478,32 +448,16 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
 export const SliderWithLeftText = (
   props: PatientStoriesCardsProps
 ): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-  const tableOfContentsLinkTitle =
-    props.params?.TableOfContentsLinkTitle ||
-    props?.fields?.data?.item?.title?.jsonValue?.value;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
     data,
@@ -519,12 +473,19 @@ export const SliderWithLeftText = (
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
+  if (!patientStoriesCards?.length && !isExperienceEditor) {
+    return <></>;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <SideScrollingCards
+      id={componentAnchorId}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (

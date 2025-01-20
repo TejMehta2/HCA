@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   RichText as JssRichText,
@@ -7,8 +7,7 @@ import {
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Text?: Field<string>;
@@ -37,29 +36,11 @@ const BlogTextDefaultComponent = (props: BlogTextProps): JSX.Element => {
 };
 
 export const Default = (props: BlogTextProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
-  const hideEmptyComponent = !props.fields;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents &&
-    !hideEmptyComponent &&
-    tableOfContentsLinkTitle;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
-  if (hideEmptyComponent) {
+  if (!props.fields) {
     return <BlogTextDefaultComponent {...props} />;
   }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   const isContainerized = props?.params?.Containerized === '1';
 

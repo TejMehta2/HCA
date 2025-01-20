@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Field,
   ImageField,
@@ -11,8 +11,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
-import { useInPageNavigationContext } from 'src/context/InPageNavigationContext';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface CardFields {
   fields?: {
@@ -40,24 +39,6 @@ const ContentCarouselDefaultComponent = (
 );
 
 export const Default = (props: ContentCarouselProps): JSX.Element => {
-  const { addComponent } = useInPageNavigationContext();
-
-  const tableOfContentsLinkTitle = props.params?.TableOfContentsLinkTitle;
-  const hideEmptyComponent = !props.fields?.Cards?.length;
-  const includeInTableOfContents =
-    !props.params?.ExcludeFromTableOfContents && !hideEmptyComponent;
-
-  const componentAnchorId = generateHtmlSafeId(tableOfContentsLinkTitle);
-
-  useEffect(() => {
-    if (includeInTableOfContents && tableOfContentsLinkTitle) {
-      addComponent({
-        Id: componentAnchorId,
-        TableOfContentsLinkTitle: tableOfContentsLinkTitle,
-      });
-    }
-  }, [includeInTableOfContents]);
-
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   if (!props.fields) {
@@ -67,6 +48,8 @@ export const Default = (props: ContentCarouselProps): JSX.Element => {
   if (!props.fields?.Cards?.length && !isExperienceEditor) {
     return <></>;
   }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   return (
     <>
