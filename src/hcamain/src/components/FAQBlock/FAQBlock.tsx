@@ -16,6 +16,7 @@ import { Accordions } from '@component-library/components/Accordions/Accordions.
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   fields?: {
@@ -145,9 +146,17 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
 export const Default = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
@@ -163,6 +172,7 @@ export const Default = (props: FAQProps): JSX.Element => {
       </Head>
 
       <AccordionsBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
@@ -230,6 +240,12 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
     return <FAQBlockDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
@@ -244,6 +260,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
           (props.fields.Text?.value || isExperienceEditor) && (

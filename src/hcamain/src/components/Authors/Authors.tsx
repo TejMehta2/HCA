@@ -13,6 +13,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Text from '@component-library/foundation/Text/Text';
 import Container from '@component-library/foundation/Containers/Container';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface AuthorFields {
   fields?: {
@@ -108,11 +109,17 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     />
   ));
 
+  const componentTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
+  );
+
   const isContainerized = props?.params?.Containerized === '1';
 
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlocks}</figure>
       </RichText>
     );
@@ -122,6 +129,7 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation="quote"
+      id={componentAnchorId}
     >
       {props?.fields?.Title && (
         <Container marginBottom="spacing-4">

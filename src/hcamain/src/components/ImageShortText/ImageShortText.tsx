@@ -14,7 +14,7 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -64,16 +64,18 @@ interface ImageLeftProps extends ImageShortTextProps {
 export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
   const phKey = `image-short-text-${props.params?.DynamicPlaceholderId}`;
+
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
 
-  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.Title?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
   );
+
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
 
   return (
     <>

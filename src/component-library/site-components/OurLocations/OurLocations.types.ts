@@ -17,4 +17,5 @@ export interface OurLocationsProps {
   scrollSensitivity?: number; // (vh) how far user has to scroll per step
   theme?: Theme;
   mapImage?: JSX.Element;
+  id?: string;
 }

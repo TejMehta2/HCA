@@ -17,6 +17,7 @@ import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicCardBlogBlock = dynamic(
   () =>
@@ -90,13 +91,22 @@ const BlogCardsDefaultComponent = (props: BlogCardsProps): JSX.Element => {
 
 export const Carousel = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <CarouselCards
+      id={componentAnchorId}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -212,13 +222,21 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
 export const Standard = (props: BlogCardsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields?.data?.item) {
     return <BlogCardsDefaultComponent {...props} />;
   }
 
+  const componentTitle = props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
+  );
+
   return (
     <>
       <DynamicCardBlogBlock
+        id={componentAnchorId}
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}

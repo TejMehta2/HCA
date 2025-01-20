@@ -1,0 +1,53 @@
+﻿---
+ID: "fc15b666-7b37-45d0-a4c7-ab187011fb8a"
+Parent: "5b50d5f6-876a-4b38-99a7-43dae0c355a7"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Content Cards Slider WithImage"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T092351Z
+    - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
+      Hint: Heading
+      Value: GP & Urgent care services
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: Peace of mind with our GP services
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "dd5a78e4-596a-4461-84f8-2b856bc663e7"
+    - ID: "a6c561c5-93b4-4722-b42e-4dff83785d8a"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;GP services&lt;/b&gt;" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: Learn more
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250114T215214Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{F4945743-B276-4CBE-A758-2EB4F6FCA25F}"
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
+        {243D187A-D33E-4842-BECF-F9B0EF556411}
+        {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}
+        {F3331B8C-0C96-4A66-B5DC-37541BE3F104}

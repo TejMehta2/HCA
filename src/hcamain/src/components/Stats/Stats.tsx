@@ -7,6 +7,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import { StatsProps } from './Stats.types';
 import Stats from '@component-library/careers/Stats/Stats';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const StatsDefaultComponent = (props: StatsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
@@ -30,8 +31,14 @@ export const Default = (props: StatsProps): JSX.Element => {
     return <StatsDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
-    <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>
       <Stats
         heading={
           <Text
@@ -65,8 +72,14 @@ export const ThreeColumns = (props: StatsProps): JSX.Element => {
     return <StatsDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
-    <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
+    <Themes theme={props.params?.Theme || 'D-HCA-Teal'} id={componentAnchorId}>
       <Stats
         variant={'threeCol'}
         heading={

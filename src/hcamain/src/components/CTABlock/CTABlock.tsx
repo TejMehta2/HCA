@@ -10,6 +10,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -39,10 +40,18 @@ export const Default = (props: CTABlockProps): JSX.Element => {
   if (!props.fields) {
     return <CTABlockDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   return (
     <CTABlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       subheader={
         <Text tag="p" variation="subheading-1">

@@ -18,6 +18,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { MasonryCard } from '@component-library/site-components/MasonryCards/MasonryCards';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -96,9 +97,19 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   ) {
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const headingTag = props.params?.HeadingTag || 'h2';
+
   return (
     <DynamicServiceCards
+      id={componentAnchorId}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text

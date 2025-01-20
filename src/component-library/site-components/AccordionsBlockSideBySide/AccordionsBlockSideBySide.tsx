@@ -7,9 +7,9 @@ import Themes from '../../foundation/Themes/Themes';
 const AccordionsBlockSideBySide = (
   props: AccordionsBlockSideBySideProps
 ): JSX.Element => {
-  const { theme, subtitle, header, body, accordions, ctas } = props;
+  const { theme, subtitle, header, body, accordions, ctas, id } = props;
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles['text-content']}>

@@ -13,6 +13,7 @@ import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -47,9 +48,17 @@ const IntegratedFixedPricedPackage = (
     return <FixedPricePackageDefaultComponent {...props} />;
   }
   const phKey = `fixed-price-package-${props.params?.DynamicPlaceholderId}`;
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <>
       <ImageAndTextBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={props.imageAlignment}
         length="short"

@@ -12,6 +12,7 @@ import Params from 'src/types/params';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type HCAIconFields = {
   fields?: {
@@ -55,8 +56,16 @@ export const Default = (props: ImageAndTabsProps): JSX.Element => {
   if (!props.fields) {
     return <ImageAndTabsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
     <TabsBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text

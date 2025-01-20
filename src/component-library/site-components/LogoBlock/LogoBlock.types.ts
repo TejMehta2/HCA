@@ -7,4 +7,5 @@ export interface LogoBlockProps {
   theme?: Theme;
   variation?: 'standard' | 'side-by-side';
   columns?: 3 | 4;
+  id?: string;
 }

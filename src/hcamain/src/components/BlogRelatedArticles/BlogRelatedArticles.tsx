@@ -25,6 +25,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
 const SEARCH_PATH = '/search';
@@ -41,6 +42,7 @@ const BlogRelatedArticlesDefaultComponent = (
 
 export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const quantity =
@@ -198,12 +200,18 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     return <></>;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    props?.fields?.Title?.value
+  );
+
   const viewAllCta = props.fields?.data?.item?.articles?.ArticlesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
   return (
     <CarouselCards
+      id={componentAnchorId}
       title={
         <Text
           tag={props.params?.HeadingTag || 'h2'}
@@ -249,10 +257,10 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
           ) : (
             <></>
           )
+        ) : props.fields.data.item.cTALink?.jsonValue ? (
+          <JssLink field={props.fields.data.item.cTALink?.jsonValue}></JssLink>
         ) : (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue}
-          ></JssLink>
+          <></>
         )
       }
       theme={props.params?.Theme || 'A-HCA-White'}

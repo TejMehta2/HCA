@@ -1,0 +1,29 @@
+﻿---
+ID: "2a78173e-4db7-4987-a52b-0cb4ba737a79"
+Parent: "25e0f1ae-555f-4256-a888-79e339011686"
+Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Accordions FAQ/FAQ Question 1"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1d63eaee-6a20-4bd9-894d-9902c8fdd2d0"
+      Hint: Answer
+      Value: Eiusmod irure nostrud culpa veniam nisi incididunt nostrud commodo deserunt anim quis cupidatat irure duis. Eu voluptate pariatur non.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T165237Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ee0b16ba-98e2-400c-8f91-c6fd8aa732c5"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20241125T212759Z
+    - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
+      Hint: Question
+      Value: "What is a PCI?"

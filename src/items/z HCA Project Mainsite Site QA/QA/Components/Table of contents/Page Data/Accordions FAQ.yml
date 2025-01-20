@@ -1,0 +1,50 @@
+﻿---
+ID: "25e0f1ae-555f-4256-a888-79e339011686"
+Parent: "5b50d5f6-876a-4b38-99a7-43dae0c355a7"
+Template: "85fa9acd-38ac-4893-a6b9-1a94644a41cc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Accordions FAQ"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T125038Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "6ff89c24-0c42-41a0-91e8-a6d7e68c167c"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum lacus et facilisis pellentesque. Cras placerat diam massa, sit amet lobortis lacus suscipit et. Mauris at tempor metus. Fusce semper ipsum non hendrerit mollis.</p>
+    - ID: "7a4dfcc9-d784-4ba0-9b16-3845f8bda62a"
+      Hint: Questions
+      Value: "{2A78173E-4DB7-4987-A52B-0CB4BA737A79}|{2330B413-EA50-4EFB-9798-CB5B9A354CA5}|{98465986-2961-43E6-9C2F-1B826BC35F86}|{45E444A7-9E62-4312-A9C5-E504C894EB7E}|{C26F3974-ACF1-4C5B-B0B5-9C15E10EB97D}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c7673cca-a43c-4413-8f57-bdb7abe8569d"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link id="{94A3433B-CA08-435B-BB57-69EB41D94864}" querystring="" target="" linktype="internal" text="See the blogs" url="/HCA/HCA-Main/Home/Blog" />
+    - ID: "ae4b03e7-ac89-4f52-8832-3c0cc5ef6e09"
+      Hint: Heading
+      Value: Lorem ipsum dolor sit amet
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250110T180821Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{284DAB94-A5B4-47D9-98F0-2F9ACD13ED08}"
+    - ID: "ed208587-49ec-48b5-81d0-2c4de0185875"
+      Hint: Title
+      Value: Frequently Asked Questions

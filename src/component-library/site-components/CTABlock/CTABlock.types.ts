@@ -7,4 +7,5 @@ export interface CTABlockProps {
   children: ReactNode | JSX.Element;
   ctas?: ReactNode | JSX.Element;
   theme: Theme;
+  id?: string;
 }

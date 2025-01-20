@@ -10,6 +10,7 @@ import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface CardFields {
   fields?: {
@@ -55,6 +56,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { columns = 2 } = props;
+
   if (!props.fields) {
     return <ImageTextListDefaultComponent {...props} />;
   }
@@ -63,8 +65,13 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     return <></>;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+    <Themes
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      id={componentAnchorId}
+    >
       <Accreditations
         columns={columns}
         items={

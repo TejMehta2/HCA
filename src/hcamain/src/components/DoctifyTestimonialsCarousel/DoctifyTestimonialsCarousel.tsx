@@ -9,6 +9,7 @@ import {
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface TestimonialsFields {
   fields?: {
@@ -56,10 +57,13 @@ export const Default = (
     return <DoctifyTestimonialsCarouselDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   const ratingAsNumber = Number(props.fields?.Reviews?.fields?.Stars?.value);
 
   return (
     <CarouselReviews
+      id={componentAnchorId}
       rating={ratingAsNumber}
       reviewCount={
         <>

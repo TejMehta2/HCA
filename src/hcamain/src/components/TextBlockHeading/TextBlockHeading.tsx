@@ -7,6 +7,7 @@ import {
 import Params from 'src/types/params';
 import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -41,8 +42,15 @@ export const Default = (props: TextBlockHeadingProps): JSX.Element => {
   if (!props.fields) {
     return <TextBlockHeadingDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
-    <TextBlockHeader>
+    <TextBlockHeader id={componentAnchorId}>
       <Text variation={'subheading-1'}>
         <JssText field={props.fields?.Heading} />
       </Text>

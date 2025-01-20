@@ -5,4 +5,5 @@ export interface SideScrollingCardsProps {
   bodyCopy: JSX.Element;
   link: JSX.Element;
   children: JSX.Element | ReactNode;
+  id?: string;
 }

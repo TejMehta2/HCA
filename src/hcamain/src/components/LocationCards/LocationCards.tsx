@@ -23,7 +23,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -255,16 +255,18 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
 
   return (
     <CardBlock
@@ -358,6 +360,13 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const locationsCards = data && returnCards(props, data);
 
   const ctaLink =
@@ -366,13 +375,9 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
-
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <>
