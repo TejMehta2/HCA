@@ -64,6 +64,7 @@ export async function getLDBFirstAppointmentDatas(
   try {
     let res: any = '';
     if (config?.aPI_C2_UsingCSharpAPI) {
+      console.log('using C2 C# API');
       // very light cache on these requests they contain time sensitive data
       res = await fetch(requestURL, {
         method: 'post',
@@ -112,13 +113,17 @@ export async function getLDBFirstAppointmentDatas(
         returnData = `{"errorCode": ${res.status}, "errorText": "${res.message}"}`;
         returnData = JSON.parse(returnData);
         console.error(
-          `getLDBFirstAppointmentData failed with error ${returnData}`
+          `getLDBFirstAppointmentData failed with error ${JSON.stringify(
+            returnData
+          )}`
         );
       } else {
         returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}"}`;
         returnData = JSON.parse(returnData);
         console.error(
-          `getLDBFirstAppointmentData failed with error ${returnData}`
+          `getLDBFirstAppointmentData failed with error ${JSON.stringify(
+            returnData
+          )}`
         );
       }
     }
