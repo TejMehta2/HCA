@@ -26,6 +26,11 @@ interface Ic2Config {
   aPI_C2_ReserveConsultantSlot_NoResultsMsg: string;
   aPI_C2_ReserveConsultantSlot_LoadingMsg: string;
   aPI_C2_ReserveConsultantSlot_Header: string;
+  //C2_BookingEnquiry
+  aPI_C2_BookingEnquiry_BaseURL: string;
+  aPI_C2_BookingEnquiry_NoResultsMsg: string;
+  aPI_C2_BookingEnquiry_LoadingMsg: string;
+  aPI_C2_BookingEnquiry_Header: string;
 }
 
 export async function GetC2Config(): Promise<Ic2Config> {
@@ -109,6 +114,10 @@ async function _getC2Config(): Promise<Ic2Config> {
     aPI_C2_ReserveConsultantSlot_NoResultsMsg: '',
     aPI_C2_ReserveConsultantSlot_LoadingMsg: '',
     aPI_C2_ReserveConsultantSlot_Header: '',
+    aPI_C2_BookingEnquiry_BaseURL: '',
+    aPI_C2_BookingEnquiry_NoResultsMsg: '',
+    aPI_C2_BookingEnquiry_LoadingMsg: '',
+    aPI_C2_BookingEnquiry_Header: '',
   };
   c2Config = await getItemFromGraphQL(
     C2APISettingsItemId,

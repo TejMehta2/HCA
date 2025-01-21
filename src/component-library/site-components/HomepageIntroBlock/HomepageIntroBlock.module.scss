@@ -1,6 +1,8 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
 .intro-block {
   background-color: var(--background);
   color: var(--text);

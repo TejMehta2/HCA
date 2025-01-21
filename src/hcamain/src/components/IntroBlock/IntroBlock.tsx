@@ -22,6 +22,7 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -101,9 +102,16 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <IntroBlockDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const phKey = `intro-block-${props.params?.DynamicPlaceholderId}`;
 
@@ -126,20 +134,23 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
   }));
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Headline?.value ? 'span' : subheadingTag;
   return (
     <DynamicHomepageIntroBlock
+      id={componentAnchorId}
       imageAlignment={imageAlignment}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-1'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JSSText field={props.fields?.Title} />
         </Text>
       }
       subtitle={
         props.fields?.Headline?.value ? (
-          <Text tag="p" variation={'subheading-2'}>
+          <Text tag={subheadingTag} variation={'subheading-2'}>
             <JSSText field={props.fields?.Headline} />
           </Text>
         ) : undefined

@@ -13,7 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -50,21 +50,24 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props.fields) {
     return <TextBlockComponentDefaultComponent {...props} />;
   }
 
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.Title?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const componentTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           )
@@ -73,8 +76,8 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
           (props.fields?.Title?.value || isExperienceEditor) && (
             <>
               <Text
-                variation={props.params?.HeadingSize || 'display-2'}
-                tag={props.params?.HeadingTag || 'h2'}
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={headingTag}
               >
                 <JssText field={props.fields?.Title} />
               </Text>

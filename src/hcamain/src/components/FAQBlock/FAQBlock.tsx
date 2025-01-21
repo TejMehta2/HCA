@@ -16,6 +16,7 @@ import { Accordions } from '@component-library/components/Accordions/Accordions.
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   fields?: {
@@ -27,8 +28,8 @@ type QuestionFields = Item & {
   fields?: {
     Question?: Field<string>;
     Answer?: Field<string>;
-    CTAIcon?: CTAIconFields;
-    CTALink?: LinkField;
+    CTAIcon: CTAIconFields;
+    CTALink: LinkField;
   };
 };
 
@@ -55,16 +56,48 @@ type FAQSchema = {
   };
 }[];
 
-const getAccordions = (questions: QuestionFields[]) => {
+const getAccordions = (
+  questions: QuestionFields[],
+  isExperienceEditor: boolean | undefined
+) => {
   const accordions: Accordions = [];
 
   for (const accordion of questions) {
     accordions.push({
       title: <JssText field={accordion.fields?.Question} />,
       children: (
-        <RichText>
-          <JssRichText field={accordion.fields?.Answer}></JssRichText>
-        </RichText>
+        <>
+          <RichText>
+            <JssRichText field={accordion.fields?.Answer}></JssRichText>
+          </RichText>
+
+          {isExperienceEditor ? (
+            <Button variation="full" size="large">
+              <JssLink field={accordion.fields?.CTALink}></JssLink>
+            </Button>
+          ) : (
+            accordion.fields?.CTALink?.value?.href && (
+              <Button variation="full" size="large">
+                <JssLink field={accordion.fields?.CTALink}>
+                  {accordion?.fields?.CTAIcon?.fields?.SvgMarkup && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          accordion.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+                      }}
+                    ></span>
+                  )}
+                  <JssRichText
+                    tag="span"
+                    field={{
+                      value: accordion.fields?.CTALink.value.text,
+                    }}
+                  />
+                </JssLink>
+              </Button>
+            )
+          )}
+        </>
       ),
     });
   }
@@ -113,13 +146,23 @@ const FAQBlockDefaultComponent = (props: FAQProps): JSX.Element => {
 export const Default = (props: FAQProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props?.fields?.Questions) {
     return <FAQBlockDefaultComponent {...props} />;
   }
-  const accordions = getAccordions(props.fields?.Questions);
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <Head>
@@ -131,10 +174,11 @@ export const Default = (props: FAQProps): JSX.Element => {
       </Head>
 
       <AccordionsBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
-            <Text tag="p" variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           )
@@ -142,8 +186,8 @@ export const Default = (props: FAQProps): JSX.Element => {
         header={
           (props.fields.Title?.value || isExperienceEditor) && (
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>
@@ -198,10 +242,17 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
     return <FAQBlockDefaultComponent {...props} />;
   }
 
-  const accordions = getAccordions(props.fields?.Questions);
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <Head>
@@ -212,6 +263,7 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         />
       </Head>
       <AccordionsBlockSideBySide
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         body={
           (props.fields.Text?.value || isExperienceEditor) && (
@@ -224,17 +276,14 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         }
         header={
           (props.fields.Title?.value || isExperienceEditor) && (
-            <Text
-              tag={props.params?.HeadingTag}
-              variation={props.params?.HeadingSize}
-            >
+            <Text tag={headingTag} variation={props.params?.HeadingSize}>
               <JssText field={props.fields?.Title} />
             </Text>
           )
         }
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
-            <Text tag="p" variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           )

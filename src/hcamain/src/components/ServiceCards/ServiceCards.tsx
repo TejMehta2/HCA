@@ -18,6 +18,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { MasonryCard } from '@component-library/site-components/MasonryCards/MasonryCards';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -96,16 +97,26 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   ) {
     return <></>;
   }
-  const headingTag = props.params?.HeadingTag || 'h2';
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <DynamicServiceCards
+      id={componentAnchorId}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text
-            tag={
-              props.fields?.data?.item?.heading?.jsonValue ? 'p' : headingTag
-            }
-            variation={props.params?.HeadingSize || 'display-2'}
+            tag={headingTag}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>
@@ -114,7 +125,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       subtitle={
         (props.fields?.data?.item?.heading?.jsonValue ||
           isExperienceEditor) && (
-          <Text tag={headingTag} variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         )
@@ -263,7 +274,7 @@ export const MasonryCards = (props: MasonryCardsProps): JSX.Element => {
             tag={
               props.fields?.data?.item?.heading?.jsonValue ? 'p' : headingTag
             }
-            variation={props.params?.HeadingSize || 'display-2'}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>

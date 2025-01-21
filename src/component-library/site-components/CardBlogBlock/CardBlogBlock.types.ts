@@ -6,4 +6,5 @@ export interface CardBlogBlockProps {
   cta?: JSX.Element;
   title?: JSX.Element;
   theme: Theme;
+  id?: string;
 }

@@ -100,7 +100,7 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
               props.params?.HeadingTag ||
               getSubheadingTag(props.parentHeadingTag, 'h3')
             }
-            variation={props.params?.HeadingSize || 'display-4'}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.ModalContent[0]?.fields?.Title} />
           </Text>
@@ -114,7 +114,7 @@ export const Default = (props: MoreInformationCTAProps): JSX.Element => {
               props.params?.HeadingTag ||
               getSubheadingTag(props.parentHeadingTag, 'h3')
             }
-            variation={props.params?.HeadingSize || 'display-4'}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.ModalContent[1]?.fields?.Title} />
           </Text>

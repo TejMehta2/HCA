@@ -6,4 +6,5 @@ export interface CardDoctorLayoutProps {
   children?: JSX.Element | ReactNode;
   cta: JSX.Element;
   theme: Theme;
+  id?: string;
 }

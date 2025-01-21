@@ -38,11 +38,16 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <PlainHeaderDefaultComponent {...props} />;
   }
+  const subheadingTag = props.params?.HeadingTag || 'h1';
+  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
+    ?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <HeaderPlain
         subtitle={
-          <Text variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText
               field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
             />
@@ -50,8 +55,8 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
         }
         heading={
           <Text
-            tag={props.params?.HeadingTag || 'h1'}
-            variation={props.params?.HeadingSize || 'display-1'}
+            tag={headingTag}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText
               field={props.fields?.data?.contextItem?.title?.jsonValue}

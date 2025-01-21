@@ -4,9 +4,9 @@ import styles from './CardBlogBlock.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
 const CardBlogBlock = (props: CardBlogBlockProps): JSX.Element => {
-  const { title, children, theme = 'K-HCA-Fern-20', cta } = props;
+  const { title, children, theme = 'K-HCA-Fern-20', cta, id } = props;
   return (
-    <Themes theme={theme}>
+    <Themes theme={theme} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.content}>
           {title && <div className={styles.title}>{title}</div>}

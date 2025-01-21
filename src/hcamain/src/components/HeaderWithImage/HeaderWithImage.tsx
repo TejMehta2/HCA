@@ -12,7 +12,6 @@ import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 interface Fields {
@@ -58,28 +57,29 @@ const HeaderWithImageDefaultComponent = (
 export const Default = (props: HeaderWithImageProps): JSX.Element => {
   const phKeyCtas = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const phKeyRatings = `header-with-image-${props.params?.DynamicPlaceholderId}`;
-  console.log('props', props.rendering?.placeholders);
   if (!props.fields) {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
+    ?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <HeaderWithImage
       theme={props.params?.Theme || 'D-HCA-Teal'}
       title={
         <Text
-          variation={props.params?.HeadingSize || 'display-1'}
-          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-3'}
+          tag={headingTag}
         >
           <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
       subtitle={
         props.fields?.data?.contextItem?.subHeading?.jsonValue?.value ? (
-          <Text
-            variation="subheading-1"
-            tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-          >
+          <Text variation="subheading-1" tag={subheadingTag}>
             <JSSText
               field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
             />

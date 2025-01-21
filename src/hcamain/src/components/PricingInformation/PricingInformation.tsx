@@ -13,6 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;
@@ -58,8 +59,16 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     return <PricingInformationDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       length="long"
       imageAlignment="left"
@@ -75,14 +84,14 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
         />
       }
       subheader={
-        <Text variation="subheading-1">
+        <Text tag={subheadingTag} variation="subheading-1">
           <JssText field={props.fields?.Heading} />
         </Text>
       }
       header={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.Title} />
         </Text>

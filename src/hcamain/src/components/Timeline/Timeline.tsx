@@ -15,6 +15,7 @@ import Timeline, {
   TimelineStep,
 } from '@component-library/site-components/Timeline/Timeline';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -75,6 +76,7 @@ const TimelineDefaultComponent = (props: TimelineProps): JSX.Element => {
 export const Default = (props: TimelineProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+
   if (!props.fields?.data?.item) {
     return <TimelineDefaultComponent {...props} />;
   }
@@ -85,6 +87,13 @@ export const Default = (props: TimelineProps): JSX.Element => {
   ) {
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -103,14 +112,18 @@ export const Default = (props: TimelineProps): JSX.Element => {
       </JssLink>
     )
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <>
       <Timeline
+        id={componentAnchorId}
         subheading={
           !isExperienceEditor ||
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (
@@ -120,7 +133,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
         heading={
           <Text
             variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
+            tag={headingTag}
           >
             <JssText
               tag={'span'}

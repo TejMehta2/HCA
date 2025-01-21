@@ -96,6 +96,13 @@ interface Fields {
   EnquireFormMarketingPreferencesText: Field<string>;
   EnquireFormBtnsClear: Field<string>;
   BreadcrumbHomePage: LinkField;
+  API_HCA_EnquireBookingForm_UtilizeCRM: Field<boolean>;
+  API_HCA_EnquireBookingForm_UtilizeDatabase: Field<boolean>;
+  API_C2_BookingEnquiry_BaseURL: Field<string>;
+  API_C2_BookingEnquiry_NoResultsMsg: Field<string>;
+  API_C2_BookingEnquiry_LoadingMsg: Field<string>;
+  API_C2_BookingEnquiry_Header: Field<string>;
+  API_C2_BookingEnquiry_RecapchaKey: Field<string>;
 }
 
 type StepProps = {
@@ -279,9 +286,75 @@ export const Default = (props: StepProps): JSX.Element => {
       });
   };
 
+  const postToCRM = (data: any) => {
+    setIsSubmitting(true);
+    const dataToSend = { ...data };
+    dataToSend.dateOfBirthFormatted = formatDateDMY(data.date);
+    dataToSend.consultantName = consultantName;
+    dataToSend.consultantTopSpecialty = specialty;
+    dataToSend.hiddenFormInstance = formId;
+
+    //console.log(JSON.stringify(dataToSend, null, 2));
+    const c2_BookingEnquiry_BaseURL =
+      props?.fields?.API_C2_BookingEnquiry_BaseURL?.value;
+    //console.log('c2_BookingEnquiry_BaseURL', c2_BookingEnquiry_BaseURL);
+
+    const URL = c2_BookingEnquiry_BaseURL;
+    // console.log('dataToSend', dataToSend);
+    axios
+      .post(URL, dataToSend)
+      .then((resp) => {
+        //console.log(resp);
+        // console.log("done ok");
+        // if from was submitted then redirect to thank you page
+        if (resp?.data?.errorCode > 0) {
+          setAdditionalErrorText(
+            `error code: ${resp?.data?.errorCode} ${resp?.data?.errorText}`
+          );
+          dialogRef?.current?.showModal();
+        } else if (resp?.data?.success == false) {
+          // structured response from underlying service
+          setAdditionalErrorText(`${resp?.data?.html}`);
+          dialogRef?.current?.showModal();
+        } else {
+          // for HWPD-3463 gtm
+          setConsultantReviews(reviewsTotal ? reviewsTotal.toString() : '0');
+          setSelectedLocationName(data.practice);
+          setConsultantMainSpecialty(specialty);
+          setConsultantName(consultantName);
+          setFinderFormPayor(dataToSend.insurance);
+          setCompletedFormId(dataToSend.hiddenFormInstance);
+          setFinderFormPrevious(data.previousPatient);
+          router.push(
+            `${
+              props?.fields?.NextLink?.value?.href ||
+              '/finder/step-enquire-form-confirmation'
+            }`
+          );
+        }
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsSubmitting(false);
+        dialogRef?.current?.showModal();
+        // console.log("NOT done!");
+      });
+  };
+
   const onSubmit = (data: any) => {
     // console.log('data', data);
-    postData(data);
+    //https://hcauk-digital.atlassian.net/browse/HED-1815
+    const sendToCRM =
+      props?.fields?.API_HCA_EnquireBookingForm_UtilizeCRM?.value;
+    if (sendToCRM) {
+      postToCRM(data);
+    }
+    const sendToDatabase =
+      props?.fields?.API_HCA_EnquireBookingForm_UtilizeDatabase?.value;
+    if (sendToDatabase) {
+      postData(data);
+    }
   };
 
   const onError = (errors: FieldErrors) => {

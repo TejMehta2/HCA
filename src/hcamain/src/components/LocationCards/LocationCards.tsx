@@ -23,7 +23,7 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -255,17 +255,22 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const ctaLink =
     props?.fields?.data?.item?.locations?.PagesList &&
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CardBlock
       id={componentAnchorId}
@@ -278,8 +283,8 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
           title={
             <>
               <Text
-                variation={props.params?.HeadingSize || 'display-5'}
-                tag={props.params?.HeadingTag || 'h2'}
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={headingTag}
               >
                 <JssTextWithEntityName
                   field={props.fields?.data?.item?.title?.jsonValue}
@@ -290,7 +295,7 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
           subtitle={
             !isExperienceEditor ? (
               props.fields?.data?.item?.heading?.jsonValue?.value ? (
-                <Text tag="span" variation={'subheading-1'}>
+                <Text tag={subheadingTag} variation={'subheading-1'}>
                   <JssText
                     field={props.fields?.data?.item?.heading?.jsonValue}
                   />
@@ -358,6 +363,13 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     return <LocationCardsDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const locationsCards = data && returnCards(props, data);
 
   const ctaLink =
@@ -365,21 +377,20 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
-  );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <>
           <span id={componentAnchorId}></span>
           <Text
-            tag={props.params?.HeadingTag || 'h3'}
-            variation={props.params?.HeadingSize || 'display-5'}
+            tag={headingTag}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssTextWithEntityName
               field={props.fields?.data?.item?.title?.jsonValue}
@@ -390,7 +401,7 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (

@@ -24,6 +24,7 @@ export const Default: StoryObj<typeof VideoBlock> = {
   args: {
     header: (
       <AdvancedBlockHeader
+        paddingSize={'none'}
         subtitle={<Text variation={'subheading-1'}>Meta Title</Text>}
         title={<Text variation={'display-2'}>Video Block</Text>}
         body={
