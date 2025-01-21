@@ -73,9 +73,9 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
             </>
           }
         />
-        <Text variation={'body-medium'}>
+        <div className="vacancy-rte">
           <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>
-        </Text>
+        </div>
         <Container marginTop="spacing-6" marginBottom="spacing-6">
           <Button variation={'full-dark'} size="large">
             <a href={data.applicationUrl}>
