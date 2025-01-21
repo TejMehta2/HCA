@@ -275,7 +275,9 @@ export async function getLDBConsultantDetails(
     : `initialappointment=yes`;
   const requestURL = `${
     serviceURL ?? config?.aPI_C2_GetConsultantDetails_BaseURL
-  }&HCAConsultantId=${GMCNumber}&${followOnFrag}`;
+  }${
+    config?.aPI_C2_UsingCSharpAPI ? '?' : '&'
+  }HCAConsultantId=${GMCNumber}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantDetails_Header}`;
 
   let returnData: any = '';
@@ -284,7 +286,7 @@ export async function getLDBConsultantDetails(
     let res: any = '';
     if (config?.aPI_C2_UsingCSharpAPI) {
       //console.log('using C2 C# API');
-      console.log('requestURL', requestURL);
+      //console.log('requestURL', requestURL);
       //console.log('body', body);
       //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
       // very light cache on these requests they contain time sensitive data
@@ -392,7 +394,9 @@ export async function getLDBConsultantSlots(
     : `LocationId=${LocationId}`;
   const requestURL = `${
     serviceURL ?? config?.aPI_C2_GetConsultantSlots_BaseURL
-  }&${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
+  }${
+    config?.aPI_C2_UsingCSharpAPI ? '?' : '&'
+  }${fragConsultant}&${fragLocation}&DateFrom=${DateFrom}&DateTo=${DateTo}&${followOnFrag}`;
   const header = `${headerKey ?? config?.aPI_C2_GetConsultantSlots_Header}`;
 
   let returnData: string = '';
@@ -548,8 +552,12 @@ export async function LDBMakeBooking(
     if (okayToSend) {
       // preference is passed params, otherwise get from settings
       const fragFollowOn = isFollowOnAppointment
-        ? `"initialappointment": null, "followonappointment": "yes"`
-        : `"initialappointment": "yes", "followonappointment": null`;
+        ? `"initialappointment": ${
+            config?.aPI_C2_UsingCSharpAPI ? '"no"' : null
+          }, "followonappointment": "yes"`
+        : `"initialappointment": "yes", "followonappointment":  ${
+            config?.aPI_C2_UsingCSharpAPI ? '"no"' : null
+          }`;
       const fragConsultant = ConsultantGUID
         ? `"ConsultantGUID": "${ConsultantGUID}"`
         : `"HCAConsultantId": "${HCAConsultantId}"`;
@@ -563,6 +571,10 @@ export async function LDBMakeBooking(
         headerKey ?? config?.aPI_C2_ReserveConsultantSlot_Header
       }`;
 
+      if (config?.aPI_C2_UsingCSharpAPI) {
+        // bug where selectedSpeciality is expected in demographics
+        demographics.selectedSpeciality = selectedSpeciality;
+      }
       let demographicsString = JSON.stringify(demographics).substring(1);
       demographicsString =
         '{' +
@@ -587,9 +599,9 @@ export async function LDBMakeBooking(
       try {
         let res: any = '';
         if (config?.aPI_C2_UsingCSharpAPI) {
-          //console.log('using C2 C# API');
-          //console.log('requestURL', requestURL);
-          //console.log('body', body);
+          console.log('using C2 C# API');
+          console.log('requestURL', requestURL);
+          console.log('body', body);
           //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
           // very light cache on these requests they contain time sensitive data
           res = await fetch(requestURL, {
@@ -601,7 +613,7 @@ export async function LDBMakeBooking(
             },
             cache: 'no-cache',
           });
-          //console.log('done request');
+          console.log('done request');
         } else {
           // very light cache on these requests they contain time sensitive data
           res = await fetch(requestURL, {
@@ -624,7 +636,9 @@ export async function LDBMakeBooking(
             errorDetails = await res.text();
           } finally {
           }
-          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          returnData = `{"errorCode": ${res.status}, "errorText": "${
+            res.statusText
+          }", "errorDetail": "${sanitizeJSON(errorDetails)}"}`;
           //enhance logging - https://hcauk-digital.atlassian.net/browse/HED-1601
           console.warn(
             `LDBMakeBooking c:${fragConsultant}, l:${fragLocation}, d:${dateFrom}, t:${fragFollowOn} s:${selectedSpeciality} r:${sanitizeJSON(
