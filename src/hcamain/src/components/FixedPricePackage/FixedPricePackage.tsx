@@ -54,7 +54,8 @@ const IntegratedFixedPricedPackage = (
     props?.params,
     tableOfContentsLinkTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <ImageAndTextBlock
@@ -63,14 +64,14 @@ const IntegratedFixedPricedPackage = (
         imageAlignment={props.imageAlignment}
         length="short"
         subheader={
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           <Text
-            tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
+            tag={headingTag}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.Title} />
           </Text>

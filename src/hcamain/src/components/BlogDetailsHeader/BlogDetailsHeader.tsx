@@ -92,7 +92,7 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h1'}
-          variation={props.params?.HeadingSize || 'display-1'}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>

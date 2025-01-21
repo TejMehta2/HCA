@@ -127,6 +127,10 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     )
   );
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <MasonryCards
       id={componentAnchorId}
@@ -134,7 +138,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
         <>
           <Text
             variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
+            tag={headingTag}
           >
             <JssText
               tag={'span'}
@@ -146,7 +150,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (

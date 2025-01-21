@@ -131,7 +131,8 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
@@ -139,14 +140,14 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           contentVariation={contentVariation}
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-1'}
-              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-3'}
+              tag={headingTag}
             >
               <JssText field={props?.fields?.Title} />
             </Text>
           }
           metatitle={
-            <Text variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           }

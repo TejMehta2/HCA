@@ -12,7 +12,6 @@ import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import getSubheadingTag from 'lib/subheading-tag-getter';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Themes from '@component-library/foundation/Themes/Themes';
 
@@ -66,13 +65,18 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
   const image = hasVideo
     ? props.fields.data?.item?.videoThumbnail?.jsonValue
     : props.fields?.data?.contextItem?.image?.jsonValue;
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
+    ?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <VideoHero
         title={
           <Text
-            variation={props.params?.HeadingSize || 'display-1'}
-            tag={props.params?.HeadingTag || 'h2'}
+            variation={props.params?.HeadingSize || 'display-3'}
+            tag={headingTag}
           >
             <RichText
               field={props.fields?.data?.contextItem?.title?.jsonValue}
@@ -111,10 +115,7 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
         }
         subtitle={
           props.fields?.data?.contextItem?.subHeading?.jsonValue?.value ? (
-            <Text
-              variation="subheading-1"
-              tag={getSubheadingTag(props.params?.HeadingTag, 'h3')}
-            >
+            <Text variation="subheading-1" tag={subheadingTag}>
               <JSSText
                 field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
               />

@@ -58,7 +58,7 @@ export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
         fullHeight={false}
         title={
           <Text
-            variation={props.params?.HeadingSize || 'display-4'}
+            variation={props.params?.HeadingSize || 'display-3'}
             tag={props.params?.HeadingTag || 'h2'}
           >
             <JssText field={props.fields?.ErrorTitle} />
@@ -122,7 +122,7 @@ export const Default = (props: PaymentFormConfirmationProps): JSX.Element => {
       <PaymentSummary
         heading={
           <Text
-            variation={props.params?.HeadingSize || 'display-4'}
+            variation={props.params?.HeadingSize || 'display-3'}
             tag={props.params?.HeadingTag || 'h2'}
           >
             <JssText field={props.fields?.Title} />

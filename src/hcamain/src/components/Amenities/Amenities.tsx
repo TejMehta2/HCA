@@ -82,8 +82,8 @@ const outputImageAndTextBlock = (
       length="short"
       header={
         <Text
-          tag={props.params?.HeadingTag}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.Title} />
         </Text>

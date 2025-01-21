@@ -123,6 +123,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     )
   );
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CardBlock
       id={componentAnchorId}
@@ -136,19 +140,16 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             <>
               <Text
                 variation={props.params?.HeadingSize || 'display-3'}
-                tag={props.params?.HeadingTag || 'h2'}
+                tag={headingTag}
               >
-                <JssText
-                  tag={'span'}
-                  field={props.fields?.data?.item?.title?.jsonValue}
-                />
+                <JssText field={props.fields?.data?.item?.title?.jsonValue} />
               </Text>
             </>
           }
           subtitle={
             !isExperienceEditor ? (
               props.fields?.data?.item?.heading?.jsonValue?.value ? (
-                <Text tag="span" variation={'subheading-1'}>
+                <Text tag={subheadingTag} variation={'subheading-1'}>
                   <JssText
                     field={props.fields?.data?.item?.heading?.jsonValue}
                   />

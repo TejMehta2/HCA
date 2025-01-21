@@ -48,6 +48,11 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
   if (!props?.fields?.data?.item) {
     return <CareersSearchHeroDefaultComponent {...props} />;
   }
+  const subheadingTag = props.params?.HeadingTag || 'h1';
+  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
+    ?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <form
@@ -57,17 +62,14 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
         <CareersHomepageHero
           title={
             <>
-              <Text
-                tag={props.params?.HeadingTag || 'p'}
-                variation={'subheading-1'}
-              >
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText
                   field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
                 />
               </Text>
               <Text
-                tag={props.params?.HeadingTag || 'h1'}
-                variation={props.params?.HeadingSize || 'display-2'}
+                tag={headingTag}
+                variation={props.params?.HeadingSize || 'display-3'}
               >
                 <SitecoreSvg>
                   {props.fields?.data?.contextItem?.title?.jsonValue?.value}
@@ -203,7 +205,11 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     const url = `${pathname}?${params}`;
     router.replace(url, undefined, { shallow: true });
   };
-
+  const subheadingTag = props.params?.HeadingTag || 'h1';
+  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
+    ?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
       <form
@@ -217,7 +223,7 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
       >
         <HeaderPlain
           metatitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText
                 field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
               />
@@ -225,8 +231,8 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
           }
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-2'}
-              tag={props.params?.HeadingTag || 'h2'}
+              variation={props.params?.HeadingSize || 'display-3'}
+              tag={headingTag}
             >
               <JssText
                 field={props.fields?.data?.contextItem?.title?.jsonValue}

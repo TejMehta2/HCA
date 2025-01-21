@@ -114,15 +114,18 @@ export const Default = (props: WithImageProps): JSX.Element => {
       </JssLink>
     )
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CarouselCards
       id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-4'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
@@ -130,7 +133,7 @@ export const Default = (props: WithImageProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (

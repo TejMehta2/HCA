@@ -112,7 +112,10 @@ export const Default = (props: TimelineProps): JSX.Element => {
       </JssLink>
     )
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <>
       <Timeline
@@ -120,7 +123,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
         subheading={
           !isExperienceEditor ||
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (
@@ -130,7 +133,7 @@ export const Default = (props: TimelineProps): JSX.Element => {
         heading={
           <Text
             variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
+            tag={headingTag}
           >
             <JssText
               tag={'span'}
