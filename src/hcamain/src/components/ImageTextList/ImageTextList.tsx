@@ -10,20 +10,12 @@ import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
-import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-
-type HCAIconFields = {
-  svgMarkup?: Field<string>;
-  svgMarkup48?: Field<string>;
-};
 
 interface CardFields {
   fields?: {
     Title?: Field<string>;
     Text?: Field<string>;
     Image?: ImageField;
-    Icon?: HCAIconFields;
   };
 }
 
@@ -63,7 +55,6 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { columns = 2 } = props;
-
   if (!props.fields) {
     return <ImageTextListDefaultComponent {...props} />;
   }
@@ -72,12 +63,8 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     return <></>;
   }
 
-  console.log(props.fields?.Cards);
   return (
-    <Themes
-      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
-      id={componentAnchorId}
-    >
+    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <Accreditations
         columns={columns}
         items={
@@ -85,7 +72,14 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
             text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
             title: <JssText tag={'span'} field={cards.fields?.Title} />,
             logo: (
-              <SitecoreSvg>{cards.fields?.Icon?.svgMarkup?.value}</SitecoreSvg>
+              <NextJssImage
+                field={cards?.fields?.Image}
+                editable={false}
+                next={{
+                  width: 643,
+                  height: 605,
+                }}
+              />
             ),
           })) || []
         }
