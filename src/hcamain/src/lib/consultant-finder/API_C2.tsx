@@ -300,7 +300,7 @@ export async function getLDBConsultantDetails(
           revalidate: 60,
         },
       });
-      console.log('res', JSON.stringify(res));
+      //console.log('res', JSON.stringify(res));
       //console.log('done request');
     } else {
       // very light cache on these requests they contain time sensitive data
@@ -599,9 +599,9 @@ export async function LDBMakeBooking(
       try {
         let res: any = '';
         if (config?.aPI_C2_UsingCSharpAPI) {
-          console.log('using C2 C# API');
-          console.log('requestURL', requestURL);
-          console.log('body', body);
+          //console.log('using C2 C# API');
+          //console.log('requestURL', requestURL);
+          //console.log('body', body);
           //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
           // very light cache on these requests they contain time sensitive data
           res = await fetch(requestURL, {
@@ -613,7 +613,7 @@ export async function LDBMakeBooking(
             },
             cache: 'no-cache',
           });
-          console.log('done request');
+          //console.log('done request');
         } else {
           // very light cache on these requests they contain time sensitive data
           res = await fetch(requestURL, {
@@ -773,15 +773,36 @@ export async function FinderMakeEnquiry(
         //console.log('requestURL', requestURL);
         const header = `${headerKey ?? config?.aPI_C2_BookingEnquiry_Header}`;
         //console.log('header', header);
-        const res = await fetch(requestURL, {
-          method: 'post',
-          body: JSON.stringify(fields),
-          headers: {
-            'Content-Type': 'application/json',
-            securitytoken: `"${header}"`,
-          },
-          cache: 'no-cache',
-        });
+
+        let res: any = '';
+        if (config?.aPI_C2_UsingCSharpAPI) {
+          //console.log('using C2 C# API');
+          //console.log('requestURL', requestURL);
+          //console.log('body', body);
+          //'http://localhost:4000/api/Consultant/InitialAndFollowUpAppointments',
+          // very light cache on these requests they contain time sensitive data
+          res = await fetch(requestURL, {
+            method: 'post',
+            body: JSON.stringify(fields),
+            headers: {
+              'Content-Type': 'application/json',
+              'X-WebApi-Key': `${header}`,
+            },
+            cache: 'no-cache',
+          });
+          //console.log('done request');
+        } else {
+          // very light cache on these requests they contain time sensitive data
+          res = await fetch(requestURL, {
+            method: 'post',
+            body: JSON.stringify(fields),
+            headers: {
+              'Content-Type': 'application/json',
+              securitytoken: `"${header}"`,
+            },
+            cache: 'no-cache',
+          });
+        }
 
         if (res.ok) {
           returnData = await res.text();
@@ -792,7 +813,9 @@ export async function FinderMakeEnquiry(
             errorDetails = await res.text();
           } finally {
           }
-          returnData = `{"errorCode": ${res.status}, "errorText": "${res.statusText}", "errorDetail": "${errorDetails}"}`;
+          returnData = `{"errorCode": ${res.status}, "errorText": "${
+            res.statusText
+          }", "errorDetail": "${sanitizeJSON(errorDetails)}"}`;
           console.warn(`FinderMakeEnquiry failed with error ${returnData}`);
           returnData = JSON.parse(returnData);
         }
