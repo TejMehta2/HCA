@@ -68,7 +68,8 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <LogoBlock
       id={componentAnchorId}
@@ -78,14 +79,14 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
       header={
         <AdvancedBlockHeader
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JSSText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JSSText field={props.fields?.Title} />
             </Text>

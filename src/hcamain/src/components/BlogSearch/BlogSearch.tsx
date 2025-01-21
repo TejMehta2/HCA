@@ -108,22 +108,23 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const subheadingTag = props.params?.HeadingTag || 'h1';
+  const headingTag = fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
         <HeaderPlain
           heading={
             <Text
-              tag={props.params?.HeadingTag || 'h1'}
-              variation={props.params?.HeadingSize || 'display-1'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props?.fields?.Title} />
             </Text>
           }
           metatitle={
             !!fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
               </Text>
             )

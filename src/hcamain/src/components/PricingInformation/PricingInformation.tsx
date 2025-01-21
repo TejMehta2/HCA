@@ -64,7 +64,8 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
@@ -83,14 +84,14 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
         />
       }
       subheader={
-        <Text variation="subheading-1">
+        <Text tag={subheadingTag} variation="subheading-1">
           <JssText field={props.fields?.Heading} />
         </Text>
       }
       header={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.Title} />
         </Text>

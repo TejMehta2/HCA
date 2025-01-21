@@ -60,13 +60,14 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           )
@@ -75,8 +76,8 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
           (props.fields?.Title?.value || isExperienceEditor) && (
             <>
               <Text
-                variation={props.params?.HeadingSize || 'display-2'}
-                tag={props.params?.HeadingTag || 'h2'}
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={headingTag}
               >
                 <JssText field={props.fields?.Title} />
               </Text>

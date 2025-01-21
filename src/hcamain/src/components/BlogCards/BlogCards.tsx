@@ -104,13 +104,17 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CarouselCards
       id={componentAnchorId}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-5'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>
@@ -118,7 +122,7 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (
@@ -240,7 +244,7 @@ export const Standard = (props: BlogCardsProps): JSX.Element => {
         title={
           <Text
             tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-5'}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.data?.item?.title?.jsonValue} />
           </Text>

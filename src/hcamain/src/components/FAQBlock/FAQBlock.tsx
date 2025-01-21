@@ -161,6 +161,8 @@ export const Default = (props: FAQProps): JSX.Element => {
 
   const faqSchema = getSchema(props.fields?.Questions);
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <Head>
@@ -176,7 +178,7 @@ export const Default = (props: FAQProps): JSX.Element => {
         theme={props.params?.Theme || 'A-HCA-White'}
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
-            <Text tag="p" variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           )
@@ -184,8 +186,8 @@ export const Default = (props: FAQProps): JSX.Element => {
         header={
           (props.fields.Title?.value || isExperienceEditor) && (
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>
@@ -249,7 +251,8 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <Head>
@@ -273,17 +276,14 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
         }
         header={
           (props.fields.Title?.value || isExperienceEditor) && (
-            <Text
-              tag={props.params?.HeadingTag}
-              variation={props.params?.HeadingSize}
-            >
+            <Text tag={headingTag} variation={props.params?.HeadingSize}>
               <JssText field={props.fields?.Title} />
             </Text>
           )
         }
         subtitle={
           (props.fields.Heading?.value || isExperienceEditor) && (
-            <Text tag="p" variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           )

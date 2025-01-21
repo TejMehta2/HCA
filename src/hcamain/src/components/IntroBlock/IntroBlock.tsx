@@ -134,22 +134,23 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
   }));
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Headline?.value ? 'span' : subheadingTag;
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
       imageAlignment={imageAlignment}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-1'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JSSText field={props.fields?.Title} />
         </Text>
       }
       subtitle={
         props.fields?.Headline?.value ? (
-          <Text tag="p" variation={'subheading-2'}>
+          <Text tag={subheadingTag} variation={'subheading-2'}>
             <JSSText field={props.fields?.Headline} />
           </Text>
         ) : undefined
