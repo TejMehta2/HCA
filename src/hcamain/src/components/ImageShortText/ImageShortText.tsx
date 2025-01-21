@@ -76,7 +76,8 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   );
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <>
       <DynamicImageAndTextBlock
@@ -86,15 +87,15 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         imageKeepAspectRatio={keepAspectRatio}
         length="short"
         subheader={
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           <>
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>

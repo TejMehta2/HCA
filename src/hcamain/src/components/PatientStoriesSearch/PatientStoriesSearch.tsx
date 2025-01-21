@@ -115,14 +115,15 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
         <HeaderPlain
           metatitle={
             fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
               </Text>
             )
@@ -131,7 +132,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
             fields?.Title?.value && (
               <Text
                 variation={params?.HeadingSize || 'display-2'}
-                tag={params?.HeadingTag || 'h2'}
+                tag={headingTag}
               >
                 <JssText field={fields?.Title} />
               </Text>

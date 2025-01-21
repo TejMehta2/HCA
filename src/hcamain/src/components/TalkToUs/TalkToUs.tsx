@@ -96,7 +96,10 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       contactListItems.push(contactListItem);
     }
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h4';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
@@ -105,15 +108,15 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       length="short"
       subheader={
         !!props.fields?.data?.item?.heading?.jsonValue?.value && (
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         )
       }
       header={
         <Text
-          tag={props.params?.HeadingTag || 'h4'}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>

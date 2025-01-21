@@ -43,7 +43,7 @@ export const Default = (props: StatsProps): JSX.Element => {
         heading={
           <Text
             tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields.Title} />
           </Text>
@@ -86,7 +86,7 @@ export const ThreeColumns = (props: StatsProps): JSX.Element => {
           props.fields.Title?.value || isExperienceEditor ? (
             <Text
               tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields.Title} />
             </Text>

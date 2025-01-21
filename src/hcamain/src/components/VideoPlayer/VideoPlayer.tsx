@@ -67,7 +67,8 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <VideoBlock
       id={componentAnchorId}
@@ -76,14 +77,14 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize={'none'}
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>
@@ -174,7 +175,8 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
   return (
     <VideoBlock
       id={componentAnchorId}
@@ -184,14 +186,14 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
         <AdvancedBlockHeader
           paddingSize={'none'}
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>

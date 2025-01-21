@@ -209,13 +209,17 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue
+    ? 'span'
+    : subheadingTag;
   return (
     <CarouselCards
       id={componentAnchorId}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
-          variation={props.params?.HeadingSize || 'display-5'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssTextWithEntityName
             field={props?.fields?.data?.item?.title?.jsonValue}
@@ -229,7 +233,7 @@ export const Default = (props: BlogRelatedArticlesProps): JSX.Element => {
       }
       subtitle={
         props?.fields?.data?.item?.heading?.jsonValue?.value ? (
-          <Text tag="span" variation={'subheading-1'}>
+          <Text tag={subheadingTag} variation={'subheading-1'}>
             <JssText field={props?.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         ) : undefined

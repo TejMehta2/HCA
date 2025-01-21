@@ -77,7 +77,7 @@ export const Default = (props: ModalContentProps): JSX.Element => {
         ref={dialogRef}
         title1={
           <Text
-            variation={props.params?.HeadingSize || 'display-4'}
+            variation={props.params?.HeadingSize || 'display-3'}
             tag={props.params?.HeadingTag || 'h2'}
           >
             <JssText field={props.fields?.Title} />

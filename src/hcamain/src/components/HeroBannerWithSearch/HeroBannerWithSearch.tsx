@@ -66,7 +66,7 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h1'}
-          variation={props.params?.HeadingSize || 'display-1'}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssRichText
             field={props.fields?.data?.contextItem?.title?.jsonValue}

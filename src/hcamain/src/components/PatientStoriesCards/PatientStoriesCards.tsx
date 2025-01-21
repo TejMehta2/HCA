@@ -254,7 +254,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <CardBlock
       id={componentAnchorId}
@@ -269,8 +272,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
               isExperienceEditor) && (
               <>
                 <Text
-                  variation={props.params?.HeadingSize || 'display-2'}
-                  tag={props.params?.HeadingTag || 'h2'}
+                  variation={props.params?.HeadingSize || 'display-3'}
+                  tag={headingTag}
                 >
                   <JssText
                     tag={'span'}
@@ -283,7 +286,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           subtitle={
             (props.fields?.data?.item?.heading?.jsonValue ||
               isExperienceEditor) && (
-              <Text tag="span" variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
               </Text>
             )
@@ -372,14 +375,17 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
+  const subheadingTag = props.params?.HeadingTag || 'h2';
+  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
+    ? 'span'
+    : subheadingTag;
   return (
     <CarouselCards
       id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
+          tag={headingTag}
           variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
@@ -388,7 +394,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (
