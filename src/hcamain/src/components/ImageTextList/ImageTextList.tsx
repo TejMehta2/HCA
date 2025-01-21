@@ -11,10 +11,11 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {
-  svgMarkup?: Field<string>;
-  svgMarkup48?: Field<string>;
+  SvgMarkup?: Field<string>;
+  SvgMarkup48?: Field<string>;
 };
 
 interface CardFields {
@@ -22,7 +23,9 @@ interface CardFields {
     Title?: Field<string>;
     Text?: Field<string>;
     Image?: ImageField;
-    Icon?: HCAIconFields;
+    Icon?: {
+      fields: HCAIconFields;
+    };
   };
 }
 
@@ -102,9 +105,37 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
 };
 
 export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext?.pageEditing;
+
   if (!props.fields) {
     return <ImageTextListDefaultComponent {...props} />;
   }
 
-  return <Default {...props} columns={3} />;
+  if (!props.fields?.Cards?.length && !isExperienceEditor) {
+    return <></>;
+  }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  return (
+    <Themes
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      id={componentAnchorId}
+    >
+      <Accreditations
+        columns={3}
+        items={
+          props.fields?.Cards?.map((cards) => ({
+            text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
+            title: <JssText tag={'span'} field={cards.fields?.Title} />,
+            logo: (
+              <SitecoreSvg>
+                {cards.fields?.Icon?.fields.SvgMarkup48?.value}
+              </SitecoreSvg>
+            ),
+          })) || []
+        }
+      />
+    </Themes>
+  );
 };

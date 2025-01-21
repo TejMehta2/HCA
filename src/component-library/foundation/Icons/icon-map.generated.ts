@@ -9,7 +9,9 @@ import iconArrowSmallLeft from './assets-dist/Arrow small left.svg';
 import iconArrowSmallRight from './assets-dist/Arrow small right.svg';
 import iconArrowSmallUp from './assets-dist/Arrow small up.svg';
 import iconArrowUp from './assets-dist/Arrow up.svg';
+import iconBook48 from './assets-dist/Book 48.svg';
 import iconBook from './assets-dist/Book.svg';
+import iconCalendar48 from './assets-dist/Calendar 48.svg';
 import iconCalendar from './assets-dist/Calendar.svg';
 import iconCfstarfull0 from './assets-dist/CFStarFull0.svg';
 import iconCfstarfull100 from './assets-dist/CFStarFull100.svg';
@@ -26,6 +28,7 @@ import iconChevronUp from './assets-dist/Chevron Up.svg';
 import iconClock from './assets-dist/Clock.svg';
 import iconComment from './assets-dist/Comment.svg';
 import iconCopy from './assets-dist/Copy.svg';
+import iconCreditCard48 from './assets-dist/Credit card 48.svg';
 import iconCreditCard from './assets-dist/Credit card.svg';
 import iconCrossSmall from './assets-dist/Cross Small.svg';
 import iconCross from './assets-dist/Cross.svg';
@@ -49,11 +52,13 @@ import iconList from './assets-dist/List.svg';
 import iconLocation from './assets-dist/Location.svg';
 import iconMenu from './assets-dist/Menu.svg';
 import iconMessenger from './assets-dist/Messenger.svg';
+import iconMicroscope48 from './assets-dist/Microscope 48.svg';
 import iconMinusSmall from './assets-dist/Minus small.svg';
 import iconMinus from './assets-dist/Minus.svg';
 import iconMobile from './assets-dist/Mobile.svg';
 import iconOneOff from './assets-dist/One-off.svg';
 import iconPhone from './assets-dist/Phone.svg';
+import iconPin48 from './assets-dist/Pin 48.svg';
 import iconPin from './assets-dist/Pin.svg';
 import iconPlay from './assets-dist/Play.svg';
 import iconPlusSmall from './assets-dist/Plus small.svg';
@@ -87,7 +92,9 @@ export type IconName =
   | 'iconArrowSmallRight'
   | 'iconArrowSmallUp'
   | 'iconArrowUp'
+  | 'iconBook48'
   | 'iconBook'
+  | 'iconCalendar48'
   | 'iconCalendar'
   | 'iconCfstarfull0'
   | 'iconCfstarfull100'
@@ -104,6 +111,7 @@ export type IconName =
   | 'iconClock'
   | 'iconComment'
   | 'iconCopy'
+  | 'iconCreditCard48'
   | 'iconCreditCard'
   | 'iconCrossSmall'
   | 'iconCross'
@@ -127,11 +135,13 @@ export type IconName =
   | 'iconLocation'
   | 'iconMenu'
   | 'iconMessenger'
+  | 'iconMicroscope48'
   | 'iconMinusSmall'
   | 'iconMinus'
   | 'iconMobile'
   | 'iconOneOff'
   | 'iconPhone'
+  | 'iconPin48'
   | 'iconPin'
   | 'iconPlay'
   | 'iconPlusSmall'
@@ -165,7 +175,9 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconArrowSmallRight', iconArrowSmallRight],
   ['iconArrowSmallUp', iconArrowSmallUp],
   ['iconArrowUp', iconArrowUp],
+  ['iconBook48', iconBook48],
   ['iconBook', iconBook],
+  ['iconCalendar48', iconCalendar48],
   ['iconCalendar', iconCalendar],
   ['iconCfstarfull0', iconCfstarfull0],
   ['iconCfstarfull100', iconCfstarfull100],
@@ -182,6 +194,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconClock', iconClock],
   ['iconComment', iconComment],
   ['iconCopy', iconCopy],
+  ['iconCreditCard48', iconCreditCard48],
   ['iconCreditCard', iconCreditCard],
   ['iconCrossSmall', iconCrossSmall],
   ['iconCross', iconCross],
@@ -205,11 +218,13 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconLocation', iconLocation],
   ['iconMenu', iconMenu],
   ['iconMessenger', iconMessenger],
+  ['iconMicroscope48', iconMicroscope48],
   ['iconMinusSmall', iconMinusSmall],
   ['iconMinus', iconMinus],
   ['iconMobile', iconMobile],
   ['iconOneOff', iconOneOff],
   ['iconPhone', iconPhone],
+  ['iconPin48', iconPin48],
   ['iconPin', iconPin],
   ['iconPlay', iconPlay],
   ['iconPlusSmall', iconPlusSmall],
