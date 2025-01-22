@@ -40,6 +40,7 @@ import SearchDetail from '@component-library/hooks/useSearchForm/components/Sear
 import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -131,8 +132,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>

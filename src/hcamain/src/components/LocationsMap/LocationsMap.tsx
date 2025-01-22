@@ -16,6 +16,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicOurLocations = dynamic(
   () => import('@component-library/site-components/OurLocations/OurLocations'),
@@ -85,8 +86,10 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   const headerProps = {
     subtitle: (
       <Text tag={subheadingTag} variation="subheading-1">

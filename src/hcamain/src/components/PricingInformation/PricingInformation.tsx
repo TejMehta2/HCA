@@ -14,6 +14,7 @@ import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBl
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   Heading?: Field<string>;
@@ -64,8 +65,10 @@ export const Default = (props: PricingInformationProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <ImageAndTextBlock
       id={componentAnchorId}

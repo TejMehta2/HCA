@@ -8,6 +8,7 @@ import Text from '@component-library/foundation/Text/Text';
 import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -38,11 +39,10 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <PlainHeaderDefaultComponent {...props} />;
   }
-  const subheadingTag = props.params?.HeadingTag || 'h1';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
+  );
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <HeaderPlain

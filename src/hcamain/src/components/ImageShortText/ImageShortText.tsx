@@ -15,6 +15,7 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -76,8 +77,11 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   );
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <>
       <DynamicImageAndTextBlock

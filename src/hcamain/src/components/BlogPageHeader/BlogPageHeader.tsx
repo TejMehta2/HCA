@@ -16,6 +16,7 @@ import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Filters from '@component-library/site-components/Filters/Filters';
 import { ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SEARCH_PATH = '/search';
@@ -74,8 +75,11 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-  const subheadingTag = props.params?.HeadingTag || 'h1';
-  const headingTag = fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    fields?.Heading?.value,
+    'h1'
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>

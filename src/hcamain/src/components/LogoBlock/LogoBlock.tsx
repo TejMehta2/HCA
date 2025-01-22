@@ -17,6 +17,7 @@ import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface LogosFields {
   fields?: {
@@ -68,8 +69,10 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <LogoBlock
       id={componentAnchorId}
