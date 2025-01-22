@@ -25,7 +25,9 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
@@ -134,7 +136,10 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           heading={
             fields?.Title?.value && (
               <Text
-                variation={params?.HeadingSize || 'display-2'}
+                variation={
+                  params?.HeadingSize ||
+                  getDynamicTitleStyle(fields?.Title.value.length)
+                }
                 tag={headingTag}
               >
                 <JssText field={fields?.Title} />

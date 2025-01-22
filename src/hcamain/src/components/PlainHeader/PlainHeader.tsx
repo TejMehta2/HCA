@@ -5,7 +5,9 @@ import {
   Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
 import getHeadingTags from 'lib/getHeadingTags';
@@ -56,7 +58,12 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
         heading={
           <Text
             tag={headingTag}
-            variation={props.params?.HeadingSize || 'display-3'}
+            variation={
+              props.params?.HeadingSize ||
+              getDynamicTitleStyle(
+                props.fields?.data?.contextItem?.title?.jsonValue?.value.length
+              )
+            }
           >
             <JssText
               field={props.fields?.data?.contextItem?.title?.jsonValue}
