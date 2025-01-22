@@ -136,10 +136,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   }));
   const subheadingTag = props.params?.HeadingTag || 'h2';
   const headingTag = props.fields?.Headline?.value ? 'span' : subheadingTag;
+
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
       imageAlignment={imageAlignment}
+      imageKeepAspectRatio={keepAspectRatio}
       title={
         <Text
           tag={headingTag}

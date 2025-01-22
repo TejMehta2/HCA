@@ -9,6 +9,10 @@ import * as HomepageIntroBlockStories from './HomepageIntroBlock.stories'
 
 The HomepageIntroBlock is intended to be used on the home page of the main site, as a component in the main content.
 
+By default the image will fill the full height and cover, which will cut some parts of the image off.
+
+The prop `imageKeepAspectRatio` can be set to true, to enforce that the image retains its natural aspect ratio and is contained.
+
 ### Props
 
 - title
@@ -19,6 +23,7 @@ The HomepageIntroBlock is intended to be used on the home page of the main site,
 - cqc (CQCBlock component)
 - doctify (Doctify component)
 - imageAlignment
+- imageKeepAspectRatio
 
 ### Example
 
