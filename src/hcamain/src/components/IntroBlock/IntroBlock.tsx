@@ -134,8 +134,12 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
   }));
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Headline?.value ? 'span' : subheadingTag;
+  const semanticTag = props.params?.HeadingTag || 'h2';
+  const titleKeepsSemanticTag = props.params?.DisableHeadersToggle === '1';
+  const subtitleExists = !!props.fields?.Headline?.value;
+  const subheadingTag = titleKeepsSemanticTag ? 'span' : semanticTag;
+  const headingFallbackTag = subtitleExists ? 'span' : semanticTag;
+  const headingTag = titleKeepsSemanticTag ? semanticTag : headingFallbackTag;
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}

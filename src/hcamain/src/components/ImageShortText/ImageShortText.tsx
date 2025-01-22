@@ -76,8 +76,13 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   );
 
   const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+
+  const semanticTag = props.params?.HeadingTag || 'h2';
+  const titleKeepsSemanticTag = props.params?.DisableHeadersToggle === '1';
+  const subtitleExists = !!props.fields?.Heading?.value;
+  const subheadingTag = titleKeepsSemanticTag ? 'span' : semanticTag;
+  const headingFallbackTag = subtitleExists ? 'span' : semanticTag;
+  const headingTag = titleKeepsSemanticTag ? semanticTag : headingFallbackTag;
   return (
     <>
       <DynamicImageAndTextBlock
