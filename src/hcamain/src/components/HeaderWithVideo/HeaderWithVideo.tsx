@@ -70,12 +70,31 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
     props?.params,
     props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
   );
+
+  const titleLength =
+    props.fields?.data?.contextItem?.title?.jsonValue?.value?.length;
+  const getDynamicTitleStyle = (length?: number) => {
+    if (!length) return 'display-1';
+    if (length >= 50) {
+      return 'display-6';
+    } else if (length >= 40) {
+      return 'display-5';
+    } else if (length >= 30) {
+      return 'display-4';
+    } else if (length >= 20) {
+      return 'display-3';
+    } else if (length >= 10) {
+      return 'display-2';
+    } else return 'display-1';
+  };
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <VideoHero
         title={
           <Text
-            variation={props.params?.HeadingSize || 'display-3'}
+            variation={
+              props.params?.HeadingSize || getDynamicTitleStyle(titleLength)
+            }
             tag={headingTag}
           >
             <RichText

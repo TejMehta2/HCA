@@ -24,7 +24,9 @@ import SearchContainer from '@component-library/site-components/SearchContainer/
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
@@ -121,7 +123,10 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
           heading={
             <Text
               tag={headingTag}
-              variation={props.params?.HeadingSize || 'display-3'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(props?.fields?.Title?.value.length)
+              }
             >
               <JssText field={props?.fields?.Title} />
             </Text>

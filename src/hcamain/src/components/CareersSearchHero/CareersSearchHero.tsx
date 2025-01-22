@@ -14,7 +14,9 @@ import Button from '@component-library/core-components/Button/Button';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SelectField from '@component-library/core-components/SelectField/SelectField';
 import { CareersSearchHeroProps } from './CareersSearchHero.types';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -232,7 +234,13 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
           }
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-3'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(
+                  props.fields?.data?.contextItem?.title?.jsonValue?.value
+                    .length
+                )
+              }
               tag={headingTag}
             >
               <JssText

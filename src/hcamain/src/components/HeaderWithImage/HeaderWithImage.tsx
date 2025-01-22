@@ -7,7 +7,9 @@ import {
   RichText,
   Text as JSSText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import HeaderWithImage from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
+import HeaderWithImage, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderWithImage/HeaderWithImage';
 import Text from '@component-library/foundation/Text/Text';
 import { ButtonProps } from '@component-library/core-components/Button/Button.types';
 import Params from 'src/types/params';
@@ -66,12 +68,18 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
     props?.params,
     props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
   );
+
+  const titleLength =
+    props.fields?.data?.contextItem?.title?.jsonValue?.value?.length;
+
   return (
     <HeaderWithImage
       theme={props.params?.Theme || 'D-HCA-Teal'}
       title={
         <Text
-          variation={props.params?.HeadingSize || 'display-3'}
+          variation={
+            props.params?.HeadingSize || getDynamicTitleStyle(titleLength)
+          }
           tag={headingTag}
         >
           <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />

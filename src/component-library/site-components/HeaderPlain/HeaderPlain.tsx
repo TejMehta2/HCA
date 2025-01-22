@@ -2,6 +2,21 @@ import React from 'react';
 import { HeaderPlainProps } from './HeaderPlain.types';
 import styles from './HeaderPlain.module.scss';
 
+export const getDynamicTitleStyle = (length?: number) => {
+  if (!length) return 'display-1';
+  if (length >= 80) {
+    return 'display-6';
+  } else if (length >= 70) {
+    return 'display-5';
+  } else if (length >= 60) {
+    return 'display-4';
+  } else if (length >= 50) {
+    return 'display-3';
+  } else if (length >= 40) {
+    return 'display-2';
+  } else return 'display-1';
+};
+
 const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
   const {
     heading,
