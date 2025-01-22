@@ -140,6 +140,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
       imageAlignment={imageAlignment}
+      imageKeepAspectRatio={false}
       title={
         <Text
           tag={headingTag}

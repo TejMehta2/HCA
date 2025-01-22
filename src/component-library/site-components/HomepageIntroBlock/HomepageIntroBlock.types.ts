@@ -10,4 +10,5 @@ export interface HomepageIntroBlockProps {
   doctify: JSX.Element;
   children?: JSX.Element;
   id?: string;
+  imageKeepAspectRatio?: boolean;
 }
