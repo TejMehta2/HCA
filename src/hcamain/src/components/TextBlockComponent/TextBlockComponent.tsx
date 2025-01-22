@@ -14,6 +14,7 @@ import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   Heading?: Field<string>;
@@ -60,8 +61,10 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     componentTitle
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock

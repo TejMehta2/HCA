@@ -24,6 +24,7 @@ import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 const SEARCH_PATH = '/locations/search';
@@ -267,10 +268,11 @@ export const Grid = (props: LocationCardsProps): JSX.Element => {
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue
-    ? 'span'
-    : subheadingTag;
+
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CardBlock
       id={componentAnchorId}
@@ -377,10 +379,10 @@ export const Slider = (props: LocationCardsProps): JSX.Element => {
     props?.fields?.data?.item?.locations?.PagesList.length
       ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
       : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CarouselCards
       id={componentAnchorId}

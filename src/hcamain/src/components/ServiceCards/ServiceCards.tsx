@@ -19,6 +19,7 @@ import dynamic from 'next/dynamic';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import { MasonryCard } from '@component-library/site-components/MasonryCards/MasonryCards';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicServiceCards = dynamic(
   () => import('@component-library/site-components/ServiceCards/ServiceCards'),
@@ -105,10 +106,10 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <DynamicServiceCards
       id={componentAnchorId}

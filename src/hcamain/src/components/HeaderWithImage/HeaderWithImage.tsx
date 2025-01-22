@@ -13,6 +13,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -61,11 +62,10 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
     return <HeaderWithImageDefaultComponent {...props} />;
   }
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
+  );
   return (
     <HeaderWithImage
       theme={props.params?.Theme || 'D-HCA-Teal'}

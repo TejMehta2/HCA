@@ -18,6 +18,7 @@ import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicCardBlogBlock = dynamic(
   () =>
@@ -104,10 +105,10 @@ export const Carousel = (props: BlogCardsProps): JSX.Element => {
     tableOfContentsLinkTitle
   );
 
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CarouselCards
       id={componentAnchorId}

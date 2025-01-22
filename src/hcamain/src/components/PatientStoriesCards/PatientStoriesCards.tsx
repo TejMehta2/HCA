@@ -25,6 +25,7 @@ import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -254,10 +255,10 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CardBlock
       id={componentAnchorId}
@@ -375,10 +376,10 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CarouselCards
       id={componentAnchorId}

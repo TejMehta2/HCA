@@ -17,6 +17,7 @@ import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHead
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type VideoProvidersFields = {
   name?: string;
@@ -67,8 +68,10 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <VideoBlock
       id={componentAnchorId}
@@ -175,8 +178,10 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
     props?.params,
     tableOfContentsLinkTitle
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <VideoBlock
       id={componentAnchorId}
