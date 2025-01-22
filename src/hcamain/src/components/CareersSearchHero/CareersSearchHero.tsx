@@ -24,6 +24,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import { useRouter } from 'next/router';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
@@ -48,11 +49,11 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
   if (!props?.fields?.data?.item) {
     return <CareersSearchHeroDefaultComponent {...props} />;
   }
-  const subheadingTag = props.params?.HeadingTag || 'h1';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value,
+    'h1'
+  );
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <form
@@ -205,11 +206,11 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     const url = `${pathname}?${params}`;
     router.replace(url, undefined, { shallow: true });
   };
-  const subheadingTag = props.params?.HeadingTag || 'h1';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value,
+    'h1'
+  );
   return (
     <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
       <form

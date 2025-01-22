@@ -14,6 +14,7 @@ import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CardWithModal from './CardWithModal';
 import Params from 'src/types/params';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -114,10 +115,10 @@ export const Default = (props: WithImageProps): JSX.Element => {
       </JssLink>
     )
   );
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CarouselCards
       id={componentAnchorId}

@@ -17,6 +17,7 @@ import AccordionsBlockSideBySide from '@component-library/site-components/Accord
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {
   fields?: {
@@ -161,8 +162,10 @@ export const Default = (props: FAQProps): JSX.Element => {
 
   const faqSchema = getSchema(props.fields?.Questions);
 
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <>
       <Head>
@@ -251,8 +254,10 @@ export const RightAligned = (props: FAQProps): JSX.Element => {
   const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <>
       <Head>

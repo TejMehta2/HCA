@@ -11,6 +11,7 @@ import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   Heading?: Field<string>;
@@ -48,8 +49,10 @@ export const Default = (props: CTABlockProps): JSX.Element => {
   );
 
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <CTABlock
       id={componentAnchorId}

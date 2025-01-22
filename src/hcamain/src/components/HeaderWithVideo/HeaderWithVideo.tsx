@@ -14,6 +14,7 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Themes from '@component-library/foundation/Themes/Themes';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -65,11 +66,10 @@ export const Default = (props: HeaderWithVideoProps): JSX.Element => {
   const image = hasVideo
     ? props.fields.data?.item?.videoThumbnail?.jsonValue
     : props.fields?.data?.contextItem?.image?.jsonValue;
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
+  );
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <VideoHero

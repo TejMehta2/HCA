@@ -15,6 +15,7 @@ import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatti
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -96,10 +97,11 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       contactListItems.push(contactListItem);
     }
   );
-  const subheadingTag = props.params?.HeadingTag || 'h4';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value,
+    'h4'
+  );
   return (
     <ImageAndTextBlock
       id={componentAnchorId}
