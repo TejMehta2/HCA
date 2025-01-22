@@ -136,15 +136,15 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     label: <JSSText field={counters.fields?.Text} />,
   }));
   const { headingTag, subheadingTag } = getHeadingTags(
-    'h2',
     props?.params,
     props.fields?.Headline?.value
   );
-
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
       imageAlignment={imageAlignment}
+      imageKeepAspectRatio={keepAspectRatio}
       title={
         <Text
           tag={headingTag}

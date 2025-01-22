@@ -81,6 +81,13 @@ export const Short: StoryObj<typeof ImageAndTextBlock> = {
   },
 };
 
+export const ImageKeepAspectRatio: StoryObj<typeof ImageAndTextBlock> = {
+  args: {
+    ...Short.args,
+    imageKeepAspectRatio: true,
+  },
+};
+
 export const Long: StoryObj<typeof ImageAndTextBlock> = {
   args: {
     theme: 'F-HCA-Fern',
