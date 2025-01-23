@@ -65,7 +65,9 @@ export const Default = (props: BreadcrumbsProps): JSX.Element => {
 
   const breadcrumbSchemaItem: BreadcrumbSchema = [];
   const ancestors =
-    props.fields?.data?.contextItem?.ancestors?.toReversed() || [];
+    ('toReversed' in props.fields?.data?.contextItem?.ancestors &&
+      props.fields?.data?.contextItem?.ancestors?.toReversed()) ||
+    [];
   const thisPage: AncestorsFields = {
     name: props.fields?.data?.contextItem?.name,
   };
