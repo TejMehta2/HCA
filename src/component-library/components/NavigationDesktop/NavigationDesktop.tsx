@@ -256,7 +256,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
                     ) === -1
                     ? '/'
                     : '/careers'
-                  : ''
+                  : '/'
               }
               data-navigation-type="logoNavigation"
             >

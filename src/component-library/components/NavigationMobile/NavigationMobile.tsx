@@ -131,7 +131,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
                     ) === -1
                     ? '/'
                     : '/careers'
-                  : ''
+                  : '/'
               }
             >
               <span className="sr-only">Home</span>
