@@ -16,6 +16,8 @@ import getSubheadingTag from 'lib/subheading-tag-getter';
 import Params from 'src/types/params';
 import JssTextWithEntityName from 'src/jss-abstractions/JssTextWithEntityName/JssTextWithEntityName';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {
   svgMarkup?: Field<string>;
@@ -212,8 +214,19 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -223,7 +236,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           title={
             <Text
               variation={props.params?.HeadingSize || 'display-3'}
-              tag={props.params?.HeadingTag || 'h2'}
+              tag={headingTag}
             >
               <JssTextWithEntityName
                 field={props.fields?.data?.item?.title?.jsonValue}
@@ -233,7 +246,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           subtitle={
             !isExperienceEditor ? (
               props.fields?.data?.item?.heading?.jsonValue?.value ? (
-                <Text tag="span" variation={'subheading-1'}>
+                <Text tag={subheadingTag} variation={'subheading-1'}>
                   <JssText
                     field={props.fields?.data?.item?.heading?.jsonValue}
                   />

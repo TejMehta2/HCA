@@ -15,6 +15,7 @@ import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type HCAIconFields = {
   fields?: {
@@ -70,17 +71,19 @@ const outputAmenitiesList = (props: AmenitiesProps) => {
 
 const outputImageAndTextBlock = (
   props: AmenitiesProps,
-  alignment: imageAlignmentTypes
+  alignment: imageAlignmentTypes,
+  componentAnchorId: string | undefined
 ) => {
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       imageAlignment={alignment}
       length="short"
       header={
         <Text
-          tag={props.params?.HeadingTag}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={props.params?.HeadingTag || 'h2'}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.Title} />
         </Text>
@@ -111,7 +114,13 @@ export const ImageLeft = (props: AmenitiesProps): JSX.Element => {
     return <AmenitiesDefaultComponent {...props} />;
   }
 
-  return outputImageAndTextBlock(props, 'left');
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  return outputImageAndTextBlock(props, 'left', componentAnchorId);
 };
 
 export const ImageRight = (props: AmenitiesProps): JSX.Element => {
@@ -119,5 +128,11 @@ export const ImageRight = (props: AmenitiesProps): JSX.Element => {
     return <AmenitiesDefaultComponent {...props} />;
   }
 
-  return outputImageAndTextBlock(props, 'right');
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  return outputImageAndTextBlock(props, 'right', componentAnchorId);
 };

@@ -4,9 +4,9 @@ import styles from './CardDoctorLayout.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 import Button from '../../core-components/Button/Button';
 const CardDoctorLayout = (props: CardDoctorLayoutProps): JSX.Element => {
-  const { theme = 'D-HCA-Teal', title, children, cta } = props;
+  const { theme = 'D-HCA-Teal', title, children, cta, id } = props;
   return (
-    <Themes theme={theme} tag="section" aria-label={title}>
+    <Themes theme={theme} tag="section" aria-label={title} id={id}>
       <div className={styles['card-doctor-layout']}>
         <div className={styles.grid}>
           <div className={styles.title}>{title}</div>

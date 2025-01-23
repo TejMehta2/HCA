@@ -224,3 +224,33 @@ export const WithSubtitle: StoryObj<typeof HomepageIntroBlock> = {
     ),
   },
 };
+
+export const DontKeepAspectRatio: StoryObj<typeof HomepageIntroBlock> = {
+  args: {
+    ...Default.args,
+    imageKeepAspectRatio: false,
+    image: (
+      <Image
+        src="/placeholders/children-playing.jpg"
+        alt=""
+        width="1875"
+        height="1500"
+      />
+    ),
+  },
+};
+
+export const KeepAspectRatio: StoryObj<typeof HomepageIntroBlock> = {
+  args: {
+    ...Default.args,
+    imageKeepAspectRatio: true,
+    image: (
+      <Image
+        src="/placeholders/children-playing.jpg"
+        alt=""
+        width="1875"
+        height="1500"
+      />
+    ),
+  },
+};

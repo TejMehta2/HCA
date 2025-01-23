@@ -25,13 +25,16 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -115,14 +118,17 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
         <HeaderPlain
           metatitle={
             fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
               </Text>
             )
@@ -130,8 +136,11 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           heading={
             fields?.Title?.value && (
               <Text
-                variation={params?.HeadingSize || 'display-2'}
-                tag={params?.HeadingTag || 'h2'}
+                variation={
+                  params?.HeadingSize ||
+                  getDynamicTitleStyle(fields?.Title.value.length)
+                }
+                tag={headingTag}
               >
                 <JssText field={fields?.Title} />
               </Text>

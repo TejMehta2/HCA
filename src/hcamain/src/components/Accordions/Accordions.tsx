@@ -3,6 +3,7 @@ import {
   Field,
   LinkField,
   Text as JssText,
+  Link as JssLink,
   Item,
   RichText as JssRichText,
   useSitecoreContext,
@@ -13,6 +14,7 @@ import { AccordionsProps } from '@component-library/components/Accordions/Accord
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
 import Themes from '@component-library/foundation/Themes/Themes';
+import Button from '@component-library/core-components/Button/Button';
 
 type CTAIconFields = {
   fields?: {
@@ -24,8 +26,8 @@ type QuestionFields = Item & {
   fields?: {
     Question?: Field<string>;
     Answer?: Field<string>;
-    CTAIcon?: CTAIconFields;
-    CTALink?: LinkField;
+    CTAIcon: CTAIconFields;
+    CTALink: LinkField;
   };
 };
 
@@ -47,16 +49,48 @@ type FAQSchema = {
   };
 }[];
 
-const getAccordions = (questions: QuestionFields[]) => {
+const getAccordions = (
+  questions: QuestionFields[],
+  isExperienceEditor: boolean | undefined
+) => {
   const accordions: AccordionsProps['accordions'] = [];
 
   for (const accordion of questions) {
     accordions.push({
       title: <JssText field={accordion.fields?.Question} />,
       children: (
-        <RichText>
-          <JssRichText field={accordion.fields?.Answer}></JssRichText>
-        </RichText>
+        <>
+          <RichText>
+            <JssRichText field={accordion.fields?.Answer}></JssRichText>
+          </RichText>
+
+          {isExperienceEditor ? (
+            <Button variation="full" size="large">
+              <JssLink field={accordion.fields?.CTALink}></JssLink>
+            </Button>
+          ) : (
+            accordion.fields?.CTALink?.value?.href && (
+              <Button variation="full" size="large">
+                <JssLink field={accordion.fields?.CTALink}>
+                  {accordion?.fields?.CTAIcon?.fields?.SvgMarkup && (
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          accordion.fields?.CTAIcon?.fields?.SvgMarkup?.value,
+                      }}
+                    ></span>
+                  )}
+                  <JssRichText
+                    tag="span"
+                    field={{
+                      value: accordion.fields?.CTALink.value.text,
+                    }}
+                  />
+                </JssLink>
+              </Button>
+            )
+          )}
+        </>
       ),
     });
   }
@@ -103,10 +137,13 @@ const AccordionsDefaultComponent = (props: FAQProps): JSX.Element => {
 };
 
 export const Default = (props: FAQProps): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
   if (!props?.fields?.Questions) {
     return <AccordionsDefaultComponent {...props} />;
   }
-  const accordions = getAccordions(props.fields?.Questions);
+  const accordions = getAccordions(props.fields?.Questions, isExperienceEditor);
 
   const faqSchema = getSchema(props.fields?.Questions);
 

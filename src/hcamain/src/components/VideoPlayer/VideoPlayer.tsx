@@ -16,6 +16,8 @@ import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import RichText from '@component-library/core-components/RichText/RichText';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type VideoProvidersFields = {
   name?: string;
@@ -61,21 +63,31 @@ export const Default = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <VideoBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
           paddingSize={'none'}
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>
@@ -124,8 +136,14 @@ export const NoHeader = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   return (
-    <figure>
+    <figure id={componentAnchorId}>
       {props.fields?.VideoUrl?.value ? (
         <VideoPlayer
           videoUrl={props.fields?.VideoUrl?.value}
@@ -155,22 +173,32 @@ export const SideBySide = (props: VideoPlayerProps): JSX.Element => {
     return <VideoPlayerDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <VideoBlock
+      id={componentAnchorId}
       variation="side-by-side"
       theme={props.params?.Theme || 'A-HCA-White'}
       header={
         <AdvancedBlockHeader
           paddingSize={'none'}
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>

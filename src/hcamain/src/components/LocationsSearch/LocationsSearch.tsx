@@ -10,7 +10,9 @@ import {
   LocationsSearchProps,
   SearchResponse,
 } from './LocationsSearch.types';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import Text from '@component-library/foundation/Text/Text';
@@ -40,6 +42,7 @@ import SearchDetail from '@component-library/hooks/useSearchForm/components/Sear
 import GeolocationPermissionsCta from './GeolocationPermissionsCta';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 import returnDirections from 'src/jss-abstractions/GetDirections/GetDirections';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
@@ -131,7 +134,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'G-HCA-Orange'}>
@@ -139,14 +145,17 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           contentVariation={contentVariation}
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-1'}
-              tag={props.params?.HeadingTag || 'h2'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(props?.fields?.Title?.value.length)
+              }
+              tag={headingTag}
             >
               <JssText field={props?.fields?.Title} />
             </Text>
           }
           metatitle={
-            <Text variation="subheading-1">
+            <Text tag={subheadingTag} variation="subheading-1">
               <JssText field={props.fields?.Heading} />
             </Text>
           }

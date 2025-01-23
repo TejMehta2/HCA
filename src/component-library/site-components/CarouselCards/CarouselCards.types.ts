@@ -7,4 +7,5 @@ export interface CarouselCardsProps {
   link?: JSX.Element;
   children?: JSX.Element[];
   bodyCopy?: JSX.Element;
+  id?: string;
 }

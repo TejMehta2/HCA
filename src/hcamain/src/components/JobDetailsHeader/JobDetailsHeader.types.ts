@@ -36,6 +36,7 @@ export interface JobsResponse {
   richDescription: {
     html: string;
   };
+  bodyPlain: string;
   startDate: string;
   workerSubType: string;
   id: string;

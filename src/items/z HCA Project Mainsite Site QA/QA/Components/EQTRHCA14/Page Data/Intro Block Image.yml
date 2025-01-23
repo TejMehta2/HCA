@@ -15,6 +15,9 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231205T085440Z
+    - ID: "468df739-48d8-4d6b-851a-08e1fe55b9b9"
+      Hint: Headline
+      Value: Lorem ipsum
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -25,10 +28,30 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7b92fe8b-f992-41d1-bd78-93b8e82b81d1"
       Hint: Text
-      Value: Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.
+      Value: |
+        <p>Quis laboris proident sint amet id cillum do dolor in tempor est. Exercitation aute sint tempor eu ut aliquip commodo enim nulla et laborum et culpa minim. Commodo ex laboris pariatur labore nostrud dolore.</p>
+        <ul class="tick tick-2-cols">
+          <li>One lorem ipsum dolor sit</li>
+          <li>Two consectetur adipiscing elit</li>
+          <li>Three sed do eiusmod tempor</li>
+          <li>Four incididunt ut labore et</li>
+          <li>Five dolore</li>
+          <li>Six ut enim ad minim veniam</li>
+          <li>Seven quis nostrud exercitation ullamco</li>
+          <li>Eight laboris nisi</li>
+          <li>Nine ex ea commodo consequat</li>
+          <li>Ten duis aute irure dolor</li>
+        </ul>
+        <ul class="tick">
+          <li>One lorem ipsum dolor sit</li>
+          <li>Two consectetur adipiscing elit</li>
+          <li>Three sed do eiusmod tempor</li>
+          <li>Four incididunt ut labore et</li> 
+        </ul>
+        
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "14164cc8-3dc7-452d-acc4-05bae9cac7f7"
+      Value: "787899cf-2256-4f5d-bb39-8727b18cedf1"
     - ID: "a238486c-a225-48be-be0a-864e6fe4e0e0"
       Hint: CQCStatus
       Value: "{FF92C63E-73C3-4BEF-B709-3E16A890459A}"
@@ -42,7 +65,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "c1ad7d36-37ef-40e0-a5f8-749f50c0ae13"
       Hint: DoctifyReviews
       Value: "{123F8E83-3BBA-4A1A-88C3-DB5E32B71640}"
@@ -54,7 +77,7 @@ Languages:
         {B95C2B26-44A7-4F37-8B4C-45F0DFA93813}
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240515T115818Z
+      Value: 20250115T201949Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"

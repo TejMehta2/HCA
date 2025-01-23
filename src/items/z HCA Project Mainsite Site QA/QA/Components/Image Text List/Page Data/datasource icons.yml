@@ -1,0 +1,34 @@
+﻿---
+ID: "c645c8a9-22eb-43c8-b43d-e3691c2350b3"
+Parent: "e655555d-d692-4fea-a581-e5ad966c6a7d"
+Template: "2a170ca3-cba3-4805-a0ec-e93548b61e82"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List/Page Data/datasource icons"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240910T151103Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "93e0291d-7cfe-4234-9b8a-e3ca75e65900"
+    - ID: "b7e882c0-a75e-411f-9700-b63d066d7935"
+      Hint: Cards
+      Value: "{38254301-5203-42AE-AECF-8495131EAB79}|{905664C2-ED7A-4AEB-954B-D36CC106745E}|{DA7782F2-647C-4998-BD11-35EDBFE6A045}"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250120T111355Z

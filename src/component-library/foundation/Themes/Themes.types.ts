@@ -22,4 +22,5 @@ export interface ThemesProps {
   theme: Theme;
   topLevelTheme?: Theme;
   id?: string;
+  collapse?: boolean;
 }

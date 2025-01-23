@@ -1,15 +1,12 @@
 ﻿---
-ID: "be0ce91d-874a-4f9c-8418-6c173f5593af"
-Parent: "b1b16383-93ae-4128-bc61-74abca8696f0"
+ID: "67fe822f-ee41-46f2-8f8a-73ec2268b601"
+Parent: "adb4efc9-eaba-43bd-afb5-62bf6d566f40"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/HeadingParameters/Content/HeadingTag
+Path: "/sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigable/Content In-Page Navigation/ExcludeFromTableOfContents"
 SharedFields:
-- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
-  Hint: Source
-  Value: "/sitecore/content/HCA/HCA-Main/Presentation/Heading Tags"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Droplist
+  Value: Checkbox
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
@@ -18,28 +15,28 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Heading Tag
+    Value: Exclude from Table of contents
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20231110T114404Z
+      Value: 20241128T165203Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "90e86e0b-8134-497d-a6a5-d8f0ea138ac7"
+      Value: "3b0f3611-d527-44a3-a69d-5556d9cf9b3f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102618Z
+      Value: 20241128T165314Z

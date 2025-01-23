@@ -6,7 +6,7 @@ import Button from '../../core-components/Button/Button';
 import Themes from '../../foundation/Themes/Themes';
 
 const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
-  const { children, title, subtitle, bodyText, cta } = props;
+  const { children, title, subtitle, bodyText, cta, id } = props;
 
   const isL = useWindowWidth(1135);
 
@@ -19,7 +19,7 @@ const ServiceCards = (props: ServiceCardsProps): JSX.Element => {
   return (
     <>
       {/* confirmed with Design this component is only intended to use this theme */}
-      <Themes theme="I-HCA-Goldenrod">
+      <Themes theme="I-HCA-Goldenrod" id={id}>
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <div className={styles.grid}>

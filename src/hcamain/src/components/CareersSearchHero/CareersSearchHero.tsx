@@ -14,7 +14,9 @@ import Button from '@component-library/core-components/Button/Button';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SelectField from '@component-library/core-components/SelectField/SelectField';
 import { CareersSearchHeroProps } from './CareersSearchHero.types';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
@@ -24,6 +26,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import { useRouter } from 'next/router';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CareersSearch from '@component-library/careers/CareersSearch/CareersSearch';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CareersSearchHeroDefaultComponent = (
   props: CareersSearchHeroProps
@@ -48,6 +51,11 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
   if (!props?.fields?.data?.item) {
     return <CareersSearchHeroDefaultComponent {...props} />;
   }
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value,
+    'h1'
+  );
   return (
     <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
       <form
@@ -57,17 +65,14 @@ export const Default = (props: CareersSearchHeroProps): JSX.Element => {
         <CareersHomepageHero
           title={
             <>
-              <Text
-                tag={props.params?.HeadingTag || 'p'}
-                variation={'subheading-1'}
-              >
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText
                   field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
                 />
               </Text>
               <Text
-                tag={props.params?.HeadingTag || 'h1'}
-                variation={props.params?.HeadingSize || 'display-2'}
+                tag={headingTag}
+                variation={props.params?.HeadingSize || 'display-3'}
               >
                 <SitecoreSvg>
                   {props.fields?.data?.contextItem?.title?.jsonValue?.value}
@@ -203,7 +208,11 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
     const url = `${pathname}?${params}`;
     router.replace(url, undefined, { shallow: true });
   };
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value,
+    'h1'
+  );
   return (
     <Themes theme={props.params?.Theme || 'D-HCA-Teal'}>
       <form
@@ -217,7 +226,7 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
       >
         <HeaderPlain
           metatitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText
                 field={props.fields?.data?.contextItem?.subHeading?.jsonValue}
               />
@@ -225,8 +234,14 @@ export const Compact = (props: CareersSearchHeroProps): JSX.Element => {
           }
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-2'}
-              tag={props.params?.HeadingTag || 'h2'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(
+                  props.fields?.data?.contextItem?.title?.jsonValue?.value
+                    .length
+                )
+              }
+              tag={headingTag}
             >
               <JssText
                 field={props.fields?.data?.contextItem?.title?.jsonValue}

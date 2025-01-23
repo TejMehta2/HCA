@@ -11,7 +11,7 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
   N-HCA-Denim-5, O-HCA-Teal-20;
 
 @each $theme in $themeOptions {
-  .#{$theme}:is([data-theme='#{$theme}'])
+  .#{$theme}:is([data-theme='#{$theme}']):not(.no-collapse)
     + :is([data-theme='#{$theme}'], :has([data-theme='#{$theme}'])) {
     --theme-collapse-padding-top: 0;
   }

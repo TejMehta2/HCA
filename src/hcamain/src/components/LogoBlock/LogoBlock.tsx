@@ -16,6 +16,8 @@ import LogoBlock from '@component-library/site-components/LogoBlock/LogoBlock';
 import Text from '@component-library/foundation/Text/Text';
 import AdvancedBlockHeader from '@component-library/components/AdvancedBlockHeader/AdvancedBlockHeader';
 import { LogoBlockProps as ColumnProps } from '@component-library/site-components/LogoBlock/LogoBlock.types';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface LogosFields {
   fields?: {
@@ -58,26 +60,36 @@ export const Default = (props: LogoBlockExtendedProps): JSX.Element => {
     return <LogoBlockDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
   const columns: ColumnProps['columns'] = props.params?.Columns === '4' ? 4 : 3;
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <LogoBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       columns={columns}
       variation={variation}
       header={
         <AdvancedBlockHeader
           subtitle={
-            <Text variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JSSText field={props.fields?.Heading} />
             </Text>
           }
           title={
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JSSText field={props.fields?.Title} />
             </Text>

@@ -1,0 +1,45 @@
+﻿---
+ID: "d05963c8-4238-4678-a8b5-c14dfefcccf5"
+Parent: "3e61819f-0fe6-46f1-bd33-f86e750ac481"
+Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Masonry/Page Data/4 Content Cards"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T092351Z
+    - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
+      Hint: Heading
+      Value: making you comfortable
+    - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
+      Hint: Title
+      Value: Your stay at HCA UK
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1d134f69-a072-4c7a-a799-0d24eb232d0d"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: 
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
+      Hint: CTACardText
+      Value: Learn <b>more</b>
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250116T180941Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: 
+    - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
+      Hint: Pages
+      Value: |
+        {275DC9D3-6483-4C3A-8C5D-2FA67E95A41E}
+        {CE18BFDD-91A1-456B-B772-D0BA34727D8E}
+        {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
+        {FC7D61DF-162D-455B-BAEA-AA0FEFDF5C12}

@@ -1,0 +1,45 @@
+﻿---
+ID: "275dc9d3-6483-4c3a-8c5d-2fa67e95a41e"
+Parent: "3c49c213-f4bb-491b-907a-2faf205d5f39"
+Template: "a1d640e8-b025-43b5-80db-c45c2f82227b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Masonry/Page Data/3 Content Cards/Discover our world class facilities"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250116T170548Z
+    - ID: "3317a6f6-dbe7-4cbb-a826-605fef277ad5"
+      Hint: Link
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: "<p>Your time with us is about more than expert treatment and state-of-the-art facilities. From beautiful rooms to luxurious bathrooms you&rsquo;ll find spaces to relax and recuperate in your own time and at your own pace.</p>"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "957a0a52-aa83-4b39-8da5-1d3667abfb8d"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/9c281e20b01546cb8f0db65bf37712a3?v=a5f03365" dam-id="tW6QPRwIPEilc_t8sfusSQ" width="1000" height="1400" alt="building_2_interior_hallway_stairs_09_2017_LOC" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/147708/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250116T172313Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Discover our world class facilities

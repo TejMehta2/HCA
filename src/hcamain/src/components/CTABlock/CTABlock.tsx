@@ -10,6 +10,8 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   Heading?: Field<string>;
@@ -39,21 +41,29 @@ export const Default = (props: CTABlockProps): JSX.Element => {
   if (!props.fields) {
     return <CTABlockDefaultComponent {...props} />;
   }
-  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
+  const buttonSize: ButtonProps['size'] = 'large'; // Explicit type here to provide type safety
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <CTABlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       subheader={
-        <Text tag="p" variation="subheading-1">
+        <Text tag={subheadingTag} variation="subheading-1">
           <JSSText field={props.fields?.Heading} />
         </Text>
       }
       header={
-        <Text
-          tag={props.params?.HeadingTag}
-          variation={props.params?.HeadingSize}
-        >
+        <Text tag={headingTag} variation={props.params?.HeadingSize}>
           <JSSText field={props.fields?.Title} />
         </Text>
       }

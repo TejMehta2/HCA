@@ -1,8 +1,8 @@
 ﻿---
-ID: "adb4efc9-eaba-43bd-afb5-62bf6d566f40"
-Parent: "acf7c5bc-ad93-4783-98a9-2f906b8dd7c0"
+ID: "ad2be041-a76e-449a-b798-28d5a05a4797"
+Parent: "305283c0-51fc-4a1c-9903-d8e236495716"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/Navigation/Base/_ComponentNavigable/Content
+Path: /sitecore/templates/Project/HCA/Foundation/Rendering Parameters/HeadingToggleParameters/Content Headings
 Languages:
 - Language: en
   Versions:
@@ -10,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20241128T165202Z
+      Value: 20250115T200215Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "71721395-7db4-47be-b2a1-3a33050e028f"
+      Value: "e8ad40bc-b99b-4136-aeca-bd2e1ea8754d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T165314Z
+      Value: 20250115T200215Z

@@ -8,6 +8,7 @@ import Params from 'src/types/params';
 import ArticleCategories from '@component-library/site-components/ArticleCategories/ArticleCategories';
 import Text from '@component-library/foundation/Text/Text';
 import Icons from '@component-library/foundation/Icons/Icons';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CategoriesFields = {
   displayName?: { value?: string };
@@ -48,8 +49,15 @@ export const Default = (props: BlogCategoriesProps): JSX.Element => {
     return <BlogCategoriesDefaultComponent {...props} />;
   }
 
+  const componentTitle = props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
+  );
+
   return (
     <ArticleCategories
+      id={componentAnchorId}
       theme={props.params?.Theme || 'G-HCA-Orange'}
       title={
         <Text

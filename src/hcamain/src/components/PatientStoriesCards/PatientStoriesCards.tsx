@@ -24,7 +24,8 @@ import Image from 'next/image';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
 
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
 const SEARCH_PATH = '/search';
@@ -220,11 +221,14 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
   const ctaQuery = data?.ctaQuery;
+
   const { sitecoreContext } = useSitecoreContext();
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
   const isExperienceEditor = sitecoreContext?.pageEditing;
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
 
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
@@ -240,20 +244,21 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
   );
-
   return (
     <CardBlock
       id={componentAnchorId}
@@ -268,8 +273,8 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
               isExperienceEditor) && (
               <>
                 <Text
-                  variation={props.params?.HeadingSize || 'display-2'}
-                  tag={props.params?.HeadingTag || 'h2'}
+                  variation={props.params?.HeadingSize || 'display-3'}
+                  tag={headingTag}
                 >
                   <JssText
                     tag={'span'}
@@ -282,7 +287,7 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
           subtitle={
             (props.fields?.data?.item?.heading?.jsonValue ||
               isExperienceEditor) && (
-              <Text tag="span" variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
               </Text>
             )
@@ -336,12 +341,15 @@ export const Default = (props: PatientStoriesCardsProps): JSX.Element => {
 
 export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
   const data = useComponentProps<StaticProps>(props.rendering?.uid);
+
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
 
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
@@ -357,21 +365,28 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const viewAllCta = props?.fields?.data?.item?.patientStories
     ?.PatientStoriesList?.length
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
-
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
-  }
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CarouselCards
+      id={componentAnchorId}
       theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
-          tag={props.params?.HeadingTag || 'h2'}
+          tag={headingTag}
           variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
@@ -380,7 +395,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       subtitle={
         !isExperienceEditor ? (
           props.fields?.data?.item?.heading?.jsonValue?.value ? (
-            <Text tag="span" variation={'subheading-1'}>
+            <Text tag={subheadingTag} variation={'subheading-1'}>
               <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
             </Text>
           ) : (
@@ -444,9 +459,12 @@ export const SliderWithLeftText = (
   const ctaQuery = data?.ctaQuery;
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext?.pageEditing;
+  const currentStoryId = sitecoreContext?.route?.itemId?.toString();
 
-  const context = useSitecoreContext();
-  const currentStoryId = context.sitecoreContext?.route?.itemId?.toString();
+  if (!props.fields?.data?.item) {
+    return <PatientStoriesCardsDefaultComponent {...props} />;
+  }
+
   const patientStoriesCardsFiltered = returnFilteredCards(
     props,
     data,
@@ -462,12 +480,19 @@ export const SliderWithLeftText = (
     ? props.fields?.data?.item?.cTALink?.jsonValue?.value?.href
     : `${props.fields?.data?.item?.cTALink?.jsonValue?.value?.href}${ctaQuery}`;
 
-  if (!props.fields?.data?.item) {
-    return <PatientStoriesCardsDefaultComponent {...props} />;
+  if (!patientStoriesCards?.length && !isExperienceEditor) {
+    return <></>;
   }
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   return (
     <SideScrollingCards
+      id={componentAnchorId}
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (

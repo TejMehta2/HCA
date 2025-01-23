@@ -8,10 +8,6 @@
   color: var(--text);
   overflow: hidden;
 
-  :global(.tick) {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .grid {
     padding-top: $spacing-13;
     padding-bottom: $spacing-13;
@@ -35,7 +31,31 @@
     @include responsive-grid-span($default: 6, $breakpoint-l: 6);
 
     position: relative;
-    height: max-content;
+    height: 100%;
+
+    .image {
+      height: 100%;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        border-radius: $radius-medium;
+      }
+    }
+
+    &.keep-aspect-ratio {
+      height: max-content;
+
+      .image {
+        height: auto;
+
+        img {
+          object-fit: contain;
+          height: max-content;
+        }
+      }
+    }
   }
 
   &.image-left {
@@ -52,14 +72,6 @@
   &.image-right {
     .image-wrapper {
       @include responsive-grid-start($breakpoint-l: 7);
-    }
-  }
-
-  .image {
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: $radius-medium;
     }
   }
 
