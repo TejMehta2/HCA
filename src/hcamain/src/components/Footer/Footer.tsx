@@ -43,6 +43,7 @@ export const Default = (props: FooterProps): JSX.Element => {
         <></>
       ),
       props.fields?.DoctifyReviews?.fields &&
+      typeof window !== 'undefined' &&
       window.location.href.indexOf(
         process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
       ) === -1 ? (
