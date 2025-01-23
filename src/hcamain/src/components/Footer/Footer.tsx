@@ -42,17 +42,20 @@ export const Default = (props: FooterProps): JSX.Element => {
       ) : (
         <></>
       ),
-      props.fields?.DoctifyReviews?.fields &&
-      window.location.href.indexOf(
-        process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-      ) === -1 ? (
-        <Doctify
-          params={props.params}
-          key={2}
-          fields={{ Reviews: props.fields?.DoctifyReviews }}
-        />
+      props.fields?.DoctifyReviews?.fields && typeof window !== 'undefined' ? (
+        window?.location.href.indexOf(
+          process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
+        ) === -1 ? (
+          <Doctify
+            params={props.params}
+            key={2}
+            fields={{ Reviews: props.fields?.DoctifyReviews }}
+          />
+        ) : (
+          <></>
+        )
       ) : (
-        <></>
+        ''
       ),
     ],
   };
