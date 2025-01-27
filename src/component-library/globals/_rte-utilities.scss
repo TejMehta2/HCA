@@ -32,8 +32,6 @@
 
   ul {
     list-style: initial;
-    @include apply-body-large;
-
     margin: $spacing-5 auto;
     display: flex;
     flex-direction: column;
