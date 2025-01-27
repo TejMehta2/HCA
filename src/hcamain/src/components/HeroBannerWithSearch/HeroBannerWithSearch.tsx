@@ -8,7 +8,9 @@ import {
   RichText as JssRichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-import HomepageHero from '@component-library/site-components/HomepageHero/HomepageHero';
+import HomepageHero, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HomepageHero/HomepageHero';
 import SearchButton from '@component-library/components/SearchButton/SearchButton';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
@@ -66,7 +68,9 @@ export const Default = (props: HeroBannerWithSearchProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h1'}
-          variation={props.params?.HeadingSize || 'display-3'}
+          variation={getDynamicTitleStyle(
+            props.fields?.data?.contextItem?.title?.jsonValue?.value?.length
+          )}
         >
           <JssRichText
             field={props.fields?.data?.contextItem?.title?.jsonValue}

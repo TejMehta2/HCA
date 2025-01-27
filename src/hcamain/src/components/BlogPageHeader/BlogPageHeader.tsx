@@ -1,7 +1,9 @@
 import React from 'react';
 import { RichText, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import { BlogPageHeaderProps } from './BlogPageHeader.types';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
@@ -87,7 +89,10 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
           heading={
             <Text
               tag={headingTag}
-              variation={props.params?.HeadingSize || 'display-3'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(fields?.Title?.value?.length)
+              }
             >
               <JssText field={props?.fields?.Title} />
             </Text>

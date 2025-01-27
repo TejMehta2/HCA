@@ -10,7 +10,9 @@ import {
   LocationsSearchProps,
   SearchResponse,
 } from './LocationsSearch.types';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import Text from '@component-library/foundation/Text/Text';
@@ -143,7 +145,10 @@ export const Default = (props: WithHeaderProps): JSX.Element => {
           contentVariation={contentVariation}
           heading={
             <Text
-              variation={props.params?.HeadingSize || 'display-3'}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(props?.fields?.Title?.value.length)
+              }
               tag={headingTag}
             >
               <JssText field={props?.fields?.Title} />

@@ -16,6 +16,7 @@ import Button from '@component-library/core-components/Button/Button';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Head from 'next/head';
 import Container from '@component-library/foundation/Containers/Container';
+import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -52,7 +53,10 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
         <VacancyHeader
           title={
-            <Text variation={'display-1'} tag="h1">
+            <Text
+              variation={getDynamicTitleStyle(data.jobProfile.length)}
+              tag="h1"
+            >
               {data.jobProfile}
             </Text>
           }
