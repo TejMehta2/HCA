@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     },
     intro: {
         fontSize: '12px',
-        lineHeight: '1.5px',
         fontFamily: 'Brown-Std',
         color: '#02173E',
         marginBottom: 20,
