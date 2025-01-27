@@ -3509,14 +3509,14 @@ a {
 
 @font-face {
     font-family: Montserrat;
-    src: url(../../assets/fonts/Montserrat-Regular.ttf) format("truetype");
+    src: url(../../assets/fonts/montserrat-regular.ttf) format("truetype");
     font-weight: 400;
     font-display: swap
 }
 
 @font-face {
     font-family: Montserrat;
-    src: url(../../assets/fonts/Montserrat-Italic.ttf) format("truetype");
+    src: url(../../assets/fonts/montserrat-italic.ttf) format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap
@@ -40287,8 +40287,8 @@ button {
 
 @font-face {
     font-family: Brown-Std;
-    src: url(../../assets/fonts/BrownStd-Regular.eot);
-    src: local("☺"), url(../../assets/fonts/BrownStd-Regular.woff) format("woff"), url(../../assets/fonts/BrownStd-Regular.ttf) format("truetype"), url(../../assets/img/BrownStd-Regular.svg) format("svg");
+    src: url(../../assets/fonts/brownstd-regular.eot);
+    src: local("☺"), url(../../assets/fonts/brownstd-regular.woff) format("woff"), url(../../assets/fonts/brownstd-regular.ttf) format("truetype"), url(../../assets/img/brownstd-regular.svg) format("svg");
     font-weight: 400;
     font-style: normal;
     font-display: swap
@@ -40296,8 +40296,8 @@ button {
 
 @font-face {
     font-family: Brown-Std;
-    src: url(../../assets/fonts/BrownStd-Light.eot);
-    src: local("☺"), url(../../assets/fonts/BrownStd-Light.woff) format("woff"), url(../../assets/fonts/BrownStd-Light.ttf) format("truetype"), url(../../assets/img/BrownStd-Light.svg) format("svg");
+    src: url(../../assets/fonts/brownstd-light.eot);
+    src: local("☺"), url(../../assets/fonts/brownstd-light.woff) format("woff"), url(../../assets/fonts/brownstd-light.ttf) format("truetype"), url(../../assets/img/brownstd-light.svg) format("svg");
     font-weight: 300;
     font-style: normal;
     font-display: swap
@@ -40305,8 +40305,8 @@ button {
 
 @font-face {
     font-family: Brown-Std;
-    src: url(../../assets/fonts/BrownStd-Bold.eot);
-    src: local("☺"), url(../../assets/fonts/BrownStd-Bold.woff) format("woff"), url(../../assets/fonts/BrownStd-Bold.ttf) format("truetype"), url(../../assets/img/BrownStd-Bold.svg) format("svg");
+    src: url(../../assets/fonts/brownstd-bold.eot);
+    src: local("☺"), url(../../assets/fonts/brownstd-bold.woff) format("woff"), url(../../assets/fonts/brownstd-bold.ttf) format("truetype"), url(../../assets/img/brownstd-bold.svg) format("svg");
     font-weight: 600;
     font-style: normal;
     font-display: swap

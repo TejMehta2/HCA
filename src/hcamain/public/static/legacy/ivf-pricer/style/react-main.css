@@ -218,24 +218,24 @@ table {
     font-family: Brown-Std;
     font-style: normal;
     font-weight: 400;
-    src: url(/static/media/BrownStd-Regular.0679cc2800abe3217bff.eot);
-    src: local("☺"), url(/static/media/BrownStd-Regular.woff) format("woff"), url(/static/media/BrownStd-Regular.ttf) format("truetype"), url(/static/media/BrownStd-Regular.61bf429d8fe7e5e4be40.svg) format("svg")
+    src: url(/static/legacy/assets/fonts/brownstd-regular.eot);
+    src: local("☺"), url(/static/legacy/assets/fonts/brownstd-regular.woff) format("woff"), url(/static/legacy/assets/fonts/brownstd-regular.ttf) format("truetype"), url(/static/legacy/assets/fonts/BrownStd-Regular.svg) format("svg")
 }
 
 @font-face {
     font-family: Brown-Std;
     font-style: normal;
     font-weight: 300;
-    src: url(/static/media/BrownStd-Light.14b34a9100e0c4604888.eot);
-    src: local("☺"), url(/static/media/BrownStd-Light.293c04f46ac959645a73.woff) format("woff"), url(/static/media/BrownStd-Light.0e0861fb3527603ed1e8.ttf) format("truetype"), url(/static/media/BrownStd-Light.3bbc4e46c09ff7aa3e6b.svg) format("svg")
+    src: url(/static/legacy/assets/fonts/brownstd-light.eot);
+    src: local("☺"), url(/static/legacy/assets/fonts/brownstd-light.woff) format("woff"), url(/static/legacy/assets/fonts/brownstd-light.ttf) format("truetype"), url(/static/legacy/assets/fonts/BrownStd-Light.svg) format("svg")
 }
 
 @font-face {
     font-family: Brown-Std;
     font-style: normal;
     font-weight: 600;
-    src: url(/static/media/BrownStd-Bold.2ee9649ca0013cfae932.eot);
-    src: local("☺"), url(/static/media/BrownStd-Bold.woff) format("woff"), url(/static/media/BrownStd-Bold.ttf) format("truetype"), url(/static/media/BrownStd-Bold.d4bee81d486cd24e61c5.svg) format("svg")
+    src: url(/static/legacy/assets/fonts/brownstd-bold.eot);
+    src: local("☺"), url(/static/legacy/assets/fonts/brownstd-bold.woff) format("woff"), url(/static/legacy/assets/fonts/brownstd-bold.ttf) format("truetype"), url(/static/legacy/assets/fonts/BrownStd-Bold.svg) format("svg")
 }
 
 .ivf-calculator {
