@@ -1,7 +1,7 @@
 import { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
 import getFormattedDate from '../utils/index';
 
-const urlHost = './legacy';
+const urlHost = '/static/legacy';
 // register fonts
 Font.register({
     family: 'Brown-Std',
