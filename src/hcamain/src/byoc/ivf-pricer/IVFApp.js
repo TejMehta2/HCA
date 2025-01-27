@@ -7,10 +7,12 @@ import IvfCalculatorContextProvider from './context/IvfCalculatorContext';
 
 function IVFApp() {
   return (
-    <div className="ivf-calculator">
-      <IvfCalculatorContextProvider>
-        <IvfCalculator />
-      </IvfCalculatorContextProvider>
+    <div>
+      <div className="ivf-calculator">
+        <IvfCalculatorContextProvider>
+          <IvfCalculator />
+        </IvfCalculatorContextProvider>
+      </div>
     </div>
   );
 }

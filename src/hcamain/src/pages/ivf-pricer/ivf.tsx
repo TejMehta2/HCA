@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 // Specific page to partner with the finder (non profile) pages
 // Delegation from the top level [[...path]] via an exception regex change to middleware.ts
 // Based on https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
@@ -63,11 +64,11 @@ const SitecorePage = ({
           />
         )}
         <link
-          href="https://forms.hcahealthcare.co.uk/static/react/ivf/static/css/main.f8a5d480.css"
+          href="../static/legacy/ivf-pricer/style/site-main.css"
           rel="stylesheet"
         ></link>
         <link
-          href="https://forms.hcahealthcare.co.uk/assets/css/main.css"
+          href="../static/legacy/ivf-pricer/style/react-main.css"
           rel="stylesheet"
         ></link>
       </Head>
