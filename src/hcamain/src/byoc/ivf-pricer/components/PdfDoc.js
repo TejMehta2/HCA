@@ -1,27 +1,20 @@
 import { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
 import getFormattedDate from '../utils/index';
 
-// change host based on enviroment variable
-let urlHost;
-if (process.env.NODE_ENV === 'production') {
-    urlHost = window.location.origin;
-} else {
-    urlHost = 'https://forms.hcahealthcare.co.uk';
-}
-
+const urlHost = './legacy';
 // register fonts
 Font.register({
     family: 'Brown-Std',
     fonts: [
         {
-            src: `${urlHost}/assets/fonts/BrownStd-Regular.woff`,
+            src: `${urlHost}/assets/fonts/brownstd-regular.woff`,
         },
         {
-            src: `${urlHost}/assets/fonts/BrownStd-Bold.woff`,
+            src: `${urlHost}/assets/fonts/brownstd-bold.woff`,
             fontWeight: 'bold'
         },
         {
-            src: `${urlHost}/assets/fonts/BrownStd-Regular.woff`,
+            src: `${urlHost}/assets/fonts/brownstd-regular.woff`,
             fontWeight: 'normal'
         },
     ],
