@@ -8,6 +8,10 @@
 /* Styles a ul and li with tick icons */
 .tick {
   @extend %tick-list;
+
+  &-2-cols {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Utility classes to override specific imported HTML */
@@ -28,8 +32,6 @@
 
   ul {
     list-style: initial;
-    @include apply-body-large;
-
     margin: $spacing-5 auto;
     display: flex;
     flex-direction: column;

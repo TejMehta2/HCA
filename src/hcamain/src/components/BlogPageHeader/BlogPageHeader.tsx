@@ -1,7 +1,9 @@
 import React from 'react';
 import { RichText, Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import { BlogPageHeaderProps } from './BlogPageHeader.types';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
@@ -16,6 +18,7 @@ import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Filters from '@component-library/site-components/Filters/Filters';
 import { ApiSearchProps } from 'src/types/searchProps';
 import unpackFilterOption from 'lib/unpackFilterOption';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SEARCH_PATH = '/search';
@@ -74,22 +77,29 @@ export const Default = (props: BlogPageHeaderProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    fields?.Heading?.value,
+    'h1'
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
         <HeaderPlain
           heading={
             <Text
-              tag={props.params?.HeadingTag || 'h1'}
-              variation={props.params?.HeadingSize || 'display-1'}
+              tag={headingTag}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(fields?.Title?.value?.length)
+              }
             >
               <JssText field={props?.fields?.Title} />
             </Text>
           }
           metatitle={
             !!fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
               </Text>
             )

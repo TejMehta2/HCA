@@ -14,10 +14,12 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import IconCtaBlock, {
   IconCtaBlockChild,
 } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   fields?: {
     SvgMarkup?: Field<string>;
+    SvgMarkup48?: Field<string>;
   };
 };
 
@@ -70,8 +72,13 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
     return <></>;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
+    <Themes
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
+      id={componentAnchorId}
+    >
       <IconCtaBlock>
         {props.fields?.Cards?.map((card, index) => {
           return (
@@ -109,7 +116,11 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                 <>
                   {(card?.fields?.PrimaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button variation="full" size="small">
+                    <Button
+                      variation="full"
+                      size="small"
+                      contentVariation="full-width"
+                    >
                       <JssLink field={card.fields.PrimaryCTA}>
                         {!isExperienceEditor && (
                           <>
@@ -128,7 +139,11 @@ export const Default = (props: ContentCardsTripletProps): JSX.Element => {
                   )}
                   {(card?.fields?.SecondaryCTA?.value?.href ||
                     isExperienceEditor) && (
-                    <Button variation="outline" size="small">
+                    <Button
+                      variation="outline"
+                      size="small"
+                      contentVariation="full-width"
+                    >
                       <JssLink field={card.fields.SecondaryCTA}>
                         {!isExperienceEditor && (
                           <>

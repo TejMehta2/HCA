@@ -14,7 +14,8 @@ import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import dynamic from 'next/dynamic';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicImageAndTextBlock = dynamic(
   () =>
@@ -64,17 +65,23 @@ interface ImageLeftProps extends ImageShortTextProps {
 export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
   const phKey = `image-short-text-${props.params?.DynamicPlaceholderId}`;
+
   if (!props.fields) {
     return <ImageShortTextDefaultComponent {...props} />;
   }
 
-  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
-
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.Title?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
   );
 
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <>
       <DynamicImageAndTextBlock
@@ -84,15 +91,15 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
         imageKeepAspectRatio={keepAspectRatio}
         length="short"
         subheader={
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           <>
             <Text
-              tag={props.params?.HeadingTag || 'h2'}
-              variation={props.params?.HeadingSize || 'display-2'}
+              tag={headingTag}
+              variation={props.params?.HeadingSize || 'display-3'}
             >
               <JssText field={props.fields?.Title} />
             </Text>

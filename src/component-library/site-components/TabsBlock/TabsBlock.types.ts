@@ -12,4 +12,5 @@ export interface TabsBlockProps {
   theme?: Theme;
   title?: JSX.Element;
   tabsContent?: TabsContent[];
+  id?: string;
 }

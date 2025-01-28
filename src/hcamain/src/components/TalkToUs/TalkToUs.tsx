@@ -14,6 +14,8 @@ import { ContactItem } from '@component-library/components/ContactList/ContactLi
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -48,9 +50,17 @@ const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
 
 export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
+
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const contactListItems: ContactItem[] = [];
 
@@ -87,23 +97,28 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
       contactListItems.push(contactListItem);
     }
   );
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value,
+    'h4'
+  );
   return (
     <ImageAndTextBlock
+      id={componentAnchorId}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       imageAlignment={imageAlignment}
       length="short"
       subheader={
         !!props.fields?.data?.item?.heading?.jsonValue?.value && (
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
           </Text>
         )
       }
       header={
         <Text
-          tag={props.params?.HeadingTag || 'h4'}
-          variation={props.params?.HeadingSize || 'display-2'}
+          tag={headingTag}
+          variation={props.params?.HeadingSize || 'display-3'}
         >
           <JssText field={props.fields?.data?.item?.title?.jsonValue} />
         </Text>

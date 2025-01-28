@@ -17,6 +17,8 @@ import Link from 'next/link';
 import getSubheadingTag from 'lib/subheading-tag-getter';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type HCAIcon = {
   svgMarkup?: Field<string>;
@@ -130,6 +132,13 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     return <></>;
   }
 
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+
   const displayAllCards = item?.displayAllCards?.jsonValue?.value;
   const numberOfCards = item?.numberOfCards?.jsonValue?.value || 3;
   const limit = displayAllCards ? 999 : numberOfCards;
@@ -156,8 +165,13 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
     );
   };
 
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <CardBlock
+      id={componentAnchorId}
       variation={`${numberOfCards}-columns`}
       gapSize={'small'}
       theme={props.params?.Theme || 'A-HCA-White'}
@@ -167,7 +181,7 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
           subtitle={
             !isExperienceEditor ? (
               props.fields?.data?.item?.heading?.jsonValue?.value ? (
-                <Text variation={'subheading-1'}>
+                <Text tag={subheadingTag} variation={'subheading-1'}>
                   {props.fields.data?.item?.heading?.jsonValue?.value}
                 </Text>
               ) : (
@@ -202,8 +216,8 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
             !isExperienceEditor ? (
               props.fields?.data?.item?.title?.jsonValue?.value ? (
                 <Text
-                  variation={props.params?.HeadingSize || 'display-5'}
-                  tag={props.params?.HeadingTag || 'h2'}
+                  variation={props.params?.HeadingSize || 'display-3'}
+                  tag={headingTag}
                 >
                   <JssTextWithEntityName
                     field={props.fields?.data?.item?.title?.jsonValue}
@@ -214,8 +228,8 @@ export const WithImage = (props: ConditionsProps): JSX.Element => {
               )
             ) : (
               <Text
-                variation={props.params?.HeadingSize || 'display-5'}
-                tag={props.params?.HeadingTag || 'h2'}
+                variation={props.params?.HeadingSize || 'display-3'}
+                tag={headingTag}
               >
                 <JssTextWithEntityName
                   field={props.fields?.data?.item?.title?.jsonValue}

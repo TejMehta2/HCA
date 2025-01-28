@@ -13,6 +13,7 @@ import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
 interface AuthorFields {
   fields?: {
@@ -57,6 +58,8 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   if (!props.fields) {
     return <BlogQuoteDefaultComponent {...props} />;
   }
+
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   const quoteBlock = (
     <QuoteBlock
@@ -125,7 +128,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
       }
       children={
         props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the quote is not null or empty
-          <Text variation={props.params?.HeadingSize || 'display-5'}>
+          <Text variation={props.params?.HeadingSize || 'display-3'}>
             “<JssText field={props.fields?.Quote} />”
           </Text>
         ) : null // Render nothing if the quote is null or empty
@@ -136,7 +139,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlock}</figure>
       </RichText>
     );
@@ -146,6 +149,7 @@ export const Default = (props: BlogQuoteProps): JSX.Element => {
     <BlogContent
       theme={props.params?.Theme || 'A-HCA-White'}
       contentVariation={alignment ? `quote-${alignment}` : 'quote'}
+      id={componentAnchorId}
     >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
@@ -157,6 +161,7 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
     return <BlogQuoteDefaultComponent {...props} />;
   }
 
+  const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
   const quoteBlock = (
     <QuoteBlock
       author={
@@ -223,7 +228,7 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
       }
       children={
         props.fields?.Quote && props.fields?.Quote?.value !== '' ? ( // Check if the text is not null or empty
-          <Text variation={props.params?.HeadingSize || 'display-5'}>
+          <Text variation={props.params?.HeadingSize || 'display-3'}>
             <JssText field={props.fields?.Quote} />
           </Text>
         ) : null // Render nothing if the quote is null or empty
@@ -234,14 +239,17 @@ export const NoQuotationMarks = (props: BlogQuoteProps): JSX.Element => {
   const isContainerized = props?.params?.Containerized === '1';
   if (isContainerized) {
     return (
-      <RichText additionalStyles={props?.params?.styles}>
+      <RichText additionalStyles={props?.params?.styles} id={componentAnchorId}>
         <figure>{quoteBlock}</figure>
       </RichText>
     );
   }
 
   return (
-    <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
+    <BlogContent
+      theme={props.params?.Theme || 'A-HCA-White'}
+      id={componentAnchorId}
+    >
       <RichText>{quoteBlock}</RichText>
     </BlogContent>
   );

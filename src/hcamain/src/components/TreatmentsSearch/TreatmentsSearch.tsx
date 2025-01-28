@@ -124,7 +124,7 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           )}
           {fields?.Title?.value && (
             <Text
-              variation={params?.HeadingSize || 'display-2'}
+              variation={params?.HeadingSize || 'display-3'}
               tag={params?.HeadingTag || 'h2'}
             >
               <JssText field={fields?.Title} />

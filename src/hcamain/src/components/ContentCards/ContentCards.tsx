@@ -16,7 +16,8 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
-import { generateHtmlSafeId } from 'lib/utility-functions/generateHtmlSafeId';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface PagesFields {
   abstractTitle?: { value?: string };
@@ -82,6 +83,7 @@ interface WithImageProps extends ContentCardsProps {
 
 export const WithImage = (props: WithImageProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
+
   const isExperienceEditor = sitecoreContext?.pageEditing;
   const { showImage = true } = props;
   if (!props.fields?.data?.item) {
@@ -96,6 +98,13 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
   ) {
     return <></>;
   }
+
+  const tableOfContentsLinkTitle =
+    props.fields?.data?.item?.title?.jsonValue?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
 
   const link = isExperienceEditor ? (
     <JssLink field={props.fields?.data?.item?.cTALink.jsonValue}></JssLink>
@@ -115,11 +124,10 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     )
   );
 
-  const componentAnchorId = generateHtmlSafeId(
-    props?.fields?.data?.item?.title?.jsonValue?.value,
-    props?.params?.TableOfContentsLinkTitle
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
   );
-
   return (
     <CardBlock
       id={componentAnchorId}
@@ -133,19 +141,16 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             <>
               <Text
                 variation={props.params?.HeadingSize || 'display-3'}
-                tag={props.params?.HeadingTag || 'h2'}
+                tag={headingTag}
               >
-                <JssText
-                  tag={'span'}
-                  field={props.fields?.data?.item?.title?.jsonValue}
-                />
+                <JssText field={props.fields?.data?.item?.title?.jsonValue} />
               </Text>
             </>
           }
           subtitle={
             !isExperienceEditor ? (
               props.fields?.data?.item?.heading?.jsonValue?.value ? (
-                <Text tag="span" variation={'subheading-1'}>
+                <Text tag={subheadingTag} variation={'subheading-1'}>
                   <JssText
                     field={props.fields?.data?.item?.heading?.jsonValue}
                   />

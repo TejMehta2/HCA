@@ -24,9 +24,9 @@ export const TimelineStep = (props: TimelineStepProps): JSX.Element => {
 };
 
 const Timeline = (props: TimelineProps): JSX.Element => {
-  const { subheading, heading, copy, ctas, children } = props;
+  const { subheading, heading, copy, ctas, children, id } = props;
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id={id}>
       <div className={styles.container}>
         <div className={styles.track}>
           <div className={styles.sticky}>

@@ -9,8 +9,7 @@ SharedFields:
   Value: 2600
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{517C062B-5EA5-452F-BD6E-A555674E25C4}" />
+  Value: 
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -58,6 +57,16 @@ Languages:
               s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B7E308E51-5086-4314-9F56-BA5E7FF6D5F9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
               s:ph="headless-main" />
+            <r
+              uid="{D2C57B11-A6FB-4F6F-9952-49BA4CEE8FF8}"
+              s:par="DisableHeadersToggle=1&amp;ExcludeFromTableOfContents&amp;HeadingTag&amp;HeadingSize=display-1&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7B0DB88BD7-441A-482B-A59B-5FAC8396CD2B%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2" />
+            <r
+              uid="{7F6538A0-E1DF-41C4-B571-53D307D3C19A}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Intro Block Image 2"
+              s:id="{2DB261B1-AD36-49DE-8ADC-AC29E96FE20E}"
+              s:par="DisableHeadersToggle&amp;ExcludeFromTableOfContents&amp;HeadingTag&amp;HeadingSize&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B4A4F3B4F-F60C-458E-8744-F47455B728A9%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -73,14 +82,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a4d30227-fc59-4cfd-b353-52e80cb6f8c6"
+      Value: "5a8d6d9e-3cb1-424a-8468-324b56612923"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T161135Z
+      Value: 20250115T202255Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA14

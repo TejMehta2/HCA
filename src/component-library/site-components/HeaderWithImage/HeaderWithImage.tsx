@@ -3,6 +3,21 @@ import { HeaderWithImageProps } from './HeaderWithImage.types';
 import styles from './HeaderWithImage.module.scss';
 import Themes from '../../foundation/Themes/Themes';
 
+export const getDynamicTitleStyle = (length?: number) => {
+  if (!length) return 'display-1';
+  if (length >= 50) {
+    return 'display-6';
+  } else if (length >= 40) {
+    return 'display-5';
+  } else if (length >= 30) {
+    return 'display-4';
+  } else if (length >= 20) {
+    return 'display-3';
+  } else if (length >= 10) {
+    return 'display-2';
+  } else return 'display-1';
+};
+
 const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
   const {
     title,

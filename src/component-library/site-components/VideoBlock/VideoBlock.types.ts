@@ -6,4 +6,5 @@ export interface VideoBlockProps {
   theme?: Theme;
   variation?: 'standard' | 'side-by-side';
   video: ReactNode | JSX.Element;
+  id?: string;
 }

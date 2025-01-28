@@ -1,0 +1,28 @@
+﻿---
+ID: "a1b1b800-2541-41d5-be70-4b992a2f6cba"
+Parent: "5b50d5f6-876a-4b38-99a7-43dae0c355a7"
+Template: "0e970b52-7e12-4abe-ab9c-bbd0d2dd9ee3"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents/Page Data/Authors"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240930T121351Z
+    - ID: "48c7b959-053f-4114-9af3-eb2db73932fe"
+      Hint: Authors
+      Value: |
+        {7FFECCAE-A32C-4F3D-ABC4-AE17CD17774B}
+        {7641AF1F-38B1-4A2A-9EA8-E4B0DB7A07C6}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4b631624-0552-45a3-95c0-d2ad127df15d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250114T105644Z

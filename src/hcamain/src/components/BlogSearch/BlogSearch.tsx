@@ -24,7 +24,9 @@ import SearchContainer from '@component-library/site-components/SearchContainer/
 import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Tags from '@component-library/core-components/Tags/Tags';
 import formatDate from 'src/jss-abstractions/JssDate/formatDate';
 import unpackFilterOption from 'lib/unpackFilterOption';
@@ -32,6 +34,7 @@ import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorM
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/articles`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/articles`;
@@ -108,22 +111,29 @@ export const Default = (props: BlogSearchProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    fields?.Heading?.value,
+    'h1'
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'A-HCA-White'}>
         <HeaderPlain
           heading={
             <Text
-              tag={props.params?.HeadingTag || 'h1'}
-              variation={props.params?.HeadingSize || 'display-1'}
+              tag={headingTag}
+              variation={
+                props.params?.HeadingSize ||
+                getDynamicTitleStyle(props?.fields?.Title?.value.length)
+              }
             >
               <JssText field={props?.fields?.Title} />
             </Text>
           }
           metatitle={
             !!fields?.Heading?.value && (
-              <Text variation={'subheading-1'}>
+              <Text tag={subheadingTag} variation={'subheading-1'}>
                 <JssText field={fields?.Heading} />
               </Text>
             )

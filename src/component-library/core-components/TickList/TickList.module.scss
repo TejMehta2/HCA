@@ -3,7 +3,9 @@
 
 // Also exported to globals/_rte-utilities
 %tick-list {
-  list-style: none;
+  display: grid;
+  gap: px-to-rem(12) px-to-rem(24);
+  align-items: flex-start;
   padding-left: 0;
   margin: $spacing-4 0 0;
 
@@ -13,12 +15,6 @@
 
     &::before {
       content: url('./tick.svg');
-    }
-
-    margin-top: $spacing-4;
-
-    &:first-child {
-      margin-top: 0;
     }
   }
 }

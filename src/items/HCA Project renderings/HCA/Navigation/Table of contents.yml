@@ -15,68 +15,10 @@ SharedFields:
   Value: SXA_MDI/16x16/Promo.png
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: |
-    query SubNavigation($datasource: String!, $language: String!) {
-      item(path: $datasource, language: $language) {
-        ... on SubNavigation {
-          title {
-            jsonValue
-          }
-          defaultNavigationImage {
-            jsonValue
-          }
-          includeRootPage {
-           boolValue
-          }
-          rootPage {
-            targetItem {
-              ...navigableFragment
-              ...basePageFragment
-              children(hasLayout: true, first: 1000) {
-                results {
-                  ...navigableFragment
-                  ...basePageFragment
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    
-    fragment basePageFragment on _HCABasePage {
-      title {
-        value
-      }
-      abstractTitle {
-        value
-      }
-      abstractImage {
-        jsonValue
-      }
-      image {
-        jsonValue
-      }
-    }
-    
-    fragment navigableFragment on Item {
-      ... on _PageNavigable {
-        navigationTitle {
-          value
-        }
-        hideInSubNavigation {
-          boolValue
-        }
-      }
-      url {
-        path
-      }
-      id
-    }
-    
+  Value: 
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Project/HCA/Navigation/Table of contents
+  Value: 
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -99,6 +41,9 @@ SharedFields:
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
+- ID: "f6677a49-0a1d-4bad-b8ba-4f0f22bdee64"
+  Hint: Additional compatible templates
+  Value: "{D06ABDF9-F642-4BF4-A010-81D074F46C5A}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -142,14 +87,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "19e15fe5-dacb-4091-a0e9-f5e5f22dc3f0"
+      Value: "6d5e5120-402d-4ff4-9467-3a47b28690c5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T200437Z
+      Value: 20250123T113108Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

@@ -15,6 +15,8 @@ import CardLocation from '@component-library/components/CardLocation/CardLocatio
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { Location } from '@component-library/site-components/OurLocations/OurLocations.types';
 import dynamic from 'next/dynamic';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicOurLocations = dynamic(
   () => import('@component-library/site-components/OurLocations/OurLocations'),
@@ -79,15 +81,24 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
     return <LocationsMapDefaultComponent {...props} />;
   }
 
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   const headerProps = {
     subtitle: (
-      <Text tag="p" variation="subheading-1">
+      <Text tag={subheadingTag} variation="subheading-1">
         <JssText field={props.fields?.Heading} />
       </Text>
     ),
     title: (
       <Text
-        tag={props.params?.HeadingTag || 'h2'}
+        tag={headingTag}
         variation={props.params?.HeadingSize || 'display-3'}
       >
         <JssText field={props.fields?.Title} />
@@ -183,6 +194,7 @@ export const Default = (props: LocationsMapProps): JSX.Element => {
 
   return (
     <DynamicOurLocations
+      id={componentAnchorId}
       mapAspectRatio={3000 / 3444}
       headerProps={headerProps}
       locations={locationCards}

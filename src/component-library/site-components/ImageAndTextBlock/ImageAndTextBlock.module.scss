@@ -24,7 +24,6 @@
   @include responsive-grid-span($default: 6, $breakpoint-l: 6);
 
   display: flex;
-  align-items: center;
   position: relative;
   padding: 0 0 $spacing-13 0;
 
@@ -34,14 +33,13 @@
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: $radius-medium;
+    object-fit: cover;
   }
 }
 
 .keep-aspect-ratio {
-  align-items: center;
-
   img {
     object-fit: contain;
     aspect-ratio: unset;

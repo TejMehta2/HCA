@@ -13,6 +13,8 @@ import Params from 'src/types/params';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   Heading?: Field<string>;
@@ -47,21 +49,32 @@ const IntegratedFixedPricedPackage = (
     return <FixedPricePackageDefaultComponent {...props} />;
   }
   const phKey = `fixed-price-package-${props.params?.DynamicPlaceholderId}`;
+
+  const tableOfContentsLinkTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    tableOfContentsLinkTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <>
       <ImageAndTextBlock
+        id={componentAnchorId}
         theme={props.params?.Theme || 'A-HCA-White'}
         imageAlignment={props.imageAlignment}
         length="short"
         subheader={
-          <Text tag="p" variation="subheading-1">
+          <Text tag={subheadingTag} variation="subheading-1">
             <JssText field={props.fields?.Heading} />
           </Text>
         }
         header={
           <Text
-            tag={props.params?.HeadingTag || 'h2'}
-            variation={props.params?.HeadingSize || 'display-2'}
+            tag={headingTag}
+            variation={props.params?.HeadingSize || 'display-3'}
           >
             <JssText field={props.fields?.Title} />
           </Text>
