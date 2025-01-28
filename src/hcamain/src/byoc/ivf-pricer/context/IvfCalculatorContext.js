@@ -103,7 +103,7 @@ const IvfCalculatorContextProvider = ({ children }) => {
     },
     Image: {
       CalculatorImage: {
-        Value: '/static/legacy/assets/images/IVFCalcPreCalc.jpg',
+        Value: '/static/legacy/assets/images/ivfcalcprecalc.jpg',
         Order: '2',
         Cost: '0',
         AdditionalDrugCost: '0',
@@ -116,7 +116,7 @@ const IvfCalculatorContextProvider = ({ children }) => {
         Cost2Type: null,
       },
       HCALogoPDF2x: {
-        Value: '/static/legacy/assets/images/HCAListerLogoPDF2x.jpg',
+        Value: '/static/legacy/assets/images/hcalisterlogopdf2x.jpg',
         Order: '3',
         Cost: '0',
         AdditionalDrugCost: '0',
