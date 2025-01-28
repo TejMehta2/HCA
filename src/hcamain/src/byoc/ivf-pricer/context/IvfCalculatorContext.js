@@ -58,13 +58,16 @@ const IvfCalculatorContextProvider = ({ children }) => {
   const [calculateButtonLabel, setCalculateButtonLabel] = useState('');
 
   // change host based on enviroment variable
-  let urlHost;
+  /*   let urlHost;
   if (process.env.NODE_ENV === 'production') {
     urlHost = window.location.origin;
   } else {
     urlHost = 'https://forms.hcahealthcare.co.uk';
-  }
+  } */
 
+  const urlHost = '';
+
+  // TODO create a new web service to serve the excel data
   //https://forms.hcahealthcare.co.uk/lookupApi/IVFCostCalculator/default/findbydictionaryasobject/Costs
   const costDataMock = {
     Title: {
@@ -100,7 +103,7 @@ const IvfCalculatorContextProvider = ({ children }) => {
     },
     Image: {
       CalculatorImage: {
-        Value: '/-/media/IVF%20Calc/images/IVFCalcPreCalc',
+        Value: '/static/legacy/assets/images/IVFCalcPreCalc.jpg',
         Order: '2',
         Cost: '0',
         AdditionalDrugCost: '0',
@@ -113,7 +116,7 @@ const IvfCalculatorContextProvider = ({ children }) => {
         Cost2Type: null,
       },
       HCALogoPDF2x: {
-        Value: '/-/media/IVF%20Calc/images/HCAListerLogoPDF2x',
+        Value: '/static/legacy/assets/images/HCAListerLogoPDF2x.jpg',
         Order: '3',
         Cost: '0',
         AdditionalDrugCost: '0',
