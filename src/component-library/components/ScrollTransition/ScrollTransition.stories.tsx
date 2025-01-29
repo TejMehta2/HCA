@@ -23,6 +23,18 @@ import DiamondLine from '../../site-components/DiamondLine/DiamondLine';
 import OurLocations from '../../site-components/OurLocations/OurLocations';
 import CardLocation from '../CardLocation/CardLocation';
 
+import VideoHero from '../../careers/VideoHero/VideoHero';
+import { VideoHeroProps } from '../../careers/VideoHero/VideoHero.types';
+import { Default as VideoHeroStory } from '../../careers/VideoHero/VideoHero.stories';
+
+import DualCTABlock from '../../careers/DualCTABlock/DualCTABlock';
+import { Default as DualCTABlockStory } from '../../careers/DualCTABlock/DualCTABlock.stories';
+import { DualCTABlockProps } from '../../careers/DualCTABlock/DualCTABlock.types';
+
+import Accreditations from '../../careers/Accreditations/Accreditations';
+import { AccreditationsProps } from '../../careers/Accreditations/Accreditations.types';
+import { Default as AccreditationsStory } from '../../careers/Accreditations/Accreditations.stories';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
   title: 'components/ScrollTransition',
@@ -769,6 +781,60 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
           </a>,
         ]}
       />
+    ),
+  },
+};
+
+export const CareersPage: StoryObj<typeof ScrollTransition> = {
+  args: {
+    initialTheme: 'A-HCA-White',
+    children: (
+      <>
+        <VideoHero {...(VideoHeroStory.args as VideoHeroProps)} />
+        <ImageAndTextBlock
+          theme="A-HCA-White"
+          length="long"
+          image={
+            <Image
+              src="/placeholders/children-playing.jpg"
+              alt="two children playing"
+              width="643"
+              height="605"
+            />
+          }
+          subheader={
+            <Text tag="h3" variation="subheading-1">
+              Working hours
+            </Text>
+          }
+          header={
+            <Text tag="h2" variation="display-2">
+              Empowering you with flexible working
+            </Text>
+          }
+          children={
+            <Text tag="p" variation="body-large">
+              We know how important it is to balance your life outside of work.
+              This is why we strive to offer flexible working opportunities,
+              including through our bank as well as with full-time, part-time,
+              annualised hours and term-time contracts.
+            </Text>
+          }
+          ctas={
+            <Button size="large" variation="full">
+              <a href="#">
+                <span>
+                  Learn more about <strong>flexible working</strong>
+                </span>
+              </a>
+            </Button>
+          }
+        />
+        <DualCTABlock {...(DualCTABlockStory.args as DualCTABlockProps)} />
+        <Accreditations
+          {...(AccreditationsStory.args as AccreditationsProps)}
+        />
+      </>
     ),
   },
 };
