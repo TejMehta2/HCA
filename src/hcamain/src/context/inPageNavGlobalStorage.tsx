@@ -28,7 +28,7 @@ class InPageNavGlobalStore extends EventEmitter {
       (existingItem) => existingItem.Id === navItem.Id
     );
 
-    if (exists) {
+    if (exists || typeof window === 'undefined') {
       return componentAnchorId;
     }
 
