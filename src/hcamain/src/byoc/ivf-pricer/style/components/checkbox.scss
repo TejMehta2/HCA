@@ -10,9 +10,9 @@
   }
 
   &__group-label {
-    font-family: 'Brown-Std';
-    font-size: 16px;
-    line-height: 22px;
+    font-family: Brown-Std, sans-serif;
+    font-size: 16;
+    line-height: 22;
     font-weight: bold;
     display: inline-block;
     color: $hcauk-blue;
@@ -22,26 +22,26 @@
   [type='checkbox']:not(:checked),
   [type='checkbox']:checked {
     position: absolute;
-    left: -9999px;
+    left: -9999;
   }
 
   [type='checkbox']:not(:checked) + label,
   [type='checkbox']:checked + label {
     position: relative;
-    padding-left: 40px;
+    padding-left: 40;
     cursor: pointer;
   }
 
   /* checkbox aspect */
-  [type='checkbox']:not(:checked) + label:before,
-  [type='checkbox']:checked + label:before {
+  [type='checkbox']:not(:checked) + label::before,
+  [type='checkbox']:checked + label::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    width: 16px;
-    height: 16px;
-    border: 1px solid $hcauk-blue;
+    width: 16;
+    height: 16;
+    border: 1 solid $hcauk-blue;
     background: $hcauk-white;
     z-index: 1;
     transition: 0.2s all ease-out;
@@ -51,57 +51,59 @@
   // &--error {
   //     [type="checkbox"]:not(:checked) + label:before,
   //     [type="checkbox"]:checked + label:before {
-  //         border: 1px solid $hcauk-red-100;
+  //         border: 1 solid $hcauk-red-100;
   //     }
   // }
 
-  [type='checkbox']:checked + label:before {
+  [type='checkbox']:checked + label::before {
     background: $hcauk-white;
-    border: 1px solid $hcauk-blue;
+    border: 1 solid $hcauk-blue;
   }
 
   // checkbox default on hover
-  [type='checkbox']:hover:not(:checked) + label:before {
-    border: 1px solid $hcauk-neutral-300;
+  [type='checkbox']:hover:not(:checked) + label::before {
+    border: 1 solid $hcauk-neutral-300;
   }
 
   /* checked mark aspect */
-  [type='checkbox']:not(:checked) + label:after,
-  [type='checkbox']:checked + label:after {
+  [type='checkbox']:not(:checked) + label::after,
+  [type='checkbox']:checked + label::after {
     content: '';
     position: absolute;
     background-image: url('../../images/checkbox-tick.png');
     background-repeat: no-repeat;
-    // background-size: 8px 9px;
+
+    // background-size: 8 9;
     display: inline-block;
+
     // @include transition(0.2s all);
-    width: 16px;
-    height: 16px;
-    left: 4px;
-    margin-top: 3px;
+    width: 16;
+    height: 16;
+    left: 4;
+    margin-top: 3;
     z-index: 1;
     @extend .vertical-aligned;
   }
 
   /* checked mark aspect changes */
-  [type='checkbox']:not(:checked) + label:after {
+  [type='checkbox']:not(:checked) + label::after {
     opacity: 0;
   }
 
   label {
-    font-family: 'Brown-Std';
+    font-family: Brown-Std, sans-serif;
     color: $hcauk-blue;
     text-align: left;
-    font-size: 14px;
+    font-size: 14;
   }
 
   [type='checkbox']:disabled {
     cursor: pointer;
   }
 
-  [type='checkbox']:disabled + label:before {
+  [type='checkbox']:disabled + label::before {
     background-color: $hcauk-neutral-200;
-    border: solid 1px $hcauk-neutral-200;
+    border: solid 1 $hcauk-neutral-200;
   }
 
   [disabled] ~ label {
@@ -111,8 +113,5 @@
 
 .vertical-aligned {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }

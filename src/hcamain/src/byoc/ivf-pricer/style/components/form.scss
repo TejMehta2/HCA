@@ -1,111 +1,117 @@
 .ivf-calculator-input {
-    margin-bottom: $hcauk-spacing-20;
+  margin-bottom: $hcauk-spacing-20;
+  text-align: left;
+
+  input,
+  textarea,
+  select,
+  input[type='date'] {
+    font-family: Brown-Std, sans-serif;
+    appearance: none;
+    border: 1 solid $hcauk-light-grey-3;
+    border-radius: 5;
+    width: 100%;
+    padding: 15 18;
+    color: $hcauk-blue;
+    background-color: white;
+    font-size: 16;
+    line-height: 22;
+  }
+
+  input,
+  select,
+  input[type='date'] {
+    height: 60;
+  }
+
+  ::input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: $hcauk-dark-grey-2;
+  }
+
+  :placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $hcauk-dark-grey-2;
+    opacity: 1;
+  }
+
+  ::placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $hcauk-dark-grey-2;
+    opacity: 1;
+  }
+
+  :input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $hcauk-dark-grey-2;
+  }
+
+  ::input-placeholder {
+    /* Microsoft Edge */
+    color: $hcauk-dark-grey-2;
+  }
+
+  ::placeholder {
+    /* Most modern browsers support this now. */
+    color: $hcauk-dark-grey-2;
+  }
+
+  label {
+    font-family: Brown-Std;
+    font-size: 16;
+    line-height: 22;
+    font-weight: bold;
+    display: inline-block;
+    color: $hcauk-blue;
+    margin-bottom: $hcauk-spacing-10;
+  }
+
+  &__optional {
+    color: $hcauk-dark-grey-2;
+  }
+
+  &__select {
+    width: 100%;
     text-align: left;
 
-    input, textarea, select, input[type=date] {
-        font-family: 'Brown-Std';
-        -webkit-appearance:none;
-        -moz-appearance: none;
-        // appearance: none;
-        border: 1px solid $hcauk-light-grey-3;
-        border-radius: 5px;
-        width: 100%;
-        padding: 15px 18px;
-        color: $hcauk-blue;
-        background-color: white;
-        font-size: 16px;
-        line-height: 22px;
+    &-container {
+      display: flex;
+      position: relative;
+      flex-grow: 1;
     }
 
-    input, select, input[type=date] {
-        height: 60px;
+    &-menu.g-select__menu {
+      appearance: none;
+      border-radius: 5;
+      width: 100%;
+      padding: 10 35 10 18;
+      color: $hcauk-blue;
+      font-size: 16;
+      line-height: 22;
+      background-image: inherit !important;
+      background-color: inherit !important;
+      background-position: inherit !important;
+      background-repeat: inherit !important;
+      background-size: inherit !important;
     }
 
-    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color: $hcauk-dark-grey-2;
-    }
-    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-       color: $hcauk-dark-grey-2;
-       opacity: 1;
-    }
-    ::-moz-placeholder { /* Mozilla Firefox 19+ */
-       color: $hcauk-dark-grey-2;
-       opacity: 1;
-    }
-    :-ms-input-placeholder { /* Internet Explorer 10-11 */
-       color: $hcauk-dark-grey-2;
-    }
-    ::-ms-input-placeholder { /* Microsoft Edge */
-       color: $hcauk-dark-grey-2;
-    }
-    
-    ::placeholder { /* Most modern browsers support this now. */
-       color: $hcauk-dark-grey-2;
+    &-arrow,
+    &-double-arrow {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      right: 20;
     }
 
-    label { 
-        font-family: 'Brown-Std';
-        font-size: 16px;
-        line-height: 22px;      
-        font-weight: bold;
-        display:inline-block;
-        color: $hcauk-blue;
-        margin-bottom: $hcauk-spacing-10;
+    &-arrow {
+      top: 50%;
+      transform: translateY(-50%);
     }
 
-    &__optional {
-        color: $hcauk-dark-grey-2;
+    &-double-arrow {
+      display: flex;
+      flex-direction: column;
+      top: 5;
     }
-
-    &__select {
-        width: 100%;
-        text-align: left;
-
-        &-container {
-            display: flex;
-            position: relative;
-            flex-grow: 1;
-        }
-
-        &-menu.g-select__menu {
-            -webkit-appearance:none;
-            -moz-appearance: none;
-            appearance: none;
-            border-radius: 5px;
-            width: 100%;
-            padding: 10px 35px 10px 18px;
-            color: $hcauk-blue;
-            background-color: white;
-            font-size: 16px;
-            line-height: 22px;
-            background-image: inherit !important;
-            background-color: inherit !important;
-            background-position: inherit !important;
-            background-repeat: inherit !important;
-            background-size: inherit !important;
-        }
-
-        &-arrow, 
-        &-double-arrow {
-            position: absolute;
-            z-index: 1;
-            pointer-events: none;
-            right: 20px;
-        }
-
-        &-arrow {
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -ms-transform: translateY(-50%); /* Only for graceful degradation in IE9, cannot be transitioned */
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        &-double-arrow {
-            display: flex;
-            flex-direction: column;
-            top: 5px;
-        }
-    }
+  }
 }
