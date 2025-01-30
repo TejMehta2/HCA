@@ -24,11 +24,13 @@
     height: 60;
   }
 
+  /* stylelint-disable  selector-pseudo-element-no-unknown */
   ::input-placeholder {
     /* WebKit, Blink, Edge */
     color: $hcauk-dark-grey-2;
   }
 
+  /* stylelint-disable  selector-pseudo-class-no-unknown */
   :placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: $hcauk-dark-grey-2;
@@ -46,18 +48,8 @@
     color: $hcauk-dark-grey-2;
   }
 
-  ::input-placeholder {
-    /* Microsoft Edge */
-    color: $hcauk-dark-grey-2;
-  }
-
-  ::placeholder {
-    /* Most modern browsers support this now. */
-    color: $hcauk-dark-grey-2;
-  }
-
   label {
-    font-family: Brown-Std;
+    font-family: Brown-Std, sans-serif;
     font-size: 16;
     line-height: 22;
     font-weight: bold;
@@ -80,6 +72,7 @@
       flex-grow: 1;
     }
 
+    /* stylelint-disable selector-class-pattern */
     &-menu.g-select__menu {
       appearance: none;
       border-radius: 5;

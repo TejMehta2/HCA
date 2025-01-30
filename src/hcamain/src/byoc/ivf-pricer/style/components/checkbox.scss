@@ -33,6 +33,7 @@
   }
 
   /* checkbox aspect */
+  /* stylelint-disable  selector-pseudo-class-no-unknown */
   [type='checkbox']:not(:checked) + label::before,
   [type='checkbox']:checked + label::before {
     content: '';
@@ -45,7 +46,7 @@
     background: $hcauk-white;
     z-index: 1;
     transition: 0.2s all ease-out;
-    @extend .vertical-aligned;
+    @extend %vertical-aligned;
   }
 
   // &--error {
@@ -82,10 +83,11 @@
     left: 4;
     margin-top: 3;
     z-index: 1;
-    @extend .vertical-aligned;
+    @extend %vertical-aligned;
   }
 
   /* checked mark aspect changes */
+  /* stylelint-disable no-descending-specificity */
   [type='checkbox']:not(:checked) + label::after {
     opacity: 0;
   }
