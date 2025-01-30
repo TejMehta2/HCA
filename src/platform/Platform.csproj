@@ -72,6 +72,7 @@
     <Content Include="App_Config\Include\poweshell.config" />
     <Content Include="App_Config\Include\Sitecore.Publishing.config" />
     <Content Include="App_Config\Include\Sitecore.LinkManager.config" />
+    <Content Include="App_Config\Include\Sitecore.Thumbnails.config" />
     <None Include="App_Config\Include\Sitecore.Media.config" />
     <Content Include="App_Data\Xdts\Web.config.xdt" />
     <None Include="Platform.wpp.targets" />
