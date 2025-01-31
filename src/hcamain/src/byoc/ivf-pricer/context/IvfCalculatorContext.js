@@ -11,18 +11,23 @@ const IvfCalculatorContextProvider = ({ children }) => {
   const [cycleTypeVal, setCycleTypeVal] = useState('');
   const [protocolType, setProtocolType] = useState('');
   const [stimulationDrug, setStimulationDrug] = useState('');
+  const [stimulationDrug2, setStimulationDrug2] = useState('');
   const [startingDose, setStartingDose] = useState('');
+  const [startingDose2, setStartingDose2] = useState('');
   const [blastocystCulture, setBlastocystCulture] = useState('');
   const [adjuvants, setAdjuvants] = useState([]);
   const [adjuvantsValuesPrint, setAdjuvantsValuesPrint] = useState([]);
   const [selectedDrugValue, setSelectedDrugValue] = useState('');
+  const [selectedDrugValue2, setSelectedDrugValue2] = useState('');
   // helpers variables
   const [isDisabled, setIsDisabled] = useState(true);
   const [totalCost, setTotalCost] = useState(0);
   // conditional variables to show fields
   const [isProtocolType, setIsProtocolType] = useState(false);
   const [isStartingDrug, setIsStartingDrug] = useState(false);
+  const [isStartingDrug2, setIsStartingDrug2] = useState(false);
   const [isStimulationDrug, setIsStimulationDrug] = useState(false);
+  const [isStimulationDrug2, setIsStimulationDrug2] = useState(false);
   const [isBlastocyst, setIsBlastocyst] = useState(false);
   const [isAdjuvants, setIsAdjuvants] = useState(false);
   // eslint-disable-next-line
@@ -51,8 +56,10 @@ const IvfCalculatorContextProvider = ({ children }) => {
   const [cycleTypeLabel, setCycleTypeLabel] = useState('');
   const [blastocystCultureLabel, setBlastocystCultureLabel] = useState('');
   const [startingDoseLabel, setStartingDoseLabel] = useState('');
+  const [startingDoseLabel2, setStartingDoseLabel2] = useState('');
   const [protocolTypeLabel, setProtocolTypeLabel] = useState('');
   const [stimulationDrugLabel, setStimulationDrugLabel] = useState('');
+  const [stimulationDrugLabel2, setStimulationDrugLabel2] = useState('');
   const [adjuvantsLabel, setAdjuvantsLabel] = useState('');
   const [drugPriceLabel, setDrugPriceLabel] = useState('');
   const [calculateButtonLabel, setCalculateButtonLabel] = useState('');
@@ -1701,8 +1708,12 @@ const IvfCalculatorContextProvider = ({ children }) => {
       response.data?.Label?.BlastocystCulture?.Label || ''
     );
     setStartingDoseLabel(response.data?.Label?.StartingDose?.Label || '');
+    setStartingDoseLabel2(response.data?.Label?.StartingDose?.Label || '');
     setProtocolTypeLabel(response.data?.Label?.ProtocolType?.Label || '');
     setStimulationDrugLabel(response.data?.Label?.StimulationDrug?.Label || '');
+    setStimulationDrugLabel2(
+      response.data?.Label?.StimulationDrug?.Label || ''
+    );
     setAdjuvantsLabel(response.data?.Label?.Adjuvants?.Label || '');
     setDrugPriceLabel(response.data?.Label?.DrugPrice?.Label || '');
     setCalculateButtonLabel(response.data?.Label?.CalculateButton?.Label || '');
@@ -1729,8 +1740,12 @@ const IvfCalculatorContextProvider = ({ children }) => {
         setProtocolType,
         stimulationDrug,
         setStimulationDrug,
+        stimulationDrug2,
+        setStimulationDrug2,
         startingDose,
         setStartingDose,
+        startingDose2,
+        setStartingDose2,
         blastocystCulture,
         setBlastocystCulture,
         adjuvants,
@@ -1773,6 +1788,8 @@ const IvfCalculatorContextProvider = ({ children }) => {
         setCycleCost,
         selectedDrugValue,
         setSelectedDrugValue,
+        selectedDrugValue2,
+        setSelectedDrugValue2,
         adjuvantsValuesPrint,
         setAdjuvantsValuesPrint,
         introPDF,
@@ -1780,16 +1797,22 @@ const IvfCalculatorContextProvider = ({ children }) => {
         cycleTypeLabel,
         blastocystCultureLabel,
         startingDoseLabel,
+        startingDoseLabel2,
         protocolTypeLabel,
         stimulationDrugLabel,
+        stimulationDrugLabel2,
         adjuvantsLabel,
         drugPriceLabel,
         calculateButtonLabel,
         errorData,
         isStartingDrug,
         setIsStartingDrug,
+        isStartingDrug2,
+        setIsStartingDrug2,
         isStimulationDrug,
         setIsStimulationDrug,
+        isStimulationDrug2,
+        setIsStimulationDrug2,
         isBlastocyst,
         setIsBlastocyst,
         isAdjuvants,
