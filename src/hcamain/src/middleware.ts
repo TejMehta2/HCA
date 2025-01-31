@@ -17,7 +17,11 @@ export default async function (req: NextRequest, ev: NextFetchEvent) {
   const url = req.nextUrl.clone();
   const pathname = url.pathname.toLowerCase();
   //console.log('pathname', pathname);
-  if (pathname.startsWith('/finder') || pathname.startsWith('/payment'))
+  if (
+    pathname.startsWith('/finder') ||
+    pathname.startsWith('/payment') ||
+    pathname.startsWith('/ivf-pricer')
+  )
     return undefined;
   else return middleware(req, ev);
 }

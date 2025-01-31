@@ -1,0 +1,91 @@
+.ivf-calculator {
+  // display: flex;
+  margin: auto;
+  padding: $hcauk-spacing-30 $hcauk-spacing-16;
+  margin-bottom: 60;
+  text-align: left;
+  max-width: 1200;
+
+  @include breakpoint(md-above) {
+    padding: $hcauk-spacing-30;
+  }
+
+  &-intro {
+    font-family: Brown-Std, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18;
+    line-height: 25;
+    color: $hcauk-navy;
+    margin: 0;
+    margin-bottom: $hcauk-spacing-30;
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include breakpoint(lg-above) {
+      flex-direction: row;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex: inherit;
+    width: 100%;
+    padding-right: 0;
+
+    @include breakpoint(lg-above) {
+      flex: 1;
+      padding-right: 100;
+    }
+
+    form {
+      width: 100%;
+    }
+  }
+
+  &__estimated-cost {
+    padding: $hcauk-spacing-30 0;
+
+    &-summary {
+      p {
+        margin: 0;
+        margin-bottom: 10;
+      }
+    }
+
+    &-details {
+      margin-bottom: 30;
+    }
+  }
+
+  &__loader {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    margin: 20 0;
+
+    &-content {
+      margin-top: 10%;
+
+      img {
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+
+  h1 {
+    font-family: Brown-Std, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28;
+    line-height: 36;
+    color: $hcauk-navy;
+    margin: 0;
+    margin-bottom: $hcauk-spacing-18;
+  }
+}

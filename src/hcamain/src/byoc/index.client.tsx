@@ -28,3 +28,25 @@ const ClientsideComponent = (props: FEAAS.ExternalComponentProps) =>
  * - Be implemented as web components.
  */
 export default ClientsideComponent;
+
+/**
+ * Add imports to BYOC components that you would like to be rendered on server below.
+ * Clientside components are used for user interactivity.
+ * https://github.com/Sitecore/feaas-nextjs-example
+ */
+
+// Clientside-only component
+import './ExampleClientsideComponent';
+
+// Component that can be rendered both on client and server
+import './ExampleHybridComponent';
+
+// Component that has separate implementation for clientside
+import './ExampleSwappedComponent.client';
+
+// Serverside component that contains another clientside component
+import './ExampleAugmentedComponent';
+
+/************* HCA ********************/
+// root of the IVF pricing calculator app
+import './ivf-pricer/IVFApp';
