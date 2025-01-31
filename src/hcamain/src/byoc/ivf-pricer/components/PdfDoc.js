@@ -278,20 +278,20 @@ const PdfDoc = (props) => {
                     <Text style={styles.description}>{props.cycleNotes}</Text>
                 </View>
 
-                {/* Protocol Type row */}
-                <View style={styles.row}>
-                    <Text style={styles.label}>{props.pdfTableItem2Heading}</Text>
-                    <Text style={styles.selection}>{props.protocolType}</Text>
-                    <Text style={styles.cost}>£{props.protocolTypeCost}</Text>
-                    <Text style={styles.description}>{props.protocolNotes}</Text>
-                </View>
-
                 {/* Blastocyst Culture row */}
                 <View style={styles.row}>
                     <Text style={styles.label}>{props.pdfTableItem3Heading}</Text>
                     <Text style={styles.selection}>{props.blastocystCulture}</Text>
                     <Text style={styles.cost}>£{props.blastocystCultureCost}</Text>
                     <Text style={styles.description}>{props.blastocystCultureNotes}</Text>
+                </View>
+
+                {/* Protocol Type row */}
+                <View style={styles.row}>
+                    <Text style={styles.label}>{props.pdfTableItem2Heading}</Text>
+                    <Text style={styles.selection}>{props.protocolType}</Text>
+                    <Text style={styles.cost}>£{props.protocolTypeCost}</Text>
+                    <Text style={styles.description}>{props.protocolNotes}</Text>
                 </View>
 
                 {/* Adjuvants row */}

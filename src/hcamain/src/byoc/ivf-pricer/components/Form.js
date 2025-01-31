@@ -66,7 +66,8 @@ const Form = () => {
         setProtocolType("");
         setStimulationDrug("");
         setStartingDose("");
-        setBlastocystCulture("");
+        // HED-1660 - default charge for this
+        setBlastocystCulture("Yes");
         setAdjuvants([]);
         setCheckStatus(new Array(Object.keys(costData.Adjuvants).length).fill(false));
     }
@@ -76,7 +77,10 @@ const Form = () => {
         setIsStimulationDrug(true);
         setIsStartingDrug(true);
         setIsAdjuvants(true);
-        setIsBlastocyst(true);
+        
+        // HED-1660 - default charge for this, hide field
+        setBlastocystCulture("Yes");
+        setIsBlastocyst(false);
     }
 
     const hideAllFields = () => {
@@ -108,6 +112,8 @@ const Form = () => {
             setIsStartingDrug(true);
             setIsBlastocyst(false);
             setIsAdjuvants(false);
+            // HED-1660 - don't charge for this
+            setBlastocystCulture("No");
         } else if (e.target.value === "EggThaw") {
             // show
             setIsBlastocyst(true);
@@ -124,6 +130,8 @@ const Form = () => {
             setIsStimulationDrug(false);
             setIsStartingDrug(false);
             setIsBlastocyst(false);
+            // HED-1660 - don't charge for this
+            setBlastocystCulture("No");
         } else {
             showAllFields();
         }
