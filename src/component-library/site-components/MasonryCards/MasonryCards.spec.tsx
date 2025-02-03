@@ -4,6 +4,7 @@ import MasonryCards from './MasonryCards';
 import { MasonryCardsProps } from './MasonryCards.types';
 
 const mockProps: MasonryCardsProps = {
+  theme: 'A-HCA-White',
   children: <p>Hello world</p>,
 };
 
