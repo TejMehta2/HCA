@@ -413,38 +413,37 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
         </Text>
       }
       link={
-        !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue.value && (
-            <a href={viewAllCta}>
-              {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value,
-                  }}
-                ></span>
-              )}
-              {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
-                <>
-                  <JssRichText
-                    tag="div"
-                    field={{
-                      value:
-                        props.fields?.data?.item?.cTALink?.jsonValue?.value
-                          ?.text || '',
+        !isExperienceEditor
+          ? props.fields?.data?.item?.cTALink?.jsonValue.value && (
+              <a href={viewAllCta}>
+                {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup
+                          ?.value,
                     }}
-                  />
-                </>
-              )}
-            </a>
-          )
-        ) : props.fields?.data?.item?.cTALink?.jsonValue?.value ? (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-          ></JssLink>
-        ) : (
-          <></>
-        )
+                  ></span>
+                )}
+                {props.fields?.data?.item?.cTALink?.jsonValue?.value?.text && (
+                  <>
+                    <JssRichText
+                      tag="div"
+                      field={{
+                        value:
+                          props.fields?.data?.item?.cTALink?.jsonValue?.value
+                            ?.text || '',
+                      }}
+                    />
+                  </>
+                )}
+              </a>
+            )
+          : props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+              <JssLink
+                field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+              ></JssLink>
+            )
       }
     >
       {patientStoriesCards}
@@ -521,12 +520,12 @@ export const SliderWithLeftText = (
           ) : (
             <></>
           )
-        ) : props.fields?.data?.item?.cTALink?.jsonValue.value ? (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-          ></JssLink>
         ) : (
-          <></>
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            ></JssLink>
+          )
         )
       }
       bodyCopy={
