@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface MasonryCardProps {
   title?: JSX.Element;
@@ -16,4 +17,5 @@ export interface MasonryCardsProps {
   children?: ReactNode | JSX.Element;
   id?: string;
   cta?: ReactNode | JSX.Element;
+  theme: Theme;
 }
