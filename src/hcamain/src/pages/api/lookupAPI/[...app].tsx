@@ -141,23 +141,35 @@ export default async function handler(
   if (error === '') {
     switch (operation) {
       case 'findbydictionary':
+      case 'findbydictionarynolegacy':
+      case 'findbydictionaryasobject':
+      case 'findbydictionaryasobjectnolegacy':
         {
           const config = await getLookupAPIConfig();
 
-          const mediaURLBase = config.aPI_Lookup_API_Media_UtilizesLegacy
-            ? config.aPI_Lookup_API_Media_LegacyBaseURL
-            : config.aPI_Lookup_API_Media_BaseURL;
+          const mediaURLBase =
+            config.aPI_Lookup_API_Media_UtilizesLegacy &&
+            operation != 'findbydictionaryasobjectnolegacy' &&
+            operation != 'findbydictionarynolegacy'
+              ? config.aPI_Lookup_API_Media_LegacyBaseURL
+              : config.aPI_Lookup_API_Media_BaseURL;
 
           //e.g. Finder---lookup-api-data.xlsx
-          const mediaFileName = config.aPI_Lookup_API_Media_UtilizesLegacy
-            ? '%20-%20Lookup%20API%20Data'
-            : '---lookup-api-data.xlsx'; // lower-cased by pipeline
+          const mediaFileName =
+            config.aPI_Lookup_API_Media_UtilizesLegacy &&
+            operation != 'findbydictionaryasobjectnolegacy' &&
+            operation != 'findbydictionarynolegacy'
+              ? '%20-%20Lookup%20API%20Data'
+              : '---lookup-api-data.xlsx'; // lower-cased by pipeline
 
-          const mediaURL = config.aPI_Lookup_API_Media_UtilizesLegacy
-            ? `${mediaURLBase}/${project}${mediaFileName}`
-            : `${mediaURLBase}/${project}${mediaFileName}`.toLowerCase();
+          const mediaURL =
+            config.aPI_Lookup_API_Media_UtilizesLegacy &&
+            operation != 'findbydictionaryasobjectnolegacy' &&
+            operation != 'findbydictionarynolegacy'
+              ? `${mediaURLBase}/${project}${mediaFileName}`
+              : `${mediaURLBase}/${project}${mediaFileName}`.toLowerCase();
 
-          //console.log('mediaURL',mediaURL);
+          console.log('mediaURL', mediaURL);
           let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
             //      https://edge.sitecorecloud.io/hcainternat0fd8-hcadigital-uat-34f6/media/Project/HCA/HCA-Main/Lookup-API/Finder---Lookup-API-Data.xlsx
@@ -216,28 +228,66 @@ export default async function handler(
                 UniqueKey += item.Key;
               }
 
-              const myValues: ValuesType = {};
-              const ret = {
-                UniqueKey: UniqueKey,
-                Key: item.Key,
-                Type: item.Type,
-                Value: item.Value,
-                Order: item.Order,
-                Values: myValues,
-              };
+              if (operation.includes('asobject')) {
+                const myValues: ValuesType = {};
+                const ret = {
+                  UniqueKey: UniqueKey,
+                  Key: item.Key,
+                  Type: item.Type,
+                  Value: item.Value,
+                  Order: item.Order,
+                  Values: myValues,
+                };
 
-              for (const [key, value] of Object.entries(item)) {
-                //console.log(`${key}: ${value}`);
-                if (
-                  key != 'Key' &&
-                  key != 'Type' // &&
-                  //key != 'Value' &&
-                  //key != 'Order'
-                ) {
-                  ret.Values[key] = value;
+                for (const [key, value] of Object.entries(item)) {
+                  //console.log(`${key}: ${value}`);
+                  if (
+                    key != 'Key' &&
+                    key != 'Type' // &&
+                    //key != 'Value' &&
+                    //key != 'Order'
+                  ) {
+                    ret.Values[key] = value;
+                  }
                 }
+
+                for (const [key, value] of Object.entries(ret)) {
+                  console.log(`${key}: ${value}`);
+                }
+                console.log(`---`);
+                const objStr: string = `
+                  "${ret['Type']}": {
+                    "${ret['Key']}": 
+                      ${JSON.stringify(ret['Values'])}
+                  }
+                `;
+                console.log(`objStr`, objStr);
+                return JSON.parse(objStr);
+                //return ret;
+              } else {
+                const myValues: ValuesType = {};
+                const ret = {
+                  UniqueKey: UniqueKey,
+                  Key: item.Key,
+                  Type: item.Type,
+                  Value: item.Value,
+                  Order: item.Order,
+                  Values: myValues,
+                };
+
+                for (const [key, value] of Object.entries(item)) {
+                  //console.log(`${key}: ${value}`);
+                  if (
+                    key != 'Key' &&
+                    key != 'Type' // &&
+                    //key != 'Value' &&
+                    //key != 'Order'
+                  ) {
+                    ret.Values[key] = value;
+                  }
+                }
+                return ret;
               }
-              return ret;
             });
           } else {
             console.warn(
