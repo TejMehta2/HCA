@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getItemFromGraphQL } from 'lib/consultant-finder/getItemFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -30,6 +31,21 @@ export async function readExcel(
 
   return data;
 }
+
+const joinObjects = (obj1: any, obj2: any) => {
+  return { ...obj1, ...obj2 };
+};
+
+const reduceToObjectWithArrays = (array: any[]) => {
+  return array.reduce((acc, item) => {
+    const key = Object.keys(item)[0];
+    if (!acc[key]) {
+      acc[key] = {};
+    }
+    acc[key] = joinObjects(acc[key], item[key]);
+    return acc;
+  }, {});
+};
 
 //Config
 interface ILookupAPIConfig {
@@ -169,7 +185,7 @@ export default async function handler(
               ? `${mediaURLBase}/${project}${mediaFileName}`
               : `${mediaURLBase}/${project}${mediaFileName}`.toLowerCase();
 
-          console.log('mediaURL', mediaURL);
+          //console.log('mediaURL', mediaURL);
           let xlData = await fetch(
             //e.g. 'https://www.hcacloud.localhost/-/media/Project/HCA/Lookup%20API/Finder%20-%20Lookup%20API%20Data'
             //      https://edge.sitecorecloud.io/hcainternat0fd8-hcadigital-uat-34f6/media/Project/HCA/HCA-Main/Lookup-API/Finder---Lookup-API-Data.xlsx
@@ -251,19 +267,16 @@ export default async function handler(
                   }
                 }
 
-                for (const [key, value] of Object.entries(ret)) {
-                  console.log(`${key}: ${value}`);
-                }
-                console.log(`---`);
+                // object as string
                 const objStr: string = `
-                  "${ret['Type']}": {
+                  {"${ret['Type']}": {
                     "${ret['Key']}": 
                       ${JSON.stringify(ret['Values'])}
+                    }
                   }
                 `;
-                console.log(`objStr`, objStr);
+                //console.log(`objStr`, objStr);
                 return JSON.parse(objStr);
-                //return ret;
               } else {
                 const myValues: ValuesType = {};
                 const ret = {
@@ -289,6 +302,12 @@ export default async function handler(
                 return ret;
               }
             });
+
+            // if we are working with objects, then we need to flatten the data and group by top level property name
+            if (operation.includes('asobject')) {
+              output = reduceToObjectWithArrays(output);
+              //console.log(output);
+            }
           } else {
             console.warn(
               `error processing xl file ${mediaURLBase}/${project}${mediaFileName}`,
@@ -299,6 +318,7 @@ export default async function handler(
         break;
     }
   }
+
   if (revalidate.now() || revalidate.noCache()) {
     res.appendHeader('Cache-Control', 'no-cache');
     res.appendHeader('CDN-Cache-Control', 'no-cache');

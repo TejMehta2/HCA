@@ -384,7 +384,7 @@ const PdfDoc = (props) => {
           </Text>
           {/* Show header if there is further information */}
           {props.pdfFurtherInformationBody !== null &&
-            props.pdfFurtherInformationBody.length > 0 && (
+            props.pdfFurtherInformationBody?.length > 0 && (
               <Text style={styles.colHeader}>
                 {props.pdfFurtherInformationHeading}
               </Text>
