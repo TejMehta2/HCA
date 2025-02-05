@@ -67,7 +67,7 @@ Languages:
               p:after="r[@uid='{F80FDCF6-176D-450F-ABA2-93119F2B2234}']"
               s:ds="local:/Page Data/5 Content Cards"
               s:id="{AC60B8AC-0C52-4E61-B997-7A98BD3DBFA9}"
-              s:par="Columns&amp;ExcludeFromTableOfContents&amp;HeadingTag=h1&amp;HeadingSize=display-3&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BAD62902D-C624-43FA-932A-D64F9E0933CB%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4&amp;KeepAspectRatio=1"
+              s:par="Columns&amp;DisableHeadersToggle&amp;HeadingTag=h1&amp;HeadingSize=display-3&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BAD62902D-C624-43FA-932A-D64F9E0933CB%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4&amp;KeepAspectRatio=1"
               s:ph="headless-main" />
             <r
               uid="{FB438AC5-642E-48A9-9FFE-31E28827EBDE}"
@@ -90,14 +90,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "86cebc4b-6aa2-4b20-9b20-cc456c89c0a5"
+      Value: "e843f73a-c840-4a18-bea6-2383c0b4cc3a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250116T171532Z
+      Value: 20250203T180914Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Content Cards Masonry
