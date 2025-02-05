@@ -24,8 +24,9 @@ FEAAS.registerComponent(IVFApp, {
   title: 'IVF Pricing Calculator',
   description: 'IVF pricing calculator app for Lister fertility',
   thumbnail:
-    'https://feaasstatic.blob.core.windows.net/assets/thumbnails/byoc.svg',
-  group: 'HCA-Configuration',
+    'https://feaasstatic.blob.core.windows.net/assets/thumbnails/byoc.svg', ///static/legacy/assets/images/ivfcalcprecalc.jpg
+    /*
+  group: 'IVF-Pricing-App-Parameters',
   required: ['firstName'],
   properties: {
     firstName: {
@@ -56,5 +57,6 @@ FEAAS.registerComponent(IVFApp, {
       'ui:widget': 'radio',
     },
   },
+*/
 });
 

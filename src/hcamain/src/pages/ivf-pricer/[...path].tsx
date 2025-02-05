@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-css-tags */
-// Specific page to partner with the finder (non profile) pages
+// Specific page to partner with the ivf pricing calculator
+// We are using this page to host Sitecore XMC's BYOC to re-house the original IVF React app - see https://github.com/Sitecore/feaas-nextjs-example/tree/main/app/byoc
 // Delegation from the top level [[...path]] via an exception regex change to middleware.ts
 // Based on https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/information-architecture/wildcard-pages
 // not using SSG on these frames as they have dynamic data and rendering
@@ -7,6 +8,10 @@
 
 import { useEffect } from 'react';
 import { GetServerSidePropsContext } from 'next';
+import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
+import Layout from 'src/Layout';
+import useRouteChange from '@component-library/hooks/useRouteChange';
+import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';
 import {
   RenderingType,
   SitecoreContext,
@@ -21,13 +26,14 @@ import NotFound from 'src/NotFound';
 import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
 import { PageRouteMetadata } from 'components/Metadata/Metadata';
 import Head from 'next/head';
-import IVFApp from 'src/byoc/ivf-pricer/IVFApp';
 
 const SitecorePage = ({
   notFound,
   componentProps,
   layoutData,
+  headLinks,
 }: SitecorePageProps): JSX.Element => {
+  const { isRouteChanging } = useRouteChange();
   useCustomTracking();
   useEffect(() => {
     // Since Sitecore editors do not support Fast Refresh, need to refresh editor chromes after Fast Refresh finished
@@ -56,7 +62,7 @@ const SitecorePage = ({
   return (
     <div>
       <Head>
-        <meta name="robots" content={`${follow}, ${index}`} key="robots3" />
+        <meta name="robots" content={`${follow}, ${index}`} key="robots2" />
         {hideFromWebsiteSearch?.value && (
           <meta
             name="hideFromWebsiteSearch"
@@ -86,7 +92,10 @@ const SitecorePage = ({
               rendering={layoutData.sitecore.route}
             />
           ) : (
-            <IVFApp></IVFApp>
+            <ConsultantFinderContextProvider>
+              {isRouteChanging && <RedirectOverlay></RedirectOverlay>}
+              <Layout layoutData={layoutData} headLinks={headLinks} />
+            </ConsultantFinderContextProvider>
           )}
         </SitecoreContext>
       </ComponentPropsContext>
@@ -101,7 +110,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (context.params) {
     // e.g. context.params { path: [ 'Step-Locationss' ] }
     context.params.requestPath = context.params.path;
-    context.params.path = [`ivf-candidate/${context.params.path}/`];
+    context.params.path = [`ivf-pricer/${context.params.path}/`];
   }
 
   const props = await sitecorePagePropsFactory.create(context);
