@@ -1,0 +1,23 @@
+﻿---
+ID: "5c44e245-1545-438f-a644-50f3b8b8579a"
+Parent: "df80c193-11e4-49bb-8879-2caf3858ac06"
+Template: "df80c193-11e4-49bb-8879-2caf3858ac06"
+Path: /sitecore/templates/Project/HCA/Business/Facility/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120136Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3c3a956a-9a85-4dbe-a38c-f0eafbc1ffd3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120136Z

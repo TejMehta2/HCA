@@ -1,0 +1,23 @@
+﻿---
+ID: "9dd6f068-fe1e-4fe7-97ac-0dd6ef71b428"
+Parent: "69d56d52-519d-4ef5-80a2-5fccbd1d3ab3"
+Template: "69d56d52-519d-4ef5-80a2-5fccbd1d3ab3"
+Path: /sitecore/templates/Project/HCA/Business/Subspecialty/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120137Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b07e5dc-d809-4a15-be59-c1fc99268a46"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120137Z

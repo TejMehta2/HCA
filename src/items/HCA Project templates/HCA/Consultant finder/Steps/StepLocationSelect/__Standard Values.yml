@@ -1,0 +1,23 @@
+﻿---
+ID: "3c1fca90-71f5-4b53-a26a-91a93aac9b98"
+Parent: "ae1dbc24-06a0-42f6-a7d7-9bfce03a7853"
+Template: "ae1dbc24-06a0-42f6-a7d7-9bfce03a7853"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLocationSelect/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120148Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d196260e-4bcc-497b-95fa-fbe4b91427cb"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120148Z

@@ -1,0 +1,23 @@
+﻿---
+ID: "46078f14-810c-44b9-8f13-91cb26fb1807"
+Parent: "45c220a6-7dea-46ac-983c-66f6967af34e"
+Template: "45c220a6-7dea-46ac-983c-66f6967af34e"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Data/ConditionDataItem/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120150Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c62ede7f-f468-42f9-8116-f6bd6e691c1d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120150Z

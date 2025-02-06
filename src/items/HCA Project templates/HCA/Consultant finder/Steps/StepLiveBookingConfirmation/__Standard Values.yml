@@ -1,0 +1,23 @@
+﻿---
+ID: "88a5fb76-2956-456b-a6fd-a4fd4d8aaef1"
+Parent: "a7f670f8-482c-4d28-8fb5-bb582e3afffa"
+Template: "a7f670f8-482c-4d28-8fb5-bb582e3afffa"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepLiveBookingConfirmation/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120148Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e222988e-fa13-4766-b210-e89fe2fdb73e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120148Z

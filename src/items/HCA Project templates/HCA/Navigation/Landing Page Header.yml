@@ -15,7 +15,7 @@ SharedFields:
   Value: 200
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: 
+  Value: "{9AD898EA-4843-48E4-A78B-8444843406CD}"
 Languages:
 - Language: en
   Versions:
@@ -34,11 +34,11 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "26ace683-54ad-4727-ac2a-0825e121c647"
+      Value: "35fcf162-a969-4fb3-8b44-13ce8780229e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240520T100158Z
+      Value: 20250206T120154Z

@@ -1,0 +1,23 @@
+﻿---
+ID: "fd512837-38b4-4cb8-a506-53a0b386d324"
+Parent: "9069a668-fc8d-4fcf-902c-55c18743aa88"
+Template: "9069a668-fc8d-4fcf-902c-55c18743aa88"
+Path: /sitecore/templates/Project/HCA/Pages/Diagnosis Page/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120133Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "592530f0-4ef9-4d1e-9019-f0c00702cecf"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120133Z

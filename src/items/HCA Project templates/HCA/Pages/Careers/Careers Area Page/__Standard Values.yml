@@ -1,0 +1,27 @@
+﻿---
+ID: "a188ab2e-d6fe-4a88-9a87-b448588dadc0"
+Parent: "d0f1c465-a581-4b02-8449-c86227a4e472"
+Template: "d0f1c465-a581-4b02-8449-c86227a4e472"
+Path: /sitecore/templates/Project/HCA/Pages/Careers/Careers Area Page/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120132Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e439a507-df38-4052-b759-c1ba90173054"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120132Z

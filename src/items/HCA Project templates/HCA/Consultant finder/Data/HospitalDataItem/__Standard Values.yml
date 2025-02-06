@@ -1,0 +1,23 @@
+﻿---
+ID: "f0958efc-d723-4f5e-bbc8-2df125a6c0bf"
+Parent: "333d6b68-61d7-43c1-8c2d-b685b7401378"
+Template: "333d6b68-61d7-43c1-8c2d-b685b7401378"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Data/HospitalDataItem/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120151Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b2872c35-d483-4734-b0ad-50ca713a9b76"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120151Z

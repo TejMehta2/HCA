@@ -1,0 +1,23 @@
+﻿---
+ID: "9b4a1ff0-f171-417e-b325-6d12b17dd6b9"
+Parent: "d0134881-a2b6-468d-b327-dd6e24ef9d4a"
+Template: "d0134881-a2b6-468d-b327-dd6e24ef9d4a"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepSearchConsultant/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120145Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "21d7f2b0-8df7-4b0a-9ead-c9c5e7f46d5b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120145Z

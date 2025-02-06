@@ -1,0 +1,31 @@
+﻿---
+ID: "30ca2cbf-2d92-4106-8ede-4e0f51898e9f"
+Parent: "bf0c1417-b355-41c6-b5ee-3989b505b21f"
+Template: "bf0c1417-b355-41c6-b5ee-3989b505b21f"
+Path: /sitecore/templates/Project/HCA/Consultant finder/APICalls/API_Details_DoctifyPatientReviews/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120142Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a7ff64df-02a5-4329-8e3a-19c0d08fe9d3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120142Z

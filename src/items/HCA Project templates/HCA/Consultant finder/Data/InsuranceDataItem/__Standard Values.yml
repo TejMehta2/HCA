@@ -1,0 +1,23 @@
+﻿---
+ID: "300a4872-7537-406e-b5cf-37b8766239d6"
+Parent: "1c6be35a-88d6-45d0-885e-2c3a27545a48"
+Template: "1c6be35a-88d6-45d0-885e-2c3a27545a48"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Data/InsuranceDataItem/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120150Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d9a8ffa3-b35c-4e7f-a25a-7468df3facef"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120150Z

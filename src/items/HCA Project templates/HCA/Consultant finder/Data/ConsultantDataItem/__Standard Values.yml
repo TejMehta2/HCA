@@ -1,0 +1,23 @@
+﻿---
+ID: "2052d721-6297-4760-96b7-7d32c2dda3bb"
+Parent: "44a8b316-211e-47ee-a7d1-88e67afb6107"
+Template: "44a8b316-211e-47ee-a7d1-88e67afb6107"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Data/ConsultantDataItem/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120151Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9fe57abf-21b3-446a-825d-bd61cd2bcb46"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120151Z

@@ -1,0 +1,23 @@
+﻿---
+ID: "44fffa8f-abd2-415a-953d-5560d8875067"
+Parent: "d1c57aef-be56-4114-8f97-6badc92c57f4"
+Template: "d1c57aef-be56-4114-8f97-6badc92c57f4"
+Path: /sitecore/templates/Project/HCA/Consultant finder/Steps/StepEnquireForm/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250206T120147Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f058d6ee-88a0-4cfb-8e0a-08fb0bda7410"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250206T120147Z
