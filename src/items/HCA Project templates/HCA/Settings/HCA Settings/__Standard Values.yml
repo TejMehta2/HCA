@@ -1,18 +1,8 @@
 ﻿---
-ID: "578da42e-7ad5-4ded-8d1d-ee1d7750d6a2"
-Parent: "c708fca8-6103-479a-a132-cf7316c0ee21"
-Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/Settings/HCA Settings
-SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: office/32x32/gearwheel.png
-- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
-  Hint: __Base template
-  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
-- ID: "f7d48a55-2158-4f02-9356-756654404f73"
-  Hint: __Standard values
-  Value: "{58F5E3DE-3EEF-4C3D-8060-09FAC88F7133}"
+ID: "58f5e3de-3eef-4c3d-8060-09fac88f7133"
+Parent: "578da42e-7ad5-4ded-8d1d-ee1d7750d6a2"
+Template: "578da42e-7ad5-4ded-8d1d-ee1d7750d6a2"
+Path: /sitecore/templates/Project/HCA/Settings/HCA Settings/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -20,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240521T144902Z
+      Value: 20250206T113815Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,7 +21,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "ea6656c1-a381-4366-a900-2adf6f4abbb3"
+      Value: "85997384-5f68-43ee-8f94-2d9513e92240"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
