@@ -1,6 +1,13 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
 
+/* dummy code for mock previous component */
+.dummy-component {
+  background-color: $teal-100;
+  width: 100%;
+  height: 1200px;
+}
+
 .wrapper {
   background-color: var(--background);
   color: var(--text);

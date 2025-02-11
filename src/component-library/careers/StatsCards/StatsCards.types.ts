@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface StatProps {
-  stat: ReactNode | JSX.Element;
-  text: ReactNode | JSX.Element;
+  stat: string;
+  text: string;
 }
 
 export interface StatsCardsProps {
