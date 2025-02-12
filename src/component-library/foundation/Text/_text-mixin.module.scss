@@ -250,3 +250,15 @@ $bold-font-weight: 700;
 
   font-weight: $bold-font-weight;
 }
+
+@mixin apply-decorative {
+  font-family: cursive;
+  font-size: px-to-rem(80);
+  @include media(screen-l) {
+    font-size: px-to-rem(127);
+  }
+
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 400;
+}
