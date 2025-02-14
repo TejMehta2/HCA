@@ -79,7 +79,7 @@ SharedFields:
   Value: "{AF892FFA-191D-4FF1-B332-37E53BDC615D}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Latest Vacancies Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Latest Vacancies Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Careers Latest Vacancies Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Careers Latest Vacancies Folder']|query:./*[@@templatename='Page Data']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -136,14 +136,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d76aa135-c819-4eb0-9f0f-329f9c24c06c"
+      Value: "82d695fb-ed44-4433-bf4b-e321c31a5b4d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241121T151154Z
+      Value: 20250214T172637Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
