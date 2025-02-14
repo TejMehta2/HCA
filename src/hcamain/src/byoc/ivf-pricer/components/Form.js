@@ -514,7 +514,7 @@ const Form = () => {
         cycleTypeAdditionalDrugNotes2 = '';
       }
     }
-    console.log('cycle Type Additional Drug Notes 2 -->', cycleTypeAdditionalDrugNotes2);
+    //console.log('cycle Type Additional Drug Notes 2 -->', cycleTypeAdditionalDrugNotes2);
     setCycleTypeAdditionalDrugNotes2(cycleTypeAdditionalDrugNotes2);
 
     // protocol notes
