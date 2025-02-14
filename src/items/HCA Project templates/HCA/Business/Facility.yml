@@ -13,9 +13,6 @@ SharedFields:
     {7C939055-87B4-4806-81C4-FEB962BD3E01}
     {DDE07725-B365-4244-8D3C-4DFEA59A3C67}
     {8353F008-2F21-4B23-A69F-3AA813B50DF5}
-- ID: "f7d48a55-2158-4f02-9356-756654404f73"
-  Hint: __Standard values
-  Value: "{5C44E245-1545-438F-A644-50F3B8B8579A}"
 Languages:
 - Language: en
   Versions:
@@ -34,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8c4bedfc-64e8-45ca-aace-20e45afafd14"
+      Value: "e63a0180-dbb4-416b-829e-0f6864dd534a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250206T120136Z
+      Value: 20240811T184127Z

@@ -9,9 +9,6 @@ SharedFields:
   Value: |
     {1930BBEB-7805-471A-A3BE-4858AC7CF696}
     {5E92FA76-95C6-4133-B5FF-2E46C867B9D7}
-- ID: "f7d48a55-2158-4f02-9356-756654404f73"
-  Hint: __Standard values
-  Value: "{46078F14-810C-44B9-8F13-91CB26FB1807}"
 Languages:
 - Language: en
   Versions:
@@ -30,11 +27,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1f6e3144-4bf2-4a5e-893c-a6418bc7ecbb"
+      Value: "ac6fc5d4-0cf0-4874-8396-197b54a17604"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250206T120150Z
+      Value: 20240125T092017Z
