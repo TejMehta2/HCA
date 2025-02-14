@@ -45,12 +45,16 @@ const Form = () => {
     setProtocolNotes,
     setCycleNotes,
     setCycleTypeAdditionalDrugNotes,
+    setCycleTypeAdditionalDrugNotes2,
     setBlastocystCultureNotes,
     setAdjuvantsNotes,
     setSelectedDrugNotes,
+    setSelectedDrugNotes2,
     setSelectedDrugValue,
     setSelectedDrugValue2,
     setCycleCost,
+    setDrug1Cost,
+    setDrug2Cost,
     setAdjuvantsValuesPrint,
     calculatorHeading,
     cycleTypeLabel,
@@ -455,14 +459,16 @@ const Form = () => {
           costData['CyclePrice'][
             stimulationDrug2 + protocolType + startingDose2
           ].Value;
-        console.log('cycle price 2', cyclePrice2);
-        console.log('selected drug value 2', selectedDrugValue2);
+        //console.log('cycle price 2', cyclePrice2);
+        //console.log('selected drug value 2', selectedDrugValue2);
       } catch (e) {
         setError('cycle price not in lookup table!');
         // console.log("cycle price not in lookup table!");
       }
     }
-    setCycleCost(cyclePrice + cyclePrice2 + additionalProtocolDrugCost);
+    setDrug1Cost(cyclePrice + additionalProtocolDrugCost);
+    setDrug2Cost(cyclePrice2);
+    setCycleCost(cyclePrice + additionalProtocolDrugCost + cyclePrice2);
     setSelectedDrugValue(selectedDrugValue);
     setSelectedDrugValue2(selectedDrugValue2);
 
@@ -499,6 +505,18 @@ const Form = () => {
     //console.log('cycle Type Additional Drug Notes -->', cycleTypeAdditionalDrugNotes);
     setCycleTypeAdditionalDrugNotes(cycleTypeAdditionalDrugNotes);
 
+    // cycle type additional drug notes
+    let cycleTypeAdditionalDrugNotes2 = '';
+    if (cycleTypeVal.length > 0) {
+      cycleTypeAdditionalDrugNotes2 =
+        costData['CycleType'][cycleTypeVal].AdditionalDrugNotes;
+      if (cycleTypeAdditionalDrugNotes === null) {
+        cycleTypeAdditionalDrugNotes2 = '';
+      }
+    }
+    console.log('cycle Type Additional Drug Notes 2 -->', cycleTypeAdditionalDrugNotes2);
+    setCycleTypeAdditionalDrugNotes2(cycleTypeAdditionalDrugNotes2);
+
     // protocol notes
     let protocolNotesCalc = '';
     if (protocolType.length > 0) {
@@ -522,6 +540,18 @@ const Form = () => {
     }
     // console.log('selected drugs notes -->', drugNotes);
     setSelectedDrugNotes(drugNotes);
+
+    // drug notes 2
+    var drugNotes2 = '';
+    if (startingDose2.length > 0) {
+      if (drugNotes2 === null) {
+        drugNotes2 = '';
+      } else {
+        drugNotes2 = costData['StartingDose'][startingDose2].Notes;
+      }
+    }
+    //console.log('selected drugs notes 2 -->', drugNotes2);
+    setSelectedDrugNotes2(drugNotes2);
 
     // blastocyst culture notes
     let blastocystCultureNotes = '';
