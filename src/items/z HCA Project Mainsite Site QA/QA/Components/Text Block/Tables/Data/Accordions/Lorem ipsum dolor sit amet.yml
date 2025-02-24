@@ -1,0 +1,83 @@
+﻿---
+ID: "5d6dd762-75b0-47ab-9a7c-370f1bf861e4"
+Parent: "f36d1d52-d894-4b31-a5f1-090cc672620a"
+Template: "cd6a159d-8577-4dbe-8c30-689449a15e5e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block/Tables/Data/Accordions/Lorem ipsum dolor sit amet"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "1d63eaee-6a20-4bd9-894d-9902c8fdd2d0"
+      Hint: Answer
+      Value: |
+        <p>Fusce hendrerit mattis ipsum, a sollicitudin nunc consequat id. Praesent dignissim odio ligula, non dictum augue sagittis iaculis. Fusce ut iaculis augue. Aliquam in mauris placerat, semper libero nec, rhoncus purus. Suspendisse pretium felis a tempor condimentum. Integer pellentesque facilisis mauris, ut auctor felis imperdiet nec. Mauris varius congue convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer euismod nisl vitae quam viverra, quis dapibus dui finibus. Suspendisse ac nibh ligula.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                    <td>£150</td>
+                </tr>
+                <tr>
+                    <td>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                    <td>£120</td>
+                </tr>
+                <tr>
+                    <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</td>
+                    <td>£180</td>
+                </tr>
+                <tr>
+                    <td>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</td>
+                    <td>£90</td>
+                </tr>
+                <tr>
+                    <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</td>
+                    <td>£200</td>
+                </tr>
+                <tr>
+                    <td>Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet.</td>
+                    <td>£110</td>
+                </tr>
+                <tr>
+                    <td>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</td>
+                    <td>£135</td>
+                </tr>
+                <tr>
+                    <td>Et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</td>
+                    <td>£160</td>
+                </tr>
+            </tbody>
+        </table>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250224T130745Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fb16f30d-4f70-41c6-a50a-ee0bc933d8bb"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250224T131621Z
+    - ID: "e1aec2c8-0955-4e5a-8d5f-d811854bf894"
+      Hint: Question
+      Value: Lorem ipsum dolor sit amet
