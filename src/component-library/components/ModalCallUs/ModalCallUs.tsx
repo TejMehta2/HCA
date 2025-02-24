@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { Contact, ModalCallUsProps } from './ModalCallUs.types';
 import styles from './ModalCallUs.module.scss';
 import Modals from '../Modals/Modals';
-import Themes from '../../foundation/Themes/Themes';
 import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
 import Button from '../../core-components/Button/Button';
