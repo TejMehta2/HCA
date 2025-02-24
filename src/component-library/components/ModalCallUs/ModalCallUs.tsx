@@ -60,29 +60,27 @@ const ModalCallUs = (
   );
 
   return (
-    <Themes theme={'D-HCA-Teal'}>
-      <Modals ref={ref} defaultOpen={defaultOpen} contentVariation="call">
-        <div className={styles['modal-contact-us']}>
-          <div className={styles.main}>
-            {contacts?.length > 0 && (
-              <Contact contact={contacts[0]} isMain={true} />
-            )}
-          </div>
-          {contacts?.length > 1 && (
-            <div className={styles.background}>
-              <div className={styles.additional}>
-                {contacts.slice(1).map((contact, index) => (
-                  <React.Fragment key={index}>
-                    <hr />
-                    <Contact contact={contact} />
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+    <Modals ref={ref} defaultOpen={defaultOpen} contentVariation="call">
+      <div className={styles['modal-contact-us']}>
+        <div className={styles.main}>
+          {contacts?.length > 0 && (
+            <Contact contact={contacts[0]} isMain={true} />
           )}
         </div>
-      </Modals>
-    </Themes>
+        {contacts?.length > 1 && (
+          <div className={styles.background}>
+            <div className={styles.additional}>
+              {contacts.slice(1).map((contact, index) => (
+                <React.Fragment key={index}>
+                  <hr />
+                  <Contact contact={contact} />
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </Modals>
   );
 };
 
