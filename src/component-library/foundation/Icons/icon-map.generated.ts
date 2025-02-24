@@ -40,6 +40,7 @@ import iconExternal from './assets-dist/External.svg';
 import iconFacebook from './assets-dist/Facebook.svg';
 import iconFilterCircle from './assets-dist/Filter Circle.svg';
 import iconFlexible from './assets-dist/Flexible.svg';
+import iconFrame48 from './assets-dist/Frame48.svg';
 import iconGlasses from './assets-dist/Glasses.svg';
 import iconGrid from './assets-dist/Grid.svg';
 import iconGroup1 from './assets-dist/Group 1.svg';
@@ -63,6 +64,7 @@ import iconPin from './assets-dist/Pin.svg';
 import iconPlay from './assets-dist/Play.svg';
 import iconPlusSmall from './assets-dist/Plus small.svg';
 import iconPlus from './assets-dist/Plus.svg';
+import iconPlus48 from './assets-dist/Plus48.svg';
 import iconPrint from './assets-dist/Print.svg';
 import iconQuestion from './assets-dist/Question.svg';
 import iconRedo from './assets-dist/Redo.svg';
@@ -70,11 +72,13 @@ import iconReset from './assets-dist/Reset.svg';
 import iconSearch from './assets-dist/Search.svg';
 import iconShape from './assets-dist/Shape.svg';
 import iconShare from './assets-dist/Share.svg';
+import iconShieldCheck48 from './assets-dist/Shield check48.svg';
 import iconSmallPin from './assets-dist/Small Pin.svg';
 import iconStarEmpty from './assets-dist/Star Empty.svg';
 import iconStarHalf from './assets-dist/Star Half.svg';
 import iconStar from './assets-dist/Star.svg';
 import iconStethoscope from './assets-dist/Stethoscope.svg';
+import iconStethoscope48 from './assets-dist/Stethoscope48.svg';
 import iconVideo from './assets-dist/Video.svg';
 import iconWarning from './assets-dist/Warning.svg';
 import iconWhatsapp from './assets-dist/Whatsapp.svg';
@@ -123,6 +127,7 @@ export type IconName =
   | 'iconFacebook'
   | 'iconFilterCircle'
   | 'iconFlexible'
+  | 'iconFrame48'
   | 'iconGlasses'
   | 'iconGrid'
   | 'iconGroup1'
@@ -146,6 +151,7 @@ export type IconName =
   | 'iconPlay'
   | 'iconPlusSmall'
   | 'iconPlus'
+  | 'iconPlus48'
   | 'iconPrint'
   | 'iconQuestion'
   | 'iconRedo'
@@ -153,11 +159,13 @@ export type IconName =
   | 'iconSearch'
   | 'iconShape'
   | 'iconShare'
+  | 'iconShieldCheck48'
   | 'iconSmallPin'
   | 'iconStarEmpty'
   | 'iconStarHalf'
   | 'iconStar'
   | 'iconStethoscope'
+  | 'iconStethoscope48'
   | 'iconVideo'
   | 'iconWarning'
   | 'iconWhatsapp'
@@ -206,6 +214,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconFacebook', iconFacebook],
   ['iconFilterCircle', iconFilterCircle],
   ['iconFlexible', iconFlexible],
+  ['iconFrame48', iconFrame48],
   ['iconGlasses', iconGlasses],
   ['iconGrid', iconGrid],
   ['iconGroup1', iconGroup1],
@@ -229,6 +238,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconPlay', iconPlay],
   ['iconPlusSmall', iconPlusSmall],
   ['iconPlus', iconPlus],
+  ['iconPlus48', iconPlus48],
   ['iconPrint', iconPrint],
   ['iconQuestion', iconQuestion],
   ['iconRedo', iconRedo],
@@ -236,11 +246,13 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconSearch', iconSearch],
   ['iconShape', iconShape],
   ['iconShare', iconShare],
+  ['iconShieldCheck48', iconShieldCheck48],
   ['iconSmallPin', iconSmallPin],
   ['iconStarEmpty', iconStarEmpty],
   ['iconStarHalf', iconStarHalf],
   ['iconStar', iconStar],
   ['iconStethoscope', iconStethoscope],
+  ['iconStethoscope48', iconStethoscope48],
   ['iconVideo', iconVideo],
   ['iconWarning', iconWarning],
   ['iconWhatsapp', iconWhatsapp],
