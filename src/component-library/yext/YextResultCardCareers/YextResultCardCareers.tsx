@@ -7,12 +7,23 @@ import Icons from '../../foundation/Icons/Icons';
 const YextResultCardCareers = (
   props: YextResultCardCareersProps
 ): JSX.Element => {
-  const { location, clinical, timing, title, cta } = props;
+  const { office, location, clinical, timing, title, cta, variation } = props;
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={[
+        styles.wrapper,
+        variation === 'carousel' && styles.carousel,
+      ].join(' ')}
+    >
       <div>
         <div className={styles.title}>{title}</div>
         <div className={styles.bullets}>
+          {office && (
+            <div className={styles.office}>
+              <Icons iconName={'iconHome'} />
+              <Text variation="body-medium-large">{office}</Text>
+            </div>
+          )}
           {location && (
             <div className={styles.location}>
               <Icons iconName={'iconPin'} />

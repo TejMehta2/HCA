@@ -26,6 +26,7 @@
   gap: $spacing-7;
 }
 
+.office,
 .location,
 .clinical,
 .timing {
@@ -37,5 +38,39 @@
 .timing {
   @include media(screen-l, max) {
     display: none;
+  }
+}
+
+/* Carousel variation */
+.carousel {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $spacing-6 $spacing-7;
+  min-height: px-to-rem(349);
+
+  @include media(screen-l) {
+    min-height: px-to-rem(357);
+  }
+
+  .bullets {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: $spacing-5;
+    row-gap: $spacing-3;
+
+    @include media(screen-l) {
+      column-gap: $spacing-4;
+      row-gap: $spacing-2;
+    }
+
+    .clinical,
+    .timing {
+      display: flex;
+    }
+  }
+
+  a {
+    width: fit-content;
+    padding-inline: px-to-rem(32);
   }
 }
