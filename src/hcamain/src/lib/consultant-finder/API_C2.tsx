@@ -564,6 +564,10 @@ export async function LDBMakeBooking(
       const fragLocation = LocationGUID
         ? `"LocationGUID": "${LocationGUID}"`
         : `"FacilityId": "${FacilityId}"`;
+      const fragMedSec =
+        demographics.bookingBy === 'medicalsecretary'
+          ? `"medicalsecretary": true`
+          : `"medicalsecretary": false`;
       const requestURL = `${
         serviceURL ?? config?.aPI_C2_ReserveConsultantSlot_BaseURL
       }`;
@@ -583,6 +587,7 @@ export async function LDBMakeBooking(
 
       const body = `{
         ${fragConsultant},
+        ${fragMedSec},
         ${fragLocation},
         "dateFrom": "${dateFrom}",
         ${fragFollowOn},
