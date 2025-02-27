@@ -18,9 +18,11 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     doctify,
     children,
     id,
+    imageKeepAspectRatio = false,
+    theme = 'A-HCA-White',
   } = props;
   return (
-    <Themes theme="A-HCA-White" id={id}>
+    <Themes theme={theme} id={id}>
       <div
         className={[
           styles['intro-block'],
@@ -68,7 +70,13 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
               </div>
             )}
           </div>
-          <div className={styles['image-wrapper']} data-animate="s">
+          <div
+            className={[
+              styles['image-wrapper'],
+              imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
+            ].join(' ')}
+            data-animate="s"
+          >
             <div className={styles.image}>{image}</div>
             <div className={styles.reviews}>
               <div className={styles.cqc}>{cqc}</div>

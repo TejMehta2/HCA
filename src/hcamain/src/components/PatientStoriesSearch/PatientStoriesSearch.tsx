@@ -25,13 +25,16 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Sorting from '@component-library/components/Sorting/Sorting';
 import SearchFilterList from '@component-library/components/SearchFilterList/SearchFilterList';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import SearchWrapper from '@component-library/site-components/SearchWrapper/SearchWrapper';
 import unpackFilterOption from 'lib/unpackFilterOption';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import { useI18n } from 'next-localization';
 import SearchDetail from '@component-library/hooks/useSearchForm/components/SearchDetail';
 import ImageUrl from 'src/jss-abstractions/ImageUrl';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const CLIENT_API_PATH = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/patientstories`;
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}/patientstories`;
@@ -115,8 +118,10 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
       ...fields.filter(({ defaultChecked }) => defaultChecked),
     ];
   }, []);
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Heading?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
   return (
     <form {...formHandlers}>
       <Themes theme={params?.Theme || 'J-HCA-Tangerine-20'}>
@@ -131,7 +136,10 @@ export const Default = (props: ApiSearchProps): JSX.Element => {
           heading={
             fields?.Title?.value && (
               <Text
-                variation={params?.HeadingSize || 'display-2'}
+                variation={
+                  params?.HeadingSize ||
+                  getDynamicTitleStyle(fields?.Title.value.length)
+                }
                 tag={headingTag}
               >
                 <JssText field={fields?.Title} />

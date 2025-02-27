@@ -23,6 +23,7 @@ import dynamic from 'next/dynamic';
 import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicHomepageIntroBlock = dynamic(
   () =>
@@ -134,12 +135,17 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
     value: <JSSText field={counters.fields?.Number} />,
     label: <JSSText field={counters.fields?.Text} />,
   }));
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.Headline?.value ? 'span' : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Headline?.value
+  );
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
   return (
     <DynamicHomepageIntroBlock
       id={componentAnchorId}
       imageAlignment={imageAlignment}
+      imageKeepAspectRatio={keepAspectRatio}
+      theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
           tag={headingTag}

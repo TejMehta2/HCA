@@ -9,6 +9,7 @@ import Icons from '../../foundation/Icons/Icons';
 import Doctify from '../../components/Doctify/Doctify';
 
 const mockProps: HomepageIntroBlockProps = {
+  theme: 'A-HCA-White',
   title: (
     <Text variation="display-1" tag="h2">
       Committed to your care

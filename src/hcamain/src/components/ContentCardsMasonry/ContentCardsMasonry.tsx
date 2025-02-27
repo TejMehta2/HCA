@@ -18,6 +18,7 @@ import MasonryCards, {
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Button from '@component-library/core-components/Button/Button';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import getHeadingTags from 'lib/getHeadingTags';
 
 type MasonryCard = {
   rows: 1 | 2;
@@ -127,12 +128,13 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
     )
   );
 
-  const subheadingTag = props.params?.HeadingTag || 'h2';
-  const headingTag = props.fields?.data?.item?.heading?.jsonValue
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
   return (
     <MasonryCards
+      theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
       title={
         <>

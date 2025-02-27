@@ -5,9 +5,12 @@ import {
   Text as JssText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Text from '@component-library/foundation/Text/Text';
-import HeaderPlain from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import HeaderPlain, {
+  getDynamicTitleStyle,
+} from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import Params from 'src/types/params';
 import Themes from '@component-library/foundation/Themes/Themes';
+import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {
   data?: {
@@ -38,11 +41,10 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
   if (!props.fields) {
     return <PlainHeaderDefaultComponent {...props} />;
   }
-  const subheadingTag = props.params?.HeadingTag || 'h1';
-  const headingTag = props.fields?.data?.contextItem?.subHeading?.jsonValue
-    ?.value
-    ? 'span'
-    : subheadingTag;
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.contextItem?.subHeading?.jsonValue?.value
+  );
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <HeaderPlain
@@ -56,7 +58,12 @@ export const Default = (props: PlainHeaderProps): JSX.Element => {
         heading={
           <Text
             tag={headingTag}
-            variation={props.params?.HeadingSize || 'display-3'}
+            variation={
+              props.params?.HeadingSize ||
+              getDynamicTitleStyle(
+                props.fields?.data?.contextItem?.title?.jsonValue?.value.length
+              )
+            }
           >
             <JssText
               field={props.fields?.data?.contextItem?.title?.jsonValue}

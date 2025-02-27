@@ -1,0 +1,23 @@
+﻿---
+ID: "ec8d98db-ccac-4d54-a116-11bd2ceb146f"
+Parent: "9b38cf34-6e17-48b6-b487-81931a90aa8a"
+Template: "9b38cf34-6e17-48b6-b487-81931a90aa8a"
+Path: /sitecore/templates/Project/HCA/Pages/Condition Page/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250214T153641Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "afa21238-5988-4a6e-b550-3fe250a7242c"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250214T153641Z

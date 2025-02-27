@@ -11,6 +11,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Tags from '@component-library/core-components/Tags/Tags';
 import Link from 'next/link';
 import JssDate from 'src/jss-abstractions/JssDate/JssDate';
+import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 
 type ArticleTypeFields = {
   id?: string;
@@ -92,7 +93,12 @@ export const Default = (props: BlogDetailsHeaderProps): JSX.Element => {
       title={
         <Text
           tag={props.params?.HeadingTag || 'h1'}
-          variation={props.params?.HeadingSize || 'display-3'}
+          variation={
+            props.params?.HeadingSize ||
+            getDynamicTitleStyle(
+              props.fields?.data?.contextItem?.title?.jsonValue?.value.length
+            )
+          }
         >
           <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
