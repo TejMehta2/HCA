@@ -13,7 +13,11 @@
   width: 100%;
   max-width: 100vw;
   position: relative;
-  overflow-x: clip;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 }
 
 .container {
@@ -31,6 +35,7 @@
   width: px-to-rem(288);
   border-radius: $radius-medium;
   overflow: hidden;
+  user-select: none;
 
   @include media(screen-l) {
     width: px-to-rem(449);
