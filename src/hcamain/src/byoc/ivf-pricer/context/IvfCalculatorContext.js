@@ -37,6 +37,8 @@ const IvfCalculatorContextProvider = ({ children }) => {
   // costs variables
   const [cycleTypeCost, setCycleTypeCost] = useState(0);
   const [cycleCost, setCycleCost] = useState(0);
+  const [drug1Cost, setDrug1Cost] = useState(0);
+  const [drug2Cost, setDrug2Cost] = useState(0);
   const [protocolTypeCost, setProtocolTypeCost] = useState(0);
   const [blastocystCultureCost, setBlastocystCultureCost] = useState(0);
   const [adjuvantsCost, setAdjuvantsCost] = useState(0);
@@ -45,10 +47,13 @@ const IvfCalculatorContextProvider = ({ children }) => {
   const [cycleNotes, setCycleNotes] = useState('');
   const [cycleTypeAdditionalDrugNotes, setCycleTypeAdditionalDrugNotes] =
     useState('');
+  const [cycleTypeAdditionalDrugNotes2, setCycleTypeAdditionalDrugNotes2] =
+    useState('');
   const [blastocystCultureNotes, setBlastocystCultureNotes] = useState('');
   const [startingDoseNotes, setStartingDoseNotes] = useState('');
   const [adjuvantsNotes, setAdjuvantsNotes] = useState(0);
   const [selectedDrugNotes, setSelectedDrugNotes] = useState('');
+  const [selectedDrugNotes2, setSelectedDrugNotes2] = useState('');
   const [introPDF, setIntroPDF] = useState('');
   // calculator heading
   const [calculatorHeading, setCalculatorHeading] = useState('');
@@ -172,14 +177,22 @@ const IvfCalculatorContextProvider = ({ children }) => {
         setCycleNotes,
         cycleTypeAdditionalDrugNotes,
         setCycleTypeAdditionalDrugNotes,
+        cycleTypeAdditionalDrugNotes2,
+        setCycleTypeAdditionalDrugNotes2,
         blastocystCultureNotes,
         setBlastocystCultureNotes,
         adjuvantsNotes,
         setAdjuvantsNotes,
         selectedDrugNotes,
         setSelectedDrugNotes,
+        selectedDrugNotes2,
+        setSelectedDrugNotes2,
         cycleCost,
         setCycleCost,
+        drug1Cost,
+        setDrug1Cost,
+        drug2Cost,
+        setDrug2Cost,
         selectedDrugValue,
         setSelectedDrugValue,
         selectedDrugValue2,
