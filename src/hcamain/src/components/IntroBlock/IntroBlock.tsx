@@ -145,6 +145,7 @@ export const ImageLeft = (props: ImageLeftProps): JSX.Element => {
       id={componentAnchorId}
       imageAlignment={imageAlignment}
       imageKeepAspectRatio={keepAspectRatio}
+      theme={props.params?.Theme || 'A-HCA-White'}
       title={
         <Text
           tag={headingTag}

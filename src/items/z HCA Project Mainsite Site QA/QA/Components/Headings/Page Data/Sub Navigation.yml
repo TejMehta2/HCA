@@ -1,0 +1,36 @@
+﻿---
+ID: "792f6d53-0a7f-470d-8131-537180a8260c"
+Parent: "241304b3-5b92-4249-9a70-12e850c402fb"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Headings/Page Data/Sub Navigation"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250122T165951Z
+    - ID: "38b7aa03-2cf6-46ef-acb1-47d5e5c6bc64"
+      Hint: IncludeRootPage
+      Value: 1
+    - ID: "5715c609-4770-4ed1-afc1-b477d428c22b"
+      Hint: Title
+      Value: Jump to
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6c2db5b3-4340-43b9-923f-867d895b6b2a"
+    - ID: "a44708f4-261e-43ca-9b5e-33142fc6325b"
+      Hint: DefaultNavigationImage
+      Value: |
+        <image src="https://hcil-p-001.sitecorecontenthub.cloud/api/public/content/aaf105b234904720b4da02b027e451a2?v=cacbdc19" dam-id="xhn847GwQ92iFNzaNP6C3w" width="5600" height="4480" alt="Women talking to nurse" dam-content-type="Image" thumbnailsrc="https://hcil-p-001.sitecorecontenthub.cloud/api/gateway/255912/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{F1A2783C-E12B-4371-8600-D17360F1F14E}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250122T170919Z

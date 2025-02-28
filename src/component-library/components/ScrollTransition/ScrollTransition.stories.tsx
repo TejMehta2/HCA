@@ -83,6 +83,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
         />
         <HomepageIntroBlock
+          theme="A-HCA-White"
           imageAlignment="left"
           title={
             <Text variation="display-1" tag="h2">

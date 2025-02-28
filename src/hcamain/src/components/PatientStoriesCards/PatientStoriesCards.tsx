@@ -414,7 +414,7 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
       }
       link={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value?.href ? (
             <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
@@ -437,13 +437,13 @@ export const Slider = (props: PatientStoriesCardsProps): JSX.Element => {
                 </>
               )}
             </a>
-          )
-        ) : props.fields?.data?.item?.cTALink?.jsonValue?.value ? (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-          ></JssLink>
+          ) : undefined
         ) : (
-          <></>
+          props.fields?.data?.item?.cTALink?.jsonValue?.value && (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            ></JssLink>
+          )
         )
       }
     >
@@ -496,7 +496,7 @@ export const SliderWithLeftText = (
       title={<JssText field={props.fields?.data?.item?.title?.jsonValue} />}
       link={
         !isExperienceEditor ? (
-          props.fields?.data?.item?.cTALink?.jsonValue.value ? (
+          props.fields?.data?.item?.cTALink?.jsonValue?.value?.href ? (
             <a href={viewAllCta}>
               {props?.fields?.data?.item?.cTAIcon?.Icon?.svgMarkup?.value && (
                 <span
@@ -518,15 +518,13 @@ export const SliderWithLeftText = (
                 </>
               )}
             </a>
-          ) : (
-            <></>
-          )
-        ) : props.fields?.data?.item?.cTALink?.jsonValue.value ? (
-          <JssLink
-            field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
-          ></JssLink>
+          ) : undefined
         ) : (
-          <></>
+          props.fields?.data?.item?.cTALink?.jsonValue.value && (
+            <JssLink
+              field={props.fields?.data?.item?.cTALink?.jsonValue?.value}
+            ></JssLink>
+          )
         )
       }
       bodyCopy={
