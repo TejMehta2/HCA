@@ -24,7 +24,7 @@ SharedFields:
   Value: "{0EDFADD2-0250-44E5-80B5-98392CFFB4F8}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Image And Tabs Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Image And Tabs Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Image And Tabs Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Image And Tabs Folder']|query:./*[@@templatename='Page Data']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -78,14 +78,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dc964142-54c6-4038-a136-80ec00be2775"
+      Value: "bb6197a6-cd05-413a-ae93-77f0476885b0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240122T134146Z
+      Value: 20250214T172318Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
