@@ -10,8 +10,9 @@
   gap: $spacing-2;
   align-items: center;
   min-height: calc(100svh - px-to-rem(70 + 40));
-
+  
   @include media(screen-l, max) {
+    align-items: flex-end;
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
   }
@@ -33,9 +34,14 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 7, 7);
+  @include responsive-grid-span(6, 5, 9, 9);
 
   align-self: center;
+  margin-bottom: $spacing-7;
+}
+
+.children {
+  @include responsive-grid-span(6, 5, 10, 10);
 }
 
 .video,
@@ -78,7 +84,7 @@
 .toggle {
   position: absolute;
   right: $spacing-14;
-  bottom: $spacing-7;
+  bottom: 1.5rem;
 
   @include media(screen-l, max) {
     left: $spacing-14;
@@ -95,10 +101,9 @@
 }
 
 .subtitle {
-  margin-top: $spacing-3;
+  margin-bottom: $spacing-2;
 }
 
 .copy {
   margin-top: $spacing-5;
-  margin-bottom: $spacing-5;
 }

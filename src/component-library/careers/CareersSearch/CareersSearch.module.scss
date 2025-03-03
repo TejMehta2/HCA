@@ -5,18 +5,33 @@
   @include responsive-grid-span($breakpoint-l: 7);
 
   display: flex;
-  gap: $spacing-4;
+  gap: $spacing-2;
   flex-direction: column;
+
+  @include media(screen-l) {
+    gap: $spacing-3;
+    flex-direction: row;
+  }
+}
+
+.filters-submit {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+
+  @include media(screen-l) {
+    gap: $spacing-3;
+  }
 }
 
 .filters {
   position: relative;
+  flex: 1;
+  min-width: px-to-rem(210);
   @include responsive-grid-span($breakpoint-l: 7);
 
-  display: grid;
   @include media(screen-l) {
-    grid-template-columns: 1fr 1fr;
+    max-width: px-to-rem(306);
   }
-
-  gap: px-to-rem(4) px-to-rem(8);
 }
