@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import StatsCards from './StatsCards';
 import { StatsCardsProps } from './StatsCards.types';
 import Text from '../../foundation/Text/Text';
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 const mockProps: StatsCardsProps = {
   theme: 'K-HCA-Fern-20',
@@ -35,6 +36,7 @@ const mockProps: StatsCardsProps = {
 
 describe('StatsCards', () => {
   it('Renders children from props', async () => {
+    mockAllIsIntersecting(true);
     const { getByText } = render(<StatsCards {...mockProps} />);
     expect(getByText('Let our numbers speak for themselves.')).toBeVisible();
   });

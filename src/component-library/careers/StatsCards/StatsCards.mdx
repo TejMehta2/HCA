@@ -7,11 +7,11 @@ import * as StatsCardsStories from './StatsCards.stories';
 
 ## Description
 
-The StatsCards component displays a header, body copy, and 5 different stats. This all animate by incrementing up to the specified number
+The StatsCards component displays a header, body copy, and 3-6 different stats. This all animate by incrementing up to the specified number
 
 It is intended to be used on the careers homepage.
 
-This component will only ever show 5 stats. No more, no less
+This component will can show between 3-6 stats cards
 
 It can be composed like this:
 
@@ -48,5 +48,5 @@ It can be composed like this:
 
 ## Example
 
-<Canvas of={StatsCardsStories.Default} />
-<Controls of={StatsCardsStories.Default} />
+<Canvas of={StatsCardsStories.FiveCards} />
+<Controls of={StatsCardsStories.FiveCards} />

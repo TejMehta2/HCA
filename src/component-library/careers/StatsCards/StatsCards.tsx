@@ -24,13 +24,13 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
     return { numbers, letters };
   };
 
-  const counter = useCallback((Element: HTMLSpanElement) => {
-    // Animate all counters equally for a better UX
+  const counter = useCallback((element: HTMLElement) => {
+    // Speed that all counters animate
     const duration = 2000;
 
     // Get start and end values
-    const start = parseInt(Element.textContent!, 10);
-    const end = parseInt(Element.dataset.counter!, 10);
+    const start = parseInt(element.textContent!, 10);
+    const end = parseInt(element.dataset.counter!, 10);
 
     // If equal values, stop here
     if (start === end) return;
@@ -45,15 +45,28 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
 
     const loop = () => {
       let elaps = Date.now() - timeStart;
-      if (elaps > duration) elaps = duration; // Stop the loop
-      const norm = elaps / duration; // normalised value + easing
-      const step = norm * range; // Calculate the value step
-      current = start + step; // Increment or Decrement current value
-      Element.textContent = Math.trunc(current).toString(); // Apply to UI as integer
-      if (elaps < duration) requestAnimationFrame(loop); // Loop
+
+      // Stop the loop
+      if (elaps > duration) elaps = duration;
+
+      // normalised value + easing
+      const norm = elaps / duration;
+
+      // Calculate the value step
+      const step = norm * range;
+
+      // Increment or Decrement current value
+      current = start + step;
+
+      // Apply to element as integer
+      element.textContent = Math.trunc(current).toString();
+
+      // Loop
+      if (elaps < duration) requestAnimationFrame(loop);
     };
 
-    requestAnimationFrame(loop); // Start the loop!
+    // Start the loop
+    requestAnimationFrame(loop);
   }, []);
 
   const handleScroll = useCallback(
@@ -85,42 +98,34 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   }, [handleScroll, statsRef]);
 
   return (
-    <>
-      <div className={styles['dummy-component']}>
-        <Text variation="display-1">EXAMPLE PREVIOUS COMPONENT</Text>
-      </div>
-      <Themes theme={theme} id={id}>
-        <div className={styles.wrapper}>
-          <div className={styles.container}>
-            <div className={styles.text}>
-              <div>{subheader}</div>
-              <div className={styles['header']}>{header}</div>
-              <div className={styles['body-copy']}>{bodyCopy}</div>
-            </div>
-            <div className={styles.stats} ref={statsRef}>
-              {stats.map((stat, index) => {
-                const splitStat = splitString(stat.stat);
+    <Themes theme={theme} id={id}>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div className={styles.text}>
+            <div>{subheader}</div>
+            <div className={styles['header']}>{header}</div>
+            <div className={styles['body-copy']}>{bodyCopy}</div>
+          </div>
+          <div className={styles.stats} ref={statsRef}>
+            {stats.map((stat, index) => {
+              const splitStat = splitString(stat.stat);
 
-                return (
-                  <div key={index} className={styles.stat}>
-                    <Text tag="p" variation="display-1">
-                      <span data-counter={splitStat.numbers}>0</span>
-                      {splitStat.letters}
-                    </Text>
-                    <Text tag="p" variation="body-large">
-                      {stat.text}
-                    </Text>
-                  </div>
-                );
-              })}
-            </div>
+              return (
+                <div key={index} className={styles.stat}>
+                  <Text tag="p" variation="display-1">
+                    <span data-counter={splitStat.numbers}>0</span>
+                    {splitStat.letters}
+                  </Text>
+                  <Text tag="p" variation="body-large">
+                    {stat.text}
+                  </Text>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </Themes>
-      <div className={styles['dummy-component']}>
-        <Text variation="display-1">EXAMPLE PREVIOUS COMPONENT</Text>
       </div>
-    </>
+    </Themes>
   );
 };
 
