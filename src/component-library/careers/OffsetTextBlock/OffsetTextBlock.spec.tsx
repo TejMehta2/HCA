@@ -7,8 +7,8 @@ import Button from '../../core-components/Button/Button';
 
 const mockProps: OffsetTextBlockProps = {
   title: (
-    <Text tag="h2" variation={'display-1'}>
-      Caring for patients is more than a job: it&apos;s a{' '}
+    <Text tag="h2" variation="display-1">
+      Caring for patients is more than a job: it&apos;s a&nbsp;
       <Text tag="span" variation="decorative">
         calling
       </Text>
@@ -29,7 +29,7 @@ const mockProps: OffsetTextBlockProps = {
     </Text>
   ),
   cta: (
-    <Button size={'large'} variation={'full'}>
+    <Button size="large" variation="full">
       <a href="#">Working at HCA UK</a>
     </Button>
   ),

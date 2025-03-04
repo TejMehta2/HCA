@@ -1,5 +1,6 @@
 @use '../../utilities/index.module' as *;
 @use './assets/Mark/font-face' as *;
+@import url("https://use.typekit.net/mdu7dnk.css");
 
 $font-family: Mark, arial, helvetica, sans-serif;
 $base-font-weight: 450;
@@ -252,13 +253,14 @@ $bold-font-weight: 700;
 }
 
 @mixin apply-decorative {
-  font-family: cursive;
+  font-family: "shelby";
   font-size: px-to-rem(80);
+  letter-spacing: -0.03em;
+  line-height: 64%;
+  font-weight: 400;
+  
   @include media(screen-l) {
     font-size: px-to-rem(127);
+    line-height: 100%;
   }
-
-  letter-spacing: -0.03em;
-  line-height: 120%;
-  font-weight: 400;
 }

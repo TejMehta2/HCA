@@ -27,8 +27,8 @@ export default meta;
 export const Default: StoryObj<typeof OffsetTextBlock> = {
   args: {
     title: (
-      <Text tag="h2" variation={'display-1'}>
-        Caring for patients is more than a job: it&apos;s a{' '}
+      <Text tag="h2" variation="display-1">
+        Caring for patients is more than a job: it&apos;s a&nbsp;
         <Text tag="span" variation="decorative">
           calling
         </Text>
@@ -49,7 +49,7 @@ export const Default: StoryObj<typeof OffsetTextBlock> = {
       </Text>
     ),
     cta: (
-      <Button size={'large'} variation={'full'}>
+      <Button size="large" variation="full">
         <a href="#">Working at HCA UK</a>
       </Button>
     ),
