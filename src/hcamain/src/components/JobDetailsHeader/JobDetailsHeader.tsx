@@ -44,8 +44,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
-  console.log(data);
-
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <Head>
