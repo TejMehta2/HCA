@@ -7,8 +7,12 @@ const OffsetTextBlock = (props: OffsetTextBlockProps): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        {title && <div className={styles.title}>{title}</div>}
-        <div className={styles['offset-content']}>
+        {title && (
+          <div className={styles.title} data-animate="xs">
+            {title}
+          </div>
+        )}
+        <div className={styles['offset-content']} data-animate="s">
           {bodyCopy && <div className={styles.text}>{bodyCopy}</div>}
           {cta && <div className={styles.cta}>{cta}</div>}
         </div>
