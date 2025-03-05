@@ -38,6 +38,6 @@ const mockProps: OffsetTextBlockProps = {
 describe('OffsetTextBlock', () => {
   it('Renders children from props', async () => {
     const { getByText } = render(<OffsetTextBlock {...mockProps} />);
-    expect(getByText('Caring for patients is more than a job')).toBeVisible();
+    expect(getByText('Working at HCA UK')).toBeVisible();
   });
 });
