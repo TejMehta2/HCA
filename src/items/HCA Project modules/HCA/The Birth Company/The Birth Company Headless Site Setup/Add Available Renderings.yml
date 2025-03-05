@@ -1,17 +1,18 @@
 ﻿---
-ID: "11b8bb0f-dd7c-4329-90bc-9ac926350eda"
-Parent: "5f5254c2-11c3-49e1-a197-3034d6784fe6"
-Template: "5f5254c2-11c3-49e1-a197-3034d6784fe6"
-Path: /sitecore/templates/Project/HCA/Foundation/_HCABasePage/__Standard Values
+ID: "b973b0b9-541f-4cf5-95da-3a6959a8ce88"
+Parent: "fa55a102-837c-4f47-8970-b9b91320e8af"
+Template: "3aea335c-d06d-45b1-841a-cbc8d2d1ce40"
+Path: /sitecore/system/Settings/Project/HCA/The Birth Company/The Birth Company Headless Site Setup/Add Available Renderings
 SharedFields:
-- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
-  Hint: __Renderings
-  Value: |
-    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-      <d
-        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
-        l="{96E5F4BA-A2CF-4A4C-A4E7-64DA88226362}" />
-    </r>
+- ID: "52c91c75-6698-4701-a8a2-242ace59a8d6"
+  Hint: Location
+  Value: "{3F14C1B6-5A2D-44CA-A8EF-DFE3CBD574E4}"
+- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
+  Hint: Name
+  Value: The Birth Company
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Value: "{1107B4CD-323C-4C94-9593-2F2736C2E29B}"
 Languages:
 - Language: en
   Versions:
@@ -19,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250214T155024Z
+      Value: 20250226T124709Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -30,11 +31,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3926b496-c94b-41fa-bbe5-de482f8126b4"
+      Value: "c7a82a94-5afb-4cc2-91f3-16642d1b978e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T181232Z
+      Value: 20250226T124710Z
