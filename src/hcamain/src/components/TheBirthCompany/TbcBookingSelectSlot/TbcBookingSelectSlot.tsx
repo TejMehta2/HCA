@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
   GetStaticComponentProps,
-  useComponentProps,
   ComponentRendering,
   Image as JssImage,
   ImageField,
@@ -19,13 +18,11 @@ import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
-import SlotsCalendar from '@component-library/consultant-finder/SlotsCalendar/SlotsCalendar';
 import { ConsultantFinderContext } from '../../../context/consultantFinderContext';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
-import { getHolidays } from '../../../lib/consultant-finder/API_HCA';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { GetServerSidePropsContext } from 'next';
 
@@ -58,9 +55,9 @@ type StepProps = {
   fields: Fields;
 };
 
-interface ServerSideProps {
-  Holidays: any;
-}
+// interface ServerSideProps {
+//   Holidays: any;
+// }
 
 /**
  * if exported, will be called if/during SSG
@@ -97,17 +94,17 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  const serverSideData = useComponentProps<ServerSideProps>(
-    props.rendering.uid
-  );
+  // const serverSideData = useComponentProps<ServerSideProps>(
+  //   props.rendering.uid
+  // );
   //console.log('serverSideData', serverSideData);
 
-  const holidaysUK = serverSideData?.Holidays;
+  //const holidaysUK = serverSideData?.Holidays;
 
   //console.log('steps slot', props.fields);
   const {
-    selectedLocation,
-    selectedTypeOfAppointment,
+    //selectedLocation,
+    //selectedTypeOfAppointment,
     // setConsultantGUID,
     selectedDate,
     selectedTime,

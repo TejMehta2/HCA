@@ -26,7 +26,7 @@ export interface Fields {
   ErrorCTALink: LinkField;
 }
 
-export type PaymentFormConfirmationProps = {
+export type TbcBookingConfirmationProps = {
   params?: Params;
   fields?: Fields;
   rendering?: {
