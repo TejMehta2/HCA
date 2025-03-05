@@ -22,7 +22,8 @@ export type TextVariationUnionTypes =
   | 'body-bold-medium'
   | 'body-small'
   | 'body-medium-small'
-  | 'body-bold-small';
+  | 'body-bold-small'
+  | 'decorative';
 
 export interface TextProps {
   tag?: keyof JSX.IntrinsicElements;

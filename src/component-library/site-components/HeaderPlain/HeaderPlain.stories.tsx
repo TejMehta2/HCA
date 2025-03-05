@@ -8,6 +8,7 @@ import Sorting from '../../components/Sorting/Sorting';
 import Checkboxes from '../../core-components/Checkboxes/Checkboxes';
 import Checkbox from '../../core-components/Checkbox/Checkbox';
 import Themes from '../../foundation/Themes/Themes';
+import Image from 'next/image';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HeaderPlain> = {
@@ -15,7 +16,7 @@ const meta: Meta<typeof HeaderPlain> = {
   component: HeaderPlain,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   decorators: [
     (Story) => (
@@ -170,4 +171,66 @@ export const DefaultWithSearchAndFilters: StoryObj<typeof HeaderPlain> = {
       </p>
     ),
   },
+};
+
+export const WithSearchAndImage: StoryObj<typeof HeaderPlain> = {
+  args: {
+    children: (
+      <SearchBar placeholder="Search for a keyword or role e.g 'staff nurse'">
+        <Filters
+          resultsCount={40}
+          filters={[
+            {
+              contentVariation: 'filters',
+              title: 'Locations',
+              children: (
+                <Checkboxes>
+                  <Checkbox
+                    id="1"
+                    value="Christie"
+                    name="locations"
+                    label="Christie Hospital"
+                  ></Checkbox>
+                  <Checkbox
+                    id="2"
+                    value="london-bridge"
+                    name="locations"
+                    label="London Bridge Hospital"
+                  ></Checkbox>
+                </Checkboxes>
+              ),
+            },
+          ]}
+        />
+      </SearchBar>
+    ),
+    heading: (
+      <Text tag="h1" variation="display-1">
+        Find a role
+      </Text>
+    ),
+    description: (
+      <p>
+        Quis laboris proident sint amet id cillum do dolor in tempor est.
+        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
+        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
+        dolore.
+      </p>
+    ),
+    image: (
+      <Image
+        src="/placeholders/doctor-talking-to-old-lady.jpg"
+        alt="chatty doctor"
+        width="1024"
+        height="683"
+      />
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Themes theme={'B-HCA-Navy-Blue'}>
+        <Story />
+      </Themes>
+    ),
+  ],
 };

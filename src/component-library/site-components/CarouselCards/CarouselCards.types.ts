@@ -4,7 +4,7 @@ export interface CarouselCardsProps {
   theme: Theme;
   title?: JSX.Element;
   subtitle?: JSX.Element;
-  link?: JSX.Element;
+  link?: JSX.Element | undefined;
   children?: JSX.Element[];
   bodyCopy?: JSX.Element;
   id?: string;

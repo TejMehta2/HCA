@@ -94,3 +94,7 @@ Intended for use solely in the Text module
 .body-bold-small {
   @include apply-body-bold-small;
 }
+
+.decorative {
+  @include apply-decorative;
+}

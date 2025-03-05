@@ -7,9 +7,14 @@ SharedFields:
 - ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
   Hint: Renderings
   Value: |
-    {CD744279-02D3-49CD-870C-0A657549C9DC}
     {512EE550-05F4-428D-B0F9-D65CCE94F387}
+    {6B604A3D-BF64-4BFA-8C2B-F9B6B1640392}
+    {CD744279-02D3-49CD-870C-0A657549C9DC}
+    {B22F93DB-CD0B-4BE8-B92E-41B1A135D367}
+    {4956263D-1195-4D6E-931B-800EA625FF6F}
+    {1DEB067F-0BB1-405E-94F5-2ABB537A6160}
     {10D6FF17-34E1-43A6-8C2C-E83696D077ED}
+    {EB2E4FFD-2761-4653-B052-26A64D385227}
     {8FAD6929-67CF-48E4-9304-B66428509661}
 Languages:
 - Language: en
@@ -25,11 +30,11 @@ Languages:
         sitecore\admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "618d68ef-4a89-478a-99f7-f1845f7be7e0"
+      Value: "313f6f7f-68a5-4a0b-ad39-0ab6b2700381"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T151732Z
+      Value: 20250211T105413Z

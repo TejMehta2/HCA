@@ -30,7 +30,7 @@ SharedFields:
   Value: "{551EC06D-328E-475E-8CE5-127529EC691A}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templatename='Table of contents Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Table of contents Folder']"
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='Table of contents Folder']|query:$sharedSites/*[@@name='Data']/*[@@templatename='Table of contents Folder']|query:./*[@@templatename='Page Data']"
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
@@ -87,14 +87,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6d5e5120-402d-4ff4-9467-3a47b28690c5"
+      Value: "8965e885-c2a6-46a2-b7e5-1719d991ff0e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250123T113108Z
+      Value: 20250214T172603Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

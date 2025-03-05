@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 //import './IVFApp.scss';
 import IvfCalculator from './components/IvfCalculator';
 import IvfCalculatorContextProvider from './context/IvfCalculatorContext';
+import useSWR from 'swr';
 
 function IVFApp() {
   return (
     <div>
       <div className="ivf-calculator">
-        <IvfCalculatorContextProvider>
-          <IvfCalculator />
+        <IvfCalculatorContextProvider suppressHydrationWarning>
+          <IvfCalculator/>
         </IvfCalculatorContextProvider>
       </div>
     </div>
