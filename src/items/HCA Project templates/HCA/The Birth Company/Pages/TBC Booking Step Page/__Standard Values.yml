@@ -1,0 +1,23 @@
+﻿---
+ID: "2cc8c74d-5f83-42e6-8bc2-2292a251d100"
+Parent: "9c3aa14f-62b4-4aa5-a024-ee985501b69d"
+Template: "9c3aa14f-62b4-4aa5-a024-ee985501b69d"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Pages/TBC Booking Step Page/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250305T125159Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "540adff1-2a0e-4cda-a637-0a3d89dcf7ef"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250305T125159Z

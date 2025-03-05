@@ -1,0 +1,33 @@
+﻿---
+ID: "34d59bd5-aedc-42a1-bf47-2b664e949a59"
+Parent: "2411cf71-b0dd-4bae-be7d-51c40bc1c1e4"
+Template: "2411cf71-b0dd-4bae-be7d-51c40bc1c1e4"
+Path: /sitecore/templates/Project/HCA/The Birth Company/TBC Booking Confirmation Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {FDAB2055-6B7B-4B5D-89B6-73A0BA7495BF}
+    {2411CF71-B0DD-4BAE-BE7D-51C40BC1C1E4}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "029ff787-d3c7-4aab-8e02-d2c12cc6896b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250226T174742Z
