@@ -5,7 +5,7 @@
 .wrapper {
   overflow-x: clip;
   padding: $spacing-13 0;
-  background-color: var(--background);
+  background-color: var(--background, $navy-blue-100);
   color: var(--text);
 }
 
@@ -24,6 +24,7 @@
 
 .carousel {
   @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+
   margin-top: px-to-rem(44);
 
   @include media(screen-l) {
@@ -102,7 +103,7 @@
     transform: translate(-50%, -50%);
     background: conic-gradient(
       var(--text) var(--carousel-degrees, 0deg),
-      rgb(from var(--text) r g b / 0.5) 0deg
+      rgb(from var(--text) r g b / 50%) 0deg
     );
   }
 
@@ -111,7 +112,7 @@
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    border: px-to-rem(4) solid var(--background);
+    border: px-to-rem(4) solid $navy-blue-100;
 
     img {
       width: 100%;
@@ -138,6 +139,7 @@
 
   .slide-text {
     @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+
     display: flex;
     flex-direction: column;
     gap: $spacing-5;

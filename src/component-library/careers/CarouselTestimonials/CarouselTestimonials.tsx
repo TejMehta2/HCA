@@ -15,7 +15,10 @@ const CarouselTestimonials = (
   const sliderRef = useRef<Slider>(null);
 
   useEffect(() => {
+    // Length of time (seconds) that each slide will be shown
     const duration = 15;
+
+    // How many degrees need to update every 10th of a second
     const degressPerSecond = 360 / duration / 10;
 
     //Implementing the setInterval method
@@ -27,7 +30,8 @@ const CarouselTestimonials = (
       clearInterval(interval);
     }
 
-    if (degrees >= 360) {
+    // Once cirlce is full, clear interval and move to next slide
+    if (degrees > 360) {
       clearInterval(interval);
 
       if (sliderRef.current) {
@@ -35,10 +39,7 @@ const CarouselTestimonials = (
       }
     }
 
-    // testing purpose
-    //clearInterval(interval);
-
-    //Clearing the interval
+    // Clear the interval
     return () => clearInterval(interval);
   }, [degrees, paused]);
 
@@ -88,7 +89,7 @@ const CarouselTestimonials = (
     </React.Fragment>
   ));
 
-  /* Carousel settings */
+  // Carousel settings
   const settings = {
     speed: 800,
     slidesToShow: 1,
@@ -119,11 +120,13 @@ const CarouselTestimonials = (
     <Themes theme={theme || 'B-HCA-Navy-Blue'} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.title}>
-            {subtitle}
-            {title}
+          <div className={styles.title} data-animate="xs">
+            {subtitle && subtitle}
+            {title && title}
           </div>
-          <div className={styles.carousel}>{slider}</div>
+          <div className={styles.carousel} data-animate="s">
+            {slider}
+          </div>
         </div>
       </div>
     </Themes>

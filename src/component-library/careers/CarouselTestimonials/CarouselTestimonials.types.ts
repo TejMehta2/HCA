@@ -11,8 +11,8 @@ interface SlideProps {
 
 export interface CarouselTestimonialsProps {
   id?: string;
-  theme: Theme;
-  subtitle: JSX.Element | ReactNode;
+  theme?: Theme;
+  subtitle?: JSX.Element | ReactNode;
   title: JSX.Element | ReactNode;
   slides: SlideProps[];
 }
