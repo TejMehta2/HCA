@@ -1,0 +1,42 @@
+﻿---
+ID: "d7441416-096c-4a60-b11a-0c586bf7b37a"
+Parent: "89f256b2-ff4a-4459-a9f0-56a82881e218"
+Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
+Path: "/sitecore/content/HCA/HCA-Main/Presentation/Available Renderings/The Birth Company"
+SharedFields:
+- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+  Hint: Renderings
+  Value: |
+    {E747E193-DDBA-4D06-B96A-9CC56B103D3F}
+    {357510ED-5BFF-4590-962E-7AC2DAFFCE50}
+    {0FF29D19-1B73-4048-9005-1FFD45489AF9}
+    {16DE7102-4EF9-4129-9255-F2A04C9E8E54}
+    {D79C24A1-9882-4528-AB9E-8B771E21D932}
+    {924AE1C2-16C6-4B33-8F61-EEBF03A6F855}
+    {5E881174-BB3B-4902-8C74-052D666AF49F}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250226T134351Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0dd1ff91-4920-40a1-87ae-f8d9a53a996e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250304T213031Z
