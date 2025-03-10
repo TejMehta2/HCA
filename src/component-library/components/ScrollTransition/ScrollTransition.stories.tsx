@@ -796,14 +796,10 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
     children: (
       <>
         <VideoHero {...(VideoHeroStory.args as VideoHeroProps)} />
-        <Themes theme="A-HCA-White">
-          <OffsetTextBlock
-            {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
-          />
-        </Themes>
-        <Themes theme="A-HCA-White">
-          <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
-        </Themes>
+        <OffsetTextBlock
+          {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
+        />
+        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
