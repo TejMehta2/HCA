@@ -17,7 +17,6 @@
 .filters-submit {
   flex: 1;
   display: flex;
-  flex-wrap: wrap;
   gap: $spacing-2;
 
   @include media(screen-l) {

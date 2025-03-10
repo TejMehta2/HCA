@@ -10,7 +10,7 @@
   gap: $spacing-2;
   align-items: center;
   min-height: calc(100svh - px-to-rem(70 + 40));
-  
+
   @include media(screen-l, max) {
     align-items: flex-end;
     border-radius: 0 0 $radius-large 0;
@@ -34,7 +34,7 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 9, 9);
+  @include responsive-grid-span(6, 5, 8, 7);
 
   align-self: center;
   margin-bottom: $spacing-7;
@@ -84,7 +84,7 @@
 .toggle {
   position: absolute;
   right: $spacing-14;
-  bottom: 1.5rem;
+  bottom: px-to-rem(24);
 
   @include media(screen-l, max) {
     left: $spacing-14;

@@ -51,6 +51,7 @@ export const Default: StoryObj<typeof CareersSearch> = {
       <Button variation="full" size="small" contentVariation="search">
         <button type="submit">
           <Icons iconName="iconSearch" />
+          <span className="sr-only">Search</span>
         </button>
       </Button>
     ),
