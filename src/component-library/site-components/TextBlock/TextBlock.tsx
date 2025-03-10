@@ -3,11 +3,16 @@ import { TextBlockProps } from './TextBlock.types';
 import styles from './TextBlock.module.scss';
 
 const TextBlock = (props: TextBlockProps): JSX.Element => {
-  const { subheading, title, text, ctas } = props;
+  const { subheading, title, text, ctas, contentVariation } = props;
   return (
     <div className={styles.wrapper}>
       <div className={styles.grid}>
-        <div className={styles.content}>
+        <div
+          className={[
+            styles.content,
+            contentVariation === 'centered' ? styles.centered : '',
+          ].join(' ')}
+        >
           {subheading && <div className={styles.subheading}>{subheading}</div>}
           {title && <div className={styles.title}>{title}</div>}
           {text && <div className={styles.text}>{text}</div>}

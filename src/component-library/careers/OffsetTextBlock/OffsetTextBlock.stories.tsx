@@ -30,9 +30,8 @@ export const Default: StoryObj<typeof OffsetTextBlock> = {
       <Text tag="h2" variation="display-1">
         Caring for patients is more than a job: it&apos;s a&nbsp;
         <Text tag="span" variation="decorative">
-          calling
+          calling.
         </Text>
-        .
       </Text>
     ),
     bodyCopy: (
