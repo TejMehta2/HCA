@@ -15,7 +15,7 @@ SharedFields:
   Value: __Icon=Office%2F32x32%2Fwindow_dialog.png
 - ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
   Hint: Template
-  Value: "{F22F9220-6F21-4885-B191-02A83DCA38A2}"
+  Value: "{FC70485E-065A-4BBD-8B4C-8F5C1B5D5175}"
 Languages:
 - Language: "de-DE"
   Fields:
@@ -59,14 +59,14 @@ Languages:
         sitecore\Admin
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "cd469724-071f-4ebc-82d6-283f262d05c5"
+      Value: "bf56beac-e00f-453b-a10d-3d67639943e5"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240502T171149Z
+      Value: 20250205T203754Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

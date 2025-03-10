@@ -1,0 +1,46 @@
+﻿---
+ID: "79cba2c9-6605-4db0-95e6-452a3bc442e8"
+Parent: "1d96a92b-3e26-47e3-961b-0616642cab1a"
+Template: "91f54bea-23d3-4b5c-94be-225249f59c63"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Locations/The Harley Street Clinic/Data/Contact Units/Harley Street Clinic/Opening Hours/Thu-Fri Opening Hours"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240123T154417Z
+    - ID: "47e5be15-97eb-4c5e-acfb-da68de36152f"
+      Hint: DayOfWeek
+      Value: |
+        {2DAEB628-E136-4D92-A5E5-AF27DA18CCFE}
+        {B921A21D-E3B3-4A5C-A150-6EEA8690D682}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "143368cb-d374-4468-b92f-fe7058a4ba20"
+    - ID: "9b888acf-cbdb-429a-8470-57c9e188c065"
+      Hint: Closes
+      Value: "21:00"
+    - ID: "b87da11a-58d6-4e00-9eae-7fda27668110"
+      Hint: Opens
+      Value: "09:00"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250224T164617Z

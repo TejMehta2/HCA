@@ -1,0 +1,39 @@
+﻿---
+ID: "d6d462f7-9b23-4e15-b5d9-c0b3c6fcfba3"
+Parent: "b2978208-1254-4caa-b520-b09baf7bd4ae"
+Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block/Tables/Data/image short text"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "0999ccb0-f298-4b06-8cc7-1c9c4584ed1a"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/4e7b5ed0dc44458196b89637a6e42d5d?v=b972c074" dam-id="-vygWrXNS1iYy-feSLdzkg" width="2000" height="1335" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250224T131504Z
+    - ID: "362d2151-9881-41fb-a9f2-4722fae21e24"
+      Hint: Text
+      Value: <p><span>In ultrices aliquam rhoncus. Quisque ac aliquet orci, vitae commodo nulla. Nam interdum massa in velit suscipit, sagittis scelerisque tellus tincidunt. In porta massa ac vulputate pharetra. Quisque metus purus, egestas in consequat cursus, mollis congue dolor. In sit amet vehicula libero, convallis finibus nulla. Sed scelerisque consectetur volutpat. Phasellus aliquam aliquam lacus vel dignissim. Ut tristique dolor eu libero pretium viverra.</span></p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "17a99ced-4960-4a09-98a2-828320f45ccc"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c08c23c3-34b4-44e0-bcb6-8e8b9528b7ca"
+      Hint: Heading
+      Value: Tables
+    - ID: "d0cf786e-4622-4026-8bfb-ae4c5011f300"
+      Hint: Title
+      Value: Half size accordions with tables
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250224T131716Z
