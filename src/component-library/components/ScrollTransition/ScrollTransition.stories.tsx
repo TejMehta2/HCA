@@ -31,6 +31,14 @@ import OffsetTextBlock from '../../careers/OffsetTextBlock/OffsetTextBlock';
 import { OffsetTextBlockProps } from '../../careers/OffsetTextBlock/OffsetTextBlock.types';
 import { Default as OffsetTextBlockStory } from '../../careers/OffsetTextBlock/OffsetTextBlock.stories';
 
+import TextBlock from '../../site-components/TextBlock/TextBlock';
+import { TextBlockProps } from '../../site-components/TextBlock/TextBlock.types';
+import { Centered as TextBlockStory } from '../../site-components/TextBlock/TextBlock.stories';
+
+import CarouselTestimonials from '../../careers/CarouselTestimonials/CarouselTestimonials';
+import { CarouselTestimonialsProps } from '../../careers/CarouselTestimonials/CarouselTestimonials.types';
+import { Default as CarouselTestimonialsStory } from '../../careers/CarouselTestimonials/CarouselTestimonials.stories';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
   title: 'components/ScrollTransition',
@@ -793,6 +801,12 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
             {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
           />
         </Themes>
+        <Themes theme="A-HCA-White">
+          <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        </Themes>
+        <CarouselTestimonials
+          {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
+        />
       </>
     ),
   },
