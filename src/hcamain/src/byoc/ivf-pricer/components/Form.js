@@ -152,7 +152,10 @@ const Form = () => {
       setIsStimulationDrug2(false);
       setIsStartingDrug(false);
       setIsStartingDrug2(false);
-    } else if (e.target.value === 'EmbryoThaw') {
+    } else if (
+      e.target.value === 'EmbryoThaw' ||
+      e.target.value === 'EggDonation'
+    ) {
       // show
       setIsProtocolType(true);
       setIsAdjuvants(true);
@@ -161,9 +164,16 @@ const Form = () => {
       setIsStimulationDrug2(false);
       setIsStartingDrug(false);
       setIsStartingDrug2(false);
+      if (e.target.value === 'EggDonation') {
+        // HED-1670 include 1a the £999 supplementary embryology services fee
+        // show/set advanced
+        setBlastocystCulture('Yes');
+      } else {
+        // HED-1660 - don't charge for this
+        setBlastocystCulture('No');
+      }
+      // hide
       setIsBlastocyst(false);
-      // HED-1660 - don't charge for this
-      setBlastocystCulture('No');
     } else {
       showAllFields();
     }
@@ -192,7 +202,10 @@ const Form = () => {
       } else {
         setIsDisabled(true);
       }
-    } else if (cycleTypeVal === 'EmbryoThaw') {
+    } else if (
+      cycleTypeVal === 'EmbryoThaw' ||
+      cycleTypeVal === 'EggDonation'
+    ) {
       if (e.target.value.length > 0) {
         setIsDisabled(false);
       } else {
@@ -617,7 +630,8 @@ const Form = () => {
                       <option value="">Please select</option>
                       {/* If EggThaw or EmbryoThaw are selected, hide first 2 options from protocol */}
                       {(cycleTypeVal === 'EggThaw' ||
-                        cycleTypeVal === 'EmbryoThaw') &&
+                        cycleTypeVal === 'EmbryoThaw' ||
+                        cycleTypeVal === 'EggDonation') &&
                         Object.keys(costData.ProtocolType)
                           .filter(
                             (item) => item !== 'Long' && item !== 'Antagonist'
@@ -632,6 +646,7 @@ const Form = () => {
                       {/* If IVF, ICSI or IMSI are selected, hide Thaw options from protocol */}
                       {cycleTypeVal !== 'EggThaw' &&
                         cycleTypeVal !== 'EmbryoThaw' &&
+                        cycleTypeVal !== 'EggDonation' &&
                         Object.keys(costData.ProtocolType)
                           .filter(
                             (item) =>
