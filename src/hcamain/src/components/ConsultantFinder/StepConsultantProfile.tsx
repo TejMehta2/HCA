@@ -161,7 +161,19 @@ export const getStaticProps: GetStaticComponentProps = async (
   const isLiveDiaryConsultant = await checkIfLiveBookingIsAvailable(slug);
   const ignoreReviewConsultant = await checkIfConsultantIsNoReviews(slug);
   const consultantIsDoctifyPhoneNumber =
-    await checkIfConsultantIsDoctifyPhoneNumber(slug);
+    physicianStructuredDataJson?.mainEntity?.medicalSpecialty?.name ===
+      'General Practice (GP)' ||
+    (await checkIfConsultantIsDoctifyPhoneNumber(slug));
+
+  /*
+  console.log('physicianStructuredDataJson', physicianStructuredDataJson);
+  console.log(
+    'is GP derived',
+    physicianStructuredDataJson.mainEntity.medicalSpecialty.name ===
+      'General Practice (GP)'
+  );
+  console.log('consultantIsDoctifyPhoneNumber', consultantIsDoctifyPhoneNumber);*/
+
   const errorWithProfileData = isErrorWithProfileData(consultantProfileJson);
 
   const returnProps: ServerSideProps = {
