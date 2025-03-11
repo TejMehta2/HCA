@@ -131,7 +131,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Nursing & Front Line Clinical Services
@@ -157,7 +157,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Theatres
@@ -183,7 +183,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Midwives & Front Line Clinical Services
@@ -209,7 +209,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             GP Services
@@ -235,7 +235,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Pharmacy & Allied Healthcare Professionals
@@ -261,7 +261,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Hospital Management & Head Office
@@ -287,7 +287,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Patient Support Services
@@ -313,7 +313,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Information Technology Group
@@ -339,7 +339,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             Hotel Services
@@ -365,7 +365,7 @@ export const RoleCards: StoryObj<typeof ServiceCards> = {
             height="605"
           />
         }
-        icon={<Icons iconName="iconHospitalLarge" />}
+        icon={<Icons iconName="iconHospital48" />}
         title={
           <Text variation="heading-2" tag="h4">
             EHR Transformation

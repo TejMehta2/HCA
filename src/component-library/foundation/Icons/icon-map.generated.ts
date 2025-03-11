@@ -44,7 +44,7 @@ import iconGlasses from './assets-dist/Glasses.svg';
 import iconGrid from './assets-dist/Grid.svg';
 import iconGroup1 from './assets-dist/Group 1.svg';
 import iconHome from './assets-dist/Home.svg';
-import iconHospitalLarge from './assets-dist/Hospital Large.svg';
+import iconHospital48 from './assets-dist/Hospital 48.svg';
 import iconHospital from './assets-dist/Hospital.svg';
 import iconInfo from './assets-dist/Info.svg';
 import iconInstagram from './assets-dist/Instagram.svg';
@@ -128,7 +128,7 @@ export type IconName =
   | 'iconGrid'
   | 'iconGroup1'
   | 'iconHome'
-  | 'iconHospitalLarge'
+  | 'iconHospital48'
   | 'iconHospital'
   | 'iconInfo'
   | 'iconInstagram'
@@ -212,7 +212,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconGrid', iconGrid],
   ['iconGroup1', iconGroup1],
   ['iconHome', iconHome],
-  ['iconHospitalLarge', iconHospitalLarge],
+  ['iconHospital48', iconHospital48],
   ['iconHospital', iconHospital],
   ['iconInfo', iconInfo],
   ['iconInstagram', iconInstagram],
