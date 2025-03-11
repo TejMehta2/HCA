@@ -16,7 +16,7 @@ const mockProps: CardRoleProps = {
       height="605"
     />
   ),
-  icon: <Icons iconName="iconHospitalLarge" />,
+  icon: <Icons iconName="iconHospital48" />,
   title: (
     <Text variation="heading-2" tag="h4">
       Nursing & Front Line Clinical Services
