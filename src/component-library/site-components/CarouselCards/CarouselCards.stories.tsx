@@ -339,7 +339,7 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
   },
 };
 
-export const VanancyCards: StoryObj<typeof CarouselCards> = {
+export const VacancyCards: StoryObj<typeof CarouselCards> = {
   args: {
     theme: 'A-HCA-White',
     cardsToDisplay: 4,
@@ -364,8 +364,8 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
       <YextResultCardCareers
         key={0}
         variation="carousel"
-        office={'Head office'}
-        location={'London'}
+        location={'Head office'}
+        city={'London'}
         clinical={'Clinical'}
         timing={'Full time'}
         title={
@@ -374,7 +374,7 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         cta={
-          <Button variation={'full'} size={'small'}>
+          <Button variation={'full'} size={'small'} contentVariation="card">
             <a href={'job.data.applicationUrl'}>
               <Icons iconName="iconArrowSmallRight" />
             </a>
@@ -384,8 +384,8 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
       <YextResultCardCareers
         key={0}
         variation="carousel"
-        office={'Head office'}
-        location={'London'}
+        location={'Head office'}
+        city={'London'}
         clinical={'Clinical'}
         timing={'Full time'}
         title={
@@ -394,7 +394,7 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         cta={
-          <Button variation={'full'} size={'small'}>
+          <Button variation={'full'} size={'small'} contentVariation="card">
             <a href={'job.data.applicationUrl'}>
               <Icons iconName="iconArrowSmallRight" />
             </a>
@@ -404,8 +404,8 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
       <YextResultCardCareers
         key={0}
         variation="carousel"
-        office={'Head office'}
-        location={'London'}
+        location={'Head office'}
+        city={'London'}
         clinical={'Clinical'}
         timing={'Full time'}
         title={
@@ -414,7 +414,7 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         cta={
-          <Button variation={'full'} size={'small'}>
+          <Button variation={'full'} size={'small'} contentVariation="card">
             <a href={'job.data.applicationUrl'}>
               <Icons iconName="iconArrowSmallRight" />
             </a>
@@ -424,8 +424,8 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
       <YextResultCardCareers
         key={0}
         variation="carousel"
-        office={'Head office'}
-        location={'London'}
+        location={'Head office'}
+        city={'London'}
         clinical={'Clinical'}
         timing={'Full time'}
         title={
@@ -434,7 +434,7 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         cta={
-          <Button variation={'full'} size={'small'}>
+          <Button variation={'full'} size={'small'} contentVariation="card">
             <a href={'job.data.applicationUrl'}>
               <Icons iconName="iconArrowSmallRight" />
             </a>
@@ -444,8 +444,8 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
       <YextResultCardCareers
         key={0}
         variation="carousel"
-        office={'Head office'}
-        location={'London'}
+        location={'Head office'}
+        city={'London'}
         clinical={'Clinical'}
         timing={'Full time'}
         title={
@@ -454,7 +454,7 @@ export const VanancyCards: StoryObj<typeof CarouselCards> = {
           </Text>
         }
         cta={
-          <Button variation={'full'} size={'small'}>
+          <Button variation={'full'} size={'small'} contentVariation="card">
             <a href={'job.data.applicationUrl'}>
               <Icons iconName="iconArrowSmallRight" />
             </a>
