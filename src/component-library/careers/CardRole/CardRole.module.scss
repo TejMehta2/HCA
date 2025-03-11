@@ -3,7 +3,7 @@
 
 .wrapper {
   @include apply-theme-b-navy;
-  
+
   position: relative;
   color: $white;
   display: flex;
@@ -47,7 +47,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.55);
+      background-color: rgba($color: #000, $alpha: 55%);
     }
   }
 
@@ -61,6 +61,6 @@
 
   .cta a {
     width: fit-content;
-    padding: 1rem 2rem;
+    padding: px-to-rem(16) px-to-rem(32);
   }
 }
