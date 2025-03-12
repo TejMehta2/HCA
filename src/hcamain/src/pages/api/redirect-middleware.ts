@@ -25,7 +25,6 @@ const redirectMiddleware = async (req: NextRequest) => {
         //&& (await response.bodyUsed)
         const text1 = await response.text();
 
-        console.log('redirect response: ', response);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let data: any = {};
         if (text1.length > 0) {
@@ -52,7 +51,7 @@ const redirectMiddleware = async (req: NextRequest) => {
     }
   }
   console.log('Redirect Middleware end');
-  return;
+  return NextResponse.next();
 };
 
 export default redirectMiddleware;
