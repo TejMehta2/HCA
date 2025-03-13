@@ -72,7 +72,11 @@
     }
 
     table {
+      display: block;
       width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
       text-align: left;
       border: 1px solid var(--table-color);
       border-collapse: collapse;
@@ -94,6 +98,7 @@
       td,
       th {
         padding: $spacing-4;
+        width: 100%;
       }
     }
 
