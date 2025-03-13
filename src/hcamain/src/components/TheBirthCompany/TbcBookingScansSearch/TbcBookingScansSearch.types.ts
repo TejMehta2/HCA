@@ -38,6 +38,14 @@ export interface TbcService {
   serviceName: {
     value: string;
   };
+  area: {
+    targetItem: {
+      id: string;
+      value: {
+        value: string;
+      };
+    };
+  };
   extras: {
     targetItems: TbcServiceExtra[];
   };
