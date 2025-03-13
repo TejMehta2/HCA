@@ -21,10 +21,45 @@ SharedFields:
           }
           extrasLabel {
             value
-          }     
+          }
           startBookingCTA {
             jsonValue
-          }  
+          }
+          servicesFolder {
+            targetItem {
+              ... on TBCServicesFolder {
+                children(
+                  first: 100
+                  includeTemplateIDs: "89bdf4c5720f495baea3ef754e72b0e6"
+                ) {
+                  results {
+                    ... on TBCService {
+                      id
+                      serviceName {
+                        value
+                      }
+                      extras {
+                        targetItems {
+                          ... on TBCServiceExtras {
+                            id
+                            serviceExtraName {
+                              value
+                            }
+                            price {
+                              value
+                            }
+                            duration {
+                              value
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -100,14 +135,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bd008baa-4f0e-49bf-b9ca-6bf2d055c0e0"
+      Value: "4e48038a-24a8-46a7-a55c-d55a2a5ac3ee"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250226T184350Z
+      Value: 20250313T111426Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
