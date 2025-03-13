@@ -6,6 +6,21 @@ import { TbcBookingScansSearchProps } from './TbcBookingScansSearch.types';
 import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Button from '@component-library/core-components/Button/Button';
 
+// Function to help process total price when x% of surcharge needs to be added
+// const applyPercentage = (value: string, baseValue: number): number => {
+//   if (value.endsWith('%')) {
+//     const percentage = parseFloat(value) / 100;
+//     return Math.round(baseValue * percentage);
+//   }
+//   return parseFloat(value);
+// };
+
+const formatPrice = (value: string): string => {
+  return value.endsWith('%')
+    ? `${value} scan price surcharge`
+    : `£${Math.round(parseFloat(value))}`;
+};
+
 const TbcBookingScansSearchDefaultComponent = (
   props: TbcBookingScansSearchProps
 ): JSX.Element => {
@@ -45,6 +60,28 @@ export const Default = (props: TbcBookingScansSearchProps): JSX.Element => {
           {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
         </button>
       </Button>
+      <div className="services">
+        {props.fields?.data?.item?.servicesFolder.targetItem.children.results.map(
+          (service) => (
+            <div key={service.id} className="service">
+              <strong>{service.serviceName.value}</strong>
+              {service.extras.targetItems.length > 0 ? (
+                <ul className="extras">
+                  {service.extras.targetItems.map((extra) => (
+                    <li key={extra.id}>
+                      {extra.serviceExtraName.value}
+                      <br /> - Price:{formatPrice(extra.price.value)}
+                      <br /> - Duration: {extra.duration.value} mins
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No extras available</p>
+              )}
+            </div>
+          )
+        )}
+      </div>
     </Themes>
   );
 };
