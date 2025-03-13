@@ -1,8 +1,18 @@
 ﻿---
-ID: "0e4e9b08-90cb-4d8f-9905-fe48a10e9770"
-Parent: "d97b73d1-a86d-4389-baf5-2cd1e33b863f"
-Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Project/HCA/The Birth Company/ProgressBar/ProgressBar/Steps
+ID: "155f11bd-288c-4ed3-b87d-fb422693fa51"
+Parent: "0e4e9b08-90cb-4d8f-9905-fe48a10e9770"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/ProgressBar/ProgressBar/Steps/CurrentStep
+SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: 
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Integer
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -10,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240320T114322Z
+      Value: 20240320T115537Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -21,7 +31,7 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "94ed717f-d1f5-4f4a-97cf-0b91a1c4ae5a"
+      Value: "2968ccbb-72df-4549-a0ed-58bd7609b240"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -33,7 +43,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240320T114322Z
+      Value: 20240320T115537Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -44,7 +54,7 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "163ac0e2-a3b9-46a1-8536-07936df9d62a"
+      Value: "00870f0c-99fe-481f-b76c-eb8fe7323a2a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

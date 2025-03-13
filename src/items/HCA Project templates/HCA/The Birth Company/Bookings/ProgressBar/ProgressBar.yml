@@ -2,7 +2,7 @@
 ID: "d97b73d1-a86d-4389-baf5-2cd1e33b863f"
 Parent: "6fb02384-a0df-4ce7-a5e9-445f66ce594e"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/HCA/The Birth Company/ProgressBar/ProgressBar
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/ProgressBar/ProgressBar
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
