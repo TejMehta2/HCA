@@ -77,6 +77,7 @@
       border: 1px solid var(--table-color);
       border-collapse: collapse;
       margin: $spacing-5 auto;
+      background-color: var(--background);
 
       thead {
         @include apply-body-bold-large;
