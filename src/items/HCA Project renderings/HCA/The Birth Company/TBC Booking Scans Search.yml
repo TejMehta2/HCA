@@ -38,6 +38,16 @@ SharedFields:
                       serviceName {
                         value
                       }
+                      area {
+                        targetItem {
+                          ... on GenericSetting {
+                            id
+                            value {
+                              value
+                            }
+                          }
+                        }
+                      }
                       extras {
                         targetItems {
                           ... on TBCServiceExtras {
@@ -135,14 +145,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4e48038a-24a8-46a7-a55c-d55a2a5ac3ee"
+      Value: "ff70f3df-147c-4a38-a0c4-8d55855a6e6e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250313T111426Z
+      Value: 20250313T201652Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
