@@ -55,7 +55,12 @@ const CallUsTodayCTADefaultComponent = (
   );
 };
 
-export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
+interface DefaultProps extends CallUsTodayCTAProps {
+  contentVariation: 'EqualSizeNumbers';
+}
+
+export const Default = (props: DefaultProps): JSX.Element => {
+  const { contentVariation } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   if (!props.fields) {
@@ -108,7 +113,18 @@ export const Default = (props: CallUsTodayCTAProps): JSX.Element => {
         </button>
       </Button>
 
-      <ModalCallUs ref={dialogRef} contacts={contacts} />
+      <ModalCallUs
+        ref={dialogRef}
+        contacts={contacts}
+        contentVariation={contentVariation}
+      />
     </>
   );
+};
+
+export const EqualSizeNumbers = (props: CallUsTodayCTAProps): JSX.Element => {
+  if (!props.fields) {
+    return <CallUsTodayCTADefaultComponent {...props} />;
+  }
+  return <Default {...props} contentVariation={'EqualSizeNumbers'} />;
 };
