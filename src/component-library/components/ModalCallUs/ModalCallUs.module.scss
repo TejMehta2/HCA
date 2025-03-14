@@ -84,7 +84,7 @@
   align-items: center;
   padding-top: $spacing-7;
   padding-bottom: $spacing-7;
-  gap: px-to-rem(60) $spacing-7;
+  gap: $spacing-7;
   flex-direction: column;
 
   hr {
@@ -128,6 +128,12 @@
 
     @include media(screen-l) {
       margin-top: $spacing-4;
+    }
+
+    & > *:not(svg) {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
     }
   }
 }

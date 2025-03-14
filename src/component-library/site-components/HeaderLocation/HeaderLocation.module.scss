@@ -117,6 +117,12 @@
 .open {
   display: flex;
   gap: 0 px-to-rem(8);
+
+  & > *:not(svg) {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+  }
 }
 
 .location-wrapper {

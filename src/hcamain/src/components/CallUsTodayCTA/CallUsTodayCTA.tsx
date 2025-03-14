@@ -79,13 +79,14 @@ export const Default = (props: DefaultProps): JSX.Element => {
       }
     );
 
-    const availabilityString = OpeningHours(contactUnit);
+    const availabilityString = OpeningHours(contactUnit) || [];
 
+    console.log('availabilityString', availabilityString);
     contacts.push({
       title: <JssText field={title} />,
       phone: phone?.[0],
-      availability: availabilityString ? (
-        <span>{availabilityString}</span>
+      availability: availabilityString.length ? (
+        <>{availabilityString}</>
       ) : undefined,
     });
   });
