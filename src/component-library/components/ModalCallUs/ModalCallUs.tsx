@@ -11,7 +11,7 @@ const ModalCallUs = (
   props: ModalCallUsProps,
   ref: React.MutableRefObject<HTMLDialogElement | null>
 ): JSX.Element => {
-  const { contacts = [], defaultOpen = false } = props;
+  const { contacts = [], defaultOpen = false, contentVariation } = props;
 
   const Contact = ({
     contact,
@@ -58,26 +58,50 @@ const ModalCallUs = (
     </div>
   );
 
+  let contactList = (
+    <>
+      <div className={styles.main}>
+        {contacts?.length > 0 && (
+          <Contact contact={contacts[0]} isMain={true} />
+        )}
+      </div>
+      {contacts?.length > 1 && (
+        <div className={styles.background}>
+          <div className={styles.additional}>
+            {contacts.slice(1).map((contact, index) => (
+              <React.Fragment key={index}>
+                <hr />
+                <Contact contact={contact} />
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+
+  if (contentVariation === 'EqualSizeNumbers') {
+    contactList = (
+      <div className={styles.additional}>
+        {contacts.map((contact, index) => (
+          <React.Fragment key={index}>
+            <hr />
+            <Contact contact={contact} />
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <Modals ref={ref} defaultOpen={defaultOpen} contentVariation="call">
-      <div className={styles['modal-contact-us']}>
-        <div className={styles.main}>
-          {contacts?.length > 0 && (
-            <Contact contact={contacts[0]} isMain={true} />
-          )}
-        </div>
-        {contacts?.length > 1 && (
-          <div className={styles.background}>
-            <div className={styles.additional}>
-              {contacts.slice(1).map((contact, index) => (
-                <React.Fragment key={index}>
-                  <hr />
-                  <Contact contact={contact} />
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        )}
+      <div
+        className={[
+          styles['modal-contact-us'],
+          contentVariation === 'EqualSizeNumbers' ? styles['equal-size'] : '',
+        ].join(' ')}
+      >
+        {contactList}
       </div>
     </Modals>
   );
