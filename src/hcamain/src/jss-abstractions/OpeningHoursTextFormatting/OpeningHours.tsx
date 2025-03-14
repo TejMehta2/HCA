@@ -2,7 +2,10 @@ import { formatDaysText } from 'src/jss-abstractions/OpeningHoursTextFormatting/
 
 import { ContactUnitFields } from './OpeningHours.types';
 
-export const OpeningHours = (contactUnit?: ContactUnitFields) => {
+export const OpeningHours = (
+  contactUnit?: ContactUnitFields,
+  format: 'string' | 'linebreaks' = 'string'
+) => {
   if (!contactUnit) return undefined;
   try {
     const availability: string[] = [];
@@ -25,11 +28,11 @@ export const OpeningHours = (contactUnit?: ContactUnitFields) => {
       });
     });
 
-    const availabilityJSX = availability.map((item, index) => (
-      <div key={index}>{item}</div>
-    ));
+    if (format === 'string') {
+      return availability.join(', ');
+    }
 
-    return availabilityJSX;
+    return availability.map((item, index) => <div key={index}>{item}</div>);
   } catch (err) {
     return undefined;
   }

@@ -118,6 +118,7 @@
   display: flex;
   gap: 0 px-to-rem(8);
 
+  /* stylelint-disable-next-line no-descending-specificity */
   & > *:not(svg) {
     display: flex;
     flex-direction: column;

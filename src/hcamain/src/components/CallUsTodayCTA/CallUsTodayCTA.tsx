@@ -79,7 +79,7 @@ export const Default = (props: DefaultProps): JSX.Element => {
       }
     );
 
-    const availabilityString = OpeningHours(contactUnit) || [];
+    const availabilityString = OpeningHours(contactUnit, 'linebreaks') || [];
 
     console.log('availabilityString', availabilityString);
     contacts.push({
