@@ -62,7 +62,7 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 5, 4);
+  @include responsive-grid-span(6, 5, 5, 5);
 
   max-width: px-to-rem(535);
 }
@@ -94,8 +94,8 @@
 
   @include media(screen-l) {
     display: grid;
-    grid: auto auto / 1.25fr 1fr;
-    gap: px-to-rem(8) px-to-rem(24);
+    grid: auto auto / 1fr 1fr;
+    gap: $spacing-2 $spacing-5;
   }
 
   svg {

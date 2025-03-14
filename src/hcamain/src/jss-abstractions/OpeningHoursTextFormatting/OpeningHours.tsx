@@ -25,9 +25,11 @@ export const OpeningHours = (contactUnit?: ContactUnitFields) => {
       });
     });
 
-    const availabilityString = availability.join(', ');
+    const availabilityJSX = availability.map((item, index) => (
+      <div key={index}>{item}</div>
+    ));
 
-    return availabilityString;
+    return availabilityJSX;
   } catch (err) {
     return undefined;
   }
