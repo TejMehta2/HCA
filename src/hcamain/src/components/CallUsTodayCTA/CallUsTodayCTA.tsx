@@ -90,8 +90,6 @@ export const Default = (props: DefaultProps): JSX.Element => {
     });
   });
 
-  console.log('CallUsTodayCTA props', props);
-
   return (
     <>
       <Button size="large" variation="outline">
