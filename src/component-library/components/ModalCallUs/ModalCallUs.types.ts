@@ -12,4 +12,5 @@ export interface Contact {
 export interface ModalCallUsProps {
   contacts: Contact[];
   defaultOpen?: boolean;
+  contentVariation?: 'EqualSizeNumbers';
 }
