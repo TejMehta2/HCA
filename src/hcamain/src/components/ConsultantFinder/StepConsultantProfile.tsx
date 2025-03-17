@@ -228,9 +228,6 @@ export const Default = (props: StepProps): JSX.Element => {
     serverSideData?.ProfileJson?.suffix || ''
   }`;
   const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
-  const pageTitle = `${shortName} - ${
-    topSpecialty[0]?.name || ''
-  } at HCA Healthcare UK`;
 
   // Refs for each tab section
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -267,11 +264,12 @@ export const Default = (props: StepProps): JSX.Element => {
         .catch((error) => {
           console.warn(error);
         });
+
       // data layer for each page render
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'consultantFinder',
-        consultantName: name,
+        consultantName: shortName,
         consultantSpecialty: topSpecialty[0]?.name || '',
         consultantReviews:
           serverSideData?.ProfileJson?.review?.reviewsTotal || 0,
@@ -421,7 +419,7 @@ export const Default = (props: StepProps): JSX.Element => {
               ></MultiplePhoneNumbers>
             </Modals>
             <Head>
-              <title>{pageTitle}</title>
+              <title>{title}</title>
               <link rel="canonical" href={canonicalURL} />
               <meta name="description" content={description} />
               <meta name="keywords" content={keywords} />
