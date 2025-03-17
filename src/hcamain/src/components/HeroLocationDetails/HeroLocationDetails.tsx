@@ -78,7 +78,7 @@ export const Default = (props: HeroLocationDetailsProps): JSX.Element => {
   let availabilityString;
   props.fields?.data?.contextItem?.contactUnits?.contactUnitList?.map(
     (contactUnit: ContactUnitFields) => {
-      availabilityString = OpeningHours(contactUnit);
+      availabilityString = OpeningHours(contactUnit, 'linebreaks');
     }
   );
 
