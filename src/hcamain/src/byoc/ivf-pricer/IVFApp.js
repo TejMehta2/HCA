@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 //import './IVFApp.scss';
 import IvfCalculator from './components/IvfCalculator';
 import IvfCalculatorContextProvider from './context/IvfCalculatorContext';
+import useSWR from 'swr';
 
 function IVFApp() {
   return (
     <div>
       <div className="ivf-calculator">
-        <IvfCalculatorContextProvider>
-          <IvfCalculator />
+        <IvfCalculatorContextProvider suppressHydrationWarning>
+          <IvfCalculator/>
         </IvfCalculatorContextProvider>
       </div>
     </div>
@@ -24,8 +25,9 @@ FEAAS.registerComponent(IVFApp, {
   title: 'IVF Pricing Calculator',
   description: 'IVF pricing calculator app for Lister fertility',
   thumbnail:
-    'https://feaasstatic.blob.core.windows.net/assets/thumbnails/byoc.svg',
-  group: 'HCA-Configuration',
+    'https://feaasstatic.blob.core.windows.net/assets/thumbnails/byoc.svg', ///static/legacy/assets/images/ivfcalcprecalc.jpg
+    /*
+  group: 'IVF-Pricing-App-Parameters',
   required: ['firstName'],
   properties: {
     firstName: {
@@ -56,5 +58,6 @@ FEAAS.registerComponent(IVFApp, {
       'ui:widget': 'radio',
     },
   },
+*/
 });
 

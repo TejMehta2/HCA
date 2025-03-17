@@ -57,6 +57,7 @@ import iconMinusSmall from './assets-dist/Minus small.svg';
 import iconMinus from './assets-dist/Minus.svg';
 import iconMobile from './assets-dist/Mobile.svg';
 import iconOneOff from './assets-dist/One-off.svg';
+import iconPause from './assets-dist/Pause.svg';
 import iconPhone from './assets-dist/Phone.svg';
 import iconPin48 from './assets-dist/Pin 48.svg';
 import iconPin from './assets-dist/Pin.svg';
@@ -65,6 +66,7 @@ import iconPlusSmall from './assets-dist/Plus small.svg';
 import iconPlus from './assets-dist/Plus.svg';
 import iconPrint from './assets-dist/Print.svg';
 import iconQuestion from './assets-dist/Question.svg';
+import iconQuotes from './assets-dist/Quotes.svg';
 import iconRedo from './assets-dist/Redo.svg';
 import iconReset from './assets-dist/Reset.svg';
 import iconSearch from './assets-dist/Search.svg';
@@ -140,6 +142,7 @@ export type IconName =
   | 'iconMinus'
   | 'iconMobile'
   | 'iconOneOff'
+  | 'iconPause'
   | 'iconPhone'
   | 'iconPin48'
   | 'iconPin'
@@ -148,6 +151,7 @@ export type IconName =
   | 'iconPlus'
   | 'iconPrint'
   | 'iconQuestion'
+  | 'iconQuotes'
   | 'iconRedo'
   | 'iconReset'
   | 'iconSearch'
@@ -223,6 +227,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconMinus', iconMinus],
   ['iconMobile', iconMobile],
   ['iconOneOff', iconOneOff],
+  ['iconPause', iconPause],
   ['iconPhone', iconPhone],
   ['iconPin48', iconPin48],
   ['iconPin', iconPin],
@@ -231,6 +236,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconPlus', iconPlus],
   ['iconPrint', iconPrint],
   ['iconQuestion', iconQuestion],
+  ['iconQuotes', iconQuotes],
   ['iconRedo', iconRedo],
   ['iconReset', iconReset],
   ['iconSearch', iconSearch],
