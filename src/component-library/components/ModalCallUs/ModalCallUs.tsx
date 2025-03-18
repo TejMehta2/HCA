@@ -25,30 +25,37 @@ const ModalCallUs = (
         <Text variation={'subheading-1'}>{contact?.title}</Text>
       </div>
 
-      <div className={styles.mobile} data-navigation-type="phoneCTAClick">
-        {isMain ? (
-          <Button size={'small'} variation={'full'}>
-            <a href={`tel:${contact?.phone?.number}`}>
-              <Icons iconName="iconPhone" />
-              {contact?.phone?.text}
-            </a>
-          </Button>
-        ) : (
-          <TextButton>
-            <a href={`tel:${contact?.phone?.number}`}>
-              <Icons iconName="iconPhone" />
-              {contact?.phone?.text}
-            </a>
-          </TextButton>
-        )}
-      </div>
-      <div className={styles.desktop}>
-        <div className={styles.link}>
-          <Text variation={isMain ? 'display-1' : 'display-5'}>
-            <a href={`tel:${contact?.phone?.number}`}>{contact?.phone?.text}</a>
-          </Text>
-        </div>
-      </div>
+      {contact?.phone && (
+        <>
+          <div className={styles.mobile} data-navigation-type="phoneCTAClick">
+            {isMain ? (
+              <Button size={'small'} variation={'full'}>
+                <a href={`tel:${contact?.phone?.number}`}>
+                  <Icons iconName="iconPhone" />
+                  {contact?.phone?.text}
+                </a>
+              </Button>
+            ) : (
+              <TextButton>
+                <a href={`tel:${contact?.phone?.number}`}>
+                  <Icons iconName="iconPhone" />
+                  {contact?.phone?.text}
+                </a>
+              </TextButton>
+            )}
+          </div>
+
+          <div className={styles.desktop}>
+            <div className={styles.link}>
+              <Text variation={isMain ? 'display-1' : 'display-5'}>
+                <a href={`tel:${contact?.phone?.number}`}>
+                  {contact?.phone?.text}
+                </a>
+              </Text>
+            </div>
+          </div>
+        </>
+      )}
       {contact?.availability && (
         <div className={styles.availability}>
           <Icons iconName={'iconClock'} />
