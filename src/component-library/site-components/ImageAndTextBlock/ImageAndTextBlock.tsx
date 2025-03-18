@@ -65,9 +65,9 @@ const ImageAndTextBlock = (props: ImageAndTextBlockProps): JSX.Element => {
               {children && <div className={styles.children}>{children}</div>}
 
               {ctas && (
-                <div className={styles['ctas']}>
-                  <Themes theme={theme}>{ctas}</Themes>
-                </div>
+                <Themes theme={theme}>
+                  <div className={styles['ctas']}>{ctas}</div>
+                </Themes>
               )}
 
               {ratings && <div className={styles.ratings}>{ratings}</div>}

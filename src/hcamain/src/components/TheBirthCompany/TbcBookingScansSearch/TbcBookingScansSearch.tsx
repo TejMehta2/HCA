@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
 import {
   TbcBookingScansSearchProps,
   TbcService,
+  TbcServiceExtra,
 } from './TbcBookingScansSearch.types';
-import SearchBar from '@component-library/components/SearchBar/SearchBar';
 import Button from '@component-library/core-components/Button/Button';
+import Search from '@component-library/the-birth-company/Search/Search';
+import {
+  TheBirthCompanyContext,
+  TheBirthCompanyContextProvider,
+} from 'src/context/theBirthCompanyContext';
+import Text from '@component-library/foundation/Text/Text';
+import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
+import Container from '@component-library/foundation/Containers/Container';
 
 // Function to help process total price when x% of surcharge needs to be added
 // const applyPercentage = (value: string, baseValue: number): number => {
@@ -55,54 +64,102 @@ const TbcBookingScansSearchDefaultComponent = (
 };
 
 export const Default = (props: TbcBookingScansSearchProps): JSX.Element => {
+  return (
+    <TheBirthCompanyContextProvider>
+      <TbcSearch {...props} />
+    </TheBirthCompanyContextProvider>
+  );
+};
+
+const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
+  const {
+    searchString,
+    keywordId,
+    extrasList,
+    selectedExtras,
+    setSelectedExtras,
+  } = useContext(TheBirthCompanyContext);
+
+  const router = useRouter();
+
   if (!props?.fields?.data?.item) {
     return <TbcBookingScansSearchDefaultComponent {...props} />;
   }
 
-  console.log('props.fields.data.item', props.fields.data.item);
   const groupedServices = groupByArea(
     props.fields.data.item.servicesFolder.targetItem.children.results
   );
 
+  const handleSubmit = () => {
+    const baseURLResults =
+      props?.fields?.data?.item?.startBookingCTA.jsonValue?.value.href;
+
+    const extras = selectedExtras.map((item) => `&extraId=${item}`).join('');
+    router.push(`${baseURLResults}?scanId=${keywordId}${extras}`);
+  };
+
+  let extras;
+  if (keywordId && searchString) {
+    extras = (
+      <>
+        <Container marginBottom="spacing-4">
+          <Text variation="body-bold-extra-large" tag="p">
+            {props.fields?.data?.item?.extrasLabel?.value}
+          </Text>
+        </Container>
+        {extrasList.map((extra: TbcServiceExtra, index) => {
+          const label = `${extra.serviceExtraName.value} (${formatPrice(
+            extra.price.value
+          )})`;
+
+          return (
+            <Container key={index} marginBottom="spacing-2">
+              <Checkbox
+                id={index.toString()}
+                label={label}
+                name={extra.serviceExtraName.value}
+                value={extra.serviceExtraName.value}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.checked) {
+                    setSelectedExtras([...selectedExtras, extra.id]);
+                  } else {
+                    setSelectedExtras(
+                      selectedExtras.filter((a) => a !== extra.id)
+                    );
+                  }
+                }}
+              />
+            </Container>
+          );
+        })}
+      </>
+    );
+  }
+
   return (
-    <Themes theme={props.params?.Theme || 'B-HCA-Navy-Blue'}>
-      <SearchBar
-        preventSubmitOnSuggestion={true}
-        name="input"
-        placeholder={props.fields?.data?.item?.searchPhrasePlaceholder?.value}
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
+      <Search
+        placeholder={
+          props?.fields?.data?.item?.searchPhrasePlaceholder?.value ||
+          'Type in a scan or test...'
+        }
+        dropdownColumn1Label={Object.keys(groupedServices)[0]}
+        dropdownColumn1List={Object.values(groupedServices)[0] || []}
+        dropdownColumn2Label={Object.keys(groupedServices)[1]}
+        dropdownColumn2List={Object.values(groupedServices)[1] || []}
       />
-      <p>{props.fields?.data?.item?.extrasLabel?.value}</p>
-      <Button size={'large'} variation={'full'}>
-        <button type="submit">
-          {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
-        </button>
-      </Button>
-      <div className="services">
-        {Object.entries(groupedServices).map(([area, services]) => (
-          <div key={area} className="service-group">
-            <br />
-            <i>area:{area}</i>
-            {services.map((service) => (
-              <div key={service.id} className="service">
-                <strong>{service.serviceName.value}</strong>
-                {service.extras.targetItems.length > 0 ? (
-                  <ul className="extras">
-                    {service.extras.targetItems.map((extra) => (
-                      <li key={extra.id}>
-                        {extra.serviceExtraName.value}
-                        <br /> - Price:{formatPrice(extra.price.value)}
-                        <br /> - Duration: {extra.duration.value} mins
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No extras available</p>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      {extras}
+      <Container width="fit" marginTop="spacing-5">
+        <Button size={'large'} variation={'full'}>
+          <button
+            type="submit"
+            disabled={keywordId === 0 ? true : false}
+            onClick={handleSubmit}
+          >
+            {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
+          </button>
+        </Button>
+      </Container>
     </Themes>
   );
 };
