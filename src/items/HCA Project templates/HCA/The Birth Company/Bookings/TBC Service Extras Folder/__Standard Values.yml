@@ -1,0 +1,37 @@
+﻿---
+ID: "1ea180ef-ed0b-4846-afc3-eb463947ccc8"
+Parent: "75cbe765-be4a-4f6f-b246-05df2d8d7973"
+Template: "75cbe765-be4a-4f6f-b246-05df2d8d7973"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/TBC Service Extras Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {75CBE765-BE4A-4F6F-B246-05DF2D8D7973}
+    {0CD0890A-F16A-497F-A9BC-B9E614B0AD4E}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250312T182036Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "471c0a05-ca5b-4a3b-8c13-01a4462584c8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250312T193248Z

@@ -63,7 +63,7 @@ export const Default = (props: LandingPageHeaderProps): JSX.Element => {
           availabilityString
             ? {
                 icon: <Icons iconName="iconClock" />,
-                text: availabilityString,
+                text: availabilityString as string,
               }
             : undefined
         }

@@ -1,18 +1,8 @@
 ﻿---
-ID: "0a717c8b-d1dc-4ba4-bfe0-1e82190afd60"
-Parent: "0e4e9b08-90cb-4d8f-9905-fe48a10e9770"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/The Birth Company/ProgressBar/ProgressBar/Steps/HCALogo
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: Image
-- ID: "b118496a-0f78-4a27-b55f-0a6c4b0b0fe1"
-  Hint: Default value
-  Value: 
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 50
+ID: "0e4e9b08-90cb-4d8f-9905-fe48a10e9770"
+Parent: "d97b73d1-a86d-4389-baf5-2cd1e33b863f"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/ProgressBar/ProgressBar/Steps
 Languages:
 - Language: en
   Versions:
@@ -20,7 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240320T120932Z
+      Value: 20240320T114322Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -31,7 +21,7 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f5017c4f-702a-4333-b09d-0a2b71cb821d"
+      Value: "94ed717f-d1f5-4f4a-97cf-0b91a1c4ae5a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -43,7 +33,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240320T120932Z
+      Value: 20240320T114322Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -54,11 +44,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "77780ee8-02ff-49e3-9421-9c52c2ebf2d8"
+      Value: "163ac0e2-a3b9-46a1-8536-07936df9d62a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250226T174641Z
+      Value: 20250226T171428Z

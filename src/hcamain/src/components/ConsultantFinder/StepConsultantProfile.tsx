@@ -57,7 +57,6 @@ import {
 import axios, { CancelTokenSource } from 'axios';
 import Head from 'next/head';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
-import Script from 'next/script';
 import { FINDER_PROFILE_CANONICAL_BASE_URL } from 'lib/constants';
 import Modals from '@component-library/components/Modals/Modals';
 import MultiplePhoneNumbers from '@component-library/consultant-finder/MultiplePhoneNumbers/MultiplePhoneNumbers';
@@ -214,6 +213,22 @@ export const Default = (props: StepProps): JSX.Element => {
     props.rendering.uid
   );
 
+  // top specialty
+  const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
+    (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
+  );
+
+  const id = props.params.RenderingIdentifier;
+  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${
+    serverSideData?.ProfileJson?.lastName || ''
+  }`;
+  const name = `${serverSideData?.ProfileJson?.title || ''} ${
+    serverSideData?.ProfileJson?.firstName || ''
+  } ${serverSideData?.ProfileJson?.lastName || ''} ${
+    serverSideData?.ProfileJson?.suffix || ''
+  }`;
+  const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
+
   // Refs for each tab section
   const aboutRef = useRef<HTMLDivElement>(null);
   const locationsRef = useRef<HTMLDivElement>(null);
@@ -222,7 +237,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   //console.log('bef next apt useEffect', doctifyLoaded);
   useEffect(() => {
-    //console.log('next apt useEffect', doctifyLoaded);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     if (!doctifyLoaded) {
       setDoctifyLoaded(true); // only want to call this once when the server side has loaded - deps are serverSideData
@@ -250,6 +264,16 @@ export const Default = (props: StepProps): JSX.Element => {
         .catch((error) => {
           console.warn(error);
         });
+
+      // data layer for each page render
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'consultantFinder',
+        consultantName: shortName,
+        consultantSpecialty: topSpecialty[0]?.name || '',
+        consultantReviews:
+          serverSideData?.ProfileJson?.review?.reviewsTotal || 0,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serverSideData]); // only trigger fetch on serverside data update
@@ -301,11 +325,6 @@ export const Default = (props: StepProps): JSX.Element => {
     }
   };
 
-  // top specialty
-  const topSpecialty = serverSideData?.ProfileJson?.keywords?.filter(
-    (item: any) => item.parentName === 'ABSTRACT_TOP_LEVEL_KEYWORD'
-  );
-
   // languages
   const languagesList: string[] = [];
   serverSideData?.ProfileJson?.languages?.forEach((item: any) => {
@@ -335,17 +354,6 @@ export const Default = (props: StepProps): JSX.Element => {
   const conditions = serverSideData?.ProfileJson?.keywords.filter(
     (item: any) => item.keywordType === 'condition'
   );
-
-  const id = props.params.RenderingIdentifier;
-  const shortName = `${serverSideData?.ProfileJson?.firstName || ''} ${
-    serverSideData?.ProfileJson?.lastName || ''
-  }`;
-  const name = `${serverSideData?.ProfileJson?.title || ''} ${
-    serverSideData?.ProfileJson?.firstName || ''
-  } ${serverSideData?.ProfileJson?.lastName || ''} ${
-    serverSideData?.ProfileJson?.suffix || ''
-  }`;
-  const title = `${name} - ${topSpecialty[0]?.name || ''} at HCA Healthcare UK`;
 
   const profileImage =
     serverSideData?.ProfileJson?.images?.logo ||
@@ -432,24 +440,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 }}
               ></script>
             </Head>
-            {
-              /* HWPD-3463 - data layer */
-              <Script
-                id="cf-gtm-info"
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                  __html: `window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                'event': 'consultantFinder',
-                'consultantName': '${name}',
-                'consultantSpecialty': '${topSpecialty[0]?.name || ''}',
-                'consultantReviews': '${
-                  serverSideData?.ProfileJson?.review?.reviewsTotal || 0
-                }'
-                });`,
-                }}
-              ></Script>
-            }
             {/* top section */}
             <div>
               <Breadcrumbs

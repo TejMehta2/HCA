@@ -24,6 +24,7 @@ const redirectMiddleware = async (req: NextRequest) => {
       if (response.ok) {
         //&& (await response.bodyUsed)
         const text1 = await response.text();
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let data: any = {};
         if (text1.length > 0) {
@@ -40,15 +41,17 @@ const redirectMiddleware = async (req: NextRequest) => {
           }
         }
       } else {
-        // console.log(`redirect 5:`, JSON.stringify(response));
+        // console.log('redirect 5:', JSON.stringify(response));
         throw response.statusText;
       }
     } catch (error) {
+      // console.log('Redirect Middleware error: ', error);
       process.env.NODE_ENV === 'development' &&
         console.error('Redirect Middleware : ', error);
     }
   }
-  return;
+  // console.log('Redirect Middleware end');
+  return NextResponse.next();
 };
 
 export default redirectMiddleware;

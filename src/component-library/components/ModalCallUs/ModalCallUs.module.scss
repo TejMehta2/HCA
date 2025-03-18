@@ -84,7 +84,7 @@
   align-items: center;
   padding-top: $spacing-7;
   padding-bottom: $spacing-7;
-  gap: px-to-rem(60) $spacing-7;
+  gap: $spacing-7;
   flex-direction: column;
 
   hr {
@@ -113,13 +113,38 @@
   }
 
   .contact {
-    gap: $spacing-2;
     max-width: px-to-rem(362);
     width: 100%;
+  }
+
+  .title {
+    margin-bottom: $spacing-2;
   }
 
   .availability {
     display: grid;
     grid: auto/ px-to-rem(24) 1fr;
+    margin-top: $spacing-2;
+
+    @include media(screen-l) {
+      margin-top: $spacing-4;
+    }
+
+    & > *:not(svg) {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+  }
+}
+
+.equal-size {
+  .additional {
+    margin-top: 0;
+    align-items: flex-start;
+  }
+
+  .availability {
+    text-align: left;
   }
 }
