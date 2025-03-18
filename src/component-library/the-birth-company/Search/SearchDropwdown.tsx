@@ -29,7 +29,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
         <div className={styles['search-dropdown-col']}>
           <div className={styles['search-dropdown-header']}>
             <Text tag="h2" variation="subheading-2">
-              {props.dropdownColumn1Label || 'SPECIALITIES'}
+              {props.dropdownColumn1Label || 'Gynaecological scans'}
             </Text>
           </div>
           <ul>
@@ -59,7 +59,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
         <div className={styles['search-dropdown-col']}>
           <div className={styles['search-dropdown-header']}>
             <Text tag="p" variation="subheading-2">
-              {props.dropdownColumn2Label || 'CONDITIONS/ TREATMENTS'}
+              {props.dropdownColumn2Label || 'Pregnancy scans'}
             </Text>
           </div>
           <ul>
