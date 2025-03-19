@@ -98,13 +98,20 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
   const [error, setError] = useState(false);
 
   const searchParams = useSearchParams();
-  const scanId = searchParams.get('scanId');
+  const paramScanId = searchParams.get('scanId');
+  const paramLocationId = searchParams.get('locationId');
 
-  // Get all search params
-  let allSearchParams = '';
-  searchParams.forEach((value, key) => {
-    allSearchParams += `${key}=${value}&`;
-  });
+  // Set params for next page
+  const nextPageParams = new URLSearchParams(searchParams.toString());
+  if (selectedLocation) {
+    nextPageParams.set('locationId', selectedLocation);
+  }
+
+  useEffect(() => {
+    if (paramLocationId) {
+      setSelectedLocation(paramLocationId);
+    }
+  }, [paramLocationId, setSelectedLocation]);
 
   useEffect(() => {
     window.scrollTo({
@@ -116,7 +123,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       return;
     }
 
-    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${scanId}`;
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${paramScanId}`;
 
     axios
       .get(requestURL)
@@ -129,7 +136,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router.isReady, scanId]);
+  }, [router.isReady, paramScanId]);
 
   if (props.fields) {
     return (
@@ -233,7 +240,8 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                     disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?${allSearchParams}locationId=${selectedLocation}`
+                        `${props?.fields?.NextLink?.value
+                          ?.href}?${nextPageParams.toString()}`
                       )
                     }
                   >
