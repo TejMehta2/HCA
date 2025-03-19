@@ -32,6 +32,7 @@ import {
   TheBirthCompanyContext,
   TheBirthCompanyContextProvider,
 } from 'src/context/theBirthCompanyContext';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 interface Fields {
   HCALogo: ImageField;
@@ -91,7 +92,6 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
     TheBirthCompanyContext
   );
   const id = props.params.RenderingIdentifier;
-  //console.log('step location', props.fields);
   const router = useRouter();
   const [locations, setLocations] = useState<LocationFields[]>([]);
   const [loading, seLoading] = useState(true);
@@ -99,9 +99,12 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
 
   const searchParams = useSearchParams();
   const scanId = searchParams.get('scanId');
-  // const allParams = searchParams.getAll();
 
-  // console.log(props);
+  // Get all search params
+  let allSearchParams = '';
+  searchParams.forEach((value, key) => {
+    allSearchParams += `${key}=${value}&`;
+  });
 
   useEffect(() => {
     window.scrollTo({
@@ -129,20 +132,6 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       });
   }, [router.isReady, scanId]);
 
-  function useGetAllSearchParams() {
-    const searchParams = useSearchParams();
-    let params = '';
-
-    searchParams.forEach((value, key) => {
-      params += `${key}=${value}&`;
-    });
-
-    return params;
-  }
-
-  const allSearchParams = useGetAllSearchParams();
-  console.log(allSearchParams);
-
   if (props.fields) {
     return (
       <div
@@ -166,7 +155,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                   'Please select a location'}
               </Text>
             </Headline>
-
+            {loading && <LoaderCF />}
             {!loading && !error && (
               <LocationCardBlock
                 cta={
