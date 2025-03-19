@@ -60,6 +60,7 @@ interface LocationFields {
   id: string;
   name: string;
   description: string;
+  nearestAvailability: string;
 }
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => {
@@ -206,12 +207,14 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                         setSelectedLocation(location.id);
                       }}
                     >
-                      <span>
-                        <Icons iconName="iconClock" />
-                        <Text variation="body-small" tag="p">
-                          Available Sat 21 Oct 2023
-                        </Text>
-                      </span>
+                      {location.nearestAvailability && (
+                        <span>
+                          <Icons iconName="iconClock" />
+                          <Text variation="body-small" tag="p">
+                            Available Sat 21 Oct 2023
+                          </Text>
+                        </span>
+                      )}
                     </LocationCard>
                   ))}
                 </>
