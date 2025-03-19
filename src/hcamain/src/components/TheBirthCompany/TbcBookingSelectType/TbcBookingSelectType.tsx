@@ -7,7 +7,6 @@ import Link from 'next/link';
 import axios from 'axios';
 import {
   Image as JssImage,
-  //RichText as JssRichText,
   Text as JssText,
   ImageField,
   Field,
