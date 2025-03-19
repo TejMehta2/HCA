@@ -116,12 +116,11 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       return;
     }
 
-    const requestURL = `https://digital-int-dev.hcahealthcareqa.co.uk/tbcbooking/locations?scanid=${scanId}`;
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${scanId}`;
 
     axios
       .get(requestURL)
       .then((res) => {
-        console.log('locations results', res);
         seLoading(false);
         setError(false);
         setLocations(res?.data || []);
