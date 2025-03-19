@@ -2,9 +2,11 @@
 // Template finder component
 // Based on src\hcamain\src\components\ConsultantFinder\StepLocationSelect.tsx
 
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import axios from 'axios';
 import {
   Image as JssImage,
   ImageField,
@@ -23,6 +25,13 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
+import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
+import LocationCardBlock from '@component-library/the-birth-company/LocationCardBlock/LocationCardBlock';
+
+import {
+  TheBirthCompanyContext,
+  TheBirthCompanyContextProvider,
+} from 'src/context/theBirthCompanyContext';
 
 interface Fields {
   HCALogo: ImageField;
@@ -46,6 +55,12 @@ type StepProps = {
   fields: Fields;
 };
 
+interface LocationFields {
+  id: string;
+  name: string;
+  description: string;
+}
+
 const StepDefaultComponent = (props: StepProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
@@ -64,17 +79,69 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => {
 };
 
 export const Default = (props: StepProps): JSX.Element => {
-  // const {
-  //   selectedLocation,
-  //   setSelectedTypeOfAppointment,
-  //   setConsultantGUID,
-  //   setHcaConsultantID,
-  //   setConsultantName,
-  //   setConsultantMainSpecialty,
-  // } = useContext(ConsultantFinderContext);
+  return (
+    <TheBirthCompanyContextProvider>
+      <TbcLocations {...props} />
+    </TheBirthCompanyContextProvider>
+  );
+};
+
+export const TbcLocations = (props: StepProps): JSX.Element => {
+  const { selectedLocation, setSelectedLocation } = useContext(
+    TheBirthCompanyContext
+  );
   const id = props.params.RenderingIdentifier;
   //console.log('step location', props.fields);
   const router = useRouter();
+  const [locations, setLocations] = useState<LocationFields[]>([]);
+  const [loading, seLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const searchParams = useSearchParams();
+  const scanId = searchParams.get('scanId');
+  // const allParams = searchParams.getAll();
+
+  // console.log(props);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    const requestURL = `https://digital-int-dev.hcahealthcareqa.co.uk/tbcbooking/locations?scanid=${scanId}`;
+
+    axios
+      .get(requestURL)
+      .then((res) => {
+        console.log('locations results', res);
+        seLoading(false);
+        setError(false);
+        setLocations(res?.data || []);
+      })
+      .catch((error) => {
+        setError(true);
+        console.log(error);
+      });
+  }, [router.isReady, scanId]);
+
+  function useGetAllSearchParams() {
+    const searchParams = useSearchParams();
+    let params = '';
+
+    searchParams.forEach((value, key) => {
+      params += `${key}=${value}&`;
+    });
+
+    return params;
+  }
+
+  const allSearchParams = useGetAllSearchParams();
+  console.log(allSearchParams);
 
   if (props.fields) {
     return (
@@ -100,29 +167,69 @@ export const Default = (props: StepProps): JSX.Element => {
               </Text>
             </Headline>
 
-            {props?.fields?.CantFindPhoneNumber?.value && (
-              <CantFind
-                title={
-                  <Text tag="p" variation="body-medium-large">
-                    {props?.fields?.CantFindBannerText?.value}
-                  </Text>
+            {!loading && !error && (
+              <LocationCardBlock
+                cta={
+                  props?.fields?.CantFindPhoneNumber?.value && (
+                    <CantFind
+                      contentVariation="the-birth-company"
+                      title={
+                        <Text tag="p" variation="body-medium-large">
+                          {props?.fields?.CantFindBannerText?.value}
+                        </Text>
+                      }
+                    >
+                      <TextButton>
+                        <a
+                          href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
+                            /\s/g,
+                            ''
+                          )}`}
+                        >
+                          <SitecoreSvg>
+                            {
+                              props?.fields?.CantFindIcon?.fields?.SvgMarkup
+                                ?.value
+                            }
+                          </SitecoreSvg>
+                          <span>
+                            {props?.fields?.CantFindPhoneNumber?.value}
+                          </span>
+                        </a>
+                      </TextButton>
+                    </CantFind>
+                  )
                 }
               >
-                <TextButton>
-                  <a
-                    href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
-                      /\s/g,
-                      ''
-                    )}`}
-                  >
-                    <SitecoreSvg>
-                      {props?.fields?.CantFindIcon?.fields?.SvgMarkup?.value}
-                    </SitecoreSvg>
-                    <span>{props?.fields?.CantFindPhoneNumber?.value}</span>
-                  </a>
-                </TextButton>
-              </CantFind>
+                <>
+                  {locations.map((location, index) => (
+                    <LocationCard
+                      key={index}
+                      selected={selectedLocation === location.id}
+                      name={
+                        <Text variation="body-bold-large">{location.name}</Text>
+                      }
+                      description={
+                        <Text variation="body-small">
+                          {location.description}
+                        </Text>
+                      }
+                      handleClick={() => {
+                        setSelectedLocation(location.id);
+                      }}
+                    >
+                      <span>
+                        <Icons iconName="iconClock" />
+                        <Text variation="body-small" tag="p">
+                          Available Sat 21 Oct 2023
+                        </Text>
+                      </span>
+                    </LocationCard>
+                  ))}
+                </>
+              </LocationCardBlock>
             )}
+
             <Navigation>
               <div>
                 <TextButton>
@@ -135,9 +242,11 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
-                    // disabled={selectedLocation.length === 0 ? true : false}
+                    disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
-                      router.push(`${props?.fields?.NextLink?.value?.href}`)
+                      router.push(
+                        `${props?.fields?.NextLink?.value?.href}?${allSearchParams}locationId=${selectedLocation}`
+                      )
                     }
                   >
                     <span>
