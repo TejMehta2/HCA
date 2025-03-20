@@ -64,7 +64,11 @@ export interface IHCAConfig {
 
   // General
   nextJSRevalidationProfilePageSeconds: number;
-
+  generalConsultantBookingNumber: string;
+  hQAddressLocality: string;
+  hQAddressRegion: string;
+  hQPostalCode: string;
+  hQStreetAddress: string;
   //HCA API - Log email
   //aPI_HCA_LogEmail_BaseURL: string;
 }
@@ -193,6 +197,11 @@ async function _getHCAConfig(): Promise<IHCAConfig> {
 
     // General
     nextJSRevalidationProfilePageSeconds: 300,
+    generalConsultantBookingNumber: '+442070794344', // generic booking number
+    hQAddressLocality: 'London',
+    hQAddressRegion: 'London',
+    hQPostalCode: 'W1G 0PU',
+    hQStreetAddress: 'HCA Healthcare, 2 Cavendish Square',
   };
 
   HCAConfig = await getItemFromGraphQL(
