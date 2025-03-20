@@ -5,8 +5,8 @@ interface TheBirthCompanyContextType {
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   searchString: string;
   setSearchString: React.Dispatch<React.SetStateAction<string>>;
-  keywordId: number;
-  setKeywordId: React.Dispatch<React.SetStateAction<number>>;
+  keywordId: string;
+  setKeywordId: React.Dispatch<React.SetStateAction<string>>;
   extrasList: [];
   setExtrasList: React.Dispatch<React.SetStateAction<any>>;
   selectedExtras: [];
@@ -74,7 +74,7 @@ export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
     setMessage: () => {},
     searchString: '',
     setSearchString: () => {},
-    keywordId: 0,
+    keywordId: '0',
     setKeywordId: () => {},
     extrasList: [],
     setExtrasList: () => {},
@@ -148,7 +148,7 @@ export const TheBirthCompanyContextProvider = ({
     useState<string>('');
   const [searchStringPayment, setSearchStringPayment] = useState<string>('');
   const [consultantSlug, setConsultantSlug] = useState<string>('');
-  const [keywordId, setKeywordId] = useState<number>(0);
+  const [keywordId, setKeywordId] = useState<string>('0');
   const [extrasList, setExtrasList] = useState<any>([]);
   const [selectedExtras, setSelectedExtras] = useState<any>([]);
   const [isSelfPayment, setIsSelfPayment] = useState<boolean>(false);

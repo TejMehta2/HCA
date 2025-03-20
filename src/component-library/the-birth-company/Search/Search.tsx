@@ -28,7 +28,7 @@ const Search = (props: SearchProps): JSX.Element => {
 
   const handleClose = () => {
     setSearchString('');
-    setKeywordId(0);
+    setKeywordId('0');
     setExtrasList([]);
     setIsComponentVisible(false);
   };
@@ -38,7 +38,7 @@ const Search = (props: SearchProps): JSX.Element => {
     setExtrasList([]);
 
     setSearchString(e.target.value);
-    setKeywordId(0);
+    setKeywordId('0');
 
     /* Filter dropdown list based on user input */
     if (e.target.value.trim().length > 0) {
