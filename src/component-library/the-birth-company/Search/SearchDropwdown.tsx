@@ -13,7 +13,7 @@ const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const specialties = Object.values(props?.data[0]) || [];
   const conditionsProcedures = Object.values(props?.data[1]) || [];
 
-  const handleClick = (name: string, id: number, extras: []) => {
+  const handleClick = (name: string, id: string, extras: []) => {
     setSearchString(name);
     setKeywordId(id);
     setExtrasList(extras);

@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -74,13 +75,50 @@ export const Default = (props: TbcBookingScansSearchProps): JSX.Element => {
 const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
   const {
     searchString,
+    setSearchString,
     keywordId,
+    setKeywordId,
     extrasList,
+    setExtrasList,
     selectedExtras,
     setSelectedExtras,
   } = useContext(TheBirthCompanyContext);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Use params to preselect search and extras
+  useEffect(() => {
+    const paramScanId = searchParams.get('scanId');
+    const paramExtras = searchParams.getAll('extraId');
+
+    if (!paramScanId) {
+      return;
+    }
+    setKeywordId(paramScanId);
+
+    const preSelectedScan =
+      props.fields?.data?.item?.servicesFolder.targetItem.children.results.find(
+        (element) => element.id === paramScanId
+      );
+
+    if (preSelectedScan?.serviceName.value) {
+      setSearchString(preSelectedScan?.serviceName.value);
+    }
+
+    // Check for extras
+    if (preSelectedScan?.extras.targetItems) {
+      setExtrasList(preSelectedScan?.extras.targetItems);
+      setSelectedExtras(paramExtras);
+    }
+  }, [
+    searchParams,
+    setKeywordId,
+    setSearchString,
+    setExtrasList,
+    setSelectedExtras,
+    props.fields?.data?.item?.servicesFolder.targetItem.children.results,
+  ]);
 
   if (!props?.fields?.data?.item) {
     return <TbcBookingScansSearchDefaultComponent {...props} />;
@@ -99,7 +137,7 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
   };
 
   let extras;
-  if (keywordId && searchString) {
+  if (keywordId && searchString && extrasList) {
     extras = (
       <>
         <Container marginBottom="spacing-4">
@@ -119,6 +157,7 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
                 label={label}
                 name={extra.serviceExtraName.value}
                 value={extra.serviceExtraName.value}
+                checked={(selectedExtras as string[]).includes(extra.id)}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (e.target.checked) {
                     setSelectedExtras([...selectedExtras, extra.id]);
@@ -153,7 +192,7 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
         <Button size={'large'} variation={'full'}>
           <button
             type="submit"
-            disabled={keywordId === 0 ? true : false}
+            disabled={keywordId === '' ? true : false}
             onClick={handleSubmit}
           >
             {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}
