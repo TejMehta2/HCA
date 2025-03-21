@@ -279,13 +279,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 formErrors={formErrors}
                 name="pregnancyComments"
               />
-
-              {/*<DynamicSelectField
-                getField={getField}
-                formErrors={formErrors}
-                name="isUKResident"
-                onChange={(option) => setUkResident(option.text === 'Yes')}
-              /> */}
             </div>
 
             <div>
@@ -505,11 +498,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   }
                 </Text>
               }
-              bodyCopy={
-                <RichText>
-                  <JssRichText field={getField<TextTemplate>('consent').text} />
-                </RichText>
-              }
               preferences={
                 <Checkboxes>
                   {[
@@ -518,7 +506,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                     ).datasource.targetItem.children.results.map((option) => (
                       <Checkbox
                         key={option.name}
-                        label={option.displayName}
+                        label={option.value.value}
                         name={`${
                           getField<ListTemplate>('communicationMode').name
                         }`}
