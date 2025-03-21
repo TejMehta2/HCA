@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useState, ReactNode } from 'react';
-interface TheBirthCompanyContextType {
+export interface TheBirthCompanyContextType {
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   searchString: string;

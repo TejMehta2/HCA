@@ -7,4 +7,5 @@ export interface TextareaProps {
   helperText?: string;
   name?: string;
   defaultValue?: string;
+  showOptionalText?: boolean;
 }

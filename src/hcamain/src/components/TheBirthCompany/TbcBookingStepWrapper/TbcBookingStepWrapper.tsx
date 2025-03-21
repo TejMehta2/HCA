@@ -59,6 +59,7 @@ export const Default = (props: StepProps): JSX.Element => {
               <ProgressBar
                 currentPage={props?.fields?.CurrentStep?.value}
                 steps={props?.fields?.Steps}
+                tbc={true}
               ></ProgressBar>
             }
           ></HeaderLDB>

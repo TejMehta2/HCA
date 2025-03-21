@@ -28,9 +28,12 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from '../../PaymentForm/helpers/DynamicTextField';
-import Header from '../../PaymentForm/helpers/Header';
 import { useRouter } from 'next/router';
 import DynamicSelectField from '../../PaymentForm/helpers/DynamicSelectField';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import AppointmentSummary from '@component-library/the-birth-company/AppointmentSummary/AppointmentSummary';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
@@ -44,7 +47,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   // State
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
-  const [ukResident, setUkResident] = useState(true);
+  const [ukResident /* setUkResident */] = useState(true);
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -88,6 +91,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         const reducerInitialMap = name ? existingErrors : new Map();
         const errorMap = error.errors.reduce((map, error) => {
           const key = error.path[0] as string;
+          console.log(key);
           if (name?.length && key !== name) return map; // name doesn't match
           if (map.get(key)) return map; // field already has an error
           map.set(key, error.message); // set the error
@@ -170,9 +174,12 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return fields.find((field) => field.name === name) as T;
   };
 
+  console.log(props);
+  console.log(props.fields.data.item.pages.results[0].children.results);
+
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
       <Themes theme="A-HCA-White">
         <form
@@ -196,7 +203,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               </Text>
             }
             copy={
-              <Text variation={'body-large'} tag="span">
+              <Text variation={'body-extra-large'} tag="span">
                 <RichText>
                   <JssRichText
                     field={
@@ -210,37 +217,138 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                 </RichText>
               </Text>
             }
+            aside={
+              <CFAside>
+                <AppointmentSummary
+                  title={'Appointment summary'}
+                  locationTitle={'Location'}
+                  location={'London'}
+                  appointmentTitle={'Appointment'}
+                  appointment={`With Sonographer`}
+                  dateTitle={'Date & time'}
+                  date={`Friday 04 Nov at 10:30am (30 min)`}
+                  priceTitle={`Price to pay`}
+                  price={`£340`}
+                />
+                <NeedHelp
+                  headline={'Need help?'}
+                  subheadline={'General enquiries'}
+                  phoneNumber={'020 3797 7236'}
+                  workingHoursHeadline={'Opening hours'}
+                  workingHours={'Mon - Fri'}
+                  workingHoursTime={'8am - 6pm'}
+                />
+              </CFAside>
+            }
           >
             <div>
               <Text variation={'heading-1'}>
-                {getField<SectionTitleTemplate>('Patient details').title.value}
+                {
+                  getField<SectionTitleTemplate>('About the pregnancy').title
+                    .value
+                }
               </Text>
 
               <DynamicTextField
                 getField={getField}
                 formErrors={formErrors}
-                name="invoiceNumber"
+                name="lastMenstrualPeriod"
+                type="date"
               />
+
+              <DynamicTextField
+                getField={getField}
+                formErrors={formErrors}
+                name="estimatedDueDate"
+              />
+
+              <DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="hadAnUltrasoundScan"
+              />
+
+              <DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="hadAPositivePregnancyTest"
+              />
+
+              <DynamicTextArea
+                getField={getField}
+                formErrors={formErrors}
+                name="pregnancyComments"
+              />
+
+              {/*<DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="isUKResident"
+                onChange={(option) => setUkResident(option.text === 'Yes')}
+              /> */}
+            </div>
+
+            <div>
+              <Text variation={'heading-1'}>
+                {getField<SectionTitleTemplate>('Patient details').title.value}
+              </Text>
+
               <DynamicSelectField
                 getField={getField}
                 formErrors={formErrors}
                 name="title"
               />
+
+              <DynamicSelectField
+                getField={getField}
+                formErrors={formErrors}
+                name="ethnicity"
+              />
+
               <DynamicTextField
                 getField={getField}
                 formErrors={formErrors}
                 name="firstName"
               />
+
               <DynamicTextField
                 getField={getField}
                 formErrors={formErrors}
                 name="lastName"
               />
+
+              <DynamicTextField
+                getField={getField}
+                formErrors={formErrors}
+                name="dateOfBirth"
+                type="date"
+              />
+
               <DynamicSelectField
                 getField={getField}
                 formErrors={formErrors}
-                name="isUKResident"
-                onChange={(option) => setUkResident(option.text === 'Yes')}
+                name="returningPatient"
+              />
+            </div>
+
+            <div>
+              <Text variation={'body-bold-extra-large'}>
+                {getField<SectionTitleTemplate>('Contact details').title.value}
+              </Text>
+
+              <DynamicTextField
+                getField={getField}
+                formErrors={formErrors}
+                name="email"
+                type="email"
+              />
+              <PhoneField
+                label={getField<InputTemplate>('telephone').title.value}
+                name="telephone"
+                error={formErrors.get('telephone')}
+                helpText={
+                  getField<InputTemplate>('telephone')?.helperText?.value
+                }
               />
 
               <AddressFinder
@@ -296,40 +404,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                     />
                   </>
                 )}
-              />
-            </div>
-
-            <div>
-              <Text variation={'heading-1'}>
-                {getField<SectionTitleTemplate>('Contact details').title.value}
-              </Text>
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="email"
-                type="email"
-              />
-              <PhoneField
-                label={getField<InputTemplate>('telephone').title.value}
-                name="telephone"
-                error={formErrors.get('telephone')}
-                helpText={
-                  getField<InputTemplate>('telephone')?.helperText?.value
-                }
-              />
-            </div>
-
-            <div>
-              {getField<SectionTitleTemplate>('Invoice amount').title.value && (
-                <Text variation={'heading-1'}>
-                  {getField<SectionTitleTemplate>('Invoice amount').title.value}
-                </Text>
-              )}
-
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="totalInvoice"
               />
 
               <Checkbox

@@ -8,4 +8,5 @@ export interface ProgressBarProps {
   slug?: string;
   gmcNumber?: string;
   reviewsTotal?: number | null;
+  tbc?: boolean;
 }

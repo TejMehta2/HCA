@@ -1,32 +1,30 @@
-import TextField from '@component-library/core-components/form/basic/TextField/TextField';
+import TextArea from '@component-library/core-components/Textarea/Textarea';
 import { InputTemplate } from '../PaymentForm.types';
 
-const DynamicTextField = ({
+const DynamicTextArea = ({
   name,
-  type = 'text',
   getField,
   formErrors,
   defaultValue,
 }: {
   name: string;
-  type?: 'text' | 'email' | 'date';
-  defaultValue?: string;
   getField: <T>(name: string) => T;
   formErrors: Map<string, string>;
+  defaultValue?: string;
 }) => {
   const field = getField<InputTemplate>(name);
   if (!field) return <></>;
   return (
-    <TextField
+    <TextArea
+      id={name}
       label={field?.title.value}
       name={name}
-      error={formErrors?.get(name)}
-      type={type}
+      errorMessage={formErrors?.get(name)}
       defaultValue={defaultValue || field?.defaultValue?.value}
-      placeholder={field?.placeholderText?.value}
-      helpText={field?.helperText?.value}
+      helperText={field?.helperText?.value}
+      showOptionalText={false}
     />
   );
 };
 
-export default DynamicTextField;
+export default DynamicTextArea;

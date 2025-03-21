@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useState, ReactNode } from 'react';
-interface ConsultantFinderContextType {
+export interface ConsultantFinderContextType {
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   searchString: string;
