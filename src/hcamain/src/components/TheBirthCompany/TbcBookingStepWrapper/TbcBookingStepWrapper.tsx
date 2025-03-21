@@ -12,7 +12,7 @@ import {
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 interface Fields {
@@ -59,7 +59,6 @@ export const Default = (props: StepProps): JSX.Element => {
               <ProgressBar
                 currentPage={props?.fields?.CurrentStep?.value}
                 steps={props?.fields?.Steps}
-                tbc={true}
               ></ProgressBar>
             }
           ></HeaderLDB>

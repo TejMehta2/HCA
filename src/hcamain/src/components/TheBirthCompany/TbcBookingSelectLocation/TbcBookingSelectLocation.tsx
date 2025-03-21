@@ -17,7 +17,7 @@ import {
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import Container from '@component-library/foundation/Containers/Container';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
