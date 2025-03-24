@@ -6,6 +6,15 @@
   @include responsive-container;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+
+  .wrapper {
+    padding: 0;
+  }
+}
+
 .wrapper {
   color: var(--text);
   padding: $spacing-8 0;

@@ -19,6 +19,9 @@ import {
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
 import Header from 'components/PaymentForm/helpers/Header';
+import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
+import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -52,131 +55,187 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
 
-  if (transactionStatus?.status !== 'Successful') {
-    return (
-      <HeaderText
-        fullHeight={false}
-        title={
-          <Text
-            variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
-          >
-            <JssText field={props.fields?.ErrorTitle} />
-          </Text>
-        }
-        error={<JssText field={props.fields?.ErrorMessage} />}
-        description={
-          <RichText>
-            <JssRichText field={props.fields?.ErrorText} />
-          </RichText>
-        }
-        cta={
-          isExperienceEditor ? (
-            <JssLink field={props.fields?.ErrorCTALink}></JssLink>
-          ) : props.fields.ErrorCTALink?.value.href &&
-            props.fields?.ErrorCTALink ? (
-            <Button size={'large'} variation={'full'}>
-              <JssLink
-                href={props.fields.ErrorCTALink?.value.href}
-                field={props.fields?.ErrorCTALink}
-              >
-                {props?.fields?.ErrorCTAIcon && (
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value ||
-                        '',
-                    }}
-                  />
-                )}
-                {props?.fields?.ErrorCTALink?.value?.text && (
-                  <JssRichText
-                    field={{
-                      value: props.fields?.ErrorCTALink?.value?.text,
-                    }}
-                  />
-                )}
-              </JssLink>
-            </Button>
-          ) : (
-            <></>
-          )
-        }
-      />
-    );
-  }
+  // if (transactionStatus?.status !== 'Successful') {
+  //   return (
+  //     <HeaderText
+  //       fullHeight={false}
+  //       title={
+  //         <Text
+  //           variation={props.params?.HeadingSize || 'display-3'}
+  //           tag={props.params?.HeadingTag || 'h2'}
+  //         >
+  //           <JssText field={props.fields?.ErrorTitle} />
+  //         </Text>
+  //       }
+  //       error={<JssText field={props.fields?.ErrorMessage} />}
+  //       description={
+  //         <RichText>
+  //           <JssRichText field={props.fields?.ErrorText} />
+  //         </RichText>
+  //       }
+  //       cta={
+  //         isExperienceEditor ? (
+  //           <JssLink field={props.fields?.ErrorCTALink}></JssLink>
+  //         ) : props.fields.ErrorCTALink?.value.href &&
+  //           props.fields?.ErrorCTALink ? (
+  //           <Button size={'large'} variation={'full'}>
+  //             <JssLink
+  //               href={props.fields.ErrorCTALink?.value.href}
+  //               field={props.fields?.ErrorCTALink}
+  //             >
+  //               {props?.fields?.ErrorCTAIcon && (
+  //                 <span
+  //                   dangerouslySetInnerHTML={{
+  //                     __html:
+  //                       props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value ||
+  //                       '',
+  //                   }}
+  //                 />
+  //               )}
+  //               {props?.fields?.ErrorCTALink?.value?.text && (
+  //                 <JssRichText
+  //                   field={{
+  //                     value: props.fields?.ErrorCTALink?.value?.text,
+  //                   }}
+  //                 />
+  //               )}
+  //             </JssLink>
+  //           </Button>
+  //         ) : (
+  //           <></>
+  //         )
+  //       }
+  //     />
+  //   );
+  // }
 
-  const {
-    amount,
-    referenceNumber,
-    paymentDate,
-    paymentType,
-    status,
-    // lastUpdateDate,
-    transactionId,
-  } = transactionStatus;
+  // const {
+  //   scan = 'Sexing Scan',
+  //   date = ' 14/11/2022',
+  //   time = '12:00',
+  //   type = 'Consultant',
+  //   location = 'London',
+  // } = transactionStatus;
+
+  const scan = 'Sexing Scan';
+  const date = ' 14/11/2022';
+  const time = '12:00';
+  const type = 'Consultant';
+  const location = 'London';
 
   return (
     <>
-      <Header stage={'Confirmation'} />
-      <PaymentSummary
-        heading={
-          <Text
-            variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
-          >
-            <JssText field={props.fields?.Title} />
-          </Text>
-        }
-        bodyText={
-          <RichText>
-            <JssRichText field={props.fields?.Text} />
-          </RichText>
-        }
-        summary={
-          <ConfirmationSummary
-            title={<JssText field={props.fields?.SummaryTitle} />}
-            optionalItems={[
-              {
-                title: <JssText field={props.fields?.AmountPaidText} />,
-                text: amount,
-              },
-              {
-                title: <JssText field={props.fields?.InvoiceReferenceText} />,
-                text: referenceNumber,
-              },
-              {
-                title: <JssText field={props.fields?.PaymentDateText} />,
-                text: paymentDate,
-              },
-              {
-                title: <JssText field={props.fields?.PaymentTypeText} />,
-                text: paymentType,
-              },
-              {
-                title: <JssText field={props.fields?.StatusText} />,
-                text: status,
-              },
-              {
-                title: <JssText field={props.fields?.TransactionIDText} />,
-                text: transactionId,
-              },
-            ]}
+      <FormContainer
+        heading={<></>}
+        copy={
+          <PaymentSummary
+            isFlex={true}
+            heading={
+              <Text
+                variation={props.params?.HeadingSize || 'display-4'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText field={props.fields?.Title} />
+              </Text>
+            }
+            bodyText={
+              <RichText>
+                <JssRichText field={props.fields?.Text} />
+              </RichText>
+            }
+            summary={
+              <ConfirmationSummary
+                title={<JssText field={props.fields?.SummaryTitle} />}
+                optionalItems={[
+                  {
+                    title: <JssText field={props.fields?.AmountPaidText} />,
+                    text: scan,
+                  },
+                  {
+                    title: (
+                      <JssText field={props.fields?.InvoiceReferenceText} />
+                    ),
+                    text: date,
+                  },
+                  {
+                    title: <JssText field={props.fields?.PaymentDateText} />,
+                    text: time,
+                  },
+                  {
+                    title: <JssText field={props.fields?.PaymentTypeText} />,
+                    text: type,
+                  },
+                  {
+                    title: <JssText field={props.fields?.StatusText} />,
+                    text: location,
+                  },
+                ]}
+                noSpacing={true}
+              />
+            }
           />
         }
-        cta={
-          <Button variation="full-dark" size="large">
-            <button
-              onClick={() => {
-                window.print();
-              }}
-            >
-              <Icons iconName="iconPrint" />
-              Print confirmation
-            </button>
-          </Button>
+        aside={
+          <CFAside>
+            <NeedHelp
+              headline={
+                //props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
+                'Need help?'
+              }
+              subheadline={
+                //props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
+                'General enquiries'
+              }
+              workingHoursHeadline={
+                //props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel?.value ||
+                'Opening hours'
+              }
+              workingHours={
+                //props?.fields?.LiveBookingFormContactBoxOpeningHoursDays?.value ||
+                'Mon – Fri'
+              }
+              workingHoursTime={
+                //props?.fields?.LiveBookingFormContactBoxOpeningHoursTime?.value ||
+                '8am – 6pm'
+              }
+              phoneNumber={
+                //props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
+                '020 3797 7236'
+              }
+            />
+          </CFAside>
         }
-      />
+      >
+        <>
+          <div>
+            <Text tag="h3" variation="body-bold-extra-large">
+              Next steps
+            </Text>
+            <RichText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse.
+            </RichText>
+          </div>
+          <div>
+            <Text tag="h3" variation="body-bold-extra-large">
+              How to amend your booking
+            </Text>
+            <RichText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse.
+            </RichText>
+          </div>
+          <Button variation="full-dark" size="large">
+            <a href="/">Go to Homepage</a>
+          </Button>
+        </>
+      </FormContainer>
     </>
   );
 };
