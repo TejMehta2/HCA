@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  color: $white;
+  color: $navy-blue-60;
   width: 100%;
 
   label {
@@ -14,13 +14,14 @@
   }
 
   .select {
+    display: block;
     position: relative;
 
     button {
-      background-color: $navy-blue-80;
+      background-color: $white;
       color: inherit;
       text-align: center;
-      padding: px-to-rem(16) $spacing-8;
+      padding: px-to-rem(16) $spacing-6;
       height: $spacing-9;
       border: 1px solid $navy-blue-60;
       border-radius: $radius-large;
@@ -29,9 +30,9 @@
       @include apply-body-large;
 
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: px-to-rem(8);
+      gap: $spacing-3;
     }
 
     .arrow {
@@ -71,12 +72,12 @@
 
 .options {
   position: absolute;
-  background-color: $navy-blue-80;
+  background-color: $white;
   top: calc(100% + $spacing-1);
   width: 100%;
   max-height: px-to-rem(208);
   overflow: auto;
-  border: 1px solid $white;
+  border: 1px solid $navy-blue-60;
   border-radius: px-to-rem(32);
   padding: calc($spacing-6 - px-to-rem(11)) 0;
 
@@ -99,8 +100,8 @@
     }
 
     &.active {
-      background-color: white;
-      color: $navy-blue-80;
+      background-color: $orange-40;
+      color: $navy-blue-100;
     }
   }
 
