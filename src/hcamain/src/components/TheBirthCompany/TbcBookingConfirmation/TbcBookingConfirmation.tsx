@@ -11,14 +11,12 @@ import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
 import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
-import Icons from '@component-library/foundation/Icons/Icons';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 import RichText from '@component-library/core-components/RichText/RichText';
 import {
   TbcBookingConfirmationProps,
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
-import Header from 'components/PaymentForm/helpers/Header';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
