@@ -730,10 +730,10 @@ export const Default = (props: StepProps): JSX.Element => {
                       'Video Consultation'
                     }
                     phoneNumberHref={
-                      props?.fields?.PhoneNumberHref?.value || '+442045711724'
+                      props?.fields?.PhoneNumberHref?.value || '+442070794344'
                     }
                     displayNumber={
-                      props?.fields?.DisplayNumber?.value || '0204 5711 724'
+                      props?.fields?.DisplayNumber?.value || '020 7079 4344'
                     }
                   ></Locations>
                 </ProfilePageSection>

@@ -99,6 +99,8 @@
       th {
         padding: $spacing-4;
         width: 100%;
+        text-wrap: auto;
+        word-break: normal;
       }
     }
 
