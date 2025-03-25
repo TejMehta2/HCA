@@ -5,7 +5,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, ReadonlyURLSearchParams } from 'next/navigation';
 import {
   GetStaticComponentProps,
   ComponentRendering,
@@ -109,7 +109,7 @@ export const Default = (props: StepProps): JSX.Element => {
 
   //const holidaysUK = serverSideData?.Holidays;
 
-  console.log('steps slot', props);
+  //console.log('steps slot', props);
   const {
     selectedLocationName,
     locationGUID,
@@ -225,9 +225,21 @@ export const Default = (props: StepProps): JSX.Element => {
       setSelectedDate('');
       setIsBookableContent(true);
 
-      console.log('slotsURL', slotsUrl);
+      //console.log('slotsurl useeffect', getSlotsURL);
+
+      const paramScanId = searchParams.get('scanId');
+      const paramExtras = searchParams.getAll('extraId');
+      const paramLocationId = searchParams.get('locationId');
+      const paramTypeId = searchParams.get('typeId');
+      const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+
+      const getSlotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}${extras}`;
+      //setSlotsUrl(getSlotsURL);
+
+      console.log('slotsURL', `${getSlotsURL}&from=${firstDay}`);
+
       axios
-        .get(`${slotsUrl}&from=${firstDay}`)
+        .get(`${getSlotsURL}&from=${firstDay}`)
         .then((res) => {
           setLoadingSlots(false);
 
@@ -287,31 +299,39 @@ export const Default = (props: StepProps): JSX.Element => {
           setDisableNext(true);
         });
     },
-    [slotsUrl]
+    [
+      fristAppointmentDate,
+      setIsBookableContent,
+      setSelectedDate,
+      //slotsUrl,
+      searchParams,
+    ]
   );
 
   useEffect(() => {
     setLoadingSlots(true);
-    const firstDay: any = getFirstDayOfWeek(new Date(fristAppointmentDate));
+    // const firstDay: any = getFirstDayOfWeek(new Date(fristAppointmentDate));
+    const firstDay: any = getFirstDayOfWeek(new Date('2025-03-24'));
     setFirstDayOfWeek(firstDay);
+
+    //console.log('fristAppointmentDate', fristAppointmentDate);
+    //console.log('firstDay', firstDay);
     const lastDay: any = getLastDayOfWeek(firstDay);
     setLastDayOfWeek(lastDay);
     // console.log('fristAppointmentDate', fristAppointmentDate);
     // console.log('firstDay', formatDateYYYYMMDD(firstDay));
     // console.log('lastDay', formatDateYYYYMMDD(lastDay));
 
-    const paramScanId = searchParams.get('scanId');
-    const paramExtras = searchParams.getAll('extraId');
-    const paramLocationId = searchParams.get('locationId');
-    const paramTypeId = searchParams.get('typeId');
-    const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+    // const paramScanId = searchParams.get('scanId');
+    // const paramExtras = searchParams.getAll('extraId');
+    // const paramLocationId = searchParams.get('locationId');
+    // const paramTypeId = searchParams.get('typeId');
+    // const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
-    console.log('paramScanId', paramScanId);
+    // const getSlotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}${extras}`;
+    // setSlotsUrl(getSlotsURL);
 
-    const getSlotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}${extras}`;
-    setSlotsUrl(getSlotsURL);
-
-    console.log('slotsurl useeffect', getSlotsURL);
+    // console.log('slotsurl useeffect', getSlotsURL);
 
     getSlots(formatDateYYYYMMDD(firstDay), formatDateYYYYMMDD(lastDay));
 
