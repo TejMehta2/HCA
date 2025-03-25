@@ -1,0 +1,28 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as ProgressBarStories from './ProgressBar.stories';
+
+<Meta of={ProgressBarStories} />
+
+# ProgressBar
+
+## Description
+
+The ProgressBar component displays the current progress of the user through the booking journey
+
+It is intended to be used in the birth company booking journey
+
+It is a duplicate of the Consultant Finder ProgressBar, but uses query params instead of context and props
+
+It can be composed like this:
+
+```tsx
+<ProgressBar
+  currentPage="1"
+  steps={[{ id: 1, url: '/', displayName: 'location' }]}
+></ProgressBar>
+```
+
+## Example
+
+<Canvas of={ProgressBarStories.Default} />
+<Controls of={ProgressBarStories.Default} />

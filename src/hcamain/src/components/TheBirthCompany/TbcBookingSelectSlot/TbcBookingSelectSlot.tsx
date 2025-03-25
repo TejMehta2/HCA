@@ -17,7 +17,7 @@ import {
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import { ConsultantFinderContext } from '../../../context/consultantFinderContext';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
@@ -156,8 +156,8 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
-                  slug={slug}
-                  gmcNumber={gmcNumber}
+                  //slug={slug}
+                  //gmcNumber={gmcNumber}
                 ></ProgressBar>
               }
             ></HeaderLDB>
