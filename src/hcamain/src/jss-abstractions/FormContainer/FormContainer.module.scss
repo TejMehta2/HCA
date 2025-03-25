@@ -36,17 +36,6 @@
 }
 
 .has-aside {
-  .wrapper {
-    @include responsive-grid-start($breakpoint-l: 1);
-    @include responsive-grid-span($breakpoint-l: 7);
-
-    & > * {
-      &:first-child {
-        margin-bottom: $spacing-8;
-      }
-    }
-  }
-
   .aside {
     @include responsive-grid-start($breakpoint-l: 10);
     @include responsive-grid-span($breakpoint-l: 3);
@@ -56,6 +45,17 @@
       margin-bottom: $spacing-8;
       position: sticky;
       top: $spacing-8;
+    }
+  }
+
+  .wrapper {
+    @include responsive-grid-start($breakpoint-l: 1);
+    @include responsive-grid-span($breakpoint-l: 7);
+
+    & > * {
+      &:first-child {
+        margin-bottom: $spacing-8;
+      }
     }
   }
 }

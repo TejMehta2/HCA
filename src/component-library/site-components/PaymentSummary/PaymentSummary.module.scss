@@ -6,6 +6,14 @@
   @include responsive-container;
 }
 
+.wrapper {
+  color: var(--text);
+  padding: $spacing-8 0;
+
+  @include responsive-grid-start($breakpoint-l: 3);
+  @include responsive-grid-span($breakpoint-l: 8);
+}
+
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -13,14 +21,6 @@
   .wrapper {
     padding: 0;
   }
-}
-
-.wrapper {
-  color: var(--text);
-  padding: $spacing-8 0;
-
-  @include responsive-grid-start($breakpoint-l: 3);
-  @include responsive-grid-span($breakpoint-l: 8);
 }
 
 .header {
