@@ -7,7 +7,7 @@ const PaymentSummary = (props: PaymentSummaryProps): JSX.Element => {
   const { heading, bodyText, summary, cta, isFlex = false } = props;
   return (
     <Themes theme="A-HCA-White">
-      <div className={isFlex ? styles['flex-container'] : [styles.container]}>
+      <div className={isFlex ? styles['flex-container'] : styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.header}>
             {heading}
