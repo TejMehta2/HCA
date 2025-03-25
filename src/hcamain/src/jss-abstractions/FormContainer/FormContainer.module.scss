@@ -39,6 +39,12 @@
   .wrapper {
     @include responsive-grid-start($breakpoint-l: 1);
     @include responsive-grid-span($breakpoint-l: 7);
+
+    & > * {
+      &:first-child {
+        margin-bottom: $spacing-8;
+      }
+    }
   }
 
   .aside {
