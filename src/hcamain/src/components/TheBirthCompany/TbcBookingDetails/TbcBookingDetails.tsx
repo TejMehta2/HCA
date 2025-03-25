@@ -1,4 +1,5 @@
-import React, { useState, useRef, FormEvent } from 'react';
+import React, { useState, useRef, FormEvent, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
@@ -29,11 +30,23 @@ import {
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from '../../PaymentForm/helpers/DynamicTextField';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import DynamicSelectField from '../../PaymentForm/helpers/DynamicSelectField';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import AppointmentSummary from '@component-library/the-birth-company/AppointmentSummary/AppointmentSummary';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+
+interface AppointmentDetailFields {
+  location: string;
+  scanName: string;
+  appointmentType: string;
+  slot: string;
+  duration: string;
+  price: string;
+  extras: string[];
+}
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
@@ -48,6 +61,68 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
   const [ukResident /* setUkResident */] = useState(true);
+  const [loading, seLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [appointmentDetails, setAppointmentDetails] =
+    useState<AppointmentDetailFields>();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    const paramScanId = searchParams.get('scanId');
+    const paramExtras = searchParams.getAll('extraId');
+    const paramLocationId = searchParams.get('locationId');
+    const paramTypeId = searchParams.get('typeId');
+    const paramSlotId = searchParams.get('slotId');
+
+    const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;
+
+    axios
+      .get(requestURL)
+      .then((res) => {
+        // console.log('res', res);
+        seLoading(false);
+        setError(false);
+        setAppointmentDetails(res?.data || {});
+      })
+      .catch((error) => {
+        setError(true);
+        console.log(error);
+      });
+  }, [router.isReady, searchParams]);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+
+    // Format options for the date
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long', // Full weekday name (e.g., 'Friday')
+      day: '2-digit', // Day of the month (e.g., '04')
+      month: 'short', // Short month name (e.g., 'Nov')
+      hour: '2-digit', // Hour in 2 digits (e.g., '10')
+      minute: '2-digit', // Minute in 2 digits (e.g., '30')
+      hour12: true, // Use 12-hour clock (with am/pm)
+    };
+
+    // Get formatted date
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(
+      date
+    );
+
+    const [datePart, timePart] = formattedDate.split(', ');
+    return `${datePart} at ${timePart.toLowerCase().replace(/\s/g, '')}`;
+  };
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -173,7 +248,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return fields.find((field) => field.name === name) as T;
   };
 
-  console.log(props);
+  //console.log(props);
   console.log(props.fields.data.item.pages.results[0].children.results);
 
   return (
@@ -215,25 +290,33 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           }
           aside={
             <CFAside>
-              <AppointmentSummary
-                title={'Appointment summary'}
-                locationTitle={'Location'}
-                location={'London'}
-                appointmentTitle={'Appointment'}
-                appointment={`With Sonographer`}
-                dateTitle={'Date & time'}
-                date={`Friday 04 Nov at 10:30am (30 min)`}
-                priceTitle={`Price to pay`}
-                price={`£340`}
-              />
-              <NeedHelp
-                headline={'Need help?'}
-                subheadline={'General enquiries'}
-                phoneNumber={'020 3797 7236'}
-                workingHoursHeadline={'Opening hours'}
-                workingHours={'Mon - Fri'}
-                workingHoursTime={'8am - 6pm'}
-              />
+              <>
+                {loading && <LoaderCF />}
+                {!loading && !error && appointmentDetails ? (
+                  <AppointmentSummary
+                    title={'Appointment summary'}
+                    locationTitle={'Location'}
+                    location={appointmentDetails.location}
+                    appointmentTitle={'Appointment'}
+                    appointment={appointmentDetails.appointmentType}
+                    dateTitle={'Date & time'}
+                    date={`${formatDate(appointmentDetails.slot)} (${
+                      appointmentDetails.duration
+                    })`}
+                    // date={`Friday 04 Nov at 10:30am (30 min)`}
+                    priceTitle={`Price to pay`}
+                    price={appointmentDetails.price}
+                  />
+                ) : undefined}
+                <NeedHelp
+                  headline={'Need help?'}
+                  subheadline={'General enquiries'}
+                  phoneNumber={'020 3797 7236'}
+                  workingHoursHeadline={'Opening hours'}
+                  workingHours={'Mon - Fri'}
+                  workingHoursTime={'8am - 6pm'}
+                />
+              </>
             </CFAside>
           }
         >
@@ -325,17 +408,18 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               {getField<SectionTitleTemplate>('Contact details').title.value}
             </Text>
 
-            <DynamicTextField
-              getField={getField}
-              formErrors={formErrors}
-              name="email"
-              type="email"
-            />
             <PhoneField
               label={getField<InputTemplate>('telephone').title.value}
               name="telephone"
               error={formErrors.get('telephone')}
               helpText={getField<InputTemplate>('telephone')?.helperText?.value}
+            />
+
+            <DynamicTextField
+              getField={getField}
+              formErrors={formErrors}
+              name="email"
+              type="email"
             />
 
             <AddressFinder
