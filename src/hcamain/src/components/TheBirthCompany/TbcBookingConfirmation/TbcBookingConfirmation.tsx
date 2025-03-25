@@ -55,59 +55,59 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
 
-  // if (transactionStatus?.status !== 'Successful') {
-  //   return (
-  //     <HeaderText
-  //       fullHeight={false}
-  //       title={
-  //         <Text
-  //           variation={props.params?.HeadingSize || 'display-3'}
-  //           tag={props.params?.HeadingTag || 'h2'}
-  //         >
-  //           <JssText field={props.fields?.ErrorTitle} />
-  //         </Text>
-  //       }
-  //       error={<JssText field={props.fields?.ErrorMessage} />}
-  //       description={
-  //         <RichText>
-  //           <JssRichText field={props.fields?.ErrorText} />
-  //         </RichText>
-  //       }
-  //       cta={
-  //         isExperienceEditor ? (
-  //           <JssLink field={props.fields?.ErrorCTALink}></JssLink>
-  //         ) : props.fields.ErrorCTALink?.value.href &&
-  //           props.fields?.ErrorCTALink ? (
-  //           <Button size={'large'} variation={'full'}>
-  //             <JssLink
-  //               href={props.fields.ErrorCTALink?.value.href}
-  //               field={props.fields?.ErrorCTALink}
-  //             >
-  //               {props?.fields?.ErrorCTAIcon && (
-  //                 <span
-  //                   dangerouslySetInnerHTML={{
-  //                     __html:
-  //                       props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value ||
-  //                       '',
-  //                   }}
-  //                 />
-  //               )}
-  //               {props?.fields?.ErrorCTALink?.value?.text && (
-  //                 <JssRichText
-  //                   field={{
-  //                     value: props.fields?.ErrorCTALink?.value?.text,
-  //                   }}
-  //                 />
-  //               )}
-  //             </JssLink>
-  //           </Button>
-  //         ) : (
-  //           <></>
-  //         )
-  //       }
-  //     />
-  //   );
-  // }
+  if (transactionStatus?.status !== 'Successful') {
+    return (
+      <HeaderText
+        fullHeight={false}
+        title={
+          <Text
+            variation={props.params?.HeadingSize || 'display-3'}
+            tag={props.params?.HeadingTag || 'h2'}
+          >
+            <JssText field={props.fields?.ErrorTitle} />
+          </Text>
+        }
+        error={<JssText field={props.fields?.ErrorMessage} />}
+        description={
+          <RichText>
+            <JssRichText field={props.fields?.ErrorText} />
+          </RichText>
+        }
+        cta={
+          isExperienceEditor ? (
+            <JssLink field={props.fields?.ErrorCTALink}></JssLink>
+          ) : props.fields.ErrorCTALink?.value.href &&
+            props.fields?.ErrorCTALink ? (
+            <Button size={'large'} variation={'full'}>
+              <JssLink
+                href={props.fields.ErrorCTALink?.value.href}
+                field={props.fields?.ErrorCTALink}
+              >
+                {props?.fields?.ErrorCTAIcon && (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        props.fields?.ErrorCTAIcon?.fields?.SvgMarkup?.value ||
+                        '',
+                    }}
+                  />
+                )}
+                {props?.fields?.ErrorCTALink?.value?.text && (
+                  <JssRichText
+                    field={{
+                      value: props.fields?.ErrorCTALink?.value?.text,
+                    }}
+                  />
+                )}
+              </JssLink>
+            </Button>
+          ) : (
+            <></>
+          )
+        }
+      />
+    );
+  }
 
   // const {
   //   scan = 'Sexing Scan',
