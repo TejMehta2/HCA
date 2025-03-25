@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Theme } from '../../foundation/Themes/Themes.types';
 
 export interface ServiceCardsProps {
   children?: JSX.Element[];
@@ -7,4 +8,6 @@ export interface ServiceCardsProps {
   bodyText: ReactNode | JSX.Element;
   cta?: ReactNode | JSX.Element;
   id?: string;
+  theme?: Theme;
+  contentVariation?: 'service' | 'role';
 }
