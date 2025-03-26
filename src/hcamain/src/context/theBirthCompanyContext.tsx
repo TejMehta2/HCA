@@ -65,6 +65,8 @@ interface TheBirthCompanyContextType {
   setFinderFormPrevious: React.Dispatch<React.SetStateAction<string>>;
   completedFormId: string;
   setCompletedFormId: React.Dispatch<React.SetStateAction<string>>;
+  selectedScanId: string;
+  setSelectedScanId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
@@ -134,6 +136,8 @@ export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
     setFinderFormPrevious: () => {},
     completedFormId: '',
     setCompletedFormId: () => {},
+    selectedScanId: '',
+    setSelectedScanId: () => {},
   }
 );
 
@@ -178,6 +182,7 @@ export const TheBirthCompanyContextProvider = ({
   const [finderFormPayor, setFinderFormPayor] = useState<string>('');
   const [finderFormPrevious, setFinderFormPrevious] = useState<string>('');
   const [completedFormId, setCompletedFormId] = useState<string>('');
+  const [selectedScanId, setSelectedScanId] = useState<string>('');
 
   return (
     <TheBirthCompanyContext.Provider
@@ -246,6 +251,8 @@ export const TheBirthCompanyContextProvider = ({
         setFinderFormPrevious,
         completedFormId,
         setCompletedFormId,
+        selectedScanId,
+        setSelectedScanId,
       }}
     >
       {children}

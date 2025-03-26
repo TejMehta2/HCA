@@ -2,10 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useSearchParams, ReadonlyURLSearchParams } from 'next/navigation';
 import {
   GetStaticComponentProps,
   ComponentRendering,
@@ -19,20 +18,17 @@ import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
 import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import { TheBirthCompanyContextProvider } from 'src/context/theBirthCompanyContext';
+import { TheBirthCompanyContext } from 'src/context/theBirthCompanyContext';
+
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import { GetServerSidePropsContext } from 'next';
-import { TheBirthCompanyContext } from 'src/context/theBirthCompanyContext';
-import axios from 'axios';
-import {
-  formatDateYYYYMMDD,
-  formatDateLong,
-  removeSeconds,
-  formatTime12hr,
-} from '@component-library/utility-functions';
+import SlotsCalendarBirthCompany from '@component-library/consultant-finder/SlotsCalendar/SlotsCalendarBirthCompany';
+import { useSearchParams } from 'next/navigation';
 
 interface Fields {
   HCALogo: ImageField;
@@ -102,93 +98,84 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
+  return (
+    <TheBirthCompanyContextProvider>
+      <TbcSlots {...props} />
+    </TheBirthCompanyContextProvider>
+  );
+};
+
+export const TbcSlots = (props: StepProps): JSX.Element => {
   // const serverSideData = useComponentProps<ServerSideProps>(
   //   props.rendering.uid
   // );
   //console.log('serverSideData', serverSideData);
 
   //const holidaysUK = serverSideData?.Holidays;
+  const holidaysUK = [];
 
-  //console.log('steps slot', props);
+  //console.log('steps slot', props.fields);
   const {
-    selectedLocationName,
-    locationGUID,
+    setSelectedLocation,
+    setSelectedTypeOfAppointment,
+    setSelectedScanId,
+    setSelectedExtras,
+    selectedLocation,
+    selectedScanId,
     selectedTypeOfAppointment,
-    consultantGUID,
-    fristAppointmentDate,
-    lat,
-    lon,
     selectedDate,
     selectedTime,
     isBookableContent,
-    setSelectedDate,
-    //setSelectedTime,
-    //setStartTime,
-    setIsBookableContent,
   } = useContext(TheBirthCompanyContext);
   const id = props.params.RenderingIdentifier;
-  const router = useRouter();
-  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
-  const [, setLastDayOfWeek] = useState<any>(null);
-  const [dates, setDates] = useState([]);
-  const [year, setYear] = useState(null);
-  const [days, setDays] = useState([]);
-  const [loadingSlots, setLoadingSlots] = useState(true);
-  const [noSlots, setNoSlots] = useState(false);
-  const [disablePrev, setDisablePrev] = useState(true);
-  const [disableNext, setDisableNext] = useState(true);
-  const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
-  const [slotsUrl, setSlotsUrl] = useState<string>('');
 
   const searchParams = useSearchParams();
+  const paramScanId = searchParams.get('scanId');
+  const paramLocationId = searchParams.get('locationId');
+  const paramTypeId = searchParams.get('typeId');
+
+  //console.log(searchParams);
 
   // Set params for next page
   const nextPageParams = new URLSearchParams(searchParams.toString());
-  if (selectedDate) {
-    nextPageParams.set('slotId', selectedDate);
+  if (selectedLocation) {
+    nextPageParams.set('locationId', selectedLocation);
+  }
+  if (selectedScanId) {
+    nextPageParams.set('scanId', selectedScanId);
   }
 
-  const getFirstDayOfWeek = (date: any) => {
-    const firstDayOfWeek = new Date(date);
-    const dayOfWeek = firstDayOfWeek.getDay();
-    // check if day is Sunday, then get current week
-    const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-    firstDayOfWeek.setDate(firstDayOfWeek.getDate() + diff);
-    return firstDayOfWeek;
-  };
+  if (selectedTypeOfAppointment) {
+    nextPageParams.set('typeId', selectedTypeOfAppointment);
+  }
 
-  const getLastDayOfWeek = (firstDayOfWeek: any) => {
-    const lastDayOfWeek = new Date(
-      firstDayOfWeek.getFullYear(),
-      firstDayOfWeek.getMonth(),
-      firstDayOfWeek.getDate() + 6
-    );
-    return lastDayOfWeek;
-  };
-
-  const getDates: any = (firstDayOfWeek: any, lastDayOfWeek: any) => {
-    const dates = [];
-    const currentDate: any = new Date(firstDayOfWeek);
-
-    //console.log('getdates', currentDate, lastDayOfWeek);
-    while (currentDate < lastDayOfWeek) {
-      const options: object = { day: 'numeric', month: 'short' };
-      const dateString = new Intl.DateTimeFormat('en-US', options).format(
-        currentDate
-      );
-      dates.push(dateString);
-      currentDate.setDate(currentDate.getDate() + 1);
-      setYear(currentDate.getFullYear());
+  useEffect(() => {
+    if (paramLocationId) {
+      //console.log('location ' + paramLocationId);
+      setSelectedLocation(paramLocationId);
     }
-    // Add last day to the dates array
-    const options: object = { day: 'numeric', month: 'short' };
-    const dateString = new Intl.DateTimeFormat('en-US', options).format(
-      lastDayOfWeek
-    );
-    dates.push(dateString);
-    return dates;
-  };
+
+    if (paramScanId) {
+      //console.log('scan ' + paramScanId);
+      setSelectedScanId(paramScanId);
+    }
+
+    if (paramTypeId) {
+      //console.log('type ' + paramTypeId);
+      setSelectedTypeOfAppointment(paramTypeId);
+    }
+  }, [
+    paramLocationId,
+    setSelectedLocation,
+    paramScanId,
+    setSelectedScanId,
+    paramTypeId,
+    setSelectedTypeOfAppointment,
+  ]);
+
+  // const [locationId, setLocaitonId] = useState<string>('');
+  // const [scanId, setScanId] = useState<string>('');
+  // const [typeId, setTypeId] = useState<string>('');
 
   // useEffect(() => {
   //   window.scrollTo({
@@ -196,161 +183,52 @@ export const Default = (props: StepProps): JSX.Element => {
   //     behavior: 'smooth',
   //   });
 
-  //   // if (!router.isReady) {
-  //   //   return;
-  //   // }
+  // if (router.isReady) {
+  //   console.log(router);
 
-  //   // get slug from URL
-  //   const slug = router?.query?.slug || '';
-  //   setSlug(slug.toString());
+  //   // get scanId from URL
+  //   const scan = router.query.scanId;
+  //   // const scanId = searchParams.get('scanId');
+  //   //setScanId(scan.toString());
 
-  //   // get gmc number from URL
-  //   const gmcNumber = router?.query?.gmcNumber || '';
-  //   setGmcNumber(gmcNumber.toString());
+  //   // get locationId from URL
+  //   const location = router.query.locationId;
+  //   // const locationId = searchParams.get('locationId');
+  //   //setLocaitonId(location.toString());
 
-  //   // if selected location and appointment type is missing then redirect to appointment type
-  //   // if (selectedLocation === '' && selectedTypeOfAppointment === '') {
-  //   //   router.push(
-  //   //     `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
-  //   //   );
-  //   // }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [router.isReady]);
+  //   // //get typeId from URL
+  //   const type = router.query.typeId;
+  //   // const typeId = searchParams.get('typeId');
+  //   //setTypeId(type.toString());
 
-  const getSlots = useCallback(
-    (firstDay: string, lastDay: string) => {
-      setLoadingSlots(true);
-      setDisablePrev(true);
-      setDisableNext(true);
-      setSelectedDate('');
-      setIsBookableContent(true);
+  //   // //get extras from URL
+  //   const extras = router?.query?.extras || '';
+  //   //const extras = searchParams.getAll('extras');
+  //   if (location) {
+  //     setSelectedLocation(location.toString());
+  //   }
+  //   setSelectedTypeOfAppointment(type?.toString() || '');
+  //   setSelectedScanId(scan?.toString() || '');
+  //   setSelectedExtras(extras || '');
 
-      //console.log('slotsurl useeffect', getSlotsURL);
+  //   console.log(location);
+  // }
 
-      const paramScanId = searchParams.get('scanId');
-      const paramExtras = searchParams.getAll('extraId');
-      const paramLocationId = searchParams.get('locationId');
-      const paramTypeId = searchParams.get('typeId');
-      const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+  // useEffect(() => {
+  //   console.log('Updated selectedLocation:', selectedLocation);
+  // }, [selectedLocation]);
 
-      const getSlotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}${extras}`;
-      //setSlotsUrl(getSlotsURL);
+  // console.log(searchParams);
 
-      console.log('slotsURL', `${getSlotsURL}&from=${firstDay}`);
-
-      axios
-        .get(`${getSlotsURL}&from=${firstDay}`)
-        .then((res) => {
-          setLoadingSlots(false);
-
-          const uniqueDates = [
-            ...new Set(
-              res?.data?.slots.map((slot: any) => slot.startTime.split('T')[0])
-            ),
-          ];
-
-          const days: any = uniqueDates.map((date) => ({
-            date: date,
-            slots: res?.data?.slots
-              .filter((slot: any) => slot.startTime.split('T')[0] === date)
-              .map((slot: any) => ({
-                startTime: slot.startTime,
-                endTime: slot.endTime,
-              })),
-          }));
-
-          // enable next/ prev after slots call was completed
-          // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
-          setDisableNext(false);
-          setDisablePrev(false);
-
-          if (firstDay !== null) {
-            const currentDate = new Date(fristAppointmentDate);
-            currentDate.setHours(0, 0, 0, 0); // Reset time to midnight
-            const parsedFirstDayOfWeek = new Date(firstDay);
-            parsedFirstDayOfWeek.setHours(0, 0, 0, 0); // Reset time to midnight
-            const lastDayOfPrevWeek = new Date(
-              parsedFirstDayOfWeek.getTime() - 24 * 60 * 60 * 1000
-            );
-
-            // console.log('first day of the week', firstDayOfWeek);
-            // console.log('current date', currentDate);
-            // console.log('lastDayOfPrevWeek', lastDayOfPrevWeek);
-
-            if (currentDate > lastDayOfPrevWeek) {
-              setDisablePrev(true);
-            } else {
-              setDisablePrev(false);
-            }
-          }
-
-          if (res?.data?.slots.length > 0) {
-            setNoSlots(false);
-            setDays(days);
-          } else {
-            setNoSlots(true);
-            setDays([]);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          setLoadingSlots(false);
-          setDisablePrev(true);
-          setDisableNext(true);
-        });
-    },
-    [
-      fristAppointmentDate,
-      setIsBookableContent,
-      setSelectedDate,
-      //slotsUrl,
-      searchParams,
-    ]
-  );
-
-  useEffect(() => {
-    setLoadingSlots(true);
-    // const firstDay: any = getFirstDayOfWeek(new Date(fristAppointmentDate));
-    const firstDay: any = getFirstDayOfWeek(new Date('2025-03-24'));
-    setFirstDayOfWeek(firstDay);
-
-    //console.log('fristAppointmentDate', fristAppointmentDate);
-    //console.log('firstDay', firstDay);
-    const lastDay: any = getLastDayOfWeek(firstDay);
-    setLastDayOfWeek(lastDay);
-    // console.log('fristAppointmentDate', fristAppointmentDate);
-    // console.log('firstDay', formatDateYYYYMMDD(firstDay));
-    // console.log('lastDay', formatDateYYYYMMDD(lastDay));
-
-    // const paramScanId = searchParams.get('scanId');
-    // const paramExtras = searchParams.getAll('extraId');
-    // const paramLocationId = searchParams.get('locationId');
-    // const paramTypeId = searchParams.get('typeId');
-    // const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
-
-    // const getSlotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}${extras}`;
-    // setSlotsUrl(getSlotsURL);
-
-    // console.log('slotsurl useeffect', getSlotsURL);
-
-    getSlots(formatDateYYYYMMDD(firstDay), formatDateYYYYMMDD(lastDay));
-
-    setDates(getDates(firstDay, lastDay));
-
-    const holidays: any[] = [];
-
-    if (holidays !== null && holidays !== undefined) {
-      const holidaysUKData = holidays
-        .map((item: any) => item.Values)
-        .map((item: any) => item.ISODate);
-      // console.log('holidaysUKData', holidaysUKData);
-      setDatesNotToBook(holidaysUKData);
-    } else {
-      setDatesNotToBook([]);
-    }
-  }, [searchParams, fristAppointmentDate, getSlots]);
-
-  console.log('days', days);
+  // if selected location and appointment type is missing then redirect to appointment type
+  // if (selectedLocation === '' && selectedTypeOfAppointment === '') {
+  //   router.push(
+  //     `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
+  //   );
+  // }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  //}, [searchParams]);
+  //, []);
 
   if (props.fields) {
     return (
@@ -358,6 +236,7 @@ export const Default = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
+        {selectedLocation}
         {
           <>
             <HeaderLDB
@@ -366,10 +245,12 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
+                  //slug={slug}
+                  //gmcNumber={gmcNumber}
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            {/* <SlotsCalendar
+            <SlotsCalendarBirthCompany
               holidays={holidaysUK}
               titleText={
                 props?.fields?.TitleText?.value || 'Please select a slot'
@@ -401,18 +282,17 @@ export const Default = (props: StepProps): JSX.Element => {
                   {props?.fields?.BookByPhoneIcon?.fields?.SvgMarkup?.value}
                 </SitecoreSvg>
               }
-            /> */}
+            />
             <Navigation hideTextMobile={true}>
               <div>
-                <TextButton>
+                {/* <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value
-                      ?.href}?${searchParams.toString()}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?scanId=${scanId}&locationId=${locationId}&typeId=${typeId}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
-                </TextButton>
+                </TextButton> */}
               </div>
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
@@ -427,7 +307,7 @@ export const Default = (props: StepProps): JSX.Element => {
               )}
               {isBookableContent && (
                 <Container>
-                  <Button size={'small'} variation={'full-dark'}>
+                  {/* <Button size={'small'} variation={'full-dark'}>
                     <button
                       disabled={
                         selectedDate === '' && selectedTime === ''
@@ -436,8 +316,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       onClick={() =>
                         router.push(
-                          `${props?.fields?.NextLink?.value
-                            ?.href}?${nextPageParams.toString()}`
+                          `${props?.fields?.NextLink?.value?.href}?scanId=${scanId}&locationId=${locationId}&typeId=${typeId}`
                         )
                       }
                     >
@@ -445,7 +324,7 @@ export const Default = (props: StepProps): JSX.Element => {
                         {props?.fields?.NextLink?.value?.text || 'Book Slot'}
                       </span>
                     </button>
-                  </Button>
+                  </Button> */}
                 </Container>
               )}
               {!isBookableContent && (
