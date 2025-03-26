@@ -309,7 +309,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                     date={`${formatDate(appointmentDetails.slot)} (${
                       appointmentDetails.duration
                     })`}
-                    // date={`Friday 04 Nov at 10:30am (30 min)`}
                     priceTitle={`Price to pay`}
                     price={appointmentDetails.price}
                   />
