@@ -7,6 +7,7 @@ import {
   useComponentProps,
   GetServerSideComponentProps,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
@@ -48,10 +49,16 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     props.rendering?.uid
   );
 
+  const searchParams = useSearchParams();
+  const paramErrors = searchParams.get('error');
+  console.log('paramErrors', paramErrors);
+
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
+
+  console.log(props);
 
   if (transactionStatus?.status !== 'Successful') {
     return (
@@ -107,19 +114,61 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     );
   }
 
-  // const {
-  //   scan = 'Sexing Scan',
-  //   date = ' 14/11/2022',
-  //   time = '12:00',
-  //   type = 'Consultant',
-  //   location = 'London',
-  // } = transactionStatus;
+  const date = new Date(props.appointmentDateTime);
 
-  const scan = 'Sexing Scan';
-  const date = ' 14/11/2022';
-  const time = '12:00';
-  const type = 'Consultant';
-  const location = 'London';
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  };
+
+  const formattedDateTime = new Intl.DateTimeFormat(
+    'en-GB',
+    dateTimeOptions
+  ).format(date);
+
+  const [formattedDate, formattedTime] = formattedDateTime.split(', ');
+
+  const options = [
+    {
+      // title: <JssText field={props.fields?.AmountPaidText} />,
+      title: 'Scan',
+      text: props.serviceName,
+    },
+    {
+      // title: (
+      // <JssText field={props.fields?.InvoiceReferenceText} />
+      // ),
+      title: 'Date',
+      text: formattedDate,
+    },
+    {
+      // title: <JssText field={props.fields?.PaymentDateText} />,
+      title: 'Time',
+      text: formattedTime.toLowerCase().replace(/\s/g, ''),
+    },
+    {
+      // title: <JssText field={props.fields?.PaymentTypeText} />,
+      title: 'Type',
+      text: props.type,
+    },
+    {
+      // title: <JssText field={props.fields?.StatusText} />,
+      title: 'Location',
+      text: props.location,
+    },
+  ];
+
+  if (props.extras) {
+    options.splice(1, 0, {
+      // title: <JssText field={props.fields?.AmountPaidText} />,
+      title: 'Extras',
+      text: props.extras,
+    });
+  }
 
   return (
     <>
@@ -144,30 +193,7 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
             summary={
               <ConfirmationSummary
                 title={<JssText field={props.fields?.SummaryTitle} />}
-                optionalItems={[
-                  {
-                    title: <JssText field={props.fields?.AmountPaidText} />,
-                    text: scan,
-                  },
-                  {
-                    title: (
-                      <JssText field={props.fields?.InvoiceReferenceText} />
-                    ),
-                    text: date,
-                  },
-                  {
-                    title: <JssText field={props.fields?.PaymentDateText} />,
-                    text: time,
-                  },
-                  {
-                    title: <JssText field={props.fields?.PaymentTypeText} />,
-                    text: type,
-                  },
-                  {
-                    title: <JssText field={props.fields?.StatusText} />,
-                    text: location,
-                  },
-                ]}
+                optionalItems={options}
                 noSpacing={true}
               />
             }

@@ -46,6 +46,9 @@ interface AppointmentDetailFields {
   duration: string;
   price: string;
   extras: string[];
+  slotId: string;
+  serviceVariantId: string;
+  extrasIds: string;
 }
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
@@ -87,11 +90,11 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;
-
+    //console.log('requestURL', requestURL);
     axios
       .get(requestURL)
       .then((res) => {
-        // console.log('res', res);
+        console.log('res', res);
         seLoading(false);
         setError(false);
         setAppointmentDetails(res?.data || {});
@@ -602,6 +605,25 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               </Checkboxes>
             }
           />
+
+          <div>
+            <input
+              type=""
+              name="slotId"
+              value={appointmentDetails?.slotId || ''}
+            />
+            <input
+              type=""
+              name="serviceVariantId"
+              value={appointmentDetails?.serviceVariantId || ''}
+            />
+            <input
+              type=""
+              name="extrasIds"
+              value={appointmentDetails?.extrasIds || ''}
+            />
+          </div>
+
           <div>
             <Button size="large" variation="full">
               <button type={'submit'}>
