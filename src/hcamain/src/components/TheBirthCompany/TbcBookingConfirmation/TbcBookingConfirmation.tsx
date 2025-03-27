@@ -133,29 +133,22 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   const options = [
     {
-      // title: <JssText field={props.fields?.AmountPaidText} />,
       title: 'Scan',
       text: props.serviceName,
     },
     {
-      // title: (
-      // <JssText field={props.fields?.InvoiceReferenceText} />
-      // ),
       title: 'Date',
       text: formattedDate,
     },
     {
-      // title: <JssText field={props.fields?.PaymentDateText} />,
       title: 'Time',
       text: formattedTime.toLowerCase().replace(/\s/g, ''),
     },
     {
-      // title: <JssText field={props.fields?.PaymentTypeText} />,
       title: 'Type',
       text: props.type,
     },
     {
-      // title: <JssText field={props.fields?.StatusText} />,
       title: 'Location',
       text: props.location,
     },
@@ -163,7 +156,6 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   if (props.extras) {
     options.splice(1, 0, {
-      // title: <JssText field={props.fields?.AmountPaidText} />,
       title: 'Extras',
       text: props.extras,
     });
