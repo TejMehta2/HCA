@@ -94,7 +94,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     axios
       .get(requestURL)
       .then((res) => {
-        console.log('res', res);
+        // console.log('res', res);
         seLoading(false);
         setError(false);
         setAppointmentDetails(res?.data || {});

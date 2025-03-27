@@ -51,14 +51,11 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
-  console.log('paramErrors', paramErrors);
 
   const isExperienceEditor = sitecoreContext.pageEditing;
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
-
-  console.log(props);
 
   if (transactionStatus?.status !== 'Successful' || paramErrors) {
     return (
