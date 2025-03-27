@@ -32,6 +32,12 @@ export type TbcBookingConfirmationProps = {
   rendering?: {
     uid?: string;
   };
+  serviceName: string;
+  extras: string;
+  type: string;
+  appointmentDateTime: string;
+  location: string;
+  retryQuerystring: string;
 };
 
 export interface TransactionStatusResponse {

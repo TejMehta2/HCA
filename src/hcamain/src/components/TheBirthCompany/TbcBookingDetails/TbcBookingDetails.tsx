@@ -46,6 +46,9 @@ interface AppointmentDetailFields {
   duration: string;
   price: string;
   extras: string[];
+  slotId: string;
+  serviceVariantId: string;
+  extrasIds: string;
 }
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
@@ -60,7 +63,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   // State
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
-  const [ukResident /* setUkResident */] = useState(true);
+  const [ukResident, setUkResident] = useState(true);
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
   const [appointmentDetails, setAppointmentDetails] =
@@ -87,7 +90,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;
-
+    //console.log('requestURL', requestURL);
     axios
       .get(requestURL)
       .then((res) => {
@@ -427,6 +430,13 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               type="email"
             />
 
+            <DynamicSelectField
+              getField={getField}
+              formErrors={formErrors}
+              name="isUKResident"
+              onChange={(option) => setUkResident(option.text === 'Yes')}
+            />
+
             <AddressFinder
               defaultStep={ukResident ? 'automatic' : 'manual'}
               findAddressEndpoint={
@@ -602,6 +612,25 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               </Checkboxes>
             }
           />
+
+          <div>
+            <input
+              type="hidden"
+              name="slotId"
+              value={appointmentDetails?.slotId || ''}
+            />
+            <input
+              type="hidden"
+              name="serviceVariantId"
+              value={appointmentDetails?.serviceVariantId || ''}
+            />
+            <input
+              type="hidden"
+              name="extrasIds"
+              value={appointmentDetails?.extrasIds || ''}
+            />
+          </div>
+
           <div>
             <Button size="large" variation="full">
               <button type={'submit'}>
