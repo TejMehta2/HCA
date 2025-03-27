@@ -23,13 +23,14 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     selectedTypeOfAppointment,
     selectedScanId,
     selectedExtras,
-    fristAppointmentDate,
+    firstAppointmentDate,
     lat,
     lon,
     setSelectedDate,
     setSelectedTime,
     setStartTime,
     setIsBookableContent,
+    setSelectedSlotId,
   } = useContext(TheBirthCompanyContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
@@ -42,6 +43,10 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
   const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
+
+  function cleanTimestamp(ts: string): string {
+    return ts.split('|')[0]; // Removes everything after "|"
+  }
 
   const getFirstDayOfWeek = (date: any) => {
     const firstDayOfWeek = new Date(date);
@@ -61,25 +66,35 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     return lastDayOfWeek;
   };
 
-  const getDates: any = (firstDayOfWeek: any, lastDayOfWeek: any) => {
-    const dates = [];
-    const currentDate: any = new Date(firstDayOfWeek);
-    while (currentDate < lastDayOfWeek) {
+  function getWeekDates(dateStr: string): { [key: string]: string } {
+    const date = new Date(dateStr);
+    const week: { [key: string]: string } = {};
+
+    // Get the current day index (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+    const currentDay = date.getDay();
+
+    // Calculate the difference to get to Monday (if Sunday, move back 6 days)
+    const diffToMonday = currentDay === 0 ? -6 : 1 - currentDay;
+
+    // Start from Monday and fill in the week
+    for (let i = 0; i < 7; i++) {
+      const newDate = new Date(date);
+      newDate.setDate(date.getDate() + diffToMonday + i);
+
       const options: object = { day: 'numeric', month: 'short' };
       const dateString = new Intl.DateTimeFormat('en-US', options).format(
-        currentDate
+        newDate
       );
-      dates.push(dateString);
-      currentDate.setDate(currentDate.getDate() + 1);
-      setYear(currentDate.getFullYear());
+
+      week[daysOfWeek[i]] = dateString; // Format: "Mar 24"
     }
-    // Add last day to the dates array
-    const options: object = { day: 'numeric', month: 'short' };
-    const dateString = new Intl.DateTimeFormat('en-US', options).format(
-      lastDayOfWeek
-    );
-    dates.push(dateString);
-    return dates;
+
+    return week;
+  }
+
+  const getDates: any = (firstDayOfWeek) => {
+    const weekOfDates = getWeekDates(firstDayOfWeek);
+    return weekOfDates;
   };
 
   const showNextWeek = () => {
@@ -88,11 +103,7 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     nextWeek.setDate(nextWeek.getDate() + 7);
     setFirstDayOfWeek(getFirstDayOfWeek(nextWeek));
     setLastDayOfWeek(getLastDayOfWeek(nextWeek));
-    setDates(getDates(nextWeek, getLastDayOfWeek(nextWeek)));
-    getSlots(
-      formatDateYYYYMMDD(getFirstDayOfWeek(nextWeek)),
-      formatDateYYYYMMDD(getLastDayOfWeek(nextWeek))
-    );
+    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(nextWeek)));
   };
 
   const showPrevWeek = () => {
@@ -101,14 +112,10 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     prevWeek.setDate(prevWeek.getDate() - 7);
     setFirstDayOfWeek(getFirstDayOfWeek(prevWeek));
     setLastDayOfWeek(getLastDayOfWeek(prevWeek));
-    setDates(getDates(prevWeek, getLastDayOfWeek(prevWeek)));
-    getSlots(
-      formatDateYYYYMMDD(getFirstDayOfWeek(prevWeek)),
-      formatDateYYYYMMDD(getLastDayOfWeek(prevWeek))
-    );
+    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(prevWeek)));
   };
 
-  const getSlots = (firstDay: string, lastDay: string) => {
+  const getSlots = (firstDay?: string) => {
     setLoadingSlots(true);
     setDisablePrev(true);
     setDisableNext(true);
@@ -116,10 +123,9 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     setSelectedTime('');
     setIsBookableContent(true);
 
-    console.log(selectedScanId);
+    const fromDate = firstDay || '';
 
-    //const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&extraId=${selectedExtras}&from=${firstDay}`;
-    const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&extraId=${selectedExtras}`;
+    const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&extraId=${selectedExtras}&from=${fromDate}`;
 
     console.log(slotsURL);
     if (
@@ -127,7 +133,6 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
       selectedScanId === '' ||
       selectedTypeOfAppointment === ''
     ) {
-      console.log('empty!');
       return;
     }
 
@@ -137,63 +142,41 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
         console.log(res);
         setLoadingSlots(false);
 
-        // const uniqueDates = [
-        //   ...new Set(
-        //     res?.data?.slots.map((slot: any) => slot.startTime.split('T')[0])
-        //   ),
-        // ];
+        const daysData = res?.data?.days;
 
-        const days = res?.data?.days;
-        console.log(days);
+        setDates(getDates(firstDay));
 
-        const availableDays = [];
+        // enable next/ prev after slots call was completed
+        // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
+        setDisableNext(false);
+        setDisablePrev(false);
 
-        if (days.length) {
-          days.map((day) => {
-            if (day.slots.length > 0) {
-              availableDays.push(day);
-            }
-          });
+        if (firstDay) {
+          const currentDate = new Date();
+          currentDate.setHours(0, 0, 0, 0); // Reset time to midnight
+          const parsedFirstDayOfWeek = new Date(firstDay);
+          parsedFirstDayOfWeek.setHours(0, 0, 0, 0); // Reset time to midnight
+          const lastDayOfPrevWeek = new Date(
+            parsedFirstDayOfWeek.getTime() - 24 * 60 * 60 * 1000
+          );
+          if (currentDate > lastDayOfPrevWeek) {
+            setDisablePrev(true);
+          } else {
+            setDisablePrev(false);
+          }
         }
 
-        setDays(days);
-        //     const days: any = uniqueDates.map((date) => ({
-        //       date: date,
-        //       slots: res?.data?.slots
-        //         .filter((slot: any) => slot.startTime.split('T')[0] === date)
-        //         .map((slot: any) => ({
-        //           startTime: slot.startTime,
-        //           endTime: slot.endTime,
-        //         })),
-        //     }));
-        //     // enable next/ prev after slots call was completed
-        //     // prev also needs to check against first available date and remain disable if prev week will be before the week containing it
-        //     setDisableNext(false);
-        //     setDisablePrev(false);
-        //     if (firstDay !== null) {
-        //       const currentDate = new Date(fristAppointmentDate);
-        //       currentDate.setHours(0, 0, 0, 0); // Reset time to midnight
-        //       const parsedFirstDayOfWeek = new Date(firstDay);
-        //       parsedFirstDayOfWeek.setHours(0, 0, 0, 0); // Reset time to midnight
-        //       const lastDayOfPrevWeek = new Date(
-        //         parsedFirstDayOfWeek.getTime() - 24 * 60 * 60 * 1000
-        //       );
-        //       // console.log('first day of the week', firstDayOfWeek);
-        //       // console.log('current date', currentDate);
-        //       // console.log('lastDayOfPrevWeek', lastDayOfPrevWeek);
-        //       if (currentDate > lastDayOfPrevWeek) {
-        //         setDisablePrev(true);
-        //       } else {
-        //         setDisablePrev(false);
-        //       }
-        //     }
-        //     if (res?.data?.slots.length > 0) {
-        //       setNoSlots(false);
-        //       setDays(days);
-        //     } else {
-        //       setNoSlots(true);
-        //       setDays([]);
-        //     }
+        const hasSlots = daysData.some(
+          (item) => item.slots && item.slots.length > 0
+        );
+
+        if (hasSlots) {
+          setNoSlots(false);
+          getWeekdays(daysData);
+        } else {
+          setNoSlots(true);
+          setDays([]);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -203,19 +186,14 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
       });
   };
 
-  const showSelection = (
-    e: any,
-    startTime: string
-    // _endTime: string,
-    // formattedDate: string
-  ) => {
-    console.log(startTime);
+  const showSelection = (e: any, slotId: string) => {
+    const startTime = cleanTimestamp(slotId);
+
+    setSelectedSlotId(slotId);
     setSelectedDate(formatDateLong(startTime));
     setSelectedTime(formatTime12hr(startTime));
     setStartTime(startTime);
-    // console.log(formatDateLong(startTime));
-    // console.log(formatTime12hr(startTime));
-    // console.log(endTime);
+
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
 
     if (buttons.length > 0) {
@@ -247,52 +225,105 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     return new Date(date) > new Date(nextWorkingDay);
   };
 
-  const isWorkingDay = (inputDateString: any) => {
-    const inputDate: any = new Date(inputDateString);
-    // Not Sat Sun or a public holiday
-    // TODO - Andy works Saturday mornings - do we need to factor this?
-    return !(
-      inputDate.getDay() === 0 ||
-      inputDate.getDay() === 6 ||
-      datesNotToBook.indexOf(inputDateString) > -1
-    );
-  };
+  // const isWorkingDay = (inputDateString: any) => {
+  //   const inputDate: any = new Date(inputDateString);
+  //   // Not Sat Sun or a public holiday
+  //   // TODO - Andy works Saturday mornings - do we need to factor this?
+  //   return !(
+  //     inputDate.getDay() === 0 ||
+  //     inputDate.getDay() === 6 ||
+  //     datesNotToBook.indexOf(inputDateString) > -1
+  //   );
+  // };
 
-  const nextWorkingDayInDaysTime = (inputDateString: any, days: any) => {
-    let loopDate = new Date(inputDateString);
-    let loopDayCount = days;
-    while (loopDayCount > 0) {
-      const newDate = loopDate.setDate(loopDate.getDate() + 1);
-      loopDate = new Date(newDate);
-      if (isWorkingDay(formatDateYYYYMMDD(loopDate))) {
-        loopDayCount--;
-      }
-    }
-    return loopDate;
-  };
+  // const nextWorkingDayInDaysTime = (inputDateString: any, days: any) => {
+  //   let loopDate = new Date(inputDateString);
+  //   let loopDayCount = days;
+  //   while (loopDayCount > 0) {
+  //     const newDate = loopDate.setDate(loopDate.getDate() + 1);
+  //     loopDate = new Date(newDate);
+  //     if (isWorkingDay(formatDateYYYYMMDD(loopDate))) {
+  //       loopDayCount--;
+  //     }
+  //   }
+  //   return loopDate;
+  // };
 
   useEffect(() => {
-    // setLoadingSlots(true);
-    const firstDay: any = getFirstDayOfWeek(new Date(fristAppointmentDate));
+    setLoadingSlots(true);
+    const firstDay: any = new Date();
+
     setFirstDayOfWeek(firstDay);
-    const lastDay: any = getLastDayOfWeek(firstDay);
-    // setLastDayOfWeek(lastDay);
-    // // console.log('fristAppointmentDate', fristAppointmentDate);
-    // // console.log('firstDay', formatDateYYYYMMDD(firstDay));
-    // // console.log('lastDay', formatDateYYYYMMDD(lastDay));
-    getSlots(formatDateYYYYMMDD(firstDay), formatDateYYYYMMDD(lastDay));
-    // setDates(getDates(firstDay, lastDay));
-    // if (props.holidays !== null && props.holidays !== undefined) {
-    //   const holidaysUKData = props.holidays
-    //     .map((item: any) => item.Values)
-    //     .map((item: any) => item.ISODate);
-    //   // console.log('holidaysUKData', holidaysUKData);
-    //   setDatesNotToBook(holidaysUKData);
-    // } else {
-    //   setDatesNotToBook([]);
-    // }
+
+    getSlots(firstDay);
+    setDates(getDates(formatDateYYYYMMDD(firstDay)));
+
     // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    getSlots(firstDayOfWeek);
   }, [selectedLocation, selectedTypeOfAppointment, selectedScanId]);
+
+  type DateItem = {
+    weekDayLabel: string;
+    dateLabel: string;
+    date: string;
+  };
+
+  function filterCurrentWeekDates(dates: DateItem[]): DateItem[] {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+    // Find the current week's Monday
+    const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+    const monday = new Date(today);
+    monday.setDate(today.getDate() + mondayOffset);
+
+    // Find the current week's Sunday
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    // Find next week's Monday
+    const nextMonday = new Date(sunday);
+    nextMonday.setDate(sunday.getDate() + 1);
+
+    return dates.filter((item) => {
+      const itemDate = new Date(item.date);
+      return itemDate >= monday && itemDate <= sunday;
+    });
+  }
+
+  const getWeekdays = (daysList) => {
+    const today = new Date();
+    const formattedToday = today.toISOString().split('T')[0];
+
+    const containsToday = daysList.some((day) => day.date === formattedToday);
+
+    if (containsToday) {
+      setDays(daysList);
+      return;
+    }
+
+    // Check if all dates in daysList belong to next week
+    const firstDate = new Date(daysList[0].date);
+    const dayOfWeek = today.getDay(); // Get current day of the week
+    const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+    const currentWeekMonday = new Date(today);
+    currentWeekMonday.setDate(today.getDate() + mondayOffset);
+
+    const nextMonday = new Date(currentWeekMonday);
+    nextMonday.setDate(currentWeekMonday.getDate() + 7);
+
+    if (firstDate >= nextMonday) {
+      setDays(daysList); // If it's next week's data, use it as is
+      return;
+    }
+
+    // Otherwise, only return current week's days
+    setDays(filterCurrentWeekDates(daysList));
+  };
 
   return (
     <div className={styles.slots}>
@@ -355,7 +386,7 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
                 </div>
                 <div className={styles.date}>
                   <Text tag="h3" variation="body-medium-large">
-                    {dates[index]}
+                    {dates[day]}
                   </Text>
                 </div>
               </div>
@@ -381,55 +412,44 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
         {!loadingSlots && days.length > 0 && (
           <div className={styles['weekdays']}>
             {daysOfWeek.map((_day, index) => {
-              // how many days are we into the week and remove that many from the end of the array as that will be next week's days.
-              const today = new Date().getDay() - 1;
-
-              const justThisWeekDays = days.slice(0, -today);
-
-              const weekdays = justThisWeekDays.filter(
-                (day) => day.weekDayLabel === _day
-              );
-              //const formattedToday = today.toISOString().split('T')[0];
-
               return (
                 <div key={index} className={styles['weekdays-item']}>
-                  {weekdays.map((day: any, dateIndex) => {
-                    function cleanTimestamp(ts: string): string {
-                      return ts.split('|')[0]; // Removes everything after "|"
+                  {days.map((day: any, dateIndex) => {
+                    if (day.weekDayLabel === _day) {
+                      return (
+                        <div key={dateIndex} className={`${styles['time']}`}>
+                          {day.slots.map(
+                            (slot: any, slotIndex: any) =>
+                              !slot.isBlocked && (
+                                <button
+                                  data-button={'slot-btn'}
+                                  key={slotIndex}
+                                  //className={`${`${styles['short-appointment']}`}`}
+                                  onClick={(e) => {
+                                    showSelection(e, slot.id);
+                                  }}
+                                >
+                                  {/* {!isBookableDate(formattedDate) && */}
+                                  {/* props.shortNoticeIcon} */}
+                                  <div className={styles['btn-txt']}>
+                                    <Text
+                                      tag="span"
+                                      variation="body-medium-large"
+                                    >
+                                      {removeSeconds(
+                                        new Date(
+                                          cleanTimestamp(slot.id)
+                                        ).toLocaleTimeString()
+                                      )}
+                                    </Text>
+                                  </div>
+                                </button>
+                              )
+                          )}
+                        </div>
+                      );
                     }
 
-                    return (
-                      <div key={dateIndex} className={`${styles['time']}`}>
-                        {day.slots.map(
-                          (slot: any, slotIndex: any) =>
-                            !slot.isBlocked && (
-                              <button
-                                data-button={'slot-btn'}
-                                key={slotIndex}
-                                className={`${`${styles['short-appointment']}`}`}
-                                onClick={(e) =>
-                                  showSelection(e, cleanTimestamp(slot.id))
-                                }
-                              >
-                                {/* {!isBookableDate(formattedDate) && */}
-                                {/* props.shortNoticeIcon} */}
-                                <div className={styles['btn-txt']}>
-                                  <Text
-                                    tag="span"
-                                    variation="body-medium-large"
-                                  >
-                                    {removeSeconds(
-                                      new Date(
-                                        cleanTimestamp(slot.id)
-                                      ).toLocaleTimeString()
-                                    )}
-                                  </Text>
-                                </div>
-                              </button>
-                            )
-                        )}
-                      </div>
-                    );
                     // }
                   })}
                 </div>

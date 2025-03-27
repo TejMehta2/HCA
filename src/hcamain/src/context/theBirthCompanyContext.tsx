@@ -23,7 +23,7 @@ interface TheBirthCompanyContextType {
   setSelectedTypeOfAppointment: React.Dispatch<React.SetStateAction<string>>;
   selectedLocation: string;
   setSelectedLocation: React.Dispatch<React.SetStateAction<string>>;
-  fristAppointmentDate: string;
+  firstAppointmentDate: string;
   setFirstAppointmentDate: React.Dispatch<React.SetStateAction<string>>;
   consultantGUID: string;
   setConsultantGUID: React.Dispatch<React.SetStateAction<string>>;
@@ -67,6 +67,8 @@ interface TheBirthCompanyContextType {
   setCompletedFormId: React.Dispatch<React.SetStateAction<string>>;
   selectedScanId: string;
   setSelectedScanId: React.Dispatch<React.SetStateAction<string>>;
+  selectedSlotId: string;
+  setSelectedSlotId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
@@ -94,7 +96,7 @@ export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
     setSelectedTypeOfAppointment: () => {},
     selectedLocation: '',
     setSelectedLocation: () => {},
-    fristAppointmentDate: '',
+    firstAppointmentDate: '',
     setFirstAppointmentDate: () => {},
     consultantGUID: '',
     setConsultantGUID: () => {},
@@ -138,6 +140,8 @@ export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
     setCompletedFormId: () => {},
     selectedScanId: '',
     setSelectedScanId: () => {},
+    selectedSlotId: '',
+    setSelectedSlotId: () => {},
   }
 );
 
@@ -161,7 +165,7 @@ export const TheBirthCompanyContextProvider = ({
     useState<string>('');
   const [consultantGUID, setConsultantGUID] = useState<string>('');
   const [locationGUID, setLocationGUID] = useState<string>('');
-  const [fristAppointmentDate, setFirstAppointmentDate] = useState<string>('');
+  const [firstAppointmentDate, setFirstAppointmentDate] = useState<string>('');
   const [lat, setLat] = useState<string>('');
   const [lon, setLon] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<string>('');
@@ -183,6 +187,7 @@ export const TheBirthCompanyContextProvider = ({
   const [finderFormPrevious, setFinderFormPrevious] = useState<string>('');
   const [completedFormId, setCompletedFormId] = useState<string>('');
   const [selectedScanId, setSelectedScanId] = useState<string>('');
+  const [selectedSlotId, setSelectedSlotId] = useState<string>('');
 
   return (
     <TheBirthCompanyContext.Provider
@@ -213,7 +218,7 @@ export const TheBirthCompanyContextProvider = ({
         setConsultantGUID,
         locationGUID,
         setLocationGUID,
-        fristAppointmentDate,
+        firstAppointmentDate,
         setFirstAppointmentDate,
         lat,
         setLat,
@@ -253,6 +258,8 @@ export const TheBirthCompanyContextProvider = ({
         setCompletedFormId,
         selectedScanId,
         setSelectedScanId,
+        selectedSlotId,
+        setSelectedSlotId,
       }}
     >
       {children}

@@ -2,11 +2,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
-  GetStaticComponentProps,
   ComponentRendering,
   Image as JssImage,
   ImageField,
@@ -26,7 +25,7 @@ import TextButton from '@component-library/core-components/TextButton/TextButton
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import { GetServerSidePropsContext } from 'next';
+
 import SlotsCalendarBirthCompany from '@component-library/consultant-finder/SlotsCalendar/SlotsCalendarBirthCompany';
 import { useSearchParams } from 'next/navigation';
 
@@ -59,36 +58,6 @@ type StepProps = {
   fields: Fields;
 };
 
-// interface ServerSideProps {
-//   Holidays: any;
-// }
-
-/**
- * if exported, will be called if/during SSG
- * @param {ComponentRendering} _rendering
- * @param {LayoutServiceData} _layoutData
- * @param {GetStaticPropsContext} _context
- */
-/*export*/ const getStaticProps: GetStaticComponentProps = async () => {
-  // const holidaysJson = await getHolidays();
-  // const returnProps: ServerSideProps = {
-  //   Holidays: holidaysJson,
-  // };
-  //console.log('holidaysJson', holidaysJson);
-  //return returnProps;
-  return 'ok';
-};
-
-// will be called if not SSG
-export async function getServerSideProps(
-  rendering: ComponentRendering,
-  layoutData: LayoutServiceData,
-  context: GetServerSidePropsContext
-) {
-  // proxy to GetStaticComponentProps
-  return await getStaticProps(rendering, layoutData, context);
-}
-
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
     <div className="component-content">
@@ -106,20 +75,13 @@ export const Default = (props: StepProps): JSX.Element => {
 };
 
 export const TbcSlots = (props: StepProps): JSX.Element => {
-  // const serverSideData = useComponentProps<ServerSideProps>(
-  //   props.rendering.uid
-  // );
-  //console.log('serverSideData', serverSideData);
-
-  //const holidaysUK = serverSideData?.Holidays;
-  const holidaysUK = [];
-
-  //console.log('steps slot', props.fields);
   const {
     setSelectedLocation,
     setSelectedTypeOfAppointment,
     setSelectedScanId,
     setSelectedExtras,
+    setSelectedSlotId,
+    selectedSlotId,
     selectedLocation,
     selectedScanId,
     selectedTypeOfAppointment,
@@ -133,20 +95,14 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
   const paramScanId = searchParams.get('scanId');
   const paramLocationId = searchParams.get('locationId');
   const paramTypeId = searchParams.get('typeId');
-
-  //console.log(searchParams);
+  const paramSlotId = searchParams.get('slotId');
+  const router = useRouter();
 
   // Set params for next page
   const nextPageParams = new URLSearchParams(searchParams.toString());
-  if (selectedLocation) {
-    nextPageParams.set('locationId', selectedLocation);
-  }
-  if (selectedScanId) {
-    nextPageParams.set('scanId', selectedScanId);
-  }
 
-  if (selectedTypeOfAppointment) {
-    nextPageParams.set('typeId', selectedTypeOfAppointment);
+  if (selectedSlotId) {
+    nextPageParams.set('slotId', selectedSlotId);
   }
 
   useEffect(() => {
@@ -164,6 +120,11 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
       //console.log('type ' + paramTypeId);
       setSelectedTypeOfAppointment(paramTypeId);
     }
+
+    if (paramSlotId) {
+      console.log('slotId ' + paramSlotId);
+      setSelectedSlotId(paramSlotId);
+    }
   }, [
     paramLocationId,
     setSelectedLocation,
@@ -171,64 +132,20 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     setSelectedScanId,
     paramTypeId,
     setSelectedTypeOfAppointment,
+    paramSlotId,
+    setSelectedSlotId,
   ]);
 
-  // const [locationId, setLocaitonId] = useState<string>('');
-  // const [scanId, setScanId] = useState<string>('');
-  // const [typeId, setTypeId] = useState<string>('');
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
 
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth',
-  //   });
-
-  // if (router.isReady) {
-  //   console.log(router);
-
-  //   // get scanId from URL
-  //   const scan = router.query.scanId;
-  //   // const scanId = searchParams.get('scanId');
-  //   //setScanId(scan.toString());
-
-  //   // get locationId from URL
-  //   const location = router.query.locationId;
-  //   // const locationId = searchParams.get('locationId');
-  //   //setLocaitonId(location.toString());
-
-  //   // //get typeId from URL
-  //   const type = router.query.typeId;
-  //   // const typeId = searchParams.get('typeId');
-  //   //setTypeId(type.toString());
-
-  //   // //get extras from URL
-  //   const extras = router?.query?.extras || '';
-  //   //const extras = searchParams.getAll('extras');
-  //   if (location) {
-  //     setSelectedLocation(location.toString());
-  //   }
-  //   setSelectedTypeOfAppointment(type?.toString() || '');
-  //   setSelectedScanId(scan?.toString() || '');
-  //   setSelectedExtras(extras || '');
-
-  //   console.log(location);
-  // }
-
-  // useEffect(() => {
-  //   console.log('Updated selectedLocation:', selectedLocation);
-  // }, [selectedLocation]);
-
-  // console.log(searchParams);
-
-  // if selected location and appointment type is missing then redirect to appointment type
-  // if (selectedLocation === '' && selectedTypeOfAppointment === '') {
-  //   router.push(
-  //     `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
-  //   );
-  // }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  //}, [searchParams]);
-  //, []);
+    if (!router.isReady) {
+      return;
+    }
+  });
 
   if (props.fields) {
     return (
@@ -236,7 +153,6 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
         className={`component promo ${props.params.styles}`}
         id={id ? id : undefined}
       >
-        {selectedLocation}
         {
           <>
             <HeaderLDB
@@ -245,13 +161,10 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
-                  //slug={slug}
-                  //gmcNumber={gmcNumber}
                 ></ProgressBar>
               }
             ></HeaderLDB>
             <SlotsCalendarBirthCompany
-              holidays={holidaysUK}
               titleText={
                 props?.fields?.TitleText?.value || 'Please select a slot'
               }
@@ -285,14 +198,14 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
             />
             <Navigation hideTextMobile={true}>
               <div>
-                {/* <TextButton>
+                <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?scanId=${scanId}&locationId=${locationId}&typeId=${typeId}`}
+                    href={`${props?.fields?.BackLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
                   </Link>
-                </TextButton> */}
+                </TextButton>
               </div>
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
@@ -307,7 +220,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
               )}
               {isBookableContent && (
                 <Container>
-                  {/* <Button size={'small'} variation={'full-dark'}>
+                  <Button size={'small'} variation={'full-dark'}>
                     <button
                       disabled={
                         selectedDate === '' && selectedTime === ''
@@ -316,7 +229,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
                       }
                       onClick={() =>
                         router.push(
-                          `${props?.fields?.NextLink?.value?.href}?scanId=${scanId}&locationId=${locationId}&typeId=${typeId}`
+                          `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}`
                         )
                       }
                     >
@@ -324,7 +237,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
                         {props?.fields?.NextLink?.value?.text || 'Book Slot'}
                       </span>
                     </button>
-                  </Button> */}
+                  </Button>
                 </Container>
               )}
               {!isBookableContent && (
