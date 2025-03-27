@@ -12,7 +12,7 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentBuilder } from 'temp/componentBuilder';
 import useCustomTracking from '@component-library/hooks/useCustomTracking/useCustomTracking';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetServerSideProps } from 'next';
 
 const SitecorePage = (props: SitecorePageProps): JSX.Element => {
   const { notFound, componentProps, layoutData, headLinks } = props;
