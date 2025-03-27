@@ -60,7 +60,7 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   console.log(props);
 
-  if (transactionStatus?.status !== 'Successful') {
+  if (transactionStatus?.status !== 'Successful' || paramErrors) {
     return (
       <HeaderText
         fullHeight={false}
@@ -85,7 +85,9 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
             props.fields?.ErrorCTALink ? (
             <Button size={'large'} variation={'full'}>
               <JssLink
-                href={props.fields.ErrorCTALink?.value.href}
+                href={`${props.fields.ErrorCTALink?.value.href}${
+                  props.retryQuerystring || ''
+                }`}
                 field={props.fields?.ErrorCTALink}
               >
                 {props?.fields?.ErrorCTAIcon && (

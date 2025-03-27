@@ -37,6 +37,7 @@ export type TbcBookingConfirmationProps = {
   type: string;
   appointmentDateTime: string;
   location: string;
+  retryQuerystring: string;
 };
 
 export interface TransactionStatusResponse {

@@ -63,7 +63,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   // State
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
-  const [ukResident /* setUkResident */] = useState(true);
+  const [ukResident, setUkResident] = useState(true);
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
   const [appointmentDetails, setAppointmentDetails] =
@@ -430,6 +430,13 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
               type="email"
             />
 
+            <DynamicSelectField
+              getField={getField}
+              formErrors={formErrors}
+              name="isUKResident"
+              onChange={(option) => setUkResident(option.text === 'Yes')}
+            />
+
             <AddressFinder
               defaultStep={ukResident ? 'automatic' : 'manual'}
               findAddressEndpoint={
@@ -608,17 +615,17 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
           <div>
             <input
-              type=""
+              type="hidden"
               name="slotId"
               value={appointmentDetails?.slotId || ''}
             />
             <input
-              type=""
+              type="hidden"
               name="serviceVariantId"
               value={appointmentDetails?.serviceVariantId || ''}
             />
             <input
-              type=""
+              type="hidden"
               name="extrasIds"
               value={appointmentDetails?.extrasIds || ''}
             />
