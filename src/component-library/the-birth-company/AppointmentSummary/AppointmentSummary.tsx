@@ -8,6 +8,8 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
     title,
     locationTitle,
     location,
+    scanTitle,
+    scan,
     appointmentTitle,
     appointment,
     dateTitle,
@@ -22,54 +24,76 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
           {title}
         </Text>
       </div>
-      <div className={styles.item}>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-bold-small">
-            {locationTitle}
-          </Text>
+      {location && (
+        <div className={styles.item}>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-bold-small">
+              {locationTitle}
+            </Text>
+          </div>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-small">
+              {location}
+            </Text>
+          </div>
         </div>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-small">
-            {location}
-          </Text>
+      )}
+      {scan && (
+        <div className={styles.item}>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-bold-small">
+              {scanTitle}
+            </Text>
+          </div>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-small">
+              {scan}
+            </Text>
+          </div>
         </div>
-      </div>
-      <div className={styles.item}>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-bold-small">
-            {appointmentTitle}
-          </Text>
+      )}
+      {appointment && (
+        <div className={styles.item}>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-bold-small">
+              {appointmentTitle}
+            </Text>
+          </div>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-small">
+              {appointment}
+            </Text>
+          </div>
         </div>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-small">
-            {appointment}
-          </Text>
+      )}
+      {date && (
+        <div className={styles.item}>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-bold-small">
+              {dateTitle}
+            </Text>
+          </div>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-small">
+              {date}
+            </Text>
+          </div>
         </div>
-      </div>
-      <div className={styles.item}>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-bold-small">
-            {dateTitle}
-          </Text>
+      )}
+      {price && (
+        <div className={styles.item}>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-bold-small">
+              {priceTitle}
+            </Text>
+          </div>
+          <div className={styles['item-title']}>
+            <Text tag="p" variation="body-small">
+              {price}
+            </Text>
+          </div>
         </div>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-small">
-            {date}
-          </Text>
-        </div>
-      </div>
-      <div className={styles.item}>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-bold-small">
-            {priceTitle}
-          </Text>
-        </div>
-        <div className={styles['item-title']}>
-          <Text tag="p" variation="body-small">
-            {price}
-          </Text>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -297,13 +297,18 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                     title={'Appointment summary'}
                     locationTitle={'Location'}
                     location={appointmentDetails.location}
+                    scanTitle={'Scan'}
+                    scan={`${appointmentDetails.scanName} ${
+                      appointmentDetails.extras.length
+                        ? '(' + appointmentDetails.extras.join(', ') + ')'
+                        : ''
+                    }`}
                     appointmentTitle={'Appointment'}
                     appointment={appointmentDetails.appointmentType}
                     dateTitle={'Date & time'}
                     date={`${formatDate(appointmentDetails.slot)} (${
                       appointmentDetails.duration
                     })`}
-                    // date={`Friday 04 Nov at 10:30am (30 min)`}
                     priceTitle={`Price to pay`}
                     price={appointmentDetails.price}
                   />

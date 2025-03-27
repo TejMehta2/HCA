@@ -6,6 +6,7 @@
   justify-content: space-between;
   padding: $spacing-4 $spacing-6;
   border-bottom: 1px solid $navy-blue-5;
+  position: relative;
 
   .progress {
     display: flex;
