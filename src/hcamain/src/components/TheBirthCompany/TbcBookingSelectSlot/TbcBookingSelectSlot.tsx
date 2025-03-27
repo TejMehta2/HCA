@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -88,6 +88,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     selectedDate,
     selectedTime,
     isBookableContent,
+    selectedExtras,
   } = useContext(TheBirthCompanyContext);
   const id = props.params.RenderingIdentifier;
 
@@ -96,6 +97,13 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
   const paramLocationId = searchParams.get('locationId');
   const paramTypeId = searchParams.get('typeId');
   const paramSlotId = searchParams.get('slotId');
+  const paramExtras = useMemo(
+    () => searchParams.getAll('extraId'),
+    [searchParams]
+  );
+
+  const [extras, setExtras] = useState('');
+
   const router = useRouter();
 
   // Set params for next page
@@ -105,25 +113,35 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     nextPageParams.set('slotId', selectedSlotId);
   }
 
+  function formatQueryParams(ids: string[]): string {
+    const extrasString = ids
+      .map((id) => `extraId=${encodeURIComponent(id)}`)
+      .join('&');
+    return `&${extrasString}`;
+  }
+
   useEffect(() => {
     if (paramLocationId) {
-      //console.log('location ' + paramLocationId);
       setSelectedLocation(paramLocationId);
     }
 
     if (paramScanId) {
-      //console.log('scan ' + paramScanId);
       setSelectedScanId(paramScanId);
     }
 
     if (paramTypeId) {
-      //console.log('type ' + paramTypeId);
       setSelectedTypeOfAppointment(paramTypeId);
     }
 
     if (paramSlotId) {
-      console.log('slotId ' + paramSlotId);
       setSelectedSlotId(paramSlotId);
+    }
+    if (paramExtras) {
+      if (paramExtras.length > 0) {
+        setSelectedExtras(paramExtras);
+
+        setExtras(formatQueryParams(paramExtras));
+      }
     }
   }, [
     paramLocationId,
@@ -134,6 +152,8 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     setSelectedTypeOfAppointment,
     paramSlotId,
     setSelectedSlotId,
+    paramExtras,
+    setSelectedExtras,
   ]);
 
   useEffect(() => {
@@ -200,7 +220,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}`}
+                    href={`${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -229,7 +249,7 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
                       }
                       onClick={() =>
                         router.push(
-                          `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}`
+                          `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`
                         )
                       }
                     >

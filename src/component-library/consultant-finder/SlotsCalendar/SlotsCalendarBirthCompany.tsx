@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useState } from 'react';
-import { SlotsCalendarProps } from './SlotsCalendar.types';
+import { SlotsCalendarBirthCompanyProps } from './SlotsCalendarBirthCompany.types';
 import styles from './SlotsCalendar.module.scss';
 import {
   formatDateYYYYMMDD,
@@ -16,7 +16,9 @@ import Text from '../../foundation/Text/Text';
 import axios from 'axios';
 import TextLink from '../../core-components/TextLink/TextLink';
 
-const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
+const SlotsCalendarBirthCompany = (
+  props: SlotsCalendarBirthCompanyProps
+): JSX.Element => {
   const {
     selectedLocationName,
     selectedLocation,
@@ -123,9 +125,19 @@ const SlotsCalendarBirthCompany = (props: SlotsCalendarProps): JSX.Element => {
     setSelectedTime('');
     setIsBookableContent(true);
 
-    const fromDate = firstDay || '';
+    const fromDate = formatDateYYYYMMDD(firstDay) || '';
 
-    const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&extraId=${selectedExtras}&from=${fromDate}`;
+    function formatQueryParams(ids: string[]): string {
+      const extrasString = ids
+        .map((id) => `extraId=${encodeURIComponent(id)}`)
+        .join('&');
+      return `&${extrasString}`;
+    }
+    const extras = selectedExtras.length
+      ? formatQueryParams(selectedExtras)
+      : '';
+
+    const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&from=${fromDate}${extras}`;
 
     console.log(slotsURL);
     if (
