@@ -252,7 +252,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
 
   try {
     response = await fetch(
-      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
     );
     const transactionStatus = await response.json();
     return transactionStatus?.response;
