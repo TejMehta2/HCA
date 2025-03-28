@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useState } from 'react';
-import { SlotsCalendarBirthCompanyProps } from './SlotsCalendarBirthCompany.types';
-import styles from './SlotsCalendar.module.scss';
+import {
+  SlotsCalendarBirthCompanyProps,
+  slots,
+  day,
+  daysList,
+} from './SlotsCalendarBirthCompany.types';
+import styles from '../../consultant-finder/SlotsCalendar/SlotsCalendar.module.scss';
 import {
   formatDateYYYYMMDD,
   formatDateLong,
@@ -10,7 +15,7 @@ import {
   formatTime12hr,
 } from '../../utility-functions/index';
 import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
-import LoaderCF from '../LoaderCF/LoaderCF';
+import LoaderCF from '../../consultant-finder/LoaderCF/LoaderCF';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
 import axios from 'axios';
@@ -37,8 +42,7 @@ const SlotsCalendarBirthCompany = (
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
   const [, setLastDayOfWeek] = useState<any>(null);
   const [dates, setDates] = useState([]);
-  const [year, setYear] = useState(null);
-  const [days, setDays] = useState([]);
+  const [days, setDays] = useState<day[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [noSlots, setNoSlots] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
@@ -92,7 +96,7 @@ const SlotsCalendarBirthCompany = (
     return week;
   }
 
-  const getDates: any = (firstDayOfWeek) => {
+  const getDates: any = (firstDayOfWeek: string) => {
     const weekOfDates = getWeekDates(firstDayOfWeek);
     return weekOfDates;
   };
@@ -137,7 +141,6 @@ const SlotsCalendarBirthCompany = (
 
     const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&from=${fromDate}${extras}`;
 
-    //console.log(slotsURL);
     if (
       selectedLocation === '' ||
       selectedScanId === '' ||
@@ -149,7 +152,6 @@ const SlotsCalendarBirthCompany = (
     axios
       .get(slotsURL)
       .then((res) => {
-        console.log(res);
         setLoadingSlots(false);
 
         const daysData = res?.data?.days;
@@ -177,7 +179,7 @@ const SlotsCalendarBirthCompany = (
         }
 
         const hasSlots = daysData.some(
-          (item) => item.slots && item.slots.length > 0
+          (item: slots) => item.slots && item.slots.length > 0
         );
 
         if (hasSlots > 0) {
@@ -252,15 +254,15 @@ const SlotsCalendarBirthCompany = (
 
   useEffect(() => {
     getSlots(firstDayOfWeek);
-  }, [selectedLocation, selectedTypeOfAppointment, selectedScanId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    selectedLocation,
+    selectedTypeOfAppointment,
+    selectedScanId,
+    firstDayOfWeek,
+  ]);
 
-  type DateItem = {
-    weekDayLabel: string;
-    dateLabel: string;
-    date: string;
-  };
-
-  function filterCurrentWeekDates(dates: DateItem[]): DateItem[] {
+  function filterCurrentWeekDates(dates: day[]): day[] {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
@@ -284,11 +286,13 @@ const SlotsCalendarBirthCompany = (
     });
   }
 
-  const getWeekdays = (daysList) => {
+  const getWeekdays = (daysList: daysList) => {
     const today = new Date();
     const formattedToday = today.toISOString().split('T')[0];
 
-    const containsToday = daysList.some((day) => day.date === formattedToday);
+    const containsToday = daysList.some(
+      (day: day) => day.date === formattedToday
+    );
 
     if (!containsToday) {
       setDays(daysList);
@@ -339,8 +343,7 @@ const SlotsCalendarBirthCompany = (
           )}
         </div>
       </div>
-      {/* {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}  */}
-      {/* {!loadingSlots && <div>Slots loaded</div>} */}
+
       <div className={styles['header-mobile']}>
         <div className={`${styles['arrow']}`}>
           <button onClick={showPrevWeek} disabled={disablePrev}>
@@ -366,7 +369,7 @@ const SlotsCalendarBirthCompany = (
             </button>
           </div>
           <div className={styles['week-header']}>
-            {daysOfWeek.map((day, index) => (
+            {daysOfWeek.map((day: any, index) => (
               <div key={index} className={styles['week-header-item']}>
                 <div className={styles.day}>
                   <Text tag="h2" variation="body-medium-small">
@@ -442,8 +445,7 @@ const SlotsCalendarBirthCompany = (
                         </div>
                       );
                     }
-
-                    // }
+                    return;
                   })}
                 </div>
               );

@@ -11,7 +11,6 @@ import {
   ImageField,
   Field,
   LinkField,
-  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
@@ -26,7 +25,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
-import SlotsCalendarBirthCompany from '@component-library/consultant-finder/SlotsCalendar/SlotsCalendarBirthCompany';
+import SlotsCalendarBirthCompany from '@component-library/the-birth-company/SlotsCalendar/SlotsCalendarBirthCompany';
 import { useSearchParams } from 'next/navigation';
 
 interface Fields {
@@ -82,13 +81,9 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     setSelectedExtras,
     setSelectedSlotId,
     selectedSlotId,
-    selectedLocation,
-    selectedScanId,
-    selectedTypeOfAppointment,
     selectedDate,
     selectedTime,
     isBookableContent,
-    selectedExtras,
   } = useContext(TheBirthCompanyContext);
   const id = props.params.RenderingIdentifier;
 

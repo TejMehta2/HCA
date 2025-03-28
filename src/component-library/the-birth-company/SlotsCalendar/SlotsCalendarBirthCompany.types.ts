@@ -13,3 +13,21 @@ export interface SlotsCalendarBirthCompanyProps {
   chooseTimeHeading: string;
   shortNoticeIcon: any;
 }
+
+interface slot {
+  id: string;
+  label: string;
+}
+
+export interface slots {
+  slots: slot[];
+}
+
+export interface day {
+  date: string;
+  dateLabel: string;
+  slots: slots;
+  weekDayLabel: string;
+}
+
+export type daysList = day[];
