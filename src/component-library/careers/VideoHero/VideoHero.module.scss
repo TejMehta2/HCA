@@ -109,3 +109,13 @@
 .copy {
   margin-top: $spacing-5;
 }
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8);
+
+  @include media(screen-m) {
+    width: max-content;
+  }
+}
