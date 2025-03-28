@@ -30,23 +30,22 @@ const SlotsCalendarBirthCompany = (
     selectedTypeOfAppointment,
     selectedScanId,
     selectedExtras,
-    lat,
-    lon,
     setSelectedDate,
     setSelectedTime,
     setStartTime,
     setIsBookableContent,
     setSelectedSlotId,
+    setSelectedLocationName,
   } = useContext(TheBirthCompanyContext);
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
-  const [, setLastDayOfWeek] = useState<any>(null);
   const [dates, setDates] = useState([]);
   const [days, setDays] = useState<day[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [noSlots, setNoSlots] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
+  const [selectedLocationUrl, setSelectedLocationUrl] = useState('');
 
   function cleanTimestamp(ts: string): string {
     return ts.split('|')[0]; // Removes everything after "|"
@@ -59,15 +58,6 @@ const SlotsCalendarBirthCompany = (
     const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     firstDayOfWeek.setDate(firstDayOfWeek.getDate() + diff);
     return firstDayOfWeek;
-  };
-
-  const getLastDayOfWeek = (firstDayOfWeek: any) => {
-    const lastDayOfWeek = new Date(
-      firstDayOfWeek.getFullYear(),
-      firstDayOfWeek.getMonth(),
-      firstDayOfWeek.getDate() + 6
-    );
-    return lastDayOfWeek;
   };
 
   function getWeekDates(dateStr: string): { [key: string]: string } {
@@ -106,7 +96,6 @@ const SlotsCalendarBirthCompany = (
     const nextWeek = new Date(firstDayOfWeek);
     nextWeek.setDate(nextWeek.getDate() + 7);
     setFirstDayOfWeek(getFirstDayOfWeek(nextWeek));
-    setLastDayOfWeek(getLastDayOfWeek(nextWeek));
     getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(nextWeek)));
   };
 
@@ -115,7 +104,6 @@ const SlotsCalendarBirthCompany = (
     const prevWeek = new Date(firstDayOfWeek);
     prevWeek.setDate(prevWeek.getDate() - 7);
     setFirstDayOfWeek(getFirstDayOfWeek(prevWeek));
-    setLastDayOfWeek(getLastDayOfWeek(prevWeek));
     getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(prevWeek)));
   };
 
@@ -153,6 +141,13 @@ const SlotsCalendarBirthCompany = (
       .get(slotsURL)
       .then((res) => {
         setLoadingSlots(false);
+
+        const locationName = res?.data?.location?.name;
+        const locationUrl = res.data?.location?.mapLocationUrl;
+        if (locationName && locationUrl) {
+          setSelectedLocationName(locationName);
+          setSelectedLocationUrl(locationUrl);
+        }
 
         const daysData = res?.data?.days;
 
@@ -328,13 +323,10 @@ const SlotsCalendarBirthCompany = (
           <Text tag="h2" variation="body-medium-extra-large">
             {selectedLocationName}
           </Text>
-          {lat !== '' && lon !== '' && (
+          {selectedLocationUrl && (
             <div className={styles.map}>
               <TextLink>
-                <a
-                  href={`https://maps.google.com/?q=${lat},${lon}`}
-                  target="_blank"
-                >
+                <a href={selectedLocationUrl} target="_blank">
                   <Icons iconName="iconPin" />
                   <span>{props.viewMapText}</span>
                 </a>
