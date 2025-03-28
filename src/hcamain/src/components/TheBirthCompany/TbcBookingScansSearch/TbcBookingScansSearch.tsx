@@ -192,7 +192,7 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
         <Button size={'large'} variation={'full'}>
           <button
             type="submit"
-            disabled={keywordId === '' ? true : false}
+            disabled={keywordId === '0' ? true : false}
             onClick={handleSubmit}
           >
             {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}

@@ -1,0 +1,47 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CardRoleStories from './CardRole.stories';
+
+<Meta of={CardRoleStories} />
+
+# CardRole
+
+## Description
+
+The CardRole component is a card which consists of an icon, title, and cta
+
+It is intended to be used on the careers page within the ServiceCards component
+
+It can be composed like this:
+
+```tsx
+<CardRole
+  image={
+    <Image
+      src="/placeholders/children-playing.jpg"
+      alt="two children playing"
+      width="643"
+      height="605"
+    />
+  }
+  icon={<Icons iconName="iconHospitalLarge" />}
+  title={
+    <Text variation="heading-2" tag="h4">
+      Nursing & Front Line Clinical Services
+    </Text>
+  }
+  cta={
+    <Button size="small" variation="full">
+      <a href="#">
+        <span>
+          <Icons iconName="iconArrowSmallRight" />
+        </span>
+      </a>
+    </Button>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={CardRoleStories.Default} />
+<Controls of={CardRoleStories.Default} />

@@ -19,6 +19,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
     error = '',
     scrollRef,
     preventSubmitOnSuggestion = false,
+    showIcon = true,
   } = props;
   const inputId = useId();
   const suggestionsId = useId();
@@ -72,9 +73,11 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
         Submit
       </button>
       <label htmlFor={inputId} className={styles['search-bar']}>
-        <div className={styles['search-icon']}>
-          <Icons iconName={'iconSearch'} />
-        </div>
+        {showIcon && (
+          <div className={styles['search-icon']}>
+            <Icons iconName={'iconSearch'} />
+          </div>
+        )}
         <input
           onKeyDown={(event) => {
             if (event.key === 'Enter' && !searchOnEnter) {

@@ -15,7 +15,7 @@ import {
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import { TheBirthCompanyContextProvider } from 'src/context/theBirthCompanyContext';
 import { TheBirthCompanyContext } from 'src/context/theBirthCompanyContext';
 
