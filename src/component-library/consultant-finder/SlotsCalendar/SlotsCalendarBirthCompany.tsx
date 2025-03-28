@@ -25,7 +25,6 @@ const SlotsCalendarBirthCompany = (
     selectedTypeOfAppointment,
     selectedScanId,
     selectedExtras,
-    firstAppointmentDate,
     lat,
     lon,
     setSelectedDate,
@@ -44,7 +43,6 @@ const SlotsCalendarBirthCompany = (
   const [noSlots, setNoSlots] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(true);
-  const [datesNotToBook, setDatesNotToBook] = useState<any>([]);
 
   function cleanTimestamp(ts: string): string {
     return ts.split('|')[0]; // Removes everything after "|"
@@ -139,7 +137,7 @@ const SlotsCalendarBirthCompany = (
 
     const slotsURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/calendar?scanId=${selectedScanId}&locationId=${selectedLocation}&typeId=${selectedTypeOfAppointment}&from=${fromDate}${extras}`;
 
-    console.log(slotsURL);
+    //console.log(slotsURL);
     if (
       selectedLocation === '' ||
       selectedScanId === '' ||
@@ -182,9 +180,9 @@ const SlotsCalendarBirthCompany = (
           (item) => item.slots && item.slots.length > 0
         );
 
-        if (hasSlots) {
-          setNoSlots(false);
+        if (hasSlots > 0) {
           getWeekdays(daysData);
+          setNoSlots(false);
         } else {
           setNoSlots(true);
           setDays([]);
@@ -216,50 +214,29 @@ const SlotsCalendarBirthCompany = (
 
     e.target.closest('[data-button="slot-btn"]').classList.add(styles.selected);
 
-    // if (isBookableDate(formattedDate)) {
-    //   setIsBookableContent(true);
-    // } else {
-    //   setIsBookableContent(false);
-    // }
+    if (isBookableDate(startTime)) {
+      setIsBookableContent(true);
+    } else {
+      setIsBookableContent(false);
+    }
   };
 
   ///// bookable logic /////
   const isBookableDate = (date: any) => {
-    const currentDate = new Date(); // get current date
-    currentDate.setHours(0, 0, 0, 0);
-    // 2 business days including today
-    const nextWorkingDay: any = nextWorkingDayInDaysTime(
-      formatDateYYYYMMDD(currentDate),
-      1
-    );
+    // is date within 2 business days
+    const slotDate = new Date(date);
+    const withinTwoDays: any = isWithinNextTwoDays(slotDate);
 
-    // if slot date is bigger than next working date then allow booking online
-    return new Date(date) > new Date(nextWorkingDay);
+    return !withinTwoDays;
   };
 
-  // const isWorkingDay = (inputDateString: any) => {
-  //   const inputDate: any = new Date(inputDateString);
-  //   // Not Sat Sun or a public holiday
-  //   // TODO - Andy works Saturday mornings - do we need to factor this?
-  //   return !(
-  //     inputDate.getDay() === 0 ||
-  //     inputDate.getDay() === 6 ||
-  //     datesNotToBook.indexOf(inputDateString) > -1
-  //   );
-  // };
+  function isWithinNextTwoDays(date: Date): boolean {
+    const now = new Date();
+    const twoDaysLater = new Date();
+    twoDaysLater.setDate(now.getDate() + 2);
 
-  // const nextWorkingDayInDaysTime = (inputDateString: any, days: any) => {
-  //   let loopDate = new Date(inputDateString);
-  //   let loopDayCount = days;
-  //   while (loopDayCount > 0) {
-  //     const newDate = loopDate.setDate(loopDate.getDate() + 1);
-  //     loopDate = new Date(newDate);
-  //     if (isWorkingDay(formatDateYYYYMMDD(loopDate))) {
-  //       loopDayCount--;
-  //     }
-  //   }
-  //   return loopDate;
-  // };
+    return date >= now && date < twoDaysLater;
+  }
 
   useEffect(() => {
     setLoadingSlots(true);
@@ -313,7 +290,7 @@ const SlotsCalendarBirthCompany = (
 
     const containsToday = daysList.some((day) => day.date === formattedToday);
 
-    if (containsToday) {
+    if (!containsToday) {
       setDays(daysList);
       return;
     }
@@ -436,13 +413,17 @@ const SlotsCalendarBirthCompany = (
                                 <button
                                   data-button={'slot-btn'}
                                   key={slotIndex}
-                                  //className={`${`${styles['short-appointment']}`}`}
+                                  className={`${
+                                    !isBookableDate(cleanTimestamp(slot.id))
+                                      ? `${styles['short-appointment']}`
+                                      : ''
+                                  }`}
                                   onClick={(e) => {
                                     showSelection(e, slot.id);
                                   }}
                                 >
-                                  {/* {!isBookableDate(formattedDate) && */}
-                                  {/* props.shortNoticeIcon} */}
+                                  {!isBookableDate(cleanTimestamp(slot.id)) &&
+                                    props.shortNoticeIcon}
                                   <div className={styles['btn-txt']}>
                                     <Text
                                       tag="span"
