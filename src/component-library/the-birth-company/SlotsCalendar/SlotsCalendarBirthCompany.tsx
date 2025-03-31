@@ -11,7 +11,6 @@ import styles from '../../consultant-finder/SlotsCalendar/SlotsCalendar.module.s
 import {
   formatDateYYYYMMDD,
   formatDateLong,
-  formatTime12hr,
 } from '../../utility-functions/index';
 import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
 import LoaderCF from '../../consultant-finder/LoaderCF/LoaderCF';
