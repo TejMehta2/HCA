@@ -117,5 +117,9 @@
 
   @include media(screen-m) {
     width: max-content;
+
+    &:has([class^='CareersSearch']) {
+      width: 100%;
+    }
   }
 }

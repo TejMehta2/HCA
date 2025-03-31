@@ -802,10 +802,11 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         <OffsetTextBlock
           {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
-        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
+        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
       </>
     ),
   },
