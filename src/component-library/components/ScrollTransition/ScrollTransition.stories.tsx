@@ -12,7 +12,6 @@ import Tags from '../../core-components/Tags/Tags';
 import Themes from '../../foundation/Themes/Themes';
 import ServiceCards from '../../site-components/ServiceCards/ServiceCards';
 import CardService from '../CardService/CardService';
-import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
 import CardBlog from '../CardBlog/CardBlog';
 import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Button from '../../core-components/Button/Button';
@@ -22,6 +21,26 @@ import Footer from '../../site-components/Footer/Footer';
 import DiamondLine from '../../site-components/DiamondLine/DiamondLine';
 import OurLocations from '../../site-components/OurLocations/OurLocations';
 import CardLocation from '../CardLocation/CardLocation';
+
+import VideoHero from '../../careers/VideoHero/VideoHero';
+import { VideoHeroProps } from '../../careers/VideoHero/VideoHero.types';
+import { Default as VideoHeroStory } from '../../careers/VideoHero/VideoHero.stories';
+
+import OffsetTextBlock from '../../careers/OffsetTextBlock/OffsetTextBlock';
+import { OffsetTextBlockProps } from '../../careers/OffsetTextBlock/OffsetTextBlock.types';
+import { Default as OffsetTextBlockStory } from '../../careers/OffsetTextBlock/OffsetTextBlock.stories';
+
+import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
+import { CarouselCardsProps } from '../../site-components/CarouselCards/CarouselCards.types';
+import { VacancyCards as CarouselCardsStory } from '../../site-components/CarouselCards/CarouselCards.stories';
+
+import TextBlock from '../../site-components/TextBlock/TextBlock';
+import { TextBlockProps } from '../../site-components/TextBlock/TextBlock.types';
+import { Centered as TextBlockStory } from '../../site-components/TextBlock/TextBlock.stories';
+
+import CarouselTestimonials from '../../careers/CarouselTestimonials/CarouselTestimonials';
+import { CarouselTestimonialsProps } from '../../careers/CarouselTestimonials/CarouselTestimonials.types';
+import { Default as CarouselTestimonialsStory } from '../../careers/CarouselTestimonials/CarouselTestimonials.stories';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
@@ -770,6 +789,25 @@ export const WithFooter: StoryObj<typeof ScrollTransition> = {
           </a>,
         ]}
       />
+    ),
+  },
+};
+
+export const CareersPage: StoryObj<typeof ScrollTransition> = {
+  args: {
+    initialTheme: 'A-HCA-White',
+    children: (
+      <>
+        <VideoHero {...(VideoHeroStory.args as VideoHeroProps)} />
+        <OffsetTextBlock
+          {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
+        />
+        <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
+        <CarouselTestimonials
+          {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
+        />
+        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+      </>
     ),
   },
 };

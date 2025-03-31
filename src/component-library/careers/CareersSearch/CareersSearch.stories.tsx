@@ -1,9 +1,10 @@
 import React from 'react';
 import CareersSearch from './CareersSearch';
 import type { Meta, StoryObj } from '@storybook/react';
-import YextStyledStaticFilters from '../../yext/YextStyledStaticFilters/YextStyledStaticFilters';
-import SearchButton from '../../components/SearchButton/SearchButton';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
+import SelectField from '../../core-components/SelectField/SelectField';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CareersSearch> = {
@@ -20,49 +21,38 @@ export default meta;
 export const Default: StoryObj<typeof CareersSearch> = {
   args: {
     search: (
-      <SearchButton onClick={() => {}}>
-        <span>
-          Search for a <b>keyword or role</b>
-        </span>
-      </SearchButton>
+      <SearchBar
+        showIcon={false}
+        preventSubmitOnSuggestion={true}
+        name="input"
+        placeholder="Search for a keyword or role e.g 'staff nurse'"
+      />
     ),
     filters: (
       <>
-        <YextStyledStaticFilters
-          fieldId={'location'}
-          filterOptions={[
-            { value: 'Option a' },
-            { value: 'Option b' },
-            { value: 'Option c' },
-            { value: 'Option d' },
-            { value: 'Option e' },
-            { value: 'Option f' },
-            { value: 'Option g' },
-            { value: 'Option h' },
-            { value: 'Option i' },
+        <SelectField
+          options={[
+            { text: 'Option a' },
+            { text: 'Option b' },
+            { text: 'Option c' },
+            { text: 'Option d' },
+            { text: 'Option e' },
+            { text: 'Option f' },
+            { text: 'Option g' },
+            { text: 'Option h' },
+            { text: 'Option i' },
           ]}
-          title={'Select a location'}
-        />
-        <YextStyledStaticFilters
-          fieldId={'area'}
-          filterOptions={[
-            { value: 'Option 1' },
-            { value: 'Option 2' },
-            { value: 'Option 3' },
-            { value: 'Option 4' },
-            { value: 'Option 5' },
-            { value: 'Option 6' },
-            { value: 'Option 7' },
-            { value: 'Option 8' },
-            { value: 'Option 9' },
-          ]}
-          title={'Select a job area'}
+          id="region"
+          placeholder="Select a region"
         />
       </>
     ),
     submit: (
-      <Button variation="full" size="large">
-        <button type="submit">Search roles</button>
+      <Button variation="full" size="small" contentVariation="search">
+        <button type="submit">
+          <Icons iconName="iconSearch" />
+          <span className="sr-only">Search</span>
+        </button>
       </Button>
     ),
   },

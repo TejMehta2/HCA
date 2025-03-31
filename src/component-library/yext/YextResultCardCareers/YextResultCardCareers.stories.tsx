@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Themes from '../../foundation/Themes/Themes';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof YextResultCardCareers> = {
@@ -42,4 +43,33 @@ export const Default: StoryObj<typeof YextResultCardCareers> = {
       </Button>
     ),
   },
+};
+
+export const Carousel: StoryObj<typeof YextResultCardCareers> = {
+  args: {
+    variation: 'carousel',
+    city: 'London',
+    location: 'Head office',
+    clinical: 'Clinical',
+    timing: 'Full time',
+    title: (
+      <Text variation={'heading-2'}>
+        {'EHR Registration Scheduling Change Lead'}
+      </Text>
+    ),
+    cta: (
+      <Button variation={'full'} size={'small'} contentVariation="card">
+        <a href={'job.data.applicationUrl'}>
+          <Icons iconName="iconArrowSmallRight" />
+        </a>
+      </Button>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: '314px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };

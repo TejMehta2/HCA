@@ -188,3 +188,11 @@ export const BodyBoldSmall: StoryObj<typeof Text> = {
     children: 'Body Bold Small',
   },
 };
+
+export const Decorative: StoryObj<typeof Text> = {
+  args: {
+    tag: 'p',
+    variation: 'decorative',
+    children: 'Decorative',
+  },
+};

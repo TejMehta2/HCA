@@ -2,8 +2,9 @@
 @use '../../utilities/index.module' as *;
 
 .wrapper {
-  display: grid;
-  gap: px-to-rem(8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(12) 0;
   border: 0;
   padding: 0;
 }

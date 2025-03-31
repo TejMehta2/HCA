@@ -8,7 +8,7 @@
 
   /* Transitions for component elements as they come into view */
   [data-animate] {
-    transition: 1s ease-in-out;
+    transition: 800ms ease-out;
   }
 
   [data-animate='xs'] {

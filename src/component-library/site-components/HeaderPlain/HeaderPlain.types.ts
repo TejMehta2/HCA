@@ -7,4 +7,5 @@ export interface HeaderPlainProps {
   description?: ReactNode | JSX.Element;
   contentVariation?: 'padding-small';
   subtitle?: ReactNode | JSX.Element;
+  image?: ReactNode | JSX.Element;
 }

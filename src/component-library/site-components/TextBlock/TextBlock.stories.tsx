@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Themes from '../../foundation/Themes/Themes';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof TextBlock> = {
@@ -85,4 +86,50 @@ export const NoSubheading: StoryObj<typeof TextBlock> = {
     subheading: undefined,
   },
   decorators: Default.decorators,
+};
+
+export const Centered: StoryObj<typeof TextBlock> = {
+  args: {
+    contentVariation: 'centered',
+    title: (
+      <Text variation={'display-1'}>
+        Never miss an update on our{' '}
+        <Text tag="span" variation="decorative">
+          commitment
+        </Text>{' '}
+        to patients.
+      </Text>
+    ),
+    subheading: <Text variation={'subheading-1'}>follow us</Text>,
+    text: (
+      <Text variation={'body-large'}>
+        Ipsum esse cupidatat amet. Enim amet adipisicing deserunt nostrud esse
+        Lorem nisi laboris nulla est enim. Non in et duis velit magna excepteur.
+        Quis ad ullamco et Lorem aliquip ex nostrud et sunt fugiat est cupidatat
+        velit fugiat.
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size={'large'} variation={'full'}>
+          <a href="#">
+            <Icons iconName="iconFacebook" />
+            Follow HCA UK on Facebook
+          </a>
+        </Button>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <>
+        <Themes theme={'A-HCA-White'}>
+          <Story />
+        </Themes>
+        <Themes theme={'B-HCA-Navy-Blue'}>
+          <Story />
+        </Themes>
+      </>
+    ),
+  ],
 };
