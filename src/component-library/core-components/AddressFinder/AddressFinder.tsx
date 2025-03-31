@@ -87,7 +87,7 @@ const AddressFinder = (props: AddressFinderProps): JSX.Element => {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles['address-wrapper']}>
       {step !== 'manual' && (
         <label className={styles['field-label']}>Address</label>
       )}

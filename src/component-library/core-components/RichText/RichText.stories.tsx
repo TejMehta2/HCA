@@ -104,6 +104,40 @@ export const Default: StoryObj<typeof RichText> = {
           </li>
         </ul>
         <a href="#">Lorem ipsum</a>
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+            <tr>
+              <td>AMH</td>
+              <td>£110</td>
+            </tr>
+          </tbody>
+        </table>
       </>
     ),
   },

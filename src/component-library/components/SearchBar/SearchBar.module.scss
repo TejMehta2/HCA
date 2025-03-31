@@ -52,7 +52,8 @@
 
     min-width: px-to-rem(64); // override mobile value which breaks container
     &::placeholder {
-      color: inherit;
+      color: $navy-blue-60;
+      font-weight: 400;
     }
   }
 

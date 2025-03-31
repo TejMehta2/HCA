@@ -13,4 +13,5 @@ export interface SearchBarProps {
   error?: string;
   scrollRef?: React.RefObject<HTMLElement>;
   preventSubmitOnSuggestion?: boolean;
+  showIcon?: boolean;
 }

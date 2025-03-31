@@ -5,4 +5,5 @@ export interface PaymentSummaryProps {
   bodyText?: ReactNode | JSX.Element;
   summary?: ReactNode | JSX.Element;
   cta?: ReactNode | JSX.Element;
+  isFlex?: boolean;
 }

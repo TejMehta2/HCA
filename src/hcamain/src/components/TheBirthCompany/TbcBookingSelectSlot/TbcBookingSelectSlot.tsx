@@ -2,29 +2,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
-  GetStaticComponentProps,
   ComponentRendering,
   Image as JssImage,
   ImageField,
   Field,
   LinkField,
-  LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
-import { ConsultantFinderContext } from '../../../context/consultantFinderContext';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
+import { TheBirthCompanyContextProvider } from 'src/context/theBirthCompanyContext';
+import { TheBirthCompanyContext } from 'src/context/theBirthCompanyContext';
+
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
-import { GetServerSidePropsContext } from 'next';
+
+import SlotsCalendarBirthCompany from '@component-library/the-birth-company/SlotsCalendar/SlotsCalendarBirthCompany';
+import { useSearchParams } from 'next/navigation';
 
 interface Fields {
   HCALogo: ImageField;
@@ -55,36 +57,6 @@ type StepProps = {
   fields: Fields;
 };
 
-// interface ServerSideProps {
-//   Holidays: any;
-// }
-
-/**
- * if exported, will be called if/during SSG
- * @param {ComponentRendering} _rendering
- * @param {LayoutServiceData} _layoutData
- * @param {GetStaticPropsContext} _context
- */
-/*export*/ const getStaticProps: GetStaticComponentProps = async () => {
-  // const holidaysJson = await getHolidays();
-  // const returnProps: ServerSideProps = {
-  //   Holidays: holidaysJson,
-  // };
-  //console.log('holidaysJson', holidaysJson);
-  //return returnProps;
-  return 'ok';
-};
-
-// will be called if not SSG
-export async function getServerSideProps(
-  rendering: ComponentRendering,
-  layoutData: LayoutServiceData,
-  context: GetServerSidePropsContext
-) {
-  // proxy to GetStaticComponentProps
-  return await getStaticProps(rendering, layoutData, context);
-}
-
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
     <div className="component-content">
@@ -94,26 +66,90 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  // const serverSideData = useComponentProps<ServerSideProps>(
-  //   props.rendering.uid
-  // );
-  //console.log('serverSideData', serverSideData);
+  return (
+    <TheBirthCompanyContextProvider>
+      <TbcSlots {...props} />
+    </TheBirthCompanyContextProvider>
+  );
+};
 
-  //const holidaysUK = serverSideData?.Holidays;
-
-  //console.log('steps slot', props.fields);
+export const TbcSlots = (props: StepProps): JSX.Element => {
   const {
-    //selectedLocation,
-    //selectedTypeOfAppointment,
-    // setConsultantGUID,
+    setSelectedLocation,
+    setSelectedTypeOfAppointment,
+    setSelectedScanId,
+    setSelectedExtras,
+    setSelectedSlotId,
+    selectedSlotId,
     selectedDate,
     selectedTime,
     isBookableContent,
-  } = useContext(ConsultantFinderContext);
+  } = useContext(TheBirthCompanyContext);
   const id = props.params.RenderingIdentifier;
+
+  const searchParams = useSearchParams();
+  const paramScanId = searchParams.get('scanId');
+  const paramLocationId = searchParams.get('locationId');
+  const paramTypeId = searchParams.get('typeId');
+  const paramSlotId = searchParams.get('slotId');
+  const paramExtras = useMemo(
+    () => searchParams.getAll('extraId'),
+    [searchParams]
+  );
+
+  const [extras, setExtras] = useState('');
+
   const router = useRouter();
-  const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<string>('');
+
+  // Set params for next page
+  const nextPageParams = new URLSearchParams(searchParams.toString());
+
+  if (selectedSlotId) {
+    nextPageParams.set('slotId', selectedSlotId);
+  }
+
+  function formatQueryParams(ids: string[]): string {
+    const extrasString = ids
+      .map((id) => `extraId=${encodeURIComponent(id)}`)
+      .join('&');
+    return `&${extrasString}`;
+  }
+
+  useEffect(() => {
+    if (paramLocationId) {
+      setSelectedLocation(paramLocationId);
+    }
+
+    if (paramScanId) {
+      setSelectedScanId(paramScanId);
+    }
+
+    if (paramTypeId) {
+      setSelectedTypeOfAppointment(paramTypeId);
+    }
+
+    if (paramSlotId) {
+      setSelectedSlotId(paramSlotId);
+    }
+    if (paramExtras) {
+      if (paramExtras.length > 0) {
+        setSelectedExtras(paramExtras);
+
+        setExtras(formatQueryParams(paramExtras));
+      }
+    }
+  }, [
+    paramLocationId,
+    setSelectedLocation,
+    paramScanId,
+    setSelectedScanId,
+    paramTypeId,
+    setSelectedTypeOfAppointment,
+    paramSlotId,
+    setSelectedSlotId,
+    paramExtras,
+    setSelectedExtras,
+  ]);
 
   useEffect(() => {
     window.scrollTo({
@@ -121,26 +157,10 @@ export const Default = (props: StepProps): JSX.Element => {
       behavior: 'smooth',
     });
 
-    // if (!router.isReady) {
-    //   return;
-    // }
-
-    // get slug from URL
-    const slug = router?.query?.slug || '';
-    setSlug(slug.toString());
-
-    // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
-
-    // if selected location and appointment type is missing then redirect to appointment type
-    // if (selectedLocation === '' && selectedTypeOfAppointment === '') {
-    //   router.push(
-    //     `/finder/step-terms-and-conditions?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`
-    //   );
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+    if (!router.isReady) {
+      return;
+    }
+  });
 
   if (props.fields) {
     return (
@@ -156,13 +176,10 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
-                  slug={slug}
-                  gmcNumber={gmcNumber}
                 ></ProgressBar>
               }
             ></HeaderLDB>
-            {/* <SlotsCalendar
-              holidays={holidaysUK}
+            <SlotsCalendarBirthCompany
               titleText={
                 props?.fields?.TitleText?.value || 'Please select a slot'
               }
@@ -193,12 +210,12 @@ export const Default = (props: StepProps): JSX.Element => {
                   {props?.fields?.BookByPhoneIcon?.fields?.SvgMarkup?.value}
                 </SitecoreSvg>
               }
-            /> */}
+            />
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=`}
+                    href={`${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -227,7 +244,7 @@ export const Default = (props: StepProps): JSX.Element => {
                       }
                       onClick={() =>
                         router.push(
-                          `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=`
+                          `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`
                         )
                       }
                     >

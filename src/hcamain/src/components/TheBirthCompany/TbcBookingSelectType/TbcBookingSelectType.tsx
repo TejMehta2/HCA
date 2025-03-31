@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Template finder component
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import axios from 'axios';
 import {
   Image as JssImage,
-  RichText as JssRichText,
   Text as JssText,
   ImageField,
   Field,
@@ -14,15 +15,22 @@ import {
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
 import HeaderLDB from '@component-library/consultant-finder/HeaderLDB/HeaderLDB';
-import ProgressBar from '@component-library/consultant-finder/ProgressBar/ProgressBar';
+import ProgressBar from '@component-library/the-birth-company/ProgressBar/ProgressBar';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Container from '@component-library/foundation/Containers/Container';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
-import SelectAppointmentType from '@component-library/consultant-finder/SelectAppointmentType/SelectAppointmentType';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
-//import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import LocationCardBlock from '@component-library/the-birth-company/LocationCardBlock/LocationCardBlock';
+import LocationCard from '@component-library/the-birth-company/LocationCard/LocationCard';
+import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
+
+import {
+  TheBirthCompanyContext,
+  TheBirthCompanyContextProvider,
+} from 'src/context/theBirthCompanyContext';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 interface Fields {
   HCALogo: ImageField;
   CurrentStep: any;
@@ -39,12 +47,23 @@ interface Fields {
   NextLink: LinkField;
   BackLink: LinkField;
   BodyText: Field<string>;
+  CantFindBannerText: Field<string>;
+  CantFindPhoneNumber: Field<string>;
+  CantFindIcon: any;
 }
 
 type StepProps = {
   params: { [key: string]: string };
   fields: Fields;
 };
+
+interface TypeFields {
+  id: string;
+  name: string;
+  description: string;
+  duration: string;
+  price: string;
+}
 
 const StepDefaultComponent = (props: StepProps): JSX.Element => (
   <div className={`component promo ${props.params.styles}`}>
@@ -55,15 +74,39 @@ const StepDefaultComponent = (props: StepProps): JSX.Element => (
 );
 
 export const Default = (props: StepProps): JSX.Element => {
-  //console.log('appointment type', props.fields);
-  const id = props.params.RenderingIdentifier;
-  // const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
-  //   useContext(ConsultantFinderContext);
+  return (
+    <TheBirthCompanyContextProvider>
+      <TbcLocations {...props} />
+    </TheBirthCompanyContextProvider>
+  );
+};
 
+export const TbcLocations = (props: StepProps): JSX.Element => {
+  const { selectedTypeOfAppointment, setSelectedTypeOfAppointment } =
+    useContext(TheBirthCompanyContext);
+
+  const id = props.params.RenderingIdentifier;
   const router = useRouter();
-  const [slug, setSlug] = useState<string>('');
-  const [gmcNumber, setGmcNumber] = useState<string>('');
-  const [reviewsTotal, setReviewsTotal] = useState<number | null>(null);
+  const [appointmentTypes, setAppointmentTypes] = useState<TypeFields[]>([]);
+  const [loading, seLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const searchParams = useSearchParams();
+  const paramScanId = searchParams.get('scanId');
+  const paramLocationId = searchParams.get('locationId');
+  const paramTypeId = searchParams.get('typeId');
+
+  // Set params for next page
+  const nextPageParams = new URLSearchParams(searchParams.toString());
+  if (selectedTypeOfAppointment) {
+    nextPageParams.set('typeId', selectedTypeOfAppointment);
+  }
+
+  useEffect(() => {
+    if (paramTypeId) {
+      setSelectedTypeOfAppointment(paramTypeId);
+    }
+  }, [paramTypeId, setSelectedTypeOfAppointment]);
 
   useEffect(() => {
     window.scrollTo({
@@ -75,21 +118,21 @@ export const Default = (props: StepProps): JSX.Element => {
       return;
     }
 
-    // get slug from URL
-    const slug = router?.query?.slug || '';
-    setSlug(slug.toString());
-    // get gmc number from URL
-    const gmcNumber = router?.query?.gmcNumber || '';
-    setGmcNumber(gmcNumber.toString());
-    // get reviews total number from URL
-    const reviewsTotal = router?.query?.reviewsTotal || null;
-    setReviewsTotal(Number(reviewsTotal));
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}`;
 
-    // get type of selected appointment if present in URL
-    // const typeOfAppointment = router?.query?.type || null;
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+    axios
+      .get(requestURL)
+      .then((res) => {
+        // console.log('res', res);
+        seLoading(false);
+        setError(false);
+        setAppointmentTypes(res?.data || []);
+      })
+      .catch((error) => {
+        setError(true);
+        console.log(error);
+      });
+  }, [router.isReady, paramScanId, paramLocationId]);
 
   if (props.fields) {
     return (
@@ -105,8 +148,6 @@ export const Default = (props: StepProps): JSX.Element => {
                 <ProgressBar
                   currentPage={props?.fields?.CurrentStep?.value}
                   steps={props?.fields?.Steps}
-                  slug={slug}
-                  reviewsTotal={reviewsTotal}
                 ></ProgressBar>
               }
             ></HeaderLDB>
@@ -115,31 +156,86 @@ export const Default = (props: StepProps): JSX.Element => {
                 <JssText field={props?.fields?.Title}></JssText>
               </Text>
             </Headline>
-            <SelectAppointmentType
-              iconCard1={
-                <SitecoreSvg>
-                  {props?.fields?.SonographerIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              iconCard2={
-                <SitecoreSvg>
-                  {props?.fields?.ConsultantIcon?.fields?.SvgMarkup?.value}
-                </SitecoreSvg>
-              }
-              titleCard1={props?.fields?.SonographerTitle?.value}
-              titleCard2={props?.fields?.ConsultantTitle?.value}
-              textCard1={
-                <JssRichText field={props?.fields?.SonographerBodyText} />
-              }
-              textCard2={
-                <JssRichText field={props?.fields?.ConsultantBodyText} />
-              }
-            />
+            {loading && <LoaderCF />}
+            {!loading && !error && (
+              <LocationCardBlock
+                cta={
+                  props?.fields?.CantFindPhoneNumber?.value && (
+                    <CantFind
+                      contentVariation="the-birth-company"
+                      title={
+                        <Text tag="p" variation="body-medium-large">
+                          {props?.fields?.CantFindBannerText?.value}
+                        </Text>
+                      }
+                    >
+                      <TextButton>
+                        <a
+                          href={`tel:${props?.fields?.CantFindPhoneNumber?.value.replace(
+                            /\s/g,
+                            ''
+                          )}`}
+                        >
+                          <SitecoreSvg>
+                            {
+                              props?.fields?.CantFindIcon?.fields?.SvgMarkup
+                                ?.value
+                            }
+                          </SitecoreSvg>
+                          <span>
+                            {props?.fields?.CantFindPhoneNumber?.value}
+                          </span>
+                        </a>
+                      </TextButton>
+                    </CantFind>
+                  )
+                }
+              >
+                <>
+                  {appointmentTypes.map((appointmentType, index) => (
+                    <LocationCard
+                      key={index}
+                      contentVariation="appointmentType"
+                      selected={
+                        selectedTypeOfAppointment === appointmentType.id
+                      }
+                      name={
+                        <Text variation="body-bold-large">
+                          {appointmentType.name}
+                        </Text>
+                      }
+                      description={
+                        <Text variation="body-small">
+                          {appointmentType.description}
+                        </Text>
+                      }
+                      handleClick={() => {
+                        setSelectedTypeOfAppointment(appointmentType.id);
+                      }}
+                    >
+                      <span>
+                        <Icons iconName="iconClock" />
+                        <Text variation="body-small" tag="p">
+                          {appointmentType.duration}
+                        </Text>
+                      </span>
+                      <span>
+                        <Icons iconName="iconCreditCard" />
+                        <Text variation="body-small" tag="p">
+                          {appointmentType.price}
+                        </Text>
+                      </span>
+                    </LocationCard>
+                  ))}
+                </>
+              </LocationCardBlock>
+            )}
             <Navigation hideTextMobile={true}>
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&reviewsTotal=${reviewsTotal}`}
+                    href={`${props?.fields?.BackLink?.value
+                      ?.href}?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>
@@ -151,9 +247,13 @@ export const Default = (props: StepProps): JSX.Element => {
               <Container>
                 <Button size={'small'} variation={'full-dark'}>
                   <button
+                    disabled={
+                      selectedTypeOfAppointment.length === 0 ? true : false
+                    }
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value?.href}?slug=${slug}&gmcNumber=${gmcNumber}&isConsultant=isConsultant&reviewsTotal=${reviewsTotal}`
+                        `${props?.fields?.NextLink?.value
+                          ?.href}?${nextPageParams.toString()}`
                       )
                     }
                   >
