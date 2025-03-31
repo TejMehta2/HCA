@@ -112,26 +112,25 @@ const SlotsCalendarBirthCompany = (
     setSelectedDate('');
     setSelectedTime('');
 
-    //remove after testing
-    let falseDate;
-    //console.log(firstDay);
-    if (firstDay) {
-      const todaysDate = new Date();
-      const fromDateAsDate = new Date(firstDay);
+    // this is to test out previous dates when today is monday, to be removed
+    // let falseDate;
+    // if (firstDay) {
+    //   const todaysDate = new Date();
+    //   const fromDateAsDate = new Date(firstDay);
 
-      if (
-        fromDateAsDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
-      ) {
-        falseDate = fromDateAsDate;
-        falseDate.setDate(fromDateAsDate.getDate() + 4);
+    //   if (
+    //     fromDateAsDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
+    //   ) {
+    //     falseDate = fromDateAsDate;
+    //     falseDate.setDate(fromDateAsDate.getDate() + 4);
 
-        firstDay = falseDate.toString();
-      }
-    }
+    //     firstDay = falseDate.toString();
+    //   }
+    // }
 
-    if (firstDay) {
-      console.log('first day slots: ' + firstDay);
-    }
+    // if (firstDay) {
+    //   console.log('first day slots: ' + firstDay);
+    // }
 
     const fromDate = formatDateYYYYMMDD(firstDay) || '';
 
@@ -158,8 +157,6 @@ const SlotsCalendarBirthCompany = (
     axios
       .get(slotsURL)
       .then((res) => {
-        console.log(res);
-
         setLoadingSlots(false);
 
         const locationName = res?.data?.location?.name;
@@ -280,20 +277,18 @@ const SlotsCalendarBirthCompany = (
 
   const getWeekdays = (daysList: daysList) => {
     const today = new Date();
-    const current = new Date();
-    today.setDate(current.getDate() + 4);
 
-    console.log(today);
+    // this is to test out previous dates when today is monday, to be removed
+    // const current = new Date();
+    // today.setDate(current.getDate() + 4);
+
     const formattedToday = today.toISOString().split('T')[0];
 
     const containsToday = daysList.some(
       (day: day) => day.date === formattedToday
     );
 
-    //console.log(containsToday);
-
     if (!containsToday) {
-      //console.log('a week not containing today');
       setDays(daysList);
       return;
     }
@@ -439,20 +434,7 @@ const SlotsCalendarBirthCompany = (
           </div>
         )}
       </div>
-      <div className={styles.legend}>
-        <div className={styles.col}>
-          <div className={styles.dot}></div>
-          <Text tag="h2" variation="body-medium-small">
-            {props.keyBookOnlineText}
-          </Text>
-        </div>
-        <div className={styles.col}>
-          <div className={`${styles.dot} ${styles['dot-green']}`}></div>
-          <Text tag="h2" variation="body-medium-small">
-            {props.keyShortNoticeText}
-          </Text>
-        </div>
-      </div>
+      <div className={styles.legend}></div>
     </div>
   );
 };
