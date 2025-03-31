@@ -12,7 +12,6 @@ import Tags from '../../core-components/Tags/Tags';
 import Themes from '../../foundation/Themes/Themes';
 import ServiceCards from '../../site-components/ServiceCards/ServiceCards';
 import CardService from '../CardService/CardService';
-import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
 import CardBlog from '../CardBlog/CardBlog';
 import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Button from '../../core-components/Button/Button';
@@ -30,6 +29,10 @@ import { Default as VideoHeroStory } from '../../careers/VideoHero/VideoHero.sto
 import OffsetTextBlock from '../../careers/OffsetTextBlock/OffsetTextBlock';
 import { OffsetTextBlockProps } from '../../careers/OffsetTextBlock/OffsetTextBlock.types';
 import { Default as OffsetTextBlockStory } from '../../careers/OffsetTextBlock/OffsetTextBlock.stories';
+
+import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
+import { CarouselCardsProps } from '../../site-components/CarouselCards/CarouselCards.types';
+import { VacancyCards as CarouselCardsStory } from '../../site-components/CarouselCards/CarouselCards.stories';
 
 import TextBlock from '../../site-components/TextBlock/TextBlock';
 import { TextBlockProps } from '../../site-components/TextBlock/TextBlock.types';
@@ -799,10 +802,11 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         <OffsetTextBlock
           {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
-        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
+        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
       </>
     ),
   },
