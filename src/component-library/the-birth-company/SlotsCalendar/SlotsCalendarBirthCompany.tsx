@@ -210,12 +210,12 @@ const SlotsCalendarBirthCompany = (
       });
   };
 
-  const showSelection = (e: any, slotId: string) => {
+  const showSelection = (e: any, slotId: string, timeLabel: string) => {
     const startTime = cleanTimestamp(slotId);
 
     setSelectedSlotId(slotId);
     setSelectedDate(formatDateLong(startTime));
-    setSelectedTime(formatTime12hr(startTime));
+    setSelectedTime(timeLabel);
     setStartTime(startTime);
 
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
@@ -409,7 +409,7 @@ const SlotsCalendarBirthCompany = (
                                   data-button={'slot-btn'}
                                   key={slotIndex}
                                   onClick={(e) => {
-                                    showSelection(e, slot.id);
+                                    showSelection(e, slot.id, slot.label);
                                   }}
                                 >
                                   <div className={styles['btn-txt']}>
