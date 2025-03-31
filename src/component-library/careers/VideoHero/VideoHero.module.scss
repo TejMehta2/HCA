@@ -44,6 +44,18 @@
 
 .children {
   @include responsive-grid-span(6, 5, 10, 10);
+
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8);
+
+  @include media(screen-m) {
+    width: max-content;
+
+    &:has([class^='CareersSearch']) {
+      width: 100%;
+    }
+  }
 }
 
 .video,
@@ -108,18 +120,4 @@
 
 .copy {
   margin-top: $spacing-5;
-}
-
-.children {
-  display: flex;
-  flex-direction: column;
-  gap: px-to-rem(8);
-
-  @include media(screen-m) {
-    width: max-content;
-
-    &:has([class^='CareersSearch']) {
-      width: 100%;
-    }
-  }
 }
