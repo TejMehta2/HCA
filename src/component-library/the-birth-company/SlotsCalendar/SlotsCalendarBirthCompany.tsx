@@ -11,7 +11,6 @@ import styles from '../../consultant-finder/SlotsCalendar/SlotsCalendar.module.s
 import {
   formatDateYYYYMMDD,
   formatDateLong,
-  removeSeconds,
   formatTime12hr,
 } from '../../utility-functions/index';
 import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
@@ -33,7 +32,6 @@ const SlotsCalendarBirthCompany = (
     setSelectedDate,
     setSelectedTime,
     setStartTime,
-    setIsBookableContent,
     setSelectedSlotId,
     setSelectedLocationName,
   } = useContext(TheBirthCompanyContext);
@@ -113,7 +111,27 @@ const SlotsCalendarBirthCompany = (
     setDisableNext(true);
     setSelectedDate('');
     setSelectedTime('');
-    setIsBookableContent(true);
+
+    //remove after testing
+    let falseDate;
+    //console.log(firstDay);
+    if (firstDay) {
+      const todaysDate = new Date();
+      const fromDateAsDate = new Date(firstDay);
+
+      if (
+        fromDateAsDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
+      ) {
+        falseDate = fromDateAsDate;
+        falseDate.setDate(fromDateAsDate.getDate() + 4);
+
+        firstDay = falseDate.toString();
+      }
+    }
+
+    if (firstDay) {
+      console.log('first day slots: ' + firstDay);
+    }
 
     const fromDate = formatDateYYYYMMDD(firstDay) || '';
 
@@ -140,6 +158,8 @@ const SlotsCalendarBirthCompany = (
     axios
       .get(slotsURL)
       .then((res) => {
+        console.log(res);
+
         setLoadingSlots(false);
 
         const locationName = res?.data?.location?.name;
@@ -210,30 +230,7 @@ const SlotsCalendarBirthCompany = (
     }
 
     e.target.closest('[data-button="slot-btn"]').classList.add(styles.selected);
-
-    if (isBookableDate(startTime)) {
-      setIsBookableContent(true);
-    } else {
-      setIsBookableContent(false);
-    }
   };
-
-  ///// bookable logic /////
-  const isBookableDate = (date: any) => {
-    // is date within 2 business days
-    const slotDate = new Date(date);
-    const withinTwoDays: any = isWithinNextTwoDays(slotDate);
-
-    return !withinTwoDays;
-  };
-
-  function isWithinNextTwoDays(date: Date): boolean {
-    const now = new Date();
-    const twoDaysLater = new Date();
-    twoDaysLater.setDate(now.getDate() + 2);
-
-    return date >= now && date < twoDaysLater;
-  }
 
   useEffect(() => {
     setLoadingSlots(true);
@@ -283,19 +280,27 @@ const SlotsCalendarBirthCompany = (
 
   const getWeekdays = (daysList: daysList) => {
     const today = new Date();
+    const current = new Date();
+    today.setDate(current.getDate() + 4);
+
+    console.log(today);
     const formattedToday = today.toISOString().split('T')[0];
 
     const containsToday = daysList.some(
       (day: day) => day.date === formattedToday
     );
 
+    //console.log(containsToday);
+
     if (!containsToday) {
+      //console.log('a week not containing today');
       setDays(daysList);
       return;
     }
 
     // Check if all dates in daysList belong to next week
     const firstDate = new Date(daysList[0].date);
+
     const dayOfWeek = today.getDay(); // Get current day of the week
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const currentWeekMonday = new Date(today);
@@ -408,27 +413,16 @@ const SlotsCalendarBirthCompany = (
                                 <button
                                   data-button={'slot-btn'}
                                   key={slotIndex}
-                                  className={`${
-                                    !isBookableDate(cleanTimestamp(slot.id))
-                                      ? `${styles['short-appointment']}`
-                                      : ''
-                                  }`}
                                   onClick={(e) => {
                                     showSelection(e, slot.id);
                                   }}
                                 >
-                                  {!isBookableDate(cleanTimestamp(slot.id)) &&
-                                    props.shortNoticeIcon}
                                   <div className={styles['btn-txt']}>
                                     <Text
                                       tag="span"
                                       variation="body-medium-large"
                                     >
-                                      {removeSeconds(
-                                        new Date(
-                                          cleanTimestamp(slot.id)
-                                        ).toLocaleTimeString()
-                                      )}
+                                      {slot.label}
                                     </Text>
                                   </div>
                                 </button>
