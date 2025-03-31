@@ -23,6 +23,7 @@
 
 .text {
   flex: 1;
+  width: 40%;
 }
 
 .subheader {
@@ -35,6 +36,7 @@
 
 .stats {
   flex: 1;
+  width: 60%;
   display: grid;
   gap: px-to-rem(16);
   grid-template-columns: 1fr 1fr;
@@ -56,38 +58,45 @@
     gap: 0;
 
     &:first-of-type {
-      width: px-to-rem(357);
-      height: px-to-rem(290);
+      width: 100%;
+      max-width: px-to-rem(357);
+      aspect-ratio: 357/290;
+      justify-self: end;
     }
 
     &:nth-of-type(2) {
-      width: px-to-rem(302);
-      height: px-to-rem(184);
+      width: 100%;
+      max-width: px-to-rem(302);
+      aspect-ratio: 302/184;
       align-self: end;
     }
 
     &:nth-of-type(3) {
-      width: px-to-rem(248);
-      height: px-to-rem(303);
+      width: 100%;
+      max-width: px-to-rem(248);
+      aspect-ratio: 248/303;
       justify-self: end;
       grid-row: 2/4;
     }
 
     &:nth-of-type(4) {
-      width: px-to-rem(236);
-      height: px-to-rem(193);
+      width: 100%;
+      max-width: px-to-rem(236);
+      aspect-ratio: 236/193;
     }
 
     &:nth-of-type(5) {
-      width: px-to-rem(302);
-      height: px-to-rem(226);
+      width: 100%;
+      max-width: px-to-rem(302);
+      aspect-ratio: 302/226;
       justify-self: start;
       grid-row: 3/5;
     }
 
     &:nth-of-type(6) {
-      width: px-to-rem(357);
-      height: px-to-rem(184);
+      width: 100%;
+      max-width: px-to-rem(357);
+      aspect-ratio: 357/184;
       align-self: start;
     }
   }

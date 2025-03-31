@@ -25,12 +25,14 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   };
 
   const counter = useCallback((element: HTMLElement) => {
+    if (!element.textContent || !element.dataset.counter) return;
+
     // Speed that all counters animate
     const duration = 2000;
 
     // Get start and end values
-    const start = parseInt(element.textContent!, 10);
-    const end = parseInt(element.dataset.counter!, 10);
+    const start = parseInt(element.textContent, 10);
+    const end = parseInt(element.dataset.counter, 10);
 
     // If equal values, stop here
     if (start === end) return;
@@ -101,12 +103,12 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
     <Themes theme={theme} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.text}>
+          <div className={styles.text} data-animate="xs">
             <div>{subheader}</div>
             <div className={styles['header']}>{header}</div>
             <div className={styles['body-copy']}>{bodyCopy}</div>
           </div>
-          <div className={styles.stats} ref={statsRef}>
+          <div className={styles.stats} ref={statsRef} data-animate="m">
             {stats.map((stat, index) => {
               const splitStat = splitString(stat.stat);
 
