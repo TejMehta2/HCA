@@ -30,6 +30,10 @@ import OffsetTextBlock from '../../careers/OffsetTextBlock/OffsetTextBlock';
 import { OffsetTextBlockProps } from '../../careers/OffsetTextBlock/OffsetTextBlock.types';
 import { Default as OffsetTextBlockStory } from '../../careers/OffsetTextBlock/OffsetTextBlock.stories';
 
+import StatsCards from '../../careers/StatsCards/StatsCards';
+import { StatsCardsProps } from '../../careers/StatsCards/StatsCards.types';
+import { FiveCards as StatsCardsStory } from '../../careers/StatsCards/StatsCards.stories';
+
 import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
 import { CarouselCardsProps } from '../../site-components/CarouselCards/CarouselCards.types';
 import { VacancyCards as CarouselCardsStory } from '../../site-components/CarouselCards/CarouselCards.stories';
@@ -802,6 +806,7 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         <OffsetTextBlock
           {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
+        <StatsCards {...(StatsCardsStory.args as StatsCardsProps)} />
         <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}

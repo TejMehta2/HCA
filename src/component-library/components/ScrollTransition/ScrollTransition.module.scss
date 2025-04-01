@@ -35,6 +35,13 @@
     transform: translateY(0);
   }
 
+  @media (prefers-reduced-motion) {
+    [data-animate] {
+      transform: translateY(0);
+      transition: none;
+    }
+  }
+
   > * {
     position: relative;
     z-index: 1;
