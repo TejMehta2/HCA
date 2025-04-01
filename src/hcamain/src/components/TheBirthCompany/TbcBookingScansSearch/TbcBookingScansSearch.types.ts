@@ -41,7 +41,7 @@ export interface TbcService {
   area: {
     targetItem: {
       id: string;
-      value: {
+      medicalAreaName: {
         value: string;
       };
     };
