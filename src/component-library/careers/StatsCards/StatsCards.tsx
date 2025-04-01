@@ -17,6 +17,8 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   const [started, setStarted] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
 
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion)').matches;
+
   const splitString = (input: string): { numbers: string; letters: string } => {
     const numbers = input.replace(/\D/g, ''); // Remove non-digit characters
     const letters = input.replace(/\d/g, ''); // Remove digit characters
@@ -85,6 +87,8 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   );
 
   useEffect(() => {
+    if (isReducedMotion) return;
+
     const observer = new IntersectionObserver(handleScroll, { threshold: 0 });
     const currentRef = statsRef.current;
 
@@ -97,7 +101,7 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
         observer.unobserve(currentRef);
       }
     };
-  }, [handleScroll, statsRef]);
+  }, [handleScroll, statsRef, isReducedMotion]);
 
   return (
     <Themes theme={theme} id={id}>
@@ -115,7 +119,9 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
               return (
                 <div key={index} className={styles.stat}>
                   <Text tag="p" variation="display-1">
-                    <span data-counter={splitStat.numbers}>0</span>
+                    <span data-counter={splitStat.numbers}>
+                      {isReducedMotion ? splitStat.numbers : 0}
+                    </span>
                     {splitStat.letters}
                   </Text>
                   <Text tag="p" variation="body-large">
