@@ -111,26 +111,6 @@ const SlotsCalendarBirthCompany = (
     setSelectedDate('');
     setSelectedTime('');
 
-    // this is to test out previous dates when today is monday, to be removed
-    // let falseDate;
-    // if (firstDay) {
-    //   const todaysDate = new Date();
-    //   const fromDateAsDate = new Date(firstDay);
-
-    //   if (
-    //     fromDateAsDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
-    //   ) {
-    //     falseDate = fromDateAsDate;
-    //     falseDate.setDate(fromDateAsDate.getDate() + 4);
-
-    //     firstDay = falseDate.toString();
-    //   }
-    // }
-
-    // if (firstDay) {
-    //   console.log('first day slots: ' + firstDay);
-    // }
-
     const fromDate = formatDateYYYYMMDD(firstDay) || '';
 
     function formatQueryParams(ids: string[]): string {
@@ -259,28 +239,27 @@ const SlotsCalendarBirthCompany = (
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const monday = new Date(today);
     monday.setDate(today.getDate() + mondayOffset);
+    monday.setHours(0, 0, 0, 0);
 
     // Find the current week's Sunday
     const sunday = new Date(monday);
     sunday.setDate(monday.getDate() + 6);
+    sunday.setHours(0, 0, 0, 0);
 
     // Find next week's Monday
     const nextMonday = new Date(sunday);
     nextMonday.setDate(sunday.getDate() + 1);
+    nextMonday.setHours(0, 0, 0, 0);
 
     return dates.filter((item) => {
       const itemDate = new Date(item.date);
+      itemDate.setHours(0, 0, 0, 0);
       return itemDate >= monday && itemDate <= sunday;
     });
   }
 
   const getWeekdays = (daysList: daysList) => {
     const today = new Date();
-
-    // this is to test out previous dates when today is monday, to be removed
-    // const current = new Date();
-    // today.setDate(current.getDate() + 4);
-
     const formattedToday = today.toISOString().split('T')[0];
 
     const containsToday = daysList.some(
@@ -296,6 +275,7 @@ const SlotsCalendarBirthCompany = (
     const firstDate = new Date(daysList[0].date);
 
     const dayOfWeek = today.getDay(); // Get current day of the week
+
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const currentWeekMonday = new Date(today);
     currentWeekMonday.setDate(today.getDate() + mondayOffset);
