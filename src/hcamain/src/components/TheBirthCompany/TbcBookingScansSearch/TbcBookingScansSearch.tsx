@@ -36,7 +36,7 @@ const formatPrice = (value: string): string => {
 
 const groupByArea = (services: TbcService[]) => {
   return services.reduce<Record<string, TbcService[]>>((acc, service) => {
-    const area = service.area?.targetItem?.value?.value;
+    const area = service.area?.targetItem?.medicalAreaName?.value;
     if (!acc[area]) {
       acc[area] = [];
     }
