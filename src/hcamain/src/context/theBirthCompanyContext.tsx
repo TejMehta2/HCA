@@ -43,8 +43,6 @@ interface TheBirthCompanyContextType {
   setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
   selectedLocationName: string;
   setSelectedLocationName: React.Dispatch<React.SetStateAction<string>>;
-  isBookableContent: boolean;
-  setIsBookableContent: React.Dispatch<React.SetStateAction<boolean>>;
   startTime: string;
   setStartTime: React.Dispatch<React.SetStateAction<string>>;
   consultantName: string;
@@ -112,8 +110,6 @@ export const TheBirthCompanyContext = createContext<TheBirthCompanyContextType>(
     setSelectedTime: () => {},
     selectedLocationName: '',
     setSelectedLocationName: () => {},
-    isBookableContent: true,
-    setIsBookableContent: () => {},
     hcaConsultantID: '',
     setHcaConsultantID: () => {},
     locationID: '',
@@ -171,7 +167,6 @@ export const TheBirthCompanyContextProvider = ({
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [selectedLocationName, setSelectedLocationName] = useState<string>('');
-  const [isBookableContent, setIsBookableContent] = useState(true);
   const [hcaConsultantID, setHcaConsultantID] = useState<string>('');
   const [locationID, setLocationID] = useState<string>('');
   const [startTime, setStartTime] = useState<string>('');
@@ -230,8 +225,6 @@ export const TheBirthCompanyContextProvider = ({
         setSelectedTime,
         selectedLocationName,
         setSelectedLocationName,
-        isBookableContent,
-        setIsBookableContent,
         hcaConsultantID,
         setHcaConsultantID,
         locationID,

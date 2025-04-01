@@ -11,8 +11,6 @@ import styles from '../../consultant-finder/SlotsCalendar/SlotsCalendar.module.s
 import {
   formatDateYYYYMMDD,
   formatDateLong,
-  removeSeconds,
-  formatTime12hr,
 } from '../../utility-functions/index';
 import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
 import LoaderCF from '../../consultant-finder/LoaderCF/LoaderCF';
@@ -33,7 +31,6 @@ const SlotsCalendarBirthCompany = (
     setSelectedDate,
     setSelectedTime,
     setStartTime,
-    setIsBookableContent,
     setSelectedSlotId,
     setSelectedLocationName,
   } = useContext(TheBirthCompanyContext);
@@ -113,7 +110,26 @@ const SlotsCalendarBirthCompany = (
     setDisableNext(true);
     setSelectedDate('');
     setSelectedTime('');
-    setIsBookableContent(true);
+
+    // this is to test out previous dates when today is monday, to be removed
+    // let falseDate;
+    // if (firstDay) {
+    //   const todaysDate = new Date();
+    //   const fromDateAsDate = new Date(firstDay);
+
+    //   if (
+    //     fromDateAsDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
+    //   ) {
+    //     falseDate = fromDateAsDate;
+    //     falseDate.setDate(fromDateAsDate.getDate() + 4);
+
+    //     firstDay = falseDate.toString();
+    //   }
+    // }
+
+    // if (firstDay) {
+    //   console.log('first day slots: ' + firstDay);
+    // }
 
     const fromDate = formatDateYYYYMMDD(firstDay) || '';
 
@@ -193,12 +209,12 @@ const SlotsCalendarBirthCompany = (
       });
   };
 
-  const showSelection = (e: any, slotId: string) => {
+  const showSelection = (e: any, slotId: string, timeLabel: string) => {
     const startTime = cleanTimestamp(slotId);
 
     setSelectedSlotId(slotId);
     setSelectedDate(formatDateLong(startTime));
-    setSelectedTime(formatTime12hr(startTime));
+    setSelectedTime(timeLabel);
     setStartTime(startTime);
 
     const buttons = document.querySelectorAll('[data-button="slot-btn"]');
@@ -210,30 +226,7 @@ const SlotsCalendarBirthCompany = (
     }
 
     e.target.closest('[data-button="slot-btn"]').classList.add(styles.selected);
-
-    if (isBookableDate(startTime)) {
-      setIsBookableContent(true);
-    } else {
-      setIsBookableContent(false);
-    }
   };
-
-  ///// bookable logic /////
-  const isBookableDate = (date: any) => {
-    // is date within 2 business days
-    const slotDate = new Date(date);
-    const withinTwoDays: any = isWithinNextTwoDays(slotDate);
-
-    return !withinTwoDays;
-  };
-
-  function isWithinNextTwoDays(date: Date): boolean {
-    const now = new Date();
-    const twoDaysLater = new Date();
-    twoDaysLater.setDate(now.getDate() + 2);
-
-    return date >= now && date < twoDaysLater;
-  }
 
   useEffect(() => {
     setLoadingSlots(true);
@@ -283,6 +276,11 @@ const SlotsCalendarBirthCompany = (
 
   const getWeekdays = (daysList: daysList) => {
     const today = new Date();
+
+    // this is to test out previous dates when today is monday, to be removed
+    // const current = new Date();
+    // today.setDate(current.getDate() + 4);
+
     const formattedToday = today.toISOString().split('T')[0];
 
     const containsToday = daysList.some(
@@ -296,6 +294,7 @@ const SlotsCalendarBirthCompany = (
 
     // Check if all dates in daysList belong to next week
     const firstDate = new Date(daysList[0].date);
+
     const dayOfWeek = today.getDay(); // Get current day of the week
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const currentWeekMonday = new Date(today);
@@ -408,27 +407,16 @@ const SlotsCalendarBirthCompany = (
                                 <button
                                   data-button={'slot-btn'}
                                   key={slotIndex}
-                                  className={`${
-                                    !isBookableDate(cleanTimestamp(slot.id))
-                                      ? `${styles['short-appointment']}`
-                                      : ''
-                                  }`}
                                   onClick={(e) => {
-                                    showSelection(e, slot.id);
+                                    showSelection(e, slot.id, slot.label);
                                   }}
                                 >
-                                  {!isBookableDate(cleanTimestamp(slot.id)) &&
-                                    props.shortNoticeIcon}
                                   <div className={styles['btn-txt']}>
                                     <Text
                                       tag="span"
                                       variation="body-medium-large"
                                     >
-                                      {removeSeconds(
-                                        new Date(
-                                          cleanTimestamp(slot.id)
-                                        ).toLocaleTimeString()
-                                      )}
+                                      {slot.label}
                                     </Text>
                                   </div>
                                 </button>
@@ -445,20 +433,7 @@ const SlotsCalendarBirthCompany = (
           </div>
         )}
       </div>
-      <div className={styles.legend}>
-        <div className={styles.col}>
-          <div className={styles.dot}></div>
-          <Text tag="h2" variation="body-medium-small">
-            {props.keyBookOnlineText}
-          </Text>
-        </div>
-        <div className={styles.col}>
-          <div className={`${styles.dot} ${styles['dot-green']}`}></div>
-          <Text tag="h2" variation="body-medium-small">
-            {props.keyShortNoticeText}
-          </Text>
-        </div>
-      </div>
+      <div className={styles.legend}></div>
     </div>
   );
 };

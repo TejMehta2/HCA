@@ -83,7 +83,6 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
     selectedSlotId,
     selectedDate,
     selectedTime,
-    isBookableContent,
   } = useContext(TheBirthCompanyContext);
   const id = props.params.RenderingIdentifier;
 
@@ -224,57 +223,31 @@ export const TbcSlots = (props: StepProps): JSX.Element => {
               </div>
               {selectedDate !== '' && selectedTime !== '' && (
                 <Text tag="p" variation="body-medium-extra-large">
-                  {isBookableContent &&
-                    `${
-                      props?.fields?.AppointmentSelectedText?.value ||
-                      'Appointment selected on'
-                    } ${selectedDate} at ${selectedTime}`}
-                  {!isBookableContent &&
-                    props?.fields?.KeyShortNoticeText?.value}
+                  {`${
+                    props?.fields?.AppointmentSelectedText?.value ||
+                    'Appointment selected on'
+                  } ${selectedDate} at ${selectedTime}`}
                 </Text>
               )}
-              {isBookableContent && (
-                <Container>
-                  <Button size={'small'} variation={'full-dark'}>
-                    <button
-                      disabled={
-                        selectedDate === '' && selectedTime === ''
-                          ? true
-                          : false
-                      }
-                      onClick={() =>
-                        router.push(
-                          `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`
-                        )
-                      }
-                    >
-                      <span>
-                        {props?.fields?.NextLink?.value?.text || 'Book Slot'}
-                      </span>
-                    </button>
-                  </Button>
-                </Container>
-              )}
-              {!isBookableContent && (
-                <Container customBtn={true}>
-                  <Button size={'small'} variation={'full-dark'}>
-                    <a
-                      href={`tel:${props?.fields?.PhoneNumberToBook?.value.replace(
-                        /\s/g,
-                        ''
-                      )}`}
-                    >
-                      <SitecoreSvg>
-                        {
-                          props?.fields?.PhoneNumberIcon?.fields?.SvgMarkup
-                            ?.value
-                        }
-                      </SitecoreSvg>
-                      <span>{props?.fields?.PhoneNumberToBook?.value}</span>
-                    </a>
-                  </Button>
-                </Container>
-              )}
+
+              <Container>
+                <Button size={'small'} variation={'full-dark'}>
+                  <button
+                    disabled={
+                      selectedDate === '' && selectedTime === '' ? true : false
+                    }
+                    onClick={() =>
+                      router.push(
+                        `${props?.fields?.NextLink?.value?.href}?scanId=${paramScanId}&locationId=${paramLocationId}&typeId=${paramTypeId}&slotId=${selectedSlotId}${extras}`
+                      )
+                    }
+                  >
+                    <span>
+                      {props?.fields?.NextLink?.value?.text || 'Book Slot'}
+                    </span>
+                  </button>
+                </Button>
+              </Container>
             </Navigation>
           </>
         }
