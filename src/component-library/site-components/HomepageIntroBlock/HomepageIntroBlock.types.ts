@@ -1,3 +1,5 @@
+import { Theme } from '../../foundation/Themes/Themes.types';
+
 export interface HomepageIntroBlockProps {
   imageAlignment?: 'left' | 'right';
   title: JSX.Element;
@@ -11,4 +13,5 @@ export interface HomepageIntroBlockProps {
   children?: JSX.Element;
   id?: string;
   imageKeepAspectRatio?: boolean;
+  theme: Theme;
 }

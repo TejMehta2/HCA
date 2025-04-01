@@ -1,0 +1,36 @@
+﻿---
+ID: "28b8a637-0b12-45f1-a9ec-2756e0384d06"
+Parent: "4e467c7f-505b-4ed9-a5f1-ddb964a45265"
+Template: "ca5950cb-fc53-4f90-8c56-df8224683e27"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Headings/Image Short Text/Data/image short text long title"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0999ccb0-f298-4b06-8cc7-1c9c4584ed1a"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/0afd042eac494245b903cef28c7abd5b?v=799f5045" dam-id="0Z6ev-kASQ6POen9oGrRfA" width="5472" height="3648" alt="Rise of running injuries sports exercise medicine 1203028774.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/230135/thumbnail" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250122T163123Z
+    - ID: "362d2151-9881-41fb-a9f2-4722fae21e24"
+      Hint: Text
+      Value: <p>Vestibulum volutpat vulputate interdum. Curabitur eleifend bibendum bibendum. Nunc consectetur rhoncus tincidunt. Fusce vulputate cursus justo, eget porta est porta sed. Vestibulum volutpat, elit vitae lobortis mattis, urna nibh elementum urna, ut feugiat felis nunc eget sapien. Donec vitae porta ipsum. Quisque tempus convallis lobortis. Aliquam ac quam quis enim eleifend luctus.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "f295fcb4-4d2b-4f6c-938c-925595fe81e8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c08c23c3-34b4-44e0-bcb6-8e8b9528b7ca"
+      Hint: Heading
+      Value: Pellentesque erat magna
+    - ID: "d0cf786e-4622-4026-8bfb-ae4c5011f300"
+      Hint: Title
+      Value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus ex magna, placerat pulvinar magna tincidunt sit amet.
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250122T164723Z

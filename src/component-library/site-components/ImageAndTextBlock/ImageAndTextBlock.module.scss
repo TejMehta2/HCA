@@ -3,7 +3,6 @@
 
 .background {
   background: var(--background);
-  overflow: hidden;
 }
 
 .wrapper {
@@ -109,6 +108,7 @@
 }
 
 .ctas {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: $spacing-7;
@@ -125,6 +125,10 @@
       width: 100%;
       text-align: center;
       justify-content: center;
+
+      @include media(screen-l) {
+        width: fit-content;
+      }
     }
   }
 }

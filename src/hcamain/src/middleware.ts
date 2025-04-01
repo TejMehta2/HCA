@@ -2,7 +2,7 @@ import { NextRequest, NextFetchEvent } from 'next/server';
 import middleware from 'lib/middleware';
 import { smallcaseurlMiddleware } from 'lib/middleware/smallcase-url-Middleware';
 import geolocationMiddleware from 'lib/geolocation-middleware';
-import redirectMiddleware from 'lib/redirect-middleware';
+import redirectMiddleware from 'src/pages/api/redirect-middleware';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
@@ -17,7 +17,11 @@ export default async function (req: NextRequest, ev: NextFetchEvent) {
   const url = req.nextUrl.clone();
   const pathname = url.pathname.toLowerCase();
   //console.log('pathname', pathname);
-  if (pathname.startsWith('/finder') || pathname.startsWith('/payment'))
+  if (
+    pathname.startsWith('/finder') ||
+    pathname.startsWith('/payment') ||
+    pathname.startsWith('/ivf-pricer')
+  )
     return undefined;
   else return middleware(req, ev);
 }

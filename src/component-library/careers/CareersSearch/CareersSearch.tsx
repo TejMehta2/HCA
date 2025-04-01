@@ -7,8 +7,10 @@ const CareersSearch = (props: CareersSearchProps): JSX.Element => {
   return (
     <div className={styles.search}>
       {search}
-      <div className={styles.filters}>{filters}</div>
-      <div className={styles.submit}>{submit}</div>
+      <div className={styles['filters-submit']}>
+        <div className={styles.filters}>{filters}</div>
+        <div className={styles.submit}>{submit}</div>
+      </div>
     </div>
   );
 };

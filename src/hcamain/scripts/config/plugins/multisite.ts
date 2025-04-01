@@ -18,14 +18,14 @@ class MultisitePlugin implements ConfigPlugin {
   async exec(config: JssConfig) {
     let sites: SiteInfo[] = [];
     let allSites: SiteInfo[] = [];
-    const excludeFromMultisite = config.excludeFromMultisite;
+    //const excludeFromMultisite = config.excludeFromMultisite;
     console.log('Fetching site information');
     try {
       const siteInfoService = new GraphQLSiteInfoService({
         clientFactory: createGraphQLClientFactory(config),
       });
       allSites = await siteInfoService.fetchSiteInfo();
-      sites = allSites.filter((_) => _.name == excludeFromMultisite);
+      sites = allSites; //.filter((_) => _.name == excludeFromMultisite);
     } catch (error) {
       console.error(chalk.red('Error fetching site information'));
       console.error(error);

@@ -1,15 +1,19 @@
 /* eslint react/jsx-key: 0 */
 import React, { useEffect, useState } from 'react';
 import Text from '@component-library/foundation/Text/Text';
+import { Text as JssText } from '@sitecore-jss/sitecore-jss-nextjs';
 import JumpToLinks, {
   JumpToAnchor,
 } from '@component-library/site-components/JumpToLinks/JumpToLinks';
 import Themes from '@component-library/foundation/Themes/Themes';
 import Icons from '@component-library/foundation/Icons/Icons';
-import { NavigableComponent } from './TableOfContents.types';
+import {
+  NavigableComponent,
+  TableOfContentsProps,
+} from './TableOfContents.types';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 
-export const Default = (): JSX.Element => {
+export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>(
     inPageNavGlobalStore.getList()
   );
@@ -34,10 +38,22 @@ export const Default = (): JSX.Element => {
     };
   }, []);
 
+  const hasNoDatasource = !props.fields;
+
+  console.log('t datasource', props.fields?.Title);
+
   return (
     <Themes theme={'A-HCA-White'} collapse={false}>
       <JumpToLinks
-        heading={<Text variation="body-medium-medium">Jump to</Text>}
+        heading={
+          hasNoDatasource ? (
+            <Text variation="body-medium-medium">Jump to</Text>
+          ) : (
+            <Text variation="body-medium-medium">
+              <JssText field={props.fields?.Title} />
+            </Text>
+          )
+        }
       >
         {components.map((item, index) => {
           return (

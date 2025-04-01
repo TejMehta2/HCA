@@ -126,69 +126,77 @@ const nextConfig = {
   },
 
   async redirects() {
-    return [
-      {
-        //our-services/conditions
-        source: '/our-services/conditions/:path*',
-        destination: '/conditions/:path*',
-        permanent: true,
-      },
 
-      {
-        ///our-services/tests
-        source: '/our-services/tests/:path*',
-        destination: '/tests-and-scans/:path*',
-        permanent: true,
-      },
+    const SITECORE_SITE_NAME = process.env.SITECORE_SITE_NAME; 
 
-      {
-        ///our-services/treatments/
-        source: '/our-services/treatments/:path*',
-        destination: '/services/treatments/:path*',
-        permanent: true,
-      },
+    let redirects = [];
 
-      {
-        ///blogs
-        source: '/blogs/:path*',
-        destination: '/blog/:path*',
-        permanent: true,
-      },
+    if (SITECORE_SITE_NAME === "TheBirthCompany") {
+      redirects = [
+        { source: "/im-not-here", destination: "/the-page", permanent: true }        
+      ];
+    } else if (SITECORE_SITE_NAME === "hcamain") {
+      redirects = [
+        {
+          //our-services/conditions
+          source: '/our-services/conditions/:path*',
+          destination: '/conditions/:path*',
+          permanent: true,
+        },  
+        {
+          ///our-services/tests
+          source: '/our-services/tests/:path*',
+          destination: '/tests-and-scans/:path*',
+          permanent: true,
+        },  
+        {
+          ///our-services/treatments/
+          source: '/our-services/treatments/:path*',
+          destination: '/services/treatments/:path*',
+          permanent: true,
+        },  
+        {
+          ///blogs
+          source: '/blogs/:path*',
+          destination: '/blog/:path*',
+          permanent: true,
+        },  
+        {
+          ///patient-stories
+          source: '/for-patients-and-visitors/patient-stories/:path*',
+          destination:
+            '/patient-and-visitor-information/patient-information/patient-stories/:path*',
+          permanent: true,
+        },  
+        {
+          //finder/enquireform
+          source: '/finder/enquireform/:path*',
+          destination: '/finder/stepconsultantprofile/:path*',
+          permanent: true,
+        },
+        {
+          //finder/specialists
+          source: '/finder/specialists/:path*',
+          destination: '/finder/stepconsultantprofile/:path*',
+          permanent: true,
+        },
+        {
+          //finder/livebooking
+          source: '/finder/livebooking/:path*',
+          destination: '/finder/stepconsultantprofile/:path*',
+          permanent: true,
+        },
+        {
+          ////for-patients-and-visitors/patient-stories
+          source: '/for-patients-and-visitors/patient-stories/:path*',
+          destination:
+            '/patient-and-visitor-information/patient-information/patient-stories/:path*',
+          permanent: true,
+        },
+      ];
+    } 
 
-      {
-        ///patient-stories
-        source: '/for-patients-and-visitors/patient-stories/:path*',
-        destination:
-          '/patient-and-visitor-information/patient-information/patient-stories/:path*',
-        permanent: true,
-      },
-
-      {
-        //finder/enquireform
-        source: '/finder/enquireform/:path*',
-        destination: '/finder/stepconsultantprofile/:path*',
-        permanent: true,
-      },
-      {
-        //finder/specialists
-        source: '/finder/specialists/:path*',
-        destination: '/finder/stepconsultantprofile/:path*',
-        permanent: true,
-      },
-      {
-        //finder/livebooking
-        source: '/finder/livebooking/:path*',
-        destination: '/finder/stepconsultantprofile/:path*',
-        permanent: true,
-      },
-      {
-        ////for-patients-and-visitors/patient-stories
-        source: '/for-patients-and-visitors/patient-stories/:path*',
-        destination:
-          '/patient-and-visitor-information/patient-information/patient-stories/:path*',
-        permanent: true,
-      },
-    ];
+    return redirects;
   },
 
   webpack(config) {

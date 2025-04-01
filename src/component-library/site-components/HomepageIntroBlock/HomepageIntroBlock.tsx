@@ -19,9 +19,10 @@ const HomepageIntroBlock = (props: HomepageIntroBlockProps): JSX.Element => {
     children,
     id,
     imageKeepAspectRatio = false,
+    theme = 'A-HCA-White',
   } = props;
   return (
-    <Themes theme="A-HCA-White" id={id}>
+    <Themes theme={theme} id={id}>
       <div
         className={[
           styles['intro-block'],

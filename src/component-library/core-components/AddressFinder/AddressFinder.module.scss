@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 @use '../../components/SearchBar/SearchBar.module.scss';
 
-.wrapper {
+.address-wrapper {
   position: relative;
   flex-direction: column;
   color: var(--text);
@@ -151,4 +151,7 @@
 
 .field-label {
   @include apply-body-medium-extra-large;
+
+  display: block;
+  margin-bottom: $spacing-3;
 }
