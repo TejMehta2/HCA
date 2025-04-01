@@ -46,6 +46,17 @@ import CarouselTestimonials from '../../careers/CarouselTestimonials/CarouselTes
 import { CarouselTestimonialsProps } from '../../careers/CarouselTestimonials/CarouselTestimonials.types';
 import { Default as CarouselTestimonialsStory } from '../../careers/CarouselTestimonials/CarouselTestimonials.stories';
 
+import CarouselImages from '../../careers/CarouselImages/CarouselImages';
+import { CarouselImagesProps } from '../../careers/CarouselImages/CarouselImages.types';
+import {
+  Default as CarouselImagesStory,
+  EqualSize as CarouselImagesEqualSizeStory,
+} from '../../careers/CarouselImages/CarouselImages.stories';
+
+import Accreditations from '../../careers/Accreditations/Accreditations';
+import { AccreditationsProps } from '../../careers/Accreditations/Accreditations.types';
+import { Default as AccreditationsStory } from '../../careers/Accreditations/Accreditations.stories';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
   title: 'components/ScrollTransition',
@@ -806,12 +817,21 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         <OffsetTextBlock
           {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
+        <CarouselImages
+          {...(CarouselImagesStory.args as CarouselImagesProps)}
+        />
         <StatsCards {...(StatsCardsStory.args as StatsCardsProps)} />
         <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
         <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        <CarouselImages
+          {...(CarouselImagesEqualSizeStory.args as CarouselImagesProps)}
+        />
+        <Accreditations
+          {...(AccreditationsStory.args as AccreditationsProps)}
+        />
       </>
     ),
   },

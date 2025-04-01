@@ -13,39 +13,48 @@ const meta: Meta<typeof CarouselImages> = {
   },
 };
 
+const images = [
+  <Image
+    key={0}
+    src="/placeholders/linda.jpg"
+    alt="a nurse"
+    width="643"
+    height="605"
+  />,
+  <Image
+    key={1}
+    src="/placeholders/masonry-1.jpg"
+    alt="masonry 1"
+    width="643"
+    height="605"
+  />,
+  <Image
+    key={2}
+    src="/placeholders/masonry-2.jpg"
+    alt="masonry 2"
+    width="643"
+    height="605"
+  />,
+  <Image
+    key={3}
+    src="/placeholders/masonry-3.jpg"
+    alt="masonry 3"
+    width="643"
+    height="605"
+  />,
+];
+
 export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof CarouselImages> = {
   args: {
-    images: [
-      <Image
-        key={0}
-        src="/placeholders/linda.jpg"
-        alt="a nurse"
-        width="643"
-        height="605"
-      />,
-      <Image
-        key={1}
-        src="/placeholders/masonry-1.jpg"
-        alt="masonry 1"
-        width="643"
-        height="605"
-      />,
-      <Image
-        key={2}
-        src="/placeholders/masonry-2.jpg"
-        alt="masonry 2"
-        width="643"
-        height="605"
-      />,
-      <Image
-        key={3}
-        src="/placeholders/masonry-3.jpg"
-        alt="masonry 3"
-        width="643"
-        height="605"
-      />,
-    ],
+    images: images,
+  },
+};
+
+export const EqualSize: StoryObj<typeof CarouselImages> = {
+  args: {
+    contentVariation: 'equalSize',
+    images: images,
   },
 };

@@ -4,7 +4,7 @@
 .main-wrapper {
   background-color: var(--background);
   color: var(--text);
-  transition: 1000ms linear;
+  transition: 800ms linear;
 
   /* Transitions for component elements as they come into view */
   [data-animate] {
