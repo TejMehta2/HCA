@@ -1,0 +1,51 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as OffsetTextBlockStories from './OffsetTextBlock.stories';
+
+<Meta of={OffsetTextBlockStories} />
+
+# OffsetTextBlock
+
+## Description
+
+The OffsetTextBlock component contains a heading, body copy, and a cta
+
+It is intended to be used on the careers homepage
+
+It can be composed like this:
+
+```tsx
+<OffsetTextBlock
+  title={
+    <Text tag="h2" variation={'display-1'}>
+      Caring for patients is more than a job: it&apos;s a
+      <Text tag="span" variation="decorative">
+        calling
+      </Text>
+      .
+    </Text>
+  }
+  bodyCopy={
+    <Text variation="body-large" tag="p">
+      Life with us means taking pride in your team and delivering the highest
+      quality care. We&apos;ll support your ongoing learning in an environment
+      that features advanced equipment and practices, one of the best
+      colleague-to-patient ratios in the UK and varied, interesting work. As
+      part of HCA US, one of the nation&apos;s leading providers of healthcare
+      services, we can also promise that you&apos;ll learn from experts in every
+      department and that your opportunities will be endless. With us,
+      you&apos;ll be empowered to achieve more in your career, and more for our
+      patients.
+    </Text>
+  }
+  cta={
+    <Button size={'large'} variation={'full'}>
+      <a href="#">Working at HCA UK</a>
+    </Button>
+  }
+/>
+```
+
+## Example
+
+<Canvas of={OffsetTextBlockStories.Default} />
+<Controls of={OffsetTextBlockStories.Default} />

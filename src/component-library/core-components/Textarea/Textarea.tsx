@@ -14,6 +14,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
     maxCharacters = 300,
     helperText,
     defaultValue,
+    showOptionalText = true,
   } = props;
 
   const [count, setCount] = useState(defaultValue?.length || 0);
@@ -23,7 +24,7 @@ const Textarea = (props: TextareaProps): JSX.Element => {
       {label && (
         <label htmlFor={id}>
           {label}
-          {!required && ' (Optional)'}
+          {!required && showOptionalText && ' (Optional)'}
         </label>
       )}
 
@@ -41,10 +42,12 @@ const Textarea = (props: TextareaProps): JSX.Element => {
         </span>
       </div>
 
-      <div className={styles['error-message']}>
-        <Icons iconName="iconWarning" />
-        <Text variation="body-medium-medium">{errorMessage}</Text>
-      </div>
+      {errorMessage && (
+        <div className={styles['error-message']}>
+          <Icons iconName="iconWarning" />
+          <Text variation="body-medium-medium">{errorMessage}</Text>
+        </div>
+      )}
 
       {helperText && (
         <div className={styles.helper}>

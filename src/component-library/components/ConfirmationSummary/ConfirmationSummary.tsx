@@ -17,9 +17,16 @@ const ConfirmationSummary = (props: ConfirmationSummaryProps): JSX.Element => {
     facilityTitle,
     facilityName,
     optionalItems,
+    noSpacing = false,
   } = props;
   return (
-    <div className={styles['confirmation-summary']}>
+    <div
+      className={
+        noSpacing
+          ? [styles['confirmation-summary'], styles['no-spacing']].join(' ')
+          : styles['confirmation-summary']
+      }
+    >
       {title && (
         <div className={styles.title}>
           <Text tag="h2" variation="body-medium-extra-large">

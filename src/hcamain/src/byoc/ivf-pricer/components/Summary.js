@@ -32,12 +32,17 @@ const Summary = () => {
     setCheckStatus,
     protocolNotes,
     selectedDrugValue,
+    selectedDrugValue2,
     cycleNotes,
     cycleTypeAdditionalDrugNotes,
+    cycleTypeAdditionalDrugNotes2,
     blastocystCultureNotes,
     adjuvantsNotes,
     selectedDrugNotes,
+    selectedDrugNotes2,
     cycleCost,
+    drug1Cost,
+    drug2Cost,
     protocolType,
     blastocystCulture,
     adjuvantsValuesPrint,
@@ -158,14 +163,19 @@ const Summary = () => {
                   protocolNotes={protocolNotes}
                   cycleNotes={cycleNotes}
                   cycleTypeAdditionalDrugNotes={cycleTypeAdditionalDrugNotes}
+                  cycleTypeAdditionalDrugNotes2={cycleTypeAdditionalDrugNotes2}
                   blastocystCultureNotes={blastocystCultureNotes}
                   adjuvantsNotes={adjuvantsNotes}
                   selectedDrugNotes={selectedDrugNotes}
+                  selectedDrugNotes2={selectedDrugNotes2}
                   cycleCost={cycleCost}
+                  drug1Cost={drug1Cost}
+                  drug2Cost={drug2Cost}
                   cycleTypeVal={cycleTypeVal}
                   protocolType={protocolType}
                   blastocystCulture={blastocystCulture}
                   selectedDrugValue={selectedDrugValue}
+                  selectedDrugValue2={selectedDrugValue2}
                   adjuvants={adjuvantsValuesPrint}
                   introPDF={introPDF}
                   protocolTypeLabel={protocolTypeLabel}

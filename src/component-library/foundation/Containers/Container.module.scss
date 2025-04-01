@@ -26,6 +26,16 @@
     }
   }
 
+  &.width-fit {
+    div {
+      width: 100%;
+
+      @include media(screen-l) {
+        width: fit-content;
+      }
+    }
+  }
+
   &.custom-btn {
     a {
       padding: px-to-rem(14) $spacing-4;
@@ -119,6 +129,10 @@
 
   &.margin-bottom-spacing-4 {
     margin-bottom: $spacing-4;
+  }
+
+  &.margin-bottom-spacing-5 {
+    margin-bottom: $spacing-5;
   }
 
   &.margin-bottom-spacing-6 {

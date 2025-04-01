@@ -7,7 +7,7 @@
   align-items: center;
   color: var(--text);
 
-  @include apply-body-extra-large;
+  @include apply-body-large;
 
   &::before {
     left: 0;
@@ -29,7 +29,7 @@
   &:has(input[type='checkbox']:checked) {
     & + .label,
     & + .form-field-label {
-      @include apply-body-medium-extra-large;
+      @include apply-body-medium-large;
 
       &::before {
         background: var(--controls-background-selected);
@@ -127,7 +127,7 @@
 
     .text {
       display: flex;
-      padding-left: px-to-rem(32);
+      padding-left: px-to-rem(40);
     }
 
     a {

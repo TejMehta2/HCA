@@ -8,7 +8,7 @@
 
   /* Transitions for component elements as they come into view */
   [data-animate] {
-    transition: 1s ease-in-out;
+    transition: 800ms ease-out;
   }
 
   [data-animate='xs'] {
@@ -33,6 +33,13 @@
 
   [data-animate-active] {
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion) {
+    [data-animate] {
+      transform: translateY(0);
+      transition: none;
+    }
   }
 
   > * {

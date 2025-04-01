@@ -5,11 +5,35 @@
   color: var(--text);
   background: var(--background);
   border-radius: 0 0 $radius-large 0;
+  position: relative;
+
+  &:has(.image) {
+    border-radius: 0;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 60%);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .inner {
   @include responsive-container;
 
+  position: relative;
   padding: $spacing-12 0;
   display: flex;
   flex-direction: column;

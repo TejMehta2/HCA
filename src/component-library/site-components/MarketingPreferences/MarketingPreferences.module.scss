@@ -6,11 +6,12 @@
   background-color: var(--background);
   padding: $spacing-6;
   border-radius: $radius-medium;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
 }
 
 .copy {
-  padding: $spacing-4 0;
-
   a {
     color: var(--text);
   }

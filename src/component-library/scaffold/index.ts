@@ -94,8 +94,15 @@ const questions: PromptObject[] = [
       },
       {
         title: 'careers',
-        description: 'for components which exist in careers subsection of site',
+        description:
+          'for components which exist in the careers subsection of site',
         value: 'careers',
+      },
+      {
+        title: 'the-birth-company',
+        description:
+          'for components which exist in the birth company subsection of site',
+        value: 'the-birth-company',
       },
     ],
     initial: 0,

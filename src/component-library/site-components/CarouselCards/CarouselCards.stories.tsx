@@ -6,6 +6,9 @@ import CardPatientStories from '../../components/CardPatientStories/CardPatientS
 import CardBlog from '../../components/CardBlog/CardBlog';
 import Text from '../../foundation/Text/Text';
 import Tags from '../../core-components/Tags/Tags';
+import YextResultCardCareers from '../../yext/YextResultCardCareers/YextResultCardCareers';
+import Button from '../../core-components/Button/Button';
+import Icons from '../../foundation/Icons/Icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CarouselCards> = {
@@ -332,6 +335,132 @@ export const BlogCards: StoryObj<typeof CarouselCards> = {
           </Tags>
         </>
       </CardBlog>,
+    ],
+  },
+};
+
+export const VacancyCards: StoryObj<typeof CarouselCards> = {
+  args: {
+    theme: 'A-HCA-White',
+    cardsToDisplay: 4,
+    subtitle: (
+      <Text tag="p" variation="subheading-1">
+        our latest vacancies
+      </Text>
+    ),
+    title: (
+      <Text tag="h2" variation="display-3">
+        Ready for an exciting opportunity?
+      </Text>
+    ),
+    link: (
+      <a href="#">
+        <span>
+          View <strong>all 251 vacancies</strong>
+        </span>
+      </a>
+    ),
+    children: [
+      <YextResultCardCareers
+        key={0}
+        variation="carousel"
+        location={'Head office'}
+        city={'London'}
+        clinical={'Clinical'}
+        timing={'Full time'}
+        title={
+          <Text variation={'heading-2'}>
+            {'EHR Registration Scheduling Change Lead'}
+          </Text>
+        }
+        cta={
+          <Button variation={'full'} size={'small'} contentVariation="card">
+            <a href={'job.data.applicationUrl'}>
+              <Icons iconName="iconArrowSmallRight" />
+            </a>
+          </Button>
+        }
+      />,
+      <YextResultCardCareers
+        key={0}
+        variation="carousel"
+        location={'Head office'}
+        city={'London'}
+        clinical={'Clinical'}
+        timing={'Full time'}
+        title={
+          <Text variation={'heading-2'}>
+            {'EHR Registration Scheduling Change Lead'}
+          </Text>
+        }
+        cta={
+          <Button variation={'full'} size={'small'} contentVariation="card">
+            <a href={'job.data.applicationUrl'}>
+              <Icons iconName="iconArrowSmallRight" />
+            </a>
+          </Button>
+        }
+      />,
+      <YextResultCardCareers
+        key={0}
+        variation="carousel"
+        location={'Head office'}
+        city={'London'}
+        clinical={'Clinical'}
+        timing={'Full time'}
+        title={
+          <Text variation={'heading-2'}>
+            {'EHR Registration Scheduling Change Lead'}
+          </Text>
+        }
+        cta={
+          <Button variation={'full'} size={'small'} contentVariation="card">
+            <a href={'job.data.applicationUrl'}>
+              <Icons iconName="iconArrowSmallRight" />
+            </a>
+          </Button>
+        }
+      />,
+      <YextResultCardCareers
+        key={0}
+        variation="carousel"
+        location={'Head office'}
+        city={'London'}
+        clinical={'Clinical'}
+        timing={'Full time'}
+        title={
+          <Text variation={'heading-2'}>
+            {'EHR Registration Scheduling Change Lead'}
+          </Text>
+        }
+        cta={
+          <Button variation={'full'} size={'small'} contentVariation="card">
+            <a href={'job.data.applicationUrl'}>
+              <Icons iconName="iconArrowSmallRight" />
+            </a>
+          </Button>
+        }
+      />,
+      <YextResultCardCareers
+        key={0}
+        variation="carousel"
+        location={'Head office'}
+        city={'London'}
+        clinical={'Clinical'}
+        timing={'Full time'}
+        title={
+          <Text variation={'heading-2'}>
+            {'EHR Registration Scheduling Change Lead'}
+          </Text>
+        }
+        cta={
+          <Button variation={'full'} size={'small'} contentVariation="card">
+            <a href={'job.data.applicationUrl'}>
+              <Icons iconName="iconArrowSmallRight" />
+            </a>
+          </Button>
+        }
+      />,
     ],
   },
 };

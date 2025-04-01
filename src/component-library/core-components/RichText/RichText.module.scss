@@ -71,6 +71,39 @@
       list-style-position: inside;
     }
 
+    table {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      text-align: left;
+      background-color: var(--background);
+      border: 1px solid var(--table-color);
+      border-collapse: collapse;
+      margin: $spacing-5 auto;
+
+      thead {
+        @include apply-body-bold-large;
+      }
+
+      tbody {
+        @include apply-body-medium;
+
+        tr:nth-of-type(odd) {
+          background-color: var(--table-color);
+        }
+      }
+
+      td,
+      th {
+        padding: $spacing-4;
+        width: 100%;
+        text-wrap: auto;
+        word-break: normal;
+      }
+    }
+
     *:first-child {
       margin-top: 0;
     }

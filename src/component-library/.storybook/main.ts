@@ -27,6 +27,8 @@ const config: StorybookConfig = {
     "../site-components/**/*.mdx",
     "../consultant-finder/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../consultant-finder/**/*.mdx",
+    "../the-birth-company/**/*.mdx",
+    "../the-birth-company/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../yext/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../yext/**/*.mdx",
   ],

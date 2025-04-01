@@ -1,0 +1,93 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as SearchStories from './Search.stories';
+
+<Meta of={SearchStories} />
+
+# Search
+
+## Description
+
+The Search component is a simplified version of the Consultant Finder Search component
+
+It takes a list of data and displays in two columns. This can be filtered by typing into the input field
+
+It is intended to be used the first step of The Birth Company booking journey
+
+It can be composed like this:
+
+```tsx
+<Search
+  placeholder={'Type in a scan or test...'}
+  dropdownColumn1Label="Gynaecological scans"
+  dropdownColumn1List={[
+    {
+      id: '1',
+      serviceName: { value: 'Hip Replacement' },
+      extras: {
+        targetItems: {
+          0: {
+            duration: { value: '10' },
+            id: 'targetItem0',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+          1: {
+            duration: { value: '10' },
+            id: 'targetItem1',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+        },
+      },
+    },
+    {
+      id: '2',
+      serviceName: { value: 'Hip Replacement' },
+      extras: {
+        targetItems: {
+          0: {
+            duration: { value: '10' },
+            id: 'targetItem0',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+          1: {
+            duration: { value: '10' },
+            id: 'targetItem1',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+        },
+      },
+    },
+  ]}
+  dropdownColumn2Label="Pregnancy scans"
+  dropdownColumn2List={[
+    {
+      id: '1',
+      serviceName: { value: 'Anatomy Scan' },
+      extras: {
+        targetItems: {
+          0: {
+            duration: { value: '10' },
+            id: 'targetItem0',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+          1: {
+            duration: { value: '10' },
+            id: 'targetItem1',
+            price: { value: '60' },
+            serviceExtraName: { value: 'Blood Test' },
+          },
+        },
+      },
+    },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={SearchStories.Default} />
+<Controls of={SearchStories.Default} />

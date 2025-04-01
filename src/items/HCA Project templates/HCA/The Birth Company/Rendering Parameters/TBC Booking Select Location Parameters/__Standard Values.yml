@@ -1,0 +1,27 @@
+﻿---
+ID: "55d47e82-9611-4eec-9372-0fe6eadd9c51"
+Parent: "af095c15-ffdb-4740-8e94-f4ff26920046"
+Template: "af095c15-ffdb-4740-8e94-f4ff26920046"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Rendering Parameters/TBC Booking Select Location Parameters/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "622ad895-ff83-4dbb-a5f4-3d746d5d23f4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250226T135140Z

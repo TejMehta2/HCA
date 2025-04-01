@@ -827,13 +827,13 @@ export async function getPhysicianStructuredData(
       ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
       ret.mainEntity.description = `${specialistProfileData.about}`;
       ret.mainEntity.url = `${segmentTracker}${specialistProfileData.slug}`;
-      //TODO get from content
-      ret.mainEntity.address.addressLocality = 'London';
-      ret.mainEntity.address.addressRegion = 'London';
-      ret.mainEntity.address.postalCode = 'W1G 0PU';
-      ret.mainEntity.address.streetAddress =
-        'HCA Healthcare, 2 Cavendish Square';
-      ret.mainEntity.telephone = '+442045711724';
+
+      const HCAAPIConfig = await GetHCAConfig();
+      ret.mainEntity.address.addressLocality = HCAAPIConfig?.hQAddressLocality;
+      ret.mainEntity.address.addressRegion = HCAAPIConfig?.hQAddressRegion;
+      ret.mainEntity.address.postalCode = HCAAPIConfig?.hQPostalCode;
+      ret.mainEntity.address.streetAddress = HCAAPIConfig?.hQStreetAddress;
+      ret.mainEntity.telephone = HCAAPIConfig?.generalConsultantBookingNumber;
       ret.mainEntity.image = specialistProfileData.images?.logo ?? '';
       ret.mainEntity.medicalSpecialty.name = topSpecialty
         ? topSpecialty[0].name

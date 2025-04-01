@@ -1,0 +1,35 @@
+﻿---
+ID: "d6c25a5d-c6d8-4c7b-885f-ddbfe19c052a"
+Parent: "d97b73d1-a86d-4389-baf5-2cd1e33b863f"
+Template: "d97b73d1-a86d-4389-baf5-2cd1e33b863f"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/ProgressBar/ProgressBar/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0a717c8b-d1dc-4ba4-bfe0-1e82190afd60"
+      Hint: HCALogo
+      Value: |
+        <image width="179" height="51" alt="HCA Logo" src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/06a4e6f42c2b45568479370d65eefb5f?v=768cbd7e" stylelabs-content-id="219785" stylelabs-content-type="Image" thumbnailsrc="" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250226T174648Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9de4352c-db63-4fa1-846f-9ee3f7165d51"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250226T174657Z
