@@ -56,7 +56,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
       {
         breakpoint: 1135,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: cardsToDisplay - 1,
         },
       },
       {

@@ -97,11 +97,6 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     <>
       <Scripts />
       <Head>
-        <script
-          type="text/javascript"
-          src="//app.pageproofer.com/embed/b55b9562-6097-5093-9112-d6748577287d"
-          async={true}
-        ></script>
         <title>{titleStripped}</title>
 
         <link
