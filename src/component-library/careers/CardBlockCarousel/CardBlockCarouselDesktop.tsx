@@ -58,7 +58,7 @@ const CardBlockCarouselDesktop = (
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-animate="m">
       <div className={styles.container}>
         <Slider {...settings}>
           {firstCard}

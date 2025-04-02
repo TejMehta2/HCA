@@ -11,7 +11,7 @@ const CardBlockCarousel = (props: CardBlockCarouselProps): JSX.Element => {
     <Themes theme={theme} id={id}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.intro}>
+          <div className={styles.intro} data-animate="s">
             <div className={styles.subtitle}>{subtitle}</div>
             {title}
             <div className={styles.body}>{bodyText}</div>

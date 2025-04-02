@@ -28,7 +28,7 @@ const CardBlockCarouselMobile = (
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-animate="m">
       {firstCard}
       <Accordions accordions={accordionArray} />
     </div>
