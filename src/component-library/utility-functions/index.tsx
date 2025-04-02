@@ -76,6 +76,14 @@ export const formatDateYYYYMMDD = (dateToCheck: any) => {
   return `${year}-${month}-${day}`;
 };
 
+// Helper function to format a date as "03 Apr"
+export const formatDateDDMMM = (dateToCheck: any) => {
+  const date = new Date(dateToCheck);
+  const month = dateToCheck.toLocaleString('default', { month: 'short' });
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${day} ${month}`;
+};
+
 // format time to GB fomat: Day of the Week, Short Month: Wed, Mar 27
 export const formatDateShort = (dateString: string | undefined) => {
   // Check if dateString is undefined or null

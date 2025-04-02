@@ -20,7 +20,7 @@ interface slot {
 }
 
 export interface slots {
-  slots: slot[];
+  slots: slot[] | never[];
 }
 
 export interface day {
