@@ -8,7 +8,8 @@
 $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
   E-HCA-Cerulean, F-HCA-Fern, G-HCA-Orange, H-HCA-Tangerine, I-HCA-Goldenrod,
   J-HCA-Tangerine-20, K-HCA-Fern-20, L-HCA-Teal-5, M-HCA-Goldenrod-20,
-  N-HCA-Denim-5, O-HCA-Teal-20, Palace-White, Palace-Navy-Blue, Palace-Beige;
+  N-HCA-Denim-5, O-HCA-Teal-20, Palace-White, Palace-Navy-Blue, Palace-Beige,
+  Chelsea-White, Chelsea-Navy-Blue, Chelsea-Beige;
 
 @each $theme in $themeOptions {
   .#{$theme}:is([data-theme='#{$theme}']):not(.no-collapse)
@@ -93,6 +94,18 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
   @include apply-theme-palace-beige;
 }
 
+.Chelsea-White {
+  @include apply-theme-chelsea-white;
+}
+
+.Chelsea-Navy-Blue {
+  @include apply-theme-chelsea-navy-blue;
+}
+
+.Chelsea-Beige {
+  @include apply-theme-chelsea-beige;
+}
+
 .master-A-HCA-White,
 .master-B-HCA-Navy-Blue,
 .master-C-HCA-Denim,
@@ -110,7 +123,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
 .master-O-HCA-Teal-20,
 .master-Palace-White,
 .master-Palace-Navy-Blue,
-.master-Palace-Beige {
+.master-Palace-Beige,
+.master-Chelsea-White,
+.master-Chelsea-Navy-Blue,
+.master-Chelsea-Beige {
   & > div {
     & > .A-HCA-White,
     & > .B-HCA-Navy-Blue,
@@ -129,7 +145,10 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
     & > .O-HCA-Teal-20,
     & > .Palace-White,
     & > .Palace-Navy-Blue,
-    & > .Palace-Beige {
+    & > .Palace-Beige,
+    & > .Chelsea-White,
+    & > .Chelsea-Navy-Blue,
+    & > .Chelsea-Beige {
       --background: #{transparent};
       --text: #{unset};
     }
@@ -157,5 +176,8 @@ $themeOptions: A-HCA-White, B-HCA-Navy-Blue, C-HCA-Denim, D-HCA-Teal,
     Palace-White: dark;
     Palace-Navy-Blue: light;
     Palace-Beige: dark;
+    Chelsea-White: dark;
+    Chelsea-Navy-Blue: light;
+    Chelsea-Beige: dark;
   }
 }

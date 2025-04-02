@@ -165,3 +165,32 @@
   --tag-focus-background: #{$orange-40};
   --tag-focus-outline: #{$navy-blue-100};
 }
+
+@mixin apply-tag-chelsea-white {
+  --tag-background: #{$chelsea-gold-80};
+  --tag-text: #{$navy-blue-100};
+  --tag-hover-background: #{$chelsea-gold-100};
+  --tag-active-background: #{$chelsea-gold-100};
+  --tag-focus-background: #{$chelsea-gold-80};
+  --tag-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-tag-chelsea-navy-blue {
+  --tag-background: #{$navy-blue-70};
+  --tag-text: #{$white};
+  --tag-hover-background: #{$navy-blue-70};
+  --tag-active-background: #{navy-blue-70};
+  --tag-focus-background: #{$navy-blue-100};
+  --tag-focus-outline: #{$white};
+  --tag-secondary-background: #{$chelsea-gold-80};
+  --tag-secondary-hover-background: #{$chelsea-gold-100};
+}
+
+@mixin apply-tag-chelsea-beige {
+  --tag-background: #{$chelsea-gold-80};
+  --tag-text: #{$navy-blue-100};
+  --tag-hover-background: #{$chelsea-gold-100};
+  --tag-active-background: #{$chelsea-gold-80};
+  --tag-focus-background: #{$chelsea-gold-80};
+  --tag-focus-outline: #{$navy-blue-100};
+}
