@@ -34,6 +34,21 @@
   --text: #{$navy-blue-100};
 }
 
+@mixin apply-chelsea-light-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$chelsea-gold-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-chelsea-dark-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+  --background-unselected: #{$navy-blue-70};
+}
+
 .light {
   @include apply-light-mode;
 }
@@ -54,6 +69,14 @@
   @include apply-palace-dark-mode;
 }
 
+.chelsea-light {
+  @include apply-chelsea-light-mode;
+}
+
+.chelsea-dark {
+  @include apply-chelsea-dark-mode;
+}
+
 .switch {
   display: grid;
   grid: auto / px-to-rem(40) 1fr;
@@ -66,7 +89,7 @@
   .toggle {
     position: absolute;
     inset: 0;
-    background: $navy-blue-40;
+    background: var(--background-unselected, $navy-blue-40);
     border-radius: $radius-large;
     transition: background 0.4s ease-in-out;
 

@@ -370,3 +370,12 @@ export const ThemePlaceNavyBlue: StoryObj<typeof Themes> = {
 export const ThemePlaceBeige: StoryObj<typeof Themes> = {
   args: { theme: 'Palace-Beige' },
 };
+export const ThemeChelseaWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-White' },
+};
+export const ThemeChelseaNavyBlue: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-Navy-Blue' },
+};
+export const ThemeChelseaBeige: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-Beige' },
+};

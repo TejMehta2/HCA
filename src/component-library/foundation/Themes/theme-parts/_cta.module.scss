@@ -333,3 +333,100 @@
   // Focus
   --cta-carousel-focus-outline: #{$white};
 }
+
+@mixin apply-cta-chelsea-full($hover-background, $hover-border, $hover-text) {
+  // Base
+  --cta-full-background: #{$chelsea-gold-100};
+  --cta-full-text: #{$navy-blue-100};
+  --cta-full-border: #{$chelsea-gold-100};
+
+  // Hover
+  --cta-full-hover-background: #{$hover-background};
+  --cta-full-hover-text: #{$hover-text};
+  --cta-full-hover-border: #{$hover-border};
+
+  // Disabled
+  --cta-full-disabled-background: #{$chelsea-gold-60};
+  --cta-full-disabled-text: #{$navy-blue-100};
+  --cta-full-disabled-border: #{$chelsea-gold-60};
+
+  // Active
+  --cta-full-active-background: #{$white};
+  --cta-full-active-text: #{$navy-blue-100};
+  --cta-full-active-border: #{$navy-blue-100};
+
+  // Focus
+  --cta-full-focus-outline: #{$chelsea-gold-10};
+}
+
+@mixin apply-cta-chelsea-outline($background, $border, $text) {
+  // Base
+  --cta-outline-background: #{$background};
+  --cta-outline-text: #{$text};
+  --cta-outline-border: #{$border};
+
+  // Hover
+  --cta-outline-hover-background: #{$chelsea-gold-100};
+  --cta-outline-hover-text: #{$white};
+  --cta-outline-hover-border: #{$chelsea-gold-100};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$navy-blue-70};
+  --cta-outline-disabled-border: #{$navy-blue-70};
+
+  // Active
+  --cta-outline-active-background: #{$chelsea-gold-80};
+  --cta-outline-active-text: #{$white};
+  --cta-outline-active-border: #{$chelsea-gold-80};
+
+  // Focus
+  --cta-outline-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-cta-carousel-chelsea-dark {
+  // Base
+  --cta-carousel-background: #{$chelsea-gold-100};
+  --cta-carousel-text: #{$white};
+  --cta-carousel-border: #{$chelsea-gold-100};
+
+  // Hover
+  --cta-carousel-hover-text: #{$navy-blue-100};
+
+  // Disabled
+  --cta-carousel-disabled-background: #{$chelsea-gold-40};
+  --cta-carousel-disabled-text: #{$navy-blue-100};
+  --cta-carousel-disabled-border: #{$chelsea-gold-60};
+
+  // Active
+  --cta-carousel-active-background: #{$white};
+  --cta-carousel-active-text: #{$navy-blue-100};
+  --cta-carousel-active-border: #{$navy-blue-40};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$navy-blue-100};
+}
+
+@mixin apply-cta-carousel-chelsea-light {
+  // Base
+  --cta-carousel-background: #{$chelsea-gold-100};
+  --cta-carousel-text: #{$white};
+  --cta-carousel-border: #{$chelsea-gold-100};
+
+  // Hover
+  --cta-carousel-hover-text: #{$white};
+  --cta-carousel-hover-border: #{$white};
+
+  // Disabled
+  --cta-outline-disabled-background: #{$white};
+  --cta-outline-disabled-text: #{$navy-blue-70};
+  --cta-outline-disabled-border: #{$navy-blue-70};
+
+  // Active
+  --cta-carousel-active-background: #{$white};
+  --cta-carousel-active-text: #{$navy-blue-100};
+  --cta-carousel-active-border: #{$navy-blue-40};
+
+  // Focus
+  --cta-carousel-focus-outline: #{$white};
+}

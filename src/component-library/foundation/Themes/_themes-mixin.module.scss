@@ -412,8 +412,8 @@
   @include apply-tabs($navy-blue-80, $white);
   @include apply-pagination-navy-blue-70;
   @include apply-controls-palace;
-  @include apply-cta-palace-full(#{$navy-blue-100}, #{$white}, #{$white});
-  @include apply-cta-palace-outline(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-chelsea-full(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-chelsea-outline(#{$navy-blue-100}, #{$white}, #{$white});
   @include apply-pagination-palace-navy-blue;
   @include apply-cta-carousel-palace-light;
 
@@ -455,6 +455,98 @@
   --filter-button-1: #{$orange-40};
   --filter-button-2: #{$orange-20};
   --filter-button-3: #{$navy-blue-60};
+}
+
+@mixin apply-theme-chelsea-white {
+  @include apply-shared-theme-light;
+
+  --background: #{$white};
+  --card-background: #{$tangerine-20};
+  --doctify-empty-star: #{$navy-blue-30};
+  --doctify-full-star: #{$chelsea-gold-150};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$chelsea-gold-80};
+  --quote-tag-background-hover: #{$chelsea-gold-100};
+  --table-color: #{$chelsea-gold-20};
+
+  @include apply-tag-chelsea-white;
+  @include apply-cta-chelsea-full(
+    #{$white},
+    #{$navy-blue-100},
+    #{$navy-blue-100}
+  );
+  @include apply-cta-chelsea-outline(
+    #{$chelsea-gold-100},
+    #{$navy-blue-100},
+    #{$navy-blue-100}
+  );
+  @include apply-tabs(#{$chelsea-gold-80});
+  @include apply-pagination-chelsea-gold-80;
+  @include apply-controls-chelsea;
+  @include apply-cta-carousel-chelsea-dark;
+
+  --filter-button-1: #{$chelsea-gold-80};
+  --filter-button-2: #{$chelsea-gold-60};
+  --filter-button-3: #{$navy-blue-70};
+}
+
+@mixin apply-theme-chelsea-navy-blue {
+  @include apply-shared-theme-dark;
+
+  --background: #{$navy-blue-100};
+  --card-background: #{$navy-blue-80};
+  --doctify-full-star: #{$chelsea-gold-80};
+  --doctify-empty-star: #{$white};
+  --quote-tag-background: #{$navy-blue-80};
+  --quote-tag-background-hover: #{$navy-blue-90};
+  --table-color: #{$navy-blue-80};
+
+  @include apply-tag-chelsea-navy-blue;
+  @include apply-tabs($navy-blue-80, $white);
+  @include apply-pagination-chelsea-navy-blue;
+  @include apply-controls-chelsea;
+  @include apply-cta-chelsea-full(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-chelsea-outline(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-carousel-chelsea-light;
+
+  --filter-button-1: #{$navy-blue-80};
+  --filter-button-2: #{$navy-blue-70};
+  --filter-button-3: #{$navy-blue-40};
+}
+
+@mixin apply-theme-chelsea-beige {
+  @include apply-shared-theme-light;
+
+  --background: #{$tangerine-20};
+  --card-background: #{$white};
+  --doctify-empty-star: #{$navy-blue-50};
+  --doctify-full-star: #{$chelsea-gold-150};
+  --cqc-outline: #{$navy-blue-30};
+  --quote-tag-background: #{$chelsea-gold-80};
+  --quote-tag-background-hover: #{$chelsea-gold-100};
+  --quote-tag-color: $navy-blue-100;
+  --table-color: #{$chelsea-gold-20};
+
+  @include apply-cta-chelsea-full(
+    #{$white},
+    #{$navy-blue-100},
+    #{$navy-blue-100}
+  );
+  @include apply-cta-chelsea-outline(
+    #{$chelsea-gold-100},
+    #{$navy-blue-100},
+    #{$navy-blue-100}
+  );
+
+  @include apply-tag-chelsea-beige;
+  @include apply-tabs(#{$chelsea-gold-80});
+  @include apply-pagination-chelsea-gold-100;
+  @include apply-controls-chelsea;
+  @include apply-cta-carousel-chelsea-dark;
+
+  --filter-button-1: #{$chelsea-gold-80};
+  --filter-button-2: #{$chelsea-gold-60};
+  --filter-button-3: #{$navy-blue-70};
 }
 
 @mixin theme-mode($light, $dark) {

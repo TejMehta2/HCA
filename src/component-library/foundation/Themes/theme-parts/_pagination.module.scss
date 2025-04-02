@@ -113,3 +113,21 @@
   --pagination-hover: #{$navy-blue-100};
   --pagination-arrow-hover: #{$orange-150};
 }
+
+@mixin apply-pagination-chelsea-gold-80 {
+  --pagination: #{$chelsea-gold-80};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$chelsea-gold-150};
+}
+
+@mixin apply-pagination-chelsea-navy-blue {
+  --pagination: #{$navy-blue-70};
+  --pagination-hover: #{$chelsea-gold-60};
+  --pagination-arrow-hover: #{$chelsea-gold-60};
+}
+
+@mixin apply-pagination-chelsea-gold-100 {
+  --pagination: #{$chelsea-gold-100};
+  --pagination-hover: #{$navy-blue-100};
+  --pagination-arrow-hover: #{$chelsea-gold-100};
+}
