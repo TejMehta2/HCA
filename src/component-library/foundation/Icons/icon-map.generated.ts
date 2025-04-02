@@ -45,6 +45,7 @@ import iconGlasses from './assets-dist/Glasses.svg';
 import iconGrid from './assets-dist/Grid.svg';
 import iconGroup1 from './assets-dist/Group 1.svg';
 import iconHome from './assets-dist/Home.svg';
+import iconHospital48 from './assets-dist/Hospital 48.svg';
 import iconHospital from './assets-dist/Hospital.svg';
 import iconInfo from './assets-dist/Info.svg';
 import iconInstagram from './assets-dist/Instagram.svg';
@@ -58,6 +59,7 @@ import iconMinusSmall from './assets-dist/Minus small.svg';
 import iconMinus from './assets-dist/Minus.svg';
 import iconMobile from './assets-dist/Mobile.svg';
 import iconOneOff from './assets-dist/One-off.svg';
+import iconPause from './assets-dist/Pause.svg';
 import iconPhone from './assets-dist/Phone.svg';
 import iconPin48 from './assets-dist/Pin 48.svg';
 import iconPin from './assets-dist/Pin.svg';
@@ -67,6 +69,7 @@ import iconPlus from './assets-dist/Plus.svg';
 import iconPlus48 from './assets-dist/Plus48.svg';
 import iconPrint from './assets-dist/Print.svg';
 import iconQuestion from './assets-dist/Question.svg';
+import iconQuotes from './assets-dist/Quotes.svg';
 import iconRedo from './assets-dist/Redo.svg';
 import iconReset from './assets-dist/Reset.svg';
 import iconSearch from './assets-dist/Search.svg';
@@ -132,6 +135,7 @@ export type IconName =
   | 'iconGrid'
   | 'iconGroup1'
   | 'iconHome'
+  | 'iconHospital48'
   | 'iconHospital'
   | 'iconInfo'
   | 'iconInstagram'
@@ -145,6 +149,7 @@ export type IconName =
   | 'iconMinus'
   | 'iconMobile'
   | 'iconOneOff'
+  | 'iconPause'
   | 'iconPhone'
   | 'iconPin48'
   | 'iconPin'
@@ -154,6 +159,7 @@ export type IconName =
   | 'iconPlus48'
   | 'iconPrint'
   | 'iconQuestion'
+  | 'iconQuotes'
   | 'iconRedo'
   | 'iconReset'
   | 'iconSearch'
@@ -219,6 +225,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconGrid', iconGrid],
   ['iconGroup1', iconGroup1],
   ['iconHome', iconHome],
+  ['iconHospital48', iconHospital48],
   ['iconHospital', iconHospital],
   ['iconInfo', iconInfo],
   ['iconInstagram', iconInstagram],
@@ -232,6 +239,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconMinus', iconMinus],
   ['iconMobile', iconMobile],
   ['iconOneOff', iconOneOff],
+  ['iconPause', iconPause],
   ['iconPhone', iconPhone],
   ['iconPin48', iconPin48],
   ['iconPin', iconPin],
@@ -241,6 +249,7 @@ const iconMap = new Map<IconName, () => JSX.Element>([
   ['iconPlus48', iconPlus48],
   ['iconPrint', iconPrint],
   ['iconQuestion', iconQuestion],
+  ['iconQuotes', iconQuotes],
   ['iconRedo', iconRedo],
   ['iconReset', iconReset],
   ['iconSearch', iconSearch],

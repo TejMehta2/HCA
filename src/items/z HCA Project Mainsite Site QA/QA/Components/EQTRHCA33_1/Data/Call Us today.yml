@@ -8,6 +8,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20240402T160535Z
@@ -27,11 +30,14 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5f7197fd-6bbd-464a-8838-de65f2b040d8"
+      Value: "4404e1c3-ba0c-4e71-a1ab-e96a4fde54ef"
+    - ID: "abedf982-8d06-4980-bc29-dc6822c9843e"
+      Hint: CTAText
+      Value: Call us today
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T161323Z
+      Value: 20250224T161916Z

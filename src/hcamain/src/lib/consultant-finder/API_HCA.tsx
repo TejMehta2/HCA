@@ -827,13 +827,13 @@ export async function getPhysicianStructuredData(
       ret.mainEntity.name = `${specialistProfileData.title} ${specialistProfileData.firstName} ${specialistProfileData.lastName}`;
       ret.mainEntity.description = `${specialistProfileData.about}`;
       ret.mainEntity.url = `${segmentTracker}${specialistProfileData.slug}`;
-      //TODO get from content
-      ret.mainEntity.address.addressLocality = 'London';
-      ret.mainEntity.address.addressRegion = 'London';
-      ret.mainEntity.address.postalCode = 'W1G 0PU';
-      ret.mainEntity.address.streetAddress =
-        'HCA Healthcare, 2 Cavendish Square';
-      ret.mainEntity.telephone = '+442045711724';
+
+      const HCAAPIConfig = await GetHCAConfig();
+      ret.mainEntity.address.addressLocality = HCAAPIConfig?.hQAddressLocality;
+      ret.mainEntity.address.addressRegion = HCAAPIConfig?.hQAddressRegion;
+      ret.mainEntity.address.postalCode = HCAAPIConfig?.hQPostalCode;
+      ret.mainEntity.address.streetAddress = HCAAPIConfig?.hQStreetAddress;
+      ret.mainEntity.telephone = HCAAPIConfig?.generalConsultantBookingNumber;
       ret.mainEntity.image = specialistProfileData.images?.logo ?? '';
       ret.mainEntity.medicalSpecialty.name = topSpecialty
         ? topSpecialty[0].name
@@ -896,7 +896,7 @@ export async function suggestLocation(
     if (isLegacy) {
       // convert params to path frags locationApi/suggestLocation/default/default/miles/default/
       locationsURL = `${locationsURL}/suggestLocation/${fields['provider']}/${fields['searchTerm']}/${fields['searchType']}`;
-      console.log('locationsURL', locationsURL);
+      //console.log('locationsURL', locationsURL);
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
       };
@@ -1119,7 +1119,7 @@ export async function submitBookingEnquiry(
         //console.log('retData', retData);
         returnData = JSON.parse(retData);
       } else {
-        //makeBookingEnquiry call failed
+        //submitBookingEnquiry call failed
         let errorDetails = '';
         try {
           errorDetails = await res.text();
@@ -1128,18 +1128,18 @@ export async function submitBookingEnquiry(
         returnData = `{"errorCode": ${res.status}, "errorText": "${
           res.statusText
         }", "errorDetail": "${JSON.stringify(errorDetails)}"}`;
-        console.error(`makeBookingEnquiry failed with error ${returnData}`);
+        console.error(`submitBookingEnquiry failed with error ${returnData}`);
         returnData = JSON.parse(returnData);
       }
     } catch (e) {
       //makeBookingEnquiry call threw
       const errorText =
         HCAAPIConfig?.aPI_HCA_EnquireBookingForm_ErrorSubmittingText ||
-        'An unexpected error occured posting makeBookingEnquiry, please retry';
+        'An unexpected error occured posting submitBookingEnquiry, please retry';
       returnData = `{"errorCode": 999, "errorText": "${errorText}"}`;
       returnData = JSON.parse(returnData);
       console.error(
-        `makeBookingEnquiry failed with exception ${e}, bodystr ${bodyStr}`
+        `submitBookingEnquiry failed with exception ${e}, bodystr ${bodyStr}`
       );
     }
   }

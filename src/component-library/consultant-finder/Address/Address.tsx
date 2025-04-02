@@ -11,7 +11,7 @@ const Address = (props: AddressProps): JSX.Element => {
   addressItems.push(props.street1, props.street2, props.city, props.postcode);
 
   addressItems.forEach((item) => {
-    if (item !== null && item !== '' && item.length > 0) {
+    if (item !== null && item !== '' && item?.length > 0) {
       address.push(capitalizeFirstLetter(item));
     }
   });

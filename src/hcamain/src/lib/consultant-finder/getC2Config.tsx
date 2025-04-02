@@ -4,6 +4,8 @@ import { revalidate } from './revalidateNow';
 
 //C2 APIs
 interface Ic2Config {
+  // are we using the new C# API?
+  aPI_C2_UsingCSharpAPI: boolean;
   //C2_FirstAppointment
   aPI_C2_FirstAppointment_BaseURL: string;
   aPI_C2_FirstAppointment_NoResultsMsg: string;
@@ -95,6 +97,7 @@ async function _getC2Config(): Promise<Ic2Config> {
   const C2APISettingsTemplateName = 'C2_API_Settings';
 
   let c2Config: Ic2Config = {
+    aPI_C2_UsingCSharpAPI: true,
     aPI_C2_FirstAppointment_BaseURL: '',
     aPI_C2_FirstAppointment_NoResultsMsg: '',
     aPI_C2_FirstAppointment_LoadingMsg: '',

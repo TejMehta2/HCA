@@ -5,6 +5,7 @@ import Text from '../../foundation/Text/Text';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
 import Themes from '../../foundation/Themes/Themes';
+import Image from 'next/image';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof VacancyHeader> = {
@@ -16,7 +17,7 @@ const meta: Meta<typeof VacancyHeader> = {
   },
   decorators: [
     (Story) => (
-      <Themes theme={'A-HCA-White'}>
+      <Themes theme={'B-HCA-Navy-Blue'}>
         <Story />
       </Themes>
     ),
@@ -28,7 +29,8 @@ export default meta;
 export const Default: StoryObj<typeof VacancyHeader> = {
   args: {
     title: <Text variation={'display-1'}>Staff Nurse - Imaging</Text>,
-    location: 'Lister Hospital – London',
+    location: 'Lister Hospital',
+    city: 'London',
     clinical: 'Clinical',
     timing: 'Full time',
     vacancyCode: '0041819',
@@ -41,6 +43,14 @@ export const Default: StoryObj<typeof VacancyHeader> = {
           <Icons iconName={'iconArrowRight'} />
         </a>
       </Button>
+    ),
+    image: (
+      <Image
+        src="/placeholders/doctor-looking-at-brain-scan.jpg"
+        alt="doctor scan check"
+        width="1024"
+        height="683"
+      />
     ),
   },
 };

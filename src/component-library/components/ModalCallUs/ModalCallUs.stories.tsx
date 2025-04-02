@@ -8,7 +8,7 @@ const meta: Meta<typeof ModalCallUs> = {
   component: ModalCallUs,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 };
 
@@ -105,5 +105,40 @@ export const SevenNumbers: StoryObj<typeof ModalCallUs> = {
   args: {
     defaultOpen: true,
     contacts: contacts.slice(0, 7),
+  },
+};
+
+export const EqualSizeNumbers: StoryObj<typeof ModalCallUs> = {
+  args: {
+    defaultOpen: true,
+    contacts: [
+      {
+        title: <span>london clinic</span>,
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
+        availability: (
+          <span>
+            Mon & Thu: 8am-8pm
+            <br />
+            Tue, Wed & Fri: 8am-6pm
+            <br />
+            Sat: 9am-4pm
+            <br />
+            Sun: 10am-2pm
+          </span>
+        ),
+      },
+      {
+        title: <span>Cheshire clinic</span>,
+        phone: { text: '020 3131 5978', number: '020 3131 5978' },
+        availability: (
+          <span>
+            Mon & Thu: 8am-8pm
+            <br />
+            Tue, Wed & Fri: 8am-6pm
+          </span>
+        ),
+      },
+    ],
+    contentVariation: 'EqualSizeNumbers',
   },
 };

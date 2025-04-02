@@ -47,6 +47,7 @@ export interface JobsResponse {
         employmentType: string;
         name: string;
         uid: number;
+        jobCity: string;
         jobLocation: string;
         landingPageUrl: null;
         applicationUrl: null;

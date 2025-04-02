@@ -25,10 +25,12 @@ const HeaderPlain = (props: HeaderPlainProps): JSX.Element => {
     children,
     contentVariation,
     subtitle,
+    image,
   } = props;
 
   return (
     <div className={styles.wrapper}>
+      {image && <div className={styles.image}>{image}</div>}
       <div
         className={`${styles.inner} ${
           contentVariation ? styles[contentVariation] : ''

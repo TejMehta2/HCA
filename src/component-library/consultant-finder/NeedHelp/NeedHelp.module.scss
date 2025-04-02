@@ -22,4 +22,10 @@
       margin-bottom: $spacing-1;
     }
   }
+
+  .working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+  }
 }

@@ -55,6 +55,7 @@
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$orange-60};
   --quote-tag-background-hover: #{$orange-80};
+  --table-color: #{$teal-5};
 
   @include apply-tag-orange-40;
   @include apply-tabs(#{$orange-60});
@@ -75,6 +76,7 @@
   --doctify-empty-star: #{$white};
   --quote-tag-background: #{$navy-blue-80};
   --quote-tag-background-hover: #{$navy-blue-60};
+  --table-color: #{$navy-blue-80};
 
   @include apply-tag-navy-blue-70;
   @include apply-tabs($navy-blue-80, $white);
@@ -96,6 +98,7 @@
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
   --text-date: #{$navy-blue-10};
+  --table-color: #{$denim-80};
 
   @include apply-tag-denim-40;
   @include apply-tabs($denim-40, $white, $navy-blue-100);
@@ -117,6 +120,8 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$teal-10};
   --quote-tag-background-hover: #{$teal-20};
+  --table-color: #{$teal-40};
+
   @include apply-tag-teal-20;
   @include apply-tabs($teal-10);
   @include apply-pagination-teal-10;
@@ -137,6 +142,7 @@
   --cqc-outline: #{$navy-blue-30};
   --quote-tag-background: #{$denim-5};
   --quote-tag-background-hover: #{$denim-20};
+  --table-color: #{$denim-10};
 
   @include apply-tag-denim-20;
   @include apply-tabs($denim-5);
@@ -157,6 +163,8 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$fern-20};
   --quote-tag-background-hover: #{$fern-40};
+  --table-color: #{$fern-60};
+
   @include apply-tag-fern-60;
   @include apply-tabs($fern-20);
   @include apply-pagination-fern-20;
@@ -176,6 +184,7 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$orange-40};
   --quote-tag-background-hover: #{$orange-20};
+  --table-color: #{$orange-60};
 
   @include apply-tag-orange-60;
   @include apply-tabs($orange-20);
@@ -196,6 +205,7 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$tangerine-30};
   --quote-tag-background-hover: #{$goldenrod-100};
+  --table-color: #{$tangerine-70};
 
   @include apply-tag-tangerine-70;
   @include apply-tabs($tangerine-30);
@@ -216,6 +226,7 @@
   --doctify-full-star: #{$orange-150};
   --quote-tag-background: #{$goldenrod-20};
   --quote-tag-background-hover: #{$goldenrod-60};
+  --table-color: #{$goldenrod-60};
 
   @include apply-tag-goldenrod;
   @include apply-tabs($goldenrod-20);
@@ -236,6 +247,7 @@
   --doctify-full-star: #{$orange-150};
   --quote-tag-background: #{$orange-100};
   --quote-tag-background-hover: #{$orange-60};
+  --table-color: #{$white};
 
   @include apply-tag-orange-40;
   @include apply-tabs($orange-100);
@@ -256,6 +268,7 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$fern-60};
   --quote-tag-background-hover: #{$fern-100};
+  --table-color: #{$fern-10};
 
   @include apply-tag-fern-20;
   @include apply-tabs($fern-60);
@@ -276,6 +289,7 @@
   --doctify-full-star: #{$teal-120};
   --quote-tag-background: #{$teal-40};
   --quote-tag-background-hover: #{$teal-80};
+  --table-color: #{$white};
 
   @include apply-tag-teal-10;
   @include apply-tabs($teal-40);
@@ -296,6 +310,7 @@
   --doctify-full-star: #{$orange-150};
   --quote-tag-background: #{$tangerine-100};
   --quote-tag-background-hover: #{$orange-100};
+  --table-color: #{$white};
 
   @include apply-tag-goldenrod;
   @include apply-tabs($tangerine-100);
@@ -316,6 +331,7 @@
   --doctify-full-star: #{$navy-blue-100};
   --quote-tag-background: #{$denim-40};
   --quote-tag-background-hover: #{$denim-50};
+  --table-color: #{$white};
 
   @include apply-tag-denim-10;
   @include apply-tabs($denim-40);
@@ -336,6 +352,7 @@
   --doctify-full-star: #{$teal-140};
   --quote-tag-background: #{$teal-80};
   --quote-tag-background-hover: #{$teal-120};
+  --table-color: #{$teal-10};
 
   @include apply-tag-teal-20;
   @include apply-tabs($teal-100);

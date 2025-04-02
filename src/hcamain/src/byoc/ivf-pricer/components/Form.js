@@ -45,12 +45,16 @@ const Form = () => {
     setProtocolNotes,
     setCycleNotes,
     setCycleTypeAdditionalDrugNotes,
+    setCycleTypeAdditionalDrugNotes2,
     setBlastocystCultureNotes,
     setAdjuvantsNotes,
     setSelectedDrugNotes,
+    setSelectedDrugNotes2,
     setSelectedDrugValue,
     setSelectedDrugValue2,
     setCycleCost,
+    setDrug1Cost,
+    setDrug2Cost,
     setAdjuvantsValuesPrint,
     calculatorHeading,
     cycleTypeLabel,
@@ -148,7 +152,10 @@ const Form = () => {
       setIsStimulationDrug2(false);
       setIsStartingDrug(false);
       setIsStartingDrug2(false);
-    } else if (e.target.value === 'EmbryoThaw') {
+    } else if (
+      e.target.value === 'EmbryoThaw' ||
+      e.target.value === 'EggDonation'
+    ) {
       // show
       setIsProtocolType(true);
       setIsAdjuvants(true);
@@ -157,9 +164,16 @@ const Form = () => {
       setIsStimulationDrug2(false);
       setIsStartingDrug(false);
       setIsStartingDrug2(false);
+      if (e.target.value === 'EggDonation') {
+        // HED-1670 include 1a the £999 supplementary embryology services fee
+        // show/set advanced
+        setBlastocystCulture('Yes');
+      } else {
+        // HED-1660 - don't charge for this
+        setBlastocystCulture('No');
+      }
+      // hide
       setIsBlastocyst(false);
-      // HED-1660 - don't charge for this
-      setBlastocystCulture('No');
     } else {
       showAllFields();
     }
@@ -188,7 +202,10 @@ const Form = () => {
       } else {
         setIsDisabled(true);
       }
-    } else if (cycleTypeVal === 'EmbryoThaw') {
+    } else if (
+      cycleTypeVal === 'EmbryoThaw' ||
+      cycleTypeVal === 'EggDonation'
+    ) {
       if (e.target.value.length > 0) {
         setIsDisabled(false);
       } else {
@@ -455,14 +472,16 @@ const Form = () => {
           costData['CyclePrice'][
             stimulationDrug2 + protocolType + startingDose2
           ].Value;
-        console.log('cycle price 2', cyclePrice2);
-        console.log('selected drug value 2', selectedDrugValue2);
+        //console.log('cycle price 2', cyclePrice2);
+        //console.log('selected drug value 2', selectedDrugValue2);
       } catch (e) {
         setError('cycle price not in lookup table!');
         // console.log("cycle price not in lookup table!");
       }
     }
-    setCycleCost(cyclePrice + cyclePrice2 + additionalProtocolDrugCost);
+    setDrug1Cost(cyclePrice + additionalProtocolDrugCost);
+    setDrug2Cost(cyclePrice2);
+    setCycleCost(cyclePrice + additionalProtocolDrugCost + cyclePrice2);
     setSelectedDrugValue(selectedDrugValue);
     setSelectedDrugValue2(selectedDrugValue2);
 
@@ -499,6 +518,18 @@ const Form = () => {
     //console.log('cycle Type Additional Drug Notes -->', cycleTypeAdditionalDrugNotes);
     setCycleTypeAdditionalDrugNotes(cycleTypeAdditionalDrugNotes);
 
+    // cycle type additional drug notes
+    let cycleTypeAdditionalDrugNotes2 = '';
+    if (cycleTypeVal.length > 0) {
+      cycleTypeAdditionalDrugNotes2 =
+        costData['CycleType'][cycleTypeVal].AdditionalDrugNotes;
+      if (cycleTypeAdditionalDrugNotes === null) {
+        cycleTypeAdditionalDrugNotes2 = '';
+      }
+    }
+    //console.log('cycle Type Additional Drug Notes 2 -->', cycleTypeAdditionalDrugNotes2);
+    setCycleTypeAdditionalDrugNotes2(cycleTypeAdditionalDrugNotes2);
+
     // protocol notes
     let protocolNotesCalc = '';
     if (protocolType.length > 0) {
@@ -522,6 +553,18 @@ const Form = () => {
     }
     // console.log('selected drugs notes -->', drugNotes);
     setSelectedDrugNotes(drugNotes);
+
+    // drug notes 2
+    var drugNotes2 = '';
+    if (startingDose2.length > 0) {
+      if (drugNotes2 === null) {
+        drugNotes2 = '';
+      } else {
+        drugNotes2 = costData['StartingDose'][startingDose2].Notes;
+      }
+    }
+    //console.log('selected drugs notes 2 -->', drugNotes2);
+    setSelectedDrugNotes2(drugNotes2);
 
     // blastocyst culture notes
     let blastocystCultureNotes = '';
@@ -587,7 +630,8 @@ const Form = () => {
                       <option value="">Please select</option>
                       {/* If EggThaw or EmbryoThaw are selected, hide first 2 options from protocol */}
                       {(cycleTypeVal === 'EggThaw' ||
-                        cycleTypeVal === 'EmbryoThaw') &&
+                        cycleTypeVal === 'EmbryoThaw' ||
+                        cycleTypeVal === 'EggDonation') &&
                         Object.keys(costData.ProtocolType)
                           .filter(
                             (item) => item !== 'Long' && item !== 'Antagonist'
@@ -602,6 +646,7 @@ const Form = () => {
                       {/* If IVF, ICSI or IMSI are selected, hide Thaw options from protocol */}
                       {cycleTypeVal !== 'EggThaw' &&
                         cycleTypeVal !== 'EmbryoThaw' &&
+                        cycleTypeVal !== 'EggDonation' &&
                         Object.keys(costData.ProtocolType)
                           .filter(
                             (item) =>

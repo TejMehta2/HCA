@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as AppointmentSummaryStories from './AppointmentSummary.stories';
+
+<Meta of={AppointmentSummaryStories} />
+
+# AppointmentSummary
+
+## Description
+
+The AppointmentSummary component displays details of the selected appointment, such as location, price, date & time
+
+It is intended to be used in the birth company booking flow
+
+It can be composed like this:
+
+```tsx
+<AppointmentSummary
+  title={'Appointment summary'}
+  locationTitle={'Location'}
+  location={'London'}
+  appointmentTitle={'Appointment'}
+  appointment={`With Sonographer`}
+  dateTitle={'Date & time'}
+  date={`Friday 04 Nov at 10:30am (30 min)`}
+  priceTitle={`Price to pay`}
+  price={`£340`}
+/>
+```
+
+## Example
+
+<Canvas of={AppointmentSummaryStories.Default} />
+<Controls of={AppointmentSummaryStories.Default} />

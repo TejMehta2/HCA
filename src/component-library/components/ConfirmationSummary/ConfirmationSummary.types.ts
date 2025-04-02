@@ -18,4 +18,5 @@ export interface ConfirmationSummaryProps {
   facilityTitle?: string | JSX.Element;
   facilityName?: string | JSX.Element;
   optionalItems?: item[];
+  noSpacing?: boolean;
 }

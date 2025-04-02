@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as StatsCardsStories from './StatsCards.stories';
+
+<Meta of={StatsCardsStories} />
+
+# StatsCards
+
+## Description
+
+The StatsCards component displays a header, body copy, and 3-6 different stats. This all animate by incrementing up to the specified number
+
+It is intended to be used on the careers homepage.
+
+This component will can show between 3-6 stats cards
+
+It can be composed like this:
+
+```tsx
+<StatsCards
+  theme={'K-HCA-Fern-20'}
+  header={
+    <Text tag="h2" variation="display-2">
+      Let our numbers speak for themselves.
+    </Text>
+  }
+  bodyCopy={
+    <Text tag="p" variation="body-large">
+      Life with us means taking pride in your team and delivering the highest
+      quality care. We&apos;ll support your ongoing learning in an environment
+      that features advanced equipment and practices, one of the best
+      colleague-to-patient ratios in the UK and varied, interesting work. As
+      part of HCA US, one of the nation&apos;s leading providers of healthcare
+      services, we can also promise that you&apos;ll learn from experts in every
+      department and that your opportunities will be endless. With us,
+      you&apos;ll be empowered to achieve more in your career, and more for our
+      patients.
+    </Text>
+  }
+  stats={[
+    { stat: '26', text: 'operating theatres' },
+    { stat: '125', text: 'critical care (ITU) beds' },
+    { stat: '888', text: 'registered beds' },
+    { stat: '26k', text: 'inpatients' },
+    { stat: '64k', text: 'day cases' },
+  ]}
+/>
+```
+
+## Example
+
+<Canvas of={StatsCardsStories.FiveCards} />
+<Controls of={StatsCardsStories.FiveCards} />

@@ -1,5 +1,5 @@
 export interface TextFieldProps {
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'date';
   label?: string;
   helpText?: string;
   error?: string;

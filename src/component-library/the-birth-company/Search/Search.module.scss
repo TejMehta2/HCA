@@ -1,0 +1,43 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.search {
+  width: 100%;
+  margin-bottom: $spacing-5;
+
+  &-searchbar {
+    position: relative;
+  }
+
+  &-icon {
+    position: absolute;
+    left: $spacing-6;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+  }
+
+  input {
+    appearance: none;
+    border: 1px solid $navy-blue-100;
+    border-radius: $radius-large;
+    width: 100%;
+    padding: $spacing-4 $spacing-9;
+    color: $navy-blue-100;
+    background-color: $white;
+    min-height: px-to-rem(64);
+    @include apply-body-medium-large;
+
+    @include media(screen-l) {
+      padding-block: $spacing-5;
+    }
+  }
+
+  &-close-btn {
+    position: absolute;
+    right: $spacing-6;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+  }
+}
