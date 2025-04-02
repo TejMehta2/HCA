@@ -20,6 +20,20 @@
   --text: #{$navy-blue-100};
 }
 
+@mixin apply-palace-light-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$navy-blue-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-palace-dark-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+}
+
 .light {
   @include apply-light-mode;
 }
@@ -30,6 +44,14 @@
 
 .medium {
   @include apply-medium-mode;
+}
+
+.palace-light {
+  @include apply-palace-light-mode;
+}
+
+.palace-dark {
+  @include apply-palace-dark-mode;
 }
 
 .switch {

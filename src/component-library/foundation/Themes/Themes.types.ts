@@ -15,7 +15,10 @@ export type Theme =
   | 'L-HCA-Teal-5'
   | 'M-HCA-Goldenrod-20'
   | 'N-HCA-Denim-5'
-  | 'O-HCA-Teal-20';
+  | 'O-HCA-Teal-20'
+  | 'Palace-White'
+  | 'Palace-Navy-Blue'
+  | 'Palace-Beige';
 export interface ThemesProps {
   children?: ReactNode | JSX.Element;
   tag?: keyof JSX.IntrinsicElements;
