@@ -1,0 +1,37 @@
+﻿---
+ID: "d1b486df-de28-4613-8dee-1ec645f8cb07"
+Parent: "b21f03de-44f4-453c-8643-86671bad7e90"
+Template: "b21f03de-44f4-453c-8643-86671bad7e90"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Bookings/TBC Medical Areas Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {457B750F-CCAC-4BD7-8D34-F54F740446EE}
+    {B21F03DE-44F4-453C-8643-86671BAD7E90}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250312T184116Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "32a4e740-f7fa-4a92-b01a-90a13150e2d9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250401T223214Z
