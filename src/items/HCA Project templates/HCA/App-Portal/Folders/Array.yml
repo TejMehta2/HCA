@@ -1,18 +1,21 @@
 ﻿---
-ID: "163c4421-c273-42b9-9542-a5eb14fc05a2"
+ID: "85296eba-2e1f-4652-b614-8692f88ab36b"
 Parent: "94360e21-695d-4c4b-b8b8-dd1a5b898596"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: "/sitecore/templates/Project/HCA/App-Portal/Folders/App"
+Path: "/sitecore/templates/Project/HCA/App-Portal/Folders/Array"
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: applications/32x32/text_rich_colored.png
+  Value: Applications/32x32/folders.png
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{E269FBB5-3750-427A-9149-7AA950B49301}"
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Value: "{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{C6126A3E-7BF7-4310-A13C-F058E2287094}"
+  Value: "{2A98FCE8-94B1-4DF7-B137-7BB3EB65F875}"
 Languages:
 - Language: en
   Versions:
@@ -31,11 +34,11 @@ Languages:
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "60654fb4-dd93-4d62-bfe1-6d5f6da5462c"
+      Value: "390be258-6e30-44ed-96bd-3b44b359b096"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\matthew.hopkins@hcahealthcare.co.uk
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250403T124121Z
+      Value: 20250403T123940Z
