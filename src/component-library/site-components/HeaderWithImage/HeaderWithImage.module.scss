@@ -67,11 +67,12 @@
 
 .image-no-mask {
   display: none;
+
   @include media(screen-l) {
     display: block;
   }
+
   position: absolute;
-  top: 0;
   right: 0;
   width: 50%;
   height: 100%;
@@ -79,13 +80,13 @@
   min-width: px-to-rem(560);
   top: 50%;
   transform: translate(0, calc(-50% - #{px-to-rem(1)}));
+  max-height: 100vh;
 
   @include media(screen-xl) {
     min-height: px-to-rem(680);
     min-width: px-to-rem(680);
   }
 
-  max-height: 100vh;
   img {
     width: 155%;
     height: 100%;
