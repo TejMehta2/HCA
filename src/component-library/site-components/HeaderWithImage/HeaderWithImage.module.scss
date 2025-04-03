@@ -87,14 +87,10 @@
 
   max-height: 100vh;
   img {
-    width: 170%;
+    width: 155%;
     height: 100%;
     object-position: center left;
     object-fit: cover;
-
-    @include media(screen-xl) {
-      width: 150%;
-    }
   }
 }
 
