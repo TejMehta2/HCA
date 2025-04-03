@@ -65,6 +65,39 @@
   max-height: 100vh;
 }
 
+.image-no-mask {
+  display: none;
+  @include media(screen-l) {
+    display: block;
+  }
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  min-height: px-to-rem(560);
+  min-width: px-to-rem(560);
+  top: 50%;
+  transform: translate(0, calc(-50% - #{px-to-rem(1)}));
+
+  @include media(screen-xl) {
+    min-height: px-to-rem(680);
+    min-width: px-to-rem(680);
+  }
+
+  max-height: 100vh;
+  img {
+    width: 170%;
+    height: 100%;
+    object-position: center left;
+    object-fit: cover;
+
+    @include media(screen-xl) {
+      width: 150%;
+    }
+  }
+}
+
 .subtitle {
   &:nth-child(1) {
     margin-bottom: $spacing-3;

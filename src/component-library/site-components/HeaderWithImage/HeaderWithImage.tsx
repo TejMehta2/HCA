@@ -28,6 +28,7 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
     subtitle,
     subtitlePlacement = 'after',
     ratings,
+    noMask = false,
   } = props;
   return (
     <Themes theme={theme}>
@@ -44,7 +45,9 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
             <div className={styles.copy}>{copy}</div>
             <div className={styles.ctas}>{ctas}</div>
           </div>
-          <div className={styles.image}>{image}</div>
+          <div className={noMask ? styles['image-no-mask'] : styles.image}>
+            {image}
+          </div>
           {ratings && <div className={styles.ratings}>{ratings}</div>}
         </div>
       </div>
