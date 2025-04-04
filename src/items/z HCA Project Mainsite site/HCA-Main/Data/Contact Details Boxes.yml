@@ -1,0 +1,23 @@
+﻿---
+ID: "9461f679-0e85-4dec-ac5d-9e55c3e52618"
+Parent: "2e7e6c1f-6427-46a4-bf43-a131fb610b5c"
+Template: "e2d7fbb3-a168-47be-a3d3-2dd80498b212"
+Path: "/sitecore/content/HCA/HCA-Main/Data/Contact Details Boxes"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250404T140137Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e250e085-6d94-4a3c-bf05-ebe850398df4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250404T140137Z

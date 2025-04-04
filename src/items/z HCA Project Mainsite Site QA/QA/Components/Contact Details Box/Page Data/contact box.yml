@@ -1,0 +1,29 @@
+﻿---
+ID: "b1fd74dd-bf26-4afb-9b1c-37359280d233"
+Parent: "e7ad2275-80c5-472f-b75e-ed7876369773"
+Template: "30adc0b1-6e75-4bfe-b181-59453c3a9902"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Contact Details Box/Page Data/contact box"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "045ea0a2-1f99-4e27-9586-5771f0e1db36"
+      Hint: Title
+      Value: "Need more help?"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250404T123711Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d8c8882b-334e-4d52-affe-14cb994980f8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250404T123805Z
+    - ID: "fb1498c5-5209-4c96-91d6-5fb3d855d19e"
+      Hint: ContactUnit
+      Value: "{C7F6CFFB-E283-41A8-A66C-0630FF822617}"
