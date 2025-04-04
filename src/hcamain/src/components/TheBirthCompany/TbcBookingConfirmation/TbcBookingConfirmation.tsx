@@ -135,23 +135,27 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   const options = [
     {
-      title: 'Scan',
+      title: props.fields?.ServiceNameLabel?.value || 'Scan',
       text: props.serviceName,
     },
     {
-      title: 'Date',
+      title: props.fields?.DateLabel?.value || 'Date',
       text: formattedDate,
     },
     {
-      title: 'Time',
+      title: props.fields?.TimeLabel?.value || 'Time',
       text: formattedTime.toLowerCase().replace(/\s/g, ''),
     },
     {
-      title: 'Type',
+      title: props.fields?.DurationLabel?.value || 'Duration',
+      text: `${props.duration} minutes`,
+    },
+    {
+      title: props.fields?.TypeLabel?.value || 'Type',
       text: props.type,
     },
     {
-      title: 'Location',
+      title: props.fields?.LocationLabel?.value || 'Location',
       text: props.location,
     },
   ];
