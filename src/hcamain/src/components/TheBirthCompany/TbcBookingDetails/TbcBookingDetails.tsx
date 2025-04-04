@@ -615,7 +615,13 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                       ).datasource.targetItem.children.results.map((option) => (
                         <Checkbox
                           key={option.name}
-                          label={option.value.value}
+                          label={
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: option.value.value,
+                              }}
+                            ></span>
+                          }
                           name={`${
                             getField<ListTemplate>('communicationMode').name
                           }`}
