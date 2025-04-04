@@ -57,6 +57,10 @@ import Accreditations from '../../careers/Accreditations/Accreditations';
 import { AccreditationsProps } from '../../careers/Accreditations/Accreditations.types';
 import { Default as AccreditationsStory } from '../../careers/Accreditations/Accreditations.stories';
 
+import CardBlockCarousel from '../../careers/CardBlockCarousel/CardBlockCarousel';
+import { CardBlockCarouselProps } from '../../careers/CardBlockCarousel/CardBlockCarousel.types';
+import { Default as CardBlockCarouselStory } from '../../careers/CardBlockCarousel/CardBlockCarousel.stories';
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
   title: 'components/ScrollTransition',
@@ -822,6 +826,9 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         />
         <StatsCards {...(StatsCardsStory.args as StatsCardsProps)} />
         <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
+        <CardBlockCarousel
+          {...(CardBlockCarouselStory.args as CardBlockCarouselProps)}
+        />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
