@@ -25,7 +25,9 @@ import Checkbox from '@component-library/core-components/form/basic/Checkbox/Che
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import MarketingPreferences from '@component-library/site-components/MarketingPreferences/MarketingPreferences';
 import {
+  ComponentRendering,
   RichText as JssRichText,
+  Placeholder,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
@@ -35,9 +37,14 @@ import axios from 'axios';
 import DynamicSelectField from '../../PaymentForm/helpers/DynamicSelectField';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import AppointmentSummary from '@component-library/the-birth-company/AppointmentSummary/AppointmentSummary';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+
+export interface TbcBookingDetailsProps extends PaymentFormProps {
+  params: { [key: string]: string };
+  rendering?: ComponentRendering;
+}
 
 interface AppointmentDetailFields {
   location: string;
@@ -53,8 +60,9 @@ interface AppointmentDetailFields {
   formVariant: string;
 }
 
-export const Default = (props: PaymentFormProps): JSX.Element => {
+export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
   const siteName = context?.site?.name;
   const itemPath = context?.itemPath;
 
@@ -332,14 +340,12 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                     price={appointmentDetails.price}
                   />
                 ) : undefined}
-                <NeedHelp
-                  headline={'Need help?'}
-                  subheadline={'General enquiries'}
-                  phoneNumber={'020 3797 7236'}
-                  workingHoursHeadline={'Opening hours'}
-                  workingHours={'Mon - Fri'}
-                  workingHoursTime={'8am - 6pm'}
-                />
+
+                {props.rendering && (
+                  <PlaceHolderWrapper>
+                    <Placeholder name={phKey} rendering={props.rendering} />
+                  </PlaceHolderWrapper>
+                )}
               </>
             </CFAside>
           }

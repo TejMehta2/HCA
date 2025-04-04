@@ -6,6 +6,7 @@ import {
   useSitecoreContext,
   useComponentProps,
   GetServerSideComponentProps,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
@@ -19,8 +20,8 @@ import {
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -48,6 +49,7 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
 
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
@@ -192,32 +194,11 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
         }
         aside={
           <CFAside>
-            <NeedHelp
-              headline={
-                //props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
-                'Need help?'
-              }
-              subheadline={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
-                'General enquiries'
-              }
-              workingHoursHeadline={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel?.value ||
-                'Opening hours'
-              }
-              workingHours={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursDays?.value ||
-                'Mon – Fri'
-              }
-              workingHoursTime={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursTime?.value ||
-                '8am – 6pm'
-              }
-              phoneNumber={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
-                '020 3797 7236'
-              }
-            />
+            {props.rendering && (
+              <PlaceHolderWrapper>
+                <Placeholder name={phKey} rendering={props.rendering} />
+              </PlaceHolderWrapper>
+            )}
           </CFAside>
         }
       >
