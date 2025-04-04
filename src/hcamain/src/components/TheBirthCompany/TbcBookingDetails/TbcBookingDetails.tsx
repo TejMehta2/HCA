@@ -49,7 +49,7 @@ interface AppointmentDetailFields {
   slotId: string;
   serviceVariantId: string;
   extrasIds: string;
-  medicalArea: string;
+  formVariant: string;
 }
 
 export const Default = (props: PaymentFormProps): JSX.Element => {
@@ -330,8 +330,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           }
         >
           {loading && <LoaderCF />}
-          {/* {!loading && !error && appointmentDetails?.medicalArea ? ( */}
-          {!loading && !error && appointmentDetails ? (
+          {!loading && !error && appointmentDetails?.formVariant ? (
             <>
               <div>
                 <Text variation={'heading-1'}>
@@ -348,7 +347,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   type="date"
                 />
 
-                {appointmentDetails?.medicalArea === 'pregnancy' && (
+                {appointmentDetails?.formVariant === 'pregnancy' && (
                   <DynamicTextField
                     getField={getField}
                     formErrors={formErrors}
@@ -362,7 +361,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   name="hadAnUltrasoundScan"
                 />
 
-                {appointmentDetails?.medicalArea === 'pregnancy' && (
+                {appointmentDetails?.formVariant === 'pregnancy' && (
                   <DynamicSelectField
                     getField={getField}
                     formErrors={formErrors}
