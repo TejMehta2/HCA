@@ -16,6 +16,7 @@ import {
   SectionTemplate,
   SectionTitleTemplate,
   TextTemplate,
+  Validator,
 } from '../../PaymentForm/PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
@@ -250,6 +251,23 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
 
   const getField = <T,>(name: string) => {
     return fields.find((field) => field.name === name) as T;
+  };
+
+  const getTargetItemMessage = (targetItems: Validator[], name: string) => {
+    const targetItem = targetItems.filter(
+      (item) => item.parameters?.value === name
+    );
+    return targetItem[0].message.value;
+  };
+
+  const getTargetItemRequired = (targetItems: Validator[], name: string) => {
+    if (!targetItems.length) {
+      return false;
+    }
+    const targetItem = targetItems.find(
+      (item) => item.parameters?.value === name
+    );
+    return targetItem?.type?.value === 'required';
   };
 
   return (
@@ -627,7 +645,16 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                           }`}
                           value={option.name}
                           id={option.name}
-                          required={false}
+                          required={getTargetItemRequired(
+                            getField<ListTemplate>('communicationMode')
+                              .validators.targetItems,
+                            option.name
+                          )}
+                          errorMessage={getTargetItemMessage(
+                            getField<ListTemplate>('communicationMode')
+                              .validators.targetItems,
+                            option.name
+                          )}
                         />
                       )),
                     ]}
