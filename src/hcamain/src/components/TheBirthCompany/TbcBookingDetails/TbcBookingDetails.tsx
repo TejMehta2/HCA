@@ -252,9 +252,6 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return fields.find((field) => field.name === name) as T;
   };
 
-  //console.log(props);
-  console.log(props.fields.data.item.pages.results[0].children.results);
-
   return (
     <Themes theme="A-HCA-White">
       <form
