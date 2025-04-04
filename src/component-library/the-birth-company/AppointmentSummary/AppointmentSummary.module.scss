@@ -22,3 +22,11 @@
     margin-bottom: $spacing-1;
   }
 }
+
+.mobile {
+  width: 100%;
+
+  @include media(screen-l) {
+    display: none;
+  }
+}

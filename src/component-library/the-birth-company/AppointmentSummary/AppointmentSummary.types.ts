@@ -12,4 +12,5 @@ export interface AppointmentSummaryProps {
   date?: ReactNode | JSX.Element;
   priceTitle?: ReactNode | JSX.Element;
   price?: ReactNode | JSX.Element;
+  isMobile?: boolean;
 }
