@@ -6,6 +6,7 @@ import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/Op
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   data?: {
@@ -77,7 +78,7 @@ export const Default = (props: ContactDetailsBoxProps): JSX.Element => {
   const contact = contacts[0];
 
   return (
-    <>
+    <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <NeedHelp
         headline={
           props.fields?.data?.item?.title?.jsonValue?.value || 'Need help?'
@@ -88,6 +89,6 @@ export const Default = (props: ContactDetailsBoxProps): JSX.Element => {
         phoneNumber={contact.phone?.text || ''}
         workingHoursTime={''}
       />
-    </>
+    </Themes>
   );
 };

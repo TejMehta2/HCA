@@ -19,7 +19,6 @@ import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
-import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   data?: {
