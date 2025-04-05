@@ -6,10 +6,6 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
-import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcrumbs';
-import TextLink from '@component-library/core-components/TextLink/TextLink';
-import Icons from '@component-library/foundation/Icons/Icons';
-import Link from 'next/link';
 import {
   useSitecoreContext,
   RichText as JssRichText,
@@ -17,7 +13,6 @@ import {
   Field,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import { isEditorActive } from '@sitecore-jss/sitecore-jss-nextjs/utils';
 
 interface Fields {
   data?: {
