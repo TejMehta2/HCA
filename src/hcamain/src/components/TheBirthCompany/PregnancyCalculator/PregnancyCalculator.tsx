@@ -83,35 +83,35 @@ export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
   let endOfFirstTrimester: Date | null = null;
   let endOfSecondTrimester: Date | null = null;
   let gestationalAgeWeeks: number | null = null;
+  let daysSinceLmp: number | null = null;
+  let infoMessage: string | null = null;
 
   if (lmp) {
     lmpDate = new Date(lmp);
-
-    // Estimated Due Date using Naegele’s Rule: LMP + 280 days (40 weeks)
-    estimatedDueDate = addDays(lmpDate, 280);
-
-    // Approximate Conception Date: LMP + 14 days
-    conceptionDate = addDays(lmpDate, 14);
-
-    // Reliable Positive Pregnancy Test: around 5 weeks from LMP (LMP + 35 days)
-    pregnancyTestDate = addDays(lmpDate, 35);
-
-    // Fetal Heartbeat Detection Date: around 7 weeks from LMP (can vary with ultrasound method)
-    fetalHeartbeatDate = addDays(lmpDate, 7 * 7); // 49 days
-
-    // First Fetal Movement (Quickening): typically around 18 weeks from LMP
-    firstMovementDate = addDays(lmpDate, 18 * 7); // 126 days
-
-    // End of First Trimester: around 12 weeks from LMP
-    endOfFirstTrimester = addDays(lmpDate, 12 * 7);
-
-    // End of Second Trimester: around 27 weeks from LMP
-    endOfSecondTrimester = addDays(lmpDate, 27 * 7);
-
-    // Calculate gestational age based on current date
     const currentDate = new Date();
     const diffTime = currentDate.getTime() - lmpDate.getTime();
-    gestationalAgeWeeks = Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000));
+    daysSinceLmp = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    // Check if LMP is in the future.
+    if (daysSinceLmp < 0) {
+      infoMessage =
+        'Your LMP date is from the future. Please enter a date from the past (at least 35 days ago).';
+    } else if (daysSinceLmp < 35) {
+      const daysLeft = 35 - daysSinceLmp;
+      infoMessage = `It's too early to say you're pregnant. Please wait another ${daysLeft} day${
+        daysLeft === 1 ? '' : 's'
+      } for a reliable calculation.`;
+    } else {
+      // Calculate milestones based on the assumption of a 28-day cycle.
+      estimatedDueDate = addDays(lmpDate, 280); // LMP + 280 days (40 weeks)
+      conceptionDate = addDays(lmpDate, 14); // Approximately 14 days after LMP
+      pregnancyTestDate = addDays(lmpDate, 35); // About 35 days after LMP
+      fetalHeartbeatDate = addDays(lmpDate, 49); // Around 7 weeks (49 days)
+      firstMovementDate = addDays(lmpDate, 126); // Approximately 18 weeks (126 days)
+      endOfFirstTrimester = addDays(lmpDate, 84); // Around 12 weeks (84 days)
+      endOfSecondTrimester = addDays(lmpDate, 189); // Around 27 weeks (189 days)
+      gestationalAgeWeeks = Math.floor(daysSinceLmp / 7);
+    }
   }
 
   const updateResults = () => {
@@ -164,7 +164,7 @@ export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
             name={'lmp'}
             type={'date'}
             required={true}
-            errorMessage={'Please enter a date'}
+            errorMessage={'Please provide your LMP date.'}
           />
           <Button variation="full-dark" size="large">
             <button onClick={updateResults}>
@@ -179,7 +179,12 @@ export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
             </button>
           </Button>
 
-          {lmp && lmpDate && (
+          {lmp && infoMessage && (
+            <Text tag="p" variation="body-large">
+              {infoMessage}
+            </Text>
+          )}
+          {lmp && lmpDate && !infoMessage && (
             <div>
               <Text tag="p" variation="body-large">
                 Your last menstrual period started on{' '}
