@@ -1,8 +1,8 @@
 ﻿---
-ID: "423ce193-2f8c-4977-98d6-247cd266fbf3"
+ID: "4e0a7dbc-2537-4bbd-bb86-e250ac7b7697"
 Parent: "7e06b7ed-4382-45fc-8812-0d34c42dd18e"
 Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA1_2/Page Data/Content Cards WithoutImage"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA1_2/Page Data/Content Cards No CTA text"
 Languages:
 - Language: en
   Versions:
@@ -24,27 +24,24 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
       Hint: Title
-      Value: Without Images Variant
+      Value: No CTA Text
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "fc7df881-9232-4f95-b149-46a16eb94514"
-    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
-      Hint: CTALink
-      Value: |
-        <link class="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" querystring="" anchor="" target="" title="" linktype="internal" text="View all &lt;b&gt;key service line&lt;/b&gt;" url="/HCA/HCA-Main/Home/QA/Home" />
+      Value: "e5eca6de-6078-4531-bd25-b693b843d6c8"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
       Hint: CTACardText
-      Value: View more
+      Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250405T173245Z
+      Value: 20250405T172422Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
+        {53AC4E52-C5A8-456A-8D51-F64EF9694755}
         {0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}
         {83A3005A-C95D-4D62-83CD-C3547A06D0D7}
         {32517ADB-FA33-49DB-BC56-47ACB44D5E12}
