@@ -4,6 +4,8 @@ import {
   Text as JssText,
   ImageField,
   RichText,
+  ComponentRendering,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
@@ -16,6 +18,8 @@ import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/Op
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Themes from '@component-library/foundation/Themes/Themes';
 
 interface Fields {
   data?: {
@@ -34,6 +38,7 @@ interface Fields {
 type TalkToUsProps = {
   params?: Params;
   fields?: Fields;
+  rendering?: ComponentRendering;
 };
 
 interface TalkToUsLeftProps extends TalkToUsProps {
@@ -50,6 +55,7 @@ const TalkToUsDefaultComponent = (props: TalkToUsProps): JSX.Element => (
 
 export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
   const { imageAlignment = 'left' } = props;
+  const phKey = `image-short-text-${props.params?.DynamicPlaceholderId}`;
 
   if (!props.fields) {
     return <TalkToUsDefaultComponent {...props} />;
@@ -132,6 +138,13 @@ export const ImageLeft = (props: TalkToUsLeftProps): JSX.Element => {
             sizes: '(max-width: 768px) 100vw, 50vw',
           }}
         />
+      }
+      ctas={
+        props.rendering && (
+          <PlaceHolderWrapper>
+            <Placeholder name={phKey} rendering={props.rendering} />
+          </PlaceHolderWrapper>
+        )
       }
     >
       <Text tag="div" variation="body-large">
