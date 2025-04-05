@@ -10,6 +10,31 @@ import Breadcrumbs from '@component-library/site-components/Breadcrumbs/Breadcru
 import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Link from 'next/link';
+import {
+  useSitecoreContext,
+  RichText as JssRichText,
+  Text as JssText,
+  Field,
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import Params from 'src/types/params';
+import { isEditorActive } from '@sitecore-jss/sitecore-jss-nextjs/utils';
+
+interface Fields {
+  data?: {
+    item?: {
+      heading?: { jsonValue?: Field<string> };
+      title?: { jsonValue?: Field<string> };
+      text?: { jsonValue?: Field<string> };
+      cTAText?: { jsonValue?: Field<string> };
+      lastMenstrualPeriodFieldLabel?: { jsonValue?: Field<string> };
+    };
+  };
+}
+
+type PregnancyCalculatorProps = {
+  params?: Params;
+  fields?: Fields;
+};
 
 function addDays(date: Date, days: number): Date {
   const result = new Date(date);
@@ -25,8 +50,33 @@ function formatDate(date: Date): string {
   });
 }
 
-const PregnancyCalculator: React.FC = () => {
+const PregnancyCalculatorDefaultComponent = (
+  props: PregnancyCalculatorProps
+): JSX.Element => {
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor) {
+    return (
+      <div className={`component promo ${props.params?.styles}`}>
+        <div className="component-content">
+          <span className="is-empty-hint">
+            Pregnancy Calculator. Please click to select datasource
+          </span>
+        </div>
+      </div>
+    );
+  }
+  return <></>;
+};
+
+export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
   const [lmp, setLmp] = useState<string>('');
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  if (!props.fields) {
+    return <PregnancyCalculatorDefaultComponent {...props} />;
+  }
 
   // Variables to hold calculated dates.
   let lmpDate: Date | null = null;
@@ -78,53 +128,60 @@ const PregnancyCalculator: React.FC = () => {
 
   return (
     <Themes theme="A-HCA-White">
-      <Breadcrumbs>
-        <TextLink>
-          <a href="/">
-            <Icons iconName="iconHome"></Icons>
-            <span className="sr-only">{'Home'}</span>
-          </a>
-        </TextLink>
-        <TextLink>
-          <Link href={`${'/tools'}`}>{'Tools'}</Link>
-        </TextLink>
-
-        <span>{'Pregnancy calculator'}</span>
-      </Breadcrumbs>
       <form onSubmit={(e) => e.preventDefault()}>
         <FormContainer
           heading={
             <>
-              <Text tag="p" variation="subheading-2">
-                The Birth Company
-              </Text>
-              <Text tag="h1" variation="display-1">
-                Pregnancy Calculator
-              </Text>
+              {props.fields?.data?.item?.heading?.jsonValue && (
+                <Text tag="p" variation="subheading-2">
+                  <JssText
+                    field={props.fields?.data?.item?.heading?.jsonValue}
+                  />
+                </Text>
+              )}
+              {props.fields?.data?.item?.title?.jsonValue && (
+                <Text tag="h1" variation="display-1">
+                  <JssText field={props.fields?.data?.item?.title?.jsonValue} />
+                </Text>
+              )}
             </>
           }
           copy={
-            <RichText>
-              <p>
-                The Birth Company, in partnership with The Portland Hospital, is
-                a leading clinic specialising in obstetric, fertility, and
-                gynaecological ultrasound. Led by Managing Director Kate
-                Richardson, we have clinics in Wimpole Street, London, and
-                Alderley Edge, Cheshire.
-              </p>
-            </RichText>
+            <>
+              {props?.fields?.data?.item?.text?.jsonValue && (
+                <RichText>
+                  <JssRichText
+                    tag="span"
+                    field={props.fields.data.item.text.jsonValue}
+                  />
+                </RichText>
+              )}
+            </>
           }
         >
           <TextField
             id={'lmp'}
-            label={'When did your last menstrual period start?'}
+            label={
+              props?.fields?.data?.item?.lastMenstrualPeriodFieldLabel
+                ?.jsonValue?.value ||
+              'When did your last menstrual period start?'
+            }
             name={'lmp'}
             type={'date'}
             required={true}
             errorMessage={'Please enter a date'}
           />
           <Button variation="full-dark" size="large">
-            <button onClick={updateResults}>Calculate</button>
+            <button onClick={updateResults}>
+              {isExperienceEditor ||
+              props.fields.data?.item?.cTAText?.jsonValue?.value ? (
+                <JssText
+                  field={props.fields.data?.item?.cTAText?.jsonValue}
+                ></JssText>
+              ) : (
+                'Calculate'
+              )}
+            </button>
           </Button>
 
           {lmp && lmpDate && (
@@ -187,5 +244,3 @@ const PregnancyCalculator: React.FC = () => {
     </Themes>
   );
 };
-
-export default PregnancyCalculator;
