@@ -1,0 +1,36 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  overflow: hidden;
+  background: var(--background);
+  color: var(--text);
+}
+
+.container {
+  position: relative;
+  padding: $spacing-12 0 $spacing-13;
+  @include responsive-container;
+  @include responsive-grid;
+}
+
+.intro {
+  @include responsive-grid-span($breakpoint-l: 7);
+}
+
+.subtitle {
+  margin-bottom: $spacing-3;
+
+  @include media(screen-l) {
+    margin-bottom: $spacing-4;
+  }
+}
+
+.body {
+  margin-top: px-to-rem(32);
+  display: none;
+
+  @include media(screen-l) {
+    display: block;
+  }
+}

@@ -1,0 +1,119 @@
+.ivf-calculator-checkbox {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: $hcauk-spacing-8;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__group-label {
+    font-family: Brown-Std, sans-serif;
+    font-size: 16;
+    line-height: 22;
+    font-weight: bold;
+    display: inline-block;
+    color: $hcauk-blue;
+    margin-bottom: $hcauk-spacing-10;
+  }
+
+  [type='checkbox']:not(:checked),
+  [type='checkbox']:checked {
+    position: absolute;
+    left: -9999;
+  }
+
+  [type='checkbox']:not(:checked) + label,
+  [type='checkbox']:checked + label {
+    position: relative;
+    padding-left: 40;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  /* stylelint-disable  selector-pseudo-class-no-unknown */
+  [type='checkbox']:not(:checked) + label::before,
+  [type='checkbox']:checked + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16;
+    height: 16;
+    border: 1 solid $hcauk-blue;
+    background: $hcauk-white;
+    z-index: 1;
+    transition: 0.2s all ease-out;
+    @extend %vertical-aligned;
+  }
+
+  // &--error {
+  //     [type="checkbox"]:not(:checked) + label:before,
+  //     [type="checkbox"]:checked + label:before {
+  //         border: 1 solid $hcauk-red-100;
+  //     }
+  // }
+
+  [type='checkbox']:checked + label::before {
+    background: $hcauk-white;
+    border: 1 solid $hcauk-blue;
+  }
+
+  // checkbox default on hover
+  [type='checkbox']:hover:not(:checked) + label::before {
+    border: 1 solid $hcauk-neutral-300;
+  }
+
+  /* checked mark aspect */
+  [type='checkbox']:not(:checked) + label::after,
+  [type='checkbox']:checked + label::after {
+    content: '';
+    position: absolute;
+    background-image: url('../../images/checkbox-tick.png');
+    background-repeat: no-repeat;
+
+    // background-size: 8 9;
+    display: inline-block;
+
+    // @include transition(0.2s all);
+    width: 16;
+    height: 16;
+    left: 4;
+    margin-top: 3;
+    z-index: 1;
+    @extend %vertical-aligned;
+  }
+
+  /* checked mark aspect changes */
+  /* stylelint-disable no-descending-specificity */
+  [type='checkbox']:not(:checked) + label::after {
+    opacity: 0;
+  }
+
+  label {
+    font-family: Brown-Std, sans-serif;
+    color: $hcauk-blue;
+    text-align: left;
+    font-size: 14;
+  }
+
+  [type='checkbox']:disabled {
+    cursor: pointer;
+  }
+
+  [type='checkbox']:disabled + label::before {
+    background-color: $hcauk-neutral-200;
+    border: solid 1 $hcauk-neutral-200;
+  }
+
+  [disabled] ~ label {
+    color: $hcauk-neutral-400;
+  }
+}
+
+.vertical-aligned {
+  top: 50%;
+  transform: translateY(-50%);
+}

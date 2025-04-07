@@ -59,7 +59,7 @@ Languages:
               s:ph="headless-main" />
             <r
               uid="{D2C57B11-A6FB-4F6F-9952-49BA4CEE8FF8}"
-              s:par="DisableHeadersToggle=1&amp;ExcludeFromTableOfContents&amp;HeadingTag&amp;HeadingSize=display-1&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7B0DB88BD7-441A-482B-A59B-5FAC8396CD2B%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2" />
+              s:par="DisableHeadersToggle=1&amp;HeadingTag&amp;HeadingSize=display-1&amp;KeepAspectRatio&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7B0DB88BD7-441A-482B-A59B-5FAC8396CD2B%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2" />
             <r
               uid="{7F6538A0-E1DF-41C4-B571-53D307D3C19A}"
               p:after="*[1=2]"
@@ -82,14 +82,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5a8d6d9e-3cb1-424a-8468-324b56612923"
+      Value: "74df1c30-bcb6-4de9-8324-eab308c23933"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250115T202255Z
+      Value: 20250203T184437Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA14

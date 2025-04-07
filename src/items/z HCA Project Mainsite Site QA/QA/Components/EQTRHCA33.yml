@@ -78,7 +78,7 @@ Languages:
               s:ph="/headless-main/cta-buttons-1" />
             <r
               uid="{C46F5C59-CBBE-4AFA-B1DD-2236E3F625DA}"
-              s:par="HeadingBeforeTitle=1&amp;HeadingTag&amp;HeadingSize=display-1&amp;GridParameters&amp;FieldNames=%7BBEFE0627-542F-4DDA-A24D-AE90D457D820%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1&amp;HeadlineBeforeTitle=1" />
+              s:par="HeadingBeforeTitle=1&amp;HeadingTag&amp;HeadingSize&amp;GridParameters&amp;FieldNames={BEFE0627-542F-4DDA-A24D-AE90D457D820}&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1&amp;HeadlineBeforeTitle=1" />
             <r
               uid="{BB7A8081-B8F4-4EF6-A863-0F55BA0CF104}"
               p:after="*[1=2]"
@@ -112,7 +112,7 @@ Languages:
         </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dd1932a3-5e4b-4823-a39e-f3ba632732c7"
+      Value: "b6814fdc-3584-4ce7-8a34-73fefe4e5dee"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -126,7 +126,7 @@ Languages:
       Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T163818Z
+      Value: 20250214T190657Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA33

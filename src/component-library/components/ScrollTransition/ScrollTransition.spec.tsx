@@ -20,6 +20,7 @@ const mockProps: ScrollTransitionProps = {
   children: (
     <>
       <HomepageIntroBlock
+        theme="A-HCA-White"
         title={
           <Text variation="display-1" tag="h2">
             Committed to your care

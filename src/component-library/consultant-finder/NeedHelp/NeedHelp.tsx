@@ -16,12 +16,12 @@ const NeedHelp = (props: NeedHelpProps): JSX.Element => {
   return (
     <div className={styles.help}>
       <div className={styles.headline}>
-        <Text tag="h3" variation="body-medium-large">
+        <Text tag="h3" variation="body-bold-large">
           {headline}
         </Text>
       </div>
       <div className={styles.phone}>
-        <Text tag="h3" variation="body-medium-small">
+        <Text tag="h3" variation="body-bold-small">
           {subheadline}
         </Text>
         <TextLink>
@@ -33,7 +33,7 @@ const NeedHelp = (props: NeedHelpProps): JSX.Element => {
         </TextLink>
       </div>
       <div className={styles['working-hours']}>
-        <Text tag="h3" variation="body-medium-small">
+        <Text tag="h3" variation="body-bold-small">
           {workingHoursHeadline}
         </Text>
         <Text tag="p" variation="body-large">

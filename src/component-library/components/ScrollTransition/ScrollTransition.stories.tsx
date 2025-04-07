@@ -12,7 +12,6 @@ import Tags from '../../core-components/Tags/Tags';
 import Themes from '../../foundation/Themes/Themes';
 import ServiceCards from '../../site-components/ServiceCards/ServiceCards';
 import CardService from '../CardService/CardService';
-import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
 import CardBlog from '../CardBlog/CardBlog';
 import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Button from '../../core-components/Button/Button';
@@ -27,13 +26,40 @@ import VideoHero from '../../careers/VideoHero/VideoHero';
 import { VideoHeroProps } from '../../careers/VideoHero/VideoHero.types';
 import { Default as VideoHeroStory } from '../../careers/VideoHero/VideoHero.stories';
 
-import DualCTABlock from '../../careers/DualCTABlock/DualCTABlock';
-import { Default as DualCTABlockStory } from '../../careers/DualCTABlock/DualCTABlock.stories';
-import { DualCTABlockProps } from '../../careers/DualCTABlock/DualCTABlock.types';
+import OffsetTextBlock from '../../careers/OffsetTextBlock/OffsetTextBlock';
+import { OffsetTextBlockProps } from '../../careers/OffsetTextBlock/OffsetTextBlock.types';
+import { Default as OffsetTextBlockStory } from '../../careers/OffsetTextBlock/OffsetTextBlock.stories';
+
+import StatsCards from '../../careers/StatsCards/StatsCards';
+import { StatsCardsProps } from '../../careers/StatsCards/StatsCards.types';
+import { FiveCards as StatsCardsStory } from '../../careers/StatsCards/StatsCards.stories';
+
+import CarouselCards from '../../site-components/CarouselCards/CarouselCards';
+import { CarouselCardsProps } from '../../site-components/CarouselCards/CarouselCards.types';
+import { VacancyCards as CarouselCardsStory } from '../../site-components/CarouselCards/CarouselCards.stories';
+
+import TextBlock from '../../site-components/TextBlock/TextBlock';
+import { TextBlockProps } from '../../site-components/TextBlock/TextBlock.types';
+import { Centered as TextBlockStory } from '../../site-components/TextBlock/TextBlock.stories';
+
+import CarouselTestimonials from '../../careers/CarouselTestimonials/CarouselTestimonials';
+import { CarouselTestimonialsProps } from '../../careers/CarouselTestimonials/CarouselTestimonials.types';
+import { Default as CarouselTestimonialsStory } from '../../careers/CarouselTestimonials/CarouselTestimonials.stories';
+
+import CarouselImages from '../../careers/CarouselImages/CarouselImages';
+import { CarouselImagesProps } from '../../careers/CarouselImages/CarouselImages.types';
+import {
+  Default as CarouselImagesStory,
+  EqualSize as CarouselImagesEqualSizeStory,
+} from '../../careers/CarouselImages/CarouselImages.stories';
 
 import Accreditations from '../../careers/Accreditations/Accreditations';
 import { AccreditationsProps } from '../../careers/Accreditations/Accreditations.types';
 import { Default as AccreditationsStory } from '../../careers/Accreditations/Accreditations.stories';
+
+import CardBlockCarousel from '../../careers/CardBlockCarousel/CardBlockCarousel';
+import { CardBlockCarouselProps } from '../../careers/CardBlockCarousel/CardBlockCarousel.types';
+import { Default as CardBlockCarouselStory } from '../../careers/CardBlockCarousel/CardBlockCarousel.stories';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
@@ -95,6 +121,7 @@ export const Default: StoryObj<typeof ScrollTransition> = {
           }
         />
         <HomepageIntroBlock
+          theme="A-HCA-White"
           imageAlignment="left"
           title={
             <Text variation="display-1" tag="h2">
@@ -791,46 +818,24 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
     children: (
       <>
         <VideoHero {...(VideoHeroStory.args as VideoHeroProps)} />
-        <ImageAndTextBlock
-          theme="A-HCA-White"
-          length="long"
-          image={
-            <Image
-              src="/placeholders/children-playing.jpg"
-              alt="two children playing"
-              width="643"
-              height="605"
-            />
-          }
-          subheader={
-            <Text tag="h3" variation="subheading-1">
-              Working hours
-            </Text>
-          }
-          header={
-            <Text tag="h2" variation="display-2">
-              Empowering you with flexible working
-            </Text>
-          }
-          children={
-            <Text tag="p" variation="body-large">
-              We know how important it is to balance your life outside of work.
-              This is why we strive to offer flexible working opportunities,
-              including through our bank as well as with full-time, part-time,
-              annualised hours and term-time contracts.
-            </Text>
-          }
-          ctas={
-            <Button size="large" variation="full">
-              <a href="#">
-                <span>
-                  Learn more about <strong>flexible working</strong>
-                </span>
-              </a>
-            </Button>
-          }
+        <OffsetTextBlock
+          {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
-        <DualCTABlock {...(DualCTABlockStory.args as DualCTABlockProps)} />
+        <CarouselImages
+          {...(CarouselImagesStory.args as CarouselImagesProps)}
+        />
+        <StatsCards {...(StatsCardsStory.args as StatsCardsProps)} />
+        <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
+        <CardBlockCarousel
+          {...(CardBlockCarouselStory.args as CardBlockCarouselProps)}
+        />
+        <CarouselTestimonials
+          {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
+        />
+        <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        <CarouselImages
+          {...(CarouselImagesEqualSizeStory.args as CarouselImagesProps)}
+        />
         <Accreditations
           {...(AccreditationsStory.args as AccreditationsProps)}
         />

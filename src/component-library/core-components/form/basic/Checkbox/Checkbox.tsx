@@ -52,10 +52,12 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
             <span className={styles.text}>{label}</span>
           </label>
         </div>
-        <div className={styles['error-message']}>
-          <Icons iconName="iconWarning" />
-          <Text variation="body-medium-medium">{errorMessage}</Text>
-        </div>
+        {errorMessage && (
+          <div className={styles['error-message']}>
+            <Icons iconName="iconWarning" />
+            <Text variation="body-medium-medium">{errorMessage}</Text>
+          </div>
+        )}
       </div>
     </>
   );

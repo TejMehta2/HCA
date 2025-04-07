@@ -20,6 +20,35 @@
   --text: #{$navy-blue-100};
 }
 
+@mixin apply-palace-light-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$navy-blue-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-palace-dark-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-chelsea-light-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$chelsea-gold-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-chelsea-dark-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+  --background-unselected: #{$navy-blue-70};
+}
+
 .light {
   @include apply-light-mode;
 }
@@ -30,6 +59,22 @@
 
 .medium {
   @include apply-medium-mode;
+}
+
+.palace-light {
+  @include apply-palace-light-mode;
+}
+
+.palace-dark {
+  @include apply-palace-dark-mode;
+}
+
+.chelsea-light {
+  @include apply-chelsea-light-mode;
+}
+
+.chelsea-dark {
+  @include apply-chelsea-dark-mode;
 }
 
 .switch {
@@ -44,7 +89,7 @@
   .toggle {
     position: absolute;
     inset: 0;
-    background: $navy-blue-40;
+    background: var(--background-unselected, $navy-blue-40);
     border-radius: $radius-large;
     transition: background 0.4s ease-in-out;
 

@@ -243,7 +243,7 @@ export const Default = (props: StepProps): JSX.Element => {
       // it can return false which then will go into the required field from refine
       // true will be valid so wont get there
       (data) => {
-        if (data.user === 'patient') {
+        if (data.user === 'patient' || data.user === 'medicalsecretary') {
           if (data.payment !== '') {
             return true;
           } else {
@@ -831,7 +831,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     </Text>
                     {/* Show payment option radio if user is patient */}
                     {/* Payment */}
-                    {watchFormChanges.user === 'patient' && (
+                    {(watchFormChanges.user === 'patient' ||
+                      watchFormChanges.user === 'medicalsecretary') && (
                       <Container marginBottom="spacing-6" marginTop="spacing-2">
                         {props?.fields
                           ?.LiveBookingFormAboutAppointmentOptions &&
@@ -1372,7 +1373,8 @@ export const Default = (props: StepProps): JSX.Element => {
                     </Container>
                     {/* Marketing preferences */}
                     {/* hide if insurer */}
-                    {watchFormChanges.user === 'patient' && (
+                    {(watchFormChanges.user === 'patient' ||
+                      watchFormChanges.user === 'medicalsecretary') && (
                       <MarketingPreferences
                         headline={
                           props?.fields

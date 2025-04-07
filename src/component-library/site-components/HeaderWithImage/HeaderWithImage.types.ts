@@ -9,4 +9,5 @@ export interface HeaderWithImageProps {
   image: JSX.Element;
   theme: Theme;
   ratings?: JSX.Element;
+  noMask?: boolean;
 }

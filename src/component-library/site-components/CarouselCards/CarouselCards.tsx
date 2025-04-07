@@ -7,7 +7,16 @@ import Themes from '../../foundation/Themes/Themes';
 import { NextArrow, PrevArrow } from './CustomArrows';
 
 const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
-  const { theme, title, link, children, bodyCopy, subtitle, id } = props;
+  const {
+    theme,
+    title,
+    link,
+    children,
+    bodyCopy,
+    subtitle,
+    id,
+    cardsToDisplay = 3,
+  } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +43,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
   /* Carousel settings */
   const settings = {
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: cardsToDisplay,
     slidesToScroll: 1,
     infinite: false,
     className: styles['slick-wrapper'],
@@ -47,7 +56,7 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
       {
         breakpoint: 1135,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: cardsToDisplay - 1,
         },
       },
       {

@@ -134,6 +134,7 @@ export const Default = (props: ContentCardsProps): JSX.Element => {
   );
   return (
     <MasonryCards
+      theme={props.params?.Theme || 'A-HCA-White'}
       id={componentAnchorId}
       title={
         <>

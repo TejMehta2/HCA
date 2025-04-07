@@ -50,33 +50,34 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
         <title>{data.jobProfile}</title>
         <meta property="og:title" content={data.jobProfile} />
       </Head>
+      <VacancyHeader
+        title={
+          <Text
+            variation={getDynamicTitleStyle(data.jobProfile.length)}
+            tag="h1"
+          >
+            {data.jobProfile}
+          </Text>
+        }
+        location={data.jobLocation}
+        city={data.jobCity}
+        clinical={data.jobFunction}
+        timing={data.employmentType}
+        vacancyCode={data.id}
+        cta={
+          <>
+            <Button variation={'full'} size="large">
+              <a href={data.applicationUrl}>
+                <span>
+                  Apply <strong>now</strong>
+                </span>
+                <Icons iconName={'iconArrowRight'} />
+              </a>
+            </Button>
+          </>
+        }
+      />
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
-        <VacancyHeader
-          title={
-            <Text
-              variation={getDynamicTitleStyle(data.jobProfile.length)}
-              tag="h1"
-            >
-              {data.jobProfile}
-            </Text>
-          }
-          location={data.jobLocation}
-          clinical={data.jobFunction}
-          timing={data.employmentType}
-          vacancyCode={data.id}
-          cta={
-            <>
-              <Button variation={'full-dark'} size="large">
-                <a href={data.applicationUrl}>
-                  <span>
-                    Apply <strong>now</strong>
-                  </span>
-                  <Icons iconName={'iconArrowRight'} />
-                </a>
-              </Button>
-            </>
-          }
-        />
         <div className="vacancy-rte">
           <SitecoreSvg>{data?.bodyPlain}</SitecoreSvg>
         </div>

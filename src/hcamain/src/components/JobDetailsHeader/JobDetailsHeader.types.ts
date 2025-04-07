@@ -32,6 +32,7 @@ export interface JobsResponse {
   jobFamilyNameforJobProfile: string;
   jobFunction: string;
   jobLocation: string;
+  jobCity: string;
   jobProfile: string;
   richDescription: {
     html: string;
