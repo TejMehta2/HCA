@@ -27,7 +27,7 @@
     transform: translateY(px-to-rem(600));
   }
 
-  [data-animate-delay='true'] {
+  [data-animate-delay] {
     transition-delay: 0.3s;
   }
 
