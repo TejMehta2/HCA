@@ -16,9 +16,14 @@ const AppointmentSummary = (props: AppointmentSummaryProps): JSX.Element => {
     date,
     priceTitle,
     price,
+    isMobile = false,
   } = props;
   return (
-    <div className={styles.summary}>
+    <div
+      className={
+        isMobile ? [styles.summary, styles.mobile].join(' ') : styles.summary
+      }
+    >
       <div className={styles.title}>
         <Text tag="p" variation="body-bold-large">
           {title}

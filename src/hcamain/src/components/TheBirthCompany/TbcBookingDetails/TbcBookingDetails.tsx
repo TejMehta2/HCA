@@ -99,12 +99,16 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
 
+    //  if any required params are missing redirect back to the start of the journey
+    if (!paramScanId || !paramLocationId || !paramSlotId || !paramTypeId) {
+      router.push('/booking');
+    }
+
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;
-    //console.log('requestURL', requestURL);
+
     axios
       .get(requestURL)
       .then((res) => {
-        // console.log('res', res);
         seLoading(false);
         setError(false);
         setAppointmentDetails(res?.data || {});
@@ -113,7 +117,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router.isReady, searchParams]);
+  }, [router, router.isReady, searchParams]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -301,19 +305,44 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
             </Text>
           }
           copy={
-            <Text variation={'body-extra-large'} tag="span">
-              <RichText>
-                <JssRichText
-                  field={
-                    (
-                      page.children.results.find(
-                        (item) => item.template.name === 'Text'
-                      ) as TextTemplate
-                    ).text
-                  }
+            <>
+              <Text variation={'body-extra-large'} tag="span">
+                <RichText>
+                  <JssRichText
+                    field={
+                      (
+                        page.children.results.find(
+                          (item) => item.template.name === 'Text'
+                        ) as TextTemplate
+                      ).text
+                    }
+                  />
+                </RichText>
+              </Text>
+
+              {!loading && !error && appointmentDetails ? (
+                <AppointmentSummary
+                  isMobile={true}
+                  title={'Appointment summary'}
+                  locationTitle={'Location'}
+                  location={appointmentDetails.location}
+                  scanTitle={'Scan'}
+                  scan={`${appointmentDetails.scanName} ${
+                    appointmentDetails.extras.length
+                      ? '(' + appointmentDetails.extras.join(', ') + ')'
+                      : ''
+                  }`}
+                  appointmentTitle={'Appointment'}
+                  appointment={appointmentDetails.appointmentType}
+                  dateTitle={'Date & time'}
+                  date={`${formatDate(appointmentDetails.slot)} (${
+                    appointmentDetails.duration
+                  })`}
+                  priceTitle={`Price to pay`}
+                  price={appointmentDetails.price}
                 />
-              </RichText>
-            </Text>
+              ) : undefined}
+            </>
           }
           aside={
             <CFAside>
