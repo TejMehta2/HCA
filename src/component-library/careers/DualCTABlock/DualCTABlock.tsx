@@ -12,8 +12,7 @@ const DualCTABlock = (props: DualCTABlockProps): JSX.Element => {
           <div
             className={styles['item-wrapper']}
             key={index}
-            data-animate="xs"
-            data-animate-delay={index > 0 ? 'true' : 'false'}
+            data-animate={index > 0 ? 's' : 'xs'}
           >
             <div className={styles['container']}>
               <div className={styles['text-column']}>
