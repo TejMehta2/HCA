@@ -6,6 +6,7 @@ import {
   useSitecoreContext,
   useComponentProps,
   GetServerSideComponentProps,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
@@ -19,8 +20,8 @@ import {
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -48,11 +49,17 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
 
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
 
   const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor && transactionStatus != null) {
+    const status = searchParams.get('status');
+    transactionStatus.status = status !== 'failed' ? 'Successful' : 'failed';
+  }
+
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
@@ -133,23 +140,27 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   const options = [
     {
-      title: 'Scan',
+      title: props.fields?.ServiceNameLabel?.value || 'Scan',
       text: props.serviceName,
     },
     {
-      title: 'Date',
+      title: props.fields?.DateLabel?.value || 'Date',
       text: formattedDate,
     },
     {
-      title: 'Time',
+      title: props.fields?.TimeLabel?.value || 'Time',
       text: formattedTime.toLowerCase().replace(/\s/g, ''),
     },
     {
-      title: 'Type',
+      title: props.fields?.DurationLabel?.value || 'Duration',
+      text: `${props.duration} minutes`,
+    },
+    {
+      title: props.fields?.TypeLabel?.value || 'Type',
       text: props.type,
     },
     {
-      title: 'Location',
+      title: props.fields?.LocationLabel?.value || 'Location',
       text: props.location,
     },
   ];
@@ -192,62 +203,20 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
         }
         aside={
           <CFAside>
-            <NeedHelp
-              headline={
-                //props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
-                'Need help?'
-              }
-              subheadline={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
-                'General enquiries'
-              }
-              workingHoursHeadline={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel?.value ||
-                'Opening hours'
-              }
-              workingHours={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursDays?.value ||
-                'Mon – Fri'
-              }
-              workingHoursTime={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursTime?.value ||
-                '8am – 6pm'
-              }
-              phoneNumber={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
-                '020 3797 7236'
-              }
-            />
+            {props.rendering && (
+              <PlaceHolderWrapper>
+                <Placeholder name={phKey} rendering={props.rendering} />
+              </PlaceHolderWrapper>
+            )}
           </CFAside>
         }
       >
         <>
-          <div>
-            <Text tag="h3" variation="body-bold-extra-large">
-              Next steps
-            </Text>
-            <RichText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse.
-            </RichText>
-          </div>
-          <div>
-            <Text tag="h3" variation="body-bold-extra-large">
-              How to amend your booking
-            </Text>
-            <RichText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse.
-            </RichText>
-          </div>
+          <RichText>
+            <JssRichText field={props.fields?.Info} />
+          </RichText>
           <Button variation="full-dark" size="large">
-            <a href="/">Go to Homepage</a>
+            <JssLink field={props.fields.StartLink}></JssLink>
           </Button>
         </>
       </FormContainer>
@@ -261,11 +230,25 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   context
 ) => {
   const { query } = context;
-  console.log(layoutData);
   let response;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
+
+  if (layoutData.sitecore.context.pageEditing) {
+    const mockResponse = {
+      serviceName: 'Wellbeing scan',
+      extras: 'Multiple Pregnancy,Servical Scan',
+      appointmentDateTime: '2025-04-08T10:00:00',
+      type: 'Sonographer',
+      location: 'Hale',
+      duration: '50',
+      status: 'Successful',
+      retryQuerystring: null,
+    };
+
+    return mockResponse;
+  }
 
   try {
     response = await fetch(

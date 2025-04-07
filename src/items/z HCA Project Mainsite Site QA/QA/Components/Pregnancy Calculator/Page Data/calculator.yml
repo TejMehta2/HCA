@@ -1,0 +1,49 @@
+﻿---
+ID: "e4c490cd-f715-4626-a564-8bd40d3513c2"
+Parent: "b5b53f90-2464-420b-b0f1-cd0a684eb7e2"
+Template: "1bd2226f-aa23-4eb4-9f59-b643131bb9d4"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Pregnancy Calculator/Page Data/calculator"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: The Birth Company
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250405T135829Z
+    - ID: "46801b7e-49d3-44fe-9a4c-1855f9ee39ab"
+      Hint: LastMenstrualPeriodFieldLabel
+      Value: "When did your last menstrual period start?"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: The Birth Company, in partnership with The Portland Hospital, is a leading clinic specialising in obstetric, fertility, and gynaecological ultrasound. Led by Managing Director Kate Richardson, we have clinics in Wimpole Street, London, and Alderley Edge, Cheshire.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "015d7d4d-3584-45d2-9b43-89cde732c066"
+    - ID: "a9621526-b4bf-49d6-a747-6da87d523723"
+      Hint: CTAText
+      Value: 
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Pregnancy calculator
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250405T142518Z
