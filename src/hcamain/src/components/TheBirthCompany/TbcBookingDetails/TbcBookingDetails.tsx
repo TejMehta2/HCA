@@ -1,10 +1,12 @@
 import React, { useState, useRef, FormEvent, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 import {
   ButtonTemplate,
@@ -40,6 +42,7 @@ import AppointmentSummary from '@component-library/the-birth-company/Appointment
 import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 
 export interface TbcBookingDetailsProps extends PaymentFormProps {
   params: { [key: string]: string };
@@ -114,8 +117,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         setAppointmentDetails(res?.data || {});
       })
       .catch((error) => {
-        setError(true);
-        console.log(error);
+        setError(error.message || true);
+        // console.log('error', error);
       });
   }, [router, router.isReady, searchParams]);
 
@@ -281,6 +284,38 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     );
     return targetItem?.type?.value === 'required';
   };
+
+  if (error) {
+    const previousPageSearchParams = new URLSearchParams(
+      searchParams.toString()
+    );
+    previousPageSearchParams.delete('slotId');
+
+    return (
+      <HeaderText
+        fullHeight={false}
+        title={
+          <Text variation={'display-3'} tag={'h2'}>
+            {error || 'Something went wrong'}
+          </Text>
+        }
+        error={
+          <Text>
+            Please return to the calendar page and select the appointment time
+            again
+          </Text>
+        }
+        cta={
+          <Button size="large" variation="full">
+            <Link href={`/booking/slot?${previousPageSearchParams}`}>
+              <Icons iconName="iconArrowSmallLeft" />
+              <span>{'Return to Calendar'}</span>
+            </Link>
+          </Button>
+        }
+      />
+    );
+  }
 
   return (
     <Themes theme="A-HCA-White">
