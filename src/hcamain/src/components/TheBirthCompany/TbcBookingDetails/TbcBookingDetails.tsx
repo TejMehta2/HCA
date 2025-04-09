@@ -142,7 +142,10 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
       date
     );
 
-    const [datePart, timePart] = formattedDate.split(', ');
+    const [datePart, timePart] = formattedDate.replace(' at', ',').split(', ');
+
+    if (!datePart || !timePart) return;
+
     return `${datePart} at ${timePart.replace(/\s/g, '')}`;
   };
 
