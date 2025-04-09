@@ -439,6 +439,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                     getField={getField}
                     formErrors={formErrors}
                     name="estimatedDueDate"
+                    type="date"
                   />
                 )}
 
