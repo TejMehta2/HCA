@@ -79,7 +79,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const [ukResident, setUkResident] = useState(true);
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [formSubmitting, setFormSubmitting] = useState(true);
+  const [formSubmitting, setFormSubmitting] = useState(false);
   const [appointmentDetails, setAppointmentDetails] =
     useState<AppointmentDetailFields>();
 
@@ -218,6 +218,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
           behavior: 'smooth',
         });
       }, 500);
+
+      setFormSubmitting(false);
       return;
     }
 
