@@ -27,7 +27,7 @@ interface PagesFields {
   text?: { value?: string };
   image?: { jsonValue: ImageField };
   url?: { path?: string };
-  proxyurl?: { path?: string };
+  proxyurl?: { path?: string; text: string };
 }
 
 type CTAIconFields = {
@@ -185,6 +185,12 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
             ? card?.proxyurl?.path
             : card?.url?.path;
 
+          const cardCtaTextFromCard = card?.proxyurl?.path
+            ? card?.proxyurl.text
+            : card.abstractTitle?.value
+            ? card.abstractTitle?.value
+            : card.title?.value;
+
           return (
             <CardContent
               key={index}
@@ -236,10 +242,15 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
               link={
                 cardCtaUrl ? (
                   <a href={cardCtaUrl}>
-                    <JssRichText
-                      tag="div"
-                      field={props.fields?.data?.item?.cTACardText?.jsonValue}
-                    />
+                    {isExperienceEditor ||
+                    props.fields?.data?.item?.cTACardText?.jsonValue?.value ? (
+                      <JssRichText
+                        tag="div"
+                        field={props.fields?.data?.item?.cTACardText?.jsonValue}
+                      />
+                    ) : (
+                      <Text tag="div">{cardCtaTextFromCard}</Text>
+                    )}
                   </a>
                 ) : (
                   <></>

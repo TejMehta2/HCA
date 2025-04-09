@@ -1,0 +1,32 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  background-color: $teal-10;
+  padding: $spacing-4 $spacing-5;
+  border-radius: $radius-small;
+
+  .item {
+    padding: $spacing-3 0;
+    border-bottom: 1px solid $teal-20;
+
+    &:last-of-type {
+      border-bottom: inherit;
+    }
+  }
+
+  .item-title {
+    margin-bottom: $spacing-1;
+  }
+}
+
+.mobile {
+  width: 100%;
+
+  @include media(screen-l) {
+    display: none;
+  }
+}

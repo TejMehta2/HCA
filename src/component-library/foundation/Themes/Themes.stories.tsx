@@ -13,6 +13,8 @@ import Image from 'next/image';
 import CardBlog from '../../components/CardBlog/CardBlog';
 import Doctify from '../../components/Doctify/Doctify';
 import Pagination from '../../core-components/Pagination/Pagination';
+import Checkbox from '../../core-components/Checkbox/Checkbox';
+import RadioButton from '../../core-components/RadioButton/RadioButton';
 
 // TODO - replace demo cards with actual cards, and make sure they theme children correctly.
 
@@ -156,6 +158,11 @@ const meta: Meta<typeof Themes> = {
             return getPageContent(newPage);
           }}
         />
+
+        <Checkbox label="Example 1" name="example" value={1} id="example-1" />
+        <RadioButton label="example A" value="example-a" name="test" />
+        <RadioButton label="example B" value="example-b" name="test" />
+        <RadioButton label="example C" value="example-c" name="test" />
       </div>
     ),
   },
@@ -353,4 +360,22 @@ export const ThemeNDenim5: StoryObj<typeof Themes> = {
 };
 export const ThemeOTeal20: StoryObj<typeof Themes> = {
   args: { theme: 'O-HCA-Teal-20' },
+};
+export const ThemePlaceWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-White' },
+};
+export const ThemePlaceNavyBlue: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Navy-Blue' },
+};
+export const ThemePlaceBeige: StoryObj<typeof Themes> = {
+  args: { theme: 'Palace-Beige' },
+};
+export const ThemeChelseaWhite: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-White' },
+};
+export const ThemeChelseaNavyBlue: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-Navy-Blue' },
+};
+export const ThemeChelseaBeige: StoryObj<typeof Themes> = {
+  args: { theme: 'Chelsea-Beige' },
 };

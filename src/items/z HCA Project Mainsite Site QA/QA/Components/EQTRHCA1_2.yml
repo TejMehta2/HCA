@@ -92,6 +92,13 @@ Languages:
             <r
               uid="{20DABCA4-2A0D-40C0-8977-A66F37ACA665}"
               s:par="Columns=4&amp;HeadingTag=h1&amp;HeadingSize=display-4&amp;GridParameters&amp;FieldNames=%7B2326DD21-F15F-487E-822A-0C877A75AF46%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=5" />
+            <r
+              uid="{4E6264CF-1C7F-4B86-B896-FFA69FF9E9E0}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Content Cards No CTA text"
+              s:id="{2AB44454-0438-4298-9590-4EAC5E8E05C5}"
+              s:par="Columns&amp;DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B2326DD21-F15F-487E-822A-0C877A75AF46%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=8"
+              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -107,14 +114,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "02543130-bd82-4c05-b7fd-773a700ea654"
+      Value: "4d445bed-c7cc-4452-9b53-ef853469617f"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T161135Z
+      Value: 20250405T164306Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA1_2

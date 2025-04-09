@@ -5,6 +5,10 @@
   width: 100%;
   margin-bottom: $spacing-8;
 
+  &.no-spacing {
+    margin: 0;
+  }
+
   .summary {
     padding: $spacing-6 $spacing-7;
     border-radius: $radius-medium;

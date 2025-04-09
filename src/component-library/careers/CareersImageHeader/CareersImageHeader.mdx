@@ -1,0 +1,50 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as CareersImageHeaderStories from './CareersImageHeader.stories';
+
+<Meta of={CareersImageHeaderStories} />
+
+# CareersImageHeader
+
+## Description
+
+The CareersImageHeader component is a header that contains a subtitle, title, body copy, cta, and image
+
+It is intended to be used in the careers site
+
+It can be composed like this:
+
+```tsx
+<CareersImageHeader
+  bodyCopy={
+    <Text variation="body-large">
+      From physicians to physiotherapists, all of our colleagues play a part in
+      delivering excellence for our patients.
+    </Text>
+  }
+  cta={
+    <Button size="large" variation="full">
+      <a href="#">
+        <Icons iconName="iconSearch" />
+        <span>
+          Search <strong>roles</strong>
+        </span>
+      </a>
+    </Button>
+  }
+  image={
+    <MockedNextImage
+      alt="quality care"
+      height="814"
+      src="/placeholders/quality-care.jpg"
+      width="1512"
+    />
+  }
+  subtitle={<Text variation="subheading-1">Our roles</Text>}
+  title={<Text variation="display-1">Quality care takes diverse people</Text>}
+/>
+```
+
+## Example
+
+<Canvas of={CareersImageHeaderStories.Default} />
+<Controls of={CareersImageHeaderStories.Default} />

@@ -6,19 +6,22 @@ import {
   useSitecoreContext,
   useComponentProps,
   GetServerSideComponentProps,
+  Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
 import Button from '@component-library/core-components/Button/Button';
 import PaymentSummary from '@component-library/site-components/PaymentSummary/PaymentSummary';
 import ConfirmationSummary from '@component-library/components/ConfirmationSummary/ConfirmationSummary';
-import Icons from '@component-library/foundation/Icons/Icons';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 import RichText from '@component-library/core-components/RichText/RichText';
 import {
   TbcBookingConfirmationProps,
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
-import Header from 'components/PaymentForm/helpers/Header';
+import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
 
@@ -46,13 +49,22 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
+
+  const searchParams = useSearchParams();
+  const paramErrors = searchParams.get('error');
 
   const isExperienceEditor = sitecoreContext.pageEditing;
+  if (isExperienceEditor && transactionStatus != null) {
+    const status = searchParams.get('status');
+    transactionStatus.status = status !== 'failed' ? 'Successful' : 'failed';
+  }
+
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
 
-  if (transactionStatus?.status !== 'Successful') {
+  if (transactionStatus?.status !== 'Successful' || paramErrors) {
     return (
       <HeaderText
         fullHeight={false}
@@ -77,7 +89,9 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
             props.fields?.ErrorCTALink ? (
             <Button size={'large'} variation={'full'}>
               <JssLink
-                href={props.fields.ErrorCTALink?.value.href}
+                href={`${props.fields.ErrorCTALink?.value.href}${
+                  props.retryQuerystring || ''
+                }`}
                 field={props.fields?.ErrorCTALink}
               >
                 {props?.fields?.ErrorCTAIcon && (
@@ -106,77 +120,106 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     );
   }
 
-  const {
-    amount,
-    referenceNumber,
-    paymentDate,
-    paymentType,
-    status,
-    // lastUpdateDate,
-    transactionId,
-  } = transactionStatus;
+  const date = new Date(props.appointmentDateTime);
+
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  };
+
+  const formattedDateTime = new Intl.DateTimeFormat(
+    'en-GB',
+    dateTimeOptions
+  ).format(date);
+
+  const [formattedDate, formattedTime] = formattedDateTime.split(', ');
+
+  const options = [
+    {
+      title: props.fields?.ServiceNameLabel?.value || 'Scan',
+      text: props.serviceName,
+    },
+    {
+      title: props.fields?.DateLabel?.value || 'Date',
+      text: formattedDate,
+    },
+    {
+      title: props.fields?.TimeLabel?.value || 'Time',
+      text: formattedTime.toLowerCase().replace(/\s/g, ''),
+    },
+    {
+      title: props.fields?.DurationLabel?.value || 'Duration',
+      text: `${props.duration} minutes`,
+    },
+    {
+      title: props.fields?.TypeLabel?.value || 'Type',
+      text: props.type,
+    },
+    {
+      title: props.fields?.LocationLabel?.value || 'Location',
+      text: props.location,
+    },
+  ];
+
+  if (props.extras) {
+    options.splice(1, 0, {
+      title: 'Extras',
+      text: props.extras,
+    });
+  }
 
   return (
     <>
-      <Header stage={'Confirmation'} />
-      <PaymentSummary
-        heading={
-          <Text
-            variation={props.params?.HeadingSize || 'display-3'}
-            tag={props.params?.HeadingTag || 'h2'}
-          >
-            <JssText field={props.fields?.Title} />
-          </Text>
-        }
-        bodyText={
-          <RichText>
-            <JssRichText field={props.fields?.Text} />
-          </RichText>
-        }
-        summary={
-          <ConfirmationSummary
-            title={<JssText field={props.fields?.SummaryTitle} />}
-            optionalItems={[
-              {
-                title: <JssText field={props.fields?.AmountPaidText} />,
-                text: amount,
-              },
-              {
-                title: <JssText field={props.fields?.InvoiceReferenceText} />,
-                text: referenceNumber,
-              },
-              {
-                title: <JssText field={props.fields?.PaymentDateText} />,
-                text: paymentDate,
-              },
-              {
-                title: <JssText field={props.fields?.PaymentTypeText} />,
-                text: paymentType,
-              },
-              {
-                title: <JssText field={props.fields?.StatusText} />,
-                text: status,
-              },
-              {
-                title: <JssText field={props.fields?.TransactionIDText} />,
-                text: transactionId,
-              },
-            ]}
+      <FormContainer
+        heading={<></>}
+        copy={
+          <PaymentSummary
+            isFlex={true}
+            heading={
+              <Text
+                variation={props.params?.HeadingSize || 'display-4'}
+                tag={props.params?.HeadingTag || 'h2'}
+              >
+                <JssText field={props.fields?.Title} />
+              </Text>
+            }
+            bodyText={
+              <RichText>
+                <JssRichText field={props.fields?.Text} />
+              </RichText>
+            }
+            summary={
+              <ConfirmationSummary
+                title={<JssText field={props.fields?.SummaryTitle} />}
+                optionalItems={options}
+                noSpacing={true}
+              />
+            }
           />
         }
-        cta={
-          <Button variation="full-dark" size="large">
-            <button
-              onClick={() => {
-                window.print();
-              }}
-            >
-              <Icons iconName="iconPrint" />
-              Print confirmation
-            </button>
-          </Button>
+        aside={
+          <CFAside>
+            {props.rendering && (
+              <PlaceHolderWrapper>
+                <Placeholder name={phKey} rendering={props.rendering} />
+              </PlaceHolderWrapper>
+            )}
+          </CFAside>
         }
-      />
+      >
+        <>
+          <RichText>
+            <JssRichText field={props.fields?.Info} />
+          </RichText>
+          <Button variation="full-dark" size="large">
+            <JssLink field={props.fields.StartLink}></JssLink>
+          </Button>
+        </>
+      </FormContainer>
     </>
   );
 };
@@ -187,15 +230,29 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   context
 ) => {
   const { query } = context;
-  console.log(layoutData);
   let response;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
+  if (layoutData.sitecore.context.pageEditing) {
+    const mockResponse = {
+      serviceName: 'Wellbeing scan',
+      extras: 'Multiple Pregnancy,Servical Scan',
+      appointmentDateTime: '2025-04-08T10:00:00',
+      type: 'Sonographer',
+      location: 'Hale',
+      duration: '50',
+      status: 'Successful',
+      retryQuerystring: null,
+    };
+
+    return mockResponse;
+  }
+
   try {
     response = await fetch(
-      `${SERVER_API_URL}/api/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
     );
     const transactionStatus = await response.json();
     return transactionStatus?.response;
