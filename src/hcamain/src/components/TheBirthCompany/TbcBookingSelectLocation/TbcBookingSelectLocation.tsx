@@ -124,6 +124,11 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       return;
     }
 
+    //  if any required params are missing redirect back to the start of the journey
+    if (!paramScanId) {
+      router.push('/booking');
+    }
+
     const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/locations?scanid=${paramScanId}`;
 
     axios
@@ -137,7 +142,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router.isReady, paramScanId]);
+  }, [router, router.isReady, paramScanId]);
 
   if (props.fields) {
     return (
