@@ -79,6 +79,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const [ukResident, setUkResident] = useState(true);
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(true);
   const [appointmentDetails, setAppointmentDetails] =
     useState<AppointmentDetailFields>();
 
@@ -206,6 +207,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setFormSubmitting(true);
+
     const isValid = validateFormData();
     if (!isValid) {
       setTimeout(() => {
@@ -246,6 +249,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         router.replace(result.response.redirectUrl);
       }
     } catch (err) {
+      setFormSubmitting(false);
       process.env.NODE_ENV === 'development' && console.log(err);
     }
 
@@ -738,34 +742,34 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 }
               />
 
-              <div>
-                <input
-                  type="hidden"
-                  name="slotId"
-                  value={appointmentDetails?.slotId || ''}
-                />
-                <input
-                  type="hidden"
-                  name="serviceVariantId"
-                  value={appointmentDetails?.serviceVariantId || ''}
-                />
-                <input
-                  type="hidden"
-                  name="extrasIds"
-                  value={appointmentDetails?.extrasIds || ''}
-                />
-              </div>
+              <input
+                type="hidden"
+                name="slotId"
+                value={appointmentDetails?.slotId || ''}
+              />
+              <input
+                type="hidden"
+                name="serviceVariantId"
+                value={appointmentDetails?.serviceVariantId || ''}
+              />
+              <input
+                type="hidden"
+                name="extrasIds"
+                value={appointmentDetails?.extrasIds || ''}
+              />
 
               <div>
                 <Button size="large" variation="full">
-                  <button type={'submit'}>
-                    {
+                  <button type={'submit'} disabled={formSubmitting}>
+                    {formSubmitting ? (
+                      <LoaderCF />
+                    ) : (
                       (
                         page.children.results.find(
                           (item) => item.name === 'pay'
                         ) as ButtonTemplate
                       ).title.value
-                    }
+                    )}
                   </button>
                 </Button>
               </div>
