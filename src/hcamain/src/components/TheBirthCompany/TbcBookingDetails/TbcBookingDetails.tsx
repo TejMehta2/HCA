@@ -123,6 +123,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   }, [router, router.isReady, searchParams]);
 
   const formatDate = (dateString: string) => {
+    if (!dateString) return;
+
     const date = new Date(dateString);
 
     // Format options for the date
@@ -141,7 +143,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     );
 
     const [datePart, timePart] = formattedDate.split(', ');
-    return `${datePart} at ${timePart.toLowerCase().replace(/\s/g, '')}`;
+    return `${datePart} at ${timePart.replace(/\s/g, '')}`;
   };
 
   const page = props.fields.data.item.pages.results[0];
