@@ -1,9 +1,12 @@
-import React, { useState, useRef, FormEvent } from 'react';
+import React, { useState, useRef, FormEvent, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import AddressFinder from '@component-library/core-components/AddressFinder/AddressFinder';
 import Button from '@component-library/core-components/Button/Button';
+import Icons from '@component-library/foundation/Icons/Icons';
 
 import {
   ButtonTemplate,
@@ -15,6 +18,7 @@ import {
   SectionTemplate,
   SectionTitleTemplate,
   TextTemplate,
+  Validator,
 } from '../../PaymentForm/PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
@@ -23,17 +27,45 @@ import Checkbox from '@component-library/core-components/form/basic/Checkbox/Che
 import Checkboxes from '@component-library/core-components/Checkboxes/Checkboxes';
 import MarketingPreferences from '@component-library/site-components/MarketingPreferences/MarketingPreferences';
 import {
+  ComponentRendering,
   RichText as JssRichText,
+  Placeholder,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import RichText from '@component-library/core-components/RichText/RichText';
 import DynamicTextField from '../../PaymentForm/helpers/DynamicTextField';
-import Header from '../../PaymentForm/helpers/Header';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import DynamicSelectField from '../../PaymentForm/helpers/DynamicSelectField';
+import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import AppointmentSummary from '@component-library/the-birth-company/AppointmentSummary/AppointmentSummary';
+import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
+import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
 
-export const Default = (props: PaymentFormProps): JSX.Element => {
+export interface TbcBookingDetailsProps extends PaymentFormProps {
+  params: { [key: string]: string };
+  rendering?: ComponentRendering;
+}
+
+interface AppointmentDetailFields {
+  location: string;
+  scanName: string;
+  appointmentType: string;
+  slot: string;
+  duration: string;
+  price: string;
+  extras: string[];
+  slotId: string;
+  serviceVariantId: string;
+  extrasIds: string;
+  formVariant: string;
+}
+
+export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
   const siteName = context?.site?.name;
   const itemPath = context?.itemPath;
 
@@ -45,6 +77,78 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const [formErrors, setFormErrors] = useState(new Map<string, string>());
   const [hideBillingFields, setHideBillingFields] = useState(true);
   const [ukResident, setUkResident] = useState(true);
+  const [loading, seLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [appointmentDetails, setAppointmentDetails] =
+    useState<AppointmentDetailFields>();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (!router.isReady) {
+      return;
+    }
+
+    const paramScanId = searchParams.get('scanId');
+    const paramExtras = searchParams.getAll('extraId');
+    const paramLocationId = searchParams.get('locationId');
+    const paramTypeId = searchParams.get('typeId');
+    const paramSlotId = searchParams.get('slotId');
+
+    const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+
+    //  if any required params are missing redirect back to the start of the journey
+    if (!paramScanId || !paramLocationId || !paramSlotId || !paramTypeId) {
+      router.push('/booking');
+    }
+
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/details?scanid=${paramScanId}&locationid=${paramLocationId}&typeid=${paramTypeId}&slotid=${paramSlotId}${extras}`;
+
+    axios
+      .get(requestURL)
+      .then((res) => {
+        seLoading(false);
+        setError(false);
+        setAppointmentDetails(res?.data || {});
+      })
+      .catch((error) => {
+        setError(error.message || true);
+        // console.log('error', error);
+      });
+  }, [router, router.isReady, searchParams]);
+
+  const formatDate = (dateString: string) => {
+    if (!dateString) return;
+
+    const date = new Date(dateString);
+
+    // Format options for the date
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long', // Full weekday name (e.g., 'Friday')
+      day: '2-digit', // Day of the month (e.g., '04')
+      month: 'short', // Short month name (e.g., 'Nov')
+      hour: '2-digit', // Hour in 2 digits (e.g., '10')
+      minute: '2-digit', // Minute in 2 digits (e.g., '30')
+      hour12: true, // Use 12-hour clock (with am/pm)
+    };
+
+    // Get formatted date
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(
+      date
+    );
+
+    const [datePart, timePart] = formattedDate.replace(' at', ',').split(', ');
+
+    if (!datePart || !timePart) return;
+
+    return `${datePart} at ${timePart.replace(/\s/g, '')}`;
+  };
 
   const page = props.fields.data.item.pages.results[0];
   const settings = props.fields.data.item.settings.results[0].children.results;
@@ -103,6 +207,8 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setFormSubmitting(true);
+
     const isValid = validateFormData();
     if (!isValid) {
       setTimeout(() => {
@@ -112,6 +218,8 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
           behavior: 'smooth',
         });
       }, 500);
+
+      setFormSubmitting(false);
       return;
     }
 
@@ -143,6 +251,7 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
         router.replace(result.response.redirectUrl);
       }
     } catch (err) {
+      setFormSubmitting(false);
       process.env.NODE_ENV === 'development' && console.log(err);
     }
 
@@ -170,33 +279,80 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
     return fields.find((field) => field.name === name) as T;
   };
 
-  return (
-    <>
-      <Header />
+  const getTargetItemMessage = (targetItems: Validator[], name: string) => {
+    const targetItem = targetItems.filter(
+      (item) => item.parameters?.value === name
+    );
+    return targetItem[0].message.value;
+  };
 
-      <Themes theme="A-HCA-White">
-        <form
-          noValidate
-          ref={formRef}
-          method={'GET'}
-          onBlur={onBlur}
-          onChange={onChange}
-          onSubmit={onSubmit}
-        >
-          <FormContainer
-            heading={
-              <Text variation={'display-4'} tag="h1">
-                {
-                  (
-                    page.children.results.find(
-                      (item) => item.template.name === 'SectionTitle'
-                    ) as SectionTitleTemplate
-                  )?.title.value
-                }
-              </Text>
-            }
-            copy={
-              <Text variation={'body-large'} tag="span">
+  const getTargetItemRequired = (targetItems: Validator[], name: string) => {
+    if (!targetItems.length) {
+      return false;
+    }
+    const targetItem = targetItems.find(
+      (item) => item.parameters?.value === name
+    );
+    return targetItem?.type?.value === 'required';
+  };
+
+  if (error) {
+    const previousPageSearchParams = new URLSearchParams(
+      searchParams.toString()
+    );
+    previousPageSearchParams.delete('slotId');
+
+    return (
+      <HeaderText
+        fullHeight={false}
+        title={
+          <Text variation={'display-3'} tag={'h2'}>
+            {error || 'Something went wrong'}
+          </Text>
+        }
+        error={
+          <Text>
+            Please return to the calendar page and select the appointment time
+            again
+          </Text>
+        }
+        cta={
+          <Button size="large" variation="full">
+            <Link href={`/booking/slot?${previousPageSearchParams}`}>
+              <Icons iconName="iconArrowSmallLeft" />
+              <span>{'Return to Calendar'}</span>
+            </Link>
+          </Button>
+        }
+      />
+    );
+  }
+
+  return (
+    <Themes theme="A-HCA-White">
+      <form
+        noValidate
+        ref={formRef}
+        method={'GET'}
+        onBlur={onBlur}
+        onChange={onChange}
+        onSubmit={onSubmit}
+      >
+        <FormContainer
+          heading={
+            <Text variation={'display-4'} tag="h1">
+              {
+                (
+                  page.children.results.find(
+                    (item) => item.template.name === 'SectionTitle'
+                  ) as SectionTitleTemplate
+                )?.title.value
+              }
+            </Text>
+          }
+          copy={
+            <>
+              <Text variation={'body-extra-large'} tag="span">
                 <RichText>
                   <JssRichText
                     field={
@@ -209,270 +365,420 @@ export const Default = (props: PaymentFormProps): JSX.Element => {
                   />
                 </RichText>
               </Text>
-            }
-          >
-            <div>
-              <Text variation={'heading-1'}>
-                {getField<SectionTitleTemplate>('Patient details').title.value}
-              </Text>
 
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="invoiceNumber"
-              />
-              <DynamicSelectField
-                getField={getField}
-                formErrors={formErrors}
-                name="title"
-              />
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="firstName"
-              />
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="lastName"
-              />
-              <DynamicSelectField
-                getField={getField}
-                formErrors={formErrors}
-                name="isUKResident"
-                onChange={(option) => setUkResident(option.text === 'Yes')}
-              />
+              {!loading && !error && appointmentDetails ? (
+                <AppointmentSummary
+                  isMobile={true}
+                  title={'Appointment summary'}
+                  locationTitle={'Location'}
+                  location={appointmentDetails.location}
+                  scanTitle={'Scan'}
+                  scan={`${appointmentDetails.scanName} ${
+                    appointmentDetails.extras.length
+                      ? '(' + appointmentDetails.extras.join(', ') + ')'
+                      : ''
+                  }`}
+                  appointmentTitle={'Appointment'}
+                  appointment={appointmentDetails.appointmentType}
+                  dateTitle={'Date & time'}
+                  date={`${formatDate(appointmentDetails.slot)} (${
+                    appointmentDetails.duration
+                  })`}
+                  priceTitle={`Price to pay`}
+                  price={appointmentDetails.price}
+                />
+              ) : undefined}
+            </>
+          }
+          aside={
+            <CFAside>
+              <>
+                {loading && <LoaderCF />}
+                {!loading && !error && appointmentDetails ? (
+                  <AppointmentSummary
+                    title={'Appointment summary'}
+                    locationTitle={'Location'}
+                    location={appointmentDetails.location}
+                    scanTitle={'Scan'}
+                    scan={`${appointmentDetails.scanName} ${
+                      appointmentDetails.extras.length
+                        ? '(' + appointmentDetails.extras.join(', ') + ')'
+                        : ''
+                    }`}
+                    appointmentTitle={'Appointment'}
+                    appointment={appointmentDetails.appointmentType}
+                    dateTitle={'Date & time'}
+                    date={`${formatDate(appointmentDetails.slot)} (${
+                      appointmentDetails.duration
+                    })`}
+                    priceTitle={`Price to pay`}
+                    price={appointmentDetails.price}
+                  />
+                ) : undefined}
 
-              <AddressFinder
-                defaultStep={ukResident ? 'automatic' : 'manual'}
-                findAddressEndpoint={
-                  settings?.find((item) => item.name === 'FindAddressEndpoint')
-                    ?.value.value || ''
-                }
-                splitAddressEndpoint={
-                  settings?.find((item) => item.name === 'SplitAddressEndpoint')
-                    ?.value.value || ''
-                }
-                error={
-                  formErrors.get('addressLine1') ||
-                  formErrors.get('addressLine2') ||
-                  formErrors.get('city') ||
-                  formErrors.get('postcode')
-                }
-                render={(splitAddressResponse) => (
-                  <>
-                    <DynamicTextField
-                      getField={getField}
-                      formErrors={formErrors}
-                      name={'addressLine1'}
-                      defaultValue={splitAddressResponse?.address1 || ''}
-                    />
-                    <DynamicTextField
-                      getField={getField}
-                      formErrors={formErrors}
-                      name={'addressLine2'}
-                      defaultValue={splitAddressResponse?.address2 || ''}
-                    />
-                    <DynamicTextField
-                      getField={getField}
-                      formErrors={formErrors}
-                      name={'city'}
-                      defaultValue={splitAddressResponse?.town || ''}
-                    />
-                    <DynamicTextField
-                      getField={getField}
-                      formErrors={formErrors}
-                      name={'postcode'}
-                      defaultValue={splitAddressResponse?.postcode || ''}
-                    />
-                    <DynamicSelectField
-                      getField={getField}
-                      formErrors={formErrors}
-                      name="country"
-                      optionMapper={(result: DropDownListOption) => ({
-                        text: result.value.value,
-                        value: result.key.value,
-                      })}
-                    />
-                  </>
+                {props.rendering && (
+                  <PlaceHolderWrapper>
+                    <Placeholder name={phKey} rendering={props.rendering} />
+                  </PlaceHolderWrapper>
                 )}
-              />
-            </div>
-
-            <div>
-              <Text variation={'heading-1'}>
-                {getField<SectionTitleTemplate>('Contact details').title.value}
-              </Text>
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="email"
-                type="email"
-              />
-              <PhoneField
-                label={getField<InputTemplate>('telephone').title.value}
-                name="telephone"
-                error={formErrors.get('telephone')}
-                helpText={
-                  getField<InputTemplate>('telephone')?.helperText?.value
-                }
-              />
-            </div>
-
-            <div>
-              {getField<SectionTitleTemplate>('Invoice amount').title.value && (
+              </>
+            </CFAside>
+          }
+        >
+          {loading && <LoaderCF />}
+          {!loading && !error && appointmentDetails?.formVariant ? (
+            <>
+              <div>
                 <Text variation={'heading-1'}>
-                  {getField<SectionTitleTemplate>('Invoice amount').title.value}
+                  {
+                    getField<SectionTitleTemplate>('About the pregnancy').title
+                      .value
+                  }
                 </Text>
-              )}
 
-              <DynamicTextField
-                getField={getField}
-                formErrors={formErrors}
-                name="totalInvoice"
-              />
+                <DynamicTextField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="lastMenstrualPeriod"
+                  type="date"
+                />
 
-              <Checkbox
-                label={
-                  getField<InputTemplate>('sameAsPatientDetail')?.title?.value
-                }
-                name="sameAsPatientDetail"
-                value="true"
-                id="sameAsPatientDetail"
-                checked={hideBillingFields}
-                onChange={(event) => {
-                  setHideBillingFields(event.target.checked);
-                }}
-              />
+                {appointmentDetails?.formVariant === 'pregnancy' && (
+                  <DynamicTextField
+                    getField={getField}
+                    formErrors={formErrors}
+                    name="estimatedDueDate"
+                    type="date"
+                  />
+                )}
 
-              {hideBillingFields || (
-                <>
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="hadAnUltrasoundScan"
+                />
+
+                {appointmentDetails?.formVariant === 'pregnancy' && (
                   <DynamicSelectField
                     getField={getField}
                     formErrors={formErrors}
-                    name="billingTitle"
+                    name="hadAPositivePregnancyTest"
                   />
-                  <DynamicTextField
-                    getField={getField}
-                    formErrors={formErrors}
-                    name="billingFirstName"
-                  />
-                  <DynamicTextField
-                    getField={getField}
-                    formErrors={formErrors}
-                    name="billingLastName"
-                  />
-                  <AddressFinder
-                    findAddressEndpoint={
-                      settings?.find(
-                        (item) => item.name === 'FindAddressEndpoint'
-                      )?.value.value || ''
-                    }
-                    splitAddressEndpoint={
-                      settings?.find(
-                        (item) => item.name === 'SplitAddressEndpoint'
-                      )?.value.value || ''
-                    }
-                    error={
-                      formErrors.get('billingAddressLine1') ||
-                      formErrors.get('billingAddressLine2') ||
-                      formErrors.get('billingCity') ||
-                      formErrors.get('billingPostcode') ||
-                      formErrors.get('billingCountry')
-                    }
-                    render={(splitAddressResponse) => (
-                      <>
-                        <DynamicTextField
-                          getField={getField}
-                          formErrors={formErrors}
-                          name={'billingAddressLine1'}
-                          defaultValue={splitAddressResponse?.address1 || ''}
-                        />
-                        <DynamicTextField
-                          getField={getField}
-                          formErrors={formErrors}
-                          name={'billingAddressLine2'}
-                          defaultValue={splitAddressResponse?.address2 || ''}
-                        />
-                        <DynamicTextField
-                          getField={getField}
-                          formErrors={formErrors}
-                          name={'billingCity'}
-                          defaultValue={splitAddressResponse?.town || ''}
-                        />
-                        <DynamicTextField
-                          getField={getField}
-                          formErrors={formErrors}
-                          name={'billingPostcode'}
-                          defaultValue={splitAddressResponse?.postcode || ''}
-                        />
-                        <DynamicSelectField
-                          getField={getField}
-                          formErrors={formErrors}
-                          name="billingCountry"
-                          optionMapper={(result: DropDownListOption) => ({
-                            text: result.value.value,
-                            value: result.key.value,
-                          })}
-                        />
-                      </>
-                    )}
-                  />
-                </>
-              )}
-            </div>
+                )}
 
-            <MarketingPreferences
-              title={
-                <Text variation={'body-bold-extra-large'}>
+                <DynamicTextArea
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="pregnancyComments"
+                />
+              </div>
+
+              <div>
+                <Text variation={'heading-1'}>
                   {
-                    getField<SectionTitleTemplate>('Communication preferences')
-                      .title.value
+                    getField<SectionTitleTemplate>('Patient details').title
+                      .value
                   }
                 </Text>
-              }
-              bodyCopy={
-                <RichText>
-                  <JssRichText field={getField<TextTemplate>('consent').text} />
-                </RichText>
-              }
-              preferences={
-                <Checkboxes>
-                  {[
-                    getField<ListTemplate>(
-                      'communicationMode'
-                    ).datasource.targetItem.children.results.map((option) => (
-                      <Checkbox
-                        key={option.name}
-                        label={option.displayName}
-                        name={`${
-                          getField<ListTemplate>('communicationMode').name
-                        }`}
-                        value={option.name}
-                        id={option.name}
-                        required={false}
-                      />
-                    )),
-                  ]}
-                </Checkboxes>
-              }
-            />
-            <div>
-              <Button size="large" variation="full">
-                <button type={'submit'}>
+
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="title"
+                />
+
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="ethnicity"
+                />
+
+                <DynamicTextField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="firstName"
+                />
+
+                <DynamicTextField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="lastName"
+                />
+
+                <DynamicTextField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="dateOfBirth"
+                  type="date"
+                />
+
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="returningPatient"
+                />
+              </div>
+
+              <div>
+                <Text variation={'body-bold-extra-large'}>
                   {
-                    (
-                      page.children.results.find(
-                        (item) => item.name === 'pay'
-                      ) as ButtonTemplate
-                    ).title.value
+                    getField<SectionTitleTemplate>('Contact details').title
+                      .value
                   }
-                </button>
-              </Button>
-            </div>
-          </FormContainer>
-        </form>
-      </Themes>
-    </>
+                </Text>
+
+                <PhoneField
+                  label={getField<InputTemplate>('telephone').title.value}
+                  name="telephone"
+                  error={formErrors.get('telephone')}
+                  helpText={
+                    getField<InputTemplate>('telephone')?.helperText?.value
+                  }
+                />
+
+                <DynamicTextField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="email"
+                  type="email"
+                />
+
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="isUKResident"
+                  onChange={(option) => setUkResident(option.text === 'Yes')}
+                />
+
+                <AddressFinder
+                  defaultStep={ukResident ? 'automatic' : 'manual'}
+                  findAddressEndpoint={
+                    settings?.find(
+                      (item) => item.name === 'FindAddressEndpoint'
+                    )?.value.value || ''
+                  }
+                  splitAddressEndpoint={
+                    settings?.find(
+                      (item) => item.name === 'SplitAddressEndpoint'
+                    )?.value.value || ''
+                  }
+                  error={
+                    formErrors.get('addressLine1') ||
+                    formErrors.get('addressLine2') ||
+                    formErrors.get('city') ||
+                    formErrors.get('postcode')
+                  }
+                  render={(splitAddressResponse) => (
+                    <>
+                      <DynamicTextField
+                        getField={getField}
+                        formErrors={formErrors}
+                        name={'addressLine1'}
+                        defaultValue={splitAddressResponse?.address1 || ''}
+                      />
+                      <DynamicTextField
+                        getField={getField}
+                        formErrors={formErrors}
+                        name={'addressLine2'}
+                        defaultValue={splitAddressResponse?.address2 || ''}
+                      />
+                      <DynamicTextField
+                        getField={getField}
+                        formErrors={formErrors}
+                        name={'city'}
+                        defaultValue={splitAddressResponse?.town || ''}
+                      />
+                      <DynamicTextField
+                        getField={getField}
+                        formErrors={formErrors}
+                        name={'postcode'}
+                        defaultValue={splitAddressResponse?.postcode || ''}
+                      />
+                      <DynamicSelectField
+                        getField={getField}
+                        formErrors={formErrors}
+                        name="country"
+                        optionMapper={(result: DropDownListOption) => ({
+                          text: result.value.value,
+                          value: result.key.value,
+                        })}
+                      />
+                    </>
+                  )}
+                />
+
+                <Checkbox
+                  label={
+                    getField<InputTemplate>('sameAsPatientDetail')?.title?.value
+                  }
+                  name="sameAsPatientDetail"
+                  value="true"
+                  id="sameAsPatientDetail"
+                  checked={hideBillingFields}
+                  onChange={(event) => {
+                    setHideBillingFields(event.target.checked);
+                  }}
+                />
+
+                {hideBillingFields || (
+                  <>
+                    <DynamicSelectField
+                      getField={getField}
+                      formErrors={formErrors}
+                      name="billingTitle"
+                    />
+                    <DynamicTextField
+                      getField={getField}
+                      formErrors={formErrors}
+                      name="billingFirstName"
+                    />
+                    <DynamicTextField
+                      getField={getField}
+                      formErrors={formErrors}
+                      name="billingLastName"
+                    />
+                    <AddressFinder
+                      findAddressEndpoint={
+                        settings?.find(
+                          (item) => item.name === 'FindAddressEndpoint'
+                        )?.value.value || ''
+                      }
+                      splitAddressEndpoint={
+                        settings?.find(
+                          (item) => item.name === 'SplitAddressEndpoint'
+                        )?.value.value || ''
+                      }
+                      error={
+                        formErrors.get('billingAddressLine1') ||
+                        formErrors.get('billingAddressLine2') ||
+                        formErrors.get('billingCity') ||
+                        formErrors.get('billingPostcode') ||
+                        formErrors.get('billingCountry')
+                      }
+                      render={(splitAddressResponse) => (
+                        <>
+                          <DynamicTextField
+                            getField={getField}
+                            formErrors={formErrors}
+                            name={'billingAddressLine1'}
+                            defaultValue={splitAddressResponse?.address1 || ''}
+                          />
+                          <DynamicTextField
+                            getField={getField}
+                            formErrors={formErrors}
+                            name={'billingAddressLine2'}
+                            defaultValue={splitAddressResponse?.address2 || ''}
+                          />
+                          <DynamicTextField
+                            getField={getField}
+                            formErrors={formErrors}
+                            name={'billingCity'}
+                            defaultValue={splitAddressResponse?.town || ''}
+                          />
+                          <DynamicTextField
+                            getField={getField}
+                            formErrors={formErrors}
+                            name={'billingPostcode'}
+                            defaultValue={splitAddressResponse?.postcode || ''}
+                          />
+                          <DynamicSelectField
+                            getField={getField}
+                            formErrors={formErrors}
+                            name="billingCountry"
+                            optionMapper={(result: DropDownListOption) => ({
+                              text: result.value.value,
+                              value: result.key.value,
+                            })}
+                          />
+                        </>
+                      )}
+                    />
+                  </>
+                )}
+              </div>
+
+              <MarketingPreferences
+                title={
+                  <Text variation={'body-bold-extra-large'}>
+                    {
+                      getField<SectionTitleTemplate>(
+                        'Communication preferences'
+                      ).title.value
+                    }
+                  </Text>
+                }
+                preferences={
+                  <Checkboxes>
+                    {[
+                      getField<ListTemplate>(
+                        'communicationMode'
+                      ).datasource.targetItem.children.results.map((option) => (
+                        <Checkbox
+                          key={option.name}
+                          label={
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: option.value.value,
+                              }}
+                            ></span>
+                          }
+                          name={`${
+                            getField<ListTemplate>('communicationMode').name
+                          }`}
+                          value={option.name}
+                          id={option.name}
+                          required={getTargetItemRequired(
+                            getField<ListTemplate>('communicationMode')
+                              .validators.targetItems,
+                            option.name
+                          )}
+                          errorMessage={getTargetItemMessage(
+                            getField<ListTemplate>('communicationMode')
+                              .validators.targetItems,
+                            option.name
+                          )}
+                        />
+                      )),
+                    ]}
+                  </Checkboxes>
+                }
+              />
+
+              <input
+                type="hidden"
+                name="slotId"
+                value={appointmentDetails?.slotId || ''}
+              />
+              <input
+                type="hidden"
+                name="serviceVariantId"
+                value={appointmentDetails?.serviceVariantId || ''}
+              />
+              <input
+                type="hidden"
+                name="extrasIds"
+                value={appointmentDetails?.extrasIds || ''}
+              />
+
+              <div>
+                <Button size="large" variation="full">
+                  <button type={'submit'} disabled={formSubmitting}>
+                    {formSubmitting ? (
+                      <LoaderCF />
+                    ) : (
+                      (
+                        page.children.results.find(
+                          (item) => item.name === 'pay'
+                        ) as ButtonTemplate
+                      ).title.value
+                    )}
+                  </button>
+                </Button>
+              </div>
+            </>
+          ) : undefined}
+        </FormContainer>
+      </form>
+    </Themes>
   );
 };

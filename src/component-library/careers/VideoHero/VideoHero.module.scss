@@ -1,8 +1,10 @@
 @use '../../foundation/index.module' as *;
 @use '../../utilities/index.module' as *;
-@use '../../utilities/diamond-mask' as *;
 
 .outer {
+  // should always use the dark theme, but cannot be applied in the JSX as it interferes with the ScrollTransition component
+  @include apply-theme-b-navy;
+
   background-color: var(--background);
   color: var(--text);
   position: relative;
@@ -12,6 +14,7 @@
   min-height: calc(100svh - px-to-rem(70 + 40));
 
   @include media(screen-l, max) {
+    align-items: flex-end;
     border-radius: 0 0 $radius-large 0;
     margin-bottom: px-to-rem(32);
   }
@@ -33,9 +36,26 @@
 }
 
 .content {
-  @include responsive-grid-span(6, 5, 7, 7);
+  @include responsive-grid-span(6, 5, 8, 7);
 
   align-self: center;
+  margin-bottom: $spacing-7;
+}
+
+.children {
+  @include responsive-grid-span(6, 5, 10, 10);
+
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem(8);
+
+  @include media(screen-m) {
+    width: max-content;
+
+    &:has([class^='CareersSearch']) {
+      width: 100%;
+    }
+  }
 }
 
 .video,
@@ -78,7 +98,7 @@
 .toggle {
   position: absolute;
   right: $spacing-14;
-  bottom: $spacing-7;
+  bottom: px-to-rem(24);
 
   @include media(screen-l, max) {
     left: $spacing-14;
@@ -95,10 +115,9 @@
 }
 
 .subtitle {
-  margin-top: $spacing-3;
+  margin-bottom: $spacing-2;
 }
 
 .copy {
   margin-top: $spacing-5;
-  margin-bottom: $spacing-5;
 }

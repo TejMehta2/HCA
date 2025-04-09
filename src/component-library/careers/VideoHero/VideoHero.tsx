@@ -68,8 +68,8 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
           {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
           {title && <div className={styles.title}>{title}</div>}
           {copy && <div className={styles.copy}>{copy}</div>}
-          {children && <div className={styles.children}>{children}</div>}
         </div>
+        {children && <div className={styles.children}>{children}</div>}
       </div>
       <div className={styles.toggle}>
         {!!iframeState && (

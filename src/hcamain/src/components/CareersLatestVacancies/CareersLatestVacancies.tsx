@@ -181,6 +181,7 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
                   <YextResultCardCareers
                     key={job.data.id}
                     location={job.data.jobLocation}
+                    city={job.data.jobCity}
                     clinical={job.data.jobFunction}
                     timing={job.data.employmentType}
                     title={<Text variation={'heading-1'}>{job.data.name}</Text>}

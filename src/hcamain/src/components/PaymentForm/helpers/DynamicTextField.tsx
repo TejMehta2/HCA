@@ -9,7 +9,7 @@ const DynamicTextField = ({
   defaultValue,
 }: {
   name: string;
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'date';
   defaultValue?: string;
   getField: <T>(name: string) => T;
   formErrors: Map<string, string>;

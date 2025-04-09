@@ -98,3 +98,14 @@ Intended for use solely in the Text module
 .decorative {
   @include apply-decorative;
 }
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  i {
+    @include apply-decorative;
+  }
+}

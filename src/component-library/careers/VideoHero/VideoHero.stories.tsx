@@ -29,17 +29,14 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: StoryObj<typeof VideoHero> = {
   args: {
-    title: (
-      <Text variation="display-1" tag="h2">
-        Departments
+    subtitle: (
+      <Text variation="subheading-1" tag="p">
+        HCA UK CAREERS
       </Text>
     ),
-    copy: (
-      <Text variation="body-large" tag="p">
-        Quis laboris proident sint amet id cillum do dolor in tempor est.
-        Exercitation aute sint tempor eu ut aliquip commodo enim nulla et
-        laborum et culpa minim. Commodo ex laboris pariatur labore nostrud
-        dolore.
+    title: (
+      <Text variation="display-3" tag="h1">
+        Delivering <i>exceptional</i> care with exceptional people.
       </Text>
     ),
     children: (

@@ -1,0 +1,33 @@
+﻿---
+ID: "09b0ec75-8b2d-47a8-a694-f6657b61d6a8"
+Parent: "88f16775-4f78-437a-a86d-6640a3da77ef"
+Template: "88f16775-4f78-437a-a86d-6640a3da77ef"
+Path: /sitecore/templates/Project/HCA/The Birth Company/Pregnancy Calculator Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {1BD2226F-AA23-4EB4-9F59-B643131BB9D4}
+    {88F16775-4F78-437A-A86D-6640A3DA77EF}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "785c3152-2ecc-40d4-b4cd-bb1e41f7c49f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250405T131944Z

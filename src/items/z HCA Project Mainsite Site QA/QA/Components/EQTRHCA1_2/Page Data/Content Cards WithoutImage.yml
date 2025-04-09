@@ -8,6 +8,9 @@ Languages:
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20231219T073045Z
@@ -21,10 +24,10 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
       Hint: Title
-      Value: Key Service Lines
+      Value: Without Images Variant
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bc6a8ef4-ed2e-492b-b073-35fcb90679e0"
+      Value: "fc7df881-9232-4f95-b149-46a16eb94514"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -32,13 +35,13 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\5dv29vxgiA
+        sitecore\bartek.glomski@eqtr.com
     - ID: "cddfe7c4-c61f-48a4-8719-85e660642a13"
       Hint: CTACardText
-      Value: Read the story
+      Value: View more
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240314T102616Z
+      Value: 20250405T173245Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |

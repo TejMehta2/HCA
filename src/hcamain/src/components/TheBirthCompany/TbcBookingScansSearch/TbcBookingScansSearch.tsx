@@ -36,7 +36,7 @@ const formatPrice = (value: string): string => {
 
 const groupByArea = (services: TbcService[]) => {
   return services.reduce<Record<string, TbcService[]>>((acc, service) => {
-    const area = service.area?.targetItem?.value?.value;
+    const area = service.area?.targetItem?.medicalAreaName?.value;
     if (!acc[area]) {
       acc[area] = [];
     }
@@ -192,7 +192,7 @@ const TbcSearch = (props: TbcBookingScansSearchProps): JSX.Element => {
         <Button size={'large'} variation={'full'}>
           <button
             type="submit"
-            disabled={keywordId === '' ? true : false}
+            disabled={keywordId === '0' ? true : false}
             onClick={handleSubmit}
           >
             {props.fields.data.item.startBookingCTA?.jsonValue?.value.text}

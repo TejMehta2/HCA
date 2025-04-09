@@ -192,3 +192,49 @@ export const WithRatings: StoryObj<typeof HeaderWithImage> = {
     ),
   },
 };
+
+export const HeaderWithImageNoMask: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    title: (
+      <Text variation="display-1" tag="h2">
+        Get the HCA UK treatment
+      </Text>
+    ),
+    copy: (
+      <Text variation="body-large" tag="p">
+        Choose the private hospital network that’s focused in microscopic detail
+        On you Get the HCA UK Treatment
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size="large" variation="full" contentVariation="full-width">
+          <a href="#">
+            <Icons iconName="iconStethoscope" />
+            <span>
+              Find a <strong>Consultant</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" variation="outline" contentVariation="full-width">
+          <a href="#">
+            <Icons iconName="iconPhone" />
+            <span>
+              Call us <strong>today</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
+    image: (
+      <Image
+        src="/placeholders/cut-out-image.png"
+        alt="HCA worker"
+        width="1024"
+        height="683"
+      />
+    ),
+    theme: 'F-HCA-Fern',
+    noMask: true,
+  },
+};
