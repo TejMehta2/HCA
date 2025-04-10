@@ -101,6 +101,10 @@ export const Default = (props: PregnancyCalculatorProps): JSX.Element => {
       infoMessage = `It's too early to say you're pregnant. Please wait another ${daysLeft} day${
         daysLeft === 1 ? '' : 's'
       } for a reliable calculation.`;
+      //  Check if over 43 weeks (301 days)
+    } else if (daysSinceLmp > 301) {
+      infoMessage =
+        'The date entered is over 43 weeks ago, which is beyond the normal pregnancy duration. Please check the date and try again.';
     } else {
       // Calculate milestones based on the assumption of a 28-day cycle.
       estimatedDueDate = addDays(lmpDate, 280); // LMP + 280 days (40 weeks)
