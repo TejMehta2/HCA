@@ -53,6 +53,7 @@ export type Fields = Navigation.Footer['fields'] & {
   DoctifyReviews?: DoctifyReviewsFields;
   CqcStatus?: { fields?: CQCFields };
   Copyright?: TextField;
+  Contact?: ContactUnit;
 };
 
 export type FooterProps = Navigation.Footer & {
@@ -60,3 +61,27 @@ export type FooterProps = Navigation.Footer & {
   rendering?: ComponentRendering & { params?: Params };
   fields?: Fields;
 };
+
+export interface ContactUnit {
+  name: string;
+  fields: ContactFields;
+}
+
+export interface ContactFields {
+  ContactUnitName: StringValueField;
+  TelephoneNumber: TelephoneNumberItem[];
+}
+
+export interface TelephoneNumberItem {
+  fields: TelephoneNumberFields;
+}
+
+export interface TelephoneNumberFields {
+  InternationPhoneNumber: StringValueField;
+  PhoneNumber: StringValueField;
+  PhoneNumberLabel: StringValueField;
+}
+
+export interface StringValueField {
+  value: string;
+}

@@ -10,4 +10,9 @@ export interface FooterProps {
   columns: FooterColumn[];
   legals?: JSX.Element[];
   copyright?: JSX.Element;
+  contact?: {
+    internationalPhoneNumber: string | undefined;
+    phoneNumber: string | undefined;
+    unitName: string | undefined;
+  };
 }

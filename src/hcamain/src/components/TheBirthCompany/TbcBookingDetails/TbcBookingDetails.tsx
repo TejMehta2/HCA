@@ -18,7 +18,6 @@ import {
   SectionTemplate,
   SectionTitleTemplate,
   TextTemplate,
-  Validator,
 } from '../../PaymentForm/PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
@@ -43,6 +42,7 @@ import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
+import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 
 export interface TbcBookingDetailsProps extends PaymentFormProps {
   params: { [key: string]: string };
@@ -63,6 +63,18 @@ interface AppointmentDetailFields {
   formVariant: string;
 }
 
+interface PaymentAPIResponseMessage {
+  key: string;
+  value: string;
+}
+interface PaymentAPIResponse {
+  response: {
+    success: boolean;
+    redirectUrl: string;
+    messages: PaymentAPIResponseMessage[];
+  };
+}
+
 export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
   const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
@@ -80,6 +92,9 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
+  const [submissionErrors, setSubmissionErrors] = useState<
+    PaymentAPIResponseMessage[]
+  >([]);
   const [appointmentDetails, setAppointmentDetails] =
     useState<AppointmentDetailFields>();
 
@@ -225,6 +240,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     try {
       if (!formRef?.current) return;
+
       const action =
         settings?.find((item) => item.name === 'SubmitAction')?.value.value ||
         '';
@@ -238,18 +254,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         }
       );
 
-      interface PaymentAPIResponse {
-        response: {
-          success: boolean;
-          redirectUrl: string;
-          messages: string[];
-        };
-      }
       const result: PaymentAPIResponse = await response.json();
 
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
+      } else {
+        setSubmissionErrors(result.response.messages);
       }
+
+      setFormSubmitting(false);
     } catch (err) {
       setFormSubmitting(false);
       process.env.NODE_ENV === 'development' && console.log(err);
@@ -277,23 +290,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
   const getField = <T,>(name: string) => {
     return fields.find((field) => field.name === name) as T;
-  };
-
-  const getTargetItemMessage = (targetItems: Validator[], name: string) => {
-    const targetItem = targetItems.filter(
-      (item) => item.parameters?.value === name
-    );
-    return targetItem[0].message.value;
-  };
-
-  const getTargetItemRequired = (targetItems: Validator[], name: string) => {
-    if (!targetItems.length) {
-      return false;
-    }
-    const targetItem = targetItems.find(
-      (item) => item.parameters?.value === name
-    );
-    return targetItem?.type?.value === 'required';
   };
 
   if (error) {
@@ -710,35 +706,60 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 preferences={
                   <Checkboxes>
                     {[
-                      getField<ListTemplate>(
-                        'communicationMode'
-                      ).datasource.targetItem.children.results.map((option) => (
-                        <Checkbox
-                          key={option.name}
-                          label={
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: option.value.value,
-                              }}
-                            ></span>
-                          }
-                          name={`${
-                            getField<ListTemplate>('communicationMode').name
-                          }`}
-                          value={option.name}
-                          id={option.name}
-                          required={getTargetItemRequired(
-                            getField<ListTemplate>('communicationMode')
-                              .validators.targetItems,
-                            option.name
-                          )}
-                          errorMessage={getTargetItemMessage(
-                            getField<ListTemplate>('communicationMode')
-                              .validators.targetItems,
-                            option.name
-                          )}
-                        />
-                      )),
+                      <Checkbox
+                        key={getField<ListTemplate>('privacyPolicy').name}
+                        label={
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                getField<ListTemplate>('privacyPolicy').title
+                                  .value,
+                            }}
+                          ></span>
+                        }
+                        name={`${getField<ListTemplate>('privacyPolicy').name}`}
+                        value={getField<ListTemplate>('privacyPolicy').name}
+                        id={getField<ListTemplate>('privacyPolicy').name}
+                        required={
+                          !!getField<ListTemplate>('privacyPolicy').validators
+                            .targetItems.length
+                        }
+                        errorMessage={
+                          getField<ListTemplate>('privacyPolicy').validators
+                            .targetItems[0].message.value
+                        }
+                      />,
+                      <Checkbox
+                        key={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        label={
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: getField<ListTemplate>(
+                                'attendanceConfirmation'
+                              ).title.value,
+                            }}
+                          ></span>
+                        }
+                        name={`${
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }`}
+                        value={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        id={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        required={
+                          !!getField<ListTemplate>('attendanceConfirmation')
+                            .validators.targetItems.length
+                        }
+                        errorMessage={
+                          getField<ListTemplate>('attendanceConfirmation')
+                            .validators.targetItems[0].message.value
+                        }
+                      />,
                     ]}
                   </Checkboxes>
                 }
@@ -759,6 +780,17 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 name="extrasIds"
                 value={appointmentDetails?.extrasIds || ''}
               />
+
+              {submissionErrors.length > 0 && (
+                <div>
+                  {submissionErrors.map((submissionError, index) => (
+                    <ErrorMessage
+                      key={index}
+                      errorMessage={submissionError.value}
+                    />
+                  ))}
+                </div>
+              )}
 
               <div>
                 <Button size="large" variation="full">

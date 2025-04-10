@@ -36,7 +36,7 @@ const ModalCallUs = (
                 </a>
               </Button>
             ) : (
-              <TextButton>
+              <TextButton theme="dark">
                 <a href={`tel:${contact?.phone?.number}`}>
                   <Icons iconName="iconPhone" />
                   {contact?.phone?.text}
