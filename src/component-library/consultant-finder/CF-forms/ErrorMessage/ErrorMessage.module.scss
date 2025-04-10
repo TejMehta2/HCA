@@ -3,10 +3,8 @@
 
 .error-message {
   display: flex;
+  align-items: center;
+  gap: $spacing-2;
   color: var(--field-error-colour);
   margin-bottom: $spacing-2;
-
-  svg {
-    margin-right: $spacing-1;
-  }
 }
