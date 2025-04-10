@@ -43,6 +43,7 @@ import DynamicTextArea from 'components/PaymentForm/helpers/DynamicTextArea';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import HeaderText from '@component-library/site-components/HeaderText/HeaderText';
+import ErrorMessage from '@component-library/consultant-finder/CF-forms/ErrorMessage/ErrorMessage';
 
 export interface TbcBookingDetailsProps extends PaymentFormProps {
   params: { [key: string]: string };
@@ -63,6 +64,18 @@ interface AppointmentDetailFields {
   formVariant: string;
 }
 
+interface PaymentAPIResponseMessage {
+  key: string;
+  value: string;
+}
+interface PaymentAPIResponse {
+  response: {
+    success: boolean;
+    redirectUrl: string;
+    messages: PaymentAPIResponseMessage[];
+  };
+}
+
 export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const context = useSitecoreContext().sitecoreContext;
   const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
@@ -80,6 +93,9 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
   const [loading, seLoading] = useState(true);
   const [error, setError] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
+  const [submissionErrors, setSubmissionErrors] = useState<
+    PaymentAPIResponseMessage[]
+  >([]);
   const [appointmentDetails, setAppointmentDetails] =
     useState<AppointmentDetailFields>();
 
@@ -225,6 +241,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     try {
       if (!formRef?.current) return;
+
       const action =
         settings?.find((item) => item.name === 'SubmitAction')?.value.value ||
         '';
@@ -238,18 +255,15 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
         }
       );
 
-      interface PaymentAPIResponse {
-        response: {
-          success: boolean;
-          redirectUrl: string;
-          messages: string[];
-        };
-      }
       const result: PaymentAPIResponse = await response.json();
 
       if (result.response.success) {
         router.replace(result.response.redirectUrl);
+      } else {
+        setSubmissionErrors(result.response.messages);
       }
+
+      setFormSubmitting(false);
     } catch (err) {
       setFormSubmitting(false);
       process.env.NODE_ENV === 'development' && console.log(err);
@@ -759,6 +773,17 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 name="extrasIds"
                 value={appointmentDetails?.extrasIds || ''}
               />
+
+              {submissionErrors.length > 0 && (
+                <div>
+                  {submissionErrors.map((submissionError, index) => (
+                    <ErrorMessage
+                      key={index}
+                      errorMessage={submissionError.value}
+                    />
+                  ))}
+                </div>
+              )}
 
               <div>
                 <Button size="large" variation="full">
