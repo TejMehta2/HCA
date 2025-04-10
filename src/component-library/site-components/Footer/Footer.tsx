@@ -7,7 +7,7 @@ import Logo from '../../foundation/BrandAssets/Logo white.svg';
 import Text from '../../foundation/Text/Text';
 
 const Footer = (props: FooterProps): JSX.Element => {
-  const { columns, legals, buttons, copyright } = props;
+  const { columns, legals, buttons, copyright, contact } = props;
   const LogoIcon = Logo as () => JSX.Element;
 
   return (
@@ -25,14 +25,16 @@ const Footer = (props: FooterProps): JSX.Element => {
                 <LogoIcon />
               </a>
 
-              <div className={styles.phone}>
-                <Text tag="span" variation="body-extra-large">
-                  General Enquiries:&nbsp;
-                  <a href="tel:02070794344">
-                    <strong>020 7079 4344</strong>
-                  </a>
-                </Text>
-              </div>
+              {contact?.phoneNumber && (
+                <div className={styles.phone}>
+                  <Text tag="span" variation="body-extra-large">
+                    {contact.unitName}:&nbsp;
+                    <a href={`tel:${contact?.internationalPhoneNumber}`}>
+                      <strong>{contact?.phoneNumber}</strong>
+                    </a>
+                  </Text>
+                </div>
+              )}
             </div>
             {buttons}
           </div>
