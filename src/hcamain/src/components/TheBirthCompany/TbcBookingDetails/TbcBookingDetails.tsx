@@ -100,8 +100,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
   const searchParams = useSearchParams();
 
-  console.log(props);
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -228,7 +226,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     const isValid = validateFormData();
     if (!isValid) {
-      console.log('not isValid');
       setTimeout(() => {
         // Delay to allow errors to render
         const firstError = document.querySelector('[class*="_error-message"]');
