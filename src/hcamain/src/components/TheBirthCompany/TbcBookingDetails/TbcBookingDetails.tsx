@@ -18,7 +18,6 @@ import {
   SectionTemplate,
   SectionTitleTemplate,
   TextTemplate,
-  Validator,
 } from '../../PaymentForm/PaymentForm.types';
 import { z } from 'zod';
 import PhoneField from '@component-library/core-components/form/basic/PhoneField/PhoneField';
@@ -100,6 +99,8 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
     useState<AppointmentDetailFields>();
 
   const searchParams = useSearchParams();
+
+  console.log(props);
 
   useEffect(() => {
     window.scrollTo({
@@ -227,6 +228,7 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
     const isValid = validateFormData();
     if (!isValid) {
+      console.log('not isValid');
       setTimeout(() => {
         // Delay to allow errors to render
         const firstError = document.querySelector('[class*="_error-message"]');
@@ -291,23 +293,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
 
   const getField = <T,>(name: string) => {
     return fields.find((field) => field.name === name) as T;
-  };
-
-  const getTargetItemMessage = (targetItems: Validator[], name: string) => {
-    const targetItem = targetItems.filter(
-      (item) => item.parameters?.value === name
-    );
-    return targetItem[0].message.value;
-  };
-
-  const getTargetItemRequired = (targetItems: Validator[], name: string) => {
-    if (!targetItems.length) {
-      return false;
-    }
-    const targetItem = targetItems.find(
-      (item) => item.parameters?.value === name
-    );
-    return targetItem?.type?.value === 'required';
   };
 
   if (error) {
@@ -724,35 +709,60 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                 preferences={
                   <Checkboxes>
                     {[
-                      getField<ListTemplate>(
-                        'communicationMode'
-                      ).datasource.targetItem.children.results.map((option) => (
-                        <Checkbox
-                          key={option.name}
-                          label={
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: option.value.value,
-                              }}
-                            ></span>
-                          }
-                          name={`${
-                            getField<ListTemplate>('communicationMode').name
-                          }`}
-                          value={option.name}
-                          id={option.name}
-                          required={getTargetItemRequired(
-                            getField<ListTemplate>('communicationMode')
-                              .validators.targetItems,
-                            option.name
-                          )}
-                          errorMessage={getTargetItemMessage(
-                            getField<ListTemplate>('communicationMode')
-                              .validators.targetItems,
-                            option.name
-                          )}
-                        />
-                      )),
+                      <Checkbox
+                        key={getField<ListTemplate>('privacyPolicy').name}
+                        label={
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                getField<ListTemplate>('privacyPolicy').title
+                                  .value,
+                            }}
+                          ></span>
+                        }
+                        name={`${getField<ListTemplate>('privacyPolicy').name}`}
+                        value={getField<ListTemplate>('privacyPolicy').name}
+                        id={getField<ListTemplate>('privacyPolicy').name}
+                        required={
+                          !!getField<ListTemplate>('privacyPolicy').validators
+                            .targetItems.length
+                        }
+                        errorMessage={
+                          getField<ListTemplate>('privacyPolicy').validators
+                            .targetItems[0].message.value
+                        }
+                      />,
+                      <Checkbox
+                        key={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        label={
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: getField<ListTemplate>(
+                                'attendanceConfirmation'
+                              ).title.value,
+                            }}
+                          ></span>
+                        }
+                        name={`${
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }`}
+                        value={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        id={
+                          getField<ListTemplate>('attendanceConfirmation').name
+                        }
+                        required={
+                          !!getField<ListTemplate>('attendanceConfirmation')
+                            .validators.targetItems.length
+                        }
+                        errorMessage={
+                          getField<ListTemplate>('attendanceConfirmation')
+                            .validators.targetItems[0].message.value
+                        }
+                      />,
                     ]}
                   </Checkboxes>
                 }
