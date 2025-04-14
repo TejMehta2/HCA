@@ -16,6 +16,7 @@
   .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: px-to-rem(11);
   }
 
