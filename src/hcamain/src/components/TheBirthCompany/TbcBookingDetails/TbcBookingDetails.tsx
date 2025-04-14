@@ -483,12 +483,6 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   name="title"
                 />
 
-                <DynamicSelectField
-                  getField={getField}
-                  formErrors={formErrors}
-                  name="ethnicity"
-                />
-
                 <DynamicTextField
                   getField={getField}
                   formErrors={formErrors}
@@ -506,6 +500,12 @@ export const Default = (props: TbcBookingDetailsProps): JSX.Element => {
                   formErrors={formErrors}
                   name="dateOfBirth"
                   type="date"
+                />
+
+                <DynamicSelectField
+                  getField={getField}
+                  formErrors={formErrors}
+                  name="ethnicity"
                 />
 
                 <DynamicSelectField
