@@ -90,9 +90,6 @@ const SlotsCalendarBirthCompany = (
 
   const showNextWeek = () => {
     setLoadingSlots(true);
-    setDates([]);
-    setDays([]);
-    setNoSlots(false);
     const nextWeek = new Date(firstDayOfWeek);
     nextWeek.setDate(nextWeek.getDate() + 7);
     setFirstDayOfWeek(getFirstDayOfWeek(nextWeek));
@@ -100,9 +97,6 @@ const SlotsCalendarBirthCompany = (
 
   const showPrevWeek = () => {
     setLoadingSlots(true);
-    setDates([]);
-    setDays([]);
-    setNoSlots(false);
     const prevWeek = new Date(firstDayOfWeek);
     prevWeek.setDate(prevWeek.getDate() - 7);
     setFirstDayOfWeek(getFirstDayOfWeek(prevWeek));
