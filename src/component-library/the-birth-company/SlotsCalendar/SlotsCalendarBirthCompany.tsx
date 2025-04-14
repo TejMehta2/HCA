@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
   SlotsCalendarBirthCompanyProps,
-  // slots,
   day,
   daysList,
 } from './SlotsCalendarBirthCompany.types';
@@ -138,7 +137,7 @@ const SlotsCalendarBirthCompany = (
       .get(slotsURL)
       .then((res) => {
         setLoadingSlots(false);
-        console.log('res', res);
+
         const locationName = res?.data?.location?.name;
         const locationUrl = res.data?.location?.mapLocationUrl;
         if (locationName && locationUrl) {
