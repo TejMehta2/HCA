@@ -26,7 +26,7 @@ export interface slots {
 export interface day {
   date: string;
   dateLabel: string;
-  slots: slots;
+  slots: slot[];
   weekDayLabel: string;
 }
 

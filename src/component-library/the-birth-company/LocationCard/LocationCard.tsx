@@ -20,7 +20,7 @@ const LocationCard = (props: LocationCardProps): JSX.Element => {
       <div className={styles.container}>
         {name}
         {description}
-        <div className={styles.children}>{children}</div>
+        {children && <div className={styles.children}>{children}</div>}
       </div>
       {contentVariation === 'appointmentType' && (
         <div className={styles.icon}>
