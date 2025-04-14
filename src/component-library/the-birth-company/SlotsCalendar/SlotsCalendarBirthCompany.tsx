@@ -93,7 +93,6 @@ const SlotsCalendarBirthCompany = (
     const nextWeek = new Date(firstDayOfWeek);
     nextWeek.setDate(nextWeek.getDate() + 7);
     setFirstDayOfWeek(getFirstDayOfWeek(nextWeek));
-    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(nextWeek)));
   };
 
   const showPrevWeek = () => {
@@ -101,7 +100,6 @@ const SlotsCalendarBirthCompany = (
     const prevWeek = new Date(firstDayOfWeek);
     prevWeek.setDate(prevWeek.getDate() - 7);
     setFirstDayOfWeek(getFirstDayOfWeek(prevWeek));
-    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(prevWeek)));
   };
 
   const getSlots = (firstDay?: string) => {
@@ -228,7 +226,7 @@ const SlotsCalendarBirthCompany = (
   }, []);
 
   useEffect(() => {
-    getSlots(firstDayOfWeek);
+    getSlots(formatDateYYYYMMDD(firstDayOfWeek));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     selectedLocation,
