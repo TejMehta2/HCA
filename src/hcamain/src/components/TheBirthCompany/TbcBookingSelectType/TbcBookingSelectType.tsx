@@ -215,26 +215,32 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                         </Text>
                       }
                       description={
-                        <Text variation="body-small">
-                          {appointmentType.description}
-                        </Text>
+                        appointmentType.description ? (
+                          <Text variation="body-small">
+                            {appointmentType.description}
+                          </Text>
+                        ) : undefined
                       }
                       handleClick={() => {
                         setSelectedTypeOfAppointment(appointmentType.id);
                       }}
                     >
-                      <span>
-                        <Icons iconName="iconClock" />
-                        <Text variation="body-small" tag="p">
-                          {appointmentType.duration}
-                        </Text>
-                      </span>
-                      <span>
-                        <Icons iconName="iconCreditCard" />
-                        <Text variation="body-small" tag="p">
-                          {appointmentType.price}
-                        </Text>
-                      </span>
+                      {appointmentType.duration && (
+                        <span>
+                          <Icons iconName="iconClock" />
+                          <Text variation="body-small" tag="p">
+                            {appointmentType.duration}
+                          </Text>
+                        </span>
+                      )}
+                      {appointmentType.price && (
+                        <span>
+                          <Icons iconName="iconCreditCard" />
+                          <Text variation="body-small" tag="p">
+                            {appointmentType.price}
+                          </Text>
+                        </span>
+                      )}
                     </LocationCard>
                   ))}
                 </>
