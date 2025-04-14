@@ -57,7 +57,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
   }
 
   if (!props.fields?.ModalContent) return <></>;
-  console.log('sticky cta!!');
+
   return (
     <>
       <StickyCTA
