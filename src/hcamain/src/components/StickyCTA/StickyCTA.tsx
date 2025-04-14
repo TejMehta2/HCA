@@ -119,6 +119,7 @@ export const Default = (props: StickyCTAProps): JSX.Element => {
                 >
                   <JssLink
                     field={props.fields?.ModalContent?.[0]?.fields?.PrimaryCTA}
+                    onClick={() => dialogRef?.current?.close()}
                   >
                     <>
                       <span
