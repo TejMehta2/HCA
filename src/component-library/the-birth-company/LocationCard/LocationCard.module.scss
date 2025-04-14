@@ -3,6 +3,7 @@
 
 .wrapper {
   display: flex;
+  justify-content: space-between;
   gap: $spacing-4;
   padding: $spacing-5;
   border-radius: $radius-medium;
@@ -15,6 +16,7 @@
   .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: px-to-rem(11);
   }
 

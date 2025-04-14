@@ -134,6 +134,7 @@ const nextConfig = {
     if (SITECORE_SITE_NAME === "TheBirthCompany") {
       redirects = [
         { source: "/about-us.php", destination: "/about-us", permanent: true },
+        { source: "/alderley-edge-clinic.php", destination: "/hale-facilities", permanent: true },  
         { source: "/anatomy-scan.php", destination: "/types-of-scans-available/pregnancy-scans/anatomy-scan", permanent: true },
         { source: "/articles.php", destination: "/articles", permanent: true },        
         { source: "/blood-tests.php", destination: "/types-of-scans-available/gynaecology-and-fertility-scans/blood-test", permanent: true },
@@ -141,6 +142,7 @@ const nextConfig = {
         { source: "/bronze-package.php", destination: "/scan-packages/bronze-package", permanent: true },
         { source: "/cervical-scan.php", destination: "/types-of-scans-available/pregnancy-scans/cervical-scan", permanent: true },
         { source: "/check-screening-tests-available.php", destination: "/check-screening-tests-available", permanent: true },
+        { source: "/cheshire.php", destination: "/hale-facilities", permanent: true },
         { source: "/comparing-internal-and-external-ultrasound-scans.php", destination: "/articles/comparing-internal-and-external-ultrasound-scans", permanent: true },
         { source: "/consultant-fees.php", destination: "/consultant-fees", permanent: true },
         { source: "/consultant-led-package.php", destination: "/midwife-packages/consultant-led-package", permanent: true },
@@ -231,6 +233,7 @@ const nextConfig = {
         { source: "/obstetrics-registration-form.php", destination: "/obstetrics-registration-form", permanent: true },
         { source: "/gynaecological-registration-form.php", destination: "/gynaecological-registration-form", permanent: true },
         { source: "/pathology-registration-form.php", destination: "/pathology-registration-form", permanent: true },
+        { source: "/:path*.php", destination: "/", permanent: true },
       ];
     } else if (SITECORE_SITE_NAME === "hcamain") {
       redirects = [
