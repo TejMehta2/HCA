@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
   SlotsCalendarBirthCompanyProps,
-  slots,
   day,
   daysList,
 } from './SlotsCalendarBirthCompany.types';
@@ -170,8 +169,15 @@ const SlotsCalendarBirthCompany = (
           }
         }
 
+        const lastDayOfWeek = new Date(firstDayOfWeek);
+        lastDayOfWeek.setUTCHours(0, 0, 0, 0);
+        lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+
         const hasSlots = daysData.some(
-          (item: slots) => item.slots && item.slots.length > 0
+          (item: day) =>
+            item.slots &&
+            item.slots.length > 0 &&
+            new Date(item.date) <= lastDayOfWeek
         );
 
         if (hasSlots) {
@@ -340,7 +346,7 @@ const SlotsCalendarBirthCompany = (
         {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
         {!loadingSlots && noSlots && (
           <div className={styles['no-slots']}>
-            <Text tag="p" variation="body-medium-small">
+            <Text tag="p" variation="body-medium-medium">
               {props.API_C2_GetConsultantSlots_NoResultsMsg}
             </Text>
           </div>

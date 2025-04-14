@@ -3,6 +3,7 @@
 
 .wrapper {
   display: flex;
+  justify-content: space-between;
   gap: $spacing-4;
   padding: $spacing-5;
   border-radius: $radius-medium;
