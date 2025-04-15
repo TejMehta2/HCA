@@ -125,7 +125,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
             <a
               className={styles.logo}
               href={
-                typeof window !== 'undefined'
+                window && typeof window !== 'undefined'
                   ? window?.location.href.indexOf(
                       process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
                     ) === -1
