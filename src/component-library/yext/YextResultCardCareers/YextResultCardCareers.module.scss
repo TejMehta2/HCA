@@ -23,7 +23,12 @@
 
 .bullets {
   display: flex;
-  gap: $spacing-7;
+  flex-direction: column;
+  gap: $spacing-3 $spacing-7;
+
+  @include media(screen-m) {
+    flex-flow: row wrap;
+  }
 }
 
 .city,
