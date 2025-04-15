@@ -23,6 +23,7 @@
 .inner {
   position: relative;
   height: 100%;
+  width: 100%;
   @include responsive-container;
 
   padding-top: $spacing-10;
