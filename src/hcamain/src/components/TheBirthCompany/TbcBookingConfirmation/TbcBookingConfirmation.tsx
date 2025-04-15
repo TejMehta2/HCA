@@ -163,6 +163,10 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
       title: props.fields?.LocationLabel?.value || 'Location',
       text: props.location,
     },
+    {
+      title: props.fields?.AmountLabel?.value || 'Price',
+      text: props.amount,
+    },
   ];
 
   if (props.extras) {
