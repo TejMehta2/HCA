@@ -36,7 +36,7 @@ export const Default: StoryObj<typeof VideoHero> = {
     ),
     title: (
       <Text variation="display-3" tag="h1">
-        Delivering <i>exceptional</i> care with exceptional people.
+        Together we <i>thrive</i>
       </Text>
     ),
     children: (

@@ -2,7 +2,7 @@
 @use '../../utilities/index.module' as *;
 
 .search {
-  @include responsive-grid-span($breakpoint-l: 7);
+  @include responsive-grid-span($breakpoint-l: 10);
 
   display: flex;
   gap: $spacing-2;
