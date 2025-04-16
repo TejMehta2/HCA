@@ -50,6 +50,7 @@ const CarouselTestimonials = (
   const customThumbnail = (i: number) => (
     <button
       className={styles.thumbnail}
+      aria-label={`go to slide ${i}`}
       style={
         activeSlide === i
           ? {
