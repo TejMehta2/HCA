@@ -50,7 +50,6 @@ const CarouselTestimonials = (
   const customThumbnail = (i: number) => (
     <button
       className={styles.thumbnail}
-      aria-label={`go to slide ${i}`}
       style={
         activeSlide === i
           ? {
@@ -59,14 +58,21 @@ const CarouselTestimonials = (
           : {}
       }
     >
+      <span className="sr-only">go to slide {i + 1}</span>
       <div className={styles['thumbnail-image']}>
         {slides[i].thumbnail}
         {activeSlide === i && (
           <button className={styles.controls} onClick={toggleInterval}>
             {paused ? (
-              <Icons iconName="iconPlay" />
+              <>
+                <Icons iconName="iconPlay" />
+                <span className="sr-only">Play carousel</span>
+              </>
             ) : (
-              <Icons iconName="iconPause" />
+              <>
+                <Icons iconName="iconPause" />
+                <span className="sr-only">Pause carousel</span>
+              </>
             )}
           </button>
         )}
