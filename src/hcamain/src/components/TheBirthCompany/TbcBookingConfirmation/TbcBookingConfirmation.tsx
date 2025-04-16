@@ -163,10 +163,6 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
       title: props.fields?.LocationLabel?.value || 'Location',
       text: props.location,
     },
-    {
-      title: props.fields?.AmountLabel?.value || 'Price',
-      text: props.amount,
-    },
   ];
 
   if (props.extras) {
@@ -175,6 +171,15 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
       text: props.extras,
     });
   }
+
+  if (props.amount) {
+    options.push({
+      title: props.fields?.AmountLabel?.value || 'Price',
+      text: props.amount,
+    });
+  }
+
+  console.log(props);
 
   return (
     <>
