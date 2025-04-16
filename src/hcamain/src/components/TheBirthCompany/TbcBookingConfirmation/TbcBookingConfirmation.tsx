@@ -179,8 +179,6 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     });
   }
 
-  console.log(props);
-
   return (
     <>
       <FormContainer
