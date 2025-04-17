@@ -172,6 +172,13 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     });
   }
 
+  if (props.amount) {
+    options.push({
+      title: props.fields?.AmountLabel?.value || 'Price paid',
+      text: props.amount,
+    });
+  }
+
   return (
     <>
       <FormContainer
