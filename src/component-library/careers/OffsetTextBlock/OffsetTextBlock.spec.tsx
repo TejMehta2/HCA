@@ -28,7 +28,7 @@ const mockProps: OffsetTextBlockProps = {
       patients.
     </Text>
   ),
-  cta: (
+  ctas: (
     <Button size="large" variation="full">
       <a href="#">Working at HCA UK</a>
     </Button>
