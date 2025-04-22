@@ -1,0 +1,65 @@
+﻿---
+ID: "8e94bb5c-df7f-4392-b7ec-49f741910017"
+Parent: "f0a8b3cf-557b-48cb-bd91-e255e140ec2f"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Cards"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "509aa157-dc7d-45cc-b6e3-5524fd7f0dad"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{3B1904D0-BAE8-451F-8579-1845EFB8EEED}"
+              p:before="*"
+              s:id="{6B604A3D-BF64-4BFA-8C2B-F9B6B1640392}"
+              s:par="FieldNames&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;Theme&amp;DynamicPlaceholderId=3"
+              s:ph="headless-main" />
+            <r
+              uid="{BD5C35BF-394D-4332-81E2-21652DC449B7}"
+              p:after="r[@uid='{3B1904D0-BAE8-451F-8579-1845EFB8EEED}']"
+              s:ds="local:/Page Data/Let our numbers speak for themselves"
+              s:id="{7F4C762B-AAB2-407A-9435-F445372A6789}"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle=Cards%205&amp;GridParameters&amp;FieldNames=%7B1A4C4624-3ACC-4A12-B882-C98BAE79BEE8%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="headless-main" />
+            <r
+              uid="{0A6A8A52-2423-41E6-850C-2B1BFE550B53}"
+              p:after="*[1=2]"
+              s:ds="local:/Page Data/Let our 3 numbers speak for themselves"
+              s:id="{7F4C762B-AAB2-407A-9435-F445372A6789}"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle=Cards%203&amp;GridParameters&amp;FieldNames=%7B1A4C4624-3ACC-4A12-B882-C98BAE79BEE8%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T162038Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "dc04404e-0f53-4462-b466-f5c7db887d1c"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: 
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T151641Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: "Stats: Cards Variant"

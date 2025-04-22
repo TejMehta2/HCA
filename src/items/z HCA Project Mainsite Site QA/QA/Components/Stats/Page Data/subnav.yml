@@ -1,0 +1,30 @@
+﻿---
+ID: "0fd2d7de-5c08-45de-b4a1-40e8d2c26eee"
+Parent: "19c69a49-bfdd-4e6e-830e-ee2c99b5b36d"
+Template: "61aa776f-88c7-4b7c-9999-1652b95f338c"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Page Data/subnav"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250421T151251Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3239355d-62f1-4efd-a05d-907a75d5d2fe"
+    - ID: "a44708f4-261e-43ca-9b5e-33142fc6325b"
+      Hint: DefaultNavigationImage
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/28b83fb79c1a4d238819e8bb3a67ceab?v=31ffa33c" dam-id="-eFElHWZZEySJEFMHxHhDw" width="500" height="287" alt="HCA Square Logo" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/165670/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "ca6c6c2e-8fc9-44c4-aff7-858546204f05"
+      Hint: RootPage
+      Value: "{F0A8B3CF-557B-48CB-BD91-E255E140EC2F}"
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T151537Z

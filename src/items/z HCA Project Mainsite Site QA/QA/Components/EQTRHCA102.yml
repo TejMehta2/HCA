@@ -6,7 +6,10 @@ Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA102"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1700
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "ca888102-981d-43db-a492-7a494beed043"
 Languages:
 - Language: en
   Versions:
@@ -89,14 +92,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "16eb0828-0828-4560-a2c5-78ff6f5ffa79"
+      Value: "e60fa30f-18cb-4479-9bad-38b294f95d0e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T161135Z
+      Value: 20250418T102444Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: EQTRHCA102

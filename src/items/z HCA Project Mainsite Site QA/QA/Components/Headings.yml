@@ -7,6 +7,12 @@ SharedFields:
 - ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
   Hint: __Workflow
   Value: "{74F03080-2E03-4D0D-99E0-864A33AA9E92}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "b6b19da1-25f4-4c1e-a794-1278f1cf3ed4"
 Languages:
 - Language: en
   Versions:
@@ -38,14 +44,14 @@ Languages:
       Value: "{209EC904-F3E0-4FBA-BA36-5D0A582E30C7}"
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "17b44c2d-0712-48b4-8c5f-28d26824061c"
+      Value: "9bc5f9dc-4441-44e4-a549-491f9f976f83"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250122T170652Z
+      Value: 20250418T102446Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Headings

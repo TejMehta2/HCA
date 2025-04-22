@@ -6,7 +6,10 @@ Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Authors"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2cb9cd4a-31b5-421c-ac3a-af57b5340f6b"
 Languages:
 - Language: en
   Versions:
@@ -35,14 +38,14 @@ Languages:
       Value: 20240930T120447Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "16e52639-b91a-4966-8e9e-8b323744003b"
+      Value: "00611f01-6278-4fcc-a2cf-c23db5b7c090"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241127T161134Z
+      Value: 20250417T145514Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Authors
