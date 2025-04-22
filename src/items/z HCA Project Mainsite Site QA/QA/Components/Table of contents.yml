@@ -3,6 +3,13 @@ ID: "7ea4a898-3af7-4162-8a0f-f4a0f1c503db"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Table of contents"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8af5d48e-5484-4e36-b66b-9b79cb509649"
 Languages:
 - Language: en
   Versions:
@@ -108,7 +115,7 @@ Languages:
       Value: 20241128T174557Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e3ba7bfe-ecfc-495c-ace3-cae408beb8bc"
+      Value: "db5e8270-55a8-454d-8859-52f20cdfb000"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -119,7 +126,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250115T102330Z
+      Value: 20250418T102446Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Table of contents

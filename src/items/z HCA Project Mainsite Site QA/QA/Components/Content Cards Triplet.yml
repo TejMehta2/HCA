@@ -3,6 +3,13 @@ ID: "11dcd3f1-5869-4327-8084-62cd01e3cd10"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Triplet"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "5e32e8c2-4e07-4926-8e9c-542a9eb32d29"
 Languages:
 - Language: en
   Versions:
@@ -31,14 +38,14 @@ Languages:
       Value: 20241128T113214Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d6c09b5d-6650-47de-808b-779179452aaa"
+      Value: "81c94ec7-52e3-4095-a7fc-034ef04d9853"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20241128T144810Z
+      Value: 20250418T102444Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Content Cards Triplet

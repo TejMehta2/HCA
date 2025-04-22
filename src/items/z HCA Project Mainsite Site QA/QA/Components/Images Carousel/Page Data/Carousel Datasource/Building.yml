@@ -1,0 +1,35 @@
+﻿---
+ID: "5a6b775c-afa4-411d-8485-7569951ae22e"
+Parent: "f20d57e2-5262-46e0-b6bc-774686e08bbc"
+Template: "dade4082-3ce2-4767-8843-f3c2f67af2de"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Images Carousel/Page Data/Carousel Datasource/Building"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250421T135858Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8e6d3be1-e5e8-46bb-8cc6-208916ffa187"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "c85a5ae5-0738-49bf-873a-a8ae09a1fd28"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/7e9f02be782a4fe7b6e153895315b97e?v=4fa6ca9f" dam-id="hXJplR94wkO-qOAiQdhvqw" width="1000" height="1000" alt="building_2_external_river_night_09_2017_LBH" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/147675/thumbnail" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T140019Z

@@ -3,6 +3,13 @@ ID: "3d84430d-5e93-4c03-a17d-2a68774a0b71"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Contact Details Box"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8afea861-44e3-4d23-94c0-00ad6ae8c830"
 Languages:
 - Language: en
   Versions:
@@ -39,14 +46,14 @@ Languages:
       Value: 20250404T123551Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "28e0a668-41c4-49bf-b04f-1b7dd63f5c22"
+      Value: "3cc640ed-933b-4754-8d3b-c42173f606a2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250405T143852Z
+      Value: 20250418T102443Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Contact Details Box
