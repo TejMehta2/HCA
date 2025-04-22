@@ -3,7 +3,7 @@ import { CarouselImagesProps } from './CarouselImages.types';
 import styles from './CarouselImages.module.scss';
 
 const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
-  const { images, contentVariation } = props;
+  const { images, contentVariation, id } = props;
   const [isDragging, setIsDragging] = useState(false);
   const [startDragClientX, setStartDragClientX] = useState<number>(0);
   const [translateX, setTranslateX] = useState<number>(0);
@@ -75,6 +75,7 @@ const CarouselImages = (props: CarouselImagesProps): JSX.Element => {
 
   return (
     <div
+      id={id}
       className={[
         styles.wrapper,
         contentVariation === 'equalSize' && styles['equal-size'],
