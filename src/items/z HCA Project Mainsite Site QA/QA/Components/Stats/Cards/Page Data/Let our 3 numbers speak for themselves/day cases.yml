@@ -1,0 +1,37 @@
+﻿---
+ID: "69de3067-1869-4a2a-8468-ea4216c74c77"
+Parent: "61f5b804-f3d4-424e-8bd8-ed7e07859520"
+Template: "66038c46-e4e0-49be-8d37-5d8ea90ebd7b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Cards/Page Data/Let our 3 numbers speak for themselves/day cases"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "2496fb09-1929-4184-a62a-36c44eba0deb"
+      Hint: Text
+      Value: day cases
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T193504Z
+    - ID: "2baa43f4-7140-4514-97fc-6f9638b651e7"
+      Hint: Number
+      Value: 64k
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6c3ae111-0846-4f73-ad75-88d1179c883e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T145724Z

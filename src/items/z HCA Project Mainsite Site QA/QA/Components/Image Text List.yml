@@ -6,7 +6,10 @@ Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Image Text List"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 10300
+  Value: 100
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "ffd5f049-2f4f-45a5-8c1d-66cca123312c"
 Languages:
 - Language: en
   Versions:
@@ -50,7 +53,7 @@ Languages:
       Value: 20240910T145012Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "0cd8aa34-ee1e-439d-9f27-44260c14c298"
+      Value: "129c07a1-0a04-43a5-9fa7-65531dab21a5"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: 
@@ -60,7 +63,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250120T112017Z
+      Value: 20250418T102446Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Image Text List

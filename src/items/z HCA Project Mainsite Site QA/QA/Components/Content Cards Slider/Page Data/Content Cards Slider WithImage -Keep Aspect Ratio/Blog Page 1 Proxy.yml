@@ -1,0 +1,45 @@
+﻿---
+ID: "ab44a9f8-8326-441b-b181-be0e105d4c7f"
+Parent: "ce5c2145-80f7-458a-bf9e-304c8463a2d2"
+Template: "a1d640e8-b025-43b5-80db-c45c2f82227b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Cards Slider/Page Data/Content Cards Slider WithImage -Keep Aspect Ratio/Blog Page 1 Proxy"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240313T182327Z
+    - ID: "3317a6f6-dbe7-4cbb-a826-605fef277ad5"
+      Hint: Link
+      Value: |
+        <link class="" id="{471F79FD-281B-435A-90B8-6FB3B3F15886}" querystring="" anchor="" target="|Custom" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home/QA/Blogs/Blog Page 1" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "77332344-9643-4f3c-96fc-e015f6b423de"
+      Hint: Text
+      Value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu imperdiet ipsum. Nullam tempus sapien posuere sem varius, in ultrices nulla dapibus.
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "27e9b23a-8ef7-4c6d-84e1-051fc3761ad1"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: |
+        <image mediaid="{169B3488-F9A4-495C-B35A-A0029FA0CAD8}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240524T103813Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Women’s Health

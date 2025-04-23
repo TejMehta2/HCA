@@ -90,7 +90,7 @@ SharedFields:
   Value: /sitecore/templates/Project/HCA/Page Content/Content Cards
 - ID: "308e88f5-cd6e-4f8f-bafe-95a47dedefdc"
   Hint: Editable
-  Value: 
+  Value: 1
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -110,6 +110,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{9BDC061B-7825-48AC-956C-416E501B99AE}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "30dd982a-d5a2-465a-a117-0e6e6a797fc5"
 - ID: "e441abe7-2ca3-4640-ae26-3789967925d7"
   Hint: Compatible Renderings
   Value: |
@@ -164,14 +167,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d5065c51-9c8c-48cf-85dc-3cb553537a74"
+      Value: "cc705f57-7430-421d-83e8-8519156448ed"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250405T170937Z
+      Value: 20250421T134614Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

@@ -1,0 +1,42 @@
+﻿---
+ID: "0154cb80-17bd-4d2f-bf32-dceea8a0f38a"
+Parent: "8181c0bd-d2de-4505-92ad-e2b261769b02"
+Template: "cc5dda31-1f4e-471a-8c40-517014ee5dbd"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Three Columns/Page Data/Stats datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T190222Z
+    - ID: "3ffe48f0-1d71-4905-bf08-4df5cfb3fe8f"
+      Hint: Counters
+      Value: |
+        {6A38F5A3-8EA6-493D-8F59-611FB6E650FA}
+        {FD601BF0-2855-4E18-9207-F1529C47DC7E}
+        {C500344C-8176-4BC1-AA4D-AF4E7BF9F6E7}
+        {DA6AC842-F472-41FC-A23B-3E059CE0440A}
+        {1C261B82-0E19-47DE-A9C8-23EE5F5779FB}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4b285041-296f-42d3-a092-c7cbb5c35e7b"
+    - ID: "a7d381f3-5726-4cb3-895f-c66f5a1f8205"
+      Hint: Title
+      Value: At a glance
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240909T193634Z
