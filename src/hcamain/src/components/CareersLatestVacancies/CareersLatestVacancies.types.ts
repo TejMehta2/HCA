@@ -6,6 +6,7 @@ export interface Fields {
   data?: {
     item?: {
       title?: { jsonValue?: Field<string> };
+      heading?: { jsonValue?: Field<string> };
       searchConfiguration?: { targetItem: CareersLatestVacanciesConfiguration };
       jobFamilies?: { targetItems?: GeneralSetting[] };
     };
