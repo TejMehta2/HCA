@@ -76,38 +76,39 @@ export const Default = (props: ContentCarouselExtendedProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
-  const cards = props.fields?.Cards?.map((card) => {
-    const iconMarkup = card?.fields?.Icon?.fields?.SvgMarkup48?.value || '';
-    const hasTitle = card?.fields?.Title || isExperienceEditor;
-    const hasText = card?.fields?.Text || isExperienceEditor;
+  const cards =
+    props.fields?.Cards?.map((card) => {
+      const iconMarkup = card?.fields?.Icon?.fields?.SvgMarkup48?.value || '';
+      const hasTitle = card?.fields?.Title || isExperienceEditor;
+      const hasText = card?.fields?.Text || isExperienceEditor;
 
-    return {
-      image: (
-        <NextJssImage
-          field={card?.fields?.Image}
-          editable={false}
-          next={{
-            width: 456,
-            height: 253,
-            sizes: '(max-width: 768px) 100vw, 30vw',
-          }}
-        />
-      ),
-      icon: card?.fields?.Icon ? (
-        <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
-      ) : undefined,
-      title: hasTitle ? (
-        <Text variation="heading-2">
-          <JssText field={card.fields?.Title} />
-        </Text>
-      ) : undefined,
-      bodyText: hasText ? (
-        <Text variation="body-medium">
-          <JssRichText tag="div" field={card.fields?.Text} />
-        </Text>
-      ) : undefined,
-    };
-  });
+      return {
+        image: (
+          <NextJssImage
+            field={card?.fields?.Image}
+            editable={false}
+            next={{
+              width: 456,
+              height: 253,
+              sizes: '(max-width: 768px) 100vw, 30vw',
+            }}
+          />
+        ),
+        icon: card?.fields?.Icon ? (
+          <span dangerouslySetInnerHTML={{ __html: iconMarkup }} />
+        ) : undefined,
+        title: hasTitle ? (
+          <Text variation="heading-2">
+            <JssText field={card.fields?.Title} />
+          </Text>
+        ) : undefined,
+        bodyText: hasText ? (
+          <Text variation="body-medium">
+            <JssRichText tag="div" field={card.fields?.Text} />
+          </Text>
+        ) : undefined,
+      };
+    }) || [];
 
   const { headingTag, subheadingTag } = getHeadingTags(
     props?.params,

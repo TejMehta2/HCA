@@ -14,5 +14,5 @@ export interface CardBlockCarouselProps {
   subtitle: JSX.Element | ReactNode;
   title: JSX.Element | ReactNode;
   bodyText: JSX.Element | ReactNode;
-  cards?: CardProps[];
+  cards: CardProps[];
 }
