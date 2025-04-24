@@ -1,8 +1,8 @@
 ﻿---
-ID: "76192b08-856e-4e2a-93e0-f2f18da62c60"
-Parent: "0ed4ba06-6137-417a-834a-b9328d9de1b0"
+ID: "58e1c3e1-f47d-4330-bd5a-4d8e9a7ad018"
+Parent: "9dce151e-bf7f-47ce-bf32-01bb62b0f7a0"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA46/Page Data"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Carousel Extended/Page Data"
 Languages:
 - Language: en
   Versions:
