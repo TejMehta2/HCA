@@ -1,0 +1,88 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  border-radius: $radius-medium;
+  overflow: hidden;
+}
+
+.header {
+  background-color: var(--text);
+  color: var(--card-background);
+  padding: $spacing-6 $spacing-5;
+
+  .prices {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .price-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: px-to-rem(4);
+
+    @include apply-body-medium-small;
+  }
+
+  .price-seperator {
+    margin-inline: px-to-rem(4);
+    color: $navy-blue-30;
+
+    @include apply-body-medium-small;
+  }
+
+  .discount {
+    border-radius: $radius-large;
+    padding: px-to-rem(8) px-to-rem(12);
+    background-color: $navy-blue-80;
+  }
+}
+
+.body {
+  background-color: var(--card-background);
+  color: var(--text);
+  padding: $spacing-6 $spacing-5;
+}
+
+.packages-list {
+  list-style: none;
+  margin-top: $spacing-4;
+  padding: 0;
+
+  li {
+    margin-top: px-to-rem(12);
+    display: flex;
+    gap: px-to-rem(12);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    .icon {
+      border-radius: 50%;
+      max-width: px-to-rem(32);
+      max-height: px-to-rem(32);
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.included {
+        background-color: $fern-20;
+        color: $fern-150;
+      }
+
+      &.excluded {
+        background-color: $orange-20;
+        color: $orange-150;
+      }
+    }
+  }
+}
+
+.cta {
+  margin-top: px-to-rem(38);
+}
