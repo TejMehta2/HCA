@@ -10,7 +10,7 @@ import {
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
-import CardBlockCarousel from 'temp/component-library/careers/CardBlockCarousel/CardBlockCarousel';
+import CardBlockCarousel from '@component-library/careers/CardBlockCarousel/CardBlockCarousel';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import getHeadingTags from 'lib/getHeadingTags';
 
