@@ -23,6 +23,13 @@ import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import ErrorMessage from '@component-library/site-components/ErrorMessage/ErrorMessage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
+import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
+import getHeadingTags from 'lib/getHeadingTags';
+
+interface VariantCareersLatestVacanciesProps
+  extends CareersLatestVacanciesProps {
+  variant?: 'carousel';
+}
 
 const CareersLatestVacanciesDefaultComponent = (
   props: CareersLatestVacanciesProps
@@ -43,7 +50,9 @@ const CareersLatestVacanciesDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
+export const Default = (
+  props: VariantCareersLatestVacanciesProps
+): JSX.Element => {
   const fallbackData = useComponentProps<JobsResponse['response']>(
     props.rendering?.uid
   );
@@ -123,6 +132,39 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
       };
     });
 
+  const cta =
+    props.fields.data.item?.searchConfiguration?.targetItem?.viewAllVacanciesCTA
+      .jsonValue.value.href &&
+    props.fields.data.item?.searchConfiguration?.targetItem?.viewAllVacanciesCTA
+      .jsonValue.value.text ? (
+      <Button size={'large'} variation={'full'}>
+        <JssLink
+          href={`${
+            props.fields.data.item.searchConfiguration.targetItem
+              .viewAllVacanciesCTA.jsonValue.value.href
+          }?${[...query, scope].join('&')}`}
+          field={
+            props.fields.data.item?.searchConfiguration?.targetItem
+              ?.viewAllVacanciesCTA.jsonValue.value
+          }
+        >
+          <SitecoreSvg>
+            {props.fields.data.item?.searchConfiguration?.targetItem?.viewAllVacanciesCTA.jsonValue.value.text?.replaceAll(
+              /\s{jobsCount}/gm,
+              response?.resultsCount ? ` ${response?.resultsCount}` : ''
+            )}
+          </SitecoreSvg>
+        </JssLink>
+      </Button>
+    ) : (
+      <></>
+    );
+
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.data?.item?.heading?.jsonValue?.value
+  );
+
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <form
@@ -137,112 +179,151 @@ export const Default = (props: CareersLatestVacanciesProps): JSX.Element => {
           router.replace(url, undefined, { shallow: true });
         }}
       >
-        <CareersSearchResults
-          header={
-            <>
+        {props.variant === 'carousel' ? (
+          <CarouselCards
+            theme={props.params?.Theme || 'A-HCA-White'}
+            cardsToDisplay={4}
+            link={cta}
+            subtitle={
+              <Text tag={subheadingTag} variation="subheading-1">
+                <JssText field={props.fields?.data?.item?.heading?.jsonValue} />
+              </Text>
+            }
+            title={
               <Text
-                tag={props.params?.HeadingTag || 'h2'}
+                tag={headingTag}
                 variation={props.params?.HeadingSize || 'display-3'}
               >
                 <JssText field={props.fields.data.item?.title?.jsonValue} />
               </Text>
-              <Filters
-                hideResultsCount={true}
-                buttonText={
-                  <span>
-                    <b>Filter</b> by
-                  </span>
-                }
-                buttonIcon={<Icons iconName="iconFilterCircle" />}
-                resultsCount={Number(response?.resultsCount)}
-                filters={filterCategories
-                  ?.filter(
-                    (category) =>
-                      category.title !== 'Job Family' || !scope?.length
-                  )
-                  .map((category) => ({
-                    title: category.title,
-                    contentVariation: 'filters',
-                    children: (
-                      <Checkboxes>
-                        {category.fields?.map((props) => {
-                          return <Checkbox {...props} key={props.id} />;
-                        })}
-                      </Checkboxes>
-                    ),
-                  }))}
-              />
-            </>
-          }
-          results={
-            response?.resultsCount ? (
-              response?.results?.map((job) => {
-                return (
-                  <YextResultCardCareers
-                    key={job.data.id}
-                    location={job.data.jobLocation}
-                    city={job.data.jobCity}
-                    clinical={job.data.jobFunction}
-                    timing={job.data.employmentType}
-                    title={<Text variation={'heading-1'}>{job.data.name}</Text>}
-                    cta={
-                      <Button
-                        contentVariation={'full-width'}
-                        variation={'full'}
-                        size={'small'}
+            }
+          >
+            {response?.results?.map((job) => {
+              return (
+                <YextResultCardCareers
+                  variation="carousel"
+                  key={job.data.id}
+                  location={job.data.jobLocation}
+                  city={job.data.jobCity}
+                  clinical={job.data.jobFunction}
+                  timing={job.data.employmentType}
+                  title={<Text variation={'heading-1'}>{job.data.name}</Text>}
+                  cta={
+                    <Button
+                      contentVariation={'full-width'}
+                      variation={'full'}
+                      size={'small'}
+                    >
+                      <a
+                        href={
+                          job.data.landingPageUrl ||
+                          job.data.applicationUrl ||
+                          '#'
+                        }
                       >
-                        <a
-                          href={
-                            job.data.landingPageUrl ||
-                            job.data.applicationUrl ||
-                            '#'
-                          }
-                        >
-                          {props.fields?.data?.item?.searchConfiguration
-                            ?.targetItem?.readMoreCtaText?.value ||
-                            'Read More & Apply'}
-                        </a>
-                      </Button>
-                    }
-                  />
-                );
-              })
-            ) : (
-              <ErrorMessage contentVariation={'no-container'} />
-            )
-          }
-          cta={
-            props.fields.data.item?.searchConfiguration?.targetItem
-              ?.viewAllVacanciesCTA.jsonValue.value.href &&
-            props.fields.data.item?.searchConfiguration?.targetItem
-              ?.viewAllVacanciesCTA.jsonValue.value.text ? (
-              <Button size={'large'} variation={'full'}>
-                <JssLink
-                  href={`${
-                    props.fields.data.item.searchConfiguration.targetItem
-                      .viewAllVacanciesCTA.jsonValue.value.href
-                  }?${[...query, scope].join('&')}`}
-                  field={
-                    props.fields.data.item?.searchConfiguration?.targetItem
-                      ?.viewAllVacanciesCTA.jsonValue.value
+                        {props.fields?.data?.item?.searchConfiguration
+                          ?.targetItem?.readMoreCtaText?.value ||
+                          'Read More & Apply'}
+                      </a>
+                    </Button>
                   }
+                />
+              );
+            })}
+          </CarouselCards>
+        ) : (
+          <CareersSearchResults
+            header={
+              <>
+                <Text
+                  tag={props.params?.HeadingTag || 'h2'}
+                  variation={props.params?.HeadingSize || 'display-3'}
                 >
-                  <SitecoreSvg>
-                    {props.fields.data.item?.searchConfiguration?.targetItem?.viewAllVacanciesCTA.jsonValue.value.text?.replaceAll(
-                      /\s{jobsCount}/gm,
-                      response?.resultsCount ? ` ${response?.resultsCount}` : ''
-                    )}
-                  </SitecoreSvg>
-                </JssLink>
-              </Button>
-            ) : (
-              <></>
-            )
-          }
-        />
+                  <JssText field={props.fields.data.item?.title?.jsonValue} />
+                </Text>
+                <Filters
+                  hideResultsCount={true}
+                  buttonText={
+                    <span>
+                      <b>Filter</b> by
+                    </span>
+                  }
+                  buttonIcon={<Icons iconName="iconFilterCircle" />}
+                  resultsCount={Number(response?.resultsCount)}
+                  filters={filterCategories
+                    ?.filter(
+                      (category) =>
+                        category.title !== 'Job Family' || !scope?.length
+                    )
+                    .map((category) => ({
+                      title: category.title,
+                      contentVariation: 'filters',
+                      children: (
+                        <Checkboxes>
+                          {category.fields?.map((props) => {
+                            return <Checkbox {...props} key={props.id} />;
+                          })}
+                        </Checkboxes>
+                      ),
+                    }))}
+                />
+              </>
+            }
+            results={
+              response?.resultsCount ? (
+                response?.results?.map((job) => {
+                  return (
+                    <YextResultCardCareers
+                      key={job.data.id}
+                      location={job.data.jobLocation}
+                      city={job.data.jobCity}
+                      clinical={job.data.jobFunction}
+                      timing={job.data.employmentType}
+                      title={
+                        <Text variation={'heading-1'}>{job.data.name}</Text>
+                      }
+                      cta={
+                        <Button
+                          contentVariation={'full-width'}
+                          variation={'full'}
+                          size={'small'}
+                        >
+                          <a
+                            href={
+                              job.data.landingPageUrl ||
+                              job.data.applicationUrl ||
+                              '#'
+                            }
+                          >
+                            {props.fields?.data?.item?.searchConfiguration
+                              ?.targetItem?.readMoreCtaText?.value ||
+                              'Read More & Apply'}
+                          </a>
+                        </Button>
+                      }
+                    />
+                  );
+                })
+              ) : (
+                <ErrorMessage contentVariation={'no-container'} />
+              )
+            }
+            cta={cta}
+          />
+        )}
       </form>
     </Themes>
   );
+};
+
+export const Carousel = (
+  props: VariantCareersLatestVacanciesProps
+): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <CareersLatestVacanciesDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} variant={'carousel'} />;
 };
 
 // Pre-fetch response data on the server, to be consumed as fallbackData by SWR, and into initial HTML response.

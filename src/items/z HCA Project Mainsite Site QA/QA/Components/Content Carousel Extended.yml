@@ -1,19 +1,18 @@
 ﻿---
-ID: "0ed4ba06-6137-417a-834a-b9328d9de1b0"
+ID: "9dce151e-bf7f-47ce-bf32-01bb62b0f7a0"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA46"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Carousel Extended"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 100
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: |
-    <image mediaid="{F0ADAC44-D471-467A-AF7F-003C242DE8E5}" />
+  Value: 
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "797af15c-2b6e-40ee-8de3-b1f5a8dae407"
+  Value: "cc2c7fab-bb20-4c44-adc5-2a48f77169a9"
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -23,9 +22,9 @@ SharedFields:
         id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
         <r
           uid="{F39B4F22-7B00-4E4E-8147-E00812AEA751}"
-          s:ds="{CBB046FC-EF9C-4A8C-A3BD-D9514D28F97E}"
-          s:id="{C0F5FD77-9C6A-4493-AF3C-4B12298F6A25}"
-          s:par="HeadingTag=h1&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7B9466E52C-E3D0-43AE-9169-B578BBDFC5A8%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1&amp;CacheClearingBehavior=Clear%20on%20publish"
+          s:ds="local:/Page Data/datasource"
+          s:id="{50D7674B-E4F0-48EC-82DE-0274C4B85243}"
+          s:par="DisableHeadersToggle&amp;HeadingTag=h1&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1&amp;CacheClearingBehavior=Clear%20on%20publish"
           s:ph="headless-main"
           s:ccb="Clear on publish" />
       </d>
@@ -48,14 +47,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9f90b052-dbdc-4056-a41c-1406dd669c72"
+      Value: "fb166c06-89ad-4821-808c-2086fd9b6160"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T102444Z
+      Value: 20250424T141612Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: EQTRHCA46
+      Value: Content Carousel Extended
