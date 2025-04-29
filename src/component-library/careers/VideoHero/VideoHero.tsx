@@ -55,7 +55,7 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
             onLoad={() => setIframeState('playing')}
             ref={iframeRef}
             aria-hidden="true"
-            src={videoUrl.href}
+            src={videoUrl.href + '?nocache=' + new Date().getTime()}
             allow="autoplay"
             data-ready="true"
             seamless
