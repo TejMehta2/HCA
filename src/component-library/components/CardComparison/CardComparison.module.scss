@@ -28,7 +28,7 @@
 
   .price-seperator {
     margin-inline: px-to-rem(4);
-    color: $navy-blue-30;
+    color: var(--card-price-divider);
 
     @include apply-body-medium-small;
   }
@@ -36,7 +36,7 @@
   .discount {
     border-radius: $radius-large;
     padding: px-to-rem(8) px-to-rem(12);
-    background-color: $navy-blue-80;
+    background-color: var(--card-discount-background);
   }
 }
 

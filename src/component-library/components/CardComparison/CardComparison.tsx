@@ -39,25 +39,23 @@ const CardComparison = (props: CardComparisonProps): JSX.Element => {
     );
   });
 
-  const getPackageItems = (packageItems: PackageItem[], include = true) => {
+  const getPackageItems = (packageItems: PackageItem[], included = true) => {
     return packageItems.map((packageItem, index) => (
       <li key={index}>
         <span
           className={[
             styles.icon,
-            include ? styles.included : styles.excluded,
+            included ? styles.included : styles.excluded,
           ].join(' ')}
         >
-          <Icons iconName={include ? 'iconCheckSmall' : 'iconCrossSmall'} />
+          <Icons iconName={included ? 'iconCheckSmall' : 'iconCrossSmall'} />
         </span>
         <div>
           {packageItem.label && (
             <Text variation="body-medium-extra-large" tag="div">
               {packageItem.label}{' '}
               {packageItem.info && (
-                <Tooltips theme="light" display="inline">
-                  {packageItem.info}
-                </Tooltips>
+                <Tooltips display="inline">{packageItem.info}</Tooltips>
               )}
             </Text>
           )}
