@@ -47,16 +47,13 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <Head>
-        <title>{data.jobProfile}</title>
-        <meta property="og:title" content={data.jobProfile} />
+        <title>{data.name}</title>
+        <meta property="og:title" content={data.name} />
       </Head>
       <VacancyHeader
         title={
-          <Text
-            variation={getDynamicTitleStyle(data.jobProfile.length)}
-            tag="h1"
-          >
-            {data.jobProfile}
+          <Text variation={getDynamicTitleStyle(data.name.length)} tag="h1">
+            {data.name}
           </Text>
         }
         location={data.jobLocation}
