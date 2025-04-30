@@ -13,8 +13,9 @@ const redirectMiddleware = async (req: NextRequest) => {
       );
 
       const apiUrl = new URL(
-        //`${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
-        `https://www.hcahealthcare.co.uk/api/api-layer/redirects/find?source=${pathname.toLowerCase()}`
+        `${req.nextUrl.origin}${
+          process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
+        }/redirects/find?source=${pathname.toLowerCase()}`
       );
 
       console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
