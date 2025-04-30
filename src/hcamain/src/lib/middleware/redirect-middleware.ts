@@ -8,19 +8,19 @@ const redirectMiddleware = async (req: NextRequest) => {
       const { url } = req;
       const { pathname, search } = new URL(url);
 
-      console.log(
-        `redirect 1: url ${url}, pathname: ${pathname}, search: ${search}`
-      );
+      // console.log(
+      //   `redirect 1: url ${url}, pathname: ${pathname}, search: ${search}`
+      // );
 
       const apiUrl = new URL(
-        `${
-          process.env.INTEGRATION_LAYER_URL
+        `${req.nextUrl.origin}${
+          process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
         }/redirects/find?source=${pathname.toLowerCase()}`
       );
 
-      console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
+      // console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
       const response = await fetch(apiUrl.href, { next: { revalidate: 3600 } });
-      console.log(`redirect 3: ok?${response.ok}`);
+      // console.log(`redirect 3: ok?${response.ok}`);
 
       if (response.ok) {
         //&& (await response.bodyUsed)
@@ -30,14 +30,14 @@ const redirectMiddleware = async (req: NextRequest) => {
         let data: any = {};
         if (text1.length > 0) {
           data = JSON.parse(text1);
-          console.log('data', data);
+          // console.log('data', data);
           //const data = await response.json();
           if (data.destination) {
             const redirectUrl = new URL(data.destination, req.url);
             redirectUrl.search = search;
-            console.log(
-              `redirect 4: url ${url}, pathname: ${pathname},  search: ${search}`
-            );
+            // console.log(
+            //   `redirect 4: url ${url}, pathname: ${pathname},  search: ${search}`
+            // );
             return NextResponse.redirect(redirectUrl);
           }
         }
@@ -51,7 +51,7 @@ const redirectMiddleware = async (req: NextRequest) => {
         console.error('Redirect Middleware : ', error);
     }
   }
-  console.log('Redirect Middleware end');
+  //console.log('Redirect Middleware end');
   return NextResponse.next();
 };
 
