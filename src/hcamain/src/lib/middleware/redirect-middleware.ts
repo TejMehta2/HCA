@@ -13,8 +13,9 @@ const redirectMiddleware = async (req: NextRequest) => {
       // );
 
       const apiUrl = new URL(
-        //`${process.env.INTEGRATION_LAYER_URL}/redirects/find?source=${pathname}`
-        `https://www.hcahealthcare.co.uk/api/api-layer/redirects/find?source=${pathname.toLowerCase()}`
+        `${req.nextUrl.origin}${
+          process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH
+        }/redirects/find?source=${pathname.toLowerCase()}`
       );
 
       // console.log(`redirect 2: apiUrl ${JSON.stringify(apiUrl)}`);
@@ -41,16 +42,16 @@ const redirectMiddleware = async (req: NextRequest) => {
           }
         }
       } else {
-        // console.log('redirect 5:', JSON.stringify(response));
+        console.log('redirect 5:', JSON.stringify(response));
         throw response.statusText;
       }
     } catch (error) {
-      // console.log('Redirect Middleware error: ', error);
+      console.log('Redirect Middleware error: ', error);
       process.env.NODE_ENV === 'development' &&
         console.error('Redirect Middleware : ', error);
     }
   }
-  // console.log('Redirect Middleware end');
+  //console.log('Redirect Middleware end');
   return NextResponse.next();
 };
 
