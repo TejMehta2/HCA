@@ -83,7 +83,14 @@ const ServiceCardsDefaultComponent = (
   return <></>;
 };
 
-export const Default = (props: ServiceCardsProps): JSX.Element => {
+interface ServiceCardsPropsVariantProps extends ServiceCardsProps {
+  variant?: 'role' | 'service';
+}
+
+export const Default = ({
+  variant = 'service',
+  ...props
+}: ServiceCardsPropsVariantProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
   const isExperienceEditor = sitecoreContext.pageEditing;
 
@@ -111,6 +118,7 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
   return (
     <DynamicServiceCards
       id={componentAnchorId}
+      contentVariation={variant}
       title={
         (props.fields?.data?.item?.title?.jsonValue || isExperienceEditor) && (
           <Text
@@ -215,4 +223,14 @@ export const Default = (props: ServiceCardsProps): JSX.Element => {
       )}
     </DynamicServiceCards>
   );
+};
+
+export const Secondary = (
+  props: ServiceCardsPropsVariantProps
+): JSX.Element => {
+  if (!props.fields?.data?.item) {
+    return <ServiceCardsDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} variant="role" />;
 };
