@@ -9,7 +9,7 @@ SharedFields:
   Value: 100
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "3ed4538a-56c8-4a90-8b22-4762f2b72b8a"
+  Value: "7d259b6b-f896-4633-b610-0a59ac998a2a"
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -21,7 +21,7 @@ SharedFields:
           uid="{33EF1594-E6EB-4D62-A83B-6F230BC0C47B}"
           s:ds="local:/Data/Text Block Component"
           s:id="{9D703CBE-D052-4D60-8F11-02452F651C71}"
-          s:par="HeadingTag=h2&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="DisableHeadersToggle&amp;HeadingTag=h2&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main" />
       </d>
     </r>
@@ -69,14 +69,14 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a06a6383-9bec-4676-b41b-5dc9a59af982"
+      Value: "41ecadee-b46d-470e-98e2-36cb9aa19731"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T095656Z
+      Value: 20250430T230006Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Default
