@@ -14,15 +14,7 @@ import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
-
-interface AuthorFields {
-  fields?: {
-    Name?: Field<string>;
-    Position?: Field<string>;
-    Avatar?: ImageField;
-    Link?: LinkField;
-  };
-}
+import { AuthorFields } from 'src/types/authorFields';
 
 interface Fields {
   Quote?: Field<string>;
