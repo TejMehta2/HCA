@@ -69,6 +69,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
+        theme={props.params?.Theme || 'A-HCA-White'}
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
             <Text tag={subheadingTag} variation={'subheading-1'}>
