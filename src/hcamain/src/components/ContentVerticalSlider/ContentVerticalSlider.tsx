@@ -97,6 +97,7 @@ export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
 
   return (
     <DynamicServiceCards
+      theme={props.params?.Theme || 'I-HCA-Goldenrod'}
       id={componentAnchorId}
       contentVariation={'role'}
       title={
