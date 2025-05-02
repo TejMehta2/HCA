@@ -66,7 +66,7 @@ import { Default as CardBlockCarouselStory } from '../../careers/CardBlockCarous
 
 import DualCTABlock from '../../careers/DualCTABlock/DualCTABlock';
 import { DualCTABlockProps } from '../../careers/DualCTABlock/DualCTABlock.types';
-import { Default as DualCTABlockStory } from '../../careers/DualCTABlock/DualCTABlock.stories';
+// import { Default as DualCTABlockStory } from '../../careers/DualCTABlock/DualCTABlock.stories.tsx.disabled';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
@@ -843,7 +843,7 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
           {...(ImageAndTextBlockStory.args as ImageAndTextBlockProps)}
           theme="A-HCA-White"
         />
-        <DualCTABlock {...(DualCTABlockStory.args as DualCTABlockProps)} />
+        {/* <DualCTABlock {...(DualCTABlockStory.args as DualCTABlockProps)} /> */}
         <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
         <CarouselImages
           {...(CarouselImagesEqualSizeStory.args as CarouselImagesProps)}
