@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Field,
   Image,
-  ImageField,
   Text as JssText,
   LinkField,
   useSitecoreContext,
