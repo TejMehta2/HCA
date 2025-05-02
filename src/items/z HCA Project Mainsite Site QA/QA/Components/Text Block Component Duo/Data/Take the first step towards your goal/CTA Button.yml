@@ -1,8 +1,8 @@
 ﻿---
-ID: "cb0dc122-c91b-4260-8cc9-91c5cd8d4d42"
-Parent: "ad617343-01b6-49c1-aae1-330425c67117"
-Template: "4d8873cb-38ef-40c2-939b-879d5e9699de"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33/Data/Find a consultant"
+ID: "8c9db0aa-49ba-4485-8ae4-97425f721fd6"
+Parent: "8d40c500-4590-4ffe-b83f-89a8ceca5962"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block Component Duo/Data/Take the first step towards your goal/CTA Button"
 Languages:
 - Language: en
   Versions:
@@ -13,7 +13,7 @@ Languages:
       Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240402T161601Z
+      Value: 20250502T141542Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -24,21 +24,18 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "978efdc3-68e1-4d6d-aa00-420a44c3477f"
+      Value: "4be803c6-deb2-40c2-8425-2c42966e9910"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
-        <link linktype="internal" text="Find a &lt;strong&gt;consultant&lt;/strong&gt;" querystring="" target="" id="{2F2BEC59-B5A2-4100-A359-A22D0628503D}" />
+        <link linktype="internal" text="Submit &lt;strong&gt;your CV&lt;/strong&gt;" querystring="" target="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
-    - ID: "d4e8f601-4189-4c53-a450-1b938d34f437"
-      Hint: Practice
-      Value: "{114F95BA-9012-4A8F-9507-426B2A948885}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T164945Z
-    - ID: "e1dd6602-4ddc-4428-a336-986c1a3e5583"
-      Hint: Service
-      Value: "{0211C1E8-8ED0-4986-92BD-9A3F01A37E2A}"
+      Value: 20250502T141815Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{44B6CB93-CF74-455D-A8CC-D9ECBBBECBEC}"

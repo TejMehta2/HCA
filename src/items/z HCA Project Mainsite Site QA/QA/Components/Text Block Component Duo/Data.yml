@@ -1,8 +1,8 @@
 ﻿---
-ID: "6af81bd9-90f2-4476-a55d-6df531c4cc08"
-Parent: "ad617343-01b6-49c1-aae1-330425c67117"
-Template: "6d1ace35-819d-4515-a86d-89ab96696f61"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33/Data/Call Us today"
+ID: "3ee5d2bc-1daa-49fe-93d2-56d6aa72d83b"
+Parent: "80c0c34e-551d-4efa-82ae-8bb4e49560a9"
+Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block Component Duo/Data"
 Languages:
 - Language: en
   Versions:
@@ -10,13 +10,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240402T160535Z
-    - ID: "3128343e-984c-4c99-9dc2-cc13b1152783"
-      Hint: ContactUnit
-      Value: |
-        {44F3F91A-6517-4748-B0B3-DE08D210B2A7}
-        {DCF60739-46BA-41D4-A590-D17D719932D7}
-        {812284BB-1B28-4ADC-B026-B5CF2052F215}
+      Value: 20250501T145347Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -27,11 +21,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5f7197fd-6bbd-464a-8838-de65f2b040d8"
+      Value: "d40fa95b-3270-46fe-b269-09f9997d523c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240402T161323Z
+      Value: 20250501T145347Z

@@ -2,7 +2,7 @@
 ID: "5faa66ec-b2d6-4f0b-a910-7dd459559f62"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/EQTRHCA33"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Header with image"
 SharedFields:
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
@@ -115,7 +115,7 @@ Languages:
         </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "adcc55b2-a0b5-44f7-9607-03f1f7a80582"
+      Value: "ad58195f-57fe-460a-bc32-66b4f68a6cf8"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -129,7 +129,7 @@ Languages:
       Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T102444Z
+      Value: 20250502T142732Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: EQTRHCA33
+      Value: Header with image
