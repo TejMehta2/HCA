@@ -7,26 +7,7 @@ const DualCTABlock = (props: DualCTABlockProps): JSX.Element => {
   const { content, theme, id } = props;
   return (
     <Themes theme={theme || 'A-HCA-White'} id={id}>
-      <div className={styles['wrapper']}>
-        {content?.map((CTABlock, index) => (
-          <div
-            className={styles['item-wrapper']}
-            key={index}
-            data-animate={index > 0 ? 's' : 'xs'}
-          >
-            <div className={styles['container']}>
-              <div className={styles['text-column']}>
-                <div>{CTABlock.subheader}</div>
-                <div className={styles['header']}>{CTABlock.header}</div>
-                <div className={styles['body-text']}>{CTABlock.bodyCopy}</div>
-              </div>
-              {CTABlock.cta && (
-                <div className={styles['cta']}>{CTABlock.cta}</div>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      {content && <div className={styles['wrapper']}>{content}</div>}
     </Themes>
   );
 };

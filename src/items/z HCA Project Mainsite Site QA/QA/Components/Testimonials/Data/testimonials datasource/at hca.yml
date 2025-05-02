@@ -1,0 +1,54 @@
+﻿---
+ID: "9fe2c672-8879-4d27-8842-502bf0c7165b"
+Parent: "33188017-fd46-4c74-abd3-6282de03c1ef"
+Template: "0dd6eac1-63df-439b-8f55-81e0cd5728f4"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Testimonials/Data/testimonials datasource/at hca"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250501T111807Z
+    - ID: "51c384e2-b708-4763-81b5-440fcbcb2147"
+      Hint: Quote
+      Value: |
+        At HCA UK, you have everything you need to deliver brilliant
+                    patient care in an inspiring environment- and we&apos;re always
+                    looking for ways to push the boundaries.
+                    <br />
+                    <br />
+                    There&apos;s a real focus on giving you the opportunities you need
+                    to follow your interests and progress quickly. My career journey is
+                    a good example of that.
+                    <br />
+                    <br />I really appreciate that I get to work so closely with
+                    clinical and non-clinical experts. As nurses, we have fantastic
+                    access to renowned consultants and other highly-skilled
+                    specialists.
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8c417a4c-f4ae-43d3-beb9-6a6de59bebc2"
+    - ID: "b1edb14a-1f95-4671-a7fd-2e3c2199655f"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/67209a7f9e684130a4d55c06ee18958e?v=b1bbbd53" dam-id="IW14GKdCSyuq4rgta3orQQ" width="1000" height="667" alt="Nurse wraps patient's injured hand 688278780.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231432/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250501T112007Z
+    - ID: "f07b7bd2-7a11-4249-8743-7e66063f5720"
+      Hint: Author
+      Value: "{7FFECCAE-A32C-4F3D-ABC4-AE17CD17774B}"
