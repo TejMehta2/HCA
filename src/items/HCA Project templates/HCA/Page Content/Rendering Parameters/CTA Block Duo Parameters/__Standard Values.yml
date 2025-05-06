@@ -1,8 +1,8 @@
 ﻿---
-ID: "3ee5d2bc-1daa-49fe-93d2-56d6aa72d83b"
-Parent: "80c0c34e-551d-4efa-82ae-8bb4e49560a9"
-Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block Component Duo/Data"
+ID: "f8d67eab-4687-4709-9335-19708a118e37"
+Parent: "06d5a8ed-33a4-444b-988d-ecccf87f9166"
+Template: "06d5a8ed-33a4-444b-988d-ecccf87f9166"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/CTA Block Duo Parameters/__Standard Values
 Languages:
 - Language: en
   Versions:
@@ -10,22 +10,18 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20250501T145347Z
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\bartek.glomski@eqtr.com
+      Value: 20211012T120926Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\bartek.glomski@eqtr.com
+        sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d40fa95b-3270-46fe-b269-09f9997d523c"
+      Value: "8cbc2e80-3dbc-4f21-bba4-a3e804e46624"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250501T145347Z
+      Value: 20250501T165158Z

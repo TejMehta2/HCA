@@ -2,20 +2,20 @@
 ID: "f88b13d5-59b5-43f8-b742-17980678f46e"
 Parent: "7bfcaa48-b14e-45df-9c72-d01460580782"
 Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
-Path: /sitecore/layout/Placeholder Settings/Project/HCA/Page Content/Text Block Component Duo
+Path: /sitecore/layout/Placeholder Settings/Project/HCA/Page Content/CTA Block Duo
 SharedFields:
 - ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
   Hint: Placeholder Key
-  Value: "text-block-component-duo-{*}"
+  Value: "cta-block-duo-{*}"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 750
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "9125222d-169c-4bdb-af92-52f11f065d8c"
+  Value: "3562e51d-cac6-4ce8-8af1-a3030a1b3913"
 - ID: "e391b526-d0c5-439d-803e-17512eae6222"
   Hint: Allowed Controls
-  Value: "{9D703CBE-D052-4D60-8F11-02452F651C71}"
+  Value: "{C81703EF-34C2-41A3-BC78-7258389E59D2}"
 Languages:
 - Language: en
   Versions:
@@ -34,11 +34,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f883c897-8ec9-409a-a883-d2f82b8c1d3b"
+      Value: "4db4224b-1fa7-4987-b7b0-eaf43f0bad88"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250502T133619Z
+      Value: 20250506T145046Z
