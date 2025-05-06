@@ -1,44 +1,34 @@
 import React from 'react';
+import { render } from '@testing-library/react';
 import DualCTABlock from './DualCTABlock';
-import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../../core-components/Button/Button';
+import { DualCTABlockProps } from './DualCTABlock.types';
 import Text from '../../foundation/Text/Text';
+import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
+import TextBlock from '../../site-components/TextBlock/TextBlock';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof DualCTABlock> = {
-  title: 'careers/DualCTABlock',
-  component: DualCTABlock,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'fullscreen',
-  },
-};
-
-export default meta;
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: StoryObj<typeof DualCTABlock> = {
-  args: {
-    theme: 'A-HCA-White',
-    content: [
-      {
-        subheader: (
-          <Text tag="p" variation="subheading-1">
-            Register for job alerts
-          </Text>
-        ),
-        header: (
+const mockProps: DualCTABlockProps = {
+  theme: 'A-HCA-White',
+  content: [
+    <div key={0}>
+      <TextBlock
+        title={
           <Text tag="h3" variation="display-2">
             Stay ahead of the game
           </Text>
-        ),
-        bodyCopy: (
+        }
+        subheading={
+          <Text tag="p" variation="subheading-1">
+            Register for job alerts
+          </Text>
+        }
+        text={
           <Text tag="p" variation="body-large">
             We&apos;re always looking for talented people. <br />
             Make sure you never miss one of our new opportunities
           </Text>
-        ),
-        cta: (
+        }
+        ctas={
           <>
             <Button size="large" variation="full">
               <a href="#">
@@ -49,27 +39,27 @@ export const Default: StoryObj<typeof DualCTABlock> = {
               </a>
             </Button>
           </>
-        ),
-      },
-      {
-        subheader: (
-          <Text tag="p" variation="subheading-1">
-            Express your interest
-          </Text>
-        ),
-        header: (
+        }
+      />
+      <TextBlock
+        title={
           <Text tag="h3" variation="display-2">
             Take the first step towards your goal
           </Text>
-        ),
-        bodyCopy: (
+        }
+        subheading={
+          <Text tag="p" variation="subheading-1">
+            Express your interest
+          </Text>
+        }
+        text={
           <Text tag="p" variation="body-large">
             We can help find a job that suits you. Submit your CV and we&apos;ll
             match it with suitable roles when they become available and contact
             you directly.
           </Text>
-        ),
-        cta: (
+        }
+        ctas={
           <>
             <Button size="large" variation="full">
               <a href="#">
@@ -80,8 +70,15 @@ export const Default: StoryObj<typeof DualCTABlock> = {
               </a>
             </Button>
           </>
-        ),
-      },
-    ],
-  },
+        }
+      />
+    </div>,
+  ],
 };
+
+describe('DualCTABlock', () => {
+  it('Renders children from props', async () => {
+    const { getByText } = render(<DualCTABlock {...mockProps} />);
+    expect(getByText('Stay ahead of the game')).toBeVisible();
+  });
+});

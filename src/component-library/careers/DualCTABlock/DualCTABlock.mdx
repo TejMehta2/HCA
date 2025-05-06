@@ -1,0 +1,91 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+import * as DualCTABlockStories from './DualCTABlock.stories';
+
+<Meta of={DualCTABlockStories} />
+
+# DualCTABlock
+
+## Description
+
+The DualCTABlock component has two cta blocks appearing side by side on desktop and stacked on mobile.
+They use a secondary colour of the current theme so that they always contrast with the background
+
+It is intended to be used on the careers homepage
+
+It can be composed like this:
+
+```tsx
+<DualCTABlock
+  content={[
+    <div key="0">
+      <CTABlock
+        ctas={
+          <>
+            <Button size="large" variation="full">
+              <a href="#">
+                <Icons iconName="iconEmail" />
+                <span>
+                  Register <strong>your interest</strong>
+                </span>
+              </a>
+            </Button>
+          </>
+        }
+        header={
+          <Text tag="h3" variation="display-4">
+            Stay ahead of the game
+          </Text>
+        }
+        subheader={
+          <Text tag="p" variation="subheading-1">
+            Register for job alerts
+          </Text>
+        }
+        theme="A-HCA-White"
+      >
+        <Text tag="p" variation="body-large">
+          We're always looking for talented people. <br />
+          Make sure you never miss one of our new opportunities
+        </Text>
+      </CTABlock>
+      <CTABlock
+        ctas={
+          <>
+            <Button size="large" variation="full">
+              <a href="#">
+                <Icons iconName="iconArrowSmallUp" />
+                <span>
+                  Submit <strong>your CV</strong>
+                </span>
+              </a>
+            </Button>
+          </>
+        }
+        header={
+          <Text tag="h3" variation="display-4">
+            Take the first step towards your goal
+          </Text>
+        }
+        subheader={
+          <Text tag="p" variation="subheading-1">
+            Express your interest
+          </Text>
+        }
+        theme="A-HCA-White"
+      >
+        <Text tag="p" variation="body-large">
+          We can help find a job that suits you. Submit your CV and we'll match
+          it with suitable roles when they become available and contact you
+          directly.
+        </Text>
+      </CTABlock>
+    </div>,
+  ]}
+  theme="A-HCA-White"
+/>
+```
+
+## Example
+
+<Canvas of={DualCTABlockStories.Default} />
+<Controls of={DualCTABlockStories.Default} />
