@@ -98,6 +98,9 @@ Languages:
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: "Header with image: FullWidth variant"
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -112,7 +115,7 @@ Languages:
         </ul>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "5ae97930-265c-4c22-aa68-98b74c9b581d"
+      Value: "58ada181-f052-413a-b754-ec400698f91e"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: |
@@ -123,10 +126,10 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "cb5cd4c3-e70e-40de-b786-191285ba1ca3"
       Hint: AbstractText
-      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus dui, congue sed tortor ac, interdum venenatis leo. Aliquam erat volutpat. Quisque id mattis sem, ac facilisis massa. Donec sit amet neque sed erat vulputate porta ut id lectus. Pellentesque vitae velit in purus dictum laoreet eget eu lorem. In hac habitasse platea dictumst.</p>
+      Value: <span>&nbsp;</span>
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250502T142851Z
+      Value: 20250505T174429Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
-      Value: Header with image
+      Value: Header with image. <i>full width variant</i>

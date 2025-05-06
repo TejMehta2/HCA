@@ -1,19 +1,22 @@
 ﻿---
-ID: "e1f2ae32-3b7b-4c3f-867c-cd2add0a16b0"
+ID: "44600dd5-6fd4-4536-a830-485b66059dc1"
 Parent: "a74530b9-f2b0-4c93-a4d2-96d70e73bfc2"
 Template: "7f21cd7f-5eac-4c96-9675-74bc7a599a25"
-Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data/Content Cards"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data/Careers v2"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240910T150502Z
+      Value: 20250505T170944Z
     - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
       Hint: Heading
-      Value: Careers
+      Value: Careers V2
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -24,10 +27,10 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "7271b4dd-8299-46fc-b5a1-d2422b5e4fc3"
       Hint: Title
-      Value: List of components
+      Value: List of V2 components
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "4f685fcc-a538-4cbe-b639-e53bcb45535d"
+      Value: "345c5f1c-69db-4bdf-8561-ce42a07dd179"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -37,17 +40,19 @@ Languages:
       Value: See more
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250505T171901Z
+      Value: 20250506T150834Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
-        {7C47CF35-244B-4919-9081-36BB30C0F7B2}
-        {36F5A99C-17D4-4CAF-A096-A93B0ED599C5}
-        {4789C8E7-DD70-4828-BE38-170103F3AF77}
-        {60C95BFB-0B55-4897-91E2-C4CDAF4918DD}
-        {F0A8B3CF-557B-48CB-BD91-E255E140EC2F}
-        {6A66FD2A-DB03-41A7-95AC-694BFFF22092}
-        {7A6B2F72-BC63-4D26-A047-3FCD58A7DE7F}
-        {87BB6F82-6E9C-4CA7-ADE9-50FB74BF2BA5}
         {D69BF2A1-1CC9-4FA5-B101-8EF735802047}
-        {BAE5A657-6D34-4393-B3B7-F927E94B2B90}
+        {A09116F6-F76E-4BBC-92A8-04D18F21F9D3}
+        {B04340FD-AF4C-4CC7-B6B4-0A7B47DDF2CE}
+        {8E94BB5C-DF7F-4392-B7EC-49F741910017}
+        {26FF9786-7786-47E5-AA01-BC4290F6A390}
+        {9DCE151E-BF7F-47CE-BF32-01BB62B0F7A0}
+        {ECAC604A-B907-4AEA-8B79-04A99592F36F}
+        {C9523323-4703-4586-8D75-7ABBDC581AD2}
+        {C22DFFED-097C-4ACD-B760-6C100E238304}
+        {3C1FB887-7286-423F-B178-DF456D5490DF}
+        {5780E812-1737-414C-82BA-7697A98F4989}
+        {C6F45EB1-B3E9-4C2F-87EE-002D00EFC949}
