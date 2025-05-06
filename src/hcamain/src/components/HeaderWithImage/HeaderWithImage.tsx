@@ -39,7 +39,7 @@ export type HeaderWithImageProps = {
 };
 
 interface HeaderWithImageVariantProps extends HeaderWithImageProps {
-  variant?: 'fullwidthimage';
+  contentVariation?: 'fullWidthImage';
 }
 
 const HeaderWithImageDefaultComponent = (
@@ -78,7 +78,7 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
 
   return (
     <HeaderWithImage
-      //variant={props.variant}
+      contentVariation={props.contentVariation}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       title={
         <Text
@@ -87,7 +87,7 @@ export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
           }
           tag={headingTag}
         >
-          <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
+          <RichText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
       subtitle={
@@ -153,5 +153,5 @@ export const FullWidthImage = (
     return <HeaderWithImageDefaultComponent {...props} />;
   }
 
-  return <Default {...props} variant="fullwidthimage" />;
+  return <Default {...props} contentVariation="fullWidthImage" />;
 };
