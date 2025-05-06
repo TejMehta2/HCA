@@ -30,7 +30,7 @@ Languages:
       Value: List of V2 components
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "95058c48-788a-45db-a042-abfa29d077f8"
+      Value: "345c5f1c-69db-4bdf-8561-ce42a07dd179"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -40,7 +40,7 @@ Languages:
       Value: See more
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250506T144736Z
+      Value: 20250506T150834Z
     - ID: "e6568c06-70ff-4b88-b5ed-44a0bd98df50"
       Hint: Pages
       Value: |
@@ -54,6 +54,5 @@ Languages:
         {C9523323-4703-4586-8D75-7ABBDC581AD2}
         {C22DFFED-097C-4ACD-B760-6C100E238304}
         {3C1FB887-7286-423F-B178-DF456D5490DF}
-        {1D273741-C1C9-4F1A-A256-BEEEA1B11FF7}
         {5780E812-1737-414C-82BA-7697A98F4989}
         {C6F45EB1-B3E9-4C2F-87EE-002D00EFC949}

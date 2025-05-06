@@ -16,7 +16,7 @@ type TextBlockComponentDuoProps = {
 export const Default = (props: TextBlockComponentDuoProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
-  const phKey = `text-block-component-duo-${props?.params?.DynamicPlaceholderId}`;
+  const phKey = `cta-block-duo-${props?.params?.DynamicPlaceholderId}`;
 
   return (
     <DualCTABlock
