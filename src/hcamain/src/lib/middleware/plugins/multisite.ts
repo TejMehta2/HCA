@@ -32,7 +32,6 @@ class MultisitePlugin implements MiddlewarePlugin {
   }
 
   async exec(req: NextRequest, res?: NextResponse): Promise<NextResponse> {
-    console.log('xxx multisite Middleware');
     return this.multisiteMiddleware.getHandler()(req, res);
   }
 }
