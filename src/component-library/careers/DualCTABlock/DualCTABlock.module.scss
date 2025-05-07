@@ -20,7 +20,7 @@
     & > * {
       flex: 1;
 
-      & div[class*='wrapper'] {
+      & div[class*='Block_wrapper'] {
         height: 100%;
         background-color: var(--cta-block-background-right);
         color: var(--text);
