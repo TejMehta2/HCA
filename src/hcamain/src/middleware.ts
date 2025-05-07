@@ -3,11 +3,21 @@ import middleware from 'lib/middleware';
 import { smallcaseurlMiddleware } from 'lib/middleware/smallcase-url-Middleware';
 import geolocationMiddleware from 'lib/geolocation-middleware';
 import redirectMiddleware from 'lib/middleware/redirect-middleware';
+import { multisitePlugin } from 'lib/middleware/plugins/multisite';
 
 // eslint-disable-next-line
 export default async function (req: NextRequest, ev: NextFetchEvent) {
   const lowercaseRespone = smallcaseurlMiddleware(req);
   if (lowercaseRespone) return lowercaseRespone;
+
+  const multisiteResponse = await multisitePlugin.exec(req);
+  if (multisiteResponse) {
+    // if it returned a rewrite, respect it
+    if (multisiteResponse.headers.get('x-sc-rewrite')) {
+      return multisiteResponse;
+    }
+  }
+
   const redirectResponse = await redirectMiddleware(req);
   if (redirectResponse) return redirectResponse;
   const geolocationResponse = geolocationMiddleware(req);
