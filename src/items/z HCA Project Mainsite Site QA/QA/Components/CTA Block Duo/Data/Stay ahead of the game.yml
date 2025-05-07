@@ -1,0 +1,32 @@
+﻿---
+ID: "4f5a6e87-15d9-4b08-971b-06252e88fd99"
+Parent: "e6de0235-2397-4ba1-b1fb-16891e12acdb"
+Template: "add26115-d42f-45bb-b2d4-b13211aac2cc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/CTA Block Duo/Data/Stay ahead of the game"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0e7dc7c3-75ae-4895-8f37-53beef0051cf"
+      Hint: Text
+      Value: We’re always looking for talented people. Make sure you never miss one of our new opportunities.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250502T141138Z
+    - ID: "6b6db542-a329-44cd-a350-0ba0f386640e"
+      Hint: Title
+      Value: Stay ahead of the game
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "fa66d2be-6d42-4257-bd47-eeae62d44776"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250506T130205Z
+    - ID: "f79f7278-290d-4268-a48b-e6eedda56618"
+      Hint: Heading
+      Value: Register for job alerts

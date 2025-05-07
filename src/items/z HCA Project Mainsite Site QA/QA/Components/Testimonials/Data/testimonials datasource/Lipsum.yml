@@ -1,0 +1,44 @@
+﻿---
+ID: "b35a3efc-2db2-4b96-a3df-05282f93333c"
+Parent: "33188017-fd46-4c74-abd3-6282de03c1ef"
+Template: "0dd6eac1-63df-439b-8f55-81e0cd5728f4"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Testimonials/Data/testimonials datasource/Lipsum"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250501T111807Z
+    - ID: "51c384e2-b708-4763-81b5-440fcbcb2147"
+      Hint: Quote
+      Value: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sem magna, iaculis vel urna quis, tincidunt iaculis felis. Suspendisse in quam commodo, fermentum nunc ac, volutpat nibh. Sed vitae tortor quam. Nullam porttitor justo vitae eros convallis condimentum. Etiam interdum lectus quis magna tincidunt semper. Quisque congue aliquet tellus sollicitudin accumsan. Integer cursus nibh et ipsum vehicula porttitor.
+        Nunc aliquet velit orci, et rutrum augue malesuada eget. Nullam ultricies non urna ac venenatis. </p>
+        <p>Sed euismod sem et leo tincidunt fermentum. Morbi vehicula eu urna eget tempus. Maecenas iaculis, massa nec accumsan elementum, dui dui fringilla magna, sodales pretium ipsum tortor nec nisi. Ut scelerisque augue nec eros luctus, a viverra augue semper. Nam augue purus, tincidunt et tempor sed, hendrerit a lorem.</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bdaf70c5-b4c7-43f3-9781-17c4460a723d"
+    - ID: "b1edb14a-1f95-4671-a7fd-2e3c2199655f"
+      Hint: Image
+      Value: |
+        <image src="https://hcil-q-001.sitecorecontenthub.cloud/api/public/content/e0a3b9decfc14cb5b4998d077d89ee85?v=374dc087" dam-id="-vygWrXNS1iYy-feSLdzkg" width="1000" height="667" alt="Consultant with nurses 486418365.jpg" dam-content-type="Image" thumbnailsrc="https://hcil-q-001.sitecorecontenthub.cloud/api/gateway/231282/thumbnail" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250501T112241Z
+    - ID: "f07b7bd2-7a11-4249-8743-7e66063f5720"
+      Hint: Author
+      Value: "{7FFECCAE-A32C-4F3D-ABC4-AE17CD17774B}"

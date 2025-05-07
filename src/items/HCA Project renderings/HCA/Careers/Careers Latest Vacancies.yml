@@ -19,6 +19,9 @@ SharedFields:
           title {
             jsonValue
           }
+          heading {
+            jsonValue
+          }
           searchConfiguration {
             targetItem {
               ... on CareersLatestVacanciesConfiguration {
@@ -87,6 +90,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{9E8902A3-0274-498A-B815-DEF9EB0F048D}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "74fec021-f84f-475a-b363-d2c8d0452cdb"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -136,14 +142,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "82d695fb-ed44-4433-bf4b-e321c31a5b4d"
+      Value: "de648156-1ccc-4139-8df0-82070b79e04d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172637Z
+      Value: 20250423T104610Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

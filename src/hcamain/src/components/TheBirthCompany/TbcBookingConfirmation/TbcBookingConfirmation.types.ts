@@ -37,6 +37,7 @@ export interface Fields {
   DurationLabel?: Field<string>;
   TypeLabel?: Field<string>;
   LocationLabel?: Field<string>;
+  AmountLabel?: Field<string>;
 }
 
 export type TbcBookingConfirmationProps = {
@@ -49,6 +50,7 @@ export type TbcBookingConfirmationProps = {
   duration: string;
   appointmentDateTime: string;
   location: string;
+  amount: string;
   retryQuerystring: string;
 };
 

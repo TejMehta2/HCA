@@ -1,0 +1,39 @@
+﻿---
+ID: "0af4cc0e-73fd-4451-8617-1188172905d2"
+Parent: "04a79a48-0e52-4bd4-8718-863b14f5cf09"
+Template: "53863e35-28a7-4d9c-a965-6e502e1645af"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Logo Block/Data/Logo Block SideBySide/Logo 3"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240126T121448Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\naoum.zilas@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "73a34faa-c398-41dc-8b49-d59a6f3e6970"
+    - ID: "9bda5df1-cce6-4637-aeb7-6b5996c615a5"
+      Hint: LogoImage
+      Value: |
+        <image mediaid="{2FEC7033-10AD-4428-AC90-8B1FFC04B663}" />
+    - ID: "ad27e018-981a-4714-ae3e-20eda670d5b4"
+      Hint: Link
+      Value: |
+        <link class="" id="{5B5C8266-2EF7-4A47-BEA4-D054898AE345}" querystring="" anchor="" target="" title="" linktype="internal" text="" url="/HCA/HCA-Main/Home" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\5dv29vxgiA
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240314T102614Z

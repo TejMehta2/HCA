@@ -1,0 +1,30 @@
+﻿---
+ID: "1078307e-b245-4570-a3b8-6f928db6f479"
+Parent: "1fec2029-abc3-435c-bdde-6353ac460404"
+Template: "1fec2029-abc3-435c-bdde-6353ac460404"
+Path: /sitecore/templates/Project/HCA/Page Content/Testimonials/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{0DD6EAC1-63DF-439B-8F55-81E0CD5728F4}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "030ac065-c476-46d5-bab9-c16d993fc6a9"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231219T082925Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "252a80bd-0790-411c-8e09-23a12fd18eec"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250501T091702Z

@@ -15,6 +15,7 @@ import Text from '@component-library/foundation/Text/Text';
 import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
+import OffsetTextBlock from '@component-library/careers/OffsetTextBlock/OffsetTextBlock';
 
 interface Fields {
   Heading?: Field<string>;
@@ -65,9 +66,15 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     props.fields?.Heading?.value
   );
+
+  const centered =
+    props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
+
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
+        theme={props.params?.Theme || 'A-HCA-White'}
+        contentVariation={centered ? 'centered' : undefined}
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
             <Text tag={subheadingTag} variation={'subheading-1'}>
@@ -82,7 +89,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
                 variation={props.params?.HeadingSize || 'display-3'}
                 tag={headingTag}
               >
-                <JssText field={props.fields?.Title} />
+                <JssRichText field={props.fields?.Title} />
               </Text>
             </>
           )
@@ -101,5 +108,62 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
         }
       />
     </Themes>
+  );
+};
+
+export const Offset = (props: TextBlockComponentProps): JSX.Element => {
+  const phKey = `text-block-component-${props.params?.DynamicPlaceholderId}`;
+  const { sitecoreContext } = useSitecoreContext();
+  const isExperienceEditor = sitecoreContext.pageEditing;
+
+  if (!props.fields) {
+    return <TextBlockComponentDefaultComponent {...props} />;
+  }
+
+  const componentTitle = props?.fields?.Title?.value;
+  const componentAnchorId = inPageNavGlobalStore.addItem(
+    props?.params,
+    componentTitle
+  );
+  const { headingTag, subheadingTag } = getHeadingTags(
+    props?.params,
+    props.fields?.Heading?.value
+  );
+  return (
+    <OffsetTextBlock
+      id={componentAnchorId}
+      theme={props.params?.Theme || 'A-HCA-White'}
+      subheading={
+        (props.fields?.Heading?.value || isExperienceEditor) && (
+          <Text tag={subheadingTag} variation={'subheading-1'}>
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        )
+      }
+      title={
+        (props.fields?.Title?.value || isExperienceEditor) && (
+          <>
+            <Text
+              variation={props.params?.HeadingSize || 'display-1'}
+              tag={headingTag}
+            >
+              <JssRichText field={props.fields?.Title} />
+            </Text>
+          </>
+        )
+      }
+      bodyCopy={
+        (props.fields?.Text?.value || isExperienceEditor) && (
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
+        )
+      }
+      ctas={
+        <PlaceHolderWrapper>
+          <Placeholder name={phKey} rendering={props.rendering} />
+        </PlaceHolderWrapper>
+      }
+    />
   );
 };

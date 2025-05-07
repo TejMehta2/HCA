@@ -1,0 +1,53 @@
+﻿---
+ID: "e848f5ad-07a1-41a2-8cf4-bf83ad2802f6"
+Parent: "3db8700c-c704-48fe-843d-a65618aec717"
+Template: "85fa9acd-38ac-4893-a6b9-1a94644a41cc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/FAQ Block/Data/FAQ Block Right Aligned"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240129T162732Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "6ff89c24-0c42-41a0-91e8-a6d7e68c167c"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum lacus et facilisis pellentesque. Cras placerat diam massa, sit amet lobortis lacus suscipit et. Mauris at tempor metus. Fusce semper ipsum non hendrerit mollis.</p>
+    - ID: "7a4dfcc9-d784-4ba0-9b16-3845f8bda62a"
+      Hint: Questions
+      Value: "{9413DD7B-8D52-4E57-9CEB-9DEA2122B569}|{9079C5E4-1C1F-4DB4-B6C7-61EA9B61343F}|{13D28E0F-DD4A-4F68-A501-00606BA5B1AB}|{8E79B310-7BE5-4D49-B794-B7F5A32FAB21}|{18B7B808-4112-453B-B488-AFFE3AE2511B}|{B559E8AC-6B29-42CA-8892-BC027F94E049}"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c2017579-fe1a-4b42-984b-957343938c9f"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link linktype="internal" text="more here" querystring="" target="" id="{653532A5-879B-44AA-87C3-BA72F1BA50A2}" />
+    - ID: "ae4b03e7-ac89-4f52-8832-3c0cc5ef6e09"
+      Hint: Heading
+      Value: "what best applies to you?"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240617T141604Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{58E74E44-2137-47FE-9F08-A3A4EC026FFB}"
+    - ID: "ed208587-49ec-48b5-81d0-2c4de0185875"
+      Hint: Title
+      Value: Becoming a patient

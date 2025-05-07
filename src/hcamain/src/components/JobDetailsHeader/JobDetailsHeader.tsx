@@ -17,6 +17,7 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Head from 'next/head';
 import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -43,6 +44,15 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   if (!props?.fields?.data?.item || !data) {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
+
+  const matchedSetting =
+    props.fields?.data?.item?.headerImageMapping?.targetItems?.find(
+      (setting) => setting.jobFamily?.value === data.jobFamily
+    );
+
+  const heroImage = matchedSetting
+    ? matchedSetting.image
+    : props.fields?.data?.contextItem?.image;
 
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
@@ -73,6 +83,19 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
             </Button>
           </>
         }
+        image={
+          heroImage?.jsonValue?.value && (
+            <NextJssImage
+              field={heroImage?.jsonValue}
+              next={{
+                fill: true,
+                sizes: '100vw',
+                loading: 'eager',
+                priority: true,
+              }}
+            />
+          )
+        }
       />
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
         <div className="vacancy-rte">
@@ -89,24 +112,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           </Button>
         </Container>
       </BlogContent>
-      {/* V2
-      <p>
-        header images are mapped with corresponding jobFamily/area page. find
-        matching Job s jobFamily field value from the API response in dictionary
-        below and use corresponding image{' '}
-      </p>
-      {props.fields?.data?.item?.headerImageMapping?.targetItems.map(
-        (setting, key) => {
-          return (
-            <p key={key}>
-              jobfamily:{setting.jobFamily?.value}
-              image:{setting.image?.jsonValue?.value?.src}
-            </p>
-          );
-        }
-      )}
-      <p>if there is no match, use default header image:</p>
-      {props.fields?.data?.contextItem?.image?.jsonValue?.value?.src} */}
     </Themes>
   );
 };
