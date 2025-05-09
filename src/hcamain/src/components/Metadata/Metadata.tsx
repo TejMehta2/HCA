@@ -16,6 +16,7 @@ export interface PageRouteMetadata {
     MetaDescription?: Field<string>;
     MetaImage?: ImageField;
     MetaTitle?: Field<string>;
+    BrowserTitle?: Field<string>;
     NoFollow?: Field<boolean>;
     NoIndex?: Field<boolean>;
     AbstractTitle?: Field<string>;
@@ -31,6 +32,7 @@ export interface PageRouteMetadata {
   };
   itemId?: string;
   templateId?: string;
+  displayName?: string;
 }
 
 interface Fields {
@@ -86,6 +88,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
     MetaDescription,
     MetaImage,
     MetaTitle,
+    BrowserTitle,
     NoFollow,
     NoIndex,
     AbstractText,
@@ -98,9 +101,12 @@ export const Default = (props: MetadataProps): JSX.Element => {
   } = fields;
   const PageId = route?.itemId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
   const TemplateId = route?.templateId?.replaceAll(/[{\-}]/g, '').toLowerCase(); // Todo replace
-
+  const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
   // computed values
-  const title = `${MetaTitle?.value || Title?.value} ${
+  const title = `${MetaTitle?.value || titleStripped} ${
+    PageTitleSufix?.value || ''
+  }`;
+  const browserTitle = `${BrowserTitle?.value || titleStripped || route.displayName} ${
     PageTitleSufix?.value || ''
   }`;
   const description = MetaDescription?.value || Text?.value;
@@ -170,6 +176,8 @@ export const Default = (props: MetadataProps): JSX.Element => {
   } else {
     return (
       <Head>
+        {browserTitle && <title>{browserTitle}</title>}
+        &&
         {TwitterCard?.value?.value && (
           <meta name="twitters:card" content={TwitterCard?.value?.value} />
         )}{' '}

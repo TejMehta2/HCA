@@ -1,0 +1,1 @@
+dotnet sitecore ser pull --include z-HCA-Project-Main-Site-Sync -n "prod"

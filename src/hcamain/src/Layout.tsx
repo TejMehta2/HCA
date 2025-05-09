@@ -90,15 +90,10 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     index: number
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
-  const titleAsString = fields?.Title?.value?.toString() || 'Page';
-  const titleStripped = titleAsString.replace(/(<([^>]+)>)/gi, '');
-
   return (
     <>
       <Scripts />
       <Head>
-        <title>{titleStripped}</title>
-
         <link
           rel="apple-touch-icon"
           sizes="180x180"
