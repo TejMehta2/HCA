@@ -13,7 +13,7 @@ const Accreditations = (props: AccreditationsProps): JSX.Element => {
             <div
               className={[
                 styles.item,
-                contentVariation === 'centered' ? styles['itemCentered'] : '',
+                contentVariation === 'centered' ? styles['item-centered'] : '',
               ].join(' ')}
               key={index}
             >
