@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { MiddlewarePlugin } from '..';
+import { debug } from '@sitecore-jss/sitecore-jss-nextjs/middleware';
 
 /**
  * This plugin rewrites any request URL to lowercase.
@@ -11,17 +12,19 @@ class SmallcaseUrlPlugin implements MiddlewarePlugin {
     const url = req.nextUrl.clone();
     const lowercasePath = url.pathname.toLowerCase();
 
-    console.log(
+    debug.redirects(
       `Smallcase redirect. order=${this.order}: Checking for redirect - url=${url}`
     );
 
     if (url.pathname !== lowercasePath) {
       url.pathname = lowercasePath;
-      console.log(`Smallcase redirect: will redirect to  - url=${url}`);
+      debug.redirects(`Smallcase redirect: will redirect to url=${url}`);
       return NextResponse.redirect(url, 308);
     }
 
-    console.log(`Smallcase redirect: moving to the next plugin`);
+    debug.redirects(
+      `Smallcase redirect: no redirect, moving to the next plugin`
+    );
     return res || NextResponse.next();
   }
 }
