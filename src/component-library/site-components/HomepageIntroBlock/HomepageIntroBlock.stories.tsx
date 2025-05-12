@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Doctify from '../../components/Doctify/Doctify';
 import Icons from '../../foundation/Icons/Icons';
 import CQCBlock from '../../components/CQCBlock/CQCBlock';
+import Button from '../../core-components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HomepageIntroBlock> = {
@@ -112,6 +113,26 @@ export const Default: StoryObj<typeof HomepageIntroBlock> = {
           ),
         }}
       />
+    ),
+    children: (
+      <>
+        <Button size="small" variation="full">
+          <a href="#">
+            <span>
+              <Icons iconName="iconArrowSmallRight" />
+              Button 1
+            </span>
+          </a>
+        </Button>
+        <Button size="small" variation="full">
+          <a href="#">
+            <span>
+              <Icons iconName="iconArrowSmallRight" />
+              Button 2
+            </span>
+          </a>
+        </Button>
+      </>
     ),
   },
 };
