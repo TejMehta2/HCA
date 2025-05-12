@@ -18,7 +18,7 @@ class PersonalizePlugin implements MiddlewarePlugin {
   private personalizeMiddleware: PersonalizeMiddleware;
 
   // Using 1 to leave room for things like redirects to occur first
-  order = 1;
+  order = 30;
 
   constructor() {
     this.personalizeMiddleware = new PersonalizeMiddleware({

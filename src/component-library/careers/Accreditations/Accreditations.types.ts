@@ -5,4 +5,5 @@ export interface AccreditationsProps {
     logo: JSX.Element;
   }[];
   columns?: 2 | 3;
+  contentVariation?: string | undefined;
 }

@@ -9,7 +9,7 @@ SharedFields:
   Value: 100
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "3ed4538a-56c8-4a90-8b22-4762f2b72b8a"
+  Value: "7d259b6b-f896-4633-b610-0a59ac998a2a"
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -21,7 +21,7 @@ SharedFields:
           uid="{33EF1594-E6EB-4D62-A83B-6F230BC0C47B}"
           s:ds="local:/Data/Text Block Component"
           s:id="{9D703CBE-D052-4D60-8F11-02452F651C71}"
-          s:par="HeadingTag=h2&amp;HeadingSize=display-2&amp;GridParameters&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=A-HCA-White&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:par="DisableHeadersToggle&amp;HeadingTag=h2&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
           s:ph="headless-main" />
       </d>
     </r>
@@ -54,6 +54,16 @@ Languages:
               s:id="{04A5E56B-66DF-461C-961C-36B35F181976}"
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B474799B1-E9AE-486A-8D19-B588C7F49E3F%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
               s:ph="/headless-main/text-block-component-1" />
+            <r
+              uid="{33EF1594-E6EB-4D62-A83B-6F230BC0C47B}"
+              s:par="DisableHeadersToggle&amp;HeadingTag=h2&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B1FEC5EDD-5489-43F1-8C19-A092206E130D%7D%7C%7B648C5366-4DBD-4FA1-AB76-2750671F5AB0%7D&amp;FieldNames=%7BE97986F3-C2FF-4F8E-AC53-A56563F6E2EA%7D&amp;Styles&amp;Theme=H-HCA-Tangerine&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" />
+            <r
+              uid="{EB8CC534-60E7-49FB-88AF-C9540AE58CC7}"
+              p:after="*[1=2]"
+              s:ds="local:/Data/Text Block Component"
+              s:id="{9D703CBE-D052-4D60-8F11-02452F651C71}"
+              s:par="DisableHeadersToggle&amp;HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames&amp;Styles=%7B6541AE87-E15D-4F8C-9672-933EA9195DC6%7D&amp;Theme=L-HCA-Teal-5&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=4"
+              s:ph="headless-main" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -63,20 +73,23 @@ Languages:
       Hint: __Owner
       Value: |
         sitecore\carmen.popovici@eqtr.com
+    - ID: "55b6773d-302d-4a16-9421-8649d41ed0d0"
+      Hint: AbstractTitle
+      Value: Text Block
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "a06a6383-9bec-4676-b41b-5dc9a59af982"
+      Value: "311e7e5a-dc81-43f6-a337-ef51d5797197"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T095656Z
+      Value: 20250505T173658Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Default

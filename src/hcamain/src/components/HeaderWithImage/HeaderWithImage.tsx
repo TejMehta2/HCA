@@ -38,6 +38,10 @@ export type HeaderWithImageProps = {
   fields?: Fields;
 };
 
+interface HeaderWithImageVariantProps extends HeaderWithImageProps {
+  contentVariation?: 'fullWidthImage';
+}
+
 const HeaderWithImageDefaultComponent = (
   props: HeaderWithImageProps
 ): JSX.Element => {
@@ -57,7 +61,7 @@ const HeaderWithImageDefaultComponent = (
   );
 };
 
-export const Default = (props: HeaderWithImageProps): JSX.Element => {
+export const Default = (props: HeaderWithImageVariantProps): JSX.Element => {
   const phKeyCtas = `cta-buttons-${props.params?.DynamicPlaceholderId}`;
   const phKeyRatings = `header-with-image-${props.params?.DynamicPlaceholderId}`;
   if (!props.fields) {
@@ -74,6 +78,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
 
   return (
     <HeaderWithImage
+      contentVariation={props.contentVariation}
       theme={props.params?.Theme || 'D-HCA-Teal'}
       title={
         <Text
@@ -82,7 +87,7 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
           }
           tag={headingTag}
         >
-          <JSSText field={props.fields?.data?.contextItem?.title?.jsonValue} />
+          <RichText field={props.fields?.data?.contextItem?.title?.jsonValue} />
         </Text>
       }
       subtitle={
@@ -139,4 +144,14 @@ export const Default = (props: HeaderWithImageProps): JSX.Element => {
       }
     />
   );
+};
+
+export const FullWidthImage = (
+  props: HeaderWithImageVariantProps
+): JSX.Element => {
+  if (!props.fields) {
+    return <HeaderWithImageDefaultComponent {...props} />;
+  }
+
+  return <Default {...props} contentVariation="fullWidthImage" />;
 };

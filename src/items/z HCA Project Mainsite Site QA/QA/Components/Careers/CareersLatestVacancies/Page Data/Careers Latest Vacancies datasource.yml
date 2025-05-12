@@ -24,19 +24,17 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b3c4f44c-87df-4ca8-b6d0-953155c03be7"
+      Value: "93aaf181-a8e9-4ecd-bea5-c9f74fb3c251"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "c24e3b5f-97be-4d8e-adce-ef821099a429"
       Hint: JobFamilies
-      Value: |
-        {181F3FAE-7921-4E3C-BE94-D4B917271CC0}
-        {BA6C49B4-9CD5-4C93-A1E1-344F30082BC4}
+      Value: "{B525A3DA-22A1-4B34-A56C-3A4E2529CB46}"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240925T154756Z
+      Value: 20250423T104425Z
     - ID: "da02fd11-e288-420f-82ff-12e8629defa4"
       Hint: SearchConfiguration
       Value: "{C551E675-7111-469F-AC92-6941BD0BE611}"

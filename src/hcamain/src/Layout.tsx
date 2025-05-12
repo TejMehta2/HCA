@@ -130,6 +130,11 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
 
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/mdu7dnk.css"
+        ></link>
+
         {headLinks.map((headLink) => (
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
         ))}

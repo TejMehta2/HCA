@@ -31,14 +31,14 @@ Languages:
         <p>Quis ut irure non mollit. Ipsum esse mollit sunt nulla. Ipsum non cillum mollit officia tempor in ad non consequat esse. Sunt culpa adipisicing eiusmod ullamco eu esse laborum deserunt et officia reprehenderit. Aliquip laboris duis ex labore veniam labore do nostrud minim labore eiusmod voluptate sit commodo officia. Commodo tempor tempor magna deserunt sunt dolore dolore.</p>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8244e84a-6c78-44ef-ab65-c2df390b7e88"
+      Value: "ebb33c22-a03c-4086-879c-8dbdd924dd5e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\carmen.popovici@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
       Hint: Title
-      Value: "New to private healthcare?"
+      Value: "New to <i>private</i> healthcare?"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240503T071424Z
+      Value: 20250505T173117Z

@@ -76,6 +76,9 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
+  const centered =
+    props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
+
   return (
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
@@ -83,6 +86,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
     >
       <Accreditations
         columns={columns}
+        contentVariation={centered ? 'centered' : undefined}
         items={
           props.fields?.Cards?.map((cards) => ({
             text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,

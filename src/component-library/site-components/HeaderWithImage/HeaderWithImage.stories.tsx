@@ -238,3 +238,36 @@ export const HeaderWithImageNoMask: StoryObj<typeof HeaderWithImage> = {
     noMask: true,
   },
 };
+
+export const FullWidthImage: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    subtitlePlacement: 'before',
+    contentVariation: 'fullWidthImage',
+    subtitle: <Text variation="subheading-1">Our roles</Text>,
+    title: <Text variation="display-1">Quality care takes diverse people</Text>,
+    copy: (
+      <Text variation="body-large">
+        From physicians to physiotherapists, all of our colleagues play a part
+        in delivering excellence for our patients.
+      </Text>
+    ),
+    ctas: (
+      <Button size="large" variation="full">
+        <a href="#">
+          <Icons iconName="iconSearch" />
+          <span>
+            Search <strong>roles</strong>
+          </span>
+        </a>
+      </Button>
+    ),
+    image: (
+      <Image
+        src="/placeholders/quality-care.jpg"
+        alt="quality care"
+        width="1512"
+        height="814"
+      />
+    ),
+  },
+};

@@ -66,9 +66,15 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params,
     props.fields?.Heading?.value
   );
+
+  const centered =
+    props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
+
   return (
     <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
       <TextBlock
+        theme={props.params?.Theme || 'A-HCA-White'}
+        contentVariation={centered ? 'centered' : undefined}
         subheading={
           (props.fields?.Heading?.value || isExperienceEditor) && (
             <Text tag={subheadingTag} variation={'subheading-1'}>

@@ -517,7 +517,7 @@ export const Default = (props: StepProps): JSX.Element => {
         // handle successful response with status code 200
         // console.log(response);
         // console.log(JSON.stringify(response.data));
-        // console.log(`HCAReservationId: ${response?.data?.HCAReservationId}`);
+        // console.log(`HCAReservationId: ${response?.data?.hcaReservationId}`);
         // go to thank you page if no error on booking or show error modal otherwise
         if (response.data.errorCode) {
           console.log('error booking');
@@ -525,7 +525,7 @@ export const Default = (props: StepProps): JSX.Element => {
         } else {
           // for HWPD-3463 gtm
           setFinderFormPayor(data.payment);
-          setCompletedFormId(response?.data?.HCAReservationId);
+          setCompletedFormId(response?.data?.hcaReservationId);
           setFinderFormPrevious(data.previouslyBeenWithHCA);
           setReviewsTotal(reviewsTotal);
 

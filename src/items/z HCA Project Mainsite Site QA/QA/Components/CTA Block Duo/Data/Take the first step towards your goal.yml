@@ -1,0 +1,32 @@
+﻿---
+ID: "4a2927a8-cc63-40b7-b5ff-85fec5ac8045"
+Parent: "e6de0235-2397-4ba1-b1fb-16891e12acdb"
+Template: "add26115-d42f-45bb-b2d4-b13211aac2cc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/CTA Block Duo/Data/Take the first step towards your goal"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0e7dc7c3-75ae-4895-8f37-53beef0051cf"
+      Hint: Text
+      Value: We can help find a job that suits you. Submit your CV and we’ll match it with suitable roles when they become available and contact you directly.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250502T141259Z
+    - ID: "6b6db542-a329-44cd-a350-0ba0f386640e"
+      Hint: Title
+      Value: Take the first step towards your goal
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b8a8619b-a0cb-401f-96f9-5d9a5c34869a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250506T130245Z
+    - ID: "f79f7278-290d-4268-a48b-e6eedda56618"
+      Hint: Heading
+      Value: Express your interest
