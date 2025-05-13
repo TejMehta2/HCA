@@ -121,6 +121,9 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
+  const centered =
+    props?.params?.Styles?.split(' ').indexOf('position-center') !== -1;
+
   return (
     <Themes
       theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
@@ -128,6 +131,7 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
     >
       <Accreditations
         columns={3}
+        contentVariation={centered ? 'centered' : undefined}
         items={
           props.fields?.Cards?.map((cards) => ({
             text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
