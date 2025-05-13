@@ -77,7 +77,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   const centered =
-    props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
+    props?.params?.Styles?.split(' ').indexOf('position-center') !== -1;
 
   return (
     <Themes
