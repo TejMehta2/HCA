@@ -1,14 +1,17 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import React from 'react';
 import {
   Field,
   GetStaticComponentProps,
   ImageField,
+  debug,
   useComponentProps,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Head from 'next/head';
 import { removeTags } from '@component-library/utility-functions';
+import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 
 export interface PageRouteMetadata {
   fields?: {
@@ -40,6 +43,7 @@ interface Fields {
   PageTitleSufix?: { value?: Field<string> };
   TwitterCard?: { value?: Field<string> };
   Image?: ImageField;
+  GtmKey?: { value?: Field<string> };
 }
 
 type MetadataProps = {
@@ -115,20 +119,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
     Image?.value?.src ||
     DefaultMetaImage?.value?.value?.src;
 
-  const addThumbnailParameter = (image?: string) => {
-    try {
-      if (!image) return image;
-      const imageUrl = new URL(image);
-      const urlSearchParams = new URLSearchParams(imageUrl.search);
-      urlSearchParams.set('t', 'cardthumbnail');
-      imageUrl.search = urlSearchParams.toString();
-      return imageUrl.href;
-    } catch (err) {
-      process.env.NODE_ENV === 'development' && console.error(err);
-      return image;
-    }
-  };
-
   const follow = NoFollow?.value ? 'nofollow' : 'follow';
   const index = NoIndex?.value ? 'noindex' : 'index';
 
@@ -164,12 +154,35 @@ export const Default = (props: MetadataProps): JSX.Element => {
     }
   };
 
+  const globalGtmKey = process.env.NEXT_PUBLIC_GTM_KEY;
+  const gtmKey = globalGtmKey ? globalGtmKey : props.fields?.GtmKey?.value;
+
+  debug.common('process.env.NODE_ENV', process.env.NODE_ENV);
+  debug.common('NEXT_PUBLIC_DISABLE_GTM', process.env.NEXT_PUBLIC_DISABLE_GTM);
+  debug.common('props.fields.GtmKey.value', props.fields?.GtmKey?.value);
+
+  const gtmTag = (!process.env.NEXT_PUBLIC_DISABLE_GTM ||
+    process.env.NEXT_PUBLIC_DISABLE_GTM === 'false') && (
+    <script
+      id="gtm-snippet"
+      dangerouslySetInnerHTML={{
+        __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', '${gtmKey}');
+          `,
+      }}
+    />
+  );
+
   const cf: boolean = getPageType(TemplateId) === 'CF';
-  //console.log('cf', cf);
 
   if (cf) {
     return (
       <Head>
+        {gtmTag}
         <meta name="robots" content={`${follow}, ${index}`} key="robots" />
       </Head>
     );
@@ -177,10 +190,11 @@ export const Default = (props: MetadataProps): JSX.Element => {
     return (
       <Head>
         {browserTitle && <title>{browserTitle}</title>}
+        {gtmTag}
         &&
         {TwitterCard?.value?.value && (
           <meta name="twitters:card" content={TwitterCard?.value?.value} />
-        )}{' '}
+        )}
         &&
         {title && <meta property="og:title" content={title} />} &&
         {Date?.value && isValidDate(Date.value) && (
@@ -188,7 +202,7 @@ export const Default = (props: MetadataProps): JSX.Element => {
             <meta property="og:article:published_time" content={Date.value} />
             <meta name="publishedTime" content={Date.value} />
           </>
-        )}{' '}
+        )}
         &&
         {url && <meta property="og:url" content={url} />} &&
         <meta property="og:type" content="website" /> &&
@@ -197,17 +211,20 @@ export const Default = (props: MetadataProps): JSX.Element => {
         {description && <meta name="description" content={description} />} &&
         {follow && index && (
           <meta name="robots" content={`${follow}, ${index}`} key="robots" />
-        )}{' '}
+        )}
         &&
         {title && <meta name="title" content={title} />} &&
-        {pageTitle && <meta name="pageTitle" content={pageTitle} />} &&
+        {pageTitle && pageTitle !== '*' && (
+          <meta name="pageTitle" content={pageTitle} />
+        )}
+        &&
         {pageText && <meta name="pageText" content={pageText} />} &&
         {Image?.value?.src && (
           <meta
             name="pageImage"
             content={addThumbnailParameter(Image?.value?.src)}
           />
-        )}{' '}
+        )}
         &&
         {PageId && <meta name="pageId" content={PageId} />} &&
         {TemplateId && <meta name="templateId" content={TemplateId} />} &&
@@ -216,15 +233,15 @@ export const Default = (props: MetadataProps): JSX.Element => {
             name="hideFromWebsiteSearch"
             content={HideFromWebsiteSearch?.value?.valueOf().toString()}
           />
-        )}{' '}
+        )}
         &&
         {AbstractTitle?.value && (
           <meta name="abstractTitle" content={AbstractTitle?.value} />
-        )}{' '}
+        )}
         &&
         {AbstractText?.value && (
           <meta name="abstractText" content={AbstractText?.value} />
-        )}{' '}
+        )}
         &&
         {AbstractImage?.value?.src && (
           <meta
