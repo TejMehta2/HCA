@@ -77,7 +77,7 @@ export const Default = (props: ImageTextListColumnsProps): JSX.Element => {
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
 
   const centered =
-    props?.params?.Styles?.split(' ').indexOf('position-center') !== -1;
+    props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
   return (
     <Themes
@@ -121,8 +121,9 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
   }
 
   const componentAnchorId = inPageNavGlobalStore.addItem(props?.params, '');
-  const centered =
-    props?.params?.Styles?.split(' ').indexOf('position-center') !== -1;
+  const leftAlign =
+    props?.params?.styles &&
+    props?.params?.styles?.split(' ').indexOf('position-left') !== -1;
 
   return (
     <Themes
@@ -131,7 +132,7 @@ export const ThreeColumns = (props: ImageTextListColumnsProps): JSX.Element => {
     >
       <Accreditations
         columns={3}
-        contentVariation={centered ? 'centered' : undefined}
+        contentVariation={leftAlign ? undefined : 'centered'}
         items={
           props.fields?.Cards?.map((cards) => ({
             text: <JssRichText tag={'div'} field={cards?.fields?.Text} />,
