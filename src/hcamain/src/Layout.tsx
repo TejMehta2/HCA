@@ -6,7 +6,6 @@ import Head from 'next/head';
 import {
   Placeholder,
   LayoutServiceData,
-  Field,
   HTMLLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
@@ -26,11 +25,6 @@ interface LayoutProps {
   layoutData: LayoutServiceData;
   headLinks: HTMLLink[];
 }
-interface RouteFields {
-  [key: string]: unknown;
-  Title?: Field;
-}
-
 type FirstComponentProps = {
   params?: Params;
 };
