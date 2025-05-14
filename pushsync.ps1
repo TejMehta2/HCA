@@ -1,1 +1,0 @@
-dotnet sitecore ser push --include z-HCA-Project-Main-Site-Sync -n "uat"
