@@ -106,9 +106,9 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const title = `${MetaTitle?.value || titleStripped} ${
     PageTitleSufix?.value || ''
   }`;
-  const browserTitle = `${BrowserTitle?.value || titleStripped || route.displayName} ${
-    PageTitleSufix?.value || ''
-  }`;
+  const browserTitle = `${
+    BrowserTitle?.value || titleStripped || route.displayName
+  } ${PageTitleSufix?.value || ''}`;
   const description = MetaDescription?.value || Text?.value;
   const image =
     MetaImage?.value?.src ||
