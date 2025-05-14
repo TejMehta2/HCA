@@ -18,6 +18,7 @@ import Head from 'next/head';
 import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -59,6 +60,14 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
       <Head>
         <title>{data.name}</title>
         <meta property="og:title" content={data.name} />
+        {matchedSetting?.image && (
+          <meta
+            property="og:image"
+            content={addThumbnailParameter(
+              matchedSetting?.image?.jsonValue?.value?.src
+            )}
+          />
+        )}
       </Head>
       <VacancyHeader
         title={
