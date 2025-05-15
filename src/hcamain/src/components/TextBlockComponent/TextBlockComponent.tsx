@@ -68,6 +68,7 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
   );
 
   const centered =
+    props?.params?.styles &&
     props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
   return (

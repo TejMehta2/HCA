@@ -37,14 +37,14 @@ Languages:
               p:after="r[@uid='{ABC2B79D-BBB3-4ABA-B994-6881CBE90266}']"
               s:ds="local:/Page Data/datasource 2"
               s:id="{27E96360-4F0D-47C3-8FB0-AAE1D976A079}"
-              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B11200862-489A-46A7-961B-F857952597F4%7D&amp;Styles&amp;Theme=C-HCA-Denim&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:par="HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B11200862-489A-46A7-961B-F857952597F4%7D&amp;Styles&amp;Theme=C-HCA-Denim&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
               s:ph="headless-main" />
             <r
               uid="{893FEB31-6621-4BC9-8044-8551C9E7FBDC}"
               p:after="*[1=2]"
               s:ds="local:/Page Data/datasource icons"
               s:id="{27E96360-4F0D-47C3-8FB0-AAE1D976A079}"
-              s:par="ExcludeFromTableOfContents&amp;HeadingTag&amp;HeadingSize&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B11200862-489A-46A7-961B-F857952597F4%7D&amp;Styles&amp;Theme=D-HCA-Teal&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
+              s:par="HeadingTag&amp;HeadingSize&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B11200862-489A-46A7-961B-F857952597F4%7D&amp;Styles=%7B6541AE87-E15D-4F8C-9672-933EA9195DC6%7D&amp;Theme=D-HCA-Teal&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
               s:ph="headless-main" />
           </d>
         </r>
@@ -53,7 +53,7 @@ Languages:
       Value: 20240910T145012Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "129c07a1-0a04-43a5-9fa7-65531dab21a5"
+      Value: "fec9e1a2-c771-43cd-b170-a00525ef5271"
     - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
       Hint: Image
       Value: 
@@ -63,7 +63,7 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250418T102446Z
+      Value: 20250514T144008Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Image Text List
