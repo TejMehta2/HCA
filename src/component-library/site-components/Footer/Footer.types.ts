@@ -8,7 +8,7 @@ export interface FooterColumn {
 }
 
 export interface FooterProps {
-  theme: Theme;
+  theme?: Theme;
   buttons: JSX.Element;
   columns: FooterColumn[];
   legals?: JSX.Element[];
