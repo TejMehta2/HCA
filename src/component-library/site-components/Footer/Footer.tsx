@@ -7,11 +7,18 @@ import Logo from '../../foundation/BrandAssets/Logo white.svg';
 import Text from '../../foundation/Text/Text';
 
 const Footer = (props: FooterProps): JSX.Element => {
-  const { columns, legals, buttons, copyright, contact } = props;
+  const {
+    columns,
+    legals,
+    buttons,
+    copyright,
+    contact,
+    theme = 'B-HCA-Navy-Blue',
+  } = props;
   const LogoIcon = Logo as () => JSX.Element;
 
   return (
-    <Themes theme={'B-HCA-Navy-Blue'}>
+    <Themes theme={theme}>
       <footer className={styles.footer} data-event="navigationClick">
         <div className={styles.inner}>
           <div

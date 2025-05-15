@@ -1,3 +1,5 @@
+import { Theme } from '../../foundation/Themes/Themes.types';
+
 export interface FooterColumn {
   title?: JSX.Element | string;
   links?: JSX.Element[];
@@ -6,6 +8,7 @@ export interface FooterColumn {
 }
 
 export interface FooterProps {
+  theme: Theme;
   buttons: JSX.Element;
   columns: FooterColumn[];
   legals?: JSX.Element[];
