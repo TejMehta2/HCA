@@ -78,6 +78,7 @@ export const Default = (props: FooterProps): JSX.Element => {
 
   return (
     <Footer
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       copyright={
         props.fields?.Copyright?.value ? (
           <Text variation={'body-small'}>
