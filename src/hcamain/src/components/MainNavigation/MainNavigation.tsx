@@ -142,6 +142,8 @@ export const Default = (props: MainNavigationProps): JSX.Element => {
   return (
     <>
       <Navigation
+        themeClosed={props.params?.Theme || 'I-HCA-Goldenrod'}
+        themeOpen={props.params?.ThemeOpen || 'B-HCA-Navy-Blue'}
         tabs={tabs}
         eyebrow={eyebrow}
         search={
