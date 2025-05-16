@@ -12,8 +12,6 @@
   --field-unfilled-label: #{$navy-blue-30};
   --field-active-outline: #{$white};
   --field-error-colour: #{$red-60};
-  --card-discount-background: #{$navy-blue-10};
-  --card-price-divider: #{$navy-blue-60};
 
   @include apply-cta-full-light;
   @include apply-cta-social-light;
@@ -35,8 +33,6 @@
   --field-unfilled-label: #{$navy-blue-70};
   --field-active-outline: #{$navy-blue-100};
   --field-error-colour: #{$red-100};
-  --card-discount-background: #{$navy-blue-80};
-  --card-price-divider: #{$navy-blue-30};
 
   @include apply-cta-full-dark;
   @include apply-cta-social-dark;
