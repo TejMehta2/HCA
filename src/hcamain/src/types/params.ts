@@ -29,7 +29,6 @@ export type HeadingSize =
 
 interface Params {
   styles?: string;
-  Styles?: string;
   Theme?: Theme;
   CardTheme?: Theme; // Appears only on search components
   HeadingTag?: HeadingTag;
