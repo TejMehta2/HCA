@@ -7,7 +7,7 @@ import * as CardComparisonStories from './CardComparison.stories'
 
 ## Description
 
-The CardComparison component is a card which consists of a title, subtitle, cta, pricingVariants, includedPackageItems, and excludedPackageItems. 
+The CardComparison component is a card which consists of a title, description, cta, tag, tagVariant, featuresLabel, pricingVariants, includedPackageItems, and excludedPackageItems. 
 
 It is intended to be used in the CardBlock component
 
@@ -15,46 +15,46 @@ It can be composed like this:
 
 ``` tsx
 <CardComparison
-  cta={<a href="#"><span>Choose Flexible Care GP</span></a>}
+  cta={<a href="#"><span>Get started</span></a>}
+  description={<Text tag="p" variation="body-large">GP subscription suitable for all ages</Text>}
   excludedPackageItems={[
-    {
-      label: 'Annual flu vaccination'
-    },
-    {
-      label: 'Prescription services'
-    },
     {
       label: 'Travel & Vaccination advice'
     },
     {
       info: 'additional tooltip info',
+      label: 'Prescription services'
+    },
+    {
       label: 'Annual reAssure I health screen',
-      summary: '(worth £326)'
+      summary: 'worth £326'
+    },
+    {
+      label: 'Annual flu vaccination'
     }
   ]}
+  featuresLabel={<Text tag="p" variation="body-bold-extra-large">Features</Text>}
   includedPackageItems={[
     {
       label: 'Unlimited GP consultations'
     },
     {
-      label: '50% Urgent Care Centre consultations'
-    },
-    {
-      label: 'Specialised women\'s health clinics'
+      info: 'additional tooltip info',
+      label: '50% discount on initial consultation at HCA UK Urgent Care Centres'
     }
   ]}
   pricingVariants={[
     {
-      period: 'per month',
-      price: '£22.99'
+      period: '/ month',
+      price: '£23'
     },
     {
       discount: '-10%',
-      period: 'per year',
+      period: '/ year',
       price: '£236'
     }
   ]}
-  subtitle={<Text tag="p" variation="body-medium-extra-large">All ages</Text>}
+  tag="Most popular"
   title={<Text tag="h3" variation="display-5">Flexible Care GP</Text>}
 />
 ```

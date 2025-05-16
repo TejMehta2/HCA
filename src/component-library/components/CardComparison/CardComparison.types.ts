@@ -14,9 +14,12 @@ export interface PackageItem {
 
 export interface CardComparisonProps {
   title?: ReactNode | JSX.Element;
-  subtitle?: ReactNode | JSX.Element;
+  description?: ReactNode | JSX.Element;
+  featuresLabel?: ReactNode | JSX.Element;
   pricingVariants?: PricingVariants[];
   includedPackageItems?: PackageItem[];
   excludedPackageItems?: PackageItem[];
   cta?: ReactNode | JSX.Element;
+  tag?: ReactNode | JSX.Element;
+  tagVariant?: boolean;
 }

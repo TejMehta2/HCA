@@ -10,14 +10,24 @@ const mockProps: CardComparisonProps = {
       Flexible Care GP
     </Text>
   ),
+  description: (
+    <Text variation="body-large" tag="p">
+      GP subscription suitable for all ages
+    </Text>
+  ),
+  featuresLabel: (
+    <Text variation="body-bold-extra-large" tag="p">
+      Features
+    </Text>
+  ),
   pricingVariants: [
     {
-      price: '£22.99',
-      period: 'per month',
+      price: '£23',
+      period: '/ month',
     },
     {
       price: '£236',
-      period: 'per year',
+      period: '/ year',
       discount: '-10%',
     },
   ],
@@ -26,33 +36,34 @@ const mockProps: CardComparisonProps = {
       label: 'Unlimited GP consultations',
     },
     {
-      label: '50% Urgent Care Centre consultations',
-    },
-    {
-      label: 'Specialised women&apos;s health clinics',
+      label:
+        '50% discount on initial consultation at HCA UK Urgent Care Centres',
+      info: 'additional tooltip info',
     },
   ],
   excludedPackageItems: [
     {
-      label: 'Annual flu vaccination',
-    },
-    {
-      label: 'Prescription services',
-    },
-    {
       label: 'Travel & Vaccination advice',
     },
     {
-      label: 'Annual reAssure I health screen',
-      summary: '(worth £326)',
+      label: 'Prescription services',
       info: 'additional tooltip info',
+    },
+
+    {
+      label: 'Annual reAssure I health screen',
+      summary: 'worth £326',
+    },
+    {
+      label: 'Annual flu vaccination',
     },
   ],
   cta: (
     <a href="#">
-      <span>Choose Flexible Care GP</span>
+      <span>Get started</span>
     </a>
   ),
+  tag: 'Most popular',
 };
 
 describe('CardComparison', () => {

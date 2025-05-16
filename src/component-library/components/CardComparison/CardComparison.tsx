@@ -9,33 +9,39 @@ import Button from '../../core-components/Button/Button';
 const CardComparison = (props: CardComparisonProps): JSX.Element => {
   const {
     title,
+    description,
+    featuresLabel,
     pricingVariants,
-    subtitle,
     includedPackageItems,
     excludedPackageItems,
     cta,
+    tag,
+    tagVariant,
   } = props;
 
   const pricing: React.ReactNode[] = [];
 
   pricingVariants?.forEach((variant, index) => {
-    if (index > 0) {
-      // Add the separator before each item except the first
-      pricing.push(<span className={styles['price-seperator']}>or</span>);
-    }
-
     pricing.push(
-      <span className={styles['price-group']} key={index}>
-        {variant.price && (
-          <Text variation="heading-2" tag="span">
-            {variant.price}
-          </Text>
-        )}
+      <div className={styles['price-group']} key={index}>
+        {variant.price &&
+          (index === 0 ? (
+            <Text variation="display-5" tag="span">
+              {variant.price}
+            </Text>
+          ) : (
+            <Text variation="body-medium" tag="span">
+              {index > 0 && 'or '}
+              {variant.price}
+            </Text>
+          ))}
         {variant.period && variant.period}
         {variant.discount && (
-          <span className={styles.discount}>{variant.discount}</span>
+          <Text variation="body-bold-medium" tag="span">
+            ({variant.discount})
+          </Text>
         )}
-      </span>
+      </div>
     );
   });
 
@@ -73,14 +79,8 @@ const CardComparison = (props: CardComparisonProps): JSX.Element => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         {title}
+        {description}
         <div className={styles.prices}>{pricing}</div>
-      </div>
-      <div className={styles.body}>
-        {subtitle}
-        <ul className={styles['packages-list']}>
-          {includedPackageItems && getPackageItems(includedPackageItems)}
-          {excludedPackageItems && getPackageItems(excludedPackageItems, false)}
-        </ul>
         {cta && (
           <div className={styles.cta}>
             <Button size="large" variation="full" contentVariation="full-width">
@@ -88,6 +88,22 @@ const CardComparison = (props: CardComparisonProps): JSX.Element => {
             </Button>
           </div>
         )}
+        {tag && (
+          <div
+            className={[styles.tag, tagVariant && styles['tag-alternate']].join(
+              ' '
+            )}
+          >
+            {tag}
+          </div>
+        )}
+      </div>
+      <div className={styles.body}>
+        {featuresLabel}
+        <ul className={styles['packages-list']}>
+          {includedPackageItems && getPackageItems(includedPackageItems)}
+          {excludedPackageItems && getPackageItems(excludedPackageItems, false)}
+        </ul>
       </div>
     </div>
   );

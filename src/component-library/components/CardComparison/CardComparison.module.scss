@@ -7,14 +7,18 @@
 }
 
 .header {
-  background-color: var(--text);
-  color: var(--card-background);
-  padding: $spacing-6 $spacing-5;
+  position: relative;
+  background-color: var(--card-background);
+  color: var(--text);
+  padding: $spacing-8 $spacing-5 $spacing-6;
+  border-bottom: 1px solid $navy-blue-20;
+
+  @include media(screen-l) {
+    padding-top: $spacing-6;
+  }
 
   .prices {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    margin-top: $spacing-3;
   }
 
   .price-group {
@@ -38,17 +42,39 @@
     padding: px-to-rem(8) px-to-rem(12);
     background-color: var(--card-discount-background);
   }
+
+  .cta {
+    margin-top: $spacing-4;
+  }
+
+  .tag {
+    position: absolute;
+    top: px-to-rem(4);
+    right: px-to-rem(4);
+    background-color: var(--compare-tag-color-1);
+    color: var(--compare-tag-text-color-1);
+    border-radius: $radius-small;
+    padding: px-to-rem(4) px-to-rem(16);
+
+    @include apply-body-medium-medium;
+
+    &.tag-alternate {
+      background-color: var(--compare-tag-color-2);
+    color: var(--compare-tag-text-color-2);
+    }
+  }
 }
 
 .body {
   background-color: var(--card-background);
   color: var(--text);
-  padding: $spacing-6 $spacing-5;
+  padding: $spacing-5 $spacing-5 $spacing-7;
 }
 
 .packages-list {
   list-style: none;
   margin-top: $spacing-4;
+  margin-bottom: 0;
   padding: 0;
 
   li {
@@ -81,8 +107,4 @@
       }
     }
   }
-}
-
-.cta {
-  margin-top: px-to-rem(38);
 }

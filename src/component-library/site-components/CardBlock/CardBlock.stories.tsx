@@ -541,17 +541,18 @@ export const CardComparisonBlock: StoryObj<typeof CardBlock> = {
       <AdvancedBlockHeader
         title={
           <Text variation={'display-2'} tag="h2">
-            Compare our subscriptions
+            Pricing
           </Text>
         }
         body={
           <Text variation={'body-large'}>
             Aliquip irure ad dolore et ipsum in occaecat. Culpa et occaecat
             excepteur culpa. Laborum tempor veniam non in qui eu proident nisi
-            est consectetur laboris.
+            est.
           </Text>
         }
         paddingSize="medium"
+        contentVariation="centered"
       />
     ),
     children: (
@@ -559,7 +560,7 @@ export const CardComparisonBlock: StoryObj<typeof CardBlock> = {
         <CardComparison
           cta={
             <a href="#">
-              <span>Choose MyHCA GP</span>
+              <span>Get started</span>
             </a>
           }
           includedPackageItems={[
@@ -567,95 +568,47 @@ export const CardComparisonBlock: StoryObj<typeof CardBlock> = {
               label: 'Unlimited GP consultations',
             },
             {
-              label: '50% Urgent Care Centre consultations',
-            },
-            {
-              label: "Specialised women's health clinics",
-            },
-            {
-              label: 'Annual flu vaccination',
-            },
-            {
-              label: 'Prescription services',
-            },
-            {
-              label: 'Travel & Vaccination advice',
-            },
-            {
+              label:
+                '50% discount on initial consultation at HCA UK Urgent Care Centres',
               info: 'additional tooltip info',
-              label: 'Annual reAssure I health screen',
-              summary: '(worth £326)',
             },
           ]}
-          pricingVariants={[
-            {
-              period: 'per month',
-              price: '£35.99',
-            },
-            {
-              discount: '-10%',
-              period: 'per year',
-              price: '£390',
-            },
-          ]}
-          subtitle={
-            <Text tag="p" variation="body-medium-extra-large">
-              Over 18s only
-            </Text>
-          }
-          title={
-            <Text tag="h3" variation="display-5">
-              MyHCA GP
-            </Text>
-          }
-        />
-        <CardComparison
-          cta={
-            <a href="#">
-              <span>Choose Flexible Care GP</span>
-            </a>
-          }
           excludedPackageItems={[
             {
-              label: 'Annual flu vaccination',
-            },
-            {
-              label: 'Prescription services',
-            },
-            {
               label: 'Travel & Vaccination advice',
             },
             {
+              label: 'Prescription services',
               info: 'additional tooltip info',
+            },
+
+            {
               label: 'Annual reAssure I health screen',
-              summary: '(worth £326)',
-            },
-          ]}
-          includedPackageItems={[
-            {
-              label: 'Unlimited GP consultations',
+              summary: 'worth £326',
             },
             {
-              label: '50% Urgent Care Centre consultations',
-            },
-            {
-              label: "Specialised women's health clinics",
+              label: 'Annual flu vaccination',
             },
           ]}
           pricingVariants={[
             {
-              period: 'per month',
-              price: '£22.99',
+              period: '/ month',
+              price: '£23',
             },
             {
               discount: '-10%',
-              period: 'per year',
+              period: '/ year',
               price: '£236',
             },
           ]}
-          subtitle={
+          featuresLabel={
             <Text tag="p" variation="body-medium-extra-large">
-              All ages
+              feautres
+            </Text>
+          }
+          description={
+            <Text variation="body-large" tag="p">
+              GP subscription suitable for all ages
             </Text>
           }
           title={
@@ -663,6 +616,67 @@ export const CardComparisonBlock: StoryObj<typeof CardBlock> = {
               Flexible Care GP
             </Text>
           }
+          tag="Most popular"
+        />
+        <CardComparison
+          cta={
+            <a href="#">
+              <span>Get started</span>
+            </a>
+          }
+          includedPackageItems={[
+            {
+              label: 'Unlimited GP consultations',
+            },
+            {
+              label:
+                '50% discount on initial consultation at HCA UK Urgent Care Centres',
+              info: 'additional tooltip info',
+            },
+            {
+              label: 'Travel & Vaccination advice',
+            },
+            {
+              label: 'Prescription services',
+              info: 'additional tooltip info',
+            },
+
+            {
+              label: 'Annual reAssure I health screen',
+              summary: 'worth £326',
+            },
+            {
+              label: 'Annual flu vaccination',
+            },
+          ]}
+          pricingVariants={[
+            {
+              period: '/ month',
+              price: '£36',
+            },
+            {
+              discount: '-10%',
+              period: '/ year',
+              price: '£390',
+            },
+          ]}
+          featuresLabel={
+            <Text tag="p" variation="body-medium-extra-large">
+              All ages
+            </Text>
+          }
+          description={
+            <Text variation="body-large" tag="p">
+              GP subscription suitable for all ages
+            </Text>
+          }
+          title={
+            <Text tag="h3" variation="display-5">
+              My HCA GP
+            </Text>
+          }
+          tag="Best value"
+          tagVariant={true}
         />
       </>
     ),

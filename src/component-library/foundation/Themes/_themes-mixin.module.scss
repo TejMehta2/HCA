@@ -69,6 +69,11 @@
   --filter-button-1: #{$orange-20};
   --filter-button-2: #{$orange-40};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-b-navy {
@@ -90,6 +95,11 @@
   --filter-button-1: #{$navy-blue-80};
   --filter-button-2: #{$navy-blue-70};
   --filter-button-3: #{$navy-blue-40};
+
+  --compare-tag-color-1: #{$goldenrod-100};
+  --compare-tag-text-color-1: #{$navy-blue-100};
+  --compare-tag-color-2: #{$navy-blue-90};
+  --compare-tag-text-color-2: #{$white};
 }
 
 @mixin apply-theme-c-denim {
@@ -113,6 +123,11 @@
   --filter-button-1: #{$denim-80};
   --filter-button-2: #{$denim-50};
   --filter-button-3: #{$navy-blue-20};
+
+  --compare-tag-color-1: #{$goldenrod-100};
+  --compare-tag-text-color-1: #{$navy-blue-100};
+  --compare-tag-color-2: #{$denim-100};
+  --compare-tag-text-color-2: #{$white};
 }
 
 @mixin apply-theme-d-teal {
@@ -134,6 +149,11 @@
   --filter-button-1: #{$teal-20};
   --filter-button-2: #{$teal-10};
   --filter-button-3: #{$navy-blue-60};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-e-cerulean {
@@ -156,6 +176,11 @@
   --filter-button-1: #{$denim-10};
   --filter-button-2: #{$denim-5};
   --filter-button-3: #{$navy-blue-60};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-f-fern {
@@ -177,6 +202,11 @@
   --filter-button-1: #{$fern-40};
   --filter-button-2: #{$fern-10};
   --filter-button-3: #{$navy-blue-60};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$fern-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-g-orange {
@@ -198,6 +228,11 @@
   --filter-button-1: #{$orange-40};
   --filter-button-2: #{$orange-20};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$orange-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-h-tangerine {
@@ -219,6 +254,11 @@
   --filter-button-1: #{$tangerine-30};
   --filter-button-2: #{$tangerine-20};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$orange-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-i-goldenrod {
@@ -240,6 +280,11 @@
   --filter-button-1: #{$goldenrod-20};
   --filter-button-2: #{$white};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-j-tangerine-20 {
@@ -261,6 +306,11 @@
   --filter-button-1: #{$orange-40};
   --filter-button-2: #{$orange-20};
   --filter-button-3: #{$navy-blue-60};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-k-fern-20 {
@@ -282,6 +332,11 @@
   --filter-button-1: #{$fern-5};
   --filter-button-2: #{$white};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-l-teal-5 {
@@ -303,6 +358,11 @@
   --filter-button-1: #{$teal-10};
   --filter-button-2: #{$white};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-m-goldenrod-20 {
@@ -324,6 +384,11 @@
   --filter-button-1: #{$goldenrod-60};
   --filter-button-2: #{$goldenrod-100};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-n-denim-5 {
@@ -345,6 +410,11 @@
   --filter-button-1: #{$denim-10};
   --filter-button-2: #{$denim-20};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-o-teal-20 {
@@ -366,6 +436,11 @@
   --filter-button-1: #{$teal-10};
   --filter-button-2: #{$teal-5};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-palace-white {
@@ -399,6 +474,11 @@
   --filter-button-1: #{$palace-red-20};
   --filter-button-2: #{$palace-red-10};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-palace-navy-blue {
@@ -416,14 +496,19 @@
   @include apply-tabs($navy-blue-80, $white);
   @include apply-pagination-navy-blue-70;
   @include apply-controls-palace;
-  @include apply-cta-chelsea-full(#{$navy-blue-100}, #{$white}, #{$white});
-  @include apply-cta-chelsea-outline(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-palace-full(#{$navy-blue-100}, #{$white}, #{$white});
+  @include apply-cta-palace-outline(#{$navy-blue-100}, #{$white}, #{$white});
   @include apply-pagination-palace-navy-blue;
   @include apply-cta-carousel-palace-light;
 
   --filter-button-1: #{$navy-blue-80};
   --filter-button-2: #{$navy-blue-70};
   --filter-button-3: #{$navy-blue-40};
+
+  --compare-tag-color-1: #{$goldenrod-100};
+  --compare-tag-text-color-1: #{$navy-blue-100};
+  --compare-tag-color-2: #{$navy-blue-90};
+  --compare-tag-text-color-2: #{$white};
 }
 
 @mixin apply-theme-palace-beige {
@@ -459,6 +544,11 @@
   --filter-button-1: #{$orange-40};
   --filter-button-2: #{$orange-20};
   --filter-button-3: #{$navy-blue-60};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$tangerine-70};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-chelsea-white {
@@ -492,6 +582,11 @@
   --filter-button-1: #{$chelsea-gold-80};
   --filter-button-2: #{$chelsea-gold-60};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$chelsea-gold-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin apply-theme-chelsea-navy-blue {
@@ -516,6 +611,11 @@
   --filter-button-1: #{$navy-blue-80};
   --filter-button-2: #{$navy-blue-70};
   --filter-button-3: #{$navy-blue-40};
+
+  --compare-tag-color-1: #{$chelsea-gold-60};
+  --compare-tag-text-color-1: #{$navy-blue-100};
+  --compare-tag-color-2: #{$navy-blue-90};
+  --compare-tag-text-color-2: #{$white};
 }
 
 @mixin apply-theme-chelsea-beige {
@@ -551,6 +651,11 @@
   --filter-button-1: #{$chelsea-gold-80};
   --filter-button-2: #{$chelsea-gold-60};
   --filter-button-3: #{$navy-blue-70};
+
+  --compare-tag-color-1: #{$denim-100};
+  --compare-tag-text-color-1: #{$white};
+  --compare-tag-color-2: #{$chelsea-gold-60};
+  --compare-tag-text-color-2: #{$navy-blue-100};
 }
 
 @mixin theme-mode($light, $dark) {
