@@ -16,8 +16,7 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
 
   const [started, setStarted] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
-
-  const isReducedMotion = window.matchMedia('(prefers-reduced-motion)').matches;
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   const splitString = (input: string): { numbers: string; letters: string } => {
     const numbers = input.replace(/\D/g, ''); // Remove non-digit characters
@@ -87,6 +86,11 @@ const StatsCards = (props: StatsCardsProps): JSX.Element => {
   );
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion)');
+      setIsReducedMotion(mediaQuery.matches);
+    }
+
     if (isReducedMotion) return;
 
     const observer = new IntersectionObserver(handleScroll, { threshold: 0 });
