@@ -46,7 +46,7 @@ const SearchBar = (props: SearchBarProps): JSX.Element => {
   const setValue = (newValue: string = '') => {
     setShowError(false);
 
-    if (newValue !== '') {
+    if (newValue !== '' && typeof window !== 'undefined') {
       if (scrollRef) {
         scrollToRef(scrollRef);
       }
