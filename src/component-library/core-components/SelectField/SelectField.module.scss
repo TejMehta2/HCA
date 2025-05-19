@@ -76,12 +76,18 @@
   top: calc(100% + $spacing-1);
   width: 100%;
   max-height: px-to-rem(208);
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid $navy-blue-60;
   border-radius: px-to-rem(32);
-  padding: calc($spacing-6 - px-to-rem(11)) 0;
+  padding: calc($spacing-6 - px-to-rem(11)) 0 0;
 
-  @include scrollbar;
+  &-inner-wrapper {
+    width: 100%;
+    max-height: inherit;
+    overflow-y: auto;
+    padding-bottom: $spacing-6;
+    @include scrollbar;
+  }
 
   .option,
   .form-select-option {

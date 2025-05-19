@@ -73,22 +73,24 @@ const SelectField = (props: SelectFieldProps): JSX.Element => {
           Close
         </button>
         <div role="listbox" id="select-dropdown" className={styles.options}>
-          {options.map((option, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={selectItem}
-              role="option"
-              aria-selected={option.text === activeValue}
-              className={`${styles.option} ${
-                option.text === activeValue ? styles.active : ''
-              }`}
-            >
-              <Text tag="span" variation="body-medium-large">
-                {option.text}
-              </Text>
-            </button>
-          ))}
+          <div className={styles['options-inner-wrapper']}>
+            {options.map((option, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={selectItem}
+                role="option"
+                aria-selected={option.text === activeValue}
+                className={`${styles.option} ${
+                  option.text === activeValue ? styles.active : ''
+                }`}
+              >
+                <Text tag="span" variation="body-medium-large">
+                  {option.text}
+                </Text>
+              </button>
+            ))}
+          </div>
         </div>
       </ModalDropdown>
 
