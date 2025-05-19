@@ -12,6 +12,7 @@ import Button from '../../core-components/Button/Button';
 import TextButton from '../../core-components/TextButton/TextButton';
 import CardContent from '../../components/CardContent/CardContent';
 import AdvancedBlockHeader from '../../components/AdvancedBlockHeader/AdvancedBlockHeader';
+import CardComparison from '../../components/CardComparison/CardComparison';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CardBlock> = {
@@ -530,5 +531,155 @@ export const SideBySideBlock: StoryObj<typeof CardBlock> = {
       />
     ),
     variation: 'side-by-side',
+  },
+};
+
+export const CardComparisonBlock: StoryObj<typeof CardBlock> = {
+  args: {
+    theme: 'J-HCA-Tangerine-20',
+    header: (
+      <AdvancedBlockHeader
+        title={
+          <Text variation={'display-2'} tag="h2">
+            Pricing
+          </Text>
+        }
+        body={
+          <Text variation={'body-large'}>
+            Aliquip irure ad dolore et ipsum in occaecat. Culpa et occaecat
+            excepteur culpa. Laborum tempor veniam non in qui eu proident nisi
+            est.
+          </Text>
+        }
+        paddingSize="medium"
+        contentVariation="centered"
+      />
+    ),
+    children: (
+      <>
+        <CardComparison
+          cta={
+            <a href="#">
+              <span>Get started</span>
+            </a>
+          }
+          includedPackageItems={[
+            {
+              label: 'Unlimited GP consultations',
+            },
+            {
+              label:
+                '50% discount on initial consultation at HCA UK Urgent Care Centres',
+              info: 'additional tooltip info',
+            },
+          ]}
+          excludedPackageItems={[
+            {
+              label: 'Travel & Vaccination advice',
+            },
+            {
+              label: 'Prescription services',
+              info: 'additional tooltip info',
+            },
+
+            {
+              label: 'Annual reAssure I health screen',
+              summary: 'worth £326',
+            },
+            {
+              label: 'Annual flu vaccination',
+            },
+          ]}
+          pricingVariants={[
+            {
+              period: '/ month',
+              price: '£23',
+            },
+            {
+              discount: '-10%',
+              period: '/ year',
+              price: '£236',
+            },
+          ]}
+          featuresLabel={
+            <Text tag="p" variation="body-medium-extra-large">
+              feautres
+            </Text>
+          }
+          description={
+            <Text variation="body-large" tag="p">
+              GP subscription suitable for all ages
+            </Text>
+          }
+          title={
+            <Text tag="h3" variation="display-5">
+              Flexible Care GP
+            </Text>
+          }
+          tag="Most popular"
+        />
+        <CardComparison
+          cta={
+            <a href="#">
+              <span>Get started</span>
+            </a>
+          }
+          includedPackageItems={[
+            {
+              label: 'Unlimited GP consultations',
+            },
+            {
+              label:
+                '50% discount on initial consultation at HCA UK Urgent Care Centres',
+              info: 'additional tooltip info',
+            },
+            {
+              label: 'Travel & Vaccination advice',
+            },
+            {
+              label: 'Prescription services',
+              info: 'additional tooltip info',
+            },
+
+            {
+              label: 'Annual reAssure I health screen',
+              summary: 'worth £326',
+            },
+            {
+              label: 'Annual flu vaccination',
+            },
+          ]}
+          pricingVariants={[
+            {
+              period: '/ month',
+              price: '£36',
+            },
+            {
+              discount: '-10%',
+              period: '/ year',
+              price: '£390',
+            },
+          ]}
+          featuresLabel={
+            <Text tag="p" variation="body-medium-extra-large">
+              All ages
+            </Text>
+          }
+          description={
+            <Text variation="body-large" tag="p">
+              GP subscription suitable for all ages
+            </Text>
+          }
+          title={
+            <Text tag="h3" variation="display-5">
+              My HCA GP
+            </Text>
+          }
+          tag="Best value"
+          tagVariant={true}
+        />
+      </>
+    ),
+    variation: '2-columns',
   },
 };
