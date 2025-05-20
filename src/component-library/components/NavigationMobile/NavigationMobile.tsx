@@ -38,6 +38,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
     themeOpen = 'B-HCA-Navy-Blue',
     themeClosed = 'I-HCA-Goldenrod',
     search,
+    homeUrl = '/',
   } = props;
 
   // Hooks
@@ -122,18 +123,7 @@ const NavigationMobile = (props: NavigationProps): JSX.Element => {
       >
         <nav className={[styles.navigation].join(' ')} role="navigation">
           <div className={styles.main}>
-            <a
-              className={styles.logo}
-              href={
-                window && typeof window !== 'undefined'
-                  ? window?.location.href.indexOf(
-                      process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-                    ) === -1
-                    ? '/'
-                    : '/careers'
-                  : '/'
-              }
-            >
+            <a className={styles.logo} href={homeUrl}>
               <span className="sr-only">Home</span>
               {isOpen ? <LogoWhite /> : <LogoBlue />}
             </a>
