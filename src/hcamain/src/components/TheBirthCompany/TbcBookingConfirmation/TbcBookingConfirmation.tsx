@@ -250,7 +250,7 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
         <Head>
           <script
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(ecommerceDataLayer),
+              __html: ecommerceDataLayer,
             }}
           />
         </Head>
