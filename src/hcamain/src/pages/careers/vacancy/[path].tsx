@@ -68,10 +68,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const props = await sitecorePagePropsFactory.create(context);
-  return {
-    props,
-    notFound: props.notFound,
-  };
+  return { props };
 }
 
 export default SitecorePage;
