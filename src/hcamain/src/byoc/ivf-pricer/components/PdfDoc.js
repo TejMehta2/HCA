@@ -433,7 +433,14 @@ const PdfDoc = (props) => {
             </View>
           </View>
         )}
-
+        {/* Access fertility advert */}
+        {props.hcaLogo !== null && (
+          <Image
+            style={styles.logo}
+            src={props.accessFertilityAd}
+            alt="HCA"
+          />
+        )}
         {/* Page number */}
         <Text
           style={styles.pageNumber}
