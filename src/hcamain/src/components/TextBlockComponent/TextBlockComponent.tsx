@@ -12,7 +12,6 @@ import RichText from '@component-library/core-components/RichText/RichText';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 import Text from '@component-library/foundation/Text/Text';
-import Themes from '@component-library/foundation/Themes/Themes';
 import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import OffsetTextBlock from '@component-library/careers/OffsetTextBlock/OffsetTextBlock';
@@ -72,43 +71,42 @@ export const Default = (props: TextBlockComponentProps): JSX.Element => {
     props?.params?.styles?.split(' ').indexOf('position-center') !== -1;
 
   return (
-    <Themes id={componentAnchorId} theme={props.params?.Theme || 'A-HCA-White'}>
-      <TextBlock
-        theme={props.params?.Theme || 'A-HCA-White'}
-        contentVariation={centered ? 'centered' : undefined}
-        subheading={
-          (props.fields?.Heading?.value || isExperienceEditor) && (
-            <Text tag={subheadingTag} variation={'subheading-1'}>
-              <JssText field={props.fields?.Heading} />
+    <TextBlock
+      id={componentAnchorId}
+      theme={props.params?.Theme || 'A-HCA-White'}
+      contentVariation={centered ? 'centered' : undefined}
+      subheading={
+        (props.fields?.Heading?.value || isExperienceEditor) && (
+          <Text tag={subheadingTag} variation={'subheading-1'}>
+            <JssText field={props.fields?.Heading} />
+          </Text>
+        )
+      }
+      title={
+        (props.fields?.Title?.value || isExperienceEditor) && (
+          <>
+            <Text
+              variation={props.params?.HeadingSize || 'display-3'}
+              tag={headingTag}
+            >
+              <JssRichText field={props.fields?.Title} />
             </Text>
-          )
-        }
-        title={
-          (props.fields?.Title?.value || isExperienceEditor) && (
-            <>
-              <Text
-                variation={props.params?.HeadingSize || 'display-3'}
-                tag={headingTag}
-              >
-                <JssRichText field={props.fields?.Title} />
-              </Text>
-            </>
-          )
-        }
-        text={
-          (props.fields?.Text?.value || isExperienceEditor) && (
-            <RichText>
-              <JssRichText field={props.fields?.Text} />
-            </RichText>
-          )
-        }
-        ctas={
-          <PlaceHolderWrapper>
-            <Placeholder name={phKey} rendering={props.rendering} />
-          </PlaceHolderWrapper>
-        }
-      />
-    </Themes>
+          </>
+        )
+      }
+      text={
+        (props.fields?.Text?.value || isExperienceEditor) && (
+          <RichText>
+            <JssRichText field={props.fields?.Text} />
+          </RichText>
+        )
+      }
+      ctas={
+        <PlaceHolderWrapper>
+          <Placeholder name={phKey} rendering={props.rendering} />
+        </PlaceHolderWrapper>
+      }
+    />
   );
 };
 

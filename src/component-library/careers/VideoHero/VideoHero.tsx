@@ -18,7 +18,7 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
     videoSrc?.includes('youtube') || videoSrc?.includes('youtu.be');
 
   const [iframeState, setIframeState] = useState<'' | 'playing' | 'paused'>(
-    isYoutube ? 'playing' : ''
+    videoSrc ? 'playing' : ''
   );
 
   const videoUrl = videoSrc ? new URL(videoSrc) : null;
@@ -55,7 +55,7 @@ const VideoHero = (props: VideoHeroProps): JSX.Element => {
             onLoad={() => setIframeState('playing')}
             ref={iframeRef}
             aria-hidden="true"
-            src={videoUrl.href + '?nocache=' + new Date().getTime()}
+            src={videoUrl.href}
             allow="autoplay"
             data-ready="true"
             seamless
