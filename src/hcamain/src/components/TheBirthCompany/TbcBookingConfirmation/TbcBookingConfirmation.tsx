@@ -98,6 +98,7 @@ const TbcBookingConfirmationDefaultComponent = (
 };
 
 export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
+  debug.common('TBCBookingConfirmation Default Component started');
   const { sitecoreContext } = useSitecoreContext();
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
@@ -315,10 +316,7 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
-  debug.common(
-    'layoutData.sitecore.context.pageEditing',
-    layoutData.sitecore.context.pageEditing
-  );
+  debug.common('TBCBookingConfirmation getServerSideProps started');
 
   if (layoutData.sitecore.context.pageEditing) {
     const mockResponse = {
