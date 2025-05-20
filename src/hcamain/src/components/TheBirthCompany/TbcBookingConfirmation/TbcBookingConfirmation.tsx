@@ -46,7 +46,7 @@ function getEcommerceDataLayer(
     const value = parseFloat(rawValue).toFixed(2);
     const currency = 'GBP';
     const itemName =
-      props.serviceName + (props.extras ? `; ${props.extras}` : '');
+      props.serviceName + (props.extras ? `,${props.extras}` : '');
     const itemBrand = props.location;
 
     const dataLayer = [
