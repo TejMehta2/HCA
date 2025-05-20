@@ -59,6 +59,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const props = await sitecorePagePropsFactory.create(context);
   return {
     props,
+    revalidate: 5, // In seconds
+    notFound: props.notFound,
   };
 };
 
