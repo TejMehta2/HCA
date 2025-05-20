@@ -39,13 +39,6 @@
   gap: px-to-rem(8);
 }
 
-.clinical,
-.timing {
-  @include media(screen-l, max) {
-    display: none;
-  }
-}
-
 /* Carousel variation */
 .carousel {
   flex-direction: column;
