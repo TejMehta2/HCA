@@ -196,7 +196,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
           <meta name="twitters:card" content={TwitterCard?.value?.value} />
         )}
         &&
-        {title && <meta property="og:title" content={title} />} &&
+        {title && (
+          <meta property="og:title" content={title} key="og:title" />
+        )}{' '}
+        &&
         {Date?.value && isValidDate(Date.value) && (
           <>
             <meta property="og:article:published_time" content={Date.value} />
@@ -206,7 +209,10 @@ export const Default = (props: MetadataProps): JSX.Element => {
         &&
         {url && <meta property="og:url" content={url} />} &&
         <meta property="og:type" content="website" /> &&
-        {image && <meta property="og:image" content={image} />} &&
+        {image && (
+          <meta property="og:image" content={image} key="og:image" />
+        )}{' '}
+        &&
         {url && <link rel="canonical" href={url} />} &&
         {description && <meta name="description" content={description} />} &&
         {follow && index && (

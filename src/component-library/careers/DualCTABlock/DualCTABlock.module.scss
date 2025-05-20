@@ -12,6 +12,7 @@
   & > div {
     display: flex;
     flex-direction: column;
+    row-gap: 0;
 
     @include media(screen-l) {
       flex-direction: row;
@@ -44,6 +45,10 @@
         width: 100%;
         justify-content: flex-start;
         flex: none;
+
+        & span {
+          margin: 0;
+        }
       }
     }
   }

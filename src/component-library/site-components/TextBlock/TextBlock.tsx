@@ -11,9 +11,10 @@ const TextBlock = (props: TextBlockProps): JSX.Element => {
     text,
     ctas,
     contentVariation,
+    id,
   } = props;
   return (
-    <Themes theme={theme}>
+    <Themes id={id} theme={theme}>
       <div className={styles.wrapper}>
         <div className={styles.grid}>
           <div
