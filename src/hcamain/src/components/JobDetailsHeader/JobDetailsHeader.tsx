@@ -59,13 +59,14 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <Head>
         <title>{data.name}</title>
-        <meta property="og:title" content={data.name} />
+        <meta property="og:title" content={data.name} key="og:title" />
         {matchedSetting?.image && (
           <meta
             property="og:image"
             content={addThumbnailParameter(
               matchedSetting?.image?.jsonValue?.value?.src
             )}
+            key="og:image"
           />
         )}
       </Head>

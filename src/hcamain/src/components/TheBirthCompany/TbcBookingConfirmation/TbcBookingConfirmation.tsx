@@ -7,6 +7,7 @@ import {
   useComponentProps,
   GetServerSideComponentProps,
   Placeholder,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
@@ -22,8 +23,60 @@ import {
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Head from 'next/head';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+
+function getEcommerceDataLayer(
+  props: TbcBookingConfirmationProps,
+  transactionId: string | null
+): string {
+  try {
+    if (
+      !props ||
+      !transactionId ||
+      !props.amount ||
+      !props.serviceName ||
+      !props.location
+    ) {
+      return '';
+    }
+
+    const rawValue = props.amount.replace(/[^\d.]/g, ''); // Strip non-digit and non-decimal characters, most likely £)
+    const value = parseFloat(rawValue).toFixed(2);
+    const currency = 'GBP';
+    const itemName =
+      props.serviceName + (props.extras ? `,${props.extras}` : '');
+    const itemBrand = props.location;
+
+    const dataLayer = [
+      'window.dataLayer = window.dataLayer || [];',
+      'window.dataLayer.push({ ecommerce: null });',
+      `window.dataLayer.push(${JSON.stringify({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: transactionId,
+          value,
+          currency,
+          items: [
+            {
+              item_name: itemName,
+              item_brand: itemBrand,
+              item_id: transactionId,
+              price: value,
+              quantity: '1',
+            },
+          ],
+        },
+      })});`,
+    ];
+
+    return dataLayer.join('\n');
+  } catch (error) {
+    console.error('Failed to generate ecommerce data layer:', error);
+    return '';
+  }
+}
 
 const TbcBookingConfirmationDefaultComponent = (
   props: TbcBookingConfirmationProps
@@ -45,16 +98,22 @@ const TbcBookingConfirmationDefaultComponent = (
 };
 
 export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
+  debug.common('TBCBookingConfirmation Default Component started');
   const { sitecoreContext } = useSitecoreContext();
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
+
+  debug.common('TbcBookingConfirmation transactionStatus', transactionStatus);
+
   const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
 
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
 
   const isExperienceEditor = sitecoreContext.pageEditing;
+
+  //use status querystring param to manually switch between successful and failed views in edit mode
   if (isExperienceEditor && transactionStatus != null) {
     const status = searchParams.get('status');
     transactionStatus.status = status !== 'failed' ? 'Successful' : 'failed';
@@ -63,6 +122,12 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
+
+  const transactionIdFromQuery = searchParams.get('transaction_id');
+  const ecommerceDataLayer = getEcommerceDataLayer(
+    props,
+    transactionIdFromQuery
+  );
 
   if (transactionStatus?.status !== 'Successful' || paramErrors) {
     return (
@@ -181,6 +246,15 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   return (
     <>
+      {ecommerceDataLayer && (
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: ecommerceDataLayer,
+            }}
+          />
+        </Head>
+      )}
       <FormContainer
         heading={<></>}
         copy={
@@ -242,6 +316,8 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
+  debug.common('TBCBookingConfirmation getServerSideProps started');
+
   if (layoutData.sitecore.context.pageEditing) {
     const mockResponse = {
       serviceName: 'Wellbeing scan',
@@ -258,6 +334,9 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   }
 
   try {
+    debug.common(
+      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+    );
     response = await fetch(
       `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
     );

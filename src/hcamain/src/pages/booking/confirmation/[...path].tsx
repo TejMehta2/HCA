@@ -53,7 +53,7 @@ const SitecorePage = (props: SitecorePageProps): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (context.params) {
-    context.params.path = ['/booking/confirmation/,-w-,'];
+    context.params.path = [`booking/confirmation/,-w-,`];
   }
 
   const props = await sitecorePagePropsFactory.create(context);

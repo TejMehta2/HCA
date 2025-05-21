@@ -424,9 +424,9 @@ export const Default = (props: StepProps): JSX.Element => {
               <meta name="description" content={description} />
               <meta name="keywords" content={keywords} />
               {/*Open Graph tags*/}
-              <meta property="og:title" content={title} />
+              <meta property="og:title" content={title} key="og:title" />
               <meta property="og:description" content={description} />
-              <meta property="og:image" content={profileImage} />
+              <meta property="og:image" content={profileImage} key="og:image" />
               <meta property="og:url" content={canonicalURL} />
               {/* // see https://validator.schema.org/ and https://search.google.com/test/rich-results */}
               <script
