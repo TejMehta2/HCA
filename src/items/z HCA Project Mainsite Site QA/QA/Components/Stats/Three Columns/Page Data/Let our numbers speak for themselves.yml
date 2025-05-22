@@ -1,0 +1,45 @@
+﻿---
+ID: "a338986f-137d-401e-9378-c35c7e501d17"
+Parent: "8181c0bd-d2de-4505-92ad-e2b261769b02"
+Template: "cc5dda31-1f4e-471a-8c40-517014ee5dbd"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Three Columns/Page Data/Let our numbers speak for themselves"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T190222Z
+    - ID: "3ffe48f0-1d71-4905-bf08-4df5cfb3fe8f"
+      Hint: Counters
+      Value: |
+        {71070877-4DC5-4E9D-BD1A-166706DEB905}
+        {CFEAD274-19B3-44DA-8B41-B1DCF5D4BA3E}
+        {48824DF1-BE92-4842-9432-CFF8334BD4F5}
+        {81DCD114-F884-4FDE-8892-D0A5AD586185}
+        {DC61BE79-2A6F-4B20-B81D-64C707A96D24}
+    - ID: "4df7f1d9-c81a-40a5-aed5-5bcbdda9d2c6"
+      Hint: Text
+      Value: "<p>Life with us means taking pride in your team and delivering the highest quality care. We&rsquo;ll support your ongoing learning in an environment that features advanced equipment and practices, one of the best colleague-to-patient ratios in the UK and varied, interesting work. As part of HCA US, one of the nation&rsquo;s leading providers of healthcare services, we can also promise that you&rsquo;ll learn from experts in every department and that your opportunities will be endless. With us, you&rsquo;ll be empowered to achieve more in your career, and more for our patients.</p>"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0aac46cb-e1ba-465b-8e95-e49a624f9523"
+    - ID: "a7d381f3-5726-4cb3-895f-c66f5a1f8205"
+      Hint: Title
+      Value: Let our numbers speak for themselves.
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T145718Z

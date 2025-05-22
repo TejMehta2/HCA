@@ -1,3 +1,4 @@
+import { Theme } from '@component-library/foundation/Themes/Themes.types';
 import {
   Field,
   ImageField,
@@ -125,7 +126,11 @@ export interface Fields {
   };
 }
 
+export interface MainNavigationParams extends Params {
+  ThemeOpen?: Theme;
+}
+
 export interface MainNavigationProps {
-  params?: Params;
+  params?: MainNavigationParams;
   fields?: Fields;
 }

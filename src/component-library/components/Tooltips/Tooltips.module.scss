@@ -35,7 +35,7 @@
 .content {
   opacity: 0;
   background: var(--card-secondary-background);
-  color: (--card-secondary-text);
+  color: var(--card-secondary-text);
   padding: $spacing-2 $spacing-5;
   border-radius: $radius-small;
   position: absolute;

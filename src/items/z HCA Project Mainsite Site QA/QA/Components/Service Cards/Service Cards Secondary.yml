@@ -1,0 +1,75 @@
+﻿---
+ID: "5980403e-558c-4c1b-a17f-9c7f1fba6922"
+Parent: "123cb4d0-0f7a-45e4-bf30-f74cced39563"
+Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Service Cards/Service Cards Secondary"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: 
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "4a9d13ce-754b-4fe0-9551-33e5d5a4944a"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <r
+          uid="{5B9959FE-CC00-41A7-BD79-5431FC876408}"
+          s:ds="{C9B14309-1C56-477B-B621-23BC3043DCDC}"
+          s:id="{028FC93E-0059-4B21-9256-107BCEA427D7}"
+          s:par="DisableHeadersToggle&amp;HeadingTag=h1&amp;HeadingSize=display-2&amp;ExcludeFromTableOfContents&amp;TableOfContentsLinkTitle&amp;GridParameters&amp;FieldNames=%7B6BAEB7D6-8C14-40A0-9683-925637942070%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+          s:ph="headless-main"
+          s:ccb="Clear on publish" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{5B9959FE-CC00-41A7-BD79-5431FC876408}"
+              s:par="FieldNames=%7b6BAEB7D6-8C14-40A0-9683-925637942070%7d&amp;TableOfContentsLinkTitle&amp;DisableHeadersToggle=0&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters&amp;HeadingSize=display-2&amp;HeadingTag=h1&amp;DynamicPlaceholderId=1&amp;ExcludeFromTableOfContents=0" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20231206T075828Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\carmen.popovici@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "278c9dae-3ddd-43d7-843f-254a993494ec"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250430T130905Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Service Cards

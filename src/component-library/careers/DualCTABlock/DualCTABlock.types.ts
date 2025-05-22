@@ -9,7 +9,7 @@ export interface CTABlockProps {
 }
 
 export interface DualCTABlockProps {
-  content?: CTABlockProps[];
+  content?: ReactNode | JSX.Element;
   theme: Theme;
   id?: string;
 }

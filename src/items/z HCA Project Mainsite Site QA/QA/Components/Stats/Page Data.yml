@@ -3,6 +3,13 @@ ID: "19c69a49-bfdd-4e6e-830e-ee2c99b5b36d"
 Parent: "f0a8b3cf-557b-48cb-bd91-e255e140ec2f"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Page Data"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "a48d60ff-2e88-4b6e-adbf-6d1476105713"
 Languages:
 - Language: en
   Versions:
@@ -21,11 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "be03b081-6207-4344-a291-ed1207e55bf9"
+      Value: "a8818bfc-21df-4edc-813a-051f27d57306"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240909T162046Z
+      Value: 20250421T150738Z

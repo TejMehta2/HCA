@@ -3,6 +3,13 @@ ID: "a74530b9-f2b0-4c93-a4d2-96d70e73bfc2"
 Parent: "d4b407bd-908e-41c6-b146-54270ada5706"
 Template: "1c82e550-ebcd-4e5d-8abd-d50d0809541e"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8c93dace-493e-4198-a64c-ebba0b954f18"
 Languages:
 - Language: en
   Versions:
@@ -21,11 +28,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "27c8ad88-8238-4f41-a516-127c5bb21cc5"
+      Value: "9c3b4f1a-624a-415e-bfa7-8b3e97c56f2d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240910T150440Z
+      Value: 20250421T144950Z

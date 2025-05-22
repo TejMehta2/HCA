@@ -19,5 +19,6 @@
     border-radius: $radius-medium;
     background-clip: padding-box;
     border: px-to-rem(3) solid transparent;
+    min-height: px-to-rem(20);
   }
 }

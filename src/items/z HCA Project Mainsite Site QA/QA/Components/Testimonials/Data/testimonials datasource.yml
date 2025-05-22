@@ -1,0 +1,46 @@
+﻿---
+ID: "33188017-fd46-4c74-abd3-6282de03c1ef"
+Parent: "458196e9-859b-44bd-b510-3af517e8d5f3"
+Template: "1fec2029-abc3-435c-bdde-6353ac460404"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Testimonials/Data/testimonials datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: testimonials
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250501T111420Z
+    - ID: "527ef8ff-09d9-4cc1-b72f-3239c42e7aa5"
+      Hint: Cards
+      Value: |
+        {9FE2C672-8879-4D27-8842-502BF0C7165B}
+        {B35A3EFC-2DB2-4B96-A3DF-05282F93333C}
+        {A72FD5CC-C0FC-4E5A-9045-56FA16FA880D}
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "761170e9-ab3a-495f-97c2-a0ac483f55ab"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: What our people have to say
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250501T112251Z

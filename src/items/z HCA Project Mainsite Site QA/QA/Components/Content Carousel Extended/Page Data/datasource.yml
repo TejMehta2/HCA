@@ -1,0 +1,50 @@
+﻿---
+ID: "2eb3080f-33d1-4fa9-99ec-a29905907d20"
+Parent: "58e1c3e1-f47d-4330-bd5a-4d8e9a7ad018"
+Template: "7a216656-41b3-49ba-8a27-4de5c9a770a2"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Content Carousel Extended/Page Data/datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "2479a242-1493-415e-9dc6-a784e9ea45aa"
+      Hint: Heading
+      Value: Our benefits
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241128T113252Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "60ad0518-920d-47c9-9e27-f8aba5b080d1"
+      Hint: Text
+      Value: <p>Delivering quality patient care and innovative treatments is achieved through diverse people working in diverse roles, which means there&rsquo;s a good chance we&rsquo;ll have an opportunity to suit you.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ace9cbdb-e6b0-4171-aa96-eac4eb48c585"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "cf015ae5-5d4a-4481-8900-5d3a76dc72f4"
+      Hint: Cards
+      Value: |
+        {97B666DF-8594-44D0-AE0E-CE8D2F146FEC}
+        {215F22EB-C0AC-4609-BEB4-8F1FD4E0822C}
+        {3832DCE7-B5F5-4B10-BFC1-0EFAA27FE313}
+        {10F819DB-1BCF-40C4-BD1A-76F3BDED1D69}
+        {3748C852-E3C8-4528-9879-DE113361FD48}
+        {492F73F1-0C3B-4639-B982-3EA25DCADDC6}
+        {FE45E7D8-03FE-4102-9608-A8E02F39CA49}
+    - ID: "d6435d03-6a4a-48f8-9b2c-fb059057d1fb"
+      Hint: Title
+      Value: Focused on creating a brilliant place to work
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250424T133926Z

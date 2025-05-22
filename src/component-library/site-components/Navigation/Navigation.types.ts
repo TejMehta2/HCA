@@ -42,4 +42,5 @@ export interface NavigationProps {
   themeClosed?: Theme;
   defaultTab?: number;
   search?: JSX.Element;
+  homeUrl?: string;
 }

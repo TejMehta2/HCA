@@ -1,0 +1,38 @@
+﻿---
+ID: "c6f45eb1-b3e9-4c2f-87ee-002d00efc949"
+Parent: "44600dd5-6fd4-4536-a830-485b66059dc1"
+Template: "a1d640e8-b025-43b5-80db-c45c2f82227b"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/Page Data/Careers v2/vacancy page"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250505T172916Z
+    - ID: "3317a6f6-dbe7-4cbb-a826-605fef277ad5"
+      Hint: Link
+      Value: |
+        <link text="Read more" linktype="external" url="/careers/vacancy/0044127" anchor="" target="" />
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3d1b6b96-400f-4e4b-9c8a-913408dd3786"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250505T173011Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: Vacancy page

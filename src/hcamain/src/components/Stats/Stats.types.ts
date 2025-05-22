@@ -3,6 +3,7 @@ import Params from 'src/types/params';
 
 export interface Fields {
   Title?: Field<string>;
+  Text?: Field<string>;
   Counters?: CountersFields[];
 }
 

@@ -10,4 +10,5 @@ export interface HeaderWithImageProps {
   theme: Theme;
   ratings?: JSX.Element;
   noMask?: boolean;
+  contentVariation?: 'fullWidthImage';
 }

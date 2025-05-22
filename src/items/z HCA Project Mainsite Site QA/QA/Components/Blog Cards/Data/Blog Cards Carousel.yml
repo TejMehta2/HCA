@@ -1,0 +1,46 @@
+﻿---
+ID: "62a4fe9e-4b84-4bf6-8b7d-cb82e8fb0fed"
+Parent: "a7ed1f78-0f2a-4160-be1c-3dff1ef6a773"
+Template: "cd488017-df73-40cb-aba5-684b867754de"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Blog Cards/Data/Blog Cards Carousel"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0a599a32-7135-428b-bd08-39407bfddef7"
+      Hint: Heading
+      Value: this is heading
+    - ID: "223f2ea2-1d66-4c63-a3e7-870f064728e2"
+      Hint: Title
+      Value: From the blog
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240118T073319Z
+    - ID: "34cb7155-44a0-46a7-936e-7c65eeef67e8"
+      Hint: Cards
+      Value: |
+        {471F79FD-281B-435A-90B8-6FB3B3F15886}
+        {9D0A0D9E-B398-4004-9342-F3F589F2345E}
+        {CD58E2CC-A116-48E7-9CDA-56D62C48C80A}
+    - ID: "7e5ae1ed-f9e1-4159-944f-61c9ec66e767"
+      Hint: BlogUrl
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="" querystring="?articleTypeId=" id="{BB05713A-5668-4603-95B6-E480162EF6EB}" />
+    - ID: "7f3de04e-6f94-43a6-a46a-fa13dcfeba7f"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a0d8ac7f-b2b5-4b1a-b5e0-06893427a8b4"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link text="Visit our &lt;b&gt;blog&lt;/b&gt;" anchor="" linktype="internal" class="" title="" target="" querystring="" id="{7B773C15-0CE4-4CCC-866A-A1BEA1CB8894}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240616T174515Z

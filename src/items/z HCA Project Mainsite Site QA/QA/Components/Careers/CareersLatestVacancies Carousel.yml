@@ -1,0 +1,58 @@
+﻿---
+ID: "26ff9786-7786-47e5-aa01-bc4290f6a390"
+Parent: "d4b407bd-908e-41c6-b146-54270ada5706"
+Template: "d0f1c465-a581-4b02-8449-c86227a4e472"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/CareersLatestVacancies Carousel"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{8CC634EF-F0D6-4CB1-829D-504CF9D1FA4E}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8c6ab0e9-54b3-4ac5-b004-9d0c1b9c099a"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{20A204F0-47B0-48CA-8736-37971E2EB063}"
+              s:ds="local:/Page Data/Careers Latest Vacancies datasource"
+              s:id="{C64321A5-D176-4D34-8A5A-7FED8406E0C8}"
+              s:par="HeadingTag&amp;HeadingSize&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BA39AE4AF-B5FC-4CDC-B791-D5E4B3884A5C%7D&amp;Styles&amp;Theme&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
+              s:ph="headless-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T141653Z
+    - ID: "57e61daf-1b85-4436-a3c4-bedbf166b457"
+      Hint: JobFamily
+      Value: Nursing
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "400f6f06-873d-4bc3-b109-1d0ca9159d8e"
+    - ID: "9def8dc9-3351-41a7-82c4-2c7f56f95e25"
+      Hint: Image
+      Value: 
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250505T173932Z
+    - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
+      Hint: Title
+      Value: "Careers Latest Vacancies: Carousel Variant"

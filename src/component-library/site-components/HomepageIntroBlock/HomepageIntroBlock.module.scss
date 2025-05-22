@@ -158,5 +158,9 @@
 
   .children {
     margin-bottom: px-to-rem(48);
+
+    [class*='button'] {
+      margin-top: $spacing-6;
+    }
   }
 }

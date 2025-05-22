@@ -235,6 +235,7 @@ const Summary = () => {
                   adjuvantsExtraNotesLink={
                     costData?.Label?.AdjuvantsLink?.Label
                   }
+                  accessFertilityAd={costData?.Image?.AccessFertilityAd?.Value}
                 />
               }
               fileName={'IVF-Cost-Estimation.pdf'}

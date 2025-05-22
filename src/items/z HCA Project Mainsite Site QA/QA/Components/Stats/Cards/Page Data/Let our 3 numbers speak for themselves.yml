@@ -1,0 +1,50 @@
+﻿---
+ID: "61f5b804-f3d4-424e-8bd8-ed7e07859520"
+Parent: "6c62ab24-1a4a-4290-af65-3ba480cfb4bf"
+Template: "cc5dda31-1f4e-471a-8c40-517014ee5dbd"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Stats/Cards/Page Data/Let our 3 numbers speak for themselves"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "301d93c9-b7bb-4ca3-867f-60cb84495a2c"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240909T190222Z
+    - ID: "3ffe48f0-1d71-4905-bf08-4df5cfb3fe8f"
+      Hint: Counters
+      Value: |
+        {F0F2B942-6D61-4412-9ADF-34582EA243D3}
+        {43DA84EE-6726-4D40-9A88-EBE0783A1317}
+        {0037994A-D65E-416D-A418-1995F109E175}
+    - ID: "4df7f1d9-c81a-40a5-aed5-5bcbdda9d2c6"
+      Hint: Text
+      Value: "<p>Life with us means taking pride in your team and delivering the highest quality care. We&rsquo;ll support your ongoing learning in an environment that features advanced equipment and practices, one of the best colleague-to-patient ratios in the UK and varied, interesting work. As part of HCA US, one of the nation&rsquo;s leading providers of healthcare services, we can also promise that you&rsquo;ll learn from experts in every department and that your opportunities will be endless. With us, you&rsquo;ll be empowered to achieve more in your career, and more for our patients.</p>"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e781db77-7eac-4fb0-a2c9-3a3d22007d27"
+    - ID: "a7d381f3-5726-4cb3-895f-c66f5a1f8205"
+      Hint: Title
+      Value: Let our 3 numbers speak for themselves.
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T151854Z

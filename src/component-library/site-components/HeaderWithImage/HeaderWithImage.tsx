@@ -29,10 +29,16 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
     subtitlePlacement = 'after',
     ratings,
     noMask = false,
+    contentVariation,
   } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles['hero-with-image']}>
+      <div
+        className={[
+          styles['hero-with-image'],
+          contentVariation === 'fullWidthImage' && styles['full-width-image'],
+        ].join(' ')}
+      >
         <div className={styles.inner}>
           <div className={styles.content}>
             {subtitlePlacement === 'before' && subtitle && (
