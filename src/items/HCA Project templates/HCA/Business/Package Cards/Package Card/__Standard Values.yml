@@ -1,0 +1,44 @@
+﻿---
+ID: "492d73ab-f2cc-4191-87f7-fadd5c805154"
+Parent: "d5c0ac5c-0617-4d71-b64d-1db5f932c706"
+Template: "d5c0ac5c-0617-4d71-b64d-1db5f932c706"
+Path: /sitecore/templates/Project/HCA/Business/Package Cards/Package Card/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{3F0D8506-3537-4332-8E58-F2AD75577425}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "0933a871-9c9d-4a4f-9a30-e4b0c6633b78"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T133440Z
+    - ID: "2bb3311c-49b8-48f6-b793-6a9b2d1f55dc"
+      Hint: FeaturesLabel
+      Value: "Features:"
+    - ID: "2d061068-b569-41e9-8dbf-a4c6695f8849"
+      Hint: Title
+      Value: $name
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1b9cdae2-04d9-402f-abe4-08b7802c7566"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T135910Z

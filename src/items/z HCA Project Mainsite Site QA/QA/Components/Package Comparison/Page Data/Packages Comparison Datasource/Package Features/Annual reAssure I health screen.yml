@@ -1,0 +1,29 @@
+﻿---
+ID: "431cacc8-53d4-4ca4-bd1f-2fea87e9bdae"
+Parent: "db4f91c1-630f-4e8d-be50-f92f9f35d002"
+Template: "25f6dca4-d069-4a84-bbe4-c883259ebbb6"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource/Package Features/Annual reAssure I health screen"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T140454Z
+    - ID: "4add2326-a303-4c4b-93b8-09fd31ac11d5"
+      Hint: Label
+      Value: Annual reAssure I health screen
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "594c90d1-7be4-48d0-b582-d3eaca908718"
+    - ID: "a89b5b6d-b1f8-4557-861d-17d8ceefa457"
+      Hint: Summary
+      Value: worth £326
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T140502Z
