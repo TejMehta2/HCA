@@ -132,7 +132,7 @@ export const Default = (props: ContentVerticalSliderProps): JSX.Element => {
           <CardRole
             title={
               hasTitle ? (
-                <Text tag="div" variation="display-6">
+                <Text tag="div" variation="heading-2">
                   <JssText field={card.fields?.Title} />
                 </Text>
               ) : undefined
