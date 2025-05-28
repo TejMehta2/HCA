@@ -135,9 +135,65 @@ Languages:
                 </tr>
             </tbody>
         </table>
+        
+        
+        <p>In ultrices aliquam rhoncus. Quisque ac aliquet orci, vitae commodo nulla. Nam interdum massa in velit suscipit, sagittis scelerisque tellus tincidunt. In porta massa ac vulputate pharetra. Quisque metus purus, egestas in consequat cursus, mollis congue dolor. </p>
+        
+        <table>
+        <tbody>
+        <tr>
+        <td><strong>Treatment&nbsp;</strong></td>
+        <td><strong>Best for&nbsp;</strong></td>
+        <td><strong>Key benefits&nbsp;</strong></td>
+        </tr>
+        <tr>
+        <td><a href="~/link.aspx?_id=89F438F23379446193A468722A5659B7&amp;_z=z">Aquablation</a></td>
+        <td>Large prostates with BPH</td>
+        <td>Fast, precise, maximum bladder control, and enables normal ejaculation for most men</td>
+        </tr>
+        <tr>
+        <td><a href="~/link.aspx?_id=7B3F9CEE1B9B4D6EAA5EDE0A6F8B2222&amp;_z=z">HoLEP</a></td>
+        <td>Very large prostates with BPH</td>
+        <td>Considerable urinary relief and minimal bleeding&nbsp;</td>
+        </tr>
+        <tr>
+        <td><a href="~/link.aspx?_id=B48C9C39E1C640D6851692B3F30C7AD9&amp;_z=z">TPLA</a></td>
+        <td>Small to moderate prostates</td>
+        <td>Minimally invasive, local anaesthesia, normal ejaculation for most men&nbsp;</td>
+        </tr>
+        <tr>
+        <td><a href="~/link.aspx?_id=CE177FAF279A442CAA856402C33835B0&amp;_z=z">Greenlight</a></td>
+        <td>Patients on blood thinners with moderate BPH</td>
+        <td>Minimal bleeding, immediate relief, often a day case procedure</td>
+        </tr>
+        <tr>
+        <td><a href="~/link.aspx?_id=0078B54C420A47BA84B3435FF6F49808&amp;_z=z">Rezum</a></td>
+        <td>Younger men with mild to moderate BPH</td>
+        <td>Outpatient procedure with the preservation of ejaculation in most men</td>
+        </tr>
+        <tr>
+        <td>
+        <p><a href="~/link.aspx?_id=22334C51955C423E8A3B8AC0B32B95F8&amp;_z=z">Prostate artery embolisation</a></p>
+        </td>
+        <td>High-risk surgical patients</td>
+        <td>Minimally invasive, no anaesthesia</td>
+        </tr>
+        <tr>
+        <td>
+        <p><a href="~/link.aspx?_id=B44074459DBB43FEB13714D47BE167B7&amp;_z=z">UroLift</a></p>
+        </td>
+        <td>Those with mild to moderate BPH symptoms</td>
+        <td>Preserves sexual function in all men, fast recovery, day case procedure</td>
+        </tr>
+        </tbody>
+        </table>
+        
+        <p>Custom Table. In ultrices aliquam rhoncus. Quisque ac aliquet orci, vitae commodo nulla. Nam interdum massa in velit suscipit, sagittis scelerisque tellus tincidunt. In porta massa ac vulputate pharetra. Quisque metus purus, egestas in consequat cursus, mollis congue dolor. </p>
+        
+        <figure class="table" style="width:100%;"><table class="custom-width"><colgroup><col style="width:23.75%;" /><col style="width:11.35%;" /><col style="width:64.9%;" /></colgroup><tbody><tr><th><strong>Treatment&nbsp;</strong></th><td style="height:50px;width:50px;"><strong>Best for&nbsp;</strong></td><td><strong>Key benefits&nbsp;</strong></td></tr><tr><th><a href="/services/treatments/aquablation-therapy">Aquablation</a></th><td>Large prostates with BPH</td><td>Fast, precise, maximum bladder control, and enables normal ejaculation for most men</td></tr><tr><th><a href="/services/treatments/holmium-laser-treatment">HoLEP</a></th><td>Very large prostates with BPH</td><td>Considerable urinary relief and minimal bleeding&nbsp;</td></tr><tr><th><a href="/services/treatments/transperineal-laser-ablation">TPLA</a></th><td>Small to moderate prostates</td><td>Minimally invasive, local anaesthesia, normal ejaculation for most men&nbsp;</td></tr><tr><th><a href="/services/treatments/greenlight-laser-prostatectomy">Greenlight</a></th><td>Patients on blood thinners with moderate BPH</td><td>Minimal bleeding, immediate relief, often a day case procedure</td></tr><tr><th><a href="/services/treatments/water-vapour-therapy">Rezum</a></th><td>Younger men with mild to moderate BPH</td><td>Outpatient procedure with the preservation of ejaculation in most men</td></tr><tr><th><a href="/services/treatments/prostate-artery-embolisation">Prostate artery embolisation</a></th><td>High-risk surgical patients</td><td>Minimally invasive, no anaesthesia</td></tr><tr><th><a href="/services/treatments/prostatic-urethral-lift-implant">UroLift</a></th><td>Those with mild to moderate BPH symptoms</td><td>Preserves sexual function in all men, fast recovery, day case procedure</td></tr></tbody></table></figure>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "58286cfa-42fe-4f8a-b971-1b0ea3f61bfa"
+      Value: "e71d6512-108f-4cb5-8055-af61c082468e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -147,4 +203,4 @@ Languages:
       Value: Text with Tables
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250224T132116Z
+      Value: 20250528T132946Z

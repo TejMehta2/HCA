@@ -3,6 +3,13 @@ ID: "b8d4b22c-c6b2-4ddb-8b11-8d7006b57be3"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison"
+SharedFields:
+- ID: "24171bf1-c0e1-480e-be76-4c0a1876f916"
+  Hint: Page Design
+  Value: "{9B6E34CC-3FF4-4DAD-8D70-197FF3CD5372}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "1c704231-6915-4a10-b14d-1dbc60e74191"
 Languages:
 - Language: en
   Versions:
@@ -31,14 +38,14 @@ Languages:
       Value: 20250526T135726Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9e61992c-de0c-4083-bc3d-ecb36e33e64e"
+      Value: "ea6226d4-df73-47ec-a4f3-64af9b9296f2"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250526T161248Z
+      Value: 20250527T113553Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Package Comparison

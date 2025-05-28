@@ -1,36 +1,36 @@
 ﻿---
-ID: "c24e3b5f-97be-4d8e-adce-ef821099a429"
-Parent: "70e6d12f-adb9-4313-8a2a-786f7b60f750"
+ID: "95f497bf-d22f-4baf-9bee-2a1279bd6ca2"
+Parent: "266686e2-1646-4231-ae17-844a6f2c6964"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies/Content/JobFamilies
+Path: /sitecore/templates/Project/HCA/Pages/Careers/Careers Area Page/Configuration/JobArea
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "/sitecore/content/HCA/HCA-Main/Settings/Careers/Facet Options"
+  Value: "query:$site/Settings/Careers/Facet Options/Job Areas/"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Treelist
+  Value: Droptree
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 200
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "2a561202-25d6-42a9-9484-7beba2564e9b"
+  Value: "9a5e22db-97d0-4a5c-b53b-493597d779c4"
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Search by
+    Value: Job Area
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "3ba0f61f-83ec-4a0f-8c24-3e159686ac78"
+    Value: "929d7d09-1d6d-42d0-a401-74a04b7a328c"
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240925T135513Z
+      Value: 20250528T130054Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -41,11 +41,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "d72c292a-9822-4ee7-a764-f8e6199c39ca"
+      Value: "653c1765-e6c1-4bb3-8c52-95ceb1f3252d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250528T132737Z
+      Value: 20250528T132834Z

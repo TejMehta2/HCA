@@ -71,7 +71,10 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
 
   const matchedSetting =
     props.fields?.data?.item?.headerImageMapping?.targetItems?.find(
-      (setting) => setting.jobFamily?.value === data.jobFamily
+      (setting) => {
+        const value = setting.jobArea?.targetItem?.value?.value;
+        return value && data.jobAreas?.some((jobArea) => jobArea === value);
+      }
     );
 
   const heroImage = matchedSetting
