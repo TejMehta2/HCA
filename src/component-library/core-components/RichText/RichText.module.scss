@@ -95,12 +95,23 @@
         }
       }
 
+      tr {
+        width: 100%;
+      }
+
       td,
       th {
         padding: $spacing-4;
         width: 100%;
         text-wrap: auto;
         word-break: normal;
+      }
+
+      &[class*='custom-width'] {
+        td,
+        th {
+          width: auto;
+        }
       }
     }
 
@@ -118,6 +129,10 @@
     overflow: hidden;
     margin: 0;
     aspect-ratio: 1120/523;
+
+    &:has(table) {
+      overflow: visible;
+    }
 
     img {
       width: 100%;
