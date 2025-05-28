@@ -41,6 +41,6 @@ export default async function handler(
     res.appendHeader('CDN-Cache-Control', 'max-age=100');
     res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   }
-
+  res.appendHeader('Access-Control-Allow-Origin', '*');
   return res.status(200).json(output);
 }
