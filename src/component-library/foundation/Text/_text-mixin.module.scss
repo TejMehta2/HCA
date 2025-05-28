@@ -254,14 +254,13 @@ $bold-font-weight: 700;
 
 @mixin apply-decorative {
   font-family: shelby, sans-serif;
-  font-size: px-to-rem(80);
+  font-size: 1.75em; // size needs to be based on the wrapper as this will be applied within a 'display-' text class
   letter-spacing: -0.03em;
   line-height: 64%;
   font-weight: 400;
   margin-right: px-to-rem(16);
 
   @include media(screen-l) {
-    font-size: px-to-rem(127);
     line-height: 40%;
   }
 }
