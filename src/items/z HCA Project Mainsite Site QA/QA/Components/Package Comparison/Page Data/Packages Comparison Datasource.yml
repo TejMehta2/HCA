@@ -1,0 +1,37 @@
+﻿---
+ID: "9813466a-fd2c-4481-8c57-ca5e42b335f3"
+Parent: "6019befd-787f-4f6e-a15b-9f6a5d2540c5"
+Template: "f7214653-fcfe-41ad-9d52-a23ba508eee6"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T135807Z
+    - ID: "721461d2-0c87-42f3-9afc-93fd1c8195c8"
+      Hint: Text
+      Value: <p>Aliquip irure ad dolore et ipsum in occaecat. Culpa et occaecat excepteur culpa. Laborum tempor veniam non in qui eu proident nisi est.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bfba7b8e-2363-492e-8989-f26e0ccb8fcd"
+    - ID: "a4b05acc-8eb9-45c6-b46a-0676fca34d30"
+      Hint: Heading
+      Value: Packages comparison
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d621410b-ef04-4df1-8b2c-57e22ac9da4e"
+      Hint: Title
+      Value: Pricing
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T144221Z
+    - ID: "e09bf507-c3de-4b4f-afa2-70bc26ddc62c"
+      Hint: Packages
+      Value: |
+        {D5C6F4D2-017A-4610-965B-6FCF3E5F6508}
+        {56030203-0CAA-4642-A3B8-D11F3D45A525}

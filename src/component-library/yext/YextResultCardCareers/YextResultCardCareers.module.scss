@@ -23,7 +23,12 @@
 
 .bullets {
   display: flex;
-  gap: $spacing-7;
+  flex-direction: column;
+  gap: $spacing-3 $spacing-7;
+
+  @include media(screen-m) {
+    flex-flow: row wrap;
+  }
 }
 
 .city,
@@ -34,15 +39,9 @@
   gap: px-to-rem(8);
 }
 
-.clinical,
-.timing {
-  @include media(screen-l, max) {
-    display: none;
-  }
-}
-
 /* Carousel variation */
 .carousel {
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   padding: $spacing-6 $spacing-7;

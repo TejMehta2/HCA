@@ -6,6 +6,8 @@ import {
   useSitecoreContext,
   useComponentProps,
   GetServerSideComponentProps,
+  Placeholder,
+  debug,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useSearchParams } from 'next/navigation';
 import Text from '@component-library/foundation/Text/Text';
@@ -19,10 +21,62 @@ import {
   TransactionStatusResponse,
 } from './TbcBookingConfirmation.types';
 import FormContainer from 'src/jss-abstractions/FormContainer/FormContainer';
-import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
+import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
+import Head from 'next/head';
 
 const SERVER_API_URL = `${process.env.INTEGRATION_LAYER_URL}`;
+
+function getEcommerceDataLayer(
+  props: TbcBookingConfirmationProps,
+  transactionId: string | null
+): string {
+  try {
+    if (
+      !props ||
+      !transactionId ||
+      !props.amount ||
+      !props.serviceName ||
+      !props.location
+    ) {
+      return '';
+    }
+
+    const rawValue = props.amount.replace(/[^\d.]/g, ''); // Strip non-digit and non-decimal characters, most likely £)
+    const value = parseFloat(rawValue).toFixed(2);
+    const currency = 'GBP';
+    const itemName =
+      props.serviceName + (props.extras ? `,${props.extras}` : '');
+    const itemBrand = props.location;
+
+    const dataLayer = [
+      'window.dataLayer = window.dataLayer || [];',
+      'window.dataLayer.push({ ecommerce: null });',
+      `window.dataLayer.push(${JSON.stringify({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: transactionId,
+          value,
+          currency,
+          items: [
+            {
+              item_name: itemName,
+              item_brand: itemBrand,
+              item_id: transactionId,
+              price: value,
+              quantity: '1',
+            },
+          ],
+        },
+      })});`,
+    ];
+
+    return dataLayer.join('\n');
+  } catch (error) {
+    console.error('Failed to generate ecommerce data layer:', error);
+    return '';
+  }
+}
 
 const TbcBookingConfirmationDefaultComponent = (
   props: TbcBookingConfirmationProps
@@ -44,18 +98,36 @@ const TbcBookingConfirmationDefaultComponent = (
 };
 
 export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
+  debug.common('TBCBookingConfirmation Default Component started');
   const { sitecoreContext } = useSitecoreContext();
   const transactionStatus = useComponentProps<TransactionStatusResponse>(
     props.rendering?.uid
   );
 
+  debug.common('TbcBookingConfirmation transactionStatus', transactionStatus);
+
+  const phKey = `booking-step-aside-${props.params?.DynamicPlaceholderId}`;
+
   const searchParams = useSearchParams();
   const paramErrors = searchParams.get('error');
 
   const isExperienceEditor = sitecoreContext.pageEditing;
+
+  //use status querystring param to manually switch between successful and failed views in edit mode
+  if (isExperienceEditor && transactionStatus != null) {
+    const status = searchParams.get('status');
+    transactionStatus.status = status !== 'failed' ? 'Successful' : 'failed';
+  }
+
   if (!props.fields) {
     return <TbcBookingConfirmationDefaultComponent {...props} />;
   }
+
+  const transactionIdFromQuery = searchParams.get('transaction_id');
+  const ecommerceDataLayer = getEcommerceDataLayer(
+    props,
+    transactionIdFromQuery
+  );
 
   if (transactionStatus?.status !== 'Successful' || paramErrors) {
     return (
@@ -133,23 +205,27 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
 
   const options = [
     {
-      title: 'Scan',
+      title: props.fields?.ServiceNameLabel?.value || 'Scan',
       text: props.serviceName,
     },
     {
-      title: 'Date',
+      title: props.fields?.DateLabel?.value || 'Date',
       text: formattedDate,
     },
     {
-      title: 'Time',
+      title: props.fields?.TimeLabel?.value || 'Time',
       text: formattedTime.toLowerCase().replace(/\s/g, ''),
     },
     {
-      title: 'Type',
+      title: props.fields?.DurationLabel?.value || 'Duration',
+      text: `${props.duration} minutes`,
+    },
+    {
+      title: props.fields?.TypeLabel?.value || 'Type',
       text: props.type,
     },
     {
-      title: 'Location',
+      title: props.fields?.LocationLabel?.value || 'Location',
       text: props.location,
     },
   ];
@@ -161,8 +237,24 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
     });
   }
 
+  if (props.amount) {
+    options.push({
+      title: props.fields?.AmountLabel?.value || 'Price paid',
+      text: props.amount,
+    });
+  }
+
   return (
     <>
+      {ecommerceDataLayer && (
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: ecommerceDataLayer,
+            }}
+          />
+        </Head>
+      )}
       <FormContainer
         heading={<></>}
         copy={
@@ -192,62 +284,20 @@ export const Default = (props: TbcBookingConfirmationProps): JSX.Element => {
         }
         aside={
           <CFAside>
-            <NeedHelp
-              headline={
-                //props?.fields?.LiveBookingFormContactBoxHeadline?.value ||
-                'Need help?'
-              }
-              subheadline={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Label?.value ||
-                'General enquiries'
-              }
-              workingHoursHeadline={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursLabel?.value ||
-                'Opening hours'
-              }
-              workingHours={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursDays?.value ||
-                'Mon – Fri'
-              }
-              workingHoursTime={
-                //props?.fields?.LiveBookingFormContactBoxOpeningHoursTime?.value ||
-                '8am – 6pm'
-              }
-              phoneNumber={
-                //props?.fields?.LiveBookingFormContactBoxPhone0Phone?.value ||
-                '020 3797 7236'
-              }
-            />
+            {props.rendering && (
+              <PlaceHolderWrapper>
+                <Placeholder name={phKey} rendering={props.rendering} />
+              </PlaceHolderWrapper>
+            )}
           </CFAside>
         }
       >
         <>
-          <div>
-            <Text tag="h3" variation="body-bold-extra-large">
-              Next steps
-            </Text>
-            <RichText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse.
-            </RichText>
-          </div>
-          <div>
-            <Text tag="h3" variation="body-bold-extra-large">
-              How to amend your booking
-            </Text>
-            <RichText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse.
-            </RichText>
-          </div>
+          <RichText>
+            <JssRichText field={props.fields?.Info} />
+          </RichText>
           <Button variation="full-dark" size="large">
-            <a href="/">Go to Homepage</a>
+            <JssLink field={props.fields.StartLink}></JssLink>
           </Button>
         </>
       </FormContainer>
@@ -261,13 +311,32 @@ export const getServerSideProps: GetServerSideComponentProps = async (
   context
 ) => {
   const { query } = context;
-  console.log(layoutData);
   let response;
   const transactionId = `transactionId=${query['transaction_id']}`;
   const site = `site=${layoutData.sitecore.context.site?.name}`;
   const itemPath = `itemPath=${layoutData.sitecore.context.itemPath}`;
 
+  debug.common('TBCBookingConfirmation getServerSideProps started');
+
+  if (layoutData.sitecore.context.pageEditing) {
+    const mockResponse = {
+      serviceName: 'Wellbeing scan',
+      extras: 'Multiple Pregnancy,Servical Scan',
+      appointmentDateTime: '2025-04-08T10:00:00',
+      type: 'Sonographer',
+      location: 'Hale',
+      duration: '50',
+      status: 'Successful',
+      retryQuerystring: null,
+    };
+
+    return mockResponse;
+  }
+
   try {
+    debug.common(
+      `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
+    );
     response = await fetch(
       `${SERVER_API_URL}/tbcbooking/transactionstatus/hca/payment/1/en?${transactionId}&${site}&${itemPath}`
     );

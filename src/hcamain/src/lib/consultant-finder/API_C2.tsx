@@ -65,7 +65,7 @@ export async function getLDBFirstAppointmentDatas(
 
   const gmcArrayBody = gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
   const body = `{"consultants" : [${gmcArrayBody}] }`;
-  //console.log("body", body);
+  //console.log('body', body);
 
   try {
     let res: any = '';
@@ -104,7 +104,7 @@ export async function getLDBFirstAppointmentDatas(
 
     if (res.ok) {
       const result = await res.json();
-      //console.log('result', result);
+      // console.log('result', result);
 
       if (result && result.availability) {
         //console.log("result.availability", result.availability);
@@ -114,11 +114,21 @@ export async function getLDBFirstAppointmentDatas(
           }
         );
       }
-
-      // remap in the correct order and provide null for entries where no info was found
-      returnData = gmcArray.map((gmc: any) =>
-        (result.availability as object[]).find((rec: any) => rec.gmc == gmc)
-      );
+      //console.log('retRecord', result);
+      if (config?.aPI_C2_UsingCSharpAPI) {
+        // remap in the correct order and provide null for entries where no info was found
+        returnData = gmcArray.map((gmc: any) =>
+          (result.availability as object[]).find(
+            (rec: any) => rec.professionalRegistrationNumber == gmc
+          )
+        );
+      } else {
+        // remap in the correct order and provide null for entries where no info was found
+        returnData = gmcArray.map((gmc: any) =>
+          (result.availability as object[]).find((rec: any) => rec.gmc == gmc)
+        );
+      }
+      //console.log('returnData', returnData);
     } else {
       //C2 call failed
       if (config?.aPI_C2_UsingCSharpAPI) {

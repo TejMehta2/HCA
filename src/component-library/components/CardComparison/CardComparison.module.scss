@@ -1,0 +1,94 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  border-radius: $radius-medium;
+  background-color: var(--card-background);
+  color: var(--text);
+}
+
+.header {
+  position: relative;
+  padding: $spacing-8 $spacing-5 $spacing-6;
+  border-bottom: 1px solid $navy-blue-20;
+
+  @include media(screen-l) {
+    padding-top: $spacing-6;
+  }
+
+  .prices {
+    margin-top: $spacing-3;
+  }
+
+  .price-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: px-to-rem(4);
+
+    @include apply-body-medium-small;
+  }
+
+  .cta {
+    margin-top: $spacing-4;
+  }
+
+  .tag {
+    position: absolute;
+    top: px-to-rem(4);
+    right: px-to-rem(4);
+    background-color: var(--compare-tag-color-1);
+    color: var(--compare-tag-text-color-1);
+    border-radius: $radius-small;
+    padding: px-to-rem(4) px-to-rem(16);
+
+    @include apply-body-medium-medium;
+
+    &.tag-alternate {
+      background-color: var(--compare-tag-color-2);
+      color: var(--compare-tag-text-color-2);
+    }
+  }
+}
+
+.body {
+  padding: $spacing-5 $spacing-5 $spacing-7;
+}
+
+.packages-list {
+  list-style: none;
+  margin-top: $spacing-4;
+  margin-bottom: 0;
+  padding: 0;
+
+  li {
+    margin-top: px-to-rem(12);
+    display: flex;
+    gap: px-to-rem(12);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    .icon {
+      border-radius: 50%;
+      max-width: px-to-rem(32);
+      max-height: px-to-rem(32);
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.included {
+        background-color: $fern-20;
+        color: $fern-150;
+      }
+
+      &.excluded {
+        background-color: $orange-20;
+        color: $orange-150;
+      }
+    }
+  }
+}

@@ -20,13 +20,13 @@ interface slot {
 }
 
 export interface slots {
-  slots: slot[];
+  slots: slot[] | never[];
 }
 
 export interface day {
   date: string;
   dateLabel: string;
-  slots: slots;
+  slots: slot[];
   weekDayLabel: string;
 }
 

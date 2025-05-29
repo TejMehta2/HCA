@@ -4,13 +4,19 @@ import styles from './Accreditations.module.scss';
 import Text from '../../foundation/Text/Text';
 
 const Accreditations = (props: AccreditationsProps): JSX.Element => {
-  const { items, columns = 2 } = props;
+  const { items, columns = 2, contentVariation } = props;
   return (
     <div className={[styles.wrapper, styles[`columns-${columns}`]].join(' ')}>
       <div className={styles.container}>
         <div className={styles.grid}>
           {items?.map(({ title, text, logo }, index) => (
-            <div className={styles.item} key={index}>
+            <div
+              className={[
+                styles.item,
+                contentVariation === 'centered' ? styles['item-centered'] : '',
+              ].join(' ')}
+              key={index}
+            >
               <div className={styles.logo}>{logo}</div>
               <div>
                 {title && (

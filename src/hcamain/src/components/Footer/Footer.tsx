@@ -61,8 +61,24 @@ export const Default = (props: FooterProps): JSX.Element => {
     linkReducer,
     []
   );
+
+  const contactUnitDetails: {
+    internationalPhoneNumber: string | undefined;
+    phoneNumber: string | undefined;
+    unitName: string | undefined;
+  } = {
+    internationalPhoneNumber:
+      props.fields.Contact?.fields?.TelephoneNumber[0]?.fields
+        ?.InternationPhoneNumber?.value,
+    phoneNumber:
+      props.fields.Contact?.fields?.TelephoneNumber[0]?.fields?.PhoneNumber
+        ?.value,
+    unitName: props.fields.Contact?.fields?.ContactUnitName?.value,
+  };
+
   return (
     <Footer
+      theme={props.params?.Theme || 'B-HCA-Navy-Blue'}
       copyright={
         props.fields?.Copyright?.value ? (
           <Text variation={'body-small'}>
@@ -82,6 +98,7 @@ export const Default = (props: FooterProps): JSX.Element => {
       }
       columns={[...columns, reviewColumn]}
       legals={legals}
+      contact={contactUnitDetails}
     />
   );
 };

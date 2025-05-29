@@ -3,6 +3,7 @@ import {
   useSitecoreContext,
   GetStaticComponentProps,
   useComponentProps,
+  RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -17,6 +18,9 @@ import Icons from '@component-library/foundation/Icons/Icons';
 import Head from 'next/head';
 import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
+import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
+import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -37,6 +41,23 @@ const JobDetailsHeaderDefaultComponent = (
   return <></>;
 };
 
+const JobDetailsNotFoundHeaderDefaultComponent = (): JSX.Element => {
+  return (
+    <>
+      <Head>
+        <title>Vacancy not found</title>
+      </Head>
+      <TextBlock
+        text={
+          <RichText>
+            <Text tag="p">Vacancy not found</Text>
+          </RichText>
+        }
+      />
+    </>
+  );
+};
+
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
 
@@ -44,19 +65,41 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
+  if (!data.name) {
+    return <JobDetailsNotFoundHeaderDefaultComponent />;
+  }
+
+  const matchedSetting =
+    props.fields?.data?.item?.headerImageMapping?.targetItems?.find(
+      (setting) => {
+        const value = setting.jobArea?.targetItem?.value?.value;
+        return value && data.jobAreas?.some((jobArea) => jobArea === value);
+      }
+    );
+
+  const heroImage = matchedSetting
+    ? matchedSetting.image
+    : props.fields?.data?.contextItem?.image;
+
   return (
     <Themes theme={props.params?.Theme || 'A-HCA-White'}>
       <Head>
-        <title>{data.jobProfile}</title>
-        <meta property="og:title" content={data.jobProfile} />
+        <title>{data.name}</title>
+        <meta property="og:title" content={data.name} key="og:title" />
+        {matchedSetting?.image && (
+          <meta
+            property="og:image"
+            content={addThumbnailParameter(
+              matchedSetting?.image?.jsonValue?.value?.src
+            )}
+            key="og:image"
+          />
+        )}
       </Head>
       <VacancyHeader
         title={
-          <Text
-            variation={getDynamicTitleStyle(data.jobProfile.length)}
-            tag="h1"
-          >
-            {data.jobProfile}
+          <Text variation={getDynamicTitleStyle(data.name.length)} tag="h1">
+            {data.name}
           </Text>
         }
         location={data.jobLocation}
@@ -76,6 +119,19 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
             </Button>
           </>
         }
+        image={
+          heroImage?.jsonValue?.value && (
+            <NextJssImage
+              field={heroImage?.jsonValue}
+              next={{
+                fill: true,
+                sizes: '100vw',
+                loading: 'eager',
+                priority: true,
+              }}
+            />
+          )
+        }
       />
       <BlogContent theme={props.params?.Theme || 'A-HCA-White'}>
         <div className="vacancy-rte">
@@ -92,24 +148,6 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
           </Button>
         </Container>
       </BlogContent>
-      {/* V2
-      <p>
-        header images are mapped with corresponding jobFamily/area page. find
-        matching Job s jobFamily field value from the API response in dictionary
-        below and use corresponding image{' '}
-      </p>
-      {props.fields?.data?.item?.headerImageMapping?.targetItems.map(
-        (setting, key) => {
-          return (
-            <p key={key}>
-              jobfamily:{setting.jobFamily?.value}
-              image:{setting.image?.jsonValue?.value?.src}
-            </p>
-          );
-        }
-      )}
-      <p>if there is no match, use default header image:</p>
-      {props.fields?.data?.contextItem?.image?.jsonValue?.value?.src} */}
     </Themes>
   );
 };
@@ -127,7 +165,7 @@ export const getServerSideProps: GetStaticComponentProps = async (
     const data = await response.json();
     return await data.response;
   } catch (error) {
-    console.error(error);
+    console.error('JobDetailsHeader fetch error:', error);
     return {};
   }
 };

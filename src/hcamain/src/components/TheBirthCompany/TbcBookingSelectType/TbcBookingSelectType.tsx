@@ -92,8 +92,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
   const [error, setError] = useState(false);
 
   const searchParams = useSearchParams();
-  const paramScanId = searchParams.get('scanId');
-  const paramLocationId = searchParams.get('locationId');
+
   const paramTypeId = searchParams.get('typeId');
 
   // Set params for next page
@@ -118,7 +117,18 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
       return;
     }
 
-    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}`;
+    const paramScanId = searchParams.get('scanId');
+    const paramExtras = searchParams.getAll('extraId');
+    const paramLocationId = searchParams.get('locationId');
+
+    //  if any required params are missing redirect back to the start of the journey
+    if (!paramScanId || !paramLocationId) {
+      router.push('/booking');
+    }
+
+    const extras = paramExtras.map((extra) => `&extraId=${extra}`).join('');
+
+    const requestURL = `${process.env.NEXT_PUBLIC_INTEGRATION_LAYER_PROXY_PATH}/tbcbooking/types?scanid=${paramScanId}&locationid=${paramLocationId}${extras}`;
 
     axios
       .get(requestURL)
@@ -132,7 +142,7 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
         setError(true);
         console.log(error);
       });
-  }, [router.isReady, paramScanId, paramLocationId]);
+  }, [router, router.isReady, searchParams]);
 
   if (props.fields) {
     return (
@@ -205,26 +215,32 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                         </Text>
                       }
                       description={
-                        <Text variation="body-small">
-                          {appointmentType.description}
-                        </Text>
+                        appointmentType.description ? (
+                          <Text variation="body-small">
+                            {appointmentType.description}
+                          </Text>
+                        ) : undefined
                       }
                       handleClick={() => {
                         setSelectedTypeOfAppointment(appointmentType.id);
                       }}
                     >
-                      <span>
-                        <Icons iconName="iconClock" />
-                        <Text variation="body-small" tag="p">
-                          {appointmentType.duration}
-                        </Text>
-                      </span>
-                      <span>
-                        <Icons iconName="iconCreditCard" />
-                        <Text variation="body-small" tag="p">
-                          {appointmentType.price}
-                        </Text>
-                      </span>
+                      {appointmentType.duration && (
+                        <span>
+                          <Icons iconName="iconClock" />
+                          <Text variation="body-small" tag="p">
+                            {appointmentType.duration}
+                          </Text>
+                        </span>
+                      )}
+                      {appointmentType.price && (
+                        <span>
+                          <Icons iconName="iconCreditCard" />
+                          <Text variation="body-small" tag="p">
+                            {appointmentType.price}
+                          </Text>
+                        </span>
+                      )}
                     </LocationCard>
                   ))}
                 </>

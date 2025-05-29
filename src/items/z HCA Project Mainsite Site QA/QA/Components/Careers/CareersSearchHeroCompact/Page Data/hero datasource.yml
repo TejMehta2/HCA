@@ -1,0 +1,56 @@
+﻿---
+ID: "1c4aee49-65d0-4d8b-aa44-e4c6e4bbf257"
+Parent: "6113be73-f23e-4321-b709-f804b8172bf6"
+Template: "fe97243f-b135-4f93-9b6e-390b863e11fc"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Careers/CareersSearchHeroCompact/Page Data/hero datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240905T143736Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "65f91abd-ebd9-4112-a329-c42a0831884c"
+      Hint: SelectALocationLabel
+      Value: Select a location
+    - ID: "70b09f2a-2155-4ff9-a4f9-08aee7fc23c0"
+      Hint: SearchRolesCTA
+      Value: |
+        <link class="" id="{60C95BFB-0B55-4897-91E2-C4CDAF4918DD}" querystring="" anchor="" target="" title="" linktype="internal" text="Search roles" url="/HCA/HCA-Main/Home/QA/Components/Careers/CareersSearchResults" />
+    - ID: "86d4a983-a5f3-46d2-be34-b6ebd835b063"
+      Hint: Filters
+      Value: |
+        {26A6FEE0-7361-415D-B38A-AF764323D4E4}
+        {BAD26E4A-A225-4184-B3B3-E47EDD741FC4}
+        {8A48AB89-7B02-4DC2-A402-EBBA4D214BB6}
+        {5BFAB63B-54AE-4B37-9B25-40521ADAF700}
+        {4B6379FF-F1D4-4A84-8EA2-CDE1B07BCC4B}
+        {F893F5E6-95E7-4E99-A6A8-4251278489A4}
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "18ca417d-3ccc-4eb1-8e55-4fabb7c082f5"
+    - ID: "930d140a-6b6f-4cd9-abab-5c2aabc53e90"
+      Hint: SelectAJobAreaLabel
+      Value: Select a job area
+    - ID: "93f4e670-71c7-43bf-98e7-0f3bad482c1a"
+      Hint: SearchPhrasePlaceholder
+      Value: Search for a keyword or role
+    - ID: "b6586292-0279-423d-8a44-0adedb7f3e8b"
+      Hint: FiltersCtaLabel
+      Value: Filters
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250418T101546Z

@@ -25,10 +25,18 @@ async function loadRecursedAppItemsFromGraphQL(
     // build a query for App/Portal objects
     const GQLQuery: string = `
 fragment appFields on Item {
-	id,
   name,
-  displayName,
   hasChildren,
+  ... on Array {
+        type:template { 
+          name
+        }
+    },
+  ... on ArrayElement {
+        type:template { 
+          name
+        }
+    },    
   ... on AppSimple {
       value {
         value
@@ -63,27 +71,6 @@ fragment appFields on Item {
     textValue:value {
       value
     }
-    textValueShort:valueShort {
-      value
-    }
-    textAndroid:androidValue {
-      value
-    }
-    textAndroidShort:androidValueShort {
-      value
-    }
-    textiOS:iOSValue {
-      value
-    }
-    textiOSShort:iOSValueShort {
-      value
-    }
-    textWeb:webValue {
-      value
-    }
-    textWebShort:webValueShort {
-      value
-    }
   }
 }
 
@@ -92,35 +79,29 @@ query {
     ...appFields,
     
     # find children for recursion
-    children( first: 200 ) {
+    children(first: 400) {
     results {
         name,
-        id,
         ...appFields,
-          children( first: 200) {
+          children(first: 400) {
             results {
                 name,
-                id,
                 ...appFields,
-                children( first: 200) {
+                children(first: 400) {
                 results {
                     name,
-                    id,
                     ...appFields,
-                    children( first: 200) {
+                    children(first: 400) {
                     results {
                         name,
-                        id,
                         ...appFields,
-                        children( first: 200) {
+                        children(first: 400) {
                         results {
                             name,
-                            id,
                             ...appFields,
-                            children( first: 200) {
+                            children(first: 400) {
                             results {
                                 name,
-                                id,
                                 ...appFields,
                             }
                           }
@@ -163,6 +144,14 @@ export async function recurseAppItemsFlat(
 ): Promise<any> {
   try {
     if (currentJSON && !currentJSON.results && currentJSON.hasChildren) {
+      let isArray: boolean = false;
+      // for array types, convert
+      //  {"Component.AnArray.0.text":"hello 1","Component.AnArray.1.text":"test 2"}
+      // to
+      //  {'Component.AnArray[0].text': 'hello 1','Component.AnArray[1].text': 'test 2'}
+      if (currentJSON.type && currentJSON.type.name === 'Array') {
+        isArray = true;
+      }
       // just a folder, have we got children to resolve?
       //console.log('folder1', path);
       const children = currentJSON.children?.results;
@@ -171,7 +160,7 @@ export async function recurseAppItemsFlat(
         const item: sitecoreItemProp = children[childCnt];
         await recurseAppItemsFlat(
           graphQLClient,
-          `${path}/${item.name}`,
+          isArray ? `${path}[${item.name}]` : `${path}/${item.name}`,
           lang,
           platform,
           children[childCnt],
@@ -325,9 +314,9 @@ export async function getRecurseAppItemsFromGraphQL(
     flatNodes
   );
   const newFlatNodes: any = await shortenToRequestedPath(flatNodes, path);
-  //console.log('result', JSON.stringify(newFlatNodes));
+  //console.log('result2', JSON.stringify(newFlatNodes));
   const result = await expandFlatNodes(newFlatNodes);
-  //console.log('result', JSON.stringify(result));
+  //console.log('result3', JSON.stringify(result));
   return result;
 }
 

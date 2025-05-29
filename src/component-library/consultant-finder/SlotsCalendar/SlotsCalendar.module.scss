@@ -116,6 +116,8 @@
   }
 
   .btn-txt {
+    display: flex;
+
     span {
       font-size: px-to-rem(11);
 
@@ -202,4 +204,9 @@
       }
     }
   }
+}
+
+.no-slots {
+  margin-top: px-to-rem(16);
+  text-align: center;
 }

@@ -1,0 +1,66 @@
+﻿---
+ID: "0751aeb2-4870-4deb-97d1-a78cf1c32a98"
+Parent: "03404629-b7e3-4df9-a301-96de6a143a0a"
+Template: "03404629-b7e3-4df9-a301-96de6a143a0a"
+Path: "/sitecore/templates/Project/HCA/App-Portal/Folders/ArrayElement/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {68C8437F-67D0-4263-85C1-F3F6EA9D10F9}
+    {BE7D5B34-3998-4C8D-901C-C5BA1C78F792}
+    {A405D7AF-06F0-4A2C-BA63-EC1AE9301D74}
+    {20F2006E-0E11-451F-B5A1-75BB7E7071C1}
+    {5EFDEA84-0682-451E-949A-3FD49980D7CB}
+    {8209164E-A43D-456E-9B10-DEF1114F458D}
+    {CDB10409-A739-4124-B365-395A4DC01488}
+    {001E58F9-7067-4D0C-BCE8-3754D0CBB2BE}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250403T124055Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b29ef26-f280-4ff0-82a3-8b53da135674"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250403T163048Z
+  - Version: 2
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250403T124055Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b29ef26-f280-4ff0-82a3-8b53da135674"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\matthew.hopkins@hcahealthcare.co.uk
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250403T163048Z

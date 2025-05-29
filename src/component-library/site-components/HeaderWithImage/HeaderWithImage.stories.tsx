@@ -192,3 +192,82 @@ export const WithRatings: StoryObj<typeof HeaderWithImage> = {
     ),
   },
 };
+
+export const HeaderWithImageNoMask: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    title: (
+      <Text variation="display-1" tag="h2">
+        Get the HCA UK treatment
+      </Text>
+    ),
+    copy: (
+      <Text variation="body-large" tag="p">
+        Choose the private hospital network that’s focused in microscopic detail
+        On you Get the HCA UK Treatment
+      </Text>
+    ),
+    ctas: (
+      <>
+        <Button size="large" variation="full" contentVariation="full-width">
+          <a href="#">
+            <Icons iconName="iconStethoscope" />
+            <span>
+              Find a <strong>Consultant</strong>
+            </span>
+          </a>
+        </Button>
+        <Button size="large" variation="outline" contentVariation="full-width">
+          <a href="#">
+            <Icons iconName="iconPhone" />
+            <span>
+              Call us <strong>today</strong>
+            </span>
+          </a>
+        </Button>
+      </>
+    ),
+    image: (
+      <Image
+        src="/placeholders/cut-out-image.png"
+        alt="HCA worker"
+        width="1024"
+        height="683"
+      />
+    ),
+    theme: 'F-HCA-Fern',
+    noMask: true,
+  },
+};
+
+export const FullWidthImage: StoryObj<typeof HeaderWithImage> = {
+  args: {
+    subtitlePlacement: 'before',
+    contentVariation: 'fullWidthImage',
+    subtitle: <Text variation="subheading-1">Our roles</Text>,
+    title: <Text variation="display-1">Quality care takes diverse people</Text>,
+    copy: (
+      <Text variation="body-large">
+        From physicians to physiotherapists, all of our colleagues play a part
+        in delivering excellence for our patients.
+      </Text>
+    ),
+    ctas: (
+      <Button size="large" variation="full">
+        <a href="#">
+          <Icons iconName="iconSearch" />
+          <span>
+            Search <strong>roles</strong>
+          </span>
+        </a>
+      </Button>
+    ),
+    image: (
+      <Image
+        src="/placeholders/quality-care.jpg"
+        alt="quality care"
+        width="1512"
+        height="814"
+      />
+    ),
+  },
+};

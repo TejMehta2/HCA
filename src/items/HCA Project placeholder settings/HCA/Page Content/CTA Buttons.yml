@@ -7,6 +7,12 @@ SharedFields:
 - ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
   Hint: Placeholder Key
   Value: "cta-buttons-{*}"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "58a5e8c0-74dc-4de5-8849-e47a046ba117"
 - ID: "e391b526-d0c5-439d-803e-17512eae6222"
   Hint: Allowed Controls
   Value: |
@@ -20,6 +26,7 @@ SharedFields:
     {803BDD47-FD30-4D14-8A1E-B433395827F1}
     {6FFBDCBB-7F78-4B03-8807-02919730D6F6}
     {3571FEB2-D700-4A6F-B4E0-D3532445617C}
+    {A2341DAF-0FFC-4657-B3D8-E6EC98709798}
 Languages:
 - Language: en
   Versions:
@@ -38,11 +45,11 @@ Languages:
         sitecore\carmen.popovici@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6cd8f9e9-f000-44c6-8ab4-2fbd10cdae4d"
+      Value: "4201006d-33b4-4f49-a509-b5e103186a67"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250224T172206Z
+      Value: 20250502T133431Z

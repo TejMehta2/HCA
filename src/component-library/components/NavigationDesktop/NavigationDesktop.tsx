@@ -25,6 +25,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
     themeClosed = 'I-HCA-Goldenrod',
     defaultTab = null,
     search,
+    homeUrl = '/',
   } = props;
 
   // close the nav when clicking a link within
@@ -249,15 +250,7 @@ const NavigationDesktop = (props: NavigationProps): JSX.Element => {
           <div className={styles.main}>
             <a
               className={styles.logo}
-              href={
-                typeof window !== 'undefined'
-                  ? window?.location.href.indexOf(
-                      process.env.NEXT_PUBLIC_BASE_URL_CAREERS || 'careers'
-                    ) === -1
-                    ? '/'
-                    : '/careers'
-                  : '/'
-              }
+              href={homeUrl}
               data-navigation-type="logoNavigation"
             >
               <span className="sr-only">Home</span>

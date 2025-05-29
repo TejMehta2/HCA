@@ -17,6 +17,10 @@
     padding-bottom: $spacing-13;
   }
 
+  &.medium {
+    padding-bottom: $spacing-8;
+  }
+
   &.small {
     padding-bottom: $spacing-7;
   }
@@ -70,4 +74,35 @@
 .children {
   margin-top: $spacing-8;
   margin-bottom: $spacing-7;
+}
+
+.centered {
+  @include responsive-grid;
+
+  text-align: center;
+  row-gap: 0;
+
+  .title,
+  .subtitle {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 4);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 4,
+      $breakpoint-l: 6
+    );
+
+    max-width: 100%;
+  }
+
+  .body {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 5);
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 4,
+      $breakpoint-l: 4
+    );
+
+    margin-top: $spacing-2;
+    max-width: 100%;
+  }
 }

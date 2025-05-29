@@ -59,27 +59,14 @@ export const Default = (props: CareersSearchBlockProps): JSX.Element => {
           }
           filters={
             <>
-              {data?.facets?.[1] && (
-                <SelectField
-                  placeholder={
-                    props.fields?.data?.item?.selectAJobAreaLabel?.value
-                  }
-                  id={'jobArea'}
-                  options={
-                    data?.facets?.[1]?.options.map((option) => ({
-                      text: option.displayName,
-                    })) || []
-                  }
-                />
-              )}
-              {data?.facets?.[0] && (
+              {data?.facets?.[2] && (
                 <SelectField
                   placeholder={
                     props.fields?.data?.item?.selectALocationLabel?.value
                   }
-                  id={data?.facets[0].fieldId?.replace('c_', '') || ''}
+                  id={data?.facets[2].fieldId?.replace('c_', '') || ''}
                   options={
-                    data?.facets[0].options.map((option) => ({
+                    data?.facets[2].options.map((option) => ({
                       text: option.displayName,
                     })) || []
                   }

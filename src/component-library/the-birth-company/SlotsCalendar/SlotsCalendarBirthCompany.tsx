@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
   SlotsCalendarBirthCompanyProps,
-  slots,
   day,
   daysList,
 } from './SlotsCalendarBirthCompany.types';
@@ -11,6 +10,7 @@ import styles from '../../consultant-finder/SlotsCalendar/SlotsCalendar.module.s
 import {
   formatDateYYYYMMDD,
   formatDateLong,
+  formatDateDDMMM,
 } from '../../utility-functions/index';
 import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
 import LoaderCF from '../../consultant-finder/LoaderCF/LoaderCF';
@@ -37,7 +37,7 @@ const SlotsCalendarBirthCompany = (
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<any>(null);
   const [dates, setDates] = useState([]);
-  const [days, setDays] = useState<day[]>([]);
+  const [days, setDays] = useState<day[] | []>([]);
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [noSlots, setNoSlots] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
@@ -93,7 +93,6 @@ const SlotsCalendarBirthCompany = (
     const nextWeek = new Date(firstDayOfWeek);
     nextWeek.setDate(nextWeek.getDate() + 7);
     setFirstDayOfWeek(getFirstDayOfWeek(nextWeek));
-    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(nextWeek)));
   };
 
   const showPrevWeek = () => {
@@ -101,7 +100,6 @@ const SlotsCalendarBirthCompany = (
     const prevWeek = new Date(firstDayOfWeek);
     prevWeek.setDate(prevWeek.getDate() - 7);
     setFirstDayOfWeek(getFirstDayOfWeek(prevWeek));
-    getSlots(formatDateYYYYMMDD(getFirstDayOfWeek(prevWeek)));
   };
 
   const getSlots = (firstDay?: string) => {
@@ -169,11 +167,18 @@ const SlotsCalendarBirthCompany = (
           }
         }
 
+        const lastDayOfWeek = new Date(firstDayOfWeek);
+        lastDayOfWeek.setUTCHours(0, 0, 0, 0);
+        lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+
         const hasSlots = daysData.some(
-          (item: slots) => item.slots && item.slots.length > 0
+          (item: day) =>
+            item.slots &&
+            item.slots.length > 0 &&
+            new Date(item.date) <= lastDayOfWeek
         );
 
-        if (hasSlots > 0) {
+        if (hasSlots) {
           getWeekdays(daysData);
           setNoSlots(false);
         } else {
@@ -221,7 +226,7 @@ const SlotsCalendarBirthCompany = (
   }, []);
 
   useEffect(() => {
-    getSlots(firstDayOfWeek);
+    getSlots(formatDateYYYYMMDD(firstDayOfWeek));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     selectedLocation,
@@ -230,66 +235,38 @@ const SlotsCalendarBirthCompany = (
     firstDayOfWeek,
   ]);
 
-  function filterCurrentWeekDates(dates: day[]): day[] {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-
-    // Find the current week's Monday
-    const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-    const monday = new Date(today);
-    monday.setDate(today.getDate() + mondayOffset);
-    monday.setHours(0, 0, 0, 0);
-
-    // Find the current week's Sunday
-    const sunday = new Date(monday);
-    sunday.setDate(monday.getDate() + 6);
-    sunday.setHours(0, 0, 0, 0);
-
-    // Find next week's Monday
-    const nextMonday = new Date(sunday);
-    nextMonday.setDate(sunday.getDate() + 1);
-    nextMonday.setHours(0, 0, 0, 0);
-
-    return dates.filter((item) => {
-      const itemDate = new Date(item.date);
-      itemDate.setHours(0, 0, 0, 0);
-      return itemDate >= monday && itemDate <= sunday;
-    });
-  }
-
   const getWeekdays = (daysList: daysList) => {
-    const today = new Date();
-    const formattedToday = today.toISOString().split('T')[0];
+    if (daysList.length === 0) return;
 
-    const containsToday = daysList.some(
-      (day: day) => day.date === formattedToday
+    // Step 1: Find the earliest date in `daysList`
+    const earliestDate = new Date(
+      Math.min(...daysList.map((day) => new Date(day.date).getTime()))
     );
 
-    if (!containsToday) {
-      setDays(daysList);
-      return;
-    }
+    // Step 2: Get the Monday of that week
+    const firstDayOfWeek = getFirstDayOfWeek(earliestDate);
 
-    // Check if all dates in daysList belong to next week
-    const firstDate = new Date(daysList[0].date);
+    // Step 3: Generate the full week (Monday - Sunday)
+    const fullWeek = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(firstDayOfWeek);
+      date.setDate(date.getDate() + i);
 
-    const dayOfWeek = today.getDay(); // Get current day of the week
+      const formattedDate = formatDateYYYYMMDD(date); // "YYYY-MM-DD"
+      const formattedLabel = formatDateDDMMM(date); // "02 Apr"
 
-    const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-    const currentWeekMonday = new Date(today);
-    currentWeekMonday.setDate(today.getDate() + mondayOffset);
+      const existingDay = daysList.find((d) => d.date === formattedDate);
 
-    const nextMonday = new Date(currentWeekMonday);
-    nextMonday.setDate(currentWeekMonday.getDate() + 7);
+      return (
+        existingDay || {
+          weekDayLabel: daysOfWeek[i],
+          dateLabel: formattedLabel,
+          date: formattedDate,
+          slots: [],
+        }
+      );
+    });
 
-    if (firstDate >= nextMonday) {
-      setDays(daysList); // If it's next week's data, use it as is
-      return;
-    }
-
-    // Otherwise, only return current week's days
-    setDays(filterCurrentWeekDates(daysList));
+    setDays(fullWeek as day[]);
   };
 
   return (
@@ -367,7 +344,7 @@ const SlotsCalendarBirthCompany = (
         {loadingSlots && <LoaderCF loadingMsg={'Loading slots...'} />}
         {!loadingSlots && noSlots && (
           <div className={styles['no-slots']}>
-            <Text tag="p" variation="body-medium-small">
+            <Text tag="p" variation="body-medium-medium">
               {props.API_C2_GetConsultantSlots_NoResultsMsg}
             </Text>
           </div>

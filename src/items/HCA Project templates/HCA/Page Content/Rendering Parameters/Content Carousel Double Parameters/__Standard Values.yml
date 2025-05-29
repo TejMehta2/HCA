@@ -1,0 +1,27 @@
+﻿---
+ID: "b641b8fa-9e20-4e80-aba2-4def7d9004f4"
+Parent: "362fa322-5675-4eed-aef1-8900f3d53206"
+Template: "362fa322-5675-4eed-aef1-8900f3d53206"
+Path: /sitecore/templates/Project/HCA/Page Content/Rendering Parameters/Content Carousel Double Parameters/__Standard Values
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e9f5da92-9324-4e04-8664-7f12a6921d95"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250424T124314Z

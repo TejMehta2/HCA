@@ -13,7 +13,6 @@ import Themes from '../../foundation/Themes/Themes';
 import ServiceCards from '../../site-components/ServiceCards/ServiceCards';
 import CardService from '../CardService/CardService';
 import CardBlog from '../CardBlog/CardBlog';
-import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Button from '../../core-components/Button/Button';
 import HomepageHero from '../../site-components/HomepageHero/HomepageHero';
 import SearchBar from '../SearchBar/SearchBar';
@@ -21,6 +20,10 @@ import Footer from '../../site-components/Footer/Footer';
 import DiamondLine from '../../site-components/DiamondLine/DiamondLine';
 import OurLocations from '../../site-components/OurLocations/OurLocations';
 import CardLocation from '../CardLocation/CardLocation';
+
+import ImageAndTextBlock from '../../site-components/ImageAndTextBlock/ImageAndTextBlock';
+import { ImageAndTextBlockProps } from '../../site-components/ImageAndTextBlock/ImageAndTextBlock.types';
+import { Short as ImageAndTextBlockStory } from '../../site-components/ImageAndTextBlock/ImageAndTextBlock.stories';
 
 import VideoHero from '../../careers/VideoHero/VideoHero';
 import { VideoHeroProps } from '../../careers/VideoHero/VideoHero.types';
@@ -45,6 +48,25 @@ import { Centered as TextBlockStory } from '../../site-components/TextBlock/Text
 import CarouselTestimonials from '../../careers/CarouselTestimonials/CarouselTestimonials';
 import { CarouselTestimonialsProps } from '../../careers/CarouselTestimonials/CarouselTestimonials.types';
 import { Default as CarouselTestimonialsStory } from '../../careers/CarouselTestimonials/CarouselTestimonials.stories';
+
+import CarouselImages from '../../careers/CarouselImages/CarouselImages';
+import { CarouselImagesProps } from '../../careers/CarouselImages/CarouselImages.types';
+import {
+  Default as CarouselImagesStory,
+  EqualSize as CarouselImagesEqualSizeStory,
+} from '../../careers/CarouselImages/CarouselImages.stories';
+
+import Accreditations from '../../careers/Accreditations/Accreditations';
+import { AccreditationsProps } from '../../careers/Accreditations/Accreditations.types';
+import { Default as AccreditationsStory } from '../../careers/Accreditations/Accreditations.stories';
+
+import CardBlockCarousel from '../../careers/CardBlockCarousel/CardBlockCarousel';
+import { CardBlockCarouselProps } from '../../careers/CardBlockCarousel/CardBlockCarousel.types';
+import { Default as CardBlockCarouselStory } from '../../careers/CardBlockCarousel/CardBlockCarousel.stories';
+
+//import DualCTABlock from '../../careers/DualCTABlock/DualCTABlock';
+//import { DualCTABlockProps } from '../../careers/DualCTABlock/DualCTABlock.types';
+// import { Default as DualCTABlockStory } from '../../careers/DualCTABlock/DualCTABlock.stories.tsx.disabled';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ScrollTransition> = {
@@ -806,12 +828,29 @@ export const CareersPage: StoryObj<typeof ScrollTransition> = {
         <OffsetTextBlock
           {...(OffsetTextBlockStory.args as OffsetTextBlockProps)}
         />
+        <CarouselImages
+          {...(CarouselImagesStory.args as CarouselImagesProps)}
+        />
         <StatsCards {...(StatsCardsStory.args as StatsCardsProps)} />
         <CarouselCards {...(CarouselCardsStory.args as CarouselCardsProps)} />
+        <CardBlockCarousel
+          {...(CardBlockCarouselStory.args as CardBlockCarouselProps)}
+        />
         <CarouselTestimonials
           {...(CarouselTestimonialsStory.args as CarouselTestimonialsProps)}
         />
+        <ImageAndTextBlock
+          {...(ImageAndTextBlockStory.args as ImageAndTextBlockProps)}
+          theme="A-HCA-White"
+        />
+        {/* <DualCTABlock {...(DualCTABlockStory.args as DualCTABlockProps)} /> */}
         <TextBlock {...(TextBlockStory.args as TextBlockProps)} />
+        <CarouselImages
+          {...(CarouselImagesEqualSizeStory.args as CarouselImagesProps)}
+        />
+        <Accreditations
+          {...(AccreditationsStory.args as AccreditationsProps)}
+        />
       </>
     ),
   },

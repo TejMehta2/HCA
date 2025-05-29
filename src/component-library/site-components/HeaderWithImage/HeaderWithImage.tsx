@@ -28,10 +28,17 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
     subtitle,
     subtitlePlacement = 'after',
     ratings,
+    noMask = false,
+    contentVariation,
   } = props;
   return (
     <Themes theme={theme}>
-      <div className={styles['hero-with-image']}>
+      <div
+        className={[
+          styles['hero-with-image'],
+          contentVariation === 'fullWidthImage' && styles['full-width-image'],
+        ].join(' ')}
+      >
         <div className={styles.inner}>
           <div className={styles.content}>
             {subtitlePlacement === 'before' && subtitle && (
@@ -44,7 +51,9 @@ const HeaderWithImage = (props: HeaderWithImageProps): JSX.Element => {
             <div className={styles.copy}>{copy}</div>
             <div className={styles.ctas}>{ctas}</div>
           </div>
-          <div className={styles.image}>{image}</div>
+          <div className={noMask ? styles['image-no-mask'] : styles.image}>
+            {image}
+          </div>
           {ratings && <div className={styles.ratings}>{ratings}</div>}
         </div>
       </div>

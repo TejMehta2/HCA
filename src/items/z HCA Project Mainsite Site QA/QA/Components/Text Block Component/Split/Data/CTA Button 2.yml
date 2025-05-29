@@ -1,0 +1,30 @@
+﻿---
+ID: "54203368-c756-4b21-9d57-43d13e194780"
+Parent: "e0cee907-204d-43b9-a47f-3cd0a3758ce0"
+Template: "12ce8c87-4a69-4653-96e4-9ac4bffddd76"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Text Block Component/Split/Data/CTA Button 2"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240503T085651Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "84b06200-87c0-4216-8fcb-4c817d246cec"
+    - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
+      Hint: CTALink
+      Value: |
+        <link id="{95368764-DB8A-4FF8-9451-F0EC43D2965A}" querystring="" target="" linktype="internal" text="Access care with &lt;strong&gt;insurance&lt;/strong&gt;" url="/HCA/HCA-Main/Home/QA/Components/Text Block Component/Default/Data" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250430T225310Z
+    - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
+      Hint: CTAIcon
+      Value: "{0F0D22EB-4F39-4517-93E9-9828F405DD2E}"

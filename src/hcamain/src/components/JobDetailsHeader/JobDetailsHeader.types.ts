@@ -13,7 +13,11 @@ export interface Fields {
 }
 
 interface MappingFields {
-  jobFamily?: { value?: string };
+  jobArea?: {
+    targetItem?: {
+      value?: { value: string };
+    };
+  };
   image?: { jsonValue: ImageField };
 }
 
@@ -27,7 +31,7 @@ export type JobDetailsHeaderProps = {
 
 export interface JobsResponse {
   employmentType: string;
-  jobFamily: string;
+  jobAreas: string[];
   jobFamilyGroup: string;
   jobFamilyNameforJobProfile: string;
   jobFunction: string;

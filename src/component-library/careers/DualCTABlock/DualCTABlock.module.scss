@@ -1,0 +1,55 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  /* Set background colors to a subset of colors of the main wrapper theme */
+  --cta-block-background-right: var(--pagination-arrow-hover);
+  --cta-block-background-left: var(--tab-background);
+
+  padding-top: var(--theme-collapse-padding-top, $spacing-13);
+  padding-bottom: $spacing-13;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0;
+
+    @include media(screen-l) {
+      flex-direction: row;
+    }
+
+    & > * {
+      flex: 1;
+
+      & div[class*='Block_wrapper'] {
+        height: 100%;
+        background-color: var(--cta-block-background-right);
+        color: var(--text);
+      }
+
+      &:first-of-type div[class*='wrapper'] {
+        background-color: var(--cta-block-background-left);
+      }
+
+      & div[class*='container'] {
+        height: 100%;
+        flex-direction: column;
+      }
+
+      & div[class*='text-column'] {
+        flex: 1;
+        width: 100%;
+      }
+
+      & div[class*='ctas'] {
+        width: 100%;
+        justify-content: flex-start;
+        flex: none;
+
+        & span {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

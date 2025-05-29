@@ -1,0 +1,39 @@
+﻿---
+ID: "f20d57e2-5262-46e0-b6bc-774686e08bbc"
+Parent: "a0279508-945d-4c7c-b0d6-b133f96c5d3c"
+Template: "6f6bc8f2-e680-45b2-b923-36e100377cd0"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Images Carousel/Page Data/Carousel Datasource"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250421T133726Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2490c2d4-d41a-4dea-b3d2-531dbb3f46a9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250421T140729Z
+    - ID: "fe8eef2d-651c-405f-b5a5-fed9ccc622e2"
+      Hint: Images
+      Value: |
+        {C7B0D897-DAC7-4659-A260-C8EAF1801727}
+        {DF6AB8C3-19D6-4893-9307-FAB9BF8E6B15}
+        {0F15061A-77A6-4E47-AD6D-8D82D0DD1D1F}
+        {5A6B775C-AFA4-411D-8485-7569951AE22E}
+        {B659279D-C1A8-465A-9F7E-3D2B1F9329A7}

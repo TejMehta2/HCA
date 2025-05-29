@@ -6,7 +6,6 @@ import Head from 'next/head';
 import {
   Placeholder,
   LayoutServiceData,
-  Field,
   HTMLLink,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
@@ -26,18 +25,12 @@ interface LayoutProps {
   layoutData: LayoutServiceData;
   headLinks: HTMLLink[];
 }
-interface RouteFields {
-  [key: string]: unknown;
-  Title?: Field;
-}
-
 type FirstComponentProps = {
   params?: Params;
 };
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const { route } = layoutData.sitecore;
-  const fields = route?.fields as RouteFields;
   const isPageEditing = layoutData.sitecore.context.pageEditing;
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
@@ -90,20 +83,10 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     index: number
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
-  const titleAsString = fields?.Title?.value?.toString() || 'Page';
-  const titleStripped = titleAsString.replace(/(<([^>]+)>)/gi, '');
-
   return (
     <>
       <Scripts />
       <Head>
-        <script
-          type="text/javascript"
-          src="//app.pageproofer.com/embed/b55b9562-6097-5093-9112-d6748577287d"
-          async={true}
-        ></script>
-        <title>{titleStripped}</title>
-
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -134,6 +117,11 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
+
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/mdu7dnk.css"
+        ></link>
 
         {headLinks.map((headLink) => (
           <link rel={headLink.rel} key={headLink.href} href={headLink.href} />
