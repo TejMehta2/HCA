@@ -92,7 +92,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
     MetaDescription,
     MetaImage,
     MetaTitle,
-    BrowserTitle,
     NoFollow,
     NoIndex,
     AbstractText,
@@ -110,9 +109,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
   const title = `${MetaTitle?.value || titleStripped} ${
     PageTitleSufix?.value || ''
   }`;
-  const browserTitle = `${
-    BrowserTitle?.value || titleStripped || route.displayName
-  } ${PageTitleSufix?.value || ''}`;
   const description = MetaDescription?.value || Text?.value;
   const image =
     MetaImage?.value?.src ||
@@ -189,7 +185,6 @@ export const Default = (props: MetadataProps): JSX.Element => {
   } else {
     return (
       <Head>
-        {browserTitle && <title>{browserTitle}</title>}
         {gtmTag}
         &&
         {TwitterCard?.value?.value && (
