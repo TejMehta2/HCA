@@ -83,6 +83,10 @@
       border-collapse: collapse;
       margin: $spacing-5 auto;
 
+      @include media(screen-m) {
+        display: table;
+      }
+
       thead {
         @include apply-body-bold-large;
       }
@@ -105,11 +109,8 @@
         width: 100%;
         text-wrap: auto;
         word-break: normal;
-      }
 
-      &[class*='custom-width'] {
-        td,
-        th {
+        @include media(screen-m) {
           width: auto;
         }
       }
