@@ -16,6 +16,7 @@ import Params from 'src/types/params';
 import ErrorBoundary from 'lib/ErrorBoundary';
 import YextProvider from '@component-library/yext/YextProvider/YextProvider';
 import Schema from './Schema';
+import { PageRouteMetadata } from 'components/Metadata/Metadata';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -31,6 +32,7 @@ type FirstComponentProps = {
 
 const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const { route } = layoutData.sitecore;
+  const routeData = route as PageRouteMetadata;
   const isPageEditing = layoutData.sitecore.context.pageEditing;
   const mainClassPageEditing = isPageEditing ? 'editing-mode' : 'prod-mode';
 
@@ -41,6 +43,10 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
   const noHeader = currentPagePath.includes('/Payment-Form');
 
   const mainRef = useRef<HTMLElement>(null);
+
+  // route values
+  const Title = routeData.fields?.Title;
+  const BrowserTitle = routeData.fields?.BrowserTitle;
 
   /* Remove built in form styles if they exist */
   useEffect(() => {
@@ -83,10 +89,16 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
     index: number
   ) => <ErrorBoundary key={index}>{children}</ErrorBoundary>;
 
+  const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
+  const browserTitle = `${
+    BrowserTitle?.value || titleStripped || routeData.displayName
+  }`;
+
   return (
     <>
       <Scripts />
       <Head>
+        {browserTitle && <title>{browserTitle}</title>}
         <link
           rel="apple-touch-icon"
           sizes="180x180"
