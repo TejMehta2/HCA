@@ -1,0 +1,53 @@
+﻿---
+ID: "d5c6f4d2-017a-4610-965b-6fcf3e5f6508"
+Parent: "9813466a-fd2c-4481-8c57-ca5e42b335f3"
+Template: "d5c0ac5c-0617-4d71-b64d-1db5f932c706"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource/Flexible Care GP"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "1ec5559b-e8e4-4b89-8781-4ef416ed8f8c"
+      Hint: ExcludedPackageItems
+      Value: |
+        {62BC10A8-EE58-439C-A50D-D1126741A937}
+        {06976D7F-9EF6-4E91-BA5C-11208F4097A7}
+        {431CACC8-53D4-4CA4-BD1F-2FEA87E9BDAE}
+        {6D5A3246-E995-4257-981B-E9B964A9562C}
+    - ID: "22e57bfd-a2b1-47fd-80c3-630798501f0e"
+      Hint: IncludedPackageItems
+      Value: |
+        {CA4D0CCF-930F-4FE9-86CC-81C5E2FF01F0}
+        {EAE937C3-647D-45F7-864C-6692BD51BCBA}
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T135924Z
+    - ID: "2d061068-b569-41e9-8dbf-a4c6695f8849"
+      Hint: Title
+      Value: Flexible Care GP
+    - ID: "32d7b230-db51-48fa-919f-57dfdc69ad42"
+      Hint: Tag
+      Value: Most popular
+    - ID: "37c98d6e-0ee5-4851-9dd4-f25875025cd7"
+      Hint: CTA
+      Value: |
+        <link text="Get started" anchor="" linktype="internal" class="" title="" target="|Custom" querystring="" id="{4B129700-C6DD-4467-B4AF-2D13BD7420E5}" />
+    - ID: "4cce5494-47aa-4e1d-8549-a3dbdb2a0206"
+      Hint: Description
+      Value: <p>GP subscription suitable for all ages</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5549a20c-bccd-4e3f-ad2b-3b50399b9cac"
+    - ID: "ae41f28e-15dd-4280-8546-4ba3afcfd110"
+      Hint: PricingVariants
+      Value: |
+        {348BE40E-80CA-4B36-B026-1DF3A465B6B4}
+        {96E241D4-1D72-4A0B-9F69-97CE9E9A58B2}
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T143705Z

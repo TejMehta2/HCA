@@ -6,19 +6,25 @@ Path: /sitecore/templates/Project/HCA/Careers/Careers Latest Vacancies/Content/J
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "{B1885C71-EE86-4934-BDA8-13C156781C42}"
+  Value: "/sitecore/content/HCA/HCA-Main/Settings/Careers/Facet Options"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Treelist
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 400
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2a561202-25d6-42a9-9484-7beba2564e9b"
 Languages:
 - Language: en
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Job Families
+    Value: Search by
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "3ba0f61f-83ec-4a0f-8c24-3e159686ac78"
   Versions:
   - Version: 1
     Fields:
@@ -35,11 +41,11 @@ Languages:
         sitecore\bartek.glomski@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "16243be2-8552-408f-bf90-912c02e1b772"
+      Value: "d72c292a-9822-4ee7-a764-f8e6199c39ca"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240925T154543Z
+      Value: 20250528T132737Z

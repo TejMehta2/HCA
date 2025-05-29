@@ -26,8 +26,14 @@ SharedFields:
                 image {
                   jsonValue
                 }
-                jobFamily {
-                  value
+                jobArea {
+                  targetItem {
+                    ... on GenericSetting {
+                      value {
+                        value
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -65,6 +71,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{81EBE71D-567F-495E-A643-D18D41BA6761}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "55c7f0de-a670-4dd0-8ff8-f24bb4c17661"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -111,14 +120,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "de705b99-a26e-4c60-bc22-2a107770b4c8"
+      Value: "76c32ed7-19fa-48c1-8066-04d49807f20e"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240911T112053Z
+      Value: 20250528T150019Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

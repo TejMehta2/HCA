@@ -54,9 +54,17 @@ const CarouselCards = (props: CarouselCardsProps): JSX.Element => {
     },
     responsive: [
       {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow:
+            cardsToDisplay === 4 ? cardsToDisplay - 1 : cardsToDisplay,
+        },
+      },
+      {
         breakpoint: 1135,
         settings: {
-          slidesToShow: cardsToDisplay - 1,
+          slidesToShow:
+            cardsToDisplay === 4 ? cardsToDisplay - 2 : cardsToDisplay - 1,
         },
       },
       {

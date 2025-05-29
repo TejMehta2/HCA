@@ -17,7 +17,7 @@
       {
         "ignoreProperties": {
           "px": ["/^border/", "letter-spacing", "/^outline/", "box-shadow"],
-          "em": "letter-spacing"
+          "em": ["letter-spacing", "font-size"]
         }
       }
     ]

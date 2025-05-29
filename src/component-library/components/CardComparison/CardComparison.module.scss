@@ -3,13 +3,12 @@
 
 .wrapper {
   border-radius: $radius-medium;
-  overflow: hidden;
+  background-color: var(--card-background);
+  color: var(--text);
 }
 
 .header {
   position: relative;
-  background-color: var(--card-background);
-  color: var(--text);
   padding: $spacing-8 $spacing-5 $spacing-6;
   border-bottom: 1px solid $navy-blue-20;
 
@@ -53,8 +52,6 @@
 }
 
 .body {
-  background-color: var(--card-background);
-  color: var(--text);
   padding: $spacing-5 $spacing-5 $spacing-7;
 }
 

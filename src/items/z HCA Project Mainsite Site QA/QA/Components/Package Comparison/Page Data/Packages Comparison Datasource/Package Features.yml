@@ -1,0 +1,23 @@
+﻿---
+ID: "db4f91c1-630f-4e8d-be50-f92f9f35d002"
+Parent: "9813466a-fd2c-4481-8c57-ca5e42b335f3"
+Template: "3ccfcf37-631d-4f90-96bb-32c843d6361d"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource/Package Features"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T140145Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c7c008b0-59fb-48cc-b2e9-68267baca72e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T140145Z

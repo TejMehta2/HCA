@@ -1,0 +1,40 @@
+﻿---
+ID: "34770c9d-4607-431f-b03d-ad0c8a3cd2fb"
+Parent: "56030203-0caa-4642-a3b8-d11f3d45a525"
+Template: "3f0d8506-3537-4332-8e58-f2ad75577425"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource/My HCA GP/390 year"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T142717Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "357aac6c-b89c-4ec1-9a4b-7605fde7f6e0"
+    - ID: "a021b5f1-0e4d-4598-976c-613ae15d82c9"
+      Hint: Discount
+      Value: "-10%"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T142733Z
+    - ID: "e3638edd-8773-43cc-b4c8-5db0a8a03ae6"
+      Hint: Price
+      Value: 390
+    - ID: "e993cbca-bf22-4517-a768-3d101bdb7ae7"
+      Hint: Period
+      Value: year
