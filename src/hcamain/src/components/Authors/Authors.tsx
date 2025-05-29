@@ -57,57 +57,47 @@ export const Default = (props: AuthorsProps): JSX.Element => {
     return <AuthorsDefaultComponent {...props} />;
   }
 
-  const quoteBlocks = props.fields.Authors.map((author, index) => (
-    <QuoteBlock
-      key={`author-${index}`}
-      author={
-        author?.fields?.Link?.value?.href
-          ? {
-              name: (
-                <a href={author?.fields?.Link?.value?.href} target="_blank">
-                  <JssText field={author?.fields?.Name} />
-                </a>
-              ),
-              image: (
-                <a href={author?.fields?.Link?.value?.href} target="_blank">
-                  <NextJssImage
-                    field={author?.fields?.Avatar}
-                    next={{ width: '70', height: '70' }}
-                  />
-                </a>
-              ),
-              tag: (
-                <a
-                  href={
-                    author?.fields?.PositionLink?.value?.href
-                      ? author.fields.PositionLink.value.href
-                      : author?.fields?.Link?.value?.href
-                  }
-                  target="_blank"
-                >
-                  <span>
-                    <JssText field={author?.fields?.Position} />
-                  </span>
-                </a>
-              ),
-            }
-          : {
-              name: <JssText field={author?.fields?.Name} />,
-              image: (
-                <NextJssImage
-                  field={author?.fields?.Avatar}
-                  next={{ width: '70', height: '70' }}
-                />
-              ),
-              tag: (
-                <span>
-                  <JssText field={author?.fields?.Position} />
-                </span>
-              ),
-            }
-      }
-    />
-  ));
+  const quoteBlocks = props.fields.Authors.map((author, index) => {
+    const authorLink = author?.fields?.Link?.value?.href;
+    const positionLink = author?.fields?.PositionLink?.value?.href;
+    const tagLink = positionLink || authorLink;
+
+    const name = authorLink ? (
+      <a href={authorLink} target="_blank">
+        <JssText field={author?.fields?.Name} />
+      </a>
+    ) : (
+      <JssText field={author?.fields?.Name} />
+    );
+
+    const image = authorLink ? (
+      <a href={authorLink} target="_blank">
+        <NextJssImage
+          field={author?.fields?.Avatar}
+          next={{ width: '70', height: '70' }}
+        />
+      </a>
+    ) : (
+      <NextJssImage
+        field={author?.fields?.Avatar}
+        next={{ width: '70', height: '70' }}
+      />
+    );
+
+    const tag = tagLink ? (
+      <a href={tagLink} target="_blank">
+        <span>
+          <JssText field={author?.fields?.Position} />
+        </span>
+      </a>
+    ) : (
+      <span>
+        <JssText field={author?.fields?.Position} />
+      </span>
+    );
+
+    return <QuoteBlock key={`author-${index}`} author={{ name, image, tag }} />;
+  });
 
   const componentTitle = props?.fields?.Title?.value;
   const componentAnchorId = inPageNavGlobalStore.addItem(
