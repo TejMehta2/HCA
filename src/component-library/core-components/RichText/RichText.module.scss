@@ -106,8 +106,8 @@
       td,
       th {
         padding: $spacing-4;
-        text-wrap: auto;
         width: 100%;
+        text-wrap: auto;
         word-break: normal;
 
         @include media(screen-m) {
