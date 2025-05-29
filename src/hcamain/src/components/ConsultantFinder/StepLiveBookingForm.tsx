@@ -35,7 +35,7 @@ import MarketingPreferences from '@component-library/consultant-finder/Marketing
 import NeedHelp from '@component-library/consultant-finder/NeedHelp/NeedHelp';
 import CFAside from '@component-library/consultant-finder/CFAside/CFAside';
 import Modals from '@component-library/components/Modals/Modals';
-import { formatDateYYYYMMDD } from '@component-library/utility-functions/index';
+//import { formatDateYYYYMMDD } from '@component-library/utility-functions/index';
 
 interface Fields {
   HCALogo: ImageField | undefined;
@@ -191,10 +191,8 @@ export const Default = (props: StepProps): JSX.Element => {
           message: 'Invalid phone number',
         }),
       gender: z.string().trim().min(1, { message: 'Required' }),
-      dateOfBirth: z
-        .string()
-        .min(1, { message: 'Required' })
-        .refine(
+      dateOfBirth: z.string().min(1, { message: 'Required' }),
+      /*.refine(
           (val) => {
             // min age
             // Convert the date strings to Date objects for comparison
@@ -219,8 +217,7 @@ export const Default = (props: StepProps): JSX.Element => {
               'Our online live diary booking service is not available for bookings for patients under the age of 18 years old or if you require an oncology specialist. For this please call us on 020 3993 4232'
             }`,
           }
-        ),
-      address1: z.string().trim().min(1, { message: 'Required' }),
+        )*/ address1: z.string().trim().min(1, { message: 'Required' }),
       address2: z.string().optional(),
       postcode: z.string().trim().min(1, { message: 'Required' }),
       towncity: z.string().trim().min(1, { message: 'Required' }),
