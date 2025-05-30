@@ -2,7 +2,8 @@ import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseA
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// mock articles - will figure how to pull from the Sitecore media library
+// mock articles
+/*
 const articles = [
   {
     title: 'Relaxation methods',
@@ -97,8 +98,15 @@ const articles = [
     link: 'https://portal.hcaprimarycare.co.uk/mms-mapping/sheet-library.js?sheet=092d24e03284ab5a49983b57275e00ea7bdc49f3814c3e7960801f0e6afe55f2ad9f17603c9ca4d05b082a2cfaa2a69547d30cf7b867efd1f27e00ed1646178f&target=blank',
   },
 ];
+*/
 
-// example http://localhost:3000/api/appAPI/OneApp?lang=en&platform=iOS
+// media library items have these properties
+interface ISitecoreMediaProps {
+  name: string;
+  path: string;
+  url: string;
+}
+// example http://localhost:3000/api/appAPI/PCApp or http://localhost:3000/api/appAPI/Library
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -106,6 +114,12 @@ export default async function handler(
   const { app } = req.query;
   let output: unknown[] = [];
   const appRootPath = '/sitecore/content/HCA/App';
+  const mediaRootPath = '/sitecore/media library/Project/HCA/App';
+
+  // the xm-cloud published media library base url - varies based on environment, fallback to dev
+  const mediaLibraryBaseURL =
+    process.env.NEXT_PUBLIC_MEDIA_LIBRARY_BASE_URL! ??
+    'https://edge.sitecorecloud.io/hcainternat9865-hcadigital-dev-40cb/media';
   const frags = app as string[];
 
   // endpoint for App API
@@ -124,22 +138,46 @@ export default async function handler(
     const lang = (req?.query?.lang as string) ?? 'en';
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
-    /*console.log(
-      'app graphQL request',
-      'lang: ',
-      lang,
-      'platform: ',
-      platform,
-      'requestedPath: ',
-      requestedPath
-    );*/
+    const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
+
+    // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
-      case 'library':
+      case 'library': // this is a request for the document library
         {
-          output = await articles;
+          //output = await articles; mock
+          const mediaLibraryDocs = await getRecurseAppItemsFromGraphQL(
+            mediaLibraryPath,
+            lang,
+            platform
+          );
+
+          const library =
+            mediaLibraryDocs?.sitecore?.media_library?.Project?.HCA?.App?.PCApp
+              ?.Library;
+
+          // all good - we got the tree back for the media library?
+          if (library) {
+            // go through each entry and fix up to the format required by the app/portal
+            const libraryArray = Object.entries(library);
+            output = [];
+            libraryArray.forEach((doc: Array<unknown>) => {
+              if (Object.values(doc).length > 1) {
+                // sanity check - index 1 is the media library properties for that doc
+                const entry: ISitecoreMediaProps = Object.values(
+                  doc
+                )[1] as ISitecoreMediaProps;
+                //console.log(entry.name, entry.path, entry.url);
+                output = output.concat({
+                  title: entry.name,
+                  link: mediaLibraryBaseURL + entry.url,
+                });
+              }
+            });
+          }
         }
         break;
 
+      // default is we want content as JSON
       default:
         {
           output = await getRecurseAppItemsFromGraphQL(
@@ -163,6 +201,7 @@ export default async function handler(
     res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   }
 
+  // CORS as we are going cross domains
   res.appendHeader('Access-Control-Allow-Origin', '*');
 
   return res.status(200).json(output);
