@@ -23,10 +23,23 @@ async function loadRecursedAppItemsFromGraphQL(
   let result: any = [];
   try {
     // build a query for App/Portal objects
+    /*
+  url {
+    path
+  },
+  fields {
+    name,
+    value
+  },*/
     const GQLQuery: string = `
 fragment appFields on Item {
   name,
   hasChildren,
+  path,
+  url {
+    path
+  },
+  displayName,
   ... on Array {
         type:template { 
           name
@@ -121,7 +134,7 @@ query {
 
     //console.log('GQLQuery: ', GQLQuery);
     result = await graphQLClient.request<any>(GQLQuery);
-    //console.log('result:', JSON.stringify(GQLResult), '');
+    //console.log('result:', JSON.stringify(result), '');
   } catch (e) {
     console.log(
       `Could not loadRecursedAppItemsFromGraphQL path:${path} - failed with exception ${e}`
@@ -228,6 +241,16 @@ export async function recurseAppItemsFlat(
             };
             break;
         }
+      } else {
+        // catch all not app specific
+        flatNodes[objPropName] = {
+          name: `${currentJSON.name}`,
+          path: `${currentJSON.path}`,
+          url: `${currentJSON.url?.path}`,
+        };
+        //console.log('not app specific');
+        //console.log('objPath', objPath);
+        //console.log('currentJSON', currentJSON);
       }
 
       /*
@@ -236,7 +259,7 @@ export async function recurseAppItemsFlat(
         path,
         currentJSON?.name,
         objPath,
-        JSON.stringify(findNode)
+        JSON.stringify(flatNodes)
       );*/
     }
   } catch (e) {
@@ -304,6 +327,7 @@ export async function getRecurseAppItemsFromGraphQL(
     lang.toLowerCase()
   );
   //console.log('resultRecursed', JSON.stringify(resultRecursed));
+
   const flatNodes: any = {};
   await recurseAppItemsFlat(
     graphQLClient,
@@ -313,6 +337,7 @@ export async function getRecurseAppItemsFromGraphQL(
     resultRecursed,
     flatNodes
   );
+  //console.log('flatNodes', JSON.stringify(flatNodes));
   const newFlatNodes: any = await shortenToRequestedPath(flatNodes, path);
   //console.log('result2', JSON.stringify(newFlatNodes));
   const result = await expandFlatNodes(newFlatNodes);
