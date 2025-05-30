@@ -203,6 +203,12 @@ export default async function handler(
 
   // CORS as we are going cross domains
   res.appendHeader('Access-Control-Allow-Origin', '*');
+  res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.appendHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  res.appendHeader('Access-Control-Allow-Credentials', 'true');
 
   return res.status(200).json(output);
 }
