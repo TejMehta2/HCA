@@ -3,6 +3,7 @@ import {
   useSitecoreContext,
   GetStaticComponentProps,
   useComponentProps,
+  RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
 import Themes from '@component-library/foundation/Themes/Themes';
@@ -19,6 +20,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import { getDynamicTitleStyle } from '@component-library/site-components/HeaderPlain/HeaderPlain';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import { addThumbnailParameter } from 'lib/utility-functions/addThumbnailParameter';
+import TextBlock from '@component-library/site-components/TextBlock/TextBlock';
 
 const JobDetailsHeaderDefaultComponent = (
   props: JobDetailsHeaderProps
@@ -39,6 +41,23 @@ const JobDetailsHeaderDefaultComponent = (
   return <></>;
 };
 
+const JobDetailsNotFoundHeaderDefaultComponent = (): JSX.Element => {
+  return (
+    <>
+      <Head>
+        <title>Vacancy not found</title>
+      </Head>
+      <TextBlock
+        text={
+          <RichText>
+            <Text tag="p">Vacancy not found</Text>
+          </RichText>
+        }
+      />
+    </>
+  );
+};
+
 export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
   const data = useComponentProps<JobsResponse>(props.rendering?.uid);
 
@@ -46,9 +65,16 @@ export const Default = (props: JobDetailsHeaderProps): JSX.Element => {
     return <JobDetailsHeaderDefaultComponent {...props} />;
   }
 
+  if (!data.name) {
+    return <JobDetailsNotFoundHeaderDefaultComponent />;
+  }
+
   const matchedSetting =
     props.fields?.data?.item?.headerImageMapping?.targetItems?.find(
-      (setting) => setting.jobFamily?.value === data.jobFamily
+      (setting) => {
+        const value = setting.jobArea?.targetItem?.value?.value;
+        return value && data.jobAreas?.some((jobArea) => jobArea === value);
+      }
     );
 
   const heroImage = matchedSetting
@@ -139,7 +165,7 @@ export const getServerSideProps: GetStaticComponentProps = async (
     const data = await response.json();
     return await data.response;
   } catch (error) {
-    console.error(error);
+    console.error('JobDetailsHeader fetch error:', error);
     return {};
   }
 };

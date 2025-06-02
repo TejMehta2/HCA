@@ -1,0 +1,26 @@
+﻿---
+ID: "62bc10a8-ee58-439c-a50d-d1126741a937"
+Parent: "db4f91c1-630f-4e8d-be50-f92f9f35d002"
+Template: "25f6dca4-d069-4a84-bbe4-c883259ebbb6"
+Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Package Comparison/Page Data/Packages Comparison Datasource/Package Features/Travel and Vaccination advice"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250526T140412Z
+    - ID: "4add2326-a303-4c4b-93b8-09fd31ac11d5"
+      Hint: Label
+      Value: Travel & Vaccination advice
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "34851e3a-a103-453b-9447-c6799d5f709d"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\bartek.glomski@eqtr.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250526T140426Z
