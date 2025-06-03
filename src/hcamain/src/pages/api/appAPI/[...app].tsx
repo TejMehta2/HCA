@@ -106,14 +106,22 @@ interface ISitecoreMediaProps {
   path: string;
   url: string;
 }
-// example http://localhost:3000/api/appAPI/PCApp or http://localhost:3000/api/appAPI/Library
+
+interface IAccessCodeProps {
+  products: unknown;
+  client: string;
+  accessCode: string;
+}
+
+// example http://localhost:3000/api/appAPI/PCApp or http://localhost:3000/api/appAPI/Library or http://localhost:3000/api/appAPI/AccessCode
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { app } = req.query;
-  let output: unknown[] = [];
+  let output: unknown[] | unknown = [];
   const appRootPath = '/sitecore/content/HCA/App';
+  const accessCodesRootPath = '/sitecore/content/HCA/App/AccessCodes';
   const mediaRootPath = '/sitecore/media library/Project/HCA/App';
 
   // the xm-cloud published media library base url - varies based on environment, fallback to dev
@@ -126,11 +134,16 @@ export default async function handler(
   // prod root: https://www.hcahealthcare.co.uk/api/appAPI/
   //
   // sub functions
-  // dev https://xm-dev.hcahealthcareqa.co.uk/appAPI/Library
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/Library
   // returns the array of the document library used in the PC App
   //
-  // dev https://xm-dev.hcahealthcareqa.co.uk/appAPI/PCApp
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp
+  // local http://localhost:3001/api/appAPI/PCapp
   // returns the copy (content) from the Sitecore tree
+  //
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp/AccessCode
+  // local https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp/AccessCode
+  // validates the passed access code and returns JSON from the associated Sitecore entries
 
   //const error: string = '';
   if (frags) {
@@ -139,9 +152,38 @@ export default async function handler(
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
     const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
-
     // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
+      case 'accesscode': // this is a request for access code content
+        {
+          if (req?.body && req.body.accessCode) {
+            const accessCodeRequested = req.body.accessCode;
+            //console.log('accessCodeRequested', accessCodeRequested);
+            const accessCodesData = await getRecurseAppItemsFromGraphQL(
+              accessCodesRootPath,
+              lang,
+              platform
+            );
+
+            if (accessCodesData?.codes) {
+              const accessCodesArray = Object.entries(accessCodesData.codes);
+              accessCodesArray.forEach((accessCode: Array<unknown>) => {
+                if (Object.values(accessCode).length > 1) {
+                  const entry: IAccessCodeProps = Object.values(
+                    accessCode
+                  )[1] as IAccessCodeProps;
+
+                  if (accessCodeRequested === entry.accessCode) {
+                    //console.log('accessCode', entry.accessCode);
+                    output = entry; // return data on match of access code
+                  }
+                }
+              });
+            }
+          }
+        }
+        break;
+
       case 'library': // this is a request for the document library
         {
           //output = await articles; mock
@@ -159,7 +201,7 @@ export default async function handler(
           if (library) {
             // go through each entry and fix up to the format required by the app/portal
             const libraryArray = Object.entries(library);
-            output = [];
+            let result: unknown[] = [];
             libraryArray.forEach((doc: Array<unknown>) => {
               if (Object.values(doc).length > 1) {
                 // sanity check - index 1 is the media library properties for that doc
@@ -167,12 +209,13 @@ export default async function handler(
                   doc
                 )[1] as ISitecoreMediaProps;
                 //console.log(entry.name, entry.path, entry.url);
-                output = output.concat({
+                result = result.concat({
                   title: entry.name,
                   link: mediaLibraryBaseURL + entry.url,
                 });
               }
             });
+            output = result;
           }
         }
         break;
