@@ -13,7 +13,7 @@ Languages:
       Value: 20231219T073045Z
     - ID: "286fc562-90df-4163-8ba8-eb6e21b04c7e"
       Hint: Heading
-      Value: Heading
+      Value: Keep aspect ratio
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -27,7 +27,7 @@ Languages:
       Value: Key Service Lines.
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "30c03564-c5f6-4fe7-8f8a-cbc88404ac29"
+      Value: "b0de28db-0130-491f-82b7-93e17ab0e538"
     - ID: "a902abe7-6f90-452b-98d4-62a9d12d1df0"
       Hint: CTALink
       Value: |
@@ -41,7 +41,7 @@ Languages:
       Value: Read the story
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240401T160314Z
+      Value: 20250604T100500Z
     - ID: "dc1f5853-3482-48dc-8a23-eb4ec1115f01"
       Hint: CTAIcon
       Value: "{9B96C11F-33A6-4047-B377-2CA4A26EA9A5}"
