@@ -11,6 +11,7 @@ import config from 'temp/config';
 interface sitecoreItemProp {
   id: string;
   name: string;
+  type: { name: string };
 }
 
 const sitecoreAppPath = `${process.env.ADMIN_PROTECTION_KEY!}/`; // e.g. /sitecore/content/HCA/App/
@@ -116,6 +117,12 @@ query {
                             results {
                                 name,
                                 ...appFields,
+                                children(first: 400) {
+                                results {
+                                    name,
+                                    ...appFields,
+                                }
+                              }
                             }
                           }
                         }
@@ -136,9 +143,9 @@ query {
     result = await graphQLClient.request<any>(GQLQuery);
     //console.log('result:', JSON.stringify(result), '');
   } catch (e) {
-    console.log(
+    /*console.log(
       `Could not loadRecursedAppItemsFromGraphQL path:${path} - failed with exception ${e}`
-    );
+    );*/
     console.error(
       `Could not loadRecursedAppItemsFromGraphQL path:${path} - failed with exception ${e}`
     );
@@ -164,20 +171,35 @@ export async function recurseAppItemsFlat(
       //  {'Component.AnArray[0].text': 'hello 1','Component.AnArray[1].text': 'test 2'}
       if (currentJSON.type && currentJSON.type.name === 'Array') {
         isArray = true;
+        /*console.log(
+          'currentJSON',
+          JSON.stringify(currentJSON),
+          'isArray',
+          isArray
+        );*/
       }
       // just a folder, have we got children to resolve?
-      //console.log('folder1', path);
       const children = currentJSON.children?.results;
-      //console.log('children', JSON.stringify(children));
-      for (let childCnt = 0; childCnt < children.length; childCnt++) {
-        const item: sitecoreItemProp = children[childCnt];
-        await recurseAppItemsFlat(
-          graphQLClient,
-          isArray ? `${path}[${item.name}]` : `${path}/${item.name}`,
-          lang,
-          platform,
-          children[childCnt],
-          flatNodes
+      //console.log('children', children, 'isArray', isArray);
+      if (children) {
+        //console.log('children', JSON.stringify(children));
+        for (let childCnt = 0; childCnt < children.length; childCnt++) {
+          const item: sitecoreItemProp = children[childCnt];
+          //isArray = item?.type?.name == 'Array';
+          //console.log('item', item);
+          await recurseAppItemsFlat(
+            graphQLClient,
+            isArray ? `${path}[${item.name}]` : `${path}/${item.name}`,
+            lang,
+            platform,
+            children[childCnt],
+            flatNodes
+          );
+        }
+      } else if (currentJSON) {
+        console.error(
+          'unprocessed currentJSON (recursion too deep)',
+          currentJSON
         );
       }
     } else if (
