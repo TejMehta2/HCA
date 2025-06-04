@@ -128,6 +128,9 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
     props?.params,
     props.fields?.data?.item?.heading?.jsonValue?.value
   );
+
+  const keepAspectRatio = props?.params?.KeepAspectRatio === '1';
+
   return (
     <CardBlock
       id={componentAnchorId}
@@ -194,6 +197,7 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           return (
             <CardContent
               key={index}
+              imageKeepAspectRatio={keepAspectRatio}
               image={
                 showImage ? (
                   card.abstractImage?.jsonValue.value?.src &&

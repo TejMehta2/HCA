@@ -3,4 +3,5 @@ export interface CardContentProps {
   title: JSX.Element;
   bodyCopy?: JSX.Element;
   link?: JSX.Element;
+  imageKeepAspectRatio?: boolean;
 }
