@@ -3,6 +3,13 @@ ID: "0887d750-c5d4-4bc4-83e4-dfaa04d35937"
 Parent: "4b129700-c6dd-4467-b4af-2d13bd7420e5"
 Template: "0b18db9e-acec-4f9e-99c0-61a20535af37"
 Path: "/sitecore/content/HCA/HCA-Main/Home/QA/Components/Browser Title"
+SharedFields:
+- ID: "24171bf1-c0e1-480e-be76-4c0a1876f916"
+  Hint: Page Design
+  Value: "{B3F9F472-E598-475E-9A8B-483D6B485CEA}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "c32fe9ab-9dcf-454d-97f2-3ed195320d13"
 Languages:
 - Language: en
   Versions:
@@ -21,17 +28,17 @@ Languages:
         sitecore\naoum.zilas@eqtr.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b158ea4b-7674-452e-bafb-52a76949e29e"
+      Value: "7d42cb90-acba-4bd2-92f2-4db95a1c61cc"
     - ID: "8d6ee902-4500-440d-a157-22558bc1b3c2"
       Hint: BrowserTitle
-      Value: Test Browser Title
+      Value: Test Browser Title Is here
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\naoum.zilas@eqtr.com
+        sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250508T095807Z
+      Value: 20250529T153014Z
     - ID: "dd6c2904-20c1-4670-b538-d523f08e60f0"
       Hint: Title
       Value: Browser Title
