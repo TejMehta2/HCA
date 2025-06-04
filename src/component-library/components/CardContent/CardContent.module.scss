@@ -17,6 +17,14 @@
     width: 100%;
   }
 
+  .keep-aspect-ratio {
+    img {
+      object-fit: contain;
+      aspect-ratio: unset;
+      height: max-content;
+    }
+  }
+
   &:hover {
     & img {
       transform: scale(1.05);
