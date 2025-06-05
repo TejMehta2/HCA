@@ -67,6 +67,12 @@
     pointer-events: none;
   }
 
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    padding-left: 0;
+  }
+
   .step {
     position: relative;
     z-index: 10;
