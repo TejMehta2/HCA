@@ -68,13 +68,15 @@ SharedFields:
                 proxyurl: link {
                   ... on LinkField {
                     path: url
+                    url
                   }
                 }
               }
              ... on _HCABasePage {
                 ... on Item {
                   url {
-                    path
+                    path: url
+                    url
                   }
                 }
               }
@@ -109,6 +111,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{D145D977-D3AB-4876-9F41-2AC98C2F240E}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "36436c42-3a5a-4b79-876e-95823dd775b8"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -155,14 +160,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "29122c10-ce8d-459f-b3dc-9e89ba7213ce"
+      Value: "60ec3cc1-11e4-4033-b3cb-ea81cc191136"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172427Z
+      Value: 20250609T124105Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
