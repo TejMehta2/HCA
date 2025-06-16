@@ -69,7 +69,8 @@ SharedFields:
         }
       }
       url {
-        path
+        path: url
+        url
       }
       id
     }
@@ -96,6 +97,9 @@ SharedFields:
   Hint: __Thumbnail
   Value: |
     <image mediaid="{46317915-29B3-4442-AF07-BA9FDD71882B}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "d195f420-56d7-4ad5-b689-a111a253463c"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -142,14 +146,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "44f0c8ab-84a4-4163-ae4a-3d5c17b9f8a9"
+      Value: "dccedfad-8c4c-40f2-95f1-a850b72ab91a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\bartek.glomski@eqtr.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250214T172609Z
+      Value: 20250609T124509Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

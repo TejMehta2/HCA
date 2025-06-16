@@ -54,11 +54,25 @@ class HcaRedirectsPlugin implements MiddlewarePlugin {
 
           if (data.destination) {
             const redirectUrl = new URL(data.destination, req.url);
-            redirectUrl.search = search;
+
+            const sourceParams = new URLSearchParams(search);
+            const destParams = new URLSearchParams(redirectUrl.search);
 
             debug.redirects(
-              `HCA Redirects: Redirecting to ${redirectUrl.href}`
+              `HCA Redirects: sourceParams ${search}, destParams ${redirectUrl.search}`
             );
+
+            // Merge params: destParams override sourceParams
+            for (const [key, value] of sourceParams.entries()) {
+              if (!destParams.has(key)) {
+                destParams.append(key, value);
+              }
+            }
+
+            // Set the merged search params back to the redirectUrl
+            redirectUrl.search = destParams.toString();
+
+            debug.redirects(`HCA Redirects: Redirecting to ${redirectUrl}`);
 
             return NextResponse.redirect(redirectUrl);
           }
