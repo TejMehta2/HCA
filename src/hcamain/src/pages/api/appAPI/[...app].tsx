@@ -1,4 +1,5 @@
 import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseAppItemsFromGraphQL';
+import { getRecurseGenericItemsFromGraphQL } from 'lib/consultant-finder/getRecurseGenericItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { neon } from '@neondatabase/serverless';
@@ -153,6 +154,7 @@ export default async function handler(
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
     const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
+    const mode = (req?.query?.mode as string) ?? 'app';
 
     // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
@@ -258,11 +260,18 @@ export default async function handler(
       // default is we want content as JSON
       default:
         {
-          output = await getRecurseAppItemsFromGraphQL(
-            requestedPath,
-            lang,
-            platform
-          );
+          output =
+            mode === 'app'
+              ? await getRecurseAppItemsFromGraphQL(
+                  requestedPath,
+                  lang,
+                  platform
+                )
+              : await getRecurseGenericItemsFromGraphQL(
+                  requestedPath,
+                  lang,
+                  platform
+                );
         }
         break;
     }
