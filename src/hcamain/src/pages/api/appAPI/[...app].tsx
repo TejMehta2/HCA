@@ -2,6 +2,7 @@ import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseA
 import { getRecurseGenericItemsFromGraphQL } from 'lib/consultant-finder/getRecurseGenericItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { neon } from '@neondatabase/serverless';
 
 // mock articles
 /*
@@ -154,8 +155,42 @@ export default async function handler(
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
     const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
     const mode = (req?.query?.mode as string) ?? 'app';
+
     // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
+      case 'relaywrite': // this is a request to write a relay a code e.g. 2FA
+        {
+          if (req?.body && req.body.key && req.body.value) {
+            ('use server');
+            // Connect to the Neon database
+            const sql = neon(`${process.env.DATABASE_URL}`);
+
+            // Insert the key value into the Postgres database
+            const result = await sql.query(
+              `INSERT INTO app_relay (app_key,app_value) VALUES ('${req.body.key}','${req.body.value}')`
+            );
+            output = JSON.stringify(result);
+          }
+        }
+        break;
+      case 'relayread': // this is a request to read a relay code e.g. 2FA
+        {
+          if (req?.body && req.body.key) {
+            ('use server');
+            // Connect to the Neon database
+            const sql = neon(`${process.env.DATABASE_URL}`);
+
+            // select the top from the Postgres database
+            const result = await sql.query(
+              `SELECT app_key,app_value,updated,now() - updated as age from app_relay where app_key like '${req.body.key}' order by updated desc limit 1`
+            );
+
+            if (result && result.length > 0) {
+              output = result[0];
+            }
+          }
+        }
+        break;
       case 'accesscode': // this is a request for access code content
         {
           if (req?.body && req.body.accessCode) {

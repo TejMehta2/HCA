@@ -58,6 +58,11 @@ export const Default: StoryObj<typeof Timeline> = {
               your symptoms and medical history with the consultant, and
               they&apos;ll arrange any imaging or diagnostic tests – often on
               the same day.
+              <ul>
+                <li>Jump</li>
+                <li>Today</li>
+                <li>Jump</li>
+              </ul>
             </Text>
           }
           link={

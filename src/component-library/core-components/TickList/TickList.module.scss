@@ -19,6 +19,7 @@
       mask-repeat: no-repeat;
       background: currentcolor;
       width: px-to-rem(24);
+      min-width: px-to-rem(24);
       margin-top: px-to-rem(2);
     }
   }
