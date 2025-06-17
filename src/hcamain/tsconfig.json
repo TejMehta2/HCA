@@ -10,7 +10,7 @@
         "node_modules/@types/graphql-let/__generated__/__types__"
       ],
       "@component-library/*": [
-        "src/component-library/*"
+        "src/temp/component-library/*"
       ]
     },
     "jsx": "preserve",

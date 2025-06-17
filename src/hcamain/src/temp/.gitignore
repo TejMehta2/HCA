@@ -1,3 +1,5 @@
 *
 !.gitignore
+!component-library
+!component-library/**
 !GraphQLIntrospectionResult.json
