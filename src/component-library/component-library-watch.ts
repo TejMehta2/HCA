@@ -47,4 +47,16 @@ const performCopy = () => {
     console.error(err);
   }
 };
-performCopy();
+  
+let isWatching = false;
+fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
+  if (isWatching) return;
+  isWatching = true;
+  if (eventType === 'change') {
+    console.log(`Change detected in ${fileName}`);
+    performCopy();
+  }
+  setTimeout(() => {
+    isWatching = false;
+  }, 500);
+});

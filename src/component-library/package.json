@@ -5,13 +5,21 @@
   "main": "index.js",
   "scripts": {
     "copy": "npx ts-node component-library-copy.ts",
+    "watch": "npx ts-node component-library-watch.ts",
     "test": "cross-env NODE_ENV=test jest",
     "scaffold": "npx ts-node scaffold/index.ts ",
     "register-icons": "npx ts-node foundation/Icons/register-icons.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --ci --exit-once-uploaded --project-token=chpt_893d0fc72947166",
-    "type-check": "tsc --noemit"
+    "type-check": "tsc --noemit",
+    "lint": "npm run lint:ts && npm run lint:scss",
+    "lint:ts": "eslint **/*.*{tsx,ts}",
+    "lint:scss": "npx stylelint \"**/*.scss\" --ignore-path .prettierignore",
+    "format": "npm run format:ts && npm run format:scss --ignore-path .prettierignore",
+    "format:ts": "prettier --config .prettierrc --write **/*.*{tsx,ts,scss} --fix --ignore-path .prettierignore",
+    "format:scss": "npx stylelint \"**/*.scss\" --fix --ignore-path .prettierignore",
+    "stylelint-scss-check": "stylelint-config-prettier-scss-check"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +44,8 @@
     "sass": "^1.52.3",
     "sass-alias": "^1.0.5",
     "sharp": "0.32.6",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.20",
@@ -73,7 +82,20 @@
     "storybook": "^7.5.0-alpha.4",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.3"
+    "typescript": "^5.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-yaml": "^0.5.0",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-prettier": "^4.0.2",
+    "vercel": "^32.5.3"
   },
   "readme": "README.md",
   "_id": "@hca/component-library@1.0.0"

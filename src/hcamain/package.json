@@ -3,6 +3,23 @@
   "description": "Application utilizing Sitecore JavaScript Services and Next.js",
   "version": "21.6.0",
   "private": true,
+    "scripts": {
+    "bootstrap": "ts-node --project tsconfig.scripts.json scripts/bootstrap.ts",
+    "build": "npm-run-all --serial bootstrap next:build",
+    "graphql:update": "ts-node --project tsconfig.scripts.json ./scripts/fetch-graphql-introspection-data.ts",
+    "install-pre-push-hook": "ts-node --project tsconfig.scripts.json ./scripts/install-pre-push-hook.ts",
+    "jss": "jss",
+    "next:build": "next build",
+    "next:dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "next:start": "next start",
+    "scaffold": "ts-node --project tsconfig.scripts.json scripts/scaffold-component/index.ts",
+    "start:connected": "npm-run-all --serial bootstrap --parallel next:dev start:watch-components",
+    "start:production": "npm-run-all --serial bootstrap next:build next:start",
+    "start:watch-components": "ts-node --project tsconfig.scripts.json scripts/generate-component-builder/index.ts --watch",
+    "type-check": "tsc --noemit",
+    "lint": "eslint **/*.*{tsx,ts}",
+    "format": "prettier --config .prettierrc --write **/*.*{tsx,ts,scss} --fix --ignore-path .prettierignore"
+  },
   "config": {
     "appName": "HCA-Main",
     "rootPlaceholders": [
@@ -58,7 +75,19 @@
     "sass": "^1.52.3",
     "sass-alias": "^1.0.5",
     "sharp": "0.32.6",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "@react-pdf/renderer": "^4.1.6",
+    "react-uuid": "^2.0.0",
+    "xlsx": "^0.18.5",
+    "@ant-design/react-slick": "^1.0.2",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@hookform/devtools": "^4.3.1",
+    "@hookform/resolvers": "^3.3.4",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.51.2",
+    "react-intersection-observer": "^9.5.2",
+    "zod": "^3.22.4",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@ant-design/react-slick": "^1.0.2",
@@ -89,21 +118,19 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^5.3",
-    "yaml-loader": "^0.8.0"
-  },
-  "scripts": {
-    "bootstrap": "ts-node --project tsconfig.scripts.json scripts/bootstrap.ts",
-    "build": "npm-run-all --serial bootstrap next:build",
-    "graphql:update": "ts-node --project tsconfig.scripts.json ./scripts/fetch-graphql-introspection-data.ts",
-    "install-pre-push-hook": "ts-node --project tsconfig.scripts.json ./scripts/install-pre-push-hook.ts",
-    "jss": "jss",
-    "next:build": "next build",
-    "next:dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "next:start": "next start",
-    "scaffold": "ts-node --project tsconfig.scripts.json scripts/scaffold-component/index.ts",
-    "start:connected": "npm-run-all --serial bootstrap --parallel next:dev start:watch-components",
-    "start:production": "npm-run-all --serial bootstrap next:build next:start",
-    "start:watch-components": "ts-node --project tsconfig.scripts.json scripts/generate-component-builder/index.ts --watch",
-    "type-check": "tsc --noemit"
+    "yaml-loader": "^0.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-yaml": "^0.5.0",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-prettier": "^4.0.2",
+    "vercel": "^32.5.3"
   }
 }
