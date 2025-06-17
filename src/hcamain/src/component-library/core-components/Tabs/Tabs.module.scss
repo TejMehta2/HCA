@@ -1,0 +1,105 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  // Padding to allow focus ring on children to show despite overflow rules
+  padding: px-to-rem(2);
+
+  @include media(screen-m, max) {
+    overflow-x: auto;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  fieldset {
+    // Reset default styles
+    border: none;
+    padding: 0;
+    display: flex;
+    gap: px-to-rem(8);
+
+    // Relative to set stacking context for animated background
+    position: relative;
+
+    // Style the animated background element
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: $radius-large;
+
+      // CSS custom properties are updated in the React component logic, based on the currently selected tab
+      width: var(--current-tab-offset-width, 0);
+      transform: translateX(var(--current-tab-offset-left, 0));
+
+      // Apply theme to animated background element
+      background-color: var(--tab-background);
+    }
+
+    // Animate unless user is interacting and not on component load
+    &:focus-within::before {
+      transition: all 0.4s ease;
+    }
+  }
+
+  label {
+    // Imported styles
+    @include apply-body-bold-extra-large;
+
+    // Shared styles
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    border-radius: $radius-large;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: solid #{px-to-rem(2)} transparent;
+    color: var(--tab-text);
+    padding: px-to-rem(8) $spacing-4;
+    @include media(screen-l) {
+      padding: $spacing-4 $spacing-6;
+
+      &:has(svg) {
+        padding: $spacing-4 $spacing-5; // less horizontal padding to accommodate icons
+      }
+    }
+
+    // Hover
+    &:hover {
+      text-decoration: underline;
+    }
+
+    transition: color 0.4s ease;
+
+    // Focus
+    :focus + & {
+      outline-color: var(--tab-text);
+    }
+
+    > span {
+      display: flex;
+    }
+  }
+
+  input {
+    @include sr-only;
+
+    &:checked + label {
+      color: var(--tab-active-text);
+    }
+  }
+
+  &.scroll-max-large {
+    @include media(screen-l, max) {
+      overflow-x: auto;
+    }
+  }
+}

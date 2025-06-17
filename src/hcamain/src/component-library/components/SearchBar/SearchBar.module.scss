@@ -1,0 +1,100 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  flex: $spacing-9;
+  position: relative;
+  display: flex;
+  color: var(--text);
+  gap: $spacing-2;
+  @include media(screen-l, max) {
+    flex-wrap: wrap;
+
+    > :nth-child(1) {
+      flex: 1 0 100%;
+    }
+
+    > :nth-child(1n + 2) {
+      flex-grow: 1;
+    }
+  }
+}
+
+%searchbar {
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  position: relative;
+  flex: 1 1 auto;
+  color: $navy-blue-100;
+  border-radius: $radius-large;
+  border: solid px-to-rem(1) currentcolor;
+  padding: px-to-rem(18) px-to-rem(32);
+  @include apply-body-medium-large;
+
+  max-width: 100%;
+
+  &:focus-within,
+  &:focus {
+    outline: px-to-rem(2) solid currentcolor;
+    outline-offset: px-to-rem(-5);
+  }
+
+  input {
+    background-color: inherit;
+    flex: 1 1 auto;
+    padding: 0;
+    border: none;
+    outline: none;
+    color: inherit;
+    @include apply-body-medium-large;
+
+    min-width: px-to-rem(64); // override mobile value which breaks container
+    &::placeholder {
+      color: $navy-blue-60;
+      font-weight: 400;
+    }
+  }
+
+  .search-icon {
+    flex: 0 0 px-to-rem(24);
+    height: px-to-rem(24);
+  }
+
+  .clear {
+    flex: 0 0 px-to-rem(24);
+    height: px-to-rem(24);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: inherit;
+
+    // Hide unless input is in focus
+    display: none;
+  }
+
+  input:focus ~ .clear,
+  .clear:focus {
+    display: block;
+  }
+}
+
+.search-bar {
+  @extend %searchbar;
+}
+
+.suggestions {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  z-index: 2;
+
+  &:focus,
+  &:focus-within,
+  .input:focus ~ & {
+    display: block;
+  }
+}

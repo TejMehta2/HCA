@@ -1,0 +1,54 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.info-box {
+  display: flex;
+  width: 100%;
+  border-radius: $radius-small;
+  padding: $spacing-2 $spacing-4;
+  margin-bottom: $spacing-1;
+  text-align: left;
+  color: $navy-blue-100;
+
+  &.padding-l {
+    padding: $spacing-5;
+  }
+
+  &-icon {
+    display: flex;
+    margin-right: $spacing-2;
+  }
+
+  &-short,
+  &-long-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: top;
+
+    @include media(screen-l) {
+      align-items: center;
+    }
+  }
+
+  &-long-text {
+    margin: $spacing-3 0 $spacing-3;
+  }
+
+  &-green {
+    background-color: $teal-40;
+  }
+
+  // will need to update with new variables???? not matching any existing variables the old colours in figma
+  &-orange {
+    background-color: #f5c6b7;
+  }
+
+  &-beige {
+    background-color: #fff1e0;
+  }
+
+  &-turquoise {
+    background-color: $teal-5;
+  }
+}

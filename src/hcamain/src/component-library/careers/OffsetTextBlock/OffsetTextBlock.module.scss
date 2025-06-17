@@ -1,0 +1,39 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background, #{$white});
+  color: var(--text, #{$navy-blue-100});
+}
+
+.container {
+  @include responsive-container;
+  @include responsive-grid;
+
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-12;
+}
+
+.subheading {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 9);
+
+  margin-bottom: $spacing-2;
+}
+
+.title {
+  @include responsive-grid-span($default: 6, $breakpoint-l: 9);
+}
+
+.offset-content {
+  @include responsive-grid-start($breakpoint-l: 7);
+  @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+
+  margin-top: $spacing-5;
+}
+
+.ctas {
+  margin-top: $spacing-7;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}

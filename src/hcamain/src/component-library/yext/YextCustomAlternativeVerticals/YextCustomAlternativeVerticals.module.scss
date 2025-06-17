@@ -1,0 +1,25 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  border-radius: $radius-medium;
+  border: solid px-to-rem(1) $navy-blue-10;
+  padding: $spacing-7;
+  color: var(--text);
+  margin: 0 0 $spacing-5;
+}
+
+.title {
+  margin-bottom: $spacing-4;
+}
+
+.subtitle {
+  margin-bottom: $spacing-6;
+}
+
+.ctas {
+  margin: $spacing-4 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: px-to-rem(8);
+}

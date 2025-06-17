@@ -1,0 +1,151 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  scroll-margin-top: $spacing-4;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-6 $spacing-6 $spacing-7;
+  background-color: var(--card-background);
+  transition: background-color 0.4s ease; // Allow inherited theme background to transition
+  color: var(--text);
+  border-radius: $radius-medium;
+  gap: $spacing-4 0;
+
+  &.stacked {
+    @include media(screen-l) {
+      display: grid;
+      grid: auto / px-to-rem(140) 1fr auto;
+      gap: 0 $spacing-6;
+      padding: $spacing-7;
+    }
+  }
+}
+
+.image {
+  display: flex;
+  width: 100%;
+  align-self: center;
+
+  img {
+    border-radius: $radius-small;
+    aspect-ratio: 310 / 132;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: px-to-rem(140);
+
+    .stacked & {
+      max-height: auto;
+      @include media(screen-m) {
+        aspect-ratio: 8 / 3;
+      }
+
+      @include media(screen-l) {
+        aspect-ratio: 1 / 1;
+      }
+    }
+  }
+}
+
+.content {
+  .heading {
+    display: grid;
+    gap: $spacing-4 $spacing-2;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+
+    @include media(screen-m, max) {
+      grid-template-columns: auto 1fr;
+
+      .distance {
+        grid-column-end: span 2;
+      }
+    }
+
+    margin-bottom: $spacing-5;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .inner {
+    .stacked & {
+      @include media(screen-l) {
+        display: flex;
+        justify-content: space-between;
+        gap: $spacing-4;
+      }
+    }
+
+    .column {
+      max-width: px-to-rem(180);
+      margin-top: $spacing-4;
+
+      .phone {
+        display: flex;
+        gap: px-to-rem(8);
+      }
+
+      .opening {
+        display: flex;
+        gap: px-to-rem(8);
+        margin-top: $spacing-4;
+      }
+    }
+
+    .address {
+      max-width: px-to-rem(212);
+      display: flex;
+      gap: px-to-rem(8);
+    }
+    @include media(screen-l, max) {
+      .column {
+        max-width: initial;
+      }
+
+      .address {
+        max-width: initial;
+      }
+
+      .contacts {
+        min-height: px-to-rem(140);
+      }
+    }
+
+    .ctas {
+      flex-shrink: 0;
+      flex-grow: 0;
+      display: flex;
+      gap: $spacing-4 $spacing-5;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin-top: $spacing-5;
+
+      @include media(screen-l) {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .stacked & {
+        @include media(screen-l) {
+          flex-direction: row;
+          align-items: center;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.copy {
+  margin: $spacing-2 0;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}

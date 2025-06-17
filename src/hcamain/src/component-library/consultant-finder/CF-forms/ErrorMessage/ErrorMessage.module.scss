@@ -1,0 +1,10 @@
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  color: var(--field-error-colour);
+  margin-bottom: $spacing-2;
+}

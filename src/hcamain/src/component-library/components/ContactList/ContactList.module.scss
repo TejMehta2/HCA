@@ -1,0 +1,55 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.contact-list {
+  width: 100%;
+  display: grid;
+  column-gap: $spacing-4;
+
+  @include media(screen-m) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include media(screen-l) {
+    width: 80%;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-item {
+    margin-top: $spacing-6;
+
+    &:not(:first-of-type) {
+      border-top: px-to-rem(1) solid var(--text);
+      padding-top: $spacing-6;
+    }
+
+    &:nth-of-type(2) {
+      @include media(screen-m) {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      @include media(screen-l) {
+        border-top: px-to-rem(1) solid var(--text);
+        padding-top: $spacing-6;
+      }
+    }
+  }
+
+  .number {
+    margin-top: $spacing-2;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .hours {
+    display: grid;
+    grid: auto / px-to-rem(24) 1fr;
+    align-items: flex-start;
+    gap: $spacing-2;
+    margin-top: $spacing-3;
+  }
+}

@@ -1,0 +1,45 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 0 $spacing-3;
+
+    svg {
+      opacity: 1;
+      flex-shrink: 0;
+      height: auto;
+    }
+  }
+
+  .title-description {
+    display: none;
+
+    @include media(screen-l) {
+      display: flex;
+    }
+  }
+}
+
+.children {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4 0;
+    padding-top: $spacing-4;
+    color: $navy-blue-100;
+  }
+}
+
+.error {
+  display: flex;
+  gap: $spacing-2;
+  color: $red-100;
+}

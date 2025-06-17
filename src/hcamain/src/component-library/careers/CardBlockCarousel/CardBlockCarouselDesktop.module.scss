@@ -1,0 +1,107 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../../site-components/CarouselCards/Slick.module.scss' as *;
+
+.wrapper {
+  display: none;
+  @include media(screen-l) {
+    display: block;
+  }
+
+  @include responsive-grid-span($breakpoint-l: 12);
+
+  position: relative;
+  margin-top: $spacing-8;
+}
+
+.first-card {
+  border-radius: $radius-medium;
+  overflow: hidden;
+  background: var(--card-background);
+
+  .image {
+    width: 100%;
+    aspect-ratio: 644/296;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    padding: $spacing-7 $spacing-7 $spacing-10;
+  }
+}
+
+.card-group {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: $spacing-4;
+}
+
+.card {
+  border-radius: $radius-medium;
+  overflow: hidden;
+  background: var(--card-background);
+  padding: $spacing-4 $spacing-7;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}
+
+.slick-wrapper {
+  & div[class*='slick-track'] {
+    display: flex;
+    cursor: default;
+    margin: 0;
+  }
+
+  & div[class*='slick-slide'] {
+    height: inherit;
+
+    /* Empty div is automatically appended around each Card by react-slick. Need to set to full height so that cards are all equal */
+    & > div {
+      display: flex;
+      margin-right: $spacing-4;
+      height: 100%;
+    }
+  }
+
+  /* quirk of react-slick. Need to set negative of card spacing in parent */
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-4 * -1);
+  }
+
+  & div[class*='slick-arrow'] {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: calc(var(--spacing-7) * -1);
+    transform: translateY(-100%);
+
+    @include media(screen-m) {
+      left: unset;
+      right: 0;
+    }
+  }
+
+  & div[class*='slick-prev'] {
+    @include media(screen-m) {
+      transform: translateY(-100%) translateX(calc(-100% - px-to-rem(8)));
+    }
+  }
+
+  & div[class*='slick-next'] {
+    transform: translateY(-100%) translateX(calc(100% + px-to-rem(8)));
+    @include media(screen-m) {
+      transform: translateY(-100%);
+    }
+  }
+}

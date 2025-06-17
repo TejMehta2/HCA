@@ -1,0 +1,17 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.inner {
+  @include responsive-container;
+
+  padding-top: var(--theme-collapse-padding-top, #{$spacing-11});
+  padding-bottom: $spacing-13;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-7;
+}

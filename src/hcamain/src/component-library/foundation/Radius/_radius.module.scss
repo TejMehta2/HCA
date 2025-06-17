@@ -1,0 +1,5 @@
+@use '../../utilities/index.module' as *;
+
+$radius-small: px-to-rem(8);
+$radius-medium: px-to-rem(12);
+$radius-large: px-to-rem(48);

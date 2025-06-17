@@ -1,0 +1,132 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+%phone-field-iti {
+  div[class*='iti__flag-container'] {
+    &:hover {
+      & > div[class*='iti__selected-flag'] {
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  div[class*='iti__country'] {
+    padding: $spacing-4 px-to-rem(8);
+  }
+
+  div[class*='iti__dropdown-content'] {
+    border-radius: $radius-large;
+    padding: $spacing-6 0;
+    box-shadow: none;
+    border: 1px solid $navy-blue-60;
+    margin-top: $spacing-1;
+    overflow: hidden;
+  }
+
+  ul[class*='iti__country-list'] {
+    overflow-y: auto;
+    z-index: 1;
+
+    @include scrollbar($navy-blue-40);
+
+    li:not([class*='iti__divider']) {
+      @include apply-body-medium-large;
+
+      padding: px-to-rem(11) px-to-rem(24);
+
+      &:hover,
+      &:active {
+        background-color: $orange-40;
+      }
+    }
+
+    li[class*='iti__highlight'] {
+      background-color: $orange-40;
+    }
+  }
+
+  div[class*='iti__arrow'] {
+    border: 0;
+    display: flex;
+    width: px-to-rem(24);
+    height: px-to-rem(24);
+    margin: 0 0 0 $spacing-1;
+    position: relative;
+
+    &::after {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Chevron Up'%3E%3Cpath id='Vector 3' d='M18 9L12 15L6 9' stroke='%230C2141' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+      width: px-to-rem(24);
+      height: px-to-rem(24);
+      display: inline-block;
+      flex-shrink: 0;
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  div[class*='iti__selected-flag'] {
+    padding: 0 0 0 $spacing-6;
+
+    &[aria-expanded='true'] {
+      div[class*='iti__arrow'] {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.container {
+  color: var(--text);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  @extend %phone-field-iti;
+}
+
+.input {
+  padding-left: px-to-rem(90) !important;
+  height: $spacing-9;
+  border: 1px solid $navy-blue-60;
+  border-radius: $radius-large;
+  width: 100%;
+
+  @include apply-body-medium-large;
+
+  &::placeholder {
+    @include apply-body-large;
+
+    color: $navy-blue-70;
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  color: var(--field-error-colour);
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  label {
+    color: var(--field-error-colour);
+  }
+
+  .input {
+    border: 1px solid var(--field-error-colour);
+  }
+}

@@ -1,0 +1,143 @@
+@use '../../../foundation/index.module' as *;
+@use '../../../utilities/index.module' as *;
+
+%label-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+
+  @include apply-body-extra-large;
+
+  &::before {
+    left: 0;
+    position: absolute;
+    content: '';
+    border: px-to-rem(2) solid var(--controls-border-default);
+    width: px-to-rem(24);
+    height: px-to-rem(24);
+    border-radius: $radius-small;
+  }
+}
+
+%input-checkbox {
+  input[type='checkbox'] {
+    appearance: none;
+    margin: 0;
+  }
+
+  &:has(input[type='checkbox']:checked) {
+    & + .label,
+    & + .form-field-label {
+      @include apply-body-medium-extra-large;
+
+      &::before {
+        background: var(--controls-background-selected);
+        border: 2px solid var(--controls-background-selected);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        background-image: var(--controls-check);
+        height: px-to-rem(24);
+        width: px-to-rem(24);
+      }
+    }
+  }
+
+  & input[type='checkbox']:focus {
+    outline: 0;
+  }
+
+  &:has(input[type='checkbox']:focus-visible) {
+    & + .label,
+    & + .form-field-label {
+      &::before {
+        outline: px-to-rem(2) solid var(--controls-border-focus);
+        outline-offset: px-to-rem(2);
+      }
+    }
+  }
+
+  &:has(input[type='checkbox']:indeterminate) {
+    & + .label,
+    & + .form-field-label {
+      &::before {
+        background-color: var(--controls-background-selected);
+        border-color: var(--controls-background-selected);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-image: var(--controls-indeterminate);
+        height: px-to-rem(24);
+        width: px-to-rem(24);
+      }
+    }
+  }
+
+  &:has(input[type='checkbox']:disabled) {
+    & + .label,
+    & + .form-field-label {
+      &::before {
+        background-color: var(--controls-background-disabled);
+        border-color: var(--controls-border-disabled);
+      }
+    }
+  }
+
+  &:has(input[type='checkbox']:indeterminate:disabled) {
+    & + .label,
+    & + .form-field-label {
+      &::before {
+        background: var(--controls-background-disabled-selected);
+        border: var(--controls-border-disabled-selected);
+      }
+
+      &::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg id='Minus small'%3E%3Cpath id='Vector' d='M8 12H16' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+      }
+    }
+  }
+
+  &:has(input[type='checkbox']:checked:disabled) {
+    & + .label,
+    & + .form-field-label {
+      &::before {
+        background-color: var(--controls-background-disabled-selected);
+        border-color: var(--controls-background-disabled-selected);
+      }
+
+      &::after {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 12.2L9.85714 15L17 8' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      }
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  user-select: none;
+  margin-bottom: $spacing-2;
+
+  .label {
+    @extend %label-checkbox;
+
+    .text {
+      display: flex;
+      padding-left: px-to-rem(32);
+    }
+
+    a {
+      color: var(--text);
+      font-weight: 500;
+    }
+  }
+
+  .input-wrapper {
+    @extend %input-checkbox;
+  }
+}

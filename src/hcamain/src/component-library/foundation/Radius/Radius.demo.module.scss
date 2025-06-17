@@ -1,0 +1,38 @@
+@use '../../utilities/index.module' as *;
+@use '../index.module.scss' as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-3;
+}
+
+.small,
+.medium,
+.large {
+  background-color: $teal-100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $navy-blue-100;
+}
+
+.small {
+  width: px-to-rem(63);
+  height: px-to-rem(63);
+  border-radius: $radius-small;
+}
+
+.medium {
+  width: px-to-rem(87);
+  height: px-to-rem(87);
+  border-radius: $radius-medium;
+}
+
+.large {
+  width: px-to-rem(160);
+  height: px-to-rem(160);
+  border-radius: $radius-large;
+}

@@ -1,0 +1,100 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.card {
+  display: flex;
+  color: white;
+  background-color: var(--card-background);
+  position: relative;
+  grid-column-end: span 6;
+
+  @include media(screen-l, max) {
+    min-height: px-to-rem(380);
+  }
+
+  @include media(screen-l) {
+    grid-column-end: span var(--columns);
+    grid-row-end: span var(--rows);
+  }
+
+  border-radius: $radius-medium;
+  overflow: hidden;
+  align-items: flex-end;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 20%);
+
+    @include media(screen-l) {
+      background: linear-gradient(
+        180deg,
+        rgb(0 0 0 / 0%) 26.25%,
+        rgb(0 0 0 / 70%) 56.53%
+      );
+    }
+  }
+}
+
+.content {
+  padding: $spacing-7 $spacing-6 px-to-rem(40);
+  position: relative;
+  z-index: 10;
+}
+
+.copy {
+  margin-top: $spacing-3;
+  margin-bottom: $spacing-6;
+}
+
+.cta {
+  margin-top: px-to-rem(12);
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.wrapper {
+  background: var(--background, #{$navy-blue-90});
+  color: var(--text, #{$white});
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-11;
+  padding-bottom: $spacing-13;
+}
+
+.title {
+  margin-top: $spacing-2;
+}
+
+.children {
+  margin-top: $spacing-8;
+  display: flex;
+
+  @include media(screen-l, max) {
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  @include media(screen-l) {
+    @include responsive-grid;
+
+    grid-auto-rows: px-to-rem(380);
+  }
+}

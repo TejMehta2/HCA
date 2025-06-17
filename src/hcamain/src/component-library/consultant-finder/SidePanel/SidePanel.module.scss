@@ -1,0 +1,50 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.side-panel {
+  width: 100%;
+  max-width: px-to-rem(400);
+  border-radius: $radius-medium;
+  background-color: $teal-5;
+  padding: $spacing-6;
+  text-align: center;
+  position: static;
+  display: block;
+  margin: auto;
+
+  @include media(screen-l) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .btns {
+    margin-top: $spacing-2;
+    display: flex;
+    justify-content: center;
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      margin-right: px-to-rem(10);
+    }
+
+    div:last-child {
+      margin-right: 0;
+    }
+
+    a,
+    button {
+      padding: px-to-rem(14) $spacing-5;
+    }
+  }
+
+  &-mobile {
+    display: block;
+
+    @include media(screen-l) {
+      display: none;
+    }
+  }
+}

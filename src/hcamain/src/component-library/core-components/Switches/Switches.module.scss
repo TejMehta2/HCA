@@ -1,0 +1,144 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+@mixin apply-light-mode {
+  --background-selected: #{$orange-100};
+  --background-disabled: #{$navy-blue-10};
+  --border-focus: #{$navy-blue-100};
+  --text: #{$navy-blue-100};
+}
+@mixin apply-dark-mode {
+  --background-selected: #{$teal-100};
+  --background-disabled: #{$navy-blue-10};
+  --border-focus: #{$white};
+  --text: #{$white};
+}
+@mixin apply-medium-mode {
+  --background-selected: #{$navy-blue-100};
+  --background-disabled: #{$navy-blue-20};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-palace-light-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$navy-blue-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-palace-dark-mode {
+  --background-selected: #{$palace-red-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-chelsea-light-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$chelsea-gold-100};
+  --text: #{$navy-blue-100};
+}
+
+@mixin apply-chelsea-dark-mode {
+  --background-selected: #{$chelsea-gold-100};
+  --background-disabled: #{$navy-blue-30};
+  --border-focus: #{$white};
+  --text: #{$navy-blue-100};
+  --background-unselected: #{$navy-blue-70};
+}
+
+.light {
+  @include apply-light-mode;
+}
+
+.dark {
+  @include apply-dark-mode;
+}
+
+.medium {
+  @include apply-medium-mode;
+}
+
+.palace-light {
+  @include apply-palace-light-mode;
+}
+
+.palace-dark {
+  @include apply-palace-dark-mode;
+}
+
+.chelsea-light {
+  @include apply-chelsea-light-mode;
+}
+
+.chelsea-dark {
+  @include apply-chelsea-dark-mode;
+}
+
+.switch {
+  display: grid;
+  grid: auto / px-to-rem(40) 1fr;
+  gap: 0 px-to-rem(8);
+  align-items: center;
+  position: relative;
+  width: px-to-rem(40);
+  height: px-to-rem(24);
+
+  .toggle {
+    position: absolute;
+    inset: 0;
+    background: var(--background-unselected, $navy-blue-40);
+    border-radius: $radius-large;
+    transition: background 0.4s ease-in-out;
+
+    &::before {
+      content: '';
+      height: px-to-rem(20);
+      width: px-to-rem(20);
+      border-radius: 50%;
+      background: $white;
+      position: absolute;
+      left: px-to-rem(2);
+      bottom: px-to-rem(2);
+      transition: 0.4s;
+    }
+  }
+
+  input[type='checkbox'] {
+    opacity: 0;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      & + .toggle {
+        outline: px-to-rem(2) solid var(--border-focus);
+        outline-offset: px-to-rem(2);
+      }
+    }
+
+    &:disabled + .toggle {
+      background-color: var(--background-disabled);
+
+      &::before {
+        background-color: $navy-blue-9;
+      }
+    }
+
+    &:checked + .toggle {
+      background-color: var(--background-selected);
+
+      &::before {
+        transform: translateX(px-to-rem(16));
+      }
+    }
+  }
+}
+
+.label {
+  color: var(--text);
+  @include apply-body-large;
+}

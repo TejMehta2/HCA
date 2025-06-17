@@ -1,0 +1,106 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.text-link {
+  display: inline-block;
+
+  a {
+    text-decoration: none;
+  }
+
+  button,
+  a,
+  label {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    column-gap: px-to-rem(4);
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    position: relative;
+    padding: 0;
+
+    &:hover {
+      &,
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    &:active {
+      color: var(--text-link-active-text);
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:focus-visible {
+      outline-offset: px-to-rem(4);
+      border-radius: $radius-small;
+      outline: 1px solid currentcolor;
+    }
+
+    &:disabled {
+      color: var(--text-link-disabled-text);
+      pointer-events: none;
+    }
+
+    > svg,
+    > :has(svg) {
+      flex: 0 0 auto;
+    }
+  }
+
+  &.body-medium {
+    a,
+    button,
+    label {
+      @include apply-body-medium;
+    }
+  }
+
+  &.body-large {
+    a,
+    button,
+    label {
+      @include apply-body-large;
+    }
+  }
+
+  &.body-medium-large {
+    a,
+    button,
+    label {
+      @include apply-body-medium-large;
+    }
+  }
+
+  &.body-extra-large {
+    a,
+    button,
+    label {
+      @include apply-body-extra-large;
+    }
+  }
+
+  &.heading-2 {
+    a,
+    button,
+    label {
+      @include apply-heading-2;
+    }
+  }
+
+  &.full {
+    width: 100%;
+
+    button,
+    a,
+    label {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

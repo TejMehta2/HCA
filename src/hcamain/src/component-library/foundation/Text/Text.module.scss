@@ -1,0 +1,111 @@
+@use './text-mixin.module' as *;
+
+/* 
+Text classes to mirror design library Typography scale 
+Intended for use solely in the Text module
+*/
+
+/* || CLASSES */
+
+.display-1 {
+  @include apply-display-1;
+}
+
+.display-2 {
+  @include apply-display-2;
+}
+
+.display-3 {
+  @include apply-display-3;
+}
+
+.display-4 {
+  @include apply-display-4;
+}
+
+.display-5 {
+  @include apply-display-5;
+}
+
+.display-6 {
+  @include apply-display-6;
+}
+
+.heading-1 {
+  @include apply-heading-1;
+}
+
+.heading-2 {
+  @include apply-heading-2;
+}
+
+.subheading-1 {
+  @include apply-subheading-1;
+}
+
+.subheading-2 {
+  @include apply-subheading-2;
+}
+
+.body-extra-large {
+  @include apply-body-extra-large;
+}
+
+.body-medium-extra-large {
+  @include apply-body-medium-extra-large;
+}
+
+.body-bold-extra-large {
+  @include apply-body-bold-extra-large;
+}
+
+.body-large {
+  @include apply-body-large;
+}
+
+.body-medium-large {
+  @include apply-body-medium-large;
+}
+
+.body-bold-large {
+  @include apply-body-bold-large;
+}
+
+.body-medium {
+  @include apply-body-medium;
+}
+
+.body-medium-medium {
+  @include apply-body-medium-medium;
+}
+
+.body-bold-medium {
+  @include apply-body-bold-medium;
+}
+
+.body-small {
+  @include apply-body-small;
+}
+
+.body-medium-small {
+  @include apply-body-medium-small;
+}
+
+.body-bold-small {
+  @include apply-body-bold-small;
+}
+
+.decorative {
+  @include apply-decorative;
+}
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  i {
+    @include apply-decorative;
+  }
+}

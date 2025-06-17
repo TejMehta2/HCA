@@ -1,0 +1,126 @@
+@use '../../../../foundation/index.module' as *;
+@use '../../../../utilities/index.module' as *;
+
+.options {
+  position: absolute;
+  background-color: $white;
+  top: calc(100% + $spacing-1);
+  width: 100%;
+  max-height: px-to-rem(208);
+  overflow: auto;
+  border: 1px solid var(--field-active-outline);
+  border-radius: $radius-large;
+  padding: calc($spacing-6 - px-to-rem(11)) 0;
+  z-index: 5;
+
+  @include scrollbar;
+
+  &::-webkit-scrollbar-track {
+    margin-top: px-to-rem(32);
+    margin-bottom: px-to-rem(32);
+  }
+}
+
+.option {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  padding: px-to-rem(11) $spacing-6;
+  cursor: pointer;
+
+  &:hover,
+  :checked + &,
+  &:has(.mdi-check) {
+    background-color: $orange-40;
+  }
+}
+
+%select-icon {
+  content: '';
+  display: flex;
+  position: absolute;
+  right: $spacing-6;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Arrow dropdown'%3E%3Cpath id='Vector' d='M17 8L12 3L7 8M17 16L12 21L7 16' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-color: $navy-blue-100;
+  width: px-to-rem(24);
+  height: px-to-rem(24);
+}
+
+.wrapper {
+  color: var(--text);
+  width: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .select {
+    position: relative;
+
+    button {
+      background-color: $white;
+      color: inherit;
+      text-align: left;
+      padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
+      height: $spacing-9;
+      border: 1px solid $navy-blue-60;
+      border-radius: $radius-large;
+      cursor: pointer;
+      width: 100%;
+
+      @include apply-body-large;
+
+      span {
+        display: inline-block;
+      }
+
+      &::after {
+        @extend %select-icon;
+      }
+    }
+
+    .arrow {
+      display: flex;
+      position: absolute;
+      right: $spacing-6;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  .help-text {
+    margin-top: $spacing-2;
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-top: $spacing-2;
+    scroll-margin-top: px-to-rem(300);
+    color: var(--field-error-colour);
+  }
+
+  &:has(.error-message) {
+    border-color: var(--field-error-colour);
+
+    label:not(.option),
+    .help-text {
+      color: var(--field-error-colour);
+    }
+
+    .select button {
+      border-color: var(--field-error-colour);
+    }
+  }
+}

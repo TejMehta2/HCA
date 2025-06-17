@@ -1,0 +1,40 @@
+@use '../foundation/Colours/colours.module' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  margin: 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+body {
+  word-wrap: break-word;
+  word-break: break-word;
+  color: $navy-blue-100;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}

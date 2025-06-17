@@ -1,0 +1,73 @@
+@use '../utilities/index.module' as *;
+
+// CSS custom properties are defined globally, so that they are assigned once per page with responsive values
+
+// The breakpoint keys here match those expected by the media mixin from the breakpoints module
+// These items must remain in ascending order of breakpoint size, to support the cascade of responsive spacing sizes being updated with screen size
+$spacing-breakpoints: (
+  null: (
+    spacing-1: 4,
+    spacing-2: 8,
+    spacing-3: 12,
+    spacing-4: 16,
+    spacing-5: 24,
+    spacing-6: 24,
+    spacing-7: 40,
+    spacing-8: 56,
+    spacing-9: 64,
+    spacing-10: 72,
+    spacing-11: 72,
+    spacing-12: 72,
+    spacing-13: 80,
+    spacing-14: 16,
+  ),
+  screen-m: (
+    spacing-6: 32,
+    spacing-10: 80,
+    spacing-11: 80,
+    spacing-12: 80,
+    spacing-13: 96,
+    spacing-14: 32,
+  ),
+  screen-l: (
+    spacing-12: 96,
+    spacing-13: 112,
+    spacing-14: 88,
+  ),
+  screen-xl: (
+    spacing-8: 64,
+    spacing-9: 72,
+    spacing-11: 96,
+    spacing-12: 112,
+    spacing-13: 128,
+    spacing-14: 104,
+  ),
+);
+
+@mixin define-css-variable($name, $value) {
+  #{$name}: #{$value};
+}
+
+// Define global variables at root
+// To be consumed as e.g. css-property: var(spacing-1);
+:root {
+  @each $break-point-name, $spacing-list in $spacing-breakpoints {
+    @if $break-point-name {
+      @include media(#{$break-point-name}) {
+        @each $spacing-name, $spacing-value in $spacing-list {
+          @include define-css-variable(
+            --#{$spacing-name},
+            px-to-rem($spacing-value)
+          );
+        }
+      }
+    } @else {
+      @each $spacing-name, $spacing-value in $spacing-list {
+        @include define-css-variable(
+          --#{$spacing-name},
+          px-to-rem($spacing-value)
+        );
+      }
+    }
+  }
+}

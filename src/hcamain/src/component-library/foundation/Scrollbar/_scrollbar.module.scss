@@ -1,0 +1,24 @@
+@use '../../utilities/index.module' as *;
+@use '../Colours/colours.module' as *;
+@use '../Radius/radius.module' as *;
+
+@mixin scrollbar($color: $teal-20) {
+  /* width */
+  &::-webkit-scrollbar {
+    width: px-to-rem(13);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color;
+    border-radius: $radius-medium;
+    background-clip: padding-box;
+    border: px-to-rem(3) solid transparent;
+    min-height: px-to-rem(20);
+  }
+}

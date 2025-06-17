@@ -1,0 +1,79 @@
+@use '../../../../foundation/index.module' as *;
+@use '../../../../utilities/index.module' as *;
+
+%input-field {
+  color: inherit;
+  width: 100%;
+  padding: 0 calc($spacing-6 + px-to-rem(40)) 0 $spacing-6;
+  height: $spacing-9;
+  border: 1px solid $navy-blue-60;
+  border-radius: $radius-large;
+
+  &[type='date']:invalid::-webkit-datetime-edit {
+    color: var(--field-unfilled-label);
+  }
+
+  @include apply-body-medium-large;
+}
+
+.wrapper {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  width: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .input {
+    position: relative;
+
+    .input-field {
+      @extend %input-field;
+    }
+
+    .cross {
+      display: flex;
+      position: absolute;
+      right: $spacing-6;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      opacity: 0;
+    }
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    scroll-margin-top: px-to-rem(300);
+    color: var(--field-error-colour);
+  }
+
+  &:has(.error-message) {
+    label,
+    .help-text,
+    svg {
+      color: var(--field-error-colour);
+    }
+
+    .input-field,
+    .input-field:focus-visible {
+      border-color: var(--field-error-colour);
+      outline: 0;
+    }
+  }
+
+  &:has(input:focus) {
+    .cross {
+      opacity: 1;
+    }
+  }
+}

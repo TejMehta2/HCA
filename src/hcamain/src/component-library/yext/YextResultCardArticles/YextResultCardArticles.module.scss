@@ -1,0 +1,94 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-6 $spacing-6 $spacing-7;
+  background-color: var(--card-background);
+  color: var(--text);
+  border-radius: $radius-medium;
+  align-items: center;
+  gap: $spacing-4 0;
+
+  @include media(screen-l) {
+    display: grid;
+
+    &.has-image {
+      grid: auto / px-to-rem(140) auto auto;
+    }
+
+    &.no-image {
+      grid: auto / auto auto;
+    }
+
+    gap: 0 $spacing-6;
+    padding: $spacing-7;
+  }
+}
+
+.image {
+  display: flex;
+  width: 100%;
+
+  img {
+    border-radius: $radius-small;
+    aspect-ratio: 310 / 132;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+
+    @include media(screen-m) {
+      aspect-ratio: 8 / 3;
+    }
+
+    @include media(screen-l) {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+.ctas {
+  display: flex;
+  gap: $spacing-4 0;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+
+  > * {
+    width: 100%;
+    max-width: px-to-rem(500);
+  }
+
+  a,
+  button {
+    max-width: 100%;
+  }
+
+  @include media(screen-m) {
+    flex-direction: row;
+    gap: 0 $spacing-2;
+
+    div {
+      width: auto;
+    }
+  }
+
+  @include media(screen-l) {
+    justify-content: flex-end;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4 0;
+}
+
+.copy {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

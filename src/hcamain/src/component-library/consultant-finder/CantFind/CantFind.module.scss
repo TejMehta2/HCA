@@ -1,0 +1,27 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.cant-find {
+  @include responsive-container;
+
+  margin-top: $spacing-2;
+  margin-bottom: px-to-rem(100);
+
+  @include media(screen-l) {
+    max-width: px-to-rem(800);
+    margin: auto;
+    margin-top: $spacing-7;
+    margin-bottom: $spacing-10;
+  }
+
+  color: $navy-blue-100;
+
+  .title {
+    margin-bottom: $spacing-3;
+  }
+}
+
+.the-birth-company {
+  margin: 0;
+  width: fit-content;
+}

@@ -1,0 +1,94 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include responsive-container;
+
+  padding-top: $spacing-10;
+  padding-bottom: $spacing-10;
+  display: flex;
+}
+
+.grid {
+  @include responsive-grid;
+
+  .panel1 {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 1);
+  }
+
+  .panel2 {
+    margin-top: $spacing-7;
+
+    @include media(screen-l) {
+      margin-top: 0;
+    }
+
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 7);
+  }
+
+  .panel1,
+  .panel2 {
+    @include responsive-grid-span($breakpoint-m: 4, $breakpoint-l: 6);
+  }
+
+  .ctas {
+    @include responsive-grid-start($breakpoint-m: 2, $breakpoint-l: 1);
+    @include responsive-grid-span($default: 6, $breakpoint-l: 12);
+
+    margin-top: $spacing-7;
+    display: flex;
+    flex-flow: column wrap;
+    gap: $spacing-2;
+
+    @include media(screen-m) {
+      flex-direction: row;
+    }
+  }
+
+  .title {
+    margin-bottom: $spacing-7;
+  }
+
+  .copy {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: $spacing-7;
+
+      @include apply-subheading-1;
+    }
+
+    p,
+    li {
+      @include apply-body-large;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding-left: px-to-rem(30);
+      position: relative;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: px-to-rem(9);
+        content: '';
+        color: inherit;
+        display: inline-block;
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle id='Ellipse 1' cx='3' cy='3' r='3' fill='%230C2141'/%3E%3C/svg%3E");
+        width: px-to-rem(6);
+        height: px-to-rem(6);
+      }
+    }
+  }
+}

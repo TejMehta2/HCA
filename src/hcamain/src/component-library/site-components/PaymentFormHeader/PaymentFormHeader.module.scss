@@ -1,0 +1,94 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.header {
+  padding: $spacing-3 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $white;
+}
+
+.container {
+  @include responsive-container;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $navy-blue-100;
+}
+
+.logo-section {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+}
+
+.logo {
+  svg {
+    width: auto;
+    height: px-to-rem(50);
+  }
+
+  @include media(screen-l) {
+    margin-right: px-to-rem(16);
+    padding-right: px-to-rem(16);
+    border-right: 1px solid $navy-blue-30;
+  }
+}
+
+.payments-text {
+  @include apply-subheading-2;
+
+  @include media(screen-l, max) {
+    display: none;
+  }
+}
+
+.contact {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  @include apply-body-medium;
+
+  @include media(screen-l, max) {
+    display: none;
+  }
+}
+
+.contact-text {
+  margin-right: $spacing-4;
+  color: #4b596f;
+  display: flex;
+  align-items: center;
+}
+
+.opening-hours,
+.phone a {
+  @include apply-body-medium-medium;
+
+  color: $navy-blue-100;
+  display: flex;
+  align-items: center;
+  gap: 0 $spacing-2;
+
+  svg {
+    min-width: px-to-rem(24);
+  }
+}
+
+.opening-hours {
+  max-width: px-to-rem(300);
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    margin-right: px-to-rem(16);
+    padding-right: px-to-rem(16);
+    border-right: 1px solid $navy-blue-30;
+  }
+}

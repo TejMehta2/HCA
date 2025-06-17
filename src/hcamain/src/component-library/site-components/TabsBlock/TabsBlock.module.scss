@@ -1,0 +1,91 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+@use '../CarouselCards/Slick.module.scss' as *;
+
+.wrapper {
+  background-color: var(--background);
+  color: var(--text);
+  overflow: clip;
+}
+
+.container {
+  padding-bottom: $spacing-12;
+
+  @include responsive-container;
+}
+
+.heading {
+  @include responsive-grid;
+
+  align-items: center;
+  padding: $spacing-8 0 $spacing-6;
+
+  .title {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+  }
+
+  & > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 7);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 6);
+
+    @include media(screen-l) {
+      justify-self: end;
+    }
+  }
+}
+
+.tab-content {
+  @include responsive-grid;
+
+  width: 100%;
+  align-items: center;
+
+  & > img {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 6);
+
+    border-radius: $radius-medium;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 359/257;
+
+    @include media(screen-m) {
+      aspect-ratio: 680/417;
+    }
+
+    @include media(screen-l) {
+      aspect-ratio: 552/320;
+    }
+  }
+
+  & > div {
+    @include responsive-grid-span($default: 6, $breakpoint-l: 5);
+    @include responsive-grid-start($default: 1, $breakpoint-l: 8);
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+    margin-top: $spacing-7;
+
+    @include media(screen-l) {
+      margin-top: 0;
+    }
+  }
+}
+
+.slick-wrapper {
+  position: relative;
+  width: 100%;
+
+  & div[class*='slick-track'] {
+    cursor: unset;
+  }
+
+  & div[class*='slick-list'] {
+    margin-right: calc($spacing-14 * -1);
+  }
+
+  & div[class*='slick-slide'] {
+    padding-right: $spacing-14;
+  }
+}

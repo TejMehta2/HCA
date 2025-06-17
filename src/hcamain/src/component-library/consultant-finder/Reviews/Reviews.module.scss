@@ -1,0 +1,67 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.reviews {
+  margin-bottom: $spacing-5;
+
+  svg {
+    width: px-to-rem(25);
+    height: px-to-rem(25);
+  }
+
+  &-header {
+    text-align: center;
+
+    &-no-reviews {
+      margin-bottom: $spacing-5;
+    }
+  }
+
+  &-container,
+  &-stars,
+  &-total,
+  &-doctify {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-container-profile {
+    margin: $spacing-2 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &-compact-text {
+    margin: 0 $spacing-1;
+  }
+
+  &-stars {
+    gap: $spacing-1;
+  }
+
+  &-stars-profile {
+    svg {
+      width: px-to-rem(14);
+      height: px-to-rem(14);
+    }
+  }
+
+  &-total {
+    margin: $spacing-4 0;
+  }
+
+  &-no-reviews-text {
+    margin: $spacing-5 0 $spacing-2;
+  }
+
+  &-doctify-image {
+    display: flex;
+    align-self: center;
+    margin-left: $spacing-1;
+
+    img {
+      width: px-to-rem(83);
+      height: auto;
+    }
+  }
+}

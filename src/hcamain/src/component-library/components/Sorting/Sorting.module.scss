@@ -1,0 +1,158 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+$max-options: 5; // Increase max if more "sort by" options are required
+
+.wrapper {
+  position: relative;
+}
+
+.option {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: px-to-rem(19);
+  padding-bottom: px-to-rem(19);
+  border-bottom: solid px-to-rem(1) $navy-blue-9;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+  @include media(screen-m) {
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.label {
+  @include apply-body-large;
+
+  user-select: none;
+}
+
+.icon {
+  display: none;
+}
+
+// Low tech method to synchronize styles of multiple labels with input :checked pseudo selector without controlling inputs via state
+@for $i from 1 through $max-options {
+  .wrapper:has(input:nth-of-type(#{$i}):checked) .option:nth-of-type(#{$i}) {
+    .label {
+      @include apply-body-medium-large;
+    }
+
+    .icon {
+      display: block;
+    }
+  }
+  .wrapper:has(input:nth-of-type(#{$i}):focus) .option:nth-of-type(#{$i}) {
+    .label {
+      text-decoration: underline;
+    }
+  }
+}
+
+.fieldset {
+  @include responsive-container;
+}
+
+.legend {
+  text-align: center;
+  position: relative;
+  padding-top: $spacing-2;
+  padding-bottom: calc(2 * $spacing-5);
+
+  &::after {
+    position: absolute;
+    left: calc(-1 * #{$spacing-14});
+    bottom: $spacing-5;
+    content: '';
+    width: calc(100% + 2 * #{$spacing-14});
+    height: px-to-rem(1);
+    background-color: $navy-blue-9;
+  }
+}
+
+@include media(screen-m) {
+  .fields {
+    padding: px-to-rem(32);
+    border: solid 1px $navy-blue-100;
+    border-radius: $radius-large;
+    width: px-to-rem(356);
+    position: absolute;
+    background-color: $white;
+    color: $navy-blue-100;
+    max-height: px-to-rem(300);
+    overflow: auto;
+    z-index: 2;
+    top: $spacing-1;
+
+    &.right {
+      right: 0;
+    }
+
+    &.left {
+      left: 0;
+    }
+  }
+}
+
+.desktop {
+  display: none;
+  position: relative;
+  height: 100%;
+}
+
+.button {
+  // border-bottom: px-to-rem(4) solid transparent;
+  &,
+  > * {
+    height: 100%;
+  }
+
+  button {
+    width: 100%;
+    justify-content: center;
+
+    @include media(screen-l) {
+      height: 100%;
+      width: max-content;
+      justify-content: unset;
+    }
+  }
+}
+
+// style "selected" state for button which opens dialog
+.desktop,
+.mobile {
+  &:has(dialog[open]) {
+    .button {
+      button,
+      a {
+        &::after {
+          background-color: var(--background);
+        }
+
+        background-color: transparent;
+        border-color: var(--text);
+        color: var(--text);
+      }
+    }
+  }
+}
+
+@include media(screen-m) {
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+}

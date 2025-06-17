@@ -1,0 +1,92 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+%input-textarea {
+  position: relative;
+  border: 1px solid $navy-blue-60;
+  border-radius: $radius-large;
+  padding-bottom: px-to-rem(42);
+  background-color: $white;
+
+  textarea {
+    @include apply-body-medium-large;
+
+    color: inherit;
+    width: 100%;
+    padding: px-to-rem(24) $spacing-6 0 $spacing-6;
+    border: 0;
+    border-radius: $radius-large;
+    resize: none;
+    min-height: px-to-rem(102);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 0;
+    }
+  }
+
+  .count,
+  .limit-counter {
+    @include apply-body-medium-medium;
+
+    position: absolute;
+    bottom: px-to-rem(18);
+    right: px-to-rem(23);
+    background-color: $white;
+  }
+
+  &:focus-within {
+    outline: 1px solid $navy-blue-100;
+  }
+
+  &:has(textarea:not(:focus):user-invalid) {
+    color: var(--field-error-colour);
+    border-color: var(--field-error-colour);
+  }
+}
+
+.wrapper {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+
+    @include apply-body-medium-extra-large;
+  }
+
+  .textarea {
+    @extend %input-textarea;
+  }
+
+  .helper {
+    margin-top: $spacing-2;
+  }
+
+  .error-message {
+    display: none;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &:has(textarea:user-invalid) {
+    color: var(--field-error-colour);
+
+    .error-message {
+      display: flex;
+    }
+
+    .helper {
+      color: $navy-blue-100;
+    }
+  }
+}

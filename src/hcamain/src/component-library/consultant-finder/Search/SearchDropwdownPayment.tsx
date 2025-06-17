@@ -1,0 +1,89 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useContext } from 'react';
+import Text from '../../foundation/Text/Text';
+import SearchDropdownProps from './SearchDropdown.types';
+import styles from './SearchDropdown.module.scss';
+import Icons from '../../foundation/Icons/Icons';
+import Loader from '../../foundation/Loader/Loader';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { capitalizeFirstLetter } from '../../utility-functions/index';
+
+const SearchDdropdownPayment = (props: SearchDropdownProps): JSX.Element => {
+  const { setIsSelfPayment, setSelectedInsurerPaymentStep } = useContext(
+    ConsultantFinderContext
+  );
+
+  const handleClick = (name: string, id: number) => {
+    props.setIsComponentVisible(false);
+    setSelectedInsurerPaymentStep(id);
+    setIsSelfPayment(false);
+    if (props.setSearchStringPayment) {
+      props.setSearchStringPayment(name);
+    }
+  };
+
+  return (
+    <div className={styles['consultant-finder-search-dropdown']}>
+      {props.loading && (
+        <div className={styles['consultant-finder-search-dropdown-loader']}>
+          <Loader theme="light" />
+          <Text tag="p" variation="body-small">
+            {props.loadingText}
+          </Text>
+        </div>
+      )}
+      {props.noResults && !props.loading && (
+        <Text tag="p" variation="body-small">
+          {props.noResultsMsg ||
+            'No matches found, please try typing something else.'}
+        </Text>
+      )}
+      {/* results */}
+      {!props.noResults && !props.loading && (
+        <div className={styles['consultant-finder-search-dropdown-results']}>
+          <div
+            className={
+              styles['consultant-finder-search-dropdown-col--full-width']
+            }
+          >
+            <div className={styles['consultant-finder-search-dropdown-header']}>
+              <Text tag="h2" variation="subheading-2">
+                {props.insuranceProvidersFilterHeaderText || 'INSURERS'}
+              </Text>
+            </div>
+            <ul>
+              {props.data.length > 0 &&
+                props.data.map((item: any) => (
+                  <li
+                    key={item.id}
+                    aria-label="option"
+                    onClick={() => handleClick(item.name, item.id)}
+                  >
+                    <span
+                      className={
+                        styles['consultant-finder-search-dropdown-icon']
+                      }
+                    >
+                      {props.resultsIcon && (
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: props.resultsIcon,
+                          }}
+                        ></span>
+                      )}
+                      {!props.resultsIcon && <Icons iconName="iconSearch" />}
+                    </span>
+                    <Text tag="p" variation="body-medium">
+                      {capitalizeFirstLetter(item.name)}
+                    </Text>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SearchDdropdownPayment;

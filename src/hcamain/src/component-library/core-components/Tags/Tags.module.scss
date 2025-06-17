@@ -1,0 +1,76 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.tags {
+  display: flex;
+  gap: $spacing-2;
+  flex-wrap: wrap;
+
+  & > * {
+    // Imported styles
+    @include apply-body-medium-medium;
+
+    // Shared styles
+    border-radius: $radius-small;
+    padding: px-to-rem(4) px-to-rem(16);
+    text-decoration: none;
+    outline: solid #{px-to-rem(2)} transparent;
+    outline-offset: px-to-rem(-3);
+    background-color: var(--tag-background);
+    color: var(--tag-text);
+  }
+
+  & > a,
+  & > button {
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--tag-hover-background);
+    }
+
+    &:active {
+      background-color: var(--tag-active-background);
+    }
+
+    &:focus {
+      background-color: var(--tag-focus-background);
+      outline-color: var(--tag-focus-outline);
+    }
+  }
+
+  &.quote {
+    a,
+    button {
+      color: var(--quote-tag-color, var(--tag-text));
+      background-color: var(--quote-tag-background);
+
+      &:hover {
+        background-color: var(--quote-tag-background-hover);
+      }
+    }
+  }
+}
+
+.green {
+  @include apply-tag-fern-60;
+}
+
+.dark-blue {
+  @include apply-tag-navy-blue-70;
+}
+
+.orange {
+  @include apply-tag-orange-40;
+}
+
+.white {
+  @include apply-tag-white;
+}
+
+.blue {
+  @include apply-tag-teal-20;
+}
+
+.coral {
+  @include apply-tag-orange-60;
+}

@@ -1,0 +1,139 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  display: none;
+  @include media(screen-l) {
+    display: block;
+  }
+
+  position: relative;
+  overflow: clip;
+  background-color: var(--background);
+  color: var(--text);
+  z-index: 1;
+
+  /* --component-height set in JS as it depends on the amount of regions displayed */
+  height: var(--component-height);
+
+  --transition: all 1.2s ease; // Shared map transitions
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  @include responsive-container;
+  @include responsive-grid;
+
+  > {
+    grid-row-start: 1;
+  }
+
+  position: sticky;
+  top: px-to-rem(70);
+  flex-direction: row;
+}
+
+.header {
+  @include responsive-grid-span($breakpoint-l: 4);
+
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  z-index: 2;
+  position: static;
+  padding: 0;
+  justify-content: center;
+  height: calc(100vh - px-to-rem(70));
+  transition: none;
+}
+
+.cards {
+  @include responsive-grid-span($breakpoint-l: 4);
+  @include responsive-grid-start($breakpoint-l: 6);
+
+  display: grid;
+
+  > * {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  position: relative;
+  z-index: 1;
+}
+
+.map {
+  @include responsive-grid-span($breakpoint-l: 3);
+
+  position: relative;
+  display: flex;
+  transition: var(--transition);
+  scale: var(--map-scale);
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.map-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: inherit;
+
+  --pos-x: calc(var(--map-x) * -100%);
+  --pos-y: calc(var(--map-y) * -100%);
+
+  translate: var(--pos-x) var(--pos-y);
+  transform-origin: center;
+  z-index: 0;
+
+  > img {
+    width: auto;
+    height: 300vh;
+    max-width: initial;
+  }
+}
+
+.pin {
+  color: var(--text);
+  transition: var(--transition);
+  height: calc(px-to-rem(44) / var(--map-scale)); // correct for scale
+  width: auto;
+  position: absolute;
+
+  --pos-x: calc(var(--pin-x) * 100%);
+  --pos-y: calc(var(--pin-y) * 100%);
+
+  top: var(--pos-y);
+  left: var(--pos-x);
+  translate: -50% -100%;
+
+  &.active {
+    height: calc(px-to-rem(120) / var(--map-scale));
+    color: var(--background);
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  @include responsive-grid;
+
+  grid-auto-rows: min-content;
+
+  > div {
+    img {
+      max-height: px-to-rem(243);
+    }
+
+    @include responsive-grid-span(
+      $default: 6,
+      $breakpoint-m: 3,
+      $breakpoint-l: 4,
+      $breakpoint-xl: 4
+    );
+  }
+}

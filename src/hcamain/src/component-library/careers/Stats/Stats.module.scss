@@ -1,0 +1,64 @@
+@use '../../foundation/index.module' as *;
+@use '../../utilities/index.module' as *;
+
+.wrapper {
+  background: var(--background, #{$teal-100});
+  color: var(--text, #{$navy-blue-100});
+}
+
+.container {
+  @include responsive-container;
+
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-12;
+
+  .grid-3-col & {
+    padding-top: $spacing-7;
+    padding-bottom: $spacing-7;
+  }
+}
+
+.heading {
+  margin-bottom: $spacing-7;
+}
+
+.grid {
+  .default & {
+    @include responsive-grid;
+
+    > * {
+      @include responsive-grid-span(3, 2, 2, 2);
+    }
+  }
+
+  .grid-3-col & {
+    @include responsive-grid;
+
+    > * {
+      @include responsive-grid-span(6, 2, 4, 4);
+
+      text-align: center;
+      margin: 0 $spacing-4;
+
+      @include media(screen-m) {
+        margin: 0;
+      }
+    }
+
+    > :nth-child(3n - 1) {
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid $navy-blue-40;
+      border-top: 1px solid $navy-blue-40;
+      padding: $spacing-4 $spacing-6;
+
+      @include media(screen-m) {
+        border-bottom: none;
+        border-top: none;
+        border-right: 1px solid $navy-blue-40;
+        border-left: 1px solid $navy-blue-40;
+        padding: 0 $spacing-6;
+      }
+    }
+  }
+}
