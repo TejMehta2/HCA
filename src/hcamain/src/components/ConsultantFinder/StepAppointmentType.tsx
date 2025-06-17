@@ -20,7 +20,7 @@ import Container from '@component-library/foundation/Containers/Container';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';
 import SelectAppointmentType from '@component-library/consultant-finder/SelectAppointmentType/SelectAppointmentType';
 import Headline from '@component-library/consultant-finder/Headline/Headline';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 interface Fields {
   HCALogo: ImageField;

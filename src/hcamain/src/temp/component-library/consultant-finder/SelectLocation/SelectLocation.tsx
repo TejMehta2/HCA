@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { SelectLocationProps } from './SelectLocation.types';
 import LocationCard from '../LocationCardSlots/LocationCard';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import styles from './SelectLocation.module.scss';
 
 const SelectLocation = (props: SelectLocationProps): JSX.Element => {

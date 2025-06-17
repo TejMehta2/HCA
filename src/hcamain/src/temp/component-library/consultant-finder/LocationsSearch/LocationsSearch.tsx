@@ -8,7 +8,7 @@ import SearchProps from './Search.types';
 let cancelToken: any;
 import SearchDdropdown from './SearchDropwdown';
 import TextLink from '../../core-components/TextLink/TextLink';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 const LocationsSearch = (props: SearchProps): JSX.Element => {
   const { ref, isComponentVisible, setIsComponentVisible } =

@@ -5,7 +5,7 @@ import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
 import Icons from '../../foundation/Icons/Icons';
 import Loader from '../../foundation/Loader/Loader';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 const SearchDdropdownConsultant = (props: SearchDropdownProps): JSX.Element => {
   const { setConsultantSlug } = useContext(ConsultantFinderContext);

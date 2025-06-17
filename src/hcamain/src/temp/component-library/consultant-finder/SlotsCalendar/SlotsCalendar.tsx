@@ -9,7 +9,7 @@ import {
   removeSeconds,
   formatTime12hr,
 } from '../../utility-functions/index';
-import { ConsultantFinderContext } from '../../context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import LoaderCF from '../LoaderCF/LoaderCF';
 import Icons from '../../foundation/Icons/Icons';
 import Text from '../../foundation/Text/Text';
