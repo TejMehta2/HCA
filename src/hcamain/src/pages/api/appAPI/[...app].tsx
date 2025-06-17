@@ -1,8 +1,10 @@
 import { getRecurseAppItemsFromGraphQL } from 'lib/consultant-finder/getRecurseAppItemsFromGraphQL';
 import { revalidate } from 'lib/consultant-finder/revalidateNow';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { neon } from '@neondatabase/serverless';
 
-// mock articles - will figure how to pull from the Sitecore media library
+// mock articles
+/*
 const articles = [
   {
     title: 'Relaxation methods',
@@ -97,26 +99,52 @@ const articles = [
     link: 'https://portal.hcaprimarycare.co.uk/mms-mapping/sheet-library.js?sheet=092d24e03284ab5a49983b57275e00ea7bdc49f3814c3e7960801f0e6afe55f2ad9f17603c9ca4d05b082a2cfaa2a69547d30cf7b867efd1f27e00ed1646178f&target=blank',
   },
 ];
+*/
 
-// example http://localhost:3000/api/appAPI/OneApp?lang=en&platform=iOS
+// media library items have these properties
+interface ISitecoreMediaProps {
+  name: string;
+  path: string;
+  url: string;
+}
+
+interface IAccessCodeProps {
+  products: unknown;
+  client: string;
+  accessCode: string;
+}
+
+// example http://localhost:3000/api/appAPI/PCApp or http://localhost:3000/api/appAPI/Library or http://localhost:3000/api/appAPI/AccessCode
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { app } = req.query;
-  let output: unknown[] = [];
+  let output: unknown[] | unknown = [];
   const appRootPath = '/sitecore/content/HCA/App';
+  const accessCodesRootPath = '/sitecore/content/HCA/App/AccessCodes';
+  const mediaRootPath = '/sitecore/media library/Project/HCA/App';
+
+  // the xm-cloud published media library base url - varies based on environment, fallback to dev
+  const mediaLibraryBaseURL =
+    process.env.NEXT_PUBLIC_MEDIA_LIBRARY_BASE_URL! ??
+    'https://edge.sitecorecloud.io/hcainternat9865-hcadigital-dev-40cb/media';
   const frags = app as string[];
 
   // endpoint for App API
   // prod root: https://www.hcahealthcare.co.uk/api/appAPI/
   //
   // sub functions
-  // dev https://xm-dev.hcahealthcareqa.co.uk/appAPI/Library
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/Library
   // returns the array of the document library used in the PC App
   //
-  // dev https://xm-dev.hcahealthcareqa.co.uk/appAPI/PCApp
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp
+  // local http://localhost:3001/api/appAPI/PCapp
   // returns the copy (content) from the Sitecore tree
+  //
+  // dev https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp/AccessCode
+  // local https://xm-dev.hcahealthcareqa.co.uk/api/appAPI/PCApp/AccessCode
+  // validates the passed access code and returns JSON from the associated Sitecore entries
 
   //const error: string = '';
   if (frags) {
@@ -124,22 +152,110 @@ export default async function handler(
     const lang = (req?.query?.lang as string) ?? 'en';
     const platform = (req?.query?.platform as string) ?? '';
     const requestedPath = `${appRootPath}/${frags.join('/')}`;
-    /*console.log(
-      'app graphQL request',
-      'lang: ',
-      lang,
-      'platform: ',
-      platform,
-      'requestedPath: ',
-      requestedPath
-    );*/
+    const mediaLibraryPath = `${mediaRootPath}/${'PCApp'}`;
+
+    // switch on the type of request, is it for the library or the content?
     switch (frags?.join('')?.toLowerCase()) {
-      case 'library':
+      case 'relaywrite': // this is a request to write a relay a code e.g. 2FA
         {
-          output = await articles;
+          if (req?.body && req.body.key && req.body.value) {
+            ('use server');
+            // Connect to the Neon database
+            const sql = neon(`${process.env.DATABASE_URL}`);
+
+            // Insert the key value into the Postgres database
+            const result = await sql.query(
+              `INSERT INTO app_relay (app_key,app_value) VALUES ('${req.body.key}','${req.body.value}')`
+            );
+            output = JSON.stringify(result);
+          }
+        }
+        break;
+      case 'relayread': // this is a request to read a relay code e.g. 2FA
+        {
+          if (req?.body && req.body.key) {
+            ('use server');
+            // Connect to the Neon database
+            const sql = neon(`${process.env.DATABASE_URL}`);
+
+            // select the top from the Postgres database
+            const result = await sql.query(
+              `SELECT app_key,app_value,updated,now() - updated as age from app_relay where app_key like '${req.body.key}' order by updated desc limit 1`
+            );
+
+            if (result && result.length > 0) {
+              output = result[0];
+            }
+          }
+        }
+        break;
+      case 'accesscode': // this is a request for access code content
+        {
+          if (req?.body && req.body.accessCode) {
+            const accessCodeRequested = req.body.accessCode;
+            //console.log('accessCodeRequested', accessCodeRequested);
+            const accessCodesData = await getRecurseAppItemsFromGraphQL(
+              accessCodesRootPath,
+              lang,
+              platform
+            );
+
+            if (accessCodesData?.codes) {
+              const accessCodesArray = Object.entries(accessCodesData.codes);
+              accessCodesArray.forEach((accessCode: Array<unknown>) => {
+                if (Object.values(accessCode).length > 1) {
+                  const entry: IAccessCodeProps = Object.values(
+                    accessCode
+                  )[1] as IAccessCodeProps;
+
+                  if (accessCodeRequested === entry.accessCode) {
+                    //console.log('accessCode', entry.accessCode);
+                    output = entry; // return data on match of access code
+                  }
+                }
+              });
+            }
+          }
         }
         break;
 
+      case 'library': // this is a request for the document library
+        {
+          //output = await articles; mock
+          const mediaLibraryDocs = await getRecurseAppItemsFromGraphQL(
+            mediaLibraryPath,
+            lang,
+            platform
+          );
+
+          const library =
+            mediaLibraryDocs?.sitecore?.media_library?.Project?.HCA?.App?.PCApp
+              ?.Library;
+
+          // all good - we got the tree back for the media library?
+          if (library) {
+            // go through each entry and fix up to the format required by the app/portal
+            const libraryArray = Object.entries(library);
+            let result: unknown[] = [];
+            libraryArray.forEach((doc: Array<unknown>) => {
+              if (Object.values(doc).length > 1) {
+                // sanity check - index 1 is the media library properties for that doc
+                const entry: ISitecoreMediaProps = Object.values(
+                  doc
+                )[1] as ISitecoreMediaProps;
+                //console.log(entry.name, entry.path, entry.url);
+                result = result.concat({
+                  title: entry.name,
+                  link: mediaLibraryBaseURL + entry.url,
+                });
+              }
+            });
+            output = result;
+          }
+        }
+        break;
+
+      // default is we want content as JSON
       default:
         {
           output = await getRecurseAppItemsFromGraphQL(
@@ -163,7 +279,14 @@ export default async function handler(
     res.appendHeader('Vercel-CDN-Cache-Control', 'max-age=120');
   }
 
+  // CORS as we are going cross domains
   res.appendHeader('Access-Control-Allow-Origin', '*');
+  res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.appendHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  res.appendHeader('Access-Control-Allow-Credentials', 'true');
 
   return res.status(200).json(output);
 }

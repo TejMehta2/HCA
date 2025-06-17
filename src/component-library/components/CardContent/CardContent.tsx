@@ -4,10 +4,19 @@ import styles from './CardContent.module.scss';
 import Button from '../../core-components/Button/Button';
 
 const CardContent = (props: CardContentProps): JSX.Element => {
-  const { image, title, bodyCopy, link } = props;
+  const { image, title, bodyCopy, link, imageKeepAspectRatio = false } = props;
   return (
     <div className={styles.card}>
-      {image && <div className={styles.image}>{image}</div>}
+      {image && (
+        <div
+          className={[
+            styles['image'],
+            imageKeepAspectRatio ? styles['keep-aspect-ratio'] : '',
+          ].join(' ')}
+        >
+          {image}
+        </div>
+      )}
       <div className={styles['card-info']}>
         <div className={styles.copy}>
           {title}
