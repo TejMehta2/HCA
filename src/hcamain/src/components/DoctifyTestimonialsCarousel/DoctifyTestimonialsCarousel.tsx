@@ -9,7 +9,7 @@ import {
 import CarouselReviews from '@component-library/site-components/CarouselReviews/CarouselReviews';
 import Text from '@component-library/foundation/Text/Text';
 import Params from 'src/types/params';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 
 interface TestimonialsFields {
   fields?: {

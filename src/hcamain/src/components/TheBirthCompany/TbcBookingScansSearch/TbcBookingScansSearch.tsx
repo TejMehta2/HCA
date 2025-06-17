@@ -14,7 +14,7 @@ import Search from '@component-library/the-birth-company/Search/Search';
 import {
   TheBirthCompanyContext,
   TheBirthCompanyContextProvider,
-} from 'src/context/theBirthCompanyContext';
+} from '@component-library/context/theBirthCompanyContext';
 import Text from '@component-library/foundation/Text/Text';
 import Checkbox from '@component-library/core-components/Checkbox/Checkbox';
 import Container from '@component-library/foundation/Containers/Container';

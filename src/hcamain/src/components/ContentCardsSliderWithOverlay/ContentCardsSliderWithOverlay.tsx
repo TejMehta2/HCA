@@ -13,7 +13,7 @@ import Text from '@component-library/foundation/Text/Text';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import CardWithModal from './CardWithModal';
 import Params from 'src/types/params';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {

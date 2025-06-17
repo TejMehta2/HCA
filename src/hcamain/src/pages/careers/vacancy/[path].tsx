@@ -4,7 +4,7 @@
 // See getStaticPaths/Props below for comment and differences between this and the main pages
 
 import { useEffect } from 'react';
-import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContextProvider } from '@component-library/context/consultantFinderContext';
 import Layout from 'src/Layout';
 import {
   RenderingType,

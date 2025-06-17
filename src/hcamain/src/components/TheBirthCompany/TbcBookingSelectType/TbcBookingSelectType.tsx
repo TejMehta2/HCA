@@ -29,7 +29,7 @@ import CantFind from '@component-library/consultant-finder/CantFind/CantFind';
 import {
   TheBirthCompanyContext,
   TheBirthCompanyContextProvider,
-} from 'src/context/theBirthCompanyContext';
+} from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 interface Fields {
   HCALogo: ImageField;

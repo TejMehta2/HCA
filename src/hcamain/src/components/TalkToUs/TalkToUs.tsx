@@ -16,7 +16,7 @@ import { ContactItem } from '@component-library/components/ContactList/ContactLi
 import { ContactUnitFields } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours.types';
 import { OpeningHours } from 'src/jss-abstractions/OpeningHoursTextFormatting/OpeningHours';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 

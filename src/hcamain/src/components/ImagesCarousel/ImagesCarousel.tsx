@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageField } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import CarouselImages from '@component-library/careers/CarouselImages/CarouselImages';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 

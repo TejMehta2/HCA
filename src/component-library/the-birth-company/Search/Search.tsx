@@ -5,7 +5,7 @@ import Icons from '../../foundation/Icons/Icons';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps, { TbcService } from './Search.types';
 import SearchDdropdown from './SearchDropwdown';
-import { TheBirthCompanyContext } from '../../../hcamain/src/context/theBirthCompanyContext';
+import { TheBirthCompanyContext } from '../../context/theBirthCompanyContext';
 import TextLink from '../../core-components/TextLink/TextLink';
 
 const Search = (props: SearchProps): JSX.Element => {

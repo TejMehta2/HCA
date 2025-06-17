@@ -13,7 +13,7 @@ import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/Placehol
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import Text from '@component-library/foundation/Text/Text';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {

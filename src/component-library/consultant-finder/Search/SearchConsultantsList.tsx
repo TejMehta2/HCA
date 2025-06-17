@@ -14,7 +14,7 @@ import useComponentVisible from '../../hooks/useComponentVisible';
 import SearchProps from './Search.types';
 import SearchDdropdown from './SearchDropwdownConsultantsList';
 let cancelToken: any;
-import { ConsultantFinderContext } from '../../../hcamain/src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import TextLink from '../../core-components/TextLink/TextLink';
 import { transformFields } from '../../utility-functions/index';
 

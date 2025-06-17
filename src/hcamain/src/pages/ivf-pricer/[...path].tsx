@@ -8,7 +8,7 @@
 
 import { useEffect } from 'react';
 import { GetServerSidePropsContext } from 'next';
-import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContextProvider } from '@component-library/context/consultantFinderContext';
 import Layout from 'src/Layout';
 import useRouteChange from '@component-library/hooks/useRouteChange';
 import RedirectOverlay from '@component-library/consultant-finder/RedirectOverlay/RedirectOverlay';

@@ -10,17 +10,20 @@ fs.mkdirSync(destinationDirectory, { recursive: true });
 
 const performCopy = () => {
   const foldersToCopy = [
-    'components',
-    'core-components',
-    'yext',
-    'site-components',
+    'assets',
     'careers',
+    'components',
+    'context',
+    'consultant-finder',
+    'core-components',
     'foundation',
     'globals',
-    'assets',
     'hooks',
+    'site-components',
+    'the-birth-company',
     'utilities',
     'utility-functions',
+    'yext',
   ];
 
   try {

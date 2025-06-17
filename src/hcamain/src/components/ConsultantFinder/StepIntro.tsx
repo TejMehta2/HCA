@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 import {
   Image as JssImage,

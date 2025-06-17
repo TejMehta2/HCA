@@ -31,7 +31,7 @@ import LocationCardBlock from '@component-library/the-birth-company/LocationCard
 import {
   TheBirthCompanyContext,
   TheBirthCompanyContextProvider,
-} from 'src/context/theBirthCompanyContext';
+} from '@component-library/context/theBirthCompanyContext';
 import LoaderCF from '@component-library/consultant-finder/LoaderCF/LoaderCF';
 
 interface Fields {

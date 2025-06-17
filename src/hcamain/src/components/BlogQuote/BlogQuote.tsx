@@ -12,7 +12,7 @@ import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import { AuthorFields } from 'src/types/authorFields';
 
 interface Fields {

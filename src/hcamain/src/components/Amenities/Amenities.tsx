@@ -15,7 +15,7 @@ import Params from 'src/types/params';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import RichText from '@component-library/core-components/RichText/RichText';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 
 type HCAIconFields = {
   fields?: {

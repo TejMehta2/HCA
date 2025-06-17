@@ -14,7 +14,7 @@ import Themes from '@component-library/foundation/Themes/Themes';
 import IconCtaBlock, {
   IconCtaBlockChild,
 } from '@component-library/site-components/IconCtaBlock/IconCtaBlock';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 
 type CTAIconFields = {
   fields?: {

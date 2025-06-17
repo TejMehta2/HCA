@@ -10,17 +10,20 @@ fs.mkdirSync(destinationDirectory, { recursive: true });
 
 const performCopy = () => {
   const foldersToCopy = [
-    'components',
-    'core-components',
-    'yext',
-    'site-components',
+    'assets',
     'careers',
+    'components',
+    'context',
+    'consultant-finder',
+    'core-components',
     'foundation',
     'globals',
-    'assets',
     'hooks',
+    'site-components',
+    'the-birth-company',
     'utilities',
     'utility-functions',
+    'yext',
   ];
 
   try {
@@ -47,7 +50,7 @@ const performCopy = () => {
     console.error(err);
   }
 };
-  
+
 let isWatching = false;
 fs.watch(__dirname, { recursive: true }, (eventType, fileName) => {
   if (isWatching) return;

@@ -5,7 +5,7 @@
 
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { ConsultantFinderContextProvider } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContextProvider } from '@component-library/context/consultantFinderContext';
 import Layout from 'src/Layout';
 import {
   RenderingType,

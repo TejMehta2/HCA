@@ -10,7 +10,7 @@ import Params from 'src/types/params';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';
 import Accreditations from '@component-library/careers/Accreditations/Accreditations';
 import Themes from '@component-library/foundation/Themes/Themes';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 
 type HCAIconFields = {

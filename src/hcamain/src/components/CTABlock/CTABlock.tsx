@@ -10,7 +10,7 @@ import { ButtonProps } from '@component-library/core-components/Button/Button.ty
 import Params from 'src/types/params';
 import CTABlock from '@component-library/site-components/CTABlock/CTABlock';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface Fields {

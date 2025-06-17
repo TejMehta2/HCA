@@ -13,7 +13,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Button from '@component-library/core-components/Button/Button';
 import Text from '@component-library/foundation/Text/Text';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 import ImageAndTextBlock from '@component-library/site-components/ImageAndTextBlock/ImageAndTextBlock';
 import SearchConsultant from '@component-library/consultant-finder/Search/SearchConsultant';
 import Navigation from '@component-library/consultant-finder/Navigation/Navigation';

@@ -7,7 +7,7 @@ import {
 import Params from 'src/types/params';
 import TextBlockHeader from '@component-library/site-components/TextBlockHeader/TextBlockHeader';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 
 interface Fields {
   Heading?: Field<string>;

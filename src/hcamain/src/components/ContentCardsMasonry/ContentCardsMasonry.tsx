@@ -17,7 +17,7 @@ import MasonryCards, {
 } from '@component-library/site-components/MasonryCards/MasonryCards';
 import TextButton from '@component-library/core-components/TextButton/TextButton';
 import Button from '@component-library/core-components/Button/Button';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type MasonryCard = {
