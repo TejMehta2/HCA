@@ -191,8 +191,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           const cardCtaTextFromCard = card?.proxyurl?.path
             ? card?.proxyurl.text
             : card.abstractTitle?.value
-            ? card.abstractTitle?.value
-            : card.title?.value;
+              ? card.abstractTitle?.value
+              : card.title?.value;
 
           return (
             <CardContent

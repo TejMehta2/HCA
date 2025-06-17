@@ -171,8 +171,9 @@ export const Default = (props: StepProps): JSX.Element => {
                   disabled={false}
                   onClick={() =>
                     router.push(
-                      `${props?.fields?.NextLink?.value
-                        ?.href}?search=${search}&keywordId=${keywordId}&sortType=relevance${
+                      `${
+                        props?.fields?.NextLink?.value?.href
+                      }?search=${search}&keywordId=${keywordId}&sortType=relevance${
                         selectedLocations.length > 0
                           ? `&practice=${selectedLocations.join(',')}&`
                           : '&'

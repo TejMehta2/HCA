@@ -122,7 +122,7 @@ export default async function Warmup(
     req.headers as unknown as Iterable<readonly [PropertyKey, any]>
   );
   let requestingHost = flatHeaders
-    ? flatHeaders['x-forwarded-host'] ?? flatHeaders['host']
+    ? (flatHeaders['x-forwarded-host'] ?? flatHeaders['host'])
     : 'hcahealthcare.co.uk';
   if (requestingHost == 'www.hcacloud.localhost') {
     // can't introspect on local as running in Docker
@@ -151,9 +151,8 @@ export default async function Warmup(
     longRunning(requestingHost, start, {
       log: (msg: string) => {
         writer.ready
-          .then(
-            () =>
-              writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
+          .then(() =>
+            writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
           )
           .catch((err) => {
             gStreamClosed = true;

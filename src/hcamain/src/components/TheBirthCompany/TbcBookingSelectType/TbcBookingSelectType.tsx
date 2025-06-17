@@ -250,8 +250,9 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value
-                      ?.href}?${searchParams.toString()}`}
+                    href={`${
+                      props?.fields?.BackLink?.value?.href
+                    }?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>
@@ -268,8 +269,9 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                     }
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value
-                          ?.href}?${nextPageParams.toString()}`
+                        `${
+                          props?.fields?.NextLink?.value?.href
+                        }?${nextPageParams.toString()}`
                       )
                     }
                   >

@@ -237,8 +237,9 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
               <div>
                 <TextButton>
                   <Link
-                    href={`${props?.fields?.BackLink?.value
-                      ?.href}?${searchParams.toString()}`}
+                    href={`${
+                      props?.fields?.BackLink?.value?.href
+                    }?${searchParams.toString()}`}
                   >
                     <Icons iconName="iconArrowSmallLeft" />
                     <span>{props.fields.BackLink.value.text || 'Back'}</span>
@@ -251,8 +252,9 @@ export const TbcLocations = (props: StepProps): JSX.Element => {
                     disabled={selectedLocation.length === 0 ? true : false}
                     onClick={() =>
                       router.push(
-                        `${props?.fields?.NextLink?.value
-                          ?.href}?${nextPageParams.toString()}`
+                        `${
+                          props?.fields?.NextLink?.value?.href
+                        }?${nextPageParams.toString()}`
                       )
                     }
                   >
