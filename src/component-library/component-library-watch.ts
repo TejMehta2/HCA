@@ -21,6 +21,7 @@ const performCopy = () => {
     'hooks',
     'site-components',
     'the-birth-company',
+    'types',
     'utilities',
     'utility-functions',
     'yext',
