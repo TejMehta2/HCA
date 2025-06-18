@@ -24,6 +24,7 @@
     "lint": "npm run hcamain:type-check && npm run component-library:type-check"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18"
   },
   "dependencies": {
   }
