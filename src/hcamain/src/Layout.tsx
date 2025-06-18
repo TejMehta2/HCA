@@ -46,7 +46,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
 
   // route values
   const Title = routeData.fields?.Title;
-  const BrowserTitle = routeData.fields?.BrowserTitle;
+  const MetaTitle = routeData.fields?.MetaTitle;
 
   /* Remove built in form styles if they exist */
   useEffect(() => {
@@ -91,7 +91,7 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
 
   const titleStripped = Title?.value.replace(/(<([^>]+)>)/gi, '');
   const browserTitle = `${
-    BrowserTitle?.value || titleStripped || routeData.displayName
+    MetaTitle?.value || titleStripped || routeData.displayName
   }`;
 
   return (
