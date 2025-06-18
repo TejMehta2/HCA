@@ -9,7 +9,7 @@
     "component-library:test": "cd src/component-library && npm run test",
     "hcamain:start": "cd src/hcamain && npm run start:connected",
     "hcamain:start:production": "cd src/hcamain && npm run start:production",
-    "hcamain:build": "cd src/hcamain && npm run build",
+    "hcamain:build": "cd src/hcamain && npm i && npm run build",
     "hcamain:leprechaun": "dotnet tool restore && dotnet leprechaun /c HCALeprechaun.config",
     "hcamain:next:start": "cd src/hcamain && npm run next:start",
     "hcamain:type-check": "cd src/hcamain && npm run type-check -w src/hcamain && npm run bootstrap",
