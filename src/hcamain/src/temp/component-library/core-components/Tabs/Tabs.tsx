@@ -90,9 +90,9 @@ const Tabs = (props: TabsProps): JSX.Element => {
                 form="none"
               />
               <label
-                ref={(element: HTMLLabelElement) =>
-                  refs?.current?.push(element)
-                }
+                ref={(element: HTMLLabelElement) => {
+                  refs?.current?.push(element);
+                }}
                 htmlFor={composedChildId}
               >
                 {!!icon && typeof icon === 'string' ? (
