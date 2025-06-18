@@ -16,6 +16,10 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
   const onShow = (index: number) => {
     if (activeIndex !== index) {
       setActiveIndex(index);
+      setTimeout(() => {
+        const heading = document.getElementById(`accordion-heading-${index}`);
+        heading?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     } else {
       setActiveIndex(null);
     }
@@ -36,6 +40,7 @@ const Accordions = (props: AccordionsProps): JSX.Element => {
           openIcon={openIcon}
           closeIcon={closeIcon}
           contentVariation={contentVariation}
+          id={`accordion-heading-${index}`}
         >
           {children}
         </Accordion>
