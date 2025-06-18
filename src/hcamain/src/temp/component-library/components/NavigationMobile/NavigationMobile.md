@@ -1,1 +1,0 @@
-See parent `site-components/Navigation` for documentation.
