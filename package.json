@@ -12,7 +12,7 @@
     "hcamain:build": "cd src/hcamain && npm i && npm run build",
     "hcamain:leprechaun": "dotnet tool restore && dotnet leprechaun /c HCALeprechaun.config",
     "hcamain:next:start": "cd src/hcamain && npm run next:start",
-    "hcamain:type-check": "cd src/hcamain && npm run type-check -w src/hcamain && npm run bootstrap",
+    "hcamain:type-check": "cd src/hcamain && npm run type-check && npm run bootstrap",
     "hcamain:copy": "cd src/component-library && npm run copy hcamain/src/temp",
     "hcamain:copybuild": "npm run hcamain:copy && npm run hcamain:build",
     "hcamain:copy:watch": "cd src/component-library && npm run watch hcamain/src/temp",
