@@ -4,7 +4,7 @@ import {
   Placeholder,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import DualCTABlock from '@component-library/careers/DualCTABlock/DualCTABlock';
 import PlaceHolderWrapper from 'src/jss-abstractions/PlaceholderWrapper/PlaceholderWrapper';
 

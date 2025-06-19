@@ -10,7 +10,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Params from 'src/types/params';
 import Text from '@component-library/foundation/Text/Text';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 
 import dynamic from 'next/dynamic';
 import NextJssImage from 'src/jss-abstractions/NextJssImage/NextJssImage';

@@ -8,7 +8,7 @@ import Text from '@component-library/foundation/Text/Text';
 import RichText from '@component-library/core-components/RichText/RichText';
 import { StatsProps } from './Stats.types';
 import Stats from '@component-library/careers/Stats/Stats';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import StatsCards from '@component-library/careers/StatsCards/StatsCards';
 import { StatProps } from '@component-library/careers/StatsCards/StatsCards.types';
 

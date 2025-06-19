@@ -11,7 +11,7 @@ import {
   NavigableComponent,
   TableOfContentsProps,
 } from './TableOfContents.types';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 
 export const Default = (props: TableOfContentsProps): JSX.Element => {
   const [components, setComponentsList] = useState<NavigableComponent[]>(

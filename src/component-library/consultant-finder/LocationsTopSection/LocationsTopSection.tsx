@@ -3,7 +3,7 @@ import { LocationsTopSectionProps } from './LocationsTopSection.types';
 import styles from './LocationsTopSection.module.scss';
 import Button from '../../core-components/Button/Button';
 import Icons from '../../foundation/Icons/Icons';
-import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import LocationsSearch from '../LocationsSearch/LocationsSearch';
 import Text from '../../foundation/Text/Text';
 

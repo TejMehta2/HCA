@@ -17,7 +17,7 @@ import JssDate from '../../jss-abstractions/JssDate/JssDate';
 import Image from 'next/image';
 import CarouselCards from '@component-library/site-components/CarouselCards/CarouselCards';
 import dynamic from 'next/dynamic';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 const DynamicCardBlogBlock = dynamic(

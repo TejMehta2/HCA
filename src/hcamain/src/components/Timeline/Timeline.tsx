@@ -15,7 +15,7 @@ import Timeline, {
   TimelineStep,
 } from '@component-library/site-components/Timeline/Timeline';
 import TextLink from '@component-library/core-components/TextLink/TextLink';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface PagesFields {

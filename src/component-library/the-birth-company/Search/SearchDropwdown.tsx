@@ -4,7 +4,7 @@ import Text from '../../foundation/Text/Text';
 import SearchDropdownProps from './SearchDropdown.types';
 import styles from './SearchDropdown.module.scss';
 import Icons from '../../foundation/Icons/Icons';
-import { TheBirthCompanyContext } from '@component-library/context/theBirthCompanyContext';
+import { TheBirthCompanyContext } from '../../context/theBirthCompanyContext';
 
 const SearchDdropdown = (props: SearchDropdownProps): JSX.Element => {
   const { setSearchString, setKeywordId, setExtrasList } = useContext(

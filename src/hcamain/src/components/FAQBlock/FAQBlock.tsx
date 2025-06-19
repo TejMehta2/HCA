@@ -16,7 +16,7 @@ import { Accordions } from '@component-library/components/Accordions/Accordions.
 import AccordionsBlockSideBySide from '@component-library/site-components/AccordionsBlockSideBySide/AccordionsBlockSideBySide';
 import Head from 'next/head';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 type CTAIconFields = {

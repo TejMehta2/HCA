@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppointmentTypeCardProps } from './AppointmentTypeCard.types';
 import Text from '../../foundation/Text/Text';
 import styles from './AppointmentTypeCard.module.scss';
-import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 
 const AppointmentTypeCard = (props: AppointmentTypeCardProps): JSX.Element => {
   const { selectedTypeOfAppointment } = useContext(ConsultantFinderContext);

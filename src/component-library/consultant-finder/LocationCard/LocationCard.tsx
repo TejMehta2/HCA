@@ -5,7 +5,7 @@ import { LocationCardProps } from './LocationCard.types';
 import styles from './LocationCard.module.scss';
 import Text from '../../foundation/Text/Text';
 import Icons from '../../foundation/Icons/Icons';
-import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
+import { ConsultantFinderContext } from '../../context/consultantFinderContext';
 import axios from 'axios';
 
 const LocationCard = (props: LocationCardProps): JSX.Element | null => {

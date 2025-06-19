@@ -7,7 +7,7 @@ import {
 import BlogContent from '@component-library/site-components/BlogContent/BlogContent';
 import Params from 'src/types/params';
 import RichText from '@component-library/core-components/RichText/RichText';
-import { inPageNavGlobalStore } from '@component-library/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 
 interface Fields {
   Text?: Field<string>;
