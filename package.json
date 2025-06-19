@@ -6,7 +6,7 @@
     "component-library:storybook:publish": "cd src/component-library && npm run chromatic",
     "component-library:scaffold": "cd src/component-library && npm run scaffold",
     "component-library:type-check": "cd src/component-library && npm i && npm run type-check",
-    "component-library:test": "cd src/component-library && npm run test",
+    "component-library:test": "cd src/component-library && npm i && npm run test",
     "hcamain:start": "cd src/hcamain && npm run start:connected",
     "hcamain:start:production": "cd src/hcamain && npm run start:production",
     "hcamain:build": "cd src/hcamain && npm i && npm run build",
