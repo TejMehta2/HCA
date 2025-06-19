@@ -16,7 +16,7 @@ import Params from 'src/types/params';
 import { useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import SitecoreSvg from 'src/jss-abstractions/SitecoreSvg/SitecoreSvg';
 import Image from 'next/image';
-import { inPageNavGlobalStore } from 'src/context/inPageNavGlobalStorage';
+import { inPageNavGlobalStore } from '../../context/inPageNavGlobalStorage';
 import getHeadingTags from 'lib/getHeadingTags';
 
 interface PagesFields {
@@ -191,8 +191,8 @@ export const WithImage = (props: WithImageProps): JSX.Element => {
           const cardCtaTextFromCard = card?.proxyurl?.path
             ? card?.proxyurl.text
             : card.abstractTitle?.value
-            ? card.abstractTitle?.value
-            : card.title?.value;
+              ? card.abstractTitle?.value
+              : card.title?.value;
 
           return (
             <CardContent

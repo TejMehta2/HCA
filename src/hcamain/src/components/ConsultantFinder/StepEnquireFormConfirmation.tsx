@@ -21,7 +21,7 @@ import TextLink from '@component-library/core-components/TextLink/TextLink';
 import Icons from '@component-library/foundation/Icons/Icons';
 import Link from 'next/link';
 import Script from 'next/script';
-import { ConsultantFinderContext } from 'src/context/consultantFinderContext';
+import { ConsultantFinderContext } from '@component-library/context/consultantFinderContext';
 
 interface Fields {
   EnquireFormConfirmationBreadcrumbsHomePage: Field<string>;

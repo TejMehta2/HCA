@@ -470,10 +470,9 @@ export const Default = (props: StepProps): JSX.Element => {
                 {topSpecialty[0]?.name && (
                   <TextLink>
                     <Link
-                      href={`${props?.fields?.ResultsLink?.value
-                        ?.href}?search=${
-                        topSpecialty[0]?.name || ''
-                      }&keywordId=${
+                      href={`${
+                        props?.fields?.ResultsLink?.value?.href
+                      }?search=${topSpecialty[0]?.name || ''}&keywordId=${
                         topSpecialty[0]?.id || ''
                       }&sortType=relevance&lat=51.507217&lon=-0.1275862&distance=0&limit=12&offset=0`}
                     >
@@ -825,9 +824,9 @@ export const Default = (props: StepProps): JSX.Element => {
                       {serverSideData?.IsLiveDiaryConsultant && (
                         <Button variation="full-dark" size="small">
                           <Link
-                            href={`/finder/step-terms-and-conditions?slug=${serverSideData
-                              ?.ProfileJson
-                              .slug}&gmcNumber=${gmcNumber}&reviewsTotal=${
+                            href={`/finder/step-terms-and-conditions?slug=${
+                              serverSideData?.ProfileJson.slug
+                            }&gmcNumber=${gmcNumber}&reviewsTotal=${
                               serverSideData?.ProfileJson?.review
                                 ?.reviewsTotal || 0
                             }`}
@@ -845,9 +844,11 @@ export const Default = (props: StepProps): JSX.Element => {
                           ?.hideAppointmentRequest && (
                           <Button variation="full-dark" size="small">
                             <Link
-                              href={`${props?.fields?.EnquireNowButtonLink
-                                ?.value?.href}?slug=${serverSideData
-                                ?.ProfileJson.slug}&reviewsTotal=${
+                              href={`${
+                                props?.fields?.EnquireNowButtonLink?.value?.href
+                              }?slug=${
+                                serverSideData?.ProfileJson.slug
+                              }&reviewsTotal=${
                                 serverSideData?.ProfileJson?.review
                                   ?.reviewsTotal || 0
                               }`}

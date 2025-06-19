@@ -51,8 +51,9 @@ const ProgressBar = (props: ProgressBarProps): JSX.Element => {
                 currentPage !== steps.length && (
                   <TextLink>
                     <Link
-                      href={`${step?.fields?.Link?.value
-                        ?.href}?${searchParams.toString()}`}
+                      href={`${
+                        step?.fields?.Link?.value?.href
+                      }?${searchParams.toString()}`}
                     >
                       <Text tag="span" variation="body-medium-small">
                         {step?.fields?.StepText?.value}
