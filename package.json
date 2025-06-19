@@ -3,7 +3,7 @@
   "scripts": {
     "install-dotnetsdk": "build/dotnet-install.sh --runtime dotnet --version 6.0.0",
     "component-library:storybook": "cd src/component-library && npm run storybook",
-    "component-library:storybook:publish": "cd src/component-library && npm run chromatic",
+    "component-library:storybook:publish": "cd src/component-library && npm i && npm run chromatic",
     "component-library:scaffold": "cd src/component-library && npm run scaffold",
     "component-library:type-check": "cd src/component-library && npm i && npm run type-check",
     "component-library:test": "cd src/component-library && npm i && npm run test",
@@ -13,7 +13,8 @@
     "hcamain:leprechaun": "dotnet tool restore && dotnet leprechaun /c HCALeprechaun.config",
     "hcamain:next:start": "cd src/hcamain && npm run next:start",
     "hcamain:type-check": "cd src/hcamain && npm i && npm run bootstrap && npm run type-check",
-    "hcamain:copy": "cd src/component-library && npm run copy hcamain/src/temp",
+    "hcamain:copy": "cd src/component-library && npm i && npm run copy hcamain/src/temp",
+    "hcamain:copy:docker": "cd src/component-library && npm run copy hcamain/src/temp",
     "hcamain:copybuild": "npm run hcamain:copy && npm run hcamain:build",
     "hcamain:copy:watch": "cd src/component-library && npm run watch hcamain/src/temp",
     "microsite:start": "cd src/microsite && npm run start:connected",
