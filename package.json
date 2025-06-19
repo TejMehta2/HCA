@@ -21,7 +21,7 @@
     "microsite:build": "cd src/microsite && npm run build",
     "microsite:leprechaun": "dotnet tool restore && dotnet leprechaun /c PSGLeprechaun.config",
     "microsite:next:start": "cd src/microsite && npm run next:start",
-    "lint": "npm run hcamain:type-check && npm run component-library:type-check"
+    "lint": "npm run hcamain:copy && npm run hcamain:type-check && npm run component-library:type-check"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
