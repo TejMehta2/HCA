@@ -3,7 +3,7 @@
   "scripts": {
     "install-dotnetsdk": "build/dotnet-install.sh --runtime dotnet --version 6.0.0",
     "component-library:storybook": "cd src/component-library && npm run storybook",
-    "component-library:storybook:publish": "cd src/component-library && npm run chromatic",
+    "component-library:storybook:publish": "cd src/component-library && npm i && npm run chromatic",
     "component-library:scaffold": "cd src/component-library && npm run scaffold",
     "component-library:type-check": "cd src/component-library && npm i && npm run type-check",
     "component-library:test": "cd src/component-library && npm i && npm run test",
