@@ -19,7 +19,6 @@ export interface PageRouteMetadata {
     MetaDescription?: Field<string>;
     MetaImage?: ImageField;
     MetaTitle?: Field<string>;
-    BrowserTitle?: Field<string>;
     NoFollow?: Field<boolean>;
     NoIndex?: Field<boolean>;
     AbstractTitle?: Field<string>;
