@@ -320,7 +320,7 @@ export default async function RefreshDatabase(req: NextApiRequest) {
     req.headers as unknown as Iterable<readonly [PropertyKey, any]>
   );
   let requestingHost = flatHeaders
-    ? flatHeaders['x-forwarded-host'] ?? flatHeaders['host']
+    ? (flatHeaders['x-forwarded-host'] ?? flatHeaders['host'])
     : 'hcahealthcare.co.uk';
   if (requestingHost == 'www.hcacloud.localhost') {
     // can't introspect on local as running in Docker
