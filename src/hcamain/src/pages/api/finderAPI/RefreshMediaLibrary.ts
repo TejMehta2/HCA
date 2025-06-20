@@ -529,9 +529,8 @@ export default async function RefreshMediaLibrary(req: NextApiRequest) {
     longRunning({
       log: (msg: string) => {
         writer.ready
-          .then(
-            () =>
-              writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
+          .then(() =>
+            writer?.write(encoder.encode(`${Date().toString()}: ${msg}\n`))
           )
           .catch((err) => {
             gStreamClosed = true;
