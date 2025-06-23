@@ -63,7 +63,11 @@ export async function getLDBFirstAppointmentDatas(
     }
   }
 
-  const gmcArrayBody = gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
+  const requestAll = gmcArray?.length == 0;
+  const gmcArrayBody = requestAll
+    ? ''
+    : gmcArray?.map((gmc: any) => '"' + gmc).join('",') + '"';
+
   const body = `{"consultants" : [${gmcArrayBody}] }`;
   //console.log('body', body);
 
@@ -116,12 +120,16 @@ export async function getLDBFirstAppointmentDatas(
       }
       //console.log('retRecord', result);
       if (config?.aPI_C2_UsingCSharpAPI) {
-        // remap in the correct order and provide null for entries where no info was found
-        returnData = gmcArray.map((gmc: any) =>
-          (result.availability as object[]).find(
-            (rec: any) => rec.professionalRegistrationNumber == gmc
-          )
-        );
+        if (requestAll) {
+          returnData = result.availability as object[];
+        } else {
+          // remap in the correct order and provide null for entries where no info was found
+          returnData = gmcArray.map((gmc: any) =>
+            (result.availability as object[]).find(
+              (rec: any) => rec.professionalRegistrationNumber == gmc
+            )
+          );
+        }
       } else {
         // remap in the correct order and provide null for entries where no info was found
         returnData = gmcArray.map((gmc: any) =>
