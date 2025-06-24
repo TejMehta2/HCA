@@ -35,15 +35,17 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     const handleNavigableComponentsListUpdated = (
       updatedList: NavigableComponent[]
     ) => {
+      console.log('[ToC] Received updated list', updatedList);
       setComponentsList([...updatedList]);
-      console.log('updatedList', updatedList);
     };
-
+    // Sync immediately on mount
+    const currentList = inPageNavGlobalStore.getList();
+    console.log('[ToC] Initial list on mount', currentList);
+    setComponentsList([...currentList]);
     inPageNavGlobalStore.on(
       'navigableComponentsListUpdated',
       handleNavigableComponentsListUpdated
     );
-
     return () => {
       inPageNavGlobalStore.off(
         'navigableComponentsListUpdated',
