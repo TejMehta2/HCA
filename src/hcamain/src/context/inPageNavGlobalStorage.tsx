@@ -40,6 +40,12 @@ class InPageNavGlobalStore extends EventEmitter {
   getList(): NavigableComponent[] {
     return this.list;
   }
+
+  clearList(): void {
+    // console.log('[InPageNavGlobalStore] List cleared');
+    this.list = [];
+    this.emit('navigableComponentsListUpdated', this.list);
+  }
 }
 
 export const inPageNavGlobalStore = new InPageNavGlobalStore();
