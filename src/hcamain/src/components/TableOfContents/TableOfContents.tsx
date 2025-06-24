@@ -18,6 +18,11 @@ export const Default = (props: TableOfContentsProps): JSX.Element => {
     inPageNavGlobalStore.getList()
   );
 
+  // Clear list when component mounts (i.e., on each page visit)
+  useEffect(() => {
+    inPageNavGlobalStore.clearList();
+  }, []);
+
   useEffect(() => {
     const handleNavigableComponentsListUpdated = (
       updatedList: NavigableComponent[]
